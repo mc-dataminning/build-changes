@@ -1,74 +1,127 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.UUID;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeoutException;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public record fbt(int a, @Nullable fbt.a b, @Nullable wi c, @Nullable String d) {
-   private static final wi e = wi.c("chat.tag.system");
-   private static final wi f = wi.c("chat.tag.system_single_player");
-   private static final wi g = wi.c("chat.tag.not_secure");
-   private static final wi h = wi.c("chat.tag.modified");
-   private static final wi i = wi.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final fbt l = new fbt(13684944, null, e, "System");
-   private static final fbt m = new fbt(13684944, null, f, "System");
-   private static final fbt n = new fbt(13684944, null, g, "Not Secure");
-   private static final fbt o = new fbt(16733525, null, i, "Chat Error");
+public class fbt extends fbu {
+   private static final ws b = ws.c("multiplayer.applyingPack");
+   private static final Logger c = LogUtils.getLogger();
+   private static final ws d = ws.c("mco.connect.connecting");
+   private final eyu e;
+   private final fkt f;
 
-   public static fbt a() {
-      return l;
+   public fbt(fkt $$0, eyu $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   public static fbt b() {
-      return m;
-   }
-
-   public static fbt c() {
-      return n;
-   }
-
-   public static fbt a(String $$0) {
-      wi $$1 = wi.b($$0).a(n.h);
-      wi $$2 = wi.i().b(h).b(wh.s).b($$1);
-      return new fbt(6316128, fbt.a.a, $$2, "Modified");
-   }
-
-   public static fbt d() {
-      return o;
-   }
-
-   public int e() {
-      return this.a;
-   }
-
-   @Nullable
-   public fbt.a f() {
-      return this.b;
-   }
-
-   @Nullable
-   public wi g() {
-      return this.c;
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   public static enum a {
-      a(new ajv("icon/chat_modified"), 9, 9);
-
-      public final ajv b;
-      public final int c;
-      public final int d;
-
-      private a(ajv $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   @Override
+   public void run() {
+      eyv $$0;
+      try {
+         $$0 = this.f();
+      } catch (CancellationException var4) {
+         c.info("User aborted connecting to realms");
+         return;
+      } catch (ezq var5) {
+         switch (var5.a.a()) {
+            case 6002:
+               a(new fay(this.f, this.e));
+               return;
+            case 6006:
+               boolean $$3 = fcu.Q().b(this.e.g);
+               a(
+                  (fkt)($$3
+                     ? new fab(this.f, this.e.a, this.e.m == eyu.d.b)
+                     : new fah(ws.c("mco.brokenworld.nonowner.title"), ws.c("mco.brokenworld.nonowner.error"), this.f))
+               );
+               return;
+            default:
+               this.a(var5);
+               c.error("Couldn't connect to world", var5);
+               return;
+         }
+      } catch (TimeoutException var6) {
+         this.a(ws.c("mco.errorMessage.connectionFailure"));
+         return;
+      } catch (Exception var7) {
+         c.error("Couldn't connect to world", var7);
+         this.a(var7);
+         return;
       }
 
-      public void a(fdl $$0, int $$1, int $$2) {
-         $$0.a(this.b, $$1, $$2, this.c, this.d);
+      boolean $$7 = $$0.b != null && $$0.c != null;
+      fkt $$8 = (fkt)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
+      a($$8);
+   }
+
+   private static UUID a(eyu $$0) {
+      return $$0.o != null
+         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.o).getBytes(StandardCharsets.UTF_8))
+         : UUID.nameUUIDFromBytes(("realms:" + $$0.c + ":" + $$0.n).getBytes(StandardCharsets.UTF_8));
+   }
+
+   @Override
+   public ws a() {
+      return d;
+   }
+
+   private eyv f() throws ezq, TimeoutException, CancellationException {
+      eyd $$0 = eyd.a();
+
+      for (int $$1 = 0; $$1 < 40; $$1++) {
+         if (this.d()) {
+            throw new CancellationException();
+         }
+
+         try {
+            return $$0.c(this.e.a);
+         } catch (ezr var4) {
+            a((long)var4.c);
+         }
+      }
+
+      throw new TimeoutException();
+   }
+
+   public fak a(eyv $$0) {
+      return new fal(this.f, new fbq(this.f, this.e, $$0));
+   }
+
+   private faj a(eyv $$0, UUID $$1, Function<eyv, fkt> $$2) {
+      BooleanConsumer $$3 = $$3x -> {
+         if (!$$3x) {
+            a(this.f);
+         } else {
+            a(new fjz(b));
+            this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
+               fcu.Q().ae().i();
+               c.error("Failed to download resource pack from {}", $$0, $$1xx);
+               a(new fah(ws.c("mco.download.resourcePack.fail"), this.f));
+               return null;
+            });
+         }
+      };
+      return new faj($$3, faj.a.b, ws.c("mco.configure.world.resourcepack.question.line1"), ws.c("mco.configure.world.resourcepack.question.line2"), true);
+   }
+
+   private CompletableFuture<?> a(eyv $$0, UUID $$1) {
+      try {
+         gpd $$2 = fcu.Q().ae();
+         CompletableFuture<Void> $$3 = $$2.b($$1);
+         $$2.g();
+         $$2.a($$1, new URL($$0.b), $$0.c);
+         return $$3;
+      } catch (Exception var5) {
+         CompletableFuture<Void> $$5 = new CompletableFuture<>();
+         $$5.completeExceptionally(var5);
+         return $$5;
       }
    }
 }

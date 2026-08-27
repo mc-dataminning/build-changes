@@ -1,29 +1,23 @@
-public class zk implements yp<zg> {
-   public static final yg<vi, zk> a = yp.a(zk::a, zk::new);
-   private final int b;
+import java.util.Optional;
+import java.util.UUID;
 
-   public zk(int $$0) {
-      this.b = $$0;
+public record zk(Optional<UUID> b) implements yz<zf> {
+   public static final yq<vs, zk> a = yz.a(zk::a, zk::new);
+
+   private zk(vs $$0) {
+      this($$0.b(jp.g));
    }
 
-   private zk(vi $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(vi $$0) {
-      $$0.p(this.b);
+   private void a(vs $$0) {
+      $$0.a(this.b, jp.g);
    }
 
    @Override
-   public yr<zk> a() {
-      return zf.m;
+   public zb<zk> a() {
+      return zp.e;
    }
 
-   public void a(zg $$0) {
+   public void a(zf $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

@@ -1,40 +1,49 @@
-import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class ecn extends ecm {
-   public static final Codec<ecn> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ecn::new));
-   protected final List<dpi> h;
+public class ecn extends eck {
+   public static final Codec<ecn> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bnv.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, ecn::new)
+   );
+   private final bnv b;
 
-   protected static <P extends ecn> P4<Mu<P>, Long, eke.a, Float, List<dpi>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dpi.b).fieldOf("states").forGetter($$0x -> $$0x.h));
-   }
-
-   public ecn(long $$0, eke.a $$1, float $$2, List<dpi> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public ecn(bnv $$0, bnv $$1, bnv $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected eck<?> a() {
-      return eck.d;
+   protected ecl<?> a() {
+      return ecl.h;
    }
 
    @Override
-   public dpi a(axt $$0, id $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   protected void a(daa $$0, eck.b $$1, ayd $$2, ebu $$3, int $$4, eck.a $$5, int $$6, int $$7, int $$8) {
+      im $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + axw.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
+         }
+
+         this.a($$0, $$1, $$2, $$3, new im($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
+      }
    }
 
-   protected dpi a(List<dpi> $$0, id $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
+   @Override
+   public int a(ayd $$0, int $$1, ebu $$2) {
+      return this.b.a($$0);
    }
 
-   protected dpi a(List<dpi> $$0, double $$1) {
-      double $$2 = axm.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   @Override
+   protected boolean a(ayd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

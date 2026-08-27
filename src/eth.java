@@ -1,46 +1,46 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-class eth {
-   private final Reference2ObjectOpenHashMap<etf, etk> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+public class eth extends ety {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
 
-   @Nullable
-   public etk a(etf $$0) {
-      return (etk)this.a.get($$0);
+   protected eth(eto $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
    }
 
-   public etk a(etf $$0, Consumer<etk> $$1) {
-      return (etk)this.a.computeIfAbsent($$0, $$1x -> {
-         etk $$2 = new etk();
-         $$1.accept($$2);
-         return $$2;
-      });
+   eth(eto $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      } else {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
+      }
    }
 
-   public boolean b(etf $$0) {
-      return this.a.remove($$0) != null;
-   }
-
-   public boolean a() {
-      return !this.a.isEmpty();
-   }
-
-   public Object2IntMap<etf> b() {
-      Object2IntMap<etf> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
-   }
-
-   void a(etf $$0, etk $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   Map<etf, etk> c() {
-      return Collections.unmodifiableMap(this.a);
+   @Override
+   protected DoubleList a(ir.a $$0) {
+      switch ($$0) {
+         case a:
+            return this.b;
+         case b:
+            return this.c;
+         case c:
+            return this.d;
+         default:
+            throw new IllegalArgumentException();
+      }
    }
 }

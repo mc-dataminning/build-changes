@@ -1,9 +1,8 @@
-public class fjc extends fjz {
-   private static fcb<?>[] a(fcc $$0) {
-      return new fcb[]{$$0.P(), $$0.Q()};
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public fjc(fjx $$0, fcc $$1) {
-      super($$0, $$1, wi.c("options.font.title"), a($$1));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fjc {
 }

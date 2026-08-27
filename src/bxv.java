@@ -1,36 +1,28 @@
-public class bxv extends bxq {
-   private final cdf a;
-   private apv b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public bxv(cdf $$0) {
+public class bxv extends byb {
+   private final brg a;
+
+   public bxv(brg $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(byb.a.c));
+      $$0.K().a(true);
    }
 
    @Override
    public boolean a() {
-      apv $$0 = (apv)this.a.P_();
-      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.ga().b && !$$0.bc() && !$$0.aA;
-      return !this.a.gn() && $$1 && this.a.gw();
+      return this.a.bc() && this.a.b(avt.a) > this.a.dg() || this.a.bq();
    }
 
    @Override
-   public boolean Q_() {
-      return !this.c;
-   }
-
-   @Override
-   public void c() {
-      this.b = (apv)this.a.P_();
-      this.c = false;
+   public boolean R_() {
+      return true;
    }
 
    @Override
    public void e() {
-      if (!this.c && !this.a.y() && !this.a.gb()) {
-         if (this.a.cH().c(this.b.cH())) {
-            this.c = this.a.b(this.b);
-         }
+      if (this.a.ej().i() < 0.8F) {
+         this.a.I().a();
       }
    }
 }

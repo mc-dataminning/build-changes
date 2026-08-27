@@ -3,103 +3,103 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record bo(Optional<cc> b, Optional<cc> c, Optional<cc> d, Optional<cc> e, Optional<cc> f, Optional<cc> g) {
+public record bo(Optional<cg> b, Optional<cg> c, Optional<cg> d, Optional<cg> e, Optional<cg> f, Optional<cg> g) {
    public static final Codec<bo> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               awu.a(cc.a, "head").forGetter(bo::a),
-               awu.a(cc.a, "chest").forGetter(bo::b),
-               awu.a(cc.a, "legs").forGetter(bo::c),
-               awu.a(cc.a, "feet").forGetter(bo::d),
-               awu.a(cc.a, "mainhand").forGetter(bo::e),
-               awu.a(cc.a, "offhand").forGetter(bo::f)
+               axe.a(cg.a, "head").forGetter(bo::a),
+               axe.a(cg.a, "chest").forGetter(bo::b),
+               axe.a(cg.a, "legs").forGetter(bo::c),
+               axe.a(cg.a, "feet").forGetter(bo::d),
+               axe.a(cg.a, "mainhand").forGetter(bo::e),
+               axe.a(cg.a, "offhand").forGetter(bo::f)
             )
             .apply($$0, bo::new)
    );
 
-   public static bo a(io<dme> $$0) {
-      return bo.a.a().a(cc.a.a().a(crv.uN).a(jp.a(cll.a($$0).a()))).b();
+   public static bo a(iw<dmt> $$0) {
+      return bo.a.a().a(cg.a.a().a(csg.uP).a(jx.a(clw.a($$0).a()))).b();
    }
 
-   public boolean a(@Nullable bqa $$0) {
-      if ($$0 instanceof bqt $$1) {
-         if (this.b.isPresent() && !this.b.get().a($$1.d(bqh.f))) {
+   public boolean a(@Nullable bql $$0) {
+      if ($$0 instanceof bre $$1) {
+         if (this.b.isPresent() && !this.b.get().a($$1.d(bqs.f))) {
             return false;
-         } else if (this.c.isPresent() && !this.c.get().a($$1.d(bqh.e))) {
+         } else if (this.c.isPresent() && !this.c.get().a($$1.d(bqs.e))) {
             return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$1.d(bqh.d))) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.d(bqs.d))) {
             return false;
-         } else if (this.e.isPresent() && !this.e.get().a($$1.d(bqh.c))) {
+         } else if (this.e.isPresent() && !this.e.get().a($$1.d(bqs.c))) {
             return false;
          } else {
-            return this.f.isPresent() && !this.f.get().a($$1.d(bqh.a)) ? false : !this.g.isPresent() || this.g.get().a($$1.d(bqh.b));
+            return this.f.isPresent() && !this.f.get().a($$1.d(bqs.a)) ? false : !this.g.isPresent() || this.g.get().a($$1.d(bqs.b));
          }
       } else {
          return false;
       }
    }
 
-   public Optional<cc> a() {
+   public Optional<cg> a() {
       return this.b;
    }
 
-   public Optional<cc> b() {
+   public Optional<cg> b() {
       return this.c;
    }
 
-   public Optional<cc> c() {
+   public Optional<cg> c() {
       return this.d;
    }
 
-   public Optional<cc> d() {
+   public Optional<cg> d() {
       return this.e;
    }
 
-   public Optional<cc> e() {
+   public Optional<cg> e() {
       return this.f;
    }
 
-   public Optional<cc> f() {
+   public Optional<cg> f() {
       return this.g;
    }
 
    public static class a {
-      private Optional<cc> a = Optional.empty();
-      private Optional<cc> b = Optional.empty();
-      private Optional<cc> c = Optional.empty();
-      private Optional<cc> d = Optional.empty();
-      private Optional<cc> e = Optional.empty();
-      private Optional<cc> f = Optional.empty();
+      private Optional<cg> a = Optional.empty();
+      private Optional<cg> b = Optional.empty();
+      private Optional<cg> c = Optional.empty();
+      private Optional<cg> d = Optional.empty();
+      private Optional<cg> e = Optional.empty();
+      private Optional<cg> f = Optional.empty();
 
       public static bo.a a() {
          return new bo.a();
       }
 
-      public bo.a a(cc.a $$0) {
+      public bo.a a(cg.a $$0) {
          this.a = Optional.of($$0.b());
          return this;
       }
 
-      public bo.a b(cc.a $$0) {
+      public bo.a b(cg.a $$0) {
          this.b = Optional.of($$0.b());
          return this;
       }
 
-      public bo.a c(cc.a $$0) {
+      public bo.a c(cg.a $$0) {
          this.c = Optional.of($$0.b());
          return this;
       }
 
-      public bo.a d(cc.a $$0) {
+      public bo.a d(cg.a $$0) {
          this.d = Optional.of($$0.b());
          return this;
       }
 
-      public bo.a e(cc.a $$0) {
+      public bo.a e(cg.a $$0) {
          this.e = Optional.of($$0.b());
          return this;
       }
 
-      public bo.a f(cc.a $$0) {
+      public bo.a f(cg.a $$0) {
          this.f = Optional.of($$0.b());
          return this;
       }

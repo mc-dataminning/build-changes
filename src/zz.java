@@ -1,31 +1,61 @@
-public record zz(int c, elp d, float e) implements zq {
-   public static final yg<vi, zz> a = zq.a(zz::a, zz::new);
-   public static final zq.b<zz> b = zq.a("debug/path");
+import java.util.UUID;
 
-   private zz(vi $$0) {
-      this($$0.readInt(), elp.b($$0), $$0.readFloat());
+public record zz(zz.a c) implements aaa {
+   public static final yq<vs, zz> a = aaa.a(zz::a, zz::new);
+   public static final aaa.b<zz> b = aaa.a("debug/breeze");
+
+   private zz(vs $$0) {
+      this(new zz.a($$0));
    }
 
-   private void a(vi $$0) {
-      $$0.p(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(vs $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public zq.b<zz> a() {
+   public aaa.b<zz> a() {
       return b;
    }
 
-   public int b() {
+   public zz.a b() {
       return this.c;
    }
 
-   public elp c() {
-      return this.d;
-   }
+   public static record a(UUID a, int b, Integer c, im d) {
+      public a(vs $$0) {
+         this($$0.n(), $$0.readInt(), $$0.c(vs::readInt), $$0.c(im.b));
+      }
 
-   public float d() {
-      return this.e;
+      public void a(vs $$0) {
+         $$0.a(this.a);
+         $$0.p(this.b);
+         $$0.a(this.c, vs::p);
+         $$0.a(this.d, im.b);
+      }
+
+      public String a() {
+         return aft.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public im e() {
+         return this.d;
+      }
    }
 }

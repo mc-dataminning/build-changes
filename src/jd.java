@@ -1,380 +1,415 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Lifecycle;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
+import org.slf4j.Logger;
 
-public class jd {
-   private final List<jd.k<?>> a = new ArrayList<>();
-
-   static <T> io<T> a(final ip.b<T> $$0) {
-      return new jd.c<T>($$0) {
-         @Override
-         public Optional<in.c<T>> a(aju<T> $$0x) {
-            return $$0.a($$0);
-         }
-      };
-   }
-
-   static <T> ip.b<T> a(final aju<? extends ja<? extends T>> $$0, final Lifecycle $$1, iq<T> $$2, final Map<aju<T>, in.c<T>> $$3) {
-      return new jd.e<T>($$2) {
-         @Override
-         public aju<? extends ja<? extends T>> f() {
-            return $$0;
-         }
-
-         @Override
-         public Lifecycle g() {
-            return $$1;
-         }
-
-         @Override
-         public Optional<in.c<T>> a(aju<T> $$0x) {
-            return Optional.ofNullable($$3.get($$0));
-         }
-
-         @Override
-         public Stream<in.c<T>> b() {
-            return $$3.values().stream();
-         }
-      };
-   }
-
-   public <T> jd a(aju<? extends ja<T>> $$0, Lifecycle $$1, jd.i<T> $$2) {
-      this.a.add(new jd.k<>($$0, $$1, $$2));
-      return this;
-   }
-
-   public <T> jd a(aju<? extends ja<T>> $$0, jd.i<T> $$1) {
-      return this.a($$0, Lifecycle.stable(), $$1);
-   }
-
-   private jd.b b(jb $$0) {
-      jd.b $$1 = jd.b.a($$0, this.a.stream().map(jd.k::a));
-      this.a.forEach($$1x -> $$1x.b($$1));
-      return $$1;
-   }
-
-   private static ip.a a(jd.m $$0, jb $$1, Stream<ip.b<?>> $$2) {
-      record a<T>(ip.b<T> a, ajt.a<T> b) {
-         public static <T> a<T> a(ip.b<T> $$0) {
-            return new a<>(new jd.d<>($$0, $$0), ajt.a.a($$0));
-         }
-
-         public static <T> a<T> a(jd.m $$0, ip.b<T> $$1) {
-            return new a<>(new jd.d<>($$0.a(), $$1), new ajt.a<>($$0.a(), $$1, $$1.g()));
-         }
+public class jd<T> implements jr<T> {
+   private static final Logger b = LogUtils.getLogger();
+   final ake<? extends ji<T>> c;
+   private final ObjectList<iv.c<T>> d = new ObjectArrayList(256);
+   private final Reference2IntMap<T> e = ac.a(new Reference2IntOpenHashMap(), $$0x -> $$0x.defaultReturnValue(-1));
+   private final Map<akf, iv.c<T>> f = new HashMap<>();
+   private final Map<ake<T>, iv.c<T>> g = new HashMap<>();
+   private final Map<T, iv.c<T>> h = new IdentityHashMap<>();
+   private final Map<ake<T>, jh> i = new IdentityHashMap<>();
+   private Lifecycle j;
+   private volatile Map<awd<T>, iz.c<T>> k = new IdentityHashMap<>();
+   private boolean l;
+   @Nullable
+   private Map<T, iv.c<T>> m;
+   private final ix.b<T> n = new ix.b<T>() {
+      @Override
+      public ake<? extends ji<? extends T>> f() {
+         return jd.this.c;
       }
 
-      final Map<aju<? extends ja<?>>, a<?>> $$3 = new HashMap<>();
-      $$1.c().forEach($$1x -> $$3.put($$1x.a(), jd$a.a($$1x.b().p())));
-      $$2.forEach($$2x -> $$3.put($$2x.f(), jd$a.a($$0, $$2x)));
-      return new ip.a() {
-         @Override
-         public Stream<aju<? extends ja<?>>> a() {
-            return $$3.keySet().stream();
-         }
+      @Override
+      public Lifecycle g() {
+         return jd.this.d();
+      }
 
-         <T> Optional<a<T>> c(aju<? extends ja<? extends T>> $$0) {
-            return Optional.ofNullable((a<T>)$$3.get($$0));
-         }
+      @Override
+      public Optional<iv.c<T>> a(ake<T> $$0) {
+         return jd.this.b($$0);
+      }
 
-         @Override
-         public <T> Optional<ip.b<T>> a(aju<? extends ja<? extends T>> $$0) {
-            return this.c($$0).map(a::a);
-         }
+      @Override
+      public Stream<iv.c<T>> b() {
+         return jd.this.h();
+      }
 
-         @Override
-         public <V> ajt<V> a(DynamicOps<V> $$0) {
-            return ajt.a($$0, new ajt.b() {
-               @Override
-               public <T> Optional<ajt.a<T>> a(aju<? extends ja<? extends T>> $$0) {
-                  return c($$0).map(a::b);
-               }
-            });
-         }
-      };
+      @Override
+      public Optional<iz.c<T>> a(awd<T> $$0) {
+         return jd.this.b($$0);
+      }
+
+      @Override
+      public Stream<iz.c<T>> d() {
+         return jd.this.i().map(Pair::getSecond);
+      }
+   };
+
+   public jd(ake<? extends ji<T>> $$0, Lifecycle $$1) {
+      this($$0, $$1, false);
    }
 
-   public ip.a a(jb $$0) {
-      jd.b $$1 = this.b($$0);
-      Stream<ip.b<?>> $$2 = this.a.stream().map($$1x -> $$1x.a($$1).a($$1.a));
-      ip.a $$3 = a($$1.a, $$0, $$2);
-      $$1.c();
-      $$1.b();
-      $$1.d();
+   public jd(ake<? extends ji<T>> $$0, Lifecycle $$1, boolean $$2) {
+      this.c = $$0;
+      this.j = $$1;
+      if ($$2) {
+         this.m = new IdentityHashMap<>();
+      }
+   }
+
+   @Override
+   public ake<? extends ji<T>> c() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return "Registry[" + this.c + " (" + this.j + ")]";
+   }
+
+   private void a() {
+      if (this.l) {
+         throw new IllegalStateException("Registry is already frozen");
+      }
+   }
+
+   private void h(ake<T> $$0) {
+      if (this.l) {
+         throw new IllegalStateException("Registry is already frozen (trying to add key " + $$0 + ")");
+      }
+   }
+
+   @Override
+   public iv.c<T> a(ake<T> $$0, T $$1, jh $$2) {
+      this.h($$0);
+      Objects.requireNonNull($$0);
+      Objects.requireNonNull($$1);
+      if (this.f.containsKey($$0.a())) {
+         ac.b(new IllegalStateException("Adding duplicate key '" + $$0 + "' to registry"));
+      }
+
+      if (this.h.containsKey($$1)) {
+         ac.b(new IllegalStateException("Adding duplicate value '" + $$1 + "' to registry"));
+      }
+
+      iv.c<T> $$3;
+      if (this.m != null) {
+         $$3 = this.m.remove($$1);
+         if ($$3 == null) {
+            throw new AssertionError("Missing intrusive holder for " + $$0 + ":" + $$1);
+         }
+
+         $$3.b($$0);
+      } else {
+         $$3 = this.g.computeIfAbsent($$0, $$0x -> iv.c.a(this.o(), $$0x));
+      }
+
+      this.g.put($$0, $$3);
+      this.f.put($$0.a(), $$3);
+      this.h.put($$1, $$3);
+      int $$5 = this.d.size();
+      this.d.add($$3);
+      this.e.put($$1, $$5);
+      this.i.put($$0, $$2);
+      this.j = this.j.add($$2.b());
       return $$3;
    }
 
-   private ip.a a(jb $$0, ip.a $$1, ie.a $$2, Map<aju<? extends ja<?>>, jd.j<?>> $$3, ip.a $$4) {
-      jd.m $$5 = new jd.m();
-      MutableObject<ip.a> $$6 = new MutableObject();
-      List<ip.b<?>> $$7 = $$3.keySet().stream().map($$5x -> this.a($$5, $$2, $$5x, $$4, $$1, $$6)).collect(Collectors.toUnmodifiableList());
-      ip.a $$8 = a($$5, $$0, $$7.stream());
-      $$6.setValue($$8);
-      return $$8;
+   @Nullable
+   @Override
+   public akf b(T $$0) {
+      iv.c<T> $$1 = this.h.get($$0);
+      return $$1 != null ? $$1.h().a() : null;
    }
 
-   private <T> ip.b<T> a(iq<T> $$0, ie.a $$1, aju<? extends ja<? extends T>> $$2, ip.a $$3, ip.a $$4, MutableObject<ip.a> $$5) {
-      ie<T> $$6 = $$1.a($$2);
-      if ($$6 == null) {
-         throw new NullPointerException("No cloner for " + $$2.a());
+   @Override
+   public Optional<ake<T>> d(T $$0) {
+      return Optional.ofNullable(this.h.get($$0)).map(iv.c::h);
+   }
+
+   @Override
+   public int a(@Nullable T $$0) {
+      return this.e.getInt($$0);
+   }
+
+   @Nullable
+   @Override
+   public T a(@Nullable ake<T> $$0) {
+      return a(this.g.get($$0));
+   }
+
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return (T)($$0 >= 0 && $$0 < this.d.size() ? ((iv.c)this.d.get($$0)).a() : null);
+   }
+
+   @Override
+   public Optional<iv.c<T>> c(int $$0) {
+      return $$0 >= 0 && $$0 < this.d.size() ? Optional.ofNullable((iv.c<T>)this.d.get($$0)) : Optional.empty();
+   }
+
+   @Override
+   public Optional<iv.c<T>> c(akf $$0) {
+      return Optional.ofNullable(this.f.get($$0));
+   }
+
+   @Override
+   public Optional<iv.c<T>> b(ake<T> $$0) {
+      return Optional.ofNullable(this.g.get($$0));
+   }
+
+   @Override
+   public iv<T> e(T $$0) {
+      iv.c<T> $$1 = this.h.get($$0);
+      return (iv<T>)($$1 != null ? $$1 : iv.a($$0));
+   }
+
+   iv.c<T> i(ake<T> $$0) {
+      return this.g.computeIfAbsent($$0, $$0x -> {
+         if (this.m != null) {
+            throw new IllegalStateException("This registry can't create new holders without value");
+         } else {
+            this.h($$0x);
+            return iv.c.a(this.o(), $$0x);
+         }
+      });
+   }
+
+   @Override
+   public int b() {
+      return this.g.size();
+   }
+
+   @Override
+   public Optional<jh> c(ake<T> $$0) {
+      return Optional.ofNullable(this.i.get($$0));
+   }
+
+   @Override
+   public Lifecycle d() {
+      return this.j;
+   }
+
+   @Override
+   public Iterator<T> iterator() {
+      return Iterators.transform(this.d.iterator(), iv::a);
+   }
+
+   @Nullable
+   @Override
+   public T a(@Nullable akf $$0) {
+      iv.c<T> $$1 = this.f.get($$0);
+      return a($$1);
+   }
+
+   @Nullable
+   private static <T> T a(@Nullable iv.c<T> $$0) {
+      return $$0 != null ? $$0.a() : null;
+   }
+
+   @Override
+   public Set<akf> e() {
+      return Collections.unmodifiableSet(this.f.keySet());
+   }
+
+   @Override
+   public Set<ake<T>> f() {
+      return Collections.unmodifiableSet(this.g.keySet());
+   }
+
+   @Override
+   public Set<Entry<ake<T>, T>> g() {
+      return Collections.unmodifiableSet(Maps.transformValues(this.g, iv::a).entrySet());
+   }
+
+   @Override
+   public Stream<iv.c<T>> h() {
+      return this.d.stream();
+   }
+
+   @Override
+   public Stream<Pair<awd<T>, iz.c<T>>> i() {
+      return this.k.entrySet().stream().map($$0 -> Pair.of($$0.getKey(), $$0.getValue()));
+   }
+
+   @Override
+   public iz.c<T> a(awd<T> $$0) {
+      iz.c<T> $$1 = this.k.get($$0);
+      if ($$1 == null) {
+         $$1 = this.d($$0);
+         Map<awd<T>, iz.c<T>> $$2 = new IdentityHashMap<>(this.k);
+         $$2.put($$0, $$1);
+         this.k = $$2;
+      }
+
+      return $$1;
+   }
+
+   private iz.c<T> d(awd<T> $$0) {
+      return new iz.c<>(this.o(), $$0);
+   }
+
+   @Override
+   public Stream<awd<T>> j() {
+      return this.k.keySet().stream();
+   }
+
+   @Override
+   public boolean k() {
+      return this.g.isEmpty();
+   }
+
+   @Override
+   public Optional<iv.c<T>> a(ayd $$0) {
+      return ac.b(this.d, $$0);
+   }
+
+   @Override
+   public boolean d(akf $$0) {
+      return this.f.containsKey($$0);
+   }
+
+   @Override
+   public boolean d(ake<T> $$0) {
+      return this.g.containsKey($$0);
+   }
+
+   @Override
+   public ji<T> l() {
+      if (this.l) {
+         return this;
       } else {
-         Map<aju<T>, in.c<T>> $$7 = new HashMap<>();
-         ip.b<T> $$8 = $$3.b($$2);
-         $$8.b().forEach($$5x -> {
-            aju<T> $$6x = $$5x.h();
-            jd.f<T> $$7x = new jd.f<>($$0, $$6x);
-            $$7x.a = () -> $$6.a((T)$$5x.a(), $$3, (ip.a)$$5.getValue());
-            $$7.put($$6x, $$7x);
-         });
-         ip.b<T> $$9 = $$4.b($$2);
-         $$9.b().forEach($$5x -> {
-            aju<T> $$6x = $$5x.h();
-            $$7.computeIfAbsent($$6x, $$6xx -> {
-               jd.f<T> $$7x = new jd.f<>($$0, $$6x);
-               $$7x.a = () -> $$6.a((T)$$5x.a(), $$4, (ip.a)$$5.getValue());
-               return $$7x;
-            });
-         });
-         Lifecycle $$10 = $$8.g().add($$9.g());
-         return a($$2, $$10, $$0, $$7);
-      }
-   }
-
-   public jd.g a(jb $$0, ip.a $$1, ie.a $$2) {
-      jd.b $$3 = this.b($$0);
-      Map<aju<? extends ja<?>>, jd.j<?>> $$4 = new HashMap<>();
-      this.a.stream().map($$1x -> $$1x.a($$3)).forEach($$1x -> $$4.put($$1x.a, $$1x));
-      Set<aju<? extends ja<?>>> $$5 = $$0.a().collect(Collectors.toUnmodifiableSet());
-      $$1.a().filter($$1x -> !$$5.contains($$1x)).forEach($$1x -> $$4.putIfAbsent($$1x, new jd.j($$1x, Lifecycle.stable(), Map.of())));
-      Stream<ip.b<?>> $$6 = $$4.values().stream().map($$1x -> $$1x.a($$3.a));
-      ip.a $$7 = a($$3.a, $$0, $$6);
-      $$3.b();
-      $$3.d();
-      ip.a $$8 = this.a($$0, $$1, $$2, $$4, $$7);
-      return new jd.g($$8, $$7);
-   }
-
-   static record b(jd.m a, jd.l b, Map<ajv, io<?>> c, Map<aju<?>, jd.h<?>> d, List<RuntimeException> e) {
-
-      public static jd.b a(jb $$0, Stream<aju<? extends ja<?>>> $$1) {
-         jd.m $$2 = new jd.m();
-         List<RuntimeException> $$3 = new ArrayList<>();
-         jd.l $$4 = new jd.l($$2);
-         Builder<ajv, io<?>> $$5 = ImmutableMap.builder();
-         $$0.c().forEach($$1x -> $$5.put($$1x.a().a(), jd.a($$1x.b().p())));
-         $$1.forEach($$2x -> $$5.put($$2x.a(), $$4));
-         return new jd.b($$2, $$4, $$5.build(), new HashMap<>(), $$3);
-      }
-
-      public <T> pz<T> a() {
-         return new pz<T>() {
-            @Override
-            public in.c<T> a(aju<T> $$0, T $$1, Lifecycle $$2) {
-               jd.h<?> $$3 = b.this.d.put($$0, new jd.h($$1, $$2));
-               if ($$3 != null) {
-                  b.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
+         this.l = true;
+         this.h.forEach(($$0x, $$1) -> $$1.b((T)$$0x));
+         List<akf> $$0 = this.g.entrySet().stream().filter($$0x -> !((iv.c)$$0x.getValue()).b()).map($$0x -> ((ake)$$0x.getKey()).a()).sorted().toList();
+         if (!$$0.isEmpty()) {
+            throw new IllegalStateException("Unbound values in registry " + this.c() + ": " + $$0);
+         } else {
+            if (this.m != null) {
+               if (!this.m.isEmpty()) {
+                  throw new IllegalStateException("Some intrusive holders were not registered: " + this.m.values());
                }
 
-               return b.this.b.c($$0);
+               this.m = null;
             }
 
-            @Override
-            public <S> io<S> a(aju<? extends ja<? extends S>> $$0) {
-               return (io<S>)b.this.c.getOrDefault($$0.a(), b.this.b);
+            return this;
+         }
+      }
+   }
+
+   @Override
+   public iv.c<T> f(T $$0) {
+      if (this.m == null) {
+         throw new IllegalStateException("This registry can't create intrusive holders");
+      } else {
+         this.a();
+         return this.m.computeIfAbsent($$0, $$0x -> iv.c.a(this.p(), (T)$$0x));
+      }
+   }
+
+   @Override
+   public Optional<iz.c<T>> b(awd<T> $$0) {
+      return Optional.ofNullable(this.k.get($$0));
+   }
+
+   @Override
+   public void a(Map<awd<T>, List<iv<T>>> $$0) {
+      Map<iv.c<T>, List<awd<T>>> $$1 = new IdentityHashMap<>();
+      this.g.values().forEach($$1x -> $$1.put($$1x, new ArrayList<>()));
+      $$0.forEach(($$1x, $$2x) -> {
+         for (iv<T> $$3x : $$2x) {
+            if (!$$3x.a(this.p())) {
+               throw new IllegalStateException("Can't create named set " + $$1x + " containing value " + $$3x + " from outside registry " + this);
             }
-         };
-      }
 
-      public void b() {
-         this.d.forEach(($$0, $$1) -> this.e.add(new IllegalStateException("Orpaned value " + $$1.a + " for key " + $$0)));
-      }
-
-      public void c() {
-         for (aju<Object> $$0 : this.b.a.keySet()) {
-            this.e.add(new IllegalStateException("Unreferenced key: " + $$0));
-         }
-      }
-
-      public void d() {
-         if (!this.e.isEmpty()) {
-            IllegalStateException $$0 = new IllegalStateException("Errors during registry creation");
-
-            for (RuntimeException $$1 : this.e) {
-               $$0.addSuppressed($$1);
+            if (!($$3x instanceof iv.c<T> $$4)) {
+               throw new IllegalStateException("Found direct holder " + $$3x + " value in tag " + $$1x);
             }
 
-            throw $$0;
+            $$1.get($$4).add($$1x);
          }
+      });
+      Set<awd<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
+      if (!$$2.isEmpty()) {
+         b.warn(
+            "Not all defined tags for registry {} are present in data pack: {}",
+            this.c(),
+            $$2.stream().map($$0x -> $$0x.b().toString()).sorted().collect(Collectors.joining(", "))
+         );
       }
 
-      public jd.m e() {
-         return this.a;
-      }
-
-      public jd.l f() {
-         return this.b;
-      }
-
-      public Map<ajv, io<?>> g() {
-         return this.c;
-      }
-
-      public Map<aju<?>, jd.h<?>> h() {
-         return this.d;
-      }
-
-      public List<RuntimeException> i() {
-         return this.e;
-      }
+      Map<awd<T>, iz.c<T>> $$3 = new IdentityHashMap<>(this.k);
+      $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
+      $$1.forEach(iv.c::a);
+      this.k = $$3;
    }
 
-   abstract static class c<T> implements io<T> {
-      protected final iq<T> d;
-
-      protected c(iq<T> $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public Optional<ir.c<T>> a(avt<T> $$0) {
-         return Optional.of(ir.a(this.d, $$0));
-      }
+   @Override
+   public void m() {
+      this.k.values().forEach($$0 -> $$0.b(List.of()));
+      this.g.values().forEach($$0 -> $$0.a(Set.of()));
    }
 
-   static class d<T> extends jd.e<T> implements ip.b.a<T> {
-      private final ip.b<T> a;
-
-      d(iq<T> $$0, ip.b<T> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      @Override
-      public ip.b<T> a() {
-         return this.a;
-      }
-   }
-
-   abstract static class e<T> extends jd.c<T> implements ip.b<T> {
-      protected e(iq<T> $$0) {
-         super($$0);
-      }
-
-      @Override
-      public Stream<ir.c<T>> d() {
-         throw new UnsupportedOperationException("Tags are not available in datagen");
-      }
-   }
-
-   static class f<T> extends in.c<T> {
-      @Nullable
-      Supplier<T> a;
-
-      protected f(iq<T> $$0, @Nullable aju<T> $$1) {
-         super(in.c.a.a, $$0, $$1, null);
-      }
-
-      @Override
-      protected void b(T $$0) {
-         super.b($$0);
-         this.a = null;
-      }
-
-      @Override
-      public T a() {
-         if (this.a != null) {
-            this.b(this.a.get());
+   @Override
+   public iw<T> n() {
+      this.a();
+      return new iw<T>() {
+         @Override
+         public Optional<iv.c<T>> a(ake<T> $$0) {
+            return Optional.of(this.b($$0));
          }
 
-         return super.a();
-      }
-   }
-
-   public static record g(ip.a a, ip.a b) {
-   }
-
-   static record h<T>(T a, Lifecycle b) {
-   }
-
-   @FunctionalInterface
-   public interface i<T> {
-      void run(pz<T> var1);
-   }
-
-   static record j<T>(aju<? extends ja<? extends T>> a, Lifecycle b, Map<aju<T>, jd.n<T>> c) {
-
-      public ip.b<T> a(jd.m $$0) {
-         Map<aju<T>, in.c<T>> $$1 = this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$1x -> {
-            jd.n<T> $$2 = (jd.n<T>)$$1x.getValue();
-            in.c<T> $$3 = $$2.b().orElseGet(() -> in.c.a($$0.a(), (aju<T>)$$1x.getKey()));
-            $$3.b($$2.a().a());
-            return $$3;
-         }));
-         return jd.a(this.a, this.b, $$0.a(), $$1);
-      }
-   }
-
-   static record k<T>(aju<? extends ja<T>> a, Lifecycle b, jd.i<T> c) {
-      void b(jd.b $$0) {
-         this.c.run($$0.a());
-      }
-
-      public jd.j<T> a(jd.b $$0) {
-         Map<aju<T>, jd.n<T>> $$1 = new HashMap<>();
-         Iterator<Entry<aju<?>, jd.h<?>>> $$2 = $$0.d.entrySet().iterator();
-
-         while ($$2.hasNext()) {
-            Entry<aju<?>, jd.h<?>> $$3 = $$2.next();
-            aju<?> $$4 = $$3.getKey();
-            if ($$4.c(this.a)) {
-               jd.h<T> $$6 = (jd.h<T>)$$3.getValue();
-               in.c<T> $$7 = (in.c<T>)$$0.b.a.remove($$4);
-               $$1.put((aju<T>)$$4, new jd.n<>($$6, Optional.ofNullable($$7)));
-               $$2.remove();
-            }
+         @Override
+         public iv.c<T> b(ake<T> $$0) {
+            return jd.this.i($$0);
          }
 
-         return new jd.j<>(this.a, this.b, $$1);
-      }
+         @Override
+         public Optional<iz.c<T>> a(awd<T> $$0) {
+            return Optional.of(this.b($$0));
+         }
+
+         @Override
+         public iz.c<T> b(awd<T> $$0) {
+            return jd.this.a($$0);
+         }
+      };
    }
 
-   static class l extends jd.c<Object> {
-      final Map<aju<Object>, in.c<Object>> a = new HashMap<>();
-
-      public l(iq<Object> $$0) {
-         super($$0);
-      }
-
-      @Override
-      public Optional<in.c<Object>> a(aju<Object> $$0) {
-         return Optional.of(this.c($$0));
-      }
-
-      <T> in.c<T> c(aju<T> $$0) {
-         return (in.c<T>)this.a.computeIfAbsent($$0, $$0x -> in.c.a(this.d, $$0x));
-      }
+   @Override
+   public iy<T> o() {
+      return this.n;
    }
 
-   static class m implements iq<Object> {
-      public <T> iq<T> a() {
-         return this;
-      }
-   }
-
-   static record n<T>(jd.h<T> a, Optional<in.c<T>> b) {
+   @Override
+   public ix.b<T> p() {
+      return this.n;
    }
 }

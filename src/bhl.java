@@ -1,27 +1,35 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bhl extends bgp {
+public class bhl extends bgz {
    public bhl(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.put("minecraft:command_block_minecart", $$1.remove("minecraft:commandblock_minecart"));
-      $$1.put("minecraft:end_crystal", $$1.remove("minecraft:ender_crystal"));
-      $$1.put("minecraft:snow_golem", $$1.remove("minecraft:snowman"));
-      $$1.put("minecraft:evoker", $$1.remove("minecraft:evocation_illager"));
-      $$1.put("minecraft:evoker_fangs", $$1.remove("minecraft:evocation_fangs"));
-      $$1.put("minecraft:illusioner", $$1.remove("minecraft:illusion_illager"));
-      $$1.put("minecraft:vindicator", $$1.remove("minecraft:vindication_illager"));
-      $$1.put("minecraft:iron_golem", $$1.remove("minecraft:villager_golem"));
-      $$1.put("minecraft:experience_orb", $$1.remove("minecraft:xp_orb"));
-      $$1.put("minecraft:experience_bottle", $$1.remove("minecraft:xp_bottle"));
-      $$1.put("minecraft:eye_of_ender", $$1.remove("minecraft:eye_of_ender_signal"));
-      $$1.put("minecraft:firework_rocket", $$1.remove("minecraft:fireworks_rocket"));
+      $$0.registerSimple($$1, "minecraft:egg");
+      $$0.registerSimple($$1, "minecraft:ender_pearl");
+      $$0.registerSimple($$1, "minecraft:fireball");
+      $$0.register($$1, "minecraft:potion", $$1x -> DSL.optionalFields("Potion", bfp.t.in($$0)));
+      $$0.registerSimple($$1, "minecraft:small_fireball");
+      $$0.registerSimple($$1, "minecraft:snowball");
+      $$0.registerSimple($$1, "minecraft:wither_skull");
+      $$0.registerSimple($$1, "minecraft:xp_bottle");
+      $$0.register($$1, "minecraft:arrow", () -> DSL.optionalFields("inBlockState", bfp.u.in($$0)));
+      $$0.register($$1, "minecraft:enderman", () -> DSL.optionalFields("carriedBlockState", bfp.u.in($$0), bha.a($$0)));
+      $$0.register($$1, "minecraft:falling_block", () -> DSL.optionalFields("BlockState", bfp.u.in($$0), "TileEntityData", bfp.s.in($$0)));
+      $$0.register($$1, "minecraft:spectral_arrow", () -> DSL.optionalFields("inBlockState", bfp.u.in($$0)));
+      $$0.register($$1, "minecraft:chest_minecart", () -> DSL.optionalFields("DisplayState", bfp.u.in($$0), "Items", DSL.list(bfp.t.in($$0))));
+      $$0.register($$1, "minecraft:commandblock_minecart", () -> DSL.optionalFields("DisplayState", bfp.u.in($$0)));
+      $$0.register($$1, "minecraft:furnace_minecart", () -> DSL.optionalFields("DisplayState", bfp.u.in($$0)));
+      $$0.register($$1, "minecraft:hopper_minecart", () -> DSL.optionalFields("DisplayState", bfp.u.in($$0), "Items", DSL.list(bfp.t.in($$0))));
+      $$0.register($$1, "minecraft:minecart", () -> DSL.optionalFields("DisplayState", bfp.u.in($$0)));
+      $$0.register($$1, "minecraft:spawner_minecart", () -> DSL.optionalFields("DisplayState", bfp.u.in($$0), bfp.D.in($$0)));
+      $$0.register($$1, "minecraft:tnt_minecart", () -> DSL.optionalFields("DisplayState", bfp.u.in($$0)));
       return $$1;
    }
 }

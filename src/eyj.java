@@ -1,20 +1,50 @@
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public class eyj extends eyn {
+public class eyj extends ezj {
+   private static final Logger f = LogUtils.getLogger();
    public String a;
-   public long b;
+   public Date b;
    public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public static eyj a(JsonObject $$0) {
-      eyj $$1 = new eyj();
+   public static eyj a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      eyj $$2 = new eyj();
 
       try {
-         $$1.a = fak.b("profileUuid", $$0, null);
-         $$1.b = fak.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fak.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+         $$2.a = fbg.b("backupId", $$1, "");
+         $$2.b = fbg.b("lastModifiedDate", $$1);
+         $$2.c = fbg.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
+            }
+         }
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
       }
 
-      return $$1;
+      return $$2;
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

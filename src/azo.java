@@ -1,33 +1,41 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class azo extends bee {
-   public azo(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBlockStateFix", bff.s, "minecraft:piston");
+public class azo extends beo {
+   public azo(Schema $$0) {
+      super($$0, false, "AreaEffectCloudPotionFix", bfp.z, "minecraft:area_effect_cloud");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bff.s, "minecraft:piston");
-      Type<?> $$2 = $$1.findFieldType("blockState");
-      OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
-      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      int $$5 = $$4.get("blockId").asInt(0);
-      $$4 = $$4.remove("blockId");
-      int $$6 = $$4.get("blockData").asInt(0) & 15;
-      $$4 = $$4.remove("blockData");
-      Dynamic<?> $$7 = bab.b($$5 << 4 | $$6);
-      Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
-      return $$8.set(DSL.remainderFinder(), $$4)
-         .set(
-            $$3,
-            (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
-               .getFirst()
-         );
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Color").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Potion").result();
+      $$0 = $$0.remove("Color").remove("effects").remove("Potion");
+      if ($$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<T> $$4 = $$0.emptyMap();
+         if ($$1.isPresent()) {
+            $$4 = $$4.set("custom_color", $$1.get());
+         }
+
+         if ($$2.isPresent()) {
+            $$4 = $$4.set("custom_effects", $$2.get());
+         }
+
+         if ($$3.isPresent()) {
+            $$4 = $$4.set("potion", $$3.get());
+         }
+
+         return $$0.set("potion_contents", $$4);
+      }
    }
 }

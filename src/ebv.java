@@ -1,28 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebv<P extends ebu> {
-   public static final ebv<ebp> a = a("blob_foliage_placer", ebp.a);
-   public static final ebv<eca> b = a("spruce_foliage_placer", eca.a);
-   public static final ebv<eby> c = a("pine_foliage_placer", eby.a);
-   public static final ebv<ebo> d = a("acacia_foliage_placer", ebo.a);
-   public static final ebv<ebq> e = a("bush_foliage_placer", ebq.c);
-   public static final ebv<ebt> f = a("fancy_foliage_placer", ebt.c);
-   public static final ebv<ebw> g = a("jungle_foliage_placer", ebw.a);
-   public static final ebv<ebx> h = a("mega_pine_foliage_placer", ebx.a);
-   public static final ebv<ebs> i = a("dark_oak_foliage_placer", ebs.a);
-   public static final ebv<ebz> j = a("random_spread_foliage_placer", ebz.a);
-   public static final ebv<ebr> k = a("cherry_foliage_placer", ebr.a);
-   private final Codec<P> l;
+public record ebv(int b, int c, int d) implements eay {
+   public static final Codec<ebv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axe.j.fieldOf("spread_width").forGetter(ebv::a), axe.j.fieldOf("spread_height").forGetter(ebv::b), axe.j.fieldOf("max_height").forGetter(ebv::c)
+            )
+            .apply($$0, ebv::new)
+   );
 
-   private static <P extends ebu> ebv<P> a(String $$0, Codec<P> $$1) {
-      return ja.a(kt.W, $$0, new ebv<>($$1));
+   public int a() {
+      return this.b;
    }
 
-   private ebv(Codec<P> $$0) {
-      this.l = $$0;
+   public int b() {
+      return this.c;
    }
 
-   public Codec<P> a() {
-      return this.l;
+   public int c() {
+      return this.d;
    }
 }

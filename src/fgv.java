@@ -1,73 +1,26 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.Consumer;
 
-public enum fgv implements eut {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
+public class fgv implements fgw {
+   private final ws b;
+   protected final fig a = new fig();
 
-   final evs c;
-
-   private static evs a(int $$0, int $$1, fgv.a $$2) {
-      evs $$3 = new evs(evs.a.a, $$0, $$1, false);
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
-         }
-      }
-
-      $$3.i();
-      return $$3;
-   }
-
-   private fgv(Supplier<evs> $$0) {
-      this.c = $$0.get();
+   public fgv(ws $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
+   public ws a() {
+      return this.b;
    }
 
    @Override
-   public fgt bake(Function<euv, fgt> $$0) {
-      return $$0.apply(new euv() {
-         @Override
-         public int a() {
-            return fgv.this.c.a();
-         }
-
-         @Override
-         public int b() {
-            return fgv.this.c.b();
-         }
-
-         @Override
-         public float d() {
-            return 1.0F;
-         }
-
-         @Override
-         public void a(int $$0, int $$1) {
-            fgv.this.c.a(0, $$0, $$1, false);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-      });
+   public void a(Consumer<fes> $$0) {
+      this.a.a($$0);
    }
 
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
+   @Override
+   public void a(fja $$0) {
+      this.a.a();
+      fif.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

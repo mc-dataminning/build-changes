@@ -1,51 +1,37 @@
-public class fqr<T extends chz> extends ftn<T> {
-   public fqr(ftv $$0) {
+public class fqr extends fse<cgl> {
+   public fqr(fur $$0) {
       super($$0);
    }
 
-   public static fub a(ftz $$0) {
-      fud $$1 = fri.a($$0, 0.0F);
-      fue $$2 = $$1.a();
-      $$2.a("left_arm", fua.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), ftx.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", fua.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), ftx.a(1.9F, 12.0F, 0.0F));
-      return fub.a($$1, 64, 64);
+   public static fux a(fuv $$0) {
+      fuz $$1 = fse.a($$0, 0.0F);
+      fva $$2 = $$1.a();
+      $$2.a("head", fuw.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fut.a(0.0F, 1.0F, 0.0F));
+      $$2.a("hat", fuw.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fut.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_leg", fuw.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fut.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", fuw.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fut.a(1.9F, 11.0F, 0.0F));
+      return fux.a($$1, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fri.a.a;
-      this.r = fri.a.a;
-      crs $$4 = $$0.b(boe.a);
-      if ($$4.a(crv.vN) && $$0.gf()) {
-         if ($$0.fr() == bqn.b) {
-            this.s = fri.a.e;
-         } else {
-            this.r = fri.a.e;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.r == fri.a.e) {
-         this.o.e = this.o.e * 0.5F - (float) Math.PI;
-         this.o.f = 0.0F;
-      }
-
-      if (this.s == fri.a.e) {
-         this.n.e = this.n.e * 0.5F - (float) Math.PI;
-         this.n.f = 0.0F;
-      }
-
-      if (this.u > 0.0F) {
-         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * axm.a(0.1F * $$3);
-         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * axm.a(0.1F * $$3);
-         this.n.g = this.a(this.u, this.n.g, -0.15F);
-         this.o.g = this.a(this.u, this.o.g, 0.15F);
-         this.q.e = this.q.e - this.u * 0.55F * axm.a(0.1F * $$3);
-         this.p.e = this.p.e + this.u * 0.55F * axm.a(0.1F * $$3);
-         this.k.e = 0.0F;
-      }
+   public void a(cgl $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.k.e = (float) (Math.PI / 180.0) * $$0.A().b();
+      this.k.f = (float) (Math.PI / 180.0) * $$0.A().c();
+      this.k.g = (float) (Math.PI / 180.0) * $$0.A().d();
+      this.m.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.m.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.m.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.o.e = (float) (Math.PI / 180.0) * $$0.C().b();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.C().c();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.C().d();
+      this.n.e = (float) (Math.PI / 180.0) * $$0.D().b();
+      this.n.f = (float) (Math.PI / 180.0) * $$0.D().c();
+      this.n.g = (float) (Math.PI / 180.0) * $$0.D().d();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
+      this.p.e = (float) (Math.PI / 180.0) * $$0.G().b();
+      this.p.f = (float) (Math.PI / 180.0) * $$0.G().c();
+      this.p.g = (float) (Math.PI / 180.0) * $$0.G().d();
+      this.l.a(this.k);
    }
 }

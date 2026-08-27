@@ -1,399 +1,390 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.StandardOpenOption;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
+import java.util.EnumSet;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
-public class dsr implements AutoCloseable {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 4096;
-   @VisibleForTesting
-   protected static final int a = 1024;
-   private static final int e = 5;
-   private static final int f = 0;
-   private static final ByteBuffer g = ByteBuffer.allocateDirect(1);
-   private static final String h = ".mcc";
-   private static final int i = 128;
-   private static final int j = 256;
-   private static final int k = 0;
-   final dsu l;
-   private final Path m;
-   private final FileChannel n;
-   private final Path o;
-   final dst p;
-   private final ByteBuffer q = ByteBuffer.allocateDirect(8192);
-   private final IntBuffer r;
-   private final IntBuffer s;
-   @VisibleForTesting
-   protected final dsq b = new dsq();
+public class dsr {
+   private static final Logger b = LogUtils.getLogger();
+   public static final dsr a = new dsr(czj.a);
+   private static final String c = "Indices";
+   private static final is[] d = is.values();
+   private final EnumSet<is> e = EnumSet.noneOf(is.class);
+   private final List<euv<dcv>> f = Lists.newArrayList();
+   private final List<euv<elq>> g = Lists.newArrayList();
+   private final int[][] h;
+   static final Map<dcv, dsr.a> i = new IdentityHashMap<>();
+   static final Set<dsr.a> j = Sets.newHashSet();
 
-   public dsr(dsu $$0, Path $$1, Path $$2, boolean $$3) throws IOException {
-      this($$0, $$1, $$2, dst.a(), $$3);
+   private dsr(czw $$0) {
+      this.h = new int[$$0.am()][];
    }
 
-   public dsr(dsu $$0, Path $$1, Path $$2, dst $$3, boolean $$4) throws IOException {
-      this.l = $$0;
-      this.m = $$1;
-      this.p = $$3;
-      if (!Files.isDirectory($$2)) {
-         throw new IllegalArgumentException("Expected directory, got " + $$2.toAbsolutePath());
-      } else {
-         this.o = $$2;
-         this.r = this.q.asIntBuffer();
-         this.r.limit(1024);
-         this.q.position(4096);
-         this.s = this.q.asIntBuffer();
-         if ($$4) {
-            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.DSYNC);
-         } else {
-            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE);
-         }
+   public dsr(ty $$0, czw $$1) {
+      this($$1);
+      if ($$0.b("Indices", 10)) {
+         ty $$2 = $$0.p("Indices");
 
-         this.b.a(0, 2);
-         this.q.position(0);
-         int $$5 = this.n.read(this.q, 0L);
-         if ($$5 != -1) {
-            if ($$5 != 8192) {
-               c.warn("Region file {} has truncated header: {}", $$1, $$5);
-            }
-
-            long $$6 = Files.size($$1);
-
-            for (int $$7 = 0; $$7 < 1024; $$7++) {
-               int $$8 = this.r.get($$7);
-               if ($$8 != 0) {
-                  int $$9 = b($$8);
-                  int $$10 = a($$8);
-                  if ($$9 < 2) {
-                     c.warn("Region file {} has invalid sector at index: {}; sector {} overlaps with header", new Object[]{$$1, $$7, $$9});
-                     this.r.put($$7, 0);
-                  } else if ($$10 == 0) {
-                     c.warn("Region file {} has an invalid sector at index: {}; size has to be > 0", $$1, $$7);
-                     this.r.put($$7, 0);
-                  } else if ((long)$$9 * 4096L > $$6) {
-                     c.warn("Region file {} has an invalid sector at index: {}; sector {} is out of bounds", new Object[]{$$1, $$7, $$9});
-                     this.r.put($$7, 0);
-                  } else {
-                     this.b.a($$9, $$10);
-                  }
-               }
+         for (int $$3 = 0; $$3 < this.h.length; $$3++) {
+            String $$4 = String.valueOf($$3);
+            if ($$2.b($$4, 11)) {
+               this.h[$$3] = $$2.n($$4);
             }
          }
       }
+
+      int $$5 = $$0.h("Sides");
+
+      for (is $$6 : is.values()) {
+         if (($$5 & 1 << $$6.ordinal()) != 0) {
+            this.e.add($$6);
+         }
+      }
+
+      a($$0, "neighbor_block_ticks", $$0x -> lc.e.b(akf.a($$0x)).or(() -> Optional.of(dcx.a)), this.f);
+      a($$0, "neighbor_fluid_ticks", $$0x -> lc.c.b(akf.a($$0x)).or(() -> Optional.of(els.a)), this.g);
    }
 
-   public Path a() {
-      return this.m;
+   private static <T> void a(ty $$0, String $$1, Function<String, Optional<T>> $$2, List<euv<T>> $$3) {
+      if ($$0.b($$1, 9)) {
+         for (uv $$5 : $$0.c($$1, 10)) {
+            euv.a((ty)$$5, $$2).ifPresent($$3::add);
+         }
+      }
    }
 
-   private Path f(cyn $$0) {
-      String $$1 = "c." + $$0.e + "." + $$0.f + ".mcc";
-      return this.o.resolve($$1);
+   public void a(dse $$0) {
+      this.b($$0);
+
+      for (is $$1 : d) {
+         a($$0, $$1);
+      }
+
+      czu $$2 = $$0.F();
+      this.f.forEach($$1x -> {
+         dcv $$2x = $$1x.a() == dcx.a ? $$2.a_($$1x.b()).b() : (dcv)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      this.g.forEach($$1x -> {
+         elq $$2x = $$1x.a() == els.a ? $$2.b_($$1x.b()).a() : (elq)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      j.forEach($$1x -> $$1x.a($$2));
    }
 
-   @Nullable
-   public synchronized DataInputStream a(cyn $$0) throws IOException {
-      int $$1 = this.g($$0);
-      if ($$1 == 0) {
-         return null;
-      } else {
-         int $$2 = b($$1);
-         int $$3 = a($$1);
-         int $$4 = $$3 * 4096;
-         ByteBuffer $$5 = ByteBuffer.allocate($$4);
-         this.n.read($$5, (long)($$2 * 4096));
-         $$5.flip();
-         if ($$5.remaining() < 5) {
-            c.error("Chunk {} header is truncated: expected {} but read {}", new Object[]{$$0, $$4, $$5.remaining()});
-            return null;
-         } else {
-            int $$6 = $$5.getInt();
-            byte $$7 = $$5.get();
-            if ($$6 == 0) {
-               c.warn("Chunk {} is allocated, but stream is missing", $$0);
-               return null;
-            } else {
-               int $$8 = $$6 - 1;
-               if (a($$7)) {
-                  if ($$8 != 0) {
-                     c.warn("Chunk has both internal and external streams");
-                  }
+   private static void a(dse $$0, is $$1) {
+      czu $$2 = $$0.F();
+      if ($$0.r().e.remove($$1)) {
+         Set<ir> $$3 = $$1.a();
+         int $$4 = 0;
+         int $$5 = 15;
+         boolean $$6 = $$3.contains(ir.f);
+         boolean $$7 = $$3.contains(ir.e);
+         boolean $$8 = $$3.contains(ir.d);
+         boolean $$9 = $$3.contains(ir.c);
+         boolean $$10 = $$3.size() == 1;
+         czb $$11 = $$0.f();
+         int $$12 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 1);
+         int $$13 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 14);
+         int $$14 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 1);
+         int $$15 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 14);
+         ir[] $$16 = ir.values();
+         im.a $$17 = new im.a();
 
-                  return this.a($$0, b($$7));
-               } else if ($$8 > $$5.remaining()) {
-                  c.error("Chunk {} stream is truncated: expected {} but read {}", new Object[]{$$0, $$8, $$5.remaining()});
-                  return null;
-               } else if ($$8 < 0) {
-                  c.error("Declared size {} of chunk {} is negative", $$6, $$0);
-                  return null;
-               } else {
-                  bkz.f.a(this.l, $$0, this.p, $$8);
-                  return this.a($$0, $$7, a($$5, $$8));
-               }
+         for (im $$18 : im.b($$12, $$2.I_(), $$14, $$13, $$2.al() - 1, $$15)) {
+            dpy $$19 = $$2.a_($$18);
+            dpy $$20 = $$19;
+
+            for (ir $$21 : $$16) {
+               $$17.a($$18, $$21);
+               $$20 = a($$20, $$21, $$2, $$18, $$17);
             }
+
+            dcv.a($$19, $$20, $$2, $$18, 18);
          }
       }
    }
 
-   private static int c() {
-      return (int)(ac.d() / 1000L);
+   private static dpy a(dpy $$0, ir $$1, czv $$2, im $$3, im $$4) {
+      return i.getOrDefault($$0.b(), dsr.b.b).a($$0, $$1, $$2.a_($$4), $$2, $$3, $$4);
    }
 
-   private static boolean a(byte $$0) {
-      return ($$0 & 128) != 0;
-   }
+   private void b(dse $$0) {
+      im.a $$1 = new im.a();
+      im.a $$2 = new im.a();
+      czb $$3 = $$0.f();
+      czv $$4 = $$0.F();
 
-   private static byte b(byte $$0) {
-      return (byte)($$0 & -129);
-   }
+      for (int $$5 = 0; $$5 < this.h.length; $$5++) {
+         dsf $$6 = $$0.b($$5);
+         int[] $$7 = this.h[$$5];
+         this.h[$$5] = null;
+         if ($$7 != null && $$7.length > 0) {
+            ir[] $$8 = ir.values();
+            dsm<dpy> $$9 = $$6.h();
+            int $$10 = $$0.g($$5);
+            int $$11 = jo.c($$10);
 
-   @Nullable
-   private DataInputStream a(cyn $$0, byte $$1, InputStream $$2) throws IOException {
-      dst $$3 = dst.a($$1);
-      if ($$3 == dst.e) {
-         String $$4 = new DataInputStream($$2).readUTF();
-         ajv $$5 = ajv.a($$4);
-         if ($$5 != null) {
-            c.error("Unrecognized custom compression {}", $$5);
-            return null;
-         } else {
-            c.error("Invalid custom compression id {}", $$4);
-            return null;
-         }
-      } else if ($$3 == null) {
-         c.error("Chunk {} has invalid chunk stream version {}", $$0, $$1);
-         return null;
-      } else {
-         return new DataInputStream($$3.a($$2));
-      }
-   }
+            for (int $$12 : $$7) {
+               int $$13 = $$12 & 15;
+               int $$14 = $$12 >> 8 & 15;
+               int $$15 = $$12 >> 4 & 15;
+               $$1.d($$3.d() + $$13, $$11 + $$14, $$3.e() + $$15);
+               dpy $$16 = $$9.a($$12);
+               dpy $$17 = $$16;
 
-   @Nullable
-   private DataInputStream a(cyn $$0, byte $$1) throws IOException {
-      Path $$2 = this.f($$0);
-      if (!Files.isRegularFile($$2)) {
-         c.error("External chunk path {} is not file", $$2);
-         return null;
-      } else {
-         return this.a($$0, $$1, Files.newInputStream($$2));
-      }
-   }
-
-   private static ByteArrayInputStream a(ByteBuffer $$0, int $$1) {
-      return new ByteArrayInputStream($$0.array(), $$0.position(), $$1);
-   }
-
-   private int a(int $$0, int $$1) {
-      return $$0 << 8 | $$1;
-   }
-
-   private static int a(int $$0) {
-      return $$0 & 0xFF;
-   }
-
-   private static int b(int $$0) {
-      return $$0 >> 8 & 16777215;
-   }
-
-   private static int c(int $$0) {
-      return ($$0 + 4096 - 1) / 4096;
-   }
-
-   public boolean b(cyn $$0) {
-      int $$1 = this.g($$0);
-      if ($$1 == 0) {
-         return false;
-      } else {
-         int $$2 = b($$1);
-         int $$3 = a($$1);
-         ByteBuffer $$4 = ByteBuffer.allocate(5);
-
-         try {
-            this.n.read($$4, (long)($$2 * 4096));
-            $$4.flip();
-            if ($$4.remaining() != 5) {
-               return false;
-            } else {
-               int $$5 = $$4.getInt();
-               byte $$6 = $$4.get();
-               if (a($$6)) {
-                  if (!dst.b(b($$6))) {
-                     return false;
-                  }
-
-                  if (!Files.isRegularFile(this.f($$0))) {
-                     return false;
-                  }
-               } else {
-                  if (!dst.b($$6)) {
-                     return false;
-                  }
-
-                  if ($$5 == 0) {
-                     return false;
-                  }
-
-                  int $$7 = $$5 - 1;
-                  if ($$7 < 0 || $$7 > 4096 * $$3) {
-                     return false;
+               for (ir $$18 : $$8) {
+                  $$2.a($$1, $$18);
+                  if (jo.a($$1.u()) == $$3.e && jo.a($$1.w()) == $$3.f) {
+                     $$17 = a($$17, $$18, $$4, $$1, $$2);
                   }
                }
 
-               return true;
+               dcv.a($$16, $$17, $$4, $$1, 18);
             }
-         } catch (IOException var9) {
+         }
+      }
+
+      for (int $$19 = 0; $$19 < this.h.length; $$19++) {
+         if (this.h[$$19] != null) {
+            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.g($$19), $$3.e, $$3.f});
+         }
+
+         this.h[$$19] = null;
+      }
+   }
+
+   public boolean a() {
+      for (int[] $$0 : this.h) {
+         if ($$0 != null) {
             return false;
          }
       }
+
+      return this.e.isEmpty();
    }
 
-   public DataOutputStream c(cyn $$0) throws IOException {
-      return new DataOutputStream(this.p.a(new dsr.a($$0)));
-   }
+   public ty b() {
+      ty $$0 = new ty();
+      ty $$1 = new ty();
 
-   public void b() throws IOException {
-      this.n.force(true);
-   }
-
-   public void d(cyn $$0) throws IOException {
-      int $$1 = h($$0);
-      int $$2 = this.r.get($$1);
-      if ($$2 != 0) {
-         this.r.put($$1, 0);
-         this.s.put($$1, c());
-         this.e();
-         Files.deleteIfExists(this.f($$0));
-         this.b.b(b($$2), a($$2));
-      }
-   }
-
-   protected synchronized void a(cyn $$0, ByteBuffer $$1) throws IOException {
-      int $$2 = h($$0);
-      int $$3 = this.r.get($$2);
-      int $$4 = b($$3);
-      int $$5 = a($$3);
-      int $$6 = $$1.remaining();
-      int $$7 = c($$6);
-      int $$9;
-      dsr.b $$10;
-      if ($$7 >= 256) {
-         Path $$8 = this.f($$0);
-         c.warn("Saving oversized chunk {} ({} bytes} to external file {}", new Object[]{$$0, $$6, $$8});
-         $$7 = 1;
-         $$9 = this.b.a($$7);
-         $$10 = this.a($$8, $$1);
-         ByteBuffer $$11 = this.d();
-         this.n.write($$11, (long)($$9 * 4096));
-      } else {
-         $$9 = this.b.a($$7);
-         $$10 = () -> Files.deleteIfExists(this.f($$0));
-         this.n.write($$1, (long)($$9 * 4096));
+      for (int $$2 = 0; $$2 < this.h.length; $$2++) {
+         String $$3 = String.valueOf($$2);
+         if (this.h[$$2] != null && this.h[$$2].length != 0) {
+            $$1.a($$3, this.h[$$2]);
+         }
       }
 
-      this.r.put($$2, this.a($$9, $$7));
-      this.s.put($$2, c());
-      this.e();
-      $$10.run();
-      if ($$4 != 0) {
-         this.b.b($$4, $$5);
+      if (!$$1.g()) {
+         $$0.a("Indices", $$1);
       }
-   }
 
-   private ByteBuffer d() {
-      ByteBuffer $$0 = ByteBuffer.allocate(5);
-      $$0.putInt(1);
-      $$0.put((byte)(this.p.b() | 128));
-      $$0.flip();
+      int $$4 = 0;
+
+      for (is $$5 : this.e) {
+         $$4 |= 1 << $$5.ordinal();
+      }
+
+      $$0.a("Sides", (byte)$$4);
+      if (!this.f.isEmpty()) {
+         ue $$6 = new ue();
+         this.f.forEach($$1x -> $$6.add($$1x.a($$0xx -> lc.e.b($$0xx).toString())));
+         $$0.a("neighbor_block_ticks", $$6);
+      }
+
+      if (!this.g.isEmpty()) {
+         ue $$7 = new ue();
+         this.g.forEach($$1x -> $$7.add($$1x.a($$0xx -> lc.c.b($$0xx).toString())));
+         $$0.a("neighbor_fluid_ticks", $$7);
+      }
+
       return $$0;
    }
 
-   private dsr.b a(Path $$0, ByteBuffer $$1) throws IOException {
-      Path $$2 = Files.createTempFile(this.o, "tmp", null);
+   public interface a {
+      dpy a(dpy var1, ir var2, dpy var3, czv var4, im var5, im var6);
 
-      try (FileChannel $$3 = FileChannel.open($$2, StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
-         $$1.position(5);
-         $$3.write($$1);
+      default void a(czv $$0) {
+      }
+   }
+
+   static enum b implements dsr.a {
+      a(
+         dcx.kO,
+         dcx.ed,
+         dcx.lM,
+         dcx.lN,
+         dcx.lO,
+         dcx.lP,
+         dcx.lQ,
+         dcx.lR,
+         dcx.lS,
+         dcx.lT,
+         dcx.lU,
+         dcx.lV,
+         dcx.lW,
+         dcx.lX,
+         dcx.lY,
+         dcx.lZ,
+         dcx.ma,
+         dcx.mb,
+         dcx.gS,
+         dcx.gT,
+         dcx.gU,
+         dcx.fA,
+         dcx.L,
+         dcx.I,
+         dcx.K,
+         dcx.cE,
+         dcx.cF,
+         dcx.cG,
+         dcx.cH,
+         dcx.cI,
+         dcx.cJ,
+         dcx.cK,
+         dcx.cR,
+         dcx.cS,
+         dcx.cT,
+         dcx.cU,
+         dcx.cW,
+         dcx.cX,
+         dcx.da,
+         dcx.db,
+         dcx.dc,
+         dcx.dd,
+         dcx.df,
+         dcx.dg,
+         dcx.dl,
+         dcx.dm,
+         dcx.dn,
+         dcx.do,
+         dcx.dq,
+         dcx.dr
+      ) {
+         @Override
+         public dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+            return $$0;
+         }
+      },
+      b {
+         @Override
+         public dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+            return $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+         }
+      },
+      c(dcx.cv, dcx.gV) {
+         @Override
+         public dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+            if ($$2.a($$0.b()) && $$1.o().d() && $$0.c(ddy.d) == dqq.a && $$2.c(ddy.d) == dqq.a) {
+               ir $$6 = $$0.c(ddy.c);
+               if ($$1.o() != $$6.o() && $$6 == $$2.c(ddy.c)) {
+                  dqq $$7 = $$1 == $$6.h() ? dqq.b : dqq.c;
+                  $$3.a($$5, $$2.a(ddy.d, $$7.a()), 18);
+                  if ($$6 == ir.c || $$6 == ir.f) {
+                     dnd $$8 = $$3.c_($$4);
+                     dnd $$9 = $$3.c_($$5);
+                     if ($$8 instanceof dnk && $$9 instanceof dnk) {
+                        dnk.a((dnk)$$8, (dnk)$$9);
+                     }
+                  }
+
+                  return $$0.a(ddy.d, $$7);
+               }
+            }
+
+            return $$0;
+         }
+      },
+      d(true, dcx.aI, dcx.aJ, dcx.aG, dcx.aK, dcx.aH, dcx.aE, dcx.aF) {
+         private final ThreadLocal<List<ObjectSet<im>>> g = ThreadLocal.withInitial(() -> Lists.newArrayListWithCapacity(7));
+
+         @Override
+         public dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+            dpy $$6 = $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+            if ($$0 != $$6) {
+               int $$7 = $$6.c(dqo.aC);
+               List<ObjectSet<im>> $$8 = this.g.get();
+               if ($$8.isEmpty()) {
+                  for (int $$9 = 0; $$9 < 7; $$9++) {
+                     $$8.add(new ObjectOpenHashSet());
+                  }
+               }
+
+               $$8.get($$7).add($$4.i());
+            }
+
+            return $$0;
+         }
+
+         @Override
+         public void a(czv $$0) {
+            im.a $$1 = new im.a();
+            List<ObjectSet<im>> $$2 = this.g.get();
+
+            for (int $$3 = 2; $$3 < $$2.size(); $$3++) {
+               int $$4 = $$3 - 1;
+               ObjectSet<im> $$5 = $$2.get($$4);
+               ObjectSet<im> $$6 = $$2.get($$3);
+               ObjectIterator var8 = $$5.iterator();
+
+               while (var8.hasNext()) {
+                  im $$7 = (im)var8.next();
+                  dpy $$8 = $$0.a_($$7);
+                  if ($$8.c(dqo.aC) >= $$4) {
+                     $$0.a($$7, $$8.a(dqo.aC, Integer.valueOf($$4)), 18);
+                     if ($$3 != 7) {
+                        for (ir $$9 : f) {
+                           $$1.a($$7, $$9);
+                           dpy $$10 = $$0.a_($$1);
+                           if ($$10.b(dqo.aC) && $$8.c(dqo.aC) > $$3) {
+                              $$6.add($$1.i());
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+
+            $$2.clear();
+         }
+      },
+      e(dcx.fe, dcx.fd) {
+         @Override
+         public dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+            if ($$0.c(dkr.c) == 7) {
+               dcv $$6 = $$0.a(dcx.fd) ? dcx.eZ : dcx.fa;
+               if ($$2.a($$6)) {
+                  return ($$0.a(dcx.fd) ? dcx.fb : dcx.fc).n().a(dgr.aE, $$1);
+               }
+            }
+
+            return $$0;
+         }
+      };
+
+      public static final ir[] f = ir.values();
+
+      b(dcv... $$0) {
+         this(false, $$0);
       }
 
-      return () -> Files.move($$2, $$0, StandardCopyOption.REPLACE_EXISTING);
-   }
+      b(boolean $$0, dcv... $$1) {
+         for (dcv $$2 : $$1) {
+            dsr.i.put($$2, this);
+         }
 
-   private void e() throws IOException {
-      this.q.position(0);
-      this.n.write(this.q, 0L);
-   }
-
-   private int g(cyn $$0) {
-      return this.r.get(h($$0));
-   }
-
-   public boolean e(cyn $$0) {
-      return this.g($$0) != 0;
-   }
-
-   private static int h(cyn $$0) {
-      return $$0.j() + $$0.k() * 32;
-   }
-
-   @Override
-   public void close() throws IOException {
-      try {
-         this.f();
-      } finally {
-         try {
-            this.n.force(true);
-         } finally {
-            this.n.close();
+         if ($$0) {
+            dsr.j.add(this);
          }
       }
-   }
-
-   private void f() throws IOException {
-      int $$0 = (int)this.n.size();
-      int $$1 = c($$0) * 4096;
-      if ($$0 != $$1) {
-         ByteBuffer $$2 = g.duplicate();
-         $$2.position(0);
-         this.n.write($$2, (long)($$1 - 1));
-      }
-   }
-
-   class a extends ByteArrayOutputStream {
-      private final cyn b;
-
-      public a(cyn $$0) {
-         super(8096);
-         super.write(0);
-         super.write(0);
-         super.write(0);
-         super.write(0);
-         super.write(dsr.this.p.b());
-         this.b = $$0;
-      }
-
-      @Override
-      public void close() throws IOException {
-         ByteBuffer $$0 = ByteBuffer.wrap(this.buf, 0, this.count);
-         int $$1 = this.count - 5 + 1;
-         bkz.f.b(dsr.this.l, this.b, dsr.this.p, $$1);
-         $$0.putInt(0, $$1);
-         dsr.this.a(this.b, $$0);
-      }
-   }
-
-   interface b {
-      void run() throws IOException;
    }
 }

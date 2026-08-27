@@ -1,69 +1,48 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class ede extends edm {
-   public static final Codec<ede> a = RecordCodecBuilder.create(
+public class ede extends edc {
+   public static final Codec<ede> b = RecordCodecBuilder.create(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  awu.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bnk.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dpy.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(dpy.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(dpy.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
                )
             )
             .apply($$0, ede::new)
    );
-   private final int b;
-   private final bnk h;
+   private final float g;
+   private final float h;
+   private final dpy i;
+   private final List<dpy> j;
+   private final List<dpy> k;
 
-   public ede(int $$0, int $$1, int $$2, int $$3, bnk $$4) {
+   public ede(long $$0, eku.a $$1, float $$2, float $$3, float $$4, dpy $$5, List<dpy> $$6, List<dpy> $$7) {
       super($$0, $$1, $$2);
-      this.b = $$3;
+      this.g = $$3;
       this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected edn<?> a() {
-      return edn.g;
+   protected eda<?> a() {
+      return eda.c;
    }
 
    @Override
-   public List<ebu.a> a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, int $$3, id $$4, ebe $$5) {
-      ij $$6 = ij.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      id.a $$8 = $$4.j();
-      id $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<ebu.a> $$10 = Lists.newArrayList();
-
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (dzq.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new ebu.a($$8.i(), 0, false));
-         }
-
-         $$8.c(ij.b);
+   public dpy a(ayd $$0, im $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ac.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
       }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (dzq.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new ebu.a($$8.i(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
    }
 }

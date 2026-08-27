@@ -1,86 +1,74 @@
-public class aeu implements yp<aba> {
-   public static final yg<vt, aeu> a = yp.a(aeu::a, aeu::new);
-   public static final float b = 8.0F;
-   private final in<aun> c;
-   private final aup d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final float h;
-   private final float i;
-   private final long j;
+import java.util.Optional;
 
-   public aeu(in<aun> $$0, aup $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = (int)($$2 * 8.0);
-      this.f = (int)($$3 * 8.0);
-      this.g = (int)($$4 * 8.0);
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
+public class aeu implements yz<abk> {
+   public static final yq<wd, aeu> a = yz.a(aeu::a, aeu::new);
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   private final String e;
+   private final ws f;
+   private final eum.a g;
+   private final Optional<yi> h;
+   private final int i;
+
+   public aeu(eub $$0, int $$1) {
+      this.e = $$0.b();
+      this.f = $$0.d();
+      this.g = $$0.h();
+      this.h = Optional.ofNullable($$0.f());
+      this.i = $$1;
    }
 
-   private aeu(vt $$0) {
-      this.c = aun.d.decode($$0);
-      this.d = $$0.b(aup.class);
-      this.e = $$0.readInt();
-      this.f = $$0.readInt();
-      this.g = $$0.readInt();
-      this.h = $$0.readFloat();
-      this.i = $$0.readFloat();
-      this.j = $$0.readLong();
+   private aeu(wd $$0) {
+      this.e = $$0.p();
+      this.i = $$0.readByte();
+      if (this.i != 0 && this.i != 2) {
+         this.f = wr.a;
+         this.g = eum.a.a;
+         this.h = Optional.empty();
+      } else {
+         this.f = wu.d.decode($$0);
+         this.g = $$0.b(eum.a.class);
+         this.h = yk.d.decode($$0);
+      }
    }
 
-   private void a(vt $$0) {
-      aun.d.encode($$0, this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
-      $$0.p(this.f);
-      $$0.p(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.b(this.j);
+   private void a(wd $$0) {
+      $$0.a(this.e);
+      $$0.k(this.i);
+      if (this.i == 0 || this.i == 2) {
+         wu.d.encode($$0, this.f);
+         $$0.a(this.g);
+         yk.d.encode($$0, this.h);
+      }
    }
 
    @Override
-   public yr<aeu> a() {
-      return afl.aS;
+   public zb<aeu> a() {
+      return afv.aI;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public in<aun> b() {
-      return this.c;
+   public String b() {
+      return this.e;
    }
 
-   public aup e() {
-      return this.d;
+   public ws e() {
+      return this.f;
    }
 
-   public double f() {
-      return (double)((float)this.e / 8.0F);
-   }
-
-   public double g() {
-      return (double)((float)this.f / 8.0F);
-   }
-
-   public double h() {
-      return (double)((float)this.g / 8.0F);
-   }
-
-   public float i() {
-      return this.h;
-   }
-
-   public float j() {
+   public int f() {
       return this.i;
    }
 
-   public long k() {
-      return this.j;
+   public eum.a g() {
+      return this.g;
+   }
+
+   public Optional<yi> h() {
+      return this.h;
    }
 }

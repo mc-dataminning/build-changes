@@ -1,18 +1,20 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.UUID;
+public class gok {
+   public static final gol a = new gol();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-public interface gok {
-   void scheduleReload(gok.a var1);
-
-   public interface a {
-      void a();
-
-      void a(boolean var1);
-
-      List<gok.b> b();
+   public gok(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static record b(UUID a, Path b) {
+   public boolean a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return this.e;
    }
 }

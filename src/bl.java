@@ -2,27 +2,27 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bl extends cx<bl.a> {
+public class bl extends dd<bl.a> {
    @Override
    public Codec<bl.a> a() {
       return bl.a.a;
    }
 
-   public void a(apv $$0, crs $$1, int $$2) {
+   public void a(aqf $$0, csd $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   public static record a(Optional<bc> b, Optional<cc> c, cm.d d) implements cx.a {
+   public static record a(Optional<bc> b, Optional<cg> c, cs.d d) implements dd.a {
       public static final Codec<bl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(bl.a::a), awu.a(cc.a, "item").forGetter(bl.a::c), awu.a(cm.d.d, "levels", cm.d.c).forGetter(bl.a::d))
+         $$0 -> $$0.group(axe.a(br.b, "player").forGetter(bl.a::a), axe.a(cg.a, "item").forGetter(bl.a::c), axe.a(cs.d.d, "levels", cs.d.c).forGetter(bl.a::d))
                .apply($$0, bl.a::new)
       );
 
       public static an<bl.a> b() {
-         return am.j.a(new bl.a(Optional.empty(), Optional.empty(), cm.d.c));
+         return am.j.a(new bl.a(Optional.empty(), Optional.empty(), cs.d.c));
       }
 
-      public boolean a(crs $$0, int $$1) {
+      public boolean a(csd $$0, int $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
       }
 

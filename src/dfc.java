@@ -1,11 +1,88 @@
-public interface dfc {
-   default void a(czg $$0, id $$1, dpi $$2, dpi $$3, cgj $$4) {
+import java.util.function.BiPredicate;
+import java.util.function.Function;
+
+public class dfc {
+   public static <S extends dnd> dfc.c<S> a(
+      dnf<S> $$0, Function<dpy, dfc.a> $$1, Function<dpy, ir> $$2, dqs $$3, dpy $$4, czv $$5, im $$6, BiPredicate<czv, im> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return dfc.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return dfc.b::b;
+      } else {
+         dfc.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == dfc.a.a;
+         boolean $$11 = $$9 == dfc.a.b;
+         if ($$10) {
+            return new dfc.c.b<>($$8);
+         } else {
+            im $$12 = $$6.a($$2.apply($$4));
+            dpy $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               dfc.a $$14 = $$1.apply($$13);
+               if ($$14 != dfc.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return dfc.b::b;
+                  }
+
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new dfc.c.a<>($$16, $$17);
+                  }
+               }
+            }
+
+            return new dfc.c.b<>($$8);
+         }
+      }
    }
 
-   default void a(czg $$0, id $$1, cgj $$2) {
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   default boy a(bqa $$0) {
-      return $$0.dN().a($$0);
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
+   }
+
+   public interface c<S> {
+      <T> T apply(dfc.b<? super S, T> var1);
+
+      public static final class a<S> implements dfc.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(dfc.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
+
+      public static final class b<S> implements dfc.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(dfc.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

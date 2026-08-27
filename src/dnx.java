@@ -1,227 +1,125 @@
-import java.util.List;
-import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public class dnx extends dnt implements bor {
-   public static final int e = 9;
-   public static final int f = 3;
-   public static final int g = 27;
-   public static final int h = 1;
-   public static final int i = 10;
-   public static final float j = 0.5F;
-   public static final float k = 270.0F;
-   private static final int[] l = IntStream.range(0, 27).toArray();
-   private iw<crs> r = iw.a(27, crs.i);
-   private int s;
-   private dnx.a t = dnx.a.a;
-   private float u;
-   private float v;
+public class dnx extends dnd implements bov {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final ayd k = ayd.a();
    @Nullable
-   private final cql w;
+   private ws l;
 
-   public dnx(@Nullable cql $$0, id $$1, dpi $$2) {
-      super(dmq.x, $$1, $$2);
-      this.w = $$0;
-   }
-
-   public dnx(id $$0, dpi $$1) {
-      super(dmq.x, $$0, $$1);
-      this.w = djf.a($$1.b());
-   }
-
-   public static void a(czg $$0, id $$1, dpi $$2, dnx $$3) {
-      $$3.b($$0, $$1, $$2);
-   }
-
-   private void b(czg $$0, id $$1, dpi $$2) {
-      this.v = this.u;
-      switch (this.t) {
-         case a:
-            this.u = 0.0F;
-            break;
-         case b:
-            this.u += 0.1F;
-            if (this.v == 0.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.u >= 1.0F) {
-               this.t = dnx.a.c;
-               this.u = 1.0F;
-               d($$0, $$1, $$2);
-            }
-
-            this.c($$0, $$1, $$2);
-            break;
-         case d:
-            this.u -= 0.1F;
-            if (this.v == 1.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.u <= 0.0F) {
-               this.t = dnx.a.a;
-               this.u = 0.0F;
-               d($$0, $$1, $$2);
-            }
-            break;
-         case c:
-            this.u = 1.0F;
-      }
-   }
-
-   public dnx.a l() {
-      return this.t;
-   }
-
-   public ese a(dpi $$0) {
-      return chm.a(1.0F, $$0.c(djf.b), 0.5F * this.a(1.0F));
-   }
-
-   private void c(czg $$0, id $$1, dpi $$2) {
-      if ($$2.b() instanceof djf) {
-         ij $$3 = $$2.c(djf.b);
-         ese $$4 = chm.a(1.0F, $$3, this.v, this.u).a($$1);
-         List<bqa> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (bqa $$6 : $$5) {
-               if ($$6.k_() != elg.d) {
-                  $$6.a(bqy.d, new esj(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
-         }
-      }
+   public dnx(im $$0, dpy $$1) {
+      super(dnf.m, $$0, $$1);
    }
 
    @Override
-   public int b() {
-      return this.r.size();
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.s = $$1;
-         if ($$1 == 0) {
-            this.t = dnx.a.d;
-         }
-
-         if ($$1 == 1) {
-            this.t = dnx.a.b;
-         }
-
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   private static void d(czg $$0, id $$1, dpi $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void d_(cka $$0) {
-      if (!this.q && !$$0.N_()) {
-         if (this.s < 0) {
-            this.s = 0;
-         }
-
-         this.s++;
-         this.o.a(this.p, this.n().b(), 1, this.s);
-         if (this.s == 1) {
-            this.o.a($$0, dub.k, this.p);
-            this.o.a(null, this.p, auo.wr, aup.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   public void c(cka $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.s--;
-         this.o.a(this.p, this.n().b(), 1, this.s);
-         if (this.s <= 0) {
-            this.o.a($$0, dub.j, this.p);
-            this.o.a(null, this.p, auo.wq, aup.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   protected wi k() {
-      return wi.c("container.shulkerBox");
-   }
-
-   @Override
-   public void a(to $$0, ip.a $$1) {
-      super.a($$0, $$1);
-      this.c($$0, $$1);
-   }
-
-   @Override
-   protected void b(to $$0, ip.a $$1) {
+   protected void b(ty $$0, ix.a $$1) {
       super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bnz.a($$0, this.r, false, $$1);
-      }
-   }
-
-   public void c(to $$0, ip.a $$1) {
-      this.r = iw.a(this.b(), crs.i);
-      if (!this.a_($$0) && $$0.b("Items", 9)) {
-         bnz.b($$0, this.r, $$1);
+      if (this.ae()) {
+         $$0.a("CustomName", ws.a.a(this.l, $$1));
       }
    }
 
    @Override
-   protected iw<crs> j() {
-      return this.r;
+   public void a(ty $$0, ix.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.l = ws.a.a($$0.l("CustomName"), $$1);
+      }
+   }
+
+   public static void a(czu $$0, im $$1, dpy $$2, dnx $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      ckl $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.ds() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dy() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)axw.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
+
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
+         }
+      } else {
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
+      }
+
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
+      }
+
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = axw.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = axw.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
    }
 
    @Override
-   protected void a(iw<crs> $$0) {
-      this.r = $$0;
+   public ws ad() {
+      return (ws)(this.l != null ? this.l : ws.c("container.enchant"));
    }
 
-   @Override
-   public int[] a(ij $$0) {
-      return l;
-   }
-
-   @Override
-   public boolean a(int $$0, crs $$1, @Nullable ij $$2) {
-      return !(dch.a($$1.f()) instanceof djf);
-   }
-
-   @Override
-   public boolean b(int $$0, crs $$1, ij $$2) {
-      return true;
-   }
-
-   public float a(float $$0) {
-      return axm.i($$0, this.v, this.u);
+   public void a(@Nullable ws $$0) {
+      this.l = $$0;
    }
 
    @Nullable
-   public cql t() {
-      return this.w;
+   @Override
+   public ws af() {
+      return this.l;
    }
 
    @Override
-   protected cmw a(int $$0, cjz $$1) {
-      return new cop($$0, $$1, this);
+   public void a(jv $$0) {
+      this.l = $$0.a(jz.d);
    }
 
-   public boolean u() {
-      return this.t == dnx.a.a;
+   @Override
+   public void a(jv.a $$0) {
+      $$0.a(jz.d, this.l);
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a(ty $$0) {
+      $$0.r("CustomName");
    }
 }

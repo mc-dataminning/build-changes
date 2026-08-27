@@ -1,12 +1,7 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record cun(int d) {
-   public static final Codec<cun> a = Codec.INT.xmap(cun::new, cun::a);
-   public static final yg<ByteBuf, cun> b = ye.e.a(cun::new, cun::a);
-   public static final cun c = new cun(4603950);
+public interface cun<T, C> {
+   List<aqv<T>> a();
 
-   public int a() {
-      return this.d;
-   }
+   C a(List<aqv<T>> var1);
 }

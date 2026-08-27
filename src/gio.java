@@ -1,20 +1,24 @@
-public class gio extends ggx<cje, fth<cje>> {
-   private static final ajv a = new ajv("textures/entity/warden/warden.png");
-   private static final ajv i = new ajv("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final ajv j = new ajv("textures/entity/warden/warden_heart.png");
-   private static final ajv k = new ajv("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final ajv l = new ajv("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gio<T extends cgz> extends ghe<T, ftm<T>> {
+   private static final akf a = new akf("textures/entity/skeleton/skeleton.png");
 
-   public gio(gfr.a $$0) {
-      super($$0, new fth<>($$0.a(ftu.bR)), 0.9F);
-      this.a(new gko<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fth::e));
-      this.a(new gko<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, axm.b($$2 * 0.045F) * 0.25F), fth::f));
-      this.a(new gko<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, axm.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fth::f));
-      this.a(new gko<>(this, a, ($$0x, $$1, $$2) -> $$0x.G($$1), fth::c));
-      this.a(new gko<>(this, j, ($$0x, $$1, $$2) -> $$0x.H($$1), fth::d));
+   public gio(ggn.a $$0) {
+      this($$0, fuq.bn, fuq.bp, fuq.bq);
    }
 
-   public ajv a(cje $$0) {
+   public gio(ggn.a $$0, fup $$1, fup $$2, fup $$3) {
+      this($$0, $$2, $$3, new ftm<>($$0.a($$1)));
+   }
+
+   public gio(ggn.a $$0, fup $$1, fup $$2, ftm<T> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new gko<>(this, new ftm($$0.a($$1)), new ftm($$0.a($$2)), $$0.g()));
+   }
+
+   public akf a(T $$0) {
       return a;
+   }
+
+   protected boolean b(T $$0) {
+      return $$0.gr();
    }
 }

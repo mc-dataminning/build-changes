@@ -1,67 +1,74 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gnv {
-   public static final Comparator<gnv> a = Comparator.<gnv, ajv>comparing(gnv::a).thenComparing(gnv::b);
-   private final ajv b;
-   private final ajv c;
-   @Nullable
-   private gaq d;
+public class gnv implements atp {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gnu b = new gnu("US", "English", false);
+   private Map<String, gnu> c = ImmutableMap.of("en_us", b);
+   private String d;
 
-   public gnv(ajv $$0, ajv $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gnv(String $$0) {
+      this.d = $$0;
    }
 
-   public ajv a() {
-      return this.b;
+   private static Map<String, gnu> a(Stream<asa> $$0) {
+      Map<String, gnu> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            goh $$2 = $$1x.a(goh.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
    }
 
-   public ajv b() {
-      return this.c;
-   }
-
-   public gls c() {
-      return fby.Q().a(this.a()).apply(this.b());
-   }
-
-   public gaq a(Function<ajv, gaq> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
+   @Override
+   public void a(ato $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         gnu $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
       }
 
+      gnr $$4 = gnr.a($$0, $$1, $$2);
+      gnt.a($$4);
+      tt.a($$4);
+   }
+
+   public void a(String $$0) {
+      this.d = $$0;
+   }
+
+   public String a() {
       return this.d;
    }
 
-   public ewv a(gai $$0, Function<ajv, gaq> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
+   public SortedMap<String, gnu> b() {
+      return new TreeMap<>(this.c);
    }
 
-   public ewv a(gai $$0, Function<ajv, gaq> $$1, boolean $$2) {
-      return this.c().a(ggp.c($$0, this.a($$1), true, $$2));
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         gnv $$1 = (gnv)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   @Nullable
+   public gnu b(String $$0) {
+      return this.c.get($$0);
    }
 }

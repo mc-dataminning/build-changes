@@ -1,25 +1,30 @@
-import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public interface fmo {
-   static fmo a(awy $$0) {
-      return new fmn($$0);
+public class fmo extends flt {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int d = 16;
+   private static final int r = 16;
+   private final akf s = new akf("textures/gui/hanging_signs/" + this.a.b() + ".png");
+
+   public fmo(don $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, ws.c("hanging_sign.edit"));
    }
 
-   static fmo a(cpc $$0) {
-      if ($$0 instanceof cpb $$1) {
-         return new fmm($$1.a());
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
-      }
+   @Override
+   protected void b(feh $$0, dpy $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
    }
 
-   int a();
-
-   int a(fdj var1);
-
-   default void a(fdj $$0, int $$1, int $$2, Matrix4f $$3, gai.a $$4) {
+   @Override
+   protected void a(feh $$0, dpy $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.s, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
-   default void a(fdj $$0, int $$1, int $$2, fdl $$3) {
+   @Override
+   protected Vector3f m() {
+      return c;
    }
 }

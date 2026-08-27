@@ -1,18 +1,46 @@
-public class aum {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final aul a = new aul(auo.pH, 20, 600, true);
-   public static final aul b = new aul(auo.pm, 12000, 24000, false);
-   public static final aul c = new aul(auo.pn, 0, 0, true);
-   public static final aul d = new aul(auo.pE, 0, 0, true);
-   public static final aul e = new aul(auo.pF, 6000, 24000, true);
-   public static final aul f = a(auo.qg);
-   public static final aul g = a(auo.pG);
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
-   public static aul a(in<aun> $$0) {
-      return new aul($$0, 12000, 24000, false);
+public class aum {
+   private final ByteArrayOutputStream a;
+   private final DataOutputStream b;
+
+   public aum(int $$0) {
+      this.a = new ByteArrayOutputStream($$0);
+      this.b = new DataOutputStream(this.a);
+   }
+
+   public void a(byte[] $$0) throws IOException {
+      this.b.write($$0, 0, $$0.length);
+   }
+
+   public void a(String $$0) throws IOException {
+      this.b.writeBytes($$0);
+      this.b.write(0);
+   }
+
+   public void a(int $$0) throws IOException {
+      this.b.write($$0);
+   }
+
+   public void a(short $$0) throws IOException {
+      this.b.writeShort(Short.reverseBytes($$0));
+   }
+
+   public void b(int $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes($$0));
+   }
+
+   public void a(float $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
+   }
+
+   public byte[] a() {
+      return this.a.toByteArray();
+   }
+
+   public void b() {
+      this.a.reset();
    }
 }

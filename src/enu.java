@@ -1,81 +1,546 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class enu extends enw {
-   public static final Codec<enu> a = a(enu::new);
+public class enu implements env, enw {
+   private static final Logger f = LogUtils.getLogger();
+   public static final String a = "LevelName";
+   protected static final String b = "Player";
+   protected static final String c = "WorldGenSettings";
+   private czy g;
+   private final dwo h;
+   private final enu.a i;
+   private final Lifecycle j;
+   private im k;
+   private float l;
+   private long m;
+   private long n;
+   @Nullable
+   private final ty o;
+   private final int p;
+   private int q;
+   private boolean r;
+   private int s;
+   private boolean t;
+   private int u;
+   private boolean v;
+   private boolean w;
+   private drp.c x;
+   private dtt.a y;
+   @Nullable
+   private ty z;
+   private int A;
+   private int B;
+   @Nullable
+   private UUID C;
+   private final Set<String> D;
+   private boolean E;
+   private final Set<String> F;
+   private final ess<MinecraftServer> G;
 
-   enu(List<eod> $$0, List<eql> $$1) {
-      super($$0, $$1);
+   private enu(
+      @Nullable ty $$0,
+      boolean $$1,
+      im $$2,
+      float $$3,
+      long $$4,
+      long $$5,
+      int $$6,
+      int $$7,
+      int $$8,
+      boolean $$9,
+      int $$10,
+      boolean $$11,
+      boolean $$12,
+      boolean $$13,
+      drp.c $$14,
+      int $$15,
+      int $$16,
+      @Nullable UUID $$17,
+      Set<String> $$18,
+      Set<String> $$19,
+      ess<MinecraftServer> $$20,
+      @Nullable ty $$21,
+      dtt.a $$22,
+      czy $$23,
+      dwo $$24,
+      enu.a $$25,
+      Lifecycle $$26
+   ) {
+      this.E = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.p = $$6;
+      this.q = $$7;
+      this.s = $$8;
+      this.r = $$9;
+      this.u = $$10;
+      this.t = $$11;
+      this.v = $$12;
+      this.w = $$13;
+      this.x = $$14;
+      this.A = $$15;
+      this.B = $$16;
+      this.C = $$17;
+      this.D = $$18;
+      this.F = $$19;
+      this.o = $$0;
+      this.G = $$20;
+      this.z = $$21;
+      this.y = $$22;
+      this.g = $$23;
+      this.h = $$24;
+      this.i = $$25;
+      this.j = $$26;
+   }
+
+   public enu(czy $$0, dwo $$1, enu.a $$2, Lifecycle $$3) {
+      this(
+         null,
+         false,
+         im.c,
+         0.0F,
+         0L,
+         0L,
+         19133,
+         0,
+         0,
+         false,
+         0,
+         false,
+         false,
+         false,
+         drp.e,
+         0,
+         0,
+         null,
+         Sets.newLinkedHashSet(),
+         new HashSet<>(),
+         new ess<>(esr.a),
+         null,
+         dtt.a.b,
+         $$0.h(),
+         $$1,
+         $$2,
+         $$3
+      );
+   }
+
+   public static <T> enu a(Dynamic<T> $$0, czy $$1, enu.a $$2, dwo $$3, Lifecycle $$4) {
+      long $$5 = $$0.get("Time").asLong(0L);
+      return new enu(
+         (ty)ty.a.parse($$0.get("Player").orElseEmptyMap()).result().orElse(null),
+         $$0.get("WasModded").asBoolean(false),
+         new im($$0.get("SpawnX").asInt(0), $$0.get("SpawnY").asInt(0), $$0.get("SpawnZ").asInt(0)),
+         $$0.get("SpawnAngle").asFloat(0.0F),
+         $$5,
+         $$0.get("DayTime").asLong($$5),
+         ens.a($$0).a(),
+         $$0.get("clearWeatherTime").asInt(0),
+         $$0.get("rainTime").asInt(0),
+         $$0.get("raining").asBoolean(false),
+         $$0.get("thunderTime").asInt(0),
+         $$0.get("thundering").asBoolean(false),
+         $$0.get("initialized").asBoolean(true),
+         $$0.get("DifficultyLocked").asBoolean(false),
+         drp.c.a($$0, drp.e),
+         $$0.get("WanderingTraderSpawnDelay").asInt(0),
+         $$0.get("WanderingTraderSpawnChance").asInt(0),
+         (UUID)$$0.get("WanderingTraderId").read(jp.a).result().orElse(null),
+         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
+         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
+         new ess<>(esr.a, $$0.get("ScheduledEvents").asStream()),
+         (ty)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
+         $$0.get("DragonFight").read(dtt.a.a).resultOrPartial(f::error).orElse(dtt.a.b),
+         $$1,
+         $$3,
+         $$2,
+         $$4
+      );
    }
 
    @Override
-   public eoe a() {
-      return eob.g;
+   public ty a(jj $$0, @Nullable ty $$1) {
+      if ($$1 == null) {
+         $$1 = this.o;
+      }
+
+      ty $$2 = new ty();
+      this.a($$0, $$2, $$1);
+      return $$2;
+   }
+
+   private void a(jj $$0, ty $$1, @Nullable ty $$2) {
+      $$1.a("ServerBrands", a(this.D));
+      $$1.a("WasModded", this.E);
+      if (!this.F.isEmpty()) {
+         $$1.a("removed_features", a(this.F));
+      }
+
+      ty $$3 = new ty();
+      $$3.a("Name", aa.b().c());
+      $$3.a("Id", aa.b().d().c());
+      $$3.a("Snapshot", !aa.b().g());
+      $$3.a("Series", aa.b().d().b());
+      $$1.a("Version", $$3);
+      un.e($$1);
+      DynamicOps<uv> $$4 = $$0.a(um.a);
+      dwm.a($$4, this.h, $$0).resultOrPartial(ac.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
+      $$1.a("GameType", this.g.b().a());
+      $$1.a("SpawnX", this.k.u());
+      $$1.a("SpawnY", this.k.v());
+      $$1.a("SpawnZ", this.k.w());
+      $$1.a("SpawnAngle", this.l);
+      $$1.a("Time", this.m);
+      $$1.a("DayTime", this.n);
+      $$1.a("LastPlayed", ac.d());
+      $$1.a("LevelName", this.g.a());
+      $$1.a("version", 19133);
+      $$1.a("clearWeatherTime", this.q);
+      $$1.a("rainTime", this.s);
+      $$1.a("raining", this.r);
+      $$1.a("thunderTime", this.u);
+      $$1.a("thundering", this.t);
+      $$1.a("hardcore", this.g.c());
+      $$1.a("allowCommands", this.g.e());
+      $$1.a("initialized", this.v);
+      this.x.a($$1);
+      $$1.a("Difficulty", (byte)this.g.d().a());
+      $$1.a("DifficultyLocked", this.w);
+      $$1.a("GameRules", this.g.f().a());
+      $$1.a("DragonFight", ac.a(dtt.a.a.encodeStart(um.a, this.y), IllegalStateException::new));
+      if ($$2 != null) {
+         $$1.a("Player", $$2);
+      }
+
+      DataResult<uv> $$5 = dao.b.encodeStart(um.a, this.g.g());
+      $$5.get().ifLeft($$1x -> $$1.a((ty)$$1x)).ifRight($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
+      if (this.z != null) {
+         $$1.a("CustomBossEvents", this.z);
+      }
+
+      $$1.a("ScheduledEvents", this.G.b());
+      $$1.a("WanderingTraderSpawnDelay", this.A);
+      $$1.a("WanderingTraderSpawnChance", this.B);
+      if (this.C != null) {
+         $$1.a("WanderingTraderId", this.C);
+      }
+   }
+
+   private static ue a(Set<String> $$0) {
+      ue $$1 = new ue();
+      $$0.stream().map(ut::a).forEach($$1::add);
+      return $$1;
    }
 
    @Override
-   protected env a(List<? extends env> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (env)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (env $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
-         }
-
-         return false;
-      };
-      };
+   public im a() {
+      return this.k;
    }
 
    @Override
-   public void a(ent $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
-         }
-      }
+   public float b() {
+      return this.l;
    }
 
-   public static enu.a a(eod.a<?>... $$0) {
-      return new enu.a($$0);
+   @Override
+   public long c() {
+      return this.m;
    }
 
-   public static <E> enu.a a(Collection<E> $$0, Function<E, eod.a<?>> $$1) {
-      return new enu.a($$0.stream().map($$1::apply).toArray(eod.a[]::new));
+   @Override
+   public long d() {
+      return this.n;
    }
 
-   public static class a extends eod.a<enu.a> {
-      private final Builder<eod> a = ImmutableList.builder();
+   @Nullable
+   @Override
+   public ty w() {
+      return this.o;
+   }
 
-      public a(eod.a<?>... $$0) {
-         for (eod.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
 
-      protected enu.a a() {
-         return this;
-      }
+   @Override
+   public void b(long $$0) {
+      this.n = $$0;
+   }
 
-      @Override
-      public enu.a a(eod.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   @Override
+   public void a(im $$0, float $$1) {
+      this.k = $$0.i();
+      this.l = $$1;
+   }
 
-      @Override
-      public eod b() {
-         return new enu(this.a.build(), this.f());
-      }
+   @Override
+   public String e() {
+      return this.g.a();
+   }
+
+   @Override
+   public int x() {
+      return this.p;
+   }
+
+   @Override
+   public int f() {
+      return this.q;
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   public boolean g() {
+      return this.t;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.t = $$0;
+   }
+
+   @Override
+   public int h() {
+      return this.u;
+   }
+
+   @Override
+   public void b(int $$0) {
+      this.u = $$0;
+   }
+
+   @Override
+   public boolean i() {
+      return this.r;
+   }
+
+   @Override
+   public void b(boolean $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public int j() {
+      return this.s;
+   }
+
+   @Override
+   public void c(int $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public czr k() {
+      return this.g.b();
+   }
+
+   @Override
+   public void a(czr $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean l() {
+      return this.g.c();
+   }
+
+   @Override
+   public boolean m() {
+      return this.g.e();
+   }
+
+   @Override
+   public boolean n() {
+      return this.v;
+   }
+
+   @Override
+   public void c(boolean $$0) {
+      this.v = $$0;
+   }
+
+   @Override
+   public czq o() {
+      return this.g.f();
+   }
+
+   @Override
+   public drp.c p() {
+      return this.x;
+   }
+
+   @Override
+   public void a(drp.c $$0) {
+      this.x = $$0;
+   }
+
+   @Override
+   public bon q() {
+      return this.g.d();
+   }
+
+   @Override
+   public void a(bon $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean r() {
+      return this.w;
+   }
+
+   @Override
+   public void d(boolean $$0) {
+      this.w = $$0;
+   }
+
+   @Override
+   public ess<MinecraftServer> s() {
+      return this.G;
+   }
+
+   @Override
+   public void a(p $$0, czw $$1) {
+      env.super.a($$0, $$1);
+      enw.super.a($$0);
+   }
+
+   @Override
+   public dwo y() {
+      return this.h;
+   }
+
+   @Override
+   public boolean z() {
+      return this.i == enu.a.b;
+   }
+
+   @Override
+   public boolean A() {
+      return this.i == enu.a.c;
+   }
+
+   @Override
+   public Lifecycle B() {
+      return this.j;
+   }
+
+   @Override
+   public dtt.a C() {
+      return this.y;
+   }
+
+   @Override
+   public void a(dtt.a $$0) {
+      this.y = $$0;
+   }
+
+   @Override
+   public dao D() {
+      return this.g.g();
+   }
+
+   @Override
+   public void a(dao $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public ty E() {
+      return this.z;
+   }
+
+   @Override
+   public void a(@Nullable ty $$0) {
+      this.z = $$0;
+   }
+
+   @Override
+   public int t() {
+      return this.A;
+   }
+
+   @Override
+   public void d(int $$0) {
+      this.A = $$0;
+   }
+
+   @Override
+   public int u() {
+      return this.B;
+   }
+
+   @Override
+   public void e(int $$0) {
+      this.B = $$0;
+   }
+
+   @Nullable
+   @Override
+   public UUID v() {
+      return this.C;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+      this.C = $$0;
+   }
+
+   @Override
+   public void a(String $$0, boolean $$1) {
+      this.D.add($$0);
+      this.E |= $$1;
+   }
+
+   @Override
+   public boolean F() {
+      return this.E;
+   }
+
+   @Override
+   public Set<String> G() {
+      return ImmutableSet.copyOf(this.D);
+   }
+
+   @Override
+   public Set<String> H() {
+      return Set.copyOf(this.F);
+   }
+
+   @Override
+   public env I() {
+      return this;
+   }
+
+   @Override
+   public czy J() {
+      return this.g.h();
+   }
+
+   @Deprecated
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

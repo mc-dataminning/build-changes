@@ -1,24 +1,19 @@
-import com.mojang.serialization.MapCodec;
+public class dib {
+   private static final double b = 0.826;
+   public static final double a = 0.1;
 
-public class dib extends dch {
-   public static final MapCodec<dib> a = b(dib::new);
-
-   @Override
-   public MapCodec<dib> a() {
-      return a;
+   public static boolean a(dpy $$0) {
+      return $$0.i();
    }
 
-   public dib(dph.d $$0) {
-      super($$0);
-   }
+   public static int a(ayd $$0) {
+      double $$1 = 1.0;
 
-   @Override
-   protected boolean f_(dpi $$0) {
-      return true;
-   }
+      int $$2;
+      for ($$2 = 0; $$0.j() < $$1; $$2++) {
+         $$1 *= 0.826;
+      }
 
-   @Override
-   protected int a(dpi $$0, cym $$1, id $$2, ij $$3) {
-      return 15;
+      return $$2;
    }
 }

@@ -1,34 +1,30 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
-public abstract class bdf extends DataFix {
-   private final String a;
-   private final String b;
-   private final String c;
-
-   public bdf(Schema $$0, String $$1, String $$2) {
-      this($$0, $$1, $$2, $$2);
+public class bdf extends DataFix {
+   public bdf(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public bdf(Schema $$0, String $$1, String $$2, String $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bfp.E);
+      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bdf::a));
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bff.t);
-      OpticFinder<?> $$1 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped(
-         this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> ayu.a($$0xxx, this.b, this.c, this::a)))
-      );
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(bdf::c)).result().orElse(false);
+      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", bdf::b);
    }
 
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
+   }
+
+   private static boolean c(Dynamic<?> $$0) {
+      return $$0.get("id").asString("").equals("Iglu");
+   }
 }

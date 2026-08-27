@@ -1,55 +1,39 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Locale;
+import org.joml.Vector3f;
 
-public class kr implements kl {
-   public static final Codec<kr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(duf.c.fieldOf("destination").forGetter(kr::b), Codec.INT.fieldOf("arrival_in_ticks").forGetter(kr::c)).apply($$0, kr::new)
-   );
-   public static final yg<vt, kr> b = yg.a(duf.d, kr::b, ye.f, kr::c, kr::new);
-   public static final kl.a<kr> c = new kl.a<kr>() {
-      public kr a(km<kr> $$0, StringReader $$1, ip.a $$2) throws CommandSyntaxException {
-         $$1.expect(' ');
-         float $$3 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         float $$4 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         float $$5 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         int $$6 = $$1.readInt();
-         id $$7 = id.a((double)$$3, (double)$$4, (double)$$5);
-         return new kr(new dtx($$7), $$6);
-      }
-   };
-   private final duf d;
-   private final int e;
+public abstract class kr implements ku {
+   public static final float f = 0.01F;
+   public static final float g = 4.0F;
+   protected final Vector3f h;
+   protected final float i;
 
-   public kr(duf $$0, int $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public kr(Vector3f $$0, float $$1) {
+      this.h = $$0;
+      this.i = axw.a($$1, 0.01F, 4.0F);
+   }
+
+   public static Vector3f a(StringReader $$0) throws CommandSyntaxException {
+      $$0.expect(' ');
+      float $$1 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$2 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$3 = $$0.readFloat();
+      return new Vector3f($$1, $$2, $$3);
    }
 
    @Override
-   public String a(ip.a $$0) {
-      esj $$1 = this.d.a(null).get();
-      double $$2 = $$1.a();
-      double $$3 = $$1.b();
-      double $$4 = $$1.c();
-      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %d", kt.j.b(this.a()), $$2, $$3, $$4, this.e);
+   public String a(ix.a $$0) {
+      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f", lc.j.b(this.a()), this.h.x(), this.h.y(), this.h.z(), this.i);
    }
 
-   @Override
-   public km<kr> a() {
-      return kn.S;
+   public Vector3f d() {
+      return this.h;
    }
 
-   public duf b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
+   public float e() {
+      return this.i;
    }
 }

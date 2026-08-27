@@ -1,94 +1,68 @@
-public class afg implements yp<aba> {
-   public static final yg<vt, afg> a = yp.a(afg::a, afg::new);
+import javax.annotation.Nullable;
+
+public class afg implements yz<abk> {
+   public static final yq<vs, afg> a = yz.a(afg::a, afg::new);
    private static final int b = 1;
    private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final int f;
-   private final in<bpk> g;
-   private final int h;
-   private final int i;
-   private final byte j;
+   @Nullable
+   private final akf d;
+   @Nullable
+   private final ava e;
 
-   public afg(int $$0, bpm $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1.b();
-      this.h = $$1.d();
-      this.i = $$1.c();
-      byte $$3 = 0;
-      if ($$1.e()) {
-         $$3 = (byte)($$3 | 1);
-      }
-
-      if ($$1.f()) {
-         $$3 = (byte)($$3 | 2);
-      }
-
-      if ($$1.g()) {
-         $$3 = (byte)($$3 | 4);
-      }
-
-      if ($$2) {
-         $$3 = (byte)($$3 | 8);
-      }
-
-      this.j = $$3;
+   public afg(@Nullable akf $$0, @Nullable ava $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private afg(vt $$0) {
-      this.f = $$0.l();
-      this.g = ye.b(ku.R).decode($$0);
-      this.h = $$0.l();
-      this.i = $$0.l();
-      this.j = $$0.readByte();
+   private afg(vs $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.e = $$0.b(ava.class);
+      } else {
+         this.e = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.d = $$0.q();
+      } else {
+         this.d = null;
+      }
    }
 
-   private void a(vt $$0) {
-      $$0.c(this.f);
-      ye.b(ku.R).encode($$0, this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
-      $$0.k(this.j);
+   private void a(vs $$0) {
+      if (this.e != null) {
+         if (this.d != null) {
+            $$0.k(3);
+            $$0.a(this.e);
+            $$0.a(this.d);
+         } else {
+            $$0.k(1);
+            $$0.a(this.e);
+         }
+      } else if (this.d != null) {
+         $$0.k(2);
+         $$0.a(this.d);
+      } else {
+         $$0.k(0);
+      }
    }
 
    @Override
-   public yr<afg> a() {
-      return afl.bc;
+   public zb<afg> a() {
+      return afv.aU;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.f;
+   @Nullable
+   public akf b() {
+      return this.d;
    }
 
-   public in<bpk> e() {
-      return this.g;
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public int g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return (this.j & 2) != 0;
-   }
-
-   public boolean i() {
-      return (this.j & 1) != 0;
-   }
-
-   public boolean j() {
-      return (this.j & 4) != 0;
-   }
-
-   public boolean k() {
-      return (this.j & 8) != 0;
+   @Nullable
+   public ava e() {
+      return this.e;
    }
 }

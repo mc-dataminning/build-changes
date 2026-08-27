@@ -1,123 +1,150 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import com.mojang.brigadier.tree.RootCommandNode;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Set;
-import org.slf4j.Logger;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class hr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final byte b = 1;
-   private static final byte c = 2;
+public class hr<T extends ee<T>> implements ho<T> {
+   private static final DecimalFormat a = ac.a(new DecimalFormat("#"), $$0 -> {
+      $$0.setMaximumFractionDigits(15);
+      $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.US));
+   });
+   private static final int b = 8;
+   private final List<String> c;
+   private final Object2ObjectLinkedOpenHashMap<List<String>, hq<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
+   private final akf e;
+   private final List<hr.a<T>> f;
 
-   public static int a(boolean $$0, boolean $$1) {
-      int $$2 = 0;
-      if ($$0) {
-         $$2 |= 1;
-      }
-
-      if ($$1) {
-         $$2 |= 2;
-      }
-
-      return $$2;
+   public hr(akf $$0, List<hr.a<T>> $$1, List<String> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.c = $$2;
    }
 
-   public static boolean a(byte $$0) {
-      return ($$0 & 1) != 0;
+   @Override
+   public akf a() {
+      return this.e;
    }
 
-   public static boolean b(byte $$0) {
-      return ($$0 & 2) != 0;
-   }
-
-   private static <A extends ArgumentType<?>> void a(JsonObject $$0, hp.a<A> $$1) {
-      a($$0, $$1.a(), $$1);
-   }
-
-   private static <A extends ArgumentType<?>, T extends hp.a<A>> void a(JsonObject $$0, hp<A, T> $$1, hp.a<A> $$2) {
-      $$1.a((T)$$2, $$0);
-   }
-
-   private static <T extends ArgumentType<?>> void a(JsonObject $$0, T $$1) {
-      hp.a<T> $$2 = hq.b($$1);
-      $$0.addProperty("type", "argument");
-      $$0.addProperty("parser", kt.w.b($$2.a()).toString());
-      JsonObject $$3 = new JsonObject();
-      a($$3, $$2);
-      if ($$3.size() > 0) {
-         $$0.add("properties", $$3);
-      }
-   }
-
-   public static <S> JsonObject a(CommandDispatcher<S> $$0, CommandNode<S> $$1) {
-      JsonObject $$2 = new JsonObject();
-      if ($$1 instanceof RootCommandNode) {
-         $$2.addProperty("type", "root");
-      } else if ($$1 instanceof LiteralCommandNode) {
-         $$2.addProperty("type", "literal");
-      } else if ($$1 instanceof ArgumentCommandNode<?, ?> $$3) {
-         a($$2, $$3.getType());
+   @Override
+   public hq<T> a(@Nullable ty $$0, CommandDispatcher<T> $$1) throws ef {
+      if ($$0 == null) {
+         throw new ef(ws.a("commands.function.error.missing_arguments", ws.a(this.a())));
       } else {
-         a.error("Could not serialize node {} ({})!", $$1, $$1.getClass());
-         $$2.addProperty("type", "unknown");
-      }
+         List<String> $$2 = new ArrayList<>(this.c.size());
 
-      JsonObject $$4 = new JsonObject();
-
-      for (CommandNode<S> $$5 : $$1.getChildren()) {
-         $$4.add($$5.getName(), a($$0, $$5));
-      }
-
-      if ($$4.size() > 0) {
-         $$2.add("children", $$4);
-      }
-
-      if ($$1.getCommand() != null) {
-         $$2.addProperty("executable", true);
-      }
-
-      if ($$1.getRedirect() != null) {
-         Collection<String> $$6 = $$0.getPath($$1.getRedirect());
-         if (!$$6.isEmpty()) {
-            JsonArray $$7 = new JsonArray();
-
-            for (String $$8 : $$6) {
-               $$7.add($$8);
+         for (String $$3 : this.c) {
+            uv $$4 = $$0.c($$3);
+            if ($$4 == null) {
+               throw new ef(ws.a("commands.function.error.missing_argument", ws.a(this.a()), $$3));
             }
 
-            $$2.add("redirect", $$7);
+            $$2.add(a($$4));
+         }
+
+         hq<T> $$5 = (hq<T>)this.d.getAndMoveToLast($$2);
+         if ($$5 != null) {
+            return $$5;
+         } else {
+            if (this.d.size() >= 8) {
+               this.d.removeFirst();
+            }
+
+            hq<T> $$6 = this.a(this.c, $$2, $$1);
+            this.d.put($$2, $$6);
+            return $$6;
          }
       }
-
-      return $$2;
    }
 
-   public static <T> Set<ArgumentType<?>> a(CommandNode<T> $$0) {
-      Set<CommandNode<T>> $$1 = Sets.newIdentityHashSet();
-      Set<ArgumentType<?>> $$2 = Sets.newHashSet();
-      a($$0, $$2, $$1);
-      return $$2;
+   private static String a(uv $$0) {
+      if ($$0 instanceof ub $$1) {
+         return a.format((double)$$1.k());
+      } else if ($$0 instanceof tz $$2) {
+         return a.format($$2.j());
+      } else if ($$0 instanceof tw $$3) {
+         return String.valueOf($$3.i());
+      } else if ($$0 instanceof uq $$4) {
+         return String.valueOf($$4.h());
+      } else {
+         return $$0 instanceof ug $$5 ? String.valueOf($$5.f()) : $$0.s_();
+      }
    }
 
-   private static <T> void a(CommandNode<T> $$0, Set<ArgumentType<?>> $$1, Set<CommandNode<T>> $$2) {
-      if ($$2.add($$0)) {
-         if ($$0 instanceof ArgumentCommandNode<?, ?> $$3) {
-            $$1.add($$3.getType());
-         }
+   private static void a(List<String> $$0, IntList $$1, List<String> $$2) {
+      $$2.clear();
+      $$1.forEach($$2x -> $$2.add($$0.get($$2x)));
+   }
 
-         $$0.getChildren().forEach($$2x -> a($$2x, $$1, $$2));
-         CommandNode<T> $$4 = $$0.getRedirect();
-         if ($$4 != null) {
-            a($$4, $$1, $$2);
+   private hq<T> a(List<String> $$0, List<String> $$1, CommandDispatcher<T> $$2) throws ef {
+      List<hf<T>> $$3 = new ArrayList<>(this.f.size());
+      List<String> $$4 = new ArrayList<>($$1.size());
+
+      for (hr.a<T> $$5 : this.f) {
+         a($$1, $$5.a(), $$4);
+         $$3.add($$5.a($$4, $$2, this.e));
+      }
+
+      return new hs<>(this.a().a((UnaryOperator<String>)($$1x -> $$1x + "/" + $$0.hashCode())), $$3);
+   }
+
+   interface a<T> {
+      IntList a();
+
+      hf<T> a(List<String> var1, CommandDispatcher<T> var2, akf var3) throws ef;
+   }
+
+   static class b<T extends ee<T>> implements hr.a<T> {
+      private final ht a;
+      private final IntList b;
+      private final T c;
+
+      public b(ht $$0, IntList $$1, T $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public IntList a() {
+         return this.b;
+      }
+
+      @Override
+      public hf<T> a(List<String> $$0, CommandDispatcher<T> $$1, akf $$2) throws ef {
+         String $$3 = this.a.a($$0);
+
+         try {
+            return ho.a($$1, this.c, new StringReader($$3));
+         } catch (CommandSyntaxException var6) {
+            throw new ef(ws.a("commands.function.error.parse", ws.a($$2), $$3, var6.getMessage()));
          }
+      }
+   }
+
+   static class c<T> implements hr.a<T> {
+      private final hf<T> a;
+
+      public c(hf<T> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public IntList a() {
+         return IntLists.emptyList();
+      }
+
+      @Override
+      public hf<T> a(List<String> $$0, CommandDispatcher<T> $$1, akf $$2) {
+         return this.a;
       }
    }
 }

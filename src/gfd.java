@@ -1,21 +1,37 @@
-public class gfd extends ggx<cco, fql<cco>> {
-   private static final ajv a = new ajv("textures/entity/fish/cod.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gfd(gfr.a $$0) {
-      super($$0, new fql<>($$0.a(ftu.A)), 0.3F);
+public class gfd implements geq.a {
+   private static final int a = 60;
+   private final Set<jo> b = Sets.newHashSet();
+
+   gfd() {
    }
 
-   public ajv a(cco $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   protected void a(cco $$0, ewr $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 4.3F * axm.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.bc()) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   public void a(jo $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(jo $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(exn $$0, gbe $$1, double $$2, double $$3, double $$4) {
+      im $$5 = im.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(exn $$0, gbe $$1, jo $$2) {
+      geq.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

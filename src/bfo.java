@@ -1,69 +1,45 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import javax.annotation.Nullable;
 
 public class bfo extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("slot_0", "list")
-      .put("slot_1", "sidebar")
-      .put("slot_2", "below_name")
-      .put("slot_3", "sidebar.team.black")
-      .put("slot_4", "sidebar.team.dark_blue")
-      .put("slot_5", "sidebar.team.dark_green")
-      .put("slot_6", "sidebar.team.dark_aqua")
-      .put("slot_7", "sidebar.team.dark_red")
-      .put("slot_8", "sidebar.team.dark_purple")
-      .put("slot_9", "sidebar.team.gold")
-      .put("slot_10", "sidebar.team.gray")
-      .put("slot_11", "sidebar.team.dark_gray")
-      .put("slot_12", "sidebar.team.blue")
-      .put("slot_13", "sidebar.team.green")
-      .put("slot_14", "sidebar.team.aqua")
-      .put("slot_15", "sidebar.team.red")
-      .put("slot_16", "sidebar.team.light_purple")
-      .put("slot_17", "sidebar.team.yellow")
-      .put("slot_18", "sidebar.team.white")
-      .build();
-
    public bfo(Schema $$0) {
       super($$0, false);
    }
 
-   @Nullable
-   private static String a(String $$0) {
-      return a.get($$0);
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("RedstoneConnectionsFix", $$0.getType(bfp.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bff.o);
-      OpticFinder<?> $$1 = $$0.findField("data");
-      return this.fixTypeEverywhereTyped(
-         "Scoreboard DisplaySlot rename",
-         $$0,
-         $$1x -> $$1x.updateTyped(
-               $$1,
-               $$0xx -> $$0xx.update(
-                     DSL.remainderFinder(),
-                     $$0xxx -> $$0xxx.update(
-                           "DisplaySlots",
-                           $$0xxxx -> $$0xxxx.updateMapValues(
-                                 $$0xxxxx -> $$0xxxxx.mapFirst(
-                                       $$0xxxxxx -> (Dynamic)DataFixUtils.orElse(
-                                             $$0xxxxxx.asString().result().map(bfo::a).map($$0xxxxxx::createString), $$0xxxxxx
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("Name").asString().result().filter("minecraft:redstone_wire"::equals).isPresent();
+      return !$$1
+         ? $$0
+         : $$0.update(
+            "Properties",
+            $$0x -> {
+               String $$1x = $$0x.get("east").asString("none");
+               String $$2 = $$0x.get("west").asString("none");
+               String $$3 = $$0x.get("north").asString("none");
+               String $$4 = $$0x.get("south").asString("none");
+               boolean $$5 = a($$1x) || a($$2);
+               boolean $$6 = a($$3) || a($$4);
+               String $$7 = !a($$1x) && !$$6 ? "side" : $$1x;
+               String $$8 = !a($$2) && !$$6 ? "side" : $$2;
+               String $$9 = !a($$3) && !$$5 ? "side" : $$3;
+               String $$10 = !a($$4) && !$$5 ? "side" : $$4;
+               return $$0x.update("east", $$1xx -> $$1xx.createString($$7))
+                  .update("west", $$1xx -> $$1xx.createString($$8))
+                  .update("north", $$1xx -> $$1xx.createString($$9))
+                  .update("south", $$1xx -> $$1xx.createString($$10));
+            }
+         );
+   }
+
+   private static boolean a(String $$0) {
+      return !"none".equals($$0);
    }
 }

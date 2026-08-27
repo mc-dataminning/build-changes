@@ -1,88 +1,77 @@
-public class coa extends cmw {
-   private static final int o = 1;
-   private static final int p = 1;
-   public static final int k = 1;
-   public static final int l = 2;
-   public static final int m = 3;
-   public static final int n = 100;
-   private final bny q;
-   private final cng r;
+public class coa extends cnh {
+   private static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final boj p;
 
-   public coa(int $$0) {
-      this($$0, new boo(1), new cor(1));
+   public coa(int $$0, ckk $$1) {
+      this($$0, $$1, new boz(9));
    }
 
-   public coa(int $$0, bny $$1, cng $$2) {
-      super(cod.r, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.q = $$1;
-      this.r = $$2;
-      this.a(new cos($$1, 0, 0, 0) {
-         @Override
-         public void b() {
-            super.b();
-            coa.this.a(this.d);
+   public coa(int $$0, ckk $$1, boj $$2) {
+      super(cop.g, $$0);
+      a($$2, 9);
+      this.p = $$2;
+      $$2.d_($$1.m);
+
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            this.a(new cpd($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
          }
-      });
-      this.a($$2);
-   }
+      }
 
-   @Override
-   public boolean b(cka $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.a(0, $$2);
-         return true;
-      } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.r.a(0);
-               this.a(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.r.a(0);
-               this.a(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gl()) {
-                  return false;
-               }
-
-               crs $$5 = this.q.b(0);
-               this.q.e();
-               if (!$$0.fZ().e($$5)) {
-                  $$0.a($$5, false);
-               }
-
-               return true;
-            default:
-               return false;
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cpd($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
          }
+      }
+
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cpd($$1, $$7, 8 + $$7 * 18, 142));
       }
    }
 
    @Override
-   public crs a(cka $$0, int $$1) {
-      return crs.i;
+   public boolean a(ckl $$0) {
+      return this.p.a($$0);
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      super.a($$0, $$1);
-      this.d();
+   public csd a(ckl $$0, int $$1) {
+      csd $$2 = csd.i;
+      cpd $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         csd $$4 = $$3.g();
+         $$2 = $$4.r();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return csd.i;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return csd.i;
+         }
+
+         if ($$4.d()) {
+            $$3.e(csd.i);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.G() == $$2.G()) {
+            return csd.i;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
    }
 
    @Override
-   public boolean a(cka $$0) {
-      return this.q.a($$0);
-   }
-
-   public crs l() {
-      return this.q.a(0);
-   }
-
-   public int m() {
-      return this.r.a(0);
+   public void b(ckl $$0) {
+      super.b($$0);
+      this.p.c($$0);
    }
 }

@@ -1,89 +1,111 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
 
-public class dyq extends dye<eap> {
-   public dyq(Codec<eap> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(dyg<eap> $$0) {
-      id $$1 = $$0.e();
-      axt $$2 = $$0.d();
-      dab $$3 = $$0.b();
-
-      while ($$3.u($$1) && $$1.v() > $$3.I_() + 2) {
-         $$1 = $$1.d();
+public class dyq {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
       }
 
-      if (!$$3.a_($$1).a(dcj.dP)) {
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
+   }
+
+   protected static boolean a(dap $$0, im $$1, int $$2) {
+      if (b($$0, $$1)) {
          return false;
       } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
 
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = axm.f($$7);
-
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)axm.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)axm.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dpi $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(dcj.dP) || $$13.a(dcj.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dcj.iC.n());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(dcj.dP) || $$13.a(dcj.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dcj.iC.n());
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               id $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dpi $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(dcj.dP) && !$$19.a(dcj.dO) && !$$19.a(dcj.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dcj.iC.n());
-                  $$17 = $$17.d();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(axw.b($$5) * (float)$$2);
+            int $$7 = (int)(axw.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
+               return false;
             }
          }
 
          return true;
       }
+   }
+
+   protected static boolean a(czv $$0, im $$1) {
+      return $$0.a($$1, dyq::c);
+   }
+
+   protected static boolean b(czv $$0, im $$1) {
+      return $$0.a($$1, dyq::e);
+   }
+
+   protected static void a(ir $$0, int $$1, boolean $$2, Consumer<dpy> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dqv.e));
+
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dqv.d));
+         }
+      }
+
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dqv.c));
+      }
+
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dqv.a : dqv.b));
+      }
+   }
+
+   protected static void a(czv $$0, im $$1, ir $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         im.a $$5 = $$1.j();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(dcx.st)) {
+               $$3x = $$3x.a(din.d, Boolean.valueOf($$0.z($$5)));
+            }
+
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
+   }
+
+   protected static boolean c(czv $$0, im $$1) {
+      dpy $$2 = $$0.a_($$1);
+      if ($$2.a(avo.bs)) {
+         $$0.a($$1, dcx.su.n(), 2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static dpy a(ir $$0, dqv $$1) {
+      return dcx.st.n().a(din.b, $$0).a(din.c, $$1);
+   }
+
+   public static boolean a(dpy $$0) {
+      return b($$0) || $$0.a(dcx.H);
+   }
+
+   public static boolean b(dpy $$0) {
+      return $$0.a(dcx.su) || $$0.a(avo.bs);
+   }
+
+   public static boolean c(dpy $$0) {
+      return $$0.i() || $$0.a(dcx.G);
+   }
+
+   public static boolean d(dpy $$0) {
+      return !$$0.i() && !$$0.a(dcx.G);
+   }
+
+   public static boolean e(dpy $$0) {
+      return $$0.i() || $$0.a(dcx.G) || $$0.a(dcx.H);
    }
 }

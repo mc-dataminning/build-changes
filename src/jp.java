@@ -1,97 +1,89 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.util.UndashedUuid;
+import io.netty.buffer.ByteBuf;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.UUID;
 
-public final class jp implements Predicate<jn> {
-   public static final Codec<jp> a = awu.c(jq.a, jq::c)
-      .xmap($$0 -> new jp($$0.entrySet().stream().map(jt::a).collect(Collectors.toList())), $$0 -> $$0.d.stream().collect(Collectors.toMap(jt::a, jt::b)));
-   public static final yg<vt, jp> b = jt.a.a(ye.a()).a(jp::new, $$0 -> $$0.d);
-   public static final jp c = new jp(List.of());
-   private final List<jt<?>> d;
-
-   jp(List<jt<?>> $$0) {
-      this.d = $$0;
-   }
-
-   public static jp.a a() {
-      return new jp.a();
-   }
-
-   public static jp a(jn $$0) {
-      return new jp(ImmutableList.copyOf($$0));
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 instanceof jp $$1 && this.d.equals($$1.d)) {
-         return true;
+public final class jp {
+   public static final Codec<UUID> a = Codec.INT_STREAM.comapFlatMap($$0 -> ac.a($$0, 4).map(jp::a), $$0 -> Arrays.stream(a($$0)));
+   public static final Codec<Set<UUID>> b = Codec.list(a).xmap(Sets::newHashSet, Lists::newArrayList);
+   public static final Codec<Set<UUID>> c = Codec.list(a).xmap(Sets::newLinkedHashSet, Lists::newArrayList);
+   public static final Codec<UUID> d = Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(UUID.fromString($$0), Lifecycle.stable());
+      } catch (IllegalArgumentException var2) {
+         return DataResult.error(() -> "Invalid UUID " + $$0 + ": " + var2.getMessage());
+      }
+   }, UUID::toString);
+   public static Codec<UUID> e = Codec.either(a, Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(UndashedUuid.fromStringLenient($$0), Lifecycle.stable());
+      } catch (IllegalArgumentException var2) {
+         return DataResult.error(() -> "Invalid UUID " + $$0 + ": " + var2.getMessage());
+      }
+   }, UndashedUuid::toString)).xmap($$0 -> (UUID)$$0.map($$0x -> $$0x, $$0x -> $$0x), Either::right);
+   public static Codec<UUID> f = Codec.either(a, d).xmap($$0 -> (UUID)$$0.map($$0x -> $$0x, $$0x -> $$0x), Either::left);
+   public static yq<ByteBuf, UUID> g = new yq<ByteBuf, UUID>() {
+      public UUID a(ByteBuf $$0) {
+         return vs.e($$0);
       }
 
-      return false;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
-   }
-
-   public boolean b(jn $$0) {
-      for (jt<?> $$1 : this.d) {
-         Object $$2 = $$0.a($$1.a());
-         if (!Objects.equals($$1.b(), $$2)) {
-            return false;
-         }
+      public void a(ByteBuf $$0, UUID $$1) {
+         vs.a($$0, $$1);
       }
+   };
+   public static final int h = 16;
+   private static final String i = "OfflinePlayer:";
 
-      return true;
+   private jp() {
    }
 
-   public boolean a(jm $$0) {
-      return this.b($$0.a());
+   public static UUID a(int[] $$0) {
+      return new UUID((long)$$0[0] << 32 | (long)$$0[1] & 4294967295L, (long)$$0[2] << 32 | (long)$$0[3] & 4294967295L);
    }
 
-   public boolean b() {
-      return this.d.isEmpty();
+   public static int[] a(UUID $$0) {
+      long $$1 = $$0.getMostSignificantBits();
+      long $$2 = $$0.getLeastSignificantBits();
+      return a($$1, $$2);
    }
 
-   public jo c() {
-      jo.a $$0 = jo.a();
-
-      for (jt<?> $$1 : this.d) {
-         $$0.a($$1);
-      }
-
-      return $$0.a();
+   private static int[] a(long $$0, long $$1) {
+      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
    }
 
-   public static class a {
-      private final List<jt<?>> a = new ArrayList<>();
+   public static byte[] b(UUID $$0) {
+      byte[] $$1 = new byte[16];
+      ByteBuffer.wrap($$1).order(ByteOrder.BIG_ENDIAN).putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits());
+      return $$1;
+   }
 
-      a() {
+   public static UUID a(Dynamic<?> $$0) {
+      int[] $$1 = $$0.asIntStream().toArray();
+      if ($$1.length != 4) {
+         throw new IllegalArgumentException("Could not read UUID. Expected int-array of length 4, got " + $$1.length + ".");
+      } else {
+         return a($$1);
       }
+   }
 
-      public <T> jp.a a(jq<? super T> $$0, T $$1) {
-         for (jt<?> $$2 : this.a) {
-            if ($$2.a() == $$0) {
-               throw new IllegalArgumentException("Predicate already has component of type: '" + $$0 + "'");
-            }
-         }
+   public static UUID a(String $$0) {
+      return UUID.nameUUIDFromBytes(("OfflinePlayer:" + $$0).getBytes(StandardCharsets.UTF_8));
+   }
 
-         this.a.add(new jt<>($$0, $$1));
-         return this;
-      }
-
-      public jp a() {
-         return new jp(List.copyOf(this.a));
-      }
+   public static GameProfile b(String $$0) {
+      UUID $$1 = a($$0);
+      return new GameProfile($$1, $$0);
    }
 }

@@ -1,34 +1,74 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public abstract class gru extends fjx {
-   protected static final int d = 17;
-   protected static final int o = 7;
-   protected static final long p = 5368709120L;
-   protected static final int q = 5000268;
-   protected static final int r = 7105644;
-   protected static final int s = 8388479;
-   protected static final int u = 3368635;
-   protected static final int v = 7107012;
-   protected static final int w = 8226750;
-   protected static final int x = 32;
-   private final List<grs> a = Lists.newArrayList();
+public class gru {
+   public static final gru a = new gru(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<grq<gru.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
 
-   public gru(wi $$0) {
-      super($$0);
+   protected gru(Ticker $$0) {
+      this.c = $$0;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public synchronized void a(grq<gru.a> $$0) {
+      this.a($$0, (Function<grq<gru.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
    }
 
-   protected grs a(grs $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   public synchronized void a(grq<gru.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<grq<gru.a>, Stopwatch>)($$1x -> $$1));
    }
 
-   public wi m() {
-      return wh.a(this.a.stream().map(grs::a).collect(Collectors.toList()));
+   private synchronized void a(grq<gru.a> $$0, Function<grq<gru.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
+
+   public synchronized void b(grq<gru.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
+      }
+   }
+
+   public void a(grn $$0) {
+      $$0.send(gro.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((grq<gru.a>)$$1, new gru.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gro.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(grq.B, new gru.a((int)$$1)));
+            this.d.clear();
+         }
+      });
+   }
+
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
+   }
+
+   public static record a(int b) {
+      public static final Codec<gru.a> a = Codec.INT.xmap(gru.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
+      }
    }
 }

@@ -1,34 +1,45 @@
-public abstract class gkl<T extends bqt, M extends fsa<T>> extends gkc<T, M> {
-   public gkl(ggs<T, M> $$0) {
+public class gkl extends gky<cdd, frt<cdd>> {
+   private final gba a;
+
+   public gkl(gii<cdd, frt<cdd>> $$0, gba $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   protected abstract int a(T var1);
-
-   protected abstract void a(ewr var1, gai var2, int var3, bqa var4, float var5, float var6, float var7, float var8);
-
-   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      axt $$11 = axt.a((long)$$3.aj());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
-            $$0.a();
-            ftv $$13 = this.c().a($$11);
-            ftv.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = axm.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = axm.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = axm.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
-            $$0.b();
-         }
+   public void a(exn $$0, gbe $$1, int $$2, cdd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fJ();
+      boolean $$11 = $$3.p_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
       }
+
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.G($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.p_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
+      }
+
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
+      }
+
+      csd $$14 = $$3.d(bqs.a);
+      this.a.a($$3, $$14, csa.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

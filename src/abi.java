@@ -1,53 +1,28 @@
-public class abi implements yp<aba> {
-   public static final yg<vt, abi> a = yp.a(abi::a, abi::new);
-   private final id b;
-   private final int c;
-   private final int d;
-   private final dch e;
+import javax.annotation.Nullable;
 
-   public abi(id $$0, dch $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public record abi(akf b, @Nullable byte[] c) implements yz<abh> {
+   public static final yq<vs, abi> a = yz.a(abi::a, abi::new);
+
+   private abi(vs $$0) {
+      this($$0.q(), $$0.c(zm.b));
    }
 
-   private abi(vt $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.readUnsignedByte();
-      this.e = ye.a(ku.f).decode($$0);
-   }
-
-   private void a(vt $$0) {
+   private void a(vs $$0) {
       $$0.a(this.b);
-      $$0.k(this.c);
-      $$0.k(this.d);
-      ye.a(ku.f).encode($$0, this.e);
+      $$0.a(this.c, zm.b);
    }
 
    @Override
-   public yr<abi> a() {
-      return afl.j;
+   public zb<abi> a() {
+      return abg.b;
    }
 
-   public void a(aba $$0) {
+   public void a(abh $$0) {
       $$0.a(this);
    }
 
-   public id b() {
-      return this.b;
-   }
-
-   public int e() {
+   @Nullable
+   public byte[] e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public dch g() {
-      return this.e;
    }
 }

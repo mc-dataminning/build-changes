@@ -1,17 +1,36 @@
-class bps extends bpk {
-   protected bps(bpl $$0, int $$1) {
+import javax.annotation.Nullable;
+
+class bps extends bpu {
+   private final boolean a;
+
+   public bps(bpw $$0, int $$1, boolean $$2) {
       super($$0, $$1);
+      this.a = $$2;
    }
 
    @Override
-   public boolean a(bqt $$0, int $$1) {
-      $$0.a($$0.dN().p(), 1.0F);
+   public boolean a(bre $$0, int $$1) {
+      if (this.a == $$0.ex()) {
+         $$0.c((float)Math.max(4 << $$1, 0));
+      } else {
+         $$0.a($$0.dO().o(), (float)(6 << $$1));
+      }
+
       return true;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public void a(@Nullable bql $$0, @Nullable bql $$1, bre $$2, int $$3, double $$4) {
+      if (this.a == $$2.ex()) {
+         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
+         $$2.c((float)$$5);
+      } else {
+         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
+         if ($$0 == null) {
+            $$2.a($$2.dO().o(), (float)$$6);
+         } else {
+            $$2.a($$2.dO().c($$0, $$1), (float)$$6);
+         }
+      }
    }
 }

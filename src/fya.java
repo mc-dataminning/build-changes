@@ -1,117 +1,30 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class fya extends fze {
+   fya(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzn $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.c(15916745);
+      this.b($$7);
+   }
 
-public interface fya {
-   fya a = new fya() {
-      @Override
-      public void a(ewm $$0, glt $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, glr.e);
-         $$0.a(eww.b.h, ewp.l);
-      }
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
 
-      @Override
-      public void a(ewt $$0) {
-         $$0.c();
-      }
+   public static class a implements fyv<kz> {
+      private final fzn a;
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   fya b = new fya() {
-      @Override
-      public void a(ewm $$0, glt $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(gab::v);
-         RenderSystem.setShaderTexture(0, glr.f);
-         $$0.a(eww.b.h, ewp.l);
+      public a(fzn $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public void a(ewt $$0) {
-         $$0.c();
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fya($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   fya c = new fya() {
-      @Override
-      public void a(ewm $$0, glt $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, glr.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$0.a(eww.b.h, ewp.l);
-      }
-
-      @Override
-      public void a(ewt $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   fya d = new fya() {
-      @Override
-      public void a(ewm $$0, glt $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, glr.f);
-         $$0.a(eww.b.h, ewp.l);
-      }
-
-      @Override
-      public void a(ewt $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   fya e = new fya() {
-      @Override
-      public void a(ewm $$0, glt $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-      }
-
-      @Override
-      public void a(ewt $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   fya f = new fya() {
-      @Override
-      public void a(ewm $$0, glt $$1) {
-      }
-
-      @Override
-      public void a(ewt $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   void a(ewm var1, glt var2);
-
-   void a(ewt var1);
+   }
 }

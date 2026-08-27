@@ -1,8 +1,8 @@
-public interface aiv extends afo, aip {
-   @Override
-   default vh b() {
-      return vh.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(aiw var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aiv {
 }

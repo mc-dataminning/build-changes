@@ -1,19 +1,19 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dtr<T extends dti> {
-   @Nullable
-   T a(int var1);
+public record dtr(iv<dtq> e, drv f) {
+   public static final Codec<dtr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dtq.j.fieldOf("type").forGetter(dtr::a), drv.a.fieldOf("generator").forGetter(dtr::b)).apply($$0, $$0.stable(dtr::new))
+   );
+   public static final ake<dtr> b = ake.a(ld.aS, new akf("overworld"));
+   public static final ake<dtr> c = ake.a(ld.aS, new akf("the_nether"));
+   public static final ake<dtr> d = ake.a(ld.aS, new akf("the_end"));
 
-   @Nullable
-   T a(UUID var1);
+   public iv<dtq> a() {
+      return this.e;
+   }
 
-   Iterable<T> a();
-
-   <U extends T> void a(dtp<T, U> var1, avz<U> var2);
-
-   void a(ese var1, Consumer<T> var2);
-
-   <U extends T> void a(dtp<T, U> var1, ese var2, avz<U> var3);
+   public drv b() {
+      return this.f;
+   }
 }

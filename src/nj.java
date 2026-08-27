@@ -1,165 +1,339 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class nj {
-   public static final ni a = a("cube", nl.c, nl.j, nl.k, nl.l, nl.m, nl.n, nl.o);
-   public static final ni b = a("cube_directional", nl.c, nl.j, nl.k, nl.l, nl.m, nl.n, nl.o);
-   public static final ni c = a("cube_all", nl.a);
-   public static final ni d = a("cube_all_inner_faces", nl.a);
-   public static final ni e = a("cube_mirrored_all", "_mirrored", nl.a);
-   public static final ni f = a("cube_north_west_mirrored_all", "_north_west_mirrored", nl.a);
-   public static final ni g = a("cube_column_uv_locked_x", "_x", nl.d, nl.i);
-   public static final ni h = a("cube_column_uv_locked_y", "_y", nl.d, nl.i);
-   public static final ni i = a("cube_column_uv_locked_z", "_z", nl.d, nl.i);
-   public static final ni j = a("cube_column", nl.d, nl.i);
-   public static final ni k = a("cube_column_horizontal", "_horizontal", nl.d, nl.i);
-   public static final ni l = a("cube_column_mirrored", "_mirrored", nl.d, nl.i);
-   public static final ni m = a("cube_top", nl.f, nl.i);
-   public static final ni n = a("cube_bottom_top", nl.f, nl.e, nl.i);
-   public static final ni o = a("cube_bottom_top_inner_faces", nl.f, nl.e, nl.i);
-   public static final ni p = a("orientable", nl.f, nl.g, nl.i);
-   public static final ni q = a("orientable_with_bottom", nl.f, nl.e, nl.i, nl.g);
-   public static final ni r = a("orientable_vertical", "_vertical", nl.g, nl.i);
-   public static final ni s = a("button", nl.b);
-   public static final ni t = a("button_pressed", "_pressed", nl.b);
-   public static final ni u = a("button_inventory", "_inventory", nl.b);
-   public static final ni v = a("door_bottom_left", "_bottom_left", nl.f, nl.e);
-   public static final ni w = a("door_bottom_left_open", "_bottom_left_open", nl.f, nl.e);
-   public static final ni x = a("door_bottom_right", "_bottom_right", nl.f, nl.e);
-   public static final ni y = a("door_bottom_right_open", "_bottom_right_open", nl.f, nl.e);
-   public static final ni z = a("door_top_left", "_top_left", nl.f, nl.e);
-   public static final ni A = a("door_top_left_open", "_top_left_open", nl.f, nl.e);
-   public static final ni B = a("door_top_right", "_top_right", nl.f, nl.e);
-   public static final ni C = a("door_top_right_open", "_top_right_open", nl.f, nl.e);
-   public static final ni D = a("custom_fence_post", "_post", nl.b, nl.c);
-   public static final ni E = a("custom_fence_side_north", "_side_north", nl.b);
-   public static final ni F = a("custom_fence_side_east", "_side_east", nl.b);
-   public static final ni G = a("custom_fence_side_south", "_side_south", nl.b);
-   public static final ni H = a("custom_fence_side_west", "_side_west", nl.b);
-   public static final ni I = a("custom_fence_inventory", "_inventory", nl.b);
-   public static final ni J = a("fence_post", "_post", nl.b);
-   public static final ni K = a("fence_side", "_side", nl.b);
-   public static final ni L = a("fence_inventory", "_inventory", nl.b);
-   public static final ni M = a("template_wall_post", "_post", nl.r);
-   public static final ni N = a("template_wall_side", "_side", nl.r);
-   public static final ni O = a("template_wall_side_tall", "_side_tall", nl.r);
-   public static final ni P = a("wall_inventory", "_inventory", nl.r);
-   public static final ni Q = a("template_custom_fence_gate", nl.b, nl.c);
-   public static final ni R = a("template_custom_fence_gate_open", "_open", nl.b, nl.c);
-   public static final ni S = a("template_custom_fence_gate_wall", "_wall", nl.b, nl.c);
-   public static final ni T = a("template_custom_fence_gate_wall_open", "_wall_open", nl.b, nl.c);
-   public static final ni U = a("template_fence_gate", nl.b);
-   public static final ni V = a("template_fence_gate_open", "_open", nl.b);
-   public static final ni W = a("template_fence_gate_wall", "_wall", nl.b);
-   public static final ni X = a("template_fence_gate_wall_open", "_wall_open", nl.b);
-   public static final ni Y = a("pressure_plate_up", nl.b);
-   public static final ni Z = a("pressure_plate_down", "_down", nl.b);
-   public static final ni aa = a(nl.c);
-   public static final ni ab = a("slab", nl.e, nl.f, nl.i);
-   public static final ni ac = a("slab_top", "_top", nl.e, nl.f, nl.i);
-   public static final ni ad = a("leaves", nl.a);
-   public static final ni ae = a("stairs", nl.e, nl.f, nl.i);
-   public static final ni af = a("inner_stairs", "_inner", nl.e, nl.f, nl.i);
-   public static final ni ag = a("outer_stairs", "_outer", nl.e, nl.f, nl.i);
-   public static final ni ah = a("template_trapdoor_top", "_top", nl.b);
-   public static final ni ai = a("template_trapdoor_bottom", "_bottom", nl.b);
-   public static final ni aj = a("template_trapdoor_open", "_open", nl.b);
-   public static final ni ak = a("template_orientable_trapdoor_top", "_top", nl.b);
-   public static final ni al = a("template_orientable_trapdoor_bottom", "_bottom", nl.b);
-   public static final ni am = a("template_orientable_trapdoor_open", "_open", nl.b);
-   public static final ni an = a("pointed_dripstone", nl.p);
-   public static final ni ao = a("cross", nl.p);
-   public static final ni ap = a("tinted_cross", nl.p);
-   public static final ni aq = a("flower_pot_cross", nl.q);
-   public static final ni ar = a("tinted_flower_pot_cross", nl.q);
-   public static final ni as = a("rail_flat", nl.s);
-   public static final ni at = a("rail_curved", "_corner", nl.s);
-   public static final ni au = a("template_rail_raised_ne", "_raised_ne", nl.s);
-   public static final ni av = a("template_rail_raised_sw", "_raised_sw", nl.s);
-   public static final ni aw = a("carpet", nl.t);
-   public static final ni ax = a("flowerbed_1", "_1", nl.P, nl.y);
-   public static final ni ay = a("flowerbed_2", "_2", nl.P, nl.y);
-   public static final ni az = a("flowerbed_3", "_3", nl.P, nl.y);
-   public static final ni aA = a("flowerbed_4", "_4", nl.P, nl.y);
-   public static final ni aB = a("coral_fan", nl.x);
-   public static final ni aC = a("coral_wall_fan", nl.x);
-   public static final ni aD = a("template_glazed_terracotta", nl.u);
-   public static final ni aE = a("template_chorus_flower", nl.b);
-   public static final ni aF = a("template_daylight_detector", nl.f, nl.i);
-   public static final ni aG = a("template_glass_pane_noside", "_noside", nl.v);
-   public static final ni aH = a("template_glass_pane_noside_alt", "_noside_alt", nl.v);
-   public static final ni aI = a("template_glass_pane_post", "_post", nl.v, nl.w);
-   public static final ni aJ = a("template_glass_pane_side", "_side", nl.v, nl.w);
-   public static final ni aK = a("template_glass_pane_side_alt", "_side_alt", nl.v, nl.w);
-   public static final ni aL = a("template_command_block", nl.g, nl.h, nl.i);
-   public static final ni aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", nl.b);
-   public static final ni aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", nl.b);
-   public static final ni aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", nl.b);
-   public static final ni aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", nl.b);
-   public static final ni aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", nl.b);
-   public static final ni aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", nl.b);
-   public static final ni aS = a("template_anvil", nl.f);
-   public static final ni[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, nl.y)).toArray(ni[]::new);
-   public static final ni aU = a("stem_fruit", nl.y, nl.z);
-   public static final ni aV = a("crop", nl.A);
-   public static final ni aW = a("template_farmland", nl.B, nl.f);
-   public static final ni aX = a("template_fire_floor", nl.C);
-   public static final ni aY = a("template_fire_side", nl.C);
-   public static final ni aZ = a("template_fire_side_alt", nl.C);
-   public static final ni ba = a("template_fire_up", nl.C);
-   public static final ni bb = a("template_fire_up_alt", nl.C);
-   public static final ni bc = a("template_campfire", nl.C, nl.K);
-   public static final ni bd = a("template_lantern", nl.D);
-   public static final ni be = a("template_hanging_lantern", "_hanging", nl.D);
-   public static final ni bf = a("template_torch", nl.G);
-   public static final ni bg = a("template_torch_wall", nl.G);
-   public static final ni bh = a("template_piston", nl.E, nl.e, nl.i);
-   public static final ni bi = a("template_piston_head", nl.E, nl.i, nl.F);
-   public static final ni bj = a("template_piston_head_short", nl.E, nl.i, nl.F);
-   public static final ni bk = a("template_seagrass", nl.b);
-   public static final ni bl = a("template_turtle_egg", nl.a);
-   public static final ni bm = a("template_two_turtle_eggs", nl.a);
-   public static final ni bn = a("template_three_turtle_eggs", nl.a);
-   public static final ni bo = a("template_four_turtle_eggs", nl.a);
-   public static final ni bp = a("template_single_face", nl.b);
-   public static final ni bq = a("template_cauldron_level1", nl.N, nl.M, nl.c, nl.f, nl.e, nl.i);
-   public static final ni br = a("template_cauldron_level2", nl.N, nl.M, nl.c, nl.f, nl.e, nl.i);
-   public static final ni bs = a("template_cauldron_full", nl.N, nl.M, nl.c, nl.f, nl.e, nl.i);
-   public static final ni bt = a("template_azalea", nl.f, nl.i);
-   public static final ni bu = a("template_potted_azalea_bush", nl.q, nl.f, nl.i);
-   public static final ni bv = a("template_potted_azalea_bush", nl.q, nl.f, nl.i);
-   public static final ni bw = a("sniffer_egg", nl.f, nl.e, nl.j, nl.k, nl.l, nl.m);
-   public static final ni bx = b("generated", nl.H);
-   public static final ni by = b("template_music_disc", nl.H);
-   public static final ni bz = b("handheld", nl.H);
-   public static final ni bA = b("handheld_rod", nl.H);
-   public static final ni bB = b("generated", nl.H, nl.I);
-   public static final ni bC = b("generated", nl.H, nl.I, nl.J);
-   public static final ni bD = b("template_shulker_box", nl.c);
-   public static final ni bE = b("template_bed", nl.c);
-   public static final ni bF = b("template_banner");
-   public static final ni bG = b("template_skull");
-   public static final ni bH = a("template_candle", nl.a, nl.c);
-   public static final ni bI = a("template_two_candles", nl.a, nl.c);
-   public static final ni bJ = a("template_three_candles", nl.a, nl.c);
-   public static final ni bK = a("template_four_candles", nl.a, nl.c);
-   public static final ni bL = a("template_cake_with_candle", nl.L, nl.e, nl.i, nl.f, nl.c);
-   public static final ni bM = a("template_sculk_shrieker", nl.e, nl.i, nl.f, nl.c, nl.O);
-   public static final ni bN = a("template_vault", nl.f, nl.e, nl.i, nl.g);
+public abstract class nj {
+   private final Map<nk, List<nl>> a = Maps.newHashMap();
 
-   private static ni a(nl... $$0) {
-      return new ni(Optional.empty(), Optional.empty(), $$0);
+   protected void a(nk $$0, List<nl> $$1) {
+      List<nl> $$2 = this.a.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Value " + $$0 + " is already defined");
+      }
    }
 
-   private static ni a(String $$0, nl... $$1) {
-      return new ni(Optional.of(new ajv("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+   Map<nk, List<nl>> a() {
+      this.c();
+      return ImmutableMap.copyOf(this.a);
    }
 
-   private static ni b(String $$0, nl... $$1) {
-      return new ni(Optional.of(new ajv("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+   private void c() {
+      List<drb<?>> $$0 = this.b();
+      Stream<nk> $$1 = Stream.of(nk.a());
+
+      for (drb<?> $$2 : $$0) {
+         $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
+      }
+
+      List<nk> $$3 = $$1.filter($$0x -> !this.a.containsKey($$0x)).collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         throw new IllegalStateException("Missing definition for properties: " + $$3);
+      }
    }
 
-   private static ni a(String $$0, String $$1, nl... $$2) {
-      return new ni(Optional.of(new ajv("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+   abstract List<drb<?>> b();
+
+   public static <T1 extends Comparable<T1>> nj.a<T1> a(drb<T1> $$0) {
+      return new nj.a<>($$0);
+   }
+
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> nj.b<T1, T2> a(drb<T1> $$0, drb<T2> $$1) {
+      return new nj.b<>($$0, $$1);
+   }
+
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> nj.c<T1, T2, T3> a(drb<T1> $$0, drb<T2> $$1, drb<T3> $$2) {
+      return new nj.c<>($$0, $$1, $$2);
+   }
+
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> nj.d<T1, T2, T3, T4> a(
+      drb<T1> $$0, drb<T2> $$1, drb<T3> $$2, drb<T4> $$3
+   ) {
+      return new nj.d<>($$0, $$1, $$2, $$3);
+   }
+
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> nj.e<T1, T2, T3, T4, T5> a(
+      drb<T1> $$0, drb<T2> $$1, drb<T3> $$2, drb<T4> $$3, drb<T5> $$4
+   ) {
+      return new nj.e<>($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static class a<T1 extends Comparable<T1>> extends nj {
+      private final drb<T1> a;
+
+      a(drb<T1> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public List<drb<?>> b() {
+         return ImmutableList.of(this.a);
+      }
+
+      public nj.a<T1> a(T1 $$0, List<nl> $$1) {
+         nk $$2 = nk.a(this.a.b($$0));
+         this.a($$2, $$1);
+         return this;
+      }
+
+      public nj.a<T1> a(T1 $$0, nl $$1) {
+         return this.a($$0, Collections.singletonList($$1));
+      }
+
+      public nj a(Function<T1, nl> $$0) {
+         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
+         return this;
+      }
+
+      public nj b(Function<T1, List<nl>> $$0) {
+         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
+         return this;
+      }
+   }
+
+   public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends nj {
+      private final drb<T1> a;
+      private final drb<T2> b;
+
+      b(drb<T1> $$0, drb<T2> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public List<drb<?>> b() {
+         return ImmutableList.of(this.a, this.b);
+      }
+
+      public nj.b<T1, T2> a(T1 $$0, T2 $$1, List<nl> $$2) {
+         nk $$3 = nk.a(this.a.b($$0), this.b.b($$1));
+         this.a($$3, $$2);
+         return this;
+      }
+
+      public nj.b<T1, T2> a(T1 $$0, T2 $$1, nl $$2) {
+         return this.a($$0, $$1, Collections.singletonList($$2));
+      }
+
+      public nj a(BiFunction<T1, T2, nl> $$0) {
+         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
+         return this;
+      }
+
+      public nj b(BiFunction<T1, T2, List<nl>> $$0) {
+         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
+         return this;
+      }
+   }
+
+   public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends nj {
+      private final drb<T1> a;
+      private final drb<T2> b;
+      private final drb<T3> c;
+
+      c(drb<T1> $$0, drb<T2> $$1, drb<T3> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public List<drb<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c);
+      }
+
+      public nj.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, List<nl> $$3) {
+         nk $$4 = nk.a(this.a.b($$0), this.b.b($$1), this.c.b($$2));
+         this.a($$4, $$3);
+         return this;
+      }
+
+      public nj.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, nl $$3) {
+         return this.a($$0, $$1, $$2, Collections.singletonList($$3));
+      }
+
+      public nj a(nj.h<T1, T2, T3, nl> $$0) {
+         this.a
+            .a()
+            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
+         return this;
+      }
+
+      public nj b(nj.h<T1, T2, T3, List<nl>> $$0) {
+         this.a
+            .a()
+            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
+         return this;
+      }
+   }
+
+   public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends nj {
+      private final drb<T1> a;
+      private final drb<T2> b;
+      private final drb<T3> c;
+      private final drb<T4> d;
+
+      d(drb<T1> $$0, drb<T2> $$1, drb<T3> $$2, drb<T4> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public List<drb<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c, this.d);
+      }
+
+      public nj.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, List<nl> $$4) {
+         nk $$5 = nk.a(this.a.b($$0), this.b.b($$1), this.c.b($$2), this.d.b($$3));
+         this.a($$5, $$4);
+         return this;
+      }
+
+      public nj.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, nl $$4) {
+         return this.a($$0, $$1, $$2, $$3, Collections.singletonList($$4));
+      }
+
+      public nj a(nj.g<T1, T2, T3, T4, nl> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
+                              )
+                     )
+            );
+         return this;
+      }
+
+      public nj b(nj.g<T1, T2, T3, T4, List<nl>> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
+                              )
+                     )
+            );
+         return this;
+      }
+   }
+
+   public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
+      extends nj {
+      private final drb<T1> a;
+      private final drb<T2> b;
+      private final drb<T3> c;
+      private final drb<T4> d;
+      private final drb<T5> e;
+
+      e(drb<T1> $$0, drb<T2> $$1, drb<T3> $$2, drb<T4> $$3, drb<T5> $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      @Override
+      public List<drb<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
+      }
+
+      public nj.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, List<nl> $$5) {
+         nk $$6 = nk.a(this.a.b($$0), this.b.b($$1), this.c.b($$2), this.d.b($$3), this.e.b($$4));
+         this.a($$6, $$5);
+         return this;
+      }
+
+      public nj.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, nl $$5) {
+         return this.a($$0, $$1, $$2, $$3, $$4, Collections.singletonList($$5));
+      }
+
+      public nj a(nj.f<T1, T2, T3, T4, T5, nl> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d
+                                       .a()
+                                       .forEach(
+                                          $$4 -> this.e
+                                                .a()
+                                                .forEach(
+                                                   $$5 -> this.a(
+                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
+                                                      )
+                                                )
+                                       )
+                              )
+                     )
+            );
+         return this;
+      }
+
+      public nj b(nj.f<T1, T2, T3, T4, T5, List<nl>> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d
+                                       .a()
+                                       .forEach(
+                                          $$4 -> this.e
+                                                .a()
+                                                .forEach(
+                                                   $$5 -> this.a(
+                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
+                                                      )
+                                                )
+                                       )
+                              )
+                     )
+            );
+         return this;
+      }
+   }
+
+   @FunctionalInterface
+   public interface f<P1, P2, P3, P4, P5, R> {
+      R apply(P1 var1, P2 var2, P3 var3, P4 var4, P5 var5);
+   }
+
+   @FunctionalInterface
+   public interface g<P1, P2, P3, P4, R> {
+      R apply(P1 var1, P2 var2, P3 var3, P4 var4);
+   }
+
+   @FunctionalInterface
+   public interface h<P1, P2, P3, R> {
+      R apply(P1 var1, P2 var2, P3 var3);
    }
 }

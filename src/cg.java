@@ -1,44 +1,97 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
 
-public class cg extends cx<cg.a> {
-   @Override
-   public Codec<cg.a> a() {
-      return cg.a.a;
+public record cg(Optional<iz<cry>> b, cs.d c, jx d, Map<ch.a<?>, ch> e) {
+   public static final Codec<cg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axe.a(jk.a(ld.G), "items").forGetter(cg::a),
+               axe.a(cs.d.d, "count", cs.d.c).forGetter(cg::b),
+               axe.a(jx.a, "components", jx.c).forGetter(cg::c),
+               axe.a(ch.b, "predicates", Map.of()).forGetter(cg::d)
+            )
+            .apply($$0, cg::new)
+   );
+
+   public boolean a(csd $$0) {
+      if (this.b.isPresent() && !$$0.a(this.b.get())) {
+         return false;
+      } else if (!this.c.d($$0.G())) {
+         return false;
+      } else if (!this.d.a($$0)) {
+         return false;
+      } else {
+         for (ch $$1 : this.e.values()) {
+            if (!$$1.a($$0)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public void a(apv $$0, esj $$1, int $$2) {
-      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
+   public Optional<iz<cry>> a() {
+      return this.b;
    }
 
-   public static record a(Optional<bc> b, Optional<bi> c, cm.d d) implements cx.a {
-      public static final Codec<cg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  awu.a(br.b, "player").forGetter(cg.a::a), awu.a(bi.a, "distance").forGetter(cg.a::b), awu.a(cm.d.d, "duration", cm.d.c).forGetter(cg.a::c)
-               )
-               .apply($$0, cg.a::new)
-      );
+   public cs.d b() {
+      return this.c;
+   }
 
-      public static an<cg.a> a(bi $$0) {
-         return am.v.a(new cg.a(Optional.empty(), Optional.of($$0), cm.d.c));
+   public jx c() {
+      return this.d;
+   }
+
+   public Map<ch.a<?>, ch> d() {
+      return this.e;
+   }
+
+   public static class a {
+      private Optional<iz<cry>> a = Optional.empty();
+      private cs.d b = cs.d.c;
+      private jx c;
+      private final Builder<ch.a<?>, ch> d;
+
+      private a() {
+         this.c = jx.c;
+         this.d = ImmutableMap.builder();
       }
 
-      public boolean a(apv $$0, esj $$1, int $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.dr(), $$0.dt(), $$0.dx()) ? false : this.d.d($$2);
+      public static cg.a a() {
+         return new cg.a();
       }
 
-      @Override
-      public Optional<bc> a() {
-         return this.b;
+      public cg.a a(czt... $$0) {
+         this.a = Optional.of(iz.a($$0x -> $$0x.p().n(), $$0));
+         return this;
       }
 
-      public Optional<bi> b() {
-         return this.c;
+      public cg.a a(awd<cry> $$0) {
+         this.a = Optional.of(lc.h.a($$0));
+         return this;
       }
 
-      public cm.d c() {
-         return this.d;
+      public cg.a a(cs.d $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public <T extends ch> cg.a a(ch.a<T> $$0, T $$1) {
+         this.d.put($$0, $$1);
+         return this;
+      }
+
+      public cg.a a(jx $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public cg b() {
+         return new cg(this.a, this.b, this.c, this.d.build());
       }
    }
 }

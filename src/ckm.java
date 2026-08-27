@@ -1,53 +1,37 @@
-public abstract class ckm extends ckh implements ckp {
-   private static final aja<crs> e = aje.a(ckm.class, ajc.h);
+public enum ckm {
+   a(0, "cape"),
+   b(1, "jacket"),
+   c(2, "left_sleeve"),
+   d(3, "right_sleeve"),
+   e(4, "left_pants_leg"),
+   f(5, "right_pants_leg"),
+   g(6, "hat");
 
-   public ckm(bqg<? extends ckm> $$0, czg $$1) {
-      super($$0, $$1);
+   private final int h;
+   private final int i;
+   private final String j;
+   private final ws k;
+
+   private ckm(int $$0, String $$1) {
+      this.h = $$0;
+      this.i = 1 << $$0;
+      this.j = $$1;
+      this.k = ws.c("options.modelPart." + $$1);
    }
 
-   public ckm(bqg<? extends ckm> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, czg $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public int a() {
+      return this.i;
    }
 
-   public ckm(bqg<? extends ckm> $$0, bqt $$1, double $$2, double $$3, double $$4, czg $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+   public int b() {
+      return this.h;
    }
 
-   public void a(crs $$0) {
-      if ($$0.d()) {
-         this.an().a(e, this.y());
-      } else {
-         this.an().a(e, $$0.c(1));
-      }
+   public String c() {
+      return this.j;
    }
 
-   @Override
-   public crs p() {
-      return this.an().a(e);
-   }
-
-   @Override
-   protected void a(aje.a $$0) {
-      $$0.a(e, this.y());
-   }
-
-   @Override
-   public void b(to $$0) {
-      super.b($$0);
-      $$0.a("Item", this.p().a(this.dO()));
-   }
-
-   @Override
-   public void a(to $$0) {
-      super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(crs.a(this.dO(), (ul)$$0.p("Item")).orElse(this.y()));
-      } else {
-         this.a(this.y());
-      }
-   }
-
-   private crs y() {
-      return new crs(crv.tW);
+   public ws d() {
+      return this.k;
    }
 }

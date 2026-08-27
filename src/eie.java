@@ -1,215 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class eie extends efq {
-   private static final String[] e = new String[]{
-      "ruined_portal/portal_1",
-      "ruined_portal/portal_2",
-      "ruined_portal/portal_3",
-      "ruined_portal/portal_4",
-      "ruined_portal/portal_5",
-      "ruined_portal/portal_6",
-      "ruined_portal/portal_7",
-      "ruined_portal/portal_8",
-      "ruined_portal/portal_9",
-      "ruined_portal/portal_10"
-   };
-   private static final String[] f = new String[]{"ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"};
-   private static final float g = 0.05F;
-   private static final int h = 15;
-   private final List<eie.a> i;
-   public static final Codec<eie> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), awu.a(eie.a.a.listOf()).fieldOf("setups").forGetter($$0x -> $$0x.i)).apply($$0, eie::new)
-   );
+public class eie {
+   public static final int a = 90;
+   static final akf b = new akf("igloo/top");
+   private static final akf c = new akf("igloo/middle");
+   private static final akf d = new akf("igloo/bottom");
+   static final Map<akf, im> e = ImmutableMap.of(b, new im(3, 5, 5), c, new im(1, 3, 1), d, new im(3, 6, 7));
+   static final Map<akf, im> f = ImmutableMap.of(b, im.c, c, new im(2, -3, 4), d, new im(0, -3, -2));
 
-   public eie(efq.c $$0, List<eie.a> $$1) {
-      super($$0);
-      this.i = $$1;
-   }
+   public static void a(ekh $$0, im $$1, dji $$2, egl $$3, ayd $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new eie.a($$0, d, $$1, $$2, $$5 * 3));
 
-   public eie(efq.c $$0, eie.a $$1) {
-      this($$0, List.of($$1));
-   }
-
-   @Override
-   public Optional<efq.b> a(efq.a $$0) {
-      eid.a $$1 = new eid.a();
-      dvz $$2 = $$0.f();
-      eie.a $$3 = null;
-      if (this.i.size() > 1) {
-         float $$4 = 0.0F;
-
-         for (eie.a $$5 : this.i) {
-            $$4 += $$5.h();
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new eie.a($$0, c, $$1, $$2, $$6 * 3));
          }
-
-         float $$6 = $$2.i();
-
-         for (eie.a $$7 : this.i) {
-            $$6 -= $$7.h() / $$4;
-            if ($$6 < 0.0F) {
-               $$3 = $$7;
-               break;
-            }
-         }
-      } else {
-         $$3 = this.i.get(0);
       }
 
-      if ($$3 == null) {
-         throw new IllegalStateException();
-      } else {
-         eie.a $$8 = $$3;
-         $$1.d = a($$2, $$8.b());
-         $$1.c = $$8.c();
-         $$1.e = $$8.d();
-         $$1.f = $$8.e();
-         $$1.g = $$8.g();
-         ajv $$9;
-         if ($$2.i() < 0.05F) {
-            $$9 = new ajv(f[$$2.a(f.length)]);
-         } else {
-            $$9 = new ajv(e[$$2.a(e.length)]);
-         }
-
-         ejq $$11 = $$0.e().a($$9);
-         dit $$12 = ac.a(dit.values(), $$2);
-         dhd $$13 = $$2.i() < 0.5F ? dhd.a : dhd.c;
-         id $$14 = new id($$11.a().u() / 2, 0, $$11.a().w() / 2);
-         drf $$15 = $$0.b();
-         czi $$16 = $$0.i();
-         dvo $$17 = $$0.d();
-         id $$18 = $$0.h().l();
-         efi $$19 = $$11.a($$18, $$12, $$14, $$13);
-         id $$20 = $$19.g();
-         int $$21 = $$15.a($$20.u(), $$20.w(), eid.a($$8.a()), $$16, $$17) - 1;
-         int $$22 = a($$2, $$15, $$8.a(), $$1.d, $$21, $$19.e(), $$19, $$16, $$17);
-         id $$23 = new id($$18.u(), $$22, $$18.w());
-         return Optional.of(new efq.b($$23, (Consumer<egi>)($$10 -> {
-            if ($$8.f()) {
-               $$1.b = a($$23, $$0.b().c().getNoiseBiome(iy.a($$23.u()), iy.a($$23.v()), iy.a($$23.w()), $$17.b()));
-            }
-
-            $$10.a(new eid($$0.e(), $$23, $$8.a(), $$1, $$9, $$11, $$12, $$13, $$14));
-         })));
-      }
+      $$3.a(new eie.a($$0, b, $$1, $$2, 0));
    }
 
-   private static boolean a(dvz $$0, float $$1) {
-      if ($$1 == 0.0F) {
-         return false;
-      } else {
-         return $$1 == 1.0F ? true : $$0.i() < $$1;
-      }
-   }
-
-   private static boolean a(id $$0, in<daf> $$1) {
-      return $$1.a().b($$0);
-   }
-
-   private static int a(axt $$0, drf $$1, eid.b $$2, boolean $$3, int $$4, int $$5, efi $$6, czi $$7, dvo $$8) {
-      int $$9 = $$7.I_() + 15;
-      int $$10;
-      if ($$2 == eid.b.f) {
-         if ($$3) {
-            $$10 = axm.b($$0, 32, 100);
-         } else if ($$0.i() < 0.5F) {
-            $$10 = axm.b($$0, 27, 29);
-         } else {
-            $$10 = axm.b($$0, 29, 100);
-         }
-      } else if ($$2 == eid.b.d) {
-         int $$13 = $$4 - $$5;
-         $$10 = a($$0, 70, $$13);
-      } else if ($$2 == eid.b.e) {
-         int $$15 = $$4 - $$5;
-         $$10 = a($$0, $$9, $$15);
-      } else if ($$2 == eid.b.b) {
-         $$10 = $$4 - $$5 + axm.b($$0, 2, 8);
-      } else {
-         $$10 = $$4;
+   public static class a extends egq {
+      public a(ekh $$0, akf $$1, im $$2, dji $$3, int $$4) {
+         super(egx.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
       }
 
-      List<id> $$19 = ImmutableList.of(new id($$6.h(), 0, $$6.j()), new id($$6.k(), 0, $$6.j()), new id($$6.h(), 0, $$6.m()), new id($$6.k(), 0, $$6.m()));
-      List<czs> $$20 = $$19.stream().map($$3x -> $$1.a($$3x.u(), $$3x.w(), $$7, $$8)).collect(Collectors.toList());
-      dva.a $$21 = $$2 == eid.b.c ? dva.a.c : dva.a.a;
+      public a(ekh $$0, ty $$1) {
+         super(egx.I, $$1, $$0, $$1x -> a(dji.valueOf($$1.l("Rot")), $$1x));
+      }
 
-      int $$22;
-      for ($$22 = $$10; $$22 > $$9; $$22--) {
-         int $$23 = 0;
+      private static ekc a(dji $$0, akf $$1) {
+         return new ekc().a($$0).a(dhs.a).a(eie.e.get($$1)).a(eji.b);
+      }
 
-         for (czs $$24 : $$20) {
-            dpi $$25 = $$24.a($$22);
-            if ($$21.e().test($$25)) {
-               if (++$$23 == 3) {
-                  return $$22;
-               }
+      private static im a(akf $$0, im $$1, int $$2) {
+         return $$1.a(eie.f.get($$0)).c($$2);
+      }
+
+      @Override
+      protected void a(egw $$0, ty $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, im $$1, daj $$2, ayd $$3, efy $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, dcx.a.n(), 3);
+            dnd $$5 = $$2.c_($$1.d());
+            if ($$5 instanceof dnk) {
+               ((dnk)$$5).a(eny.C, $$3.g());
             }
          }
       }
 
-      return $$22;
-   }
+      @Override
+      public void a(dap $$0, dan $$1, drv $$2, ayd $$3, efy $$4, czb $$5, im $$6) {
+         akf $$7 = new akf(this.a);
+         ekc $$8 = a(this.c.d(), $$7);
+         im $$9 = eie.f.get($$7);
+         im $$10 = this.d.a((jq)ekg.a($$8, new im(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(dvq.a.a, $$10.u(), $$10.w());
+         im $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(eie.b)) {
+            im $$13 = this.d.a((jq)ekg.a($$8, new im(3, 0, 5)));
+            dpy $$14 = $$0.a_($$13.d());
+            if (!$$14.i() && !$$14.a(dcx.cO)) {
+               $$0.a($$13, dcx.dP.n(), 3);
+            }
+         }
 
-   private static int a(axt $$0, int $$1, int $$2) {
-      return $$1 < $$2 ? axm.b($$0, $$1, $$2) : $$2;
-   }
-
-   @Override
-   public efz<?> e() {
-      return efz.l;
-   }
-
-   public static record a(eid.b b, float c, float d, boolean e, boolean f, boolean g, boolean h, float i) {
-      public static final Codec<eie.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eid.b.g.fieldOf("placement").forGetter(eie.a::a),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(eie.a::b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(eie.a::c),
-                  Codec.BOOL.fieldOf("overgrown").forGetter(eie.a::d),
-                  Codec.BOOL.fieldOf("vines").forGetter(eie.a::e),
-                  Codec.BOOL.fieldOf("can_be_cold").forGetter(eie.a::f),
-                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(eie.a::g),
-                  awu.k.fieldOf("weight").forGetter(eie.a::h)
-               )
-               .apply($$0, eie.a::new)
-      );
-
-      public eid.b a() {
-         return this.b;
-      }
-
-      public float b() {
-         return this.c;
-      }
-
-      public float c() {
-         return this.d;
-      }
-
-      public boolean d() {
-         return this.e;
-      }
-
-      public boolean e() {
-         return this.f;
-      }
-
-      public boolean f() {
-         return this.g;
-      }
-
-      public boolean g() {
-         return this.h;
-      }
-
-      public float h() {
-         return this.i;
+         this.d = $$12;
       }
    }
 }

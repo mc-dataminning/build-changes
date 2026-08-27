@@ -1,70 +1,78 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Streams;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.TreeMap;
 import java.util.stream.Stream;
 
-public class ni {
-   private final Optional<ajv> a;
-   private final Set<nl> b;
-   private final Optional<String> c;
+public class ni implements nf {
+   private final dcv a;
+   private final List<nl> b;
+   private final Set<drb<?>> c = Sets.newHashSet();
+   private final List<nj> d = Lists.newArrayList();
 
-   public ni(Optional<ajv> $$0, Optional<String> $$1, nl... $$2) {
+   private ni(dcv $$0, List<nl> $$1) {
       this.a = $$0;
-      this.c = $$1;
-      this.b = ImmutableSet.copyOf($$2);
+      this.b = $$1;
    }
 
-   public ajv a(dch $$0) {
-      return nh.a($$0, this.c.orElse(""));
+   public ni a(nj $$0) {
+      $$0.b().forEach($$0x -> {
+         if (this.a.l().a($$0x.f()) != $$0x) {
+            throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
+         } else if (!this.c.add($$0x)) {
+            throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
+         }
+      });
+      this.d.add($$0);
+      return this;
    }
 
-   public ajv a(dch $$0, nk $$1, BiConsumer<ajv, Supplier<JsonElement>> $$2) {
-      return this.a(nh.a($$0, this.c.orElse("")), $$1, $$2);
-   }
+   public JsonElement b() {
+      Stream<Pair<nk, List<nl>>> $$0 = Stream.of(Pair.of(nk.a(), this.b));
 
-   public ajv a(dch $$0, String $$1, nk $$2, BiConsumer<ajv, Supplier<JsonElement>> $$3) {
-      return this.a(nh.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
-   }
-
-   public ajv b(dch $$0, String $$1, nk $$2, BiConsumer<ajv, Supplier<JsonElement>> $$3) {
-      return this.a(nh.a($$0, $$1), $$2, $$3);
-   }
-
-   public ajv a(ajv $$0, nk $$1, BiConsumer<ajv, Supplier<JsonElement>> $$2) {
-      return this.a($$0, $$1, $$2, this::a);
-   }
-
-   public ajv a(ajv $$0, nk $$1, BiConsumer<ajv, Supplier<JsonElement>> $$2, ni.a $$3) {
-      Map<nl, ajv> $$4 = this.a($$1);
-      $$2.accept($$0, () -> $$3.create($$0, $$4));
-      return $$0;
-   }
-
-   public JsonObject a(ajv $$0, Map<nl, ajv> $$1) {
-      JsonObject $$2 = new JsonObject();
-      this.a.ifPresent($$1x -> $$2.addProperty("parent", $$1x.toString()));
-      if (!$$1.isEmpty()) {
-         JsonObject $$3 = new JsonObject();
-         $$1.forEach(($$1x, $$2x) -> $$3.addProperty($$1x.a(), $$2x.toString()));
-         $$2.add("textures", $$3);
+      for (nj $$1 : this.d) {
+         Map<nk, List<nl>> $$2 = $$1.a();
+         $$0 = $$0.flatMap($$1x -> $$2.entrySet().stream().map($$1xx -> {
+               nk $$2x = ((nk)$$1.getFirst()).a((nk)$$1xx.getKey());
+               List<nl> $$3 = a((List<nl>)$$1.getSecond(), (List<nl>)$$1xx.getValue());
+               return Pair.of($$2x, $$3);
+            }));
       }
 
-      return $$2;
+      Map<String, JsonElement> $$3 = new TreeMap<>();
+      $$0.forEach($$1 -> $$3.put(((nk)$$1.getFirst()).b(), nl.a((List<nl>)$$1.getSecond())));
+      JsonObject $$4 = new JsonObject();
+      $$4.add("variants", ac.a(new JsonObject(), $$1 -> $$3.forEach($$1::add)));
+      return $$4;
    }
 
-   private Map<nl, ajv> a(nk $$0) {
-      return Streams.concat(new Stream[]{this.b.stream(), $$0.a()}).collect(ImmutableMap.toImmutableMap(Function.identity(), $$0::a));
+   private static List<nl> a(List<nl> $$0, List<nl> $$1) {
+      Builder<nl> $$2 = ImmutableList.builder();
+      $$0.forEach($$2x -> $$1.forEach($$2xx -> $$2.add(nl.a($$2x, $$2xx))));
+      return $$2.build();
    }
 
-   public interface a {
-      JsonObject create(ajv var1, Map<nl, ajv> var2);
+   @Override
+   public dcv a() {
+      return this.a;
+   }
+
+   public static ni a(dcv $$0) {
+      return new ni($$0, ImmutableList.of(nl.a()));
+   }
+
+   public static ni a(dcv $$0, nl $$1) {
+      return new ni($$0, ImmutableList.of($$1));
+   }
+
+   public static ni a(dcv $$0, nl... $$1) {
+      return new ni($$0, ImmutableList.copyOf($$1));
    }
 }

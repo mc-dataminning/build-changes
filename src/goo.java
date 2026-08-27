@@ -1,17 +1,20 @@
-public abstract class goo extends gon implements gpg {
-   private boolean n;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   protected goo(aun $$0, aup $$1, axt $$2) {
-      super($$0, $$1, $$2);
-   }
+public interface goo {
+   List<gcb> a(@Nullable dpy var1, @Nullable ir var2, ayd var3);
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
+   boolean a();
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
-   }
+   boolean b();
+
+   boolean c();
+
+   boolean d();
+
+   gmo e();
+
+   gcn f();
+
+   gcl g();
 }

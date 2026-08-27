@@ -1,17 +1,15 @@
-public interface ekt {
-   void a(id var1);
+import java.util.Locale;
 
-   boolean K_();
-
-   int a();
-
-   default void a(id $$0, boolean $$1) {
-      this.a(jg.a($$0), $$1);
+public class ekt {
+   public static double a(double $$0, double $$1) {
+      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
    }
 
-   void a(jg var1, boolean var2);
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   }
 
-   void a(cyn var1, boolean var2);
-
-   void b(cyn var1);
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   }
 }

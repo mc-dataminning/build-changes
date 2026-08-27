@@ -1,31 +1,40 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bwe<E extends cje> extends bsl<E> {
-   public bwe(int $$0) {
-      super(ImmutableMap.of(bzw.o, bzx.b, bzw.m, bzx.b), $$0);
+public class bwe extends bsw<cjy> {
+   public bwe() {
+      super(ImmutableMap.of());
    }
 
-   protected boolean a(apu $$0, E $$1, long $$2) {
-      return $$1.dI() == null;
+   protected boolean a(aqe $$0, cjy $$1, long $$2) {
+      return c($$1) || b($$1);
    }
 
-   protected boolean a(apu $$0, E $$1) {
-      return $$1.aC() || $$1.bc() || $$1.bq();
-   }
+   protected void b(aqe $$0, cjy $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bsf<?> $$3 = $$1.dQ();
+         if (!$$3.c(cma.g)) {
+            $$3.b(cah.t);
+            $$3.b(cah.m);
+            $$3.b(cah.n);
+            $$3.b(cah.r);
+            $$3.b(cah.q);
+         }
 
-   protected void b(apu $$0, E $$1, long $$2) {
-      if ($$1.aC()) {
-         $$1.b(bre.o);
-         $$1.a(auo.Bo, 5.0F, 1.0F);
-      } else {
-         $$1.a(auo.Bj, 5.0F, 1.0F);
-         this.c($$0, $$1, $$2);
+         $$3.a(cma.g);
       }
    }
 
-   protected void c(apu $$0, E $$1, long $$2) {
-      if ($$1.dI() == null) {
-         $$1.a(bqa.c.b);
+   protected void c(aqe $$0, cjy $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
       }
+   }
+
+   public static boolean b(bre $$0) {
+      return $$0.dQ().a(cah.A);
+   }
+
+   public static boolean c(bre $$0) {
+      return $$0.dQ().a(cah.x);
    }
 }

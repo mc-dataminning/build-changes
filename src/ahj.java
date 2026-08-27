@@ -1,37 +1,29 @@
-public class ahj implements yp<afn> {
-   public static final yg<vi, ahj> a = yp.a(ahj::a, ahj::new);
-   private final boe b;
-   private final int c;
+public class ahj implements yz<afx> {
+   public static final yq<vs, ahj> a = yz.a(ahj::a, ahj::new);
+   private final int b;
 
-   public ahj(boe $$0, int $$1) {
+   public ahj(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private ahj(vi $$0) {
-      this.b = $$0.b(boe.class);
-      this.c = $$0.l();
+   private ahj(vs $$0) {
+      this.b = $$0.readShort();
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(vs $$0) {
+      $$0.l(this.b);
    }
 
    @Override
-   public yr<ahj> a() {
-      return afl.cb;
+   public zb<ahj> a() {
+      return afv.bR;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
-   public boe b() {
+   public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

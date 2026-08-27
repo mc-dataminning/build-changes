@@ -1,48 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-public class bmt<E extends bmr> {
-   private final int a;
-   private final ImmutableList<E> b;
+public class bmt {
+   private final Set<String> a = new ObjectOpenHashSet();
 
-   bmt(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = bms.a($$0);
-   }
+   public Set<bml> a(Supplier<blc> $$0) {
+      Set<bml> $$1 = $$0.get()
+         .e()
+         .stream()
+         .filter($$0x -> !this.a.contains($$0x.getLeft()))
+         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bmk)$$1x.getRight()))
+         .collect(Collectors.toSet());
 
-   public static <E extends bmr> bmt<E> c() {
-      return new bmt<>(ImmutableList.of());
-   }
-
-   @SafeVarargs
-   public static <E extends bmr> bmt<E> a(E... $$0) {
-      return new bmt<>(ImmutableList.copyOf($$0));
-   }
-
-   public static <E extends bmr> bmt<E> a(List<E> $$0) {
-      return new bmt<>($$0);
-   }
-
-   public boolean d() {
-      return this.b.isEmpty();
-   }
-
-   public Optional<E> b(axt $$0) {
-      if (this.a == 0) {
-         return Optional.empty();
-      } else {
-         int $$1 = $$0.a(this.a);
-         return bms.a(this.b, $$1);
+      for (bml $$2 : $$1) {
+         this.a.add($$2.d());
       }
+
+      return $$1;
    }
 
-   public List<E> e() {
-      return this.b;
-   }
-
-   public static <E extends bmr> Codec<bmt<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(bmt::a, bmt::e);
+   private static bml a(Supplier<blc> $$0, String $$1, bmk $$2) {
+      return bml.a($$1, $$2, () -> {
+         bkx.a $$2x = $$0.get().c($$1);
+         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)ayv.b;
+      });
    }
 }

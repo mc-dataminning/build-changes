@@ -1,6 +1,7 @@
-import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
-@FunctionalInterface
-public interface dsg {
-   CompletableFuture<dre> apply(dre var1);
+public interface dsg extends cza {
+   void a(BiConsumer<im, dpy> var1);
+
+   elb B();
 }

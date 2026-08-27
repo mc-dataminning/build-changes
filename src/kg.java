@@ -1,55 +1,45 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
-import org.joml.Vector3f;
+public class kg implements kh {
+   @Override
+   public final csd dispense(ke $$0, csd $$1) {
+      csd $$2 = this.a($$0, $$1);
+      this.a($$0);
+      this.a($$0, $$0.d().c(dfa.b));
+      return $$2;
+   }
 
-public class kg extends ki {
-   public static final Vector3f a = esj.a(3790560).j();
-   public static final kg b = new kg(a, kh.a, 1.0F);
-   public static final Codec<kg> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awu.c.fieldOf("fromColor").forGetter($$0x -> $$0x.h),
-               awu.c.fieldOf("toColor").forGetter($$0x -> $$0x.j),
-               Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, kg::new)
-   );
-   public static final yg<vt, kg> d = yg.a(ye.q, $$0 -> $$0.h, ye.q, $$0 -> $$0.j, ye.h, $$0 -> $$0.i, kg::new);
-   public static final kl.a<kg> e = new kl.a<kg>() {
-      public kg a(km<kg> $$0, StringReader $$1, ip.a $$2) throws CommandSyntaxException {
-         Vector3f $$3 = ki.a($$1);
-         $$1.expect(' ');
-         float $$4 = $$1.readFloat();
-         Vector3f $$5 = ki.a($$1);
-         return new kg($$3, $$5, $$4);
+   protected csd a(ke $$0, csd $$1) {
+      ir $$2 = $$0.d().c(dfa.b);
+      jf $$3 = dfa.a($$0);
+      csd $$4 = $$1.a(1);
+      a($$0.b(), $$4, 6, $$2, $$3);
+      return $$1;
+   }
+
+   public static void a(czu $$0, csd $$1, int $$2, ir $$3, jf $$4) {
+      double $$5 = $$4.a();
+      double $$6 = $$4.b();
+      double $$7 = $$4.c();
+      if ($$3.o() == ir.a.b) {
+         $$6 -= 0.125;
+      } else {
+         $$6 -= 0.15625;
       }
-   };
-   private final Vector3f j;
 
-   public kg(Vector3f $$0, Vector3f $$1, float $$2) {
-      super($$0, $$2);
-      this.j = $$1;
-   }
-
-   public Vector3f b() {
-      return this.h;
-   }
-
-   public Vector3f c() {
-      return this.j;
-   }
-
-   @Override
-   public String a(ip.a $$0) {
-      return String.format(
-         Locale.ROOT, "%s %.2f %.2f %.2f %.2f %.2f %.2f %.2f", kt.j.b(this.a()), this.h.x(), this.h.y(), this.h.z(), this.i, this.j.x(), this.j.y(), this.j.z()
+      cgv $$8 = new cgv($$0, $$5, $$6, $$7, $$1);
+      double $$9 = $$0.z.j() * 0.1 + 0.2;
+      $$8.o(
+         $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
+         $$0.z.a(0.2, 0.0172275 * (double)$$2),
+         $$0.z.a((double)$$3.l() * $$9, 0.0172275 * (double)$$2)
       );
+      $$0.b($$8);
    }
 
-   @Override
-   public km<kg> a() {
-      return kn.p;
+   protected void a(ke $$0) {
+      $$0.b().c(1000, $$0.c(), 0);
+   }
+
+   protected void a(ke $$0, ir $$1) {
+      $$0.b().c(2000, $$0.c(), $$1.d());
    }
 }

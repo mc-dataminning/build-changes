@@ -1,111 +1,63 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djj extends dch implements djh {
-   public static final MapCodec<djj> a = b(djj::new);
-   public static final dqg<dqq> b = dpy.bh;
-   public static final dpz c = dpy.C;
-   protected static final etc d = dch.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final etc e = dch.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+public class djj extends dde implements dcy {
+   public static final MapCodec<djj> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dpn.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, djj::new)
+   );
+   public static final dqy f = dqo.aU;
+   protected static final float g = 6.0F;
+   protected static final ety h = dcv.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   protected final dpn i;
 
    @Override
    public MapCodec<? extends djj> a() {
-      return a;
+      return e;
    }
 
-   public djj(dph.d $$0) {
-      super($$0);
-      this.k(this.n().a(b, dqq.b).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean g_(dpi $$0) {
-      return $$0.c(b) != dqq.c;
+   protected djj(dpn $$0, dpx.d $$1) {
+      super($$1);
+      this.i = $$0;
+      this.k(this.E.b().a(f, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(b, c);
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return h;
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      dqq $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return esz.b();
-         case a:
-            return e;
-         default:
-            return d;
+   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if ($$1.A($$2.c()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
       }
    }
 
-   @Nullable
-   @Override
-   public dpi a(cux $$0) {
-      id $$1 = $$0.a();
-      dpi $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.a(b, dqq.c).a(c, Boolean.valueOf(false));
+   public void a(aqe $$0, im $$1, dpy $$2, ayd $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 4);
       } else {
-         elb $$3 = $$0.q().b_($$1);
-         dpi $$4 = this.n().a(b, dqq.b).a(c, Boolean.valueOf($$3.a() == elc.c));
-         ij $$5 = $$0.k();
-         return $$5 != ij.a && ($$5 == ij.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, dqq.a);
+         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected boolean a(dpi $$0, cux $$1) {
-      crs $$2 = $$1.n();
-      dqq $$3 = $$0.c(b);
-      if ($$3 == dqq.c || !$$2.a(this.p())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
-         ij $$5 = $$1.k();
-         return $$3 == dqq.b ? $$5 == ij.b || $$4 && $$5.o().d() : $$5 == ij.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
+   public boolean b(czx $$0, im $$1, dpy $$2) {
+      return true;
    }
 
    @Override
-   protected elb c_(dpi $$0) {
-      return $$0.c(c) ? elc.c.a(false) : super.c_($$0);
+   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
+      return (double)$$0.z.i() < 0.45;
    }
 
    @Override
-   public boolean a(czh $$0, id $$1, dpi $$2, elb $$3) {
-      return $$2.c(b) != dqq.c ? djh.super.a($$0, $$1, $$2, $$3) : false;
+   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 
    @Override
-   public boolean a(@Nullable cka $$0, cym $$1, id $$2, dpi $$3, ela $$4) {
-      return $$3.c(b) != dqq.c ? djh.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, elc.c, elc.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dpi $$0, elq $$1) {
-      switch ($$1) {
-         case a:
-            return false;
-         case b:
-            return $$0.u().a(avj.a);
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(f);
    }
 }

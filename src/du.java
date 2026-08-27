@@ -1,34 +1,8 @@
-public interface du {
-   du a = new du() {
-      @Override
-      public void a(wi $$0) {
-      }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-      @Override
-      public boolean l_() {
-         return false;
-      }
-
-      @Override
-      public boolean w_() {
-         return false;
-      }
-
-      @Override
-      public boolean U_() {
-         return false;
-      }
-   };
-
-   void a(wi var1);
-
-   boolean l_();
-
-   boolean w_();
-
-   boolean U_();
-
-   default boolean m_() {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface du {
 }

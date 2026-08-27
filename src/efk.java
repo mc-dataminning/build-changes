@@ -1,40 +1,57 @@
-public interface efk {
-   aju<efq> a = a("pillager_outpost");
-   aju<efq> b = a("mineshaft");
-   aju<efq> c = a("mineshaft_mesa");
-   aju<efq> d = a("mansion");
-   aju<efq> e = a("jungle_pyramid");
-   aju<efq> f = a("desert_pyramid");
-   aju<efq> g = a("igloo");
-   aju<efq> h = a("shipwreck");
-   aju<efq> i = a("shipwreck_beached");
-   aju<efq> j = a("swamp_hut");
-   aju<efq> k = a("stronghold");
-   aju<efq> l = a("monument");
-   aju<efq> m = a("ocean_ruin_cold");
-   aju<efq> n = a("ocean_ruin_warm");
-   aju<efq> o = a("fortress");
-   aju<efq> p = a("nether_fossil");
-   aju<efq> q = a("end_city");
-   aju<efq> r = a("buried_treasure");
-   aju<efq> s = a("bastion_remnant");
-   aju<efq> t = a("village_plains");
-   aju<efq> u = a("village_desert");
-   aju<efq> v = a("village_savanna");
-   aju<efq> w = a("village_snowy");
-   aju<efq> x = a("village_taiga");
-   aju<efq> y = a("ruined_portal");
-   aju<efq> z = a("ruined_portal_desert");
-   aju<efq> A = a("ruined_portal_jungle");
-   aju<efq> B = a("ruined_portal_swamp");
-   aju<efq> C = a("ruined_portal_mountain");
-   aju<efq> D = a("ruined_portal_ocean");
-   aju<efq> E = a("ruined_portal_nether");
-   aju<efq> F = a("ancient_city");
-   aju<efq> G = a("trail_ruins");
-   aju<efq> H = a("trial_chambers");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-   private static aju<efq> a(String $$0) {
-      return aju.a(ku.aG, new ajv($$0));
+public record efk(iv<dyh<?, ?>> e, List<efn> f) {
+   public static final Codec<efk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dyh.b.fieldOf("feature").forGetter($$0x -> $$0x.e), efn.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, efk::new)
+   );
+   public static final Codec<iv<efk>> b = akb.a(ld.aH, a);
+   public static final Codec<iz<efk>> c = jk.a(ld.aH, a);
+   public static final Codec<List<iz<efk>>> d = jk.a(ld.aH, a, true).listOf();
+
+   public boolean a(dap $$0, drv $$1, ayd $$2, im $$3) {
+      return this.a(new efl($$0, $$1, Optional.empty()), $$2, $$3);
+   }
+
+   public boolean b(dap $$0, drv $$1, ayd $$2, im $$3) {
+      return this.a(new efl($$0, $$1, Optional.of(this)), $$2, $$3);
+   }
+
+   private boolean a(efl $$0, ayd $$1, im $$2) {
+      Stream<im> $$3 = Stream.of($$2);
+
+      for (efn $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      dyh<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
+   }
+
+   public Stream<dyh<?, ?>> a() {
+      return this.e.a().a();
+   }
+
+   @Override
+   public String toString() {
+      return "Placed " + this.e;
+   }
+
+   public iv<dyh<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<efn> c() {
+      return this.f;
    }
 }

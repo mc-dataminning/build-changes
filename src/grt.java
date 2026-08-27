@@ -1,57 +1,51 @@
-import java.util.Collection;
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-public abstract class grt<E extends feu.a<E>> extends feu<E> {
-   protected grt(int $$0, int $$1, int $$2, int $$3) {
-      super(fby.Q(), $$0, $$1, $$2, $$3);
+public abstract class grt {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
+
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.l() != 0) {
-         this.a(this.d($$0));
+   public void a(grn $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
+      }
+
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
       }
    }
 
-   public void b(int $$0) {
-      this.p($$0);
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
    }
 
-   @Override
-   public int a() {
-      return 0;
+   public boolean c() {
+      return this.c >= 10;
    }
 
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
+   public void d() {
+      this.d = false;
    }
 
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
+   protected int e() {
+      return this.c;
    }
 
-   @Override
-   public int l() {
-      return super.l();
-   }
+   public abstract void f();
 
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int r() {
-      return super.r();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void I() {
-      this.k();
-   }
+   public abstract void b(grn var1);
 }

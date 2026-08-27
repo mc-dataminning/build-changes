@@ -1,51 +1,33 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.nio.charset.StandardCharsets;
 
 public class aun {
-   public static final Codec<aun> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ajv.a.fieldOf("sound_id").forGetter(aun::a), Codec.FLOAT.optionalFieldOf("range").forGetter(aun::b)).apply($$0, aun::a)
-   );
-   public static final Codec<in<aun>> b = ajr.a(ku.ag, a);
-   public static final yg<ByteBuf, aun> c = yg.a(ajv.b, aun::a, ye.h.a(ye::a), aun::b, aun::a);
-   public static final yg<vt, in<aun>> d = ye.a(ku.ag, c);
-   private static final float e = 16.0F;
-   private final ajv f;
-   private final float g;
-   private final boolean h;
+   public static final int a = 1460;
+   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-   private static aun a(ajv $$0, Optional<Float> $$1) {
-      return $$1.<aun>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
-   }
+   public static String a(byte[] $$0, int $$1, int $$2) {
+      int $$3 = $$2 - 1;
+      int $$4 = $$1 > $$3 ? $$3 : $$1;
 
-   public static aun a(ajv $$0) {
-      return new aun($$0, 16.0F, false);
-   }
-
-   public static aun a(ajv $$0, float $$1) {
-      return new aun($$0, $$1, true);
-   }
-
-   private aun(ajv $$0, float $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   public ajv a() {
-      return this.f;
-   }
-
-   public float a(float $$0) {
-      if (this.h) {
-         return this.g;
-      } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+      while (0 != $$0[$$4] && $$4 < $$3) {
+         $$4++;
       }
+
+      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
    }
 
-   private Optional<Float> b() {
-      return this.h ? Optional.of(this.g) : Optional.empty();
+   public static int a(byte[] $$0, int $$1) {
+      return b($$0, $$1, $$0.length);
+   }
+
+   public static int b(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
+   }
+
+   public static int c(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
+   }
+
+   public static String a(byte $$0) {
+      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

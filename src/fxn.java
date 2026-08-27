@@ -1,53 +1,66 @@
-public class fxn extends fyw {
-   fxn(fuq $$0, double $$1, double $$2, double $$3) {
+public class fxn extends fzs {
+   private final float a;
+   private final float b;
+
+   fxn(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, csd $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+   }
+
+   @Override
+   public fyw b() {
+      return fyw.a;
+   }
+
+   protected fxn(fvm $$0, double $$1, double $$2, double $$3, csd $$4) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+      this.a(fcu.Q().as().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public fya b() {
-      return fya.b;
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * axm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
    }
 
-   public static class a implements fxz<kq> {
-      private final fyr a;
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
 
-      public a(fyr $$0) {
-         this.a = $$0;
-      }
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
 
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fxn $$8 = new fxn($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
+   public static class a implements fyv<ks> {
+      public fys a(ks $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fxn($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
       }
    }
 
-   public static class b implements fxz<kq> {
-      private final fyr a;
-
-      public b(fyr $$0) {
-         this.a = $$0;
+   public static class b implements fyv<kz> {
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fxn($$1, $$2, $$3, $$4, new csd(csg.qQ));
       }
+   }
 
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fxn $$8 = new fxn($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+   public static class c implements fyv<kz> {
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fxn($$1, $$2, $$3, $$4, new csd(csg.qC));
       }
    }
 }

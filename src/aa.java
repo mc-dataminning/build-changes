@@ -10,22 +10,22 @@ public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3821;
+   public static final int b = 3823;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "24w10a";
+   public static final String d = "24w11a";
    @Deprecated
    public static final int e = 766;
    @Deprecated
-   public static final int f = 179;
+   public static final int f = 180;
    public static final int g = 3798;
-   private static final int bo = 30;
+   private static final int bp = 30;
    public static final boolean h = true;
    @Deprecated
-   public static final int i = 28;
+   public static final int i = 29;
    @Deprecated
-   public static final int j = 34;
+   public static final int j = 35;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -116,67 +116,68 @@ public class aa {
    public static final long aS = Duration.ofMillis(300L).toNanos();
    public static final float aT = 3600000.0F;
    public static final boolean aU = false;
-   public static boolean aV = true;
-   public static boolean aW;
-   public static Set<TypeReference> aX = Set.of();
-   public static final int aY = 16;
-   public static final int aZ = 256;
-   public static final int ba = 32500;
-   public static final int bb = 2000000;
-   public static final int bc = 16;
-   public static final int bd = 1000000;
-   public static final int be = 32;
-   public static final char[] bf = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
-   public static final int bg = 20;
-   public static final int bh = 50;
-   public static final int bi = 1200;
-   public static final int bj = 24000;
-   public static final float bk = 1365.3334F;
-   public static final float bl = 0.87890625F;
-   public static final float bm = 17.578125F;
-   public static final int bn = 64;
+   public static final boolean aV = false;
+   public static boolean aW = true;
+   public static boolean aX;
+   public static Set<TypeReference> aY = Set.of();
+   public static final int aZ = 16;
+   public static final int ba = 256;
+   public static final int bb = 32500;
+   public static final int bc = 2000000;
+   public static final int bd = 16;
+   public static final int be = 1000000;
+   public static final int bf = 32;
+   public static final char[] bg = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
+   public static final int bh = 20;
+   public static final int bi = 50;
+   public static final int bj = 1200;
+   public static final int bk = 24000;
+   public static final float bl = 1365.3334F;
+   public static final float bm = 0.87890625F;
+   public static final float bn = 17.578125F;
+   public static final int bo = 64;
    @Nullable
-   private static ad bp;
+   private static ad bq;
 
    public static void a(ad $$0) {
-      if (bp == null) {
-         bp = $$0;
-      } else if ($$0 != bp) {
+      if (bq == null) {
+         bq = $$0;
+      } else if ($$0 != bq) {
          throw new IllegalStateException("Cannot override the current game version!");
       }
    }
 
    public static void a() {
-      if (bp == null) {
-         bp = t.a();
+      if (bq == null) {
+         bq = t.a();
       }
    }
 
    public static ad b() {
-      if (bp == null) {
+      if (bq == null) {
          throw new IllegalStateException("Game version not set");
       } else {
-         return bp;
+         return bq;
       }
    }
 
    public static int c() {
-      return 1073742003;
+      return 1073742004;
    }
 
-   public static boolean a(cyn $$0) {
+   public static boolean a(czb $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !as ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
    }
 
    public static void d() {
-      aX = ays.t;
+      aY = azc.t;
    }
 
    static {
       ResourceLeakDetector.setLevel(aJ);
       CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES = false;
-      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new dp();
+      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new dw();
    }
 }

@@ -1,107 +1,111 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class cst extends crn {
-   private static final n a = n.h;
-   private static final n b = n.j;
-   private static final wi c = wi.c(ac.a("item", new ajv("smithing_template.ingredients"))).a(a);
-   private static final wi j = wi.c(ac.a("item", new ajv("smithing_template.applies_to"))).a(a);
-   private static final wi k = wi.c(ac.a("upgrade", new ajv("netherite_upgrade"))).a(a);
-   private static final wi l = wi.c(ac.a("item", new ajv("smithing_template.armor_trim.applies_to"))).a(b);
-   private static final wi m = wi.c(ac.a("item", new ajv("smithing_template.armor_trim.ingredients"))).a(b);
-   private static final wi n = wi.c(ac.a("item", new ajv("smithing_template.armor_trim.base_slot_description")));
-   private static final wi o = wi.c(ac.a("item", new ajv("smithing_template.armor_trim.additions_slot_description")));
-   private static final wi p = wi.c(ac.a("item", new ajv("smithing_template.netherite_upgrade.applies_to"))).a(b);
-   private static final wi q = wi.c(ac.a("item", new ajv("smithing_template.netherite_upgrade.ingredients"))).a(b);
-   private static final wi r = wi.c(ac.a("item", new ajv("smithing_template.netherite_upgrade.base_slot_description")));
-   private static final wi s = wi.c(ac.a("item", new ajv("smithing_template.netherite_upgrade.additions_slot_description")));
-   private static final ajv t = new ajv("item/empty_armor_slot_helmet");
-   private static final ajv u = new ajv("item/empty_armor_slot_chestplate");
-   private static final ajv v = new ajv("item/empty_armor_slot_leggings");
-   private static final ajv w = new ajv("item/empty_armor_slot_boots");
-   private static final ajv x = new ajv("item/empty_slot_hoe");
-   private static final ajv y = new ajv("item/empty_slot_axe");
-   private static final ajv z = new ajv("item/empty_slot_sword");
-   private static final ajv A = new ajv("item/empty_slot_shovel");
-   private static final ajv B = new ajv("item/empty_slot_pickaxe");
-   private static final ajv C = new ajv("item/empty_slot_ingot");
-   private static final ajv D = new ajv("item/empty_slot_redstone_dust");
-   private static final ajv E = new ajv("item/empty_slot_quartz");
-   private static final ajv F = new ajv("item/empty_slot_emerald");
-   private static final ajv G = new ajv("item/empty_slot_diamond");
-   private static final ajv H = new ajv("item/empty_slot_lapis_lazuli");
-   private static final ajv I = new ajv("item/empty_slot_amethyst_shard");
-   private final wi J;
-   private final wi K;
-   private final wi L;
-   private final wi M;
-   private final wi N;
-   private final List<ajv> O;
-   private final List<ajv> P;
+public class cst extends cry {
+   private static final int a = 32;
 
-   public cst(wi $$0, wi $$1, wi $$2, wi $$3, wi $$4, List<ajv> $$5, List<ajv> $$6) {
-      super(new crn.a());
-      this.J = $$0;
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.N = $$4;
-      this.O = $$5;
-      this.P = $$6;
-   }
-
-   public static cst a(aju<ctw> $$0) {
-      return a($$0.a());
-   }
-
-   public static cst a(ajv $$0) {
-      return new cst(l, m, wi.c(ac.a("trim_pattern", $$0)).a(a), n, o, B(), C());
-   }
-
-   public static cst h() {
-      return new cst(p, q, k, r, s, D(), E());
-   }
-
-   private static List<ajv> B() {
-      return List.of(t, u, v, w);
-   }
-
-   private static List<ajv> C() {
-      return List.of(C, D, H, E, G, F, I);
-   }
-
-   private static List<ajv> D() {
-      return List.of(t, z, u, B, v, y, w, x, A);
-   }
-
-   private static List<ajv> E() {
-      return List.of(C);
+   public cst(cry.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(crs $$0, @Nullable czg $$1, List<wi> $$2, cti $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$2.add(this.L);
-      $$2.add(wh.a);
-      $$2.add(j);
-      $$2.add(wh.a().b(this.J));
-      $$2.add(c);
-      $$2.add(wh.a().b(this.K));
+   public csd x() {
+      csd $$0 = super.x();
+      $$0.b(jz.x, new cuc(cud.a));
+      return $$0;
    }
 
-   public wi i() {
-      return this.M;
+   @Override
+   public csd a(csd $$0, czu $$1, bre $$2) {
+      ckl $$3 = $$2 instanceof ckl ? (ckl)$$2 : null;
+      if ($$3 instanceof aqf) {
+         am.A.a((aqf)$$3, $$0);
+      }
+
+      if (!$$1.B) {
+         cuc $$4 = $$0.a(jz.x, cuc.a);
+         $$4.a($$2x -> {
+            if ($$2x.c().a().a()) {
+               $$2x.c().a().a($$3, $$3, $$2, $$2x.e(), 1.0);
+            } else {
+               $$2.b($$2x);
+            }
+         });
+      }
+
+      if ($$3 != null) {
+         $$3.b(avj.c.b(this));
+         $$0.a(1, $$3);
+      }
+
+      if ($$3 == null || !$$3.fN()) {
+         if ($$0.d()) {
+            return new csd(csg.sl);
+         }
+
+         if ($$3 != null) {
+            $$3.ga().e(new csd(csg.sl));
+         }
+      }
+
+      $$2.a(dur.l);
+      return $$0;
    }
 
-   public wi j() {
-      return this.N;
+   @Override
+   public boq a(cvn $$0) {
+      czu $$1 = $$0.q();
+      im $$2 = $$0.a();
+      ckl $$3 = $$0.o();
+      csd $$4 = $$0.n();
+      cuc $$5 = $$4.a(jz.x, cuc.a);
+      dpy $$6 = $$1.a_($$2);
+      if ($$0.k() != ir.a && $$6.a(avo.cc) && $$5.a(cud.a)) {
+         $$1.a(null, $$2, auz.kd, ava.e, 1.0F, 1.0F);
+         $$3.a($$0.p(), csf.a($$4, $$3, new csd(csg.sl)));
+         $$3.b(avj.c.b($$4.f()));
+         if (!$$1.B) {
+            aqe $$7 = (aqe)$$1;
+
+            for (int $$8 = 0; $$8 < 5; $$8++) {
+               $$7.a(kw.aj, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
+            }
+         }
+
+         $$1.a(null, $$2, auz.cB, ava.e, 1.0F, 1.0F);
+         $$1.a(null, dur.z, $$2);
+         $$1.b($$2, dcx.sI.n());
+         return boq.a($$1.B);
+      } else {
+         return boq.d;
+      }
    }
 
-   public List<ajv> k() {
-      return this.O;
+   @Override
+   public int b(csd $$0) {
+      return 32;
    }
 
-   public List<ajv> l() {
-      return this.P;
+   @Override
+   public ctw c(csd $$0) {
+      return ctw.c;
+   }
+
+   @Override
+   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
+      return csf.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public String i(csd $$0) {
+      return cua.a($$0.a(jz.x, cuc.a).f(), this.a() + ".effect.");
+   }
+
+   @Override
+   public void a(csd $$0, @Nullable czu $$1, List<ws> $$2, ctu $$3) {
+      cuc $$4 = $$0.a(jz.x);
+      if ($$4 != null) {
+         $$4.a($$2::add, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
+      }
    }
 }

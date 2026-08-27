@@ -1,102 +1,152 @@
-import com.mojang.datafixers.DataFixer;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 import org.slf4j.Logger;
 
-public class foq extends fjx {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<aju<czg>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(czg.h, -13408734);
-      $$0.put(czg.i, -10075085);
-      $$0.put(czg.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bnt d;
+public abstract class foq<B extends fwq.a<?>> extends fkt {
+   private static final ws y = ws.c("gui.abuseReport.report_sent_msg");
+   private static final ws z = ws.c("gui.abuseReport.sending.title").a(n.r);
+   private static final ws A = ws.c("gui.abuseReport.sent.title").a(n.r);
+   private static final ws B = ws.c("gui.abuseReport.error.title").a(n.r);
+   private static final ws C = ws.c("gui.abuseReport.send.generic_error");
+   protected static final ws a = ws.c("gui.abuseReport.send");
+   protected static final ws b = ws.c("gui.abuseReport.observed_what");
+   protected static final ws c = ws.c("gui.abuseReport.select_reason");
+   private static final ws D = ws.c("gui.abuseReport.describe");
+   protected static final ws d = ws.c("gui.abuseReport.more_comments");
+   private static final ws E = ws.c("gui.abuseReport.comments");
+   protected static final int r = 20;
+   protected static final int s = 280;
+   protected static final int u = 8;
+   private static final Logger F = LogUtils.getLogger();
+   protected final fkt v;
+   protected final fwu w;
+   protected B x;
 
-   @Nullable
-   public static foq a(fby $$0, BooleanConsumer $$1, DataFixer $$2, ena.c $$3, boolean $$4) {
-      try {
-         fox $$5 = $$0.x();
-         asp $$6 = ass.a($$3);
+   protected foq(ws $$0, fkt $$1, fwu $$2, B $$3) {
+      super($$0);
+      this.v = $$1;
+      this.w = $$2;
+      this.x = $$3;
+   }
 
-         foq var10;
-         try (akr $$7 = $$5.a($$3.h(), false, $$6)) {
-            eng $$8 = $$7.d();
-            jb.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new foq($$1, $$2, $$3, $$8.J(), $$4, $$9);
-         }
+   protected ffm a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.w.a().b();
+      ffm $$4 = new ffm(this.p, 0, 0, $$0, $$1, D, E);
+      $$4.a(this.x.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
+   }
 
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
+   protected void m() {
+      this.x.a(this.w).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.w.a().a($$0.a(), $$0.b(), $$0.c());
+         this.m.a(fka.a(z, wr.e, () -> {
+            this.m.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.C();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.m);
+      }).ifRight($$0 -> this.a($$0.b()));
+   }
+
+   private void C() {
+      this.E();
+      this.m.a(fka.a(A, y, wr.d, () -> this.m.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      F.error("Encountered error while sending abuse report", $$0);
+      ws $$2;
+      if ($$0.getCause() instanceof xs $$1) {
+         $$2 = $$1.b();
+      } else {
+         $$2 = C;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(ws $$0) {
+      ws $$1 = $$0.f().a(n.m);
+      this.m.a(fka.a(B, $$1, wr.k, () -> this.m.a(this)));
+   }
+
+   void D() {
+      if (this.x.b()) {
+         this.w.a(this.x.e().b());
       }
    }
 
-   private foq(BooleanConsumer $$0, DataFixer $$1, ena.c $$2, czk $$3, boolean $$4, jb $$5) {
-      super(wi.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.d = new bnt($$2, $$1, $$5, $$4, false);
-   }
-
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.c(fdy.a(wh.e, $$0 -> {
-         this.d.a();
-         this.c.accept(false);
-      }).a(this.k / 2 - 100, this.l / 4 + 150, 200, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.d.b()) {
-         this.c.accept(true);
-      }
+   void E() {
+      this.w.a(null);
    }
 
    @Override
    public void d() {
-      this.c.accept(false);
+      if (this.x.b()) {
+         this.m.a(new foq.a());
+      } else {
+         this.m.a(this.v);
+      }
    }
 
    @Override
    public void j() {
-      this.d.a();
+      this.D();
+      super.j();
    }
 
-   @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, this.i, this.k / 2, 20, 16777215);
-      int $$4 = this.k / 2 - 150;
-      int $$5 = this.k / 2 + 150;
-      int $$6 = this.l / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.m, this.d.h(), this.k / 2, $$6 - 9 - 2, 10526880);
-      if (this.d.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.m, wi.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
-         $$0.b(this.m, wi.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.m, wi.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+   class a extends fnv {
+      private static final ws c = ws.c("gui.abuseReport.discard.title").a(n.r);
+      private static final ws d = ws.c("gui.abuseReport.discard.content");
+      private static final ws r = ws.c("gui.abuseReport.discard.return");
+      private static final ws s = ws.c("gui.abuseReport.discard.draft");
+      private static final ws u = ws.c("gui.abuseReport.discard.discard");
 
-         for (aju<czg> $$9 : this.d.c()) {
-            int $$10 = axm.d(this.d.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
-         }
+      protected a() {
+         super(c, d, d);
+      }
 
-         int $$11 = this.d.f() + this.d.g();
-         wi $$12 = wi.a("optimizeWorld.progress.counter", $$11, this.d.e());
-         wi $$13 = wi.a("optimizeWorld.progress.percentage", axm.d(this.d.d() * 100.0F));
-         $$0.a(this.m, $$12, this.k / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.m, $$13, this.k / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+      @Override
+      protected fii m() {
+         fil $$0 = fil.d().a(8);
+         $$0.c().b();
+         fil $$1 = $$0.a(fil.e().a(8));
+         $$1.a(feu.a(r, $$0x -> this.d()).a());
+         $$1.a(feu.a(s, $$0x -> {
+            foq.this.D();
+            this.m.a(foq.this.v);
+         }).a());
+         $$0.a(feu.a(u, $$0x -> {
+            foq.this.E();
+            this.m.a(foq.this.v);
+         }).a());
+         return $$0;
+      }
+
+      @Override
+      public void d() {
+         this.m.a(foq.this);
+      }
+
+      @Override
+      public boolean aD_() {
+         return false;
       }
    }
 }

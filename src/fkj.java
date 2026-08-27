@@ -1,133 +1,58 @@
-enum fkj {
-   a(
-      new fkj.a(
-         new ajv("advancements/tab_above_left_selected"), new ajv("advancements/tab_above_middle_selected"), new ajv("advancements/tab_above_right_selected")
-      ),
-      new fkj.a(new ajv("advancements/tab_above_left"), new ajv("advancements/tab_above_middle"), new ajv("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fkj.a(
-         new ajv("advancements/tab_below_left_selected"), new ajv("advancements/tab_below_middle_selected"), new ajv("advancements/tab_below_right_selected")
-      ),
-      new fkj.a(new ajv("advancements/tab_below_left"), new ajv("advancements/tab_below_middle"), new ajv("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fkj.a(
-         new ajv("advancements/tab_left_top_selected"), new ajv("advancements/tab_left_middle_selected"), new ajv("advancements/tab_left_bottom_selected")
-      ),
-      new fkj.a(new ajv("advancements/tab_left_top"), new ajv("advancements/tab_left_middle"), new ajv("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fkj.a(
-         new ajv("advancements/tab_right_top_selected"), new ajv("advancements/tab_right_middle_selected"), new ajv("advancements/tab_right_bottom_selected")
-      ),
-      new fkj.a(new ajv("advancements/tab_right_top"), new ajv("advancements/tab_right_middle"), new ajv("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   private final fkj.a e;
-   private final fkj.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fkj extends fkv {
+   private static final ws a = ws.c("options.online.title");
+   @Nullable
+   private final fcx<Unit> u;
 
-   private fkj(fkj.a $$0, fkj.a $$1, int $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-   }
-
-   public int a() {
-      return this.i;
-   }
-
-   public void a(fdl $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fkj.a $$5 = $$3 ? this.e : this.f;
-      ajv $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
-      } else {
-         $$6 = $$5.b();
+   public static fkj a(fcu $$0, fkt $$1, fcy $$2) {
+      List<fcx<?>> $$3 = new ArrayList<>();
+      $$3.add($$2.T());
+      $$3.add($$2.U());
+      fcx<Unit> $$4 = x.a(
+         $$0.r,
+         $$0x -> {
+            bon $$1x = $$0x.ak();
+            return new fcx<>(
+               "options.difficulty.online",
+               fcx.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new fcx.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
+         }
+      );
+      if ($$4 != null) {
+         $$3.add($$4);
       }
 
-      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
+      return new fkj($$1, $$2, $$3.toArray(new fcx[0]), $$4);
    }
 
-   public void a(fdl $$0, int $$1, int $$2, int $$3, crs $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
+   private fkj(fkt $$0, fcy $$1, fcx<?>[] $$2, @Nullable fcx<Unit> $$3) {
+      super($$0, $$1, a, $$2);
+      this.u = $$3;
+   }
+
+   @Override
+   protected void aM_() {
+      super.aM_();
+      if (this.u != null) {
+         fes $$0 = this.s.b(this.u);
+         if ($$0 != null) {
+            $$0.j = false;
+         }
       }
 
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      fes $$1 = this.s.b(this.c.ai());
+      if ($$1 != null) {
+         $$1.j = this.m.D();
       }
-   }
-
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
-      }
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
-   }
-
-   static record a(ajv a, ajv b, ajv c) {
    }
 }

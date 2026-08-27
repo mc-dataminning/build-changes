@@ -1,26 +1,37 @@
-public enum ahm {
-   a,
-   b,
-   c;
+public class ahm implements yz<afx> {
+   public static final yq<wd, ahm> a = yz.a(ahm::a, ahm::new);
+   private final int b;
+   private final csd c;
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
-
-   public static ahm a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public ahm(int $$0, csd $$1) {
+      this.b = $$0;
+      this.c = $$1.r();
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   private ahm(wd $$0) {
+      this.b = $$0.readShort();
+      this.c = csd.e.decode($$0);
+   }
+
+   private void a(wd $$0) {
+      $$0.l(this.b);
+      csd.e.encode($$0, this.c);
+   }
+
+   @Override
+   public zb<ahm> a() {
+      return afv.bU;
+   }
+
+   public void a(afx $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public csd e() {
+      return this.c;
    }
 }

@@ -1,29 +1,24 @@
-public class afr implements yp<afn> {
-   public static final yg<vi, afr> a = yp.a(afr::a, afr::new);
-   private final boc b;
+import java.util.Collection;
+import java.util.List;
 
-   public afr(boc $$0) {
-      this.b = $$0;
-   }
+public class afr implements yz<abk> {
+   public static final yq<wd, afr> a = yq.a(cwi.a.a(yo.a()), $$0 -> $$0.b, afr::new);
+   private final List<cwi<?>> b;
 
-   private afr(vi $$0) {
-      this.b = boc.a($$0.readUnsignedByte());
-   }
-
-   private void a(vi $$0) {
-      $$0.k(this.b.a());
+   public afr(Collection<cwi<?>> $$0) {
+      this.b = List.copyOf($$0);
    }
 
    @Override
-   public yr<afr> a() {
-      return afl.bg;
+   public zb<afr> a() {
+      return afv.bd;
    }
 
-   public void a(afn $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public boc b() {
+   public List<cwi<?>> b() {
       return this.b;
    }
 }

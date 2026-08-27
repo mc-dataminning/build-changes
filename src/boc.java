@@ -1,49 +1,49 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public enum boc implements ayg {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
-
-   public static final ayg.a<boc> e = ayg.a(boc::values);
-   private static final IntFunction<boc> f = awd.a(boc::a, values(), awd.a.b);
+public class boc extends bnv {
+   public static final Codec<boc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bna.b(bnv.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, boc::new)
+   );
+   private final bna<bnv> b;
+   private final int f;
    private final int g;
-   private final String h;
 
-   private boc(int $$0, String $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
+   public boc(bna<bnv> $$0) {
+      this.b = $$0;
+      List<bnc.b<bnv>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
 
-   public int a() {
-      return this.g;
-   }
+      for (bnc.b<bnv> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
+      }
 
-   public wi b() {
-      return wi.c("options.difficulty." + this.h);
-   }
-
-   public wi d() {
-      return wi.c("options.difficulty." + this.h + ".info");
-   }
-
-   public static boc a(int $$0) {
-      return f.apply($$0);
-   }
-
-   @Nullable
-   public static boc a(String $$0) {
-      return e.a($$0);
-   }
-
-   public String e() {
-      return this.h;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public int a(ayd $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.g;
+   }
+
+   @Override
+   public bnw<?> c() {
+      return bnw.e;
    }
 }

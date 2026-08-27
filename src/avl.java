@@ -1,9 +1,8 @@
-public interface avl {
-   avt<crk> a = a("regular_goat_horns");
-   avt<crk> b = a("screaming_goat_horns");
-   avt<crk> c = a("goat_horns");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static avt<crk> a(String $$0) {
-      return avt.a(ku.E, new ajv($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface avl {
 }

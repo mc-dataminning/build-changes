@@ -1,49 +1,115 @@
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
+import com.google.common.collect.Lists;
 import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-public class tf implements ArgumentType<te> {
-   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+public class tf {
+   private static final char a = ' ';
+   private static final char b = '_';
+   private static final char c = '+';
+   private static final char d = 'x';
+   private static final char e = 'X';
+   private final Collection<su> f = Lists.newArrayList();
+   private final Collection<sv> g = Lists.newArrayList();
 
-   public te a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      Optional<te> $$2 = sm.e($$1);
-      if ($$2.isPresent()) {
-         return $$2.get();
-      } else {
-         Message $$3 = wi.b("No such test: " + $$1);
-         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
-      }
+   public tf() {
    }
 
-   public static tf a() {
-      return new tf();
+   public tf(Collection<su> $$0) {
+      this.f.addAll($$0);
    }
 
-   public static te a(CommandContext<dv> $$0, String $$1) {
-      return (te)$$0.getArgument($$1, te.class);
+   public void a(su $$0) {
+      this.f.add($$0);
+      this.g.forEach($$0::a);
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return a($$0, $$1);
+   public void a(sv $$0) {
+      this.g.add($$0);
+      this.f.forEach($$1 -> $$1.a($$0));
    }
 
-   public static <S> CompletableFuture<Suggestions> a(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      Stream<String> $$2 = sm.a().stream().map(te::c);
-      return ea.b($$2, $$1);
+   public void a(final Consumer<su> $$0) {
+      this.a(new sv() {
+         @Override
+         public void a(su $$0x) {
+         }
+
+         @Override
+         public void a(su $$0x, sx $$1) {
+         }
+
+         @Override
+         public void b(su $$0x, sx $$1) {
+            $$0.accept($$0);
+         }
+
+         @Override
+         public void a(su $$0x, su $$1, sx $$2) {
+         }
+      });
    }
 
-   public Collection<String> getExamples() {
-      return a;
+   public int a() {
+      return (int)this.f.stream().filter(su::h).filter(su::q).count();
+   }
+
+   public int b() {
+      return (int)this.f.stream().filter(su::h).filter(su::r).count();
+   }
+
+   public int c() {
+      return (int)this.f.stream().filter(su::j).count();
+   }
+
+   public boolean d() {
+      return this.a() > 0;
+   }
+
+   public boolean e() {
+      return this.b() > 0;
+   }
+
+   public Collection<su> f() {
+      return this.f.stream().filter(su::h).filter(su::q).collect(Collectors.toList());
+   }
+
+   public Collection<su> g() {
+      return this.f.stream().filter(su::h).filter(su::r).collect(Collectors.toList());
+   }
+
+   public int h() {
+      return this.f.size();
+   }
+
+   public boolean i() {
+      return this.c() == this.h();
+   }
+
+   public String j() {
+      StringBuffer $$0 = new StringBuffer();
+      $$0.append('[');
+      this.f.forEach($$1 -> {
+         if (!$$1.i()) {
+            $$0.append(' ');
+         } else if ($$1.g()) {
+            $$0.append('+');
+         } else if ($$1.h()) {
+            $$0.append((char)($$1.q() ? 'X' : 'x'));
+         } else {
+            $$0.append('_');
+         }
+      });
+      $$0.append(']');
+      return $$0.toString();
+   }
+
+   @Override
+   public String toString() {
+      return this.j();
+   }
+
+   public void b(su $$0) {
+      this.f.remove($$0);
    }
 }

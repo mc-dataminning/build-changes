@@ -1,35 +1,59 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dcq extends dch {
-   protected dcq(dph.d $$0) {
+public class dcq extends deq {
+   public static final MapCodec<dcq> a = b(dcq::new);
+   public static final int b = 3;
+   public static final dqy c = dqo.as;
+   private static final ety[] g = new ety[]{
+      dcv.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dcv.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dcv.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dcv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
+   };
+
+   @Override
+   public MapCodec<dcq> a() {
+      return a;
+   }
+
+   public dcq(dpx.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dcq> a();
-
-   protected boolean b(dpi $$0, cym $$1, id $$2) {
-      return $$0.a(ave.af) || $$0.a(dcj.cC);
+   protected dqy b() {
+      return c;
    }
 
    @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      return !$$0.a($$3, $$4) ? dcj.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public int c() {
+      return 3;
    }
 
    @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      id $$3 = $$2.d();
-      return this.b($$1.a_($$3), $$1, $$3);
+   protected czt d() {
+      return csg.vl;
    }
 
    @Override
-   protected boolean a_(dpi $$0, cym $$1, id $$2) {
-      return $$0.u().c();
+   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   protected boolean a(dpi $$0, elq $$1) {
-      return $$1 == elq.c && !this.aG ? true : super.a($$0, $$1);
+   protected int a(czu $$0) {
+      return super.a($$0) / 3;
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return g[this.g($$0)];
    }
 }

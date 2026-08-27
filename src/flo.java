@@ -1,96 +1,214 @@
-public class flo {
-   private static final ajv a = new ajv("minecraft", "alt");
-   private static final xf b = xf.a.a(a);
-   private static final flo c = new flo();
-   private final axt d = axt.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
 
-   private flo() {
+public class flo extends fkt {
+   static final akf a = new akf("gamemode_switcher/slot");
+   static final akf b = new akf("gamemode_switcher/selection");
+   private static final akf c = new akf("textures/gui/container/gamemode_switcher.png");
+   private static final int d = 128;
+   private static final int r = 128;
+   private static final int s = 26;
+   private static final int u = 5;
+   private static final int v = 31;
+   private static final int w = 5;
+   private static final int x = flo.a.values().length * 31 - 5;
+   private static final ws y = ws.a("debug.gamemodes.select_next", ws.c("debug.gamemodes.press_f4").a(n.l));
+   private final flo.a z;
+   private flo.a A;
+   private int B;
+   private int C;
+   private boolean D;
+   private final List<flo.b> E = Lists.newArrayList();
+
+   public flo() {
+      super(fcm.a);
+      this.z = flo.a.a(this.m());
+      this.A = this.z;
    }
 
-   public static flo a() {
-      return c;
+   private czr m() {
+      fvv $$0 = fcu.Q().q;
+      czr $$1 = $$0.i();
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         return $$0.j() == czr.b ? czr.a : czr.b;
+      }
    }
 
-   public wn a(fdj $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.A = this.z;
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
+      for (int $$0 = 0; $$0 < flo.a.e.length; $$0++) {
+         flo.a $$1 = flo.a.e[$$0];
+         this.E.add(new flo.b($$1, this.n / 2 - x / 2 + $$0 * 31, this.o / 2 - 31));
+      }
+   }
+
+   @Override
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      if (!this.D()) {
+         $$0.c().a();
+         RenderSystem.enableBlend();
+         int $$4 = this.n / 2 - 62;
+         int $$5 = this.o / 2 - 31 - 27;
+         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
+         $$0.c().b();
+         super.a($$0, $$1, $$2, $$3);
+         $$0.a(this.p, this.A.a(), this.n / 2, this.o / 2 - 31 - 20, -1);
+         $$0.a(this.p, y, this.n / 2, this.o / 2 + 5, 16777215);
+         if (!this.D) {
+            this.B = $$1;
+            this.C = $$2;
+            this.D = true;
          }
 
-         $$2.append(ac.a(this.e, this.d));
-      }
+         boolean $$6 = this.B == $$1 && this.C == $$2;
 
-      return $$0.b().a(wi.b($$2.toString()).c(b), $$1, xf.a);
+         for (flo.b $$7 : this.E) {
+            $$7.a($$0, $$1, $$2, $$3);
+            $$7.b(this.A == $$7.b);
+            if (!$$6 && $$7.A()) {
+               this.A = $$7.b;
+            }
+         }
+      }
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   @Override
+   public void b(feh $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void C() {
+      a(this.m, this.A);
+   }
+
+   private static void a(fcu $$0, flo.a $$1) {
+      if ($$0.q != null && $$0.s != null) {
+         flo.a $$2 = flo.a.a($$0.q.j());
+         if ($$0.s.m(2) && $$1 != $$2) {
+            $$0.s.h.d($$1.b());
+         }
+      }
+   }
+
+   private boolean D() {
+      if (!ewi.a(this.m.aO().i(), 292)) {
+         this.C();
+         this.m.a(null);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 293) {
+         this.D = false;
+         this.A = this.A.c();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   static enum a {
+      a(ws.c("gameMode.creative"), "gamemode creative", new csd(dcx.i)),
+      b(ws.c("gameMode.survival"), "gamemode survival", new csd(csg.pa)),
+      c(ws.c("gameMode.adventure"), "gamemode adventure", new csd(csg.uj)),
+      d(ws.c("gameMode.spectator"), "gamemode spectator", new csd(csg.ss));
+
+      protected static final flo.a[] e = values();
+      private static final int j = 16;
+      protected static final int f = 5;
+      final ws g;
+      final String h;
+      final csd i;
+
+      private a(ws $$0, String $$1, csd $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+      }
+
+      void a(feh $$0, int $$1, int $$2) {
+         $$0.a(this.i, $$1, $$2);
+      }
+
+      ws a() {
+         return this.g;
+      }
+
+      String b() {
+         return this.h;
+      }
+
+      flo.a c() {
+         return switch (this) {
+            case a -> b;
+            case b -> c;
+            case c -> d;
+            case d -> a;
+         };
+      }
+
+      static flo.a a(czr $$0) {
+         return switch ($$0) {
+            case d -> d;
+            case a -> b;
+            case b -> a;
+            case c -> c;
+         };
+      }
+   }
+
+   public class b extends fes {
+      final flo.a b;
+      private boolean c;
+
+      public b(flo.a $$1, int $$2, int $$3) {
+         super($$2, $$3, 26, 26, $$1.a());
+         this.b = $$1;
+      }
+
+      @Override
+      public void b(feh $$0, int $$1, int $$2, float $$3) {
+         this.a($$0);
+         this.b.a($$0, this.C() + 5, this.D() + 5);
+         if (this.c) {
+            this.b($$0);
+         }
+      }
+
+      @Override
+      public void a(fiq $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public boolean A() {
+         return super.A() || this.c;
+      }
+
+      public void b(boolean $$0) {
+         this.c = $$0;
+      }
+
+      private void a(feh $$0) {
+         $$0.a(flo.a, this.C(), this.D(), 26, 26);
+      }
+
+      private void b(feh $$0) {
+         $$0.a(flo.b, this.C(), this.D(), 26, 26);
+      }
    }
 }

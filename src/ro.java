@@ -1,65 +1,54 @@
-public class ro {
-   public static final aju<eeu> a = rt.a("monster_room");
-   public static final aju<eeu> b = rt.a("monster_room_deep");
-   public static final aju<eeu> c = rt.a("fossil_upper");
-   public static final aju<eeu> d = rt.a("fossil_lower");
-   public static final aju<eeu> e = rt.a("dripstone_cluster");
-   public static final aju<eeu> f = rt.a("large_dripstone");
-   public static final aju<eeu> g = rt.a("pointed_dripstone");
-   public static final aju<eeu> h = rt.a("underwater_magma");
-   public static final aju<eeu> i = rt.a("glow_lichen");
-   public static final aju<eeu> j = rt.a("rooted_azalea_tree");
-   public static final aju<eeu> k = rt.a("cave_vines");
-   public static final aju<eeu> l = rt.a("lush_caves_vegetation");
-   public static final aju<eeu> m = rt.a("lush_caves_clay");
-   public static final aju<eeu> n = rt.a("lush_caves_ceiling_vegetation");
-   public static final aju<eeu> o = rt.a("spore_blossom");
-   public static final aju<eeu> p = rt.a("classic_vines_cave_feature");
-   public static final aju<eeu> q = rt.a("amethyst_geode");
-   public static final aju<eeu> r = rt.a("sculk_patch_deep_dark");
-   public static final aju<eeu> s = rt.a("sculk_patch_ancient_city");
-   public static final aju<eeu> t = rt.a("sculk_vein");
+import java.util.List;
 
-   public static void a(pz<eeu> $$0) {
-      io<dxr<?, ?>> $$1 = $$0.a(ku.az);
-      in<dxr<?, ?>> $$2 = $$1.b(rc.a);
-      in<dxr<?, ?>> $$3 = $$1.b(rc.b);
-      in<dxr<?, ?>> $$4 = $$1.b(rc.c);
-      in<dxr<?, ?>> $$5 = $$1.b(rc.d);
-      in<dxr<?, ?>> $$6 = $$1.b(rc.e);
-      in<dxr<?, ?>> $$7 = $$1.b(rc.f);
-      in<dxr<?, ?>> $$8 = $$1.b(rc.g);
-      in<dxr<?, ?>> $$9 = $$1.b(rc.h);
-      in<dxr<?, ?>> $$10 = $$1.b(rc.i);
-      in<dxr<?, ?>> $$11 = $$1.b(rc.j);
-      in<dxr<?, ?>> $$12 = $$1.b(rc.m);
-      in<dxr<?, ?>> $$13 = $$1.b(rc.r);
-      in<dxr<?, ?>> $$14 = $$1.b(rc.s);
-      in<dxr<?, ?>> $$15 = $$1.b(rc.t);
-      in<dxr<?, ?>> $$16 = $$1.b(rk.c);
-      in<dxr<?, ?>> $$17 = $$1.b(rc.u);
-      in<dxr<?, ?>> $$18 = $$1.b(rc.v);
-      in<dxr<?, ?>> $$19 = $$1.b(rc.w);
-      in<dxr<?, ?>> $$20 = $$1.b(rc.x);
-      rt.a($$0, a, $$2, een.a(10), eer.a(), eep.a(dvu.a(0), dvu.b()), eei.a());
-      rt.a($$0, b, $$2, een.a(4), eer.a(), eep.a(dvu.b(6), dvu.a(-1)), eei.a());
-      rt.a($$0, c, $$3, efa.a(64), eer.a(), eep.a(dvu.a(0), dvu.b()), eei.a());
-      rt.a($$0, d, $$4, efa.a(64), eer.a(), eep.a(dvu.a(), dvu.a(-8)), eei.a());
-      rt.a($$0, e, $$5, een.a(bnq.a(48, 96)), eer.a(), rt.i, eei.a());
-      rt.a($$0, f, $$6, een.a(bnq.a(10, 48)), eer.a(), rt.i, eei.a());
-      rt.a($$0, g, $$7, een.a(bnq.a(192, 256)), eer.a(), rt.i, een.a(bnq.a(1, 5)), eez.a(bnf.a(0.0F, 3.0F, -10, 10), bnf.a(0.0F, 0.6F, -2, 2)), eei.a());
-      rt.a($$0, h, $$8, een.a(bnq.a(44, 52)), eer.a(), rt.i, efc.a(dva.a.c, Integer.MIN_VALUE, -2), eei.a());
-      rt.a($$0, i, $$9, een.a(bnq.a(104, 157)), rt.i, eer.a(), efc.a(dva.a.c, Integer.MIN_VALUE, -13), eei.a());
-      rt.a($$0, j, $$10, een.a(bnq.a(1, 2)), eer.a(), rt.i, eeo.a(ij.b, dwh.c(), dwh.c, 12), eez.a(bnh.a(-1)), eei.a());
-      rt.a($$0, k, $$11, een.a(188), eer.a(), rt.i, eeo.a(ij.b, dwh.a(ij.a), dwh.c, 12), eez.a(bnh.a(-1)), eei.a());
-      rt.a($$0, l, $$12, een.a(125), eer.a(), rt.i, eeo.a(ij.a, dwh.c(), dwh.c, 12), eez.a(bnh.a(1)), eei.a());
-      rt.a($$0, m, $$13, een.a(62), eer.a(), rt.i, eeo.a(ij.a, dwh.c(), dwh.c, 12), eez.a(bnh.a(1)), eei.a());
-      rt.a($$0, n, $$14, een.a(125), eer.a(), rt.i, eeo.a(ij.b, dwh.c(), dwh.c, 12), eez.a(bnh.a(-1)), eei.a());
-      rt.a($$0, o, $$15, een.a(25), eer.a(), rt.i, eeo.a(ij.b, dwh.c(), dwh.c, 12), eez.a(bnh.a(-1)), eei.a());
-      rt.a($$0, p, $$16, een.a(256), eer.a(), rt.i, eei.a());
-      rt.a($$0, q, $$17, efa.a(24), eer.a(), eep.a(dvu.b(6), dvu.a(30)), eei.a());
-      rt.a($$0, r, $$18, een.a(bnh.a(256)), eer.a(), rt.i, eei.a());
-      rt.a($$0, s, $$19);
-      rt.a($$0, t, $$20, een.a(bnq.a(204, 250)), eer.a(), rt.i, eei.a());
+public class ro {
+   public static void a(qj<dyh<?, ?>> $$0) {
+      rl.a($$0);
+      rm.a($$0);
+      rn.a($$0);
+      rp.a($$0);
+      rq.a($$0);
+      rr.a($$0);
+      rs.a($$0);
+      rt.a($$0);
+      ru.a($$0);
+   }
+
+   private static dwx a(List<dcv> $$0) {
+      dwx $$1;
+      if (!$$0.isEmpty()) {
+         $$1 = dwx.a(dwx.c, dwx.a(ir.a.q(), $$0));
+      } else {
+         $$1 = dwx.c;
+      }
+
+      return $$1;
+   }
+
+   public static ebl a(int $$0, iv<efk> $$1) {
+      return new ebl($$0, 7, 3, $$1);
+   }
+
+   public static <FC extends eay, F extends dyu<FC>> ebl a(F $$0, FC $$1, List<dcv> $$2, int $$3) {
+      return a($$3, sd.a($$0, $$1, a($$2)));
+   }
+
+   public static <FC extends eay, F extends dyu<FC>> ebl a(F $$0, FC $$1, List<dcv> $$2) {
+      return a($$0, $$1, $$2, 96);
+   }
+
+   public static <FC extends eay, F extends dyu<FC>> ebl a(F $$0, FC $$1) {
+      return a($$0, $$1, List.of(), 96);
+   }
+
+   public static ake<dyh<?, ?>> a(String $$0) {
+      return ake.a(ld.aB, new akf($$0));
+   }
+
+   public static void a(qj<dyh<?, ?>> $$0, ake<dyh<?, ?>> $$1, dyu<ebf> $$2) {
+      a($$0, $$1, $$2, eay.m);
+   }
+
+   public static <FC extends eay, F extends dyu<FC>> void a(qj<dyh<?, ?>> $$0, ake<dyh<?, ?>> $$1, F $$2, FC $$3) {
+      $$0.a($$1, new dyh($$2, $$3));
    }
 }

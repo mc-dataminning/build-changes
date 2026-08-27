@@ -1,31 +1,40 @@
-public class ctl extends crn {
-   private static final int a = 10;
+public class ctl extends cry {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-   public ctl(crn.a $$0) {
+   public ctl(cry.a $$0) {
       super($$0);
    }
 
    @Override
-   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
-      if (!$$0.x_()) {
-         esj $$3 = new esj($$1.dk().a(), $$1.dv(), $$1.dk().c()).e($$1.bK().a(0.8F));
-         if (!$$0.a_(id.a($$3)).r()) {
-            $$3 = new esj($$1.dk().a(), $$1.dv(), $$1.dk().c()).e($$1.bK().a(0.05F));
-         }
+   public int b(csd $$0) {
+      return 1200;
+   }
 
-         clk $$4 = new clk($$1, $$0, $$3.a(), $$3.b(), $$3.c());
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   @Override
+   public ctw c(csd $$0) {
+      return ctw.h;
+   }
 
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), auo.BU, aup.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      crs $$5 = $$1.b($$2);
-      $$1.gu().a(this, 10);
-      $$1.b(auz.c.b(this));
-      if (!$$1.f()) {
-         $$5.g(1);
-      }
+   @Override
+   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
+      $$1.a(auz.yI, 1.0F, 1.0F);
+      $$1.b(avj.c.b(this));
+      return csf.a($$0, $$1, $$2);
+   }
 
-      return bog.a($$5, $$0.x_());
+   @Override
+   public csd a(csd $$0, czu $$1, bre $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(csd $$0, czu $$1, bre $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(bre $$0) {
+      $$0.a(auz.yJ, 1.0F, 1.0F);
    }
 }

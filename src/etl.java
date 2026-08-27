@@ -1,34 +1,21 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-public interface etl {
-   int a();
+public class etl extends AbstractDoubleList {
+   private final int a;
 
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
+   etl(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
    }
 
-   default int b() {
-      return this.b(1);
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
    }
 
-   default void c() {
-      this.a(0);
+   public int size() {
+      return this.a + 1;
    }
-
-   boolean d();
-
-   void e();
-
-   void f();
-
-   @Nullable
-   wi g();
-
-   void a(@Nullable wi var1);
-
-   void a(@Nullable xy var1);
 }

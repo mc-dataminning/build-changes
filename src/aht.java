@@ -1,41 +1,37 @@
-public record aht(int b, aig c) implements yp<ahs> {
-   public static final yg<vi, aht> a = yp.a(aht::a, aht::new);
-   private static final int d = 1048576;
+public class aht implements yz<afx> {
+   public static final yq<vs, aht> a = yz.a(aht::a, aht::new);
+   private final bop b;
+   private final int c;
 
-   private aht(vi $$0) {
-      this($$0.l(), a($$0.q(), $$0));
+   public aht(bop $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static aig a(ajv $$0, vi $$1) {
-      return b($$0, $$1);
+   private aht(vs $$0) {
+      this.b = $$0.b(bop.class);
+      this.c = $$0.l();
    }
 
-   private static aii b(ajv $$0, vi $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.j($$2);
-         return new aii($$0);
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void a(vi $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
+   private void a(vs $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public yr<aht> a() {
-      return ahy.a;
+   public zb<aht> a() {
+      return afv.cb;
    }
 
-   public void a(ahs $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
-   public aig e() {
+   public bop b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 }

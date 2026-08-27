@@ -1,27 +1,49 @@
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dqc extends dqg<ij> {
-   protected dqc(String $$0, Collection<ij> $$1) {
-      super($$0, ij.class, $$1);
+public class dqc {
+   private final czx a;
+   private final im b;
+   private final boolean c;
+   @Nullable
+   private dpy d;
+   @Nullable
+   private dnd e;
+   private boolean f;
+
+   public dqc(czx $$0, im $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
    }
 
-   public static dqc a(String $$0) {
-      return a($$0, $$0x -> true);
+   public dpy a() {
+      if (this.d == null && (this.c || this.a.B(this.b))) {
+         this.d = this.a.a_(this.b);
+      }
+
+      return this.d;
    }
 
-   public static dqc a(String $$0, Predicate<ij> $$1) {
-      return a($$0, Arrays.stream(ij.values()).filter($$1).collect(Collectors.toList()));
+   @Nullable
+   public dnd b() {
+      if (this.e == null && !this.f) {
+         this.e = this.a.c_(this.b);
+         this.f = true;
+      }
+
+      return this.e;
    }
 
-   public static dqc a(String $$0, ij... $$1) {
-      return a($$0, Lists.newArrayList($$1));
+   public czx c() {
+      return this.a;
    }
 
-   public static dqc a(String $$0, Collection<ij> $$1) {
-      return new dqc($$0, $$1);
+   public im d() {
+      return this.b;
+   }
+
+   public static Predicate<dqc> a(Predicate<dpy> $$0) {
+      return $$1 -> $$1 != null && $$0.test($$1.a());
    }
 }

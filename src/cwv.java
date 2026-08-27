@@ -1,25 +1,15 @@
-public class cwv extends cwz {
-   public cwv(cwz.a $$0, bqh... $$1) {
-      super($$0, avm.bo, $$1);
+public class cwv extends cvp {
+   public cwv(String $$0, cvv $$1, cwd $$2, csd $$3, float $$4, int $$5) {
+      super(cwl.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 25;
+   public csd g() {
+      return new csd(dcx.cD);
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
+   public cwk<?> ao_() {
+      return cwk.p;
    }
 }

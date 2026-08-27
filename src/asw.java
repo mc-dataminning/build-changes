@@ -1,19 +1,180 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface asw<T> {
-   static asw<InputStream> create(Path $$0) {
-      return () -> Files.newInputStream($$0);
+public class asw {
+   private static final Logger a = LogUtils.getLogger();
+   private final arz b;
+   private final asw.c c;
+   private final asw.a d;
+   private final asb e;
+
+   @Nullable
+   public static asw a(arz $$0, asw.c $$1, asc $$2, asb $$3) {
+      int $$4 = aa.b().a($$2);
+      asw.a $$5 = a($$0, $$1, $$4);
+      return $$5 != null ? new asw($$0, $$1, $$5, $$3) : null;
    }
 
-   static asw<InputStream> create(ZipFile $$0, ZipEntry $$1) {
-      return () -> $$0.getInputStream($$1);
+   public asw(arz $$0, asw.c $$1, asw.a $$2, asb $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   T get() throws IOException;
+   @Nullable
+   public static asw.a a(arz $$0, asw.c $$1, int $$2) {
+      try {
+         asw.a var11;
+         try (asa $$3 = $$1.a($$0)) {
+            asp $$4 = $$3.a(asp.b);
+            if ($$4 == null) {
+               a.warn("Missing metadata in pack {}", $$0.a());
+               return null;
+            }
+
+            arw $$5 = $$3.a(arw.a);
+            cmy $$6 = $$5 != null ? $$5.a() : cmy.a();
+            axo<Integer> $$7 = a($$0.a(), $$4);
+            asx $$8 = asx.a($$7, $$2);
+            ary $$9 = $$3.a(ary.a);
+            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
+            var11 = new asw.a($$4.a(), $$8, $$6, $$10);
+         }
+
+         return var11;
+      } catch (Exception var14) {
+         a.warn("Failed to read pack {} metadata", $$0.a(), var14);
+         return null;
+      }
+   }
+
+   private static axo<Integer> a(String $$0, asp $$1) {
+      int $$2 = $$1.b();
+      if ($$1.c().isEmpty()) {
+         return new axo<>($$2);
+      } else {
+         axo<Integer> $$3 = $$1.c().get();
+         if (!$$3.a($$2)) {
+            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
+            return new axo<>($$2);
+         } else {
+            return $$3;
+         }
+      }
+   }
+
+   public arz a() {
+      return this.b;
+   }
+
+   public ws b() {
+      return this.b.b();
+   }
+
+   public ws c() {
+      return this.d.a();
+   }
+
+   public ws a(boolean $$0) {
+      return this.b.a($$0, this.d.a);
+   }
+
+   public asx d() {
+      return this.d.b();
+   }
+
+   public cmy e() {
+      return this.d.c();
+   }
+
+   public asa f() {
+      return this.c.a(this.b, this.d);
+   }
+
+   public String g() {
+      return this.b.a();
+   }
+
+   public asb h() {
+      return this.e;
+   }
+
+   public boolean i() {
+      return this.e.a();
+   }
+
+   public boolean j() {
+      return this.e.c();
+   }
+
+   public asw.b k() {
+      return this.e.b();
+   }
+
+   public ata l() {
+      return this.b.c();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof asw $$1) ? false : this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public static record a(ws a, asx b, cmy c, List<String> d) {
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      public <T> int a(List<T> $$0, T $$1, Function<T, asb> $$2, boolean $$3) {
+         asw.b $$4 = $$3 ? this.a() : this;
+         if ($$4 == b) {
+            int $$5;
+            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
+               asb $$6 = $$2.apply($$0.get($$5));
+               if (!$$6.c() || $$6.b() != this) {
+                  break;
+               }
+            }
+
+            $$0.add($$5, $$1);
+            return $$5;
+         } else {
+            int $$7;
+            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
+               asb $$8 = $$2.apply($$0.get($$7));
+               if (!$$8.c() || $$8.b() != this) {
+                  break;
+               }
+            }
+
+            $$0.add($$7 + 1, $$1);
+            return $$7 + 1;
+         }
+      }
+
+      public asw.b a() {
+         return this == a ? b : a;
+      }
+   }
+
+   public interface c {
+      asa a(arz var1);
+
+      asa a(arz var1, asw.a var2);
+   }
 }

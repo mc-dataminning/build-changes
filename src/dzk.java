@@ -1,40 +1,195 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dzk extends dye<eas> {
-   public dzk(Codec<eas> $$0) {
+public class dzk extends dyu<ebb> {
+   public dzk(Codec<ebb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyg<eas> $$0) {
-      boolean $$1 = false;
-      axt $$2 = $$0.d();
-      dab $$3 = $$0.b();
-      id $$4 = $$0.e();
-      eas $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(dva.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      id $$9 = new id($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dcj.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dpi $$11 = $$10 ? dcj.bx.n() : dcj.bw.n();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dpi $$12 = $$11.a(dkm.d, dqe.a);
-               id $$13 = $$9.c();
-               if ($$3.a_($$13).a(dcj.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
+   public boolean a(dyw<ebb> $$0) {
+      dap $$1 = $$0.b();
+      im $$2 = $$0.e();
+      ebb $$3 = $$0.f();
+      ayd $$4 = $$0.d();
+      if (!dyq.a($$1, $$2)) {
+         return false;
+      } else {
+         Optional<dvg> $$5 = dvg.a($$1, $$2, $$3.b, dyq::c, dyq::a);
+         if (!$$5.isEmpty() && $$5.get() instanceof dvg.b) {
+            dvg.b $$6 = (dvg.b)$$5.get();
+            if ($$6.g() < 4) {
+               return false;
             } else {
-               $$3.a($$9, $$11, 2);
+               int $$7 = (int)((float)$$6.g() * $$3.e);
+               int $$8 = axw.a($$7, $$3.c.a(), $$3.c.b());
+               int $$9 = axw.b($$4, $$3.c.a(), $$8);
+               dzk.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
+               dzk.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
+               dzk.b $$12;
+               if ($$10.a($$3) && $$11.a($$3)) {
+                  $$12 = new dzk.b($$2.v(), $$4, $$3.h);
+               } else {
+                  $$12 = dzk.b.a();
+               }
+
+               boolean $$14 = $$10.a($$1, $$12);
+               boolean $$15 = $$11.a($$1, $$12);
+               if ($$14) {
+                  $$10.a($$1, $$4, $$12);
+               }
+
+               if ($$15) {
+                  $$11.a($$1, $$4, $$12);
+               }
+
+               return true;
+            }
+         } else {
+            return false;
+         }
+      }
+   }
+
+   private static dzk.a a(im $$0, boolean $$1, ayd $$2, int $$3, bnt $$4, bnt $$5) {
+      return new dzk.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
+   }
+
+   private void a(dap $$0, im $$1, dvg.b $$2, dzk.b $$3) {
+      $$0.a($$3.a($$1.h($$2.e() - 1)), dcx.cz.n(), 2);
+      $$0.a($$3.a($$1.h($$2.f() + 1)), dcx.ch.n(), 2);
+
+      for (im.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(ir.b)) {
+         im $$5 = $$3.a($$4);
+         if (dyq.a($$0, $$5) || $$0.a_($$5).a(dcx.su)) {
+            $$0.a($$5, dcx.gM.n(), 2);
+         }
+      }
+   }
+
+   static final class a {
+      private im a;
+      private final boolean b;
+      private int c;
+      private final double d;
+      private final double e;
+
+      a(im $$0, boolean $$1, int $$2, double $$3, double $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      private int a() {
+         return this.a(0.0F);
+      }
+
+      private int b() {
+         return this.b ? this.a.v() : this.a.v() - this.a();
+      }
+
+      private int c() {
+         return !this.b ? this.a.v() : this.a.v() + this.a();
+      }
+
+      boolean a(dap $$0, dzk.b $$1) {
+         while (this.c > 1) {
+            im.a $$2 = this.a.j();
+            int $$3 = Math.min(10, this.a());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               if ($$0.a_($$2).a(dcx.H)) {
+                  return false;
+               }
+
+               if (dyq.a($$0, $$1.a($$2), this.c)) {
+                  this.a = $$2;
+                  return true;
+               }
+
+               $$2.c(this.b ? ir.a : ir.b);
             }
 
-            $$1 = true;
+            this.c /= 2;
+         }
+
+         return false;
+      }
+
+      private int a(float $$0) {
+         return (int)dyq.a((double)$$0, (double)this.c, this.e, this.d);
+      }
+
+      void a(dap $$0, ayd $$1, dzk.b $$2) {
+         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
+            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
+               float $$5 = axw.c((float)($$3 * $$3 + $$4 * $$4));
+               if (!($$5 > (float)this.c)) {
+                  int $$6 = this.a($$5);
+                  if ($$6 > 0) {
+                     if ((double)$$1.i() < 0.2) {
+                        $$6 = (int)((float)$$6 * axw.b($$1, 0.8F, 1.0F));
+                     }
+
+                     im.a $$7 = this.a.b($$3, 0, $$4).j();
+                     boolean $$8 = false;
+                     int $$9 = this.b ? $$0.a(dvq.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
+
+                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
+                        im $$11 = $$2.a($$7);
+                        if (dyq.b($$0, $$11)) {
+                           $$8 = true;
+                           dcv $$12 = dcx.su;
+                           $$0.a($$11, $$12.n(), 2);
+                        } else if ($$8 && $$0.a_($$11).a(avo.be)) {
+                           break;
+                        }
+
+                        $$7.c(this.b ? ir.b : ir.a);
+                     }
+                  }
+               }
+            }
          }
       }
 
-      return $$1;
+      boolean a(ebb $$0) {
+         return this.c >= $$0.i && this.d >= (double)$$0.j;
+      }
+   }
+
+   static final class b {
+      private final int a;
+      @Nullable
+      private final etf b;
+
+      b(int $$0, ayd $$1, bnt $$2) {
+         this.a = $$0;
+         float $$3 = $$2.a($$1);
+         float $$4 = axw.b($$1, 0.0F, (float) Math.PI);
+         this.b = new etf((double)(axw.b($$4) * $$3), 0.0, (double)(axw.a($$4) * $$3));
+      }
+
+      private b() {
+         this.a = 0;
+         this.b = null;
+      }
+
+      static dzk.b a() {
+         return new dzk.b();
+      }
+
+      im a(im $$0) {
+         if (this.b == null) {
+            return $$0;
+         } else {
+            int $$1 = this.a - $$0.v();
+            etf $$2 = this.b.a((double)$$1);
+            return $$0.b(axw.a($$2.c), 0, axw.a($$2.e));
+         }
+      }
    }
 }

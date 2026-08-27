@@ -1,42 +1,97 @@
-import java.util.function.Consumer;
+import java.util.List;
 
-public class cpk extends crn {
-   public cpk(crn.a $$0) {
-      super($$0);
+public class cpk implements cnx {
+   private final je<csd> c;
+   private final int d;
+   private final int e;
+   private final cnh f;
+
+   public cpk(cnh $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, je.a($$1 * $$2, csd.i));
+   }
+
+   public cpk(cnh $$0, int $$1, int $$2, je<csd> $$3) {
+      this.c = $$3;
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public bof a(cuz $$0) {
-      ij $$1 = $$0.k();
-      if ($$1 == ij.a) {
-         return bof.e;
-      } else {
-         czg $$2 = $$0.q();
-         cux $$3 = new cux($$0);
-         id $$4 = $$3.a();
-         crs $$5 = $$0.n();
-         esj $$6 = esj.c($$4);
-         ese $$7 = bqg.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof apu $$8) {
-               Consumer<cga> $$9 = bqg.a($$8, $$5, $$0.o());
-               cga $$10 = bqg.d.b($$8, $$9, $$4, bqx.m, true, true);
-               if ($$10 == null) {
-                  return bof.e;
-               }
+   public int b() {
+      return this.c.size();
+   }
 
-               float $$11 = (float)axm.d((axm.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dr(), $$10.dt(), $$10.dx(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dr(), $$10.dt(), $$10.dx(), auo.aD, aup.e, 0.75F, 0.8F);
-               $$10.a(dub.t, $$0.o());
-            }
-
-            $$5.g(1);
-            return bof.a($$2.B);
-         } else {
-            return bof.e;
+   @Override
+   public boolean c() {
+      for (csd $$0 : this.c) {
+         if (!$$0.d()) {
+            return false;
          }
+      }
+
+      return true;
+   }
+
+   @Override
+   public csd a(int $$0) {
+      return $$0 >= this.b() ? csd.i : this.c.get($$0);
+   }
+
+   @Override
+   public csd b(int $$0) {
+      return bok.a(this.c, $$0);
+   }
+
+   @Override
+   public csd a(int $$0, int $$1) {
+      csd $$2 = bok.a(this.c, $$0, $$1);
+      if (!$$2.d()) {
+         this.f.a(this);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(int $$0, csd $$1) {
+      this.c.set($$0, $$1);
+      this.f.a(this);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(ckl $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   @Override
+   public int g() {
+      return this.e;
+   }
+
+   @Override
+   public int f() {
+      return this.d;
+   }
+
+   @Override
+   public List<csd> h() {
+      return List.copyOf(this.c);
+   }
+
+   @Override
+   public void a(ckp $$0) {
+      for (csd $$1 : this.c) {
+         $$0.a($$1);
       }
    }
 }

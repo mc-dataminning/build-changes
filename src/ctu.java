@@ -1,46 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
+public interface ctu {
+   ctu.a a = new ctu.a(false, false);
+   ctu.a b = new ctu.a(true, false);
 
-public record ctu(String e, in<crn> f, float g, Map<in<cpi>, String> h, wi i) {
-   public static final Codec<ctu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awu.y.fieldOf("asset_name").forGetter(ctu::a),
-               ajs.a(ku.G).fieldOf("ingredient").forGetter(ctu::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(ctu::c),
-               Codec.unboundedMap(cpi.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(ctu::d),
-               wk.a.fieldOf("description").forGetter(ctu::e)
-            )
-            .apply($$0, ctu::new)
-   );
-   public static final yg<vt, ctu> b = yg.a(
-      ye.k, ctu::a, ye.b(ku.G), ctu::b, ye.h, ctu::c, ye.a(Object2ObjectOpenHashMap::new, ye.b(ku.au), ye.k), ctu::d, wk.b, ctu::e, ctu::new
-   );
-   public static final Codec<in<ctu>> c = ajr.a(ku.aL, a);
-   public static final yg<vt, in<ctu>> d = ye.a(ku.aL, b);
+   boolean a();
 
-   public static ctu a(String $$0, crn $$1, float $$2, wi $$3, Map<in<cpi>, String> $$4) {
-      return new ctu($$0, kt.h.e($$1), $$2, $$4, $$3);
-   }
+   boolean b();
 
-   public String a() {
-      return this.e;
-   }
+   public static record a(boolean c, boolean d) implements ctu {
+      @Override
+      public boolean a() {
+         return this.c;
+      }
 
-   public in<crn> b() {
-      return this.f;
-   }
+      @Override
+      public boolean b() {
+         return this.d;
+      }
 
-   public float c() {
-      return this.g;
-   }
+      public ctu.a c() {
+         return new ctu.a(this.c, true);
+      }
 
-   public Map<in<cpi>, String> d() {
-      return this.h;
-   }
+      public boolean d() {
+         return this.c;
+      }
 
-   public wi e() {
-      return this.i;
+      public boolean e() {
+         return this.d;
+      }
    }
 }

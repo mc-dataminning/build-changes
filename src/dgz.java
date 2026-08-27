@@ -1,43 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dgz extends dch {
-   public static final MapCodec<dgz> a = b(dgz::new);
-   private static final int b = 20;
+public class dgz extends dgk implements dhm {
+   public static final MapCodec<dgz> c = b(dgz::new);
+   protected static final ety g = dcv.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<dgz> a() {
-      return a;
+      return c;
    }
 
-   public dgz(dph.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(czg $$0, id $$1, dpi $$2, bqa $$3) {
-      if (!$$3.bT() && $$3 instanceof bqt && !cxa.j((bqt)$$3)) {
-         $$3.a($$0.ai().e(), 1.0F);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   protected dgz(dpx.d $$0) {
+      super($$0, ir.b, g, true, 0.14);
    }
 
    @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      dcn.b($$1, $$2.c(), $$0);
+   protected boolean g(dpy $$0) {
+      return $$0.a(dcx.G);
    }
 
    @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$1 == ij.b && $$2.a(dcj.G)) {
-         $$3.a($$4, this, 20);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dcv b() {
+      return dcx.md;
    }
 
    @Override
-   protected void b(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   protected boolean m(dpy $$0) {
+      return !$$0.a(dcx.kJ);
+   }
+
+   @Override
+   public boolean a(@Nullable ckl $$0, cza $$1, im $$2, dpy $$3, elq $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(czv $$0, im $$1, dpy $$2, elr $$3) {
+      return false;
+   }
+
+   @Override
+   protected int a(ayd $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      elr $$1 = $$0.q().b_($$0.a());
+      return $$1.a(avt.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected elr c_(dpy $$0) {
+      return els.c.a(false);
    }
 }

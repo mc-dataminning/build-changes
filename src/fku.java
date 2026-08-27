@@ -1,135 +1,96 @@
-public abstract class fku extends fjx {
-   private static final wi p = wi.c("advMode.setCommand");
-   private static final wi q = wi.c("advMode.command");
-   private static final wi r = wi.c("advMode.previousOutput");
-   protected feh a;
-   protected feh b;
-   protected fdy c;
-   protected fdy d;
-   protected fef<Boolean> o;
-   feb s;
+import javax.annotation.Nullable;
 
-   public fku() {
-      super(fbq.a);
+public class fku extends fkt {
+   private static final int a = 1024;
+   private static final int b = 65535;
+   private static final ws c = ws.c("selectWorld.allowCommands.new");
+   private static final ws d = ws.c("selectWorld.gameMode");
+   private static final ws r = ws.c("lanServer.otherPlayers");
+   private static final ws s = ws.c("lanServer.port");
+   private static final ws u = ws.a("lanServer.port.unavailable.new", 1024, 65535);
+   private static final ws v = ws.a("lanServer.port.invalid.new", 1024, 65535);
+   private static final int w = 16733525;
+   private final fkt x;
+   private czr y = czr.a;
+   private boolean z;
+   private int A = axn.a();
+   @Nullable
+   private ffd B;
+
+   public fku(fkt $$0) {
+      super(ws.c("lanServer.title"));
+      this.x = $$0;
    }
-
-   @Override
-   public void e() {
-      if (!this.m().j()) {
-         this.d();
-      }
-   }
-
-   abstract cyh m();
-
-   abstract int C();
 
    @Override
    protected void aM_() {
-      this.c = this.c(fdy.a(wh.d, $$0x -> this.D()).a(this.k / 2 - 4 - 150, this.l / 4 + 120 + 12, 150, 20).a());
-      this.d = this.c(fdy.a(wh.e, $$0x -> this.d()).a(this.k / 2 + 4, this.l / 4 + 120 + 12, 150, 20).a());
-      boolean $$0 = this.m().p();
-      this.o = this.c(fef.a(wi.b("O"), wi.b("X")).a($$0).a().a(this.k / 2 + 150 - 20, this.C(), 20, 20, wi.c("advMode.trackOutput"), ($$0x, $$1) -> {
-         cyh $$2 = this.m();
-         $$2.a($$1);
-         this.c($$1);
-      }));
-      this.a = new feh(this.m, this.k / 2 - 150, 50, 300, 20, wi.c("advMode.command")) {
-         @Override
-         protected ww aK_() {
-            return super.aK_().b(fku.this.s.e());
+      gqs $$0 = this.m.V();
+      this.y = $$0.u_();
+      this.z = $$0.bc().m();
+      this.c(ffb.a(czr::e).a(czr.a, czr.d, czr.b, czr.c).a(this.y).a(this.n / 2 - 155, 100, 150, 20, d, ($$0x, $$1x) -> this.y = $$1x));
+      this.c(ffb.b(this.z).a(this.n / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.z = $$1x));
+      feu $$1 = feu.a(ws.c("lanServer.start"), $$1x -> {
+         this.m.a(null);
+         ws $$2;
+         if ($$0.a(this.y, this.z, this.A)) {
+            $$2 = ane.a(this.A);
+         } else {
+            $$2 = ws.c("commands.publish.failed");
          }
-      };
-      this.a.f(32500);
-      this.a.b(this::a);
-      this.d(this.a);
-      this.b = new feh(this.m, this.k / 2 - 150, this.C(), 276, 20, wi.c("advMode.previousOutput"));
-      this.b.f(32500);
-      this.b.e(false);
-      this.b.a("-");
-      this.d(this.b);
-      this.s = new feb(this.j, this, this.a, this.m, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.s.a(true);
-      this.s.d();
-      this.c($$0);
+
+         this.m.l.d().a($$2);
+         this.m.d();
+      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a();
+      this.B = new ffd(this.p, this.n / 2 - 75, 160, 150, 20, ws.c("lanServer.port"));
+      this.B.b($$1x -> {
+         ws $$2 = this.a($$1x);
+         this.B.c(ws.b(this.A + "").a(n.i));
+         if ($$2 == null) {
+            this.B.g(14737632);
+            this.B.a(null);
+            $$1.j = true;
+         } else {
+            this.B.g(16733525);
+            this.B.a(fgf.a($$2));
+            $$1.j = false;
+         }
+      });
+      this.B.c(ws.b(this.A + "").a(n.i));
+      this.c(this.B);
+      this.c($$1);
+      this.c(feu.a(wr.e, $$0x -> this.d()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
    }
 
    @Override
-   protected void aC_() {
-      this.b(this.a);
+   public void d() {
+      this.m.a(this.x);
    }
 
-   @Override
-   protected wi z() {
-      return this.s.a() ? this.s.b() : super.z();
-   }
-
-   @Override
-   public void a(fby $$0, int $$1, int $$2) {
-      String $$3 = this.a.a();
-      this.b($$0, $$1, $$2);
-      this.a.a($$3);
-      this.s.d();
-   }
-
-   @Override
-   protected void c(boolean $$0) {
-      this.b.a($$0 ? this.m().l().getString() : "-");
-   }
-
-   protected void D() {
-      cyh $$0 = this.m();
-      this.a($$0);
-      if (!$$0.p()) {
-         $$0.c(null);
-      }
-
-      this.j.a(null);
-   }
-
-   protected abstract void a(cyh var1);
-
-   private void a(String $$0) {
-      this.s.d();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.s.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
+   @Nullable
+   private ws a(String $$0) {
+      if ($$0.isBlank()) {
+         this.A = axn.a();
+         return null;
       } else {
-         this.D();
-         return true;
+         try {
+            this.A = Integer.parseInt($$0);
+            if (this.A < 1024 || this.A > 65535) {
+               return v;
+            } else {
+               return !axn.a(this.A) ? u : null;
+            }
+         } catch (NumberFormatException var3) {
+            this.A = axn.a();
+            return v;
+         }
       }
    }
 
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.s.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.s.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, p, this.k / 2, 20, 16777215);
-      $$0.b(this.m, q, this.k / 2 - 150 + 1, 40, 10526880);
-      this.a.a($$0, $$1, $$2, $$3);
-      int $$4 = 75;
-      if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.C() - 135;
-         $$0.b(this.m, r, this.k / 2 - 150 + 1, $$4 + 4, 10526880);
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-
-      this.s.a($$0, $$1, $$2);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      $$0.a(this.p, r, this.n / 2, 82, 16777215);
+      $$0.a(this.p, s, this.n / 2, 142, 16777215);
    }
 }

@@ -1,23 +1,27 @@
-public class gkp<T extends bqt> extends gjg<T, ftk<T>> {
-   public gkp(ghm<T, ftk<T>> $$0, gae $$1) {
-      super($$0, $$1);
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+
+public class gkp extends gky<cdf, fsg<cdf>> {
+   private static final Map<bqj.a, akf> a = ImmutableMap.of(
+      bqj.a.b,
+      new akf("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bqj.a.c,
+      new akf("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bqj.a.d,
+      new akf("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gkp(gii<cdf, fsg<cdf>> $$0) {
+      super($$0);
    }
 
-   @Override
-   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      crs $$10 = $$3.eU();
-      $$0.a();
-      if ($$10.a(crv.sj)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
+   public void a(exn $$0, gbe $$1, int $$2, cdf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cf()) {
+         bqj.a $$10 = $$3.u();
+         if ($$10 != bqj.a.a) {
+            akf $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         }
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-      $$0.b();
    }
 }

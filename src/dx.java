@@ -1,32 +1,39 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.ResultConsumer;
-import com.mojang.brigadier.exceptions.CommandExceptionType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public interface dx<T extends dx<T>> {
-   boolean c(int var1);
+public class dx {
+   public static final Codec<dx> a = akf.a.xmap(dx::new, dx::a);
+   private final akf b;
+   private boolean c;
+   private Optional<ho<ec>> d = Optional.empty();
 
-   T b(ds var1);
-
-   ds p();
-
-   default T a_() {
-      return this.b(ds.a);
+   public dx(akf $$0) {
+      this.b = $$0;
    }
 
-   CommandDispatcher<T> x();
+   public Optional<ho<ec>> a(akt $$0) {
+      if (!this.c) {
+         this.d = $$0.a(this.b);
+         this.c = true;
+      }
 
-   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable gx var4);
-
-   boolean y();
-
-   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable gx $$2) {
-      this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
+      return this.d;
    }
 
-   static <T extends dx<T>> ResultConsumer<T> b_() {
-      return ($$0, $$1, $$2) -> ((dx)$$0.getSource()).p().onResult($$1, $$2);
+   public akf a() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         if ($$0 instanceof dx $$1 && this.a().equals($$1.a())) {
+            return true;
+         }
+
+         return false;
+      }
    }
 }

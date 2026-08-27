@@ -1,84 +1,67 @@
-public class aha implements yp<afn> {
-   public static final yg<vi, aha> a = yp.a(aha::a, aha::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final id e;
-   private final String f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final dmy.a j;
+public class aha implements yz<afx> {
+   public static final yq<vs, aha> a = yz.a(aha::a, aha::new);
+   private final im b;
+   private final ir c;
+   private final aha.a d;
+   private final int e;
 
-   public aha(id $$0, String $$1, dmy.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$2;
+   public aha(aha.a $$0, im $$1, ir $$2, int $$3) {
+      this.d = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
+      this.e = $$3;
    }
 
-   private aha(vi $$0) {
-      this.e = $$0.e();
-      this.f = $$0.p();
-      this.j = $$0.b(dmy.a.class);
-      int $$1 = $$0.readByte();
-      this.g = ($$1 & 1) != 0;
-      this.h = ($$1 & 2) != 0;
-      this.i = ($$1 & 4) != 0;
+   public aha(aha.a $$0, im $$1, ir $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.j);
-      int $$1 = 0;
-      if (this.g) {
-         $$1 |= 1;
-      }
+   private aha(vs $$0) {
+      this.d = $$0.b(aha.a.class);
+      this.b = $$0.e();
+      this.c = ir.a($$0.readUnsignedByte());
+      this.e = $$0.l();
+   }
 
-      if (this.h) {
-         $$1 |= 2;
-      }
-
-      if (this.i) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+   private void a(vs $$0) {
+      $$0.a(this.d);
+      $$0.a(this.b);
+      $$0.k(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
-   public yr<aha> a() {
-      return afl.bS;
+   public zb<aha> a() {
+      return afv.bI;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
-   public id b() {
+   public im b() {
+      return this.b;
+   }
+
+   public ir e() {
+      return this.c;
+   }
+
+   public aha.a f() {
+      return this.d;
+   }
+
+   public int g() {
       return this.e;
    }
 
-   public String e() {
-      return this.f;
-   }
-
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public boolean h() {
-      return this.i;
-   }
-
-   public dmy.a i() {
-      return this.j;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

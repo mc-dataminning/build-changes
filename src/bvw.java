@@ -1,48 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bvw extends bsl<cjn> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
+public class bvw {
+   public static bsx<bre> a(dcv $$0) {
+      return bwj.a(
+         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$1 -> $$1.group($$1.c(cah.o), $$1.b(cah.m), $$1.b(cah.Y))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.bc() && $$3x.aC()) {
+                        im $$5 = $$3x.dn().d();
 
-   public bvw() {
-      super(ImmutableMap.of(bzw.c, bzx.a, bzw.n, bzx.c));
-   }
+                        for (ir $$6 : ir.c.a) {
+                           im $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).k($$2x, $$7).a(ir.b).c() && $$2x.b_($$7).b(els.c)) {
+                              im $$8 = $$7.c();
+                              if ($$2x.a_($$8).i()) {
+                                 dpy $$9 = $$0.n();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(dur.i, $$8, dur.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, auz.jK, ava.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   protected boolean b(apu $$0, cjn $$1) {
-      if ($$0.Y() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.Y();
-         im $$2 = $$1.dP().c(bzw.c).get();
-         return $$2.a() == $$0.ae() && $$2.b().a($$1.dk(), 1.73);
-      }
-   }
-
-   protected void a(apu $$0, cjn $$1, long $$2) {
-      bru<cjn> $$3 = $$1.dP();
-      $$3.a(bzw.J, $$2);
-      $$3.c(bzw.c).ifPresent($$1x -> $$3.a(bzw.n, new bso($$1x.b())));
-      $$1.gC();
-      this.a($$0, $$1);
-      if ($$1.gB()) {
-         $$1.gA();
-      }
-   }
-
-   protected void a(apu $$0, cjn $$1) {
-   }
-
-   protected boolean b(apu $$0, cjn $$1, long $$2) {
-      Optional<im> $$3 = $$1.dP().c(bzw.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         im $$4 = $$3.get();
-         return $$4.a() == $$0.ae() && $$4.b().a($$1.dk(), 1.73);
-      }
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

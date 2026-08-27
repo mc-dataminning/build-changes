@@ -1,72 +1,22 @@
-public class fei extends fds {
-   private final fdj a;
-   private final fes b;
+import java.util.Set;
 
-   public fei(int $$0, int $$1, int $$2, int $$3, wi $$4, fdj $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.b = new fes($$4, $$5).d(this.x() - this.b());
-   }
+public class fei extends gnq {
+   private static final Set<asn<?>> a = Set.of(gny.a, goe.c);
 
-   public fei a(int $$0) {
-      this.b.c($$0);
-      return this;
+   public fei(gmp $$0) {
+      super($$0, new akf("textures/atlas/gui.png"), new akf("gui"), a);
    }
 
    @Override
-   public void k(int $$0) {
-      super.k($$0);
-      this.b.d(this.x() - this.b());
+   public gmo a(akf $$0) {
+      return super.a($$0);
    }
 
-   @Override
-   protected int h() {
-      return this.b.v();
+   public gof a(gmo $$0) {
+      return this.b($$0).a();
    }
 
-   @Override
-   protected double i() {
-      return 9.0;
-   }
-
-   @Override
-   protected void b(fdl $$0) {
-      if (this.e()) {
-         super.b($$0);
-      } else if (this.aI_()) {
-         this.a($$0, this.C() - this.a(), this.D() - this.a(), this.x() + this.b(), this.v() + this.b());
-      }
-   }
-
-   @Override
-   public void b(fdl $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (!this.e()) {
-            this.b($$0);
-            $$0.c().a();
-            $$0.c().a((float)this.C(), (float)this.D(), 0.0F);
-            this.b.a($$0, $$1, $$2, $$3);
-            $$0.c().b();
-         } else {
-            super.b($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   public boolean j() {
-      return super.e();
-   }
-
-   @Override
-   protected void c(fdl $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)(this.C() + this.a()), (float)(this.D() + this.a()), 0.0F);
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(fhu $$0) {
-      $$0.a(fht.a, this.y());
+   private goe b(gmo $$0) {
+      return $$0.e().f().a(goe.c).orElse(goe.a);
    }
 }

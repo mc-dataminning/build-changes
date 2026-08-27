@@ -1,43 +1,48 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class dlk extends dks implements djh {
+public class dlk extends dch {
    public static final MapCodec<dlk> a = b(dlk::new);
-   public static final dpz c = dpy.C;
+   public static final dqw<dpe> b = dqo.by;
 
    @Override
-   protected MapCodec<? extends dlk> a() {
+   public MapCodec<dlk> a() {
       return a;
    }
 
-   protected dlk(dph.d $$0) {
+   public dlk(dpx.d $$0) {
       super($$0);
-      this.k(this.n().a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, dpe.a));
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected djb b_(dpy $$0) {
+      return djb.c;
    }
 
    @Nullable
    @Override
-   public dpi a(cux $$0) {
-      elb $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).a(c, Boolean.valueOf($$1.b(elc.c)));
+   public dnd a(im $$0, dpy $$1) {
+      return new dox($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
+      return $$0 instanceof aqe $$3
+         ? a($$2, dnf.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.c().b($$3, $$2x))
+         : a($$2, dnf.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x));
    }
 
    @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, elc.c, elc.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected elb c_(dpi $$0) {
-      return $$0.c(c) ? elc.c.a(true) : super.c_($$0);
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(c);
+   public void a(csd $$0, @Nullable cza $$1, List<ws> $$2, ctu $$3, @Nullable jj $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dam.a($$0, $$2, "spawn_data");
    }
 }

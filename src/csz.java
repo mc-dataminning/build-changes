@@ -1,40 +1,19 @@
-public class csz extends crn {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+public class csz extends crz {
+   private final aqf a;
 
-   public csz(crn.a $$0) {
-      super($$0);
+   public csz(aqf $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public int b(crs $$0) {
-      return 1200;
+   protected void b(cry $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.d.b(new aci($$0, $$1));
    }
 
    @Override
-   public ctk c(crs $$0) {
-      return ctk.h;
-   }
-
-   @Override
-   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
-      $$1.a(auo.yB, 1.0F, 1.0F);
-      $$1.b(auz.c.b(this));
-      return cru.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public crs a(crs $$0, czg $$1, bqt $$2) {
-      this.a($$2);
-      return $$0;
-   }
-
-   @Override
-   public void a(crs $$0, czg $$1, bqt $$2, int $$3) {
-      this.a($$2);
-   }
-
-   private void a(bqt $$0) {
-      $$0.a(auo.yC, 1.0F, 1.0F);
+   protected void c(cry $$0) {
+      super.c($$0);
+      this.a.d.b(new aci($$0, 0));
    }
 }

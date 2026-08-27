@@ -1,39 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import java.util.List;
 
-public class ebm extends ebj {
-   public static final Codec<ebm> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
-            )
-            .apply($$0, ebm::new)
+public class ebm implements eay {
+   public static final Codec<ebm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(ebg.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, ebm::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
+   public final List<ebg.a> b;
 
-   public ebm(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   public ebm(dpy $$0, dpy $$1) {
+      this(ImmutableList.of(ebg.a(new ejl($$0), $$1)));
    }
 
-   public ebm(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   @Override
-   protected ebk<?> b() {
-      return ebk.a;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public ebm(List<ebg.a> $$0) {
+      this.b = $$0;
    }
 }

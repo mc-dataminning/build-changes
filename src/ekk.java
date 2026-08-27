@@ -1,24 +1,28 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ekk extends ekp<ekk.a> {
-   protected ekk(drr $$0) {
-      super(czp.b, $$0, new ekk.a(new Long2ObjectOpenHashMap()));
+public class ekk implements eko {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<ekk> a = RecordCodecBuilder.create($$0 -> $$0.group(akf.a.fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, ekk::new));
+   private final akf d;
+
+   public ekk(akf $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected int a(long $$0) {
-      long $$1 = jg.e($$0);
-      drj $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(jg.b(id.a($$0)), jg.b(id.b($$0)), jg.b(id.c($$0)));
+   public ty a(ayd $$0, @Nullable ty $$1) {
+      ty $$2 = $$1 == null ? new ty() : $$1.h();
+      akf.a.encodeStart(um.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
+      $$2.a("LootTableSeed", $$0.g());
+      return $$2;
    }
 
-   protected static final class a extends ekm<ekk.a> {
-      public a(Long2ObjectOpenHashMap<drj> $$0) {
-         super($$0);
-      }
-
-      public ekk.a a() {
-         return new ekk.a(this.a.clone());
-      }
+   @Override
+   public ekp<?> a() {
+      return ekp.d;
    }
 }

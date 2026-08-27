@@ -1,76 +1,79 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dkd extends dch {
+public class dkd extends dcv {
    public static final MapCodec<dkd> a = b(dkd::new);
-   private static final wi d = wi.c("container.stonecutter");
-   public static final dqc b = dgc.aE;
-   protected static final etc c = dch.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   public static final int b = 2;
+   public static final dqy c = dqo.aE;
+   private static final int d = 24000;
+   private static final int e = 12000;
+   private static final int f = 300;
+   private static final ety g = dcv.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dkd> a() {
       return a;
    }
 
-   public dkd(dph.d $$0) {
+   public dkd(dpx.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ij.c));
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dpi a(cux $$0) {
-      return this.n().a(b, $$0.g().g());
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if ($$1.B) {
-         return bof.a;
+   public ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return g;
+   }
+
+   public int m(dpy $$0) {
+      return $$0.c(c);
+   }
+
+   private boolean n(dpy $$0) {
+      return this.m($$0) == 2;
+   }
+
+   @Override
+   public void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if (!this.n($$0)) {
+         $$1.a(null, $$2, auz.yj, ava.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.a($$2, $$0.a(c, Integer.valueOf(this.m($$0) + 1)), 2);
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(auz.ay);
-         return bof.b;
+         $$1.a(null, $$2, auz.yk, ava.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.b($$2, false);
+         cfk $$4 = bqr.aQ.a((czu)$$1);
+         if ($$4 != null) {
+            etf $$5 = $$2.b();
+            $$4.a(true);
+            $$4.b($$5.a(), $$5.b(), $$5.c(), axw.g($$1.z.i() * 360.0F), 0.0F);
+            $$1.b($$4);
+         }
       }
    }
 
-   @Nullable
    @Override
-   protected boj b(dpi $$0, czg $$1, id $$2) {
-      return new bop(($$2x, $$3, $$4) -> new coy($$2x, $$3, cnh.a($$1, $$2)), d);
+   public void b(dpy $$0, czu $$1, im $$2, dpy $$3, boolean $$4) {
+      boolean $$5 = a($$1, $$2);
+      if (!$$1.x_() && $$5) {
+         $$1.c(3009, $$2, 0);
+      }
+
+      int $$6 = $$5 ? 12000 : 24000;
+      int $$7 = $$6 / 3;
+      $$1.a(dur.i, $$2, dur.a.a($$0));
+      $$1.a($$2, this, $$7 + $$1.z.a(300));
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean g_(dpi $$0) {
-      return true;
-   }
-
-   @Override
-   protected dim b_(dpi $$0) {
-      return dim.c;
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dhd $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dpi $$0, elq $$1) {
+   public boolean a(dpy $$0, emg $$1) {
       return false;
+   }
+
+   public static boolean a(cza $$0, im $$1) {
+      return $$0.a_($$1.d()).a(avo.cm);
    }
 }

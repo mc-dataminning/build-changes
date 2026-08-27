@@ -1,49 +1,61 @@
-import javax.annotation.Nullable;
-
-public class ahb implements yp<afn> {
-   public static final yg<vi, ahb> a = yp.a(ahb::a, ahb::new);
+public class ahb implements yz<afx> {
+   public static final yq<vs, ahb> a = yz.a(ahb::a, ahb::new);
    private final int b;
-   private final String c;
-   private final boolean d;
+   private final ahb.a c;
+   private final int d;
 
-   public ahb(int $$0, String $$1, boolean $$2) {
-      this.b = $$0;
+   public ahb(bql $$0, ahb.a $$1) {
+      this($$0, $$1, 0);
+   }
+
+   public ahb(bql $$0, ahb.a $$1, int $$2) {
+      this.b = $$0.aj();
       this.c = $$1;
       this.d = $$2;
    }
 
-   private ahb(vi $$0) {
+   private ahb(vs $$0) {
       this.b = $$0.l();
-      this.c = $$0.p();
-      this.d = $$0.readBoolean();
+      this.c = $$0.b(ahb.a.class);
+      this.d = $$0.l();
    }
 
-   private void a(vi $$0) {
+   private void a(vs $$0) {
       $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
+      $$0.c(this.d);
    }
 
    @Override
-   public yr<ahb> a() {
-      return afl.bT;
+   public zb<ahb> a() {
+      return afv.bJ;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public cyh a(czg $$0) {
-      bqa $$1 = $$0.a(this.b);
-      return $$1 instanceof cmd ? ((cmd)$$1).B() : null;
+   public int b() {
+      return this.b;
    }
 
-   public String b() {
+   public ahb.a e() {
       return this.c;
    }
 
-   public boolean e() {
+   public int f() {
       return this.d;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

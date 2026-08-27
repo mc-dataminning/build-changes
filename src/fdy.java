@@ -1,100 +1,75 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class fdy extends fdp {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final fdy.b q = $$0 -> $$0.get();
-   protected final fdy.c r;
-   protected final fdy.b s;
+public class fdy {
+   private static final int a = -1;
+   private final jb<fdx> b = new jb<>(32);
+   private final Map<dcv, Set<drb<?>>> c = Maps.newHashMap();
 
-   public static fdy.a a(wi $$0, fdy.c $$1) {
-      return new fdy.a($$0, $$1);
+   public static fdy a() {
+      fdy $$0 = new fdy();
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gaq.a($$1, $$0x.c(dfd.b) == dqu.a ? $$2.d() : $$2) : czs.a(), dcx.iI, dcx.iH);
+      $$0.a(dfd.b, dcx.iI, dcx.iH);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gaq.a($$1, $$2) : czs.a(), dcx.i, dcx.bu, dcx.bt, dcx.gb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         if ($$3 != 0) {
+            return $$1 != null && $$2 != null ? gaq.a($$1, $$2) : czs.a();
+         } else {
+            return -1;
+         }
+      }, dcx.sB);
+      $$0.a(($$0x, $$1, $$2, $$3) -> czo.a(), dcx.aF);
+      $$0.a(($$0x, $$1, $$2, $$3) -> czo.b(), dcx.aG);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gaq.b($$1, $$2) : czo.c(), dcx.aE, dcx.aH, dcx.aI, dcx.aK, dcx.ff, dcx.aL);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gaq.c($$1, $$2) : -1, dcx.G, dcx.nd, dcx.fu);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dix.b($$0x.c(dix.f)), dcx.cw);
+      $$0.a(dix.f, dcx.cw);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gaq.a($$1, $$2) : -1, dcx.dS);
+      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dcx.fc, dcx.fb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         int $$4 = $$0x.c(dkr.c);
+         return axg.b.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
+      }, dcx.fe, dcx.fd);
+      $$0.a(dkr.c, dcx.fe, dcx.fd);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dcx.fm);
+      return $$0;
    }
 
-   protected fdy(int $$0, int $$1, int $$2, int $$3, wi $$4, fdy.c $$5, fdy.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
-   }
-
-   @Override
-   public void b() {
-      this.r.onPress(this);
-   }
-
-   @Override
-   protected ww aK_() {
-      return this.s.createNarrationMessage(() -> super.aK_());
-   }
-
-   @Override
-   public void a(fhu $$0) {
-      this.c($$0);
-   }
-
-   public static class a {
-      private final wi a;
-      private final fdy.c b;
-      @Nullable
-      private ffj c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fdy.b h = fdy.q;
-
-      public a(wi $$0, fdy.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fdy.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fdy.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fdy.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fdy.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fdy.a a(@Nullable ffj $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fdy.a a(fdy.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fdy a() {
-         fdy $$0 = new fdy(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
+   public int a(dpy $$0, czu $$1, im $$2) {
+      fdx $$3 = this.b.a(lc.e.a($$0.b()));
+      if ($$3 != null) {
+         return $$3.getColor($$0, null, null, 0);
+      } else {
+         elv $$4 = $$0.d($$1, $$2);
+         return $$4 != null ? $$4.ak : -1;
       }
    }
 
-   public interface b {
-      ww createNarrationMessage(Supplier<ww> var1);
+   public int a(dpy $$0, @Nullable cyx $$1, @Nullable im $$2, int $$3) {
+      fdx $$4 = this.b.a(lc.e.a($$0.b()));
+      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
    }
 
-   public interface c {
-      void onPress(fdy var1);
+   public void a(fdx $$0, dcv... $$1) {
+      for (dcv $$2 : $$1) {
+         this.b.a($$0, lc.e.a($$2));
+      }
+   }
+
+   private void a(Set<drb<?>> $$0, dcv... $$1) {
+      for (dcv $$2 : $$1) {
+         this.c.put($$2, $$0);
+      }
+   }
+
+   private void a(drb<?> $$0, dcv... $$1) {
+      this.a(ImmutableSet.of($$0), $$1);
+   }
+
+   public Set<drb<?>> a(dcv $$0) {
+      return this.c.getOrDefault($$0, ImmutableSet.of());
    }
 }

@@ -1,208 +1,131 @@
-import java.io.BufferedOutputStream;
 import java.io.DataInput;
-import java.io.DataInputStream;
 import java.io.DataOutput;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UTFDataFormatException;
-import java.nio.file.Files;
-import java.nio.file.OpenOption;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import javax.annotation.Nullable;
 
-public class ub {
-   private static final OpenOption[] a = new OpenOption[]{
-      StandardOpenOption.SYNC, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING
-   };
-
-   public static to a(Path $$0, tx $$1) throws IOException {
-      to var4;
-      try (
-         InputStream $$2 = Files.newInputStream($$0);
-         InputStream $$3 = new awv($$2);
-      ) {
-         var4 = a($$3, $$1);
-      }
-
-      return var4;
-   }
-
-   private static DataInputStream a(InputStream $$0) throws IOException {
-      return new DataInputStream(new awv(new GZIPInputStream($$0)));
-   }
-
-   private static DataOutputStream a(OutputStream $$0) throws IOException {
-      return new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream($$0)));
-   }
-
-   public static to a(InputStream $$0, tx $$1) throws IOException {
-      to var3;
-      try (DataInputStream $$2 = a($$0)) {
-         var3 = a((DataInput)$$2, $$1);
-      }
-
-      return var3;
-   }
-
-   public static void a(Path $$0, ui $$1, tx $$2) throws IOException {
-      try (
-         InputStream $$3 = Files.newInputStream($$0);
-         InputStream $$4 = new awv($$3);
-      ) {
-         a($$4, $$1, $$2);
-      }
-   }
-
-   public static void a(InputStream $$0, ui $$1, tx $$2) throws IOException {
-      try (DataInputStream $$3 = a($$0)) {
-         a((DataInput)$$3, $$1, $$2);
-      }
-   }
-
-   public static void a(to $$0, Path $$1) throws IOException {
-      try (
-         OutputStream $$2 = Files.newOutputStream($$1, a);
-         OutputStream $$3 = new BufferedOutputStream($$2);
-      ) {
-         a($$0, $$3);
-      }
-   }
-
-   public static void a(to $$0, OutputStream $$1) throws IOException {
-      try (DataOutputStream $$2 = a($$1)) {
-         a($$0, (DataOutput)$$2);
-      }
-   }
-
-   public static void b(to $$0, Path $$1) throws IOException {
-      try (
-         OutputStream $$2 = Files.newOutputStream($$1, a);
-         OutputStream $$3 = new BufferedOutputStream($$2);
-         DataOutputStream $$4 = new DataOutputStream($$3);
-      ) {
-         a($$0, (DataOutput)$$4);
-      }
-   }
-
-   @Nullable
-   public static to a(Path $$0) throws IOException {
-      if (!Files.exists($$0)) {
-         return null;
-      } else {
-         to var3;
-         try (
-            InputStream $$1 = Files.newInputStream($$0);
-            DataInputStream $$2 = new DataInputStream($$1);
-         ) {
-            var3 = a((DataInput)$$2, tx.a());
-         }
-
-         return var3;
-      }
-   }
-
-   public static to a(DataInput $$0) throws IOException {
-      return a($$0, tx.a());
-   }
-
-   public static to a(DataInput $$0, tx $$1) throws IOException {
-      ul $$2 = c($$0, $$1);
-      if ($$2 instanceof to) {
-         return (to)$$2;
-      } else {
-         throw new IOException("Root tag must be a named compound tag");
-      }
-   }
-
-   public static void a(to $$0, DataOutput $$1) throws IOException {
-      c($$0, $$1);
-   }
-
-   public static void a(DataInput $$0, ui $$1, tx $$2) throws IOException {
-      un<?> $$3 = uo.a($$0.readByte());
-      if ($$3 == tq.a) {
-         if ($$1.b(tq.a) == ui.b.a) {
-            $$1.a();
-         }
-      } else {
-         switch ($$1.b($$3)) {
-            case c:
-            default:
-               break;
-            case b:
-               uj.a($$0);
-               $$3.b($$0, $$2);
-               break;
-            case a:
-               uj.a($$0);
-               $$3.a($$0, $$1, $$2);
-         }
-      }
-   }
-
-   public static ul b(DataInput $$0, tx $$1) throws IOException {
-      byte $$2 = $$0.readByte();
-      return (ul)($$2 == 0 ? tq.b : a($$0, $$1, $$2));
-   }
-
-   public static void a(ul $$0, DataOutput $$1) throws IOException {
-      $$1.writeByte($$0.b());
-      if ($$0.b() != 0) {
-         $$0.a($$1);
-      }
-   }
-
-   public static void b(ul $$0, DataOutput $$1) throws IOException {
-      $$1.writeByte($$0.b());
-      if ($$0.b() != 0) {
-         $$1.writeUTF("");
-         $$0.a($$1);
-      }
-   }
-
-   public static void c(ul $$0, DataOutput $$1) throws IOException {
-      b($$0, new ub.a($$1));
-   }
-
-   private static ul c(DataInput $$0, tx $$1) throws IOException {
-      byte $$2 = $$0.readByte();
-      if ($$2 == 0) {
-         return tq.b;
-      } else {
-         uj.a($$0);
-         return a($$0, $$1, $$2);
-      }
-   }
-
-   private static ul a(DataInput $$0, tx $$1, byte $$2) {
-      try {
-         return uo.a($$2).c($$0, $$1);
-      } catch (IOException var6) {
-         o $$4 = o.a(var6, "Loading NBT data");
-         p $$5 = $$4.a("NBT Tag");
-         $$5.a("Tag type", $$2);
-         throw new uf($$4);
-      }
-   }
-
-   public static class a extends awq {
-      public a(DataOutput $$0) {
-         super($$0);
+public class ub extends uo {
+   private static final int c = 12;
+   public static final ub a = new ub(0.0F);
+   public static final ux<ub> b = new ux.a<ub>() {
+      public ub a(DataInput $$0, uh $$1) throws IOException {
+         return ub.a(d($$0, $$1));
       }
 
       @Override
-      public void writeUTF(String $$0) throws IOException {
-         try {
-            super.writeUTF($$0);
-         } catch (UTFDataFormatException var3) {
-            ac.a("Failed to write NBT String", var3);
-            super.writeUTF("");
-         }
+      public us.b a(DataInput $$0, us $$1, uh $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
       }
+
+      private static float d(DataInput $$0, uh $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readFloat();
+      }
+
+      @Override
+      public int c() {
+         return 4;
+      }
+
+      @Override
+      public String a() {
+         return "FLOAT";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Float";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final float w;
+
+   private ub(float $$0) {
+      this.w = $$0;
+   }
+
+   public static ub a(float $$0) {
+      return $$0 == 0.0F ? a : new ub($$0);
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeFloat(this.w);
+   }
+
+   @Override
+   public int a() {
+      return 12;
+   }
+
+   @Override
+   public byte b() {
+      return 5;
+   }
+
+   @Override
+   public ux<ub> c() {
+      return b;
+   }
+
+   public ub e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ub && this.w == ((ub)$$0).w;
+   }
+
+   @Override
+   public int hashCode() {
+      return Float.floatToIntBits(this.w);
+   }
+
+   @Override
+   public void a(uz $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)this.w;
+   }
+
+   @Override
+   public int g() {
+      return axw.d(this.w);
+   }
+
+   @Override
+   public short h() {
+      return (short)(axw.d(this.w) & 65535);
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(axw.d(this.w) & 0xFF);
+   }
+
+   @Override
+   public double j() {
+      return (double)this.w;
+   }
+
+   @Override
+   public float k() {
+      return this.w;
+   }
+
+   @Override
+   public Number l() {
+      return this.w;
+   }
+
+   @Override
+   public us.b a(us $$0) {
+      return $$0.a(this.w);
    }
 }

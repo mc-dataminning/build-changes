@@ -1,37 +1,79 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bsr extends bsl<bqt> {
-   private final bzw<Integer> c;
+public class bsr<E extends brm> extends bsw<E> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private static final Predicate<brm> g = $$0 -> $$0.ek() != null || $$0.dC() || $$0.bO();
+   private final float h;
+   private final Predicate<E> i;
 
-   public bsr(bzw<Integer> $$0) {
-      super(ImmutableMap.of($$0, bzx.a));
-      this.c = $$0;
+   public bsr(float $$0) {
+      this($$0, g::test);
    }
 
-   private Optional<Integer> b(bqt $$0) {
-      return $$0.dP().c(this.c);
+   public bsr(float $$0, Predicate<E> $$1) {
+      super(Map.of(cah.Z, cai.c, cah.x, cai.c), 100, 120);
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return false;
+   protected boolean a(aqe $$0, E $$1) {
+      return this.i.test($$1) && ($$1.dQ().a(cah.x) || $$1.dQ().a(cah.Z));
    }
 
-   @Override
-   protected boolean a(apu $$0, bqt $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
+   protected boolean a(aqe $$0, E $$1, long $$2) {
+      return true;
    }
 
-   @Override
-   protected void c(apu $$0, bqt $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dP().a(this.c, $$3.get() - 1);
+   protected void b(aqe $$0, E $$1, long $$2) {
+      $$1.dQ().a(cah.Z, true);
+      $$1.dQ().b(cah.m);
    }
 
-   @Override
-   protected void b(apu $$0, bqt $$1, long $$2) {
-      $$1.dP().b(this.c);
+   protected void c(aqe $$0, E $$1, long $$2) {
+      bsf<?> $$3 = $$1.dQ();
+      $$3.b(cah.Z);
+   }
+
+   protected void d(aqe $$0, E $$1, long $$2) {
+      if ($$1.K().l()) {
+         etf $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.dQ().a(cah.m, new cak($$3, this.h, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private etf a(E $$0, aqe $$1) {
+      if ($$0.bO()) {
+         Optional<etf> $$2 = this.a((cza)$$1, $$0).map(etf::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
+         }
+      }
+
+      return ccb.a($$0, 5, 4);
+   }
+
+   private Optional<im> a(cza $$0, bql $$1) {
+      im $$2 = $$1.dn();
+      if (!$$0.a_($$2).k($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<im> $$3;
+         if (axw.f($$1.dh()) == 2) {
+            $$3 = $$1x -> im.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(avt.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(avt.a);
+         }
+
+         return im.a($$2, 5, 1, $$3);
+      }
    }
 }

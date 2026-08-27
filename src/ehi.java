@@ -1,53 +1,102 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+
 public class ehi {
-   public static class a extends efu {
-      public a(id $$0) {
-         super(egh.aa, 0, new efi($$0));
-      }
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final ehp.a e;
 
-      public a(to $$0) {
-         super(egh.aa, $$0);
-      }
+   public ehi(int $$0, int $$1, int $$2, int $$3, ehp.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+   }
 
-      @Override
-      protected void a(egg $$0, to $$1) {
-      }
+   public int a() {
+      return this.a;
+   }
 
-      @Override
-      public void a(dab $$0, czz $$1, drf $$2, axt $$3, efi $$4, cyn $$5, id $$6) {
-         int $$7 = $$0.a(dva.a.c, this.f.h(), this.f.j());
-         id.a $$8 = new id.a(this.f.h(), $$7, this.f.j());
+   public int b() {
+      return this.b;
+   }
 
-         while ($$8.v() > $$0.I_()) {
-            dpi $$9 = $$0.a_($$8);
-            dpi $$10 = $$0.a_($$8.d());
-            if ($$10 == dcj.aV.n() || $$10 == dcj.b.n() || $$10 == dcj.g.n() || $$10 == dcj.c.n() || $$10 == dcj.e.n()) {
-               dpi $$11 = !$$9.i() && !this.b($$9) ? $$9 : dcj.I.n();
+   public int c() {
+      return this.c;
+   }
 
-               for (ij $$12 : ij.values()) {
-                  id $$13 = $$8.a($$12);
-                  dpi $$14 = $$0.a_($$13);
-                  if ($$14.i() || this.b($$14)) {
-                     id $$15 = $$13.d();
-                     dpi $$16 = $$0.a_($$15);
-                     if (($$16.i() || this.b($$16)) && $$12 != ij.b) {
-                        $$0.a($$13, $$10, 3);
-                     } else {
-                        $$0.a($$13, $$11, 3);
-                     }
-                  }
-               }
+   public int d() {
+      return this.d;
+   }
 
-               this.f = new efi($$8);
-               this.a($$0, $$4, $$3, $$8, eni.G, null);
-               return;
-            }
+   public ehp.a e() {
+      return this.e;
+   }
 
-            $$8.e(0, -1, 0);
+   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      Builder<T, T> $$1 = ImmutableMap.builder();
+      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
+         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
+         .put($$0.createString("source_z"), $$0.createInt(this.c))
+         .put($$0.createString("delta_y"), $$0.createInt(this.d))
+         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
+      return new Dynamic($$0, $$0.createMap($$1.build()));
+   }
+
+   public static <T> ehi a(Dynamic<T> $$0) {
+      return new ehi(
+         $$0.get("source_x").asInt(0),
+         $$0.get("source_ground_y").asInt(0),
+         $$0.get("source_z").asInt(0),
+         $$0.get("delta_y").asInt(0),
+         ehp.a.a($$0.get("dest_proj").asString(""))
+      );
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ehi $$1 = (ehi)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.d != $$1.d ? false : this.e == $$1.e;
          }
+      } else {
+         return false;
       }
+   }
 
-      private boolean b(dpi $$0) {
-         return $$0 == dcj.G.n() || $$0 == dcj.H.n();
-      }
+   @Override
+   public int hashCode() {
+      int $$0 = this.a;
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + this.e.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "JigsawJunction{sourceX="
+         + this.a
+         + ", sourceGroundY="
+         + this.b
+         + ", sourceZ="
+         + this.c
+         + ", deltaY="
+         + this.d
+         + ", destProjection="
+         + this.e
+         + "}";
    }
 }

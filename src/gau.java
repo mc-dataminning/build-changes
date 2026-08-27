@@ -1,64 +1,398 @@
-import com.google.common.collect.Queues;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InvalidClassException;
+import java.io.Reader;
 import java.util.List;
-import java.util.Queue;
+import java.util.Map;
+import java.util.function.IntSupplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gau {
+public class gau implements ewy, AutoCloseable {
+   private static final String a = "shaders/program/";
    private static final Logger b = LogUtils.getLogger();
-   public static final int a = 4;
-   private final Queue<gat> c;
-   private volatile int d;
+   private static final eww c = new eww();
+   private static final boolean d = true;
+   private static gau e;
+   private static int f = -1;
+   private final Map<String, IntSupplier> g = Maps.newHashMap();
+   private final List<String> h = Lists.newArrayList();
+   private final List<Integer> i = Lists.newArrayList();
+   private final List<exe> j = Lists.newArrayList();
+   private final List<Integer> k = Lists.newArrayList();
+   private final Map<String, exe> l = Maps.newHashMap();
+   private final int m;
+   private final String n;
+   private boolean o;
+   private final ewx p;
+   private final List<Integer> q;
+   private final List<String> r;
+   private final ewz s;
+   private final ewz t;
 
-   private gau(List<gat> $$0) {
-      this.c = Queues.newArrayDeque($$0);
-      this.d = this.c.size();
+   public gau(atr $$0, String $$1) throws IOException {
+      akf $$2 = new akf("shaders/program/" + $$1 + ".json");
+      this.n = $$1;
+      atm $$3 = $$0.getResourceOrThrow($$2);
+
+      try (Reader $$4 = $$3.e()) {
+         JsonObject $$5 = axm.a($$4);
+         String $$6 = axm.i($$5, "vertex");
+         String $$7 = axm.i($$5, "fragment");
+         JsonArray $$8 = axm.a($$5, "samplers", null);
+         if ($$8 != null) {
+            int $$9 = 0;
+
+            for (JsonElement $$10 : $$8) {
+               try {
+                  this.a($$10);
+               } catch (Exception var20) {
+                  aki $$12 = aki.a(var20);
+                  $$12.a("samplers[" + $$9 + "]");
+                  throw $$12;
+               }
+
+               $$9++;
+            }
+         }
+
+         JsonArray $$13 = axm.a($$5, "attributes", null);
+         if ($$13 != null) {
+            int $$14 = 0;
+            this.q = Lists.newArrayListWithCapacity($$13.size());
+            this.r = Lists.newArrayListWithCapacity($$13.size());
+
+            for (JsonElement $$15 : $$13) {
+               try {
+                  this.r.add(axm.a($$15, "attribute"));
+               } catch (Exception var19) {
+                  aki $$17 = aki.a(var19);
+                  $$17.a("attributes[" + $$14 + "]");
+                  throw $$17;
+               }
+
+               $$14++;
+            }
+         } else {
+            this.q = null;
+            this.r = null;
+         }
+
+         JsonArray $$18 = axm.a($$5, "uniforms", null);
+         if ($$18 != null) {
+            int $$19 = 0;
+
+            for (JsonElement $$20 : $$18) {
+               try {
+                  this.b($$20);
+               } catch (Exception var18) {
+                  aki $$22 = aki.a(var18);
+                  $$22.a("uniforms[" + $$19 + "]");
+                  throw $$22;
+               }
+
+               $$19++;
+            }
+         }
+
+         this.p = a(axm.a($$5, "blend", null));
+         this.s = a($$0, exb.a.a, $$6);
+         this.t = a($$0, exb.a.b, $$7);
+         this.m = exc.a();
+         exc.b(this);
+         this.i();
+         if (this.r != null) {
+            for (String $$23 : this.r) {
+               int $$24 = exe.b(this.m, $$23);
+               this.q.add($$24);
+            }
+         }
+      } catch (Exception var22) {
+         aki $$26 = aki.a(var22);
+         $$26.b($$2.a() + " (" + $$3.b() + ")");
+         throw $$26;
+      }
+
+      this.b();
    }
 
-   public static gau a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gat.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<gat> $$3 = new ArrayList<>($$2);
+   public static ewz a(atr $$0, exb.a $$1, String $$2) throws IOException {
+      exb $$3 = $$1.c().get($$2);
+      if ($$3 != null && !($$3 instanceof ewz)) {
+         throw new InvalidClassException("Program is not of type EffectProgram");
+      } else {
+         ewz $$7;
+         if ($$3 == null) {
+            akf $$4 = new akf("shaders/program/" + $$2 + $$1.b());
+            atm $$5 = $$0.getResourceOrThrow($$4);
 
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new gat());
+            try (InputStream $$6 = $$5.d()) {
+               $$7 = ewz.a($$1, $$2, $$6, $$5.b());
+            }
+         } else {
+            $$7 = (ewz)$$3;
          }
-      } catch (OutOfMemoryError var7) {
-         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
+         return $$7;
+      }
+   }
+
+   public static ewx a(@Nullable JsonObject $$0) {
+      if ($$0 == null) {
+         return new ewx();
+      } else {
+         int $$1 = 32774;
+         int $$2 = 1;
+         int $$3 = 0;
+         int $$4 = 1;
+         int $$5 = 0;
+         boolean $$6 = true;
+         boolean $$7 = false;
+         if (axm.a($$0, "func")) {
+            $$1 = ewx.a($$0.get("func").getAsString());
+            if ($$1 != 32774) {
+               $$6 = false;
+            }
+         }
+
+         if (axm.a($$0, "srcrgb")) {
+            $$2 = ewx.b($$0.get("srcrgb").getAsString());
+            if ($$2 != 1) {
+               $$6 = false;
+            }
+         }
+
+         if (axm.a($$0, "dstrgb")) {
+            $$3 = ewx.b($$0.get("dstrgb").getAsString());
+            if ($$3 != 0) {
+               $$6 = false;
+            }
+         }
+
+         if (axm.a($$0, "srcalpha")) {
+            $$4 = ewx.b($$0.get("srcalpha").getAsString());
+            if ($$4 != 1) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if (axm.a($$0, "dstalpha")) {
+            $$5 = ewx.b($$0.get("dstalpha").getAsString());
+            if ($$5 != 0) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if ($$6) {
+            return new ewx();
+         } else {
+            return $$7 ? new ewx($$2, $$3, $$4, $$5, $$1) : new ewx($$2, $$3, $$1);
+         }
+      }
+   }
+
+   @Override
+   public void close() {
+      for (exe $$0 : this.j) {
+         $$0.close();
+      }
+
+      exc.a(this);
+   }
+
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      exc.a(0);
+      f = -1;
+      e = null;
+
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         if (this.g.get(this.h.get($$0)) != null) {
+            GlStateManager._activeTexture(33984 + $$0);
+            GlStateManager._bindTexture(0);
+         }
+      }
+   }
+
+   public void g() {
+      RenderSystem.assertOnGameThread();
+      this.o = false;
+      e = this;
+      this.p.a();
+      if (this.m != f) {
+         exc.a(this.m);
+         f = this.m;
+      }
+
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         String $$1 = this.h.get($$0);
+         IntSupplier $$2 = this.g.get($$1);
+         if ($$2 != null) {
+            RenderSystem.activeTexture(33984 + $$0);
+            int $$3 = $$2.getAsInt();
+            if ($$3 != -1) {
+               RenderSystem.bindTexture($$3);
+               exe.b(this.i.get($$0), $$0);
+            }
          }
       }
 
-      return new gau($$3);
+      for (exe $$4 : this.j) {
+         $$4.b();
+      }
+   }
+
+   @Override
+   public void b() {
+      this.o = true;
    }
 
    @Nullable
-   public gat a() {
-      gat $$0 = this.c.poll();
-      if ($$0 != null) {
-         this.d = this.c.size();
-         return $$0;
-      } else {
-         return null;
+   public exe a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.l.get($$0);
+   }
+
+   public eww b(String $$0) {
+      RenderSystem.assertOnGameThread();
+      exe $$1 = this.a($$0);
+      return (eww)($$1 == null ? c : $$1);
+   }
+
+   private void i() {
+      RenderSystem.assertOnRenderThread();
+      IntList $$0 = new IntArrayList();
+
+      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
+         String $$2 = this.h.get($$1);
+         int $$3 = exe.a(this.m, $$2);
+         if ($$3 == -1) {
+            b.warn("Shader {} could not find sampler named {} in the specified shader program.", this.n, $$2);
+            this.g.remove($$2);
+            $$0.add($$1);
+         } else {
+            this.i.add($$3);
+         }
+      }
+
+      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
+         this.h.remove($$0.getInt($$4));
+      }
+
+      for (exe $$5 : this.j) {
+         String $$6 = $$5.a();
+         int $$7 = exe.a(this.m, $$6);
+         if ($$7 == -1) {
+            b.warn("Shader {} could not find uniform named {} in the specified shader program.", this.n, $$6);
+         } else {
+            this.k.add($$7);
+            $$5.b($$7);
+            this.l.put($$6, $$5);
+         }
       }
    }
 
-   public void a(gat $$0) {
-      this.c.add($$0);
-      this.d = this.c.size();
+   private void a(JsonElement $$0) {
+      JsonObject $$1 = axm.m($$0, "sampler");
+      String $$2 = axm.i($$1, "name");
+      if (!axm.a($$1, "file")) {
+         this.g.put($$2, null);
+         this.h.add($$2);
+      } else {
+         this.h.add($$2);
+      }
    }
 
-   public boolean b() {
-      return this.c.isEmpty();
+   public void a(String $$0, IntSupplier $$1) {
+      if (this.g.containsKey($$0)) {
+         this.g.remove($$0);
+      }
+
+      this.g.put($$0, $$1);
+      this.b();
    }
 
-   public int c() {
-      return this.d;
+   private void b(JsonElement $$0) throws aki {
+      JsonObject $$1 = axm.m($$0, "uniform");
+      String $$2 = axm.i($$1, "name");
+      int $$3 = exe.a(axm.i($$1, "type"));
+      int $$4 = axm.o($$1, "count");
+      float[] $$5 = new float[Math.max($$4, 16)];
+      JsonArray $$6 = axm.v($$1, "values");
+      if ($$6.size() != $$4 && $$6.size() > 1) {
+         throw new aki("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
+      } else {
+         int $$7 = 0;
+
+         for (JsonElement $$8 : $$6) {
+            try {
+               $$5[$$7] = axm.e($$8, "value");
+            } catch (Exception var13) {
+               aki $$10 = aki.a(var13);
+               $$10.a("values[" + $$7 + "]");
+               throw $$10;
+            }
+
+            $$7++;
+         }
+
+         if ($$4 > 1 && $$6.size() == 1) {
+            while ($$7 < $$4) {
+               $$5[$$7] = $$5[0];
+               $$7++;
+            }
+         }
+
+         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
+         exe $$12 = new exe($$2, $$3 + $$11, $$4, this);
+         if ($$3 <= 3) {
+            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
+         } else if ($$3 <= 7) {
+            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
+         } else {
+            $$12.a($$5);
+         }
+
+         this.j.add($$12);
+      }
+   }
+
+   @Override
+   public exb c() {
+      return this.s;
+   }
+
+   @Override
+   public exb d() {
+      return this.t;
+   }
+
+   @Override
+   public void e() {
+      this.t.a(this);
+      this.s.a(this);
+   }
+
+   public String h() {
+      return this.n;
+   }
+
+   @Override
+   public int a() {
+      return this.m;
    }
 }

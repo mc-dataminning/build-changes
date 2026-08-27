@@ -1,29 +1,42 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bvc {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
+   public static buh<cjy> a(cah<iu> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return bwj.a(
+         (Function<bwj.b<cjy>, ? extends App<bwj.c<cjy>, bwm<cjy>>>)($$5 -> $$5.group($$5.a(cah.E), $$5.c(cah.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     iu $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.ae() && (!$$13.isPresent() || $$9.Y() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dn()) > $$3) {
+                           etf $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public static btw<brb> a(bzw<im> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return bvy.a(
-         (Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$4 -> $$4.group($$4.a(bzw.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  im $$9 = $$4.b($$5);
-                  if ($$6.ae() != $$9.a() || !$$9.b().a($$7.dk(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
+                           while ($$14 == null || im.a($$14).k($$10.dn()) > $$3) {
+                              $$14 = cby.a($$10, 15, 7, etf.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
+
+                           $$7.a(new cak($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dn()) > $$2) {
+                           $$7.a(new cak($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
+                     }
+
                      return true;
-                  } else {
-                     Optional<esj> $$10 = Optional.ofNullable(cbq.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new bzz($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+                  }))
       );
    }
 }

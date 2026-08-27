@@ -1,44 +1,58 @@
-public class ftk<T extends bqa> extends ftg<T> {
-   private boolean b;
+import com.google.common.collect.ImmutableList;
 
-   public ftk(ftv $$0) {
-      super($$0);
+public class ftk<T extends chx> extends fsj<T> {
+   private static final String a = "lid";
+   private static final String b = "base";
+   private final fur f;
+   private final fur g;
+   private final fur h;
+
+   public ftk(fur $$0) {
+      super(gbm::f);
+      this.g = $$0.b("lid");
+      this.f = $$0.b("base");
+      this.h = $$0.b("head");
    }
 
-   public static fub c() {
-      fud $$0 = ftg.b();
-      fue $$1 = $$0.a();
-      fue $$2 = $$1.a("head", fua.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), ftx.a);
-      fue $$3 = $$2.a("hat", fua.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), ftx.a(-5.0F, -10.03125F, -5.0F));
-      fue $$4 = $$3.a("hat2", fua.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), ftx.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
-      fue $$5 = $$4.a("hat3", fua.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), ftx.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
-      $$5.a(
-         "hat4", fua.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new ftz(0.25F)), ftx.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
-      );
-      fue $$6 = $$2.a("nose");
-      $$6.a("mole", fua.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new ftz(-0.25F)), ftx.a(0.0F, -2.0F, 0.0F));
-      return fub.a($$0, 64, 128);
+   public static fux a() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      $$1.a("lid", fuw.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fut.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", fuw.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fut.a(0.0F, 24.0F, 0.0F));
+      $$1.a("head", fuw.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fut.a(0.0F, 12.0F, 0.0F));
+      return fux.a($$0, 64, 64);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ai;
+      float $$7 = (0.5F + $$0.G($$6)) * (float) Math.PI;
+      float $$8 = -1.0F + axw.a($$7);
+      float $$9 = 0.0F;
+      if ($$7 > (float) Math.PI) {
+         $$9 = axw.a($$3 * 0.1F) * 0.7F;
+      }
+
+      this.g.a(0.0F, 16.0F + axw.a($$7) * 8.0F + $$9, 0.0F);
+      if ($$0.G($$6) > 0.3F) {
+         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
+      } else {
+         this.g.f = 0.0F;
+      }
+
+      this.h.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.f = ($$0.bb - 180.0F - $$0.aZ) * (float) (Math.PI / 180.0);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.a(0.0F, -2.0F, 0.0F);
-      float $$6 = 0.01F * (float)($$0.aj() % 10);
-      this.a.e = axm.a((float)$$0.ah * $$6) * 4.5F * (float) (Math.PI / 180.0);
-      this.a.f = 0.0F;
-      this.a.g = axm.b((float)$$0.ah * $$6) * 2.5F * (float) (Math.PI / 180.0);
-      if (this.b) {
-         this.a.a(0.0F, 1.0F, -1.5F);
-         this.a.e = -0.9F;
-      }
+   public Iterable<fur> d() {
+      return ImmutableList.of(this.f, this.g);
    }
 
-   public ftv e() {
-      return this.a;
+   public fur b() {
+      return this.g;
    }
 
-   public void b(boolean $$0) {
-      this.b = $$0;
+   public fur c() {
+      return this.h;
    }
 }

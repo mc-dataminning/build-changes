@@ -1,33 +1,57 @@
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import com.mojang.serialization.Codec;
 
-public class dhs extends dlh {
-   public static final MapCodec<dhs> b = b(dhs::new);
-   private static final Map<ij, etc> e = Maps.immutableEnumMap(
-      Map.of(
-         ij.c,
-         dch.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         ij.d,
-         dch.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         ij.f,
-         dch.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         ij.e,
-         dch.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public enum dhs implements ayq {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dhs> a() {
-      return b;
+   public static final Codec<dhs> d = ayq.a(dhs::values);
+   private final String e;
+   private final ws f;
+   private final h g;
+
+   private dhs(String $$0, h $$1) {
+      this.e = $$0;
+      this.f = ws.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public dhs(dph.d $$0) {
-      super(dji.b.h, $$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case c:
+            return ($$1 - $$3) % $$1;
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public dji a(ir $$0) {
+      ir.a $$1 = $$0.o();
+      return (this != b || $$1 != ir.a.c) && (this != c || $$1 != ir.a.a) ? dji.a : dji.c;
+   }
+
+   public ir b(ir $$0) {
+      if (this == c && $$0.o() == ir.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == ir.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public ws b() {
+      return this.f;
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return e.get($$0.c(d));
+   public String c() {
+      return this.e;
    }
 }

@@ -1,36 +1,29 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eqa extends eqc {
-   public static final Codec<eqa> a = a(eqa::new);
+public class eqa extends epo {
+   public static final Codec<eqa> a = RecordCodecBuilder.create($$0 -> a($$0).and(uw.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, eqa::new));
+   private final ty b;
 
-   eqa(List<eql> $$0) {
-      super($$0, ac.b($$0));
+   private eqa(List<erh> $$0, ty $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public eqm b() {
-      return eqn.c;
+   public epq b() {
+      return epr.g;
    }
 
-   public static eqa.a a(eql.a... $$0) {
-      return new eqa.a($$0);
+   @Override
+   public csd a(csd $$0, eoa $$1) {
+      cuq.a(jz.a, $$0, $$0x -> $$0x.a(this.b));
+      return $$0;
    }
 
-   public static class a extends eqc.a {
-      public a(eql.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public eqa.a or(eql.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected eql a(List<eql> $$0) {
-         return new eqa($$0);
-      }
+   @Deprecated
+   public static epo.a<?> a(ty $$0) {
+      return a($$1 -> new eqa($$1, $$0));
    }
 }

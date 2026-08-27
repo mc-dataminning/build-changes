@@ -1,5 +1,7 @@
-public interface brj {
-   void a(aup var1);
-
-   boolean a();
+public enum brj {
+   a,
+   b,
+   c,
+   d,
+   e;
 }

@@ -1,38 +1,31 @@
-public class ezg extends gru {
-   private static final wi a = wi.c("mco.client.incompatible.title").b(-65536);
-   private static final wi b = wi.b(aa.b().c()).b(-65536);
-   private static final wi c = wi.a("mco.client.unsupported.snapshot.version", b);
-   private static final wi y = wi.a("mco.client.outdated.stable.version", b);
-   private final fjx z;
-   private final fhl A = new fhl(this);
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-   public ezg(fjx $$0) {
-      super(a);
-      this.z = $$0;
-   }
+public class ezg extends ezj {
+   public long a;
+   public List<ezf> b = Lists.newArrayList();
 
-   @Override
-   public void aM_() {
-      this.A.a(a, this.m);
-      this.A.c(new fes(this.C(), this.m).b(true));
-      this.A.b(fdy.a(wh.k, $$0 -> this.d()).a(200).a());
-      this.A.a($$1 -> {
-         fdw var10000 = this.c($$1);
-      });
-      this.c();
-   }
+   public static ezg a(String $$0) {
+      ezg $$1 = new ezg();
+      JsonParser $$2 = new JsonParser();
 
-   @Override
-   protected void c() {
-      this.A.a();
-   }
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = fbg.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               ezf $$8 = ezf.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
+      }
 
-   @Override
-   public void d() {
-      this.j.a(this.z);
-   }
-
-   private wi C() {
-      return aa.b().g() ? y : c;
+      return $$1;
    }
 }

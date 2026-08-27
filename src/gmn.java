@@ -1,45 +1,156 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Map.Entry;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gmn {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+public class gmn extends glz implements gma, gmq {
+   private static final Logger g = LogUtils.getLogger();
+   @Deprecated
+   public static final akf e = coi.x;
+   @Deprecated
+   public static final akf f = new akf("textures/atlas/particles.png");
+   private List<gmi> h = List.of();
+   private List<gmo.a> i = List.of();
+   private Map<akf, gmo> j = Map.of();
+   @Nullable
+   private gmo k;
+   private final akf l;
+   private final int m;
+   private int n;
+   private int o;
+   private int p;
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      asa.a $$3 = asa.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   public gmn(akf $$0) {
+      this.l = $$0;
+      this.m = RenderSystem.maxSupportedTextureSize();
+   }
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = axc.a($$5);
-         JsonObject $$7 = axc.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = axc.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
+   @Override
+   public void a(ato $$0) {
+   }
+
+   public void a(gmj.a $$0) {
+      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
+      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
+      this.n = $$0.b();
+      this.o = $$0.c();
+      this.p = $$0.d();
+      this.f();
+      this.j = Map.copyOf($$0.f());
+      this.k = this.j.get(gme.b());
+      if (this.k == null) {
+         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
+      } else {
+         List<gmi> $$1 = new ArrayList<>();
+         List<gmo.a> $$2 = new ArrayList<>();
+
+         for (gmo $$3 : $$0.f().values()) {
+            $$1.add($$3.e());
+
+            try {
+               $$3.j();
+            } catch (Throwable var9) {
+               o $$5 = o.a(var9, "Stitching texture atlas");
+               p $$6 = $$5.a("Texture being stitched together");
+               $$6.a("Atlas path", this.l);
+               $$6.a("Sprite", $$3);
+               throw new y($$5);
+            }
+
+            gmo.a $$7 = $$3.f();
+            if ($$7 != null) {
+               $$2.add($$7);
             }
          }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
-      }
 
-      return $$3.a("index-" + $$1).getPath("/");
+         this.h = List.copyOf($$1);
+         this.i = List.copyOf($$2);
+      }
+   }
+
+   @Override
+   public void a(akf $$0, Path $$1) throws IOException {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
+      a($$1, $$2, this.j);
+   }
+
+   private static void a(Path $$0, String $$1, Map<akf, gmo> $$2) {
+      Path $$3 = $$0.resolve($$1 + ".txt");
+
+      try (Writer $$4 = Files.newBufferedWriter($$3)) {
+         for (Entry<akf, gmo> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
+            gmo $$6 = $$5.getValue();
+            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
+         }
+      } catch (IOException var10) {
+         g.warn("Failed to write file {}", $$3, var10);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.c();
+
+      for (gmo.a $$0 : this.i) {
+         $$0.a();
+      }
+   }
+
+   @Override
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::d);
+      } else {
+         this.d();
+      }
+   }
+
+   public gmo a(akf $$0) {
+      gmo $$1 = this.j.getOrDefault($$0, this.k);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
+      } else {
+         return $$1;
+      }
+   }
+
+   public void f() {
+      this.h.forEach(gmi::close);
+      this.i.forEach(gmo.a::close);
+      this.h = List.of();
+      this.i = List.of();
+      this.j = Map.of();
+      this.k = null;
+   }
+
+   public akf g() {
+      return this.l;
+   }
+
+   public int h() {
+      return this.m;
+   }
+
+   int i() {
+      return this.n;
+   }
+
+   int j() {
+      return this.o;
+   }
+
+   public void b(gmj.a $$0) {
+      this.a(false, $$0.d() > 0);
    }
 }

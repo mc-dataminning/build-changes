@@ -1,146 +1,80 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class art extends arh {
-   private static final Logger c = LogUtils.getLogger();
-   private static final Joiner d = Joiner.on("/");
-   private final Path e;
+public class art implements asa {
+   private final asa c;
+   private final List<asa> d;
 
-   public art(arp $$0, Path $$1) {
-      super($$0);
-      this.e = $$1;
+   public art(asa $$0, List<asa> $$1) {
+      this.c = $$0;
+      List<asa> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
    @Nullable
    @Override
-   public asw<InputStream> a(String... $$0) {
-      v.a($$0);
-      Path $$1 = v.a(this.e, List.of($$0));
-      return Files.exists($$1) ? asw.create($$1) : null;
-   }
-
-   public static boolean a(Path $$0) {
-      return true;
+   public atg<InputStream> a(String... $$0) {
+      return this.c.a($$0);
    }
 
    @Nullable
    @Override
-   public asw<InputStream> a(ars $$0, ajv $$1) {
-      Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
-      return a($$1, $$2);
-   }
-
-   public static asw<InputStream> a(ajv $$0, Path $$1) {
-      return (asw<InputStream>)v.c($$0.a()).get().map($$1x -> {
-         Path $$2 = v.a($$1, $$1x);
-         return b($$2);
-      }, $$1x -> {
-         c.error("Invalid path {}: {}", $$0, $$1x.message());
-         return null;
-      });
-   }
-
-   @Nullable
-   private static asw<InputStream> b(Path $$0) {
-      return Files.exists($$0) && a($$0) ? asw.create($$0) : null;
-   }
-
-   @Override
-   public void a(ars $$0, String $$1, String $$2, arq.a $$3) {
-      v.c($$2).get().ifLeft($$3x -> {
-         Path $$4 = this.e.resolve($$0.a()).resolve($$1);
-         a($$1, $$4, $$3x, $$3);
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
-   }
-
-   public static void a(String $$0, Path $$1, List<String> $$2, arq.a $$3) {
-      Path $$4 = v.a($$1, $$2);
-
-      try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-         $$5.forEach($$3x -> {
-            String $$4x = d.join($$1.relativize($$3x));
-            ajv $$5x = ajv.a($$0, $$4x);
-            if ($$5x == null) {
-               ac.a(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
-            } else {
-               $$3.accept($$5x, asw.create($$3x));
-            }
-         });
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$4, var11);
-      }
-   }
-
-   @Override
-   public Set<String> a(ars $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-      Path $$2 = this.e.resolve($$0.a());
-
-      try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
-         for (Path $$4 : $$3) {
-            String $$5 = $$4.getFileName().toString();
-            if (ajv.h($$5)) {
-               $$1.add($$5);
-            } else {
-               c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);
-            }
+   public atg<InputStream> a(asc $$0, akf $$1) {
+      for (asa $$2 : this.d) {
+         atg<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
          }
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$2, var11);
+      }
+
+      return null;
+   }
+
+   @Override
+   public void a(asc $$0, String $$1, String $$2, asa.a $$3) {
+      Map<akf, atg<InputStream>> $$4 = new HashMap<>();
+
+      for (asa $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
+      }
+
+      $$4.forEach($$3);
+   }
+
+   @Override
+   public Set<String> a(asc $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (asa $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
       }
 
       return $$1;
    }
 
+   @Nullable
    @Override
-   public void close() {
+   public <T> T a(asn<T> $$0) throws IOException {
+      return this.c.a($$0);
    }
 
-   public static class a implements asm.c {
-      private final Path a;
+   @Override
+   public arz a() {
+      return this.c.a();
+   }
 
-      public a(Path $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public arq a(arp $$0) {
-         return new art($$0, this.a);
-      }
-
-      @Override
-      public arq a(arp $$0, asm.a $$1) {
-         arq $$2 = this.a($$0);
-         List<String> $$3 = $$1.d();
-         if ($$3.isEmpty()) {
-            return $$2;
-         } else {
-            List<arq> $$4 = new ArrayList<>($$3.size());
-
-            for (String $$5 : $$3) {
-               Path $$6 = this.a.resolve($$5);
-               $$4.add(new art($$0, $$6));
-            }
-
-            return new arj($$2, $$4);
-         }
-      }
+   @Override
+   public void close() {
+      this.d.forEach(asa::close);
    }
 }

@@ -1,136 +1,235 @@
-public class cad extends cae {
-   private boolean p;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.DoublePredicate;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-   public cad(bqv $$0, czg $$1) {
-      super($$0, $$1);
+public class cad {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 2;
+   private final Map<UUID, cad.a> c = Maps.newHashMap();
+
+   @ayz
+   public Map<UUID, Object2IntMap<cae>> a() {
+      Map<UUID, Object2IntMap<cae>> $$0 = Maps.newHashMap();
+      this.c.keySet().forEach($$1 -> {
+         cad.a $$2 = this.c.get($$1);
+         $$0.put($$1, $$2.a);
+      });
+      return $$0;
    }
 
-   @Override
-   protected elr a(int $$0) {
-      this.o = new elx();
-      this.o.a(true);
-      return new elr(this.o, $$0);
+   public void b() {
+      Iterator<cad.a> $$0 = this.c.values().iterator();
+
+      while ($$0.hasNext()) {
+         cad.a $$1 = $$0.next();
+         $$1.a();
+         if ($$1.b()) {
+            $$0.remove();
+         }
+      }
    }
 
-   @Override
-   protected boolean a() {
-      return this.a.aC() || this.a.bg() || this.a.bO();
+   private Stream<cad.b> c() {
+      return this.c.entrySet().stream().flatMap($$0 -> $$0.getValue().a($$0.getKey()));
    }
 
-   @Override
-   protected esj b() {
-      return new esj(this.a.dr(), (double)this.s(), this.a.dx());
-   }
-
-   @Override
-   public elp a(id $$0, int $$1) {
-      dro $$2 = this.b.M().a(jg.a($$0.u()), jg.a($$0.w()));
-      if ($$2 == null) {
-         return null;
+   private Collection<cad.b> a(ayd $$0, int $$1) {
+      List<cad.b> $$2 = this.c().toList();
+      if ($$2.isEmpty()) {
+         return Collections.emptyList();
       } else {
-         if ($$2.a_($$0).i()) {
-            id $$3 = $$0.d();
+         int[] $$3 = new int[$$2.size()];
+         int $$4 = 0;
 
-            while ($$3.v() > this.b.I_() && $$2.a_($$3).i()) {
-               $$3 = $$3.d();
-            }
-
-            if ($$3.v() > this.b.I_()) {
-               return super.a($$3.c(), $$1);
-            }
-
-            while ($$3.v() < this.b.al() && $$2.a_($$3).i()) {
-               $$3 = $$3.c();
-            }
-
-            $$0 = $$3;
+         for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
+            cad.b $$6 = $$2.get($$5);
+            $$4 += Math.abs($$6.a());
+            $$3[$$5] = $$4 - 1;
          }
 
-         if (!$$2.a_($$0).e()) {
-            return super.a($$0, $$1);
-         } else {
-            id $$4 = $$0.c();
+         Set<cad.b> $$7 = Sets.newIdentityHashSet();
 
-            while ($$4.v() < this.b.al() && $$2.a_($$4).e()) {
-               $$4 = $$4.c();
-            }
+         for (int $$8 = 0; $$8 < $$1; $$8++) {
+            int $$9 = $$0.a($$4);
+            int $$10 = Arrays.binarySearch($$3, $$9);
+            $$7.add($$2.get($$10 < 0 ? -$$10 - 1 : $$10));
+         }
 
-            return super.a($$4, $$1);
+         return $$7;
+      }
+   }
+
+   private cad.a a(UUID $$0) {
+      return this.c.computeIfAbsent($$0, $$0x -> new cad.a());
+   }
+
+   public void a(cad $$0, ayd $$1, int $$2) {
+      Collection<cad.b> $$3 = $$0.a($$1, $$2);
+      $$3.forEach($$0x -> {
+         int $$1x = $$0x.e - $$0x.d.m;
+         if ($$1x >= 2) {
+            this.a($$0x.c).a.mergeInt($$0x.d, $$1x, cad::a);
+         }
+      });
+   }
+
+   public int a(UUID $$0, Predicate<cae> $$1) {
+      cad.a $$2 = this.c.get($$0);
+      return $$2 != null ? $$2.a($$1) : 0;
+   }
+
+   public long a(cae $$0, DoublePredicate $$1) {
+      return this.c.values().stream().filter($$2 -> $$1.test((double)($$2.a.getOrDefault($$0, 0) * $$0.j))).count();
+   }
+
+   public void a(UUID $$0, cae $$1, int $$2) {
+      cad.a $$3 = this.a($$0);
+      $$3.a.mergeInt($$1, $$2, ($$1x, $$2x) -> this.a($$1, $$1x, $$2x));
+      $$3.a($$1);
+      if ($$3.b()) {
+         this.c.remove($$0);
+      }
+   }
+
+   public void b(UUID $$0, cae $$1, int $$2) {
+      this.a($$0, $$1, -$$2);
+   }
+
+   public void a(UUID $$0, cae $$1) {
+      cad.a $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.b($$1);
+         if ($$2.b()) {
+            this.c.remove($$0);
          }
       }
    }
 
-   @Override
-   public elp a(bqa $$0, int $$1) {
-      return this.a($$0.dm(), $$1);
+   public void a(cae $$0) {
+      Iterator<cad.a> $$1 = this.c.values().iterator();
+
+      while ($$1.hasNext()) {
+         cad.a $$2 = $$1.next();
+         $$2.b($$0);
+         if ($$2.b()) {
+            $$1.remove();
+         }
+      }
    }
 
-   private int s() {
-      if (this.a.bc() && this.p()) {
-         int $$0 = this.a.ds();
-         dpi $$1 = this.b.a_(id.a(this.a.dr(), (double)$$0, this.a.dx()));
-         int $$2 = 0;
+   public <T> T a(DynamicOps<T> $$0) {
+      return (T)cad.b.b.encodeStart($$0, this.c().toList()).resultOrPartial($$0x -> b.warn("Failed to serialize gossips: {}", $$0x)).orElseGet($$0::emptyList);
+   }
 
-         while ($$1.a(dcj.G)) {
-            $$1 = this.b.a_(id.a(this.a.dr(), (double)(++$$0), this.a.dx()));
-            if (++$$2 > 16) {
-               return this.a.ds();
+   public void a(Dynamic<?> $$0) {
+      cad.b.b
+         .decode($$0)
+         .resultOrPartial($$0x -> b.warn("Failed to deserialize gossips: {}", $$0x))
+         .stream()
+         .flatMap($$0x -> ((List)$$0x.getFirst()).stream())
+         .forEach($$0x -> this.a($$0x.c).a.put($$0x.d, $$0x.e));
+   }
+
+   private static int a(int $$0, int $$1) {
+      return Math.max($$0, $$1);
+   }
+
+   private int a(cae $$0, int $$1, int $$2) {
+      int $$3 = $$1 + $$2;
+      return $$3 > $$0.k ? Math.max($$0.k, $$1) : $$3;
+   }
+
+   static class a {
+      final Object2IntMap<cae> a = new Object2IntOpenHashMap();
+
+      public int a(Predicate<cae> $$0) {
+         return this.a
+            .object2IntEntrySet()
+            .stream()
+            .filter($$1 -> $$0.test((cae)$$1.getKey()))
+            .mapToInt($$0x -> $$0x.getIntValue() * ((cae)$$0x.getKey()).j)
+            .sum();
+      }
+
+      public Stream<cad.b> a(UUID $$0) {
+         return this.a.object2IntEntrySet().stream().map($$1 -> new cad.b($$0, (cae)$$1.getKey(), $$1.getIntValue()));
+      }
+
+      public void a() {
+         ObjectIterator<Entry<cae>> $$0 = this.a.object2IntEntrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<cae> $$1 = (Entry<cae>)$$0.next();
+            int $$2 = $$1.getIntValue() - ((cae)$$1.getKey()).l;
+            if ($$2 < 2) {
+               $$0.remove();
+            } else {
+               $$1.setValue($$2);
             }
          }
-
-         return $$0;
-      } else {
-         return axm.a(this.a.dt() + 0.5);
       }
-   }
 
-   @Override
-   protected void S_() {
-      super.S_();
-      if (this.p) {
-         if (this.b.h(id.a(this.a.dr(), this.a.dt() + 0.5, this.a.dx()))) {
-            return;
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      public void a(cae $$0) {
+         int $$1 = this.a.getInt($$0);
+         if ($$1 > $$0.k) {
+            this.a.put($$0, $$0.k);
          }
 
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            eln $$1 = this.c.a($$0);
-            if (this.b.h(new id($$1.a, $$1.b, $$1.c))) {
-               this.c.b($$0);
-               return;
-            }
+         if ($$1 < 2) {
+            this.b($$0);
          }
       }
-   }
 
-   protected boolean a(els $$0) {
-      if ($$0 == els.j) {
-         return false;
-      } else {
-         return $$0 == els.i ? false : $$0 != els.b;
+      public void b(cae $$0) {
+         this.a.removeInt($$0);
       }
    }
 
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
+   static record b(UUID c, cae d, int e) {
+      public static final Codec<cad.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(jp.a.fieldOf("Target").forGetter(cad.b::b), cae.n.fieldOf("Type").forGetter(cad.b::c), axe.j.fieldOf("Value").forGetter(cad.b::d))
+               .apply($$0, cad.b::new)
+      );
+      public static final Codec<List<cad.b>> b = a.listOf();
 
-   public boolean e() {
-      return this.o.d();
-   }
+      public int a() {
+         return this.e * this.d.j;
+      }
 
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
+      public UUID b() {
+         return this.c;
+      }
 
-   public boolean f() {
-      return this.o.d();
-   }
+      public cae c() {
+         return this.d;
+      }
 
-   public void d(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public void e(boolean $$0) {
-      this.o.d($$0);
+      public int d() {
+         return this.e;
+      }
    }
 }

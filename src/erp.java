@@ -1,18 +1,60 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class erp {
-   private static final Codec<ero> d = kt.K.q().dispatch(ero::a, ern::a);
-   public static final Codec<ero> a = awu.a(
-      (Supplier<Codec<ero>>)(() -> Codec.either(erl.b, d)
-            .xmap($$0 -> (ero)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof erl $$1 ? Either.left($$1) : Either.right($$0)))
+public record erp(Optional<Long> b, enz c) implements erh {
+   public static final Codec<erp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axe.a(Codec.LONG, "period").forGetter(erp::c), enz.a.fieldOf("value").forGetter(erp::d)).apply($$0, erp::new)
    );
-   public static final ern b = a("fixed", erm.a);
-   public static final ern c = a("context", erl.a);
 
-   private static ern a(String $$0, Codec<? extends ero> $$1) {
-      return ja.a(kt.K, new ajv($$0), new ern($$1));
+   @Override
+   public eri b() {
+      return erj.r;
+   }
+
+   @Override
+   public Set<eqq<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(eoa $$0) {
+      aqe $$1 = $$0.d();
+      long $$2 = $$1.Z();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static erp.a a(enz $$0) {
+      return new erp.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public enz d() {
+      return this.c;
+   }
+
+   public static class a implements erh.a {
+      private Optional<Long> a = Optional.empty();
+      private final enz b;
+
+      public a(enz $$0) {
+         this.b = $$0;
+      }
+
+      public erp.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public erp a() {
+         return new erp(this.a, this.b);
+      }
    }
 }

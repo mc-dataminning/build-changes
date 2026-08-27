@@ -1,195 +1,143 @@
 import com.mojang.serialization.Codec;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class dyu extends dye<eal> {
-   public dyu(Codec<eal> $$0) {
-      super($$0);
+public abstract class dyu<FC extends eay> {
+   public static final dyu<ebf> e = a("no_op", new dzo(ebf.a));
+   public static final dyu<ebu> f = a("tree", new eag(ebu.a));
+   public static final dyu<ebl> g = a("flower", new dzs(ebl.a));
+   public static final dyu<ebl> h = a("no_bonemeal_flower", new dzs(ebl.a));
+   public static final dyu<ebl> i = a("random_patch", new dzs(ebl.a));
+   public static final dyu<eaq> j = a("block_pile", new dyd(eaq.a));
+   public static final dyu<ebt> k = a("spring_feature", new eaf(ebt.a));
+   public static final dyu<ebf> l = a("chorus_plant", new dyg(ebf.a));
+   public static final dyu<ebm> m = a("replace_single_block", new dzv(ebm.a));
+   public static final dyu<ebf> n = a("void_start_platform", new eal(ebf.a));
+   public static final dyu<ebf> o = a("desert_well", new dyn(ebf.a));
+   public static final dyu<dyz> p = a("fossil", new dyy(dyz.a));
+   public static final dyu<eba> q = a("huge_red_mushroom", new dzf(eba.a));
+   public static final dyu<eba> r = a("huge_brown_mushroom", new dzc(eba.a));
+   public static final dyu<ebf> s = a("ice_spike", new dzg(ebf.a));
+   public static final dyu<ebf> t = a("glowstone_blob", new dzb(ebf.a));
+   public static final dyu<ebf> u = a("freeze_top_layer", new ead(ebf.a));
+   public static final dyu<ebf> v = a("vines", new eak(ebf.a));
+   public static final dyu<eap> w = a("block_column", new dyc(eap.a));
+   public static final dyu<ebx> x = a("vegetation_patch", new eaj(ebx.a));
+   public static final dyu<ebx> y = a("waterlogged_vegetation_patch", new eam(ebx.a));
+   public static final dyu<ebo> z = a("root_system", new dzw(ebo.a));
+   public static final dyu<ebd> A = a("multiface_growth", new dzm(ebd.a));
+   public static final dyu<ebw> B = a("underwater_magma", new eai(ebw.a));
+   public static final dyu<ebf> C = a("monster_room", new dzl(ebf.a));
+   public static final dyu<ebf> D = a("blue_ice", new dye(ebf.a));
+   public static final dyu<ear> E = a("iceberg", new dzh(ear.a));
+   public static final dyu<ear> F = a("forest_rock", new dyb(ear.a));
+   public static final dyu<eav> G = a("disk", new dyo(eav.a));
+   public static final dyu<dzj.a> H = a("lake", new dzj(dzj.a.a));
+   public static final dyu<ebg> I = a("ore", new dzp(ebg.a));
+   public static final dyu<ebs> J = a("end_spike", new eae(ebs.a));
+   public static final dyu<ebf> K = a("end_island", new dys(ebf.a));
+   public static final dyu<eax> L = a("end_gateway", new dyr(eax.a));
+   public static final eaa M = a("seagrass", new eaa(ebi.k));
+   public static final dyu<ebf> N = a("kelp", new dzi(ebf.a));
+   public static final dyu<ebf> O = a("coral_tree", new dyl(ebf.a));
+   public static final dyu<ebf> P = a("coral_mushroom", new dyk(ebf.a));
+   public static final dyu<ebf> Q = a("coral_claw", new dyi(ebf.a));
+   public static final dyu<eat> R = a("sea_pickle", new dzz(eat.a));
+   public static final dyu<ebq> S = a("simple_block", new eab(ebq.a));
+   public static final dyu<ebi> T = a("bamboo", new dxy(ebi.k));
+   public static final dyu<dzd> U = a("huge_fungus", new dze(dzd.a));
+   public static final dyu<ebe> V = a("nether_forest_vegetation", new dzn(ebe.c));
+   public static final dyu<ebf> W = a("weeping_vines", new ean(ebf.a));
+   public static final dyu<ebv> X = a("twisting_vines", new eah(ebv.a));
+   public static final dyu<eas> Y = a("basalt_columns", new dxz(eas.a));
+   public static final dyu<eau> Z = a("delta_feature", new dym(eau.a));
+   public static final dyu<ebn> aa = a("netherrack_replace_blobs", new dzu(ebn.a));
+   public static final dyu<ebc> ab = a("fill_layer", new dyx(ebc.a));
+   public static final dyf ac = a("bonus_chest", new dyf(ebf.a));
+   public static final dyu<ebf> ad = a("basalt_pillar", new dya(ebf.a));
+   public static final dyu<ebg> ae = a("scattered_ore", new dzx(ebg.a));
+   public static final dyu<ebk> af = a("random_selector", new dzt(ebk.a));
+   public static final dyu<ebr> ag = a("simple_random_selector", new eac(ebr.a));
+   public static final dyu<ebj> ah = a("random_boolean_selector", new dzr(ebj.a));
+   public static final dyu<eaz> ai = a("geode", new dza(eaz.b));
+   public static final dyu<eaw> aj = a("dripstone_cluster", new dyp(eaw.a));
+   public static final dyu<ebb> ak = a("large_dripstone", new dzk(ebb.a));
+   public static final dyu<ebh> al = a("pointed_dripstone", new dzq(ebh.a));
+   public static final dyu<ebp> am = a("sculk_patch", new dzy(ebp.a));
+   private final Codec<dyh<FC, dyu<FC>>> a;
+
+   private static <C extends eay, F extends dyu<C>> F a(String $$0, F $$1) {
+      return ji.a(lc.Q, $$0, $$1);
    }
 
-   @Override
-   public boolean a(dyg<eal> $$0) {
-      dab $$1 = $$0.b();
-      id $$2 = $$0.e();
-      eal $$3 = $$0.f();
-      axt $$4 = $$0.d();
-      if (!dya.a($$1, $$2)) {
-         return false;
-      } else {
-         Optional<duq> $$5 = duq.a($$1, $$2, $$3.b, dya::c, dya::a);
-         if (!$$5.isEmpty() && $$5.get() instanceof duq.b) {
-            duq.b $$6 = (duq.b)$$5.get();
-            if ($$6.g() < 4) {
-               return false;
-            } else {
-               int $$7 = (int)((float)$$6.g() * $$3.e);
-               int $$8 = axm.a($$7, $$3.c.a(), $$3.c.b());
-               int $$9 = axm.b($$4, $$3.c.a(), $$8);
-               dyu.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
-               dyu.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
-               dyu.b $$12;
-               if ($$10.a($$3) && $$11.a($$3)) {
-                  $$12 = new dyu.b($$2.v(), $$4, $$3.h);
-               } else {
-                  $$12 = dyu.b.a();
-               }
-
-               boolean $$14 = $$10.a($$1, $$12);
-               boolean $$15 = $$11.a($$1, $$12);
-               if ($$14) {
-                  $$10.a($$1, $$4, $$12);
-               }
-
-               if ($$15) {
-                  $$11.a($$1, $$4, $$12);
-               }
-
-               return true;
-            }
-         } else {
-            return false;
-         }
-      }
+   public dyu(Codec<FC> $$0) {
+      this.a = $$0.fieldOf("config").xmap($$0x -> new dyh<>(this, $$0x), dyh::c).codec();
    }
 
-   private static dyu.a a(id $$0, boolean $$1, axt $$2, int $$3, bni $$4, bni $$5) {
-      return new dyu.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
+   public Codec<dyh<FC, dyu<FC>>> a() {
+      return this.a;
    }
 
-   private void a(dab $$0, id $$1, duq.b $$2, dyu.b $$3) {
-      $$0.a($$3.a($$1.h($$2.e() - 1)), dcj.cz.n(), 2);
-      $$0.a($$3.a($$1.h($$2.f() + 1)), dcj.ch.n(), 2);
-
-      for (id.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(ij.b)) {
-         id $$5 = $$3.a($$4);
-         if (dya.a($$0, $$5) || $$0.a_($$5).a(dcj.su)) {
-            $$0.a($$5, dcj.gM.n(), 2);
-         }
-      }
+   protected void a(dac $$0, im $$1, dpy $$2) {
+      $$0.a($$1, $$2, 3);
    }
 
-   static final class a {
-      private id a;
-      private final boolean b;
-      private int c;
-      private final double d;
-      private final double e;
+   public static Predicate<dpy> a(awd<dcv> $$0) {
+      return $$1 -> !$$1.a($$0);
+   }
 
-      a(id $$0, boolean $$1, int $$2, double $$3, double $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      private int a() {
-         return this.a(0.0F);
-      }
-
-      private int b() {
-         return this.b ? this.a.v() : this.a.v() - this.a();
-      }
-
-      private int c() {
-         return !this.b ? this.a.v() : this.a.v() + this.a();
-      }
-
-      boolean a(dab $$0, dyu.b $$1) {
-         while (this.c > 1) {
-            id.a $$2 = this.a.j();
-            int $$3 = Math.min(10, this.a());
-
-            for (int $$4 = 0; $$4 < $$3; $$4++) {
-               if ($$0.a_($$2).a(dcj.H)) {
-                  return false;
-               }
-
-               if (dya.a($$0, $$1.a($$2), this.c)) {
-                  this.a = $$2;
-                  return true;
-               }
-
-               $$2.c(this.b ? ij.a : ij.b);
-            }
-
-            this.c /= 2;
-         }
-
-         return false;
-      }
-
-      private int a(float $$0) {
-         return (int)dya.a((double)$$0, (double)this.c, this.e, this.d);
-      }
-
-      void a(dab $$0, axt $$1, dyu.b $$2) {
-         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
-            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
-               float $$5 = axm.c((float)($$3 * $$3 + $$4 * $$4));
-               if (!($$5 > (float)this.c)) {
-                  int $$6 = this.a($$5);
-                  if ($$6 > 0) {
-                     if ((double)$$1.i() < 0.2) {
-                        $$6 = (int)((float)$$6 * axm.b($$1, 0.8F, 1.0F));
-                     }
-
-                     id.a $$7 = this.a.b($$3, 0, $$4).j();
-                     boolean $$8 = false;
-                     int $$9 = this.b ? $$0.a(dva.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
-
-                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
-                        id $$11 = $$2.a($$7);
-                        if (dya.b($$0, $$11)) {
-                           $$8 = true;
-                           dch $$12 = dcj.su;
-                           $$0.a($$11, $$12.n(), 2);
-                        } else if ($$8 && $$0.a_($$11).a(ave.be)) {
-                           break;
-                        }
-
-                        $$7.c(this.b ? ij.b : ij.a);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      boolean a(eal $$0) {
-         return this.c >= $$0.i && this.d >= (double)$$0.j;
+   protected void a(dap $$0, im $$1, dpy $$2, Predicate<dpy> $$3) {
+      if ($$3.test($$0.a_($$1))) {
+         $$0.a($$1, $$2, 2);
       }
    }
 
-   static final class b {
-      private final int a;
-      @Nullable
-      private final esj b;
+   public abstract boolean a(dyw<FC> var1);
 
-      b(int $$0, axt $$1, bni $$2) {
-         this.a = $$0;
-         float $$3 = $$2.a($$1);
-         float $$4 = axm.b($$1, 0.0F, (float) Math.PI);
-         this.b = new esj((double)(axm.b($$4) * $$3), 0.0, (double)(axm.a($$4) * $$3));
-      }
+   public boolean a(FC $$0, dap $$1, drv $$2, ayd $$3, im $$4) {
+      return $$1.f_($$4) ? this.a(new dyw<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
+   }
 
-      private b() {
-         this.a = 0;
-         this.b = null;
-      }
+   protected static boolean a(dpy $$0) {
+      return $$0.a(avo.be);
+   }
 
-      static dyu.b a() {
-         return new dyu.b();
-      }
+   public static boolean b(dpy $$0) {
+      return $$0.a(avo.af);
+   }
 
-      id a(id $$0) {
-         if (this.b == null) {
-            return $$0;
-         } else {
-            int $$1 = this.a - $$0.v();
-            esj $$2 = this.b.a((double)$$1);
-            return $$0.b(axm.a($$2.c), 0, axm.a($$2.e));
+   public static boolean a(daa $$0, im $$1) {
+      return $$0.a($$1, dyu::b);
+   }
+
+   public static boolean a(Function<im, dpy> $$0, im $$1, Predicate<dpy> $$2) {
+      im.a $$3 = new im.a();
+
+      for (ir $$4 : ir.values()) {
+         $$3.a($$1, $$4);
+         if ($$2.test($$0.apply($$3))) {
+            return true;
          }
+      }
+
+      return false;
+   }
+
+   public static boolean a(Function<im, dpy> $$0, im $$1) {
+      return a($$0, $$1, dpx.a::i);
+   }
+
+   protected void a(dap $$0, im $$1) {
+      im.a $$2 = $$1.j();
+
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         $$2.c(ir.b);
+         if ($$0.a_($$2).i()) {
+            return;
+         }
+
+         $$0.y($$2).e($$2);
       }
    }
 }

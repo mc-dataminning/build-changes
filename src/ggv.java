@@ -1,27 +1,27 @@
-public class ggv extends ggx<chf, frl<chf>> {
-   private static final ajv a = new ajv("textures/entity/slime/magmacube.png");
+public class ggv extends ght<cdd, frt<cdd>> {
+   private static final akf a = new akf("textures/entity/fox/fox.png");
+   private static final akf i = new akf("textures/entity/fox/fox_sleep.png");
+   private static final akf j = new akf("textures/entity/fox/snow_fox.png");
+   private static final akf k = new akf("textures/entity/fox/snow_fox_sleep.png");
 
-   public ggv(gfr.a $$0) {
-      super($$0, new frl<>($$0.a(ftu.aA)), 0.25F);
+   public ggv(ggn.a $$0) {
+      super($$0, new frt<>($$0.a(fuq.ad)), 0.4F);
+      this.a(new gkl(this, $$0.d()));
    }
 
-   protected int a(chf $$0, id $$1) {
-      return 15;
-   }
-
-   public ajv a(chf $$0) {
-      return a;
-   }
-
-   public void a(chf $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.go();
+   protected void a(cdd $$0, exn $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gv() || $$0.gp()) {
+         float $$6 = -axw.i($$4, $$0.P, $$0.dF());
+         $$1.a(a.b.rotationDegrees($$6));
+      }
    }
 
-   protected void a(chf $$0, ewr $$1, float $$2) {
-      int $$3 = $$0.go();
-      float $$4 = axm.i($$2, $$0.bW, $$0.e) / ((float)$$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
+   public akf a(cdd $$0) {
+      if ($$0.u() == cdd.v.a) {
+         return $$0.fJ() ? i : a;
+      } else {
+         return $$0.fJ() ? k : j;
+      }
    }
 }

@@ -1,23 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class dae {
-   public static final Codec<dae> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kn.aY.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dae::new)
-   );
-   private final kl b;
-   private final float c;
+   private final Long2ObjectMap<List<aqf>> a = new Long2ObjectOpenHashMap();
+   private final Map<aqf, dae.a> b = Maps.newHashMap();
+   private final apn c;
 
-   public dae(kl $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dae(apn $$0) {
+      this.c = $$0;
    }
 
-   public kl a() {
-      return this.b;
+   private List<aqf> a(czb $$0) {
+      return (List<aqf>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
    }
 
-   public boolean a(axt $$0) {
-      return $$0.i() <= this.c;
+   public void a(czb $$0, brh $$1) {
+      for (aqf $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new dae.a()).a($$1);
+      }
+   }
+
+   public boolean a(brh $$0, czb $$1) {
+      for (aqf $$2 : this.a($$1)) {
+         dae.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static class a {
+      private final Object2IntMap<brh> a = new Object2IntOpenHashMap(brh.values().length);
+
+      public void a(brh $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(brh $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
+      }
    }
 }

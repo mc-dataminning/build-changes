@@ -1,39 +1,99 @@
-import java.util.List;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bzp<T extends bqv & bqz> extends bxq {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class bzp extends byb {
+   private final byb a;
+   private final int b;
+   private boolean c;
 
-   public bzp(T $$0, boolean $$1) {
+   public bzp(int $$0, byb $$1) {
       this.b = $$0;
-      this.c = $$1;
+      this.a = $$1;
+   }
+
+   public boolean a(bzp $$0) {
+      return this.Q_() && $$0.i() < this.i();
    }
 
    @Override
    public boolean a() {
-      return this.b.dM().aa().b(czc.O) && this.h();
+      return this.a.a();
    }
 
-   private boolean h() {
-      return this.b.ej() != null && this.b.ej().ai() == bqg.bx && this.b.ek() > this.d;
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean Q_() {
+      return this.a.Q_();
    }
 
    @Override
    public void c() {
-      this.d = this.b.ek();
-      this.b.aa_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bqz)$$0).forEach(bqz::aa_);
+      if (!this.c) {
+         this.c = true;
+         this.a.c();
       }
-
-      super.c();
    }
 
-   private List<? extends bqv> i() {
-      double $$0 = this.b.g(bsa.k);
-      ese $$1 = ese.a(this.b.dk()).c($$0, 10.0, $$0);
-      return this.b.dM().a((Class<? extends bqv>)this.b.getClass(), $$1, bqf.f);
+   @Override
+   public void d() {
+      if (this.c) {
+         this.c = false;
+         this.a.d();
+      }
+   }
+
+   @Override
+   public boolean R_() {
+      return this.a.R_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void a(EnumSet<byb.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<byb.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public byb k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((bzp)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

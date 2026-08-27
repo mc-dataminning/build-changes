@@ -1,45 +1,11 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+public interface bko {
+   int c();
 
-public class bko implements bks {
-   public static final bko a = new bko();
+   int d();
 
-   private bko() {
-   }
+   long a(int var1);
 
-   @Override
-   public List<bkv> a(String $$0) {
-      return Collections.emptyList();
-   }
+   long a(int var1, int var2);
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
-   }
+   void e();
 }

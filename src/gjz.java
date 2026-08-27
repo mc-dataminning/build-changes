@@ -1,25 +1,24 @@
-public class gjz<T extends cka> extends gkc<T, fsa<T>> {
-   private final frv a;
+public class gjz extends gky<chh, frp<chh>> {
+   private final gby a;
 
-   public gjz(ghm<T, fsa<T>> $$0, ftr $$1) {
+   public gjz(gii<chh, frp<chh>> $$0, gby $$1) {
       super($$0);
-      this.a = new frv($$1.a(ftu.aG));
+      this.a = $$1;
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
-
-   private void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      to $$9 = $$8 ? $$3.gq() : $$3.gr();
-      bqg.a($$9.l("id")).filter($$0x -> $$0x == bqg.aw).ifPresent($$10 -> {
+   public void a(exn $$0, gbe $$1, int $$2, chh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dpy $$10 = $$3.gp();
+      if ($$10 != null) {
          $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
-         ccy.b $$11 = ccy.b.a($$9.h("Variant"));
-         ewv $$12 = $$1.getBuffer(this.a.a(ghd.a($$11)));
-         this.a.a($$0, $$12, $$2, glj.d, $$4, $$5, $$6, $$7, $$3.ah);
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, gmf.d);
          $$0.b();
-      });
+      }
    }
 }

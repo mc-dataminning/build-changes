@@ -1,105 +1,43 @@
-import com.google.common.collect.Comparators;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
-import org.slf4j.Logger;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public class aqq {
-   private static final Logger c = LogUtils.getLogger();
-   public static final float a = 0.01F;
-   public static final float b = 64.0F;
-   private static final float d = 9.0F;
-   private static final int e = 10;
-   private final LongSet f = new LongOpenHashSet();
-   private final boolean g;
-   private float h = 9.0F;
-   private float i;
-   private int j;
-   private int k = 1;
+public class aqq implements aqn {
+   private final aqn a;
+   private final bnj<Runnable> b;
+   private boolean c;
 
-   public aqq(boolean $$0) {
-      this.g = $$0;
+   private aqq(aqn $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = bnj.a($$1, "progressListener");
    }
 
-   public void a(dro $$0) {
-      this.f.add($$0.f().a());
+   public static aqq a(aqn $$0, Executor $$1) {
+      aqq $$2 = new aqq($$0, $$1);
+      $$2.a();
+      return $$2;
    }
 
-   public void a(apv $$0, cyn $$1) {
-      if (!this.f.remove($$1.a()) && $$0.bA()) {
-         $$0.d.b(new acg($$1));
+   @Override
+   public void a(czb $$0) {
+      this.b.a(() -> this.a.a($$0));
+   }
+
+   @Override
+   public void a(czb $$0, @Nullable dst $$1) {
+      if (this.c) {
+         this.b.a(() -> this.a.a($$0, $$1));
       }
    }
 
-   public void a(apv $$0) {
-      if (this.j < this.k) {
-         float $$1 = Math.max(1.0F, this.h);
-         this.i = Math.min(this.i + this.h, $$1);
-         if (!(this.i < 1.0F)) {
-            if (!this.f.isEmpty()) {
-               apu $$2 = $$0.z();
-               apd $$3 = $$2.l().a;
-               List<dro> $$4 = this.a($$3, $$0.do());
-               if (!$$4.isEmpty()) {
-                  aqu $$5 = $$0.d;
-                  this.j++;
-                  $$5.b(abp.a);
-
-                  for (dro $$6 : $$4) {
-                     a($$5, $$2, $$6);
-                  }
-
-                  $$5.b(new abo($$4.size()));
-                  this.i = this.i - (float)$$4.size();
-               }
-            }
-         }
-      }
+   @Override
+   public void a() {
+      this.c = true;
+      this.b.a(this.a::a);
    }
 
-   private static void a(aqu $$0, apu $$1, dro $$2) {
-      $$0.b(new acm($$2, $$1.y_(), null, null));
-      cyn $$3 = $$2.f();
-      afk.a($$1, $$3);
-   }
-
-   private List<dro> a(apd $$0, cyn $$1) {
-      int $$2 = axm.d(this.i);
-      List<dro> $$4;
-      if (!this.g && this.f.size() > $$2) {
-         $$4 = this.f
-            .stream()
-            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
-            .stream()
-            .mapToLong(Long::longValue)
-            .mapToObj($$0::d)
-            .filter(Objects::nonNull)
-            .toList();
-      } else {
-         $$4 = this.f.longStream().mapToObj($$0::d).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
-      }
-
-      for (dro $$5 : $$4) {
-         this.f.remove($$5.f().a());
-      }
-
-      return $$4;
-   }
-
-   public void a(float $$0) {
-      this.j--;
-      this.h = Double.isNaN((double)$$0) ? 0.01F : axm.a($$0, 0.01F, 64.0F);
-      if (this.j == 0) {
-         this.i = 1.0F;
-      }
-
-      this.k = 10;
-   }
-
-   public boolean a(long $$0) {
-      return this.f.contains($$0);
+   @Override
+   public void b() {
+      this.c = false;
+      this.b.a(this.a::b);
    }
 }

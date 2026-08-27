@@ -1,78 +1,70 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
+import com.google.common.collect.ImmutableList.Builder;
 
-public class ftd<T extends cdj> extends fsf<T> {
-   private static final String j = "egg_belly";
-   private final ftv k;
+public class ftd extends fsj<cmi> {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "bottom";
+   private final fur g;
+   private final fur h;
+   private final ImmutableList<fur> i;
 
-   public ftd(ftv $$0) {
-      super($$0, true, 120.0F, 0.0F, 9.0F, 6.0F, 120);
-      this.k = $$0.b("egg_belly");
+   public ftd(fur $$0) {
+      this.g = $$0.b("left_paddle");
+      this.h = $$0.b("right_paddle");
+      this.i = this.a($$0).build();
    }
 
-   public static fub c() {
-      fud $$0 = new fud();
-      fue $$1 = $$0.a();
-      $$1.a("head", fua.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), ftx.a(0.0F, 19.0F, -10.0F));
-      $$1.a(
-         "body",
-         fua.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
-         ftx.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+   protected Builder<fur> a(fur $$0) {
+      Builder<fur> $$1 = new Builder();
+      $$1.add(new fur[]{$$0.b("bottom"), this.g, this.h});
+      return $$1;
+   }
+
+   public static void a(fva $$0) {
+      $$0.a(
+         "bottom",
+         fuw.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         fut.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
       );
-      $$1.a("egg_belly", fua.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), ftx.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 1;
-      $$1.a("right_hind_leg", fua.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), ftx.a(-3.5F, 22.0F, 11.0F));
-      $$1.a("left_hind_leg", fua.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), ftx.a(3.5F, 22.0F, 11.0F));
-      $$1.a("right_front_leg", fua.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), ftx.a(-5.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", fua.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), ftx.a(5.0F, 21.0F, -4.0F));
-      return fub.a($$0, 128, 64);
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fuw.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fut.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fuw.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fut.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   @Override
-   protected Iterable<ftv> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.k));
+   public static fux b() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      a($$1);
+      return fux.a($$0, 128, 64);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.f.e = axm.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
-      this.g.e = axm.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
-      this.h.g = axm.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
-      this.i.g = axm.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
-      this.h.e = 0.0F;
-      this.i.e = 0.0F;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
-      this.f.f = 0.0F;
-      this.g.f = 0.0F;
-      if (!$$0.bc() && $$0.aC()) {
-         float $$6 = $$0.u() ? 4.0F : 1.0F;
-         float $$7 = $$0.u() ? 2.0F : 1.0F;
-         float $$8 = 5.0F;
-         this.h.f = axm.b($$6 * $$1 * 5.0F + (float) Math.PI) * 8.0F * $$2 * $$7;
-         this.h.g = 0.0F;
-         this.i.f = axm.b($$6 * $$1 * 5.0F) * 8.0F * $$2 * $$7;
-         this.i.g = 0.0F;
-         this.f.f = axm.b($$1 * 5.0F + (float) Math.PI) * 3.0F * $$2;
-         this.f.e = 0.0F;
-         this.g.f = axm.b($$1 * 5.0F) * 3.0F * $$2;
-         this.g.e = 0.0F;
-      }
-
-      this.k.k = !this.e && $$0.r();
+   public void a(cmi $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.g, $$1);
+      a($$0, 1, this.h, $$1);
    }
 
-   @Override
-   public void a(ewr $$0, ewv $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      boolean $$8 = this.k.k;
-      if ($$8) {
-         $$0.a();
-         $$0.a(0.0F, -0.08F, 0.0F);
-      }
+   public ImmutableList<fur> c() {
+      return this.i;
+   }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if ($$8) {
-         $$0.b();
+   private static void a(cmi $$0, int $$1, fur $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = axw.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (axw.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = axw.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (axw.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
       }
    }
 }

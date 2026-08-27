@@ -1,35 +1,113 @@
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public final class apo {
-   private final Object2BooleanMap<apv> a = new Object2BooleanOpenHashMap();
-
-   public Set<apv> a() {
-      return this.a.keySet();
+public interface apo<T> {
+   static <T> apo<T> a(T $$0) {
+      return new apo.b<>($$0);
    }
 
-   public void a(apv $$0, boolean $$1) {
-      this.a.put($$0, $$1);
+   static <T> apo<T> a(String $$0) {
+      return a(() -> $$0);
    }
 
-   public void a(apv $$0) {
-      this.a.removeBoolean($$0);
+   static <T> apo<T> a(Supplier<String> $$0) {
+      return new apo.a<>($$0);
    }
 
-   public void b(apv $$0) {
-      this.a.replace($$0, true);
+   boolean a();
+
+   @Nullable
+   T b(@Nullable T var1);
+
+   @Nullable
+   static <R> R a(apo<? extends R> $$0, @Nullable R $$1) {
+      R $$2 = (R)$$0.b(null);
+      return $$2 != null ? $$2 : $$1;
    }
 
-   public void c(apv $$0) {
-      this.a.replace($$0, false);
+   @Nullable
+   String b();
+
+   apo<T> a(Consumer<T> var1);
+
+   <R> apo<R> a(Function<T, R> var1);
+
+   <E extends Throwable> T b(Supplier<E> var1) throws E;
+
+   public static record a<T>(Supplier<String> a) implements apo<T> {
+      @Override
+      public boolean a() {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public T b(@Nullable T $$0) {
+         return $$0;
+      }
+
+      @Override
+      public String b() {
+         return this.a.get();
+      }
+
+      @Override
+      public apo<T> a(Consumer<T> $$0) {
+         return this;
+      }
+
+      @Override
+      public <R> apo<R> a(Function<T, R> $$0) {
+         return new apo.a(this.a);
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         throw $$0.get();
+      }
+
+      public Supplier<String> c() {
+         return this.a;
+      }
    }
 
-   public boolean d(apv $$0) {
-      return this.a.getOrDefault($$0, true);
-   }
+   public static record b<T>(T a) implements apo<T> {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-   public boolean e(apv $$0) {
-      return this.a.getBoolean($$0);
+      @Override
+      public T b(@Nullable T $$0) {
+         return this.a;
+      }
+
+      @Nullable
+      @Override
+      public String b() {
+         return null;
+      }
+
+      @Override
+      public apo<T> a(Consumer<T> $$0) {
+         $$0.accept(this.a);
+         return this;
+      }
+
+      @Override
+      public <R> apo<R> a(Function<T, R> $$0) {
+         return new apo.b<>($$0.apply(this.a));
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         return this.a;
+      }
+
+      public T c() {
+         return this.a;
+      }
    }
 }

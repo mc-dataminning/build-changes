@@ -1,214 +1,132 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Instant;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fks extends fjx {
-   static final ajv a = new ajv("gamemode_switcher/slot");
-   static final ajv b = new ajv("gamemode_switcher/selection");
-   private static final ajv c = new ajv("textures/gui/container/gamemode_switcher.png");
-   private static final int d = 128;
-   private static final int o = 128;
-   private static final int p = 26;
-   private static final int q = 5;
-   private static final int r = 31;
-   private static final int s = 5;
-   private static final int u = fks.a.values().length * 31 - 5;
-   private static final wi v = wi.a("debug.gamemodes.select_next", wi.c("debug.gamemodes.press_f4").a(n.l));
-   private final fks.a w;
-   private fks.a x;
-   private int y;
-   private int z;
-   private boolean A;
-   private final List<fks.b> B = Lists.newArrayList();
+public class fks extends fkt {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final ws c = ws.c("recover_world.title").a(n.r);
+   private static final ws d = ws.c("recover_world.bug_tracker");
+   private static final ws r = ws.c("recover_world.restore");
+   private static final ws s = ws.c("recover_world.no_fallback");
+   private static final ws u = ws.c("recover_world.done.title");
+   private static final ws v = ws.c("recover_world.done.success");
+   private static final ws w = ws.c("recover_world.done.failed");
+   private static final ws x = ws.c("recover_world.issue.none").a(n.k);
+   private static final ws y = ws.c("recover_world.issue.missing_file").a(n.m);
+   private final BooleanConsumer z;
+   private final fil A = fil.d().a(8);
+   private final ws B;
+   private final ffo C;
+   private final ffo D;
+   private final enq.c E;
 
-   public fks() {
-      super(fbq.a);
-      this.w = fks.a.a(this.m());
-      this.x = this.w;
+   public fks(fcu $$0, BooleanConsumer $$1, enq.c $$2) {
+      super(c);
+      this.z = $$1;
+      this.B = ws.a("recover_world.message", ws.b($$2.f()).a(n.h));
+      this.C = new ffo(this.B, $$0.h);
+      this.E = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      ws $$5 = ws.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.D = new ffo($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.A.c().b();
+      this.A.a(new fgb(this.l, $$0.h));
+      this.A.a(this.C.b(true));
+      this.A.a(this.D);
+      fil $$7 = fil.e().a(5);
+      $$7.a(feu.a(d, fjk.b(this, "https://aka.ms/snapshotbugs?ref=game")).b(120, 20).a());
+      $$7.a(feu.a(r, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fgf.a(s)).a()).j = $$6;
+      this.A.a($$7);
+      this.A.a(feu.a(wr.k, $$0x -> this.d()).b(120, 20).a());
+      this.A.a(this::c);
    }
 
-   private czd m() {
-      fuz $$0 = fby.Q().q;
-      czd $$1 = $$0.i();
-      if ($$1 != null) {
-         return $$1;
+   private void a(fcu $$0) {
+      Exception $$1 = this.a(this.E, false);
+      Exception $$2 = this.a(this.E, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fjz(ws.c("recover_world.restoring")));
+         fpl.a(this.E);
+         if (this.E.n()) {
+            $$0.a(new fjl(this.z, u, v, wr.j, wr.k));
+         } else {
+            $$0.a(new fjf(() -> this.z.accept(false), u, w));
+         }
       } else {
-         return $$0.j() == czd.b ? czd.a : czd.b;
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fjf(() -> this.z.accept(false), u, w));
+      }
+   }
+
+   private ws a(enq.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return ws.i();
+      } else {
+         xg $$3 = ws.i();
+         Instant $$4 = $$0.a($$1);
+         xg $$5 = $$4 != null ? ws.b(fpu.a.format($$4)) : ws.c("recover_world.state_entry.unknown");
+         $$3.b(ws.a("recover_world.state_entry", $$5.a(n.h)));
+         if ($$2 == null) {
+            $$3.b(x);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(y);
+         } else if ($$2 instanceof up) {
+            $$3.b(ws.b($$2.getCause().toString()).a(n.m));
+         } else {
+            $$3.b(ws.b($$2.toString()).a(n.m));
+         }
+
+         return $$3;
+      }
+   }
+
+   @Nullable
+   private Exception a(enq.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.h());
+         } else {
+            $$0.a($$0.i());
+         }
+
+         return null;
+      } catch (uj | up | IOException var4) {
+         return var4;
       }
    }
 
    @Override
    protected void aM_() {
       super.aM_();
-      this.x = this.w;
-
-      for (int $$0 = 0; $$0 < fks.a.e.length; $$0++) {
-         fks.a $$1 = fks.a.e[$$0];
-         this.B.add(new fks.b($$1, this.k / 2 - u / 2 + $$0 * 31, this.l / 2 - 31));
-      }
+      this.c();
    }
 
    @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      if (!this.D()) {
-         $$0.c().a();
-         RenderSystem.enableBlend();
-         int $$4 = this.k / 2 - 62;
-         int $$5 = this.l / 2 - 31 - 27;
-         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
-         $$0.c().b();
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.m, this.x.a(), this.k / 2, this.l / 2 - 31 - 20, -1);
-         $$0.a(this.m, v, this.k / 2, this.l / 2 + 5, 16777215);
-         if (!this.A) {
-            this.y = $$1;
-            this.z = $$2;
-            this.A = true;
-         }
-
-         boolean $$6 = this.y == $$1 && this.z == $$2;
-
-         for (fks.b $$7 : this.B) {
-            $$7.a($$0, $$1, $$2, $$3);
-            $$7.b(this.x == $$7.b);
-            if (!$$6 && $$7.A()) {
-               this.x = $$7.b;
-            }
-         }
-      }
+   protected void c() {
+      this.D.d(this.n - 50);
+      this.C.d(this.n - 50);
+      this.A.a();
+      fif.a(this.A, this.G());
    }
 
    @Override
-   public void b(fdl $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void C() {
-      a(this.j, this.x);
-   }
-
-   private static void a(fby $$0, fks.a $$1) {
-      if ($$0.q != null && $$0.s != null) {
-         fks.a $$2 = fks.a.a($$0.q.j());
-         if ($$0.s.m(2) && $$1 != $$2) {
-            $$0.s.cv.d($$1.b());
-         }
-      }
-   }
-
-   private boolean D() {
-      if (!evm.a(this.j.aO().i(), 292)) {
-         this.C();
-         this.j.a(null);
-         return true;
-      } else {
-         return false;
-      }
+   public ws i() {
+      return wr.a(super.i(), this.B);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 293) {
-         this.A = false;
-         this.x = this.x.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   static enum a {
-      a(wi.c("gameMode.creative"), "gamemode creative", new crs(dcj.i)),
-      b(wi.c("gameMode.survival"), "gamemode survival", new crs(crv.oZ)),
-      c(wi.c("gameMode.adventure"), "gamemode adventure", new crs(crv.uh)),
-      d(wi.c("gameMode.spectator"), "gamemode spectator", new crs(crv.sr));
-
-      protected static final fks.a[] e = values();
-      private static final int j = 16;
-      protected static final int f = 5;
-      final wi g;
-      final String h;
-      final crs i;
-
-      private a(wi $$0, String $$1, crs $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(fdl $$0, int $$1, int $$2) {
-         $$0.a(this.i, $$1, $$2);
-      }
-
-      wi a() {
-         return this.g;
-      }
-
-      String b() {
-         return this.h;
-      }
-
-      fks.a c() {
-         return switch (this) {
-            case a -> b;
-            case b -> c;
-            case c -> d;
-            case d -> a;
-         };
-      }
-
-      static fks.a a(czd $$0) {
-         return switch ($$0) {
-            case d -> d;
-            case a -> b;
-            case b -> a;
-            case c -> c;
-         };
-      }
-   }
-
-   public class b extends fdw {
-      final fks.a b;
-      private boolean c;
-
-      public b(fks.a $$1, int $$2, int $$3) {
-         super($$2, $$3, 26, 26, $$1.a());
-         this.b = $$1;
-      }
-
-      @Override
-      public void b(fdl $$0, int $$1, int $$2, float $$3) {
-         this.a($$0);
-         this.b.a($$0, this.C() + 5, this.D() + 5);
-         if (this.c) {
-            this.b($$0);
-         }
-      }
-
-      @Override
-      public void a(fhu $$0) {
-         this.c($$0);
-      }
-
-      @Override
-      public boolean A() {
-         return super.A() || this.c;
-      }
-
-      public void b(boolean $$0) {
-         this.c = $$0;
-      }
-
-      private void a(fdl $$0) {
-         $$0.a(fks.a, this.C(), this.D(), 26, 26);
-      }
-
-      private void b(fdl $$0) {
-         $$0.a(fks.b, this.C(), this.D(), 26, 26);
-      }
+   public void d() {
+      this.z.accept(false);
    }
 }

@@ -1,49 +1,55 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class djn extends dbc {
-   public static final MapCodec<djn> c = b(djn::new);
+public class djn extends dch {
+   public static final MapCodec<djn> a = b(djn::new);
+   public static final dqp b = dqo.E;
+   private final bnv c = bns.a(5);
 
    @Override
    public MapCodec<djn> a() {
-      return c;
+      return a;
    }
 
-   protected djn(dph.d $$0) {
+   public djn(dpx.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public dmo a(id $$0, dpi $$1) {
-      return new dob($$0, $$1);
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+      }
    }
 
    @Nullable
    @Override
-   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
-      return a($$0, $$2, dmq.B);
+   public dnd a(im $$0, dpy $$1) {
+      return new doj($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
+      return $$0.B ? null : a($$2, dnf.K, doj::a);
    }
 
    @Override
-   protected void a(czg $$0, id $$1, cka $$2) {
-      dmo $$3 = $$0.c_($$1);
-      if ($$3 instanceof dob) {
-         $$2.a((boj)$$3);
-         $$2.a(auz.at);
-      }
+   protected djb b_(dpy $$0) {
+      return djb.c;
    }
 
    @Override
-   public void a(dpi $$0, czg $$1, id $$2, axt $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, auo.xO, aup.e, 1.0F, 1.0F, false);
-         }
-
-         $$1.a(kn.ac, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+   protected void a(dpy $$0, aqe $$1, im $$2, csd $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.c);
       }
    }
 }

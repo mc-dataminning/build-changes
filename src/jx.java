@@ -1,49 +1,97 @@
-public class jx extends jy {
-   private final jy c = new jy();
-   private final clx.b d;
-   private final boolean e;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public jx(clx.b $$0) {
-      this($$0, false);
+public final class jx implements Predicate<jv> {
+   public static final Codec<jx> a = axe.c(jy.a, jy::c)
+      .xmap($$0 -> new jx($$0.entrySet().stream().map(kb::a).collect(Collectors.toList())), $$0 -> $$0.d.stream().collect(Collectors.toMap(kb::a, kb::b)));
+   public static final yq<wd, jx> b = kb.a.a(yo.a()).a(jx::new, $$0 -> $$0.d);
+   public static final jx c = new jx(List.of());
+   private final List<kb<?>> d;
+
+   jx(List<kb<?>> $$0) {
+      this.d = $$0;
    }
 
-   public jx(clx.b $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public static jx.a a() {
+      return new jx.a();
+   }
+
+   public static jx a(jv $$0) {
+      return new jx(ImmutableList.copyOf($$0));
    }
 
    @Override
-   public crs a(jw $$0, crs $$1) {
-      ij $$2 = $$0.d().c(dem.b);
-      apu $$3 = $$0.b();
-      esj $$4 = $$0.a();
-      double $$5 = 0.5625 + (double)bqg.k.k() / 2.0;
-      double $$6 = $$4.a() + (double)$$2.j() * $$5;
-      double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
-      double $$8 = $$4.c() + (double)$$2.l() * $$5;
-      id $$9 = $$0.c().a($$2);
-      double $$10;
-      if ($$3.b_($$9).a(avj.a)) {
-         $$10 = 1.0;
-      } else {
-         if (!$$3.a_($$9).i() || !$$3.b_($$9.d()).a(avj.a)) {
-            return this.c.dispense($$0, $$1);
-         }
-
-         $$10 = 0.0;
+   public boolean equals(Object $$0) {
+      if ($$0 instanceof jx $$1 && this.d.equals($$1.d)) {
+         return true;
       }
 
-      clx $$13 = (clx)(this.e ? new cly($$3, $$6, $$7 + $$10, $$8) : new clx($$3, $$6, $$7 + $$10, $$8));
-      bqg.<clx>a($$3, $$1, null).accept($$13);
-      $$13.a(this.d);
-      $$13.r($$2.p());
-      $$3.b($$13);
-      $$1.g(1);
-      return $$1;
+      return false;
    }
 
    @Override
-   protected void a(jw $$0) {
-      $$0.b().c(1000, $$0.c(), 0);
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
+   }
+
+   public boolean b(jv $$0) {
+      for (kb<?> $$1 : this.d) {
+         Object $$2 = $$0.a($$1.a());
+         if (!Objects.equals($$1.b(), $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public boolean a(ju $$0) {
+      return this.b($$0.a());
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
+   }
+
+   public jw c() {
+      jw.a $$0 = jw.a();
+
+      for (kb<?> $$1 : this.d) {
+         $$0.a($$1);
+      }
+
+      return $$0.a();
+   }
+
+   public static class a {
+      private final List<kb<?>> a = new ArrayList<>();
+
+      a() {
+      }
+
+      public <T> jx.a a(jy<? super T> $$0, T $$1) {
+         for (kb<?> $$2 : this.a) {
+            if ($$2.a() == $$0) {
+               throw new IllegalArgumentException("Predicate already has component of type: '" + $$0 + "'");
+            }
+         }
+
+         this.a.add(new kb<>($$0, $$1));
+         return this;
+      }
+
+      public jx a() {
+         return new jx(List.copyOf(this.a));
+      }
    }
 }

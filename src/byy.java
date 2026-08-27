@@ -1,102 +1,87 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class byy extends bxq {
-   private static final cbj c = cbj.b().a(10.0).d();
-   private final cbj d;
-   protected final brb a;
-   private final double e;
-   private double f;
-   private double g;
-   private double h;
-   private double i;
-   private double j;
-   @Nullable
-   protected cka b;
-   private int k;
-   private boolean l;
-   private final cvp m;
-   private final boolean n;
+public class byy extends byb {
+   public static final int a = 120;
+   protected final brm b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public byy(brb $$0, double $$1, cvp $$2, boolean $$3) {
-      this.a = $$0;
-      this.e = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.a(EnumSet.of(bxq.a.a, bxq.a.b));
-      this.d = c.c().a(this::a);
+   public byy(brm $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public byy(brm $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public byy(brm $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(byb.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.k > 0) {
-         this.k--;
+      if (this.b.cP()) {
          return false;
       } else {
-         this.b = this.a.dM().a(this.d, this.a);
-         return this.b != null;
+         if (!this.h) {
+            if (this.i && this.b.eo() >= 100) {
+               return false;
+            }
+
+            if (this.b.ej().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         etf $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            this.h = false;
+            return true;
+         }
       }
    }
 
-   private boolean a(bqt $$0) {
-      return this.m.a($$0.eU()) || this.m.a($$0.eV());
+   @Nullable
+   protected etf h() {
+      return cby.a(this.b, 10, 7);
    }
 
    @Override
    public boolean b() {
-      if (this.h()) {
-         if (this.a.g(this.b) < 36.0) {
-            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
-               return false;
-            }
-
-            if (Math.abs((double)this.b.dE() - this.i) > 5.0 || Math.abs((double)this.b.dC() - this.j) > 5.0) {
-               return false;
-            }
-         } else {
-            this.f = this.b.dr();
-            this.g = this.b.dt();
-            this.h = this.b.dx();
-         }
-
-         this.i = (double)this.b.dE();
-         this.j = (double)this.b.dC();
-      }
-
-      return this.a();
-   }
-
-   protected boolean h() {
-      return this.n;
+      return !this.b.K().l() && !this.b.cP();
    }
 
    @Override
    public void c() {
-      this.f = this.b.dr();
-      this.g = this.b.dt();
-      this.h = this.b.dx();
-      this.l = true;
+      this.b.K().a(this.c, this.d, this.e, this.f);
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.a.K().n();
-      this.k = b(100);
-      this.l = false;
+      this.b.K().n();
+      super.d();
    }
 
-   @Override
-   public void e() {
-      this.a.G().a(this.b, (float)(this.a.aa() + 20), (float)this.a.Z());
-      if (this.a.g(this.b) < 6.25) {
-         this.a.K().n();
-      } else {
-         this.a.K().a(this.b, this.e);
-      }
+   public void i() {
+      this.h = true;
    }
 
-   public boolean i() {
-      return this.l;
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

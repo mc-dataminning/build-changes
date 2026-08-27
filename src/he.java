@@ -1,13 +1,12 @@
-public class he<T extends dx<T>> implements gt<T> {
-   private static final he<? extends dx<?>> a = (he<? extends dx<?>>)(new he<>());
+public interface he extends AutoCloseable {
+   void a(int var1, String var2);
 
-   public static <T extends dx<T>> gt<T> a() {
-      return (gt<T>)a;
-   }
+   void a(int var1, String var2, int var3);
+
+   void a(String var1);
+
+   void a(int var1, akf var2, int var3);
 
    @Override
-   public void execute(gu<T> $$0, gw $$1) {
-      $$1.a();
-      $$1.b();
-   }
+   void close();
 }

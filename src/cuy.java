@@ -1,62 +1,33 @@
-public class cuy extends cux {
-   private final ij b;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.Consumer;
 
-   public cuy(czg $$0, id $$1, ij $$2, crs $$3, ij $$4) {
-      super($$0, null, boe.a, $$3, new esf(esj.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public record cuy(List<ws> d, List<ws> e) implements cvg {
+   public static final cuy a = new cuy(List.of());
+   private static final int f = 256;
+   private static final xp g = xp.a.a(n.f).b(true);
+   public static final Codec<cuy> b = axe.a(wu.g.listOf(), 256).xmap(cuy::new, cuy::a);
+   public static final yq<wd, cuy> c = wu.b.a(yo.c(256)).a(cuy::new, cuy::a);
+
+   public cuy(List<ws> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> wv.a($$0x.f(), g)));
+   }
+
+   public cuy a(ws $$0) {
+      return new cuy(ac.a(this.d, $$0));
    }
 
    @Override
-   public id a() {
-      return this.j().a();
+   public void a(Consumer<ws> $$0, ctu $$1) {
+      this.e.forEach($$0);
    }
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
+   public List<ws> a() {
+      return this.d;
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public ij d() {
-      return ij.a;
-   }
-
-   @Override
-   public ij[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new ij[]{ij.a, ij.c, ij.f, ij.d, ij.e, ij.b};
-         case b:
-            return new ij[]{ij.a, ij.b, ij.c, ij.f, ij.d, ij.e};
-         case c:
-            return new ij[]{ij.a, ij.c, ij.f, ij.e, ij.b, ij.d};
-         case d:
-            return new ij[]{ij.a, ij.d, ij.f, ij.e, ij.b, ij.c};
-         case e:
-            return new ij[]{ij.a, ij.e, ij.d, ij.b, ij.c, ij.f};
-         case f:
-            return new ij[]{ij.a, ij.f, ij.d, ij.b, ij.c, ij.e};
-      }
-   }
-
-   @Override
-   public ij g() {
-      return this.b.o() == ij.a.b ? ij.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public List<ws> b() {
+      return this.e;
    }
 }

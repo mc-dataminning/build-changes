@@ -1,54 +1,31 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class gpq implements gpl {
+   private final gag a;
+   private boolean b;
+   private boolean c = true;
 
-public interface gpq<T> {
-   static <T> gpq<T> a() {
-      return new gpq<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
-
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   public gpq(gag $$0) {
+      this.a = $$0;
    }
 
-   static <T> gpq<T> a(List<T> $$0, Function<T, Stream<ajv>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
+   @Override
+   public void a() {
+      czu $$0 = this.a.dN();
+      dpy $$1 = $$0.c(this.a.cI().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dcx.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dcx.nd) && !this.a.N_()) {
+            boolean $$2 = $$1.c(ddb.b);
+            if ($$2) {
+               this.a.a(auz.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(auz.cZ, 1.0F, 1.0F);
+            }
+         }
+
+         this.b = true;
       } else {
-         final gpt<T> $$2 = new gpt<>();
-         final gpt<T> $$3 = new gpt<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new gpq<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
+         this.b = false;
       }
+
+      this.c = false;
    }
-
-   List<T> a(String var1);
-
-   List<T> b(String var1);
 }

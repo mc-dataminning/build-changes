@@ -1,53 +1,90 @@
-public class gcf implements gci<dmk> {
-   private final ftv a;
-   private final ftv b;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-   public gcf(gcj.a $$0) {
-      this.a = $$0.a(ftu.j);
-      this.b = $$0.a(ftu.i);
+public class gcf {
+   public float[] a;
+   public final int b;
+
+   public gcf(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fub b() {
-      fud $$0 = new fud();
-      fue $$1 = $$0.a();
-      $$1.a("main", fua.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), ftx.a);
-      $$1.a("left_leg", fua.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), ftx.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fua.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), ftx.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fub.a($$0, 64, 64);
-   }
-
-   public static fub c() {
-      fud $$0 = new fud();
-      fue $$1 = $$0.a();
-      $$1.a("main", fua.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), ftx.a);
-      $$1.a("left_leg", fua.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), ftx.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fua.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), ftx.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fub.a($$0, 64, 64);
-   }
-
-   public void a(dmk $$0, float $$1, ewr $$2, gai $$3, int $$4, int $$5) {
-      gnv $$6 = gax.p[$$0.c().a()];
-      czg $$7 = $$0.i();
-      if ($$7 != null) {
-         dpi $$8 = $$0.n();
-         deo.c<? extends dmk> $$9 = deo.a(dmq.y, dca::h, dca::g, ddk.c, $$8, $$7, $$0.az_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new gcl<>()).get($$4);
-         this.a($$2, $$3, $$8.c(dca.b) == dpv.a ? this.a : this.b, $$8.c(dca.aE), $$6, $$10, $$5, false);
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
       } else {
-         this.a($$2, $$3, this.a, ij.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, ij.d, $$6, $$4, $$5, true);
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
       }
    }
 
-   private void a(ewr $$0, gai $$1, ftv $$2, ij $$3, gnv $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      ewv $$8 = $$4.a($$1, gaq::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<gcf> {
+      private static final int a = 0;
+
+      public gcf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gcf($$4, $$5);
+      }
+
+      protected int a(JsonObject $$0) {
+         int $$1 = axm.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+         }
+      }
+
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = axm.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = axm.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
+      }
    }
 }

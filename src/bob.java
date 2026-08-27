@@ -1,44 +1,53 @@
-public class bob {
-   public static void a(czg $$0, id $$1, bny $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+
+public class bob extends bnv {
+   public static final Codec<bob> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bob::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final int b;
+   private final int f;
+
+   private bob(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   public static void a(czg $$0, bqa $$1, bny $$2) {
-      a($$0, $$1.dr(), $$1.dt(), $$1.dx(), $$2);
+   public static bob a(int $$0, int $$1) {
+      return new bob($$0, $$1);
    }
 
-   private static void a(czg $$0, double $$1, double $$2, double $$3, bny $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
+   @Override
+   public int a(ayd $$0) {
+      return axw.b($$0, this.b, this.f);
    }
 
-   public static void a(czg $$0, id $$1, iw<crs> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   @Override
+   public int a() {
+      return this.b;
    }
 
-   public static void a(czg $$0, double $$1, double $$2, double $$3, crs $$4) {
-      double $$5 = (double)bqg.ag.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.d()) {
-         cgk $$11 = new cgk($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   @Override
+   public int b() {
+      return this.f;
    }
 
-   public static void a(dpi $$0, dpi $$1, czg $$2, id $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bny $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
-         }
-      }
+   @Override
+   public bnw<?> c() {
+      return bnw.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

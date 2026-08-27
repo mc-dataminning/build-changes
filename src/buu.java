@@ -1,98 +1,65 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.kinds.App;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class buu<U> implements Iterable<U> {
-   protected final List<buu.a<U>> a;
-   private final axt b = axt.a();
+public class buu {
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private static final int d = 4;
 
-   public buu() {
-      this.a = Lists.newArrayList();
-   }
+   public static bsx<brm> a(float $$0) {
+      Long2LongMap $$1 = new Long2LongOpenHashMap();
+      MutableLong $$2 = new MutableLong(0L);
+      return bwj.a(
+         (Function<bwj.b<brm>, ? extends App<bwj.c<brm>, bwm<brm>>>)($$3 -> $$3.group($$3.c(cah.m), $$3.c(cah.b))
+               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
+                     if ($$4x.Y() - $$2.getValue() < 20L) {
+                        return false;
+                     } else {
+                        cch $$7 = $$4x.y();
+                        Optional<im> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(ccl.n), $$5.dn(), 48, cch.b.c);
+                        if (!$$8.isEmpty() && !($$8.get().j($$5.dn()) <= 4.0)) {
+                           MutableInt $$9 = new MutableInt(0);
+                           $$2.setValue($$4x.Y() + (long)$$4x.E_().a(20));
+                           Predicate<im> $$10 = $$3xxx -> {
+                              long $$4xx = $$3xxx.a();
+                              if ($$1.containsKey($$4xx)) {
+                                 return false;
+                              } else if ($$9.incrementAndGet() >= 5) {
+                                 return false;
+                              } else {
+                                 $$1.put($$4xx, $$2.getValue() + 40L);
+                                 return true;
+                              }
+                           };
+                           Set<Pair<iv<cck>, im>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(ccl.n), $$10, $$5.dn(), 48, cch.b.c).collect(Collectors.toSet());
+                           emf $$12 = bsp.a($$5, $$11);
+                           if ($$12 != null && $$12.j()) {
+                              im $$13 = $$12.l();
+                              Optional<iv<cck>> $$14 = $$7.c($$13);
+                              if ($$14.isPresent()) {
+                                 $$3x.a(new cak($$13, $$0, 1));
+                                 afu.c($$4x, $$13);
+                              }
+                           } else if ($$9.getValue() < 5) {
+                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
+                           }
 
-   private buu(List<buu.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
-   }
-
-   public static <U> Codec<buu<U>> a(Codec<U> $$0) {
-      return buu.a.a($$0).listOf().xmap(buu::new, $$0x -> $$0x.a);
-   }
-
-   public buu<U> a(U $$0, int $$1) {
-      this.a.add(new buu.a<>($$0, $$1));
-      return this;
-   }
-
-   public buu<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(buu.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(buu.a::a);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), buu.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
-      }
-
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<buu.a<E>> a(final Codec<E> $$0) {
-         return new Codec<buu.a<E>>() {
-            public <T> DataResult<Pair<buu.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new buu.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
-            }
-
-            public <T> DataResult<T> a(buu.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
-      }
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

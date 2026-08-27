@@ -1,28 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import javax.annotation.Nullable;
 
 public class ane {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.save.alreadyOn"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ws.c("commands.publish.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ws.b("commands.publish.alreadyPublished", $$0));
 
-   public static void a(CommandDispatcher<dv> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
-         dv $$1 = (dv)$$0x.getSource();
-         boolean $$2 = false;
+   public static void a(CommandDispatcher<ec> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("publish").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ec)$$0x.getSource(), axn.a(), false, null)))
+            .then(
+               ((RequiredArgumentBuilder)ed.a("allowCommands", BoolArgumentType.bool())
+                     .executes($$0x -> a((ec)$$0x.getSource(), axn.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
+                  .then(
+                     ((RequiredArgumentBuilder)ed.a("gamemode", eq.a())
+                           .executes($$0x -> a((ec)$$0x.getSource(), axn.a(), BoolArgumentType.getBool($$0x, "allowCommands"), eq.a($$0x, "gamemode"))))
+                        .then(
+                           ed.a("port", IntegerArgumentType.integer(0, 65535))
+                              .executes(
+                                 $$0x -> a(
+                                       (ec)$$0x.getSource(),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       BoolArgumentType.getBool($$0x, "allowCommands"),
+                                       eq.a($$0x, "gamemode")
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
+   }
 
-         for (apu $$3 : $$1.l().K()) {
-            if ($$3 != null && $$3.e) {
-               $$3.e = false;
-               $$2 = true;
-            }
-         }
+   private static int a(ec $$0, int $$1, boolean $$2, @Nullable czr $$3) throws CommandSyntaxException {
+      if ($$0.l().r()) {
+         throw b.create($$0.l().R());
+      } else if (!$$0.l().a($$3, $$2, $$1)) {
+         throw a.create();
+      } else {
+         $$0.a(() -> a($$1), true);
+         return $$1;
+      }
+   }
 
-         if (!$$2) {
-            throw a.create();
-         } else {
-            $$1.a(() -> wi.c("commands.save.enabled"), true);
-            return 1;
-         }
-      }));
+   public static xg a(int $$0) {
+      ws $$1 = wv.a(String.valueOf($$0));
+      return ws.a("commands.publish.started", $$1);
    }
 }

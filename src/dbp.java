@@ -1,20 +1,16 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public class dbp extends dbr {
-   public static final MapCodec<dbp> a = b(dbp::new);
-   private static final etc b = dch.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+public abstract class dbp<E extends dnd> extends dch {
+   protected final Supplier<dnf<? extends E>> a;
 
-   @Override
-   public MapCodec<? extends dbp> a() {
-      return a;
-   }
-
-   protected dbp(dph.d $$0) {
+   protected dbp(dpx.d $$0, Supplier<dnf<? extends E>> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return b;
-   }
+   protected abstract MapCodec<? extends dbp<E>> a();
+
+   public abstract dfc.c<? extends dnk> a(dpy var1, czu var2, im var3, boolean var4);
 }

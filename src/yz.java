@@ -1,29 +1,19 @@
-public class yz implements yp<yv> {
-   public static final yg<vi, yz> a = yp.a(yz::a, yz::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public yz(int $$0) {
-      this.b = $$0;
+public interface yz<T extends vy> {
+   zb<? extends yz<T>> a();
+
+   void a(T var1);
+
+   default boolean c() {
+      return false;
    }
 
-   private yz(vi $$0) {
-      this.b = $$0.readInt();
+   default boolean d() {
+      return false;
    }
 
-   private void a(vi $$0) {
-      $$0.p(this.b);
-   }
-
-   @Override
-   public yr<yz> a() {
-      return zf.d;
-   }
-
-   public void a(yv $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
+   static <B extends ByteBuf, T extends yz<?>> yq<B, T> a(yt<B, T> $$0, yr<B, T> $$1) {
+      return yq.a($$0, $$1);
    }
 }

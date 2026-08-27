@@ -1,33 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import net.minecraft.server.MinecraftServer;
 
-public interface aqz {
-   aqz a = new aqz() {
-      @Override
-      public void a() {
+public class aqz implements aia {
+   private final MinecraftServer a;
+   private final vq b;
+
+   public aqz(MinecraftServer $$0, vq $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public void a(ahx $$0) {
+      if ($$0.g() != ahw.b) {
+         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
+      } else {
+         this.b.a(aij.a, new arg(this.a, this.b, false));
+         this.b.a(aij.b);
       }
+   }
 
-      @Override
-      public void b() {
-      }
+   @Override
+   public void a(ws $$0) {
+   }
 
-      @Override
-      public CompletableFuture<aqm> a(String $$0) {
-         return CompletableFuture.completedFuture(aqm.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<aqm>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(aqm::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   void a();
-
-   void b();
-
-   CompletableFuture<aqm> a(String var1);
-
-   CompletableFuture<List<aqm>> a(List<String> var1);
+   @Override
+   public boolean c() {
+      return this.b.i();
+   }
 }

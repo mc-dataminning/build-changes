@@ -1,38 +1,47 @@
-public class bpy {
-   public static final bpy a = new bpy(0.75F, 0.5F, 0.25F);
-   public static final bpy b = new bpy(0.95F, 0.69F, 0.32F);
-   private final float c;
-   private final float d;
-   private final float e;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   private bpy(float $$0, float $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public bpy.a a(float $$0) {
-      if ($$0 < this.e) {
-         return bpy.a.d;
-      } else if ($$0 < this.d) {
-         return bpy.a.c;
+public final class bpy {
+   public static ws a(bpx $$0, float $$1, float $$2) {
+      if ($$0.b()) {
+         return ws.c("effect.duration.infinite");
       } else {
-         return $$0 < this.c ? bpy.a.b : bpy.a.a;
+         int $$3 = axw.d((float)$$0.d() * $$1);
+         return ws.b(ayr.a($$3, $$2));
       }
    }
 
-   public bpy.a a(crs $$0) {
-      return !$$0.k() ? bpy.a.a : this.a($$0.m(), $$0.n());
+   public static boolean a(bre $$0) {
+      return $$0.b(bpz.c) || $$0.b(bpz.C);
    }
 
-   public bpy.a a(int $$0, int $$1) {
-      return this.a((float)($$1 - $$0) / (float)$$1);
+   public static int b(bre $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      if ($$0.b(bpz.c)) {
+         $$1 = $$0.c(bpz.c).e();
+      }
+
+      if ($$0.b(bpz.C)) {
+         $$2 = $$0.c(bpz.C).e();
+      }
+
+      return Math.max($$1, $$2);
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public static boolean c(bre $$0) {
+      return $$0.b(bpz.m) || $$0.b(bpz.C);
+   }
+
+   public static List<aqf> a(aqe $$0, @Nullable bql $$1, etf $$2, double $$3, bpx $$4, int $$5) {
+      iv<bpv> $$6 = $$4.c();
+      List<aqf> $$7 = $$0.a(
+         $$6x -> $$6x.f.d()
+               && ($$1 == null || !$$1.s($$6x))
+               && $$2.a((jf)$$6x.dl(), $$3)
+               && (!$$6x.b($$6) || $$6x.c($$6).e() < $$4.e() || $$6x.c($$6).a($$5 - 1))
+      );
+      $$7.forEach($$2x -> $$2x.b(new bpx($$4), $$1));
+      return $$7;
    }
 }

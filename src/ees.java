@@ -1,37 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ees extends efb {
+public class ees extends een {
    public static final Codec<ees> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ees::new)
+      $$0 -> $$0.group(bna.b(een.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ees::new)
    );
-   private final int c;
-   private final double d;
-   private final double e;
+   private final bna<een> b;
 
-   private ees(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static ees a(int $$0, double $$1, double $$2) {
-      return new ees($$0, $$1, $$2);
+   public ees(bna<een> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected int a(axt $$0, id $$1) {
-      double $$2 = daf.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public int a(ayd $$0, dwn $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
    }
 
    @Override
-   public eey<?> b() {
-      return eey.g;
+   public eeo<?> a() {
+      return eeo.f;
    }
 }

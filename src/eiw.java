@@ -1,64 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Optional;
 
-public class eiw extends ejn {
-   public static final Codec<eiw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ejp.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bnk.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, eiw::new)
+public class eiw extends egg {
+   public static final Codec<eiw> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, eiw::new)
    );
-   private final ejn b;
-   private final bnk c;
+   public final boolean e;
 
-   public eiw(ejn $$0, bnk $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public eiw(egg.c $$0, boolean $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected ejp<?> a() {
-      return ejp.o;
+   public Optional<egg.b> a(egg.a $$0) {
+      dvq.a $$1 = this.e ? dvq.a.a : dvq.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   }
+
+   private void a(egy $$0, egg.a $$1) {
+      dji $$2 = dji.a($$1.f());
+      im $$3 = new im($$1.h().d(), 90, $$1.h().e());
+      eiv.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
    }
 
    @Override
-   public final List<ejq.c> a(czv $$0, id $$1, id $$2, List<ejq.c> $$3, List<ejq.c> $$4, ejm $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            axt $$6 = axt.a($$0.E().C()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  ejq.c $$12 = $$3.get($$11);
-                  ejq.c $$13 = $$4.get($$11);
-                  ejq.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
-      } else {
-         return $$4;
-      }
+   public egp<?> e() {
+      return egp.m;
    }
 }

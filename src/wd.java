@@ -1,8 +1,19 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Function;
 
-@FunctionalInterface
-public interface wd {
-   wd a = ($$0, $$1) -> $$1;
+public class wd extends vs {
+   private final jj d;
 
-   wi decorate(@Nullable apv var1, wi var2);
+   public wd(ByteBuf $$0, jj $$1) {
+      super($$0);
+      this.d = $$1;
+   }
+
+   public jj G() {
+      return this.d;
+   }
+
+   public static Function<ByteBuf, wd> a(jj $$0) {
+      return $$1 -> new wd($$1, $$0);
+   }
 }

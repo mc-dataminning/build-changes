@@ -1,86 +1,89 @@
 import java.util.EnumSet;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bxy extends bxq {
-   public static final float a = 0.02F;
-   protected final bqv b;
+public class bxy extends byb {
+   private final brg a;
+   private final Predicate<brg> b;
    @Nullable
-   protected bqa c;
-   protected final float d;
-   private int h;
-   protected final float e;
-   private final boolean i;
-   protected final Class<? extends bqt> f;
-   protected final cbj g;
+   private brg c;
+   private final double d;
+   private final cap e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public bxy(bqv $$0, Class<? extends bqt> $$1, float $$2) {
-      this($$0, $$1, $$2, 0.02F);
-   }
-
-   public bxy(bqv $$0, Class<? extends bqt> $$1, float $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, false);
-   }
-
-   public bxy(bqv $$0, Class<? extends bqt> $$1, float $$2, float $$3, boolean $$4) {
-      this.b = $$0;
-      this.f = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.i = $$4;
-      this.a(EnumSet.of(bxq.a.b));
-      if ($$1 == cka.class) {
-         this.g = cbj.b().a((double)$$2).a($$1x -> bqf.b($$0).test($$1x));
-      } else {
-         this.g = cbj.b().a((double)$$2);
+   public bxy(brg $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.K();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(byb.a.a, byb.a.b));
+      if (!($$0.K() instanceof cao) && !($$0.K() instanceof can)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
       }
    }
 
    @Override
    public boolean a() {
-      if (this.b.ei().i() >= this.e) {
-         return false;
-      } else {
-         if (this.b.p() != null) {
-            this.c = this.b.p();
+      List<brg> $$0 = this.a.dN().a(brg.class, this.a.cI().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (brg $$1 : $$0) {
+            if (!$$1.cf()) {
+               this.c = $$1;
+               return true;
+            }
          }
-
-         if (this.f == cka.class) {
-            this.c = this.b.dM().a(this.g, this.b, this.b.dr(), this.b.dv(), this.b.dx());
-         } else {
-            this.c = this.b
-               .dM()
-               .a(this.b.dM().a(this.f, this.b.cH().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dr(), this.b.dv(), this.b.dx());
-         }
-
-         return this.c != null;
       }
+
+      return false;
    }
 
    @Override
    public boolean b() {
-      if (!this.c.bA()) {
-         return false;
-      } else {
-         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
-      }
+      return this.c != null && !this.e.l() && this.a.g(this.c) > (double)(this.g * this.g);
    }
 
    @Override
    public void c() {
-      this.h = this.a(40 + this.b.ei().a(40));
+      this.f = 0;
+      this.h = this.a.a(emi.j);
+      this.a.a(emi.j, 0.0F);
    }
 
    @Override
    public void d() {
       this.c = null;
+      this.e.n();
+      this.a.a(emi.j, this.h);
    }
 
    @Override
    public void e() {
-      if (this.c.bA()) {
-         double $$0 = this.i ? this.b.dv() : this.c.dv();
-         this.b.G().a(this.c.dr(), $$0, this.c.dx());
-         this.h--;
+      if (this.c != null && !this.a.gc()) {
+         this.a.G().a(this.c, 10.0F, (float)this.a.Z());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.ds() - this.c.ds();
+            double $$1 = this.a.du() - this.c.du();
+            double $$2 = this.a.dy() - this.c.dy();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.n();
+               bxd $$4 = this.c.G();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.ds() && $$4.f() == this.a.du() && $$4.g() == this.a.dy()) {
+                  double $$5 = this.c.ds() - this.a.ds();
+                  double $$6 = this.c.dy() - this.a.dy();
+                  this.e.a(this.a.ds() - $$5, this.a.du(), this.a.dy() - $$6, this.d);
+               }
+            }
+         }
       }
    }
 }

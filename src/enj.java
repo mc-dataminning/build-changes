@@ -1,106 +1,184 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class enj {
-   private static final Codec<enj> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awu.a(erh.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), awu.a(erh.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
-            .apply($$0, enj::new)
-   );
-   public static final Codec<enj> a = Codec.either(Codec.INT, b).xmap($$0 -> (enj)$$0.map(enj::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final erg c;
-   @Nullable
-   private final erg d;
-   private final enj.b e;
-   private final enj.a f;
+public class enj implements env {
+   private final enw a;
+   private final env b;
 
-   public Set<epu<?>> a() {
-      Builder<epu<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
+   public enj(enw $$0, env $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private enj(Optional<erg> $$0, Optional<erg> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
+   @Override
+   public im a() {
+      return this.b.a();
    }
 
-   private enj(@Nullable erg $$0, @Nullable erg $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
-         }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> axm.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
-      }
+   @Override
+   public float b() {
+      return this.b.b();
    }
 
-   public static enj a(int $$0) {
-      ere $$1 = ere.a((float)$$0);
-      return new enj(Optional.of($$1), Optional.of($$1));
+   @Override
+   public long c() {
+      return this.b.c();
    }
 
-   public static enj a(int $$0, int $$1) {
-      return new enj(Optional.of(ere.a((float)$$0)), Optional.of(ere.a((float)$$1)));
+   @Override
+   public long d() {
+      return this.b.d();
    }
 
-   public static enj b(int $$0) {
-      return new enj(Optional.of(ere.a((float)$$0)), Optional.empty());
+   @Override
+   public String e() {
+      return this.a.e();
    }
 
-   public static enj c(int $$0) {
-      return new enj(Optional.empty(), Optional.of(ere.a((float)$$0)));
+   @Override
+   public int f() {
+      return this.b.f();
    }
 
-   public int a(enk $$0, int $$1) {
-      return this.e.apply($$0, $$1);
+   @Override
+   public void a(int $$0) {
    }
 
-   public boolean b(enk $$0, int $$1) {
-      return this.f.test($$0, $$1);
+   @Override
+   public boolean g() {
+      return this.b.g();
    }
 
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof ere $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
+   @Override
+   public int h() {
+      return this.b.h();
    }
 
-   @FunctionalInterface
-   interface a {
-      boolean test(enk var1, int var2);
+   @Override
+   public boolean i() {
+      return this.b.i();
    }
 
-   @FunctionalInterface
-   interface b {
-      int apply(enk var1, int var2);
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public czr k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(im $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(czr $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public czq o() {
+      return this.a.o();
+   }
+
+   @Override
+   public drp.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(drp.c $$0) {
+   }
+
+   @Override
+   public bon q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public ess<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, czw $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

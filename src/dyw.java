@@ -1,73 +1,43 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Optional;
 
-public class dyw extends dye<ean> {
-   public dyw(Codec<ean> $$0) {
-      super($$0);
+public class dyw<FC extends eay> {
+   private final Optional<dyh<?, ?>> a;
+   private final dap b;
+   private final drv c;
+   private final ayd d;
+   private final im e;
+   private final FC f;
+
+   public dyw(Optional<dyh<?, ?>> $$0, dap $$1, drv $$2, ayd $$3, im $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(dyg<ean> $$0) {
-      dab $$1 = $$0.b();
-      id $$2 = $$0.e();
-      axt $$3 = $$0.d();
-      ean $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<ij> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            id.a $$6 = $$2.j();
-
-            for (ij $$7 : $$5) {
-               $$6.g($$2);
-               List<ij> $$8 = $$4.a($$3, $$7.g());
-
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dpi $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
-               }
-            }
-
-            return false;
-         }
-      }
+   public Optional<dyh<?, ?>> a() {
+      return this.a;
    }
 
-   public static boolean a(dab $$0, id $$1, dpi $$2, ean $$3, axt $$4, List<ij> $$5) {
-      id.a $$6 = $$1.j();
-
-      for (ij $$7 : $$5) {
-         dpi $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dpi $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
-            }
-
-            $$0.a($$1, $$9, 3);
-            $$0.y($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
-
-            return true;
-         }
-      }
-
-      return false;
+   public dap b() {
+      return this.b;
    }
 
-   private static boolean c(dpi $$0) {
-      return $$0.i() || $$0.a(dcj.G);
+   public drv c() {
+      return this.c;
+   }
+
+   public ayd d() {
+      return this.d;
+   }
+
+   public im e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

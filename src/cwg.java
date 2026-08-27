@@ -1,88 +1,56 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class cwg implements cvs<bny> {
-   protected final cvp a;
-   protected final crs b;
-   private final cvx<?> d;
-   private final cvw<?> e;
-   protected final String c;
+public interface cwg<C extends boj> {
+   Codec<cwg<?>> h = lc.t.q().dispatch(cwg::ao_, cwk::a);
+   yq<wd, cwg<?>> i = yo.a(ld.Z).b(cwg::ao_, cwk::b);
 
-   public cwg(cvx<?> $$0, cvw<?> $$1, String $$2, cvp $$3, crs $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   boolean a(C var1, czu var2);
+
+   csd a(C var1, jj var2);
+
+   boolean a(int var1, int var2);
+
+   csd a(jj var1);
+
+   default je<csd> a(C $$0) {
+      je<csd> $$1 = je.a($$0.b(), csd.i);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cry $$3 = $$0.a($$2).f();
+         if ($$3.w()) {
+            $$1.set($$2, new csd($$3.v()));
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public cvx<?> e() {
-      return this.d;
+   default je<cwd> a() {
+      return je.a();
    }
 
-   @Override
-   public cvw<?> ao_() {
-      return this.e;
+   default boolean an_() {
+      return false;
    }
 
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   @Override
-   public crs a(jb $$0) {
-      return this.b;
-   }
-
-   @Override
-   public iw<cvp> a() {
-      iw<cvp> $$0 = iw.a();
-      $$0.add(this.a);
-      return $$0;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
+   default boolean h() {
       return true;
    }
 
-   @Override
-   public crs a(bny $$0, jb $$1) {
-      return this.b.r();
+   default String c() {
+      return "";
    }
 
-   public interface a<T extends cwg> {
-      T create(String var1, cvp var2, crs var3);
+   default csd g() {
+      return new csd(dcx.cA);
    }
 
-   public static class b<T extends cwg> implements cvw<T> {
-      final cwg.a<T> x;
-      private final Codec<T> y;
-      private final yg<vt, T> z;
+   cwk<?> ao_();
 
-      protected b(cwg.a<T> $$0) {
-         this.x = $$0;
-         this.y = RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     awu.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                     cvp.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     crs.a.fieldOf("result").forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.z = yg.a(ye.k, $$0x -> $$0x.c, cvp.b, $$0x -> $$0x.a, crs.f, $$0x -> $$0x.b, $$0::create);
-      }
+   cwl<?> e();
 
-      @Override
-      public Codec<T> a() {
-         return this.y;
-      }
-
-      @Override
-      public yg<vt, T> b() {
-         return this.z;
-      }
+   default boolean i() {
+      je<cwd> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

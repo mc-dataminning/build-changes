@@ -1,20 +1,54 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class ftr<T extends bql> extends fsa<T> {
+   private static final String a = "upper_body";
+   private final fur b;
+   private final fur f;
+   private final fur g;
+   private final fur h;
+   private final fur i;
 
-public class ftr implements atf {
-   private Map<ftt, fub> a = ImmutableMap.of();
+   public ftr(fur $$0) {
+      this.b = $$0;
+      this.g = $$0.b("head");
+      this.h = $$0.b("left_arm");
+      this.i = $$0.b("right_arm");
+      this.f = $$0.b("upper_body");
+   }
 
-   public ftv a(ftt $$0) {
-      fub $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No model for layer " + $$0);
-      } else {
-         return $$1.a();
-      }
+   public static fux b() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      float $$2 = 4.0F;
+      fuv $$3 = new fuv(-0.5F);
+      $$1.a("head", fuw.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fut.a(0.0F, 4.0F, 0.0F));
+      fuw $$4 = fuw.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, fut.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, fut.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", fuw.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fut.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", fuw.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fut.a(0.0F, 24.0F, 0.0F));
+      return fux.a($$0, 64, 64);
    }
 
    @Override
-   public void a(ate $$0) {
-      this.a = ImmutableMap.copyOf(fts.a());
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
+      float $$6 = axw.a(this.f.f);
+      float $$7 = axw.b(this.f.f);
+      this.h.f = this.f.f;
+      this.i.f = this.f.f + (float) Math.PI;
+      this.h.b = $$7 * 5.0F;
+      this.h.d = -$$6 * 5.0F;
+      this.i.b = -$$7 * 5.0F;
+      this.i.d = $$6 * 5.0F;
+   }
+
+   @Override
+   public fur a() {
+      return this.b;
+   }
+
+   public fur c() {
+      return this.g;
    }
 }

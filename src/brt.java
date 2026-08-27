@@ -1,35 +1,13 @@
-public class brt {
-   private float a;
-   private float b;
-   private float c;
+import javax.annotation.Nullable;
 
-   public void a(float $$0) {
-      this.b = $$0;
+public interface brt {
+   boolean f();
+
+   void a(@Nullable ava var1);
+
+   default auy Y_() {
+      return auz.mG;
    }
 
-   public void a(float $$0, float $$1) {
-      this.a = this.b;
-      this.b = this.b + ($$0 - this.b) * $$1;
-      this.c = this.c + this.b;
-   }
-
-   public float a() {
-      return this.b;
-   }
-
-   public float b(float $$0) {
-      return axm.i($$0, this.a, this.b);
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public float c(float $$0) {
-      return this.c - this.b * (1.0F - $$0);
-   }
-
-   public boolean c() {
-      return this.b > 1.0E-5F;
-   }
+   boolean i();
 }

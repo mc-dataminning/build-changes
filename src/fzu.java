@@ -1,21 +1,42 @@
-public class fzu {
-   public static final cyr a = daf::a;
-   public static final cyr b = ($$0, $$1, $$2) -> $$0.f();
-   public static final cyr c = ($$0, $$1, $$2) -> $$0.i();
+public class fzu extends fyq {
+   private final bql a;
+   private int b;
+   private final int D;
+   private final ku E;
 
-   private static int a(cyj $$0, id $$1, cyr $$2) {
-      return $$0.a($$1, $$2);
+   public fzu(fvm $$0, bql $$1, ku $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   public static int a(cyj $$0, id $$1) {
-      return a($$0, $$1, a);
+   public fzu(fvm $$0, bql $$1, ku $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dq());
    }
 
-   public static int b(cyj $$0, id $$1) {
-      return a($$0, $$1, b);
+   private fzu(fvm $$0, bql $$1, ku $$2, int $$3, etf $$4) {
+      super($$0, $$1.ds(), $$1.e(0.5), $$1.dy(), $$4.c, $$4.d, $$4.e);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
-   public static int c(cyj $$0, id $$1) {
-      return a($$0, $$1, c);
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+         }
+      }
+
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
+      }
    }
 }

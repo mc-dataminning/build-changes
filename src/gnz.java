@@ -1,57 +1,71 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Locale;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class gnz extends ajv {
-   @VisibleForTesting
-   static final char f = '#';
-   private final String g;
+public class gnz implements asn<gny> {
+   public gny b(JsonObject $$0) {
+      Builder<gnx> $$1 = ImmutableList.builder();
+      int $$2 = axm.a($$0, "frametime", 1);
+      if ($$2 != 1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
+      }
 
-   private gnz(String $$0, String $$1, String $$2, @Nullable ajv.a $$3) {
-      super($$0, $$1, $$3);
-      this.g = $$2;
+      if ($$0.has("frames")) {
+         try {
+            JsonArray $$3 = axm.v($$0, "frames");
+
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               JsonElement $$5 = $$3.get($$4);
+               gnx $$6 = this.a($$4, $$5);
+               if ($$6 != null) {
+                  $$1.add($$6);
+               }
+            }
+         } catch (ClassCastException var8) {
+            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
+         }
+      }
+
+      int $$8 = axm.a($$0, "width", -1);
+      int $$9 = axm.a($$0, "height", -1);
+      if ($$8 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
+      }
+
+      if ($$9 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
+      }
+
+      boolean $$10 = axm.a($$0, "interpolate", false);
+      return new gny($$1.build(), $$8, $$9, $$2, $$10);
    }
 
-   public gnz(String $$0, String $$1, String $$2) {
-      super($$0, $$1);
-      this.g = j($$2);
-   }
+   @Nullable
+   private gnx a(int $$0, JsonElement $$1) {
+      if ($$1.isJsonPrimitive()) {
+         return new gnx(axm.g($$1, "frames[" + $$0 + "]"));
+      } else if ($$1.isJsonObject()) {
+         JsonObject $$2 = axm.m($$1, "frames[" + $$0 + "]");
+         int $$3 = axm.a($$2, "time", -1);
+         if ($$2.has("time")) {
+            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+         }
 
-   public gnz(ajv $$0, String $$1) {
-      this($$0.b(), $$0.a(), j($$1), null);
-   }
-
-   public static gnz c(String $$0, String $$1) {
-      return new gnz("minecraft", $$0, $$1);
-   }
-
-   private static String j(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String f() {
-      return this.g;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 instanceof gnz && super.equals($$0)) {
-         gnz $$1 = (gnz)$$0;
-         return this.g.equals($$1.g);
+         int $$4 = axm.o($$2, "index");
+         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
+         return new gnx($$4, $$3);
       } else {
-         return false;
+         return null;
       }
    }
 
    @Override
-   public int hashCode() {
-      return 31 * super.hashCode() + this.g.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return super.toString() + "#" + this.g;
+   public String a() {
+      return "animation";
    }
 }

@@ -1,18 +1,17 @@
-import io.netty.channel.ChannelHandlerContext;
+public enum vr {
+   a("handshake"),
+   b("play"),
+   c("status"),
+   d("login"),
+   e("configuration");
 
-public interface vr {
-   static void a(ChannelHandlerContext $$0, yp<?> $$1) {
-      if ($$1.d()) {
-         $$0.channel().config().setAutoRead(false);
-         $$0.pipeline().addBefore($$0.name(), "inbound_config", new vx.a());
-         $$0.pipeline().remove($$0.name());
-      }
+   private final String f;
+
+   private vr(String $$0) {
+      this.f = $$0;
    }
 
-   static void b(ChannelHandlerContext $$0, yp<?> $$1) {
-      if ($$1.d()) {
-         $$0.pipeline().addAfter($$0.name(), "outbound_config", new vx.c());
-         $$0.pipeline().remove($$0.name());
-      }
+   public String a() {
+      return this.f;
    }
 }

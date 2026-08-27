@@ -1,95 +1,110 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class grr {
-   static final Logger a = LogUtils.getLogger();
-   final fjx b;
-   volatile boolean c;
-   @Nullable
-   vg d;
+   final Map<grq<?>, Object> a;
 
-   public grr(fjx $$0) {
-      this.b = $$0;
+   grr(Map<grq<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public void a(final exy $$0, fwh $$1) {
-      final fby $$2 = fby.Q();
-      $$2.aT();
-      $$2.aY().c(wi.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
+   public static grr.a a() {
+      return new grr.a();
+   }
 
-            try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (grr.this.c) {
-                  return;
-               }
+   public static Codec<grr> a(final List<grq<?>> $$0) {
+      return (new MapCodec<grr>() {
+         public <T> RecordBuilder<T> a(grr $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
 
-               grr.this.d = vg.a($$0, $$2.m.az(), $$2.aP().n());
-               if (grr.this.c) {
-                  return;
-               }
+            for (grq<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
 
-               fup $$1 = new fup(grr.this.d, $$2, $$0.e($$3), grr.this.b, false, null, $$0xx -> {
-               }, null);
-               if ($$0.m == exy.d.b) {
-                  $$1.a($$0.o);
-               }
+            return $$3;
+         }
 
-               if (grr.this.c) {
-                  return;
-               }
+         private <T, V> RecordBuilder<T> a(grr $$0x, RecordBuilder<T> $$1, grq<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
 
-               grr.this.d.a($$3, $$4, $$1);
-               if (grr.this.c) {
-                  return;
-               }
+         public <T> DataResult<grr> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<grr.a> $$2 = DataResult.success(new grr.a());
 
-               grr.this.d.a(new aic($$2.X().c(), $$2.X().b()));
-               $$2.a(fvv.a($$0));
-               $$2.bc().a(fzs.c.c, String.valueOf($$0.a), $$0.c);
-               $$2.ae().a(grr.this.d, gol.c.b);
-            } catch (Exception var5) {
-               $$2.ae().i();
-               if (grr.this.c) {
-                  return;
-               }
+            for (grq<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
 
-               grr.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
+            return $$2.map(grr.a::a);
+         }
 
-               grq $$5 = new grq(grr.this.b, wh.r, wi.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
+         private <T, V> DataResult<grr.a> a(DataResult<grr.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, grq<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
             }
          }
-      }).start();
-   }
 
-   public void a() {
-      this.c = true;
-      if (this.d != null && this.d.i()) {
-         this.d.a(wi.c("disconnect.genericReason"));
-         this.d.n();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         if (this.d.i()) {
-            this.d.b();
-         } else {
-            this.d.n();
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(grq::b).map($$0::createString);
          }
+      }).codec();
+   }
+
+   @Nullable
+   public <T> T a(grq<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public Set<grq<?>> b() {
+      return this.a.keySet();
+   }
+
+   public static class a {
+      private final Map<grq<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
+      }
+
+      public <T> grr.a a(grq<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> grr.a b(grq<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public grr.a a(grr $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public grr a() {
+         return new grr(this.a);
       }
    }
 }

@@ -1,101 +1,99 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gpy {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
+public class gpy implements grh<gpy> {
+   public static final ajy a = new ajy("sounds", ".ogg");
+   private final akf b;
+   private final bny c;
+   private final bny d;
+   private final int e;
+   private final gpy.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public static class a extends Thread {
-      private final gpy.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
+   public gpy(String $$0, bny $$1, bny $$2, int $$3, gpy.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new akf($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
 
-      public a(gpy.b $$0) throws IOException {
-         super("LanServerDetector #" + gpy.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(gpy.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
-      }
+   public akf a() {
+      return this.b;
+   }
 
-      @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
+   public akf b() {
+      return a.a(this.b);
+   }
 
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
+   public bny c() {
+      return this.c;
+   }
 
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               gpy.b.error("Couldn't ping server", var6);
-               break;
-            }
+   public bny d() {
+      return this.d;
+   }
 
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            gpy.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
-         }
+   @Override
+   public int e() {
+      return this.e;
+   }
 
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
-         }
+   public gpy a(ayd $$0) {
+      return this;
+   }
 
-         this.c.close();
+   @Override
+   public void a(grc $$0) {
+      if (this.h) {
+         $$0.a(this);
       }
    }
 
-   public static class b {
-      private final List<gpx> a = Lists.newArrayList();
-      private boolean b;
+   public gpy.a f() {
+      return this.f;
+   }
 
-      @Nullable
-      public synchronized List<gpx> a() {
-         if (this.b) {
-            List<gpx> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
-         } else {
-            return null;
-         }
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
       }
 
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = gpz.a($$0);
-         String $$3 = gpz.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
-
-            for (gpx $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
-            }
-
-            if (!$$4) {
-               this.a.add(new gpx($$2, $$3));
-               this.b = true;
+      @Nullable
+      public static gpy.a a(String $$0) {
+         for (gpy.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
             }
          }
+
+         return null;
       }
    }
 }

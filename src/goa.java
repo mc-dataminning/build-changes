@@ -1,9 +1,2 @@
-public interface goa {
-   default j b() {
-      return j.a();
-   }
-
-   default boolean c() {
-      return false;
-   }
+public record goa(int a, int b) {
 }

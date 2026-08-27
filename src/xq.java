@@ -1,119 +1,73 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import java.util.List;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class xq implements wj {
-   public static final MapCodec<xq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(xq::b), Codec.STRING.fieldOf("objective").forGetter(xq::d)).apply($$0, xq::new)
-   );
-   public static final MapCodec<xq> b = a.fieldOf("score");
-   public static final wj.a<xq> c = new wj.a<>(b, "score");
-   private final String d;
-   @Nullable
-   private final gk e;
-   private final String f;
+public class xq {
+   private final String a;
+   private final List<xp> b;
+   private final Int2IntFunction c;
 
-   @Nullable
-   private static gk a(String $$0) {
-      try {
-         return new gl(new StringReader($$0)).t();
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   private xq(String $$0, List<xp> $$1, Int2IntFunction $$2) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = $$2;
    }
 
-   public xq(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = a($$0);
-      this.f = $$1;
+   public String a() {
+      return this.a;
    }
 
-   @Override
-   public wj.a<?> a() {
-      return c;
-   }
+   public List<axi> a(int $$0, int $$1, boolean $$2) {
+      if ($$1 == 0) {
+         return ImmutableList.of();
+      } else {
+         List<axi> $$3 = Lists.newArrayList();
+         xp $$4 = this.b.get($$0);
+         int $$5 = $$0;
 
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public gk c() {
-      return this.e;
-   }
-
-   public String d() {
-      return this.f;
-   }
-
-   private etm a(dv $$0) throws CommandSyntaxException {
-      if (this.e != null) {
-         List<? extends bqa> $$1 = this.e.b($$0);
-         if (!$$1.isEmpty()) {
-            if ($$1.size() != 1) {
-               throw ei.a.create();
-            }
-
-            return $$1.get(0);
-         }
-      }
-
-      return etm.c(this.d);
-   }
-
-   private ww a(etm $$0, dv $$1) {
-      MinecraftServer $$2 = $$1.l();
-      if ($$2 != null) {
-         etn $$3 = $$2.aK();
-         etf $$4 = $$3.a(this.f);
-         if ($$4 != null) {
-            etj $$5 = $$3.d($$0, $$4);
-            if ($$5 != null) {
-               return $$5.a($$4.a(yb.b));
+         for (int $$6 = 1; $$6 < $$1; $$6++) {
+            int $$7 = $$0 + $$6;
+            xp $$8 = this.b.get($$7);
+            if (!$$8.equals($$4)) {
+               String $$9 = this.a.substring($$5, $$7);
+               $$3.add($$2 ? axi.backward($$9, $$4, this.c) : axi.forward($$9, $$4));
+               $$4 = $$8;
+               $$5 = $$7;
             }
          }
-      }
 
-      return wi.i();
-   }
+         if ($$5 < $$0 + $$1) {
+            String $$10 = this.a.substring($$5, $$0 + $$1);
+            $$3.add($$2 ? axi.backward($$10, $$4, this.c) : axi.forward($$10, $$4));
+         }
 
-   @Override
-   public ww a(@Nullable dv $$0, @Nullable bqa $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return wi.i();
-      } else {
-         etm $$3 = this.a($$0);
-         etm $$4 = (etm)($$1 != null && $$3.equals(etm.cy) ? $$1 : $$3);
-         return this.a($$4, $$0);
+         return $$2 ? Lists.reverse($$3) : $$3;
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof xq $$1 && this.d.equals($$1.d) && this.f.equals($$1.f)) {
+   public static xq a(wx $$0) {
+      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
+   }
+
+   public static xq a(wx $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
+      StringBuilder $$3 = new StringBuilder();
+      List<xp> $$4 = Lists.newArrayList();
+      $$0.a(($$2x, $$3x) -> {
+         ayp.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
+            $$3.appendCodePoint($$4x);
+            int $$5 = Character.charCount($$4x);
+
+            for (int $$6 = 0; $$6 < $$5; $$6++) {
+               $$4.add($$3xx);
+            }
+
             return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.d.hashCode();
-      return 31 * $$0 + this.f.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "score{name='" + this.d + "', objective='" + this.f + "'}";
+         });
+         return Optional.empty();
+      }, xp.a);
+      return new xq($$2.apply($$3.toString()), $$4, $$1);
    }
 }

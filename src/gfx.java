@@ -1,27 +1,17 @@
-public class gfx extends gfq<ckn> {
-   private final ggp a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gfx(gfr.a $$0) {
-      super($$0);
-      this.a = $$0.b();
+public class gfx<T extends cew> extends gfh<T, frf<T>> {
+   private static final Map<bqr<?>, akf> a = Maps.newHashMap(
+      ImmutableMap.of(bqr.z, new akf("textures/entity/horse/donkey.png"), bqr.as, new akf("textures/entity/horse/mule.png"))
+   );
+
+   public gfx(ggn.a $$0, float $$1, fup $$2) {
+      super($$0, new frf<>($$0.a($$2)), $$1);
    }
 
-   public void a(ckn $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
-      $$3.a();
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.r()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
-      }
-
-      this.a.a($$0.p(), crp.h, $$5, glj.d, $$3, $$4, $$0.dM(), $$0.aj());
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public ajv a(ckn $$0) {
-      return glr.e;
+   public akf a(T $$0) {
+      return a.get($$0.ai());
    }
 }

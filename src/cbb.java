@@ -1,37 +1,30 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class cbb {
-   private final bqv a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
-
-   public cbb(bqv $$0) {
-      this.a = $$0;
+public class cbb extends cbn<bre> {
+   @Override
+   public Set<cah<?>> a() {
+      return ImmutableSet.of(cah.x, cah.y);
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   public boolean a(bqa $$0) {
-      int $$1 = $$0.aj();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dM().af().a("hasLineOfSight");
-         boolean $$2 = this.a.E($$0);
-         this.a.dM().af().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
+   @Override
+   protected void a(aqe $$0, bre $$1) {
+      bsf<?> $$2 = $$1.dQ();
+      bpj $$3 = $$1.eA();
+      if ($$3 != null) {
+         $$2.a(cah.x, $$1.eA());
+         bql $$4 = $$3.d();
+         if ($$4 instanceof bre) {
+            $$2.a(cah.y, (bre)$$4);
          }
-
-         return $$2;
+      } else {
+         $$2.b(cah.x);
       }
+
+      $$2.c(cah.y).ifPresent($$2x -> {
+         if (!$$2x.bB() || $$2x.dN() != $$0) {
+            $$2.b(cah.y);
+         }
+      });
    }
 }

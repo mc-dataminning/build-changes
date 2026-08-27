@@ -1,13 +1,20 @@
-public class gjk<T extends cgu> extends gkc<T, fqr<T>> {
-   private static final ajv a = new ajv("textures/entity/zombie/drowned_outer_layer.png");
-   private final fqr<T> b;
+public class gjk extends ght<cjp, fud<cjp>> {
+   private static final akf a = new akf("textures/entity/warden/warden.png");
+   private static final akf i = new akf("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final akf j = new akf("textures/entity/warden/warden_heart.png");
+   private static final akf k = new akf("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final akf l = new akf("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public gjk(ghm<T, fqr<T>> $$0, ftr $$1) {
-      super($$0);
-      this.b = new fqr<>($$1.a(ftu.U));
+   public gjk(ggn.a $$0) {
+      super($$0, new fud<>($$0.a(fuq.bR)), 0.9F);
+      this.a(new glk<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fud::e));
+      this.a(new glk<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, axw.b($$2 * 0.045F) * 0.25F), fud::f));
+      this.a(new glk<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, axw.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fud::f));
+      this.a(new glk<>(this, a, ($$0x, $$1, $$2) -> $$0x.G($$1), fud::c));
+      this.a(new glk<>(this, j, ($$0x, $$1, $$2) -> $$0x.H($$1), fud::d));
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public akf a(cjp $$0) {
+      return a;
    }
 }

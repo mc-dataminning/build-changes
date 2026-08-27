@@ -1,95 +1,114 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgp extends dba {
-   public static final MapCodec<dgp> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(daf.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), jk.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
-            .apply($$0, dgp::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dqi g = dpy.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final daf.c j;
+public class dgp extends dgl {
+   public static final MapCodec<dgp> a = b(dgp::new);
+   private static final double c = 0.13;
+   private static final double e = 0.08;
+   private static final double f = 0.05;
+   private static final int g = 20;
+   protected static final ety b = dcv.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
    @Override
    public MapCodec<dgp> a() {
-      return d;
+      return a;
    }
 
-   public dgp(daf.c $$0, jk.a $$1, dph.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
+   public dgp(dpx.d $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean d(dpi $$0) {
-      return $$0.c(g) == 3;
+   private static boolean c(bql $$0) {
+      return $$0 instanceof bre || $$0 instanceof cmg || $$0 instanceof cgw || $$0 instanceof cmi;
    }
 
    @Override
-   protected boolean a(ela $$0) {
-      return $$0 == elc.c && this.j == daf.c.b;
+   protected ety b(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return b;
    }
 
    @Override
-   protected double b(dpi $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   public void a(czu $$0, dpy $$1, im $$2, bql $$3, float $$4) {
+      $$3.a(auz.mq, 1.0F, 1.0F);
+      if (!$$0.B) {
+         $$0.a($$3, (byte)54);
+      }
+
+      if ($$3.a($$4, 0.2F, $$0.ai().k())) {
+         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
+      }
    }
 
    @Override
-   protected void a(dpi $$0, czg $$1, id $$2, bqa $$3) {
-      if (!$$1.B && $$3.bN() && this.a($$0, $$2, $$3)) {
-         $$3.aA();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
+   protected void a(dpy $$0, czu $$1, im $$2, bql $$3) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private boolean a(im $$0, bql $$1) {
+      if ($$1.aC()) {
+         return false;
+      } else if ($$1.du() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if ($$1.dq().d >= -0.08) {
+         return false;
+      } else {
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.ds());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dy());
+         double $$4 = 0.4375 + (double)($$1.dh() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
+      }
+   }
+
+   private void a(bql $$0, im $$1) {
+      if ($$0 instanceof aqf && $$0.dN().Y() % 20L == 0L) {
+         am.K.a((aqf)$$0, $$0.dN().a_($$1));
+      }
+   }
+
+   private void d(bql $$0) {
+      etf $$1 = $$0.dq();
+      if ($$1.d < -0.13) {
+         double $$2 = -0.05 / $$1.d;
+         $$0.g(new etf($$1.c * $$2, -0.05, $$1.e * $$2));
+      } else {
+         $$0.g(new etf($$1.c, -0.05, $$1.e));
+      }
+
+      $$0.n();
+   }
+
+   private void a(czu $$0, bql $$1) {
+      if (c($$1)) {
+         if ($$0.z.a(5) == 0) {
+            $$1.a(auz.mq, 1.0F, 1.0F);
+         }
+
+         if (!$$0.B && $$0.z.a(5) == 0) {
+            $$0.a($$1, (byte)53);
          }
       }
    }
 
-   private void e(dpi $$0, czg $$1, id $$2) {
-      if (this.j == daf.c.c) {
-         d(dcj.fu.n().a(g, $$0.c(g)), $$1, $$2);
-      } else {
-         d($$0, $$1, $$2);
-      }
+   public static void a(bql $$0) {
+      a($$0, 5);
    }
 
-   public static void d(dpi $$0, czg $$1, id $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dpi $$4 = $$3 == 0 ? dcj.ft.n() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dub.c, $$2, dub.a.a($$4));
+   public static void b(bql $$0) {
+      a($$0, 10);
    }
 
-   @Override
-   public void a(dpi $$0, czg $$1, id $$2, daf.c $$3) {
-      if (ddc.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dpi $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(dub.c, $$2, dub.a.a($$4));
-      }
-   }
+   private static void a(bql $$0, int $$1) {
+      if ($$0.dN().B) {
+         dpy $$2 = dcx.pg.n();
 
-   @Override
-   protected int a(dpi $$0, czg $$1, id $$2) {
-      return $$0.c(g);
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dpi $$0, czg $$1, id $$2, ela $$3) {
-      if (!this.d($$0)) {
-         dpi $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dub.c, $$2, dub.a.a($$4));
-         $$1.c(1047, $$2, 0);
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dN().a(new kn(kw.b, $$2), $$0.ds(), $$0.du(), $$0.dy(), 0.0, 0.0, 0.0);
+         }
       }
    }
 }

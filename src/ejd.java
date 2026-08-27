@@ -1,9 +1,8 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class ejd {
-   public static final Codec<ejd> c = kt.q.q().dispatch("predicate_type", ejd::a, eje::codec);
-
-   public abstract boolean a(id var1, id var2, id var3, axt var4);
-
-   protected abstract eje<?> a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ejd {
 }

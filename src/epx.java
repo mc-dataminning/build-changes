@@ -1,16 +1,28 @@
-public class epx {
-   public static final epu<bqa> a = a("this_entity");
-   public static final epu<cka> b = a("last_damage_player");
-   public static final epu<boy> c = a("damage_source");
-   public static final epu<bqa> d = a("killer_entity");
-   public static final epu<bqa> e = a("direct_killer_entity");
-   public static final epu<esj> f = a("origin");
-   public static final epu<dpi> g = a("block_state");
-   public static final epu<dmo> h = a("block_entity");
-   public static final epu<crs> i = a("tool");
-   public static final epu<Float> j = a("explosion_radius");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private static <T> epu<T> a(String $$0) {
-      return new epu<>(new ajv($$0));
+public class epx extends epo {
+   public static final Codec<epx> a = RecordCodecBuilder.create($$0 -> a($$0).and(jw.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, epx::new));
+   private final jw b;
+
+   private epx(List<erh> $$0, jw $$1) {
+      super($$0);
+      this.b = $$1;
+   }
+
+   @Override
+   public epq b() {
+      return epr.h;
+   }
+
+   @Override
+   public csd a(csd $$0, eoa $$1) {
+      $$0.a(this.b);
+      return $$0;
+   }
+
+   public static <T> epo.a<?> a(jy<T> $$0, T $$1) {
+      return a($$2 -> new epx($$2, jw.a().a($$0, $$1).a()));
    }
 }

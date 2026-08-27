@@ -1,38 +1,100 @@
+import com.google.common.hash.Hashing;
+import com.google.common.hash.HashingOutputStream;
+import com.mojang.logging.LogUtils;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ou extends oz<bqg<?>> {
-   public ou(lc $$0, CompletableFuture<ip.a> $$1) {
-      super($$0, ku.v, $$1, $$0x -> $$0x.r().h());
+public class ou implements lj {
+   private static final Logger d = LogUtils.getLogger();
+   private final Iterable<Path> e;
+   private final ll f;
+
+   public ou(ll $$0, Collection<Path> $$1) {
+      this.e = $$1;
+      this.f = $$0;
    }
 
    @Override
-   protected void a(ip.a $$0) {
-      this.a(avh.a).a(bqg.aM, bqg.aX, bqg.bp, bqg.aN);
-      this.a(avh.b).a(bqg.bu, bqg.bt, bqg.bv, bqg.bw, bqg.bs, bqg.B, bqg.ac);
-      this.a(avh.c).a(bqg.J, bqg.aB, bqg.aG, bqg.bj, bqg.ad, bqg.bn);
-      this.a(avh.d).a(avh.a).a(avh.b).a(bqg.bo).a(bqg.ax);
-      this.a(avh.e).a(bqg.h);
-      this.a(avh.f).a(bqg.e, bqg.aU);
-      this.a(avh.g).a(avh.f).a(bqg.P).a(bqg.aS, bqg.aj, bqg.aP, bqg.C, bqg.be, bqg.A, bqg.bq);
-      this.a(avh.h).a(bqg.aF, bqg.I, bqg.aL, bqg.Q);
-      this.a(avh.j).a(bqg.bf, bqg.aE, bqg.aH, bqg.u, bqg.aW, bqg.W, bqg.aZ);
-      this.a(avh.i).a(bqg.B, bqg.Y, bqg.D);
-      this.a(avh.k).a(bqg.aX, bqg.aC, bqg.aR, bqg.bo);
-      this.a(avh.l).a(bqg.aY, bqg.i, bqg.ao);
-      this.a(avh.m).a(avh.d).a(bqg.f, bqg.R, bqg.Y, bqg.D, bqg.bg, bqg.W, bqg.u, bqg.aE, bqg.aH, bqg.aW, bqg.bf, bqg.aZ, bqg.d);
-      this.a(avh.n).a(bqg.aO, bqg.ao);
-      this.a(avh.o).a(bqg.af, bqg.aR, bqg.aJ, bqg.a, bqg.g, bqg.h, bqg.i, bqg.p, bqg.t, bqg.T, bqg.ax, bqg.ao, bqg.at, bqg.aw, bqg.bo);
-      this.a(avh.p).a(bqg.o, bqg.t, bqg.z, bqg.ab, bqg.am, bqg.as, bqg.ay, bqg.aG, bqg.aV, bqg.aY, bqg.bd, bqg.bu);
-      this.a(avh.q).a(bqg.aO, bqg.ao);
-      this.a(avh.t).a(bqg.J).a(bqg.ad).a(bqg.aB).a(bqg.bj);
-      this.a(avh.u).a(bqg.bg).a(bqg.f).a(bqg.Y).a(bqg.D).a(bqg.u).a(bqg.aE).a(bqg.aH).a(bqg.bf).a(bqg.y).a(bqg.aW).a(bqg.W).a(bqg.aZ);
-      this.a(avh.v).a(bqg.h).a(bqg.I).a(bqg.aL).a(bqg.aV).a(bqg.q);
-      this.a(avh.w).a(avh.d);
-      this.a(avh.x).a(avh.d);
-      this.a(avh.y).a(avh.d);
-      this.a(avh.z).a(avh.t);
-      this.a(avh.A).a(bqg.bg).a(bqg.Y).a(bqg.D).a(bqg.u).a(bqg.aE).a(bqg.aH).a(bqg.bf).a(bqg.y).a(bqg.aW).a(bqg.W).a(bqg.aZ);
-      this.a(avh.B).a(avh.u);
-      this.a(avh.C).a(avh.v);
+   public CompletableFuture<?> a(lh $$0) {
+      Path $$1 = this.f.a();
+      List<CompletableFuture<?>> $$2 = new ArrayList<>();
+
+      for (Path $$3 : this.e) {
+         $$2.add(
+            CompletableFuture.<CompletableFuture>supplyAsync(
+                  () -> {
+                     try {
+                        CompletableFuture var4;
+                        try (Stream<Path> $$3x = Files.walk($$3)) {
+                           var4 = CompletableFuture.allOf(
+                              $$3x.filter($$0xx -> $$0xx.toString().endsWith(".nbt"))
+                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), ac.g()))
+                                 .toArray(CompletableFuture[]::new)
+                           );
+                        }
+
+                        return var4;
+                     } catch (IOException var8) {
+                        d.error("Failed to read structure input directory", var8);
+                        return CompletableFuture.completedFuture(null);
+                     }
+                  },
+                  ac.f()
+               )
+               .thenCompose($$0x -> $$0x)
+         );
+      }
+
+      return CompletableFuture.allOf($$2.toArray(CompletableFuture[]::new));
+   }
+
+   @Override
+   public final String a() {
+      return "NBT -> SNBT";
+   }
+
+   private static String a(Path $$0, Path $$1) {
+      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
+      return $$2.substring(0, $$2.length() - ".nbt".length());
+   }
+
+   @Nullable
+   public static Path a(lh $$0, Path $$1, String $$2, Path $$3) {
+      try {
+         Path var7;
+         try (
+            InputStream $$4 = Files.newInputStream($$1);
+            InputStream $$5 = new axf($$4);
+         ) {
+            Path $$6 = $$3.resolve($$2 + ".snbt");
+            a($$0, $$6, un.a(ul.a($$5, uh.a())));
+            d.info("Converted {} from NBT to SNBT", $$2);
+            var7 = $$6;
+         }
+
+         return var7;
+      } catch (IOException var12) {
+         d.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{$$2, $$1, var12});
+         return null;
+      }
+   }
+
+   public static void a(lh $$0, Path $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
+      HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
+      $$4.write($$2.getBytes(StandardCharsets.UTF_8));
+      $$4.write(10);
+      $$0.writeIfNeeded($$1, $$3.toByteArray(), $$4.hash());
    }
 }

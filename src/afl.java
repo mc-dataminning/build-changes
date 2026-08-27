@@ -1,171 +1,78 @@
-public class afl {
-   public static final yr<abm> a = a("bundle");
-   public static final yr<abl> b = a("bundle_delimiter");
-   public static final yr<abb> c = a("add_entity");
-   public static final yr<abc> d = a("add_experience_orb");
-   public static final yr<abd> e = a("animate");
-   public static final yr<abe> f = a("award_stats");
-   public static final yr<abf> g = a("block_changed_ack");
-   public static final yr<abg> h = a("block_destruction");
-   public static final yr<abh> i = a("block_entity_data");
-   public static final yr<abi> j = a("block_event");
-   public static final yr<abj> k = a("block_update");
-   public static final yr<abk> l = a("boss_event");
-   public static final yr<abn> m = a("change_difficulty");
-   public static final yr<abo> n = a("chunk_batch_finished");
-   public static final yr<abp> o = a("chunk_batch_start");
-   public static final yr<abq> p = a("chunks_biomes");
-   public static final yr<abr> q = a("clear_titles");
-   public static final yr<abs> r = a("command_suggestions");
-   public static final yr<abt> s = a("commands");
-   public static final yr<abu> t = a("container_close");
-   public static final yr<abv> u = a("container_set_content");
-   public static final yr<abw> v = a("container_set_data");
-   public static final yr<abx> w = a("container_set_slot");
-   public static final yr<aby> x = a("cooldown");
-   public static final yr<abz> y = a("custom_chat_completions");
-   public static final yr<aca> z = a("damage_event");
-   public static final yr<acb> A = a("debug_sample");
-   public static final yr<acc> B = a("delete_chat");
-   public static final yr<acd> C = a("disguised_chat");
-   public static final yr<ace> D = a("entity_event");
-   public static final yr<acf> E = a("explode");
-   public static final yr<acg> F = a("forget_level_chunk");
-   public static final yr<ach> G = a("game_event");
-   public static final yr<aci> H = a("horse_screen_open");
-   public static final yr<acj> I = a("hurt_animation");
-   public static final yr<ack> J = a("initialize_border");
-   public static final yr<acm> K = a("level_chunk_with_light");
-   public static final yr<acn> L = a("level_event");
-   public static final yr<aco> M = a("level_particles");
-   public static final yr<acp> N = a("light_update");
-   public static final yr<acr> O = a("login");
-   public static final yr<acs> P = a("map_item_data");
-   public static final yr<act> Q = a("merchant_offers");
-   public static final yr<acu.a> R = a("move_entity_pos");
-   public static final yr<acu.b> S = a("move_entity_pos_rot");
-   public static final yr<acu.c> T = a("move_entity_rot");
-   public static final yr<acv> U = a("move_vehicle");
-   public static final yr<acw> V = a("open_book");
-   public static final yr<acx> W = a("open_screen");
-   public static final yr<acy> X = a("open_sign_editor");
-   public static final yr<acz> Y = a("place_ghost_recipe");
-   public static final yr<ada> Z = a("player_abilities");
-   public static final yr<adb> aa = a("player_chat");
-   public static final yr<adc> ab = a("player_combat_end");
-   public static final yr<add> ac = a("player_combat_enter");
-   public static final yr<ade> ad = a("player_combat_kill");
-   public static final yr<adf> ae = a("player_info_remove");
-   public static final yr<adg> af = a("player_info_update");
-   public static final yr<adh> ag = a("player_look_at");
-   public static final yr<adi> ah = a("player_position");
-   public static final yr<adj> ai = a("recipe");
-   public static final yr<adk> aj = a("remove_entities");
-   public static final yr<adl> ak = a("remove_mob_effect");
-   public static final yr<adn> al = a("respawn");
-   public static final yr<ado> am = a("rotate_head");
-   public static final yr<adp> an = a("section_blocks_update");
-   public static final yr<adq> ao = a("select_advancements_tab");
-   public static final yr<adr> ap = a("server_data");
-   public static final yr<ads> aq = a("set_action_bar_text");
-   public static final yr<adt> ar = a("set_border_center");
-   public static final yr<adu> as = a("set_border_lerp_size");
-   public static final yr<adv> at = a("set_border_size");
-   public static final yr<adw> au = a("set_border_warning_delay");
-   public static final yr<adx> av = a("set_border_warning_distance");
-   public static final yr<ady> aw = a("set_camera");
-   public static final yr<adz> ax = a("set_carried_item");
-   public static final yr<aea> ay = a("set_chunk_cache_center");
-   public static final yr<aeb> az = a("set_chunk_cache_radius");
-   public static final yr<aec> aA = a("set_default_spawn_position");
-   public static final yr<aed> aB = a("set_display_objective");
-   public static final yr<aee> aC = a("set_entity_data");
-   public static final yr<aef> aD = a("set_entity_link");
-   public static final yr<aeg> aE = a("set_entity_motion");
-   public static final yr<aeh> aF = a("set_equipment");
-   public static final yr<aei> aG = a("set_experience");
-   public static final yr<aej> aH = a("set_health");
-   public static final yr<aek> aI = a("set_objective");
-   public static final yr<ael> aJ = a("set_passengers");
-   public static final yr<aem> aK = a("set_player_team");
-   public static final yr<aen> aL = a("set_score");
-   public static final yr<aeo> aM = a("set_simulation_distance");
-   public static final yr<aep> aN = a("set_subtitle_text");
-   public static final yr<aeq> aO = a("set_time");
-   public static final yr<aer> aP = a("set_title_text");
-   public static final yr<aes> aQ = a("set_titles_animation");
-   public static final yr<aet> aR = a("sound_entity");
-   public static final yr<aeu> aS = a("sound");
-   public static final yr<aev> aT = a("start_configuration");
-   public static final yr<aew> aU = a("stop_sound");
-   public static final yr<aex> aV = a("system_chat");
-   public static final yr<aey> aW = a("tab_list");
-   public static final yr<aez> aX = a("tag_query");
-   public static final yr<afa> aY = a("take_item_entity");
-   public static final yr<afb> aZ = a("teleport_entity");
-   public static final yr<afe> ba = a("update_advancements");
-   public static final yr<aff> bb = a("update_attributes");
-   public static final yr<afg> bc = a("update_mob_effect");
-   public static final yr<afh> bd = a("update_recipes");
-   public static final yr<afp> be = b("accept_teleportation");
-   public static final yr<afq> bf = b("block_entity_tag_query");
-   public static final yr<afr> bg = b("change_difficulty");
-   public static final yr<afs> bh = b("chat_ack");
-   public static final yr<aft> bi = b("chat_command");
-   public static final yr<afu> bj = b("chat");
-   public static final yr<afv> bk = b("chat_session_update");
-   public static final yr<afw> bl = b("chunk_batch_received");
-   public static final yr<afx> bm = b("client_command");
-   public static final yr<afy> bn = b("command_suggestion");
-   public static final yr<afz> bo = b("configuration_acknowledged");
-   public static final yr<aga> bp = b("container_button_click");
-   public static final yr<agb> bq = b("container_click");
-   public static final yr<agc> br = b("container_close");
-   public static final yr<agd> bs = b("container_slot_state_changed");
-   public static final yr<age> bt = b("debug_sample_subscription");
-   public static final yr<agf> bu = b("edit_book");
-   public static final yr<agg> bv = b("entity_tag_query");
-   public static final yr<agh> bw = b("interact");
-   public static final yr<agi> bx = b("jigsaw_generate");
-   public static final yr<agj> by = b("lock_difficulty");
-   public static final yr<agk.a> bz = b("move_player_pos");
-   public static final yr<agk.b> bA = b("move_player_pos_rot");
-   public static final yr<agk.c> bB = b("move_player_rot");
-   public static final yr<agk.d> bC = b("move_player_status_only");
-   public static final yr<agl> bD = b("move_vehicle");
-   public static final yr<agm> bE = b("paddle_boat");
-   public static final yr<agn> bF = b("pick_item");
-   public static final yr<ago> bG = b("place_recipe");
-   public static final yr<agp> bH = b("player_abilities");
-   public static final yr<agq> bI = b("player_action");
-   public static final yr<agr> bJ = b("player_command");
-   public static final yr<ags> bK = b("player_input");
-   public static final yr<agt> bL = b("recipe_book_change_settings");
-   public static final yr<agu> bM = b("recipe_book_seen_recipe");
-   public static final yr<agv> bN = b("rename_item");
-   public static final yr<agw> bO = b("seen_advancements");
-   public static final yr<agx> bP = b("select_trade");
-   public static final yr<agy> bQ = b("set_beacon");
-   public static final yr<agz> bR = b("set_carried_item");
-   public static final yr<aha> bS = b("set_command_block");
-   public static final yr<ahb> bT = b("set_command_minecart");
-   public static final yr<ahc> bU = b("set_creative_mode_slot");
-   public static final yr<ahd> bV = b("set_jigsaw_block");
-   public static final yr<ahe> bW = b("set_structure_block");
-   public static final yr<ahf> bX = b("sign_update");
-   public static final yr<ahg> bY = b("swing");
-   public static final yr<ahh> bZ = b("teleport_to_entity");
-   public static final yr<ahi> ca = b("use_item_on");
-   public static final yr<ahj> cb = b("use_item");
-   public static final yr<adm> cc = a("reset_score");
-   public static final yr<afc> cd = a("ticking_state");
-   public static final yr<afd> ce = a("ticking_step");
+public class afl implements yz<abk> {
+   public static final yq<vs, afl> a = yz.a(afl::a, afl::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+   private final boolean h;
 
-   private static <T extends yp<aba>> yr<T> a(String $$0) {
-      return new yr<>(yq.b, new ajv($$0));
+   public afl(bql $$0) {
+      this.b = $$0.aj();
+      etf $$1 = $$0.dm();
+      this.c = $$1.c;
+      this.d = $$1.d;
+      this.e = $$1.e;
+      this.f = (byte)((int)($$0.dD() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dF() * 256.0F / 360.0F));
+      this.h = $$0.aC();
    }
 
-   private static <T extends yp<afn>> yr<T> b(String $$0) {
-      return new yr<>(yq.a, new ajv($$0));
+   private afl(vs $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
+      this.h = $$0.readBoolean();
+   }
+
+   private void a(vs $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
+   }
+
+   @Override
+   public zb<afl> a() {
+      return afv.aZ;
+   }
+
+   public void a(abk $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public byte i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
    }
 }

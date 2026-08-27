@@ -1,37 +1,31 @@
-public class fsm extends frr {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final ftv e;
-   private final ftv f;
-   private final ftv g;
+public class fsm<T extends bql> extends fsa<T> {
+   private final fur a;
 
-   public fsm(ftv $$0) {
-      super(gaq::c);
-      this.e = $$0;
-      this.f = $$0.b("plate");
-      this.g = $$0.b("handle");
+   public fsm(fur $$0) {
+      this.a = $$0;
    }
 
-   public static fub a() {
-      fud $$0 = new fud();
-      fue $$1 = $$0.a();
-      $$1.a("plate", fua.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), ftx.a);
-      $$1.a("handle", fua.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), ftx.a);
-      return fub.a($$0, 64, 64);
-   }
-
-   public ftv b() {
-      return this.f;
-   }
-
-   public ftv c() {
-      return this.g;
+   public static fux b() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      int $$2 = 20;
+      int $$3 = 8;
+      int $$4 = 16;
+      int $$5 = 4;
+      $$1.a("bottom", fuw.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), fut.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("front", fuw.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fut.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$1.a("back", fuw.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fut.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left", fuw.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fut.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$1.a("right", fuw.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fut.a(0.0F, 4.0F, 7.0F));
+      return fux.a($$0, 64, 32);
    }
 
    @Override
-   public void a(ewr $$0, ewv $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public fur a() {
+      return this.a;
    }
 }

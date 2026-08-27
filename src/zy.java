@@ -1,26 +1,21 @@
-public record zy(long c, id d) implements zq {
-   public static final yg<vi, zy> a = zq.a(zy::a, zy::new);
-   public static final zq.b<zy> b = zq.a("debug/neighbors_update");
+public record zy(String c) implements aaa {
+   public static final yq<vs, zy> a = aaa.a(zy::a, zy::new);
+   public static final aaa.b<zy> b = aaa.a("brand");
 
-   private zy(vi $$0) {
-      this($$0.m(), $$0.e());
+   private zy(vs $$0) {
+      this($$0.p());
    }
 
-   private void a(vi $$0) {
+   private void a(vs $$0) {
       $$0.a(this.c);
-      $$0.a(this.d);
    }
 
    @Override
-   public zq.b<zy> a() {
+   public aaa.b<zy> a() {
       return b;
    }
 
-   public long b() {
+   public String b() {
       return this.c;
-   }
-
-   public id c() {
-      return this.d;
    }
 }

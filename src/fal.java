@@ -1,22 +1,20 @@
-public enum fal {
-   a(0, efg.a),
-   b(1, efg.b),
-   c(2, efg.c),
-   d(3, efg.d);
+public class fal extends fak {
+   private final fbu a;
 
-   private final int e;
-   private final wi f;
-
-   private fal(int $$0, aju<eff> $$1) {
-      this.e = $$0;
-      this.f = wi.c($$1.a().f("generator"));
+   public fal(fkt $$0, fbu $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
-   public wi a() {
-      return this.f;
+   @Override
+   public void e() {
+      super.e();
+      this.a.c();
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   protected void f() {
+      this.a.b();
+      super.f();
    }
 }

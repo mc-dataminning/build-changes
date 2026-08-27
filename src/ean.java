@@ -1,62 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 
-public class ean implements eai {
-   public static final Codec<ean> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kt.e.q().fieldOf("block").flatXmap(ean::a, DataResult::success).orElse((dhg)dcj.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               jc.a(ku.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ean::new)
-   );
-   public final dhg b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final ir<dch> h;
-   private final ObjectArrayList<ij> i;
+public class ean extends dyu<ebf> {
+   private static final ir[] a = ir.values();
 
-   private static DataResult<dhg> a(dch $$0) {
-      return $$0 instanceof dhg $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+   public ean(Codec<ebf> $$0) {
+      super($$0);
    }
 
-   public ean(dhg $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, ir<dch> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(ij.b);
-      }
-
-      if ($$2) {
-         this.i.add(ij.a);
-      }
-
-      if ($$4) {
-         ij.c.a.forEach(this.i::add);
+   @Override
+   public boolean a(dyw<ebf> $$0) {
+      dap $$1 = $$0.b();
+      im $$2 = $$0.e();
+      ayd $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dpy $$4 = $$1.a_($$2.c());
+         if (!$$4.a(dcx.dV) && !$$4.a(dcx.kK)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
       }
    }
 
-   public List<ij> a(axt $$0, ij $$1) {
-      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   private void a(czv $$0, ayd $$1, im $$2) {
+      $$0.a($$2, dcx.kK.n(), 2);
+      im.a $$3 = new im.a();
+      im.a $$4 = new im.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
+
+            for (ir $$7 : a) {
+               dpy $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dcx.dV) || $$8.a(dcx.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dcx.kK.n(), 2);
+            }
+         }
+      }
    }
 
-   public List<ij> a(axt $$0) {
-      return ac.a(this.i, $$0);
+   private void b(czv $$0, ayd $$1, im $$2) {
+      im.a $$3 = new im.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            dpy $$5 = $$0.a_($$3.c());
+            if ($$5.a(dcx.dV) || $$5.a(dcx.kK)) {
+               int $$6 = axw.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(czv $$0, ayd $$1, im.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, dcx.oz.n().a(dgk.e, Integer.valueOf(axw.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dcx.oA.n(), 2);
+         }
+
+         $$2.c(ir.a);
+      }
    }
 }

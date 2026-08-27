@@ -1,62 +1,52 @@
-import javax.annotation.Nullable;
-
 public class gqe {
-   private static final int a = 100;
-   private final axt b = axt.a();
-   private final fby c;
-   @Nullable
-   private gpf d;
-   private int e = 100;
+   public static class a extends gpk {
+      private final gag n;
 
-   public gqe(fby $$0) {
-      this.c = $$0;
-   }
+      protected a(gag $$0, auy $$1) {
+         super($$1, ava.i, gqb.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public void a() {
-      aul $$0 = this.c.al();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.ak().b(this.d);
-            this.e = axm.a(this.b, 0, $$0.b() / 2);
-         }
-
-         if (!this.c.ak().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, axm.a(this.b, $$0.b(), $$0.c()));
+      @Override
+      public void q() {
+         if (this.n.dI() || !this.n.bh()) {
+            this.n();
          }
       }
-
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
    }
 
-   public void a(aul $$0) {
-      this.d = gpa.a($$0.a().a());
-      if (this.d.b() != gqj.a) {
-         this.c.ak().a(this.d);
+   public static class b extends gpk {
+      public static final int n = 40;
+      private final gag o;
+      private int p;
+
+      public b(gag $$0) {
+         super(auz.z, ava.i, gqb.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
       }
 
-      this.e = Integer.MAX_VALUE;
-   }
+      @Override
+      public void q() {
+         if (!this.o.dI() && this.p >= 0) {
+            if (this.o.bh()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
 
-   public void b(aul $$0) {
-      if (this.c($$0)) {
-         this.b();
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
       }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         this.c.ak().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
-   }
-
-   public boolean c(aul $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

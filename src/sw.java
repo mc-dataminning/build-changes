@@ -1,161 +1,148 @@
-import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.List;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-class sw implements sl {
-   private int a = 0;
-   private int b = 0;
+public class sw {
+   private static final Collection<to> a = Lists.newArrayList();
+   private static final Set<String> b = Sets.newHashSet();
+   private static final Map<String, Consumer<aqe>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<aqe>> d = Maps.newHashMap();
+   private static final Set<to> e = Sets.newHashSet();
 
-   public sw() {
+   public static void a(Class<?> $$0) {
+      Arrays.stream($$0.getDeclaredMethods()).sorted(Comparator.comparing(Method::getName)).forEach(sw::a);
    }
 
-   @Override
-   public void a(sk $$0) {
-      a($$0, dcj.eq);
-      this.a++;
-   }
-
-   private void a(sk $$0, sn $$1, boolean $$2) {
-      sx $$3 = $$0.z();
-      String $$4 = String.format("[Run: %4d, Ok: %4d, Fail: %4d", this.a, this.b, this.a - this.b);
-      if (!$$3.b()) {
-         $$4 = $$4 + String.format(", Left: %4d", $$3.d() - this.a);
+   public static void a(Method $$0) {
+      String $$1 = $$0.getDeclaringClass().getSimpleName();
+      sl $$2 = $$0.getAnnotation(sl.class);
+      if ($$2 != null) {
+         a.add(c($$0));
+         b.add($$1);
       }
 
-      $$4 = $$4 + "]";
-      String $$5 = $$0.b() + " " + ($$2 ? "passed" : "failed") + "! " + $$0.k() + "ms";
-      String $$6 = String.format("%-53s%s", $$4, $$5);
-      if ($$2) {
-         a($$0, $$6);
+      ss $$3 = $$0.getAnnotation(ss.class);
+      if ($$3 != null) {
+         a.addAll(b($$0));
+         b.add($$1);
+      }
+
+      a($$0, sj.class, sj::a, c);
+      a($$0, si.class, si::a, d);
+   }
+
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<aqe>> $$3) {
+      T $$4 = $$0.getAnnotation($$1);
+      if ($$4 != null) {
+         String $$5 = $$2.apply($$4);
+         Consumer<aqe> $$6 = $$3.putIfAbsent($$5, (Consumer<aqe>)d($$0));
+         if ($$6 != null) {
+            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
+         }
+      }
+   }
+
+   public static Stream<to> a(String $$0) {
+      return a.stream().filter($$1 -> a($$1, $$0));
+   }
+
+   public static Collection<to> a() {
+      return a;
+   }
+
+   public static Collection<String> b() {
+      return b;
+   }
+
+   public static boolean b(String $$0) {
+      return b.contains($$0);
+   }
+
+   public static Consumer<aqe> c(String $$0) {
+      return c.getOrDefault($$0, $$0x -> {
+      });
+   }
+
+   public static Consumer<aqe> d(String $$0) {
+      return d.getOrDefault($$0, $$0x -> {
+      });
+   }
+
+   public static Optional<to> e(String $$0) {
+      return a().stream().filter($$1 -> $$1.c().equalsIgnoreCase($$0)).findFirst();
+   }
+
+   public static to f(String $$0) {
+      Optional<to> $$1 = e($$0);
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Can't find the test function for " + $$0);
       } else {
-         a($$0.f(), n.m, $$6);
-      }
-
-      if ($$3.a(this.a, this.b)) {
-         $$1.a($$0);
+         return $$1.get();
       }
    }
 
-   @Override
-   public void a(sk $$0, sn $$1) {
-      this.b++;
-      if ($$0.z().c()) {
-         this.a($$0, $$1, true);
-      } else if (!$$0.w()) {
-         a($$0, $$0.b() + " passed! (" + $$0.k() + "ms)");
-      } else {
-         if (this.b >= $$0.y()) {
-            a($$0, $$0 + " passed " + this.b + " times of " + this.a + " attempts.");
-         } else {
-            a($$0.f(), n.k, "Flaky test " + $$0 + " succeeded, attempt: " + this.a + " successes: " + this.b);
-            $$1.a($$0);
+   private static Collection<to> b(Method $$0) {
+      try {
+         Object $$1 = $$0.getDeclaringClass().newInstance();
+         return (Collection<to>)$$0.invoke($$1);
+      } catch (ReflectiveOperationException var2) {
+         throw new RuntimeException(var2);
+      }
+   }
+
+   private static to c(Method $$0) {
+      sl $$1 = $$0.getAnnotation(sl.class);
+      String $$2 = $$0.getDeclaringClass().getSimpleName();
+      String $$3 = $$2.toLowerCase();
+      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
+      String $$5 = $$1.g().isEmpty() ? $$4 : $$3 + "." + $$1.g();
+      String $$6 = $$1.b();
+      dji $$7 = tk.a($$1.d());
+      return new to($$6, $$4, $$5, $$7, $$1.a(), $$1.h(), $$1.e(), $$1.f(), $$1.j(), $$1.i(), $$1.c(), (Consumer<st>)d($$0));
+   }
+
+   private static Consumer<?> d(Method $$0) {
+      return $$1 -> {
+         try {
+            Object $$2 = $$0.getDeclaringClass().newInstance();
+            $$0.invoke($$2, $$1);
+         } catch (InvocationTargetException var3) {
+            if (var3.getCause() instanceof RuntimeException) {
+               throw (RuntimeException)var3.getCause();
+            } else {
+               throw new RuntimeException(var3.getCause());
+            }
+         } catch (ReflectiveOperationException var4) {
+            throw new RuntimeException(var4);
          }
-      }
+      };
    }
 
-   @Override
-   public void b(sk $$0, sn $$1) {
-      if (!$$0.w()) {
-         a($$0, $$0.m());
-         if ($$0.z().c()) {
-            this.a($$0, $$1, false);
-         }
-      } else {
-         te $$2 = $$0.u();
-         String $$3 = "Flaky test " + $$0 + " failed, attempt: " + this.a + "/" + $$2.j();
-         if ($$2.k() > 1) {
-            $$3 = $$3 + ", successes: " + this.b + " (" + $$2.k() + " required)";
-         }
-
-         a($$0.f(), n.o, $$3);
-         if ($$0.x() - this.a + this.b >= $$0.y()) {
-            $$1.a($$0);
-         } else {
-            a($$0, new sa(this.a, this.b, $$0));
-         }
-      }
+   private static boolean a(to $$0, String $$1) {
+      return $$0.c().toLowerCase().startsWith($$1.toLowerCase() + ".");
    }
 
-   @Override
-   public void a(sk $$0, sk $$1, sn $$2) {
-      $$1.a(this);
+   public static Stream<to> c() {
+      return e.stream();
    }
 
-   public static void a(sk $$0, String $$1) {
-      a($$0, dcj.en);
-      b($$0, $$1);
+   public static void a(to $$0) {
+      e.add($$0);
    }
 
-   private static void b(sk $$0, String $$1) {
-      a($$0.f(), n.k, $$1);
-      ss.b($$0);
-   }
-
-   protected static void a(sk $$0, Throwable $$1) {
-      a($$0, $$0.q() ? dcj.ew : dcj.ej);
-      c($$0, ac.c($$1));
-      b($$0, $$1);
-   }
-
-   protected static void b(sk $$0, Throwable $$1) {
-      String $$2 = $$1.getMessage() + ($$1.getCause() == null ? "" : " cause: " + ac.c($$1.getCause()));
-      String $$3 = ($$0.q() ? "" : "(optional) ") + $$0.b() + " failed! " + $$2;
-      a($$0.f(), $$0.q() ? n.m : n.o, $$3);
-      Throwable $$4 = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause($$1), $$1);
-      if ($$4 instanceof sd $$5) {
-         a($$0.f(), $$5.c(), $$5.a());
-      }
-
-      ss.a($$0);
-   }
-
-   protected static void a(sk $$0, dch $$1) {
-      apu $$2 = $$0.f();
-      id $$3 = $$0.c();
-      id $$4 = new id(-1, -1, -1);
-      id $$5 = ejq.a($$3.a((ji)$$4), dhd.a, $$0.t(), $$3);
-      $$2.b($$5, dcj.fO.n().a($$0.t()));
-      id $$6 = $$5.b(0, 1, 0);
-      $$2.b($$6, $$1.n());
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            id $$9 = $$5.b($$7, -1, $$8);
-            $$2.b($$9, dcj.ci.n());
-         }
-      }
-   }
-
-   private static void c(sk $$0, String $$1) {
-      apu $$2 = $$0.f();
-      id $$3 = $$0.c();
-      id $$4 = new id(-1, 1, -1);
-      id $$5 = ejq.a($$3.a((ji)$$4), dhd.a, $$0.t(), $$3);
-      $$2.b($$5, dcj.oa.n().a($$0.t()));
-      dpi $$6 = $$2.a_($$5);
-      crs $$7 = a($$0.b(), $$0.q(), $$1);
-      dgr.a(null, $$2, $$5, $$6, $$7);
-   }
-
-   private static crs a(String $$0, boolean $$1, String $$2) {
-      StringBuffer $$3 = new StringBuffer();
-      Arrays.stream($$0.split("\\.")).forEach($$1x -> $$3.append($$1x).append('\n'));
-      if (!$$1) {
-         $$3.append("(optional)\n");
-      }
-
-      $$3.append("-------------------\n");
-      crs $$4 = new crs(crv.tY);
-      $$4.b(jr.z, new cuu(List.of(aql.a($$3 + $$2))));
-      return $$4;
-   }
-
-   protected static void a(apu $$0, n $$1, String $$2) {
-      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(wi.b($$2).a($$1)));
-   }
-
-   private static void a(apu $$0, id $$1, String $$2) {
-      afk.a($$0, $$1, $$2, -2130771968, Integer.MAX_VALUE);
+   public static void d() {
+      e.clear();
    }
 }

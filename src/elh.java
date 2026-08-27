@@ -1,117 +1,65 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 
-public abstract class elh extends ekz {
-   @Override
-   public ela d() {
-      return elc.b;
+public class elh {
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
+
+   public elh(int $$0, final int $$1) {
+      this.a = $$0;
+      this.b = new LongLinkedOpenHashSet[$$0];
+
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
+               }
+            }
+         };
+      }
+
+      this.c = $$0;
    }
 
-   @Override
-   public ela e() {
-      return elc.c;
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
+
+      return $$1;
    }
 
-   @Override
-   public crn a() {
-      return crv.qy;
+   public boolean b() {
+      return this.c >= this.a;
    }
 
-   @Override
-   public void a(czg $$0, id $$1, elb $$2, axt $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, auo.BF, aup.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
+   }
+
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
+   }
+
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
+
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
          }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(kn.aj, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Nullable
-   @Override
-   public kl h() {
-      return kn.m;
-   }
-
-   @Override
-   protected boolean a(czg $$0) {
-      return $$0.aa().b(czc.U);
-   }
-
-   @Override
-   protected void a(czh $$0, id $$1, dpi $$2) {
-      dmo $$3 = $$2.t() ? $$0.c_($$1) : null;
-      dch.a($$2, $$0, $$1, $$3);
-   }
-
-   @Override
-   public int b(czj $$0) {
-      return 4;
-   }
-
-   @Override
-   public dpi b(elb $$0) {
-      return dcj.G.n().a(dgw.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(ela $$0) {
-      return $$0 == elc.c || $$0 == elc.b;
-   }
-
-   @Override
-   public int c(czj $$0) {
-      return 1;
-   }
-
-   @Override
-   public int a(czj $$0) {
-      return 5;
-   }
-
-   @Override
-   public boolean a(elb $$0, cym $$1, id $$2, ela $$3, ij $$4) {
-      return $$4 == ij.a && !$$3.a(avj.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<aun> j() {
-      return Optional.of(auo.di);
-   }
-
-   public static class a extends elh {
-      @Override
-      protected void a(dpj.a<ela, elb> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(elb $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(elb $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends elh {
-      @Override
-      public int d(elb $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(elb $$0) {
-         return true;
       }
    }
 }

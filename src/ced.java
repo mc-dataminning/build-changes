@@ -1,138 +1,168 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.kinds.App;
 import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
 
 public class ced {
-   private static final float a = 2.0F;
-   private static final float b = 1.0F;
+   public static final cwd a = cwd.a(csg.sm);
+   private static final float b = 2.0F;
    private static final float c = 1.0F;
-   private static final float d = 0.75F;
-   private static final bnq e = bnq.a(100, 140);
-   private static final int f = 2;
-   private static final int g = 4;
-   private static final float h = 3.5714288F;
-   private static final float i = 1.25F;
+   private static final float d = 1.25F;
+   private static final float e = 1.25F;
+   private static final float f = 1.0F;
+   private static final double g = 2.0;
+   private static final double h = 1.0;
+   private static final bob i = bob.a(5, 16);
+   private static final ImmutableList<cbo<? extends cbn<? super cec>>> j = ImmutableList.of(cbo.c, cbo.f, cbo.u, cbo.o, cbo.k);
+   private static final ImmutableList<cah<?>> k = ImmutableList.of(
+      cah.Z, cah.x, cah.y, cah.m, cah.n, cah.E, cah.t, cah.h, cah.O, cah.P, cah.Q, cah.R, new cah[]{cah.r, cah.K, cah.G}
+   );
+   private static final buh<cec> l = bwj.a(
+      (Function<bwj.b<cec>, ? extends App<bwj.c<cec>, bwm<cec>>>)($$0 -> $$0.group($$0.c(cah.G)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               if ($$1.u()) {
+                  $$1.gx();
+                  return true;
+               } else {
+                  return false;
+               }
+            }))
+   );
 
-   protected static void a(cec $$0, axt $$1) {
-      $$0.dP().a(bzw.S, e.a($$1));
+   public static bsf.b<cec> a() {
+      return bsf.a(k, j);
    }
 
-   protected static bru<?> a(bru<cec> $$0) {
+   protected static bsf<?> a(bsf<cec> $$0) {
       b($$0);
       c($$0);
       d($$0);
-      e($$0);
-      g($$0);
-      f($$0);
-      $$0.a(ImmutableSet.of(clp.a));
-      $$0.b(clp.b);
+      $$0.a(Set.of(cma.a));
+      $$0.b(cma.b);
       $$0.f();
       return $$0;
    }
 
-   private static void b(bru<cec> $$0) {
-      $$0.a(clp.a, 0, ImmutableList.of(new bsg(2.0F), new btr(45, 90), new btv(), new bsr(bzw.P), new bsr(bzw.S)));
-   }
+   private static void b(bsf<cec> $$0) {
+      $$0.a(cma.a, 0, ImmutableList.of(new bvq(0.8F), new ced.b(2.0F), new buc(45, 90), new bug() {
+         @Override
+         protected boolean a(aqe $$0, brg $$1) {
+            if ($$1 instanceof cec $$2 && $$2.u()) {
+               return false;
+            }
 
-   private static void c(bru<cec> $$0) {
-      $$0.a(
-         clp.b,
-         ImmutableList.of(
-            Pair.of(0, bul.a(bqg.bx, 6.0F, bnq.a(30, 60))),
-            Pair.of(0, new bsf(bqg.R)),
-            Pair.of(1, new bsy($$0x -> 1.25F)),
-            Pair.of(2, bux.a(ced::b, $$0x -> $$0x.dP().c(bzw.B))),
-            Pair.of(3, bvi.a(6, 1.0F)),
-            Pair.of(
-               4,
-               new bui(
-                  ImmutableMap.of(bzw.m, bzx.b),
-                  ImmutableList.of(Pair.of(bud.a(1.0F), 1), Pair.of(bus.a(1.0F, 3), 1), Pair.of(new bss(), 3), Pair.of(bvy.a(bqa::aC), 2))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(bzw.T, bzx.b), Pair.of(bzw.X, bzx.b))
-      );
-   }
-
-   private static void d(bru<cec> $$0) {
-      $$0.a(
-         clp.t,
-         ImmutableList.of(
-            Pair.of(0, bul.a(bqg.bx, 6.0F, bnq.a(30, 60))),
-            Pair.of(1, new bsy($$0x -> 1.25F)),
-            Pair.of(2, bux.a(ced::b, $$0x -> $$0x.dP().c(bzw.B))),
-            Pair.of(3, bvi.a(8, 1.5F)),
-            Pair.of(
-               5,
-               new bsz(
-                  ImmutableMap.of(bzw.m, bzx.b),
-                  ImmutableSet.of(),
-                  bsz.a.a,
-                  bsz.b.b,
-                  ImmutableList.of(Pair.of(bud.c(0.75F), 1), Pair.of(bud.a(1.0F, true), 1), Pair.of(bus.a(1.0F, 3), 1), Pair.of(bvy.a(bqa::bf), 5))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(bzw.T, bzx.b), Pair.of(bzw.X, bzx.a))
-      );
-   }
-
-   private static void e(bru<cec> $$0) {
-      $$0.a(
-         clp.u,
-         ImmutableList.of(
-            Pair.of(0, bul.a(bqg.bx, 6.0F, bnq.a(30, 60))),
-            Pair.of(1, bux.a(ced::b, $$0x -> $$0x.dP().c(bzw.B))),
-            Pair.of(2, bvj.a(8, 1.0F)),
-            Pair.of(3, bvl.a(dcj.tn)),
-            Pair.of(4, new bui(ImmutableList.of(Pair.of(bud.a(1.0F), 2), Pair.of(bus.a(1.0F, 3), 1), Pair.of(new bss(), 2), Pair.of(bvy.a(bqa::aC), 1))))
-         ),
-         ImmutableSet.of(Pair.of(bzw.T, bzx.b), Pair.of(bzw.Y, bzx.a))
-      );
-   }
-
-   private static void f(bru<cec> $$0) {
-      $$0.a(
-         clp.q,
-         ImmutableList.of(Pair.of(0, new btm(e, auo.jM)), Pair.of(1, new btn<>(e, 2, 4, 3.5714288F, $$0x -> auo.jL, ave.bL, 0.5F, ced::a))),
-         ImmutableSet.of(Pair.of(bzw.O, bzx.b), Pair.of(bzw.r, bzx.b), Pair.of(bzw.S, bzx.b), Pair.of(bzw.X, bzx.b))
-      );
-   }
-
-   private static void g(bru<cec> $$0) {
-      $$0.a(clp.s, 0, ImmutableList.of(bva.a(), new cee(auo.jN, auo.jI)), bzw.o);
-   }
-
-   private static <E extends bqv> boolean a(E $$0, id $$1) {
-      czg $$2 = $$0.dM();
-      id $$3 = $$1.d();
-      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.c()).c()) {
-         dpi $$4 = $$2.a_($$1);
-         dpi $$5 = $$2.a_($$3);
-         if (!$$4.a(ave.bL) && !$$5.a(ave.bL)) {
-            elu $$6 = new elu($$0.dM(), $$0);
-            els $$7 = elx.a($$6, $$1.j());
-            els $$8 = elx.a($$6, $$3.j());
-            return $$7 != els.e && (!$$4.i() || $$8 != els.e) ? bto.a($$0, $$1) : true;
-         } else {
-            return true;
+            return super.a($$0, $$1);
          }
-      } else {
-         return false;
-      }
+      }, new btc(cah.P), new btc(cah.Q), l));
    }
 
-   private static boolean b(cec $$0) {
-      return !bsn.a($$0);
+   private static void c(bsf<cec> $$0) {
+      $$0.a(
+         cma.b,
+         ImmutableList.of(
+            Pair.of(0, buw.a(bqr.bx, 6.0F, bob.a(30, 60))),
+            Pair.of(1, new bsq(bqr.c, 1.0F, 1)),
+            Pair.of(2, new but(ImmutableList.of(Pair.of(new btj($$0x -> 1.25F, $$0x -> $$0x.p_() ? 1.0 : 2.0), 1), Pair.of(bst.a(i, 1.25F), 1)))),
+            Pair.of(3, new bun(bob.a(150, 250), 30.0F, 0.0F, 0.0F)),
+            Pair.of(
+               4, new but(ImmutableMap.of(cah.m, cai.b), ImmutableList.of(Pair.of(buo.a(1.0F), 1), Pair.of(bvd.a(1.0F, 3), 1), Pair.of(new btg(30, 60), 1)))
+            )
+         )
+      );
+   }
+
+   private static void d(bsf<cec> $$0) {
+      $$0.a(cma.g, ImmutableList.of(Pair.of(0, new ced.a())), Set.of(Pair.of(cah.G, cai.a), Pair.of(cah.Z, cai.b)));
    }
 
    public static void a(cec $$0) {
-      $$0.dP().a(ImmutableList.of(clp.s, clp.u, clp.q, clp.t, clp.b));
+      $$0.dQ().a(ImmutableList.of(cma.g, cma.b));
    }
 
-   public static cvp a() {
-      return cec.bX;
+   public static cwd b() {
+      return a;
+   }
+
+   public static class a extends bsw<cec> {
+      static final int c = 5 * ayv.e * 20;
+      static final int d = 5;
+      static final int e = 75;
+      int f = 0;
+      boolean g;
+
+      public a() {
+         super(Map.of(), c);
+      }
+
+      protected void a(aqe $$0, cec $$1, long $$2) {
+         super.c($$0, $$1, $$2);
+         if (this.f > 0) {
+            this.f--;
+         }
+
+         if ($$1.gp()) {
+            $$1.a(cec.a.c);
+            if ($$1.aC()) {
+               $$1.a(auz.aj);
+            }
+         } else {
+            cec.a $$3 = $$1.gv();
+            long $$4 = $$1.dQ().e(cah.G);
+            boolean $$5 = $$4 > 75L;
+            if ($$5 != this.g) {
+               this.f = this.a($$1);
+            }
+
+            this.g = $$5;
+            if ($$3 == cec.a.c) {
+               if (this.f == 0 && $$1.aC() && $$5) {
+                  $$0.a($$1, (byte)64);
+                  this.f = this.a($$1);
+               }
+
+               if ($$4 < (long)cec.a.d.b()) {
+                  $$1.a(auz.an);
+                  $$1.a(cec.a.d);
+               }
+            } else if ($$3 == cec.a.d && $$4 > (long)cec.a.d.b()) {
+               $$1.a(cec.a.c);
+            }
+         }
+      }
+
+      private int a(cec $$0) {
+         return cec.a.c.b() + $$0.ej().a(100, 400);
+      }
+
+      protected boolean a(aqe $$0, cec $$1) {
+         return $$1.aC();
+      }
+
+      protected boolean b(aqe $$0, cec $$1, long $$2) {
+         return $$1.gv().a();
+      }
+
+      protected void c(aqe $$0, cec $$1, long $$2) {
+         $$1.gw();
+      }
+
+      protected void d(aqe $$0, cec $$1, long $$2) {
+         if (!$$1.gA()) {
+            $$1.gx();
+         }
+      }
+   }
+
+   public static class b extends bsr<cec> {
+      public b(float $$0) {
+         super($$0, cec::gy);
+      }
+
+      protected void a(aqe $$0, cec $$1, long $$2) {
+         $$1.gx();
+         super.b($$0, $$1, $$2);
+      }
    }
 }

@@ -1,24 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzd extends dye<eau> {
-   public dzd(Codec<eau> $$0) {
-      super($$0);
-   }
+public class dzd implements eay {
+   public static final Codec<dzd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dpy.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               dpy.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               dpy.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               dpy.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               dwx.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dzd::new)
+   );
+   public final dpy b;
+   public final dpy c;
+   public final dpy d;
+   public final dpy e;
+   public final dwx f;
+   public final boolean g;
 
-   @Override
-   public boolean a(dyg<eau> $$0) {
-      eau $$1 = $$0.f();
-      axt $$2 = $$0.d();
-      dab $$3 = $$0.b();
-      drf $$4 = $$0.c();
-      id $$5 = $$0.e();
-
-      for (dzy $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
-         }
-      }
-
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
+   public dzd(dpy $$0, dpy $$1, dpy $$2, dpy $$3, dwx $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

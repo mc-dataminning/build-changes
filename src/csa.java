@@ -1,37 +1,37 @@
-public class csa extends crn {
-   private static final int a = 32;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-   public csa(crn.a $$0) {
-      super($$0);
+public enum csa implements ayq {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
+
+   public static final Codec<csa> j = ayq.a(csa::values);
+   public static final IntFunction<csa> k = awn.a(csa::a, values(), awn.a.a);
+   private final byte l;
+   private final String m;
+
+   private csa(int $$0, String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
    @Override
-   public crs a(crs $$0, czg $$1, bqt $$2) {
-      if ($$2 instanceof apv $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(auz.c.b(this));
-      }
-
-      $$0.a(1, $$2);
-      if (!$$1.B) {
-         $$2.et();
-      }
-
-      return $$0.d() ? new crs(crv.qx) : $$0;
+   public String c() {
+      return this.m;
    }
 
-   @Override
-   public int b(crs $$0) {
-      return 32;
+   public byte a() {
+      return this.l;
    }
 
-   @Override
-   public ctk c(crs $$0) {
-      return ctk.c;
-   }
-
-   @Override
-   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
-      return cru.a($$0, $$1, $$2);
+   public boolean b() {
+      return this == d || this == e;
    }
 }

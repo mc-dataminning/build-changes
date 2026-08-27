@@ -1,32 +1,84 @@
-import java.util.Map;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-public interface fos {
-   Map<Optional<aju<eff>>, fos> a = Map.of(Optional.of(efg.b), ($$0, $$1) -> {
-      drf $$2 = $$1.d().a();
-      jb $$3 = $$1.a();
-      io<daf> $$4 = $$3.b(ku.aw);
-      io<efw> $$5 = $$3.b(ku.aI);
-      io<eeu> $$6 = $$3.b(ku.aF);
-      return new fis($$0, $$1x -> $$0.m().a(a($$1x)), $$2 instanceof duv ? ((duv)$$2).g() : edt.a($$4, $$5, $$6));
-   }, Optional.of(efg.e), ($$0, $$1) -> new fir($$0, $$1, $$1x -> $$0.m().a(a($$1x))));
+public class fos extends foq<fwn.a> {
+   private static final int y = 120;
+   private static final ws z = ws.c("gui.chatReport.title");
+   private static final ws A = ws.c("gui.chatReport.select_chat");
+   private final fil B = fil.d().a(8);
+   private ffm C;
+   private feu D;
+   private feu E;
+   private feu F;
 
-   fjx createEditScreen(fom var1, fov var2);
-
-   private static fov.a a(edt $$0) {
-      return ($$1, $$2) -> {
-         drf $$3 = new duv($$0);
-         return $$2.a($$1, $$3);
-      };
+   private fos(fkt $$0, fwu $$1, fwn.a $$2) {
+      super(z, $$0, $$1, $$2);
    }
 
-   private static fov.a a(in<daf> $$0) {
-      return ($$1, $$2) -> {
-         ja<dvf> $$3 = $$1.d(ku.aD);
-         in<dvf> $$4 = $$3.g(dvf.c);
-         daj $$5 = new daq($$0);
-         drf $$6 = new dvd($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   public fos(fkt $$0, fwu $$1, UUID $$2) {
+      this($$0, $$1, new fwn.a($$2, $$1.a().b()));
+   }
+
+   public fos(fkt $$0, fwu $$1, fwn $$2) {
+      this($$0, $$1, new fwn.a($$2, $$1.a().b()));
+   }
+
+   @Override
+   protected void aM_() {
+      this.B.c().b();
+      this.B.a(new fgb(this.l, this.p));
+      this.E = this.B.a(feu.a(A, $$0x -> this.m.a(new fou(this, this.w, this.x, $$0xx -> {
+            this.x = $$0xx;
+            this.C();
+         }))).a(280).a());
+      this.F = feu.a(c, $$0x -> this.m.a(new fox(this, this.x.h(), $$0xx -> {
+            this.x.a($$0xx);
+            this.C();
+         }))).a(280).a();
+      this.B.a(fid.a(this.p, this.F, b));
+      this.C = this.a(280, 9 * 8, $$0x -> {
+         this.x.a($$0x);
+         this.C();
+      });
+      this.B.a(fid.a(this.p, this.C, d, $$0x -> $$0x.e(12)));
+      fil $$0 = this.B.a(fil.e().a(8));
+      $$0.a(feu.a(wr.k, $$0x -> this.d()).a(120).a());
+      this.D = $$0.a(feu.a(a, $$0x -> this.m()).a(120).a());
+      this.B.a($$1 -> {
+         fes var10000 = this.c($$1);
+      });
+      this.c();
+      this.C();
+   }
+
+   @Override
+   protected void c() {
+      this.B.a();
+      fif.a(this.B, this.G());
+   }
+
+   private void C() {
+      IntSet $$0 = this.x.a();
+      if ($$0.isEmpty()) {
+         this.E.b(A);
+      } else {
+         this.E.b(ws.a("gui.chatReport.selected_chat", $$0.size()));
+      }
+
+      fws $$1 = this.x.h();
+      if ($$1 != null) {
+         this.F.b($$1.b());
+      } else {
+         this.F.b(c);
+      }
+
+      fwq.b $$2 = this.x.c();
+      this.D.j = $$2 == null;
+      this.D.a(x.a($$2, fwq.b::a));
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.C.b($$0, $$1, $$2);
    }
 }

@@ -1,12 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public record gni(gnj d) {
-   public static final gni a = new gni(gnj.b);
-   public static final Codec<gni> b = RecordCodecBuilder.create($$0 -> $$0.group(awu.a(gnj.a, "scaling", gnj.b).forGetter(gni::a)).apply($$0, gni::new));
-   public static final ase<gni> c = ase.a("gui", b);
+public class gni extends att<int[]> {
+   private static final akf a = new akf("textures/colormap/grass.png");
 
-   public gnj a() {
-      return this.d;
+   protected int[] a(ato $$0, ble $$1) {
+      try {
+         return gnk.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
+   }
+
+   protected void a(int[] $$0, ato $$1, ble $$2) {
+      czs.a($$0);
    }
 }

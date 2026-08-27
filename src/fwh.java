@@ -1,85 +1,60 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public final class fwh {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final fwh c = new fwh(HostAndPort.fromParts("server.invalid", 25565));
+public enum fwh implements ayq {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   public fwh(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
+   public static final Codec<fwh> d = ayq.a(fwh::values);
+   private final String e;
+
+   private fwh(String $$0) {
+      this.e = $$0;
    }
 
-   private fwh(HostAndPort $$0) {
-      this.b = $$0;
-   }
-
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
-      }
-   }
-
-   public int b() {
-      return this.b.getPort();
-   }
-
-   public static fwh a(String $$0) {
-      if ($$0 == null) {
+   public static fwh a(xi $$0, ws $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
          return c;
       } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new fwh($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
-         }
+         return a($$0, $$1) ? b : a;
       }
    }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   private static boolean a(xi $$0, ws $$1) {
+      if (!$$1.getString().contains($$0.c())) {
          return true;
       } else {
-         return $$0 instanceof fwh ? this.b.equals(((fwh)$$0).b) : false;
+         ws $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
       }
    }
 
+   private static boolean a(ws $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xp.a).orElse(false);
+   }
+
+   private static boolean a(xp $$0) {
+      return !$$0.k().equals(xp.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public fcp a(xi $$0) {
+      return switch (this) {
+         case b -> fcp.a($$0.c());
+         case c -> fcp.c();
+         default -> null;
+      };
+   }
+
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public String c() {
+      return this.e;
    }
 }

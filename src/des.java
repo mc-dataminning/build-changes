@@ -1,60 +1,29 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
 
-public class des extends dem {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<des> d = b(des::new);
-   private static final jz f = new jy();
+public class des extends dcv {
+   public static final MapCodec<des> a = b(des::new);
 
    @Override
    public MapCodec<des> a() {
-      return d;
+      return a;
    }
 
-   public des(dph.d $$0) {
+   public des(dpx.d $$0) {
       super($$0);
    }
 
    @Override
-   protected jz a(crs $$0) {
-      return f;
-   }
-
-   @Override
-   public dmo a(id $$0, dpi $$1) {
-      return new dnh($$0, $$1);
-   }
-
-   @Override
-   protected void a(apu $$0, dpi $$1, id $$2) {
-      dng $$3 = $$0.a($$2, dmq.g).orElse(null);
-      if ($$3 == null) {
-         e.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
-      } else {
-         jw $$4 = new jw($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.z);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            crs $$6 = $$3.a($$5);
-            if (!$$6.d()) {
-               ij $$7 = $$0.a_($$2).c(b);
-               bny $$8 = dnn.a($$0, $$2.a($$7));
-               crs $$9;
-               if ($$8 == null) {
-                  $$9 = f.dispense($$4, $$6);
-               } else {
-                  $$9 = dnn.a($$3, $$8, $$6.r().a(1), $$7.g());
-                  if ($$9.d()) {
-                     $$9 = $$6.r();
-                     $$9.g(1);
-                  } else {
-                     $$9 = $$6.r();
-                  }
-               }
-
-               $$3.a($$5, $$9);
+   public void a(dpy $$0, czu $$1, im $$2, ayd $$3) {
+      if ($$3.a(5) == 0) {
+         ir $$4 = ir.b($$3);
+         if ($$4 != ir.b) {
+            im $$5 = $$2.a($$4);
+            dpy $$6 = $$1.a_($$5);
+            if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
+               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
+               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
+               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
+               $$1.a(kw.aB, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
             }
          }
       }

@@ -1,14 +1,36 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface ejz<P extends ejy> {
-   ejz<ejw> a = a("clear", ejw.a);
-   ejz<ejx> b = a("passthrough", ejx.b);
-   ejz<ejv> c = a("append_static", ejv.a);
-   ejz<eju> d = a("append_loot", eju.a);
+public class ejz extends ekd {
+   public static final Codec<ejz> a = ejv.b.listOf().fieldOf("rules").xmap(ejz::new, $$0 -> $$0.b).codec();
+   private final ImmutableList<ejv> b;
 
-   Codec<P> codec();
+   public ejz(List<? extends ejv> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+   }
 
-   private static <P extends ejy> ejz<P> a(String $$0, Codec<P> $$1) {
-      return ja.a(kt.p, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public ekg.c a(czx $$0, im $$1, im $$2, ekg.c $$3, ekg.c $$4, ekc $$5) {
+      ayd $$6 = ayd.a(axw.a($$4.a()));
+      dpy $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
+
+      while (var9.hasNext()) {
+         ejv $$8 = (ejv)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new ekg.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+         }
+      }
+
+      return $$4;
+   }
+
+   @Override
+   protected ekf<?> a() {
+      return ekf.i;
    }
 }

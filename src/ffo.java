@@ -1,62 +1,69 @@
-import java.util.Locale;
+import java.util.OptionalInt;
 
-public class ffo extends ffn {
-   private static final int f = -16711681;
-   private static final int g = -6250241;
-   private static final int h = -65536;
-   private static final int i = 1024;
-   private static final int j = 1048576;
-   private static final int k = 1048576;
+public class ffo extends fer {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final ayl<ffo.a, ffn> c;
+   private boolean d = false;
 
-   public ffo(fdj $$0, bkd $$1) {
-      super($$0, $$1);
+   public ffo(ws $$0, fef $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public ffo(int $$0, int $$1, ws $$2, fef $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? ffn.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : ffn.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
+   }
+
+   public ffo c(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public ffo d(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public ffo e(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public ffo b(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
    @Override
-   protected void d(fdl $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 64);
-      this.a($$0, $$1, $$2, $$3, 1024);
-      this.a($$0, $$1, $$2, $$3, 16384);
-      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
-   }
-
-   private void a(fdl $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
-   }
-
-   private void a(fdl $$0, int $$1, int $$2, int $$3, String $$4) {
-      this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(gaq.E(), $$1, $$1 + $$2 - 1, $$3, -1);
+   public int x() {
+      return this.c.a(this.d()).b();
    }
 
    @Override
-   protected String a(double $$0) {
-      return c(e($$0));
+   public int v() {
+      return this.c.a(this.d()).a() * 9;
    }
 
-   private static String c(double $$0) {
-      if ($$0 >= 1048576.0) {
-         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
+   @Override
+   public void b(feh $$0, int $$1, int $$2, float $$3) {
+      ffn $$4 = this.c.a(this.d());
+      int $$5 = this.C();
+      int $$6 = this.D();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.x() / 2, $$6, $$7, $$8);
       } else {
-         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", axm.a($$0));
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
    }
 
-   @Override
-   protected int b(double $$0) {
-      return d(e($$0));
+   private ffo.a d() {
+      return new ffo.a(this.y(), this.a.orElse(Integer.MAX_VALUE), this.b);
    }
 
-   private static int d(double $$0) {
-      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
-   }
-
-   private static double e(double $$0) {
-      return $$0 * 20.0;
+   static record a(ws a, int b, OptionalInt c) {
    }
 }

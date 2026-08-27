@@ -1,46 +1,166 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.google.common.collect.Sets;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.UUID;
 
-public class ale {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.ban.failed"));
+public class ale extends aqb {
+   private final akf h;
+   private final Set<UUID> i = Sets.newHashSet();
+   private int j;
+   private int k = 100;
 
-   public static void a(CommandDispatcher<dv> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("ban").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)dw.a("targets", ek.a()).executes($$0x -> a((dv)$$0x.getSource(), ek.a($$0x, "targets"), null)))
-                  .then(dw.a("reason", em.a()).executes($$0x -> a((dv)$$0x.getSource(), ek.a($$0x, "targets"), em.a($$0x, "reason"))))
-            )
-      );
+   public ale(akf $$0, ws $$1) {
+      super($$1, bog.a.g, bog.b.a);
+      this.h = $$0;
+      this.a(0.0F);
    }
 
-   private static int a(dv $$0, Collection<GameProfile> $$1, @Nullable wi $$2) throws CommandSyntaxException {
-      atx $$3 = $$0.l().ah().f();
-      int $$4 = 0;
+   public akf a() {
+      return this.h;
+   }
 
-      for (GameProfile $$5 : $$1) {
-         if (!$$3.a($$5)) {
-            aty $$6 = new aty($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-            $$3.a($$6);
-            $$4++;
-            $$0.a(() -> wi.a("commands.ban.success", wi.b($$5.getName()), $$6.d()), true);
-            apv $$7 = $$0.l().ah().a($$5.getId());
-            if ($$7 != null) {
-               $$7.d.b(wi.c("multiplayer.disconnect.banned"));
+   @Override
+   public void a(aqf $$0) {
+      super.a($$0);
+      this.i.add($$0.cx());
+   }
+
+   public void a(UUID $$0) {
+      this.i.add($$0);
+   }
+
+   @Override
+   public void b(aqf $$0) {
+      super.b($$0);
+      this.i.remove($$0.cx());
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      this.i.clear();
+   }
+
+   public int c() {
+      return this.j;
+   }
+
+   public int d() {
+      return this.k;
+   }
+
+   public void a(int $$0) {
+      this.j = $$0;
+      this.a(axw.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+   }
+
+   public void b(int $$0) {
+      this.k = $$0;
+      this.a(axw.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+   }
+
+   public final ws e() {
+      return wv.a(this.i()).a($$0 -> $$0.a(this.k().a()).a(new wy(wy.a.a, ws.b(this.a().toString()))).a(this.a().toString()));
+   }
+
+   public boolean a(Collection<aqf> $$0) {
+      Set<UUID> $$1 = Sets.newHashSet();
+      Set<aqf> $$2 = Sets.newHashSet();
+
+      for (UUID $$3 : this.i) {
+         boolean $$4 = false;
+
+         for (aqf $$5 : $$0) {
+            if ($$5.cx().equals($$3)) {
+               $$4 = true;
+               break;
             }
+         }
+
+         if (!$$4) {
+            $$1.add($$3);
          }
       }
 
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         return $$4;
+      for (aqf $$6 : $$0) {
+         boolean $$7 = false;
+
+         for (UUID $$8 : this.i) {
+            if ($$6.cx().equals($$8)) {
+               $$7 = true;
+               break;
+            }
+         }
+
+         if (!$$7) {
+            $$2.add($$6);
+         }
       }
+
+      for (UUID $$9 : $$1) {
+         for (aqf $$10 : this.g()) {
+            if ($$10.cx().equals($$9)) {
+               this.b($$10);
+               break;
+            }
+         }
+
+         this.i.remove($$9);
+      }
+
+      for (aqf $$11 : $$2) {
+         this.a($$11);
+      }
+
+      return !$$1.isEmpty() || !$$2.isEmpty();
+   }
+
+   public ty a(ix.a $$0) {
+      ty $$1 = new ty();
+      $$1.a("Name", ws.a.a(this.a, $$0));
+      $$1.a("Visible", this.f());
+      $$1.a("Value", this.j);
+      $$1.a("Max", this.k);
+      $$1.a("Color", this.k().b());
+      $$1.a("Overlay", this.l().a());
+      $$1.a("DarkenScreen", this.m());
+      $$1.a("PlayBossMusic", this.n());
+      $$1.a("CreateWorldFog", this.o());
+      ue $$2 = new ue();
+
+      for (UUID $$3 : this.i) {
+         $$2.add(un.a($$3));
+      }
+
+      $$1.a("Players", $$2);
+      return $$1;
+   }
+
+   public static ale a(ty $$0, akf $$1, ix.a $$2) {
+      ale $$3 = new ale($$1, ws.a.a($$0.l("Name"), $$2));
+      $$3.d($$0.q("Visible"));
+      $$3.a($$0.h("Value"));
+      $$3.b($$0.h("Max"));
+      $$3.a(bog.a.a($$0.l("Color")));
+      $$3.a(bog.b.a($$0.l("Overlay")));
+      $$3.a($$0.q("DarkenScreen"));
+      $$3.b($$0.q("PlayBossMusic"));
+      $$3.c($$0.q("CreateWorldFog"));
+
+      for (uv $$5 : $$0.c("Players", 11)) {
+         $$3.a(un.a($$5));
+      }
+
+      return $$3;
+   }
+
+   public void c(aqf $$0) {
+      if (this.i.contains($$0.cx())) {
+         this.a($$0);
+      }
+   }
+
+   public void d(aqf $$0) {
+      super.b($$0);
    }
 }

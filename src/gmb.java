@@ -1,29 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gmb implements glw {
-   public static final Codec<gmb> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gmb::new)
-   );
-   private final String c;
-   private final String d;
+public class gmb extends glz implements gma {
+   private static final Logger e = LogUtils.getLogger();
+   @Nullable
+   private ewo f;
 
-   public gmb(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public gmb(ewo $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
+      }
+   }
+
+   public gmb(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      this.f = new ewo($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
    }
 
    @Override
-   public void a(ate $$0, glw.a $$1) {
-      ajo $$2 = new ajo("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         ajv $$4 = $$2.b($$2x).d(this.d);
-         $$1.a($$4, $$3);
-      });
+   public void a(ato $$0) {
    }
 
    @Override
-   public gly a() {
-      return glz.b;
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
+      } else {
+         e.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public ewo e() {
+      return this.f;
+   }
+
+   public void a(ewo $$0) {
+      if (this.f != null) {
+         this.f.close();
+      }
+
+      this.f = $$0;
+   }
+
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
+      }
+   }
+
+   @Override
+   public void a(akf $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
+      }
    }
 }

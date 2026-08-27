@@ -2,14 +2,26 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bue {
-   public static bsm<bqt> a() {
-      return bvy.a((Function<bvy.b<bqt>, ? extends App<bvy.c<bqt>, bwb<bqt>>>)($$0 -> $$0.group($$0.b(bzw.D)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               cll $$3 = $$0xx.d($$1.dm());
-               if ($$3 == null) {
-                  $$1.dP().a(clp.j);
-               }
+   private static final int a = 1;
 
-               return true;
-            })));
+   public static bsx<bre> a(float $$0) {
+      return bwj.a(
+         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$1 -> $$1.group($$1.a(cah.n), $$1.c(cah.m), $$1.b(cah.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bP()) {
+                        return false;
+                     } else {
+                        bql $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bth($$8, true));
+                           $$3.a(new cak(new bth($$8, false), $$0, 1));
+                        }
+
+                        return true;
+                     }
+                  }))
+      );
    }
 }

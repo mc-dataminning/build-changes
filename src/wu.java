@@ -1,104 +1,153 @@
-import com.google.common.base.Preconditions;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Base64;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
-public record wu(byte[] c) {
-   public static final Codec<wu> a = awu.n.xmap(wu::new, wu::b);
-   public static final int b = 256;
+public class wu {
+   public static final Codec<ws> a = axe.a("Component", wu::a);
+   public static final yq<wd, ws> b = yo.d(a);
+   public static final yq<wd, Optional<ws>> c = b.a(yo::a);
+   public static final yq<wd, ws> d = yo.c(a);
+   public static final yq<wd, Optional<ws>> e = d.a(yo::a);
+   public static final yq<ByteBuf, ws> f = yo.a(a);
+   public static final Codec<ws> g = a(Integer.MAX_VALUE);
 
-   public wu(byte[] c) {
-      Preconditions.checkState(c.length == 256, "Invalid message signature size");
-      this.c = c;
-   }
-
-   public static wu a(vi $$0) {
-      byte[] $$1 = new byte[256];
-      $$0.b($$1);
-      return new wu($$1);
-   }
-
-   public static void a(vi $$0, wu $$1) {
-      $$0.c($$1.c);
-   }
-
-   public boolean a(axy $$0, axx $$1) {
-      return $$0.validate($$1, this.c);
-   }
-
-   public ByteBuffer a() {
-      return ByteBuffer.wrap(this.c);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof wu $$1 && Arrays.equals(this.c, $$1.c)) {
-            return true;
+   public static Codec<ws> a(int $$0) {
+      final Codec<String> $$1 = axe.b(0, $$0);
+      return new Codec<ws>() {
+         public <T> DataResult<Pair<ws, T>> decode(DynamicOps<T> $$0, T $$1x) {
+            DynamicOps<JsonElement> $$2 = a($$0);
+            return $$1.decode($$0, $$1).flatMap($$1xxx -> {
+               try {
+                  JsonElement $$2x = JsonParser.parseString((String)$$1xxx.getFirst());
+                  return wu.a.parse($$2, $$2x).map($$1xxxxx -> Pair.of($$1xxxxx, $$1xxx.getSecond()));
+               } catch (JsonParseException var3x) {
+                  return DataResult.error(var3x::getMessage);
+               }
+            });
          }
 
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
-
-   @Override
-   public String toString() {
-      return Base64.getEncoder().encodeToString(this.c);
-   }
-
-   public wu.a a(wv $$0) {
-      int $$1 = $$0.a(this);
-      return $$1 != -1 ? new wu.a($$1) : new wu.a(this);
-   }
-
-   public byte[] b() {
-      return this.c;
-   }
-
-   public static record a(int b, @Nullable wu c) {
-      public static final int a = -1;
-
-      public a(wu $$0) {
-         this(-1, $$0);
-      }
-
-      public a(int $$0) {
-         this($$0, null);
-      }
-
-      public static wu.a a(vi $$0) {
-         int $$1 = $$0.l() - 1;
-         return $$1 == -1 ? new wu.a(wu.a($$0)) : new wu.a($$1);
-      }
-
-      public static void a(vi $$0, wu.a $$1) {
-         $$0.c($$1.a() + 1);
-         if ($$1.b() != null) {
-            wu.a($$0, $$1.b());
+         public <T> DataResult<T> a(ws $$0, DynamicOps<T> $$1x, T $$2) {
+            DynamicOps<JsonElement> $$3 = a($$1);
+            return wu.a.encodeStart($$3, $$0).flatMap($$2x -> {
+               try {
+                  return $$1.encodeStart($$1, axm.e($$2x));
+               } catch (IllegalArgumentException var4x) {
+                  return DataResult.error(var4x::getMessage);
+               }
+            });
          }
+
+         private static <T> DynamicOps<JsonElement> a(DynamicOps<T> $$0) {
+            return (DynamicOps<JsonElement>)($$0 instanceof akd<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
+         }
+      };
+   }
+
+   private static xg a(List<ws> $$0) {
+      xg $$1 = $$0.get(0).f();
+
+      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
+         $$1.b($$0.get($$2));
       }
 
-      public Optional<wu> a(wv $$0) {
-         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      return $$1;
+   }
+
+   public static <T extends ayq, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
+      MapCodec<E> $$4 = new wu.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
+      Codec<T> $$5 = ayq.b((Supplier<T[]>)(() -> $$0));
+      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1x -> $$1.apply((T)$$1x).codec());
+      MapCodec<E> $$7 = new wu.b($$3, $$6, $$4);
+      return axe.a($$7, $$6);
+   }
+
+   private static Codec<ws> a(Codec<ws> $$0) {
+      wt.a<?>[] $$1 = new wt.a[]{xz.b, yd.c, xw.b, ya.c, yb.b, xy.b};
+      MapCodec<wt> $$2 = a($$1, wt.a::a, wt::a, "type");
+      Codec<ws> $$3 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group($$2.forGetter(ws::b), axe.a(axe.a($$0.listOf()), "extra", List.of()).forGetter(ws::c), xp.b.a.forGetter(ws::a))
+               .apply($$2x, xg::new)
+      );
+      return Codec.either(Codec.either(Codec.STRING, axe.a($$0.listOf())), $$3)
+         .xmap($$0x -> (ws)$$0x.map($$0xx -> (ws)$$0xx.map(ws::b, wu::a), $$0xx -> $$0xx), $$0x -> {
+            String $$1x = $$0x.d();
+            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
+         });
+   }
+
+   static class a<T> extends MapCodec<T> {
+      private final List<MapCodec<? extends T>> a;
+      private final Function<T, MapEncoder<? extends T>> b;
+
+      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public int a() {
-         return this.b;
+      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
+         for (MapDecoder<? extends T> $$2 : this.a) {
+            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
+            if ($$3.result().isPresent()) {
+               return (DataResult<T>)$$3;
+            }
+         }
+
+         return DataResult.error(() -> "No matching codec found");
       }
 
-      @Nullable
-      public wu b() {
-         return this.c;
+      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
+         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
+         return $$3.encode($$0, $$1, $$2);
+      }
+
+      public <S> Stream<S> keys(DynamicOps<S> $$0) {
+         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
+      }
+
+      public String toString() {
+         return "FuzzyCodec[" + this.a + "]";
+      }
+   }
+
+   static class b<T> extends MapCodec<T> {
+      private final String a;
+      private final MapCodec<T> b;
+      private final MapCodec<T> c;
+
+      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
+         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
+      }
+
+      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
+         return this.c.encode($$0, $$1, $$2);
+      }
+
+      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
+         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
       }
    }
 }

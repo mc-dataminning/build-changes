@@ -1,43 +1,59 @@
-public class fxl extends fyw {
-   private final fyr a;
+public class fxl extends fzs {
+   private final fzn a;
 
-   protected fxl(fuq $$0, double $$1, double $$2, double $$3, fyr $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
+   protected fxl(
+      fvm $$0,
+      double $$1,
+      double $$2,
+      double $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      float $$10,
+      fzn $$11,
+      float $$12,
+      int $$13,
+      float $$14,
+      boolean $$15
+   ) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
+      this.u = $$14;
+      this.C = true;
+      this.a = $$11;
+      this.j *= (double)$$4;
+      this.k *= (double)$$5;
+      this.l *= (double)$$6;
+      this.j += $$7;
+      this.k += $$8;
+      this.l += $$9;
+      float $$16 = $$0.z.i() * $$12;
+      this.v = $$16;
+      this.w = $$16;
+      this.x = $$16;
+      this.D *= 0.75F * $$10;
+      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
+      this.t = Math.max(this.t, 1);
+      this.b($$11);
+      this.n = $$15;
    }
 
    @Override
-   public fya b() {
-      return fya.d;
+   public fyw b() {
+      return fyw.b;
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public float b(float $$0) {
+      return this.D * axw.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
-   }
-
-   public static class a implements fxz<kq> {
-      private final fyr a;
-
-      public a(fyr $$0) {
-         this.a = $$0;
-      }
-
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fxl($$1, $$2, $$3, $$4, this.a);
-      }
+      super.a();
+      this.b(this.a);
    }
 }

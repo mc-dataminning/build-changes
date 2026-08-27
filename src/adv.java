@@ -1,29 +1,23 @@
-public class adv implements yp<aba> {
-   public static final yg<vi, adv> a = yp.a(adv::a, adv::new);
-   private final double b;
+import javax.annotation.Nullable;
 
-   public adv(dqz $$0) {
-      this.b = $$0.k();
-   }
-
-   private adv(vi $$0) {
-      this.b = $$0.readDouble();
-   }
-
-   private void a(vi $$0) {
-      $$0.a(this.b);
-   }
+public record adv(int b, iv<bpv> c) implements yz<abk> {
+   public static final yq<wd, adv> a = yq.a(yo.f, $$0 -> $$0.b, yo.b(ld.R), adv::e, adv::new);
 
    @Override
-   public yr<adv> a() {
-      return afl.at;
+   public zb<adv> a() {
+      return afv.ak;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   @Nullable
+   public bql a(czu $$0) {
+      return $$0.a(this.b);
+   }
+
+   public iv<bpv> e() {
+      return this.c;
    }
 }

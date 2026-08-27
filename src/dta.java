@@ -1,232 +1,438 @@
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.OptionalLong;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import it.unimi.dsi.fastutil.shorts.ShortListIterator;
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record dta(
-   OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, avt<dch> v, ajv w, float x, dta.a y
-) {
-   public static final int a = id.d;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<dta> h = awu.c(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  awu.a(Codec.LONG.optionalFieldOf("fixed_time")).forGetter(dta::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(dta::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dta::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dta::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(dta::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dta::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(dta::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dta::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dta::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(dta::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dta::p),
-                  avt.b(ku.f).fieldOf("infiniburn").forGetter(dta::q),
-                  ajv.a.fieldOf("effects").orElse(dsy.e).forGetter(dta::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dta::s),
-                  dta.a.a.forGetter(dta::t)
-               )
-               .apply($$0, dta::new)
-      )
-   );
-   private static final int z = 8;
-   public static final float[] i = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<in<dta>> j = ajr.a(ku.aB, h);
+public class dta {
+   private static final Codec<dsm<dpy>> h = dsm.a(dcv.q, dpy.b, dsm.d.d, dcx.a.n());
+   private static final Logger i = LogUtils.getLogger();
+   private static final String j = "UpgradeData";
+   private static final String k = "block_ticks";
+   private static final String l = "fluid_ticks";
+   public static final String a = "xPos";
+   public static final String b = "zPos";
+   public static final String c = "Heightmaps";
+   public static final String d = "isLightOn";
+   public static final String e = "sections";
+   public static final String f = "BlockLight";
+   public static final String g = "SkyLight";
 
-   public dta(
-      OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, avt<dch> v, ajv w, float x, dta.a y
-   ) {
-      if (t < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (s + t > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (u > t) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (t % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (s % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
+   public static dso a(aqe $$0, cch $$1, czb $$2, ty $$3) {
+      czb $$4 = new czb($$3.h("xPos"), $$3.h("zPos"));
+      if (!Objects.equals($$2, $$4)) {
+         i.error("Chunk file at {} is in the wrong location; relocating. (Expected {}, got {})", new Object[]{$$2, $$2, $$4});
+      }
+
+      dsr $$5 = $$3.b("UpgradeData", 10) ? new dsr($$3.p("UpgradeData"), $$0) : dsr.a;
+      boolean $$6 = $$3.q("isLightOn");
+      ue $$7 = $$3.c("sections", 10);
+      int $$8 = $$0.am();
+      dsf[] $$9 = new dsf[$$8];
+      boolean $$10 = $$0.D_().g();
+      dry $$11 = $$0.l();
+      elg $$12 = $$11.p();
+      ji<dat> $$13 = $$0.H_().d(ld.ay);
+      Codec<dsn<iv<dat>>> $$14 = a($$13);
+      boolean $$15 = false;
+
+      for (int $$16 = 0; $$16 < $$7.size(); $$16++) {
+         ty $$17 = $$7.a($$16);
+         int $$18 = $$17.f("Y");
+         int $$19 = $$0.f($$18);
+         if ($$19 >= 0 && $$19 < $$9.length) {
+            dsm<dpy> $$20;
+            if ($$17.b("block_states", 10)) {
+               $$20 = ac.a(h.parse(um.a, $$17.p("block_states")).promotePartial($$2x -> a($$2, $$18, $$2x)), dta.a::new);
+            } else {
+               $$20 = new dsm<>(dcv.q, dcx.a.n(), dsm.d.d);
+            }
+
+            dsn<iv<dat>> $$22;
+            if ($$17.b("biomes", 10)) {
+               $$22 = ac.a($$14.parse(um.a, $$17.p("biomes")).promotePartial($$2x -> a($$2, $$18, $$2x)), dta.a::new);
+            } else {
+               $$22 = new dsm<>($$13.t(), $$13.g(dba.b), dsm.d.e);
+            }
+
+            dsf $$24 = new dsf($$20, $$22);
+            $$9[$$19] = $$24;
+            jo $$25 = jo.a($$2, $$18);
+            $$1.a($$25, $$24);
+         }
+
+         boolean $$26 = $$17.b("BlockLight", 7);
+         boolean $$27 = $$10 && $$17.b("SkyLight", 7);
+         if ($$26 || $$27) {
+            if (!$$15) {
+               $$12.b($$2, true);
+               $$15 = true;
+            }
+
+            if ($$26) {
+               $$12.a(dad.b, jo.a($$2, $$18), new drz($$17.m("BlockLight")));
+            }
+
+            if ($$27) {
+               $$12.a(dad.a, jo.a($$2, $$18), new drz($$17.m("SkyLight")));
+            }
+         }
+      }
+
+      long $$28 = $$3.i("InhabitedTime");
+      dsv $$29 = a($$3);
+      dwt $$30;
+      if ($$3.b("blending_data", 10)) {
+         $$30 = (dwt)dwt.e.parse(new Dynamic(um.a, $$3.p("blending_data"))).resultOrPartial(i::error).orElse(null);
       } else {
-         this.k = k;
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
-      }
-   }
-
-   @Deprecated
-   public static DataResult<aju<czg>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(czg.i);
-         }
-
-         if ($$2 == 0) {
-            return DataResult.success(czg.h);
-         }
-
-         if ($$2 == 1) {
-            return DataResult.success(czg.j);
-         }
+         $$30 = null;
       }
 
-      return czg.g.parse($$0);
-   }
-
-   public static double a(dta $$0, dta $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
-   }
-
-   public static Path a(aju<czg> $$0, Path $$1) {
-      if ($$0 == czg.h) {
-         return $$1;
-      } else if ($$0 == czg.j) {
-         return $$1.resolve("DIM1");
+      dru $$34;
+      if ($$29 == dsv.b) {
+         eur<dcv> $$32 = eur.a($$3.c("block_ticks", 10), $$0x -> lc.e.b(akf.a($$0x)), $$2);
+         eur<elq> $$33 = eur.a($$3.c("fluid_ticks", 10), $$0x -> lc.c.b(akf.a($$0x)), $$2);
+         $$34 = new dse($$0.E(), $$2, $$5, $$32, $$33, $$28, $$9, a($$0, $$3), $$30);
       } else {
-         return $$0 == czg.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
+         euu<dcv> $$35 = euu.a($$3.c("block_ticks", 10), $$0x -> lc.e.b(akf.a($$0x)), $$2);
+         euu<elq> $$36 = euu.a($$3.c("fluid_ticks", 10), $$0x -> lc.c.b(akf.a($$0x)), $$2);
+         dso $$37 = new dso($$2, $$5, $$9, $$35, $$36, $$0, $$13, $$30);
+         $$34 = $$37;
+         $$37.b($$28);
+         if ($$3.b("below_zero_retrogen", 10)) {
+            dve.a.parse(new Dynamic(um.a, $$3.p("below_zero_retrogen"))).resultOrPartial(i::error).ifPresent($$37::a);
+         }
+
+         dst $$39 = dst.a($$3.l("Status"));
+         $$37.a($$39);
+         if ($$39.b(dst.k)) {
+            $$37.a($$12);
+         }
+      }
+
+      $$34.b($$6);
+      ty $$40 = $$3.p("Heightmaps");
+      EnumSet<dvq.a> $$41 = EnumSet.noneOf(dvq.a.class);
+
+      for (dvq.a $$42 : $$34.j().h()) {
+         String $$43 = $$42.a();
+         if ($$40.b($$43, 12)) {
+            $$34.a($$42, $$40.o($$43));
+         } else {
+            $$41.add($$42);
+         }
+      }
+
+      dvq.a($$34, $$41);
+      ty $$44 = $$3.p("structures");
+      $$34.a(a(egw.a($$0), $$44, $$0.C()));
+      $$34.b(a($$0.H_(), $$2, $$44));
+      if ($$3.q("shouldSave")) {
+         $$34.a(true);
+      }
+
+      ue $$45 = $$3.c("PostProcessing", 9);
+
+      for (int $$46 = 0; $$46 < $$45.size(); $$46++) {
+         ue $$47 = $$45.b($$46);
+
+         for (int $$48 = 0; $$48 < $$47.size(); $$48++) {
+            $$34.a($$47.d($$48), $$46);
+         }
+      }
+
+      if ($$29 == dsv.b) {
+         return new dsd((dse)$$34, false);
+      } else {
+         dso $$49 = (dso)$$34;
+         ue $$50 = $$3.c("entities", 10);
+
+         for (int $$51 = 0; $$51 < $$50.size(); $$51++) {
+            $$49.b($$50.a($$51));
+         }
+
+         ue $$52 = $$3.c("block_entities", 10);
+
+         for (int $$53 = 0; $$53 < $$52.size(); $$53++) {
+            ty $$54 = $$52.a($$53);
+            $$34.a($$54);
+         }
+
+         ty $$55 = $$3.p("CarvingMasks");
+
+         for (String $$56 : $$55.e()) {
+            dvm.a $$57 = dvm.a.valueOf($$56);
+            $$49.a($$57, new drt($$55.o($$56), $$34.I_()));
+         }
+
+         return $$49;
       }
    }
 
-   public boolean a() {
-      return this.k.isPresent();
+   private static void a(czb $$0, int $$1, String $$2) {
+      i.error("Recoverable errors when loading section [" + $$0.e + ", " + $$1 + ", " + $$0.f + "]: " + $$2);
    }
 
-   public float a(long $$0) {
-      double $$1 = axm.e((double)this.k.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   private static Codec<dsn<iv<dat>>> a(ji<dat> $$0) {
+      return dsm.b($$0.t(), $$0.r(), dsm.d.e, $$0.g(dba.b));
    }
 
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
-   }
-
-   public boolean b() {
-      return this.y.a();
-   }
-
-   public boolean c() {
-      return this.y.b();
-   }
-
-   public bnk d() {
-      return this.y.c();
-   }
-
-   public int e() {
-      return this.y.d();
-   }
-
-   public OptionalLong f() {
-      return this.k;
-   }
-
-   public boolean g() {
-      return this.l;
-   }
-
-   public boolean h() {
-      return this.m;
-   }
-
-   public boolean i() {
-      return this.n;
-   }
-
-   public boolean j() {
-      return this.o;
-   }
-
-   public double k() {
-      return this.p;
-   }
-
-   public boolean l() {
-      return this.q;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public int n() {
-      return this.s;
-   }
-
-   public int o() {
-      return this.t;
-   }
-
-   public int p() {
-      return this.u;
-   }
-
-   public avt<dch> q() {
-      return this.v;
-   }
-
-   public ajv r() {
-      return this.w;
-   }
-
-   public float s() {
-      return this.x;
-   }
-
-   public dta.a t() {
-      return this.y;
-   }
-
-   public static record a(boolean b, boolean c, bnk d, int e) {
-      public static final MapCodec<dta.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dta.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(dta.a::b),
-                  bnk.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dta.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dta.a::d)
-               )
-               .apply($$0, dta.a::new)
-      );
-
-      public boolean a() {
-         return this.b;
+   public static ty a(aqe $$0, dru $$1) {
+      czb $$2 = $$1.f();
+      ty $$3 = un.e(new ty());
+      $$3.a("xPos", $$2.e);
+      $$3.a("yPos", $$1.an());
+      $$3.a("zPos", $$2.f);
+      $$3.a("LastUpdate", $$0.Y());
+      $$3.a("InhabitedTime", $$1.u());
+      $$3.a("Status", lc.n.b($$1.j()).toString());
+      dwt $$4 = $$1.t();
+      if ($$4 != null) {
+         dwt.e.encodeStart(um.a, $$4).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("blending_data", $$1x));
       }
 
-      public boolean b() {
-         return this.c;
+      dve $$5 = $$1.x();
+      if ($$5 != null) {
+         dve.a.encodeStart(um.a, $$5).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("below_zero_retrogen", $$1x));
       }
 
-      public bnk c() {
-         return this.d;
+      dsr $$6 = $$1.r();
+      if (!$$6.a()) {
+         $$3.a("UpgradeData", $$6.b());
       }
 
-      public int d() {
-         return this.e;
+      dsf[] $$7 = $$1.d();
+      ue $$8 = new ue();
+      elg $$9 = $$0.l().a();
+      ji<dat> $$10 = $$0.H_().d(ld.ay);
+      Codec<dsn<iv<dat>>> $$11 = a($$10);
+      boolean $$12 = $$1.v();
+
+      for (int $$13 = $$9.d(); $$13 < $$9.e(); $$13++) {
+         int $$14 = $$1.f($$13);
+         boolean $$15 = $$14 >= 0 && $$14 < $$7.length;
+         drz $$16 = $$9.a(dad.b).a(jo.a($$2, $$13));
+         drz $$17 = $$9.a(dad.a).a(jo.a($$2, $$13));
+         if ($$15 || $$16 != null || $$17 != null) {
+            ty $$18 = new ty();
+            if ($$15) {
+               dsf $$19 = $$7[$$14];
+               $$18.a("block_states", (uv)h.encodeStart(um.a, $$19.h()).getOrThrow(false, i::error));
+               $$18.a("biomes", (uv)$$11.encodeStart(um.a, $$19.i()).getOrThrow(false, i::error));
+            }
+
+            if ($$16 != null && !$$16.d()) {
+               $$18.a("BlockLight", $$16.a());
+            }
+
+            if ($$17 != null && !$$17.d()) {
+               $$18.a("SkyLight", $$17.a());
+            }
+
+            if (!$$18.g()) {
+               $$18.a("Y", (byte)$$13);
+               $$8.add($$18);
+            }
+         }
+      }
+
+      $$3.a("sections", $$8);
+      if ($$12) {
+         $$3.a("isLightOn", true);
+      }
+
+      ue $$20 = new ue();
+
+      for (im $$21 : $$1.c()) {
+         ty $$22 = $$1.a($$21, $$0.H_());
+         if ($$22 != null) {
+            $$20.add($$22);
+         }
+      }
+
+      $$3.a("block_entities", $$20);
+      if ($$1.j().g() == dsv.a) {
+         dso $$23 = (dso)$$1;
+         ue $$24 = new ue();
+         $$24.addAll($$23.E());
+         $$3.a("entities", $$24);
+         ty $$25 = new ty();
+
+         for (dvm.a $$26 : dvm.a.values()) {
+            drt $$27 = $$23.a($$26);
+            if ($$27 != null) {
+               $$25.a($$26.toString(), $$27.a());
+            }
+         }
+
+         $$3.a("CarvingMasks", $$25);
+      }
+
+      a($$0, $$3, $$1.q());
+      $$3.a("PostProcessing", a($$1.n()));
+      ty $$28 = new ty();
+
+      for (Entry<dvq.a, dvq> $$29 : $$1.e()) {
+         if ($$1.j().h().contains($$29.getKey())) {
+            $$28.a($$29.getKey().a(), new uf($$29.getValue().a()));
+         }
+      }
+
+      $$3.a("Heightmaps", $$28);
+      $$3.a("structures", a(egw.a($$0), $$2, $$1.g(), $$1.h()));
+      return $$3;
+   }
+
+   private static void a(aqe $$0, ty $$1, dru.a $$2) {
+      long $$3 = $$0.A_().c();
+      $$1.a("block_ticks", $$2.a().b($$3, $$0x -> lc.e.b($$0x).toString()));
+      $$1.a("fluid_ticks", $$2.b().b($$3, $$0x -> lc.c.b($$0x).toString()));
+   }
+
+   public static dsv a(@Nullable ty $$0) {
+      return $$0 != null ? dst.a($$0.l("Status")).g() : dsv.a;
+   }
+
+   @Nullable
+   private static dse.c a(aqe $$0, ty $$1) {
+      ue $$2 = a($$1, "entities");
+      ue $$3 = a($$1, "block_entities");
+      return $$2 == null && $$3 == null ? null : $$3x -> {
+         if ($$2 != null) {
+            $$0.a(bqr.a($$2, $$0));
+         }
+
+         if ($$3 != null) {
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               ty $$5 = $$3.a($$4);
+               boolean $$6 = $$5.q("keepPacked");
+               if ($$6) {
+                  $$3x.a($$5);
+               } else {
+                  im $$7 = dnd.b($$5);
+                  dnd $$8 = dnd.a($$7, $$3x.a_($$7), $$5, $$0.H_());
+                  if ($$8 != null) {
+                     $$3x.a($$8);
+                  }
+               }
+            }
+         }
+      };
+   }
+
+   @Nullable
+   private static ue a(ty $$0, String $$1) {
+      ue $$2 = $$0.c($$1, 10);
+      return $$2.isEmpty() ? null : $$2;
+   }
+
+   private static ty a(egw $$0, czb $$1, Map<egg, ego> $$2, Map<egg, LongSet> $$3) {
+      ty $$4 = new ty();
+      ty $$5 = new ty();
+      ji<egg> $$6 = $$0.b().d(ld.aI);
+
+      for (Entry<egg, ego> $$7 : $$2.entrySet()) {
+         akf $$8 = $$6.b($$7.getKey());
+         $$5.a($$8.toString(), $$7.getValue().a($$0, $$1));
+      }
+
+      $$4.a("starts", $$5);
+      ty $$9 = new ty();
+
+      for (Entry<egg, LongSet> $$10 : $$3.entrySet()) {
+         if (!$$10.getValue().isEmpty()) {
+            akf $$11 = $$6.b($$10.getKey());
+            $$9.a($$11.toString(), new uf($$10.getValue()));
+         }
+      }
+
+      $$4.a("References", $$9);
+      return $$4;
+   }
+
+   private static Map<egg, ego> a(egw $$0, ty $$1, long $$2) {
+      Map<egg, ego> $$3 = Maps.newHashMap();
+      ji<egg> $$4 = $$0.b().d(ld.aI);
+      ty $$5 = $$1.p("starts");
+
+      for (String $$6 : $$5.e()) {
+         akf $$7 = akf.a($$6);
+         egg $$8 = $$4.a($$7);
+         if ($$8 == null) {
+            i.error("Unknown structure start: {}", $$7);
+         } else {
+            ego $$9 = ego.a($$0, $$5.p($$6), $$2);
+            if ($$9 != null) {
+               $$3.put($$8, $$9);
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   private static Map<egg, LongSet> a(jj $$0, czb $$1, ty $$2) {
+      Map<egg, LongSet> $$3 = Maps.newHashMap();
+      ji<egg> $$4 = $$0.d(ld.aI);
+      ty $$5 = $$2.p("References");
+
+      for (String $$6 : $$5.e()) {
+         akf $$7 = akf.a($$6);
+         egg $$8 = $$4.a($$7);
+         if ($$8 == null) {
+            i.warn("Found reference to unknown structure '{}' in chunk {}, discarding", $$7, $$1);
+         } else {
+            long[] $$9 = $$5.o($$6);
+            if ($$9.length != 0) {
+               $$3.put($$8, new LongOpenHashSet(Arrays.stream($$9).filter($$2x -> {
+                  czb $$3x = new czb($$2x);
+                  if ($$3x.a($$1) > 8) {
+                     i.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", new Object[]{$$7, $$3x, $$1});
+                     return false;
+                  } else {
+                     return true;
+                  }
+               }).toArray()));
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   public static ue a(ShortList[] $$0) {
+      ue $$1 = new ue();
+
+      for (ShortList $$2 : $$0) {
+         ue $$3 = new ue();
+         if ($$2 != null) {
+            ShortListIterator var7 = $$2.iterator();
+
+            while (var7.hasNext()) {
+               Short $$4 = (Short)var7.next();
+               $$3.add(uq.a($$4));
+            }
+         }
+
+         $$1.add($$3);
+      }
+
+      return $$1;
+   }
+
+   public static class a extends RuntimeException {
+      public a(String $$0) {
+         super($$0);
       }
    }
 }

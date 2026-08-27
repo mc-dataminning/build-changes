@@ -1,35 +1,40 @@
-public class bzz {
-   private final btz a;
-   private final float b;
-   private final int c;
+import java.util.EnumSet;
 
-   public bzz(id $$0, float $$1, int $$2) {
-      this(new bso($$0), $$1, $$2);
-   }
+public class bzz extends cab {
+   private final bsa a;
+   private bre b;
+   private int c;
 
-   public bzz(esj $$0, float $$1, int $$2) {
-      this(new bso(id.a($$0)), $$1, $$2);
-   }
-
-   public bzz(bqa $$0, float $$1, int $$2) {
-      this(new bsw($$0, false), $$1, $$2);
-   }
-
-   public bzz(btz $$0, float $$1, int $$2) {
+   public bzz(bsa $$0) {
+      super($$0, false);
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      this.a(EnumSet.of(byb.a.d));
    }
 
-   public btz a() {
-      return this.a;
+   @Override
+   public boolean a() {
+      if (this.a.r() && !this.a.gp()) {
+         bre $$0 = this.a.P_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.em();
+            int $$1 = $$0.en();
+            return $$1 != this.c && this.a(this.b, cbu.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
-   public float b() {
-      return this.b;
-   }
+   @Override
+   public void c() {
+      this.e.h(this.b);
+      bre $$0 = this.a.P_();
+      if ($$0 != null) {
+         this.c = $$0.en();
+      }
 
-   public int c() {
-      return this.c;
+      super.c();
    }
 }

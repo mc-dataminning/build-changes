@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface aik extends abh, afy {
+   @Override
+   default vr b() {
+      return vr.d;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aik {
+   void a(aim var1);
+
+   void a(ain var1);
+
+   void a(ail var1);
+
+   void a(aio var1);
 }

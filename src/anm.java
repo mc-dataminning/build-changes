@@ -1,39 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class anm {
-   public static void a(CommandDispatcher<dv> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ws.c("commands.save.failed"));
+
+   public static void a(CommandDispatcher<ec> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((dv)$$0x.getSource(), Collections.singleton(((dv)$$0x.getSource()).h()), id.a(((dv)$$0x.getSource()).d()), 0.0F)))
-            .then(
-               ((RequiredArgumentBuilder)dw.a("targets", ei.d())
-                     .executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), id.a(((dv)$$0x.getSource()).d()), 0.0F)))
-                  .then(
-                     ((RequiredArgumentBuilder)dw.a("pos", fq.a()).executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), fq.c($$0x, "pos"), 0.0F)))
-                        .then(dw.a("angle", eb.a()).executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), fq.c($$0x, "pos"), eb.a($$0x, "angle"))))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("save-all").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ec)$$0x.getSource(), false)))
+            .then(ed.a("flush").executes($$0x -> a((ec)$$0x.getSource(), true)))
       );
    }
 
-   private static int a(dv $$0, Collection<apv> $$1, id $$2, float $$3) {
-      aju<czg> $$4 = $$0.e().ae();
-
-      for (apv $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
-      }
-
-      String $$6 = $$4.a().toString();
-      if ($$1.size() == 1) {
-         $$0.a(() -> wi.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().O_()), true);
+   private static int a(ec $$0, boolean $$1) throws CommandSyntaxException {
+      $$0.a(() -> ws.c("commands.save.saving"), false);
+      MinecraftServer $$2 = $$0.l();
+      boolean $$3 = $$2.b(true, $$1, true);
+      if (!$$3) {
+         throw a.create();
       } else {
-         $$0.a(() -> wi.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+         $$0.a(() -> ws.c("commands.save.success"), true);
+         return 1;
       }
-
-      return $$1.size();
    }
 }

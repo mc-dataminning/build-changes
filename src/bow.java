@@ -1,28 +1,37 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public enum bow implements ayg {
-   a("hurt", auo.tP),
-   b("thorns", auo.zb),
-   c("drowning", auo.tQ),
-   d("burning", auo.tS),
-   e("poking", auo.tT),
-   f("freezing", auo.tR);
+public class bow {
+   public static final Codec<bow> a = RecordCodecBuilder.create($$0 -> $$0.group(dwr.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bow::new));
+   private final dwr b;
 
-   public static final Codec<bow> g = ayg.a(bow::values);
-   private final String h;
-   private final aun i;
-
-   private bow(String $$0, aun $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public bow(dwr $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.h;
+   public bow(long $$0, akf $$1) {
+      this(a($$0, Optional.of($$1)));
    }
 
-   public aun a() {
-      return this.i;
+   public bow(long $$0, Optional<akf> $$1) {
+      this(a($$0, $$1));
+   }
+
+   private static dwr a(long $$0, Optional<akf> $$1) {
+      dwf.a $$2 = dwf.b($$0);
+      if ($$1.isPresent()) {
+         $$2 = $$2.a(a($$1.get()));
+      }
+
+      return new dwr($$2.a());
+   }
+
+   public static dwf.a a(akf $$0) {
+      return dwf.a($$0.toString());
+   }
+
+   public ayd a() {
+      return this.b;
    }
 }

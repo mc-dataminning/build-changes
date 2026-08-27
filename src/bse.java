@@ -1,125 +1,35 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
-
 public class bse {
-   public static final int a = 48;
+   private float a;
+   private float b;
+   private float c;
 
-   public static bsm<brb> a(Predicate<in<cbz>> $$0, bzw<im> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   public static bsm<brb> a(Predicate<in<cbz>> $$0, bzw<im> $$1, bzw<im> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bse.a> $$8 = new Long2ObjectOpenHashMap();
-      btw<brb> $$9 = bvy.a(
-         (Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.p_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.Y() + (long)$$6xx.z.a(20));
-                     return false;
-                  } else if ($$6xx.Y() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.E_().a(20));
-                     cbw $$9x = $$6xx.y();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bse.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<id> $$10 = $$2xxxx -> {
-                        bse.a $$3xxxx = (bse.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<in<cbz>, id>> $$11 = $$9x.c($$0, $$10, $$7x.dm(), 48, cbw.b.a).limit(5L).collect(Collectors.toSet());
-                     elp $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        id $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(im.a($$6xx.ae(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           afk.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<in<cbz>, id> $$14 : $$11) {
-                           $$8.computeIfAbsent(((id)$$14.getSecond()).a(), $$2xxxx -> new bse.a($$6xx.z, $$8x));
-                        }
-                     }
-
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : bvy.a((Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   public void a(float $$0, float $$1) {
+      this.a = this.b;
+      this.b = this.b + ($$0 - this.b) * $$1;
+      this.c = this.c + this.b;
    }
 
-   @Nullable
-   public static elp a(bqv $$0, Set<Pair<in<cbz>, id>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         Set<id> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<in<cbz>, id> $$4 : $$1) {
-            $$3 = Math.max($$3, ((cbz)((in)$$4.getFirst()).a()).c());
-            $$2.add((id)$$4.getSecond());
-         }
-
-         return $$0.K().a($$2, $$3);
-      }
+   public float a() {
+      return this.b;
    }
 
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final axt d;
-      private long e;
-      private long f;
-      private int g;
+   public float b(float $$0) {
+      return axw.i($$0, this.a, this.b);
+   }
 
-      a(axt $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
-      }
+   public float b() {
+      return this.c;
+   }
 
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
-      }
+   public float c(float $$0) {
+      return this.c - this.b * (1.0F - $$0);
+   }
 
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
-
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
-
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
-      }
+   public boolean c() {
+      return this.b > 1.0E-5F;
    }
 }

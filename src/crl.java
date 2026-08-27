@@ -1,78 +1,40 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class crl extends crn {
-   private final avt<crk> a;
-
-   public crl(crn.a $$0, avt<crk> $$1) {
+public class crl extends cry {
+   public crl(cry.a $$0) {
       super($$0);
-      this.a = $$1;
    }
 
    @Override
-   public void a(crs $$0, @Nullable czg $$1, List<wi> $$2, cti $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      Optional<aju<crk>> $$4 = this.j($$0).flatMap(in::e);
-      if ($$4.isPresent()) {
-         ww $$5 = wi.c(ac.a("instrument", $$4.get().a()));
-         $$2.add($$5.a(n.h));
-      }
-   }
+   public boq a(cvn $$0) {
+      ckl $$1 = $$0.o();
+      czu $$2 = $$0.q();
+      im $$3 = $$0.a();
+      dpy $$4 = $$2.a_($$3);
+      if (!ddj.h($$4) && !ddk.g($$4) && !ddl.g($$4)) {
+         im $$5 = $$3.a($$0.k());
+         if (dci.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, auz.iU, ava.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+            dpy $$6 = dci.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, dur.i, $$3);
+            csd $$7 = $$0.n();
+            if ($$1 instanceof aqf) {
+               am.z.a((aqf)$$1, $$5, $$7);
+               $$7.a(1, $$1, bre.d($$0.p()));
+            }
 
-   public static crs a(crn $$0, in<crk> $$1) {
-      crs $$2 = new crs($$0);
-      $$2.b(jr.G, $$1);
-      return $$2;
-   }
-
-   public static void a(crs $$0, avt<crk> $$1, axt $$2) {
-      Optional<in<crk>> $$3 = kt.am.a($$1, $$2);
-      $$3.ifPresent($$1x -> $$0.b(jr.G, $$1x));
-   }
-
-   @Override
-   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
-      crs $$3 = $$1.b($$2);
-      in<crk> $$4 = $$3.a(jr.G);
-      if ($$4 != null) {
-         crk $$5 = $$4.a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.gu().a(this, $$5.b());
-         $$1.b(auz.c.b(this));
-         return bog.b($$3);
+            return boq.a($$2.x_());
+         } else {
+            return boq.e;
+         }
       } else {
-         return bog.d($$3);
+         $$2.a($$1, $$3, auz.iU, ava.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.a(dqo.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, dur.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, bre.d($$0.p()));
+         }
+
+         return boq.a($$2.x_());
       }
-   }
-
-   @Override
-   public int b(crs $$0) {
-      Optional<in<crk>> $$1 = this.j($$0);
-      return $$1.<Integer>map($$0x -> ((crk)$$0x.a()).b()).orElse(0);
-   }
-
-   private Optional<in<crk>> j(crs $$0) {
-      in<crk> $$1 = $$0.a(jr.G);
-      if ($$1 != null) {
-         return Optional.of($$1);
-      } else {
-         Iterator<in<crk>> $$2 = kt.am.c(this.a).iterator();
-         return $$2.hasNext() ? Optional.of($$2.next()) : Optional.empty();
-      }
-   }
-
-   @Override
-   public ctk c(crs $$0) {
-      return ctk.i;
-   }
-
-   private static void a(czg $$0, cka $$1, crk $$2) {
-      aun $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, aup.c, $$4, 1.0F);
-      $$0.a(dub.B, $$1.dk(), dub.a.a($$1));
    }
 }

@@ -1,67 +1,120 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class ddh extends dis implements djh {
+public class ddh extends dcv {
    public static final MapCodec<ddh> a = b(ddh::new);
-   public static final dpz b = dpy.C;
-   protected static final float c = 6.5F;
-   protected static final float d = 9.5F;
-   protected static final etc e = dch.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   protected static final etc f = dch.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
-   protected static final etc g = dch.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
+   public static final int b = 6;
+   public static final dqy c = dqo.ay;
+   public static final int d = b(0);
+   protected static final float e = 1.0F;
+   protected static final float f = 2.0F;
+   protected static final ety[] g = new ety[]{
+      dcv.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dcv.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dcv.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dcv.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dcv.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dcv.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dcv.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
+   };
 
    @Override
    public MapCodec<ddh> a() {
       return a;
    }
 
-   public ddh(dph.d $$0) {
+   protected ddh(dpx.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(i, ij.a.b));
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      switch ((ij.a)$$0.c(i)) {
-         case a:
-         default:
-            return g;
-         case c:
-            return f;
-         case b:
-            return e;
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return g[$$0.c(c)];
+   }
+
+   @Override
+   protected bos a(csd $$0, dpy $$1, czu $$2, im $$3, ckl $$4, bop $$5, etb $$6) {
+      cry $$7 = $$0.f();
+      if ($$0.a(avw.ai) && $$1.c(c) == 0 && dcv.a($$7) instanceof ddk $$8) {
+         if (!$$4.f()) {
+            $$0.g(1);
+         }
+
+         $$2.a(null, $$3, auz.dr, ava.e, 1.0F, 1.0F);
+         $$2.b($$3, ddl.a($$8));
+         $$2.a($$4, dur.c, $$3);
+         $$4.b(avj.c.b($$7));
+         return bos.a;
+      } else {
+         return bos.d;
       }
    }
 
-   @Nullable
    @Override
-   public dpi a(cux $$0) {
-      elb $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == elc.c;
-      return super.a($$0).a(b, Boolean.valueOf($$2));
-   }
+   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
+      if ($$1.B) {
+         if (a($$1, $$2, $$0, $$3).a()) {
+            return boq.a;
+         }
 
-   @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, elc.c, elc.c.a($$3));
+         if ($$3.b(bop.a).d()) {
+            return boq.b;
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   protected static boq a(czv $$0, im $$1, dpy $$2, ckl $$3) {
+      if (!$$3.t(false)) {
+         return boq.d;
+      } else {
+         $$3.a(avj.U);
+         $$3.gk().a(2, 0.1F);
+         int $$4 = $$2.c(c);
+         $$0.a($$3, dur.m, $$1);
+         if ($$4 < 6) {
+            $$0.a($$1, $$2.a(c, Integer.valueOf($$4 + 1)), 3);
+         } else {
+            $$0.a($$1, false);
+            $$0.a($$3, dur.f, $$1);
+         }
+
+         return boq.a;
+      }
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(b).a(i);
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      return $$1 == ir.a && !$$0.a($$3, $$4) ? dcx.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected elb c_(dpi $$0) {
-      return $$0.c(b) ? elc.c.a(false) : super.c_($$0);
+   protected boolean a(dpy $$0, czx $$1, im $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected boolean a(dpi $$0, elq $$1) {
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected int a(dpy $$0, czu $$1, im $$2) {
+      return b($$0.c(c));
+   }
+
+   public static int b(int $$0) {
+      return (7 - $$0) * 2;
+   }
+
+   @Override
+   protected boolean d_(dpy $$0) {
+      return true;
+   }
+
+   @Override
+   protected boolean a(dpy $$0, emg $$1) {
       return false;
    }
 }

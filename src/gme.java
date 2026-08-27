@@ -1,35 +1,50 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import javax.annotation.Nullable;
 
-public class gme implements glw {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<gme> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ajv.a.fieldOf("resource").forGetter($$0x -> $$0x.d), ajv.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gme::new)
-   );
-   private final ajv d;
-   private final Optional<ajv> e;
+public final class gme {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final akf d = new akf("missingno");
+   private static final atq e = new atq.a().a(gny.a, new gny(ImmutableList.of(new gnx(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static gmb f;
 
-   public gme(ajv $$0, Optional<ajv> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+   private static ewo a(int $$0, int $$1) {
+      ewo $$2 = new ewo($$0, $$1, false);
+      int $$3 = -16777216;
+      int $$4 = -524040;
 
-   @Override
-   public void a(ate $$0, glw.a $$1) {
-      ajv $$2 = a.a(this.d);
-      Optional<atc> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         for (int $$6 = 0; $$6 < $$0; $$6++) {
+            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
+               $$2.a($$6, $$5, -524040);
+            } else {
+               $$2.a($$6, $$5, -16777216);
+            }
+         }
       }
+
+      return $$2;
    }
 
-   @Override
-   public gly a() {
-      return glz.a;
+   public static gmi a() {
+      ewo $$0 = a(16, 16);
+      return new gmi(d, new goa(16, 16), $$0, e);
+   }
+
+   public static akf b() {
+      return d;
+   }
+
+   public static gmb c() {
+      if (f == null) {
+         ewo $$0 = a(16, 16);
+         $$0.i();
+         f = new gmb($$0);
+         fcu.Q().aa().a(d, f);
+      }
+
+      return f;
    }
 }

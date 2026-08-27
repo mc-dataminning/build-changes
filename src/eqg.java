@@ -1,84 +1,55 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public record eqg(Map<String, enj> b, enk.b c) implements eql {
+public class eqg extends epo {
+   private static final Logger b = LogUtils.getLogger();
    public static final Codec<eqg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, enj.a).fieldOf("scores").forGetter(eqg::c), enk.b.e.fieldOf("entity").forGetter(eqg::d))
+      $$0 -> a($$0)
+            .and($$0.group(esd.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
             .apply($$0, eqg::new)
    );
+   private final esc c;
+   private final boolean d;
 
-   @Override
-   public eqm b() {
-      return eqn.i;
+   private eqg(List<erh> $$0, esc $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public Set<epu<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   public epq b() {
+      return epr.k;
    }
 
-   public boolean a(enk $$0) {
-      bqa $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
+   @Override
+   public Set<eqq<?>> a() {
+      return this.c.a();
+   }
+
+   @Override
+   public csd a(csd $$0, eoa $$1) {
+      if ($$0.k()) {
+         int $$2 = $$0.n();
+         float $$3 = this.d ? 1.0F - (float)$$0.m() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - axw.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(axw.d($$4 * (float)$$2));
       } else {
-         etn $$2 = $$0.d().f();
-
-         for (Entry<String, enj> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   protected boolean a(enk $$0, bqa $$1, etn $$2, String $$3, enj $$4) {
-      etf $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         etj $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
-   }
-
-   public static eqg.a a(enk.b $$0) {
-      return new eqg.a($$0);
-   }
-
-   public Map<String, enj> c() {
-      return this.b;
-   }
-
-   public enk.b d() {
-      return this.c;
-   }
-
-   public static class a implements eql.a {
-      private final Builder<String, enj> a = ImmutableMap.builder();
-      private final enk.b b;
-
-      public a(enk.b $$0) {
-         this.b = $$0;
+         b.warn("Couldn't set damage of loot item {}", $$0);
       }
 
-      public eqg.a a(String $$0, enj $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
+      return $$0;
+   }
 
-      @Override
-      public eql build() {
-         return new eqg(this.a.build(), this.b);
-      }
+   public static epo.a<?> a(esc $$0) {
+      return a($$1 -> new eqg($$1, $$0, false));
+   }
+
+   public static epo.a<?> a(esc $$0, boolean $$1) {
+      return a($$2 -> new eqg($$2, $$0, $$1));
    }
 }

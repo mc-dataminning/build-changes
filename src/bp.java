@@ -5,26 +5,26 @@ import java.util.Optional;
 public record bp(Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f) {
    public static final Codec<bp> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               awu.a(Codec.BOOL, "is_on_fire").forGetter(bp::a),
-               awu.a(Codec.BOOL, "is_sneaking").forGetter(bp::b),
-               awu.a(Codec.BOOL, "is_sprinting").forGetter(bp::c),
-               awu.a(Codec.BOOL, "is_swimming").forGetter(bp::d),
-               awu.a(Codec.BOOL, "is_baby").forGetter(bp::e)
+               axe.a(Codec.BOOL, "is_on_fire").forGetter(bp::a),
+               axe.a(Codec.BOOL, "is_sneaking").forGetter(bp::b),
+               axe.a(Codec.BOOL, "is_sprinting").forGetter(bp::c),
+               axe.a(Codec.BOOL, "is_swimming").forGetter(bp::d),
+               axe.a(Codec.BOOL, "is_baby").forGetter(bp::e)
             )
             .apply($$0, bp::new)
    );
 
-   public boolean a(bqa $$0) {
-      if (this.b.isPresent() && $$0.bN() != this.b.get()) {
+   public boolean a(bql $$0) {
+      if (this.b.isPresent() && $$0.bO() != this.b.get()) {
          return false;
-      } else if (this.c.isPresent() && $$0.bX() != this.c.get()) {
+      } else if (this.c.isPresent() && $$0.bY() != this.c.get()) {
          return false;
-      } else if (this.d.isPresent() && $$0.bY() != this.d.get()) {
+      } else if (this.d.isPresent() && $$0.bZ() != this.d.get()) {
          return false;
-      } else if (this.e.isPresent() && $$0.bZ() != this.e.get()) {
+      } else if (this.e.isPresent() && $$0.ca() != this.e.get()) {
          return false;
       } else {
-         if (this.f.isPresent() && $$0 instanceof bqt $$1 && $$1.p_() != this.f.get()) {
+         if (this.f.isPresent() && $$0 instanceof bre $$1 && $$1.p_() != this.f.get()) {
             return false;
          }
 

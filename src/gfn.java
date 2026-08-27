@@ -1,31 +1,19 @@
-public class gfn extends ggx<cgw, fqt<cgw>> {
-   private static final ajv a = new ajv("textures/entity/enderman/enderman.png");
-   private final axt i = axt.a();
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public gfn(gfr.a $$0) {
-      super($$0, new fqt<>($$0.a(ftu.X)), 0.5F);
-      this.a(new gjm<>(this));
-      this.a(new gjd(this, $$0.c()));
-   }
-
-   public void a(cgw $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
-      dpi $$6 = $$0.gn();
-      fqt<cgw> $$7 = this.a();
-      $$7.a = $$6 != null;
-      $$7.b = $$0.go();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public esj a(cgw $$0, float $$1) {
-      if ($$0.go()) {
-         double $$2 = 0.02 * (double)$$0.eb();
-         return new esj(this.i.k() * $$2, 0.0, this.i.k() * $$2);
-      } else {
-         return super.a($$0, $$1);
+public class gfn extends ght<cef, fqt<cef>> {
+   private static final Map<cef.d, akf> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (cef.d $$1 : cef.d.values()) {
+         $$0.put($$1, new akf(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
       }
+   });
+
+   public gfn(ggn.a $$0) {
+      super($$0, new fqt<>($$0.a(fuq.f)), 0.5F);
    }
 
-   public ajv a(cgw $$0) {
-      return a;
+   public akf a(cef $$0) {
+      return a.get($$0.gp());
    }
 }

@@ -1,13 +1,15 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public interface dab extends czx {
+   long aj();
 
-public interface dab extends czv {
-   long C();
-
-   default boolean f_(id $$0) {
-      return true;
+   default float ap() {
+      return dtq.i[this.D_().b(this.aj())];
    }
 
-   default void a(@Nullable Supplier<String> $$0) {
+   default float f(float $$0) {
+      return this.D_().a(this.aj());
+   }
+
+   default int aq() {
+      return this.D_().b(this.aj());
    }
 }

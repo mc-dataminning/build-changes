@@ -1,186 +1,127 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public enum doo implements ayg {
-   a("inactive", 0, doo.b.a, -1.0, false),
-   b("waiting_for_players", 4, doo.b.b, 200.0, true),
-   c("active", 8, doo.b.c, 1000.0, true),
-   d("waiting_for_reward_ejection", 8, doo.b.b, -1.0, false),
-   e("ejecting_reward", 8, doo.b.b, -1.0, false),
-   f("cooldown", 0, doo.b.d, -1.0, false);
+public class doo {
+   private static final Codec<ws[]> c = wu.g
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 4).map($$0x -> new ws[]{(ws)$$0x.get(0), (ws)$$0x.get(1), (ws)$$0x.get(2), (ws)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<doo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.optionalFieldOf("filtered_messages").forGetter(doo::d),
+               cqw.q.fieldOf("color").orElse(cqw.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, doo::a)
+   );
+   public static final int b = 4;
+   private final ws[] d;
+   private final ws[] e;
+   private final cqw f;
+   private final boolean g;
+   @Nullable
+   private axi[] h;
+   private boolean i;
 
-   private static final float g = 40.0F;
-   private static final int h = axm.d(30.0F);
-   private final String i;
-   private final int j;
-   private final double k;
-   private final doo.b l;
-   private final boolean m;
-
-   private doo(String $$0, int $$1, doo.b $$2, double $$3, boolean $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.l = $$2;
-      this.k = $$3;
-      this.m = $$4;
+   public doo() {
+      this(c(), c(), cqw.p, false);
    }
 
-   doo a(id $$0, dol $$1, apu $$2) {
-      don $$3 = $$1.c();
-      dom $$4 = $$1.b();
-      dok $$5 = $$1.f();
-      dok.a $$6 = $$1.g();
+   public doo(ws[] $$0, ws[] $$1, cqw $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+   }
 
-      return switch (this) {
-         case a -> $$3.a($$1, $$2, b) == null ? this : b;
-         case b -> {
-            if (!$$3.a($$1, $$2.z)) {
-               yield a;
-            } else {
-               $$3.a($$2, $$0, $$5, $$6, $$4.a());
-               yield $$3.c.isEmpty() ? this : c;
-            }
+   private static ws[] c() {
+      return new ws[]{wr.a, wr.a, wr.a, wr.a};
+   }
+
+   private static doo a(ws[] $$0, Optional<ws[]> $$1, cqw $$2, boolean $$3) {
+      return new doo($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public doo a(boolean $$0) {
+      return $$0 == this.g ? this : new doo(this.d, this.e, this.f, $$0);
+   }
+
+   public cqw b() {
+      return this.f;
+   }
+
+   public doo a(cqw $$0) {
+      return $$0 == this.b() ? this : new doo(this.d, this.e, $$0, this.g);
+   }
+
+   public ws a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
+   }
+
+   public doo a(int $$0, ws $$1) {
+      return this.a($$0, $$1, $$1);
+   }
+
+   public doo a(int $$0, ws $$1, ws $$2) {
+      ws[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      ws[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new doo($$3, $$4, this.f, this.g);
+   }
+
+   public boolean a(ckl $$0) {
+      return Arrays.stream(this.b($$0.Y())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   }
+
+   public ws[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
+   }
+
+   public axi[] a(boolean $$0, Function<ws, axi> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new axi[4];
+
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
          }
-         case c -> {
-            if (!$$3.a($$1, $$2.z)) {
-               yield a;
-            } else {
-               int $$7 = $$3.a($$0);
-               $$3.a($$2, $$0, $$5, $$6, $$4.a());
-               if ($$3.a($$4, $$7)) {
-                  if ($$3.b()) {
-                     $$3.e = $$2.Y() + (long)$$4.h();
-                     $$3.g = 0;
-                     $$3.f = 0L;
-                     yield d;
-                  }
-               } else if ($$3.a($$2, $$4, $$7)) {
-                  $$1.a($$2, $$0).ifPresent($$4x -> {
-                     $$3.d.add($$4x);
-                     $$3.g++;
-                     $$3.f = $$2.Y() + (long)$$4.g();
-                     $$3.j.b($$2.E_()).ifPresent($$2xx -> {
-                        $$3.h = Optional.of((czx)$$2xx.b());
-                        $$1.e();
-                     });
-                  });
-               }
-
-               yield this;
-            }
-         }
-         case d -> {
-            if ($$3.a($$2, $$4, 40.0F)) {
-               $$2.a(null, $$0, auo.lV, aup.e);
-               yield e;
-            } else {
-               yield this;
-            }
-         }
-         case e -> {
-            if (!$$3.b($$2, $$4, (float)h)) {
-               yield this;
-            } else if ($$3.c.isEmpty()) {
-               $$2.a(null, $$0, auo.lW, aup.e);
-               $$3.i = Optional.empty();
-               yield f;
-            } else {
-               if ($$3.i.isEmpty()) {
-                  $$3.i = $$4.j().a($$2.E_());
-               }
-
-               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
-               $$3.c.remove($$3.c.iterator().next());
-               yield this;
-            }
-         }
-         case f -> {
-            if ($$3.a($$2)) {
-               $$3.e = 0L;
-               yield b;
-            } else {
-               yield this;
-            }
-         }
-      };
-   }
-
-   public int a() {
-      return this.j;
-   }
-
-   public double b() {
-      return this.k;
-   }
-
-   public boolean d() {
-      return this.k >= 0.0;
-   }
-
-   public boolean e() {
-      return this.m;
-   }
-
-   public void a(czg $$0, id $$1) {
-      this.l.emit($$0, $$0.E_(), $$1);
-   }
-
-   @Override
-   public String c() {
-      return this.i;
-   }
-
-   static class a {
-      private static final int a = 0;
-      private static final int b = 4;
-      private static final int c = 8;
-
-      private a() {
-      }
-   }
-
-   interface b {
-      doo.b a = ($$0, $$1, $$2) -> {
-      };
-      doo.b b = ($$0, $$1, $$2) -> {
-         if ($$1.a(2) == 0) {
-            esj $$3 = $$2.b().a($$1, 0.9F);
-            a(kn.aH, $$3, $$0);
-         }
-      };
-      doo.b c = ($$0, $$1, $$2) -> {
-         esj $$3 = $$2.b().a($$1, 1.0F);
-         a(kn.ac, $$3, $$0);
-         a(kn.F, $$3, $$0);
-      };
-      doo.b d = ($$0, $$1, $$2) -> {
-         esj $$3 = $$2.b().a($$1, 0.9F);
-         if ($$1.a(3) == 0) {
-            a(kn.ac, $$3, $$0);
-         }
-
-         if ($$0.Y() % 20L == 0L) {
-            esj $$4 = $$2.b().b(0.0, 0.5, 0.0);
-            int $$5 = $$0.E_().a(4) + 20;
-
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               a(kn.ac, $$4, $$0);
-            }
-         }
-      };
-
-      private static void a(kq $$0, esj $$1, czg $$2) {
-         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
       }
 
-      void emit(czg var1, axt var2, id var3);
+      return this.h;
    }
 
-   static class c {
-      private static final double a = -1.0;
-      private static final double b = 200.0;
-      private static final double c = 1000.0;
-
-      private c() {
+   private Optional<ws[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
+         }
       }
+
+      return Optional.empty();
+   }
+
+   public boolean b(ckl $$0) {
+      for (ws $$1 : this.b($$0.Y())) {
+         xp $$2 = $$1.a();
+         wq $$3 = $$2.h();
+         if ($$3 != null && $$3.a() == wq.a.c) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

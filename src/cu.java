@@ -1,76 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import javax.annotation.Nullable;
 
-public class cu extends cx<cu.a> {
-   @Override
-   public Codec<cu.a> a() {
-      return cu.a.a;
+public record cu(ty c) {
+   public static final Codec<cu> a = uw.i.xmap(cu::new, cu::a);
+   public static final yq<ByteBuf, cu> b = yo.n.a(cu::new, cu::a);
+
+   public boolean a(csd $$0) {
+      cuq $$1 = $$0.a(jz.a, cuq.a);
+      return $$1.b(this.c);
    }
 
-   public void a(apv $$0, ajv $$1, List<crs> $$2) {
-      this.a($$0, $$2x -> $$2x.b($$1, $$2));
+   public boolean a(bql $$0) {
+      return this.a(b($$0));
    }
 
-   public static record a(Optional<bc> b, ajv c, List<cc> d) implements cx.a {
-      public static final Codec<cu.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  awu.a(br.b, "player").forGetter(cu.a::a),
-                  ajv.a.fieldOf("recipe_id").forGetter(cu.a::b),
-                  awu.a(cc.a.listOf(), "ingredients", List.of()).forGetter(cu.a::c)
-               )
-               .apply($$0, cu.a::new)
-      );
+   public boolean a(@Nullable uv $$0) {
+      return $$0 != null && un.a(this.c, $$0, true);
+   }
 
-      public static an<cu.a> a(ajv $$0, List<cc.a> $$1) {
-         return am.ac.a(new cu.a(Optional.empty(), $$0, $$1.stream().map(cc.a::b).toList()));
-      }
-
-      public static an<cu.a> a(ajv $$0) {
-         return am.ac.a(new cu.a(Optional.empty(), $$0, List.of()));
-      }
-
-      boolean b(ajv $$0, List<crs> $$1) {
-         if (!$$0.equals(this.c)) {
-            return false;
-         } else {
-            List<crs> $$2 = new ArrayList<>($$1);
-
-            for (cc $$3 : this.d) {
-               boolean $$4 = false;
-               Iterator<crs> $$5 = $$2.iterator();
-
-               while ($$5.hasNext()) {
-                  if ($$3.a($$5.next())) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  return false;
-               }
-            }
-
-            return true;
+   public static ty b(bql $$0) {
+      ty $$1 = $$0.f(new ty());
+      if ($$0 instanceof ckl) {
+         csd $$2 = ((ckl)$$0).ga().f();
+         if (!$$2.d()) {
+            $$1.a("SelectedItem", $$2.a($$0.dP()));
          }
       }
 
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
+      return $$1;
+   }
 
-      public ajv b() {
-         return this.c;
-      }
-
-      public List<cc> c() {
-         return this.d;
-      }
+   public ty a() {
+      return this.c;
    }
 }

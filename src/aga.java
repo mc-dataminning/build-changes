@@ -1,29 +1,29 @@
-public class aga implements yp<afn> {
-   public static final yg<vi, aga> a = yp.a(aga::a, aga::new);
+public class aga implements yz<afx> {
+   public static final yq<vs, aga> a = yz.a(aga::a, aga::new);
    private final int b;
-   private final int c;
+   private final im c;
 
-   public aga(int $$0, int $$1) {
+   public aga(int $$0, im $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   private aga(vi $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.readByte();
+   private aga(vs $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
    }
 
-   private void a(vi $$0) {
-      $$0.k(this.b);
-      $$0.k(this.c);
+   private void a(vs $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yr<aga> a() {
-      return afl.bp;
+   public zb<aga> a() {
+      return afv.bf;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
@@ -31,7 +31,7 @@ public class aga implements yp<afn> {
       return this.b;
    }
 
-   public int e() {
+   public im e() {
       return this.c;
    }
 }

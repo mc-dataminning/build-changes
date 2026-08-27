@@ -1,30 +1,38 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-public interface is<T> extends Iterable<T> {
-   int a = -1;
+public enum is {
+   a(ir.c),
+   b(ir.c, ir.f),
+   c(ir.f),
+   d(ir.d, ir.f),
+   e(ir.d),
+   f(ir.d, ir.e),
+   g(ir.e),
+   h(ir.c, ir.e);
 
-   int a(T var1);
+   private final Set<ir> i;
+   private final jq j;
 
-   @Nullable
-   T a(int var1);
+   private is(ir... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new jq(0, 0, 0);
 
-   default T b(int $$0) {
-      T $$1 = this.a($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No value with id " + $$0);
-      } else {
-         return $$1;
+      for (ir $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
       }
    }
 
-   default int c(T $$0) {
-      int $$1 = this.a($$0);
-      if ($$1 == -1) {
-         throw new IllegalArgumentException("Can't find id for '" + $$0 + "' in map " + this);
-      } else {
-         return $$1;
-      }
+   public Set<ir> a() {
+      return this.i;
    }
 
-   int b();
+   public int b() {
+      return this.j.u();
+   }
+
+   public int c() {
+      return this.j.w();
+   }
 }

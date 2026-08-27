@@ -1,133 +1,171 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
+import javax.annotation.Nullable;
 
-public class dik extends dbx {
+public class dik extends dfd implements dcy {
    public static final MapCodec<dik> c = b(dik::new);
-   public static final dpz d = dpy.r;
-   private static final Map<cym, List<dik.a>> h = new WeakHashMap<>();
-   public static final int e = 60;
-   public static final int f = 8;
-   public static final int g = 160;
-   private static final int i = 2;
+   public static final dqy d = dqo.at;
+   public static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 1;
+   private static final ety h = dcv.a(3.0, 0.0, 3.0, 13.0, 15.0, 13.0);
+   private static final ety i = dcv.a(3.0, -1.0, 3.0, 13.0, 16.0, 13.0);
+   private static final ety j = dcv.a(5.0, -1.0, 5.0, 11.0, 3.0, 11.0);
+   private static final ety k = dcv.a(3.0, -1.0, 3.0, 13.0, 5.0, 13.0);
+   private static final ety[] l = new ety[]{dcv.a(3.0, 0.0, 3.0, 13.0, 11.0, 13.0), h};
+   private static final ety[] m = new ety[]{j, dcv.a(3.0, -1.0, 3.0, 13.0, 14.0, 13.0), i, i, i};
 
    @Override
-   public MapCodec<? extends dik> a() {
+   public MapCodec<dik> a() {
       return c;
    }
 
-   protected dik(dph.d $$0) {
+   public dik(dpx.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
+   }
+
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      return this.n();
    }
 
    @Override
-   protected void b(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
-      for (ij $$5 : ij.values()) {
-         $$1.a($$2.a($$5), this);
+   public ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return $$0.c(b) == dqu.a ? l[Math.min(Math.abs(4 - ($$0.c(d) + 1)), l.length - 1)] : m[$$0.c(d)];
+   }
+
+   @Override
+   public ety b(dpy $$0, cza $$1, im $$2, etk $$3) {
+      if ($$0.c(d) == 0) {
+         return j;
+      } else {
+         return $$0.c(b) == dqu.b ? k : super.b($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
-      if (!$$4) {
-         for (ij $$5 : ij.values()) {
-            $$1.a($$2.a($$5), this);
+   public dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if (b($$0.c(d))) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return $$0.a($$3, $$4) ? $$0 : dcx.a.n();
+      }
+   }
+
+   @Override
+   public boolean a(dpy $$0, czx $$1, im $$2) {
+      return m($$0) && !b($$1, $$2) ? false : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean b(dpy $$0, cza $$1, im $$2) {
+      return $$0.a(dcx.cC);
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(d);
+      super.a($$0);
+   }
+
+   @Override
+   public void a(dpy $$0, czu $$1, im $$2, bql $$3) {
+      if ($$3 instanceof chw && $$1.aa().b(czq.c)) {
+         $$1.a($$2, true, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(dpy $$0, cvl $$1) {
+      return false;
+   }
+
+   @Override
+   public void a(czu $$0, im $$1, dpy $$2, bre $$3, csd $$4) {
+   }
+
+   @Override
+   public boolean e_(dpy $$0) {
+      return $$0.c(b) == dqu.b && !this.n($$0);
+   }
+
+   @Override
+   public void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      float $$4 = deq.a(this, $$1, $$2);
+      boolean $$5 = $$3.a((int)(25.0F / $$4) + 1) == 0;
+      if ($$5) {
+         this.a($$1, $$0, $$2, 1);
+      }
+   }
+
+   private void a(aqe $$0, dpy $$1, im $$2, int $$3) {
+      int $$4 = Math.min($$1.c(d) + $$3, 4);
+      if (this.a($$0, $$2, $$1, $$4)) {
+         dpy $$5 = $$1.a(d, Integer.valueOf($$4));
+         $$0.a($$2, $$5, 2);
+         if (b($$4)) {
+            $$0.a($$2.c(), $$5.a(b, dqu.a), 3);
          }
       }
    }
 
-   @Override
-   protected int a(dpi $$0, cym $$1, id $$2, ij $$3) {
-      return $$0.c(d) && ij.b != $$3 ? 15 : 0;
+   private static boolean a(czx $$0, im $$1) {
+      dpy $$2 = $$0.a_($$1);
+      return $$2.i() || $$2.a(dcx.kB);
    }
 
-   protected boolean a(czg $$0, id $$1, dpi $$2) {
-      return $$0.b($$1.d(), ij.a);
+   private static boolean b(czx $$0, im $$1) {
+      return deq.a($$0, $$1);
    }
 
-   @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      boolean $$4 = this.a($$1, $$2, $$0);
-      List<dik.a> $$5 = h.get($$1);
-
-      while ($$5 != null && !$$5.isEmpty() && $$1.Y() - $$5.get(0).b > 60L) {
-         $$5.remove(0);
-      }
-
-      if ($$0.c(d)) {
-         if ($$4) {
-            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
-            if (a($$1, $$2, true)) {
-               $$1.c(1502, $$2, 0);
-               $$1.a($$2, $$1.a_($$2).b(), 160);
-            }
-         }
-      } else if (!$$4 && !a($$1, $$2, false)) {
-         $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
-      }
+   private static boolean m(dpy $$0) {
+      return $$0.a(dcx.kB) && $$0.c(b) == dqu.b;
    }
 
-   @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dch $$3, id $$4, boolean $$5) {
-      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.O().b($$2, this)) {
-         $$1.a($$2, this, 2);
+   private static boolean b(int $$0) {
+      return $$0 >= 3;
+   }
+
+   private boolean a(czx $$0, im $$1, dpy $$2, int $$3) {
+      return !this.n($$2) && b($$0, $$1) && (!b($$3) || a($$0, $$1.c()));
+   }
+
+   private boolean n(dpy $$0) {
+      return $$0.c(d) >= 4;
+   }
+
+   @Nullable
+   private dik.a d(czx $$0, im $$1, dpy $$2) {
+      if (m($$2)) {
+         return new dik.a($$1, $$2);
+      } else {
+         im $$3 = $$1.d();
+         dpy $$4 = $$0.a_($$3);
+         return m($$4) ? new dik.a($$3, $$4) : null;
       }
    }
 
    @Override
-   protected int b(dpi $$0, cym $$1, id $$2, ij $$3) {
-      return $$3 == ij.a ? $$0.b($$1, $$2, $$3) : 0;
+   public boolean b(czx $$0, im $$1, dpy $$2) {
+      dik.a $$3 = this.d($$0, $$1, $$2);
+      return $$3 == null ? false : this.a($$0, $$3.a, $$3.b, $$3.b.c(d) + 1);
    }
 
    @Override
-   protected boolean f_(dpi $$0) {
+   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
       return true;
    }
 
    @Override
-   public void a(dpi $$0, czg $$1, id $$2, axt $$3) {
-      if ($$0.c(d)) {
-         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         $$1.a(kh.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
+      dik.a $$4 = this.d($$0, $$2, $$3);
+      if ($$4 != null) {
+         this.a($$0, $$4.b, $$4.a, 1);
       }
    }
 
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(d);
-   }
-
-   private static boolean a(czg $$0, id $$1, boolean $$2) {
-      List<dik.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
-      if ($$2) {
-         $$3.add(new dik.a($$1.i(), $$0.Y()));
-      }
-
-      int $$4 = 0;
-
-      for (dik.a $$5 : $$3) {
-         if ($$5.a.equals($$1)) {
-            if (++$$4 >= 8) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static class a {
-      final id a;
-      final long b;
-
-      public a(id $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   static record a(im a, dpy b) {
    }
 }

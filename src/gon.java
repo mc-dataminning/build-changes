@@ -1,107 +1,70 @@
-public abstract class gon implements gpf {
-   protected gpc a;
-   protected final aup b;
-   protected final ajv c;
-   protected float d = 1.0F;
-   protected float e = 1.0F;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected boolean i;
-   protected int j;
-   protected gpf.a k = gpf.a.b;
-   protected boolean l;
-   protected axt m;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   protected gon(aun $$0, aup $$1, axt $$2) {
-      this($$0.a(), $$1, $$2);
+public class gon implements AutoCloseable {
+   private final Map<akf, gon.a> a;
+
+   public gon(Map<akf, akf> $$0, gmp $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         gmn $$2 = new gmn((akf)$$1x.getKey());
+         $$1.a((akf)$$1x.getKey(), $$2);
+         return new gon.a($$2, (akf)$$1x.getValue());
+      }));
    }
 
-   protected gon(ajv $$0, aup $$1, axt $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.m = $$2;
+   public gmn a(akf $$0) {
+      return this.a.get($$0).a();
    }
 
    @Override
-   public ajv a() {
-      return this.c;
+   public void close() {
+      this.a.values().forEach(gon.a::close);
+      this.a.clear();
    }
 
-   @Override
-   public gqk a(gqj $$0) {
-      if (this.c.equals(gqj.b)) {
-         this.a = gqj.d;
-         return gqj.c;
-      } else {
-         gqk $$1 = $$0.a(this.c);
-         if ($$1 == null) {
-            this.a = gqj.a;
-         } else {
-            this.a = $$1.a(this.m);
-         }
+   public Map<akf, CompletableFuture<gon.b>> a(ato $$0, int $$1, Executor $$2) {
+      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
+         gon.a $$4 = $$3.getValue();
+         return gmj.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new gon.b($$4.a, $$1xx));
+      }));
+   }
 
-         return $$1;
+   static record a(gmn a, akf b) implements AutoCloseable {
+
+      @Override
+      public void close() {
+         this.a.f();
       }
    }
 
-   @Override
-   public gpc b() {
-      return this.a;
-   }
+   public static class b {
+      private final gmn a;
+      private final gmj.a b;
 
-   @Override
-   public aup c() {
-      return this.b;
-   }
+      public b(gmn $$0, gmj.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public boolean d() {
-      return this.i;
-   }
+      @Nullable
+      public gmo a(akf $$0) {
+         return this.b.f().get($$0);
+      }
 
-   @Override
-   public int e() {
-      return this.j;
-   }
+      public gmo a() {
+         return this.b.e();
+      }
 
-   @Override
-   public float f() {
-      return this.d * this.a.c().a(this.m);
-   }
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
 
-   @Override
-   public float g() {
-      return this.e * this.a.d().a(this.m);
-   }
-
-   @Override
-   public double h() {
-      return this.f;
-   }
-
-   @Override
-   public double i() {
-      return this.g;
-   }
-
-   @Override
-   public double j() {
-      return this.h;
-   }
-
-   @Override
-   public gpf.a k() {
-      return this.k;
-   }
-
-   @Override
-   public boolean l() {
-      return this.l;
-   }
-
-   @Override
-   public String toString() {
-      return "SoundInstance[" + this.c + "]";
+      public void c() {
+         this.a.a(this.b);
+      }
    }
 }

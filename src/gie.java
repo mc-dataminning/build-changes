@@ -1,12 +1,16 @@
-public class gie extends geq<cki> {
-   public static final ajv a = new ajv("textures/entity/projectiles/arrow.png");
-   public static final ajv f = new ajv("textures/entity/projectiles/tipped_arrow.png");
+public class gie extends ght<cdl, fsx<cdl>> {
+   private static final akf a = new akf("textures/entity/bear/polarbear.png");
 
-   public gie(gfr.a $$0) {
-      super($$0);
+   public gie(ggn.a $$0) {
+      super($$0, new fsx<>($$0.a(fuq.ba)), 0.9F);
    }
 
-   public ajv a(cki $$0) {
-      return $$0.H() > 0 ? f : a;
+   public akf a(cdl $$0) {
+      return a;
+   }
+
+   protected void a(cdl $$0, exn $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

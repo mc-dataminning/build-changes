@@ -1,53 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
 
-public class bnc extends bnk {
-   public static final Codec<bnc> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bnc::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final int b;
-   private final int f;
+public interface bnc {
+   bnb a();
 
-   private bnc(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
+   static <T> bnc.b<T> a(T $$0, int $$1) {
+      return new bnc.b<>($$0, bnb.a($$1));
    }
 
-   public static bnc a(int $$0, int $$1) {
-      return new bnc($$0, $$1);
+   public static class a implements bnc {
+      private final bnb a;
+
+      public a(int $$0) {
+         this.a = bnb.a($$0);
+      }
+
+      public a(bnb $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public bnb a() {
+         return this.a;
+      }
    }
 
-   @Override
-   public int a(axt $$0) {
-      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
-   }
+   public static class b<T> implements bnc {
+      private final T a;
+      private final bnb b;
 
-   @Override
-   public int a() {
-      return this.b;
-   }
+      b(T $$0, bnb $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public int b() {
-      return this.f;
-   }
+      public T b() {
+         return this.a;
+      }
 
-   @Override
-   public bnl<?> c() {
-      return bnl.c;
-   }
+      @Override
+      public bnb a() {
+         return this.b;
+      }
 
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+      public static <E> Codec<bnc.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bnc.b::b), bnb.a.fieldOf("weight").forGetter(bnc.b::a)).apply($$1, bnc.b::new)
+         );
+      }
    }
 }

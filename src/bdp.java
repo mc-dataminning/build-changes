@@ -1,25 +1,34 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
-public class bdp extends bee {
-   public bdp(Schema $$0, boolean $$1) {
-      super($$0, $$1, "JigsawPropertiesFix", bff.s, "minecraft:jigsaw");
+public abstract class bdp extends DataFix {
+   private final String a;
+   private final String b;
+   private final String c;
+
+   public bdp(Schema $$0, String $$1, String $$2) {
+      this($$0, $$1, $$2, $$2);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      String $$1 = $$0.get("attachement_type").asString("minecraft:empty");
-      String $$2 = $$0.get("target_pool").asString("minecraft:empty");
-      return $$0.set("name", $$0.createString($$1))
-         .set("target", $$0.createString($$1))
-         .remove("attachement_type")
-         .set("pool", $$0.createString($$2))
-         .remove("target_pool");
+   public bdp(Schema $$0, String $$1, String $$2, String $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bdp::a);
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bfp.t);
+      OpticFinder<?> $$1 = $$0.findField("components");
+      return this.fixTypeEverywhereTyped(
+         this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> aze.a($$0xxx, this.b, this.c, this::a)))
+      );
    }
+
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

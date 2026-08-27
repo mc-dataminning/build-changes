@@ -1,161 +1,167 @@
-import com.google.common.base.MoreObjects;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fpc {
-   static final ajv b = new ajv("spectator/close");
-   static final ajv c = new ajv("spectator/scroll_left");
-   static final ajv d = new ajv("spectator/scroll_right");
-   private static final fpe e = new fpc.a();
-   private static final fpe f = new fpc.b(-1, true);
-   private static final fpe g = new fpc.b(1, true);
-   private static final fpe h = new fpc.b(1, false);
-   private static final int i = 8;
-   static final wi j = wi.c("spectatorMenu.close");
-   static final wi k = wi.c("spectatorMenu.previous_page");
-   static final wi l = wi.c("spectatorMenu.next_page");
-   public static final fpe a = new fpe() {
-      @Override
-      public void a(fpc $$0) {
-      }
+public class fpc extends ffa<fpa> {
+   private final fpd a;
+   private final List<fpa> m = Lists.newArrayList();
+   @Nullable
+   private String n;
 
-      @Override
-      public wi aN_() {
-         return wh.a;
-      }
-
-      @Override
-      public void a(fdl $$0, float $$1, int $$2) {
-      }
-
-      @Override
-      public boolean aO_() {
-         return false;
-      }
-   };
-   private final fpf m;
-   private fpd n;
-   private int o = -1;
-   int p;
-
-   public fpc(fpf $$0) {
-      this.n = new fpb();
-      this.m = $$0;
+   public fpc(fpd $$0, fcu $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
    }
 
-   public fpe a(int $$0) {
-      int $$1 = $$0 + this.p * 6;
-      if (this.p > 0 && $$0 == 0) {
-         return f;
-      } else if ($$0 == 7) {
-         return $$1 < this.n.a().size() ? g : h;
-      } else if ($$0 == 8) {
-         return e;
-      } else {
-         return $$1 >= 0 && $$1 < this.n.a().size() ? (fpe)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
-      }
+   @Override
+   protected void b(feh $$0) {
    }
 
-   public List<fpe> a() {
-      List<fpe> $$0 = Lists.newArrayList();
-
-      for (int $$1 = 0; $$1 <= 8; $$1++) {
-         $$0.add(this.a($$1));
-      }
-
-      return $$0;
+   @Override
+   protected void a(feh $$0) {
    }
 
-   public fpe b() {
-      return this.a(this.o);
+   @Override
+   protected void c(feh $$0) {
+      $$0.c(this.C(), this.D() + 4, this.E(), this.F());
    }
 
-   public fpd c() {
-      return this.n;
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fpa> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
    }
 
-   public void b(int $$0) {
-      fpe $$1 = this.a($$0);
-      if ($$1 != a) {
-         if (this.o == $$0 && $$1.aO_()) {
-            $$1.a(this);
-         } else {
-            this.o = $$0;
+   private void a(Collection<UUID> $$0, Map<UUID, fpa> $$1) {
+      fvn $$2 = this.c.s.h;
+
+      for (UUID $$3 : $$0) {
+         fvx $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fpa(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
          }
       }
    }
 
-   public void d() {
-      this.m.a(this);
+   private void a(Map<UUID, fpa> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.ba().b())) {
+         fpa $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fpa $$2 = new fpa(this.c, this.a, $$3.getId(), $$3.getName(), this.c.an().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
+         }
+
+         $$4.d(true);
+      }
    }
 
-   public int e() {
-      return this.o;
+   private static Collection<GameProfile> a(fwg $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         fwi $$3 = $$0.b($$2);
+         if ($$3 instanceof fwj.a) {
+            fwj.a $$4 = (fwj.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   public void a(fpd $$0) {
+   private void I() {
+      this.m.sort(Comparator.<fpa, Integer>comparing($$0 -> {
+         if (this.c.b($$0.d())) {
+            return 0;
+         } else if (this.c.ba().a($$0.d())) {
+            return 1;
+         } else if ($$0.d().version() == 2) {
+            return 4;
+         } else {
+            return $$0.j() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.c().isBlank()) {
+            int $$1 = $$0.c().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(fpa::c, String::compareToIgnoreCase));
+   }
+
+   private void a(Collection<fpa> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.I();
+      this.J();
+      this.a(this.m);
+      this.a($$1);
+   }
+
+   private void J() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
       this.n = $$0;
-      this.o = -1;
-      this.p = 0;
    }
 
-   public fpg f() {
-      return new fpg(this.a(), this.o);
+   public boolean d() {
+      return this.m.isEmpty();
    }
 
-   static class a implements fpe {
-      @Override
-      public void a(fpc $$0) {
-         $$0.d();
-      }
+   public void a(fvx $$0, fpd.a $$1) {
+      UUID $$2 = $$0.a().getId();
 
-      @Override
-      public wi aN_() {
-         return fpc.j;
-      }
-
-      @Override
-      public void a(fdl $$0, float $$1, int $$2) {
-         $$0.a(fpc.b, 0, 0, 16, 16);
-      }
-
-      @Override
-      public boolean aO_() {
-         return true;
-      }
-   }
-
-   static class b implements fpe {
-      private final int a;
-      private final boolean b;
-
-      public b(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(fpc $$0) {
-         $$0.p = $$0.p + this.a;
-      }
-
-      @Override
-      public wi aN_() {
-         return this.a < 0 ? fpc.k : fpc.l;
-      }
-
-      @Override
-      public void a(fdl $$0, float $$1, int $$2) {
-         if (this.a < 0) {
-            $$0.a(fpc.c, 0, 0, 16, 16);
-         } else {
-            $$0.a(fpc.d, 0, 0, 16, 16);
+      for (fpa $$3 : this.m) {
+         if ($$3.d().equals($$2)) {
+            $$3.c(false);
+            return;
          }
       }
 
-      @Override
-      public boolean aO_() {
-         return this.b;
+      if (($$1 == fpd.a.a || this.c.aM().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fpa $$5 = new fpa(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b((fpa)$$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fpa $$1 : this.m) {
+         if ($$1.d().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
       }
    }
 }

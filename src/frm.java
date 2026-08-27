@@ -1,28 +1,53 @@
-public class frm<T extends bqa> extends fre<T> {
-   private static final String a = "knot";
-   private final ftv b;
-   private final ftv f;
+public class frm<T extends bql> extends fsa<T> {
+   private final fur a;
+   private final fur b;
+   private final fur f;
+   private final fur g;
 
-   public frm(ftv $$0) {
-      this.b = $$0;
-      this.f = $$0.b("knot");
+   public frm(fur $$0) {
+      this.a = $$0;
+      this.b = $$0.b("body");
+      this.f = this.b.b("tail");
+      this.g = this.f.b("tail_fin");
    }
 
-   public static fub b() {
-      fud $$0 = new fud();
-      fue $$1 = $$0.a();
-      $$1.a("knot", fua.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), ftx.a);
-      return fub.a($$0, 32, 32);
+   public static fux b() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      float $$2 = 18.0F;
+      float $$3 = -8.0F;
+      fva $$4 = $$1.a("body", fuw.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), fut.a(0.0F, 22.0F, -5.0F));
+      $$4.a("back_fin", fuw.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), fut.b((float) (Math.PI / 3), 0.0F, 0.0F));
+      $$4.a(
+         "left_fin",
+         fuw.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         fut.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+      );
+      $$4.a(
+         "right_fin",
+         fuw.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         fut.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      );
+      fva $$5 = $$4.a("tail", fuw.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), fut.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
+      $$5.a("tail_fin", fuw.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), fut.a(0.0F, 0.0F, 9.0F));
+      fva $$6 = $$4.a("head", fuw.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), fut.a(0.0F, -4.0F, -3.0F));
+      $$6.a("nose", fuw.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), fut.a);
+      return fux.a($$0, 64, 64);
    }
 
    @Override
-   public ftv a() {
-      return this.b;
+   public fur a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      if ($$0.dq().i() > 1.0E-7) {
+         this.b.e = this.b.e + (-0.05F - 0.05F * axw.b($$3 * 0.3F));
+         this.f.e = -0.1F * axw.b($$3 * 0.3F);
+         this.g.e = -0.2F * axw.b($$3 * 0.3F);
+      }
    }
 }

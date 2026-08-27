@@ -1,31 +1,56 @@
-public class fzj extends fzi {
-   private final fcc i;
+public class fzj extends fza {
+   private final fzn b;
+   protected boolean a;
 
-   public fzj(fcc $$0) {
-      this.i = $$0;
-   }
-
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
-      }
+   fzj(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzn $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
    @Override
-   public void a(boolean $$0, float $$1) {
-      this.c = this.i.x.e();
-      this.d = this.i.z.e();
-      this.e = this.i.y.e();
-      this.f = this.i.A.e();
-      this.b = a(this.c, this.d);
-      this.a = a(this.e, this.f);
-      this.g = this.i.B.e();
-      this.h = this.i.C.e();
-      if ($$0) {
-         this.a *= $$1;
-         this.b *= $$1;
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
+   }
+
+   @Override
+   public fyw b() {
+      return fyw.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements fyv<kz> {
+      private final fzn a;
+
+      public a(fzn $$0) {
+         this.a = $$0;
+      }
+
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzj $$8 = new fzj($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
+   }
+
+   public static class b implements fyv<kz> {
+      private final fzn a;
+
+      public b(fzn $$0) {
+         this.a = $$0;
+      }
+
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzj $$8 = new fzj($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

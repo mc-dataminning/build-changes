@@ -1,38 +1,29 @@
-public class fql<T extends bqa> extends fre<T> {
-   private final ftv a;
-   private final ftv b;
+import java.util.function.Function;
 
-   public fql(ftv $$0) {
+public abstract class fql<E extends bql> extends fsa<E> {
+   private final float a;
+   private final float b;
+
+   public fql(float $$0, float $$1) {
+      this($$0, $$1, gbm::e);
+   }
+
+   public fql(float $$0, float $$1, Function<akf, gbm> $$2) {
+      super($$2);
+      this.b = $$1;
       this.a = $$0;
-      this.b = $$0.b("tail_fin");
-   }
-
-   public static fub b() {
-      fud $$0 = new fud();
-      fue $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fua.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), ftx.a(0.0F, 22.0F, 0.0F));
-      $$1.a("head", fua.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), ftx.a(0.0F, 22.0F, 0.0F));
-      $$1.a("nose", fua.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), ftx.a(0.0F, 22.0F, -3.0F));
-      $$1.a("right_fin", fua.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), ftx.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", fua.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), ftx.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      $$1.a("tail_fin", fua.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), ftx.a(0.0F, 22.0F, 7.0F));
-      $$1.a("top_fin", fua.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), ftx.a(0.0F, 20.0F, 0.0F));
-      return fub.a($$0, 32, 32);
    }
 
    @Override
-   public ftv a() {
-      return this.a;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.bc()) {
-         $$6 = 1.5F;
+   public void a(exn $$0, exr $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(this.a, this.a, this.a);
+         $$0.a(0.0F, this.b / 16.0F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+      } else {
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
-
-      this.b.f = -$$6 * 0.45F * axm.a(0.6F * $$3);
    }
 }

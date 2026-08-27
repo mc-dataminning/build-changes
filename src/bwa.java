@@ -1,53 +1,33 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface bwa<F extends K1, Value> {
-   bzw<Value> a();
+public class bwa {
+   private static final int a = 10;
+   private static final int b = 7;
 
-   bzx b();
-
-   @Nullable
-   bvz<F, Value> a(bru<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(bzw<Value> a) implements bwa<Mu<Unit>, Value> {
-      @Override
-      public bzx b() {
-         return bzx.b;
-      }
-
-      @Override
-      public bvz<Mu<Unit>, Value> a(bru<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new bvz<>($$0, this.a, Const.create(Unit.INSTANCE));
-      }
+   public static buh<brm> a(float $$0) {
+      return a($$0, 10, 7);
    }
 
-   public static record b<Value>(bzw<Value> a) implements bwa<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public bzx b() {
-         return bzx.a;
-      }
+   public static buh<brm> a(float $$0, int $$1, int $$2) {
+      return bwj.a((Function<bwj.b<brm>, ? extends App<bwj.c<brm>, bwm<brm>>>)($$3 -> $$3.group($$3.c(cah.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               im $$7 = $$5.dn();
+               etf $$8;
+               if ($$4.c($$7)) {
+                  $$8 = ccb.a($$5, $$1, $$2);
+               } else {
+                  jo $$9 = jo.a($$7);
+                  jo $$10 = bsy.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cby.a($$5, $$1, $$2, etf.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = ccb.a($$5, $$1, $$2);
+                  }
+               }
 
-      @Override
-      public bvz<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bru<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new bvz<>($$0, this.a, IdF.create($$1.get()));
-      }
-   }
-
-   public static record c<Value>(bzw<Value> a) implements bwa<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public bzx b() {
-         return bzx.c;
-      }
-
-      @Override
-      public bvz<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bru<?> $$0, Optional<Value> $$1) {
-         return new bvz<>($$0, this.a, OptionalBox.create($$1));
-      }
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cak($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

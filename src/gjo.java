@@ -1,13 +1,15 @@
-public abstract class gjo<T extends bqa, M extends fqv<T>> extends gkc<T, M> {
-   public gjo(ghm<T, M> $$0) {
-      super($$0);
+public class gjo extends gio<cii> {
+   private static final akf a = new akf("textures/entity/skeleton/wither_skeleton.png");
+
+   public gjo(ggn.a $$0) {
+      super($$0, fuq.bX, fuq.bY, fuq.bZ);
    }
 
-   @Override
-   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ewv $$10 = $$1.getBuffer(this.a());
-      this.c().a($$0, $$10, 15728640, glj.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public akf a(cii $$0) {
+      return a;
    }
 
-   public abstract gaq a();
+   protected void a(cii $$0, exn $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+   }
 }

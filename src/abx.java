@@ -1,55 +1,37 @@
-public class abx implements yp<aba> {
-   public static final yg<vt, abx> a = yp.a(abx::a, abx::new);
-   public static final int b = -1;
-   public static final int c = -2;
-   private final int d;
-   private final int e;
-   private final int f;
-   private final crs g;
+public class abx implements yz<abk> {
+   public static final yq<vs, abx> a = yz.a(abx::a, abx::new);
+   private final bon b;
+   private final boolean c;
 
-   public abx(int $$0, int $$1, int $$2, crs $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3.r();
+   public abx(bon $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private abx(vt $$0) {
-      this.d = $$0.readByte();
-      this.e = $$0.l();
-      this.f = $$0.readShort();
-      this.g = crs.e.decode($$0);
+   private abx(vs $$0) {
+      this.b = bon.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
    }
 
-   private void a(vt $$0) {
-      $$0.k(this.d);
-      $$0.c(this.e);
-      $$0.l(this.f);
-      crs.e.encode($$0, this.g);
+   private void a(vs $$0) {
+      $$0.k(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public yr<abx> a() {
-      return afl.w;
+   public zb<abx> a() {
+      return afv.m;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.d;
+   public boolean b() {
+      return this.c;
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public crs f() {
-      return this.g;
-   }
-
-   public int g() {
-      return this.e;
+   public bon e() {
+      return this.b;
    }
 }

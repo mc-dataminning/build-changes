@@ -1,33 +1,45 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
 
-public record eqf(Optional<bg> b) implements eql {
-   public static final Codec<eqf> a = RecordCodecBuilder.create($$0 -> $$0.group(awu.a(bg.a, "predicate").forGetter(eqf::c)).apply($$0, eqf::new));
+public class eqf extends epo {
+   public static final Codec<eqf> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(esd.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, eqf::new)
+   );
+   private final esc b;
+   private final boolean c;
 
-   @Override
-   public eqm b() {
-      return eqn.n;
+   private eqf(List<erh> $$0, esc $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<epu<?>> a() {
-      return ImmutableSet.of(epx.f, epx.c);
+   public epq b() {
+      return epr.c;
    }
 
-   public boolean a(enk $$0) {
-      boy $$1 = $$0.c(epx.c);
-      esj $$2 = $$0.c(epx.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   @Override
+   public Set<eqq<?>> a() {
+      return this.b.a();
    }
 
-   public static eql.a a(bg.a $$0) {
-      return () -> new eqf(Optional.of($$0.b()));
+   @Override
+   public csd a(csd $$0, eoa $$1) {
+      int $$2 = this.c ? $$0.G() : 0;
+      $$0.e(axw.a($$2 + this.b.a($$1), 0, $$0.i()));
+      return $$0;
    }
 
-   public Optional<bg> c() {
-      return this.b;
+   public static epo.a<?> a(esc $$0) {
+      return a($$1 -> new eqf($$1, $$0, false));
+   }
+
+   public static epo.a<?> a(esc $$0, boolean $$1) {
+      return a($$2 -> new eqf($$2, $$0, $$1));
    }
 }

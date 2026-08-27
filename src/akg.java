@@ -1,13 +1,8 @@
-public final class akg extends RuntimeException {
-   public static final akg a = new akg();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private akg() {
-      this.setStackTrace(new StackTraceElement[0]);
-   }
-
-   @Override
-   public synchronized Throwable fillInStackTrace() {
-      this.setStackTrace(new StackTraceElement[0]);
-      return this;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface akg {
 }

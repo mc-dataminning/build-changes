@@ -1,26 +1,56 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
+@Deprecated
 public class buw {
-   private static final float a = 0.3F;
+   public static bsx<bre> a(float $$0, bob $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
 
-   public static btw<bqt> a() {
-      return bvy.a(
-         (Function<bvy.b<bqt>, ? extends App<bvy.c<bqt>, bwb<bqt>>>)($$0 -> $$0.group($$0.a(bzw.m), $$0.a(bzw.n), $$0.b(bzw.e), $$0.b(bzw.h), $$0.c(bzw.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     im $$9 = $$0.b($$3);
-                     bzy $$10 = $$0.b($$4);
-                     if ($$6.E_().a(100) == 0 && $$6.ae() == $$9.a() && $$9.b().a($$7.dk(), 4.0) && $$10.d($$0xxx -> bqg.bi.equals($$0xxx.ai()))) {
-                        $$10.a($$1xx -> bqg.bi.equals($$1xx.ai()) && $$1xx.g((bqa)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new bsw($$3xx, true));
-                           $$1.a(new bzz(new bsw($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
-                     } else {
+   public static bsx<bre> a(bqr<?> $$0, float $$1, bob $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ai()));
+   }
+
+   private static bsx<bre> a(float $$0, bob $$1, Predicate<bre> $$2) {
+      float $$3 = $$0 * $$0;
+      buw.a $$4 = new buw.a($$1);
+      return bwj.a(
+         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$3x -> $$3x.group($$3x.c(cah.n), $$3x.b(cah.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bre> $$9 = $$3x.<caj>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((bql)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
                         return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bth($$9.get(), true));
+                        return true;
                      }
                   }))
       );
+   }
+
+   public static final class a {
+      private final bob a;
+      private int b;
+
+      public a(bob $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(ayd $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

@@ -1,25 +1,16 @@
+import java.util.function.Consumer;
+
+@FunctionalInterface
 public interface grn {
-   default void b() {
+   grn a = ($$0, $$1) -> {
+   };
+
+   default grn decorate(Consumer<grr.a> $$0) {
+      return ($$1, $$2) -> this.send($$1, $$2x -> {
+            $$2.accept($$2x);
+            $$0.accept($$2x);
+         });
    }
 
-   default void a() {
-   }
-
-   default void a(fzi $$0) {
-   }
-
-   default void a(double $$0, double $$1) {
-   }
-
-   default void a(fuq $$0, esh $$1) {
-   }
-
-   default void a(fuq $$0, id $$1, dpi $$2, float $$3) {
-   }
-
-   default void c() {
-   }
-
-   default void a(crs $$0) {
-   }
+   void send(gro var1, Consumer<grr.a> var2);
 }

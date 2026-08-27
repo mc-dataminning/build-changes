@@ -1,58 +1,39 @@
-public class crh extends crn {
-   private static final int a = 40;
-
-   public crh(crn.a $$0) {
+public class crh extends cry {
+   public crh(cry.a $$0) {
       super($$0);
    }
 
    @Override
-   public crs a(crs $$0, czg $$1, bqt $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof apv $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(auz.c.b(this));
-      }
-
-      if (!$$1.B) {
-         $$2.e(bpo.s);
-      }
-
-      if ($$0.d()) {
-         return new crs(crv.sk);
-      } else {
-         if ($$2 instanceof cka $$4 && !$$4.fM()) {
-            crs $$5 = new crs(crv.sk);
-            if (!$$4.fZ().e($$5)) {
-               $$4.a($$5, false);
-            }
+   public boq a(cvn $$0) {
+      czu $$1 = $$0.q();
+      im $$2 = $$0.a();
+      dpy $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!ddj.h($$3) && !ddk.g($$3) && !ddl.g($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (dci.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, dci.a($$1, $$2));
+            $$1.a($$0.o(), dur.i, $$2);
+            $$4 = true;
          }
+      } else {
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.a(dqo.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), dur.c, $$2);
+         $$4 = true;
+      }
 
-         return $$0;
+      if ($$4) {
+         $$0.n().g(1);
+         return boq.a($$1.B);
+      } else {
+         return boq.e;
       }
    }
 
-   @Override
-   public int b(crs $$0) {
-      return 40;
-   }
-
-   @Override
-   public ctk c(crs $$0) {
-      return ctk.c;
-   }
-
-   @Override
-   public aun ak_() {
-      return auo.mo;
-   }
-
-   @Override
-   public aun al_() {
-      return auo.mo;
-   }
-
-   @Override
-   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
-      return cru.a($$0, $$1, $$2);
+   private void a(czu $$0, im $$1) {
+      ayd $$2 = $$0.E_();
+      $$0.a(null, $$1, auz.iF, ava.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 }

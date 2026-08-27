@@ -1,254 +1,253 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMaps;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.function.Function;
 import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public record cs(cm.d d, Optional<czd> e, List<cs.e<?>> f, Object2BooleanMap<ajv> g, Map<ajv, cs.c> h, Optional<br> i) implements bs {
-   public static final int b = 100;
-   public static final MapCodec<cs> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               awu.a(cm.d.d, "level", cm.d.c).forGetter(cs::b),
-               czd.f.optionalFieldOf("gamemode").forGetter(cs::c),
-               awu.a(cs.e.a.listOf(), "stats", List.of()).forGetter(cs::d),
-               awu.a(awu.d(ajv.a), "recipes", Object2BooleanMaps.emptyMap()).forGetter(cs::e),
-               awu.a(Codec.unboundedMap(ajv.a, cs.c.b), "advancements", Map.of()).forGetter(cs::f),
-               awu.a(br.a, "looking_at").forGetter(cs::g)
-            )
-            .apply($$0, cs::new)
-   );
+public interface cs<T extends Number> {
+   SimpleCommandExceptionType a = new SimpleCommandExceptionType(ws.c("argument.range.empty"));
+   SimpleCommandExceptionType b = new SimpleCommandExceptionType(ws.c("argument.range.swapped"));
 
-   @Override
-   public boolean a(bqa $$0, apu $$1, @Nullable esj $$2) {
-      if (!($$0 instanceof apv $$3)) {
-         return false;
-      } else if (!this.d.d($$3.cn)) {
-         return false;
-      } else if (this.e.isPresent() && this.e.get() != $$3.f.b()) {
-         return false;
-      } else {
-         ava $$5 = $$3.H();
+   Optional<T> a();
 
-         for (cs.e<?> $$6 : this.f) {
-            if (!$$6.a($$5)) {
-               return false;
-            }
-         }
+   Optional<T> b();
 
-         aur $$7 = $$3.I();
-         ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
-
-         while (var13.hasNext()) {
-            Entry<ajv> $$8 = (Entry<ajv>)var13.next();
-            if ($$7.b((ajv)$$8.getKey()) != $$8.getBooleanValue()) {
-               return false;
-            }
-         }
-
-         if (!this.h.isEmpty()) {
-            akd $$9 = $$3.Q();
-            akh $$10 = $$3.cL().aE();
-
-            for (java.util.Map.Entry<ajv, cs.c> $$11 : this.h.entrySet()) {
-               af $$12 = $$10.a($$11.getKey());
-               if ($$12 == null || !$$11.getValue().test($$9.b($$12))) {
-                  return false;
-               }
-            }
-         }
-
-         if (this.i.isPresent()) {
-            esj $$13 = $$3.bu();
-            esj $$14 = $$3.f(1.0F);
-            esj $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
-            esg $$16 = cku.a($$3.dM(), $$3, $$13, $$15, new ese($$13, $$15).g(1.0), $$0x -> !$$0x.N_(), 0.0F);
-            if ($$16 == null || $$16.c() != esh.a.c) {
-               return false;
-            }
-
-            bqa $$17 = $$16.a();
-            if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   default boolean c() {
+      return this.a().isEmpty() && this.b().isEmpty();
    }
 
-   @Override
-   public bs.a a() {
-      return bs.b.d;
+   default Optional<T> d() {
+      Optional<T> $$0 = this.a();
+      Optional<T> $$1 = this.b();
+      return $$0.equals($$1) ? $$0 : Optional.empty();
    }
 
-   public cm.d b() {
-      return this.d;
-   }
-
-   public Optional<czd> c() {
-      return this.e;
-   }
-
-   public List<cs.e<?>> d() {
-      return this.f;
-   }
-
-   public Object2BooleanMap<ajv> e() {
-      return this.g;
-   }
-
-   public Map<ajv, cs.c> f() {
-      return this.h;
-   }
-
-   public Optional<br> g() {
-      return this.i;
-   }
-
-   static record a(Object2BooleanMap<String> c) implements cs.c {
-      public static final Codec<cs.a> a = awu.d(Codec.STRING).xmap(cs.a::new, cs.a::a);
-
-      public boolean a(ah $$0) {
-         ObjectIterator var2 = this.c.object2BooleanEntrySet().iterator();
-
-         while (var2.hasNext()) {
-            Entry<String> $$1 = (Entry<String>)var2.next();
-            ao $$2 = $$0.c((String)$$1.getKey());
-            if ($$2 == null || $$2.a() != $$1.getBooleanValue()) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      public Object2BooleanMap<String> a() {
-         return this.c;
-      }
-   }
-
-   static record b(boolean c) implements cs.c {
-      public static final Codec<cs.b> a = Codec.BOOL.xmap(cs.b::new, cs.b::a);
-
-      public boolean a(ah $$0) {
-         return $$0.a() == this.c;
-      }
-
-      public boolean a() {
-         return this.c;
-      }
-   }
-
-   interface c extends Predicate<ah> {
-      Codec<cs.c> b = Codec.either(cs.b.a, cs.a.a).xmap($$0 -> (cs.c)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
-         if ($$0 instanceof cs.b $$1) {
-            return Either.left($$1);
-         } else if ($$0 instanceof cs.a $$2) {
-            return Either.right($$2);
-         } else {
-            throw new UnsupportedOperationException();
-         }
+   static <T extends Number, R extends cs<T>> Codec<R> a(Codec<T> $$0, cs.a<T, R> $$1) {
+      Codec<R> $$2 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group(axe.a($$0, "min").forGetter(cs::a), axe.a($$0, "max").forGetter(cs::b)).apply($$2x, $$1::create)
+      );
+      return Codec.either($$2, $$0).xmap($$1x -> (cs)$$1x.map($$0xx -> $$0xx, $$1xx -> $$1.create(Optional.of((T)$$1xx), Optional.of((T)$$1xx))), $$0x -> {
+         Optional<T> $$1x = $$0x.d();
+         return $$1x.isPresent() ? Either.right($$1x.get()) : Either.left($$0x);
       });
    }
 
-   public static class d {
-      private cm.d a = cm.d.c;
-      private Optional<czd> b = Optional.empty();
-      private final Builder<cs.e<?>> c = ImmutableList.builder();
-      private final Object2BooleanMap<ajv> d = new Object2BooleanOpenHashMap();
-      private final Map<ajv, cs.c> e = Maps.newHashMap();
-      private Optional<br> f = Optional.empty();
+   static <T extends Number, R extends cs<T>> R a(
+      StringReader $$0, cs.b<T, R> $$1, Function<String, T> $$2, Supplier<DynamicCommandExceptionType> $$3, Function<T, T> $$4
+   ) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         int $$5 = $$0.getCursor();
 
-      public static cs.d a() {
-         return new cs.d();
-      }
+         try {
+            Optional<T> $$6 = a($$0, $$2, $$3).map($$4);
+            Optional<T> $$7;
+            if ($$0.canRead(2) && $$0.peek() == '.' && $$0.peek(1) == '.') {
+               $$0.skip();
+               $$0.skip();
+               $$7 = a($$0, $$2, $$3).map($$4);
+               if ($$6.isEmpty() && $$7.isEmpty()) {
+                  throw a.createWithContext($$0);
+               }
+            } else {
+               $$7 = $$6;
+            }
 
-      public cs.d a(cm.d $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public <T> cs.d a(auy<T> $$0, in.c<T> $$1, cm.d $$2) {
-         this.c.add(new cs.e<>($$0, $$1, $$2));
-         return this;
-      }
-
-      public cs.d a(ajv $$0, boolean $$1) {
-         this.d.put($$0, $$1);
-         return this;
-      }
-
-      public cs.d a(czd $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public cs.d a(br.a $$0) {
-         this.f = Optional.of($$0.b());
-         return this;
-      }
-
-      public cs.d b(ajv $$0, boolean $$1) {
-         this.e.put($$0, new cs.b($$1));
-         return this;
-      }
-
-      public cs.d a(ajv $$0, Map<String, Boolean> $$1) {
-         this.e.put($$0, new cs.a(new Object2BooleanOpenHashMap($$1)));
-         return this;
-      }
-
-      public cs b() {
-         return new cs(this.a, this.b, this.c.build(), this.d, this.e, this.f);
+            if ($$6.isEmpty() && $$7.isEmpty()) {
+               throw a.createWithContext($$0);
+            } else {
+               return $$1.create($$0, $$6, $$7);
+            }
+         } catch (CommandSyntaxException var8) {
+            $$0.setCursor($$5);
+            throw new CommandSyntaxException(var8.getType(), var8.getRawMessage(), var8.getInput(), $$5);
+         }
       }
    }
 
-   static record e<T>(auy<T> b, in<T> c, cm.d d, Supplier<auv<T>> e) {
-      public static final Codec<cs.e<?>> a = kt.x.q().dispatch(cs.e::a, cs.e::a);
+   private static <T extends Number> Optional<T> a(StringReader $$0, Function<String, T> $$1, Supplier<DynamicCommandExceptionType> $$2) throws CommandSyntaxException {
+      int $$3 = $$0.getCursor();
 
-      public e(auy<T> $$0, in<T> $$1, cm.d $$2) {
-         this($$0, $$1, $$2, Suppliers.memoize(() -> $$0.b($$1.a())));
+      while ($$0.canRead() && a($$0)) {
+         $$0.skip();
       }
 
-      private static <T> Codec<cs.e<T>> a(auy<T> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.b().r().fieldOf("stat").forGetter(cs.e::b), awu.a(cm.d.d, "value", cm.d.c).forGetter(cs.e::c))
-                  .apply($$1, ($$1x, $$2) -> new cs.e<>($$0, $$1x, $$2))
-         );
+      String $$4 = $$0.getString().substring($$3, $$0.getCursor());
+      if ($$4.isEmpty()) {
+         return Optional.empty();
+      } else {
+         try {
+            return Optional.of($$1.apply($$4));
+         } catch (NumberFormatException var6) {
+            throw $$2.get().createWithContext($$0, $$4);
+         }
+      }
+   }
+
+   private static boolean a(StringReader $$0) {
+      char $$1 = $$0.peek();
+      if (($$1 < '0' || $$1 > '9') && $$1 != '-') {
+         return $$1 != '.' ? false : !$$0.canRead(2) || $$0.peek(1) != '.';
+      } else {
+         return true;
+      }
+   }
+
+   @FunctionalInterface
+   public interface a<T extends Number, R extends cs<T>> {
+      R create(Optional<T> var1, Optional<T> var2);
+   }
+
+   @FunctionalInterface
+   public interface b<T extends Number, R extends cs<T>> {
+      R create(StringReader var1, Optional<T> var2, Optional<T> var3) throws CommandSyntaxException;
+   }
+
+   public static record c(Optional<Double> e, Optional<Double> f, Optional<Double> g, Optional<Double> h) implements cs<Double> {
+      public static final cs.c c = new cs.c(Optional.empty(), Optional.empty());
+      public static final Codec<cs.c> d = cs.a(Codec.DOUBLE, cs.c::new);
+
+      private c(Optional<Double> $$0, Optional<Double> $$1) {
+         this($$0, $$1, a($$0), a($$1));
       }
 
-      public boolean a(ava $$0) {
-         return this.d.d($$0.a(this.e.get()));
+      private static cs.c a(StringReader $$0, Optional<Double> $$1, Optional<Double> $$2) throws CommandSyntaxException {
+         if ($$1.isPresent() && $$2.isPresent() && $$1.get() > $$2.get()) {
+            throw b.createWithContext($$0);
+         } else {
+            return new cs.c($$1, $$2);
+         }
       }
 
-      public auy<T> a() {
-         return this.b;
+      private static Optional<Double> a(Optional<Double> $$0) {
+         return $$0.map($$0x -> $$0x * $$0x);
       }
 
-      public in<T> b() {
-         return this.c;
+      public static cs.c a(double $$0) {
+         return new cs.c(Optional.of($$0), Optional.of($$0));
       }
 
-      public cm.d c() {
-         return this.d;
+      public static cs.c a(double $$0, double $$1) {
+         return new cs.c(Optional.of($$0), Optional.of($$1));
       }
 
-      public Supplier<auv<T>> d() {
+      public static cs.c b(double $$0) {
+         return new cs.c(Optional.of($$0), Optional.empty());
+      }
+
+      public static cs.c c(double $$0) {
+         return new cs.c(Optional.empty(), Optional.of($$0));
+      }
+
+      public boolean d(double $$0) {
+         return this.e.isPresent() && this.e.get() > $$0 ? false : this.f.isEmpty() || !(this.f.get() < $$0);
+      }
+
+      public boolean e(double $$0) {
+         return this.g.isPresent() && this.g.get() > $$0 ? false : this.h.isEmpty() || !(this.h.get() < $$0);
+      }
+
+      public static cs.c a(StringReader $$0) throws CommandSyntaxException {
+         return a($$0, $$0x -> $$0x);
+      }
+
+      public static cs.c a(StringReader $$0, Function<Double, Double> $$1) throws CommandSyntaxException {
+         return cs.a($$0, cs.c::a, Double::parseDouble, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidDouble, $$1);
+      }
+
+      @Override
+      public Optional<Double> a() {
          return this.e;
+      }
+
+      @Override
+      public Optional<Double> b() {
+         return this.f;
+      }
+
+      public Optional<Double> e() {
+         return this.g;
+      }
+
+      public Optional<Double> f() {
+         return this.h;
+      }
+   }
+
+   public static record d(Optional<Integer> e, Optional<Integer> f, Optional<Long> g, Optional<Long> h) implements cs<Integer> {
+      public static final cs.d c = new cs.d(Optional.empty(), Optional.empty());
+      public static final Codec<cs.d> d = cs.a(Codec.INT, cs.d::new);
+
+      private d(Optional<Integer> $$0, Optional<Integer> $$1) {
+         this($$0, $$1, $$0.map($$0x -> $$0x.longValue() * $$0x.longValue()), a($$1));
+      }
+
+      private static cs.d a(StringReader $$0, Optional<Integer> $$1, Optional<Integer> $$2) throws CommandSyntaxException {
+         if ($$1.isPresent() && $$2.isPresent() && $$1.get() > $$2.get()) {
+            throw b.createWithContext($$0);
+         } else {
+            return new cs.d($$1, $$2);
+         }
+      }
+
+      private static Optional<Long> a(Optional<Integer> $$0) {
+         return $$0.map($$0x -> $$0x.longValue() * $$0x.longValue());
+      }
+
+      public static cs.d a(int $$0) {
+         return new cs.d(Optional.of($$0), Optional.of($$0));
+      }
+
+      public static cs.d a(int $$0, int $$1) {
+         return new cs.d(Optional.of($$0), Optional.of($$1));
+      }
+
+      public static cs.d b(int $$0) {
+         return new cs.d(Optional.of($$0), Optional.empty());
+      }
+
+      public static cs.d c(int $$0) {
+         return new cs.d(Optional.empty(), Optional.of($$0));
+      }
+
+      public boolean d(int $$0) {
+         return this.e.isPresent() && this.e.get() > $$0 ? false : this.f.isEmpty() || this.f.get() >= $$0;
+      }
+
+      public boolean a(long $$0) {
+         return this.g.isPresent() && this.g.get() > $$0 ? false : this.h.isEmpty() || this.h.get() >= $$0;
+      }
+
+      public static cs.d a(StringReader $$0) throws CommandSyntaxException {
+         return a($$0, $$0x -> $$0x);
+      }
+
+      public static cs.d a(StringReader $$0, Function<Integer, Integer> $$1) throws CommandSyntaxException {
+         return cs.a($$0, cs.d::a, Integer::parseInt, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidInt, $$1);
+      }
+
+      @Override
+      public Optional<Integer> a() {
+         return this.e;
+      }
+
+      @Override
+      public Optional<Integer> b() {
+         return this.f;
+      }
+
+      public Optional<Long> e() {
+         return this.g;
+      }
+
+      public Optional<Long> f() {
+         return this.h;
       }
    }
 }

@@ -1,42 +1,93 @@
-import java.time.Instant;
+import java.util.UUID;
 
-public record aft(String b, Instant c, long d, ec e, wp.b f) implements yp<afn> {
-   public static final yg<vi, aft> a = yp.a(aft::a, aft::new);
+public class aft {
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
 
-   private aft(vi $$0) {
-      this($$0.d(256), $$0.t(), $$0.readLong(), new ec($$0), new wp.b($$0));
+   public static String a(bql $$0) {
+      if ($$0 instanceof ckl) {
+         return $$0.ad().getString();
+      } else {
+         ws $$1 = $$0.af();
+         return $$1 != null ? $$1.getString() : a($$0.cx());
+      }
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b, 256);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      this.e.a($$0);
-      this.f.a($$0);
+   public static String a(UUID $$0) {
+      ayd $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
    }
 
-   @Override
-   public yr<aft> a() {
-      return afl.bi;
+   private static String a(ayd $$0, String[] $$1) {
+      return ac.a($$1, $$0);
    }
 
-   public void a(afn $$0) {
-      $$0.a(this);
-   }
-
-   public Instant e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
-   }
-
-   public ec g() {
-      return this.e;
-   }
-
-   public wp.b h() {
-      return this.f;
+   private static ayd b(UUID $$0) {
+      return ayd.a((long)($$0.hashCode() >> 2));
    }
 }

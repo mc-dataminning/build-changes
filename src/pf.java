@@ -1,18 +1,13 @@
 import java.util.concurrent.CompletableFuture;
 
-public class pf extends pe<efq> {
-   public pf(lc $$0, CompletableFuture<ip.a> $$1) {
-      super($$0, ku.aG, $$1);
+public class pf extends pi<elq> {
+   public pf(ll $$0, CompletableFuture<ix.a> $$1) {
+      super($$0, ld.z, $$1, $$0x -> $$0x.k().h());
    }
 
    @Override
-   protected void a(ip.a $$0) {
-      this.b(avp.e).a(efk.v);
-      this.b(avp.f).a(efk.u);
-      this.b(avp.g).a(efk.t);
-      this.b(avp.h).a(efk.x);
-      this.b(avp.i).a(efk.w);
-      this.b(avp.k).a(efk.j);
-      this.b(avp.j).a(efk.e);
+   protected void a(ix.a $$0) {
+      this.a(avt.a).a(els.c, els.b);
+      this.a(avt.b).a(els.e, els.d);
    }
 }

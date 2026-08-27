@@ -1,29 +1,20 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ect extends ecj {
-   public static final Codec<ect> b = bmp.b(dpi.b).comapFlatMap(ect::a, $$0 -> $$0.c).fieldOf("entries").codec();
-   private final bmp<dpi> c;
+public record ect(ecz b, float c) {
+   public static final Codec<ect> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ecz.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, ect::new)
+   );
 
-   private static DataResult<ect> a(bmp<dpi> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new ect($$0));
+   public ecz a() {
+      return this.b;
    }
 
-   public ect(bmp<dpi> $$0) {
-      this.c = $$0;
-   }
-
-   public ect(bmp.a<dpi> $$0) {
-      this($$0.a());
-   }
-
-   @Override
-   protected eck<?> a() {
-      return eck.b;
-   }
-
-   @Override
-   public dpi a(axt $$0, id $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public float b() {
+      return this.c;
    }
 }

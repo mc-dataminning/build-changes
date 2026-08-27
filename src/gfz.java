@@ -1,27 +1,21 @@
-public class gfz extends ggx<ccs, fqx<ccs>> {
-   private static final ajv a = new ajv("textures/entity/fox/fox.png");
-   private static final ajv i = new ajv("textures/entity/fox/fox_sleep.png");
-   private static final ajv j = new ajv("textures/entity/fox/snow_fox.png");
-   private static final ajv k = new ajv("textures/entity/fox/snow_fox_sleep.png");
+public class gfz extends ght<ccz, frh<ccz>> {
+   private static final akf a = new akf("textures/entity/fish/cod.png");
 
-   public gfz(gfr.a $$0) {
-      super($$0, new fqx<>($$0.a(ftu.ad)), 0.4F);
-      this.a(new gjp(this, $$0.d()));
+   public gfz(ggn.a $$0) {
+      super($$0, new frh<>($$0.a(fuq.A)), 0.3F);
    }
 
-   protected void a(ccs $$0, ewr $$1, float $$2, float $$3, float $$4, float $$5) {
+   public akf a(ccz $$0) {
+      return a;
+   }
+
+   protected void a(ccz $$0, exn $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gt() || $$0.gn()) {
-         float $$6 = -axm.i($$4, $$0.O, $$0.dE());
-         $$1.a(a.b.rotationDegrees($$6));
-      }
-   }
-
-   public ajv a(ccs $$0) {
-      if ($$0.u() == ccs.v.a) {
-         return $$0.fI() ? i : a;
-      } else {
-         return $$0.fI() ? k : j;
+      float $$6 = 4.3F * axw.a(0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.bc()) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
       }
    }
 }

@@ -1,37 +1,48 @@
-public class acz implements yp<aba> {
-   public static final yg<vi, acz> a = yp.a(acz::a, acz::new);
+import java.util.BitSet;
+import javax.annotation.Nullable;
+
+public class acz implements yz<abk> {
+   public static final yq<vs, acz> a = yz.a(acz::a, acz::new);
    private final int b;
-   private final ajv c;
+   private final int c;
+   private final ada d;
 
-   public acz(int $$0, cvu<?> $$1) {
-      this.b = $$0;
-      this.c = $$1.a();
+   public acz(czb $$0, elg $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.e;
+      this.c = $$0.f;
+      this.d = new ada($$0, $$1, $$2, $$3);
    }
 
-   private acz(vi $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
+   private acz(vs $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new ada($$0, this.b, this.c);
    }
 
-   private void a(vi $$0) {
-      $$0.k(this.b);
-      $$0.a(this.c);
+   private void a(vs $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      this.d.a($$0);
    }
 
    @Override
-   public yr<acz> a() {
-      return afl.Y;
+   public zb<acz> a() {
+      return afv.N;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public ajv b() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
    public int e() {
-      return this.b;
+      return this.c;
+   }
+
+   public ada f() {
+      return this.d;
    }
 }

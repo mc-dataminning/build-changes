@@ -1,85 +1,44 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class fzh extends fzs {
+   private final fzn a;
 
-public abstract class fzh extends cka {
-   @Nullable
-   private fvb g;
-   protected esj b;
-   public float c;
-   public float d;
-   public float e;
-   public final fuq f;
-
-   public fzh(fuq $$0, GameProfile $$1) {
-      super($$0, $$0.U(), $$0.V(), $$1);
-      this.b = esj.b;
-      this.f = $$0;
+   protected fzh(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fzn $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
    @Override
-   public boolean N_() {
-      fvb $$0 = this.a();
-      return $$0 != null && $$0.e() == czd.d;
+   public fyw b() {
+      return fyw.b;
    }
 
    @Override
-   public boolean f() {
-      fvb $$0 = this.a();
-      return $$0 != null && $$0.e() == czd.b;
+   public void a() {
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   @Nullable
-   protected fvb a() {
-      if (this.g == null) {
-         this.g = fby.Q().L().a(this.cw());
+   public static class a implements fyv<kz> {
+      private final fzn a;
+
+      public a(fzn $$0) {
+         this.a = $$0;
       }
 
-      return this.g;
-   }
-
-   @Override
-   public void l() {
-      this.b = this.dp();
-      super.l();
-   }
-
-   public esj E(float $$0) {
-      return this.b.a(this.dp(), (double)$$0);
-   }
-
-   public gmr b() {
-      fvb $$0 = this.a();
-      return $$0 == null ? gmk.a(this.cw()) : $$0.g();
-   }
-
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.ga().b) {
-         $$0 *= 1.1F;
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzh $$8 = new fzh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
       }
-
-      $$0 *= ((float)this.g(bsa.r) / this.ga().b() + 1.0F) / 2.0F;
-      if (this.ga().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      crs $$1 = this.fu();
-      if (this.fs()) {
-         if ($$1.a(crv.ot)) {
-            int $$2 = this.fw();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (fby.Q().m.aA().a() && this.gx()) {
-            return 0.1F;
-         }
-      }
-
-      return axm.i(fby.Q().m.ak().c().floatValue(), 1.0F, $$0);
    }
 }

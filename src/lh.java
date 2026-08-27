@@ -1,11 +1,13 @@
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.hash.HashCode;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-public class lh implements le {
-   @Override
-   public void a(ip.a $$0, Consumer<af> $$1) {
-      af $$2 = le.a("adventure/root");
-      lj.a($$2, $$1, Stream.concat(lj.a.stream(), Stream.of(bqg.m, bqg.l)).collect(Collectors.toList()));
-   }
+public interface lh {
+   lh a = ($$0, $$1, $$2) -> {
+      v.c($$0.getParent());
+      Files.write($$0, $$1);
+   };
+
+   void writeIfNeeded(Path var1, byte[] var2, HashCode var3) throws IOException;
 }

@@ -1,67 +1,70 @@
-public class cvq extends cvk {
-   public cvq(cvi $$0) {
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class cvq extends cvy {
+   public cvq(cvw $$0) {
       super($$0);
    }
 
-   public boolean a(cnm $$0, czg $$1) {
-      int $$2 = 0;
-      crs $$3 = crs.i;
+   public boolean a(cnx $$0, czu $$1) {
+      csd $$2 = csd.i;
+      List<csd> $$3 = Lists.newArrayList();
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         crs $$5 = $$0.a($$4);
+         csd $$5 = $$0.a($$4);
          if (!$$5.d()) {
-            if ($$5.a(crv.rT)) {
-               if (!$$3.d()) {
+            if ($$5.a(avw.ba)) {
+               if (!$$2.d()) {
                   return false;
                }
 
-               $$3 = $$5;
+               $$2 = $$5;
             } else {
-               if (!$$5.a(crv.uh)) {
+               if (!($$5.f() instanceof cqx)) {
                   return false;
                }
 
-               $$2++;
+               $$3.add($$5);
             }
          }
       }
 
-      return !$$3.d() && $$2 > 0;
+      return !$$2.d() && !$$3.isEmpty();
    }
 
-   public crs a(cnm $$0, jb $$1) {
-      int $$2 = 0;
-      crs $$3 = crs.i;
+   public csd a(cnx $$0, jj $$1) {
+      List<cqx> $$2 = Lists.newArrayList();
+      csd $$3 = csd.i;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         crs $$5 = $$0.a($$4);
+         csd $$5 = $$0.a($$4);
          if (!$$5.d()) {
-            if ($$5.a(crv.rT)) {
+            if ($$5.a(avw.ba)) {
                if (!$$3.d()) {
-                  return crs.i;
+                  return csd.i;
                }
 
-               $$3 = $$5;
+               $$3 = $$5.r();
             } else {
-               if (!$$5.a(crv.uh)) {
-                  return crs.i;
+               if (!($$5.f() instanceof cqx $$6)) {
+                  return csd.i;
                }
 
-               $$2++;
+               $$2.add($$6);
             }
          }
       }
 
-      return !$$3.d() && $$2 >= 1 ? $$3.c($$2 + 1) : crs.i;
+      return !$$3.d() && !$$2.isEmpty() ? cut.a($$3, $$2) : csd.i;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cvw<?> ao_() {
-      return cvw.e;
+   public cwk<?> ao_() {
+      return cwk.c;
    }
 }

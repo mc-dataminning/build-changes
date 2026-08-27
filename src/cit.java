@@ -1,118 +1,38 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class cit extends cip {
-   private static final int bY = 50;
-   private static final float bZ = 0.35F;
-   private static final int ca = 7;
-   protected static final ImmutableList<cbd<? extends cbc<? super cit>>> e = ImmutableList.of(cbd.c, cbd.d, cbd.b, cbd.f, cbd.m);
-   protected static final ImmutableList<bzw<?>> bX = ImmutableList.of(
-      bzw.n, bzw.v, bzw.g, bzw.h, bzw.k, bzw.l, bzw.ao, bzw.an, bzw.x, bzw.y, bzw.m, bzw.E, new bzw[]{bzw.o, bzw.p, bzw.q, bzw.t, bzw.ab, bzw.M, bzw.b}
-   );
-
-   public cit(bqg<? extends cit> $$0, czg $$1) {
-      super($$0, $$1);
-      this.bM = 20;
+public class cit extends bsw<cin> {
+   public cit() {
+      super(Map.of(cah.o, cai.a, cah.m, cai.b, cah.aU, cai.b, cah.aV, cai.b));
    }
 
-   public static brz.a y() {
-      return chg.gt().a(bsa.q, 50.0).a(bsa.r, 0.35F).a(bsa.c, 7.0);
+   protected boolean a(aqe $$0, cin $$1) {
+      return $$1.aC() && !$$1.bc() && $$1.ap() == brp.a;
    }
 
-   @Nullable
-   @Override
-   public brl a(czv $$0, bod $$1, bqx $$2, @Nullable brl $$3) {
-      ciu.a(this);
-      this.a($$0.E_(), $$1);
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(axt $$0, bod $$1) {
-      this.a(bqh.a, new crs(crv.oX));
-   }
-
-   @Override
-   protected bru.b<cit> dQ() {
-      return bru.a(bX, e);
-   }
-
-   @Override
-   protected bru<?> a(Dynamic<?> $$0) {
-      return ciu.a(this, this.dQ().a($$0));
-   }
-
-   @Override
-   public bru<cit> dP() {
-      return (bru<cit>)super.dP();
-   }
-
-   @Override
-   public boolean r() {
-      return false;
-   }
-
-   @Override
-   public boolean k(crs $$0) {
-      return $$0.a(crv.oX) ? super.k($$0) : false;
-   }
-
-   @Override
-   protected void Y() {
-      this.dM().af().a("piglinBruteBrain");
-      this.dP().a((apu)this.dM(), this);
-      this.dM().af().c();
-      ciu.b(this);
-      ciu.c(this);
-      super.Y();
-   }
-
-   @Override
-   public cis gp() {
-      return this.gf() && this.gq() ? cis.a : cis.f;
-   }
-
-   @Override
-   public boolean a(boy $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if (this.dM().B) {
-         return false;
-      } else {
-         if ($$2 && $$0.d() instanceof bqt) {
-            ciu.a(this, (bqt)$$0.d());
+   protected void a(aqe $$0, cin $$1, long $$2) {
+      bre $$3 = $$1.dQ().c(cah.o).orElse(null);
+      if ($$3 != null) {
+         boolean $$4 = $$1.j($$3.dl());
+         etf $$5 = null;
+         if ($$4) {
+            etf $$6 = cby.a($$1, 5, 5, $$3.dl());
+            if ($$6 != null && cip.a($$1, $$6) && $$3.i($$6.c, $$6.d, $$6.e) > $$3.g($$1)) {
+               $$5 = $$6;
+            }
          }
 
-         return $$2;
+         if ($$5 == null) {
+            $$5 = $$1.ej().h() ? cip.a($$3, $$1.ej()) : a($$1, $$3);
+         }
+
+         $$1.dQ().a(cah.m, new cak(im.a($$5), 0.6F, 1));
       }
    }
 
-   @Override
-   protected aun v() {
-      return auo.tt;
-   }
-
-   @Override
-   protected aun d(boy $$0) {
-      return auo.tw;
-   }
-
-   @Override
-   protected aun o_() {
-      return auo.tv;
-   }
-
-   @Override
-   protected void b(id $$0, dpi $$1) {
-      this.a(auo.tx, 0.15F, 1.0F);
-   }
-
-   protected void gu() {
-      this.b(auo.tu);
-   }
-
-   @Override
-   protected void gr() {
-      this.b(auo.ty);
+   private static etf a(cin $$0, bre $$1) {
+      etf $$2 = $$1.dl().d($$0.dl());
+      double $$3 = $$2.f() - axw.d($$0.ej().j(), 8.0, 4.0);
+      etf $$4 = $$2.d().d($$3, $$3, $$3);
+      return $$0.dl().e($$4);
    }
 }

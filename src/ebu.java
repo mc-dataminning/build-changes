@@ -1,146 +1,97 @@
-import com.mojang.datafixers.Products.P2;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class ebu {
-   public static final Codec<ebu> d = kt.W.q().dispatch(ebu::a, ebv::a);
-   protected final bnk e;
-   protected final bnk f;
+public class ebu implements eay {
+   public static final Codec<ebu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ecz.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
+               eec.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
+               ecz.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
+               eck.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
+               ecw.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
+               ecz.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
+               ebz.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
+               edq.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
+               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
+               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, ebu::new)
+   );
+   public final ecz b;
+   public final ecz c;
+   public final eec d;
+   public final ecz e;
+   public final eck f;
+   public final Optional<ecw> g;
+   public final ebz h;
+   public final List<edq> i;
+   public final boolean j;
+   public final boolean k;
 
-   protected static <P extends ebu> P2<Mu<P>, bnk, bnk> b(Instance<P> $$0) {
-      return $$0.group(bnk.b(0, 16).fieldOf("radius").forGetter($$0x -> $$0x.e), bnk.b(0, 16).fieldOf("offset").forGetter($$0x -> $$0x.f));
+   protected ebu(ecz $$0, eec $$1, ecz $$2, eck $$3, Optional<ecw> $$4, ecz $$5, ebz $$6, List<edq> $$7, boolean $$8, boolean $$9) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.c = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 
-   public ebu(bnk $$0, bnk $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
+   public static class a {
+      public final ecz a;
+      private final eec c;
+      public final ecz b;
+      private final eck d;
+      private final Optional<ecw> e;
+      private ecz f;
+      private final ebz g;
+      private List<edq> h = ImmutableList.of();
+      private boolean i;
+      private boolean j;
 
-   protected abstract ebv<?> a();
-
-   public void a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, int $$4, ebu.a $$5, int $$6, int $$7) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$2));
-   }
-
-   protected abstract void a(czm var1, ebu.b var2, axt var3, ebe var4, int var5, ebu.a var6, int var7, int var8, int var9);
-
-   public abstract int a(axt var1, int var2, ebe var3);
-
-   public int a(axt $$0, int $$1) {
-      return this.e.a($$0);
-   }
-
-   private int a(axt $$0) {
-      return this.f.a($$0);
-   }
-
-   protected abstract boolean a(axt var1, int var2, int var3, int var4, int var5, boolean var6);
-
-   protected boolean b(axt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6;
-      int $$7;
-      if ($$5) {
-         $$6 = Math.min(Math.abs($$1), Math.abs($$1 - 1));
-         $$7 = Math.min(Math.abs($$3), Math.abs($$3 - 1));
-      } else {
-         $$6 = Math.abs($$1);
-         $$7 = Math.abs($$3);
-      }
-
-      return this.a($$0, $$6, $$2, $$7, $$4, $$5);
-   }
-
-   protected void a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, id $$4, int $$5, int $$6, boolean $$7) {
-      int $$8 = $$7 ? 1 : 0;
-      id.a $$9 = new id.a();
-
-      for (int $$10 = -$$5; $$10 <= $$5 + $$8; $$10++) {
-         for (int $$11 = -$$5; $$11 <= $$5 + $$8; $$11++) {
-            if (!this.b($$2, $$10, $$6, $$11, $$5, $$7)) {
-               $$9.a($$4, $$10, $$6, $$11);
-               a($$0, $$1, $$2, $$3, $$9);
-            }
-         }
-      }
-   }
-
-   protected final void a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, id $$4, int $$5, int $$6, boolean $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      int $$10 = $$7 ? 1 : 0;
-      id $$11 = $$4.d();
-      id.a $$12 = new id.a();
-
-      for (ij $$13 : ij.c.a) {
-         ij $$14 = $$13.h();
-         int $$15 = $$14.f() == ij.b.a ? $$5 + $$10 : $$5;
-         $$12.a($$4, 0, $$6 - 1, 0).c($$14, $$15).c($$13, -$$5);
-         int $$16 = -$$5;
-
-         while ($$16 < $$5 + $$10) {
-            boolean $$17 = $$1.a($$12.c(ij.b));
-            $$12.c(ij.a);
-            if ($$17 && a($$0, $$1, $$2, $$3, $$8, $$11, $$12)) {
-               $$12.c(ij.a);
-               a($$0, $$1, $$2, $$3, $$9, $$11, $$12);
-               $$12.c(ij.b);
-            }
-
-            $$16++;
-            $$12.c($$13);
-         }
-      }
-   }
-
-   private static boolean a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, float $$4, id $$5, id.a $$6) {
-      if ($$6.k($$5) >= 7) {
-         return false;
-      } else {
-         return $$2.i() > $$4 ? false : a($$0, $$1, $$2, $$3, $$6);
-      }
-   }
-
-   protected static boolean a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, id $$4) {
-      if (!dzq.c($$0, $$4)) {
-         return false;
-      } else {
-         dpi $$5 = $$3.e.a($$2, $$4);
-         if ($$5.b(dpy.C)) {
-            $$5 = $$5.a(dpy.C, Boolean.valueOf($$0.b($$4, $$0x -> $$0x.a(elc.c))));
-         }
-
-         $$1.a($$4, $$5);
-         return true;
-      }
-   }
-
-   public static final class a {
-      private final id a;
-      private final int b;
-      private final boolean c;
-
-      public a(id $$0, int $$1, boolean $$2) {
+      public a(ecz $$0, eec $$1, ecz $$2, eck $$3, Optional<ecw> $$4, ebz $$5) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+         this.c = $$1;
+         this.b = $$2;
+         this.f = ecz.a(dcx.j);
+         this.d = $$3;
+         this.e = $$4;
+         this.g = $$5;
       }
 
-      public id a() {
-         return this.a;
+      public a(ecz $$0, eec $$1, ecz $$2, eck $$3, ebz $$4) {
+         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
       }
 
-      public int b() {
-         return this.b;
+      public ebu.a a(ecz $$0) {
+         this.f = $$0;
+         return this;
       }
 
-      public boolean c() {
-         return this.c;
+      public ebu.a a(List<edq> $$0) {
+         this.h = $$0;
+         return this;
       }
-   }
 
-   public interface b {
-      void a(id var1, dpi var2);
+      public ebu.a a() {
+         this.i = true;
+         return this;
+      }
 
-      boolean a(id var1);
+      public ebu.a b() {
+         this.j = true;
+         return this;
+      }
+
+      public ebu c() {
+         return new ebu(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
    }
 }

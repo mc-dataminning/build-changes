@@ -1,9 +1,8 @@
-public interface fpe {
-   void a(fpc var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   wi aN_();
-
-   void a(fdl var1, float var2, int var3);
-
-   boolean aO_();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fpe {
 }

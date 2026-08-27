@@ -2,27 +2,34 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dk extends cx<dk.a> {
+public class dk extends dd<dk.a> {
    @Override
    public Codec<dk.a> a() {
       return dk.a.a;
    }
 
-   public void a(apv $$0, crs $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(aqf $$0, bql $$1) {
+      eoa $$2 = br.b($$0, $$1);
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bc> b, Optional<cc> c) implements cx.a {
+   public static record a(Optional<bc> b, Optional<bc> c) implements dd.a {
       public static final Codec<dk.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(dk.a::a), awu.a(cc.a, "item").forGetter(dk.a::b)).apply($$0, dk.a::new)
+         $$0 -> $$0.group(axe.a(br.b, "player").forGetter(dk.a::a), axe.a(br.b, "entity").forGetter(dk.a::b)).apply($$0, dk.a::new)
       );
 
-      public static an<dk.a> a(br.a $$0, cc.a $$1) {
-         return am.W.a(new dk.a(Optional.of(br.a($$0)), Optional.of($$1.b())));
+      public static an<dk.a> a(br.a $$0) {
+         return am.o.a(new dk.a(Optional.empty(), Optional.of(br.a($$0))));
       }
 
-      public boolean a(crs $$0) {
-         return !this.c.isPresent() || this.c.get().a($$0);
+      public boolean a(eoa $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
+      }
+
+      @Override
+      public void a(bd $$0) {
+         dd.a.super.a($$0);
+         $$0.a(this.c, ".entity");
       }
 
       @Override
@@ -30,7 +37,7 @@ public class dk extends cx<dk.a> {
          return this.b;
       }
 
-      public Optional<cc> b() {
+      public Optional<bc> b() {
          return this.c;
       }
    }

@@ -1,27 +1,33 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class eyo extends eyn {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class eyo extends ezj {
+   private static final Logger b = LogUtils.getLogger();
+   public List<eyn> a = Lists.newArrayList();
 
    public static eyo a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      eyo $$3 = new eyo();
+      eyo $$1 = new eyo();
 
       try {
-         $$3.a = fak.b("downloadLink", $$2, "");
-         $$3.b = fak.b("resourcePackUrl", $$2, "");
-         $$3.c = fak.b("resourcePackHash", $$2, "");
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("invites").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(eyn.a($$4.next().getAsJsonObject()));
+            }
+         }
       } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
       }
 
-      return $$3;
+      return $$1;
    }
 }

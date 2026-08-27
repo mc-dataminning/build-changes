@@ -1,42 +1,45 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class acs implements yz<abk> {
+   public static final yq<vs, acs> a = yz.a(acs::a, acs::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public record acs(emm b, byte c, boolean d, Optional<List<emk>> e, Optional<emo.b> f) implements yp<aba> {
-   public static final yg<vt, acs> a = yg.a(emm.b, acs::b, ye.c, acs::e, ye.b, acs::f, emk.a.a(ye.a()).a(ye::a), acs::g, emo.b.a, acs::h, acs::new);
+   public acs(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   public acs(emm $$0, byte $$1, boolean $$2, @Nullable Collection<emk> $$3, @Nullable emo.b $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   private acs(vs $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.l();
+      this.d = $$0.readInt();
+   }
+
+   private void a(vs $$0) {
+      $$0.k(this.b);
+      $$0.c(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public yr<acs> a() {
-      return afl.P;
+   public zb<acs> a() {
+      return afv.H;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public void a(emo $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
+   public int b() {
+      return this.b;
    }
 
-   public byte e() {
+   public int e() {
       return this.c;
    }
 
-   public boolean f() {
+   public int f() {
       return this.d;
-   }
-
-   public Optional<List<emk>> g() {
-      return this.e;
-   }
-
-   public Optional<emo.b> h() {
-      return this.f;
    }
 }

@@ -1,94 +1,194 @@
-import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.net.URI;
+import java.nio.channels.SeekableByteChannel;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.AccessMode;
+import java.nio.file.CopyOption;
+import java.nio.file.DirectoryIteratorException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileStore;
+import java.nio.file.FileSystem;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.NotDirectoryException;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
-import java.util.HashMap;
+import java.nio.file.ProviderMismatchException;
+import java.nio.file.ReadOnlyFileSystemException;
+import java.nio.file.StandardOpenOption;
+import java.nio.file.DirectoryStream.Filter;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.FileAttributeView;
+import java.nio.file.spi.FileSystemProvider;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
 
-public abstract class asj implements asr {
-   private static final Logger c = LogUtils.getLogger();
-   public static final String a = "vanilla";
-   public static final asl b = asl.a("core");
-   private final ars d;
-   private final aru e;
-   private final ajv f;
-   private final erz g;
+class asj extends FileSystemProvider {
+   public static final String a = "x-mc-link";
 
-   public asj(ars $$0, aru $$1, ajv $$2, erz $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   @Override
+   public String getScheme() {
+      return "x-mc-link";
    }
 
    @Override
-   public void loadPacks(Consumer<asm> $$0) {
-      asm $$1 = this.a(this.e);
-      if ($$1 != null) {
-         $$0.accept($$1);
-      }
-
-      this.a($$0);
+   public FileSystem newFileSystem(URI $$0, Map<String, ?> $$1) {
+      throw new UnsupportedOperationException();
    }
 
-   @Nullable
-   protected abstract asm a(arq var1);
-
-   protected abstract wi a(String var1);
-
-   public aru a() {
-      return this.e;
+   @Override
+   public FileSystem getFileSystem(URI $$0) {
+      throw new UnsupportedOperationException();
    }
 
-   private void a(Consumer<asm> $$0) {
-      Map<String, Function<String, asm>> $$1 = new HashMap<>();
-      this.a($$1::put);
-      $$1.forEach(($$1x, $$2) -> {
-         asm $$3 = $$2.apply($$1x);
-         if ($$3 != null) {
-            $$0.accept($$3);
+   @Override
+   public Path getPath(URI $$0) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public SeekableByteChannel newByteChannel(Path $$0, Set<? extends OpenOption> $$1, FileAttribute<?>... $$2) throws IOException {
+      if (!$$1.contains(StandardOpenOption.CREATE_NEW)
+         && !$$1.contains(StandardOpenOption.CREATE)
+         && !$$1.contains(StandardOpenOption.APPEND)
+         && !$$1.contains(StandardOpenOption.WRITE)) {
+         Path $$3 = a($$0).f().h();
+         if ($$3 == null) {
+            throw new NoSuchFileException($$0.toString());
+         } else {
+            return Files.newByteChannel($$3, $$1, $$2);
          }
-      });
-   }
-
-   protected void a(BiConsumer<String, Function<String, asm>> $$0) {
-      this.e.a(this.d, this.f, $$1 -> this.a($$1, $$0));
-   }
-
-   protected void a(@Nullable Path $$0, BiConsumer<String, Function<String, asm>> $$1) {
-      if ($$0 != null && Files.isDirectory($$0)) {
-         try {
-            ask.a($$0, this.g, ($$1x, $$2) -> $$1.accept(a($$1x), $$1xx -> this.a($$1xx, $$2, this.a($$1xx))));
-         } catch (IOException var4) {
-            c.warn("Failed to discover packs in {}", $$0, var4);
-         }
+      } else {
+         throw new UnsupportedOperationException();
       }
    }
 
-   private static String a(Path $$0) {
-      return StringUtils.removeEnd($$0.getFileName().toString(), ".zip");
+   @Override
+   public DirectoryStream<Path> newDirectoryStream(Path $$0, final Filter<? super Path> $$1) throws IOException {
+      final asl.a $$2 = a($$0).f().i();
+      if ($$2 == null) {
+         throw new NotDirectoryException($$0.toString());
+      } else {
+         return new DirectoryStream<Path>() {
+            @Override
+            public Iterator<Path> iterator() {
+               return $$2.a().values().stream().filter($$1xx -> {
+                  try {
+                     return $$1.accept($$1xx);
+                  } catch (IOException var3) {
+                     throw new DirectoryIteratorException(var3);
+                  }
+               }).map($$0 -> (Path)$$0).iterator();
+            }
+
+            @Override
+            public void close() {
+            }
+         };
+      }
+   }
+
+   @Override
+   public void createDirectory(Path $$0, FileAttribute<?>... $$1) {
+      throw new ReadOnlyFileSystemException();
+   }
+
+   @Override
+   public void delete(Path $$0) {
+      throw new ReadOnlyFileSystemException();
+   }
+
+   @Override
+   public void copy(Path $$0, Path $$1, CopyOption... $$2) {
+      throw new ReadOnlyFileSystemException();
+   }
+
+   @Override
+   public void move(Path $$0, Path $$1, CopyOption... $$2) {
+      throw new ReadOnlyFileSystemException();
+   }
+
+   @Override
+   public boolean isSameFile(Path $$0, Path $$1) {
+      return $$0 instanceof asi && $$1 instanceof asi && $$0.equals($$1);
+   }
+
+   @Override
+   public boolean isHidden(Path $$0) {
+      return false;
+   }
+
+   @Override
+   public FileStore getFileStore(Path $$0) {
+      return a($$0).a().a();
+   }
+
+   @Override
+   public void checkAccess(Path $$0, AccessMode... $$1) throws IOException {
+      if ($$1.length == 0 && !a($$0).g()) {
+         throw new NoSuchFileException($$0.toString());
+      } else {
+         AccessMode[] var3 = $$1;
+         int var4 = $$1.length;
+         int var5 = 0;
+
+         while (var5 < var4) {
+            AccessMode $$2 = var3[var5];
+            switch ($$2) {
+               case READ:
+                  if (!a($$0).g()) {
+                     throw new NoSuchFileException($$0.toString());
+                  }
+               default:
+                  var5++;
+                  break;
+               case EXECUTE:
+               case WRITE:
+                  throw new AccessDeniedException($$2.toString());
+            }
+         }
+      }
    }
 
    @Nullable
-   protected abstract asm a(String var1, asm.c var2, wi var3);
+   @Override
+   public <V extends FileAttributeView> V getFileAttributeView(Path $$0, Class<V> $$1, LinkOption... $$2) {
+      asi $$3 = a($$0);
+      return (V)($$1 == BasicFileAttributeView.class ? $$3.j() : null);
+   }
 
-   protected static asm.c b(final arq $$0) {
-      return new asm.c() {
-         @Override
-         public arq a(arp $$0x) {
-            return $$0;
-         }
+   @Override
+   public <A extends BasicFileAttributes> A readAttributes(Path $$0, Class<A> $$1, LinkOption... $$2) throws IOException {
+      asi $$3 = a($$0).f();
+      if ($$1 == BasicFileAttributes.class) {
+         return (A)$$3.k();
+      } else {
+         throw new UnsupportedOperationException("Attributes of type " + $$1.getName() + " not supported");
+      }
+   }
 
-         @Override
-         public arq a(arp $$0x, asm.a $$1) {
-            return $$0;
-         }
-      };
+   @Override
+   public Map<String, Object> readAttributes(Path $$0, String $$1, LinkOption... $$2) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public void setAttribute(Path $$0, String $$1, Object $$2, LinkOption... $$3) {
+      throw new ReadOnlyFileSystemException();
+   }
+
+   private static asi a(@Nullable Path $$0) {
+      if ($$0 == null) {
+         throw new NullPointerException();
+      } else if ($$0 instanceof asi) {
+         return (asi)$$0;
+      } else {
+         throw new ProviderMismatchException();
+      }
    }
 }

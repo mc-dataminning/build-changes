@@ -1,105 +1,31 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
 
-public record cn(Map<in<bpk>, cn.b> b) {
-   public static final Codec<cn> a = Codec.unboundedMap(kt.d.r(), cn.b.a).xmap(cn::new, cn::a);
+public record cn(cs.d b) {
+   public static final Codec<cn> a = RecordCodecBuilder.create($$0 -> $$0.group(axe.a(cs.d.d, "light", cs.d.c).forGetter(cn::a)).apply($$0, cn::new));
 
-   public boolean a(bqa $$0) {
-      if ($$0 instanceof bqt $$1 && this.a($$1.ev())) {
-         return true;
-      }
-
-      return false;
+   public boolean a(aqe $$0, im $$1) {
+      return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
    }
 
-   public boolean a(bqt $$0) {
-      return this.a($$0.ev());
-   }
-
-   public boolean a(Map<in<bpk>, bpm> $$0) {
-      for (Entry<in<bpk>, cn.b> $$1 : this.b.entrySet()) {
-         bpm $$2 = $$0.get($$1.getKey());
-         if (!$$1.getValue().a($$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public Map<in<bpk>, cn.b> a() {
+   public cs.d a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<in<bpk>, cn.b> a = ImmutableMap.builder();
+      private cs.d a = cs.d.c;
 
       public static cn.a a() {
          return new cn.a();
       }
 
-      public cn.a a(in<bpk> $$0) {
-         this.a.put($$0, new cn.b());
+      public cn.a a(cs.d $$0) {
+         this.a = $$0;
          return this;
       }
 
-      public cn.a a(in<bpk> $$0, cn.b $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public Optional<cn> b() {
-         return Optional.of(new cn(this.a.build()));
-      }
-   }
-
-   public static record b(cm.d b, cm.d c, Optional<Boolean> d, Optional<Boolean> e) {
-      public static final Codec<cn.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  awu.a(cm.d.d, "amplifier", cm.d.c).forGetter(cn.b::a),
-                  awu.a(cm.d.d, "duration", cm.d.c).forGetter(cn.b::b),
-                  awu.a(Codec.BOOL, "ambient").forGetter(cn.b::c),
-                  awu.a(Codec.BOOL, "visible").forGetter(cn.b::d)
-               )
-               .apply($$0, cn.b::new)
-      );
-
-      public b() {
-         this(cm.d.c, cm.d.c, Optional.empty(), Optional.empty());
-      }
-
-      public boolean a(@Nullable bpm $$0) {
-         if ($$0 == null) {
-            return false;
-         } else if (!this.b.d($$0.d())) {
-            return false;
-         } else if (!this.c.d($$0.c())) {
-            return false;
-         } else {
-            return this.d.isPresent() && this.d.get() != $$0.e() ? false : !this.e.isPresent() || this.e.get() == $$0.f();
-         }
-      }
-
-      public cm.d a() {
-         return this.b;
-      }
-
-      public cm.d b() {
-         return this.c;
-      }
-
-      public Optional<Boolean> c() {
-         return this.d;
-      }
-
-      public Optional<Boolean> d() {
-         return this.e;
+      public cn b() {
+         return new cn(this.a);
       }
    }
 }

@@ -1,76 +1,59 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dbk extends dch implements dck {
-   public static final MapCodec<dbk> a = b(dbk::new);
-   protected static final float b = 4.0F;
-   protected static final etc c = dch.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public class dbk extends dax {
+   public static final Codec<dbk> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akd.d(dba.ah), akd.d(dba.ai), akd.d(dba.aj), akd.d(dba.ak), akd.d(dba.al)).apply($$0, $$0.stable(dbk::new))
+   );
+   private final iv<dat> c;
+   private final iv<dat> d;
+   private final iv<dat> e;
+   private final iv<dat> f;
+   private final iv<dat> g;
 
-   @Override
-   public MapCodec<dbk> a() {
-      return a;
+   public static dbk a(iw<dat> $$0) {
+      return new dbk($$0.b(dba.ah), $$0.b(dba.ai), $$0.b(dba.aj), $$0.b(dba.ak), $$0.b(dba.al));
    }
 
-   public dbk(dph.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      esj $$4 = $$0.n($$1, $$2);
-      return c.a($$4.c, $$4.d, $$4.e);
-   }
-
-   @Override
-   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
+   private dbk(iv<dat> $$0, iv<dat> $$1, iv<dat> $$2, iv<dat> $$3, iv<dat> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      return $$1.a_($$2.d()).a(ave.au);
+   protected Stream<iv<dat>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return dcj.a.n();
+   protected Codec<? extends dax> a() {
+      return b;
+   }
+
+   @Override
+   public iv<dat> getNoiseBiome(int $$0, int $$1, int $$2, dbc.f $$3) {
+      int $$4 = jg.c($$0);
+      int $$5 = jg.c($$1);
+      int $$6 = jg.c($$2);
+      int $$7 = jo.a($$4);
+      int $$8 = jo.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
       } else {
-         if ($$1 == ij.b && $$2.a(dcj.mZ)) {
-            $$3.a($$4, dcj.mZ.n(), 2);
+         int $$9 = (jo.a($$4) * 2 + 1) * 8;
+         int $$10 = (jo.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dvj.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
-   }
-
-   @Override
-   public crs a(czj $$0, id $$1, dpi $$2) {
-      return new crs(crv.dQ);
-   }
-
-   @Override
-   public boolean b(czj $$0, id $$1, dpi $$2) {
-      return $$0.a_($$1.c()).i();
-   }
-
-   @Override
-   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
-      this.a($$0, $$2);
-   }
-
-   @Override
-   protected float a(dpi $$0, cka $$1, cym $$2, id $$3) {
-      return $$1.eU().f() instanceof ctc ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(czg $$0, id $$1) {
-      $$0.a($$1.c(), dcj.mZ.n().a(dbl.i, dpu.b), 3);
    }
 }

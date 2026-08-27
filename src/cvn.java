@@ -1,68 +1,71 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import javax.annotation.Nullable;
 
-public class cvn extends cvk {
-   private static final cvp a = cvp.a(crv.ut);
+public class cvn {
+   @Nullable
+   private final ckl a;
+   private final bop b;
+   private final etb c;
+   private final czu d;
+   private final csd e;
 
-   public cvn(cvi $$0) {
-      super($$0);
+   public cvn(ckl $$0, bop $$1, etb $$2) {
+      this($$0.dN(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(cnm $$0, czg $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         crs $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if ($$5.f() instanceof cqm) {
-               $$2 = true;
-            } else {
-               if (!a.a($$5)) {
-                  return false;
-               }
-
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
-      }
-
-      return $$3 && $$2;
+   protected cvn(czu $$0, @Nullable ckl $$1, bop $$2, csd $$3, etb $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public crs a(cnm $$0, jb $$1) {
-      IntList $$2 = new IntArrayList();
-      crs $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         crs $$5 = $$0.a($$4);
-         crn $$6 = $$5.f();
-         if ($$6 instanceof cqm) {
-            $$2.add(((cqm)$$6).c().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(jr.J, cug.a, $$2, cug::a);
-         return $$3;
-      } else {
-         return crs.i;
-      }
+   protected final etb j() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public im a() {
+      return this.c.a();
    }
 
-   @Override
-   public cvw<?> ao_() {
-      return cvw.i;
+   public ir k() {
+      return this.c.b();
+   }
+
+   public etf l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public csd n() {
+      return this.e;
+   }
+
+   @Nullable
+   public ckl o() {
+      return this.a;
+   }
+
+   public bop p() {
+      return this.b;
+   }
+
+   public czu q() {
+      return this.d;
+   }
+
+   public ir g() {
+      return this.a == null ? ir.c : this.a.cF();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fP();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dD();
    }
 }

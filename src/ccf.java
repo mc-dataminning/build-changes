@@ -1,179 +1,122 @@
-public abstract class ccf extends cdk implements cck {
-   private static final aja<Boolean> b = aje.a(ccf.class, ajc.k);
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public ccf(bqg<? extends ccf> $$0, czg $$1) {
-      super($$0, $$1);
-      this.bO = new ccf.a(this);
-   }
+public class ccf implements czh {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
+   private ccf.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public static brz.a r() {
-      return bqv.A().a(bsa.q, 3.0);
-   }
-
-   @Override
-   public boolean V() {
-      return super.V() || this.u();
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return !this.u() && !this.ae();
+   public ccf() {
+      this.c = ccf.a.c;
    }
 
    @Override
-   public int fO() {
-      return 8;
-   }
+   public int a(aqe $$0, boolean $$1, boolean $$2) {
+      if (!$$0.Q() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.z.a(10) == 0 ? ccf.a.b : ccf.a.c;
+         }
 
-   @Override
-   protected void a(aje.a $$0) {
-      super.a($$0);
-      $$0.a(b, false);
-   }
+         if (this.c == ccf.a.c) {
+            return 0;
+         } else {
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
 
-   @Override
-   public boolean u() {
-      return this.an.a(b);
-   }
+               this.b = true;
+            }
 
-   @Override
-   public void w(boolean $$0) {
-      this.an.a(b, $$0);
-   }
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = ccf.a.c;
+               }
 
-   @Override
-   public void b(to $$0) {
-      super.b($$0);
-      $$0.a("FromBucket", this.u());
-   }
-
-   @Override
-   public void a(to $$0) {
-      super.a($$0);
-      this.w($$0.q("FromBucket"));
-   }
-
-   @Override
-   protected void z() {
-      super.z();
-      this.bR.a(0, new byj(this, 1.25));
-      this.bR.a(2, new bwx<>(this, cka.class, 8.0F, 1.6, 1.4, bqf.f::test));
-      this.bR.a(4, new ccf.b(this));
-   }
-
-   @Override
-   protected cae b(czg $$0) {
-      return new cag(this, $$0);
-   }
-
-   @Override
-   public void a(esj $$0) {
-      if (this.cY() && this.bc()) {
-         this.a(0.01F, $$0);
-         this.a(bqy.a, this.dp());
-         this.g(this.dp().a(0.9));
-         if (this.p() == null) {
-            this.g(this.dp().b(0.0, -0.005, 0.0));
+               return 1;
+            }
          }
       } else {
-         super.a($$0);
+         this.c = ccf.a.c;
+         this.b = false;
+         return 0;
       }
    }
 
-   @Override
-   public void n_() {
-      if (!this.bc() && this.aC() && this.Q) {
-         this.g(this.dp().b((double)((this.ag.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.ag.i() * 2.0F - 1.0F) * 0.05F)));
-         this.c(false);
-         this.au = true;
-         this.b(this.go());
-      }
+   private boolean a(aqe $$0) {
+      for (ckl $$1 : $$0.x()) {
+         if (!$$1.N_()) {
+            im $$2 = $$1.dn();
+            if ($$0.c($$2) && !$$0.t($$2).a(avn.af)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + axw.d(axw.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + axw.d(axw.a($$4) * 32.0F);
+                  if (this.a($$0, new im(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
 
-      super.n_();
-   }
-
-   @Override
-   protected bof b(cka $$0, boe $$1) {
-      return cck.a($$0, $$1, this).orElse(super.b($$0, $$1));
-   }
-
-   @Override
-   public void n(crs $$0) {
-      cck.a(this, $$0);
-   }
-
-   @Override
-   public void c(to $$0) {
-      cck.a(this, $$0);
-   }
-
-   @Override
-   public aun y() {
-      return auo.dk;
-   }
-
-   protected boolean gn() {
-      return true;
-   }
-
-   protected abstract aun go();
-
-   @Override
-   protected aun aN() {
-      return auo.iQ;
-   }
-
-   @Override
-   protected void b(id $$0, dpi $$1) {
-   }
-
-   static class a extends bwt {
-      private final ccf l;
-
-      a(ccf $$0) {
-         super($$0);
-         this.l = $$0;
-      }
-
-      @Override
-      public void a() {
-         if (this.l.a(avj.a)) {
-            this.l.g(this.l.dp().b(0.0, 0.005, 0.0));
-         }
-
-         if (this.k == bwt.a.b && !this.l.K().l()) {
-            float $$0 = (float)(this.h * this.l.g(bsa.r));
-            this.l.y(axm.i(0.125F, this.l.fk(), $$0));
-            double $$1 = this.e - this.l.dr();
-            double $$2 = this.f - this.l.dt();
-            double $$3 = this.g - this.l.dx();
-            if ($$2 != 0.0) {
-               double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-               this.l.g(this.l.dp().b(0.0, (double)this.l.fk() * ($$2 / $$4) * 0.1, 0.0));
+               return true;
             }
-
-            if ($$1 != 0.0 || $$3 != 0.0) {
-               float $$5 = (float)(axm.d($$3, $$1) * 180.0F / (float)Math.PI) - 90.0F;
-               this.l.r(this.a(this.l.dC(), $$5, 90.0F));
-               this.l.aX = this.l.dC();
-            }
-         } else {
-            this.l.y(0.0F);
          }
       }
+
+      return false;
    }
 
-   static class b extends byo {
-      private final ccf i;
+   private void b(aqe $$0) {
+      etf $$1 = this.a($$0, new im(this.f, this.g, this.h));
+      if ($$1 != null) {
+         cik $$2;
+         try {
+            $$2 = new cik($$0);
+            $$2.a($$0, $$0.d_($$2.dn()), bri.h, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
 
-      public b(ccf $$0) {
-         super($$0, 1.0, 40);
-         this.i = $$0;
+         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
+      }
+   }
+
+   @Nullable
+   private etf a(aqe $$0, im $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.z.a(16) - 8;
+         int $$4 = $$1.w() + $$0.z.a(16) - 8;
+         int $$5 = $$0.a(dvq.a.b, $$3, $$4);
+         im $$6 = new im($$3, $$5, $$4);
+         if ($$0.c($$6) && chr.b(bqr.bt, $$0, bri.h, $$6, $$0.z)) {
+            return etf.c($$6);
+         }
       }
 
-      @Override
-      public boolean a() {
-         return this.i.gn() && super.a();
-      }
+      return null;
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

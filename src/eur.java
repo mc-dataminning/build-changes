@@ -1,61 +1,126 @@
-import java.nio.ByteBuffer;
-import java.util.OptionalInt;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
 
-public class eur {
+public class eur<T> implements eux<T>, euz<T> {
+   private final Queue<euw<T>> a = new PriorityQueue<>(euw.a);
    @Nullable
-   private ByteBuffer a;
-   private final AudioFormat b;
-   private boolean c;
-   private int d;
+   private List<euv<T>> b;
+   private final Set<euw<?>> c = new ObjectOpenCustomHashSet(euw.c);
+   @Nullable
+   private BiConsumer<eur<T>, euw<T>> d;
 
-   public eur(ByteBuffer $$0, AudioFormat $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public eur() {
    }
 
-   OptionalInt a() {
-      if (!this.c) {
-         if (this.a == null) {
-            return OptionalInt.empty();
-         }
+   public eur(List<euv<T>> $$0) {
+      this.b = $$0;
 
-         int $$0 = euq.a(this.b);
-         int[] $$1 = new int[1];
-         AL10.alGenBuffers($$1);
-         if (euq.a("Creating buffer")) {
-            return OptionalInt.empty();
-         }
+      for (euv<T> $$1 : $$0) {
+         this.c.add(euw.a($$1.a(), $$1.b()));
+      }
+   }
 
-         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
-         if (euq.a("Assigning buffer data")) {
-            return OptionalInt.empty();
-         }
+   public void a(@Nullable BiConsumer<eur<T>, euw<T>> $$0) {
+      this.d = $$0;
+   }
 
-         this.d = $$1[0];
-         this.c = true;
-         this.a = null;
+   @Nullable
+   public euw<T> b() {
+      return this.a.peek();
+   }
+
+   @Nullable
+   public euw<T> c() {
+      euw<T> $$0 = this.a.poll();
+      if ($$0 != null) {
+         this.c.remove($$0);
       }
 
-      return OptionalInt.of(this.d);
-   }
-
-   public void b() {
-      if (this.c) {
-         AL10.alDeleteBuffers(new int[]{this.d});
-         if (euq.a("Deleting stream buffers")) {
-            return;
-         }
-      }
-
-      this.c = false;
-   }
-
-   public OptionalInt c() {
-      OptionalInt $$0 = this.a();
-      this.c = false;
       return $$0;
+   }
+
+   @Override
+   public void a(euw<T> $$0) {
+      if (this.c.add($$0)) {
+         this.b($$0);
+      }
+   }
+
+   private void b(euw<T> $$0) {
+      this.a.add($$0);
+      if (this.d != null) {
+         this.d.accept(this, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(im $$0, T $$1) {
+      return this.c.contains(euw.a($$1, $$0));
+   }
+
+   public void a(Predicate<euw<T>> $$0) {
+      Iterator<euw<T>> $$1 = this.a.iterator();
+
+      while ($$1.hasNext()) {
+         euw<T> $$2 = $$1.next();
+         if ($$0.test($$2)) {
+            $$1.remove();
+            this.c.remove($$2);
+         }
+      }
+   }
+
+   public Stream<euw<T>> d() {
+      return this.a.stream();
+   }
+
+   @Override
+   public int a() {
+      return this.a.size() + (this.b != null ? this.b.size() : 0);
+   }
+
+   public ue a(long $$0, Function<T, String> $$1) {
+      ue $$2 = new ue();
+      if (this.b != null) {
+         for (euv<T> $$3 : this.b) {
+            $$2.add($$3.a($$1));
+         }
+      }
+
+      for (euw<T> $$4 : this.a) {
+         $$2.add(euv.a($$4, $$1, $$0));
+      }
+
+      return $$2;
+   }
+
+   public void a(long $$0) {
+      if (this.b != null) {
+         int $$1 = -this.b.size();
+
+         for (euv<T> $$2 : this.b) {
+            this.b($$2.a($$0, (long)($$1++)));
+         }
+      }
+
+      this.b = null;
+   }
+
+   public static <T> eur<T> a(ue $$0, Function<String, Optional<T>> $$1, czb $$2) {
+      Builder<euv<T>> $$3 = ImmutableList.builder();
+      euv.a($$0, $$1, $$2, $$3::add);
+      return new eur<>($$3.build());
    }
 }

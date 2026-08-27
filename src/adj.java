@@ -1,69 +1,37 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
+public class adj implements yz<abk> {
+   public static final yq<vs, adj> a = yz.a(adj::a, adj::new);
+   private final int b;
+   private final akf c;
 
-public class adj implements yp<aba> {
-   public static final yg<vi, adj> a = yp.a(adj::a, adj::new);
-   private final adj.a b;
-   private final List<ajv> c;
-   private final List<ajv> d;
-   private final aus e;
-
-   public adj(adj.a $$0, Collection<ajv> $$1, Collection<ajv> $$2, aus $$3) {
+   public adj(int $$0, cwi<?> $$1) {
       this.b = $$0;
-      this.c = ImmutableList.copyOf($$1);
-      this.d = ImmutableList.copyOf($$2);
-      this.e = $$3;
+      this.c = $$1.a();
    }
 
-   private adj(vi $$0) {
-      this.b = $$0.b(adj.a.class);
-      this.e = aus.a($$0);
-      this.c = $$0.a(vi::q);
-      if (this.b == adj.a.a) {
-         this.d = $$0.a(vi::q);
-      } else {
-         this.d = ImmutableList.of();
-      }
+   private adj(vs $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.q();
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b);
-      this.e.b($$0);
-      $$0.a(this.c, vi::a);
-      if (this.b == adj.a.a) {
-         $$0.a(this.d, vi::a);
-      }
+   private void a(vs $$0) {
+      $$0.k(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yr<adj> a() {
-      return afl.ai;
+   public zb<adj> a() {
+      return afv.Y;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public List<ajv> b() {
+   public akf b() {
       return this.c;
    }
 
-   public List<ajv> e() {
-      return this.d;
-   }
-
-   public aus f() {
-      return this.e;
-   }
-
-   public adj.a g() {
+   public int e() {
       return this.b;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

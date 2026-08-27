@@ -1,22 +1,21 @@
-public class gnb {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public gnb(int $$0) {
-      this($$0, -1);
+public class gnb implements gms {
+   public static final Codec<gnb> b = RecordCodecBuilder.create($$0 -> $$0.group(aye.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gnb::new));
+   private final aye c;
+
+   public gnb(aye $$0) {
+      this.c = $$0;
    }
 
-   public gnb(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Override
+   public void a(ato $$0, gms.a $$1) {
+      $$1.a(this.c.c());
    }
 
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   @Override
+   public gmu a() {
+      return gmv.c;
    }
 }

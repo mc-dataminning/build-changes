@@ -1,69 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
 
-public class gmv extends tj {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public class gmv {
+   private static final BiMap<akf, gmu> i = HashBiMap.create();
+   public static final gmu a = a("single", gna.b);
+   public static final gmu b = a("directory", gmx.b);
+   public static final gmu c = a("filter", gnb.b);
+   public static final gmu d = a("unstitch", gnc.b);
+   public static final gmu e = a("paletted_permutations", gmz.b);
+   public static Codec<gmu> f = akf.a.flatXmap($$0 -> {
+      gmu $$1 = (gmu)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      akf $$1 = (akf)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<gms> g = f.dispatch(gms::a, gmu::a);
+   public static Codec<List<gms>> h = g.listOf().fieldOf("sources").codec();
 
-   private gmv(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public static gmv a(ate $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = Maps.newHashMap();
-
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               ajv $$7 = new ajv($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
-            }
-         }
+   private static gmu a(String $$0, Codec<? extends gms> $$1) {
+      gmu $$2 = new gmu($$1);
+      akf $$3 = new akf($$0);
+      gmu $$4 = (gmu)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
+      } else {
+         return $$2;
       }
-
-      return new gmv(ImmutableMap.copyOf($$3), $$2);
-   }
-
-   private static void a(String $$0, List<atc> $$1, Map<String, String> $$2) {
-      for (atc $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            tj.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
-         }
-      }
-   }
-
-   @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public awy a(wn $$0) {
-      return gmw.a($$0, this.d);
    }
 }

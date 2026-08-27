@@ -1,23 +1,18 @@
-import java.util.Optional;
-import java.util.UUID;
+public enum za {
+   a("serverbound"),
+   b("clientbound");
 
-public record za(Optional<UUID> b) implements yp<yv> {
-   public static final yg<vi, za> a = yp.a(za::a, za::new);
+   private final String c;
 
-   private za(vi $$0) {
-      this($$0.b(jh.g));
+   private za(String $$0) {
+      this.c = $$0;
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b, jh.g);
+   public za a() {
+      return this == b ? a : b;
    }
 
-   @Override
-   public yr<za> a() {
-      return zf.e;
-   }
-
-   public void a(yv $$0) {
-      $$0.a(this);
+   public String b() {
+      return this.c;
    }
 }

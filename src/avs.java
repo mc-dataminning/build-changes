@@ -1,17 +1,10 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class avs {
+   public static final awd<eeh> a = a("visible");
 
-public record avs(List<avr> b, boolean c) {
-   public static final Codec<avs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avr.a.listOf().fieldOf("values").forGetter(avs::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(avs::b)).apply($$0, avs::new)
-   );
-
-   public List<avr> a() {
-      return this.b;
+   private avs() {
    }
 
-   public boolean b() {
-      return this.c;
+   private static awd<eeh> a(String $$0) {
+      return awd.a(ld.aE, new akf($$0));
    }
 }

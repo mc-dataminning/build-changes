@@ -1,348 +1,148 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Suppliers;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public final class dvd extends drf {
-   public static final Codec<dvd> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(daj.a.fieldOf("biome_source").forGetter($$0x -> $$0x.b), dvf.b.fieldOf("settings").forGetter($$0x -> $$0x.e))
-            .apply($$0, $$0.stable(dvd::new))
-   );
-   private static final dpi d = dcj.a.n();
-   private final in<dvf> e;
-   private final Supplier<dum.a> f;
-
-   public dvd(daj $$0, in<dvf> $$1) {
-      super($$0);
-      this.e = $$1;
-      this.f = Suppliers.memoize(() -> a($$1.a()));
-   }
-
-   private static dum.a a(dvf $$0) {
-      dum.b $$1 = new dum.b(-54, dcj.H.n());
-      int $$2 = $$0.l();
-      dum.b $$3 = new dum.b($$2, $$0.h());
-      dum.b $$4 = new dum.b(dta.e * 2, dcj.a.n());
-      return ($$4x, $$5, $$6) -> $$5 < Math.min(-54, $$2) ? $$1 : $$3;
-   }
-
-   @Override
-   public CompletableFuture<dre> a(Executor $$0, dvo $$1, dwc $$2, czz $$3, dre $$4) {
-      return CompletableFuture.supplyAsync(ac.a("init_biomes", () -> {
-         this.a($$2, $$1, $$3, $$4);
-         return $$4;
-      }), ac.f());
-   }
-
-   private void a(dwc $$0, dvo $$1, czz $$2, dre $$3) {
-      dve $$4 = $$3.a($$3x -> this.a($$3x, $$2, $$0, $$1));
-      dai $$5 = duo.a($$0.a(this.b), $$3);
-      $$3.a($$5, $$4.a($$1.a(), this.e.a().k()));
-   }
-
-   private dve a(dre $$0, czz $$1, dwc $$2, dvo $$3) {
-      return dve.a($$0, $$3, dun.a($$1, $$0.f()), this.e.a(), this.f.get(), $$2);
-   }
-
-   @Override
-   protected Codec<? extends drf> a() {
-      return c;
-   }
-
-   public in<dvf> g() {
-      return this.e;
-   }
-
-   public boolean a(aju<dvf> $$0) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, dva.a $$2, czi $$3, dvo $$4) {
-      return this.a($$3, $$4, $$0, $$1, null, $$2.e()).orElse($$3.I_());
-   }
-
-   @Override
-   public czs a(int $$0, int $$1, czi $$2, dvo $$3) {
-      MutableObject<czs> $$4 = new MutableObject();
-      this.a($$2, $$3, $$0, $$1, $$4, null);
-      return (czs)$$4.getValue();
-   }
-
-   @Override
-   public void a(List<String> $$0, dvo $$1, id $$2) {
-      DecimalFormat $$3 = new DecimalFormat("0.000");
-      dvg $$4 = $$1.a();
-      dut.e $$5 = new dut.e($$2.u(), $$2.v(), $$2.w());
-      double $$6 = $$4.j().a($$5);
-      $$0.add(
-         "NoiseRouter T: "
-            + $$3.format($$4.e().a($$5))
-            + " V: "
-            + $$3.format($$4.f().a($$5))
-            + " C: "
-            + $$3.format($$4.g().a($$5))
-            + " E: "
-            + $$3.format($$4.h().a($$5))
-            + " D: "
-            + $$3.format($$4.i().a($$5))
-            + " W: "
-            + $$3.format($$6)
-            + " PV: "
-            + $$3.format((double)dvh.a((float)$$6))
-            + " AS: "
-            + $$3.format($$4.k().a($$5))
-            + " N: "
-            + $$3.format($$4.l().a($$5))
-      );
-   }
-
-   private OptionalInt a(czi $$0, dvo $$1, int $$2, int $$3, @Nullable MutableObject<czs> $$4, @Nullable Predicate<dpi> $$5) {
-      dvi $$6 = this.e.a().f().a($$0);
-      int $$7 = $$6.a();
-      int $$8 = $$6.c();
-      int $$9 = axm.a($$8, $$7);
-      int $$10 = axm.a($$6.d(), $$7);
-      if ($$10 <= 0) {
-         return OptionalInt.empty();
-      } else {
-         dpi[] $$11;
-         if ($$4 == null) {
-            $$11 = null;
-         } else {
-            $$11 = new dpi[$$6.d()];
-            $$4.setValue(new czs($$8, $$11));
+public class dvd implements dvk.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ac.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
+            }
          }
+      }
+   });
+   private final ObjectListIterator<dvd.a> h;
+   private final ObjectListIterator<ehi> i;
 
-         int $$13 = $$6.b();
-         int $$14 = Math.floorDiv($$2, $$13);
-         int $$15 = Math.floorDiv($$3, $$13);
-         int $$16 = Math.floorMod($$2, $$13);
-         int $$17 = Math.floorMod($$3, $$13);
-         int $$18 = $$14 * $$13;
-         int $$19 = $$15 * $$13;
-         double $$20 = (double)$$16 / (double)$$13;
-         double $$21 = (double)$$17 / (double)$$13;
-         dve $$22 = new dve(1, $$1, $$18, $$19, $$6, duu.b.a, this.e.a(), this.f.get(), dwc.a());
-         $$22.f();
-         $$22.b(0);
+   public static dvd a(dan $$0, czb $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<dvd.a> $$4 = new ObjectArrayList(10);
+      ObjectList<ehi> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != egr.a).forEach($$5x -> {
+         egr $$6 = $$5x.h().d();
 
-         for (int $$23 = $$10 - 1; $$23 >= 0; $$23--) {
-            $$22.b($$23, 0);
+         for (egk $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof egc) {
+                  egc $$8 = (egc)$$7;
+                  ehp.a $$9 = $$8.b().e();
+                  if ($$9 == ehp.a.b) {
+                     $$4.add(new dvd.a($$8.f(), $$6, $$8.d()));
+                  }
 
-            for (int $$24 = $$7 - 1; $$24 >= 0; $$24--) {
-               int $$25 = ($$9 + $$23) * $$7 + $$24;
-               double $$26 = (double)$$24 / (double)$$7;
-               $$22.a($$25, $$26);
-               $$22.b($$2, $$20);
-               $$22.c($$3, $$21);
-               dpi $$27 = $$22.e();
-               dpi $$28 = $$27 == null ? this.e.a().g() : $$27;
-               if ($$11 != null) {
-                  int $$29 = $$23 * $$7 + $$24;
-                  $$11[$$29] = $$28;
-               }
-
-               if ($$5 != null && $$5.test($$28)) {
-                  $$22.g();
-                  return OptionalInt.of($$25 + 1);
+                  for (ehi $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new dvd.a($$7.f(), $$6, 0));
                }
             }
          }
-
-         $$22.g();
-         return OptionalInt.empty();
-      }
-   }
-
-   @Override
-   public void a(aqb $$0, czz $$1, dvo $$2, dre $$3) {
-      if (!aa.a($$3.f())) {
-         dvx $$4 = new dvx(this, $$0);
-         this.a($$3, $$4, $$2, $$1, $$0.F_(), $$0.H_().d(ku.aw), dwc.a($$0));
-      }
+      });
+      return new dvd($$4.iterator(), $$5.iterator());
    }
 
    @VisibleForTesting
-   public void a(dre $$0, dvx $$1, dvo $$2, czz $$3, dah $$4, ja<daf> $$5, dwc $$6) {
-      dve $$7 = $$0.a($$3x -> this.a($$3x, $$3, $$6, $$2));
-      dvf $$8 = this.e.a();
-      $$2.c().a($$2, $$4, $$5, $$8.n(), $$1, $$0, $$7, $$8.j());
+   public dvd(ObjectListIterator<dvd.a> $$0, ObjectListIterator<ehi> $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public void a(aqb $$0, long $$1, dvo $$2, dah $$3, czz $$4, dre $$5, duw.a $$6) {
-      dah $$7 = $$3.a(($$1x, $$2x, $$3x) -> this.b.getNoiseBiome($$1x, $$2x, $$3x, $$2.b()));
-      dvz $$8 = new dvz(new dvb(dvp.a()));
-      int $$9 = 8;
-      cyn $$10 = $$5.f();
-      dve $$11 = $$5.a($$3x -> this.a($$3x, $$4, dwc.a($$0), $$2));
-      dum $$12 = $$11.i();
-      dxa $$13 = new dxa(this, $$0.H_(), $$5.z(), $$11, $$2, this.e.a().j());
-      drd $$14 = ((dry)$$5).b($$6);
+   public double a(dvj.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
 
-      for (int $$15 = -8; $$15 <= 8; $$15++) {
-         for (int $$16 = -8; $$16 <= 8; $$16++) {
-            cyn $$17 = new cyn($$10.e + $$15, $$10.f + $$16);
-            dre $$18 = $$0.a($$17.e, $$17.f);
-            dag $$19 = $$18.a(() -> this.a(this.b.getNoiseBiome(iy.a($$17.d()), 0, iy.a($$17.e()), $$2.b())));
-            Iterable<in<dxd<?>>> $$20 = $$19.a($$6);
-            int $$21 = 0;
+      while (this.h.hasNext()) {
+         dvd.a $$5 = (dvd.a)this.h.next();
+         efy $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
 
-            for (in<dxd<?>> $$22 : $$20) {
-               dxd<?> $$23 = $$22.a();
-               $$8.c($$1 + (long)$$21, $$17.e, $$17.f);
-               if ($$23.a($$8)) {
-                  $$23.a($$13, $$5, $$7::a, $$8, $$12, $$17, $$14);
-               }
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+         };
 
-               $$21++;
-            }
-         }
-      }
-   }
-
-   @Override
-   public CompletableFuture<dre> a(Executor $$0, dwc $$1, dvo $$2, czz $$3, dre $$4) {
-      dvi $$5 = this.e.a().f().a($$4.z());
-      int $$6 = $$5.c();
-      int $$7 = axm.a($$6, $$5.a());
-      int $$8 = axm.a($$5.d(), $$5.a());
-      if ($$8 <= 0) {
-         return CompletableFuture.completedFuture($$4);
-      } else {
-         int $$9 = $$4.e($$8 * $$5.a() - 1 + $$6);
-         int $$10 = $$4.e($$6);
-         Set<drp> $$11 = Sets.newHashSet();
-
-         for (int $$12 = $$9; $$12 >= $$10; $$12--) {
-            drp $$13 = $$4.b($$12);
-            $$13.a();
-            $$11.add($$13);
-         }
-
-         return CompletableFuture.supplyAsync(ac.a("wgen_fill_noise", () -> this.a($$1, $$3, $$2, $$4, $$7, $$8)), ac.f()).whenCompleteAsync(($$1x, $$2x) -> {
-            for (drp $$3x : $$11) {
-               $$3x.b();
-            }
-         }, $$0);
-      }
-   }
-
-   private dre a(dwc $$0, czz $$1, dvo $$2, dre $$3, int $$4, int $$5) {
-      dve $$6 = $$3.a($$3x -> this.a($$3x, $$1, $$0, $$2));
-      dva $$7 = $$3.a(dva.a.c);
-      dva $$8 = $$3.a(dva.a.a);
-      cyn $$9 = $$3.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      dum $$12 = $$6.i();
-      $$6.f();
-      id.a $$13 = new id.a();
-      int $$14 = $$6.j();
-      int $$15 = $$6.k();
-      int $$16 = 16 / $$14;
-      int $$17 = 16 / $$14;
-
-      for (int $$18 = 0; $$18 < $$16; $$18++) {
-         $$6.b($$18);
-
-         for (int $$19 = 0; $$19 < $$17; $$19++) {
-            int $$20 = $$3.am() - 1;
-            drp $$21 = $$3.b($$20);
-
-            for (int $$22 = $$5 - 1; $$22 >= 0; $$22--) {
-               $$6.b($$22, $$19);
-
-               for (int $$23 = $$15 - 1; $$23 >= 0; $$23--) {
-                  int $$24 = ($$4 + $$22) * $$15 + $$23;
-                  int $$25 = $$24 & 15;
-                  int $$26 = $$3.e($$24);
-                  if ($$20 != $$26) {
-                     $$20 = $$26;
-                     $$21 = $$3.b($$26);
-                  }
-
-                  double $$27 = (double)$$23 / (double)$$15;
-                  $$6.a($$24, $$27);
-
-                  for (int $$28 = 0; $$28 < $$14; $$28++) {
-                     int $$29 = $$10 + $$18 * $$14 + $$28;
-                     int $$30 = $$29 & 15;
-                     double $$31 = (double)$$28 / (double)$$14;
-                     $$6.b($$29, $$31);
-
-                     for (int $$32 = 0; $$32 < $$14; $$32++) {
-                        int $$33 = $$11 + $$19 * $$14 + $$32;
-                        int $$34 = $$33 & 15;
-                        double $$35 = (double)$$32 / (double)$$14;
-                        $$6.c($$33, $$35);
-                        dpi $$36 = $$6.e();
-                        if ($$36 == null) {
-                           $$36 = this.e.a().g();
-                        }
-
-                        $$36 = this.a($$6, $$29, $$24, $$33, $$36);
-                        if ($$36 != d && !aa.a($$3.f())) {
-                           $$21.a($$30, $$25, $$34, $$36, false);
-                           $$7.a($$30, $$24, $$34, $$36);
-                           $$8.a($$30, $$24, $$34, $$36);
-                           if ($$12.a() && !$$36.u().c()) {
-                              $$13.d($$29, $$24, $$33);
-                              $$3.e($$13);
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         $$6.h();
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a($$8, $$12, $$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+         };
       }
 
-      $$6.g();
-      return $$3;
-   }
+      this.h.back(Integer.MAX_VALUE);
 
-   private dpi a(dve $$0, int $$1, int $$2, int $$3, dpi $$4) {
+      while (this.i.hasNext()) {
+         ehi $$13 = (ehi)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
       return $$4;
    }
 
    @Override
-   public int d() {
-      return this.e.a().f().d();
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
    }
 
    @Override
-   public int e() {
-      return this.e.a().l();
+   public double b() {
+      return Double.POSITIVE_INFINITY;
    }
 
-   @Override
-   public int f() {
-      return this.e.a().f().c();
+   private static double a(int $$0, int $$1, int $$2) {
+      double $$3 = axw.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
+      return axw.a($$3, 0.0, 6.0, 1.0, 0.0);
    }
 
-   @Override
-   public void a(aqb $$0) {
-      if (!this.e.a().a()) {
-         cyn $$1 = $$0.a();
-         in<daf> $$2 = $$0.t($$1.l().h($$0.al() - 1));
-         dvz $$3 = new dvz(new dvb(dvp.a()));
-         $$3.a($$0.C(), $$1.d(), $$1.e());
-         czr.a($$0, $$2, $$1, $$3);
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = axw.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * axw.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
       }
+   }
+
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
+   }
+
+   private static double b(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
+   }
+
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = axw.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
+
+   @VisibleForTesting
+   public static record a(efy a, egr b, int c) {
    }
 }

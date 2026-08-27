@@ -1,44 +1,36 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import java.util.zip.Deflater;
+import java.util.HashMap;
+import java.util.Map;
 
-public class vf extends MessageToByteEncoder<ByteBuf> {
-   private final byte[] a = new byte[8192];
-   private final Deflater b;
-   private int c;
-
-   public vf(int $$0) {
-      this.c = $$0;
-      this.b = new Deflater();
+public record vf(int a, Map<String, ux<?>> b, Map<String, vf> c) {
+   private vf(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      if ($$3 < this.c) {
-         vz.a($$2, 0);
-         $$2.writeBytes($$1);
+   public static vf a() {
+      return new vf(1);
+   }
+
+   public void a(ve $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new vf(this.a + 1)).a($$0);
       } else {
-         byte[] $$4 = new byte[$$3];
-         $$1.readBytes($$4);
-         vz.a($$2, $$4.length);
-         this.b.setInput($$4, 0, $$3);
-         this.b.finish();
-
-         while (!this.b.finished()) {
-            int $$5 = this.b.deflate(this.a);
-            $$2.writeBytes(this.a, 0, $$5);
-         }
-
-         this.b.reset();
+         this.b.put($$0.c(), $$0.b());
       }
    }
 
-   public int a() {
-      return this.c;
+   public boolean a(ux<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
    }
 
-   public void a(int $$0) {
-      this.c = $$0;
+   public int b() {
+      return this.a;
+   }
+
+   public Map<String, ux<?>> c() {
+      return this.b;
+   }
+
+   public Map<String, vf> d() {
+      return this.c;
    }
 }

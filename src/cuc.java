@@ -1,133 +1,177 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-public final class cuc {
-   public static final cuc a = new cuc(new to());
-   public static final Codec<cuc> b = to.a.xmap(cuc::new, $$0 -> $$0.e);
-   public static final Codec<cuc> c = awu.b(
-      b, (Function<cuc, DataResult<cuc>>)($$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0))
+public record cuc(Optional<iv<cua>> e, Optional<Integer> f, List<bpx> g) {
+   public static final cuc a = new cuc(Optional.empty(), Optional.empty(), List.of());
+   private static final ws h = ws.c("effect.none").a(n.h);
+   private static final int i = 16253176;
+   private static final int j = 3694022;
+   public static final int b = -1;
+   private static final Codec<cuc> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axe.a(lc.i.r(), "potion").forGetter(cuc::f),
+               axe.a(Codec.INT, "custom_color").forGetter(cuc::g),
+               axe.a(bpx.d.listOf(), "custom_effects", List.of()).forGetter(cuc::e)
+            )
+            .apply($$0, cuc::new)
    );
-   @Deprecated
-   public static final yg<ByteBuf, cuc> d = ye.n.a(cuc::new, $$0 -> $$0.e);
-   private final to e;
+   public static final Codec<cuc> c = axe.a(k, lc.i.r(), cuc::new);
+   public static final yq<wd, cuc> d = yq.a(yo.b(ld.Y).a(yo::a), cuc::f, yo.e.a(yo::a), cuc::g, bpx.e.a(yo.a()), cuc::e, cuc::new);
 
-   private cuc(to $$0) {
-      this.e = $$0;
+   public cuc(iv<cua> $$0) {
+      this(Optional.of($$0), Optional.empty(), List.of());
    }
 
-   public static cuc a(to $$0) {
-      return new cuc($$0.h());
+   public static csd a(cry $$0, iv<cua> $$1) {
+      csd $$2 = new csd($$0);
+      $$2.b(jz.x, new cuc($$1));
+      return $$2;
    }
 
-   public static Predicate<crs> a(jq<cuc> $$0, to $$1) {
-      return $$2 -> {
-         cuc $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
+   public boolean a(iv<cua> $$0) {
+      return this.e.isPresent() && this.e.get().a($$0) && this.g.isEmpty();
    }
 
-   public boolean b(to $$0) {
-      return ud.a($$0, this.e, true);
-   }
-
-   public static void a(jq<cuc> $$0, crs $$1, Consumer<to> $$2) {
-      cuc $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.e.g()) {
-         $$1.c($$0);
+   public Iterable<bpx> a() {
+      if (this.e.isEmpty()) {
+         return this.g;
       } else {
-         $$1.b($$0, $$3);
+         return (Iterable<bpx>)(this.g.isEmpty() ? this.e.get().a().a() : Iterables.concat(this.e.get().a().a(), this.g));
       }
    }
 
-   public static void a(jq<cuc> $$0, crs $$1, to $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.c($$0);
+   public void a(Consumer<bpx> $$0) {
+      if (this.e.isPresent()) {
+         for (bpx $$1 : this.e.get().a().a()) {
+            $$0.accept(new bpx($$1));
+         }
+      }
+
+      for (bpx $$2 : this.g) {
+         $$0.accept(new bpx($$2));
       }
    }
 
-   public cuc a(Consumer<to> $$0) {
-      to $$1 = this.e.h();
-      $$0.accept($$1);
-      return new cuc($$1);
+   public cuc b(iv<cua> $$0) {
+      return new cuc(Optional.of($$0), this.f, this.g);
    }
 
-   public void a(bqa $$0) {
-      to $$1 = $$0.f(new to());
-      UUID $$2 = $$0.cw();
-      $$1.a(this.e);
-      $$0.g($$1);
-      $$0.a_($$2);
+   public cuc a(bpx $$0) {
+      return new cuc(this.e, this.f, ac.a(this.g, $$0));
    }
 
-   public boolean a(dmo $$0, ip.a $$1) {
-      to $$2 = $$0.d($$1);
-      to $$3 = $$2.h();
-      $$2.a(this.e);
-      if (!$$2.equals($$3)) {
-         $$0.a($$2, $$1);
-         $$0.e();
-         return true;
+   public int b() {
+      if (this.f.isPresent()) {
+         return this.f.get();
       } else {
-         return false;
+         return this.e.isEmpty() ? 16253176 : a(this.a());
       }
    }
 
-   public <T> DataResult<cuc> a(MapEncoder<T> $$0, T $$1) {
-      return $$0.encode($$1, uc.a, uc.a.mapBuilder()).build(this.e).map($$0x -> new cuc((to)$$0x));
+   public int c() {
+      return this.f.isPresent() ? this.f.get() : a(this.a());
    }
 
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      MapLike<ul> $$1 = ac.a(uc.a.e(this.e), IllegalStateException::new);
-      return $$0.decode(uc.a, $$1);
+   public static int c(iv<cua> $$0) {
+      return a($$0.a().a());
    }
 
-   public int a() {
-      return this.e.f();
+   public static int a(Iterable<bpx> $$0) {
+      int $$1 = b($$0);
+      return $$1 == -1 ? 3694022 : $$1;
    }
 
-   public boolean b() {
-      return this.e.g();
+   public static int b(Iterable<bpx> $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (bpx $$5 : $$0) {
+         if ($$5.g()) {
+            int $$6 = $$5.c().a().g();
+            int $$7 = $$5.e() + 1;
+            $$1 += $$7 * axg.b.b($$6);
+            $$2 += $$7 * axg.b.c($$6);
+            $$3 += $$7 * axg.b.d($$6);
+            $$4 += $$7;
+         }
+      }
+
+      return $$4 == 0 ? -1 : axg.b.a(0, $$1 / $$4, $$2 / $$4, $$3 / $$4);
    }
 
-   public to c() {
-      return this.e.h();
+   public boolean d() {
+      return !this.g.isEmpty() ? true : this.e.isPresent() && !this.e.get().a().a().isEmpty();
    }
 
-   public boolean a(String $$0) {
-      return this.e.e($$0);
+   public List<bpx> e() {
+      return Lists.transform(this.g, bpx::new);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return $$0 instanceof cuc $$1 ? this.e.equals($$1.e) : false;
+   public void a(Consumer<ws> $$0, float $$1, float $$2) {
+      a(this.a(), $$0, $$1, $$2);
+   }
+
+   public static void a(Iterable<bpx> $$0, Consumer<ws> $$1, float $$2, float $$3) {
+      List<Pair<iv<bsg>, bsj>> $$4 = Lists.newArrayList();
+      boolean $$5 = true;
+
+      for (bpx $$6 : $$0) {
+         $$5 = false;
+         xg $$7 = ws.c($$6.i());
+         iv<bpv> $$8 = $$6.c();
+         $$8.a().a($$6.e(), ($$1x, $$2x) -> $$4.add(new Pair($$1x, $$2x)));
+         if ($$6.e() > 0) {
+            $$7 = ws.a("potion.withAmplifier", $$7, ws.c("potion.potency." + $$6.e()));
+         }
+
+         if (!$$6.a(20)) {
+            $$7 = ws.a("potion.withDuration", $$7, bpy.a($$6, $$2, $$3));
+         }
+
+         $$1.accept($$7.a($$8.a().f().a()));
+      }
+
+      if ($$5) {
+         $$1.accept(h);
+      }
+
+      if (!$$4.isEmpty()) {
+         $$1.accept(wr.a);
+         $$1.accept(ws.c("potion.whenDrank").a(n.f));
+
+         for (Pair<iv<bsg>, bsj> $$9 : $$4) {
+            bsj $$10 = (bsj)$$9.getSecond();
+            double $$11 = $$10.d();
+            double $$13;
+            if ($$10.e() != bsj.a.b && $$10.e() != bsj.a.c) {
+               $$13 = $$10.d();
+            } else {
+               $$13 = $$10.d() * 100.0;
+            }
+
+            if ($$11 > 0.0) {
+               $$1.accept(ws.a("attribute.modifier.plus." + $$10.e().a(), cuw.d.format($$13), ws.c(((bsg)((iv)$$9.getFirst()).a()).c())).a(n.j));
+            } else if ($$11 < 0.0) {
+               $$13 *= -1.0;
+               $$1.accept(ws.a("attribute.modifier.take." + $$10.e().a(), cuw.d.format($$13), ws.c(((bsg)((iv)$$9.getFirst()).a()).c())).a(n.m));
+            }
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.e.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.e.toString();
-   }
-
-   @Deprecated
-   public to d() {
+   public Optional<iv<cua>> f() {
       return this.e;
+   }
+
+   public Optional<Integer> g() {
+      return this.f;
    }
 }

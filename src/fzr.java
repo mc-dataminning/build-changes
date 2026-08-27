@@ -1,72 +1,67 @@
-public class fzr {
-   public static final wi a = wi.c("quickplay.error.title");
-   private static final wi b = wi.c("quickplay.error.invalid_identifier");
-   private static final wi c = wi.c("quickplay.error.realm_connect");
-   private static final wi d = wi.c("quickplay.error.realm_permission");
-   private static final wi e = wi.c("gui.toTitle");
-   private static final wi f = wi.c("gui.toWorld");
-   private static final wi g = wi.c("gui.toRealms");
+public class fzr extends fzs {
+   private final im a;
+   private final float b;
+   private final float F;
 
-   public static void a(fby $$0, fpl.c $$1, exh $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!ayh.h($$3)) {
-         a($$0, $$3);
-      } else if (!ayh.h($$4)) {
-         b($$0, $$4);
-      } else if (!ayh.h($$5)) {
-         a($$0, $$2, $$5);
-      }
+   public fzr(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dpy $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, im.a($$1, $$2, $$3));
    }
 
-   private static void a(fby $$0, String $$1) {
-      if (!$$0.m().b($$1)) {
-         fjx $$2 = new fot(new fkc());
-         $$0.a(new fiy($$2, a, b, f));
-      } else {
-         $$0.x().a($$1, () -> $$0.a(new fkc()));
+   public fzr(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dpy $$7, im $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(fcu.Q().ap().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(dcx.i)) {
+         int $$9 = fcu.Q().aw().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
       }
+
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
-   private static void b(fby $$0, String $$1) {
-      fvf $$2 = new fvf($$0);
-      $$2.a();
-      fve $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new fve(gmx.a("selectServer.defaultName"), $$1, fve.c.c);
-         $$2.a($$3, true);
-         $$2.b();
-      }
-
-      fwh $$4 = fwh.a($$1);
-      fiq.a(new fmu(new fkc()), $$0, $$4, $$3, true, null);
+   @Override
+   public fyw b() {
+      return fyw.a;
    }
 
-   private static void a(fby $$0, exh $$1, String $$2) {
-      long $$3;
-      eya $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         fjx $$6 = new exc(new fkc());
-         $$0.a(new fiy($$6, a, b, g));
-         return;
-      } catch (eyu var10) {
-         fjx $$8 = new fkc();
-         $$0.a(new fiy($$8, a, c, e));
-         return;
-      }
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
+   }
 
-      exy $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         fjx $$12 = new exc(new fkc());
-         $$0.a(new fiy($$12, a, d, g));
-      } else {
-         fkc $$13 = new fkc();
-         fax $$14 = new fax($$13, $$11);
-         $$0.a(new ezo($$13, $$14));
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? gbc.a(this.c, this.a) : $$1;
+   }
+
+   public static class a implements fyv<kn> {
+      public fys a(kn $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dpy $$8 = $$0.b();
+         return !$$8.i() && !$$8.a(dcx.bQ) && $$8.z() ? new fzr($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
       }
    }
 }

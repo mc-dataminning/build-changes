@@ -1,138 +1,224 @@
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fab extends gru {
-   static final Logger a = LogUtils.getLogger();
-   private static final wi b = wi.c("mco.configure.world.subscription.title");
-   private static final wi c = wi.c("mco.configure.world.subscription.start");
-   private static final wi y = wi.c("mco.configure.world.subscription.timeleft");
-   private static final wi z = wi.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final wi A = wi.c("mco.configure.world.subscription.expired");
-   private static final wi B = wi.c("mco.configure.world.subscription.less_than_a_day");
-   private static final wi C = wi.c("mco.configure.world.subscription.unknown");
-   private static final wi D = wi.c("mco.configure.world.subscription.recurring.info");
-   private final fjx E;
-   final exy F;
-   final fjx G;
-   private wi H = C;
-   private wi I = C;
+public class fab extends gsq {
+   private static final akf a = new akf("widget/slot_frame");
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 80;
+   private final fkt B;
    @Nullable
-   private eyl.a J;
+   private eyu C;
+   private final long D;
+   private final ws[] E = new ws[]{ws.c("mco.brokenworld.message.line1"), ws.c("mco.brokenworld.message.line2")};
+   private int F;
+   private final List<Integer> G = Lists.newArrayList();
+   private int H;
 
-   public fab(fjx $$0, exy $$1, fjx $$2) {
-      super(fbq.a);
-      this.E = $$0;
-      this.F = $$1;
-      this.G = $$2;
+   public fab(fkt $$0, long $$1, boolean $$2) {
+      super($$2 ? ws.c("mco.brokenworld.minigame.title") : ws.c("mco.brokenworld.title"));
+      this.B = $$0;
+      this.D = $$1;
    }
 
    @Override
    public void aM_() {
-      this.a(this.F.a);
-      this.c(fdy.a(wi.c("mco.configure.world.subscription.extend"), $$0 -> fio.a(this, awi.a(this.F.b, this.j.X().b()))).a(this.k / 2 - 100, g(6), 200, 20).a());
-      if (this.F.j) {
-         this.c(fdy.a(wi.c("mco.configure.world.delete.button"), $$0 -> {
-            wi $$1 = wi.c("mco.configure.world.delete.question.line1");
-            wi $$2 = wi.c("mco.configure.world.delete.question.line2");
-            this.j.a(new ezn(this::c, ezn.a.a, $$1, $$2, true));
-         }).a(this.k / 2 - 100, g(10), 200, 20).a());
-      } else if (exc.b() && this.F.s != null) {
-         this.c(new fei(this.k / 2 - 100, g(8), 200, 46, wi.a("mco.snapshot.subscription.info", this.F.s), this.m).a(-6250336));
+      this.F = this.n / 2 - 150;
+      this.c(feu.a(wr.k, $$0 -> this.d()).a((this.n - 150) / 2, g(13) - 5, 150, 20).a());
+      if (this.C == null) {
+         this.a(this.D);
       } else {
-         this.c(new fei(this.k / 2 - 100, g(8), 200, 46, D, this.m).a(-6250336));
+         this.C();
       }
-
-      this.c(fdy.a(wh.k, $$0 -> this.d()).a(this.k / 2 - 100, g(12), 200, 20).a());
    }
 
    @Override
-   public wi i() {
-      return wh.b(b, c, this.I, y, this.H);
+   public ws i() {
+      return wv.a(Stream.concat(Stream.of(this.l), Stream.of(this.E)).collect(Collectors.toList()), wr.v);
    }
 
-   private void c(boolean $$0) {
-      if ($$0) {
-         (new Thread("Realms-delete-realm") {
-            @Override
-            public void run() {
-               try {
-                  exh $$0 = exh.a();
-                  $$0.i(fab.this.F.a);
-               } catch (eyu var2) {
-                  fab.a.error("Couldn't delete world", var2);
-               }
+   private void C() {
+      for (Entry<Integer, ezb> $$0 : this.C.i.entrySet()) {
+         int $$1 = $$0.getKey();
+         boolean $$2 = $$1 != this.C.n || this.C.m == eyu.d.b;
+         feu $$3;
+         if ($$2) {
+            $$3 = feu.a(ws.c("mco.brokenworld.play"), $$1x -> this.m.a(new fak(this.B, new fcc(this.C.a, $$1, this::b)))).a(this.a($$1), g(8), 80, 20).a();
+            $$3.j = !this.C.i.get($$1).n;
+         } else {
+            $$3 = feu.a(ws.c("mco.brokenworld.download"), $$1x -> {
+               ws $$2x = ws.c("mco.configure.world.restore.download.question.line1");
+               ws $$3x = ws.c("mco.configure.world.restore.download.question.line2");
+               this.m.a(new faj($$1xx -> {
+                  if ($$1xx) {
+                     this.b($$1);
+                  } else {
+                     this.m.a(this);
+                  }
+               }, faj.a.b, $$2x, $$3x, true));
+            }).a(this.a($$1), g(8), 80, 20).a();
+         }
 
-               fab.this.j.execute(() -> fab.this.j.a(fab.this.G));
-            }
-         }).start();
+         if (this.G.contains($$1)) {
+            $$3.j = false;
+            $$3.b(ws.c("mco.brokenworld.downloaded"));
+         }
+
+         this.c($$3);
+      }
+   }
+
+   @Override
+   public void e() {
+      this.H++;
+   }
+
+   @Override
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+
+      for (int $$4 = 0; $$4 < this.E.length; $$4++) {
+         $$0.a(this.p, this.E[$$4], this.n / 2, g(-1) + 3 + $$4 * 12, -6250336);
       }
 
-      this.j.a(this);
+      if (this.C != null) {
+         for (Entry<Integer, ezb> $$5 : this.C.i.entrySet()) {
+            if ($$5.getValue().m != null && $$5.getValue().l != -1L) {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  g(1) + 5,
+                  $$1,
+                  $$2,
+                  this.C.n == $$5.getKey() && !this.D(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  $$5.getValue().l,
+                  $$5.getValue().m,
+                  $$5.getValue().n
+               );
+            } else {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  g(1) + 5,
+                  $$1,
+                  $$2,
+                  this.C.n == $$5.getKey() && !this.D(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  -1L,
+                  null,
+                  $$5.getValue().n
+               );
+            }
+         }
+      }
+   }
+
+   private int a(int $$0) {
+      return this.F + ($$0 - 1) * 110;
    }
 
    private void a(long $$0) {
-      exh $$1 = exh.a();
+      new Thread(() -> {
+         eyd $$1 = eyd.a();
 
-      try {
-         eyl $$2 = $$1.h($$0);
-         this.H = this.a($$2.b);
-         this.I = b($$2.a);
-         this.J = $$2.c;
-      } catch (eyu var5) {
-         a.error("Couldn't get subscription", var5);
-         this.j.a(new ezl(var5, this.E));
-      }
+         try {
+            this.C = $$1.a($$0);
+            this.C();
+         } catch (ezq var5) {
+            b.error("Couldn't get own world", var5);
+            this.m.a(new fah(var5, this.B));
+         }
+      }).start();
    }
 
-   private static wi b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return wi.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   public void b() {
+      new Thread(() -> {
+         eyd $$0 = eyd.a();
+         if (this.C.e == eyu.c.a) {
+            this.m.execute(() -> this.m.a(new fak(this, new fbv(this.C, this, true, this.m))));
+         } else {
+            try {
+               eyu $$1 = $$0.a(this.D);
+               this.m.execute(() -> exy.a($$1, this));
+            } catch (ezq var3) {
+               b.error("Couldn't get own world", var3);
+               this.m.execute(() -> this.m.a(this.B));
+            }
+         }
+      }).start();
+   }
+
+   private void b(int $$0) {
+      eyd $$1 = eyd.a();
+
+      try {
+         ezk $$2 = $$1.b(this.C.a, $$0);
+         fag $$3 = new fag(this, $$2, this.C.a($$0), $$1x -> {
+            if ($$1x) {
+               this.G.add($$0);
+               this.p();
+               this.C();
+            } else {
+               this.m.a(this);
+            }
+         });
+         this.m.a($$3);
+      } catch (ezq var5) {
+         b.error("Couldn't download world data", var5);
+         this.m.a(new fah(var5, this));
+      }
    }
 
    @Override
    public void d() {
-      this.j.a(this.E);
+      this.m.a(this.B);
    }
 
-   @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.k / 2 - 100;
-      $$0.a(this.m, b, this.k / 2, 17, -1);
-      $$0.a(this.m, c, $$4, g(0), -6250336, false);
-      $$0.a(this.m, this.I, $$4, g(1), -1, false);
-      if (this.J == eyl.a.a) {
-         $$0.a(this.m, y, $$4, g(3), -6250336, false);
-      } else if (this.J == eyl.a.b) {
-         $$0.a(this.m, z, $$4, g(3), -6250336, false);
-      }
-
-      $$0.a(this.m, this.H, $$4, g(4), -1, false);
+   private boolean D() {
+      return this.C != null && this.C.m == eyu.d.b;
    }
 
-   private wi a(int $$0) {
-      if ($$0 < 0 && this.F.j) {
-         return A;
-      } else if ($$0 <= 1) {
-         return B;
+   private void a(feh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
+      akf $$11;
+      if ($$10) {
+         $$11 = ezw.a;
+      } else if ($$9 != null && $$8 != -1L) {
+         $$11 = fbj.a(String.valueOf($$8), $$9);
+      } else if ($$7 == 1) {
+         $$11 = ezw.b;
+      } else if ($$7 == 2) {
+         $$11 = ezw.c;
+      } else if ($$7 == 3) {
+         $$11 = ezw.d;
       } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return wi.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return wi.a("mco.configure.world.subscription.remaining.months", $$1);
-         } else {
-            return $$4 ? wi.a("mco.configure.world.subscription.remaining.days", $$2) : wi.i();
-         }
+         $$11 = fbj.a(String.valueOf(this.C.p), this.C.q);
       }
+
+      if (!$$5) {
+         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      } else if ($$5) {
+         float $$17 = 0.9F + 0.1F * axw.b((float)this.H * 0.2F);
+         $$0.a($$17, $$17, $$17, 1.0F);
+      }
+
+      $$0.a($$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+      if ($$5) {
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      } else {
+         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      }
+
+      $$0.a(a, $$1, $$2, 80, 80);
+      $$0.a(this.p, $$6, $$1 + 40, $$2 + 66, -1);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

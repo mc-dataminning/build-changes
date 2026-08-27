@@ -1,47 +1,65 @@
-import java.util.List;
-import java.util.Optional;
+public class qk {
+   public static final ake<dxt<?>> a = a("cave");
+   public static final ake<dxt<?>> b = a("cave_extra_underground");
+   public static final ake<dxt<?>> c = a("canyon");
+   public static final ake<dxt<?>> d = a("nether_cave");
 
-public interface qk {
-   static void a(pz<efw> $$0) {
-      io<efq> $$1 = $$0.a(ku.aG);
-      io<daf> $$2 = $$0.a(ku.aw);
-      in.c<efw> $$3 = $$0.a(
-         efj.a,
-         new efw(
-            List.of(efw.a($$1.b(efk.t)), efw.a($$1.b(efk.u)), efw.a($$1.b(efk.v)), efw.a($$1.b(efk.w)), efw.a($$1.b(efk.x))), new egl(34, 8, egm.a, 10387312)
-         )
-      );
-      $$0.a(efj.b, new efw($$1.b(efk.f), new egl(32, 8, egm.a, 14357617)));
-      $$0.a(efj.c, new efw($$1.b(efk.g), new egl(32, 8, egm.a, 14357618)));
-      $$0.a(efj.d, new efw($$1.b(efk.e), new egl(32, 8, egm.a, 14357619)));
-      $$0.a(efj.e, new efw($$1.b(efk.j), new egl(32, 8, egm.a, 14357620)));
-      $$0.a(efj.f, new efw($$1.b(efk.a), new egl(ji.g, egn.c.b, 0.2F, 165745296, Optional.of(new egn.a($$3, 10)), 32, 8, egm.a)));
-      $$0.a(efj.q, new efw($$1.b(efk.F), new egl(24, 8, egm.a, 20083232)));
-      $$0.a(efj.g, new efw($$1.b(efk.l), new egl(32, 5, egm.b, 10387313)));
-      $$0.a(efj.h, new efw($$1.b(efk.d), new egl(80, 20, egm.b, 10387319)));
-      $$0.a(efj.i, new efw($$1.b(efk.r), new egl(new ji(9, 0, 9), egn.c.c, 0.01F, 0, Optional.empty(), 1, 0, egm.a)));
-      $$0.a(efj.j, new efw(List.of(efw.a($$1.b(efk.b)), efw.a($$1.b(efk.c))), new egl(ji.g, egn.c.d, 0.004F, 0, Optional.empty(), 1, 0, egm.a)));
+   private static ake<dxt<?>> a(String $$0) {
+      return ake.a(ld.aA, new akf($$0));
+   }
+
+   public static void a(qj<dxt<?>> $$0) {
+      iw<dcv> $$1 = $$0.a(ld.f);
       $$0.a(
-         efj.k,
-         new efw(
-            List.of(
-               efw.a($$1.b(efk.y)),
-               efw.a($$1.b(efk.z)),
-               efw.a($$1.b(efk.A)),
-               efw.a($$1.b(efk.B)),
-               efw.a($$1.b(efk.C)),
-               efw.a($$1.b(efk.D)),
-               efw.a($$1.b(efk.E))
-            ),
-            new egl(40, 15, egm.a, 34222645)
-         )
+         a,
+         dxv.a
+            .a(
+               new dxr(
+                  0.15F,
+                  eeq.a(dwk.b(8), dwk.a(180)),
+                  boa.b(0.1F, 0.9F),
+                  dwk.b(8),
+                  dxp.a(false, dcx.oS.n()),
+                  $$1.b(avo.bi),
+                  boa.b(0.7F, 1.4F),
+                  boa.b(0.8F, 1.3F),
+                  boa.b(-1.0F, -0.4F)
+               )
+            )
       );
-      $$0.a(efj.l, new efw(List.of(efw.a($$1.b(efk.h)), efw.a($$1.b(efk.i))), new egl(24, 4, egm.a, 165745295)));
-      $$0.a(efj.m, new efw(List.of(efw.a($$1.b(efk.m)), efw.a($$1.b(efk.n))), new egl(20, 8, egm.a, 14357621)));
-      $$0.a(efj.n, new efw(List.of(efw.a($$1.b(efk.o), 2), efw.a($$1.b(efk.s), 3)), new egl(27, 4, egm.a, 30084232)));
-      $$0.a(efj.o, new efw($$1.b(efk.p), new egl(2, 1, egm.a, 14357921)));
-      $$0.a(efj.p, new efw($$1.b(efk.q), new egl(20, 11, egm.b, 10387313)));
-      $$0.a(efj.r, new efw($$1.b(efk.k), new egk(32, 3, 128, $$2.b(avd.o))));
-      $$0.a(efj.s, new efw($$1.b(efk.G), new egl(34, 8, egm.a, 83469867)));
+      $$0.a(
+         b,
+         dxv.a
+            .a(
+               new dxr(
+                  0.07F,
+                  eeq.a(dwk.b(8), dwk.a(47)),
+                  boa.b(0.1F, 0.9F),
+                  dwk.b(8),
+                  dxp.a(false, dcx.gv.n()),
+                  $$1.b(avo.bi),
+                  boa.b(0.7F, 1.4F),
+                  boa.b(0.8F, 1.3F),
+                  boa.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         c,
+         dxv.c
+            .a(
+               new dxm(
+                  0.01F,
+                  eeq.a(dwk.a(10), dwk.a(67)),
+                  bnr.a(3.0F),
+                  dwk.b(8),
+                  dxp.a(false, dcx.oT.n()),
+                  $$1.b(avo.bi),
+                  boa.b(-0.125F, 0.125F),
+                  new dxm.a(boa.b(0.75F, 1.0F), bnz.a(0.0F, 6.0F, 2.0F), 3, boa.b(0.75F, 1.0F), 1.0F, 0.0F)
+               )
+            )
+      );
+      $$0.a(d, dxv.b.a(new dxr(0.2F, eeq.a(dwk.a(0), dwk.c(1)), bnr.a(0.5F), dwk.b(10), $$1.b(avo.bj), bnr.a(1.0F), bnr.a(1.0F), bnr.a(-0.7F))));
    }
 }

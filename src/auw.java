@@ -1,37 +1,18 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
+public class auw {
+   private static final int h = 20;
+   private static final int i = 600;
+   private static final int j = 12000;
+   private static final int k = 24000;
+   private static final int l = 6000;
+   public static final auv a = new auv(auz.pO, 20, 600, true);
+   public static final auv b = new auv(auz.pt, 12000, 24000, false);
+   public static final auv c = new auv(auz.pu, 0, 0, true);
+   public static final auv d = new auv(auz.pL, 0, 0, true);
+   public static final auv e = new auv(auz.pM, 6000, 24000, true);
+   public static final auv f = a(auz.qn);
+   public static final auv g = a(auz.pN);
 
-public interface auw {
-   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-   auw b = NumberFormat.getIntegerInstance(Locale.US)::format;
-   auw c = $$0 -> a.format((double)$$0 * 0.1);
-   auw d = $$0 -> {
-      double $$1 = (double)$$0 / 100.0;
-      double $$2 = $$1 / 1000.0;
-      if ($$2 > 0.5) {
-         return a.format($$2) + " km";
-      } else {
-         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
-      }
-   };
-   auw e = $$0 -> {
-      double $$1 = (double)$$0 / 20.0;
-      double $$2 = $$1 / 60.0;
-      double $$3 = $$2 / 60.0;
-      double $$4 = $$3 / 24.0;
-      double $$5 = $$4 / 365.0;
-      if ($$5 > 0.5) {
-         return a.format($$5) + " y";
-      } else if ($$4 > 0.5) {
-         return a.format($$4) + " d";
-      } else if ($$3 > 0.5) {
-         return a.format($$3) + " h";
-      } else {
-         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
-      }
-   };
-
-   String format(int var1);
+   public static auv a(iv<auy> $$0) {
+      return new auv($$0, 12000, 24000, false);
+   }
 }

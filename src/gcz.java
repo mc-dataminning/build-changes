@@ -1,118 +1,87 @@
-public class gcz implements gci<dod> {
-   public gcz(gcj.a $$0) {
+public class gcz implements gde<dms> {
+   private static final int b = 20;
+   private static final int c = 40;
+   private static final int d = 16;
+   public static final String a = "flag";
+   private static final String e = "pole";
+   private static final String f = "bar";
+   private final fur g;
+   private final fur h;
+   private final fur i;
+
+   public gcz(gdf.a $$0) {
+      fur $$1 = $$0.a(fuq.g);
+      this.g = $$1.b("flag");
+      this.h = $$1.b("pole");
+      this.i = $$1.b("bar");
    }
 
-   public void a(dod $$0, float $$1, ewr $$2, gai $$3, int $$4, int $$5) {
-      if (fby.Q().s.gw() || fby.Q().s.N_()) {
-         id $$6 = $$0.f();
-         ji $$7 = $$0.j();
-         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
-            if ($$0.u() == dqs.a || $$0.u() == dqs.b) {
-               double $$8 = (double)$$6.u();
-               double $$9 = (double)$$6.w();
-               double $$10 = (double)$$6.v();
-               double $$11 = $$10 + (double)$$7.v();
-               double $$12;
-               double $$13;
-               switch ($$0.k()) {
-                  case b:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)(-$$7.w());
-                     break;
-                  case c:
-                     $$12 = (double)(-$$7.u());
-                     $$13 = (double)$$7.w();
-                     break;
-                  default:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)$$7.w();
-               }
+   public static fux a() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      $$1.a("flag", fuw.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fut.a);
+      $$1.a("pole", fuw.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fut.a);
+      $$1.a("bar", fuw.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fut.a);
+      return fux.a($$0, 64, 64);
+   }
 
-               double $$30;
-               double $$31;
-               double $$32;
-               double $$33;
-               switch ($$0.l()) {
-                  case b:
-                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 - $$13;
-                     $$33 = $$31 + $$12;
-                     break;
-                  case c:
-                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 - $$12;
-                     $$33 = $$31 - $$13;
-                     break;
-                  case d:
-                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 + $$13;
-                     $$33 = $$31 - $$12;
-                     break;
-                  default:
-                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 + $$12;
-                     $$33 = $$31 + $$13;
-               }
-
-               float $$34 = 1.0F;
-               float $$35 = 0.9F;
-               float $$36 = 0.5F;
-               ewv $$37 = $$3.getBuffer(gaq.y());
-               if ($$0.u() == dqs.a || $$0.E()) {
-                  gag.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
-               }
-
-               if ($$0.u() == dqs.a && $$0.D()) {
-                  this.a($$0, $$37, $$6, $$2);
-               }
-            }
+   public void a(dms $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
+      float $$6 = 0.6666667F;
+      boolean $$7 = $$0.i() == null;
+      $$2.a();
+      long $$8;
+      if ($$7) {
+         $$8 = 0L;
+         $$2.a(0.5F, 0.5F, 0.5F);
+         this.h.k = true;
+      } else {
+         $$8 = $$0.i().Y();
+         dpy $$10 = $$0.n();
+         if ($$10.b() instanceof dca) {
+            $$2.a(0.5F, 0.5F, 0.5F);
+            float $$11 = -dre.b($$10.c(dca.b));
+            $$2.a(a.d.rotationDegrees($$11));
+            this.h.k = true;
+         } else {
+            $$2.a(0.5F, -0.16666667F, 0.5F);
+            float $$12 = -$$10.c(dls.b).p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(0.0F, -0.3125F, -0.4375F);
+            this.h.k = false;
          }
+      }
+
+      $$2.a();
+      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
+      exr $$13 = got.f.a($$3, gbm::c);
+      this.h.a($$2, $$13, $$4, $$5);
+      this.i.a($$2, $$13, $$4, $$5);
+      im $$14 = $$0.az_();
+      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
+      this.g.e = (-0.0125F + 0.01F * axw.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
+      this.g.c = -32.0F;
+      a($$2, $$3, $$4, $$5, this.g, got.f, true, $$0.f(), $$0.b());
+      $$2.b();
+      $$2.b();
+   }
+
+   public static void a(exn $$0, gbe $$1, int $$2, int $$3, fur $$4, gor $$5, boolean $$6, cqw $$7, dmu $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false);
+   }
+
+   public static void a(exn $$0, gbe $$1, int $$2, int $$3, fur $$4, gor $$5, boolean $$6, cqw $$7, dmu $$8, boolean $$9) {
+      $$4.a($$0, $$5.a($$1, gbm::c, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? gbt.m : gbt.n, $$7);
+
+      for (int $$10 = 0; $$10 < 16 && $$10 < $$8.b().size(); $$10++) {
+         dmu.b $$11 = $$8.b().get($$10);
+         gor $$12 = $$6 ? gbt.a($$11.b()) : gbt.b($$11.b());
+         a($$0, $$1, $$2, $$3, $$4, $$12, $$11.c());
       }
    }
 
-   private void a(dod $$0, ewv $$1, id $$2, ewr $$3) {
-      cym $$4 = $$0.i();
-      id $$5 = $$0.az_();
-      id $$6 = $$5.a((ji)$$2);
-
-      for (id $$7 : id.a($$6, $$6.a($$0.j()).b(-1, -1, -1))) {
-         dpi $$8 = $$4.a_($$7);
-         boolean $$9 = $$8.i();
-         boolean $$10 = $$8.a(dcj.kN);
-         boolean $$11 = $$8.a(dcj.hW);
-         boolean $$12 = $$8.a(dcj.hX);
-         boolean $$13 = $$10 || $$11 || $$12;
-         if ($$9 || $$13) {
-            float $$14 = $$9 ? 0.05F : 0.0F;
-            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
-            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
-            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
-            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
-            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
-            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
-            if ($$9) {
-               gag.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
-            } else if ($$10) {
-               gag.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
-            } else if ($$11) {
-               gag.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
-            } else if ($$12) {
-               gag.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
-            }
-         }
-      }
-   }
-
-   public boolean a(dod $$0) {
-      return true;
-   }
-
-   @Override
-   public int aP_() {
-      return 96;
+   private static void a(exn $$0, gbe $$1, int $$2, int $$3, fur $$4, gor $$5, cqw $$6) {
+      float[] $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gbm::m), $$2, $$3, $$7[0], $$7[1], $$7[2], 1.0F);
    }
 }

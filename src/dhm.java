@@ -1,19 +1,7 @@
-public class dhm {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import javax.annotation.Nullable;
 
-   public static boolean a(dpi $$0) {
-      return $$0.i();
-   }
+public interface dhm {
+   boolean a(@Nullable ckl var1, cza var2, im var3, dpy var4, elq var5);
 
-   public static int a(axt $$0) {
-      double $$1 = 1.0;
-
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
-
-      return $$2;
-   }
+   boolean a(czv var1, im var2, dpy var3, elr var4);
 }

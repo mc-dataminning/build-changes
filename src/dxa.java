@@ -1,31 +1,26 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxa extends dvx {
-   private final jb a;
-   private final dve b;
-   private final dvo c;
-   private final dvr.o d;
+public class dxa implements dwx {
+   private final jq e;
+   private final ir f;
+   public static final Codec<dxa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jq.v(16).optionalFieldOf("offset", jq.g).forGetter($$0x -> $$0x.e), ir.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, dxa::new)
+   );
 
-   public dxa(dvd $$0, jb $$1, czi $$2, dve $$3, dvo $$4, dvr.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public dxa(jq $$0, ir $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Deprecated
-   public Optional<dpi> a(Function<id, in<daf>> $$0, dre $$1, id $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public boolean a(dap $$0, im $$1) {
+      im $$2 = $$1.a(this.e);
+      return $$0.a_($$2).d($$0, $$2, this.f);
    }
 
-   @Deprecated
-   public jb c() {
-      return this.a;
-   }
-
-   public dvo d() {
-      return this.c;
+   @Override
+   public dwy<?> a() {
+      return dwy.d;
    }
 }

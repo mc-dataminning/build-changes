@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ob {
+public interface ob {
+   void a(akf var1, cwg<?> var2, @Nullable af var3);
+
+   ae.a a();
 }

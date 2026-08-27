@@ -1,35 +1,27 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
-public class cbh extends cav<cje> {
+public abstract class cbh extends cbn<bre> {
+   protected abstract boolean a(bre var1, bre var2);
+
+   protected abstract cah<bre> b();
+
    @Override
-   public Set<bzw<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bzw.B)));
-   }
-
-   protected void a(apu $$0, cje $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ai() == bqg.bx)
-         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bqg.bx))
-         .ifPresentOrElse($$1x -> $$1.dP().a(bzw.B, $$1x), () -> $$1.dP().b(bzw.B));
-   }
-
-   private static Optional<bqt> a(cje $$0, Predicate<bqt> $$1) {
-      return $$0.dP().c(bzw.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   public Set<cah<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   protected int b() {
-      return 24;
+   protected void a(aqe $$0, bre $$1) {
+      $$1.dQ().a(this.b(), this.b($$1));
    }
 
-   @Override
-   protected int c() {
-      return 24;
+   private Optional<bre> b(bre $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
+
+   protected Optional<caj> a(bre $$0) {
+      return $$0.dQ().c(cah.h);
    }
 }

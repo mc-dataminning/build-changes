@@ -1,23 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dac {
-   public static final Codec<dac> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aun.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dac::new)
-   );
-   private final in<aun> b;
-   private final double c;
+public interface dac {
+   boolean a(im var1, dpy var2, int var3, int var4);
 
-   public dac(in<aun> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   default boolean a(im $$0, dpy $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   public in<aun> a() {
-      return this.b;
+   boolean a(im var1, boolean var2);
+
+   default boolean b(im $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   public double b() {
-      return this.c;
+   default boolean a(im $$0, boolean $$1, @Nullable bql $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
+
+   boolean a(im var1, boolean var2, @Nullable bql var3, int var4);
+
+   default boolean b(bql $$0) {
+      return false;
    }
 }

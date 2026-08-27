@@ -1,44 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public class eff {
-   public static final Codec<eff> a = awu.b(
-      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(aju.a(ku.aQ), dtb.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, eff::new)),
-      eff::a
-   );
-   public static final Codec<in<eff>> b = ajr.a(ku.aN, a);
-   private final Map<aju<dtb>, dtb> c;
+public class eff extends efn {
+   public static final Codec<eff> a = RecordCodecBuilder.create($$0 -> $$0.group(een.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eff::new));
+   private final een c;
 
-   public eff(Map<aju<dtb>, dtb> $$0) {
+   private eff(een $$0) {
       this.c = $$0;
    }
 
-   private ImmutableMap<aju<dtb>, dtb> c() {
-      Builder<aju<dtb>, dtb> $$0 = ImmutableMap.builder();
-      dvv.a(this.c.keySet().stream()).forEach($$1 -> {
-         dtb $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2);
-         }
-      });
-      return $$0.build();
+   public static eff a(een $$0) {
+      return new eff($$0);
    }
 
-   public dvv a() {
-      return new dvv(this.c());
+   public static eff a(dwk $$0, dwk $$1) {
+      return a(eeq.a($$0, $$1));
    }
 
-   public Optional<dtb> b() {
-      return Optional.ofNullable(this.c.get(dtb.b));
+   public static eff b(dwk $$0, dwk $$1) {
+      return a(eep.a($$0, $$1));
    }
 
-   private static DataResult<eff> a(eff $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   @Override
+   public Stream<im> a_(efl $$0, ayd $$1, im $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   }
+
+   @Override
+   public efo<?> b() {
+      return efo.l;
    }
 }

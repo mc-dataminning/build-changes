@@ -1,43 +1,64 @@
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.lang.reflect.Field;
 
-public class eg implements ArgumentType<ajv> {
-   private static final Collection<String> a = Stream.of(czg.h, czg.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wi.b("argument.dimension.invalid", $$0));
-
-   public ajv a(StringReader $$0) throws CommandSyntaxException {
-      return ajv.a($$0);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof ea ? ea.a(((ea)$$0.getSource()).u().stream().map(aju::a), $$1) : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return a;
-   }
-
-   public static eg a() {
-      return new eg();
-   }
-
-   public static apu a(CommandContext<dv> $$0, String $$1) throws CommandSyntaxException {
-      ajv $$2 = (ajv)$$0.getArgument($$1, ajv.class);
-      aju<czg> $$3 = aju.a(ku.aP, $$2);
-      apu $$4 = ((dv)$$0.getSource()).l().a($$3);
-      if ($$4 == null) {
-         throw b.create($$2);
-      } else {
-         return $$4;
+public class eg {
+   private static final Field a = ac.a(() -> {
+      try {
+         Field $$0 = JsonReader.class.getDeclaredField("pos");
+         $$0.setAccessible(true);
+         return $$0;
+      } catch (NoSuchFieldException var1) {
+         throw new IllegalStateException("Couldn't get field 'pos' for JsonReader", var1);
       }
+   });
+   private static final Field b = ac.a(() -> {
+      try {
+         Field $$0 = JsonReader.class.getDeclaredField("lineStart");
+         $$0.setAccessible(true);
+         return $$0;
+      } catch (NoSuchFieldException var1) {
+         throw new IllegalStateException("Couldn't get field 'lineStart' for JsonReader", var1);
+      }
+   });
+
+   private static int a(JsonReader $$0) {
+      try {
+         return a.getInt($$0) - b.getInt($$0);
+      } catch (IllegalAccessException var2) {
+         throw new IllegalStateException("Couldn't read position of JsonReader", var2);
+      }
+   }
+
+   public static <T> T a(ix.a $$0, StringReader $$1, Codec<T> $$2) {
+      JsonReader $$3 = new JsonReader(new java.io.StringReader($$1.getRemaining()));
+      $$3.setLenient(false);
+
+      Object var5;
+      try {
+         JsonElement $$4 = Streams.parse($$3);
+         var5 = ac.a($$2.parse($$0.a(JsonOps.INSTANCE), $$4), JsonParseException::new);
+      } catch (StackOverflowError var9) {
+         throw new JsonParseException(var9);
+      } finally {
+         $$1.setCursor($$1.getCursor() + a($$3));
+      }
+
+      return (T)var5;
+   }
+
+   public static String a(StringReader $$0, m $$1) {
+      int $$2 = $$0.getCursor();
+
+      while ($$0.canRead() && $$1.test($$0.peek())) {
+         $$0.skip();
+      }
+
+      return $$0.getString().substring($$2, $$0.getCursor());
    }
 }

@@ -1,11 +1,11 @@
-public class cxw extends cwz {
-   protected cxw(cwz.a $$0, bqh... $$1) {
-      super($$0, avm.bj, $$1);
+public class cxw extends cxn {
+   protected cxw(cxn.a $$0, awd<cry> $$1, bqs... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return 15;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
@@ -14,7 +14,12 @@ public class cxw extends cwz {
    }
 
    @Override
-   public boolean a(cwz $$0) {
-      return super.a($$0) && $$0 != cxc.x;
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(cxn $$0) {
+      return super.a($$0) && $$0 != cxq.v;
    }
 }

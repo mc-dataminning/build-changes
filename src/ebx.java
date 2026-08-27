@@ -1,49 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebx extends ebu {
+public class ebx implements eay {
    public static final Codec<ebx> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bnk.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, ebx::new)
+      $$0 -> $$0.group(
+               awd.b(ld.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               ecz.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               efk.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               efb.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bnv.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bnv.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, ebx::new)
    );
-   private final bnk b;
+   public final awd<dcv> b;
+   public final ecz c;
+   public final iv<efk> d;
+   public final efb e;
+   public final bnv f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bnv j;
+   public final float k;
 
-   public ebx(bnk $$0, bnk $$1, bnk $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected ebv<?> a() {
-      return ebv.h;
-   }
-
-   @Override
-   protected void a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, int $$4, ebu.a $$5, int $$6, int $$7, int $$8) {
-      id $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + axm.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new id($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
-      }
-   }
-
-   @Override
-   public int a(axt $$0, int $$1, ebe $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(axt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public ebx(awd<dcv> $$0, ecz $$1, iv<efk> $$2, efb $$3, bnv $$4, float $$5, int $$6, float $$7, bnv $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

@@ -1,77 +1,64 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-public abstract class eox implements eoy {
-   protected final List<eql> g;
-   private final Predicate<enk> a;
+public class eox extends eom {
+   public static final Codec<eox> a = a(eox::new);
 
-   protected eox(List<eql> $$0) {
-      this.g = $$0;
-      this.a = ac.a($$0);
+   eox(List<eot> $$0, List<erh> $$1) {
+      super($$0, $$1);
    }
-
-   protected static <T extends eox> P1<Mu<T>, List<eql>> a(Instance<T> $$0) {
-      return $$0.group(awu.a(eqn.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
-   }
-
-   public final crs b(crs $$0, enk $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract crs a(crs var1, enk var2);
 
    @Override
-   public void a(ent $$0) {
-      eoy.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
+   public eou a() {
+      return eor.h;
    }
 
-   protected static eox.a<?> a(Function<List<eql>, eoy> $$0) {
-      return new eox.b($$0);
+   @Override
+   protected eol a(List<? extends eol> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eol)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (eol $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   public abstract static class a<T extends eox.a<T>> implements eoy.a, eqe<T> {
-      private final Builder<eql> a = ImmutableList.builder();
-
-      public T a(eql.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
-      }
-
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<eql> g() {
-         return this.a.build();
-      }
+   public static eox.a a(eot.a<?>... $$0) {
+      return new eox.a($$0);
    }
 
-   static final class b extends eox.a<eox.b> {
-      private final Function<List<eql>, eoy> a;
+   public static class a extends eot.a<eox.a> {
+      private final Builder<eot> a = ImmutableList.builder();
 
-      public b(Function<List<eql>, eoy> $$0) {
-         this.a = $$0;
+      public a(eot.a<?>... $$0) {
+         for (eot.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      protected eox.b a() {
+      protected eox.a a() {
          return this;
       }
 
       @Override
-      public eoy b() {
-         return this.a.apply(this.g());
+      public eox.a c(eot.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eot b() {
+         return new eox(this.a.build(), this.f());
       }
    }
 }

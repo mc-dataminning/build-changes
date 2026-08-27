@@ -1,72 +1,28 @@
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public final class btp {
-   public static Optional<esj> a(bqv $$0, esj $$1, float $$2, int $$3, boolean $$4) {
-      esj $$5 = $$0.dk();
-      esj $$6 = new esj($$1.c - $$5.c, 0.0, $$1.e - $$5.e).d().a(0.5);
-      esj $$7 = $$1.d($$6);
-      esj $$8 = $$7.d($$5);
-      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
-      double $$10 = Math.atan2($$8.e, $$8.c);
-      double $$11 = $$8.a(0.0, $$8.d, 0.0).g();
-      double $$12 = Math.sqrt($$11);
-      double $$13 = $$8.d;
-      double $$14 = $$0.aX();
-      double $$15 = Math.sin((double)(2.0F * $$9));
-      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
-      double $$17 = Math.sin((double)$$9);
-      double $$18 = Math.cos((double)$$9);
-      double $$19 = Math.sin($$10);
-      double $$20 = Math.cos($$10);
-      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
-      if ($$21 < 0.0) {
-         return Optional.empty();
-      } else {
-         double $$22 = Math.sqrt($$21);
-         if ($$22 > (double)$$2) {
-            return Optional.empty();
-         } else {
-            double $$23 = $$22 * $$18;
-            double $$24 = $$22 * $$17;
-            if ($$4) {
-               int $$25 = axm.c($$12 / $$23) * 2;
-               double $$26 = 0.0;
-               esj $$27 = null;
-               bqd $$28 = $$0.a(bre.g);
-
-               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
-                  $$26 += $$12 / (double)$$25;
-                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
-                  double $$31 = $$26 * $$20;
-                  double $$32 = $$26 * $$19;
-                  esj $$33 = new esj($$5.c + $$31, $$5.d + $$30, $$5.e + $$32);
-                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
-                     return Optional.empty();
-                  }
-
-                  $$27 = $$33;
-               }
-            }
-
-            return Optional.of(new esj($$23 * $$20, $$24, $$23 * $$19).a(0.95F));
-         }
-      }
+public class btp {
+   private static im a(brg $$0, im $$1) {
+      ayd $$2 = $$0.dN().z;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   private static boolean a(bqv $$0, bqd $$1, esj $$2, esj $$3) {
-      esj $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a(), $$1.b());
-      int $$6 = axm.c($$4.f() / $$5);
-      esj $$7 = $$4.d();
-      esj $$8 = $$2;
+   private static int a(ayd $$0) {
+      return $$0.a(3) - 1;
+   }
 
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.a($$5 * 0.9F));
-         if (!$$0.dM().a($$0, $$1.a($$8))) {
-            return false;
-         }
-      }
+   public static <E extends brg> buh<E> a(cah<im> $$0, int $$1, float $$2) {
+      return bwj.a(
+         (Function<bwj.b<E>, ? extends App<bwj.c<E>, bwm<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cah.o), $$3.c(cah.m), $$3.a(cah.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     im $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dn(), (double)$$1);
+                     if (!$$8) {
+                        bsy.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
 
-      return true;
+                     return true;
+                  }))
+      );
    }
 }

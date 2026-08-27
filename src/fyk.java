@@ -1,17 +1,49 @@
-public class fyk extends fwp {
-   protected fyk(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fyr $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+public class fyk extends fzs {
+   private final fzn a;
+
+   protected fyk(fvm $$0, double $$1, double $$2, double $$3, double $$4, fzn $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
-   public static class a implements fxz<kq> {
-      private final fyr a;
+   @Override
+   public int a(float $$0) {
+      return 15728880;
+   }
 
-      public a(fyr $$0) {
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public fyw b() {
+      return fyw.d;
+   }
+
+   public static class a implements fyv<kz> {
+      private final fzn a;
+
+      public a(fzn $$0) {
          this.a = $$0;
       }
 
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyk($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fyk($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

@@ -1,24 +1,10 @@
-public class cxp extends cwz {
-   public cxp(cwz.a $$0, bqh... $$1) {
-      super($$0, avm.bg, $$1);
-   }
+public class cxp extends bnc.a {
+   public final cxn a;
+   public final int b;
 
-   @Override
-   public int a(int $$0) {
-      return 5 + ($$0 - 1) * 9;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   public static float e(int $$0) {
-      return 1.0F - 1.0F / (float)($$0 + 1);
+   public cxp(cxn $$0, int $$1) {
+      super($$0.e().a());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

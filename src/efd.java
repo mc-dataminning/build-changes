@@ -1,29 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efd extends eew {
-   public static final Codec<efd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, efd::new)
-   );
-   private final int c;
+public class efd extends efr {
+   public static final Codec<efd> a = bnv.b(0, 256).fieldOf("count").xmap(efd::new, $$0 -> $$0.c).codec();
+   private final bnv c;
 
-   private efd(int $$0) {
+   private efd(bnv $$0) {
       this.c = $$0;
    }
 
-   public static efd a(int $$0) {
+   public static efd a(bnv $$0) {
       return new efd($$0);
    }
 
-   @Override
-   protected boolean a(eev $$0, axt $$1, id $$2) {
-      int $$3 = $$0.a(dva.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dva.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   public static efd a(int $$0) {
+      return a(bns.a($$0));
    }
 
    @Override
-   public eey<?> b() {
-      return eey.d;
+   protected int a(ayd $$0, im $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public efo<?> b() {
+      return efo.f;
    }
 }

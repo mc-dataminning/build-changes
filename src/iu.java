@@ -1,93 +1,29 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-public class iu<T> {
-   private final List<T> a;
-   private final List<jb.b> b;
-   private final jb.b c;
+public record iu(ake<czu> d, im e) {
+   public static final MapCodec<iu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(czu.g.fieldOf("dimension").forGetter(iu::a), im.a.fieldOf("pos").forGetter(iu::b)).apply($$0, iu::a)
+   );
+   public static final Codec<iu> b = a.codec();
+   public static final yq<ByteBuf, iu> c = yq.a(ake.b(ld.aR), iu::a, im.b, iu::b, iu::a);
 
-   public iu(List<T> $$0) {
-      this($$0, ac.a(() -> {
-         jb.b[] $$1 = new jb.b[$$0.size()];
-         Arrays.fill($$1, jb.b);
-         return Arrays.asList($$1);
-      }));
+   public static iu a(ake<czu> $$0, im $$1) {
+      return new iu($$0, $$1);
    }
 
-   private iu(List<T> $$0, List<jb.b> $$1) {
-      this.a = List.copyOf($$0);
-      this.b = List.copyOf($$1);
-      this.c = new jb.c(a($$1.stream())).d();
+   @Override
+   public String toString() {
+      return this.d + " " + this.e;
    }
 
-   private int d(T $$0) {
-      int $$1 = this.a.indexOf($$0);
-      if ($$1 == -1) {
-         throw new IllegalStateException("Can't find " + $$0 + " inside " + this.a);
-      } else {
-         return $$1;
-      }
+   public ake<czu> a() {
+      return this.d;
    }
 
-   public jb.b a(T $$0) {
-      int $$1 = this.d($$0);
-      return this.b.get($$1);
-   }
-
-   public jb.b b(T $$0) {
-      int $$1 = this.d($$0);
-      return this.a(0, $$1);
-   }
-
-   public jb.b c(T $$0) {
-      int $$1 = this.d($$0);
-      return this.a($$1, this.b.size());
-   }
-
-   private jb.b a(int $$0, int $$1) {
-      return new jb.c(a(this.b.subList($$0, $$1).stream())).d();
-   }
-
-   public iu<T> a(T $$0, jb.b... $$1) {
-      return this.a($$0, Arrays.asList($$1));
-   }
-
-   public iu<T> a(T $$0, List<jb.b> $$1) {
-      int $$2 = this.d($$0);
-      if ($$1.size() > this.b.size() - $$2) {
-         throw new IllegalStateException("Too many values to replace");
-      } else {
-         List<jb.b> $$3 = new ArrayList<>();
-
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(this.b.get($$4));
-         }
-
-         $$3.addAll($$1);
-
-         while ($$3.size() < this.b.size()) {
-            $$3.add(jb.b);
-         }
-
-         return new iu<>(this.a, $$3);
-      }
-   }
-
-   public jb.b a() {
-      return this.c;
-   }
-
-   private static Map<aju<? extends ja<?>>, ja<?>> a(Stream<? extends jb> $$0) {
-      Map<aju<? extends ja<?>>, ja<?>> $$1 = new HashMap<>();
-      $$0.forEach($$1x -> $$1x.c().forEach($$1xx -> {
-            if ($$1.put($$1xx.a(), $$1xx.b()) != null) {
-               throw new IllegalStateException("Duplicated registry " + $$1xx.a());
-            }
-         }));
-      return $$1;
+   public im b() {
+      return this.e;
    }
 }

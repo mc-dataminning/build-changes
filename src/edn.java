@@ -1,26 +1,47 @@
 import com.mojang.serialization.Codec;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class edn<P extends edm> {
-   public static final edn<edl> a = a("straight_trunk_placer", edl.a);
-   public static final edn<edi> b = a("forking_trunk_placer", edi.a);
-   public static final edn<edj> c = a("giant_trunk_placer", edj.a);
-   public static final edn<edk> d = a("mega_jungle_trunk_placer", edk.b);
-   public static final edn<edg> e = a("dark_oak_trunk_placer", edg.a);
-   public static final edn<edh> f = a("fancy_trunk_placer", edh.a);
-   public static final edn<ede> g = a("bending_trunk_placer", ede.a);
-   public static final edn<edo> h = a("upwards_branching_trunk_placer", edo.a);
-   public static final edn<edf> i = a("cherry_trunk_placer", edf.a);
-   private final Codec<P> j;
+public class edn extends edq {
+   public static final Codec<edn> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(edn::new, $$0 -> $$0.d).codec();
+   private static final ir b = ir.d;
+   private static final ir[] c = ir.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ir[]::new);
+   private final float d;
 
-   private static <P extends edm> edn<P> a(String $$0, Codec<P> $$1) {
-      return ja.a(kt.X, $$0, new edn<>($$1));
+   public edn(float $$0) {
+      this.d = $$0;
    }
 
-   private edn(Codec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected edr<?> a() {
+      return edr.d;
    }
 
-   public Codec<P> a() {
-      return this.j;
+   @Override
+   public void a(edq.a $$0) {
+      ayd $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<im> $$2 = $$0.d();
+         List<im> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<im> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<im> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), dcx.pe.n().a(dcp.b, b));
+               $$0.a().a($$6.get(), dnf.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
+
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     $$1x.a(dna.c.a($$1.a(599)));
+                  }
+               });
+            }
+         }
+      }
    }
 }

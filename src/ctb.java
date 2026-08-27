@@ -1,38 +1,50 @@
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class ctb extends crn {
-   public static final int a = 160;
+public class ctb extends cry implements crf {
+   public static final int a = 5;
+   public static final float b = 3.0F;
 
-   public ctb(crn.a $$0) {
+   public ctb(cry.a $$0) {
       super($$0);
+      dfa.a(this, cps.a);
    }
 
    @Override
-   public void a(crs $$0, @Nullable czg $$1, List<wi> $$2, cti $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<bpm> $$4 = new ArrayList<>();
-         cur $$5 = $$0.a(jr.y, cur.a);
-
-         for (cur.a $$6 : $$5.a()) {
-            $$4.add($$6.a());
-         }
-
-         ctq.a($$4, $$2::add, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
-      }
+   public String i(csd $$0) {
+      cqw $$1 = $$0.a(jz.O);
+      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
    }
 
    @Override
-   public crs a(crs $$0, czg $$1, bqt $$2) {
-      cur $$3 = $$0.a(jr.y, cur.a);
+   public void a(csd $$0, @Nullable czu $$1, List<ws> $$2, ctu $$3) {
+      cpy.a($$0, $$2);
+   }
 
-      for (cur.a $$4 : $$3.a()) {
-         $$2.b($$4.a());
-      }
+   @Override
+   public ctw c(csd $$0) {
+      return ctw.d;
+   }
 
-      super.a($$0, $$1, $$2);
-      return $$2.fM() ? $$0 : new crs(crv.pp);
+   @Override
+   public int b(csd $$0) {
+      return 72000;
+   }
+
+   @Override
+   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
+      csd $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bor.b($$3);
+   }
+
+   @Override
+   public boolean a(csd $$0, csd $$1) {
+      return $$1.a(avw.b) || super.a($$0, $$1);
+   }
+
+   @Override
+   public bqs k() {
+      return bqs.b;
    }
 }

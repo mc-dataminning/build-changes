@@ -1,70 +1,125 @@
-public class ezz extends gru {
-   private static final int a = 212;
-   private static final wi b = wi.c("mco.configure.world.name");
-   private static final wi c = wi.c("mco.configure.world.description");
-   private final ezh y;
-   private final exy z;
-   private feh A;
-   private feh B;
+import java.util.Locale;
 
-   public ezz(ezh $$0, exy $$1) {
-      super(wi.c("mco.configure.world.settings.title"));
-      this.y = $$0;
-      this.z = $$1;
+public class ezz extends gsq {
+   private static final ws a = ws.c("mco.backup.info.title");
+   private static final ws b = ws.c("mco.backup.unknown");
+   private final fkt c;
+   final eyj B;
+   final fih C = new fih(this);
+   private ezz.a D;
+
+   public ezz(fkt $$0, eyj $$1) {
+      super(a);
+      this.c = $$0;
+      this.B = $$1;
    }
 
    @Override
    public void aM_() {
-      int $$0 = this.k / 2 - 106;
-      String $$1 = this.z.e == exy.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      fdy $$2 = fdy.a(wi.c($$1), $$0x -> {
-         if (this.z.e == exy.c.b) {
-            wi $$1x = wi.c("mco.configure.world.close.question.line1");
-            wi $$2x = wi.c("mco.configure.world.close.question.line2");
-            this.j.a(new ezn($$0xx -> {
-               if ($$0xx) {
-                  this.y.a(this);
-               } else {
-                  this.j.a(this);
-               }
-            }, ezn.a.b, $$1x, $$2x, true));
-         } else {
-            this.y.a(false, this);
-         }
-      }).a(this.k / 2 - 53, g(0), 106, 20).a();
-      this.c($$2);
-      this.B = new feh(this.j.h, $$0, g(4), 212, 20, wi.c("mco.configure.world.name"));
-      this.B.f(32);
-      this.B.a(this.z.b());
-      this.c(this.B);
-      this.A = new feh(this.j.h, $$0, g(8), 212, 20, wi.c("mco.configure.world.description"));
-      this.A.f(32);
-      this.A.a(this.z.a());
-      this.c(this.A);
-      fdy $$3 = this.c(fdy.a(wi.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
-      this.B.b($$1x -> $$3.j = !ayh.h($$1x));
-      this.c(fdy.a(wh.e, $$0x -> this.d()).a(this.k / 2 + 2, g(12), 106, 20).a());
+      this.C.a(a, this.p);
+      this.D = this.C.c(new ezz.a(this.m));
+      this.C.b(feu.a(wr.k, $$0 -> this.d()).a());
+      this.c();
+      this.C.a($$1 -> {
+         fes var10000 = this.c($$1);
+      });
    }
 
    @Override
-   protected void aC_() {
-      this.b(this.B);
+   protected void c() {
+      this.D.b(this.n, this.C.d());
+      this.C.a();
    }
 
    @Override
    public void d() {
-      this.j.a(this.y);
+      this.m.a(this.c);
    }
 
-   @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, this.i, this.k / 2, 17, -1);
-      $$0.a(this.m, b, this.k / 2 - 106, g(3), -1, false);
-      $$0.a(this.m, c, this.k / 2 - 106, g(7), -1, false);
+   ws a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
+      } else {
+         return (ws)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : ws.b($$1));
+      }
    }
 
-   public void g() {
-      this.y.a(this.B.a(), this.A.a());
+   private ws a(String $$0) {
+      try {
+         return faw.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   private ws b(String $$0) {
+      try {
+         return faw.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   class a extends ffq<ezz.b> {
+      public a(fcu $$0) {
+         super($$0, ezz.this.n, ezz.this.C.d(), ezz.this.C.c(), 36);
+         if (ezz.this.B.e != null) {
+            ezz.this.B.e.forEach(($$0x, $$1) -> this.b(ezz.this.new b($$0x, $$1)));
+         }
+      }
+   }
+
+   class b extends ffq.a<ezz.b> {
+      private static final ws b = ws.c("mco.backup.entry.templateName");
+      private static final ws c = ws.c("mco.backup.entry.gameDifficulty");
+      private static final ws d = ws.c("mco.backup.entry.name");
+      private static final ws e = ws.c("mco.backup.entry.gameServerVersion");
+      private static final ws f = ws.c("mco.backup.entry.uploaded");
+      private static final ws g = ws.c("mco.backup.entry.enabledPack");
+      private static final ws h = ws.c("mco.backup.entry.description");
+      private static final ws i = ws.c("mco.backup.entry.gameMode");
+      private static final ws j = ws.c("mco.backup.entry.seed");
+      private static final ws k = ws.c("mco.backup.entry.worldType");
+      private static final ws l = ws.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
+
+      public b(String $$0, String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+
+      @Override
+      public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(ezz.this.p, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(ezz.this.p, ezz.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
+
+      private ws a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public ws a() {
+         return ws.a("narrator.select", this.m + " " + this.n);
+      }
    }
 }

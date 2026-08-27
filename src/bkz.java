@@ -1,91 +1,45 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
 import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Collections;
+import java.util.List;
 
-public interface bkz {
-   bkz f = (bkz)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bky.a() : new bkz.a());
+public class bkz implements bld {
+   public static final bkz a = new bkz();
 
-   boolean a(bkx var1);
+   private bkz() {
+   }
 
-   Path b();
+   @Override
+   public List<blg> a(String $$0) {
+      return Collections.emptyList();
+   }
 
-   boolean c();
+   @Override
+   public boolean a(Path $$0) {
+      return false;
+   }
 
-   boolean d();
+   @Override
+   public long a() {
+      return 0L;
+   }
 
-   void a(float var1);
+   @Override
+   public int b() {
+      return 0;
+   }
 
-   void a(vh var1, yr<?> var2, SocketAddress var3, int var4);
+   @Override
+   public long c() {
+      return 0L;
+   }
 
-   void b(vh var1, yr<?> var2, SocketAddress var3, int var4);
+   @Override
+   public int d() {
+      return 0;
+   }
 
-   void a(dsu var1, cyn var2, dst var3, int var4);
-
-   void b(dsu var1, cyn var2, dst var3, int var4);
-
-   @Nullable
-   blc e();
-
-   @Nullable
-   blc a(cyn var1, aju<czg> var2, String var3);
-
-   public static class a implements bkz {
-      private static final Logger b = LogUtils.getLogger();
-      static final blc a = () -> {
-      };
-
-      @Override
-      public boolean a(bkx $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
-      }
-
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
-
-      @Override
-      public boolean c() {
-         return false;
-      }
-
-      @Override
-      public boolean d() {
-         return false;
-      }
-
-      @Override
-      public void a(vh $$0, yr<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void b(vh $$0, yr<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(dsu $$0, cyn $$1, dst $$2, int $$3) {
-      }
-
-      @Override
-      public void b(dsu $$0, cyn $$1, dst $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public blc e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public blc a(cyn $$0, aju<czg> $$1, String $$2) {
-         return null;
-      }
+   @Override
+   public String e() {
+      return "";
    }
 }

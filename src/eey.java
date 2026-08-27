@@ -1,25 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public interface eey<P extends eex> {
-   eey<eej> a = a("block_predicate_filter", eej.a);
-   eey<efa> b = a("rarity_filter", efa.a);
-   eey<efc> c = a("surface_relative_threshold_filter", efc.a);
-   eey<efd> d = a("surface_water_depth_filter", efd.a);
-   eey<eei> e = a("biome", eei.a);
-   eey<een> f = a("count", een.a);
-   eey<ees> g = a("noise_based_count", ees.a);
-   eey<eet> h = a("noise_threshold_count", eet.a);
-   eey<eem> i = a("count_on_every_layer", eem.a);
-   eey<eeo> j = a("environment_scan", eeo.a);
-   eey<eeq> k = a("heightmap", eeq.a);
-   eey<eep> l = a("height_range", eep.a);
-   eey<eer> m = a("in_square", eer.a);
-   eey<eez> n = a("random_offset", eez.a);
-   eey<eek> o = a("carving_mask", eek.a);
+public class eey extends efm {
+   private static final eey c = new eey();
+   public static Codec<eey> a = Codec.unit(() -> c);
 
-   Codec<P> codec();
+   private eey() {
+   }
 
-   private static <P extends eex> eey<P> a(String $$0, Codec<P> $$1) {
-      return ja.a(kt.U, $$0, () -> $$1);
+   public static eey a() {
+      return c;
+   }
+
+   @Override
+   protected boolean a(efl $$0, ayd $$1, im $$2) {
+      efk $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      iv<dat> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
+   }
+
+   @Override
+   public efo<?> b() {
+      return efo.e;
    }
 }

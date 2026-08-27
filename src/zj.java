@@ -1,29 +1,29 @@
-public class zj implements yp<zg> {
-   public static final yg<vi, zj> a = yp.a(zj::a, zj::new);
-   private final long b;
+public class zj implements yz<zf> {
+   public static final yq<vs, zj> a = yz.a(zj::a, zj::new);
+   private final int b;
 
-   public zj(long $$0) {
+   public zj(int $$0) {
       this.b = $$0;
    }
 
-   private zj(vi $$0) {
-      this.b = $$0.readLong();
+   private zj(vs $$0) {
+      this.b = $$0.readInt();
    }
 
-   private void a(vi $$0) {
-      $$0.b(this.b);
+   private void a(vs $$0) {
+      $$0.p(this.b);
    }
 
    @Override
-   public yr<zj> a() {
-      return zf.l;
+   public zb<zj> a() {
+      return zp.d;
    }
 
-   public void a(zg $$0) {
+   public void a(zf $$0) {
       $$0.a(this);
    }
 
-   public long b() {
+   public int b() {
       return this.b;
    }
 }

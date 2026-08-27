@@ -1,51 +1,116 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
+import java.util.Set;
 
 public class aoe {
-   public static void a(CommandDispatcher<dv> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ws.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ws.c("commands.tag.remove.failed"));
+
+   public static void a(CommandDispatcher<ec> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
-               .then(dw.a("clear").executes($$0x -> a((dv)$$0x.getSource(), ImmutableList.of(((dv)$$0x.getSource()).h())))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("tag").requires($$0x -> $$0x.c(2)))
             .then(
-               dw.a("set")
-                  .then(
-                     dw.a("warning_level", IntegerArgumentType.integer(0, 4))
-                        .executes(
-                           $$0x -> a((dv)$$0x.getSource(), ImmutableList.of(((dv)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
-                        )
-                  )
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ed.a("targets", ep.b())
+                        .then(
+                           ed.a("add")
+                              .then(
+                                 ed.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((ec)$$0x.getSource(), ep.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        ed.a("remove")
+                           .then(
+                              ed.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> eh.b(a(ep.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((ec)$$0x.getSource(), ep.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(ed.a("list").executes($$0x -> a((ec)$$0x.getSource(), ep.b($$0x, "targets"))))
             )
       );
    }
 
-   private static int a(dv $$0, Collection<? extends cka> $$1, int $$2) {
-      for (cka $$3 : $$1) {
-         $$3.aa().ifPresent($$1x -> $$1x.a($$2));
+   private static Collection<String> a(Collection<? extends bql> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
+
+      for (bql $$2 : $$0) {
+         $$1.addAll($$2.ak());
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> wi.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().O_()), true);
-      } else {
-         $$0.a(() -> wi.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      return $$1;
    }
 
-   private static int a(dv $$0, Collection<? extends cka> $$1) {
-      for (cka $$2 : $$1) {
-         $$2.aa().ifPresent(cjg::b);
+   private static int a(ec $$0, Collection<? extends bql> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bql $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> ws.a("commands.tag.add.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> ws.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int b(ec $$0, Collection<? extends bql> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bql $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> ws.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> ws.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int a(ec $$0, Collection<? extends bql> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (bql $$3 : $$1) {
+         $$2.addAll($$3.ak());
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> wi.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().O_()), true);
+         bql $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> ws.a("commands.tag.list.single.empty", $$4.O_()), false);
+         } else {
+            $$0.a(() -> ws.a("commands.tag.list.single.success", $$4.O_(), $$2.size(), wv.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> ws.a("commands.tag.list.multiple.empty", $$1.size()), false);
       } else {
-         $$0.a(() -> wi.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
+         $$0.a(() -> ws.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), wv.a($$2)), false);
       }
 
-      return $$1.size();
+      return $$2.size();
    }
 }

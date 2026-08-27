@@ -1,29 +1,36 @@
-public class agz implements yp<afn> {
-   public static final yg<vi, agz> a = yp.a(agz::a, agz::new);
-   private final int b;
+public class agz implements yz<afx> {
+   public static final yq<vs, agz> a = yz.a(agz::a, agz::new);
+   private static final int b = 2;
+   private final boolean c;
 
-   public agz(int $$0) {
-      this.b = $$0;
+   public agz(cki $$0) {
+      this.c = $$0.b;
    }
 
-   private agz(vi $$0) {
-      this.b = $$0.readShort();
+   private agz(vs $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
    }
 
-   private void a(vi $$0) {
-      $$0.l(this.b);
+   private void a(vs $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
    @Override
-   public yr<agz> a() {
-      return afl.bR;
+   public zb<agz> a() {
+      return afv.bH;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public boolean b() {
+      return this.c;
    }
 }

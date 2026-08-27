@@ -1,26 +1,36 @@
-public class gkh<T extends bqt> extends gkc<T, fst<T>> {
-   private final fqv<T> a;
+public class gkh<T extends bre, M extends frr<T>> extends gky<T, M> {
+   private static final akf a = new akf("textures/entity/elytra.png");
+   private final fro<T> b;
 
-   public gkh(ghm<T, fst<T>> $$0, ftr $$1) {
+   public gkh(gii<T, M> $$0, fun $$1) {
       super($$0);
-      this.a = new fst<>($$1.a(ftu.bt));
+      this.b = new fro<>($$1.a(fuq.W));
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      fby $$10 = fby.Q();
-      boolean $$11 = $$10.b($$3) && $$3.ce();
-      if (!$$3.ce() || $$11) {
-         ewv $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(gaq.r(this.a($$3)));
+   public void a(exn $$0, gbe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      csd $$10 = $$3.d(bqs.e);
+      if ($$10.a(csg.nT)) {
+         akf $$13;
+         if ($$3 instanceof gad $$11) {
+            gnn $$12 = $$11.b();
+            if ($$12.d() != null) {
+               $$13 = $$12.d();
+            } else if ($$12.c() != null && $$11.a(ckm.a)) {
+               $$13 = $$12.c();
+            } else {
+               $$13 = a;
+            }
          } else {
-            $$12 = $$1.getBuffer(gaq.i(this.a($$3)));
+            $$13 = a;
          }
 
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, ggs.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         exr $$17 = ghl.a($$1, gbm.a($$13), false, $$10.x());
+         this.b.a($$0, $$17, $$2, gmf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.b();
       }
    }
 }

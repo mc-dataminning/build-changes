@@ -1,29 +1,28 @@
-public class adw implements yp<aba> {
-   public static final yg<vi, adw> a = yp.a(adw::a, adw::new);
-   private final int b;
+import javax.annotation.Nullable;
 
-   public adw(dqz $$0) {
-      this.b = $$0.q();
+public record adw(String b, @Nullable String c) implements yz<abk> {
+   public static final yq<vs, adw> a = yz.a(adw::a, adw::new);
+
+   private adw(vs $$0) {
+      this($$0.p(), $$0.c(vs::p));
    }
 
-   private adw(vi $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vi $$0) {
-      $$0.c(this.b);
+   private void a(vs $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vs::a);
    }
 
    @Override
-   public yr<adw> a() {
-      return afl.au;
+   public zb<adw> a() {
+      return afv.cc;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public String e() {
+      return this.c;
    }
 }

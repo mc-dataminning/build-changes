@@ -1,68 +1,37 @@
-public class frk<T extends ccu> extends fre<T> {
-   private final ftv a;
-   private final ftv b;
-   private final ftv f;
-   private final ftv g;
-   private final ftv h;
-   private final ftv i;
-
-   public frk(ftv $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.f = $$0.b("right_arm");
-      this.g = $$0.b("left_arm");
-      this.h = $$0.b("right_leg");
-      this.i = $$0.b("left_leg");
+public class frk<T extends bql> extends ftb<T> {
+   public frk(fur $$0) {
+      super($$0, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fub b() {
-      fud $$0 = new fud();
-      fue $$1 = $$0.a();
-      $$1.a("head", fua.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), ftx.a(0.0F, -7.0F, -2.0F));
+   public static fux c() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      int $$2 = 12;
+      $$1.a(
+         "head",
+         fuw.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
+            .a(22, 0)
+            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
+         fut.a(0.0F, 4.0F, -8.0F)
+      );
       $$1.a(
          "body",
-         fua.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new ftz(0.5F)),
-         ftx.a(0.0F, -7.0F, 0.0F)
+         fuw.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+         fut.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
       );
-      $$1.a("right_arm", fua.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), ftx.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", fua.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), ftx.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", fua.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), ftx.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", fua.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), ftx.a(5.0F, 11.0F, 0.0F));
-      return fub.a($$0, 128, 128);
+      fuw $$3 = fuw.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      $$1.a("right_hind_leg", $$3, fut.a(-4.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$3, fut.a(4.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$3, fut.a(-4.0F, 12.0F, -6.0F));
+      $$1.a("left_front_leg", $$3, fut.a(4.0F, 12.0F, -6.0F));
+      return fux.a($$0, 64, 32);
    }
 
-   @Override
-   public ftv a() {
+   public fur d() {
       return this.a;
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.e = -1.5F * axm.e($$1, 13.0F) * $$2;
-      this.i.e = 1.5F * axm.e($$1, 13.0F) * $$2;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         this.f.e = -2.0F + 1.5F * axm.e((float)$$4 - $$3, 10.0F);
-         this.g.e = -2.0F + 1.5F * axm.e((float)$$4 - $$3, 10.0F);
-      } else {
-         int $$5 = $$0.gn();
-         if ($$5 > 0) {
-            this.f.e = -0.8F + 0.025F * axm.e((float)$$5, 70.0F);
-            this.g.e = 0.0F;
-         } else {
-            this.f.e = (-0.2F + 1.5F * axm.e($$1, 13.0F)) * $$2;
-            this.g.e = (-0.2F - 1.5F * axm.e($$1, 13.0F)) * $$2;
-         }
-      }
-   }
-
-   public ftv c() {
-      return this.f;
    }
 }

@@ -1,47 +1,34 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class amb {
-   public static final int a = 2;
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ws.b("commands.difficulty.failure", $$0));
 
-   public static void a(CommandDispatcher<dv> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("gamemode").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)dw.a("gamemode", ej.a())
-                     .executes($$0x -> a($$0x, Collections.singleton(((dv)$$0x.getSource()).h()), ej.a($$0x, "gamemode"))))
-                  .then(dw.a("target", ei.d()).executes($$0x -> a($$0x, ei.f($$0x, "target"), ej.a($$0x, "gamemode"))))
-            )
-      );
+   public static void a(CommandDispatcher<ec> $$0) {
+      LiteralArgumentBuilder<ec> $$1 = ed.a("difficulty");
+
+      for (bon $$2 : bon.values()) {
+         $$1.then(ed.a($$2.e()).executes($$1x -> a((ec)$$1x.getSource(), $$2)));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         bon $$1x = ((ec)$$0x.getSource()).e().ak();
+         ((ec)$$0x.getSource()).a(() -> ws.a("commands.difficulty.query", $$1x.b()), false);
+         return $$1x.a();
+      }));
    }
 
-   private static void a(dv $$0, apv $$1, czd $$2) {
-      wi $$3 = wi.c("gameMode." + $$2.b());
-      if ($$0.f() == $$1) {
-         $$0.a(() -> wi.a("commands.gamemode.success.self", $$3), true);
+   public static int a(ec $$0, bon $$1) throws CommandSyntaxException {
+      MinecraftServer $$2 = $$0.l();
+      if ($$2.bc().q() == $$1) {
+         throw a.create($$1.e());
       } else {
-         if ($$0.e().aa().b(czc.p)) {
-            $$1.a(wi.a("gameMode.changed", $$3));
-         }
-
-         $$0.a(() -> wi.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
+         $$2.a($$1, true);
+         $$0.a(() -> ws.a("commands.difficulty.success", $$1.b()), true);
+         return 0;
       }
-   }
-
-   private static int a(CommandContext<dv> $$0, Collection<apv> $$1, czd $$2) {
-      int $$3 = 0;
-
-      for (apv $$4 : $$1) {
-         if ($$4.a($$2)) {
-            a((dv)$$0.getSource(), $$4, $$2);
-            $$3++;
-         }
-      }
-
-      return $$3;
    }
 }

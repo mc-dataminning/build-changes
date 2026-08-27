@@ -1,48 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dis extends dch {
-   public static final MapCodec<dis> h = b(dis::new);
-   public static final dqg<ij.a> i = dpy.I;
-
-   @Override
-   public MapCodec<? extends dis> a() {
-      return h;
-   }
-
-   public dis(dph.d $$0) {
-      super($$0);
-      this.k(this.n().a(i, ij.a.b));
-   }
+public class dis extends dcj {
+   public static final MapCodec<dis> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dqn.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dis::new)
+   );
+   public static final dqp f = dqo.w;
 
    @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      return b($$0, $$1);
+   public MapCodec<dis> a() {
+      return e;
    }
 
-   public static dpi b(dpi $$0, dit $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((ij.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, ij.a.c);
-               case c:
-                  return $$0.a(i, ij.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   protected dis(dqn $$0, dpx.d $$1) {
+      super($$1, $$0);
+      this.k(this.E.b().a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(i);
+   protected int g(dpy $$0) {
+      return $$0.c(f) ? 15 : 0;
    }
 
    @Override
-   public dpi a(cux $$0) {
-      return this.n().a(i, $$0.k().o());
+   protected dpy a(dpy $$0, int $$1) {
+      return $$0.a(f, Boolean.valueOf($$1 > 0));
+   }
+
+   @Override
+   protected int b(czu $$0, im $$1) {
+      Class<? extends bql> $$2 = switch (this.d.f()) {
+         case a -> bql.class;
+         case b -> bre.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(f);
    }
 }

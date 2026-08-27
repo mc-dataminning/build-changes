@@ -1,37 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class dyx extends dye<eao> {
-   public dyx(Codec<eao> $$0) {
+public class dyx extends dyu<ebc> {
+   public dyx(Codec<ebc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyg<eao> $$0) {
-      dab $$1 = $$0.b();
-      id $$2 = $$0.e();
-      dpi $$3 = $$1.a_($$2.d());
-      eao $$4 = $$0.f();
-      axt $$5 = $$0.d();
-      if (!$$3.a(ave.aL)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.al()) {
-            int $$7 = 0;
+   public boolean a(dyw<ebc> $$0) {
+      im $$1 = $$0.e();
+      ebc $$2 = $$0.f();
+      dap $$3 = $$0.b();
+      im.a $$4 = new im.a();
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               id $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dpi $$10 = $$4.b.a($$5, $$9);
-               if ($$1.u($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
-               }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.I_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).i()) {
+               $$3.a($$4, $$2.c, 2);
             }
-
-            return $$7 > 0;
-         } else {
-            return false;
          }
       }
+
+      return true;
    }
 }

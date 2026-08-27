@@ -1,123 +1,162 @@
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cgq extends cgo implements brj {
-   private static final int c = 50;
-   private static final int d = 70;
-   private static final aja<Boolean> e = aje.a(cgq.class, ajc.k);
-   public static final String b = "sheared";
+public class cgq extends cgn implements bsd<iv<cgr>> {
+   private static final ajk<iv<cgr>> g = ajo.a(cgq.class, ajm.A);
+   private static final ake<cgr> h = cgs.a;
+   public static final MapCodec<iv<cgr>> e = lc.l.r().fieldOf("variant");
+   public static final Codec<iv<cgr>> f = e.codec();
 
-   public static brz.a gq() {
-      return cgo.r().a(bsa.q, 16.0);
+   private static iv<cgr> r() {
+      return lc.l.g(h);
    }
 
-   public cgq(bqg<? extends cgq> $$0, czg $$1) {
+   public cgq(bqr<? extends cgq> $$0, czu $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(aje.a $$0) {
-      super.a($$0);
-      $$0.a(e, false);
+   protected void a(ajo.a $$0) {
+      $$0.a(g, r());
    }
 
    @Override
-   public void b(to $$0) {
-      super.b($$0);
-      $$0.a("sheared", this.gr());
+   public void a(ajk<?> $$0) {
+      if (g.equals($$0)) {
+         this.y();
+      }
    }
 
-   @Override
-   public void a(to $$0) {
-      super.a($$0);
-      this.w($$0.q("sheared"));
+   public void b(iv<cgr> $$0) {
+      this.ao.a(g, $$0);
    }
 
-   public boolean gr() {
-      return this.an.a(e);
+   public iv<cgr> p() {
+      return this.ao.a(g);
    }
 
-   public void w(boolean $$0) {
-      this.an.a(e, $$0);
-   }
-
-   @Override
-   protected bof b(cka $$0, boe $$1) {
-      crs $$2 = $$0.b($$1);
-      if ($$2.a(crv.rU) && this.a()) {
-         this.a(aup.h);
-         this.a(dub.M, $$0);
-         if (!this.dM().B) {
-            $$2.a(1, $$0, d($$1));
-         }
-
-         return bof.a(this.dM().B);
+   public static Optional<cgq> a(czu $$0, im $$1, ir $$2) {
+      cgq $$3 = new cgq($$0, $$1);
+      List<iv<cgr>> $$4 = new ArrayList<>();
+      lc.l.c(avx.a).forEach($$4::add);
+      if ($$4.isEmpty()) {
+         return Optional.empty();
       } else {
-         return super.b($$0, $$1);
-      }
-   }
-
-   @Override
-   protected aun v() {
-      return auo.cn;
-   }
-
-   @Override
-   protected aun d(boy $$0) {
-      return auo.cp;
-   }
-
-   @Override
-   protected aun o_() {
-      return auo.co;
-   }
-
-   @Override
-   protected aun u() {
-      return auo.cr;
-   }
-
-   @Override
-   protected ckg b(crs $$0, float $$1) {
-      ckg $$2 = super.b($$0, $$1);
-      if ($$2 instanceof cki $$3) {
-         $$3.a(new bpm(bpo.s, 100));
-      }
-
-      return $$2;
-   }
-
-   @Override
-   protected int gn() {
-      return 50;
-   }
-
-   @Override
-   protected int go() {
-      return 70;
-   }
-
-   @Override
-   public void a(aup $$0) {
-      this.dM().a(null, this, auo.cq, $$0, 1.0F, 1.0F);
-      this.gu();
-      this.w(true);
-   }
-
-   private void gu() {
-      if (this.dM() instanceof apu $$0 && $$0.aa().b(czc.f)) {
-         ens $$1 = $$0.o().aM().getLootTable(eni.aP);
-         enq $$2 = new enq.a($$0).a(epx.f, this.dk()).a(epx.a, this).a(epw.r);
-         ObjectListIterator var4 = $$1.a($$2).iterator();
-
-         while (var4.hasNext()) {
-            crs $$3 = (crs)var4.next();
-            this.b($$3);
+         $$3.a($$2);
+         $$4.removeIf($$1x -> {
+            $$3.b($$1x);
+            return !$$3.z();
+         });
+         if ($$4.isEmpty()) {
+            return Optional.empty();
+         } else {
+            int $$5 = $$4.stream().mapToInt(cgq::c).max().orElse(0);
+            $$4.removeIf($$1x -> c($$1x) < $$5);
+            Optional<iv<cgr>> $$6 = ac.b($$4, $$3.ah);
+            if ($$6.isEmpty()) {
+               return Optional.empty();
+            } else {
+               $$3.b($$6.get());
+               $$3.a($$2);
+               return Optional.of($$3);
+            }
          }
       }
    }
 
+   private static int c(iv<cgr> $$0) {
+      return $$0.a().a() * $$0.a().b();
+   }
+
+   private cgq(czu $$0, im $$1) {
+      super(bqr.au, $$0, $$1);
+   }
+
+   public cgq(czu $$0, im $$1, ir $$2, iv<cgr> $$3) {
+      this($$0, $$1);
+      this.b($$3);
+      this.a($$2);
+   }
+
    @Override
-   public boolean a() {
-      return !this.gr() && this.bA();
+   public void b(ty $$0) {
+      a($$0, this.p());
+      $$0.a("facing", (byte)this.d.e());
+      super.b($$0);
+   }
+
+   @Override
+   public void a(ty $$0) {
+      iv<cgr> $$1 = f.parse(um.a, $$0).result().orElseGet(cgq::r);
+      this.b($$1);
+      this.d = ir.b($$0.f("facing"));
+      super.a($$0);
+      this.a(this.d);
+   }
+
+   public static void a(ty $$0, iv<cgr> $$1) {
+      f.encodeStart(um.a, $$1).result().ifPresent($$1x -> $$0.a((ty)$$1x));
+   }
+
+   @Override
+   public int A() {
+      return this.p().a().a();
+   }
+
+   @Override
+   public int B() {
+      return this.p().a().b();
+   }
+
+   @Override
+   public void b(@Nullable bql $$0) {
+      if (this.dN().aa().b(czq.i)) {
+         this.a(auz.sd, 1.0F, 1.0F);
+         if ($$0 instanceof ckl $$1 && $$1.fN()) {
+            return;
+         }
+
+         this.a(csg.pZ);
+      }
+   }
+
+   @Override
+   public void C() {
+      this.a(auz.se, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public etf dm() {
+      return etf.a(this.c);
+   }
+
+   @Override
+   public yz<abk> dj() {
+      return new abl(this, this.d.d(), this.D());
+   }
+
+   @Override
+   public void a(abl $$0) {
+      super.a($$0);
+      this.a(ir.a($$0.p()));
+   }
+
+   @Override
+   public csd dA() {
+      return new csd(csg.pZ);
    }
 }

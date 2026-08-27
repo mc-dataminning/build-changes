@@ -1,23 +1,27 @@
-import java.util.UUID;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record wt(UUID a, ckc b) {
-   public static wt a(ckc $$0) {
-      return new wt(UUID.randomUUID(), $$0);
+public interface wt {
+   default <T> Optional<T> a(wx.b<T> $$0, xp $$1) {
+      return Optional.empty();
    }
 
-   public xc.c a(UUID $$0) {
-      return new xc($$0, this.a).a(axz.a(this.b.b(), "SHA256withRSA"));
+   default <T> Optional<T> a(wx.a<T> $$0) {
+      return Optional.empty();
    }
 
-   public wz a() {
-      return new wz(this.a, this.b.c());
+   default xg a(@Nullable ec $$0, @Nullable bql $$1, int $$2) throws CommandSyntaxException {
+      return xg.a(this);
    }
 
-   public UUID b() {
-      return this.a;
-   }
+   wt.a<?> a();
 
-   public ckc c() {
-      return this.b;
+   public static record a<T extends wt>(MapCodec<T> a, String b) implements ayq {
+      @Override
+      public String c() {
+         return this.b;
+      }
    }
 }

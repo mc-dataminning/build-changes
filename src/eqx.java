@@ -1,92 +1,47 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public class eqx implements eqz {
-   private static final String d = "block_entity";
-   private static final eqx.a e = new eqx.a() {
-      @Override
-      public ul a(enk $$0) {
-         dmo $$1 = $$0.c(epx.h);
-         return $$1 != null ? $$1.b($$1.i().H_()) : null;
-      }
+public record eqx(iv<cxn> b, List<Float> c) implements erh {
+   public static final Codec<eqx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(lc.f.r().fieldOf("enchantment").forGetter(eqx::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eqx::d)).apply($$0, eqx::new)
+   );
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<epu<?>> b() {
-         return ImmutableSet.of(epx.h);
-      }
-   };
-   public static final eqx a = new eqx(e);
-   private static final Codec<eqx.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         enk.b $$1 = enk.b.a($$0);
-         return b($$1);
-      }
-   }, eqx.a::a);
-   public static final Codec<eqx> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, eqx::new));
-   public static final Codec<eqx> c = f.xmap(eqx::new, $$0 -> $$0.g);
-   private final eqx.a g;
-
-   private static eqx.a b(final enk.b $$0) {
-      return new eqx.a() {
-         @Nullable
-         @Override
-         public ul a(enk $$0x) {
-            bqa $$1 = $$0.c($$0.a());
-            return $$1 != null ? co.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<epu<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
-   }
-
-   private eqx(eqx.a $$0) {
-      this.g = $$0;
+   @Override
+   public eri b() {
+      return erj.l;
    }
 
    @Override
-   public eqy a() {
-      return era.c;
+   public Set<eqq<?>> a() {
+      return ImmutableSet.of(eqt.i);
    }
 
-   @Nullable
-   @Override
-   public ul a(enk $$0) {
-      return this.g.a($$0);
+   public boolean a(eoa $$0) {
+      csd $$1 = $$0.c(eqt.i);
+      int $$2 = $$1 != null ? cxo.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   @Override
-   public Set<epu<?>> b() {
-      return this.g.b();
+   public static erh.a a(cxn $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new eqx($$0.k(), $$2);
    }
 
-   public static eqz a(enk.b $$0) {
-      return new eqx(b($$0));
+   public iv<cxn> c() {
+      return this.b;
    }
 
-   interface a {
-      @Nullable
-      ul a(enk var1);
-
-      String a();
-
-      Set<epu<?>> b();
+   public List<Float> d() {
+      return this.c;
    }
 }

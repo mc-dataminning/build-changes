@@ -1,46 +1,53 @@
-import org.joml.Matrix4f;
+public class gdb implements gde<dmz> {
+   private final fur a;
+   private final fur b;
 
-public class gdb<T extends dof> implements gci<T> {
-   public static final ajv a = new ajv("textures/environment/end_sky.png");
-   public static final ajv b = new ajv("textures/entity/end_portal.png");
-
-   public gdb(gcj.a $$0) {
+   public gdb(gdf.a $$0) {
+      this.a = $$0.a(fuq.j);
+      this.b = $$0.a(fuq.i);
    }
 
-   public void a(T $$0, float $$1, ewr $$2, gai $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   public static fux b() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      $$1.a("main", fuw.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fut.a);
+      $$1.a("left_leg", fuw.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fut.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fuw.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fut.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fux.a($$0, 64, 64);
    }
 
-   private void a(T $$0, Matrix4f $$1, ewv $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ij.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ij.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ij.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ij.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ij.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ij.b);
+   public static fux c() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      $$1.a("main", fuw.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fut.a);
+      $$1.a("left_leg", fuw.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fut.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fuw.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fut.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fux.a($$0, 64, 64);
    }
 
-   private void a(T $$0, Matrix4f $$1, ewv $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ij $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+   public void a(dmz $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
+      gor $$6 = gbt.p[$$0.c().a()];
+      czu $$7 = $$0.i();
+      if ($$7 != null) {
+         dpy $$8 = $$0.n();
+         dfc.c<? extends dmz> $$9 = dfc.a(dnf.y, dco::h, dco::g, ddy.c, $$8, $$7, $$0.az_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new gdh<>()).get($$4);
+         this.a($$2, $$3, $$8.c(dco.b) == dql.a ? this.a : this.b, $$8.c(dco.aE), $$6, $$10, $$5, false);
+      } else {
+         this.a($$2, $$3, this.a, ir.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, ir.d, $$6, $$4, $$5, true);
       }
    }
 
-   protected float b() {
-      return 0.75F;
-   }
-
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected gaq d() {
-      return gaq.u();
+   private void a(exn $$0, gbe $$1, fur $$2, ir $$3, gor $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      exr $$8 = $$4.a($$1, gbm::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

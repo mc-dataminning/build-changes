@@ -1,68 +1,35 @@
-public class bwv extends bwt {
-   private static final float l = 10.0F;
-   private static final float m = 60.0F;
-   private final int n;
-   private final int o;
-   private final float p;
-   private final float q;
-   private final boolean r;
+import com.google.common.collect.ImmutableMap;
 
-   public bwv(bqv $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
-      super($$0);
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
+public class bwv<E extends cjp> extends bsw<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
+
+   public bwv(int $$0) {
+      super(ImmutableMap.of(cah.aB, cai.a, cah.o, cai.b, cah.m, cai.b, cah.n, cai.c, cah.B, cai.c, cah.az, cai.c, cah.aG, cai.c), $$0);
    }
 
-   @Override
-   public void a() {
-      if (this.r && this.d.bc()) {
-         this.d.g(this.d.dp().b(0.0, 0.005, 0.0));
+   protected boolean a(aqe $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aqe $$0, E $$1, long $$2) {
+      $$1.a(auz.BF, 5.0F, 1.0F);
+   }
+
+   protected void c(aqe $$0, E $$1, long $$2) {
+      if ($$1.c(brp.m)) {
+         $$1.b(brp.a);
       }
 
-      if (this.k == bwt.a.b && !this.d.K().l()) {
-         double $$0 = this.e - this.d.dr();
-         double $$1 = this.f - this.d.dt();
-         double $$2 = this.g - this.d.dx();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.C(0.0F);
-         } else {
-            float $$4 = (float)(axm.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.r(this.a(this.d.dC(), $$4, (float)this.o));
-            this.d.aX = this.d.dC();
-            this.d.aZ = this.d.dC();
-            float $$5 = (float)(this.h * this.d.g(bsa.r));
-            if (this.d.bc()) {
-               this.d.y($$5 * this.p);
-               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
-                  float $$7 = -((float)(axm.d($$1, $$6) * 180.0F / (float)Math.PI));
-                  $$7 = axm.a(axm.g($$7), (float)(-this.n), (float)this.n);
-                  this.d.s(this.a(this.d.dE(), $$7, 5.0F));
-               }
-
-               float $$8 = axm.b(this.d.dE() * (float) (Math.PI / 180.0));
-               float $$9 = axm.a(this.d.dE() * (float) (Math.PI / 180.0));
-               this.d.bp = $$8 * $$5;
-               this.d.bo = -$$9 * $$5;
-            } else {
-               float $$10 = Math.abs(axm.g(this.d.dC() - $$4));
-               float $$11 = a($$10);
-               this.d.y($$5 * this.q * $$11);
-            }
+      $$1.dQ().b(cah.aB);
+      $$1.dQ().c(cah.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
          }
-      } else {
-         this.d.y(0.0F);
-         this.d.E(0.0F);
-         this.d.D(0.0F);
-         this.d.C(0.0F);
-      }
-   }
 
-   private static float a(float $$0) {
-      return 1.0F - axm.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
+         if (!$$1.dQ().a(cah.az)) {
+            cjq.a($$1, $$1x.dn());
+         }
+      });
    }
 }

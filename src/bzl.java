@@ -1,37 +1,30 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bzl extends byb {
+   private final brm a;
 
-public class bzl<T extends bqt> extends bzj<T> {
-   private static final int i = 200;
-   private int j = 0;
-
-   public bzl(clm $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bqt> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
-   }
-
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+   public bzl(brm $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      if (this.j > 0 || !this.e.ei().h()) {
-         return false;
-      } else if (!((clm)this.e).gC()) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
+      return this.a.aC() && !this.a.dN().b_(this.a.dn()).a(avt.a);
    }
 
    @Override
    public void c() {
-      this.j = b(200);
-      super.c();
+      im $$0 = null;
+
+      for (im $$2 : im.b(
+         axw.a(this.a.ds() - 2.0), axw.a(this.a.du() - 2.0), axw.a(this.a.dy() - 2.0), axw.a(this.a.ds() + 2.0), this.a.dt(), axw.a(this.a.dy() + 2.0)
+      )) {
+         if (this.a.dN().b_($$2).a(avt.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

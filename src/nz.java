@@ -1,40 +1,40 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class nz {
-   private final nr a;
-   private final cvp b;
-   private final cvp c;
-   private final cvp d;
-   private final Map<String, an<?>> e = new LinkedHashMap<>();
+public interface nz {
+   akf a = new akf("recipes/root");
 
-   public nz(nr $$0, cvp $$1, cvp $$2, cvp $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   nz a(String var1, an<?> var2);
+
+   nz a(@Nullable String var1);
+
+   cry a();
+
+   void a(ob var1, akf var2);
+
+   default void a(ob $$0) {
+      this.a($$0, a(this.a()));
    }
 
-   public static nz a(cvp $$0, cvp $$1, cvp $$2, nr $$3) {
-      return new nz($$3, $$0, $$1, $$2);
-   }
-
-   public nz a(String $$0, an<?> $$1) {
-      this.e.put($$0, $$1);
-      return this;
-   }
-
-   public void a(ns $$0, ajv $$1) {
-      this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.e.forEach($$2::a);
-      cwk $$3 = new cwk(this.b, this.c, this.d);
-      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.a.a() + "/")));
-   }
-
-   private void a(ajv $$0) {
-      if (this.e.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + $$0);
+   default void a(ob $$0, String $$1) {
+      akf $$2 = a(this.a());
+      akf $$3 = new akf($$1);
+      if ($$3.equals($$2)) {
+         throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
+      } else {
+         this.a($$0, $$3);
       }
+   }
+
+   static akf a(czt $$0) {
+      return lc.h.b($$0.p());
+   }
+
+   static cvw a(oa $$0) {
+      return switch ($$0) {
+         case a -> cvw.a;
+         case e, f -> cvw.c;
+         case c -> cvw.b;
+         default -> cvw.d;
+      };
    }
 }

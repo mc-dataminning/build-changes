@@ -1,30 +1,86 @@
-import com.mojang.serialization.Codec;
+public class boi implements boj {
+   private final boj c;
+   private final boj d;
 
-public record boi(String d) {
-   public static final boi a = new boi("");
-   public static final Codec<boi> b = Codec.STRING.xmap(boi::new, boi::a);
-   public static final String c = "Lock";
+   public boi(boj $$0, boj $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-   public boolean a(crs $$0) {
-      if (this.d.isEmpty()) {
-         return true;
+   @Override
+   public int b() {
+      return this.c.b() + this.d.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.c() && this.d.c();
+   }
+
+   public boolean a(boj $$0) {
+      return this.c == $$0 || this.d == $$0;
+   }
+
+   @Override
+   public csd a(int $$0) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
+   }
+
+   @Override
+   public csd a(int $$0, int $$1) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
+   }
+
+   @Override
+   public csd b(int $$0) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, csd $$1) {
+      if ($$0 >= this.c.b()) {
+         this.d.a($$0 - this.c.b(), $$1);
       } else {
-         wi $$1 = $$0.a(jr.d);
-         return $$1 != null && this.d.equals($$1.getString());
+         this.c.a($$0, $$1);
       }
    }
 
-   public void a(to $$0) {
-      if (!this.d.isEmpty()) {
-         $$0.a("Lock", this.d);
-      }
+   @Override
+   public int ah_() {
+      return this.c.ah_();
    }
 
-   public static boi b(to $$0) {
-      return $$0.b("Lock", 8) ? new boi($$0.l("Lock")) : a;
+   @Override
+   public void e() {
+      this.c.e();
+      this.d.e();
    }
 
-   public String a() {
-      return this.d;
+   @Override
+   public boolean a(ckl $$0) {
+      return this.c.a($$0) && this.d.a($$0);
+   }
+
+   @Override
+   public void d_(ckl $$0) {
+      this.c.d_($$0);
+      this.d.d_($$0);
+   }
+
+   @Override
+   public void c(ckl $$0) {
+      this.c.c($$0);
+      this.d.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, csd $$1) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.c.a();
+      this.d.a();
    }
 }

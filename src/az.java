@@ -5,31 +5,31 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class az extends cx<az.a> {
+public class az extends dd<az.a> {
    @Override
    public Codec<az.a> a() {
       return az.a.a;
    }
 
-   public void a(apv $$0, Collection<? extends bqa> $$1) {
-      List<enk> $$2 = $$1.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(aqf $$0, Collection<? extends bql> $$1) {
+      List<eoa> $$2 = $$1.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bc> b, List<bc> c) implements cx.a {
+   public static record a(Optional<bc> b, List<bc> c) implements dd.a {
       public static final Codec<az.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(az.a::a), awu.a(br.b.listOf(), "victims", List.of()).forGetter(az.a::b)).apply($$0, az.a::new)
+         $$0 -> $$0.group(axe.a(br.b, "player").forGetter(az.a::a), axe.a(br.b.listOf(), "victims", List.of()).forGetter(az.a::b)).apply($$0, az.a::new)
       );
 
       public static an<az.a> a(br.a... $$0) {
          return am.F.a(new az.a(Optional.empty(), br.a($$0)));
       }
 
-      public boolean a(Collection<? extends enk> $$0) {
+      public boolean a(Collection<? extends eoa> $$0) {
          for (bc $$1 : this.c) {
             boolean $$2 = false;
 
-            for (enk $$3 : $$0) {
+            for (eoa $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;
@@ -46,7 +46,7 @@ public class az extends cx<az.a> {
 
       @Override
       public void a(bd $$0) {
-         cx.a.super.a($$0);
+         dd.a.super.a($$0);
          $$0.a(this.c, ".victims");
       }
 

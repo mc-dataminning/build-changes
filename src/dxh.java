@@ -1,73 +1,21 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dxh extends dye<eak> {
-   public dxh(Codec<eak> $$0) {
+@Deprecated
+public class dxh extends dxi {
+   public static final Codec<dxh> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dxh::new));
+
+   public dxh(jq $$0) {
       super($$0);
    }
 
-   protected void a(czh $$0, axt $$1, id $$2, eak $$3, int $$4, id.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(ij.b, $$6);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            this.a($$0, $$5, $$3.c.a($$1, $$2));
-         }
-      }
-   }
-
-   protected int a(axt $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(czh $$0, id $$1, int $$2, id.a $$3, eak $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.al()) {
-         dpi $$6 = $$0.a_($$1.d());
-         if (!b($$6) && !$$6.a(ave.ba)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
-
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     dpi $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.i() && !$$11.a(ave.O)) {
-                        return false;
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
+   @Override
+   protected boolean a(dpy $$0) {
+      return $$0.e();
    }
 
    @Override
-   public boolean a(dyg<eak> $$0) {
-      dab $$1 = $$0.b();
-      id $$2 = $$0.e();
-      axt $$3 = $$0.d();
-      eak $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      id.a $$6 = new id.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
-      } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
-      }
+   public dwy<?> a() {
+      return dwy.e;
    }
-
-   protected abstract int a(int var1, int var2, int var3, int var4);
-
-   protected abstract void a(czh var1, axt var2, id var3, int var4, id.a var5, eak var6);
 }

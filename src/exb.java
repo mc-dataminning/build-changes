@@ -1,70 +1,101 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class exb {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<exb.a> b;
+   private static final int a = 32768;
+   private final exb.a b;
+   private final String c;
+   private int d;
 
-   public static CompletableFuture<exb.a> a() {
-      if (b == null || a(b)) {
-         b = b();
+   protected exb(exb.a $$0, int $$1, String $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = $$2;
+   }
+
+   public void a(exd $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager.glAttachShader($$0.a(), this.c());
+   }
+
+   public void a() {
+      if (this.d != -1) {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.d);
+         this.d = -1;
+         this.b.c().remove(this.c);
       }
-
-      return b;
    }
 
-   private static boolean a(CompletableFuture<exb.a> $$0) {
-      exb.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   public String b() {
+      return this.c;
    }
 
-   private static CompletableFuture<exb.a> b() {
-      return CompletableFuture.supplyAsync(() -> {
-         exh $$0 = exh.a();
+   public static exb a(exb.a $$0, String $$1, InputStream $$2, String $$3, ewu $$4) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$5 = b($$0, $$1, $$2, $$3, $$4);
+      exb $$6 = new exb($$0, $$5, $$1);
+      $$0.c().put($$1, $$6);
+      return $$6;
+   }
 
-         try {
-            if ($$0.g() != exh.a.a) {
-               return new exb.a(exb.b.b);
-            } else {
-               return !$$0.f() ? new exb.a(exb.b.c) : new exb.a(exb.b.a);
-            }
-         } catch (eyu var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new exb.a(exb.b.d) : new exb.a(var2);
+   protected static int b(exb.a $$0, String $$1, InputStream $$2, String $$3, ewu $$4) throws IOException {
+      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
+      if ($$5 == null) {
+         throw new IOException("Could not load program " + $$0.a());
+      } else {
+         int $$6 = GlStateManager.glCreateShader($$0.d());
+         GlStateManager.glShaderSource($$6, $$4.a($$5));
+         GlStateManager.glCompileShader($$6);
+         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
+            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
+            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
+         } else {
+            return $$6;
          }
-      }, ac.g());
-   }
-
-   public static record a(exb.b a, @Nullable eyu b) {
-      public a(exb.b $$0) {
-         this($$0, null);
-      }
-
-      public a(eyu $$0) {
-         this(exb.b.e, $$0);
-      }
-
-      @Nullable
-      public fjx a(fjx $$0) {
-         return (fjx)(switch (this.a) {
-            case a -> null;
-            case b -> new ezg($$0);
-            case c -> new ezr($$0);
-            case d -> new ezl(wi.c("mco.error.invalid.session.title"), wi.c("mco.error.invalid.session.message"), $$0);
-            case e -> new ezl(Objects.requireNonNull(this.b), $$0);
-         });
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   protected int c() {
+      return this.d;
+   }
+
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
+
+      private final String c;
+      private final String d;
+      private final int e;
+      private final Map<String, exb> f = Maps.newHashMap();
+
+      private a(String $$0, String $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public String a() {
+         return this.c;
+      }
+
+      public String b() {
+         return this.d;
+      }
+
+      int d() {
+         return this.e;
+      }
+
+      public Map<String, exb> c() {
+         return this.f;
+      }
    }
 }

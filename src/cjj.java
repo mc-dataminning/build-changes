@@ -1,75 +1,24 @@
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cjj implements cyt {
-   private static final int a = 1200;
-   private int b;
-
-   @Override
-   public int a(apu $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.aa().b(czc.e)) {
-         this.b--;
-         if (this.b > 0) {
-            return 0;
-         } else {
-            this.b = 1200;
-            cka $$3 = $$0.j();
-            if ($$3 == null) {
-               return 0;
-            } else {
-               axt $$4 = $$0.z;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               id $$7 = $$3.dm().b($$5, 0, $$6);
-               int $$8 = 10;
-               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  return 0;
-               } else {
-                  if (bro.a(bqg.p, $$0, $$7)) {
-                     if ($$0.a($$7, 2)) {
-                        return this.a($$0, $$7);
+public class cjj<E extends cjb> {
+   public static bsx<bre> a(int $$0) {
+      return bwj.a(
+         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$1 -> $$1.group($$1.b(cah.ad), $$1.a(cah.L))
+               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
+                     if (!$$5.eW().d()) {
+                        return false;
+                     } else {
+                        Optional<cgv> $$7 = $$1.a($$3);
+                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
+                           return false;
+                        } else {
+                           $$2.b();
+                           return true;
+                        }
                      }
-
-                     if ($$0.a().a($$7, avp.m).b()) {
-                        return this.b($$0, $$7);
-                     }
-                  }
-
-                  return 0;
-               }
-            }
-         }
-      } else {
-         return 0;
-      }
-   }
-
-   private int a(apu $$0, id $$1) {
-      int $$2 = 48;
-      if ($$0.y().a($$0x -> $$0x.a(cca.n), $$1, 48, cbw.b.b) > 4L) {
-         List<ccl> $$3 = $$0.a(ccl.class, new ese($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            return this.a($$1, $$0);
-         }
-      }
-
-      return 0;
-   }
-
-   private int b(apu $$0, id $$1) {
-      int $$2 = 16;
-      List<ccl> $$3 = $$0.a(ccl.class, new ese($$1).c(16.0, 8.0, 16.0));
-      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
-   }
-
-   private int a(id $$0, apu $$1) {
-      ccl $$2 = bqg.p.a((czg)$$1);
-      if ($$2 == null) {
-         return 0;
-      } else {
-         $$2.a($$1, $$1.d_($$0), bqx.a, null);
-         $$2.a($$0, 0.0F, 0.0F);
-         $$1.a_($$2);
-         return 1;
-      }
+                  }))
+      );
    }
 }

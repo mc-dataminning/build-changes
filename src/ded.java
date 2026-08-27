@@ -1,148 +1,24 @@
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ded extends dch implements djh {
-   public static final dpz a = dhu.b;
-   public static final dpz b = dhu.c;
-   public static final dpz c = dhu.d;
-   public static final dpz d = dhu.e;
-   public static final dpz e = dpy.C;
-   protected static final Map<ij, dpz> f = dhu.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
-   protected final etc[] g;
-   protected final etc[] h;
-   private final Object2IntMap<dpi> i = new Object2IntOpenHashMap();
+public class ded extends dfr {
+   public static final MapCodec<ded> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(awq.a.fieldOf("falling_dust_color").forGetter($$0x -> $$0x.b), u()).apply($$0, ded::new)
+   );
+   private final awq b;
 
-   protected ded(float $$0, float $$1, float $$2, float $$3, float $$4, dph.d $$5) {
-      super($$5);
-      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
-      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
-      UnmodifiableIterator var7 = this.E.a().iterator();
+   @Override
+   public MapCodec<ded> a() {
+      return a;
+   }
 
-      while (var7.hasNext()) {
-         dpi $$6 = (dpi)var7.next();
-         this.g($$6);
-      }
+   public ded(awq $$0, dpx.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected abstract MapCodec<? extends ded> a();
-
-   protected etc[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
-      float $$5 = 8.0F - $$0;
-      float $$6 = 8.0F + $$0;
-      float $$7 = 8.0F - $$1;
-      float $$8 = 8.0F + $$1;
-      etc $$9 = dch.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
-      etc $$10 = dch.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
-      etc $$11 = dch.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
-      etc $$12 = dch.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
-      etc $$13 = dch.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
-      etc $$14 = esz.a($$10, $$13);
-      etc $$15 = esz.a($$11, $$12);
-      etc[] $$16 = new etc[]{
-         esz.a(),
-         $$11,
-         $$12,
-         $$15,
-         $$10,
-         esz.a($$11, $$10),
-         esz.a($$12, $$10),
-         esz.a($$15, $$10),
-         $$13,
-         esz.a($$11, $$13),
-         esz.a($$12, $$13),
-         esz.a($$15, $$13),
-         $$14,
-         esz.a($$11, $$14),
-         esz.a($$12, $$14),
-         esz.a($$15, $$14)
-      };
-
-      for (int $$17 = 0; $$17 < 16; $$17++) {
-         $$16[$$17] = esz.a($$9, $$16[$$17]);
-      }
-
-      return $$16;
-   }
-
-   @Override
-   protected boolean a_(dpi $$0, cym $$1, id $$2) {
-      return !$$0.c(e);
-   }
-
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return this.h[this.g($$0)];
-   }
-
-   @Override
-   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return this.g[this.g($$0)];
-   }
-
-   private static int a(ij $$0) {
-      return 1 << $$0.e();
-   }
-
-   protected int g(dpi $$0) {
-      return this.i.computeIntIfAbsent($$0, $$0x -> {
-         int $$1 = 0;
-         if ($$0x.c(a)) {
-            $$1 |= a(ij.c);
-         }
-
-         if ($$0x.c(b)) {
-            $$1 |= a(ij.f);
-         }
-
-         if ($$0x.c(c)) {
-            $$1 |= a(ij.d);
-         }
-
-         if ($$0x.c(d)) {
-            $$1 |= a(ij.e);
-         }
-
-         return $$1;
-      });
-   }
-
-   @Override
-   protected elb c_(dpi $$0) {
-      return $$0.c(e) ? elc.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected boolean a(dpi $$0, elq $$1) {
-      return false;
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
-         case d:
-            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
-         case b:
-            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dhd $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
-         case c:
-            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
-         default:
-            return super.a($$0, $$1);
-      }
+   public int b(dpy $$0, cza $$1, im $$2) {
+      return this.b.a();
    }
 }

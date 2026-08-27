@@ -1,113 +1,51 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Predicate;
 
-public class dpa extends dbt {
-   public static final MapCodec<dpa> a = b(dpa::new);
-   public static final dqc b = dpc.a;
-   public static final dqg<dqk> c = dpc.c;
+public interface dpa {
+   dpa a = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dn().a($$2, $$3) && !$$2x.f() && !$$2x.N_()).stream().map(bql::cx).toList();
+   dpa b = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dn().a($$2, $$3) && !$$2x.N_()).stream().map(bql::cx).toList();
+   dpa c = ($$0, $$1, $$2, $$3) -> {
+      eta $$4 = new eta($$2).g($$3);
+      return $$1.a($$0, bqr.aI, $$4, bre::bB).stream().map(bql::cx).toList();
+   };
 
-   @Override
-   public MapCodec<dpa> a() {
-      return a;
-   }
+   List<UUID> detect(aqe var1, dpa.a var2, im var3, double var4);
 
-   public dpa(dph.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ij.c).a(c, dqk.a));
-   }
-
-   @Nullable
-   @Override
-   public dmo a(id $$0, dpi $$1) {
-      return null;
-   }
-
-   public static dmo a(id $$0, dpi $$1, dpi $$2, ij $$3, boolean $$4, boolean $$5) {
-      return new dpe($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
-      return a($$2, dmq.k, dpe::a);
-   }
-
-   @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dmo $$5 = $$1.c_($$2);
-         if ($$5 instanceof dpe) {
-            ((dpe)$$5).k();
+   public interface a {
+      dpa.a a = new dpa.a() {
+         @Override
+         public List<aqf> a(aqe $$0, Predicate<? super ckl> $$1) {
+            return $$0.a($$1);
          }
+
+         @Override
+         public <T extends bql> List<T> a(aqe $$0, duf<bql, T> $$1, eta $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
+
+      List<? extends ckl> a(aqe var1, Predicate<? super ckl> var2);
+
+      <T extends bql> List<T> a(aqe var1, duf<bql, T> var2, eta var3, Predicate<? super T> var4);
+
+      static dpa.a a(ckl $$0) {
+         return a(List.of($$0));
       }
-   }
 
-   @Override
-   public void a(czh $$0, id $$1, dpi $$2) {
-      id $$3 = $$1.a($$2.c(b).g());
-      dpi $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof dpb && $$4.c(dpb.c)) {
-         $$0.a($$3, false);
+      static dpa.a a(final List<ckl> $$0) {
+         return new dpa.a() {
+            @Override
+            public List<ckl> a(aqe $$0x, Predicate<? super ckl> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
+
+            @Override
+            public <T extends bql> List<T> a(aqe $$0x, duf<bql, T> $$1, eta $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
-   }
-
-   @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if (!$$1.B && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return bof.b;
-      } else {
-         return bof.d;
-      }
-   }
-
-   @Override
-   protected List<crs> a(dpi $$0, enq.a $$1) {
-      dpe $$2 = this.a($$1.a(), id.a($$1.a(epx.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
-   }
-
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return esz.a();
-   }
-
-   @Override
-   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
-      dpe $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : esz.a();
-   }
-
-   @Nullable
-   private dpe a(cym $$0, id $$1) {
-      dmo $$2 = $$0.c_($$1);
-      return $$2 instanceof dpe ? (dpe)$$2 : null;
-   }
-
-   @Override
-   public crs a(czj $$0, id $$1, dpi $$2) {
-      return crs.i;
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dhd $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dpi $$0, elq $$1) {
-      return false;
    }
 }

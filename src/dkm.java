@@ -1,73 +1,46 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dkm extends dep implements dgx {
-   public static final MapCodec<dkm> c = b(dkm::new);
-   public static final dqg<dqe> d = dep.b;
-   protected static final float e = 6.0F;
-   protected static final etc f = dch.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
-
-   @Override
-   public MapCodec<dkm> a() {
-      return c;
-   }
-
-   public dkm(dph.d $$0) {
+public abstract class dkm extends dkf {
+   protected dkm(dpx.d $$0) {
       super($$0);
    }
 
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return f;
+   private static boolean b(dpy $$0, czx $$1, im $$2) {
+      im $$3 = $$2.c();
+      dpy $$4 = $$1.a_($$3);
+      if ($$4.a(dcx.dN) && $$4.c(dke.c) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
+      } else {
+         int $$5 = eli.a($$1, $$0, $$2, $$4, $$3, ir.b, $$4.b($$1, $$3));
+         return $$5 < $$1.P();
+      }
    }
 
    @Override
-   protected boolean b(dpi $$0, cym $$1, id $$2) {
-      return $$0.d($$1, $$2, ij.b) && !$$0.a(dcj.kJ);
+   protected abstract MapCodec<? extends dkm> a();
+
+   private static boolean c(dpy $$0, czx $$1, im $$2) {
+      im $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(avt.a);
    }
 
    @Override
-   public crs a(czj $$0, id $$1, dpi $$2) {
-      return new crs(dcj.bw);
-   }
+   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dcx.j.n());
+      } else {
+         if ($$1.A($$2.c()) >= 9) {
+            dpy $$4 = this.n();
 
-   @Nullable
-   @Override
-   public dpi a(cux $$0) {
-      dpi $$1 = super.a($$0);
-      if ($$1 != null) {
-         elb $$2 = $$0.q().b_($$0.a().c());
-         if ($$2.a(avj.a) && $$2.e() == 8) {
-            return $$1;
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               im $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dcx.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dcx.dN))));
+               }
+            }
          }
       }
-
-      return null;
-   }
-
-   @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      if ($$0.c(d) == dqe.a) {
-         dpi $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(d) == dqe.b;
-      } else {
-         elb $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(avj.a) && $$4.e() == 8;
-      }
-   }
-
-   @Override
-   protected elb c_(dpi $$0) {
-      return elc.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable cka $$0, cym $$1, id $$2, dpi $$3, ela $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(czh $$0, id $$1, dpi $$2, elb $$3) {
-      return false;
    }
 }

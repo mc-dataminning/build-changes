@@ -1,141 +1,143 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class emd implements emf {
-   private static final Logger b = LogUtils.getLogger();
-   private final czg c;
-   private final int d;
-   private final ArrayDeque<emd.c> e = new ArrayDeque<>();
-   private final List<emd.c> f = new ArrayList<>();
-   private int g = 0;
+public class emd {
+   public final int a;
+   public final int b;
+   public final int c;
+   private final int m;
+   public int d = -1;
+   public float e;
+   public float f;
+   public float g;
+   @Nullable
+   public emd h;
+   public boolean i;
+   public float j;
+   public float k;
+   public emi l = emi.a;
 
-   public emd(czg $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public emd(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.m = b($$0, $$1, $$2);
+   }
+
+   public emd a(int $$0, int $$1, int $$2) {
+      emd $$3 = new emd($$0, $$1, $$2);
+      $$3.d = this.d;
+      $$3.e = this.e;
+      $$3.f = this.f;
+      $$3.g = this.g;
+      $$3.h = this.h;
+      $$3.i = this.i;
+      $$3.j = this.j;
+      $$3.k = this.k;
+      $$3.l = this.l;
+      return $$3;
+   }
+
+   public static int b(int $$0, int $$1, int $$2) {
+      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
+   }
+
+   public float a(emd $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return axw.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public float b(emd $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.c - this.c);
+      return axw.c($$1 * $$1 + $$2 * $$2);
+   }
+
+   public float a(im $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return axw.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public float c(emd $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float b(im $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float d(emd $$0) {
+      float $$1 = (float)Math.abs($$0.a - this.a);
+      float $$2 = (float)Math.abs($$0.b - this.b);
+      float $$3 = (float)Math.abs($$0.c - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public float c(im $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.a);
+      float $$2 = (float)Math.abs($$0.v() - this.b);
+      float $$3 = (float)Math.abs($$0.w() - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public im a() {
+      return new im(this.a, this.b, this.c);
+   }
+
+   public etf b() {
+      return new etf((double)this.a, (double)this.b, (double)this.c);
    }
 
    @Override
-   public void a(ij $$0, dpi $$1, id $$2, id $$3, int $$4, int $$5) {
-      this.a($$2, new emd.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof emd $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
    @Override
-   public void a(id $$0, dch $$1, id $$2) {
-      this.a($$0, new emd.e($$0, $$1, $$2.i()));
+   public int hashCode() {
+      return this.m;
+   }
+
+   public boolean c() {
+      return this.d >= 0;
    }
 
    @Override
-   public void a(dpi $$0, id $$1, dch $$2, id $$3, boolean $$4) {
-      this.a($$1, new emd.a($$0, $$1.i(), $$2, $$3.i(), $$4));
+   public String toString() {
+      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
    }
 
-   @Override
-   public void a(id $$0, dch $$1, @Nullable ij $$2) {
-      this.a($$0, new emd.b($$0.i(), $$1, $$2));
+   public void a(vs $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      $$0.a(this.g);
    }
 
-   private void a(id $$0, emd.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
-         }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
-
-      if (!$$2) {
-         this.a();
-      }
+   public static emd b(vs $$0) {
+      emd $$1 = new emd($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
-            }
-
-            this.f.clear();
-            emd.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
-               }
-            }
-         }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
-      }
-   }
-
-   static record a(dpi a, id b, dch c, id d, boolean e) implements emd.c {
-      @Override
-      public boolean a(czg $$0) {
-         emf.a($$0, this.a, this.b, this.c, this.d, this.e);
-         return false;
-      }
-   }
-
-   static final class b implements emd.c {
-      private final id a;
-      private final dch b;
-      @Nullable
-      private final ij c;
-      private int d = 0;
-
-      b(id $$0, dch $$1, @Nullable ij $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         if (emf.a[this.d] == $$2) {
-            this.d++;
-         }
-      }
-
-      @Override
-      public boolean a(czg $$0) {
-         id $$1 = this.a.a(emf.a[this.d++]);
-         dpi $$2 = $$0.a_($$1);
-         emf.a($$0, $$2, $$1, this.b, this.a, false);
-         if (this.d < emf.a.length && emf.a[this.d] == this.c) {
-            this.d++;
-         }
-
-         return this.d < emf.a.length;
-      }
-   }
-
-   interface c {
-      boolean a(czg var1);
-   }
-
-   static record d(ij a, dpi b, id c, id d, int e, int f) implements emd.c {
-      @Override
-      public boolean a(czg $$0) {
-         emf.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
-         return false;
-      }
-   }
-
-   static record e(id a, dch b, id c) implements emd.c {
-      @Override
-      public boolean a(czg $$0) {
-         dpi $$1 = $$0.a_(this.a);
-         emf.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
-      }
+   protected static void a(vs $$0, emd $$1) {
+      $$1.j = $$0.readFloat();
+      $$1.k = $$0.readFloat();
+      $$1.i = $$0.readBoolean();
+      $$1.l = $$0.b(emi.class);
+      $$1.g = $$0.readFloat();
    }
 }

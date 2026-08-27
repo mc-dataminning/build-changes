@@ -1,26 +1,26 @@
-import com.mojang.serialization.Codec;
+public interface efz {
+   ake<egm> a = a("villages");
+   ake<egm> b = a("desert_pyramids");
+   ake<egm> c = a("igloos");
+   ake<egm> d = a("jungle_temples");
+   ake<egm> e = a("swamp_huts");
+   ake<egm> f = a("pillager_outposts");
+   ake<egm> g = a("ocean_monuments");
+   ake<egm> h = a("woodland_mansions");
+   ake<egm> i = a("buried_treasures");
+   ake<egm> j = a("mineshafts");
+   ake<egm> k = a("ruined_portals");
+   ake<egm> l = a("shipwrecks");
+   ake<egm> m = a("ocean_ruins");
+   ake<egm> n = a("nether_complexes");
+   ake<egm> o = a("nether_fossils");
+   ake<egm> p = a("end_cities");
+   ake<egm> q = a("ancient_cities");
+   ake<egm> r = a("strongholds");
+   ake<egm> s = a("trail_ruins");
+   ake<egm> t = a("trial_chambers");
 
-public interface efz<S extends efq> {
-   efz<ehj> a = a("buried_treasure", ehj.d);
-   efz<ehl> b = a("desert_pyramid", ehl.d);
-   efz<ehn> c = a("end_city", ehn.d);
-   efz<ehw> d = a("fortress", ehw.e);
-   efz<ehp> e = a("igloo", ehp.d);
-   efz<ehq> f = a("jigsaw", ehq.g);
-   efz<ehs> g = a("jungle_temple", ehs.d);
-   efz<ehu> h = a("mineshaft", ehu.d);
-   efz<ehy> i = a("nether_fossil", ehy.d);
-   efz<eia> j = a("ocean_monument", eia.d);
-   efz<eic> k = a("ocean_ruin", eic.d);
-   efz<eie> l = a("ruined_portal", eie.d);
-   efz<eig> m = a("shipwreck", eig.d);
-   efz<eii> n = a("stronghold", eii.d);
-   efz<eik> o = a("swamp_hut", eik.d);
-   efz<eim> p = a("woodland_mansion", eim.d);
-
-   Codec<S> codec();
-
-   private static <S extends efq> efz<S> a(String $$0, Codec<S> $$1) {
-      return ja.a(kt.T, $$0, () -> $$1);
+   private static ake<egm> a(String $$0) {
+      return ake.a(ld.aK, new akf($$0));
    }
 }

@@ -1,83 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public record ckd(ckd.a d) {
-   public static final wi a = wi.c("multiplayer.disconnect.expired_public_key");
-   private static final wi e = wi.c("multiplayer.disconnect.invalid_public_key_signature.new");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<ckd> c = ckd.a.a.xmap(ckd::new, ckd::b);
+public final class ckd {
+   public static final ckd a = a("desert");
+   public static final ckd b = a("jungle");
+   public static final ckd c = a("plains");
+   public static final ckd d = a("savanna");
+   public static final ckd e = a("snow");
+   public static final ckd f = a("swamp");
+   public static final ckd g = a("taiga");
+   private final String h;
+   private static final Map<ake<dat>, ckd> i = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dba.A, a);
+      $$0.put(dba.f, a);
+      $$0.put(dba.B, a);
+      $$0.put(dba.C, a);
+      $$0.put(dba.z, b);
+      $$0.put(dba.x, b);
+      $$0.put(dba.y, b);
+      $$0.put(dba.s, d);
+      $$0.put(dba.r, d);
+      $$0.put(dba.w, d);
+      $$0.put(dba.X, e);
+      $$0.put(dba.W, e);
+      $$0.put(dba.L, e);
+      $$0.put(dba.e, e);
+      $$0.put(dba.N, e);
+      $$0.put(dba.q, e);
+      $$0.put(dba.d, e);
+      $$0.put(dba.F, e);
+      $$0.put(dba.G, e);
+      $$0.put(dba.H, e);
+      $$0.put(dba.I, e);
+      $$0.put(dba.g, f);
+      $$0.put(dba.h, f);
+      $$0.put(dba.o, g);
+      $$0.put(dba.n, g);
+      $$0.put(dba.u, g);
+      $$0.put(dba.t, g);
+      $$0.put(dba.p, g);
+      $$0.put(dba.v, g);
+   });
 
-   public static ckd a(axy $$0, UUID $$1, ckd.a $$2) throws ckd.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new ckd.b(e);
-      } else {
-         return new ckd($$2);
-      }
+   private ckd(String $$0) {
+      this.h = $$0;
    }
 
-   public axy a() {
-      return axy.a(this.d.c, "SHA256withRSA");
+   @Override
+   public String toString() {
+      return this.h;
    }
 
-   public ckd.a b() {
-      return this.d;
+   private static ckd a(String $$0) {
+      return ji.a(lc.y, new akf($$0), new ckd($$0));
    }
 
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<ckd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  awu.m.fieldOf("expires_at").forGetter(ckd.a::b), awk.f.fieldOf("key").forGetter(ckd.a::c), awu.n.fieldOf("signature_v2").forGetter(ckd.a::d)
-               )
-               .apply($$0, ckd.a::new)
-      );
-
-      public a(vi $$0) {
-         this($$0.t(), $$0.u(), $$0.a(4096));
-      }
-
-      public void a(vi $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(axy $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof ckd.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
-      }
-   }
-
-   public static class b extends xi {
-      public b(wi $$0) {
-         super($$0);
-      }
+   public static ckd a(iv<dat> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

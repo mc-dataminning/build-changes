@@ -1,22 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eak implements eai {
-   public static final Codec<eak> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ecj.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               ecj.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eak::new)
-   );
-   public final ecj b;
-   public final ecj c;
-   public final int d;
+public class eak extends dyu<ebf> {
+   public eak(Codec<ebf> $$0) {
+      super($$0);
+   }
 
-   public eak(ecj $$0, ecj $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   @Override
+   public boolean a(dyw<ebf> $$0) {
+      dap $$1 = $$0.b();
+      im $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (ir $$3 : ir.values()) {
+            if ($$3 != ir.a && dlr.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dcx.ff.n().a(dlr.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 }

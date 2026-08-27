@@ -1,89 +1,77 @@
 import java.util.EnumSet;
 import java.util.List;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bxn extends bxq {
-   private final bqv a;
-   private final Predicate<bqv> b;
+public class bxn extends byb {
+   private static final cbu d = cbu.b().a(8.0).d();
+   protected final cct a;
+   private final Class<? extends cct> e;
+   protected final czu b;
    @Nullable
-   private bqv c;
-   private final double d;
-   private final cae e;
+   protected cct c;
    private int f;
-   private final float g;
-   private float h;
-   private final float i;
+   private final double g;
 
-   public bxn(bqv $$0, double $$1, float $$2, float $$3) {
+   public bxn(cct $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cct>)$$0.getClass());
+   }
+
+   public bxn(cct $$0, double $$1, Class<? extends cct> $$2) {
       this.a = $$0;
-      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
-      this.d = $$1;
-      this.e = $$0.K();
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(bxq.a.a, bxq.a.b));
-      if (!($$0.K() instanceof cad) && !($$0.K() instanceof cac)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
-      }
+      this.b = $$0.dN();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(byb.a.a, byb.a.b));
    }
 
    @Override
    public boolean a() {
-      List<bqv> $$0 = this.a.dM().a(bqv.class, this.a.cH().g((double)this.i), this.b);
-      if (!$$0.isEmpty()) {
-         for (bqv $$1 : $$0) {
-            if (!$$1.ce()) {
-               this.c = $$1;
-               return true;
-            }
-         }
+      if (!this.a.gt()) {
+         return false;
+      } else {
+         this.c = this.h();
+         return this.c != null;
       }
-
-      return false;
    }
 
    @Override
    public boolean b() {
-      return this.c != null && !this.e.l() && this.a.g(this.c) > (double)(this.g * this.g);
-   }
-
-   @Override
-   public void c() {
-      this.f = 0;
-      this.h = this.a.a(els.j);
-      this.a.a(els.j, 0.0F);
+      return this.c.bB() && this.c.gt() && this.f < 60 && !this.c.gm();
    }
 
    @Override
    public void d() {
       this.c = null;
-      this.e.n();
-      this.a.a(els.j, this.h);
+      this.f = 0;
    }
 
    @Override
    public void e() {
-      if (this.c != null && !this.a.gb()) {
-         this.a.G().a(this.c, 10.0F, (float)this.a.Z());
-         if (--this.f <= 0) {
-            this.f = this.a(10);
-            double $$0 = this.a.dr() - this.c.dr();
-            double $$1 = this.a.dt() - this.c.dt();
-            double $$2 = this.a.dx() - this.c.dx();
-            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-            if (!($$3 <= (double)(this.g * this.g))) {
-               this.e.a(this.c, this.d);
-            } else {
-               this.e.n();
-               bws $$4 = this.c.G();
-               if ($$3 <= (double)this.g || $$4.e() == this.a.dr() && $$4.f() == this.a.dt() && $$4.g() == this.a.dx()) {
-                  double $$5 = this.c.dr() - this.a.dr();
-                  double $$6 = this.c.dx() - this.a.dx();
-                  this.e.a(this.a.dr() - $$5, this.a.dt(), this.a.dx() - $$6, this.d);
-               }
-            }
+      this.a.G().a(this.c, 10.0F, (float)this.a.Z());
+      this.a.K().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private cct h() {
+      List<? extends cct> $$0 = this.b.a(this.e, d, this.a, this.a.cI().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cct $$2 = null;
+
+      for (cct $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gm() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
          }
       }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a((aqe)this.b, this.c);
    }
 }

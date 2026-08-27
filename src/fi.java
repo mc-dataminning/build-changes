@@ -1,15 +1,4 @@
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.arguments.ArgumentType;
 
-public class fi extends fe<dit> {
-   private fi() {
-      super(dit.e, dit::values);
-   }
-
-   public static fi a() {
-      return new fi();
-   }
-
-   public static dit a(CommandContext<dv> $$0, String $$1) {
-      return (dit)$$0.getArgument($$1, dit.class);
-   }
+public interface fi<T> extends ArgumentType<T> {
 }

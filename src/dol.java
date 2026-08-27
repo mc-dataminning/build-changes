@@ -1,265 +1,193 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class dol {
-   public static final int a = 40;
-   private static final int b = 47;
-   private static final int c = axm.h(47);
-   private static final float d = 0.02F;
-   private final dom e;
-   private final don f;
-   private final dol.a g;
-   private dok h;
-   private final dok.a i;
-   private boolean j;
+public class dol extends dnd implements dut.b<dva.b>, dva {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 5;
+   private static final int h = 6;
+   private static final int i = 40;
+   private static final int j = 90;
+   private static final Int2ObjectMap<auy> k = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, auz.BB);
+      $$0.put(2, auz.BC);
+      $$0.put(3, auz.BD);
+      $$0.put(4, auz.BA);
+   });
+   private int l;
+   private final dva.d m = new dol.a();
+   private dva.a n = new dva.a();
+   private final dva.b r = new dva.b(this);
 
-   public Codec<dol> a() {
-      return RecordCodecBuilder.create(
-         $$0 -> $$0.group(dom.b.forGetter(dol::b), don.b.forGetter(dol::c)).apply($$0, ($$0x, $$1) -> new dol($$0x, $$1, this.g, this.h, this.i))
-      );
+   public dol(im $$0, dpy $$1) {
+      super(dnf.L, $$0, $$1);
    }
 
-   public dol(dol.a $$0, dok $$1, dok.a $$2) {
-      this(dom.a, new don(), $$0, $$1, $$2);
+   @Override
+   public dva.a gr() {
+      return this.n;
    }
 
-   public dol(dom $$0, don $$1, dol.a $$2, dok $$3, dok.a $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.f.a($$0);
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   @Override
+   public dva.d gs() {
+      return this.m;
    }
 
-   public dom b() {
-      return this.e;
+   @Override
+   public void a(ty $$0, ix.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("warning_level", 99)) {
+         this.l = $$0.h("warning_level");
+      }
+
+      if ($$0.b("listener", 10)) {
+         dva.a.a.parse(new Dynamic(um.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.n = $$0x);
+      }
    }
 
-   public don c() {
-      return this.f;
+   @Override
+   protected void b(ty $$0, ix.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("warning_level", this.l);
+      dva.a.a.encodeStart(um.a, this.n).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
    }
 
-   public doo d() {
-      return this.g.d();
+   @Nullable
+   public static aqf a(@Nullable bql $$0) {
+      if ($$0 instanceof aqf) {
+         return (aqf)$$0;
+      } else {
+         if ($$0 != null) {
+            bre $$6 = $$0.cO();
+            if ($$6 instanceof aqf) {
+               return (aqf)$$6;
+            }
+         }
+
+         if ($$0 instanceof cld $$3) {
+            bql var3 = $$3.u();
+            if (var3 instanceof aqf) {
+               return (aqf)var3;
+            }
+         }
+
+         if ($$0 instanceof cgv $$5) {
+            bql var9 = $$5.u();
+            if (var9 instanceof aqf) {
+               return (aqf)var9;
+            }
+         }
+
+         return null;
+      }
    }
 
-   public void a(czg $$0, doo $$1) {
-      this.g.a($$0, $$1);
+   public void a(aqe $$0, @Nullable aqf $$1) {
+      if ($$1 != null) {
+         dpy $$2 = this.n();
+         if (!$$2.c(djp.b)) {
+            this.l = 0;
+            if (!this.b($$0) || this.b($$0, $$1)) {
+               this.a($$0, (bql)$$1);
+            }
+         }
+      }
    }
 
-   public void e() {
-      this.g.f();
+   private boolean b(aqe $$0, aqf $$1) {
+      OptionalInt $$2 = cjr.a($$0, this.az_(), $$1);
+      $$2.ifPresent($$0x -> this.l = $$0x);
+      return $$2.isPresent();
    }
 
-   public dok f() {
-      return this.h;
+   private void a(aqe $$0, @Nullable bql $$1) {
+      im $$2 = this.az_();
+      dpy $$3 = this.n();
+      $$0.a($$2, $$3.a(djp.b, Boolean.valueOf(true)), 2);
+      $$0.a($$2, $$3.b(), 90);
+      $$0.c(3007, $$2, 0);
+      $$0.a(dur.N, $$2, dur.a.a($$1));
    }
 
-   public dok.a g() {
-      return this.i;
+   private boolean b(aqe $$0) {
+      return this.n().c(djp.d) && $$0.ak() != bon.a && $$0.aa().b(czq.M);
    }
 
-   public boolean a(czg $$0) {
-      if (this.j) {
+   public void a(aqe $$0) {
+      if (this.b($$0) && this.l > 0) {
+         if (!this.c($$0)) {
+            this.b((czu)$$0);
+         }
+
+         cjp.a($$0, etf.b(this.az_()), null, 40);
+      }
+   }
+
+   private void b(czu $$0) {
+      auy $$1 = (auy)k.get(this.l);
+      if ($$1 != null) {
+         im $$2 = this.az_();
+         int $$3 = $$2.u() + axw.b($$0.z, -10, 10);
+         int $$4 = $$2.v() + axw.b($$0.z, -10, 10);
+         int $$5 = $$2.w() + axw.b($$0.z, -10, 10);
+         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, ava.f, 5.0F, 1.0F);
+      }
+   }
+
+   private boolean c(aqe $$0) {
+      return this.l < 4 ? false : ayo.a(bqr.bl, bri.k, $$0, this.az_(), 20, 5, 6, ayo.a.b).isPresent();
+   }
+
+   public dva.b b() {
+      return this.r;
+   }
+
+   class a implements dva.d {
+      private static final int b = 8;
+      private final duv c = new dun(dol.this.p);
+
+      public a() {
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      @Override
+      public duv b() {
+         return this.c;
+      }
+
+      @Override
+      public awd<dur> c() {
+         return avu.c;
+      }
+
+      @Override
+      public boolean a(aqe $$0, im $$1, iv<dur> $$2, dur.a $$3) {
+         return !dol.this.n().c(djp.b) && dol.a($$3.a()) != null;
+      }
+
+      @Override
+      public void a(aqe $$0, im $$1, iv<dur> $$2, @Nullable bql $$3, @Nullable bql $$4, float $$5) {
+         dol.this.a($$0, dol.a($$4 != null ? $$4 : $$3));
+      }
+
+      @Override
+      public void e() {
+         dol.this.e();
+      }
+
+      @Override
+      public boolean f() {
          return true;
-      } else {
-         return $$0.ak() == boc.a ? false : $$0.aa().b(czc.e);
       }
-   }
-
-   public Optional<UUID> a(apu $$0, id $$1) {
-      axt $$2 = $$0.E_();
-      czx $$3 = this.f.b(this, $$0.E_());
-      to $$4 = $$3.c();
-      tu $$5 = $$4.c("Pos", 6);
-      Optional<bqg<?>> $$6 = bqg.a($$4);
-      if ($$6.isEmpty()) {
-         return Optional.empty();
-      } else {
-         int $$7 = $$5.size();
-         double $$8 = $$7 >= 1 ? $$5.h(0) : (double)$$1.u() + ($$2.j() - $$2.j()) * (double)this.e.b() + 0.5;
-         double $$9 = $$7 >= 2 ? $$5.h(1) : (double)($$1.v() + $$2.a(3) - 1);
-         double $$10 = $$7 >= 3 ? $$5.h(2) : (double)$$1.w() + ($$2.j() - $$2.j()) * (double)this.e.b() + 0.5;
-         if (!$$0.b($$6.get().a($$8, $$9, $$10))) {
-            return Optional.empty();
-         } else {
-            esj $$11 = new esj($$8, $$9, $$10);
-            if (!a($$0, $$1.b(), $$11)) {
-               return Optional.empty();
-            } else {
-               id $$12 = id.a($$11);
-               if (!bro.a($$6.get(), $$0, bqx.q, $$12, $$0.E_())) {
-                  return Optional.empty();
-               } else {
-                  if ($$3.b().isPresent()) {
-                     czx.a $$13 = $$3.b().get();
-                     if (!$$13.a($$12, $$0)) {
-                        return Optional.empty();
-                     }
-                  }
-
-                  bqa $$14 = bqg.a($$4, $$0, $$4x -> {
-                     $$4x.b($$8, $$9, $$10, $$2.i() * 360.0F, 0.0F);
-                     return $$4x;
-                  });
-                  if ($$14 == null) {
-                     return Optional.empty();
-                  } else {
-                     if ($$14 instanceof bqv $$15) {
-                        if (!$$15.a($$0)) {
-                           return Optional.empty();
-                        }
-
-                        boolean $$16 = $$3.a().f() == 1 && $$3.a().b("id", 8);
-                        if ($$16) {
-                           $$15.a($$0, $$0.d_($$15.dm()), bqx.q, null);
-                        }
-
-                        $$15.fS();
-                     }
-
-                     if (!$$0.e($$14)) {
-                        return Optional.empty();
-                     } else {
-                        $$0.c(3011, $$1, 0);
-                        $$0.c(3012, $$12, 0);
-                        $$0.a($$14, dub.t, $$12);
-                        return Optional.of($$14.cw());
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public void a(apu $$0, id $$1, ajv $$2) {
-      ens $$3 = $$0.o().aM().getLootTable($$2);
-      enq $$4 = new enq.a($$0).a(epw.b);
-      ObjectArrayList<crs> $$5 = $$3.a($$4);
-      if (!$$5.isEmpty()) {
-         ObjectListIterator var7 = $$5.iterator();
-
-         while (var7.hasNext()) {
-            crs $$6 = (crs)var7.next();
-            jy.a($$0, $$6, 2, ij.b, esj.c($$1).a(ij.b, 1.2));
-         }
-
-         $$0.c(3014, $$1, 0);
-      }
-   }
-
-   public void a(czg $$0, id $$1) {
-      if (!this.a($$0)) {
-         this.f.m = this.f.l;
-      } else {
-         doo $$2 = this.d();
-         $$2.a($$0, $$1);
-         if ($$2.d()) {
-            double $$3 = (double)Math.max(0L, this.f.f - $$0.Y());
-            this.f.m = this.f.l;
-            this.f.l = (this.f.l + $$2.b() / ($$3 + 200.0)) % 360.0;
-         }
-
-         if ($$2.e()) {
-            axt $$4 = $$0.E_();
-            if ($$4.i() <= 0.02F) {
-               $$0.a($$1, auo.lU, aup.e, $$4.i() * 0.25F + 0.75F, $$4.i() + 0.5F, false);
-            }
-         }
-      }
-   }
-
-   public void b(apu $$0, id $$1) {
-      doo $$2 = this.d();
-      if (!this.a($$0)) {
-         if ($$2.e()) {
-            this.f.a();
-            this.a($$0, doo.a);
-         }
-      } else {
-         if (this.f.d.removeIf($$2x -> a($$0, $$1, $$2x))) {
-            this.f.f = $$0.Y() + (long)this.e.g();
-         }
-
-         doo $$3 = $$2.a($$1, this, $$0);
-         if ($$3 != $$2) {
-            this.a($$0, $$3);
-         }
-      }
-   }
-
-   private static boolean a(apu $$0, id $$1, UUID $$2) {
-      bqa $$3 = $$0.a($$2);
-      return $$3 == null || !$$3.bA() || !$$3.dM().ae().equals($$0.ae()) || $$3.dm().j($$1) > (double)c;
-   }
-
-   private static boolean a(czg $$0, esj $$1, esj $$2) {
-      esf $$3 = $$0.a(new cyp($$2, $$1, cyp.a.c, cyp.b.a, eso.a()));
-      return $$3.a().equals(id.a($$1)) || $$3.c() == esh.a.a;
-   }
-
-   public static void a(czg $$0, id $$1, axt $$2) {
-      for (int $$3 = 0; $$3 < 20; $$3++) {
-         double $$4 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$5 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$6 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         $$0.a(kn.ac, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-         $$0.a(kn.F, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      }
-   }
-
-   public static void a(czg $$0, id $$1, axt $$2, int $$3) {
-      for (int $$4 = 0; $$4 < 30 + Math.min($$3, 10) * 5; $$4++) {
-         double $$5 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
-         double $$6 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
-         double $$7 = (double)$$1.u() + 0.5 + $$5;
-         double $$8 = (double)$$1.v() + 0.1 + (double)$$2.i() * 0.8;
-         double $$9 = (double)$$1.w() + 0.5 + $$6;
-         $$0.a(kn.aW, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      }
-   }
-
-   public static void b(czg $$0, id $$1, axt $$2) {
-      for (int $$3 = 0; $$3 < 20; $$3++) {
-         double $$4 = (double)$$1.u() + 0.4 + $$2.j() * 0.2;
-         double $$5 = (double)$$1.v() + 0.4 + $$2.j() * 0.2;
-         double $$6 = (double)$$1.w() + 0.4 + $$2.j() * 0.2;
-         double $$7 = $$2.k() * 0.02;
-         double $$8 = $$2.k() * 0.02;
-         double $$9 = $$2.k() * 0.02;
-         $$0.a(kn.aH, $$4, $$5, $$6, $$7, $$8, $$9 * 0.25);
-         $$0.a(kn.ac, $$4, $$5, $$6, $$7, $$8, $$9);
-      }
-   }
-
-   @Deprecated(
-      forRemoval = true
-   )
-   @VisibleForTesting
-   public void a(dok $$0) {
-      this.h = $$0;
-   }
-
-   @Deprecated(
-      forRemoval = true
-   )
-   @VisibleForTesting
-   public void h() {
-      this.j = true;
-   }
-
-   public interface a {
-      void a(czg var1, doo var2);
-
-      doo d();
-
-      void f();
    }
 }

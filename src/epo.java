@@ -1,68 +1,77 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class epo extends eox {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<epo> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(awu.a(wk.a, "name").forGetter($$0x -> $$0x.c), awu.a(enk.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, epo::new)
-   );
-   private final Optional<wi> c;
-   private final Optional<enk.b> d;
+public abstract class epo implements epp {
+   protected final List<erh> g;
+   private final Predicate<eoa> a;
 
-   private epo(List<eql> $$0, Optional<wi> $$1, Optional<enk.b> $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   protected epo(List<erh> $$0) {
+      this.g = $$0;
+      this.a = ac.a($$0);
    }
+
+   protected static <T extends epo> P1<Mu<T>, List<erh>> a(Instance<T> $$0) {
+      return $$0.group(axe.a(erj.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
+   }
+
+   public final csd b(csd $$0, eoa $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract csd a(csd var1, eoa var2);
 
    @Override
-   public eoz b() {
-      return epa.m;
+   public void a(eoj $$0) {
+      epp.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<epu<?>> a() {
-      return this.d.<Set<epu<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
+   protected static epo.a<?> a(Function<List<erh>, epp> $$0) {
+      return new epo.b($$0);
    }
 
-   public static UnaryOperator<wi> a(enk $$0, @Nullable enk.b $$1) {
-      if ($$1 != null) {
-         bqa $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            dv $$3 = $$2.dd().a(2);
-            return $$2x -> {
-               try {
-                  return wl.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
+   public abstract static class a<T extends epo.a<T>> implements epp.a, era<T> {
+      private final Builder<erh> a = ImmutableList.builder();
+
+      public T a(erh.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
       }
 
-      return $$0x -> $$0x;
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<erh> g() {
+         return this.a.build();
+      }
    }
 
-   @Override
-   public crs a(crs $$0, enk $$1) {
-      this.c.ifPresent($$2 -> $$0.b(jr.d, a($$1, this.d.orElse(null)).apply($$2)));
-      return $$0;
-   }
+   static final class b extends epo.a<epo.b> {
+      private final Function<List<erh>, epp> a;
 
-   public static eox.a<?> a(wi $$0) {
-      return a($$1 -> new epo($$1, Optional.of($$0), Optional.empty()));
-   }
+      public b(Function<List<erh>, epp> $$0) {
+         this.a = $$0;
+      }
 
-   public static eox.a<?> a(wi $$0, enk.b $$1) {
-      return a($$2 -> new epo($$2, Optional.of($$0), Optional.of($$1)));
+      protected epo.b a() {
+         return this;
+      }
+
+      @Override
+      public epp b() {
+         return this.a.apply(this.g());
+      }
    }
 }

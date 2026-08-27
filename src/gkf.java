@@ -1,11 +1,25 @@
-public class gkf extends gkc<chm, fso<chm>> {
-   public gkf(ghm<chm, fso<chm>> $$0) {
+public class gkf extends gky<cdb, frm<cdb>> {
+   private final gba a;
+
+   public gkf(gii<cdb, frm<cdb>> $$0, gba $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, chm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ajv $$10 = ghq.a($$3.go());
-      ewv $$11 = $$1.getBuffer(gaq.c($$10));
-      this.c().c().a($$0, $$11, $$2, ggs.c($$3, 0.0F));
+   public void a(exn $$0, gbe $$1, int $$2, cdb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fs() == bqy.b;
+      $$0.a();
+      float $$11 = 1.0F;
+      float $$12 = -1.0F;
+      float $$13 = axw.e($$3.dF()) / 60.0F;
+      if ($$3.dF() < 0.0F) {
+         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
+      } else {
+         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
+      }
+
+      csd $$14 = $$10 ? $$3.eV() : $$3.eW();
+      this.a.a($$3, $$14, csa.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

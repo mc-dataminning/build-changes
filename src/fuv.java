@@ -1,28 +1,24 @@
-import java.util.EnumMap;
-
 public class fuv {
-   public static final int a = 5000;
-   private final fur b;
-   private final feg c;
-   private final EnumMap<bka, Long> d;
+   public static final fuv a = new fuv(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   public fuv(fur $$0, feg $$1) {
-      this.c = $$1;
+   public fuv(float $$0, float $$1, float $$2) {
       this.b = $$0;
-      this.d = new EnumMap<>(bka.class);
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a() {
-      if (this.c.g()) {
-         this.a(bka.a);
-      }
+   public fuv(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   private void a(bka $$0) {
-      long $$1 = ac.b();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new age($$0));
-         this.d.put($$0, $$1);
-      }
+   public fuv a(float $$0) {
+      return new fuv(this.b + $$0, this.c + $$0, this.d + $$0);
+   }
+
+   public fuv a(float $$0, float $$1, float $$2) {
+      return new fuv(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

@@ -1,5 +1,18 @@
-public interface iq<T> {
-   default boolean a(iq<T> $$0) {
-      return $$0 == this;
-   }
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+public interface iq<T> extends ji<T> {
+   @Nonnull
+   @Override
+   akf b(T var1);
+
+   @Nonnull
+   @Override
+   T a(@Nullable akf var1);
+
+   @Nonnull
+   @Override
+   T a(int var1);
+
+   akf a();
 }

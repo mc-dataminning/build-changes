@@ -1,25 +1,55 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public record cz(cm.d c) implements bs {
-   public static final MapCodec<cz> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(awu.a(cm.d.d, "size", cm.d.c).forGetter(cz::b)).apply($$0, cz::new));
-
-   public static cz a(cm.d $$0) {
-      return new cz($$0);
-   }
-
+public class cz extends dd<cz.a> {
    @Override
-   public boolean a(bqa $$0, apu $$1, @Nullable esj $$2) {
-      return $$0 instanceof chp $$3 ? this.c.d($$3.go()) : false;
+   public Codec<cz.a> a() {
+      return cz.a.a;
    }
 
-   @Override
-   public bs.a a() {
-      return bs.b.e;
+   public void a(aqf $$0) {
+      this.a($$0, $$0x -> true);
    }
 
-   public cm.d b() {
-      return this.c;
+   public static record a(Optional<bc> b) implements dd.a {
+      public static final Codec<cz.a> a = RecordCodecBuilder.create($$0 -> $$0.group(axe.a(br.b, "player").forGetter(cz.a::a)).apply($$0, cz.a::new));
+
+      public static an<cz.a> a(cq.a $$0) {
+         return am.q.a(new cz.a(Optional.of(br.a(br.a.a().a($$0)))));
+      }
+
+      public static an<cz.a> a(br.a $$0) {
+         return am.q.a(new cz.a(Optional.of(br.a($$0.b()))));
+      }
+
+      public static an<cz.a> a(Optional<br> $$0) {
+         return am.q.a(new cz.a(br.a($$0)));
+      }
+
+      public static an<cz.a> b() {
+         return am.r.a(new cz.a(Optional.empty()));
+      }
+
+      public static an<cz.a> c() {
+         return am.I.a(new cz.a(Optional.empty()));
+      }
+
+      public static an<cz.a> d() {
+         return am.ab.a(new cz.a(Optional.empty()));
+      }
+
+      public static an<cz.a> e() {
+         return am.x.a(new cz.a(Optional.empty()));
+      }
+
+      public static an<cz.a> a(dcv $$0, cry $$1) {
+         return a(br.a.a().a(bo.a.a().d(cg.a.a().a($$1))).b(cq.a.a().a(av.a.a().a($$0))));
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
    }
 }

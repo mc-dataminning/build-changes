@@ -1,78 +1,45 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Set;
-
-public class cid {
-   public static final float a = 0.6F;
-   public static final float b = 4.0F;
-   public static final float c = 8.0F;
-   public static final float d = 20.0F;
-   static final List<cbd<? extends cbc<? super cic>>> e = ImmutableList.of(cbd.c, cbd.f, cbd.d, cbd.z);
-   static final List<bzw<?>> f = ImmutableList.of(
-      bzw.n, bzw.h, bzw.B, bzw.E, bzw.o, bzw.m, bzw.aU, bzw.aZ, bzw.aV, bzw.aW, bzw.aX, bzw.aY, new bzw[]{bzw.ba, bzw.bb, bzw.x, bzw.y, bzw.t}
-   );
-
-   protected static bru<?> a(bru<cic> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(clp.a));
-      $$0.b(clp.k);
-      $$0.f();
-      return $$0;
+public class cid extends cgz {
+   public cid(bqr<? extends cid> $$0, czu $$1) {
+      super($$0, $$1);
    }
 
-   private static void b(bru<cic> $$0) {
-      $$0.a(clp.a, 0, ImmutableList.of(new bvf(0.8F), new btr(45, 90)));
+   public static boolean a(bqr<cid> $$0, daj $$1, bri $$2, im $$3, ayd $$4) {
+      im $$5 = $$3;
+
+      do {
+         $$5 = $$5.c();
+      } while ($$1.a_($$5).a(dcx.qP));
+
+      return b($$0, $$1, $$2, $$3, $$4) && (bri.a($$2) || $$1.h($$5.d()));
    }
 
-   private static void c(bru<cic> $$0) {
-      $$0.a(
-         clp.b,
-         ImmutableList.of(
-            Pair.of(0, bux.a($$0x -> $$0x.dP().c(bzw.B))),
-            Pair.of(1, bux.a(cic::go)),
-            Pair.of(2, new cid.a(20, 40)),
-            Pair.of(3, new bui(ImmutableList.of(Pair.of(new bsv(20, 100), 1), Pair.of(bud.a(0.6F), 2))))
-         )
-      );
+   @Override
+   protected auy v() {
+      return auz.yX;
    }
 
-   private static void d(bru<cic> $$0) {
-      $$0.a(
-         clp.k,
-         ImmutableList.of(Pair.of(0, bva.a()), Pair.of(1, new cig()), Pair.of(2, new cif()), Pair.of(3, new cih()), Pair.of(4, new cii())),
-         ImmutableSet.of(Pair.of(bzw.o, bzx.a), Pair.of(bzw.m, bzx.b))
-      );
+   @Override
+   protected auy d(bpj $$0) {
+      return auz.yZ;
    }
 
-   static void a(cic $$0) {
-      $$0.dP().a(ImmutableList.of(clp.k, clp.b));
+   @Override
+   protected auy o_() {
+      return auz.yY;
    }
 
-   public static class a extends btv {
-      @VisibleForTesting
-      public a(int $$0, int $$1) {
-         super($$0, $$1);
+   @Override
+   auy u() {
+      return auz.za;
+   }
+
+   @Override
+   protected ckr b(csd $$0, float $$1) {
+      ckr $$2 = super.b($$0, $$1);
+      if ($$2 instanceof ckt) {
+         ((ckt)$$2).a(new bpx(bpz.b, 600));
       }
 
-      @Override
-      protected void c(apu $$0, bqv $$1, long $$2) {
-         super.c($$0, $$1, $$2);
-         $$1.a(auo.cM);
-         $$1.b(bre.p);
-      }
-
-      @Override
-      protected void b(apu $$0, bqv $$1, long $$2) {
-         super.b($$0, $$1, $$2);
-         $$1.b(bre.a);
-         if ($$1.dP().a(bzw.o)) {
-            $$1.dP().a(bzw.aV, ayo.a, 60L);
-         }
-      }
+      return $$2;
    }
 }

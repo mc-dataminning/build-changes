@@ -1,34 +1,64 @@
-import java.util.Arrays;
+public class fkb extends fjj {
+   private feu c;
 
-public class fkb extends fjp {
-   private static final wi a = wi.c("options.sounds.title");
-   private fev o;
-
-   private static fcb<?>[] a(fcc $$0) {
-      return new fcb[]{$$0.W(), $$0.X()};
-   }
-
-   public fkb(fjx $$0, fcc $$1) {
-      super($$0, $$1, a);
+   public fkb() {
+      super("");
    }
 
    @Override
    protected void aM_() {
-      this.o = this.c(new fev(this.j, this.k, this.l, this));
-      this.o.a(this.c.b(aup.a));
-      this.o.a(this.C());
-      this.o.a(this.c.at());
-      this.o.a(a(this.c));
       super.aM_();
+      this.c = feu.a(ws.c("multiplayer.stopSleeping"), $$0 -> this.C()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
+      this.c(this.c);
    }
 
    @Override
-   protected void c() {
-      super.c();
-      this.o.a(this.k, this.d);
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      if (!this.m.J().a(this.m.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   private fcb<?>[] C() {
-      return Arrays.stream(aup.values()).filter($$0 -> $$0 != aup.a).map($$0 -> this.c.b($$0)).toArray(fcb[]::new);
+   @Override
+   public void d() {
+      this.C();
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.C();
+      }
+
+      if (!this.m.J().a(this.m.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.m.l.d().d();
+         return true;
+      }
+   }
+
+   private void C() {
+      fvn $$0 = this.m.s.h;
+      $$0.b(new ahb(this.m.s, ahb.a.c));
+   }
+
+   public void m() {
+      if (this.b.a().isEmpty()) {
+         this.m.a(null);
+      } else {
+         this.m.a(new fjj(this.b.a()));
+      }
    }
 }

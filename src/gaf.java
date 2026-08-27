@@ -1,47 +1,31 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public class gaf extends gae {
+   private final fcy i;
 
-public class gaf {
-   public final Int2ObjectMap<gnz> a = new Int2ObjectOpenHashMap(256);
-   private final Int2ObjectMap<gns> b = new Int2ObjectOpenHashMap(256);
-   private final gny c;
-
-   public gaf(gny $$0) {
-      this.c = $$0;
+   public gaf(fcy $$0) {
+      this.i = $$0;
    }
 
-   public gns a(crs $$0) {
-      gns $$1 = this.a($$0.f());
-      return $$1 == null ? this.c.a() : $$1;
+   private static float a(boolean $$0, boolean $$1) {
+      if ($$0 == $$1) {
+         return 0.0F;
+      } else {
+         return $$0 ? 1.0F : -1.0F;
+      }
    }
 
-   @Nullable
-   public gns a(crn $$0) {
-      return (gns)this.b.get(b($$0));
-   }
-
-   private static int b(crn $$0) {
-      return crn.a($$0);
-   }
-
-   public void a(crn $$0, gnz $$1) {
-      this.a.put(b($$0), $$1);
-   }
-
-   public gny a() {
-      return this.c;
-   }
-
-   public void b() {
-      this.b.clear();
-      ObjectIterator var1 = this.a.entrySet().iterator();
-
-      while (var1.hasNext()) {
-         Entry<Integer, gnz> $$0 = (Entry<Integer, gnz>)var1.next();
-         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+   @Override
+   public void a(boolean $$0, float $$1) {
+      this.c = this.i.x.e();
+      this.d = this.i.z.e();
+      this.e = this.i.y.e();
+      this.f = this.i.A.e();
+      this.b = a(this.c, this.d);
+      this.a = a(this.e, this.f);
+      this.g = this.i.B.e();
+      this.h = this.i.C.e();
+      if ($$0) {
+         this.a *= $$1;
+         this.b *= $$1;
       }
    }
 }

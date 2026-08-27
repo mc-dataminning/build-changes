@@ -1,11 +1,10 @@
 public class avx {
-   public static final avt<eff> a = a("normal");
-   public static final avt<eff> b = a("extended");
+   public static final awd<cgr> a = a("placeable");
 
    private avx() {
    }
 
-   private static avt<eff> a(String $$0) {
-      return avt.a(ku.aN, new ajv($$0));
+   private static awd<cgr> a(String $$0) {
+      return awd.a(ld.S, new akf($$0));
    }
 }

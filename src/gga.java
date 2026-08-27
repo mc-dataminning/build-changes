@@ -1,9 +1,11 @@
-public class gga extends ggx<cec, fqy<cec>> {
-   public gga(gfr.a $$0) {
-      super($$0, new fqy<>($$0.a(ftu.ae)), 0.3F);
+public class gga extends ght<cda, frk<cda>> {
+   private static final akf a = new akf("textures/entity/cow/cow.png");
+
+   public gga(ggn.a $$0) {
+      super($$0, new frk<>($$0.a(fuq.G)), 0.7F);
    }
 
-   public ajv a(cec $$0) {
-      return $$0.y().a();
+   public akf a(cda $$0) {
+      return a;
    }
 }

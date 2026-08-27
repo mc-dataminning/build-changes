@@ -1,79 +1,37 @@
-import java.util.Set;
+public class adi implements yz<abk> {
+   public static final yq<vs, adi> a = yz.a(adi::a, adi::new);
+   private final im b;
+   private final boolean c;
 
-public class adi implements yp<aba> {
-   public static final yg<vi, adi> a = yp.a(adi::a, adi::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
-   private final Set<brg> g;
-   private final int h;
-
-   public adi(double $$0, double $$1, double $$2, float $$3, float $$4, Set<brg> $$5, int $$6) {
+   public adi(im $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
    }
 
-   private adi(vi $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = brg.a($$0.readUnsignedByte());
-      this.h = $$0.l();
+   private adi(vs $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(vi $$0) {
+   private void a(vs $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.k(brg.a(this.g));
-      $$0.c(this.h);
    }
 
    @Override
-   public yr<adi> a() {
-      return afl.ah;
+   public zb<adi> a() {
+      return afv.X;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public im b() {
       return this.b;
    }
 
-   public double e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.h;
-   }
-
-   public Set<brg> j() {
-      return this.g;
    }
 }

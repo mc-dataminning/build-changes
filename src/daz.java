@@ -1,76 +1,245 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public abstract class daz extends dch {
-   public static final int a = 3;
-   public static final dpz b = dpy.r;
+public class daz {
+   public static final Codec<daz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               daz.b.d.optionalFieldOf("grass_color_modifier", daz.b.a).forGetter($$0x -> $$0x.h),
+               das.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               auy.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               dar.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               daq.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               auv.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+            )
+            .apply($$0, daz::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final daz.b h;
+   private final Optional<das> i;
+   private final Optional<iv<auy>> j;
+   private final Optional<dar> k;
+   private final Optional<daq> l;
+   private final Optional<auv> m;
 
-   @Override
-   protected abstract MapCodec<? extends daz> a();
-
-   protected daz(dph.d $$0) {
-      super($$0);
+   daz(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      daz.b $$6,
+      Optional<das> $$7,
+      Optional<iv<auy>> $$8,
+      Optional<dar> $$9,
+      Optional<daq> $$10,
+      Optional<auv> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
    }
 
-   protected abstract Iterable<esj> b(dpi var1);
-
-   public static boolean c(dpi $$0) {
-      return $$0.b(b) && ($$0.a(ave.ae) || $$0.a(ave.bk)) && $$0.c(b);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected void a(czg $$0, dpi $$1, esf $$2, cks $$3) {
-      if (!$$0.B && $$3.bN() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
+      return this.f;
+   }
+
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public daz.b g() {
+      return this.h;
+   }
+
+   public Optional<das> h() {
+      return this.i;
+   }
+
+   public Optional<iv<auy>> i() {
+      return this.j;
+   }
+
+   public Optional<dar> j() {
+      return this.k;
+   }
+
+   public Optional<daq> k() {
+      return this.l;
+   }
+
+   public Optional<auv> l() {
+      return this.m;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private daz.b g = daz.b.a;
+      private Optional<das> h = Optional.empty();
+      private Optional<iv<auy>> i = Optional.empty();
+      private Optional<dar> j = Optional.empty();
+      private Optional<daq> k = Optional.empty();
+      private Optional<auv> l = Optional.empty();
+
+      public daz.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public daz.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public daz.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public daz.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public daz.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public daz.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public daz.a a(daz.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public daz.a a(das $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public daz.a a(iv<auy> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public daz.a a(dar $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public daz.a a(daq $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public daz.a a(@Nullable auv $$0) {
+         this.l = Optional.ofNullable($$0);
+         return this;
+      }
+
+      public daz a() {
+         return new daz(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
+         );
       }
    }
 
-   protected boolean d(dpi $$0) {
-      return !$$0.c(b);
-   }
-
-   @Override
-   public void a(dpi $$0, czg $$1, id $$2, axt $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(czg $$0, esj $$1, axt $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(kn.ac, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, auo.dJ, aup.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+   public static enum b implements ayq {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
          }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = dat.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
+
+      private final String e;
+      public static final Codec<daz.b> d = ayq.a(daz.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(String $$0) {
+         this.e = $$0;
       }
 
-      $$0.a(kn.aH, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable cka $$0, dpi $$1, czh $$2, id $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof daz) {
-         ((daz)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(kn.ac, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      public String a() {
+         return this.e;
       }
 
-      $$2.a(null, $$3, auo.dL, aup.e, 1.0F, 1.0F);
-      $$2.a($$0, dub.c, $$3);
-   }
-
-   private static void a(czh $$0, dpi $$1, id $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
-   }
-
-   @Override
-   protected void a(dpi $$0, czg $$1, id $$2, cyy $$3, BiConsumer<crs, id> $$4) {
-      if ($$3.j() == cyy.a.d && !$$1.x_() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
+      @Override
+      public String c() {
+         return this.e;
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

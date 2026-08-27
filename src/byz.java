@@ -1,40 +1,13 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class byz extends bxq {
-   private final cji a;
-
-   public byz(cji $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bxq.a.c, bxq.a.a));
+public class byz extends byy {
+   public byz(brm $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      if (!this.a.bA()) {
-         return false;
-      } else if (this.a.bc()) {
-         return false;
-      } else if (!this.a.aC()) {
-         return false;
-      } else if (this.a.T) {
-         return false;
-      } else {
-         cka $$0 = this.a.gn();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.g($$0) > 16.0 ? false : $$0.ca != null;
-         }
-      }
-   }
-
-   @Override
-   public void c() {
-      this.a.K().n();
-   }
-
-   @Override
-   public void d() {
-      this.a.f(null);
+   protected etf h() {
+      return bsy.a(this.b, 10, 7);
    }
 }

@@ -1,11 +1,11 @@
-public class gha extends ggx<ccw, frt<ccw>> {
-   private static final ajv a = new ajv("textures/entity/cat/ocelot.png");
+public class gha extends ght<cet, frx<cet>> {
+   private static final akf a = new akf("textures/entity/goat/goat.png");
 
-   public gha(gfr.a $$0) {
-      super($$0, new frt<>($$0.a(ftu.aE)), 0.4F);
+   public gha(ggn.a $$0) {
+      super($$0, new frx<>($$0.a(fuq.al)), 0.7F);
    }
 
-   public ajv a(ccw $$0) {
+   public akf a(cet $$0) {
       return a;
    }
 }

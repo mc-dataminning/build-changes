@@ -1,62 +1,46 @@
-public class ezl extends gru {
-   private final fjx a;
-   private final ezl.a b;
-   private fer c = fer.a;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public ezl(eyu $$0, fjx $$1) {
-      super(fbq.a);
-      this.a = $$1;
-      this.b = a($$0);
+public class ezl extends ezj {
+   private static final Logger j = LogUtils.getLogger();
+   public String a = "";
+   public String b = "";
+   public String c = "";
+   public String d = "";
+   public String e = "";
+   @Nullable
+   public String f;
+   public String g = "";
+   public String h = "";
+   public ezl.a i = ezl.a.a;
+
+   public static ezl a(JsonObject $$0) {
+      ezl $$1 = new ezl();
+
+      try {
+         $$1.a = fbg.b("id", $$0, "");
+         $$1.b = fbg.b("name", $$0, "");
+         $$1.c = fbg.b("version", $$0, "");
+         $$1.d = fbg.b("author", $$0, "");
+         $$1.e = fbg.b("link", $$0, "");
+         $$1.f = fbg.b("image", $$0, null);
+         $$1.g = fbg.b("trailer", $$0, "");
+         $$1.h = fbg.b("recommendedPlayers", $$0, "");
+         $$1.i = ezl.a.valueOf(fbg.b("type", $$0, ezl.a.a.name()));
+      } catch (Exception var3) {
+         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+      }
+
+      return $$1;
    }
 
-   public ezl(wi $$0, fjx $$1) {
-      super(fbq.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public ezl(wi $$0, wi $$1, fjx $$2) {
-      super(fbq.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static ezl.a a(eyu $$0) {
-      exj $$1 = $$0.a;
-      return a(wi.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static ezl.a a(wi $$0) {
-      return a(wi.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static ezl.a a(wi $$0, wi $$1) {
-      return new ezl.a($$0, $$1);
-   }
-
-   @Override
-   public void aM_() {
-      this.c(fdy.a(wh.h, $$0 -> this.d()).a(this.k / 2 - 100, this.l - 52, 200, 20).a());
-      this.c = fer.a(this.m, this.b.b, this.k * 3 / 4);
-   }
-
-   @Override
-   public void d() {
-      this.j.a(this.a);
-   }
-
-   @Override
-   public wi i() {
-      return wi.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m, this.b.a, this.k / 2, 80, -1);
-      this.c.a($$0, this.k / 2, 100, 9, -2142128);
-   }
-
-   static record a(wi a, wi b) {
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

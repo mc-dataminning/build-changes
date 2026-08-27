@@ -1,26 +1,36 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record crk(in<aun> e, int f, float g) {
-   public static final Codec<crk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aun.b.fieldOf("sound_event").forGetter(crk::a), awu.j.fieldOf("use_duration").forGetter(crk::b), awu.k.fieldOf("range").forGetter(crk::c)
-            )
-            .apply($$0, crk::new)
-   );
-   public static final yg<vt, crk> b = yg.a(aun.d, crk::a, ye.f, crk::b, ye.h, crk::c, crk::new);
-   public static final Codec<in<crk>> c = ajr.a(ku.E, a);
-   public static final yg<vt, in<crk>> d = ye.a(ku.E, b);
-
-   public in<aun> a() {
-      return this.e;
+public class crk extends cry {
+   public crk(cry.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.f;
+   @Override
+   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
+      csd $$3 = $$1.b($$2);
+      if ($$1.cu != null) {
+         if (!$$0.B) {
+            int $$4 = $$1.cu.a($$3);
+            $$3.a($$4, $$1, bre.d($$2));
+         }
+
+         $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), auz.iR, ava.g, 1.0F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+         $$1.a(dur.C);
+      } else {
+         $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), auz.iT, ava.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+         if (!$$0.B) {
+            int $$5 = cxo.e($$3);
+            int $$6 = cxo.d($$3);
+            $$0.b(new ckz($$1, $$0, $$6, $$5));
+         }
+
+         $$1.b(avj.c.b(this));
+         $$1.a(dur.D);
+      }
+
+      return bor.a($$3, $$0.x_());
    }
 
-   public float c() {
-      return this.g;
+   @Override
+   public int g() {
+      return 1;
    }
 }

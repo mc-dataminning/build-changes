@@ -1,36 +1,28 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-class bph extends bpj {
-   private final boolean a;
+public enum bph implements ayq {
+   a("hurt", auz.tW),
+   b("thorns", auz.zi),
+   c("drowning", auz.tX),
+   d("burning", auz.tZ),
+   e("poking", auz.ua),
+   f("freezing", auz.tY);
 
-   public bph(bpl $$0, int $$1, boolean $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   public static final Codec<bph> g = ayq.a(bph::values);
+   private final String h;
+   private final auy i;
+
+   private bph(String $$0, auy $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean a(bqt $$0, int $$1) {
-      if (this.a == $$0.ew()) {
-         $$0.c((float)Math.max(4 << $$1, 0));
-      } else {
-         $$0.a($$0.dN().o(), (float)(6 << $$1));
-      }
-
-      return true;
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public void a(@Nullable bqa $$0, @Nullable bqa $$1, bqt $$2, int $$3, double $$4) {
-      if (this.a == $$2.ew()) {
-         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
-         $$2.c((float)$$5);
-      } else {
-         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
-         if ($$0 == null) {
-            $$2.a($$2.dN().o(), (float)$$6);
-         } else {
-            $$2.a($$2.dN().c($$0, $$1), (float)$$6);
-         }
-      }
+   public auy a() {
+      return this.i;
    }
 }

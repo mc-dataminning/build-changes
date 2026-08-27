@@ -1,39 +1,82 @@
-public class gcv implements gci<dnx> {
-   private final fso<?> a;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public gcv(gcj.a $$0) {
-      this.a = new fso($$0.a(ftu.bk));
+public class gcv {
+   private final gcr a;
+   private final gco b;
+
+   public gcv(gcr $$0, gco $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   public void a(dnx $$0, float $$1, ewr $$2, gai $$3, int $$4, int $$5) {
-      ij $$6 = ij.b;
-      if ($$0.m()) {
-         dpi $$7 = $$0.i().a_($$0.az_());
-         if ($$7.b() instanceof djf) {
-            $$6 = $$7.c(djf.b);
+   public gco a() {
+      return this.b;
+   }
+
+   public Predicate<dpy> a(dpz<dcv, dpy> $$0) {
+      return this.a.getPredicate($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<gcv> {
+      public gcv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new gcv(this.b($$3), (gco)$$2.deserialize($$3.get("apply"), gco.class));
+      }
+
+      private gcr b(JsonObject $$0) {
+         return $$0.has("when") ? a(axm.u($$0, "when")) : gcr.b;
+      }
+
+      @VisibleForTesting
+      static gcr a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<gcr> $$2 = Streams.stream(axm.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gcu($$2);
+            } else if ($$0.has("AND")) {
+               List<gcr> $$3 = Streams.stream(axm.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gcq($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new gcq($$1.stream().map(gcv.a::a).collect(Collectors.toList()));
          }
       }
 
-      cql $$8 = $$0.t();
-      gnv $$9;
-      if ($$8 == null) {
-         $$9 = gax.i;
-      } else {
-         $$9 = gax.j.get($$8.a());
+      private static gcr a(Entry<String, JsonElement> $$0) {
+         return new gcs($$0.getKey(), $$0.getValue().getAsString());
       }
-
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      ftv $$12 = this.a.b();
-      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      ewv $$13 = $$9.a($$3, gaq::e);
-      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
    }
 }

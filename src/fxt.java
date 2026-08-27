@@ -1,37 +1,83 @@
-public class fxt extends fxw {
-   private final frr a;
-   private final gaq b = gaq.i(gfk.a);
-
-   fxt(fuq $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new frc(fby.Q().aR().a(ftu.V));
-      this.u = 0.0F;
-      this.t = 30;
+public class fxt extends fzs {
+   fxt(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.7F;
+      this.u = 0.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
+      this.n = false;
+      this.a();
    }
 
    @Override
-   public fya b() {
-      return fya.e;
+   public float b(float $$0) {
+      return this.D * axw.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
-   public void a(ewv $$0, fbj $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * axm.a($$3 * (float) Math.PI);
-      ewr $$5 = new ewr();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      gai.a $$6 = fby.Q().aQ().c();
-      ewv $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, glj.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   public void a() {
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
    }
 
-   public static class a implements fxz<kq> {
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fxt($$1, $$2, $$3, $$4);
+   @Override
+   public fyw b() {
+      return fyw.b;
+   }
+
+   public static class a implements fyv<kz> {
+      private final fzn a;
+
+      public a(fzn $$0) {
+         this.a = $$0;
+      }
+
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fxt $$8 = new fxt($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fyv<kz> {
+      private final fzn a;
+
+      public b(fzn $$0) {
+         this.a = $$0;
+      }
+
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fxt $$8 = new fxt($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements fyv<kz> {
+      private final fzn a;
+
+      public c(fzn $$0) {
+         this.a = $$0;
+      }
+
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fxt $$8 = new fxt($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

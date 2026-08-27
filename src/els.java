@@ -1,38 +1,24 @@
-public enum els {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F),
-   z(0.0F);
+import com.google.common.collect.UnmodifiableIterator;
 
-   private final float A;
+public class els {
+   public static final elq a = a("empty", new elo());
+   public static final elp b = a("flowing_water", new elx.a());
+   public static final elp c = a("water", new elx.b());
+   public static final elp d = a("flowing_lava", new elu.a());
+   public static final elp e = a("lava", new elu.b());
 
-   private els(float $$0) {
-      this.A = $$0;
+   private static <T extends elq> T a(String $$0, T $$1) {
+      return ji.a(lc.c, $$0, $$1);
    }
 
-   public float a() {
-      return this.A;
+   static {
+      for (elq $$0 : lc.c) {
+         UnmodifiableIterator var2 = $$0.f().a().iterator();
+
+         while (var2.hasNext()) {
+            elr $$1 = (elr)var2.next();
+            elq.c.b($$1);
+         }
+      }
    }
 }

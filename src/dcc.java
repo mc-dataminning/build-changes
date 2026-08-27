@@ -1,59 +1,67 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dcc extends dec {
+public class dcc extends dcv implements djw {
    public static final MapCodec<dcc> a = b(dcc::new);
-   public static final int b = 3;
-   public static final dqi c = dpy.as;
-   private static final etc[] g = new etc[]{
-      dch.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
+   public static final dqp b = dqo.C;
 
    @Override
    public MapCodec<dcc> a() {
       return a;
    }
 
-   public dcc(dph.d $$0) {
+   protected dcc(dpx.d $$0) {
       super($$0);
+      this.k(this.n().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dqi b() {
-      return c;
+   protected boolean a_(dpy $$0, cza $$1, im $$2) {
+      return true;
    }
 
    @Override
-   public int c() {
-      return 3;
+   protected djb b_(dpy $$0) {
+      return djb.a;
    }
 
    @Override
-   protected czf d() {
-      return crv.vj;
+   protected float d(dpy $$0, cza $$1, im $$2) {
+      return 1.0F;
    }
 
    @Override
-   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, els.c, els.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected int a(czg $$0) {
-      return super.a($$0) / 3;
+   protected elr c_(dpy $$0) {
+      return $$0.c(b) ? els.c.a(false) : super.c_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      return this.n().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == els.c));
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(c);
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return g[this.g($$0)];
+   public csd a(@Nullable ckl $$0, czv $$1, im $$2, dpy $$3) {
+      return $$0 != null && $$0.f() ? djw.super.a($$0, $$1, $$2, $$3) : csd.i;
+   }
+
+   @Override
+   public boolean a(@Nullable ckl $$0, cza $$1, im $$2, dpy $$3, elq $$4) {
+      return $$0 != null && $$0.f() ? djw.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

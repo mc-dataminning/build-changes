@@ -1,77 +1,132 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Iterators;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class cux extends cuz {
-   private final id b;
-   protected boolean a = true;
+public final class cux implements Iterable<csd> {
+   private static final int d = 256;
+   public static final cux a = new cux(je.a());
+   public static final Codec<cux> b = axe.a(cux.a.a.listOf(), 256).xmap(cux::b, cux::c);
+   public static final yq<wd, cux> c = csd.e.a(yo.c(256)).a(cux::new, $$0 -> $$0.e);
+   private final je<csd> e;
 
-   public cux(cka $$0, boe $$1, crs $$2, esf $$3) {
-      this($$0.dM(), $$0, $$1, $$2, $$3);
+   private cux(je<csd> $$0) {
+      this.e = $$0;
    }
 
-   public cux(cuz $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   private cux(int $$0) {
+      this(je.a($$0, csd.i));
    }
 
-   protected cux(czg $$0, @Nullable cka $$1, boe $$2, crs $$3, esf $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
+   private cux(List<csd> $$0) {
+      this($$0.size());
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         this.e.set($$1, $$0.get($$1));
+      }
    }
 
-   public static cux a(cux $$0, id $$1, ij $$2) {
-      return new cux(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new esf(
-            new esj((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   private static cux b(List<cux.a> $$0) {
+      int $$1 = $$0.stream().mapToInt(cux.a::a).max().orElse(-1);
+      cux $$2 = new cux($$1 + 1);
+
+      for (cux.a $$3 : $$0) {
+         $$2.e.set($$3.a(), $$3.b());
+      }
+
+      return $$2;
+   }
+
+   public static cux a(List<csd> $$0) {
+      int $$1 = c($$0);
+      if ($$1 == 0) {
+         return a;
+      } else {
+         cux $$2 = new cux($$1);
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2.e.set($$3, $$0.get($$3).r());
+         }
+
+         return $$2;
+      }
+   }
+
+   private static int c(List<csd> $$0) {
+      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
+         if (!$$0.get($$1).d()) {
+            return $$1 + 1;
+         }
+      }
+
+      return 0;
+   }
+
+   private List<cux.a> c() {
+      List<cux.a> $$0 = new ArrayList<>();
+
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         csd $$2 = this.e.get($$1);
+         if (!$$2.d()) {
+            $$0.add(new cux.a($$1, $$2));
+         }
+      }
+
+      return $$0;
+   }
+
+   public void a(je<csd> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         csd $$2 = $$1 < this.e.size() ? this.e.get($$1) : csd.i;
+         $$0.set($$1, $$2.r());
+      }
+   }
+
+   public csd a() {
+      return this.e.isEmpty() ? csd.i : this.e.get(0).r();
+   }
+
+   public Stream<csd> b() {
+      return this.e.stream().filter($$0 -> !$$0.d()).map(csd::r);
    }
 
    @Override
-   public id a() {
-      return this.a ? super.a() : this.b;
+   public Iterator<csd> iterator() {
+      return Iterators.transform(Iterators.filter(this.e.iterator(), $$0 -> !$$0.d()), csd::r);
    }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public ij d() {
-      return ij.a(this.o())[0];
-   }
-
-   public ij e() {
-      return ij.a(this.o(), ij.a.b);
-   }
-
-   public ij[] f() {
-      ij[] $$0 = ij.a(this.o());
-      if (this.a) {
-         return $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         ij $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
+         if ($$0 instanceof cux $$1 && csd.a(this.e, $$1.e)) {
+            return true;
          }
 
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
+         return false;
+      }
+   }
 
-         return $$0;
+   @Override
+   public int hashCode() {
+      return csd.a(this.e);
+   }
+
+   static record a(int b, csd c) {
+      public static final Codec<cux.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cux.a::a), csd.a.fieldOf("item").forGetter(cux.a::b)).apply($$0, cux.a::new)
+      );
+
+      public int a() {
+         return this.b;
+      }
+
+      public csd b() {
+         return this.c;
       }
    }
 }

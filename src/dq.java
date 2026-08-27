@@ -1,39 +1,36 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dq {
-   public static final Codec<dq> a = ajv.a.xmap(dq::new, dq::a);
-   private final ajv b;
-   private boolean c;
-   private Optional<hh<dv>> d = Optional.empty();
-
-   public dq(ajv $$0) {
-      this.b = $$0;
+public class dq extends dd<dq.a> {
+   @Override
+   public Codec<dq.a> a() {
+      return dq.a.a;
    }
 
-   public Optional<hh<dv>> a(akj $$0) {
-      if (!this.c) {
-         this.d = $$0.a(this.b);
-         this.c = true;
+   public void a(aqf $$0, im $$1) {
+      double $$2 = $$0.ds() - (double)$$1.u();
+      double $$3 = $$0.dy() - (double)$$1.w();
+      double $$4 = $$2 * $$2 + $$3 * $$3;
+      this.a($$0, $$1x -> $$1x.a($$4));
+   }
+
+   public static record a(Optional<bc> b, cs.c c) implements dd.a {
+      public static final Codec<dq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(axe.a(br.b, "player").forGetter(dq.a::a), axe.a(cs.c.d, "distance", cs.c.c).forGetter(dq.a::b)).apply($$0, dq.a::new)
+      );
+
+      public boolean a(double $$0) {
+         return this.c.e($$0);
       }
 
-      return this.d;
-   }
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
 
-   public ajv a() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         if ($$0 instanceof dq $$1 && this.a().equals($$1.a())) {
-            return true;
-         }
-
-         return false;
+      public cs.c b() {
+         return this.c;
       }
    }
 }

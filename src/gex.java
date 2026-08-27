@@ -1,32 +1,59 @@
-public class gex extends ggx<cic, fqe<cic>> {
-   private static final ajv a = new ajv("textures/entity/breeze/breeze.png");
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-   public gex(gfr.a $$0) {
-      super($$0, new fqe<>($$0.a(ftu.s)), 0.5F);
-      this.a(new gjb(this));
-      this.a(new gja(this));
+public class gex implements geq.a {
+   private final fcu a;
+   private final Map<Long, Map<im, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+
+   gex(fcu $$0) {
+      this.a = $$0;
    }
 
-   public void a(cic $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
-      fqe<cic> $$6 = this.a();
-      a($$6, $$6.b(), $$6.d());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(long $$0, im $$1) {
+      Map<im, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   public ajv a(cic $$0) {
-      return a;
-   }
+   @Override
+   public void a(exn $$0, gbe $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.r.Y();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<im> $$8 = Sets.newHashSet();
+      Map<im, Integer> $$9 = Maps.newHashMap();
+      exr $$10 = $$1.getBuffer(gbm.y());
+      Iterator<Entry<Long, Map<im, Integer>>> $$11 = this.b.entrySet().iterator();
 
-   public static fqe<cic> a(fqe<cic> $$0, ftv... $$1) {
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-      $$0.e().k = false;
-
-      for (ftv $$2 : $$1) {
-         $$2.k = true;
+      while ($$11.hasNext()) {
+         Entry<Long, Map<im, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<im, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<im, Integer> $$16 : $$14.entrySet()) {
+               im $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  eta $$19 = new eta(im.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  gbc.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
       }
 
-      return $$0;
+      for (Entry<im, Integer> $$20 : $$9.entrySet()) {
+         im $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         geq.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

@@ -1,27 +1,25 @@
-public class dmz extends dmo {
-   private int a;
+public class dmz extends dnd {
+   private cqw a;
 
-   public dmz(id $$0, dpi $$1) {
-      super(dmq.s, $$0, $$1);
+   public dmz(im $$0, dpy $$1) {
+      super(dnf.y, $$0, $$1);
+      this.a = ((dco)$$1.b()).b();
    }
 
-   @Override
-   protected void b(to $$0, ip.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("OutputSignal", this.a);
+   public dmz(im $$0, dpy $$1, cqw $$2) {
+      super(dnf.y, $$0, $$1);
+      this.a = $$2;
    }
 
-   @Override
-   public void a(to $$0, ip.a $$1) {
-      super.a($$0, $$1);
-      this.a = $$0.h("OutputSignal");
+   public abr b() {
+      return abr.a(this);
    }
 
-   public int b() {
+   public cqw c() {
       return this.a;
    }
 
-   public void a(int $$0) {
+   public void a(cqw $$0) {
       this.a = $$0;
    }
 }

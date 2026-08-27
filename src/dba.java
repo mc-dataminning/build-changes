@@ -1,76 +1,70 @@
-import com.mojang.serialization.MapCodec;
+public abstract class dba {
+   public static final ake<dat> a = a("the_void");
+   public static final ake<dat> b = a("plains");
+   public static final ake<dat> c = a("sunflower_plains");
+   public static final ake<dat> d = a("snowy_plains");
+   public static final ake<dat> e = a("ice_spikes");
+   public static final ake<dat> f = a("desert");
+   public static final ake<dat> g = a("swamp");
+   public static final ake<dat> h = a("mangrove_swamp");
+   public static final ake<dat> i = a("forest");
+   public static final ake<dat> j = a("flower_forest");
+   public static final ake<dat> k = a("birch_forest");
+   public static final ake<dat> l = a("dark_forest");
+   public static final ake<dat> m = a("old_growth_birch_forest");
+   public static final ake<dat> n = a("old_growth_pine_taiga");
+   public static final ake<dat> o = a("old_growth_spruce_taiga");
+   public static final ake<dat> p = a("taiga");
+   public static final ake<dat> q = a("snowy_taiga");
+   public static final ake<dat> r = a("savanna");
+   public static final ake<dat> s = a("savanna_plateau");
+   public static final ake<dat> t = a("windswept_hills");
+   public static final ake<dat> u = a("windswept_gravelly_hills");
+   public static final ake<dat> v = a("windswept_forest");
+   public static final ake<dat> w = a("windswept_savanna");
+   public static final ake<dat> x = a("jungle");
+   public static final ake<dat> y = a("sparse_jungle");
+   public static final ake<dat> z = a("bamboo_jungle");
+   public static final ake<dat> A = a("badlands");
+   public static final ake<dat> B = a("eroded_badlands");
+   public static final ake<dat> C = a("wooded_badlands");
+   public static final ake<dat> D = a("meadow");
+   public static final ake<dat> E = a("cherry_grove");
+   public static final ake<dat> F = a("grove");
+   public static final ake<dat> G = a("snowy_slopes");
+   public static final ake<dat> H = a("frozen_peaks");
+   public static final ake<dat> I = a("jagged_peaks");
+   public static final ake<dat> J = a("stony_peaks");
+   public static final ake<dat> K = a("river");
+   public static final ake<dat> L = a("frozen_river");
+   public static final ake<dat> M = a("beach");
+   public static final ake<dat> N = a("snowy_beach");
+   public static final ake<dat> O = a("stony_shore");
+   public static final ake<dat> P = a("warm_ocean");
+   public static final ake<dat> Q = a("lukewarm_ocean");
+   public static final ake<dat> R = a("deep_lukewarm_ocean");
+   public static final ake<dat> S = a("ocean");
+   public static final ake<dat> T = a("deep_ocean");
+   public static final ake<dat> U = a("cold_ocean");
+   public static final ake<dat> V = a("deep_cold_ocean");
+   public static final ake<dat> W = a("frozen_ocean");
+   public static final ake<dat> X = a("deep_frozen_ocean");
+   public static final ake<dat> Y = a("mushroom_fields");
+   public static final ake<dat> Z = a("dripstone_caves");
+   public static final ake<dat> aa = a("lush_caves");
+   public static final ake<dat> ab = a("deep_dark");
+   public static final ake<dat> ac = a("nether_wastes");
+   public static final ake<dat> ad = a("warped_forest");
+   public static final ake<dat> ae = a("crimson_forest");
+   public static final ake<dat> af = a("soul_sand_valley");
+   public static final ake<dat> ag = a("basalt_deltas");
+   public static final ake<dat> ah = a("the_end");
+   public static final ake<dat> ai = a("end_highlands");
+   public static final ake<dat> aj = a("end_midlands");
+   public static final ake<dat> ak = a("small_end_islands");
+   public static final ake<dat> al = a("end_barrens");
 
-public abstract class dba extends dch {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final etc h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final etc b = esz.a(
-      esz.b(), esz.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), esn.e
-   );
-   protected final jk.a c;
-
-   @Override
-   protected abstract MapCodec<? extends dba> a();
-
-   public dba(dph.d $$0, jk.a $$1) {
-      super($$0);
-      this.c = $$1;
-   }
-
-   protected double b(dpi $$0) {
-      return 0.0;
-   }
-
-   protected boolean a(dpi $$0, id $$1, bqa $$2) {
-      return $$2.dt() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
-   }
-
-   @Override
-   protected boh a(crs $$0, dpi $$1, czg $$2, id $$3, cka $$4, boe $$5, esf $$6) {
-      jk $$7 = this.c.b().get($$0.f());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
-   }
-
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return b;
-   }
-
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2) {
-      return h;
-   }
-
-   @Override
-   protected boolean d_(dpi $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dpi $$0, elq $$1) {
-      return false;
-   }
-
-   public abstract boolean d(dpi var1);
-
-   @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      id $$4 = dhy.a((czg)$$1, $$2);
-      if ($$4 != null) {
-         ela $$5 = dhy.a($$1, $$4);
-         if ($$5 != elc.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
-      }
-   }
-
-   protected boolean a(ela $$0) {
-      return false;
-   }
-
-   protected void a(dpi $$0, czg $$1, id $$2, ela $$3) {
+   private static ake<dat> a(String $$0) {
+      return ake.a(ld.ay, new akf($$0));
    }
 }

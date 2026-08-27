@@ -1,19 +1,61 @@
-import com.google.common.collect.Streams;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class gbu implements exr {
+   private final exr a;
+   private final gmo b;
 
-public class gbu implements gbv {
-   public static final String a = "AND";
-   private final Iterable<? extends gbv> d;
-
-   public gbu(Iterable<? extends gbv> $$0) {
-      this.d = $$0;
+   public gbu(exr $$0, gmo $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public Predicate<dpi> getPredicate(dpj<dch, dpi> $$0) {
-      List<Predicate<dpi>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
-      return $$1x -> $$1.stream().allMatch($$1xx -> $$1xx.test($$1x));
+   public exr a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public exr a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public exr a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
+   }
+
+   @Override
+   public exr a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public exr b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public exr a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void l() {
+      this.a.l();
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

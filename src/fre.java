@@ -1,45 +1,30 @@
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList.Builder;
 
-public abstract class fre<E extends bqa> extends fqv<E> {
-   private static final Vector3f a = new Vector3f();
+public class fre extends ftd {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
 
-   public fre() {
-      this(gaq::e);
-   }
-
-   public fre(Function<ajv, gaq> $$0) {
+   public fre(fur $$0) {
       super($$0);
    }
 
    @Override
-   public void a(ewr $$0, ewv $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected Builder<fur> a(fur $$0) {
+      Builder<fur> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
+      return $$1;
    }
 
-   public abstract ftv a();
-
-   public Optional<ftv> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   protected void a(bpv $$0, fcp $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(fcp $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fcr.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bpv $$0, fcp $$1, float $$2, float $$3) {
-      $$0.a($$2, $$3);
-      $$0.a($$1x -> fcr.a(this, $$1, $$1x.b(), 1.0F, a));
-   }
-
-   protected void a(fcp $$0) {
-      fcr.a(this, $$0, 0L, 1.0F, a);
+   public static fux a() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      ftd.a($$1);
+      $$1.a("chest_bottom", fuw.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fut.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fuw.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fut.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fuw.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fut.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fux.a($$0, 128, 128);
    }
 }

@@ -1,4 +1,3 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -8,56 +7,38 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eq implements ArgumentType<etq> {
-   private static final Collection<String> b = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wi.b("argument.criteria.invalid", $$0));
+public class eq implements ArgumentType<czr> {
+   private static final Collection<String> a = Stream.of(czr.a, czr.b).map(czr::b).collect(Collectors.toList());
+   private static final czr[] b = czr.values();
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ws.b("argument.gamemode.invalid", $$0));
 
-   private eq() {
+   public czr a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      czr $$2 = czr.a($$1, null);
+      if ($$2 == null) {
+         throw c.createWithContext($$0, $$1);
+      } else {
+         return $$2;
+      }
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return $$0.getSource() instanceof eh ? eh.b(Arrays.stream(b).map(czr::b), $$1) : Suggestions.empty();
+   }
+
+   public Collection<String> getExamples() {
+      return a;
    }
 
    public static eq a() {
       return new eq();
    }
 
-   public static etq a(CommandContext<dv> $$0, String $$1) {
-      return (etq)$$0.getArgument($$1, etq.class);
-   }
-
-   public etq a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && $$0.peek() != ' ') {
-         $$0.skip();
-      }
-
-      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-      return etq.a($$2).orElseThrow(() -> {
-         $$0.setCursor($$1);
-         return a.createWithContext($$0, $$2);
-      });
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList(etq.c());
-
-      for (auy<?> $$3 : kt.x) {
-         for (Object $$4 : $$3.b()) {
-            String $$5 = this.a($$3, $$4);
-            $$2.add($$5);
-         }
-      }
-
-      return ea.b($$2, $$1);
-   }
-
-   public <T> String a(auy<T> $$0, Object $$1) {
-      return auv.a($$0, (T)$$1);
-   }
-
-   public Collection<String> getExamples() {
-      return b;
+   public static czr a(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
+      return (czr)$$0.getArgument($$1, czr.class);
    }
 }

@@ -1,51 +1,46 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class cqx extends crn {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
+public class cqx extends cry implements ctd {
+   private static final Map<cqw, cqx> a = Maps.newEnumMap(cqw.class);
+   private final cqw b;
 
-   public cqx(crn.a $$0) {
-      super($$0);
+   public cqx(cqw $$0, cry.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bof a(cuz $$0) {
-      czg $$1 = $$0.q();
-      if (!$$1.B) {
-         crs $$2 = $$0.n();
-         esj $$3 = $$0.l();
-         ij $$4 = $$0.k();
-         ckn $$5 = new ckn($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.g(1);
-      }
-
-      return bof.a($$1.B);
-   }
-
-   @Override
-   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
-      if ($$1.fB()) {
-         crs $$3 = $$1.b($$2);
-         if (!$$0.B) {
-            ckn $$4 = new ckn($$0, $$3, $$1);
-            $$0.b($$4);
-            $$3.a(1, $$1);
-            $$1.b(auz.c.b(this));
+   public boq a(csd $$0, ckl $$1, bre $$2, bop $$3) {
+      if ($$2 instanceof cdp $$4 && $$4.bB() && !$$4.y() && $$4.u() != this.b) {
+         $$4.dN().a($$1, $$4, auz.hH, ava.h, 1.0F, 1.0F);
+         if (!$$1.dN().B) {
+            $$4.b(this.b);
+            $$0.g(1);
          }
 
-         return bog.a($$1.b($$2), $$0.x_());
-      } else {
-         return bog.c($$1.b($$2));
+         return boq.a($$1.dN().B);
       }
+
+      return boq.d;
+   }
+
+   public cqw c() {
+      return this.b;
+   }
+
+   public static cqx a(cqw $$0) {
+      return a.get($$0);
    }
 
    @Override
-   public void a(crs $$0, @Nullable czg $$1, List<wi> $$2, cti $$3) {
-      cuh $$4 = $$0.a(jr.K);
-      if ($$4 != null) {
-         $$4.a($$2::add, $$3);
+   public boolean a(czu $$0, don $$1, boolean $$2, ckl $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
+         $$0.a(null, $$1.az_(), auz.hH, ava.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
       }
    }
 }

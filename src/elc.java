@@ -1,24 +1,77 @@
-import com.google.common.collect.UnmodifiableIterator;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class elc {
-   public static final ela a = a("empty", new eky());
-   public static final ekz b = a("flowing_water", new elh.a());
-   public static final ekz c = a("water", new elh.b());
-   public static final ekz d = a("flowing_lava", new ele.a());
-   public static final ekz e = a("lava", new ele.b());
+public abstract class elc<M extends elc<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final drz[] d = new drz[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<drz> a;
 
-   private static <T extends ela> T a(String $$0, T $$1) {
-      return ja.a(kt.c, $$0, $$1);
+   protected elc(Long2ObjectOpenHashMap<drz> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
    }
 
-   static {
-      for (ela $$0 : kt.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   public abstract M b();
 
-         while (var2.hasNext()) {
-            elb $$1 = (elb)var2.next();
-            ela.c.b($$1);
+   public drz a(long $$0) {
+      drz $$1 = ((drz)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
+   }
+
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   @Nullable
+   public drz c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
          }
       }
+
+      drz $$2 = (drz)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
+
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
+
+         return $$2;
+      }
+   }
+
+   @Nullable
+   public drz d(long $$0) {
+      return (drz)this.a.remove($$0);
+   }
+
+   public void a(long $$0, drz $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
+      }
+   }
+
+   public void d() {
+      this.e = false;
    }
 }

@@ -1,133 +1,34 @@
-public class glh {
-   private static final int a = 96;
-   private static final float[] b = ac.a(new float[256], $$0 -> {
-      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
-      }
-   });
-
-   private glh() {
+public abstract class glh<T extends bre, M extends fsw<T>> extends gky<T, M> {
+   public glh(gho<T, M> $$0) {
+      super($$0);
    }
 
-   public static evs[] a(evs[] $$0, int $$1) {
-      if ($$1 + 1 <= $$0.length) {
-         return $$0;
-      } else {
-         evs[] $$2 = new evs[$$1 + 1];
-         $$2[0] = $$0[0];
-         boolean $$3 = a($$2[0]);
+   protected abstract int a(T var1);
 
-         for (int $$4 = 1; $$4 <= $$1; $$4++) {
-            if ($$4 < $$0.length) {
-               $$2[$$4] = $$0[$$4];
-            } else {
-               evs $$5 = $$2[$$4 - 1];
-               evs $$6 = new evs($$5.a() >> 1, $$5.b() >> 1, false);
-               int $$7 = $$6.a();
-               int $$8 = $$6.b();
+   protected abstract void a(exn var1, gbe var2, int var3, bql var4, float var5, float var6, float var7, float var8);
 
-               for (int $$9 = 0; $$9 < $$7; $$9++) {
-                  for (int $$10 = 0; $$10 < $$8; $$10++) {
-                     $$6.a(
-                        $$9,
-                        $$10,
-                        a(
-                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
-                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
-                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
-                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
-                           $$3
-                        )
-                     );
-                  }
-               }
-
-               $$2[$$4] = $$6;
-            }
-         }
-
-         return $$2;
-      }
-   }
-
-   private static boolean a(evs $$0) {
-      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-            if ($$0.a($$1, $$2) >> 24 == 0) {
-               return true;
-            }
+   public void a(exn $$0, gbe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      int $$10 = this.a($$3);
+      ayd $$11 = ayd.a((long)$$3.aj());
+      if ($$10 > 0) {
+         for (int $$12 = 0; $$12 < $$10; $$12++) {
+            $$0.a();
+            fur $$13 = this.c().a($$11);
+            fur.a $$14 = $$13.a($$11);
+            $$13.a($$0);
+            float $$15 = $$11.i();
+            float $$16 = $$11.i();
+            float $$17 = $$11.i();
+            float $$18 = axw.i($$15, $$14.a, $$14.d) / 16.0F;
+            float $$19 = axw.i($$16, $$14.b, $$14.e) / 16.0F;
+            float $$20 = axw.i($$17, $$14.c, $$14.f) / 16.0F;
+            $$0.a($$18, $$19, $$20);
+            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
+            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
+            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
+            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            $$0.b();
          }
       }
-
-      return false;
-   }
-
-   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      if ($$4) {
-         float $$5 = 0.0F;
-         float $$6 = 0.0F;
-         float $$7 = 0.0F;
-         float $$8 = 0.0F;
-         if ($$0 >> 24 != 0) {
-            $$5 += a($$0 >> 24);
-            $$6 += a($$0 >> 16);
-            $$7 += a($$0 >> 8);
-            $$8 += a($$0 >> 0);
-         }
-
-         if ($$1 >> 24 != 0) {
-            $$5 += a($$1 >> 24);
-            $$6 += a($$1 >> 16);
-            $$7 += a($$1 >> 8);
-            $$8 += a($$1 >> 0);
-         }
-
-         if ($$2 >> 24 != 0) {
-            $$5 += a($$2 >> 24);
-            $$6 += a($$2 >> 16);
-            $$7 += a($$2 >> 8);
-            $$8 += a($$2 >> 0);
-         }
-
-         if ($$3 >> 24 != 0) {
-            $$5 += a($$3 >> 24);
-            $$6 += a($$3 >> 16);
-            $$7 += a($$3 >> 8);
-            $$8 += a($$3 >> 0);
-         }
-
-         $$5 /= 4.0F;
-         $$6 /= 4.0F;
-         $$7 /= 4.0F;
-         $$8 /= 4.0F;
-         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
-         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
-         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
-         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
-         if ($$9 < 96) {
-            $$9 = 0;
-         }
-
-         return $$9 << 24 | $$10 << 16 | $$11 << 8 | $$12;
-      } else {
-         int $$13 = a($$0, $$1, $$2, $$3, 24);
-         int $$14 = a($$0, $$1, $$2, $$3, 16);
-         int $$15 = a($$0, $$1, $$2, $$3, 8);
-         int $$16 = a($$0, $$1, $$2, $$3, 0);
-         return $$13 << 24 | $$14 << 16 | $$15 << 8 | $$16;
-      }
-   }
-
-   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      float $$5 = a($$0 >> $$4);
-      float $$6 = a($$1 >> $$4);
-      float $$7 = a($$2 >> $$4);
-      float $$8 = a($$3 >> $$4);
-      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
-      return (int)((double)$$9 * 255.0);
-   }
-
-   private static float a(int $$0) {
-      return b[$$0 & 0xFF];
    }
 }

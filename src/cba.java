@@ -1,42 +1,43 @@
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cba extends cbc<cjn> {
-   private static final int a = 40;
-
-   public cba() {
-      super(40);
+public class cba extends cbn<civ> {
+   @Override
+   public Set<cah<?>> a() {
+      return ImmutableSet.of(cah.h, cah.aw, cah.aq, cah.ap, cah.as, cah.at, new cah[0]);
    }
 
-   protected void a(apu $$0, cjn $$1) {
-      aju<czg> $$2 = $$0.ae();
-      id $$3 = $$1.dm();
-      List<im> $$4 = Lists.newArrayList();
-      int $$5 = 4;
+   protected void a(aqe $$0, civ $$1) {
+      bsf<?> $$2 = $$1.dQ();
+      $$2.a(cah.aw, this.b($$0, $$1));
+      Optional<cjb> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<civ> $$5 = Lists.newArrayList();
+      caj $$6 = $$2.c(cah.h).orElse(caj.a());
 
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               id $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gy().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(im.a($$2, $$9));
-               }
+      for (bre $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof cjb || $$0x instanceof civ))) {
+         if ($$7 instanceof cjb $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
             }
+         }
+
+         if ($$7 instanceof civ $$9) {
+            $$5.add($$9);
          }
       }
 
-      bru<?> $$10 = $$1.dP();
-      if (!$$4.isEmpty()) {
-         $$10.a(bzw.f, $$4);
-      } else {
-         $$10.b(bzw.f);
-      }
+      $$2.a(cah.aq, $$3);
+      $$2.a(cah.ap, $$5);
+      $$2.a(cah.as, $$4);
+      $$2.a(cah.at, $$5.size());
    }
 
-   @Override
-   public Set<bzw<?>> a() {
-      return ImmutableSet.of(bzw.f);
+   private Optional<im> b(aqe $$0, civ $$1) {
+      return im.a($$1.dn(), 8, 4, $$1x -> $$0.a_($$1x).a(avo.aS));
    }
 }

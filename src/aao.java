@@ -1,16 +1,57 @@
-public class aao {
-   public static final yr<aak> a = a("finish_configuration");
-   public static final yr<aal> b = a("registry_data");
-   public static final yr<aan> c = a("update_enabled_features");
-   public static final yr<aam> d = a("select_known_packs");
-   public static final yr<aar> e = b("finish_configuration");
-   public static final yr<aas> f = b("select_known_packs");
+import java.util.List;
 
-   private static <T extends yp<aaj>> yr<T> a(String $$0) {
-      return new yr<>(yq.b, new ajv($$0));
+public record aao(ake<czu> c, efy d, List<aao.a> e) implements aaa {
+   public static final yq<vs, aao> a = aaa.a(aao::a, aao::new);
+   public static final aaa.b<aao> b = aaa.a("debug/structures");
+
+   private aao(vs $$0) {
+      this($$0.a(ld.aR), b($$0), $$0.a(aao.a::new));
    }
 
-   private static <T extends yp<aaq>> yr<T> b(String $$0) {
-      return new yr<>(yq.a, new ajv($$0));
+   private void a(vs $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
+   }
+
+   @Override
+   public aaa.b<aao> a() {
+      return b;
+   }
+
+   static efy b(vs $$0) {
+      return new efy($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   }
+
+   static void a(vs $$0, efy $$1) {
+      $$0.p($$1.h());
+      $$0.p($$1.i());
+      $$0.p($$1.j());
+      $$0.p($$1.k());
+      $$0.p($$1.l());
+      $$0.p($$1.m());
+   }
+
+   public ake<czu> b() {
+      return this.c;
+   }
+
+   public efy c() {
+      return this.d;
+   }
+
+   public List<aao.a> d() {
+      return this.e;
+   }
+
+   public static record a(efy a, boolean b) {
+      public a(vs $$0) {
+         this(aao.b($$0), $$0.readBoolean());
+      }
+
+      public void a(vs $$0) {
+         aao.a($$0, this.a);
+         $$0.a(this.b);
+      }
    }
 }

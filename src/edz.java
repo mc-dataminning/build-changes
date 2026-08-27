@@ -1,62 +1,44 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class edz extends edx {
-   public static final Codec<edz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dvu.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dvu.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, edz::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dvu d;
-   private final dvu e;
-   private final int f;
+public class edz extends eec {
+   public static final Codec<edz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, edz::new));
 
-   private edz(dvu $$0, dvu $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static edz a(dvu $$0, dvu $$1, int $$2) {
-      return new edz($$0, $$1, $$2);
-   }
-
-   public static edz a(dvu $$0, dvu $$1) {
-      return a($$0, $$1, 0);
+   public edz(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(axt $$0, dvx $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return axm.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + axm.b($$0, 0, $$6) + axm.b($$0, 0, $$5);
+   protected eed<?> a() {
+      return eed.c;
+   }
+
+   @Override
+   public List<eck.a> a(daa $$0, BiConsumer<im, dpy> $$1, ayd $$2, int $$3, im $$4, ebu $$5) {
+      im $$6 = $$4.d();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.h(), $$5);
+      a($$0, $$1, $$2, $$6.f(), $$5);
+      a($$0, $$1, $$2, $$6.f().h(), $$5);
+      im.a $$7 = new im.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
          }
       }
+
+      return ImmutableList.of(new eck.a($$4.b($$3), 0, true));
    }
 
-   @Override
-   public edy<?> a() {
-      return edy.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+   private void a(daa $$0, BiConsumer<im, dpy> $$1, ayd $$2, im.a $$3, ebu $$4, im $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

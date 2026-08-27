@@ -1,30 +1,45 @@
-import java.util.Optional;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record aen(String b, String c, int d, Optional<wi> e, Optional<xy> f) implements yp<aba> {
-   public static final yg<vt, aen> a = yg.a(ye.k, aen::b, ye.k, aen::e, ye.f, aen::f, wk.e, aen::g, ya.d, aen::h, aen::new);
+public class aen implements yz<abk> {
+   public static final yq<vs, aen> a = yz.a(aen::a, aen::new);
+   private final eua b;
+   private final String c;
 
-   @Override
-   public yr<aen> a() {
-      return afl.aL;
+   public aen(eua $$0, @Nullable eub $$1) {
+      this.b = $$0;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
+      }
    }
 
-   public void a(aba $$0) {
+   private aen(vs $$0) {
+      this.b = $$0.a(eua.u);
+      this.c = $$0.p();
+   }
+
+   private void a(vs $$0) {
+      $$0.a(eua::a, this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zb<aen> a() {
+      return afv.aB;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
+   public eua b() {
+      return this.b;
+   }
+
+   @Nullable
    public String e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<wi> g() {
-      return this.e;
-   }
-
-   public Optional<xy> h() {
-      return this.f;
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

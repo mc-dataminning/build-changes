@@ -1,181 +1,25 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
-
 public class fvg {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wi b = wi.c("multiplayer.status.cannot_connect").b(-65536);
-   private final List<vg> c = Collections.synchronizedList(Lists.newArrayList());
-
-   public void a(final fve $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
-      final fwh $$3 = fwh.a($$0.b);
-      Optional<InetSocketAddress> $$4 = fwj.a.a($$3).map(fwg::d);
-      if ($$4.isEmpty()) {
-         this.a(fiq.b, $$0);
-      } else {
-         final InetSocketAddress $$5 = $$4.get();
-         final vg $$6 = vg.a($$5, false, null);
-         this.c.add($$6);
-         $$0.d = wi.c("multiplayer.status.pinging");
-         $$0.i = Collections.emptyList();
-         ais $$7 = new ais() {
-            private boolean h;
-            private boolean i;
-            private long j;
-
-            @Override
-            public void a(ait $$0x) {
-               if (this.i) {
-                  $$6.a(wi.c("multiplayer.status.unrequested"));
-               } else {
-                  this.i = true;
-                  aiu $$1 = $$0.b();
-                  $$0.d = $$1.a();
-                  $$1.c().ifPresentOrElse($$1xxx -> {
-                     $$0.h = wi.b($$1xxx.b());
-                     $$0.g = $$1xxx.c();
-                  }, () -> {
-                     $$0.h = wi.c("multiplayer.status.old");
-                     $$0.g = 0;
-                  });
-                  $$1.b().ifPresentOrElse($$1xxx -> {
-                     $$0.c = fvg.a($$1xxx.b(), $$1xxx.a());
-                     $$0.e = $$1xxx;
-                     if (!$$1xxx.c().isEmpty()) {
-                        List<wi> $$2xx = new ArrayList<>($$1xxx.c().size());
-
-                        for (GameProfile $$3xx : $$1xxx.c()) {
-                           $$2xx.add(wi.b($$3xx.getName()));
-                        }
-
-                        if ($$1xxx.c().size() < $$1xxx.b()) {
-                           $$2xx.add(wi.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
-                        }
-
-                        $$0.i = $$2xx;
-                     } else {
-                        $$0.i = List.of();
-                     }
-                  }, () -> $$0.c = wi.c("multiplayer.status.unknown").a(n.i));
-                  $$1.d().ifPresent($$2xx -> {
-                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
-                        $$0.a(fve.b($$2xx.a()));
-                        $$1.run();
-                     }
-                  });
-                  this.j = ac.b();
-                  $$6.a(new aiq(this.j));
-                  this.h = true;
-               }
-            }
-
-            @Override
-            public void a(ain $$0x) {
-               long $$1 = this.j;
-               long $$2 = ac.b();
-               $$0.f = $$2 - $$1;
-               $$6.a(wi.c("multiplayer.status.finished"));
-               $$2.run();
-            }
-
-            @Override
-            public void a(wi $$0x) {
-               if (!this.h) {
-                  fvg.this.a($$0, $$0);
-                  fvg.this.a($$5, $$3, $$0);
-               }
-            }
-
-            @Override
-            public boolean c() {
-               return $$6.i();
-            }
-         };
-
-         try {
-            $$6.a($$3.a(), $$3.b(), $$7);
-            $$6.a(aiw.a);
-         } catch (Throwable var10) {
-            a.error("Failed to ping server {}", $$3, var10);
-         }
-      }
-   }
-
-   void a(wi $$0, fve $$1) {
-      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
-      $$1.d = b;
-      $$1.c = wh.a;
-   }
-
-   void a(InetSocketAddress $$0, final fwh $$1, final fve $$2) {
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)vg.e.get())).handler(new ChannelInitializer<Channel>() {
-         protected void initChannel(Channel $$0) {
-            try {
-               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-            } catch (ChannelException var3) {
-            }
-
-            $$0.pipeline().addLast(new ChannelHandler[]{new fux($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
-               $$2.a(fve.b.d);
-               $$2.h = wi.b($$2xx);
-               $$2.d = wi.b($$3);
-               $$2.c = fvg.a($$4, $$5);
-               $$2.e = new aiu.b($$5, $$4, List.of());
-            })});
-         }
-      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
-   }
-
-   public static wi a(int $$0, int $$1) {
-      wi $$2 = wi.b(Integer.toString($$0)).a(n.h);
-      wi $$3 = wi.b(Integer.toString($$1)).a(n.h);
-      return wi.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
-   }
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = ac.c();
 
    public void a() {
-      synchronized (this.c) {
-         Iterator<vg> $$0 = this.c.iterator();
+      this.e = ac.c();
+   }
 
-         while ($$0.hasNext()) {
-            vg $$1 = $$0.next();
-            if ($$1.i()) {
-               $$1.b();
-            } else {
-               $$0.remove();
-               $$1.n();
-            }
-         }
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(ac.c() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = axw.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
       }
    }
 
-   public void b() {
-      synchronized (this.c) {
-         Iterator<vg> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            vg $$1 = $$0.next();
-            if ($$1.i()) {
-               $$0.remove();
-               $$1.a(wi.c("multiplayer.status.cancelled"));
-            }
-         }
-      }
+   public float b() {
+      return (float)(7000000.0 / this.c);
    }
 }

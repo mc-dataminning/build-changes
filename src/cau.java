@@ -1,24 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cau extends cbc<bqv> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
-
+public class cau extends cbn<bqf> {
    @Override
-   public Set<bzw<?>> a() {
-      return ImmutableSet.of(bzw.L);
+   public Set<cah<?>> a() {
+      return ImmutableSet.of(cah.K, cah.h);
    }
 
-   protected void a(apu $$0, bqv $$1) {
-      bru<?> $$2 = $$1.dP();
-      List<cgk> $$3 = $$0.a(cgk.class, $$1.cH().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<cgk> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(bzw.L, $$4);
+   protected void a(aqe $$0, bqf $$1) {
+      $$1.dQ().c(cah.h).ifPresent($$1x -> this.a($$1, $$1x));
+   }
+
+   private void a(bqf $$0, caj $$1) {
+      Optional<bqf> $$2 = $$1.a($$1x -> $$1x.ai() == $$0.ai() && !$$1x.p_()).map(bqf.class::cast);
+      $$0.dQ().a(cah.K, $$2);
    }
 }

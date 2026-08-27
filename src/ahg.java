@@ -1,29 +1,60 @@
-public class ahg implements yp<afn> {
-   public static final yg<vi, ahg> a = yp.a(ahg::a, ahg::new);
-   private final boe b;
+import javax.annotation.Nullable;
 
-   public ahg(boe $$0) {
+public class ahg implements yz<afx> {
+   public static final yq<vs, ahg> a = yz.a(ahg::a, ahg::new);
+   private final ahg.a b;
+   @Nullable
+   private final akf c;
+
+   public ahg(ahg.a $$0, @Nullable akf $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahg(vi $$0) {
-      this.b = $$0.b(boe.class);
+   public static ahg a(af $$0) {
+      return new ahg(ahg.a.a, $$0.a());
    }
 
-   private void a(vi $$0) {
+   public static ahg b() {
+      return new ahg(ahg.a.b, null);
+   }
+
+   private ahg(vs $$0) {
+      this.b = $$0.b(ahg.a.class);
+      if (this.b == ahg.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
+      }
+   }
+
+   private void a(vs $$0) {
       $$0.a(this.b);
+      if (this.b == ahg.a.a) {
+         $$0.a(this.c);
+      }
    }
 
    @Override
-   public yr<ahg> a() {
-      return afl.bY;
+   public zb<ahg> a() {
+      return afv.bO;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
-   public boe b() {
+   public ahg.a e() {
       return this.b;
+   }
+
+   @Nullable
+   public akf f() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

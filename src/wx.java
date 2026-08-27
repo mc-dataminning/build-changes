@@ -1,35 +1,99 @@
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
+
 public interface wx {
-   wi a();
-
-   void a(apv var1, boolean var2, we.a var3);
-
-   static wx a(wy $$0) {
-      return (wx)($$0.h() ? new wx.a($$0.d()) : new wx.b($$0));
-   }
-
-   public static record a(wi a) implements wx {
+   Optional<ayy> a = Optional.of(ayy.a);
+   wx b = new wx() {
       @Override
-      public void a(apv $$0, boolean $$1, we.a $$2) {
-         $$0.d.a(this.a, $$2);
-      }
-   }
-
-   public static record b(wy a) implements wx {
-      @Override
-      public wi a() {
-         return this.a.d();
+      public <T> Optional<T> a(wx.a<T> $$0) {
+         return Optional.empty();
       }
 
       @Override
-      public void a(apv $$0, boolean $$1, we.a $$2) {
-         wy $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.d.a($$3, $$2);
+      public <T> Optional<T> a(wx.b<T> $$0, xp $$1) {
+         return Optional.empty();
+      }
+   };
+
+   <T> Optional<T> a(wx.a<T> var1);
+
+   <T> Optional<T> a(wx.b<T> var1, xp var2);
+
+   static wx e(final String $$0) {
+      return new wx() {
+         @Override
+         public <T> Optional<T> a(wx.a<T> $$0x) {
+            return $$0.accept($$0);
          }
-      }
 
-      public wy b() {
-         return this.a;
-      }
+         @Override
+         public <T> Optional<T> a(wx.b<T> $$0x, xp $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
+   }
+
+   static wx a(final String $$0, final xp $$1) {
+      return new wx() {
+         @Override
+         public <T> Optional<T> a(wx.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(wx.b<T> $$0x, xp $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static wx a(wx... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static wx a(final List<? extends wx> $$0) {
+      return new wx() {
+         @Override
+         public <T> Optional<T> a(wx.a<T> $$0x) {
+            for (wx $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(wx.b<T> $$0x, xp $$1) {
+            for (wx $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(xp var1, String var2);
    }
 }

@@ -1,20 +1,19 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bvd {
-   public static bsm<brb> a(bzw<im> $$0, float $$1, int $$2, int $$3) {
-      MutableLong $$4 = new MutableLong(0L);
-      return bvy.a(
-         (Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$5 -> $$5.group($$5.a(bzw.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  im $$10 = $$5.b($$6);
-                  if ($$7.ae() != $$10.a() || !$$10.b().a($$8.dk(), (double)$$3)) {
+   public static buh<bre> a(float $$0, int $$1) {
+      return a($$0x -> true, $$1x -> $$0, $$1);
+   }
+
+   public static buh<bre> a(Predicate<bre> $$0, Function<bre, Float> $$1, int $$2) {
+      return bwj.a(
+         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$3 -> $$3.group($$3.c(cah.m), $$3.b(cah.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  if (!$$0.test($$7)) {
                      return false;
-                  } else if ($$9 <= $$4.getValue()) {
-                     return true;
                   } else {
-                     $$5x.a(new bzz($$10.b(), $$1, $$2));
-                     $$4.setValue($$9 + 80L);
+                     $$4.a(new cak($$3.b($$5), $$1.apply($$7), $$2));
                      return true;
                   }
                }))

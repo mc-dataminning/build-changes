@@ -1,20 +1,27 @@
-public class ggt extends ggx<cep, fro<cep>> {
-   private static final ajv a = new ajv("textures/entity/llama/creamy.png");
-   private static final ajv i = new ajv("textures/entity/llama/white.png");
-   private static final ajv j = new ajv("textures/entity/llama/brown.png");
-   private static final ajv k = new ajv("textures/entity/llama/gray.png");
+public class ggt extends ggm<cky> {
+   private final ghl a;
 
-   public ggt(gfr.a $$0, ftt $$1) {
-      super($$0, new fro<>($$0.a($$1)), 0.7F);
-      this.a(new gjw(this, $$0.f()));
+   public ggt(ggn.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public ajv a(cep $$0) {
-      return switch ($$0.gz()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   public void a(cky $$0, float $$1, float $$2, exn $$3, gbe $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      if ($$0.r()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.p(), csa.h, $$5, gmf.d, $$3, $$4, $$0.dN(), $$0.aj());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public akf a(cky $$0) {
+      return gmn.e;
    }
 }

@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.stream.Stream;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ti {
+@FunctionalInterface
+public interface ti {
+   Stream<im> findStructureBlockPos();
 }

@@ -1,56 +1,38 @@
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class ctn extends crn {
-   public ctn(crn.a $$0) {
+public class ctn extends cry {
+   public static final int a = 160;
+
+   public ctn(cry.a $$0) {
       super($$0);
    }
 
    @Override
-   public wi o(crs $$0) {
-      cuv $$1 = $$0.a(jr.A);
-      if ($$1 != null) {
-         String $$2 = $$1.c().a();
-         if (!ayh.h($$2)) {
-            return wi.b($$2);
-         }
-      }
+   public void a(csd $$0, @Nullable czu $$1, List<ws> $$2, ctu $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.b()) {
+         List<bpx> $$4 = new ArrayList<>();
+         cvf $$5 = $$0.a(jz.y, cvf.a);
 
-      return super.o($$0);
-   }
-
-   @Override
-   public void a(crs $$0, @Nullable czg $$1, List<wi> $$2, cti $$3) {
-      cuv $$4 = $$0.a(jr.A);
-      if ($$4 != null) {
-         if (!ayh.h($$4.d())) {
-            $$2.add(wi.a("book.byAuthor", $$4.d()).a(n.h));
+         for (cvf.a $$6 : $$5.a()) {
+            $$4.add($$6.a());
          }
 
-         $$2.add(wi.c("book.generation." + $$4.e()).a(n.h));
+         cuc.a($$4, $$2::add, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
       }
    }
 
    @Override
-   public bog<crs> a(czg $$0, cka $$1, boe $$2) {
-      crs $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(auz.c.b(this));
-      return bog.a($$3, $$0.x_());
-   }
+   public csd a(csd $$0, czu $$1, bre $$2) {
+      cvf $$3 = $$0.a(jz.y, cvf.a);
 
-   public static boolean a(crs $$0, dv $$1, @Nullable cka $$2) {
-      cuv $$3 = $$0.a(jr.A);
-      if ($$3 != null && !$$3.g()) {
-         cuv $$4 = $$3.a($$1, $$2);
-         if ($$4 != null) {
-            $$0.b(jr.A, $$4);
-            return true;
-         }
-
-         $$0.b(jr.A, $$3.b());
+      for (cvf.a $$4 : $$3.a()) {
+         $$2.b($$4.a());
       }
 
-      return false;
+      super.a($$0, $$1, $$2);
+      return $$2.fN() ? $$0 : new csd(csg.pq);
    }
 }

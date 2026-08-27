@@ -1,23 +1,31 @@
-import io.netty.buffer.ByteBuf;
+public record aak(im c, String d, int e) implements aaa {
+   public static final yq<vs, aak> a = aaa.a(aak::a, aak::new);
+   public static final aaa.b<aak> b = aaa.a("debug/poi_added");
 
-public class aak implements yp<aaj> {
-   public static final aak a = new aak();
-   public static final yg<ByteBuf, aak> b = yg.a(a);
+   private aak(vs $$0) {
+      this($$0.e(), $$0.p(), $$0.readInt());
+   }
 
-   private aak() {
+   private void a(vs $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
    }
 
    @Override
-   public yr<aak> a() {
-      return aao.a;
+   public aaa.b<aak> a() {
+      return b;
    }
 
-   public void a(aaj $$0) {
-      $$0.a(this);
+   public im b() {
+      return this.c;
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public String c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

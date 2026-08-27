@@ -1,12 +1,18 @@
-public class dy extends Exception {
-   private final wi a;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-   public dy(wi $$0) {
-      super($$0.getString());
-      this.a = $$0;
-   }
+public interface dy extends ix.a {
+   static dy a(final ix.a $$0, final cmy $$1) {
+      return new dy() {
+         @Override
+         public Stream<ake<? extends ji<?>>> a() {
+            return $$0.a();
+         }
 
-   public wi a() {
-      return this.a;
+         @Override
+         public <T> Optional<ix.b<T>> a(ake<? extends ji<? extends T>> $$0x) {
+            return $$0.a($$0).map($$1xx -> $$1xx.a($$1));
+         }
+      };
    }
 }

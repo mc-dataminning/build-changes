@@ -1,64 +1,128 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dhq extends dch implements dck {
-   public static final MapCodec<dhq> a = b(dhq::new);
+public class dhq extends djj implements djw {
+   public static final MapCodec<dhq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dpn.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dhq::new)
+   );
+   public static final dqy b = dqo.at;
+   public static final int c = 4;
+   private static final ety[] j = new ety[]{
+      dcv.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
+      dcv.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
+      dcv.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
+      dcv.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
+      dcv.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private static final dqp k = dqo.C;
+   public static final dqp d = dqo.j;
 
    @Override
    public MapCodec<dhq> a() {
       return a;
    }
 
-   protected dhq(dph.d $$0) {
-      super($$0);
-   }
-
-   private static boolean b(dpi $$0, czj $$1, id $$2) {
-      id $$3 = $$2.c();
-      dpi $$4 = $$1.a_($$3);
-      int $$5 = eks.a($$1, $$0, $$2, $$4, $$3, ij.b, $$4.b($$1, $$3));
-      return $$5 < $$1.P();
+   public dhq(dpn $$0, dpx.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(f, Integer.valueOf(0)).a(b, Integer.valueOf(0)).a(k, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dcj.dV.n());
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(f).a(b).a(k).a(d);
+   }
+
+   @Override
+   protected boolean b(dpy $$0, cza $$1, im $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(dcx.dR);
+   }
+
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      elr $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == els.c;
+      return super.a($$0).a(k, Boolean.valueOf($$2)).a(b, Integer.valueOf(4));
+   }
+
+   @Override
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      etf $$4 = $$0.n($$1, $$2);
+      ety $$5;
+      if (!$$0.c(d)) {
+         $$5 = j[4];
+      } else {
+         $$5 = j[$$0.c(b)];
       }
+
+      return $$5.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   public boolean b(czj $$0, id $$1, dpi $$2) {
-      return $$0.a_($$1.c()).i();
+   protected boolean a(dpy $$0, czx $$1, im $$2) {
+      return m($$0) ? $$1.a_($$2.c()).a(dcx.aL) : super.a($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
-      return true;
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$0.c(k)) {
+         $$3.a($$4, els.c, els.c.a($$3));
+      }
+
+      return $$1 == ir.b && !$$0.a($$3, $$4) ? dcx.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
-      dpi $$4 = $$0.a_($$2);
-      id $$5 = $$2.c();
-      drf $$6 = $$0.l().g();
-      ja<dxr<?, ?>> $$7 = $$0.H_().d(ku.az);
-      if ($$4.a(dcj.ow)) {
-         this.a($$7, rg.h, $$0, $$6, $$1, $$5);
-      } else if ($$4.a(dcj.on)) {
-         this.a($$7, rg.j, $$0, $$6, $$1, $$5);
-         this.a($$7, rg.l, $$0, $$6, $$1, $$5);
-         if ($$1.a(8) == 0) {
-            this.a($$7, rg.n, $$0, $$6, $$1, $$5);
+   protected elr c_(dpy $$0) {
+      return $$0.c(k) ? els.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if (!m($$0)) {
+         if ($$3.a(7) == 0) {
+            this.a($$1, $$2, $$0, $$3);
+         }
+      } else {
+         if (!n($$0)) {
+            $$1.a($$2, $$0.a(b), 2);
          }
       }
    }
 
-   private void a(ja<dxr<?, ?>> $$0, aju<dxr<?, ?>> $$1, apu $$2, drf $$3, axt $$4, id $$5) {
-      $$0.b($$1).ifPresent($$4x -> ((dxr)$$4x.a()).a($$2, $$3, $$4, $$5));
+   @Override
+   public boolean b(czx $$0, im $$1, dpy $$2) {
+      return !m($$2) || !n($$2);
    }
 
    @Override
-   public dck.a aq_() {
-      return dck.a.a;
+   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
+      return m($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
+      if (m($$3) && !n($$3)) {
+         $$0.a($$2, $$3.a(b), 2);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private static boolean m(dpy $$0) {
+      return $$0.c(d);
+   }
+
+   private static boolean n(dpy $$0) {
+      return $$0.c(b) == 4;
+   }
+
+   public static dpy c() {
+      return b(0);
+   }
+
+   public static dpy b(int $$0) {
+      return dcx.E.n().a(d, Boolean.valueOf(true)).a(b, Integer.valueOf($$0));
    }
 }

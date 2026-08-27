@@ -1,29 +1,30 @@
-public class agn implements yp<afn> {
-   public static final yg<vi, agn> a = yp.a(agn::a, agn::new);
-   private final int b;
+public record agn(int b, int c, boolean d) implements yz<afx> {
+   public static final yq<vs, agn> a = yz.a(agn::a, agn::new);
 
-   public agn(int $$0) {
-      this.b = $$0;
+   private agn(vs $$0) {
+      this($$0.l(), $$0.l(), $$0.readBoolean());
    }
 
-   private agn(vi $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vi $$0) {
+   private void a(vs $$0) {
       $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yr<agn> a() {
-      return afl.bF;
+   public zb<agn> a() {
+      return afv.bs;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

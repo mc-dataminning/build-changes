@@ -1,36 +1,99 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+import java.util.Optional;
 
-public class fzp implements bmc {
-   private final gag a;
-   private final Set<bma> b = new ObjectOpenHashSet();
-   private final bmi c = new bmi();
-
-   public fzp(LongSupplier $$0, gag $$1) {
-      this.a = $$1;
-      this.b.add(bmj.a($$0));
-      this.a();
+public class fzp extends fzs {
+   fzp(fvm $$0, fzn $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
-   private void a() {
-      this.b.addAll(bmj.a());
-      this.b.add(bma.a("totalChunks", blz.f, this.a, gag::i));
-      this.b.add(bma.a("renderedChunks", blz.f, this.a, gag::k));
-      this.b.add(bma.a("lastViewDistance", blz.f, this.a, gag::j));
-      gdi $$0 = this.a.h();
-      this.b.add(bma.a("toUpload", blz.g, $$0, gdi::c));
-      this.b.add(bma.a("freeBufferCount", blz.g, $$0, gdi::d));
-      this.b.add(bma.a("toBatchCount", blz.g, $$0, gdi::b));
-      if (ewk.a().isPresent()) {
-         this.b.add(bma.a("gpuUtilization", blz.i, fby.Q(), fby::v));
-      }
+   fzp(fvm $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
    @Override
-   public Set<bma> a(Supplier<bkr> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public fyw b() {
+      return fyw.b;
+   }
+
+   public static class a implements fyv<kz> {
+      private final fzn a;
+
+      public a(fzn $$0) {
+         this.a = $$0;
+      }
+
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ayd $$8 = $$1.z;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         fzp $$12 = new fzp($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
+      }
+   }
+
+   public static class b implements fyv<kz> {
+      private final fzn a;
+
+      public b(fzn $$0) {
+         this.a = $$0;
+      }
+
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzp $$8 = new fzp($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<kt> o() {
+               return Optional.of(kt.a);
+            }
+         };
+         $$8.t = axw.b($$1.z, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
+         return $$8;
+      }
+   }
+
+   public static class c implements fyv<kz> {
+      private final fzn a;
+
+      public c(fzn $$0) {
+         this.a = $$0;
+      }
+
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzp $$8 = new fzp($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
+      }
+   }
+
+   public static class d implements fyv<kz> {
+      private final fzn a;
+
+      public d(fzn $$0) {
+         this.a = $$0;
+      }
+
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
+         fzp $$9 = new fzp($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
+      }
    }
 }

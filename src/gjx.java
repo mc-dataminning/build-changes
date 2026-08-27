@@ -1,52 +1,19 @@
-public class gjx<T extends ccv> extends gkc<T, fqo<T>> {
-   private final gbc a;
+public class gjx extends gky<cin, fra<cin>> {
+   private static final akf a = new akf("textures/entity/breeze/breeze_wind.png");
+   private static final fra<cin> b = new fra<>(fra.a(128, 128).a());
 
-   public gjx(ghm<T, fqo<T>> $$0, gbc $$1) {
+   public gjx(gii<cin, fra<cin>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.p_()) {
-         fby $$10 = fby.Q();
-         boolean $$11 = $$10.b($$3) && $$3.ce();
-         if (!$$3.ce() || $$11) {
-            dpi $$12 = $$3.u().a();
-            int $$13 = ggs.c($$3, 0.0F);
-            gns $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-         }
-      }
+   public void a(exn $$0, gbe $$1, int $$2, cin $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ai + $$6;
+      exr $$11 = $$1.getBuffer(gbm.a(a, this.a($$10) % 1.0F, 0.0F));
+      b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      gft.a(b, b.e()).a($$0, $$11, $$2, gmf.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 
-   private void a(ewr $$0, gai $$1, int $$2, boolean $$3, dpi $$4, int $$5, gns $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gaq.r(glr.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

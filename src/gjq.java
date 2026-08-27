@@ -1,34 +1,27 @@
-public class gjq extends gkc<ceo, frg<ceo>> {
-   private final frg<ceo> a;
-
-   public gjq(ghm<ceo, frg<ceo>> $$0, ftr $$1) {
-      super($$0);
-      this.a = new frg<>($$1.a(ftu.aq));
+public class gjq extends ght<cdw, fui<cdw>> {
+   public gjq(ggn.a $$0) {
+      super($$0, new fui<>($$0.a(fuq.cc)), 0.5F);
+      this.a(new gln(this, $$0.f()));
+      this.a(new glo(this));
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, ceo $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      crs $$10 = $$3.fP();
-      if ($$10.f() instanceof cpg $$11 && $$11.d() == cpg.a.a) {
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         float $$15;
-         float $$16;
-         float $$14;
-         if ($$10.a(avm.ba)) {
-            int $$13 = cuf.a($$10, -6265536);
-            $$14 = (float)aww.b.b($$13) / 255.0F;
-            $$15 = (float)aww.b.c($$13) / 255.0F;
-            $$16 = (float)aww.b.d($$13) / 255.0F;
-         } else {
-            $$14 = 1.0F;
-            $$15 = 1.0F;
-            $$16 = 1.0F;
-         }
+   protected float a(cdw $$0, float $$1) {
+      return $$0.gz();
+   }
 
-         ewv $$20 = $$1.getBuffer(gaq.e($$11.b()));
-         this.a.a($$0, $$20, $$2, glj.d, $$14, $$15, $$16, 1.0F);
-         return;
+   public void a(cdw $$0, float $$1, float $$2, exn $$3, gbe $$4, int $$5) {
+      if ($$0.gy()) {
+         float $$6 = $$0.G($$2);
+         this.f.a($$6, $$6, $$6);
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gy()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
+   }
+
+   public akf a(cdw $$0) {
+      return $$0.gv();
    }
 }

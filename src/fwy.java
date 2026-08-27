@@ -1,83 +1,77 @@
-public class fwy extends fyw {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final fyr M;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-   fwy(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fyr $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = axm.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = axm.a(this.r, 0.0F, 0.0F);
-      this.x = axm.a(this.r, 0.8235294F, 0.9764706F);
-      this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
-      this.n = false;
-      this.M = $$7;
-      this.b($$7);
+public class fwy implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<fwy.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
+
+   public void a(im $$0, dpy $$1, gag $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new fwy.a(this.b, $$1, $$2.dl()));
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public boolean a(im $$0, dpy $$1) {
+      fwy.a $$2 = (fwy.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
       } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
+         $$2.a($$1);
+         return true;
+      }
+   }
 
-         if (this.L) {
-            this.k += 0.002;
-         }
+   public void a(int $$0, fvm $$1) {
+      ObjectIterator<Entry<fwy.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
 
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
+      while ($$2.hasNext()) {
+         Entry<fwy.a> $$3 = (Entry<fwy.a>)$$2.next();
+         fwy.a $$4 = (fwy.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            im $$5 = im.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
          }
       }
    }
 
-   @Override
-   public fya b() {
-      return fya.b;
+   public fwy a() {
+      this.b++;
+      this.c = true;
+      return this;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * axm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void close() {
+      this.c = false;
    }
 
-   public static class a implements fxz<kq> {
-      private final fyr a;
+   public int b() {
+      return this.b;
+   }
 
-      public a(fyr $$0) {
-         this.a = $$0;
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final etf a;
+      int b;
+      dpy c;
+
+      a(int $$0, dpy $$1, etf $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fwy($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      fwy.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      void a(dpy $$0) {
+         this.c = $$0;
       }
    }
 }

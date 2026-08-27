@@ -1,97 +1,70 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Queues;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Deque;
 import javax.annotation.Nullable;
 
-public interface ayg {
-   int W = 16;
+public final class ayg<T> extends AbstractIterator<T> {
+   private static final int a = Integer.MIN_VALUE;
+   @Nullable
+   private Deque<T> b = null;
+   private int c = Integer.MIN_VALUE;
+   private final Int2ObjectMap<Deque<T>> d = new Int2ObjectOpenHashMap();
 
-   String c();
-
-   static <E extends Enum<E> & ayg> ayg.a<E> a(Supplier<E[]> $$0) {
-      return a($$0, $$0x -> $$0x);
-   }
-
-   static <E extends Enum<E> & ayg> ayg.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
-      E[] $$2 = (E[])$$0.get();
-      Function<String, E> $$3 = a($$2, $$1);
-      return new ayg.a<>($$2, $$3);
-   }
-
-   static <T extends ayg> Codec<T> b(Supplier<T[]> $$0) {
-      T[] $$1 = (T[])$$0.get();
-      Function<String, T> $$2 = a($$1, $$0x -> $$0x);
-      ToIntFunction<T> $$3 = ac.g(Arrays.asList($$1));
-      return new ayg.b<>($$1, $$2, $$3);
-   }
-
-   static <T extends ayg> Function<String, T> a(T[] $$0, Function<String, String> $$1) {
-      if ($$0.length > 16) {
-         Map<String, T> $$2 = Arrays.<ayg>stream($$0).collect(Collectors.toMap($$1x -> $$1.apply($$1x.c()), $$0x -> (T)$$0x));
-         return $$1x -> $$1x == null ? null : $$2.get($$1x);
+   public void a(T $$0, int $$1) {
+      if ($$1 == this.c && this.b != null) {
+         this.b.addLast($$0);
       } else {
-         return $$2x -> {
-            for (T $$3 : $$0) {
-               if ($$1.apply($$3.c()).equals($$2x)) {
-                  return $$3;
-               }
+         Deque<T> $$2 = (Deque<T>)this.d.computeIfAbsent($$1, $$0x -> Queues.newArrayDeque());
+         $$2.addLast($$0);
+         if ($$1 >= this.c) {
+            this.b = $$2;
+            this.c = $$1;
+         }
+      }
+   }
+
+   @Nullable
+   protected T computeNext() {
+      if (this.b == null) {
+         return (T)this.endOfData();
+      } else {
+         T $$0 = this.b.removeFirst();
+         if ($$0 == null) {
+            return (T)this.endOfData();
+         } else {
+            if (this.b.isEmpty()) {
+               this.a();
             }
 
-            return null;
-         };
-      }
-   }
-
-   static Keyable a(final ayg[] $$0) {
-      return new Keyable() {
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return Arrays.stream($$0).map(ayg::c).map($$0::createString);
+            return $$0;
          }
-      };
-   }
-
-   @Deprecated
-   public static class a<E extends Enum<E> & ayg> extends ayg.b<E> {
-      private final Function<String, E> a;
-
-      public a(E[] $$0, Function<String, E> $$1) {
-         super($$0, $$1, $$0x -> ((Enum)$$0x).ordinal());
-         this.a = $$1;
-      }
-
-      @Nullable
-      public E a(@Nullable String $$0) {
-         return this.a.apply($$0);
-      }
-
-      public E a(@Nullable String $$0, E $$1) {
-         return Objects.requireNonNullElse(this.a($$0), $$1);
       }
    }
 
-   public static class b<S extends ayg> implements Codec<S> {
-      private final Codec<S> a;
+   private void a() {
+      int $$0 = Integer.MIN_VALUE;
+      Deque<T> $$1 = null;
+      ObjectIterator var3 = Int2ObjectMaps.fastIterable(this.d).iterator();
 
-      public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
-         this.a = awu.b(awu.a(ayg::c, $$1), awu.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
+      while (var3.hasNext()) {
+         Entry<Deque<T>> $$2 = (Entry<Deque<T>>)var3.next();
+         Deque<T> $$3 = (Deque<T>)$$2.getValue();
+         int $$4 = $$2.getIntKey();
+         if ($$4 > $$0 && !$$3.isEmpty()) {
+            $$0 = $$4;
+            $$1 = $$3;
+            if ($$4 == this.c - 1) {
+               break;
+            }
+         }
       }
 
-      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {
-         return this.a.decode($$0, $$1);
-      }
-
-      public <T> DataResult<T> a(S $$0, DynamicOps<T> $$1, T $$2) {
-         return this.a.encode($$0, $$1, $$2);
-      }
+      this.c = $$0;
+      this.b = $$1;
    }
 }

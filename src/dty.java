@@ -1,43 +1,24 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-public class dty<T extends dud> {
-   private final T a;
-   @Nullable
-   private jg b;
+public interface dty {
+   int aj();
 
-   public dty(T $$0) {
-      this.a = $$0;
-   }
+   UUID cx();
 
-   public void a(apu $$0) {
-      this.c($$0);
-   }
+   im dn();
 
-   public T a() {
-      return this.a;
-   }
+   eta cI();
 
-   public void b(apu $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
+   void a(dtz var1);
 
-   public void c(apu $$0) {
-      this.a.a().a($$0).map(jg::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
+   Stream<? extends dty> cS();
 
-   private static void a(czj $$0, @Nullable jg $$1, Consumer<due> $$2) {
-      if ($$1 != null) {
-         dre $$3 = $$0.a($$1.a(), $$1.c(), dsd.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
-      }
-   }
+   Stream<? extends dty> cT();
+
+   void b(bql.c var1);
+
+   boolean dL();
+
+   boolean dM();
 }

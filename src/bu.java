@@ -1,53 +1,21 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class bu<V> {
-   private final Function<bqa, Optional<V>> a;
-   private final bs.a b;
+public record bu(iz<bqr<?>> b) {
+   public static final Codec<bu> a = jk.a(ld.v).xmap(bu::new, bu::a);
 
-   public static <V> bu<V> a(ja<V> $$0, Function<bqa, Optional<V>> $$1) {
-      return new bu<>($$0.q(), $$1);
+   public static bu a(bqr<?> $$0) {
+      return new bu(iz.a($$0.r()));
    }
 
-   public static <V> bu<V> a(Codec<V> $$0, Function<bqa, Optional<V>> $$1) {
-      return new bu<>($$0, $$1);
+   public static bu a(awd<bqr<?>> $$0) {
+      return new bu(lc.g.a($$0));
    }
 
-   private bu(Codec<V> $$0, Function<bqa, Optional<V>> $$1) {
-      this.a = $$1;
-      MapCodec<bu.a<V>> $$2 = RecordCodecBuilder.mapCodec($$1x -> $$1x.group($$0.fieldOf("variant").forGetter(bu.a::c)).apply($$1x, this::a));
-      this.b = new bs.a($$2);
+   public boolean b(bqr<?> $$0) {
+      return $$0.a(this.b);
    }
 
-   public bs.a a() {
+   public iz<bqr<?>> a() {
       return this.b;
-   }
-
-   public bu.a<V> a(V $$0) {
-      return new bu.a<>(this.b, this.a, $$0);
-   }
-
-   public static record a<V>(bs.a b, Function<bqa, Optional<V>> c, V d) implements bs {
-      @Override
-      public boolean a(bqa $$0, apu $$1, @Nullable esj $$2) {
-         return this.c.apply($$0).filter($$0x -> $$0x.equals(this.d)).isPresent();
-      }
-
-      @Override
-      public bs.a a() {
-         return this.b;
-      }
-
-      public Function<bqa, Optional<V>> b() {
-         return this.c;
-      }
-
-      public V c() {
-         return this.d;
-      }
    }
 }

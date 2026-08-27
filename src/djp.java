@@ -1,124 +1,117 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class djp extends dch {
+public class djp extends dch implements djw {
    public static final MapCodec<djp> a = b(djp::new);
-   public static final int b = 8;
-   public static final dqi c = dpy.aF;
-   protected static final etc[] d = new etc[]{
-      esz.a(),
-      dch.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+   public static final dqp b = dqo.F;
+   public static final dqp c = dqo.C;
+   public static final dqp d = dqo.G;
+   protected static final ety e = dcv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final double f = e.c(ir.a.b);
 
    @Override
    public MapCodec<djp> a() {
       return a;
    }
 
-   protected djp(dph.d $$0) {
+   public djp(dpx.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(1)));
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dpi $$0, elq $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(c) < 5;
-         case b:
-            return false;
-         case c:
-            return false;
-         default:
-            return false;
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(b);
+      $$0.a(c);
+      $$0.a(d);
+   }
+
+   @Override
+   public void a(czu $$0, im $$1, dpy $$2, bql $$3) {
+      if ($$0 instanceof aqe $$4) {
+         aqf $$5 = dol.a($$3);
+         if ($$5 != null) {
+            $$4.a($$1, dnf.L).ifPresent($$2x -> $$2x.a($$4, $$5));
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dpy $$0, czu $$1, im $$2, dpy $$3, boolean $$4) {
+      if ($$1 instanceof aqe $$5 && $$0.c(b) && !$$0.a($$3.b())) {
+         $$5.a($$2, dnf.L).ifPresent($$1x -> $$1x.a($$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+         $$1.a($$2, dnf.L).ifPresent($$1x -> $$1x.a($$1));
       }
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return d[$$0.c(c)];
+   protected djb b_(dpy $$0) {
+      return djb.c;
    }
 
    @Override
-   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return d[$$0.c(c) - 1];
+   protected ety b(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return e;
    }
 
    @Override
-   protected etc b_(dpi $$0, cym $$1, id $$2) {
-      return d[$$0.c(c)];
+   protected ety f(dpy $$0, cza $$1, im $$2) {
+      return e;
    }
 
    @Override
-   protected etc c(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean g_(dpi $$0) {
+   protected boolean g_(dpy $$0) {
       return true;
    }
 
+   @Nullable
    @Override
-   protected float d(dpi $$0, cym $$1, id $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   public dnd a(im $$0, dpy $$1) {
+      return new dol($$0, $$1);
    }
 
    @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      dpi $$3 = $$1.a_($$2.d());
-      if ($$3.a(ave.ci)) {
-         return false;
-      } else {
-         return $$3.a(ave.cj) ? true : dch.a($$3.k($$1, $$2.d()), ij.b) || $$3.a(this) && $$3.c(c) == 8;
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, els.c, els.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      return this.n().a(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == els.c));
    }
 
    @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      return !$$0.a($$3, $$4) ? dcj.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected elr c_(dpy $$0) {
+      return $$0.c(c) ? els.c.a(false) : super.c_($$0);
    }
 
    @Override
-   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if ($$1.a(czp.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   protected boolean a(dpi $$0, cux $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.p()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == ij.b : true;
+   protected void a(dpy $$0, aqe $$1, im $$2, csd $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bns.a(5));
       }
    }
 
    @Nullable
    @Override
-   public dpi a(cux $$0) {
-      dpi $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(c);
+   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
+      return !$$0.B ? dch.a($$2, dnf.L, ($$0x, $$1x, $$2x, $$3) -> dva.c.a($$0x, $$3.gr(), $$3.gs())) : null;
    }
 }

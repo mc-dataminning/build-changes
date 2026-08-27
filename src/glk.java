@@ -1,39 +1,41 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class glk extends gll {
-   @Nullable
-   private CompletableFuture<gll.a> f;
+public class glk<T extends cjp, M extends fud<T>> extends gky<T, M> {
+   private final akf a;
+   private final glk.a<T> b;
+   private final glk.b<T, M> c;
 
-   public glk(ate $$0, ajv $$1, Executor $$2) {
-      super($$1);
-      this.f = CompletableFuture.supplyAsync(() -> gll.a.a($$0, $$1), $$2);
+   public glk(gii<T, M> $$0, akf $$1, glk.a<T> $$2, glk.b<T, M> $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   protected gll.a b(ate $$0) {
-      if (this.f != null) {
-         gll.a $$1 = this.f.join();
-         this.f = null;
-         return $$1;
-      } else {
-         return gll.a.a($$0, this.e);
+   public void a(exn $$0, gbe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cf()) {
+         this.a();
+         exr $$10 = $$1.getBuffer(gbm.j(this.a));
+         this.c().a($$0, $$10, $$2, gho.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
+         this.b();
       }
    }
 
-   public CompletableFuture<Void> d() {
-      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
+   private void a() {
+      List<fur> $$0 = this.c.getPartsToDraw(this.c());
+      this.c().a().e().forEach($$0x -> $$0x.l = true);
+      $$0.forEach($$0x -> $$0x.l = false);
    }
 
-   @Override
-   public void a(glt $$0, ate $$1, ajv $$2, Executor $$3) {
-      this.f = CompletableFuture.supplyAsync(() -> gll.a.a($$1, this.e), ac.f());
-      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
+   private void b() {
+      this.c().a().e().forEach($$0 -> $$0.l = false);
    }
 
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
+   public interface a<T extends cjp> {
+      float apply(T var1, float var2, float var3);
+   }
+
+   public interface b<T extends cjp, M extends frr<T>> {
+      List<fur> getPartsToDraw(M var1);
    }
 }

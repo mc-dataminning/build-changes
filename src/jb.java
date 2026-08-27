@@ -1,111 +1,66 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface jb extends ip.a {
-   Logger a = LogUtils.getLogger();
-   jb.b b = new jb.c(Map.of()).d();
+public class jb<T> implements ja<T> {
+   private int b;
+   private final Reference2IntMap<T> c;
+   private final List<T> d;
 
-   <E> Optional<ja<E>> c(aju<? extends ja<? extends E>> var1);
+   public jb() {
+      this(512);
+   }
+
+   public jb(int $$0) {
+      this.d = Lists.newArrayListWithExpectedSize($$0);
+      this.c = new Reference2IntOpenHashMap($$0);
+      this.c.defaultReturnValue(-1);
+   }
+
+   public void a(T $$0, int $$1) {
+      this.c.put($$0, $$1);
+
+      while (this.d.size() <= $$1) {
+         this.d.add(null);
+      }
+
+      this.d.set($$1, $$0);
+      if (this.b <= $$1) {
+         this.b = $$1 + 1;
+      }
+   }
+
+   public void b(T $$0) {
+      this.a($$0, this.b);
+   }
 
    @Override
-   default <T> Optional<ip.b<T>> a(aju<? extends ja<? extends T>> $$0) {
-      return this.c($$0).map(ja::p);
+   public int a(T $$0) {
+      return this.c.getInt($$0);
    }
 
-   default <E> ja<E> d(aju<? extends ja<? extends E>> $$0) {
-      return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
+   @Nullable
+   @Override
+   public final T a(int $$0) {
+      return $$0 >= 0 && $$0 < this.d.size() ? this.d.get($$0) : null;
    }
-
-   Stream<jb.d<?>> c();
 
    @Override
-   default Stream<aju<? extends ja<?>>> a() {
-      return this.c().map(jb.d::a);
+   public Iterator<T> iterator() {
+      return Iterators.filter(this.d.iterator(), Objects::nonNull);
    }
 
-   static jb.b a(final ja<? extends ja<?>> $$0) {
-      return new jb.b() {
-         @Override
-         public <T> Optional<ja<T>> c(aju<? extends ja<? extends T>> $$0x) {
-            ja<ja<T>> $$1 = (ja<ja<T>>)$$0;
-            return $$1.e((aju<ja<T>>)$$0);
-         }
-
-         @Override
-         public Stream<jb.d<?>> c() {
-            return $$0.g().stream().map(jb.d::a);
-         }
-
-         @Override
-         public jb.b d() {
-            return this;
-         }
-      };
+   public boolean c(int $$0) {
+      return this.a($$0) != null;
    }
 
-   default jb.b d() {
-      class a extends jb.c implements jb.b {
-         protected a(Stream<jb.d<?>> $$1) {
-            super($$1);
-         }
-      }
-
-      return new a(this.c().map(jb.d::c));
-   }
-
-   default Lifecycle e() {
-      return this.c().map($$0 -> $$0.b.d()).reduce(Lifecycle.stable(), Lifecycle::add);
-   }
-
-   public interface b extends jb {
-   }
-
-   public static class c implements jb {
-      private final Map<? extends aju<? extends ja<?>>, ? extends ja<?>> c;
-
-      public c(List<? extends ja<?>> $$0) {
-         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(ja::c, $$0x -> $$0x));
-      }
-
-      public c(Map<? extends aju<? extends ja<?>>, ? extends ja<?>> $$0) {
-         this.c = Map.copyOf($$0);
-      }
-
-      public c(Stream<jb.d<?>> $$0) {
-         this.c = $$0.collect(ImmutableMap.toImmutableMap(jb.d::a, jb.d::b));
-      }
-
-      @Override
-      public <E> Optional<ja<E>> c(aju<? extends ja<? extends E>> $$0) {
-         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
-      }
-
-      @Override
-      public Stream<jb.d<?>> c() {
-         return this.c.entrySet().stream().map(jb.d::a);
-      }
-   }
-
-   public static record d<T>(aju<? extends ja<T>> a, ja<T> b) {
-
-      private static <T, R extends ja<? extends T>> jb.d<T> a(Entry<? extends aju<? extends ja<?>>, R> $$0) {
-         return a((aju<? extends ja<?>>)$$0.getKey(), $$0.getValue());
-      }
-
-      private static <T> jb.d<T> a(aju<? extends ja<?>> $$0, ja<?> $$1) {
-         return new jb.d<>((aju<? extends ja<T>>)$$0, (ja<T>)$$1);
-      }
-
-      private jb.d<T> c() {
-         return new jb.d<>(this.a, this.b.l());
-      }
+   @Override
+   public int b() {
+      return this.c.size();
    }
 }

@@ -1,45 +1,29 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-public class gep extends ggs<cga, fpv> {
-   public static final ajv a = new ajv("textures/entity/armorstand/wood.png");
+public class gep implements geq.a {
+   private final fcu a;
+   private double b = Double.MIN_VALUE;
+   private List<ety> c = Collections.emptyList();
 
-   public gep(gfr.a $$0) {
-      super($$0, new fpw($$0.a(ftu.c)), 0.0F);
-      this.a(new gjs<>(this, new fpv($$0.a(ftu.d)), new fpv($$0.a(ftu.e)), $$0.g()));
-      this.a(new gjv<>(this, $$0.d()));
-      this.a(new gjl<>(this, $$0.f()));
-      this.a(new gjh<>(this, $$0.f(), $$0.d()));
+   public gep(fcu $$0) {
+      this.a = $$0;
    }
 
-   public ajv a(cga $$0) {
-      return a;
-   }
-
-   protected void a(cga $$0, ewr $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$6 = (float)($$0.dM().Y() - $$0.bM) + $$4;
-      if ($$6 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(axm.a($$6 / 1.5F * (float) Math.PI) * 3.0F));
+   @Override
+   public void a(exn $$0, gbe $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bql $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dN().d($$6, $$6.cI().g(6.0)));
       }
-   }
 
-   protected boolean b(cga $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bX() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cB();
-   }
+      exr $$7 = $$1.getBuffer(gbm.y());
 
-   @Nullable
-   protected gaq a(cga $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.z()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         ajv $$4 = this.a($$0);
-         if ($$2) {
-            return gaq.c($$4, false);
-         } else {
-            return $$1 ? gaq.a($$4, false) : null;
-         }
+      for (ety $$8 : this.c) {
+         gbc.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
       }
    }
 }

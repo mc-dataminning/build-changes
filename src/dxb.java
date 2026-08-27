@@ -1,32 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxb extends dwy {
+public class dxb implements dwx {
    public static final Codec<dxb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwy.d.forGetter($$0x -> $$0x),
-               bni.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bni.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bni.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, dxb::new)
+      $$0 -> $$0.group(jq.v(16).optionalFieldOf("offset", im.c).forGetter($$0x -> $$0x.e)).apply($$0, dxb::new)
    );
-   public final bni b;
-   public final bni c;
-   final bni j;
+   private final jq e;
 
-   public dxb(float $$0, edx $$1, bni $$2, dvu $$3, dwz $$4, ir<dch> $$5, bni $$6, bni $$7, bni $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   public dxb(jq $$0) {
+      this.e = $$0;
    }
 
-   public dxb(float $$0, edx $$1, bni $$2, dvu $$3, ir<dch> $$4, bni $$5, bni $$6, bni $$7) {
-      this($$0, $$1, $$2, $$3, dwz.a, $$4, $$5, $$6, $$7);
+   public boolean a(dap $$0, im $$1) {
+      return !$$0.s($$1.a(this.e));
    }
 
-   public dxb(dwy $$0, bni $$1, bni $$2, bni $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   @Override
+   public dwy<?> a() {
+      return dwy.h;
    }
 }

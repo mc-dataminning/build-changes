@@ -1,61 +1,62 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.EnumSet;
 
-public class bxm extends bxq {
-   private static final int a = 200;
-   private final cch b;
-   private int c;
-   private int d;
+public class bxm extends byb {
+   private final brm a;
 
-   public bxm(cch $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(cch $$0) {
-      return b(200 + $$0.ei().a(200) % 20);
+   public bxm(brm $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(byb.a.a, byb.a.b));
    }
 
    @Override
    public boolean a() {
-      if (this.b.gt()) {
-         return false;
-      } else if (this.b.gq()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         this.d = this.a(this.b);
-         Predicate<cch> $$0 = $$0x -> $$0x.gs() || !$$0x.gq();
-         List<? extends cch> $$1 = this.b.dM().a((Class<? extends cch>)this.b.getClass(), this.b.cH().c(8.0, 8.0, 8.0), $$0);
-         cch $$2 = (cch)DataFixUtils.orElse($$1.stream().filter(cch::gs).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gq()));
-         return this.b.gq();
-      }
+      return this.a.cj() < 140;
    }
 
    @Override
    public boolean b() {
-      return this.b.gq() && this.b.gu();
+      return this.a();
+   }
+
+   @Override
+   public boolean Q_() {
+      return false;
    }
 
    @Override
    public void c() {
-      this.c = 0;
+      this.h();
    }
 
-   @Override
-   public void d() {
-      this.b.gr();
+   private void h() {
+      Iterable<im> $$0 = im.b(
+         axw.a(this.a.ds() - 1.0), this.a.dt(), axw.a(this.a.dy() - 1.0), axw.a(this.a.ds() + 1.0), axw.a(this.a.du() + 8.0), axw.a(this.a.dy() + 1.0)
+      );
+      im $$1 = null;
+
+      for (im $$2 : $$0) {
+         if (this.a(this.a.dN(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = im.a(this.a.ds(), this.a.du() + 8.0, this.a.dy());
+      }
+
+      this.a.K().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void e() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gv();
-      }
+      this.h();
+      this.a.a(0.02F, new etf((double)this.a.bp, (double)this.a.bq, (double)this.a.br));
+      this.a.a(brj.a, this.a.dq());
+   }
+
+   private boolean a(czx $$0, im $$1) {
+      dpy $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(dcx.nd)) && $$2.a(emg.a);
    }
 }

@@ -1,315 +1,137 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public class ddk extends dbb<dmv> implements djh {
-   public static final MapCodec<ddk> b = b($$0 -> new ddk($$0, () -> dmq.b));
-   public static final dqc c = dgc.aE;
-   public static final dqg<dqa> d = dpy.bc;
-   public static final dpz e = dpy.C;
-   public static final int f = 1;
-   protected static final int g = 1;
-   protected static final int h = 14;
-   protected static final etc i = dch.a(1.0, 0.0, 0.0, 15.0, 14.0, 15.0);
-   protected static final etc j = dch.a(1.0, 0.0, 1.0, 15.0, 14.0, 16.0);
-   protected static final etc k = dch.a(0.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   protected static final etc l = dch.a(1.0, 0.0, 1.0, 16.0, 14.0, 15.0);
-   protected static final etc m = dch.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final deo.b<dmv, Optional<bny>> n = new deo.b<dmv, Optional<bny>>() {
-      public Optional<bny> a(dmv $$0, dmv $$1) {
-         return Optional.of(new bnx($$0, $$1));
-      }
-
-      public Optional<bny> a(dmv $$0) {
-         return Optional.of($$0);
-      }
-
-      public Optional<bny> a() {
-         return Optional.empty();
-      }
-   };
-   private static final deo.b<dmv, Optional<boj>> o = new deo.b<dmv, Optional<boj>>() {
-      public Optional<boj> a(final dmv $$0, final dmv $$1) {
-         final bny $$2 = new bnx($$0, $$1);
-         return Optional.of(new boj() {
-            @Nullable
-            @Override
-            public cmw createMenu(int $$0x, cjz $$1x, cka $$2x) {
-               if ($$0.d($$2) && $$1.d($$2)) {
-                  $$0.e_($$1.m);
-                  $$1.e_($$1.m);
-                  return cnd.b($$0, $$1, $$2);
-               } else {
-                  return null;
-               }
-            }
-
-            @Override
-            public wi O_() {
-               if ($$0.ae()) {
-                  return $$0.O_();
-               } else {
-                  return (wi)($$1.ae() ? $$1.O_() : wi.c("container.chestDouble"));
-               }
-            }
-         });
-      }
-
-      public Optional<boj> a(dmv $$0) {
-         return Optional.of($$0);
-      }
-
-      public Optional<boj> a() {
-         return Optional.empty();
-      }
-   };
+public class ddk extends dbn implements djw {
+   public static final MapCodec<ddk> c = b(ddk::new);
+   public static final int d = 1;
+   public static final int e = 4;
+   public static final dqy f = dqo.az;
+   public static final dqp g = dbn.b;
+   public static final dqp h = dqo.C;
+   public static final ToIntFunction<dpy> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
+   private static final Int2ObjectMap<List<etf>> j = ac.a(() -> {
+      Int2ObjectMap<List<etf>> $$0 = new Int2ObjectOpenHashMap();
+      $$0.defaultReturnValue(ImmutableList.of());
+      $$0.put(1, ImmutableList.of(new etf(0.5, 0.5, 0.5)));
+      $$0.put(2, ImmutableList.of(new etf(0.375, 0.44, 0.5), new etf(0.625, 0.5, 0.44)));
+      $$0.put(3, ImmutableList.of(new etf(0.5, 0.313, 0.625), new etf(0.375, 0.44, 0.5), new etf(0.56, 0.5, 0.44)));
+      $$0.put(4, ImmutableList.of(new etf(0.44, 0.313, 0.56), new etf(0.625, 0.44, 0.56), new etf(0.375, 0.44, 0.375), new etf(0.56, 0.5, 0.375)));
+      return Int2ObjectMaps.unmodifiable($$0);
+   });
+   private static final ety k = dcv.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
+   private static final ety l = dcv.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
+   private static final ety m = dcv.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
+   private static final ety n = dcv.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
 
    @Override
-   public MapCodec<? extends ddk> a() {
-      return b;
+   public MapCodec<ddk> a() {
+      return c;
    }
 
-   protected ddk(dph.d $$0, Supplier<dmq<? extends dmv>> $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(c, ij.c).a(d, dqa.a).a(e, Boolean.valueOf(false)));
+   public ddk(dpx.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(f, Integer.valueOf(1)).a(g, Boolean.valueOf(false)).a(h, Boolean.valueOf(false)));
    }
 
-   public static deo.a g(dpi $$0) {
-      dqa $$1 = $$0.c(d);
-      if ($$1 == dqa.a) {
-         return deo.a.a;
+   @Override
+   protected bos a(csd $$0, dpy $$1, czu $$2, im $$3, ckl $$4, bop $$5, etb $$6) {
+      if ($$0.d() && $$4.gb().e && $$1.c(g)) {
+         a($$4, $$1, $$2, $$3);
+         return bos.a($$2.B);
       } else {
-         return $$1 == dqa.c ? deo.a.b : deo.a.c;
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
    @Override
-   protected dim b_(dpi $$0) {
-      return dim.b;
+   protected boolean a(dpy $$0, cvl $$1) {
+      return !$$1.h() && $$1.n().f() == this.p() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
    }
 
    @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, elc.c, elc.c.a($$3));
+   public dpy a(cvl $$0) {
+      dpy $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(f);
+      } else {
+         elr $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == els.c;
+         return super.a($$0).a(h, Boolean.valueOf($$3));
       }
+   }
 
-      if ($$2.a(this) && $$1.o().d()) {
-         dqa $$6 = $$2.c(d);
-         if ($$0.c(d) == dqa.a && $$6 != dqa.a && $$0.c(c) == $$2.c(c) && h($$2) == $$1.g()) {
-            return $$0.a(d, $$6.a());
-         }
-      } else if (h($$0) == $$1) {
-         return $$0.a(d, dqa.a);
+   @Override
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$0.c(h)) {
+         $$3.a($$4, els.c, els.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      if ($$0.c(d) == dqa.a) {
-         return m;
+   protected elr c_(dpy $$0) {
+      return $$0.c(h) ? els.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      switch ($$0.c(f)) {
+         case 1:
+         default:
+            return k;
+         case 2:
+            return l;
+         case 3:
+            return m;
+         case 4:
+            return n;
+      }
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(f, g, h);
+   }
+
+   @Override
+   public boolean a(czv $$0, im $$1, dpy $$2, elr $$3) {
+      if (!$$2.c(h) && $$3.a() == els.c) {
+         dpy $$4 = $$2.a(h, Boolean.valueOf(true));
+         if ($$2.c(g)) {
+            a(null, $$4, $$0, $$1);
+         } else {
+            $$0.a($$1, $$4, 3);
+         }
+
+         $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         return true;
       } else {
-         switch (h($$0)) {
-            case c:
-            default:
-               return i;
-            case d:
-               return j;
-            case e:
-               return k;
-            case f:
-               return l;
-         }
+         return false;
       }
    }
 
-   public static ij h(dpi $$0) {
-      ij $$1 = $$0.c(c);
-      return $$0.c(d) == dqa.b ? $$1.h() : $$1.i();
+   public static boolean g(dpy $$0) {
+      return $$0.a(avo.ae, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
    }
 
    @Override
-   public dpi a(cux $$0) {
-      dqa $$1 = dqa.a;
-      ij $$2 = $$0.g().g();
-      elb $$3 = $$0.q().b_($$0.a());
-      boolean $$4 = $$0.h();
-      ij $$5 = $$0.k();
-      if ($$5.o().d() && $$4) {
-         ij $$6 = this.a($$0, $$5.g());
-         if ($$6 != null && $$6.o() != $$5.o()) {
-            $$2 = $$6;
-            $$1 = $$6.i() == $$5.g() ? dqa.c : dqa.b;
-         }
-      }
-
-      if ($$1 == dqa.a && !$$4) {
-         if ($$2 == this.a($$0, $$2.h())) {
-            $$1 = dqa.b;
-         } else if ($$2 == this.a($$0, $$2.i())) {
-            $$1 = dqa.c;
-         }
-      }
-
-      return this.n().a(c, $$2).a(d, $$1).a(e, Boolean.valueOf($$3.a() == elc.c));
+   protected Iterable<etf> b(dpy $$0) {
+      return (Iterable<etf>)j.get($$0.c(f));
    }
 
    @Override
-   protected elb c_(dpi $$0) {
-      return $$0.c(e) ? elc.c.a(false) : super.c_($$0);
-   }
-
-   @Nullable
-   private ij a(cux $$0, ij $$1) {
-      dpi $$2 = $$0.q().a_($$0.a().a($$1));
-      return $$2.a(this) && $$2.c(d) == dqa.a ? $$2.c(c) : null;
+   protected boolean d(dpy $$0) {
+      return !$$0.c(h) && super.d($$0);
    }
 
    @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
-      bob.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if ($$1.B) {
-         return bof.a;
-      } else {
-         boj $$5 = this.b($$0, $$1, $$2);
-         if ($$5 != null) {
-            $$3.a($$5);
-            $$3.b(this.c());
-            cir.a($$3, true);
-         }
-
-         return bof.b;
-      }
-   }
-
-   protected auv<ajv> c() {
-      return auz.i.b(auz.ao);
-   }
-
-   public dmq<? extends dmv> d() {
-      return this.a.get();
-   }
-
-   @Nullable
-   public static bny a(ddk $$0, dpi $$1, czg $$2, id $$3, boolean $$4) {
-      return $$0.a($$1, $$2, $$3, $$4).apply(n).orElse(null);
-   }
-
-   @Override
-   public deo.c<? extends dmv> a(dpi $$0, czg $$1, id $$2, boolean $$3) {
-      BiPredicate<czh, id> $$4;
-      if ($$3) {
-         $$4 = ($$0x, $$1x) -> false;
-      } else {
-         $$4 = ddk::a;
-      }
-
-      return deo.a(this.a.get(), ddk::g, ddk::h, c, $$0, $$1, $$2, $$4);
-   }
-
-   @Nullable
-   @Override
-   protected boj b(dpi $$0, czg $$1, id $$2) {
-      return this.a($$0, $$1, $$2, false).apply(o).orElse(null);
-   }
-
-   public static deo.b<dmv, Float2FloatFunction> a(final dnr $$0) {
-      return new deo.b<dmv, Float2FloatFunction>() {
-         public Float2FloatFunction a(dmv $$0x, dmv $$1) {
-            return $$2 -> Math.max($$0.a($$2), $$1.a($$2));
-         }
-
-         public Float2FloatFunction a(dmv $$0x) {
-            return $$0::a;
-         }
-
-         public Float2FloatFunction a() {
-            return $$0::a;
-         }
-      };
-   }
-
-   @Override
-   public dmo a(id $$0, dpi $$1) {
-      return new dmv($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
-      return $$0.B ? a($$2, this.d(), dmv::a) : null;
-   }
-
-   public static boolean a(czh $$0, id $$1) {
-      return a((cym)$$0, $$1) || b($$0, $$1);
-   }
-
-   private static boolean a(cym $$0, id $$1) {
-      id $$2 = $$1.c();
-      return $$0.a_($$2).g($$0, $$2);
-   }
-
-   private static boolean b(czh $$0, id $$1) {
-      List<ccl> $$2 = $$0.a(
-         ccl.class, new ese((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 2), (double)($$1.w() + 1))
-      );
-      if (!$$2.isEmpty()) {
-         for (ccl $$3 : $$2) {
-            if ($$3.y()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   protected boolean d_(dpi $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dpi $$0, czg $$1, id $$2) {
-      return cmw.b(a(this, $$0, $$1, $$2, false));
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dhd $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(c, d, e);
-   }
-
-   @Override
-   protected boolean a(dpi $$0, elq $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      dmo $$4 = $$1.c_($$2);
-      if ($$4 instanceof dmv) {
-         ((dmv)$$4).l();
-      }
+   protected boolean a(dpy $$0, czx $$1, im $$2) {
+      return dcv.a($$1, $$2.d(), ir.b);
    }
 }

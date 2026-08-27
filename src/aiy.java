@@ -1,4 +1,12 @@
 public class aiy {
-   public static final vq<aiv> a = yu.a(vh.c, $$0 -> $$0.a(aix.b, aiw.b).a(aio.b, aiq.a));
-   public static final vq<ais> b = yu.b(vh.c, $$0 -> $$0.a(aix.a, ait.a).a(aio.a, ain.a));
+   public static final zb<aix> a = a("pong_response");
+   public static final zb<aja> b = b("ping_request");
+
+   private static <T extends yz<aiw>> zb<T> a(String $$0) {
+      return new zb<>(za.b, new akf($$0));
+   }
+
+   private static <T extends yz<aiz>> zb<T> b(String $$0) {
+      return new zb<>(za.a, new akf($$0));
+   }
 }

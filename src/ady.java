@@ -1,32 +1,37 @@
-import javax.annotation.Nullable;
-
-public class ady implements yp<aba> {
-   public static final yg<vi, ady> a = yp.a(ady::a, ady::new);
+public class ady implements yz<abk> {
+   public static final yq<vs, ady> a = yz.a(ady::a, ady::new);
    private final int b;
+   private final byte c;
 
-   public ady(bqa $$0) {
+   public ady(bql $$0, byte $$1) {
       this.b = $$0.aj();
+      this.c = $$1;
    }
 
-   private ady(vi $$0) {
+   private ady(vs $$0) {
       this.b = $$0.l();
+      this.c = $$0.readByte();
    }
 
-   private void a(vi $$0) {
+   private void a(vs $$0) {
       $$0.c(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public yr<ady> a() {
-      return afl.aw;
+   public zb<ady> a() {
+      return afv.am;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bqa a(czg $$0) {
+   public bql a(czu $$0) {
       return $$0.a(this.b);
+   }
+
+   public byte b() {
+      return this.c;
    }
 }

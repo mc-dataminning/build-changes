@@ -1,64 +1,32 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cjk implements cyd {
-   private final cka a;
-   private cyf b = new cyf();
-   private int c;
+public class cjk {
+   public static bsx<bre> a(int $$0, int $$1) {
+      return bwj.a(
+         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$2 -> $$2.group($$2.b(cah.ad), $$2.b(cah.L), $$2.a(cah.ae), $$2.a(cah.af))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     if (!$$7.eW().d()) {
+                        return false;
+                     } else {
+                        Optional<Integer> $$9 = $$2.a($$5);
+                        if ($$9.isEmpty()) {
+                           $$5.a(0);
+                        } else {
+                           int $$10 = $$9.get();
+                           if ($$10 > $$0) {
+                              $$3.b();
+                              $$5.b();
+                              $$6.a(true, (long)$$1);
+                           } else {
+                              $$5.a($$10 + 1);
+                           }
+                        }
 
-   public cjk(cka $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public cka gn() {
-      return this.a;
-   }
-
-   @Override
-   public void f(@Nullable cka $$0) {
-   }
-
-   @Override
-   public cyf gp() {
-      return this.b;
-   }
-
-   @Override
-   public void a(cyf $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(cye $$0) {
-      $$0.l();
-   }
-
-   @Override
-   public void n(crs $$0) {
-   }
-
-   @Override
-   public boolean gv() {
-      return this.a.dM().B;
-   }
-
-   @Override
-   public int u() {
-      return this.c;
-   }
-
-   @Override
-   public void u(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public boolean gq() {
-      return true;
-   }
-
-   @Override
-   public aun gr() {
-      return auo.AB;
+                        return true;
+                     }
+                  }))
+      );
    }
 }

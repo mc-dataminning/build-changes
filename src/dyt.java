@@ -1,154 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dyt extends dyu<ebf> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final im an = im.c;
+   private final boolean ao;
 
-@Deprecated
-public class dyt extends dye<dyt.a> {
-   private static final dpi a = dcj.nc.n();
+   public static im a(im $$0) {
+      return an.a((jq)$$0);
+   }
 
-   public dyt(Codec<dyt.a> $$0) {
-      super($$0);
+   public dyt(boolean $$0) {
+      super(ebf.a);
+      this.ao = $$0;
    }
 
    @Override
-   public boolean a(dyg<dyt.a> $$0) {
-      id $$1 = $$0.e();
-      dab $$2 = $$0.b();
-      axt $$3 = $$0.d();
-      dyt.a $$4 = $$0.f();
-      if ($$1.v() <= $$2.I_() + 4) {
-         return false;
-      } else {
-         $$1 = $$1.c(4);
-         boolean[] $$5 = new boolean[2048];
-         int $$6 = $$3.a(4) + 4;
+   public boolean a(dyw<ebf> $$0) {
+      im $$1 = $$0.e();
+      dap $$2 = $$0.b();
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            double $$8 = $$3.j() * 6.0 + 3.0;
-            double $$9 = $$3.j() * 4.0 + 2.0;
-            double $$10 = $$3.j() * 6.0 + 3.0;
-            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
-            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
-            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
-
-            for (int $$14 = 1; $$14 < 15; $$14++) {
-               for (int $$15 = 1; $$15 < 15; $$15++) {
-                  for (int $$16 = 1; $$16 < 7; $$16++) {
-                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
-                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
-                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
-                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
-                     if ($$20 < 1.0) {
-                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
-                     }
-                  }
+      for (im $$3 : im.c(new im($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new im($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, dcx.F.n());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, dcx.fz.n());
                }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, dcx.a.n());
+            } else if (!$$4) {
+               this.a($$2, $$3, dcx.F.n());
+            } else if (this.ao) {
+               this.a($$2, new im($$3), dcx.fx.n());
+            } else {
+               this.a($$2, new im($$3), dcx.a.n());
             }
          }
-
-         dpi $$21 = $$4.a().a($$3, $$1);
-
-         for (int $$22 = 0; $$22 < 16; $$22++) {
-            for (int $$23 = 0; $$23 < 16; $$23++) {
-               for (int $$24 = 0; $$24 < 8; $$24++) {
-                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
-                     && (
-                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
-                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
-                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
-                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
-                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
-                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
-                     );
-                  if ($$25) {
-                     dpi $$26 = $$2.a_($$1.b($$22, $$24, $$23));
-                     if ($$24 >= 4 && $$26.k()) {
-                        return false;
-                     }
-
-                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
-                        return false;
-                     }
-                  }
-               }
-            }
-         }
-
-         for (int $$27 = 0; $$27 < 16; $$27++) {
-            for (int $$28 = 0; $$28 < 16; $$28++) {
-               for (int $$29 = 0; $$29 < 8; $$29++) {
-                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
-                     id $$30 = $$1.b($$27, $$29, $$28);
-                     if (this.c($$2.a_($$30))) {
-                        boolean $$31 = $$29 >= 4;
-                        $$2.a($$30, $$31 ? a : $$21, 2);
-                        if ($$31) {
-                           $$2.a($$30, a.b(), 0);
-                           this.a($$2, $$30);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         dpi $$32 = $$4.b().a($$3, $$1);
-         if (!$$32.i()) {
-            for (int $$33 = 0; $$33 < 16; $$33++) {
-               for (int $$34 = 0; $$34 < 16; $$34++) {
-                  for (int $$35 = 0; $$35 < 8; $$35++) {
-                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
-                        && (
-                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
-                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
-                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
-                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
-                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
-                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
-                        );
-                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
-                        dpi $$37 = $$2.a_($$1.b($$33, $$35, $$34));
-                        if ($$37.e() && !$$37.a(ave.bJ)) {
-                           id $$38 = $$1.b($$33, $$35, $$34);
-                           $$2.a($$38, $$32, 2);
-                           this.a($$2, $$38);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         if ($$21.u().a(avj.a)) {
-            for (int $$39 = 0; $$39 < 16; $$39++) {
-               for (int $$40 = 0; $$40 < 16; $$40++) {
-                  int $$41 = 4;
-                  id $$42 = $$1.b($$39, 4, $$40);
-                  if ($$2.t($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
-                     $$2.a($$42, dcj.dO.n(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean c(dpi $$0) {
-      return !$$0.a(ave.bI);
-   }
-
-   public static record a(ecj b, ecj c) implements eai {
-      public static final Codec<dyt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ecj.a.fieldOf("fluid").forGetter(dyt.a::a), ecj.a.fieldOf("barrier").forGetter(dyt.a::b)).apply($$0, dyt.a::new)
-      );
-
-      public ecj a() {
-         return this.b;
       }
 
-      public ecj b() {
-         return this.c;
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), dcx.F.n());
       }
+
+      im $$6 = $$1.b(2);
+
+      for (ir $$7 : ir.c.a) {
+         this.a($$2, $$6.a($$7), dcx.cq.n().a(dlx.g, $$7));
+      }
+
+      return true;
    }
 }

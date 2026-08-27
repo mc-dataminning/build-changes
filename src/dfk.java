@@ -1,85 +1,82 @@
-import com.google.common.collect.Maps;
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class dfk extends dch {
-   public static final MapCodec<dfk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kt.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dfk::new)
-   );
-   private static final Map<dch, dch> d = Maps.newHashMap();
-   public static final float b = 3.0F;
-   protected static final etc c = dch.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final dch e;
+public class dfk extends dcv {
+   public static final MapCodec<dfk> a = b(dfk::new);
+   public static final dqs b = dgr.aE;
+   public static final dqp c = dqo.h;
+   protected static final ety d = dcv.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final ety e = dcv.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final ety f = etv.a(d, e);
+   private static dqd g;
 
    @Override
    public MapCodec<dfk> a() {
       return a;
    }
 
-   public dfk(dch $$0, dph.d $$1) {
-      super($$1);
-      this.e = $$0;
-      d.put($$0, this);
+   public dfk(dpx.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ir.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return c;
+   protected boolean g_(dpy $$0) {
+      return true;
    }
 
    @Override
-   protected boh a(crs $$0, dpi $$1, czg $$2, id $$3, cka $$4, boe $$5, esf $$6) {
-      dpi $$8 = ($$0.f() instanceof cpq $$7 ? d.getOrDefault($$7.d(), dcj.a) : dcj.a).n();
-      if ($$8.i()) {
-         return boh.d;
-      } else if (!this.k()) {
-         return boh.b;
-      } else {
-         $$2.a($$3, $$8, 3);
-         $$2.a($$4, dub.c, $$3);
-         $$4.a(auz.ah);
-         $$0.a(1, $$4);
-         return boh.a($$2.B);
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return $$0.c(c) ? f : d;
+   }
+
+   @Override
+   public dpy a(cvl $$0) {
+      return this.n().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
+   }
+
+   @Override
+   protected boolean d_(dpy $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dpy $$0, czu $$1, im $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected dpy a(dpy $$0, dji $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dpy a(dpy $$0, dhs $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dqd b() {
+      if (g == null) {
+         g = dqe.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dqc.a(dqh.a))
+            .a('^', dqc.a(dqh.a(dcx.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ir.d))))
+            .a('>', dqc.a(dqh.a(dcx.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ir.e))))
+            .a('v', dqc.a(dqh.a(dcx.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ir.c))))
+            .a('<', dqc.a(dqh.a(dcx.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ir.f))))
+            .b();
       }
+
+      return g;
    }
 
    @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if (this.k()) {
-         return bof.b;
-      } else {
-         crs $$5 = new crs(this.e);
-         if (!$$3.i($$5)) {
-            $$3.a($$5, false);
-         }
-
-         $$1.a($$2, dcj.fR.n(), 3);
-         $$1.a($$3, dub.c, $$2);
-         return bof.a($$1.B);
-      }
-   }
-
-   @Override
-   public crs a(czj $$0, id $$1, dpi $$2) {
-      return this.k() ? super.a($$0, $$1, $$2) : new crs(this.e);
-   }
-
-   private boolean k() {
-      return this.e == dcj.a;
-   }
-
-   @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      return $$1 == ij.a && !$$0.a($$3, $$4) ? dcj.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public dch b() {
-      return this.e;
-   }
-
-   @Override
-   protected boolean a(dpi $$0, elq $$1) {
+   protected boolean a(dpy $$0, emg $$1) {
       return false;
    }
 }

@@ -1,24 +1,20 @@
-public record fid(int a, int b) {
-   public static fid a(fib $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new fid($$1, $$2);
-         case b -> new fid($$2, $$1);
-      };
+import java.util.function.Consumer;
+
+public class fid {
+   private static final int a = 4;
+
+   private fid() {
    }
 
-   public fid a(fic $$0) {
-      return switch ($$0) {
-         case b -> new fid(this.a, this.b + 1);
-         case a -> new fid(this.a, this.b - 1);
-         case c -> new fid(this.a - 1, this.b);
-         case d -> new fid(this.a + 1, this.b);
-      };
+   public static fii a(fef $$0, fij $$1, ws $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   public int a(fib $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-      };
+   public static fii a(fef $$0, fij $$1, ws $$2, Consumer<fik> $$3) {
+      fil $$4 = fil.d().a(4);
+      $$4.a(new fgb($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

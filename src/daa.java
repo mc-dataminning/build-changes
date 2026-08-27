@@ -1,23 +1,12 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public record daa(cyu d, cmn e) {
-   public static final String a = "enabled_features";
-   public static final Codec<daa> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cyu.b.optionalFieldOf("DataPacks", cyu.a).forGetter(daa::a), cmp.f.optionalFieldOf("enabled_features", cmp.h).forGetter(daa::b))
-            .apply($$0, daa::new)
-   );
-   public static final daa c = new daa(cyu.a, cmp.h);
+public interface daa {
+   boolean a(im var1, Predicate<dpy> var2);
 
-   public daa a(cmn $$0) {
-      return new daa(this.d, this.e.b($$0));
-   }
+   boolean b(im var1, Predicate<elr> var2);
 
-   public cyu a() {
-      return this.d;
-   }
+   <T extends dnd> Optional<T> a(im var1, dnf<T> var2);
 
-   public cmn b() {
-      return this.e;
-   }
+   im a(dvq.a var1, im var2);
 }

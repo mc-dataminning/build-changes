@@ -1,109 +1,44 @@
-import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
 public class fj implements ArgumentType<Integer> {
-   private static final Collection<String> a = Arrays.asList("0d", "0s", "0t", "0");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("argument.time.invalid_unit"));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wi.b("argument.time.tick_count_too_low", $$1, $$0));
-   private static final Object2IntMap<String> d = new Object2IntOpenHashMap();
-   final int e;
-
-   private fj(int $$0) {
-      this.e = $$0;
-   }
+   private static final Collection<String> a = Arrays.asList("container.5", "weapon");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ws.b("slot.unknown", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ws.b("slot.only_single_allowed", $$0));
 
    public static fj a() {
-      return new fj(0);
+      return new fj();
    }
 
-   public static fj a(int $$0) {
-      return new fj($$0);
+   public static int a(CommandContext<ec> $$0, String $$1) {
+      return (Integer)$$0.getArgument($$1, Integer.class);
    }
 
    public Integer a(StringReader $$0) throws CommandSyntaxException {
-      float $$1 = $$0.readFloat();
-      String $$2 = $$0.readUnquotedString();
-      int $$3 = d.getOrDefault($$2, 0);
-      if ($$3 == 0) {
-         throw b.createWithContext($$0);
+      String $$1 = eg.a($$0, $$0x -> $$0x != ' ');
+      cpe $$2 = cpf.a($$1);
+      if ($$2 == null) {
+         throw b.createWithContext($$0, $$1);
+      } else if ($$2.b() != 1) {
+         throw c.createWithContext($$0, $$1);
       } else {
-         int $$4 = Math.round($$1 * (float)$$3);
-         if ($$4 < this.e) {
-            throw c.createWithContext($$0, $$4, this.e);
-         } else {
-            return $$4;
-         }
+         return $$2.a().getInt(0);
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      StringReader $$2 = new StringReader($$1.getRemaining());
-
-      try {
-         $$2.readFloat();
-      } catch (CommandSyntaxException var5) {
-         return $$1.buildFuture();
-      }
-
-      return ea.b(d.keySet(), $$1.createOffset($$1.getStart() + $$2.getCursor()));
+      return eh.b(cpf.b(), $$1);
    }
 
    public Collection<String> getExamples() {
       return a;
-   }
-
-   static {
-      d.put("d", 24000);
-      d.put("s", 20);
-      d.put("t", 1);
-      d.put("", 1);
-   }
-
-   public static class a implements hp<fj, fj.a.a> {
-      public void a(fj.a.a $$0, vi $$1) {
-         $$1.p($$0.b);
-      }
-
-      public fj.a.a a(vi $$0) {
-         int $$1 = $$0.readInt();
-         return new fj.a.a($$1);
-      }
-
-      public void a(fj.a.a $$0, JsonObject $$1) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      public fj.a.a a(fj $$0) {
-         return new fj.a.a($$0.e);
-      }
-
-      public final class a implements hp.a<fj> {
-         final int b;
-
-         a(int $$1) {
-            this.b = $$1;
-         }
-
-         public fj a(dr $$0) {
-            return fj.a(this.b);
-         }
-
-         @Override
-         public hp<fj, ?> a() {
-            return a.this;
-         }
-      }
    }
 }

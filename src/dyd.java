@@ -1,56 +1,45 @@
-public class dyd extends dye<eap> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final id an = id.c;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
 
-   public static id a(id $$0) {
-      return an.a((ji)$$0);
-   }
-
-   public dyd(boolean $$0) {
-      super(eap.a);
-      this.ao = $$0;
+public class dyd extends dyu<eaq> {
+   public dyd(Codec<eaq> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dyg<eap> $$0) {
-      id $$1 = $$0.e();
-      dab $$2 = $$0.b();
+   public boolean a(dyw<eaq> $$0) {
+      im $$1 = $$0.e();
+      dap $$2 = $$0.b();
+      ayd $$3 = $$0.d();
+      eaq $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-      for (id $$3 : id.a(new id($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new id($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, dcj.F.n());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, dcj.fz.n());
-               }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, dcj.a.n());
-            } else if (!$$4) {
-               this.a($$2, $$3, dcj.F.n());
-            } else if (this.ao) {
-               this.a($$2, new id($$3), dcj.fx.n());
-            } else {
-               this.a($$2, new id($$3), dcj.a.n());
+         for (im $$7 : im.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
+
+         return true;
       }
+   }
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), dcj.F.n());
+   private boolean a(czv $$0, im $$1, ayd $$2) {
+      im $$3 = $$1.d();
+      dpy $$4 = $$0.a_($$3);
+      return $$4.a(dcx.kE) ? $$2.h() : $$4.d($$0, $$3, ir.b);
+   }
+
+   private void a(czv $$0, im $$1, ayd $$2, eaq $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
-
-      id $$6 = $$1.b(2);
-
-      for (ij $$7 : ij.c.a) {
-         this.a($$2, $$6.a($$7), dcj.cq.n().a(dli.g, $$7));
-      }
-
-      return true;
    }
 }

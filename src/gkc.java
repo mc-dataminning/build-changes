@@ -1,48 +1,17 @@
-public abstract class gkc<T extends bqa, M extends fqv<T>> {
-   private final ghm<T, M> a;
+public class gkc<T extends bre, M extends frr<T>> extends gky<T, M> {
+   private final gba a;
 
-   public gkc(ghm<T, M> $$0) {
-      this.a = $$0;
+   public gkc(gii<T, M> $$0, gba $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected static <T extends bqt> void a(
-      fqv<T> $$0,
-      fqv<T> $$1,
-      ajv $$2,
-      ewr $$3,
-      gai $$4,
-      int $$5,
-      T $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      if (!$$6.ce()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
-      }
+   public void a(exn $$0, gbe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      $$0.a();
+      $$0.a(0.0F, 0.4F, -0.4F);
+      $$0.a(a.b.rotationDegrees(180.0F));
+      csd $$10 = $$3.d(bqs.a);
+      this.a.a($$3, $$10, csa.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
-
-   protected static <T extends bqt> void a(fqv<T> $$0, ajv $$1, ewr $$2, gai $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
-      ewv $$9 = $$3.getBuffer(gaq.e($$1));
-      $$0.a($$2, $$9, $$4, ggs.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
-   }
-
-   public M c() {
-      return this.a.a();
-   }
-
-   protected ajv a(T $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(ewr var1, gai var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

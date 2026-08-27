@@ -1,36 +1,29 @@
-public record zu(id c, int d, String e, int f) implements zq {
-   public static final yg<vi, zu> a = zq.a(zu::a, zu::new);
-   public static final zq.b<zu> b = zq.a("debug/game_test_add_marker");
+public class zu implements yz<zq> {
+   public static final yq<vs, zu> a = yz.a(zu::a, zu::new);
+   private final int b;
 
-   private zu(vi $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
+   public zu(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
-      $$0.p(this.f);
+   private zu(vs $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(vs $$0) {
+      $$0.p(this.b);
    }
 
    @Override
-   public zq.b<zu> a() {
-      return b;
+   public zb<zu> a() {
+      return zp.m;
    }
 
-   public id b() {
-      return this.c;
+   public void a(zq $$0) {
+      $$0.a(this);
    }
 
-   public int c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
+   public int b() {
+      return this.b;
    }
 }

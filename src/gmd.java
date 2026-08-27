@@ -1,151 +1,133 @@
-import com.google.common.base.Suppliers;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class gmd implements glw {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<gmd> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.list(ajv.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
-               ajv.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
-               Codec.unboundedMap(Codec.STRING, ajv.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, gmd::new)
-   );
-   private final List<ajv> d;
-   private final Map<String, ajv> e;
-   private final ajv f;
-
-   private gmd(List<ajv> $$0, ajv $$1, Map<String, ajv> $$2) {
-      this.d = $$0;
-      this.e = $$2;
-      this.f = $$1;
-   }
-
-   @Override
-   public void a(ate $$0, glw.a $$1) {
-      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
-      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
-      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
-
-      for (ajv $$4 : this.d) {
-         ajv $$5 = a.a($$4);
-         Optional<atc> $$6 = $$0.getResource($$5);
-         if ($$6.isEmpty()) {
-            c.warn("Unable to find texture {}", $$5);
-         } else {
-            gmc $$7 = new gmc($$5, $$6.get(), $$3.size());
-
-            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
-               ajv $$9 = $$4.e("_" + $$8.getKey());
-               $$1.a($$9, new gmd.a($$7, $$8.getValue(), $$9));
-            }
-         }
+public class gmd {
+   private static final int a = 96;
+   private static final float[] b = ac.a(new float[256], $$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
       }
+   });
+
+   private gmd() {
    }
 
-   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
-      if ($$1.length != $$0.length) {
-         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
-         throw new IllegalArgumentException();
+   public static ewo[] a(ewo[] $$0, int $$1) {
+      if ($$1 + 1 <= $$0.length) {
+         return $$0;
       } else {
-         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
+         ewo[] $$2 = new ewo[$$1 + 1];
+         $$2[0] = $$0[0];
+         boolean $$3 = a($$2[0]);
 
-         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
-            int $$4 = $$0[$$3];
-            if (aww.a.a($$4) != 0) {
-               $$2.put(aww.a.e($$4), $$1[$$3]);
-            }
-         }
-
-         return $$1x -> {
-            int $$2x = aww.a.a($$1x);
-            if ($$2x == 0) {
-               return $$1x;
+         for (int $$4 = 1; $$4 <= $$1; $$4++) {
+            if ($$4 < $$0.length) {
+               $$2[$$4] = $$0[$$4];
             } else {
-               int $$3x = aww.a.e($$1x);
-               int $$4x = $$2.getOrDefault($$3x, aww.a.f($$3x));
-               int $$5 = aww.a.a($$4x);
-               return aww.a.a($$2x * $$5 / 255, $$4x);
+               ewo $$5 = $$2[$$4 - 1];
+               ewo $$6 = new ewo($$5.a() >> 1, $$5.b() >> 1, false);
+               int $$7 = $$6.a();
+               int $$8 = $$6.b();
+
+               for (int $$9 = 0; $$9 < $$7; $$9++) {
+                  for (int $$10 = 0; $$10 < $$8; $$10++) {
+                     $$6.a(
+                        $$9,
+                        $$10,
+                        a(
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
+                           $$3
+                        )
+                     );
+                  }
+               }
+
+               $$2[$$4] = $$6;
             }
-         };
+         }
+
+         return $$2;
       }
    }
 
-   public static int[] a(ate $$0, ajv $$1) {
-      Optional<atc> $$2 = $$0.getResource(a.a($$1));
-      if ($$2.isEmpty()) {
-         c.error("Failed to load palette image {}", $$1);
-         throw new IllegalArgumentException();
+   private static boolean a(ewo $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            if ($$0.a($$1, $$2) >> 24 == 0) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if ($$4) {
+         float $$5 = 0.0F;
+         float $$6 = 0.0F;
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         if ($$0 >> 24 != 0) {
+            $$5 += a($$0 >> 24);
+            $$6 += a($$0 >> 16);
+            $$7 += a($$0 >> 8);
+            $$8 += a($$0 >> 0);
+         }
+
+         if ($$1 >> 24 != 0) {
+            $$5 += a($$1 >> 24);
+            $$6 += a($$1 >> 16);
+            $$7 += a($$1 >> 8);
+            $$8 += a($$1 >> 0);
+         }
+
+         if ($$2 >> 24 != 0) {
+            $$5 += a($$2 >> 24);
+            $$6 += a($$2 >> 16);
+            $$7 += a($$2 >> 8);
+            $$8 += a($$2 >> 0);
+         }
+
+         if ($$3 >> 24 != 0) {
+            $$5 += a($$3 >> 24);
+            $$6 += a($$3 >> 16);
+            $$7 += a($$3 >> 8);
+            $$8 += a($$3 >> 0);
+         }
+
+         $$5 /= 4.0F;
+         $$6 /= 4.0F;
+         $$7 /= 4.0F;
+         $$8 /= 4.0F;
+         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
+         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
+         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
+         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
+         if ($$9 < 96) {
+            $$9 = 0;
+         }
+
+         return $$9 << 24 | $$10 << 16 | $$11 << 8 | $$12;
       } else {
-         try {
-            int[] var5;
-            try (
-               InputStream $$3 = $$2.get().d();
-               evs $$4 = evs.a($$3);
-            ) {
-               var5 = $$4.d();
-            }
-
-            return var5;
-         } catch (Exception var11) {
-            c.error("Couldn't load texture {}", $$1, var11);
-            throw new IllegalArgumentException();
-         }
+         int $$13 = a($$0, $$1, $$2, $$3, 24);
+         int $$14 = a($$0, $$1, $$2, $$3, 16);
+         int $$15 = a($$0, $$1, $$2, $$3, 8);
+         int $$16 = a($$0, $$1, $$2, $$3, 0);
+         return $$13 << 24 | $$14 << 16 | $$15 << 8 | $$16;
       }
    }
 
-   @Override
-   public gly a() {
-      return glz.e;
+   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = a($$0 >> $$4);
+      float $$6 = a($$1 >> $$4);
+      float $$7 = a($$2 >> $$4);
+      float $$8 = a($$3 >> $$4);
+      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
+      return (int)((double)$$9 * 255.0);
    }
 
-   static record a(gmc a, Supplier<IntUnaryOperator> b, ajv c) implements glw.b {
-      @Nullable
-      public glm a(glv $$0) {
-         Object var3;
-         try {
-            evs $$1 = this.a.a().a(this.b.get());
-            return new glm(this.c, new gne($$1.a(), $$1.b()), $$1, atg.a);
-         } catch (IllegalArgumentException | IOException var7) {
-            gmd.c.error("unable to apply palette to {}", this.c, var7);
-            var3 = null;
-         } finally {
-            this.a.b();
-         }
-
-         return (glm)var3;
-      }
-
-      @Override
-      public void a() {
-         this.a.b();
-      }
-
-      public gmc b() {
-         return this.a;
-      }
-
-      public Supplier<IntUnaryOperator> c() {
-         return this.b;
-      }
-
-      public ajv d() {
-         return this.c;
-      }
+   private static float a(int $$0) {
+      return b[$$0 & 0xFF];
    }
 }

@@ -1,24 +1,88 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import org.joml.Quaternionf;
 
-public final class ggh extends gel<ceo, frg<ceo>> {
-   private static final Map<cev, ajv> a = ac.a(Maps.newEnumMap(cev.class), $$0 -> {
-      $$0.put(cev.a, new ajv("textures/entity/horse/horse_white.png"));
-      $$0.put(cev.b, new ajv("textures/entity/horse/horse_creamy.png"));
-      $$0.put(cev.c, new ajv("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(cev.d, new ajv("textures/entity/horse/horse_brown.png"));
-      $$0.put(cev.e, new ajv("textures/entity/horse/horse_black.png"));
-      $$0.put(cev.f, new ajv("textures/entity/horse/horse_gray.png"));
-      $$0.put(cev.g, new ajv("textures/entity/horse/horse_darkbrown.png"));
-   });
+public class ggh extends ggm<cfo> {
+   private static final akf a = new akf("textures/entity/end_crystal/end_crystal.png");
+   private static final gbm f = gbm.e(a);
+   private static final float g = (float)Math.sin(Math.PI / 4);
+   private static final String h = "glass";
+   private static final String i = "base";
+   private final fur j;
+   private final fur k;
+   private final fur l;
 
-   public ggh(gfr.a $$0) {
-      super($$0, new frg<>($$0.a(ftu.ap)), 1.1F);
-      this.a(new gjr(this));
-      this.a(new gjq(this, $$0.f()));
+   public ggh(ggn.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      fur $$1 = $$0.a(fuq.aa);
+      this.k = $$1.b("glass");
+      this.j = $$1.b("cube");
+      this.l = $$1.b("base");
    }
 
-   public ajv a(ceo $$0) {
-      return a.get($$0.r());
+   public static fux a() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      $$1.a("glass", fuw.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fut.a);
+      $$1.a("cube", fuw.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fut.a);
+      $$1.a("base", fuw.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), fut.a);
+      return fux.a($$0, 64, 32);
+   }
+
+   public void a(cfo $$0, float $$1, float $$2, exn $$3, gbe $$4, int $$5) {
+      $$3.a();
+      float $$6 = a($$0, $$2);
+      float $$7 = ((float)$$0.b + $$2) * 3.0F;
+      exr $$8 = $$4.getBuffer(f);
+      $$3.a();
+      $$3.b(2.0F, 2.0F, 2.0F);
+      $$3.a(0.0F, -0.5F, 0.0F);
+      int $$9 = gmf.d;
+      if ($$0.r()) {
+         this.l.a($$3, $$8, $$5, $$9);
+      }
+
+      $$3.a(a.d.rotationDegrees($$7));
+      $$3.a(0.0F, 1.5F + $$6 / 2.0F, 0.0F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      this.k.a($$3, $$8, $$5, $$9);
+      float $$10 = 0.875F;
+      $$3.b(0.875F, 0.875F, 0.875F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      $$3.a(a.d.rotationDegrees($$7));
+      this.k.a($$3, $$8, $$5, $$9);
+      $$3.b(0.875F, 0.875F, 0.875F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      $$3.a(a.d.rotationDegrees($$7));
+      this.j.a($$3, $$8, $$5, $$9);
+      $$3.b();
+      $$3.b();
+      im $$11 = $$0.p();
+      if ($$11 != null) {
+         float $$12 = (float)$$11.u() + 0.5F;
+         float $$13 = (float)$$11.v() + 0.5F;
+         float $$14 = (float)$$11.w() + 0.5F;
+         float $$15 = (float)((double)$$12 - $$0.ds());
+         float $$16 = (float)((double)$$13 - $$0.du());
+         float $$17 = (float)((double)$$14 - $$0.dy());
+         $$3.a($$15, $$16, $$17);
+         ggi.a(-$$15, -$$16 + $$6, -$$17, $$2, $$0.b, $$3, $$4, $$5);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public static float a(cfo $$0, float $$1) {
+      float $$2 = (float)$$0.b + $$1;
+      float $$3 = axw.a($$2 * 0.2F) / 2.0F + 0.5F;
+      $$3 = ($$3 * $$3 + $$3) * 0.4F;
+      return $$3 - 1.4F;
+   }
+
+   public akf a(cfo $$0) {
+      return a;
+   }
+
+   public boolean a(cfo $$0, gei $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.p() != null;
    }
 }

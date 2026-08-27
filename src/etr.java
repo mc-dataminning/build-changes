@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
 interface etr {
+   DoubleList a();
+
+   boolean a(etr.a var1);
+
+   int size();
+
+   public interface a {
+      boolean merge(int var1, int var2, int var3);
+   }
 }

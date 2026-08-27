@@ -1,93 +1,46 @@
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class afj {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
+public class afj implements yz<abk> {
+   public static final yq<vs, afj> a = yz.a(afj::a, afj::new);
+   private final int b;
+   @Nullable
+   private final ty c;
 
-   public static String a(bqa $$0) {
-      if ($$0 instanceof cka) {
-         return $$0.ad().getString();
-      } else {
-         wi $$1 = $$0.af();
-         return $$1 != null ? $$1.getString() : a($$0.cw());
-      }
+   public afj(int $$0, @Nullable ty $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static String a(UUID $$0) {
-      axt $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   private afj(vs $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
    }
 
-   private static String a(axt $$0, String[] $$1) {
-      return ac.a($$1, $$0);
+   private void a(vs $$0) {
+      $$0.c(this.b);
+      $$0.a((uv)this.c);
    }
 
-   private static axt b(UUID $$0) {
-      return axt.a((long)($$0.hashCode() >> 2));
+   @Override
+   public zb<afj> a() {
+      return afv.aX;
+   }
+
+   public void a(abk $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   @Nullable
+   public ty e() {
+      return this.c;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

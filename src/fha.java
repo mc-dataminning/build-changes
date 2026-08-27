@@ -1,34 +1,53 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import java.util.List;
 
-public interface fha {
-   MapCodec<fha> b = fhb.f.dispatchMap(fha::a, $$0 -> $$0.a().codec());
+public class fha implements fhd {
+   private static final akf d = new akf("toast/advancement");
+   public static final int a = 5000;
+   private final af e;
+   private boolean f;
 
-   fhb a();
-
-   Either<fha.b, fha.c> b();
-
-   public static record a(fha b, fgo.a c) {
-      public static final Codec<fha.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fha.b.forGetter(fha.a::a), awu.a(fgo.a.a, "filter", fgo.a.b).forGetter(fha.a::b)).apply($$0, fha.a::new)
-      );
-
-      public fha a() {
-         return this.b;
-      }
-
-      public fgo.a b() {
-         return this.c;
-      }
+   public fha(af $$0) {
+      this.e = $$0;
    }
 
-   public interface b {
-      euu load(ate var1) throws IOException;
-   }
+   @Override
+   public fhd.a a(feh $$0, fhe $$1, long $$2) {
+      ar $$3 = this.e.b().c().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<axi> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = axw.d(axw.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = axw.d(axw.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
 
-   public static record c(ajv a) {
+               for (axi $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
+         }
+
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == al.b) {
+               $$1.b().ak().a(gpw.a(auz.Ai, 1.0F, 1.0F));
+            }
+         }
+
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? fhd.a.b : fhd.a.a;
+      } else {
+         return fhd.a.b;
+      }
    }
 }

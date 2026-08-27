@@ -1,7 +1,8 @@
-import java.util.function.BiConsumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface drq extends cym {
-   void a(BiConsumer<id, dpi> var1);
-
-   ekl B();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface drq {
 }

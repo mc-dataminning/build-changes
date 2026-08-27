@@ -1,53 +1,29 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class eeb extends edx {
-   public static final Codec<eeb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dvu.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dvu.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eeb::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dvu d;
-   private final dvu e;
-   private final int f;
+public class eeb extends eec {
+   public static final Codec<eeb> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eeb::new));
 
-   private eeb(dvu $$0, dvu $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static eeb a(dvu $$0, dvu $$1, int $$2) {
-      return new eeb($$0, $$1, $$2);
+   public eeb(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(axt $$0, dvx $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = axm.a($$0, $$2 + this.f, $$3);
-         int $$5 = axm.a($$0, $$2, $$4 - 1);
-         return axm.a($$0, $$2, $$5 - 1 + this.f);
+   protected eed<?> a() {
+      return eed.a;
+   }
+
+   @Override
+   public List<eck.a> a(daa $$0, BiConsumer<im, dpy> $$1, ayd $$2, int $$3, im $$4, ebu $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
       }
-   }
 
-   @Override
-   public edy<?> a() {
-      return edy.d;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+      return ImmutableList.of(new eck.a($$4.b($$3), 0, false));
    }
 }

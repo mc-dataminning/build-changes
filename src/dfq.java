@@ -1,24 +1,11 @@
-import com.mojang.serialization.MapCodec;
-
-public class dfq extends dgc {
-   public static final MapCodec<dfq> a = b(dfq::new);
-
-   @Override
-   public MapCodec<dfq> a() {
-      return a;
+public interface dfq {
+   default void a(czu $$0, im $$1, dpy $$2, dpy $$3, cgu $$4) {
    }
 
-   public dfq(dph.d $$0) {
-      super($$0);
+   default void a(czu $$0, im $$1, cgu $$2) {
    }
 
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(aE);
-   }
-
-   @Override
-   public dpi a(cux $$0) {
-      return this.n().a(aE, $$0.g().g());
+   default bpj a(bql $$0) {
+      return $$0.dO().a($$0);
    }
 }

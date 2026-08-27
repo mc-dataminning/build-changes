@@ -1,98 +1,181 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.DirectoryStream;
+import com.google.common.base.Splitter;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.FileStore;
 import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.nio.file.PathMatcher;
+import java.nio.file.WatchService;
+import java.nio.file.attribute.UserPrincipalLookupService;
+import java.nio.file.spi.FileSystemProvider;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ask implements asr {
-   static final Logger a = LogUtils.getLogger();
-   private static final arr b = new arr(false, asm.b.a, false);
-   private final Path c;
-   private final ars d;
-   private final asq e;
-   private final erz f;
+public class ask extends FileSystem {
+   private static final Set<String> b = Set.of("basic");
+   public static final String a = "/";
+   private static final Splitter c = Splitter.on('/');
+   private final FileStore d;
+   private final FileSystemProvider e = new asj();
+   private final asi f;
 
-   public ask(Path $$0, ars $$1, asq $$2, erz $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   ask(String $$0, ask.b $$1) {
+      this.d = new ash($$0);
+      this.f = a($$1, this, "", null);
    }
 
-   private static String a(Path $$0) {
-      return $$0.getFileName().toString();
+   private static asi a(ask.b $$0, ask $$1, String $$2, @Nullable asi $$3) {
+      Object2ObjectOpenHashMap<String, asi> $$4 = new Object2ObjectOpenHashMap();
+      asi $$5 = new asi($$1, $$2, $$3, new asl.a($$4));
+      $$0.b.forEach(($$3x, $$4x) -> $$4.put($$3x, new asi($$1, $$3x, $$5, new asl.b($$4x))));
+      $$0.a.forEach(($$3x, $$4x) -> $$4.put($$3x, a($$4x, $$1, $$3x, $$5)));
+      $$4.trim();
+      return $$5;
    }
 
    @Override
-   public void loadPacks(Consumer<asm> $$0) {
-      try {
-         v.c(this.c);
-         a(this.c, this.f, ($$1, $$2) -> {
-            arp $$3 = this.b($$1);
-            asm $$4 = asm.a($$3, $$2, this.d, b);
-            if ($$4 != null) {
-               $$0.accept($$4);
-            }
-         });
-      } catch (IOException var3) {
-         a.warn("Failed to list packs in {}", this.c, var3);
+   public FileSystemProvider provider() {
+      return this.e;
+   }
+
+   @Override
+   public void close() {
+   }
+
+   @Override
+   public boolean isOpen() {
+      return true;
+   }
+
+   @Override
+   public boolean isReadOnly() {
+      return true;
+   }
+
+   @Override
+   public String getSeparator() {
+      return "/";
+   }
+
+   @Override
+   public Iterable<Path> getRootDirectories() {
+      return List.of(this.f);
+   }
+
+   @Override
+   public Iterable<FileStore> getFileStores() {
+      return List.of(this.d);
+   }
+
+   @Override
+   public Set<String> supportedFileAttributeViews() {
+      return b;
+   }
+
+   @Override
+   public Path getPath(String $$0, String... $$1) {
+      Stream<String> $$2 = Stream.of($$0);
+      if ($$1.length > 0) {
+         $$2 = Stream.concat($$2, Stream.of($$1));
       }
-   }
 
-   private arp b(Path $$0) {
-      String $$1 = a($$0);
-      return new arp("file/" + $$1, wi.b($$1), this.e, Optional.empty());
-   }
+      String $$3 = $$2.collect(Collectors.joining("/"));
+      if ($$3.equals("/")) {
+         return this.f;
+      } else if ($$3.startsWith("/")) {
+         asi $$4 = this.f;
 
-   public static void a(Path $$0, erz $$1, BiConsumer<Path, asm.c> $$2) throws IOException {
-      ask.a $$3 = new ask.a($$1);
-
-      try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
-         for (Path $$5 : $$4) {
-            try {
-               List<esa> $$6 = new ArrayList<>();
-               asm.c $$7 = $$3.a($$5, $$6);
-               if (!$$6.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", ery.a($$5, $$6));
-               } else if ($$7 != null) {
-                  $$2.accept($$5, $$7);
-               } else {
-                  a.info("Found non-pack entry '{}', ignoring", $$5);
-               }
-            } catch (IOException var10) {
-               a.warn("Failed to read properties of '{}', ignoring", $$5, var10);
+         for (String $$5 : c.split($$3.substring(1))) {
+            if ($$5.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
             }
+
+            $$4 = $$4.a($$5);
          }
-      }
-   }
 
-   static class a extends aso<asm.c> {
-      protected a(erz $$0) {
-         super($$0);
-      }
+         return $$4;
+      } else {
+         asi $$6 = null;
 
-      @Nullable
-      protected asm.c a(Path $$0) {
-         FileSystem $$1 = $$0.getFileSystem();
-         if ($$1 != FileSystems.getDefault() && !($$1 instanceof asa)) {
-            ask.a.info("Can't open pack archive at {}", $$0);
-            return null;
+         for (String $$7 : c.split($$3)) {
+            if ($$7.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
+            }
+
+            $$6 = new asi(this, $$7, $$6, asl.b);
+         }
+
+         if ($$6 == null) {
+            throw new IllegalArgumentException("Empty paths not allowed");
          } else {
-            return new arn.a($$0);
+            return $$6;
+         }
+      }
+   }
+
+   @Override
+   public PathMatcher getPathMatcher(String $$0) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public UserPrincipalLookupService getUserPrincipalLookupService() {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public WatchService newWatchService() {
+      throw new UnsupportedOperationException();
+   }
+
+   public FileStore a() {
+      return this.d;
+   }
+
+   public asi b() {
+      return this.f;
+   }
+
+   public static ask.a c() {
+      return new ask.a();
+   }
+
+   public static class a {
+      private final ask.b a = new ask.b();
+
+      public ask.a a(List<String> $$0, String $$1, Path $$2) {
+         ask.b $$3 = this.a;
+
+         for (String $$4 : $$0) {
+            $$3 = $$3.a.computeIfAbsent($$4, $$0x -> new ask.b());
+         }
+
+         $$3.b.put($$1, $$2);
+         return this;
+      }
+
+      public ask.a a(List<String> $$0, Path $$1) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Path can't be empty");
+         } else {
+            int $$2 = $$0.size() - 1;
+            return this.a($$0.subList(0, $$2), $$0.get($$2), $$1);
          }
       }
 
-      protected asm.c b(Path $$0) {
-         return new art.a($$0);
+      public FileSystem a(String $$0) {
+         return new ask($$0, this.a);
+      }
+   }
+
+   static record b(Map<String, ask.b> a, Map<String, Path> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashMap<>());
       }
    }
 }

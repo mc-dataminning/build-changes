@@ -1,45 +1,37 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class aed implements yz<abk> {
+   public static final yq<vs, aed> a = yz.a(aed::a, aed::new);
+   private final double b;
+   private final double c;
 
-public class aed implements yp<aba> {
-   public static final yg<vi, aed> a = yp.a(aed::a, aed::new);
-   private final ete b;
-   private final String c;
-
-   public aed(ete $$0, @Nullable etf $$1) {
-      this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
+   public aed(drp $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private aed(vi $$0) {
-      this.b = $$0.a(ete.u);
-      this.c = $$0.p();
+   private aed(vs $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
    }
 
-   private void a(vi $$0) {
-      $$0.a(ete::a, this.b);
+   private void a(vs $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public yr<aed> a() {
-      return afl.aB;
+   public zb<aed> a() {
+      return afv.ar;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public ete b() {
-      return this.b;
+   public double b() {
+      return this.c;
    }
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+   public double e() {
+      return this.b;
    }
 }

@@ -1,25 +1,17 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Objects;
 
-public class bcu extends bef {
-   private final String a;
+public class bcu extends bga {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
 
-   public bcu(Schema $$0, String $$1, String $$2) {
-      super($$0, true, "Horse armor fix for " + $$1, bff.z, $$1);
-      this.a = $$2;
+   public bcu(Schema $$0) {
+      super("EntityZombifiedPiglinRenameFix", $$0, true);
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get(this.a).result();
-      if ($$1.isPresent()) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
-         Dynamic<T> $$3 = $$0.remove(this.a);
-         $$3 = $$3.set("body_armor_item", $$2);
-         return $$3.set("body_armor_drop_chance", $$0.createFloat(2.0F));
-      } else {
-         return $$0;
-      }
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
    }
 }

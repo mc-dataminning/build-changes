@@ -1,18 +1,27 @@
-import java.util.concurrent.atomic.AtomicInteger;
+public interface uz {
+   void a(ut var1);
 
-public class uz {
-   private final AtomicInteger a = new AtomicInteger();
-   private final bjz b;
+   void a(tw var1);
 
-   public uz(bjz $$0) {
-      this.b = $$0;
-   }
+   void a(uq var1);
 
-   public void a(int $$0) {
-      this.a.getAndAdd($$0);
-   }
+   void a(ud var1);
 
-   public void a() {
-      this.b.a((long)this.a.getAndSet(0));
-   }
+   void a(ug var1);
+
+   void a(ub var1);
+
+   void a(tz var1);
+
+   void a(tv var1);
+
+   void a(uc var1);
+
+   void a(uf var1);
+
+   void a(ue var1);
+
+   void a(ty var1);
+
+   void a(ua var1);
 }

@@ -1,54 +1,26 @@
-import javax.annotation.Nullable;
+import java.util.function.BooleanSupplier;
 
-public interface fdi {
-   static fdi a(ffu $$0) {
-      return new fdi.a($$0);
+public class fdi extends fcs {
+   private final BooleanSupplier h;
+
+   public fdi(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
+      super($$0, ewi.b.a, $$1, $$2);
+      this.h = $$3;
    }
 
-   @Nullable
-   static fdi a(fft $$0, @Nullable fdi $$1) {
-      return $$1 == null ? null : new fdi.b($$0, $$1);
-   }
-
-   static fdi a(ffu $$0, fft... $$1) {
-      fdi $$2 = a($$0);
-
-      for (fft $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
-   }
-
-   ffu a();
-
-   void a(boolean var1);
-
-   public static record a(ffu a) implements fdi {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
-      }
-   }
-
-   public static record b(fft a, fdi b) implements fdi {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
+   @Override
+   public void a(boolean $$0) {
+      if (this.h.getAsBoolean()) {
+         if ($$0) {
+            super.a(!this.e());
          }
-
-         this.b.a($$0);
+      } else {
+         super.a($$0);
       }
+   }
 
-      public fft b() {
-         return this.a;
-      }
-
-      public fdi c() {
-         return this.b;
-      }
+   @Override
+   protected void n() {
+      super.a(false);
    }
 }

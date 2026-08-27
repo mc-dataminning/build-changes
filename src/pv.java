@@ -1,31 +1,19 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.concurrent.CompletableFuture;
 
-public class pv {
-   public static final aju<egz> a = qg.a("bastion/starts");
+public class pv extends pj {
+   public pv(ll $$0, CompletableFuture<ix.a> $$1, CompletableFuture<pn.c<cry>> $$2, CompletableFuture<pn.c<dcv>> $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-   public static void a(pz<egz> $$0) {
-      io<ejo> $$1 = $$0.a(ku.aH);
-      in<ejo> $$2 = $$1.b(qh.w);
-      io<egz> $$3 = $$0.a(ku.aJ);
-      in<egz> $$4 = $$3.b(qg.a);
-      $$0.a(
-         a,
-         new egz(
-            $$4,
-            ImmutableList.of(
-               Pair.of(egx.b("bastion/units/air_base", $$2), 1),
-               Pair.of(egx.b("bastion/hoglin_stable/air_base", $$2), 1),
-               Pair.of(egx.b("bastion/treasure/big_air_full", $$2), 1),
-               Pair.of(egx.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
-            ),
-            egz.a.b
-         )
-      );
-      pu.a($$0);
-      pt.a($$0);
-      px.a($$0);
-      ps.a($$0);
-      pw.a($$0);
+   @Override
+   protected void a(ix.a $$0) {
+      this.a(avw.H).a(csg.o, csg.t, csg.x);
+      this.a(avw.I).a(csg.n, csg.s, csg.w);
+      this.a(avw.J).a(csg.p, csg.u, csg.y);
+      this.a(avw.o).a(csg.mU, csg.mV, csg.mW, csg.mX, csg.mY, csg.mZ, csg.na, csg.nb);
+      this.a(avw.N).a(csg.no, csg.np, csg.nq, csg.nr, csg.ns, csg.nt, csg.nu, csg.nv);
+      this.a(avw.aQ).a(csg.xT, csg.xV, csg.yd);
+      this.a(avw.aR).a(csg.xT).a(csg.xV).a(csg.yd);
+      this.a(avw.aO).a(csg.xJ).a(csg.xK);
    }
 }

@@ -1,15 +1,26 @@
 import java.util.function.Function;
 
-public abstract class frr {
-   protected final Function<ajv, gaq> v;
+public abstract class frr<T extends bql> extends fsn {
+   public float c;
+   public boolean d;
+   public boolean e = true;
 
-   public frr(Function<ajv, gaq> $$0) {
-      this.v = $$0;
+   protected frr() {
+      this(gbm::e);
    }
 
-   public final gaq a(ajv $$0) {
-      return this.v.apply($$0);
+   protected frr(Function<akf, gbm> $$0) {
+      super($$0);
    }
 
-   public abstract void a(ewr var1, ewv var2, int var3, int var4, float var5, float var6, float var7, float var8);
+   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(frr<T> $$0) {
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
+   }
 }

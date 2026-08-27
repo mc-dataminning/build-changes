@@ -1,21 +1,7 @@
-public enum blz {
-   a("pathfinding"),
-   b("event-loops"),
-   c("mailboxes"),
-   d("ticking"),
-   e("jvm"),
-   f("chunk rendering"),
-   g("chunk rendering dispatching"),
-   h("cpu"),
-   i("gpu");
+import jdk.jfr.consumer.RecordedEvent;
 
-   private final String j;
-
-   private blz(String $$0) {
-      this.j = $$0;
-   }
-
-   public String a() {
-      return this.j;
+public record blz(String a, String b, int c, int d) {
+   public static blz a(RecordedEvent $$0) {
+      return new blz($$0.getString("level"), $$0.getString("dimension"), $$0.getInt("chunkPosX"), $$0.getInt("chunkPosZ"));
    }
 }

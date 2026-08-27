@@ -1,43 +1,56 @@
-public class kb extends ka {
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Map.Entry;
+
+public record kb<T>(jy<T> b, T c) {
+   public static final yq<wd, kb<?>> a = new yq<wd, kb<?>>() {
+      public kb<?> a(wd $$0) {
+         jy<?> $$1 = jy.b.decode($$0);
+         return a($$0, (jy<T>)$$1);
+      }
+
+      private static <T> kb<T> a(wd $$0, jy<T> $$1) {
+         return new kb<>($$1, $$1.e().decode($$0));
+      }
+
+      public void a(wd $$0, kb<?> $$1) {
+         b($$0, (kb<T>)$$1);
+      }
+
+      private static <T> void b(wd $$0, kb<T> $$1) {
+         jy.b.encode($$0, $$1.a());
+         $$1.a().e().encode($$0, $$1.b());
+      }
+   };
+
+   static kb<?> a(Entry<jy<?>, Object> $$0) {
+      return a($$0.getKey(), $$0.getValue());
+   }
+
+   static <T> kb<T> a(jy<T> $$0, Object $$1) {
+      return new kb<>($$0, (T)$$1);
+   }
+
+   public void a(ka $$0) {
+      $$0.b(this.b, this.c);
+   }
+
+   public <D> DataResult<D> a(DynamicOps<D> $$0) {
+      Codec<T> $$1 = this.b.b();
+      return $$1 == null ? DataResult.error(() -> "Component of type " + this.b + " is not encodable") : $$1.encodeStart($$0, this.c);
+   }
+
    @Override
-   protected crs a(jw $$0, crs $$1) {
-      apu $$2 = $$0.b();
-      if (!$$2.x_()) {
-         id $$3 = $$0.c().a($$0.d().c(dem.b));
-         this.a(a($$2, $$3) || b($$2, $$3));
-         if (this.a()) {
-            $$1.a(1, $$2.E_(), null, () -> $$1.e(0));
-         }
-      }
-
-      return $$1;
+   public String toString() {
+      return this.b + "=>" + this.c;
    }
 
-   private static boolean a(apu $$0, id $$1) {
-      dpi $$2 = $$0.a_($$1);
-      if ($$2.a(ave.aG, $$0x -> $$0x.b(dcb.c) && $$0x.b() instanceof dcb)) {
-         int $$3 = $$2.c(dcb.c);
-         if ($$3 >= 5) {
-            $$0.a(null, $$1, auo.bX, aup.e, 1.0F, 1.0F);
-            dcb.a($$0, $$1);
-            ((dcb)$$2.b()).a($$0, $$2, $$1, null, dml.b.b);
-            $$0.a(null, dub.M, $$1);
-            return true;
-         }
-      }
-
-      return false;
+   public jy<T> a() {
+      return this.b;
    }
 
-   private static boolean b(apu $$0, id $$1) {
-      for (bqt $$3 : $$0.a(bqt.class, new ese($$1), bqf.f)) {
-         if ($$3 instanceof brj $$4 && $$4.a()) {
-            $$4.a(aup.e);
-            $$0.a(null, dub.M, $$1);
-            return true;
-         }
-      }
-
-      return false;
+   public T b() {
+      return this.c;
    }
 }

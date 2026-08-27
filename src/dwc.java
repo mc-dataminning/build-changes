@@ -1,346 +1,60 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableDouble;
-import org.apache.commons.lang3.mutable.MutableObject;
+public class dwc implements czh {
+   private int a;
 
-public class dwc {
-   private static final dwc a = new dwc(new Long2ObjectOpenHashMap(), new Long2ObjectOpenHashMap()) {
-      @Override
-      public dwc.a a(int $$0, int $$1) {
-         return new dwc.a(1.0, 0.0);
-      }
-
-      @Override
-      public double a(dut.b $$0, double $$1) {
-         return $$1;
-      }
-
-      @Override
-      public dai a(dai $$0) {
-         return $$0;
-      }
-   };
-   private static final eke b = eke.b(new dwb(42L), qd.a);
-   private static final int c = iy.d(7) - 1;
-   private static final int d = iy.e(c + 3);
-   private static final int e = 2;
-   private static final int f = iy.e(5);
-   private static final double g = 8.0;
-   private final Long2ObjectOpenHashMap<dwd> h;
-   private final Long2ObjectOpenHashMap<dwd> i;
-
-   public static dwc a() {
-      return a;
-   }
-
-   public static dwc a(@Nullable aqb $$0) {
-      if ($$0 == null) {
-         return a;
+   @Override
+   public int a(aqe $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.aa().b(czq.C)) {
+         return 0;
       } else {
-         cyn $$1 = $$0.a();
-         if (!$$0.a($$1, d)) {
-            return a;
+         ayd $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
          } else {
-            Long2ObjectOpenHashMap<dwd> $$2 = new Long2ObjectOpenHashMap();
-            Long2ObjectOpenHashMap<dwd> $$3 = new Long2ObjectOpenHashMap();
-            int $$4 = axm.h(d + 1);
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.B_() < 5 && $$0.D_().g()) {
+               return 0;
+            } else {
+               int $$4 = 0;
 
-            for (int $$5 = -d; $$5 <= d; $$5++) {
-               for (int $$6 = -d; $$6 <= d; $$6++) {
-                  if ($$5 * $$5 + $$6 * $$6 <= $$4) {
-                     int $$7 = $$1.e + $$5;
-                     int $$8 = $$1.f + $$6;
-                     dwd $$9 = dwd.a($$0, $$7, $$8);
-                     if ($$9 != null) {
-                        $$2.put(cyn.c($$7, $$8), $$9);
-                        if ($$5 >= -f && $$5 <= f && $$6 >= -f && $$6 <= f) {
-                           $$3.put(cyn.c($$7, $$8), $$9);
+               for (aqf $$5 : $$0.x()) {
+                  if (!$$5.N_()) {
+                     im $$6 = $$5.dn();
+                     if (!$$0.D_().g() || $$6.v() >= $$0.z_() && $$0.h($$6)) {
+                        boo $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           avf $$8 = $$5.H();
+                           int $$9 = axw.a($$8.a(avj.i.b(avj.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              im $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dpy $$12 = $$0.a_($$11);
+                              elr $$13 = $$0.b_($$11);
+                              if (daf.a($$0, $$11, $$12, $$13, bqr.ax)) {
+                                 brw $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    cht $$17 = bqr.ax.a((czu)$$0);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bri.a, $$14);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
                         }
                      }
                   }
                }
-            }
 
-            return $$2.isEmpty() && $$3.isEmpty() ? a : new dwc($$2, $$3);
-         }
-      }
-   }
-
-   dwc(Long2ObjectOpenHashMap<dwd> $$0, Long2ObjectOpenHashMap<dwd> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   public dwc.a a(int $$0, int $$1) {
-      int $$2 = iy.a($$0);
-      int $$3 = iy.a($$1);
-      double $$4 = this.a($$2, 0, $$3, dwd::a);
-      if ($$4 != Double.MAX_VALUE) {
-         return new dwc.a(0.0, a($$4));
-      } else {
-         MutableDouble $$5 = new MutableDouble(0.0);
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.h.forEach(($$5x, $$6x) -> $$6x.a(iy.d(cyn.a($$5x)), iy.d(cyn.b($$5x)), ($$5xx, $$6xx, $$7x) -> {
-               double $$8x = axm.f((double)($$2 - $$5xx), (double)($$3 - $$6xx));
-               if (!($$8x > (double)c)) {
-                  if ($$8x < $$7.doubleValue()) {
-                     $$7.setValue($$8x);
-                  }
-
-                  double $$9x = 1.0 / ($$8x * $$8x * $$8x * $$8x);
-                  $$6.add($$7x * $$9x);
-                  $$5.add($$9x);
-               }
-            }));
-         if ($$7.doubleValue() == Double.POSITIVE_INFINITY) {
-            return new dwc.a(1.0, 0.0);
-         } else {
-            double $$8 = $$6.doubleValue() / $$5.doubleValue();
-            double $$9 = axm.a($$7.doubleValue() / (double)(c + 1), 0.0, 1.0);
-            $$9 = 3.0 * $$9 * $$9 - 2.0 * $$9 * $$9 * $$9;
-            return new dwc.a($$9, a($$8));
-         }
-      }
-   }
-
-   private static double a(double $$0) {
-      double $$1 = 1.0;
-      double $$2 = $$0 + 0.5;
-      double $$3 = axm.c($$2, 8.0);
-      return 1.0 * (32.0 * ($$2 - 128.0) - 3.0 * ($$2 - 120.0) * $$3 + 3.0 * $$3 * $$3) / (128.0 * (32.0 - 3.0 * $$3));
-   }
-
-   public double a(dut.b $$0, double $$1) {
-      int $$2 = iy.a($$0.a());
-      int $$3 = $$0.b() / 8;
-      int $$4 = iy.a($$0.c());
-      double $$5 = this.a($$2, $$3, $$4, dwd::b);
-      if ($$5 != Double.MAX_VALUE) {
-         return $$5;
-      } else {
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(0.0);
-         MutableDouble $$8 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.i.forEach(($$6x, $$7x) -> $$7x.a(iy.d(cyn.a($$6x)), iy.d(cyn.b($$6x)), $$3 - 1, $$3 + 1, ($$6xx, $$7xx, $$8x, $$9x) -> {
-               double $$10x = axm.g((double)($$2 - $$6xx), (double)(($$3 - $$7xx) * 2), (double)($$4 - $$8x));
-               if (!($$10x > 2.0)) {
-                  if ($$10x < $$8.doubleValue()) {
-                     $$8.setValue($$10x);
-                  }
-
-                  double $$11 = 1.0 / ($$10x * $$10x * $$10x * $$10x);
-                  $$7.add($$9x * $$11);
-                  $$6.add($$11);
-               }
-            }));
-         if ($$8.doubleValue() == Double.POSITIVE_INFINITY) {
-            return $$1;
-         } else {
-            double $$9 = $$7.doubleValue() / $$6.doubleValue();
-            double $$10 = axm.a($$8.doubleValue() / 3.0, 0.0, 1.0);
-            return axm.d($$10, $$9, $$1);
-         }
-      }
-   }
-
-   private double a(int $$0, int $$1, int $$2, dwc.b $$3) {
-      int $$4 = iy.e($$0);
-      int $$5 = iy.e($$2);
-      boolean $$6 = ($$0 & 3) == 0;
-      boolean $$7 = ($$2 & 3) == 0;
-      double $$8 = this.a($$3, $$4, $$5, $$0, $$1, $$2);
-      if ($$8 == Double.MAX_VALUE) {
-         if ($$6 && $$7) {
-            $$8 = this.a($$3, $$4 - 1, $$5 - 1, $$0, $$1, $$2);
-         }
-
-         if ($$8 == Double.MAX_VALUE) {
-            if ($$6) {
-               $$8 = this.a($$3, $$4 - 1, $$5, $$0, $$1, $$2);
-            }
-
-            if ($$8 == Double.MAX_VALUE && $$7) {
-               $$8 = this.a($$3, $$4, $$5 - 1, $$0, $$1, $$2);
+               return $$4;
             }
          }
       }
-
-      return $$8;
-   }
-
-   private double a(dwc.b $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      dwd $$6 = (dwd)this.h.get(cyn.c($$1, $$2));
-      return $$6 != null ? $$0.get($$6, $$3 - iy.d($$1), $$4, $$5 - iy.d($$2)) : Double.MAX_VALUE;
-   }
-
-   public dai a(dai $$0) {
-      return ($$1, $$2, $$3, $$4) -> {
-         in<daf> $$5 = this.a($$1, $$2, $$3);
-         return $$5 == null ? $$0.getNoiseBiome($$1, $$2, $$3, $$4) : $$5;
-      };
-   }
-
-   @Nullable
-   private in<daf> a(int $$0, int $$1, int $$2) {
-      MutableDouble $$3 = new MutableDouble(Double.POSITIVE_INFINITY);
-      MutableObject<in<daf>> $$4 = new MutableObject();
-      this.h.forEach(($$5x, $$6x) -> $$6x.a(iy.d(cyn.a($$5x)), $$1, iy.d(cyn.b($$5x)), ($$4xx, $$5xx, $$6xx) -> {
-            double $$7 = axm.f((double)($$0 - $$4xx), (double)($$2 - $$5xx));
-            if (!($$7 > (double)c)) {
-               if ($$7 < $$3.doubleValue()) {
-                  $$4.setValue($$6xx);
-                  $$3.setValue($$7);
-               }
-            }
-         }));
-      if ($$3.doubleValue() == Double.POSITIVE_INFINITY) {
-         return null;
-      } else {
-         double $$5 = b.a((double)$$0, 0.0, (double)$$2) * 12.0;
-         double $$6 = axm.a(($$3.doubleValue() + $$5) / (double)(c + 1), 0.0, 1.0);
-         return $$6 > 0.5 ? null : (in)$$4.getValue();
-      }
-   }
-
-   public static void a(aqb $$0, dre $$1) {
-      cyn $$2 = $$1.f();
-      boolean $$3 = $$1.s();
-      id.a $$4 = new id.a();
-      id $$5 = new id($$2.d(), 0, $$2.e());
-      dwd $$6 = $$1.t();
-      if ($$6 != null) {
-         int $$7 = $$6.a().I_();
-         int $$8 = $$6.a().al() - 1;
-         if ($$3) {
-            for (int $$9 = 0; $$9 < 16; $$9++) {
-               for (int $$10 = 0; $$10 < 16; $$10++) {
-                  a($$1, $$4.a($$5, $$9, $$7 - 1, $$10));
-                  a($$1, $$4.a($$5, $$9, $$7, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8 + 1, $$10));
-               }
-            }
-         }
-
-         for (ij $$11 : ij.c.a) {
-            if ($$0.a($$2.e + $$11.j(), $$2.f + $$11.l()).s() != $$3) {
-               int $$12 = $$11 == ij.f ? 15 : 0;
-               int $$13 = $$11 == ij.e ? 0 : 15;
-               int $$14 = $$11 == ij.d ? 15 : 0;
-               int $$15 = $$11 == ij.c ? 0 : 15;
-
-               for (int $$16 = $$12; $$16 <= $$13; $$16++) {
-                  for (int $$17 = $$14; $$17 <= $$15; $$17++) {
-                     int $$18 = Math.min($$8, $$1.a(dva.a.e, $$16, $$17)) + 1;
-
-                     for (int $$19 = $$7; $$19 < $$18; $$19++) {
-                        a($$1, $$4.a($$5, $$16, $$19, $$17));
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static void a(dre $$0, id $$1) {
-      dpi $$2 = $$0.a_($$1);
-      if ($$2.a(ave.O)) {
-         $$0.e($$1);
-      }
-
-      elb $$3 = $$0.b_($$1);
-      if (!$$3.c()) {
-         $$0.e($$1);
-      }
-   }
-
-   public static void a(dab $$0, dry $$1) {
-      cyn $$2 = $$1.f();
-      Builder<ik, dwd> $$3 = ImmutableMap.builder();
-
-      for (ik $$4 : ik.values()) {
-         int $$5 = $$2.e + $$4.b();
-         int $$6 = $$2.f + $$4.c();
-         dwd $$7 = $$0.a($$5, $$6).t();
-         if ($$7 != null) {
-            $$3.put($$4, $$7);
-         }
-      }
-
-      ImmutableMap<ik, dwd> $$8 = $$3.build();
-      if ($$1.s() || !$$8.isEmpty()) {
-         dwc.c $$9 = a($$1.t(), $$8);
-         drd.a $$10 = ($$1x, $$2x, $$3x) -> {
-            double $$4x = (double)$$1x + 0.5 + b.a((double)$$1x, (double)$$2x, (double)$$3x) * 4.0;
-            double $$5x = (double)$$2x + 0.5 + b.a((double)$$2x, (double)$$3x, (double)$$1x) * 4.0;
-            double $$6x = (double)$$3x + 0.5 + b.a((double)$$3x, (double)$$1x, (double)$$2x) * 4.0;
-            return $$9.getDistance($$4x, $$5x, $$6x) < 4.0;
-         };
-         Stream.of(duw.a.values()).map($$1::b).forEach($$1x -> $$1x.a($$10));
-      }
-   }
-
-   public static dwc.c a(@Nullable dwd $$0, Map<ik, dwd> $$1) {
-      List<dwc.c> $$2 = Lists.newArrayList();
-      if ($$0 != null) {
-         $$2.add(a(null, $$0));
-      }
-
-      $$1.forEach(($$1x, $$2x) -> $$2.add(a($$1x, $$2x)));
-      return ($$1x, $$2x, $$3) -> {
-         double $$4 = Double.POSITIVE_INFINITY;
-
-         for (dwc.c $$5 : $$2) {
-            double $$6 = $$5.getDistance($$1x, $$2x, $$3);
-            if ($$6 < $$4) {
-               $$4 = $$6;
-            }
-         }
-
-         return $$4;
-      };
-   }
-
-   private static dwc.c a(@Nullable ik $$0, dwd $$1) {
-      double $$2 = 0.0;
-      double $$3 = 0.0;
-      if ($$0 != null) {
-         for (ij $$4 : $$0.a()) {
-            $$2 += (double)($$4.j() * 16);
-            $$3 += (double)($$4.l() * 16);
-         }
-      }
-
-      double $$5 = $$2;
-      double $$6 = $$3;
-      double $$7 = (double)$$1.a().J_() / 2.0;
-      double $$8 = (double)$$1.a().I_() + $$7;
-      return ($$4x, $$5x, $$6x) -> a($$4x - 8.0 - $$5, $$5x - $$8, $$6x - 8.0 - $$6, 8.0, $$7, 8.0);
-   }
-
-   private static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      double $$6 = Math.abs($$0) - $$3;
-      double $$7 = Math.abs($$1) - $$4;
-      double $$8 = Math.abs($$2) - $$5;
-      return axm.g(Math.max(0.0, $$6), Math.max(0.0, $$7), Math.max(0.0, $$8));
-   }
-
-   public static record a(double a, double b) {
-   }
-
-   interface b {
-      double get(dwd var1, int var2, int var3, int var4);
-   }
-
-   public interface c {
-      double getDistance(double var1, double var3, double var5);
    }
 }

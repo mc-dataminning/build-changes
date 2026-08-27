@@ -1,128 +1,259 @@
+import com.google.common.base.MoreObjects;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public final class efy {
-   public static final String a = "INVALID";
-   public static final efy b = new efy(null, new cyn(0, 0), 0, new egf(List.of()));
-   private static final Logger c = LogUtils.getLogger();
-   private final efq d;
-   private final egf e;
-   private final cyn f;
+public class efy {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<efy> a = Codec.INT_STREAM
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 6).map($$0x -> new efy($$0x[0], $$0x[1], $$0x[2], $$0x[3], $$0x[4], $$0x[5])),
+         $$0 -> IntStream.of($$0.c, $$0.d, $$0.e, $$0.f, $$0.g, $$0.h)
+      )
+      .stable();
+   private int c;
+   private int d;
+   private int e;
+   private int f;
    private int g;
-   @Nullable
-   private volatile efi h;
+   private int h;
 
-   public efy(efq $$0, cyn $$1, int $$2, egf $$3) {
-      this.d = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.e = $$3;
+   public efy(im $$0) {
+      this($$0.u(), $$0.v(), $$0.w(), $$0.u(), $$0.v(), $$0.w());
    }
 
-   @Nullable
-   public static efy a(egg $$0, to $$1, long $$2) {
-      String $$3 = $$1.l("id");
-      if ("INVALID".equals($$3)) {
-         return b;
-      } else {
-         ja<efq> $$4 = $$0.b().d(ku.aG);
-         efq $$5 = $$4.a(new ajv($$3));
-         if ($$5 == null) {
-            c.error("Unknown stucture id: {}", $$3);
-            return null;
-         } else {
-            cyn $$6 = new cyn($$1.h("ChunkX"), $$1.h("ChunkZ"));
-            int $$7 = $$1.h("references");
-            tu $$8 = $$1.c("Children", 10);
-
-            try {
-               egf $$9 = egf.a($$8, $$0);
-               if ($$5 instanceof eia) {
-                  $$9 = eia.a($$6, $$2, $$9);
-               }
-
-               return new efy($$5, $$6, $$7, $$9);
-            } catch (Exception var11) {
-               c.error("Failed Start with id {}", $$3, var11);
-               return null;
-            }
-         }
-      }
-   }
-
-   public efi a() {
-      efi $$0 = this.h;
-      if ($$0 == null) {
-         $$0 = this.d.a(this.e.b());
-         this.h = $$0;
-      }
-
-      return $$0;
-   }
-
-   public void a(dab $$0, czz $$1, drf $$2, axt $$3, efi $$4, cyn $$5) {
-      List<efu> $$6 = this.e.c();
-      if (!$$6.isEmpty()) {
-         efi $$7 = $$6.get(0).f;
-         id $$8 = $$7.g();
-         id $$9 = new id($$8.u(), $$7.i(), $$8.w());
-
-         for (efu $$10 : $$6) {
-            if ($$10.f().a($$4)) {
-               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
-            }
+   public efy(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      if ($$3 < $$0 || $$4 < $$1 || $$5 < $$2) {
+         String $$6 = "Invalid bounding box data, inverted bounds for: " + this;
+         if (aa.aX) {
+            throw new IllegalStateException($$6);
          }
 
-         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+         b.error($$6);
+         this.c = Math.min($$0, $$3);
+         this.d = Math.min($$1, $$4);
+         this.e = Math.min($$2, $$5);
+         this.f = Math.max($$0, $$3);
+         this.g = Math.max($$1, $$4);
+         this.h = Math.max($$2, $$5);
       }
    }
 
-   public to a(egg $$0, cyn $$1) {
-      to $$2 = new to();
-      if (this.b()) {
-         $$2.a("id", $$0.b().d(ku.aG).b(this.d).toString());
-         $$2.a("ChunkX", $$1.e);
-         $$2.a("ChunkZ", $$1.f);
-         $$2.a("references", this.g);
-         $$2.a("Children", this.e.a($$0));
-         return $$2;
+   public static efy a(jq $$0, jq $$1) {
+      return new efy(
+         Math.min($$0.u(), $$1.u()),
+         Math.min($$0.v(), $$1.v()),
+         Math.min($$0.w(), $$1.w()),
+         Math.max($$0.u(), $$1.u()),
+         Math.max($$0.v(), $$1.v()),
+         Math.max($$0.w(), $$1.w())
+      );
+   }
+
+   public static efy a() {
+      return new efy(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+   }
+
+   public static efy a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, ir $$9) {
+      switch ($$9) {
+         case d:
+         default:
+            return new efy($$0 + $$3, $$1 + $$4, $$2 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$8 - 1 + $$5);
+         case c:
+            return new efy($$0 + $$3, $$1 + $$4, $$2 - $$8 + 1 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$5);
+         case e:
+            return new efy($$0 - $$8 + 1 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+         case f:
+            return new efy($$0 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$8 - 1 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+      }
+   }
+
+   public Stream<czb> b() {
+      int $$0 = jo.a(this.h());
+      int $$1 = jo.a(this.j());
+      int $$2 = jo.a(this.k());
+      int $$3 = jo.a(this.m());
+      return czb.a(new czb($$0, $$1), new czb($$2, $$3));
+   }
+
+   public boolean a(efy $$0) {
+      return this.f >= $$0.c && this.c <= $$0.f && this.h >= $$0.e && this.e <= $$0.h && this.g >= $$0.d && this.d <= $$0.g;
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, int $$3) {
+      return this.f >= $$0 && this.c <= $$2 && this.h >= $$1 && this.e <= $$3;
+   }
+
+   public static Optional<efy> a(Iterable<im> $$0) {
+      Iterator<im> $$1 = $$0.iterator();
+      if (!$$1.hasNext()) {
+         return Optional.empty();
       } else {
-         $$2.a("id", "INVALID");
-         return $$2;
+         efy $$2 = new efy($$1.next());
+         $$1.forEachRemaining($$2::a);
+         return Optional.of($$2);
       }
    }
 
-   public boolean b() {
-      return !this.e.a();
+   public static Optional<efy> b(Iterable<efy> $$0) {
+      Iterator<efy> $$1 = $$0.iterator();
+      if (!$$1.hasNext()) {
+         return Optional.empty();
+      } else {
+         efy $$2 = $$1.next();
+         efy $$3 = new efy($$2.c, $$2.d, $$2.e, $$2.f, $$2.g, $$2.h);
+         $$1.forEachRemaining($$3::b);
+         return Optional.of($$3);
+      }
    }
 
-   public cyn c() {
-      return this.f;
+   @Deprecated
+   public efy b(efy $$0) {
+      this.c = Math.min(this.c, $$0.c);
+      this.d = Math.min(this.d, $$0.d);
+      this.e = Math.min(this.e, $$0.e);
+      this.f = Math.max(this.f, $$0.f);
+      this.g = Math.max(this.g, $$0.g);
+      this.h = Math.max(this.h, $$0.h);
+      return this;
    }
 
-   public boolean d() {
-      return this.g < this.g();
+   @Deprecated
+   public efy a(im $$0) {
+      this.c = Math.min(this.c, $$0.u());
+      this.d = Math.min(this.d, $$0.v());
+      this.e = Math.min(this.e, $$0.w());
+      this.f = Math.max(this.f, $$0.u());
+      this.g = Math.max(this.g, $$0.v());
+      this.h = Math.max(this.h, $$0.w());
+      return this;
    }
 
-   public void e() {
-      this.g++;
+   @Deprecated
+   public efy a(int $$0, int $$1, int $$2) {
+      this.c += $$0;
+      this.d += $$1;
+      this.e += $$2;
+      this.f += $$0;
+      this.g += $$1;
+      this.h += $$2;
+      return this;
+   }
+
+   @Deprecated
+   public efy a(jq $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public efy b(int $$0, int $$1, int $$2) {
+      return new efy(this.c + $$0, this.d + $$1, this.e + $$2, this.f + $$0, this.g + $$1, this.h + $$2);
+   }
+
+   public efy a(int $$0) {
+      return new efy(this.h() - $$0, this.i() - $$0, this.j() - $$0, this.k() + $$0, this.l() + $$0, this.m() + $$0);
+   }
+
+   public boolean b(jq $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public boolean c(int $$0, int $$1, int $$2) {
+      return $$0 >= this.c && $$0 <= this.f && $$2 >= this.e && $$2 <= this.h && $$1 >= this.d && $$1 <= this.g;
+   }
+
+   public jq c() {
+      return new jq(this.f - this.c, this.g - this.d, this.h - this.e);
+   }
+
+   public int d() {
+      return this.f - this.c + 1;
+   }
+
+   public int e() {
+      return this.g - this.d + 1;
    }
 
    public int f() {
-      return this.g;
+      return this.h - this.e + 1;
    }
 
-   protected int g() {
-      return 1;
+   public im g() {
+      return new im(this.c + (this.f - this.c + 1) / 2, this.d + (this.g - this.d + 1) / 2, this.e + (this.h - this.e + 1) / 2);
    }
 
-   public efq h() {
+   public void a(Consumer<im> $$0) {
+      im.a $$1 = new im.a();
+      $$0.accept($$1.d(this.f, this.g, this.h));
+      $$0.accept($$1.d(this.c, this.g, this.h));
+      $$0.accept($$1.d(this.f, this.d, this.h));
+      $$0.accept($$1.d(this.c, this.d, this.h));
+      $$0.accept($$1.d(this.f, this.g, this.e));
+      $$0.accept($$1.d(this.c, this.g, this.e));
+      $$0.accept($$1.d(this.f, this.d, this.e));
+      $$0.accept($$1.d(this.c, this.d, this.e));
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("minX", this.c)
+         .add("minY", this.d)
+         .add("minZ", this.e)
+         .add("maxX", this.f)
+         .add("maxY", this.g)
+         .add("maxZ", this.h)
+         .toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof efy $$1)
+            ? false
+            : this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f && this.g == $$1.g && this.h == $$1.h;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.d, this.e, this.f, this.g, this.h);
+   }
+
+   public int h() {
+      return this.c;
+   }
+
+   public int i() {
       return this.d;
    }
 
-   public List<efu> i() {
-      return this.e.c();
+   public int j() {
+      return this.e;
+   }
+
+   public int k() {
+      return this.f;
+   }
+
+   public int l() {
+      return this.g;
+   }
+
+   public int m() {
+      return this.h;
    }
 }

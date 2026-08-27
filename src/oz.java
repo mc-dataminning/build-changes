@@ -1,47 +1,54 @@
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public abstract class oz<T> extends pe<T> {
-   private final Function<T, aju<T>> d;
-
-   public oz(lc $$0, aju<? extends ja<T>> $$1, CompletableFuture<ip.a> $$2, Function<T, aju<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+public class oz extends pn<dmt> {
+   public oz(ll $$0, CompletableFuture<ix.a> $$1) {
+      super($$0, ld.d, $$1);
    }
 
-   public oz(lc $$0, aju<? extends ja<T>> $$1, CompletableFuture<ip.a> $$2, CompletableFuture<pe.c<T>> $$3, Function<T, aju<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
-   }
-
-   protected oz.a<T> a(avt<T> $$0) {
-      avq $$1 = this.c($$0);
-      return new oz.a<>($$1, this.d);
-   }
-
-   protected static class a<T> extends pe.b<T> {
-      private final Function<T, aju<T>> a;
-
-      a(avq $$0, Function<T, aju<T>> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public oz.a<T> a(avt<T> $$0) {
-         super.b($$0);
-         return this;
-      }
-
-      public final oz.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
-
-      @SafeVarargs
-      public final oz.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
-      }
+   @Override
+   protected void a(ix.a $$0) {
+      this.b(avm.a)
+         .a(
+            dmv.b,
+            dmv.c,
+            dmv.d,
+            dmv.e,
+            dmv.f,
+            dmv.g,
+            dmv.h,
+            dmv.i,
+            dmv.j,
+            dmv.k,
+            dmv.l,
+            dmv.m,
+            dmv.n,
+            dmv.o,
+            dmv.p,
+            dmv.q,
+            dmv.r,
+            dmv.s,
+            dmv.t,
+            dmv.u,
+            dmv.v,
+            dmv.w,
+            dmv.x,
+            dmv.y,
+            dmv.z,
+            dmv.A,
+            dmv.B,
+            dmv.C,
+            dmv.D,
+            dmv.E,
+            dmv.F,
+            dmv.G,
+            dmv.H,
+            dmv.I
+         );
+      this.b(avm.b).a(dmv.M);
+      this.b(avm.c).a(dmv.K);
+      this.b(avm.d).a(dmv.L);
+      this.b(avm.e).a(dmv.N);
+      this.b(avm.f).a(dmv.J);
+      this.b(avm.g).a(dmv.O);
    }
 }

@@ -1,48 +1,28 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.IntStream;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
 
 public class bai extends DataFix {
    public bai(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bff.c);
-      OpticFinder<?> $$1 = $$0.findField("Level");
-      return this.fixTypeEverywhereTyped("Leaves fix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> {
-               Optional<IntStream> $$1xx = $$0xxx.get("Biomes").asIntStreamOpt().result();
-               if ($$1xx.isEmpty()) {
-                  return $$0xxx;
-               } else {
-                  int[] $$2 = $$1xx.get().toArray();
-                  if ($$2.length != 256) {
-                     return $$0xxx;
-                  } else {
-                     int[] $$3 = new int[1024];
-
-                     for (int $$4 = 0; $$4 < 4; $$4++) {
-                        for (int $$5 = 0; $$5 < 4; $$5++) {
-                           int $$6 = ($$5 << 2) + 2;
-                           int $$7 = ($$4 << 2) + 2;
-                           int $$8 = $$7 << 4 | $$6;
-                           $$3[$$4 << 2 | $$5] = $$2[$$8];
-                        }
-                     }
-
-                     for (int $$9 = 1; $$9 < 64; $$9++) {
-                        System.arraycopy($$3, 0, $$3, $$9 * 16, 16);
-                     }
-
-                     return $$0xxx.set("Biomes", $$0xxx.createIntList(Arrays.stream($$3)));
-                  }
-               }
-            })));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bfp.A);
+      Type<?> $$1 = this.getOutputSchema().getType(bfp.A);
+      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bfp.A.typeName(), DSL.or(DSL.intType(), bgz.a()));
+      Type<Pair<String, String>> $$3 = DSL.named(bfp.A.typeName(), bgz.a());
+      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
+         return this.fixTypeEverywhere(
+            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bal::a, $$0xxxx -> bal.a(bgz.a($$0xxxx))))
+         );
+      } else {
+         throw new IllegalStateException("Expected and actual types don't match.");
+      }
    }
 }

@@ -1,10 +1,13 @@
-import com.mojang.brigadier.CommandDispatcher;
-import java.util.List;
-import javax.annotation.Nullable;
+public class hl<T extends ee<T>> implements ha<T> {
+   private static final hl<? extends ee<?>> a = (hl<? extends ee<?>>)(new hl<>());
 
-public record hl<T>(ajv a, List<gy<T>> b) implements hh<T>, hj<T> {
+   public static <T extends ee<T>> ha<T> a() {
+      return (ha<T>)a;
+   }
+
    @Override
-   public hj<T> a(@Nullable to $$0, CommandDispatcher<T> $$1) throws dy {
-      return this;
+   public void execute(hb<T> $$0, hd $$1) {
+      $$1.a();
+      $$1.b();
    }
 }

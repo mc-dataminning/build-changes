@@ -1,46 +1,16 @@
-import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import java.io.IOException;
-import java.util.List;
-import org.slf4j.Logger;
+import io.netty.handler.codec.MessageToByteEncoder;
+import javax.crypto.Cipher;
 
-public class vm<T extends vo> extends ByteToMessageDecoder implements vr {
-   private static final Logger a = LogUtils.getLogger();
-   private final vq<T> b;
+public class vm extends MessageToByteEncoder<ByteBuf> {
+   private final vk a;
 
-   public vm(vq<T> $$0) {
-      this.b = $$0;
+   public vm(Cipher $$0) {
+      this.a = new vk($$0);
    }
 
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      int $$3 = $$1.readableBytes();
-      if ($$3 != 0) {
-         yp<? super T> $$4 = this.b.c().decode($$1);
-         yr<? extends yp<? super T>> $$5 = $$4.a();
-         bkz.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
-         if ($$1.readableBytes() > 0) {
-            throw new IOException(
-               "Packet "
-                  + this.b.a().a()
-                  + "/"
-                  + $$5
-                  + " ("
-                  + $$4.getClass().getSimpleName()
-                  + ") was larger than I expected, found "
-                  + $$1.readableBytes()
-                  + " bytes extra whilst reading packet "
-                  + $$5
-            );
-         } else {
-            $$2.add($$4);
-            if (a.isDebugEnabled()) {
-               a.debug(vg.c, " IN: [{}:{}] {}", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName()});
-            }
-
-            vr.a($$0, $$4);
-         }
-      }
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
+      this.a.a($$1, $$2);
    }
 }

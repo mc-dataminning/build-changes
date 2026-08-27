@@ -1,7 +1,23 @@
-public class uo {
-   private static final un<?>[] a = new un[]{tq.a, tm.a, ug.a, tt.a, tw.a, tr.b, tp.b, tl.a, uj.a, tu.a, to.b, ts.a, tv.a};
+public abstract class uo implements uv {
+   protected uo() {
+   }
 
-   public static un<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < a.length ? a[$$0] : un.a($$0);
+   public abstract long f();
+
+   public abstract int g();
+
+   public abstract short h();
+
+   public abstract byte i();
+
+   public abstract double j();
+
+   public abstract float k();
+
+   public abstract Number l();
+
+   @Override
+   public String toString() {
+      return this.s_();
    }
 }

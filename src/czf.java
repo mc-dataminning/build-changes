@@ -1,3 +1,4 @@
+@FunctionalInterface
 public interface czf {
-   crn p();
+   int getColor(dat var1, double var2, double var4);
 }

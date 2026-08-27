@@ -1,45 +1,73 @@
-public class fwu extends fyw {
-   private final fyr a;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   fwu(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fyr $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+public final class fwu {
+   private static final int a = 1024;
+   private final fwl b;
+   private final fwr c;
+   private final fwg d;
+   @Nullable
+   private fwq e;
+
+   public fwu(fwl $$0, fwr $$1, fwg $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public static fwu a(fwr $$0, UserApiService $$1) {
+      fwg $$2 = new fwg(1024);
+      fwl $$3 = fwl.a($$0, $$1);
+      return new fwu($$3, $$0, $$2);
+   }
+
+   public void a(fcu $$0, fkt $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         fwq $$4 = this.e.b();
+         $$0.a(
+            new fjl(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               ws.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               ws.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               ws.c("gui.abuseReport.draft.edit"),
+               ws.c("gui.abuseReport.draft.discard")
+            )
+         );
       } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
+         $$2.run();
       }
    }
 
-   @Override
-   public fya b() {
-      return fya.b;
+   public fwl a() {
+      return this.b;
    }
 
-   public static class a implements fxz<kq> {
-      private final fyr a;
+   public fwg b() {
+      return this.d;
+   }
 
-      public a(fyr $$0) {
-         this.a = $$0;
-      }
+   public boolean a(fwr $$0) {
+      return Objects.equals(this.c, $$0);
+   }
 
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fwu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   public void a(@Nullable fwq $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

@@ -1,59 +1,59 @@
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import java.util.UUID;
 
-public record fov(dvy a, ja<dtb> b, dvv c, iu<ake> d, akf e, daa f) {
-   public fov(dvw $$0, iu<ake> $$1, akf $$2, daa $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3);
+public class fov extends foq<fwp.a> {
+   private static final int y = 120;
+   private static final ws z = ws.c("gui.abuseReport.name.title");
+   private final fil A = fil.d().a(8);
+   private ffm B;
+   private feu C;
+
+   private fov(fkt $$0, fwu $$1, fwp.a $$2) {
+      super(z, $$0, $$1, $$2);
    }
 
-   public fov(dvy $$0, dvv $$1, iu<ake> $$2, akf $$3, daa $$4) {
-      this($$0, $$2.a(ake.c).d(ku.aQ), $$1, $$2.a(ake.c), $$3, $$4);
+   public fov(fkt $$0, fwu $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new fwp.a($$2, $$3, $$1.a().b()));
    }
 
-   public fov a(dvy $$0, dvv $$1) {
-      return new fov($$0, this.b, $$1, this.d, this.e, this.f);
+   public fov(fkt $$0, fwu $$1, fwp $$2) {
+      this($$0, $$1, new fwp.a($$2, $$1.a().b()));
    }
 
-   public fov a(fov.b $$0) {
-      return new fov($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   @Override
+   protected void aM_() {
+      this.A.c().b();
+      this.A.a(new fgb(this.l, this.p));
+      ws $$0 = ws.b(this.x.e().a()).a(n.o);
+      this.A.a(new fgb(ws.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.a().a(0, 8));
+      this.B = this.a(280, 9 * 8, $$0x -> {
+         this.x.a($$0x);
+         this.C();
+      });
+      this.A.a(fid.a(this.p, this.B, d, $$0x -> $$0x.e(12)));
+      fil $$1 = this.A.a(fil.e().a(8));
+      $$1.a(feu.a(wr.k, $$0x -> this.d()).a(120).a());
+      this.C = $$1.a(feu.a(a, $$0x -> this.m()).a(120).a());
+      this.C();
+      this.A.a($$1x -> {
+         fes var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public fov a(fov.a $$0) {
-      return new fov(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   @Override
+   protected void c() {
+      this.A.a();
+      fif.a(this.A, this.G());
    }
 
-   public jb.b a() {
-      return this.d.a();
+   private void C() {
+      fwq.b $$0 = this.x.c();
+      this.C.j = $$0 == null;
+      this.C.a(x.a($$0, fwq.b::a));
    }
 
-   public dvy b() {
-      return this.a;
-   }
-
-   public ja<dtb> c() {
-      return this.b;
-   }
-
-   public dvv d() {
-      return this.c;
-   }
-
-   public iu<ake> e() {
-      return this.d;
-   }
-
-   public akf f() {
-      return this.e;
-   }
-
-   public daa g() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<jb.b, dvv, dvv> {
-   }
-
-   public interface b extends UnaryOperator<dvy> {
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.B.b($$0, $$1, $$2);
    }
 }

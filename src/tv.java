@@ -1,4 +1,3 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
@@ -6,66 +5,58 @@ import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang3.ArrayUtils;
 
-public class tv extends tn<tw> {
+public class tv extends tx<tw> {
    private static final int b = 24;
-   public static final un<tv> a = new un.b<tv>() {
-      public tv a(DataInput $$0, tx $$1) throws IOException {
+   public static final ux<tv> a = new ux.b<tv>() {
+      public tv a(DataInput $$0, uh $$1) throws IOException {
          return new tv(d($$0, $$1));
       }
 
       @Override
-      public ui.b a(DataInput $$0, ui $$1, tx $$2) throws IOException {
+      public us.b a(DataInput $$0, us $$1, uh $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static long[] d(DataInput $$0, tx $$1) throws IOException {
+      private static byte[] d(DataInput $$0, uh $$1) throws IOException {
          $$1.b(24L);
          int $$2 = $$0.readInt();
-         $$1.a(8L, (long)$$2);
-         long[] $$3 = new long[$$2];
-
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3[$$4] = $$0.readLong();
-         }
-
+         $$1.a(1L, (long)$$2);
+         byte[] $$3 = new byte[$$2];
+         $$0.readFully($$3);
          return $$3;
       }
 
       @Override
-      public void b(DataInput $$0, tx $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 8);
+      public void b(DataInput $$0, uh $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 1);
       }
 
       @Override
       public String a() {
-         return "LONG[]";
+         return "BYTE[]";
       }
 
       @Override
       public String b() {
-         return "TAG_Long_Array";
+         return "TAG_Byte_Array";
       }
    };
-   private long[] c;
+   private byte[] c;
 
-   public tv(long[] $$0) {
+   public tv(byte[] $$0) {
       this.c = $$0;
    }
 
-   public tv(LongSet $$0) {
-      this.c = $$0.toLongArray();
-   }
-
-   public tv(List<Long> $$0) {
+   public tv(List<Byte> $$0) {
       this(a($$0));
    }
 
-   private static long[] a(List<Long> $$0) {
-      long[] $$1 = new long[$$0.size()];
+   private static byte[] a(List<Byte> $$0) {
+      byte[] $$1 = new byte[$$0.size()];
 
       for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Long $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0L : $$3;
+         Byte $$3 = $$0.get($$2);
+         $$1[$$2] = $$3 == null ? 0 : $$3;
       }
 
       return $$1;
@@ -74,24 +65,21 @@ public class tv extends tn<tw> {
    @Override
    public void a(DataOutput $$0) throws IOException {
       $$0.writeInt(this.c.length);
-
-      for (long $$1 : this.c) {
-         $$0.writeLong($$1);
-      }
+      $$0.write(this.c);
    }
 
    @Override
    public int a() {
-      return 24 + 8 * this.c.length;
+      return 24 + 1 * this.c.length;
    }
 
    @Override
    public byte b() {
-      return 12;
+      return 7;
    }
 
    @Override
-   public un<tv> c() {
+   public ux<tv> c() {
       return a;
    }
 
@@ -100,8 +88,9 @@ public class tv extends tn<tw> {
       return this.s_();
    }
 
-   public tv e() {
-      long[] $$0 = new long[this.c.length];
+   @Override
+   public uv d() {
+      byte[] $$0 = new byte[this.c.length];
       System.arraycopy(this.c, 0, $$0, 0, this.c.length);
       return new tv($$0);
    }
@@ -117,11 +106,11 @@ public class tv extends tn<tw> {
    }
 
    @Override
-   public void a(up $$0) {
+   public void a(uz $$0) {
       $$0.a(this);
    }
 
-   public long[] g() {
+   public byte[] e() {
       return this.c;
    }
 
@@ -135,19 +124,19 @@ public class tv extends tn<tw> {
    }
 
    public tw a(int $$0, tw $$1) {
-      long $$2 = this.c[$$0];
-      this.c[$$0] = $$1.f();
+      byte $$2 = this.c[$$0];
+      this.c[$$0] = $$1.i();
       return tw.a($$2);
    }
 
    public void b(int $$0, tw $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
+      this.c = ArrayUtils.add(this.c, $$0, $$1.i());
    }
 
    @Override
-   public boolean a(int $$0, ul $$1) {
-      if ($$1 instanceof ue) {
-         this.c[$$0] = ((ue)$$1).f();
+   public boolean a(int $$0, uv $$1) {
+      if ($$1 instanceof uo) {
+         this.c[$$0] = ((uo)$$1).i();
          return true;
       } else {
          return false;
@@ -155,9 +144,9 @@ public class tv extends tn<tw> {
    }
 
    @Override
-   public boolean b(int $$0, ul $$1) {
-      if ($$1 instanceof ue) {
-         this.c = ArrayUtils.add(this.c, $$0, ((ue)$$1).f());
+   public boolean b(int $$0, uv $$1) {
+      if ($$1 instanceof uo) {
+         this.c = ArrayUtils.add(this.c, $$0, ((uo)$$1).i());
          return true;
       } else {
          return false;
@@ -165,23 +154,23 @@ public class tv extends tn<tw> {
    }
 
    public tw b(int $$0) {
-      long $$1 = this.c[$$0];
+      byte $$1 = this.c[$$0];
       this.c = ArrayUtils.remove(this.c, $$0);
       return tw.a($$1);
    }
 
    @Override
    public byte f() {
-      return 4;
+      return 1;
    }
 
    @Override
    public void clear() {
-      this.c = new long[0];
+      this.c = new byte[0];
    }
 
    @Override
-   public ui.b a(ui $$0) {
+   public us.b a(us $$0) {
       return $$0.a(this.c);
    }
 }

@@ -1,17 +1,29 @@
-public record zt(duf c, int d) implements zq {
-   public static final yg<vt, zt> a = yg.a(duf.d, zt::b, ye.f, zt::c, zt::new);
-   public static final zq.b<zt> b = zq.a("debug/game_event_listeners");
+public class zt implements yz<zq> {
+   public static final yq<vs, zt> a = yz.a(zt::a, zt::new);
+   private final long b;
+
+   public zt(long $$0) {
+      this.b = $$0;
+   }
+
+   private zt(vs $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(vs $$0) {
+      $$0.b(this.b);
+   }
 
    @Override
-   public zq.b<zt> a() {
-      return b;
+   public zb<zt> a() {
+      return zp.l;
    }
 
-   public duf b() {
-      return this.c;
+   public void a(zq $$0) {
+      $$0.a(this);
    }
 
-   public int c() {
-      return this.d;
+   public long b() {
+      return this.b;
    }
 }

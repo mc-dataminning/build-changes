@@ -1,33 +1,95 @@
-import java.util.Collection;
-import java.util.function.Consumer;
+import java.util.List;
 
-public record se(String b, Collection<sk> c, Consumer<apu> d, Consumer<apu> e) {
-   public static final String a = "defaultBatch";
+public class se {
+   public static final ake<efk> a = sd.a("crimson_fungi");
+   public static final ake<efk> b = sd.a("warped_fungi");
+   public static final ake<efk> c = sd.a("oak_checked");
+   public static final ake<efk> d = sd.a("dark_oak_checked");
+   public static final ake<efk> e = sd.a("birch_checked");
+   public static final ake<efk> f = sd.a("acacia_checked");
+   public static final ake<efk> g = sd.a("spruce_checked");
+   public static final ake<efk> h = sd.a("mangrove_checked");
+   public static final ake<efk> i = sd.a("cherry_checked");
+   public static final ake<efk> j = sd.a("pine_on_snow");
+   public static final ake<efk> k = sd.a("spruce_on_snow");
+   public static final ake<efk> l = sd.a("pine_checked");
+   public static final ake<efk> m = sd.a("jungle_tree");
+   public static final ake<efk> n = sd.a("fancy_oak_checked");
+   public static final ake<efk> o = sd.a("mega_jungle_tree_checked");
+   public static final ake<efk> p = sd.a("mega_spruce_checked");
+   public static final ake<efk> q = sd.a("mega_pine_checked");
+   public static final ake<efk> r = sd.a("tall_mangrove_checked");
+   public static final ake<efk> s = sd.a("jungle_bush");
+   public static final ake<efk> t = sd.a("super_birch_bees_0002");
+   public static final ake<efk> u = sd.a("super_birch_bees");
+   public static final ake<efk> v = sd.a("oak_bees_0002");
+   public static final ake<efk> w = sd.a("oak_bees_002");
+   public static final ake<efk> x = sd.a("birch_bees_0002");
+   public static final ake<efk> y = sd.a("birch_bees_002");
+   public static final ake<efk> z = sd.a("fancy_oak_bees_0002");
+   public static final ake<efk> A = sd.a("fancy_oak_bees_002");
+   public static final ake<efk> B = sd.a("fancy_oak_bees");
+   public static final ake<efk> C = sd.a("cherry_bees_005");
 
-   public se(String b, Collection<sk> c, Consumer<apu> d, Consumer<apu> e) {
-      if (c.isEmpty()) {
-         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
-      } else {
-         this.b = b;
-         this.c = c;
-         this.d = d;
-         this.e = e;
-      }
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public Collection<sk> b() {
-      return this.c;
-   }
-
-   public Consumer<apu> c() {
-      return this.d;
-   }
-
-   public Consumer<apu> d() {
-      return this.e;
+   public static void a(qj<efk> $$0) {
+      iw<dyh<?, ?>> $$1 = $$0.a(ld.aB);
+      iv<dyh<?, ?>> $$2 = $$1.b(rt.a);
+      iv<dyh<?, ?>> $$3 = $$1.b(rt.c);
+      iv<dyh<?, ?>> $$4 = $$1.b(rt.g);
+      iv<dyh<?, ?>> $$5 = $$1.b(rt.h);
+      iv<dyh<?, ?>> $$6 = $$1.b(rt.i);
+      iv<dyh<?, ?>> $$7 = $$1.b(rt.j);
+      iv<dyh<?, ?>> $$8 = $$1.b(rt.k);
+      iv<dyh<?, ?>> $$9 = $$1.b(rt.x);
+      iv<dyh<?, ?>> $$10 = $$1.b(rt.z);
+      iv<dyh<?, ?>> $$11 = $$1.b(rt.l);
+      iv<dyh<?, ?>> $$12 = $$1.b(rt.m);
+      iv<dyh<?, ?>> $$13 = $$1.b(rt.n);
+      iv<dyh<?, ?>> $$14 = $$1.b(rt.p);
+      iv<dyh<?, ?>> $$15 = $$1.b(rt.q);
+      iv<dyh<?, ?>> $$16 = $$1.b(rt.r);
+      iv<dyh<?, ?>> $$17 = $$1.b(rt.y);
+      iv<dyh<?, ?>> $$18 = $$1.b(rt.v);
+      iv<dyh<?, ?>> $$19 = $$1.b(rt.s);
+      iv<dyh<?, ?>> $$20 = $$1.b(rt.t);
+      iv<dyh<?, ?>> $$21 = $$1.b(rt.A);
+      iv<dyh<?, ?>> $$22 = $$1.b(rt.B);
+      iv<dyh<?, ?>> $$23 = $$1.b(rt.D);
+      iv<dyh<?, ?>> $$24 = $$1.b(rt.E);
+      iv<dyh<?, ?>> $$25 = $$1.b(rt.G);
+      iv<dyh<?, ?>> $$26 = $$1.b(rt.H);
+      iv<dyh<?, ?>> $$27 = $$1.b(rt.J);
+      iv<dyh<?, ?>> $$28 = $$1.b(rt.K);
+      sd.a($$0, a, $$2, efc.a(8), eey.a());
+      sd.a($$0, b, $$3, efc.a(8), eey.a());
+      sd.a($$0, c, $$4, sd.a(dcx.x));
+      sd.a($$0, d, $$5, sd.a(dcx.D));
+      sd.a($$0, e, $$6, sd.a(dcx.z));
+      sd.a($$0, f, $$7, sd.a(dcx.B));
+      sd.a($$0, g, $$8, sd.a(dcx.y));
+      sd.a($$0, h, $$9, sd.a(dcx.E));
+      sd.a($$0, i, $$10, sd.a(dcx.C));
+      dwx $$29 = dwx.a(ir.a.q(), dcx.dP, dcx.qP);
+      List<efn> $$30 = List.of(efe.a(ir.b, dwx.a(dwx.a(dcx.qP)), 8), eez.a($$29));
+      sd.a($$0, j, $$11, $$30);
+      sd.a($$0, k, $$8, $$30);
+      sd.a($$0, l, $$11, sd.a(dcx.y));
+      sd.a($$0, m, $$12, sd.a(dcx.A));
+      sd.a($$0, n, $$13, sd.a(dcx.x));
+      sd.a($$0, o, $$14, sd.a(dcx.A));
+      sd.a($$0, p, $$15, sd.a(dcx.y));
+      sd.a($$0, q, $$16, sd.a(dcx.y));
+      sd.a($$0, r, $$17, sd.a(dcx.E));
+      sd.a($$0, s, $$18, sd.a(dcx.x));
+      sd.a($$0, t, $$19, sd.a(dcx.z));
+      sd.a($$0, u, $$20, sd.a(dcx.z));
+      sd.a($$0, v, $$21, sd.a(dcx.x));
+      sd.a($$0, w, $$22, sd.a(dcx.x));
+      sd.a($$0, x, $$23, sd.a(dcx.z));
+      sd.a($$0, y, $$24, sd.a(dcx.z));
+      sd.a($$0, z, $$25, sd.a(dcx.x));
+      sd.a($$0, A, $$26, sd.a(dcx.x));
+      sd.a($$0, B, $$27, sd.a(dcx.x));
+      sd.a($$0, C, $$28, sd.a(dcx.C));
    }
 }

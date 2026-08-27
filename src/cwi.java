@@ -1,22 +1,34 @@
-public interface cwi extends cvs<bny> {
+public record cwi<T extends cwg<?>>(akf b, T c) {
+   public static final yq<wd, cwi<?>> a = yq.a(akf.b, cwi::a, cwg.i, cwi::b, cwi::new);
+
    @Override
-   default cvx<?> e() {
-      return cvx.g;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cwi<?> $$1 && this.b.equals($$1.b)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
    @Override
-   default crs g() {
-      return new crs(dcj.ob);
+   public String toString() {
+      return this.b.toString();
    }
 
-   boolean a(crs var1);
+   public akf a() {
+      return this.b;
+   }
 
-   boolean b(crs var1);
-
-   boolean c(crs var1);
+   public T b() {
+      return this.c;
+   }
 }

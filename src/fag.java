@@ -1,167 +1,274 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.RateLimiter;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
+import java.util.concurrent.locks.ReentrantLock;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fag {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final ayk d;
+public class fag extends gsq {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ReentrantLock b = new ReentrantLock();
+   private static final int c = 200;
+   private static final int B = 80;
+   private static final int C = 95;
+   private static final int D = 1;
+   private final fkt E;
+   private final ezk F;
+   private final ws G;
+   private final RateLimiter H;
+   private feu I;
+   private final String J;
+   private final fag.a K;
+   @Nullable
+   private volatile ws L;
+   private volatile ws M = ws.c("mco.download.preparing");
+   @Nullable
+   private volatile String N;
+   private volatile boolean O;
+   private volatile boolean P = true;
+   private volatile boolean Q;
+   private volatile boolean R;
+   @Nullable
+   private Long S;
+   @Nullable
+   private Long T;
+   private long U;
+   private int V;
+   private static final String[] W = new String[]{"", ".", ". .", ". . ."};
+   private int X;
+   private boolean Y;
+   private final BooleanConsumer Z;
 
-   public fag(Executor $$0, TimeUnit $$1, ayk $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fag(fkt $$0, ezk $$1, String $$2, BooleanConsumer $$3) {
+      super(fcm.a);
+      this.Z = $$3;
+      this.E = $$0;
+      this.J = $$2;
+      this.F = $$1;
+      this.K = new fag.a();
+      this.G = ws.c("mco.download.title");
+      this.H = RateLimiter.create(0.1F);
    }
 
-   public <T> fag.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fah $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   @Override
+   public void aM_() {
+      this.I = this.c(feu.a(wr.e, $$0 -> {
+         this.O = true;
+         this.E();
+      }).a((this.n - 200) / 2, this.o - 42, 200, 20).a());
+      this.C();
+   }
+
+   private void C() {
+      if (!this.Q) {
+         if (!this.Y && this.a(this.F.a) >= 5368709120L) {
+            ws $$0 = ws.a("mco.download.confirmation.line1", exz.b(5368709120L));
+            ws $$1 = ws.c("mco.download.confirmation.line2");
+            this.m.a(new faj($$0x -> {
+               this.Y = true;
+               this.m.a(this);
+               this.F();
+            }, faj.a.a, $$0, $$1, false));
+         } else {
+            this.F();
+         }
+      }
+   }
+
+   private long a(String $$0) {
+      eya $$1 = new eya();
+      return $$1.a($$0);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.V++;
+      if (this.M != null && this.H.tryAcquire(1)) {
+         ws $$0 = this.D();
+         this.m.aY().c($$0);
+      }
+   }
+
+   private ws D() {
+      List<ws> $$0 = Lists.newArrayList();
+      $$0.add(this.G);
+      $$0.add(this.M);
+      if (this.N != null) {
+         $$0.add(ws.a("mco.download.percent", this.N));
+         $$0.add(ws.a("mco.download.speed.narration", exz.b(this.U)));
+      }
+
+      if (this.L != null) {
+         $$0.add(this.L);
+      }
+
+      return wr.a($$0);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.O = true;
+         this.E();
+         return true;
       } else {
-         return new fag.e<>($$0, $$1, $$4, $$3);
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public fag.c a() {
-      return new fag.c();
+   private void E() {
+      if (this.Q && this.Z != null && this.L == null) {
+         this.Z.accept(true);
+      }
+
+      this.m.a(this.E);
    }
 
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fag.e<T> b;
-      private final Consumer<T> c;
-      private long d = -1L;
-
-      b(fag.e<T> $$0, Consumer<T> $$1) {
-         this.b = $$0;
-         this.c = $$1;
+   @Override
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.G, this.n / 2, 20, -1);
+      $$0.a(this.p, this.M, this.n / 2, 50, -1);
+      if (this.P) {
+         this.c($$0);
       }
 
-      void a(long $$0) {
-         this.b.a($$0);
-         this.a();
+      if (this.K.a != 0L && !this.O) {
+         this.d($$0);
+         this.e($$0);
       }
 
-      void a() {
-         fag.d<T> $$0 = this.b.g;
-         if ($$0 != null && this.d < $$0.b) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
-
-      void b() {
-         fag.d<T> $$0 = this.b.g;
-         if ($$0 != null) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
-
-      void c() {
-         this.b.a();
-         this.d = -1L;
+      if (this.L != null) {
+         $$0.a(this.p, this.L, this.n / 2, 110, -65536);
       }
    }
 
-   public class c {
-      private final List<fag.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fag.e<T> $$0, Consumer<T> $$1) {
-         fag.b<T> $$2 = fag.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
+   private void c(feh $$0) {
+      int $$1 = this.p.a(this.M);
+      if (this.V % 10 == 0) {
+         this.X++;
       }
 
-      public void a() {
-         for (fag.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fag.b<?> $$0 : this.b) {
-            $$0.a(fag.this.d.get(fag.this.c));
-         }
-      }
-
-      public void c() {
-         for (fag.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
+      $$0.a(this.p, W[this.X % W.length], this.n / 2 + $$1 / 2 + 5, 50, -1, false);
    }
 
-   static record d<T>(T a, long b) {
+   private void d(feh $$0) {
+      double $$1 = Math.min((double)this.K.a / (double)this.K.b, 1.0);
+      this.N = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
+      int $$2 = (this.n - 200) / 2;
+      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
+      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
+      $$0.a($$2, 80, $$3, 95, -8355712);
+      $$0.a(this.p, ws.a("mco.download.percent", this.N), this.n / 2, 84, -1);
    }
 
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fah e;
-      @Nullable
-      private CompletableFuture<fag.a<T>> f;
-      @Nullable
-      fag.d<T> g;
-      private long h = -1L;
-
-      e(String $$1, Callable<T> $$2, long $$3, fah $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fag.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
+   private void e(feh $$0) {
+      if (this.V % 20 == 0) {
+         if (this.S != null) {
+            long $$1 = ac.b() - this.T;
+            if ($$1 == 0L) {
+               $$1 = 1L;
             }
 
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fag.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fag.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
+            this.U = 1000L * (this.K.a - this.S) / $$1;
+            this.a($$0, this.U);
          }
 
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fag.this.d.get(fag.this.c);
-                  return new fag.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fag.this.d.get(fag.this.c);
-                  return new fag.a<>(Either.right(var4x), $$3);
+         this.S = this.K.a;
+         this.T = ac.b();
+      } else {
+         this.a($$0, this.U);
+      }
+   }
+
+   private void a(feh $$0, long $$1) {
+      if ($$1 > 0L) {
+         int $$2 = this.p.b(this.N);
+         $$0.a(this.p, ws.a("mco.download.speed", exz.b($$1)), this.n / 2 + $$2 / 2 + 15, 84, -1, false);
+      }
+   }
+
+   private void F() {
+      new Thread(() -> {
+         try {
+            try {
+               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
+                  this.M = ws.c("mco.download.failed");
+                  return;
                }
-            }, fag.this.b);
-         }
-      }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+               if (this.O) {
+                  this.I();
+                  return;
+               }
+
+               this.M = ws.a("mco.download.downloading", this.J);
+               eya $$0 = new eya();
+               $$0.a(this.F.a);
+               $$0.a(this.F, this.J, this.K, this.m.m());
+
+               while (!$$0.b()) {
+                  if ($$0.c()) {
+                     $$0.a();
+                     this.L = ws.c("mco.download.failed");
+                     this.I.b(wr.d);
+                     return;
+                  }
+
+                  if ($$0.d()) {
+                     if (!this.R) {
+                        this.M = ws.c("mco.download.extracting");
+                     }
+
+                     this.R = true;
+                  }
+
+                  if (this.O) {
+                     $$0.a();
+                     this.I();
+                     return;
+                  }
+
+                  try {
+                     Thread.sleep(500L);
+                  } catch (InterruptedException var8) {
+                     a.error("Failed to check Realms backup download status");
+                  }
+               }
+
+               this.Q = true;
+               this.M = ws.c("mco.download.done");
+               this.I.b(wr.d);
+               return;
+            } catch (InterruptedException var9) {
+               a.error("Could not acquire upload lock");
+            } catch (Exception var10) {
+               this.L = ws.c("mco.download.failed");
+               a.info("Exception while downloading world", var10);
+            }
+         } finally {
+            if (!b.isHeldByCurrentThread()) {
+               return;
+            } else {
+               b.unlock();
+               this.P = false;
+               this.Q = true;
+            }
+         }
+      }).start();
+   }
+
+   private void I() {
+      this.M = ws.c("mco.download.cancelled");
+   }
+
+   public static class a {
+      public volatile long a;
+      public volatile long b;
    }
 }

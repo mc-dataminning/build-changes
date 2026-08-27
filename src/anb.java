@@ -1,56 +1,84 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
 public class anb {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wi.b("commands.ride.not_riding", $$0));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wi.b("commands.ride.already_riding", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wi.b("commands.ride.mount.failure.generic", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wi.c("commands.ride.mount.failure.cant_ride_players"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wi.c("commands.ride.mount.failure.loop"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wi.c("commands.ride.mount.failure.wrong_dimension"));
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ws.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ws.c("commands.perf.alreadyRunning"));
 
-   public static void a(CommandDispatcher<dv> $$0) {
+   public static void a(CommandDispatcher<ec> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("ride").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)dw.a("target", ei.a())
-                     .then(dw.a("mount").then(dw.a("vehicle", ei.a()).executes($$0x -> a((dv)$$0x.getSource(), ei.a($$0x, "target"), ei.a($$0x, "vehicle"))))))
-                  .then(dw.a("dismount").executes($$0x -> a((dv)$$0x.getSource(), ei.a($$0x, "target"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(ed.a("start").executes($$0x -> a((ec)$$0x.getSource()))))
+            .then(ed.a("stop").executes($$0x -> b((ec)$$0x.getSource())))
       );
    }
 
-   private static int a(dv $$0, bqa $$1, bqa $$2) throws CommandSyntaxException {
-      bqa $$3 = $$1.cZ();
-      if ($$3 != null) {
-         throw b.create($$1.O_(), $$3.O_());
-      } else if ($$2.ai() == bqg.bx) {
-         throw d.create();
-      } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
-         throw e.create();
-      } else if ($$1.dM() != $$2.dM()) {
-         throw f.create();
-      } else if (!$$1.a($$2, true)) {
-         throw c.create($$1.O_(), $$2.O_());
+   private static int a(ec $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aW()) {
+         throw c.create();
       } else {
-         $$0.a(() -> wi.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
-         return 1;
+         Consumer<bld> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> ws.c("commands.perf.started"), false);
+         return 0;
       }
    }
 
-   private static int a(dv $$0, bqa $$1) throws CommandSyntaxException {
-      bqa $$2 = $$1.cZ();
-      if ($$2 == null) {
-         throw a.create($$1.O_());
+   private static int b(ec $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aW()) {
+         throw b.create();
       } else {
-         $$1.ac();
-         $$0.a(() -> wi.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
-         return 1;
+         $$1.aY();
+         return 0;
+      }
+   }
+
+   private static void a(ec $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.bc().e(), aa.b().b());
+
+      String $$4;
+      try {
+         $$4 = v.a(bmw.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(ws.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
+      }
+
+      try (axh $$7 = new axh(bmw.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> ws.a("commands.perf.reportSaved", $$4), false);
+   }
+
+   private static void a(ec $$0, bld $$1) {
+      if ($$1 != bkz.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)ayv.a;
+         $$0.a(() -> ws.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
       }
    }
 }

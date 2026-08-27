@@ -1,53 +1,58 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public final class gqz extends gqx {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class gqz implements gqx {
+   private final gqz.a a;
+   private gqx b;
+   private final BufferedInputStream c;
+
+   public gqz(gqz.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new gqz.b(this.c));
+   }
 
    @Override
-   public void a(gqr $$0) {
-      if (fby.Q().C()) {
-         super.a($$0);
+   public AudioFormat a() {
+      return this.b.a();
+   }
+
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new gqz.b(this.c));
+         $$1 = this.b.a($$0);
       }
-   }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
+      return $$1;
    }
 
    @Override
-   public void f() {
-      this.b.add((long)fby.Q().o());
-      this.h();
-      this.c.add(fby.Q().p());
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
    }
 
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
+   @FunctionalInterface
+   public interface a {
+      gqx create(InputStream var1) throws IOException;
    }
 
-   @Override
-   public void b(gqr $$0) {
-      $$0.send(gqs.c, $$0x -> {
-         $$0x.a(gqu.r, new LongArrayList(this.b));
-         $$0x.a(gqu.s, new LongArrayList(this.c));
-         $$0x.a(gqu.t, new LongArrayList(this.d));
-         $$0x.a(gqu.u, this.e());
-         $$0x.a(gqu.v, fby.Q().m.aD());
-         $$0x.a(gqu.w, (int)a);
-      });
-      this.g();
-   }
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
+      }
 
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+      @Override
+      public void close() {
+      }
    }
 }

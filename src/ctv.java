@@ -1,45 +1,120 @@
-import java.util.Map;
-import java.util.Optional;
+public class ctv extends cry {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
 
-public class ctv {
-   public static final aju<ctu> a = a("quartz");
-   public static final aju<ctu> b = a("iron");
-   public static final aju<ctu> c = a("netherite");
-   public static final aju<ctu> d = a("redstone");
-   public static final aju<ctu> e = a("copper");
-   public static final aju<ctu> f = a("gold");
-   public static final aju<ctu> g = a("emerald");
-   public static final aju<ctu> h = a("diamond");
-   public static final aju<ctu> i = a("lapis");
-   public static final aju<ctu> j = a("amethyst");
-
-   public static void a(pz<ctu> $$0) {
-      a($$0, a, crv.oA, xf.a.a(14931140), 0.1F);
-      a($$0, b, crv.oD, xf.a.a(15527148), 0.2F, Map.of(cpj.c, "iron_darker"));
-      a($$0, c, crv.oI, xf.a.a(6445145), 0.3F, Map.of(cpj.g, "netherite_darker"));
-      a($$0, d, crv.lG, xf.a.a(9901575), 0.4F);
-      a($$0, e, crv.oF, xf.a.a(11823181), 0.5F);
-      a($$0, f, crv.oH, xf.a.a(14594349), 0.6F, Map.of(cpj.d, "gold_darker"));
-      a($$0, g, crv.oy, xf.a.a(1155126), 0.7F);
-      a($$0, h, crv.ox, xf.a.a(7269586), 0.8F, Map.of(cpj.e, "diamond_darker"));
-      a($$0, i, crv.oz, xf.a.a(4288151), 0.9F);
-      a($$0, j, crv.oB, xf.a.a(10116294), 1.0F);
+   public ctv(cry.a $$0) {
+      super($$0);
    }
 
-   public static Optional<in.c<ctu>> a(jb $$0, crs $$1) {
-      return $$0.d(ku.aL).h().filter($$1x -> $$1.a(((ctu)$$1x.a()).b())).findFirst();
+   public static cuw h() {
+      return cuw.a().a(bsl.c, new bsj(e, "Tool modifier", 8.0, bsj.a.a), bqt.b).a(bsl.e, new bsj(f, "Tool modifier", -2.9F, bsj.a.a), bqt.b).a();
    }
 
-   private static void a(pz<ctu> $$0, aju<ctu> $$1, crn $$2, xf $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   @Override
+   public boolean a(dpy $$0, czu $$1, im $$2, ckl $$3) {
+      return !$$3.f();
    }
 
-   private static void a(pz<ctu> $$0, aju<ctu> $$1, crn $$2, xf $$3, float $$4, Map<in<cpi>, String> $$5) {
-      ctu $$6 = ctu.a($$1.a().a(), $$2, $$4, wi.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
+   @Override
+   public ctw c(csd $$0) {
+      return ctw.f;
    }
 
-   private static aju<ctu> a(String $$0) {
-      return aju.a(ku.aL, new ajv($$0));
+   @Override
+   public int b(csd $$0) {
+      return 72000;
+   }
+
+   @Override
+   public void a(csd $$0, czu $$1, bre $$2, int $$3) {
+      if ($$2 instanceof ckl $$4) {
+         int $$5 = this.b($$0) - $$3;
+         if ($$5 >= 10) {
+            int $$6 = cxo.j($$0);
+            if ($$6 <= 0 || $$4.bd()) {
+               if (!$$1.B) {
+                  $$0.a(1, $$4, bre.d($$2.fu()));
+                  if ($$6 == 0) {
+                     clq $$7 = new clq($$1, $$4, $$0);
+                     $$7.a($$4, $$4.dF(), $$4.dD(), 0.0F, 2.5F + (float)$$6 * 0.5F, 1.0F);
+                     if ($$4.fN()) {
+                        $$7.d = ckr.a.c;
+                     }
+
+                     $$1.b($$7);
+                     $$1.a(null, $$7, auz.zr, ava.h, 1.0F, 1.0F);
+                     if (!$$4.fN()) {
+                        $$4.ga().g($$0);
+                     }
+                  }
+               }
+
+               $$4.b(avj.c.b(this));
+               if ($$6 > 0) {
+                  float $$8 = $$4.dD();
+                  float $$9 = $$4.dF();
+                  float $$10 = -axw.a($$8 * (float) (Math.PI / 180.0)) * axw.b($$9 * (float) (Math.PI / 180.0));
+                  float $$11 = -axw.a($$9 * (float) (Math.PI / 180.0));
+                  float $$12 = axw.b($$8 * (float) (Math.PI / 180.0)) * axw.b($$9 * (float) (Math.PI / 180.0));
+                  float $$13 = axw.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+                  float $$14 = 3.0F * ((1.0F + (float)$$6) / 4.0F);
+                  $$10 *= $$14 / $$13;
+                  $$11 *= $$14 / $$13;
+                  $$12 *= $$14 / $$13;
+                  $$4.j((double)$$10, (double)$$11, (double)$$12);
+                  $$4.u(20);
+                  if ($$4.aC()) {
+                     float $$15 = 1.1999999F;
+                     $$4.a(brj.a, new etf(0.0, 1.1999999F, 0.0));
+                  }
+
+                  auy $$16;
+                  if ($$6 >= 3) {
+                     $$16 = auz.zq;
+                  } else if ($$6 == 2) {
+                     $$16 = auz.zp;
+                  } else {
+                     $$16 = auz.zo;
+                  }
+
+                  $$1.a(null, $$4, $$16, ava.h, 1.0F, 1.0F);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
+      csd $$3 = $$1.b($$2);
+      if ($$3.m() >= $$3.n() - 1) {
+         return bor.d($$3);
+      } else if (cxo.j($$3) > 0 && !$$1.bd()) {
+         return bor.d($$3);
+      } else {
+         $$1.c($$2);
+         return bor.b($$3);
+      }
+   }
+
+   @Override
+   public boolean a(csd $$0, bre $$1, bre $$2) {
+      $$0.a(1, $$2, bqs.a);
+      return true;
+   }
+
+   @Override
+   public boolean a(csd $$0, czu $$1, dpy $$2, im $$3, bre $$4) {
+      if ((double)$$2.h($$1, $$3) != 0.0) {
+         $$0.a(2, $$4, bqs.a);
+      }
+
+      return true;
+   }
+
+   @Override
+   public int g() {
+      return 1;
    }
 }

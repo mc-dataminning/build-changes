@@ -1,56 +1,51 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class ddw extends dch {
-   public static final MapCodec<dch> a = kt.e.q().fieldOf("dead");
-   public static final MapCodec<ddw> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, ddw::new));
-   private final dch c;
+public interface ddw<T extends Enum<T>> {
+   int v_ = 4;
 
-   public ddw(dch $$0, dph.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+   Optional<dpy> j_(dpy var1);
 
-   @Override
-   public MapCodec<ddw> a() {
-      return b;
-   }
+   float au_();
 
-   @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.n(), 2);
+   default void a_(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
       }
    }
 
-   @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.E_().a(40));
-      }
+   T c();
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   default Optional<dpy> c(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      int $$4 = this.c().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
 
-   protected boolean a(cym $$0, id $$1) {
-      for (ij $$2 : ij.values()) {
-         elb $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(avj.a)) {
-            return true;
+      for (im $$7 : im.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
+            break;
+         }
+
+         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof ddw<?> $$9) {
+            Enum<?> $$10 = $$9.c();
+            if (this.c().getClass() == $$10.getClass()) {
+               int $$11 = $$10.ordinal();
+               if ($$11 < $$4) {
+                  return Optional.empty();
+               }
+
+               if ($$11 > $$4) {
+                  $$6++;
+               } else {
+                  $$5++;
+               }
+            }
          }
       }
 
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public dpi a(cux $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
-      }
-
-      return this.n();
+      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$13 = $$12 * $$12 * this.au_();
+      return $$3.i() < $$13 ? this.j_($$0) : Optional.empty();
    }
 }

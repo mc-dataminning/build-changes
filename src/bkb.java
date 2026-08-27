@@ -1,19 +1,21 @@
-public class bkb extends bjx {
-   private final bjy c;
-   private final bka d;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   public bkb(int $$0, bjy $$1, bka $$2) {
-      this($$0, $$1, $$2, new long[$$0]);
+public class bkb extends Schema {
+   public bkb(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public bkb(int $$0, bjy $$1, bka $$2, long[] $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> bha.a($$0));
    }
 
-   @Override
-   protected void a() {
-      this.c.a(new acb((long[])this.b.clone(), this.d));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "ZombieVillager");
+      a($$0, $$1, "Husk");
+      return $$1;
    }
 }

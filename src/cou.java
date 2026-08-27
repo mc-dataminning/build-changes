@@ -1,88 +1,73 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class cou {
-   private static final List<cot> b = ac.a(new ArrayList<>(), $$0 -> {
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = bqh.a.a(98);
-      int $$2 = bqh.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = bqh.f.a(100);
-      $$2 = bqh.e.a(100);
-      int $$5 = bqh.d.a(100);
-      int $$6 = bqh.c.a(100);
-      int $$7 = bqh.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "horse.saddle", 400);
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<cot> a = ayg.b(() -> b.toArray(new cot[0]));
-   private static final Function<String, cot> c = ayg.a(b.toArray(new cot[0]), $$0 -> $$0);
+public class cou extends boz {
+   @Nullable
+   private dny c;
 
-   private static cot a(String $$0, int $$1) {
-      return cot.a($$0, IntLists.singleton($$1));
+   public cou() {
+      super(27);
    }
 
-   private static cot a(String $$0, IntList $$1) {
-      return cot.a($$0, IntLists.unmodifiable($$1));
+   public void a(dny $$0) {
+      this.c = $$0;
    }
 
-   private static cot a(String $$0, int... $$1) {
-      return cot.a($$0, IntList.of($$1));
+   public boolean b(dny $$0) {
+      return this.c == $$0;
    }
 
-   private static void a(List<cot> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   private static void a(List<cot> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
+   @Override
+   public void a(ue $$0, ix.a $$1) {
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         this.a($$2, csd.i);
       }
 
-      $$0.add(a($$1 + "*", $$4));
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         ty $$4 = $$0.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < this.b()) {
+            this.a($$5, csd.a($$1, (uv)$$4).orElse(csd.i));
+         }
+      }
    }
 
-   private static void a(List<cot> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
+   @Override
+   public ue a(ix.a $$0) {
+      ue $$1 = new ue();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         csd $$3 = this.a($$2);
+         if (!$$3.d()) {
+            ty $$4 = new ty();
+            $$4.a("Slot", (byte)$$2);
+            $$1.add($$3.b($$0, $$4));
+         }
+      }
+
+      return $$1;
    }
 
-   @Nullable
-   public static cot a(String $$0) {
-      return c.apply($$0);
+   @Override
+   public boolean a(ckl $$0) {
+      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
    }
 
-   public static Stream<String> a() {
-      return b.stream().map(ayg::c);
+   @Override
+   public void d_(ckl $$0) {
+      if (this.c != null) {
+         this.c.a($$0);
+      }
+
+      super.d_($$0);
    }
 
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(ayg::c);
+   @Override
+   public void c(ckl $$0) {
+      if (this.c != null) {
+         this.c.b($$0);
+      }
+
+      super.c($$0);
+      this.c = null;
    }
 }

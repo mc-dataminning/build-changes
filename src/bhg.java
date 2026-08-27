@@ -4,7 +4,7 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bhg extends bgp {
+public class bhg extends Schema {
    public bhg(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -13,28 +13,11 @@ public class bhg extends bgp {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         bff.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(bff.y.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(bff.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", bff.A.in($$0))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(bff.u.in($$0)))),
-                  "Structures",
-                  DSL.optionalFields("Starts", DSL.compoundList(bff.E.in($$0)))
-               )
+         bfp.b,
+         () -> DSL.optionalFields(
+               "RootVehicle", DSL.optionalFields("Entity", bfp.y.in($$0)), "Inventory", DSL.list(bfp.t.in($$0)), "EnderItems", DSL.list(bfp.t.in($$0))
             )
       );
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$1.put("DUMMY", DSL::remainder);
-      return $$1;
+      $$0.registerType(true, bfp.y, () -> DSL.optionalFields("Passengers", DSL.list(bfp.y.in($$0)), bfp.z.in($$0)));
    }
 }

@@ -1,3 +1,3 @@
-public interface aip extends vo {
-   void a(aiq var1);
+public interface aip {
+   void a(vs var1);
 }

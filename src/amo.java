@@ -1,40 +1,48 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.context.ParsedCommandNode;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.Map;
 
 public class amo {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.pardon.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ws.c("commands.help.failed"));
 
-   public static void a(CommandDispatcher<dv> $$0) {
+   public static void a(CommandDispatcher<ec> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("pardon").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("help").executes($$1 -> {
+               Map<CommandNode<ec>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ec)$$1.getSource());
+
+               for (String $$3 : $$2.values()) {
+                  ((ec)$$1.getSource()).a(() -> ws.b("/" + $$3), false);
+               }
+
+               return $$2.size();
+            }))
             .then(
-               dw.a("targets", ek.a())
-                  .suggests(($$0x, $$1) -> ea.a(((dv)$$0x.getSource()).l().ah().f().a(), $$1))
-                  .executes($$0x -> a((dv)$$0x.getSource(), ek.a($$0x, "targets")))
+               ed.a("command", StringArgumentType.greedyString())
+                  .executes(
+                     $$1 -> {
+                        ParseResults<ec> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ec)$$1.getSource());
+                        if ($$2.getContext().getNodes().isEmpty()) {
+                           throw a.create();
+                        } else {
+                           Map<CommandNode<ec>, String> $$3 = $$0.getSmartUsage(
+                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ec)$$1.getSource()
+                           );
+
+                           for (String $$4 : $$3.values()) {
+                              ((ec)$$1.getSource()).a(() -> ws.b("/" + $$2.getReader().getString() + " " + $$4), false);
+                           }
+
+                           return $$3.size();
+                        }
+                     }
+                  )
             )
       );
-   }
-
-   private static int a(dv $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      atx $$2 = $$0.l().ah().f();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
-            $$3++;
-            $$0.a(() -> wi.a("commands.pardon.success", wi.b($$4.getName())), true);
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
-      }
    }
 }

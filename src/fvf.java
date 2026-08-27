@@ -1,166 +1,138 @@
-import com.google.common.collect.Lists;
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
+import java.security.PublicKey;
+import java.time.DateTimeException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fvf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bmy<Runnable> b = bmy.a(ac.f(), "server-list-io");
-   private static final int c = 16;
-   private final fby d;
-   private final List<fve> e = Lists.newArrayList();
-   private final List<fve> f = Lists.newArrayList();
+public class fvf implements fvy {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<ckn>> g;
+   private Instant h = Instant.EPOCH;
 
-   public fvf(fby $$0) {
-      this.d = $$0;
+   public fvf(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
+      this.g = CompletableFuture.<Optional<ckn>>supplyAsync(() -> this.c().filter($$0x -> !$$0x.c().b().a()), ac.f()).thenCompose(this::a);
    }
 
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         to $$0 = ub.a(this.d.p.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
+   @Override
+   public CompletableFuture<Optional<ckn>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
+   }
 
-         tu $$1 = $$0.c("servers", 10);
+   @Override
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(ckn::a).orElse(true) : false;
+   }
 
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            to $$3 = $$1.a($$2);
-            fve $$4 = fve.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
+   private CompletableFuture<Optional<ckn>> a(Optional<ckn> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!aa.aX) {
+               this.a(null);
+            }
+
+            return $$0;
+         } else {
+            try {
+               ckn $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.of($$1);
+            } catch (awv | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
             }
          }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
+      }, ac.f());
+   }
+
+   private Optional<ckn> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
+      } else {
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = ckn.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
+         }
       }
    }
 
-   public void b() {
+   private void a(@Nullable ckn $$0) {
       try {
-         tu $$0 = new tu();
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
+      }
 
-         for (fve $$1 : this.e) {
-            to $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
+      if ($$0 != null) {
+         if (aa.aX) {
+            ckn.a.encodeStart(JsonOps.INSTANCE, $$0).result().ifPresent($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
          }
-
-         for (fve $$3 : this.f) {
-            to $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         to $$5 = new to();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.p.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         ub.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         ac.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
       }
    }
 
-   public fve a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Nullable
-   public fve a(String $$0) {
-      for (fve $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      for (fve $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   public fve b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         fve $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   public void a(fve $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
+   private ckn a(UserApiService $$0) throws awv, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         cko.a $$2 = a($$1);
+         return new ckn(awu.a($$1.keyPair().privateKey()), new cko($$2), Instant.parse($$1.refreshedAfter()));
+      } else {
+         throw new IOException("Could not retrieve profile key pair");
       }
    }
 
-   public void a(fve $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
+   private static cko.a a(KeyPairResponse $$0) throws awv {
+      KeyPair $$1 = $$0.keyPair();
+      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = awu.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new cko.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new awv(var5);
          }
       } else {
-         this.e.add($$0);
+         throw new awv(new MissingException("Missing public key"));
       }
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public void a(int $$0, int $$1) {
-      fve $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
-   }
-
-   public void a(int $$0, fve $$1) {
-      this.e.set($$0, $$1);
-   }
-
-   private static boolean a(fve $$0, List<fve> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         fve $$3 = $$1.get($$2);
-         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static void b(fve $$0) {
-      b.a(() -> {
-         fvf $$1 = new fvf(fby.Q());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
-
-         $$1.b();
-      });
    }
 }

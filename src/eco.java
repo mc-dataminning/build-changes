@@ -1,48 +1,48 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class eco extends ecm {
-   public static final Codec<eco> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dpi.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dpi.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dpi.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, eco::new)
+public class eco extends eck {
+   public static final Codec<eco> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bnv.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eco::new)
    );
-   private final float g;
-   private final float h;
-   private final dpi i;
-   private final List<dpi> j;
-   private final List<dpi> k;
+   private final bnv b;
 
-   public eco(long $$0, eke.a $$1, float $$2, float $$3, float $$4, dpi $$5, List<dpi> $$6, List<dpi> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   public eco(bnv $$0, bnv $$1, bnv $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected eck<?> a() {
-      return eck.c;
+   protected ecl<?> a() {
+      return ecl.c;
    }
 
    @Override
-   public dpi a(axt $$0, id $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
+   protected void a(daa $$0, eck.b $$1, ayd $$2, ebu $$3, int $$4, eck.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
       }
+   }
+
+   @Override
+   public int a(ayd $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(ayd $$0, int $$1, ebu $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ayd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

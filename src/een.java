@@ -1,28 +1,13 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 
-public class een extends efb {
-   public static final Codec<een> a = bnk.b(0, 256).fieldOf("count").xmap(een::new, $$0 -> $$0.c).codec();
-   private final bnk c;
+public abstract class een {
+   private static final Codec<Either<dwk, een>> a = Codec.either(dwk.a, lc.N.q().dispatch(een::a, eeo::codec));
+   public static final Codec<een> c = a.xmap(
+      $$0 -> (een)$$0.map(eem::a, $$0x -> $$0x), $$0 -> $$0.a() == eeo.a ? Either.left(((eem)$$0).b()) : Either.right($$0)
+   );
 
-   private een(bnk $$0) {
-      this.c = $$0;
-   }
+   public abstract int a(ayd var1, dwn var2);
 
-   public static een a(bnk $$0) {
-      return new een($$0);
-   }
-
-   public static een a(int $$0) {
-      return a(bnh.a($$0));
-   }
-
-   @Override
-   protected int a(axt $$0, id $$1) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public eey<?> b() {
-      return eey.f;
-   }
+   public abstract eeo<?> a();
 }

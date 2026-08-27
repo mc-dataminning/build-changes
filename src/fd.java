@@ -3,36 +3,64 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
-public class fd implements ArgumentType<cot> {
-   private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wi.b("slot.unknown", $$0));
+public class fd implements ArgumentType<akf> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ws.b("advancement.advancementNotFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ws.b("recipe.notFound", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> ws.b("predicate.unknown", $$0));
+   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> ws.b("item_modifier.unknown", $$0));
 
    public static fd a() {
       return new fd();
    }
 
-   public static cot a(CommandContext<dv> $$0, String $$1) {
-      return (cot)$$0.getArgument($$1, cot.class);
-   }
-
-   public cot a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = dz.a($$0, $$0x -> $$0x != ' ');
-      cot $$2 = cou.a($$1);
-      if ($$2 == null) {
-         throw b.createWithContext($$0, $$1);
+   public static af a(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
+      akf $$2 = e($$0, $$1);
+      af $$3 = ((ec)$$0.getSource()).l().aE().a($$2);
+      if ($$3 == null) {
+         throw b.create($$2);
       } else {
-         return $$2;
+         return $$3;
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ea.b(cou.a(), $$1);
+   public static cwi<?> b(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
+      cwj $$2 = ((ec)$$0.getSource()).l().aJ();
+      akf $$3 = e($$0, $$1);
+      return $$2.a($$3).orElseThrow(() -> c.create($$3));
+   }
+
+   public static erh c(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
+      akf $$2 = e($$0, $$1);
+      eod $$3 = ((ec)$$0.getSource()).l().aM();
+      erh $$4 = $$3.getElement(eof.a, $$2);
+      if ($$4 == null) {
+         throw d.create($$2);
+      } else {
+         return $$4;
+      }
+   }
+
+   public static epp d(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
+      akf $$2 = e($$0, $$1);
+      eod $$3 = ((ec)$$0.getSource()).l().aM();
+      epp $$4 = $$3.getElement(eof.b, $$2);
+      if ($$4 == null) {
+         throw e.create($$2);
+      } else {
+         return $$4;
+      }
+   }
+
+   public static akf e(CommandContext<ec> $$0, String $$1) {
+      return (akf)$$0.getArgument($$1, akf.class);
+   }
+
+   public akf a(StringReader $$0) throws CommandSyntaxException {
+      return akf.a($$0);
    }
 
    public Collection<String> getExamples() {

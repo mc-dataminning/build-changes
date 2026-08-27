@@ -1,48 +1,47 @@
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.Map.Entry;
 
-public class cyf extends ArrayList<cye> {
-   public static final Codec<cyf> a = cye.a.listOf().fieldOf("Recipes").xmap(cyf::new, Function.identity()).codec();
-   public static final yg<vt, cyf> b = cye.b.a(ye.a(cyf::new));
+public class cyf extends cxn {
+   private static final float b = 0.15F;
 
-   public cyf() {
+   public cyf(cxn.a $$0, bqs... $$1) {
+      super($$0, avw.bf, $$1);
    }
 
-   private cyf(int $$0) {
-      super($$0);
+   @Override
+   public int a(int $$0) {
+      return 10 + 20 * ($$0 - 1);
    }
 
-   private cyf(Collection<cye> $$0) {
-      super($$0);
+   @Override
+   public int b(int $$0) {
+      return super.a($$0) + 50;
    }
 
-   @Nullable
-   public cye a(crs $$0, crs $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         cye $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
-      } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            cye $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
-            }
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public void b(bre $$0, bql $$1, int $$2) {
+      ayd $$3 = $$0.ej();
+      Entry<bqs, csd> $$4 = cxo.b(cxq.h, $$0);
+      if (a($$2, $$3)) {
+         if ($$1 != null) {
+            $$1.a($$0.dO().d($$0), (float)b($$2, $$3));
          }
 
-         return null;
+         if ($$4 != null) {
+            $$4.getValue().a(2, $$0, $$4.getKey());
+         }
       }
    }
 
-   public cyf a() {
-      cyf $$0 = new cyf(this.size());
+   public static boolean a(int $$0, ayd $$1) {
+      return $$0 <= 0 ? false : $$1.i() < 0.15F * (float)$$0;
+   }
 
-      for (cye $$1 : this) {
-         $$0.add($$1.v());
-      }
-
-      return $$0;
+   public static int b(int $$0, ayd $$1) {
+      return $$0 > 10 ? $$0 - 10 : 1 + $$1.a(4);
    }
 }

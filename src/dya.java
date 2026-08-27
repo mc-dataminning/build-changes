@@ -1,111 +1,83 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
 
-public class dya {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
-
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+public class dya extends dyu<ebf> {
+   public dya(Codec<ebf> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(dab $$0, id $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+   @Override
+   public boolean a(dyw<ebf> $$0) {
+      im $$1 = $$0.e();
+      dap $$2 = $$0.b();
+      ayd $$3 = $$0.d();
+      if ($$2.u($$1) && !$$2.u($$1.c())) {
+         im.a $$4 = $$1.j();
+         im.a $$5 = $$1.j();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(axm.b($$5) * (float)$$2);
-            int $$7 = (int)(axm.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
+         while ($$2.u($$4)) {
+            if ($$2.s($$4)) {
+               return true;
+            }
+
+            $$2.a($$4, dcx.dY.n(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ir.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ir.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ir.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ir.f));
+            $$4.c(ir.a);
+         }
+
+         $$4.c(ir.b);
+         this.a($$2, $$3, $$5.a($$4, ir.c));
+         this.a($$2, $$3, $$5.a($$4, ir.d));
+         this.a($$2, $$3, $$5.a($$4, ir.e));
+         this.a($$2, $$3, $$5.a($$4, ir.f));
+         $$4.c(ir.a);
+         im.a $$10 = new im.a();
+
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = axw.a($$11) * axw.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
+
+                  while ($$2.u($$5.a($$10, ir.a))) {
+                     $$10.c(ir.a);
+                     if (--$$14 <= 0) {
+                        break;
+                     }
+                  }
+
+                  if (!$$2.u($$5.a($$10, ir.a))) {
+                     $$2.a($$10, dcx.dY.n(), 2);
+                  }
+               }
             }
          }
 
-         return true;
-      }
-   }
-
-   protected static boolean a(czh $$0, id $$1) {
-      return $$0.a($$1, dya::c);
-   }
-
-   protected static boolean b(czh $$0, id $$1) {
-      return $$0.a($$1, dya::e);
-   }
-
-   protected static void a(ij $$0, int $$1, boolean $$2, Consumer<dpi> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dqf.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dqf.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dqf.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dqf.a : dqf.b));
-      }
-   }
-
-   protected static void a(czh $$0, id $$1, ij $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         id.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(dcj.st)) {
-               $$3x = $$3x.a(dhy.d, Boolean.valueOf($$0.z($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(czh $$0, id $$1) {
-      dpi $$2 = $$0.a_($$1);
-      if ($$2.a(ave.bs)) {
-         $$0.a($$1, dcj.su.n(), 2);
          return true;
       } else {
          return false;
       }
    }
 
-   private static dpi a(ij $$0, dqf $$1) {
-      return dcj.st.n().a(dhy.b, $$0).a(dhy.c, $$1);
+   private void a(czv $$0, ayd $$1, im $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, dcx.dY.n(), 2);
+      }
    }
 
-   public static boolean a(dpi $$0) {
-      return b($$0) || $$0.a(dcj.H);
-   }
-
-   public static boolean b(dpi $$0) {
-      return $$0.a(dcj.su) || $$0.a(ave.bs);
-   }
-
-   public static boolean c(dpi $$0) {
-      return $$0.i() || $$0.a(dcj.G);
-   }
-
-   public static boolean d(dpi $$0) {
-      return !$$0.i() && !$$0.a(dcj.G);
-   }
-
-   public static boolean e(dpi $$0) {
-      return $$0.i() || $$0.a(dcj.G) || $$0.a(dcj.H);
+   private boolean b(czv $$0, ayd $$1, im $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, dcx.dY.n(), 2);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,114 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dcf extends dgc implements dck, djh {
-   public static final MapCodec<dcf> a = b(dcf::new);
-   private static final dpz f = dpy.C;
-   private static final int g = 6;
-   protected static final etc b = dch.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
-   protected static final etc c = dch.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
-   protected static final etc d = dch.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
-   protected static final etc e = dch.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
+public abstract class dcf extends dcv implements djw {
+   public static final dqp d = dqo.C;
+   private static final ety a = dcv.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+
+   protected dcf(dpx.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
+   }
 
    @Override
-   public MapCodec<dcf> a() {
+   protected abstract MapCodec<? extends dcf> a();
+
+   protected void a(dpy $$0, czv $$1, im $$2) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this, 60 + $$1.E_().a(40));
+      }
+   }
+
+   protected static boolean e(dpy $$0, cza $$1, im $$2) {
+      if ($$0.c(d)) {
+         return true;
+      } else {
+         for (ir $$3 : ir.values()) {
+            if ($$1.b_($$2.a($$3)).a(avt.a)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      elr $$1 = $$0.q().b_($$0.a());
+      return this.n().a(d, Boolean.valueOf($$1.a(avt.a) && $$1.e() == 8));
+   }
+
+   @Override
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
       return a;
    }
 
-   protected dcf(dph.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(f, Boolean.valueOf(false)).a(aE, ij.c));
-   }
-
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      switch ((ij)$$0.c(aE)) {
-         case d:
-            return c;
-         case c:
-         default:
-            return b;
-         case e:
-            return e;
-         case f:
-            return d;
-      }
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(f, aE);
-   }
-
-   @Override
-   protected elb c_(dpi $$0) {
-      return $$0.c(f) ? elc.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      id $$3 = $$2.d();
-      dpi $$4 = $$1.a_($$3);
-      dpi $$5 = $$1.a_($$2.c());
-      return ($$4.a(this) || $$4.a(ave.by)) && ($$5.a(this) || $$5.a(dcj.sD));
-   }
-
-   protected static boolean a(czh $$0, id $$1, elb $$2, ij $$3) {
-      dpi $$4 = dcj.sE.n().a(f, Boolean.valueOf($$2.a(elc.c))).a(aE, $$3);
-      return $$0.a($$1, $$4, 3);
-   }
-
-   @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if (($$1 == ij.a || $$1 == ij.b) && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, els.c, els.c.a($$3));
       }
 
-      if ($$0.c(f)) {
-         $$3.a($$4, elc.c, elc.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$1 == ir.a && !this.a($$0, (czx)$$3, $$4) ? dcx.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   protected boolean a(dpy $$0, czx $$1, im $$2) {
+      im $$3 = $$2.d();
+      return $$1.a_($$3).d($$1, $$3, ir.b);
    }
 
    @Override
-   public boolean b(czj $$0, id $$1, dpi $$2) {
-      Optional<id> $$3 = l.a($$0, $$1, $$2.b(), ij.b, dcj.sD);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         id $$4 = $$3.get().c();
-         dpi $$5 = $$0.a_($$4);
-         return dce.a($$0, $$4, $$5);
-      }
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
-      Optional<id> $$4 = l.a($$0, $$2, $$3.b(), ij.b, dcj.sD);
-      if (!$$4.isEmpty()) {
-         id $$5 = $$4.get();
-         id $$6 = $$5.c();
-         ij $$7 = $$3.c(aE);
-         a($$0, $$5, $$0.b_($$5), $$7);
-         dce.a($$0, $$6, $$0.b_($$6), $$7);
-      }
-   }
-
-   @Override
-   public crs a(czj $$0, id $$1, dpi $$2) {
-      return new crs(dcj.sD);
+   protected elr c_(dpy $$0) {
+      return $$0.c(d) ? els.c.a(false) : super.c_($$0);
    }
 }

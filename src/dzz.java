@@ -1,53 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dzz(List<dzz.a> b, ij c, dwh d, boolean e) implements eai {
-   public static final Codec<dzz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dzz.a.a.listOf().fieldOf("layers").forGetter(dzz::a),
-               ij.g.fieldOf("direction").forGetter(dzz::b),
-               dwh.b.fieldOf("allowed_placement").forGetter(dzz::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dzz::d)
-            )
-            .apply($$0, dzz::new)
-   );
-
-   public static dzz.a a(bnk $$0, ecj $$1) {
-      return new dzz.a($$0, $$1);
+public class dzz extends dyu<eat> {
+   public dzz(Codec<eat> $$0) {
+      super($$0);
    }
 
-   public static dzz b(bnk $$0, ecj $$1) {
-      return new dzz(List.of(a($$0, $$1)), ij.b, dwh.c, false);
-   }
+   @Override
+   public boolean a(dyw<eat> $$0) {
+      int $$1 = 0;
+      ayd $$2 = $$0.d();
+      dap $$3 = $$0.b();
+      im $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-   public List<dzz.a> a() {
-      return this.b;
-   }
-
-   public ij b() {
-      return this.c;
-   }
-
-   public dwh c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bnk b, ecj c) {
-      public static final Codec<dzz.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bnk.d.fieldOf("height").forGetter(dzz.a::a), ecj.a.fieldOf("provider").forGetter(dzz.a::b)).apply($$0, dzz.a::new)
-      );
-
-      public bnk a() {
-         return this.b;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dvq.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         im $$10 = new im($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dpy $$11 = dcx.mV.n().a(djs.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dcx.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
       }
 
-      public ecj b() {
-         return this.c;
-      }
+      return $$1 > 0;
    }
 }

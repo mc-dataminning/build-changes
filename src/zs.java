@@ -1,26 +1,16 @@
-public record zs(aju<dub> c, esj d) implements zq {
-   public static final yg<vi, zs> a = zq.a(zs::a, zs::new);
-   public static final zq.b<zs> b = zq.a("debug/game_event");
+import com.google.common.collect.Lists;
 
-   private zs(vi $$0) {
-      this($$0.a(ku.C), $$0.k());
-   }
-
-   private void a(vi $$0) {
-      $$0.b(this.c);
-      $$0.a(this.d);
-   }
+public record zs(aaa b) implements yz<zq> {
+   private static final int c = 32767;
+   public static final yq<vs, zs> a = aaa.<vs>a($$0 -> aab.a($$0, 32767), ac.a(Lists.newArrayList(new aaa.c[]{new aaa.c<>(zy.b, zy.a)}), $$0 -> {
+   })).a(zs::new, zs::b);
 
    @Override
-   public zq.b<zs> a() {
-      return b;
+   public zb<zs> a() {
+      return zp.k;
    }
 
-   public aju<dub> b() {
-      return this.c;
-   }
-
-   public esj c() {
-      return this.d;
+   public void a(zq $$0) {
+      $$0.a(this);
    }
 }

@@ -1,28 +1,98 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class bvf extends bsl<bqv> {
-   private final float c;
+public class bvf<U> implements Iterable<U> {
+   protected final List<bvf.a<U>> a;
+   private final ayd b = ayd.a();
 
-   public bvf(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
+   public bvf() {
+      this.a = Lists.newArrayList();
    }
 
-   public static boolean a(bqv $$0) {
-      return $$0.bc() && $$0.b(avj.a) > $$0.df() || $$0.bq();
+   private bvf(List<bvf.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   protected boolean a(apu $$0, bqv $$1) {
-      return a($$1);
+   public static <U> Codec<bvf<U>> a(Codec<U> $$0) {
+      return bvf.a.a($$0).listOf().xmap(bvf::new, $$0x -> $$0x.a);
    }
 
-   protected boolean a(apu $$0, bqv $$1, long $$2) {
-      return this.a($$0, $$1);
+   public bvf<U> a(U $$0, int $$1) {
+      this.a.add(new bvf.a<>($$0, $$1));
+      return this;
    }
 
-   protected void b(apu $$0, bqv $$1, long $$2) {
-      if ($$1.ei().i() < this.c) {
-         $$1.I().a();
+   public bvf<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(bvf.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(bvf.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), bvf.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<bvf.a<E>> a(final Codec<E> $$0) {
+         return new Codec<bvf.a<E>>() {
+            public <T> DataResult<Pair<bvf.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bvf.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(bvf.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
       }
    }
 }

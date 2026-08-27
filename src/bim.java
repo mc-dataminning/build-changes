@@ -1,10 +1,11 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bim extends bgp {
+public class bim extends bgz {
    public bim(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -13,22 +14,49 @@ public class bim extends bgp {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         bff.c,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(bff.y.in($$0)),
-               "block_entities",
-               DSL.list(DSL.or(bff.s.in($$0), DSL.remainder())),
-               "block_ticks",
-               DSL.list(DSL.fields("i", bff.A.in($$0))),
-               "sections",
-               DSL.list(
-                  DSL.optionalFields(
-                     "biomes", DSL.optionalFields("palette", DSL.list(bff.I.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(bff.u.in($$0)))
+         bfp.K,
+         () -> DSL.fields(
+               "dimensions",
+               DSL.compoundList(
+                  DSL.constType(a()),
+                  DSL.fields(
+                     "generator",
+                     DSL.taggedChoiceLazy(
+                        "type",
+                        DSL.string(),
+                        ImmutableMap.of(
+                           "minecraft:debug",
+                           DSL::remainder,
+                           "minecraft:flat",
+                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
+                                 "settings", DSL.optionalFields("biome", bfp.I.in($$0), "layers", DSL.list(DSL.optionalFields("block", bfp.A.in($$0))))
+                              ),
+                           "minecraft:noise",
+                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
+                                 "biome_source",
+                                 DSL.taggedChoiceLazy(
+                                    "type",
+                                    DSL.string(),
+                                    ImmutableMap.of(
+                                       "minecraft:fixed",
+                                       (Supplier<TypeTemplate>)() -> DSL.fields("biome", bfp.I.in($$0)),
+                                       "minecraft:multi_noise",
+                                       (Supplier<TypeTemplate>)() -> DSL.list(DSL.fields("biome", bfp.I.in($$0))),
+                                       "minecraft:checkerboard",
+                                       (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(bfp.I.in($$0))),
+                                       "minecraft:vanilla_layered",
+                                       DSL::remainder,
+                                       "minecraft:the_end",
+                                       DSL::remainder
+                                    )
+                                 ),
+                                 "settings",
+                                 DSL.or(DSL.constType(DSL.string()), DSL.optionalFields("default_block", bfp.A.in($$0), "default_fluid", bfp.A.in($$0)))
+                              )
+                        )
+                     )
                   )
-               ),
-               "structures",
-               DSL.optionalFields("starts", DSL.compoundList(bff.E.in($$0)))
+               )
             )
       );
    }

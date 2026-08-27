@@ -1,14 +1,8 @@
-public interface aia extends aax, afo {
+public interface aia extends afy {
    @Override
-   default vh b() {
-      return vh.d;
+   default vr b() {
+      return vr.a;
    }
 
-   void a(aic var1);
-
-   void a(aid var1);
-
-   void a(aib var1);
-
-   void a(aie var1);
+   void a(ahx var1);
 }

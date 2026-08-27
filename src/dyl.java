@@ -1,47 +1,44 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dyl extends dye<eap> {
-   public dyl(Codec<eap> $$0) {
+public class dyl extends dyj {
+   public dyl(Codec<ebf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyg<eap> $$0) {
-      dab $$1 = $$0.b();
-      id $$2 = $$0.e();
-      axt $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dpi $$4 = $$1.a_($$2.c());
-         if (!$$4.a(dcj.dV) && !$$4.a(dcj.dY) && !$$4.a(dcj.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, dcj.ec.n(), 2);
+   protected boolean a(czv $$0, ayd $$1, im $$2, dpy $$3) {
+      im.a $$4 = $$2.j();
+      int $$5 = $$1.a(3) + 1;
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               id $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
-
-                  for (ij $$8 : ij.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dcj.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dcj.ec.n(), 2);
-                  }
-               }
-            }
-
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
             return true;
          }
+
+         $$4.c(ir.b);
       }
+
+      im $$7 = $$4.i();
+      int $$8 = $$1.a(3) + 2;
+      List<ir> $$9 = ir.c.a.c($$1);
+
+      for (ir $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ir.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
+            }
+         }
+      }
+
+      return true;
    }
 }

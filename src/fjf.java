@@ -1,64 +1,47 @@
-public class fjf extends fin {
-   private fdy c;
+public class fjf extends fkt {
+   private static final int a = 90;
+   private final ws b;
+   private ffn c = ffn.a;
+   private final Runnable d;
+   private final ws r;
+   private final boolean s;
 
-   public fjf() {
-      super("");
+   public fjf(Runnable $$0, ws $$1, ws $$2) {
+      this($$0, $$1, $$2, wr.k, true);
+   }
+
+   public fjf(Runnable $$0, ws $$1, ws $$2, ws $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.r = $$3;
+      this.s = $$4;
+   }
+
+   @Override
+   public ws i() {
+      return wr.a(super.i(), this.b);
    }
 
    @Override
    protected void aM_() {
       super.aM_();
-      this.c = fdy.a(wi.c("multiplayer.stopSleeping"), $$0 -> this.C()).a(this.k / 2 - 100, this.l - 40, 200, 20).a();
-      this.c(this.c);
+      this.c = ffn.a(this.p, this.b, this.n - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = axw.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
+      int $$2 = 150;
+      this.c(feu.a(this.r, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
    }
 
    @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      if (!this.j.J().a(this.j.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
+      this.c.a($$0, this.n / 2, 90);
    }
 
    @Override
-   public void d() {
-      this.C();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.j.J().a(this.j.T()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.C();
-      }
-
-      if (!this.j.J().a(this.j.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.j.l.d().d();
-         return true;
-      }
-   }
-
-   private void C() {
-      fur $$0 = this.j.s.cv;
-      $$0.b(new agr(this.j.s, agr.a.c));
-   }
-
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.j.a(null);
-      } else {
-         this.j.a(new fin(this.b.a()));
-      }
+   public boolean aD_() {
+      return this.s;
    }
 }

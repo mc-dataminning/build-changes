@@ -1,77 +1,23 @@
-import com.google.common.collect.Lists;
-import java.util.AbstractList;
-import java.util.Arrays;
-import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import java.util.Optional;
 
-public class iw<E> extends AbstractList<E> {
-   private final List<E> a;
-   @Nullable
-   private final E b;
+public interface iw<T> {
+   Optional<iv.c<T>> a(ake<T> var1);
 
-   public static <E> iw<E> a() {
-      return new iw<>(Lists.newArrayList(), null);
+   default iv.c<T> b(ake<T> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
    }
 
-   public static <E> iw<E> a(int $$0) {
-      return new iw<>(Lists.newArrayListWithCapacity($$0), null);
+   Optional<iz.c<T>> a(awd<T> var1);
+
+   default iz.c<T> b(awd<T> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
    }
 
-   public static <E> iw<E> a(int $$0, E $$1) {
-      Validate.notNull($$1);
-      Object[] $$2 = new Object[$$0];
-      Arrays.fill($$2, $$1);
-      return new iw<>(Arrays.asList((E[])$$2), $$1);
-   }
+   public interface a {
+      <T> Optional<iw<T>> a(ake<? extends ji<? extends T>> var1);
 
-   @SafeVarargs
-   public static <E> iw<E> a(E $$0, E... $$1) {
-      return new iw<>(Arrays.asList($$1), $$0);
-   }
-
-   protected iw(List<E> $$0, @Nullable E $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Nonnull
-   @Override
-   public E get(int $$0) {
-      return this.a.get($$0);
-   }
-
-   @Override
-   public E set(int $$0, E $$1) {
-      Validate.notNull($$1);
-      return this.a.set($$0, $$1);
-   }
-
-   @Override
-   public void add(int $$0, E $$1) {
-      Validate.notNull($$1);
-      this.a.add($$0, $$1);
-   }
-
-   @Override
-   public E remove(int $$0) {
-      return this.a.remove($$0);
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public void clear() {
-      if (this.b == null) {
-         super.clear();
-      } else {
-         for (int $$0 = 0; $$0 < this.size(); $$0++) {
-            this.set($$0, this.b);
-         }
+      default <T> iw<T> b(ake<? extends ji<? extends T>> $$0) {
+         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
    }
 }

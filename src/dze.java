@@ -1,54 +1,167 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class dze extends dye<eax> {
-   public dze(Codec<eax> $$0) {
+public class dze extends dyu<dzd> {
+   private static final float a = 0.06F;
+
+   public dze(Codec<dzd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyg<eax> $$0) {
-      eax $$1 = $$0.f();
-      dab $$2 = $$0.b();
-      axt $$3 = $$0.d();
-      dch $$4 = $$1.b.b();
-      id $$5 = a($$2, $$0.e().j().a(ij.a.b, $$2.I_() + 1, $$2.al() - 1), $$4);
-      if ($$5 == null) {
+   public boolean a(dyw<dzd> $$0) {
+      dap $$1 = $$0.b();
+      im $$2 = $$0.e();
+      ayd $$3 = $$0.d();
+      drv $$4 = $$0.c();
+      dzd $$5 = $$0.f();
+      dcv $$6 = $$5.b.b();
+      im $$7 = null;
+      dpy $$8 = $$1.a_($$2.d());
+      if ($$8.a($$6)) {
+         $$7 = $$2;
+      }
+
+      if ($$7 == null) {
          return false;
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+         int $$9 = axw.a($$3, 4, 13);
+         if ($$3.a(12) == 0) {
+            $$9 *= 2;
+         }
 
-         for (id $$11 : id.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dpi $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
+         if (!$$5.g) {
+            int $$10 = $$4.d();
+            if ($$7.v() + $$9 + 1 >= $$10) {
+               return false;
             }
          }
 
-         return $$10;
+         boolean $$11 = !$$5.g && $$3.i() < 0.06F;
+         $$1.a($$2, dcx.a.n(), 4);
+         this.a($$1, $$3, $$5, $$7, $$9, $$11);
+         this.b($$1, $$3, $$5, $$7, $$9, $$11);
+         return true;
       }
    }
 
-   @Nullable
-   private static id a(czh $$0, id.a $$1, dch $$2) {
-      while ($$1.v() > $$0.I_() + 1) {
-         dpi $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
+   private static boolean a(dap $$0, im $$1, dzd $$2, boolean $$3) {
+      if ($$0.a($$1, dpx.a::r)) {
+         return true;
+      } else {
+         return $$3 ? $$2.f.test($$0, $$1) : false;
+      }
+   }
+
+   private void a(dap $$0, ayd $$1, dzd $$2, im $$3, int $$4, boolean $$5) {
+      im.a $$6 = new im.a();
+      dpy $$7 = $$2.c;
+      int $$8 = $$5 ? 1 : 0;
+
+      for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+            boolean $$11 = $$5 && axw.a($$9) == $$8 && axw.a($$10) == $$8;
+
+            for (int $$12 = 0; $$12 < $$4; $$12++) {
+               $$6.a($$3, $$9, $$12, $$10);
+               if (a($$0, $$6, $$2, true)) {
+                  if ($$2.g) {
+                     if (!$$0.a_($$6.d()).i()) {
+                        $$0.b($$6, true);
+                     }
+
+                     $$0.a($$6, $$7, 3);
+                  } else if ($$11) {
+                     if ($$1.i() < 0.1F) {
+                        this.a($$0, $$6, $$7);
+                     }
+                  } else {
+                     this.a($$0, $$6, $$7);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void b(dap $$0, ayd $$1, dzd $$2, im $$3, int $$4, boolean $$5) {
+      im.a $$6 = new im.a();
+      boolean $$7 = $$2.d.a(dcx.kK);
+      int $$8 = Math.min($$1.a(1 + $$4 / 3) + 5, $$4);
+      int $$9 = $$4 - $$8;
+
+      for (int $$10 = $$9; $$10 <= $$4; $$10++) {
+         int $$11 = $$10 < $$4 - $$1.a(3) ? 2 : 1;
+         if ($$8 > 8 && $$10 < $$9 + 4) {
+            $$11 = 3;
          }
 
-         $$1.c(ij.a);
-      }
+         if ($$5) {
+            $$11++;
+         }
 
-      return null;
+         for (int $$12 = -$$11; $$12 <= $$11; $$12++) {
+            for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
+               boolean $$14 = $$12 == -$$11 || $$12 == $$11;
+               boolean $$15 = $$13 == -$$11 || $$13 == $$11;
+               boolean $$16 = !$$14 && !$$15 && $$10 != $$4;
+               boolean $$17 = $$14 && $$15;
+               boolean $$18 = $$10 < $$9 + 3;
+               $$6.a($$3, $$12, $$10, $$13);
+               if (a($$0, $$6, $$2, false)) {
+                  if ($$2.g && !$$0.a_($$6.d()).i()) {
+                     $$0.b($$6, true);
+                  }
+
+                  if ($$18) {
+                     if (!$$16) {
+                        this.a($$0, $$1, $$6, $$2.d, $$7);
+                     }
+                  } else if ($$16) {
+                     this.a($$0, $$1, $$2, $$6, 0.1F, 0.2F, $$7 ? 0.1F : 0.0F);
+                  } else if ($$17) {
+                     this.a($$0, $$1, $$2, $$6, 0.01F, 0.7F, $$7 ? 0.083F : 0.0F);
+                  } else {
+                     this.a($$0, $$1, $$2, $$6, 5.0E-4F, 0.98F, $$7 ? 0.07F : 0.0F);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void a(czv $$0, ayd $$1, dzd $$2, im.a $$3, float $$4, float $$5, float $$6) {
+      if ($$1.i() < $$4) {
+         this.a($$0, $$3, $$2.e);
+      } else if ($$1.i() < $$5) {
+         this.a($$0, $$3, $$2.d);
+         if ($$1.i() < $$6) {
+            a($$3, $$0, $$1);
+         }
+      }
+   }
+
+   private void a(czv $$0, ayd $$1, im $$2, dpy $$3, boolean $$4) {
+      if ($$0.a_($$2.d()).a($$3.b())) {
+         this.a($$0, $$2, $$3);
+      } else if ((double)$$1.i() < 0.15) {
+         this.a($$0, $$2, $$3);
+         if ($$4 && $$1.a(11) == 0) {
+            a($$2, $$0, $$1);
+         }
+      }
+   }
+
+   private static void a(im $$0, czv $$1, ayd $$2) {
+      im.a $$3 = $$0.j().c(ir.a);
+      if ($$1.u($$3)) {
+         int $$4 = axw.a($$2, 1, 5);
+         if ($$2.a(7) == 0) {
+            $$4 *= 2;
+         }
+
+         int $$5 = 23;
+         int $$6 = 25;
+         ean.a($$1, $$2, $$3, $$4, 23, 25);
+      }
    }
 }

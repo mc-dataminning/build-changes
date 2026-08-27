@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@euk
-@euj
-interface eus {
+public interface eus<T> extends euy<T> {
+   boolean b(im var1, T var2);
 }

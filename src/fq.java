@@ -1,75 +1,109 @@
+import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 
-public class fq implements ArgumentType<fs> {
-   private static final Collection<String> d = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("argument.pos.unloaded"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("argument.pos.outofworld"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wi.c("argument.pos.outofbounds"));
+public class fq implements ArgumentType<Integer> {
+   private static final Collection<String> a = Arrays.asList("0d", "0s", "0t", "0");
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ws.c("argument.time.invalid_unit"));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> ws.b("argument.time.tick_count_too_low", $$1, $$0));
+   private static final Object2IntMap<String> d = new Object2IntOpenHashMap();
+   final int e;
+
+   private fq(int $$0) {
+      this.e = $$0;
+   }
 
    public static fq a() {
-      return new fq();
+      return new fq(0);
    }
 
-   public static id a(CommandContext<dv> $$0, String $$1) throws CommandSyntaxException {
-      apu $$2 = ((dv)$$0.getSource()).e();
-      return a($$0, $$2, $$1);
+   public static fq a(int $$0) {
+      return new fq($$0);
    }
 
-   public static id a(CommandContext<dv> $$0, apu $$1, String $$2) throws CommandSyntaxException {
-      id $$3 = b($$0, $$2);
-      if (!$$1.B($$3)) {
-         throw a.create();
-      } else if (!$$1.k($$3)) {
-         throw b.create();
+   public Integer a(StringReader $$0) throws CommandSyntaxException {
+      float $$1 = $$0.readFloat();
+      String $$2 = $$0.readUnquotedString();
+      int $$3 = d.getOrDefault($$2, 0);
+      if ($$3 == 0) {
+         throw b.createWithContext($$0);
       } else {
-         return $$3;
+         int $$4 = Math.round($$1 * (float)$$3);
+         if ($$4 < this.e) {
+            throw c.createWithContext($$0, $$4, this.e);
+         } else {
+            return $$4;
+         }
       }
-   }
-
-   public static id b(CommandContext<dv> $$0, String $$1) {
-      return ((fs)$$0.getArgument($$1, fs.class)).c((dv)$$0.getSource());
-   }
-
-   public static id c(CommandContext<dv> $$0, String $$1) throws CommandSyntaxException {
-      id $$2 = b($$0, $$1);
-      if (!czg.l($$2)) {
-         throw c.create();
-      } else {
-         return $$2;
-      }
-   }
-
-   public fs a(StringReader $$0) throws CommandSyntaxException {
-      return (fs)($$0.canRead() && $$0.peek() == '^' ? ft.a($$0) : fz.a($$0));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if (!($$0.getSource() instanceof ea)) {
-         return Suggestions.empty();
-      } else {
-         String $$2 = $$1.getRemaining();
-         Collection<ea.b> $$3;
-         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
-            $$3 = Collections.singleton(ea.b.a);
-         } else {
-            $$3 = ((ea)$$0.getSource()).B();
-         }
+      StringReader $$2 = new StringReader($$1.getRemaining());
 
-         return ea.a($$2, $$3, $$1, dw.a(this::a));
+      try {
+         $$2.readFloat();
+      } catch (CommandSyntaxException var5) {
+         return $$1.buildFuture();
       }
+
+      return eh.b(d.keySet(), $$1.createOffset($$1.getStart() + $$2.getCursor()));
    }
 
    public Collection<String> getExamples() {
-      return d;
+      return a;
+   }
+
+   static {
+      d.put("d", 24000);
+      d.put("s", 20);
+      d.put("t", 1);
+      d.put("", 1);
+   }
+
+   public static class a implements hw<fq, fq.a.a> {
+      public void a(fq.a.a $$0, vs $$1) {
+         $$1.p($$0.b);
+      }
+
+      public fq.a.a a(vs $$0) {
+         int $$1 = $$0.readInt();
+         return new fq.a.a($$1);
+      }
+
+      public void a(fq.a.a $$0, JsonObject $$1) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      public fq.a.a a(fq $$0) {
+         return new fq.a.a($$0.e);
+      }
+
+      public final class a implements hw.a<fq> {
+         final int b;
+
+         a(int $$1) {
+            this.b = $$1;
+         }
+
+         public fq a(dy $$0) {
+            return fq.a(this.b);
+         }
+
+         @Override
+         public hw<fq, ?> a() {
+            return a.this;
+         }
+      }
    }
 }

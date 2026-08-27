@@ -1,37 +1,41 @@
 import javax.annotation.Nullable;
 
-public abstract class fjz extends fjp {
-   protected final fcb<?>[] o;
+public class fjz extends fkt {
    @Nullable
-   private fdw a;
-   protected fev p;
+   private fff a;
 
-   public fjz(fjx $$0, fcc $$1, wi $$2, fcb<?>[] $$3) {
-      super($$0, $$1, $$2);
-      this.o = $$3;
+   public fjz(ws $$0) {
+      super($$0);
    }
 
    @Override
    protected void aM_() {
-      this.p = this.c(new fev(this.j, this.k, this.l, this));
-      this.p.a(this.o);
-      this.a = this.p.b(this.c.as());
-      if (this.a != null) {
-         this.a.j = this.j.aY().a();
-      }
-
-      super.aM_();
+      this.a = this.c(new fff(this.n, this.l, this.p, 12));
+      this.c();
    }
 
    @Override
    protected void c() {
-      super.c();
-      this.p.a(this.k, this.d);
+      if (this.a != null) {
+         this.a.b(this.n);
+         this.a.c(this.n / 2 - this.a.x() / 2, this.o / 2 - 9 / 2);
+      }
    }
 
-   public void C() {
-      if (this.a instanceof fef) {
-         ((fef)this.a).a(this.c.as().c());
-      }
+   @Override
+   public boolean aD_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aL_() {
+      return false;
+   }
+
+   @Override
+   public void b(feh $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$3);
+      this.a($$3);
+      this.a($$0);
    }
 }

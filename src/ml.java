@@ -1,57 +1,68 @@
-import java.util.function.BiConsumer;
+import java.util.Set;
 
-public class ml implements ly {
-   @Override
-   public void generate(ip.a $$0, BiConsumer<ajv, ens.a> $$1) {
-      ip.b<daf> $$2 = $$0.b(ku.aw);
-      $$1.accept(
-         eni.as,
-         ens.b()
-            .a(
-               enr.a()
-                  .a(ere.a(1.0F))
-                  .a(eog.a(eni.at).a(10).b(-2))
-                  .a(eog.a(eni.au).a(5).b(2).a(eqo.a(enk.b.a, br.a.a().a(bw.a(true)))))
-                  .a(eog.a(eni.av).a(85).b(-1))
-            )
-      );
-      $$1.accept(eni.av, a());
-      $$1.accept(
-         eni.at,
-         ens.b()
-            .a(
-               enr.a()
-                  .a(eoa.a(dcj.fm).a(17))
-                  .a(eoa.a(crv.pA).a(10).a(epm.a(erj.a(0.0F, 0.9F))))
-                  .a(eoa.a(crv.qC).a(10))
-                  .a(eoa.a(crv.ry).a(10))
-                  .a(eoa.a(crv.sj).a(10).a(epp.a(ctr.a)))
-                  .a(eoa.a(crv.pr).a(5))
-                  .a(eoa.a(crv.qU).a(2).a(epm.a(erj.a(0.0F, 0.9F))))
-                  .a(eoa.a(crv.pp).a(10))
-                  .a(eoa.a(crv.po).a(5))
-                  .a(eoa.a(crv.re).a(1).a(epl.a(ere.a(10.0F))))
-                  .a(eoa.a(dcj.fH).a(10))
-                  .a(eoa.a(crv.sd).a(10))
-                  .a(eoa.a(dcj.mZ).a(eqj.a(ck.a.a().a(ir.a($$2.b(dam.x), $$2.b(dam.y), $$2.b(dam.z))))).a(10))
-            )
-      );
-      $$1.accept(
-         eni.au,
-         ens.b()
-            .a(
-               enr.a()
-                  .a(eoa.a(crv.uJ))
-                  .a(eoa.a(crv.nK))
-                  .a(eoa.a(crv.ot).a(epm.a(erj.a(0.0F, 0.25F))).a(eor.a(ere.a(30.0F)).e()))
-                  .a(eoa.a(crv.qU).a(epm.a(erj.a(0.0F, 0.25F))).a(eor.a(ere.a(30.0F)).e()))
-                  .a(eoa.a(crv.qO).a(eor.a(ere.a(30.0F)).e()))
-                  .a(eoa.a(crv.vP))
-            )
-      );
+public class ml extends me {
+   protected ml() {
+      super(Set.of(), cmy.a(cna.c));
    }
 
-   public static ens.a a() {
-      return ens.b().a(enr.a().a(eoa.a(crv.qY).a(60)).a(eoa.a(crv.qZ).a(25)).a(eoa.a(crv.ra).a(2)).a(eoa.a(crv.rb).a(13)));
+   @Override
+   protected void b() {
+      this.t(dcx.tq);
+      this.t(dcx.qH);
+      this.t(dcx.qB);
+      this.t(dcx.qC);
+      this.t(dcx.qD);
+      this.t(dcx.qF);
+      this.t(dcx.qG);
+      this.t(dcx.qI);
+      this.t(dcx.qK);
+      this.t(dcx.qL);
+      this.t(dcx.qM);
+      this.a(dcx.qA, $$1 -> this.a($$1));
+      this.a(dcx.qJ, $$1 -> this.a($$1));
+      this.a(dcx.qE, $$1 -> this.a($$1));
+      this.t(dcx.rj);
+      this.t(dcx.ri);
+      this.t(dcx.rh);
+      this.t(dcx.rg);
+      this.t(dcx.rn);
+      this.t(dcx.rm);
+      this.t(dcx.rl);
+      this.t(dcx.rk);
+      this.a(dcx.rM, $$1 -> this.q($$1));
+      this.a(dcx.rN, $$1 -> this.q($$1));
+      this.a(dcx.rP, $$1 -> this.q($$1));
+      this.a(dcx.rO, $$1 -> this.q($$1));
+      this.a(dcx.rQ, $$1 -> this.q($$1));
+      this.a(dcx.rR, $$1 -> this.q($$1));
+      this.a(dcx.rT, $$1 -> this.q($$1));
+      this.a(dcx.rS, $$1 -> this.q($$1));
+      this.t(dcx.rU);
+      this.t(dcx.rV);
+      this.t(dcx.rX);
+      this.t(dcx.rW);
+      this.t(dcx.rY);
+      this.t(dcx.rZ);
+      this.t(dcx.sb);
+      this.t(dcx.sa);
+      this.t(dcx.sc);
+      this.t(dcx.sd);
+      this.t(dcx.se);
+      this.t(dcx.sf);
+      this.t(dcx.sg);
+      this.t(dcx.sh);
+      this.t(dcx.si);
+      this.t(dcx.sj);
+      this.t(dcx.sk);
+      this.t(dcx.sl);
+      this.t(dcx.sm);
+      this.t(dcx.sn);
+      this.t(dcx.so);
+      this.t(dcx.sp);
+      this.t(dcx.sq);
+      this.t(dcx.sr);
+      this.a(dcx.tr, a());
+      this.a(dcx.ts, a());
+      this.t(dcx.tt);
    }
 }

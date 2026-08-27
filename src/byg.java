@@ -1,64 +1,35 @@
-import java.util.EnumSet;
+public class byg extends byb {
+   private final cdq a;
+   private aqf b;
+   private boolean c;
 
-public class byg extends bxq {
-   private final bqv a;
-   private bqt b;
-   private int c;
-
-   public byg(bqv $$0) {
+   public byg(cdq $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bxq.a.a, bxq.a.b));
    }
 
    @Override
    public boolean a() {
-      bqt $$0 = this.a.p();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0;
-         return true;
-      }
+      aqf $$0 = (aqf)this.a.P_();
+      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.gb().b && !$$0.bc() && !$$0.aB;
+      return !this.a.gp() && $$1 && this.a.gy();
    }
 
    @Override
-   public boolean b() {
-      if (!this.b.bA()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > 225.0 ? false : !this.a.K().l() || this.a();
-      }
+   public boolean Q_() {
+      return !this.c;
    }
 
    @Override
-   public void d() {
-      this.b = null;
-      this.a.K().n();
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
+   public void c() {
+      this.b = (aqf)this.a.P_();
+      this.c = false;
    }
 
    @Override
    public void e() {
-      this.a.G().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dg() * 2.0F * this.a.dg() * 2.0F);
-      double $$1 = this.a.i(this.b.dr(), this.b.dt(), this.b.dx());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.K().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.C(this.b);
+      if (!this.c && !this.a.y() && !this.a.gc()) {
+         if (this.a.cI().c(this.b.cI())) {
+            this.c = this.a.b(this.b);
          }
       }
    }

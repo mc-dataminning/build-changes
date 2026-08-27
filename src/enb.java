@@ -1,313 +1,54 @@
-import java.nio.file.Path;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class enb implements Comparable<enb> {
-   public static final wi a = wi.c("selectWorld.select");
-   private final czk b;
-   private final enc c;
-   private final String d;
-   private final boolean e;
-   private final boolean f;
-   private final boolean g;
-   private final Path h;
+public class enb {
+   private final im a;
+   private final int b;
+   private final int c;
+
+   public enb(im $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
    @Nullable
-   private wi i;
-
-   public enb(czk $$0, enc $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.e = $$3;
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public String b() {
-      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
-   }
-
-   public Path c() {
-      return this.h;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public long f() {
-      return this.c.b();
-   }
-
-   public int a(enb $$0) {
-      if (this.f() < $$0.f()) {
-         return 1;
+   public static enb a(ty $$0) {
+      Optional<im> $$1 = un.a($$0, "pos");
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
+         int $$2 = $$0.h("rotation");
+         int $$3 = $$0.h("entity_id");
+         return new enb($$1.get(), $$2, $$3);
       }
    }
 
-   public czk g() {
+   public ty a() {
+      ty $$0 = new ty();
+      $$0.a("pos", un.a(this.a));
+      $$0.a("rotation", this.b);
+      $$0.a("entity_id", this.c);
+      return $$0;
+   }
+
+   public im b() {
+      return this.a;
+   }
+
+   public int c() {
       return this.b;
    }
 
-   public czd h() {
-      return this.b.b();
-   }
-
-   public boolean i() {
-      return this.b.c();
-   }
-
-   public boolean j() {
-      return this.b.e();
-   }
-
-   public ww k() {
-      return ayh.b(this.c.c()) ? wi.c("selectWorld.versionUnknown") : wi.b(this.c.c());
-   }
-
-   public enc l() {
+   public int d() {
       return this.c;
    }
 
-   public boolean m() {
-      return this.o().a();
+   public String e() {
+      return a(this.a);
    }
 
-   public boolean n() {
-      return this.o() == enb.a.b;
-   }
-
-   public enb.a o() {
-      ad $$0 = aa.b();
-      int $$1 = $$0.d().c();
-      int $$2 = this.c.d().c();
-      if (!$$0.g() && $$2 < $$1) {
-         return enb.a.c;
-      } else {
-         return $$2 > $$1 ? enb.a.b : enb.a.a;
-      }
-   }
-
-   public boolean p() {
-      return this.f;
-   }
-
-   public boolean q() {
-      return !this.p() && !this.d() ? !this.r() : true;
-   }
-
-   public boolean r() {
-      return aa.b().d().a(this.c.d());
-   }
-
-   public wi s() {
-      if (this.i == null) {
-         this.i = this.z();
-      }
-
-      return this.i;
-   }
-
-   private wi z() {
-      if (this.p()) {
-         return wi.c("selectWorld.locked").a(n.m);
-      } else if (this.d()) {
-         return wi.c("selectWorld.conversion").a(n.m);
-      } else if (!this.r()) {
-         return wi.a("selectWorld.incompatible.info", this.k()).a(n.m);
-      } else {
-         ww $$0 = this.i() ? wi.i().b(wi.c("gameMode.hardcore").b(-65536)) : wi.c("gameMode." + this.h().b());
-         if (this.j()) {
-            $$0.f(", ").b(wi.c("selectWorld.commands"));
-         }
-
-         if (this.e()) {
-            $$0.f(", ").b(wi.c("selectWorld.experimental").a(n.o));
-         }
-
-         ww $$1 = this.k();
-         ww $$2 = wi.b(", ").b(wi.c("selectWorld.version")).b(wh.v);
-         if (this.m()) {
-            $$2.b($$1.a(this.n() ? n.m : n.u));
-         } else {
-            $$2.b($$1);
-         }
-
-         $$0.b($$2);
-         return $$0;
-      }
-   }
-
-   public wi t() {
-      return a;
-   }
-
-   public boolean u() {
-      return !this.q();
-   }
-
-   public boolean v() {
-      return !this.d() && !this.p();
-   }
-
-   public boolean w() {
-      return !this.q();
-   }
-
-   public boolean x() {
-      return !this.q();
-   }
-
-   public boolean y() {
-      return true;
-   }
-
-   public static enum a {
-      a(false, false, ""),
-      b(true, true, "downgrade"),
-      c(true, false, "snapshot");
-
-      private final boolean d;
-      private final boolean e;
-      private final String f;
-
-      private a(boolean $$0, boolean $$1, String $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public boolean b() {
-         return this.e;
-      }
-
-      public String c() {
-         return this.f;
-      }
-   }
-
-   public static class b extends enb {
-      private static final wi b = wi.c("recover_world.warning").a($$0 -> $$0.a(-65536));
-      private static final wi c = wi.c("recover_world.button");
-      private final long d;
-
-      public b(String $$0, Path $$1, long $$2) {
-         super(null, null, $$0, false, false, false, $$1);
-         this.d = $$2;
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public wi s() {
-         return b;
-      }
-
-      @Override
-      public long f() {
-         return this.d;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public wi t() {
-         return c;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
-      }
-   }
-
-   public static class c extends enb {
-      private static final wi b = wi.c("symlink_warning.more_info");
-      private static final wi c = wi.c("symlink_warning.title").b(-65536);
-
-      public c(String $$0, Path $$1) {
-         super(null, null, $$0, false, false, false, $$1);
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public wi s() {
-         return c;
-      }
-
-      @Override
-      public long f() {
-         return -1L;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public wi t() {
-         return b;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
-      }
+   public static String a(im $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

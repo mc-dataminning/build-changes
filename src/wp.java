@@ -1,71 +1,88 @@
-import com.google.common.primitives.Ints;
 import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 
-public record wp(List<wu> d) {
-   public static final Codec<wp> a = wu.a.listOf().xmap(wp::new, wp::a);
-   public static wp b = new wp(List.of());
-   public static final int c = 20;
+public record wp(String b, List<wp.a> c, xp d) {
+   public static final Codec<wp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(wp::a),
+               wp.a.d.listOf().fieldOf("parameters").forGetter(wp::b),
+               xp.b.b.optionalFieldOf("style", xp.a).forGetter(wp::c)
+            )
+            .apply($$0, wp::new)
+   );
 
-   public void a(axx.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
+   public static wp a(String $$0) {
+      return new wp($$0, List.of(wp.a.a, wp.a.c), xp.a);
+   }
 
-      for (wu $$1 : this.d) {
-         $$0.update($$1.b());
+   public static wp b(String $$0) {
+      xp $$1 = xp.a.a(n.h).b(true);
+      return new wp($$0, List.of(wp.a.a, wp.a.c), $$1);
+   }
+
+   public static wp c(String $$0) {
+      xp $$1 = xp.a.a(n.h).b(true);
+      return new wp($$0, List.of(wp.a.b, wp.a.c), $$1);
+   }
+
+   public static wp d(String $$0) {
+      return new wp($$0, List.of(wp.a.b, wp.a.a, wp.a.c), xp.a);
+   }
+
+   public ws a(ws $$0, wo.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return ws.a(this.b, $$2).c(this.d);
+   }
+
+   private ws[] b(ws $$0, wo.a $$1) {
+      ws[] $$2 = new ws[this.c.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         wp.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
+
+      return $$2;
    }
 
-   public wp.a a(wv $$0) {
-      return new wp.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
+   public String a() {
+      return this.b;
    }
 
-   public List<wu> a() {
+   public List<wp.a> b() {
+      return this.c;
+   }
+
+   public xp c() {
       return this.d;
    }
 
-   public static record a(List<wu.a> b) {
-      public static final wp.a a = new wp.a(List.of());
+   public static enum a implements ayq {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c().orElse(wr.a)),
+      c("content", ($$0, $$1) -> $$0);
 
-      public a(vi $$0) {
-         this($$0.a(vi.a(ArrayList::new, 20), wu.a::a));
+      public static final Codec<wp.a> d = ayq.a(wp.a::values);
+      private final String e;
+      private final wp.a.a f;
+
+      private a(String $$0, wp.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      public void a(vi $$0) {
-         $$0.a(this.b, wu.a::a);
+      public ws a(ws $$0, wo.a $$1) {
+         return this.f.select($$0, $$1);
       }
 
-      public Optional<wp> a(wv $$0) {
-         List<wu> $$1 = new ArrayList<>(this.b.size());
-
-         for (wu.a $$2 : this.b) {
-            Optional<wu> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
-            }
-
-            $$1.add($$3.get());
-         }
-
-         return Optional.of(new wp($$1));
+      @Override
+      public String c() {
+         return this.e;
       }
 
-      public List<wu.a> a() {
-         return this.b;
-      }
-   }
-
-   public static record b(int a, BitSet b) {
-      public b(vi $$0) {
-         this($$0.l(), $$0.e(20));
-      }
-
-      public void a(vi $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
+      public interface a {
+         ws select(ws var1, wo.a var2);
       }
    }
 }

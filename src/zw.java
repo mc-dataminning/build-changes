@@ -1,45 +1,98 @@
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record zw(int c, id d, List<zw.a> e) implements zq {
-   public static final yg<vi, zw> a = zq.a(zw::a, zw::new);
-   public static final zq.b<zw> b = zq.a("debug/goal_selector");
+public record zw(zw.a c) implements aaa {
+   public static final yq<vs, zw> a = aaa.a(zw::a, zw::new);
+   public static final aaa.b<zw> b = aaa.a("debug/bee");
 
-   private zw(vi $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(zw.a::new));
+   private zw(vs $$0) {
+      this(new zw.a($$0));
    }
 
-   private void a(vi $$0) {
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vs $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public zq.b<zw> a() {
+   public aaa.b<zw> a() {
       return b;
    }
 
-   public int b() {
+   public zw.a b() {
       return this.c;
    }
 
-   public id c() {
-      return this.d;
-   }
-
-   public List<zw.a> d() {
-      return this.e;
-   }
-
-   public static record a(int a, boolean b, String c) {
-      public a(vi $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+   public static record a(UUID a, int b, etf c, @Nullable emf d, @Nullable im e, @Nullable im f, int g, Set<String> h, List<im> i) {
+      public a(vs $$0) {
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(emf::b), $$0.c(im.b), $$0.c(im.b), $$0.readInt(), $$0.a(HashSet::new, vs::p), $$0.a(im.b));
       }
 
-      public void a(vi $$0) {
-         $$0.p(this.a);
-         $$0.a(this.b);
+      public void a(vs $$0) {
+         $$0.a(this.a);
+         $$0.p(this.b);
          $$0.a(this.c);
+         $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
+         $$0.a(this.e, im.b);
+         $$0.a(this.f, im.b);
+         $$0.p(this.g);
+         $$0.a(this.h, vs::a);
+         $$0.a(this.i, im.b);
+      }
+
+      public boolean a(im $$0) {
+         return Objects.equals($$0, this.e);
+      }
+
+      public String a() {
+         return aft.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public etf d() {
+         return this.c;
+      }
+
+      @Nullable
+      public emf e() {
+         return this.d;
+      }
+
+      @Nullable
+      public im f() {
+         return this.e;
+      }
+
+      @Nullable
+      public im g() {
+         return this.f;
+      }
+
+      public int h() {
+         return this.g;
+      }
+
+      public Set<String> i() {
+         return this.h;
+      }
+
+      public List<im> j() {
+         return this.i;
       }
    }
 }

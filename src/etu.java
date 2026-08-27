@@ -1,59 +1,20 @@
-public interface etu extends bny {
-   crs f();
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   default crs c(int $$0) {
-      return this.f().a($$0);
+public class etu extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
+
+   public etu(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   void a(crs var1);
-
-   default crs h() {
-      return this.c(this.ah_());
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
    }
 
-   @Override
-   default int b() {
-      return 1;
-   }
-
-   @Override
-   default boolean c() {
-      return this.f().d();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default crs b(int $$0) {
-      return this.a($$0, this.ah_());
-   }
-
-   @Override
-   default crs a(int $$0) {
-      return $$0 == 0 ? this.f() : crs.i;
-   }
-
-   @Override
-   default crs a(int $$0, int $$1) {
-      return $$0 != 0 ? crs.i : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, crs $$1) {
-      if ($$0 == 0) {
-         this.a($$1);
-      }
-   }
-
-   public interface a extends etu {
-      dmo u();
-
-      @Override
-      default boolean a(cka $$0) {
-         return bny.a(this.u(), $$0);
-      }
+   public int size() {
+      return this.a.size();
    }
 }

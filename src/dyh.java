@@ -1,29 +1,29 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class dyh extends dye<eam> {
-   public dyh(Codec<eam> $$0) {
-      super($$0);
+public record dyh<FC extends eay, F extends dyu<FC>>(F d, FC e) {
+   public static final Codec<dyh<?, ?>> a = lc.Q.q().dispatch($$0 -> $$0.d, dyu::a);
+   public static final Codec<iv<dyh<?, ?>>> b = akb.a(ld.aB, a);
+   public static final Codec<iz<dyh<?, ?>>> c = jk.a(ld.aB, a);
+
+   public boolean a(dap $$0, drv $$1, ayd $$2, im $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<dyh<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   public boolean a(dyg<eam> $$0) {
-      id $$1 = $$0.e();
-      eam $$2 = $$0.f();
-      dab $$3 = $$0.b();
-      id.a $$4 = new id.a();
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.I_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
-            }
-         }
-      }
+   public F b() {
+      return this.d;
+   }
 
-      return true;
+   public FC c() {
+      return this.e;
    }
 }

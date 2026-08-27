@@ -1,96 +1,122 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dnu extends dmo implements dud.b<dnu.a> {
-   private final dnu.a a;
+public class dnu {
+   private static final String b = "decorated_pot_base";
+   public static final ake<String> a = a("decorated_pot_base");
+   private static final String c = "decorated_pot_side";
+   private static final String d = "angler_pottery_pattern";
+   private static final String e = "archer_pottery_pattern";
+   private static final String f = "arms_up_pottery_pattern";
+   private static final String g = "blade_pottery_pattern";
+   private static final String h = "brewer_pottery_pattern";
+   private static final String i = "burn_pottery_pattern";
+   private static final String j = "danger_pottery_pattern";
+   private static final String k = "explorer_pottery_pattern";
+   private static final String l = "flow_pottery_pattern";
+   private static final String m = "friend_pottery_pattern";
+   private static final String n = "guster_pottery_pattern";
+   private static final String o = "heart_pottery_pattern";
+   private static final String p = "heartbreak_pottery_pattern";
+   private static final String q = "howl_pottery_pattern";
+   private static final String r = "miner_pottery_pattern";
+   private static final String s = "mourner_pottery_pattern";
+   private static final String t = "plenty_pottery_pattern";
+   private static final String u = "prize_pottery_pattern";
+   private static final String v = "scrape_pottery_pattern";
+   private static final String w = "sheaf_pottery_pattern";
+   private static final String x = "shelter_pottery_pattern";
+   private static final String y = "skull_pottery_pattern";
+   private static final String z = "snort_pottery_pattern";
+   private static final ake<String> A = a("decorated_pot_side");
+   private static final ake<String> B = a("angler_pottery_pattern");
+   private static final ake<String> C = a("archer_pottery_pattern");
+   private static final ake<String> D = a("arms_up_pottery_pattern");
+   private static final ake<String> E = a("blade_pottery_pattern");
+   private static final ake<String> F = a("brewer_pottery_pattern");
+   private static final ake<String> G = a("burn_pottery_pattern");
+   private static final ake<String> H = a("danger_pottery_pattern");
+   private static final ake<String> I = a("explorer_pottery_pattern");
+   private static final ake<String> J = a("flow_pottery_pattern");
+   private static final ake<String> K = a("friend_pottery_pattern");
+   private static final ake<String> L = a("guster_pottery_pattern");
+   private static final ake<String> M = a("heart_pottery_pattern");
+   private static final ake<String> N = a("heartbreak_pottery_pattern");
+   private static final ake<String> O = a("howl_pottery_pattern");
+   private static final ake<String> P = a("miner_pottery_pattern");
+   private static final ake<String> Q = a("mourner_pottery_pattern");
+   private static final ake<String> R = a("plenty_pottery_pattern");
+   private static final ake<String> S = a("prize_pottery_pattern");
+   private static final ake<String> T = a("scrape_pottery_pattern");
+   private static final ake<String> U = a("sheaf_pottery_pattern");
+   private static final ake<String> V = a("shelter_pottery_pattern");
+   private static final ake<String> W = a("skull_pottery_pattern");
+   private static final ake<String> X = a("snort_pottery_pattern");
+   private static final Map<cry, ake<String>> Y = Map.ofEntries(
+      Map.entry(csg.qL, A),
+      Map.entry(csg.xL, B),
+      Map.entry(csg.xM, C),
+      Map.entry(csg.xN, D),
+      Map.entry(csg.xO, E),
+      Map.entry(csg.xP, F),
+      Map.entry(csg.xQ, G),
+      Map.entry(csg.xR, H),
+      Map.entry(csg.xS, I),
+      Map.entry(csg.xT, J),
+      Map.entry(csg.xU, K),
+      Map.entry(csg.xV, L),
+      Map.entry(csg.xW, M),
+      Map.entry(csg.xX, N),
+      Map.entry(csg.xY, O),
+      Map.entry(csg.xZ, P),
+      Map.entry(csg.ya, Q),
+      Map.entry(csg.yb, R),
+      Map.entry(csg.yc, S),
+      Map.entry(csg.yd, T),
+      Map.entry(csg.ye, U),
+      Map.entry(csg.yf, V),
+      Map.entry(csg.yg, W),
+      Map.entry(csg.yh, X)
+   );
 
-   public dnu(id $$0, dpi $$1) {
-      super(dmq.K, $$0, $$1);
-      this.a = new dnu.a($$1, new dtx($$0));
+   private static ake<String> a(String $$0) {
+      return ake.a(ld.as, new akf($$0));
    }
 
-   public static void a(czg $$0, id $$1, dpi $$2, dnu $$3) {
-      $$3.a.d().a($$0, $$1, $$0.E_(), true);
+   public static akf a(ake<String> $$0) {
+      return $$0.a().d("entity/decorated_pot/");
    }
 
-   @Override
-   public void a(to $$0, ip.a $$1) {
-      this.a.b.a($$0);
+   @Nullable
+   public static ake<String> a(cry $$0) {
+      return Y.get($$0);
    }
 
-   @Override
-   protected void b(to $$0, ip.a $$1) {
-      this.a.b.b($$0);
-      super.b($$0, $$1);
-   }
-
-   public dnu.a b() {
-      return this.a;
-   }
-
-   public static class a implements dud {
-      public static final int a = 8;
-      final djb b;
-      private final dpi c;
-      private final duf d;
-
-      public a(dpi $$0, duf $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = djb.a();
-      }
-
-      @Override
-      public duf a() {
-         return this.d;
-      }
-
-      @Override
-      public int b() {
-         return 8;
-      }
-
-      @Override
-      public dud.a c() {
-         return dud.a.b;
-      }
-
-      @Override
-      public boolean a(apu $$0, in<dub> $$1, dub.a $$2, esj $$3) {
-         if ($$1.a(dub.p) && $$2.a() instanceof bqt $$4) {
-            if (!$$4.eF()) {
-               int $$5 = $$4.eg();
-               if ($$4.ee() && $$5 > 0) {
-                  this.b.a(id.a($$3.a(ij.b, 0.5)), $$5);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eE();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, id.a($$1x), this.c, $$0.E_()));
-            }
-
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      @VisibleForTesting
-      public djb d() {
-         return this.b;
-      }
-
-      private void a(apu $$0, id $$1, dpi $$2, axt $$3) {
-         $$0.a($$1, $$2.a(diy.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(kn.H, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, auo.vE, aup.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
-
-      private void a(czg $$0, bqt $$1) {
-         if ($$1.ej() instanceof apv $$3) {
-            boy $$4 = $$1.ez() == null ? $$0.ai().a((cka)$$3) : $$1.ez();
-            am.Z.a($$3, $$1, $$4);
-         }
-      }
+   public static String a(ji<String> $$0) {
+      ji.a($$0, A, "decorated_pot_side");
+      ji.a($$0, B, "angler_pottery_pattern");
+      ji.a($$0, C, "archer_pottery_pattern");
+      ji.a($$0, D, "arms_up_pottery_pattern");
+      ji.a($$0, E, "blade_pottery_pattern");
+      ji.a($$0, F, "brewer_pottery_pattern");
+      ji.a($$0, G, "burn_pottery_pattern");
+      ji.a($$0, H, "danger_pottery_pattern");
+      ji.a($$0, I, "explorer_pottery_pattern");
+      ji.a($$0, J, "flow_pottery_pattern");
+      ji.a($$0, K, "friend_pottery_pattern");
+      ji.a($$0, L, "guster_pottery_pattern");
+      ji.a($$0, M, "heart_pottery_pattern");
+      ji.a($$0, N, "heartbreak_pottery_pattern");
+      ji.a($$0, O, "howl_pottery_pattern");
+      ji.a($$0, P, "miner_pottery_pattern");
+      ji.a($$0, Q, "mourner_pottery_pattern");
+      ji.a($$0, R, "plenty_pottery_pattern");
+      ji.a($$0, S, "prize_pottery_pattern");
+      ji.a($$0, T, "scrape_pottery_pattern");
+      ji.a($$0, U, "sheaf_pottery_pattern");
+      ji.a($$0, V, "shelter_pottery_pattern");
+      ji.a($$0, W, "skull_pottery_pattern");
+      ji.a($$0, X, "snort_pottery_pattern");
+      return ji.a($$0, a, "decorated_pot_base");
    }
 }

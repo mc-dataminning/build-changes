@@ -1,156 +1,29 @@
-public class ahe implements yp<afn> {
-   public static final yg<vi, ahe> a = yp.a(ahe::a, ahe::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final id e;
-   private final dod.a f;
-   private final dqs g;
-   private final String h;
-   private final id i;
-   private final ji j;
-   private final dhd k;
-   private final dit l;
-   private final String m;
-   private final boolean n;
-   private final boolean o;
-   private final boolean p;
-   private final float q;
-   private final long r;
+public class ahe implements yz<afx> {
+   public static final yq<vs, ahe> a = yz.a(ahe::a, ahe::new);
+   private final akf b;
 
-   public ahe(
-      id $$0, dod.a $$1, dqs $$2, String $$3, id $$4, ji $$5, dhd $$6, dit $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
-   ) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$12;
-      this.r = $$13;
+   public ahe(cwi<?> $$0) {
+      this.b = $$0.a();
    }
 
-   private ahe(vi $$0) {
-      this.e = $$0.e();
-      this.f = $$0.b(dod.a.class);
-      this.g = $$0.b(dqs.class);
-      this.h = $$0.p();
-      int $$1 = 48;
-      this.i = new id(axm.a($$0.readByte(), -48, 48), axm.a($$0.readByte(), -48, 48), axm.a($$0.readByte(), -48, 48));
-      int $$2 = 48;
-      this.j = new ji(axm.a($$0.readByte(), 0, 48), axm.a($$0.readByte(), 0, 48), axm.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(dhd.class);
-      this.l = $$0.b(dit.class);
-      this.m = $$0.d(128);
-      this.q = axm.a($$0.readFloat(), 0.0F, 1.0F);
-      this.r = $$0.m();
-      int $$3 = $$0.readByte();
-      this.n = ($$3 & 1) != 0;
-      this.o = ($$3 & 2) != 0;
-      this.p = ($$3 & 4) != 0;
+   private ahe(vs $$0) {
+      this.b = $$0.q();
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.k(this.i.u());
-      $$0.k(this.i.v());
-      $$0.k(this.i.w());
-      $$0.k(this.j.u());
-      $$0.k(this.j.v());
-      $$0.k(this.j.w());
-      $$0.a(this.k);
-      $$0.a(this.l);
-      $$0.a(this.m);
-      $$0.a(this.q);
-      $$0.a(this.r);
-      int $$1 = 0;
-      if (this.n) {
-         $$1 |= 1;
-      }
-
-      if (this.o) {
-         $$1 |= 2;
-      }
-
-      if (this.p) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+   private void a(vs $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yr<ahe> a() {
-      return afl.bW;
+   public zb<ahe> a() {
+      return afv.bM;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
-   public id b() {
-      return this.e;
-   }
-
-   public dod.a e() {
-      return this.f;
-   }
-
-   public dqs f() {
-      return this.g;
-   }
-
-   public String g() {
-      return this.h;
-   }
-
-   public id h() {
-      return this.i;
-   }
-
-   public ji i() {
-      return this.j;
-   }
-
-   public dhd j() {
-      return this.k;
-   }
-
-   public dit k() {
-      return this.l;
-   }
-
-   public String l() {
-      return this.m;
-   }
-
-   public boolean m() {
-      return this.n;
-   }
-
-   public boolean n() {
-      return this.o;
-   }
-
-   public boolean o() {
-      return this.p;
-   }
-
-   public float p() {
-      return this.q;
-   }
-
-   public long q() {
-      return this.r;
+   public akf b() {
+      return this.b;
    }
 }

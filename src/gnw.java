@@ -1,8 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface gnw {
-   god a(ajv var1);
-
-   @Nullable
-   gns a(ajv var1, goa var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gnw {
 }

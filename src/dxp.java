@@ -1,48 +1,61 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxp extends dye<eap> {
-   public dxp(Codec<eap> $$0) {
-      super($$0);
+public class dxp {
+   public static final dxp a = new dxp(false, dcx.gz.n(), dcx.pL.n(), dcx.ej.n(), dcx.aQ.n());
+   public static final Codec<dxp> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dxp::a),
+               dpy.b.optionalFieldOf("air_state", a.b()).forGetter(dxp::b),
+               dpy.b.optionalFieldOf("water_state", a.b()).forGetter(dxp::c),
+               dpy.b.optionalFieldOf("lava_state", a.b()).forGetter(dxp::d),
+               dpy.b.optionalFieldOf("barrier_state", a.b()).forGetter(dxp::e)
+            )
+            .apply($$0, dxp::new)
+   );
+   private final boolean c;
+   private final dpy d;
+   private final dpy e;
+   private final dpy f;
+   private final dpy g;
+
+   public static dxp a(boolean $$0, dpy $$1, dpy $$2, dpy $$3, dpy $$4) {
+      return new dxp($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(dyg<eap> $$0) {
-      axt $$1 = $$0.d();
-      dab $$2 = $$0.b();
-      cyn $$3 = new cyn($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      id.a $$6 = new id.a();
-      IntListIterator var8 = $$4.iterator();
+   public static dxp a(dpy $$0, dpy $$1, dpy $$2, dpy $$3) {
+      return new dxp(false, $$0, $$1, $$2, $$3);
+   }
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
+   public static dxp a(boolean $$0, dpy $$1) {
+      return new dxp($$0, $$1, a.c(), a.d(), a.e());
+   }
 
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            id $$9 = $$2.a(dva.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, dcj.cv.n(), 2);
-               bon.a($$2, $$1, $$9, eni.b);
-               dpi $$10 = dcj.cp.n();
+   private dxp(boolean $$0, dpy $$1, dpy $$2, dpy $$3, dpy $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
 
-               for (ij $$11 : ij.c.a) {
-                  id $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
+   public boolean a() {
+      return this.c;
+   }
 
-               return true;
-            }
-         }
-      }
+   public dpy b() {
+      return this.d;
+   }
 
-      return false;
+   public dpy c() {
+      return this.e;
+   }
+
+   public dpy d() {
+      return this.f;
+   }
+
+   public dpy e() {
+      return this.g;
    }
 }

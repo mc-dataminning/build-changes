@@ -1,55 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class del extends dch {
-   public static final MapCodec<del> a = b(del::new);
-   protected static final etc b = dfe.c;
+public class del extends dcd {
+   public static final MapCodec<del> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dek.a.forGetter($$0x -> $$0x.c), u()).apply($$0, del::new));
+   private final dcv c;
 
    @Override
    public MapCodec<del> a() {
-      return a;
-   }
-
-   protected del(dph.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected boolean g_(dpi $$0) {
-      return true;
-   }
-
-   @Override
-   public dpi a(cux $$0) {
-      return !this.n().a((czj)$$0.q(), $$0.a()) ? dch.a(this.n(), dcj.j.n(), $$0.q(), $$0.a()) : super.a($$0);
-   }
-
-   @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$1 == ij.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      dfe.a(null, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      dpi $$3 = $$1.a_($$2.c());
-      return !$$3.e() || $$3.b() instanceof dfg;
-   }
-
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
       return b;
    }
 
+   protected del(dcv $$0, dpx.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
+
    @Override
-   protected boolean a(dpi $$0, elq $$1) {
-      return false;
+   protected void b(dpy $$0, czu $$1, im $$2, dpy $$3, boolean $$4) {
+      this.a($$0, (czv)$$1, $$2);
+   }
+
+   @Override
+   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.n().a(d, Boolean.valueOf(false)), 2);
+      }
+   }
+
+   @Override
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$1 == ir.a && !$$0.a($$3, $$4)) {
+         return dcx.a.n();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, els.c, els.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

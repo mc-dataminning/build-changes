@@ -1,16 +1,16 @@
-public class gje extends gkc<ccl, fqg<ccl>> {
-   private static final ajv a = new ajv("textures/entity/cat/cat_collar.png");
-   private final fqg<ccl> b;
+public class gje extends ght<cdu, ftz<cdu>> {
+   private static final akf a = new akf("textures/entity/turtle/big_sea_turtle.png");
 
-   public gje(ghm<ccl, fqg<ccl>> $$0, ftr $$1) {
-      super($$0);
-      this.b = new fqg<>($$1.a(ftu.u));
+   public gje(ggn.a $$0) {
+      super($$0, new ftz<>($$0.a(fuq.bN)), 0.7F);
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, ccl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.r()) {
-         float[] $$10 = $$3.gx().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
-      }
+   protected float a(cdu $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.83F : $$1;
+   }
+
+   public akf b(cdu $$0) {
+      return a;
    }
 }

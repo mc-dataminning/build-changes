@@ -1,12 +1,5 @@
-public interface gx extends AutoCloseable {
-   void a(int var1, String var2);
-
-   void a(int var1, String var2, int var3);
-
-   void a(String var1);
-
-   void a(int var1, ajv var2, int var3);
-
-   @Override
-   void close();
+public record gx<T>(hd a, ha<T> b) {
+   public void a(hb<T> $$0) {
+      this.b.execute($$0, this.a);
+   }
 }

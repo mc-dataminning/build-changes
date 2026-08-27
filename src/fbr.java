@@ -1,39 +1,69 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum fbr implements axo {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
-
-   private static final IntFunction<fbr> d = awd.a(fbr::a, values(), awd.a.b);
-   private final int e;
+public class fbr extends fbu {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ws c = ws.c("mco.snapshot.creating");
+   private final long d;
+   private final fbn e;
    private final String f;
+   private final String g;
+   private final exy h;
+   @Nullable
+   private fbw i;
+   @Nullable
+   private fbx j;
 
-   private fbr(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fbr(exy $$0, long $$1, fbn $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$0;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public void run() {
+      eyd $$0 = eyd.a();
+
+      try {
+         eyu $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new fbw($$1.a, this.f, this.g);
+         this.j = new fbx(this.e, $$1.a, fas.a, () -> fcu.Q().execute(() -> exy.a($$1, this.h, true)));
+         if (this.d()) {
+            return;
+         }
+
+         this.i.run();
+         if (this.d()) {
+            return;
+         }
+
+         this.j.run();
+      } catch (ezq var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
+      }
    }
 
    @Override
-   public String b() {
-      return this.f;
+   public ws a() {
+      return c;
    }
 
    @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
+      }
 
-   public static fbr a(int $$0) {
-      return d.apply($$0);
+      if (this.j != null) {
+         this.j.b();
+      }
    }
 }

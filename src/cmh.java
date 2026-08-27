@@ -1,163 +1,151 @@
 import javax.annotation.Nullable;
 
-public class cmh extends clv {
-   private static final byte c = 10;
-   private int d = -1;
+public abstract class cmh extends cmg implements cmk {
+   private je<csd> c = je.a(36, csd.i);
+   @Nullable
+   private akf d;
+   private long e;
 
-   public cmh(bqg<? extends cmh> $$0, czg $$1) {
+   protected cmh(bqr<?> $$0, czu $$1) {
       super($$0, $$1);
    }
 
-   public cmh(czg $$0, double $$1, double $$2, double $$3) {
-      super(bqg.bc, $$0, $$1, $$2, $$3);
+   protected cmh(bqr<?> $$0, double $$1, double $$2, double $$3, czu $$4) {
+      super($$0, $$4, $$1, $$2, $$3);
    }
 
    @Override
-   public clv.a v() {
-      return clv.a.d;
+   public void a(bpj $$0) {
+      super.a($$0);
+      this.a($$0, this.dN(), this);
    }
 
    @Override
-   public dpi x() {
-      return dcj.ck.n();
+   public csd a(int $$0) {
+      return this.f_($$0);
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (this.d > 0) {
-         this.d--;
-         this.dM().a(kn.ac, this.dr(), this.dt() + 0.5, this.dx(), 0.0, 0.0, 0.0);
-      } else if (this.d == 0) {
-         this.h(this.dp().i());
+   public csd a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public csd b(int $$0) {
+      return this.e_($$0);
+   }
+
+   @Override
+   public void a(int $$0, csd $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public brv a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(ckl $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(bql.c $$0) {
+      if (!this.dN().B && $$0.a()) {
+         bom.a(this.dN(), this, this);
       }
 
-      if (this.P) {
-         double $$0 = this.dp().i();
-         if ($$0 >= 0.01F) {
-            this.h($$0);
-         }
-      }
+      super.a($$0);
    }
 
    @Override
-   public boolean a(boy $$0, float $$1) {
-      if ($$0.c() instanceof ckg $$3 && $$3.bN()) {
-         boy $$4 = this.dN().d(this, $$0.d());
-         this.a($$4, $$3.dp().g());
-      }
-
-      return super.a($$0, $$1);
+   protected void b(ty $$0) {
+      super.b($$0);
+      this.a($$0, this.dP());
    }
 
    @Override
-   public void a(boy $$0) {
-      double $$1 = this.dp().i();
-      if (!e($$0) && !($$1 >= 0.01F)) {
-         this.b(this.ag_());
+   protected void a(ty $$0) {
+      super.a($$0);
+      this.b($$0, this.dP());
+   }
+
+   @Override
+   public boq a(ckl $$0, bop $$1) {
+      return this.c_($$0);
+   }
+
+   @Override
+   protected void u() {
+      float $$0 = 0.98F;
+      if (this.d == null) {
+         int $$1 = 15 - cnh.b(this);
+         $$0 += (float)$$1 * 0.001F;
+      }
+
+      if (this.bc()) {
+         $$0 *= 0.95F;
+      }
+
+      this.g(this.dq().d((double)$$0, 0.0, (double)$$0));
+   }
+
+   @Override
+   public void a() {
+      this.f();
+   }
+
+   public void a(akf $$0, long $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Nullable
+   @Override
+   public cnh createMenu(int $$0, ckk $$1, ckl $$2) {
+      if (this.d != null && $$2.N_()) {
+         return null;
       } else {
-         if (this.d < 0) {
-            this.B();
-            this.d = this.ag.a(20) + this.ag.a(20);
-         }
+         this.f($$1.m);
+         return this.a($$0, $$1);
       }
    }
 
+   protected abstract cnh a(int var1, ckk var2);
+
+   @Nullable
    @Override
-   protected crn ag_() {
-      return crv.nO;
-   }
-
-   protected void h(double $$0) {
-      this.a(null, $$0);
-   }
-
-   protected void a(@Nullable boy $$0, double $$1) {
-      if (!this.dM().B) {
-         double $$2 = Math.sqrt($$1);
-         if ($$2 > 5.0) {
-            $$2 = 5.0;
-         }
-
-         this.dM().a(this, $$0, null, this.dr(), this.dt(), this.dx(), (float)(4.0 + this.ag.j() * 1.5 * $$2), false, czg.a.d);
-         this.am();
-      }
-   }
-
-   @Override
-   public boolean a(float $$0, float $$1, boy $$2) {
-      if ($$0 >= 3.0F) {
-         float $$3 = $$0 / 10.0F;
-         this.h((double)($$3 * $$3));
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.d < 0) {
-         this.B();
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 10) {
-         this.B();
-      } else {
-         super.b($$0);
-      }
-   }
-
-   public void B() {
-      this.d = 80;
-      if (!this.dM().B) {
-         this.dM().a(this, (byte)10);
-         if (!this.aU()) {
-            this.dM().a(null, this.dr(), this.dt(), this.dx(), auo.zc, aup.e, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   public int C() {
+   public akf B() {
       return this.d;
    }
 
-   public boolean D() {
-      return this.d > -1;
+   @Override
+   public void a(@Nullable akf $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public float a(cyy $$0, cym $$1, id $$2, dpi $$3, elb $$4, float $$5) {
-      return !this.D() || !$$3.a(ave.N) && !$$1.a_($$2.c()).a(ave.N) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
+   public long C() {
+      return this.e;
    }
 
    @Override
-   public boolean a(cyy $$0, cym $$1, id $$2, dpi $$3, float $$4) {
-      return !this.D() || !$$3.a(ave.N) && !$$1.a_($$2.c()).a(ave.N) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
+   public void a(long $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected void a(to $$0) {
-      super.a($$0);
-      if ($$0.b("TNTFuse", 99)) {
-         this.d = $$0.h("TNTFuse");
-      }
+   public je<csd> D() {
+      return this.c;
    }
 
    @Override
-   protected void b(to $$0) {
-      super.b($$0);
-      $$0.a("TNTFuse", this.d);
-   }
-
-   @Override
-   boolean d(boy $$0) {
-      return e($$0);
-   }
-
-   private static boolean e(boy $$0) {
-      return $$0.a(avg.j) || $$0.a(avg.m);
+   public void E() {
+      this.c = je.a(this.b(), csd.i);
    }
 }

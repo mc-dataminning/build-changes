@@ -1,74 +1,76 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class epg extends eox {
-   public static final Codec<epg> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(kt.k.r().fieldOf("type").forGetter($$0x -> $$0x.b), eob.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
-            .apply($$0, epg::new)
-   );
-   private final in<dmq<?>> b;
-   private final List<eod> c;
+public class epg extends epo {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Codec<iz<cxn>> c = lc.f.r().listOf().xmap(iz::a, $$0 -> $$0.a().toList());
+   public static final Codec<epg> a = RecordCodecBuilder.create($$0 -> a($$0).and(axe.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, epg::new));
+   private final Optional<iz<cxn>> d;
 
-   epg(List<eql> $$0, in<dmq<?>> $$1, List<eod> $$2) {
+   epg(List<erh> $$0, Optional<iz<cxn>> $$1) {
       super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.d = $$1;
    }
 
    @Override
-   public eoz b() {
-      return epa.q;
+   public epq b() {
+      return epr.e;
    }
 
    @Override
-   public crs a(crs $$0, enk $$1) {
-      if ($$0.d()) {
+   public csd a(csd $$0, eoa $$1) {
+      ayd $$2 = $$1.b();
+      Optional<iv<cxn>> $$3 = this.d.<iv<cxn>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
+         boolean $$2x = $$0.a(csg.qP);
+         List<iv.c<cxn>> $$3x = lc.f.h().filter($$0xx -> ((cxn)$$0xx.a()).j()).filter($$2xx -> $$2x || ((cxn)$$2xx.a()).a($$0)).toList();
+         return ac.b($$3x, $$2);
+      });
+      if ($$3.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
          return $$0;
       } else {
-         iw<crs> $$2 = iw.a();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ens.a($$1.d(), $$2::add), $$1)));
-         $$0.b(jr.Q, cuj.a($$2));
-         return $$0;
+         return a($$0, $$3.get().a(), $$2);
       }
    }
 
-   @Override
-   public void a(ent $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+   private static csd a(csd $$0, cxn $$1, ayd $$2) {
+      int $$3 = axw.a($$2, $$1.f(), $$1.a());
+      if ($$0.a(csg.qP)) {
+         $$0 = new csd(csg.uw);
       }
+
+      $$0.a($$1, $$3);
+      return $$0;
    }
 
-   public static epg.a a(dmq<?> $$0) {
-      return new epg.a($$0);
+   public static epg.a c() {
+      return new epg.a();
    }
 
-   public static class a extends eox.a<epg.a> {
-      private final Builder<eod> a = ImmutableList.builder();
-      private final dmq<?> b;
+   public static epo.a<?> d() {
+      return a($$0 -> new epg($$0, Optional.empty()));
+   }
 
-      public a(dmq<?> $$0) {
-         this.b = $$0;
-      }
+   public static class a extends epo.a<epg.a> {
+      private final List<iv<cxn>> a = new ArrayList<>();
 
       protected epg.a a() {
          return this;
       }
 
-      public epg.a a(eod.a<?> $$0) {
-         this.a.add($$0.b());
+      public epg.a a(cxn $$0) {
+         this.a.add($$0.k());
          return this;
       }
 
       @Override
-      public eoy b() {
-         return new epg(this.g(), this.b.a(), this.a.build());
+      public epp b() {
+         return new epg(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(iz.a(this.a)));
       }
    }
 }

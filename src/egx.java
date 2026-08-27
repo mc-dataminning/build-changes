@@ -1,81 +1,92 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public abstract class egx {
-   public static final Codec<egx> e = kt.ai.q().dispatch("element_type", egx::a, egy::codec);
-   private static final in<ejo> a = in.a(new ejo(List.of()));
-   @Nullable
-   private volatile egz.a b;
+public interface egx {
+   egx a = a(eij.a::new, "MSCorridor");
+   egx b = a(eij.b::new, "MSCrossing");
+   egx c = a(eij.d::new, "MSRoom");
+   egx d = a(eij.e::new, "MSStairs");
+   egx e = a(eil.a::new, "NeBCr");
+   egx f = a(eil.b::new, "NeBEF");
+   egx g = a(eil.c::new, "NeBS");
+   egx h = a(eil.d::new, "NeCCS");
+   egx i = a(eil.e::new, "NeCTB");
+   egx j = a(eil.f::new, "NeCE");
+   egx k = a(eil.g::new, "NeSCSC");
+   egx l = a(eil.h::new, "NeSCLT");
+   egx m = a(eil.i::new, "NeSC");
+   egx n = a(eil.j::new, "NeSCRT");
+   egx o = a(eil.k::new, "NeCSR");
+   egx p = a(eil.l::new, "NeMT");
+   egx q = a(eil.o::new, "NeRC");
+   egx r = a(eil.p::new, "NeSR");
+   egx s = a(eil.q::new, "NeStart");
+   egx t = a(eix.a::new, "SHCC");
+   egx u = a(eix.b::new, "SHFC");
+   egx v = a(eix.c::new, "SH5C");
+   egx w = a(eix.d::new, "SHLT");
+   egx x = a(eix.e::new, "SHLi");
+   egx y = a(eix.g::new, "SHPR");
+   egx z = a(eix.h::new, "SHPH");
+   egx A = a(eix.i::new, "SHRT");
+   egx B = a(eix.j::new, "SHRC");
+   egx C = a(eix.l::new, "SHSD");
+   egx D = a(eix.m::new, "SHStart");
+   egx E = a(eix.n::new, "SHS");
+   egx F = a(eix.o::new, "SHSSD");
+   egx G = a(eih::new, "TeJP");
+   egx H = a(eir.a::a, "ORP");
+   egx I = a(eie.a::new, "Iglu");
+   egx J = a(eit::new, "RUPO");
+   egx K = a(eiz::new, "TeSH");
+   egx L = a(eia::new, "TeDP");
+   egx M = a(eip.h::new, "OMB");
+   egx N = a(eip.j::new, "OMCR");
+   egx O = a(eip.k::new, "OMDXR");
+   egx P = a(eip.l::new, "OMDXYR");
+   egx Q = a(eip.m::new, "OMDYR");
+   egx R = a(eip.n::new, "OMDYZR");
+   egx S = a(eip.o::new, "OMDZR");
+   egx T = a(eip.p::new, "OMEntry");
+   egx U = a(eip.q::new, "OMPenthouse");
+   egx V = a(eip.s::new, "OMSimple");
+   egx W = a(eip.t::new, "OMSimpleT");
+   egx X = a(eip.u::new, "OMWR");
+   egx Y = a(eic.a::new, "ECP");
+   egx Z = a(ejb.i::new, "WMP");
+   egx aa = a(ehy.a::new, "BTP");
+   egx ab = a(eiv.a::new, "Shipwreck");
+   egx ac = a(ein.a::new, "NeFos");
+   egx ad = a(egc::new, "jigsaw");
 
-   protected static <E extends egx> RecordCodecBuilder<E, egz.a> d() {
-      return egz.a.c.fieldOf("projection").forGetter(egx::e);
+   egk load(egw var1, ty var2);
+
+   private static egx a(egx $$0, String $$1) {
+      return ji.a(lc.S, $$1.toLowerCase(Locale.ROOT), $$0);
    }
 
-   protected egx(egz.a $$0) {
-      this.b = $$0;
+   private static egx a(egx.a $$0, String $$1) {
+      return a((egx)$$0, $$1);
    }
 
-   public abstract ji a(ejr var1, dit var2);
-
-   public abstract List<ejq.c> a(ejr var1, id var2, dit var3, axt var4);
-
-   public abstract efi a(ejr var1, id var2, dit var3);
-
-   public abstract boolean a(ejr var1, dab var2, czz var3, drf var4, id var5, id var6, dit var7, efi var8, axt var9, boolean var10);
-
-   public abstract egy<?> a();
-
-   public void a(czh $$0, ejq.c $$1, id $$2, dit $$3, axt $$4, efi $$5) {
+   private static egx a(egx.b $$0, String $$1) {
+      return a((egx)$$0, $$1);
    }
 
-   public egx a(egz.a $$0) {
-      this.b = $$0;
-      return this;
-   }
+   public interface a extends egx {
+      egk load(ty var1);
 
-   public egz.a e() {
-      egz.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
+      @Override
+      default egk load(egw $$0, ty $$1) {
+         return this.load($$1);
       }
    }
 
-   public int f() {
-      return 1;
-   }
+   public interface b extends egx {
+      egk load(ekh var1, ty var2);
 
-   public static Function<egz.a, egq> g() {
-      return $$0 -> egq.b;
-   }
-
-   public static Function<egz.a, egu> a(String $$0) {
-      return $$1 -> new egu(Either.left(new ajv($$0)), a, $$1);
-   }
-
-   public static Function<egz.a, egu> a(String $$0, in<ejo> $$1) {
-      return $$2 -> new egu(Either.left(new ajv($$0)), $$1, $$2);
-   }
-
-   public static Function<egz.a, egw> b(String $$0) {
-      return $$1 -> new egw(Either.left(new ajv($$0)), a, $$1);
-   }
-
-   public static Function<egz.a, egw> b(String $$0, in<ejo> $$1) {
-      return $$2 -> new egw(Either.left(new ajv($$0)), $$1, $$2);
-   }
-
-   public static Function<egz.a, egr> a(in<eeu> $$0) {
-      return $$1 -> new egr($$0, $$1);
-   }
-
-   public static Function<egz.a, egv> b(List<Function<egz.a, ? extends egx>> $$0) {
-      return $$1 -> new egv($$0.stream().map($$1x -> (egx)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+      @Override
+      default egk load(egw $$0, ty $$1) {
+         return this.load($$0.c(), $$1);
+      }
    }
 }

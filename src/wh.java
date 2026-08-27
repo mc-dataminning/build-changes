@@ -1,76 +1,101 @@
-import java.util.Arrays;
-import java.util.Collection;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelDuplexHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandler;
+import io.netty.channel.ChannelOutboundHandler;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelPromise;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import io.netty.util.ReferenceCountUtil;
 
 public class wh {
-   public static final wi a = wi.i();
-   public static final wi b = wi.c("options.on");
-   public static final wi c = wi.c("options.off");
-   public static final wi d = wi.c("gui.done");
-   public static final wi e = wi.c("gui.cancel");
-   public static final wi f = wi.c("gui.yes");
-   public static final wi g = wi.c("gui.no");
-   public static final wi h = wi.c("gui.ok");
-   public static final wi i = wi.c("gui.proceed");
-   public static final wi j = wi.c("gui.continue");
-   public static final wi k = wi.c("gui.back");
-   public static final wi l = wi.c("gui.toTitle");
-   public static final wi m = wi.c("gui.acknowledge");
-   public static final wi n = wi.c("chat.link.open");
-   public static final wi o = wi.c("gui.copy_link_to_clipboard");
-   public static final wi p = wi.c("menu.disconnect");
-   public static final wi q = wi.c("connect.failed.transfer");
-   public static final wi r = wi.c("connect.failed");
-   public static final wi s = wi.b("\n");
-   public static final wi t = wi.b(". ");
-   public static final wi u = wi.b("...");
-   public static final wi v = a();
-
-   public static ww a() {
-      return wi.b(" ");
+   public static <T extends vy> wh.b a(wa<T> $$0) {
+      return a(new vw<T>($$0));
    }
 
-   public static ww a(long $$0) {
-      return wi.a("gui.days", $$0);
+   private static wh.b a(ChannelInboundHandler $$0) {
+      return $$1 -> {
+         $$1.pipeline().replace($$1.name(), "decoder", $$0);
+         $$1.channel().config().setAutoRead(true);
+      };
    }
 
-   public static ww b(long $$0) {
-      return wi.a("gui.hours", $$0);
+   public static <T extends vy> wh.d b(wa<T> $$0) {
+      return a(new vx<T>($$0));
    }
 
-   public static ww c(long $$0) {
-      return wi.a("gui.minutes", $$0);
+   private static wh.d a(ChannelOutboundHandler $$0) {
+      return $$1 -> $$1.pipeline().replace($$1.name(), "encoder", $$0);
    }
 
-   public static wi a(boolean $$0) {
-      return $$0 ? b : c;
-   }
-
-   public static ww a(wi $$0, boolean $$1) {
-      return wi.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
-   }
-
-   public static ww a(wi $$0, wi $$1) {
-      return wi.a("options.generic_value", $$0, $$1);
-   }
-
-   public static ww a(wi... $$0) {
-      ww $$1 = wi.i();
-
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(t);
+   public static class a extends ChannelDuplexHandler {
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         if (!($$1 instanceof ByteBuf) && !($$1 instanceof yz)) {
+            $$0.fireChannelRead($$1);
+         } else {
+            ReferenceCountUtil.release($$1);
+            throw new DecoderException("Pipeline has no inbound protocol configured, can't process packet " + $$1);
          }
       }
 
-      return $$1;
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof wh.b $$3) {
+            try {
+               $$3.run($$0);
+            } finally {
+               ReferenceCountUtil.release($$1);
+            }
+
+            $$2.setSuccess();
+         } else {
+            $$0.write($$1, $$2);
+         }
+      }
    }
 
-   public static wi b(wi... $$0) {
-      return a(Arrays.asList($$0));
+   @FunctionalInterface
+   public interface b {
+      void run(ChannelHandlerContext var1);
+
+      default wh.b andThen(wh.b $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
+      }
    }
 
-   public static wi a(Collection<? extends wi> $$0) {
-      return wl.a($$0, s);
+   public static class c extends ChannelOutboundHandlerAdapter {
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof yz) {
+            ReferenceCountUtil.release($$1);
+            throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + $$1);
+         } else {
+            if ($$1 instanceof wh.d $$3) {
+               try {
+                  $$3.run($$0);
+               } finally {
+                  ReferenceCountUtil.release($$1);
+               }
+
+               $$2.setSuccess();
+            } else {
+               $$0.write($$1, $$2);
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      void run(ChannelHandlerContext var1);
+
+      default wh.d andThen(wh.d $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
+      }
    }
 }

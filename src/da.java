@@ -1,34 +1,76 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
 
-public record da(Map<cot, cc> b) {
-   public static final Codec<da> a = Codec.unboundedMap(cou.a, cc.a).xmap(da::new, da::a);
-
-   public boolean a(bqa $$0) {
-      for (Entry<cot, cc> $$1 : this.b.entrySet()) {
-         if (!a($$0, $$1.getValue(), $$1.getKey().a())) {
-            return false;
-         }
-      }
-
-      return true;
+public class da extends dd<da.a> {
+   @Override
+   public Codec<da.a> a() {
+      return da.a.a;
    }
 
-   private static boolean a(bqa $$0, cc $$1, IntList $$2) {
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         int $$4 = $$2.getInt($$3);
-         brk $$5 = $$0.a_($$4);
-         if ($$1.a($$5.a())) {
+   public void a(aqf $$0, akf $$1, List<csd> $$2) {
+      this.a($$0, $$2x -> $$2x.b($$1, $$2));
+   }
+
+   public static record a(Optional<bc> b, akf c, List<cg> d) implements dd.a {
+      public static final Codec<da.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  axe.a(br.b, "player").forGetter(da.a::a),
+                  akf.a.fieldOf("recipe_id").forGetter(da.a::b),
+                  axe.a(cg.a.listOf(), "ingredients", List.of()).forGetter(da.a::c)
+               )
+               .apply($$0, da.a::new)
+      );
+
+      public static an<da.a> a(akf $$0, List<cg.a> $$1) {
+         return am.ac.a(new da.a(Optional.empty(), $$0, $$1.stream().map(cg.a::b).toList()));
+      }
+
+      public static an<da.a> a(akf $$0) {
+         return am.ac.a(new da.a(Optional.empty(), $$0, List.of()));
+      }
+
+      boolean b(akf $$0, List<csd> $$1) {
+         if (!$$0.equals(this.c)) {
+            return false;
+         } else {
+            List<csd> $$2 = new ArrayList<>($$1);
+
+            for (cg $$3 : this.d) {
+               boolean $$4 = false;
+               Iterator<csd> $$5 = $$2.iterator();
+
+               while ($$5.hasNext()) {
+                  if ($$3.a($$5.next())) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  return false;
+               }
+            }
+
             return true;
          }
       }
 
-      return false;
-   }
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
 
-   public Map<cot, cc> a() {
-      return this.b;
+      public akf b() {
+         return this.c;
+      }
+
+      public List<cg> c() {
+         return this.d;
+      }
    }
 }

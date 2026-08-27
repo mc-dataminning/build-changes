@@ -1,71 +1,32 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class cuz {
-   @Nullable
-   private final cka a;
-   private final boe b;
-   private final esf c;
-   private final czg d;
-   private final crs e;
+public record cuz(Optional<iu> c, boolean d) {
+   public static final Codec<cuz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axe.a(iu.b, "target").forGetter(cuz::a), axe.a(Codec.BOOL, "tracked", true).forGetter(cuz::b)).apply($$0, cuz::new)
+   );
+   public static final yq<ByteBuf, cuz> b = yq.a(iu.c.a(yo::a), cuz::a, yo.b, cuz::b, cuz::new);
 
-   public cuz(cka $$0, boe $$1, esf $$2) {
-      this($$0.dM(), $$0, $$1, $$0.b($$1), $$2);
+   public cuz a(aqe $$0) {
+      if (this.d && !this.c.isEmpty()) {
+         if (this.c.get().a() != $$0.ae()) {
+            return this;
+         } else {
+            im $$1 = this.c.get().b();
+            return $$0.k($$1) && $$0.y().a(ccl.s, $$1) ? this : new cuz(Optional.empty(), true);
+         }
+      } else {
+         return this;
+      }
    }
 
-   protected cuz(czg $$0, @Nullable cka $$1, boe $$2, crs $$3, esf $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
-   }
-
-   protected final esf j() {
+   public Optional<iu> a() {
       return this.c;
    }
 
-   public id a() {
-      return this.c.a();
-   }
-
-   public ij k() {
-      return this.c.b();
-   }
-
-   public esj l() {
-      return this.c.e();
-   }
-
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public crs n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cka o() {
-      return this.a;
-   }
-
-   public boe p() {
-      return this.b;
-   }
-
-   public czg q() {
+   public boolean b() {
       return this.d;
-   }
-
-   public ij g() {
-      return this.a == null ? ij.c : this.a.cE();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fO();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dC();
    }
 }

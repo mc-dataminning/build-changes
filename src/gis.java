@@ -1,15 +1,11 @@
-public class gis extends ghs<chx> {
-   private static final ajv a = new ajv("textures/entity/skeleton/wither_skeleton.png");
+public class gis extends gfm<clj> {
+   public static final akf a = new akf("textures/entity/projectiles/spectral_arrow.png");
 
-   public gis(gfr.a $$0) {
-      super($$0, ftu.bX, ftu.bY, ftu.bZ);
+   public gis(ggn.a $$0) {
+      super($$0);
    }
 
-   public ajv a(chx $$0) {
+   public akf a(clj $$0) {
       return a;
-   }
-
-   protected void a(chx $$0, ewr $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

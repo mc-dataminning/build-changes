@@ -1,77 +1,48 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class end {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-   private static final DateTimeFormatter d = emv.a();
+public class end extends emy {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   public end(ena.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(emy.c).toFile();
-      this.c.mkdirs();
+   public static emy.a<end> a() {
+      return new emy.a<>(end::new, end::b, azc.k);
    }
 
-   public void a(cka $$0) {
-      try {
-         to $$1 = $$0.f(new to());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cx() + "-", ".dat");
-         ub.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cx() + ".dat");
-         Path $$5 = $$2.resolve($$0.cx() + ".dat_old");
-         ac.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.ad().getString());
-      }
+   public end() {
+      this.b.defaultReturnValue(-1);
    }
 
-   private void a(cka $$0, String $$1) {
-      Path $$2 = this.c.toPath();
-      Path $$3 = $$2.resolve($$0.cx() + $$1);
-      Path $$4 = $$2.resolve($$0.cx() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
-      if (Files.isRegularFile($$3)) {
-         try {
-            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.ad().getString(), var7);
-         }
-      }
-   }
+   public static end b(ty $$0, ix.a $$1) {
+      end $$2 = new end();
 
-   private Optional<to> b(cka $$0, String $$1) {
-      File $$2 = new File(this.c, $$0.cx() + $$1);
-      if ($$2.exists() && $$2.isFile()) {
-         try {
-            return Optional.of(ub.a($$2.toPath(), tx.a()));
-         } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.ad().getString());
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
          }
       }
 
-      return Optional.empty();
+      return $$2;
    }
 
-   public Optional<to> b(cka $$0) {
-      Optional<to> $$1 = this.b($$0, ".dat");
-      if ($$1.isEmpty()) {
-         this.a($$0, ".dat");
+   @Override
+   public ty a(ty $$0, ix.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
       }
 
-      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
-         int $$2 = ud.b($$1x, -1);
-         $$1x = ays.b.a(this.a, $$1x, $$2);
-         $$0.g($$1x);
-         return $$1x;
-      });
+      return $$0;
+   }
+
+   public enc b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new enc($$0);
    }
 }

@@ -1,45 +1,45 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eiy extends ejn {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<eiy> a = Codec.unit(() -> eiy.b);
-   public static final eiy b = new eiy();
+public class eiy extends egg {
+   public static final Codec<eiy> d = a(eiy::new);
 
-   private eiy() {
+   public eiy(egg.c $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public ejq.c a(czj $$0, id $$1, id $$2, ejq.c $$3, ejq.c $$4, ejm $$5) {
-      dpi $$6 = $$4.b();
-      if ($$6.a(dcj.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
+   public Optional<egg.b> a(egg.a $$0) {
+      return Optional.of(new egg.b($$0.h().l(), (Consumer<egy>)($$1 -> a($$1, $$0))));
+   }
 
-            dpi $$9;
-            try {
-               fo.a $$8 = fo.a($$0.a(ku.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               throw new RuntimeException(var11);
-            }
+   private static void a(egy $$0, egg.a $$1) {
+      int $$2 = 0;
 
-            return $$9.a(dcj.kN) ? null : new ejq.c($$4.a(), $$9, null);
+      eix.m $$3;
+      do {
+         $$0.b();
+         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
+         eix.a();
+         $$3 = new eix.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
+         $$0.a($$3);
+         $$3.a($$3, $$0, $$1.f());
+         List<egk> $$4 = $$3.c;
+
+         while (!$$4.isEmpty()) {
+            int $$5 = $$1.f().a($$4.size());
+            egk $$6 = $$4.remove($$5);
+            $$6.a($$3, $$0, $$1.f());
          }
-      } else {
-         return $$4;
-      }
+
+         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
+      } while ($$0.c() || $$3.b == null);
    }
 
    @Override
-   protected ejp<?> a() {
-      return ejp.h;
+   public egp<?> e() {
+      return egp.n;
    }
 }

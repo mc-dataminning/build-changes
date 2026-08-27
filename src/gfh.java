@@ -1,12 +1,13 @@
-public class gfh extends ggx<ccq, fqq<ccq>> {
-   private static final ajv a = new ajv("textures/entity/dolphin.png");
+public abstract class gfh<T extends cex, M extends fsc<T>> extends ght<T, M> {
+   private final float a;
 
-   public gfh(gfr.a $$0) {
-      super($$0, new fqq<>($$0.a(ftu.M)), 0.7F);
-      this.a(new gjj(this, $$0.d()));
+   public gfh(ggn.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public ajv a(ccq $$0) {
-      return a;
+   protected void a(T $$0, exn $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

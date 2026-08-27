@@ -1,46 +1,23 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+public enum dri implements ayq {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-public abstract class dri implements drr, AutoCloseable {
-   @Nullable
-   public dro a(int $$0, int $$1, boolean $$2) {
-      return (dro)this.a($$0, $$1, dsd.n, $$2);
+   private final String e;
+   private final ws f;
+
+   private dri(String $$0) {
+      this.e = $$0;
+      this.f = ws.c("structure_block.mode_info." + $$0);
    }
-
-   @Nullable
-   public dro a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   @Nullable
-   @Override
-   public drq c(int $$0, int $$1) {
-      return this.a($$0, $$1, dsd.c, false);
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, dsd.n, false) != null;
-   }
-
-   @Nullable
-   public abstract dre a(int var1, int var2, dsd var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public abstract String e();
-
-   public abstract int j();
 
    @Override
-   public void close() throws IOException {
+   public String c() {
+      return this.e;
    }
 
-   public abstract ekq p();
-
-   public void a(boolean $$0, boolean $$1) {
-   }
-
-   public void a(cyn $$0, boolean $$1) {
+   public ws a() {
+      return this.f;
    }
 }

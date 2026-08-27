@@ -2,40 +2,38 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
 public class fu implements ArgumentType<fs> {
-   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~-5 ~5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("argument.rotation.incomplete"));
+   private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "foo{bar=baz}");
+   private final ix<dcv> b;
 
-   public static fu a() {
-      return new fu();
+   public fu(dy $$0) {
+      this.b = $$0.b(ld.f);
    }
 
-   public static fs a(CommandContext<dv> $$0, String $$1) {
-      return (fs)$$0.getArgument($$1, fs.class);
+   public static fu a(dy $$0) {
+      return new fu($$0);
    }
 
    public fs a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
-      } else {
-         fy $$2 = fy.a($$0, false);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            fy $$3 = fy.a($$0, false);
-            return new fz($$3, $$2, new fy(true, 0.0));
-         } else {
-            $$0.setCursor($$1);
-            throw a.createWithContext($$0);
-         }
-      }
+      fv.a $$1 = fv.a(this.b, $$0, true);
+      return new fs($$1.a(), $$1.b().keySet(), $$1.c());
+   }
+
+   public static fs a(CommandContext<ec> $$0, String $$1) {
+      return (fs)$$0.getArgument($$1, fs.class);
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return fv.a(this.b, $$1, false, true);
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 }

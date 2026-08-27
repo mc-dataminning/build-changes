@@ -1,18 +1,15 @@
-public class gin extends ggx<cjt, ftg<cjt>> {
-   private static final ajv a = new ajv("textures/entity/wandering_trader.png");
+public class gin extends ght<chy, ftl<chy>> {
+   private static final akf a = new akf("textures/entity/silverfish.png");
 
-   public gin(gfr.a $$0) {
-      super($$0, new ftg<>($$0.a(ftu.bS)), 0.5F);
-      this.a(new gjh<>(this, $$0.f(), $$0.d()));
-      this.a(new gjg<>(this, $$0.d()));
+   public gin(ggn.a $$0) {
+      super($$0, new ftl<>($$0.a(fuq.bm)), 0.3F);
    }
 
-   public ajv a(cjt $$0) {
+   protected float a(chy $$0) {
+      return 180.0F;
+   }
+
+   public akf b(chy $$0) {
       return a;
-   }
-
-   protected void a(cjt $$0, ewr $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

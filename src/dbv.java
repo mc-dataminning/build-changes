@@ -1,125 +1,110 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class dbv extends dch {
-   protected static final etc a = dch.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
-   protected static final etc b = dch.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
-   protected static final ese c = new ese(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
-   protected final dpx d;
+public class dbv extends dfr {
+   public static final MapCodec<dbv> a = b(dbv::new);
+   public static final dqs b = dgr.aE;
+   private static final ety c = dcv.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+   private static final ety d = dcv.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
+   private static final ety e = dcv.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
+   private static final ety f = dcv.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
+   private static final ety g = dcv.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
+   private static final ety h = dcv.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
+   private static final ety i = dcv.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
+   private static final ety j = etv.a(c, d, e, f);
+   private static final ety k = etv.a(c, g, h, i);
+   private static final ws l = ws.c("container.repair");
+   private static final float m = 2.0F;
+   private static final int n = 40;
 
-   protected dbv(dph.d $$0, dpx $$1) {
-      super($$0.a($$1.g()));
-      this.d = $$1;
+   @Override
+   public MapCodec<dbv> a() {
+      return a;
+   }
+
+   public dbv(dpx.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ir.c));
    }
 
    @Override
-   protected abstract MapCodec<? extends dbv> a();
-
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return this.g($$0) > 0 ? a : b;
-   }
-
-   protected int b() {
-      return 20;
+   public dpy a(cvl $$0) {
+      return this.n().a(b, $$0.g().h());
    }
 
    @Override
-   public boolean a(dpi $$0) {
-      return true;
+   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
+      if ($$1.B) {
+         return boq.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avj.aC);
+         return boq.b;
+      }
+   }
+
+   @Nullable
+   @Override
+   protected bou b(dpy $$0, czu $$1, im $$2) {
+      return new bpa(($$2x, $$3, $$4) -> new cnj($$2x, $$3, cns.a($$1, $$2)), l);
    }
 
    @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      return $$1 == ij.a && !$$0.a($$3, $$4) ? dcj.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      ir $$4 = $$0.c(b);
+      return $$4.o() == ir.a.a ? j : k;
    }
 
    @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      id $$3 = $$2.d();
-      return c($$1, $$3) || a($$1, $$3, ij.b);
+   protected void a(cgu $$0) {
+      $$0.b(2.0F, 40);
    }
 
    @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      int $$4 = this.g($$0);
-      if ($$4 > 0) {
-         this.a(null, $$1, $$2, $$0, $$4);
+   public void a(czu $$0, im $$1, dpy $$2, dpy $$3, cgu $$4) {
+      if (!$$4.aU()) {
+         $$0.c(1031, $$1, 0);
       }
    }
 
    @Override
-   protected void a(dpi $$0, czg $$1, id $$2, bqa $$3) {
-      if (!$$1.B) {
-         int $$4 = this.g($$0);
-         if ($$4 == 0) {
-            this.a($$3, $$1, $$2, $$0, $$4);
-         }
-      }
-   }
-
-   private void a(@Nullable bqa $$0, czg $$1, id $$2, dpi $$3, int $$4) {
-      int $$5 = this.b($$1, $$2);
-      boolean $$6 = $$4 > 0;
-      boolean $$7 = $$5 > 0;
-      if ($$4 != $$5) {
-         dpi $$8 = this.a($$3, $$5);
-         $$1.a($$2, $$8, 2);
-         this.a($$1, $$2);
-         $$1.b($$2, $$3, $$8);
-      }
-
-      if (!$$7 && $$6) {
-         $$1.a(null, $$2, this.d.l(), aup.e);
-         $$1.a($$0, dub.e, $$2);
-      } else if ($$7 && !$$6) {
-         $$1.a(null, $$2, this.d.m(), aup.e);
-         $$1.a($$0, dub.a, $$2);
-      }
-
-      if ($$7) {
-         $$1.a(new id($$2), this, this.b());
+   public void a(czu $$0, im $$1, cgu $$2) {
+      if (!$$2.aU()) {
+         $$0.c(1029, $$1, 0);
       }
    }
 
    @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if (this.g($$0) > 0) {
-            this.a($$1, $$2);
-         }
+   public bpj a(bql $$0) {
+      return $$0.dO().b($$0);
+   }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+   @Nullable
+   public static dpy e(dpy $$0) {
+      if ($$0.a(dcx.gS)) {
+         return dcx.gT.n().a(b, $$0.c(b));
+      } else {
+         return $$0.a(dcx.gT) ? dcx.gU.n().a(b, $$0.c(b)) : null;
       }
    }
 
-   protected void a(czg $$0, id $$1) {
-      $$0.a($$1, this);
-      $$0.a($$1.d(), this);
+   @Override
+   protected dpy a(dpy $$0, dji $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected int a(dpi $$0, cym $$1, id $$2, ij $$3) {
-      return this.g($$0);
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected int b(dpi $$0, cym $$1, id $$2, ij $$3) {
-      return $$3 == ij.b ? this.g($$0) : 0;
+   protected boolean a(dpy $$0, emg $$1) {
+      return false;
    }
 
    @Override
-   protected boolean f_(dpi $$0) {
-      return true;
+   public int b(dpy $$0, cza $$1, im $$2) {
+      return $$0.d($$1, $$2).ak;
    }
-
-   protected static int a(czg $$0, ese $$1, Class<? extends bqa> $$2) {
-      return $$0.a($$2, $$1, bqf.f.and($$0x -> !$$0x.r_())).size();
-   }
-
-   protected abstract int b(czg var1, id var2);
-
-   protected abstract int g(dpi var1);
-
-   protected abstract dpi a(dpi var1, int var2);
 }

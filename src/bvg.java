@@ -1,95 +1,81 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class bvg extends bsl<cjn> {
-   private Set<crn> c = ImmutableSet.of();
+public class bvg extends bsw<bre> {
+   public static final int c = 100;
+   private long d;
 
    public bvg() {
-      super(ImmutableMap.of(bzw.q, bzx.a, bzw.h, bzx.a));
+      super(ImmutableMap.of(cah.b, cai.a, cah.I, cai.c));
    }
 
-   protected boolean a(apu $$0, cjn $$1) {
-      return bsn.a($$1.dP(), bzw.q, bqg.bi);
-   }
-
-   protected boolean a(apu $$0, cjn $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(apu $$0, cjn $$1, long $$2) {
-      cjn $$3 = (cjn)$$1.dP().c(bzw.q).get();
-      bsn.a($$1, $$3, 0.5F, 2);
-      this.c = a($$1, $$3);
-   }
-
-   protected void c(apu $$0, cjn $$1, long $$2) {
-      cjn $$3 = (cjn)$$1.dP().c(bzw.q).get();
-      if (!($$1.g($$3) > 5.0)) {
-         bsn.a($$1, $$3, 0.5F, 2);
-         $$1.a($$0, $$3, $$2);
-         if ($$1.gF() && ($$1.gy().b() == cjq.g || $$3.gG())) {
-            a($$1, cjn.ca.keySet(), $$3);
-         }
-
-         if ($$3.gy().b() == cjq.g && $$1.y().a_(crv.pv) > crv.pv.q() / 2) {
-            a($$1, ImmutableSet.of(crv.pv), $$3);
-         }
-
-         if (!this.c.isEmpty() && $$1.y().a(this.c)) {
-            a($$1, this.c, $$3);
-         }
-      }
-   }
-
-   protected void d(apu $$0, cjn $$1, long $$2) {
-      $$1.dP().b(bzw.q);
-   }
-
-   private static Set<crn> a(cjn $$0, cjn $$1) {
-      ImmutableSet<crn> $$2 = $$1.gy().b().d();
-      ImmutableSet<crn> $$3 = $$0.gy().b().d();
-      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
-   }
-
-   private static void a(cjn $$0, Set<crn> $$1, bqt $$2) {
-      boo $$3 = $$0.y();
-      crs $$4 = crs.i;
-      int $$5 = 0;
-
-      while ($$5 < $$3.b()) {
-         crs $$6;
-         crn $$7;
-         int $$8;
-         label28: {
-            $$6 = $$3.a($$5);
-            if (!$$6.d()) {
-               $$7 = $$6.f();
-               if ($$1.contains($$7)) {
-                  if ($$6.G() > $$6.i() / 2) {
-                     $$8 = $$6.G() / 2;
-                     break label28;
-                  }
-
-                  if ($$6.G() > 24) {
-                     $$8 = $$6.G() - 24;
-                     break label28;
-                  }
+   @Override
+   protected boolean a(aqe $$0, bre $$1) {
+      if ($$1.bP()) {
+         return false;
+      } else {
+         bsf<?> $$2 = $$1.dQ();
+         iu $$3 = $$2.c(cah.b).get();
+         if ($$0.ae() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(cah.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.Y() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
                }
             }
 
-            $$5++;
-            continue;
+            dpy $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dl(), 2.0) && $$6.a(avo.R) && !$$6.c(dco.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(aqe $$0, bre $$1, long $$2) {
+      Optional<iu> $$3 = $$1.dQ().c(cah.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         im $$4 = $$3.get().b();
+         return $$1.dQ().c(cma.e) && $$1.du() > (double)$$4.v() + 0.4 && $$4.a($$1.dl(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(aqe $$0, bre $$1, long $$2) {
+      if ($$2 > this.d) {
+         bsf<?> $$3 = $$1.dQ();
+         if ($$3.a(cah.v)) {
+            Set<iu> $$4 = $$3.c(cah.v).get();
+            Optional<List<bre>> $$5;
+            if ($$3.a(cah.g)) {
+               $$5 = $$3.c(cah.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            btu.a($$0, $$1, null, null, $$4, $$5);
          }
 
-         $$6.g($$8);
-         $$4 = new crs($$7, $$8);
-         break;
+         $$1.b($$1.dQ().c(cah.b).get().b());
       }
+   }
 
-      if (!$$4.d()) {
-         bsn.a($$0, $$4, $$2.dk());
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(aqe $$0, bre $$1, long $$2) {
+      if ($$1.fJ()) {
+         $$1.fK();
+         this.d = $$2 + 40L;
       }
    }
 }

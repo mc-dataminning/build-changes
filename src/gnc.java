@@ -1,58 +1,123 @@
-import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class gnc {
-   public static final gnd a = new gnd();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final gnc e = new gnc(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public gne a(int $$0, int $$1) {
-         return new gne($$0, $$1);
-      }
-   };
-   private final List<gnb> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
+public class gnc implements gms {
+   static final Logger c = LogUtils.getLogger();
+   public static final Codec<gnc> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               akf.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
+               axe.a(gnc.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
+               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, gnc::new)
+   );
+   private final akf d;
+   private final List<gnc.a> e;
+   private final double f;
+   private final double g;
 
-   public gnc(List<gnb> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
+   public gnc(akf $$0, List<gnc.a> $$1, double $$2, double $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public gne a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new gne(this.g, this.h) : new gne(this.g, $$1);
-      } else if (this.h != -1) {
-         return new gne($$0, this.h);
+   @Override
+   public void a(ato $$0, gms.a $$1) {
+      akf $$2 = a.a(this.d);
+      Optional<atm> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         gmy $$4 = new gmy($$2, $$3.get(), this.e.size());
+
+         for (gnc.a $$5 : this.e) {
+            $$1.a($$5.b, new gnc.b($$4, $$5, this.f, this.g));
+         }
       } else {
-         int $$2 = Math.min($$0, $$1);
-         return new gne($$2, $$2);
+         c.warn("Missing sprite: {}", $$2);
       }
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   public gmu a() {
+      return gmv.d;
    }
 
-   public boolean b() {
-      return this.j;
-   }
+   static record a(akf b, double c, double d, double e, double f) {
+      public static final Codec<gnc.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  akf.a.fieldOf("sprite").forGetter(gnc.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(gnc.a::b),
+                  Codec.DOUBLE.fieldOf("y").forGetter(gnc.a::c),
+                  Codec.DOUBLE.fieldOf("width").forGetter(gnc.a::d),
+                  Codec.DOUBLE.fieldOf("height").forGetter(gnc.a::e)
+               )
+               .apply($$0, gnc.a::new)
+      );
 
-   public void a(gnc.a $$0) {
-      for (gnb $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
+      public akf a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
+
+      public double c() {
+         return this.d;
+      }
+
+      public double d() {
+         return this.e;
+      }
+
+      public double e() {
+         return this.f;
       }
    }
 
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
+   static class b implements gms.b {
+      private final gmy a;
+      private final gnc.a b;
+      private final double c;
+      private final double d;
+
+      b(gmy $$0, gnc.a $$1, double $$2, double $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public gmi a(gmr $$0) {
+         try {
+            ewo $$1 = this.a.a();
+            double $$2 = (double)$$1.a() / this.c;
+            double $$3 = (double)$$1.b() / this.d;
+            int $$4 = axw.a(this.b.c * $$2);
+            int $$5 = axw.a(this.b.d * $$3);
+            int $$6 = axw.a(this.b.e * $$2);
+            int $$7 = axw.a(this.b.f * $$3);
+            ewo $$8 = new ewo(ewo.a.a, $$6, $$7, false);
+            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
+            return new gmi(this.b.b, new goa($$6, $$7), $$8, atq.a);
+         } catch (Exception var16) {
+            gnc.c.error("Failed to unstitch region {}", this.b.b, var16);
+         } finally {
+            this.a.b();
+         }
+
+         return gme.a();
+      }
+
+      @Override
+      public void a() {
+         this.a.b();
+      }
    }
 }

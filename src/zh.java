@@ -1,20 +1,14 @@
-public record zh(apj b) implements yp<zg> {
-   public static final yg<vi, zh> a = yp.a(zh::a, zh::new);
+import io.netty.buffer.ByteBuf;
 
-   private zh(vi $$0) {
-      this(new apj($$0));
-   }
-
-   private void a(vi $$0) {
-      this.b.a($$0);
-   }
+public record zh(ws b) implements yz<zf> {
+   public static final yq<ByteBuf, zh> a = wu.f.a(zh::new, zh::b);
 
    @Override
-   public yr<zh> a() {
-      return zf.j;
+   public zb<zh> a() {
+      return zp.b;
    }
 
-   public void a(zg $$0) {
+   public void a(zf $$0) {
       $$0.a(this);
    }
 }

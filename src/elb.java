@@ -1,118 +1,166 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class elb {
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final awl d;
+   private final im.a e = new im.a();
+   private final im.a f = new im.a();
 
-public final class elb extends dpk<ela, elb> {
-   public static final Codec<elb> a = a(kt.c.q(), ela::g).stable();
-   public static final int b = 9;
-   public static final int g = 8;
-
-   public elb(ela $$0, Reference2ObjectArrayMap<dql<?>, Comparable<?>> $$1, MapCodec<elb> $$2) {
-      super($$0, $$1, $$2);
+   public elb(czw $$0) {
+      this.c = $$0.I_() - 1;
+      int $$1 = $$0.al();
+      int $$2 = axw.e($$1 - this.c + 1);
+      this.d = new ayk($$2, 256);
    }
 
-   public ela a() {
-      return this.e;
-   }
-
-   public boolean b() {
-      return this.a().c(this);
-   }
-
-   public boolean a(ela $$0) {
-      return this.e == $$0 && this.e.c(this);
-   }
-
-   public boolean c() {
-      return this.a().b();
-   }
-
-   public float a(cym $$0, id $$1) {
-      return this.a().a(this, $$0, $$1);
-   }
-
-   public float d() {
-      return this.a().a(this);
-   }
-
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(cym $$0, id $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            id $$4 = $$1.b($$2, 0, $$3);
-            elb $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
-               return true;
+   public void a(dru $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
+      } else {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
             }
          }
+      }
+   }
+
+   private int a(dru $$0, int $$1, int $$2, int $$3) {
+      int $$4 = jo.c($$0.g($$1) + 1);
+      im.a $$5 = this.e.d($$2, $$4, $$3);
+      im.a $$6 = this.f.a($$5, ir.a);
+      dpy $$7 = dcx.a.n();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         dsf $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = dcx.a.n();
+            int $$10 = $$0.g($$8);
+            $$5.q(jo.c($$10));
+            $$6.q($$5.v() - 1);
+         } else {
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dpy $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$0, $$5, $$7, $$6, $$12)) {
+                  return $$5.v();
+               }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(ir.a);
+            }
+         }
+      }
+
+      return this.c;
+   }
+
+   public boolean a(cza $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         im $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dpy $$8 = $$0.a_($$7);
+         im $$9 = this.f.d($$1, $$2, $$3);
+         dpy $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            im $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dpy $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+         }
+      }
+   }
+
+   private boolean a(cza $$0, int $$1, int $$2, im $$3, dpy $$4, im $$5, dpy $$6) {
+      int $$7 = $$3.v();
+      if (a($$0, $$3, $$4, $$5, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
       }
 
       return false;
    }
 
-   public void a(czg $$0, id $$1) {
-      this.a().b($$0, $$1, this);
+   private int a(cza $$0, im $$1, dpy $$2) {
+      im.a $$3 = this.e.g($$1);
+      im.a $$4 = this.f.a($$1, ir.a);
+      dpy $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         dpy $$6 = $$0.a_($$4);
+         if (a($$0, $$3, $$5, $$4, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(ir.a);
+      }
+
+      return this.c;
    }
 
-   public void a(czg $$0, id $$1, axt $$2) {
-      this.a().a($$0, $$1, this, $$2);
+   private static boolean a(cza $$0, im $$1, dpy $$2, im $$3, dpy $$4) {
+      if ($$4.b($$0, $$3) != 0) {
+         return true;
+      } else {
+         ety $$5 = eli.a($$0, $$1, $$2, ir.a);
+         ety $$6 = eli.a($$0, $$3, $$4, ir.b);
+         return etv.b($$5, $$6);
+      }
    }
 
-   public boolean f() {
-      return this.a().i();
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
    }
 
-   public void b(czg $$0, id $$1, axt $$2) {
-      this.a().b($$0, $$1, this, $$2);
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
+      }
+
+      return this.c($$0 + this.c);
    }
 
-   public esj c(cym $$0, id $$1) {
-      return this.a().a($$0, $$1, this);
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
+      }
    }
 
-   public dpi g() {
-      return this.a().b(this);
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
    }
 
-   @Nullable
-   public kl h() {
-      return this.a().h();
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
    }
 
-   public boolean a(avt<ela> $$0) {
-      return this.a().k().a($$0);
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
    }
 
-   public boolean a(ir<ela> $$0) {
-      return $$0.a(this.a().k());
-   }
-
-   public boolean b(ela $$0) {
-      return this.a() == $$0;
-   }
-
-   public float i() {
-      return this.a().c();
-   }
-
-   public boolean a(cym $$0, id $$1, ela $$2, ij $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
-   }
-
-   public etc d(cym $$0, id $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   public in<ela> j() {
-      return this.e.k();
-   }
-
-   public Stream<avt<ela>> k() {
-      return this.e.k().c();
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

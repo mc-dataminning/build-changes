@@ -1,93 +1,55 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
-
-public final class cmn {
-   private static final cmn b = new cmn(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final cmo c;
-   private final long d;
-
-   private cmn(@Nullable cmo $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class cmn extends cmh {
+   public cmn(bqr<? extends cmn> $$0, czu $$1) {
+      super($$0, $$1);
    }
 
-   static cmn a(cmo $$0, Collection<cml> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cmn($$0, $$2);
-      }
-   }
-
-   public static cmn a() {
-      return b;
-   }
-
-   public static cmn a(cml $$0) {
-      return new cmn($$0.a, $$0.b);
-   }
-
-   public static cmn a(cml $$0, cml... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cmn($$0.a, $$2);
-   }
-
-   private static long a(cmo $$0, long $$1, Iterable<cml> $$2) {
-      for (cml $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cml $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean a(cmn $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public cmn b(cmn $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cmn(this.c, this.d | $$0.d);
-      }
+   public cmn(czu $$0, double $$1, double $$2, double $$3) {
+      super(bqr.s, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cmn $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
-
-         return false;
-      }
+   protected cry ag_() {
+      return csg.nN;
    }
 
    @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   public cmg.a v() {
+      return cmg.a.b;
+   }
+
+   @Override
+   public dpy x() {
+      return dcx.cv.n().a(ddy.c, ir.c);
+   }
+
+   @Override
+   public int z() {
+      return 8;
+   }
+
+   @Override
+   public cnh a(int $$0, ckk $$1) {
+      return cno.a($$0, $$1, this);
+   }
+
+   @Override
+   public void c(ckl $$0) {
+      this.dN().a(dur.j, this.dl(), dur.a.a($$0));
+   }
+
+   @Override
+   public boq a(ckl $$0, bop $$1) {
+      boq $$2 = this.c_($$0);
+      if ($$2.a()) {
+         this.a(dur.k, $$0);
+         cjc.a($$0, true);
+      }
+
+      return $$2;
    }
 }

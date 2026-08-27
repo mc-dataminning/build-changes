@@ -1,39 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
+import com.mojang.brigadier.context.CommandContext;
 
 public class amm {
-   public static void a(CommandDispatcher<dv> $$0) {
-      LiteralCommandNode<dv> $$1 = $$0.register(
-         (LiteralArgumentBuilder)dw.a("msg").then(dw.a("targets", ei.d()).then(dw.a("message", em.a()).executes($$0x -> {
-            Collection<apv> $$1x = ei.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               em.a($$0x, "message", $$2 -> a((dv)$$0x.getSource(), $$1x, $$2));
+   public static void a(CommandDispatcher<ec> $$0) {
+      final LiteralArgumentBuilder<ec> $$1 = (LiteralArgumentBuilder<ec>)ed.a("gamerule").requires($$0x -> $$0x.c(2));
+      czq.a(
+         new czq.c() {
+            @Override
+            public <T extends czq.g<T>> void a(czq.e<T> $$0, czq.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)ed.a($$0.a()).executes($$1xxx -> amm.a((ec)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> amm.a($$1xxx, $$0)))
+               );
             }
-
-            return $$1x.size();
-         })))
+         }
       );
-      $$0.register((LiteralArgumentBuilder)dw.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)dw.a("w").redirect($$1));
+      $$0.register($$1);
    }
 
-   private static void a(dv $$0, Collection<apv> $$1, wy $$2) {
-      we.a $$3 = we.a(we.e, $$0);
-      wx $$4 = wx.a($$2);
-      boolean $$5 = false;
+   static <T extends czq.g<T>> int a(CommandContext<ec> $$0, czq.e<T> $$1) {
+      ec $$2 = (ec)$$0.getSource();
+      T $$3 = $$2.l().aN().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> ws.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
 
-      for (apv $$6 : $$1) {
-         we.a $$7 = we.a(we.f, $$0).c($$6.O_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.j();
-      }
-
-      if ($$5) {
-         $$0.a(atr.f);
-      }
+   static <T extends czq.g<T>> int a(ec $$0, czq.e<T> $$1) {
+      T $$2 = $$0.l().aN().a($$1);
+      $$0.a(() -> ws.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

@@ -1,103 +1,89 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class xr implements wj {
-   private static final Logger d = LogUtils.getLogger();
-   public static final MapCodec<xr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(xr::b), awu.a(wk.a, "separator").forGetter(xr::d)).apply($$0, xr::new)
-   );
-   public static final wj.a<xr> b = new wj.a<>(a, "selector");
-   private final String e;
+public final class xr {
+   private static final String b = "#";
+   public static final Codec<xr> a = Codec.STRING.comapFlatMap(xr::a, xr::b);
+   private static final Map<n, xr> c = Stream.of(n.values())
+      .filter(n::e)
+      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new xr($$0.f(), $$0.g())));
+   private static final Map<String, xr> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
+   private final int e;
    @Nullable
-   private final gk f;
-   protected final Optional<wi> c;
+   private final String f;
 
-   public xr(String $$0, Optional<wi> $$1) {
-      this.e = $$0;
-      this.c = $$1;
-      this.f = a($$0);
+   private xr(int $$0, String $$1) {
+      this.e = $$0 & 16777215;
+      this.f = $$1;
    }
 
-   @Nullable
-   private static gk a(String $$0) {
-      gk $$1 = null;
-
-      try {
-         gl $$2 = new gl(new StringReader($$0));
-         $$1 = $$2.t();
-      } catch (CommandSyntaxException var3) {
-         d.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
-      }
-
-      return $$1;
+   private xr(int $$0) {
+      this.e = $$0 & 16777215;
+      this.f = null;
    }
 
-   @Override
-   public wj.a<?> a() {
-      return b;
-   }
-
-   public String b() {
+   public int a() {
       return this.e;
    }
 
-   @Nullable
-   public gk c() {
-      return this.f;
+   public String b() {
+      return this.f != null ? this.f : this.c();
    }
 
-   public Optional<wi> d() {
-      return this.c;
-   }
-
-   @Override
-   public ww a(@Nullable dv $$0, @Nullable bqa $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.f != null) {
-         Optional<? extends wi> $$3 = wl.a($$0, this.c, $$1, $$2);
-         return wl.a(this.f.b($$0), $$3, bqa::O_);
-      } else {
-         return wi.i();
-      }
-   }
-
-   @Override
-   public <T> Optional<T> a(wn.b<T> $$0, xf $$1) {
-      return $$0.accept($$1, this.e);
-   }
-
-   @Override
-   public <T> Optional<T> a(wn.a<T> $$0) {
-      return $$0.accept(this.e);
+   private String c() {
+      return String.format(Locale.ROOT, "#%06X", this.e);
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         xr $$1 = (xr)$$0;
+         return this.e == $$1.e;
       } else {
-         if ($$0 instanceof xr $$1 && this.e.equals($$1.e) && this.c.equals($$1.c)) {
-            return true;
-         }
-
          return false;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.e.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+      return Objects.hash(this.e, this.f);
    }
 
    @Override
    public String toString() {
-      return "pattern{" + this.e + "}";
+      return this.b();
+   }
+
+   @Nullable
+   public static xr a(n $$0) {
+      return c.get($$0);
+   }
+
+   public static xr a(int $$0) {
+      return new xr($$0);
+   }
+
+   public static DataResult<xr> a(String $$0) {
+      if ($$0.startsWith("#")) {
+         try {
+            int $$1 = Integer.parseInt($$0.substring(1), 16);
+            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Invalid color value: " + $$0);
+         }
+      } else {
+         xr $$3 = d.get($$0);
+         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
+      }
    }
 }

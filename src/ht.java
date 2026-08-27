@@ -1,55 +1,71 @@
-import com.google.common.collect.Maps;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
 
-public class ht {
-   private static final Map<ajv, SuggestionProvider<ea>> e = Maps.newHashMap();
-   private static final ajv f = new ajv("ask_server");
-   public static final SuggestionProvider<ea> a = a(f, ($$0, $$1) -> ((ea)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<dv> b = a(new ajv("all_recipes"), ($$0, $$1) -> ea.a(((ea)$$0.getSource()).t(), $$1));
-   public static final SuggestionProvider<dv> c = a(new ajv("available_sounds"), ($$0, $$1) -> ea.a(((ea)$$0.getSource()).s(), $$1));
-   public static final SuggestionProvider<dv> d = a(
-      new ajv("summonable_entities"),
-      ($$0, $$1) -> ea.a(kt.g.s().filter($$1x -> $$1x.a(((ea)$$0.getSource()).w()) && $$1x.c()), $$1, bqg::a, $$0x -> wi.c(ac.a("entity", bqg.a($$0x))))
-   );
+public record ht(List<String> a, List<String> b) {
+   public static ht a(String $$0, int $$1) {
+      Builder<String> $$2 = ImmutableList.builder();
+      Builder<String> $$3 = ImmutableList.builder();
+      int $$4 = $$0.length();
+      int $$5 = 0;
+      int $$6 = $$0.indexOf(36);
 
-   public static <S extends ea> SuggestionProvider<S> a(ajv $$0, SuggestionProvider<ea> $$1) {
-      if (e.containsKey($$0)) {
-         throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
+      while ($$6 != -1) {
+         if ($$6 != $$4 - 1 && $$0.charAt($$6 + 1) == '(') {
+            $$2.add($$0.substring($$5, $$6));
+            int $$7 = $$0.indexOf(41, $$6 + 1);
+            if ($$7 == -1) {
+               throw new IllegalArgumentException("Unterminated macro variable in macro '" + $$0 + "' on line " + $$1);
+            }
+
+            String $$8 = $$0.substring($$6 + 2, $$7);
+            if (!a($$8)) {
+               throw new IllegalArgumentException("Invalid macro variable name '" + $$8 + "' on line " + $$1);
+            }
+
+            $$3.add($$8);
+            $$5 = $$7 + 1;
+            $$6 = $$0.indexOf(36, $$5);
+         } else {
+            $$6 = $$0.indexOf(36, $$6 + 1);
+         }
+      }
+
+      if ($$5 == 0) {
+         throw new IllegalArgumentException("Macro without variables on line " + $$1);
       } else {
-         e.put($$0, $$1);
-         return new ht.a($$0, $$1);
+         if ($$5 != $$4) {
+            $$2.add($$0.substring($$5));
+         }
+
+         return new ht($$2.build(), $$3.build());
       }
    }
 
-   public static SuggestionProvider<ea> a(ajv $$0) {
-      return e.getOrDefault($$0, a);
-   }
-
-   public static ajv a(SuggestionProvider<ea> $$0) {
-      return $$0 instanceof ht.a ? ((ht.a)$$0).b : f;
-   }
-
-   public static SuggestionProvider<ea> b(SuggestionProvider<ea> $$0) {
-      return $$0 instanceof ht.a ? $$0 : a;
-   }
-
-   protected static class a implements SuggestionProvider<ea> {
-      private final SuggestionProvider<ea> a;
-      final ajv b;
-
-      public a(ajv $$0, SuggestionProvider<ea> $$1) {
-         this.a = $$1;
-         this.b = $$0;
+   private static boolean a(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         char $$2 = $$0.charAt($$1);
+         if (!Character.isLetterOrDigit($$2) && $$2 != '_') {
+            return false;
+         }
       }
 
-      public CompletableFuture<Suggestions> getSuggestions(CommandContext<ea> $$0, SuggestionsBuilder $$1) throws CommandSyntaxException {
-         return this.a.getSuggestions($$0, $$1);
+      return true;
+   }
+
+   public String a(List<String> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < this.b.size(); $$2++) {
+         $$1.append(this.a.get($$2)).append($$0.get($$2));
+         ho.a($$1);
       }
+
+      if (this.a.size() > this.b.size()) {
+         $$1.append(this.a.get(this.a.size() - 1));
+      }
+
+      ho.a($$1);
+      return $$1.toString();
    }
 }

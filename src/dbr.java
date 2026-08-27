@@ -1,72 +1,68 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class dbr extends dch implements djh {
-   public static final dpz d = dpy.C;
-   private static final etc a = dch.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+public abstract class dbr extends dch implements crf {
+   public static final dqp a = dqo.w;
+   private final djx.a b;
 
-   protected dbr(dph.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
+   public dbr(djx.a $$0, dpx.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.k(this.E.b().a(a, Boolean.valueOf(false)));
    }
 
    @Override
    protected abstract MapCodec<? extends dbr> a();
 
-   protected void a(dpi $$0, czh $$1, id $$2) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.E_().a(40));
-      }
-   }
-
-   protected static boolean e(dpi $$0, cym $$1, id $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (ij $$3 : ij.values()) {
-            if ($$1.b_($$2.a($$3)).a(avj.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
+   @Override
+   public dnd a(im $$0, dpy $$1) {
+      return new dop($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dpi a(cux $$0) {
-      elb $$1 = $$0.q().b_($$0.a());
-      return this.n().a(d, Boolean.valueOf($$1.a(avj.a) && $$1.e() == 8));
-   }
-
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return a;
-   }
-
-   @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, elc.c, elc.c.a($$3));
+   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
+      if ($$0.B) {
+         boolean $$3 = $$1.a(dcx.gO) || $$1.a(dcx.gP) || $$1.a(dcx.gQ) || $$1.a(dcx.gR);
+         if ($$3) {
+            return a($$2, dnf.p, dop::a);
+         }
       }
 
-      return $$1 == ij.a && !this.a($$0, (czj)$$3, $$4) ? dcj.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return null;
+   }
+
+   public djx.a b() {
+      return this.b;
    }
 
    @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      id $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, ij.b);
+   protected boolean a(dpy $$0, emg $$1) {
+      return false;
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(d);
+   public bqs k() {
+      return bqs.f;
    }
 
    @Override
-   protected elb c_(dpi $$0) {
-      return $$0.c(d) ? elc.c.a(false) : super.c_($$0);
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public dpy a(cvl $$0) {
+      return this.n().a(a, Boolean.valueOf($$0.q().C($$0.a())));
+   }
+
+   @Override
+   protected void a(dpy $$0, czu $$1, im $$2, dcv $$3, im $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.C($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

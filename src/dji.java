@@ -1,82 +1,105 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import java.util.List;
 
-public class dji extends dbd {
-   public static final MapCodec<dji> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dji.a.b.fieldOf("kind").forGetter(dbd::b), u()).apply($$0, dji::new));
-   public static final int d = dqo.a();
-   private static final int b = d + 1;
-   public static final dqi e = dpy.ba;
-   protected static final etc f = dch.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final etc g = dch.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+public enum dji implements ayq {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<? extends dji> a() {
-      return c;
+   public static final Codec<dji> e = ayq.a(dji::values);
+   private final String f;
+   private final h g;
+
+   private dji(String $$0, h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   protected dji(dji.a $$0, dph.d $$1) {
-      super($$0, $$1);
-      this.k(this.n().a(e, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return this.b() == dji.b.h ? g : f;
-   }
-
-   @Override
-   protected etc f(dpi $$0, cym $$1, id $$2) {
-      return esz.a();
-   }
-
-   @Override
-   public dpi a(cux $$0) {
-      return super.a($$0).a(e, Integer.valueOf(dqo.a($$0.i())));
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dhd $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends ayg {
-      Map<String, dji.a> a = new Object2ObjectArrayMap();
-      Codec<dji.a> b = awu.a(ayg::c, a::get);
-   }
-
-   public static enum b implements dji.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   public dji a(dji $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
       }
+   }
 
-      @Override
-      public String c() {
-         return this.j;
+   public h a() {
+      return this.g;
+   }
+
+   public ir a(ir $$0) {
+      if ($$0.o() == ir.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
+         }
       }
+   }
+
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public static dji a(ayd $$0) {
+      return ac.a(values(), $$0);
+   }
+
+   public static List<dji> b(ayd $$0) {
+      return ac.b(values(), $$0);
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

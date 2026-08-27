@@ -1,69 +1,55 @@
-public class cop extends cmw {
-   private static final int k = 27;
-   private final bny l;
+public class cop<T extends cnh> implements cmv {
+   public static final cop<cno> a = a("generic_9x1", cno::a);
+   public static final cop<cno> b = a("generic_9x2", cno::b);
+   public static final cop<cno> c = a("generic_9x3", cno::c);
+   public static final cop<cno> d = a("generic_9x4", cno::d);
+   public static final cop<cno> e = a("generic_9x5", cno::e);
+   public static final cop<cno> f = a("generic_9x6", cno::f);
+   public static final cop<coa> g = a("generic_3x3", coa::new);
+   public static final cop<cnv> h = a("crafter_3x3", cnv::new);
+   public static final cop<cnj> i = a("anvil", cnj::new);
+   public static final cop<cnk> j = a("beacon", cnk::new);
+   public static final cop<cnl> k = a("blast_furnace", cnl::new);
+   public static final cop<cnm> l = a("brewing_stand", cnm::new);
+   public static final cop<cny> m = a("crafting", cny::new);
+   public static final cop<cob> n = a("enchantment", cob::new);
+   public static final cop<cod> o = a("furnace", cod::new);
+   public static final cop<cof> p = a("grindstone", cof::new);
+   public static final cop<cog> q = a("hopper", cog::new);
+   public static final cop<col> r = a("lectern", ($$0, $$1) -> new col($$0));
+   public static final cop<com> s = a("loom", com::new);
+   public static final cop<cor> t = a("merchant", cor::new);
+   public static final cop<cpa> u = a("shulker_box", cpa::new);
+   public static final cop<cpg> v = a("smithing", cpg::new);
+   public static final cop<cph> w = a("smoker", cph::new);
+   public static final cop<cnn> x = a("cartography_table", cnn::new);
+   public static final cop<cpj> y = a("stonecutter", cpj::new);
+   private final cmy z;
+   private final cop.a<T> A;
 
-   public cop(int $$0, cjz $$1) {
-      this($$0, $$1, new boo(27));
+   private static <T extends cnh> cop<T> a(String $$0, cop.a<T> $$1) {
+      return ji.a(lc.r, $$0, new cop<>($$1, cna.g));
    }
 
-   public cop(int $$0, cjz $$1, bny $$2) {
-      super(cod.u, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.m);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new coq($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cos($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cos($$1, $$9, 8 + $$9 * 18, 142));
-      }
+   private static <T extends cnh> cop<T> a(String $$0, cop.a<T> $$1, cmw... $$2) {
+      return ji.a(lc.r, $$0, new cop<>($$1, cna.e.a($$2)));
    }
 
-   @Override
-   public boolean a(cka $$0) {
-      return this.l.a($$0);
+   private cop(cop.a<T> $$0, cmy $$1) {
+      this.A = $$0;
+      this.z = $$1;
    }
 
-   @Override
-   public crs a(cka $$0, int $$1) {
-      crs $$2 = crs.i;
-      cos $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         crs $$4 = $$3.g();
-         $$2 = $$4.r();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return crs.i;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return crs.i;
-         }
-
-         if ($$4.d()) {
-            $$3.e(crs.i);
-         } else {
-            $$3.b();
-         }
-      }
-
-      return $$2;
+   public T a(int $$0, ckk $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   public void b(cka $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public cmy m() {
+      return this.z;
+   }
+
+   interface a<T extends cnh> {
+      T create(int var1, ckk var2);
    }
 }

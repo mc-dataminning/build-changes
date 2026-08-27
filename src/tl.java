@@ -1,176 +1,41 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public class tl extends tn<tm> {
-   private static final int b = 24;
-   public static final un<tl> a = new un.b<tl>() {
-      public tl a(DataInput $$0, tx $$1) throws IOException {
-         return new tl(d($$0, $$1));
+public class tl implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
+
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      if (sw.b($$1)) {
+         return $$1;
+      } else {
+         Message $$2 = ws.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
       }
-
-      @Override
-      public ui.b a(DataInput $$0, ui $$1, tx $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static byte[] d(DataInput $$0, tx $$1) throws IOException {
-         $$1.b(24L);
-         int $$2 = $$0.readInt();
-         $$1.a(1L, (long)$$2);
-         byte[] $$3 = new byte[$$2];
-         $$0.readFully($$3);
-         return $$3;
-      }
-
-      @Override
-      public void b(DataInput $$0, tx $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 1);
-      }
-
-      @Override
-      public String a() {
-         return "BYTE[]";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Byte_Array";
-      }
-   };
-   private byte[] c;
-
-   public tl(byte[] $$0) {
-      this.c = $$0;
    }
 
-   public tl(List<Byte> $$0) {
-      this(a($$0));
+   public static tl a() {
+      return new tl();
    }
 
-   private static byte[] a(List<Byte> $$0) {
-      byte[] $$1 = new byte[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Byte $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0 : $$3;
-      }
-
-      return $$1;
+   public static String a(CommandContext<ec> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
-      $$0.write(this.c);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return eh.b(sw.b().stream(), $$1);
    }
 
-   @Override
-   public int a() {
-      return 24 + 1 * this.c.length;
-   }
-
-   @Override
-   public byte b() {
-      return 7;
-   }
-
-   @Override
-   public un<tl> c() {
+   public Collection<String> getExamples() {
       return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.s_();
-   }
-
-   @Override
-   public ul d() {
-      byte[] $$0 = new byte[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
-      return new tl($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tl && Arrays.equals(this.c, ((tl)$$0).c);
-   }
-
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
-
-   @Override
-   public void a(up $$0) {
-      $$0.a(this);
-   }
-
-   public byte[] e() {
-      return this.c;
-   }
-
-   @Override
-   public int size() {
-      return this.c.length;
-   }
-
-   public tm a(int $$0) {
-      return tm.a(this.c[$$0]);
-   }
-
-   public tm a(int $$0, tm $$1) {
-      byte $$2 = this.c[$$0];
-      this.c[$$0] = $$1.i();
-      return tm.a($$2);
-   }
-
-   public void b(int $$0, tm $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.i());
-   }
-
-   @Override
-   public boolean a(int $$0, ul $$1) {
-      if ($$1 instanceof ue) {
-         this.c[$$0] = ((ue)$$1).i();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b(int $$0, ul $$1) {
-      if ($$1 instanceof ue) {
-         this.c = ArrayUtils.add(this.c, $$0, ((ue)$$1).i());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public tm b(int $$0) {
-      byte $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return tm.a($$1);
-   }
-
-   @Override
-   public byte f() {
-      return 1;
-   }
-
-   @Override
-   public void clear() {
-      this.c = new byte[0];
-   }
-
-   @Override
-   public ui.b a(ui $$0) {
-      return $$0.a(this.c);
    }
 }

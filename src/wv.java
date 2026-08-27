@@ -1,63 +1,131 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
 
 public class wv {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final wu[] c;
+   public static final String a = ", ";
+   public static final ws b = ws.b(", ").a(n.h);
+   public static final ws c = ws.b(", ");
 
-   public wv(int $$0) {
-      this.c = new wu[$$0];
+   public static xg a(xg $$0, xp $$1) {
+      if ($$1.g()) {
+         return $$0;
+      } else {
+         xp $$2 = $$0.a();
+         if ($$2.g()) {
+            return $$0.b($$1);
+         } else {
+            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+         }
+      }
    }
 
-   public static wv a() {
-      return new wv(128);
+   public static Optional<xg> a(@Nullable ec $$0, Optional<ws> $$1, @Nullable bql $$2, int $$3) throws CommandSyntaxException {
+      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public int a(wu $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
+   public static xg a(@Nullable ec $$0, ws $$1, @Nullable bql $$2, int $$3) throws CommandSyntaxException {
+      if ($$3 > 100) {
+         return $$1.f();
+      } else {
+         xg $$4 = $$1.b().a($$0, $$2, $$3 + 1);
+
+         for (ws $$5 : $$1.c()) {
+            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+         }
+
+         return $$4.c(a($$0, $$1.a(), $$2, $$3));
+      }
+   }
+
+   private static xp a(@Nullable ec $$0, xp $$1, @Nullable bql $$2, int $$3) throws CommandSyntaxException {
+      wy $$4 = $$1.i();
+      if ($$4 != null) {
+         ws $$5 = $$4.a(wy.a.a);
+         if ($$5 != null) {
+            wy $$6 = new wy(wy.a.a, a($$0, $$5, $$2, $$3 + 1));
+            return $$1.a($$6);
          }
       }
 
-      return -1;
+      return $$1;
    }
 
-   @Nullable
-   public wu a(int $$0) {
-      return this.c[$$0];
+   public static ws a(Collection<String> $$0) {
+      return a($$0, $$0x -> ws.b($$0x).a(n.k));
    }
 
-   public void a(xb $$0, @Nullable wu $$1) {
-      List<wu> $$2 = $$0.d().a();
-      ArrayDeque<wu> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
+   public static <T extends Comparable<T>> ws a(Collection<T> $$0, Function<T, ws> $$1) {
+      if ($$0.isEmpty()) {
+         return wr.a;
+      } else if ($$0.size() == 1) {
+         return $$1.apply($$0.iterator().next());
+      } else {
+         List<T> $$2 = Lists.newArrayList($$0);
+         $$2.sort(Comparable::compareTo);
+         return b($$2, $$1);
       }
-
-      this.a($$3);
    }
 
-   @VisibleForTesting
-   void a(List<wu> $$0) {
-      this.a(new ArrayDeque<>($$0));
+   public static <T> ws b(Collection<? extends T> $$0, Function<T, ws> $$1) {
+      return a($$0, b, $$1);
    }
 
-   private void a(ArrayDeque<wu> $$0) {
-      Set<wu> $$1 = new ObjectOpenHashSet($$0);
+   public static <T> xg a(Collection<? extends T> $$0, Optional<? extends ws> $$1, Function<T, ws> $$2) {
+      return a($$0, (ws)DataFixUtils.orElse($$1, b), $$2);
+   }
 
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         wu $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
+   public static ws a(Collection<? extends ws> $$0, ws $$1) {
+      return a($$0, $$1, Function.identity());
+   }
+
+   public static <T> xg a(Collection<? extends T> $$0, ws $$1, Function<T, ws> $$2) {
+      if ($$0.isEmpty()) {
+         return ws.i();
+      } else if ($$0.size() == 1) {
+         return $$2.apply((T)$$0.iterator().next()).f();
+      } else {
+         xg $$3 = ws.i();
+         boolean $$4 = true;
+
+         for (T $$5 : $$0) {
+            if (!$$4) {
+               $$3.b($$1);
+            }
+
+            $$3.b($$2.apply($$5));
+            $$4 = false;
          }
+
+         return $$3;
       }
+   }
+
+   public static xg a(ws $$0) {
+      return ws.a("chat.square_brackets", $$0);
+   }
+
+   public static ws a(Message $$0) {
+      return (ws)($$0 instanceof ws ? (ws)$$0 : ws.b($$0.getString()));
+   }
+
+   public static boolean b(@Nullable ws $$0) {
+      if ($$0 != null && $$0.b() instanceof yd $$1) {
+         String $$2 = $$1.b();
+         String $$3 = $$1.c();
+         return $$3 != null || tt.a().b($$2);
+      } else {
+         return true;
+      }
+   }
+
+   public static xg a(String $$0) {
+      return a((ws)ws.b($$0).a($$1 -> $$1.a(n.k).a(new wq(wq.a.f, $$0)).a(new wy(wy.a.a, ws.c("chat.copy.click"))).a($$0)));
    }
 }

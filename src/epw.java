@@ -1,48 +1,43 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class epw {
-   private static final BiMap<ajv, epv> s = HashBiMap.create();
-   public static final Codec<epv> a = ajv.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((epv)s.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         s.inverse()::get
-      );
-   public static final epv b = a("empty", $$0 -> {
-   });
-   public static final epv c = a("chest", $$0 -> $$0.a(epx.f).b(epx.a));
-   public static final epv d = a("command", $$0 -> $$0.a(epx.f).b(epx.a));
-   public static final epv e = a("selector", $$0 -> $$0.a(epx.f).a(epx.a));
-   public static final epv f = a("fishing", $$0 -> $$0.a(epx.f).a(epx.i).b(epx.a));
-   public static final epv g = a("entity", $$0 -> $$0.a(epx.a).a(epx.f).a(epx.c).b(epx.d).b(epx.e).b(epx.b));
-   public static final epv h = a("archaeology", $$0 -> $$0.a(epx.f).b(epx.a));
-   public static final epv i = a("gift", $$0 -> $$0.a(epx.f).a(epx.a));
-   public static final epv j = a("barter", $$0 -> $$0.a(epx.a));
-   public static final epv k = a("vault", $$0 -> $$0.a(epx.f).b(epx.a));
-   public static final epv l = a("advancement_reward", $$0 -> $$0.a(epx.a).a(epx.f));
-   public static final epv m = a("advancement_entity", $$0 -> $$0.a(epx.a).a(epx.f));
-   public static final epv n = a("advancement_location", $$0 -> $$0.a(epx.a).a(epx.f).a(epx.i).a(epx.g));
-   public static final epv o = a("block_use", $$0 -> $$0.a(epx.a).a(epx.f).a(epx.g));
-   public static final epv p = a("generic", $$0 -> $$0.a(epx.a).a(epx.b).a(epx.c).a(epx.d).a(epx.e).a(epx.f).a(epx.g).a(epx.h).a(epx.i).a(epx.j));
-   public static final epv q = a("block", $$0 -> $$0.a(epx.g).a(epx.f).a(epx.i).b(epx.a).b(epx.h).b(epx.j));
-   public static final epv r = a("shearing", $$0 -> $$0.a(epx.f).b(epx.a));
+public class epw extends epo {
+   public static final Codec<epw> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  axe.a(aqv.a(axe.b(0, 32)), "title").forGetter($$0x -> $$0x.c),
+                  axe.a(Codec.STRING, "author").forGetter($$0x -> $$0x.b),
+                  axe.a(axe.a(0, 3), "generation").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, epw::new)
+   );
+   private final Optional<String> b;
+   private final Optional<aqv<String>> c;
+   private final Optional<Integer> d;
 
-   private static epv a(String $$0, Consumer<epv.a> $$1) {
-      epv.a $$2 = new epv.a();
-      $$1.accept($$2);
-      epv $$3 = $$2.a();
-      ajv $$4 = new ajv($$0);
-      epv $$5 = (epv)s.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
-      } else {
-         return $$3;
-      }
+   public epw(List<erh> $$0, Optional<aqv<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+      super($$0);
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   @Override
+   protected csd a(csd $$0, eoa $$1) {
+      $$0.a(jz.A, cvj.a, this::a);
+      return $$0;
+   }
+
+   private cvj a(cvj $$0) {
+      return new cvj(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   }
+
+   @Override
+   public epq b() {
+      return epr.H;
    }
 }

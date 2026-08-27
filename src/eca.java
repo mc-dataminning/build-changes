@@ -1,48 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eca extends ebu {
-   public static final Codec<eca> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bnk.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, eca::new)
-   );
-   private final bnk b;
+public class eca<P extends ebz> {
+   public static final eca<ecc> a = a("two_layers_feature_size", ecc.d);
+   public static final eca<ecb> b = a("three_layers_feature_size", ecb.d);
+   private final Codec<P> c;
 
-   public eca(bnk $$0, bnk $$1, bnk $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   private static <P extends ebz> eca<P> a(String $$0, Codec<P> $$1) {
+      return ji.a(lc.aa, $$0, new eca<>($$1));
    }
 
-   @Override
-   protected ebv<?> a() {
-      return ebv.b;
+   private eca(Codec<P> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, int $$4, ebu.a $$5, int $$6, int $$7, int $$8) {
-      id $$9 = $$5.a();
-      int $$10 = $$2.a(2);
-      int $$11 = 1;
-      int $$12 = 0;
-
-      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
-         if ($$10 >= $$11) {
-            $$10 = $$12;
-            $$12 = 1;
-            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
-         } else {
-            $$10++;
-         }
-      }
-   }
-
-   @Override
-   public int a(axt $$0, int $$1, ebe $$2) {
-      return Math.max(4, $$1 - this.b.a($$0));
-   }
-
-   @Override
-   protected boolean a(axt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public Codec<P> a() {
+      return this.c;
    }
 }

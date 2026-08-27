@@ -1,83 +1,79 @@
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cqg extends crn {
-   public cqg(crn.a $$0) {
+public class cqg extends csu {
+   public static final int a = 20;
+   public static final int b = 15;
+
+   public cqg(cry.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dpi $$0, czg $$1, id $$2, cka $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(boe.a));
-      }
-
-      return false;
-   }
-
-   @Override
-   public bof a(cuz $$0) {
-      cka $$1 = $$0.o();
-      czg $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         id $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bof.e;
-         }
-      }
-
-      return bof.a($$2.B);
-   }
-
-   private boolean a(cka $$0, dpi $$1, czh $$2, id $$3, boolean $$4, crs $$5) {
-      if (!$$0.gw()) {
-         return false;
-      } else {
-         in<dch> $$6 = $$1.c();
-         dpj<dch, dpi> $$7 = $$6.a().l();
-         Collection<dql<?>> $$8 = $$7.d();
-         if ($$8.isEmpty()) {
-            a($$0, wi.a(this.a() + ".empty", $$6.g()));
-            return false;
-         } else {
-            cue $$9 = $$5.a(jr.C);
-            if ($$9 == null) {
-               return false;
-            } else {
-               dql<?> $$10 = $$9.a().get($$6);
-               if ($$4) {
-                  if ($$10 == null) {
-                     $$10 = $$8.iterator().next();
-                  }
-
-                  dpi $$11 = a($$1, $$10, $$0.fO());
-                  $$2.a($$3, $$11, 18);
-                  a($$0, wi.a(this.a() + ".update", $$10.f(), a($$11, $$10)));
-               } else {
-                  $$10 = a($$8, $$10, $$0.fO());
-                  $$5.b(jr.C, $$9.a($$6, $$10));
-                  a($$0, wi.a(this.a() + ".select", $$10.f(), a($$1, $$10)));
+   public void a(csd $$0, czu $$1, bre $$2, int $$3) {
+      if ($$2 instanceof ckl $$4) {
+         csd $$5 = $$4.g($$0);
+         if (!$$5.d()) {
+            int $$6 = this.b($$0) - $$3;
+            float $$7 = a($$6);
+            if (!((double)$$7 < 0.1)) {
+               List<csd> $$8 = a($$0, $$5, $$4);
+               if (!$$1.x_() && !$$8.isEmpty()) {
+                  this.a($$1, $$4, $$4.fu(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
                }
 
-               return true;
+               $$1.a(null, $$4.ds(), $$4.du(), $$4.dy(), auz.aG, ava.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
+               $$4.b(avj.c.b(this));
             }
          }
       }
    }
 
-   private static <T extends Comparable<T>> dpi a(dpi $$0, dql<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   @Override
+   protected void a(bre $$0, cld $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bre $$6) {
+      $$1.a($$0, $$0.dF(), $$0.dD() + $$5, 0.0F, $$3, $$4);
    }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
+   public static float a(int $$0) {
+      float $$1 = (float)$$0 / 20.0F;
+      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
+      if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return $$1;
    }
 
-   private static void a(cka $$0, wi $$1) {
-      ((apv)$$0).b($$1, true);
+   @Override
+   public int b(csd $$0) {
+      return 72000;
    }
 
-   private static <T extends Comparable<T>> String a(dpi $$0, dql<T> $$1) {
-      return $$1.a($$0.c($$1));
+   @Override
+   public ctw c(csd $$0) {
+      return ctw.e;
+   }
+
+   @Override
+   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
+      csd $$3 = $$1.b($$2);
+      boolean $$4 = !$$1.g($$3).d();
+      if (!$$1.fN() && !$$4) {
+         return bor.d($$3);
+      } else {
+         $$1.c($$2);
+         return bor.b($$3);
+      }
+   }
+
+   @Override
+   public Predicate<csd> b() {
+      return c;
+   }
+
+   @Override
+   public int c() {
+      return 15;
    }
 }

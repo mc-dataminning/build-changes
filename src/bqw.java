@@ -1,57 +1,83 @@
-import com.mojang.serialization.Codec;
+public class bqw extends cds {
+   private static final ajk<Integer> cc = ajo.a(bqw.class, ajm.b);
 
-public enum bqw implements ayg {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
-
-   public static final Codec<bqw> i = ayg.a(bqw::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private bqw(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
-   }
-
-   public String a() {
-      return this.m;
+   public bqw(bqr<? extends bqw> $$0, czu $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.m;
+   protected ku r() {
+      return kw.aM;
    }
 
-   public int b() {
-      return this.j;
+   @Override
+   protected void a(ajo.a $$0) {
+      super.a($$0);
+      $$0.a(cc, 0);
    }
 
-   public boolean d() {
-      return this.k;
+   @Override
+   protected auy u() {
+      return auz.kE;
    }
 
-   public boolean e() {
-      return this.l;
+   @Override
+   protected auy v() {
+      return auz.kB;
    }
 
-   public int f() {
-      return this.o;
+   @Override
+   protected auy d(bpj $$0) {
+      return auz.kD;
    }
 
-   public int g() {
-      return 32;
+   @Override
+   protected auy o_() {
+      return auz.kC;
+   }
+
+   @Override
+   public void b(ty $$0) {
+      super.b($$0);
+      $$0.a("DarkTicksRemaining", this.y());
+   }
+
+   @Override
+   public void a(ty $$0) {
+      super.a($$0);
+      this.c($$0.h("DarkTicksRemaining"));
+   }
+
+   @Override
+   public void n_() {
+      super.n_();
+      int $$0 = this.y();
+      if ($$0 > 0) {
+         this.c($$0 - 1);
+      }
+
+      this.dN().a(kw.aN, this.d(0.6), this.dv(), this.g(0.6), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public boolean a(bpj $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if ($$2) {
+         this.c(100);
+      }
+
+      return $$2;
+   }
+
+   private void c(int $$0) {
+      this.ao.a(cc, $$0);
+   }
+
+   public int y() {
+      return this.ao.a(cc);
+   }
+
+   public static boolean a(bqr<? extends bre> $$0, daj $$1, bri $$2, im $$3, ayd $$4) {
+      return $$3.v() <= $$1.z_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dcx.G);
    }
 }

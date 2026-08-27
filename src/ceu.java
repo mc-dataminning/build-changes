@@ -1,135 +1,91 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public class ceu extends cep {
-   private int bY = 47999;
+public class ceu {
+   public static final int a = 20;
+   public static final int b = 7;
+   private static final bob i = bob.a(5, 16);
+   private static final float j = 1.0F;
+   private static final float k = 1.25F;
+   private static final float l = 1.25F;
+   private static final float m = 2.0F;
+   private static final float n = 1.25F;
+   private static final bob o = bob.a(600, 1200);
+   public static final int c = 5;
+   public static final int d = 5;
+   public static final float e = 3.5714288F;
+   private static final bob p = bob.a(600, 6000);
+   private static final bob q = bob.a(100, 300);
+   private static final cbu r = cbu.a().a($$0 -> !$$0.ai().equals(bqr.X) && $$0.dN().C_().a($$0.cI()));
+   private static final float s = 3.0F;
+   public static final int f = 4;
+   public static final float g = 2.5F;
+   public static final float h = 1.0F;
 
-   public ceu(bqg<? extends ceu> $$0, czg $$1) {
-      super($$0, $$1);
+   protected static void a(cet $$0, ayd $$1) {
+      $$0.dQ().a(cah.S, o.a($$1));
+      $$0.dQ().a(cah.V, p.a($$1));
    }
 
-   @Override
-   public boolean gw() {
-      return true;
+   protected static bsf<?> a(bsf<cet> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      e($$0);
+      $$0.a(ImmutableSet.of(cma.a));
+      $$0.b(cma.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Nullable
-   @Override
-   protected cep gB() {
-      return bqg.bd.a(this.dM());
+   private static void b(bsf<cet> $$0) {
+      $$0.a(cma.a, 0, ImmutableList.of(new bvq(0.8F), new bsr(2.0F), new buc(45, 90), new bug(), new btc(cah.P), new btc(cah.S), new btc(cah.V)));
    }
 
-   @Override
-   public void b(to $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.bY);
+   private static void c(bsf<cet> $$0) {
+      $$0.a(
+         cma.b,
+         ImmutableList.of(
+            Pair.of(0, buw.a(bqr.bx, 6.0F, bob.a(30, 60))),
+            Pair.of(0, new bsq(bqr.X)),
+            Pair.of(1, new btj($$0x -> 1.25F)),
+            Pair.of(2, bst.a(i, 1.25F)),
+            Pair.of(3, new but(ImmutableList.of(Pair.of(buo.a(1.0F), 2), Pair.of(bvd.a(1.0F, 3), 2), Pair.of(new btg(30, 60), 1))))
+         ),
+         ImmutableSet.of(Pair.of(cah.W, cai.b), Pair.of(cah.T, cai.b))
+      );
    }
 
-   @Override
-   public void a(to $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.bY = $$0.h("DespawnDelay");
-      }
+   private static void d(bsf<cet> $$0) {
+      $$0.a(
+         cma.q,
+         ImmutableList.of(Pair.of(0, new btx(o, auz.kY)), Pair.of(1, new btz<>(o, 5, 5, 3.5714288F, $$0x -> $$0x.gz() ? auz.kT : auz.kJ))),
+         ImmutableSet.of(Pair.of(cah.O, cai.b), Pair.of(cah.r, cai.b), Pair.of(cah.m, cai.b), Pair.of(cah.S, cai.b))
+      );
    }
 
-   @Override
-   protected void z() {
-      super.z();
-      this.bR.a(1, new byj(this, 2.0));
-      this.bS.a(1, new ceu.a(this));
+   private static void e(bsf<cet> $$0) {
+      $$0.a(
+         cma.r,
+         ImmutableList.of(
+            Pair.of(
+               0,
+               new bum(
+                  $$0x -> $$0x.gz() ? q : p, r, 3.0F, $$0x -> $$0x.p_() ? 1.0 : 2.5, $$0x -> $$0x.gz() ? auz.kW : auz.kM, $$0x -> $$0x.gz() ? auz.kX : auz.kN
+               )
+            ),
+            Pair.of(1, new bul<>($$0x -> $$0x.gz() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gz() ? auz.kV : auz.kL))
+         ),
+         ImmutableSet.of(Pair.of(cah.O, cai.b), Pair.of(cah.r, cai.b), Pair.of(cah.V, cai.b))
+      );
    }
 
-   @Override
-   public void x(int $$0) {
-      this.bY = $$0;
+   public static void a(cet $$0) {
+      $$0.dQ().a(ImmutableList.of(cma.r, cma.q, cma.b));
    }
 
-   @Override
-   protected void f(cka $$0) {
-      bqa $$1 = this.gc();
-      if (!($$1 instanceof cjt)) {
-         super.f($$0);
-      }
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      if (!this.dM().B) {
-         this.hc();
-      }
-   }
-
-   private void hc() {
-      if (this.hd()) {
-         this.bY = this.he() ? ((cjt)this.gc()).gw() - 1 : this.bY - 1;
-         if (this.bY <= 0) {
-            this.a(true, false);
-            this.am();
-         }
-      }
-   }
-
-   private boolean hd() {
-      return !this.gC() && !this.hf() && !this.cV();
-   }
-
-   private boolean he() {
-      return this.gc() instanceof cjt;
-   }
-
-   private boolean hf() {
-      return this.gb() && !this.he();
-   }
-
-   @Nullable
-   @Override
-   public brl a(czv $$0, bod $$1, bqx $$2, @Nullable brl $$3) {
-      if ($$2 == bqx.h) {
-         this.c_(0);
-      }
-
-      if ($$3 == null) {
-         $$3 = new bpu.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected static class a extends bzq {
-      private final cep a;
-      private bqt b;
-      private int c;
-
-      public a(cep $$0) {
-         super($$0, false);
-         this.a = $$0;
-         this.a(EnumSet.of(bxq.a.d));
-      }
-
-      @Override
-      public boolean a() {
-         if (!this.a.gb()) {
-            return false;
-         } else if (!(this.a.gc() instanceof cjt $$1)) {
-            return false;
-         } else {
-            this.b = $$1.ej();
-            int $$2 = $$1.ek();
-            return $$2 != this.c && this.a(this.b, cbj.a);
-         }
-      }
-
-      @Override
-      public void c() {
-         this.e.h(this.b);
-         bqa $$0 = this.a.gc();
-         if ($$0 instanceof cjt) {
-            this.c = ((cjt)$$0).ek();
-         }
-
-         super.c();
-      }
+   public static cwd a() {
+      return cwd.a(csg.pw);
    }
 }

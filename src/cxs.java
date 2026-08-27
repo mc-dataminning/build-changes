@@ -1,15 +1,20 @@
-public class cxs extends cwz {
-   public cxs(cwz.a $$0, bqh... $$1) {
-      super($$0, avm.bl, $$1);
+public class cxs extends cxn {
+   protected cxs(cxn.a $$0, awd<cry> $$1, bqs... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

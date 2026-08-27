@@ -1,147 +1,40 @@
-import java.util.UUID;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
 public abstract class bnv {
-   private final UUID h;
-   protected wi a;
-   protected float b;
-   protected bnv.a c;
-   protected bnv.b d;
-   protected boolean e;
-   protected boolean f;
-   protected boolean g;
+   private static final Codec<Either<Integer, bnv>> a = Codec.either(Codec.INT, lc.M.q().dispatch(bnv::c, bnw::codec));
+   public static final Codec<bnv> c = a.xmap(
+      $$0 -> (bnv)$$0.map(bns::a, $$0x -> $$0x), $$0 -> $$0.c() == bnw.a ? Either.left(((bns)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<bnv> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<bnv> e = b(1, Integer.MAX_VALUE);
 
-   public bnv(UUID $$0, wi $$1, bnv.a $$2, bnv.b $$3) {
-      this.h = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.b = 1.0F;
+   public static Codec<bnv> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   public UUID h() {
-      return this.h;
-   }
-
-   public wi i() {
-      return this.a;
-   }
-
-   public void a(wi $$0) {
-      this.a = $$0;
-   }
-
-   public float j() {
-      return this.b;
-   }
-
-   public void a(float $$0) {
-      this.b = $$0;
-   }
-
-   public bnv.a k() {
-      return this.c;
-   }
-
-   public void a(bnv.a $$0) {
-      this.c = $$0;
-   }
-
-   public bnv.b l() {
-      return this.d;
-   }
-
-   public void a(bnv.b $$0) {
-      this.d = $$0;
-   }
-
-   public boolean m() {
-      return this.e;
-   }
-
-   public bnv a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public boolean n() {
-      return this.f;
-   }
-
-   public bnv b(boolean $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public bnv c(boolean $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean o() {
-      return this.g;
-   }
-
-   public static enum a {
-      a("pink", n.m),
-      b("blue", n.j),
-      c("red", n.e),
-      d("green", n.k),
-      e("yellow", n.o),
-      f("purple", n.b),
-      g("white", n.p);
-
-      private final String h;
-      private final n i;
-
-      private a(String $$0, n $$1) {
-         this.h = $$0;
-         this.i = $$1;
-      }
-
-      public n a() {
-         return this.i;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static bnv.a a(String $$0) {
-         for (bnv.a $$1 : values()) {
-            if ($$1.h.equals($$0)) {
-               return $$1;
+   public static <T extends bnv> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return axe.b(
+         $$2,
+         (Function<T, DataResult<T>>)($$2x -> {
+            if ($$2x.a() < $$0) {
+               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b() > $$1
+                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
             }
-         }
-
-         return g;
-      }
+         })
+      );
    }
 
-   public static enum b {
-      a("progress"),
-      b("notched_6"),
-      c("notched_10"),
-      d("notched_12"),
-      e("notched_20");
+   public abstract int a(ayd var1);
 
-      private final String f;
+   public abstract int a();
 
-      private b(String $$0) {
-         this.f = $$0;
-      }
+   public abstract int b();
 
-      public String a() {
-         return this.f;
-      }
-
-      public static bnv.b a(String $$0) {
-         for (bnv.b $$1 : values()) {
-            if ($$1.f.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return a;
-      }
-   }
+   public abstract bnw<?> c();
 }

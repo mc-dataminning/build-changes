@@ -1,114 +1,59 @@
-import java.util.List;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public class drs<T> implements dru<T> {
-   private final is<T> a;
-   private final T[] b;
-   private final drv<T> c;
-   private final int d;
-   private int e;
+public class drs implements AutoCloseable {
+   private final czv a;
+   private final Long2ObjectMap<dsf> b = new Long2ObjectOpenHashMap();
+   @Nullable
+   private dsf c;
+   private long d;
 
-   private drs(is<T> $$0, int $$1, drv<T> $$2, List<T> $$3) {
+   public drs(czv $$0) {
       this.a = $$0;
-      this.b = (T[])(new Object[1 << $$1]);
-      this.d = $$1;
-      this.c = $$2;
-      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         this.b[$$4] = $$3.get($$4);
-      }
-
-      this.e = $$3.size();
    }
 
-   private drs(is<T> $$0, T[] $$1, drv<T> $$2, int $$3, int $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
-
-   public static <A> dru<A> a(int $$0, is<A> $$1, drv<A> $$2, List<A> $$3) {
-      return new drs<>($$1, $$0, $$2, $$3);
-   }
-
-   @Override
-   public int a(T $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if (this.b[$$1] == $$0) {
-            return $$1;
+   @Nullable
+   public dsf a(im $$0) {
+      int $$1 = this.a.e($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.am()) {
+         long $$2 = jo.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (dsf)this.b.computeIfAbsent($$2, $$2x -> {
+               dru $$3 = this.a.a(jo.a($$0.u()), jo.a($$0.w()));
+               dsf $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
          }
-      }
 
-      int $$2 = this.e;
-      if ($$2 < this.b.length) {
-         this.b[$$2] = $$0;
-         this.e++;
-         return $$2;
+         return this.c;
       } else {
-         return this.c.onResize(this.d + 1, $$0);
+         return null;
       }
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if ($$0.test(this.b[$$1])) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public T a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.e) {
-         return this.b[$$0];
+   public dpy b(im $$0) {
+      dsf $$1 = this.a($$0);
+      if ($$1 == null) {
+         return dcx.a.n();
       } else {
-         throw new drt($$0);
+         int $$2 = jo.b($$0.u());
+         int $$3 = jo.b($$0.v());
+         int $$4 = jo.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
       }
    }
 
    @Override
-   public void a(vi $$0) {
-      this.e = $$0.l();
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
 
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         this.b[$$1] = this.a.b($$0.l());
+      while (var1.hasNext()) {
+         dsf $$0 = (dsf)var1.next();
+         $$0.b();
       }
-   }
-
-   @Override
-   public void b(vi $$0) {
-      $$0.c(this.e);
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         $$0.c(this.a.a(this.b[$$1]));
-      }
-   }
-
-   @Override
-   public int a() {
-      int $$0 = vz.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += vz.a(this.a.a(this.b[$$1]));
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public dru<T> c() {
-      return new drs<>(this.a, (T[])((Object[])this.b.clone()), this.c, this.d, this.e);
    }
 }

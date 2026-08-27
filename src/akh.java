@@ -1,81 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.io.PrintStream;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import org.slf4j.Logger;
 
-public class akh extends ati {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private Map<ajv, af> c = Map.of();
-   private ak d = new ak();
-   private final ip.a e;
-   private final enn f;
+public class akh {
+   public static final PrintStream a = System.out;
+   private static volatile boolean c;
+   private static final Logger d = LogUtils.getLogger();
+   public static final AtomicLong b = new AtomicLong(-1L);
 
-   public akh(ip.a $$0, enn $$1) {
-      super(b, "advancements");
-      this.e = $$0;
-      this.f = $$1;
+   public static void a() {
+      if (!c) {
+         c = true;
+         Instant $$0 = Instant.now();
+         if (lc.av.e().isEmpty()) {
+            throw new IllegalStateException("Unable to load registries");
+         } else {
+            dfv.b();
+            deg.b();
+            if (bqr.a(bqr.bx) == null) {
+               throw new IllegalStateException("Failed loading EntityTypes");
+            } else {
+               cub.a();
+               gt.a();
+               kh.c();
+               js.a();
+               lc.a();
+               cqp.a();
+               d();
+               b.set(Duration.between($$0, Instant.now()).toMillis());
+            }
+         }
+      }
    }
 
-   protected void a(Map<ajv, JsonElement> $$0, ate $$1, bkt $$2) {
-      ajt<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
-      Builder<ajv, af> $$4 = ImmutableMap.builder();
-      $$0.forEach(($$2x, $$3x) -> {
-         try {
-            ae $$4x = ac.a(ae.a.parse($$3, $$3x), JsonParseException::new);
-            this.a($$2x, $$4x);
-            $$4.put($$2x, new af($$2x, $$4x));
-         } catch (Exception var6x) {
-            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
+   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
+      tt $$3 = tt.a();
+      $$0.forEach($$3x -> {
+         String $$4 = $$1.apply((T)$$3x);
+         if (!$$3.b($$4)) {
+            $$2.add($$4);
          }
       });
-      this.c = $$4.buildOrThrow();
-      ak $$5 = new ak();
-      $$5.a(this.c.values());
+   }
 
-      for (ag $$6 : $$5.b()) {
-         if ($$6.b().b().c().isPresent()) {
-            as.a($$6);
+   private static void a(final Set<String> $$0) {
+      final tt $$1 = tt.a();
+      czq.a(new czq.c() {
+         @Override
+         public <T extends czq.g<T>> void a(czq.e<T> $$0x, czq.f<T> $$1x) {
+            if (!$$1.b($$0.b())) {
+               $$0.add($$0.a());
+            }
          }
+      });
+   }
+
+   public static Set<String> b() {
+      Set<String> $$0 = new TreeSet<>();
+      a(lc.u, bsg::c, $$0);
+      a(lc.g, bqr::g, $$0);
+      a(lc.d, bpv::d, $$0);
+      a(lc.h, cry::a, $$0);
+      a(lc.f, cxn::h, $$0);
+      a(lc.e, dcv::g, $$0);
+      a(lc.m, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a($$0);
+      return $$0;
+   }
+
+   public static void a(Supplier<String> $$0) {
+      if (!c) {
+         throw b($$0);
+      }
+   }
+
+   private static RuntimeException b(Supplier<String> $$0) {
+      try {
+         String $$1 = $$0.get();
+         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
+      } catch (Exception var3) {
+         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
+         $$3.addSuppressed(var3);
+         return $$3;
+      }
+   }
+
+   public static void c() {
+      a(() -> "validate");
+      if (aa.aX) {
+         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
+         ed.b();
       }
 
-      this.d = $$5;
+      bsm.a();
    }
 
-   private void a(ajv $$0, ae $$1) {
-      axr.a $$2 = new axr.a();
-      $$1.a($$2, this.f);
-      Multimap<String, String> $$3 = $$2.a();
-      if (!$$3.isEmpty()) {
-         String $$4 = $$3.asMap()
-            .entrySet()
-            .stream()
-            .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-            .collect(Collectors.joining("\n"));
-         a.warn("Found validation problems in advancement {}: \n{}", $$0, $$4);
+   private static void d() {
+      if (d.isDebugEnabled()) {
+         System.setErr(new akk("STDERR", System.err));
+         System.setOut(new akk("STDOUT", a));
+      } else {
+         System.setErr(new akm("STDERR", System.err));
+         System.setOut(new akm("STDOUT", a));
       }
    }
 
-   @Nullable
-   public af a(ajv $$0) {
-      return this.c.get($$0);
-   }
-
-   public ak a() {
-      return this.d;
-   }
-
-   public Collection<af> b() {
-      return this.c.values();
+   public static void a(String $$0) {
+      a.println($$0);
    }
 }

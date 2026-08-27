@@ -1,13 +1,37 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
 public class cbm {
-   @Nullable
-   public static esj a(brb $$0, int $$1, int $$2, int $$3, esj $$4, double $$5) {
-      esj $$6 = $$4.a($$0.dr(), $$0.dt(), $$0.dx());
-      boolean $$7 = cbo.a($$0, $$1);
-      return cbr.a($$0, () -> {
-         id $$7x = cbl.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !cbo.a($$0, $$7x) ? $$7x : null;
-      });
+   private final brg a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
+
+   public cbm(brg $$0) {
+      this.a = $$0;
+   }
+
+   public void a() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   public boolean a(bql $$0) {
+      int $$1 = $$0.aj();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         this.a.dN().af().a("hasLineOfSight");
+         boolean $$2 = this.a.E($$0);
+         this.a.dN().af().c();
+         if ($$2) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
+
+         return $$2;
+      }
    }
 }

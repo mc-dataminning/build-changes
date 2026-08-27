@@ -1,71 +1,105 @@
-public class dvj {
-   public static final aju<eke.a> a = a("temperature");
-   public static final aju<eke.a> b = a("vegetation");
-   public static final aju<eke.a> c = a("continentalness");
-   public static final aju<eke.a> d = a("erosion");
-   public static final aju<eke.a> e = a("temperature_large");
-   public static final aju<eke.a> f = a("vegetation_large");
-   public static final aju<eke.a> g = a("continentalness_large");
-   public static final aju<eke.a> h = a("erosion_large");
-   public static final aju<eke.a> i = a("ridge");
-   public static final aju<eke.a> j = a("offset");
-   public static final aju<eke.a> k = a("aquifer_barrier");
-   public static final aju<eke.a> l = a("aquifer_fluid_level_floodedness");
-   public static final aju<eke.a> m = a("aquifer_lava");
-   public static final aju<eke.a> n = a("aquifer_fluid_level_spread");
-   public static final aju<eke.a> o = a("pillar");
-   public static final aju<eke.a> p = a("pillar_rareness");
-   public static final aju<eke.a> q = a("pillar_thickness");
-   public static final aju<eke.a> r = a("spaghetti_2d");
-   public static final aju<eke.a> s = a("spaghetti_2d_elevation");
-   public static final aju<eke.a> t = a("spaghetti_2d_modulator");
-   public static final aju<eke.a> u = a("spaghetti_2d_thickness");
-   public static final aju<eke.a> v = a("spaghetti_3d_1");
-   public static final aju<eke.a> w = a("spaghetti_3d_2");
-   public static final aju<eke.a> x = a("spaghetti_3d_rarity");
-   public static final aju<eke.a> y = a("spaghetti_3d_thickness");
-   public static final aju<eke.a> z = a("spaghetti_roughness");
-   public static final aju<eke.a> A = a("spaghetti_roughness_modulator");
-   public static final aju<eke.a> B = a("cave_entrance");
-   public static final aju<eke.a> C = a("cave_layer");
-   public static final aju<eke.a> D = a("cave_cheese");
-   public static final aju<eke.a> E = a("ore_veininess");
-   public static final aju<eke.a> F = a("ore_vein_a");
-   public static final aju<eke.a> G = a("ore_vein_b");
-   public static final aju<eke.a> H = a("ore_gap");
-   public static final aju<eke.a> I = a("noodle");
-   public static final aju<eke.a> J = a("noodle_thickness");
-   public static final aju<eke.a> K = a("noodle_ridge_a");
-   public static final aju<eke.a> L = a("noodle_ridge_b");
-   public static final aju<eke.a> M = a("jagged");
-   public static final aju<eke.a> N = a("surface");
-   public static final aju<eke.a> O = a("surface_secondary");
-   public static final aju<eke.a> P = a("clay_bands_offset");
-   public static final aju<eke.a> Q = a("badlands_pillar");
-   public static final aju<eke.a> R = a("badlands_pillar_roof");
-   public static final aju<eke.a> S = a("badlands_surface");
-   public static final aju<eke.a> T = a("iceberg_pillar");
-   public static final aju<eke.a> U = a("iceberg_pillar_roof");
-   public static final aju<eke.a> V = a("iceberg_surface");
-   public static final aju<eke.a> W = a("surface_swamp");
-   public static final aju<eke.a> X = a("calcite");
-   public static final aju<eke.a> Y = a("gravel");
-   public static final aju<eke.a> Z = a("powder_snow");
-   public static final aju<eke.a> aa = a("packed_ice");
-   public static final aju<eke.a> ab = a("ice");
-   public static final aju<eke.a> ac = a("soul_sand_layer");
-   public static final aju<eke.a> ad = a("gravel_layer");
-   public static final aju<eke.a> ae = a("patch");
-   public static final aju<eke.a> af = a("netherrack");
-   public static final aju<eke.a> ag = a("nether_wart");
-   public static final aju<eke.a> ah = a("nether_state_selector");
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-   private static aju<eke.a> a(String $$0) {
-      return aju.a(ku.aE, new ajv($$0));
+public interface dvj {
+   Codec<dvj> b = dvk.b;
+   Codec<iv<dvj>> c = akb.a(ld.aC, b);
+   Codec<dvj> d = c.xmap(dvk.j::new, $$0 -> (iv)($$0 instanceof dvk.j $$1 ? $$1.j() : new iv.a<>($$0)));
+
+   double a(dvj.b var1);
+
+   void a(double[] var1, dvj.a var2);
+
+   dvj a(dvj.f var1);
+
+   double a();
+
+   double b();
+
+   axq<? extends dvj> c();
+
+   default dvj a(double $$0, double $$1) {
+      return new dvk.g(this, $$0, $$1);
    }
 
-   public static eke a(io<eke.a> $$0, dvn $$1, aju<eke.a> $$2) {
-      in<eke.a> $$3 = $$0.b($$2);
-      return eke.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   default dvj d() {
+      return dvk.a(this, dvk.k.a.a);
+   }
+
+   default dvj e() {
+      return dvk.a(this, dvk.k.a.b);
+   }
+
+   default dvj f() {
+      return dvk.a(this, dvk.k.a.c);
+   }
+
+   default dvj g() {
+      return dvk.a(this, dvk.k.a.d);
+   }
+
+   default dvj h() {
+      return dvk.a(this, dvk.k.a.e);
+   }
+
+   default dvj i() {
+      return dvk.a(this, dvk.k.a.f);
+   }
+
+   public interface a {
+      dvj.b a(int var1);
+
+      void a(double[] var1, dvj var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default dws d() {
+         return dws.a();
+      }
+   }
+
+   public static record c(iv<eku.a> b, @Nullable eku c) {
+      public static final Codec<dvj.c> a = eku.a.b.xmap($$0 -> new dvj.c($$0, null), dvj.c::b);
+
+      public c(iv<eku.a> $$0) {
+         this($$0, null);
+      }
+
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
+
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
+   }
+
+   public interface d extends dvj {
+      @Override
+      default void a(double[] $$0, dvj.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      default dvj a(dvj.f $$0) {
+         return $$0.apply(this);
+      }
+   }
+
+   public static record e(int a, int b, int c) implements dvj.b {
+   }
+
+   public interface f {
+      dvj apply(dvj var1);
+
+      default dvj.c a(dvj.c $$0) {
+         return $$0;
+      }
    }
 }

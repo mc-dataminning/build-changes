@@ -1,422 +1,203 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.shorts.ShortOpenHashSet;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-import java.util.ArrayList;
-import java.util.BitSet;
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Properties;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class apb {
-   public static final ape<dre> a = ape.a("Unloaded chunk");
-   public static final CompletableFuture<ape<dre>> b = CompletableFuture.completedFuture(a);
-   public static final ape<dro> c = ape.a("Unloaded level chunk");
-   public static final ape<dre> d = ape.a("Not done yet");
-   private static final CompletableFuture<ape<dro>> e = CompletableFuture.completedFuture(c);
-   private static final List<dsd> f = dsd.a();
-   private final AtomicReferenceArray<CompletableFuture<ape<dre>>> g = new AtomicReferenceArray<>(f.size());
-   private final czi h;
-   private volatile CompletableFuture<ape<dro>> i = e;
-   private volatile CompletableFuture<ape<dro>> j = e;
-   private volatile CompletableFuture<ape<dro>> k = e;
-   private CompletableFuture<dre> l = CompletableFuture.completedFuture(null);
+public class apb extends ape<apb> {
+   static final Logger ac = LogUtils.getLogger();
+   private static final Pattern ad = Pattern.compile("^[a-fA-F0-9]{40}$");
+   private static final Splitter ae = Splitter.on(',').trimResults();
+   public final boolean a = this.a("online-mode", true);
+   public final boolean b = this.a("prevent-proxy-connections", false);
+   public final String c = this.a("server-ip", "");
+   public final boolean d = this.a("spawn-animals", true);
+   public final boolean e = this.a("spawn-npcs", true);
+   public final boolean f = this.a("pvp", true);
+   public final boolean g = this.a("allow-flight", false);
+   public final String h = this.a("motd", "A Minecraft Server");
+   public final boolean i = this.a("force-gamemode", false);
+   public final boolean j = this.a("enforce-whitelist", false);
+   public final bon k = this.a("difficulty", a(bon::a, bon::a), bon::e, bon.b);
+   public final czr l = this.a("gamemode", a(czr::a, czr::a), czr::b, czr.a);
+   public final String m = this.a("level-name", "world");
+   public final int n = this.a("server-port", 25565);
    @Nullable
-   private final awp<apb.a> m = null;
-   private int n;
-   private int o;
-   private int p;
-   private final cyn q;
-   private boolean r;
-   private final ShortSet[] s;
-   private final BitSet t = new BitSet();
-   private final BitSet u = new BitSet();
-   private final ekq v;
-   private final apb.b w;
-   private final apb.c x;
-   private boolean y;
-   private CompletableFuture<Void> z = CompletableFuture.completedFuture(null);
-   private CompletableFuture<?> A = CompletableFuture.completedFuture(null);
+   public final Boolean o = this.b("announce-player-achievements");
+   public final boolean p = this.a("enable-query", false);
+   public final int q = this.a("query.port", 25565);
+   public final boolean r = this.a("enable-rcon", false);
+   public final int s = this.a("rcon.port", 25575);
+   public final String t = this.a("rcon.password", "");
+   public final boolean u = this.a("hardcore", false);
+   public final boolean v = this.a("allow-nether", true);
+   public final boolean w = this.a("spawn-monsters", true);
+   public final boolean x = this.a("use-native-transport", true);
+   public final boolean y = this.a("enable-command-block", false);
+   public final int z = this.a("spawn-protection", 16);
+   public final int A = this.a("op-permission-level", 4);
+   public final int B = this.a("function-permission-level", 2);
+   public final long C = this.a("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
+   public final int D = this.a("max-chained-neighbor-updates", 1000000);
+   public final int E = this.a("rate-limit", 0);
+   public final int F = this.a("view-distance", 10);
+   public final int G = this.a("simulation-distance", 10);
+   public final int H = this.a("max-players", 20);
+   public final int I = this.a("network-compression-threshold", 256);
+   public final boolean J = this.a("broadcast-rcon-to-ops", true);
+   public final boolean K = this.a("broadcast-console-to-ops", true);
+   public final int L = this.a("max-world-size", $$0x -> axw.a($$0x, 1, 29999984), 29999984);
+   public final boolean M = this.a("sync-chunk-writes", true);
+   public final String N = this.a("region-file-compression", "deflate");
+   public final boolean O = this.a("enable-jmx-monitoring", false);
+   public final boolean P = this.a("enable-status", true);
+   public final boolean Q = this.a("hide-online-players", false);
+   public final int R = this.a("entity-broadcast-range-percentage", $$0x -> axw.a($$0x, 10, 1000), 100);
+   public final String S = this.a("text-filtering-config", "");
+   public final Optional<MinecraftServer.b> T;
+   public final czi U;
+   public final ape<apb>.a<Integer> V = this.b("player-idle-timeout", 0);
+   public final ape<apb>.a<Boolean> W = this.b("white-list", false);
+   public final boolean X = this.a("enforce-secure-profile", true);
+   public final boolean Y = this.a("log-ips", true);
+   private final apb.a af;
+   public final dwo Z;
+   public boolean aa = this.a("accepts-transfers", false);
 
-   public apb(cyn $$0, int $$1, czi $$2, ekq $$3, apb.b $$4, apb.c $$5) {
-      this.q = $$0;
-      this.h = $$2;
-      this.v = $$3;
-      this.w = $$4;
-      this.x = $$5;
-      this.n = apc.a + 1;
-      this.o = this.n;
-      this.p = this.n;
-      this.a($$1);
-      this.s = new ShortSet[$$2.am()];
+   public apb(Properties $$0) {
+      super($$0);
+      String $$1 = this.a("level-seed", "");
+      boolean $$2 = this.a("generate-structures", true);
+      long $$3 = dwo.a($$1).orElse(dwo.f());
+      this.Z = new dwo($$3, $$2, false);
+      this.af = new apb.a(
+         this.a("generator-settings", $$0x -> axm.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), efw.a.a().toString())
+      );
+      this.T = a(
+         this.a("resource-pack-id", ""),
+         this.a("resource-pack", ""),
+         this.a("resource-pack-sha1", ""),
+         this.a("resource-pack-hash"),
+         this.a("require-resource-pack", false),
+         this.a("resource-pack-prompt", "")
+      );
+      this.U = b(this.a("initial-enabled-packs", String.join(",", dao.c.a().a())), this.a("initial-disabled-packs", String.join(",", dao.c.a().b())));
    }
 
-   public CompletableFuture<ape<dre>> a(dsd $$0) {
-      CompletableFuture<ape<dre>> $$1 = this.g.get($$0.c());
-      return $$1 == null ? b : $$1;
+   public static apb a(Path $$0) {
+      return new apb(b($$0));
    }
 
-   public CompletableFuture<ape<dre>> b(dsd $$0) {
-      return apc.a(this.o).b($$0) ? this.a($$0) : b;
-   }
-
-   public CompletableFuture<ape<dro>> a() {
-      return this.j;
-   }
-
-   public CompletableFuture<ape<dro>> b() {
-      return this.k;
-   }
-
-   public CompletableFuture<ape<dro>> c() {
-      return this.i;
+   protected apb a(jj $$0, Properties $$1) {
+      return new apb($$1);
    }
 
    @Nullable
-   public dro d() {
-      return this.a().getNow(c).b(null);
-   }
-
-   public CompletableFuture<?> e() {
-      return this.A;
-   }
-
-   @Nullable
-   public dro f() {
-      return !this.A.isDone() ? null : this.d();
-   }
-
-   @Nullable
-   public dsd g() {
-      for (int $$0 = f.size() - 1; $$0 >= 0; $$0--) {
-         dsd $$1 = f.get($$0);
-         CompletableFuture<ape<dre>> $$2 = this.a($$1);
-         if ($$2.getNow(a).a()) {
-            return $$1;
+   private static ws c(String $$0) {
+      if (!Strings.isNullOrEmpty($$0)) {
+         try {
+            return ws.a.a($$0, jj.b);
+         } catch (Exception var2) {
+            ac.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
          }
       }
 
       return null;
    }
 
-   @Nullable
-   public dre h() {
-      for (int $$0 = f.size() - 1; $$0 >= 0; $$0--) {
-         dsd $$1 = f.get($$0);
-         CompletableFuture<ape<dre>> $$2 = this.a($$1);
-         if (!$$2.isCompletedExceptionally()) {
-            dre $$3 = $$2.getNow(a).b(null);
-            if ($$3 != null) {
-               return $$3;
-            }
-         }
-      }
-
-      return null;
-   }
-
-   public CompletableFuture<dre> i() {
-      return this.l;
-   }
-
-   public void a(id $$0) {
-      dro $$1 = this.d();
-      if ($$1 != null) {
-         int $$2 = this.h.e($$0.v());
-         if (this.s[$$2] == null) {
-            this.r = true;
-            this.s[$$2] = new ShortOpenHashSet();
-         }
-
-         this.s[$$2].add(jg.b($$0));
-      }
-   }
-
-   public void a(czp $$0, int $$1) {
-      dre $$2 = this.b(dsd.k).getNow(a).b(null);
-      if ($$2 != null) {
-         $$2.a(true);
-         dro $$3 = this.d();
-         if ($$3 != null) {
-            int $$4 = this.v.d();
-            int $$5 = this.v.e();
-            if ($$1 >= $$4 && $$1 <= $$5) {
-               int $$6 = $$1 - $$4;
-               if ($$0 == czp.a) {
-                  this.u.set($$6);
-               } else {
-                  this.t.set($$6);
-               }
-            }
-         }
-      }
-   }
-
-   public void a(dro $$0) {
-      if (this.r || !this.u.isEmpty() || !this.t.isEmpty()) {
-         czg $$1 = $$0.F();
-         if (!this.u.isEmpty() || !this.t.isEmpty()) {
-            List<apv> $$2 = this.x.a(this.q, true);
-            if (!$$2.isEmpty()) {
-               acp $$3 = new acp($$0.f(), this.v, this.u, this.t);
-               this.a($$2, $$3);
-            }
-
-            this.u.clear();
-            this.t.clear();
-         }
-
-         if (this.r) {
-            List<apv> $$4 = this.x.a(this.q, false);
-
-            for (int $$5 = 0; $$5 < this.s.length; $$5++) {
-               ShortSet $$6 = this.s[$$5];
-               if ($$6 != null) {
-                  this.s[$$5] = null;
-                  if (!$$4.isEmpty()) {
-                     int $$7 = this.h.g($$5);
-                     jg $$8 = jg.a($$0.f(), $$7);
-                     if ($$6.size() == 1) {
-                        id $$9 = $$8.g($$6.iterator().nextShort());
-                        dpi $$10 = $$1.a_($$9);
-                        this.a($$4, new abj($$9, $$10));
-                        this.a($$4, $$1, $$9, $$10);
-                     } else {
-                        drp $$11 = $$0.b($$5);
-                        adp $$12 = new adp($$8, $$6, $$11);
-                        this.a($$4, $$12);
-                        $$12.a(($$2, $$3) -> this.a($$4, $$1, $$2, $$3));
-                     }
-                  }
-               }
-            }
-
-            this.r = false;
-         }
-      }
-   }
-
-   private void a(List<apv> $$0, czg $$1, id $$2, dpi $$3) {
-      if ($$3.t()) {
-         this.a($$0, $$1, $$2);
-      }
-   }
-
-   private void a(List<apv> $$0, czg $$1, id $$2) {
-      dmo $$3 = $$1.c_($$2);
-      if ($$3 != null) {
-         yp<?> $$4 = $$3.av_();
-         if ($$4 != null) {
-            this.a($$0, $$4);
-         }
-      }
-   }
-
-   private void a(List<apv> $$0, yp<?> $$1) {
-      $$0.forEach($$1x -> $$1x.d.b($$1));
-   }
-
-   public CompletableFuture<ape<dre>> a(dsd $$0, apd $$1) {
-      int $$2 = $$0.c();
-      CompletableFuture<ape<dre>> $$3 = this.g.get($$2);
-      if ($$3 != null) {
-         ape<dre> $$4 = $$3.getNow(d);
-         if ($$4 == null) {
-            String $$5 = "value in future for status: " + $$0 + " was incorrectly set to null at chunk: " + this.q;
-            throw $$1.a(new IllegalStateException("null value previously set for chunk status"), $$5);
-         }
-
-         if ($$4 == d || $$4.a()) {
-            return $$3;
-         }
-      }
-
-      if (apc.a(this.o).b($$0)) {
-         CompletableFuture<ape<dre>> $$6 = $$1.a(this, $$0);
-         this.a($$6, "schedule " + $$0);
-         this.g.set($$2, $$6);
-         return $$6;
+   private static Optional<MinecraftServer.b> a(String $$0, String $$1, String $$2, @Nullable String $$3, boolean $$4, String $$5) {
+      if ($$1.isEmpty()) {
+         return Optional.empty();
       } else {
-         return $$3 == null ? b : $$3;
-      }
-   }
+         String $$6;
+         if (!$$2.isEmpty()) {
+            $$6 = $$2;
+            if (!Strings.isNullOrEmpty($$3)) {
+               ac.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
+            }
+         } else if (!Strings.isNullOrEmpty($$3)) {
+            ac.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
+            $$6 = $$3;
+         } else {
+            $$6 = "";
+         }
 
-   protected void a(String $$0, CompletableFuture<?> $$1) {
-      if (this.m != null) {
-         this.m.a(new apb.a(Thread.currentThread(), $$1, $$0));
-      }
+         if ($$6.isEmpty()) {
+            ac.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
+         } else if (!ad.matcher($$6).matches()) {
+            ac.warn("Invalid sha1 for resource-pack-sha1");
+         }
 
-      this.l = this.l.thenCombine((CompletionStage<? extends Object>)$$1, ($$0x, $$1x) -> $$0x);
-   }
-
-   private void a(CompletableFuture<? extends ape<? extends dre>> $$0, String $$1) {
-      if (this.m != null) {
-         this.m.a(new apb.a(Thread.currentThread(), $$0, $$1));
-      }
-
-      this.l = this.l.thenCombine($$0, ($$0x, $$1x) -> ape.a($$1x, $$0x));
-   }
-
-   public void a(CompletableFuture<?> $$0) {
-      if (this.A.isDone()) {
-         this.A = $$0;
-      } else {
-         this.A = this.A.thenCombine((CompletionStage<? extends Object>)$$0, ($$0x, $$1) -> null);
-      }
-   }
-
-   public apn j() {
-      return apc.b(this.o);
-   }
-
-   public cyn k() {
-      return this.q;
-   }
-
-   public int l() {
-      return this.o;
-   }
-
-   public int m() {
-      return this.p;
-   }
-
-   private void b(int $$0) {
-      this.p = $$0;
-   }
-
-   public void a(int $$0) {
-      this.o = $$0;
-   }
-
-   private void a(apd $$0, CompletableFuture<ape<dro>> $$1, Executor $$2, apn $$3) {
-      this.z.cancel(false);
-      CompletableFuture<Void> $$4 = new CompletableFuture<>();
-      $$4.thenRunAsync(() -> $$0.a(this.q, $$3), $$2);
-      this.z = $$4;
-      $$1.thenAccept($$1x -> $$1x.a($$1xx -> $$4.complete(null)));
-   }
-
-   private void a(apd $$0, apn $$1) {
-      this.z.cancel(false);
-      $$0.a(this.q, $$1);
-   }
-
-   protected void a(apd $$0, Executor $$1) {
-      dsd $$2 = apc.a(this.n);
-      dsd $$3 = apc.a(this.o);
-      boolean $$4 = apc.e(this.n);
-      boolean $$5 = apc.e(this.o);
-      apn $$6 = apc.b(this.n);
-      apn $$7 = apc.b(this.o);
-      if ($$4) {
-         ape<dre> $$8 = ape.a(() -> "Unloaded ticket level " + this.q);
-
-         for (int $$9 = $$5 ? $$3.c() + 1 : 0; $$9 <= $$2.c(); $$9++) {
-            CompletableFuture<ape<dre>> $$10 = this.g.get($$9);
-            if ($$10 == null) {
-               this.g.set($$9, CompletableFuture.completedFuture($$8));
+         ws $$9 = c($$5);
+         UUID $$10;
+         if ($$0.isEmpty()) {
+            $$10 = UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8));
+            ac.warn("resource-pack-id missing, using default of {}", $$10);
+         } else {
+            try {
+               $$10 = UUID.fromString($$0);
+            } catch (IllegalArgumentException var10) {
+               ac.warn("Failed to parse '{}' into UUID", $$0);
+               return Optional.empty();
             }
          }
+
+         return Optional.of(new MinecraftServer.b($$10, $$1, $$6, $$4, $$9));
       }
-
-      boolean $$11 = $$6.a(apn.b);
-      boolean $$12 = $$7.a(apn.b);
-      this.y |= $$12;
-      if (!$$11 && $$12) {
-         this.i = $$0.c(this);
-         this.a($$0, this.i, $$1, apn.b);
-         this.a(this.i, "full");
-      }
-
-      if ($$11 && !$$12) {
-         this.i.complete(c);
-         this.i = e;
-      }
-
-      boolean $$13 = $$6.a(apn.c);
-      boolean $$14 = $$7.a(apn.c);
-      if (!$$13 && $$14) {
-         this.j = $$0.b(this);
-         this.a($$0, this.j, $$1, apn.c);
-         this.a(this.j, "ticking");
-      }
-
-      if ($$13 && !$$14) {
-         this.j.complete(c);
-         this.j = e;
-      }
-
-      boolean $$15 = $$6.a(apn.d);
-      boolean $$16 = $$7.a(apn.d);
-      if (!$$15 && $$16) {
-         if (this.k != e) {
-            throw (IllegalStateException)ac.b(new IllegalStateException());
-         }
-
-         this.k = $$0.a(this);
-         this.a($$0, this.k, $$1, apn.d);
-         this.a(this.k, "entity ticking");
-      }
-
-      if ($$15 && !$$16) {
-         this.k.complete(c);
-         this.k = e;
-      }
-
-      if (!$$7.a($$6)) {
-         this.a($$0, $$7);
-      }
-
-      this.w.onLevelChange(this.q, this::m, this.o, this::b);
-      this.n = this.o;
    }
 
-   public boolean n() {
-      return this.y;
+   private static czi b(String $$0, String $$1) {
+      List<String> $$2 = ae.splitToList($$0);
+      List<String> $$3 = ae.splitToList($$1);
+      return new czi($$2, $$3);
    }
 
-   public void o() {
-      this.y = apc.b(this.o).a(apn.b);
+   public dwl a(jj $$0) {
+      return this.af.a($$0);
    }
 
-   public void a(drn $$0) {
-      for (int $$1 = 0; $$1 < this.g.length(); $$1++) {
-         CompletableFuture<ape<dre>> $$2 = this.g.get($$1);
-         if ($$2 != null) {
-            dre $$3 = $$2.getNow(a).b(null);
-            if ($$3 instanceof dry) {
-               this.g.set($$1, CompletableFuture.completedFuture(ape.a($$0)));
+   static record a(JsonObject a, String b) {
+      private static final Map<String, ake<efv>> c = Map.of("default", efw.a, "largebiomes", efw.c);
+
+      public dwl a(jj $$0) {
+         ji<efv> $$1 = $$0.d(ld.aP);
+         iv.c<efv> $$2 = $$1.b(efw.a)
+            .or(() -> $$1.h().findAny())
+            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
+         iv<efv> $$3 = Optional.ofNullable(akf.a(this.b))
+            .map($$0x -> ake.a(ld.aP, $$0x))
+            .or(() -> Optional.ofNullable(c.get(this.b)))
+            .flatMap($$1::b)
+            .orElseGet(() -> {
+               apb.ac.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
+               return $$2;
+            });
+         dwl $$4 = $$3.a().a();
+         if ($$3.a(efw.b)) {
+            akd<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
+            Optional<eej> $$6 = eej.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apb.ac::error);
+            if ($$6.isPresent()) {
+               return $$4.a($$0, new dvl($$6.get()));
             }
          }
+
+         return $$4;
       }
-
-      this.a(CompletableFuture.completedFuture(ape.a($$0.C())), "replaceProto");
-   }
-
-   public List<Pair<dsd, CompletableFuture<ape<dre>>>> p() {
-      List<Pair<dsd, CompletableFuture<ape<dre>>>> $$0 = new ArrayList<>();
-
-      for (int $$1 = 0; $$1 < f.size(); $$1++) {
-         $$0.add(Pair.of(f.get($$1), this.g.get($$1)));
-      }
-
-      return $$0;
-   }
-
-   static record a(Thread a, CompletableFuture<?> b, String c) {
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void onLevelChange(cyn var1, IntSupplier var2, int var3, IntConsumer var4);
-   }
-
-   public interface c {
-      List<apv> a(cyn var1, boolean var2);
    }
 }

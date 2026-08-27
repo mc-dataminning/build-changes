@@ -1,57 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public abstract class cfg implements cfo {
-   protected final cfe a;
+public enum cfg implements ayq {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   public cfg(cfe $$0) {
-      this.a = $$0;
+   public static final Codec<cfg> h = ayq.a(cfg::values);
+   private static final IntFunction<cfg> i = awn.a(cfg::a, values(), awn.a.b);
+   private final int j;
+   private final String k;
+
+   private cfg(int $$0, String $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public int a() {
+      return this.j;
+   }
+
+   public static cfg a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   public boolean a() {
-      return false;
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public void a(cfd $$0, id $$1, boy $$2, @Nullable cka $$3) {
-   }
-
-   @Override
-   public void d() {
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public float f() {
-      return 0.6F;
-   }
-
-   @Nullable
-   @Override
-   public esj g() {
-      return null;
-   }
-
-   @Override
-   public float a(boy $$0, float $$1) {
-      return $$1;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.dp().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
+   public String c() {
+      return this.k;
    }
 }

@@ -1,69 +1,63 @@
 import javax.annotation.Nullable;
 
-public class cfn extends cfg {
-   @Nullable
-   private esj b;
+public class cfn extends bql {
+   public final cfp b;
+   public final String c;
+   private final bqo d;
 
-   public cfn(cfe $$0) {
-      super($$0);
+   public cfn(cfp $$0, String $$1, float $$2, float $$3) {
+      super($$0.ai(), $$0.dN());
+      this.d = bqo.b($$2, $$3);
+      this.j_();
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void b() {
-      esj $$0 = this.a.F(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.e.dr();
-      double $$2 = this.a.e.e(0.5);
-      double $$3 = this.a.e.dx();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         axt $$5 = this.a.ei();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         esj $$9 = this.a.dp();
-         this.a.dM().a(kn.i, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
-         $$0.b((float) (Math.PI / 16));
-      }
+   protected void a(ajo.a $$0) {
    }
 
    @Override
-   public void c() {
-      if (this.b == null) {
-         this.b = esj.c(this.a.dM().a(dva.a.f, dyd.a(this.a.r())));
-      }
-
-      if (this.b.c(this.a.dr(), this.a.dt(), this.a.dx()) < 1.0) {
-         this.a.gk().b(cfu.f).j();
-         this.a.gk().a(cfu.g);
-      }
+   protected void a(ty $$0) {
    }
 
    @Override
-   public float f() {
-      return 1.5F;
+   protected void b(ty $$0) {
    }
 
    @Override
-   public float h() {
-      float $$0 = (float)this.a.dp().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
+   public boolean bx() {
+      return true;
    }
 
    @Nullable
    @Override
-   public esj g() {
-      return this.b;
+   public csd dA() {
+      return this.b.dA();
    }
 
    @Override
-   public cfu<cfn> i() {
-      return cfu.d;
+   public boolean a(bpj $$0, float $$1) {
+      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   }
+
+   @Override
+   public boolean t(bql $$0) {
+      return this == $$0 || this.b == $$0;
+   }
+
+   @Override
+   public yz<abk> dj() {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public bqo a(brp $$0) {
+      return this.d;
+   }
+
+   @Override
+   public boolean dL() {
+      return false;
    }
 }

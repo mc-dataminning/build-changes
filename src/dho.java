@@ -1,68 +1,43 @@
 import com.mojang.serialization.MapCodec;
 
-public class dho extends dch implements dck {
+public class dho extends dcv {
    public static final MapCodec<dho> a = b(dho::new);
+   private static final int b = 20;
 
    @Override
    public MapCodec<dho> a() {
       return a;
    }
 
-   public dho(dph.d $$0) {
+   public dho(dpx.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(czj $$0, id $$1, dpi $$2) {
-      if (!$$0.a_($$1.c()).a((cym)$$0, $$1)) {
-         return false;
-      } else {
-         for (id $$3 : id.a($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(ave.aL)) {
-               return true;
-            }
-         }
-
-         return false;
+   public void a(czu $$0, im $$1, dpy $$2, bql $$3) {
+      if (!$$3.bU() && $$3 instanceof bre && !cxo.j((bre)$$3)) {
+         $$3.a($$0.ai().e(), 1.0F);
       }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
-      return true;
+   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      ddb.b($$1, $$2.c(), $$0);
    }
 
    @Override
-   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (id $$6 : id.a($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dpi $$7 = $$0.a_($$6);
-         if ($$7.a(dcj.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dcj.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$1 == ir.b && $$2.a(dcx.G)) {
+         $$3.a($$4, this, 20);
       }
 
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dcj.on.n() : dcj.ow.n(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dcj.on.n(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dcj.ow.n(), 3);
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dck.a aq_() {
-      return dck.a.a;
+   protected void b(dpy $$0, czu $$1, im $$2, dpy $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

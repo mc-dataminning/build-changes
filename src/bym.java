@@ -1,47 +1,27 @@
-public class bym extends bxq {
-   private final cem a;
-   private int b;
+import javax.annotation.Nullable;
 
-   public bym(cem $$0) {
-      this.a = $$0;
-      this.a($$0);
-   }
+public class bym extends byy {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   @Override
-   public void c() {
-      this.a.gR();
-      this.h();
-   }
-
-   private void h() {
-      aun $$0 = this.a.gQ();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return false;
+   public bym(brm $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      this.b++;
-      if (this.b > 0 && this.a.ei().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fd() && this.a.ei().a(10) == 0;
-      } else {
-         return false;
-      }
+      aqe $$0 = (aqe)this.b.dN();
+      im $$1 = this.b.dn();
+      return $$0.c($$1) ? false : super.a();
    }
 
-   private void a(cem $$0) {
-      this.b = -$$0.gV();
-   }
-
+   @Nullable
    @Override
-   public boolean R_() {
-      return true;
+   protected etf h() {
+      aqe $$0 = (aqe)this.b.dN();
+      im $$1 = this.b.dn();
+      jo $$2 = jo.a($$1);
+      jo $$3 = bsy.a($$0, $$2, 2);
+      return $$3 != $$2 ? cby.a(this.b, 10, 7, etf.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

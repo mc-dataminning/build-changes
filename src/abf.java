@@ -1,20 +1,20 @@
-public record abf(int b) implements yp<aba> {
-   public static final yg<vi, abf> a = yp.a(abf::a, abf::new);
+public record abf(akf b) implements yz<abe> {
+   public static final yq<vs, abf> a = yz.a(abf::a, abf::new);
 
-   private abf(vi $$0) {
-      this($$0.l());
+   private abf(vs $$0) {
+      this($$0.q());
    }
 
-   private void a(vi $$0) {
-      $$0.c(this.b);
+   private void a(vs $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yr<abf> a() {
-      return afl.g;
+   public zb<abf> a() {
+      return abg.a;
    }
 
-   public void a(aba $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 }

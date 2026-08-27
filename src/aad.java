@@ -1,23 +1,17 @@
-import java.util.List;
-
-public record aad(List<id> c) implements zq {
-   public static final yg<vi, aad> a = zq.a(aad::a, aad::new);
-   public static final zq.b<aad> b = zq.a("debug/raids");
-
-   private aad(vi $$0) {
-      this($$0.a(id.b));
-   }
-
-   private void a(vi $$0) {
-      $$0.a(this.c, id.b);
-   }
+public record aad(duv c, int d) implements aaa {
+   public static final yq<wd, aad> a = yq.a(duv.d, aad::b, yo.f, aad::c, aad::new);
+   public static final aaa.b<aad> b = aaa.a("debug/game_event_listeners");
 
    @Override
-   public zq.b<aad> a() {
+   public aaa.b<aad> a() {
       return b;
    }
 
-   public List<id> b() {
+   public duv b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

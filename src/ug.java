@@ -2,36 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ug extends ue {
-   private static final int b = 10;
-   public static final un<ug> a = new un.a<ug>() {
-      public ug a(DataInput $$0, tx $$1) throws IOException {
+public class ug extends uo {
+   private static final int b = 16;
+   public static final ux<ug> a = new ux.a<ug>() {
+      public ug a(DataInput $$0, uh $$1) throws IOException {
          return ug.a(d($$0, $$1));
       }
 
       @Override
-      public ui.b a(DataInput $$0, ui $$1, tx $$2) throws IOException {
+      public us.b a(DataInput $$0, us $$1, uh $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static short d(DataInput $$0, tx $$1) throws IOException {
-         $$1.b(10L);
-         return $$0.readShort();
+      private static long d(DataInput $$0, uh $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readLong();
       }
 
       @Override
       public int c() {
-         return 2;
+         return 8;
       }
 
       @Override
       public String a() {
-         return "SHORT";
+         return "LONG";
       }
 
       @Override
       public String b() {
-         return "TAG_Short";
+         return "TAG_Long";
       }
 
       @Override
@@ -39,33 +39,33 @@ public class ug extends ue {
          return true;
       }
    };
-   private final short c;
+   private final long c;
 
-   ug(short $$0) {
+   ug(long $$0) {
       this.c = $$0;
    }
 
-   public static ug a(short $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? ug.a.a[$$0 - -128] : new ug($$0);
+   public static ug a(long $$0) {
+      return $$0 >= -128L && $$0 <= 1024L ? ug.a.a[(int)$$0 - -128] : new ug($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeShort(this.c);
+      $$0.writeLong(this.c);
    }
 
    @Override
    public int a() {
-      return 10;
+      return 16;
    }
 
    @Override
    public byte b() {
-      return 2;
+      return 4;
    }
 
    @Override
-   public un<ug> c() {
+   public ux<ug> c() {
       return a;
    }
 
@@ -80,32 +80,32 @@ public class ug extends ue {
 
    @Override
    public int hashCode() {
-      return this.c;
+      return (int)(this.c ^ this.c >>> 32);
    }
 
    @Override
-   public void a(up $$0) {
+   public void a(uz $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.c;
+      return this.c;
    }
 
    @Override
    public int g() {
-      return this.c;
+      return (int)(this.c & -1L);
    }
 
    @Override
    public short h() {
-      return this.c;
+      return (short)((int)(this.c & 65535L));
    }
 
    @Override
    public byte i() {
-      return (byte)(this.c & 255);
+      return (byte)((int)(this.c & 255L));
    }
 
    @Override
@@ -124,7 +124,7 @@ public class ug extends ue {
    }
 
    @Override
-   public ui.b a(ui $$0) {
+   public us.b a(us $$0) {
       return $$0.a(this.c);
    }
 
@@ -138,7 +138,7 @@ public class ug extends ue {
 
       static {
          for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new ug((short)(-128 + $$0));
+            a[$$0] = new ug((long)(-128 + $$0));
          }
       }
    }

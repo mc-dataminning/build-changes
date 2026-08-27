@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@euk
-@euj
-interface evx {
+public interface evx {
+   void execute();
 }

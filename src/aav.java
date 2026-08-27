@@ -1,20 +1,20 @@
-public record aav(ajv b) implements yp<aau> {
-   public static final yg<vi, aav> a = yp.a(aav::a, aav::new);
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private aav(vi $$0) {
-      this($$0.q());
-   }
-
-   private void a(vi $$0) {
-      $$0.a(this.b);
-   }
+public record aav(ake<? extends ji<?>> b, List<jm.a> c) implements yz<aat> {
+   private static final yq<ByteBuf, ake<? extends ji<?>>> d = akf.b.a(ake::a, ake::a);
+   public static final yq<vs, aav> a = yq.a(d, aav::b, jm.a.a.a(yo.a()), aav::e, aav::new);
 
    @Override
-   public yr<aav> a() {
-      return aaw.a;
+   public zb<aav> a() {
+      return aay.b;
    }
 
-   public void a(aau $$0) {
+   public void a(aat $$0) {
       $$0.a(this);
+   }
+
+   public List<jm.a> e() {
+      return this.c;
    }
 }

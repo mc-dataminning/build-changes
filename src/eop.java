@@ -1,59 +1,70 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class eop extends eox {
-   public static final Codec<eop> a = RecordCodecBuilder.create($$0 -> a($$0).and(eop.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, eop::new));
-   private final eop.a b;
+public class eop extends eom {
+   public static final Codec<eop> a = a(eop::new);
 
-   private eop(List<eql> $$0, eop.a $$1) {
-      super($$0);
-      this.b = $$1;
+   eop(List<eot> $$0, List<erh> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eoz b() {
-      return epa.p;
+   public eou a() {
+      return eor.i;
    }
 
    @Override
-   public Set<epu<?>> a() {
-      return ImmutableSet.of(this.b.g);
+   protected eol a(List<? extends eol> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eol)$$0.get(0);
+         case 2 -> {
+            eol $$1 = $$0.get(0);
+            eol $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (eol $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public crs a(crs $$0, enk $$1) {
-      if ($$1.c(this.b.g) instanceof bok $$3) {
-         $$0.b(jr.d, $$3.af());
+   public static eop.a a(eot.a<?>... $$0) {
+      return new eop.a($$0);
+   }
+
+   public static class a extends eot.a<eop.a> {
+      private final Builder<eot> a = ImmutableList.builder();
+
+      public a(eot.a<?>... $$0) {
+         for (eot.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return $$0;
-   }
-
-   public static eox.a<?> a(eop.a $$0) {
-      return a($$1 -> new eop($$1, $$0));
-   }
-
-   public static enum a implements ayg {
-      a("this", epx.a),
-      b("killer", epx.d),
-      c("killer_player", epx.b),
-      d("block_entity", epx.h);
-
-      public static final Codec<eop.a> e = ayg.a(eop.a::values);
-      private final String f;
-      final epu<?> g;
-
-      private a(String $$0, epu<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      protected eop.a a() {
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.f;
+      public eop.a b(eot.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eot b() {
+         return new eop(this.a.build(), this.f());
       }
    }
 }

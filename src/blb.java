@@ -1,58 +1,68 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class blb {
-   private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
+public class blb implements blc {
+   public static final blb a = new blb();
 
-   protected blb(Runnable $$0) {
-      this.b = $$0;
+   private blb() {
    }
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
-
-         blj $$1;
-         try {
-            $$1 = bli.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
-         }
-
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
-         }
-      }
+   @Override
+   public void a() {
    }
 
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
-      } else {
-         ajx.a($$0.get());
-      }
+   @Override
+   public void b() {
    }
 
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
-      } else {
-         ajx.a($$0.get());
-         $$1.printStackTrace(ajx.a);
-      }
+   @Override
+   public void a(String $$0) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(bmk $$0) {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void b(String $$0) {
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+   }
+
+   @Override
+   public bld d() {
+      return bkz.a;
+   }
+
+   @Nullable
+   @Override
+   public bkx.a c(String $$0) {
+      return null;
+   }
+
+   @Override
+   public Set<Pair<String, bmk>> e() {
+      return ImmutableSet.of();
    }
 }

@@ -1,12 +1,15 @@
-public class aaw {
-   public static final yr<aav> a = a("cookie_request");
-   public static final yr<aay> b = b("cookie_response");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private static <T extends yp<aau>> yr<T> a(String $$0) {
-      return new yr<>(yq.b, new ajv($$0));
+public record aaw(List<asv> b) implements yz<aat> {
+   public static final yq<ByteBuf, aaw> a = yq.a(asv.a.a(yo.a()), aaw::b, aaw::new);
+
+   @Override
+   public zb<aaw> a() {
+      return aay.d;
    }
 
-   private static <T extends yp<aax>> yr<T> b(String $$0) {
-      return new yr<>(yq.a, new ajv($$0));
+   public void a(aat $$0) {
+      $$0.a(this);
    }
 }

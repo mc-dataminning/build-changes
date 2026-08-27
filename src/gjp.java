@@ -1,45 +1,37 @@
-public class gjp extends gkc<ccs, fqx<ccs>> {
-   private final gae a;
+public class gjp extends ggm<clr> {
+   private static final akf a = new akf("textures/entity/wither/wither_invulnerable.png");
+   private static final akf f = new akf("textures/entity/wither/wither.png");
+   private final ftn g;
 
-   public gjp(ghm<ccs, fqx<ccs>> $$0, gae $$1) {
+   public gjp(ggn.a $$0) {
       super($$0);
-      this.a = $$1;
+      this.g = new ftn($$0.a(fuq.cb));
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, ccs $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fI();
-      boolean $$11 = $$3.p_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
-      }
+   public static fux a() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      $$1.a("head", fuw.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fut.a);
+      return fux.a($$0, 64, 64);
+   }
 
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.G($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.p_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
-         }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
-      } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
-      }
+   protected int a(clr $$0, im $$1) {
+      return 15;
+   }
 
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
+   public void a(clr $$0, float $$1, float $$2, exn $$3, gbe $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      float $$6 = axw.j($$2, $$0.O, $$0.dD());
+      float $$7 = axw.i($$2, $$0.P, $$0.dF());
+      exr $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
+      this.g.a(0.0F, $$6, $$7);
+      this.g.a($$3, $$8, $$5, gmf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      crs $$14 = $$3.d(bqh.a);
-      this.a.a($$3, $$14, crp.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public akf a(clr $$0) {
+      return $$0.y() ? a : f;
    }
 }

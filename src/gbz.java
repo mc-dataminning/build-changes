@@ -1,82 +1,320 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
 public class gbz {
-   private final gbv a;
-   private final gbs b;
+   private static final float a = 0.8888889F;
+   private final gmo[] b = new gmo[2];
+   private final gmo[] c = new gmo[2];
+   private gmo d;
 
-   public gbz(gbv $$0, gbs $$1) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Missing condition for selector");
-      } else if ($$1 == null) {
-         throw new IllegalArgumentException("Missing variant for selector");
+   protected void a() {
+      this.b[0] = fcu.Q().aE().b().b(dcx.H.n()).e();
+      this.b[1] = got.c.c();
+      this.c[0] = fcu.Q().aE().b().b(dcx.G.n()).e();
+      this.c[1] = got.d.c();
+      this.d = got.e.c();
+   }
+
+   private static boolean a(elr $$0, elr $$1) {
+      return $$1.a().a($$0.a());
+   }
+
+   private static boolean a(cza $$0, ir $$1, float $$2, im $$3, dpy $$4) {
+      if ($$4.p()) {
+         ety $$5 = etv.a(0.0, 0.0, 0.0, 1.0, (double)$$2, 1.0);
+         ety $$6 = $$4.c($$0, $$3);
+         return etv.a($$5, $$6, $$1);
       } else {
-         this.a = $$0;
-         this.b = $$1;
+         return false;
       }
    }
 
-   public gbs a() {
-      return this.b;
+   private static boolean a(cza $$0, im $$1, ir $$2, float $$3, dpy $$4) {
+      return a($$0, $$2, $$3, $$1.a($$2), $$4);
    }
 
-   public Predicate<dpi> a(dpj<dch, dpi> $$0) {
-      return this.a.getPredicate($$0);
+   private static boolean a(cza $$0, im $$1, dpy $$2, ir $$3) {
+      return a($$0, $$3.g(), 1.0F, $$1, $$2);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0;
+   public static boolean a(cyx $$0, im $$1, elr $$2, dpy $$3, ir $$4, elr $$5) {
+      return !a($$0, $$1, $$3, $$4) && !a($$2, $$5);
    }
 
-   @Override
-   public int hashCode() {
-      return System.identityHashCode(this);
-   }
-
-   public static class a implements JsonDeserializer<gbz> {
-      public gbz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new gbz(this.b($$3), (gbs)$$2.deserialize($$3.get("apply"), gbs.class));
-      }
-
-      private gbv b(JsonObject $$0) {
-         return $$0.has("when") ? a(axc.u($$0, "when")) : gbv.b;
-      }
-
-      @VisibleForTesting
-      static gbv a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<gbv> $$2 = Streams.stream(axc.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gby($$2);
-            } else if ($$0.has("AND")) {
-               List<gbv> $$3 = Streams.stream(axc.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gbu($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
+   public void a(cyx $$0, im $$1, exr $$2, dpy $$3, elr $$4) {
+      boolean $$5 = $$4.a(avt.b);
+      gmo[] $$6 = $$5 ? this.b : this.c;
+      int $$7 = $$5 ? 16777215 : gaq.c($$0, $$1);
+      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+      float $$10 = (float)($$7 & 0xFF) / 255.0F;
+      dpy $$11 = $$0.a_($$1.a(ir.a));
+      elr $$12 = $$11.u();
+      dpy $$13 = $$0.a_($$1.a(ir.b));
+      elr $$14 = $$13.u();
+      dpy $$15 = $$0.a_($$1.a(ir.c));
+      elr $$16 = $$15.u();
+      dpy $$17 = $$0.a_($$1.a(ir.d));
+      elr $$18 = $$17.u();
+      dpy $$19 = $$0.a_($$1.a(ir.e));
+      elr $$20 = $$19.u();
+      dpy $$21 = $$0.a_($$1.a(ir.f));
+      elr $$22 = $$21.u();
+      boolean $$23 = !a($$4, $$14);
+      boolean $$24 = a($$0, $$1, $$4, $$3, ir.a, $$12) && !a($$0, $$1, ir.a, 0.8888889F, $$11);
+      boolean $$25 = a($$0, $$1, $$4, $$3, ir.c, $$16);
+      boolean $$26 = a($$0, $$1, $$4, $$3, ir.d, $$18);
+      boolean $$27 = a($$0, $$1, $$4, $$3, ir.e, $$20);
+      boolean $$28 = a($$0, $$1, $$4, $$3, ir.f, $$22);
+      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
+         float $$29 = $$0.a(ir.a, true);
+         float $$30 = $$0.a(ir.b, true);
+         float $$31 = $$0.a(ir.c, true);
+         float $$32 = $$0.a(ir.e, true);
+         elq $$33 = $$4.a();
+         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
+         float $$35;
+         float $$36;
+         float $$37;
+         float $$38;
+         if ($$34 >= 1.0F) {
+            $$35 = 1.0F;
+            $$36 = 1.0F;
+            $$37 = 1.0F;
+            $$38 = 1.0F;
          } else {
-            return new gbu($$1.stream().map(gbz.a::a).collect(Collectors.toList()));
+            float $$39 = this.a($$0, $$33, $$1.e(), $$15, $$16);
+            float $$40 = this.a($$0, $$33, $$1.f(), $$17, $$18);
+            float $$41 = this.a($$0, $$33, $$1.h(), $$21, $$22);
+            float $$42 = this.a($$0, $$33, $$1.g(), $$19, $$20);
+            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(ir.c).a(ir.f));
+            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(ir.c).a(ir.e));
+            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(ir.d).a(ir.f));
+            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(ir.d).a(ir.e));
+         }
+
+         double $$47 = (double)($$1.u() & 15);
+         double $$48 = (double)($$1.v() & 15);
+         double $$49 = (double)($$1.w() & 15);
+         float $$50 = 0.001F;
+         float $$51 = $$24 ? 0.001F : 0.0F;
+         if ($$23 && !a($$0, $$1, ir.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
+            $$36 -= 0.001F;
+            $$38 -= 0.001F;
+            $$37 -= 0.001F;
+            $$35 -= 0.001F;
+            etf $$52 = $$4.c($$0, $$1);
+            float $$54;
+            float $$56;
+            float $$58;
+            float $$60;
+            float $$55;
+            float $$57;
+            float $$59;
+            float $$61;
+            if ($$52.c == 0.0 && $$52.e == 0.0) {
+               gmo $$53 = $$6[0];
+               $$54 = $$53.a(0.0F);
+               $$55 = $$53.c(0.0F);
+               $$56 = $$54;
+               $$57 = $$53.c(1.0F);
+               $$58 = $$53.a(1.0F);
+               $$59 = $$57;
+               $$60 = $$58;
+               $$61 = $$55;
+            } else {
+               gmo $$62 = $$6[1];
+               float $$63 = (float)axw.d($$52.e, $$52.c) - (float) (Math.PI / 2);
+               float $$64 = axw.a($$63) * 0.25F;
+               float $$65 = axw.b($$63) * 0.25F;
+               float $$66 = 0.5F;
+               $$54 = $$62.a(0.5F + (-$$65 - $$64));
+               $$55 = $$62.c(0.5F + -$$65 + $$64);
+               $$56 = $$62.a(0.5F + -$$65 + $$64);
+               $$57 = $$62.c(0.5F + $$65 + $$64);
+               $$58 = $$62.a(0.5F + $$65 + $$64);
+               $$59 = $$62.c(0.5F + ($$65 - $$64));
+               $$60 = $$62.a(0.5F + ($$65 - $$64));
+               $$61 = $$62.c(0.5F + (-$$65 - $$64));
+            }
+
+            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
+            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
+            float $$77 = $$6[0].k();
+            $$54 = axw.i($$77, $$54, $$75);
+            $$56 = axw.i($$77, $$56, $$75);
+            $$58 = axw.i($$77, $$58, $$75);
+            $$60 = axw.i($$77, $$60, $$75);
+            $$55 = axw.i($$77, $$55, $$76);
+            $$57 = axw.i($$77, $$57, $$76);
+            $$59 = axw.i($$77, $$59, $$76);
+            $$61 = axw.i($$77, $$61, $$76);
+            int $$78 = this.a($$0, $$1);
+            float $$79 = $$30 * $$8;
+            float $$80 = $$30 * $$9;
+            float $$81 = $$30 * $$10;
+            this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
+            this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
+            if ($$4.b($$0, $$1.c())) {
+               this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
+               this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
+               this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
+               this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
+            }
+         }
+
+         if ($$24) {
+            float $$82 = $$6[0].c();
+            float $$83 = $$6[0].d();
+            float $$84 = $$6[0].g();
+            float $$85 = $$6[0].h();
+            int $$86 = this.a($$0, $$1.d());
+            float $$87 = $$29 * $$8;
+            float $$88 = $$29 * $$9;
+            float $$89 = $$29 * $$10;
+            this.a($$2, $$47, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$82, $$85, $$86);
+            this.a($$2, $$47, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$83, $$85, $$86);
+         }
+
+         int $$90 = this.a($$0, $$1);
+
+         for (ir $$91 : ir.c.a) {
+            float $$92;
+            float $$93;
+            double $$94;
+            double $$96;
+            double $$95;
+            double $$97;
+            boolean $$98;
+            switch ($$91) {
+               case c:
+                  $$92 = $$36;
+                  $$93 = $$35;
+                  $$94 = $$47;
+                  $$95 = $$47 + 1.0;
+                  $$96 = $$49 + 0.001F;
+                  $$97 = $$49 + 0.001F;
+                  $$98 = $$25;
+                  break;
+               case d:
+                  $$92 = $$37;
+                  $$93 = $$38;
+                  $$94 = $$47 + 1.0;
+                  $$95 = $$47;
+                  $$96 = $$49 + 1.0 - 0.001F;
+                  $$97 = $$49 + 1.0 - 0.001F;
+                  $$98 = $$26;
+                  break;
+               case e:
+                  $$92 = $$38;
+                  $$93 = $$36;
+                  $$94 = $$47 + 0.001F;
+                  $$95 = $$47 + 0.001F;
+                  $$96 = $$49 + 1.0;
+                  $$97 = $$49;
+                  $$98 = $$27;
+                  break;
+               default:
+                  $$92 = $$35;
+                  $$93 = $$37;
+                  $$94 = $$47 + 1.0 - 0.001F;
+                  $$95 = $$47 + 1.0 - 0.001F;
+                  $$96 = $$49;
+                  $$97 = $$49 + 1.0;
+                  $$98 = $$28;
+            }
+
+            if ($$98 && !a($$0, $$1, $$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
+               im $$120 = $$1.a($$91);
+               gmo $$121 = $$6[1];
+               if (!$$5) {
+                  dcv $$122 = $$0.a_($$120).b();
+                  if ($$122 instanceof dgl || $$122 instanceof dhf) {
+                     $$121 = this.d;
+                  }
+               }
+
+               float $$123 = $$121.a(0.0F);
+               float $$124 = $$121.a(0.5F);
+               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
+               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
+               float $$127 = $$121.c(0.5F);
+               float $$128 = $$91.o() == ir.a.c ? $$31 : $$32;
+               float $$129 = $$30 * $$128 * $$8;
+               float $$130 = $$30 * $$128 * $$9;
+               float $$131 = $$30 * $$128 * $$10;
+               this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
+               this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
+               this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
+               if ($$121 != this.d) {
+                  this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
+                  this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
+                  this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
+                  this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               }
+            }
          }
       }
+   }
 
-      private static gbv a(Entry<String, JsonElement> $$0) {
-         return new gbw($$0.getKey(), $$0.getValue().getAsString());
+   private float a(cyx $$0, elq $$1, float $$2, float $$3, float $$4, im $$5) {
+      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
+         float[] $$6 = new float[2];
+         if ($$4 > 0.0F || $$3 > 0.0F) {
+            float $$7 = this.a($$0, $$1, $$5);
+            if ($$7 >= 1.0F) {
+               return 1.0F;
+            }
+
+            this.a($$6, $$7);
+         }
+
+         this.a($$6, $$2);
+         this.a($$6, $$4);
+         this.a($$6, $$3);
+         return $$6[0] / $$6[1];
+      } else {
+         return 1.0F;
       }
+   }
+
+   private void a(float[] $$0, float $$1) {
+      if ($$1 >= 0.8F) {
+         $$0[0] += $$1 * 10.0F;
+         $$0[1] += 10.0F;
+      } else if ($$1 >= 0.0F) {
+         $$0[0] += $$1;
+         $$0[1]++;
+      }
+   }
+
+   private float a(cyx $$0, elq $$1, im $$2) {
+      dpy $$3 = $$0.a_($$2);
+      return this.a($$0, $$1, $$2, $$3, $$3.u());
+   }
+
+   private float a(cyx $$0, elq $$1, im $$2, dpy $$3, elr $$4) {
+      if ($$1.a($$4.a())) {
+         dpy $$5 = $$0.a_($$2.c());
+         return $$1.a($$5.u().a()) ? 1.0F : $$4.d();
+      } else {
+         return !$$3.e() ? 0.0F : -1.0F;
+      }
+   }
+
+   private void a(exr $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).b($$9).a(0.0F, 1.0F, 0.0F).e();
+   }
+
+   private int a(cyx $$0, im $$1) {
+      int $$2 = gbc.a($$0, $$1);
+      int $$3 = gbc.a($$0, $$1.c());
+      int $$4 = $$2 & 0xFF;
+      int $$5 = $$3 & 0xFF;
+      int $$6 = $$2 >> 16 & 0xFF;
+      int $$7 = $$3 >> 16 & 0xFF;
+      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
    }
 }

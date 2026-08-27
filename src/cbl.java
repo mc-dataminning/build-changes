@@ -1,25 +1,42 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Set;
 
-public class cbl {
-   @Nullable
-   public static esj a(brb $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = cbo.a($$0, $$1);
-      return cbr.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class cbl extends cbn<cjy> {
+   private static final int a = 40;
+
+   public cbl() {
+      super(40);
    }
 
-   @Nullable
-   public static id a(brb $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      id $$8 = cbr.a($$0.ei(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         id $$9 = cbr.a($$0, $$1, $$0.ei(), $$8);
-         if (!cbo.a($$9, $$0) && !cbo.a($$7, $$0, $$9)) {
-            $$9 = cbr.a($$9, $$0.dM().al(), $$1x -> cbo.c($$0, $$1x));
-            return cbo.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
+   protected void a(aqe $$0, cjy $$1) {
+      ake<czu> $$2 = $$0.ae();
+      im $$3 = $$1.dn();
+      List<iu> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               im $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gA().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(iu.a($$2, $$9));
+               }
+            }
          }
       }
+
+      bsf<?> $$10 = $$1.dQ();
+      if (!$$4.isEmpty()) {
+         $$10.a(cah.f, $$4);
+      } else {
+         $$10.b(cah.f);
+      }
+   }
+
+   @Override
+   public Set<cah<?>> a() {
+      return ImmutableSet.of(cah.f);
    }
 }

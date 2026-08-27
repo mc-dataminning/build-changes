@@ -1,40 +1,16 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bzn extends bzq {
-   private final brp a;
-   private bqt b;
-   private int c;
-
-   public bzn(brp $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(bxq.a.d));
+public class bzn extends bzo {
+   public bzn(brm $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      if (this.a.r() && !this.a.gn()) {
-         bqt $$0 = this.a.P_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.ej();
-            int $$1 = $$0.ek();
-            return $$1 != this.c && this.a(this.b, cbj.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.e.h(this.b);
-      bqt $$0 = this.a.P_();
-      if ($$0 != null) {
-         this.c = $$0.ek();
-      }
-
-      super.c();
+   protected etf h() {
+      etf $$0 = this.b.f(0.0F);
+      int $$1 = 8;
+      etf $$2 = cca.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cbw.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

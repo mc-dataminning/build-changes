@@ -2,21 +2,14 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
 
-public class bca extends bee {
+public class bca extends beo {
    public bca(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", bff.z, "minecraft:shulker");
+      super($$0, false, "EntityPaintingFieldsRenameFix", bfp.z, "minecraft:painting");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
-      if (!$$1.isEmpty()) {
-         $$1.set(0, $$1.get(0) - 180.0);
-         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
-      } else {
-         return $$0;
-      }
+      return aze.a(aze.a($$0, "Motive", "variant"), "Facing", "facing");
    }
 
    @Override

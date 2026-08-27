@@ -1,88 +1,91 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
-public record cuf(int d, boolean e) implements cus {
-   private static final Codec<cuf> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cuf::a), awu.a(Codec.BOOL, "show_in_tooltip", true).forGetter(cuf::b)).apply($$0, cuf::new)
+public class cuf implements cvg {
+   public static final Codec<cuf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cug.c.fieldOf("material").forGetter(cuf::b),
+               cui.c.fieldOf("pattern").forGetter(cuf::a),
+               axe.a(Codec.BOOL, "show_in_tooltip", true).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, cuf::new)
    );
-   public static final Codec<cuf> a = awu.a(f, Codec.INT, $$0 -> new cuf($$0, true));
-   public static final yg<ByteBuf, cuf> b = yg.a(ye.e, cuf::a, ye.b, cuf::b, cuf::new);
-   public static final int c = -6265536;
+   public static final yq<wd, cuf> b = yq.a(cug.d, cuf::b, cui.d, cuf::a, yo.b, $$0 -> $$0.f, cuf::new);
+   private static final ws c = ws.c(ac.a("item", new akf("smithing_template.upgrade"))).a(n.h);
+   private final iv<cug> d;
+   private final iv<cui> e;
+   private final boolean f;
+   private final Function<iv<cpt>, akf> g;
+   private final Function<iv<cpt>, akf> h;
 
-   public static int a(crs $$0, int $$1) {
-      cuf $$2 = $$0.a(jr.q);
-      return $$2 != null ? aww.b.e($$2.a()) : $$1;
+   public cuf(iv<cug> $$0, iv<cui> $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.g = ac.b($$1x -> {
+         akf $$2x = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2x.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
+      });
+      this.h = ac.b($$1x -> {
+         akf $$2x = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2x.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
+      });
+      this.f = $$2;
    }
 
-   public static crs a(crs $$0, List<cqm> $$1) {
-      if (!$$0.a(avm.ba)) {
-         return crs.i;
-      } else {
-         crs $$2 = $$0.c(1);
-         int $$3 = 0;
-         int $$4 = 0;
-         int $$5 = 0;
-         int $$6 = 0;
-         int $$7 = 0;
-         cuf $$8 = $$2.a(jr.q);
-         if ($$8 != null) {
-            int $$9 = aww.b.b($$8.a());
-            int $$10 = aww.b.c($$8.a());
-            int $$11 = aww.b.d($$8.a());
-            $$6 += Math.max($$9, Math.max($$10, $$11));
-            $$3 += $$9;
-            $$4 += $$10;
-            $$5 += $$11;
-            $$7++;
-         }
-
-         for (cqm $$12 : $$1) {
-            float[] $$13 = $$12.c().d();
-            int $$14 = (int)($$13[0] * 255.0F);
-            int $$15 = (int)($$13[1] * 255.0F);
-            int $$16 = (int)($$13[2] * 255.0F);
-            $$6 += Math.max($$14, Math.max($$15, $$16));
-            $$3 += $$14;
-            $$4 += $$15;
-            $$5 += $$16;
-            $$7++;
-         }
-
-         int $$17 = $$3 / $$7;
-         int $$18 = $$4 / $$7;
-         int $$19 = $$5 / $$7;
-         float $$20 = (float)$$6 / (float)$$7;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int $$22 = aww.b.a(0, $$17, $$18, $$19);
-         boolean $$23 = $$8 == null || $$8.b();
-         $$2.b(jr.q, new cuf($$22, $$23));
-         return $$2;
-      }
+   public cuf(iv<cug> $$0, iv<cui> $$1) {
+      this($$0, $$1, true);
    }
 
-   @Override
-   public void a(Consumer<wi> $$0, cti $$1) {
-      if (this.e) {
-         if ($$1.a()) {
-            $$0.accept(wi.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
-         } else {
-            $$0.accept(wi.c("item.dyed").a(n.h, n.u));
-         }
-      }
+   private String c(iv<cpt> $$0) {
+      Map<iv<cpt>, String> $$1 = this.d.a().d();
+      String $$2 = $$1.get($$0);
+      return $$2 != null ? $$2 : this.d.a().a();
    }
 
-   public int a() {
+   public boolean a(iv<cui> $$0, iv<cug> $$1) {
+      return $$0.equals(this.e) && $$1.equals(this.d);
+   }
+
+   public iv<cui> a() {
+      return this.e;
+   }
+
+   public iv<cug> b() {
       return this.d;
    }
 
-   public boolean b() {
-      return this.e;
+   public akf a(iv<cpt> $$0) {
+      return this.g.apply($$0);
+   }
+
+   public akf b(iv<cpt> $$0) {
+      return this.h.apply($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof cuf $$1) ? false : this.f == $$1.f && this.e.equals($$1.e) && this.d.equals($$1.d);
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.d.hashCode();
+      $$0 = 31 * $$0 + this.e.hashCode();
+      return 31 * $$0 + (this.f ? 1 : 0);
+   }
+
+   @Override
+   public void a(Consumer<ws> $$0, ctu $$1) {
+      if (this.f) {
+         $$0.accept(c);
+         $$0.accept(wr.a().b(this.e.a().a(this.d)));
+         $$0.accept(wr.a().b(this.d.a().e()));
+      }
    }
 }

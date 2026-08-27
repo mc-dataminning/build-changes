@@ -1,29 +1,19 @@
-import java.util.function.Function;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class euf<T> implements etw<T> {
-   private final Function<id, eud<T>> a;
+public interface euf {
+   int a();
 
-   public euf(Function<id, eud<T>> $$0) {
-      this.a = $$0;
+   boolean b();
+
+   @Nullable
+   yi c();
+
+   default xg a(yi $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
    }
 
-   @Override
-   public boolean a(id $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
-   }
-
-   @Override
-   public void a(eua<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(id $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   static xg a(@Nullable euf $$0, yi $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
    }
 }

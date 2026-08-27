@@ -1,19 +1,28 @@
-public class ggb extends ggx<cha, fqz<cha>> {
-   private static final ajv a = new ajv("textures/entity/ghast/ghast.png");
-   private static final ajv i = new ajv("textures/entity/ghast/ghast_shooting.png");
+public class ggb extends ght<chd, frl<chd>> {
+   private static final akf a = new akf("textures/entity/creeper/creeper.png");
 
-   public ggb(gfr.a $$0) {
-      super($$0, new fqz<>($$0.a(ftu.ag)), 1.5F);
+   public ggb(ggn.a $$0) {
+      super($$0, new frl<>($$0.a(fuq.H)), 0.5F);
+      this.a(new gkb(this, $$0.f()));
    }
 
-   public ajv a(cha $$0) {
-      return $$0.r() ? i : a;
+   protected void a(chd $$0, exn $$1, float $$2) {
+      float $$3 = $$0.G($$2);
+      float $$4 = 1.0F + axw.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = axw.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
    }
 
-   protected void a(cha $$0, ewr $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   protected float a(chd $$0, float $$1) {
+      float $$2 = $$0.G($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : axw.a($$2, 0.5F, 1.0F);
+   }
+
+   public akf a(chd $$0) {
+      return a;
    }
 }

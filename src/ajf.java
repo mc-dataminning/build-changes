@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ajf extends afy, aiz {
+   @Override
+   default vr b() {
+      return vr.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ajf {
+   void a(ajg var1);
 }

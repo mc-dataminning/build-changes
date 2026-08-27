@@ -1,57 +1,36 @@
-import java.util.List;
+public record aae(im c, int d, String e, int f) implements aaa {
+   public static final yq<vs, aae> a = aaa.a(aae::a, aae::new);
+   public static final aaa.b<aae> b = aaa.a("debug/game_test_add_marker");
 
-public record aae(aju<czg> c, efi d, List<aae.a> e) implements zq {
-   public static final yg<vi, aae> a = zq.a(aae::a, aae::new);
-   public static final zq.b<aae> b = zq.a("debug/structures");
-
-   private aae(vi $$0) {
-      this($$0.a(ku.aP), b($$0), $$0.a(aae.a::new));
+   private aae(vs $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private void a(vi $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
+   private void a(vs $$0) {
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.a(this.e);
+      $$0.p(this.f);
    }
 
    @Override
-   public zq.b<aae> a() {
+   public aaa.b<aae> a() {
       return b;
    }
 
-   static efi b(vi $$0) {
-      return new efi($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(vi $$0, efi $$1) {
-      $$0.p($$1.h());
-      $$0.p($$1.i());
-      $$0.p($$1.j());
-      $$0.p($$1.k());
-      $$0.p($$1.l());
-      $$0.p($$1.m());
-   }
-
-   public aju<czg> b() {
+   public im b() {
       return this.c;
    }
 
-   public efi c() {
+   public int c() {
       return this.d;
    }
 
-   public List<aae.a> d() {
+   public String d() {
       return this.e;
    }
 
-   public static record a(efi a, boolean b) {
-      public a(vi $$0) {
-         this(aae.b($$0), $$0.readBoolean());
-      }
-
-      public void a(vi $$0) {
-         aae.a($$0, this.a);
-         $$0.a(this.b);
-      }
+   public int e() {
+      return this.f;
    }
 }

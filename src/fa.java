@@ -2,43 +2,47 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
 
-public class fa implements ArgumentType<ete> {
-   private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wi.b("argument.scoreboardDisplaySlot.invalid", $$0));
-
-   private fa() {
+public interface fa<T extends cs<?>> extends ArgumentType<T> {
+   static fa.b a() {
+      return new fa.b();
    }
 
-   public static fa a() {
-      return new fa();
+   static fa.a b() {
+      return new fa.a();
    }
 
-   public static ete a(CommandContext<dv> $$0, String $$1) {
-      return (ete)$$0.getArgument($$1, ete.class);
-   }
+   public static class a implements fa<cs.c> {
+      private static final Collection<String> a = Arrays.asList("0..5.2", "0", "-5.4", "-100.76..", "..100");
 
-   public ete a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      ete $$2 = ete.t.a($$1);
-      if ($$2 == null) {
-         throw a.createWithContext($$0, $$1);
-      } else {
-         return $$2;
+      public static cs.c a(CommandContext<ec> $$0, String $$1) {
+         return (cs.c)$$0.getArgument($$1, cs.c.class);
+      }
+
+      public cs.c a(StringReader $$0) throws CommandSyntaxException {
+         return cs.c.a($$0);
+      }
+
+      public Collection<String> getExamples() {
+         return a;
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ea.b(Arrays.stream(ete.values()).map(ete::c), $$1);
-   }
+   public static class b implements fa<cs.d> {
+      private static final Collection<String> a = Arrays.asList("0..5", "0", "-5", "-100..", "..100");
 
-   public Collection<String> getExamples() {
-      return b;
+      public static cs.d a(CommandContext<ec> $$0, String $$1) {
+         return (cs.d)$$0.getArgument($$1, cs.d.class);
+      }
+
+      public cs.d a(StringReader $$0) throws CommandSyntaxException {
+         return cs.d.a($$0);
+      }
+
+      public Collection<String> getExamples() {
+         return a;
+      }
    }
 }

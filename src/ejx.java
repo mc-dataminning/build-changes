@@ -1,18 +1,25 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejx implements ejy {
-   public static final ejx a = new ejx();
-   public static final Codec<ejx> b = Codec.unit(a);
+public class ejx extends eka {
+   public static final Codec<ejx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(lc.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, ejx::new)
+   );
+   private final dcv b;
+   private final float d;
 
-   @Nullable
-   @Override
-   public to a(axt $$0, @Nullable to $$1) {
-      return $$1;
+   public ejx(dcv $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public ejz<?> a() {
-      return ejz.b;
+   public boolean a(dpy $$0, ayd $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
+
+   @Override
+   protected ekb<?> a() {
+      return ekb.e;
    }
 }

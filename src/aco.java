@@ -1,101 +1,40 @@
-public class aco implements yp<aba> {
-   public static final yg<vt, aco> a = yp.a(aco::a, aco::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final int i;
-   private final boolean j;
-   private final kl k;
+import javax.annotation.Nullable;
 
-   public <T extends kl> aco(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.k = $$0;
-      this.j = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
-      this.f = $$6;
-      this.g = $$7;
-      this.h = $$8;
-      this.i = $$9;
+public class aco implements yz<abk> {
+   public static final yq<vs, aco> a = yz.a(aco::a, aco::new);
+   private final int b;
+   private final byte c;
+
+   public aco(bql $$0, byte $$1) {
+      this.b = $$0.aj();
+      this.c = $$1;
    }
 
-   private aco(vt $$0) {
-      this.j = $$0.readBoolean();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readInt();
-      this.k = kn.aZ.decode($$0);
+   private aco(vs $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
    }
 
-   private void a(vt $$0) {
-      $$0.a(this.j);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.p(this.i);
-      kn.aZ.encode($$0, this.k);
+   private void a(vs $$0) {
+      $$0.p(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public yr<aco> a() {
-      return afl.M;
+   public zb<aco> a() {
+      return afv.D;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.j;
+   @Nullable
+   public bql a(czu $$0) {
+      return $$0.a(this.b);
    }
 
-   public double e() {
-      return this.b;
-   }
-
-   public double f() {
+   public byte b() {
       return this.c;
-   }
-
-   public double g() {
-      return this.d;
-   }
-
-   public float h() {
-      return this.e;
-   }
-
-   public float i() {
-      return this.f;
-   }
-
-   public float j() {
-      return this.g;
-   }
-
-   public float k() {
-      return this.h;
-   }
-
-   public int l() {
-      return this.i;
-   }
-
-   public kl m() {
-      return this.k;
    }
 }

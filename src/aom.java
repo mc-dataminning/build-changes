@@ -1,56 +1,63 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.List;
 
-public class aom implements aoj {
-   static final SuggestionProvider<dv> b = ($$0, $$1) -> ea.a(a($$0).a(), $$1);
-   public static final Function<String, aok.c> a = $$0 -> new aok.c() {
-         @Override
-         public aoj a(CommandContext<dv> $$0x) {
-            return new aom(aom.a($$0), ew.e($$0, $$0));
+public class aom {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ws.c("commands.transfer.error.no_players"));
+
+   public static void a(CommandDispatcher<ec> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("transfer").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)ed.a("hostname", StringArgumentType.string())
+                     .executes($$0x -> a((ec)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((ec)$$0x.getSource()).h()))))
+                  .then(
+                     ((RequiredArgumentBuilder)ed.a("port", IntegerArgumentType.integer(1, 65535))
+                           .executes(
+                              $$0x -> a(
+                                    (ec)$$0x.getSource(),
+                                    StringArgumentType.getString($$0x, "hostname"),
+                                    IntegerArgumentType.getInteger($$0x, "port"),
+                                    List.of(((ec)$$0x.getSource()).h())
+                                 )
+                           ))
+                        .then(
+                           ed.a("players", ep.d())
+                              .executes(
+                                 $$0x -> a(
+                                       (ec)$$0x.getSource(),
+                                       StringArgumentType.getString($$0x, "hostname"),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       ep.f($$0x, "players")
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
+   }
+
+   private static int a(ec $$0, String $$1, int $$2, Collection<aqf> $$3) throws CommandSyntaxException {
+      if ($$3.isEmpty()) {
+         throw a.create();
+      } else {
+         for (aqf $$4 : $$3) {
+            $$4.d.b(new zn($$1, $$2));
          }
 
-         @Override
-         public ArgumentBuilder<dv, ?> a(ArgumentBuilder<dv, ?> $$0x, Function<ArgumentBuilder<dv, ?>, ArgumentBuilder<dv, ?>> $$1) {
-            return $$0.then(dw.a("storage").then($$1.apply(dw.a($$0, ew.a()).suggests(aom.b))));
+         if ($$3.size() == 1) {
+            $$0.a(() -> ws.a("commands.transfer.success.single", $$3.iterator().next().O_(), $$1, $$2), true);
+         } else {
+            $$0.a(() -> ws.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
          }
-      };
-   private final emr c;
-   private final ajv d;
 
-   static emr a(CommandContext<dv> $$0) {
-      return ((dv)$$0.getSource()).l().aL();
-   }
-
-   aom(emr $$0, ajv $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public void a(to $$0) {
-      this.c.a(this.d, $$0);
-   }
-
-   @Override
-   public to a() {
-      return this.c.a(this.d);
-   }
-
-   @Override
-   public wi b() {
-      return wi.a("commands.data.storage.modified", wi.a(this.d));
-   }
-
-   @Override
-   public wi a(ul $$0) {
-      return wi.a("commands.data.storage.query", wi.a(this.d), ud.c($$0));
-   }
-
-   @Override
-   public wi a(en.g $$0, double $$1, int $$2) {
-      return wi.a("commands.data.storage.get", $$0.a(), wi.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+         return $$3.size();
+      }
    }
 }

@@ -1,132 +1,95 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-
-public class dwb implements axt {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dwb> b = dwa.a.xmap($$0 -> new dwb($$0), $$0 -> $$0.e);
-   private dwa e;
-   private final dvc f = new dvc(this);
-
-   public dwb(long $$0) {
-      this.e = new dwa(dvp.c($$0));
-   }
-
-   public dwb(dvp.a $$0) {
-      this.e = new dwa($$0);
-   }
-
-   public dwb(long $$0, long $$1) {
-      this.e = new dwa($$0, $$1);
-   }
-
-   private dwb(dwa $$0) {
-      this.e = $$0;
-   }
+public class dwb implements czh {
+   private int a;
 
    @Override
-   public axt d() {
-      return new dwb(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public dvn e() {
-      return new dwb.a(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.e = new dwa(dvp.c($$0));
-      this.f.a();
-   }
-
-   @Override
-   public int f() {
-      return (int)this.e.a();
-   }
-
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
+   public int a(aqe $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.aa().b(czq.K)) {
+         return 0;
       } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
+         ayd $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.Z() / 24000L;
+            if ($$4 < 5L || !$$0.Q()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  ckl $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.N_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dn(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     im.a $$9 = $$6.dn().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        iv<dat> $$11 = $$0.t($$9);
+                        if ($$11.a(avn.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(dvq.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
+
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
+
+                           return $$12;
+                        }
+                     }
+                  }
+               }
             }
          }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
       }
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
-   }
+   private boolean a(aqe $$0, im $$1, ayd $$2, boolean $$3) {
+      dpy $$4 = $$0.a_($$1);
+      if (!daf.a($$0, $$1, $$4, $$4.u(), bqr.aB)) {
+         return false;
+      } else if (!chs.b(bqr.aB, $$0, bri.p, $$1, $$2)) {
+         return false;
+      } else {
+         chs $$5 = bqr.aB.a((czu)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gx();
+            }
 
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
-   }
-
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
-
-   @Override
-   public double k() {
-      return this.f.b();
-   }
-
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
-
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
-
-   public static class a implements dvn {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public axt a(int $$0, int $$1, int $$2) {
-         long $$3 = axm.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dwb($$4, this.b);
-      }
-
-      @Override
-      public axt a(String $$0) {
-         dvp.a $$1 = dvp.a($$0);
-         return new dwb($$1.a(this.a, this.b));
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bri.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
       }
    }
 }

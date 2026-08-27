@@ -1,251 +1,277 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMaps;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongConsumer;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-public final class jo {
-   public static final jo a = new jo(Reference2ObjectMaps.emptyMap());
-   public static final Codec<jo> b = awu.c(jo.b.a, jo.b::a).xmap($$0 -> {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         Reference2ObjectMap<jq<?>, Optional<?>> $$1 = new Reference2ObjectArrayMap($$0.size());
+public class jo extends jq {
+   public static final int a = 4;
+   public static final int b = 16;
+   public static final int c = 15;
+   public static final int d = 8;
+   public static final int e = 15;
+   private static final int h = 22;
+   private static final int i = 20;
+   private static final int j = 22;
+   private static final long k = 4194303L;
+   private static final long l = 1048575L;
+   private static final long m = 4194303L;
+   private static final int n = 0;
+   private static final int o = 20;
+   private static final int p = 42;
+   private static final int q = 8;
+   private static final int r = 0;
+   private static final int s = 4;
 
-         for (Entry<jo.b, ?> $$2 : $$0.entrySet()) {
-            jo.b $$3 = $$2.getKey();
-            if ($$3.c()) {
-               $$1.put($$3.b(), Optional.empty());
-            } else {
-               $$1.put($$3.b(), Optional.of($$2.getValue()));
-            }
-         }
-
-         return new jo($$1);
-      }
-   }, $$0 -> {
-      Reference2ObjectMap<jo.b, Object> $$1 = new Reference2ObjectArrayMap($$0.d.size());
-      ObjectIterator var2 = Reference2ObjectMaps.fastIterable($$0.d).iterator();
-
-      while (var2.hasNext()) {
-         Entry<jq<?>, Optional<?>> $$2 = (Entry<jq<?>, Optional<?>>)var2.next();
-         jq<?> $$3 = $$2.getKey();
-         if (!$$3.d()) {
-            Optional<?> $$4 = $$2.getValue();
-            if ($$4.isPresent()) {
-               $$1.put(new jo.b($$3, false), $$4.get());
-            } else {
-               $$1.put(new jo.b($$3, true), ayo.a);
-            }
-         }
-      }
-
-      return $$1;
-   });
-   public static final yg<vt, jo> c = new yg<vt, jo>() {
-      public jo a(vt $$0) {
-         int $$1 = $$0.l();
-         int $$2 = $$0.l();
-         if ($$1 == 0 && $$2 == 0) {
-            return jo.a;
-         } else {
-            Reference2ObjectMap<jq<?>, Optional<?>> $$3 = new Reference2ObjectArrayMap($$1 + $$2);
-
-            for (int $$4 = 0; $$4 < $$1; $$4++) {
-               jq<?> $$5 = jq.b.decode($$0);
-               Object $$6 = $$5.e().decode($$0);
-               $$3.put($$5, Optional.of($$6));
-            }
-
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               jq<?> $$8 = jq.b.decode($$0);
-               $$3.put($$8, Optional.empty());
-            }
-
-            return new jo($$3);
-         }
-      }
-
-      public void a(vt $$0, jo $$1) {
-         if ($$1.d()) {
-            $$0.c(0);
-            $$0.c(0);
-         } else {
-            int $$2 = 0;
-            int $$3 = 0;
-            ObjectIterator var5 = Reference2ObjectMaps.fastIterable($$1.d).iterator();
-
-            while (var5.hasNext()) {
-               it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jq<?>, Optional<?>> $$4 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jq<?>, Optional<?>>)var5.next();
-               if (((Optional)$$4.getValue()).isPresent()) {
-                  $$2++;
-               } else {
-                  $$3++;
-               }
-            }
-
-            $$0.c($$2);
-            $$0.c($$3);
-            var5 = Reference2ObjectMaps.fastIterable($$1.d).iterator();
-
-            while (var5.hasNext()) {
-               it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jq<?>, Optional<?>> $$5 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jq<?>, Optional<?>>)var5.next();
-               Optional<?> $$6 = (Optional<?>)$$5.getValue();
-               if ($$6.isPresent()) {
-                  jq<?> $$7 = (jq<?>)$$5.getKey();
-                  jq.b.encode($$0, $$7);
-                  a($$0, $$7, $$6.get());
-               }
-            }
-
-            var5 = Reference2ObjectMaps.fastIterable($$1.d).iterator();
-
-            while (var5.hasNext()) {
-               it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jq<?>, Optional<?>> $$8 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jq<?>, Optional<?>>)var5.next();
-               if (((Optional)$$8.getValue()).isEmpty()) {
-                  jq<?> $$9 = (jq<?>)$$8.getKey();
-                  jq.b.encode($$0, $$9);
-               }
-            }
-         }
-      }
-
-      private static <T> void a(vt $$0, jq<T> $$1, Object $$2) {
-         $$1.e().encode($$0, (T)$$2);
-      }
-   };
-   private static final String e = "!";
-   final Reference2ObjectMap<jq<?>, Optional<?>> d;
-
-   jo(Reference2ObjectMap<jq<?>, Optional<?>> $$0) {
-      this.d = $$0;
+   jo(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static jo.a a() {
-      return new jo.a();
+   public static jo a(int $$0, int $$1, int $$2) {
+      return new jo($$0, $$1, $$2);
    }
 
-   @Nullable
-   public <T> Optional<? extends T> a(jq<? extends T> $$0) {
-      return (Optional<? extends T>)this.d.get($$0);
+   public static jo a(im $$0) {
+      return new jo(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public Set<Entry<jq<?>, Optional<?>>> b() {
-      return this.d.entrySet();
+   public static jo a(czb $$0, int $$1) {
+      return new jo($$0.e, $$1, $$0.f);
+   }
+
+   public static jo a(dty $$0) {
+      return a($$0.dn());
+   }
+
+   public static jo a(jf $$0) {
+      return new jo(b($$0.a()), b($$0.b()), b($$0.c()));
+   }
+
+   public static jo a(long $$0) {
+      return new jo(b($$0), c($$0), d($$0));
+   }
+
+   public static jo a(dru $$0) {
+      return a($$0.f(), $$0.an());
+   }
+
+   public static long a(long $$0, ir $$1) {
+      return a($$0, $$1.j(), $$1.k(), $$1.l());
+   }
+
+   public static long a(long $$0, int $$1, int $$2, int $$3) {
+      return b(b($$0) + $$1, c($$0) + $$2, d($$0) + $$3);
+   }
+
+   public static int a(double $$0) {
+      return a(axw.a($$0));
+   }
+
+   public static int a(int $$0) {
+      return $$0 >> 4;
+   }
+
+   public static int b(double $$0) {
+      return axw.a($$0) >> 4;
+   }
+
+   public static int b(int $$0) {
+      return $$0 & 15;
+   }
+
+   public static short b(im $$0) {
+      int $$1 = b($$0.u());
+      int $$2 = b($$0.v());
+      int $$3 = b($$0.w());
+      return (short)($$1 << 8 | $$3 << 4 | $$2 << 0);
+   }
+
+   public static int a(short $$0) {
+      return $$0 >>> 8 & 15;
+   }
+
+   public static int b(short $$0) {
+      return $$0 >>> 0 & 15;
+   }
+
+   public static int c(short $$0) {
+      return $$0 >>> 4 & 15;
+   }
+
+   public int d(short $$0) {
+      return this.d() + a($$0);
+   }
+
+   public int e(short $$0) {
+      return this.e() + b($$0);
+   }
+
+   public int f(short $$0) {
+      return this.f() + c($$0);
+   }
+
+   public im g(short $$0) {
+      return new im(this.d($$0), this.e($$0), this.f($$0));
+   }
+
+   public static int c(int $$0) {
+      return $$0 << 4;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return c($$0) + $$1;
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 << 0 >> 42);
+   }
+
+   public static int c(long $$0) {
+      return (int)($$0 << 44 >> 44);
+   }
+
+   public static int d(long $$0) {
+      return (int)($$0 << 22 >> 42);
+   }
+
+   public int a() {
+      return this.u();
+   }
+
+   public int b() {
+      return this.v();
    }
 
    public int c() {
-      return this.d.size();
+      return this.w();
    }
 
-   public boolean d() {
-      return this.d.isEmpty();
+   public int d() {
+      return c(this.a());
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public int e() {
+      return c(this.b());
+   }
+
+   public int f() {
+      return c(this.c());
+   }
+
+   public int g() {
+      return a(this.a(), 15);
+   }
+
+   public int h() {
+      return a(this.b(), 15);
+   }
+
+   public int i() {
+      return a(this.c(), 15);
+   }
+
+   public static long e(long $$0) {
+      return b(a(im.a($$0)), a(im.b($$0)), a(im.c($$0)));
+   }
+
+   public static long b(int $$0, int $$1) {
+      return f(b($$0, 0, $$1));
+   }
+
+   public static long f(long $$0) {
+      return $$0 & -1048576L;
+   }
+
+   public im j() {
+      return new im(c(this.a()), c(this.b()), c(this.c()));
+   }
+
+   public im q() {
+      int $$0 = 8;
+      return this.j().b(8, 8, 8);
+   }
+
+   public czb r() {
+      return new czb(this.a(), this.c());
+   }
+
+   public static long c(im $$0) {
+      return b(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   public static long b(int $$0, int $$1, int $$2) {
+      long $$3 = 0L;
+      $$3 |= ((long)$$0 & 4194303L) << 42;
+      $$3 |= ((long)$$1 & 1048575L) << 0;
+      return $$3 | ((long)$$2 & 4194303L) << 20;
+   }
+
+   public long s() {
+      return b(this.a(), this.b(), this.c());
+   }
+
+   public jo d(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new jo(this.a() + $$0, this.b() + $$1, this.c() + $$2);
+   }
+
+   public Stream<im> t() {
+      return im.a(this.d(), this.e(), this.f(), this.g(), this.h(), this.i());
+   }
+
+   public static Stream<jo> a(jo $$0, int $$1) {
+      int $$2 = $$0.a();
+      int $$3 = $$0.b();
+      int $$4 = $$0.c();
+      return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
+   }
+
+   public static Stream<jo> a(czb $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0.e;
+      int $$5 = $$0.f;
+      return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);
+   }
+
+   public static Stream<jo> a(final int $$0, final int $$1, final int $$2, final int $$3, final int $$4, final int $$5) {
+      return StreamSupport.stream(new AbstractSpliterator<jo>((long)(($$3 - $$0 + 1) * ($$4 - $$1 + 1) * ($$5 - $$2 + 1)), 64) {
+         final io a = new io($$0, $$1, $$2, $$3, $$4, $$5);
+
+         @Override
+         public boolean tryAdvance(Consumer<? super jo> $$0x) {
+            if (this.a.a()) {
+               $$0.accept(new jo(this.a.b(), this.a.c(), this.a.d()));
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }, false);
+   }
+
+   public static void a(im $$0, LongConsumer $$1) {
+      a($$0.u(), $$0.v(), $$0.w(), $$1);
+   }
+
+   public static void a(long $$0, LongConsumer $$1) {
+      a(im.a($$0), im.b($$0), im.c($$0), $$1);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, LongConsumer $$3) {
+      int $$4 = a($$0 - 1);
+      int $$5 = a($$0 + 1);
+      int $$6 = a($$1 - 1);
+      int $$7 = a($$1 + 1);
+      int $$8 = a($$2 - 1);
+      int $$9 = a($$2 + 1);
+      if ($$4 == $$5 && $$6 == $$7 && $$8 == $$9) {
+         $$3.accept(b($$4, $$6, $$8));
       } else {
-         if ($$0 instanceof jo $$1 && this.d.equals($$1.d)) {
-            return true;
+         for (int $$10 = $$4; $$10 <= $$5; $$10++) {
+            for (int $$11 = $$6; $$11 <= $$7; $$11++) {
+               for (int $$12 = $$8; $$12 <= $$9; $$12++) {
+                  $$3.accept(b($$10, $$11, $$12));
+               }
+            }
          }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return a(this.d);
-   }
-
-   static String a(Reference2ObjectMap<jq<?>, Optional<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      $$1.append('{');
-      boolean $$2 = true;
-      ObjectIterator var3 = Reference2ObjectMaps.fastIterable($$0).iterator();
-
-      while (var3.hasNext()) {
-         Entry<jq<?>, Optional<?>> $$3 = (Entry<jq<?>, Optional<?>>)var3.next();
-         if ($$2) {
-            $$2 = false;
-         } else {
-            $$1.append(", ");
-         }
-
-         Optional<?> $$4 = $$3.getValue();
-         if ($$4.isPresent()) {
-            $$1.append($$3.getKey());
-            $$1.append("=>");
-            $$1.append($$4.get());
-         } else {
-            $$1.append("!");
-            $$1.append($$3.getKey());
-         }
-      }
-
-      $$1.append('}');
-      return $$1.toString();
-   }
-
-   public static class a {
-      private final Reference2ObjectMap<jq<?>, Optional<?>> a = new Reference2ObjectArrayMap();
-
-      a() {
-      }
-
-      public <T> jo.a a(jq<T> $$0, T $$1) {
-         this.a.put($$0, Optional.of($$1));
-         return this;
-      }
-
-      public <T> jo.a a(jq<T> $$0) {
-         this.a.put($$0, Optional.empty());
-         return this;
-      }
-
-      public <T> jo.a a(jt<T> $$0) {
-         return this.a($$0.a(), $$0.b());
-      }
-
-      public jo a() {
-         return new jo(this.a);
-      }
-   }
-
-   static record b(jq<?> b, boolean c) {
-      public static final Codec<jo.b> a = Codec.STRING.flatXmap($$0 -> {
-         boolean $$1 = $$0.startsWith("!");
-         if ($$1) {
-            $$0 = $$0.substring("!".length());
-         }
-
-         ajv $$2 = ajv.a($$0);
-         jq<?> $$3 = kt.as.a($$2);
-         if ($$3 == null) {
-            return DataResult.error(() -> "No component with type: '" + $$2 + "'");
-         } else {
-            return $$3.d() ? DataResult.error(() -> "'" + $$2 + "' is not a persistent component") : DataResult.success(new jo.b($$3, $$1));
-         }
-      }, $$0 -> {
-         jq<?> $$1 = $$0.b();
-         ajv $$2 = kt.as.b($$1);
-         return $$2 == null ? DataResult.error(() -> "Unregistered component: " + $$1) : DataResult.success($$0.c() ? "!" + $$2 : $$2.toString());
-      });
-
-      public Codec<?> a() {
-         return this.c ? Codec.unit(ayo.a) : this.b.c();
       }
    }
 }

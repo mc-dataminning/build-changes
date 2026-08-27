@@ -1,70 +1,96 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import java.time.Instant;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class xm implements wj {
-   public static final MapCodec<xm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, xm::new)
-   );
-   public static final wj.a<xm> b = new wj.a<>(a, "keybind");
-   private final String c;
+public class xm {
+   private static final Logger a = LogUtils.getLogger();
    @Nullable
-   private Supplier<wi> d;
+   private xn b;
+   private Instant c = Instant.EPOCH;
 
-   public xm(String $$0) {
-      this.c = $$0;
+   public xm(UUID $$0, UUID $$1) {
+      this.b = xn.a($$0, $$1);
    }
 
-   private wi c() {
-      if (this.d == null) {
-         this.d = xn.a.apply(this.c);
-      }
-
-      return this.d.get();
+   public xm.c a(ayj $$0) {
+      return $$1 -> {
+         xn $$2 = this.a();
+         return $$2 == null ? null : new xe($$0.sign($$2x -> xi.a($$2x, $$2, $$1)));
+      };
    }
 
-   @Override
-   public <T> Optional<T> a(wn.a<T> $$0) {
-      return this.c().a($$0);
-   }
+   public xm.b a(cko $$0) {
+      ayi $$1 = $$0.a();
+      return ($$2, $$3) -> {
+         xn $$4 = this.a();
+         if ($$4 == null) {
+            throw new xm.a(ws.c("chat.disabled.chain_broken"), false);
+         } else if ($$0.b().a()) {
+            throw new xm.a(ws.c("chat.disabled.expiredProfileKey"), false);
+         } else if ($$3.b().isBefore(this.c)) {
+            throw new xm.a(ws.c("multiplayer.disconnect.out_of_order_chat"), true);
+         } else {
+            this.c = $$3.b();
+            xi $$5 = new xi($$4, $$2, $$3, null, ww.c);
+            if (!$$5.a($$1)) {
+               throw new xm.a(ws.c("multiplayer.disconnect.unsigned_chat"), true);
+            } else {
+               if ($$5.a(Instant.now())) {
+                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
+               }
 
-   @Override
-   public <T> Optional<T> a(wn.b<T> $$0, xf $$1) {
-      return this.c().a($$0, $$1);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof xm $$1 && this.c.equals($$1.c)) {
-            return true;
+               return $$5;
+            }
          }
+      };
+   }
 
-         return false;
+   @Nullable
+   private xn a() {
+      xn $$0 = this.b;
+      if ($$0 != null) {
+         this.b = $$0.a();
+      }
+
+      return $$0;
+   }
+
+   public static class a extends xs {
+      private final boolean a;
+
+      public a(ws $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public boolean a() {
+         return this.a;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
+   @FunctionalInterface
+   public interface b {
+      static xm.b unsigned(UUID $$0, BooleanSupplier $$1) {
+         return ($$2, $$3) -> {
+            if ($$1.getAsBoolean()) {
+               throw new xm.a(ws.c("chat.disabled.missingProfileKey"), false);
+            } else {
+               return xi.a($$0, $$3.a());
+            }
+         };
+      }
+
+      xi unpack(@Nullable xe var1, xl var2) throws xm.a;
    }
 
-   @Override
-   public String toString() {
-      return "keybind{" + this.c + "}";
-   }
+   @FunctionalInterface
+   public interface c {
+      xm.c a = $$0 -> null;
 
-   public String b() {
-      return this.c;
-   }
-
-   @Override
-   public wj.a<?> a() {
-      return b;
+      @Nullable
+      xe pack(xl var1);
    }
 }

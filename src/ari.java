@@ -1,26 +1,36 @@
-import java.util.Map;
+public class ari implements ajf {
+   private static final ws a = ws.c("multiplayer.status.request_handled");
+   private final aje b;
+   private final vq c;
+   private boolean d;
 
-public class ari {
-   private static final ari a = new ari(Map.of());
-   private final Map<asd<?>, ?> b;
-
-   private ari(Map<asd<?>, ?> $$0) {
+   public ari(aje $$0, vq $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   public <T> T a(asd<T> $$0) {
-      return (T)this.b.get($$0);
+   @Override
+   public void a(ws $$0) {
    }
 
-   public static ari a() {
-      return a;
+   @Override
+   public boolean c() {
+      return this.c.i();
    }
 
-   public static <T> ari a(asd<T> $$0, T $$1) {
-      return new ari(Map.of($$0, $$1));
+   @Override
+   public void a(ajg $$0) {
+      if (this.d) {
+         this.c.a(a);
+      } else {
+         this.d = true;
+         this.c.a(new ajd(this.b));
+      }
    }
 
-   public static <T1, T2> ari a(asd<T1> $$0, T1 $$1, asd<T2> $$2, T2 $$3) {
-      return new ari(Map.of($$0, $$1, $$2, (T1)$$3));
+   @Override
+   public void a(aja $$0) {
+      this.c.a(new aix($$0.b()));
+      this.c.a(a);
    }
 }

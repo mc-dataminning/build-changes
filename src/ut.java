@@ -1,148 +1,148 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+import java.util.Objects;
 
-public class ut implements ui {
-   private String a = "";
-   @Nullable
-   private ul b;
-   private final Deque<Consumer<ul>> c = new ArrayDeque<>();
-
-   @Nullable
-   public ul d() {
-      return this.b;
-   }
-
-   protected int e() {
-      return this.c.size();
-   }
-
-   private void a(ul $$0) {
-      this.c.getLast().accept($$0);
-   }
-
-   @Override
-   public ui.b a() {
-      this.a(tq.b);
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(String $$0) {
-      this.a(uj.a($$0));
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(byte $$0) {
-      this.a(tm.a($$0));
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(short $$0) {
-      this.a(ug.a($$0));
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(int $$0) {
-      this.a(tt.a($$0));
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(long $$0) {
-      this.a(tw.a($$0));
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(float $$0) {
-      this.a(tr.a($$0));
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(double $$0) {
-      this.a(tp.a($$0));
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(byte[] $$0) {
-      this.a(new tl($$0));
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(int[] $$0) {
-      this.a(new ts($$0));
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(long[] $$0) {
-      this.a(new tv($$0));
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b a(un<?> $$0, int $$1) {
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.a b(un<?> $$0, int $$1) {
-      this.c($$0);
-      return ui.a.a;
-   }
-
-   @Override
-   public ui.a a(un<?> $$0) {
-      return ui.a.a;
-   }
-
-   @Override
-   public ui.a a(un<?> $$0, String $$1) {
-      this.a = $$1;
-      this.c($$0);
-      return ui.a.a;
-   }
-
-   private void c(un<?> $$0) {
-      if ($$0 == tu.a) {
-         tu $$1 = new tu();
-         this.a($$1);
-         this.c.addLast($$1::add);
-      } else if ($$0 == to.b) {
-         to $$2 = new to();
-         this.a($$2);
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
-      }
-   }
-
-   @Override
-   public ui.b b() {
-      this.c.removeLast();
-      return ui.b.a;
-   }
-
-   @Override
-   public ui.b b(un<?> $$0) {
-      if ($$0 == tu.a) {
-         tu $$1 = new tu();
-         this.b = $$1;
-         this.c.addLast($$1::add);
-      } else if ($$0 == to.b) {
-         to $$2 = new to();
-         this.b = $$2;
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
-      } else {
-         this.c.addLast($$0x -> this.b = $$0x);
+public class ut implements uv {
+   private static final int b = 36;
+   public static final ux<ut> a = new ux.b<ut>() {
+      public ut a(DataInput $$0, uh $$1) throws IOException {
+         return ut.a(d($$0, $$1));
       }
 
-      return ui.b.a;
+      @Override
+      public us.b a(DataInput $$0, us $$1, uh $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static String d(DataInput $$0, uh $$1) throws IOException {
+         $$1.b(36L);
+         String $$2 = $$0.readUTF();
+         $$1.a(2L, (long)$$2.length());
+         return $$2;
+      }
+
+      @Override
+      public void b(DataInput $$0, uh $$1) throws IOException {
+         ut.a($$0);
+      }
+
+      @Override
+      public String a() {
+         return "STRING";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_String";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private static final ut c = new ut("");
+   private static final char w = '"';
+   private static final char x = '\'';
+   private static final char y = '\\';
+   private static final char z = '\u0000';
+   private final String A;
+
+   public static void a(DataInput $$0) throws IOException {
+      $$0.skipBytes($$0.readUnsignedShort());
+   }
+
+   private ut(String $$0) {
+      Objects.requireNonNull($$0, "Null string not allowed");
+      this.A = $$0;
+   }
+
+   public static ut a(String $$0) {
+      return $$0.isEmpty() ? c : new ut($$0);
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeUTF(this.A);
+   }
+
+   @Override
+   public int a() {
+      return 36 + 2 * this.A.length();
+   }
+
+   @Override
+   public byte b() {
+      return 8;
+   }
+
+   @Override
+   public ux<ut> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return uv.super.s_();
+   }
+
+   public ut e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ut && Objects.equals(this.A, ((ut)$$0).A);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.A.hashCode();
+   }
+
+   @Override
+   public String s_() {
+      return this.A;
+   }
+
+   @Override
+   public void a(uz $$0) {
+      $$0.a(this);
+   }
+
+   public static String b(String $$0) {
+      StringBuilder $$1 = new StringBuilder(" ");
+      char $$2 = 0;
+
+      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
+         char $$4 = $$0.charAt($$3);
+         if ($$4 == '\\') {
+            $$1.append('\\');
+         } else if ($$4 == '"' || $$4 == '\'') {
+            if ($$2 == 0) {
+               $$2 = (char)($$4 == '"' ? 39 : 34);
+            }
+
+            if ($$2 == $$4) {
+               $$1.append('\\');
+            }
+         }
+
+         $$1.append($$4);
+      }
+
+      if ($$2 == 0) {
+         $$2 = '"';
+      }
+
+      $$1.setCharAt(0, $$2);
+      $$1.append($$2);
+      return $$1.toString();
+   }
+
+   @Override
+   public us.b a(us $$0) {
+      return $$0.a(this.A);
    }
 }

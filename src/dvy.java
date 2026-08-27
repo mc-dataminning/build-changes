@@ -1,83 +1,70 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+import java.util.function.Function;
 
-public class dvy {
-   public static final MapCodec<dvy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(dvy::b),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dvy::c),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dvy::d),
-               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, $$0.stable(dvy::new))
-   );
-   public static final dvy b = new dvy((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
+public record dvy(int g, int h, int i, int j) {
+   public static final Codec<dvy> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dtq.e, dtq.d).fieldOf("min_y").forGetter(dvy::c),
+                  Codec.intRange(0, dtq.c).fieldOf("height").forGetter(dvy::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dvy::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dvy::f)
+               )
+               .apply($$0, dvy::new)
+      )
+      .comapFlatMap(dvy::a, Function.identity());
+   protected static final dvy b = a(-64, 384, 1, 2);
+   protected static final dvy c = a(0, 128, 1, 2);
+   protected static final dvy d = a(0, 128, 2, 1);
+   protected static final dvy e = a(-64, 192, 1, 2);
+   protected static final dvy f = a(0, 256, 2, 1);
 
-   public dvy(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
-   }
-
-   public static dvy a() {
-      return new dvy(f(), true, false);
-   }
-
-   private dvy(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public long b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f.isPresent();
-   }
-
-   public dvy a(boolean $$0) {
-      return new dvy(this.c, this.d, $$0, this.f);
-   }
-
-   public dvy b(boolean $$0) {
-      return new dvy(this.c, $$0, this.e, this.f);
-   }
-
-   public dvy a(OptionalLong $$0) {
-      return new dvy($$0.orElse(f()), this.d, this.e, this.f);
-   }
-
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
+   private static DataResult<dvy> a(dvy $$0) {
+      if ($$0.c() + $$0.d() > dtq.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dtq.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
       } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
-         }
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
       }
    }
 
-   public static long f() {
-      return axt.a().g();
+   public static dvy a(int $$0, int $$1, int $$2, int $$3) {
+      dvy $$4 = new dvy($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
+
+   public int a() {
+      return jg.c(this.f());
+   }
+
+   public int b() {
+      return jg.c(this.e());
+   }
+
+   public dvy a(czw $$0) {
+      int $$1 = Math.max(this.g, $$0.I_());
+      int $$2 = Math.min(this.g + this.h, $$0.al()) - $$1;
+      return new dvy($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

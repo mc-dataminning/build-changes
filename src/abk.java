@@ -1,304 +1,222 @@
-import java.util.UUID;
-
-public class abk implements yp<aba> {
-   public static final yg<vt, abk> a = yp.a(abk::a, abk::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final UUID e;
-   private final abk.c f;
-   static final abk.c g = new abk.c() {
-      @Override
-      public abk.d a() {
-         return abk.d.b;
-      }
-
-      @Override
-      public void a(UUID $$0, abk.b $$1) {
-         $$1.a($$0);
-      }
-
-      @Override
-      public void a(vt $$0) {
-      }
-   };
-
-   private abk(UUID $$0, abk.c $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   private abk(vt $$0) {
-      this.e = $$0.n();
-      abk.d $$1 = $$0.b(abk.d.class);
-      this.f = $$1.g.decode($$0);
-   }
-
-   public static abk a(bnv $$0) {
-      return new abk($$0.h(), new abk.a($$0));
-   }
-
-   public static abk a(UUID $$0) {
-      return new abk($$0, g);
-   }
-
-   public static abk b(bnv $$0) {
-      return new abk($$0.h(), new abk.f($$0.j()));
-   }
-
-   public static abk c(bnv $$0) {
-      return new abk($$0.h(), new abk.e($$0.i()));
-   }
-
-   public static abk d(bnv $$0) {
-      return new abk($$0.h(), new abk.h($$0.k(), $$0.l()));
-   }
-
-   public static abk e(bnv $$0) {
-      return new abk($$0.h(), new abk.g($$0.m(), $$0.n(), $$0.o()));
-   }
-
-   private void a(vt $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f.a());
-      this.f.a($$0);
-   }
-
-   static int a(boolean $$0, boolean $$1, boolean $$2) {
-      int $$3 = 0;
-      if ($$0) {
-         $$3 |= 1;
-      }
-
-      if ($$1) {
-         $$3 |= 2;
-      }
-
-      if ($$2) {
-         $$3 |= 4;
-      }
-
-      return $$3;
-   }
-
+public interface abk extends aiw, zf {
    @Override
-   public yr<abk> a() {
-      return afl.l;
+   default vr b() {
+      return vr.b;
    }
 
-   public void a(aba $$0) {
-      $$0.a(this);
-   }
+   void a(abl var1);
 
-   public void a(abk.b $$0) {
-      this.f.a(this.e, $$0);
-   }
+   void a(abm var1);
 
-   static class a implements abk.c {
-      private final wi a;
-      private final float b;
-      private final bnv.a c;
-      private final bnv.b d;
-      private final boolean e;
-      private final boolean f;
-      private final boolean g;
+   void a(aeu var1);
 
-      a(bnv $$0) {
-         this.a = $$0.i();
-         this.b = $$0.j();
-         this.c = $$0.k();
-         this.d = $$0.l();
-         this.e = $$0.m();
-         this.f = $$0.n();
-         this.g = $$0.o();
-      }
+   void a(abn var1);
 
-      private a(vt $$0) {
-         this.a = wk.d.decode($$0);
-         this.b = $$0.readFloat();
-         this.c = $$0.b(bnv.a.class);
-         this.d = $$0.b(bnv.b.class);
-         int $$1 = $$0.readUnsignedByte();
-         this.e = ($$1 & 1) > 0;
-         this.f = ($$1 & 2) > 0;
-         this.g = ($$1 & 4) > 0;
-      }
+   void a(act var1);
 
-      @Override
-      public abk.d a() {
-         return abk.d.a;
-      }
+   void a(abo var1);
 
-      @Override
-      public void a(UUID $$0, abk.b $$1) {
-         $$1.a($$0, this.a, this.b, this.c, this.d, this.e, this.f, this.g);
-      }
+   void a(adt var1);
 
-      @Override
-      public void a(vt $$0) {
-         wk.d.encode($$0, this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-         $$0.k(abk.a(this.e, this.f, this.g));
-      }
-   }
+   void a(abq var1);
 
-   public interface b {
-      default void a(UUID $$0, wi $$1, float $$2, bnv.a $$3, bnv.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      }
+   void a(adi var1);
 
-      default void a(UUID $$0) {
-      }
+   void a(abr var1);
 
-      default void a(UUID $$0, float $$1) {
-      }
+   void a(abs var1);
 
-      default void a(UUID $$0, wi $$1) {
-      }
+   void a(abt var1);
 
-      default void a(UUID $$0, bnv.a $$1, bnv.b $$2) {
-      }
+   void a(afh var1);
 
-      default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-      }
-   }
+   void a(adl var1);
 
-   interface c {
-      abk.d a();
+   void a(acn var1);
 
-      void a(UUID var1, abk.b var2);
+   void a(acm var1);
 
-      void a(vt var1);
-   }
+   void a(adz var1);
 
-   static enum d {
-      a(abk.a::new),
-      b($$0 -> abk.g),
-      c(abk.f::new),
-      d(abk.e::new),
-      e(abk.h::new),
-      f(abk.g::new);
+   void a(adc var1);
 
-      final yh<vt, abk.c> g;
+   void a(ace var1);
 
-      private d(yh<vt, abk.c> $$0) {
-         this.g = $$0;
-      }
-   }
+   void a(acf var1);
 
-   static record e(wi a) implements abk.c {
-      private e(vt $$0) {
-         this(wk.d.decode($$0));
-      }
+   void a(acs var1);
 
-      @Override
-      public abk.d a() {
-         return abk.d.d;
-      }
+   void a(acg var1);
 
-      @Override
-      public void a(UUID $$0, abk.b $$1) {
-         $$1.a($$0, this.a);
-      }
+   void a(ach var1);
 
-      @Override
-      public void a(vt $$0) {
-         wk.d.encode($$0, this.a);
-      }
+   void a(aco var1);
 
-      public wi b() {
-         return this.a;
-      }
-   }
+   void a(aep var1);
 
-   static record f(float a) implements abk.c {
-      private f(vt $$0) {
-         this($$0.readFloat());
-      }
+   void a(aev var1);
 
-      @Override
-      public abk.d a() {
-         return abk.d.c;
-      }
+   void a(acp var1);
 
-      @Override
-      public void a(UUID $$0, abk.b $$1) {
-         $$1.a($$0, this.a);
-      }
+   void a(acr var1);
 
-      @Override
-      public void a(vt $$0) {
-         $$0.a(this.a);
-      }
+   void a(acw var1);
 
-      public float b() {
-         return this.a;
-      }
-   }
+   void a(aca var1);
 
-   static class g implements abk.c {
-      private final boolean a;
-      private final boolean b;
-      private final boolean c;
+   void a(acq var1);
 
-      g(boolean $$0, boolean $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   void a(acx var1);
 
-      private g(vt $$0) {
-         int $$1 = $$0.readUnsignedByte();
-         this.a = ($$1 & 1) > 0;
-         this.b = ($$1 & 2) > 0;
-         this.c = ($$1 & 4) > 0;
-      }
+   void a(adb var1);
 
-      @Override
-      public abk.d a() {
-         return abk.d.f;
-      }
+   void a(ade var1);
 
-      @Override
-      public void a(UUID $$0, abk.b $$1) {
-         $$1.a($$0, this.a, this.b, this.c);
-      }
+   void a(ads var1);
 
-      @Override
-      public void a(vt $$0) {
-         $$0.k(abk.a(this.a, this.b, this.c));
-      }
-   }
+   void a(acy var1);
 
-   static class h implements abk.c {
-      private final bnv.a a;
-      private final bnv.b b;
+   void a(adk var1);
 
-      h(bnv.a $$0, bnv.b $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   void a(adp var1);
 
-      private h(vt $$0) {
-         this.a = $$0.b(bnv.a.class);
-         this.b = $$0.b(bnv.b.class);
-      }
+   void a(adq var1);
 
-      @Override
-      public abk.d a() {
-         return abk.d.e;
-      }
+   void a(adu var1);
 
-      @Override
-      public void a(UUID $$0, abk.b $$1) {
-         $$1.a($$0, this.a, this.b);
-      }
+   void a(adv var1);
 
-      @Override
-      public void a(vt $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
-   }
+   void a(adx var1);
+
+   void a(ady var1);
+
+   void a(aej var1);
+
+   void a(aen var1);
+
+   void a(aeo var1);
+
+   void a(aeq var1);
+
+   void a(aer var1);
+
+   void a(aes var1);
+
+   void a(aet var1);
+
+   void a(aew var1);
+
+   void a(aex var1);
+
+   void a(adw var1);
+
+   void a(aem var1);
+
+   void a(afa var1);
+
+   void a(afe var1);
+
+   void a(afd var1);
+
+   void a(afk var1);
+
+   void a(afl var1);
+
+   void a(afm var1);
+
+   void a(afn var1);
+
+   void a(afp var1);
+
+   void a(afq var1);
+
+   void a(adm var1);
+
+   void a(adn var1);
+
+   void a(ado var1);
+
+   void a(abx var1);
+
+   void a(aei var1);
+
+   void a(acu var1);
+
+   void a(aee var1);
+
+   void a(aef var1);
+
+   void a(aeg var1);
+
+   void a(aeh var1);
+
+   void a(aed var1);
+
+   void a(afi var1);
+
+   void a(abu var1);
+
+   void a(aci var1);
+
+   void a(adf var1);
+
+   void a(afo var1);
+
+   void a(aea var1);
+
+   void a(adj var1);
+
+   void a(acd var1);
+
+   void a(afg var1);
+
+   void a(acc var1);
+
+   void a(afr var1);
+
+   void a(adr var1);
+
+   void a(afj var1);
+
+   void a(acz var1);
+
+   void a(adg var1);
+
+   void a(adh var1);
+
+   void a(add var1);
+
+   void a(ael var1);
+
+   void a(aey var1);
+
+   void a(aek var1);
+
+   void a(abp var1);
+
+   void a(aec var1);
+
+   void a(aez var1);
+
+   void a(afb var1);
+
+   void a(afc var1);
+
+   void a(acb var1);
+
+   void a(aeb var1);
+
+   void a(acj var1);
+
+   void a(abw var1);
+
+   void a(ack var1);
+
+   void a(aff var1);
+
+   void a(abz var1);
+
+   void a(aby var1);
+
+   void a(acl var1);
 }

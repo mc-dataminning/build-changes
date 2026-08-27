@@ -1,62 +1,77 @@
-import com.mojang.serialization.DynamicOps;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import java.util.AbstractList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class je {
-   public static final Set<aju<? extends ja<?>>> a = ajq.c.stream().map(ajq.c::a).collect(Collectors.toUnmodifiableSet());
+public class je<E> extends AbstractList<E> {
+   private final List<E> a;
+   @Nullable
+   private final E b;
 
-   public static void a(DynamicOps<ul> $$0, jb $$1, Set<asl> $$2, BiConsumer<aju<? extends ja<?>>, List<je.a>> $$3) {
-      ajq.c.forEach($$4 -> a($$0, (ajq.c<?>)$$4, $$1, $$2, $$3));
+   public static <E> je<E> a() {
+      return new je<>(Lists.newArrayList(), null);
    }
 
-   private static <T> void a(DynamicOps<ul> $$0, ajq.c<T> $$1, jb $$2, Set<asl> $$3, BiConsumer<aju<? extends ja<?>>, List<je.a>> $$4) {
-      $$2.c($$1.a()).ifPresent($$4x -> {
-         List<je.a> $$5 = new ArrayList<>($$4x.b());
-         $$4x.h().forEach($$5x -> {
-            boolean $$6 = $$4x.c($$5x.h()).flatMap(iz::a).filter($$3::contains).isPresent();
-            Optional<ul> $$7;
-            if ($$6) {
-               $$7 = Optional.empty();
-            } else {
-               ul $$8 = ac.a($$1.b().encodeStart($$0, $$5x.a()), $$1xxx -> new IllegalArgumentException("Failed to serialize " + $$5x.h() + ": " + $$1xxx));
-               $$7 = Optional.of($$8);
-            }
-
-            $$5.add(new je.a($$5x.h().a(), $$7));
-         });
-         $$4.accept($$4x.c(), $$5);
-      });
+   public static <E> je<E> a(int $$0) {
+      return new je<>(Lists.newArrayListWithCapacity($$0), null);
    }
 
-   private static Stream<jb.d<?>> a(jb $$0) {
-      return $$0.c().filter($$0x -> a.contains($$0x.a()));
+   public static <E> je<E> a(int $$0, E $$1) {
+      Validate.notNull($$1);
+      Object[] $$2 = new Object[$$0];
+      Arrays.fill($$2, $$1);
+      return new je<>(Arrays.asList((E[])$$2), $$1);
    }
 
-   public static Stream<jb.d<?>> a(iu<ake> $$0) {
-      return a($$0.c(ake.b));
+   @SafeVarargs
+   public static <E> je<E> a(E $$0, E... $$1) {
+      return new je<>(Arrays.asList($$1), $$0);
    }
 
-   public static Stream<jb.d<?>> b(iu<ake> $$0) {
-      Stream<jb.d<?>> $$1 = $$0.a(ake.a).c();
-      Stream<jb.d<?>> $$2 = a($$0);
-      return Stream.concat($$2, $$1);
+   protected je(List<E> $$0, @Nullable E $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static record a(ajv b, Optional<ul> c) {
-      public static final yg<ByteBuf, je.a> a = yg.a(ajv.b, je.a::a, ye.l.a(ye::a), je.a::b, je.a::new);
+   @Nonnull
+   @Override
+   public E get(int $$0) {
+      return this.a.get($$0);
+   }
 
-      public ajv a() {
-         return this.b;
-      }
+   @Override
+   public E set(int $$0, E $$1) {
+      Validate.notNull($$1);
+      return this.a.set($$0, $$1);
+   }
 
-      public Optional<ul> b() {
-         return this.c;
+   @Override
+   public void add(int $$0, E $$1) {
+      Validate.notNull($$1);
+      this.a.add($$0, $$1);
+   }
+
+   @Override
+   public E remove(int $$0) {
+      return this.a.remove($$0);
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public void clear() {
+      if (this.b == null) {
+         super.clear();
+      } else {
+         for (int $$0 = 0; $$0 < this.size(); $$0++) {
+            this.set($$0, this.b);
+         }
       }
    }
 }

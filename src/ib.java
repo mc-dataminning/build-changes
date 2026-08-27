@@ -1,80 +1,57 @@
-public enum ib {
-   a {
-      @Override
-      public int a(int $$0, int $$1, int $$2, ij.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+
+public class ib implements hw<DoubleArgumentType, ib.a> {
+   public void a(ib.a $$0, vs $$1) {
+      boolean $$2 = $$0.b != -Double.MAX_VALUE;
+      boolean $$3 = $$0.c != Double.MAX_VALUE;
+      $$1.k(hy.a($$2, $$3));
+      if ($$2) {
+         $$1.a($$0.b);
+      }
+
+      if ($$3) {
+         $$1.a($$0.c);
+      }
+   }
+
+   public ib.a a(vs $$0) {
+      byte $$1 = $$0.readByte();
+      double $$2 = hy.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
+      double $$3 = hy.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
+      return new ib.a($$2, $$3);
+   }
+
+   public void a(ib.a $$0, JsonObject $$1) {
+      if ($$0.b != -Double.MAX_VALUE) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      if ($$0.c != Double.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
+   }
+
+   public ib.a a(DoubleArgumentType $$0) {
+      return new ib.a($$0.getMinimum(), $$0.getMaximum());
+   }
+
+   public final class a implements hw.a<DoubleArgumentType> {
+      final double b;
+      final double c;
+
+      a(double $$1, double $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public DoubleArgumentType a(dy $$0) {
+         return DoubleArgumentType.doubleArg(this.b, this.c);
       }
 
       @Override
-      public double a(double $$0, double $$1, double $$2, ij.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+      public hw<DoubleArgumentType, ?> a() {
+         return ib.this;
       }
-
-      @Override
-      public ij.a a(ij.a $$0) {
-         return $$0;
-      }
-
-      @Override
-      public ib a() {
-         return this;
-      }
-   },
-   b {
-      @Override
-      public int a(int $$0, int $$1, int $$2, ij.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public double a(double $$0, double $$1, double $$2, ij.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public ij.a a(ij.a $$0) {
-         return d[Math.floorMod($$0.ordinal() + 1, 3)];
-      }
-
-      @Override
-      public ib a() {
-         return c;
-      }
-   },
-   c {
-      @Override
-      public int a(int $$0, int $$1, int $$2, ij.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
-
-      @Override
-      public double a(double $$0, double $$1, double $$2, ij.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
-
-      @Override
-      public ij.a a(ij.a $$0) {
-         return d[Math.floorMod($$0.ordinal() - 1, 3)];
-      }
-
-      @Override
-      public ib a() {
-         return b;
-      }
-   };
-
-   public static final ij.a[] d = ij.a.values();
-   public static final ib[] e = values();
-
-   public abstract int a(int var1, int var2, int var3, ij.a var4);
-
-   public abstract double a(double var1, double var3, double var5, ij.a var7);
-
-   public abstract ij.a a(ij.a var1);
-
-   public abstract ib a();
-
-   public static ib a(ij.a $$0, ij.a $$1) {
-      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

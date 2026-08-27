@@ -1,43 +1,43 @@
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.ShortBufferException;
 
-public class vk extends MessageToMessageDecoder<yp<?>> {
-   private final yo a;
-   @Nullable
-   private yo.a b;
+public class vk {
+   private final Cipher a;
+   private byte[] b = new byte[0];
+   private byte[] c = new byte[0];
 
-   public vk(yo $$0) {
+   protected vk(Cipher $$0) {
       this.a = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, yp<?> $$1, List<Object> $$2) throws Exception {
-      if (this.b != null) {
-         a($$1);
-         yp<?> $$3 = this.b.a($$1);
-         if ($$3 != null) {
-            this.b = null;
-            $$2.add($$3);
-         }
-      } else {
-         yo.a $$4 = this.a.a($$1);
-         if ($$4 != null) {
-            a($$1);
-            this.b = $$4;
-         } else {
-            $$2.add($$1);
-            if ($$1.d()) {
-               $$0.pipeline().remove($$0.name());
-            }
-         }
+   private byte[] a(ByteBuf $$0) {
+      int $$1 = $$0.readableBytes();
+      if (this.b.length < $$1) {
+         this.b = new byte[$$1];
       }
+
+      $$0.readBytes(this.b, 0, $$1);
+      return this.b;
    }
 
-   private static void a(yp<?> $$0) {
-      if ($$0.d()) {
-         throw new DecoderException("Terminal message received in bundle");
+   protected ByteBuf a(ChannelHandlerContext $$0, ByteBuf $$1) throws ShortBufferException {
+      int $$2 = $$1.readableBytes();
+      byte[] $$3 = this.a($$1);
+      ByteBuf $$4 = $$0.alloc().heapBuffer(this.a.getOutputSize($$2));
+      $$4.writerIndex(this.a.update($$3, 0, $$2, $$4.array(), $$4.arrayOffset()));
+      return $$4;
+   }
+
+   protected void a(ByteBuf $$0, ByteBuf $$1) throws ShortBufferException {
+      int $$2 = $$0.readableBytes();
+      byte[] $$3 = this.a($$0);
+      int $$4 = this.a.getOutputSize($$2);
+      if (this.c.length < $$4) {
+         this.c = new byte[$$4];
       }
+
+      $$1.writeBytes(this.c, 0, this.a.update($$3, 0, $$2, this.c));
    }
 }

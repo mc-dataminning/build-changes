@@ -1,5 +1,5 @@
-import java.util.concurrent.CompletableFuture;
-
-public interface dsj {
-   CompletableFuture<Void> a(cyn var1, ui var2);
+public class dsj extends RuntimeException {
+   public dsj(int $$0) {
+      super("Missing Palette entry for index " + $$0 + ".");
+   }
 }

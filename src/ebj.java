@@ -1,29 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.stream.Stream;
 
-public abstract class ebj {
-   public static final Codec<ebj> a = kt.aa.q().dispatch(ebj::b, ebk::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class ebj implements eay {
+   public static final Codec<ebj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(efk.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), efk.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, ebj::new)
+   );
+   public final iv<efk> b;
+   public final iv<efk> c;
 
-   protected static <S extends ebj> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public ebj(iv<efk> $$0, iv<efk> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public ebj(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract ebk<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
-      return this.c;
+   @Override
+   public Stream<dyh<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

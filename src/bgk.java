@@ -1,99 +1,118 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bgk extends DataFix {
-   private static final String b = "WorldGenSettingsHeightAndBiomeFix";
-   public static final String a = "has_increased_height_already";
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 4096;
+   private static final short c = 12;
 
-   public bgk(Schema $$0) {
-      super($$0, true);
+   public bgk(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bff.K);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      Type<?> $$2 = this.getOutputSchema().getType(bff.K);
-      Type<?> $$3 = $$2.findFieldType("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "WorldGenSettingsHeightAndBiomeFix",
-         $$0,
-         $$2,
-         $$2x -> {
-            OptionalDynamic<?> $$3x = ((Dynamic)$$2x.get(DSL.remainderFinder())).get("has_increased_height_already");
-            boolean $$4 = $$3x.result().isEmpty();
-            boolean $$5 = $$3x.asBoolean(true);
-            return $$2x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("has_increased_height_already"))
-               .updateTyped(
-                  $$1,
-                  $$3,
-                  $$3xx -> ac.a(
-                        $$3xx,
-                        $$3,
-                        $$2xxx -> $$2xxx.update(
-                              "minecraft:overworld",
-                              $$2xxxx -> $$2xxxx.update(
-                                    "generator",
-                                    $$2xxxxx -> {
-                                       String $$3xxx = $$2xxxxx.get("type").asString("");
-                                       if ("minecraft:noise".equals($$3xxx)) {
-                                          MutableBoolean $$4x = new MutableBoolean();
-                                          $$2xxxxx = $$2xxxxx.update(
-                                             "biome_source",
-                                             $$2xxxxxx -> {
-                                                String $$3xxxx = $$2xxxxxx.get("type").asString("");
-                                                if ("minecraft:vanilla_layered".equals($$3xxxx) || $$4 && "minecraft:multi_noise".equals($$3xxxx)) {
-                                                   if ($$2xxxxxx.get("large_biomes").asBoolean(false)) {
-                                                      $$4x.setTrue();
-                                                   }
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bfp.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
+         throw new IllegalStateException("Tile entity type is not a list type.");
+      } else {
+         OpticFinder<? extends List<?>> $$4 = DSL.fieldFinder("TileEntities", $$3);
+         Type<?> $$5 = this.getInputSchema().getType(bfp.c);
+         OpticFinder<?> $$6 = $$5.findField("Level");
+         OpticFinder<?> $$7 = $$6.type().findField("Sections");
+         Type<?> $$8 = $$7.type();
+         if (!($$8 instanceof ListType)) {
+            throw new IllegalStateException("Expecting sections to be a list.");
+         } else {
+            Type<?> $$9 = ((ListType)$$8).getElement();
+            OpticFinder<?> $$10 = DSL.typeFinder($$9);
+            return TypeRewriteRule.seq(
+               new azl(this.getOutputSchema(), "AddTrappedChestFix", bfp.s).makeRule(),
+               this.fixTypeEverywhereTyped("Trapped Chest fix", $$5, $$4x -> $$4x.updateTyped($$6, $$3xx -> {
+                     Optional<? extends Typed<?>> $$4xx = $$3xx.getOptionalTyped($$7);
+                     if ($$4xx.isEmpty()) {
+                        return $$3xx;
+                     } else {
+                        List<? extends Typed<?>> $$5x = $$4xx.get().getAllTyped($$10);
+                        IntSet $$6x = new IntOpenHashSet();
 
-                                                   return $$2xxxxxx.createMap(
-                                                      ImmutableMap.of(
-                                                         $$2xxxxxx.createString("preset"),
-                                                         $$2xxxxxx.createString("minecraft:overworld"),
-                                                         $$2xxxxxx.createString("type"),
-                                                         $$2xxxxxx.createString("minecraft:multi_noise")
-                                                      )
-                                                   );
-                                                } else {
-                                                   return $$2xxxxxx;
-                                                }
-                                             }
-                                          );
-                                          return $$4x.booleanValue()
-                                             ? $$2xxxxx.update(
-                                                "settings",
-                                                $$0xxxxxx -> "minecraft:overworld".equals($$0xxxxxx.asString(""))
-                                                      ? $$0xxxxxx.createString("minecraft:large_biomes")
-                                                      : $$0xxxxxx
-                                             )
-                                             : $$2xxxxx;
-                                       } else if ("minecraft:flat".equals($$3xxx)) {
-                                          return $$5 ? $$2xxxxx : $$2xxxxx.update("settings", $$0xxxxxx -> $$0xxxxxx.update("layers", bgk::a));
-                                       } else {
-                                          return $$2xxxxx;
-                                       }
+                        for (Typed<?> $$7x : $$5x) {
+                           bgk.a $$8x = new bgk.a($$7x, this.getInputSchema());
+                           if (!$$8x.b()) {
+                              for (int $$9x = 0; $$9x < 4096; $$9x++) {
+                                 int $$10x = $$8x.c($$9x);
+                                 if ($$8x.a($$10x)) {
+                                    $$6x.add($$8x.c() << 12 | $$9x);
+                                 }
+                              }
+                           }
+                        }
+
+                        Dynamic<?> $$11 = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
+                        int $$12 = $$11.get("xPos").asInt(0);
+                        int $$13 = $$11.get("zPos").asInt(0);
+                        TaggedChoiceType<String> $$14 = this.getInputSchema().findChoiceType(bfp.s);
+                        return $$3xx.updateTyped($$4, $$4xxx -> $$4xxx.updateTyped($$14.finder(), $$4xxxx -> {
+                              Dynamic<?> $$5xx = (Dynamic<?>)$$4xxxx.getOrCreate(DSL.remainderFinder());
+                              int $$6xx = $$5xx.get("x").asInt(0) - ($$12 << 4);
+                              int $$7xx = $$5xx.get("y").asInt(0);
+                              int $$8xx = $$5xx.get("z").asInt(0) - ($$13 << 4);
+                              return $$6x.contains(beb.a($$6xx, $$7xx, $$8xx)) ? $$4xxxx.update($$14.finder(), $$0xxxxx -> $$0xxxxx.mapFirst($$0xxxxxx -> {
+                                    if (!Objects.equals($$0xxxxxx, "minecraft:chest")) {
+                                       a.warn("Block Entity was expected to be a chest");
                                     }
-                                 )
-                           )
-                     )
-               );
+
+                                    return "minecraft:trapped_chest";
+                                 })) : $$4xxxx;
+                           }));
+                     }
+                  }))
+            );
          }
-      );
+      }
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = $$0.createMap(
-         ImmutableMap.of($$0.createString("height"), $$0.createInt(64), $$0.createString("block"), $$0.createString("minecraft:air"))
-      );
-      return $$0.createList(Stream.concat(Stream.of($$1), $$0.asStream()));
+   public static final class a extends beb.b {
+      @Nullable
+      private IntSet h;
+
+      public a(Typed<?> $$0, Schema $$1) {
+         super($$0, $$1);
+      }
+
+      @Override
+      protected boolean a() {
+         this.h = new IntOpenHashSet();
+
+         for (int $$0 = 0; $$0 < this.e.size(); $$0++) {
+            Dynamic<?> $$1 = this.e.get($$0);
+            String $$2 = $$1.get("Name").asString("");
+            if (Objects.equals($$2, "minecraft:trapped_chest")) {
+               this.h.add($$0);
+            }
+         }
+
+         return this.h.isEmpty();
+      }
+
+      public boolean a(int $$0) {
+         return this.h.contains($$0);
+      }
    }
 }

@@ -1,43 +1,59 @@
-public class cag extends cae {
-   private boolean p;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   public cag(bqv $$0, czg $$1) {
-      super($$0, $$1);
+public class cag<T> {
+   private final T a;
+   private long b;
+
+   public cag(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
+   }
+
+   public static <T> cag<T> a(T $$0) {
+      return new cag<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> cag<T> a(T $$0, long $$1) {
+      return new cag<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
    }
 
    @Override
-   protected elr a(int $$0) {
-      this.p = this.a.ai() == bqg.y;
-      this.o = new elv(this.p);
-      return new elr(this.o, $$0);
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
    }
 
-   @Override
-   protected boolean a() {
-      return this.p || this.a.bg();
+   @ayz
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
    }
 
-   @Override
-   protected esj b() {
-      return new esj(this.a.dr(), this.a.e(0.5), this.a.dx());
-   }
-
-   @Override
-   protected double a(esj $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(esj $$0, esj $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(id $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public static <T> Codec<cag<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new cag<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

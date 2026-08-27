@@ -1,58 +1,57 @@
 import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dyi extends dye<dyj> {
-   public dyi(Codec<dyj> $$0) {
+public class dyi extends dyj {
+   public dyi(Codec<ebf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyg<dyj> $$0) {
-      axt $$1 = $$0.d();
-      dab $$2 = $$0.b();
-      id $$3 = $$0.e();
-      dit $$4 = dit.a($$1);
-      dyj $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      ejr $$7 = $$2.E().o().bb();
-      ejq $$8 = $$7.a($$5.b.get($$6));
-      ejq $$9 = $$7.a($$5.c.get($$6));
-      cyn $$10 = new cyn($$3);
-      efi $$11 = new efi($$10.d() - 16, $$2.I_(), $$10.e() - 16, $$10.f() + 16, $$2.al(), $$10.g() + 16);
-      ejm $$12 = new ejm().a($$4).a($$11).a($$1);
-      ji $$13 = $$8.a($$4);
-      id $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
-
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(dva.a.c, $$14.u() + $$16, $$14.w() + $$17));
-         }
-      }
-
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.I_() + 10);
-      id $$19 = $$8.a($$14.h($$18), dhd.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+   protected boolean a(czv $$0, ayd $$1, im $$2, dpy $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
          return false;
       } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         ir $$4 = ir.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ir> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+
+         for (ir $$8 : $$6.subList(0, $$5)) {
+            im.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ir $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(ir.b);
+               ir[] $$13 = new ir[]{$$8, ir.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(ir.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ir.b);
+               }
+            }
+         }
+
          return true;
       }
-   }
-
-   private static int a(dab $$0, efi $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dpi $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(dcj.H) || $$3.a(dcj.G)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
    }
 }

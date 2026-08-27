@@ -1,49 +1,62 @@
-import java.util.Arrays;
-
-public class fsx<T extends bqa> extends fre<T> {
-   private final ftv[] a = new ftv[8];
-   private final ftv b;
-
-   public fsx(ftv $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+public class fsx<T extends cdl> extends ftb<T> {
+   public fsx(fur $$0) {
+      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static fux c() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      $$1.a(
+         "head",
+         fuw.c()
+            .a(0, 0)
+            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
+            .a(0, 44)
+            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
+            .a(26, 0)
+            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
+            .a(26, 0)
+            .a()
+            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
+         fut.a(0.0F, 10.0F, -16.0F)
+      );
+      $$1.a(
+         "body",
+         fuw.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
+         fut.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      int $$2 = 10;
+      fuw $$3 = fuw.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
+      $$1.a("right_hind_leg", $$3, fut.a(-4.5F, 14.0F, 6.0F));
+      $$1.a("left_hind_leg", $$3, fut.a(4.5F, 14.0F, 6.0F));
+      fuw $$4 = fuw.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
+      $$1.a("right_front_leg", $$4, fut.a(-3.5F, 14.0F, -8.0F));
+      $$1.a("left_front_leg", $$4, fut.a(3.5F, 14.0F, -8.0F));
+      return fux.a($$0, 128, 64);
    }
 
-   public static fub b() {
-      fud $$0 = new fud();
-      fue $$1 = $$0.a();
-      ftz $$2 = new ftz(0.02F);
-      int $$3 = -16;
-      $$1.a("body", fua.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), ftx.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      fua $$5 = fua.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, ftx.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return fub.a($$0, 64, 32);
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (ftv $$6 : this.a) {
-         $$6.e = $$3;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$3 - (float)$$0.ai;
+      float $$7 = $$0.G($$6);
+      $$7 *= $$7;
+      float $$8 = 1.0F - $$7;
+      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
+      this.b.c = 9.0F * $$8 + 11.0F * $$7;
+      this.h.c = 14.0F * $$8 - 6.0F * $$7;
+      this.h.d = -8.0F * $$8 - 4.0F * $$7;
+      this.h.e -= $$7 * (float) Math.PI * 0.45F;
+      this.i.c = this.h.c;
+      this.i.d = this.h.d;
+      this.i.e -= $$7 * (float) Math.PI * 0.45F;
+      if (this.e) {
+         this.a.c = 10.0F * $$8 - 9.0F * $$7;
+         this.a.d = -16.0F * $$8 - 7.0F * $$7;
+      } else {
+         this.a.c = 10.0F * $$8 - 14.0F * $$7;
+         this.a.d = -16.0F * $$8 - 3.0F * $$7;
       }
-   }
 
-   @Override
-   public ftv a() {
-      return this.b;
+      this.a.e += $$7 * (float) Math.PI * 0.15F;
    }
 }

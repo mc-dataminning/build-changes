@@ -1,58 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxo extends dye<eap> {
-   public dxo(Codec<eap> $$0) {
+public class dxo extends ebi {
+   public static final MapCodec<dxo> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               een.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bnt.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dwk.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               dxp.b.optionalFieldOf("debug_settings", dxp.a).forGetter($$0x -> $$0x.h),
+               jk.a(ld.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dxo::new)
+   );
+   public final een e;
+   public final bnt f;
+   public final dwk g;
+   public final dxp h;
+   public final iz<dcv> i;
+
+   public dxo(float $$0, een $$1, bnt $$2, dwk $$3, dxp $$4, iz<dcv> $$5) {
       super($$0);
-   }
-
-   @Override
-   public boolean a(dyg<eap> $$0) {
-      id $$1 = $$0.e();
-      dab $$2 = $$0.b();
-      axt $$3 = $$0.d();
-      if ($$1.v() > $$2.z_() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dcj.G) && !$$2.a_($$1.d()).a(dcj.G)) {
-         return false;
-      } else {
-         boolean $$4 = false;
-
-         for (ij $$5 : ij.values()) {
-            if ($$5 != ij.a && $$2.a_($$1.a($$5)).a(dcj.iC)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, dcj.mW.n(), 2);
-
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  id $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dpi $$10 = $$2.a_($$9);
-                  if ($$10.i() || $$10.a(dcj.G) || $$10.a(dcj.iC) || $$10.a(dcj.dO)) {
-                     for (ij $$11 : ij.values()) {
-                        dpi $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dcj.mW)) {
-                           $$2.a($$9, dcj.mW.n(), 2);
-                           break;
-                        }
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      }
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

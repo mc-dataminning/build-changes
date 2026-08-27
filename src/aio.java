@@ -1,12 +1,23 @@
-public class aio {
-   public static final yr<ain> a = a("pong_response");
-   public static final yr<aiq> b = b("ping_request");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends yp<aim>> yr<T> a(String $$0) {
-      return new yr<>(yq.b, new ajv($$0));
+public class aio implements yz<aik> {
+   public static final aio a = new aio();
+   public static final yq<ByteBuf, aio> b = yq.a(a);
+
+   private aio() {
    }
 
-   private static <T extends yp<aip>> yr<T> b(String $$0) {
-      return new yr<>(yq.a, new ajv($$0));
+   @Override
+   public zb<aio> a() {
+      return aii.i;
+   }
+
+   public void a(aik $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

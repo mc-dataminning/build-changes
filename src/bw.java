@@ -6,23 +6,23 @@ import javax.annotation.Nullable;
 
 public record bw(Optional<Boolean> d) implements bs {
    public static final bw b = new bw(Optional.empty());
-   public static final MapCodec<bw> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(awu.a(Codec.BOOL, "in_open_water").forGetter(bw::b)).apply($$0, bw::new));
+   public static final MapCodec<bw> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(axe.a(Codec.BOOL, "in_open_water").forGetter(bw::b)).apply($$0, bw::new));
 
    public static bw a(boolean $$0) {
       return new bw(Optional.of($$0));
    }
 
    @Override
-   public bs.a a() {
-      return bs.b.c;
+   public MapCodec<bw> a() {
+      return bt.b;
    }
 
    @Override
-   public boolean a(bqa $$0, apu $$1, @Nullable esj $$2) {
+   public boolean a(bql $$0, aqe $$1, @Nullable etf $$2) {
       if (this.d.isEmpty()) {
          return true;
       } else {
-         return $$0 instanceof cko $$3 ? this.d.get() == $$3.p() : false;
+         return $$0 instanceof ckz $$3 ? this.d.get() == $$3.p() : false;
       }
    }
 

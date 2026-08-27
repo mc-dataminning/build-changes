@@ -1,73 +1,130 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class xg {
-   private final String a;
-   private final List<xf> b;
-   private final Int2IntFunction c;
+public class xg implements ws {
+   private final wt c;
+   private final List<ws> d;
+   private xp e;
+   private axi f = axi.a;
+   @Nullable
+   private tt g;
 
-   private xg(String $$0, List<xf> $$1, Int2IntFunction $$2) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = $$2;
+   xg(wt $$0, List<ws> $$1, xp $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public String a() {
-      return this.a;
+   public static xg a(wt $$0) {
+      return new xg($$0, Lists.newArrayList(), xp.a);
    }
 
-   public List<awy> a(int $$0, int $$1, boolean $$2) {
-      if ($$1 == 0) {
-         return ImmutableList.of();
+   @Override
+   public wt b() {
+      return this.c;
+   }
+
+   @Override
+   public List<ws> c() {
+      return this.d;
+   }
+
+   public xg b(xp $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   @Override
+   public xp a() {
+      return this.e;
+   }
+
+   public xg f(String $$0) {
+      return this.b(ws.b($$0));
+   }
+
+   public xg b(ws $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public xg a(UnaryOperator<xp> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public xg c(xp $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public xg a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public xg a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public xg b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public axi g() {
+      tt $$0 = tt.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
+      }
+
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         List<awy> $$3 = Lists.newArrayList();
-         xf $$4 = this.b.get($$0);
-         int $$5 = $$0;
-
-         for (int $$6 = 1; $$6 < $$1; $$6++) {
-            int $$7 = $$0 + $$6;
-            xf $$8 = this.b.get($$7);
-            if (!$$8.equals($$4)) {
-               String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? awy.backward($$9, $$4, this.c) : awy.forward($$9, $$4));
-               $$4 = $$8;
-               $$5 = $$7;
-            }
-         }
-
-         if ($$5 < $$0 + $$1) {
-            String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? awy.backward($$10, $$4, this.c) : awy.forward($$10, $$4));
-         }
-
-         return $$2 ? Lists.reverse($$3) : $$3;
+         return !($$0 instanceof xg $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
       }
    }
 
-   public static xg a(wn $$0) {
-      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
    }
 
-   public static xg a(wn $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
-      StringBuilder $$3 = new StringBuilder();
-      List<xf> $$4 = Lists.newArrayList();
-      $$0.a(($$2x, $$3x) -> {
-         ayf.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
-            $$3.appendCodePoint($$4x);
-            int $$5 = Character.charCount($$4x);
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.g();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
+         }
 
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               $$4.add($$3xx);
-            }
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
 
-            return true;
-         });
-         return Optional.empty();
-      }, xf.a);
-      return new xg($$2.apply($$3.toString()), $$4, $$1);
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
+      }
+
+      return $$0.toString();
    }
 }

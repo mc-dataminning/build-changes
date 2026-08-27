@@ -1,31 +1,27 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fae {
-   public final int a;
-   @Nullable
-   public final String b;
+public class fae extends gsq {
+   protected BooleanConsumer a;
+   private final ws b;
+   private final ws c;
 
-   fae(int $$0, String $$1) {
+   public fae(BooleanConsumer $$0, ws $$1, ws $$2) {
+      super(fcm.a);
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public static class a {
-      private int a = -1;
-      private String b;
+   @Override
+   public void aM_() {
+      this.c(feu.a(wr.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
+      this.c(feu.a(wr.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
+   }
 
-      public fae.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fae.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fae a() {
-         return new fae(this.a, this.b);
-      }
+   @Override
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
+      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
    }
 }

@@ -1,58 +1,45 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
 
-public record eqd(ajv b) implements eql {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<eqd> a = RecordCodecBuilder.create($$0 -> $$0.group(ajv.a.fieldOf("name").forGetter(eqd::c)).apply($$0, eqd::new));
+public class eqd extends epo {
+   public static final Codec<eqd> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  axe.a(axe.a(cuu.c.listOf(), 256), "explosions", List.of()).forGetter($$0x -> $$0x.c),
+                  epn.e.f.forGetter($$0x -> $$0x.d),
+                  axe.a(axe.h, "flight_duration").forGetter($$0x -> $$0x.e)
+               )
+            )
+            .apply($$0, eqd::new)
+   );
+   public static final cuv b = new cuv(0, List.of());
+   private final List<cuu> c;
+   private final epn d;
+   private final Optional<Integer> e;
 
-   @Override
-   public eqm b() {
-      return eqn.q;
+   protected eqd(List<erh> $$0, List<cuu> $$1, epn $$2, Optional<Integer> $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   public void a(ent $$0) {
-      enm<eql> $$1 = new enm<>(enp.a, this.b);
-      if ($$0.a($$1)) {
-         $$0.b("Condition " + this.b + " is recursively called");
-      } else {
-         eql.super.a($$0);
-         $$0.a()
-            .getElementOptional($$1)
-            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.b("Unknown condition table called " + this.b));
-      }
+   protected csd a(csd $$0, eoa $$1) {
+      $$0.a(jz.K, b, this::a);
+      return $$0;
    }
 
-   public boolean a(enk $$0) {
-      eql $$1 = $$0.a().getElement(enp.a, this.b);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b);
-         return false;
-      } else {
-         enk.c<?> $$2 = enk.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
+   private cuv a(cuv $$0) {
+      List<cuu> $$1 = this.d.a($$0.b(), this.c, 256);
+      return new cuv(this.e.orElseGet($$0::a), $$1);
    }
 
-   public static eql.a a(ajv $$0) {
-      return () -> new eqd($$0);
-   }
-
-   public ajv c() {
-      return this.b;
+   @Override
+   public epq b() {
+      return epr.F;
    }
 }

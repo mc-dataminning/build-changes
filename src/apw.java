@@ -1,326 +1,500 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import java.util.Objects;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2IntMap;
+import it.unimi.dsi.fastutil.longs.Long2IntMaps;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class apw {
-   private static final Logger a = LogUtils.getLogger();
-   protected apu c;
-   protected final apv d;
-   private czd b;
-   @Nullable
-   private czd e;
-   private boolean f;
-   private int g;
-   private id h;
-   private int i;
-   private boolean j;
-   private id k;
-   private int l;
-   private int m;
+public abstract class apw {
+   static final Logger a = LogUtils.getLogger();
+   static final int b = apm.a(apx.d);
+   private static final int c = 4;
+   final Long2ObjectMap<ObjectSet<aqf>> d = new Long2ObjectOpenHashMap();
+   final Long2ObjectOpenHashMap<ayn<aqi<?>>> e = new Long2ObjectOpenHashMap();
+   private final apw.a f = new apw.a();
+   private final apw.b g = new apw.b(8);
+   private final aqk h = new aqk();
+   private final apw.c i = new apw.c(32);
+   final Set<apl> j = Sets.newHashSet();
+   final apq k;
+   final bni<apq.a<Runnable>> l;
+   final bni<apq.b> m;
+   final LongSet n = new LongOpenHashSet();
+   final Executor o;
+   private long p;
+   private int q = 10;
 
-   public apw(apv $$0) {
-      this.b = czd.e;
-      this.h = id.c;
-      this.k = id.c;
-      this.m = -1;
-      this.d = $$0;
-      this.c = $$0.z();
+   protected apw(Executor $$0, Executor $$1) {
+      bni<Runnable> $$2 = bni.a("player ticket throttler", $$1::execute);
+      apq $$3 = new apq(ImmutableList.of($$2), $$0, 4);
+      this.k = $$3;
+      this.l = $$3.a($$2, true);
+      this.m = $$3.a($$2);
+      this.o = $$1;
    }
 
-   public boolean a(czd $$0) {
-      if ($$0 == this.b) {
-         return false;
-      } else {
-         this.a($$0, this.e);
-         this.d.y();
-         this.d.e.ah().a(new adg(adg.a.c, this.d));
-         this.c.e();
+   protected void a() {
+      this.p++;
+      ObjectIterator<Entry<ayn<aqi<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
+
+      while ($$0.hasNext()) {
+         Entry<ayn<aqi<?>>> $$1 = (Entry<ayn<aqi<?>>>)$$0.next();
+         Iterator<aqi<?>> $$2 = ((ayn)$$1.getValue()).iterator();
+         boolean $$3 = false;
+
+         while ($$2.hasNext()) {
+            aqi<?> $$4 = $$2.next();
+            if ($$4.b(this.p)) {
+               $$2.remove();
+               $$3 = true;
+               this.h.b($$1.getLongKey(), $$4);
+            }
+         }
+
+         if ($$3) {
+            this.f.b($$1.getLongKey(), a((ayn<aqi<?>>)$$1.getValue()), false);
+         }
+
+         if (((ayn)$$1.getValue()).isEmpty()) {
+            $$0.remove();
+         }
+      }
+   }
+
+   private static int a(ayn<aqi<?>> $$0) {
+      return !$$0.isEmpty() ? $$0.b().b() : apm.a + 1;
+   }
+
+   protected abstract boolean a(long var1);
+
+   @Nullable
+   protected abstract apl b(long var1);
+
+   @Nullable
+   protected abstract apl a(long var1, int var3, @Nullable apl var4, int var5);
+
+   public boolean a(apn $$0) {
+      this.g.a();
+      this.h.a();
+      this.i.a();
+      int $$1 = Integer.MAX_VALUE - this.f.a(Integer.MAX_VALUE);
+      boolean $$2 = $$1 != 0;
+      if ($$2) {
+      }
+
+      if (!this.j.isEmpty()) {
+         this.j.forEach($$1x -> $$1x.a($$0, this.o));
+         this.j.clear();
          return true;
-      }
-   }
-
-   protected void a(czd $$0, @Nullable czd $$1) {
-      this.e = $$1;
-      this.b = $$0;
-      $$0.a(this.d.ga());
-   }
-
-   public czd b() {
-      return this.b;
-   }
-
-   @Nullable
-   public czd c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.b.h();
-   }
-
-   public boolean e() {
-      return this.b.g();
-   }
-
-   public void a() {
-      this.i++;
-      if (this.j) {
-         dpi $$0 = this.c.a_(this.k);
-         if ($$0.i()) {
-            this.j = false;
-         } else {
-            float $$1 = this.a($$0, this.k, this.l);
-            if ($$1 >= 1.0F) {
-               this.j = false;
-               this.a(this.k);
-            }
-         }
-      } else if (this.f) {
-         dpi $$2 = this.c.a_(this.h);
-         if ($$2.i()) {
-            this.c.a(this.d.aj(), this.h, -1);
-            this.m = -1;
-            this.f = false;
-         } else {
-            this.a($$2, this.h, this.g);
-         }
-      }
-   }
-
-   private float a(dpi $$0, id $$1, int $$2) {
-      int $$3 = this.i - $$2;
-      float $$4 = $$0.a(this.d, this.d.dM(), $$1) * (float)($$3 + 1);
-      int $$5 = (int)($$4 * 10.0F);
-      if ($$5 != this.m) {
-         this.c.a(this.d.aj(), $$1, $$5);
-         this.m = $$5;
-      }
-
-      return $$4;
-   }
-
-   private void a(id $$0, boolean $$1, int $$2, String $$3) {
-   }
-
-   public void a(id $$0, agq.a $$1, ij $$2, int $$3, int $$4) {
-      if (!this.d.a($$0, 1.0)) {
-         this.a($$0, false, $$4, "too far");
-      } else if ($$0.v() >= $$3) {
-         this.d.d.b(new abj($$0, this.c.a_($$0)));
-         this.a($$0, false, $$4, "too high");
       } else {
-         if ($$1 == agq.a.a) {
-            if (!this.c.a(this.d, $$0)) {
-               this.d.d.b(new abj($$0, this.c.a_($$0)));
-               this.a($$0, false, $$4, "may not interact");
-               return;
-            }
+         if (!this.n.isEmpty()) {
+            LongIterator $$3 = this.n.iterator();
 
-            if (this.e()) {
-               this.a($$0, $$4, "creative destroy");
-               return;
-            }
-
-            if (this.d.a(this.c, $$0, this.b)) {
-               this.d.d.b(new abj($$0, this.c.a_($$0)));
-               this.a($$0, false, $$4, "block action restricted");
-               return;
-            }
-
-            this.g = this.i;
-            float $$5 = 1.0F;
-            dpi $$6 = this.c.a_($$0);
-            if (!$$6.i()) {
-               $$6.a(this.c, $$0, this.d);
-               $$5 = $$6.a(this.d, this.d.dM(), $$0);
-            }
-
-            if (!$$6.i() && $$5 >= 1.0F) {
-               this.a($$0, $$4, "insta mine");
-            } else {
-               if (this.f) {
-                  this.d.d.b(new abj(this.h, this.c.a_(this.h)));
-                  this.a($$0, false, $$4, "abort destroying since another started (client insta mine, server disagreed)");
-               }
-
-               this.f = true;
-               this.h = $$0.i();
-               int $$7 = (int)($$5 * 10.0F);
-               this.c.a(this.d.aj(), $$0, $$7);
-               this.a($$0, true, $$4, "actual start of destroying");
-               this.m = $$7;
-            }
-         } else if ($$1 == agq.a.c) {
-            if ($$0.equals(this.h)) {
-               int $$8 = this.i - this.g;
-               dpi $$9 = this.c.a_($$0);
-               if (!$$9.i()) {
-                  float $$10 = $$9.a(this.d, this.d.dM(), $$0) * (float)($$8 + 1);
-                  if ($$10 >= 0.7F) {
-                     this.f = false;
-                     this.c.a(this.d.aj(), $$0, -1);
-                     this.a($$0, $$4, "destroyed");
-                     return;
+            while ($$3.hasNext()) {
+               long $$4 = $$3.nextLong();
+               if (this.g($$4).stream().anyMatch($$0x -> $$0x.a() == aqj.c)) {
+                  apl $$5 = $$0.a($$4);
+                  if ($$5 == null) {
+                     throw new IllegalStateException();
                   }
 
-                  if (!this.j) {
-                     this.f = false;
-                     this.j = true;
-                     this.k = $$0;
-                     this.l = this.g;
-                  }
+                  CompletableFuture<apo<dse>> $$6 = $$5.b();
+                  $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(apq.a(() -> {
+                        }, $$4, false))));
                }
             }
 
-            this.a($$0, true, $$4, "stopped destroying");
-         } else if ($$1 == agq.a.b) {
-            this.f = false;
-            if (!Objects.equals(this.h, $$0)) {
-               a.warn("Mismatch in destroy block pos: {} {}", this.h, $$0);
-               this.c.a(this.d.aj(), this.h, -1);
-               this.a($$0, true, $$4, "aborted mismatched destroying");
-            }
+            this.n.clear();
+         }
 
-            this.c.a(this.d.aj(), $$0, -1);
-            this.a($$0, true, $$4, "aborted destroying");
+         return $$2;
+      }
+   }
+
+   void a(long $$0, aqi<?> $$1) {
+      ayn<aqi<?>> $$2 = this.g($$0);
+      int $$3 = a($$2);
+      aqi<?> $$4 = $$2.a($$1);
+      $$4.a(this.p);
+      if ($$1.b() < $$3) {
+         this.f.b($$0, $$1.b(), true);
+      }
+   }
+
+   void b(long $$0, aqi<?> $$1) {
+      ayn<aqi<?>> $$2 = this.g($$0);
+      if ($$2.remove($$1)) {
+      }
+
+      if ($$2.isEmpty()) {
+         this.e.remove($$0);
+      }
+
+      this.f.b($$0, a($$2), false);
+   }
+
+   public <T> void a(aqj<T> $$0, czb $$1, int $$2, T $$3) {
+      this.a($$1.a(), new aqi<>($$0, $$2, $$3));
+   }
+
+   public <T> void b(aqj<T> $$0, czb $$1, int $$2, T $$3) {
+      aqi<T> $$4 = new aqi<>($$0, $$2, $$3);
+      this.b($$1.a(), $$4);
+   }
+
+   public <T> void c(aqj<T> $$0, czb $$1, int $$2, T $$3) {
+      aqi<T> $$4 = new aqi<>($$0, apm.a(apx.b) - $$2, $$3);
+      long $$5 = $$1.a();
+      this.a($$5, $$4);
+      this.h.a($$5, $$4);
+   }
+
+   public <T> void d(aqj<T> $$0, czb $$1, int $$2, T $$3) {
+      aqi<T> $$4 = new aqi<>($$0, apm.a(apx.b) - $$2, $$3);
+      long $$5 = $$1.a();
+      this.b($$5, $$4);
+      this.h.b($$5, $$4);
+   }
+
+   private ayn<aqi<?>> g(long $$0) {
+      return (ayn<aqi<?>>)this.e.computeIfAbsent($$0, $$0x -> ayn.a(4));
+   }
+
+   protected void a(czb $$0, boolean $$1) {
+      aqi<czb> $$2 = new aqi<>(aqj.d, apn.c, $$0);
+      long $$3 = $$0.a();
+      if ($$1) {
+         this.a($$3, $$2);
+         this.h.a($$3, $$2);
+      } else {
+         this.b($$3, $$2);
+         this.h.b($$3, $$2);
+      }
+   }
+
+   public void a(jo $$0, aqf $$1) {
+      czb $$2 = $$0.r();
+      long $$3 = $$2.a();
+      ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
+      this.g.b($$3, 0, true);
+      this.i.b($$3, 0, true);
+      this.h.a(aqj.c, $$2, this.g(), $$2);
+   }
+
+   public void b(jo $$0, aqf $$1) {
+      czb $$2 = $$0.r();
+      long $$3 = $$2.a();
+      ObjectSet<aqf> $$4 = (ObjectSet<aqf>)this.d.get($$3);
+      $$4.remove($$1);
+      if ($$4.isEmpty()) {
+         this.d.remove($$3);
+         this.g.b($$3, Integer.MAX_VALUE, false);
+         this.i.b($$3, Integer.MAX_VALUE, false);
+         this.h.b(aqj.c, $$2, this.g(), $$2);
+      }
+   }
+
+   private int g() {
+      return Math.max(0, apm.a(apx.d) - this.q);
+   }
+
+   public boolean c(long $$0) {
+      return apm.c(this.h.c($$0));
+   }
+
+   public boolean d(long $$0) {
+      return apm.d(this.h.c($$0));
+   }
+
+   protected String e(long $$0) {
+      ayn<aqi<?>> $$1 = (ayn<aqi<?>>)this.e.get($$0);
+      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   }
+
+   protected void a(int $$0) {
+      this.i.a($$0);
+   }
+
+   public void b(int $$0) {
+      if ($$0 != this.q) {
+         this.q = $$0;
+         this.h.a(this.g());
+      }
+   }
+
+   public int b() {
+      this.g.a();
+      return this.g.a.size();
+   }
+
+   public boolean f(long $$0) {
+      this.g.a();
+      return this.g.a.containsKey($$0);
+   }
+
+   public String c() {
+      return this.k.b();
+   }
+
+   private void a(String $$0) {
+      try (FileOutputStream $$1 = new FileOutputStream(new File($$0))) {
+         ObjectIterator var3 = this.e.long2ObjectEntrySet().iterator();
+
+         while (var3.hasNext()) {
+            Entry<ayn<aqi<?>>> $$2 = (Entry<ayn<aqi<?>>>)var3.next();
+            czb $$3 = new czb($$2.getLongKey());
+
+            for (aqi<?> $$4 : (ayn)$$2.getValue()) {
+               $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
+            }
+         }
+      } catch (IOException var10) {
+         a.error("Failed to dump tickets to {}", $$0, var10);
+      }
+   }
+
+   @VisibleForTesting
+   aqk d() {
+      return this.h;
+   }
+
+   public void e() {
+      ImmutableSet<aqj<?>> $$0 = ImmutableSet.of(aqj.h, aqj.g, aqj.e);
+      ObjectIterator<Entry<ayn<aqi<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
+
+      while ($$1.hasNext()) {
+         Entry<ayn<aqi<?>>> $$2 = (Entry<ayn<aqi<?>>>)$$1.next();
+         Iterator<aqi<?>> $$3 = ((ayn)$$2.getValue()).iterator();
+         boolean $$4 = false;
+
+         while ($$3.hasNext()) {
+            aqi<?> $$5 = $$3.next();
+            if (!$$0.contains($$5.a())) {
+               $$3.remove();
+               $$4 = true;
+               this.h.b($$2.getLongKey(), $$5);
+            }
+         }
+
+         if ($$4) {
+            this.f.b($$2.getLongKey(), a((ayn<aqi<?>>)$$2.getValue()), false);
+         }
+
+         if (((ayn)$$2.getValue()).isEmpty()) {
+            $$1.remove();
          }
       }
    }
 
-   public void a(id $$0, int $$1, String $$2) {
-      if (this.a($$0)) {
-         this.a($$0, true, $$1, $$2);
-      } else {
-         this.d.d.b(new abj($$0, this.c.a_($$0)));
-         this.a($$0, false, $$1, $$2);
+   public boolean f() {
+      return !this.e.isEmpty();
+   }
+
+   class a extends apr {
+      private static final int b = apm.a + 1;
+
+      public a() {
+         super(b + 1, 16, 256);
+      }
+
+      @Override
+      protected int b(long $$0) {
+         ayn<aqi<?>> $$1 = (ayn<aqi<?>>)apw.this.e.get($$0);
+         if ($$1 == null) {
+            return Integer.MAX_VALUE;
+         } else {
+            return $$1.isEmpty() ? Integer.MAX_VALUE : $$1.b().b();
+         }
+      }
+
+      @Override
+      protected int c(long $$0) {
+         if (!apw.this.a($$0)) {
+            apl $$1 = apw.this.b($$0);
+            if ($$1 != null) {
+               return $$1.l();
+            }
+         }
+
+         return b;
+      }
+
+      @Override
+      protected void a(long $$0, int $$1) {
+         apl $$2 = apw.this.b($$0);
+         int $$3 = $$2 == null ? b : $$2.l();
+         if ($$3 != $$1) {
+            $$2 = apw.this.a($$0, $$1, $$2, $$3);
+            if ($$2 != null) {
+               apw.this.j.add($$2);
+            }
+         }
+      }
+
+      public int a(int $$0) {
+         return this.b($$0);
       }
    }
 
-   public boolean a(id $$0) {
-      dpi $$1 = this.c.a_($$0);
-      if (!this.d.eU().f().a($$1, this.c, $$0, this.d)) {
-         return false;
-      } else {
-         dmo $$2 = this.c.c_($$0);
-         dch $$3 = $$1.b();
-         if ($$3 instanceof dfp && !this.d.gw()) {
-            this.c.a($$0, $$1, $$1, 3);
-            return false;
-         } else if (this.d.a(this.c, $$0, this.b)) {
-            return false;
-         } else {
-            dpi $$4 = $$3.a(this.c, $$0, $$1, (cka)this.d);
-            boolean $$5 = this.c.a($$0, false);
-            if ($$5) {
-               $$3.a((czh)this.c, $$0, $$4);
-            }
+   class b extends apr {
+      protected final Long2ByteMap a = new Long2ByteOpenHashMap();
+      protected final int b;
 
-            if (this.e()) {
-               return true;
+      protected b(int $$0) {
+         super($$0 + 2, 16, 256);
+         this.b = $$0;
+         this.a.defaultReturnValue((byte)($$0 + 2));
+      }
+
+      @Override
+      protected int c(long $$0) {
+         return this.a.get($$0);
+      }
+
+      @Override
+      protected void a(long $$0, int $$1) {
+         byte $$2;
+         if ($$1 > this.b) {
+            $$2 = this.a.remove($$0);
+         } else {
+            $$2 = this.a.put($$0, (byte)$$1);
+         }
+
+         this.a($$0, $$2, $$1);
+      }
+
+      protected void a(long $$0, int $$1, int $$2) {
+      }
+
+      @Override
+      protected int b(long $$0) {
+         return this.d($$0) ? 0 : Integer.MAX_VALUE;
+      }
+
+      private boolean d(long $$0) {
+         ObjectSet<aqf> $$1 = (ObjectSet<aqf>)apw.this.d.get($$0);
+         return $$1 != null && !$$1.isEmpty();
+      }
+
+      public void a() {
+         this.b(Integer.MAX_VALUE);
+      }
+
+      private void a(String $$0) {
+         try (FileOutputStream $$1 = new FileOutputStream(new File($$0))) {
+            ObjectIterator var3 = this.a.long2ByteEntrySet().iterator();
+
+            while (var3.hasNext()) {
+               it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
+               czb $$3 = new czb($$2.getLongKey());
+               String $$4 = Byte.toString($$2.getByteValue());
+               $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
+            }
+         } catch (IOException var9) {
+            apw.a.error("Failed to dump chunks to {}", $$0, var9);
+         }
+      }
+   }
+
+   class c extends apw.b {
+      private int g;
+      private final Long2IntMap h = Long2IntMaps.synchronize(new Long2IntOpenHashMap());
+      private final LongSet i = new LongOpenHashSet();
+
+      protected c(int $$0) {
+         super($$0);
+         this.g = 0;
+         this.h.defaultReturnValue($$0 + 2);
+      }
+
+      @Override
+      protected void a(long $$0, int $$1, int $$2) {
+         this.i.add($$0);
+      }
+
+      public void a(int $$0) {
+         ObjectIterator var2 = this.a.long2ByteEntrySet().iterator();
+
+         while (var2.hasNext()) {
+            it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$1 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var2.next();
+            byte $$2 = $$1.getByteValue();
+            long $$3 = $$1.getLongKey();
+            this.a($$3, $$2, this.c($$2), $$2 <= $$0);
+         }
+
+         this.g = $$0;
+      }
+
+      private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
+         if ($$2 != $$3) {
+            aqi<?> $$4 = new aqi<>(aqj.c, apw.b, new czb($$0));
+            if ($$3) {
+               apw.this.l.a(apq.a(() -> apw.this.o.execute(() -> {
+                     if (this.c(this.c($$0))) {
+                        apw.this.a($$0, $$4);
+                        apw.this.n.add($$0);
+                     } else {
+                        apw.this.m.a(apq.a(() -> {
+                        }, $$0, false));
+                     }
+                  }), $$0, () -> $$1));
             } else {
-               crs $$6 = this.d.eU();
-               crs $$7 = $$6.r();
-               boolean $$8 = this.d.e($$4);
-               $$6.a(this.c, $$4, $$0, this.d);
-               if ($$5 && $$8) {
-                  $$3.a(this.c, this.d, $$0, $$4, $$2, $$7);
-               }
-
-               return true;
+               apw.this.m.a(apq.a(() -> apw.this.o.execute(() -> apw.this.b($$0, $$4)), $$0, true));
             }
          }
       }
-   }
 
-   public bof a(apv $$0, czg $$1, crs $$2, boe $$3) {
-      if (this.b == czd.d) {
-         return bof.d;
-      } else if ($$0.gu().a($$2.f())) {
-         return bof.d;
-      } else {
-         int $$4 = $$2.G();
-         int $$5 = $$2.m();
-         bog<crs> $$6 = $$2.a($$1, $$0, $$3);
-         crs $$7 = $$6.b();
-         if ($$7 == $$2 && $$7.G() == $$4 && $$7.t() <= 0 && $$7.m() == $$5) {
-            return $$6.a();
-         } else if ($$6.a() == bof.e && $$7.t() > 0 && !$$0.fs()) {
-            return $$6.a();
-         } else {
-            if ($$2 != $$7) {
-               $$0.a($$3, $$7);
-            }
+      @Override
+      public void a() {
+         super.a();
+         if (!this.i.isEmpty()) {
+            LongIterator $$0 = this.i.iterator();
 
-            if ($$7.d()) {
-               $$0.a($$3, crs.i);
-            }
-
-            if (!$$0.fs()) {
-               $$0.bZ.b();
-            }
-
-            return $$6.a();
-         }
-      }
-   }
-
-   public bof a(apv $$0, czg $$1, crs $$2, boe $$3, esf $$4) {
-      id $$5 = $$4.a();
-      dpi $$6 = $$1.a_($$5);
-      if (!$$6.b().a($$1.J())) {
-         return bof.e;
-      } else if (this.b == czd.d) {
-         boj $$7 = $$6.b($$1, $$5);
-         if ($$7 != null) {
-            $$0.a($$7);
-            return bof.a;
-         } else {
-            return bof.d;
-         }
-      } else {
-         boolean $$8 = !$$0.eU().d() || !$$0.eV().d();
-         boolean $$9 = $$0.fO() && $$8;
-         crs $$10 = $$2.r();
-         if (!$$9) {
-            boh $$11 = $$6.a($$0.b($$3), $$1, $$0, $$3, $$4);
-            if ($$11.a()) {
-               am.N.a($$0, $$5, $$10);
-               return $$11.b();
-            }
-
-            if ($$11 == boh.d && $$3 == boe.a) {
-               bof $$12 = $$6.a($$1, $$0, $$4);
-               if ($$12.a()) {
-                  am.O.a($$0, $$5);
-                  return $$12;
+            while ($$0.hasNext()) {
+               long $$1 = $$0.nextLong();
+               int $$2 = this.h.get($$1);
+               int $$3 = this.c($$1);
+               if ($$2 != $$3) {
+                  apw.this.k.onLevelChange(new czb($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                     if ($$1x >= this.h.defaultReturnValue()) {
+                        this.h.remove($$1);
+                     } else {
+                        this.h.put($$1, $$1x);
+                     }
+                  });
+                  this.a($$1, $$3, this.c($$2), this.c($$3));
                }
             }
-         }
 
-         if (!$$2.d() && !$$0.gu().a($$2.f())) {
-            cuz $$13 = new cuz($$0, $$3, $$4);
-            bof $$15;
-            if (this.e()) {
-               int $$14 = $$2.G();
-               $$15 = $$2.a($$13);
-               $$2.e($$14);
-            } else {
-               $$15 = $$2.a($$13);
-            }
-
-            if ($$15.a()) {
-               am.N.a($$0, $$5, $$10);
-            }
-
-            return $$15;
-         } else {
-            return bof.d;
+            this.i.clear();
          }
       }
-   }
 
-   public void a(apu $$0) {
-      this.c = $$0;
+      private boolean c(int $$0) {
+         return $$0 <= this.g;
+      }
    }
 }

@@ -1,174 +1,151 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dpn {
-   private final Predicate<dpm>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+public final class dpn {
+   private static final Map<String, dpn> k = new Object2ObjectArrayMap();
+   public static final Codec<dpn> a = axe.a((Function<dpn, String>)($$0 -> $$0.l), k::get);
+   public static final dpn b = new dpn(
+      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(rt.g), Optional.of(rt.n), Optional.of(rt.C), Optional.of(rt.I)
+   );
+   public static final dpn c = new dpn(
+      "spruce", 0.5F, Optional.of(rt.q), Optional.of(rt.r), Optional.of(rt.k), Optional.empty(), Optional.empty(), Optional.empty()
+   );
+   public static final dpn d = new dpn(
+      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(rt.x), Optional.of(rt.y), Optional.empty(), Optional.empty()
+   );
+   public static final dpn e = new dpn("azalea", Optional.empty(), Optional.of(rt.w), Optional.empty());
+   public static final dpn f = new dpn("birch", Optional.empty(), Optional.of(rt.i), Optional.of(rt.F));
+   public static final dpn g = new dpn("jungle", Optional.of(rt.p), Optional.of(rt.o), Optional.empty());
+   public static final dpn h = new dpn("acacia", Optional.empty(), Optional.of(rt.j), Optional.empty());
+   public static final dpn i = new dpn("cherry", Optional.empty(), Optional.of(rt.z), Optional.of(rt.K));
+   public static final dpn j = new dpn("dark_oak", Optional.of(rt.h), Optional.empty(), Optional.empty());
+   private final String l;
+   private final float m;
+   private final Optional<ake<dyh<?, ?>>> n;
+   private final Optional<ake<dyh<?, ?>>> o;
+   private final Optional<ake<dyh<?, ?>>> p;
+   private final Optional<ake<dyh<?, ?>>> q;
+   private final Optional<ake<dyh<?, ?>>> r;
+   private final Optional<ake<dyh<?, ?>>> s;
 
-   public dpn(Predicate<dpm>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
+   public dpn(String $$0, Optional<ake<dyh<?, ?>>> $$1, Optional<ake<dyh<?, ?>>> $$2, Optional<ake<dyh<?, ?>>> $$3) {
+      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   }
+
+   public dpn(
+      String $$0,
+      float $$1,
+      Optional<ake<dyh<?, ?>>> $$2,
+      Optional<ake<dyh<?, ?>>> $$3,
+      Optional<ake<dyh<?, ?>>> $$4,
+      Optional<ake<dyh<?, ?>>> $$5,
+      Optional<ake<dyh<?, ?>>> $$6,
+      Optional<ake<dyh<?, ?>>> $$7
+   ) {
+      this.l = $$0;
+      this.m = $$1;
+      this.n = $$2;
+      this.o = $$3;
+      this.p = $$4;
+      this.q = $$5;
+      this.r = $$6;
+      this.s = $$7;
+      k.put($$0, this);
+   }
+
+   @Nullable
+   private ake<dyh<?, ?>> a(ayd $$0, boolean $$1) {
+      if ($$0.i() < this.m) {
+         if ($$1 && this.s.isPresent()) {
+            return this.s.get();
          }
-      } else {
-         this.c = 0;
-         this.d = 0;
-      }
-   }
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public Predicate<dpm>[][][] d() {
-      return this.a;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public dpn.b a(czj $$0, id $$1, ij $$2, ij $$3) {
-      LoadingCache<id, dpm> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   private dpn.b a(id $$0, ij $$1, ij $$2, LoadingCache<id, dpm> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dpm)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
+         if (this.q.isPresent()) {
+            return this.q.get();
          }
       }
 
-      return new dpn.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
+      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
    }
 
    @Nullable
-   public dpn.b a(czj $$0, id $$1) {
-      LoadingCache<id, dpm> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+   private ake<dyh<?, ?>> a(ayd $$0) {
+      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
+   }
 
-      for (id $$4 : id.a($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (ij $$5 : ij.values()) {
-            for (ij $$6 : ij.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dpn.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
+   public boolean a(aqe $$0, drv $$1, im $$2, dpy $$3, ayd $$4) {
+      ake<dyh<?, ?>> $$5 = this.a($$4);
+      if ($$5 != null) {
+         iv<dyh<?, ?>> $$6 = $$0.H_().d(ld.aB).b($$5).orElse(null);
+         if ($$6 != null) {
+            for (int $$7 = 0; $$7 >= -1; $$7--) {
+               for (int $$8 = 0; $$8 >= -1; $$8--) {
+                  if (a($$3, $$0, $$2, $$7, $$8)) {
+                     dyh<?, ?> $$9 = $$6.a();
+                     dpy $$10 = dcx.a.n();
+                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
+                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
+                        return true;
+                     }
+
+                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
+                     return false;
                   }
                }
             }
          }
       }
 
-      return null;
-   }
-
-   public static LoadingCache<id, dpm> a(czj $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dpn.a($$0, $$1));
-   }
-
-   protected static id a(id $$0, ij $$1, ij $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         ji $$6 = new ji($$1.j(), $$1.k(), $$1.l());
-         ji $$7 = new ji($$2.j(), $$2.k(), $$2.l());
-         ji $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
+      ake<dyh<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
+      if ($$11 == null) {
+         return false;
       } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
+         iv<dyh<?, ?>> $$12 = $$0.H_().d(ld.aB).b($$11).orElse(null);
+         if ($$12 == null) {
+            return false;
+         } else {
+            dyh<?, ?> $$13 = $$12.a();
+            dpy $$14 = $$0.b_($$2).g();
+            $$0.a($$2, $$14, 4);
+            if ($$13.a($$0, $$1, $$4, $$2)) {
+               if ($$0.a_($$2) == $$14) {
+                  $$0.a($$2, $$3, $$14, 2);
+               }
+
+               return true;
+            } else {
+               $$0.a($$2, $$3, 4);
+               return false;
+            }
+         }
       }
    }
 
-   static class a extends CacheLoader<id, dpm> {
-      private final czj a;
-      private final boolean b;
-
-      public a(czj $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dpm a(id $$0) {
-         return new dpm(this.a, $$0, this.b);
-      }
+   private static boolean a(dpy $$0, cza $$1, im $$2, int $$3, int $$4) {
+      dcv $$5 = $$0.b();
+      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
    }
 
-   public static class b {
-      private final id a;
-      private final ij b;
-      private final ij c;
-      private final LoadingCache<id, dpm> d;
-      private final int e;
-      private final int f;
-      private final int g;
-
-      public b(id $$0, ij $$1, ij $$2, LoadingCache<id, dpm> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   private boolean a(czv $$0, im $$1) {
+      for (im $$2 : im.a.c($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
+         if ($$0.a_($$2).a(avo.U)) {
+            return true;
+         }
       }
 
-      public id a() {
-         return this.a;
-      }
-
-      public ij b() {
-         return this.b;
-      }
-
-      public ij c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dpm a(int $$0, int $$1, int $$2) {
-         return (dpm)this.d.getUnchecked(dpn.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+      return false;
    }
 }

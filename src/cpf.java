@@ -1,22 +1,89 @@
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class cpf extends crn {
-   private final dch a;
+public class cpf {
+   private static final List<cpe> b = ac.a(new ArrayList<>(), $$0 -> {
+      a($$0, "contents", 0);
+      a($$0, "container.", 0, 54);
+      a($$0, "hotbar.", 0, 9);
+      a($$0, "inventory.", 9, 27);
+      a($$0, "enderchest.", 200, 27);
+      a($$0, "villager.", 300, 8);
+      a($$0, "horse.", 500, 15);
+      int $$1 = bqs.a.a(98);
+      int $$2 = bqs.b.a(98);
+      a($$0, "weapon", $$1);
+      a($$0, "weapon.mainhand", $$1);
+      a($$0, "weapon.offhand", $$2);
+      a($$0, "weapon.*", $$1, $$2);
+      $$1 = bqs.f.a(100);
+      $$2 = bqs.e.a(100);
+      int $$5 = bqs.d.a(100);
+      int $$6 = bqs.c.a(100);
+      int $$7 = bqs.g.a(105);
+      a($$0, "armor.head", $$1);
+      a($$0, "armor.chest", $$2);
+      a($$0, "armor.legs", $$5);
+      a($$0, "armor.feet", $$6);
+      a($$0, "armor.body", $$7);
+      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
+      a($$0, "horse.saddle", 400);
+      a($$0, "horse.chest", 499);
+      a($$0, "player.cursor", 499);
+      a($$0, "player.crafting.", 500, 4);
+   });
+   public static final Codec<cpe> a = ayq.b(() -> b.toArray(new cpe[0]));
+   private static final Function<String, cpe> c = ayq.a(b.toArray(new cpe[0]), $$0 -> $$0);
 
-   public cpf(dch $$0, crn.a $$1) {
-      super($$1);
-      this.a = $$0;
+   private static cpe a(String $$0, int $$1) {
+      return cpe.a($$0, IntLists.singleton($$1));
    }
 
-   @Override
-   public String a() {
-      return this.a.g();
+   private static cpe a(String $$0, IntList $$1) {
+      return cpe.a($$0, IntLists.unmodifiable($$1));
    }
 
-   @Override
-   public void a(crs $$0, @Nullable czg $$1, List<wi> $$2, cti $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, $$1, $$2, $$3, $$1 != null ? $$1.H_() : null);
+   private static cpe a(String $$0, int... $$1) {
+      return cpe.a($$0, IntList.of($$1));
+   }
+
+   private static void a(List<cpe> $$0, String $$1, int $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
+   private static void a(List<cpe> $$0, String $$1, int $$2, int $$3) {
+      IntList $$4 = new IntArrayList($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         int $$6 = $$2 + $$5;
+         $$0.add(a($$1 + $$5, $$6));
+         $$4.add($$6);
+      }
+
+      $$0.add(a($$1 + "*", $$4));
+   }
+
+   private static void a(List<cpe> $$0, String $$1, int... $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
+   @Nullable
+   public static cpe a(String $$0) {
+      return c.apply($$0);
+   }
+
+   public static Stream<String> a() {
+      return b.stream().map(ayq::c);
+   }
+
+   public static Stream<String> b() {
+      return b.stream().filter($$0 -> $$0.b() == 1).map(ayq::c);
    }
 }

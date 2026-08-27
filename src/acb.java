@@ -1,25 +1,29 @@
-public record acb(long[] b, bka c) implements yp<aba> {
-   public static final yg<vi, acb> a = yp.a(acb::a, acb::new);
+public class acb implements yz<abk> {
+   public static final yq<vs, acb> a = yz.a(acb::a, acb::new);
+   private final boolean b;
 
-   private acb(vi $$0) {
-      this($$0.d(), $$0.b(bka.class));
+   public acb(boolean $$0) {
+      this.b = $$0;
    }
 
-   private void a(vi $$0) {
+   private acb(vs $$0) {
+      this.b = $$0.readBoolean();
+   }
+
+   private void a(vs $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public yr<acb> a() {
-      return afl.A;
+   public zb<acb> a() {
+      return afv.q;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public bka e() {
-      return this.c;
+   public boolean b() {
+      return this.b;
    }
 }

@@ -1,60 +1,53 @@
-import com.mojang.brigadier.context.StringRange;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import java.util.List;
-import java.util.Optional;
+public class abs implements yz<abk> {
+   public static final yq<wd, abs> a = yz.a(abs::a, abs::new);
+   private final im b;
+   private final int c;
+   private final int d;
+   private final dcv e;
 
-public record abs(int b, int c, int d, List<abs.a> e) implements yp<aba> {
-   public static final yg<vt, abs> a = yg.a(ye.f, abs::e, ye.f, abs::f, ye.f, abs::g, abs.a.a.a(ye.a()), abs::h, abs::new);
+   public abs(im $$0, dcv $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
 
-   public abs(int $$0, Suggestions $$1) {
-      this(
-         $$0,
-         $$1.getRange().getStart(),
-         $$1.getRange().getLength(),
-         $$1.getList().stream().map($$0x -> new abs.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(wl::a))).toList()
-      );
+   private abs(wd $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.readUnsignedByte();
+      this.e = yo.a(ld.f).decode($$0);
+   }
+
+   private void a(wd $$0) {
+      $$0.a(this.b);
+      $$0.k(this.c);
+      $$0.k(this.d);
+      yo.a(ld.f).encode($$0, this.e);
    }
 
    @Override
-   public yr<abs> a() {
-      return afl.r;
+   public zb<abs> a() {
+      return afv.j;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public Suggestions b() {
-      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
-      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
-   }
-
-   public int e() {
+   public im b() {
       return this.b;
    }
 
-   public int f() {
+   public int e() {
       return this.c;
    }
 
-   public int g() {
+   public int f() {
       return this.d;
    }
 
-   public List<abs.a> h() {
+   public dcv g() {
       return this.e;
-   }
-
-   public static record a(String b, Optional<wi> c) {
-      public static final yg<vt, abs.a> a = yg.a(ye.k, abs.a::a, wk.e, abs.a::b, abs.a::new);
-
-      public String a() {
-         return this.b;
-      }
-
-      public Optional<wi> b() {
-         return this.c;
-      }
    }
 }

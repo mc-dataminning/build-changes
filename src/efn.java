@@ -1,7 +1,10 @@
-@FunctionalInterface
-public interface efn {
-   efn a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
-   };
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-   void afterPlace(dab var1, czz var2, drf var3, axt var4, efi var5, cyn var6, egf var7);
+public abstract class efn {
+   public static final Codec<efn> b = lc.U.q().dispatch(efn::b, efo::codec);
+
+   public abstract Stream<im> a_(efl var1, ayd var2, im var3);
+
+   public abstract efo<?> b();
 }

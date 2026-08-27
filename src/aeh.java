@@ -1,60 +1,29 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+public class aeh implements yz<abk> {
+   public static final yq<vs, aeh> a = yz.a(aeh::a, aeh::new);
+   private final int b;
 
-public class aeh implements yp<aba> {
-   public static final yg<vt, aeh> a = yp.a(aeh::a, aeh::new);
-   private static final byte b = -128;
-   private final int c;
-   private final List<Pair<bqh, crs>> d;
-
-   public aeh(int $$0, List<Pair<bqh, crs>> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public aeh(drp $$0) {
+      this.b = $$0.r();
    }
 
-   private aeh(vt $$0) {
-      this.c = $$0.l();
-      bqh[] $$1 = bqh.values();
-      this.d = Lists.newArrayList();
-
-      int $$2;
-      do {
-         $$2 = $$0.readByte();
-         bqh $$3 = $$1[$$2 & 127];
-         crs $$4 = crs.e.decode($$0);
-         this.d.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
+   private aeh(vs $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vt $$0) {
-      $$0.c(this.c);
-      int $$1 = this.d.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bqh, crs> $$3 = this.d.get($$2);
-         bqh $$4 = (bqh)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.k($$5 ? $$6 | -128 : $$6);
-         crs.e.encode($$0, (crs)$$3.getSecond());
-      }
+   private void a(vs $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yr<aeh> a() {
-      return afl.aF;
+   public zb<aeh> a() {
+      return afv.av;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.c;
-   }
-
-   public List<Pair<bqh, crs>> e() {
-      return this.d;
+      return this.b;
    }
 }

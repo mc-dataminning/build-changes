@@ -1,117 +1,83 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dja extends dbt implements djh {
-   public static final MapCodec<dja> a = b(dja::new);
-   public static final dpz b = dpy.F;
-   public static final dpz c = dpy.C;
-   public static final dpz d = dpy.G;
-   protected static final etc e = dch.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final double f = e.c(ij.a.b);
+public class dja extends diz {
+   public static final MapCodec<dja> h = b(dja::new);
+   public static final dqs i = dgr.aE;
+   public static final dqp j = diz.d;
 
    @Override
    public MapCodec<dja> a() {
-      return a;
+      return h;
    }
 
-   public dja(dph.d $$0) {
+   protected dja(dpx.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(i, ir.c).a(j, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(b);
-      $$0.a(c);
-      $$0.a(d);
+   public String g() {
+      return this.p().a();
    }
 
    @Override
-   public void a(czg $$0, id $$1, dpi $$2, bqa $$3) {
-      if ($$0 instanceof apu $$4) {
-         apv $$5 = dnw.a($$3);
-         if ($$5 != null) {
-            $$4.a($$1, dmq.L).ifPresent($$2x -> $$2x.a($$4, $$5));
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return dlx.m($$0);
    }
 
    @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
-      if ($$1 instanceof apu $$5 && $$0.c(b) && !$$0.a($$3.b())) {
-         $$5.a($$2, dmq.L).ifPresent($$1x -> $$1x.a($$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
+   protected boolean a(dpy $$0, czx $$1, im $$2) {
+      return dlx.b($$1, $$2, $$0.c(i));
    }
 
    @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-         $$1.a($$2, dmq.L).ifPresent($$1x -> $$1x.a($$1));
-      }
-   }
-
-   @Override
-   protected dim b_(dpi $$0) {
-      return dim.c;
-   }
-
-   @Override
-   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return e;
-   }
-
-   @Override
-   protected etc f(dpi $$0, cym $$1, id $$2) {
-      return e;
-   }
-
-   @Override
-   protected boolean g_(dpi $$0) {
-      return true;
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? dcx.a.n() : $$0;
    }
 
    @Nullable
    @Override
-   public dmo a(id $$0, dpi $$1) {
-      return new dnw($$0, $$1);
+   public dpy a(cvl $$0) {
+      dpy $$1 = dcx.cq.a($$0);
+      return $$1 == null ? null : this.n().a(i, $$1.c(i));
    }
 
    @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, elc.c, elc.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dpi a(cux $$0) {
-      return this.n().a(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == elc.c));
-   }
-
-   @Override
-   protected elb c_(dpi $$0) {
-      return $$0.c(c) ? elc.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected void a(dpi $$0, apu $$1, id $$2, crs $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, bnh.a(5));
+   public void a(dpy $$0, czu $$1, im $$2, ayd $$3) {
+      if ($$0.c(j)) {
+         ir $$4 = $$0.c(i).g();
+         double $$5 = 0.27;
+         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
+         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
+         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
+         $$1.a(kq.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
       }
    }
 
-   @Nullable
    @Override
-   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
-      return !$$0.B ? dbt.a($$2, dmq.L, ($$0x, $$1x, $$2x, $$3) -> duk.c.a($$0x, $$3.gp(), $$3.gq())) : null;
+   protected boolean a(czu $$0, im $$1, dpy $$2) {
+      ir $$3 = $$2.c(i).g();
+      return $$0.b($$1.a($$3), $$3);
+   }
+
+   @Override
+   protected int a(dpy $$0, cza $$1, im $$2, ir $$3) {
+      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected dpy a(dpy $$0, dji $$1) {
+      return $$0.a(i, $$1.a($$0.c(i)));
+   }
+
+   @Override
+   protected dpy a(dpy $$0, dhs $$1) {
+      return $$0.a($$1.a($$0.c(i)));
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(i, j);
    }
 }

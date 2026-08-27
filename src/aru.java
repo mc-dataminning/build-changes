@@ -1,144 +1,121 @@
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.UncheckedIOException;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.util.HashMap;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aru implements arq {
-   private static final Logger c = LogUtils.getLogger();
-   private final arp d;
-   private final ari e;
-   private final Set<String> f;
-   private final List<Path> g;
-   private final Map<ars, List<Path>> h;
+public class aru {
+   private static final Logger a = LogUtils.getLogger();
 
-   aru(arp $$0, ari $$1, Set<String> $$2, List<Path> $$3, Map<ars, List<Path>> $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
+   public static void a(Path $$0, int $$1) {
+      try {
+         List<aru.b> $$2 = a($$0);
+         int $$3 = $$2.size() - $$1;
+         if ($$3 <= 0) {
+            return;
+         }
+
+         $$2.sort(aru.b.a);
+         List<aru.a> $$4 = a($$2);
+         Collections.reverse($$4);
+         $$4.sort(aru.a.a);
+         Set<Path> $$5 = new HashSet<>();
+
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            aru.a $$7 = $$4.get($$6);
+            Path $$8 = $$7.b;
+
+            try {
+               Files.delete($$8);
+               if ($$7.c == 0) {
+                  $$5.add($$8.getParent());
+               }
+            } catch (IOException var12) {
+               a.warn("Failed to delete cache file {}", $$8, var12);
+            }
+         }
+
+         $$5.remove($$0);
+
+         for (Path $$10 : $$5) {
+            try {
+               Files.delete($$10);
+            } catch (DirectoryNotEmptyException var10) {
+            } catch (IOException var11) {
+               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
+            }
+         }
+      } catch (UncheckedIOException | IOException var13) {
+         a.error("Failed to vacuum cache dir {}", $$0, var13);
+      }
    }
 
-   @Nullable
-   @Override
-   public asw<InputStream> a(String... $$0) {
-      v.a($$0);
-      List<String> $$1 = List.of($$0);
+   private static List<aru.b> a(final Path $$0) throws IOException {
+      try {
+         final List<aru.b> $$1 = new ArrayList<>();
+         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
+               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
+                  FileTime $$2 = $$1.lastModifiedTime();
+                  $$1.add(new aru.b($$0, $$2));
+               }
 
-      for (Path $$2 : this.g) {
-         Path $$3 = v.a($$2, $$1);
-         if (Files.exists($$3) && art.a($$3)) {
-            return asw.create($$3);
-         }
+               return FileVisitResult.CONTINUE;
+            }
+         });
+         return $$1;
+      } catch (NoSuchFileException var2) {
+         return List.of();
+      }
+   }
+
+   private static List<aru.a> a(List<aru.b> $$0) {
+      List<aru.a> $$1 = new ArrayList<>();
+      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
+
+      for (aru.b $$3 : $$0) {
+         int $$4 = $$2.addTo($$3.b.getParent(), 1);
+         $$1.add(new aru.a($$3.b, $$4));
       }
 
-      return null;
+      return $$1;
    }
 
-   public void a(ars $$0, ajv $$1, Consumer<Path> $$2) {
-      v.c($$1.a()).get().ifLeft($$3 -> {
-         String $$4 = $$1.b();
+   static record a(Path b, int c) {
+      public static final Comparator<aru.a> a = Comparator.comparing(aru.a::b).reversed();
 
-         for (Path $$5 : this.h.get($$0)) {
-            Path $$6 = $$5.resolve($$4);
-            $$2.accept(v.a($$6, $$3));
-         }
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
-   }
-
-   @Override
-   public void a(ars $$0, String $$1, String $$2, arq.a $$3) {
-      v.c($$2).get().ifLeft($$3x -> {
-         List<Path> $$4 = this.h.get($$0);
-         int $$5 = $$4.size();
-         if ($$5 == 1) {
-            a($$3, $$1, $$4.get(0), $$3x);
-         } else if ($$5 > 1) {
-            Map<ajv, asw<InputStream>> $$6 = new HashMap<>();
-
-            for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
-               a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
-            }
-
-            Path $$8 = $$4.get($$5 - 1);
-            if ($$6.isEmpty()) {
-               a($$3, $$1, $$8, $$3x);
-            } else {
-               a($$6::putIfAbsent, $$1, $$8, $$3x);
-               $$6.forEach($$3);
-            }
-         }
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
-   }
-
-   private static void a(arq.a $$0, String $$1, Path $$2, List<String> $$3) {
-      Path $$4 = $$2.resolve($$1);
-      art.a($$1, $$4, $$3, $$0);
-   }
-
-   @Nullable
-   @Override
-   public asw<InputStream> a(ars $$0, ajv $$1) {
-      return (asw<InputStream>)v.c($$1.a()).get().map($$2 -> {
-         String $$3 = $$1.b();
-
-         for (Path $$4 : this.h.get($$0)) {
-            Path $$5 = v.a($$4.resolve($$3), $$2);
-            if (Files.exists($$5) && art.a($$5)) {
-               return asw.create($$5);
-            }
-         }
-
-         return null;
-      }, $$1x -> {
-         c.error("Invalid path {}: {}", $$1, $$1x.message());
-         return null;
-      });
-   }
-
-   @Override
-   public Set<String> a(ars $$0) {
-      return this.f;
-   }
-
-   @Nullable
-   @Override
-   public <T> T a(asd<T> $$0) {
-      asw<InputStream> $$1 = this.a("pack.mcmeta");
-      if ($$1 != null) {
-         try (InputStream $$2 = $$1.get()) {
-            T $$3 = arh.a($$0, $$2);
-            if ($$3 != null) {
-               return $$3;
-            }
-
-            return this.e.a($$0);
-         } catch (IOException var8) {
-         }
+      public Path a() {
+         return this.b;
       }
 
-      return this.e.a($$0);
+      public int b() {
+         return this.c;
+      }
    }
 
-   @Override
-   public arp a() {
-      return this.d;
-   }
+   static record b(Path b, FileTime c) {
+      public static final Comparator<aru.b> a = Comparator.comparing(aru.b::b).reversed();
 
-   @Override
-   public void close() {
-   }
+      public Path a() {
+         return this.b;
+      }
 
-   public ath d() {
-      return $$0 -> Optional.ofNullable(this.a(ars.a, $$0)).map($$0x -> new atc(this, $$0x));
+      public FileTime b() {
+         return this.c;
+      }
    }
 }

@@ -1,89 +1,76 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class dbn extends dbt {
-   public static final MapCodec<dbn> a = b(dbn::new);
-   public static final dqc b = dpy.P;
-   public static final dpz c = dpy.u;
+public abstract class dbn extends dcv {
+   public static final int a = 3;
+   public static final dqp b = dqo.r;
 
    @Override
-   public MapCodec<dbn> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends dbn> a();
 
-   public dbn(dph.d $$0) {
+   protected dbn(dpx.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ij.c).a(c, Boolean.valueOf(false)));
+   }
+
+   protected abstract Iterable<etf> b(dpy var1);
+
+   public static boolean c(dpy $$0) {
+      return $$0.b(b) && ($$0.a(avo.ae) || $$0.a(avo.bk)) && $$0.c(b);
    }
 
    @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if ($$1.B) {
-         return bof.a;
-      } else {
-         dmo $$5 = $$1.c_($$2);
-         if ($$5 instanceof dmh) {
-            $$3.a((dmh)$$5);
-            $$3.a(auz.ar);
-            cir.a($$3, true);
+   protected void a(czu $$0, dpy $$1, etb $$2, cld $$3) {
+      if (!$$0.B && $$3.bO() && this.d($$1)) {
+         a($$0, $$1, $$2.a(), true);
+      }
+   }
+
+   protected boolean d(dpy $$0) {
+      return !$$0.c(b);
+   }
+
+   @Override
+   public void a(dpy $$0, czu $$1, im $$2, ayd $$3) {
+      if ($$0.c(b)) {
+         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
+      }
+   }
+
+   private static void a(czu $$0, etf $$1, ayd $$2) {
+      float $$3 = $$2.i();
+      if ($$3 < 0.3F) {
+         $$0.a(kw.ab, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
+         if ($$3 < 0.17F) {
+            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, auz.dJ, ava.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
          }
-
-         return bof.b;
       }
+
+      $$0.a(kw.aG, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
+   }
+
+   public static void a(@Nullable ckl $$0, dpy $$1, czv $$2, im $$3) {
+      a($$2, $$1, $$3, false);
+      if ($$1.b() instanceof dbn) {
+         ((dbn)$$1.b())
+            .b($$1)
+            .forEach($$2x -> $$2.a(kw.ab, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      }
+
+      $$2.a(null, $$3, auz.dL, ava.e, 1.0F, 1.0F);
+      $$2.a($$0, dur.c, $$3);
+   }
+
+   private static void a(czv $$0, dpy $$1, im $$2, boolean $$3) {
+      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
    }
 
    @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
-      bob.a($$0, $$3, $$1, $$2);
+   protected void a(dpy $$0, czu $$1, im $$2, czm $$3, BiConsumer<csd, im> $$4) {
+      if ($$3.j() == czm.a.d && !$$1.x_() && $$0.c(b)) {
+         a(null, $$0, $$1, $$2);
+      }
+
       super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      dmo $$4 = $$1.c_($$2);
-      if ($$4 instanceof dmh) {
-         ((dmh)$$4).l();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dmo a(id $$0, dpi $$1) {
-      return new dmh($$0, $$1);
-   }
-
-   @Override
-   protected dim b_(dpi $$0) {
-      return dim.c;
-   }
-
-   @Override
-   protected boolean d_(dpi $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dpi $$0, czg $$1, id $$2) {
-      return cmw.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dhd $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dpi a(cux $$0) {
-      return this.n().a(b, $$0.d().g());
    }
 }

@@ -1,40 +1,34 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ece(ir<dch> b, ir<dch> c, ecj d, int e, int f, float g) {
-   public static final Codec<ece> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jc.a(ku.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               jc.a(ku.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               ecj.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ece::new)
-   );
+public class ece extends eck {
+   public static final Codec<ece> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ece::new));
 
-   public ir<dch> a() {
-      return this.b;
+   public ece(bnv $$0, bnv $$1) {
+      super($$0, $$1);
    }
 
-   public ir<dch> b() {
-      return this.c;
+   @Override
+   protected ecl<?> a() {
+      return ecl.d;
    }
 
-   public ecj c() {
-      return this.d;
+   @Override
+   protected void a(daa $$0, eck.b $$1, ayd $$2, ebu $$3, int $$4, eck.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      im $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
    }
 
-   public int d() {
-      return this.e;
+   @Override
+   public int a(ayd $$0, int $$1, ebu $$2) {
+      return 0;
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   @Override
+   protected boolean a(ayd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -1,112 +1,125 @@
-import com.mojang.authlib.GameProfile;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
 
-public class fpi implements fpd, fpe {
-   private static final ajv a = new ajv("spectator/teleport_to_team");
-   private static final wi b = wi.c("spectatorMenu.team_teleport");
-   private static final wi c = wi.c("spectatorMenu.team_teleport.prompt");
-   private final List<fpe> d;
+public class fpi extends fkt {
+   private static final ws a = ws.c("selectWorld.experimental.title");
+   private static final ws b = ws.c("selectWorld.experimental.message");
+   private static final ws c = ws.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int r = 100;
+   private final BooleanConsumer s;
+   final Collection<asw> u;
+   private final fig v = new fig().a(10).b(20);
 
-   public fpi() {
-      fby $$0 = fby.Q();
-      this.d = a($$0, $$0.r.L());
-   }
-
-   private static List<fpe> a(fby $$0, etn $$1) {
-      return $$1.g().stream().flatMap($$1x -> fpi.a.a($$0, $$1x).stream()).toList();
-   }
-
-   @Override
-   public List<fpe> a() {
-      return this.d;
+   public fpi(Collection<asw> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.u = $$0;
+      this.s = $$1;
    }
 
    @Override
-   public wi b() {
-      return c;
+   public ws i() {
+      return wr.a(super.i(), b);
    }
 
    @Override
-   public void a(fpc $$0) {
-      $$0.a(this);
+   protected void aM_() {
+      super.aM_();
+      fig.b $$0 = this.v.d(2);
+      fik $$1 = $$0.b().b();
+      $$0.a(new fgb(this.l, this.p), 2, $$1);
+      ffo $$2 = $$0.a(new ffo(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(feu.a(c, $$0x -> this.m.a(new fpi.a())).a(100).a(), 2, $$1);
+      $$0.a(feu.a(wr.i, $$0x -> this.s.accept(true)).a());
+      $$0.a(feu.a(wr.k, $$0x -> this.s.accept(false)).a());
+      this.v.a($$1x -> {
+         fes var10000 = this.c($$1x);
+      });
+      this.v.a();
+      this.c();
    }
 
    @Override
-   public wi aN_() {
-      return b;
+   protected void c() {
+      fif.a(this.v, 0, 0, this.n, this.o, 0.5F, 0.5F);
    }
 
    @Override
-   public void a(fdl $$0, float $$1, int $$2) {
-      $$0.a(a, 0, 0, 16, 16);
+   public void d() {
+      this.s.accept(false);
    }
 
-   @Override
-   public boolean aO_() {
-      return !this.d.isEmpty();
-   }
+   class a extends fkt {
+      private static final ws b = ws.c("selectWorld.experimental.details.title");
+      final fih c = new fih(this);
 
-   static class a implements fpe {
-      private final eti a;
-      private final Supplier<gmr> b;
-      private final List<fvb> c;
-
-      private a(eti $$0, List<fvb> $$1, Supplier<gmr> $$2) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
+      a() {
+         super(b);
       }
 
-      public static Optional<fpe> a(fby $$0, eti $$1) {
-         List<fvb> $$2 = new ArrayList<>();
+      @Override
+      protected void aM_() {
+         this.c.a(b, this.p);
+         this.c.c(new fpi.a.a(this.m, fpi.this.u));
+         this.c.b(feu.a(wr.k, $$0 -> this.d()).a());
+         this.c.a($$1 -> {
+            fes var10000 = this.c($$1);
+         });
+         this.c();
+      }
 
-         for (String $$3 : $$1.g()) {
-            fvb $$4 = $$0.L().a($$3);
-            if ($$4 != null && $$4.e() != czd.d) {
-               $$2.add($$4);
+      @Override
+      protected void c() {
+         this.c.a();
+      }
+
+      @Override
+      public void d() {
+         this.m.a(fpi.this);
+      }
+
+      class a extends ffq<fpi.a.b> {
+         public a(fcu $$0, Collection<asw> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
+
+            for (asw $$2 : $$1) {
+               String $$3 = cna.a(cna.g, $$2.e());
+               if (!$$3.isEmpty()) {
+                  ws $$4 = wv.a($$2.b().f(), xp.a.a(true));
+                  ws $$5 = ws.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, ffn.a(a.this.p, $$5, this.b())));
+               }
             }
          }
 
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            GameProfile $$5 = $$2.get(axt.a().a($$2.size())).a();
-            Supplier<gmr> $$6 = $$0.an().a($$5);
-            return Optional.of(new fpi.a($$1, $$2, $$6));
+         @Override
+         public int b() {
+            return this.g * 3 / 4;
          }
       }
 
-      @Override
-      public void a(fpc $$0) {
-         $$0.a(new fph(this.c));
-      }
+      class b extends ffq.a<fpi.a.b> {
+         private final ws b;
+         private final ws c;
+         private final ffn d;
 
-      @Override
-      public wi aN_() {
-         return this.a.c();
-      }
-
-      @Override
-      public void a(fdl $$0, float $$1, int $$2) {
-         Integer $$3 = this.a.n().f();
-         if ($$3 != null) {
-            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
-            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
-            float $$6 = (float)($$3 & 0xFF) / 255.0F;
-            $$0.a(1, 1, 15, 15, axm.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         b(ws $$0, ws $$1, ffn $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
          }
 
-         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
-         fex.a($$0, this.b.get(), 2, 2, 12);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      }
+         @Override
+         public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
 
-      @Override
-      public boolean aO_() {
-         return true;
+         @Override
+         public ws a() {
+            return ws.a("narrator.select", wr.a(this.b, this.c));
+         }
       }
    }
 }

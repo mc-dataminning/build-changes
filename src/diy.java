@@ -1,55 +1,49 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class diy extends dbt {
+public class diy extends dcv {
    public static final MapCodec<diy> a = b(diy::new);
-   public static final dpz b = dpy.E;
-   private final bnk c = bnh.a(5);
+   public static final dqp b = diz.d;
 
    @Override
    public MapCodec<diy> a() {
       return a;
    }
 
-   public diy(dph.d $$0) {
+   public diy(dpx.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+      this.k(this.n().a(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      return this.n().a(b, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
+   protected void a(dpy $$0, czu $$1, im $$2, dcv $$3, im $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.C($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if ($$0.c(b) && !$$1.C($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
+      }
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
       $$0.a(b);
-   }
-
-   @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dmo a(id $$0, dpi $$1) {
-      return new dnu($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
-      return $$0.B ? null : a($$2, dmq.K, dnu::a);
-   }
-
-   @Override
-   protected dim b_(dpi $$0) {
-      return dim.c;
-   }
-
-   @Override
-   protected void a(dpi $$0, apu $$1, id $$2, crs $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
-      }
    }
 }

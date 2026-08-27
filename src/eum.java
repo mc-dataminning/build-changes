@@ -1,376 +1,136 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.nio.IntBuffer;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.OptionalLong;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import javax.annotation.Nullable;
-import org.lwjgl.openal.AL;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.openal.ALC10;
-import org.lwjgl.openal.ALC11;
-import org.lwjgl.openal.ALCCapabilities;
-import org.lwjgl.openal.ALCapabilities;
-import org.lwjgl.openal.ALUtil;
-import org.lwjgl.openal.SOFTHRTF;
-import org.lwjgl.system.MemoryStack;
-import org.slf4j.Logger;
 
 public class eum {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 0;
-   private static final int c = 30;
-   private long d;
-   private long e;
-   private boolean f;
-   @Nullable
-   private String g;
-   private static final eum.a h = new eum.a() {
-      @Nullable
-      @Override
-      public eul a() {
-         return null;
-      }
-
-      @Override
-      public boolean a(eul $$0) {
-         return false;
-      }
-
-      @Override
-      public void b() {
-      }
-
-      @Override
-      public int c() {
-         return 0;
-      }
-
-      @Override
-      public int d() {
-         return 0;
-      }
+   private static final Map<String, eum> a = Maps.newHashMap();
+   private static final Map<String, eum> o = Maps.newHashMap();
+   public static final eum b = b("dummy");
+   public static final eum c = b("trigger");
+   public static final eum d = b("deathCount");
+   public static final eum e = b("playerKillCount");
+   public static final eum f = b("totalKillCount");
+   public static final eum g = a("health", true, eum.a.b);
+   public static final eum h = a("food", true, eum.a.a);
+   public static final eum i = a("air", true, eum.a.a);
+   public static final eum j = a("armor", true, eum.a.a);
+   public static final eum k = a("xp", true, eum.a.a);
+   public static final eum l = a("level", true, eum.a.a);
+   public static final eum[] m = new eum[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
    };
-   private eum.a i = h;
-   private eum.a j = h;
-   private final eun k = new eun();
+   public static final eum[] n = new eum[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final eum.a r;
 
-   public eum() {
-      this.g = a();
+   private static eum a(String $$0, boolean $$1, eum.a $$2) {
+      eum $$3 = new eum($$0, $$1, $$2);
+      a.put($$0, $$3);
+      return $$3;
    }
 
-   public void a(@Nullable String $$0, boolean $$1) {
-      this.d = a($$0);
-      this.f = false;
-      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
-      if (euq.a(this.d, "Get capabilities")) {
-         throw new IllegalStateException("Failed to get OpenAL capabilities");
-      } else if (!$$2.OpenALC11) {
-         throw new IllegalStateException("OpenAL 1.1 not supported");
+   private static eum b(String $$0) {
+      return a($$0, false, eum.a.a);
+   }
+
+   protected eum(String $$0) {
+      this($$0, false, eum.a.a);
+   }
+
+   protected eum(String $$0, boolean $$1, eum.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
+   }
+
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(a.keySet());
+   }
+
+   public static Optional<eum> a(String $$0) {
+      eum $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
       } else {
-         this.a($$2.ALC_SOFT_HRTF && $$1);
-         MemoryStack $$3 = MemoryStack.stackPush();
-
-         try {
-            IntBuffer $$4 = $$3.callocInt(3).put(6554).put(1).put(0).flip();
-            this.e = ALC10.alcCreateContext(this.d, $$4);
-         } catch (Throwable var9) {
-            if ($$3 != null) {
-               try {
-                  $$3.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
-
-            throw var9;
-         }
-
-         if ($$3 != null) {
-            $$3.close();
-         }
-
-         if (euq.a(this.d, "Create context")) {
-            throw new IllegalStateException("Unable to create OpenAL context");
-         } else {
-            ALC10.alcMakeContextCurrent(this.e);
-            int $$5 = this.i();
-            int $$6 = axm.a((int)axm.c((float)$$5), 2, 8);
-            int $$7 = axm.a($$5 - $$6, 8, 255);
-            this.i = new eum.b($$7);
-            this.j = new eum.b($$6);
-            ALCapabilities $$8 = AL.createCapabilities($$2);
-            euq.a("Initialization");
-            if (!$$8.AL_EXT_source_distance_model) {
-               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
-            } else {
-               AL10.alEnable(512);
-               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
-                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
-               } else {
-                  euq.a("Enable per-source distance models");
-                  a.info("OpenAL initialized on device {}", this.b());
-                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
-               }
-            }
-         }
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : lc.x.b(akf.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, akf.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   private void a(boolean $$0) {
-      int $$1 = ALC10.alcGetInteger(this.d, 6548);
-      if ($$1 > 0) {
-         MemoryStack $$2 = MemoryStack.stackPush();
-
-         try {
-            IntBuffer $$3 = $$2.callocInt(10).put(6546).put($$0 ? 1 : 0).put(6550).put(0).put(0).flip();
-            if (!SOFTHRTF.alcResetDeviceSOFT(this.d, $$3)) {
-               a.warn("Failed to reset device: {}", ALC10.alcGetString(this.d, ALC10.alcGetError(this.d)));
-            }
-         } catch (Throwable var7) {
-            if ($$2 != null) {
-               try {
-                  $$2.close();
-               } catch (Throwable var6) {
-                  var7.addSuppressed(var6);
-               }
-            }
-
-            throw var7;
-         }
-
-         if ($$2 != null) {
-            $$2.close();
-         }
-      }
+   private static <T> Optional<eum> a(avi<T> $$0, akf $$1) {
+      return $$0.b().b($$1).map($$0::b);
    }
 
-   private int i() {
-      MemoryStack $$0 = MemoryStack.stackPush();
+   public String d() {
+      return this.p;
+   }
 
-      int var7;
-      label58: {
-         try {
-            int $$1 = ALC10.alcGetInteger(this.d, 4098);
-            if (euq.a(this.d, "Get attributes size")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
+   public boolean e() {
+      return this.q;
+   }
 
-            IntBuffer $$2 = $$0.mallocInt($$1);
-            ALC10.alcGetIntegerv(this.d, 4099, $$2);
-            if (euq.a(this.d, "Get attributes")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
+   public eum.a f() {
+      return this.r;
+   }
 
-            int $$3 = 0;
+   public static enum a implements ayq {
+      a("integer"),
+      b("hearts");
 
-            while ($$3 < $$1) {
-               int $$4 = $$2.get($$3++);
-               if ($$4 == 0) {
-                  break;
-               }
+      private final String d;
+      public static final ayq.a<eum.a> c = ayq.a(eum.a::values);
 
-               int $$5 = $$2.get($$3++);
-               if ($$4 == 4112) {
-                  var7 = $$5;
-                  break label58;
-               }
-            }
-         } catch (Throwable var9) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
-
-            throw var9;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return 30;
+      private a(String $$0) {
+         this.d = $$0;
       }
 
-      if ($$0 != null) {
-         $$0.close();
-      }
-
-      return var7;
-   }
-
-   @Nullable
-   public static String a() {
-      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
-         return null;
-      } else {
-         ALUtil.getStringList(0L, 4115);
-         return ALC10.alcGetString(0L, 4114);
-      }
-   }
-
-   public String b() {
-      String $$0 = ALC10.alcGetString(this.d, 4115);
-      if ($$0 == null) {
-         $$0 = ALC10.alcGetString(this.d, 4101);
-      }
-
-      if ($$0 == null) {
-         $$0 = "Unknown";
-      }
-
-      return $$0;
-   }
-
-   public synchronized boolean c() {
-      String $$0 = a();
-      if (Objects.equals(this.g, $$0)) {
-         return false;
-      } else {
-         this.g = $$0;
-         return true;
-      }
-   }
-
-   private static long a(@Nullable String $$0) {
-      OptionalLong $$1 = OptionalLong.empty();
-      if ($$0 != null) {
-         $$1 = b($$0);
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(a());
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(null);
-      }
-
-      if ($$1.isEmpty()) {
-         throw new IllegalStateException("Failed to open OpenAL device");
-      } else {
-         return $$1.getAsLong();
-      }
-   }
-
-   private static OptionalLong b(@Nullable String $$0) {
-      long $$1 = ALC10.alcOpenDevice($$0);
-      return $$1 != 0L && !euq.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
-   }
-
-   public void d() {
-      this.i.b();
-      this.j.b();
-      ALC10.alcDestroyContext(this.e);
-      if (this.d != 0L) {
-         ALC10.alcCloseDevice(this.d);
-      }
-   }
-
-   public eun e() {
-      return this.k;
-   }
-
-   @Nullable
-   public eul a(eum.c $$0) {
-      return ($$0 == eum.c.b ? this.j : this.i).a();
-   }
-
-   public void a(eul $$0) {
-      if (!this.i.a($$0) && !this.j.a($$0)) {
-         throw new IllegalStateException("Tried to release unknown channel");
-      }
-   }
-
-   public String f() {
-      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
-   }
-
-   public List<String> g() {
-      List<String> $$0 = ALUtil.getStringList(0L, 4115);
-      return $$0 == null ? Collections.emptyList() : $$0;
-   }
-
-   public boolean h() {
-      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
-   }
-
-   interface a {
-      @Nullable
-      eul a();
-
-      boolean a(eul var1);
-
-      void b();
-
-      int c();
-
-      int d();
-   }
-
-   static class b implements eum.a {
-      private final int a;
-      private final Set<eul> b = Sets.newIdentityHashSet();
-
-      public b(int $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public eul a() {
-         if (this.b.size() >= this.a) {
-            if (aa.aW) {
-               eum.a.warn("Maximum sound pool size {} reached", this.a);
-            }
-
-            return null;
-         } else {
-            eul $$0 = eul.a();
-            if ($$0 != null) {
-               this.b.add($$0);
-            }
-
-            return $$0;
-         }
+      public String a() {
+         return this.d;
       }
 
       @Override
-      public boolean a(eul $$0) {
-         if (!this.b.remove($$0)) {
-            return false;
-         } else {
-            $$0.b();
-            return true;
-         }
+      public String c() {
+         return this.d;
       }
 
-      @Override
-      public void b() {
-         this.b.forEach(eul::b);
-         this.b.clear();
+      public static eum.a a(String $$0) {
+         return c.a($$0, a);
       }
-
-      @Override
-      public int c() {
-         return this.a;
-      }
-
-      @Override
-      public int d() {
-         return this.b.size();
-      }
-   }
-
-   public static enum c {
-      a,
-      b;
    }
 }

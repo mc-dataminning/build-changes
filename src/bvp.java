@@ -1,33 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bvp {
-   private static final int a = 10;
-   private static final int b = 7;
+   public static bsx<cjy> a(cah<List<iu>> $$0, float $$1, int $$2, int $$3, cah<iu> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return bwj.a(
+         (Function<bwj.b<cjy>, ? extends App<bwj.c<cjy>, bwm<cjy>>>)($$6 -> $$6.group($$6.a(cah.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<iu> $$11 = $$6.b($$6x);
+                     iu $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        iu $$13 = $$11.get($$8.E_().a($$11.size()));
+                        if ($$13 != null && $$8.ae() == $$13.a() && $$12.b().a($$9.dl(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new cak($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
+                           }
 
-   public static btw<brb> a(float $$0) {
-      return a($$0, 10, 7);
-   }
-
-   public static btw<brb> a(float $$0, int $$1, int $$2) {
-      return bvy.a((Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$3 -> $$3.group($$3.c(bzw.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               id $$7 = $$5.dm();
-               esj $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cbq.a($$5, $$1, $$2);
-               } else {
-                  jg $$9 = jg.a($$7);
-                  jg $$10 = bsn.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = cbn.a($$5, $$1, $$2, esj.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cbq.a($$5, $$1, $$2);
-                  }
-               }
-
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bzz($$1xxxx, $$0, 0)));
-               return true;
-            })));
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

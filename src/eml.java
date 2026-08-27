@@ -1,54 +1,122 @@
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class eml {
-   private final id a;
-   private final int b;
-   private final int c;
+public class eml extends eme {
+   private final boolean k;
+   private final Long2ObjectMap<emi> l = new Long2ObjectOpenHashMap();
 
-   public eml(id $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public eml(boolean $$0) {
+      this.k = $$0;
+   }
+
+   @Override
+   public void a(dah $$0, brg $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      this.l.clear();
+   }
+
+   @Override
+   public emd a() {
+      return this.c(axw.a(this.b.cI().a), axw.a(this.b.cI().b + 0.5), axw.a(this.b.cI().c));
+   }
+
+   @Override
+   public emm a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(emd[] $$0, emd $$1) {
+      int $$2 = 0;
+      Map<ir, emd> $$3 = Maps.newEnumMap(ir.class);
+
+      for (ir $$4 : ir.values()) {
+         emd $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
+         $$3.put($$4, $$5);
+         if (this.a($$5)) {
+            $$0[$$2++] = $$5;
+         }
+      }
+
+      for (ir $$6 : ir.c.a) {
+         ir $$7 = $$6.h();
+         if (b($$3.get($$6)) && b($$3.get($$7))) {
+            emd $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
+            if (this.a($$8)) {
+               $$0[$$2++] = $$8;
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   protected boolean a(@Nullable emd $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   private static boolean b(@Nullable emd $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
    }
 
    @Nullable
-   public static eml a(to $$0) {
-      Optional<id> $$1 = ud.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new eml($$1.get(), $$2, $$3);
+   protected emd a(int $$0, int $$1, int $$2) {
+      emd $$3 = null;
+      emi $$4 = this.b($$0, $$1, $$2);
+      if (this.k && $$4 == emi.u || $$4 == emi.j) {
+         float $$5 = this.b.a($$4);
+         if ($$5 >= 0.0F) {
+            $$3 = this.c($$0, $$1, $$2);
+            $$3.l = $$4;
+            $$3.k = Math.max($$3.k, $$5);
+            if (this.a.a().b_(new im($$0, $$1, $$2)).c()) {
+               $$3.k += 8.0F;
+            }
+         }
       }
+
+      return $$3;
    }
 
-   public to a() {
-      to $$0 = new to();
-      $$0.a("pos", ud.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
+   protected emi b(int $$0, int $$1, int $$2) {
+      return (emi)this.l.computeIfAbsent(im.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
    }
 
-   public id b() {
-      return this.a;
+   @Override
+   public emi a(emk $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, this.b);
    }
 
-   public int c() {
-      return this.b;
-   }
+   @Override
+   public emi a(emk $$0, int $$1, int $$2, int $$3, brg $$4) {
+      im.a $$5 = new im.a();
 
-   public int d() {
-      return this.c;
-   }
+      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
+         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
+            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
+               dpy $$9 = $$0.a($$5.d($$6, $$7, $$8));
+               elr $$10 = $$9.u();
+               if ($$10.c() && $$9.a(emg.b) && $$9.i()) {
+                  return emi.u;
+               }
 
-   public String e() {
-      return a(this.a);
-   }
+               if (!$$10.a(avt.a)) {
+                  return emi.a;
+               }
+            }
+         }
+      }
 
-   public static String a(id $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+      dpy $$11 = $$0.a($$5);
+      return $$11.a(emg.b) ? emi.j : emi.a;
    }
 }

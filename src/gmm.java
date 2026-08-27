@@ -1,17 +1,15 @@
-import java.io.IOException;
+import java.util.Collection;
+import java.util.Locale;
 
-public class gmm extends atj<int[]> {
-   private static final ajv a = new ajv("textures/colormap/grass.png");
+public class gmm extends RuntimeException {
+   private final Collection<gml.a> a;
 
-   protected int[] a(ate $$0, bkt $$1) {
-      try {
-         return gmo.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
-      }
+   public gmm(gml.a $$0, Collection<gml.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   protected void a(int[] $$0, ate $$1, bkt $$2) {
-      cze.a($$0);
+   public Collection<gml.a> a() {
+      return this.a;
    }
 }

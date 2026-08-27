@@ -2,44 +2,40 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Collection;
-import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class fk implements ArgumentType<UUID> {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("argument.uuid.invalid"));
-   private static final Collection<String> b = Arrays.asList("dd12be42-52a9-4a91-a8a1-11c01849e498");
-   private static final Pattern c = Pattern.compile("^([-A-Fa-f0-9]+)");
-
-   public static UUID a(CommandContext<dv> $$0, String $$1) {
-      return (UUID)$$0.getArgument($$1, UUID.class);
-   }
+public class fk implements ArgumentType<cpe> {
+   private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ws.b("slot.unknown", $$0));
 
    public static fk a() {
       return new fk();
    }
 
-   public UUID a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.getRemaining();
-      Matcher $$2 = c.matcher($$1);
-      if ($$2.find()) {
-         String $$3 = $$2.group(1);
+   public static cpe a(CommandContext<ec> $$0, String $$1) {
+      return (cpe)$$0.getArgument($$1, cpe.class);
+   }
 
-         try {
-            UUID $$4 = UUID.fromString($$3);
-            $$0.setCursor($$0.getCursor() + $$3.length());
-            return $$4;
-         } catch (IllegalArgumentException var6) {
-         }
+   public cpe a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = eg.a($$0, $$0x -> $$0x != ' ');
+      cpe $$2 = cpf.a($$1);
+      if ($$2 == null) {
+         throw b.createWithContext($$0, $$1);
+      } else {
+         return $$2;
       }
+   }
 
-      throw a.createWithContext($$0);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return eh.b(cpf.a(), $$1);
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 }

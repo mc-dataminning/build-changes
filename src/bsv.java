@@ -1,41 +1,15 @@
-public class bsv implements bsm<bqt> {
-   private final int a;
-   private final int b;
-   private bsl.a c = bsl.a.a;
-   private long d;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public bsv(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public bsl.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(apu $$0, bqt $$1, long $$2) {
-      this.c = bsl.a.b;
-      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
-   }
-
-   @Override
-   public final void f(apu $$0, bqt $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(apu $$0, bqt $$1, long $$2) {
-      this.c = bsl.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+public class bsv {
+   public static bsx<bre> a(cah<?> $$0, int $$1) {
+      return bwj.a(
+         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$2 -> $$2.group($$2.a(cah.o), $$2.c(cah.ax), $$2.b($$0))
+               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
+                     $$2x.a(true, (long)$$1);
+                     $$1xx.b();
+                     return true;
+                  })))
+      );
    }
 }

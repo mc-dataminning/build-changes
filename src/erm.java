@@ -1,31 +1,23 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record erm(String b) implements ero {
-   public static final Codec<erm> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(erm::c)).apply($$0, erm::new));
-
-   public static ero a(String $$0) {
-      return new erm($$0);
-   }
+public record erm(float b) implements erh {
+   public static final Codec<erm> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(erm::c)).apply($$0, erm::new));
 
    @Override
-   public ern a() {
-      return erp.b;
+   public eri b() {
+      return erj.e;
    }
 
-   @Override
-   public etm a(enk $$0) {
-      return etm.c(this.b);
+   public boolean a(eoa $$0) {
+      return $$0.b().i() < this.b;
    }
 
-   @Override
-   public Set<epu<?>> b() {
-      return ImmutableSet.of();
+   public static erh.a a(float $$0) {
+      return () -> new erm($$0);
    }
 
-   public String c() {
+   public float c() {
       return this.b;
    }
 }

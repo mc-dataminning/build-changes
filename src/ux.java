@@ -1,42 +1,92 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.io.DataInput;
+import java.io.IOException;
 
-public class ux extends ut {
-   private final Deque<uv> a = new ArrayDeque<>();
+public interface ux<T extends uv> {
+   T c(DataInput var1, uh var2) throws IOException;
 
-   public ux(uu... $$0) {
-      uv $$1 = uv.a();
+   us.b a(DataInput var1, us var2, uh var3) throws IOException;
 
-      for (uu $$2 : $$0) {
-         $$1.a($$2);
+   default void b(DataInput $$0, us $$1, uh $$2) throws IOException {
+      switch ($$1.b(this)) {
+         case a:
+            this.a($$0, $$1, $$2);
+         case c:
+         default:
+            break;
+         case b:
+            this.b($$0, $$2);
       }
-
-      this.a.push($$1);
    }
 
-   @Override
-   public ui.a a(un<?> $$0, String $$1) {
-      uv $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return ui.a.b;
-      } else {
-         if ($$0 == to.b) {
-            uv $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
+   void a(DataInput var1, int var2, uh var3) throws IOException;
+
+   void b(DataInput var1, uh var2) throws IOException;
+
+   default boolean d() {
+      return false;
+   }
+
+   String a();
+
+   String b();
+
+   static ux<ua> a(final int $$0) {
+      return new ux<ua>() {
+         private IOException c() {
+            return new IOException("Invalid tag id: " + $$0);
          }
 
-         return super.a($$0, $$1);
-      }
+         public ua a(DataInput $$0x, uh $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public us.b a(DataInput $$0x, us $$1, uh $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void a(DataInput $$0x, int $$1, uh $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void b(DataInput $$0x, uh $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public String a() {
+            return "INVALID[" + $$0 + "]";
+         }
+
+         @Override
+         public String b() {
+            return "UNKNOWN_" + $$0;
+         }
+      };
    }
 
-   @Override
-   public ui.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
+   public interface a<T extends uv> extends ux<T> {
+      @Override
+      default void b(DataInput $$0, uh $$1) throws IOException {
+         $$0.skipBytes(this.c());
       }
 
-      return super.b();
+      @Override
+      default void a(DataInput $$0, int $$1, uh $$2) throws IOException {
+         $$0.skipBytes(this.c() * $$1);
+      }
+
+      int c();
+   }
+
+   public interface b<T extends uv> extends ux<T> {
+      @Override
+      default void a(DataInput $$0, int $$1, uh $$2) throws IOException {
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            this.b($$0, $$2);
+         }
+      }
    }
 }

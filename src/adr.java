@@ -1,19 +1,83 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record adr(wi b, Optional<byte[]> c) implements yp<aba> {
-   public static final yg<ByteBuf, adr> a = yg.a(wk.f, adr::b, ye.j.a(ye::a), adr::e, adr::new);
+public class adr implements yz<abk> {
+   public static final yq<vs, adr> a = yz.a(adr::a, adr::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final int e;
+   private final eo.a f;
+   private final eo.a g;
+   private final boolean h;
 
-   @Override
-   public yr<adr> a() {
-      return afl.ap;
+   public adr(eo.a $$0, double $$1, double $$2, double $$3) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = 0;
+      this.h = false;
+      this.g = null;
    }
 
-   public void a(aba $$0) {
+   public adr(eo.a $$0, bql $$1, eo.a $$2) {
+      this.f = $$0;
+      this.e = $$1.aj();
+      this.g = $$2;
+      etf $$3 = $$2.a($$1);
+      this.b = $$3.c;
+      this.c = $$3.d;
+      this.d = $$3.e;
+      this.h = true;
+   }
+
+   private adr(vs $$0) {
+      this.f = $$0.b(eo.a.class);
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.h = $$0.readBoolean();
+      if (this.h) {
+         this.e = $$0.l();
+         this.g = $$0.b(eo.a.class);
+      } else {
+         this.e = 0;
+         this.g = null;
+      }
+   }
+
+   private void a(vs $$0) {
+      $$0.a(this.f);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.h);
+      if (this.h) {
+         $$0.c(this.e);
+         $$0.a(this.g);
+      }
+   }
+
+   @Override
+   public zb<adr> a() {
+      return afv.ag;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
-      return this.c;
+   public eo.a b() {
+      return this.f;
+   }
+
+   @Nullable
+   public etf a(czu $$0) {
+      if (this.h) {
+         bql $$1 = $$0.a(this.e);
+         return $$1 == null ? new etf(this.b, this.c, this.d) : this.g.a($$1);
+      } else {
+         return new etf(this.b, this.c, this.d);
+      }
    }
 }

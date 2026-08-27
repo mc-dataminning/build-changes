@@ -1,9 +1,15 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
 public class bfv extends DataFix {
    public bfv(Schema $$0, boolean $$1) {
@@ -11,11 +17,28 @@ public class bfv extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bff.E);
-      return this.fixTypeEverywhereTyped("Structure Reference Fix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bfv::a));
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bfp.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bfp.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere("POI reorganization", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bfv::a));
+      }
    }
 
    private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("references", $$0x -> $$0x.createInt($$0x.asNumber().map(Number::intValue).result().filter($$0xx -> $$0xx > 0).orElse(1)));
+      Map<Dynamic<T>, Dynamic<T>> $$1 = Maps.newHashMap();
+
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         String $$3 = String.valueOf($$2);
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).result();
+         if ($$4.isPresent()) {
+            Dynamic<T> $$5 = $$4.get();
+            Dynamic<T> $$6 = $$0.createMap(ImmutableMap.of($$0.createString("Records"), $$5));
+            $$1.put($$0.createInt($$2), $$6);
+            $$0 = $$0.remove($$3);
+         }
+      }
+
+      return $$0.set("Sections", $$0.createMap($$1));
    }
 }

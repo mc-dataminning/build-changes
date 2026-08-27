@@ -1,45 +1,80 @@
-public class jy implements jz {
-   @Override
-   public final crs dispense(jw $$0, crs $$1) {
-      crs $$2 = this.a($$0, $$1);
-      this.a($$0);
-      this.a($$0, $$0.d().c(dem.b));
-      return $$2;
+import com.mojang.serialization.Codec;
+import java.util.Objects;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+
+public interface jy<T> {
+   Codec<jy<?>> a = axe.a((Supplier<Codec<jy<?>>>)(() -> lc.as.q()));
+   yq<wd, jy<?>> b = yq.a($$0 -> yo.a(ld.av));
+
+   static <T> jy.a<T> a() {
+      return new jy.a<>();
    }
 
-   protected crs a(jw $$0, crs $$1) {
-      ij $$2 = $$0.d().c(dem.b);
-      ix $$3 = dem.a($$0);
-      crs $$4 = $$1.a(1);
-      a($$0.b(), $$4, 6, $$2, $$3);
-      return $$1;
-   }
+   @Nullable
+   Codec<T> b();
 
-   public static void a(czg $$0, crs $$1, int $$2, ij $$3, ix $$4) {
-      double $$5 = $$4.a();
-      double $$6 = $$4.b();
-      double $$7 = $$4.c();
-      if ($$3.o() == ij.a.b) {
-         $$6 -= 0.125;
+   default Codec<T> c() {
+      Codec<T> $$0 = this.b();
+      if ($$0 == null) {
+         throw new IllegalStateException(this + " is not a persistent component");
       } else {
-         $$6 -= 0.15625;
+         return $$0;
+      }
+   }
+
+   default boolean d() {
+      return this.b() == null;
+   }
+
+   yq<? super wd, T> e();
+
+   public static class a<T> {
+      @Nullable
+      private Codec<T> a;
+      @Nullable
+      private yq<? super wd, T> b;
+
+      public jy.a<T> a(Codec<T> $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      cgk $$8 = new cgk($$0, $$5, $$6, $$7, $$1);
-      double $$9 = $$0.z.j() * 0.1 + 0.2;
-      $$8.o(
-         $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
-         $$0.z.a(0.2, 0.0172275 * (double)$$2),
-         $$0.z.a((double)$$3.l() * $$9, 0.0172275 * (double)$$2)
-      );
-      $$0.b($$8);
-   }
+      public jy.a<T> a(yq<? super wd, T> $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-   protected void a(jw $$0) {
-      $$0.b().c(1000, $$0.c(), 0);
-   }
+      public jy<T> a() {
+         yq<? super wd, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> yo.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
+         return new jy.a.a<>(this.a, $$0);
+      }
 
-   protected void a(jw $$0, ij $$1) {
-      $$0.b().c(2000, $$0.c(), $$1.d());
+      static class a<T> implements jy<T> {
+         @Nullable
+         private final Codec<T> c;
+         private final yq<? super wd, T> d;
+
+         a(@Nullable Codec<T> $$0, yq<? super wd, T> $$1) {
+            this.c = $$0;
+            this.d = $$1;
+         }
+
+         @Nullable
+         @Override
+         public Codec<T> b() {
+            return this.c;
+         }
+
+         @Override
+         public yq<? super wd, T> e() {
+            return this.d;
+         }
+
+         @Override
+         public String toString() {
+            return ac.a((ji<jy.a.a<T>>)lc.as, this);
+         }
+      }
    }
 }

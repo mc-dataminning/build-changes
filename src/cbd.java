@@ -1,43 +1,52 @@
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class cbd<U extends cbc<?>> {
-   public static final cbd<cam> a = a("dummy", cam::new);
-   public static final cbd<cau> b = a("nearest_items", cau::new);
-   public static final cbd<cav<bqt>> c = a("nearest_living_entities", cav::new);
-   public static final cbd<caz> d = a("nearest_players", caz::new);
-   public static final cbd<cat> e = a("nearest_bed", cat::new);
-   public static final cbd<caq> f = a("hurt_by", caq::new);
-   public static final cbd<cbg> g = a("villager_hostiles", cbg::new);
-   public static final cbd<cbf> h = a("villager_babies", cbf::new);
-   public static final cbd<cba> i = a("secondary_pois", cba::new);
-   public static final cbd<cao> j = a("golem_detected", cao::new);
-   public static final cbd<cas<cdr>> k = a("armadillo_scare_detected", () -> new cas<>(5, cdr::j, cdr::gy, bzw.G, 80));
-   public static final cbd<cay> l = a("piglin_specific_sensor", cay::new);
-   public static final cbd<cax> m = a("piglin_brute_specific_sensor", cax::new);
-   public static final cbd<cap> n = a("hoglin_specific_sensor", cap::new);
-   public static final cbd<caj> o = a("nearest_adult", caj::new);
-   public static final cbd<cak> p = a("axolotl_attackables", cak::new);
-   public static final cbd<cbe> q = a("axolotl_temptations", () -> new cbe(cdv.a()));
-   public static final cbd<cbe> r = a("goat_temptations", () -> new cbe(cej.a()));
-   public static final cbd<cbe> s = a("frog_temptations", () -> new cbe(ced.a()));
-   public static final cbd<cbe> t = a("camel_temptations", () -> new cbe(cea.b()));
-   public static final cbd<cbe> u = a("armadillo_temptations", () -> new cbe(cds.b()));
-   public static final cbd<can> v = a("frog_attackables", can::new);
-   public static final cbd<car> w = a("is_in_water", car::new);
-   public static final cbd<cbh> x = a("warden_entity_sensor", cbh::new);
-   public static final cbd<cbe> y = a("sniffer_temptations", () -> new cbe(cfa.a()));
-   public static final cbd<cal> z = a("breeze_attack_entity_sensor", cal::new);
-   private final Supplier<U> A;
+public class cbd<T extends bre> extends cbn<T> {
+   private final BiPredicate<T, bre> a;
+   private final Predicate<T> c;
+   private final cah<Boolean> d;
+   private final int e;
 
-   private cbd(Supplier<U> $$0) {
-      this.A = $$0;
+   public cbd(int $$0, BiPredicate<T, bre> $$1, Predicate<T> $$2, cah<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public U a() {
-      return this.A.get();
+   @Override
+   protected void a(aqe $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
-   private static <U extends cbc<?>> cbd<U> a(String $$0, Supplier<U> $$1) {
-      return ja.a(kt.C, new ajv($$0), new cbd<>($$1));
+   @Override
+   public Set<cah<?>> a() {
+      return Set.of(cah.g);
+   }
+
+   public void a(T $$0) {
+      Optional<List<bre>> $$1 = $$0.dQ().c(cah.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.dQ().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dQ().b(this.d);
    }
 }

@@ -1,225 +1,204 @@
-import com.google.common.base.MoreObjects;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Keyable;
+import com.mojang.serialization.Lifecycle;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
 import java.util.function.Function;
-import java.util.stream.IntStream;
-import javax.annotation.concurrent.Immutable;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-@Immutable
-public class ji implements Comparable<ji> {
-   public static final Codec<ji> f = Codec.INT_STREAM
-      .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new ji($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()));
-   public static final ji g = new ji(0, 0, 0);
-   private int a;
-   private int b;
-   private int c;
+public interface ji<T> extends Keyable, ja<T> {
+   ake<? extends ji<T>> c();
 
-   public static Codec<ji> v(int $$0) {
-      return awu.b(
-         f,
-         (Function<ji, DataResult<ji>>)($$1 -> Math.abs($$1.u()) < $$0 && Math.abs($$1.v()) < $$0 && Math.abs($$1.w()) < $$0
-               ? DataResult.success($$1)
-               : DataResult.error(() -> "Position out of range, expected at most " + $$0 + ": " + $$1))
-      );
+   default Codec<T> q() {
+      return this.a().flatComapMap(iv.c::a, $$0 -> this.a(this.e((T)$$0)));
    }
 
-   public ji(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   default Codec<iv<T>> r() {
+      return this.a().flatComapMap($$0 -> $$0, this::a);
    }
+
+   private Codec<iv.c<T>> a() {
+      Codec<iv.c<T>> $$0 = akf.a
+         .comapFlatMap(
+            $$0x -> this.c($$0x)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
+            $$0x -> $$0x.h().a()
+         );
+      return axe.a($$0, (Function<iv.c<T>, Lifecycle>)($$0x -> this.c($$0x.h()).map(jh::b).orElse(Lifecycle.experimental())));
+   }
+
+   private DataResult<iv.c<T>> a(iv<T> $$0) {
+      return $$0 instanceof iv.c<T> $$1 ? DataResult.success($$1) : DataResult.error(() -> "Unregistered holder in " + this.c() + ": " + $$0);
+   }
+
+   default <U> Stream<U> keys(DynamicOps<U> $$0) {
+      return this.e().stream().map($$1 -> (U)$$0.createString($$1.toString()));
+   }
+
+   @Nullable
+   akf b(T var1);
+
+   Optional<ake<T>> d(T var1);
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof ji $$1)) {
-         return false;
-      } else if (this.u() != $$1.u()) {
-         return false;
+   int a(@Nullable T var1);
+
+   @Nullable
+   T a(@Nullable ake<T> var1);
+
+   @Nullable
+   T a(@Nullable akf var1);
+
+   Optional<jh> c(ake<T> var1);
+
+   Lifecycle d();
+
+   default Optional<T> b(@Nullable akf $$0) {
+      return Optional.ofNullable(this.a($$0));
+   }
+
+   default Optional<T> e(@Nullable ake<T> $$0) {
+      return Optional.ofNullable(this.a($$0));
+   }
+
+   default T f(ake<T> $$0) {
+      T $$1 = this.a($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
       } else {
-         return this.v() != $$1.v() ? false : this.w() == $$1.w();
+         return $$1;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return (this.v() + this.w() * 31) * 31 + this.u();
+   Set<akf> e();
+
+   Set<Entry<ake<T>, T>> g();
+
+   Set<ake<T>> f();
+
+   Optional<iv.c<T>> a(ayd var1);
+
+   default Stream<T> s() {
+      return StreamSupport.stream(this.spliterator(), false);
    }
 
-   public int i(ji $$0) {
-      if (this.v() == $$0.v()) {
-         return this.w() == $$0.w() ? this.u() - $$0.u() : this.w() - $$0.w();
-      } else {
-         return this.v() - $$0.v();
-      }
+   boolean d(akf var1);
+
+   boolean d(ake<T> var1);
+
+   static <T> T a(ji<? super T> $$0, String $$1, T $$2) {
+      return a($$0, new akf($$1), $$2);
    }
 
-   public int u() {
-      return this.a;
+   static <V, T extends V> T a(ji<V> $$0, akf $$1, T $$2) {
+      return a($$0, ake.a($$0.c(), $$1), $$2);
    }
 
-   public int v() {
-      return this.b;
+   static <V, T extends V> T a(ji<V> $$0, ake<V> $$1, T $$2) {
+      ((jr)$$0).a($$1, (V)$$2, jh.a);
+      return $$2;
    }
 
-   public int w() {
-      return this.c;
+   static <T> iv.c<T> b(ji<T> $$0, ake<T> $$1, T $$2) {
+      return ((jr)$$0).a($$1, $$2, jh.a);
    }
 
-   protected ji u(int $$0) {
-      this.a = $$0;
-      return this;
+   static <T> iv.c<T> b(ji<T> $$0, akf $$1, T $$2) {
+      return b($$0, ake.a($$0.c(), $$1), $$2);
    }
 
-   protected ji t(int $$0) {
-      this.b = $$0;
-      return this;
+   ji<T> l();
+
+   iv.c<T> f(T var1);
+
+   Optional<iv.c<T>> c(int var1);
+
+   Optional<iv.c<T>> c(akf var1);
+
+   Optional<iv.c<T>> b(ake<T> var1);
+
+   iv<T> e(T var1);
+
+   default iv.c<T> g(ake<T> $$0) {
+      return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
    }
 
-   protected ji s(int $$0) {
-      this.c = $$0;
-      return this;
+   Stream<iv.c<T>> h();
+
+   Optional<iz.c<T>> b(awd<T> var1);
+
+   default Iterable<iv<T>> c(awd<T> $$0) {
+      return (Iterable<iv<T>>)DataFixUtils.orElse(this.b($$0), List.of());
    }
 
-   public ji c(int $$0, int $$1, int $$2) {
-      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ji(this.u() + $$0, this.v() + $$1, this.w() + $$2);
+   default Optional<iv<T>> a(awd<T> $$0, ayd $$1) {
+      return this.b($$0).flatMap($$1x -> $$1x.a($$1));
    }
 
-   public ji f(ji $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   iz.c<T> a(awd<T> var1);
+
+   Stream<Pair<awd<T>, iz.c<T>>> i();
+
+   Stream<awd<T>> j();
+
+   void m();
+
+   void a(Map<awd<T>, List<iv<T>>> var1);
+
+   default ja<iv<T>> t() {
+      return new ja<iv<T>>() {
+         public int a(iv<T> $$0) {
+            return ji.this.a($$0.a());
+         }
+
+         @Nullable
+         public iv<T> c(int $$0) {
+            return (iv<T>)ji.this.c($$0).orElse(null);
+         }
+
+         @Override
+         public int b() {
+            return ji.this.b();
+         }
+
+         @Override
+         public Iterator<iv<T>> iterator() {
+            return ji.this.h().map($$0 -> (iv<T>)$$0).iterator();
+         }
+      };
    }
 
-   public ji e(ji $$0) {
-      return this.c(-$$0.u(), -$$0.v(), -$$0.w());
-   }
+   iy<T> o();
 
-   public ji o(int $$0) {
-      if ($$0 == 1) {
-         return this;
-      } else {
-         return $$0 == 0 ? g : new ji(this.u() * $$0, this.v() * $$0, this.w() * $$0);
-      }
-   }
+   ix.b<T> p();
 
-   public ji p() {
-      return this.n(1);
-   }
+   default ix.b<T> u() {
+      return new ix.b.a<T>() {
+         @Override
+         public ix.b<T> a() {
+            return ji.this.p();
+         }
 
-   public ji n(int $$0) {
-      return this.b(ij.b, $$0);
-   }
+         @Override
+         public Optional<iz.c<T>> a(awd<T> $$0) {
+            return Optional.of(this.b($$0));
+         }
 
-   public ji o() {
-      return this.m(1);
-   }
-
-   public ji m(int $$0) {
-      return this.b(ij.a, $$0);
-   }
-
-   public ji n() {
-      return this.l(1);
-   }
-
-   public ji l(int $$0) {
-      return this.b(ij.c, $$0);
-   }
-
-   public ji m() {
-      return this.k(1);
-   }
-
-   public ji k(int $$0) {
-      return this.b(ij.d, $$0);
-   }
-
-   public ji l() {
-      return this.j(1);
-   }
-
-   public ji j(int $$0) {
-      return this.b(ij.e, $$0);
-   }
-
-   public ji k() {
-      return this.i(1);
-   }
-
-   public ji i(int $$0) {
-      return this.b(ij.f, $$0);
-   }
-
-   public ji b(ij $$0) {
-      return this.b($$0, 1);
-   }
-
-   public ji b(ij $$0, int $$1) {
-      return $$1 == 0 ? this : new ji(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
-   }
-
-   public ji b(ij.a $$0, int $$1) {
-      if ($$1 == 0) {
-         return this;
-      } else {
-         int $$2 = $$0 == ij.a.a ? $$1 : 0;
-         int $$3 = $$0 == ij.a.b ? $$1 : 0;
-         int $$4 = $$0 == ij.a.c ? $$1 : 0;
-         return new ji(this.u() + $$2, this.v() + $$3, this.w() + $$4);
-      }
-   }
-
-   public ji d(ji $$0) {
-      return new ji(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
-   }
-
-   public boolean a(ji $$0, double $$1) {
-      return this.j($$0) < axm.k($$1);
-   }
-
-   public boolean a(ix $$0, double $$1) {
-      return this.b($$0) < axm.k($$1);
-   }
-
-   public double j(ji $$0) {
-      return this.d((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-   }
-
-   public double b(ix $$0) {
-      return this.c($$0.a(), $$0.b(), $$0.c());
-   }
-
-   public double c(double $$0, double $$1, double $$2) {
-      double $$3 = (double)this.u() + 0.5 - $$0;
-      double $$4 = (double)this.v() + 0.5 - $$1;
-      double $$5 = (double)this.w() + 0.5 - $$2;
-      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
-   }
-
-   public double d(double $$0, double $$1, double $$2) {
-      double $$3 = (double)this.u() - $$0;
-      double $$4 = (double)this.v() - $$1;
-      double $$5 = (double)this.w() - $$2;
-      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
-   }
-
-   public int k(ji $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.u());
-      float $$2 = (float)Math.abs($$0.v() - this.v());
-      float $$3 = (float)Math.abs($$0.w() - this.w());
-      return (int)($$1 + $$2 + $$3);
-   }
-
-   public int a(ij.a $$0) {
-      return $$0.a(this.a, this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("x", this.u()).add("y", this.v()).add("z", this.w()).toString();
-   }
-
-   public String x() {
-      return this.u() + ", " + this.v() + ", " + this.w();
+         @Override
+         public iz.c<T> b(awd<T> $$0) {
+            return ji.this.a($$0);
+         }
+      };
    }
 }

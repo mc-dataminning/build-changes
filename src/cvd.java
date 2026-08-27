@@ -1,90 +1,44 @@
-public class cvd extends cvk {
-   public cvd(cvi $$0) {
-      super($$0);
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+
+public record cvd(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<cvd> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axe.a(axe.u, "name").forGetter(cvd::c), axe.a(jp.a, "id").forGetter(cvd::d), axe.a(axe.t, "properties", new PropertyMap()).forGetter(cvd::e)
+            )
+            .apply($$0, cvd::new)
+   );
+   public static final Codec<cvd> a = axe.a(g, axe.u, $$0 -> new cvd(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final yq<ByteBuf, cvd> b = yq.a(yo.b(16).a(yo::a), cvd::c, jp.g.a(yo::a), cvd::d, yo.s, cvd::e, cvd::new);
+
+   public cvd(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   public boolean a(cnm $$0, czg $$1) {
-      cql $$2 = null;
-      crs $$3 = null;
-      crs $$4 = null;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         crs $$6 = $$0.a($$5);
-         if (!$$6.d()) {
-            crn $$7 = $$6.f();
-            if (!($$7 instanceof cpn)) {
-               return false;
-            }
-
-            cpn $$8 = (cpn)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = $$6.a(jr.N, dmf.a).b().size();
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
-                  return false;
-               }
-
-               $$3 = $$6;
-            } else {
-               if ($$4 != null) {
-                  return false;
-               }
-
-               $$4 = $$6;
-            }
-         }
-      }
-
-      return $$3 != null && $$4 != null;
+   public cvd(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
    }
 
-   public crs a(cnm $$0, jb $$1) {
-      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-         crs $$3 = $$0.a($$2);
-         if (!$$3.d()) {
-            int $$4 = $$3.a(jr.N, dmf.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return crs.i;
+   public CompletableFuture<cvd> a() {
+      return this.b() ? CompletableFuture.completedFuture(this) : dop.a(this.c.orElseThrow()).thenApply($$0 -> {
+         GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ac.e, this.c.get()));
+         return new cvd($$1);
+      });
    }
 
-   public iw<crs> a(cnm $$0) {
-      iw<crs> $$1 = iw.a($$0.b(), crs.i);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         crs $$3 = $$0.a($$2);
-         if (!$$3.d()) {
-            if ($$3.f().w()) {
-               $$1.set($$2, new crs($$3.f().v()));
-            } else if (!$$3.a(jr.N, dmf.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(ac.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
    }
 
-   @Override
-   public cvw<?> ao_() {
-      return cvw.k;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public boolean b() {
+      return this.d.isPresent() || !this.e.isEmpty() || this.c.isEmpty();
    }
 }

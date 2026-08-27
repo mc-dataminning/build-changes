@@ -1,65 +1,93 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
 public class ayr {
-   private static final String a = a("");
+   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
+   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
+   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
-      String $$2 = a($$1);
-      return new Dynamic($$0, $$0.createString($$2));
+   public static String a(int $$0, float $$1) {
+      int $$2 = axw.d((float)$$0 / $$1);
+      int $$3 = $$2 / 60;
+      $$2 %= 60;
+      int $$4 = $$3 / 60;
+      $$3 %= 60;
+      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
    }
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      return new Dynamic($$0, $$0.createString(a));
+   public static String a(String $$0) {
+      return a.matcher($$0).replaceAll("");
    }
 
-   private static String a(String $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("text", $$0);
-      return axc.e($$1);
+   public static boolean b(@Nullable String $$0) {
+      return StringUtils.isEmpty($$0);
    }
 
-   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("translate", $$1);
-      return new Dynamic($$0, $$0.createString(axc.e($$2)));
-   }
-
-   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
-   }
-
-   public static Dynamic<?> b(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.asString().result();
-      if ($$1.isEmpty()) {
+   public static String a(String $$0, int $$1, boolean $$2) {
+      if ($$0.length() <= $$1) {
          return $$0;
       } else {
-         String $$2 = $$1.get();
-         if (!$$2.isEmpty() && !$$2.equals("null")) {
-            char $$3 = $$2.charAt(0);
-            char $$4 = $$2.charAt($$2.length() - 1);
-            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
-               try {
-                  JsonElement $$5 = JsonParser.parseString($$2);
-                  if ($$5.isJsonPrimitive()) {
-                     return a($$0.getOps(), $$5.getAsString());
-                  }
+         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
+      }
+   }
 
-                  return $$0.createString(axc.e($$5));
-               } catch (JsonParseException var6) {
-               }
-            }
+   public static int c(String $$0) {
+      if ($$0.isEmpty()) {
+         return 0;
+      } else {
+         Matcher $$1 = b.matcher($$0);
+         int $$2 = 1;
 
-            return a($$0.getOps(), $$2);
-         } else {
-            return a($$0.getOps());
+         while ($$1.find()) {
+            $$2++;
+         }
+
+         return $$2;
+      }
+   }
+
+   public static boolean d(String $$0) {
+      return c.matcher($$0).find();
+   }
+
+   public static String e(String $$0) {
+      return a($$0, 256, false);
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
+   }
+
+   public static boolean f(String $$0) {
+      return $$0.length() > 16 ? false : $$0.chars().filter($$0x -> $$0x <= 32 || $$0x >= 127).findAny().isEmpty();
+   }
+
+   public static String g(String $$0) {
+      return a($$0, false);
+   }
+
+   public static String a(String $$0, boolean $$1) {
+      StringBuilder $$2 = new StringBuilder();
+
+      for (char $$3 : $$0.toCharArray()) {
+         if (a($$3)) {
+            $$2.append($$3);
+         } else if ($$1 && $$3 == '\n') {
+            $$2.append($$3);
          }
       }
+
+      return $$2.toString();
+   }
+
+   public static boolean a(int $$0) {
+      return Character.isWhitespace($$0) || Character.isSpaceChar($$0);
+   }
+
+   public static boolean h(@Nullable String $$0) {
+      return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(ayr::a) : true;
    }
 }

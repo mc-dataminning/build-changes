@@ -1,153 +1,146 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public final class aus {
-   private static final Map<cok, Pair<String, String>> a = ImmutableMap.of(
-      cok.a,
-      Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cok.b,
-      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cok.c,
-      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cok.d,
-      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
-   );
-   private final Map<cok, aus.a> b;
+public class aus extends auq {
+   private static final Logger d = LogUtils.getLogger();
+   private static final int e = 3;
+   private static final int f = 2;
+   private static final int g = 0;
+   private static final int h = 2;
+   private static final int i = -1;
+   private boolean j;
+   private final Socket k;
+   private final byte[] l = new byte[1460];
+   private final String m;
+   private final akv n;
 
-   private aus(Map<cok, aus.a> $$0) {
-      this.b = $$0;
-   }
+   aus(akv $$0, String $$1, Socket $$2) {
+      super("RCON Client " + $$2.getInetAddress());
+      this.n = $$0;
+      this.k = $$2;
 
-   public aus() {
-      this(ac.a(Maps.newEnumMap(cok.class), $$0 -> {
-         for (cok $$1 : cok.values()) {
-            $$0.put($$1, new aus.a(false, false));
-         }
-      }));
-   }
-
-   public boolean a(cok $$0) {
-      return this.b.get($$0).a;
-   }
-
-   public void a(cok $$0, boolean $$1) {
-      this.b.get($$0).a = $$1;
-   }
-
-   public boolean b(cok $$0) {
-      return this.b.get($$0).b;
-   }
-
-   public void b(cok $$0, boolean $$1) {
-      this.b.get($$0).b = $$1;
-   }
-
-   public static aus a(vi $$0) {
-      Map<cok, aus.a> $$1 = Maps.newEnumMap(cok.class);
-
-      for (cok $$2 : cok.values()) {
-         boolean $$3 = $$0.readBoolean();
-         boolean $$4 = $$0.readBoolean();
-         $$1.put($$2, new aus.a($$3, $$4));
+      try {
+         this.k.setSoTimeout(0);
+      } catch (Exception var5) {
+         this.a = false;
       }
 
-      return new aus($$1);
-   }
-
-   public void b(vi $$0) {
-      for (cok $$1 : cok.values()) {
-         aus.a $$2 = this.b.get($$1);
-         if ($$2 == null) {
-            $$0.a(false);
-            $$0.a(false);
-         } else {
-            $$0.a($$2.a);
-            $$0.a($$2.b);
-         }
-      }
-   }
-
-   public static aus a(to $$0) {
-      Map<cok, aus.a> $$1 = Maps.newEnumMap(cok.class);
-      a.forEach(($$2, $$3) -> {
-         boolean $$4 = $$0.q((String)$$3.getFirst());
-         boolean $$5 = $$0.q((String)$$3.getSecond());
-         $$1.put($$2, new aus.a($$4, $$5));
-      });
-      return new aus($$1);
-   }
-
-   public void b(to $$0) {
-      a.forEach(($$1, $$2) -> {
-         aus.a $$3 = this.b.get($$1);
-         $$0.a((String)$$2.getFirst(), $$3.a);
-         $$0.a((String)$$2.getSecond(), $$3.b);
-      });
-   }
-
-   public aus a() {
-      Map<cok, aus.a> $$0 = Maps.newEnumMap(cok.class);
-
-      for (cok $$1 : cok.values()) {
-         aus.a $$2 = this.b.get($$1);
-         $$0.put($$1, $$2.a());
-      }
-
-      return new aus($$0);
-   }
-
-   public void a(aus $$0) {
-      this.b.clear();
-
-      for (cok $$1 : cok.values()) {
-         aus.a $$2 = $$0.b.get($$1);
-         this.b.put($$1, $$2.a());
-      }
+      this.m = $$1;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof aus && this.b.equals(((aus)$$0).b);
+   public void run() {
+      try {
+         try {
+            while (this.a) {
+               BufferedInputStream $$0 = new BufferedInputStream(this.k.getInputStream());
+               int $$1 = $$0.read(this.l, 0, 1460);
+               if (10 > $$1) {
+                  return;
+               }
+
+               int $$2 = 0;
+               int $$3 = aun.b(this.l, 0, $$1);
+               if ($$3 != $$1 - 4) {
+                  return;
+               }
+
+               $$2 += 4;
+               int $$4 = aun.b(this.l, $$2, $$1);
+               $$2 += 4;
+               int $$5 = aun.a(this.l, $$2);
+               $$2 += 4;
+               switch ($$5) {
+                  case 2:
+                     if (this.j) {
+                        String $$7 = aun.a(this.l, $$2, $$1);
+
+                        try {
+                           this.a($$4, this.n.a($$7));
+                        } catch (Exception var15) {
+                           this.a($$4, "Error executing: " + $$7 + " (" + var15.getMessage() + ")");
+                        }
+                        break;
+                     }
+
+                     this.d();
+                     break;
+                  case 3:
+                     String $$6 = aun.a(this.l, $$2, $$1);
+                     $$2 += $$6.length();
+                     if (!$$6.isEmpty() && $$6.equals(this.m)) {
+                        this.j = true;
+                        this.a($$4, 2, "");
+                        break;
+                     }
+
+                     this.j = false;
+                     this.d();
+                     break;
+                  default:
+                     this.a($$4, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString($$5)));
+               }
+            }
+
+            return;
+         } catch (IOException var16) {
+         } catch (Exception var17) {
+            d.error("Exception whilst parsing RCON input", var17);
+         }
+      } finally {
+         this.e();
+         d.info("Thread {} shutting down", this.b);
+         this.a = false;
+      }
+   }
+
+   private void a(int $$0, int $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream(1248);
+      DataOutputStream $$4 = new DataOutputStream($$3);
+      byte[] $$5 = $$2.getBytes(StandardCharsets.UTF_8);
+      $$4.writeInt(Integer.reverseBytes($$5.length + 10));
+      $$4.writeInt(Integer.reverseBytes($$0));
+      $$4.writeInt(Integer.reverseBytes($$1));
+      $$4.write($$5);
+      $$4.write(0);
+      $$4.write(0);
+      this.k.getOutputStream().write($$3.toByteArray());
+   }
+
+   private void d() throws IOException {
+      this.a(-1, 2, "");
+   }
+
+   private void a(int $$0, String $$1) throws IOException {
+      int $$2 = $$1.length();
+
+      do {
+         int $$3 = 4096 <= $$2 ? 4096 : $$2;
+         this.a($$0, 0, $$1.substring(0, $$3));
+         $$1 = $$1.substring($$3);
+         $$2 = $$1.length();
+      } while (0 != $$2);
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public void b() {
+      this.a = false;
+      this.e();
+      super.b();
    }
 
-   static final class a {
-      boolean a;
-      boolean b;
-
-      public a(boolean $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public aus.a a() {
-         return new aus.a(this.a, this.b);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return !($$0 instanceof aus.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = this.a ? 1 : 0;
-         return 31 * $$0 + (this.b ? 1 : 0);
-      }
-
-      @Override
-      public String toString() {
-         return "[open=" + this.a + ", filtering=" + this.b + "]";
+   private void e() {
+      try {
+         this.k.close();
+      } catch (IOException var2) {
+         d.warn("Failed to close socket", var2);
       }
    }
 }

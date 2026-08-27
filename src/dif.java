@@ -1,165 +1,64 @@
 import com.mojang.serialization.MapCodec;
 
-public class dif extends dbw {
-   public static final MapCodec<dif> d = b(dif::new);
-   public static final dqg<dqm> e = dpy.ag;
+public class dif extends dcv implements dcy {
+   public static final MapCodec<dif> a = b(dif::new);
 
    @Override
    public MapCodec<dif> a() {
-      return d;
+      return a;
    }
 
-   protected dif(dph.d $$0) {
-      super(false, $$0);
-      this.k(this.E.b().a(e, dqm.a).a(c, Boolean.valueOf(false)));
+   protected dif(dpx.d $$0) {
+      super($$0);
+   }
+
+   private static boolean b(dpy $$0, czx $$1, im $$2) {
+      im $$3 = $$2.c();
+      dpy $$4 = $$1.a_($$3);
+      int $$5 = eli.a($$1, $$0, $$2, $$4, $$3, ir.b, $$4.b($$1, $$3));
+      return $$5 < $$1.P();
    }
 
    @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dch $$3) {
-      if ($$3.n().m() && new dig($$1, $$2, $$0).b() == 3) {
-         this.a($$1, $$2, $$0, false);
+   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dcx.dV.n());
       }
    }
 
    @Override
-   public dql<dqm> c() {
-      return e;
+   public boolean b(czx $$0, im $$1, dpy $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      dqm $$2 = $$0.c(e);
-
-      return $$0.a(e, switch ($$1) {
-         case c -> {
-            switch ($$2) {
-               case a:
-                  yield dqm.a;
-               case b:
-                  yield dqm.b;
-               case c:
-                  yield dqm.d;
-               case d:
-                  yield dqm.c;
-               case e:
-                  yield dqm.f;
-               case f:
-                  yield dqm.e;
-               case g:
-                  yield dqm.i;
-               case h:
-                  yield dqm.j;
-               case i:
-                  yield dqm.g;
-               case j:
-                  yield dqm.h;
-               default:
-                  throw new IncompatibleClassChangeError();
-            }
-         }
-         case d -> {
-            switch ($$2) {
-               case a:
-                  yield dqm.b;
-               case b:
-                  yield dqm.a;
-               case c:
-                  yield dqm.e;
-               case d:
-                  yield dqm.f;
-               case e:
-                  yield dqm.d;
-               case f:
-                  yield dqm.c;
-               case g:
-                  yield dqm.j;
-               case h:
-                  yield dqm.g;
-               case i:
-                  yield dqm.h;
-               case j:
-                  yield dqm.i;
-               default:
-                  throw new IncompatibleClassChangeError();
-            }
-         }
-         case b -> {
-            switch ($$2) {
-               case a:
-                  yield dqm.b;
-               case b:
-                  yield dqm.a;
-               case c:
-                  yield dqm.f;
-               case d:
-                  yield dqm.e;
-               case e:
-                  yield dqm.c;
-               case f:
-                  yield dqm.d;
-               case g:
-                  yield dqm.h;
-               case h:
-                  yield dqm.i;
-               case i:
-                  yield dqm.j;
-               case j:
-                  yield dqm.g;
-               default:
-                  throw new IncompatibleClassChangeError();
-            }
-         }
-         default -> $$2;
-      });
+   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
+      return true;
    }
 
    @Override
-   protected dpi a(dpi $$0, dhd $$1) {
-      dqm $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(e, dqm.f);
-               case f:
-                  return $$0.a(e, dqm.e);
-               case g:
-                  return $$0.a(e, dqm.j);
-               case h:
-                  return $$0.a(e, dqm.i);
-               case i:
-                  return $$0.a(e, dqm.h);
-               case j:
-                  return $$0.a(e, dqm.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(e, dqm.d);
-               case d:
-                  return $$0.a(e, dqm.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(e, dqm.h);
-               case h:
-                  return $$0.a(e, dqm.g);
-               case i:
-                  return $$0.a(e, dqm.j);
-               case j:
-                  return $$0.a(e, dqm.i);
-            }
+   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
+      dpy $$4 = $$0.a_($$2);
+      im $$5 = $$2.c();
+      drv $$6 = $$0.l().g();
+      ji<dyh<?, ?>> $$7 = $$0.H_().d(ld.aB);
+      if ($$4.a(dcx.ow)) {
+         this.a($$7, rq.h, $$0, $$6, $$1, $$5);
+      } else if ($$4.a(dcx.on)) {
+         this.a($$7, rq.j, $$0, $$6, $$1, $$5);
+         this.a($$7, rq.l, $$0, $$6, $$1, $$5);
+         if ($$1.a(8) == 0) {
+            this.a($$7, rq.n, $$0, $$6, $$1, $$5);
+         }
       }
+   }
 
-      return super.a($$0, $$1);
+   private void a(ji<dyh<?, ?>> $$0, ake<dyh<?, ?>> $$1, aqe $$2, drv $$3, ayd $$4, im $$5) {
+      $$0.b($$1).ifPresent($$4x -> ((dyh)$$4x.a()).a($$2, $$3, $$4, $$5));
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(e, c);
+   public dcy.a aq_() {
+      return dcy.a.a;
    }
 }

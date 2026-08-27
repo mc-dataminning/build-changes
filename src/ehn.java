@@ -1,31 +1,81 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ehn extends efq {
-   public static final Codec<ehn> d = a(ehn::new);
+public abstract class ehn {
+   public static final Codec<ehn> e = lc.ai.q().dispatch("element_type", ehn::a, eho::codec);
+   private static final iv<eke> a = iv.a(new eke(List.of()));
+   @Nullable
+   private volatile ehp.a b;
 
-   public ehn(efq.c $$0) {
-      super($$0);
+   protected static <E extends ehn> RecordCodecBuilder<E, ehp.a> d() {
+      return ehp.a.c.fieldOf("projection").forGetter(ehn::e);
    }
 
-   @Override
-   public Optional<efq.b> a(efq.a $$0) {
-      dit $$1 = dit.a($$0.f());
-      id $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new efq.b($$2, (Consumer<egi>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   protected ehn(ehp.a $$0) {
+      this.b = $$0;
    }
 
-   private void a(egi $$0, id $$1, dit $$2, efq.a $$3) {
-      List<efu> $$4 = Lists.newArrayList();
-      ehm.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   public abstract jq a(ekh var1, dji var2);
+
+   public abstract List<ekg.c> a(ekh var1, im var2, dji var3, ayd var4);
+
+   public abstract efy a(ekh var1, im var2, dji var3);
+
+   public abstract boolean a(ekh var1, dap var2, dan var3, drv var4, im var5, im var6, dji var7, efy var8, ayd var9, boolean var10);
+
+   public abstract eho<?> a();
+
+   public void a(czv $$0, ekg.c $$1, im $$2, dji $$3, ayd $$4, efy $$5) {
    }
 
-   @Override
-   public efz<?> e() {
-      return efz.c;
+   public ehn a(ehp.a $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public ehp.a e() {
+      ehp.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
+      }
+   }
+
+   public int f() {
+      return 1;
+   }
+
+   public static Function<ehp.a, ehg> g() {
+      return $$0 -> ehg.b;
+   }
+
+   public static Function<ehp.a, ehk> a(String $$0) {
+      return $$1 -> new ehk(Either.left(new akf($$0)), a, $$1);
+   }
+
+   public static Function<ehp.a, ehk> a(String $$0, iv<eke> $$1) {
+      return $$2 -> new ehk(Either.left(new akf($$0)), $$1, $$2);
+   }
+
+   public static Function<ehp.a, ehm> b(String $$0) {
+      return $$1 -> new ehm(Either.left(new akf($$0)), a, $$1);
+   }
+
+   public static Function<ehp.a, ehm> b(String $$0, iv<eke> $$1) {
+      return $$2 -> new ehm(Either.left(new akf($$0)), $$1, $$2);
+   }
+
+   public static Function<ehp.a, ehh> a(iv<efk> $$0) {
+      return $$1 -> new ehh($$0, $$1);
+   }
+
+   public static Function<ehp.a, ehl> b(List<Function<ehp.a, ? extends ehn>> $$0) {
+      return $$1 -> new ehl($$0.stream().map($$1x -> (ehn)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

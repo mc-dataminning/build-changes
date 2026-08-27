@@ -1,14 +1,15 @@
-import com.mojang.serialization.Codec;
+public interface dug<T> {
+   void g(T var1);
 
-public interface dug<T extends duf> {
-   dug<dtx> a = a("block", new dtx.a());
-   dug<dtz> b = a("entity", new dtz.a());
+   void f(T var1);
 
-   Codec<T> a();
+   void e(T var1);
 
-   yg<vt, T> b();
+   void d(T var1);
 
-   static <S extends dug<T>, T extends duf> S a(String $$0, S $$1) {
-      return ja.a(kt.v, $$0, $$1);
-   }
+   void c(T var1);
+
+   void b(T var1);
+
+   void a(T var1);
 }

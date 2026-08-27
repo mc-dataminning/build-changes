@@ -1,30 +1,23 @@
-import com.mojang.serialization.MapCodec;
+public interface dcy {
+   boolean b(czx var1, im var2, dpy var3);
 
-public class dcy extends dch {
-   public static final MapCodec<dcy> a = b(dcy::new);
-   protected static final etc b = dch.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   boolean a(czu var1, ayd var2, im var3, dpy var4);
 
-   @Override
-   public MapCodec<? extends dcy> a() {
-      return a;
+   void a(aqe var1, ayd var2, im var3, dpy var4);
+
+   default im a(im $$0) {
+      return switch (this.aq_()) {
+         case a -> $$0.c();
+         case b -> $$0;
+      };
    }
 
-   public dcy(dph.d $$0) {
-      super($$0);
+   default dcy.a aq_() {
+      return dcy.a.b;
    }
 
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return b;
-   }
-
-   @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      return !$$0.a($$3, $$4) ? dcj.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      return !$$1.u($$2.d());
+   public static enum a {
+      a,
+      b;
    }
 }

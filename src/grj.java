@@ -1,110 +1,94 @@
-public class grj implements grn {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final wi f = wi.a("tutorial.move.title", grm.a("forward"), grm.a("left"), grm.a("back"), grm.a("right"));
-   private static final wi g = wi.a("tutorial.move.description", grm.a("jump"));
-   private static final wi h = wi.c("tutorial.look.title");
-   private static final wi i = wi.c("tutorial.look.description");
-   private final grm j;
-   private fgj k;
-   private fgj l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public grj(grm $$0) {
-      this.j = $$0;
+public class grj implements AutoCloseable {
+   private static final AtomicInteger a = new AtomicInteger(1);
+   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
+      Thread $$1 = new Thread($$0);
+      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
+      return $$1;
+   });
+   private final fcu c;
+   private final UserApiService d;
+   private final grr e;
+   private final Path f;
+   private final CompletableFuture<Optional<grp>> g;
+   private final Supplier<grn> h = Suppliers.memoize(this::c);
+
+   public grj(fcu $$0, UserApiService $$1, fdj $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      grr.a $$3 = grr.a();
+      $$2.f().ifPresent($$1x -> $$3.a(grq.a, $$1x));
+      $$2.e().ifPresent($$1x -> $$3.a(grq.b, $$1x));
+      $$3.a(grq.c, UUID.randomUUID());
+      $$3.a(grq.d, aa.b().b());
+      $$3.a(grq.e, ac.j().a());
+      $$3.a(grq.f, System.getProperty("os.name"));
+      $$3.a(grq.g, fcu.e().a());
+      $$3.b(grq.h, fcu.bf());
+      this.e = $$3.a();
+      this.f = $$0.p.toPath().resolve("logs/telemetry");
+      this.g = grp.a(this.f);
    }
 
-   @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
+   public grs a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
+      return new grs(this.c(), $$0, $$1, $$2);
+   }
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
+   public grn a() {
+      return this.h.get();
+   }
 
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
-         }
-
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(gro.b);
+   private grn c() {
+      if (!this.c.E()) {
+         return grn.a;
+      } else {
+         TelemetrySession $$0 = this.d.newTelemetrySession(b);
+         if (!$$0.isEnabled()) {
+            return grn.a;
          } else {
-            this.j.a(gro.f);
+            CompletableFuture<Optional<grm>> $$1 = this.g
+               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<grm>>>map(grp::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
+            return ($$2, $$3) -> {
+               if (!$$2.d() || fcu.Q().C()) {
+                  grr.a $$4 = grr.a();
+                  $$4.a(this.e);
+                  $$4.a(grq.m, Instant.now());
+                  $$4.a(grq.l, $$2.d());
+                  $$3.accept($$4);
+                  grk $$5 = new grk($$2, $$4.a());
+                  $$1.thenAccept($$2x -> {
+                     if (!$$2x.isEmpty()) {
+                        ((grm)$$2x.get()).log($$5);
+                        $$5.a($$0).send();
+                     }
+                  });
+               }
+            };
          }
       }
+   }
 
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new fgj(fgj.a.a, f, g, true);
-            this.j.e().aA().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fgj(fgj.a.b, h, i, true);
-            this.j.e().aA().a(this.l);
-         }
-      }
+   public Path b() {
+      return this.f;
    }
 
    @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
-      }
-   }
-
-   @Override
-   public void a(fzi $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
-      }
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
-      }
+   public void close() {
+      this.g.thenAccept($$0 -> $$0.ifPresent(grp::close));
    }
 }

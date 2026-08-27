@@ -1,33 +1,18 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public enum fbm implements axo, ayg {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
+public class fbm {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   public static final Codec<fbm> d = ayg.a(fbm::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private fbm(int $$0, String $$1, String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   @Override
-   public String c() {
-      return this.f;
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   @Override
-   public int a() {
-      return this.e;
-   }
-
-   @Override
-   public String b() {
-      return this.g;
+   public static void a(long $$0, String $$1) {
+      a.put($$0, $$1);
    }
 }

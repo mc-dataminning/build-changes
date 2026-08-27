@@ -1,54 +1,28 @@
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringEscapeUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class awm {
-   private static final String a = "\r\n";
-   private static final String b = ",";
-   private final Writer c;
-   private final int d;
+public record awm(int d, int e) {
+   public static final Codec<Integer> a = axe.a(0, 15);
+   public static final Codec<awm> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a.fieldOf("block").forGetter(awm::b), a.fieldOf("sky").forGetter(awm::c)).apply($$0, awm::new)
+   );
+   public static awm c = new awm(15, 15);
 
-   awm(Writer $$0, List<String> $$1) throws IOException {
-      this.c = $$0;
-      this.d = $$1.size();
-      this.a($$1.stream());
+   public int a() {
+      return this.d << 4 | this.e << 20;
    }
 
-   public static awm.a a() {
-      return new awm.a();
+   public static awm a(int $$0) {
+      int $$1 = $$0 >> 4 & 65535;
+      int $$2 = $$0 >> 20 & 65535;
+      return new awm($$1, $$2);
    }
 
-   public void a(Object... $$0) throws IOException {
-      if ($$0.length != this.d) {
-         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
-      } else {
-         this.a(Stream.of($$0));
-      }
+   public int b() {
+      return this.d;
    }
 
-   private void a(Stream<?> $$0) throws IOException {
-      this.c.write($$0.<CharSequence>map(awm::a).collect(Collectors.joining(",")) + "\r\n");
-   }
-
-   private static String a(@Nullable Object $$0) {
-      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
-   }
-
-   public static class a {
-      private final List<String> a = Lists.newArrayList();
-
-      public awm.a a(String $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public awm a(Writer $$0) throws IOException {
-         return new awm($$0, this.a);
-      }
+   public int c() {
+      return this.e;
    }
 }

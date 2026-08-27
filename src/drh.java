@@ -1,9 +1,23 @@
-import com.mojang.serialization.Codec;
+public enum drh implements ayq {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-public class drh {
-   public static Codec<? extends drf> a(ja<Codec<? extends drf>> $$0) {
-      ja.a($$0, "noise", dvd.c);
-      ja.a($$0, "flat", duv.c);
-      return ja.a($$0, "debug", dur.c);
+   private final String f;
+
+   private drh(String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

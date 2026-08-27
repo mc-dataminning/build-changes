@@ -1,82 +1,32 @@
-import java.util.List;
-
 public class rh {
-   public static final aju<dxr<?, ?>> a = re.a("ore_magma");
-   public static final aju<dxr<?, ?>> b = re.a("ore_soul_sand");
-   public static final aju<dxr<?, ?>> c = re.a("ore_nether_gold");
-   public static final aju<dxr<?, ?>> d = re.a("ore_quartz");
-   public static final aju<dxr<?, ?>> e = re.a("ore_gravel_nether");
-   public static final aju<dxr<?, ?>> f = re.a("ore_blackstone");
-   public static final aju<dxr<?, ?>> g = re.a("ore_dirt");
-   public static final aju<dxr<?, ?>> h = re.a("ore_gravel");
-   public static final aju<dxr<?, ?>> i = re.a("ore_granite");
-   public static final aju<dxr<?, ?>> j = re.a("ore_diorite");
-   public static final aju<dxr<?, ?>> k = re.a("ore_andesite");
-   public static final aju<dxr<?, ?>> l = re.a("ore_tuff");
-   public static final aju<dxr<?, ?>> m = re.a("ore_coal");
-   public static final aju<dxr<?, ?>> n = re.a("ore_coal_buried");
-   public static final aju<dxr<?, ?>> o = re.a("ore_iron");
-   public static final aju<dxr<?, ?>> p = re.a("ore_iron_small");
-   public static final aju<dxr<?, ?>> q = re.a("ore_gold");
-   public static final aju<dxr<?, ?>> r = re.a("ore_gold_buried");
-   public static final aju<dxr<?, ?>> s = re.a("ore_redstone");
-   public static final aju<dxr<?, ?>> t = re.a("ore_diamond_small");
-   public static final aju<dxr<?, ?>> u = re.a("ore_diamond_medium");
-   public static final aju<dxr<?, ?>> v = re.a("ore_diamond_large");
-   public static final aju<dxr<?, ?>> w = re.a("ore_diamond_buried");
-   public static final aju<dxr<?, ?>> x = re.a("ore_lapis");
-   public static final aju<dxr<?, ?>> y = re.a("ore_lapis_buried");
-   public static final aju<dxr<?, ?>> z = re.a("ore_infested");
-   public static final aju<dxr<?, ?>> A = re.a("ore_emerald");
-   public static final aju<dxr<?, ?>> B = re.a("ore_ancient_debris_large");
-   public static final aju<dxr<?, ?>> C = re.a("ore_ancient_debris_small");
-   public static final aju<dxr<?, ?>> D = re.a("ore_copper_small");
-   public static final aju<dxr<?, ?>> E = re.a("ore_copper_large");
-   public static final aju<dxr<?, ?>> F = re.a("ore_clay");
+   private static dat a(dau.a $$0) {
+      dbf.a $$1 = new dbf.a();
+      qi.j($$1);
+      return new dat.a().a(false).a(0.5F).b(0.5F).a(new daz.a().b(4159204).c(329011).a(10518688).d(0).a(dar.b).a()).a($$1.a()).a($$0.a()).a();
+   }
 
-   public static void a(pz<dxr<?, ?>> $$0) {
-      ejk $$1 = new ejs(ave.be);
-      ejk $$2 = new ejs(ave.bf);
-      ejk $$3 = new ejs(ave.bg);
-      ejk $$4 = new eit(dcj.dV);
-      ejk $$5 = new ejs(ave.bh);
-      List<eaq.a> $$6 = List.of(eaq.a($$2, dcj.P.n()), eaq.a($$3, dcj.Q.n()));
-      List<eaq.a> $$7 = List.of(eaq.a($$2, dcj.N.n()), eaq.a($$3, dcj.O.n()));
-      List<eaq.a> $$8 = List.of(eaq.a($$2, dcj.cx.n()), eaq.a($$3, dcj.cy.n()));
-      List<eaq.a> $$9 = List.of(eaq.a($$2, dcj.aR.n()), eaq.a($$3, dcj.aS.n()));
-      List<eaq.a> $$10 = List.of(eaq.a($$2, dcj.ra.n()), eaq.a($$3, dcj.rb.n()));
-      List<eaq.a> $$11 = List.of(eaq.a($$2, dcj.R.n()), eaq.a($$3, dcj.S.n()));
-      re.a($$0, a, dye.I, new eaq($$4, dcj.kJ.n(), 33));
-      re.a($$0, b, dye.I, new eaq($$4, dcj.dW.n(), 12));
-      re.a($$0, c, dye.I, new eaq($$4, dcj.T.n(), 10));
-      re.a($$0, d, dye.I, new eaq($$4, dcj.hb.n(), 14));
-      re.a($$0, e, dye.I, new eaq($$4, dcj.L.n(), 33));
-      re.a($$0, f, dye.I, new eaq($$4, dcj.pr.n(), 33));
-      re.a($$0, g, dye.I, new eaq($$1, dcj.j.n(), 33));
-      re.a($$0, h, dye.I, new eaq($$1, dcj.L.n(), 33));
-      re.a($$0, i, dye.I, new eaq($$1, dcj.c.n(), 64));
-      re.a($$0, j, dye.I, new eaq($$1, dcj.e.n(), 64));
-      re.a($$0, k, dye.I, new eaq($$1, dcj.g.n(), 64));
-      re.a($$0, l, dye.I, new eaq($$1, dcj.qz.n(), 64));
-      re.a($$0, m, dye.I, new eaq($$11, 17));
-      re.a($$0, n, dye.I, new eaq($$11, 17, 0.5F));
-      re.a($$0, o, dye.I, new eaq($$6, 9));
-      re.a($$0, p, dye.I, new eaq($$6, 4));
-      re.a($$0, q, dye.I, new eaq($$7, 9));
-      re.a($$0, r, dye.I, new eaq($$7, 9, 0.5F));
-      re.a($$0, s, dye.I, new eaq(List.of(eaq.a($$2, dcj.dI.n()), eaq.a($$3, dcj.dJ.n())), 8));
-      re.a($$0, t, dye.I, new eaq($$8, 4, 0.5F));
-      re.a($$0, v, dye.I, new eaq($$8, 12, 0.7F));
-      re.a($$0, w, dye.I, new eaq($$8, 8, 1.0F));
-      re.a($$0, u, dye.I, new eaq($$8, 8, 0.5F));
-      re.a($$0, x, dye.I, new eaq($$9, 7));
-      re.a($$0, y, dye.I, new eaq($$9, 7, 1.0F));
-      re.a($$0, z, dye.I, new eaq(List.of(eaq.a($$2, dcj.eN.n()), eaq.a($$3, dcj.td.n())), 9));
-      re.a($$0, A, dye.I, new eaq(List.of(eaq.a($$2, dcj.fE.n()), eaq.a($$3, dcj.fF.n())), 3));
-      re.a($$0, B, dye.ae, new eaq($$5, dcj.pj.n(), 3, 1.0F));
-      re.a($$0, C, dye.ae, new eaq($$5, dcj.pj.n(), 2, 1.0F));
-      re.a($$0, D, dye.I, new eaq($$10, 10));
-      re.a($$0, E, dye.I, new eaq($$10, 20));
-      re.a($$0, F, dye.I, new eaq($$1, dcj.dR.n(), 33));
+   public static dat a(iw<efk> $$0, iw<dxt<?>> $$1) {
+      dau.a $$2 = new dau.a($$0, $$1);
+      return a($$2);
+   }
+
+   public static dat b(iw<efk> $$0, iw<dxt<?>> $$1) {
+      dau.a $$2 = new dau.a($$0, $$1).a(dvm.b.e, rz.a);
+      return a($$2);
+   }
+
+   public static dat c(iw<efk> $$0, iw<dxt<?>> $$1) {
+      dau.a $$2 = new dau.a($$0, $$1);
+      return a($$2);
+   }
+
+   public static dat d(iw<efk> $$0, iw<dxt<?>> $$1) {
+      dau.a $$2 = new dau.a($$0, $$1).a(dvm.b.e, rz.b).a(dvm.b.j, rz.c);
+      return a($$2);
+   }
+
+   public static dat e(iw<efk> $$0, iw<dxt<?>> $$1) {
+      dau.a $$2 = new dau.a($$0, $$1).a(dvm.b.a, rz.d);
+      return a($$2);
    }
 }

@@ -1,200 +1,77 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class dmo {
-   private static final Logger e = LogUtils.getLogger();
-   private final dmq<?> f;
+public class dmo extends djx {
+   public static final MapCodec<dmo> b = b(dmo::new);
    @Nullable
-   protected czg o;
-   protected final id p;
-   protected boolean q;
-   private dpi g;
-
-   public dmo(dmq<?> $$0, id $$1, dpi $$2) {
-      this.f = $$0;
-      this.p = $$1.i();
-      this.g = $$2;
-   }
-
-   public static id b(to $$0) {
-      return new id($$0.h("x"), $$0.h("y"), $$0.h("z"));
-   }
-
+   private static dqd h;
    @Nullable
-   public czg i() {
-      return this.o;
+   private static dqd i;
+
+   @Override
+   public MapCodec<dmo> a() {
+      return b;
    }
 
-   public void a(czg $$0) {
-      this.o = $$0;
+   protected dmo(dpx.d $$0) {
+      super(djx.b.d, $$0);
    }
 
-   public boolean m() {
-      return this.o != null;
+   @Override
+   public void a(czu $$0, im $$1, dpy $$2, @Nullable bre $$3, csd $$4) {
+      a($$0, $$1);
    }
 
-   public void a(to $$0, ip.a $$1) {
-   }
-
-   protected void b(to $$0, ip.a $$1) {
-   }
-
-   public final to b(ip.a $$0) {
-      to $$1 = this.d($$0);
-      this.d($$1);
-      return $$1;
-   }
-
-   public final to c(ip.a $$0) {
-      to $$1 = this.d($$0);
-      this.c($$1);
-      return $$1;
-   }
-
-   public final to d(ip.a $$0) {
-      to $$1 = new to();
-      this.b($$1, $$0);
-      return $$1;
-   }
-
-   private void c(to $$0) {
-      ajv $$1 = dmq.a(this.r());
-      if ($$1 == null) {
-         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
-      } else {
-         $$0.a("id", $$1.toString());
+   public static void a(czu $$0, im $$1) {
+      if ($$0.c_($$1) instanceof dop $$2) {
+         a($$0, $$1, $$2);
       }
    }
 
-   public static void a(to $$0, dmq<?> $$1) {
-      $$0.a("id", dmq.a($$1).toString());
-   }
+   public static void a(czu $$0, im $$1, dop $$2) {
+      if (!$$0.B) {
+         dpy $$3 = $$2.n();
+         boolean $$4 = $$3.a(dcx.gG) || $$3.a(dcx.gH);
+         if ($$4 && $$1.v() >= $$0.I_() && $$0.ak() != bon.a) {
+            dqd.b $$5 = s().a($$0, $$1);
+            if ($$5 != null) {
+               cgj $$6 = bqr.bo.a($$0);
+               if ($$6 != null) {
+                  ddp.a($$0, $$5);
+                  im $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ir.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aZ = $$5.b().o() == ir.a.a ? 0.0F : 90.0F;
+                  $$6.r();
 
-   public void a(crs $$0, ip.a $$1) {
-      to $$2 = this.d($$1);
-      this.a($$2);
-      cpq.a($$0, this.r(), $$2);
-      $$0.a(this.s());
-   }
+                  for (aqf $$8 : $$0.a(aqf.class, $$6.cI().g(50.0))) {
+                     am.o.a($$8, $$6);
+                  }
 
-   private void d(to $$0) {
-      this.c($$0);
-      $$0.a("x", this.p.u());
-      $$0.a("y", this.p.v());
-      $$0.a("z", this.p.w());
-   }
-
-   @Nullable
-   public static dmo a(id $$0, dpi $$1, to $$2, ip.a $$3) {
-      String $$4 = $$2.l("id");
-      ajv $$5 = ajv.a($$4);
-      if ($$5 == null) {
-         e.error("Block entity has invalid type: {}", $$4);
-         return null;
-      } else {
-         return kt.k.b($$5).map($$3x -> {
-            try {
-               return $$3x.a($$0, $$1);
-            } catch (Throwable var5x) {
-               e.error("Failed to create block entity {}", $$4, var5x);
-               return null;
+                  $$0.b($$6);
+                  ddp.b($$0, $$5);
+               }
             }
-         }).map($$3x -> {
-            try {
-               $$3x.a($$2, $$3);
-               return $$3x;
-            } catch (Throwable var5x) {
-               e.error("Failed to load data for block entity {}", $$4, var5x);
-               return null;
-            }
-         }).orElseGet(() -> {
-            e.warn("Skipping BlockEntity with id {}", $$4);
-            return null;
-         });
+         }
       }
    }
 
-   public void e() {
-      if (this.o != null) {
-         a(this.o, this.p, this.g);
+   public static boolean b(czu $$0, im $$1, csd $$2) {
+      return $$2.a(csg.um) && $$1.v() >= $$0.I_() + 2 && $$0.ak() != bon.a && !$$0.B ? y().a($$0, $$1) != null : false;
+   }
+
+   private static dqd s() {
+      if (h == null) {
+         h = dqe.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(avo.aF)).a('^', dqc.a(dqh.a(dcx.gG).or(dqh.a(dcx.gH)))).a('~', $$0 -> $$0.a().i()).b();
       }
+
+      return h;
    }
 
-   protected static void a(czg $$0, id $$1, dpi $$2) {
-      $$0.q($$1);
-      if (!$$2.i()) {
-         $$0.c($$1, $$2.b());
+   private static dqd y() {
+      if (i == null) {
+         i = dqe.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(avo.aF)).a('~', $$0 -> $$0.a().i()).b();
       }
-   }
 
-   public id az_() {
-      return this.p;
-   }
-
-   public dpi n() {
-      return this.g;
-   }
-
-   @Nullable
-   public yp<aba> av_() {
-      return null;
-   }
-
-   public to a(ip.a $$0) {
-      return new to();
-   }
-
-   public boolean o() {
-      return this.q;
-   }
-
-   public void aw_() {
-      this.q = true;
-   }
-
-   public void p() {
-      this.q = false;
-   }
-
-   public boolean a_(int $$0, int $$1) {
-      return false;
-   }
-
-   public void a(p $$0) {
-      $$0.a("Name", () -> kt.k.b(this.r()) + " // " + this.getClass().getCanonicalName());
-      if (this.o != null) {
-         p.a($$0, this.o, this.p, this.n());
-         p.a($$0, this.o, this.p, this.o.a_(this.p));
-      }
-   }
-
-   public boolean q() {
-      return false;
-   }
-
-   public dmq<?> r() {
-      return this.f;
-   }
-
-   @Deprecated
-   public void b(dpi $$0) {
-      this.g = $$0;
-   }
-
-   public void a(jn $$0) {
-   }
-
-   public void a(jn.a $$0) {
-   }
-
-   @Deprecated
-   public void a(to $$0) {
-   }
-
-   public final jn s() {
-      jn.a $$0 = jn.a();
-      this.a($$0);
-      return $$0.a();
+      return i;
    }
 }

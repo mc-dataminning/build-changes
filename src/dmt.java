@@ -1,34 +1,19 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmt extends dnv {
-   public dmt(id $$0, dpi $$1) {
-      super(dmq.J, $$0, $$1);
+public record dmt(akf e, String f) {
+   public static final Codec<dmt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akf.a.fieldOf("asset_id").forGetter(dmt::a), Codec.STRING.fieldOf("translation_key").forGetter(dmt::b)).apply($$0, dmt::new)
+   );
+   public static final yq<wd, dmt> b = yq.a(akf.b, dmt::a, yo.k, dmt::b, dmt::new);
+   public static final Codec<iv<dmt>> c = akb.a(ld.d, a);
+   public static final yq<wd, iv<dmt>> d = yo.a(ld.d, b);
+
+   public akf a() {
+      return this.e;
    }
 
-   @Override
-   public duk.d b() {
-      return new dmt.a(this.az_());
-   }
-
-   protected class a extends dnv.a {
-      public a(id $$1) {
-         super($$1);
-      }
-
-      @Override
-      public int a() {
-         return 16;
-      }
-
-      @Override
-      public boolean a(apu $$0, id $$1, in<dub> $$2, @Nullable dub.a $$3) {
-         int $$4 = this.a($$0, this.c, dmt.this.n());
-         return $$4 != 0 && duk.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
-
-      private int a(czg $$0, id $$1, dpi $$2) {
-         ij $$3 = $$2.c(dcu.b).g();
-         return $$0.c($$1.a($$3), $$3);
-      }
+   public String b() {
+      return this.f;
    }
 }

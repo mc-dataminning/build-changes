@@ -1,12 +1,15 @@
-public enum dqu implements ayg {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dqu implements ayq {
+   a(ir.a),
+   b(ir.b);
 
-   private final String d;
+   private final ir c;
 
-   private dqu(String $$0) {
-      this.d = $$0;
+   private dqu(ir $$0) {
+      this.c = $$0;
+   }
+
+   public ir a() {
+      return this.c;
    }
 
    @Override
@@ -16,6 +19,10 @@ public enum dqu implements ayg {
 
    @Override
    public String c() {
-      return this.d;
+      return this == a ? "upper" : "lower";
+   }
+
+   public dqu b() {
+      return this == a ? b : a;
    }
 }

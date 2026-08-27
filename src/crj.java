@@ -1,15 +1,16 @@
-public class crj extends crn implements csr {
-   public crj(crn.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class crj extends cry {
+   public crj(cry.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(czg $$0, dny $$1, boolean $$2, cka $$3) {
-      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
-         $$0.a(null, $$1.az_(), auo.mW, aup.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
+   public void a(csd $$0, @Nullable czu $$1, List<ws> $$2, ctu $$3) {
+      cuu $$4 = $$0.a(jz.J);
+      if ($$4 != null) {
+         $$4.a($$2::add, $$3);
       }
    }
 }

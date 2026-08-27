@@ -1,94 +1,63 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-public class gqn implements AutoCloseable {
-   private static final AtomicInteger a = new AtomicInteger(1);
-   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
-      Thread $$1 = new Thread($$0);
-      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
-      return $$1;
-   });
-   private final fby c;
-   private final UserApiService d;
-   private final gqv e;
-   private final Path f;
-   private final CompletableFuture<Optional<gqt>> g;
-   private final Supplier<gqr> h = Suppliers.memoize(this::c);
+public class gqn implements atp {
+   public static final gqn.a<csd> a = new gqn.a<>();
+   public static final gqn.a<csd> b = new gqn.a<>();
+   public static final gqn.a<fok> c = new gqn.a<>();
+   private final Map<gqn.a<?>, gqn.c<?>> d = new HashMap<>();
 
-   public gqn(fby $$0, UserApiService $$1, fcn $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      gqv.a $$3 = gqv.a();
-      $$2.f().ifPresent($$1x -> $$3.a(gqu.a, $$1x));
-      $$2.e().ifPresent($$1x -> $$3.a(gqu.b, $$1x));
-      $$3.a(gqu.c, UUID.randomUUID());
-      $$3.a(gqu.d, aa.b().b());
-      $$3.a(gqu.e, ac.j().a());
-      $$3.a(gqu.f, System.getProperty("os.name"));
-      $$3.a(gqu.g, fby.e().a());
-      $$3.b(gqu.h, fby.bf());
-      this.e = $$3.a();
-      this.f = $$0.p.toPath().resolve("logs/telemetry");
-      this.g = gqt.a(this.f);
-   }
-
-   public gqw a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
-      return new gqw(this.c(), $$0, $$1, $$2);
-   }
-
-   public gqr a() {
-      return this.h.get();
-   }
-
-   private gqr c() {
-      if (!this.c.E()) {
-         return gqr.a;
-      } else {
-         TelemetrySession $$0 = this.d.newTelemetrySession(b);
-         if (!$$0.isEnabled()) {
-            return gqr.a;
-         } else {
-            CompletableFuture<Optional<gqq>> $$1 = this.g
-               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<gqq>>>map(gqt::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
-            return ($$2, $$3) -> {
-               if (!$$2.d() || fby.Q().C()) {
-                  gqv.a $$4 = gqv.a();
-                  $$4.a(this.e);
-                  $$4.a(gqu.m, Instant.now());
-                  $$4.a(gqu.l, $$2.d());
-                  $$3.accept($$4);
-                  gqo $$5 = new gqo($$2, $$4.a());
-                  $$1.thenAccept($$2x -> {
-                     if (!$$2x.isEmpty()) {
-                        ((gqq)$$2x.get()).log($$5);
-                        $$5.a($$0).send();
-                     }
-                  });
-               }
-            };
-         }
+   @Override
+   public void a(ato $$0) {
+      for (gqn.c<?> $$1 : this.d.values()) {
+         $$1.a();
       }
    }
 
-   public Path b() {
-      return this.f;
+   public <T> void a(gqn.a<T> $$0, gqn.b<T> $$1) {
+      this.d.put($$0, new gqn.c<>($$1));
    }
 
-   @Override
-   public void close() {
-      this.g.thenAccept($$0 -> $$0.ifPresent(gqt::close));
+   private <T> gqn.c<T> b(gqn.a<T> $$0) {
+      gqn.c<T> $$1 = (gqn.c<T>)this.d.get($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tree builder not registered");
+      } else {
+         return $$1;
+      }
+   }
+
+   public <T> void a(gqn.a<T> $$0, List<T> $$1) {
+      this.b($$0).a($$1);
+   }
+
+   public <T> gqo<T> a(gqn.a<T> $$0) {
+      return this.b($$0).b;
+   }
+
+   public static class a<T> {
+   }
+
+   public interface b<T> extends Function<List<T>, gql<T>> {
+   }
+
+   static class c<T> {
+      private final gqn.b<T> a;
+      gql<T> b = gql.b();
+
+      c(gqn.b<T> $$0) {
+         this.a = $$0;
+      }
+
+      void a(List<T> $$0) {
+         this.b = this.a.apply($$0);
+         this.b.a();
+      }
+
+      void a() {
+         this.b.a();
+      }
    }
 }

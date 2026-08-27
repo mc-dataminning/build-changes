@@ -1,51 +1,61 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface ddi<T extends Enum<T>> {
-   int v_ = 4;
+public class ddi extends djo {
+   public static final MapCodec<ddi> a = b(ddi::new);
+   public static final dqs b = dqo.R;
 
-   Optional<dpi> j_(dpi var1);
-
-   float au_();
-
-   default void a_(dpi $$0, apu $$1, id $$2, axt $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   @Override
+   public MapCodec<ddi> a() {
+      return a;
    }
 
-   T c();
+   public ddi(dpx.d $$0) {
+      super($$0);
+      this.k(this.n().a(b, ir.c));
+   }
 
-   default Optional<dpi> c(dpi $$0, apu $$1, id $$2, axt $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
+   @Nullable
+   @Override
+   public dnd a(im $$0, dpy $$1) {
+      return new dni($$0, $$1);
+   }
 
-      for (id $$7 : id.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
+   @Nullable
+   @Override
+   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
+      return !$$0.B ? a($$2, dnf.J, ($$0x, $$1x, $$2x, $$3) -> dva.c.a($$0x, $$3.gr(), $$3.gs())) : null;
+   }
 
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof ddi<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      return super.a($$0).a(b, $$0.g());
+   }
 
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
-      }
+   @Override
+   public int a(dpy $$0, cza $$1, im $$2, ir $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.au_();
-      return $$3.i() < $$13 ? this.j_($$0) : Optional.empty();
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      super.a($$0);
+      $$0.a(b);
+   }
+
+   @Override
+   public dpy a(dpy $$0, dji $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dpy a(dpy $$0, dhs $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   public int c() {
+      return 10;
    }
 }

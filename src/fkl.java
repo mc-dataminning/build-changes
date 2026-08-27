@@ -1,38 +1,42 @@
-public enum fkl {
-   a(
-      new ajv("advancements/box_obtained"),
-      new ajv("advancements/task_frame_obtained"),
-      new ajv("advancements/challenge_frame_obtained"),
-      new ajv("advancements/goal_frame_obtained")
-   ),
-   b(
-      new ajv("advancements/box_unobtained"),
-      new ajv("advancements/task_frame_unobtained"),
-      new ajv("advancements/challenge_frame_unobtained"),
-      new ajv("advancements/goal_frame_unobtained")
-   );
+public class fkl extends fkt {
+   protected final fkt b;
+   protected final fcy c;
+   public final fih d = new fih(this);
 
-   private final ajv c;
-   private final ajv d;
-   private final ajv e;
-   private final ajv f;
-
-   private fkl(ajv $$0, ajv $$1, ajv $$2, ajv $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public fkl(fkt $$0, fcy $$1, ws $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public ajv a() {
-      return this.c;
+   @Override
+   protected void aM_() {
+      this.m();
+      this.h();
+      this.d.a(this::c);
+      this.c();
    }
 
-   public ajv a(al $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   protected void m() {
+      this.d.a(this.l, this.p);
+   }
+
+   protected void h() {
+      this.d.b(feu.a(wr.d, $$0 -> this.d()).a(200).a());
+   }
+
+   @Override
+   protected void c() {
+      this.d.a();
+   }
+
+   @Override
+   public void j() {
+      this.m.m.av();
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.b);
    }
 }

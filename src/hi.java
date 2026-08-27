@@ -1,60 +1,27 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
 
-class hi<T extends dx<T>> {
-   @Nullable
-   private List<gy<T>> a = new ArrayList<>();
-   @Nullable
-   private List<hk.a<T>> b;
-   private final List<String> c = new ArrayList<>();
+public class hi<T extends ee<T>> implements hf<T> {
+   private final hq<T> a;
+   private final dz b;
+   private final boolean c;
 
-   public void a(gy<T> $$0) {
-      if (this.b != null) {
-         this.b.add(new hk.c<>($$0));
-      } else {
-         this.a.add($$0);
-      }
+   public hi(hq<T> $$0, dz $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private int a(String $$0) {
-      int $$1 = this.c.indexOf($$0);
-      if ($$1 == -1) {
-         $$1 = this.c.size();
-         this.c.add($$0);
+   public void a(T $$0, hb<T> $$1, hd $$2) {
+      $$1.e();
+      List<hf<T>> $$3 = this.a.b();
+      he $$4 = $$1.b();
+      if ($$4 != null) {
+         $$4.a($$2.c(), this.a.a(), this.a.b().size());
       }
 
-      return $$1;
-   }
-
-   private IntList a(List<String> $$0) {
-      IntArrayList $$1 = new IntArrayList($$0.size());
-
-      for (String $$2 : $$0) {
-         $$1.add(this.a($$2));
-      }
-
-      return $$1;
-   }
-
-   public void a(String $$0, int $$1, T $$2) {
-      hm $$3 = hm.a($$0, $$1);
-      if (this.a != null) {
-         this.b = new ArrayList<>(this.a.size() + 1);
-
-         for (gy<T> $$4 : this.a) {
-            this.b.add(new hk.c<>($$4));
-         }
-
-         this.a = null;
-      }
-
-      this.b.add(new hk.b<>($$3, this.a($$3.b()), $$2));
-   }
-
-   public hh<T> a(ajv $$0) {
-      return (hh<T>)(this.b != null ? new hk<>($$0, this.b, this.c) : new hl<>($$0, this.a));
+      int $$5 = $$2.c() + 1;
+      hd.a $$6 = this.c ? $$2.e() : $$1.b($$5);
+      hd $$7 = new hd($$5, this.b, $$6);
+      hj.a($$1, $$7, $$3, ($$1x, $$2x) -> new gx<>($$1x, $$2x.bind($$0)));
    }
 }

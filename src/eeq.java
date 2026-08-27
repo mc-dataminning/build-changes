@@ -1,29 +1,50 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public class eeq extends eex {
-   public static final Codec<eeq> a = RecordCodecBuilder.create($$0 -> $$0.group(dva.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, eeq::new));
-   private final dva.a c;
+public class eeq extends een {
+   public static final Codec<eeq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dwk.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dwk.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, eeq::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dwk d;
+   private final dwk e;
+   private final LongSet f = new LongOpenHashSet();
 
-   private eeq(dva.a $$0) {
-      this.c = $$0;
+   private eeq(dwk $$0, dwk $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static eeq a(dva.a $$0) {
-      return new eeq($$0);
+   public static eeq a(dwk $$0, dwk $$1) {
+      return new eeq($$0, $$1);
    }
 
    @Override
-   public Stream<id> a_(eev $$0, axt $$1, id $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new id($$3, $$5, $$4)) : Stream.of();
+   public int a(ayd $$0, dwn $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
+         }
+
+         return $$2;
+      } else {
+         return axw.b($$0, $$2, $$3);
+      }
    }
 
    @Override
-   public eey<?> b() {
-      return eey.k;
+   public eeo<?> a() {
+      return eeo.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

@@ -1,65 +1,60 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
-import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
-public class eiq extends ejn {
-   public static final Codec<eiq> a = Codec.unit(() -> eiq.b);
-   public static final eiq b = new eiq();
-   private final Map<dch, dch> c = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dcj.m, dcj.pr);
-      $$0.put(dcj.cn, dcj.pr);
-      $$0.put(dcj.b, dcj.pv);
-      $$0.put(dcj.eH, dcj.pw);
-      $$0.put(dcj.eI, dcj.pw);
-      $$0.put(dcj.cQ, dcj.ps);
-      $$0.put(dcj.ni, dcj.ps);
-      $$0.put(dcj.nk, dcj.pD);
-      $$0.put(dcj.fj, dcj.pA);
-      $$0.put(dcj.ng, dcj.pA);
-      $$0.put(dcj.jI, dcj.pu);
-      $$0.put(dcj.nw, dcj.pu);
-      $$0.put(dcj.jE, dcj.pE);
-      $$0.put(dcj.jD, dcj.pE);
-      $$0.put(dcj.jK, dcj.pz);
-      $$0.put(dcj.nu, dcj.pz);
-      $$0.put(dcj.nK, dcj.pB);
-      $$0.put(dcj.nI, dcj.pB);
-      $$0.put(dcj.fP, dcj.pt);
-      $$0.put(dcj.fQ, dcj.pt);
-      $$0.put(dcj.eK, dcj.py);
-      $$0.put(dcj.eJ, dcj.px);
-      $$0.put(dcj.eW, dcj.eX);
-   });
+public class eiq extends egg {
+   public static final Codec<eiq> d = a(eiq::new);
 
-   private eiq() {
+   public eiq(egg.c $$0) {
+      super($$0);
    }
 
    @Override
-   public ejq.c a(czj $$0, id $$1, id $$2, ejq.c $$3, ejq.c $$4, ejm $$5) {
-      dch $$6 = this.c.get($$4.b().b());
-      if ($$6 == null) {
-         return $$4;
+   public Optional<egg.b> a(egg.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
+
+      for (iv<dat> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(avn.X)) {
+            return Optional.empty();
+         }
+      }
+
+      return a($$0, dvq.a.c, $$1x -> a($$1x, $$0));
+   }
+
+   private static egk a(czb $$0, dwp $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      ir $$4 = ir.c.a.a($$1);
+      return new eip.h($$1, $$2, $$3, $$4);
+   }
+
+   private static void a(egy $$0, egg.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static egv a(czb $$0, long $$1, egv $$2) {
+      if ($$2.a()) {
+         return $$2;
       } else {
-         dpi $$7 = $$4.b();
-         dpi $$8 = $$6.n();
-         if ($$7.b(dka.b)) {
-            $$8 = $$8.a(dka.b, $$7.c(dka.b));
-         }
-
-         if ($$7.b(dka.c)) {
-            $$8 = $$8.a(dka.c, $$7.c(dka.c));
-         }
-
-         if ($$7.b(djj.b)) {
-            $$8 = $$8.a(djj.b, $$7.c(djj.b));
-         }
-
-         return new ejq.c($$4.a(), $$8, $$4.c());
+         dwp $$3 = new dwp(new dvr(dwf.a()));
+         $$3.c($$1, $$0.e, $$0.f);
+         egk $$4 = $$2.c().get(0);
+         efy $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         ir $$8 = ir.c.a.a($$3);
+         ir $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         egk $$10 = new eip.h($$3, $$6, $$7, $$9);
+         egy $$11 = new egy();
+         $$11.a($$10);
+         return $$11.a();
       }
    }
 
    @Override
-   protected ejp<?> a() {
-      return ejp.l;
+   public egp<?> e() {
+      return egp.j;
    }
 }

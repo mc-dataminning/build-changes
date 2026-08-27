@@ -1,91 +1,100 @@
 import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public enum dtc {
-   a {
-      @Override
-      public void a(apu $$0, dtd $$1, List<cfd> $$2, int $$3, id $$4) {
-         id $$5 = new id(0, 128, 0);
+public class dtc implements dub<bql> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Entities";
+   private static final String c = "Position";
+   private final aqe d;
+   private final dtm e;
+   private final LongSet f = new LongOpenHashSet();
+   private final bnj<Runnable> g;
 
-         for (cfd $$6 : $$2) {
-            $$6.a($$5);
-         }
+   public dtc(dtm $$0, aqe $$1, Executor $$2) {
+      this.e = $$0;
+      this.d = $$1;
+      this.g = bnj.a($$2, "entity-deserializer");
+   }
 
-         $$1.a(b);
-      }
-   },
-   b {
-      @Override
-      public void a(apu $$0, dtd $$1, List<cfd> $$2, int $$3, id $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new id(0, 128, 0), 0);
-            }
+   @Override
+   public CompletableFuture<dtw<bql>> a(czb $$0) {
+      return this.f.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.e.a($$0).thenApplyAsync($$1 -> {
+         if ($$1.isEmpty()) {
+            this.f.add($$0.a());
+            return b($$0);
          } else {
-            $$1.a(c);
-         }
-      }
-   },
-   c {
-      @Override
-      public void a(apu $$0, dtd $$1, List<cfd> $$2, int $$3, id $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<dzo.a> $$8 = dzo.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               dzo.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (cfd $$11 : $$2) {
-                     $$11.a(new id($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
-
-                  for (id $$13 : id.a(new id($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new id($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
-
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, czg.a.b);
-                  ebc $$14 = new ebc(true, ImmutableList.of($$10), new id(0, 128, 0));
-                  dye.J.a($$14, $$0, $$0.l().g(), axt.a(), new id($$10.a(), 45, $$10.b()));
+            try {
+               czb $$2 = a($$1.get());
+               if (!Objects.equals($$0, $$2)) {
+                  a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
                }
-            } else if ($$6) {
-               $$1.a(d);
+            } catch (Exception var6) {
+               a.warn("Failed to parse chunk {} position info", $$0, var6);
             }
-         }
-      }
-   },
-   d {
-      @Override
-      public void a(apu $$0, dtd $$1, List<cfd> $$2, int $$3, id $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
 
-            for (cfd $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dr(), $$5.dt(), $$5.dx(), 6.0F, czg.a.a);
-               $$5.am();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new id(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (cfd $$6 : $$2) {
-               $$6.a(new id(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new id(0, 128, 0), 0);
+            ty $$4 = this.e.a($$1.get(), -1);
+            ue $$5 = $$4.c("Entities", 10);
+            List<bql> $$6 = bqr.a($$5, this.d).collect(ImmutableList.toImmutableList());
+            return new dtw<>($$0, $$6);
          }
-      }
-   },
-   e {
-      @Override
-      public void a(apu $$0, dtd $$1, List<cfd> $$2, int $$3, id $$4) {
-      }
-   };
+      }, this.g::a);
+   }
 
-   public abstract void a(apu var1, dtd var2, List<cfd> var3, int var4, id var5);
+   private static czb a(ty $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new czb($$1[0], $$1[1]);
+   }
+
+   private static void a(ty $$0, czb $$1) {
+      $$0.a("Position", new uc(new int[]{$$1.e, $$1.f}));
+   }
+
+   private static dtw<bql> b(czb $$0) {
+      return new dtw<>($$0, ImmutableList.of());
+   }
+
+   @Override
+   public void a(dtw<bql> $$0) {
+      czb $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.f.add($$1.a())) {
+            this.e.a($$1, null);
+         }
+      } else {
+         ue $$2 = new ue();
+         $$0.b().forEach($$1x -> {
+            ty $$2x = new ty();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         ty $$3 = un.e(new ty());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.e.a($$1, $$3).exceptionally($$1x -> {
+            a.error("Failed to store chunk {}", $$1, $$1x);
+            return null;
+         });
+         this.f.remove($$1.a());
+      }
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.e.a($$0).join();
+      this.g.a();
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.e.close();
+   }
 }

@@ -1,23 +1,60 @@
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public record adl(int b, in<bpk> c) implements yp<aba> {
-   public static final yg<vt, adl> a = yg.a(ye.f, $$0 -> $$0.b, ye.b(ku.R), adl::e, adl::new);
+public record adl(UUID b, int c, @Nullable xe d, xl.a e, @Nullable ws f, ww g, wo.a h) implements yz<abk> {
+   public static final yq<wd, adl> a = yz.a(adl::a, adl::new);
 
-   @Override
-   public yr<adl> a() {
-      return afl.ak;
+   private adl(wd $$0) {
+      this($$0.n(), $$0.l(), $$0.c(xe::a), new xl.a($$0), vs.a($$0, wu.d), ww.a($$0), wo.a.a.decode($$0));
    }
 
-   public void a(aba $$0) {
+   private void a(wd $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, xe::a);
+      this.e.a($$0);
+      vs.a($$0, this.f, wu.d);
+      ww.a($$0, this.g);
+      wo.a.a.encode($$0, this.h);
+   }
+
+   @Override
+   public zb<adl> a() {
+      return afv.aa;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bqa a(czg $$0) {
-      return $$0.a(this.b);
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public in<bpk> e() {
+   public int e() {
       return this.c;
+   }
+
+   @Nullable
+   public xe f() {
+      return this.d;
+   }
+
+   public xl.a g() {
+      return this.e;
+   }
+
+   @Nullable
+   public ws h() {
+      return this.f;
+   }
+
+   public ww i() {
+      return this.g;
+   }
+
+   public wo.a j() {
+      return this.h;
    }
 }

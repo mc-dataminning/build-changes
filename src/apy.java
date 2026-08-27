@@ -1,60 +1,35 @@
-import java.util.Objects;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.Set;
 
-public final class apy<T> implements Comparable<apy<?>> {
-   private final apz<T> a;
-   private final int b;
-   private final T c;
-   private long d;
+public final class apy {
+   private final Object2BooleanMap<aqf> a = new Object2BooleanOpenHashMap();
 
-   protected apy(apz<T> $$0, int $$1, T $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public Set<aqf> a() {
+      return this.a.keySet();
    }
 
-   public int a(apy<?> $$0) {
-      int $$1 = Integer.compare(this.b, $$0.b);
-      if ($$1 != 0) {
-         return $$1;
-      } else {
-         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
-         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
-      }
+   public void a(aqf $$0, boolean $$1) {
+      this.a.put($$0, $$1);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof apy<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
-      }
+   public void a(aqf $$0) {
+      this.a.removeBoolean($$0);
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
+   public void b(aqf $$0) {
+      this.a.replace($$0, true);
    }
 
-   @Override
-   public String toString() {
-      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+   public void c(aqf $$0) {
+      this.a.replace($$0, false);
    }
 
-   public apz<T> a() {
-      return this.a;
+   public boolean d(aqf $$0) {
+      return this.a.getOrDefault($$0, true);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   protected void a(long $$0) {
-      this.d = $$0;
-   }
-
-   protected boolean b(long $$0) {
-      long $$1 = this.a.b();
-      return $$1 != 0L && $$0 - this.d > $$1;
+   public boolean e(aqf $$0) {
+      return this.a.getBoolean($$0);
    }
 }

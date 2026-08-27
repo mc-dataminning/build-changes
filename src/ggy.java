@@ -1,18 +1,19 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class ggy extends ght<chm, fse<chm>> {
+   private static final akf a = new akf("textures/entity/zombie/zombie.png");
+   private final float i;
 
-public class ggy extends ggx<ccv, fqo<ccv>> {
-   private static final Map<ccv.a, ajv> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(ccv.a.b, new ajv("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(ccv.a.a, new ajv("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public ggy(gfr.a $$0) {
-      super($$0, new fqo<>($$0.a(ftu.aC)), 0.7F);
-      this.a(new gjx<>(this, $$0.c()));
+   public ggy(ggn.a $$0, float $$1) {
+      super($$0, new frw($$0.a(fuq.ah)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gkr<>(this, $$0.d()));
+      this.a(new gko<>(this, new frw($$0.a(fuq.ai)), new frw($$0.a(fuq.aj)), $$0.g()));
    }
 
-   public ajv a(ccv $$0) {
-      return a.get($$0.u());
+   protected void a(chm $$0, exn $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public akf a(chm $$0) {
+      return a;
    }
 }

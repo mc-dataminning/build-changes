@@ -1,51 +1,84 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class ahk implements yz<afx> {
+   public static final yq<vs, ahk> a = yz.a(ahk::a, ahk::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private final im e;
+   private final String f;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final dnn.a j;
 
-public class ahk {
-   private static final double a = 4096.0;
-   private esj b;
-
-   public ahk() {
-      this.b = esj.b;
+   public ahk(im $$0, String $$1, dnn.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$2;
    }
 
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
+   private ahk(vs $$0) {
+      this.e = $$0.e();
+      this.f = $$0.p();
+      this.j = $$0.b(dnn.a.class);
+      int $$1 = $$0.readByte();
+      this.g = ($$1 & 1) != 0;
+      this.h = ($$1 & 2) != 0;
+      this.i = ($$1 & 4) != 0;
    }
 
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
-   }
-
-   public esj a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
-         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
-         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new esj($$3, $$4, $$5);
+   private void a(vs $$0) {
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.j);
+      int $$1 = 0;
+      if (this.g) {
+         $$1 |= 1;
       }
+
+      if (this.h) {
+         $$1 |= 2;
+      }
+
+      if (this.i) {
+         $$1 |= 4;
+      }
+
+      $$0.k($$1);
    }
 
-   public long a(esj $$0) {
-      return a($$0.c) - a(this.b.c);
+   @Override
+   public zb<ahk> a() {
+      return afv.bS;
    }
 
-   public long b(esj $$0) {
-      return a($$0.d) - a(this.b.d);
+   public void a(afx $$0) {
+      $$0.a(this);
    }
 
-   public long c(esj $$0) {
-      return a($$0.e) - a(this.b.e);
+   public im b() {
+      return this.e;
    }
 
-   public esj d(esj $$0) {
-      return $$0.d(this.b);
+   public String e() {
+      return this.f;
    }
 
-   public void e(esj $$0) {
-      this.b = $$0;
+   public boolean f() {
+      return this.g;
+   }
+
+   public boolean g() {
+      return this.h;
+   }
+
+   public boolean h() {
+      return this.i;
+   }
+
+   public dnn.a i() {
+      return this.j;
    }
 }

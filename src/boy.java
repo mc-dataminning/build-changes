@@ -1,120 +1,81 @@
 import javax.annotation.Nullable;
 
-public class boy {
-   private final in<bpa> a;
-   @Nullable
-   private final bqa b;
-   @Nullable
-   private final bqa c;
-   @Nullable
-   private final esj d;
-
-   @Override
-   public String toString() {
-      return "DamageSource (" + this.j().a() + ")";
-   }
-
-   public float a() {
-      return this.j().c();
-   }
-
-   public boolean b() {
-      return this.b != this.c;
-   }
-
-   private boy(in<bpa> $$0, @Nullable bqa $$1, @Nullable bqa $$2, @Nullable esj $$3) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-   }
-
-   public boy(in<bpa> $$0, @Nullable bqa $$1, @Nullable bqa $$2) {
-      this($$0, $$1, $$2, null);
-   }
-
-   public boy(in<bpa> $$0, esj $$1) {
-      this($$0, null, null, $$1);
-   }
-
-   public boy(in<bpa> $$0, @Nullable bqa $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public boy(in<bpa> $$0) {
-      this($$0, null, null, null);
-   }
+public interface boy extends boj {
+   String c = "LootTable";
+   String d = "LootTableSeed";
 
    @Nullable
-   public bqa c() {
-      return this.c;
+   akf ax_();
+
+   void a(@Nullable akf var1);
+
+   default void a(akf $$0, long $$1) {
+      this.a($$0);
+      this.a($$1);
    }
+
+   long ay_();
+
+   void a(long var1);
+
+   im az_();
 
    @Nullable
-   public bqa d() {
-      return this.b;
-   }
+   czu i();
 
-   public wi a(bqt $$0) {
-      String $$1 = "death.attack." + this.j().a();
-      if (this.b == null && this.c == null) {
-         bqt $$5 = $$0.eN();
-         String $$6 = $$1 + ".player";
-         return $$5 != null ? wi.a($$6, $$0.O_(), $$5.O_()) : wi.a($$1, $$0.O_());
-      } else {
-         wi $$2 = this.b == null ? this.c.O_() : this.b.O_();
-         crs $$4 = this.b instanceof bqt $$3 ? $$3.eU() : crs.i;
-         return !$$4.d() && $$4.b(jr.d) ? wi.a($$1 + ".item", $$0.O_(), $$2, $$4.E()) : wi.a($$1, $$0.O_(), $$2);
+   static void a(cza $$0, ayd $$1, im $$2, akf $$3) {
+      if ($$0.c_($$2) instanceof boy $$5) {
+         $$5.a($$3, $$1.g());
       }
    }
 
-   public String e() {
-      return this.j().a();
+   default boolean a_(ty $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.a(new akf($$0.l("LootTable")));
+         if ($$0.b("LootTableSeed", 4)) {
+            this.a($$0.i("LootTableSeed"));
+         } else {
+            this.a(0L);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public boolean f() {
-      return switch (this.j().b()) {
-         case a -> false;
-         case b -> this.b instanceof bqt && !(this.b instanceof cka);
-         case c -> true;
-      };
-   }
+   default boolean b_(ty $$0) {
+      akf $$1 = this.ax_();
+      if ($$1 == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", $$1.toString());
+         long $$2 = this.ay_();
+         if ($$2 != 0L) {
+            $$0.a("LootTableSeed", $$2);
+         }
 
-   public boolean g() {
-      if (this.d() instanceof cka $$0 && $$0.ga().d) {
          return true;
       }
-
-      return false;
    }
 
-   @Nullable
-   public esj h() {
-      if (this.d != null) {
-         return this.d;
-      } else {
-         return this.c != null ? this.c.dk() : null;
+   default void e_(@Nullable ckl $$0) {
+      czu $$1 = this.i();
+      im $$2 = this.az_();
+      akf $$3 = this.ax_();
+      if ($$3 != null && $$1 != null && $$1.o() != null) {
+         eoi $$4 = $$1.o().aM().getLootTable($$3);
+         if ($$0 instanceof aqf) {
+            am.Q.a((aqf)$$0, $$3);
+         }
+
+         this.a(null);
+         eog.a $$5 = new eog.a((aqe)$$1).a(eqt.f, etf.b($$2));
+         if ($$0 != null) {
+            $$5.a($$0.gw()).a(eqt.a, $$0);
+         }
+
+         $$4.a(this, $$5.a(eqs.c), this.ay_());
       }
-   }
-
-   @Nullable
-   public esj i() {
-      return this.d;
-   }
-
-   public boolean a(avt<bpa> $$0) {
-      return this.a.a($$0);
-   }
-
-   public boolean a(aju<bpa> $$0) {
-      return this.a.a($$0);
-   }
-
-   public bpa j() {
-      return this.a.a();
-   }
-
-   public in<bpa> k() {
-      return this.a;
    }
 }

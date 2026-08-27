@@ -1,45 +1,61 @@
-public class aeq implements yp<aba> {
-   public static final yg<vi, aeq> a = yp.a(aeq::a, aeq::new);
-   private final long b;
-   private final long c;
+public class aeq implements yz<abk> {
+   public static final yq<vs, aeq> a = yz.a(aeq::a, aeq::new);
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
 
-   public aeq(long $$0, long $$1, boolean $$2) {
+   public aeq(bql $$0) {
+      this($$0.aj(), $$0.dq());
+   }
+
+   public aeq(int $$0, etf $$1) {
       this.b = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.c = $$3;
+      double $$2 = 3.9;
+      double $$3 = axw.a($$1.c, -3.9, 3.9);
+      double $$4 = axw.a($$1.d, -3.9, 3.9);
+      double $$5 = axw.a($$1.e, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
    }
 
-   private aeq(vi $$0) {
-      this.b = $$0.readLong();
-      this.c = $$0.readLong();
+   private aeq(vs $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
    }
 
-   private void a(vi $$0) {
-      $$0.b(this.b);
-      $$0.b(this.c);
+   private void a(vs $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
+      $$0.l(this.e);
    }
 
    @Override
-   public yr<aeq> a() {
-      return afl.aO;
+   public zb<aeq> a() {
+      return afv.aE;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public long b() {
+   public int b() {
       return this.b;
    }
 
-   public long e() {
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 }

@@ -1,79 +1,45 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.List;
+public class abq implements yz<abk> {
+   public static final yq<vs, abq> a = yz.a(abq::a, abq::new);
+   private final int b;
+   private final im c;
+   private final int d;
 
-public record abq(List<abq.a> b) implements yp<aba> {
-   public static final yg<vi, abq> a = yp.a(abq::a, abq::new);
-   private static final int c = 2097152;
-
-   private abq(vi $$0) {
-      this($$0.a(abq.a::new));
+   public abq(int $$0, im $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static abq a(List<dro> $$0) {
-      return new abq($$0.stream().map(abq.a::new).toList());
+   private abq(vs $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+      this.d = $$0.readUnsignedByte();
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vs $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.k(this.d);
    }
 
    @Override
-   public yr<abq> a() {
-      return afl.p;
+   public zb<abq> a() {
+      return afv.h;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public static record a(cyn a, byte[] b) {
-      public a(dro $$0) {
-         this($$0.f(), new byte[a($$0)]);
-         a(new vi(this.d()), $$0);
-      }
+   public int b() {
+      return this.b;
+   }
 
-      public a(vi $$0) {
-         this($$0.f(), $$0.a(2097152));
-      }
+   public im e() {
+      return this.c;
+   }
 
-      private static int a(dro $$0) {
-         int $$1 = 0;
-
-         for (drp $$2 : $$0.d()) {
-            $$1 += $$2.i().c();
-         }
-
-         return $$1;
-      }
-
-      public vi a() {
-         return new vi(Unpooled.wrappedBuffer(this.b));
-      }
-
-      private ByteBuf d() {
-         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
-         $$0.writerIndex(0);
-         return $$0;
-      }
-
-      public static void a(vi $$0, dro $$1) {
-         for (drp $$2 : $$1.d()) {
-            $$2.i().b($$0);
-         }
-      }
-
-      public void a(vi $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
-
-      public cyn b() {
-         return this.a;
-      }
-
-      public byte[] c() {
-         return this.b;
-      }
+   public int f() {
+      return this.d;
    }
 }

@@ -1,123 +1,58 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class alx {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("argument.pos.unloaded"));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wi.b("commands.fillbiome.toobig", $$0, $$1));
-
-   public static void a(CommandDispatcher<dv> $$0, dr $$1) {
+   public static void a(CommandDispatcher<ec> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("fillbiome").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(ed.a("config").then(ed.a("target", ep.c()).executes($$0x -> a((ec)$$0x.getSource(), ep.e($$0x, "target"))))))
             .then(
-               dw.a("from", fq.a())
+               ed.a("unconfig")
                   .then(
-                     dw.a("to", fq.a())
-                        .then(
-                           ((RequiredArgumentBuilder)dw.a("biome", eu.a($$1, ku.aw))
-                                 .executes($$0x -> a((dv)$$0x.getSource(), fq.a($$0x, "from"), fq.a($$0x, "to"), eu.a($$0x, "biome", ku.aw), $$0xx -> true)))
-                              .then(
-                                 dw.a("replace")
-                                    .then(
-                                       dw.a("filter", ex.a($$1, ku.aw))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dv)$$0x.getSource(),
-                                                   fq.a($$0x, "from"),
-                                                   fq.a($$0x, "to"),
-                                                   eu.a($$0x, "biome", ku.aw),
-                                                   ex.a($$0x, "filter", ku.aw)::test
-                                                )
-                                          )
-                                    )
-                              )
-                        )
+                     ed.a("target", fr.a())
+                        .suggests(($$0x, $$1) -> eh.b(a(((ec)$$0x.getSource()).l()), $$1))
+                        .executes($$0x -> a((ec)$$0x.getSource(), fr.a($$0x, "target")))
                   )
             )
       );
    }
 
-   private static int a(int $$0) {
-      return iy.c(iy.a($$0));
-   }
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
 
-   private static id a(id $$0) {
-      return new id(a($$0.u()), a($$0.v()), a($$0.w()));
-   }
-
-   private static dai a(MutableInt $$0, dre $$1, efi $$2, in<daf> $$3, Predicate<in<daf>> $$4) {
-      return ($$5, $$6, $$7, $$8) -> {
-         int $$9 = iy.c($$5);
-         int $$10 = iy.c($$6);
-         int $$11 = iy.c($$7);
-         in<daf> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
-         if ($$2.c($$9, $$10, $$11) && $$4.test($$12)) {
-            $$0.increment();
-            return $$3;
-         } else {
-            return $$12;
+      for (vq $$2 : $$0.ai().e()) {
+         if ($$2.k() instanceof arc $$3) {
+            $$1.add($$3.k().getId().toString());
          }
-      };
+      }
+
+      return $$1;
    }
 
-   public static Either<Integer, CommandSyntaxException> a(apu $$0, id $$1, id $$2, in<daf> $$3) {
-      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
-      });
+   private static int a(ec $$0, aqf $$1) {
+      GameProfile $$2 = $$1.fZ();
+      $$1.d.o();
+      $$0.a(() -> ws.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      return 1;
    }
 
-   public static Either<Integer, CommandSyntaxException> a(apu $$0, id $$1, id $$2, in<daf> $$3, Predicate<in<daf>> $$4, Consumer<Supplier<wi>> $$5) {
-      id $$6 = a($$1);
-      id $$7 = a($$2);
-      efi $$8 = efi.a($$6, $$7);
-      int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.aa().c(czc.z);
-      if ($$9 > $$10) {
-         return Either.right(b.create($$10, $$9));
-      } else {
-         List<dre> $$11 = new ArrayList<>();
-
-         for (int $$12 = jg.a($$8.j()); $$12 <= jg.a($$8.m()); $$12++) {
-            for (int $$13 = jg.a($$8.h()); $$13 <= jg.a($$8.k()); $$13++) {
-               dre $$14 = $$0.a($$13, $$12, dsd.n, false);
-               if ($$14 == null) {
-                  return Either.right(a.create());
-               }
-
-               $$11.add($$14);
+   private static int a(ec $$0, UUID $$1) {
+      for (vq $$2 : $$0.l().ai().e()) {
+         vy var5 = $$2.k();
+         if (var5 instanceof arc) {
+            arc $$3 = (arc)var5;
+            if ($$3.k().getId().equals($$1)) {
+               $$3.n();
             }
          }
-
-         MutableInt $$15 = new MutableInt(0);
-
-         for (dre $$16 : $$11) {
-            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.l().i().b());
-            $$16.a(true);
-         }
-
-         $$0.l().a.a($$11);
-         $$5.accept(() -> wi.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
-         return Either.left($$15.getValue());
       }
-   }
 
-   private static int a(dv $$0, id $$1, id $$2, in.c<daf> $$3, Predicate<in<daf>> $$4) throws CommandSyntaxException {
-      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
-      Optional<CommandSyntaxException> $$6 = $$5.right();
-      if ($$6.isPresent()) {
-         throw (CommandSyntaxException)$$6.get();
-      } else {
-         return (Integer)$$5.left().get();
-      }
+      $$0.b(ws.b("Can't find player to unconfig"));
+      return 0;
    }
 }

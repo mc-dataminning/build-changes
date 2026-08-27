@@ -1,46 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public abstract class djx extends djq {
-   protected djx(dph.d $$0) {
-      super($$0);
+public class djx extends dbr {
+   public static final MapCodec<djx> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(djx.a.b.fieldOf("kind").forGetter(dbr::b), u()).apply($$0, djx::new));
+   public static final int d = dre.a();
+   private static final int b = d + 1;
+   public static final dqy e = dqo.ba;
+   protected static final ety f = dcv.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final ety g = dcv.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+
+   @Override
+   public MapCodec<? extends djx> a() {
+      return c;
    }
 
-   private static boolean b(dpi $$0, czj $$1, id $$2) {
-      id $$3 = $$2.c();
-      dpi $$4 = $$1.a_($$3);
-      if ($$4.a(dcj.dN) && $$4.c(djp.c) == 1) {
-         return true;
-      } else if ($$4.u().e() == 8) {
-         return false;
-      } else {
-         int $$5 = eks.a($$1, $$0, $$2, $$4, $$3, ij.b, $$4.b($$1, $$3));
-         return $$5 < $$1.P();
+   protected djx(djx.a $$0, dpx.d $$1) {
+      super($$0, $$1);
+      this.k(this.n().a(e, Integer.valueOf(0)));
+   }
+
+   @Override
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return this.b() == djx.b.h ? g : f;
+   }
+
+   @Override
+   protected ety f(dpy $$0, cza $$1, im $$2) {
+      return etv.a();
+   }
+
+   @Override
+   public dpy a(cvl $$0) {
+      return super.a($$0).a(e, Integer.valueOf(dre.a($$0.i())));
+   }
+
+   @Override
+   protected dpy a(dpy $$0, dji $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected dpy a(dpy $$0, dhs $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends ayq {
+      Map<String, djx.a> a = new Object2ObjectArrayMap();
+      Codec<djx.a> b = axe.a(ayq::c, a::get);
+   }
+
+   public static enum b implements djx.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   protected abstract MapCodec<? extends djx> a();
-
-   private static boolean c(dpi $$0, czj $$1, id $$2) {
-      id $$3 = $$2.c();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(avj.a);
-   }
-
-   @Override
-   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dcj.j.n());
-      } else {
-         if ($$1.A($$2.c()) >= 9) {
-            dpi $$4 = this.n();
-
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               id $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dcj.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dcj.dN))));
-               }
-            }
-         }
+      @Override
+      public String c() {
+         return this.j;
       }
    }
 }

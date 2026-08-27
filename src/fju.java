@@ -1,71 +1,52 @@
-import javax.annotation.Nullable;
+public class fju extends fkt {
+   private static final ws a = ws.c("gui.toMenu");
+   private static final ws b = ws.c("gui.toTitle");
+   private final fkt c;
+   private final ws d;
+   private final ws r;
+   private final fil s = fil.d();
 
-public class fju extends fjx implements axs {
-   @Nullable
-   private wi a;
-   @Nullable
-   private wi b;
-   private int c;
-   private boolean d;
-   private final boolean o;
+   public fju(fkt $$0, ws $$1, ws $$2) {
+      this($$0, $$1, $$2, a);
+   }
 
-   public fju(boolean $$0) {
-      super(fbq.a);
-      this.o = $$0;
+   public fju(fkt $$0, ws $$1, ws $$2, ws $$3) {
+      super($$1);
+      this.c = $$0;
+      this.d = $$2;
+      this.r = $$3;
+   }
+
+   @Override
+   protected void aM_() {
+      this.s.c().b().a(10);
+      this.s.a(new fgb(this.l, this.p));
+      this.s.a(new ffo(this.d, this.p).d(this.n - 50).b(true));
+      feu $$0;
+      if (this.m.F()) {
+         $$0 = feu.a(this.r, $$0x -> this.m.a(this.c)).a();
+      } else {
+         $$0 = feu.a(b, $$0x -> this.m.a(new fky())).a();
+      }
+
+      this.s.a($$0);
+      this.s.a();
+      this.s.a(this::c);
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fif.a(this.s, this.G());
+   }
+
+   @Override
+   public ws i() {
+      return wr.a(this.l, this.d);
    }
 
    @Override
    public boolean aD_() {
       return false;
-   }
-
-   @Override
-   protected boolean aL_() {
-      return false;
-   }
-
-   @Override
-   public void a(wi $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(wi $$0) {
-      this.a = $$0;
-      this.c(wi.c("menu.working"));
-   }
-
-   @Override
-   public void c(wi $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.d = true;
-   }
-
-   @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      if (this.d) {
-         if (this.o) {
-            this.j.a(null);
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.m, this.a, this.k / 2, 70, 16777215);
-         }
-
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.m, wi.i().b(this.b).f(" " + this.c + "%"), this.k / 2, 90, 16777215);
-         }
-      }
    }
 }

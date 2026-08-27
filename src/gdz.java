@@ -1,41 +1,30 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public class gdz implements gde<dpg> {
+   private final ghl a;
+   private final ayd b = ayd.a();
 
-public class gdz implements gdu.a {
-   private final fby a;
-   private static final int b = 10;
-
-   public gdz(fby $$0) {
-      this.a = $$0;
+   public gdz(gdf.a $$0) {
+      this.a = $$0.d();
    }
 
-   @Override
-   public void a(ewr $$0, gai $$1, double $$2, double $$3, double $$4) {
-      czg $$5 = this.a.r;
-      id $$6 = id.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
-
-      for (id $$8 : id.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(czp.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = axm.h($$10, 0.9F, 0.9F);
-         long $$12 = jg.e($$8.a());
-         if ($$7.add($$12)) {
-            gdu.a(
-               $$0,
-               $$1,
-               $$5.M().p().a(czp.a, jg.a($$12)),
-               (double)jg.a(jg.b($$12), 8),
-               (double)jg.a(jg.c($$12), 8),
-               (double)jg.a(jg.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
-
-         if ($$9 != 15) {
-            gdu.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+   public void a(dpg $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
+      if (dpg.a.a($$0.c())) {
+         czu $$6 = $$0.i();
+         if ($$6 != null) {
+            csd $$7 = $$0.c().a();
+            if (!$$7.d()) {
+               this.b.b((long)ghj.a($$7));
+               dph $$8 = $$0.d();
+               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
+            }
          }
       }
+   }
+
+   public static void a(float $$0, czu $$1, exn $$2, gbe $$3, int $$4, csd $$5, ghl $$6, float $$7, float $$8, ayd $$9) {
+      $$2.a();
+      $$2.a(0.5F, 0.4F, 0.5F);
+      $$2.a(a.d.rotationDegrees(axw.j($$0, $$7, $$8)));
+      ghj.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
+      $$2.b();
    }
 }

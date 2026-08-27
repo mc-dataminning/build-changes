@@ -1,41 +1,49 @@
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.Optional;
 
-public class bff {
-   public static final TypeReference a = () -> "level";
-   public static final TypeReference b = () -> "player";
-   public static final TypeReference c = () -> "chunk";
-   public static final TypeReference d = () -> "hotbar";
-   public static final TypeReference e = () -> "options";
-   public static final TypeReference f = () -> "structure";
-   public static final TypeReference g = () -> "stats";
-   public static final TypeReference h = () -> "saved_data/command_storage";
-   public static final TypeReference i = () -> "saved_data/chunks";
-   public static final TypeReference j = () -> "saved_data/map_data";
-   public static final TypeReference k = () -> "saved_data/idcounts";
-   public static final TypeReference l = () -> "saved_data/raids";
-   public static final TypeReference m = () -> "saved_data/random_sequences";
-   public static final TypeReference n = () -> "saved_data/structure_feature_indices";
-   public static final TypeReference o = () -> "saved_data/scoreboard";
-   public static final TypeReference p = () -> "advancements";
-   public static final TypeReference q = () -> "poi_chunk";
-   public static final TypeReference r = () -> "entity_chunk";
-   public static final TypeReference s = () -> "block_entity";
-   public static final TypeReference t = () -> "item_stack";
-   public static final TypeReference u = () -> "block_state";
-   public static final TypeReference v = () -> "flat_block_state";
-   public static final TypeReference w = () -> "data_components";
-   public static final TypeReference x = () -> "entity_name";
-   public static final TypeReference y = () -> "entity_tree";
-   public static final TypeReference z = () -> "entity";
-   public static final TypeReference A = () -> "block_name";
-   public static final TypeReference B = () -> "item_name";
-   public static final TypeReference C = () -> "game_event_name";
-   public static final TypeReference D = () -> "untagged_spawner";
-   public static final TypeReference E = () -> "structure_feature";
-   public static final TypeReference F = () -> "objective";
-   public static final TypeReference G = () -> "team";
-   public static final TypeReference H = () -> "recipe";
-   public static final TypeReference I = () -> "biome";
-   public static final TypeReference J = () -> "multi_noise_biome_source_parameter_list";
-   public static final TypeReference K = () -> "world_gen_settings";
+public class bff extends DataFix {
+   public bff(Schema $$0) {
+      super($$0, false);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bfp.c);
+      OpticFinder<?> $$1 = $$0.findField("block_ticks");
+      return this.fixTypeEverywhereTyped("Handle ticks saved in the wrong chunk", $$0, $$1x -> {
+         Optional<? extends Typed<?>> $$2 = $$1x.getOptionalTyped($$1);
+         Optional<? extends Dynamic<?>> $$3 = $$2.isPresent() ? $$2.get().write().result() : Optional.empty();
+         return $$1x.update(DSL.remainderFinder(), $$1xx -> {
+            int $$2x = $$1xx.get("xPos").asInt(0);
+            int $$3x = $$1xx.get("zPos").asInt(0);
+            Optional<? extends Dynamic<?>> $$4 = $$1xx.get("fluid_ticks").get().result();
+            $$1xx = a($$1xx, $$2x, $$3x, $$3, "neighbor_block_ticks");
+            return a($$1xx, $$2x, $$3x, $$4, "neighbor_fluid_ticks");
+         });
+      });
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2, Optional<? extends Dynamic<?>> $$3, String $$4) {
+      if ($$3.isPresent()) {
+         List<? extends Dynamic<?>> $$5 = $$3.get().asStream().filter($$2x -> {
+            int $$3x = $$2x.get("x").asInt(0);
+            int $$4x = $$2x.get("z").asInt(0);
+            int $$5x = Math.abs($$1 - ($$3x >> 4));
+            int $$6 = Math.abs($$2 - ($$4x >> 4));
+            return ($$5x != 0 || $$6 != 0) && $$5x <= 1 && $$6 <= 1;
+         }).toList();
+         if (!$$5.isEmpty()) {
+            $$0 = $$0.set("UpgradeData", $$0.get("UpgradeData").orElseEmptyMap().set($$4, $$0.createList($$5.stream())));
+         }
+      }
+
+      return $$0;
+   }
 }

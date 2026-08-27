@@ -1,110 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dbh extends dfd {
-   public static final MapCodec<dbh> a = b(dbh::new);
-   public static final dqc b = dgc.aE;
-   private static final etc c = dch.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final etc d = dch.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final etc e = dch.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final etc f = dch.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final etc g = dch.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final etc h = dch.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final etc i = dch.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final etc j = esz.a(c, d, e, f);
-   private static final etc k = esz.a(c, g, h, i);
-   private static final wi l = wi.c("container.repair");
-   private static final float m = 2.0F;
-   private static final int n = 40;
+public class dbh {
+   public static final Codec<dbh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dbh.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), akd.c(ld.ay)).apply($$0, dbh::new)
+   );
+   public static final Codec<iv<dbh>> b = akb.a(ld.aQ, a);
+   private final dbh.a c;
+   private final dbc.c<iv<dat>> d;
 
-   @Override
-   public MapCodec<dbh> a() {
-      return a;
+   public dbh(dbh.a $$0, iw<dat> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   public dbh(dph.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ij.c));
+   public dbc.c<iv<dat>> a() {
+      return this.d;
    }
 
-   @Override
-   public dpi a(cux $$0) {
-      return this.n().a(b, $$0.g().h());
+   public static Map<dbh.a, dbc.c<ake<dat>>> b() {
+      return dbh.a.f.values().stream().collect(Collectors.toMap($$0 -> (dbh.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if ($$1.B) {
-         return bof.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(auz.aC);
-         return bof.b;
+   public static record a(akf d, dbh.a.a e) {
+      public static final dbh.a a = new dbh.a(
+         new akf("nether"),
+         new dbh.a.a() {
+            @Override
+            public <T> dbc.c<T> apply(Function<ake<dat>, T> $$0) {
+               return new dbc.c<>(
+                  List.of(
+                     Pair.of(dbc.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dba.ac)),
+                     Pair.of(dbc.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dba.af)),
+                     Pair.of(dbc.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dba.ae)),
+                     Pair.of(dbc.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dba.ad)),
+                     Pair.of(dbc.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dba.ag))
+                  )
+               );
+            }
+         }
+      );
+      public static final dbh.a b = new dbh.a(new akf("overworld"), new dbh.a.a() {
+         @Override
+         public <T> dbc.c<T> apply(Function<ake<dat>, T> $$0) {
+            return dbh.a.a($$0);
+         }
+      });
+      static final Map<akf, dbh.a> f = Stream.of(a, b).collect(Collectors.toMap(dbh.a::b, $$0 -> (dbh.a)$$0));
+      public static final Codec<dbh.a> c = akf.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> dbc.c<T> a(Function<ake<dat>, T> $$0) {
+         Builder<Pair<dbc.d, T>> $$1 = ImmutableList.builder();
+         new dbj().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new dbc.c<>($$1.build());
       }
-   }
 
-   @Nullable
-   @Override
-   protected boj b(dpi $$0, czg $$1, id $$2) {
-      return new bop(($$2x, $$3, $$4) -> new cmy($$2x, $$3, cnh.a($$1, $$2)), l);
-   }
-
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      ij $$4 = $$0.c(b);
-      return $$4.o() == ij.a.a ? j : k;
-   }
-
-   @Override
-   protected void a(cgj $$0) {
-      $$0.b(2.0F, 40);
-   }
-
-   @Override
-   public void a(czg $$0, id $$1, dpi $$2, dpi $$3, cgj $$4) {
-      if (!$$4.aU()) {
-         $$0.c(1031, $$1, 0);
+      public Stream<ake<dat>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<ake<dat>>map(Pair::getSecond).distinct();
       }
-   }
 
-   @Override
-   public void a(czg $$0, id $$1, cgj $$2) {
-      if (!$$2.aU()) {
-         $$0.c(1029, $$1, 0);
+      public akf b() {
+         return this.d;
       }
-   }
 
-   @Override
-   public boy a(bqa $$0) {
-      return $$0.dN().b($$0);
-   }
-
-   @Nullable
-   public static dpi e(dpi $$0) {
-      if ($$0.a(dcj.gS)) {
-         return dcj.gT.n().a(b, $$0.c(b));
-      } else {
-         return $$0.a(dcj.gT) ? dcj.gU.n().a(b, $$0.c(b)) : null;
+      public dbh.a.a c() {
+         return this.e;
       }
-   }
 
-   @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dpi $$0, elq $$1) {
-      return false;
-   }
-
-   @Override
-   public int b(dpi $$0, cym $$1, id $$2) {
-      return $$0.d($$1, $$2).ak;
+      @FunctionalInterface
+      interface a {
+         <T> dbc.c<T> apply(Function<ake<dat>, T> var1);
+      }
    }
 }

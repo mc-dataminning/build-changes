@@ -1,23 +1,20 @@
-public record zr(ajv a) implements zq {
-   public static <T extends vi> yg<T, zr> a(ajv $$0, int $$1) {
-      return zq.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.j($$3);
-            return new zr($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
+public record zr(apt b) implements yz<zq> {
+   public static final yq<vs, zr> a = yz.a(zr::a, zr::new);
+
+   private zr(vs $$0) {
+      this(new apt($$0));
+   }
+
+   private void a(vs $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public zq.b<zr> a() {
-      return new zq.b<>(this.a);
+   public zb<zr> a() {
+      return zp.j;
    }
 
-   public ajv b() {
-      return this.a;
+   public void a(zq $$0) {
+      $$0.a(this);
    }
 }

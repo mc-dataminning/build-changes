@@ -1,29 +1,32 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class bts {
-   public static btw<bqv> a(int $$0) {
-      return bvy.a(
-         (Function<bvy.b<bqv>, ? extends App<bvy.c<bqv>, bwb<bqv>>>)($$1 -> $$1.group($$1.a(bzw.n), $$1.b(bzw.o), $$1.c(bzw.p), $$1.b(bzw.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bqt $$9 = $$1.b($$3);
-                     if (!a($$7) && $$7.i($$9) && $$1.<bzy>b($$5).a($$9)) {
-                        $$2.a(new bsw($$9, true));
-                        $$7.a(boe.a);
-                        $$7.C($$9);
-                        $$4.a(true, (long)$$0);
-                        return true;
-                     } else {
-                        return false;
+   public static bsx<brm> a(float $$0) {
+      return bwj.a(
+         (Function<bwj.b<brm>, ? extends App<bwj.c<brm>, bwm<brm>>>)($$1 -> $$1.group($$1.c(cah.m))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dn())) {
+                           return false;
+                        } else {
+                           im $$5 = $$3.dn();
+                           List<im> $$6 = im.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(im::i).collect(Collectors.toList());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new cak($$2x, $$0, 0)));
+                           return true;
+                        }
                      }
-                  }))
+               ))
       );
-   }
-
-   private static boolean a(bqv $$0) {
-      return $$0.b($$1 -> {
-         crn $$2 = $$1.f();
-         return $$2 instanceof csi && $$0.a((csi)$$2);
-      });
    }
 }

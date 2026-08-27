@@ -1,42 +1,48 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bva {
-   private static final int a = 200;
-
-   public static <E extends bqv> bsm<E> a(BiConsumer<E, bqt> $$0) {
-      return a($$0x -> false, $$0, true);
+   public static bsx<brm> a(cah<im> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, etf::c);
    }
 
-   public static <E extends bqv> bsm<E> a(Predicate<bqt> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
+   public static buh<brm> b(cah<? extends bql> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bql::dl);
    }
 
-   public static <E extends bqv> bsm<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends bqv> bsm<E> a(Predicate<bqt> $$0, BiConsumer<E, bqt> $$1, boolean $$2) {
-      return bvy.a(
-         (Function<bvy.b<E>, ? extends App<bvy.c<E>, bwb<E>>>)($$3 -> $$3.group($$3.b(bzw.o), $$3.a(bzw.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bqt $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bA() && $$9.dM() == $$7.dM() && !$$0.test($$9)) {
-                     return true;
+   private static <T> buh<brm> a(cah<T> $$0, float $$1, int $$2, boolean $$3, Function<T, etf> $$4) {
+      return bwj.a(
+         (Function<bwj.b<brm>, ? extends App<bwj.c<brm>, bwm<brm>>>)($$5 -> $$5.group($$5.a(cah.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<cak> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
                   } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
+                     etf $$11 = $$8.dl();
+                     etf $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((jf)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           etf $$13 = $$10.get().a().a().d($$11);
+                           etf $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           etf $$16 = ccb.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new cak($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
+                     }
                   }
                }))
       );
-   }
-
-   private static boolean a(bqt $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dM().Y() - $$1.get() > 200L;
    }
 }

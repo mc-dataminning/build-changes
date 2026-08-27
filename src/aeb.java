@@ -1,29 +1,19 @@
-public class aeb implements yp<aba> {
-   public static final yg<vi, aeb> a = yp.a(aeb::a, aeb::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public aeb(int $$0) {
-      this.b = $$0;
-   }
-
-   private aeb(vi $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vi $$0) {
-      $$0.c(this.b);
-   }
+public record aeb(ws b, Optional<byte[]> c) implements yz<abk> {
+   public static final yq<ByteBuf, aeb> a = yq.a(wu.f, aeb::b, yo.j.a(yo::a), aeb::e, aeb::new);
 
    @Override
-   public yr<aeb> a() {
-      return afl.az;
+   public zb<aeb> a() {
+      return afv.ap;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Optional<byte[]> e() {
+      return this.c;
    }
 }

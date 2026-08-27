@@ -1,36 +1,37 @@
-public interface avh {
-   avt<bqg<?>> a = a("skeletons");
-   avt<bqg<?>> b = a("zombies");
-   avt<bqg<?>> c = a("raiders");
-   avt<bqg<?>> d = a("undead");
-   avt<bqg<?>> e = a("beehive_inhabitors");
-   avt<bqg<?>> f = a("arrows");
-   avt<bqg<?>> g = a("impact_projectiles");
-   avt<bqg<?>> h = a("powder_snow_walkable_mobs");
-   avt<bqg<?>> i = a("axolotl_always_hostiles");
-   avt<bqg<?>> j = a("axolotl_hunt_targets");
-   avt<bqg<?>> k = a("freeze_immune_entity_types");
-   avt<bqg<?>> l = a("freeze_hurts_extra_types");
-   avt<bqg<?>> m = a("can_breathe_under_water");
-   avt<bqg<?>> n = a("frog_food");
-   avt<bqg<?>> o = a("fall_damage_immune");
-   avt<bqg<?>> p = a("dismounts_underwater");
-   avt<bqg<?>> q = a("non_controlling_rider");
-   avt<bqg<?>> r = a("deflects_projectiles");
-   avt<bqg<?>> s = a("can_turn_in_boats");
-   avt<bqg<?>> t = a("illager");
-   avt<bqg<?>> u = a("aquatic");
-   avt<bqg<?>> v = a("arthropod");
-   avt<bqg<?>> w = a("ignores_poison_and_regen");
-   avt<bqg<?>> x = a("inverted_healing_and_harm");
-   avt<bqg<?>> y = a("wither_friends");
-   avt<bqg<?>> z = a("illager_friends");
-   avt<bqg<?>> A = a("not_scary_for_pufferfish");
-   avt<bqg<?>> B = a("sensitive_to_impaling");
-   avt<bqg<?>> C = a("sensitive_to_bane_of_arthropods");
-   avt<bqg<?>> D = a("no_anger_from_wind_charge");
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-   private static avt<bqg<?>> a(String $$0) {
-      return avt.a(ku.v, new ajv($$0));
-   }
+public interface avh {
+   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   avh b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   avh c = $$0 -> a.format((double)$$0 * 0.1);
+   avh d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   avh e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
+      }
+   };
+
+   String format(int var1);
 }

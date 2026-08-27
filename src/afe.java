@@ -1,59 +1,86 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public class afe implements yz<abk> {
+   public static final yq<wd, afe> a = yz.a(afe::a, afe::new);
+   public static final float b = 8.0F;
+   private final iv<auy> c;
+   private final ava d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final float h;
+   private final float i;
+   private final long j;
 
-public class afe implements yp<aba> {
-   public static final yg<vt, afe> a = yp.a(afe::a, afe::new);
-   private final boolean b;
-   private final List<af> c;
-   private final Set<ajv> d;
-   private final Map<ajv, ah> e;
-
-   public afe(boolean $$0, Collection<af> $$1, Set<ajv> $$2, Map<ajv, ah> $$3) {
-      this.b = $$0;
-      this.c = List.copyOf($$1);
-      this.d = Set.copyOf($$2);
-      this.e = Map.copyOf($$3);
+   public afe(iv<auy> $$0, ava $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = (int)($$2 * 8.0);
+      this.f = (int)($$3 * 8.0);
+      this.g = (int)($$4 * 8.0);
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
    }
 
-   private afe(vt $$0) {
-      this.b = $$0.readBoolean();
-      this.c = af.b.decode($$0);
-      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, vi::q);
-      this.e = $$0.a(vi::q, ah::b);
+   private afe(wd $$0) {
+      this.c = auy.d.decode($$0);
+      this.d = $$0.b(ava.class);
+      this.e = $$0.readInt();
+      this.f = $$0.readInt();
+      this.g = $$0.readInt();
+      this.h = $$0.readFloat();
+      this.i = $$0.readFloat();
+      this.j = $$0.readLong();
    }
 
-   private void a(vt $$0) {
-      $$0.a(this.b);
-      af.b.encode($$0, this.c);
-      $$0.a(this.d, vi::a);
-      $$0.a(this.e, vi::a, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(wd $$0) {
+      auy.d.encode($$0, this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
+      $$0.p(this.f);
+      $$0.p(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.b(this.j);
    }
 
    @Override
-   public yr<afe> a() {
-      return afl.ba;
+   public zb<afe> a() {
+      return afv.aS;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public List<af> b() {
+   public iv<auy> b() {
       return this.c;
    }
 
-   public Set<ajv> e() {
+   public ava e() {
       return this.d;
    }
 
-   public Map<ajv, ah> f() {
-      return this.e;
+   public double f() {
+      return (double)((float)this.e / 8.0F);
    }
 
-   public boolean g() {
-      return this.b;
+   public double g() {
+      return (double)((float)this.f / 8.0F);
+   }
+
+   public double h() {
+      return (double)((float)this.g / 8.0F);
+   }
+
+   public float i() {
+      return this.h;
+   }
+
+   public float j() {
+      return this.i;
+   }
+
+   public long k() {
+      return this.j;
    }
 }

@@ -1,59 +1,36 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+public enum drc implements ayq {
+   a("north_south"),
+   b("east_west"),
+   c("ascending_east"),
+   d("ascending_west"),
+   e("ascending_north"),
+   f("ascending_south"),
+   g("south_east"),
+   h("south_west"),
+   i("north_west"),
+   j("north_east");
 
-public class drc implements AutoCloseable {
-   private final czh a;
-   private final Long2ObjectMap<drp> b = new Long2ObjectOpenHashMap();
-   @Nullable
-   private drp c;
-   private long d;
+   private final String k;
 
-   public drc(czh $$0) {
-      this.a = $$0;
+   private drc(String $$0) {
+      this.k = $$0;
    }
 
-   @Nullable
-   public drp a(id $$0) {
-      int $$1 = this.a.e($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.am()) {
-         long $$2 = jg.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (drp)this.b.computeIfAbsent($$2, $$2x -> {
-               dre $$3 = this.a.a(jg.a($$0.u()), jg.a($$0.w()));
-               drp $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
-         }
-
-         return this.c;
-      } else {
-         return null;
-      }
-   }
-
-   public dpi b(id $$0) {
-      drp $$1 = this.a($$0);
-      if ($$1 == null) {
-         return dcj.a.n();
-      } else {
-         int $$2 = jg.b($$0.u());
-         int $$3 = jg.b($$0.v());
-         int $$4 = jg.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
-      }
+   public String a() {
+      return this.k;
    }
 
    @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+   public String toString() {
+      return this.k;
+   }
 
-      while (var1.hasNext()) {
-         drp $$0 = (drp)var1.next();
-         $$0.b();
-      }
+   public boolean b() {
+      return this == e || this == c || this == f || this == d;
+   }
+
+   @Override
+   public String c() {
+      return this.k;
    }
 }

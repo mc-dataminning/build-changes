@@ -1,46 +1,18 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class esl extends etc {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public class esl {
+   private static final Codec<esk> d = lc.K.q().dispatch(esk::a, esj::a);
+   public static final Codec<esk> a = axe.a(
+      (Supplier<Codec<esk>>)(() -> Codec.either(esh.b, d)
+            .xmap($$0 -> (esk)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof esh $$1 ? Either.left($$1) : Either.right($$0)))
+   );
+   public static final esj b = a("fixed", esi.a);
+   public static final esj c = a("context", esh.a);
 
-   protected esl(ess $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
-   }
-
-   esl(ess $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
-   }
-
-   @Override
-   protected DoubleList a(ij.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
-      }
+   private static esj a(String $$0, Codec<? extends esk> $$1) {
+      return ji.a(lc.K, new akf($$0), new esj($$1));
    }
 }

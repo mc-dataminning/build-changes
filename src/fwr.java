@@ -1,66 +1,67 @@
-public class fwr extends fyw {
-   private final float a;
-   private final float b;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   fwr(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, crs $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public record fwr(String a, @Nullable fwr.a b) {
+   public static fwr a() {
+      return a(null);
    }
 
-   @Override
-   public fya b() {
-      return fya.a;
+   public static fwr a(String $$0) {
+      return a(new fwr.a.b($$0));
    }
 
-   protected fwr(fuq $$0, double $$1, double $$2, double $$3, crs $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(fby.Q().as().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
+   public static fwr a(eyu $$0) {
+      return a(new fwr.a.a($$0));
    }
 
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
+   public static fwr a(@Nullable fwr.a $$0) {
+      return new fwr(g(), $$0);
    }
 
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
    }
 
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fwr.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
    }
 
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fwr.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
    }
 
-   public static class a implements fxz<kj> {
-      public fxw a(kj $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fwr($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("24w11a");
+      if (fcu.e().a()) {
+         $$0.append(" (modded)");
       }
+
+      return $$0.toString();
    }
 
-   public static class b implements fxz<kq> {
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fwr($$1, $$2, $$3, $$4, new crs(crv.qP));
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public fwr.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements fwr.a {
+         public a(eyu $$0) {
+            this($$0.a, $$0.n);
+         }
       }
-   }
 
-   public static class c implements fxz<kq> {
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fwr($$1, $$2, $$3, $$4, new crs(crv.qB));
+      public static record b(String a) implements fwr.a {
       }
    }
 }

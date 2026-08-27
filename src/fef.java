@@ -1,278 +1,289 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.ArabicShapingException;
+import com.ibm.icu.text.Bidi;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fef<T> extends fdp {
-   public static final BooleanSupplier a = fjx::t;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final wi c;
-   private int d;
-   private T f;
-   private final fef.c<T> m;
-   private final Function<T, wi> n;
-   private final Function<fef<T>, ww> o;
-   private final fef.b<T> p;
-   private final boolean q;
-   private final fcb.l<T> r;
+public class fef {
+   private static final float d = 0.01F;
+   private static final Vector3f e = new Vector3f(0.0F, 0.0F, 0.03F);
+   public static final int a = 8;
+   public final int b = 9;
+   public final ayd c = ayd.a();
+   private final Function<akf, fhl> f;
+   final boolean g;
+   private final fdg h;
 
-   fef(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      wi $$4,
-      wi $$5,
-      int $$6,
-      T $$7,
-      fef.c<T> $$8,
-      Function<T, wi> $$9,
-      Function<fef<T>, ww> $$10,
-      fef.b<T> $$11,
-      fcb.l<T> $$12,
-      boolean $$13
-   ) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.f = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.f();
-   }
-
-   private void f() {
-      this.a(this.r.apply(this.f));
-   }
-
-   @Override
-   public void b() {
-      if (fjx.s()) {
-         this.a(-1);
-      } else {
-         this.a(1);
-      }
-   }
-
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = axm.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
-   }
-
-   private T b(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(axm.b(this.d + $$0, $$1.size()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
-      }
-
-      return true;
-   }
-
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
-
-      this.b($$0);
-   }
-
-   private void b(T $$0) {
-      wi $$1 = this.c($$0);
-      this.b($$1);
+   public fef(Function<akf, fhl> $$0, boolean $$1) {
       this.f = $$0;
-      this.f();
+      this.g = $$1;
+      this.h = new fdg(($$0x, $$1x) -> this.a($$1x.k()).a($$0x, this.g).a($$1x.b()));
    }
 
-   private wi c(T $$0) {
-      return (wi)(this.q ? this.n.apply($$0) : this.d($$0));
+   fhl a(akf $$0) {
+      return this.f.apply($$0);
    }
 
-   private ww d(T $$0) {
-      return wh.a(this.c, this.n.apply($$0));
-   }
-
-   public T a() {
-      return this.f;
-   }
-
-   @Override
-   protected ww aK_() {
-      return this.o.apply(this);
-   }
-
-   @Override
-   public void a(fhu $$0) {
-      $$0.a(fht.a, this.aK_());
-      if (this.j) {
-         T $$1 = this.b(1);
-         wi $$2 = this.c($$1);
-         if (this.aI_()) {
-            $$0.a(fht.d, wi.a("narration.cycle_button.usage.focused", $$2));
-         } else {
-            $$0.a(fht.d, wi.a("narration.cycle_button.usage.hovered", $$2));
-         }
+   public String a(String $$0) {
+      try {
+         Bidi $$1 = new Bidi(new ArabicShaping(8).shape($$0), 127);
+         $$1.setReorderingMode(0);
+         return $$1.writeReordered(2);
+      } catch (ArabicShapingException var3) {
+         return $$0;
       }
    }
 
-   public ww d() {
-      return a_((wi)(this.q ? this.d(this.f) : this.y()));
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gbe $$6, fef.a $$7, int $$8, int $$9) {
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, this.a());
    }
 
-   public static <T> fef.a<T> a(Function<T, wi> $$0) {
-      return new fef.a<>($$0);
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gbe $$6, fef.a $$7, int $$8, int $$9, boolean $$10) {
+      return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
    }
 
-   public static fef.a<Boolean> a(wi $$0, wi $$1) {
-      return new fef.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   public int a(ws $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gbe $$6, fef.a $$7, int $$8, int $$9) {
+      return this.a($$0.g(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public static fef.a<Boolean> e() {
-      return new fef.a<Boolean>($$0 -> $$0 ? wh.b : wh.c).a(b);
+   public int a(axi $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gbe $$6, fef.a $$7, int $$8, int $$9) {
+      return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public static fef.a<Boolean> b(boolean $$0) {
-      return e().a($$0);
+   public void a(axi $$0, float $$1, float $$2, int $$3, int $$4, Matrix4f $$5, gbe $$6, int $$7) {
+      int $$8 = a($$4);
+      fef.b $$9 = new fef.b($$6, 0.0F, 0.0F, $$8, false, $$5, fef.a.a, $$7);
+
+      for (int $$10 = -1; $$10 <= 1; $$10++) {
+         for (int $$11 = -1; $$11 <= 1; $$11++) {
+            if ($$10 != 0 || $$11 != 0) {
+               float[] $$12 = new float[]{$$1};
+               int $$13 = $$10;
+               int $$14 = $$11;
+               $$0.accept(($$6x, $$7x, $$8x) -> {
+                  boolean $$9x = $$7x.b();
+                  fhl $$10x = this.a($$7x.k());
+                  evp $$11x = $$10x.a($$8x, this.g);
+                  $$9.l = $$12[0] + (float)$$13 * $$11x.b();
+                  $$9.m = $$2 + (float)$$14 * $$11x.b();
+                  $$12[0] += $$11x.a($$9x);
+                  return $$9.accept($$6x, $$7x.a($$8), $$8x);
+               });
+            }
+         }
+      }
+
+      fef.b $$15 = new fef.b($$6, $$1, $$2, a($$3), false, $$5, fef.a.c, $$7);
+      $$0.accept($$15);
+      $$15.a(0, $$1);
    }
 
-   public static class a<T> {
-      private int a;
+   private static int a(int $$0) {
+      return ($$0 & -67108864) == 0 ? $$0 | 0xFF000000 : $$0;
+   }
+
+   private int b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gbe $$6, fef.a $$7, int $$8, int $$9, boolean $$10) {
+      if ($$10) {
+         $$0 = this.a($$0);
+      }
+
+      $$3 = a($$3);
+      Matrix4f $$11 = new Matrix4f($$5);
+      if ($$4) {
+         this.b($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9);
+         $$11.translate(e);
+      }
+
+      $$1 = this.b($$0, $$1, $$2, $$3, false, $$11, $$6, $$7, $$8, $$9);
+      return (int)$$1 + ($$4 ? 1 : 0);
+   }
+
+   private int b(axi $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gbe $$6, fef.a $$7, int $$8, int $$9) {
+      $$3 = a($$3);
+      Matrix4f $$10 = new Matrix4f($$5);
+      if ($$4) {
+         this.c($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9);
+         $$10.translate(e);
+      }
+
+      $$1 = this.c($$0, $$1, $$2, $$3, false, $$10, $$6, $$7, $$8, $$9);
+      return (int)$$1 + ($$4 ? 1 : 0);
+   }
+
+   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gbe $$6, fef.a $$7, int $$8, int $$9) {
+      fef.b $$10 = new fef.b($$6, $$1, $$2, $$3, $$4, $$5, $$7, $$9);
+      ayp.c($$0, xp.a, $$10);
+      return $$10.a($$8, $$1);
+   }
+
+   private float c(axi $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gbe $$6, fef.a $$7, int $$8, int $$9) {
+      fef.b $$10 = new fef.b($$6, $$1, $$2, $$3, $$4, $$5, $$7, $$9);
+      $$0.accept($$10);
+      return $$10.a($$8, $$1);
+   }
+
+   void a(fhp $$0, boolean $$1, boolean $$2, float $$3, float $$4, float $$5, Matrix4f $$6, exr $$7, float $$8, float $$9, float $$10, float $$11, int $$12) {
+      $$0.a($$2, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12);
+      if ($$1) {
+         $$0.a($$2, $$4 + $$3, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12);
+      }
+   }
+
+   public int b(String $$0) {
+      return axw.f(this.h.a($$0));
+   }
+
+   public int a(wx $$0) {
+      return axw.f(this.h.a($$0));
+   }
+
+   public int a(axi $$0) {
+      return axw.f(this.h.a($$0));
+   }
+
+   public String a(String $$0, int $$1, boolean $$2) {
+      return $$2 ? this.h.c($$0, $$1, xp.a) : this.h.b($$0, $$1, xp.a);
+   }
+
+   public String a(String $$0, int $$1) {
+      return this.h.b($$0, $$1, xp.a);
+   }
+
+   public wx a(wx $$0, int $$1) {
+      return this.h.a($$0, $$1, xp.a);
+   }
+
+   public int b(String $$0, int $$1) {
+      return 9 * this.h.g($$0, $$1, xp.a).size();
+   }
+
+   public int b(wx $$0, int $$1) {
+      return 9 * this.h.b($$0, $$1, xp.a).size();
+   }
+
+   public List<axi> c(wx $$0, int $$1) {
+      return tt.a().a(this.h.b($$0, $$1, xp.a));
+   }
+
+   public boolean a() {
+      return tt.a().b();
+   }
+
+   public fdg b() {
+      return this.h;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   class b implements axj {
+      final gbe a;
+      private final boolean c;
+      private final float d;
+      private final float e;
+      private final float f;
+      private final float g;
+      private final float h;
+      private final Matrix4f i;
+      private final fef.a j;
+      private final int k;
+      float l;
+      float m;
       @Nullable
-      private T b;
-      private final Function<T, wi> c;
-      private fcb.l<T> d = $$0x -> null;
-      private Function<fef<T>, ww> e = fef::d;
-      private fef.c<T> f = fef.c.a(ImmutableList.of());
-      private boolean g;
+      private List<fhp.a> n;
 
-      public a(Function<T, wi> $$0) {
-         this.c = $$0;
-      }
-
-      public fef.a<T> a(Collection<T> $$0) {
-         return this.a(fef.c.a($$0));
-      }
-
-      @SafeVarargs
-      public final fef.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public fef.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(fef.c.a(fef.a, $$0, $$1));
-      }
-
-      public fef.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(fef.c.a($$0, $$1, $$2));
-      }
-
-      public fef.a<T> a(fef.c<T> $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fef.a<T> a(fcb.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fef.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
+      private void a(fhp.a $$0) {
+         if (this.n == null) {
+            this.n = Lists.newArrayList();
          }
 
-         return this;
+         this.n.add($$0);
       }
 
-      public fef.a<T> a(Function<fef<T>, ww> $$0) {
-         this.e = $$0;
-         return this;
+      public b(gbe $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fef.a $$6, int $$7) {
+         this.a = $$0;
+         this.l = $$1;
+         this.m = $$2;
+         this.c = $$4;
+         this.d = $$4 ? 0.25F : 1.0F;
+         this.e = (float)($$3 >> 16 & 0xFF) / 255.0F * this.d;
+         this.f = (float)($$3 >> 8 & 0xFF) / 255.0F * this.d;
+         this.g = (float)($$3 & 0xFF) / 255.0F * this.d;
+         this.h = (float)($$3 >> 24 & 0xFF) / 255.0F;
+         this.i = $$5;
+         this.j = $$6;
+         this.k = $$7;
       }
 
-      public fef.a<T> a() {
-         this.g = true;
-         return this;
-      }
-
-      public fef<T> a(wi $$0, fef.b<T> $$1) {
-         return this.a(0, 0, 150, 20, $$0, $$1);
-      }
-
-      public fef<T> a(int $$0, int $$1, int $$2, int $$3, wi $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
-
-      public fef<T> a(int $$0, int $$1, int $$2, int $$3, wi $$4, fef.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
+      @Override
+      public boolean accept(int $$0, xp $$1, int $$2) {
+         fhl $$3 = fef.this.a($$1.k());
+         evp $$4 = $$3.a($$2, fef.this.g);
+         fhp $$5 = $$1.f() && $$2 != 32 ? $$3.a($$4) : $$3.a($$2);
+         boolean $$6 = $$1.b();
+         float $$7 = this.h;
+         xr $$8 = $$1.a();
+         float $$10;
+         float $$11;
+         float $$12;
+         if ($$8 != null) {
+            int $$9 = $$8.a();
+            $$10 = (float)($$9 >> 16 & 0xFF) / 255.0F * this.d;
+            $$11 = (float)($$9 >> 8 & 0xFF) / 255.0F * this.d;
+            $$12 = (float)($$9 & 0xFF) / 255.0F * this.d;
          } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            wi $$8 = this.c.apply($$7);
-            wi $$9 = (wi)(this.g ? $$8 : wh.a($$4, $$8));
-            return new fef<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+            $$10 = this.e;
+            $$11 = this.f;
+            $$12 = this.g;
          }
-      }
-   }
 
-   public interface b<T> {
-      void onValueChange(fef<T> var1, T var2);
-   }
+         if (!($$5 instanceof fhq)) {
+            float $$16 = $$6 ? $$4.a() : 0.0F;
+            float $$17 = this.c ? $$4.b() : 0.0F;
+            exr $$18 = this.a.getBuffer($$5.a(this.j));
+            fef.this.a($$5, $$6, $$1.c(), $$16, this.l + $$17, this.m + $$17, this.i, $$18, $$10, $$11, $$12, $$7, this.k);
+         }
 
-   public interface c<T> {
-      List<T> a();
+         float $$19 = $$4.a($$6);
+         float $$20 = this.c ? 1.0F : 0.0F;
+         if ($$1.d()) {
+            this.a(new fhp.a(this.l + $$20 - 1.0F, this.m + $$20 + 4.5F, this.l + $$20 + $$19, this.m + $$20 + 4.5F - 1.0F, 0.01F, $$10, $$11, $$12, $$7));
+         }
 
-      List<T> b();
+         if ($$1.e()) {
+            this.a(new fhp.a(this.l + $$20 - 1.0F, this.m + $$20 + 9.0F, this.l + $$20 + $$19, this.m + $$20 + 9.0F - 1.0F, 0.01F, $$10, $$11, $$12, $$7));
+         }
 
-      static <T> fef.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new fef.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$1;
-            }
-         };
+         this.l += $$19;
+         return true;
       }
 
-      static <T> fef.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new fef.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
-            }
+      public float a(int $$0, float $$1) {
+         if ($$0 != 0) {
+            float $$2 = (float)($$0 >> 24 & 0xFF) / 255.0F;
+            float $$3 = (float)($$0 >> 16 & 0xFF) / 255.0F;
+            float $$4 = (float)($$0 >> 8 & 0xFF) / 255.0F;
+            float $$5 = (float)($$0 & 0xFF) / 255.0F;
+            this.a(new fhp.a($$1 - 1.0F, this.m + 9.0F, this.l + 1.0F, this.m - 1.0F, 0.01F, $$3, $$4, $$5, $$2));
+         }
 
-            @Override
-            public List<T> b() {
-               return $$3;
+         if (this.n != null) {
+            fhp $$6 = fef.this.a(xp.b).b();
+            exr $$7 = this.a.getBuffer($$6.a(this.j));
+
+            for (fhp.a $$8 : this.n) {
+               $$6.a($$8, this.i, $$7, this.k);
             }
-         };
+         }
+
+         return this.l;
       }
    }
 }

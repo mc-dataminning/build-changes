@@ -1,147 +1,216 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collection;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.ToIntFunction;
+import java.util.Locale;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class alw {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.experience.set.points.invalid"));
+   static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ws.c("commands.debug.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ws.c("commands.debug.alreadyRunning"));
+   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ws.c("commands.debug.function.noRecursion"));
+   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ws.c("commands.debug.function.noReturnRun"));
 
-   public static void a(CommandDispatcher<dv> $$0) {
-      LiteralCommandNode<dv> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("experience").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     dw.a("add")
-                        .then(
-                           dw.a("targets", ei.d())
-                              .then(
-                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dw.a("amount", IntegerArgumentType.integer())
-                                          .executes(
-                                             $$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), alw.a.a)
-                                          ))
-                                       .then(
-                                          dw.a("points")
-                                             .executes(
-                                                $$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), alw.a.a)
-                                             )
-                                       ))
-                                    .then(
-                                       dw.a("levels")
-                                          .executes(
-                                             $$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), alw.a.b)
-                                          )
-                                    )
-                              )
-                        )
-                  ))
-               .then(
-                  dw.a("set")
-                     .then(
-                        dw.a("targets", ei.d())
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dw.a("amount", IntegerArgumentType.integer(0))
-                                       .executes(
-                                          $$0x -> b((dv)$$0x.getSource(), ei.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), alw.a.a)
-                                       ))
-                                    .then(
-                                       dw.a("points")
-                                          .executes(
-                                             $$0x -> b((dv)$$0x.getSource(), ei.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), alw.a.a)
-                                          )
-                                    ))
-                                 .then(
-                                    dw.a("levels")
-                                       .executes(
-                                          $$0x -> b((dv)$$0x.getSource(), ei.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), alw.a.b)
-                                       )
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               dw.a("query")
-                  .then(
-                     ((RequiredArgumentBuilder)dw.a("targets", ei.c())
-                           .then(dw.a("points").executes($$0x -> a((dv)$$0x.getSource(), ei.e($$0x, "targets"), alw.a.a))))
-                        .then(dw.a("levels").executes($$0x -> a((dv)$$0x.getSource(), ei.e($$0x, "targets"), alw.a.b)))
-                  )
-            )
+   public static void a(CommandDispatcher<ec> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("debug").requires($$0x -> $$0x.c(3)))
+                  .then(ed.a("start").executes($$0x -> a((ec)$$0x.getSource()))))
+               .then(ed.a("stop").executes($$0x -> b((ec)$$0x.getSource()))))
+            .then(((LiteralArgumentBuilder)ed.a("function").requires($$0x -> $$0x.c(3))).then(ed.a("name", gi.a()).suggests(amk.b).executes(new alw.a())))
       );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(dv $$0, apv $$1, alw.a $$2) {
-      int $$3 = $$2.f.applyAsInt($$1);
-      $$0.a(() -> wi.a("commands.experience.query." + $$2.e, $$1.O_(), $$3), false);
-      return $$3;
-   }
-
-   private static int a(dv $$0, Collection<? extends apv> $$1, int $$2, alw.a $$3) {
-      for (apv $$4 : $$1) {
-         $$3.c.accept($$4, $$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> wi.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().O_()), true);
+   private static int a(ec $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.bi()) {
+         throw c.create();
       } else {
-         $$0.a(() -> wi.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+         $$1.bj();
+         $$0.a(() -> ws.c("commands.debug.started"), true);
+         return 0;
       }
-
-      return $$1.size();
    }
 
-   private static int b(dv $$0, Collection<? extends apv> $$1, int $$2, alw.a $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (apv $$5 : $$1) {
-         if ($$3.d.test($$5, $$2)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw a.create();
+   private static int b(ec $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.bi()) {
+         throw b.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wi.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wi.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$1.size();
+         bld $$2 = $$1.bk();
+         double $$3 = (double)$$2.g() / (double)ayv.a;
+         double $$4 = (double)$$2.f() / $$3;
+         $$0.a(() -> ws.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
+         return (int)$$4;
       }
    }
 
-   static enum a {
-      a("points", cka::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.gi()) {
-            return false;
+   static class a extends gy.b<ec> implements gy.a<ec> {
+      public void a(ec $$0, ContextChain<ec> $$1, gw $$2, hc<ec> $$3) throws CommandSyntaxException {
+         if ($$2.c()) {
+            throw alw.e.create();
+         } else if ($$3.a() != null) {
+            throw alw.d.create();
          } else {
-            $$0.a($$1);
-            return true;
+            CommandContext<ec> $$4 = $$1.getTopContext();
+            Collection<ho<ec>> $$5 = gi.a($$4, "name");
+            MinecraftServer $$6 = $$0.l();
+            String $$7 = "debug-trace-" + ac.e() + ".txt";
+            CommandDispatcher<ec> $$8 = $$0.l().aF().a();
+            int $$9 = 0;
+
+            try {
+               Path $$10 = $$6.c("debug").toPath();
+               Files.createDirectories($$10);
+               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
+               alw.b $$12 = new alw.b($$11);
+               $$3.a($$12);
+
+               for (final ho<ec> $$13 : $$5) {
+                  try {
+                     ec $$14 = $$0.a($$12).b(2);
+                     hq<ec> $$15 = $$13.a(null, $$8);
+                     $$3.a((new hi<ec>($$15, dz.a, false) {
+                        public void a(ec $$0, hb<ec> $$1, hd $$2) {
+                           $$11.println($$13.a());
+                           super.a($$0, $$1, $$2);
+                        }
+                     }).bind($$14));
+                     $$9 += $$15.b().size();
+                  } catch (ef var18) {
+                     $$0.b(var18.a());
+                  }
+               }
+            } catch (IOException | UncheckedIOException var19) {
+               alw.a.warn("Tracing failed", var19);
+               $$0.b(ws.c("commands.debug.function.traceFailed"));
+            }
+
+            int $$18 = $$9;
+            $$3.a(($$4x, $$5x) -> {
+               if ($$5.size() == 1) {
+                  $$0.a(() -> ws.a("commands.debug.function.success.single", $$18, ws.a($$5.iterator().next().a()), $$7), true);
+               } else {
+                  $$0.a(() -> ws.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
+               }
+            });
          }
-      }, $$0 -> axm.d($$0.cp * (float)$$0.gi())),
-      b("levels", apv::c, ($$0, $$1) -> {
-         $$0.b($$1);
+      }
+   }
+
+   static class b implements eb, he {
+      public static final int b = 1;
+      private final PrintWriter c;
+      private int d;
+      private boolean e;
+
+      b(PrintWriter $$0) {
+         this.c = $$0;
+      }
+
+      private void a(int $$0) {
+         this.b($$0);
+         this.d = $$0;
+      }
+
+      private void b(int $$0) {
+         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
+            this.c.write("    ");
+         }
+      }
+
+      private void e() {
+         if (this.e) {
+            this.c.println();
+            this.e = false;
+         }
+      }
+
+      @Override
+      public void a(int $$0, String $$1) {
+         this.e();
+         this.a($$0);
+         this.c.print("[C] ");
+         this.c.print($$1);
+         this.e = true;
+      }
+
+      @Override
+      public void a(int $$0, String $$1, int $$2) {
+         if (this.e) {
+            this.c.print(" -> ");
+            this.c.println($$2);
+            this.e = false;
+         } else {
+            this.a($$0);
+            this.c.print("[R = ");
+            this.c.print($$2);
+            this.c.print("] ");
+            this.c.println($$1);
+         }
+      }
+
+      @Override
+      public void a(int $$0, akf $$1, int $$2) {
+         this.e();
+         this.a($$0);
+         this.c.print("[F] ");
+         this.c.print($$1);
+         this.c.print(" size=");
+         this.c.println($$2);
+      }
+
+      @Override
+      public void a(String $$0) {
+         this.e();
+         this.a(this.d + 1);
+         this.c.print("[E] ");
+         this.c.print($$0);
+      }
+
+      @Override
+      public void a(ws $$0) {
+         this.e();
+         this.b(this.d + 1);
+         this.c.print("[M] ");
+         this.c.println($$0.getString());
+      }
+
+      @Override
+      public boolean l_() {
          return true;
-      }, $$0 -> $$0.cn);
+      }
 
-      public final BiConsumer<apv, Integer> c;
-      public final BiPredicate<apv, Integer> d;
-      public final String e;
-      final ToIntFunction<apv> f;
+      @Override
+      public boolean w_() {
+         return true;
+      }
 
-      private a(String $$0, BiConsumer<apv, Integer> $$1, BiPredicate<apv, Integer> $$2, ToIntFunction<apv> $$3) {
-         this.c = $$1;
-         this.e = $$0;
-         this.d = $$2;
-         this.f = $$3;
+      @Override
+      public boolean U_() {
+         return false;
+      }
+
+      @Override
+      public boolean m_() {
+         return true;
+      }
+
+      @Override
+      public void close() {
+         IOUtils.closeQuietly(this.c);
       }
    }
 }

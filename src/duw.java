@@ -1,54 +1,14 @@
 import com.mojang.serialization.Codec;
 
-public class duw {
-   public static enum a implements ayg {
-      a("air"),
-      b("liquid");
+public interface duw<T extends duv> {
+   duw<dun> a = a("block", new dun.a());
+   duw<dup> b = a("entity", new dup.a());
 
-      public static final Codec<duw.a> c = ayg.a(duw.a::values);
-      private final String d;
+   Codec<T> a();
 
-      private a(String $$0) {
-         this.d = $$0;
-      }
+   yq<wd, T> b();
 
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-   }
-
-   public static enum b implements ayg {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
-
-      public static final Codec<duw.b> l = ayg.a(duw.b::values);
-      private final String m;
-
-      private b(String $$0) {
-         this.m = $$0;
-      }
-
-      public String a() {
-         return this.m;
-      }
-
-      @Override
-      public String c() {
-         return this.m;
-      }
+   static <S extends duw<T>, T extends duv> S a(String $$0, S $$1) {
+      return ji.a(lc.v, $$0, $$1);
    }
 }

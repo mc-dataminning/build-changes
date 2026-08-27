@@ -1,44 +1,57 @@
-public class gov extends goo {
-   public static final int n = 20;
-   private final fzk o;
-   private int p;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   public gov(fzk $$0) {
-      super(auo.hR, aup.h, gpf.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public class gov extends akf {
+   @VisibleForTesting
+   static final char f = '#';
+   private final String g;
+
+   private gov(String $$0, String $$1, String $$2, @Nullable akf.a $$3) {
+      super($$0, $$1, $$3);
+      this.g = $$2;
+   }
+
+   public gov(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.g = j($$2);
+   }
+
+   public gov(akf $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static gov c(String $$0, String $$1) {
+      return new gov("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.g;
    }
 
    @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dH() && (this.p <= 20 || this.o.fB())) {
-         this.f = (double)((float)this.o.dr());
-         this.g = (double)((float)this.o.dt());
-         this.h = (double)((float)this.o.dx());
-         float $$0 = (float)this.o.dp().g();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = axm.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
-
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof gov && super.equals($$0)) {
+         gov $$1 = (gov)$$0;
+         return this.g.equals($$1.g);
       } else {
-         this.n();
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.g.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.g;
    }
 }

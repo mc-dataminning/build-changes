@@ -1,77 +1,43 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dlz extends dji {
-   public static final MapCodec<dlz> b = b(dlz::new);
-   @Nullable
-   private static dpn h;
-   @Nullable
-   private static dpn i;
+public class dlz extends dlh implements djw {
+   public static final MapCodec<dlz> a = b(dlz::new);
+   public static final dqp c = dqo.C;
 
    @Override
-   public MapCodec<dlz> a() {
-      return b;
+   protected MapCodec<? extends dlz> a() {
+      return a;
    }
 
-   protected dlz(dph.d $$0) {
-      super(dji.b.d, $$0);
+   protected dlz(dpx.d $$0) {
+      super($$0);
+      this.k(this.n().a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      elr $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(els.c)));
    }
 
    @Override
-   public void a(czg $$0, id $$1, dpi $$2, @Nullable bqt $$3, crs $$4) {
-      a($$0, $$1);
-   }
-
-   public static void a(czg $$0, id $$1) {
-      if ($$0.c_($$1) instanceof doa $$2) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static void a(czg $$0, id $$1, doa $$2) {
-      if (!$$0.B) {
-         dpi $$3 = $$2.n();
-         boolean $$4 = $$3.a(dcj.gG) || $$3.a(dcj.gH);
-         if ($$4 && $$1.v() >= $$0.I_() && $$0.ak() != boc.a) {
-            dpn.b $$5 = s().a($$0, $$1);
-            if ($$5 != null) {
-               cfy $$6 = bqg.bo.a($$0);
-               if ($$6 != null) {
-                  ddb.a($$0, $$5);
-                  id $$7 = $$5.a(1, 2, 0).d();
-                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ij.a.a ? 0.0F : 90.0F, 0.0F);
-                  $$6.aX = $$5.b().o() == ij.a.a ? 0.0F : 90.0F;
-                  $$6.r();
-
-                  for (apv $$8 : $$0.a(apv.class, $$6.cH().g(50.0))) {
-                     am.o.a($$8, $$6);
-                  }
-
-                  $$0.b($$6);
-                  ddb.b($$0, $$5);
-               }
-            }
-         }
-      }
-   }
-
-   public static boolean b(czg $$0, id $$1, crs $$2) {
-      return $$2.a(crv.uk) && $$1.v() >= $$0.I_() + 2 && $$0.ak() != boc.a && !$$0.B ? y().a($$0, $$1) != null : false;
-   }
-
-   private static dpn s() {
-      if (h == null) {
-         h = dpo.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(ave.aF)).a('^', dpm.a(dpr.a(dcj.gG).or(dpr.a(dcj.gH)))).a('~', $$0 -> $$0.a().i()).b();
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, els.c, els.c.a($$3));
       }
 
-      return h;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private static dpn y() {
-      if (i == null) {
-         i = dpo.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(ave.aF)).a('~', $$0 -> $$0.a().i()).b();
-      }
+   @Override
+   protected elr c_(dpy $$0) {
+      return $$0.c(c) ? els.c.a(true) : super.c_($$0);
+   }
 
-      return i;
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(c);
    }
 }

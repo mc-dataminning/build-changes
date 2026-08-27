@@ -1,42 +1,88 @@
-public class fit extends fjx {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final wi c = wi.c("credits_and_attribution.screen.title");
-   private static final wi d = wi.c("credits_and_attribution.button.credits");
-   private static final wi o = wi.c("credits_and_attribution.button.attribution");
-   private static final wi p = wi.c("credits_and_attribution.button.licenses");
-   private final fjx q;
-   private final fhl r = new fhl(this);
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public fit(fjx $$0) {
-      super(c);
-      this.q = $$0;
+public class fit {
+   int a;
+   final Map<fit.a, fit.b> b = Maps.newTreeMap(Comparator.<fit.a, fip>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<fiq> $$0) {
+      this.a++;
+      $$0.accept(new fit.c(0));
    }
 
-   @Override
-   protected void aM_() {
-      this.r.a(c, this.m);
-      fhp $$0 = this.r.c(fhp.d()).a(8);
-      $$0.c().b();
-      $$0.a(fdy.a(d, $$0x -> this.m()).a(210).a());
-      $$0.a(fdy.a(o, fio.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
-      $$0.a(fdy.a(p, fio.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
-      this.r.b(fdy.a(wh.d, $$0x -> this.d()).a(200).a());
-      this.r.a();
-      this.r.a(this::c);
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean c = true;
+
+         public void a(String $$0) {
+            if (!this.c) {
+               $$1.append(". ");
+            }
+
+            this.c = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   protected void c() {
-      this.r.a();
+   static class a {
+      final fip a;
+      final int b;
+
+      a(fip $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   private void m() {
-      this.j.a(new fkf(false, () -> this.j.a(this)));
+   static class b {
+      fis<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fis.a;
+         this.b = -1;
+      }
+
+      public fit.b a(int $$0, fis<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
    }
 
-   @Override
-   public void d() {
-      this.j.a(this.q);
+   class c implements fiq {
+      private final int b;
+
+      c(int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fip $$0, fis<?> $$1) {
+         fit.this.b.computeIfAbsent(new fit.a($$0, this.b), $$0x -> new fit.b()).a(fit.this.a, $$1);
+      }
+
+      @Override
+      public fiq a() {
+         return fit.this.new c(this.b + 1);
+      }
    }
 }

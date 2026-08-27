@@ -1,15 +1,16 @@
-public class ggg extends ggx<cik, frf<cik>> {
-   private static final ajv a = new ajv("textures/entity/hoglin/hoglin.png");
+public class ggg extends ghb {
+   public static final akf a = new akf("textures/entity/guardian_elder.png");
 
-   public ggg(gfr.a $$0) {
-      super($$0, new frf<>($$0.a(ftu.an)), 0.7F);
+   public ggg(ggn.a $$0) {
+      super($$0, 1.2F, fuq.V);
    }
 
-   public ajv a(cik $$0) {
+   protected void a(chn $$0, exn $$1, float $$2) {
+      $$1.b(chg.b, chg.b, chg.b);
+   }
+
+   @Override
+   public akf a(chn $$0) {
       return a;
-   }
-
-   protected boolean b(cik $$0) {
-      return super.a($$0) || $$0.y();
    }
 }

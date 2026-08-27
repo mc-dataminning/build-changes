@@ -1,23 +1,27 @@
-public enum dqs implements ayg {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   private final String e;
-   private final wi f;
-
-   private dqs(String $$0) {
-      this.e = $$0;
-      this.f = wi.c("structure_block.mode_info." + $$0);
+public class dqs extends dqw<ir> {
+   protected dqs(String $$0, Collection<ir> $$1) {
+      super($$0, ir.class, $$1);
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static dqs a(String $$0) {
+      return a($$0, $$0x -> true);
    }
 
-   public wi a() {
-      return this.f;
+   public static dqs a(String $$0, Predicate<ir> $$1) {
+      return a($$0, Arrays.stream(ir.values()).filter($$1).collect(Collectors.toList()));
+   }
+
+   public static dqs a(String $$0, ir... $$1) {
+      return a($$0, Lists.newArrayList($$1));
+   }
+
+   public static dqs a(String $$0, Collection<ir> $$1) {
+      return new dqs($$0, $$1);
    }
 }

@@ -1,50 +1,27 @@
-import java.util.List;
+public interface crx {
+   int a = 256;
+   int b = 140;
+   ake<crv> c = a("ponder_goat_horn");
+   ake<crv> d = a("sing_goat_horn");
+   ake<crv> e = a("seek_goat_horn");
+   ake<crv> f = a("feel_goat_horn");
+   ake<crv> g = a("admire_goat_horn");
+   ake<crv> h = a("call_goat_horn");
+   ake<crv> i = a("yearn_goat_horn");
+   ake<crv> j = a("dream_goat_horn");
 
-public class crx extends crn {
-   public crx(crn.a $$0) {
-      super($$0);
+   private static ake<crv> a(String $$0) {
+      return ake.a(ld.E, new akf($$0));
    }
 
-   @Override
-   public bof a(cuz $$0) {
-      czg $$1 = $$0.q();
-      id $$2 = $$0.a();
-      dpi $$3 = $$1.a_($$2);
-      if ($$3.a(ave.S)) {
-         cka $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return bof.a($$1.B);
-      } else {
-         return bof.d;
-      }
-   }
-
-   public static bof a(cka $$0, czg $$1, id $$2) {
-      cge $$3 = null;
-      double $$4 = 7.0;
-      int $$5 = $$2.u();
-      int $$6 = $$2.v();
-      int $$7 = $$2.w();
-      ese $$8 = new ese((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
-      List<bqv> $$9 = $$1.a(bqv.class, $$8, $$1x -> $$1x.gc() == $$0);
-
-      for (bqv $$10 : $$9) {
-         if ($$3 == null) {
-            $$3 = cge.b($$1, $$2);
-            $$3.C();
-         }
-
-         $$10.b($$3, true);
-      }
-
-      if (!$$9.isEmpty()) {
-         $$1.a(dub.b, $$2, dub.a.a($$0));
-         return bof.a;
-      } else {
-         return bof.d;
-      }
+   static crv a(ji<crv> $$0) {
+      ji.a($$0, c, new crv((iv<auy>)auz.mv.get(0), 140, 256.0F));
+      ji.a($$0, d, new crv((iv<auy>)auz.mv.get(1), 140, 256.0F));
+      ji.a($$0, e, new crv((iv<auy>)auz.mv.get(2), 140, 256.0F));
+      ji.a($$0, f, new crv((iv<auy>)auz.mv.get(3), 140, 256.0F));
+      ji.a($$0, g, new crv((iv<auy>)auz.mv.get(4), 140, 256.0F));
+      ji.a($$0, h, new crv((iv<auy>)auz.mv.get(5), 140, 256.0F));
+      ji.a($$0, i, new crv((iv<auy>)auz.mv.get(6), 140, 256.0F));
+      return ji.a($$0, j, new crv((iv<auy>)auz.mv.get(7), 140, 256.0F));
    }
 }

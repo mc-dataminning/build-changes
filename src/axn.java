@@ -1,159 +1,231 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.hash.Funnels;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hasher;
 import com.mojang.logging.LogUtils;
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
-import com.sun.jna.Platform;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Kernel32;
-import com.sun.jna.platform.win32.Kernel32Util;
-import com.sun.jna.platform.win32.Version;
-import com.sun.jna.platform.win32.Win32Exception;
-import com.sun.jna.platform.win32.Tlhelp32.MODULEENTRY32W;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UncheckedIOException;
+import java.net.HttpURLConnection;
+import java.net.Proxy;
+import java.net.ServerSocket;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.stream.Collectors;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
+import java.nio.file.attribute.FileTime;
+import java.time.Instant;
+import java.util.Map;
+import java.util.OptionalLong;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class axn {
    private static final Logger a = LogUtils.getLogger();
-   private static final int b = 65535;
-   private static final int c = 1033;
-   private static final int d = -65536;
-   private static final int e = 78643200;
 
-   public static List<axn.a> a() {
-      if (!Platform.isWindows()) {
-         return ImmutableList.of();
-      } else {
-         int $$0 = Kernel32.INSTANCE.GetCurrentProcessId();
-         Builder<axn.a> $$1 = ImmutableList.builder();
-
-         for (MODULEENTRY32W $$3 : Kernel32Util.getModules($$0)) {
-            String $$4 = $$3.szModule();
-            Optional<axn.b> $$5 = a($$3.szExePath());
-            $$1.add(new axn.a($$4, $$5));
-         }
-
-         return $$1.build();
-      }
+   private axn() {
    }
 
-   private static Optional<axn.b> a(String $$0) {
-      try {
-         IntByReference $$1 = new IntByReference();
-         int $$2 = Version.INSTANCE.GetFileVersionInfoSize($$0, $$1);
-         if ($$2 == 0) {
-            int $$3 = Native.getLastError();
-            if ($$3 != 1813 && $$3 != 1812) {
-               throw new Win32Exception($$3);
-            } else {
-               return Optional.empty();
+   public static Path a(Path $$0, URL $$1, Map<String, String> $$2, HashFunction $$3, @Nullable HashCode $$4, int $$5, Proxy $$6, axn.a $$7) {
+      HttpURLConnection $$8 = null;
+      InputStream $$9 = null;
+      $$7.a();
+      Path $$10;
+      if ($$4 != null) {
+         $$10 = a($$0, $$4);
+
+         try {
+            if (a($$10, $$3, $$4)) {
+               a.info("Returning cached file since actual hash matches requested");
+               $$7.a(true);
+               a($$10);
+               return $$10;
             }
-         } else {
-            Pointer $$4 = new Memory((long)$$2);
-            if (!Version.INSTANCE.GetFileVersionInfo($$0, 0, $$2, $$4)) {
-               throw new Win32Exception(Native.getLastError());
-            } else {
-               IntByReference $$5 = new IntByReference();
-               Pointer $$6 = a($$4, "\\VarFileInfo\\Translation", $$5);
-               int[] $$7 = $$6.getIntArray(0L, $$5.getValue() / 4);
-               OptionalInt $$8 = a($$7);
-               if ($$8.isEmpty()) {
-                  return Optional.empty();
+         } catch (IOException var35) {
+            a.warn("Failed to check cached file {}", $$10, var35);
+         }
+
+         try {
+            a.warn("Existing file {} not found or had mismatched hash", $$10);
+            Files.deleteIfExists($$10);
+         } catch (IOException var34) {
+            $$7.a(false);
+            throw new UncheckedIOException("Failed to remove existing file " + $$10, var34);
+         }
+      } else {
+         $$10 = null;
+      }
+
+      Path $$18;
+      try {
+         $$8 = (HttpURLConnection)$$1.openConnection($$6);
+         $$8.setInstanceFollowRedirects(true);
+         $$2.forEach($$8::setRequestProperty);
+         $$9 = $$8.getInputStream();
+         long $$14 = $$8.getContentLengthLong();
+         OptionalLong $$15 = $$14 != -1L ? OptionalLong.of($$14) : OptionalLong.empty();
+         v.c($$0);
+         $$7.a($$15);
+         if ($$15.isPresent() && $$15.getAsLong() > (long)$$5) {
+            throw new IOException("Filesize is bigger than maximum allowed (file is " + $$15 + ", limit is " + $$5 + ")");
+         }
+
+         if ($$10 == null) {
+            Path $$17 = Files.createTempFile($$0, "download", ".tmp");
+
+            try {
+               HashCode $$18x = a($$3, $$5, $$7, $$9, $$17);
+               Path $$19 = a($$0, $$18x);
+               if (!a($$19, $$3, $$18x)) {
+                  Files.move($$17, $$19, StandardCopyOption.REPLACE_EXISTING);
                } else {
-                  int $$9 = $$8.getAsInt();
-                  int $$10 = $$9 & 65535;
-                  int $$11 = ($$9 & -65536) >> 16;
-                  String $$12 = b($$4, a("FileDescription", $$10, $$11), $$5);
-                  String $$13 = b($$4, a("CompanyName", $$10, $$11), $$5);
-                  String $$14 = b($$4, a("FileVersion", $$10, $$11), $$5);
-                  return Optional.of(new axn.b($$12, $$14, $$13));
+                  a($$19);
+               }
+
+               $$7.a(true);
+               return $$19;
+            } finally {
+               Files.deleteIfExists($$17);
+            }
+         }
+
+         HashCode $$16 = a($$3, $$5, $$7, $$9, $$10);
+         if (!$$16.equals($$4)) {
+            throw new IOException("Hash of downloaded file (" + $$16 + ") did not match requested (" + $$4 + ")");
+         }
+
+         $$7.a(true);
+         $$18 = $$10;
+      } catch (Throwable var36) {
+         if ($$8 != null) {
+            InputStream $$21 = $$8.getErrorStream();
+            if ($$21 != null) {
+               try {
+                  a.error("HTTP response error: {}", IOUtils.toString($$21, StandardCharsets.UTF_8));
+               } catch (Exception var32) {
+                  a.error("Failed to read response from server");
                }
             }
          }
-      } catch (Exception var14) {
-         a.info("Failed to find module info for {}", $$0, var14);
-         return Optional.empty();
+
+         $$7.a(false);
+         throw new IllegalStateException("Failed to download file " + $$1, var36);
+      } finally {
+         IOUtils.closeQuietly($$9);
+      }
+
+      return $$18;
+   }
+
+   private static void a(Path $$0) {
+      try {
+         Files.setLastModifiedTime($$0, FileTime.from(Instant.now()));
+      } catch (IOException var2) {
+         a.warn("Failed to update modification time of {}", $$0, var2);
       }
    }
 
-   private static String a(String $$0, int $$1, int $$2) {
-      return String.format(Locale.ROOT, "\\StringFileInfo\\%04x%04x\\%s", $$1, $$2, $$0);
+   private static HashCode a(Path $$0, HashFunction $$1) throws IOException {
+      Hasher $$2 = $$1.newHasher();
+
+      try (
+         OutputStream $$3 = Funnels.asOutputStream($$2);
+         InputStream $$4 = Files.newInputStream($$0);
+      ) {
+         $$4.transferTo($$3);
+      }
+
+      return $$2.hash();
    }
 
-   private static OptionalInt a(int[] $$0) {
-      OptionalInt $$1 = OptionalInt.empty();
-
-      for (int $$2 : $$0) {
-         if (($$2 & -65536) == 78643200 && ($$2 & 65535) == 1033) {
-            return OptionalInt.of($$2);
+   private static boolean a(Path $$0, HashFunction $$1, HashCode $$2) throws IOException {
+      if (Files.exists($$0)) {
+         HashCode $$3 = a($$0, $$1);
+         if ($$3.equals($$2)) {
+            return true;
          }
 
-         $$1 = OptionalInt.of($$2);
+         a.warn("Mismatched hash of file {}, expected {} but found {}", new Object[]{$$0, $$2, $$3});
       }
 
-      return $$1;
+      return false;
    }
 
-   private static Pointer a(Pointer $$0, String $$1, IntByReference $$2) {
-      PointerByReference $$3 = new PointerByReference();
-      if (!Version.INSTANCE.VerQueryValue($$0, $$1, $$3, $$2)) {
-         throw new UnsupportedOperationException("Can't get version value " + $$1);
-      } else {
-         return $$3.getValue();
+   private static Path a(Path $$0, HashCode $$1) {
+      return $$0.resolve($$1.toString());
+   }
+
+   private static HashCode a(HashFunction $$0, int $$1, axn.a $$2, InputStream $$3, Path $$4) throws IOException {
+      HashCode var11;
+      try (OutputStream $$5 = Files.newOutputStream($$4, StandardOpenOption.CREATE)) {
+         Hasher $$6 = $$0.newHasher();
+         byte[] $$7 = new byte[8196];
+         long $$8 = 0L;
+
+         int $$9;
+         while (($$9 = $$3.read($$7)) >= 0) {
+            $$8 += (long)$$9;
+            $$2.a($$8);
+            if ($$8 > (long)$$1) {
+               throw new IOException("Filesize was bigger than maximum allowed (got >= " + $$8 + ", limit was " + $$1 + ")");
+            }
+
+            if (Thread.interrupted()) {
+               a.error("INTERRUPTED");
+               throw new IOException("Download interrupted");
+            }
+
+            $$5.write($$7, 0, $$9);
+            $$6.putBytes($$7, 0, $$9);
+         }
+
+         var11 = $$6.hash();
       }
+
+      return var11;
    }
 
-   private static String b(Pointer $$0, String $$1, IntByReference $$2) {
+   public static int a() {
       try {
-         Pointer $$3 = a($$0, $$1, $$2);
-         byte[] $$4 = $$3.getByteArray(0L, ($$2.getValue() - 1) * 2);
-         return new String($$4, StandardCharsets.UTF_16LE);
-      } catch (Exception var5) {
-         return "";
+         int var1;
+         try (ServerSocket $$0 = new ServerSocket(0)) {
+            var1 = $$0.getLocalPort();
+         }
+
+         return var1;
+      } catch (IOException var5) {
+         return 25564;
       }
    }
 
-   public static void a(p $$0) {
-      $$0.a("Modules", () -> a().stream().sorted(Comparator.comparing($$0x -> $$0x.a)).map($$0x -> "\n\t\t" + $$0x).collect(Collectors.joining()));
-   }
+   public static boolean a(int $$0) {
+      if ($$0 >= 0 && $$0 <= 65535) {
+         try {
+            boolean var2;
+            try (ServerSocket $$1 = new ServerSocket($$0)) {
+               var2 = $$1.getLocalPort() == $$0;
+            }
 
-   public static class a {
-      public final String a;
-      public final Optional<axn.b> b;
-
-      public a(String $$0, Optional<axn.b> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.b.<String>map($$0 -> this.a + ":" + $$0).orElse(this.a);
+            return var2;
+         } catch (IOException var6) {
+            return false;
+         }
+      } else {
+         return false;
       }
    }
 
-   public static class b {
-      public final String a;
-      public final String b;
-      public final String c;
+   public interface a {
+      void a();
 
-      public b(String $$0, String $$1, String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+      void a(OptionalLong var1);
 
-      @Override
-      public String toString() {
-         return this.a + ":" + this.b + ":" + this.c;
-      }
+      void a(long var1);
+
+      void a(boolean var1);
    }
 }

@@ -3,24 +3,24 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bk extends cx<bk.a> {
+public class bk extends dd<bk.a> {
    @Override
    public Codec<bk.a> a() {
       return bk.a.a;
    }
 
-   public void a(apv $$0, @Nullable bqa $$1) {
-      enk $$2 = $$1 != null ? br.b($$0, $$1) : null;
+   public void a(aqf $$0, @Nullable bql $$1) {
+      eoa $$2 = $$1 != null ? br.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
-   public static record a(Optional<bc> b, Optional<cn> c, Optional<bc> d) implements cx.a {
+   public static record a(Optional<bc> b, Optional<ct> c, Optional<bc> d) implements dd.a {
       public static final Codec<bk.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(bk.a::a), awu.a(cn.a, "effects").forGetter(bk.a::b), awu.a(br.b, "source").forGetter(bk.a::c))
+         $$0 -> $$0.group(axe.a(br.b, "player").forGetter(bk.a::a), axe.a(ct.a, "effects").forGetter(bk.a::b), axe.a(br.b, "source").forGetter(bk.a::c))
                .apply($$0, bk.a::new)
       );
 
-      public static an<bk.a> a(cn.a $$0) {
+      public static an<bk.a> a(ct.a $$0) {
          return am.B.a(new bk.a(Optional.empty(), $$0.b(), Optional.empty()));
       }
 
@@ -28,13 +28,13 @@ public class bk extends cx<bk.a> {
          return am.B.a(new bk.a(Optional.empty(), Optional.empty(), Optional.of(br.a($$0.b()))));
       }
 
-      public boolean a(apv $$0, @Nullable enk $$1) {
-         return this.c.isPresent() && !this.c.get().a((bqt)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(aqf $$0, @Nullable eoa $$1) {
+         return this.c.isPresent() && !this.c.get().a((bre)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override
       public void a(bd $$0) {
-         cx.a.super.a($$0);
+         dd.a.super.a($$0);
          $$0.a(this.d, ".source");
       }
 
@@ -43,7 +43,7 @@ public class bk extends cx<bk.a> {
          return this.b;
       }
 
-      public Optional<cn> b() {
+      public Optional<ct> b() {
          return this.c;
       }
 

@@ -1,60 +1,15 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.util.AbstractList;
 
-public class tx {
-   private static final int a = 512;
-   private final long b;
-   private long c;
-   private final int d;
-   private int e;
+public abstract class tx<T extends uv> extends AbstractList<T> implements uv {
+   public abstract T d(int var1, T var2);
 
-   public tx(long $$0, int $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
+   public abstract void c(int var1, T var2);
 
-   public static tx a(long $$0) {
-      return new tx($$0, 512);
-   }
+   public abstract T c(int var1);
 
-   public static tx a() {
-      return new tx(Long.MAX_VALUE, 512);
-   }
+   public abstract boolean a(int var1, uv var2);
 
-   public void a(long $$0, long $$1) {
-      this.b($$0 * $$1);
-   }
+   public abstract boolean b(int var1, uv var2);
 
-   public void b(long $$0) {
-      if (this.c + $$0 > this.b) {
-         throw new ty("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
-      } else {
-         this.c += $$0;
-      }
-   }
-
-   public void b() {
-      if (this.e >= this.d) {
-         throw new ty("Tried to read NBT tag with too high complexity, depth > " + this.d);
-      } else {
-         this.e++;
-      }
-   }
-
-   public void c() {
-      if (this.e <= 0) {
-         throw new ty("NBT-Accounter tried to pop stack-depth at top-level");
-      } else {
-         this.e--;
-      }
-   }
-
-   @VisibleForTesting
-   public long d() {
-      return this.c;
-   }
-
-   @VisibleForTesting
-   public int e() {
-      return this.e;
-   }
+   public abstract byte f();
 }

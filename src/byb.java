@@ -1,27 +1,57 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class byb extends byn {
-   private static final int i = 10;
-   private static final int j = 7;
+public abstract class byb {
+   private final EnumSet<byb.a> a = EnumSet.noneOf(byb.a.class);
 
-   public byb(brb $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public abstract boolean a();
+
+   public boolean b() {
+      return this.a();
+   }
+
+   public boolean Q_() {
+      return true;
+   }
+
+   public void c() {
+   }
+
+   public void d() {
+   }
+
+   public boolean R_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<byb.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public boolean a() {
-      apu $$0 = (apu)this.b.dM();
-      id $$1 = this.b.dm();
-      return $$0.c($$1) ? false : super.a();
+   public String toString() {
+      return this.getClass().getSimpleName();
    }
 
-   @Nullable
-   @Override
-   protected esj h() {
-      apu $$0 = (apu)this.b.dM();
-      id $$1 = this.b.dm();
-      jg $$2 = jg.a($$1);
-      jg $$3 = bsn.a($$0, $$2, 2);
-      return $$3 != $$2 ? cbn.a(this.b, 10, 7, esj.c($$3.q()), (float) (Math.PI / 2)) : null;
+   public EnumSet<byb.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.R_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return axw.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

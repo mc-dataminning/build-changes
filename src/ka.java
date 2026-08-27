@@ -1,16 +1,233 @@
-public abstract class ka extends jy {
-   private boolean c = true;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMaps;
+import it.unimi.dsi.fastutil.objects.ReferenceArraySet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public boolean a() {
-      return this.c;
+public final class ka implements jv {
+   private final jv b;
+   private Reference2ObjectMap<jy<?>, Optional<?>> c;
+   private boolean d;
+
+   public ka(jv $$0) {
+      this($$0, Reference2ObjectMaps.emptyMap(), true);
    }
 
-   public void a(boolean $$0) {
-      this.c = $$0;
+   private ka(jv $$0, Reference2ObjectMap<jy<?>, Optional<?>> $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public static ka a(jv $$0, jw $$1) {
+      if (a($$0, $$1.d)) {
+         return new ka($$0, $$1.d, true);
+      } else {
+         ka $$2 = new ka($$0);
+         $$2.a($$1);
+         return $$2;
+      }
+   }
+
+   private static boolean a(jv $$0, Reference2ObjectMap<jy<?>, Optional<?>> $$1) {
+      ObjectIterator var2 = Reference2ObjectMaps.fastIterable($$1).iterator();
+
+      while (var2.hasNext()) {
+         Entry<jy<?>, Optional<?>> $$2 = (Entry<jy<?>, Optional<?>>)var2.next();
+         Object $$3 = $$0.a($$2.getKey());
+         Optional<?> $$4 = $$2.getValue();
+         if ($$4.isPresent() && $$4.get().equals($$3)) {
+            return false;
+         }
+
+         if ($$4.isEmpty() && $$3 == null) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(jy<? extends T> $$0) {
+      Optional<? extends T> $$1 = (Optional<? extends T>)this.c.get($$0);
+      return (T)($$1 != null ? $$1.orElse(null) : this.b.a($$0));
+   }
+
+   @Nullable
+   public <T> T b(jy<? super T> $$0, @Nullable T $$1) {
+      this.h();
+      T $$2 = this.b.a((jy<? extends T>)$$0);
+      Optional<T> $$3;
+      if (Objects.equals($$1, $$2)) {
+         $$3 = (Optional<T>)this.c.remove($$0);
+      } else {
+         $$3 = (Optional<T>)this.c.put($$0, Optional.ofNullable($$1));
+      }
+
+      return $$3 != null ? $$3.orElse($$2) : $$2;
+   }
+
+   @Nullable
+   public <T> T d(jy<? extends T> $$0) {
+      this.h();
+      T $$1 = this.b.a($$0);
+      Optional<? extends T> $$2;
+      if ($$1 != null) {
+         $$2 = (Optional<? extends T>)this.c.put($$0, Optional.empty());
+      } else {
+         $$2 = (Optional<? extends T>)this.c.remove($$0);
+      }
+
+      return (T)($$2 != null ? $$2.orElse(null) : $$1);
+   }
+
+   public void a(jw $$0) {
+      this.h();
+      ObjectIterator var2 = Reference2ObjectMaps.fastIterable($$0.d).iterator();
+
+      while (var2.hasNext()) {
+         Entry<jy<?>, Optional<?>> $$1 = (Entry<jy<?>, Optional<?>>)var2.next();
+         this.a($$1.getKey(), $$1.getValue());
+      }
+   }
+
+   private void a(jy<?> $$0, Optional<?> $$1) {
+      Object $$2 = this.b.a($$0);
+      if ($$1.isPresent()) {
+         if ($$1.get().equals($$2)) {
+            this.c.remove($$0);
+         } else {
+            this.c.put($$0, $$1);
+         }
+      } else if ($$2 != null) {
+         this.c.put($$0, Optional.empty());
+      } else {
+         this.c.remove($$0);
+      }
+   }
+
+   public void a(jv $$0) {
+      for (kb<?> $$1 : $$0) {
+         $$1.a(this);
+      }
+   }
+
+   private void h() {
+      if (this.d) {
+         this.c = new Reference2ObjectArrayMap(this.c);
+         this.d = false;
+      }
    }
 
    @Override
-   protected void a(jw $$0) {
-      $$0.b().c(this.a() ? 1000 : 1001, $$0.c(), 0);
+   public Set<jy<?>> b() {
+      if (this.c.isEmpty()) {
+         return this.b.b();
+      } else {
+         Set<jy<?>> $$0 = new ReferenceArraySet(this.b.b());
+         ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.c).iterator();
+
+         while (var2.hasNext()) {
+            it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jy<?>, Optional<?>> $$1 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jy<?>, Optional<?>>)var2.next();
+            Optional<?> $$2 = (Optional<?>)$$1.getValue();
+            if ($$2.isPresent()) {
+               $$0.add((jy<?>)$$1.getKey());
+            } else {
+               $$0.remove($$1.getKey());
+            }
+         }
+
+         return $$0;
+      }
+   }
+
+   @Override
+   public Iterator<kb<?>> iterator() {
+      if (this.c.isEmpty()) {
+         return this.b.iterator();
+      } else {
+         List<kb<?>> $$0 = new ArrayList<>(this.c.size() + this.b.d());
+         ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.c).iterator();
+
+         while (var2.hasNext()) {
+            it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jy<?>, Optional<?>> $$1 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jy<?>, Optional<?>>)var2.next();
+            if (((Optional)$$1.getValue()).isPresent()) {
+               $$0.add(kb.a((jy)$$1.getKey(), ((Optional)$$1.getValue()).get()));
+            }
+         }
+
+         for (kb<?> $$2 : this.b) {
+            if (!this.c.containsKey($$2.a())) {
+               $$0.add($$2);
+            }
+         }
+
+         return $$0.iterator();
+      }
+   }
+
+   @Override
+   public int d() {
+      int $$0 = this.b.d();
+      ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.c).iterator();
+
+      while (var2.hasNext()) {
+         it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jy<?>, Optional<?>> $$1 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<jy<?>, Optional<?>>)var2.next();
+         boolean $$2 = ((Optional)$$1.getValue()).isPresent();
+         boolean $$3 = this.b.b((jy<?>)$$1.getKey());
+         if ($$2 != $$3) {
+            $$0 += $$2 ? 1 : -1;
+         }
+      }
+
+      return $$0;
+   }
+
+   public jw f() {
+      if (this.c.isEmpty()) {
+         return jw.a;
+      } else {
+         this.d = true;
+         return new jw(this.c);
+      }
+   }
+
+   public ka g() {
+      this.d = true;
+      return new ka(this.b, this.c, true);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ka $$1 && this.b.equals($$1.b) && this.c.equals($$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode() + this.c.hashCode() * 31;
+   }
+
+   @Override
+   public String toString() {
+      return "{" + this.c().map(kb::toString).collect(Collectors.joining(", ")) + "}";
    }
 }

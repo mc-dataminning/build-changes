@@ -1,40 +1,36 @@
-import java.util.ArrayList;
-import java.util.HashSet;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public class eyz implements Iterable<exy> {
-   private final fby a;
-   private final Set<exy> b = new HashSet<>();
-   private List<exy> c = List.of();
+public class eyz extends ezj {
+   private static final Logger b = LogUtils.getLogger();
+   public List<eyy> a;
 
-   public eyz(fby $$0) {
-      this.a = $$0;
-   }
+   public static eyz a(String $$0) {
+      eyz $$1 = new eyz();
+      $$1.a = Lists.newArrayList();
 
-   public void a(List<exy> $$0) {
-      List<exy> $$1 = new ArrayList<>($$0);
-      $$1.sort(new exy.b(this.a.X().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("lists").isJsonArray()) {
+            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
+
+            while ($$5.hasNext()) {
+               $$1.a.add(eyy.a($$5.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var6) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
       }
 
-      this.c = $$1;
-   }
-
-   public void a(exy $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
-   }
-
-   @Override
-   public Iterator<exy> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+      return $$1;
    }
 }

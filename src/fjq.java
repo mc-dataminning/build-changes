@@ -1,27 +1,27 @@
-public class fjq extends fjx {
-   private static final wi a = wi.c("outOfMemory.title");
-   private static final wi b = wi.c("outOfMemory.message");
-   private static final int c = 300;
-   private final fhl d = new fhl(this);
+public class fjq extends fkt {
+   private ffn a;
+   private final Runnable b;
+   private final Runnable c;
 
-   public fjq() {
-      super(a);
+   public fjq(Runnable $$0, Runnable $$1) {
+      super(ws.c("datapackFailure.title"));
+      this.a = ffn.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    protected void aM_() {
-      this.d.a(a, this.m);
-      this.d.c(new fej(300, b, this.m));
-      fhp $$0 = this.d.b(fhp.e().a(8));
-      $$0.a(fdy.a(wh.l, $$0x -> this.j.a(new fkc())).a());
-      $$0.a(fdy.a(wi.c("menu.quit"), $$0x -> this.j.q()).a());
-      this.d.a(this::c);
-      this.c();
+      super.aM_();
+      this.a = ffn.a(this.p, this.n(), this.n - 50);
+      this.c(feu.a(ws.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
+      this.c(feu.a(wr.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
    }
 
    @Override
-   protected void c() {
-      this.d.a();
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, this.n / 2, 70);
    }
 
    @Override

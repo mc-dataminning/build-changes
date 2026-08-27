@@ -1,91 +1,188 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ajt<T> extends ajn<T> {
-   private final ajt.b b;
+public class ajt<C extends boj> implements ajs<Integer> {
+   private static final Logger d = LogUtils.getLogger();
+   protected final ckp a = new ckp();
+   protected ckk b;
+   protected cov<C> c;
 
-   private static ajt.b a(final ajt.b $$0) {
-      return new ajt.b() {
-         private final Map<aju<? extends ja<?>>, Optional<? extends ajt.a<?>>> b = new HashMap<>();
+   public ajt(cov<C> $$0) {
+      this.c = $$0;
+   }
 
-         @Override
-         public <T> Optional<ajt.a<T>> a(aju<? extends ja<? extends T>> $$0x) {
-            return (Optional<ajt.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
+   public void a(aqf $$0, @Nullable cwi<? extends cwg<C>> $$1, boolean $$2) {
+      if ($$1 != null && $$0.I().b($$1)) {
+         this.b = $$0.ga();
+         if (this.b() || $$0.f()) {
+            this.a.a();
+            $$0.ga().a(this.a);
+            this.c.a(this.a);
+            if (this.a.a((cwg<?>)$$1.b(), null)) {
+               this.a($$1, $$2);
+            } else {
+               this.a();
+               $$0.d.b(new adj($$0.cc.j, $$1));
+            }
+
+            $$0.ga().e();
          }
-      };
-   }
-
-   public static <T> ajt<T> a(DynamicOps<T> $$0, final ip.a $$1) {
-      return a($$0, a(new ajt.b() {
-         @Override
-         public <E> Optional<ajt.a<E>> a(aju<? extends ja<? extends E>> $$0) {
-            return $$1.a($$0).map(ajt.a::a);
-         }
-      }));
-   }
-
-   public static <T> ajt<T> a(DynamicOps<T> $$0, ajt.b $$1) {
-      return new ajt<>($$0, $$1);
-   }
-
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, ip.a $$1) {
-      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
-   }
-
-   private ajt(DynamicOps<T> $$0, ajt.b $$1) {
-      super($$0);
-      this.b = $$1;
-   }
-
-   public <U> ajt<U> a(DynamicOps<U> $$0) {
-      return (ajt<U>)($$0 == this.a ? this : new ajt((DynamicOps<T>)$$0, this.b));
-   }
-
-   public <E> Optional<iq<E>> a(aju<? extends ja<? extends E>> $$0) {
-      return this.b.a($$0).map(ajt.a::a);
-   }
-
-   public <E> Optional<io<E>> b(aju<? extends ja<? extends E>> $$0) {
-      return this.b.a($$0).map(ajt.a::b);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, io<E>> c(aju<? extends ja<? extends E>> $$0) {
-      return awu.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof ajt<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, in.c<E>> d(aju<E> $$0) {
-      aju<? extends ja<E>> $$1 = aju.a($$0.b());
-      return awu.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof ajt<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static record a<T>(iq<T> a, io<T> b, Lifecycle c) {
-      public static <T> ajt.a<T> a(ip.b<T> $$0) {
-         return new ajt.a<>($$0, $$0, $$0.g());
       }
    }
 
-   public interface b {
-      <T> Optional<ajt.a<T>> a(aju<? extends ja<? extends T>> var1);
+   protected void a() {
+      for (int $$0 = 0; $$0 < this.c.p(); $$0++) {
+         if (this.c.e($$0)) {
+            csd $$1 = this.c.b($$0).g().r();
+            this.b.a($$1, false);
+            this.c.b($$0).f($$1);
+         }
+      }
+
+      this.c.l();
+   }
+
+   protected void a(cwi<? extends cwg<C>> $$0, boolean $$1) {
+      boolean $$2 = this.c.a($$0);
+      int $$3 = this.a.a($$0, null);
+      if ($$2) {
+         for (int $$4 = 0; $$4 < this.c.o() * this.c.n() + 1; $$4++) {
+            if ($$4 != this.c.m()) {
+               csd $$5 = this.c.b($$4).g();
+               if (!$$5.d() && Math.min($$3, $$5.i()) < $$5.G() + 1) {
+                  return;
+               }
+            }
+         }
+      }
+
+      int $$6 = this.a($$1, $$3, $$2);
+      IntList $$7 = new IntArrayList();
+      if (this.a.a((cwg<?>)$$0.b(), $$7, $$6)) {
+         int $$8 = $$6;
+         IntListIterator var8 = $$7.iterator();
+
+         while (var8.hasNext()) {
+            int $$9 = (Integer)var8.next();
+            int $$10 = ckp.a($$9).i();
+            if ($$10 < $$8) {
+               $$8 = $$10;
+            }
+         }
+
+         if (this.a.a((cwg<?>)$$0.b(), $$7, $$8)) {
+            this.a();
+            this.a(this.c.n(), this.c.o(), this.c.m(), $$0, $$7.iterator(), $$8);
+         }
+      }
+   }
+
+   @Override
+   public void a(Iterator<Integer> $$0, int $$1, int $$2, int $$3, int $$4) {
+      cpd $$5 = this.c.b($$1);
+      csd $$6 = ckp.a($$0.next());
+      if (!$$6.d()) {
+         for (int $$7 = 0; $$7 < $$2; $$7++) {
+            this.a($$5, $$6);
+         }
+      }
+   }
+
+   protected int a(boolean $$0, int $$1, boolean $$2) {
+      int $$3 = 1;
+      if ($$0) {
+         $$3 = $$1;
+      } else if ($$2) {
+         $$3 = 64;
+
+         for (int $$4 = 0; $$4 < this.c.n() * this.c.o() + 1; $$4++) {
+            if ($$4 != this.c.m()) {
+               csd $$5 = this.c.b($$4).g();
+               if (!$$5.d() && $$3 > $$5.G()) {
+                  $$3 = $$5.G();
+               }
+            }
+         }
+
+         if ($$3 < 64) {
+            $$3++;
+         }
+      }
+
+      return $$3;
+   }
+
+   protected void a(cpd $$0, csd $$1) {
+      int $$2 = this.b.c($$1);
+      if ($$2 != -1) {
+         csd $$3 = this.b.a($$2);
+         if (!$$3.d()) {
+            if ($$3.G() > 1) {
+               this.b.a($$2, 1);
+            } else {
+               this.b.b($$2);
+            }
+
+            if ($$0.g().d()) {
+               $$0.f($$3.c(1));
+            } else {
+               $$0.g().f(1);
+            }
+         }
+      }
+   }
+
+   private boolean b() {
+      List<csd> $$0 = Lists.newArrayList();
+      int $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < this.c.n() * this.c.o() + 1; $$2++) {
+         if ($$2 != this.c.m()) {
+            csd $$3 = this.c.b($$2).g().r();
+            if (!$$3.d()) {
+               int $$4 = this.b.d($$3);
+               if ($$4 == -1 && $$0.size() <= $$1) {
+                  for (csd $$5 : $$0) {
+                     if (csd.b($$5, $$3) && $$5.G() != $$5.i() && $$5.G() + $$3.G() <= $$5.i()) {
+                        $$5.f($$3.G());
+                        $$3.e(0);
+                        break;
+                     }
+                  }
+
+                  if (!$$3.d()) {
+                     if ($$0.size() >= $$1) {
+                        return false;
+                     }
+
+                     $$0.add($$3);
+                  }
+               } else if ($$4 == -1) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      return true;
+   }
+
+   private int c() {
+      int $$0 = 0;
+
+      for (csd $$1 : this.b.i) {
+         if ($$1.d()) {
+            $$0++;
+         }
+      }
+
+      return $$0;
    }
 }

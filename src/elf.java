@@ -1,135 +1,321 @@
-import com.google.common.base.Preconditions;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public class elf {
-   private static final elf[] am = new elf[64];
-   public static final elf a = new elf(0, 0);
-   public static final elf b = new elf(1, 8368696);
-   public static final elf c = new elf(2, 16247203);
-   public static final elf d = new elf(3, 13092807);
-   public static final elf e = new elf(4, 16711680);
-   public static final elf f = new elf(5, 10526975);
-   public static final elf g = new elf(6, 10987431);
-   public static final elf h = new elf(7, 31744);
-   public static final elf i = new elf(8, 16777215);
-   public static final elf j = new elf(9, 10791096);
-   public static final elf k = new elf(10, 9923917);
-   public static final elf l = new elf(11, 7368816);
-   public static final elf m = new elf(12, 4210943);
-   public static final elf n = new elf(13, 9402184);
-   public static final elf o = new elf(14, 16776437);
-   public static final elf p = new elf(15, 14188339);
-   public static final elf q = new elf(16, 11685080);
-   public static final elf r = new elf(17, 6724056);
-   public static final elf s = new elf(18, 15066419);
-   public static final elf t = new elf(19, 8375321);
-   public static final elf u = new elf(20, 15892389);
-   public static final elf v = new elf(21, 5000268);
-   public static final elf w = new elf(22, 10066329);
-   public static final elf x = new elf(23, 5013401);
-   public static final elf y = new elf(24, 8339378);
-   public static final elf z = new elf(25, 3361970);
-   public static final elf A = new elf(26, 6704179);
-   public static final elf B = new elf(27, 6717235);
-   public static final elf C = new elf(28, 10040115);
-   public static final elf D = new elf(29, 1644825);
-   public static final elf E = new elf(30, 16445005);
-   public static final elf F = new elf(31, 6085589);
-   public static final elf G = new elf(32, 4882687);
-   public static final elf H = new elf(33, 55610);
-   public static final elf I = new elf(34, 8476209);
-   public static final elf J = new elf(35, 7340544);
-   public static final elf K = new elf(36, 13742497);
-   public static final elf L = new elf(37, 10441252);
-   public static final elf M = new elf(38, 9787244);
-   public static final elf N = new elf(39, 7367818);
-   public static final elf O = new elf(40, 12223780);
-   public static final elf P = new elf(41, 6780213);
-   public static final elf Q = new elf(42, 10505550);
-   public static final elf R = new elf(43, 3746083);
-   public static final elf S = new elf(44, 8874850);
-   public static final elf T = new elf(45, 5725276);
-   public static final elf U = new elf(46, 8014168);
-   public static final elf V = new elf(47, 4996700);
-   public static final elf W = new elf(48, 4993571);
-   public static final elf X = new elf(49, 5001770);
-   public static final elf Y = new elf(50, 9321518);
-   public static final elf Z = new elf(51, 2430480);
-   public static final elf aa = new elf(52, 12398641);
-   public static final elf ab = new elf(53, 9715553);
-   public static final elf ac = new elf(54, 6035741);
-   public static final elf ad = new elf(55, 1474182);
-   public static final elf ae = new elf(56, 3837580);
-   public static final elf af = new elf(57, 5647422);
-   public static final elf ag = new elf(58, 1356933);
-   public static final elf ah = new elf(59, 6579300);
-   public static final elf ai = new elf(60, 14200723);
-   public static final elf aj = new elf(61, 8365974);
-   public final int ak;
-   public final int al;
+public abstract class elf<M extends elc<M>> {
+   private final dad i;
+   protected final dsh a;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   protected volatile M c;
+   protected final M d;
+   protected final LongSet e = new LongOpenHashSet();
+   protected final LongSet f = new LongOpenHashSet();
+   protected final Long2ObjectMap<drz> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
+   private final LongSet k = new LongOpenHashSet();
+   private final LongSet l = new LongOpenHashSet();
+   protected volatile boolean h;
 
-   private elf(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
+   protected elf(dad $$0, dsh $$1, M $$2) {
+      this.i = $$0;
+      this.a = $$1;
+      this.d = $$2;
+      this.c = $$2.b();
+      this.c.d();
+      this.b.defaultReturnValue((byte)0);
+   }
+
+   protected boolean b(long $$0) {
+      return this.a($$0, true) != null;
+   }
+
+   @Nullable
+   protected drz a(long $$0, boolean $$1) {
+      return this.a($$1 ? this.d : this.c, $$0);
+   }
+
+   @Nullable
+   protected drz a(M $$0, long $$1) {
+      return $$0.c($$1);
+   }
+
+   @Nullable
+   protected drz c(long $$0) {
+      drz $$1 = this.d.c($$0);
+      if ($$1 == null) {
+         return null;
       } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
+         if (this.e.add($$0)) {
+            $$1 = $$1.b();
+            this.d.a($$0, $$1);
+            this.d.c();
+         }
+
+         return $$1;
       }
    }
 
-   public int a(elf.a $$0) {
-      if (this == a) {
-         return 0;
+   @Nullable
+   public drz d(long $$0) {
+      drz $$1 = (drz)this.g.get($$0);
+      return $$1 != null ? $$1 : this.a($$0, false);
+   }
+
+   protected abstract int a(long var1);
+
+   protected int e(long $$0) {
+      long $$1 = jo.e($$0);
+      drz $$2 = this.a($$1, true);
+      return $$2.a(jo.b(im.a($$0)), jo.b(im.b($$0)), jo.b(im.c($$0)));
+   }
+
+   protected void a(long $$0, int $$1) {
+      long $$2 = jo.e($$0);
+      drz $$3;
+      if (this.e.add($$2)) {
+         $$3 = this.d.a($$2);
       } else {
-         int $$1 = $$0.f;
-         int $$2 = (this.ak >> 16 & 0xFF) * $$1 / 255;
-         int $$3 = (this.ak >> 8 & 0xFF) * $$1 / 255;
-         int $$4 = (this.ak & 0xFF) * $$1 / 255;
-         return 0xFF000000 | $$4 << 16 | $$3 << 8 | $$2;
+         $$3 = this.a($$2, true);
+      }
+
+      $$3.a(jo.b(im.a($$0)), jo.b(im.b($$0)), jo.b(im.c($$0)), $$1);
+      jo.a($$0, this.f::add);
+   }
+
+   protected void f(long $$0) {
+      int $$1 = jo.b($$0);
+      int $$2 = jo.c($$0);
+      int $$3 = jo.d($$0);
+
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               this.f.add(jo.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
+            }
+         }
       }
    }
 
-   public static elf a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
+   protected drz g(long $$0) {
+      drz $$1 = (drz)this.g.get($$0);
+      return $$1 != null ? $$1 : new drz();
    }
 
-   private static elf c(int $$0) {
-      elf $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
+   protected boolean a() {
+      return this.h;
    }
 
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(elf.a.b($$1 & 3));
+   protected void a(eli<M, ?> $$0) {
+      if (this.h) {
+         this.h = false;
+         LongIterator $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$1 = (Long)$$5.next();
+            drz $$2 = (drz)this.g.remove($$1);
+            drz $$3 = this.d.d($$1);
+            if (this.k.contains(jo.f($$1))) {
+               if ($$2 != null) {
+                  this.g.put($$1, $$2);
+               } else if ($$3 != null) {
+                  this.g.put($$1, $$3);
+               }
+            }
+         }
+
+         this.d.c();
+         $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$4 = (Long)$$5.next();
+            this.i($$4);
+            this.e.add($$4);
+         }
+
+         this.l.clear();
+         ObjectIterator<Entry<drz>> $$5x = Long2ObjectMaps.fastIterator(this.g);
+
+         while ($$5x.hasNext()) {
+            Entry<drz> $$6 = (Entry<drz>)$$5x.next();
+            long $$7 = $$6.getLongKey();
+            if (this.b($$7)) {
+               drz $$8 = (drz)$$6.getValue();
+               if (this.d.c($$7) != $$8) {
+                  this.d.a($$7, $$8);
+                  this.e.add($$7);
+               }
+
+               $$5x.remove();
+            }
+         }
+
+         this.d.c();
+      }
    }
 
-   public byte b(elf.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
+   protected void h(long $$0) {
    }
 
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
+   protected void i(long $$0) {
+   }
 
-      private static final elf.a[] g = new elf.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
+   protected void b(long $$0, boolean $$1) {
+      if ($$1) {
+         this.j.add($$0);
+      } else {
+         this.j.remove($$0);
+      }
+   }
 
-      private a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   protected boolean j(long $$0) {
+      long $$1 = jo.f($$0);
+      return this.j.contains($$1);
+   }
+
+   public void c(long $$0, boolean $$1) {
+      if ($$1) {
+         this.k.add($$0);
+      } else {
+         this.k.remove($$0);
+      }
+   }
+
+   protected void a(long $$0, @Nullable drz $$1) {
+      if ($$1 != null) {
+         this.g.put($$0, $$1);
+         this.h = true;
+      } else {
+         this.g.remove($$0);
+      }
+   }
+
+   protected void d(long $$0, boolean $$1) {
+      byte $$2 = this.b.get($$0);
+      byte $$3 = elf.a.a($$2, !$$1);
+      if ($$2 != $$3) {
+         this.a($$0, $$3);
+         int $$4 = $$1 ? -1 : 1;
+
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               for (int $$7 = -1; $$7 <= 1; $$7++) {
+                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
+                     long $$8 = jo.a($$0, $$5, $$6, $$7);
+                     byte $$9 = this.b.get($$8);
+                     this.a($$8, elf.a.a($$9, elf.a.b($$9) + $$4));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   protected void a(long $$0, byte $$1) {
+      if ($$1 != 0) {
+         if (this.b.put($$0, $$1) == 0) {
+            this.l($$0);
+         }
+      } else if (this.b.remove($$0) != 0) {
+         this.m($$0);
+      }
+   }
+
+   private void l(long $$0) {
+      if (!this.l.remove($$0)) {
+         this.d.a($$0, this.g($$0));
+         this.e.add($$0);
+         this.h($$0);
+         this.f($$0);
+         this.h = true;
+      }
+   }
+
+   private void m(long $$0) {
+      this.l.add($$0);
+      this.h = true;
+   }
+
+   protected void b() {
+      if (!this.e.isEmpty()) {
+         M $$0 = this.d.b();
+         $$0.d();
+         this.c = $$0;
+         this.e.clear();
       }
 
-      public static elf.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
+      if (!this.f.isEmpty()) {
+         LongIterator $$1 = this.f.iterator();
+
+         while ($$1.hasNext()) {
+            long $$2 = $$1.nextLong();
+            this.a.a(this.i, jo.a($$2));
+         }
+
+         this.f.clear();
+      }
+   }
+
+   public elf.b k(long $$0) {
+      return elf.a.c(this.b.get($$0));
+   }
+
+   protected static class a {
+      public static final byte a = 0;
+      private static final int b = 0;
+      private static final int c = 26;
+      private static final byte d = 32;
+      private static final byte e = 31;
+
+      public static byte a(byte $$0, boolean $$1) {
+         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
       }
 
-      static elf.a b(int $$0) {
-         return g[$$0];
+      public static byte a(byte $$0, int $$1) {
+         if ($$1 >= 0 && $$1 <= 26) {
+            return (byte)($$0 & -32 | $$1 & 31);
+         } else {
+            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
+         }
+      }
+
+      public static boolean a(byte $$0) {
+         return ($$0 & 32) != 0;
+      }
+
+      public static int b(byte $$0) {
+         return $$0 & 31;
+      }
+
+      public static elf.b c(byte $$0) {
+         if ($$0 == 0) {
+            return elf.b.a;
+         } else {
+            return a($$0) ? elf.b.c : elf.b.b;
+         }
+      }
+   }
+
+   public static enum b {
+      a("2"),
+      b("1"),
+      c("0");
+
+      private final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
       }
    }
 }

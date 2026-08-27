@@ -1,94 +1,101 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class det extends dbt {
+public class det extends dch {
    public static final MapCodec<det> a = b(det::new);
-   protected static final etc b = dch.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
-   public static final List<id> c = id.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(id::i).toList();
+   public static final dqy b = dqo.aT;
+   public static final dqp c = dqo.p;
+   protected static final ety d = dcv.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
 
    @Override
    public MapCodec<det> a() {
       return a;
    }
 
-   protected det(dph.d $$0) {
+   public det(dpx.d $$0) {
       super($$0);
-   }
-
-   public static boolean a(czg $$0, id $$1, id $$2) {
-      return $$0.a_($$1.a((ji)$$2)).a(ave.cp) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(ave.cq);
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dpi $$0) {
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return d;
+   }
+
+   @Override
+   protected boolean g_(dpy $$0) {
       return true;
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return b;
+   protected int a(dpy $$0, cza $$1, im $$2, ir $$3) {
+      return $$0.c(b);
+   }
+
+   private static void d(dpy $$0, czu $$1, im $$2) {
+      int $$3 = $$1.a(dad.a, $$2) - $$1.B_();
+      float $$4 = $$1.a(1.0F);
+      boolean $$5 = $$0.c(c);
+      if ($$5) {
+         $$3 = 15 - $$3;
+      } else if ($$3 > 0) {
+         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
+         $$4 += ($$6 - $$4) * 0.2F;
+         $$3 = Math.round((float)$$3 * axw.b($$4));
+      }
+
+      $$3 = axw.a($$3, 0, 15);
+      if ($$0.c(b) != $$3) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf($$3)), 3);
+      }
    }
 
    @Override
-   public void a(dpi $$0, czg $$1, id $$2, axt $$3) {
-      super.a($$0, $$1, $$2, $$3);
-
-      for (id $$4 : c) {
-         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
-            $$1.a(
-               kn.t,
-               (double)$$2.u() + 0.5,
-               (double)$$2.v() + 2.0,
-               (double)$$2.w() + 0.5,
-               (double)((float)$$4.u() + $$3.i()) - 0.5,
-               (double)((float)$$4.v() - $$3.i() - 1.0F),
-               (double)((float)$$4.w() + $$3.i()) - 0.5
-            );
+   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
+      if ($$3.gm()) {
+         if ($$1.B) {
+            return boq.a;
+         } else {
+            dpy $$5 = $$0.a(c);
+            $$1.a($$2, $$5, 2);
+            $$1.a(dur.c, $$2, dur.a.a($$3, $$5));
+            d($$5, $$1, $$2);
+            return boq.b;
          }
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected dim b_(dpi $$0) {
-      return dim.c;
+   protected djb b_(dpy $$0) {
+      return djb.c;
    }
 
    @Override
-   public dmo a(id $$0, dpi $$1) {
-      return new dni($$0, $$1);
+   protected boolean f_(dpy $$0) {
+      return true;
+   }
+
+   @Override
+   public dnd a(im $$0, dpy $$1) {
+      return new dns($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
-      return $$0.B ? a($$2, dmq.m, dni::a) : null;
+   public <T extends dnd> dne<T> a(czu $$0, dpy $$1, dnf<T> $$2) {
+      return !$$0.B && $$0.D_().g() ? a($$2, dnf.q, det::a) : null;
    }
 
-   @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if ($$1.B) {
-         return bof.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         return bof.b;
-      }
-   }
-
-   @Nullable
-   @Override
-   protected boj b(dpi $$0, czg $$1, id $$2) {
-      dmo $$3 = $$1.c_($$2);
-      if ($$3 instanceof dni) {
-         wi $$4 = ((bok)$$3).O_();
-         return new bop(($$2x, $$3x, $$4x) -> new cnq($$2x, $$3x, cnh.a($$1, $$2)), $$4);
-      } else {
-         return null;
+   private static void a(czu $$0, im $$1, dpy $$2, dns $$3) {
+      if ($$0.Y() % 20L == 0L) {
+         d($$2, $$0, $$1);
       }
    }
 
    @Override
-   protected boolean a(dpi $$0, elq $$1) {
-      return false;
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(b, c);
    }
 }

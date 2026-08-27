@@ -1,171 +1,76 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dmu extends dmo implements bnw {
-   private static final int a = 2;
-   private static final int b = 4;
-   private final iw<crs> c = iw.a(4, crs.i);
-   private final int[] d = new int[4];
-   private final int[] e = new int[4];
-   private final cvv.a<bny, cvg> f = cvv.b(cvx.e);
+public record dmu(List<dmu.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final dmu a = new dmu(List.of());
+   public static final Codec<dmu> b = dmu.b.a.listOf().xmap(dmu::new, dmu::b);
+   public static final yq<wd, dmu> c = dmu.b.b.a(yo.a()).a(dmu::new, dmu::b);
 
-   public dmu(id $$0, dpi $$1) {
-      super(dmq.G, $$0, $$1);
+   public dmu a() {
+      return new dmu(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   public static void a(czg $$0, id $$1, dpi $$2, dmu $$3) {
-      boolean $$4 = false;
+   public List<dmu.b> b() {
+      return this.d;
+   }
 
-      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
-         crs $$6 = $$3.c.get($$5);
-         if (!$$6.d()) {
-            $$4 = true;
-            $$3.d[$$5]++;
-            if ($$3.d[$$5] >= $$3.e[$$5]) {
-               bny $$7 = new boo($$6);
-               crs $$8 = $$3.f.a($$7, $$0).map($$2x -> ((cvg)$$2x.b()).a($$7, $$0.H_())).orElse($$6);
-               if ($$8.a($$0.J())) {
-                  bob.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
-                  $$3.c.set($$5, crs.i);
-                  $$0.a($$1, $$2, $$2, 3);
-                  $$0.a(dub.c, $$1, dub.a.a($$2));
-               }
-            }
+   public static class a {
+      private final Builder<dmu.b> a = ImmutableList.builder();
+
+      @Deprecated
+      public dmu.a a(iw<dmt> $$0, ake<dmt> $$1, cqw $$2) {
+         Optional<iv.c<dmt>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dmu.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
          }
       }
 
-      if ($$4) {
-         a($$0, $$1, $$2);
+      public dmu.a a(iv<dmt> $$0, cqw $$1) {
+         return this.a(new dmu.b($$0, $$1));
+      }
+
+      public dmu.a a(dmu.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dmu.a a(dmu $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dmu a() {
+         return new dmu(this.a.build());
       }
    }
 
-   public static void b(czg $$0, id $$1, dpi $$2, dmu $$3) {
-      boolean $$4 = false;
+   public static record b(iv<dmt> c, cqw d) {
+      public static final Codec<dmu.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dmt.c.fieldOf("pattern").forGetter(dmu.b::b), cqw.q.fieldOf("color").forGetter(dmu.b::c)).apply($$0, dmu.b::new)
+      );
+      public static final yq<wd, dmu.b> b = yq.a(dmt.d, dmu.b::b, cqw.r, dmu.b::c, dmu.b::new);
 
-      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
-         if ($$3.d[$$5] > 0) {
-            $$4 = true;
-            $$3.d[$$5] = axm.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
-         }
+      public xg a() {
+         String $$0 = this.c.a().b();
+         return ws.c($$0 + "." + this.d.b());
       }
 
-      if ($$4) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static void c(czg $$0, id $$1, dpi $$2, dmu $$3) {
-      axt $$4 = $$0.z;
-      if ($$4.i() < 0.11F) {
-         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
-            dcv.a($$0, $$1, $$2.c(dcv.d), false);
-         }
+      public iv<dmt> b() {
+         return this.c;
       }
 
-      int $$6 = $$2.c(dcv.f).e();
-
-      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
-         if (!$$3.c.get($$7).d() && $$4.i() < 0.2F) {
-            ij $$8 = ij.b(Math.floorMod($$7 + $$6, 4));
-            float $$9 = 0.3125F;
-            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
-            double $$11 = (double)$$1.v() + 0.5;
-            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
-
-            for (int $$13 = 0; $$13 < 4; $$13++) {
-               $$0.a(kn.ac, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
-            }
-         }
+      public cqw c() {
+         return this.d;
       }
-   }
-
-   public iw<crs> b() {
-      return this.c;
-   }
-
-   @Override
-   public void a(to $$0, ip.a $$1) {
-      super.a($$0, $$1);
-      this.c.clear();
-      bnz.b($$0, this.c, $$1);
-      if ($$0.b("CookingTimes", 11)) {
-         int[] $$2 = $$0.n("CookingTimes");
-         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
-      }
-
-      if ($$0.b("CookingTotalTimes", 11)) {
-         int[] $$3 = $$0.n("CookingTotalTimes");
-         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
-      }
-   }
-
-   @Override
-   protected void b(to $$0, ip.a $$1) {
-      super.b($$0, $$1);
-      bnz.a($$0, this.c, true, $$1);
-      $$0.a("CookingTimes", this.d);
-      $$0.a("CookingTotalTimes", this.e);
-   }
-
-   public abh c() {
-      return abh.a(this);
-   }
-
-   @Override
-   public to a(ip.a $$0) {
-      to $$1 = new to();
-      bnz.a($$1, this.c, true, $$0);
-      return $$1;
-   }
-
-   public Optional<cvu<cvg>> a(crs $$0) {
-      return this.c.stream().noneMatch(crs::d) ? Optional.empty() : this.f.a(new boo($$0), this.o);
-   }
-
-   public boolean a(@Nullable bqa $$0, crs $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
-         crs $$4 = this.c.get($$3);
-         if ($$4.d()) {
-            this.e[$$3] = $$2;
-            this.d[$$3] = 0;
-            this.c.set($$3, $$1.a(1));
-            this.o.a(dub.c, this.az_(), dub.a.a($$0, this.n()));
-            this.f();
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private void f() {
-      this.e();
-      this.i().a(this.az_(), this.n(), this.n(), 3);
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public void d() {
-      if (this.o != null) {
-         this.f();
-      }
-   }
-
-   @Override
-   public void a(jn $$0) {
-      $$0.a(jr.Q, cuj.a).a(this.b());
-   }
-
-   @Override
-   public void a(jn.a $$0) {
-      $$0.a(jr.Q, cuj.a(this.b()));
-   }
-
-   @Override
-   public void a(to $$0) {
-      $$0.r("Items");
    }
 }

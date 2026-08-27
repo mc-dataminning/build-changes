@@ -1,30 +1,75 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eaf(ecr b, dwh c, bnk d, int e) implements eai {
-   public static final Codec<eaf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ecr.a.fieldOf("state_provider").forGetter(eaf::a),
-               dwh.b.fieldOf("target").forGetter(eaf::b),
-               bnk.b(0, 8).fieldOf("radius").forGetter(eaf::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eaf::d)
-            )
-            .apply($$0, eaf::new)
-   );
-
-   public ecr a() {
-      return this.b;
+public class eaf extends dyu<ebt> {
+   public eaf(Codec<ebt> $$0) {
+      super($$0);
    }
 
-   public dwh b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(dyw<ebt> $$0) {
+      ebt $$1 = $$0.f();
+      dap $$2 = $$0.b();
+      im $$3 = $$0.e();
+      if (!$$2.a_($$3.c()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else {
+         dpy $$4 = $$2.a_($$3);
+         if (!$$4.i() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
 
-   public bnk c() {
-      return this.d;
-   }
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
 
-   public int d() {
-      return this.e;
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.d()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.u($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.e())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.d())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
+      }
    }
 }

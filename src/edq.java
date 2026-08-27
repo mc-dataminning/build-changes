@@ -1,29 +1,66 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
-public class edq {
-   public static final Codec<edq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dta.c).fieldOf("height").forGetter(edq::a), kt.e.q().fieldOf("block").orElse(dcj.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, edq::new)
-   );
-   private final dch b;
-   private final int c;
+public abstract class edq {
+   public static final Codec<edq> h = lc.Z.q().dispatch(edq::a, edr::a);
 
-   public edq(int $$0, dch $$1) {
-      this.c = $$0;
-      this.b = $$1;
-   }
+   protected abstract edr<?> a();
 
-   public int a() {
-      return this.c;
-   }
+   public abstract void a(edq.a var1);
 
-   public dpi b() {
-      return this.b.n();
-   }
+   public static final class a {
+      private final daa a;
+      private final BiConsumer<im, dpy> b;
+      private final ayd c;
+      private final ObjectArrayList<im> d;
+      private final ObjectArrayList<im> e;
+      private final ObjectArrayList<im> f;
 
-   @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + kt.e.b(this.b);
+      public a(daa $$0, BiConsumer<im, dpy> $$1, ayd $$2, Set<im> $$3, Set<im> $$4, Set<im> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(jq::v));
+         this.e.sort(Comparator.comparingInt(jq::v));
+         this.f.sort(Comparator.comparingInt(jq::v));
+      }
+
+      public void a(im $$0, dqp $$1) {
+         this.a($$0, dcx.ff.n().a($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(im $$0, dpy $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(im $$0) {
+         return this.a.a($$0, dpx.a::i);
+      }
+
+      public daa a() {
+         return this.a;
+      }
+
+      public ayd b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<im> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<im> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<im> e() {
+         return this.f;
+      }
    }
 }

@@ -1,6 +1,4 @@
-public record yr<T extends yp<?>>(yq a, ajv b) {
-   @Override
-   public String toString() {
-      return this.a.b() + "/" + this.b;
-   }
+@FunctionalInterface
+public interface yr<I, T> {
+   T decode(I var1);
 }

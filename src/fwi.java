@@ -1,22 +1,30 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.function.Supplier;
 
-@FunctionalInterface
 public interface fwi {
-   Logger a = LogUtils.getLogger();
-   fwi b = $$0 -> {
-      try {
-         InetAddress $$1 = InetAddress.getByName($$0.a());
-         return Optional.of(fwg.a(new InetSocketAddress($$1, $$0.b())));
-      } catch (UnknownHostException var2) {
-         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
-         return Optional.empty();
-      }
-   };
+   Codec<fwi> a = ayq.a(fwi.a::values).dispatch(fwi::a, fwi.a::a);
 
-   Optional<fwg> resolve(fwh var1);
+   fwi.a a();
+
+   public static enum a implements ayq {
+      a("player", () -> fwj.a.b),
+      b("system", () -> fwj.b.b);
+
+      private final String c;
+      private final Supplier<Codec<? extends fwi>> d;
+
+      private a(String $$0, Supplier<Codec<? extends fwi>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      private Codec<? extends fwi> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
+      }
+   }
 }

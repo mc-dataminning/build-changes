@@ -1,75 +1,31 @@
-import com.google.common.collect.Sets;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
-import java.util.Set;
 
 public class bbk extends DataFix {
-   private static final Set<String> a = Sets.newHashSet(
-      new String[]{
-         "ArmorStand",
-         "Bat",
-         "Blaze",
-         "CaveSpider",
-         "Chicken",
-         "Cow",
-         "Creeper",
-         "EnderDragon",
-         "Enderman",
-         "Endermite",
-         "EntityHorse",
-         "Ghast",
-         "Giant",
-         "Guardian",
-         "LavaSlime",
-         "MushroomCow",
-         "Ozelot",
-         "Pig",
-         "PigZombie",
-         "Rabbit",
-         "Sheep",
-         "Shulker",
-         "Silverfish",
-         "Skeleton",
-         "Slime",
-         "SnowMan",
-         "Spider",
-         "Squid",
-         "Villager",
-         "VillagerGolem",
-         "Witch",
-         "WitherBoss",
-         "Wolf",
-         "Zombie"
-      }
-   );
-
-   public bbk(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
-      float $$3;
-      if ($$1.isPresent()) {
-         $$3 = $$1.get().floatValue();
-         $$0 = $$0.remove("HealF");
-      } else {
-         if (!$$2.isPresent()) {
-            return $$0;
-         }
-
-         $$3 = $$2.get().floatValue();
-      }
-
-      return $$0.set("Health", $$0.createFloat($$3));
+   public bbk(Schema $$0) {
+      super($$0, false);
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bff.z), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
+         this.getInputSchema().getType(bfp.t)
+      );
+      return this.fixTypeEverywhereTyped(
+         "EmptyItemInHotbarFix", this.getInputSchema().getType(bfp.d), $$1 -> $$1.update($$0, $$0xx -> $$0xx.mapSecond($$0xxx -> {
+                  Optional<String> $$1x = ((Either)$$0xxx.getFirst()).left().map(Pair::getSecond);
+                  Dynamic<?> $$2 = (Dynamic<?>)((Pair)$$0xxx.getSecond()).getSecond();
+                  boolean $$3 = $$1x.isEmpty() || $$1x.get().equals("minecraft:air");
+                  boolean $$4 = $$2.get("Count").asInt(0) <= 0;
+                  return !$$3 && !$$4 ? $$0xxx : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), $$2.emptyMap()));
+               }))
+      );
    }
 }

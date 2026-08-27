@@ -1,108 +1,42 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ecf extends ecg {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final Codec<ecf> c = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(ece.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, ecf::new)
-   );
-   private final ece h;
+public class ecf extends eck {
+   public static final Codec<ecf> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ecf::new));
+   protected final int b;
 
-   public ecf(bnk $$0, ecj $$1, Optional<ecd> $$2, ece $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   protected static <P extends ecf> P3<Mu<P>, bnv, bnv, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
+   }
+
+   public ecf(bnv $$0, bnv $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   public boolean a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, id $$3, id $$4, ebe $$5) {
-      List<id> $$6 = Lists.newArrayList();
-      id.a $$7 = $$3.j();
-
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
-         }
-
-         $$7.c(ij.b);
-      }
-
-      $$6.add($$4.d());
-
-      for (ij $$8 : ij.c.a) {
-         id $$9 = $$4.a($$8);
-         List<id> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (id $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
+   protected ecl<?> a() {
+      return ecl.a;
    }
 
-   private boolean a(czm $$0, axt $$1, id $$2, ij $$3, id $$4, List<id> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (id $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected List<id> a(id $$0, ij $$1, axt $$2, id $$3) {
-      id $$4 = $$0.d();
-      id $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
+   @Override
+   protected void a(daa $$0, eck.b $$1, ayd $$2, ebu $$3, int $$4, eck.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
    @Override
-   protected boolean a(czm $$0, id $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   public int a(ayd $$0, int $$1, ebu $$2) {
+      return this.b;
    }
 
    @Override
-   protected void a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, id $$3, ebe $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         dpi $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected ech<?> a() {
-      return ech.a;
+   protected boolean a(ayd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

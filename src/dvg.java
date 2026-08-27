@@ -1,110 +1,181 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public record dvg(dut b, dut c, dut d, dut e, dut f, dut g, dut h, dut i, dut j, dut k, dut l, dut m, dut n, dut o, dut p) {
-   public static final Codec<dvg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", dvg::a),
-               a("fluid_level_floodedness", dvg::b),
-               a("fluid_level_spread", dvg::c),
-               a("lava", dvg::d),
-               a("temperature", dvg::e),
-               a("vegetation", dvg::f),
-               a("continents", dvg::g),
-               a("erosion", dvg::h),
-               a("depth", dvg::i),
-               a("ridges", dvg::j),
-               a("initial_density_without_jaggedness", dvg::k),
-               a("final_density", dvg::l),
-               a("vein_toggle", dvg::m),
-               a("vein_ridged", dvg::n),
-               a("vein_gap", dvg::o)
-            )
-            .apply($$0, dvg::new)
-   );
-
-   private static RecordCodecBuilder<dvg, dut> a(String $$0, Function<dvg, dut> $$1) {
-      return dut.d.fieldOf($$0).forGetter($$1);
+public abstract class dvg {
+   public static dvg.b a(int $$0, int $$1) {
+      return new dvg.b($$0 - 1, $$1 + 1);
    }
 
-   public dvg a(dut.f $$0) {
-      return new dvg(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   public static dvg.b b(int $$0, int $$1) {
+      return new dvg.b($$0, $$1);
    }
 
-   public dut a() {
-      return this.b;
+   public static dvg a(int $$0) {
+      return new dvg.c($$0, false);
    }
 
-   public dut b() {
-      return this.c;
+   public static dvg b(int $$0) {
+      return new dvg.c($$0 + 1, false);
    }
 
-   public dut c() {
-      return this.d;
+   public static dvg c(int $$0) {
+      return new dvg.c($$0, true);
    }
 
-   public dut d() {
-      return this.e;
+   public static dvg d(int $$0) {
+      return new dvg.c($$0 - 1, true);
    }
 
-   public dut e() {
-      return this.f;
+   public static dvg a() {
+      return dvg.a.a;
    }
 
-   public dut f() {
-      return this.g;
+   public static dvg a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
    }
 
-   public dut g() {
-      return this.h;
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public dvg a(OptionalInt $$0) {
+      return a($$0, this.b());
    }
 
-   public dut h() {
-      return this.i;
+   public dvg b(OptionalInt $$0) {
+      return a(this.c(), $$0);
    }
 
-   public dut i() {
-      return this.j;
+   public static Optional<dvg> a(daa $$0, im $$1, int $$2, Predicate<dpy> $$3, Predicate<dpy> $$4) {
+      im.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ir.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ir.a);
+         return Optional.of(a($$8, $$7));
+      }
    }
 
-   public dut j() {
-      return this.k;
+   private static OptionalInt a(daa $$0, int $$1, Predicate<dpy> $$2, Predicate<dpy> $$3, im.a $$4, int $$5, ir $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
    }
 
-   public dut k() {
-      return this.l;
+   public static final class a extends dvg {
+      static final dvg.a a = new dvg.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
    }
 
-   public dut l() {
-      return this.m;
+   public static final class b extends dvg {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   public dut m() {
-      return this.n;
-   }
+   public static final class c extends dvg {
+      private final int a;
+      private final boolean b;
 
-   public dut n() {
-      return this.o;
-   }
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public dut o() {
-      return this.p;
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

@@ -1,40 +1,37 @@
-public class fws extends fyw {
-   fws(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
+import java.util.Locale;
+
+public enum fws {
+   a("generic"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery");
+
+   private final String k;
+   private final ws l;
+   private final ws m;
+
+   private fws(String $$0) {
+      this.k = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.l = ws.c($$1);
+      this.m = ws.c($$1 + ".description");
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(id.a(this.g, this.h, this.i)).a(avj.a)) {
-         this.k();
-      }
+   public String a() {
+      return this.k;
    }
 
-   @Override
-   public fya b() {
-      return fya.b;
+   public ws b() {
+      return this.l;
    }
 
-   public static class a implements fxz<kq> {
-      private final fyr a;
-
-      public a(fyr $$0) {
-         this.a = $$0;
-      }
-
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fws $$8 = new fws($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public ws c() {
+      return this.m;
    }
 }

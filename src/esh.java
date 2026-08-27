@@ -1,26 +1,30 @@
-public abstract class esh {
-   protected final esj a;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   protected esh(esj $$0) {
-      this.a = $$0;
+public record esh(eoa.b c) implements esk {
+   public static final Codec<esh> a = RecordCodecBuilder.create($$0 -> $$0.group(eoa.b.e.fieldOf("target").forGetter(esh::c)).apply($$0, esh::new));
+   public static final Codec<esh> b = eoa.b.e.xmap(esh::new, esh::c);
+
+   public static esk a(eoa.b $$0) {
+      return new esh($$0);
    }
 
-   public double a(bqa $$0) {
-      double $$1 = this.a.c - $$0.dr();
-      double $$2 = this.a.d - $$0.dt();
-      double $$3 = this.a.e - $$0.dx();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   @Override
+   public esj a() {
+      return esl.c;
    }
 
-   public abstract esh.a c();
-
-   public esj e() {
-      return this.a;
+   @Nullable
+   @Override
+   public eui a(eoa $$0) {
+      return $$0.c(this.c.a());
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public Set<eqq<?>> b() {
+      return ImmutableSet.of(this.c.a());
    }
 }

@@ -1,19 +1,33 @@
-public class gjb extends gkc<cic, fqe<cic>> {
-   private static final ajv a = new ajv("textures/entity/breeze/breeze_wind.png");
-   private static final fqe<cic> b = new fqe<>(fqe.a(128, 128).a());
+public class gjb extends ghs<cms> {
+   private final gby f;
 
-   public gjb(ghm<cic, fqe<cic>> $$0) {
-      super($$0);
+   public gjb(ggn.a $$0) {
+      super($$0, fuq.bG);
+      this.f = $$0.c();
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, cic $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ah + $$6;
-      ewv $$11 = $$1.getBuffer(gaq.a(a, this.a($$10) % 1.0F, 0.0F));
-      b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      gex.a(b, b.e()).a($$0, $$11, $$2, glj.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected void a(cms $$0, float $$1, dpy $$2, exn $$3, gbe $$4, int $$5) {
+      int $$6 = $$0.C();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = axw.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public static void a(gby $$0, dpy $$1, exn $$2, gbe $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = gmf.a(gmf.a(1.0F), 10);
+      } else {
+         $$6 = gmf.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

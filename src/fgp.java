@@ -1,178 +1,225 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.mojang.datafixers.util.Pair;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
+import java.util.ListIterator;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.joml.Vector2i;
 
-public class fgp implements AutoCloseable {
-   private static final axt a = axt.a();
-   private static final float b = 32.0F;
-   private final glt c;
-   private final ajv d;
-   private fgt e;
-   private fgt f;
-   private List<euu.a> g = List.of();
-   private List<euu> h = List.of();
-   private final fgm<fgt> i = new fgm<>(fgt[]::new, fgt[][]::new);
-   private final fgm<fgp.a> j = new fgm<>(fgp.a[]::new, fgp.a[][]::new);
-   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
-   private final List<fgq> l = Lists.newArrayList();
+public interface fgp extends fgq {
+   List<? extends fgq> aE_();
 
-   public fgp(glt $$0, ajv $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public void a(List<euu.a> $$0, Set<fgo> $$1) {
-      this.g = $$0;
-      this.a($$1);
-   }
-
-   public void a(Set<fgo> $$0) {
-      this.h = List.of();
-      this.c();
-      this.h = this.b(this.g, $$0);
-   }
-
-   private void c() {
-      this.d();
-      this.i.a();
-      this.j.a();
-      this.k.clear();
-      this.e = fgv.b.bake(this::a);
-      this.f = fgv.a.bake(this::a);
-   }
-
-   private List<euu> b(List<euu.a> $$0, Set<fgo> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<euu> $$3 = new ArrayList<>();
-
-      for (euu.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
+   default Optional<fgq> b_(double $$0, double $$1) {
+      for (fgq $$2 : this.aE_()) {
+         if ($$2.c($$0, $$1)) {
+            return Optional.of($$2);
          }
       }
 
-      Set<euu> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (euu $$3x : $$3) {
-            eut $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != fgv.b) {
-                  ((IntList)this.k.computeIfAbsent(axm.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
-         }
-      });
-      return $$3.stream().filter($$5::contains).toList();
+      return Optional.empty();
    }
 
    @Override
-   public void close() {
-      this.d();
-   }
+   default boolean a(double $$0, double $$1, int $$2) {
+      for (fgq $$3 : this.aE_()) {
+         if ($$3.a($$0, $$1, $$2)) {
+            this.a($$3);
+            if ($$2 == 0) {
+               this.b(true);
+            }
 
-   private void d() {
-      for (fgq $$0 : this.l) {
-         $$0.close();
+            return true;
+         }
       }
 
-      this.l.clear();
+      return false;
    }
 
-   private static boolean b(eut $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
+   @Override
+   default boolean b(double $$0, double $$1, int $$2) {
+      this.b(false);
+      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
+   }
+
+   @Override
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return this.aH_() != null && this.aG_() && $$2 == 0 ? this.aH_().a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   boolean aG_();
+
+   void b(boolean var1);
+
+   @Override
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
+   }
+
+   @Override
+   default boolean a(int $$0, int $$1, int $$2) {
+      return this.aH_() != null && this.aH_().a($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean c(int $$0, int $$1, int $$2) {
+      return this.aH_() != null && this.aH_().c($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean a(char $$0, int $$1) {
+      return this.aH_() != null && this.aH_().a($$0, $$1);
+   }
+
+   @Nullable
+   fgq aH_();
+
+   void a(@Nullable fgq var1);
+
+   @Override
+   default void a(boolean $$0) {
+   }
+
+   @Override
+   default boolean aI_() {
+      return this.aH_() != null;
+   }
+
+   @Nullable
+   @Override
+   default fee aJ_() {
+      fgq $$0 = this.aH_();
+      return $$0 != null ? fee.a(this, $$0.aJ_()) : null;
+   }
+
+   @Nullable
+   @Override
+   default fee a(fiw $$0) {
+      fgq $$1 = this.aH_();
+      if ($$1 != null) {
+         fee $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return fee.a(this, $$2);
+         }
+      }
+
+      if ($$0 instanceof fiw.c $$3) {
+         return this.a($$3);
       } else {
-         return true;
+         return $$0 instanceof fiw.a $$4 ? this.a($$4) : null;
       }
    }
 
-   private fgp.a b(int $$0) {
-      eut $$1 = null;
+   @Nullable
+   private fee a(fiw.c $$0) {
+      boolean $$1 = $$0.b();
+      fgq $$2 = this.aH_();
+      List<? extends fgq> $$3 = new ArrayList<>(this.aE_());
+      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.H()));
+      int $$4 = $$3.indexOf($$2);
+      int $$5;
+      if ($$2 != null && $$4 >= 0) {
+         $$5 = $$4 + ($$1 ? 1 : 0);
+      } else if ($$1) {
+         $$5 = 0;
+      } else {
+         $$5 = $$3.size();
+      }
 
-      for (euu $$2 : this.h) {
-         eut $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
+      ListIterator<? extends fgq> $$8 = $$3.listIterator($$5);
+      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
+      Supplier<? extends fgq> $$10 = $$1 ? $$8::next : $$8::previous;
+
+      while ($$9.getAsBoolean()) {
+         fgq $$11 = $$10.get();
+         fee $$12 = $$11.a($$0);
+         if ($$12 != null) {
+            return fee.a(this, $$12);
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   private fee a(fiw.a $$0) {
+      fgq $$1 = this.aH_();
+      if ($$1 == null) {
+         fiy $$2 = $$0.b();
+         fja $$3 = this.G().c($$2.b());
+         return fee.a(this, this.a($$3, $$2, null, $$0));
+      } else {
+         fja $$4 = $$1.G();
+         return fee.a(this, this.a($$4, $$0.b(), $$1, $$0));
+      }
+   }
+
+   @Nullable
+   private fee a(fja $$0, fiy $$1, @Nullable fgq $$2, fiw $$3) {
+      fix $$4 = $$1.a();
+      fix $$5 = $$4.a();
+      fiy $$6 = $$5.b();
+      int $$7 = $$0.b($$1.b());
+      List<fgq> $$8 = new ArrayList<>();
+
+      for (fgq $$9 : this.aE_()) {
+         if ($$9 != $$2) {
+            fja $$10 = $$9.G();
+            if ($$10.a($$0, $$5)) {
+               int $$11 = $$10.b($$1.b());
+               if ($$1.a($$11, $$7)) {
+                  $$8.add($$9);
+               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
+                  $$8.add($$9);
+               }
             }
+         }
+      }
 
-            if (!b($$3)) {
-               return new fgp.a($$1, $$3);
+      Comparator<fgq> $$12 = Comparator.comparing($$1x -> $$1x.G().b($$1.b()), $$1.d());
+      Comparator<fgq> $$13 = Comparator.comparing($$1x -> $$1x.G().b($$6.b()), $$6.d());
+      $$8.sort($$12.thenComparing($$13));
+
+      for (fgq $$14 : $$8) {
+         fee $$15 = $$14.a($$3);
+         if ($$15 != null) {
+            return $$15;
+         }
+      }
+
+      return this.b($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   private fee b(fja $$0, fiy $$1, @Nullable fgq $$2, fiw $$3) {
+      fix $$4 = $$1.a();
+      fix $$5 = $$4.a();
+      List<Pair<fgq, Long>> $$6 = new ArrayList<>();
+      fiz $$7 = fiz.a($$4, $$0.b($$1), $$0.b($$5));
+
+      for (fgq $$8 : this.aE_()) {
+         if ($$8 != $$2) {
+            fja $$9 = $$8.G();
+            fiz $$10 = fiz.a($$4, $$9.b($$1.b()), $$9.b($$5));
+            if ($$1.a($$10.a($$4), $$7.a($$4))) {
+               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
+               $$6.add(Pair.of($$8, $$11));
             }
          }
       }
 
-      return $$1 != null ? new fgp.a($$1, fgv.b) : fgp.a.c;
-   }
+      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
 
-   public eut a(int $$0, boolean $$1) {
-      return this.j.a($$0, this::b).a($$1);
-   }
-
-   private fgt c(int $$0) {
-      for (euu $$1 : this.h) {
-         eut $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
+      for (Pair<fgq, Long> $$12 : $$6) {
+         fee $$13 = ((fgq)$$12.getFirst()).a($$3);
+         if ($$13 != null) {
+            return $$13;
          }
       }
 
-      return this.e;
-   }
-
-   public fgt a(int $$0) {
-      return this.i.a($$0, this::c);
-   }
-
-   private fgt a(euv $$0) {
-      for (fgq $$1 : this.l) {
-         fgt $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      ajv $$3 = this.d.e("/" + this.l.size());
-      boolean $$4 = $$0.c();
-      fgr $$5 = $$4 ? fgr.b($$3) : fgr.a($$3);
-      fgq $$6 = new fgq($$5, $$4);
-      this.l.add($$6);
-      this.c.a($$3, $$6);
-      fgt $$7 = $$6.a($$0);
-      return $$7 == null ? this.e : $$7;
-   }
-
-   public fgt a(eut $$0) {
-      IntList $$1 = (IntList)this.k.get(axm.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
-   }
-
-   public ajv a() {
-      return this.d;
-   }
-
-   public fgt b() {
-      return this.f;
-   }
-
-   static record a(eut a, eut b) {
-      static final fgp.a c = new fgp.a(fgv.b, fgv.b);
-
-      eut a(boolean $$0) {
-         return $$0 ? this.b : this.a;
-      }
+      return null;
    }
 }

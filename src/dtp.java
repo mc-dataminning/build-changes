@@ -1,38 +1,14 @@
-import javax.annotation.Nullable;
-
-public interface dtp<B, T extends B> {
-   static <B, T extends B> dtp<B, T> a(final Class<T> $$0) {
-      return new dtp<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
-
-   static <B, T extends B> dtp<B, T> b(final Class<T> $$0) {
-      return new dtp<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
-
-   @Nullable
-   T a(B var1);
-
-   Class<? extends B> a();
+public class dtp {
+   public static final int a = -64;
+   public static final int b = 384;
+   public static final int c = 384;
+   public static final int d = 384;
+   public static final int e = 0;
+   public static final int f = 256;
+   public static final int g = 128;
+   public static final int h = 128;
+   public static final int i = 0;
+   public static final int j = 256;
+   public static final int k = 128;
+   public static final int l = 256;
 }

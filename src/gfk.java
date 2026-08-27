@@ -1,16 +1,11 @@
-public class gfk extends ggf {
-   public static final ajv a = new ajv("textures/entity/guardian_elder.png");
+public class gfk extends ght<cec, fqp> {
+   private static final akf a = new akf("textures/entity/armadillo.png");
 
-   public gfk(gfr.a $$0) {
-      super($$0, 1.2F, ftu.V);
+   public gfk(ggn.a $$0) {
+      super($$0, new fqp($$0.a(fuq.b)), 0.4F);
    }
 
-   protected void a(chc $$0, ewr $$1, float $$2) {
-      $$1.b(cgv.b, cgv.b, cgv.b);
-   }
-
-   @Override
-   public ajv a(chc $$0) {
+   public akf a(cec $$0) {
       return a;
    }
 }

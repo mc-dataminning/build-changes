@@ -1,15 +1,16 @@
-public class cve extends cvb {
-   public cve(String $$0, cvh $$1, cvp $$2, crs $$3, float $$4, int $$5) {
-      super(cvx.c, $$0, $$1, $$2, $$3, $$4, $$5);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record cve(akf b, long c) {
+   public static final Codec<cve> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akf.a.fieldOf("loot_table").forGetter(cve::a), axe.a(Codec.LONG, "seed", 0L).forGetter(cve::b)).apply($$0, cve::new)
+   );
+
+   public akf a() {
+      return this.b;
    }
 
-   @Override
-   public crs g() {
-      return new crs(dcj.nW);
-   }
-
-   @Override
-   public cvw<?> ao_() {
-      return cvw.q;
+   public long b() {
+      return this.c;
    }
 }

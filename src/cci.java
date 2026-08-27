@@ -1,217 +1,89 @@
-import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
-public abstract class cci extends bpu {
-   protected static final int bZ = 6000;
-   private int bX;
-   @Nullable
-   private UUID bY;
+public class cci {
+   private final im a;
+   private final iv<cck> b;
+   private int c;
+   private final Runnable d;
 
-   protected cci(bqg<? extends cci> $$0, czg $$1) {
-      super($$0, $$1);
-      this.a(els.n, 16.0F);
-      this.a(els.o, -1.0F);
+   public static Codec<cci> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  im.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
+                  akc.a(ld.V).fieldOf("type").forGetter($$0xx -> $$0xx.b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
+                  RecordCodecBuilder.point($$0)
+               )
+               .apply($$1, cci::new)
+      );
    }
 
-   @Override
-   protected void Y() {
-      if (this.g() != 0) {
-         this.bX = 0;
-      }
-
-      super.Y();
+   private cci(im $$0, iv<cck> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.i();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void n_() {
-      super.n_();
-      if (this.g() != 0) {
-         this.bX = 0;
-      }
-
-      if (this.bX > 0) {
-         this.bX--;
-         if (this.bX % 10 == 0) {
-            double $$0 = this.ag.k() * 0.02;
-            double $$1 = this.ag.k() * 0.02;
-            double $$2 = this.ag.k() * 0.02;
-            this.dM().a(kn.P, this.d(1.0), this.du() + 0.5, this.g(1.0), $$0, $$1, $$2);
-         }
-      }
+   public cci(im $$0, iv<cck> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   @Override
-   public boolean a(boy $$0, float $$1) {
-      if (this.b($$0)) {
+   @Deprecated
+   @ayz
+   public int a() {
+      return this.c;
+   }
+
+   protected boolean b() {
+      if (this.c <= 0) {
          return false;
       } else {
-         this.bX = 0;
-         return super.a($$0, $$1);
+         this.c--;
+         this.d.run();
+         return true;
       }
    }
 
-   @Override
-   public float a(id $$0, czj $$1) {
-      return $$1.a_($$0.d()).a(dcj.i) ? 10.0F : $$1.w($$0);
-   }
-
-   @Override
-   public void b(to $$0) {
-      super.b($$0);
-      $$0.a("InLove", this.bX);
-      if (this.bY != null) {
-         $$0.a("LoveCause", this.bY);
-      }
-   }
-
-   @Override
-   public void a(to $$0) {
-      super.a($$0);
-      this.bX = $$0.h("InLove");
-      this.bY = $$0.b("LoveCause") ? $$0.a("LoveCause") : null;
-   }
-
-   public static boolean b(bqg<? extends cci> $$0, czh $$1, bqx $$2, id $$3, axt $$4) {
-      boolean $$5 = bqx.b($$2) || a($$1, $$3);
-      return $$1.a_($$3.d()).a(ave.bQ) && $$5;
-   }
-
-   protected static boolean a(cyj $$0, id $$1) {
-      return $$0.b($$1, 0) > 8;
-   }
-
-   @Override
-   public int O() {
-      return 120;
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
-   }
-
-   @Override
-   public int eg() {
-      return 1 + this.dM().z.a(3);
-   }
-
-   public boolean o(crs $$0) {
-      return $$0.a(crv.pv);
-   }
-
-   @Override
-   public bof b(cka $$0, boe $$1) {
-      crs $$2 = $$0.b($$1);
-      if (this.o($$2)) {
-         int $$3 = this.g();
-         if (!this.dM().B && $$3 == 0 && this.go()) {
-            this.a($$0, $$1, $$2);
-            this.g($$0);
-            return bof.a;
-         }
-
-         if (this.p_()) {
-            this.a($$0, $$1, $$2);
-            this.a(d_(-$$3), true);
-            return bof.a(this.dM().B);
-         }
-
-         if (this.dM().B) {
-            return bof.b;
-         }
-      }
-
-      return super.b($$0, $$1);
-   }
-
-   protected void a(cka $$0, boe $$1, crs $$2) {
-      $$2.a(1, $$0);
-   }
-
-   public boolean go() {
-      return this.bX <= 0;
-   }
-
-   public void g(@Nullable cka $$0) {
-      this.bX = 600;
-      if ($$0 != null) {
-         this.bY = $$0.cw();
-      }
-
-      this.dM().a(this, (byte)18);
-   }
-
-   public void t(int $$0) {
-      this.bX = $$0;
-   }
-
-   public int gp() {
-      return this.bX;
-   }
-
-   @Nullable
-   public apv gq() {
-      if (this.bY == null) {
-         return null;
-      } else {
-         cka $$0 = this.dM().b(this.bY);
-         return $$0 instanceof apv ? (apv)$$0 : null;
-      }
-   }
-
-   public boolean gr() {
-      return this.bX > 0;
-   }
-
-   public void gs() {
-      this.bX = 0;
-   }
-
-   public boolean a(cci $$0) {
-      if ($$0 == this) {
+   protected boolean c() {
+      if (this.c >= this.b.a().b()) {
          return false;
       } else {
-         return $$0.getClass() != this.getClass() ? false : this.gr() && $$0.gr();
+         this.c++;
+         this.d.run();
+         return true;
       }
    }
 
-   public void a(apu $$0, cci $$1) {
-      bpu $$2 = this.a($$0, (bpu)$$1);
-      if ($$2 != null) {
-         $$2.a(true);
-         $$2.b(this.dr(), this.dt(), this.dx(), 0.0F, 0.0F);
-         this.a($$0, $$1, $$2);
-         $$0.a_($$2);
-      }
+   public boolean d() {
+      return this.c > 0;
    }
 
-   public void a(apu $$0, cci $$1, @Nullable bpu $$2) {
-      Optional.ofNullable(this.gq()).or(() -> Optional.ofNullable($$1.gq())).ifPresent($$2x -> {
-         $$2x.a(auz.P);
-         am.p.a($$2x, this, $$1, $$2);
-      });
-      this.c_(6000);
-      $$1.c_(6000);
-      this.gs();
-      $$1.gs();
-      $$0.a(this, (byte)18);
-      if ($$0.aa().b(czc.f)) {
-         $$0.b(new bqj($$0, this.dr(), this.dt(), this.dx(), this.ei().a(7) + 1));
+   public boolean e() {
+      return this.c != this.b.a().b();
+   }
+
+   public im f() {
+      return this.a;
+   }
+
+   public iv<cck> g() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((cci)$$0).a) : false;
       }
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 18) {
-         for (int $$1 = 0; $$1 < 7; $$1++) {
-            double $$2 = this.ag.k() * 0.02;
-            double $$3 = this.ag.k() * 0.02;
-            double $$4 = this.ag.k() * 0.02;
-            this.dM().a(kn.P, this.d(1.0), this.du() + 0.5, this.g(1.0), $$2, $$3, $$4);
-         }
-      } else {
-         super.b($$0);
-      }
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

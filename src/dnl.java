@@ -1,23 +1,23 @@
-public class dnl extends dny {
-   private static final int a = 60;
-   private static final int b = 9;
+public class dnl {
+   private boolean a;
+   private float b;
+   private float c;
 
-   public dnl(id $$0, dpi $$1) {
-      super(dmq.i, $$0, $$1);
+   public void a() {
+      this.c = this.b;
+      float $$0 = 0.1F;
+      if (!this.a && this.b > 0.0F) {
+         this.b = Math.max(this.b - 0.1F, 0.0F);
+      } else if (this.a && this.b < 1.0F) {
+         this.b = Math.min(this.b + 0.1F, 1.0F);
+      }
    }
 
-   @Override
-   public int b() {
-      return 9;
+   public float a(float $$0) {
+      return axw.i($$0, this.c, this.b);
    }
 
-   @Override
-   public int c() {
-      return 60;
-   }
-
-   @Override
-   public aun d() {
-      return auo.BD;
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 }

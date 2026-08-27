@@ -1,12 +1,32 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
-public class ov extends pe<edr> {
-   public ov(lc $$0, CompletableFuture<ip.a> $$1) {
-      super($$0, ku.aC, $$1);
+public class ov {
+   public static void a(String[] $$0) throws IOException {
+      aa.a(t.a);
+      akh.a();
+
+      for (String $$1 : $$0) {
+         a($$1);
+      }
    }
 
-   @Override
-   protected void a(ip.a $$0) {
-      this.b(avi.a).a(eds.a).a(eds.b).a(eds.c).a(eds.d).a(eds.e).a(eds.f).a(eds.g).a(eds.h).a(eds.i);
+   private static void a(String $$0) throws IOException {
+      try (Stream<Path> $$1 = Files.walk(Paths.get($$0))) {
+         $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
+            try {
+               String $$1x = Files.readString($$0x);
+               ty $$2 = un.a($$1x);
+               ty $$3 = ox.a($$0x.toString(), $$2);
+               ou.a(lh.a, $$0x, un.a($$3));
+            } catch (IOException | CommandSyntaxException var4) {
+               throw new RuntimeException(var4);
+            }
+         });
+      }
    }
 }

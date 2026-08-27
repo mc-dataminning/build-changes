@@ -1,194 +1,219 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class aoh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.worldborder.center.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("commands.worldborder.set.failed.nochange"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wi.c("commands.worldborder.set.failed.small"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wi.a("commands.worldborder.set.failed.big", 5.999997E7F));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wi.a("commands.worldborder.set.failed.far", 2.9999984E7));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wi.c("commands.worldborder.warning.time.failed"));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(wi.c("commands.worldborder.warning.distance.failed"));
-   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(wi.c("commands.worldborder.damage.buffer.failed"));
-   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wi.c("commands.worldborder.damage.amount.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ws.c("commands.teleport.invalidPosition"));
 
-   public static void a(CommandDispatcher<dv> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a(
-                                 "worldborder"
-                              )
-                              .requires($$0x -> $$0x.c(2)))
-                           .then(
-                              dw.a("add")
-                                 .then(
-                                    ((RequiredArgumentBuilder)dw.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dv)$$0x.getSource(),
-                                                   ((dv)$$0x.getSource()).e().C_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
-                                                   0L
-                                                )
-                                          ))
-                                       .then(
-                                          dw.a("time", IntegerArgumentType.integer(0))
-                                             .executes(
-                                                $$0x -> a(
-                                                      (dv)$$0x.getSource(),
-                                                      ((dv)$$0x.getSource()).e().C_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
-                                                      ((dv)$$0x.getSource()).e().C_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
-                                                   )
-                                             )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           dw.a("set")
-                              .then(
-                                 ((RequiredArgumentBuilder)dw.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
-                                       .executes($$0x -> a((dv)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
-                                    .then(
-                                       dw.a("time", IntegerArgumentType.integer(0))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dv)$$0x.getSource(),
-                                                   DoubleArgumentType.getDouble($$0x, "distance"),
-                                                   (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
-                                                )
-                                          )
-                                    )
-                              )
-                        ))
-                     .then(dw.a("center").then(dw.a("pos", fw.a()).executes($$0x -> a((dv)$$0x.getSource(), fw.a($$0x, "pos"))))))
+   public static void a(CommandDispatcher<ec> $$0) {
+      LiteralCommandNode<ec> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("teleport").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ((LiteralArgumentBuilder)dw.a("damage")
-                           .then(
-                              dw.a("amount")
-                                 .then(
-                                    dw.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
-                                       .executes($$0x -> b((dv)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
-                                 )
-                           ))
-                        .then(
-                           dw.a("buffer")
-                              .then(
-                                 dw.a("distance", FloatArgumentType.floatArg(0.0F))
-                                    .executes($$0x -> a((dv)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
+                     ed.a("location", ge.a())
+                        .executes(
+                           $$0x -> a(
+                                 (ec)$$0x.getSource(),
+                                 Collections.singleton(((ec)$$0x.getSource()).g()),
+                                 ((ec)$$0x.getSource()).e(),
+                                 ge.b($$0x, "location"),
+                                 gg.d(),
+                                 null
                               )
                         )
                   ))
-               .then(dw.a("get").executes($$0x -> a((dv)$$0x.getSource()))))
+               .then(
+                  ed.a("destination", ep.a())
+                     .executes($$0x -> a((ec)$$0x.getSource(), Collections.singleton(((ec)$$0x.getSource()).g()), ep.a($$0x, "destination")))
+               ))
             .then(
-               ((LiteralArgumentBuilder)dw.a("warning")
+               ((RequiredArgumentBuilder)ed.a("targets", ep.b())
                      .then(
-                        dw.a("distance")
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ed.a("location", ge.a())
+                                 .executes(
+                                    $$0x -> a((ec)$$0x.getSource(), ep.b($$0x, "targets"), ((ec)$$0x.getSource()).e(), ge.b($$0x, "location"), null, null)
+                                 ))
+                              .then(
+                                 ed.a("rotation", gb.a())
+                                    .executes(
+                                       $$0x -> a(
+                                             (ec)$$0x.getSource(),
+                                             ep.b($$0x, "targets"),
+                                             ((ec)$$0x.getSource()).e(),
+                                             ge.b($$0x, "location"),
+                                             gb.a($$0x, "rotation"),
+                                             null
+                                          )
+                                    )
+                              ))
                            .then(
-                              dw.a("distance", IntegerArgumentType.integer(0))
-                                 .executes($$0x -> b((dv)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
+                              ((LiteralArgumentBuilder)ed.a("facing")
+                                    .then(
+                                       ed.a("entity")
+                                          .then(
+                                             ((RequiredArgumentBuilder)ed.a("facingEntity", ep.a())
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ec)$$0x.getSource(),
+                                                            ep.b($$0x, "targets"),
+                                                            ((ec)$$0x.getSource()).e(),
+                                                            ge.b($$0x, "location"),
+                                                            null,
+                                                            new aoh.b(ep.a($$0x, "facingEntity"), eo.a.a)
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ed.a("facingAnchor", eo.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ec)$$0x.getSource(),
+                                                               ep.b($$0x, "targets"),
+                                                               ((ec)$$0x.getSource()).e(),
+                                                               ge.b($$0x, "location"),
+                                                               null,
+                                                               new aoh.b(ep.a($$0x, "facingEntity"), eo.a($$0x, "facingAnchor"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    ed.a("facingLocation", ge.a())
+                                       .executes(
+                                          $$0x -> a(
+                                                (ec)$$0x.getSource(),
+                                                ep.b($$0x, "targets"),
+                                                ((ec)$$0x.getSource()).e(),
+                                                ge.b($$0x, "location"),
+                                                null,
+                                                new aoh.c(ge.a($$0x, "facingLocation"))
+                                             )
+                                       )
+                                 )
                            )
                      ))
-                  .then(
-                     dw.a("time")
-                        .then(
-                           dw.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((dv)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                        )
-                  )
+                  .then(ed.a("destination", ep.a()).executes($$0x -> a((ec)$$0x.getSource(), ep.b($$0x, "targets"), ep.a($$0x, "destination"))))
             )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(dv $$0, float $$1) throws CommandSyntaxException {
-      dqz $$2 = $$0.l().I().C_();
-      if ($$2.n() == (double)$$1) {
-         throw h.create();
-      } else {
-         $$2.b((double)$$1);
-         $$0.a(() -> wi.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
-         return (int)$$1;
+   private static int a(ec $$0, Collection<? extends bql> $$1, bql $$2) throws CommandSyntaxException {
+      for (bql $$3 : $$1) {
+         a($$0, $$3, (aqe)$$2.dN(), $$2.ds(), $$2.du(), $$2.dy(), EnumSet.noneOf(brr.class), $$2.dD(), $$2.dF(), null);
       }
-   }
 
-   private static int b(dv $$0, float $$1) throws CommandSyntaxException {
-      dqz $$2 = $$0.l().I().C_();
-      if ($$2.o() == (double)$$1) {
-         throw i.create();
+      if ($$1.size() == 1) {
+         $$0.a(() -> ws.a("commands.teleport.success.entity.single", $$1.iterator().next().O_(), $$2.O_()), true);
       } else {
-         $$2.c((double)$$1);
-         $$0.a(() -> wi.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
-         return (int)$$1;
+         $$0.a(() -> ws.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.O_()), true);
       }
+
+      return $$1.size();
    }
 
-   private static int a(dv $$0, int $$1) throws CommandSyntaxException {
-      dqz $$2 = $$0.l().I().C_();
-      if ($$2.q() == $$1) {
-         throw f.create();
-      } else {
-         $$2.b($$1);
-         $$0.a(() -> wi.a("commands.worldborder.warning.time.success", $$1), true);
-         return $$1;
+   private static int a(ec $$0, Collection<? extends bql> $$1, aqe $$2, fz $$3, @Nullable fz $$4, @Nullable aoh.a $$5) throws CommandSyntaxException {
+      etf $$6 = $$3.a($$0);
+      ete $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<brr> $$8 = EnumSet.noneOf(brr.class);
+      if ($$3.a()) {
+         $$8.add(brr.a);
       }
-   }
 
-   private static int b(dv $$0, int $$1) throws CommandSyntaxException {
-      dqz $$2 = $$0.l().I().C_();
-      if ($$2.r() == $$1) {
-         throw g.create();
-      } else {
-         $$2.c($$1);
-         $$0.a(() -> wi.a("commands.worldborder.warning.distance.success", $$1), true);
-         return $$1;
+      if ($$3.b()) {
+         $$8.add(brr.b);
       }
-   }
 
-   private static int a(dv $$0) {
-      double $$1 = $$0.l().I().C_().i();
-      $$0.a(() -> wi.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
-      return axm.a($$1 + 0.5);
-   }
-
-   private static int a(dv $$0, esi $$1) throws CommandSyntaxException {
-      dqz $$2 = $$0.l().I().C_();
-      if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
-         throw a.create();
-      } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
-         $$2.c((double)$$1.i, (double)$$1.j);
-         $$0.a(() -> wi.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
-         return 0;
-      } else {
-         throw e.create();
+      if ($$3.c()) {
+         $$8.add(brr.c);
       }
-   }
 
-   private static int a(dv $$0, double $$1, long $$2) throws CommandSyntaxException {
-      dqz $$3 = $$0.l().I().C_();
-      double $$4 = $$3.i();
-      if ($$4 == $$1) {
-         throw b.create();
-      } else if ($$1 < 1.0) {
-         throw c.create();
-      } else if ($$1 > 5.999997E7F) {
-         throw d.create();
+      if ($$4 == null) {
+         $$8.add(brr.e);
+         $$8.add(brr.d);
       } else {
-         if ($$2 > 0L) {
-            $$3.a($$4, $$1, $$2);
-            if ($$1 > $$4) {
-               $$0.a(() -> wi.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
-            } else {
-               $$0.a(() -> wi.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
-            }
-         } else {
-            $$3.a($$1);
-            $$0.a(() -> wi.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
+         if ($$4.a()) {
+            $$8.add(brr.e);
          }
 
-         return (int)($$1 - $$4);
+         if ($$4.b()) {
+            $$8.add(brr.d);
+         }
+      }
+
+      for (bql $$9 : $$1) {
+         if ($$4 == null) {
+            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dD(), $$9.dF(), $$5);
+         } else {
+            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$7.j, $$7.i, $$5);
+         }
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> ws.a("commands.teleport.success.location.single", $$1.iterator().next().O_(), a($$6.c), a($$6.d), a($$6.e)), true);
+      } else {
+         $$0.a(() -> ws.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.c), a($$6.d), a($$6.e)), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%f", $$0);
+   }
+
+   private static void a(ec $$0, bql $$1, aqe $$2, double $$3, double $$4, double $$5, Set<brr> $$6, float $$7, float $$8, @Nullable aoh.a $$9) throws CommandSyntaxException {
+      im $$10 = im.a($$3, $$4, $$5);
+      if (!czu.l($$10)) {
+         throw a.create();
+      } else {
+         float $$11 = axw.g($$7);
+         float $$12 = axw.g($$8);
+         if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
+            if ($$9 != null) {
+               $$9.perform($$0, $$1);
+            }
+
+            if (!($$1 instanceof bre $$13) || !$$13.fC()) {
+               $$1.g($$1.dq().d(1.0, 0.0, 1.0));
+               $$1.d(true);
+            }
+
+            if ($$1 instanceof brm $$14) {
+               $$14.K().n();
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   interface a {
+      void perform(ec var1, bql var2);
+   }
+
+   static record b(bql a, eo.a b) implements aoh.a {
+      @Override
+      public void perform(ec $$0, bql $$1) {
+         if ($$1 instanceof aqf $$2) {
+            $$2.a($$0.m(), this.a, this.b);
+         } else {
+            $$1.a($$0.m(), this.b.a(this.a));
+         }
+      }
+   }
+
+   static record c(etf a) implements aoh.a {
+      @Override
+      public void perform(ec $$0, bql $$1) {
+         $$1.a($$0.m(), this.a);
       }
    }
 }

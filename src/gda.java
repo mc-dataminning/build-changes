@@ -1,41 +1,131 @@
-public class gda extends gdb<doe> {
-   private static final ajv c = new ajv("textures/entity/end_gateway_beam.png");
+import java.util.List;
 
-   public gda(gcj.a $$0) {
-      super($$0);
+public class gda implements gde<dmy> {
+   public static final akf a = new akf("textures/entity/beacon_beam.png");
+   public static final int b = 1024;
+
+   public gda(gdf.a $$0) {
    }
 
-   public void a(doe $$0, float $$1, ewr $$2, gai $$3, int $$4, int $$5) {
-      if ($$0.b() || $$0.c()) {
-         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.b() ? (double)$$0.i().al() : 50.0;
-         $$6 = axm.a($$6 * (float) Math.PI);
-         int $$8 = axm.a((double)$$6 * $$7);
-         float[] $$9 = $$0.b() ? cql.c.d() : cql.k.d();
-         long $$10 = $$0.i().Y();
-         gce.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public void a(dmy $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
+      long $$6 = $$0.i().Y();
+      List<dmy.a> $$7 = $$0.b();
+      int $$8 = 0;
+
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         dmy.a $$10 = $$7.get($$9);
+         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
+         $$8 += $$10.c();
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected float b() {
-      return 1.0F;
+   private static void a(exn $$0, gbe $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
+      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
    }
 
-   @Override
-   protected float c() {
-      return 0.0F;
+   public static void a(exn $$0, gbe $$1, akf $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
+      $$0.a();
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = axw.h($$13 * 0.2F - (float)axw.d($$13 * 0.1F));
+      float $$15 = $$8[0];
+      float $$16 = $$8[1];
+      float $$17 = $$8[2];
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$18 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 0.0F;
+      float $$25 = -$$9;
+      float $$26 = 0.0F;
+      float $$27 = 1.0F;
+      float $$28 = -1.0F + $$14;
+      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
+      a($$0, $$1.getBuffer(gbm.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
+      $$18 = -$$10;
+      float $$31 = -$$10;
+      $$21 = -$$10;
+      $$22 = -$$10;
+      $$26 = 0.0F;
+      $$27 = 1.0F;
+      $$28 = -1.0F + $$14;
+      $$29 = (float)$$7 * $$4 + $$28;
+      a($$0, $$1.getBuffer(gbm.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
    }
 
-   @Override
-   protected gaq d() {
-      return gaq.v();
+   private static void a(
+      exn $$0,
+      exr $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      int $$6,
+      int $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16,
+      float $$17,
+      float $$18,
+      float $$19
+   ) {
+      exn.a $$20 = $$0.c();
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
+   }
+
+   private static void a(
+      exn.a $$0,
+      exr $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      int $$6,
+      int $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$13, $$14);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$13, $$15);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$10, $$11, $$12, $$15);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$10, $$11, $$12, $$14);
+   }
+
+   private static void a(exn.a $$0, exr $$1, float $$2, float $$3, float $$4, float $$5, int $$6, float $$7, float $$8, float $$9, float $$10) {
+      $$1.a($$0, $$7, (float)$$6, $$8).a($$2, $$3, $$4, $$5).a($$9, $$10).c(gmf.d).b(15728880).b($$0, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public boolean a(dmy $$0) {
+      return true;
    }
 
    @Override
    public int aP_() {
       return 256;
+   }
+
+   public boolean a(dmy $$0, etf $$1) {
+      return etf.b($$0.az_()).d(1.0, 0.0, 1.0).a((jf)$$1.d(1.0, 0.0, 1.0), (double)this.aP_());
    }
 }

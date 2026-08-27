@@ -1,172 +1,229 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fap {
-   private fap() {
+public class fap extends gsq {
+   static final Logger a = LogUtils.getLogger();
+   private static final ws b = ws.c("mco.configure.world.players.title");
+   static final ws c = ws.c("mco.question");
+   private static final int B = 8;
+   final fih C = new fih(this);
+   private final fad D;
+   final eyu E;
+   @Nullable
+   fap.b F;
+   boolean G;
+
+   public fap(fad $$0, eyu $$1) {
+      super(b);
+      this.D = $$0;
+      this.E = $$1;
    }
 
-   @VisibleForTesting
-   protected static List<String> a(String $$0) {
-      return Arrays.asList($$0.split("\\n"));
-   }
+   @Override
+   public void aM_() {
+      this.C.a(b, this.p);
+      this.F = this.C.c(new fap.b());
 
-   public static List<fap.a> a(String $$0, fap.b... $$1) {
-      return a($$0, Arrays.asList($$1));
-   }
-
-   private static List<fap.a> a(String $$0, List<fap.b> $$1) {
-      List<String> $$2 = a($$0);
-      return a($$2, $$1);
-   }
-
-   private static List<fap.a> a(List<String> $$0, List<fap.b> $$1) {
-      int $$2 = 0;
-      List<fap.a> $$3 = Lists.newArrayList();
-
-      for (String $$4 : $$0) {
-         List<fap.b> $$5 = Lists.newArrayList();
-
-         for (String $$7 : a($$4, "%link")) {
-            if ("%link".equals($$7)) {
-               $$5.add($$1.get($$2++));
-            } else {
-               $$5.add(fap.b.a($$7));
-            }
-         }
-
-         $$3.add(new fap.a($$5));
+      for (eyq $$0 : this.E.h) {
+         this.F.aE_().add(new fap.a($$0));
       }
 
-      return $$3;
+      fil $$1 = this.C.b(fil.e().a(8));
+      $$1.a(feu.a(ws.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fai(this.D, this, this.E))).a());
+      $$1.a(feu.a(wr.k, $$0x -> this.d()).a());
+      this.C.a($$1x -> {
+         fes var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public static List<String> a(String $$0, String $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+   @Override
+   protected void c() {
+      this.C.a();
+      if (this.F != null) {
+         this.F.a(this.n, this.C);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.C();
+   }
+
+   private void C() {
+      if (this.G) {
+         this.m.a(this.D.f());
       } else {
-         List<String> $$2 = Lists.newArrayList();
-         int $$3 = 0;
-
-         int $$4;
-         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
-            if ($$4 > $$3) {
-               $$2.add($$0.substring($$3, $$4));
-            }
-
-            $$2.add($$1);
-            $$3 = $$4 + $$1.length();
-         }
-
-         if ($$3 < $$0.length()) {
-            $$2.add($$0.substring($$3));
-         }
-
-         return $$2;
+         this.m.a(this.D);
       }
    }
 
-   public static class a {
-      public final List<fap.b> a;
+   class a extends ffa.a<fap.a> {
+      private static final ws b = ws.c("mco.configure.world.invites.normal.tooltip");
+      private static final ws c = ws.c("mco.configure.world.invites.ops.tooltip");
+      private static final ws d = ws.c("mco.configure.world.invites.remove.tooltip");
+      private static final akf e = new akf("player_list/make_operator");
+      private static final akf f = new akf("player_list/remove_operator");
+      private static final akf g = new akf("player_list/remove_player");
+      private static final int h = 8;
+      private static final int i = 7;
+      private final eyq j;
+      private final feu k;
+      private final feu l;
+      private final feu m;
 
-      a(fap.b... $$0) {
-         this(Arrays.asList($$0));
+      public a(eyq $$0) {
+         this.j = $$0;
+         int $$1 = fap.this.E.h.indexOf(this.j);
+         this.l = ffz.a(b, $$1x -> this.a($$1), false)
+            .a(e, 8, 7)
+            .a(16 + fap.this.p.a(b))
+            .a($$1x -> wr.a(ws.a("mco.invited.player.narration", $$0.a()), (ws)$$1x.get(), ws.a("narration.cycle_button.usage.focused", c)))
+            .a();
+         this.m = ffz.a(c, $$1x -> this.b($$1), false)
+            .a(f, 8, 7)
+            .a(16 + fap.this.p.a(c))
+            .a($$1x -> wr.a(ws.a("mco.invited.player.narration", $$0.a()), (ws)$$1x.get(), ws.a("narration.cycle_button.usage.focused", b)))
+            .a();
+         this.k = ffz.a(d, $$1x -> this.c($$1), false)
+            .a(g, 8, 7)
+            .a(16 + fap.this.p.a(d))
+            .a($$1x -> wr.a(ws.a("mco.invited.player.narration", $$0.a()), (ws)$$1x.get()))
+            .a();
+         this.c();
       }
 
-      a(List<fap.b> $$0) {
-         this.a = $$0;
+      private void a(int $$0) {
+         eyd $$1 = eyd.a();
+         UUID $$2 = fap.this.E.h.get($$0).b();
+
+         try {
+            this.a($$1.b(fap.this.E.a, $$2));
+         } catch (ezq var5) {
+            fap.a.error("Couldn't op the user", var5);
+         }
+
+         this.c();
       }
 
-      @Override
-      public String toString() {
-         return "Line{segments=" + this.a + "}";
+      private void b(int $$0) {
+         eyd $$1 = eyd.a();
+         UUID $$2 = fap.this.E.h.get($$0).b();
+
+         try {
+            this.a($$1.c(fap.this.E.a, $$2));
+         } catch (ezq var5) {
+            fap.a.error("Couldn't deop the user", var5);
+         }
+
+         this.c();
       }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fap.a $$1 = (fap.a)$$0;
-            return Objects.equals(this.a, $$1.a);
-         } else {
-            return false;
+      private void c(int $$0) {
+         if ($$0 >= 0 && $$0 < fap.this.E.h.size()) {
+            eyq $$1 = fap.this.E.h.get($$0);
+            fae $$2 = new fae($$2x -> {
+               if ($$2x) {
+                  eyd $$3 = eyd.a();
+
+                  try {
+                     $$3.a(fap.this.E.a, $$1.b());
+                  } catch (ezq var6) {
+                     fap.a.error("Couldn't uninvite user", var6);
+                  }
+
+                  fap.this.E.h.remove($$0);
+               }
+
+               fap.this.G = true;
+               fap.this.m.a(fap.this);
+               if (fap.this.F != null) {
+                  fap.this.F.aE_().remove(this);
+               }
+            }, fap.c, ws.a("mco.configure.world.uninvite.player", $$1.a()));
+            fap.this.m.a($$2);
          }
       }
 
+      private void a(eym $$0) {
+         for (eyq $$1 : fap.this.E.h) {
+            $$1.a($$0.a.contains($$1.a()));
+         }
+      }
+
+      private void c() {
+         this.l.k = !this.j.c();
+         this.m.k = !this.l.k;
+      }
+
+      private feu d() {
+         return this.l.k ? this.l : this.m;
+      }
+
       @Override
-      public int hashCode() {
-         return Objects.hash(this.a);
+      public List<? extends fgq> aE_() {
+         return ImmutableList.of(this.d(), this.k);
+      }
+
+      @Override
+      public List<? extends fio> b() {
+         return ImmutableList.of(this.d(), this.k);
+      }
+
+      @Override
+      public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10;
+         if (!this.j.d()) {
+            $$10 = -6250336;
+         } else if (this.j.e()) {
+            $$10 = 8388479;
+         } else {
+            $$10 = -1;
+         }
+
+         int $$13 = $$2 + $$5 / 2 - 16;
+         fbk.a($$0, $$3, $$13, 32, this.j.b());
+         int $$14 = $$2 + $$5 / 2 - 9 / 2;
+         $$0.a(fap.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10, false);
+         int $$15 = $$2 + $$5 / 2 - 10;
+         int $$16 = $$3 + $$4 - this.k.x();
+         this.k.c($$16, $$15);
+         this.k.a($$0, $$6, $$7, $$9);
+         int $$17 = $$16 - this.d().x() - 8;
+         this.l.c($$17, $$15);
+         this.l.a($$0, $$6, $$7, $$9);
+         this.m.c($$17, $$15);
+         this.m.a($$0, $$6, $$7, $$9);
       }
    }
 
-   public static class b {
-      private final String a;
-      @Nullable
-      private final String b;
-      @Nullable
-      private final String c;
+   class b extends ffa<fap.a> {
+      private static final int m = 36;
 
-      private b(String $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = null;
-      }
-
-      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      public b() {
+         super(fcu.Q(), fap.this.n, fap.this.C.d(), fap.this.C.c(), 36);
+         this.a(true, (int)(9.0F * 1.5F));
       }
 
       @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fap.b $$1 = (fap.b)$$0;
-            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
-         }
+      protected void a(feh $$0, int $$1, int $$2) {
+         String $$3 = fap.this.E.h != null ? Integer.toString(fap.this.E.h.size()) : "0";
+         ws $$4 = ws.a("mco.configure.world.invited.number", $$3).a(n.t);
+         $$0.a(fap.this.p, $$4, $$1 + this.b() / 2 - fap.this.p.a($$4) / 2, $$2, -1, false);
       }
 
       @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b, this.c);
+      public int a() {
+         return this.l() * this.d + this.f;
       }
 
       @Override
-      public String toString() {
-         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
-      }
-
-      public String a() {
-         return this.b() ? this.b : this.a;
-      }
-
-      public boolean b() {
-         return this.b != null;
-      }
-
-      public String c() {
-         if (!this.b()) {
-            throw new IllegalStateException("Not a link: " + this);
-         } else {
-            return this.c;
-         }
-      }
-
-      public static fap.b a(String $$0, String $$1) {
-         return new fap.b(null, $$0, $$1);
-      }
-
-      @VisibleForTesting
-      protected static fap.b a(String $$0) {
-         return new fap.b($$0);
+      public int b() {
+         return 300;
       }
    }
 }

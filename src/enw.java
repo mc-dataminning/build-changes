@@ -1,45 +1,94 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class enw extends eod {
-   protected final List<eod> d;
-   private final env a;
+public interface enw {
+   int d = 19133;
+   int e = 19132;
 
-   protected enw(List<eod> $$0, List<eql> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+   dao D();
+
+   void a(dao var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   @Override
-   public void a(ent $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
    }
 
-   protected abstract env a(List<? extends env> var1);
+   @Nullable
+   ty E();
 
-   @Override
-   public final boolean expand(enk $$0, Consumer<eoc> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
-   }
+   void a(@Nullable ty var1);
 
-   public static <T extends enw> Codec<T> a(enw.a<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(awu.a(eob.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
+   env I();
 
-   @FunctionalInterface
-   public interface a<T extends enw> {
-      T create(List<eod> var1, List<eql> var2);
+   czy J();
+
+   ty a(jj var1, @Nullable ty var2);
+
+   boolean l();
+
+   int x();
+
+   String e();
+
+   czr k();
+
+   void a(czr var1);
+
+   boolean m();
+
+   bon q();
+
+   void a(bon var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   czq o();
+
+   @Nullable
+   ty w();
+
+   dtt.a C();
+
+   void a(dtt.a var1);
+
+   dwo y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default cmy K() {
+      return this.D().b();
    }
 }

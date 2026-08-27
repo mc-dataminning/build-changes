@@ -1,46 +1,46 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class cto {
-   @Nullable
-   private final String a;
-   private final List<bpm> b;
-
-   public cto(bpm... $$0) {
-      this(null, $$0);
+public class cto extends ctr {
+   public cto(ctq $$0, cry.a $$1) {
+      super($$0, $$1);
    }
 
-   public cto(@Nullable String $$0, bpm... $$1) {
-      this.a = $$0;
-      this.b = List.of($$1);
+   public static cuw a(ctq $$0, int $$1, float $$2) {
+      return cuw.a()
+         .a(bsl.c, new bsj(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), bsj.a.a), bqt.b)
+         .a(bsl.e, new bsj(f, "Weapon modifier", (double)$$2, bsj.a.a), bqt.b)
+         .a();
    }
 
-   public static String a(Optional<in<cto>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().a;
-         if ($$2 != null) {
-            return $$1 + $$2;
-         }
+   @Override
+   public boolean a(dpy $$0, czu $$1, im $$2, ckl $$3) {
+      return !$$3.f();
+   }
+
+   @Override
+   public float a(csd $$0, dpy $$1) {
+      if ($$1.a(dcx.bs)) {
+         return 15.0F;
+      } else {
+         return $$1.a(avo.bE) ? 1.5F : 1.0F;
+      }
+   }
+
+   @Override
+   public boolean a(csd $$0, bre $$1, bre $$2) {
+      $$0.a(1, $$2, bqs.a);
+      return true;
+   }
+
+   @Override
+   public boolean a(csd $$0, czu $$1, dpy $$2, im $$3, bre $$4) {
+      if ($$2.h($$1, $$3) != 0.0F) {
+         $$0.a(2, $$4, bqs.a);
       }
 
-      String $$3 = $$0.flatMap(in::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
+      return true;
    }
 
-   public List<bpm> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         for (bpm $$0 : this.b) {
-            if ($$0.b().a().a()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Override
+   public boolean a_(dpy $$0) {
+      return $$0.a(dcx.bs);
    }
 }

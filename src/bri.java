@@ -1,13 +1,27 @@
-import javax.annotation.Nullable;
+public enum bri {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h,
+   i,
+   j,
+   k,
+   l,
+   m,
+   n,
+   o,
+   p,
+   q;
 
-public interface bri {
-   boolean f();
-
-   void a(@Nullable aup var1);
-
-   default aun Y_() {
-      return auo.mB;
+   public static boolean a(bri $$0) {
+      return $$0 == c || $$0 == q;
    }
 
-   boolean i();
+   public static boolean b(bri $$0) {
+      return $$0 == q;
+   }
 }

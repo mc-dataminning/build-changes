@@ -1,38 +1,44 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import java.util.zip.Deflater;
 
-public interface vp {
-   static vp a(final Runnable $$0) {
-      return new vp() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+public class vp extends MessageToByteEncoder<ByteBuf> {
+   private final byte[] a = new byte[8192];
+   private final Deflater b;
+   private int c;
 
-         @Nullable
-         @Override
-         public yp<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   public vp(int $$0) {
+      this.c = $$0;
+      this.b = new Deflater();
    }
 
-   static vp a(final Supplier<yp<?>> $$0) {
-      return new vp() {
-         @Nullable
-         @Override
-         public yp<?> b() {
-            return $$0.get();
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      if ($$3 < this.c) {
+         wj.a($$2, 0);
+         $$2.writeBytes($$1);
+      } else {
+         byte[] $$4 = new byte[$$3];
+         $$1.readBytes($$4);
+         wj.a($$2, $$4.length);
+         this.b.setInput($$4, 0, $$3);
+         this.b.finish();
+
+         while (!this.b.finished()) {
+            int $$5 = this.b.deflate(this.a);
+            $$2.writeBytes(this.a, 0, $$5);
          }
-      };
+
+         this.b.reset();
+      }
    }
 
-   default void a() {
+   public int a() {
+      return this.c;
    }
 
-   @Nullable
-   default yp<?> b() {
-      return null;
+   public void a(int $$0) {
+      this.c = $$0;
    }
 }

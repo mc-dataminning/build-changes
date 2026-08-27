@@ -1,24 +1,41 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class caz extends cbc<bqt> {
-   @Override
-   public Set<bzw<?>> a() {
-      return ImmutableSet.of(bzw.j, bzw.k, bzw.l);
+public class caz extends cbn<bre> {
+   private static final int a = 200;
+   private static final int c = 599;
+
+   public caz() {
+      this(200);
+   }
+
+   public caz(int $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(apu $$0, bqt $$1) {
-      List<cka> $$2 = $$0.x().stream().filter(bqf.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::g)).collect(Collectors.toList());
-      bru<?> $$3 = $$1.dP();
-      $$3.a(bzw.j, $$2);
-      List<cka> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(bzw.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cka> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(bzw.l, $$5);
+   protected void a(aqe $$0, bre $$1) {
+      a($$1);
+   }
+
+   @Override
+   public Set<cah<?>> a() {
+      return ImmutableSet.of(cah.g);
+   }
+
+   public static void a(bre $$0) {
+      Optional<List<bre>> $$1 = $$0.dQ().c(cah.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(bqr.af));
+         if ($$2) {
+            b($$0);
+         }
+      }
+   }
+
+   public static void b(bre $$0) {
+      $$0.dQ().a(cah.F, true, 599L);
    }
 }

@@ -1,51 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ebs extends ebu {
-   public static final Codec<ebs> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ebs::new));
+public class ebs implements eay {
+   public static final Codec<ebs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               eae.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               im.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, ebs::new)
+   );
+   private final boolean b;
+   private final List<eae.a> c;
+   @Nullable
+   private final im d;
 
-   public ebs(bnk $$0, bnk $$1) {
-      super($$0, $$1);
+   public ebs(boolean $$0, List<eae.a> $$1, @Nullable im $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   @Override
-   protected ebv<?> a() {
-      return ebv.i;
+   private ebs(boolean $$0, List<eae.a> $$1, Optional<im> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   protected void a(czm $$0, ebu.b $$1, axt $$2, ebe $$3, int $$4, ebu.a $$5, int $$6, int $$7, int $$8) {
-      id $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
-         }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
-      }
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
-   public int a(axt $$0, int $$1, ebe $$2) {
-      return 4;
+   public List<eae.a> b() {
+      return this.c;
    }
 
-   @Override
-   protected boolean b(axt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
-   }
-
-   @Override
-   protected boolean a(axt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
+   @Nullable
+   public im c() {
+      return this.d;
    }
 }

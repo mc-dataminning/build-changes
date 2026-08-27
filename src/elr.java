@@ -1,133 +1,118 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class elr {
-   private static final float a = 1.5F;
-   private final eln[] b = new eln[32];
-   private final int c;
-   private final elo d;
-   private static final boolean e = false;
-   private final ell f = new ell();
+public final class elr extends dqa<elq, elr> {
+   public static final Codec<elr> a = a(lc.c.q(), elq::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
 
-   public elr(elo $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
+   public elr(elq $$0, Reference2ObjectArrayMap<drb<?>, Comparable<?>> $$1, MapCodec<elr> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Nullable
-   public elp a(czt $$0, bqv $$1, Set<id> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      eln $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
-      } else {
-         Map<elw, id> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         elp $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
-      }
+   public elq a() {
+      return this.e;
    }
 
-   @Nullable
-   private elp a(bkt $$0, eln $$1, Map<elw, id> $$2, float $$3, int $$4, float $$5) {
-      $$0.a("find_path");
-      $$0.a(blz.a);
-      Set<elw> $$6 = $$2.keySet();
-      $$1.e = 0.0F;
-      $$1.f = this.a($$1, $$6);
-      $$1.g = $$1.f;
-      this.f.a();
-      this.f.a($$1);
-      Set<eln> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<elw> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$5);
+   public boolean b() {
+      return this.a().c(this);
+   }
 
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
-            break;
-         }
+   public boolean a(elq $$0) {
+      return this.e == $$0 && this.e.c(this);
+   }
 
-         eln $$11 = this.f.c();
-         $$11.i = true;
+   public boolean c() {
+      return this.a().b();
+   }
 
-         for (elw $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$4) {
-               $$12.e();
-               $$9.add($$12);
-            }
-         }
+   public float a(cza $$0, im $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
 
-         if (!$$9.isEmpty()) {
-            break;
-         }
+   public float d() {
+      return this.a().a(this);
+   }
 
-         if (!($$11.a($$1) >= $$3)) {
-            int $$13 = this.d.a(this.b, $$11);
+   public int e() {
+      return this.a().d(this);
+   }
 
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               eln $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
-                  }
-               }
+   public boolean b(cza $$0, im $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            im $$4 = $$1.b($$2, 0, $$3);
+            elr $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
             }
          }
       }
 
-      Optional<elp> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(elp::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(elp::m).thenComparingInt(elp::e));
-      $$0.c();
-      return $$18.isEmpty() ? null : $$18.get();
+      return false;
    }
 
-   protected float a(eln $$0, eln $$1) {
-      return $$0.a($$1);
+   public void a(czu $$0, im $$1) {
+      this.a().b($$0, $$1, this);
    }
 
-   private float a(eln $$0, Set<elw> $$1) {
-      float $$2 = Float.MAX_VALUE;
-
-      for (elw $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
-      }
-
-      return $$2;
+   public void a(czu $$0, im $$1, ayd $$2) {
+      this.a().a($$0, $$1, this, $$2);
    }
 
-   private elp a(eln $$0, id $$1, boolean $$2) {
-      List<eln> $$3 = Lists.newArrayList();
-      eln $$4 = $$0;
-      $$3.add(0, $$0);
+   public boolean f() {
+      return this.a().i();
+   }
 
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
-      }
+   public void b(czu $$0, im $$1, ayd $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
 
-      return new elp($$3, $$1, $$2);
+   public etf c(cza $$0, im $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public dpy g() {
+      return this.a().b(this);
+   }
+
+   @Nullable
+   public ku h() {
+      return this.a().h();
+   }
+
+   public boolean a(awd<elq> $$0) {
+      return this.a().k().a($$0);
+   }
+
+   public boolean a(iz<elq> $$0) {
+      return $$0.a(this.a().k());
+   }
+
+   public boolean b(elq $$0) {
+      return this.a() == $$0;
+   }
+
+   public float i() {
+      return this.a().c();
+   }
+
+   public boolean a(cza $$0, im $$1, elq $$2, ir $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
+
+   public ety d(cza $$0, im $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   public iv<elq> j() {
+      return this.e.k();
+   }
+
+   public Stream<awd<elq>> k() {
+      return this.e.k().c();
    }
 }

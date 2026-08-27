@@ -1,43 +1,11 @@
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-abstract class arw implements BasicFileAttributes {
-   private static final FileTime a = FileTime.fromMillis(0L);
+public record arw(cmy b) {
+   private static final Codec<arw> c = RecordCodecBuilder.create($$0 -> $$0.group(cna.f.fieldOf("enabled").forGetter(arw::a)).apply($$0, arw::new));
+   public static final aso<arw> a = aso.a("features", c);
 
-   @Override
-   public FileTime lastModifiedTime() {
-      return a;
-   }
-
-   @Override
-   public FileTime lastAccessTime() {
-      return a;
-   }
-
-   @Override
-   public FileTime creationTime() {
-      return a;
-   }
-
-   @Override
-   public boolean isSymbolicLink() {
-      return false;
-   }
-
-   @Override
-   public boolean isOther() {
-      return false;
-   }
-
-   @Override
-   public long size() {
-      return 0L;
-   }
-
-   @Nullable
-   @Override
-   public Object fileKey() {
-      return null;
+   public cmy a() {
+      return this.b;
    }
 }

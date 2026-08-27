@@ -1,46 +1,34 @@
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public class fhw<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final fhw<?> a = new fhw<>(ayo.a, ($$0, $$1) -> {
-   });
+public interface fhw {
+   MapCodec<fhw> b = fhx.f.dispatchMap(fhw::a, $$0 -> $$0.a().codec());
 
-   private fhw(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   fhx a();
 
-   public static fhw<?> a(String $$0) {
-      return new fhw<>($$0, Consumer::accept);
-   }
+   Either<fhw.b, fhw.c> b();
 
-   public static fhw<?> a(wi $$0) {
-      return new fhw<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
+   public static record a(fhw b, fhk.a c) {
+      public static final Codec<fhw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fhw.b.forGetter(fhw.a::a), axe.a(fhk.a.a, "filter", fhk.a.b).forGetter(fhw.a::b)).apply($$0, fhw.a::new)
+      );
 
-   public static fhw<?> a(List<wi> $$0) {
-      return new fhw<>($$0, ($$1, $$2) -> $$0.stream().map(wi::getString).forEach($$1));
-   }
+      public fhw a() {
+         return this.b;
+      }
 
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fhw<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      public fhk.a b() {
+         return this.c;
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public interface b {
+      evq load(ato var1) throws IOException;
+   }
+
+   public static record c(akf a) {
    }
 }

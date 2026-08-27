@@ -1,109 +1,36 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public interface avr {
+   awd<bqr<?>> a = a("skeletons");
+   awd<bqr<?>> b = a("zombies");
+   awd<bqr<?>> c = a("raiders");
+   awd<bqr<?>> d = a("undead");
+   awd<bqr<?>> e = a("beehive_inhabitors");
+   awd<bqr<?>> f = a("arrows");
+   awd<bqr<?>> g = a("impact_projectiles");
+   awd<bqr<?>> h = a("powder_snow_walkable_mobs");
+   awd<bqr<?>> i = a("axolotl_always_hostiles");
+   awd<bqr<?>> j = a("axolotl_hunt_targets");
+   awd<bqr<?>> k = a("freeze_immune_entity_types");
+   awd<bqr<?>> l = a("freeze_hurts_extra_types");
+   awd<bqr<?>> m = a("can_breathe_under_water");
+   awd<bqr<?>> n = a("frog_food");
+   awd<bqr<?>> o = a("fall_damage_immune");
+   awd<bqr<?>> p = a("dismounts_underwater");
+   awd<bqr<?>> q = a("non_controlling_rider");
+   awd<bqr<?>> r = a("deflects_projectiles");
+   awd<bqr<?>> s = a("can_turn_in_boats");
+   awd<bqr<?>> t = a("illager");
+   awd<bqr<?>> u = a("aquatic");
+   awd<bqr<?>> v = a("arthropod");
+   awd<bqr<?>> w = a("ignores_poison_and_regen");
+   awd<bqr<?>> x = a("inverted_healing_and_harm");
+   awd<bqr<?>> y = a("wither_friends");
+   awd<bqr<?>> z = a("illager_friends");
+   awd<bqr<?>> A = a("not_scary_for_pufferfish");
+   awd<bqr<?>> B = a("sensitive_to_impaling");
+   awd<bqr<?>> C = a("sensitive_to_bane_of_arthropods");
+   awd<bqr<?>> D = a("no_anger_from_wind_charge");
 
-public class avr {
-   private static final Codec<avr> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awu.p.fieldOf("id").forGetter(avr::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, avr::new)
-   );
-   public static final Codec<avr> a = Codec.either(awu.p, b)
-      .xmap($$0 -> (avr)$$0.map($$0x -> new avr($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
-   private final ajv c;
-   private final boolean d;
-   private final boolean e;
-
-   private avr(ajv $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   private avr(awu.g $$0, boolean $$1) {
-      this.c = $$0.a();
-      this.d = $$0.b();
-      this.e = $$1;
-   }
-
-   private awu.g a() {
-      return new awu.g(this.c, this.d);
-   }
-
-   public static avr a(ajv $$0) {
-      return new avr($$0, false, true);
-   }
-
-   public static avr b(ajv $$0) {
-      return new avr($$0, false, false);
-   }
-
-   public static avr c(ajv $$0) {
-      return new avr($$0, true, true);
-   }
-
-   public static avr d(ajv $$0) {
-      return new avr($$0, true, false);
-   }
-
-   public <T> boolean a(avr.a<T> $$0, Consumer<T> $$1) {
-      if (this.d) {
-         Collection<T> $$2 = $$0.b(this.c);
-         if ($$2 == null) {
-            return !this.e;
-         }
-
-         $$2.forEach($$1);
-      } else {
-         T $$3 = $$0.a(this.c);
-         if ($$3 == null) {
-            return !this.e;
-         }
-
-         $$1.accept($$3);
-      }
-
-      return true;
-   }
-
-   public void a(Consumer<ajv> $$0) {
-      if (this.d && this.e) {
-         $$0.accept(this.c);
-      }
-   }
-
-   public void b(Consumer<ajv> $$0) {
-      if (this.d && !this.e) {
-         $$0.accept(this.c);
-      }
-   }
-
-   public boolean a(Predicate<ajv> $$0, Predicate<ajv> $$1) {
-      return !this.e || (this.d ? $$1 : $$0).test(this.c);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      if (this.d) {
-         $$0.append('#');
-      }
-
-      $$0.append(this.c);
-      if (!this.e) {
-         $$0.append('?');
-      }
-
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      @Nullable
-      T a(ajv var1);
-
-      @Nullable
-      Collection<T> b(ajv var1);
+   private static awd<bqr<?>> a(String $$0) {
+      return awd.a(ld.v, new akf($$0));
    }
 }

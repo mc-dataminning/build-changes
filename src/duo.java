@@ -1,97 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public final class duo {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dsd> e = kt.n
-      .q()
-      .comapFlatMap($$0 -> $$0 == dsd.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<duo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(duo::a),
-               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, duo::new)
-   );
-   private static final Set<aju<daf>> f = Set.of(dam.aa, dam.Z, dam.ab);
-   public static final czi b = new czi() {
-      @Override
-      public int J_() {
-         return 64;
-      }
-
-      @Override
-      public int I_() {
-         return -64;
-      }
-   };
-   private final dsd g;
-   private final BitSet h;
-
-   private duo(dsd $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
-   }
-
+public class duo<T extends dut> {
+   private final T a;
    @Nullable
-   public static duo a(to $$0) {
-      dsd $$1 = dsd.a($$0.l("target_status"));
-      return $$1 == dsd.c ? null : new duo($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   private jo b;
+
+   public duo(T $$0) {
+      this.a = $$0;
    }
 
-   public static void a(dry $$0) {
-      int $$1 = 4;
-      id.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(dcj.F)) {
-            $$0.a($$1x, dcj.sJ.n(), false);
+   public void a(aqe $$0) {
+      this.c($$0);
+   }
+
+   public T a() {
+      return this.a;
+   }
+
+   public void b(aqe $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   }
+
+   public void c(aqe $$0) {
+      this.a.a().a($$0).map(jo::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
          }
       });
    }
 
-   public void b(dry $$0) {
-      czi $$1 = $$0.z();
-      int $$2 = $$1.I_();
-      int $$3 = $$1.al() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               id.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dcj.a.n(), false));
-            }
+   private static void a(czx $$0, @Nullable jo $$1, Consumer<duu> $$2) {
+      if ($$1 != null) {
+         dru $$3 = $$0.a($$1.a(), $$1.c(), dst.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
          }
-      }
-   }
-
-   public dsd a() {
-      return this.g;
-   }
-
-   public boolean b() {
-      return !this.h.isEmpty();
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
-   }
-
-   public static dai a(dai $$0, dre $$1) {
-      if (!$$1.y()) {
-         return $$0;
-      } else {
-         Predicate<aju<daf>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            in<daf> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
       }
    }
 }

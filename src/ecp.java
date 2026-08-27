@@ -1,62 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class ecp extends ecj {
-   public static final Codec<ecp> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ecj.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bnk.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+public class ecp extends eck {
+   public static final Codec<ecp> a = RecordCodecBuilder.create(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bnv.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
             )
             .apply($$0, ecp::new)
    );
-   private final ecj c;
-   private final String d;
-   @Nullable
-   private dqi e;
-   private final bnk f;
+   private final bnv b;
+   private final int c;
 
-   public ecp(ecj $$0, dqi $$1, bnk $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
-   }
-
-   public ecp(ecj $$0, String $$1, bnk $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public ecp(bnv $$0, bnv $$1, bnv $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
    @Override
-   protected eck<?> a() {
-      return eck.g;
+   protected ecl<?> a() {
+      return ecl.j;
    }
 
    @Override
-   public dpi a(axt $$0, id $$1) {
-      dpi $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
-      }
+   protected void a(daa $$0, eck.b $$1, ayd $$2, ebu $$3, int $$4, eck.a $$5, int $$6, int $$7, int $$8) {
+      im $$9 = $$5.a();
+      im.a $$10 = $$9.j();
 
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
+      }
    }
 
-   private static dqi a(dpi $$0, String $$1) {
-      Collection<dql<?>> $$2 = $$0.B();
-      Optional<dqi> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dqi).map($$0x -> (dqi)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
+   @Override
+   public int a(ayd $$0, int $$1, ebu $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ayd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

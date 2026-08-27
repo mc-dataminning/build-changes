@@ -1,54 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Optional;
 
-public class bnd extends bnk {
-   public static final Codec<bnd> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bnk.c.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, bnd::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.g < $$0.f
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final bnk b;
-   private final int f;
-   private final int g;
-
-   public static bnd a(bnk $$0, int $$1, int $$2) {
-      return new bnd($$0, $$1, $$2);
+public class bnd {
+   private bnd() {
    }
 
-   public bnd(bnk $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public static int a(List<? extends bnc> $$0) {
+      long $$1 = 0L;
+
+      for (bnc $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$1;
+      }
    }
 
-   @Override
-   public int a(axt $$0) {
-      return axm.a(this.b.a($$0), this.f, this.g);
+   public static <T extends bnc> Optional<T> a(ayd $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
    }
 
-   @Override
-   public int a() {
-      return Math.max(this.f, this.b.a());
+   public static <T extends bnc> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Override
-   public int b() {
-      return Math.min(this.g, this.b.b());
-   }
-
-   @Override
-   public bnl<?> c() {
-      return bnl.d;
+   public static <T extends bnc> Optional<T> a(ayd $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

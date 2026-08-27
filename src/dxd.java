@@ -1,24 +1,22 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dxd<WC extends dwy>(dxf<WC> d, WC e) {
-   public static final Codec<dxd<?>> a = kt.P.q().dispatch($$0 -> $$0.d, dxf::c);
-   public static final Codec<in<dxd<?>>> b = ajr.a(ku.ay, a);
-   public static final Codec<ir<dxd<?>>> c = jc.a(ku.ay, a);
+class dxd extends dxi {
+   private final iz<dcv> e;
+   public static final Codec<dxd> a = RecordCodecBuilder.create($$0 -> a($$0).and(jk.a(ld.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dxd::new));
 
-   public boolean a(axt $$0) {
-      return this.d.a(this.e, $$0);
+   public dxd(jq $$0, iz<dcv> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   public boolean a(dxa $$0, dre $$1, Function<id, in<daf>> $$2, axt $$3, dum $$4, cyn $$5, drd $$6) {
-      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   @Override
+   protected boolean a(dpy $$0) {
+      return $$0.a(this.e);
    }
 
-   public dxf<WC> a() {
-      return this.d;
-   }
-
-   public WC b() {
-      return this.e;
+   @Override
+   public dwy<?> a() {
+      return dwy.a;
    }
 }

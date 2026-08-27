@@ -1,30 +1,85 @@
-public class fxd extends fwp {
-   private static final int a = 12235202;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-   protected fxd(fuq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fyr $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)aww.b.b(12235202) / 255.0F - $$9;
-      this.w = (float)aww.b.c(12235202) / 255.0F - $$9;
-      this.x = (float)aww.b.d(12235202) / 255.0F - $$9;
+public final class fxd {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final fxd c = new fxd(HostAndPort.fromParts("server.invalid", 25565));
+
+   public fxd(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
+   }
+
+   private fxd(HostAndPort $$0) {
+      this.b = $$0;
+   }
+
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
+   }
+
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static fxd a(String $$0) {
+      if ($$0 == null) {
+         return c;
+      } else {
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new fxd($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
+      }
+   }
+
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
+      }
+
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
+      }
    }
 
    @Override
-   public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
+   public String toString() {
+      return this.b.toString();
    }
 
-   public static class a implements fxz<kq> {
-      private final fyr a;
-
-      public a(fyr $$0) {
-         this.a = $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fxd ? this.b.equals(((fxd)$$0).b) : false;
       }
+   }
 
-      public fxw a(kq $$0, fuq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fxd($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
-      }
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

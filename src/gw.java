@@ -1,30 +1,30 @@
-public record gw(int a, ds b, gw.a c) {
-   public void a(int $$0) {
-      this.b.onSuccess($$0);
+public record gw(byte b) {
+   public static final gw a = new gw((byte)0);
+   private static final byte c = 1;
+   private static final byte d = 2;
+
+   private gw a(byte $$0) {
+      int $$1 = this.b | $$0;
+      return $$1 != this.b ? new gw((byte)$$1) : this;
    }
 
-   public void a() {
-      this.b.onFailure();
+   public boolean a() {
+      return (this.b & 1) != 0;
    }
 
-   public void b() {
-      this.c.discard();
+   public gw b() {
+      return this.a((byte)1);
    }
 
-   public int c() {
-      return this.a;
+   public boolean c() {
+      return (this.b & 2) != 0;
    }
 
-   public ds d() {
+   public gw d() {
+      return this.a((byte)2);
+   }
+
+   public byte e() {
       return this.b;
-   }
-
-   public gw.a e() {
-      return this.c;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void discard();
    }
 }

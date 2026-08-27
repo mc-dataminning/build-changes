@@ -1,45 +1,36 @@
-public class adu implements yp<aba> {
-   public static final yg<vi, adu> a = yp.a(adu::a, adu::new);
-   private final double b;
-   private final double c;
-   private final long d;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public adu(dqz $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
+public class adu implements yz<abk> {
+   public static final yq<vs, adu> a = yz.a(adu::a, adu::new);
+   private final IntList b;
+
+   public adu(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private adu(vi $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.m();
+   public adu(int... $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(vi $$0) {
+   private adu(vs $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(vs $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
    }
 
    @Override
-   public yr<adu> a() {
-      return afl.as;
+   public zb<adu> a() {
+      return afv.aj;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public IntList b() {
       return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
    }
 }

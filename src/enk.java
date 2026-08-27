@@ -1,142 +1,122 @@
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PushbackInputStream;
+import java.util.Map;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class enk {
-   private final enq a;
-   private final axt b;
-   private final eno c;
-   private final Set<enk.c<?>> d = Sets.newLinkedHashSet();
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, emy> b = Maps.newHashMap();
+   private final DataFixer c;
+   private final ix.a d;
+   private final File e;
 
-   enk(enq $$0, axt $$1, eno $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public enk(File $$0, DataFixer $$1, ix.a $$2) {
+      this.c = $$1;
+      this.e = $$0;
+      this.d = $$2;
    }
 
-   public boolean a(epu<?> $$0) {
-      return this.a.a($$0);
+   private File a(String $$0) {
+      return new File(this.e, $$0 + ".dat");
    }
 
-   public <T> T b(epu<T> $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(ajv $$0, Consumer<crs> $$1) {
-      this.a.a($$0, $$1);
+   public <T extends emy> T a(emy.a<T> $$0, String $$1) {
+      T $$2 = this.b($$0, $$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         T $$3 = (T)$$0.a().get();
+         this.a($$1, $$3);
+         return $$3;
+      }
    }
 
    @Nullable
-   public <T> T c(epu<T> $$0) {
-      return this.a.d($$0);
-   }
-
-   public boolean a(enk.c<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean b(enk.c<?> $$0) {
-      return this.d.add($$0);
-   }
-
-   public void c(enk.c<?> $$0) {
-      this.d.remove($$0);
-   }
-
-   public eno a() {
-      return this.c;
-   }
-
-   public axt b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.a.b();
-   }
-
-   public apu d() {
-      return this.a.a();
-   }
-
-   public static enk.c<ens> a(ens $$0) {
-      return new enk.c<>(enp.c, $$0);
-   }
-
-   public static enk.c<eql> a(eql $$0) {
-      return new enk.c<>(enp.a, $$0);
-   }
-
-   public static enk.c<eoy> a(eoy $$0) {
-      return new enk.c<>(enp.b, $$0);
-   }
-
-   public static class a {
-      private final enq a;
-      @Nullable
-      private axt b;
-
-      public a(enq $$0) {
-         this.a = $$0;
+   public <T extends emy> T b(emy.a<T> $$0, String $$1) {
+      emy $$2 = this.b.get($$1);
+      if ($$2 == null && !this.b.containsKey($$1)) {
+         $$2 = this.a($$0.b(), $$0.c(), $$1);
+         this.b.put($$1, $$2);
       }
 
-      public enk.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = axt.a($$0);
+      return (T)$$2;
+   }
+
+   @Nullable
+   private <T extends emy> T a(BiFunction<ty, ix.a, T> $$0, azc $$1, String $$2) {
+      try {
+         File $$3 = this.a($$2);
+         if ($$3.exists()) {
+            ty $$4 = this.a($$2, $$1, aa.b().d().c());
+            return $$0.apply($$4.p("data"), this.d);
          }
-
-         return this;
+      } catch (Exception var6) {
+         a.error("Error loading saved data: {}", $$2, var6);
       }
 
-      public apu a() {
-         return this.a.a();
-      }
-
-      public enk a(Optional<ajv> $$0) {
-         apu $$1 = this.a();
-         MinecraftServer $$2 = $$1.o();
-         axt $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
-         return new enk(this.a, $$3, $$2.aM());
-      }
+      return null;
    }
 
-   public static enum b implements ayg {
-      a("this", epx.a),
-      b("killer", epx.d),
-      c("direct_killer", epx.e),
-      d("killer_player", epx.b);
+   public void a(String $$0, emy $$1) {
+      this.b.put($$0, $$1);
+   }
 
-      public static final ayg.a<enk.b> e = ayg.a(enk.b::values);
-      private final String f;
-      private final epu<? extends bqa> g;
+   public ty a(String $$0, azc $$1, int $$2) throws IOException {
+      File $$3 = this.a($$0);
 
-      private b(String $$0, epu<? extends bqa> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public epu<? extends bqa> a() {
-         return this.g;
-      }
-
-      public static enk.b a(String $$0) {
-         enk.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
+      ty var9;
+      try (
+         InputStream $$4 = new FileInputStream($$3);
+         PushbackInputStream $$5 = new PushbackInputStream(new axf($$4), 2);
+      ) {
+         ty $$6;
+         if (this.a($$5)) {
+            $$6 = ul.a($$5, uh.a());
          } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
+            try (DataInputStream $$7 = new DataInputStream($$5)) {
+               $$6 = ul.a($$7);
+            }
+         }
+
+         int $$10 = un.b($$6, 1343);
+         var9 = $$1.a(this.c, $$6, $$10, $$2);
+      }
+
+      return var9;
+   }
+
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
          }
       }
 
-      @Override
-      public String c() {
-         return this.f;
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
       }
+
+      return $$2;
    }
 
-   public static record c<T>(enp<T> a, T b) {
+   public void a() {
+      this.b.forEach(($$0, $$1) -> {
+         if ($$1 != null) {
+            $$1.a(this.a($$0), this.d);
+         }
+      });
    }
 }

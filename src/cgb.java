@@ -1,39 +1,100 @@
-public class cgb extends cgd {
-   public cgb(bqg<? extends cgd> $$0, czg $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public cgb(czg $$0, id $$1, ij $$2) {
-      super(bqg.V, $$0, $$1, $$2);
-   }
+public class cgb extends cfs {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private bqh g;
 
-   @Override
-   public aun p() {
-      return auo.kz;
-   }
-
-   @Override
-   public aun r() {
-      return auo.kx;
+   public cgb(cfp $$0) {
+      super($$0);
    }
 
    @Override
-   public aun u() {
-      return auo.ky;
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         etf $$0 = this.a.F(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.e.ds();
+         double $$2 = this.a.e.e(0.5);
+         double $$3 = this.a.e.dy();
+
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.ej().k() / 2.0;
+            double $$6 = $$2 + this.a.ej().k() / 2.0;
+            double $$7 = $$3 + this.a.ej().k() / 2.0;
+
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dN().a(kw.h, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
+            }
+
+            $$0.b((float) (Math.PI / 16));
+         }
+      }
    }
 
    @Override
-   public aun v() {
-      return auo.kw;
+   public void c() {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.gm().a(cgf.e);
+         } else {
+            this.a.gm().a(cgf.g);
+         }
+      } else if (this.e == 10) {
+         etf $$0 = new etf(this.a.e.ds() - this.a.ds(), 0.0, this.a.e.dy() - this.a.dy()).d();
+         float $$1 = 5.0F;
+         double $$2 = this.a.e.ds() + $$0.c * 5.0 / 2.0;
+         double $$3 = this.a.e.dy() + $$0.e * 5.0 / 2.0;
+         double $$4 = this.a.e.e(0.5);
+         double $$5 = $$4;
+         im.a $$6 = new im.a($$2, $$4, $$3);
+
+         while (this.a.dN().u($$6)) {
+            if (--$$5 < 0.0) {
+               $$5 = $$4;
+               break;
+            }
+
+            $$6.b($$2, $$5, $$3);
+         }
+
+         $$5 = (double)(axw.a($$5) + 1);
+         this.g = new bqh(this.a.dN(), $$2, $$5, $$3);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.a(200);
+         this.g.a(kw.h);
+         this.g.a(new bpx(bpz.g));
+         this.a.dN().b(this.g);
+      }
    }
 
    @Override
-   public aun w() {
-      return auo.kA;
+   public void d() {
+      this.e = 0;
+      this.f++;
    }
 
    @Override
-   protected crs x() {
-      return new crs(crv.ub);
+   public void e() {
+      if (this.g != null) {
+         this.g.am();
+         this.g = null;
+      }
+   }
+
+   @Override
+   public cgf<cgb> i() {
+      return cgf.f;
+   }
+
+   public void j() {
+      this.f = 0;
    }
 }

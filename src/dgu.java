@@ -1,82 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class dgu extends dch implements djh {
-   public static final MapCodec<dgu> a = b(dgu::new);
-   public static final int b = 15;
-   public static final dqi c = dpy.aP;
-   public static final dpz d = dpy.C;
-   public static final ToIntFunction<dpi> e = $$0 -> $$0.c(c);
+public class dgu extends dcv {
+   public static final MapCodec<dgu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lc.e.q().fieldOf("host").forGetter(dgu::b), u()).apply($$0, dgu::new));
+   private final dcv b;
+   private static final Map<dcv, dcv> c = Maps.newIdentityHashMap();
+   private static final Map<dpy, dpy> d = Maps.newIdentityHashMap();
+   private static final Map<dpy, dpy> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<dgu> a() {
+   public MapCodec<? extends dgu> a() {
       return a;
    }
 
-   public dgu(dph.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
+   public dgu(dcv $$0, dpx.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(c, d);
+   public dcv b() {
+      return this.b;
    }
 
-   @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if (!$$1.B && $$3.gw()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return bof.a;
-      } else {
-         return bof.b;
+   public static boolean m(dpy $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(aqe $$0, im $$1) {
+      chy $$2 = bqr.aL.a((czu)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.Q();
       }
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return $$3.a(crv.hB) ? esz.b() : esz.a();
-   }
-
-   @Override
-   protected boolean a_(dpi $$0, cym $$1, id $$2) {
-      return true;
-   }
-
-   @Override
-   protected dim b_(dpi $$0) {
-      return dim.a;
-   }
-
-   @Override
-   protected float d(dpi $$0, cym $$1, id $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, elc.c, elc.c.a($$3));
+   protected void a(dpy $$0, aqe $$1, im $$2, csd $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.aa().b(czq.h) && cxo.a(cxq.v, $$3) == 0) {
+         this.a($$1, $$2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected elb c_(dpi $$0) {
-      return $$0.c(d) ? elc.c.a(false) : super.c_($$0);
+   public static dpy n(dpy $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).n());
    }
 
-   @Override
-   public crs a(czj $$0, id $$1, dpi $$2) {
-      return a(super.a($$0, $$1, $$2), $$2.c(c));
+   public dpy o(dpy $$0) {
+      return a(e, $$0, () -> this.b().n());
    }
 
-   public static crs a(crs $$0, int $$1) {
-      if ($$1 != 15) {
-         $$0.b(jr.R, ctz.a.a(c, $$1));
-      }
+   private static dpy a(Map<dpy, dpy> $$0, dpy $$1, Supplier<dpy> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dpy $$2x = $$2.get();
 
-      return $$0;
+         for (drb $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+         }
+
+         return $$2x;
+      });
    }
 }

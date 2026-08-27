@@ -1,21 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eao extends eaa {
-   public static final Codec<eao> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ecj.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               awu.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               awu.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
+public class eao {
+   public static final Codec<eao> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(efk.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, eao::new)
    );
-   public final int d;
-   public final int e;
+   public final iv<efk> b;
+   public final float c;
 
-   public eao(ecj $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public eao(iv<efk> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public boolean a(dap $$0, drv $$1, ayd $$2, im $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

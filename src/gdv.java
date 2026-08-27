@@ -1,151 +1,118 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+public class gdv implements gde<dos> {
+   public gdv(gdf.a $$0) {
+   }
 
-public class gdv implements gdu.a {
-   private final fby a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<gdv.a> d = Lists.newArrayList();
-   private final List<gdv.b> e = Lists.newArrayList();
+   public void a(dos $$0, float $$1, exn $$2, gbe $$3, int $$4, int $$5) {
+      if (fcu.Q().s.gx() || fcu.Q().s.N_()) {
+         im $$6 = $$0.f();
+         jq $$7 = $$0.j();
+         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
+            if ($$0.u() == dri.a || $$0.u() == dri.b) {
+               double $$8 = (double)$$6.u();
+               double $$9 = (double)$$6.w();
+               double $$10 = (double)$$6.v();
+               double $$11 = $$10 + (double)$$7.v();
+               double $$12;
+               double $$13;
+               switch ($$0.k()) {
+                  case b:
+                     $$12 = (double)$$7.u();
+                     $$13 = (double)(-$$7.w());
+                     break;
+                  case c:
+                     $$12 = (double)(-$$7.u());
+                     $$13 = (double)$$7.w();
+                     break;
+                  default:
+                     $$12 = (double)$$7.u();
+                     $$13 = (double)$$7.w();
+               }
 
-   public gdv(fby $$0) {
-      this.a = $$0;
+               double $$30;
+               double $$31;
+               double $$32;
+               double $$33;
+               switch ($$0.l()) {
+                  case b:
+                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
+                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
+                     $$32 = $$30 - $$13;
+                     $$33 = $$31 + $$12;
+                     break;
+                  case c:
+                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
+                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
+                     $$32 = $$30 - $$12;
+                     $$33 = $$31 - $$13;
+                     break;
+                  case d:
+                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
+                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
+                     $$32 = $$30 + $$13;
+                     $$33 = $$31 - $$12;
+                     break;
+                  default:
+                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
+                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
+                     $$32 = $$30 + $$12;
+                     $$33 = $$31 + $$13;
+               }
+
+               float $$34 = 1.0F;
+               float $$35 = 0.9F;
+               float $$36 = 0.5F;
+               exr $$37 = $$3.getBuffer(gbm.y());
+               if ($$0.u() == dri.a || $$0.E()) {
+                  gbc.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
+               }
+
+               if ($$0.u() == dri.a && $$0.D()) {
+                  this.a($$0, $$37, $$6, $$2);
+               }
+            }
+         }
+      }
+   }
+
+   private void a(dos $$0, exr $$1, im $$2, exn $$3) {
+      cza $$4 = $$0.i();
+      im $$5 = $$0.az_();
+      im $$6 = $$5.a((jq)$$2);
+
+      for (im $$7 : im.c($$6, $$6.a($$0.j()).b(-1, -1, -1))) {
+         dpy $$8 = $$4.a_($$7);
+         boolean $$9 = $$8.i();
+         boolean $$10 = $$8.a(dcx.kN);
+         boolean $$11 = $$8.a(dcx.hW);
+         boolean $$12 = $$8.a(dcx.hX);
+         boolean $$13 = $$10 || $$11 || $$12;
+         if ($$9 || $$13) {
+            float $$14 = $$9 ? 0.05F : 0.0F;
+            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
+            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
+            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
+            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
+            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
+            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
+            if ($$9) {
+               gbc.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
+            } else if ($$10) {
+               gbc.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
+            } else if ($$11) {
+               gbc.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
+            } else if ($$12) {
+               gbc.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
+            }
+         }
+      }
+   }
+
+   public boolean a(dos $$0) {
+      return true;
    }
 
    @Override
-   public void a(ewr $$0, gai $$1, double $$2, double $$3, double $$4) {
-      czg $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
-      } else {
-         esj $$6 = new esj($$2, 0.0, $$4);
-         this.d.removeIf(gdv.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         ewv $$7 = $$1.getBuffer(gaq.y());
-
-         for (gdv.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               gag.a($$0, $$7, esz.a(new ese($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
-         }
-
-         ewv $$9 = $$1.getBuffer(gaq.A());
-
-         for (gdv.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> gag.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
-
-         for (gdv.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               gdu.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               gdu.a($$0, $$1, id.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (gdv.a $$12 : this.d) {
-            esj $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new ese($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            gdu.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
-         }
-      }
-   }
-
-   private static void a(ewr $$0, gai $$1, ese $$2, float $$3, float $$4, float $$5, float $$6) {
-      fbj $$7 = fby.Q().j.n();
-      if ($$7.h()) {
-         esj $$8 = $$7.b().e();
-         gdu.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
-      }
-   }
-
-   public void a(aju<dub> $$0, esj $$1) {
-      this.d.add(new gdv.a(ac.b(), $$0, $$1));
-   }
-
-   public void a(duf $$0, int $$1) {
-      this.e.add(new gdv.b($$0, $$1));
-   }
-
-   static record a(long a, aju<dub> b, esj c) {
-
-      public boolean a() {
-         return ac.b() - this.a > 3000L;
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public aju<dub> c() {
-         return this.b;
-      }
-
-      public esj d() {
-         return this.c;
-      }
-   }
-
-   static class b implements dud {
-      public final duf a;
-      public final int b;
-
-      public b(duf $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public boolean a(czg $$0, esj $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<esj> a(czg $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public duf a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(apu $$0, in<dub> $$1, dub.a $$2, esj $$3) {
-         return false;
-      }
+   public int aP_() {
+      return 96;
    }
 }

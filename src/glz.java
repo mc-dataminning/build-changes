@@ -1,34 +1,72 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.util.concurrent.Executor;
 
-public class glz {
-   private static final BiMap<ajv, gly> i = HashBiMap.create();
-   public static final gly a = a("single", gme.b);
-   public static final gly b = a("directory", gmb.b);
-   public static final gly c = a("filter", gmf.b);
-   public static final gly d = a("unstitch", gmg.b);
-   public static final gly e = a("paletted_permutations", gmd.b);
-   public static Codec<gly> f = ajv.a.flatXmap($$0 -> {
-      gly $$1 = (gly)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      ajv $$1 = (ajv)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<glw> g = f.dispatch(glw::a, gly::a);
-   public static Codec<List<glw>> h = g.listOf().fieldOf("sources").codec();
+public abstract class glz implements AutoCloseable {
+   public static final int a = -1;
+   protected int b = -1;
+   protected boolean c;
+   protected boolean d;
 
-   private static gly a(String $$0, Codec<? extends glw> $$1) {
-      gly $$2 = new gly($$1);
-      ajv $$3 = new ajv($$0);
-      gly $$4 = (gly)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
+   public void a(boolean $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.c = $$0;
+      this.d = $$1;
+      int $$2;
+      int $$3;
+      if ($$0) {
+         $$2 = $$1 ? 9987 : 9729;
+         $$3 = 9729;
       } else {
-         return $$2;
+         $$2 = $$1 ? 9986 : 9728;
+         $$3 = 9728;
       }
+
+      this.c();
+      GlStateManager._texParameter(3553, 10241, $$2);
+      GlStateManager._texParameter(3553, 10240, $$3);
+   }
+
+   public int a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (this.b == -1) {
+         this.b = TextureUtil.generateTextureId();
+      }
+
+      return this.b;
+   }
+
+   public void b() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            if (this.b != -1) {
+               TextureUtil.releaseTextureId(this.b);
+               this.b = -1;
+            }
+         });
+      } else if (this.b != -1) {
+         TextureUtil.releaseTextureId(this.b);
+         this.b = -1;
+      }
+   }
+
+   public abstract void a(ato var1) throws IOException;
+
+   public void c() {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
+      } else {
+         GlStateManager._bindTexture(this.a());
+      }
+   }
+
+   public void a(gmp $$0, ato $$1, akf $$2, Executor $$3) {
+      $$0.a($$2, this);
+   }
+
+   @Override
+   public void close() {
    }
 }

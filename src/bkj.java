@@ -1,112 +1,66 @@
-import com.mojang.logging.LogUtils;
-import java.lang.management.ManagementFactory;
-import java.util.Arrays;
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.EnumMap;
+import java.util.LinkedList;
 import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import javax.management.Attribute;
-import javax.management.AttributeList;
-import javax.management.DynamicMBean;
-import javax.management.InstanceAlreadyExistsException;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanInfo;
-import javax.management.MBeanNotificationInfo;
-import javax.management.MBeanRegistrationException;
-import javax.management.MalformedObjectNameException;
-import javax.management.NotCompliantMBeanException;
-import javax.management.ObjectName;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.Queue;
 
-public final class bkj implements DynamicMBean {
-   private static final Logger a = LogUtils.getLogger();
-   private final MinecraftServer b;
-   private final MBeanInfo c;
-   private final Map<String, bkj.a> d = Stream.of(
-         new bkj.a("tickTimes", this::b, "Historical tick times (ms)", long[].class),
-         new bkj.a("averageTickTime", this::a, "Current average tick time (ms)", long.class)
-      )
-      .collect(Collectors.toMap($$0x -> $$0x.a, Function.identity()));
+public class bkj {
+   public static final int a = 200;
+   public static final int b = 10000;
+   private final aub c;
+   private final EnumMap<bkl, Map<aqf, bkj.b>> d;
+   private final Queue<bkj.a> e = new LinkedList<>();
 
-   private bkj(MinecraftServer $$0) {
-      this.b = $$0;
-      MBeanAttributeInfo[] $$1 = this.d.values().stream().map(bkj.a::a).toArray(MBeanAttributeInfo[]::new);
-      this.c = new MBeanInfo(bkj.class.getSimpleName(), "metrics for dedicated server", $$1, null, null, new MBeanNotificationInfo[0]);
-   }
+   public bkj(aub $$0) {
+      this.c = $$0;
+      this.d = new EnumMap<>(bkl.class);
 
-   public static void a(MinecraftServer $$0) {
-      try {
-         ManagementFactory.getPlatformMBeanServer().registerMBean(new bkj($$0), new ObjectName("net.minecraft.server:type=Server"));
-      } catch (InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException | MalformedObjectNameException var2) {
-         a.warn("Failed to initialise server as JMX bean", var2);
+      for (bkl $$1 : bkl.values()) {
+         this.d.put($$1, Maps.newHashMap());
       }
    }
 
-   private float a() {
-      return this.b.aQ();
+   public boolean a(bkl $$0) {
+      return !this.d.get($$0).isEmpty();
    }
 
-   private long[] b() {
-      return this.b.aT();
-   }
-
-   @Nullable
-   @Override
-   public Object getAttribute(String $$0) {
-      bkj.a $$1 = this.d.get($$0);
-      return $$1 == null ? null : $$1.b.get();
-   }
-
-   @Override
-   public void setAttribute(Attribute $$0) {
-   }
-
-   @Override
-   public AttributeList getAttributes(String[] $$0) {
-      List<Attribute> $$1 = Arrays.stream($$0)
-         .map(this.d::get)
-         .filter(Objects::nonNull)
-         .map($$0x -> new Attribute($$0x.a, $$0x.b.get()))
-         .collect(Collectors.toList());
-      return new AttributeList($$1);
-   }
-
-   @Override
-   public AttributeList setAttributes(AttributeList $$0) {
-      return new AttributeList();
-   }
-
-   @Nullable
-   @Override
-   public Object invoke(String $$0, Object[] $$1, String[] $$2) {
-      return null;
-   }
-
-   @Override
-   public MBeanInfo getMBeanInfo() {
-      return this.c;
-   }
-
-   static final class a {
-      final String a;
-      final Supplier<Object> b;
-      private final String c;
-      private final Class<?> d;
-
-      a(String $$0, Supplier<Object> $$1, String $$2, Class<?> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public void a(acl $$0) {
+      for (aqf $$2 : this.d.get($$0.e()).keySet()) {
+         $$2.d.b($$0);
       }
+   }
 
-      private MBeanAttributeInfo a() {
-         return new MBeanAttributeInfo(this.a, this.d.getSimpleName(), this.c, true, false, false);
+   public void a(aqf $$0, bkl $$1) {
+      if (this.c.f($$0.fZ())) {
+         this.e.add(new bkj.a($$0, $$1));
       }
+   }
+
+   public void a(int $$0) {
+      long $$1 = ac.b();
+      this.a($$1, $$0);
+      this.b($$1, $$0);
+   }
+
+   private void a(long $$0, int $$1) {
+      for (bkj.a $$2 : this.e) {
+         this.d.get($$2.b()).put($$2.a(), new bkj.b($$0, $$1));
+      }
+   }
+
+   private void b(long $$0, int $$1) {
+      for (Map<aqf, bkj.b> $$2 : this.d.values()) {
+         $$2.entrySet().removeIf($$2x -> {
+            boolean $$3 = !this.c.f(((aqf)$$2x.getKey()).fZ());
+            bkj.b $$4 = (bkj.b)$$2x.getValue();
+            return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
+         });
+      }
+   }
+
+   static record a(aqf a, bkl b) {
+   }
+
+   static record b(long a, int b) {
    }
 }

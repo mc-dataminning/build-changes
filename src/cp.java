@@ -1,41 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.stream.Collectors;
 
-public class cp extends cx<cp.a> {
+public class cp extends dd<cp.a> {
    @Override
    public Codec<cp.a> a() {
       return cp.a.a;
    }
 
-   public void a(apv $$0, crs $$1, @Nullable bqa $$2) {
-      enk $$3 = br.b($$0, $$2);
-      this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
+   public void a(aqf $$0, brd $$1, List<bql> $$2) {
+      List<eoa> $$3 = $$2.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
+      eoa $$4 = br.b($$0, $$1);
+      this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
-   public static record a(Optional<bc> b, Optional<cc> c, Optional<bc> d) implements cx.a {
+   public static record a(Optional<bc> b, Optional<bc> c, Optional<bc> d) implements dd.a {
       public static final Codec<cp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(cp.a::a), awu.a(cc.a, "item").forGetter(cp.a::b), awu.a(br.b, "entity").forGetter(cp.a::c))
+         $$0 -> $$0.group(axe.a(br.b, "player").forGetter(cp.a::a), axe.a(br.b, "lightning").forGetter(cp.a::b), axe.a(br.b, "bystander").forGetter(cp.a::c))
                .apply($$0, cp.a::new)
       );
 
-      public static an<cp.a> a(bc $$0, Optional<cc> $$1, Optional<bc> $$2) {
-         return am.R.a(new cp.a(Optional.of($$0), $$1, $$2));
+      public static an<cp.a> a(Optional<br> $$0, Optional<br> $$1) {
+         return am.V.a(new cp.a(Optional.empty(), br.a($$0), br.a($$1)));
       }
 
-      public static an<cp.a> a(Optional<bc> $$0, Optional<cc> $$1, Optional<bc> $$2) {
-         return am.S.a(new cp.a($$0, $$1, $$2));
-      }
-
-      public boolean a(apv $$0, crs $$1, enk $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
+      public boolean a(eoa $$0, List<eoa> $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
       }
 
       @Override
       public void a(bd $$0) {
-         cx.a.super.a($$0);
-         $$0.a(this.d, ".entity");
+         dd.a.super.a($$0);
+         $$0.a(this.c, ".lightning");
+         $$0.a(this.d, ".bystander");
       }
 
       @Override
@@ -43,7 +42,7 @@ public class cp extends cx<cp.a> {
          return this.b;
       }
 
-      public Optional<cc> b() {
+      public Optional<bc> b() {
          return this.c;
       }
 

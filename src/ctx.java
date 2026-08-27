@@ -1,52 +1,31 @@
-import java.util.Optional;
+public class ctx extends cry {
+   private static final int a = 10;
 
-public class ctx {
-   public static final aju<ctw> a = a("sentry");
-   public static final aju<ctw> b = a("dune");
-   public static final aju<ctw> c = a("coast");
-   public static final aju<ctw> d = a("wild");
-   public static final aju<ctw> e = a("ward");
-   public static final aju<ctw> f = a("eye");
-   public static final aju<ctw> g = a("vex");
-   public static final aju<ctw> h = a("tide");
-   public static final aju<ctw> i = a("snout");
-   public static final aju<ctw> j = a("rib");
-   public static final aju<ctw> k = a("spire");
-   public static final aju<ctw> l = a("wayfinder");
-   public static final aju<ctw> m = a("shaper");
-   public static final aju<ctw> n = a("silence");
-   public static final aju<ctw> o = a("raiser");
-   public static final aju<ctw> p = a("host");
-
-   public static void a(pz<ctw> $$0) {
-      a($$0, crv.xp, a);
-      a($$0, crv.xq, b);
-      a($$0, crv.xr, c);
-      a($$0, crv.xs, d);
-      a($$0, crv.xt, e);
-      a($$0, crv.xu, f);
-      a($$0, crv.xv, g);
-      a($$0, crv.xw, h);
-      a($$0, crv.xx, i);
-      a($$0, crv.xy, j);
-      a($$0, crv.xz, k);
-      a($$0, crv.xA, l);
-      a($$0, crv.xB, m);
-      a($$0, crv.xC, n);
-      a($$0, crv.xD, o);
-      a($$0, crv.xE, p);
+   public ctx(cry.a $$0) {
+      super($$0);
    }
 
-   public static Optional<in.c<ctw>> a(jb $$0, crs $$1) {
-      return $$0.d(ku.aM).h().filter($$1x -> $$1.a(((ctw)$$1x.a()).b())).findFirst();
-   }
+   @Override
+   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
+      if (!$$0.x_()) {
+         etf $$3 = new etf($$1.dl().a(), $$1.dw(), $$1.dl().c()).e($$1.bL().a(0.8F));
+         if (!$$0.a_(im.a($$3)).r()) {
+            $$3 = new etf($$1.dl().a(), $$1.dw(), $$1.dl().c()).e($$1.bL().a(0.05F));
+         }
 
-   private static void a(pz<ctw> $$0, crn $$1, aju<ctw> $$2) {
-      ctw $$3 = new ctw($$2.a(), kt.h.e($$1), wi.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
-   }
+         clv $$4 = new clv($$1, $$0, $$3.a(), $$3.b(), $$3.c());
+         $$4.a($$1, $$1.dF(), $$1.dD(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   private static aju<ctw> a(String $$0) {
-      return aju.a(ku.aM, new ajv($$0));
+      $$0.a(null, $$1.ds(), $$1.du(), $$1.dy(), auz.Cb, ava.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      csd $$5 = $$1.b($$2);
+      $$1.gv().a(this, 10);
+      $$1.b(avj.c.b(this));
+      if (!$$1.f()) {
+         $$5.g(1);
+      }
+
+      return bor.a($$5, $$0.x_());
    }
 }

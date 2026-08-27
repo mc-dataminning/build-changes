@@ -1,44 +1,59 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class ej implements ArgumentType<czd> {
-   private static final Collection<String> a = Stream.of(czd.a, czd.b).map(czd::b).collect(Collectors.toList());
-   private static final czd[] b = czd.values();
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wi.b("argument.gamemode.invalid", $$0));
+public record ej(List<ej.a> b) {
+   public static final ej a = new ej(List.of());
+   private static final int c = 8;
+   private static final int d = 16;
 
-   public czd a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      czd $$2 = czd.a($$1, null);
-      if ($$2 == null) {
-         throw c.createWithContext($$0, $$1);
-      } else {
-         return $$2;
+   public ej(vs $$0) {
+      this($$0.a(vs.a(ArrayList::new, 8), ej.a::new));
+   }
+
+   @Nullable
+   public xe a(String $$0) {
+      for (ej.a $$1 : this.b) {
+         if ($$1.a.equals($$0)) {
+            return $$1.b;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(vs $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   public static ej a(xk<?> $$0, ej.b $$1) {
+      List<ej.a> $$2 = $$0.a().stream().map($$1x -> {
+         xe $$2x = $$1.sign($$1x.c());
+         return $$2x != null ? new ej.a($$1x.a(), $$2x) : null;
+      }).filter(Objects::nonNull).toList();
+      return new ej($$2);
+   }
+
+   public List<ej.a> a() {
+      return this.b;
+   }
+
+   public static record a(String a, xe b) {
+
+      public a(vs $$0) {
+         this($$0.d(16), xe.a($$0));
+      }
+
+      public void a(vs $$0) {
+         $$0.a(this.a, 16);
+         xe.a($$0, this.b);
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof ea ? ea.b(Arrays.stream(b).map(czd::b), $$1) : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return a;
-   }
-
-   public static ej a() {
-      return new ej();
-   }
-
-   public static czd a(CommandContext<dv> $$0, String $$1) throws CommandSyntaxException {
-      return (czd)$$0.getArgument($$1, czd.class);
+   @FunctionalInterface
+   public interface b {
+      @Nullable
+      xe sign(String var1);
    }
 }

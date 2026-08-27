@@ -1,22 +1,29 @@
-public class aap {
-   public static final vq<aaq> a = yu.a(
-      vh.e, $$0 -> $$0.a(zf.j, zh.a).a(aaw.b, aay.a).a(zf.k, zi.a).a(aao.e, aar.b).a(zf.l, zj.a).a(zf.m, zk.a).a(zf.n, zl.a).a(aao.f, aas.a)
-   );
-   public static final vq<aaj> b = yu.b(
-      vh.e,
-      $$0 -> $$0.a(aaw.a, aav.a)
-            .a(zf.a, yw.b)
-            .a(zf.b, yx.a)
-            .a(aao.a, aak.b)
-            .a(zf.c, yy.a)
-            .a(zf.d, yz.a)
-            .a(aao.b, aal.a)
-            .a(zf.e, za.a)
-            .a(zf.f, zb.b)
-            .a(zf.g, zc.a)
-            .a(zf.h, zd.a)
-            .a(aao.c, aan.a)
-            .a(zf.i, ze.a)
-            .a(aao.d, aam.a)
-   );
+import java.util.HashSet;
+import java.util.Set;
+
+public record aap(Set<jo> c, Set<jo> d) implements aaa {
+   public static final yq<vs, aap> a = aaa.a(aap::a, aap::new);
+   public static final aaa.b<aap> b = aaa.a("debug/village_sections");
+
+   private aap(vs $$0) {
+      this($$0.a(HashSet::new, vs::g), $$0.a(HashSet::new, vs::g));
+   }
+
+   private void a(vs $$0) {
+      $$0.a(this.c, vs::a);
+      $$0.a(this.d, vs::a);
+   }
+
+   @Override
+   public aaa.b<aap> a() {
+      return b;
+   }
+
+   public Set<jo> b() {
+      return this.c;
+   }
+
+   public Set<jo> c() {
+      return this.d;
+   }
 }

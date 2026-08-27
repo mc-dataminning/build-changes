@@ -1,70 +1,141 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.Socket;
+import java.util.List;
+import java.util.Locale;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.Scanner;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class alh {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wi.b("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wi.b("clear.failed.multiple", $$0));
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 5;
+   private final String c;
+   private final int d;
+   private final MinecraftServer e;
+   private volatile boolean f;
+   @Nullable
+   private Socket g;
+   @Nullable
+   private Thread h;
 
-   public static void a(CommandDispatcher<dv> $$0, dr $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("clear").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((dv)$$0x.getSource(), Collections.singleton(((dv)$$0x.getSource()).h()), $$0xx -> true)))
-            .then(
-               ((RequiredArgumentBuilder)dw.a("targets", ei.d()).executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), $$0xx -> true)))
-                  .then(
-                     ((RequiredArgumentBuilder)dw.a("item", gf.a($$1)).executes($$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), gf.a($$0x, "item"))))
-                        .then(
-                           dw.a("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a((dv)$$0x.getSource(), ei.f($$0x, "targets"), gf.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
-                              )
-                        )
-                  )
-            )
-      );
+   public alh(String $$0, int $$1, MinecraftServer $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static int a(dv $$0, Collection<apv> $$1, Predicate<crs> $$2) throws CommandSyntaxException {
-      return a($$0, $$1, $$2, -1);
-   }
-
-   private static int a(dv $$0, Collection<apv> $$1, Predicate<crs> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (apv $$5 : $$1) {
-         $$4 += $$5.fZ().a($$2, $$3, $$5.bZ.q());
-         $$5.ca.d();
-         $$5.bZ.a($$5.fZ());
+   public void a() {
+      if (this.h != null && this.h.isAlive()) {
+         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
       }
 
-      if ($$4 == 0) {
-         if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().ad());
-         } else {
-            throw b.create($$1.size());
-         }
-      } else {
-         int $$6 = $$4;
-         if ($$3 == 0) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> wi.a("commands.clear.test.single", $$6, $$1.iterator().next().O_()), true);
-            } else {
-               $$0.a(() -> wi.a("commands.clear.test.multiple", $$6, $$1.size()), true);
+      this.f = true;
+      this.h = new Thread(this::c, "chase-client");
+      this.h.setDaemon(true);
+      this.h.start();
+   }
+
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+      this.h = null;
+   }
+
+   public void c() {
+      String $$0 = this.c + ":" + this.d;
+
+      while (this.f) {
+         try {
+            a.info("Connecting to remote control server {}", $$0);
+            this.g = new Socket(this.c, this.d);
+            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
+
+            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
+               while (this.f) {
+                  String $$2 = $$1.readLine();
+                  if ($$2 == null) {
+                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+                     break;
+                  }
+
+                  this.a($$2);
+               }
+            } catch (IOException var8) {
+               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
             }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> wi.a("commands.clear.success.single", $$6, $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wi.a("commands.clear.success.multiple", $$6, $$1.size()), true);
+         } catch (IOException var9) {
+            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
          }
 
-         return $$4;
+         if (this.f) {
+            try {
+               Thread.sleep(5000L);
+            } catch (InterruptedException var5) {
+            }
+         }
       }
+   }
+
+   private void a(String $$0) {
+      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
+         $$1.useLocale(Locale.ROOT);
+         String $$2 = $$1.next();
+         if ("t".equals($$2)) {
+            this.a($$1);
+         } else {
+            a.warn("Unknown message type '{}'", $$2);
+         }
+      } catch (NoSuchElementException var7) {
+         a.warn("Could not parse message '{}', ignoring", $$0);
+      }
+   }
+
+   private void a(Scanner $$0) {
+      this.b($$0)
+         .ifPresent(
+            $$0x -> this.b(
+                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.c, $$0x.b.d, $$0x.b.e, $$0x.c.j, $$0x.c.i)
+               )
+         );
+   }
+
+   private Optional<alh.a> b(Scanner $$0) {
+      ake<czu> $$1 = (ake<czu>)alq.a.get($$0.next());
+      if ($$1 == null) {
+         return Optional.empty();
+      } else {
+         float $$2 = $$0.nextFloat();
+         float $$3 = $$0.nextFloat();
+         float $$4 = $$0.nextFloat();
+         float $$5 = $$0.nextFloat();
+         float $$6 = $$0.nextFloat();
+         return Optional.of(new alh.a($$1, new etf((double)$$2, (double)$$3, (double)$$4), new ete($$6, $$5)));
+      }
+   }
+
+   private void b(String $$0) {
+      this.e.execute(() -> {
+         List<aqf> $$1 = this.e.ah().t();
+         if (!$$1.isEmpty()) {
+            aqf $$2 = $$1.get(0);
+            aqe $$3 = this.e.I();
+            ec $$4 = new ec($$2, etf.a($$3.U()), ete.a, $$3, 4, "", wr.a, this.e, $$2);
+            ed $$5 = this.e.aH();
+            $$5.a($$4, $$0);
+         }
+      });
+   }
+
+   static record a(ake<czu> a, etf b, ete c) {
    }
 }

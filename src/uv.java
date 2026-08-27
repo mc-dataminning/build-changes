@@ -1,36 +1,52 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public record uv(int a, Map<String, un<?>> b, Map<String, uv> c) {
-   private uv(int $$0) {
-      this($$0, new HashMap<>(), new HashMap<>());
+public interface uv {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
+
+   void a(DataOutput var1) throws IOException;
+
+   @Override
+   String toString();
+
+   byte b();
+
+   ux<?> c();
+
+   uv d();
+
+   int a();
+
+   default String s_() {
+      return new uu().a(this);
    }
 
-   public static uv a() {
-      return new uv(1);
-   }
+   void a(uz var1);
 
-   public void a(uu $$0) {
-      if (this.a <= $$0.a().size()) {
-         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new uv(this.a + 1)).a($$0);
-      } else {
-         this.b.put($$0.c(), $$0.b());
+   us.b a(us var1);
+
+   default void b(us $$0) {
+      us.b $$1 = $$0.b(this.c());
+      if ($$1 == us.b.a) {
+         this.a($$0);
       }
-   }
-
-   public boolean a(un<?> $$0, String $$1) {
-      return $$0.equals(this.c().get($$1));
-   }
-
-   public int b() {
-      return this.a;
-   }
-
-   public Map<String, un<?>> c() {
-      return this.b;
-   }
-
-   public Map<String, uv> d() {
-      return this.c;
    }
 }

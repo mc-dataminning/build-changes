@@ -1,28 +1,47 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cth extends cpl {
-   public cth(crn.a $$0) {
-      super($$0);
+public class cth extends cqb implements cqu {
+   private final auy a;
+
+   public cth(dcv $$0, auy $$1, cry.a $$2) {
+      super($$0, $$2);
+      this.a = $$1;
    }
 
    @Override
-   public crs x() {
-      crs $$0 = super.x();
-      $$0.b(jr.x, new ctq(ctr.C));
-      return $$0;
-   }
-
-   @Override
-   public void a(crs $$0, @Nullable czg $$1, List<wi> $$2, cti $$3) {
-      ctq $$4 = $$0.a(jr.x);
-      if ($$4 != null) {
-         $$4.a($$2::add, 0.125F, $$1 == null ? 20.0F : $$1.s().f());
+   public boq a(cvn $$0) {
+      boq $$1 = super.a($$0);
+      ckl $$2 = $$0.o();
+      if ($$1.a() && $$2 != null && !$$2.f()) {
+         bop $$3 = $$0.p();
+         $$2.a($$3, csg.qy.x());
       }
+
+      return $$1;
    }
 
    @Override
-   public String i(crs $$0) {
-      return cto.a($$0.a(jr.x, ctq.a).f(), this.a() + ".effect.");
+   public String a() {
+      return this.u();
+   }
+
+   @Override
+   protected auy a(dpy $$0) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(@Nullable ckl $$0, czu $$1, im $$2, @Nullable etb $$3) {
+      if ($$1.k($$2) && $$1.u($$2)) {
+         if (!$$1.B) {
+            $$1.a($$2, this.d().n(), 3);
+         }
+
+         $$1.a($$0, dur.z, $$2);
+         $$1.a($$0, $$2, this.a, ava.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

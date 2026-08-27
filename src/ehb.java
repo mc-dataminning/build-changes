@@ -1,37 +1,74 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface ehb {
-   Codec<ehb> b = kt.aj.q().dispatch(ehb::b, Function.identity());
+public class ehb extends ehd {
+   public static final Codec<ehb> a = axe.<ehb>a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> a($$0)
+                  .and(
+                     $$0.group(
+                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(ehb::a),
+                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(ehb::b),
+                        ehc.c.optionalFieldOf("spread_type", ehc.a).forGetter(ehb::c)
+                     )
+                  )
+                  .apply($$0, ehb::new)
+         ),
+         ehb::a
+      )
+      .codec();
+   private final int c;
+   private final int d;
+   private final ehc e;
 
-   void a(axt var1, BiConsumer<aju<egz>, aju<egz>> var2);
-
-   Stream<aju<egz>> a();
-
-   static eha a(String $$0, String $$1) {
-      return a(qg.a($$0), qg.a($$1));
+   private static DataResult<ehb> a(ehb $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
    }
 
-   static eha a(aju<egz> $$0, aju<egz> $$1) {
-      return new eha($$0, $$1);
+   public ehb(jq $$0, ehd.c $$1, float $$2, int $$3, Optional<ehd.a> $$4, int $$5, int $$6, ehc $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
    }
 
-   static ehe a(String $$0, bmp<String> $$1) {
-      bmp.a<aju<egz>> $$2 = bmp.a();
-      $$1.e().forEach($$1x -> $$2.a(qg.a((String)$$1x.b()), $$1x.a().a()));
-      return a(qg.a($$0), $$2.a());
+   public ehb(int $$0, int $$1, ehc $$2, int $$3) {
+      this(jq.g, ehd.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
    }
 
-   static ehe a(aju<egz> $$0, bmp<aju<egz>> $$1) {
-      return new ehe($$0, $$1);
+   public int a() {
+      return this.c;
    }
 
-   static ehf a(bmp<List<ehb>> $$0) {
-      return new ehf($$0);
+   public int b() {
+      return this.d;
    }
 
-   Codec<? extends ehb> b();
+   public ehc c() {
+      return this.e;
+   }
+
+   public czb a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      dwp $$5 = new dwp(new dvr(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new czb($$3 * this.c + $$7, $$4 * this.c + $$8);
+   }
+
+   @Override
+   protected boolean a(drw $$0, int $$1, int $$2) {
+      czb $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.e == $$1 && $$3.f == $$2;
+   }
+
+   @Override
+   public ehe<?> e() {
+      return ehe.a;
+   }
 }

@@ -1,30 +1,90 @@
-public class gcn implements gci<dmu> {
-   private static final float a = 0.375F;
-   private final ggp b;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-   public gcn(gcj.a $$0) {
-      this.b = $$0.d();
+public class gcn {
+   public static final gcn a = new gcn();
+   public final gcm b;
+   public final gcm c;
+   public final gcm d;
+   public final gcm e;
+   public final gcm f;
+   public final gcm g;
+   public final gcm h;
+   public final gcm i;
+
+   private gcn() {
+      this(gcm.a, gcm.a, gcm.a, gcm.a, gcm.a, gcm.a, gcm.a, gcm.a);
    }
 
-   public void a(dmu $$0, float $$1, ewr $$2, gai $$3, int $$4, int $$5) {
-      ij $$6 = $$0.n().c(dcv.f);
-      iw<crs> $$7 = $$0.b();
-      int $$8 = (int)$$0.az_().a();
+   public gcn(gcn $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         crs $$10 = $$7.get($$9);
-         if ($$10 != crs.i) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            ij $$11 = ij.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, crp.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
+   public gcn(gcm $$0, gcm $$1, gcm $$2, gcm $$3, gcm $$4, gcm $$5, gcm $$6, gcm $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public gcm a(csa $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gcm.a;
+      };
+   }
+
+   public boolean b(csa $$0) {
+      return this.a($$0) != gcm.a;
+   }
+
+   protected static class a implements JsonDeserializer<gcn> {
+      public gcn a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gcm $$4 = this.a($$2, $$3, csa.c);
+         gcm $$5 = this.a($$2, $$3, csa.b);
+         if ($$5 == gcm.a) {
+            $$5 = $$4;
          }
+
+         gcm $$6 = this.a($$2, $$3, csa.e);
+         gcm $$7 = this.a($$2, $$3, csa.d);
+         if ($$7 == gcm.a) {
+            $$7 = $$6;
+         }
+
+         gcm $$8 = this.a($$2, $$3, csa.f);
+         gcm $$9 = this.a($$2, $$3, csa.g);
+         gcm $$10 = this.a($$2, $$3, csa.h);
+         gcm $$11 = this.a($$2, $$3, csa.i);
+         return new gcn($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+      }
+
+      private gcm a(JsonDeserializationContext $$0, JsonObject $$1, csa $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gcm)$$0.deserialize($$1.get($$3), gcm.class) : gcm.a;
       }
    }
 }

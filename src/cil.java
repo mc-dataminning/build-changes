@@ -1,210 +1,284 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cil {
-   public static final int a = 8;
-   public static final int b = 4;
-   private static final bnq c = ayl.a(5, 20);
-   private static final int d = 200;
-   private static final int e = 8;
-   private static final int f = 15;
-   private static final int g = 40;
-   private static final int h = 15;
-   private static final int i = 200;
-   private static final bnq j = bnq.a(5, 16);
-   private static final float k = 1.0F;
-   private static final float l = 1.3F;
-   private static final float m = 0.6F;
-   private static final float n = 0.4F;
-   private static final float o = 0.6F;
+public class cil extends cik implements cka {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ajk<Boolean> c = ajo.a(cil.class, ajm.k);
+   private static final ajk<cjz> d = ajo.a(cil.class, ajm.u);
+   private static final int cb = 3600;
+   private static final int cc = 6000;
+   private static final int cd = 14;
+   private static final int ce = 4;
+   private int cf;
+   @Nullable
+   private UUID cg;
+   @Nullable
+   private uv ch;
+   @Nullable
+   private cyt ci;
+   private int cj;
 
-   protected static bru<?> a(bru<cik> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      $$0.a(ImmutableSet.of(clp.a));
-      $$0.b(clp.b);
-      $$0.f();
-      return $$0;
+   public cil(bqr<? extends cil> $$0, czu $$1) {
+      super($$0, $$1);
+      lc.z.a(this.ah).ifPresent($$0x -> this.a(this.gA().a((ckb)$$0x.a())));
    }
 
-   private static void b(bru<cik> $$0) {
-      $$0.a(clp.a, 0, ImmutableList.of(new btr(45, 90), new btv()));
+   @Override
+   protected void a(ajo.a $$0) {
+      super.a($$0);
+      $$0.a(c, false);
+      $$0.a(d, new cjz(ckd.c, ckb.b, 1));
    }
 
-   private static void c(bru<cik> $$0) {
-      $$0.a(
-         clp.b,
-         10,
-         ImmutableList.of(
-            bsk.a(bzw.aw, 200),
-            new bsf(bqg.Z, 0.6F, 2),
-            bup.a(bzw.aw, 1.0F, 8, true),
-            bux.a(cil::d),
-            bvy.a(cik::u, bup.b(bzw.aq, 0.4F, 8, false)),
-            bul.a(8.0F, bnq.a(30, 60)),
-            bsi.a(j, 0.6F),
-            a()
-         )
-      );
-   }
-
-   private static void d(bru<cik> $$0) {
-      $$0.a(
-         clp.k,
-         10,
-         ImmutableList.of(
-            bsk.a(bzw.aw, 200), new bsf(bqg.Z, 0.6F, 2), buq.a(1.0F), bvy.a(cik::u, bts.a(40)), bvy.a(bpu::p_, bts.a(15)), bva.a(), bsx.a(cil::i, bzw.o)
-         ),
-         bzw.o
-      );
-   }
-
-   private static void e(bru<cik> $$0) {
-      $$0.a(clp.n, 10, ImmutableList.of(bup.b(bzw.z, 1.3F, 15, false), a(), bul.a(8.0F, bnq.a(30, 60)), bsx.a(cil::e, bzw.z)), bzw.z);
-   }
-
-   private static bui<cik> a() {
-      return new bui<>(ImmutableList.of(Pair.of(bud.a(0.4F), 2), Pair.of(bus.a(0.4F, 3), 2), Pair.of(new bsv(30, 60), 1)));
-   }
-
-   protected static void a(cik $$0) {
-      bru<cik> $$1 = $$0.dP();
-      clp $$2 = $$1.g().orElse(null);
-      $$1.a(ImmutableList.of(clp.k, clp.n, clp.b));
-      clp $$3 = $$1.g().orElse(null);
-      if ($$2 != $$3) {
-         b($$0).ifPresent($$0::b);
+   @Override
+   public void b(ty $$0) {
+      super.b($$0);
+      cjz.c.encodeStart(um.a, this.gA()).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
+      if (this.ci != null) {
+         $$0.a("Offers", ac.a(cyt.a.encodeStart(this.dP().a(um.a), this.ci), IllegalStateException::new));
       }
 
-      $$0.v($$1.a(bzw.o));
+      if (this.ch != null) {
+         $$0.a("Gossips", this.ch);
+      }
+
+      $$0.a("ConversionTime", this.gz() ? this.cf : -1);
+      if (this.cg != null) {
+         $$0.a("ConversionPlayer", this.cg);
+      }
+
+      $$0.a("Xp", this.cj);
    }
 
-   protected static void a(cik $$0, bqt $$1) {
-      if (!$$0.p_()) {
-         if ($$1.ai() == bqg.az && f($$0)) {
-            e($$0, $$1);
-            c($$0, $$1);
-         } else {
-            h($$0, $$1);
+   @Override
+   public void a(ty $$0) {
+      super.a($$0);
+      if ($$0.b("VillagerData", 10)) {
+         DataResult<cjz> $$1 = cjz.c.parse(new Dynamic(um.a, $$0.c("VillagerData")));
+         $$1.resultOrPartial(b::error).ifPresent(this::a);
+      }
+
+      if ($$0.e("Offers")) {
+         cyt.a.parse(this.dP().a(um.a), $$0.c("Offers")).resultOrPartial(ac.a("Failed to load offers: ", b::warn)).ifPresent($$0x -> this.ci = $$0x);
+      }
+
+      if ($$0.b("Gossips", 9)) {
+         this.ch = $$0.c("Gossips", 10);
+      }
+
+      if ($$0.b("ConversionTime", 99) && $$0.h("ConversionTime") > -1) {
+         this.a($$0.b("ConversionPlayer") ? $$0.a("ConversionPlayer") : null, $$0.h("ConversionTime"));
+      }
+
+      if ($$0.b("Xp", 3)) {
+         this.cj = $$0.h("Xp");
+      }
+   }
+
+   @Override
+   public void l() {
+      if (!this.dN().B && this.bB() && this.gz()) {
+         int $$0 = this.gC();
+         this.cf -= $$0;
+         if (this.cf <= 0) {
+            this.c((aqe)this.dN());
          }
       }
+
+      super.l();
    }
 
-   private static void c(cik $$0, bqt $$1) {
-      g($$0).forEach($$1x -> d($$1x, $$1));
-   }
+   @Override
+   public boq b(ckl $$0, bop $$1) {
+      csd $$2 = $$0.b($$1);
+      if ($$2.a(csg.qa)) {
+         if (this.b(bpz.r)) {
+            $$2.a(1, $$0);
+            if (!this.dN().B) {
+               this.a($$0.cx(), this.ah.a(2401) + 3600);
+            }
 
-   private static void d(cik $$0, bqt $$1) {
-      bru<cik> $$3 = $$0.dP();
-      bqt $$2 = bsn.a($$0, $$3.c(bzw.z), $$1);
-      $$2 = bsn.a($$0, $$3.c(bzw.o), $$2);
-      e($$0, $$2);
-   }
-
-   private static void e(cik $$0, bqt $$1) {
-      $$0.dP().b(bzw.o);
-      $$0.dP().b(bzw.m);
-      $$0.dP().a(bzw.z, $$1, (long)c.a($$0.dM().z));
-   }
-
-   private static Optional<? extends bqt> d(cik $$0) {
-      return !c($$0) && !i($$0) ? $$0.dP().c(bzw.l) : Optional.empty();
-   }
-
-   static boolean a(cik $$0, id $$1) {
-      Optional<id> $$2 = $$0.dP().c(bzw.aw);
-      return $$2.isPresent() && $$2.get().a($$1, 8.0);
-   }
-
-   private static boolean e(cik $$0) {
-      return $$0.u() && !f($$0);
-   }
-
-   private static boolean f(cik $$0) {
-      if ($$0.p_()) {
-         return false;
+            return boq.a;
+         } else {
+            return boq.b;
+         }
       } else {
-         int $$1 = $$0.dP().c(bzw.as).orElse(0);
-         int $$2 = $$0.dP().c(bzw.at).orElse(0) + 1;
-         return $$1 > $$2;
+         return super.b($$0, $$1);
       }
    }
 
-   protected static void b(cik $$0, bqt $$1) {
-      bru<cik> $$2 = $$0.dP();
-      $$2.b(bzw.ax);
-      $$2.b(bzw.r);
-      if ($$0.p_()) {
-         d($$0, $$1);
+   @Override
+   protected boolean gr() {
+      return false;
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return !this.gz() && this.cj == 0;
+   }
+
+   public boolean gz() {
+      return this.an().a(c);
+   }
+
+   private void a(@Nullable UUID $$0, int $$1) {
+      this.cg = $$0;
+      this.cf = $$1;
+      this.an().a(c, true);
+      this.e(bpz.r);
+      this.b(new bpx(bpz.e, $$1, Math.min(this.dN().ak().a() - 1, 0)));
+      this.dN().a(this, (byte)16);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 16) {
+         if (!this.aU()) {
+            this.dN().a(this.ds(), this.dw(), this.dy(), auz.Dw, this.dc(), 1.0F + this.ah.i(), this.ah.i() * 0.7F + 0.3F, false);
+         }
       } else {
-         f($$0, $$1);
+         super.b($$0);
       }
    }
 
-   private static void f(cik $$0, bqt $$1) {
-      if (!$$0.dP().c(clp.n) || $$1.ai() != bqg.az) {
-         if ($$1.ai() != bqg.Z) {
-            if (!bsn.a($$0, $$1, 4.0)) {
-               if (cbc.c($$0, $$1)) {
-                  g($$0, $$1);
-                  h($$0, $$1);
+   private void c(aqe $$0) {
+      cjy $$1 = this.a(bqr.bi, false);
+
+      for (bqs $$2 : bqs.values()) {
+         csd $$3 = this.d($$2);
+         if (!$$3.d()) {
+            if (cxo.f($$3)) {
+               $$1.a_($$2.b() + 300).a($$3);
+            } else {
+               double $$4 = (double)this.g($$2);
+               if ($$4 > 1.0) {
+                  this.b($$3);
                }
             }
          }
       }
-   }
 
-   private static void g(cik $$0, bqt $$1) {
-      bru<cik> $$2 = $$0.dP();
-      $$2.b(bzw.E);
-      $$2.b(bzw.r);
-      $$2.a(bzw.o, $$1, 200L);
-   }
+      $$1.a(this.gA());
+      if (this.ch != null) {
+         $$1.a(this.ch);
+      }
 
-   private static void h(cik $$0, bqt $$1) {
-      g($$0).forEach($$1x -> i($$1x, $$1));
-   }
+      if (this.ci != null) {
+         $$1.b(this.ci.a());
+      }
 
-   private static void i(cik $$0, bqt $$1) {
-      if (!c($$0)) {
-         Optional<bqt> $$2 = $$0.dP().c(bzw.o);
-         bqt $$3 = bsn.a($$0, $$2, $$1);
-         g($$0, $$3);
+      $$1.v(this.cj);
+      $$1.a($$0, $$0.d_($$1.dn()), bri.i, null);
+      $$1.c($$0);
+      if (this.cg != null) {
+         ckl $$5 = $$0.b(this.cg);
+         if ($$5 instanceof aqf) {
+            am.s.a((aqf)$$5, this, $$1);
+            $$0.a(cce.a, $$5, $$1);
+         }
+      }
+
+      $$1.b(new bpx(bpz.i, 200, 0));
+      if (!this.aU()) {
+         $$0.a(null, 1027, this.dn(), 0);
       }
    }
 
-   public static Optional<aun> b(cik $$0) {
-      return $$0.dP().g().map($$1 -> a($$0, $$1));
-   }
+   private int gC() {
+      int $$0 = 1;
+      if (this.ah.i() < 0.01F) {
+         int $$1 = 0;
+         im.a $$2 = new im.a();
 
-   private static aun a(cik $$0, clp $$1) {
-      if ($$1 == clp.n || $$0.y()) {
-         return auo.mf;
-      } else if ($$1 == clp.k) {
-         return auo.ma;
-      } else {
-         return h($$0) ? auo.mf : auo.lZ;
+         for (int $$3 = (int)this.ds() - 4; $$3 < (int)this.ds() + 4 && $$1 < 14; $$3++) {
+            for (int $$4 = (int)this.du() - 4; $$4 < (int)this.du() + 4 && $$1 < 14; $$4++) {
+               for (int $$5 = (int)this.dy() - 4; $$5 < (int)this.dy() + 4 && $$1 < 14; $$5++) {
+                  dpy $$6 = this.dN().a_($$2.d($$3, $$4, $$5));
+                  if ($$6.a(dcx.eW) || $$6.b() instanceof dco) {
+                     if (this.ah.i() < 0.3F) {
+                        $$0++;
+                     }
+
+                     $$1++;
+                  }
+               }
+            }
+         }
       }
+
+      return $$0;
    }
 
-   private static List<cik> g(cik $$0) {
-      return $$0.dP().c(bzw.ap).orElse(ImmutableList.of());
+   @Override
+   public float fd() {
+      return this.p_() ? (this.ah.i() - this.ah.i()) * 0.2F + 2.0F : (this.ah.i() - this.ah.i()) * 0.2F + 1.0F;
    }
 
-   private static boolean h(cik $$0) {
-      return $$0.dP().a(bzw.aw);
+   @Override
+   public auy v() {
+      return auz.Du;
    }
 
-   private static boolean i(cik $$0) {
-      return $$0.dP().a(bzw.r);
+   @Override
+   public auy d(bpj $$0) {
+      return auz.Dy;
    }
 
-   protected static boolean c(cik $$0) {
-      return $$0.dP().a(bzw.ax);
+   @Override
+   public auy o_() {
+      return auz.Dx;
+   }
+
+   @Override
+   public auy gp() {
+      return auz.Dz;
+   }
+
+   @Override
+   protected csd gq() {
+      return csd.i;
+   }
+
+   public void a(cyt $$0) {
+      this.ci = $$0;
+   }
+
+   public void a(uv $$0) {
+      this.ch = $$0;
+   }
+
+   @Nullable
+   @Override
+   public brw a(daj $$0, boo $$1, bri $$2, @Nullable brw $$3) {
+      this.a(this.gA().a(ckd.a($$0.t(this.dn()))));
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(cjz $$0) {
+      cjz $$1 = this.gA();
+      if ($$1.b() != $$0.b()) {
+         this.ci = null;
+      }
+
+      this.ao.a(d, $$0);
+   }
+
+   @Override
+   public cjz gA() {
+      return this.ao.a(d);
+   }
+
+   public int gB() {
+      return this.cj;
+   }
+
+   @Override
+   public void b(int $$0) {
+      this.cj = $$0;
    }
 }

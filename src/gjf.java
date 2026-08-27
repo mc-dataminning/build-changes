@@ -1,24 +1,17 @@
-public class gjf extends gjn<cgs, fqp<cgs>> {
-   private static final ajv a = new ajv("textures/entity/creeper/creeper_armor.png");
-   private final fqp<cgs> b;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gjf(ghm<cgs, fqp<cgs>> $$0, ftr $$1) {
-      super($$0);
-      this.b = new fqp<>($$1.a(ftu.I));
+public class gjf extends gfh<cex, fsc<cex>> {
+   private static final Map<bqr<?>, akf> a = Maps.newHashMap(
+      ImmutableMap.of(bqr.bu, new akf("textures/entity/horse/horse_zombie.png"), bqr.aN, new akf("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public gjf(ggn.a $$0, fup $$1) {
+      super($$0, new fsc<>($$0.a($$1)), 1.0F);
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected ajv a() {
-      return a;
-   }
-
-   @Override
-   protected fqv<cgs> b() {
-      return this.b;
+   public akf a(cex $$0) {
+      return a.get($$0.ai());
    }
 }

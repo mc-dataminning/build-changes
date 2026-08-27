@@ -1,185 +1,153 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ezw extends gru {
-   static final Logger c = LogUtils.getLogger();
-   private static final wi y = wi.c("mco.selectServer.create");
-   private static final wi z = wi.c("mco.selectServer.create.subtitle");
-   private static final wi A = wi.c("mco.configure.world.switch.slot");
-   private static final wi B = wi.c("mco.configure.world.switch.slot.subtitle");
-   private static final wi C = wi.c("mco.reset.world.title");
-   private static final wi D = wi.c("mco.reset.world.warning");
-   public static final wi a = wi.c("mco.create.world.reset.title");
-   private static final wi E = wi.c("mco.reset.world.resetting.screen.title");
-   private static final wi F = wi.c("mco.reset.world.template");
-   private static final wi G = wi.c("mco.reset.world.adventure");
-   private static final wi H = wi.c("mco.reset.world.experience");
-   private static final wi I = wi.c("mco.reset.world.inspiration");
-   private final fjx J;
-   private final exy K;
-   private final wi L;
-   private final int M;
-   private final wi N;
-   private static final ajv O = new ajv("textures/gui/realms/upload.png");
-   private static final ajv P = new ajv("textures/gui/realms/adventure.png");
-   private static final ajv Q = new ajv("textures/gui/realms/survival_spawn.png");
-   private static final ajv R = new ajv("textures/gui/realms/new_world.png");
-   private static final ajv S = new ajv("textures/gui/realms/experience.png");
-   private static final ajv T = new ajv("textures/gui/realms/inspiration.png");
-   eyq U;
-   eyq V;
-   eyq W;
-   eyq X;
-   public final int b;
+public class ezw extends feu {
+   private static final akf u = new akf("widget/slot_frame");
+   private static final akf v = new akf("icon/checkmark");
+   public static final akf a = new akf("textures/gui/realms/empty_frame.png");
+   public static final akf b = new akf("minecraft", "textures/gui/title/background/panorama_0.png");
+   public static final akf c = new akf("minecraft", "textures/gui/title/background/panorama_2.png");
+   public static final akf d = new akf("minecraft", "textures/gui/title/background/panorama_3.png");
+   private static final ws w = ws.c("mco.configure.world.slot.tooltip.active");
+   private static final ws x = ws.c("mco.configure.world.slot.tooltip.minigame");
+   private static final ws y = ws.c("mco.configure.world.slot.tooltip");
+   static final ws z = ws.c("mco.worldSlot.minigame");
+   private final int A;
    @Nullable
-   private final fba Y;
-   private final Runnable Z;
-   private final fhl aa = new fhl(this);
+   private ezw.b B;
 
-   private ezw(fjx $$0, exy $$1, int $$2, wi $$3, wi $$4, int $$5, wi $$6, Runnable $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
+   public ezw(int $$0, int $$1, int $$2, int $$3, int $$4, feu.c $$5) {
+      super($$0, $$1, $$2, $$3, wr.a, $$5, q);
+      this.A = $$4;
    }
 
-   public ezw(fjx $$0, exy $$1, int $$2, wi $$3, wi $$4, int $$5, wi $$6, @Nullable fba $$7, Runnable $$8) {
-      super($$3);
-      this.J = $$0;
-      this.K = $$1;
-      this.b = $$2;
-      this.L = $$4;
-      this.M = $$5;
-      this.N = $$6;
-      this.Y = $$7;
-      this.Z = $$8;
+   @Nullable
+   public ezw.b a() {
+      return this.B;
    }
 
-   public static ezw a(fjx $$0, exy $$1, fba $$2, Runnable $$3) {
-      return new ezw($$0, $$1, $$1.n, y, z, -6250336, a, $$2, $$3);
+   public void a(eyu $$0) {
+      this.B = new ezw.b($$0, this.A);
+      this.a(this.B, $$0.o);
    }
 
-   public static ezw a(fjx $$0, int $$1, exy $$2, Runnable $$3) {
-      return new ezw($$0, $$2, $$1, A, B, -6250336, a, $$3);
+   private void a(ezw.b $$0, @Nullable String $$1) {
+      ws $$2 = switch ($$0.c) {
+         case c -> w;
+         case b -> $$0.b ? x : y;
+         default -> null;
+      };
+      if ($$2 != null) {
+         this.a(fgf.a($$2));
+      }
+
+      xg $$3 = ws.b($$0.e);
+      if ($$0.b && $$1 != null) {
+         $$3 = $$3.b(wr.v).f($$1);
+      }
+
+      this.b($$3);
    }
 
-   public static ezw a(fjx $$0, exy $$1, Runnable $$2) {
-      return new ezw($$0, $$1, $$1.n, C, D, -65536, E, $$2);
+   static ezw.a a(eyu $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != eyu.c.c) {
+         return ezw.a.c;
+      } else {
+         return $$1 || $$2 && $$0.j ? ezw.a.a : ezw.a.b;
+      }
    }
 
    @Override
-   public void aM_() {
-      fhp $$0 = this.aa.a(fhp.d());
-      $$0.c().a(9 / 3);
-      $$0.a(new fff(this.i, this.m), fho::b);
-      $$0.a(new fff(this.L, this.m).b(this.M), fho::b);
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            exh $$0 = exh.a();
-
-            try {
-               eyq $$1 = $$0.a(1, 10, exy.d.a);
-               eyq $$2 = $$0.a(1, 10, exy.d.c);
-               eyq $$3 = $$0.a(1, 10, exy.d.d);
-               eyq $$4 = $$0.a(1, 10, exy.d.e);
-               ezw.this.j.execute(() -> {
-                  ezw.this.U = $$1;
-                  ezw.this.V = $$2;
-                  ezw.this.W = $$3;
-                  ezw.this.X = $$4;
-               });
-            } catch (eyu var6) {
-               ezw.c.error("Couldn't fetch templates in reset world", var6);
-            }
+   public void b(feh $$0, int $$1, int $$2, float $$3) {
+      if (this.B != null) {
+         int $$4 = this.C();
+         int $$5 = this.D();
+         boolean $$6 = this.A();
+         akf $$7;
+         if (this.B.b) {
+            $$7 = fbj.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.B.a) {
+            $$7 = a;
+         } else if (this.B.i != null && this.B.h != -1L) {
+            $$7 = fbj.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.A == 1) {
+            $$7 = b;
+         } else if (this.A == 2) {
+            $$7 = c;
+         } else if (this.A == 3) {
+            $$7 = d;
+         } else {
+            $$7 = a;
          }
-      }).start();
-      fhk $$1 = this.aa.c(new fhk());
-      fhk.b $$2 = $$1.d(3);
-      $$2.c().a(16);
-      $$2.a(new ezw.a(ezv.a, R, $$0x -> this.j.a(new ezv(this::a, this.i))));
-      $$2.a(new ezw.a(ezx.a, O, $$0x -> this.j.a(new ezx(this.Y, this.K.a, this.b, this))));
-      $$2.a(new ezw.a(F, Q, $$0x -> this.j.a(new ezy(F, this::a, exy.d.a, this.U))));
-      $$2.a(new ezw.a(G, P, $$0x -> this.j.a(new ezy(G, this::a, exy.d.c, this.V))));
-      $$2.a(new ezw.a(H, S, $$0x -> this.j.a(new ezy(H, this::a, exy.d.d, this.W))));
-      $$2.a(new ezw.a(I, T, $$0x -> this.j.a(new ezy(I, this::a, exy.d.e, this.X))));
-      this.aa.b(fdy.a(wh.k, $$0x -> this.d()).a());
-      this.aa.a($$1x -> {
-         fdw var10000 = this.c($$1x);
-      });
-      this.c();
-   }
 
-   @Override
-   protected void c() {
-      this.aa.a();
-   }
-
-   @Override
-   public wi i() {
-      return wh.a(this.n(), this.L);
-   }
-
-   @Override
-   public void d() {
-      this.j.a(this.J);
-   }
-
-   private void a(@Nullable eyp $$0) {
-      this.j.a(this);
-      if ($$0 != null) {
-         this.a(new fbc($$0, this.K.a, this.N, this.Z));
-      }
-   }
-
-   private void a(@Nullable far $$0) {
-      this.j.a(this);
-      if ($$0 != null) {
-         this.a(new fbb($$0, this.K.a, this.N, this.Z));
-      }
-   }
-
-   private void a(fay $$0) {
-      List<fay> $$1 = new ArrayList<>();
-      if (this.Y != null) {
-         $$1.add(this.Y);
-      }
-
-      if (this.b != this.K.n) {
-         $$1.add(new fbg(this.K.a, this.b, () -> {
-         }));
-      }
-
-      $$1.add($$0);
-      this.j.a(new ezo(this.J, $$1.toArray(new fay[0])));
-   }
-
-   class a extends fdy {
-      private static final ajv b = new ajv("widget/slot_frame");
-      private static final int c = 60;
-      private static final int d = 2;
-      private static final int u = 56;
-      private final ajv v;
-
-      a(wi $$0, ajv $$1, fdy.c $$2) {
-         super(0, 0, 60, 60, $$0, $$2, q);
-         this.v = $$1;
-      }
-
-      @Override
-      public void b(fdl $$0, int $$1, int $$2, float $$3) {
-         boolean $$4 = this.A();
-         if ($$4) {
+         if (this.B.d) {
             $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
          }
 
-         int $$5 = this.C();
-         int $$6 = this.D();
-         $$0.a(this.v, $$5 + 2, $$6 + 2, 0.0F, 0.0F, 56, 56, 56, 56);
-         $$0.a(b, $$5, $$6, 60, 60);
+         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+         boolean $$14 = $$6 && this.B.c != ezw.a.a;
+         if ($$14) {
+            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         } else if (this.B.d) {
+            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
+         } else {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a(u, $$4, $$5, 80, 80);
          $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         int $$7 = $$4 ? -6250336 : -1;
-         $$0.a(ezw.this.m, this.y(), $$5 + 28, $$6 - 14, $$7);
+         if (this.B.d) {
+            RenderSystem.enableBlend();
+            $$0.a(v, $$4 + 67, $$5 + 4, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         fef $$15 = fcu.Q().h;
+         $$0.a($$15, this.B.e, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, exy.a(this.B.f, this.B.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public static class b {
+      final boolean d;
+      final String e;
+      final String f;
+      final eyu.a g;
+      final long h;
+      @Nullable
+      final String i;
+      public final boolean a;
+      public final boolean b;
+      public final ezw.a c;
+
+      public b(eyu $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.d = $$0.m == eyu.d.b;
+            this.e = ezw.z.getString();
+            this.h = (long)$$0.p;
+            this.i = $$0.q;
+            this.a = $$0.p == -1;
+            this.f = "";
+            this.g = eyu.a.a;
+         } else {
+            ezb $$2 = $$0.i.get($$1);
+            this.d = $$0.n == $$1 && $$0.m != eyu.d.b;
+            this.e = $$2.a($$1);
+            this.h = $$2.l;
+            this.i = $$2.m;
+            this.a = $$2.n;
+            this.f = $$2.j;
+            this.g = $$2.k;
+         }
+
+         this.c = ezw.a($$0, this.d, this.b);
       }
    }
 }

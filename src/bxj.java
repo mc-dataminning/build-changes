@@ -1,70 +1,68 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bxj extends bxq {
-   protected final brb a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final czg f;
+public class bxj extends byb {
+   private final cdw a;
+   @Nullable
+   private ckl b;
+   private final czu c;
+   private final float d;
+   private int e;
+   private final cbu f;
 
-   public bxj(brb $$0, double $$1) {
+   public bxj(cdw $$0, float $$1) {
       this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dM();
-      this.a(EnumSet.of(bxq.a.a));
+      this.c = $$0.dN();
+      this.d = $$1;
+      this.f = cbu.b().a((double)$$1);
+      this.a(EnumSet.of(byb.a.b));
    }
 
    @Override
    public boolean a() {
-      if (this.a.p() != null) {
-         return false;
-      } else if (!this.f.Q()) {
-         return false;
-      } else if (!this.a.bN()) {
-         return false;
-      } else if (!this.f.h(this.a.dm())) {
-         return false;
-      } else {
-         return !this.a.d(bqh.f).d() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      esj $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
-         return true;
-      }
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
    public boolean b() {
-      return !this.a.K().l();
+      if (!this.b.bB()) {
+         return false;
+      } else {
+         return this.a.g((bql)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+      }
    }
 
    @Override
    public void c() {
-      this.a.K().a(this.b, this.c, this.d, this.e);
+      this.a.z(true);
+      this.e = this.a(40 + this.a.ej().a(40));
    }
 
-   @Nullable
-   protected esj i() {
-      axt $$0 = this.a.ei();
-      id $$1 = this.a.dm();
+   @Override
+   public void d() {
+      this.a.z(false);
+      this.b = null;
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         id $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.h($$3) < 0.0F) {
-            return esj.c($$3);
+   @Override
+   public void e() {
+      this.a.G().a(this.b.ds(), this.b.dw(), this.b.dy(), 10.0F, (float)this.a.Z());
+      this.e--;
+   }
+
+   private boolean a(ckl $$0) {
+      for (bop $$1 : bop.values()) {
+         csd $$2 = $$0.b($$1);
+         if (this.a.r() && $$2.a(csg.rz)) {
+            return true;
+         }
+
+         if (this.a.o($$2)) {
+            return true;
          }
       }
 
-      return null;
+      return false;
    }
 }

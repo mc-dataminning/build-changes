@@ -1,23 +1,29 @@
-public record aja<T>(int a, ajb<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aja<?> $$1 = (aja<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
+public class aja implements yz<aiz> {
+   public static final yq<vs, aja> a = yz.a(aja::a, aja::new);
+   private final long b;
+
+   public aja(long $$0) {
+      this.b = $$0;
+   }
+
+   private aja(vs $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(vs $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public int hashCode() {
-      return this.a;
+   public zb<aja> a() {
+      return aiy.b;
    }
 
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
+   public void a(aiz $$0) {
+      $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

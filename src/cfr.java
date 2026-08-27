@@ -1,61 +1,57 @@
-public class cfr extends cfh {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final cbj f = cbj.a().a(150.0);
-   private final cbj g;
-   private int h;
+import javax.annotation.Nullable;
 
-   public cfr(cfe $$0) {
-      super($$0);
-      this.g = cbj.a().a(20.0).a($$1 -> Math.abs($$1.dt() - $$0.dt()) <= 10.0);
+public abstract class cfr implements cfz {
+   protected final cfp a;
+
+   public cfr(cfp $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return false;
+   }
+
+   @Override
+   public void b() {
    }
 
    @Override
    public void c() {
-      this.h++;
-      bqt $$0 = this.a.dM().a(this.g, this.a, this.a.dr(), this.a.dt(), this.a.dx());
-      if ($$0 != null) {
-         if (this.h > 25) {
-            this.a.gk().a(cfu.h);
-         } else {
-            esj $$1 = new esj($$0.dr() - this.a.dr(), 0.0, $$0.dx() - this.a.dx()).d();
-            esj $$2 = new esj((double)axm.a(this.a.dC() * (float) (Math.PI / 180.0)), 0.0, (double)(-axm.b(this.a.dC() * (float) (Math.PI / 180.0)))).d();
-            float $$3 = (float)$$2.b($$1);
-            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$4 < 0.0F || $$4 > 10.0F) {
-               double $$5 = $$0.dr() - this.a.e.dr();
-               double $$6 = $$0.dx() - this.a.e.dx();
-               double $$7 = axm.a(axm.d(180.0 - axm.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dC()), -100.0, 100.0);
-               this.a.ca *= 0.8F;
-               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
-               float $$9 = $$8;
-               if ($$8 > 40.0F) {
-                  $$8 = 40.0F;
-               }
+   }
 
-               this.a.ca += (float)$$7 * (0.7F / $$8 / $$9);
-               this.a.r(this.a.dC() + this.a.ca);
-            }
-         }
-      } else if (this.h >= 100) {
-         $$0 = this.a.dM().a(f, this.a, this.a.dr(), this.a.dt(), this.a.dx());
-         this.a.gk().a(cfu.e);
-         if ($$0 != null) {
-            this.a.gk().a(cfu.i);
-            this.a.gk().b(cfu.i).a(new esj($$0.dr(), $$0.dt(), $$0.dx()));
-         }
-      }
+   @Override
+   public void a(cfo $$0, im $$1, bpj $$2, @Nullable ckl $$3) {
    }
 
    @Override
    public void d() {
-      this.h = 0;
    }
 
    @Override
-   public cfu<cfr> i() {
-      return cfu.g;
+   public void e() {
+   }
+
+   @Override
+   public float f() {
+      return 0.6F;
+   }
+
+   @Nullable
+   @Override
+   public etf g() {
+      return null;
+   }
+
+   @Override
+   public float a(bpj $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dq().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

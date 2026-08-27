@@ -1,24 +1,24 @@
-public class gkq extends gjn<cfy, ftl<cfy>> {
-   private static final ajv a = new ajv("textures/entity/wither/wither_armor.png");
-   private final ftl<cfy> b;
+public class gkq extends gky<cdf, fsg<cdf>> {
+   private final gby a;
 
-   public gkq(ghm<cfy, ftl<cfy>> $$0, ftr $$1) {
+   public gkq(gii<cdf, fsg<cdf>> $$0, gby $$1) {
       super($$0);
-      this.b = new ftl<>($$1.a(ftu.bW));
+      this.a = $$1;
    }
 
-   @Override
-   protected float a(float $$0) {
-      return axm.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected ajv a() {
-      return a;
-   }
-
-   @Override
-   protected fqv<cfy> b() {
-      return this.b;
+   public void a(exn $$0, gbe $$1, int $$2, cdf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.gp() != 0) {
+         $$0.a();
+         fur $$10 = this.c().c();
+         $$10.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$11 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(dcx.bT.n(), $$0, $$1, $$2, gmf.d);
+         $$0.b();
+      }
    }
 }

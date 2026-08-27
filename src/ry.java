@@ -1,10 +1,65 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+public class ry {
+   public static final ake<efk> a = sd.a("monster_room");
+   public static final ake<efk> b = sd.a("monster_room_deep");
+   public static final ake<efk> c = sd.a("fossil_upper");
+   public static final ake<efk> d = sd.a("fossil_lower");
+   public static final ake<efk> e = sd.a("dripstone_cluster");
+   public static final ake<efk> f = sd.a("large_dripstone");
+   public static final ake<efk> g = sd.a("pointed_dripstone");
+   public static final ake<efk> h = sd.a("underwater_magma");
+   public static final ake<efk> i = sd.a("glow_lichen");
+   public static final ake<efk> j = sd.a("rooted_azalea_tree");
+   public static final ake<efk> k = sd.a("cave_vines");
+   public static final ake<efk> l = sd.a("lush_caves_vegetation");
+   public static final ake<efk> m = sd.a("lush_caves_clay");
+   public static final ake<efk> n = sd.a("lush_caves_ceiling_vegetation");
+   public static final ake<efk> o = sd.a("spore_blossom");
+   public static final ake<efk> p = sd.a("classic_vines_cave_feature");
+   public static final ake<efk> q = sd.a("amethyst_geode");
+   public static final ake<efk> r = sd.a("sculk_patch_deep_dark");
+   public static final ake<efk> s = sd.a("sculk_patch_ancient_city");
+   public static final ake<efk> t = sd.a("sculk_vein");
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface ry {
-   String a();
+   public static void a(qj<efk> $$0) {
+      iw<dyh<?, ?>> $$1 = $$0.a(ld.aB);
+      iv<dyh<?, ?>> $$2 = $$1.b(rm.a);
+      iv<dyh<?, ?>> $$3 = $$1.b(rm.b);
+      iv<dyh<?, ?>> $$4 = $$1.b(rm.c);
+      iv<dyh<?, ?>> $$5 = $$1.b(rm.d);
+      iv<dyh<?, ?>> $$6 = $$1.b(rm.e);
+      iv<dyh<?, ?>> $$7 = $$1.b(rm.f);
+      iv<dyh<?, ?>> $$8 = $$1.b(rm.g);
+      iv<dyh<?, ?>> $$9 = $$1.b(rm.h);
+      iv<dyh<?, ?>> $$10 = $$1.b(rm.i);
+      iv<dyh<?, ?>> $$11 = $$1.b(rm.j);
+      iv<dyh<?, ?>> $$12 = $$1.b(rm.m);
+      iv<dyh<?, ?>> $$13 = $$1.b(rm.r);
+      iv<dyh<?, ?>> $$14 = $$1.b(rm.s);
+      iv<dyh<?, ?>> $$15 = $$1.b(rm.t);
+      iv<dyh<?, ?>> $$16 = $$1.b(ru.c);
+      iv<dyh<?, ?>> $$17 = $$1.b(rm.u);
+      iv<dyh<?, ?>> $$18 = $$1.b(rm.v);
+      iv<dyh<?, ?>> $$19 = $$1.b(rm.w);
+      iv<dyh<?, ?>> $$20 = $$1.b(rm.x);
+      sd.a($$0, a, $$2, efd.a(10), efh.a(), eff.a(dwk.a(0), dwk.b()), eey.a());
+      sd.a($$0, b, $$2, efd.a(4), efh.a(), eff.a(dwk.b(6), dwk.a(-1)), eey.a());
+      sd.a($$0, c, $$3, efq.a(64), efh.a(), eff.a(dwk.a(0), dwk.b()), eey.a());
+      sd.a($$0, d, $$4, efq.a(64), efh.a(), eff.a(dwk.a(), dwk.a(-8)), eey.a());
+      sd.a($$0, e, $$5, efd.a(bob.a(48, 96)), efh.a(), sd.i, eey.a());
+      sd.a($$0, f, $$6, efd.a(bob.a(10, 48)), efh.a(), sd.i, eey.a());
+      sd.a($$0, g, $$7, efd.a(bob.a(192, 256)), efh.a(), sd.i, efd.a(bob.a(1, 5)), efp.a(bnq.a(0.0F, 3.0F, -10, 10), bnq.a(0.0F, 0.6F, -2, 2)), eey.a());
+      sd.a($$0, h, $$8, efd.a(bob.a(44, 52)), efh.a(), sd.i, efs.a(dvq.a.c, Integer.MIN_VALUE, -2), eey.a());
+      sd.a($$0, i, $$9, efd.a(bob.a(104, 157)), sd.i, efh.a(), efs.a(dvq.a.c, Integer.MIN_VALUE, -13), eey.a());
+      sd.a($$0, j, $$10, efd.a(bob.a(1, 2)), efh.a(), sd.i, efe.a(ir.b, dwx.c(), dwx.c, 12), efp.a(bns.a(-1)), eey.a());
+      sd.a($$0, k, $$11, efd.a(188), efh.a(), sd.i, efe.a(ir.b, dwx.a(ir.a), dwx.c, 12), efp.a(bns.a(-1)), eey.a());
+      sd.a($$0, l, $$12, efd.a(125), efh.a(), sd.i, efe.a(ir.a, dwx.c(), dwx.c, 12), efp.a(bns.a(1)), eey.a());
+      sd.a($$0, m, $$13, efd.a(62), efh.a(), sd.i, efe.a(ir.a, dwx.c(), dwx.c, 12), efp.a(bns.a(1)), eey.a());
+      sd.a($$0, n, $$14, efd.a(125), efh.a(), sd.i, efe.a(ir.b, dwx.c(), dwx.c, 12), efp.a(bns.a(-1)), eey.a());
+      sd.a($$0, o, $$15, efd.a(25), efh.a(), sd.i, efe.a(ir.b, dwx.c(), dwx.c, 12), efp.a(bns.a(-1)), eey.a());
+      sd.a($$0, p, $$16, efd.a(256), efh.a(), sd.i, eey.a());
+      sd.a($$0, q, $$17, efq.a(24), efh.a(), eff.a(dwk.b(6), dwk.a(30)), eey.a());
+      sd.a($$0, r, $$18, efd.a(bns.a(256)), efh.a(), sd.i, eey.a());
+      sd.a($$0, s, $$19);
+      sd.a($$0, t, $$20, efd.a(bob.a(204, 250)), efh.a(), sd.i, eey.a());
+   }
 }

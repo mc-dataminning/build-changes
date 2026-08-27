@@ -1,223 +1,243 @@
-public class cof extends cmw {
-   protected static final int k = 0;
-   protected static final int l = 1;
-   protected static final int m = 2;
-   private static final int n = 3;
-   private static final int o = 30;
-   private static final int p = 30;
-   private static final int q = 39;
-   private static final int r = 136;
-   private static final int s = 162;
-   private static final int t = 220;
-   private static final int u = 37;
-   private final cyd v;
-   private final coe w;
-   private int x;
-   private boolean y;
-   private boolean z;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-   public cof(int $$0, cjz $$1) {
-      this($$0, $$1, new cjk($$1.m));
+public class cof extends cnh {
+   public static final int k = 35;
+   public static final int l = 0;
+   public static final int m = 1;
+   public static final int n = 2;
+   private static final int o = 3;
+   private static final int p = 30;
+   private static final int q = 30;
+   private static final int r = 39;
+   private final boj s = new coy();
+   final boj t = new boz(2) {
+      @Override
+      public void e() {
+         super.e();
+         cof.this.a(this);
+      }
+   };
+   private final cns u;
+
+   public cof(int $$0, ckk $$1) {
+      this($$0, $$1, cns.a);
    }
 
-   public cof(int $$0, cjz $$1, cyd $$2) {
-      super(cod.t, $$0);
-      this.v = $$2;
-      this.w = new coe($$2);
-      this.a(new cos(this.w, 0, 136, 37));
-      this.a(new cos(this.w, 1, 162, 37));
-      this.a(new cog($$1.m, $$2, this.w, 2, 220, 37));
+   public cof(int $$0, ckk $$1, final cns $$2) {
+      super(cop.p, $$0);
+      this.u = $$2;
+      this.a(new cpd(this.t, 0, 49, 19) {
+         @Override
+         public boolean a(csd $$0) {
+            return $$0.k() || cxo.c($$0);
+         }
+      });
+      this.a(new cpd(this.t, 1, 49, 40) {
+         @Override
+         public boolean a(csd $$0) {
+            return $$0.k() || cxo.c($$0);
+         }
+      });
+      this.a(new cpd(this.s, 2, 129, 34) {
+         @Override
+         public boolean a(csd $$0) {
+            return false;
+         }
+
+         @Override
+         public void a(ckl $$0, csd $$1) {
+            $$2.a(($$0x, $$1x) -> {
+               if ($$0x instanceof aqe) {
+                  bqu.a((aqe)$$0x, etf.b($$1x), this.a($$0x));
+               }
+
+               $$0x.c(1042, $$1x, 0);
+            });
+            cof.this.t.a(0, csd.i);
+            cof.this.t.a(1, csd.i);
+         }
+
+         private int a(czu $$0) {
+            int $$1 = 0;
+            $$1 += this.g(cof.this.t.a(0));
+            $$1 += this.g(cof.this.t.a(1));
+            if ($$1 > 0) {
+               int $$2 = (int)Math.ceil((double)$$1 / 2.0);
+               return $$2 + $$0.z.a($$2);
+            } else {
+               return 0;
+            }
+         }
+
+         private int g(csd $$0) {
+            int $$1 = 0;
+            cxu $$2 = cxo.b($$0);
+
+            for (Entry<iv<cxn>> $$3 : $$2.b()) {
+               cxn $$4 = (cxn)((iv)$$3.getKey()).a();
+               int $$5 = $$3.getIntValue();
+               if (!$$4.c()) {
+                  $$1 += $$4.a($$5);
+               }
+            }
+
+            return $$1;
+         }
+      });
 
       for (int $$3 = 0; $$3 < 3; $$3++) {
          for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cos($$1, $$4 + $$3 * 9 + 9, 108 + $$4 * 18, 84 + $$3 * 18));
+            this.a(new cpd($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
          }
       }
 
       for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a(new cos($$1, $$5, 108 + $$5 * 18, 142));
+         this.a(new cpd($$1, $$5, 8 + $$5 * 18, 142));
       }
    }
 
-   public void a(boolean $$0) {
-      this.y = $$0;
-   }
-
    @Override
-   public void a(bny $$0) {
-      this.w.f();
+   public void a(boj $$0) {
       super.a($$0);
+      if ($$0 == this.t) {
+         this.l();
+      }
    }
 
-   public void e(int $$0) {
-      this.w.c($$0);
+   private void l() {
+      this.s.a(0, this.a(this.t.a(0), this.t.a(1)));
+      this.d();
+   }
+
+   private csd a(csd $$0, csd $$1) {
+      boolean $$2 = !$$0.d() || !$$1.d();
+      if (!$$2) {
+         return csd.i;
+      } else if ($$0.G() <= 1 && $$1.G() <= 1) {
+         boolean $$3 = !$$0.d() && !$$1.d();
+         if (!$$3) {
+            csd $$4 = !$$0.d() ? $$0 : $$1;
+            return !cxo.c($$4) ? csd.i : this.c($$4.r());
+         } else {
+            return this.b($$0, $$1);
+         }
+      } else {
+         return csd.i;
+      }
+   }
+
+   private csd b(csd $$0, csd $$1) {
+      if (!$$0.a($$1.f())) {
+         return csd.i;
+      } else {
+         cry $$2 = $$0.f();
+         int $$3 = $$2.r() - $$0.m();
+         int $$4 = $$2.r() - $$1.m();
+         int $$5 = $$3 + $$4 + $$2.r() * 5 / 100;
+         int $$6 = Math.max($$2.r() - $$5, 0);
+         int $$7 = 1;
+         if (!$$0.k()) {
+            if ($$0.i() < 2 || !csd.a($$0, $$1)) {
+               return csd.i;
+            }
+
+            $$7 = 2;
+         }
+
+         csd $$8 = $$0.c($$7);
+         if ($$8.k()) {
+            $$8.b($$6);
+         }
+
+         this.c($$0, $$1);
+         return this.c($$8);
+      }
+   }
+
+   private void c(csd $$0, csd $$1) {
+      cxo.a($$0, $$1x -> {
+         cxu $$2 = cxo.b($$1);
+
+         for (Entry<iv<cxn>> $$3 : $$2.b()) {
+            cxn $$4 = (cxn)((iv)$$3.getKey()).a();
+            if (!$$4.c() || $$1x.a($$4) == 0) {
+               $$1x.b($$4, $$3.getIntValue());
+            }
+         }
+      });
+   }
+
+   private csd c(csd $$0) {
+      cxu $$1 = cxo.a($$0, $$0x -> $$0x.a($$0xx -> !((cxn)$$0xx.a()).c()));
+      if ($$0.a(csg.uw) && $$1.d()) {
+         $$0 = $$0.a(csg.qP, $$0.G());
+      }
+
+      int $$2 = 0;
+
+      for (int $$3 = 0; $$3 < $$1.c(); $$3++) {
+         $$2 = cnj.e($$2);
+      }
+
+      $$0.b(jz.l, Integer.valueOf($$2));
+      return $$0;
    }
 
    @Override
-   public boolean a(cka $$0) {
-      return this.v.gn() == $$0;
-   }
-
-   public int l() {
-      return this.v.u();
-   }
-
-   public int m() {
-      return this.w.h();
-   }
-
-   public void f(int $$0) {
-      this.v.u($$0);
-   }
-
-   public int n() {
-      return this.x;
-   }
-
-   public void g(int $$0) {
-      this.x = $$0;
-   }
-
-   public void b(boolean $$0) {
-      this.z = $$0;
-   }
-
-   public boolean o() {
-      return this.z;
+   public void b(ckl $$0) {
+      super.b($$0);
+      this.u.a(($$1, $$2) -> this.a($$0, this.t));
    }
 
    @Override
-   public boolean a(crs $$0, cos $$1) {
-      return false;
+   public boolean a(ckl $$0) {
+      return a(this.u, $$0, dcx.nZ);
    }
 
    @Override
-   public crs a(cka $$0, int $$1) {
-      crs $$2 = crs.i;
-      cos $$3 = this.i.get($$1);
+   public csd a(ckl $$0, int $$1) {
+      csd $$2 = csd.i;
+      cpd $$3 = this.i.get($$1);
       if ($$3 != null && $$3.h()) {
-         crs $$4 = $$3.g();
+         csd $$4 = $$3.g();
          $$2 = $$4.r();
+         csd $$5 = this.t.a(0);
+         csd $$6 = this.t.a(1);
          if ($$1 == 2) {
             if (!this.a($$4, 3, 39, true)) {
-               return crs.i;
+               return csd.i;
             }
 
             $$3.b($$4, $$2);
-            this.r();
          } else if ($$1 != 0 && $$1 != 1) {
-            if ($$1 >= 3 && $$1 < 30) {
-               if (!this.a($$4, 30, 39, false)) {
-                  return crs.i;
+            if (!$$5.d() && !$$6.d()) {
+               if ($$1 >= 3 && $$1 < 30) {
+                  if (!this.a($$4, 30, 39, false)) {
+                     return csd.i;
+                  }
+               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+                  return csd.i;
                }
-            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-               return crs.i;
+            } else if (!this.a($$4, 0, 2, false)) {
+               return csd.i;
             }
          } else if (!this.a($$4, 3, 39, false)) {
-            return crs.i;
+            return csd.i;
          }
 
          if ($$4.d()) {
-            $$3.e(crs.i);
+            $$3.e(csd.i);
          } else {
             $$3.b();
          }
 
          if ($$4.G() == $$2.G()) {
-            return crs.i;
+            return csd.i;
          }
 
          $$3.a($$0, $$4);
       }
 
       return $$2;
-   }
-
-   private void r() {
-      if (!this.v.gv()) {
-         bqa $$0 = (bqa)this.v;
-         $$0.dM().a($$0.dr(), $$0.dt(), $$0.dx(), this.v.gr(), aup.g, 1.0F, 1.0F, false);
-      }
-   }
-
-   @Override
-   public void b(cka $$0) {
-      super.b($$0);
-      this.v.f(null);
-      if (!this.v.gv()) {
-         if (!$$0.bA() || $$0 instanceof apv && ((apv)$$0).v()) {
-            crs $$1 = this.w.b(0);
-            if (!$$1.d()) {
-               $$0.a($$1, false);
-            }
-
-            $$1 = this.w.b(1);
-            if (!$$1.d()) {
-               $$0.a($$1, false);
-            }
-         } else if ($$0 instanceof apv) {
-            $$0.fZ().f(this.w.b(0));
-            $$0.fZ().f(this.w.b(1));
-         }
-      }
-   }
-
-   public void h(int $$0) {
-      if ($$0 >= 0 && this.p().size() > $$0) {
-         crs $$1 = this.w.a(0);
-         if (!$$1.d()) {
-            if (!this.a($$1, 3, 39, true)) {
-               return;
-            }
-
-            this.w.a(0, $$1);
-         }
-
-         crs $$2 = this.w.a(1);
-         if (!$$2.d()) {
-            if (!this.a($$2, 3, 39, true)) {
-               return;
-            }
-
-            this.w.a(1, $$2);
-         }
-
-         if (this.w.a(0).d() && this.w.a(1).d()) {
-            cye $$3 = this.p().get($$0);
-            this.a(0, $$3.d());
-            $$3.e().ifPresent($$0x -> this.a(1, $$0x));
-         }
-      }
-   }
-
-   private void a(int $$0, cyc $$1) {
-      for (int $$2 = 3; $$2 < 39; $$2++) {
-         crs $$3 = this.i.get($$2).g();
-         if (!$$3.d() && $$1.a($$3)) {
-            crs $$4 = this.w.a($$0);
-            int $$5 = $$4.d() ? 0 : $$4.G();
-            int $$6 = Math.min($$1.d().i() - $$5, $$3.G());
-            crs $$7 = $$3.r();
-            int $$8 = $$5 + $$6;
-            $$3.g($$6);
-            $$7.e($$8);
-            this.w.a($$0, $$7);
-            if ($$8 >= $$1.d().i()) {
-               break;
-            }
-         }
-      }
-   }
-
-   public void a(cyf $$0) {
-      this.v.a($$0);
-   }
-
-   public cyf p() {
-      return this.v.gp();
-   }
-
-   public boolean q() {
-      return this.y;
    }
 }

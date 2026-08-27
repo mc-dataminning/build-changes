@@ -1,169 +1,226 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntSupplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class fjj extends fjr {
-   static final ajv c = new ajv("textures/gui/title/mojangstudios.png");
-   private static final int d = aww.b.a(255, 239, 50, 61);
-   private static final int e = aww.b.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> fby.Q().m.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long a = 1000L;
-   public static final long b = 500L;
-   private final fby m;
-   private final ata n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
+public class fjj extends fkt {
+   public static final double a = 7.0;
+   private static final ws c = ws.c("chat_screen.usage");
+   private static final int d = 210;
+   private String r = "";
+   private int s = -1;
+   protected ffd b;
+   private String u;
+   fex v;
 
-   public fjj(fby $$0, ata $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-   }
-
-   public static void a(fby $$0) {
-      $$0.aa().a(c, new fjj.a());
-   }
-
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   public fjj(String $$0) {
+      super(ws.c("chat_screen.title"));
+      this.u = $$0;
    }
 
    @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = ac.b();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
-      }
-
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.y != null) {
-            this.m.y.a($$0, 0, 0, $$3);
+   protected void aM_() {
+      this.s = this.m.l.d().c().size();
+      this.b = new ffd(this.m.i, 4, this.o - 12, this.n - 4, 12, ws.c("chat.editBox")) {
+         @Override
+         protected xg aK_() {
+            return super.aK_().b(fjj.this.v.e());
          }
+      };
+      this.b.f(256);
+      this.b.d(false);
+      this.b.a(this.u);
+      this.b.b(this::b);
+      this.b.f(false);
+      this.d(this.b);
+      this.v = new fex(this.m, this, this.b, this.p, false, false, 1, 10, true, -805306368);
+      this.v.b(false);
+      this.v.d();
+   }
 
-         int $$9 = axm.f((1.0F - axm.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(gaq.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - axm.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.y != null && $$8 < 1.0F) {
-            this.m.y.a($$0, $$1, $$2, $$3);
-         }
+   @Override
+   protected void aC_() {
+      this.b(this.b);
+   }
 
-         int $$11 = axm.c(axm.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(gaq.E(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = axm.a($$8, 0.0F, 1.0F);
-      } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384, fby.a);
-         $$10 = 1.0F;
-      }
+   @Override
+   public void a(fcu $$0, int $$1, int $$2) {
+      String $$3 = this.b.a();
+      this.b($$0, $$1, $$2);
+      this.c($$3);
+      this.v.d();
+   }
 
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      RenderSystem.disableDepthTest();
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(770, 1);
-      $$0.a(1.0F, 1.0F, 1.0F, $$10);
-      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
-      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableDepthTest();
-      int $$24 = (int)((double)$$0.b() * 0.8325);
-      float $$25 = this.n.b();
-      this.q = axm.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - axm.a($$7, 0.0F, 1.0F));
-      }
+   @Override
+   public void j() {
+      this.m.l.d().d();
+   }
 
-      if ($$7 >= 2.0F) {
+   private void b(String $$0) {
+      String $$1 = this.b.a();
+      this.v.a(!$$1.equals(this.u));
+      this.v.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.v.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 256) {
          this.m.a(null);
+         return true;
+      } else if ($$0 == 257 || $$0 == 335) {
+         this.b(this.b.a(), true);
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 265) {
+         this.a(-1);
+         return true;
+      } else if ($$0 == 264) {
+         this.a(1);
+         return true;
+      } else if ($$0 == 266) {
+         this.m.l.d().a(this.m.l.d().j() - 1);
+         return true;
+      } else if ($$0 == 267) {
+         this.m.l.d().a(-this.m.l.d().j() + 1);
+         return true;
+      } else {
+         return false;
       }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
-         try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var23) {
-            this.o.accept(Optional.of(var23));
-         }
-
-         this.r = ac.b();
-         if (this.m.y != null) {
-            this.m.y.b(this.m, $$0.a(), $$0.b());
-         }
-      }
-   }
-
-   private void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = axm.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = aww.b.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
    }
 
    @Override
-   public boolean a() {
-      return true;
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      $$3 = axw.a($$3, -1.0, 1.0);
+      if (this.v.a($$3)) {
+         return true;
+      } else {
+         if (!s()) {
+            $$3 *= 7.0;
+         }
+
+         this.m.l.d().a((int)$$3);
+         return true;
+      }
    }
 
-   static class a extends gll {
-      public a() {
-         super(fjj.c);
-      }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.v.a((double)((int)$$0), (double)((int)$$1), $$2)) {
+         return true;
+      } else {
+         if ($$2 == 0) {
+            fev $$3 = this.m.l.d();
+            if ($$3.a($$0, $$1)) {
+               return true;
+            }
 
-      @Override
-      protected gll.a b(ate $$0) {
-         aru $$1 = fby.Q().ad();
-         asw<InputStream> $$2 = $$1.a(ars.a, fjj.c);
-         if ($$2 == null) {
-            return new gll.a(new FileNotFoundException(fjj.c.toString()));
-         } else {
-            try {
-               gll.a var5;
-               try (InputStream $$3 = $$2.get()) {
-                  var5 = new gll.a(new gno(true, true), evs.a($$3));
-               }
-
-               return var5;
-            } catch (IOException var9) {
-               return new gll.a(var9);
+            xp $$4 = this.b($$0, $$1);
+            if ($$4 != null && this.a($$4)) {
+               this.u = this.b.a();
+               return true;
             }
          }
+
+         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
       }
+   }
+
+   @Override
+   protected void a_(String $$0, boolean $$1) {
+      if ($$1) {
+         this.b.a($$0);
+      } else {
+         this.b.b($$0);
+      }
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.s + $$0;
+      int $$2 = this.m.l.d().c().size();
+      $$1 = axw.a($$1, 0, $$2);
+      if ($$1 != this.s) {
+         if ($$1 == $$2) {
+            this.s = $$2;
+            this.b.a(this.r);
+         } else {
+            if (this.s == $$2) {
+               this.r = this.b.a();
+            }
+
+            this.b.a(this.m.l.d().c().get($$1));
+            this.v.a(false);
+            this.s = $$1;
+         }
+      }
+   }
+
+   @Override
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      this.m.l.d().a($$0, this.m.l.e(), $$1, $$2, true);
+      $$0.a(2, this.o - 14, this.n - 2, this.o - 2, this.m.m.a(Integer.MIN_VALUE));
+      this.b.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 200.0F);
+      this.v.a($$0, $$1, $$2);
+      $$0.c().b();
+      fcp $$4 = this.m.l.d().c((double)$$1, (double)$$2);
+      if ($$4 != null && $$4.g() != null) {
+         $$0.b(this.p, this.p.c($$4.g(), 210), $$1, $$2);
+      } else {
+         xp $$5 = this.b((double)$$1, (double)$$2);
+         if ($$5 != null && $$5.i() != null) {
+            $$0.a(this.p, $$5, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   public void b(feh $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   private void c(String $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   protected void a(fiq $$0) {
+      $$0.a(fip.a, this.n());
+      $$0.a(fip.d, c);
+      String $$1 = this.b.a();
+      if (!$$1.isEmpty()) {
+         $$0.a().a(fip.a, ws.a("chat_screen.message", $$1));
+      }
+   }
+
+   @Nullable
+   private xp b(double $$0, double $$1) {
+      return this.m.l.d().b($$0, $$1);
+   }
+
+   public void b(String $$0, boolean $$1) {
+      $$0 = this.a($$0);
+      if (!$$0.isEmpty()) {
+         if ($$1) {
+            this.m.l.d().a($$0);
+         }
+
+         if ($$0.startsWith("/")) {
+            this.m.s.h.c($$0.substring(1));
+         } else {
+            this.m.s.h.b($$0);
+         }
+      }
+   }
+
+   public String a(String $$0) {
+      return ayr.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

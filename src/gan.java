@@ -1,70 +1,72 @@
 public class gan {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+   public static final ws a = ws.c("quickplay.error.title");
+   private static final ws b = ws.c("quickplay.error.invalid_identifier");
+   private static final ws c = ws.c("quickplay.error.realm_connect");
+   private static final ws d = ws.c("quickplay.error.realm_permission");
+   private static final ws e = ws.c("gui.toTitle");
+   private static final ws f = ws.c("gui.toWorld");
+   private static final ws g = ws.c("gui.toRealms");
 
-   public gan(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static void a(fcu $$0, fqh.c $$1, eyd $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!ayr.h($$3)) {
+         a($$0, $$3);
+      } else if (!ayr.h($$4)) {
+         b($$0, $$4);
+      } else if (!ayr.h($$5)) {
+         a($$0, $$2, $$5);
+      }
    }
 
-   public gan a(gan $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
+   private static void a(fcu $$0, String $$1) {
+      if (!$$0.m().b($$1)) {
+         fkt $$2 = new fpp(new fky());
+         $$0.a(new fju($$2, a, b, f));
+      } else {
+         $$0.x().a($$1, () -> $$0.a(new fky()));
+      }
    }
 
-   public int a() {
-      return this.a;
+   private static void b(fcu $$0, String $$1) {
+      fwb $$2 = new fwb($$0);
+      $$2.a();
+      fwa $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new fwa(gnt.a("selectServer.defaultName"), $$1, fwa.c.c);
+         $$2.a($$3, true);
+         $$2.b();
+      }
+
+      fxd $$4 = fxd.a($$1);
+      fjm.a(new fnq(new fky()), $$0, $$4, $$3, true, null);
    }
 
-   public int b() {
-      return this.b;
-   }
+   private static void a(fcu $$0, eyd $$1, String $$2) {
+      long $$3;
+      eyw $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.b();
+      } catch (NumberFormatException var9) {
+         fkt $$6 = new exy(new fky());
+         $$0.a(new fju($$6, a, b, g));
+         return;
+      } catch (ezq var10) {
+         fkt $$8 = new fky();
+         $$0.a(new fju($$8, a, c, e));
+         return;
+      }
 
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(int $$0) {
-      this.b = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public void d(int $$0) {
-      this.d = $$0;
-   }
-
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+      eyu $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         fkt $$12 = new exy(new fky());
+         $$0.a(new fju($$12, a, d, g));
+      } else {
+         fky $$13 = new fky();
+         fbt $$14 = new fbt($$13, $$11);
+         $$0.a(new fak($$13, $$14));
+      }
    }
 }

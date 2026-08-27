@@ -1,34 +1,44 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+public class gpv extends gpk {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final ckl p;
+   private final cmg q;
+   private final boolean r;
 
-public class gpv extends atr {
-   private to a;
-
-   public gpv(gpw $$0, iu<ake> $$1, end $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public gpv(ckl $$0, cmg $$1, boolean $$2) {
+      super($$2 ? auz.oA : auz.oB, ava.g, gqb.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gqb.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
    @Override
-   protected void b(apv $$0) {
-      if (this.b().a($$0.fY())) {
-         this.a = $$0.f(new to());
+   public boolean s() {
+      return !this.q.aU();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dI() || !this.p.bP() || this.p.da() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bh()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dq().h();
+         if ($$0 >= 0.01F) {
+            this.d = axw.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
+         }
       }
-
-      super.b($$0);
-   }
-
-   @Override
-   public wi a(SocketAddress $$0, GameProfile $$1) {
-      return (wi)(this.b().a($$1) && this.a($$1.getName()) != null ? wi.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public gpw b() {
-      return (gpw)super.c();
-   }
-
-   @Override
-   public to r() {
-      return this.a;
    }
 }

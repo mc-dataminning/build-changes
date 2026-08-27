@@ -1,57 +1,67 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cwe extends cvy {
+   public cwe(cvw $$0) {
+      super($$0);
+   }
 
-public class cwe<T extends cvb> implements cvw<T> {
-   private final cvb.a<T> x;
-   private final Codec<T> y;
-   private final yg<vt, T> z;
+   public boolean a(cnx $$0, czu $$1) {
+      int $$2 = 0;
+      csd $$3 = csd.i;
 
-   public cwe(cvb.a<T> $$0, int $$1) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  awu.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                  cvh.d.fieldOf("category").orElse(cvh.c).forGetter($$0xx -> $$0xx.b),
-                  cvp.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
-                  crs.b.fieldOf("result").forGetter($$0xx -> $$0xx.e),
-                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
-                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
-               )
-               .apply($$2, $$0::create)
-      );
-      this.z = yg.a(this::a, this::a);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         csd $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(csg.rU)) {
+               if (!$$3.d()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(csg.uj)) {
+                  return false;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.d() && $$2 > 0;
+   }
+
+   public csd a(cnx $$0, jj $$1) {
+      int $$2 = 0;
+      csd $$3 = csd.i;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         csd $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(csg.rU)) {
+               if (!$$3.d()) {
+                  return csd.i;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(csg.uj)) {
+                  return csd.i;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.d() && $$2 >= 1 ? $$3.c($$2 + 1) : csd.i;
    }
 
    @Override
-   public Codec<T> a() {
-      return this.y;
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 
    @Override
-   public yg<vt, T> b() {
-      return this.z;
-   }
-
-   private T a(vt $$0) {
-      String $$1 = $$0.p();
-      cvh $$2 = $$0.b(cvh.class);
-      cvp $$3 = cvp.b.decode($$0);
-      crs $$4 = crs.f.decode($$0);
-      float $$5 = $$0.readFloat();
-      int $$6 = $$0.l();
-      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   private void a(vt $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.f());
-      cvp.b.encode($$0, $$1.d);
-      crs.f.encode($$0, $$1.e);
-      $$0.a($$1.f);
-      $$0.c($$1.g);
-   }
-
-   public cvb a(String $$0, cvh $$1, cvp $$2, crs $$3, float $$4, int $$5) {
-      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
+   public cwk<?> ao_() {
+      return cwk.e;
    }
 }

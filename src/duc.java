@@ -1,59 +1,72 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class duc {
-   private final apu a;
+public class duc<T extends dty> {
+   private static final Logger a = LogUtils.getLogger();
+   private final awo<T> b;
+   private dul c;
 
-   public duc(apu $$0) {
-      this.a = $$0;
+   public duc(Class<T> $$0, dul $$1) {
+      this.c = $$1;
+      this.b = new awo<>($$0);
    }
 
-   public void a(in<dub> $$0, esj $$1, dub.a $$2) {
-      int $$3 = $$0.a().a();
-      id $$4 = id.a($$1);
-      int $$5 = jg.a($$4.u() - $$3);
-      int $$6 = jg.a($$4.v() - $$3);
-      int $$7 = jg.a($$4.w() - $$3);
-      int $$8 = jg.a($$4.u() + $$3);
-      int $$9 = jg.a($$4.v() + $$3);
-      int $$10 = jg.a($$4.w() + $$3);
-      List<dub.b> $$11 = new ArrayList<>();
-      due.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == dud.a.b) {
-            $$11.add(new dub.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
+   public void a(T $$0) {
+      this.b.add($$0);
+   }
 
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dre $$16 = this.a.l().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
+
+   public awj.a a(eta $$0, awj<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cI().c($$0) && $$1.accept($$2).a()) {
+            return awj.a.b;
+         }
+      }
+
+      return awj.a.a;
+   }
+
+   public <U extends T> awj.a a(duf<T, U> $$0, eta $$1, awj<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
+      if ($$3.isEmpty()) {
+         return awj.a.a;
+      } else {
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cI().c($$1) && $$2.accept($$5).a()) {
+               return awj.a.b;
             }
          }
-      }
 
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
-
-      if ($$13) {
-         afk.a(this.a, $$0, $$1);
+         return awj.a.a;
       }
    }
 
-   private void a(List<dub.b> $$0) {
-      Collections.sort($$0);
+   public boolean a() {
+      return this.b.isEmpty();
+   }
 
-      for (dub.b $$1 : $$0) {
-         dud $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
-      }
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public dul c() {
+      return this.c;
+   }
+
+   public dul a(dul $$0) {
+      dul $$1 = this.c;
+      this.c = $$0;
+      return $$1;
+   }
+
+   @ayz
+   public int d() {
+      return this.b.size();
    }
 }

@@ -1,511 +1,126 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.DataFixer;
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class aps extends dri {
-   private static final List<dsd> b = dsd.a();
-   private final apm c;
-   final apu d;
-   final Thread e;
-   final apx f;
-   private final aps.b g;
-   public final apd a;
-   private final emu h;
-   private long i;
-   private boolean j = true;
-   private boolean k = true;
-   private static final int l = 4;
-   private final long[] m = new long[4];
-   private final dsd[] n = new dsd[4];
-   private final dre[] o = new dre[4];
-   @Nullable
-   @ayp
-   private czr.d p;
-
-   public aps(apu $$0, ena.c $$1, DataFixer $$2, ejr $$3, Executor $$4, drf $$5, int $$6, int $$7, boolean $$8, aqd $$9, dth $$10, Supplier<emu> $$11) {
-      this.d = $$0;
-      this.g = new aps.b($$0);
-      this.e = Thread.currentThread();
-      File $$12 = $$1.a($$0.ae()).resolve("data").toFile();
-      $$12.mkdirs();
-      this.h = new emu($$12, $$2, $$0.H_());
-      this.a = new apd($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
-      this.f = this.a.e();
-      this.c = this.a.j();
-      this.c.b($$7);
-      this.r();
-   }
-
-   public apx a() {
-      return this.f;
-   }
-
-   @Nullable
-   private apb b(long $$0) {
-      return this.a.b($$0);
-   }
-
-   public int b() {
-      return this.a.h();
-   }
-
-   private void a(long $$0, @Nullable dre $$1, dsd $$2) {
-      for (int $$3 = 3; $$3 > 0; $$3--) {
-         this.m[$$3] = this.m[$$3 - 1];
-         this.n[$$3] = this.n[$$3 - 1];
-         this.o[$$3] = this.o[$$3 - 1];
-      }
-
-      this.m[0] = $$0;
-      this.n[0] = $$2;
-      this.o[0] = $$1;
-   }
-
-   @Nullable
-   @Override
-   public dre a(int $$0, int $$1, dsd $$2, boolean $$3) {
-      if (Thread.currentThread() != this.e) {
-         return CompletableFuture.<dre>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
-      } else {
-         bkt $$4 = this.d.af();
-         $$4.d("getChunk");
-         long $$5 = cyn.c($$0, $$1);
-
-         for (int $$6 = 0; $$6 < 4; $$6++) {
-            if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
-               dre $$7 = this.o[$$6];
-               if ($$7 != null || !$$3) {
-                  return $$7;
-               }
-            }
-         }
-
-         $$4.d("getChunkCacheMiss");
-         CompletableFuture<ape<dre>> $$8 = this.c($$0, $$1, $$2, $$3);
-         this.g.c($$8::isDone);
-         ape<dre> $$9 = $$8.join();
-         dre $$10 = $$9.b(null);
-         if ($$10 == null && $$3) {
-            throw (IllegalStateException)ac.b(new IllegalStateException("Chunk not there when requested: " + $$9.b()));
-         } else {
-            this.a($$5, $$10, $$2);
-            return $$10;
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public dro a(int $$0, int $$1) {
-      if (Thread.currentThread() != this.e) {
-         return null;
-      } else {
-         this.d.af().d("getChunkNow");
-         long $$2 = cyn.c($$0, $$1);
-
-         for (int $$3 = 0; $$3 < 4; $$3++) {
-            if ($$2 == this.m[$$3] && this.n[$$3] == dsd.n) {
-               dre $$4 = this.o[$$3];
-               return $$4 instanceof dro ? (dro)$$4 : null;
-            }
-         }
-
-         apb $$5 = this.b($$2);
-         if ($$5 == null) {
-            return null;
-         } else {
-            ape<dre> $$6 = $$5.b(dsd.n).getNow(null);
-            if ($$6 == null) {
-               return null;
-            } else {
-               dre $$7 = $$6.b(null);
-               if ($$7 != null) {
-                  this.a($$2, $$7, dsd.n);
-                  if ($$7 instanceof dro) {
-                     return (dro)$$7;
-                  }
-               }
-
-               return null;
-            }
-         }
-      }
-   }
-
-   private void r() {
-      Arrays.fill(this.m, cyn.a);
-      Arrays.fill(this.n, null);
-      Arrays.fill(this.o, null);
-   }
-
-   public CompletableFuture<ape<dre>> b(int $$0, int $$1, dsd $$2, boolean $$3) {
-      boolean $$4 = Thread.currentThread() == this.e;
-      CompletableFuture<ape<dre>> $$5;
-      if ($$4) {
-         $$5 = this.c($$0, $$1, $$2, $$3);
-         this.g.c($$5::isDone);
-      } else {
-         $$5 = CompletableFuture.<CompletableFuture<ape<dre>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
-      }
-
-      return $$5;
-   }
-
-   private CompletableFuture<ape<dre>> c(int $$0, int $$1, dsd $$2, boolean $$3) {
-      cyn $$4 = new cyn($$0, $$1);
-      long $$5 = $$4.a();
-      int $$6 = apc.a($$2);
-      apb $$7 = this.b($$5);
-      if ($$3) {
-         this.c.a(apz.h, $$4, $$6, $$4);
-         if (this.a($$7, $$6)) {
-            bkt $$8 = this.d.af();
-            $$8.a("chunkLoad");
-            this.s();
-            $$7 = this.b($$5);
-            $$8.c();
-            if (this.a($$7, $$6)) {
-               throw (IllegalStateException)ac.b(new IllegalStateException("No chunk holder after ticket has been added"));
-            }
-         }
-      }
-
-      return this.a($$7, $$6) ? apb.b : $$7.a($$2, this.a);
-   }
-
-   private boolean a(@Nullable apb $$0, int $$1) {
-      return $$0 == null || $$0.l() > $$1;
-   }
-
-   @Override
-   public boolean b(int $$0, int $$1) {
-      apb $$2 = this.b(new cyn($$0, $$1).a());
-      int $$3 = apc.a(dsd.n);
-      return !this.a($$2, $$3);
-   }
-
-   @Nullable
-   @Override
-   public drq c(int $$0, int $$1) {
-      long $$2 = cyn.c($$0, $$1);
-      apb $$3 = this.b($$2);
-      if ($$3 == null) {
-         return null;
-      } else {
-         int $$4 = b.size() - 1;
-
-         while (true) {
-            dsd $$5 = b.get($$4);
-            dre $$6 = $$3.a($$5).getNow(apb.a).b(null);
-            if ($$6 != null) {
-               return $$6;
-            }
-
-            if ($$5 == dsd.k.d()) {
-               return null;
-            }
-
-            $$4--;
-         }
-      }
-   }
-
-   public czg c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.g.A();
-   }
-
-   boolean s() {
-      boolean $$0 = this.c.a(this.a);
-      boolean $$1 = this.a.g();
-      if (!$$0 && !$$1) {
+public interface aps {
+   aps a = new aps() {
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
          return false;
-      } else {
-         this.r();
-         return true;
-      }
-   }
-
-   public boolean a(long $$0) {
-      apb $$1 = this.b($$0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         return !this.d.a($$0) ? false : $$1.a().getNow(apb.c).a();
-      }
-   }
-
-   public void a(boolean $$0) {
-      this.s();
-      this.a.a($$0);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.a(true);
-      this.f.close();
-      this.a.close();
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0, boolean $$1) {
-      this.d.af().a("purge");
-      if (this.d.s().i() || !$$1) {
-         this.c.a();
       }
 
-      this.s();
-      this.d.af().b("chunks");
-      if ($$1) {
-         this.t();
-         this.a.l();
+      @Override
+      public void a(Consumer<czb> $$0) {
       }
+   };
 
-      this.d.af().b("unload");
-      this.a.a($$0);
-      this.d.af().c();
-      this.r();
+   static aps a(czb $$0, int $$1) {
+      return new aps.a($$0, $$1);
    }
 
-   private void t() {
-      long $$0 = this.d.Y();
-      long $$1 = $$0 - this.i;
-      this.i = $$0;
-      if (!this.d.ah()) {
-         bkt $$2 = this.d.af();
-         $$2.a("pollingChunks");
-         $$2.a("filteringLoadedChunks");
-         List<aps.a> $$3 = Lists.newArrayListWithCapacity(this.a.i());
+   static void a(aps $$0, aps $$1, Consumer<czb> $$2, Consumer<czb> $$3) {
+      if (!$$0.equals($$1)) {
+         if ($$0 instanceof aps.a $$4 && $$1 instanceof aps.a $$5 && $$4.a($$5)) {
+            int $$6 = Math.min($$4.c(), $$5.c());
+            int $$7 = Math.min($$4.d(), $$5.d());
+            int $$8 = Math.max($$4.e(), $$5.e());
+            int $$9 = Math.max($$4.f(), $$5.f());
 
-         for (apb $$4 : this.a.k()) {
-            dro $$5 = $$4.d();
-            if ($$5 != null) {
-               $$3.add(new aps.a($$5, $$4));
-            }
-         }
-
-         if (this.d.s().i()) {
-            $$2.b("naturalSpawnCount");
-            int $$6 = this.c.b();
-            czr.d $$7 = czr.a($$6, this.d.A(), this::a, new czq(this.a));
-            this.p = $$7;
-            $$2.b("spawnAndTick");
-            boolean $$8 = this.d.aa().b(czc.e);
-            ac.c($$3, this.d.z);
-            int $$9 = this.d.aa().c(czc.o);
-            boolean $$10 = this.d.A_().c() % 400L == 0L;
-
-            for (aps.a $$11 : $$3) {
-               dro $$12 = $$11.a;
-               cyn $$13 = $$12.f();
-               if (this.d.a($$13) && this.a.c($$13)) {
-                  $$12.a($$1);
-                  if ($$8 && (this.j || this.k) && this.d.C_().a($$13)) {
-                     czr.a(this.d, $$12, $$7, this.k, this.j, $$10);
-                  }
-
-                  if (this.d.a($$13.a())) {
-                     this.d.a($$12, $$9);
+            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
+                  boolean $$12 = $$4.a($$10, $$11);
+                  boolean $$13 = $$5.a($$10, $$11);
+                  if ($$12 != $$13) {
+                     if ($$13) {
+                        $$2.accept(new czb($$10, $$11));
+                     } else {
+                        $$3.accept(new czb($$10, $$11));
+                     }
                   }
                }
             }
 
-            $$2.b("customSpawners");
-            if ($$8) {
-               this.d.a(this.j, this.k);
+            return;
+         }
+
+         $$0.a($$3);
+         $$1.a($$2);
+      }
+   }
+
+   default boolean a(czb $$0) {
+      return this.a($$0.e, $$0.f);
+   }
+
+   default boolean a(int $$0, int $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   boolean a(int var1, int var2, boolean var3);
+
+   void a(Consumer<czb> var1);
+
+   default boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      return a($$0, $$1, $$2, $$3, $$4, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
+      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
+      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
+      long $$9 = (long)Math.min($$6, $$7);
+      long $$10 = $$9 * $$9 + $$8 * $$8;
+      int $$11 = $$2 * $$2;
+      return $$10 < (long)$$11;
+   }
+
+   public static record a(czb b, int c) implements aps {
+      int c() {
+         return this.b.e - this.c - 1;
+      }
+
+      int d() {
+         return this.b.f - this.c - 1;
+      }
+
+      int e() {
+         return this.b.e + this.c + 1;
+      }
+
+      int f() {
+         return this.b.f + this.c + 1;
+      }
+
+      @VisibleForTesting
+      protected boolean a(aps.a $$0) {
+         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return aps.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(Consumer<czb> $$0) {
+         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
+            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
+               if (this.a($$1, $$2)) {
+                  $$0.accept(new czb($$1, $$2));
+               }
             }
          }
-
-         $$2.b("broadcast");
-         $$3.forEach($$0x -> $$0x.b.a($$0x.a));
-         $$2.c();
-         $$2.c();
-      }
-   }
-
-   private void a(long $$0, Consumer<dro> $$1) {
-      apb $$2 = this.b($$0);
-      if ($$2 != null) {
-         $$2.c().getNow(apb.c).a($$1);
-      }
-   }
-
-   @Override
-   public String e() {
-      return Integer.toString(this.j());
-   }
-
-   @VisibleForTesting
-   public int f() {
-      return this.g.bw();
-   }
-
-   public drf g() {
-      return this.a.a();
-   }
-
-   public drg h() {
-      return this.a.b();
-   }
-
-   public dvo i() {
-      return this.a.c();
-   }
-
-   @Override
-   public int j() {
-      return this.a.i();
-   }
-
-   public void a(id $$0) {
-      int $$1 = jg.a($$0.u());
-      int $$2 = jg.a($$0.w());
-      apb $$3 = this.b(cyn.c($$1, $$2));
-      if ($$3 != null) {
-         $$3.a($$0);
-      }
-   }
-
-   @Override
-   public void a(czp $$0, jg $$1) {
-      this.g.execute(() -> {
-         apb $$2 = this.b($$1.r().a());
-         if ($$2 != null) {
-            $$2.a($$0, $$1.b());
-         }
-      });
-   }
-
-   public <T> void a(apz<T> $$0, cyn $$1, int $$2, T $$3) {
-      this.c.c($$0, $$1, $$2, $$3);
-   }
-
-   public <T> void b(apz<T> $$0, cyn $$1, int $$2, T $$3) {
-      this.c.d($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(cyn $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-   }
-
-   public void a(apv $$0) {
-      if (!$$0.dH()) {
-         this.a.a($$0);
-      }
-   }
-
-   public void a(bqa $$0) {
-      this.a.b($$0);
-   }
-
-   public void b(bqa $$0) {
-      this.a.a($$0);
-   }
-
-   public void a(bqa $$0, yp<?> $$1) {
-      this.a.b($$0, $$1);
-   }
-
-   public void b(bqa $$0, yp<?> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   public void a(int $$0) {
-      this.a.a($$0);
-   }
-
-   public void b(int $$0) {
-      this.c.b($$0);
-   }
-
-   @Override
-   public void a(boolean $$0, boolean $$1) {
-      this.j = $$0;
-      this.k = $$1;
-   }
-
-   public String a(cyn $$0) {
-      return this.a.a($$0);
-   }
-
-   public emu k() {
-      return this.h;
-   }
-
-   public cbw l() {
-      return this.a.m();
-   }
-
-   public dsj m() {
-      return this.a.p();
-   }
-
-   @Nullable
-   @ayp
-   public czr.d n() {
-      return this.p;
-   }
-
-   public void o() {
-      this.c.e();
-   }
-
-   static record a(dro a, apb b) {
-   }
-
-   final class b extends bmv<Runnable> {
-      b(czg $$0) {
-         super("Chunk source main thread executor for " + $$0.ae().a());
       }
 
-      @Override
-      protected Runnable f(Runnable $$0) {
-         return $$0;
+      public czb a() {
+         return this.b;
       }
 
-      @Override
-      protected boolean e(Runnable $$0) {
-         return true;
-      }
-
-      @Override
-      protected boolean ay() {
-         return true;
-      }
-
-      @Override
-      protected Thread az() {
-         return aps.this.e;
-      }
-
-      @Override
-      protected void d(Runnable $$0) {
-         aps.this.d.af().d("runTask");
-         super.d($$0);
-      }
-
-      @Override
-      protected boolean A() {
-         if (aps.this.s()) {
-            return true;
-         } else {
-            aps.this.f.b();
-            return super.A();
-         }
+      public int b() {
+         return this.c;
       }
    }
 }

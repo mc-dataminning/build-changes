@@ -1,96 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class brz {
-   private final Map<in<brv>, brw> a;
+   private static final Map<bqr<?>, brz.a> a = Maps.newHashMap();
 
-   brz(Map<in<brv>, brw> $$0) {
-      this.a = $$0;
-   }
-
-   private brw d(in<brv> $$0) {
-      brw $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
-      } else {
-         return $$1;
+   private static <T extends brg> void a(bqr<T> $$0, brx $$1, dvq.a $$2, brz.b<T> $$3) {
+      brz.a $$4 = a.put($$0, new brz.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + lc.g.b($$0));
       }
    }
 
-   public double a(in<brv> $$0) {
-      return this.d($$0).f();
+   public static brx a(bqr<?> $$0) {
+      brz.a $$1 = a.get($$0);
+      return $$1 == null ? bry.a : $$1.b;
    }
 
-   public double b(in<brv> $$0) {
-      return this.d($$0).b();
+   public static boolean a(bqr<?> $$0, czx $$1, im $$2) {
+      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
    }
 
-   public double a(in<brv> $$0, UUID $$1) {
-      bry $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.d();
-      }
+   public static dvq.a b(@Nullable bqr<?> $$0) {
+      brz.a $$1 = a.get($$0);
+      return $$1 == null ? dvq.a.f : $$1.a;
    }
 
-   @Nullable
-   public brw a(Consumer<brw> $$0, in<brv> $$1) {
-      brw $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         brw $$3 = new brw($$1, $$0);
-         $$3.a($$2);
-         return $$3;
-      }
+   public static <T extends bql> boolean a(bqr<T> $$0, daj $$1, bri $$2, im $$3, ayd $$4) {
+      brz.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static brz.a a() {
-      return new brz.a();
+   static {
+      a(bqr.f, bry.b, dvq.a.f, cef::a);
+      a(bqr.u, bry.b, dvq.a.f, cdv::c);
+      a(bqr.y, bry.b, dvq.a.f, cdv::c);
+      a(bqr.B, bry.b, dvq.a.f, chf::a);
+      a(bqr.Y, bry.b, dvq.a.f, chn::b);
+      a(bqr.aE, bry.b, dvq.a.f, cdv::c);
+      a(bqr.aH, bry.b, dvq.a.f, cdv::c);
+      a(bqr.aW, bry.b, dvq.a.f, cdv::c);
+      a(bqr.bf, bry.b, dvq.a.f, cdt::b);
+      a(bqr.c, bry.d, dvq.a.f, cec::c);
+      a(bqr.g, bry.d, dvq.a.f, cco::b);
+      a(bqr.i, bry.d, dvq.a.f, chr::c);
+      a(bqr.l, bry.d, dvq.a.f, chr::b);
+      a(bqr.q, bry.d, dvq.a.f, chr::b);
+      a(bqr.t, bry.d, dvq.a.f, cct::b);
+      a(bqr.w, bry.d, dvq.a.f, cct::b);
+      a(bqr.x, bry.d, dvq.a.f, chr::b);
+      a(bqr.z, bry.d, dvq.a.f, cct::b);
+      a(bqr.H, bry.d, dvq.a.f, chr::b);
+      a(bqr.I, bry.d, dvq.a.f, chi::b);
+      a(bqr.F, bry.d, dvq.a.f, brg::a);
+      a(bqr.R, bry.d, dvq.a.f, cen::c);
+      a(bqr.T, bry.d, dvq.a.f, chl::b);
+      a(bqr.U, bry.d, dvq.a.f, chr::b);
+      a(bqr.W, bry.b, dvq.a.f, bqw::a);
+      a(bqr.X, bry.d, dvq.a.f, cet::c);
+      a(bqr.ab, bry.d, dvq.a.f, cct::b);
+      a(bqr.ac, bry.d, dvq.a.f, cho::a);
+      a(bqr.af, bry.d, dvq.a.f, brg::a);
+      a(bqr.am, bry.d, dvq.a.f, cct::b);
+      a(bqr.ao, bry.d, dvq.a.f, chq::b);
+      a(bqr.ar, bry.d, dvq.a.f, cdg::c);
+      a(bqr.as, bry.d, dvq.a.f, cct::b);
+      a(bqr.at, bry.d, dvq.a.e, cdh::c);
+      a(bqr.aw, bry.d, dvq.a.e, cdj::c);
+      a(bqr.ay, bry.d, dvq.a.f, cct::b);
+      a(bqr.Z, bry.d, dvq.a.f, civ::c);
+      a(bqr.az, bry.d, dvq.a.f, cjb::b);
+      a(bqr.aB, bry.d, dvq.a.f, chs::b);
+      a(bqr.aC, bry.d, dvq.a.f, cdl::c);
+      a(bqr.aF, bry.d, dvq.a.f, cdn::c);
+      a(bqr.aI, bry.d, dvq.a.f, cct::b);
+      a(bqr.aL, bry.d, dvq.a.f, chy::b);
+      a(bqr.aM, bry.d, dvq.a.f, chr::b);
+      a(bqr.aN, bry.d, dvq.a.f, cfd::c);
+      a(bqr.aO, bry.d, dvq.a.f, cia::c);
+      a(bqr.aR, bry.d, dvq.a.f, brg::a);
+      a(bqr.aV, bry.d, dvq.a.f, chr::b);
+      a(bqr.aX, bry.d, dvq.a.f, cid::a);
+      a(bqr.aY, bry.c, dvq.a.f, cie::c);
+      a(bqr.bg, bry.d, dvq.a.f, cdu::c);
+      a(bqr.bi, bry.d, dvq.a.f, brg::a);
+      a(bqr.bn, bry.d, dvq.a.f, chr::b);
+      a(bqr.bo, bry.d, dvq.a.f, chr::b);
+      a(bqr.bp, bry.d, dvq.a.f, chr::b);
+      a(bqr.br, bry.d, dvq.a.f, cdw::c);
+      a(bqr.bt, bry.d, dvq.a.f, chr::b);
+      a(bqr.bu, bry.d, dvq.a.f, cfh::c);
+      a(bqr.bw, bry.d, dvq.a.f, cim::b);
+      a(bqr.bv, bry.d, dvq.a.f, chr::b);
+      a(bqr.p, bry.d, dvq.a.f, cct::b);
+      a(bqr.D, bry.b, dvq.a.f, chn::b);
+      a(bqr.J, bry.a, dvq.a.f, chr::b);
+      a(bqr.Q, bry.a, dvq.a.f, cdd::c);
+      a(bqr.ad, bry.a, dvq.a.f, chr::b);
+      a(bqr.av, bry.a, dvq.a.f, cct::b);
+      a(bqr.ax, bry.a, dvq.a.f, brg::a);
+      a(bqr.aG, bry.d, dvq.a.f, chr::b);
+      a(bqr.aJ, bry.a, dvq.a.f, brg::a);
+      a(bqr.bd, bry.a, dvq.a.f, cct::b);
+      a(bqr.bh, bry.a, dvq.a.f, chr::b);
+      a(bqr.bj, bry.a, dvq.a.f, chr::b);
+      a(bqr.bk, bry.d, dvq.a.f, brg::a);
+      a(bqr.bl, bry.a, dvq.a.f, brg::a);
    }
 
-   public boolean c(in<brv> $$0) {
-      return this.a.containsKey($$0);
+   static record a(dvq.a a, brx b, brz.b<?> c) {
    }
 
-   public boolean b(in<brv> $$0, UUID $$1) {
-      brw $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
-
-   public static class a {
-      private final Builder<in<brv>, brw> a = ImmutableMap.builder();
-      private boolean b;
-
-      private brw b(in<brv> $$0) {
-         brw $$1 = new brw($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
-      }
-
-      public brz.a a(in<brv> $$0) {
-         this.b($$0);
-         return this;
-      }
-
-      public brz.a a(in<brv> $$0, double $$1) {
-         brw $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public brz a() {
-         this.b = true;
-         return new brz(this.a.buildKeepingLast());
-      }
+   @FunctionalInterface
+   public interface b<T extends bql> {
+      boolean test(bqr<T> var1, daj var2, bri var3, im var4, ayd var5);
    }
 }

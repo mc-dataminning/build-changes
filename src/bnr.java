@@ -1,49 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class bnr extends bnk {
-   public static final Codec<bnr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bmp.b(bnk.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bnr::new)
-   );
-   private final bmp<bnk> b;
-   private final int f;
-   private final int g;
+public class bnr extends bnt {
+   public static final bnr a = new bnr(0.0F);
+   public static final Codec<bnr> b = axe.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bnr::new, bnr::d);
+   private final float d;
 
-   public bnr(bmp<bnk> $$0) {
-      this.b = $$0;
-      List<bmr.b<bnk>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+   public static bnr a(float $$0) {
+      return $$0 == 0.0F ? a : new bnr($$0);
+   }
 
-      for (bmr.b<bnk> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
-      }
+   private bnr(float $$0) {
+      this.d = $$0;
+   }
 
-      this.f = $$2;
-      this.g = $$3;
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public int a(axt $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   public float a(ayd $$0) {
+      return this.d;
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a() {
+      return this.d;
    }
 
    @Override
-   public int b() {
-      return this.g;
+   public float b() {
+      return this.d + 1.0F;
    }
 
    @Override
-   public bnl<?> c() {
-      return bnl.e;
+   public bnu<?> c() {
+      return bnu.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

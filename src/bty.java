@@ -1,54 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
-public class bty {
-   public static bsm<cjn> a() {
-      return bvy.a(
-         (Function<bvy.b<cjn>, ? extends App<bvy.c<cjn>, bwb<cjn>>>)($$0 -> $$0.group($$0.b(bzw.c), $$0.b(bzw.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        im $$6 = $$0.b($$1);
-                        $$3.y()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bqt>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cjn && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cjn)$$0xxxx)
-                                    .filter(bqt::bA)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, bty::a)
-                           );
-                        return true;
-                     }
-               ))
-      );
+public class bty<E extends brg> extends btz<E> {
+   private final awd<dcv> m;
+   private final float n;
+   private final List<btz.a> o = new ArrayList<>();
+   private boolean p;
+
+   public bty(bob $$0, int $$1, int $$2, float $$3, Function<E, auy> $$4, awd<dcv> $$5, float $$6, BiPredicate<E, im> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   private static cjn a(cjn $$0, cjn $$1) {
-      cjn $$2;
-      cjn $$3;
-      if ($$0.u() > $$1.u()) {
-         $$2 = $$0;
-         $$3 = $$1;
+   @Override
+   protected void a(aqe $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.ej().i() < this.n;
+   }
+
+   @Override
+   protected Optional<btz.a> a(aqe $$0) {
+      if (!this.p) {
+         return super.a($$0);
       } else {
-         $$2 = $$1;
-         $$3 = $$0;
+         im.a $$1 = new im.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<btz.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               btz.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), ir.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
-
-      $$3.dP().b(bzw.c);
-      return $$2;
-   }
-
-   private static boolean a(im $$0, in<cbz> $$1, cjn $$2) {
-      Optional<im> $$3 = $$2.dP().c(bzw.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gy().b());
-   }
-
-   private static boolean a(in<cbz> $$0, cjq $$1) {
-      return $$1.b().test($$0);
    }
 }

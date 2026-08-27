@@ -1,29 +1,44 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface ddd {
-   etc q_ = dch.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dpz r_ = dpy.D;
+public class ddd extends dbt {
+   public static final MapCodec<ddd> b = b(ddd::new);
+   public static final int c = 5;
+   private static final ir[] d = ir.values();
 
-   static bof a(@Nullable bqa $$0, dpi $$1, czg $$2, id $$3) {
-      if ($$1.c(r_)) {
-         dch.a($$2, $$3, new crs(crv.wo, 1));
-         float $$4 = axm.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, auo.ee, aup.e, 1.0F, $$4);
-         dpi $$5 = $$1.a(r_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dub.c, $$3, dub.a.a($$0, $$5));
-         return bof.a($$2.B);
-      } else {
-         return bof.d;
+   @Override
+   public MapCodec<ddd> a() {
+      return b;
+   }
+
+   public ddd(dpx.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if ($$3.a(5) == 0) {
+         ir $$4 = d[$$3.a(d.length)];
+         im $$5 = $$2.a($$4);
+         dpy $$6 = $$1.a_($$5);
+         dcv $$7 = null;
+         if (g($$6)) {
+            $$7 = dcx.qy;
+         } else if ($$6.a(dcx.qy) && $$6.c(dbu.d) == $$4) {
+            $$7 = dcx.qx;
+         } else if ($$6.a(dcx.qx) && $$6.c(dbu.d) == $$4) {
+            $$7 = dcx.qw;
+         } else if ($$6.a(dcx.qw) && $$6.c(dbu.d) == $$4) {
+            $$7 = dcx.qv;
+         }
+
+         if ($$7 != null) {
+            dpy $$8 = $$7.n().a(dbu.d, $$4).a(dbu.c, Boolean.valueOf($$6.u().a() == els.c));
+            $$1.b($$5, $$8);
+         }
       }
    }
 
-   static boolean i_(dpi $$0) {
-      return $$0.b(r_) && $$0.c(r_);
-   }
-
-   static ToIntFunction<dpi> h_(int $$0) {
-      return $$1 -> $$1.c(dpy.D) ? $$0 : 0;
+   public static boolean g(dpy $$0) {
+      return $$0.i() || $$0.a(dcx.G) && $$0.u().e() == 8;
    }
 }

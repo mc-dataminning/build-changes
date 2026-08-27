@@ -2,36 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class tw extends ue {
-   private static final int b = 16;
-   public static final un<tw> a = new un.a<tw>() {
-      public tw a(DataInput $$0, tx $$1) throws IOException {
+public class tw extends uo {
+   private static final int w = 9;
+   public static final ux<tw> a = new ux.a<tw>() {
+      public tw a(DataInput $$0, uh $$1) throws IOException {
          return tw.a(d($$0, $$1));
       }
 
       @Override
-      public ui.b a(DataInput $$0, ui $$1, tx $$2) throws IOException {
+      public us.b a(DataInput $$0, us $$1, uh $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static long d(DataInput $$0, tx $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readLong();
+      private static byte d(DataInput $$0, uh $$1) throws IOException {
+         $$1.b(9L);
+         return $$0.readByte();
       }
 
       @Override
       public int c() {
-         return 8;
+         return 1;
       }
 
       @Override
       public String a() {
-         return "LONG";
+         return "BYTE";
       }
 
       @Override
       public String b() {
-         return "TAG_Long";
+         return "TAG_Byte";
       }
 
       @Override
@@ -39,33 +39,39 @@ public class tw extends ue {
          return true;
       }
    };
-   private final long c;
+   public static final tw b = a((byte)0);
+   public static final tw c = a((byte)1);
+   private final byte x;
 
-   tw(long $$0) {
-      this.c = $$0;
+   tw(byte $$0) {
+      this.x = $$0;
    }
 
-   public static tw a(long $$0) {
-      return $$0 >= -128L && $$0 <= 1024L ? tw.a.a[(int)$$0 - -128] : new tw($$0);
+   public static tw a(byte $$0) {
+      return tw.a.a[128 + $$0];
+   }
+
+   public static tw a(boolean $$0) {
+      return $$0 ? c : b;
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeLong(this.c);
+      $$0.writeByte(this.x);
    }
 
    @Override
    public int a() {
-      return 16;
+      return 9;
    }
 
    @Override
    public byte b() {
-      return 4;
+      return 1;
    }
 
    @Override
-   public un<tw> c() {
+   public ux<tw> c() {
       return a;
    }
 
@@ -75,70 +81,68 @@ public class tw extends ue {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tw && this.c == ((tw)$$0).c;
+      return this == $$0 ? true : $$0 instanceof tw && this.x == ((tw)$$0).x;
    }
 
    @Override
    public int hashCode() {
-      return (int)(this.c ^ this.c >>> 32);
+      return this.x;
    }
 
    @Override
-   public void a(up $$0) {
+   public void a(uz $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return this.c;
+      return (long)this.x;
    }
 
    @Override
    public int g() {
-      return (int)(this.c & -1L);
+      return this.x;
    }
 
    @Override
    public short h() {
-      return (short)((int)(this.c & 65535L));
+      return (short)this.x;
    }
 
    @Override
    public byte i() {
-      return (byte)((int)(this.c & 255L));
+      return this.x;
    }
 
    @Override
    public double j() {
-      return (double)this.c;
+      return (double)this.x;
    }
 
    @Override
    public float k() {
-      return (float)this.c;
+      return (float)this.x;
    }
 
    @Override
    public Number l() {
-      return this.c;
+      return this.x;
    }
 
    @Override
-   public ui.b a(ui $$0) {
-      return $$0.a(this.c);
+   public us.b a(us $$0) {
+      return $$0.a(this.x);
    }
 
    static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final tw[] a = new tw[1153];
+      static final tw[] a = new tw[256];
 
       private a() {
       }
 
       static {
          for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new tw((long)(-128 + $$0));
+            a[$$0] = new tw((byte)($$0 - 128));
          }
       }
    }

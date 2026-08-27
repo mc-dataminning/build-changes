@@ -1,10 +1,14 @@
-public class crq extends cre {
-   public crq(bqg<? extends cgc> $$0, crn.a $$1) {
-      super($$0, $$1);
+public class crq extends cte {
+   public crq(dcv $$0, dcv $$1, cry.a $$2) {
+      super($$2, $$0, $$1, ir.b);
    }
 
    @Override
-   protected boolean a(cka $$0, ij $$1, crs $$2, id $$3) {
-      return !$$0.dM().s($$3) && $$0.a($$3, $$1, $$2);
+   protected boolean a(czx $$0, dpy $$1, im $$2) {
+      if ($$1.b() instanceof dlu $$3 && !$$3.b($$1, $$0, $$2)) {
+         return false;
+      }
+
+      return super.a($$0, $$1, $$2);
    }
 }

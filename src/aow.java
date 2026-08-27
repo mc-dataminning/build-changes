@@ -1,170 +1,56 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogQueues;
-import com.mojang.logging.LogUtils;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.Collection;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-import org.slf4j.Logger;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Locale;
+import java.util.function.Function;
 
-public class aow extends JComponent {
-   private static final Font a = new Font("Monospaced", 0, 12);
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "Minecraft server";
-   private static final String d = "Minecraft server - shutting down!";
-   private final aoq e;
-   private Thread f;
-   private final Collection<Runnable> g = Lists.newArrayList();
-   final AtomicBoolean h = new AtomicBoolean();
-
-   public static aow a(final aoq $$0) {
-      try {
-         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-      } catch (Exception var3) {
-      }
-
-      final JFrame $$1 = new JFrame("Minecraft server");
-      final aow $$2 = new aow($$0);
-      $$1.setDefaultCloseOperation(2);
-      $$1.add($$2);
-      $$1.pack();
-      $$1.setLocationRelativeTo(null);
-      $$1.setVisible(true);
-      $$1.addWindowListener(new WindowAdapter() {
+public class aow implements aot {
+   static final SuggestionProvider<ec> b = ($$0, $$1) -> eh.a(a($$0).a(), $$1);
+   public static final Function<String, aou.c> a = $$0 -> new aou.c() {
          @Override
-         public void windowClosing(WindowEvent $$0x) {
-            if (!$$2.h.getAndSet(true)) {
-               $$1.setTitle("Minecraft server - shutting down!");
-               $$0.a(true);
-               $$2.f();
-            }
-         }
-      });
-      $$2.a($$1::dispose);
-      $$2.a();
-      return $$2;
-   }
-
-   private aow(aoq $$0) {
-      this.e = $$0;
-      this.setPreferredSize(new Dimension(854, 480));
-      this.setLayout(new BorderLayout());
-
-      try {
-         this.add(this.e(), "Center");
-         this.add(this.c(), "West");
-      } catch (Exception var3) {
-         b.error("Couldn't build server GUI", var3);
-      }
-   }
-
-   public void a(Runnable $$0) {
-      this.g.add($$0);
-   }
-
-   private JComponent c() {
-      JPanel $$0 = new JPanel(new BorderLayout());
-      aoy $$1 = new aoy(this.e);
-      this.g.add($$1::a);
-      $$0.add($$1, "North");
-      $$0.add(this.d(), "Center");
-      $$0.setBorder(new TitledBorder(new EtchedBorder(), "Stats"));
-      return $$0;
-   }
-
-   private JComponent d() {
-      JList<?> $$0 = new aox(this.e);
-      JScrollPane $$1 = new JScrollPane($$0, 22, 30);
-      $$1.setBorder(new TitledBorder(new EtchedBorder(), "Players"));
-      return $$1;
-   }
-
-   private JComponent e() {
-      JPanel $$0 = new JPanel(new BorderLayout());
-      JTextArea $$1 = new JTextArea();
-      JScrollPane $$2 = new JScrollPane($$1, 22, 30);
-      $$1.setEditable(false);
-      $$1.setFont(a);
-      JTextField $$3 = new JTextField();
-      $$3.addActionListener($$1x -> {
-         String $$2x = $$3.getText().trim();
-         if (!$$2x.isEmpty()) {
-            this.e.a($$2x, this.e.aI());
+         public aot a(CommandContext<ec> $$0x) {
+            return new aow(aow.a($$0), fd.e($$0, $$0));
          }
 
-         $$3.setText("");
-      });
-      $$1.addFocusListener(new FocusAdapter() {
          @Override
-         public void focusGained(FocusEvent $$0) {
+         public ArgumentBuilder<ec, ?> a(ArgumentBuilder<ec, ?> $$0x, Function<ArgumentBuilder<ec, ?>, ArgumentBuilder<ec, ?>> $$1) {
+            return $$0.then(ed.a("storage").then($$1.apply(ed.a($$0, fd.a()).suggests(aow.b))));
          }
-      });
-      $$0.add($$2, "Center");
-      $$0.add($$3, "South");
-      $$0.setBorder(new TitledBorder(new EtchedBorder(), "Log and chat"));
-      this.f = new Thread(() -> {
-         String $$2x;
-         while (($$2x = LogQueues.getNextLogEvent("ServerGuiConsole")) != null) {
-            this.a($$1, $$2, $$2x);
-         }
-      });
-      this.f.setUncaughtExceptionHandler(new r(b));
-      this.f.setDaemon(true);
-      return $$0;
+      };
+   private final enh c;
+   private final akf d;
+
+   static enh a(CommandContext<ec> $$0) {
+      return ((ec)$$0.getSource()).l().aL();
    }
 
-   public void a() {
-      this.f.start();
+   aow(enh $$0, akf $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public void b() {
-      if (!this.h.getAndSet(true)) {
-         this.f();
-      }
+   @Override
+   public void a(ty $$0) {
+      this.c.a(this.d, $$0);
    }
 
-   void f() {
-      this.g.forEach(Runnable::run);
+   @Override
+   public ty a() {
+      return this.c.a(this.d);
    }
 
-   public void a(JTextArea $$0, JScrollPane $$1, String $$2) {
-      if (!SwingUtilities.isEventDispatchThread()) {
-         SwingUtilities.invokeLater(() -> this.a($$0, $$1, $$2));
-      } else {
-         Document $$3 = $$0.getDocument();
-         JScrollBar $$4 = $$1.getVerticalScrollBar();
-         boolean $$5 = false;
-         if ($$1.getViewport().getView() == $$0) {
-            $$5 = (double)$$4.getValue() + $$4.getSize().getHeight() + (double)(a.getSize() * 4) > (double)$$4.getMaximum();
-         }
+   @Override
+   public ws b() {
+      return ws.a("commands.data.storage.modified", ws.a(this.d));
+   }
 
-         try {
-            $$3.insertString($$3.getLength(), $$2, null);
-         } catch (BadLocationException var8) {
-         }
+   @Override
+   public ws a(uv $$0) {
+      return ws.a("commands.data.storage.query", ws.a(this.d), un.c($$0));
+   }
 
-         if ($$5) {
-            $$4.setValue(Integer.MAX_VALUE);
-         }
-      }
+   @Override
+   public ws a(eu.g $$0, double $$1, int $$2) {
+      return ws.a("commands.data.storage.get", $$0.a(), ws.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

@@ -1,4 +1,5 @@
-@FunctionalInterface
-public interface yi<O, T> {
-   void encode(O var1, T var2);
+public interface yi {
+   xg a(int var1);
+
+   yj<? extends yi> a();
 }

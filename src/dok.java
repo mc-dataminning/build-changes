@@ -1,51 +1,117 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface dok {
-   dok a = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dm().a($$2, $$3) && !$$2x.f() && !$$2x.N_()).stream().map(bqa::cw).toList();
-   dok b = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dm().a($$2, $$3) && !$$2x.N_()).stream().map(bqa::cw).toList();
-   dok c = ($$0, $$1, $$2, $$3) -> {
-      ese $$4 = new ese($$2).g($$3);
-      return $$1.a($$0, bqg.aI, $$4, bqt::bA).stream().map(bqa::cw).toList();
-   };
+public class dok extends dnd implements dut.b<dva.b>, dva {
+   private static final Logger b = LogUtils.getLogger();
+   private dva.a c;
+   private final dva.b d;
+   private final dva.d e = this.b();
+   private int h;
 
-   List<UUID> detect(apu var1, dok.a var2, id var3, double var4);
+   protected dok(dnf<?> $$0, im $$1, dpy $$2) {
+      super($$0, $$1, $$2);
+      this.c = new dva.a();
+      this.d = new dva.b(this);
+   }
 
-   public interface a {
-      dok.a a = new dok.a() {
-         @Override
-         public List<apv> a(apu $$0, Predicate<? super cka> $$1) {
-            return $$0.a($$1);
-         }
+   public dok(im $$0, dpy $$1) {
+      this(dnf.I, $$0, $$1);
+   }
 
-         @Override
-         public <T extends bqa> List<T> a(apu $$0, dtp<bqa, T> $$1, ese $$2, Predicate<? super T> $$3) {
-            return $$0.a($$1, $$2, $$3);
-         }
-      };
+   public dva.d b() {
+      return new dok.a(this.az_());
+   }
 
-      List<? extends cka> a(apu var1, Predicate<? super cka> var2);
+   @Override
+   public void a(ty $$0, ix.a $$1) {
+      super.a($$0, $$1);
+      this.h = $$0.h("last_vibration_frequency");
+      if ($$0.b("listener", 10)) {
+         dva.a.a.parse(new Dynamic(um.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
+      }
+   }
 
-      <T extends bqa> List<T> a(apu var1, dtp<bqa, T> var2, ese var3, Predicate<? super T> var4);
+   @Override
+   protected void b(ty $$0, ix.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("last_vibration_frequency", this.h);
+      dva.a.a.encodeStart(um.a, this.c).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
+   }
 
-      static dok.a a(cka $$0) {
-         return a(List.of($$0));
+   @Override
+   public dva.a gr() {
+      return this.c;
+   }
+
+   @Override
+   public dva.d gs() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public dva.b f() {
+      return this.d;
+   }
+
+   protected class a implements dva.d {
+      public static final int b = 8;
+      protected final im c;
+      private final duv a;
+
+      public a(im $$1) {
+         this.c = $$1;
+         this.a = new dun($$1);
       }
 
-      static dok.a a(final List<cka> $$0) {
-         return new dok.a() {
-            @Override
-            public List<cka> a(apu $$0x, Predicate<? super cka> $$1) {
-               return $$0.stream().filter($$1).toList();
-            }
+      @Override
+      public int a() {
+         return 8;
+      }
 
-            @Override
-            public <T extends bqa> List<T> a(apu $$0x, dtp<bqa, T> $$1, ese $$2, Predicate<? super T> $$3) {
-               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+      @Override
+      public duv b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(aqe $$0, im $$1, iv<dur> $$2, @Nullable dur.a $$3) {
+         return !$$1.equals(this.c) || !$$2.a(dur.f) && !$$2.a(dur.i) ? djo.n(dok.this.n()) : false;
+      }
+
+      @Override
+      public void a(aqe $$0, im $$1, iv<dur> $$2, @Nullable bql $$3, @Nullable bql $$4, float $$5) {
+         dpy $$6 = dok.this.n();
+         if (djo.n($$6)) {
+            dok.this.a(dva.a_($$2));
+            int $$7 = dva.a_($$5, this.a());
+            if ($$6.b() instanceof djo $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dok.this.d());
             }
-         };
+         }
+      }
+
+      @Override
+      public void e() {
+         dok.this.e();
+      }
+
+      @Override
+      public boolean f() {
+         return true;
       }
    }
 }

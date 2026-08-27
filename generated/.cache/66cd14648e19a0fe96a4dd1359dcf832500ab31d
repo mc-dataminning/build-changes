@@ -1,7 +1,7 @@
-// 24w10a	2026-08-28T01:44:41.6148699	vanilla/Tags for minecraft:worldgen/structure
+// 24w11a	2026-08-28T01:47:30.8241044	vanilla/Tags for minecraft:worldgen/structure
 a124e2034270a8639a98494959c2524661377ecc data\minecraft\tags\worldgen\structure\shipwreck.json
-f2fcdb1c324a7e0da59584ee097fe514ea673fc4 data\minecraft\tags\worldgen\structure\mineshaft.json
 76099e2edf35994db47c995d50fb36552aa96a10 data\minecraft\tags\worldgen\structure\ruined_portal.json
+f2fcdb1c324a7e0da59584ee097fe514ea673fc4 data\minecraft\tags\worldgen\structure\mineshaft.json
 4d92943fafdfded03126ec0627466acbb025902d data\minecraft\tags\worldgen\structure\cats_spawn_in.json
 7e9b33de97d1683dc0a7620a9c797c0e919b4974 data\minecraft\tags\worldgen\structure\dolphin_located.json
 db7acc9f9e931ed7a41f2b2c96466edd7e528acc data\minecraft\tags\worldgen\structure\on_treasure_maps.json

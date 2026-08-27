@@ -1,11 +1,11 @@
-public class ghw extends geq<cky> {
-   public static final ajv a = new ajv("textures/entity/projectiles/spectral_arrow.png");
+public class ghw extends ght<cdh, fsp<cdh>> {
+   private static final akf a = new akf("textures/entity/cat/ocelot.png");
 
-   public ghw(gfr.a $$0) {
-      super($$0);
+   public ghw(ggn.a $$0) {
+      super($$0, new fsp<>($$0.a(fuq.aE)), 0.4F);
    }
 
-   public ajv a(cky $$0) {
+   public akf a(cdh $$0) {
       return a;
    }
 }

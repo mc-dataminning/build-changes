@@ -1,37 +1,32 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record co(to c) {
-   public static final Codec<co> a = um.i.xmap(co::new, co::a);
-   public static final yg<ByteBuf, co> b = ye.n.a(co::new, co::a);
+public record co(cs.d c, Optional<br> d) implements bs {
+   public static final MapCodec<co> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(axe.a(cs.d.d, "blocks_set_on_fire", cs.d.c).forGetter(co::b), axe.a(br.a, "entity_struck").forGetter(co::c)).apply($$0, co::new)
+   );
 
-   public boolean a(crs $$0) {
-      cuc $$1 = $$0.a(jr.a, cuc.a);
-      return $$1.b(this.c);
+   public static co a(cs.d $$0) {
+      return new co($$0, Optional.empty());
    }
 
-   public boolean a(bqa $$0) {
-      return this.a(b($$0));
+   @Override
+   public MapCodec<co> a() {
+      return bt.a;
    }
 
-   public boolean a(@Nullable ul $$0) {
-      return $$0 != null && ud.a(this.c, $$0, true);
+   @Override
+   public boolean a(bql $$0, aqe $$1, @Nullable etf $$2) {
+      return !($$0 instanceof brd $$3) ? false : this.c.d($$3.r()) && (this.d.isEmpty() || $$3.u().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
-   public static to b(bqa $$0) {
-      to $$1 = $$0.f(new to());
-      if ($$0 instanceof cka) {
-         crs $$2 = ((cka)$$0).fZ().f();
-         if (!$$2.d()) {
-            $$1.a("SelectedItem", $$2.a($$0.dO()));
-         }
-      }
-
-      return $$1;
-   }
-
-   public to a() {
+   public cs.d b() {
       return this.c;
+   }
+
+   public Optional<br> c() {
+      return this.d;
    }
 }

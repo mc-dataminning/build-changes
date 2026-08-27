@@ -1,25 +1,35 @@
-public class cak extends caw {
-   public static final float a = 8.0F;
+public class cak {
+   private final buk a;
+   private final float b;
+   private final int c;
 
-   @Override
-   protected boolean a(bqt $$0, bqt $$1) {
-      return this.f($$0, $$1) && $$1.bf() && (this.b($$1) || this.e($$0, $$1)) && cbc.c($$0, $$1);
+   public cak(im $$0, float $$1, int $$2) {
+      this(new bsz($$0), $$1, $$2);
    }
 
-   private boolean e(bqt $$0, bqt $$1) {
-      return !$$0.dP().a(bzw.U) && $$1.ai().a(avh.j);
+   public cak(etf $$0, float $$1, int $$2) {
+      this(new bsz(im.a($$0)), $$1, $$2);
    }
 
-   private boolean b(bqt $$0) {
-      return $$0.ai().a(avh.i);
+   public cak(bql $$0, float $$1, int $$2) {
+      this(new bth($$0, false), $$1, $$2);
    }
 
-   private boolean f(bqt $$0, bqt $$1) {
-      return $$1.g((bqa)$$0) <= 64.0;
+   public cak(buk $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected bzw<bqt> b() {
-      return bzw.B;
+   public buk a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
    }
 }

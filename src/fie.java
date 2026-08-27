@@ -1,101 +1,163 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record fie(fid a, int b, int c) {
-   private static final fie d = new fie(0, 0, 0, 0);
+public class fie extends fic {
+   private final fie.b c;
+   private final List<fie.a> d = new ArrayList<>();
+   private final fik e = fik.i();
 
-   public fie(int $$0, int $$1, int $$2, int $$3) {
-      this(new fid($$0, $$1), $$2, $$3);
+   public fie(int $$0, int $$1, fie.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   public static fie a() {
-      return d;
+   public fie(int $$0, int $$1, int $$2, int $$3, fie.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
-   public static fie a(fib $$0, int $$1, int $$2, int $$3, int $$4) {
-      return switch ($$0) {
-         case a -> new fie($$1, $$2, $$3, $$4);
-         case b -> new fie($$2, $$1, $$4, $$3);
-      };
+   @Override
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
+
+         for (fie.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<fie.a> $$5 = this.d.iterator();
+         fie.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               fie.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (fie.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
+      }
    }
 
-   public fie a(fic $$0) {
-      return new fie(this.a.a($$0), this.b, this.c);
+   @Override
+   public void b(Consumer<fij> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   public int a(fib $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-      };
+   public fik b() {
+      return this.e.g();
    }
 
-   public int b(fic $$0) {
-      fib $$1 = $$0.a();
-      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   public fik c() {
+      return this.e;
    }
 
-   public fie c(fic $$0) {
-      int $$1 = this.b($$0);
-      fib $$2 = $$0.a().a();
-      int $$3 = this.b($$2.c());
-      int $$4 = this.a($$2);
-      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   public <T extends fij> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public boolean a(fie $$0) {
-      return this.a($$0, fib.a) && this.a($$0, fib.b);
+   public <T extends fij> T a(T $$0, fik $$1) {
+      this.d.add(new fie.a($$0, $$1));
+      return $$0;
    }
 
-   public boolean a(fie $$0, fib $$1) {
-      int $$2 = this.b($$1.c());
-      int $$3 = $$0.b($$1.c());
-      int $$4 = this.b($$1.b());
-      int $$5 = $$0.b($$1.b());
-      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   public <T extends fij> T a(T $$0, Consumer<fik> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
    }
 
-   public int b(fib $$0) {
-      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   static class a extends fic.a {
+      protected a(fij $$0, fik $$1) {
+         super($$0, $$1);
+      }
    }
 
-   @Nullable
-   public fie b(fie $$0) {
-      int $$1 = Math.max(this.d(), $$0.d());
-      int $$2 = Math.max(this.b(), $$0.b());
-      int $$3 = Math.min(this.e(), $$0.e());
-      int $$4 = Math.min(this.c(), $$0.c());
-      return $$1 < $$3 && $$2 < $$4 ? new fie($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
-   }
+   public static enum b {
+      a,
+      b;
 
-   public int b() {
-      return this.a.b();
-   }
+      int a(fij $$0) {
+         return switch (this) {
+            case a -> $$0.x();
+            case b -> $$0.v();
+         };
+      }
 
-   public int c() {
-      return this.a.b() + this.c;
-   }
+      int a(fie.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
 
-   public int d() {
-      return this.a.a();
-   }
+      int b(fij $$0) {
+         return switch (this) {
+            case a -> $$0.v();
+            case b -> $$0.x();
+         };
+      }
 
-   public int e() {
-      return this.a.a() + this.b;
-   }
+      int b(fie.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
 
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
-   }
+      void a(fie.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
 
-   public fid f() {
-      return this.a;
-   }
+      void a(fie.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
 
-   public int g() {
-      return this.b;
-   }
+      int c(fij $$0) {
+         return switch (this) {
+            case a -> $$0.C();
+            case b -> $$0.D();
+         };
+      }
 
-   public int h() {
-      return this.c;
+      int d(fij $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.C();
+         };
+      }
    }
 }

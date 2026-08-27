@@ -1,252 +1,197 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class chy extends chg implements cgy, cim {
-   private static final aja<Boolean> d = aje.a(chy.class, ajc.k);
-   private static final int e = 40;
-   private static final int bX = 1;
-   private static final float bY = 0.6F;
-   private static final int bZ = 6;
-   private static final float ca = 0.5F;
-   private static final int cb = 40;
-   private static final int cc = 15;
-   private static final int cd = 200;
-   private static final float ce = 0.3F;
-   private static final float cf = 0.4F;
-   private int cg;
-   protected static final ImmutableList<? extends cbd<? extends cbc<? super chy>>> b = ImmutableList.of(cbd.c, cbd.d);
-   protected static final ImmutableList<? extends bzw<?>> c = ImmutableList.of(bzw.g, bzw.h, bzw.k, bzw.l, bzw.n, bzw.m, bzw.E, bzw.t, bzw.o, bzw.p);
+public class chy extends chr {
+   @Nullable
+   private chy.b b;
 
-   public chy(bqg<? extends chy> $$0, czg $$1) {
+   public chy(bqr<? extends chy> $$0, czu $$1) {
       super($$0, $$1);
-      this.bM = 5;
    }
 
    @Override
-   protected bru.b<chy> dQ() {
-      return bru.a(c, b);
+   protected void z() {
+      this.b = new chy.b(this);
+      this.bS.a(1, new bxv(this));
+      this.bS.a(1, new bxq(this, this.dN()));
+      this.bS.a(3, this.b);
+      this.bS.a(4, new byl(this, 1.0, false));
+      this.bS.a(5, new chy.a(this));
+      this.bT.a(1, new bzt(this).a());
+      this.bT.a(2, new bzu<>(this, ckl.class, true));
+   }
+
+   public static bsk.a r() {
+      return chr.gv().a(bsl.q, 8.0).a(bsl.r, 0.25).a(bsl.c, 1.0);
    }
 
    @Override
-   protected bru<?> a(Dynamic<?> $$0) {
-      bru<chy> $$1 = this.dQ().a($$0);
-      a($$1);
-      b($$1);
-      c($$1);
-      $$1.a(ImmutableSet.of(clp.a));
-      $$1.b(clp.b);
-      $$1.f();
-      return $$1;
-   }
-
-   private static void a(bru<chy> $$0) {
-      $$0.a(clp.a, 0, ImmutableList.of(new btr(45, 90), new btv()));
-   }
-
-   private static void b(bru<chy> $$0) {
-      $$0.a(
-         clp.b,
-         10,
-         ImmutableList.of(
-            bux.a(chy::gp),
-            bul.a(8.0F, bnq.a(30, 60)),
-            new bui(ImmutableList.of(Pair.of(bud.a(0.4F), 2), Pair.of(bus.a(0.4F, 3), 2), Pair.of(new bsv(30, 60), 1)))
-         )
-      );
-   }
-
-   private static void c(bru<chy> $$0) {
-      $$0.a(clp.k, 10, ImmutableList.of(buq.a(1.0F), bvy.a(chy::u, bts.a(40)), bvy.a(chy::p_, bts.a(15)), bva.a()), bzw.o);
-   }
-
-   private Optional<? extends bqt> gp() {
-      return this.dP().c(bzw.h).orElse(bzy.a()).a(this::j);
-   }
-
-   private boolean j(bqt $$0) {
-      bqg<?> $$1 = $$0.ai();
-      return $$1 != bqg.bs && $$1 != bqg.x && cbc.c(this, $$0);
+   protected bql.b aZ() {
+      return bql.b.c;
    }
 
    @Override
-   protected void a(aje.a $$0) {
-      super.a($$0);
-      $$0.a(d, false);
+   protected auy v() {
+      return auz.wI;
    }
 
    @Override
-   public void a(aja<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         this.j_();
-      }
-   }
-
-   public static brz.a r() {
-      return chg.gt().a(bsa.q, 40.0).a(bsa.r, 0.3F).a(bsa.n, 0.6F).a(bsa.d, 1.0).a(bsa.c, 6.0);
-   }
-
-   public boolean u() {
-      return !this.p_();
+   protected auy d(bpj $$0) {
+      return auz.wK;
    }
 
    @Override
-   public boolean C(bqa $$0) {
-      if (!($$0 instanceof bqt)) {
+   protected auy o_() {
+      return auz.wJ;
+   }
+
+   @Override
+   protected void b(im $$0, dpy $$1) {
+      this.a(auz.wL, 0.15F, 1.0F);
+   }
+
+   @Override
+   public boolean a(bpj $$0, float $$1) {
+      if (this.b($$0)) {
          return false;
       } else {
-         this.cg = 10;
-         this.dM().a(this, (byte)4);
-         this.b(auo.CS);
-         return cim.a(this, (bqt)$$0);
-      }
-   }
-
-   @Override
-   public boolean a(cka $$0) {
-      return !this.gb();
-   }
-
-   @Override
-   protected void e(bqt $$0) {
-      if (!this.p_()) {
-         cim.b(this, $$0);
-      }
-   }
-
-   @Override
-   public boolean a(boy $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if (this.dM().B) {
-         return false;
-      } else if ($$2 && $$0.d() instanceof bqt) {
-         bqt $$3 = (bqt)$$0.d();
-         if (this.c($$3) && !bsn.a(this, $$3, 4.0)) {
-            this.k($$3);
+         if (($$0.d() != null || $$0.a(avq.y)) && this.b != null) {
+            this.b.h();
          }
 
-         return $$2;
+         return super.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void l() {
+      this.aZ = this.dD();
+      super.l();
+   }
+
+   @Override
+   public void o(float $$0) {
+      this.r($$0);
+      super.o($$0);
+   }
+
+   @Override
+   public float a(im $$0, czx $$1) {
+      return dgu.m($$1.a_($$0.d())) ? 10.0F : super.a($$0, $$1);
+   }
+
+   public static boolean b(bqr<chy> $$0, czv $$1, bri $$2, im $$3, ayd $$4) {
+      if (c($$0, $$1, $$2, $$3, $$4)) {
+         ckl $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
+         return $$5 == null;
       } else {
-         return $$2;
+         return false;
       }
    }
 
-   private void k(bqt $$0) {
-      this.bC.b(bzw.E);
-      this.bC.a(bzw.o, $$0, 200L);
-   }
+   static class a extends byy {
+      @Nullable
+      private ir i;
+      private boolean j;
 
-   @Override
-   public bru<chy> dP() {
-      return (bru<chy>)super.dP();
-   }
-
-   protected void y() {
-      clp $$0 = this.bC.g().orElse(null);
-      this.bC.a(ImmutableList.of(clp.k, clp.b));
-      clp $$1 = this.bC.g().orElse(null);
-      if ($$1 == clp.k && $$0 != clp.k) {
-         this.go();
+      public a(chy $$0) {
+         super($$0, 1.0, 10);
+         this.a(EnumSet.of(byb.a.a));
       }
 
-      this.v(this.bC.a(bzw.o));
-   }
+      @Override
+      public boolean a() {
+         if (this.b.p() != null) {
+            return false;
+         } else if (!this.b.K().l()) {
+            return false;
+         } else {
+            ayd $$0 = this.b.ej();
+            if (this.b.dN().aa().b(czq.c) && $$0.a(b(10)) == 0) {
+               this.i = ir.b($$0);
+               im $$1 = im.a(this.b.ds(), this.b.du() + 0.5, this.b.dy()).a(this.i);
+               dpy $$2 = this.b.dN().a_($$1);
+               if (dgu.m($$2)) {
+                  this.j = true;
+                  return true;
+               }
+            }
 
-   @Override
-   protected void Y() {
-      this.dM().af().a("zoglinBrain");
-      this.dP().a((apu)this.dM(), this);
-      this.dM().af().c();
-      this.y();
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.an().a(d, $$0);
-      if (!this.dM().B && $$0) {
-         this.f(bsa.c).a(0.5);
-      }
-   }
-
-   @Override
-   public boolean p_() {
-      return this.an().a(d);
-   }
-
-   @Override
-   public void n_() {
-      if (this.cg > 0) {
-         this.cg--;
+            this.j = false;
+            return super.a();
+         }
       }
 
-      super.n_();
-   }
+      @Override
+      public boolean b() {
+         return this.j ? false : super.b();
+      }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 4) {
-         this.cg = 10;
-         this.b(auo.CS);
-      } else {
-         super.b($$0);
+      @Override
+      public void c() {
+         if (!this.j) {
+            super.c();
+         } else {
+            czv $$0 = this.b.dN();
+            im $$1 = im.a(this.b.ds(), this.b.du() + 0.5, this.b.dy()).a(this.i);
+            dpy $$2 = $$0.a_($$1);
+            if (dgu.m($$2)) {
+               $$0.a($$1, dgu.n($$2), 3);
+               this.b.Q();
+               this.b.am();
+            }
+         }
       }
    }
 
-   @Override
-   public int gn() {
-      return this.cg;
-   }
+   static class b extends byb {
+      private final chy a;
+      private int b;
 
-   @Override
-   protected aun v() {
-      if (this.dM().B) {
-         return null;
-      } else {
-         return this.bC.a(bzw.o) ? auo.CR : auo.CQ;
+      public b(chy $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   protected aun d(boy $$0) {
-      return auo.CU;
-   }
-
-   @Override
-   protected aun o_() {
-      return auo.CT;
-   }
-
-   @Override
-   protected void b(id $$0, dpi $$1) {
-      this.a(auo.CV, 0.15F, 1.0F);
-   }
-
-   protected void go() {
-      this.b(auo.CR);
-   }
-
-   @Override
-   protected void X() {
-      super.X();
-      afk.a(this);
-   }
-
-   @Override
-   public void b(to $$0) {
-      super.b($$0);
-      if (this.p_()) {
-         $$0.a("IsBaby", true);
+      public void h() {
+         if (this.b == 0) {
+            this.b = this.a(20);
+         }
       }
-   }
 
-   @Override
-   public void a(to $$0) {
-      super.a($$0);
-      if ($$0.q("IsBaby")) {
-         this.a(true);
+      @Override
+      public boolean a() {
+         return this.b > 0;
+      }
+
+      @Override
+      public void e() {
+         this.b--;
+         if (this.b <= 0) {
+            czu $$0 = this.a.dN();
+            ayd $$1 = this.a.ej();
+            im $$2 = this.a.dn();
+
+            for (int $$3 = 0; $$3 <= 5 && $$3 >= -5; $$3 = ($$3 <= 0 ? 1 : 0) - $$3) {
+               for (int $$4 = 0; $$4 <= 10 && $$4 >= -10; $$4 = ($$4 <= 0 ? 1 : 0) - $$4) {
+                  for (int $$5 = 0; $$5 <= 10 && $$5 >= -10; $$5 = ($$5 <= 0 ? 1 : 0) - $$5) {
+                     im $$6 = $$2.b($$4, $$3, $$5);
+                     dpy $$7 = $$0.a_($$6);
+                     dcv $$8 = $$7.b();
+                     if ($$8 instanceof dgu) {
+                        if ($$0.aa().b(czq.c)) {
+                           $$0.a($$6, true, this.a);
+                        } else {
+                           $$0.a($$6, ((dgu)$$8).o($$0.a_($$6)), 3);
+                        }
+
+                        if ($$1.h()) {
+                           return;
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
    }
 }

@@ -1,59 +1,23 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gqt {
+   private final String a;
+   private final String b;
+   private long c;
 
-public class gqt implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bkf d;
-   @Nullable
-   private CompletableFuture<Optional<gqp>> e;
-
-   private gqt(bkf $$0) {
-      this.d = $$0;
+   public gqt(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = ac.b();
    }
 
-   public static CompletableFuture<Optional<gqt>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bkf $$1 = bkf.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new gqt($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
-         }
-      }, ac.f());
+   public String a() {
+      return this.a;
    }
 
-   public CompletableFuture<Optional<gqq>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bkf.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new gqp($$1, ac.f()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ac.f());
-      }
-
-      return this.e.thenApply($$0 -> $$0.map(gqp::a));
+   public String b() {
+      return this.b;
    }
 
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(gqp::close));
-      }
+   public void c() {
+      this.c = ac.b();
    }
 }

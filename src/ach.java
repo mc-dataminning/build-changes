@@ -1,69 +1,55 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+public class ach implements yz<abk> {
+   public static final yq<wd, ach> a = yz.a(ach::a, ach::new);
+   public static final int b = -1;
+   public static final int c = -2;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final csd g;
 
-public class ach implements yp<aba> {
-   public static final yg<vi, ach> a = yp.a(ach::a, ach::new);
-   public static final ach.a b = new ach.a(0);
-   public static final ach.a c = new ach.a(1);
-   public static final ach.a d = new ach.a(2);
-   public static final ach.a e = new ach.a(3);
-   public static final ach.a f = new ach.a(4);
-   public static final ach.a g = new ach.a(5);
-   public static final ach.a h = new ach.a(6);
-   public static final ach.a i = new ach.a(7);
-   public static final ach.a j = new ach.a(8);
-   public static final ach.a k = new ach.a(9);
-   public static final ach.a l = new ach.a(10);
-   public static final ach.a m = new ach.a(11);
-   public static final ach.a n = new ach.a(12);
-   public static final ach.a o = new ach.a(13);
-   public static final int p = 0;
-   public static final int q = 101;
-   public static final int r = 102;
-   public static final int s = 103;
-   public static final int t = 104;
-   private final ach.a u;
-   private final float v;
-
-   public ach(ach.a $$0, float $$1) {
-      this.u = $$0;
-      this.v = $$1;
+   public ach(int $$0, int $$1, int $$2, csd $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3.r();
    }
 
-   private ach(vi $$0) {
-      this.u = (ach.a)ach.a.a.get($$0.readUnsignedByte());
-      this.v = $$0.readFloat();
+   private ach(wd $$0) {
+      this.d = $$0.readByte();
+      this.e = $$0.l();
+      this.f = $$0.readShort();
+      this.g = csd.e.decode($$0);
    }
 
-   private void a(vi $$0) {
-      $$0.k(this.u.b);
-      $$0.a(this.v);
+   private void a(wd $$0) {
+      $$0.k(this.d);
+      $$0.c(this.e);
+      $$0.l(this.f);
+      csd.e.encode($$0, this.g);
    }
 
    @Override
-   public yr<ach> a() {
-      return afl.G;
+   public zb<ach> a() {
+      return afv.w;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public ach.a b() {
-      return this.u;
+   public int b() {
+      return this.d;
    }
 
-   public float e() {
-      return this.v;
+   public int e() {
+      return this.f;
    }
 
-   public static class a {
-      static final Int2ObjectMap<ach.a> a = new Int2ObjectOpenHashMap();
-      final int b;
+   public csd f() {
+      return this.g;
+   }
 
-      public a(int $$0) {
-         this.b = $$0;
-         a.put($$0, this);
-      }
+   public int g() {
+      return this.e;
    }
 }

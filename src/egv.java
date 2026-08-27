@@ -1,81 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class egv extends egx {
-   public static final Codec<egv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egx.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, egv::new)
-   );
-   private final List<egx> b;
+public record egv(List<egk> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final akf c = new akf("jigsaw");
+   private static final Map<akf, akf> d = ImmutableMap.builder()
+      .put(new akf("nvi"), c)
+      .put(new akf("pcp"), c)
+      .put(new akf("bastionremnant"), c)
+      .put(new akf("runtime"), c)
+      .build();
 
-   public egv(List<egx> $$0, egz.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+   public egv(List<egk> a) {
+      this.a = List.copyOf(a);
    }
 
-   @Override
-   public ji a(ejr $$0, dit $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (egx $$5 : this.b) {
-         ji $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new ji($$2, $$3, $$4);
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   @Override
-   public List<ejq.c> a(ejr $$0, id $$1, dit $$2, axt $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public efi a(ejr $$0, id $$1, dit $$2) {
-      Stream<efi> $$3 = this.b.stream().filter($$0x -> $$0x != egq.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return efi.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
-
-   @Override
-   public boolean a(ejr $$0, dab $$1, czz $$2, drf $$3, id $$4, id $$5, dit $$6, efi $$7, axt $$8, boolean $$9) {
-      for (egx $$10 : this.b) {
-         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
-            return false;
+   public boolean a(im $$0) {
+      for (egk $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
          }
       }
 
-      return true;
+      return false;
    }
 
-   @Override
-   public egy<?> a() {
-      return egy.b;
+   public uv a(egw $$0) {
+      ue $$1 = new ue();
+
+      for (egk $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   @Override
-   public egx a(egz.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
+   public static egv a(ue $$0, egw $$1) {
+      List<egk> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         ty $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         akf $$6 = new akf($$5);
+         akf $$7 = d.getOrDefault($$6, $$6);
+         egx $$8 = lc.S.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               egk $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new egv($$2);
    }
 
-   @Override
-   public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
+   public efy b() {
+      return egk.a(this.a.stream());
    }
 
-   private void b(egz.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+   public List<egk> c() {
+      return this.a;
    }
 }

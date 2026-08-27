@@ -1,25 +1,28 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class eno {
+   public static final eno a = new eno("advancements");
+   public static final eno b = new eno("stats");
+   public static final eno c = new eno("playerdata");
+   public static final eno d = new eno("players");
+   public static final eno e = new eno("level.dat");
+   public static final eno f = new eno("level.dat_old");
+   public static final eno g = new eno("icon.png");
+   public static final eno h = new eno("session.lock");
+   public static final eno i = new eno("generated");
+   public static final eno j = new eno("datapacks");
+   public static final eno k = new eno("resources.zip");
+   public static final eno l = new eno(".");
+   private final String m;
 
-@FunctionalInterface
-public interface eno {
-   @Nullable
-   <T> T getElement(enm<T> var1);
-
-   @Nullable
-   default <T> T getElement(enp<T> $$0, ajv $$1) {
-      return this.getElement(new enm<>($$0, $$1));
+   private eno(String $$0) {
+      this.m = $$0;
    }
 
-   default <T> Optional<T> getElementOptional(enm<T> $$0) {
-      return Optional.ofNullable(this.getElement($$0));
+   public String a() {
+      return this.m;
    }
 
-   default <T> Optional<T> getElementOptional(enp<T> $$0, ajv $$1) {
-      return this.getElementOptional(new enm<>($$0, $$1));
-   }
-
-   default ens getLootTable(ajv $$0) {
-      return this.getElementOptional(enp.c, $$0).orElse(ens.a);
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

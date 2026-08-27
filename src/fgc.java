@@ -1,208 +1,143 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class fgc extends ffs implements ffb, fhs {
-   private static final int a = -1;
-   private static final int b = 400;
-   private static final int c = 24;
-   private static final int d = 14;
-   private static final wi e = wi.c("narration.tab_navigation.usage");
-   private final fhp f = fhp.e();
-   private int g;
-   private final fgb h;
-   private final ImmutableList<fga> i;
-   private final ImmutableList<ffh> j;
+public class fgc implements gre {
+   private static final long a = 3000L;
+   private final fcu b;
+   private final List<fgc.a> c = Lists.newArrayList();
+   private boolean d;
+   private final List<fgc.a> e = new ArrayList<>();
 
-   fgc(int $$0, fgb $$1, Iterable<fga> $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = ImmutableList.copyOf($$2);
-      this.f.c().b();
-      Builder<ffh> $$3 = ImmutableList.builder();
+   public fgc(fcu $$0) {
+      this.b = $$0;
+   }
 
-      for (fga $$4 : $$2) {
-         $$3.add(this.f.a(new ffh($$1, $$4, 0, 24)));
+   public void a(feh $$0) {
+      grf $$1 = this.b.ak();
+      if (!this.d && this.b.m.W().c()) {
+         $$1.a(this);
+         this.d = true;
+      } else if (this.d && !this.b.m.W().c()) {
+         $$1.b(this);
+         this.d = false;
       }
 
-      this.j = $$3.build();
-   }
+      if (this.d) {
+         evk $$2 = $$1.b();
+         etf $$3 = $$2.b();
+         etf $$4 = $$2.c();
+         etf $$5 = $$2.a();
+         this.e.clear();
 
-   public static fgc.a a(fgb $$0, int $$1) {
-      return new fgc.a($$0, $$1);
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (this.aH_() != null) {
-         this.aH_().a($$0);
-      }
-   }
-
-   @Override
-   public void a(@Nullable ffu $$0) {
-      super.a($$0);
-      if ($$0 instanceof ffh $$1) {
-         this.h.a($$1.a(), true);
-      }
-   }
-
-   @Nullable
-   @Override
-   public fdi a(fia $$0) {
-      if (!this.aI_()) {
-         ffh $$1 = this.d();
-         if ($$1 != null) {
-            return fdi.a(this, fdi.a($$1));
-         }
-      }
-
-      return $$0 instanceof fia.c ? null : super.a($$0);
-   }
-
-   @Override
-   public List<? extends ffu> aE_() {
-      return this.j;
-   }
-
-   @Override
-   public fhs.a t() {
-      return this.j.stream().map(fdw::t).max(Comparator.naturalOrder()).orElse(fhs.a.a);
-   }
-
-   @Override
-   public void b(fhu $$0) {
-      Optional<ffh> $$1 = this.j.stream().filter(fdw::z).findFirst().or(() -> Optional.ofNullable(this.d()));
-      $$1.ifPresent($$1x -> {
-         this.a($$0.a(), $$1x);
-         $$1x.b($$0);
-      });
-      if (this.aI_()) {
-         $$0.a(fht.d, e);
-      }
-   }
-
-   protected void a(fhu $$0, ffh $$1) {
-      if (this.i.size() > 1) {
-         int $$2 = this.j.indexOf($$1);
-         if ($$2 != -1) {
-            $$0.a(fht.b, wi.a("narrator.position.tab", $$2 + 1, this.i.size()));
-         }
-      }
-   }
-
-   @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      RenderSystem.enableBlend();
-      $$0.a(fom.a, 0, this.f.D() + this.f.v() - 2, 0.0F, 0.0F, ((ffh)this.j.get(0)).C(), 2, 32, 2);
-      int $$4 = ((ffh)this.j.get(this.j.size() - 1)).E();
-      $$0.a(fom.a, $$4, this.f.D() + this.f.v() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
-      RenderSystem.disableBlend();
-      UnmodifiableIterator var6 = this.j.iterator();
-
-      while (var6.hasNext()) {
-         ffh $$5 = (ffh)var6.next();
-         $$5.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public fie G() {
-      return this.f.G();
-   }
-
-   public void b() {
-      int $$0 = Math.min(400, this.g) - 28;
-      int $$1 = axm.d($$0 / this.i.size(), 2);
-      UnmodifiableIterator var3 = this.j.iterator();
-
-      while (var3.hasNext()) {
-         ffh $$2 = (ffh)var3.next();
-         $$2.k($$1);
-      }
-
-      this.f.a();
-      this.f.m(axm.d((this.g - $$0) / 2, 2));
-      this.f.n(0);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.aI_()) {
-         this.a((ffu)this.j.get($$0));
-      } else {
-         this.h.a((fga)this.i.get($$0), $$1);
-      }
-   }
-
-   public boolean b(int $$0) {
-      if (fjx.r()) {
-         int $$1 = this.c($$0);
-         if ($$1 != -1) {
-            this.a(axm.a($$1, 0, this.i.size() - 1), true);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private int c(int $$0) {
-      if ($$0 >= 49 && $$0 <= 57) {
-         return $$0 - 49;
-      } else {
-         if ($$0 == 258) {
-            int $$1 = this.c();
-            if ($$1 != -1) {
-               int $$2 = fjx.s() ? $$1 - 1 : $$1 + 1;
-               return Math.floorMod($$2, this.i.size());
+         for (fgc.a $$6 : this.c) {
+            if ($$6.b($$3)) {
+               this.e.add($$6);
             }
          }
 
-         return -1;
+         if (!this.e.isEmpty()) {
+            int $$7 = 0;
+            int $$8 = 0;
+            double $$9 = this.b.m.B().c();
+            Iterator<fgc.a> $$10 = this.e.iterator();
+
+            while ($$10.hasNext()) {
+               fgc.a $$11 = $$10.next();
+               if ((double)$$11.b() + 3000.0 * $$9 <= (double)ac.b()) {
+                  $$10.remove();
+               } else {
+                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
+               }
+            }
+
+            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+
+            for (fgc.a $$12 : this.e) {
+               int $$13 = 255;
+               ws $$14 = $$12.a();
+               etf $$15 = $$12.c().d($$3).d();
+               double $$16 = $$5.b($$15);
+               double $$17 = $$4.b($$15);
+               boolean $$18 = $$17 > 0.5;
+               int $$19 = $$8 / 2;
+               int $$20 = 9;
+               int $$21 = $$20 / 2;
+               float $$22 = 1.0F;
+               int $$23 = this.b.h.a($$14);
+               int $$24 = axw.d(axw.b(255.0F, 75.0F, (float)(ac.b() - $$12.b()) / (float)(3000.0 * $$9)));
+               int $$25 = $$24 << 16 | $$24 << 8 | $$24;
+               $$0.c().a();
+               $$0.c().a((float)$$0.a() - (float)$$19 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$20 + 1)) * 1.0F, 0.0F);
+               $$0.c().b(1.0F, 1.0F, 1.0F);
+               $$0.a(-$$19 - 1, -$$21 - 1, $$19 + 1, $$21 + 1, this.b.m.b(0.8F));
+               int $$26 = $$25 + -16777216;
+               if (!$$18) {
+                  if ($$16 > 0.0) {
+                     $$0.b(this.b.h, ">", $$19 - this.b.h.b(">"), -$$21, $$26);
+                  } else if ($$16 < 0.0) {
+                     $$0.b(this.b.h, "<", -$$19, -$$21, $$26);
+                  }
+               }
+
+               $$0.b(this.b.h, $$14, -$$23 / 2, -$$21, $$26);
+               $$0.c().b();
+               $$7++;
+            }
+         }
       }
    }
 
-   private int c() {
-      fga $$0 = this.h.a();
-      int $$1 = this.i.indexOf($$0);
-      return $$1 != -1 ? $$1 : -1;
-   }
+   @Override
+   public void a(gqb $$0, grg $$1, float $$2) {
+      if ($$1.a() != null) {
+         ws $$3 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (fgc.a $$4 : this.c) {
+               if ($$4.a().equals($$3)) {
+                  $$4.a(new etf($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
 
-   @Nullable
-   private ffh d() {
-      int $$0 = this.c();
-      return $$0 != -1 ? (ffh)this.j.get($$0) : null;
+         this.c.add(new fgc.a($$3, $$2, new etf($$0.h(), $$0.i(), $$0.j())));
+      }
    }
 
    public static class a {
-      private final int a;
-      private final fgb b;
-      private final List<fga> c = new ArrayList<>();
+      private final ws a;
+      private final float b;
+      private long c;
+      private etf d;
 
-      a(fgb $$0, int $$1) {
-         this.b = $$0;
-         this.a = $$1;
+      public a(ws $$0, float $$1, etf $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.d = $$2;
+         this.c = ac.b();
       }
 
-      public fgc.a a(fga... $$0) {
-         Collections.addAll(this.c, $$0);
-         return this;
+      public ws a() {
+         return this.a;
       }
 
-      public fgc a() {
-         return new fgc(this.a, this.b, this.c);
+      public long b() {
+         return this.c;
+      }
+
+      public etf c() {
+         return this.d;
+      }
+
+      public void a(etf $$0) {
+         this.d = $$0;
+         this.c = ac.b();
+      }
+
+      public boolean b(etf $$0) {
+         return Float.isInfinite(this.b) || $$0.a((jf)this.d, (double)this.b);
       }
    }
 }

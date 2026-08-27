@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bpe {
+public record bpe(bpj a, float b, @Nullable bpo c, float d) {
 }

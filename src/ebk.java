@@ -1,19 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class ebk<P extends ebj> {
-   public static final ebk<ebm> a = a("two_layers_feature_size", ebm.d);
-   public static final ebk<ebl> b = a("three_layers_feature_size", ebl.d);
-   private final Codec<P> c;
+public class ebk implements eay {
+   public static final Codec<ebk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.apply2(ebk::new, eao.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), efk.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+   );
+   public final List<eao> b;
+   public final iv<efk> c;
 
-   private static <P extends ebj> ebk<P> a(String $$0, Codec<P> $$1) {
-      return ja.a(kt.aa, $$0, new ebk<>($$1));
+   public ebk(List<eao> $$0, iv<efk> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private ebk(Codec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public Codec<P> a() {
-      return this.c;
+   @Override
+   public Stream<dyh<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

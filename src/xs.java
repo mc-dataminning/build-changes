@@ -1,28 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+public class xs extends Exception {
+   private final ws a;
 
-public record xs(ajv d) implements xk {
-   public static final MapCodec<xs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ajv.a.fieldOf("storage").forGetter(xs::b)).apply($$0, xs::new));
-   public static final xk.a<xs> b = new xk.a<>(a, "storage");
-
-   @Override
-   public Stream<to> a(dv $$0) {
-      to $$1 = $$0.l().aL().a(this.d);
-      return Stream.of($$1);
+   public xs(ws $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   @Override
-   public xk.a<?> a() {
-      return b;
+   public xs(ws $$0, Throwable $$1) {
+      super($$0.getString(), $$1);
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return "storage=" + this.d;
-   }
-
-   public ajv b() {
-      return this.d;
+   public ws b() {
+      return this.a;
    }
 }

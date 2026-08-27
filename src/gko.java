@@ -1,41 +1,108 @@
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class gko<T extends cje, M extends fth<T>> extends gkc<T, M> {
-   private final ajv a;
-   private final gko.a<T> b;
-   private final gko.b<T, M> c;
+public class gko<T extends bre, M extends fse<T>, A extends fse<T>> extends gky<T, M> {
+   private static final Map<String, akf> a = Maps.newHashMap();
+   private final A b;
+   private final A c;
+   private final gmn d;
 
-   public gko(ghm<T, M> $$0, ajv $$1, gko.a<T> $$2, gko.b<T, M> $$3) {
+   public gko(gii<T, M> $$0, A $$1, A $$2, gou $$3) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3.a(gbt.g);
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce()) {
-         this.a();
-         ewv $$10 = $$1.getBuffer(gaq.j(this.a));
-         this.c().a($$0, $$10, $$2, ggs.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
+   public void a(exn $$0, gbe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$3, bqs.e, $$2, this.a(bqs.e));
+      this.a($$0, $$1, $$3, bqs.d, $$2, this.a(bqs.d));
+      this.a($$0, $$1, $$3, bqs.c, $$2, this.a(bqs.c));
+      this.a($$0, $$1, $$3, bqs.f, $$2, this.a(bqs.f));
+   }
+
+   private void a(exn $$0, gbe $$1, T $$2, bqs $$3, int $$4, A $$5) {
+      csd $$6 = $$2.d($$3);
+      if ($$6.f() instanceof cps $$7) {
+         if ($$7.k() == $$3) {
+            this.c().a($$5);
+            this.a($$5, $$3);
+            boolean $$9 = this.b($$3);
+            cpt $$10 = $$7.h().a();
+            int $$11 = $$6.a(avw.ba) ? cut.a($$6, -6265536) : -1;
+
+            for (cpt.a $$12 : $$10.e()) {
+               float $$13;
+               float $$14;
+               float $$15;
+               if ($$12.a() && $$11 != -1) {
+                  $$13 = (float)axg.b.b($$11) / 255.0F;
+                  $$14 = (float)axg.b.c($$11) / 255.0F;
+                  $$15 = (float)axg.b.d($$11) / 255.0F;
+               } else {
+                  $$13 = 1.0F;
+                  $$14 = 1.0F;
+                  $$15 = 1.0F;
+               }
+
+               this.a($$0, $$1, $$4, $$5, $$13, $$14, $$15, $$12.a($$9));
+            }
+
+            cuf $$19 = $$6.a(jz.B);
+            if ($$19 != null) {
+               this.a($$7.h(), $$0, $$1, $$4, $$19, $$5, $$9);
+            }
+
+            if ($$6.x()) {
+               this.a($$0, $$1, $$4, $$5);
+            }
+         }
       }
    }
 
-   private void a() {
-      List<ftv> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
+   protected void a(A $$0, bqs $$1) {
+      $$0.b_(false);
+      switch ($$1) {
+         case f:
+            $$0.k.k = true;
+            $$0.l.k = true;
+            break;
+         case e:
+            $$0.m.k = true;
+            $$0.n.k = true;
+            $$0.o.k = true;
+            break;
+         case d:
+            $$0.m.k = true;
+            $$0.p.k = true;
+            $$0.q.k = true;
+            break;
+         case c:
+            $$0.p.k = true;
+            $$0.q.k = true;
+      }
    }
 
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
+   private void a(exn $$0, gbe $$1, int $$2, A $$3, float $$4, float $$5, float $$6, akf $$7) {
+      exr $$8 = $$1.getBuffer(gbm.a($$7));
+      $$3.a($$0, $$8, $$2, gmf.d, $$4, $$5, $$6, 1.0F);
    }
 
-   public interface a<T extends cje> {
-      float apply(T var1, float var2, float var3);
+   private void a(iv<cpt> $$0, exn $$1, gbe $$2, int $$3, cuf $$4, A $$5, boolean $$6) {
+      gmo $$7 = this.d.a($$6 ? $$4.a($$0) : $$4.b($$0));
+      exr $$8 = $$7.a($$2.getBuffer(gbt.a($$4.a().a().d())));
+      $$5.a($$1, $$8, $$3, gmf.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 
-   public interface b<T extends cje, M extends fqv<T>> {
-      List<ftv> getPartsToDraw(M var1);
+   private void a(exn $$0, gbe $$1, int $$2, A $$3) {
+      $$3.a($$0, $$1.getBuffer(gbm.k()), $$2, gmf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   private A a(bqs $$0) {
+      return this.b($$0) ? this.b : this.c;
+   }
+
+   private boolean b(bqs $$0) {
+      return $$0 == bqs.d;
    }
 }

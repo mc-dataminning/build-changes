@@ -1,48 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
+public class ehy {
+   public static class a extends egk {
+      public a(im $$0) {
+         super(egx.aa, 0, new efy($$0));
+      }
 
-public class ehy extends efq {
-   public static final Codec<ehy> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), edx.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, ehy::new)
-   );
-   public final edx e;
+      public a(ty $$0) {
+         super(egx.aa, $$0);
+      }
 
-   public ehy(efq.c $$0, edx $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+      @Override
+      protected void a(egw $$0, ty $$1) {
+      }
 
-   @Override
-   public Optional<efq.b> a(efq.a $$0) {
-      dvz $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      dvx $$5 = new dvx($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      czs $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      id.a $$8 = new id.a($$2, $$6, $$3);
+      @Override
+      public void a(dap $$0, dan $$1, drv $$2, ayd $$3, efy $$4, czb $$5, im $$6) {
+         int $$7 = $$0.a(dvq.a.c, this.f.h(), this.f.j());
+         im.a $$8 = new im.a(this.f.h(), $$7, this.f.j());
 
-      while ($$6 > $$4) {
-         dpi $$9 = $$7.a($$6);
-         dpi $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(dcj.dW) || $$10.d(cyv.a, $$8.q($$6), ij.b))) {
-            break;
+         while ($$8.v() > $$0.I_()) {
+            dpy $$9 = $$0.a_($$8);
+            dpy $$10 = $$0.a_($$8.d());
+            if ($$10 == dcx.aV.n() || $$10 == dcx.b.n() || $$10 == dcx.g.n() || $$10 == dcx.c.n() || $$10 == dcx.e.n()) {
+               dpy $$11 = !$$9.i() && !this.b($$9) ? $$9 : dcx.I.n();
+
+               for (ir $$12 : ir.values()) {
+                  im $$13 = $$8.a($$12);
+                  dpy $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     im $$15 = $$13.d();
+                     dpy $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != ir.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new efy($$8);
+               this.a($$0, $$4, $$3, $$8, eny.G, null);
+               return;
+            }
+
+            $$8.e(0, -1, 0);
          }
       }
 
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         id $$11 = new id($$2, $$6, $$3);
-         return Optional.of(new efq.b($$11, (Consumer<egi>)($$3x -> ehx.a($$0.e(), $$3x, $$1, $$11))));
+      private boolean b(dpy $$0) {
+         return $$0 == dcx.G.n() || $$0 == dcx.H.n();
       }
-   }
-
-   @Override
-   public efz<?> e() {
-      return efz.i;
    }
 }

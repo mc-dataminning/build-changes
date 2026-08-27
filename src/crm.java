@@ -1,27 +1,32 @@
-public interface crm {
-   int a = 256;
-   int b = 140;
-   aju<crk> c = a("ponder_goat_horn");
-   aju<crk> d = a("sing_goat_horn");
-   aju<crk> e = a("seek_goat_horn");
-   aju<crk> f = a("feel_goat_horn");
-   aju<crk> g = a("admire_goat_horn");
-   aju<crk> h = a("call_goat_horn");
-   aju<crk> i = a("yearn_goat_horn");
-   aju<crk> j = a("dream_goat_horn");
+public class crm<T extends bql & brb> extends cry {
+   private final bqr<T> a;
+   private final int b;
 
-   private static aju<crk> a(String $$0) {
-      return aju.a(ku.E, new ajv($$0));
+   public crm(cry.a $$0, bqr<T> $$1, int $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   static crk a(ja<crk> $$0) {
-      ja.a($$0, c, new crk((in<aun>)auo.mq.get(0), 140, 256.0F));
-      ja.a($$0, d, new crk((in<aun>)auo.mq.get(1), 140, 256.0F));
-      ja.a($$0, e, new crk((in<aun>)auo.mq.get(2), 140, 256.0F));
-      ja.a($$0, f, new crk((in<aun>)auo.mq.get(3), 140, 256.0F));
-      ja.a($$0, g, new crk((in<aun>)auo.mq.get(4), 140, 256.0F));
-      ja.a($$0, h, new crk((in<aun>)auo.mq.get(5), 140, 256.0F));
-      ja.a($$0, i, new crk((in<aun>)auo.mq.get(6), 140, 256.0F));
-      return ja.a($$0, j, new crk((in<aun>)auo.mq.get(7), 140, 256.0F));
+   @Override
+   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
+      csd $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return bor.c($$3);
+      } else {
+         bql $$4 = $$1.db();
+         if ($$1.bP() && $$4 instanceof brb $$5 && $$4.ai() == this.a && $$5.a()) {
+            $$3.a(this.b, $$1, bre.d($$2));
+            if ($$3.d()) {
+               csd $$6 = $$3.b(csg.qV, 1);
+               return bor.a($$6);
+            }
+
+            return bor.a($$3);
+         }
+
+         $$1.b(avj.c.b(this));
+         return bor.c($$3);
+      }
    }
 }

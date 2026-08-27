@@ -1,45 +1,29 @@
-public class aej implements yp<aba> {
-   public static final yg<vi, aej> a = yp.a(aej::a, aej::new);
-   private final float b;
-   private final int c;
-   private final float d;
+public class aej implements yz<abk> {
+   public static final yq<vs, aej> a = yz.a(aej::a, aej::new);
+   private final int b;
 
-   public aej(float $$0, int $$1, float $$2) {
+   public aej(int $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   private aej(vi $$0) {
-      this.b = $$0.readFloat();
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
+   private aej(vs $$0) {
+      this.b = $$0.readByte();
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private void a(vs $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public yr<aej> a() {
-      return afl.aH;
+   public zb<aej> a() {
+      return afv.ax;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
    }
 }

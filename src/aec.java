@@ -1,37 +1,12 @@
-public class aec implements yp<aba> {
-   public static final yg<vi, aec> a = yp.a(aec::a, aec::new);
-   private final id b;
-   private final float c;
-
-   public aec(id $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private aec(vi $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
-   }
-
-   private void a(vi $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record aec(ws b) implements yz<abk> {
+   public static final yq<wd, aec> a = yq.a(wu.d, aec::b, aec::new);
 
    @Override
-   public yr<aec> a() {
-      return afl.aA;
+   public zb<aec> a() {
+      return afv.aq;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
-   }
-
-   public id b() {
-      return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

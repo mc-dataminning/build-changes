@@ -1,51 +1,62 @@
-public enum fzz {
-   a(new fzz.b(fzz.a.f, fzz.a.e, fzz.a.a), new fzz.b(fzz.a.f, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.a)),
-   b(new fzz.b(fzz.a.f, fzz.a.b, fzz.a.d), new fzz.b(fzz.a.f, fzz.a.b, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.b, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.b, fzz.a.d)),
-   c(new fzz.b(fzz.a.c, fzz.a.b, fzz.a.d), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.f, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.f, fzz.a.b, fzz.a.d)),
-   d(new fzz.b(fzz.a.f, fzz.a.b, fzz.a.a), new fzz.b(fzz.a.f, fzz.a.e, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.b, fzz.a.a)),
-   e(new fzz.b(fzz.a.f, fzz.a.b, fzz.a.d), new fzz.b(fzz.a.f, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.f, fzz.a.e, fzz.a.a), new fzz.b(fzz.a.f, fzz.a.b, fzz.a.a)),
-   f(new fzz.b(fzz.a.c, fzz.a.b, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.a), new fzz.b(fzz.a.c, fzz.a.e, fzz.a.d), new fzz.b(fzz.a.c, fzz.a.b, fzz.a.d));
-
-   private static final fzz[] g = ac.a(new fzz[6], $$0 -> {
-      $$0[fzz.a.e] = a;
-      $$0[fzz.a.b] = b;
-      $$0[fzz.a.d] = c;
-      $$0[fzz.a.a] = d;
-      $$0[fzz.a.f] = e;
-      $$0[fzz.a.c] = f;
-   });
-   private final fzz.b[] h;
-
-   public static fzz a(ij $$0) {
-      return g[$$0.d()];
+public class fzz extends fzs {
+   protected fzz(fvm $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   private fzz(fzz.b... $$0) {
-      this.h = $$0;
+   @Override
+   public fyw b() {
+      return fyw.b;
    }
 
-   public fzz.b a(int $$0) {
-      return this.h[$$0];
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
+            }
+
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         im $$0 = im.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).k(this.c, $$0).b(ir.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((cza)this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
+         }
+      }
    }
 
-   public static final class a {
-      public static final int a = ij.d.d();
-      public static final int b = ij.b.d();
-      public static final int c = ij.f.d();
-      public static final int d = ij.c.d();
-      public static final int e = ij.a.d();
-      public static final int f = ij.e.d();
-   }
+   public static class a implements fyv<kz> {
+      private final fzn a;
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
+      public a(fzn $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public fys a(kz $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fzz $$8 = new fzz($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -1,31 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwy extends eas {
-   public static final MapCodec<dwy> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
-               edx.c.fieldOf("y").forGetter($$0x -> $$0x.e),
-               bni.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
-               dvu.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
-               dwz.b.optionalFieldOf("debug_settings", dwz.a).forGetter($$0x -> $$0x.h),
-               jc.a(ku.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dwy::new)
-   );
-   public final edx e;
-   public final bni f;
-   public final dvu g;
-   public final dwz h;
-   public final ir<dch> i;
+public interface dwy<P extends dwx> {
+   dwy<dxd> a = a("matching_blocks", dxd.a);
+   dwy<dxc> b = a("matching_block_tag", dxc.e);
+   dwy<dxe> c = a("matching_fluids", dxe.a);
+   dwy<dxa> d = a("has_sturdy_face", dxa.a);
+   dwy<dxh> e = a("solid", dxh.a);
+   dwy<dxg> f = a("replaceable", dxg.a);
+   dwy<dxk> g = a("would_survive", dxk.a);
+   dwy<dxb> h = a("inside_world_bounds", dxb.a);
+   dwy<dww> i = a("any_of", dww.a);
+   dwy<dwv> j = a("all_of", dwv.a);
+   dwy<dxf> k = a("not", dxf.a);
+   dwy<dxj> l = a("true", dxj.e);
 
-   public dwy(float $$0, edx $$1, bni $$2, dvu $$3, dwz $$4, ir<dch> $$5) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
+   Codec<P> codec();
+
+   private static <P extends dwx> dwy<P> a(String $$0, Codec<P> $$1) {
+      return ji.a(lc.O, $$0, () -> $$1);
    }
 }

@@ -1,175 +1,107 @@
-public abstract class cmx extends coj<bny> {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   public static final int n = 3;
-   public static final int o = 4;
-   private static final int q = 3;
-   private static final int r = 30;
-   private static final int s = 30;
-   private static final int t = 39;
-   private final bny u;
-   private final cng v;
-   protected final czg p;
-   private final cvx<? extends cvb> w;
-   private final cok x;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-   protected cmx(cod<?> $$0, cvx<? extends cvb> $$1, cok $$2, int $$3, cjz $$4) {
-      this($$0, $$1, $$2, $$3, $$4, new boo(3), new cor(4));
+public class cmx {
+   private static final Logger a = LogUtils.getLogger();
+   private final cmz b;
+   private final Map<akf, cmw> c;
+   private final cmy d;
+
+   cmx(cmz $$0, cmy $$1, Map<akf, cmw> $$2) {
+      this.b = $$0;
+      this.c = $$2;
+      this.d = $$1;
    }
 
-   protected cmx(cod<?> $$0, cvx<? extends cvb> $$1, cok $$2, int $$3, cjz $$4, bny $$5, cng $$6) {
-      super($$0, $$3);
-      this.w = $$1;
-      this.x = $$2;
-      a($$5, 3);
-      a($$6, 4);
-      this.u = $$5;
-      this.v = $$6;
-      this.p = $$4.m.dM();
-      this.a(new cos($$5, 0, 56, 17));
-      this.a(new cnr(this, $$5, 1, 56, 53));
-      this.a(new cnt($$4.m, $$5, 2, 116, 35));
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cos($$4, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cos($$4, $$9, 8 + $$9 * 18, 142));
-      }
-
-      this.a($$6);
+   public boolean a(cmy $$0) {
+      return $$0.a(this.d);
    }
 
-   @Override
-   public void a(cke $$0) {
-      if (this.u instanceof cox) {
-         ((cox)this.u).a($$0);
-      }
+   public cmy a() {
+      return this.d;
    }
 
-   @Override
-   public void l() {
-      this.b(0).f(crs.i);
-      this.b(2).f(crs.i);
+   public cmy a(Iterable<akf> $$0) {
+      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
    }
 
-   @Override
-   public boolean a(cvu<? extends cvs<bny>> $$0) {
-      return $$0.b().a(this.u, this.p);
+   public cmy a(cmw... $$0) {
+      return cmy.a(this.b, Arrays.asList($$0));
    }
 
-   @Override
-   public int m() {
-      return 2;
-   }
+   public cmy a(Iterable<akf> $$0, Consumer<akf> $$1) {
+      Set<cmw> $$2 = Sets.newIdentityHashSet();
 
-   @Override
-   public int n() {
-      return 1;
-   }
-
-   @Override
-   public int o() {
-      return 1;
-   }
-
-   @Override
-   public int p() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cka $$0) {
-      return this.u.a($$0);
-   }
-
-   @Override
-   public crs a(cka $$0, int $$1) {
-      crs $$2 = crs.i;
-      cos $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         crs $$4 = $$3.g();
-         $$2 = $$4.r();
-         if ($$1 == 2) {
-            if (!this.a($$4, 3, 39, true)) {
-               return crs.i;
-            }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if (this.c($$4)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return crs.i;
-               }
-            } else if (this.d($$4)) {
-               if (!this.a($$4, 1, 2, false)) {
-                  return crs.i;
-               }
-            } else if ($$1 >= 3 && $$1 < 30) {
-               if (!this.a($$4, 30, 39, false)) {
-                  return crs.i;
-               }
-            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-               return crs.i;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return crs.i;
-         }
-
-         if ($$4.d()) {
-            $$3.e(crs.i);
+      for (akf $$3 : $$0) {
+         cmw $$4 = this.c.get($$3);
+         if ($$4 == null) {
+            $$1.accept($$3);
          } else {
-            $$3.b();
+            $$2.add($$4);
          }
-
-         if ($$4.G() == $$2.G()) {
-            return crs.i;
-         }
-
-         $$3.a($$0, $$4);
       }
 
-      return $$2;
+      return cmy.a(this.b, $$2);
    }
 
-   protected boolean c(crs $$0) {
-      return this.p.r().a(this.w, new boo($$0), this.p).isPresent();
+   public Set<akf> b(cmy $$0) {
+      Set<akf> $$1 = new HashSet<>();
+      this.c.forEach(($$2, $$3) -> {
+         if ($$0.b($$3)) {
+            $$1.add($$2);
+         }
+      });
+      return $$1;
    }
 
-   protected boolean d(crs $$0) {
-      return dmc.b($$0);
+   public Codec<cmy> b() {
+      return akf.a.listOf().comapFlatMap($$0 -> {
+         Set<akf> $$1 = new HashSet<>();
+         cmy $$2 = this.a($$0, $$1::add);
+         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
+      }, $$0 -> List.copyOf(this.b($$0)));
    }
 
-   public float q() {
-      int $$0 = this.v.a(2);
-      int $$1 = this.v.a(3);
-      return $$1 != 0 && $$0 != 0 ? axm.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
-   }
+   public static class a {
+      private final cmz a;
+      private int b;
+      private final Map<akf, cmw> c = new LinkedHashMap<>();
 
-   public float r() {
-      int $$0 = this.v.a(1);
-      if ($$0 == 0) {
-         $$0 = 200;
+      public a(String $$0) {
+         this.a = new cmz($$0);
       }
 
-      return axm.a((float)this.v.a(0) / (float)$$0, 0.0F, 1.0F);
-   }
+      public cmw a(String $$0) {
+         return this.a(new akf("minecraft", $$0));
+      }
 
-   public boolean s() {
-      return this.v.a(0) > 0;
-   }
+      public cmw a(akf $$0) {
+         if (this.b >= 64) {
+            throw new IllegalStateException("Too many feature flags");
+         } else {
+            cmw $$1 = new cmw(this.a, this.b++);
+            cmw $$2 = this.c.put($$0, $$1);
+            if ($$2 != null) {
+               throw new IllegalStateException("Duplicate feature flag " + $$0);
+            } else {
+               return $$1;
+            }
+         }
+      }
 
-   @Override
-   public cok t() {
-      return this.x;
-   }
-
-   @Override
-   public boolean e(int $$0) {
-      return $$0 != 1;
+      public cmx a() {
+         cmy $$0 = cmy.a(this.a, this.c.values());
+         return new cmx(this.a, $$0, Map.copyOf(this.c));
+      }
    }
 }

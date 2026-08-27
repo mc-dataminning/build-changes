@@ -1,46 +1,45 @@
-public record aag(id c, float d, float e, float f, float g, float h) implements zq {
-   public static final yg<vi, aag> a = zq.a(aag::a, aag::new);
-   public static final zq.b<aag> b = zq.a("debug/worldgen_attempt");
+import java.util.List;
 
-   private aag(vi $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record aag(int c, im d, List<aag.a> e) implements aaa {
+   public static final yq<vs, aag> a = aaa.a(aag::a, aag::new);
+   public static final aaa.b<aag> b = aaa.a("debug/goal_selector");
+
+   private aag(vs $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(aag.a::new));
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.c);
+   private void a(vs $$0) {
+      $$0.p(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zq.b<aag> a() {
+   public aaa.b<aag> a() {
       return b;
    }
 
-   public id b() {
+   public int b() {
       return this.c;
    }
 
-   public float c() {
+   public im c() {
       return this.d;
    }
 
-   public float d() {
+   public List<aag.a> d() {
       return this.e;
    }
 
-   public float e() {
-      return this.f;
-   }
+   public static record a(int a, boolean b, String c) {
+      public a(vs $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+      }
 
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
+      public void a(vs $$0) {
+         $$0.p(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+      }
    }
 }

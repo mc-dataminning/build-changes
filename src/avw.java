@@ -1,77 +1,130 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+public final class avw {
+   public static final awd<cry> a = a("wool");
+   public static final awd<cry> b = a("planks");
+   public static final awd<cry> c = a("stone_bricks");
+   public static final awd<cry> d = a("wooden_buttons");
+   public static final awd<cry> e = a("stone_buttons");
+   public static final awd<cry> f = a("buttons");
+   public static final awd<cry> g = a("wool_carpets");
+   public static final awd<cry> h = a("wooden_doors");
+   public static final awd<cry> i = a("wooden_stairs");
+   public static final awd<cry> j = a("wooden_slabs");
+   public static final awd<cry> k = a("wooden_fences");
+   public static final awd<cry> l = a("fence_gates");
+   public static final awd<cry> m = a("wooden_pressure_plates");
+   public static final awd<cry> n = a("wooden_trapdoors");
+   public static final awd<cry> o = a("doors");
+   public static final awd<cry> p = a("saplings");
+   public static final awd<cry> q = a("logs_that_burn");
+   public static final awd<cry> r = a("logs");
+   public static final awd<cry> s = a("dark_oak_logs");
+   public static final awd<cry> t = a("oak_logs");
+   public static final awd<cry> u = a("birch_logs");
+   public static final awd<cry> v = a("acacia_logs");
+   public static final awd<cry> w = a("cherry_logs");
+   public static final awd<cry> x = a("jungle_logs");
+   public static final awd<cry> y = a("spruce_logs");
+   public static final awd<cry> z = a("mangrove_logs");
+   public static final awd<cry> A = a("crimson_stems");
+   public static final awd<cry> B = a("warped_stems");
+   public static final awd<cry> C = a("bamboo_blocks");
+   public static final awd<cry> D = a("wart_blocks");
+   public static final awd<cry> E = a("banners");
+   public static final awd<cry> F = a("sand");
+   public static final awd<cry> G = a("smelts_to_glass");
+   public static final awd<cry> H = a("stairs");
+   public static final awd<cry> I = a("slabs");
+   public static final awd<cry> J = a("walls");
+   public static final awd<cry> K = a("anvil");
+   public static final awd<cry> L = a("rails");
+   public static final awd<cry> M = a("leaves");
+   public static final awd<cry> N = a("trapdoors");
+   public static final awd<cry> O = a("small_flowers");
+   public static final awd<cry> P = a("beds");
+   public static final awd<cry> Q = a("fences");
+   public static final awd<cry> R = a("tall_flowers");
+   public static final awd<cry> S = a("flowers");
+   public static final awd<cry> T = a("piglin_repellents");
+   public static final awd<cry> U = a("piglin_loved");
+   public static final awd<cry> V = a("ignored_by_piglin_babies");
+   public static final awd<cry> W = a("piglin_food");
+   public static final awd<cry> X = a("fox_food");
+   public static final awd<cry> Y = a("gold_ores");
+   public static final awd<cry> Z = a("iron_ores");
+   public static final awd<cry> aa = a("diamond_ores");
+   public static final awd<cry> ab = a("redstone_ores");
+   public static final awd<cry> ac = a("lapis_ores");
+   public static final awd<cry> ad = a("coal_ores");
+   public static final awd<cry> ae = a("emerald_ores");
+   public static final awd<cry> af = a("copper_ores");
+   public static final awd<cry> ag = a("non_flammable_wood");
+   public static final awd<cry> ah = a("soul_fire_base_blocks");
+   public static final awd<cry> ai = a("candles");
+   public static final awd<cry> aj = a("dirt");
+   public static final awd<cry> ak = a("terracotta");
+   public static final awd<cry> al = a("completes_find_tree_tutorial");
+   public static final awd<cry> am = a("boats");
+   public static final awd<cry> an = a("chest_boats");
+   public static final awd<cry> ao = a("fishes");
+   public static final awd<cry> ap = a("signs");
+   public static final awd<cry> aq = a("music_discs");
+   public static final awd<cry> ar = a("creeper_drop_music_discs");
+   public static final awd<cry> as = a("coals");
+   public static final awd<cry> at = a("arrows");
+   public static final awd<cry> au = a("lectern_books");
+   public static final awd<cry> av = a("bookshelf_books");
+   public static final awd<cry> aw = a("beacon_payment_items");
+   public static final awd<cry> ax = a("stone_tool_materials");
+   public static final awd<cry> ay = a("stone_crafting_materials");
+   public static final awd<cry> az = a("freeze_immune_wearables");
+   public static final awd<cry> aA = a("axolotl_tempt_items");
+   public static final awd<cry> aB = a("dampens_vibrations");
+   public static final awd<cry> aC = a("cluster_max_harvestables");
+   public static final awd<cry> aD = a("compasses");
+   public static final awd<cry> aE = a("hanging_signs");
+   public static final awd<cry> aF = a("creeper_igniters");
+   public static final awd<cry> aG = a("noteblock_top_instruments");
+   public static final awd<cry> aH = a("foot_armor");
+   public static final awd<cry> aI = a("leg_armor");
+   public static final awd<cry> aJ = a("chest_armor");
+   public static final awd<cry> aK = a("head_armor");
+   public static final awd<cry> aL = a("skulls");
+   public static final awd<cry> aM = a("trimmable_armor");
+   public static final awd<cry> aN = a("trim_materials");
+   public static final awd<cry> aO = a("trim_templates");
+   public static final awd<cry> aP = a("sniffer_food");
+   public static final awd<cry> aQ = a("decorated_pot_sherds");
+   public static final awd<cry> aR = a("decorated_pot_ingredients");
+   public static final awd<cry> aS = a("swords");
+   public static final awd<cry> aT = a("axes");
+   public static final awd<cry> aU = a("hoes");
+   public static final awd<cry> aV = a("pickaxes");
+   public static final awd<cry> aW = a("shovels");
+   public static final awd<cry> aX = a("tools");
+   public static final awd<cry> aY = a("breaks_decorated_pots");
+   public static final awd<cry> aZ = a("villager_plantable_seeds");
+   public static final awd<cry> ba = a("dyeable");
+   public static final awd<cry> bb = a("enchantable/foot_armor");
+   public static final awd<cry> bc = a("enchantable/leg_armor");
+   public static final awd<cry> bd = a("enchantable/chest_armor");
+   public static final awd<cry> be = a("enchantable/head_armor");
+   public static final awd<cry> bf = a("enchantable/armor");
+   public static final awd<cry> bg = a("enchantable/sword");
+   public static final awd<cry> bh = a("enchantable/weapon");
+   public static final awd<cry> bi = a("enchantable/mining");
+   public static final awd<cry> bj = a("enchantable/mining_loot");
+   public static final awd<cry> bk = a("enchantable/fishing");
+   public static final awd<cry> bl = a("enchantable/trident");
+   public static final awd<cry> bm = a("enchantable/durability");
+   public static final awd<cry> bn = a("enchantable/bow");
+   public static final awd<cry> bo = a("enchantable/equippable");
+   public static final awd<cry> bp = a("enchantable/crossbow");
+   public static final awd<cry> bq = a("enchantable/vanishing");
 
-public class avw {
-   public static Map<aju<? extends ja<?>>, avw.a> a(iu<ake> $$0) {
-      return je.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> ((avw.a)$$0x.getSecond()).a() > 0)
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+   private avw() {
    }
 
-   private static <T> avw.a a(ja<T> $$0) {
-      Map<ajv, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         ir<T> $$3 = (ir<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
-
-         for (in<T> $$5 : $$3) {
-            if ($$5.f() != in.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((avt)$$2.getFirst()).b(), $$4);
-      });
-      return new avw.a($$1);
-   }
-
-   static <T> void a(aju<? extends ja<T>> $$0, ja<T> $$1, avw.a $$2, avw.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         avt<T> $$5 = avt.a($$0, $$3x);
-         List<in<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
-   }
-
-   public static final class a {
-      final Map<ajv, IntList> a;
-
-      a(Map<ajv, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(vi $$0) {
-         $$0.a(this.a, vi::a, vi::a);
-      }
-
-      public static avw.a b(vi $$0) {
-         return new avw.a($$0.a(vi::q, vi::a));
-      }
-
-      public int a() {
-         return this.a.size();
-      }
-
-      public <T> void a(ja<T> $$0) {
-         if (this.a() != 0) {
-            Map<avt<T>, List<in<T>>> $$1 = new HashMap<>(this.a());
-            avw.a($$0.c(), $$0, this, $$1::put);
-            $$0.a($$1);
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(avt<T> var1, List<in<T>> var2);
+   private static awd<cry> a(String $$0) {
+      return awd.a(ld.G, new akf($$0));
    }
 }

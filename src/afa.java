@@ -1,45 +1,45 @@
-public class afa implements yp<aba> {
-   public static final yg<vi, afa> a = yp.a(afa::a, afa::new);
-   private final int b;
-   private final int c;
-   private final int d;
+public class afa implements yz<abk> {
+   public static final yq<vs, afa> a = yz.a(afa::a, afa::new);
+   private final long b;
+   private final long c;
 
-   public afa(int $$0, int $$1, int $$2) {
+   public afa(long $$0, long $$1, boolean $$2) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.c = $$3;
    }
 
-   private afa(vi $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+   private afa(vs $$0) {
+      this.b = $$0.readLong();
+      this.c = $$0.readLong();
    }
 
-   private void a(vi $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+   private void a(vs $$0) {
+      $$0.b(this.b);
+      $$0.b(this.c);
    }
 
    @Override
-   public yr<afa> a() {
-      return afl.aY;
+   public zb<afa> a() {
+      return afv.aO;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public long b() {
       return this.b;
    }
 
-   public int e() {
+   public long e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

@@ -1,67 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dbo extends dch implements djh {
-   public static final MapCodec<dbo> a = b(dbo::new);
-   public static final dpz b = dpy.C;
+public abstract class dbo extends dcv {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final ety h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final ety b = etv.a(
+      etv.b(), etv.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), etj.e
+   );
+   protected final js.a c;
 
    @Override
-   public MapCodec<dbo> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends dbo> a();
 
-   protected dbo(dph.d $$0) {
+   public dbo(dpx.d $$0, js.a $$1) {
       super($$0);
-      this.k(this.n().a(b, Boolean.valueOf(false)));
+      this.c = $$1;
+   }
+
+   protected double b(dpy $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(dpy $$0, im $$1, bql $$2) {
+      return $$2.du() < (double)$$1.v() + this.b($$0) && $$2.cI().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   protected boolean a_(dpi $$0, cym $$1, id $$2) {
+   protected bos a(csd $$0, dpy $$1, czu $$2, im $$3, ckl $$4, bop $$5, etb $$6) {
+      js $$7 = this.c.b().get($$0.f());
+      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
+   }
+
+   @Override
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return b;
+   }
+
+   @Override
+   protected ety a(dpy $$0, cza $$1, im $$2) {
+      return h;
+   }
+
+   @Override
+   protected boolean d_(dpy $$0) {
       return true;
    }
 
    @Override
-   protected dim b_(dpi $$0) {
-      return dim.a;
+   protected boolean a(dpy $$0, emg $$1) {
+      return false;
    }
 
-   @Override
-   protected float d(dpi $$0, cym $$1, id $$2) {
-      return 1.0F;
-   }
+   public abstract boolean d(dpy var1);
 
    @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, elc.c, elc.c.a($$3));
+   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      im $$4 = din.a((czu)$$1, $$2);
+      if ($$4 != null) {
+         elq $$5 = din.a($$1, $$4);
+         if ($$5 != els.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected elb c_(dpi $$0) {
-      return $$0.c(b) ? elc.c.a(false) : super.c_($$0);
+   protected boolean a(elq $$0) {
+      return false;
    }
 
-   @Nullable
-   @Override
-   public dpi a(cux $$0) {
-      return this.n().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == elc.c));
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public crs a(@Nullable cka $$0, czh $$1, id $$2, dpi $$3) {
-      return $$0 != null && $$0.f() ? djh.super.a($$0, $$1, $$2, $$3) : crs.i;
-   }
-
-   @Override
-   public boolean a(@Nullable cka $$0, cym $$1, id $$2, dpi $$3, ela $$4) {
-      return $$0 != null && $$0.f() ? djh.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   protected void a(dpy $$0, czu $$1, im $$2, elq $$3) {
    }
 }

@@ -1,79 +1,75 @@
-public class dgs {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1049;
-   public static final int P = 1050;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 3000;
-   public static final int aj = 3001;
-   public static final int ak = 3002;
-   public static final int al = 3003;
-   public static final int am = 3004;
-   public static final int an = 3005;
-   public static final int ao = 3006;
-   public static final int ap = 3007;
-   public static final int aq = 3008;
-   public static final int ar = 3009;
-   public static final int as = 3011;
-   public static final int at = 3012;
-   public static final int au = 3013;
-   public static final int av = 3014;
-   public static final int aw = 3015;
-   public static final int ax = 3016;
-   public static final int ay = 3017;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
+
+public class dgs extends dcv {
+   public static final MapCodec<dgs> a = b(dgs::new);
+   public static final dqp b = dij.b;
+   public static final dqp c = dij.c;
+   public static final dqp d = dij.d;
+   public static final dqp e = dij.e;
+   public static final dqp f = dij.f;
+   public static final dqp g = dij.g;
+   private static final Map<ir, dqp> h = dij.h;
+
+   @Override
+   public MapCodec<dgs> a() {
+      return a;
+   }
+
+   public dgs(dpx.d $$0) {
+      super($$0);
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(true))
+            .a(c, Boolean.valueOf(true))
+            .a(d, Boolean.valueOf(true))
+            .a(e, Boolean.valueOf(true))
+            .a(f, Boolean.valueOf(true))
+            .a(g, Boolean.valueOf(true))
+      );
+   }
+
+   @Override
+   public dpy a(cvl $$0) {
+      cza $$1 = $$0.q();
+      im $$2 = $$0.a();
+      return this.n()
+         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
+         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
+         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
+   }
+
+   @Override
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected dpy a(dpy $$0, dji $$1) {
+      return $$0.a(h.get($$1.a(ir.c)), $$0.c(b))
+         .a(h.get($$1.a(ir.d)), $$0.c(d))
+         .a(h.get($$1.a(ir.f)), $$0.c(c))
+         .a(h.get($$1.a(ir.e)), $$0.c(e))
+         .a(h.get($$1.a(ir.b)), $$0.c(f))
+         .a(h.get($$1.a(ir.a)), $$0.c(g));
+   }
+
+   @Override
+   protected dpy a(dpy $$0, dhs $$1) {
+      return $$0.a(h.get($$1.b(ir.c)), $$0.c(b))
+         .a(h.get($$1.b(ir.d)), $$0.c(d))
+         .a(h.get($$1.b(ir.f)), $$0.c(c))
+         .a(h.get($$1.b(ir.e)), $$0.c(e))
+         .a(h.get($$1.b(ir.b)), $$0.c(f))
+         .a(h.get($$1.b(ir.a)), $$0.c(g));
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(f, g, b, c, d, e);
+   }
 }

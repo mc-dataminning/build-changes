@@ -1,12 +1,20 @@
-public class aix {
-   public static final yr<ait> a = a("status_response");
-   public static final yr<aiw> b = b("status_request");
+public record aix(long b) implements yz<aiw> {
+   public static final yq<vs, aix> a = yz.a(aix::a, aix::new);
 
-   private static <T extends yp<ais>> yr<T> a(String $$0) {
-      return new yr<>(yq.b, new ajv($$0));
+   private aix(vs $$0) {
+      this($$0.readLong());
    }
 
-   private static <T extends yp<aiv>> yr<T> b(String $$0) {
-      return new yr<>(yq.a, new ajv($$0));
+   private void a(vs $$0) {
+      $$0.b(this.b);
+   }
+
+   @Override
+   public zb<aix> a() {
+      return aiy.a;
+   }
+
+   public void a(aiw $$0) {
+      $$0.a(this);
    }
 }

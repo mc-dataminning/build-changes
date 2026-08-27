@@ -1,29 +1,45 @@
-public record afc(float b, boolean c) implements yp<aba> {
-   public static final yg<vi, afc> a = yp.a(afc::a, afc::new);
+public class afc implements yz<abk> {
+   public static final yq<vs, afc> a = yz.a(afc::a, afc::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   private afc(vi $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+   public afc(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static afc a(boq $$0) {
-      return new afc($$0.f(), $$0.l());
+   private afc(vs $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vs $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public yr<afc> a() {
-      return afl.cd;
+   public zb<afc> a() {
+      return afv.aQ;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

@@ -1,279 +1,549 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractStringBuilder;
+import it.unimi.dsi.fastutil.bytes.ByteArrayList;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
-import java.util.regex.Pattern;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class um {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("argument.nbt.trailing"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("argument.nbt.expected.key"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wi.c("argument.nbt.expected.value"));
-   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wi.b("argument.nbt.list.mixed", $$0, $$1));
-   public static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> wi.b("argument.nbt.array.mixed", $$0, $$1));
-   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wi.b("argument.nbt.array.invalid", $$0));
-   public static final char g = ',';
-   public static final char h = ':';
-   private static final char j = '[';
-   private static final char k = ']';
-   private static final char l = '}';
-   private static final char m = '{';
-   private static final Pattern n = Pattern.compile("[-+]?(?:[0-9]+[.]|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?", 2);
-   private static final Pattern o = Pattern.compile("[-+]?(?:[0-9]+[.]?|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?d", 2);
-   private static final Pattern p = Pattern.compile("[-+]?(?:[0-9]+[.]?|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?f", 2);
-   private static final Pattern q = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)b", 2);
-   private static final Pattern r = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)l", 2);
-   private static final Pattern s = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)s", 2);
-   private static final Pattern t = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)");
-   public static final Codec<to> i = Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(new um(new StringReader($$0)).a(), Lifecycle.stable());
-      } catch (CommandSyntaxException var2) {
-         return DataResult.error(var2::getMessage);
-      }
-   }, to::toString);
-   private final StringReader u;
+public class um implements DynamicOps<uv> {
+   public static final um a = new um();
+   private static final String b = "";
 
-   public static to a(String $$0) throws CommandSyntaxException {
-      return new um(new StringReader($$0)).a();
+   protected um() {
    }
 
-   @VisibleForTesting
-   to a() throws CommandSyntaxException {
-      to $$0 = this.f();
-      this.u.skipWhitespace();
-      if (this.u.canRead()) {
-         throw a.createWithContext(this.u);
+   public uv a() {
+      return ua.b;
+   }
+
+   public <U> U a(DynamicOps<U> $$0, uv $$1) {
+      switch ($$1.b()) {
+         case 0:
+            return (U)$$0.empty();
+         case 1:
+            return (U)$$0.createByte(((uo)$$1).i());
+         case 2:
+            return (U)$$0.createShort(((uo)$$1).h());
+         case 3:
+            return (U)$$0.createInt(((uo)$$1).g());
+         case 4:
+            return (U)$$0.createLong(((uo)$$1).f());
+         case 5:
+            return (U)$$0.createFloat(((uo)$$1).k());
+         case 6:
+            return (U)$$0.createDouble(((uo)$$1).j());
+         case 7:
+            return (U)$$0.createByteList(ByteBuffer.wrap(((tv)$$1).e()));
+         case 8:
+            return (U)$$0.createString($$1.s_());
+         case 9:
+            return (U)this.convertList($$0, $$1);
+         case 10:
+            return (U)this.convertMap($$0, $$1);
+         case 11:
+            return (U)$$0.createIntList(Arrays.stream(((uc)$$1).g()));
+         case 12:
+            return (U)$$0.createLongList(Arrays.stream(((uf)$$1).g()));
+         default:
+            throw new IllegalStateException("Unknown tag type: " + $$1);
+      }
+   }
+
+   public DataResult<Number> a(uv $$0) {
+      return $$0 instanceof uo $$1 ? DataResult.success($$1.l()) : DataResult.error(() -> "Not a number");
+   }
+
+   public uv a(Number $$0) {
+      return tz.a($$0.doubleValue());
+   }
+
+   public uv a(byte $$0) {
+      return tw.a($$0);
+   }
+
+   public uv a(short $$0) {
+      return uq.a($$0);
+   }
+
+   public uv a(int $$0) {
+      return ud.a($$0);
+   }
+
+   public uv a(long $$0) {
+      return ug.a($$0);
+   }
+
+   public uv a(float $$0) {
+      return ub.a($$0);
+   }
+
+   public uv a(double $$0) {
+      return tz.a($$0);
+   }
+
+   public uv a(boolean $$0) {
+      return tw.a($$0);
+   }
+
+   public DataResult<String> b(uv $$0) {
+      return $$0 instanceof ut $$1 ? DataResult.success($$1.s_()) : DataResult.error(() -> "Not a string");
+   }
+
+   public uv a(String $$0) {
+      return ut.a($$0);
+   }
+
+   public DataResult<uv> a(uv $$0, uv $$1) {
+      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
+   }
+
+   public DataResult<uv> a(uv $$0, List<uv> $$1) {
+      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
+   }
+
+   public DataResult<uv> a(uv $$0, uv $$1, uv $$2) {
+      if (!($$0 instanceof ty) && !($$0 instanceof ua)) {
+         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+      } else if (!($$1 instanceof ut)) {
+         return DataResult.error(() -> "key is not a string: " + $$1, $$0);
       } else {
-         return $$0;
+         ty $$3 = new ty();
+         if ($$0 instanceof ty $$4) {
+            $$4.e().forEach($$2x -> $$3.a($$2x, $$4.c($$2x)));
+         }
+
+         $$3.a($$1.s_(), $$2);
+         return DataResult.success($$3);
       }
    }
 
-   public um(StringReader $$0) {
-      this.u = $$0;
-   }
-
-   protected String b() throws CommandSyntaxException {
-      this.u.skipWhitespace();
-      if (!this.u.canRead()) {
-         throw b.createWithContext(this.u);
+   public DataResult<uv> a(uv $$0, MapLike<uv> $$1) {
+      if (!($$0 instanceof ty) && !($$0 instanceof ua)) {
+         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
       } else {
-         return this.u.readString();
+         ty $$2 = new ty();
+         if ($$0 instanceof ty $$3) {
+            $$3.e().forEach($$2x -> $$2.a($$2x, $$3.c($$2x)));
+         }
+
+         List<uv> $$4 = Lists.newArrayList();
+         $$1.entries().forEach($$2x -> {
+            uv $$3 = (uv)$$2x.getFirst();
+            if (!($$3 instanceof ut)) {
+               $$4.add($$3);
+            } else {
+               $$2.a($$3.s_(), (uv)$$2x.getSecond());
+            }
+         });
+         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$2) : DataResult.success($$2);
       }
    }
 
-   protected ul c() throws CommandSyntaxException {
-      this.u.skipWhitespace();
-      int $$0 = this.u.getCursor();
-      if (StringReader.isQuotedStringStart(this.u.peek())) {
-         return uj.a(this.u.readQuotedString());
-      } else {
-         String $$1 = this.u.readUnquotedString();
-         if ($$1.isEmpty()) {
-            this.u.setCursor($$0);
-            throw c.createWithContext(this.u);
-         } else {
-            return this.b($$1);
-         }
-      }
+   public DataResult<Stream<Pair<uv, uv>>> c(uv $$0) {
+      return $$0 instanceof ty $$1
+         ? DataResult.success($$1.e().stream().map($$1x -> Pair.of(this.a($$1x), $$1.c($$1x))))
+         : DataResult.error(() -> "Not a map: " + $$0);
    }
 
-   private ul b(String $$0) {
-      try {
-         if (p.matcher($$0).matches()) {
-            return tr.a(Float.parseFloat($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (q.matcher($$0).matches()) {
-            return tm.a(Byte.parseByte($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (r.matcher($$0).matches()) {
-            return tw.a(Long.parseLong($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (s.matcher($$0).matches()) {
-            return ug.a(Short.parseShort($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (t.matcher($$0).matches()) {
-            return tt.a(Integer.parseInt($$0));
-         }
-
-         if (o.matcher($$0).matches()) {
-            return tp.a(Double.parseDouble($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (n.matcher($$0).matches()) {
-            return tp.a(Double.parseDouble($$0));
-         }
-
-         if ("true".equalsIgnoreCase($$0)) {
-            return tm.c;
-         }
-
-         if ("false".equalsIgnoreCase($$0)) {
-            return tm.b;
-         }
-      } catch (NumberFormatException var3) {
-      }
-
-      return uj.a($$0);
+   public DataResult<Consumer<BiConsumer<uv, uv>>> d(uv $$0) {
+      return $$0 instanceof ty $$1
+         ? DataResult.success((Consumer<BiConsumer>)$$1x -> $$1.e().forEach($$2 -> $$1x.accept(this.a($$2), $$1.c($$2))))
+         : DataResult.error(() -> "Not a map: " + $$0);
    }
 
-   public ul d() throws CommandSyntaxException {
-      this.u.skipWhitespace();
-      if (!this.u.canRead()) {
-         throw c.createWithContext(this.u);
-      } else {
-         char $$0 = this.u.peek();
-         if ($$0 == '{') {
-            return this.f();
-         } else {
-            return $$0 == '[' ? this.e() : this.c();
+   public DataResult<MapLike<uv>> e(uv $$0) {
+      return $$0 instanceof ty $$1 ? DataResult.success(new MapLike<uv>() {
+         @Nullable
+         public uv a(uv $$0) {
+            return $$1.c($$0.s_());
          }
-      }
+
+         @Nullable
+         public uv a(String $$0) {
+            return $$1.c($$0);
+         }
+
+         public Stream<Pair<uv, uv>> entries() {
+            return $$1.e().stream().map($$1xx -> Pair.of(um.this.a($$1xx), $$1.c($$1xx)));
+         }
+
+         @Override
+         public String toString() {
+            return "MapLike[" + $$1 + "]";
+         }
+      }) : DataResult.error(() -> "Not a map: " + $$0);
    }
 
-   protected ul e() throws CommandSyntaxException {
-      return this.u.canRead(3) && !StringReader.isQuotedStringStart(this.u.peek(1)) && this.u.peek(2) == ';' ? this.h() : this.g();
+   public uv a(Stream<Pair<uv, uv>> $$0) {
+      ty $$1 = new ty();
+      $$0.forEach($$1x -> $$1.a(((uv)$$1x.getFirst()).s_(), (uv)$$1x.getSecond()));
+      return $$1;
    }
 
-   public to f() throws CommandSyntaxException {
-      this.a('{');
-      to $$0 = new to();
-      this.u.skipWhitespace();
-
-      while (this.u.canRead() && this.u.peek() != '}') {
-         int $$1 = this.u.getCursor();
-         String $$2 = this.b();
-         if ($$2.isEmpty()) {
-            this.u.setCursor($$1);
-            throw b.createWithContext(this.u);
-         }
-
-         this.a(':');
-         $$0.a($$2, this.d());
-         if (!this.i()) {
-            break;
-         }
-
-         if (!this.u.canRead()) {
-            throw b.createWithContext(this.u);
+   private static uv a(ty $$0) {
+      if ($$0.f() == 1) {
+         uv $$1 = $$0.c("");
+         if ($$1 != null) {
+            return $$1;
          }
       }
 
-      this.a('}');
       return $$0;
    }
 
-   private ul g() throws CommandSyntaxException {
-      this.a('[');
-      this.u.skipWhitespace();
-      if (!this.u.canRead()) {
-         throw c.createWithContext(this.u);
+   public DataResult<Stream<uv>> f(uv $$0) {
+      if ($$0 instanceof ue $$1) {
+         return $$1.f() == 10 ? DataResult.success($$1.stream().map($$0x -> a((ty)$$0x))) : DataResult.success($$1.stream());
       } else {
-         tu $$0 = new tu();
-         un<?> $$1 = null;
+         return $$0 instanceof tx<?> $$2 ? DataResult.success($$2.stream().map($$0x -> $$0x)) : DataResult.error(() -> "Not a list");
+      }
+   }
 
-         while (this.u.peek() != ']') {
-            int $$2 = this.u.getCursor();
-            ul $$3 = this.d();
-            un<?> $$4 = $$3.c();
-            if ($$1 == null) {
-               $$1 = $$4;
-            } else if ($$4 != $$1) {
-               this.u.setCursor($$2);
-               throw d.createWithContext(this.u, $$4.b(), $$1.b());
-            }
+   public DataResult<Consumer<Consumer<uv>>> g(uv $$0) {
+      if ($$0 instanceof ue $$1) {
+         return $$1.f() == 10
+            ? DataResult.success((Consumer<Consumer>)$$1x -> $$1.forEach($$1xx -> $$1.accept(a((ty)$$1xx))))
+            : DataResult.success($$1::forEach);
+      } else {
+         return $$0 instanceof tx<?> $$2 ? DataResult.success($$2::forEach) : DataResult.error(() -> "Not a list: " + $$0);
+      }
+   }
 
-            $$0.add($$3);
-            if (!this.i()) {
-               break;
-            }
+   public DataResult<ByteBuffer> h(uv $$0) {
+      return $$0 instanceof tv $$1 ? DataResult.success(ByteBuffer.wrap($$1.e())) : super.getByteBuffer($$0);
+   }
 
-            if (!this.u.canRead()) {
-               throw c.createWithContext(this.u);
-            }
-         }
+   public uv a(ByteBuffer $$0) {
+      ByteBuffer $$1 = $$0.duplicate().clear();
+      byte[] $$2 = new byte[$$0.capacity()];
+      $$1.get(0, $$2, 0, $$2.length);
+      return new tv($$2);
+   }
 
-         this.a(']');
+   public DataResult<IntStream> i(uv $$0) {
+      return $$0 instanceof uc $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getIntStream($$0);
+   }
+
+   public uv a(IntStream $$0) {
+      return new uc($$0.toArray());
+   }
+
+   public DataResult<LongStream> j(uv $$0) {
+      return $$0 instanceof uf $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getLongStream($$0);
+   }
+
+   public uv a(LongStream $$0) {
+      return new uf($$0.toArray());
+   }
+
+   public uv b(Stream<uv> $$0) {
+      return um.d.a.a($$0).a();
+   }
+
+   public uv a(uv $$0, String $$1) {
+      if ($$0 instanceof ty $$2) {
+         ty $$3 = new ty();
+         $$2.e().stream().filter($$1x -> !Objects.equals($$1x, $$1)).forEach($$2x -> $$3.a($$2x, $$2.c($$2x)));
+         return $$3;
+      } else {
          return $$0;
       }
    }
 
-   private ul h() throws CommandSyntaxException {
-      this.a('[');
-      int $$0 = this.u.getCursor();
-      char $$1 = this.u.read();
-      this.u.read();
-      this.u.skipWhitespace();
-      if (!this.u.canRead()) {
-         throw c.createWithContext(this.u);
-      } else if ($$1 == 'B') {
-         return new tl(this.a(tl.a, tm.a));
-      } else if ($$1 == 'L') {
-         return new tv(this.a(tv.a, tw.a));
-      } else if ($$1 == 'I') {
-         return new ts(this.a(ts.a, tt.a));
+   @Override
+   public String toString() {
+      return "NBT";
+   }
+
+   public RecordBuilder<uv> mapBuilder() {
+      return new um.h();
+   }
+
+   private static Optional<um.f> k(uv $$0) {
+      if ($$0 instanceof ua) {
+         return Optional.of(um.d.a);
       } else {
-         this.u.setCursor($$0);
-         throw f.createWithContext(this.u, String.valueOf($$1));
+         if ($$0 instanceof tx<?> $$1) {
+            if ($$1.isEmpty()) {
+               return Optional.of(um.d.a);
+            }
+
+            if ($$1 instanceof ue $$2) {
+               return switch ($$2.f()) {
+                  case 0 -> Optional.of(um.d.a);
+                  case 10 -> Optional.of(new um.b($$2));
+                  default -> Optional.of(new um.c($$2));
+               };
+            }
+
+            if ($$1 instanceof tv $$3) {
+               return Optional.of(new um.a($$3.e()));
+            }
+
+            if ($$1 instanceof uc $$4) {
+               return Optional.of(new um.e($$4.g()));
+            }
+
+            if ($$1 instanceof uf $$5) {
+               return Optional.of(new um.g($$5.g()));
+            }
+         }
+
+         return Optional.empty();
       }
    }
 
-   private <T extends Number> List<T> a(un<?> $$0, un<?> $$1) throws CommandSyntaxException {
-      List<T> $$2 = Lists.newArrayList();
+   static class a implements um.f {
+      private final ByteArrayList a = new ByteArrayList();
 
-      while (this.u.peek() != ']') {
-         int $$3 = this.u.getCursor();
-         ul $$4 = this.d();
-         un<?> $$5 = $$4.c();
-         if ($$5 != $$1) {
-            this.u.setCursor($$3);
-            throw e.createWithContext(this.u, $$5.b(), $$0.b());
-         }
+      public a(byte $$0) {
+         this.a.add($$0);
+      }
 
-         if ($$1 == tm.a) {
-            $$2.add((T)((ue)$$4).i());
-         } else if ($$1 == tw.a) {
-            $$2.add((T)((ue)$$4).f());
+      public a(byte[] $$0) {
+         this.a.addElements(0, $$0);
+      }
+
+      @Override
+      public um.f a(uv $$0) {
+         if ($$0 instanceof tw $$1) {
+            this.a.add($$1.i());
+            return this;
          } else {
-            $$2.add((T)((ue)$$4).g());
-         }
-
-         if (!this.i()) {
-            break;
-         }
-
-         if (!this.u.canRead()) {
-            throw c.createWithContext(this.u);
+            return new um.b(this.a).a($$0);
          }
       }
 
-      this.a(']');
-      return $$2;
-   }
-
-   private boolean i() {
-      this.u.skipWhitespace();
-      if (this.u.canRead() && this.u.peek() == ',') {
-         this.u.skip();
-         this.u.skipWhitespace();
-         return true;
-      } else {
-         return false;
+      @Override
+      public uv a() {
+         return new tv(this.a.toByteArray());
       }
    }
 
-   private void a(char $$0) throws CommandSyntaxException {
-      this.u.skipWhitespace();
-      this.u.expect($$0);
+   static class b implements um.f {
+      private final ue a = new ue();
+
+      public b() {
+      }
+
+      public b(Collection<uv> $$0) {
+         this.a.addAll($$0);
+      }
+
+      public b(IntArrayList $$0) {
+         $$0.forEach($$0x -> this.a.add(c(ud.a($$0x))));
+      }
+
+      public b(ByteArrayList $$0) {
+         $$0.forEach($$0x -> this.a.add(c(tw.a($$0x))));
+      }
+
+      public b(LongArrayList $$0) {
+         $$0.forEach($$0x -> this.a.add(c(ug.a($$0x))));
+      }
+
+      private static boolean a(ty $$0) {
+         return $$0.f() == 1 && $$0.e("");
+      }
+
+      private static uv b(uv $$0) {
+         if ($$0 instanceof ty $$1 && !a($$1)) {
+            return $$1;
+         }
+
+         return c($$0);
+      }
+
+      private static ty c(uv $$0) {
+         ty $$1 = new ty();
+         $$1.a("", $$0);
+         return $$1;
+      }
+
+      @Override
+      public um.f a(uv $$0) {
+         this.a.add(b($$0));
+         return this;
+      }
+
+      @Override
+      public uv a() {
+         return this.a;
+      }
+   }
+
+   static class c implements um.f {
+      private final ue a = new ue();
+
+      c(uv $$0) {
+         this.a.add($$0);
+      }
+
+      c(ue $$0) {
+         this.a.addAll($$0);
+      }
+
+      @Override
+      public um.f a(uv $$0) {
+         if ($$0.b() != this.a.f()) {
+            return new um.b().a(this.a).a($$0);
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      @Override
+      public uv a() {
+         return this.a;
+      }
+   }
+
+   static class d implements um.f {
+      public static final um.d a = new um.d();
+
+      private d() {
+      }
+
+      @Override
+      public um.f a(uv $$0) {
+         if ($$0 instanceof ty $$1) {
+            return new um.b().a($$1);
+         } else if ($$0 instanceof tw $$2) {
+            return new um.a($$2.i());
+         } else if ($$0 instanceof ud $$3) {
+            return new um.e($$3.g());
+         } else {
+            return (um.f)($$0 instanceof ug $$4 ? new um.g($$4.f()) : new um.c($$0));
+         }
+      }
+
+      @Override
+      public uv a() {
+         return new ue();
+      }
+   }
+
+   static class e implements um.f {
+      private final IntArrayList a = new IntArrayList();
+
+      public e(int $$0) {
+         this.a.add($$0);
+      }
+
+      public e(int[] $$0) {
+         this.a.addElements(0, $$0);
+      }
+
+      @Override
+      public um.f a(uv $$0) {
+         if ($$0 instanceof ud $$1) {
+            this.a.add($$1.g());
+            return this;
+         } else {
+            return new um.b(this.a).a($$0);
+         }
+      }
+
+      @Override
+      public uv a() {
+         return new uc(this.a.toIntArray());
+      }
+   }
+
+   interface f {
+      um.f a(uv var1);
+
+      default um.f a(Iterable<uv> $$0) {
+         um.f $$1 = this;
+
+         for (uv $$2 : $$0) {
+            $$1 = $$1.a($$2);
+         }
+
+         return $$1;
+      }
+
+      default um.f a(Stream<uv> $$0) {
+         return this.a($$0::iterator);
+      }
+
+      uv a();
+   }
+
+   static class g implements um.f {
+      private final LongArrayList a = new LongArrayList();
+
+      public g(long $$0) {
+         this.a.add($$0);
+      }
+
+      public g(long[] $$0) {
+         this.a.addElements(0, $$0);
+      }
+
+      @Override
+      public um.f a(uv $$0) {
+         if ($$0 instanceof ug $$1) {
+            this.a.add($$1.f());
+            return this;
+         } else {
+            return new um.b(this.a).a($$0);
+         }
+      }
+
+      @Override
+      public uv a() {
+         return new uf(this.a.toLongArray());
+      }
+   }
+
+   class h extends AbstractStringBuilder<uv, ty> {
+      protected h() {
+         super(um.this);
+      }
+
+      protected ty a() {
+         return new ty();
+      }
+
+      protected ty a(String $$0, uv $$1, ty $$2) {
+         $$2.a($$0, $$1);
+         return $$2;
+      }
+
+      protected DataResult<uv> a(ty $$0, uv $$1) {
+         if ($$1 == null || $$1 == ua.b) {
+            return DataResult.success($$0);
+         } else if (!($$1 instanceof ty $$2)) {
+            return DataResult.error(() -> "mergeToMap called with not a map: " + $$1, $$1);
+         } else {
+            ty $$3 = new ty(Maps.newHashMap($$2.i()));
+
+            for (Entry<String, uv> $$4 : $$0.i().entrySet()) {
+               $$3.a($$4.getKey(), $$4.getValue());
+            }
+
+            return DataResult.success($$3);
+         }
+      }
    }
 }

@@ -1,84 +1,19 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bwx<T extends bqt> extends bxq {
-   protected final brb a;
-   private final double i;
-   private final double j;
-   @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected elp d;
-   protected final cae e;
-   protected final Class<T> f;
-   protected final Predicate<bqt> g;
-   protected final Predicate<bqt> h;
-   private final cbj k;
+public class bwx {
+   private static final bnv a = bob.a(100, 200);
 
-   public bwx(brb $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bqf.e::test);
-   }
-
-   public bwx(brb $$0, Class<T> $$1, Predicate<bqt> $$2, float $$3, double $$4, double $$5, Predicate<bqt> $$6) {
-      this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.K();
-      this.a(EnumSet.of(bxq.a.a));
-      this.k = cbj.a().a((double)$$3).a($$6.and($$2));
-   }
-
-   public bwx(brb $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bqt> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a() {
-      this.b = this.a
-         .dM()
-         .a(this.a.dM().a(this.f, this.a.cH().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dr(), this.a.dt(), this.a.dx());
-      if (this.b == null) {
-         return false;
-      } else {
-         esj $$0 = cbn.a(this.a, 16, 7, this.b.dk());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.g(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
-            return this.d != null;
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.e.l();
-   }
-
-   @Override
-   public void c() {
-      this.e.a(this.d, this.i);
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Override
-   public void e() {
-      if (this.a.g((bqa)this.b) < 49.0) {
-         this.a.K().a(this.j);
-      } else {
-         this.a.K().a(this.i);
-      }
+   public static bsx<bre> a() {
+      return bwj.a(
+         (Function<bwj.b<bre>, ? extends App<bwj.c<bre>, bwm<bre>>>)($$0 -> $$0.group($$0.a(cah.aB), $$0.a(cah.m), $$0.c(cah.aG), $$0.b(cah.B), $$0.c(cah.az))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(ayy.a);
+                     $$2.a(ayy.a, (long)a.a($$3x.E_()));
+                     $$1.b();
+                     $$4x.b(brp.m);
+                     return true;
+                  }))
+      );
    }
 }

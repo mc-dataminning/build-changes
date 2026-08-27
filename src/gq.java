@@ -1,5 +1,8 @@
-public record gq<T>(gw a, gt<T> b) {
-   public void a(gu<T> $$0) {
-      this.b.execute($$0, this.a);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gq {
 }

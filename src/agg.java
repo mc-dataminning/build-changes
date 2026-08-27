@@ -1,37 +1,20 @@
-public class agg implements yp<afn> {
-   public static final yg<vi, agg> a = yp.a(agg::a, agg::new);
-   private final int b;
-   private final int c;
+public record agg(float b) implements yz<afx> {
+   public static final yq<vs, agg> a = yz.a(agg::a, agg::new);
 
-   public agg(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private agg(vs $$0) {
+      this($$0.readFloat());
    }
 
-   private agg(vi $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vi $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(vs $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yr<agg> a() {
-      return afl.bv;
+   public zb<agg> a() {
+      return afv.bl;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

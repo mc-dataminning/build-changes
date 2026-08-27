@@ -1,19 +1,151 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class ger extends ggx<cdu, fpx<cdu>> {
-   private static final Map<cdu.d, ajv> a = ac.a(Maps.newHashMap(), $$0 -> {
-      for (cdu.d $$1 : cdu.d.values()) {
-         $$0.put($$1, new ajv(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
+public class ger implements geq.a {
+   private final fcu a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<ger.a> d = Lists.newArrayList();
+   private final List<ger.b> e = Lists.newArrayList();
 
-   public ger(gfr.a $$0) {
-      super($$0, new fpx<>($$0.a(ftu.f)), 0.5F);
+   public ger(fcu $$0) {
+      this.a = $$0;
    }
 
-   public ajv a(cdu $$0) {
-      return a.get($$0.gn());
+   @Override
+   public void a(exn $$0, gbe $$1, double $$2, double $$3, double $$4) {
+      czu $$5 = this.a.r;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
+      } else {
+         etf $$6 = new etf($$2, 0.0, $$4);
+         this.d.removeIf(ger.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         exr $$7 = $$1.getBuffer(gbm.y());
+
+         for (ger.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               gbc.a($$0, $$7, etv.a(new eta($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
+         }
+
+         exr $$9 = $$1.getBuffer(gbm.A());
+
+         for (ger.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> gbc.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
+
+         for (ger.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               geq.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               geq.a($$0, $$1, im.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
+
+         for (ger.a $$12 : this.d) {
+            etf $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.c - 0.2F;
+            double $$16 = $$13.d - 0.2F;
+            double $$17 = $$13.e - 0.2F;
+            double $$18 = $$13.c + 0.2F;
+            double $$19 = $$13.d + 0.2F + 0.5;
+            double $$20 = $$13.e + 0.2F;
+            a($$0, $$1, new eta($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            geq.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+         }
+      }
+   }
+
+   private static void a(exn $$0, gbe $$1, eta $$2, float $$3, float $$4, float $$5, float $$6) {
+      fcf $$7 = fcu.Q().j.m();
+      if ($$7.h()) {
+         etf $$8 = $$7.b().e();
+         geq.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
+
+   public void a(ake<dur> $$0, etf $$1) {
+      this.d.add(new ger.a(ac.b(), $$0, $$1));
+   }
+
+   public void a(duv $$0, int $$1) {
+      this.e.add(new ger.b($$0, $$1));
+   }
+
+   static record a(long a, ake<dur> b, etf c) {
+
+      public boolean a() {
+         return ac.b() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public ake<dur> c() {
+         return this.b;
+      }
+
+      public etf d() {
+         return this.c;
+      }
+   }
+
+   static class b implements dut {
+      public final duv a;
+      public final int b;
+
+      public b(duv $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(czu $$0, etf $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<etf> a(czu $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public duv a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(aqe $$0, iv<dur> $$1, dur.a $$2, etf $$3) {
+         return false;
+      }
    }
 }

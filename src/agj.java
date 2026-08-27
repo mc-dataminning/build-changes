@@ -1,29 +1,23 @@
-public class agj implements yp<afn> {
-   public static final yg<vi, agj> a = yp.a(agj::a, agj::new);
-   private final boolean b;
+import io.netty.buffer.ByteBuf;
 
-   public agj(boolean $$0) {
-      this.b = $$0;
-   }
+public class agj implements yz<afx> {
+   public static final agj a = new agj();
+   public static final yq<ByteBuf, agj> b = yq.a(a);
 
-   private agj(vi $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(vi $$0) {
-      $$0.a(this.b);
+   private agj() {
    }
 
    @Override
-   public yr<agj> a() {
-      return afl.by;
+   public zb<agj> a() {
+      return afv.bo;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,106 +1,113 @@
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Collections;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aut extends aur {
-   public static final String c = "recipeBook";
+public class aut extends auq {
    private static final Logger d = LogUtils.getLogger();
+   private final ServerSocket e;
+   private final String f;
+   private final List<aus> g = Lists.newArrayList();
+   private final akv h;
 
-   public int a(Collection<cvu<?>> $$0, apv $$1) {
-      List<ajv> $$2 = Lists.newArrayList();
-      int $$3 = 0;
-
-      for (cvu<?> $$4 : $$0) {
-         ajv $$5 = $$4.a();
-         if (!this.a.contains($$5) && !$$4.b().an_()) {
-            this.a($$5);
-            this.d($$5);
-            $$2.add($$5);
-            am.g.a($$1, $$4);
-            $$3++;
-         }
-      }
-
-      if ($$2.size() > 0) {
-         this.a(adj.a.b, $$1, $$2);
-      }
-
-      return $$3;
+   private aut(akv $$0, ServerSocket $$1, String $$2) {
+      super("RCON Listener");
+      this.h = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public int b(Collection<cvu<?>> $$0, apv $$1) {
-      List<ajv> $$2 = Lists.newArrayList();
-      int $$3 = 0;
-
-      for (cvu<?> $$4 : $$0) {
-         ajv $$5 = $$4.a();
-         if (this.a.contains($$5)) {
-            this.c($$5);
-            $$2.add($$5);
-            $$3++;
-         }
-      }
-
-      this.a(adj.a.c, $$1, $$2);
-      return $$3;
+   private void d() {
+      this.g.removeIf($$0 -> !$$0.c());
    }
 
-   private void a(adj.a $$0, apv $$1, List<ajv> $$2) {
-      $$1.d.b(new adj($$0, $$2, Collections.emptyList(), this.a()));
-   }
-
-   public to b() {
-      to $$0 = new to();
-      this.a().b($$0);
-      tu $$1 = new tu();
-
-      for (ajv $$2 : this.a) {
-         $$1.add(uj.a($$2.toString()));
-      }
-
-      $$0.a("recipes", $$1);
-      tu $$3 = new tu();
-
-      for (ajv $$4 : this.b) {
-         $$3.add(uj.a($$4.toString()));
-      }
-
-      $$0.a("toBeDisplayed", $$3);
-      return $$0;
-   }
-
-   public void a(to $$0, cvv $$1) {
-      this.a(aus.a($$0));
-      tu $$2 = $$0.c("recipes", 8);
-      this.a($$2, this::a, $$1);
-      tu $$3 = $$0.c("toBeDisplayed", 8);
-      this.a($$3, this::f, $$1);
-   }
-
-   private void a(tu $$0, Consumer<cvu<?>> $$1, cvv $$2) {
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         String $$4 = $$0.j($$3);
-
-         try {
-            ajv $$5 = new ajv($$4);
-            Optional<cvu<?>> $$6 = $$2.a($$5);
-            if ($$6.isEmpty()) {
-               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
-            } else {
-               $$1.accept($$6.get());
+   @Override
+   public void run() {
+      try {
+         while (this.a) {
+            try {
+               Socket $$0 = this.e.accept();
+               aus $$1 = new aus(this.h, this.f, $$0);
+               $$1.a();
+               this.g.add($$1);
+               this.d();
+            } catch (SocketTimeoutException var7) {
+               this.d();
+            } catch (IOException var8) {
+               if (this.a) {
+                  d.info("IO exception: ", var8);
+               }
             }
-         } catch (z var8) {
-            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
          }
+      } finally {
+         this.a(this.e);
       }
    }
 
-   public void a(apv $$0) {
-      $$0.d.b(new adj(adj.a.a, this.a, this.b, this.a()));
+   @Nullable
+   public static aut a(akv $$0) {
+      apb $$1 = $$0.a();
+      String $$2 = $$0.b();
+      if ($$2.isEmpty()) {
+         $$2 = "0.0.0.0";
+      }
+
+      int $$3 = $$1.s;
+      if (0 < $$3 && 65535 >= $$3) {
+         String $$4 = $$1.t;
+         if ($$4.isEmpty()) {
+            d.warn("No rcon password set in server.properties, rcon disabled!");
+            return null;
+         } else {
+            try {
+               ServerSocket $$5 = new ServerSocket($$3, 0, InetAddress.getByName($$2));
+               $$5.setSoTimeout(500);
+               aut $$6 = new aut($$0, $$5, $$4);
+               if (!$$6.a()) {
+                  return null;
+               } else {
+                  d.info("RCON running on {}:{}", $$2, $$3);
+                  return $$6;
+               }
+            } catch (IOException var7) {
+               d.warn("Unable to initialise RCON on {}:{}", new Object[]{$$2, $$3, var7});
+               return null;
+            }
+         }
+      } else {
+         d.warn("Invalid rcon port {} found in server.properties, rcon disabled!", $$3);
+         return null;
+      }
+   }
+
+   @Override
+   public void b() {
+      this.a = false;
+      this.a(this.e);
+      super.b();
+
+      for (aus $$0 : this.g) {
+         if ($$0.c()) {
+            $$0.b();
+         }
+      }
+
+      this.g.clear();
+   }
+
+   private void a(ServerSocket $$0) {
+      d.debug("closeSocket: {}", $$0);
+
+      try {
+         $$0.close();
+      } catch (IOException var3) {
+         d.warn("Failed to close socket", var3);
+      }
    }
 }

@@ -1,145 +1,96 @@
-import java.io.DataInput;
-import java.io.DataOutput;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class tt extends ue {
-   private static final int b = 12;
-   public static final un<tt> a = new un.a<tt>() {
-      public tt a(DataInput $$0, tx $$1) throws IOException {
-         return tt.a(d($$0, $$1));
-      }
+public abstract class tt {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new Gson();
+   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
+   public static final String a = "en_us";
+   private static volatile tt e = c();
 
-      @Override
-      public ui.b a(DataInput $$0, ui $$1, tx $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static int d(DataInput $$0, tx $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readInt();
-      }
-
-      @Override
-      public int c() {
-         return 4;
-      }
-
-      @Override
-      public String a() {
-         return "INT";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Int";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final int c;
-
-   tt(int $$0) {
-      this.c = $$0;
-   }
-
-   public static tt a(int $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? tt.a.a[$$0 - -128] : new tt($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c);
-   }
-
-   @Override
-   public int a() {
-      return 12;
-   }
-
-   @Override
-   public byte b() {
-      return 3;
-   }
-
-   @Override
-   public un<tt> c() {
-      return a;
-   }
-
-   public tt e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tt && this.c == ((tt)$$0).c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c;
-   }
-
-   @Override
-   public void a(up $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.c;
-   }
-
-   @Override
-   public int g() {
-      return this.c;
-   }
-
-   @Override
-   public short h() {
-      return (short)(this.c & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(this.c & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.c;
-   }
-
-   @Override
-   public Number l() {
-      return this.c;
-   }
-
-   @Override
-   public ui.b a(ui $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final tt[] a = new tt[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new tt(-128 + $$0);
+   private static tt c() {
+      Builder<String, String> $$0 = ImmutableMap.builder();
+      BiConsumer<String, String> $$1 = $$0::put;
+      a($$1, "/assets/minecraft/lang/en_us.json");
+      final Map<String, String> $$2 = $$0.build();
+      return new tt() {
+         @Override
+         public String a(String $$0, String $$1) {
+            return $$2.getOrDefault($$0, $$1);
          }
+
+         @Override
+         public boolean b(String $$0) {
+            return $$2.containsKey($$0);
+         }
+
+         @Override
+         public boolean b() {
+            return false;
+         }
+
+         @Override
+         public axi a(wx $$0) {
+            return $$1 -> $$0.a(($$1x, $$2xxx) -> ayp.c($$2xxx, $$1x, $$1) ? Optional.empty() : wx.a, xp.a).isPresent();
+         }
+      };
+   }
+
+   private static void a(BiConsumer<String, String> $$0, String $$1) {
+      try (InputStream $$2 = tt.class.getResourceAsStream($$1)) {
+         a($$2, $$0);
+      } catch (JsonParseException | IOException var7) {
+         b.error("Couldn't read strings from {}", $$1, var7);
       }
+   }
+
+   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
+      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
+
+      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+         String $$4 = d.matcher(axm.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         $$1.accept($$3.getKey(), $$4);
+      }
+   }
+
+   public static tt a() {
+      return e;
+   }
+
+   public static void a(tt $$0) {
+      e = $$0;
+   }
+
+   public String a(String $$0) {
+      return this.a($$0, $$0);
+   }
+
+   public abstract String a(String var1, String var2);
+
+   public abstract boolean b(String var1);
+
+   public abstract boolean b();
+
+   public abstract axi a(wx var1);
+
+   public List<axi> a(List<wx> $$0) {
+      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

@@ -1,40 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eal implements eai {
-   public static final Codec<eal> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bnk.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bni.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bni.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bni.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bni.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, eal::new)
-   );
-   public final int b;
-   public final bnk c;
-   public final bni d;
-   public final float e;
-   public final bni f;
-   public final bni g;
-   public final bni h;
-   public final int i;
-   public final float j;
+public class eal extends dyu<ebf> {
+   private static final im a = new im(8, 3, 8);
+   private static final czb b = new czb(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   public eal(int $$0, bnk $$1, bni $$2, float $$3, bni $$4, bni $$5, bni $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   public eal(Codec<ebf> $$0) {
+      super($$0);
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
+   }
+
+   @Override
+   public boolean a(dyw<ebf> $$0) {
+      dap $$1 = $$0.b();
+      czb $$2 = new czb($$0.e());
+      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
+         return true;
+      } else {
+         im $$3 = a.h($$0.e().v() + a.v());
+         im.a $$4 = new im.a();
+
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, dcx.m.n(), 2);
+                  } else {
+                     $$1.a($$4, dcx.b.n(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

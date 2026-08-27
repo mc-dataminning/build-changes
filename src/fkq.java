@@ -1,85 +1,71 @@
 import javax.annotation.Nullable;
 
-public class fkq extends fjp {
-   private static final wi p = wi.c("controls.keybinds.title");
+public class fkq extends fkt implements ayc {
    @Nullable
-   public fbw a;
-   public long o;
-   private fkp q;
-   private fdy r;
+   private ws a;
+   @Nullable
+   private ws b;
+   private int c;
+   private boolean d;
+   private final boolean r;
 
-   public fkq(fjx $$0, fcc $$1) {
-      super($$0, $$1, p);
+   public fkq(boolean $$0) {
+      super(fcm.a);
+      this.r = $$0;
    }
 
    @Override
-   protected void aM_() {
-      this.q = this.c(new fkp(this, this.j));
-      this.r = fdy.a(wi.c("controls.resetAll"), $$0 -> {
-         for (fbw $$1 : this.c.X) {
-            $$1.b($$1.i());
+   public boolean aD_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aL_() {
+      return false;
+   }
+
+   @Override
+   public void a(ws $$0) {
+      this.b($$0);
+   }
+
+   @Override
+   public void b(ws $$0) {
+      this.a = $$0;
+      this.c(ws.c("menu.working"));
+   }
+
+   @Override
+   public void c(ws $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.d = true;
+   }
+
+   @Override
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      if (this.d) {
+         if (this.r) {
+            this.m.a(null);
          }
-
-         this.q.d();
-      }).a();
-      super.aM_();
-   }
-
-   @Override
-   protected void h() {
-      fhp $$0 = this.d.b(fhp.e().a(8));
-      $$0.a(this.r);
-      $$0.a(fdy.a(wh.d, $$0x -> this.d()).a());
-   }
-
-   @Override
-   protected void c() {
-      this.d.a();
-      this.q.a(this.k, this.d);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.a != null) {
-         this.c.a(this.a, evm.b.c.a($$2));
-         this.a = null;
-         this.q.d();
-         return true;
       } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.a != null) {
-         if ($$0 == 256) {
-            this.c.a(this.a, evm.bv);
-         } else {
-            this.c.a(this.a, evm.a($$0, $$1));
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
          }
 
-         this.a = null;
-         this.o = ac.b();
-         this.q.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      boolean $$4 = false;
-
-      for (fbw $$5 : this.c.X) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.p, ws.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
          }
       }
-
-      this.r.j = $$4;
    }
 }

@@ -1,61 +1,60 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.UUID;
 
 public class ant {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.summon.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("commands.summon.failed.uuid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wi.c("commands.summon.invalidPosition"));
-
-   public static void a(CommandDispatcher<dv> $$0, dr $$1) {
+   public static void a(CommandDispatcher<ec> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("summon").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)dw.a("entity", eu.a($$1, ku.v))
-                     .suggests(ht.d)
-                     .executes($$0x -> b((dv)$$0x.getSource(), eu.e($$0x, "entity"), ((dv)$$0x.getSource()).d(), new to(), true)))
-                  .then(
-                     ((RequiredArgumentBuilder)dw.a("pos", fx.a())
-                           .executes($$0x -> b((dv)$$0x.getSource(), eu.e($$0x, "entity"), fx.a($$0x, "pos"), new to(), true)))
-                        .then(dw.a("nbt", ef.a()).executes($$0x -> b((dv)$$0x.getSource(), eu.e($$0x, "entity"), fx.a($$0x, "pos"), ef.a($$0x, "nbt"), false)))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("serverpack").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ed.a("push")
+                     .then(
+                        ((RequiredArgumentBuilder)ed.a("url", StringArgumentType.string())
+                              .then(
+                                 ((RequiredArgumentBuilder)ed.a("uuid", fr.a())
+                                       .then(
+                                          ed.a("hash", StringArgumentType.word())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ec)$$0x.getSource(),
+                                                      StringArgumentType.getString($$0x, "url"),
+                                                      Optional.of(fr.a($$0x, "uuid")),
+                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
+                                                   )
+                                             )
+                                       ))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ec)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(fr.a($$0x, "uuid")), Optional.empty()
+                                          )
+                                    )
+                              ))
+                           .executes($$0x -> a((ec)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                     )
+               ))
+            .then(ed.a("pop").then(ed.a("uuid", fr.a()).executes($$0x -> a((ec)$$0x.getSource(), fr.a($$0x, "uuid")))))
       );
    }
 
-   public static bqa a(dv $$0, in.c<bqg<?>> $$1, esj $$2, to $$3, boolean $$4) throws CommandSyntaxException {
-      id $$5 = id.a($$2);
-      if (!czg.l($$5)) {
-         throw c.create();
-      } else {
-         to $$6 = $$3.h();
-         $$6.a("id", $$1.h().a().toString());
-         apu $$7 = $$0.e();
-         bqa $$8 = bqg.a($$6, $$7, $$1x -> {
-            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dC(), $$1x.dE());
-            return $$1x;
-         });
-         if ($$8 == null) {
-            throw a.create();
-         } else {
-            if ($$4 && $$8 instanceof bqv) {
-               ((bqv)$$8).a($$0.e(), $$0.e().d_($$8.dm()), bqx.n, null);
-            }
-
-            if (!$$7.e($$8)) {
-               throw b.create();
-            } else {
-               return $$8;
-            }
-         }
-      }
+   private static void a(ec $$0, yz<?> $$1) {
+      $$0.l().ai().e().forEach($$1x -> $$1x.a($$1));
    }
 
-   private static int b(dv $$0, in.c<bqg<?>> $$1, esj $$2, to $$3, boolean $$4) throws CommandSyntaxException {
-      bqa $$5 = a($$0, $$1, $$2, $$3, $$4);
-      $$0.a(() -> wi.a("commands.summon.success", $$5.O_()), true);
-      return 1;
+   private static int a(ec $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
+      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
+      String $$5 = $$3.orElse("");
+      zl $$6 = new zl($$4, $$1, $$5, false, null);
+      a($$0, $$6);
+      return 0;
+   }
+
+   private static int a(ec $$0, UUID $$1) {
+      zk $$2 = new zk(Optional.of($$1));
+      a($$0, $$2);
+      return 0;
    }
 }

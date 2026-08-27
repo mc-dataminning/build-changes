@@ -1,40 +1,15 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
 
 public class anp {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.spectate.self"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wi.b("commands.spectate.not_spectator", $$0));
-
-   public static void a(CommandDispatcher<dv> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("spectate").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((dv)$$0x.getSource(), null, ((dv)$$0x.getSource()).h())))
-            .then(
-               ((RequiredArgumentBuilder)dw.a("target", ei.a()).executes($$0x -> a((dv)$$0x.getSource(), ei.a($$0x, "target"), ((dv)$$0x.getSource()).h())))
-                  .then(dw.a("player", ei.c()).executes($$0x -> a((dv)$$0x.getSource(), ei.a($$0x, "target"), ei.e($$0x, "player"))))
-            )
-      );
-   }
-
-   private static int a(dv $$0, @Nullable bqa $$1, apv $$2) throws CommandSyntaxException {
-      if ($$2 == $$1) {
-         throw a.create();
-      } else if ($$2.f.b() != czd.d) {
-         throw b.create($$2.O_());
-      } else {
-         $$2.d($$1);
-         if ($$1 != null) {
-            $$0.a(() -> wi.a("commands.spectate.success.started", $$1.O_()), false);
-         } else {
-            $$0.a(() -> wi.c("commands.spectate.success.stopped"), false);
-         }
-
+   public static void a(CommandDispatcher<ec> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ed.a("say").requires($$0x -> $$0x.c(2))).then(ed.a("message", et.a()).executes($$0x -> {
+         et.a($$0x, "message", $$1 -> {
+            ec $$2 = (ec)$$0x.getSource();
+            aub $$3 = $$2.l().ah();
+            $$3.a($$1, $$2, wo.a(wo.d, $$2));
+         });
          return 1;
-      }
+      })));
    }
 }

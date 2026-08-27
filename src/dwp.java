@@ -1,20 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.LongFunction;
 
-class dwp implements dwh {
-   public static final Codec<dwp> a = RecordCodecBuilder.create($$0 -> $$0.group(dwh.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dwp::new));
-   private final dwh e;
+public class dwp extends dvr {
+   private final ayd d;
+   private int e;
 
-   public dwp(dwh $$0) {
-      this.e = $$0;
+   public dwp(ayd $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   public boolean a(dab $$0, id $$1) {
-      return !this.e.test($$0, $$1);
+   public int l() {
+      return this.e;
    }
 
    @Override
-   public dwi<?> a() {
-      return dwi.k;
+   public ayd d() {
+      return this.d.d();
+   }
+
+   @Override
+   public dwd e() {
+      return this.d.e();
+   }
+
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof dvr $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   }
+
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
+   }
+
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
+   }
+
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
+   }
+
+   public static ayd a(int $$0, int $$1, long $$2, long $$3) {
+      return ayd.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
+   }
+
+   public static enum a {
+      a(dvr::new),
+      b(dwr::new);
+
+      private final LongFunction<ayd> c;
+
+      private a(LongFunction<ayd> $$0) {
+         this.c = $$0;
+      }
+
+      public ayd a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

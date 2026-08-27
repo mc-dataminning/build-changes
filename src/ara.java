@@ -1,353 +1,105 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Comparators;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import java.util.Objects;
 import org.slf4j.Logger;
 
-public class ara implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final AtomicInteger b = new AtomicInteger(1);
-   private static final ThreadFactory c = $$0 -> {
-      Thread $$1 = new Thread($$0);
-      $$1.setName("Chat-Filter-Worker-" + b.getAndIncrement());
-      return $$1;
-   };
-   private static final String d = "v1/chat";
-   private final URL e;
-   private final ara.c f;
-   final URL g;
-   final ara.b h;
-   final URL i;
-   final ara.b j;
-   private final String k;
-   final ara.a l;
-   final ExecutorService m;
+public class ara {
+   private static final Logger c = LogUtils.getLogger();
+   public static final float a = 0.01F;
+   public static final float b = 64.0F;
+   private static final float d = 9.0F;
+   private static final int e = 10;
+   private final LongSet f = new LongOpenHashSet();
+   private final boolean g;
+   private float h = 9.0F;
+   private float i;
+   private int j;
+   private int k = 1;
 
-   private ara(URL $$0, ara.c $$1, URL $$2, ara.b $$3, URL $$4, ara.b $$5, String $$6, ara.a $$7, int $$8) {
-      this.k = $$6;
-      this.l = $$7;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.m = Executors.newFixedThreadPool($$8, c);
+   public ara(boolean $$0) {
+      this.g = $$0;
    }
 
-   private static URL a(URI $$0, @Nullable JsonObject $$1, String $$2, String $$3) throws MalformedURLException {
-      String $$4 = a($$1, $$2, $$3);
-      return $$0.resolve("/" + $$4).toURL();
+   public void a(dse $$0) {
+      this.f.add($$0.f().a());
    }
 
-   private static String a(@Nullable JsonObject $$0, String $$1, String $$2) {
-      return $$0 != null ? axc.a($$0, $$1, $$2) : $$2;
-   }
-
-   @Nullable
-   public static ara a(String $$0) {
-      if (Strings.isNullOrEmpty($$0)) {
-         return null;
-      } else {
-         try {
-            JsonObject $$1 = axc.a($$0);
-            URI $$2 = new URI(axc.i($$1, "apiServer"));
-            String $$3 = axc.i($$1, "apiKey");
-            if ($$3.isEmpty()) {
-               throw new IllegalArgumentException("Missing API key");
-            } else {
-               int $$4 = axc.a($$1, "ruleId", 1);
-               String $$5 = axc.a($$1, "serverId", "");
-               String $$6 = axc.a($$1, "roomId", "Java:Chat");
-               int $$7 = axc.a($$1, "hashesToDrop", -1);
-               int $$8 = axc.a($$1, "maxConcurrentRequests", 7);
-               JsonObject $$9 = axc.a($$1, "endpoints", null);
-               String $$10 = a($$9, "chat", "v1/chat");
-               boolean $$11 = $$10.equals("v1/chat");
-               URL $$12 = $$2.resolve("/" + $$10).toURL();
-               URL $$13 = a($$2, $$9, "join", "v1/join");
-               URL $$14 = a($$2, $$9, "leave", "v1/leave");
-               ara.b $$15 = $$2x -> {
-                  JsonObject $$3x = new JsonObject();
-                  $$3x.addProperty("server", $$5);
-                  $$3x.addProperty("room", $$6);
-                  $$3x.addProperty("user_id", $$2x.getId().toString());
-                  $$3x.addProperty("user_display_name", $$2x.getName());
-                  return $$3x;
-               };
-               ara.c $$16;
-               if ($$11) {
-                  $$16 = ($$3x, $$4x) -> {
-                     JsonObject $$5x = new JsonObject();
-                     $$5x.addProperty("rule", $$4);
-                     $$5x.addProperty("server", $$5);
-                     $$5x.addProperty("room", $$6);
-                     $$5x.addProperty("player", $$3x.getId().toString());
-                     $$5x.addProperty("player_display_name", $$3x.getName());
-                     $$5x.addProperty("text", $$4x);
-                     $$5x.addProperty("language", "*");
-                     return $$5x;
-                  };
-               } else {
-                  String $$17 = String.valueOf($$4);
-                  $$16 = ($$3x, $$4x) -> {
-                     JsonObject $$5x = new JsonObject();
-                     $$5x.addProperty("rule_id", $$17);
-                     $$5x.addProperty("category", $$5);
-                     $$5x.addProperty("subcategory", $$6);
-                     $$5x.addProperty("user_id", $$3x.getId().toString());
-                     $$5x.addProperty("user_display_name", $$3x.getName());
-                     $$5x.addProperty("text", $$4x);
-                     $$5x.addProperty("language", "*");
-                     return $$5x;
-                  };
-               }
-
-               ara.a $$19 = ara.a.select($$7);
-               String $$20 = Base64.getEncoder().encodeToString($$3.getBytes(StandardCharsets.US_ASCII));
-               return new ara($$12, $$16, $$13, $$15, $$14, $$15, $$20, $$19, $$8);
-            }
-         } catch (Exception var19) {
-            a.warn("Failed to parse chat filter config {}", $$0, var19);
-            return null;
-         }
+   public void a(aqf $$0, czb $$1) {
+      if (!this.f.remove($$1.a()) && $$0.bB()) {
+         $$0.d.b(new acq($$1));
       }
    }
 
-   void a(GameProfile $$0, URL $$1, ara.b $$2, Executor $$3) {
-      $$3.execute(() -> {
-         JsonObject $$3x = $$2.encode($$0);
+   public void a(aqf $$0) {
+      if (this.j < this.k) {
+         float $$1 = Math.max(1.0F, this.h);
+         this.i = Math.min(this.i + this.h, $$1);
+         if (!(this.i < 1.0F)) {
+            if (!this.f.isEmpty()) {
+               aqe $$2 = $$0.z();
+               apn $$3 = $$2.l().a;
+               List<dse> $$4 = this.a($$3, $$0.dp());
+               if (!$$4.isEmpty()) {
+                  are $$5 = $$0.d;
+                  this.j++;
+                  $$5.b(abz.a);
 
-         try {
-            this.b($$3x, $$1);
-         } catch (Exception var6) {
-            a.warn("Failed to send join/leave packet to {} for player {}", new Object[]{$$1, $$0, var6});
-         }
-      });
-   }
+                  for (dse $$6 : $$4) {
+                     a($$5, $$2, $$6);
+                  }
 
-   CompletableFuture<aqm> a(GameProfile $$0, String $$1, ara.a $$2, Executor $$3) {
-      return $$1.isEmpty() ? CompletableFuture.completedFuture(aqm.a) : CompletableFuture.supplyAsync(() -> {
-         JsonObject $$3x = this.f.encode($$0, $$1);
-
-         try {
-            JsonObject $$4 = this.a($$3x, this.e);
-            boolean $$5 = axc.a($$4, "response", false);
-            if ($$5) {
-               return aqm.a($$1);
-            } else {
-               String $$6 = axc.a($$4, "hashed", null);
-               if ($$6 == null) {
-                  return aqm.b($$1);
-               } else {
-                  JsonArray $$7 = axc.v($$4, "hashes");
-                  wm $$8 = this.a($$1, $$7, $$2);
-                  return new aqm($$1, $$8);
+                  $$5.b(new aby($$4.size()));
+                  this.i = this.i - (float)$$4.size();
                }
             }
-         } catch (Exception var10) {
-            a.warn("Failed to validate message '{}'", $$1, var10);
-            return aqm.b($$1);
          }
-      }, $$3);
+      }
    }
 
-   private wm a(String $$0, JsonArray $$1, ara.a $$2) {
-      if ($$1.isEmpty()) {
-         return wm.c;
-      } else if ($$2.shouldIgnore($$0, $$1.size())) {
-         return wm.b;
+   private static void a(are $$0, aqe $$1, dse $$2) {
+      $$0.b(new acw($$2, $$1.y_(), null, null));
+      czb $$3 = $$2.f();
+      afu.a($$1, $$3);
+   }
+
+   private List<dse> a(apn $$0, czb $$1) {
+      int $$2 = axw.d(this.i);
+      List<dse> $$4;
+      if (!this.g && this.f.size() > $$2) {
+         $$4 = this.f
+            .stream()
+            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
+            .stream()
+            .mapToLong(Long::longValue)
+            .mapToObj($$0::d)
+            .filter(Objects::nonNull)
+            .toList();
       } else {
-         wm $$3 = new wm($$0.length());
-
-         for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-            $$3.a($$1.get($$4).getAsInt());
-         }
-
-         return $$3;
+         $$4 = this.f.longStream().mapToObj($$0::d).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
+
+      for (dse $$5 : $$4) {
+         this.f.remove($$5.f().a());
+      }
+
+      return $$4;
    }
 
-   @Override
-   public void close() {
-      this.m.shutdownNow();
+   public void a(float $$0) {
+      this.j--;
+      this.h = Double.isNaN((double)$$0) ? 0.01F : axw.a($$0, 0.01F, 64.0F);
+      if (this.j == 0) {
+         this.i = 1.0F;
+      }
+
+      this.k = 10;
    }
 
-   private void a(InputStream $$0) throws IOException {
-      byte[] $$1 = new byte[1024];
-
-      while ($$0.read($$1) != -1) {
-      }
-   }
-
-   private JsonObject a(JsonObject $$0, URL $$1) throws IOException {
-      HttpURLConnection $$2 = this.c($$0, $$1);
-
-      JsonObject var5;
-      try (InputStream $$3 = $$2.getInputStream()) {
-         if ($$2.getResponseCode() == 204) {
-            return new JsonObject();
-         }
-
-         try {
-            var5 = Streams.parse(new JsonReader(new InputStreamReader($$3, StandardCharsets.UTF_8))).getAsJsonObject();
-         } finally {
-            this.a($$3);
-         }
-      }
-
-      return var5;
-   }
-
-   private void b(JsonObject $$0, URL $$1) throws IOException {
-      HttpURLConnection $$2 = this.c($$0, $$1);
-
-      try (InputStream $$3 = $$2.getInputStream()) {
-         this.a($$3);
-      }
-   }
-
-   private HttpURLConnection c(JsonObject $$0, URL $$1) throws IOException {
-      HttpURLConnection $$2 = (HttpURLConnection)$$1.openConnection();
-      $$2.setConnectTimeout(15000);
-      $$2.setReadTimeout(2000);
-      $$2.setUseCaches(false);
-      $$2.setDoOutput(true);
-      $$2.setDoInput(true);
-      $$2.setRequestMethod("POST");
-      $$2.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-      $$2.setRequestProperty("Accept", "application/json");
-      $$2.setRequestProperty("Authorization", "Basic " + this.k);
-      $$2.setRequestProperty("User-Agent", "Minecraft server" + aa.b().c());
-      OutputStreamWriter $$3 = new OutputStreamWriter($$2.getOutputStream(), StandardCharsets.UTF_8);
-
-      try {
-         JsonWriter $$4 = new JsonWriter($$3);
-
-         try {
-            Streams.write($$0, $$4);
-         } catch (Throwable var10) {
-            try {
-               $$4.close();
-            } catch (Throwable var9) {
-               var10.addSuppressed(var9);
-            }
-
-            throw var10;
-         }
-
-         $$4.close();
-      } catch (Throwable var11) {
-         try {
-            $$3.close();
-         } catch (Throwable var8) {
-            var11.addSuppressed(var8);
-         }
-
-         throw var11;
-      }
-
-      $$3.close();
-      int $$5 = $$2.getResponseCode();
-      if ($$5 >= 200 && $$5 < 300) {
-         return $$2;
-      } else {
-         throw new ara.e($$5 + " " + $$2.getResponseMessage());
-      }
-   }
-
-   public aqz a(GameProfile $$0) {
-      return new ara.d($$0);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      ara.a a = ($$0, $$1) -> false;
-      ara.a b = ($$0, $$1) -> $$0.length() == $$1;
-
-      static ara.a ignoreOverThreshold(int $$0) {
-         return ($$1, $$2) -> $$2 >= $$0;
-      }
-
-      static ara.a select(int $$0) {
-         return switch ($$0) {
-            case -1 -> a;
-            case 0 -> b;
-            default -> ignoreOverThreshold($$0);
-         };
-      }
-
-      boolean shouldIgnore(String var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface b {
-      JsonObject encode(GameProfile var1);
-   }
-
-   @FunctionalInterface
-   interface c {
-      JsonObject encode(GameProfile var1, String var2);
-   }
-
-   class d implements aqz {
-      private final GameProfile c;
-      private final Executor d;
-
-      d(GameProfile $$0) {
-         this.c = $$0;
-         bmy<Runnable> $$1 = bmy.a(ara.this.m, "chat stream for " + $$0.getName());
-         this.d = $$1::a;
-      }
-
-      @Override
-      public void a() {
-         ara.this.a(this.c, ara.this.g, ara.this.h, this.d);
-      }
-
-      @Override
-      public void b() {
-         ara.this.a(this.c, ara.this.i, ara.this.j, this.d);
-      }
-
-      @Override
-      public CompletableFuture<List<aqm>> a(List<String> $$0) {
-         List<CompletableFuture<aqm>> $$1 = $$0.stream().map($$0x -> ara.this.a(this.c, $$0x, ara.this.l, this.d)).collect(ImmutableList.toImmutableList());
-         return ac.e($$1).exceptionally($$0x -> ImmutableList.of());
-      }
-
-      @Override
-      public CompletableFuture<aqm> a(String $$0) {
-         return ara.this.a(this.c, $$0, ara.this.l, this.d);
-      }
-   }
-
-   public static class e extends RuntimeException {
-      e(String $$0) {
-         super($$0);
-      }
+   public boolean a(long $$0) {
+      return this.f.contains($$0);
    }
 }

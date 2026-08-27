@@ -1,24 +1,21 @@
-import java.util.Collection;
-import java.util.List;
-
-public class afh implements yp<aba> {
-   public static final yg<vt, afh> a = yg.a(cvu.a.a(ye.a()), $$0 -> $$0.b, afh::new);
-   private final List<cvu<?>> b;
-
-   public afh(Collection<cvu<?>> $$0) {
-      this.b = List.copyOf($$0);
-   }
+public record afh(ws b, boolean c) implements yz<abk> {
+   public static final yq<wd, afh> a = yq.a(wu.d, afh::b, yo.b, afh::e, afh::new);
 
    @Override
-   public yr<afh> a() {
-      return afl.bd;
+   public zb<afh> a() {
+      return afv.aV;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public List<cvu<?>> b() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

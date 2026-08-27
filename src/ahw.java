@@ -1,29 +1,26 @@
-public class ahw implements yp<ahs> {
-   public static final yg<vi, ahw> a = yp.a(ahw::a, ahw::new);
-   private final int b;
+public enum ahw {
+   a,
+   b,
+   c;
 
-   public ahw(int $$0) {
-      this.b = $$0;
+   private static final int d = 1;
+   private static final int e = 2;
+   private static final int f = 3;
+
+   public static ahw a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         case 3 -> c;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   private ahw(vi $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vi $$0) {
-      $$0.c(this.b);
-   }
-
-   @Override
-   public yr<ahw> a() {
-      return ahy.d;
-   }
-
-   public void a(ahs $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+         case c -> 3;
+      };
    }
 }

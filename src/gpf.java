@@ -1,46 +1,19 @@
-import javax.annotation.Nullable;
+import java.util.UUID;
 
 public interface gpf {
-   ajv a();
+   void a(UUID var1, gpf.b var2);
 
-   @Nullable
-   gqk a(gqj var1);
-
-   gpc b();
-
-   aup c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gpf.a k();
-
-   default boolean r() {
-      return false;
-   }
-
-   default boolean s() {
-      return true;
-   }
-
-   static axt t() {
-      return axt.a();
-   }
+   void a(UUID var1, gpf.a var2);
 
    public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
+
+   public static enum b {
       a,
       b;
    }

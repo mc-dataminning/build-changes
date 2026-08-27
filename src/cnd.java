@@ -1,110 +1,117 @@
-public class cnd extends cmw {
-   private static final int k = 9;
-   private final bny l;
-   private final int m;
+public class cnd {
+   private int a = 20;
+   private float b;
+   private float c;
+   private int d;
+   private int e = 20;
 
-   private cnd(cod<?> $$0, int $$1, cjz $$2, int $$3) {
-      this($$0, $$1, $$2, new boo(9 * $$3), $$3);
+   public cnd() {
+      this.b = 5.0F;
    }
 
-   public static cnd a(int $$0, cjz $$1) {
-      return new cnd(cod.a, $$0, $$1, 1);
+   public void a(int $$0, float $$1) {
+      this.a = Math.min($$0 + this.a, 20);
+      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
    }
 
-   public static cnd b(int $$0, cjz $$1) {
-      return new cnd(cod.b, $$0, $$1, 2);
+   public void a(cry $$0, csd $$1) {
+      if ($$0.y()) {
+         cne $$2 = $$0.z();
+         this.a($$2.a(), $$2.b());
+      }
    }
 
-   public static cnd c(int $$0, cjz $$1) {
-      return new cnd(cod.c, $$0, $$1, 3);
-   }
-
-   public static cnd d(int $$0, cjz $$1) {
-      return new cnd(cod.d, $$0, $$1, 4);
-   }
-
-   public static cnd e(int $$0, cjz $$1) {
-      return new cnd(cod.e, $$0, $$1, 5);
-   }
-
-   public static cnd f(int $$0, cjz $$1) {
-      return new cnd(cod.f, $$0, $$1, 6);
-   }
-
-   public static cnd a(int $$0, cjz $$1, bny $$2) {
-      return new cnd(cod.c, $$0, $$1, $$2, 3);
-   }
-
-   public static cnd b(int $$0, cjz $$1, bny $$2) {
-      return new cnd(cod.f, $$0, $$1, $$2, 6);
-   }
-
-   public cnd(cod<?> $$0, int $$1, cjz $$2, bny $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.l = $$3;
-      this.m = $$4;
-      $$3.d_($$2.m);
-      int $$5 = (this.m - 4) * 18;
-
-      for (int $$6 = 0; $$6 < this.m; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new cos($$3, $$7 + $$6 * 9, 8 + $$7 * 18, 18 + $$6 * 18));
+   public void a(ckl $$0) {
+      bon $$1 = $$0.dN().ak();
+      this.e = this.a;
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$1 != bon.a) {
+            this.a = Math.max(this.a - 1, 0);
          }
       }
 
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         for (int $$9 = 0; $$9 < 9; $$9++) {
-            this.a(new cos($$2, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 103 + $$8 * 18 + $$5));
+      boolean $$2 = $$0.dN().aa().b(czq.k);
+      if ($$2 && this.b > 0.0F && $$0.gl() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$3 = Math.min(this.b, 6.0F);
+            $$0.c($$3 / 6.0F);
+            this.a($$3);
+            this.d = 0;
          }
-      }
-
-      for (int $$10 = 0; $$10 < 9; $$10++) {
-         this.a(new cos($$2, $$10, 8 + $$10 * 18, 161 + $$5));
-      }
-   }
-
-   @Override
-   public boolean a(cka $$0) {
-      return this.l.a($$0);
-   }
-
-   @Override
-   public crs a(cka $$0, int $$1) {
-      crs $$2 = crs.i;
-      cos $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         crs $$4 = $$3.g();
-         $$2 = $$4.r();
-         if ($$1 < this.m * 9) {
-            if (!this.a($$4, this.m * 9, this.i.size(), true)) {
-               return crs.i;
+      } else if ($$2 && this.a >= 18 && $$0.gl()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.ey() > 10.0F || $$1 == bon.d || $$0.ey() > 1.0F && $$1 == bon.c) {
+               $$0.a($$0.dO().i(), 1.0F);
             }
-         } else if (!this.a($$4, 0, this.m * 9, false)) {
-            return crs.i;
-         }
 
-         if ($$4.d()) {
-            $$3.e(crs.i);
-         } else {
-            $$3.b();
+            this.d = 0;
          }
+      } else {
+         this.d = 0;
       }
-
-      return $$2;
    }
 
-   @Override
-   public void b(cka $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public void a(ty $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
+      }
    }
 
-   public bny l() {
-      return this.l;
+   public void b(ty $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
    }
 
-   public int m() {
-      return this.m;
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.a < 20;
+   }
+
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   public float e() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(float $$0) {
+      this.b = $$0;
+   }
+
+   public void c(float $$0) {
+      this.c = $$0;
    }
 }

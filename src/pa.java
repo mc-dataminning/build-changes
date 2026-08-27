@@ -1,35 +1,139 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public abstract class pa extends oz<crn> {
-   private final CompletableFuture<pe.c<dch>> d;
-   private final Map<avt<dch>, avt<crn>> g = new HashMap<>();
-
-   public pa(lc $$0, CompletableFuture<ip.a> $$1, CompletableFuture<pe.c<dch>> $$2) {
-      super($$0, ku.G, $$1, $$0x -> $$0x.n().h());
-      this.d = $$2;
-   }
-
-   public pa(lc $$0, CompletableFuture<ip.a> $$1, CompletableFuture<pe.c<crn>> $$2, CompletableFuture<pe.c<dch>> $$3) {
-      super($$0, ku.G, $$1, $$2, $$0x -> $$0x.n().h());
-      this.d = $$3;
-   }
-
-   protected void a(avt<dch> $$0, avt<crn> $$1) {
-      this.g.put($$0, $$1);
+public class pa extends pn<dat> {
+   public pa(ll $$0, CompletableFuture<ix.a> $$1) {
+      super($$0, ld.ay, $$1);
    }
 
    @Override
-   protected CompletableFuture<ip.a> b() {
-      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
-         this.g.forEach(($$1x, $$2) -> {
-            avq $$3 = this.c((avt<crn>)$$2);
-            Optional<avq> $$4 = $$1.apply($$1x);
-            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
-         });
-         return (ip.a)$$0;
-      });
+   protected void a(ix.a $$0) {
+      this.b(avn.a).a(dba.X).a(dba.V).a(dba.T).a(dba.R);
+      this.b(avn.b).b(avn.a).a(dba.W).a(dba.S).a(dba.U).a(dba.Q).a(dba.P);
+      this.b(avn.c).a(dba.M).a(dba.N);
+      this.b(avn.d).a(dba.K).a(dba.L);
+      this.b(avn.e).a(dba.D).a(dba.H).a(dba.I).a(dba.J).a(dba.G).a(dba.E);
+      this.b(avn.f).a(dba.A).a(dba.B).a(dba.C);
+      this.b(avn.g).a(dba.t).a(dba.v).a(dba.u);
+      this.b(avn.h).a(dba.p).a(dba.q).a(dba.n).a(dba.o);
+      this.b(avn.i).a(dba.z).a(dba.x).a(dba.y);
+      this.b(avn.j).a(dba.i).a(dba.j).a(dba.k).a(dba.m).a(dba.l).a(dba.F);
+      this.b(avn.k).a(dba.r).a(dba.s).a(dba.w);
+      pn.b<dat> $$1 = this.b(avn.m);
+      dbh.a.a.a().forEach($$1::a);
+      pn.b<dat> $$2 = this.b(avn.l);
+      dbh.a.b.a().forEach($$2::a);
+      this.b(avn.n).a(dba.ah).a(dba.ai).a(dba.aj).a(dba.ak).a(dba.al);
+      this.b(avn.p).b(avn.c);
+      this.b(avn.q).a(dba.f);
+      this.b(avn.r).a(dba.q).a(dba.d).a(dba.G);
+      this.b(avn.s).a(dba.z).a(dba.x);
+      this.b(avn.t)
+         .b(avn.b)
+         .b(avn.d)
+         .b(avn.c)
+         .b(avn.e)
+         .b(avn.g)
+         .b(avn.h)
+         .b(avn.i)
+         .b(avn.j)
+         .a(dba.O)
+         .a(dba.Y)
+         .a(dba.e)
+         .a(dba.w)
+         .a(dba.f)
+         .a(dba.r)
+         .a(dba.d)
+         .a(dba.b)
+         .a(dba.c)
+         .a(dba.g)
+         .a(dba.h)
+         .a(dba.s)
+         .a(dba.Z)
+         .a(dba.aa);
+      this.b(avn.u).b(avn.f);
+      this.b(avn.Y).a(dba.ab);
+      this.b(avn.v).b(avn.a);
+      this.b(avn.X).b(avn.b).b(avn.d);
+      this.b(avn.w).a(dba.W).a(dba.U).a(dba.S).a(dba.X).a(dba.V).a(dba.T);
+      this.b(avn.x).a(dba.Q).a(dba.P).a(dba.R);
+      this.b(avn.y).a(dba.f).a(dba.b).a(dba.r).a(dba.d).a(dba.p).b(avn.e).a(dba.F);
+      this.b(avn.z).a(dba.f);
+      this.b(avn.A).b(avn.i);
+      this.b(avn.B).b(avn.b);
+      this.b(avn.C).a(dba.g).a(dba.h);
+      this.b(avn.D).b(avn.f).b(avn.g).a(dba.s).a(dba.w).a(dba.O).b(avn.e);
+      this.b(avn.E).b(avn.c).b(avn.d).b(avn.h).b(avn.j).a(dba.Y).a(dba.e).a(dba.Z).a(dba.aa).a(dba.r).a(dba.d).a(dba.b).a(dba.c);
+      this.b(avn.F).b(avn.c);
+      this.b(avn.G).b(avn.b);
+      this.b(avn.J).a(dba.g);
+      this.b(avn.K).a(dba.f);
+      this.b(avn.L).a(dba.b).a(dba.D);
+      this.b(avn.M).a(dba.r);
+      this.b(avn.N).a(dba.d);
+      this.b(avn.O).a(dba.p);
+      this.b(avn.P).a(dba.p).a(dba.q).a(dba.n).a(dba.o).a(dba.m).a(dba.x);
+      this.b(avn.Q).a(dba.l);
+      this.b(avn.o)
+         .a(dba.b)
+         .a(dba.c)
+         .a(dba.d)
+         .a(dba.e)
+         .a(dba.f)
+         .a(dba.i)
+         .a(dba.j)
+         .a(dba.k)
+         .a(dba.l)
+         .a(dba.m)
+         .a(dba.n)
+         .a(dba.o)
+         .a(dba.p)
+         .a(dba.q)
+         .a(dba.r)
+         .a(dba.s)
+         .a(dba.t)
+         .a(dba.u)
+         .a(dba.v)
+         .a(dba.w)
+         .a(dba.x)
+         .a(dba.y)
+         .a(dba.z)
+         .a(dba.A)
+         .a(dba.B)
+         .a(dba.C)
+         .a(dba.D)
+         .a(dba.F)
+         .a(dba.G)
+         .a(dba.H)
+         .a(dba.I)
+         .a(dba.J)
+         .a(dba.Y)
+         .a(dba.Z)
+         .a(dba.aa);
+      this.b(avn.H).b(avn.l);
+      this.b(avn.R).b(avn.m);
+      this.b(avn.S).a(dba.af);
+      this.b(avn.T).a(dba.ae).a(dba.ac).a(dba.af).a(dba.ad);
+      this.b(avn.U).a(dba.ab);
+      this.b(avn.V).b(avn.m);
+      this.b(avn.W).a(dba.ai).a(dba.aj);
+      this.b(avn.ac).a(dba.P);
+      this.b(avn.Z).b(avn.b).b(avn.d);
+      this.b(avn.aa).a(dba.g).a(dba.h);
+      this.b(avn.ab).b(avn.b).b(avn.d).a(dba.g).a(dba.h);
+      this.b(avn.af).a(dba.Y);
+      this.b(avn.ag).a(dba.Y);
+      this.b(avn.ah).a(dba.a);
+      this.b(avn.ai).a(dba.d).a(dba.e).a(dba.H).a(dba.I).a(dba.G).a(dba.W).a(dba.X).a(dba.F).a(dba.ab).a(dba.L).a(dba.q).a(dba.N).b(avn.n);
+      this.b(avn.aj).a(dba.f).a(dba.P).b(avn.i).b(avn.k).b(avn.m).b(avn.f).a(dba.h);
+      this.b(avn.ak).a(dba.f);
+      this.b(avn.al).a(dba.d).a(dba.e).a(dba.W).a(dba.q).a(dba.L).a(dba.N).a(dba.H).a(dba.I).a(dba.G).a(dba.F);
+      this.b(avn.am).b(avn.d);
+      this.b(avn.an).a(dba.aa);
+      this.b(avn.ao).a(dba.W).a(dba.X);
+      this.b(avn.ap).b(avn.d);
+      this.b(avn.aq).a(dba.g).a(dba.h);
+      this.b(avn.ar).a(dba.d).a(dba.e).a(dba.W).a(dba.q).a(dba.L).a(dba.N).a(dba.H).a(dba.I).a(dba.G).a(dba.F);
+      this.b(avn.ad).a(dba.z).a(dba.Y).a(dba.h).a(dba.G).a(dba.H).a(dba.I).a(dba.g).a(dba.x);
+      this.b(avn.ae).a(dba.A).a(dba.ag).a(dba.ae).a(dba.f).a(dba.B).a(dba.ac).a(dba.r).a(dba.s).a(dba.af).a(dba.ad).a(dba.w).a(dba.C);
    }
 }

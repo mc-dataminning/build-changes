@@ -1,122 +1,66 @@
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public interface ip<T> extends io<T> {
-   Stream<in.c<T>> b();
+public class ip<T> extends jd<T> implements iq<T> {
+   private final akf b;
+   private iv.c<T> c;
 
-   default Stream<aju<T>> c() {
-      return this.b().map(in.c::h);
+   public ip(String $$0, ake<? extends ji<T>> $$1, Lifecycle $$2, boolean $$3) {
+      super($$1, $$2, $$3);
+      this.b = new akf($$0);
    }
 
-   Stream<ir.c<T>> d();
+   @Override
+   public iv.c<T> a(ake<T> $$0, T $$1, jh $$2) {
+      iv.c<T> $$3 = super.a($$0, $$1, $$2);
+      if (this.b.equals($$0.a())) {
+         this.c = $$3;
+      }
 
-   default Stream<avt<T>> e() {
-      return this.d().map(ir.c::f);
+      return $$3;
    }
 
-   public interface a {
-      Stream<aju<? extends ja<?>>> a();
-
-      <T> Optional<ip.b<T>> a(aju<? extends ja<? extends T>> var1);
-
-      default <T> ip.b<T> b(aju<? extends ja<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
-      }
-
-      default <V> ajt<V> a(DynamicOps<V> $$0) {
-         return ajt.a((DynamicOps<T>)$$0, this);
-      }
-
-      default io.a b() {
-         return new io.a() {
-            @Override
-            public <T> Optional<io<T>> a(aju<? extends ja<? extends T>> $$0) {
-               return a.this.a($$0).map($$0x -> $$0x);
-            }
-         };
-      }
-
-      static ip.a a(Stream<ip.b<?>> $$0) {
-         final Map<aju<? extends ja<?>>, ip.b<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(ip.b::f, $$0x -> $$0x));
-         return new ip.a() {
-            @Override
-            public Stream<aju<? extends ja<?>>> a() {
-               return $$1.keySet().stream();
-            }
-
-            @Override
-            public <T> Optional<ip.b<T>> a(aju<? extends ja<? extends T>> $$0) {
-               return Optional.ofNullable((ip.b<T>)$$1.get($$0));
-            }
-         };
-      }
+   @Override
+   public int a(@Nullable T $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == -1 ? super.a(this.c.a()) : $$1;
    }
 
-   public interface b<T> extends ip<T>, iq<T> {
-      aju<? extends ja<? extends T>> f();
+   @Nonnull
+   @Override
+   public akf b(T $$0) {
+      akf $$1 = super.b($$0);
+      return $$1 == null ? this.b : $$1;
+   }
 
-      Lifecycle g();
+   @Nonnull
+   @Override
+   public T a(@Nullable akf $$0) {
+      T $$1 = super.a($$0);
+      return $$1 == null ? this.c.a() : $$1;
+   }
 
-      default ip.b<T> a(cmn $$0) {
-         return cmk.bz.contains(this.f()) ? this.a($$1 -> ((cmk)$$1).a($$0)) : this;
-      }
+   @Override
+   public Optional<T> b(@Nullable akf $$0) {
+      return Optional.ofNullable(super.a($$0));
+   }
 
-      default ip.b<T> a(final Predicate<T> $$0) {
-         return new ip.b.a<T>() {
-            @Override
-            public ip.b<T> a() {
-               return b.this;
-            }
+   @Nonnull
+   @Override
+   public T a(int $$0) {
+      T $$1 = super.a($$0);
+      return $$1 == null ? this.c.a() : $$1;
+   }
 
-            @Override
-            public Optional<in.c<T>> a(aju<T> $$0x) {
-               return this.a().a($$0).filter($$1 -> $$0.test($$1.a()));
-            }
+   @Override
+   public Optional<iv.c<T>> a(ayd $$0) {
+      return super.a($$0).or(() -> Optional.of(this.c));
+   }
 
-            @Override
-            public Stream<in.c<T>> b() {
-               return this.a().b().filter($$1 -> $$0.test($$1.a()));
-            }
-         };
-      }
-
-      public interface a<T> extends ip.b<T> {
-         ip.b<T> a();
-
-         @Override
-         default aju<? extends ja<? extends T>> f() {
-            return this.a().f();
-         }
-
-         @Override
-         default Lifecycle g() {
-            return this.a().g();
-         }
-
-         @Override
-         default Optional<in.c<T>> a(aju<T> $$0) {
-            return this.a().a($$0);
-         }
-
-         @Override
-         default Stream<in.c<T>> b() {
-            return this.a().b();
-         }
-
-         @Override
-         default Optional<ir.c<T>> a(avt<T> $$0) {
-            return this.a().a($$0);
-         }
-
-         @Override
-         default Stream<ir.c<T>> d() {
-            return this.a().d();
-         }
-      }
+   @Override
+   public akf a() {
+      return this.b;
    }
 }

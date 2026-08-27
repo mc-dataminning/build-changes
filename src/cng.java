@@ -1,7 +1,8 @@
-public interface cng {
-   int a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, int var2);
-
-   int a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cng {
 }

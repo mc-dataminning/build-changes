@@ -1,22 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dwn {
+   private final int a;
+   private final int b;
 
-class dwn extends dws {
-   private final ir<dch> e;
-   public static final Codec<dwn> a = RecordCodecBuilder.create($$0 -> a($$0).and(jc.a(ku.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dwn::new));
-
-   public dwn(ji $$0, ir<dch> $$1) {
-      super($$0);
-      this.e = $$1;
+   public dwn(drv $$0, czw $$1) {
+      this.a = Math.max($$1.I_(), $$0.f());
+      this.b = Math.min($$1.J_(), $$0.d());
    }
 
-   @Override
-   protected boolean a(dpi $$0) {
-      return $$0.a(this.e);
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public dwi<?> a() {
-      return dwi.a;
+   public int b() {
+      return this.b;
    }
 }

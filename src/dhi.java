@@ -1,99 +1,149 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class dhi extends dcq implements dck {
-   public static final MapCodec<dhi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aju.a(ku.az).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dhi::new)
-   );
-   protected static final float b = 3.0F;
-   protected static final etc c = dch.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final aju<dxr<?, ?>> d;
+public class dhi extends dfp {
+   public static final MapCodec<dhi> a = b(dhi::new);
+   public static final dqp b = dqo.w;
+   protected static final int c = 6;
+   protected static final int d = 6;
+   protected static final int e = 8;
+   protected static final ety f = dcv.a(5.0, 4.0, 10.0, 11.0, 12.0, 16.0);
+   protected static final ety g = dcv.a(5.0, 4.0, 0.0, 11.0, 12.0, 6.0);
+   protected static final ety h = dcv.a(10.0, 4.0, 5.0, 16.0, 12.0, 11.0);
+   protected static final ety i = dcv.a(0.0, 4.0, 5.0, 6.0, 12.0, 11.0);
+   protected static final ety j = dcv.a(5.0, 0.0, 4.0, 11.0, 6.0, 12.0);
+   protected static final ety k = dcv.a(4.0, 0.0, 5.0, 12.0, 6.0, 11.0);
+   protected static final ety l = dcv.a(5.0, 10.0, 4.0, 11.0, 16.0, 12.0);
+   protected static final ety m = dcv.a(4.0, 10.0, 5.0, 12.0, 16.0, 11.0);
 
    @Override
    public MapCodec<dhi> a() {
       return a;
    }
 
-   public dhi(aju<dxr<?, ?>> $$0, dph.d $$1) {
-      super($$1);
-      this.d = $$0;
+   protected dhi(dpx.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(aE, ir.c).a(b, Boolean.valueOf(false)).a(K, dqj.b));
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return c;
-   }
-
-   @Override
-   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
-
-         for (id $$6 : id.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      switch ((dqj)$$0.c(K)) {
+         case a:
+            switch ($$0.c(aE).o()) {
+               case a:
+                  return k;
+               case c:
+               default:
+                  return j;
             }
-         }
-
-         id $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
+         case b:
+            switch ((ir)$$0.c(aE)) {
+               case f:
+                  return i;
+               case e:
+                  return h;
+               case d:
+                  return g;
+               case c:
+               default:
+                  return f;
             }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
+         case c:
+         default:
+            switch ($$0.c(aE).o()) {
+               case a:
+                  return m;
+               case c:
+               default:
+                  return l;
+            }
       }
    }
 
    @Override
-   protected boolean b(dpi $$0, cym $$1, id $$2) {
-      return $$0.i($$1, $$2);
-   }
+   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
+      if ($$1.B) {
+         dpy $$5 = $$0.a(b);
+         if ($$5.c(b)) {
+            a($$5, $$1, $$2, 1.0F);
+         }
 
-   @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      id $$3 = $$2.d();
-      dpi $$4 = $$1.a_($$3);
-      return $$4.a(ave.ba) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
-   }
-
-   public boolean a(apu $$0, id $$1, dpi $$2, axt $$3) {
-      Optional<? extends in<dxr<?, ?>>> $$4 = $$0.H_().d(ku.az).b(this.d);
-      if ($$4.isEmpty()) {
-         return false;
+         return boq.a;
       } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.l().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
-         }
+         dpy $$6 = this.d($$0, $$1, $$2);
+         float $$7 = $$6.c(b) ? 0.6F : 0.5F;
+         $$1.a(null, $$2, auz.nK, ava.e, 0.3F, $$7);
+         $$1.a($$3, $$6.c(b) ? dur.a : dur.e, $$2);
+         return boq.b;
       }
    }
 
    @Override
-   public boolean b(czj $$0, id $$1, dpi $$2) {
+   protected void a(dpy $$0, czu $$1, im $$2, czm $$3, BiConsumer<csd, im> $$4) {
+      if ($$3.j() == czm.a.d && !$$1.x_()) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public dpy d(dpy $$0, czu $$1, im $$2) {
+      $$0 = $$0.a(b);
+      $$1.a($$2, $$0, 3);
+      this.e($$0, $$1, $$2);
+      return $$0;
+   }
+
+   private static void a(dpy $$0, czv $$1, im $$2, float $$3) {
+      ir $$4 = $$0.c(aE).g();
+      ir $$5 = m($$0).g();
+      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
+      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
+      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
+      $$1.a(new kq(kq.a, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public void a(dpy $$0, czu $$1, im $$2, ayd $$3) {
+      if ($$0.c(b) && $$3.i() < 0.25F) {
+         a($$0, $$1, $$2, 0.5F);
+      }
+   }
+
+   @Override
+   protected void a(dpy $$0, czu $$1, im $$2, dpy $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(b)) {
+            this.e($$0, $$1, $$2);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected int a(dpy $$0, cza $$1, im $$2, ir $$3) {
+      return $$0.c(b) ? 15 : 0;
+   }
+
+   @Override
+   protected int b(dpy $$0, cza $$1, im $$2, ir $$3) {
+      return $$0.c(b) && m($$0) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected boolean f_(dpy $$0) {
       return true;
    }
 
-   @Override
-   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
-      return (double)$$1.i() < 0.4;
+   private void e(dpy $$0, czu $$1, im $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(m($$0).g()), this);
    }
 
    @Override
-   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(K, aE, b);
    }
 }

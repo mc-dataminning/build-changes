@@ -1,29 +1,19 @@
 import com.google.common.collect.ImmutableMap;
 
-public class buc extends bsl<bqv> {
-   private final bnk c;
-   private final float d;
-   private final float e;
-   private final float f;
-
-   public buc(bnk $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(bzw.n, bzx.b, bzw.Q, bzx.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+public class buc extends bsw<brg> {
+   public buc(int $$0, int $$1) {
+      super(ImmutableMap.of(cah.n, cai.a), $$0, $$1);
    }
 
-   protected void a(apu $$0, bqv $$1, long $$2) {
-      axt $$3 = $$1.ei();
-      float $$4 = axm.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = axm.g($$1.dC() + 2.0F * $$3.i() * this.d - this.d);
-      esj $$6 = esj.a($$4, $$5);
-      $$1.dP().a(bzw.n, new bso($$1.bu().e($$6)));
-      $$1.dP().a(bzw.Q, this.c.a($$3));
+   protected boolean a(aqe $$0, brg $$1, long $$2) {
+      return $$1.dQ().c(cah.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   }
+
+   protected void b(aqe $$0, brg $$1, long $$2) {
+      $$1.dQ().b(cah.n);
+   }
+
+   protected void c(aqe $$0, brg $$1, long $$2) {
+      $$1.dQ().c(cah.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
    }
 }

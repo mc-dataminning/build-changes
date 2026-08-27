@@ -1,28 +1,18 @@
-public class gji extends gkc<fzh, fsa<fzh>> {
-   public gji(ghm<fzh, fsa<fzh>> $$0) {
-      super($$0);
+public class gji extends ghg<cig> {
+   private static final akf a = new akf("textures/entity/illager/vindicator.png");
+
+   public gji(ggn.a $$0) {
+      super($$0, new fsf<>($$0.a(fuq.bQ)), 0.5F);
+      this.a(new gkr<cig, fsf<cig>>(this, $$0.d()) {
+         public void a(exn $$0, gbe $$1, int $$2, cig $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gh()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, fzh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ("deadmau5".equals($$3.ad().getString()) && !$$3.ce()) {
-         ewv $$10 = $$1.getBuffer(gaq.c($$3.b().a()));
-         int $$11 = ggs.c($$3, 0.0F);
-
-         for (int $$12 = 0; $$12 < 2; $$12++) {
-            float $$13 = axm.i($$6, $$3.N, $$3.dC()) - axm.i($$6, $$3.aY, $$3.aX);
-            float $$14 = axm.i($$6, $$3.O, $$3.dE());
-            $$0.a();
-            $$0.a(a.d.rotationDegrees($$13));
-            $$0.a(a.b.rotationDegrees($$14));
-            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
-            $$0.a(0.0F, -0.375F, 0.0F);
-            $$0.a(a.b.rotationDegrees(-$$14));
-            $$0.a(a.d.rotationDegrees(-$$13));
-            float $$15 = 1.3333334F;
-            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
-            this.c().a($$0, $$10, $$2, $$11);
-            $$0.b();
-         }
-      }
+   public akf a(cig $$0) {
+      return a;
    }
 }

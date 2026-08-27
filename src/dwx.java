@@ -1,104 +1,119 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import java.util.List;
+import java.util.function.BiPredicate;
 
-public class dwx extends dxf<dww> {
-   public dwx(Codec<dww> $$0) {
-      super($$0);
+public interface dwx extends BiPredicate<dap, im> {
+   Codec<dwx> b = lc.O.q().dispatch(dwx::a, dwy::codec);
+   dwx c = a(dcx.a);
+   dwx d = a(dcx.a, dcx.G);
+
+   dwy<?> a();
+
+   static dwx a(List<dwx> $$0) {
+      return new dwv($$0);
    }
 
-   public boolean a(dww $$0, axt $$1) {
-      return $$1.i() <= $$0.l;
+   static dwx a(dwx... $$0) {
+      return a(List.of($$0));
    }
 
-   public boolean a(dxa $$0, dww $$1, dre $$2, Function<id, in<daf>> $$3, axt $$4, dum $$5, cyn $$6, drd $$7) {
-      int $$8 = (this.d() * 2 - 1) * 16;
-      double $$9 = (double)$$6.a($$4.a(16));
-      int $$10 = $$1.e.a($$4, $$0);
-      double $$11 = (double)$$6.b($$4.a(16));
-      float $$12 = $$4.i() * (float) (Math.PI * 2);
-      float $$13 = $$1.b.a($$4);
-      double $$14 = (double)$$1.f.a($$4);
-      float $$15 = $$1.c.c.a($$4);
-      int $$16 = (int)((float)$$8 * $$1.c.b.a($$4));
-      int $$17 = 0;
-      this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$9, (double)$$10, $$11, $$15, $$12, $$13, 0, $$16, $$14, $$7);
-      return true;
+   static dwx a(dwx $$0, dwx $$1) {
+      return a(List.of($$0, $$1));
    }
 
-   private void a(
-      dxa $$0,
-      dww $$1,
-      dre $$2,
-      Function<id, in<daf>> $$3,
-      long $$4,
-      dum $$5,
-      double $$6,
-      double $$7,
-      double $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      int $$12,
-      int $$13,
-      double $$14,
-      drd $$15
-   ) {
-      axt $$16 = axt.a($$4);
-      float[] $$17 = this.a($$0, $$1, $$16);
-      float $$18 = 0.0F;
-      float $$19 = 0.0F;
-
-      for (int $$20 = $$12; $$20 < $$13; $$20++) {
-         double $$21 = 1.5 + (double)(axm.a((float)$$20 * (float) Math.PI / (float)$$13) * $$9);
-         double $$22 = $$21 * $$14;
-         $$21 *= (double)$$1.c.e.a($$16);
-         $$22 = this.a($$1, $$16, $$22, (float)$$13, (float)$$20);
-         float $$23 = axm.b($$11);
-         float $$24 = axm.a($$11);
-         $$6 += (double)(axm.b($$10) * $$23);
-         $$7 += (double)$$24;
-         $$8 += (double)(axm.a($$10) * $$23);
-         $$11 *= 0.7F;
-         $$11 += $$19 * 0.05F;
-         $$10 += $$18 * 0.05F;
-         $$19 *= 0.8F;
-         $$18 *= 0.5F;
-         $$19 += ($$16.i() - $$16.i()) * $$16.i() * 2.0F;
-         $$18 += ($$16.i() - $$16.i()) * $$16.i() * 4.0F;
-         if ($$16.a(4) != 0) {
-            if (!a($$2.f(), $$6, $$8, $$20, $$13, $$9)) {
-               return;
-            }
-
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$21, $$22, $$15, ($$1x, $$2x, $$3x, $$4x, $$5x) -> this.a($$1x, $$17, $$2x, $$3x, $$4x, $$5x));
-         }
-      }
+   static dwx b(List<dwx> $$0) {
+      return new dww($$0);
    }
 
-   private float[] a(dxa $$0, dww $$1, axt $$2) {
-      int $$3 = $$0.b();
-      float[] $$4 = new float[$$3];
-      float $$5 = 1.0F;
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         if ($$6 == 0 || $$2.a($$1.c.d) == 0) {
-            $$5 = 1.0F + $$2.i() * $$2.i();
-         }
-
-         $$4[$$6] = $$5 * $$5;
-      }
-
-      return $$4;
+   static dwx b(dwx... $$0) {
+      return b(List.of($$0));
    }
 
-   private double a(dww $$0, axt $$1, double $$2, float $$3, float $$4) {
-      float $$5 = 1.0F - axm.e(0.5F - $$4 / $$3) * 2.0F;
-      float $$6 = $$0.c.f + $$0.c.g * $$5;
-      return (double)$$6 * $$2 * (double)axm.b($$1, 0.75F, 1.0F);
+   static dwx b(dwx $$0, dwx $$1) {
+      return b(List.of($$0, $$1));
    }
 
-   private boolean a(dxa $$0, float[] $$1, double $$2, double $$3, double $$4, int $$5) {
-      int $$6 = $$5 - $$0.a();
-      return ($$2 * $$2 + $$4 * $$4) * (double)$$1[$$6 - 1] + $$3 * $$3 / 6.0 >= 1.0;
+   static dwx a(jq $$0, List<dcv> $$1) {
+      return new dxd($$0, iz.a(dcv::r, $$1));
+   }
+
+   static dwx c(List<dcv> $$0) {
+      return a(jq.g, $$0);
+   }
+
+   static dwx a(jq $$0, dcv... $$1) {
+      return a($$0, List.of($$1));
+   }
+
+   static dwx a(dcv... $$0) {
+      return a(jq.g, $$0);
+   }
+
+   static dwx a(jq $$0, awd<dcv> $$1) {
+      return new dxc($$0, $$1);
+   }
+
+   static dwx a(awd<dcv> $$0) {
+      return a(jq.g, $$0);
+   }
+
+   static dwx b(jq $$0, List<elq> $$1) {
+      return new dxe($$0, iz.a(elq::k, $$1));
+   }
+
+   static dwx a(jq $$0, elq... $$1) {
+      return b($$0, List.of($$1));
+   }
+
+   static dwx a(elq... $$0) {
+      return a(jq.g, $$0);
+   }
+
+   static dwx a(dwx $$0) {
+      return new dxf($$0);
+   }
+
+   static dwx a(jq $$0) {
+      return new dxg($$0);
+   }
+
+   static dwx b() {
+      return a(jq.g);
+   }
+
+   static dwx a(dpy $$0, jq $$1) {
+      return new dxk($$1, $$0);
+   }
+
+   static dwx a(jq $$0, ir $$1) {
+      return new dxa($$0, $$1);
+   }
+
+   static dwx a(ir $$0) {
+      return a(jq.g, $$0);
+   }
+
+   static dwx b(jq $$0) {
+      return new dxh($$0);
+   }
+
+   static dwx c() {
+      return b(jq.g);
+   }
+
+   static dwx d() {
+      return c(jq.g);
+   }
+
+   static dwx c(jq $$0) {
+      return a($$0, els.a);
+   }
+
+   static dwx d(jq $$0) {
+      return new dxb($$0);
+   }
+
+   static dwx e() {
+      return dxj.a;
    }
 }

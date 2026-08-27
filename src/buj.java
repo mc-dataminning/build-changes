@@ -1,65 +1,54 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class buj {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private static final int d = 4;
-
-   public static bsm<brb> a(float $$0) {
-      Long2LongMap $$1 = new Long2LongOpenHashMap();
-      MutableLong $$2 = new MutableLong(0L);
-      return bvy.a(
-         (Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$3 -> $$3.group($$3.c(bzw.m), $$3.c(bzw.b))
-               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
-                     if ($$4x.Y() - $$2.getValue() < 20L) {
-                        return false;
-                     } else {
-                        cbw $$7 = $$4x.y();
-                        Optional<id> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(cca.n), $$5.dm(), 48, cbw.b.c);
-                        if (!$$8.isEmpty() && !($$8.get().j($$5.dm()) <= 4.0)) {
-                           MutableInt $$9 = new MutableInt(0);
-                           $$2.setValue($$4x.Y() + (long)$$4x.E_().a(20));
-                           Predicate<id> $$10 = $$3xxx -> {
-                              long $$4xx = $$3xxx.a();
-                              if ($$1.containsKey($$4xx)) {
-                                 return false;
-                              } else if ($$9.incrementAndGet() >= 5) {
-                                 return false;
-                              } else {
-                                 $$1.put($$4xx, $$2.getValue() + 40L);
-                                 return true;
-                              }
-                           };
-                           Set<Pair<in<cbz>, id>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(cca.n), $$10, $$5.dm(), 48, cbw.b.c).collect(Collectors.toSet());
-                           elp $$12 = bse.a($$5, $$11);
-                           if ($$12 != null && $$12.j()) {
-                              id $$13 = $$12.l();
-                              Optional<in<cbz>> $$14 = $$7.c($$13);
-                              if ($$14.isPresent()) {
-                                 $$3x.a(new bzz($$13, $$0, 1));
-                                 afk.c($$4x, $$13);
-                              }
-                           } else if ($$9.getValue() < 5) {
-                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
+   public static bsx<cjy> a() {
+      return bwj.a(
+         (Function<bwj.b<cjy>, ? extends App<bwj.c<cjy>, bwm<cjy>>>)($$0 -> $$0.group($$0.b(cah.c), $$0.b(cah.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        iu $$6 = $$0.b($$1);
+                        $$3.y()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<bre>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof cjy && $$1xxx != $$4)
+                                    .map($$0xxxx -> (cjy)$$0xxxx)
+                                    .filter(bre::bB)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, buj::a)
+                           );
+                        return true;
                      }
-                  }))
+               ))
       );
+   }
+
+   private static cjy a(cjy $$0, cjy $$1) {
+      cjy $$2;
+      cjy $$3;
+      if ($$0.u() > $$1.u()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
+      }
+
+      $$3.dQ().b(cah.c);
+      return $$2;
+   }
+
+   private static boolean a(iu $$0, iv<cck> $$1, cjy $$2) {
+      Optional<iu> $$3 = $$2.dQ().c(cah.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gA().b());
+   }
+
+   private static boolean a(iv<cck> $$0, ckb $$1) {
+      return $$1.b().test($$0);
    }
 }

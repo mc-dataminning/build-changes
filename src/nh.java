@@ -1,32 +1,97 @@
-import java.util.function.UnaryOperator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.List;
+import java.util.function.Supplier;
 
-public class nh {
-   @Deprecated
-   public static ajv a(String $$0) {
-      return new ajv("minecraft", "block/" + $$0);
+public class nh implements nf {
+   private final dcv a;
+   private final List<nh.b> b = Lists.newArrayList();
+
+   private nh(dcv $$0) {
+      this.a = $$0;
    }
 
-   public static ajv b(String $$0) {
-      return new ajv("minecraft", "item/" + $$0);
+   @Override
+   public dcv a() {
+      return this.a;
    }
 
-   public static ajv a(dch $$0, String $$1) {
-      ajv $$2 = kt.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   public static nh a(dcv $$0) {
+      return new nh($$0);
    }
 
-   public static ajv a(dch $$0) {
-      ajv $$1 = kt.e.b($$0);
-      return $$1.d("block/");
+   public nh a(List<nl> $$0) {
+      this.b.add(new nh.b($$0));
+      return this;
    }
 
-   public static ajv a(crn $$0) {
-      ajv $$1 = kt.h.b($$0);
-      return $$1.d("item/");
+   public nh a(nl $$0) {
+      return this.a(ImmutableList.of($$0));
    }
 
-   public static ajv a(crn $$0, String $$1) {
-      ajv $$2 = kt.h.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+   public nh a(ng $$0, List<nl> $$1) {
+      this.b.add(new nh.a($$0, $$1));
+      return this;
+   }
+
+   public nh a(ng $$0, nl... $$1) {
+      return this.a($$0, ImmutableList.copyOf($$1));
+   }
+
+   public nh a(ng $$0, nl $$1) {
+      return this.a($$0, ImmutableList.of($$1));
+   }
+
+   public JsonElement b() {
+      dpz<dcv, dpy> $$0 = this.a.l();
+      this.b.forEach($$1x -> $$1x.a($$0));
+      JsonArray $$1 = new JsonArray();
+      this.b.stream().map(nh.b::a).forEach($$1::add);
+      JsonObject $$2 = new JsonObject();
+      $$2.add("multipart", $$1);
+      return $$2;
+   }
+
+   static class a extends nh.b {
+      private final ng a;
+
+      a(ng $$0, List<nl> $$1) {
+         super($$1);
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dpz<?, ?> $$0) {
+         this.a.a($$0);
+      }
+
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("when", this.a.get());
+      }
+   }
+
+   static class b implements Supplier<JsonElement> {
+      private final List<nl> a;
+
+      b(List<nl> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(dpz<?, ?> $$0) {
+      }
+
+      public void a(JsonObject $$0) {
+      }
+
+      public JsonElement a() {
+         JsonObject $$0 = new JsonObject();
+         this.a($$0);
+         $$0.add("apply", nl.a(this.a));
+         return $$0;
+      }
    }
 }

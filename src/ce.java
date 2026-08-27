@@ -1,92 +1,63 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
 
-public class ce extends cx<ce.a> {
-   @Override
-   public Codec<ce.a> a() {
-      return ce.a.a;
+public abstract class ce implements de<cxu> {
+   private final List<bm> a;
+
+   protected ce(List<bm> $$0) {
+      this.a = $$0;
    }
 
-   public void a(apv $$0, Collection<bqa> $$1) {
-      List<enk> $$2 = Lists.newArrayList();
-      Set<bqg<?>> $$3 = Sets.newHashSet();
-
-      for (bqa $$4 : $$1) {
-         $$3.add($$4.ai());
-         $$2.add(br.b($$0, $$4));
-      }
-
-      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
+   public static <T extends ce> Codec<T> a(Function<List<bm>, T> $$0) {
+      return bm.a.listOf().xmap($$0, ce::b);
    }
 
-   public static record a(Optional<bc> b, List<bc> c, cm.d d) implements cx.a {
-      public static final Codec<ce.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  awu.a(br.b, "player").forGetter(ce.a::a),
-                  awu.a(br.b.listOf(), "victims", List.of()).forGetter(ce.a::b),
-                  awu.a(cm.d.d, "unique_entity_types", cm.d.c).forGetter(ce.a::c)
-               )
-               .apply($$0, ce.a::new)
-      );
+   protected List<bm> b() {
+      return this.a;
+   }
 
-      public static an<ce.a> a(br.a... $$0) {
-         return am.H.a(new ce.a(Optional.empty(), br.a($$0), cm.d.c));
-      }
-
-      public static an<ce.a> a(cm.d $$0) {
-         return am.H.a(new ce.a(Optional.empty(), List.of(), $$0));
-      }
-
-      public boolean a(Collection<enk> $$0, int $$1) {
-         if (!this.c.isEmpty()) {
-            List<enk> $$2 = Lists.newArrayList($$0);
-
-            for (bc $$3 : this.c) {
-               boolean $$4 = false;
-               Iterator<enk> $$5 = $$2.iterator();
-
-               while ($$5.hasNext()) {
-                  enk $$6 = $$5.next();
-                  if ($$3.a($$6)) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  return false;
-               }
-            }
+   public boolean a(csd $$0, cxu $$1) {
+      for (bm $$2 : this.a) {
+         if (!$$2.a($$1)) {
+            return false;
          }
+      }
 
-         return this.d.d($$1);
+      return true;
+   }
+
+   public static ce.a a(List<bm> $$0) {
+      return new ce.a($$0);
+   }
+
+   public static ce.b b(List<bm> $$0) {
+      return new ce.b($$0);
+   }
+
+   public static class a extends ce {
+      public static final Codec<ce.a> a = a(ce.a::new);
+
+      protected a(List<bm> $$0) {
+         super($$0);
       }
 
       @Override
-      public void a(bd $$0) {
-         cx.a.super.a($$0);
-         $$0.a(this.c, ".victims");
+      public jy<cxu> a() {
+         return jz.f;
+      }
+   }
+
+   public static class b extends ce {
+      public static final Codec<ce.b> a = a(ce.b::new);
+
+      protected b(List<bm> $$0) {
+         super($$0);
       }
 
       @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
-
-      public List<bc> b() {
-         return this.c;
-      }
-
-      public cm.d c() {
-         return this.d;
+      public jy<cxu> a() {
+         return jz.p;
       }
    }
 }

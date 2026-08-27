@@ -1,181 +1,525 @@
-import java.util.function.Predicate;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.DynamicLike;
+import java.util.List;
 
 public class drp {
-   public static final int a = 16;
-   public static final int b = 16;
-   public static final int c = 4096;
-   public static final int d = 2;
-   private short e;
-   private short f;
-   private short g;
-   private final drw<dpi> h;
-   private drx<in<daf>> i;
+   public static final double c = 5.999997E7F;
+   public static final double d = 2.9999984E7;
+   private final List<drn> a = Lists.newArrayList();
+   private double b = 0.2;
+   private double f = 5.0;
+   private int g = 15;
+   private int h = 5;
+   private double i;
+   private double j;
+   int k = 29999984;
+   private drp.a l = new drp.d(5.999997E7F);
+   public static final drp.c e = new drp.c(0.0, 0.0, 0.2, 5.0, 5, 15, 5.999997E7F, 0L, 0.0);
 
-   public drp(drw<dpi> $$0, drx<in<daf>> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.g();
+   public boolean a(im $$0) {
+      return (double)($$0.u() + 1) > this.e() && (double)$$0.u() < this.g() && (double)($$0.w() + 1) > this.f() && (double)$$0.w() < this.h();
    }
 
-   public drp(ja<daf> $$0) {
-      this.h = new drw<>(dch.q, dcj.a.n(), drw.d.d);
-      this.i = new drw<>($$0.t(), $$0.g(dam.b), drw.d.e);
+   public boolean a(czb $$0) {
+      return (double)$$0.f() > this.e() && (double)$$0.d() < this.g() && (double)$$0.g() > this.f() && (double)$$0.e() < this.h();
    }
 
-   public dpi a(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2);
+   public boolean a(double $$0, double $$1) {
+      return $$0 > this.e() && $$0 < this.g() && $$1 > this.f() && $$1 < this.h();
    }
 
-   public elb b(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2).u();
+   public boolean a(double $$0, double $$1, double $$2) {
+      return $$0 > this.e() - $$2 && $$0 < this.g() + $$2 && $$1 > this.f() - $$2 && $$1 < this.h() + $$2;
    }
 
-   public void a() {
-      this.h.a();
+   public boolean a(eta $$0) {
+      return $$0.d > this.e() && $$0.a < this.g() && $$0.f > this.f() && $$0.c < this.h();
    }
 
-   public void b() {
-      this.h.b();
+   public im b(double $$0, double $$1, double $$2) {
+      return im.a(axw.a($$0, this.e(), this.g()), $$1, axw.a($$2, this.f(), this.h()));
    }
 
-   public dpi a(int $$0, int $$1, int $$2, dpi $$3) {
-      return this.a($$0, $$1, $$2, $$3, true);
+   public double a(bql $$0) {
+      return this.b($$0.ds(), $$0.dy());
    }
 
-   public dpi a(int $$0, int $$1, int $$2, dpi $$3, boolean $$4) {
-      dpi $$5;
-      if ($$4) {
-         $$5 = this.h.a($$0, $$1, $$2, $$3);
-      } else {
-         $$5 = this.h.b($$0, $$1, $$2, $$3);
-      }
-
-      elb $$7 = $$5.u();
-      elb $$8 = $$3.u();
-      if (!$$5.i()) {
-         this.e--;
-         if ($$5.v()) {
-            this.f--;
-         }
-      }
-
-      if (!$$7.c()) {
-         this.g--;
-      }
-
-      if (!$$3.i()) {
-         this.e++;
-         if ($$3.v()) {
-            this.f++;
-         }
-      }
-
-      if (!$$8.c()) {
-         this.g++;
-      }
-
-      return $$5;
+   public ety c() {
+      return this.l.m();
    }
 
-   public boolean c() {
-      return this.e == 0;
+   public double b(double $$0, double $$1) {
+      double $$2 = $$1 - this.f();
+      double $$3 = this.h() - $$1;
+      double $$4 = $$0 - this.e();
+      double $$5 = this.g() - $$0;
+      double $$6 = Math.min($$4, $$5);
+      $$6 = Math.min($$6, $$2);
+      return Math.min($$6, $$3);
    }
 
-   public boolean d() {
-      return this.e() || this.f();
+   public boolean a(bql $$0, eta $$1) {
+      double $$2 = Math.max(axw.a($$1.b(), $$1.d()), 1.0);
+      return this.a($$0) < $$2 * 2.0 && this.a($$0.ds(), $$0.dy(), $$2);
    }
 
-   public boolean e() {
-      return this.f > 0;
+   public dro d() {
+      return this.l.i();
    }
 
-   public boolean f() {
-      return this.g > 0;
+   public double e() {
+      return this.l.a();
    }
 
-   public void g() {
-      class a implements drw.b<dpi> {
-         public int a;
-         public int b;
-         public int c;
-
-         public void a(dpi $$0, int $$1) {
-            elb $$2 = $$0.u();
-            if (!$$0.i()) {
-               this.a += $$1;
-               if ($$0.v()) {
-                  this.b += $$1;
-               }
-            }
-
-            if (!$$2.c()) {
-               this.a += $$1;
-               if ($$2.f()) {
-                  this.c += $$1;
-               }
-            }
-         }
-      }
-
-      a $$0 = new a();
-      this.h.a($$0);
-      this.e = (short)$$0.a;
-      this.f = (short)$$0.b;
-      this.g = (short)$$0.c;
+   public double f() {
+      return this.l.c();
    }
 
-   public drw<dpi> h() {
-      return this.h;
+   public double g() {
+      return this.l.b();
    }
 
-   public drx<in<daf>> i() {
+   public double h() {
+      return this.l.d();
+   }
+
+   public double a() {
       return this.i;
    }
 
-   public void a(vi $$0) {
-      this.e = $$0.readShort();
-      this.h.a($$0);
-      drw<in<daf>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
+   public double b() {
+      return this.j;
    }
 
-   public void b(vi $$0) {
-      drw<in<daf>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
+   public void c(double $$0, double $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l.k();
+
+      for (drn $$2 : this.l()) {
+         $$2.a(this, $$0, $$1);
+      }
    }
 
-   public void c(vi $$0) {
-      $$0.l(this.e);
-      this.h.b($$0);
-      this.i.b($$0);
+   public double i() {
+      return this.l.e();
    }
 
-   public int j() {
-      return 2 + this.h.c() + this.i.c();
+   public long j() {
+      return this.l.g();
    }
 
-   public boolean a(Predicate<dpi> $$0) {
-      return this.h.a($$0);
+   public double k() {
+      return this.l.h();
    }
 
-   public in<daf> c(int $$0, int $$1, int $$2) {
-      return this.i.a($$0, $$1, $$2);
+   public void a(double $$0) {
+      this.l = new drp.d($$0);
+
+      for (drn $$1 : this.l()) {
+         $$1.a(this, $$0);
+      }
    }
 
-   public void a(dai $$0, dao.f $$1, int $$2, int $$3, int $$4) {
-      drw<in<daf>> $$5 = this.i.e();
-      int $$6 = 4;
+   public void a(double $$0, double $$1, long $$2) {
+      this.l = (drp.a)($$0 == $$1 ? new drp.d($$1) : new drp.b($$0, $$1, $$2));
 
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            for (int $$9 = 0; $$9 < 4; $$9++) {
-               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
-            }
-         }
+      for (drn $$3 : this.l()) {
+         $$3.a(this, $$0, $$1, $$2);
+      }
+   }
+
+   protected List<drn> l() {
+      return Lists.newArrayList(this.a);
+   }
+
+   public void a(drn $$0) {
+      this.a.add($$0);
+   }
+
+   public void b(drn $$0) {
+      this.a.remove($$0);
+   }
+
+   public void a(int $$0) {
+      this.k = $$0;
+      this.l.j();
+   }
+
+   public int m() {
+      return this.k;
+   }
+
+   public double n() {
+      return this.f;
+   }
+
+   public void b(double $$0) {
+      this.f = $$0;
+
+      for (drn $$1 : this.l()) {
+         $$1.c(this, $$0);
+      }
+   }
+
+   public double o() {
+      return this.b;
+   }
+
+   public void c(double $$0) {
+      this.b = $$0;
+
+      for (drn $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public double p() {
+      return this.l.f();
+   }
+
+   public int q() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+
+      for (drn $$1 : this.l()) {
+         $$1.a(this, $$0);
+      }
+   }
+
+   public int r() {
+      return this.h;
+   }
+
+   public void c(int $$0) {
+      this.h = $$0;
+
+      for (drn $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public void s() {
+      this.l = this.l.l();
+   }
+
+   public drp.c t() {
+      return new drp.c(this);
+   }
+
+   public void a(drp.c $$0) {
+      this.c($$0.a(), $$0.b());
+      this.c($$0.c());
+      this.b($$0.d());
+      this.c($$0.e());
+      this.b($$0.f());
+      if ($$0.h() > 0L) {
+         this.a($$0.g(), $$0.i(), $$0.h());
+      } else {
+         this.a($$0.g());
+      }
+   }
+
+   interface a {
+      double a();
+
+      double b();
+
+      double c();
+
+      double d();
+
+      double e();
+
+      double f();
+
+      long g();
+
+      double h();
+
+      dro i();
+
+      void j();
+
+      void k();
+
+      drp.a l();
+
+      ety m();
+   }
+
+   class b implements drp.a {
+      private final double b;
+      private final double c;
+      private final long d;
+      private final long e;
+      private final double f;
+
+      b(double $$0, double $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.f = (double)$$2;
+         this.e = ac.b();
+         this.d = this.e + $$2;
       }
 
-      this.i = $$5;
+      @Override
+      public double a() {
+         return axw.a(drp.this.a() - this.e() / 2.0, (double)(-drp.this.k), (double)drp.this.k);
+      }
+
+      @Override
+      public double c() {
+         return axw.a(drp.this.b() - this.e() / 2.0, (double)(-drp.this.k), (double)drp.this.k);
+      }
+
+      @Override
+      public double b() {
+         return axw.a(drp.this.a() + this.e() / 2.0, (double)(-drp.this.k), (double)drp.this.k);
+      }
+
+      @Override
+      public double d() {
+         return axw.a(drp.this.b() + this.e() / 2.0, (double)(-drp.this.k), (double)drp.this.k);
+      }
+
+      @Override
+      public double e() {
+         double $$0 = (double)(ac.b() - this.e) / this.f;
+         return $$0 < 1.0 ? axw.d($$0, this.b, this.c) : this.c;
+      }
+
+      @Override
+      public double f() {
+         return Math.abs(this.b - this.c) / (double)(this.d - this.e);
+      }
+
+      @Override
+      public long g() {
+         return this.d - ac.b();
+      }
+
+      @Override
+      public double h() {
+         return this.c;
+      }
+
+      @Override
+      public dro i() {
+         return this.c < this.b ? dro.b : dro.a;
+      }
+
+      @Override
+      public void k() {
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public drp.a l() {
+         return (drp.a)(this.g() <= 0L ? drp.this.new d(this.c) : this);
+      }
+
+      @Override
+      public ety m() {
+         return etv.a(
+            etv.c,
+            etv.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            etj.e
+         );
+      }
+   }
+
+   public static class c {
+      private final double a;
+      private final double b;
+      private final double c;
+      private final double d;
+      private final int e;
+      private final int f;
+      private final double g;
+      private final long h;
+      private final double i;
+
+      c(double $$0, double $$1, double $$2, double $$3, int $$4, int $$5, double $$6, long $$7, double $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+      }
+
+      c(drp $$0) {
+         this.a = $$0.a();
+         this.b = $$0.b();
+         this.c = $$0.o();
+         this.d = $$0.n();
+         this.e = $$0.r();
+         this.f = $$0.q();
+         this.g = $$0.i();
+         this.h = $$0.j();
+         this.i = $$0.k();
+      }
+
+      public double a() {
+         return this.a;
+      }
+
+      public double b() {
+         return this.b;
+      }
+
+      public double c() {
+         return this.c;
+      }
+
+      public double d() {
+         return this.d;
+      }
+
+      public int e() {
+         return this.e;
+      }
+
+      public int f() {
+         return this.f;
+      }
+
+      public double g() {
+         return this.g;
+      }
+
+      public long h() {
+         return this.h;
+      }
+
+      public double i() {
+         return this.i;
+      }
+
+      public static drp.c a(DynamicLike<?> $$0, drp.c $$1) {
+         double $$2 = axw.a($$0.get("BorderCenterX").asDouble($$1.a), -2.9999984E7, 2.9999984E7);
+         double $$3 = axw.a($$0.get("BorderCenterZ").asDouble($$1.b), -2.9999984E7, 2.9999984E7);
+         double $$4 = $$0.get("BorderSize").asDouble($$1.g);
+         long $$5 = $$0.get("BorderSizeLerpTime").asLong($$1.h);
+         double $$6 = $$0.get("BorderSizeLerpTarget").asDouble($$1.i);
+         double $$7 = $$0.get("BorderSafeZone").asDouble($$1.d);
+         double $$8 = $$0.get("BorderDamagePerBlock").asDouble($$1.c);
+         int $$9 = $$0.get("BorderWarningBlocks").asInt($$1.e);
+         int $$10 = $$0.get("BorderWarningTime").asInt($$1.f);
+         return new drp.c($$2, $$3, $$8, $$7, $$9, $$10, $$4, $$5, $$6);
+      }
+
+      public void a(ty $$0) {
+         $$0.a("BorderCenterX", this.a);
+         $$0.a("BorderCenterZ", this.b);
+         $$0.a("BorderSize", this.g);
+         $$0.a("BorderSizeLerpTime", this.h);
+         $$0.a("BorderSafeZone", this.d);
+         $$0.a("BorderDamagePerBlock", this.c);
+         $$0.a("BorderSizeLerpTarget", this.i);
+         $$0.a("BorderWarningBlocks", (double)this.e);
+         $$0.a("BorderWarningTime", (double)this.f);
+      }
+   }
+
+   class d implements drp.a {
+      private final double b;
+      private double c;
+      private double d;
+      private double e;
+      private double f;
+      private ety g;
+
+      public d(double $$0) {
+         this.b = $$0;
+         this.n();
+      }
+
+      @Override
+      public double a() {
+         return this.c;
+      }
+
+      @Override
+      public double b() {
+         return this.e;
+      }
+
+      @Override
+      public double c() {
+         return this.d;
+      }
+
+      @Override
+      public double d() {
+         return this.f;
+      }
+
+      @Override
+      public double e() {
+         return this.b;
+      }
+
+      @Override
+      public dro i() {
+         return dro.c;
+      }
+
+      @Override
+      public double f() {
+         return 0.0;
+      }
+
+      @Override
+      public long g() {
+         return 0L;
+      }
+
+      @Override
+      public double h() {
+         return this.b;
+      }
+
+      private void n() {
+         this.c = axw.a(drp.this.a() - this.b / 2.0, (double)(-drp.this.k), (double)drp.this.k);
+         this.d = axw.a(drp.this.b() - this.b / 2.0, (double)(-drp.this.k), (double)drp.this.k);
+         this.e = axw.a(drp.this.a() + this.b / 2.0, (double)(-drp.this.k), (double)drp.this.k);
+         this.f = axw.a(drp.this.b() + this.b / 2.0, (double)(-drp.this.k), (double)drp.this.k);
+         this.g = etv.a(
+            etv.c,
+            etv.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            etj.e
+         );
+      }
+
+      @Override
+      public void j() {
+         this.n();
+      }
+
+      @Override
+      public void k() {
+         this.n();
+      }
+
+      @Override
+      public drp.a l() {
+         return this;
+      }
+
+      @Override
+      public ety m() {
+         return this.g;
+      }
    }
 }

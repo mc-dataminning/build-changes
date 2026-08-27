@@ -1,33 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlp extends dlk implements dll {
-   public static final MapCodec<dlp> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dll.a.e.fieldOf("weathering_state").forGetter(dlp::k), u()).apply($$0, dlp::new)
-   );
-   private final dll.a f;
+public class dlp extends dgj {
+   public static final MapCodec<dlp> c = b(dlp::new);
+   public static final ety e = dcv.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
-   protected MapCodec<dlp> a() {
-      return e;
+   public MapCodec<dlp> a() {
+      return c;
    }
 
-   protected dlp(dll.a $$0, dph.d $$1) {
-      super($$1);
-      this.f = $$0;
+   public dlp(dpx.d $$0) {
+      super($$0, ir.b, e, false);
    }
 
    @Override
-   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
-      this.a_($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected boolean e_(dpi $$0) {
-      return dll.c($$0.b()).isPresent();
-   }
-
-   public dll.a k() {
-      return this.f;
+   protected dgk c() {
+      return (dgk)dcx.oB;
    }
 }

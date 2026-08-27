@@ -1,101 +1,137 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Objects;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class ft implements fs {
-   public static final char a = '^';
-   private final double b;
-   private final double c;
-   private final double d;
+public class ft implements ArgumentType<ft.b> {
+   private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
+   private final ix<dcv> b;
 
-   public ft(double $$0, double $$1, double $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ft(dy $$0) {
+      this.b = $$0.b(ld.f);
    }
 
-   @Override
-   public esj a(dv $$0) {
-      esi $$1 = $$0.k();
-      esj $$2 = $$0.m().a($$0);
-      float $$3 = axm.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = axm.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = axm.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = axm.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = axm.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = axm.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      esj $$9 = new esj((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      esj $$10 = new esj((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      esj $$11 = $$9.c($$10).a(-1.0);
-      double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
-      double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
-      double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new esj($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+   public static ft a(dy $$0) {
+      return new ft($$0);
    }
 
-   @Override
-   public esi b(dv $$0) {
-      return esi.a;
+   public ft.b a(StringReader $$0) throws CommandSyntaxException {
+      return a(this.b, $$0);
    }
 
-   @Override
-   public boolean a() {
-      return true;
+   public static ft.b a(ix<dcv> $$0, StringReader $$1) throws CommandSyntaxException {
+      return (ft.b)fv.b($$0, $$1, true).map($$0x -> new ft.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new ft.c($$0x.a(), $$0x.b(), $$0x.c()));
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public static Predicate<dqc> a(CommandContext<ec> $$0, String $$1) throws CommandSyntaxException {
+      return (Predicate<dqc>)$$0.getArgument($$1, ft.b.class);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return fv.a(this.b, $$1, true, true);
    }
 
-   public static ft a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      double $$2 = a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         double $$3 = a($$0, $$1);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            double $$4 = a($$0, $$1);
-            return new ft($$2, $$3, $$4);
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   static class a implements ft.b {
+      private final dpy a;
+      private final Set<drb<?>> b;
+      @Nullable
+      private final ty c;
+
+      public a(dpy $$0, Set<drb<?>> $$1, @Nullable ty $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public boolean a(dqc $$0) {
+         dpy $$1 = $$0.a();
+         if (!$$1.a(this.a.b())) {
+            return false;
          } else {
-            $$0.setCursor($$1);
-            throw fx.a.createWithContext($$0);
+            for (drb<?> $$2 : this.b) {
+               if ($$1.c($$2) != this.a.c($$2)) {
+                  return false;
+               }
+            }
+
+            if (this.c == null) {
+               return true;
+            } else {
+               dnd $$3 = $$0.b();
+               return $$3 != null && un.a(this.c, $$3.b($$0.c().H_()), true);
+            }
          }
-      } else {
-         $$0.setCursor($$1);
-         throw fx.a.createWithContext($$0);
+      }
+
+      @Override
+      public boolean a() {
+         return this.c != null;
       }
    }
 
-   private static double a(StringReader $$0, int $$1) throws CommandSyntaxException {
-      if (!$$0.canRead()) {
-         throw fy.a.createWithContext($$0);
-      } else if ($$0.peek() != '^') {
-         $$0.setCursor($$1);
-         throw fx.b.createWithContext($$0);
-      } else {
-         $$0.skip();
-         return $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
-      }
+   public interface b extends Predicate<dqc> {
+      boolean a();
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof ft $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
+   static class c implements ft.b {
+      private final iz<dcv> a;
+      @Nullable
+      private final ty b;
+      private final Map<String, String> c;
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c, this.d);
+      c(iz<dcv> $$0, Map<String, String> $$1, @Nullable ty $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
+
+      public boolean a(dqc $$0) {
+         dpy $$1 = $$0.a();
+         if (!$$1.a(this.a)) {
+            return false;
+         } else {
+            for (Entry<String, String> $$2 : this.c.entrySet()) {
+               drb<?> $$3 = $$1.b().l().a($$2.getKey());
+               if ($$3 == null) {
+                  return false;
+               }
+
+               Comparable<?> $$4 = (Comparable<?>)$$3.b($$2.getValue()).orElse(null);
+               if ($$4 == null) {
+                  return false;
+               }
+
+               if ($$1.c($$3) != $$4) {
+                  return false;
+               }
+            }
+
+            if (this.b == null) {
+               return true;
+            } else {
+               dnd $$5 = $$0.b();
+               return $$5 != null && un.a(this.b, $$5.b($$0.c().H_()), true);
+            }
+         }
+      }
+
+      @Override
+      public boolean a() {
+         return this.b != null;
+      }
    }
 }

@@ -1,60 +1,62 @@
 import javax.annotation.Nullable;
 
 public class gra {
-   private boolean a;
+   private static final int a = 100;
+   private final ayd b = ayd.a();
+   private final fcu c;
    @Nullable
-   private gqu.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+   private gqb d;
+   private int e = 100;
 
-   public gra(@Nullable String $$0) {
-      this.d = $$0;
-   }
-
-   public void a(gqv.a $$0) {
-      if (this.c != null) {
-         $$0.a(gqu.j, !this.c.equals("vanilla"));
-      }
-
-      $$0.a(gqu.k, this.a());
-   }
-
-   private gqu.c a() {
-      fve $$0 = fby.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return gqu.c.a;
-      } else {
-         return fby.Q().U() ? gqu.c.b : gqu.c.c;
-      }
-   }
-
-   public boolean a(gqr $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(gqs.b, $$0x -> {
-            $$0x.a(gqu.n, this.b);
-            if (this.d != null) {
-               $$0x.a(gqu.o, this.d);
-            }
-         });
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(czd $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? gqu.b.e : gqu.b.a;
-         case b -> gqu.b.b;
-         case c -> gqu.b.c;
-         case d -> gqu.b.d;
-      };
-   }
-
-   public void a(String $$0) {
+   public gra(fcu $$0) {
       this.c = $$0;
+   }
+
+   public void a() {
+      auv $$0 = this.c.al();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.ak().b(this.d);
+            this.e = axw.a(this.b, 0, $$0.b() / 2);
+         }
+
+         if (!this.c.ak().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, axw.a(this.b, $$0.b(), $$0.c()));
+         }
+      }
+
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
+      }
+   }
+
+   public void a(auv $$0) {
+      this.d = gpw.a($$0.a().a());
+      if (this.d.b() != grf.a) {
+         this.c.ak().a(this.d);
+      }
+
+      this.e = Integer.MAX_VALUE;
+   }
+
+   public void b(auv $$0) {
+      if (this.c($$0)) {
+         this.b();
+      }
+   }
+
+   public void b() {
+      if (this.d != null) {
+         this.c.ak().b(this.d);
+         this.d = null;
+      }
+
+      this.e += 100;
+   }
+
+   public boolean c(auv $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

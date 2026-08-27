@@ -1,46 +1,63 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cqm extends crn implements csr {
-   private static final Map<cql, cqm> a = Maps.newEnumMap(cql.class);
-   private final cql b;
+public class cqm extends cry {
+   public cqm(cry.a $$0) {
+      super($$0);
+   }
 
-   public cqm(cql $$0, crn.a $$1) {
-      super($$1);
-      this.b = $$0;
-      a.put($$0, this);
+   @Nullable
+   public static iu a(czu $$0) {
+      return $$0.D_().j() ? iu.a($$0.ae(), $$0.U()) : null;
    }
 
    @Override
-   public bof a(crs $$0, cka $$1, bqt $$2, boe $$3) {
-      if ($$2 instanceof cde $$4 && $$4.bA() && !$$4.y() && $$4.u() != this.b) {
-         $$4.dM().a($$1, $$4, auo.hH, aup.h, 1.0F, 1.0F);
-         if (!$$1.dM().B) {
-            $$4.b(this.b);
-            $$0.g(1);
+   public boolean d_(csd $$0) {
+      return $$0.b(jz.I) || super.d_($$0);
+   }
+
+   @Override
+   public void a(csd $$0, czu $$1, bql $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof aqe $$5) {
+         cuz $$6 = $$0.a(jz.I);
+         if ($$6 != null) {
+            cuz $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(jz.I, $$7);
+            }
+         }
+      }
+   }
+
+   @Override
+   public boq a(cvn $$0) {
+      im $$1 = $$0.a();
+      czu $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dcx.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, auz.od, ava.h, 1.0F, 1.0F);
+         ckl $$3 = $$0.o();
+         csd $$4 = $$0.n();
+         boolean $$5 = !$$3.fN() && $$4.G() == 1;
+         cuz $$6 = new cuz(Optional.of(iu.a($$2.ae(), $$1)), true);
+         if ($$5) {
+            $$4.b(jz.I, $$6);
+         } else {
+            csd $$7 = $$4.a(csg.qS, 1);
+            $$4.a(1, $$3);
+            $$7.b(jz.I, $$6);
+            if (!$$3.ga().e($$7)) {
+               $$3.a($$7, false);
+            }
          }
 
-         return bof.a($$1.dM().B);
+         return boq.a($$2.B);
       }
-
-      return bof.d;
-   }
-
-   public cql c() {
-      return this.b;
-   }
-
-   public static cqm a(cql $$0) {
-      return a.get($$0);
    }
 
    @Override
-   public boolean a(czg $$0, dny $$1, boolean $$2, cka $$3) {
-      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
-         $$0.a(null, $$1.az_(), auo.hH, aup.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   public String i(csd $$0) {
+      return $$0.b(jz.I) ? "item.minecraft.lodestone_compass" : super.i($$0);
    }
 }

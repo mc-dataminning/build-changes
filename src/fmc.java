@@ -1,30 +1,27 @@
-public class fmc extends fku {
-   private final cyh p;
+public class fmc extends flr<cno> implements fmw<cno> {
+   private static final akf D = new akf("textures/gui/container/generic_54.png");
+   private final int E;
 
-   public fmc(cyh $$0) {
-      this.p = $$0;
+   public fmc(cno $$0, ckk $$1, ws $$2) {
+      super($$0, $$1, $$2);
+      int $$3 = 222;
+      int $$4 = 114;
+      this.E = $$0.m();
+      this.d = 114 + this.E * 18;
+      this.v = this.d - 94;
    }
 
    @Override
-   public cyh m() {
-      return this.p;
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   int C() {
-      return 150;
-   }
-
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.a.a(this.m().m());
-   }
-
-   @Override
-   protected void a(cyh $$0) {
-      if ($$0 instanceof cmd.a $$1) {
-         this.j.L().b(new ahb($$1.h().aj(), this.a.a(), $$0.p()));
-      }
+   protected void a(feh $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.E * 18 + 17);
+      $$0.a(D, $$4, $$5 + this.E * 18 + 17, 0, 126, this.c, 96);
    }
 }

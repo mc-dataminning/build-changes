@@ -1,101 +1,32 @@
-import java.util.Map;
-import java.util.Map.Entry;
+public class bsl {
+   public static final iv<bsg> a = a("generic.armor", new bsn("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
+   public static final iv<bsg> b = a("generic.armor_toughness", new bsn("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final iv<bsg> c = a("generic.attack_damage", new bsn("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
+   public static final iv<bsg> d = a("generic.attack_knockback", new bsn("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
+   public static final iv<bsg> e = a("generic.attack_speed", new bsn("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final iv<bsg> f = a("player.block_break_speed", new bsn("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
+   public static final iv<bsg> g = a("player.block_interaction_range", new bsn("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final iv<bsg> h = a("player.entity_interaction_range", new bsn("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final iv<bsg> i = a("generic.fall_damage_multiplier", new bsn("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true));
+   public static final iv<bsg> j = a("generic.flying_speed", new bsn("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
+   public static final iv<bsg> k = a("generic.follow_range", new bsn("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
+   public static final iv<bsg> l = a("generic.gravity", new bsn("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true));
+   public static final iv<bsg> m = a("generic.jump_strength", new bsn("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
+   public static final iv<bsg> n = a("generic.knockback_resistance", new bsn("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final iv<bsg> o = a("generic.luck", new bsn("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final iv<bsg> p = a("generic.max_absorption", new bsn("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final iv<bsg> q = a("generic.max_health", new bsn("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final iv<bsg> r = a("generic.movement_speed", new bsn("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
+   public static final iv<bsg> s = a("generic.safe_fall_distance", new bsn("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
+   public static final iv<bsg> t = a("generic.scale", new bsn("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
+   public static final iv<bsg> u = a("zombie.spawn_reinforcements", new bsn("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final iv<bsg> v = a("generic.step_height", new bsn("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
 
-public abstract class bsl<E extends bqt> implements bsm<E> {
-   public static final int a = 60;
-   protected final Map<bzw<?>, bzx> b;
-   private bsl.a c = bsl.a.a;
-   private long d;
-   private final int e;
-   private final int f;
-
-   public bsl(Map<bzw<?>, bzx> $$0) {
-      this($$0, 60);
+   private static iv<bsg> a(String $$0, bsg $$1) {
+      return ji.b(lc.u, new akf($$0), $$1);
    }
 
-   public bsl(Map<bzw<?>, bzx> $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public bsl(Map<bzw<?>, bzx> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
-   }
-
-   @Override
-   public bsl.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(apu $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bsl.a.b;
-         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void d(apu $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(apu $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(apu $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(apu $$0, E $$1, long $$2) {
-      this.c = bsl.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(apu $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(apu $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(apu $$0, E $$1) {
-      return true;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<bzw<?>, bzx> $$1 : this.b.entrySet()) {
-         bzw<?> $$2 = $$1.getKey();
-         bzx $$3 = $$1.getValue();
-         if (!$$0.dP().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b;
+   public static iv<bsg> a(ji<bsg> $$0) {
+      return q;
    }
 }

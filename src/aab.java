@@ -1,21 +1,23 @@
-public record aab(id c) implements zq {
-   public static final yg<vi, aab> a = zq.a(aab::a, aab::new);
-   public static final zq.b<aab> b = zq.a("debug/poi_removed");
-
-   private aab(vi $$0) {
-      this($$0.e());
-   }
-
-   private void a(vi $$0) {
-      $$0.a(this.c);
+public record aab(akf a) implements aaa {
+   public static <T extends vs> yq<T, aab> a(akf $$0, int $$1) {
+      return aaa.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.j($$3);
+            return new aab($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public zq.b<aab> a() {
-      return b;
+   public aaa.b<aab> a() {
+      return new aaa.b<>(this.a);
    }
 
-   public id b() {
-      return this.c;
+   public akf b() {
+      return this.a;
    }
 }

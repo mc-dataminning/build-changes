@@ -1,247 +1,232 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class boz {
-   private final ja<bpa> a;
-   private final boy b;
-   private final boy c;
-   private final boy d;
-   private final boy e;
-   private final boy f;
-   private final boy g;
-   private final boy h;
-   private final boy i;
-   private final boy j;
-   private final boy k;
-   private final boy l;
-   private final boy m;
-   private final boy n;
-   private final boy o;
-   private final boy p;
-   private final boy q;
-   private final boy r;
-   private final boy s;
-   private final boy t;
-   private final boy u;
-   private final boy v;
-   private final boy w;
-   private final boy x;
+public class boz implements boj, cpi {
+   private final int c;
+   private final je<csd> d;
+   @Nullable
+   private List<bol> e;
 
-   public boz(jb $$0) {
-      this.a = $$0.d(ku.s);
-      this.b = this.a(bpb.a);
-      this.c = this.a(bpb.b);
-      this.d = this.a(bpb.c);
-      this.e = this.a(bpb.d);
-      this.f = this.a(bpb.e);
-      this.g = this.a(bpb.f);
-      this.h = this.a(bpb.g);
-      this.i = this.a(bpb.h);
-      this.j = this.a(bpb.i);
-      this.k = this.a(bpb.j);
-      this.l = this.a(bpb.k);
-      this.m = this.a(bpb.l);
-      this.n = this.a(bpb.m);
-      this.o = this.a(bpb.n);
-      this.p = this.a(bpb.o);
-      this.q = this.a(bpb.p);
-      this.r = this.a(bpb.q);
-      this.s = this.a(bpb.r);
-      this.t = this.a(bpb.s);
-      this.u = this.a(bpb.t);
-      this.v = this.a(bpb.u);
-      this.w = this.a(bpb.S);
-      this.x = this.a(bpb.T);
+   public boz(int $$0) {
+      this.c = $$0;
+      this.d = je.a($$0, csd.i);
    }
 
-   private boy a(aju<bpa> $$0) {
-      return new boy(this.a.g($$0));
+   public boz(csd... $$0) {
+      this.c = $$0.length;
+      this.d = je.a(csd.i, $$0);
    }
 
-   private boy a(aju<bpa> $$0, @Nullable bqa $$1) {
-      return new boy(this.a.g($$0), $$1);
+   public void a(bol $$0) {
+      if (this.e == null) {
+         this.e = Lists.newArrayList();
+      }
+
+      this.e.add($$0);
    }
 
-   private boy a(aju<bpa> $$0, @Nullable bqa $$1, @Nullable bqa $$2) {
-      return new boy(this.a.g($$0), $$1, $$2);
+   public void b(bol $$0) {
+      if (this.e != null) {
+         this.e.remove($$0);
+      }
    }
 
-   public boy a() {
-      return this.b;
+   @Override
+   public csd a(int $$0) {
+      return $$0 >= 0 && $$0 < this.d.size() ? this.d.get($$0) : csd.i;
    }
 
-   public boy b() {
+   public List<csd> f() {
+      List<csd> $$0 = this.d.stream().filter($$0x -> !$$0x.d()).collect(Collectors.toList());
+      this.a();
+      return $$0;
+   }
+
+   @Override
+   public csd a(int $$0, int $$1) {
+      csd $$2 = bok.a(this.d, $$0, $$1);
+      if (!$$2.d()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   public csd a(cry $$0, int $$1) {
+      csd $$2 = new csd($$0, 0);
+
+      for (int $$3 = this.c - 1; $$3 >= 0; $$3--) {
+         csd $$4 = this.a($$3);
+         if ($$4.f().equals($$0)) {
+            int $$5 = $$1 - $$2.G();
+            csd $$6 = $$4.a($$5);
+            $$2.f($$6.G());
+            if ($$2.G() == $$1) {
+               break;
+            }
+         }
+      }
+
+      if (!$$2.d()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   public csd a(csd $$0) {
+      if ($$0.d()) {
+         return csd.i;
+      } else {
+         csd $$1 = $$0.r();
+         this.d($$1);
+         if ($$1.d()) {
+            return csd.i;
+         } else {
+            this.c($$1);
+            return $$1.d() ? csd.i : $$1;
+         }
+      }
+   }
+
+   public boolean b(csd $$0) {
+      boolean $$1 = false;
+
+      for (csd $$2 : this.d) {
+         if ($$2.d() || csd.c($$2, $$0) && $$2.G() < $$2.i()) {
+            $$1 = true;
+            break;
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public csd b(int $$0) {
+      csd $$1 = this.d.get($$0);
+      if ($$1.d()) {
+         return csd.i;
+      } else {
+         this.d.set($$0, csd.i);
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(int $$0, csd $$1) {
+      this.d.set($$0, $$1);
+      if (!$$1.d() && $$1.G() > this.ah_()) {
+         $$1.e(this.ah_());
+      }
+
+      this.e();
+   }
+
+   @Override
+   public int b() {
       return this.c;
    }
 
-   public boy c() {
+   @Override
+   public boolean c() {
+      for (csd $$0 : this.d) {
+         if (!$$0.d()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.e != null) {
+         for (bol $$0 : this.e) {
+            $$0.a(this);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(ckl $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+      this.e();
+   }
+
+   @Override
+   public void a(ckp $$0) {
+      for (csd $$1 : this.d) {
+         $$0.b($$1);
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.d.stream().filter($$0 -> !$$0.d()).collect(Collectors.toList()).toString();
+   }
+
+   private void c(csd $$0) {
+      for (int $$1 = 0; $$1 < this.c; $$1++) {
+         csd $$2 = this.a($$1);
+         if ($$2.d()) {
+            this.a($$1, $$0.e());
+            return;
+         }
+      }
+   }
+
+   private void d(csd $$0) {
+      for (int $$1 = 0; $$1 < this.c; $$1++) {
+         csd $$2 = this.a($$1);
+         if (csd.c($$2, $$0)) {
+            this.a($$0, $$2);
+            if ($$0.d()) {
+               return;
+            }
+         }
+      }
+   }
+
+   private void a(csd $$0, csd $$1) {
+      int $$2 = Math.min(this.ah_(), $$1.i());
+      int $$3 = Math.min($$0.G(), $$2 - $$1.G());
+      if ($$3 > 0) {
+         $$1.f($$3);
+         $$0.g($$3);
+         this.e();
+      }
+   }
+
+   public void a(ue $$0, ix.a $$1) {
+      this.a();
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         csd.a($$1, (uv)$$0.a($$2)).ifPresent(this::a);
+      }
+   }
+
+   public ue a(ix.a $$0) {
+      ue $$1 = new ue();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         csd $$3 = this.a($$2);
+         if (!$$3.d()) {
+            $$1.add($$3.a($$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public je<csd> g() {
       return this.d;
-   }
-
-   public boy d() {
-      return this.e;
-   }
-
-   public boy e() {
-      return this.f;
-   }
-
-   public boy f() {
-      return this.g;
-   }
-
-   public boy g() {
-      return this.h;
-   }
-
-   public boy h() {
-      return this.i;
-   }
-
-   public boy i() {
-      return this.j;
-   }
-
-   public boy j() {
-      return this.k;
-   }
-
-   public boy k() {
-      return this.l;
-   }
-
-   public boy l() {
-      return this.m;
-   }
-
-   public boy m() {
-      return this.n;
-   }
-
-   public boy n() {
-      return this.o;
-   }
-
-   public boy o() {
-      return this.p;
-   }
-
-   public boy p() {
-      return this.q;
-   }
-
-   public boy q() {
-      return this.r;
-   }
-
-   public boy r() {
-      return this.s;
-   }
-
-   public boy s() {
-      return this.t;
-   }
-
-   public boy t() {
-      return this.u;
-   }
-
-   public boy u() {
-      return this.v;
-   }
-
-   public boy a(bqa $$0) {
-      return this.a(bpb.v, $$0);
-   }
-
-   public boy b(bqa $$0) {
-      return this.a(bpb.w, $$0);
-   }
-
-   public boy c(bqa $$0) {
-      return this.a(bpb.x, $$0);
-   }
-
-   public boy a(bqt $$0) {
-      return this.a(bpb.y, $$0);
-   }
-
-   public boy b(bqt $$0) {
-      return this.a(bpb.z, $$0);
-   }
-
-   public boy c(bqt $$0) {
-      return this.a(bpb.A, $$0);
-   }
-
-   public boy a(cka $$0) {
-      return this.a(bpb.B, $$0);
-   }
-
-   public boy a(ckg $$0, @Nullable bqa $$1) {
-      return this.a(bpb.C, $$0, $$1);
-   }
-
-   public boy a(bqa $$0, @Nullable bqa $$1) {
-      return this.a(bpb.D, $$0, $$1);
-   }
-
-   public boy a(bqa $$0, @Nullable bqt $$1) {
-      return this.a(bpb.E, $$0, $$1);
-   }
-
-   public boy b(bqa $$0, @Nullable bqt $$1) {
-      return this.a(bpb.F, $$0, $$1);
-   }
-
-   public boy c(bqa $$0, @Nullable bqt $$1) {
-      return this.a(bpb.G, $$0, $$1);
-   }
-
-   public boy a(ckn $$0, @Nullable bqa $$1) {
-      return this.a(bpb.H, $$0, $$1);
-   }
-
-   public boy a(ckm $$0, @Nullable bqa $$1) {
-      return $$1 == null ? this.a(bpb.J, $$0) : this.a(bpb.I, $$0, $$1);
-   }
-
-   public boy a(clg $$0, bqa $$1) {
-      return this.a(bpb.K, $$0, $$1);
-   }
-
-   public boy b(bqa $$0, @Nullable bqa $$1) {
-      return this.a(bpb.L, $$0, $$1);
-   }
-
-   public boy c(bqa $$0, @Nullable bqa $$1) {
-      return this.a(bpb.M, $$0, $$1);
-   }
-
-   public boy d(bqa $$0) {
-      return this.a(bpb.N, $$0);
-   }
-
-   public boy a(@Nullable cyy $$0) {
-      return $$0 != null ? this.d($$0.g(), $$0.f()) : this.d(null, null);
-   }
-
-   public boy d(@Nullable bqa $$0, @Nullable bqa $$1) {
-      return this.a($$1 != null && $$0 != null ? bpb.P : bpb.O, $$0, $$1);
-   }
-
-   public boy e(bqa $$0) {
-      return this.a(bpb.Q, $$0);
-   }
-
-   public boy a(esj $$0) {
-      return new boy(this.a.g(bpb.R), $$0);
-   }
-
-   public boy v() {
-      return this.w;
-   }
-
-   public boy w() {
-      return this.x;
    }
 }

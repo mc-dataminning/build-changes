@@ -1,32 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
-public class bth {
-   public static bsm<brb> a(float $$0) {
-      return bvy.a(
-         (Function<bvy.b<brb>, ? extends App<bvy.c<brb>, bwb<brb>>>)($$1 -> $$1.group($$1.c(bzw.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dm())) {
-                           return false;
-                        } else {
-                           id $$5 = $$3.dm();
-                           List<id> $$6 = id.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(id::i).collect(Collectors.toList());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new bzz($$2x, $$0, 0)));
-                           return true;
-                        }
-                     }
-               ))
-      );
+public class bth implements buk {
+   private final bql a;
+   private final boolean b;
+
+   public bth(bql $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public etf a() {
+      return this.b ? this.a.dl().b(0.0, (double)this.a.cJ(), 0.0) : this.a.dl();
+   }
+
+   @Override
+   public im b() {
+      return this.a.dn();
+   }
+
+   @Override
+   public boolean a(bre $$0) {
+      if (this.a instanceof bre $$1) {
+         if (!$$1.bB()) {
+            return false;
+         } else {
+            Optional<caj> $$3 = $$0.dQ().c(cah.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public bql c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

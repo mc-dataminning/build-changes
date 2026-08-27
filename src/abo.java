@@ -1,20 +1,16 @@
-public record abo(int b) implements yp<aba> {
-   public static final yg<vi, abo> a = yp.a(abo::a, abo::new);
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private abo(vi $$0) {
-      this($$0.l());
-   }
-
-   private void a(vi $$0) {
-      $$0.c(this.b);
-   }
+public record abo(Object2IntMap<avg<?>> b) implements yz<abk> {
+   private static final yq<wd, Object2IntMap<avg<?>>> c = yo.a(Object2IntOpenHashMap::new, avg.a, yo.f);
+   public static final yq<wd, abo> a = c.a(abo::new, abo::b);
 
    @Override
-   public yr<abo> a() {
-      return afl.n;
+   public zb<abo> a() {
+      return afv.f;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 }

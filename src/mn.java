@@ -1,22 +1,17 @@
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+public class mn extends mf {
+   protected mn() {
+      super(cmy.a(cna.c));
+   }
 
-public class mn {
-   public static lx a(lc $$0, CompletableFuture<ip.a> $$1) {
-      return new lx(
-         $$0,
-         eni.a(),
-         List.of(
-            new lx.a(ml::new, epw.f),
-            new lx.a(mj::new, epw.c),
-            new lx.a(mk::new, epw.g),
-            new lx.a(mi::new, epw.q),
-            new lx.a(mo::new, epw.j),
-            new lx.a(mm::new, epw.i),
-            new lx.a(mh::new, epw.h),
-            new lx.a(mp::new, epw.r)
-         ),
-         $$1
+   @Override
+   public void a() {
+      this.a(bqr.m, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.yB).a(eqf.a(esf.a(1.0F, 2.0F))).a(eps.a(esf.a(1.0F, 2.0F)))).a(erl.c())));
+      this.a(
+         bqr.l,
+         eoi.b()
+            .a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.ov).a(eqf.a(esf.a(0.0F, 2.0F))).a(eps.a(esf.a(0.0F, 1.0F)))))
+            .a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.rz).a(eqf.a(esf.a(0.0F, 2.0F))).a(eps.a(esf.a(0.0F, 1.0F)))))
+            .a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eps.a(esf.a(0.0F, 1.0F)).a(1)).a(eqj.a(cud.C))).a(erl.c()))
       );
    }
 }

@@ -1,21 +1,31 @@
-public record zo(String c) implements zq {
-   public static final yg<vi, zo> a = zq.a(zo::a, zo::new);
-   public static final zq.b<zo> b = zq.a("brand");
+import java.util.Map;
 
-   private zo(vi $$0) {
-      this($$0.p());
+public class zo implements yz<zf> {
+   public static final yq<vs, zo> a = yz.a(zo::a, zo::new);
+   private final Map<ake<? extends ji<?>>, awg.a> b;
+
+   public zo(Map<ake<? extends ji<?>>, awg.a> $$0) {
+      this.b = $$0;
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.c);
+   private zo(vs $$0) {
+      this.b = $$0.a(vs::r, awg.a::b);
+   }
+
+   private void a(vs $$0) {
+      $$0.a(this.b, vs::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zq.b<zo> a() {
-      return b;
+   public zb<zo> a() {
+      return zp.i;
    }
 
-   public String b() {
-      return this.c;
+   public void a(zf $$0) {
+      $$0.a(this);
+   }
+
+   public Map<ake<? extends ji<?>>, awg.a> b() {
+      return this.b;
    }
 }

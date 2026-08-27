@@ -1,34 +1,42 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dxu extends dxt {
-   public dxu(Codec<eap> $$0) {
+public class dxu extends dxs {
+   public dxu(Codec<dxr> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(els.e, els.c);
    }
 
    @Override
-   protected boolean a(czh $$0, axt $$1, id $$2, dpi $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      id.a $$8 = $$2.j();
+   protected int a() {
+      return 10;
+   }
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(ij.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
-               }
-            }
+   @Override
+   protected float a(ayd $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
+
+   @Override
+   protected double b() {
+      return 5.0;
+   }
+
+   protected boolean a(dxq $$0, dxr $$1, dru $$2, Function<im, iv<dat>> $$3, drt $$4, im.a $$5, im.a $$6, dvc $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         dpy $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
-      }
 
-      return true;
+         $$2.a($$5, $$9, false);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

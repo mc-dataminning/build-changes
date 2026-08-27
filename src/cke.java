@@ -1,307 +1,236 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntAVLTreeSet;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.BitSet;
-import java.util.List;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class cke {
-   private static final int b = 0;
-   public final Int2IntMap a = new Int2IntOpenHashMap();
+public class cke extends cjt {
+   private static final int ca = 5;
+   @Nullable
+   private im cb;
+   private int cc;
 
-   public void a(crs $$0) {
-      if (!$$0.l() && !$$0.A() && !$$0.b(jr.d)) {
-         this.b($$0);
-      }
+   public cke(bqr<? extends cke> $$0, czu $$1) {
+      super($$0, $$1);
    }
 
-   public void b(crs $$0) {
-      this.a($$0, 64);
+   @Override
+   protected void z() {
+      this.bS.a(0, new bxv(this));
+      this.bS.a(0, new bzm<>(this, cuc.a(csg.sk, cud.g), auz.Bi, $$0 -> this.dN().R() && !$$0.cf()));
+      this.bS.a(0, new bzm<>(this, new csd(csg.qE), auz.Bn, $$0 -> this.dN().Q() && $$0.cf()));
+      this.bS.a(1, new bzk(this));
+      this.bS.a(1, new bxi<>(this, cik.class, 8.0F, 0.5, 0.5));
+      this.bS.a(1, new bxi<>(this, chk.class, 12.0F, 0.5, 0.5));
+      this.bS.a(1, new bxi<>(this, cig.class, 8.0F, 0.5, 0.5));
+      this.bS.a(1, new bxi<>(this, cif.class, 8.0F, 0.5, 0.5));
+      this.bS.a(1, new bxi<>(this, chu.class, 15.0F, 0.5, 0.5));
+      this.bS.a(1, new bxi<>(this, chp.class, 12.0F, 0.5, 0.5));
+      this.bS.a(1, new bxi<>(this, cij.class, 10.0F, 0.5, 0.5));
+      this.bS.a(1, new byu(this, 0.5));
+      this.bS.a(1, new byk(this));
+      this.bS.a(2, new cke.a(this, 2.0, 0.35));
+      this.bS.a(4, new byp(this, 0.35));
+      this.bS.a(8, new bzo(this, 0.35));
+      this.bS.a(9, new bye(this, ckl.class, 3.0F, 1.0F));
+      this.bS.a(10, new byj(this, brg.class, 8.0F));
    }
 
-   public void a(crs $$0, int $$1) {
-      if (!$$0.d()) {
-         int $$2 = c($$0);
-         int $$3 = Math.min($$1, $$0.G());
-         this.b($$2, $$3);
-      }
+   @Nullable
+   @Override
+   public bqf a(aqe $$0, bqf $$1) {
+      return null;
    }
 
-   public static int c(crs $$0) {
-      return kt.h.a($$0.f());
+   @Override
+   public boolean gs() {
+      return false;
    }
 
-   boolean b(int $$0) {
-      return this.a.get($$0) > 0;
-   }
-
-   int a(int $$0, int $$1) {
-      int $$2 = this.a.get($$0);
-      if ($$2 >= $$1) {
-         this.a.put($$0, $$2 - $$1);
-         return $$0;
-      } else {
-         return 0;
-      }
-   }
-
-   void b(int $$0, int $$1) {
-      this.a.put($$0, this.a.get($$0) + $$1);
-   }
-
-   public boolean a(cvs<?> $$0, @Nullable IntList $$1) {
-      return this.a($$0, $$1, 1);
-   }
-
-   public boolean a(cvs<?> $$0, @Nullable IntList $$1, int $$2) {
-      return new cke.a($$0).a($$2, $$1);
-   }
-
-   public int a(cvu<?> $$0, @Nullable IntList $$1) {
-      return this.a($$0, Integer.MAX_VALUE, $$1);
-   }
-
-   public int a(cvu<?> $$0, int $$1, @Nullable IntList $$2) {
-      return new cke.a($$0.b()).b($$1, $$2);
-   }
-
-   public static crs a(int $$0) {
-      return $$0 == 0 ? crs.i : new crs(crn.b($$0));
-   }
-
-   public void a() {
-      this.a.clear();
-   }
-
-   class a {
-      private final cvs<?> b;
-      private final List<cvp> c = Lists.newArrayList();
-      private final int d;
-      private final int[] e;
-      private final int f;
-      private final BitSet g;
-      private final IntList h = new IntArrayList();
-
-      public a(cvs<?> $$0) {
-         this.b = $$0;
-         this.c.addAll($$0.a());
-         this.c.removeIf(cvp::c);
-         this.d = this.c.size();
-         this.e = this.a();
-         this.f = this.e.length;
-         this.g = new BitSet(this.d + this.f + this.d + this.d * this.f);
-
-         for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-            IntList $$2 = this.c.get($$1).b();
-
-            for (int $$3 = 0; $$3 < this.f; $$3++) {
-               if ($$2.contains(this.e[$$3])) {
-                  this.g.set(this.d(true, $$3, $$1));
-               }
-            }
+   @Override
+   public boq b(ckl $$0, bop $$1) {
+      csd $$2 = $$0.b($$1);
+      if (!$$2.a(csg.tJ) && this.bB() && !this.gq() && !this.p_()) {
+         if ($$1 == bop.a) {
+            $$0.a(avj.S);
          }
-      }
 
-      public boolean a(int $$0, @Nullable IntList $$1) {
-         if ($$0 <= 0) {
-            return true;
+         if (this.gr().isEmpty()) {
+            return boq.a(this.dN().B);
          } else {
-            int $$2;
-            for ($$2 = 0; this.a($$0); $$2++) {
-               cke.this.a(this.e[this.h.getInt(0)], $$0);
-               int $$3 = this.h.size() - 1;
-               this.c(this.h.getInt($$3));
-
-               for (int $$4 = 0; $$4 < $$3; $$4++) {
-                  this.c(($$4 & 1) == 0, this.h.get($$4), this.h.get($$4 + 1));
-               }
-
-               this.h.clear();
-               this.g.clear(0, this.d + this.f);
+            if (!this.dN().B) {
+               this.f($$0);
+               this.a($$0, this.O_(), 1);
             }
 
-            boolean $$5 = $$2 == this.d;
-            boolean $$6 = $$5 && $$1 != null;
-            if ($$6) {
-               $$1.clear();
+            return boq.a(this.dN().B);
+         }
+      } else {
+         return super.b($$0, $$1);
+      }
+   }
+
+   @Override
+   protected void gw() {
+      if (this.dN().J().b(cna.d)) {
+         this.gz();
+      } else {
+         ckc.g[] $$0 = (ckc.g[])ckc.b.get(1);
+         ckc.g[] $$1 = (ckc.g[])ckc.b.get(2);
+         if ($$0 != null && $$1 != null) {
+            cyt $$2 = this.gr();
+            this.a($$2, $$0, 5);
+            int $$3 = this.ah.a($$1.length);
+            ckc.g $$4 = $$1[$$3];
+            cys $$5 = $$4.a(this, this.ah);
+            if ($$5 != null) {
+               $$2.add($$5);
             }
-
-            this.g.clear(0, this.d + this.f + this.d);
-            int $$7 = 0;
-
-            for (cvp $$9 : this.b.a()) {
-               if ($$6 && $$9.c()) {
-                  $$1.add(0);
-               } else {
-                  for (int $$10 = 0; $$10 < this.f; $$10++) {
-                     if (this.b(false, $$7, $$10)) {
-                        this.c(true, $$10, $$7);
-                        cke.this.b(this.e[$$10], $$0);
-                        if ($$6) {
-                           $$1.add(this.e[$$10]);
-                        }
-                     }
-                  }
-
-                  $$7++;
-               }
-            }
-
-            return $$5;
          }
       }
+   }
 
-      private int[] a() {
-         IntCollection $$0 = new IntAVLTreeSet();
+   private void gz() {
+      cyt $$0 = this.gr();
 
-         for (cvp $$1 : this.c) {
-            $$0.addAll($$1.b());
-         }
+      for (Pair<ckc.g[], Integer> $$1 : ckc.d) {
+         ckc.g[] $$2 = (ckc.g[])$$1.getLeft();
+         this.a($$0, $$2, (Integer)$$1.getRight());
+      }
+   }
 
-         IntIterator $$2 = $$0.iterator();
+   @Override
+   public void b(ty $$0) {
+      super.b($$0);
+      $$0.a("DespawnDelay", this.cc);
+      if (this.cb != null) {
+         $$0.a("wander_target", un.a(this.cb));
+      }
+   }
 
-         while ($$2.hasNext()) {
-            if (!cke.this.b($$2.nextInt())) {
-               $$2.remove();
-            }
-         }
-
-         return $$0.toIntArray();
+   @Override
+   public void a(ty $$0) {
+      super.a($$0);
+      if ($$0.b("DespawnDelay", 99)) {
+         this.cc = $$0.h("DespawnDelay");
       }
 
-      private boolean a(int $$0) {
-         int $$1 = this.f;
+      un.a($$0, "wander_target").ifPresent($$0x -> this.cb = $$0x);
+      this.c_(Math.max(0, this.g()));
+   }
 
-         for (int $$2 = 0; $$2 < $$1; $$2++) {
-            if (cke.this.a.get(this.e[$$2]) >= $$0) {
-               this.a(false, $$2);
+   @Override
+   public boolean h(double $$0) {
+      return false;
+   }
 
-               while (!this.h.isEmpty()) {
-                  int $$3 = this.h.size();
-                  boolean $$4 = ($$3 & 1) == 1;
-                  int $$5 = this.h.getInt($$3 - 1);
-                  if (!$$4 && !this.b($$5)) {
-                     break;
-                  }
+   @Override
+   protected void b(cys $$0) {
+      if ($$0.u()) {
+         int $$1 = 3 + this.ah.a(4);
+         this.dN().b(new bqu(this.dN(), this.ds(), this.du() + 0.5, this.dy(), $$1));
+      }
+   }
 
-                  int $$6 = $$4 ? this.d : $$1;
-                  int $$7 = 0;
+   @Override
+   protected auy v() {
+      return this.gq() ? auz.Bo : auz.Bg;
+   }
 
-                  while (true) {
-                     if ($$7 < $$6) {
-                        if (this.b($$4, $$7) || !this.a($$4, $$5, $$7) || !this.b($$4, $$5, $$7)) {
-                           $$7++;
-                           continue;
-                        }
+   @Override
+   protected auy d(bpj $$0) {
+      return auz.Bl;
+   }
 
-                        this.a($$4, $$7);
-                     }
+   @Override
+   protected auy o_() {
+      return auz.Bh;
+   }
 
-                     $$7 = this.h.size();
-                     if ($$7 == $$3) {
-                        this.h.removeInt($$7 - 1);
-                     }
-                     break;
-                  }
-               }
+   @Override
+   protected auy c(csd $$0) {
+      return $$0.a(csg.qE) ? auz.Bj : auz.Bk;
+   }
 
-               if (!this.h.isEmpty()) {
-                  return true;
-               }
-            }
-         }
+   @Override
+   protected auy w(boolean $$0) {
+      return $$0 ? auz.Bp : auz.Bm;
+   }
 
-         return false;
+   @Override
+   public auy gt() {
+      return auz.Bp;
+   }
+
+   public void v(int $$0) {
+      this.cc = $$0;
+   }
+
+   public int gy() {
+      return this.cc;
+   }
+
+   @Override
+   public void n_() {
+      super.n_();
+      if (!this.dN().B) {
+         this.gA();
+      }
+   }
+
+   private void gA() {
+      if (this.cc > 0 && !this.gq() && --this.cc == 0) {
+         this.am();
+      }
+   }
+
+   public void i(@Nullable im $$0) {
+      this.cb = $$0;
+   }
+
+   @Nullable
+   im gC() {
+      return this.cb;
+   }
+
+   class a extends byb {
+      final cke a;
+      final double b;
+      final double c;
+
+      a(cke $$0, double $$1, double $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.a(EnumSet.of(byb.a.a));
       }
 
-      private boolean b(int $$0) {
-         return this.g.get(this.d($$0));
+      @Override
+      public void d() {
+         this.a.i(null);
+         cke.this.bR.n();
       }
 
-      private void c(int $$0) {
-         this.g.set(this.d($$0));
+      @Override
+      public boolean a() {
+         im $$0 = this.a.gC();
+         return $$0 != null && this.a($$0, this.b);
       }
 
-      private int d(int $$0) {
-         return this.d + this.f + $$0;
-      }
-
-      private boolean a(boolean $$0, int $$1, int $$2) {
-         return this.g.get(this.d($$0, $$1, $$2));
-      }
-
-      private boolean b(boolean $$0, int $$1, int $$2) {
-         return $$0 != this.g.get(1 + this.d($$0, $$1, $$2));
-      }
-
-      private void c(boolean $$0, int $$1, int $$2) {
-         this.g.flip(1 + this.d($$0, $$1, $$2));
-      }
-
-      private int d(boolean $$0, int $$1, int $$2) {
-         int $$3 = $$0 ? $$1 * this.d + $$2 : $$2 * this.d + $$1;
-         return this.d + this.f + this.d + 2 * $$3;
-      }
-
-      private void a(boolean $$0, int $$1) {
-         this.g.set(this.c($$0, $$1));
-         this.h.add($$1);
-      }
-
-      private boolean b(boolean $$0, int $$1) {
-         return this.g.get(this.c($$0, $$1));
-      }
-
-      private int c(boolean $$0, int $$1) {
-         return ($$0 ? 0 : this.d) + $$1;
-      }
-
-      public int b(int $$0, @Nullable IntList $$1) {
-         int $$2 = 0;
-         int $$3 = Math.min($$0, this.b()) + 1;
-
-         while (true) {
-            int $$4 = ($$2 + $$3) / 2;
-            if (this.a($$4, null)) {
-               if ($$3 - $$2 <= 1) {
-                  if ($$4 > 0) {
-                     this.a($$4, $$1);
-                  }
-
-                  return $$4;
-               }
-
-               $$2 = $$4;
+      @Override
+      public void e() {
+         im $$0 = this.a.gC();
+         if ($$0 != null && cke.this.bR.l()) {
+            if (this.a($$0, 10.0)) {
+               etf $$1 = new etf((double)$$0.u() - this.a.ds(), (double)$$0.v() - this.a.du(), (double)$$0.w() - this.a.dy()).d();
+               etf $$2 = $$1.a(10.0).b(this.a.ds(), this.a.du(), this.a.dy());
+               cke.this.bR.a($$2.c, $$2.d, $$2.e, this.c);
             } else {
-               $$3 = $$4;
+               cke.this.bR.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), this.c);
             }
          }
       }
 
-      private int b() {
-         int $$0 = Integer.MAX_VALUE;
-
-         for (cvp $$1 : this.c) {
-            int $$2 = 0;
-            IntListIterator var5 = $$1.b().iterator();
-
-            while (var5.hasNext()) {
-               int $$3 = (Integer)var5.next();
-               $$2 = Math.max($$2, cke.this.a.get($$3));
-            }
-
-            if ($$0 > 0) {
-               $$0 = Math.min($$0, $$2);
-            }
-         }
-
-         return $$0;
+      private boolean a(im $$0, double $$1) {
+         return !$$0.a(this.a.dl(), $$1);
       }
    }
 }

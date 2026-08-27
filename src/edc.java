@@ -1,45 +1,30 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class edc extends eda {
-   public static final Codec<edc> a = Codec.unit(() -> edc.b);
-   public static final edc b = new edc();
+public abstract class edc extends ecz {
+   protected final long c;
+   protected final eku.a d;
+   protected final float e;
+   protected final eku f;
 
-   @Override
-   protected edb<?> a() {
-      return edb.a;
+   protected static <P extends edc> P3<Mu<P>, Long, eku.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         eku.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         axe.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   public void a(eda.a $$0) {
-      axt $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            id $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dlc.d);
-            }
-         }
+   protected edc(long $$0, eku.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = eku.b(new dwp(new dvr($$0)), $$1);
+   }
 
-         if ($$1.a(3) > 0) {
-            id $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dlc.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            id $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dlc.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            id $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dlc.c);
-            }
-         }
-      });
+   protected double a(im $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

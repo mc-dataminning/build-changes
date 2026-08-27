@@ -1,19 +1,20 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
-
 public interface etj {
-   int a();
+   etj a = ($$0, $$1) -> false;
+   etj b = ($$0, $$1) -> !$$0 && !$$1;
+   etj c = ($$0, $$1) -> $$1 && !$$0;
+   etj d = ($$0, $$1) -> !$$0;
+   etj e = ($$0, $$1) -> $$0 && !$$1;
+   etj f = ($$0, $$1) -> !$$1;
+   etj g = ($$0, $$1) -> $$0 != $$1;
+   etj h = ($$0, $$1) -> !$$0 || !$$1;
+   etj i = ($$0, $$1) -> $$0 && $$1;
+   etj j = ($$0, $$1) -> $$0 == $$1;
+   etj k = ($$0, $$1) -> $$1;
+   etj l = ($$0, $$1) -> !$$0 || $$1;
+   etj m = ($$0, $$1) -> $$0;
+   etj n = ($$0, $$1) -> $$0 || !$$1;
+   etj o = ($$0, $$1) -> $$0 || $$1;
+   etj p = ($$0, $$1) -> true;
 
-   boolean b();
-
-   @Nullable
-   xy c();
-
-   default ww a(xy $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
-   }
-
-   static ww a(@Nullable etj $$0, xy $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
-   }
+   boolean apply(boolean var1, boolean var2);
 }

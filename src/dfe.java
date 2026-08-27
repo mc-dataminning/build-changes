@@ -1,109 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfe extends dch {
+public class dfe extends dfr {
    public static final MapCodec<dfe> a = b(dfe::new);
-   public static final dqi b = dpy.aQ;
-   protected static final etc c = dch.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
-   public static final int d = 7;
+   protected static final ety b = dcv.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dfe> a() {
       return a;
    }
 
-   protected dfe(dph.d $$0) {
+   public dfe(dpx.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected dpi a(dpi $$0, ij $$1, dpi $$2, czh $$3, id $$4, id $$5) {
-      if ($$1 == ij.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return b;
    }
 
    @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      dpi $$3 = $$1.a_($$2.c());
-      return !$$3.e() || $$3.b() instanceof dfg || $$3.b() instanceof dpa;
+   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
+      this.d($$0, $$1, $$2);
+      return boq.a($$1.B);
    }
 
    @Override
-   public dpi a(cux $$0) {
-      return !this.n().a((czj)$$0.q(), $$0.a()) ? dcj.j.n() : super.a($$0);
+   protected void a(dpy $$0, czu $$1, im $$2, ckl $$3) {
+      this.d($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean g_(dpi $$0) {
-      return true;
-   }
+   private void d(dpy $$0, czu $$1, im $$2) {
+      drp $$3 = $$1.C_();
 
-   @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return c;
-   }
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         im $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = axw.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = axw.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = axw.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(kw.Z, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
 
-   @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if (!$$0.a($$1, $$2)) {
-         a(null, $$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
-      int $$4 = $$0.c(b);
-      if (!a((czj)$$1, $$2) && !$$1.r($$2.c())) {
-         if ($$4 > 0) {
-            $$1.a($$2, $$0.a(b, Integer.valueOf($$4 - 1)), 2);
-         } else if (!a((cym)$$1, $$2)) {
-            a(null, $$0, $$1, $$2);
-         }
-      } else if ($$4 < 7) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf(7)), 2);
-      }
-   }
-
-   @Override
-   public void a(czg $$0, dpi $$1, id $$2, bqa $$3, float $$4) {
-      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof bqt && ($$3 instanceof cka || $$0.aa().b(czc.c)) && $$3.dg() * $$3.dg() * $$3.dh() > 0.512F) {
-         a($$3, $$1, $$0, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static void a(@Nullable bqa $$0, dpi $$1, czg $$2, id $$3) {
-      dpi $$4 = a($$1, dcj.j.n(), $$2, $$3);
-      $$2.b($$3, $$4);
-      $$2.a(dub.c, $$3, dub.a.a($$0, $$4));
-   }
-
-   private static boolean a(cym $$0, id $$1) {
-      return $$0.a_($$1.c()).a(ave.cr);
-   }
-
-   private static boolean a(czj $$0, id $$1) {
-      for (id $$2 : id.a($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
-         if ($$0.b_($$2).a(avj.a)) {
-            return true;
+            return;
          }
       }
-
-      return false;
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(b);
+   protected int b() {
+      return 5;
    }
 
    @Override
-   protected boolean a(dpi $$0, elq $$1) {
+   protected boolean a(dpy $$0, emg $$1) {
       return false;
    }
 }

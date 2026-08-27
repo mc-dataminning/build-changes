@@ -1,40 +1,20 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import javax.annotation.Nullable;
 
-public class eyl extends eyn {
-   private static final Logger d = LogUtils.getLogger();
-   public long a;
-   public int b;
-   public eyl.a c = eyl.a.a;
+public class eyl {
+   private final Gson a = new Gson();
 
-   public static eyl a(String $$0) {
-      eyl $$1 = new eyl();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fak.a("startDate", $$3, 0L);
-         $$1.b = fak.a("daysLeft", $$3, 0);
-         $$1.c = b(fak.b("subscriptionType", $$3, eyl.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
-      }
-
-      return $$1;
+   public String a(ezd $$0) {
+      return this.a.toJson($$0);
    }
 
-   private static eyl.a b(String $$0) {
-      try {
-         return eyl.a.valueOf($$0);
-      } catch (Exception var2) {
-         return eyl.a.a;
-      }
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Nullable
+   public <T extends ezd> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

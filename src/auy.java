@@ -1,45 +1,51 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class auy<T> implements Iterable<auv<T>> {
-   private final ja<T> a;
-   private final Map<T, auv<T>> b = new IdentityHashMap<>();
-   private final wi c;
-   private final yg<vt, auv<T>> d;
+public class auy {
+   public static final Codec<auy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akf.a.fieldOf("sound_id").forGetter(auy::a), Codec.FLOAT.optionalFieldOf("range").forGetter(auy::b)).apply($$0, auy::a)
+   );
+   public static final Codec<iv<auy>> b = akb.a(ld.ag, a);
+   public static final yq<ByteBuf, auy> c = yq.a(akf.b, auy::a, yo.h.a(yo::a), auy::b, auy::a);
+   public static final yq<wd, iv<auy>> d = yo.a(ld.ag, c);
+   private static final float e = 16.0F;
+   private final akf f;
+   private final float g;
+   private final boolean h;
 
-   public auy(ja<T> $$0, wi $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = ye.a($$0.c()).a(this::b, auv::b);
+   private static auy a(akf $$0, Optional<Float> $$1) {
+      return $$1.<auy>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
    }
 
-   public yg<vt, auv<T>> a() {
-      return this.d;
+   public static auy a(akf $$0) {
+      return new auy($$0, 16.0F, false);
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
+   public static auy a(akf $$0, float $$1) {
+      return new auy($$0, $$1, true);
    }
 
-   public auv<T> a(T $$0, auw $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new auv<>(this, (T)$$1x, $$1));
+   private auy(akf $$0, float $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public ja<T> b() {
-      return this.a;
+   public akf a() {
+      return this.f;
    }
 
-   @Override
-   public Iterator<auv<T>> iterator() {
-      return this.b.values().iterator();
+   public float a(float $$0) {
+      if (this.h) {
+         return this.g;
+      } else {
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+      }
    }
 
-   public auv<T> b(T $$0) {
-      return this.a($$0, auw.b);
-   }
-
-   public wi c() {
-      return this.c;
+   private Optional<Float> b() {
+      return this.h ? Optional.of(this.g) : Optional.empty();
    }
 }

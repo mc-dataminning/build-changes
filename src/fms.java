@@ -1,47 +1,50 @@
-public class fms {
-   public static final int a = 12;
-   private static final int f = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int g = -267386864;
-   private static final int h = 1347420415;
-   private static final int i = 1344798847;
+public abstract class fms<T extends coj> extends flr<T> implements cnt {
+   private final akf D;
 
-   public static void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$1 - 3;
-      int $$7 = $$2 - 3;
-      int $$8 = $$3 + 3 + 3;
-      int $$9 = $$4 + 3 + 3;
-      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
-      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
-      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
-      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
-      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
-      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
+   public fms(T $$0, ckk $$1, ws $$2, akf $$3) {
+      super($$0, $$1, $$2);
+      this.D = $$3;
    }
 
-   private static void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
-      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
-      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
-      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
+   protected void E() {
    }
 
-   private static void b(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.E();
+      this.w.a(this);
    }
 
-   private static void a(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
+   @Override
+   public void j() {
+      super.j();
+      this.w.b(this);
    }
 
-   private static void c(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
+   @Override
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   private static void b(fdl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
+   protected void d(feh $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(feh $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.D, this.z, this.A, 0, 0, this.c, this.d);
+      this.c($$0, this.z, this.A);
+   }
+
+   protected abstract void c(feh var1, int var2, int var3);
+
+   @Override
+   public void a(cnh $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(cnh $$0, int $$1, csd $$2) {
    }
 }

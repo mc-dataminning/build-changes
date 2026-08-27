@@ -1,19 +1,29 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
+import java.util.Optional;
 
-public class bbq extends bee {
-   public bbq(Schema $$0) {
-      super($$0, false, "EntityPaintingFieldsRenameFix", bff.z, "minecraft:painting");
+public class bbq extends DataFix {
+   public bbq(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return ayu.a(ayu.a($$0, "Motive", "variant"), "Facing", "facing");
+   public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bgz.a());
+      return this.fixTypeEverywhereTyped(
+         "EntityCustomNameToComponentFix", this.getInputSchema().getType(bfp.z), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+               Optional<String> $$3 = $$1.getOptional($$0);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:commandblock_minecart") ? $$2 : a($$2);
+            })
+      );
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("CustomName").asString("");
+      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", azb.a($$0.getOps(), $$1));
    }
 }

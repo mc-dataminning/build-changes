@@ -1,50 +1,41 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class eea extends edx {
-   public static final Codec<eea> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dvu.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dvu.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, eea::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dvu d;
-   private final dvu e;
-   private final LongSet f = new LongOpenHashSet();
+public class eea extends edz {
+   public static final Codec<eea> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eea::new));
 
-   private eea(dvu $$0, dvu $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static eea a(dvu $$0, dvu $$1) {
-      return new eea($$0, $$1);
+   public eea(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(axt $$0, dvx $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
+   protected eed<?> a() {
+      return eed.d;
+   }
+
+   @Override
+   public List<eck.a> a(daa $$0, BiConsumer<im, dpy> $$1, ayd $$2, int $$3, im $$4, ebu $$5) {
+      List<eck.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + axw.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + axw.a($$8) * (float)$$11);
+            im $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
          }
 
-         return $$2;
-      } else {
-         return axm.b($$0, $$2, $$3);
+         $$6.add(new eck.a($$4.b($$9, $$7, $$10), -2, false));
       }
-   }
 
-   @Override
-   public edy<?> a() {
-      return edy.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+      return $$6;
    }
 }

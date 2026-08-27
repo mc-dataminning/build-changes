@@ -1,7 +1,10 @@
-public interface gql<T> {
-   int e();
+import java.util.List;
 
-   T b(axt var1);
+public interface gql<T> extends gqo<T> {
+   static <T> gql<T> b() {
+      return $$0 -> List.of();
+   }
 
-   void a(gqg var1);
+   default void a() {
+   }
 }

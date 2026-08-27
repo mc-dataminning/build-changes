@@ -1,38 +1,47 @@
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class cbn {
-   @Nullable
-   public static esj a(brb $$0, int $$1, int $$2) {
-      boolean $$3 = cbo.a($$0, $$1);
-      return cbr.a($$0, () -> {
-         id $$4 = cbr.a($$0.ei(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public abstract class cbn<E extends bre> {
+   private static final ayd a = ayd.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final cbu d = cbu.b().a(16.0);
+   private static final cbu e = cbu.b().a(16.0).e();
+   private static final cbu f = cbu.a().a(16.0);
+   private static final cbu g = cbu.a().a(16.0).e();
+   private static final cbu h = cbu.a().a(16.0).d();
+   private static final cbu i = cbu.a().a(16.0).d().e();
+   private final int j;
+   private long k;
+
+   public cbn(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   @Nullable
-   public static esj a(brb $$0, int $$1, int $$2, esj $$3, double $$4) {
-      esj $$5 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
-      boolean $$6 = cbo.a($$0, $$1);
-      return cbr.a($$0, () -> {
-         id $$6x = cbr.a($$0.ei(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   public cbn() {
+      this(20);
    }
 
-   @Nullable
-   public static esj a(brb $$0, int $$1, int $$2, esj $$3) {
-      esj $$4 = $$0.dk().d($$3);
-      boolean $$5 = cbo.a($$0, $$1);
-      return cbr.a($$0, () -> {
-         id $$5x = cbr.a($$0.ei(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   public final void b(aqe $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
+      }
    }
 
-   @Nullable
-   private static id a(brb $$0, int $$1, boolean $$2, id $$3) {
-      id $$4 = cbr.a($$0, $$1, $$0.ei(), $$3);
-      return !cbo.a($$4, $$0) && !cbo.a($$2, $$0, $$4) && !cbo.a($$0.K(), $$4) && !cbo.b($$0, $$4) ? $$4 : null;
+   protected abstract void a(aqe var1, E var2);
+
+   public abstract Set<cah<?>> a();
+
+   public static boolean b(bre $$0, bre $$1) {
+      return $$0.dQ().b(cah.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
+   }
+
+   public static boolean c(bre $$0, bre $$1) {
+      return $$0.dQ().b(cah.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   }
+
+   public static boolean d(bre $$0, bre $$1) {
+      return $$0.dQ().b(cah.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

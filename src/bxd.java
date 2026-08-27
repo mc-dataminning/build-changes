@@ -1,50 +1,108 @@
-import java.util.EnumSet;
+import java.util.Optional;
 
-public class bxd extends byd {
-   private final ccl g;
+public class bxd implements bxa {
+   protected final brg a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
 
-   public bxd(ccl $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(bxq.a.c, bxq.a.a));
+   public bxd(brg $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public boolean a() {
-      return this.g.r() && !this.g.gn() && !this.g.gv() && super.a();
+   public void a(etf $$0) {
+      this.a($$0.c, $$0.d, $$0.e);
    }
 
-   @Override
-   public void c() {
-      super.c();
-      this.g.x(false);
+   public void a(bql $$0) {
+      this.a($$0.ds(), b($$0), $$0.dy());
    }
 
-   @Override
-   protected int a(brb $$0) {
-      return 40;
+   public void a(bql $$0, float $$1, float $$2) {
+      this.a($$0.ds(), b($$0), $$0.dy(), $$1, $$2);
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.g.z(false);
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.fO(), (float)this.a.Z());
    }
 
-   @Override
-   public void e() {
-      super.e();
-      this.g.x(false);
-      if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gv()) {
-         this.g.z(true);
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
+   }
+
+   public void a() {
+      if (this.c()) {
+         this.a.s(0.0F);
+      }
+
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.bb = this.a(this.a.bb, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.s(this.a(this.a.dF(), $$0, this.c)));
+      } else {
+         this.a.bb = this.a(this.a.bb, this.a.aZ, 10.0F);
+      }
+
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.K().l()) {
+         this.a.bb = axw.c(this.a.bb, this.a.aZ, (float)this.a.aa());
       }
    }
 
-   @Override
-   protected boolean a(czj $$0, id $$1) {
-      return $$0.u($$1.c()) && $$0.a_($$1).a(ave.R);
+   protected boolean c() {
+      return true;
+   }
+
+   public boolean d() {
+      return this.d > 0;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public double g() {
+      return this.g;
+   }
+
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.ds();
+      double $$1 = this.f - this.a.dw();
+      double $$2 = this.g - this.a.dy();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(axw.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.ds();
+      double $$1 = this.g - this.a.dy();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(axw.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = axw.c($$0, $$1);
+      float $$4 = axw.a($$3, -$$2, $$2);
+      return $$0 + $$4;
+   }
+
+   private static double b(bql $$0) {
+      return $$0 instanceof bre ? $$0.dw() : ($$0.cI().b + $$0.cI().e) / 2.0;
    }
 }

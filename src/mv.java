@@ -1,78 +1,81 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
-public class mv implements la {
-   private final lc.a d;
-   private final lc.a e;
-
-   public mv(lc $$0) {
-      this.d = $$0.a(lc.b.b, "blockstates");
-      this.e = $$0.a(lc.b.b, "models");
-   }
-
+public class mv implements mh {
    @Override
-   public CompletableFuture<?> a(ky $$0) {
-      Map<dch, mw> $$1 = Maps.newHashMap();
-      Consumer<mw> $$2 = $$1x -> {
-         dch $$2x = $$1x.a();
-         mw $$3x = $$1.put($$2x, $$1x);
-         if ($$3x != null) {
-            throw new IllegalStateException("Duplicate blockstate definition for " + $$2x);
-         }
-      };
-      Map<ajv, Supplier<JsonElement>> $$3 = Maps.newHashMap();
-      Set<crn> $$4 = Sets.newHashSet();
-      BiConsumer<ajv, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
-         Supplier<JsonElement> $$3x = $$3.put($$1x, $$2x);
-         if ($$3x != null) {
-            throw new IllegalStateException("Duplicate model definition for " + $$1x);
-         }
-      };
-      Consumer<crn> $$6 = $$4::add;
-      new mt($$2, $$5, $$6).a();
-      new mu($$5).a();
-      List<dch> $$7 = kt.e.g().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
-      if (!$$7.isEmpty()) {
-         throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
-      } else {
-         kt.e.forEach($$2x -> {
-            crn $$3x = crn.d.get($$2x);
-            if ($$3x != null) {
-               if ($$4.contains($$3x)) {
-                  return;
-               }
-
-               ajv $$4x = nh.a($$3x);
-               if (!$$3.containsKey($$4x)) {
-                  $$3.put($$4x, new ng(nh.a($$2x)));
-               }
-            }
-         });
-         return CompletableFuture.allOf(this.a($$0, $$1, $$0x -> this.d.a($$0x.r().h().a())), this.a($$0, $$3, this.e::a));
-      }
-   }
-
-   private <T> CompletableFuture<?> a(ky $$0, Map<T, ? extends Supplier<JsonElement>> $$1, Function<T, Path> $$2) {
-      return CompletableFuture.allOf($$1.entrySet().stream().map($$2x -> {
-         Path $$3 = $$2.apply((T)$$2x.getKey());
-         JsonElement $$4 = (JsonElement)((Supplier)$$2x.getValue()).get();
-         return la.a($$0, $$4, $$3);
-      }).toArray(CompletableFuture[]::new));
-   }
-
-   @Override
-   public final String a() {
-      return "Model Definitions";
+   public void generate(ix.a $$0, BiConsumer<akf, eoi.a> $$1) {
+      $$1.accept(
+         eny.az,
+         eoi.b()
+            .a(
+               eoh.a()
+                  .a(esa.a(1.0F))
+                  .a(eoq.a(csg.uE).a(10))
+                  .a(eoq.a(csg.uD).a(10))
+                  .a(eoq.a(csg.sc).a(10))
+                  .a(eoq.a(csg.pt).a(10))
+                  .a(eoq.a(csg.se).a(10))
+                  .a(eoq.a(csg.ps).a(10))
+                  .a(eoq.a(csg.vQ).a(2))
+            )
+      );
+      $$1.accept(eny.aA, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.pC)).a(eoq.a(csg.pD)).a(eoq.a(csg.pE)).a(eoq.a(csg.pF))));
+      $$1.accept(eny.aB, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.uB)).a(eoq.a(csg.sd)).a(eoq.a(csg.pY)).a(eoq.a(csg.sb)).a(eoq.a(csg.uO))));
+      $$1.accept(eny.aC, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.uj)).a(eoq.a(csg.qO))));
+      $$1.accept(eny.aD, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.lH)).a(eoq.a(csg.oA))));
+      $$1.accept(eny.aE, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.px)).a(eoq.a(csg.ut)).a(eoq.a(csg.rS))));
+      $$1.accept(eny.aF, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.qZ)).a(eoq.a(csg.ra))));
+      $$1.accept(
+         eny.aG,
+         eoi.b()
+            .a(
+               eoh.a()
+                  .a(esa.a(1.0F))
+                  .a(eoq.a(csg.ov).a(26))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.n)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.q)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.I)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.y)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.A)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.i)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.F)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.l)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.w)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.g)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.e)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.L)))
+                  .a(eoq.a(csg.vq).a(eqf.a(esf.a(0.0F, 1.0F))).a(eqj.a(cud.C)))
+            )
+      );
+      $$1.accept(eny.aH, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.qD))));
+      $$1.accept(eny.aI, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.qP))));
+      $$1.accept(eny.aJ, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.eX))));
+      $$1.accept(
+         eny.aK,
+         eoi.b()
+            .a(
+               eoh.a()
+                  .a(esa.a(1.0F))
+                  .a(eoq.a(csg.cU))
+                  .a(eoq.a(csg.cV))
+                  .a(eoq.a(csg.cW))
+                  .a(eoq.a(csg.cX))
+                  .a(eoq.a(csg.cY))
+                  .a(eoq.a(csg.cZ))
+                  .a(eoq.a(csg.da))
+                  .a(eoq.a(csg.db))
+                  .a(eoq.a(csg.dc))
+                  .a(eoq.a(csg.dd))
+                  .a(eoq.a(csg.de))
+                  .a(eoq.a(csg.df))
+                  .a(eoq.a(csg.dg))
+                  .a(eoq.a(csg.dh))
+                  .a(eoq.a(csg.di))
+                  .a(eoq.a(csg.dj))
+            )
+      );
+      $$1.accept(eny.aL, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.oS)).a(eoq.a(csg.oT)).a(eoq.a(csg.oU)).a(eoq.a(csg.oR))));
+      $$1.accept(eny.aM, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.oT)).a(eoq.a(csg.oY)).a(eoq.a(csg.pd))));
+      $$1.accept(eny.aN, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.vi)).a(eoq.a(csg.vj))));
+      $$1.accept(eny.aO, eoi.b().a(eoh.a().a(esa.a(1.0F)).a(eoq.a(csg.qQ).a(1)).a(eoo.b().a(699))));
    }
 }

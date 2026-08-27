@@ -1,29 +1,20 @@
-public class agc implements yp<afn> {
-   public static final yg<vi, agc> a = yp.a(agc::a, agc::new);
-   private final int b;
+public record agc(int b) implements yz<afx> {
+   public static final yq<vs, agc> a = yz.a(agc::a, agc::new);
 
-   public agc(int $$0) {
-      this.b = $$0;
+   private agc(vs $$0) {
+      this($$0.l());
    }
 
-   private agc(vi $$0) {
-      this.b = $$0.readByte();
-   }
-
-   private void a(vi $$0) {
-      $$0.k(this.b);
+   private void a(vs $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yr<agc> a() {
-      return afl.br;
+   public zb<agc> a() {
+      return afv.bh;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

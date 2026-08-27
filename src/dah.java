@@ -1,101 +1,112 @@
-import com.google.common.hash.Hashing;
+import com.google.common.base.Suppliers;
+import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class dah {
-   public static final int a = iy.a(8);
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 3;
-   private final dah.a e;
-   private final long f;
+public class dah implements cza, cze {
+   protected final int a;
+   protected final int b;
+   protected final dru[][] c;
+   protected boolean d;
+   protected final czu e;
+   private final Supplier<iv<dat>> f;
 
-   public dah(dah.a $$0, long $$1) {
+   public dah(czu $$0, im $$1, im $$2) {
       this.e = $$0;
-      this.f = $$1;
-   }
+      this.f = Suppliers.memoize(() -> $$0.H_().d(ld.ay).g(dba.b));
+      this.a = jo.a($$1.u());
+      this.b = jo.a($$1.w());
+      int $$3 = jo.a($$2.u());
+      int $$4 = jo.a($$2.w());
+      this.c = new dru[$$3 - this.a + 1][$$4 - this.b + 1];
+      dry $$5 = $$0.M();
+      this.d = true;
 
-   public static long a(long $$0) {
-      return Hashing.sha256().hashLong($$0).asLong();
-   }
-
-   public dah a(dah.a $$0) {
-      return new dah($$0, this.f);
-   }
-
-   public in<daf> a(id $$0) {
-      int $$1 = $$0.u() - 2;
-      int $$2 = $$0.v() - 2;
-      int $$3 = $$0.w() - 2;
-      int $$4 = $$1 >> 2;
-      int $$5 = $$2 >> 2;
-      int $$6 = $$3 >> 2;
-      double $$7 = (double)($$1 & 3) / 4.0;
-      double $$8 = (double)($$2 & 3) / 4.0;
-      double $$9 = (double)($$3 & 3) / 4.0;
-      int $$10 = 0;
-      double $$11 = Double.POSITIVE_INFINITY;
-
-      for (int $$12 = 0; $$12 < 8; $$12++) {
-         boolean $$13 = ($$12 & 4) == 0;
-         boolean $$14 = ($$12 & 2) == 0;
-         boolean $$15 = ($$12 & 1) == 0;
-         int $$16 = $$13 ? $$4 : $$4 + 1;
-         int $$17 = $$14 ? $$5 : $$5 + 1;
-         int $$18 = $$15 ? $$6 : $$6 + 1;
-         double $$19 = $$13 ? $$7 : $$7 - 1.0;
-         double $$20 = $$14 ? $$8 : $$8 - 1.0;
-         double $$21 = $$15 ? $$9 : $$9 - 1.0;
-         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
-         if ($$11 > $$22) {
-            $$10 = $$12;
-            $$11 = $$22;
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
          }
       }
 
-      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
-      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
-      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
-      return this.e.getNoiseBiome($$23, $$24, $$25);
+      for (int $$8 = jo.a($$1.u()); $$8 <= jo.a($$2.u()); $$8++) {
+         for (int $$9 = jo.a($$1.w()); $$9 <= jo.a($$2.w()); $$9++) {
+            dru $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
    }
 
-   public in<daf> a(double $$0, double $$1, double $$2) {
-      int $$3 = iy.a(axm.a($$0));
-      int $$4 = iy.a(axm.a($$1));
-      int $$5 = iy.a(axm.a($$2));
-      return this.a($$3, $$4, $$5);
+   private dru d(im $$0) {
+      return this.a(jo.a($$0.u()), jo.a($$0.w()));
    }
 
-   public in<daf> b(id $$0) {
-      int $$1 = iy.a($$0.u());
-      int $$2 = iy.a($$0.v());
-      int $$3 = iy.a($$0.w());
-      return this.a($$1, $$2, $$3);
+   private dru a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dru $$4 = this.c[$$2][$$3];
+         return (dru)($$4 != null ? $$4 : new dsa(this.e, new czb($$0, $$1), this.f.get()));
+      } else {
+         return new dsa(this.e, new czb($$0, $$1), this.f.get());
+      }
    }
 
-   public in<daf> a(int $$0, int $$1, int $$2) {
-      return this.e.getNoiseBiome($$0, $$1, $$2);
+   @Override
+   public drp C_() {
+      return this.e.C_();
    }
 
-   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      long $$7 = axi.a($$0, (long)$$1);
-      $$7 = axi.a($$7, (long)$$2);
-      $$7 = axi.a($$7, (long)$$3);
-      $$7 = axi.a($$7, (long)$$1);
-      $$7 = axi.a($$7, (long)$$2);
-      $$7 = axi.a($$7, (long)$$3);
-      double $$8 = b($$7);
-      $$7 = axi.a($$7, $$0);
-      double $$9 = b($$7);
-      $$7 = axi.a($$7, $$0);
-      double $$10 = b($$7);
-      return axm.k($$6 + $$10) + axm.k($$5 + $$9) + axm.k($$4 + $$8);
+   @Override
+   public cza c(int $$0, int $$1) {
+      return this.a($$0, $$1);
    }
 
-   private static double b(long $$0) {
-      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
-      return ($$1 - 0.5) * 0.9;
+   @Override
+   public List<ety> c(@Nullable bql $$0, eta $$1) {
+      return List.of();
    }
 
-   public interface a {
-      in<daf> getNoiseBiome(int var1, int var2, int var3);
+   @Nullable
+   @Override
+   public dnd c_(im $$0) {
+      dru $$1 = this.d($$0);
+      return $$1.c_($$0);
+   }
+
+   @Override
+   public dpy a_(im $$0) {
+      if (this.s($$0)) {
+         return dcx.a.n();
+      } else {
+         dru $$1 = this.d($$0);
+         return $$1.a_($$0);
+      }
+   }
+
+   @Override
+   public elr b_(im $$0) {
+      if (this.s($$0)) {
+         return els.a.g();
+      } else {
+         dru $$1 = this.d($$0);
+         return $$1.b_($$0);
+      }
+   }
+
+   @Override
+   public int I_() {
+      return this.e.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.e.J_();
+   }
+
+   public ble a() {
+      return this.e.af();
    }
 }

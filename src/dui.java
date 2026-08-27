@@ -1,70 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public record dui(in<dub> b, float c, esj d, @Nullable UUID e, @Nullable UUID f, @Nullable bqa g) {
-   public static final Codec<dui> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kt.a.r().fieldOf("game_event").forGetter(dui::a),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dui::b),
-               esj.a.fieldOf("pos").forGetter(dui::c),
-               jh.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
-               jh.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dui($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
-   );
+public class dui<T extends dty> implements duh<T> {
+   private final dua<T> a;
+   private final dud<T> b;
 
-   public dui(in<dub> $$0, float $$1, esj $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
-      this($$0, $$1, $$2, $$3, $$4, null);
-   }
-
-   public dui(in<dub> $$0, float $$1, esj $$2, @Nullable bqa $$3) {
-      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
+   public dui(dua<T> $$0, dud<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Nullable
-   private static UUID a(@Nullable bqa $$0) {
-      if ($$0 instanceof cks $$1 && $$1.u() != null) {
-         return $$1.u().cw();
-      }
-
-      return null;
-   }
-
-   public Optional<bqa> a(apu $$0) {
-      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
-   }
-
-   public Optional<bqa> b(apu $$0) {
-      return this.a($$0).filter($$0x -> $$0x instanceof cks).map($$0x -> (cks)$$0x).map(cks::u).or(() -> Optional.ofNullable(this.f).map($$0::a));
-   }
-
-   public in<dub> a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public esj c() {
-      return this.d;
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
    }
 
    @Nullable
-   public UUID d() {
-      return this.e;
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
-   @Nullable
-   public UUID e() {
-      return this.f;
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
-   @Nullable
-   public bqa f() {
-      return this.g;
+   @Override
+   public <U extends T> void a(duf<T, U> $$0, awj<U> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void a(eta $$0, Consumer<T> $$1) {
+      this.b.b($$0, awj.forConsumer($$1));
+   }
+
+   @Override
+   public <U extends T> void a(duf<T, U> $$0, eta $$1, awj<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

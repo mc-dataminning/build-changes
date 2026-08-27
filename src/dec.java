@@ -1,177 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dec extends dcq implements dck {
-   public static final MapCodec<dec> d = b(dec::new);
-   public static final int e = 7;
-   public static final dqi f = dpy.av;
-   private static final etc[] a = new etc[]{
-      dch.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      dch.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+public class dec extends dgr implements dcy {
+   public static final MapCodec<dec> a = b(dec::new);
+   public static final int b = 2;
+   public static final dqy c = dqo.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final ety[] m = new ety[]{
+      dcv.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dcv.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dcv.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final ety[] n = new ety[]{
+      dcv.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dcv.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dcv.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final ety[] o = new ety[]{
+      dcv.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dcv.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dcv.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final ety[] F = new ety[]{
+      dcv.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dcv.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dcv.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
    };
 
    @Override
-   public MapCodec<? extends dec> a() {
-      return d;
+   public MapCodec<dec> a() {
+      return a;
    }
 
-   protected dec(dph.d $$0) {
+   public dec(dpx.d $$0) {
       super($$0);
-      this.k(this.E.b().a(this.b(), Integer.valueOf(0)));
+      this.k(this.E.b().a(aE, ir.c).a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return a[this.g($$0)];
+   protected boolean e_(dpy $$0) {
+      return $$0.c(c) < 2;
    }
 
    @Override
-   protected boolean b(dpi $$0, cym $$1, id $$2) {
-      return $$0.a(dcj.cC);
-   }
-
-   protected dqi b() {
-      return f;
-   }
-
-   public int c() {
-      return 7;
-   }
-
-   public int g(dpi $$0) {
-      return $$0.c(this.b());
-   }
-
-   public dpi b(int $$0) {
-      return this.n().a(this.b(), Integer.valueOf($$0));
-   }
-
-   public final boolean h(dpi $$0) {
-      return this.g($$0) >= this.c();
-   }
-
-   @Override
-   protected boolean e_(dpi $$0) {
-      return !this.h($$0);
-   }
-
-   @Override
-   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         int $$4 = this.g($$0);
-         if ($$4 < this.c()) {
-            float $$5 = a(this, $$1, $$2);
-            if ($$3.a((int)(25.0F / $$5) + 1) == 0) {
-               $$1.a($$2, this.b($$4 + 1), 2);
-            }
+   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if ($$1.z.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.a(c, Integer.valueOf($$4 + 1)), 2);
          }
       }
    }
 
-   public void a(czg $$0, id $$1, dpi $$2) {
-      int $$3 = this.g($$2) + this.a($$0);
-      int $$4 = this.c();
-      if ($$3 > $$4) {
-         $$3 = $$4;
+   @Override
+   protected boolean a(dpy $$0, czx $$1, im $$2) {
+      dpy $$3 = $$1.a_($$2.a($$0.c(aE)));
+      return $$3.a(avo.z);
+   }
+
+   @Override
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      int $$4 = $$0.c(c);
+      switch ((ir)$$0.c(aE)) {
+         case d:
+            return F[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
       }
-
-      $$0.a($$1, this.b($$3), 2);
    }
 
-   protected int a(czg $$0) {
-      return axm.a($$0.z, 2, 5);
-   }
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      dpy $$1 = this.n();
+      czx $$2 = $$0.q();
+      im $$3 = $$0.a();
 
-   protected static float a(dch $$0, cym $$1, id $$2) {
-      float $$3 = 1.0F;
-      id $$4 = $$2.d();
-
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            float $$7 = 0.0F;
-            dpi $$8 = $$1.a_($$4.b($$5, 0, $$6));
-            if ($$8.a(dcj.cC)) {
-               $$7 = 1.0F;
-               if ($$8.c(dfe.b) > 0) {
-                  $$7 = 3.0F;
-               }
+      for (ir $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.a(aE, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
-
-            if ($$5 != 0 || $$6 != 0) {
-               $$7 /= 4.0F;
-            }
-
-            $$3 += $$7;
          }
       }
 
-      id $$9 = $$2.e();
-      id $$10 = $$2.f();
-      id $$11 = $$2.g();
-      id $$12 = $$2.h();
-      boolean $$13 = $$1.a_($$11).a($$0) || $$1.a_($$12).a($$0);
-      boolean $$14 = $$1.a_($$9).a($$0) || $$1.a_($$10).a($$0);
-      if ($$13 && $$14) {
-         $$3 /= 2.0F;
-      } else {
-         boolean $$15 = $$1.a_($$11.e()).a($$0) || $$1.a_($$12.e()).a($$0) || $$1.a_($$12.f()).a($$0) || $$1.a_($$11.f()).a($$0);
-         if ($$15) {
-            $$3 /= 2.0F;
-         }
-      }
-
-      return $$3;
+      return null;
    }
 
    @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      return a($$1, $$2) && super.a($$0, $$1, $$2);
-   }
-
-   protected static boolean a(czj $$0, id $$1) {
-      return $$0.b($$1, 0) >= 8;
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? dcx.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dpi $$0, czg $$1, id $$2, bqa $$3) {
-      if ($$3 instanceof chl && $$1.aa().b(czc.c)) {
-         $$1.a($$2, true, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected czf d() {
-      return crv.pu;
+   public boolean b(czx $$0, im $$1, dpy $$2) {
+      return $$2.c(c) < 2;
    }
 
    @Override
-   public crs a(czj $$0, id $$1, dpi $$2) {
-      return new crs(this.d());
-   }
-
-   @Override
-   public boolean b(czj $$0, id $$1, dpi $$2) {
-      return !this.h($$2);
-   }
-
-   @Override
-   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
+   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
       return true;
    }
 
    @Override
-   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
-      this.a((czg)$$0, $$2, $$3);
+   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
+      $$0.a($$2, $$3.a(c, Integer.valueOf($$3.c(c) + 1)), 2);
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(f);
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(aE, c);
+   }
+
+   @Override
+   protected boolean a(dpy $$0, emg $$1) {
+      return false;
    }
 }

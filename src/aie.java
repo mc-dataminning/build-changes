@@ -1,18 +1,15 @@
+import com.mojang.authlib.GameProfile;
 import io.netty.buffer.ByteBuf;
 
-public class aie implements yp<aia> {
-   public static final aie a = new aie();
-   public static final yg<ByteBuf, aie> b = yg.a(a);
-
-   private aie() {
-   }
+public record aie(GameProfile b) implements yz<aic> {
+   public static final yq<ByteBuf, aie> a = yo.t.a(aie::new, aie::b);
 
    @Override
-   public yr<aie> a() {
-      return ahy.i;
+   public zb<aie> a() {
+      return aii.b;
    }
 
-   public void a(aia $$0) {
+   public void a(aic $$0) {
       $$0.a(this);
    }
 

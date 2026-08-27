@@ -1,145 +1,140 @@
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class ell {
-   private eln[] a = new eln[128];
-   private int b;
+public class ell extends elf<ell.a> {
+   protected ell(dsh $$0) {
+      super(dad.a, $$0, new ell.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+   }
 
-   public eln a(eln $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
+   @Override
+   protected int a(long $$0) {
+      return this.e($$0, false);
+   }
+
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = jo.e($$0);
+      int $$3 = jo.c($$2);
+      ell.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(jo.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         drz $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = im.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
+
+               $$2 = jo.a($$2, ir.b);
+            }
+         }
+
+         return $$6.a(jo.b(im.a($$0)), jo.b(im.b($$0)), jo.b(im.c($$0)));
       } else {
-         if (this.b == this.a.length) {
-            eln[] $$1 = new eln[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
+         return $$1 && !this.j($$2) ? 0 : 15;
+      }
+   }
+
+   @Override
+   protected void h(long $$0) {
+      int $$1 = jo.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
+      }
+
+      long $$2 = jo.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
+   }
+
+   @Override
+   protected void i(long $$0) {
+      long $$1 = jo.f($$0);
+      int $$2 = jo.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = jo.a($$3, ir.a)) {
+            $$2--;
          }
 
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
-      }
-   }
-
-   public void a() {
-      this.b = 0;
-   }
-
-   public eln b() {
-      return this.a[0];
-   }
-
-   public eln c() {
-      eln $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
-      }
-
-      $$0.d = -1;
-      return $$0;
-   }
-
-   public void b(eln $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
          } else {
-            this.b($$0.d);
+            this.d.c.remove($$1);
          }
       }
-
-      $$0.d = -1;
    }
 
-   public void a(eln $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
+   @Override
+   protected drz g(long $$0) {
+      drz $$1 = (drz)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
       } else {
-         this.b($$0.d);
-      }
-   }
+         int $$2 = this.d.c.get(jo.f($$0));
+         if ($$2 != this.d.b && jo.c($$0) < $$2) {
+            long $$3 = jo.a($$0, ir.b);
 
-   public int d() {
-      return this.b;
-   }
-
-   private void a(int $$0) {
-      eln $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         eln $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      eln $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         eln $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         eln $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
+            drz $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = jo.a($$3, ir.b);
             }
 
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
+            return a($$4);
          } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
+            return this.j($$0) ? new drz(15) : new drz();
          }
       }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
    }
 
-   public boolean e() {
-      return this.b == 0;
+   private static drz a(drz $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new drz($$2);
+      }
    }
 
-   public eln[] f() {
-      return Arrays.copyOf(this.a, this.b);
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
+   }
+
+   protected boolean l(long $$0) {
+      long $$1 = jo.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || jo.c($$0) >= $$2;
+   }
+
+   protected int m(long $$0) {
+      return this.d.c.get($$0);
+   }
+
+   protected int c() {
+      return this.d.b;
+   }
+
+   protected static final class a extends elc<ell.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<drz> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
+      }
+
+      public ell.a a() {
+         return new ell.a(this.a.clone(), this.c.clone(), this.b);
+      }
    }
 }

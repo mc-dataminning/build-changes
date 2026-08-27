@@ -1,735 +1,97 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.Long2IntMap;
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 import javax.annotation.Nullable;
 
-public class dve implements dut.a, dut.b {
-   private final dvi a;
-   final int b;
-   final int c;
-   final int d;
-   private final int e;
-   private final int f;
-   final int g;
-   final int h;
-   final List<dve.i> i;
-   final List<dve.e> j;
-   private final Map<dut, dut> k = new HashMap<>();
-   private final Long2IntMap l = new Long2IntOpenHashMap();
-   private final dum m;
-   private final dut n;
-   private final dve.c o;
-   private final dwc p;
-   private final dve.g q;
-   private final dve.g r;
-   private final duu.c s;
-   private long t = cyn.a;
-   private dwc.a u = new dwc.a(1.0, 0.0);
-   final int v;
-   final int w;
-   final int x;
-   boolean y;
-   boolean z;
-   private int A;
-   int B;
-   private int C;
-   int D;
-   int E;
-   int F;
-   long G;
-   long H;
-   int I;
-   private final dut.a J = new dut.a() {
+public final class dve {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dst> e = lc.n
+      .q()
+      .comapFlatMap($$0 -> $$0 == dst.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dve> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dve::a),
+               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dve::new)
+   );
+   private static final Set<ake<dat>> f = Set.of(dba.aa, dba.Z, dba.ab);
+   public static final czw b = new czw() {
       @Override
-      public dut.b a(int $$0) {
-         dve.this.B = ($$0 + dve.this.d) * dve.this.x;
-         dve.this.G++;
-         dve.this.E = 0;
-         dve.this.I = $$0;
-         return dve.this;
+      public int J_() {
+         return 64;
       }
 
       @Override
-      public void a(double[] $$0, dut $$1) {
-         for (int $$2 = 0; $$2 < dve.this.c + 1; $$2++) {
-            dve.this.B = ($$2 + dve.this.d) * dve.this.x;
-            dve.this.G++;
-            dve.this.E = 0;
-            dve.this.I = $$2;
-            $$0[$$2] = $$1.a(dve.this);
-         }
+      public int I_() {
+         return -64;
       }
    };
+   private final dst g;
+   private final BitSet h;
 
-   public static dve a(dre $$0, dvo $$1, duu.c $$2, dvf $$3, dum.a $$4, dwc $$5) {
-      dvi $$6 = $$3.f().a($$0);
-      cyn $$7 = $$0.f();
-      int $$8 = 16 / $$6.b();
-      return new dve($$8, $$1, $$7.d(), $$7.e(), $$6, $$2, $$3, $$4, $$5);
-   }
-
-   public dve(int $$0, dvo $$1, int $$2, int $$3, dvi $$4, duu.c $$5, dvf $$6, dum.a $$7, dwc $$8) {
-      this.a = $$4;
-      this.w = $$4.b();
-      this.x = $$4.a();
-      this.b = $$0;
-      this.c = axm.a($$4.d(), this.x);
-      this.d = axm.a($$4.c(), this.x);
-      this.e = Math.floorDiv($$2, this.w);
-      this.f = Math.floorDiv($$3, this.w);
-      this.i = Lists.newArrayList();
-      this.j = Lists.newArrayList();
-      this.g = iy.a($$2);
-      this.h = iy.a($$3);
-      this.v = iy.a($$0 * this.w);
-      this.p = $$8;
-      this.s = $$5;
-      this.q = new dve.g(new dve.a(), false);
-      this.r = new dve.g(new dve.b(), false);
-
-      for (int $$9 = 0; $$9 <= this.v; $$9++) {
-         int $$10 = this.g + $$9;
-         int $$11 = iy.c($$10);
-
-         for (int $$12 = 0; $$12 <= this.v; $$12++) {
-            int $$13 = this.h + $$12;
-            int $$14 = iy.c($$13);
-            dwc.a $$15 = $$8.a($$11, $$14);
-            this.q.f[$$9][$$12] = $$15.a();
-            this.r.f[$$9][$$12] = $$15.b();
-         }
-      }
-
-      dvg $$16 = $$1.a();
-      dvg $$17 = $$16.a(this::a);
-      if (!$$6.b()) {
-         this.m = dum.a($$7);
-      } else {
-         int $$18 = jg.a($$2);
-         int $$19 = jg.a($$3);
-         this.m = dum.a(this, new cyn($$18, $$19), $$17, $$1.d(), $$4.c(), $$4.d(), $$7);
-      }
-
-      Builder<dve.c> $$20 = ImmutableList.builder();
-      dut $$21 = duu.e(duu.a($$17.l(), duu.b.a)).a(this::a);
-      $$20.add((dve.c)$$1x -> this.m.a($$1x, $$21.a($$1x)));
-      if ($$6.c()) {
-         $$20.add(dvk.a($$17.m(), $$17.n(), $$17.o(), $$1.e()));
-      }
-
-      this.o = new eee($$20.build());
-      this.n = $$17.k();
-   }
-
-   protected dao.f a(dvg $$0, List<dao.d> $$1) {
-      return new dao.f($$0.e().a(this::a), $$0.f().a(this::a), $$0.g().a(this::a), $$0.h().a(this::a), $$0.i().a(this::a), $$0.j().a(this::a), $$1);
+   private dve(dst $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
    }
 
    @Nullable
-   protected dpi e() {
-      return this.o.calculate(this);
+   public static dve a(ty $$0) {
+      dst $$1 = dst.a($$0.l("target_status"));
+      return $$1 == dst.c ? null : new dve($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
    }
 
-   @Override
-   public int a() {
-      return this.A + this.D;
+   public static void a(dso $$0) {
+      int $$1 = 4;
+      im.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dcx.F)) {
+            $$0.a($$1x, dcx.sJ.n(), false);
+         }
+      });
    }
 
-   @Override
-   public int b() {
-      return this.B + this.E;
-   }
+   public void b(dso $$0) {
+      czw $$1 = $$0.z();
+      int $$2 = $$1.I_();
+      int $$3 = $$1.al() - 1;
 
-   @Override
-   public int c() {
-      return this.C + this.F;
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = iy.c(iy.a($$0));
-      int $$3 = iy.c(iy.a($$1));
-      return this.l.computeIfAbsent(apk.a($$2, $$3), this::a);
-   }
-
-   private int a(long $$0) {
-      int $$1 = apk.a($$0);
-      int $$2 = apk.b($$0);
-      int $$3 = this.a.c();
-
-      for (int $$4 = $$3 + this.a.d(); $$4 >= $$3; $$4 -= this.x) {
-         if (this.n.a(new dut.e($$1, $$4, $$2)) > 0.390625) {
-            return $$4;
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               im.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dcx.a.n(), false));
+            }
          }
       }
-
-      return Integer.MAX_VALUE;
    }
 
-   @Override
-   public dwc d() {
-      return this.p;
+   public dst a() {
+      return this.g;
    }
 
-   private void a(boolean $$0, int $$1) {
-      this.A = $$1 * this.w;
-      this.D = 0;
-
-      for (int $$2 = 0; $$2 < this.b + 1; $$2++) {
-         int $$3 = this.f + $$2;
-         this.C = $$3 * this.w;
-         this.F = 0;
-         this.H++;
-
-         for (dve.i $$4 : this.i) {
-            double[] $$5 = ($$0 ? $$4.e : $$4.f)[$$2];
-            $$4.a($$5, this.J);
-         }
-      }
-
-      this.H++;
+   public boolean b() {
+      return !this.h.isEmpty();
    }
 
-   public void f() {
-      if (this.y) {
-         throw new IllegalStateException("Staring interpolation twice");
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static daw a(daw $$0, dru $$1) {
+      if (!$$1.y()) {
+         return $$0;
       } else {
-         this.y = true;
-         this.G = 0L;
-         this.a(true, this.e);
-      }
-   }
-
-   public void b(int $$0) {
-      this.a(false, this.e + $$0 + 1);
-      this.A = (this.e + $$0) * this.w;
-   }
-
-   public dve c(int $$0) {
-      int $$1 = Math.floorMod($$0, this.w);
-      int $$2 = Math.floorDiv($$0, this.w);
-      int $$3 = Math.floorMod($$2, this.w);
-      int $$4 = this.x - 1 - Math.floorDiv($$2, this.w);
-      this.D = $$3;
-      this.E = $$4;
-      this.F = $$1;
-      this.I = $$0;
-      return this;
-   }
-
-   @Override
-   public void a(double[] $$0, dut $$1) {
-      this.I = 0;
-
-      for (int $$2 = this.x - 1; $$2 >= 0; $$2--) {
-         this.E = $$2;
-
-         for (int $$3 = 0; $$3 < this.w; $$3++) {
-            this.D = $$3;
-
-            for (int $$4 = 0; $$4 < this.w; $$4++) {
-               this.F = $$4;
-               $$0[this.I++] = $$1.a(this);
-            }
-         }
-      }
-   }
-
-   public void b(int $$0, int $$1) {
-      this.i.forEach($$2x -> $$2x.b($$0, $$1));
-      this.z = true;
-      this.B = ($$0 + this.d) * this.x;
-      this.C = (this.f + $$1) * this.w;
-      this.H++;
-
-      for (dve.e $$2 : this.j) {
-         $$2.e.a($$2.f, this);
-      }
-
-      this.H++;
-      this.z = false;
-   }
-
-   public void a(int $$0, double $$1) {
-      this.E = $$0 - this.B;
-      this.i.forEach($$1x -> $$1x.a($$1));
-   }
-
-   public void b(int $$0, double $$1) {
-      this.D = $$0 - this.A;
-      this.i.forEach($$1x -> $$1x.b($$1));
-   }
-
-   public void c(int $$0, double $$1) {
-      this.F = $$0 - this.C;
-      this.G++;
-      this.i.forEach($$1x -> $$1x.c($$1));
-   }
-
-   public void g() {
-      if (!this.y) {
-         throw new IllegalStateException("Staring interpolation twice");
-      } else {
-         this.y = false;
-      }
-   }
-
-   public void h() {
-      this.i.forEach(dve.i::l);
-   }
-
-   public dum i() {
-      return this.m;
-   }
-
-   protected int j() {
-      return this.w;
-   }
-
-   protected int k() {
-      return this.x;
-   }
-
-   dwc.a c(int $$0, int $$1) {
-      long $$2 = cyn.c($$0, $$1);
-      if (this.t == $$2) {
-         return this.u;
-      } else {
-         this.t = $$2;
-         dwc.a $$3 = this.p.a($$0, $$1);
-         this.u = $$3;
-         return $$3;
-      }
-   }
-
-   protected dut a(dut $$0) {
-      return this.k.computeIfAbsent($$0, this::b);
-   }
-
-   private dut b(dut $$0) {
-      if ($$0 instanceof duu.l $$1) {
-         return (dut)(switch ($$1.j()) {
-            case a -> new dve.i($$1.k());
-            case b -> new dve.g($$1.k(), true);
-            case c -> new dve.d($$1.k());
-            case d -> new dve.f($$1.k());
-            case e -> new dve.e($$1.k());
-         });
-      } else {
-         if (this.p != dwc.a()) {
-            if ($$0 == duu.d.a) {
-               return this.q;
-            }
-
-            if ($$0 == duu.f.a) {
-               return this.r;
-            }
-         }
-
-         if ($$0 == duu.b.a) {
-            return this.s;
-         } else {
-            return $$0 instanceof duu.j $$2 ? $$2.j().a() : $$0;
-         }
-      }
-   }
-
-   class a implements dve.h {
-      @Override
-      public dut k() {
-         return duu.d.a;
-      }
-
-      @Override
-      public dut a(dut.f $$0) {
-         return this.k().a($$0);
-      }
-
-      @Override
-      public double a(dut.b $$0) {
-         return dve.this.c($$0.a(), $$0.c()).a();
-      }
-
-      @Override
-      public void a(double[] $$0, dut.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public double a() {
-         return 0.0;
-      }
-
-      @Override
-      public double b() {
-         return 1.0;
-      }
-
-      @Override
-      public axg<? extends dut> c() {
-         return duu.d.e;
-      }
-   }
-
-   class b implements dve.h {
-      @Override
-      public dut k() {
-         return duu.f.a;
-      }
-
-      @Override
-      public dut a(dut.f $$0) {
-         return this.k().a($$0);
-      }
-
-      @Override
-      public double a(dut.b $$0) {
-         return dve.this.c($$0.a(), $$0.c()).b();
-      }
-
-      @Override
-      public void a(double[] $$0, dut.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public double a() {
-         return Double.NEGATIVE_INFINITY;
-      }
-
-      @Override
-      public double b() {
-         return Double.POSITIVE_INFINITY;
-      }
-
-      @Override
-      public axg<? extends dut> c() {
-         return duu.f.e;
-      }
-   }
-
-   @FunctionalInterface
-   public interface c {
-      @Nullable
-      dpi calculate(dut.b var1);
-   }
-
-   static class d implements duu.m, dve.h {
-      private final dut a;
-      private long e = cyn.a;
-      private double f;
-
-      d(dut $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public double a(dut.b $$0) {
-         int $$1 = $$0.a();
-         int $$2 = $$0.c();
-         long $$3 = cyn.c($$1, $$2);
-         if (this.e == $$3) {
-            return this.f;
-         } else {
-            this.e = $$3;
-            double $$4 = this.a.a($$0);
-            this.f = $$4;
-            return $$4;
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, dut.a $$1) {
-         this.a.a($$0, $$1);
-      }
-
-      @Override
-      public dut k() {
-         return this.a;
-      }
-
-      @Override
-      public duu.l.a j() {
-         return duu.l.a.c;
-      }
-   }
-
-   class e implements duu.m, dve.h {
-      final dut e;
-      final double[] f;
-
-      e(dut $$0) {
-         this.e = $$0;
-         this.f = new double[dve.this.w * dve.this.w * dve.this.x];
-         dve.this.j.add(this);
-      }
-
-      @Override
-      public double a(dut.b $$0) {
-         if ($$0 != dve.this) {
-            return this.e.a($$0);
-         } else if (!dve.this.y) {
-            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
-         } else {
-            int $$1 = dve.this.D;
-            int $$2 = dve.this.E;
-            int $$3 = dve.this.F;
-            return $$1 >= 0 && $$2 >= 0 && $$3 >= 0 && $$1 < dve.this.w && $$2 < dve.this.x && $$3 < dve.this.w
-               ? this.f[((dve.this.x - 1 - $$2) * dve.this.w + $$1) * dve.this.w + $$3]
-               : this.e.a($$0);
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, dut.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public dut k() {
-         return this.e;
-      }
-
-      @Override
-      public duu.l.a j() {
-         return duu.l.a.e;
-      }
-   }
-
-   class f implements duu.m, dve.h {
-      private final dut e;
-      private long f;
-      private long g;
-      private double h;
-      @Nullable
-      private double[] i;
-
-      f(dut $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public double a(dut.b $$0) {
-         if ($$0 != dve.this) {
-            return this.e.a($$0);
-         } else if (this.i != null && this.g == dve.this.H) {
-            return this.i[dve.this.I];
-         } else if (this.f == dve.this.G) {
-            return this.h;
-         } else {
-            this.f = dve.this.G;
-            double $$1 = this.e.a($$0);
-            this.h = $$1;
-            return $$1;
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, dut.a $$1) {
-         if (this.i != null && this.g == dve.this.H) {
-            System.arraycopy(this.i, 0, $$0, 0, $$0.length);
-         } else {
-            this.k().a($$0, $$1);
-            if (this.i != null && this.i.length == $$0.length) {
-               System.arraycopy($$0, 0, this.i, 0, $$0.length);
-            } else {
-               this.i = (double[])$$0.clone();
-            }
-
-            this.g = dve.this.H;
-         }
-      }
-
-      @Override
-      public dut k() {
-         return this.e;
-      }
-
-      @Override
-      public duu.l.a j() {
-         return duu.l.a.d;
-      }
-   }
-
-   class g implements duu.m, dve.h {
-      private final dut e;
-      final double[][] f;
-
-      g(dut $$0, boolean $$1) {
-         this.e = $$0;
-         this.f = new double[dve.this.v + 1][dve.this.v + 1];
-         if ($$1) {
-            for (int $$2 = 0; $$2 <= dve.this.v; $$2++) {
-               int $$3 = dve.this.g + $$2;
-               int $$4 = iy.c($$3);
-
-               for (int $$5 = 0; $$5 <= dve.this.v; $$5++) {
-                  int $$6 = dve.this.h + $$5;
-                  int $$7 = iy.c($$6);
-                  this.f[$$2][$$5] = $$0.a(new dut.e($$4, 0, $$7));
-               }
-            }
-         }
-      }
-
-      @Override
-      public double a(dut.b $$0) {
-         int $$1 = iy.a($$0.a());
-         int $$2 = iy.a($$0.c());
-         int $$3 = $$1 - dve.this.g;
-         int $$4 = $$2 - dve.this.h;
-         int $$5 = this.f.length;
-         return $$3 >= 0 && $$4 >= 0 && $$3 < $$5 && $$4 < $$5 ? this.f[$$3][$$4] : this.e.a($$0);
-      }
-
-      @Override
-      public void a(double[] $$0, dut.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public dut k() {
-         return this.e;
-      }
-
-      @Override
-      public duu.l.a j() {
-         return duu.l.a.b;
-      }
-   }
-
-   interface h extends dut {
-      dut k();
-
-      @Override
-      default double a() {
-         return this.k().a();
-      }
-
-      @Override
-      default double b() {
-         return this.k().b();
-      }
-   }
-
-   public class i implements duu.m, dve.h {
-      double[][] e;
-      double[][] f;
-      private final dut g;
-      private double h;
-      private double i;
-      private double j;
-      private double k;
-      private double l;
-      private double m;
-      private double n;
-      private double o;
-      private double p;
-      private double q;
-      private double r;
-      private double s;
-      private double t;
-      private double u;
-      private double v;
-
-      i(dut $$1) {
-         this.g = $$1;
-         this.e = this.a(dve.this.c, dve.this.b);
-         this.f = this.a(dve.this.c, dve.this.b);
-         dve.this.i.add(this);
-      }
-
-      private double[][] a(int $$0, int $$1) {
-         int $$2 = $$1 + 1;
-         int $$3 = $$0 + 1;
-         double[][] $$4 = new double[$$2][$$3];
-
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            $$4[$$5] = new double[$$3];
-         }
-
-         return $$4;
-      }
-
-      void b(int $$0, int $$1) {
-         this.h = this.e[$$1][$$0];
-         this.i = this.e[$$1 + 1][$$0];
-         this.j = this.f[$$1][$$0];
-         this.k = this.f[$$1 + 1][$$0];
-         this.l = this.e[$$1][$$0 + 1];
-         this.m = this.e[$$1 + 1][$$0 + 1];
-         this.n = this.f[$$1][$$0 + 1];
-         this.o = this.f[$$1 + 1][$$0 + 1];
-      }
-
-      void a(double $$0) {
-         this.p = axm.d($$0, this.h, this.l);
-         this.q = axm.d($$0, this.j, this.n);
-         this.r = axm.d($$0, this.i, this.m);
-         this.s = axm.d($$0, this.k, this.o);
-      }
-
-      void b(double $$0) {
-         this.t = axm.d($$0, this.p, this.q);
-         this.u = axm.d($$0, this.r, this.s);
-      }
-
-      void c(double $$0) {
-         this.v = axm.d($$0, this.t, this.u);
-      }
-
-      @Override
-      public double a(dut.b $$0) {
-         if ($$0 != dve.this) {
-            return this.g.a($$0);
-         } else if (!dve.this.y) {
-            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
-         } else {
-            return dve.this.z
-               ? axm.a(
-                  (double)dve.this.D / (double)dve.this.w,
-                  (double)dve.this.E / (double)dve.this.x,
-                  (double)dve.this.F / (double)dve.this.w,
-                  this.h,
-                  this.j,
-                  this.l,
-                  this.n,
-                  this.i,
-                  this.k,
-                  this.m,
-                  this.o
-               )
-               : this.v;
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, dut.a $$1) {
-         if (dve.this.z) {
-            $$1.a($$0, this);
-         } else {
-            this.k().a($$0, $$1);
-         }
-      }
-
-      @Override
-      public dut k() {
-         return this.g;
-      }
-
-      private void l() {
-         double[][] $$0 = this.e;
-         this.e = this.f;
-         this.f = $$0;
-      }
-
-      @Override
-      public duu.l.a j() {
-         return duu.l.a.a;
+         Predicate<ake<dat>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            iv<dat> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
    }
 }

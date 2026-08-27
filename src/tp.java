@@ -1,132 +1,49 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public class tp extends ue {
-   private static final int c = 16;
-   public static final tp a = new tp(0.0);
-   public static final un<tp> b = new un.a<tp>() {
-      public tp a(DataInput $$0, tx $$1) throws IOException {
-         return tp.a(d($$0, $$1));
+public class tp implements ArgumentType<to> {
+   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+
+   public to a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      Optional<to> $$2 = sw.e($$1);
+      if ($$2.isPresent()) {
+         return $$2.get();
+      } else {
+         Message $$3 = ws.b("No such test: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
       }
-
-      @Override
-      public ui.b a(DataInput $$0, ui $$1, tx $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static double d(DataInput $$0, tx $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readDouble();
-      }
-
-      @Override
-      public int c() {
-         return 8;
-      }
-
-      @Override
-      public String a() {
-         return "DOUBLE";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Double";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final double w;
-
-   private tp(double $$0) {
-      this.w = $$0;
    }
 
-   public static tp a(double $$0) {
-      return $$0 == 0.0 ? a : new tp($$0);
+   public static tp a() {
+      return new tp();
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeDouble(this.w);
+   public static to a(CommandContext<ec> $$0, String $$1) {
+      return (to)$$0.getArgument($$1, to.class);
    }
 
-   @Override
-   public int a() {
-      return 16;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return a($$0, $$1);
    }
 
-   @Override
-   public byte b() {
-      return 6;
+   public static <S> CompletableFuture<Suggestions> a(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      Stream<String> $$2 = sw.a().stream().map(to::c);
+      return eh.b($$2, $$1);
    }
 
-   @Override
-   public un<tp> c() {
-      return b;
-   }
-
-   public tp e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tp && this.w == ((tp)$$0).w;
-   }
-
-   @Override
-   public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.w);
-      return (int)($$0 ^ $$0 >>> 32);
-   }
-
-   @Override
-   public void a(up $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)Math.floor(this.w);
-   }
-
-   @Override
-   public int g() {
-      return axm.a(this.w);
-   }
-
-   @Override
-   public short h() {
-      return (short)(axm.a(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(axm.a(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return this.w;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public ui.b a(ui $$0) {
-      return $$0.a(this.w);
+   public Collection<String> getExamples() {
+      return a;
    }
 }

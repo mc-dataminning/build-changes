@@ -1,30 +1,39 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ecm extends ecj {
-   protected final long c;
-   protected final eke.a d;
-   protected final float e;
-   protected final eke f;
+public class ecm extends eck {
+   public static final Codec<ecm> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ecm::new)
+   );
+   protected final int b;
 
-   protected static <P extends ecm> P3<Mu<P>, Long, eke.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         eke.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         awu.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public ecm(bnv $$0, bnv $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   protected ecm(long $$0, eke.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = eke.b(new dvz(new dvb($$0)), $$1);
+   @Override
+   protected ecl<?> a() {
+      return ecl.g;
    }
 
-   protected double a(id $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   @Override
+   protected void a(daa $$0, eck.b $$1, ayd $$2, ebu $$3, int $$4, eck.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
+      }
+   }
+
+   @Override
+   public int a(ayd $$0, int $$1, ebu $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(ayd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

@@ -1,154 +1,178 @@
+import com.google.common.base.Strings;
 import com.google.gson.JsonObject;
-import java.util.Objects;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Locale;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eyf extends eyn {
-   public final boolean a;
-   public final boolean b;
-   public final boolean c;
-   public final boolean d;
-   public final int e;
-   public final boolean f;
-   public final boolean g;
-   public final int h;
-   public final int i;
-   private final String o;
-   public final String j;
-   public final exy.a k;
-   public long l;
-   @Nullable
-   public String m;
-   public boolean n;
-   private static final boolean p = false;
-   private static final boolean q = true;
-   private static final boolean r = true;
-   private static final boolean s = true;
-   private static final boolean t = true;
-   private static final int u = 0;
-   private static final boolean v = false;
-   private static final int w = 2;
-   private static final int x = 0;
-   private static final String y = "";
-   private static final String z = "";
-   private static final exy.a A = exy.a.a;
-   private static final long B = -1L;
-   private static final String C = null;
+public interface eyf {
+   ws a = ws.c("mco.errorMessage.noDetails");
+   Logger b = LogUtils.getLogger();
 
-   public eyf(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, String $$9, String $$10, exy.a $$11) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.g = $$8;
-      this.o = $$9;
-      this.j = $$10;
-      this.k = $$11;
-   }
+   int a();
 
-   public static eyf a() {
-      return new eyf(true, true, true, true, 0, false, 2, 0, false, "", "", A);
-   }
+   ws b();
 
-   public static eyf b() {
-      eyf $$0 = a();
-      $$0.a(true);
-      return $$0;
-   }
+   String c();
 
-   public void a(boolean $$0) {
-      this.n = $$0;
-   }
-
-   public static eyf a(JsonObject $$0) {
-      eyf $$1 = new eyf(
-         fak.a("pvp", $$0, true),
-         fak.a("spawnAnimals", $$0, true),
-         fak.a("spawnMonsters", $$0, true),
-         fak.a("spawnNPCs", $$0, true),
-         fak.a("spawnProtection", $$0, 0),
-         fak.a("commandBlocks", $$0, false),
-         fak.a("difficulty", $$0, 2),
-         fak.a("gameMode", $$0, 0),
-         fak.a("forceGameMode", $$0, false),
-         fak.a("slotName", $$0, ""),
-         fak.a("version", $$0, ""),
-         exy.d(fak.a("compatibility", $$0, exy.a.a.name()))
-      );
-      $$1.l = fak.a("worldTemplateId", $$0, -1L);
-      $$1.m = fak.b("worldTemplateImage", $$0, C);
-      return $$1;
-   }
-
-   public String a(int $$0) {
-      if (ayh.h(this.o)) {
-         return this.n ? gmx.a("mco.configure.world.slot.empty") : this.b($$0);
+   static eyf a(int $$0, String $$1) {
+      if ($$0 == 429) {
+         return eyf.b.c;
+      } else if (Strings.isNullOrEmpty($$1)) {
+         return eyf.b.b($$0);
       } else {
-         return this.o;
+         try {
+            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
+            String $$3 = axm.a($$2, "reason", null);
+            String $$4 = axm.a($$2, "errorMsg", null);
+            int $$5 = axm.a($$2, "errorCode", -1);
+            if ($$4 != null || $$3 != null || $$5 != -1) {
+               return new eyf.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
+            }
+         } catch (Exception var6) {
+            b.error("Could not parse RealmsError", var6);
+         }
+
+         return new eyf.d($$0, $$1);
       }
    }
 
-   public String b(int $$0) {
-      return gmx.a("mco.configure.world.slot", $$0);
+   public static record a(String d) implements eyf {
+      public static final int c = 401;
+
+      @Override
+      public int a() {
+         return 401;
+      }
+
+      @Override
+      public ws b() {
+         return ws.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
+      }
    }
 
-   public String c() {
-      JsonObject $$0 = new JsonObject();
-      if (!this.a) {
-         $$0.addProperty("pvp", this.a);
+   public static record b(int e, @Nullable ws f) implements eyf {
+      public static final eyf.b c = new eyf.b(429, ws.c("mco.errorMessage.serviceBusy"));
+      public static final ws d = ws.c("mco.errorMessage.retry");
+
+      public static eyf.b a(String $$0) {
+         return new eyf.b(500, ws.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
       }
 
-      if (!this.b) {
-         $$0.addProperty("spawnAnimals", this.b);
+      public static eyf.b a(ezp $$0) {
+         return new eyf.b(500, ws.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
       }
 
-      if (!this.c) {
-         $$0.addProperty("spawnMonsters", this.c);
+      public static eyf.b a(int $$0) {
+         return new eyf.b($$0, d);
       }
 
-      if (!this.d) {
-         $$0.addProperty("spawnNPCs", this.d);
+      public static eyf.b b(int $$0) {
+         return new eyf.b($$0, null);
       }
 
-      if (this.e != 0) {
-         $$0.addProperty("spawnProtection", this.e);
+      @Override
+      public int a() {
+         return this.e;
       }
 
-      if (this.f) {
-         $$0.addProperty("commandBlocks", this.f);
+      @Override
+      public ws b() {
+         return this.f != null ? this.f : a;
       }
 
-      if (this.h != 2) {
-         $$0.addProperty("difficulty", this.h);
+      @Override
+      public String c() {
+         return this.f != null
+            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
+            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
       }
 
-      if (this.i != 0) {
-         $$0.addProperty("gameMode", this.i);
+      public int d() {
+         return this.e;
       }
 
-      if (this.g) {
-         $$0.addProperty("forceGameMode", this.g);
+      @Nullable
+      public ws e() {
+         return this.f;
       }
-
-      if (!Objects.equals(this.o, "")) {
-         $$0.addProperty("slotName", this.o);
-      }
-
-      if (!Objects.equals(this.j, "")) {
-         $$0.addProperty("version", this.j);
-      }
-
-      if (this.k != A) {
-         $$0.addProperty("compatibility", this.k.name());
-      }
-
-      return $$0.toString();
    }
 
-   public eyf d() {
-      return new eyf(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.o, this.j, this.k);
+   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements eyf {
+      @Override
+      public int a() {
+         return this.d;
+      }
+
+      @Override
+      public ws b() {
+         String $$0 = "mco.errorMessage." + this.d;
+         if (gnt.a($$0)) {
+            return ws.c($$0);
+         } else {
+            if (this.e != null) {
+               String $$1 = "mco.errorReason." + this.e;
+               if (gnt.a($$1)) {
+                  return ws.c($$1);
+               }
+            }
+
+            return (ws)(this.f != null ? ws.b(this.f) : a);
+         }
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public int e() {
+         return this.d;
+      }
+
+      @Nullable
+      public String f() {
+         return this.e;
+      }
+
+      @Nullable
+      public String g() {
+         return this.f;
+      }
+   }
+
+   public static record d(int c, String d) implements eyf {
+      @Override
+      public int a() {
+         return this.c;
+      }
+
+      @Override
+      public ws b() {
+         return ws.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public String e() {
+         return this.d;
+      }
    }
 }

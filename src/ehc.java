@@ -1,15 +1,25 @@
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class ehc {
-   public static Codec<? extends ehb> a(ja<Codec<? extends ehb>> $$0) {
-      ja.a($$0, "random", ehe.a);
-      ja.a($$0, "random_group", ehf.a);
-      return ja.a($$0, "direct", eha.a);
+public enum ehc implements ayq {
+   a("linear"),
+   b("triangular");
+
+   public static final Codec<ehc> c = ayq.a(ehc::values);
+   private final String d;
+
+   private ehc(String $$0) {
+      this.d = $$0;
    }
 
-   public static void a(pz<egz> $$0, in<egz> $$1, List<ehb> $$2) {
-      $$2.stream().flatMap(ehb::a).map($$0x -> $$0x.a().a()).forEach($$2x -> qg.a($$0, $$2x, new egz($$1, List.of(Pair.of(egx.b($$2x), 1)), egz.a.b)));
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public int a(ayd $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

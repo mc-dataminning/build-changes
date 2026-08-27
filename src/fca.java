@@ -1,37 +1,67 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fca {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public class fca extends fbu {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ws c = ws.c("mco.backup.restoring");
+   private final eyj d;
+   private final long e;
+   private final fad f;
 
-   private static final IntFunction<fca> e = awd.a(fca::a, values(), awd.a.b);
-   private final int f;
-   private final wi g;
-
-   private fca(int $$0, String $$1) {
-      this.f = $$0;
-      this.g = wi.c($$1);
+   public fca(eyj $$0, long $$1, fad $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public int a() {
-      return this.f;
+   @Override
+   public void run() {
+      eyd $$0 = eyd.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(this.f.f());
+            return;
+         } catch (ezr var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (ezq var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var5);
+            a(new fah(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
+         }
+      }
    }
 
-   public wi b() {
-      return this.g;
-   }
-
-   public static fca a(int $$0) {
-      return e.apply($$0);
-   }
-
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+   @Override
+   public ws a() {
+      return c;
    }
 }

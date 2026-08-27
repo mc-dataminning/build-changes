@@ -1,65 +1,160 @@
-public class clp {
-   public static final clp a = a("core");
-   public static final clp b = a("idle");
-   public static final clp c = a("work");
-   public static final clp d = a("play");
-   public static final clp e = a("rest");
-   public static final clp f = a("meet");
-   public static final clp g = a("panic");
-   public static final clp h = a("raid");
-   public static final clp i = a("pre_raid");
-   public static final clp j = a("hide");
-   public static final clp k = a("fight");
-   public static final clp l = a("celebrate");
-   public static final clp m = a("admire_item");
-   public static final clp n = a("avoid");
-   public static final clp o = a("ride");
-   public static final clp p = a("play_dead");
-   public static final clp q = a("long_jump");
-   public static final clp r = a("ram");
-   public static final clp s = a("tongue");
-   public static final clp t = a("swim");
-   public static final clp u = a("lay_spawn");
-   public static final clp v = a("sniff");
-   public static final clp w = a("investigate");
-   public static final clp x = a("roar");
-   public static final clp y = a("emerge");
-   public static final clp z = a("dig");
-   private final String A;
-   private final int B;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private clp(String $$0) {
-      this.A = $$0;
-      this.B = $$0.hashCode();
+public class clp extends clk implements cla {
+   public static final double b = 4.0;
+   private static final double d = 16.0;
+   public static final Predicate<bre> c = $$0 -> $$0.fn() || $$0.bO();
+
+   public clp(bqr<? extends clp> $$0, czu $$1) {
+      super($$0, $$1);
    }
 
-   public String a() {
-      return this.A;
+   public clp(czu $$0, bre $$1) {
+      super(bqr.aD, $$1, $$0);
    }
 
-   private static clp a(String $$0) {
-      return ja.a(kt.E, $$0, new clp($$0));
+   public clp(czu $$0, double $$1, double $$2, double $$3) {
+      super(bqr.aD, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         clp $$1 = (clp)$$0;
-         return this.A.equals($$1.A);
-      } else {
-         return false;
+   protected cry r() {
+      return csg.vo;
+   }
+
+   @Override
+   protected double aW() {
+      return 0.05;
+   }
+
+   @Override
+   protected void a(etb $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         csd $$1 = this.p();
+         ir $$2 = $$0.b();
+         im $$3 = $$0.a();
+         im $$4 = $$3.a($$2);
+         cuc $$5 = $$1.a(jz.x, cuc.a);
+         if ($$5.a(cud.a)) {
+            this.a($$4);
+            this.a($$4.a($$2.g()));
+
+            for (ir $$6 : ir.c.a) {
+               this.a($$4.a($$6));
+            }
+         }
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.B;
+   protected void a(etd $$0) {
+      super.a($$0);
+      if (!this.dN().B) {
+         csd $$1 = this.p();
+         cuc $$2 = $$1.a(jz.x, cuc.a);
+         if ($$2.a(cud.a)) {
+            this.v();
+         } else if ($$2.d()) {
+            if (this.w()) {
+               this.a($$2);
+            } else {
+               this.a($$2.a(), $$0.c() == etd.a.c ? ((etc)$$0).a() : null);
+            }
+         }
+
+         int $$3 = $$2.f().isPresent() && $$2.f().get().a().b() ? 2007 : 2002;
+         this.dN().c($$3, this.dn(), $$2.b());
+         this.am();
+      }
    }
 
-   @Override
-   public String toString() {
-      return this.a();
+   private void v() {
+      eta $$0 = this.cI().c(4.0, 2.0, 4.0);
+
+      for (bre $$2 : this.dN().a(bre.class, $$0, c)) {
+         double $$3 = this.g($$2);
+         if ($$3 < 16.0) {
+            if ($$2.fn()) {
+               $$2.a(this.dO().c(this, this.u()), 1.0F);
+            }
+
+            if ($$2.bO() && $$2.bB()) {
+               $$2.aF();
+            }
+         }
+      }
+
+      for (cef $$5 : this.dN().a(cef.class, $$0)) {
+         $$5.r();
+      }
+   }
+
+   private void a(Iterable<bpx> $$0, @Nullable bql $$1) {
+      eta $$2 = this.cI().c(4.0, 2.0, 4.0);
+      List<bre> $$3 = this.dN().a(bre.class, $$2);
+      if (!$$3.isEmpty()) {
+         bql $$4 = this.I();
+
+         for (bre $$5 : $$3) {
+            if ($$5.fE()) {
+               double $$6 = this.g($$5);
+               if ($$6 < 16.0) {
+                  double $$7;
+                  if ($$5 == $$1) {
+                     $$7 = 1.0;
+                  } else {
+                     $$7 = 1.0 - Math.sqrt($$6) / 4.0;
+                  }
+
+                  for (bpx $$9 : $$0) {
+                     iv<bpv> $$10 = $$9.c();
+                     if ($$10.a().a()) {
+                        $$10.a().a(this, this.u(), $$5, $$9.e(), $$7);
+                     } else {
+                        int $$11 = $$9.a($$1x -> (int)($$7 * (double)$$1x + 0.5));
+                        bpx $$12 = new bpx($$10, $$11, $$9.e(), $$9.f(), $$9.g());
+                        if (!$$12.a(20)) {
+                           $$5.b($$12, $$4);
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void a(cuc $$0) {
+      bqh $$1 = new bqh(this.dN(), this.ds(), this.du(), this.dy());
+      if (this.u() instanceof bre $$2) {
+         $$1.a($$2);
+      }
+
+      $$1.a(3.0F);
+      $$1.b(-0.5F);
+      $$1.c(10);
+      $$1.c(-$$1.g() / (float)$$1.k());
+      $$1.a($$0);
+      this.dN().b($$1);
+   }
+
+   private boolean w() {
+      return this.p().a(csg.vr);
+   }
+
+   private void a(im $$0) {
+      dpy $$1 = this.dN().a_($$0);
+      if ($$1.a(avo.aK)) {
+         this.dN().a($$0, false, this);
+      } else if (dbn.c($$1)) {
+         dbn.a(null, $$1, this.dN(), $$0);
+      } else if (ddj.g($$1)) {
+         this.dN().a(null, 1009, $$0, 0);
+         ddj.a(this.u(), this.dN(), $$0, $$1);
+         this.dN().b($$0, $$1.a(ddj.c, Boolean.valueOf(false)));
+      }
    }
 }

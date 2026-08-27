@@ -1,34 +1,31 @@
-public class gig extends gfq<cgl> {
-   private final gbc a;
+public class gig extends ght<cdn, ftc<cdn>> {
+   private static final akf a = new akf("textures/entity/rabbit/brown.png");
+   private static final akf i = new akf("textures/entity/rabbit/white.png");
+   private static final akf j = new akf("textures/entity/rabbit/black.png");
+   private static final akf k = new akf("textures/entity/rabbit/gold.png");
+   private static final akf l = new akf("textures/entity/rabbit/salt.png");
+   private static final akf m = new akf("textures/entity/rabbit/white_splotched.png");
+   private static final akf n = new akf("textures/entity/rabbit/toast.png");
+   private static final akf o = new akf("textures/entity/rabbit/caerbannog.png");
 
-   public gig(gfr.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gig(ggn.a $$0) {
+      super($$0, new ftc<>($$0.a(fuq.be)), 0.3F);
    }
 
-   public void a(cgl $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.r();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = axm.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
+   public akf a(cdn $$0) {
+      String $$1 = n.a($$0.ad().getString());
+      if ("Toast".equals($$1)) {
+         return n;
+      } else {
+         return switch ($$0.gp()) {
+            case a -> a;
+            case b -> i;
+            case c -> j;
+            case e -> k;
+            case f -> l;
+            case d -> m;
+            case g -> o;
+         };
       }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      gif.a(this.a, $$0.v(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public ajv a(cgl $$0) {
-      return glr.e;
    }
 }

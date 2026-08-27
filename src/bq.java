@@ -2,19 +2,19 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bq extends cx<bq.a> {
+public class bq extends dd<bq.a> {
    @Override
    public Codec<bq.a> a() {
       return bq.a.a;
    }
 
-   public void a(apv $$0, boy $$1, float $$2, float $$3, boolean $$4) {
+   public void a(aqf $$0, bpj $$1, float $$2, float $$3, boolean $$4) {
       this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
    }
 
-   public static record a(Optional<bc> b, Optional<bf> c) implements cx.a {
+   public static record a(Optional<bc> b, Optional<bf> c) implements dd.a {
       public static final Codec<bq.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(bq.a::a), awu.a(bf.a, "damage").forGetter(bq.a::c)).apply($$0, bq.a::new)
+         $$0 -> $$0.group(axe.a(br.b, "player").forGetter(bq.a::a), axe.a(bf.a, "damage").forGetter(bq.a::c)).apply($$0, bq.a::new)
       );
 
       public static an<bq.a> b() {
@@ -29,7 +29,7 @@ public class bq extends cx<bq.a> {
          return am.i.a(new bq.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(apv $$0, boy $$1, float $$2, float $$3, boolean $$4) {
+      public boolean a(aqf $$0, bpj $$1, float $$2, float $$3, boolean $$4) {
          return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
       }
 

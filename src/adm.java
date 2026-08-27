@@ -1,28 +1,29 @@
-import javax.annotation.Nullable;
+public class adm implements yz<abk> {
+   public static final yq<vs, adm> a = yz.a(adm::a, adm::new);
+   private final int b;
 
-public record adm(String b, @Nullable String c) implements yp<aba> {
-   public static final yg<vi, adm> a = yp.a(adm::a, adm::new);
-
-   private adm(vi $$0) {
-      this($$0.p(), $$0.c(vi::p));
+   public adm(bpg $$0) {
+      this($$0.b());
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vi::a);
+   public adm(int $$0) {
+      this.b = $$0;
+   }
+
+   private adm(vs $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vs $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yr<adm> a() {
-      return afl.cc;
+   public zb<adm> a() {
+      return afv.ab;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public String e() {
-      return this.c;
    }
 }

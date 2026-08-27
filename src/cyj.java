@@ -1,19 +1,25 @@
-public interface cyj extends cym {
-   float a(ij var1, boolean var2);
-
-   ekq y_();
-
-   int a(id var1, cyr var2);
-
-   default int a(czp $$0, id $$1) {
-      return this.y_().a($$0).b($$1);
+public class cyj extends cxn {
+   public cyj(cxn.a $$0, bqs... $$1) {
+      super($$0, avw.bl, $$1);
    }
 
-   default int b(id $$0, int $$1) {
-      return this.y_().a($$0, $$1);
+   @Override
+   public int a(int $$0) {
+      return 10 + $$0 * 7;
    }
 
-   default boolean h(id $$0) {
-      return this.a(czp.a, $$0) >= this.P();
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(cxn $$0) {
+      return super.a($$0) && $$0 != cxq.E && $$0 != cxq.H;
    }
 }

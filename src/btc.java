@@ -1,37 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class btc {
-   public static bsm<cjn> a(float $$0, int $$1) {
-      return bvy.a((Function<bvy.b<cjn>, ? extends App<bvy.c<cjn>, bwb<cjn>>>)($$2 -> $$2.group($$2.c(bzw.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.dm())) {
-                  return false;
-               } else {
-                  cbw $$6 = $$3.y();
-                  int $$7 = $$6.a(jg.a($$4.dm()));
-                  esj $$8 = null;
+public class btc extends bsw<bre> {
+   private final cah<Integer> c;
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     esj $$10 = cbq.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(jg.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(jg.a(id.a($$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
+   public btc(cah<Integer> $$0) {
+      super(ImmutableMap.of($$0, cai.a));
+      this.c = $$0;
+   }
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
+   private Optional<Integer> b(bre $$0) {
+      return $$0.dQ().c(this.c);
+   }
 
-                  if ($$8 != null) {
-                     $$2x.a(new bzz($$8, $$0, $$1));
-                  }
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
 
-                  return true;
-               }
-            })));
+   @Override
+   protected boolean a(aqe $$0, bre $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
+   }
+
+   @Override
+   protected void c(aqe $$0, bre $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dQ().a(this.c, $$3.get() - 1);
+   }
+
+   @Override
+   protected void b(aqe $$0, bre $$1, long $$2) {
+      $$1.dQ().b(this.c);
    }
 }

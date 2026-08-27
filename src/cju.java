@@ -1,138 +1,75 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cju implements cyt {
-   private static final int b = 1200;
-   public static final int a = 24000;
-   private static final int c = 25;
-   private static final int d = 75;
-   private static final int e = 25;
-   private static final int f = 10;
-   private static final int g = 10;
-   private final axt h = axt.a();
-   private final enf i;
-   private int j;
-   private int k;
-   private int l;
-
-   public cju(enf $$0) {
-      this.i = $$0;
-      this.j = 1200;
-      this.k = $$0.t();
-      this.l = $$0.u();
-      if (this.k == 0 && this.l == 0) {
-         this.k = 24000;
-         $$0.d(this.k);
-         this.l = 25;
-         $$0.e(this.l);
-      }
-   }
+public class cju implements czh {
+   private static final int a = 1200;
+   private int b;
 
    @Override
-   public int a(apu $$0, boolean $$1, boolean $$2) {
-      if (!$$0.aa().b(czc.L)) {
-         return 0;
-      } else if (--this.j > 0) {
-         return 0;
-      } else {
-         this.j = 1200;
-         this.k -= 1200;
-         this.i.d(this.k);
-         if (this.k > 0) {
+   public int a(aqe $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.aa().b(czq.e)) {
+         this.b--;
+         if (this.b > 0) {
             return 0;
          } else {
-            this.k = 24000;
-            if (!$$0.aa().b(czc.e)) {
+            this.b = 1200;
+            ckl $$3 = $$0.j();
+            if ($$3 == null) {
                return 0;
             } else {
-               int $$3 = this.l;
-               this.l = axm.a(this.l + 25, 25, 75);
-               this.i.e(this.l);
-               if (this.h.a(100) > $$3) {
+               ayd $$4 = $$0.z;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               im $$7 = $$3.dn().b($$5, 0, $$6);
+               int $$8 = 10;
+               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
                   return 0;
-               } else if (this.a($$0)) {
-                  this.l = 25;
-                  return 1;
                } else {
+                  if (brz.a(bqr.p, $$0, $$7)) {
+                     if ($$0.a($$7, 2)) {
+                        return this.a($$0, $$7);
+                     }
+
+                     if ($$0.a().a($$7, avz.m).b()) {
+                        return this.b($$0, $$7);
+                     }
+                  }
+
                   return 0;
                }
             }
          }
-      }
-   }
-
-   private boolean a(apu $$0) {
-      cka $$1 = $$0.j();
-      if ($$1 == null) {
-         return true;
-      } else if (this.h.a(10) != 0) {
-         return false;
       } else {
-         id $$2 = $$1.dm();
-         int $$3 = 48;
-         cbw $$4 = $$0.y();
-         Optional<id> $$5 = $$4.d($$0x -> $$0x.a(cca.o), $$0x -> true, $$2, 48, cbw.b.c);
-         id $$6 = $$5.orElse($$2);
-         id $$7 = this.a($$0, $$6, 48);
-         if ($$7 != null && this.a($$0, $$7)) {
-            if ($$0.t($$7).a(avd.ah)) {
-               return false;
-            }
-
-            cjt $$8 = bqg.bk.a($$0, $$7, bqx.h);
-            if ($$8 != null) {
-               for (int $$9 = 0; $$9 < 2; $$9++) {
-                  this.a($$0, $$8, 4);
-               }
-
-               this.i.a($$8.cw());
-               $$8.v(48000);
-               $$8.i($$6);
-               $$8.a($$6, 16);
-               return true;
-            }
-         }
-
-         return false;
+         return 0;
       }
    }
 
-   private void a(apu $$0, cjt $$1, int $$2) {
-      id $$3 = this.a($$0, $$1.dm(), $$2);
-      if ($$3 != null) {
-         ceu $$4 = bqg.bd.a($$0, $$3, bqx.h);
-         if ($$4 != null) {
-            $$4.b($$1, true);
+   private int a(aqe $$0, im $$1) {
+      int $$2 = 48;
+      if ($$0.y().a($$0x -> $$0x.a(ccl.n), $$1, 48, cch.b.b) > 4L) {
+         List<ccw> $$3 = $$0.a(ccw.class, new eta($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            return this.a($$1, $$0);
          }
       }
+
+      return 0;
    }
 
-   @Nullable
-   private id a(czj $$0, id $$1, int $$2) {
-      id $$3 = null;
-      brm $$4 = bro.a(bqg.bk);
-
-      for (int $$5 = 0; $$5 < 10; $$5++) {
-         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
-         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
-         int $$8 = $$0.a(dva.a.b, $$6, $$7);
-         id $$9 = new id($$6, $$8, $$7);
-         if ($$4.isSpawnPositionOk($$0, $$9, bqg.bk)) {
-            $$3 = $$9;
-            break;
-         }
-      }
-
-      return $$3;
+   private int b(aqe $$0, im $$1) {
+      int $$2 = 16;
+      List<ccw> $$3 = $$0.a(ccw.class, new eta($$1).c(16.0, 8.0, 16.0));
+      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
    }
 
-   private boolean a(cym $$0, id $$1) {
-      for (id $$2 : id.a($$1, $$1.b(1, 2, 1))) {
-         if (!$$0.a_($$2).k($$0, $$2).c()) {
-            return false;
-         }
+   private int a(im $$0, aqe $$1) {
+      ccw $$2 = bqr.p.a((czu)$$1);
+      if ($$2 == null) {
+         return 0;
+      } else {
+         $$2.a($$1, $$1.d_($$0), bri.a, null);
+         $$2.a($$0, 0.0F, 0.0F);
+         $$1.a_($$2);
+         return 1;
       }
-
-      return true;
    }
 }

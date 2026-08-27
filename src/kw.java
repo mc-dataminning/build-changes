@@ -1,223 +1,128 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
 public class kw {
-   private static final Map<dch, kx> ap = Maps.newHashMap();
-   private static final String aq = "wooden";
-   private static final String ar = "has_planks";
-   public static final kx a = a(dcj.r)
-      .a(dcj.gz)
-      .h(dcj.kg)
-      .j(dcj.jY)
-      .m(dcj.dD)
-      .a(dcj.cH, dcj.cU)
-      .k(dcj.jx)
-      .l(dcj.hP)
-      .f(dcj.ko)
-      .o(dcj.eC)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx b = a(dcj.s)
-      .a(dcj.gA)
-      .h(dcj.kh)
-      .j(dcj.jZ)
-      .m(dcj.dE)
-      .a(dcj.cI, dcj.cV)
-      .k(dcj.jy)
-      .l(dcj.hQ)
-      .f(dcj.kp)
-      .o(dcj.eD)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx c = a(dcj.p)
-      .a(dcj.gx)
-      .h(dcj.ke)
-      .j(dcj.jW)
-      .m(dcj.dB)
-      .a(dcj.cG, dcj.cT)
-      .k(dcj.jv)
-      .l(dcj.fL)
-      .f(dcj.km)
-      .o(dcj.eA)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx d = a(dcj.oE)
-      .a(dcj.oS)
-      .h(dcj.oK)
-      .j(dcj.oO)
-      .m(dcj.oI)
-      .a(dcj.oW, dcj.oY)
-      .k(dcj.oG)
-      .l(dcj.oQ)
-      .f(dcj.oU)
-      .o(dcj.oM)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx e = a(dcj.q)
-      .a(dcj.gy)
-      .h(dcj.kf)
-      .j(dcj.jX)
-      .m(dcj.dC)
-      .a(dcj.cJ, dcj.cW)
-      .k(dcj.jw)
-      .l(dcj.fM)
-      .f(dcj.kn)
-      .o(dcj.eB)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx f = a(dcj.n)
-      .a(dcj.gv)
-      .h(dcj.dU)
-      .j(dcj.fh)
-      .m(dcj.dz)
-      .a(dcj.cE, dcj.cR)
-      .k(dcj.jt)
-      .l(dcj.cu)
-      .f(dcj.cN)
-      .o(dcj.ey)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx g = a(dcj.t)
-      .a(dcj.gB)
-      .h(dcj.ki)
-      .j(dcj.ka)
-      .m(dcj.dF)
-      .a(dcj.cK, dcj.cX)
-      .k(dcj.jz)
-      .l(dcj.hR)
-      .f(dcj.kq)
-      .o(dcj.eE)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx h = a(dcj.o)
-      .a(dcj.gw)
-      .h(dcj.kd)
-      .j(dcj.jV)
-      .m(dcj.dA)
-      .a(dcj.cF, dcj.cS)
-      .k(dcj.ju)
-      .l(dcj.fK)
-      .f(dcj.kl)
-      .o(dcj.ez)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx i = a(dcj.oF)
-      .a(dcj.oT)
-      .h(dcj.oL)
-      .j(dcj.oP)
-      .m(dcj.oJ)
-      .a(dcj.oX, dcj.oZ)
-      .k(dcj.oH)
-      .l(dcj.oR)
-      .f(dcj.oV)
-      .o(dcj.oN)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx j = a(dcj.u)
-      .a(dcj.gC)
-      .k(dcj.jA)
-      .l(dcj.hS)
-      .h(dcj.kj)
-      .j(dcj.kb)
-      .m(dcj.dG)
-      .a(dcj.cL, dcj.cY)
-      .f(dcj.kr)
-      .o(dcj.eF)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx k = a(dcj.v)
-      .a(dcj.gD)
-      .k(dcj.jB)
-      .l(dcj.hT)
-      .g(dcj.kk)
-      .i(dcj.kc)
-      .m(dcj.dH)
-      .a(dcj.cM, dcj.cZ)
-      .f(dcj.ks)
-      .o(dcj.eG)
-      .c(dcj.w)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final kx l = a(dcj.w).k(dcj.jC).l(dcj.hU).a();
-   public static final kx m = a(dcj.eM).p(dcj.nL).l(dcj.fk).k(dcj.jL).a();
-   public static final kx n = a(dcj.g).p(dcj.nN).l(dcj.no).k(dcj.nB).n(dcj.h).a();
-   public static final kx o = a(dcj.h).l(dcj.nq).k(dcj.nD).a();
-   public static final kx p = a(dcj.pr).p(dcj.pt).l(dcj.ps).k(dcj.pu).n(dcj.pv).a();
-   public static final kx q = a(dcj.pv).p(dcj.pH).m(dcj.pF).a(dcj.pG).l(dcj.pD).k(dcj.pE).n(dcj.pw).b(dcj.py).a();
-   public static final kx r = a(dcj.pw).p(dcj.pB).l(dcj.pA).k(dcj.pz).d(dcj.px).a();
-   public static final kx s = a(dcj.cj).p(dcj.nF).l(dcj.fi).k(dcj.jJ).a();
-   public static final kx t = a(dcj.kz).p(dcj.nQ).l(dcj.nj).k(dcj.nx).a();
-   public static final kx u = a(dcj.eI).p(dcj.nI).l(dcj.ng).k(dcj.nu).a();
-   public static final kx v = a(dcj.qW).e(dcj.rf).f(dcj.rM).o(dcj.rU).b().a();
-   public static final kx w = a(dcj.rf).k(dcj.rv).l(dcj.rr).b(dcj.rj).b().a();
-   public static final kx x = a(dcj.rw).e(dcj.rD).f(dcj.rQ).o(dcj.rY).a("waxed_cut_copper").b().a();
-   public static final kx y = a(dcj.rD).k(dcj.rL).l(dcj.rH).b(dcj.rn).a("waxed_cut_copper").b().a();
-   public static final kx z = a(dcj.qX).e(dcj.re).f(dcj.rN).o(dcj.rV).b().a();
-   public static final kx A = a(dcj.re).k(dcj.ru).l(dcj.rq).b(dcj.ri).b().a();
-   public static final kx B = a(dcj.ry).e(dcj.rC).f(dcj.rR).o(dcj.rZ).a("waxed_exposed_cut_copper").b().a();
-   public static final kx C = a(dcj.rC).k(dcj.rK).l(dcj.rG).b(dcj.rm).a("waxed_exposed_cut_copper").b().a();
-   public static final kx D = a(dcj.qY).e(dcj.rd).f(dcj.rP).o(dcj.rX).b().a();
-   public static final kx E = a(dcj.rd).k(dcj.rt).l(dcj.rp).b(dcj.rh).b().a();
-   public static final kx F = a(dcj.rx).e(dcj.rB).f(dcj.rT).o(dcj.sb).a("waxed_weathered_cut_copper").b().a();
-   public static final kx G = a(dcj.rB).k(dcj.rJ).l(dcj.rF).b(dcj.rl).a("waxed_weathered_cut_copper").b().a();
-   public static final kx H = a(dcj.qZ).e(dcj.rc).f(dcj.rO).o(dcj.rW).b().a();
-   public static final kx I = a(dcj.rc).k(dcj.rs).l(dcj.ro).b(dcj.rg).b().a();
-   public static final kx J = a(dcj.rz).e(dcj.rA).f(dcj.rS).o(dcj.sa).a("waxed_oxidized_cut_copper").b().a();
-   public static final kx K = a(dcj.rA).k(dcj.rI).l(dcj.rE).b(dcj.rk).a("waxed_oxidized_cut_copper").b().a();
-   public static final kx L = a(dcj.m).p(dcj.fP).l(dcj.cQ).k(dcj.jI).a();
-   public static final kx M = a(dcj.cn).p(dcj.fQ).l(dcj.ni).k(dcj.nw).a();
-   public static final kx N = a(dcj.e).p(dcj.nR).l(dcj.nr).k(dcj.nE).n(dcj.f).a();
-   public static final kx O = a(dcj.f).l(dcj.nh).k(dcj.nv).a();
-   public static final kx P = a(dcj.c).p(dcj.nJ).l(dcj.nn).k(dcj.nA).n(dcj.d).a();
-   public static final kx Q = a(dcj.d).l(dcj.ne).k(dcj.ns).a();
-   public static final kx R = a(dcj.qz).p(dcj.qC).l(dcj.qB).k(dcj.qA).b(dcj.qH).n(dcj.qD).a();
-   public static final kx S = a(dcj.qD).p(dcj.qG).l(dcj.qF).k(dcj.qE).n(dcj.qI).a();
-   public static final kx T = a(dcj.qI).p(dcj.qL).l(dcj.qK).k(dcj.qJ).b(dcj.qM).a();
-   public static final kx U = a(dcj.fn).h(dcj.fo).p(dcj.nM).l(dcj.fp).k(dcj.jM).b(dcj.pI).d(dcj.pJ).a();
-   public static final kx V = a(dcj.kL).k(dcj.nC).l(dcj.np).p(dcj.nO).a();
-   public static final kx W = a(dcj.hZ).p(dcj.nG).l(dcj.ic).k(dcj.if).a();
-   public static final kx X = a(dcj.kw).l(dcj.ky).k(dcj.jQ).c().a();
-   public static final kx Y = a(dcj.ia).l(dcj.id).k(dcj.ig).a();
-   public static final kx Z = a(dcj.ib).l(dcj.ie).k(dcj.ih).a();
-   public static final kx aa = a(dcj.hd).l(dcj.hg).k(dcj.jN).b(dcj.he).c().a();
-   public static final kx ab = a(dcj.jT).l(dcj.nm).k(dcj.nz).a();
-   public static final kx ac = a(dcj.aV).p(dcj.nP).l(dcj.fD).k(dcj.jF).b(dcj.aW).e(dcj.aX).c().a();
-   public static final kx ad = a(dcj.aX).k(dcj.jG).a();
-   public static final kx ae = a(dcj.jS).k(dcj.ny).l(dcj.nl).a();
-   public static final kx af = a(dcj.jp).p(dcj.nH).l(dcj.js).k(dcj.jO).b(dcj.jq).e(dcj.jr).c().a();
-   public static final kx ag = a(dcj.jr).k(dcj.jP).a();
-   public static final kx ah = a(dcj.jU).k(dcj.nt).l(dcj.nf).a();
-   public static final kx ai = a(dcj.b).k(dcj.jD).m(dcj.dx).a(dcj.dM).l(dcj.nk).a();
-   public static final kx aj = a(dcj.eH).p(dcj.nK).l(dcj.fj).k(dcj.jK).b(dcj.eK).d(dcj.eJ).c().a();
-   public static final kx ak = a(dcj.sJ).a();
-   public static final kx al = a(dcj.sK).k(dcj.sM).l(dcj.sL).p(dcj.sN).b(dcj.ta).n(dcj.sO).a();
-   public static final kx am = a(dcj.sO).k(dcj.sQ).l(dcj.sP).p(dcj.sR).a();
-   public static final kx an = a(dcj.sW).k(dcj.sY).l(dcj.sX).p(dcj.sZ).d(dcj.tb).a();
-   public static final kx ao = a(dcj.sS).k(dcj.sU).l(dcj.sT).p(dcj.sV).d(dcj.tc).a();
+   public static final kz a = a("angry_villager", false);
+   public static final kv<kn> b = a("block", false, kn.a, kn::a, kn::b);
+   public static final kv<kn> c = a("block_marker", true, kn.a, kn::a, kn::b);
+   public static final kz d = a("bubble", false);
+   public static final kz e = a("cloud", false);
+   public static final kz f = a("crit", false);
+   public static final kz g = a("damage_indicator", true);
+   public static final kz h = a("dragon_breath", false);
+   public static final kz i = a("dripping_lava", false);
+   public static final kz j = a("falling_lava", false);
+   public static final kz k = a("landing_lava", false);
+   public static final kz l = a("dripping_water", false);
+   public static final kz m = a("falling_water", false);
+   public static final kv<kq> n = a("dust", false, kq.e, $$0 -> kq.c, $$0 -> kq.d);
+   public static final kv<kp> o = a("dust_color_transition", false, kp.e, $$0 -> kp.c, $$0 -> kp.d);
+   public static final kz p = a("effect", false);
+   public static final kz q = a("elder_guardian", true);
+   public static final kz r = a("enchanted_hit", false);
+   public static final kz s = a("enchant", false);
+   public static final kz t = a("end_rod", false);
+   public static final kv<ko> u = a("entity_effect", false, ko.a, ko::a, ko::b);
+   public static final kz v = a("explosion_emitter", true);
+   public static final kz w = a("explosion", true);
+   public static final kz x = a("gust", true);
+   public static final kz y = a("gust_emitter_large", true);
+   public static final kz z = a("gust_emitter_small", true);
+   public static final kz A = a("sonic_boom", true);
+   public static final kv<kn> B = a("falling_dust", false, kn.a, kn::a, kn::b);
+   public static final kz C = a("firework", false);
+   public static final kz D = a("fishing", false);
+   public static final kz E = a("flame", false);
+   public static final kz F = a("cherry_leaves", false);
+   public static final kz G = a("sculk_soul", false);
+   public static final kv<kx> H = a("sculk_charge", true, kx.c, $$0 -> kx.a, $$0 -> kx.b);
+   public static final kz I = a("sculk_charge_pop", true);
+   public static final kz J = a("soul_fire_flame", false);
+   public static final kz K = a("soul", false);
+   public static final kz L = a("flash", false);
+   public static final kz M = a("happy_villager", false);
+   public static final kz N = a("composter", false);
+   public static final kz O = a("heart", false);
+   public static final kz P = a("instant_effect", false);
+   public static final kv<ks> Q = a("item", false, ks.a, ks::a, ks::b);
+   public static final kv<la> R = a("vibration", true, la.c, $$0 -> la.a, $$0 -> la.b);
+   public static final kz S = a("item_slime", false);
+   public static final kz T = a("item_snowball", false);
+   public static final kz U = a("large_smoke", false);
+   public static final kz V = a("lava", false);
+   public static final kz W = a("mycelium", false);
+   public static final kz X = a("note", false);
+   public static final kz Y = a("poof", true);
+   public static final kz Z = a("portal", false);
+   public static final kz aa = a("rain", false);
+   public static final kz ab = a("smoke", false);
+   public static final kz ac = a("white_smoke", false);
+   public static final kz ad = a("sneeze", false);
+   public static final kz ae = a("spit", true);
+   public static final kz af = a("squid_ink", true);
+   public static final kz ag = a("sweep_attack", true);
+   public static final kz ah = a("totem_of_undying", false);
+   public static final kz ai = a("underwater", false);
+   public static final kz aj = a("splash", false);
+   public static final kz ak = a("witch", false);
+   public static final kz al = a("bubble_pop", false);
+   public static final kz am = a("current_down", false);
+   public static final kz an = a("bubble_column_up", false);
+   public static final kz ao = a("nautilus", false);
+   public static final kz ap = a("dolphin", false);
+   public static final kz aq = a("campfire_cosy_smoke", true);
+   public static final kz ar = a("campfire_signal_smoke", true);
+   public static final kz as = a("dripping_honey", false);
+   public static final kz at = a("falling_honey", false);
+   public static final kz au = a("landing_honey", false);
+   public static final kz av = a("falling_nectar", false);
+   public static final kz aw = a("falling_spore_blossom", false);
+   public static final kz ax = a("ash", false);
+   public static final kz ay = a("crimson_spore", false);
+   public static final kz az = a("warped_spore", false);
+   public static final kz aA = a("spore_blossom_air", false);
+   public static final kz aB = a("dripping_obsidian_tear", false);
+   public static final kz aC = a("falling_obsidian_tear", false);
+   public static final kz aD = a("landing_obsidian_tear", false);
+   public static final kz aE = a("reverse_portal", false);
+   public static final kz aF = a("white_ash", false);
+   public static final kz aG = a("small_flame", false);
+   public static final kz aH = a("snowflake", false);
+   public static final kz aI = a("dripping_dripstone_lava", false);
+   public static final kz aJ = a("falling_dripstone_lava", false);
+   public static final kz aK = a("dripping_dripstone_water", false);
+   public static final kz aL = a("falling_dripstone_water", false);
+   public static final kz aM = a("glow_squid_ink", true);
+   public static final kz aN = a("glow", true);
+   public static final kz aO = a("wax_on", true);
+   public static final kz aP = a("wax_off", true);
+   public static final kz aQ = a("electric_spark", true);
+   public static final kz aR = a("scrape", true);
+   public static final kv<ky> aS = a("shriek", false, ky.c, $$0 -> ky.a, $$0 -> ky.b);
+   public static final kz aT = a("egg_crack", false);
+   public static final kz aU = a("dust_plume", false);
+   public static final kz aV = a("trial_spawner_detection", true);
+   public static final kz aW = a("vault_connection", true);
+   public static final Codec<ku> aX = lc.j.q().dispatch("type", ku::a, kv::d);
+   public static final yq<wd, ku> aY = yo.a(ld.T).b(ku::a, kv::e);
 
-   private static kx.a a(dch $$0) {
-      kx.a $$1 = new kx.a($$0);
-      kx $$2 = ap.put($$0, $$1.a());
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate family definition for " + kt.e.b($$0));
-      } else {
-         return $$1;
-      }
+   private static kz a(String $$0, boolean $$1) {
+      return ji.a(lc.j, $$0, new kz($$1));
    }
 
-   public static Stream<kx> a() {
-      return ap.values().stream();
+   private static <T extends ku> kv<T> a(
+      String $$0, boolean $$1, ku.a<T> $$2, final Function<kv<T>, Codec<T>> $$3, final Function<kv<T>, yq<? super wd, T>> $$4
+   ) {
+      return ji.a(lc.j, $$0, new kv<T>($$1, $$2) {
+         @Override
+         public Codec<T> d() {
+            return $$3.apply(this);
+         }
+
+         @Override
+         public yq<? super wd, T> e() {
+            return $$4.apply(this);
+         }
+      });
    }
 }

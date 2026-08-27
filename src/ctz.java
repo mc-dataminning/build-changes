@@ -1,52 +1,56 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public record ctz(Map<String, String> d) {
-   public static final ctz a = new ctz(Map.of());
-   public static final Codec<ctz> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(ctz::new, ctz::b);
-   private static final yg<ByteBuf, Map<String, String>> e = ye.a(Object2ObjectOpenHashMap::new, ye.k, ye.k);
-   public static final yg<ByteBuf, ctz> c = e.a(ctz::new, ctz::b);
-
-   public <T extends Comparable<T>> ctz a(dql<T> $$0, T $$1) {
-      return new ctz(ac.a(this.d, $$0.f(), $$0.a($$1)));
+public class ctz extends cry {
+   public ctz(cry.a $$0) {
+      super($$0);
    }
 
-   public <T extends Comparable<T>> ctz a(dql<T> $$0, dpi $$1) {
-      return this.a($$0, $$1.c($$0));
-   }
-
-   @Nullable
-   public <T extends Comparable<T>> T a(dql<T> $$0) {
-      String $$1 = this.d.get($$0.f());
-      return $$1 == null ? null : $$0.b($$1).orElse(null);
-   }
-
-   public dpi a(dpi $$0) {
-      dpj<dch, dpi> $$1 = $$0.b().l();
-
-      for (Entry<String, String> $$2 : this.d.entrySet()) {
-         dql<?> $$3 = $$1.a($$2.getKey());
-         if ($$3 != null) {
-            $$0 = a($$0, $$3, $$2.getValue());
+   @Override
+   public ws o(csd $$0) {
+      cvj $$1 = $$0.a(jz.A);
+      if ($$1 != null) {
+         String $$2 = $$1.d().a();
+         if (!ayr.h($$2)) {
+            return ws.b($$2);
          }
       }
 
-      return $$0;
+      return super.o($$0);
    }
 
-   private static <T extends Comparable<T>> dpi a(dpi $$0, dql<T> $$1, String $$2) {
-      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
+   @Override
+   public void a(csd $$0, @Nullable czu $$1, List<ws> $$2, ctu $$3) {
+      cvj $$4 = $$0.a(jz.A);
+      if ($$4 != null) {
+         if (!ayr.h($$4.e())) {
+            $$2.add(ws.a("book.byAuthor", $$4.e()).a(n.h));
+         }
+
+         $$2.add(ws.c("book.generation." + $$4.f()).a(n.h));
+      }
    }
 
-   public boolean a() {
-      return this.d.isEmpty();
+   @Override
+   public bor<csd> a(czu $$0, ckl $$1, bop $$2) {
+      csd $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(avj.c.b(this));
+      return bor.a($$3, $$0.x_());
    }
 
-   public Map<String, String> b() {
-      return this.d;
+   public static boolean a(csd $$0, ec $$1, @Nullable ckl $$2) {
+      cvj $$3 = $$0.a(jz.A);
+      if ($$3 != null && !$$3.g()) {
+         cvj $$4 = $$3.a($$1, $$2);
+         if ($$4 != null) {
+            $$0.b(jz.A, $$4);
+            return true;
+         }
+
+         $$0.b(jz.A, $$3.c());
+      }
+
+      return false;
    }
 }

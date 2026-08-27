@@ -1,69 +1,45 @@
-public class aet implements yp<aba> {
-   public static final yg<vt, aet> a = yp.a(aet::a, aet::new);
-   private final in<aun> b;
-   private final aup c;
-   private final int d;
-   private final float e;
-   private final float f;
-   private final long g;
+public class aet implements yz<abk> {
+   public static final yq<vs, aet> a = yz.a(aet::a, aet::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-   public aet(in<aun> $$0, aup $$1, bqa $$2, float $$3, float $$4, long $$5) {
+   public aet(float $$0, int $$1, float $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.aj();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+      this.d = $$2;
    }
 
-   private aet(vt $$0) {
-      this.b = aun.d.decode($$0);
-      this.c = $$0.b(aup.class);
-      this.d = $$0.l();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readLong();
+   private aet(vs $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(vt $$0) {
-      aun.d.encode($$0, this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.b(this.g);
+   private void a(vs $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yr<aet> a() {
-      return afl.aR;
+   public zb<aet> a() {
+      return afv.aH;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public in<aun> b() {
+   public float b() {
       return this.b;
    }
 
-   public aup e() {
+   public int e() {
       return this.c;
    }
 
-   public int f() {
+   public float f() {
       return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
-   }
-
-   public long i() {
-      return this.g;
    }
 }

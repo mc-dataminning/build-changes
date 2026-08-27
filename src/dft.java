@@ -1,168 +1,100 @@
 import com.mojang.serialization.MapCodec;
 
-public class dft extends dfb {
-   public static final MapCodec<dft> a = b(dft::new);
-   public static final etc b = dch.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
-   public static final etc c = dch.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
-   public static final etc d = dch.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
-   public static final etc e = dch.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
-   public static final etc f = esz.a(b, d);
-   public static final etc g = esz.a(c, e);
-   public static final etc h = esz.a(f, g);
-   public static final etc i = esz.a(h, dch.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
-   public static final etc j = dch.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
-   public static final etc k = dch.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
-   public static final etc l = dch.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
-   public static final etc m = dch.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
-   public static final etc n = esz.a(j, l);
-   public static final etc o = esz.a(k, m);
-   public static final etc F = esz.a(n, o);
-   public static final etc G = esz.a(F, dch.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
-   public static final etc H = dch.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
-   public static final etc I = dch.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
-   public static final etc J = dch.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
-   public static final etc L = dch.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
-   public static final etc M = esz.a(H, J);
-   public static final etc N = esz.a(I, L);
-   public static final etc O = esz.a(M, N);
-   public static final etc P = esz.a(O, dch.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
-   public static final etc Q = dch.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
-   public static final etc R = dch.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
-   public static final etc S = dch.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
-   public static final etc T = dch.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
-   public static final etc U = esz.a(Q, S);
-   public static final etc V = esz.a(R, T);
-   public static final etc W = esz.a(U, V);
-   public static final etc X = esz.a(W, dch.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
-   public static final etc Y = dch.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
-   public static final etc Z = dch.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
-   public static final etc aa = dch.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
-   public static final etc ab = dch.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
-   public static final etc ac = esz.a(Y, aa);
-   public static final etc ad = esz.a(Z, ab);
-   public static final etc ae = esz.a(ac, ad);
-   public static final etc af = esz.a(ae, dch.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
-   public static final etc ag = dch.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
-   public static final etc ah = dch.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
-   public static final etc ai = dch.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
-   public static final etc aj = dch.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
-   public static final etc ak = esz.a(ag, ai);
-   public static final etc al = esz.a(ah, aj);
-   public static final etc am = esz.a(ak, al);
-   public static final etc an = esz.a(am, dch.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
-   public static final etc ao = dch.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
-   public static final etc ap = dch.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
-   public static final etc aq = dch.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
-   public static final etc ar = dch.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
-   public static final etc as = esz.a(ao, aq);
-   public static final etc at = esz.a(ap, ar);
-   public static final etc au = esz.a(as, at);
-   public static final etc av = esz.a(au, dch.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
-   public static final etc aw = dch.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
-   public static final etc ax = dch.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
-   public static final etc ay = dch.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
-   public static final etc az = dch.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
-   public static final etc aA = esz.a(aw, ay);
-   public static final etc aB = esz.a(ax, az);
-   public static final etc aC = esz.a(aA, aB);
-   public static final etc aD = esz.a(aC, dch.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
-   private static final wi aR = wi.c("container.grindstone_title");
+public class dft extends der {
+   public static final MapCodec<dft> i = b(dft::new);
+   private final ety[] j;
 
    @Override
    public MapCodec<dft> a() {
-      return a;
+      return i;
    }
 
-   protected dft(dph.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(aE, ij.c).a(K, dpt.b));
-   }
-
-   @Override
-   protected dim b_(dpi $$0) {
-      return dim.c;
-   }
-
-   private etc n(dpi $$0) {
-      ij $$1 = $$0.c(aE);
-      switch ((dpt)$$0.c(K)) {
-         case a:
-            if ($$1 != ij.c && $$1 != ij.d) {
-               return G;
-            }
-
-            return i;
-         case b:
-            if ($$1 == ij.c) {
-               return X;
-            } else if ($$1 == ij.d) {
-               return P;
-            } else {
-               if ($$1 == ij.f) {
-                  return an;
-               }
-
-               return af;
-            }
-         case c:
-            if ($$1 != ij.c && $$1 != ij.d) {
-               return aD;
-            }
-
-            return av;
-         default:
-            return G;
-      }
+   public dft(dpx.d $$0) {
+      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
+      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
    }
 
    @Override
-   protected etc b(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return this.n($$0);
+   protected ety f(dpy $$0, cza $$1, im $$2) {
+      return this.j[this.g($$0)];
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return this.n($$0);
+   protected ety c(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean a(dpi $$0, czj $$1, id $$2) {
-      return true;
-   }
-
-   @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if ($$1.B) {
-         return bof.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(auz.aD);
-         return bof.b;
-      }
-   }
-
-   @Override
-   protected boj b(dpi $$0, czg $$1, id $$2) {
-      return new bop(($$2x, $$3, $$4) -> new cnu($$2x, $$3, cnh.a($$1, $$2)), aR);
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      return $$0.a(aE, $$1.a($$0.c(aE)));
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dhd $$1) {
-      return $$0.a($$1.a($$0.c(aE)));
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(aE, K);
-   }
-
-   @Override
-   protected boolean a(dpi $$0, elq $$1) {
+   protected boolean a(dpy $$0, emg $$1) {
       return false;
+   }
+
+   public boolean a(dpy $$0, boolean $$1, ir $$2) {
+      dcv $$3 = $$0.b();
+      boolean $$4 = this.m($$0);
+      boolean $$5 = $$3 instanceof dfu && dfu.a($$0, $$2);
+      return !j($$0) && $$1 || $$4 || $$5;
+   }
+
+   private boolean m(dpy $$0) {
+      return $$0.a(avo.S) && $$0.a(avo.k) == this.n().a(avo.k);
+   }
+
+   @Override
+   protected bos a(csd $$0, dpy $$1, czu $$2, im $$3, ckl $$4, bop $$5, etb $$6) {
+      if ($$2.B) {
+         return $$0.a(csg.uK) ? bos.a : bos.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+   }
+
+   @Override
+   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
+      return !$$1.x_() ? csi.a($$3, $$1, $$2) : boq.d;
+   }
+
+   @Override
+   public dpy a(cvl $$0) {
+      cza $$1 = $$0.q();
+      im $$2 = $$0.a();
+      elr $$3 = $$0.q().b_($$0.a());
+      im $$4 = $$2.e();
+      im $$5 = $$2.h();
+      im $$6 = $$2.f();
+      im $$7 = $$2.g();
+      dpy $$8 = $$1.a_($$4);
+      dpy $$9 = $$1.a_($$5);
+      dpy $$10 = $$1.a_($$6);
+      dpy $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ir.d), ir.d)))
+         .a(b, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ir.e), ir.e)))
+         .a(c, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ir.c), ir.c)))
+         .a(d, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ir.f), ir.f)))
+         .a(e, Boolean.valueOf($$3.a() == els.c));
+   }
+
+   @Override
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, els.c, els.c.a($$3));
+      }
+
+      return $$1.o().e() == ir.c.a ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

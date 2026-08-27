@@ -1,21 +1,30 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cdx {
-   public static bsm<bqt> a() {
-      return bvy.a(
-         (Function<bvy.b<bqt>, ? extends App<bvy.c<bqt>, bwb<bqt>>>)($$0 -> $$0.group($$0.b(bzw.N), $$0.a(bzw.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.dP().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+public record cdx(akf b, akf c, akf d, iz<dat> e) {
+   public static final Codec<cdx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               akf.a.fieldOf("texture").forGetter(cdx::a),
+               akf.a.fieldOf("tame_texture").forGetter(cdx::b),
+               akf.a.fieldOf("angry_texture").forGetter(cdx::c),
+               jk.a(ld.ay).fieldOf("biomes").forGetter(cdx::d)
+            )
+            .apply($$0, cdx::new)
+   );
 
-                  return true;
-               }))
-      );
+   public akf a() {
+      return this.b;
+   }
+
+   public akf b() {
+      return this.c;
+   }
+
+   public akf c() {
+      return this.d;
+   }
+
+   public iz<dat> d() {
+      return this.e;
    }
 }

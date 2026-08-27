@@ -1,20 +1,8 @@
-public interface esn {
-   esn a = ($$0, $$1) -> false;
-   esn b = ($$0, $$1) -> !$$0 && !$$1;
-   esn c = ($$0, $$1) -> $$1 && !$$0;
-   esn d = ($$0, $$1) -> !$$0;
-   esn e = ($$0, $$1) -> $$0 && !$$1;
-   esn f = ($$0, $$1) -> !$$1;
-   esn g = ($$0, $$1) -> $$0 != $$1;
-   esn h = ($$0, $$1) -> !$$0 || !$$1;
-   esn i = ($$0, $$1) -> $$0 && $$1;
-   esn j = ($$0, $$1) -> $$0 == $$1;
-   esn k = ($$0, $$1) -> $$1;
-   esn l = ($$0, $$1) -> !$$0 || $$1;
-   esn m = ($$0, $$1) -> $$0;
-   esn n = ($$0, $$1) -> $$0 || !$$1;
-   esn o = ($$0, $$1) -> $$0 || $$1;
-   esn p = ($$0, $$1) -> true;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean apply(boolean var1, boolean var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface esn {
 }

@@ -1,21 +1,32 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import net.minecraft.server.MinecraftServer;
 
-public class esp extends AbstractDoubleList {
-   private final int a;
+public class esp implements esq<MinecraftServer> {
+   final akf a;
 
-   esp(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
+   public esp(akf $$0) {
+      this.a = $$0;
+   }
+
+   public void a(MinecraftServer $$0, ess<MinecraftServer> $$1, long $$2) {
+      akt $$3 = $$0.aF();
+
+      for (ho<ec> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
       }
    }
 
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
-   }
+   public static class a extends esq.a<MinecraftServer, esp> {
+      public a() {
+         super(new akf("function_tag"), esp.class);
+      }
 
-   public int size() {
-      return this.a + 1;
+      public void a(ty $$0, esp $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public esp a(ty $$0) {
+         akf $$1 = new akf($$0.l("Name"));
+         return new esp($$1);
+      }
    }
 }

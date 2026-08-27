@@ -1,25 +1,20 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface ejp<P extends ejn> {
-   Codec<ejn> a = kt.ah.q().dispatch("processor_type", ejn::a, ejp::codec);
-   Codec<ejo> b = a.listOf().xmap(ejo::new, ejo::a);
-   Codec<ejo> c = awu.e(b.fieldOf("processors").codec(), b);
-   Codec<in<ejo>> d = ajr.a(ku.aH, c);
-   ejp<eis> e = a("block_ignore", eis.a);
-   ejp<eiu> f = a("block_rot", eiu.a);
-   ejp<eix> g = a("gravity", eix.a);
-   ejp<eiy> h = a("jigsaw_replacement", eiy.a);
-   ejp<ejj> i = a("rule", ejj.a);
-   ejp<ejb> j = a("nop", ejb.a);
-   ejp<eir> k = a("block_age", eir.a);
-   ejp<eiq> l = a("blackstone_replace", eiq.a);
-   ejp<eiz> m = a("lava_submerged_block", eiz.a);
-   ejp<ejg> n = a("protected_blocks", ejg.b);
-   ejp<eiw> o = a("capped", eiw.a);
+public class ejp extends ekd {
+   public static final Codec<ejp> a = Codec.unit(() -> ejp.b);
+   public static final ejp b = new ejp();
 
-   Codec<P> codec();
+   @Nullable
+   @Override
+   public ekg.c a(czx $$0, im $$1, im $$2, ekg.c $$3, ekg.c $$4, ekc $$5) {
+      im $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(dcx.H);
+      return $$7 && !dcv.a($$4.b().j($$0, $$6)) ? new ekg.c($$6, dcx.H.n(), $$4.c()) : $$4;
+   }
 
-   static <P extends ejn> ejp<P> a(String $$0, Codec<P> $$1) {
-      return ja.a(kt.ah, $$0, () -> $$1);
+   @Override
+   protected ekf<?> a() {
+      return ekf.m;
    }
 }

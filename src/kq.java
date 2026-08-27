@@ -1,35 +1,31 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.joml.Vector3f;
 
-public class kq extends km<kq> implements kl {
-   private static final kl.a<kq> a = new kl.a<kq>() {
-      public kq a(km<kq> $$0, StringReader $$1, ip.a $$2) {
-         return (kq)$$0;
+public class kq extends kr {
+   public static final Vector3f a = etf.a(16711680).j();
+   public static final kq b = new kq(a, 1.0F);
+   public static final Codec<kq> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axe.c.fieldOf("color").forGetter($$0x -> $$0x.h), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)).apply($$0, kq::new)
+   );
+   public static final yq<wd, kq> d = yq.a(yo.q, $$0 -> $$0.h, yo.h, $$0 -> $$0.i, kq::new);
+   public static final ku.a<kq> e = new ku.a<kq>() {
+      public kq a(kv<kq> $$0, StringReader $$1, ix.a $$2) throws CommandSyntaxException {
+         Vector3f $$3 = kr.a($$1);
+         $$1.expect(' ');
+         float $$4 = $$1.readFloat();
+         return new kq($$3, $$4);
       }
    };
-   private final Codec<kq> b = Codec.unit(this::f);
-   private final yg<vt, kq> c = yg.a(this);
 
-   protected kq(boolean $$0) {
-      super($$0, a);
-   }
-
-   public kq f() {
-      return this;
+   public kq(Vector3f $$0, float $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Codec<kq> d() {
-      return this.b;
-   }
-
-   @Override
-   public yg<vt, kq> e() {
-      return this.c;
-   }
-
-   @Override
-   public String a(ip.a $$0) {
-      return kt.j.b(this).toString();
+   public kv<kq> a() {
+      return kw.n;
    }
 }

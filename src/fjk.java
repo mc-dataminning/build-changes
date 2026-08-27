@@ -1,82 +1,69 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fjk {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cod<?>, fjk.a<?, ?>> b = Maps.newHashMap();
+public class fjk extends fjl {
+   private static final ws d = ws.c("chat.copy");
+   private static final ws r = ws.c("chat.link.warning");
+   private final String s;
+   private final boolean u;
 
-   public static <T extends cmw> void a(cod<T> $$0, fby $$1, int $$2, wi $$3) {
-      fjk.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", kt.r.b($$0));
-      } else {
-         $$4.a($$3, $$0, $$1, $$2);
+   public fjk(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), ws.b($$1), $$1, $$2 ? wr.e : wr.g, $$2);
+   }
+
+   public fjk(BooleanConsumer $$0, ws $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wr.e : wr.g, $$3);
+   }
+
+   public fjk(BooleanConsumer $$0, ws $$1, ws $$2, String $$3, ws $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (ws)($$5 ? ws.c("chat.link.open") : wr.f);
+      this.b = $$4;
+      this.u = !$$5;
+      this.s = $$3;
+   }
+
+   protected static xg a(boolean $$0, String $$1) {
+      return c($$0).b(wr.v).b(ws.b($$1));
+   }
+
+   protected static xg c(boolean $$0) {
+      return ws.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   }
+
+   @Override
+   protected void a(int $$0) {
+      this.c(feu.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(feu.a(d, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(feu.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void l() {
+      this.m.o.a(this.s);
+   }
+
+   @Override
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.u) {
+         $$0.a(this.p, r, this.n / 2, 110, 16764108);
       }
    }
 
-   @Nullable
-   private static <T extends cmw> fjk.a<T, ?> a(cod<T> $$0) {
-      return (fjk.a<T, ?>)b.get($$0);
-   }
-
-   private static <M extends cmw, U extends fjx & fma<M>> void a(cod<? extends M> $$0, fjk.a<M, U> $$1) {
-      fjk.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + kt.r.b($$0));
-      }
-   }
-
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cod<?> $$1 : kt.r) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", kt.r.b($$1));
-            $$0 = true;
+   public static void a(fkt $$0, String $$1) {
+      fcu $$2 = fcu.Q();
+      $$2.a(new fjk($$3 -> {
+         if ($$3) {
+            ac.j().a($$1);
          }
-      }
 
-      return $$0;
+         $$2.a($$0);
+      }, $$1, true));
    }
 
-   static {
-      a(cod.a, flg::new);
-      a(cod.b, flg::new);
-      a(cod.c, flg::new);
-      a(cod.d, flg::new);
-      a(cod.e, flg::new);
-      a(cod.f, flg::new);
-      a(cod.g, flm::new);
-      a(cod.h, flh::new);
-      a(cod.i, fky::new);
-      a(cod.j, fkz::new);
-      a(cod.k, fla::new);
-      a(cod.l, fld::new);
-      a(cod.m, fli::new);
-      a(cod.n, flp::new);
-      a(cod.o, flq::new);
-      a(cod.p, flr::new);
-      a(cod.q, flt::new);
-      a(cod.r, fly::new);
-      a(cod.s, flz::new);
-      a(cod.t, fmb::new);
-      a(cod.u, fme::new);
-      a(cod.v, fmg::new);
-      a(cod.w, fmh::new);
-      a(cod.x, fle::new);
-      a(cod.y, fmi::new);
-   }
-
-   interface a<T extends cmw, U extends fjx & fma<T>> {
-      default void a(wi $$0, cod<T> $$1, fby $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.s.fZ()), $$2.s.fZ(), $$0);
-         $$2.s.ca = $$4.D();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cjz var2, wi var3);
+   public static feu.c b(fkt $$0, String $$1) {
+      return $$2 -> a($$0, $$1);
    }
 }

@@ -1,42 +1,42 @@
-public class fjp extends fjx {
-   protected final fjx b;
-   protected final fcc c;
-   public final fhl d = new fhl(this);
+public class fjp extends fkt {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final ws c = ws.c("credits_and_attribution.screen.title");
+   private static final ws d = ws.c("credits_and_attribution.button.credits");
+   private static final ws r = ws.c("credits_and_attribution.button.attribution");
+   private static final ws s = ws.c("credits_and_attribution.button.licenses");
+   private final fkt u;
+   private final fih v = new fih(this);
 
-   public fjp(fjx $$0, fcc $$1, wi $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   public fjp(fkt $$0) {
+      super(c);
+      this.u = $$0;
    }
 
    @Override
    protected void aM_() {
-      this.m();
-      this.h();
-      this.d.a(this::c);
-      this.c();
-   }
-
-   protected void m() {
-      this.d.a(this.i, this.m);
-   }
-
-   protected void h() {
-      this.d.b(fdy.a(wh.d, $$0 -> this.d()).a(200).a());
+      this.v.a(c, this.p);
+      fil $$0 = this.v.c(fil.d()).a(8);
+      $$0.c().b();
+      $$0.a(feu.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(feu.a(r, fjk.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(feu.a(s, fjk.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.v.b(feu.a(wr.d, $$0x -> this.d()).a(200).a());
+      this.v.a();
+      this.v.a(this::c);
    }
 
    @Override
    protected void c() {
-      this.d.a();
+      this.v.a();
    }
 
-   @Override
-   public void j() {
-      this.j.m.av();
+   private void m() {
+      this.m.a(new flb(false, () -> this.m.a(this)));
    }
 
    @Override
    public void d() {
-      this.j.a(this.b);
+      this.m.a(this.u);
    }
 }

@@ -1,8 +1,5 @@
-public interface ais extends aim, vd {
+public record ais(akf a) implements aiq {
    @Override
-   default vh b() {
-      return vh.c;
+   public void a(vs $$0) {
    }
-
-   void a(ait var1);
 }

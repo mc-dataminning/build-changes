@@ -1,29 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+public class cav extends cbh {
+   public static final float a = 8.0F;
 
-public class cav<T extends bqt> extends cbc<T> {
    @Override
-   protected void a(apu $$0, T $$1) {
-      ese $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<bqt> $$3 = $$0.a(bqt.class, $$2, $$1x -> $$1x != $$1 && $$1x.bA());
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      bru<?> $$4 = $$1.dP();
-      $$4.a(bzw.g, $$3);
-      $$4.a(bzw.h, new bzy($$1, $$3));
+   protected boolean a(bre $$0, bre $$1) {
+      return this.f($$0, $$1) && $$1.bf() && (this.b($$1) || this.e($$0, $$1)) && cbn.c($$0, $$1);
    }
 
-   protected int b() {
-      return 16;
+   private boolean e(bre $$0, bre $$1) {
+      return !$$0.dQ().a(cah.U) && $$1.ai().a(avr.j);
    }
 
-   protected int c() {
-      return 16;
+   private boolean b(bre $$0) {
+      return $$0.ai().a(avr.i);
+   }
+
+   private boolean f(bre $$0, bre $$1) {
+      return $$1.g((bql)$$0) <= 64.0;
    }
 
    @Override
-   public Set<bzw<?>> a() {
-      return ImmutableSet.of(bzw.g, bzw.h);
+   protected cah<bre> b() {
+      return cah.B;
    }
 }

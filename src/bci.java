@@ -1,38 +1,87 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.util.Unit;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
-public class bci extends bfp {
+public class bci extends DataFix {
    public bci(Schema $$0, boolean $$1) {
-      super("EntityZombieSplitFix", $$0, $$1);
+      super($$0, $$1);
    }
 
-   @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      if (Objects.equals("Zombie", $$0)) {
-         String $$2 = "Zombie";
-         int $$3 = $$1.get("ZombieType").asInt(0);
-         switch ($$3) {
-            case 0:
-            default:
-               break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-               $$2 = "ZombieVillager";
-               $$1 = $$1.set("Profession", $$1.createInt($$3 - 1));
-               break;
-            case 6:
-               $$2 = "Husk";
-         }
+   public TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      Schema $$1 = this.getOutputSchema();
+      Type<?> $$2 = $$0.getTypeRaw(bfp.y);
+      Type<?> $$3 = $$1.getTypeRaw(bfp.y);
+      Type<?> $$4 = $$0.getTypeRaw(bfp.z);
+      return this.a($$0, $$1, $$2, $$3, $$4);
+   }
 
-         $$1 = $$1.remove("ZombieType");
-         return Pair.of($$2, $$1);
+   private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
+      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(bfp.y.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
+      Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
+         bfp.y.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
+      );
+      Type<?> $$7 = $$0.getType(bfp.y);
+      Type<?> $$8 = $$1.getType(bfp.y);
+      if (!Objects.equals($$7, $$5)) {
+         throw new IllegalStateException("Old entity type is not what was expected.");
+      } else if (!$$8.equals($$6, true, true)) {
+         throw new IllegalStateException("New entity type is not what was expected.");
       } else {
-         return Pair.of($$0, $$1);
+         OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$9 = DSL.typeFinder($$5);
+         OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$10 = DSL.typeFinder($$6);
+         OpticFinder<NewEntityTree> $$11 = DSL.typeFinder($$3);
+         Type<?> $$12 = $$0.getType(bfp.b);
+         Type<?> $$13 = $$1.getType(bfp.b);
+         return TypeRewriteRule.seq(
+            this.fixTypeEverywhere(
+               "EntityRidingToPassengerFix",
+               $$5,
+               $$6,
+               $$5x -> $$6x -> {
+                     Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$7x = Optional.empty();
+                     Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>> $$8x = $$6x;
+
+                     while (true) {
+                        Either<List<NewEntityTree>, Unit> $$9x = (Either<List<NewEntityTree>, Unit>)DataFixUtils.orElse(
+                           $$7x.map(
+                              $$4xxx -> {
+                                 Typed<NewEntityTree> $$5xxx = (Typed<NewEntityTree>)$$3.pointTyped($$5x)
+                                    .orElseThrow(() -> new IllegalStateException("Could not create new entity tree"));
+                                 NewEntityTree $$6xx = (NewEntityTree)$$5xxx.set($$10, $$4xxx)
+                                    .getOptional($$11)
+                                    .orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
+                                 return Either.left(ImmutableList.of($$6xx));
+                              }
+                           ),
+                           Either.right(DSL.unit())
+                        );
+                        $$7x = Optional.of(Pair.of(bfp.y.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
+                        Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
+                        if ($$10x.isEmpty()) {
+                           return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
+                        }
+
+                        $$8x = (Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>)new Typed($$2, $$5x, $$10x.get())
+                           .getOptional($$9)
+                           .orElseThrow(() -> new IllegalStateException("Should always have an entity here"));
+                     }
+                  }
+            ),
+            this.writeAndRead("player RootVehicle injecter", $$12, $$13)
+         );
       }
    }
 }

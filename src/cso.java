@@ -1,66 +1,69 @@
-public class cso extends crn {
-   public cso(crn.a $$0) {
-      super($$0);
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class cso extends cqj {
+   private static final MapCodec<cdt.d> a = cdt.d.a.fieldOf("BucketVariantTag");
+   private final bqr<?> b;
+   private final auy c;
+
+   public cso(bqr<?> $$0, elq $$1, auy $$2, cry.a $$3) {
+      super($$1, $$3);
+      this.b = $$0;
+      this.c = $$2;
    }
 
    @Override
-   public boolean a(crs $$0, czg $$1, dpi $$2, id $$3, bqt $$4) {
-      if (!$$1.B && !$$2.a(ave.aK)) {
-         $$0.a(1, $$4, bqh.a);
-      }
-
-      return !$$2.a(ave.O)
-            && !$$2.a(dcj.bs)
-            && !$$2.a(dcj.bt)
-            && !$$2.a(dcj.bu)
-            && !$$2.a(dcj.bv)
-            && !$$2.a(dcj.sG)
-            && !$$2.a(dcj.ff)
-            && !$$2.a(dcj.fI)
-            && !$$2.a(ave.a)
-         ? super.a($$0, $$1, $$2, $$3, $$4)
-         : true;
-   }
-
-   @Override
-   public boolean a_(dpi $$0) {
-      return $$0.a(dcj.bs) || $$0.a(dcj.cw) || $$0.a(dcj.fI);
-   }
-
-   @Override
-   public float a(crs $$0, dpi $$1) {
-      if ($$1.a(dcj.bs) || $$1.a(ave.O)) {
-         return 15.0F;
-      } else if ($$1.a(ave.a)) {
-         return 5.0F;
-      } else {
-         return !$$1.a(dcj.ff) && !$$1.a(dcj.fg) ? super.a($$0, $$1) : 2.0F;
+   public void a(@Nullable ckl $$0, czu $$1, csd $$2, im $$3) {
+      if ($$1 instanceof aqe) {
+         this.a((aqe)$$1, $$2, $$3);
+         $$1.a($$0, dur.t, $$3);
       }
    }
 
    @Override
-   public bof a(cuz $$0) {
-      czg $$1 = $$0.q();
-      id $$2 = $$0.a();
-      dpi $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dfw $$5 && !$$5.o($$3)) {
-         cka $$6 = $$0.o();
-         crs $$7 = $$0.n();
-         if ($$6 instanceof apv) {
-            am.N.a((apv)$$6, $$2, $$7);
+   protected void a(@Nullable ckl $$0, czv $$1, im $$2) {
+      $$1.a($$0, $$2, this.c, ava.g, 1.0F, 1.0F);
+   }
+
+   private void a(aqe $$0, csd $$1, im $$2) {
+      if (this.b.a($$0, $$1, null, $$2, bri.l, true, false) instanceof ccv $$4) {
+         cuq $$5 = $$1.a(jz.E, cuq.a);
+         $$4.c($$5.c());
+         $$4.w(true);
+      }
+   }
+
+   @Override
+   public void a(csd $$0, @Nullable czu $$1, List<ws> $$2, ctu $$3) {
+      if (this.b == bqr.bf) {
+         cuq $$4 = $$0.a(jz.E, cuq.a);
+         if ($$4.b()) {
+            return;
          }
 
-         $$1.a($$6, $$2, auo.lk, aup.e, 1.0F, 1.0F);
-         dpi $$8 = $$5.n($$3);
-         $$1.b($$2, $$8);
-         $$1.a(dub.c, $$2, dub.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bqt.d($$0.p()));
+         Optional<cdt.d> $$5 = $$4.a(a).result();
+         if ($$5.isPresent()) {
+            cdt.d $$6 = $$5.get();
+            n[] $$7 = new n[]{n.u, n.h};
+            String $$8 = "color.minecraft." + $$6.c();
+            String $$9 = "color.minecraft." + $$6.d();
+            int $$10 = cdt.c.indexOf($$6);
+            if ($$10 != -1) {
+               $$2.add(ws.c(cdt.c($$10)).a($$7));
+               return;
+            }
+
+            $$2.add($$6.b().d().e().a($$7));
+            xg $$11 = ws.c($$8);
+            if (!$$8.equals($$9)) {
+               $$11.f(", ").b(ws.c($$9));
+            }
+
+            $$11.a($$7);
+            $$2.add($$11);
          }
-
-         return bof.a($$1.B);
       }
-
-      return super.a($$0);
    }
 }

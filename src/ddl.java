@@ -1,196 +1,114 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class ddl extends dbt {
-   public static final MapCodec<ddl> a = b(ddl::new);
-   private static final int d = 6;
-   public static final int b = 3;
-   public static final List<dpz> c = List.of(dpy.bp, dpy.bq, dpy.br, dpy.bs, dpy.bt, dpy.bu);
+public class ddl extends dbn {
+   public static final MapCodec<ddl> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lc.e.q().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, ddl::new)
+   );
+   public static final dqp d = dbn.b;
+   protected static final float e = 1.0F;
+   protected static final ety f = dcv.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
+   protected static final ety g = dcv.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
+   protected static final ety h = etv.a(f, g);
+   private static final Map<ddk, ddl> i = Maps.newHashMap();
+   private static final Iterable<etf> j = ImmutableList.of(new etf(0.5, 1.0, 0.5));
+   private final ddk k;
 
    @Override
    public MapCodec<ddl> a() {
-      return a;
+      return c;
    }
 
-   public ddl(dph.d $$0) {
-      super($$0);
-      dpi $$1 = this.E.b().a(dgc.aE, ij.c);
-
-      for (dpz $$2 : c) {
-         $$1 = $$1.a($$2, Boolean.valueOf(false));
-      }
-
-      this.k($$1);
-   }
-
-   @Override
-   protected dim b_(dpi $$0) {
-      return dim.c;
-   }
-
-   @Override
-   protected boh a(crs $$0, dpi $$1, czg $$2, id $$3, cka $$4, boe $$5, esf $$6) {
-      if ($$2.c_($$3) instanceof dmx $$7) {
-         if (!$$0.a(avm.av)) {
-            return boh.d;
-         } else {
-            OptionalInt $$9 = this.a($$6, $$1);
-            if ($$9.isEmpty()) {
-               return boh.e;
-            } else if ($$1.c(c.get($$9.getAsInt()))) {
-               return boh.d;
-            } else {
-               a($$2, $$3, $$4, $$7, $$0, $$9.getAsInt());
-               return boh.a($$2.B);
-            }
-         }
+   protected ddl(dcv $$0, dpx.d $$1) {
+      super($$1);
+      this.k(this.E.b().a(d, Boolean.valueOf(false)));
+      if ($$0 instanceof ddk $$2) {
+         i.put($$2, this);
+         this.k = $$2;
       } else {
-         return boh.e;
+         throw new IllegalArgumentException("Expected block to be of " + ddk.class + " was " + $$0.getClass());
       }
    }
 
    @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if ($$1.c_($$2) instanceof dmx $$5) {
-         OptionalInt $$7 = this.a($$4, $$0);
-         if ($$7.isEmpty()) {
-            return bof.d;
-         } else if (!$$0.c(c.get($$7.getAsInt()))) {
-            return bof.b;
-         } else {
-            a($$1, $$2, $$3, $$5, $$7.getAsInt());
-            return bof.a($$1.B);
-         }
+   protected Iterable<etf> b(dpy $$0) {
+      return j;
+   }
+
+   @Override
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return h;
+   }
+
+   @Override
+   protected bos a(csd $$0, dpy $$1, czu $$2, im $$3, ckl $$4, bop $$5, etb $$6) {
+      if ($$0.a(csg.os) || $$0.a(csg.tX)) {
+         return bos.e;
+      } else if (a($$6) && $$0.d() && $$1.c(d)) {
+         a($$4, $$1, $$2, $$3);
+         return bos.a($$2.B);
       } else {
-         return bof.d;
-      }
-   }
-
-   private OptionalInt a(esf $$0, dpi $$1) {
-      return a($$0, $$1.c(dgc.aE)).map($$0x -> {
-         int $$1x = $$0x.j >= 0.5F ? 0 : 1;
-         int $$2 = a($$0x.i);
-         return OptionalInt.of($$2 + $$1x * 3);
-      }).orElseGet(OptionalInt::empty);
-   }
-
-   private static Optional<esi> a(esf $$0, ij $$1) {
-      ij $$2 = $$0.b();
-      if ($$1 != $$2) {
-         return Optional.empty();
-      } else {
-         id $$3 = $$0.a().a($$2);
-         esj $$4 = $$0.e().a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
-         double $$5 = $$4.a();
-         double $$6 = $$4.b();
-         double $$7 = $$4.c();
-
-         return switch ($$2) {
-            case c -> Optional.of(new esi((float)(1.0 - $$5), (float)$$6));
-            case d -> Optional.of(new esi((float)$$5, (float)$$6));
-            case e -> Optional.of(new esi((float)$$7, (float)$$6));
-            case f -> Optional.of(new esi((float)(1.0 - $$7), (float)$$6));
-            case a, b -> Optional.empty();
-         };
-      }
-   }
-
-   private static int a(float $$0) {
-      float $$1 = 0.0625F;
-      float $$2 = 0.375F;
-      if ($$0 < 0.375F) {
-         return 0;
-      } else {
-         float $$3 = 0.6875F;
-         return $$0 < 0.6875F ? 1 : 2;
-      }
-   }
-
-   private static void a(czg $$0, id $$1, cka $$2, dmx $$3, crs $$4, int $$5) {
-      if (!$$0.B) {
-         $$2.b(auz.c.b($$4.f()));
-         aun $$6 = $$4.a(crv.uu) ? auo.fa : auo.eZ;
-         $$3.a($$5, $$4.a(1));
-         $$0.a(null, $$1, $$6, aup.e, 1.0F, 1.0F);
-         if ($$2.f()) {
-            $$4.f(1);
-         }
-      }
-   }
-
-   private static void a(czg $$0, id $$1, cka $$2, dmx $$3, int $$4) {
-      if (!$$0.B) {
-         crs $$5 = $$3.a($$4, 1);
-         aun $$6 = $$5.a(crv.uu) ? auo.fd : auo.fc;
-         $$0.a(null, $$1, $$6, aup.e, 1.0F, 1.0F);
-         if (!$$2.fZ().e($$5)) {
-            $$2.a($$5, false);
-         }
-
-         $$0.a($$2, dub.c, $$1);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dmo a(id $$0, dpi $$1) {
-      return new dmx($$0, $$1);
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(dgc.aE);
-      c.forEach($$1 -> $$0.a($$1));
-   }
-
-   @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dmx $$6 && !$$6.c()) {
-            for (int $$7 = 0; $$7 < 6; $$7++) {
-               crs $$8 = $$6.a($$7);
-               if (!$$8.d()) {
-                  bob.a($$1, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$8);
-               }
-            }
-
-            $$6.a();
-            $$1.c($$2, this);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
    @Override
-   public dpi a(cux $$0) {
-      return this.n().a(dgc.aE, $$0.g().g());
+   protected boq a(dpy $$0, czu $$1, im $$2, ckl $$3, etb $$4) {
+      boq $$5 = ddh.a($$1, $$2, dcx.eg.n(), $$3);
+      if ($$5.a()) {
+         c($$0, $$1, $$2);
+      }
+
+      return $$5;
+   }
+
+   private static boolean a(etb $$0) {
+      return $$0.e().d - (double)$$0.a().v() > 0.5;
    }
 
    @Override
-   public dpi a(dpi $$0, dit $$1) {
-      return $$0.a(dgc.aE, $$1.a($$0.c(dgc.aE)));
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   public dpi a(dpi $$0, dhd $$1) {
-      return $$0.a($$1.a($$0.c(dgc.aE)));
+   public csd a(czx $$0, im $$1, dpy $$2) {
+      return new csd(dcx.eg);
    }
 
    @Override
-   protected boolean d_(dpi $$0) {
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      return $$1 == ir.a && !$$0.a($$3, $$4) ? dcx.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dpy $$0, czx $$1, im $$2) {
+      return $$1.a_($$2.d()).e();
+   }
+
+   @Override
+   protected int a(dpy $$0, czu $$1, im $$2) {
+      return ddh.d;
+   }
+
+   @Override
+   protected boolean d_(dpy $$0) {
       return true;
    }
 
    @Override
-   protected int a(dpi $$0, czg $$1, id $$2) {
-      if ($$1.x_()) {
-         return 0;
-      } else {
-         return $$1.c_($$2) instanceof dmx $$3 ? $$3.j() + 1 : 0;
-      }
+   protected boolean a(dpy $$0, emg $$1) {
+      return false;
+   }
+
+   public static dpy a(ddk $$0) {
+      return i.get($$0).n();
+   }
+
+   public static boolean g(dpy $$0) {
+      return $$0.a(avo.bk, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

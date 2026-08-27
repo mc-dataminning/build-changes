@@ -1,83 +1,106 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+public class fua extends fsa<cif> implements fqq {
+   private final fur a;
+   private final fur b;
+   private final fur f;
+   private final fur g;
+   private final fur h;
+   private final fur i;
+   private final fur j;
 
-public class fua {
-   private static final Set<ij> a = EnumSet.allOf(ij.class);
-   private final List<fty> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
-
-   public fua a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   public fua(fur $$0) {
+      super(gbm::i);
+      this.a = $$0.b("root");
+      this.b = this.a.b("body");
+      this.f = this.b.b("right_arm");
+      this.g = this.b.b("left_arm");
+      this.h = this.b.b("right_wing");
+      this.i = this.b.b("left_wing");
+      this.j = this.a.b("head");
    }
 
-   public fua a() {
-      return this.a(true);
+   public static fux b() {
+      fuz $$0 = new fuz();
+      fva $$1 = $$0.a();
+      fva $$2 = $$1.a("root", fuw.c(), fut.a(0.0F, -2.5F, 0.0F));
+      $$2.a("head", fuw.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fuv(0.0F)), fut.a(0.0F, 20.0F, 0.0F));
+      fva $$3 = $$2.a(
+         "body",
+         fuw.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fuv(0.0F)).a(0, 16).a(-1.5F, 1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fuv(-0.2F)),
+         fut.a(0.0F, 20.0F, 0.0F)
+      );
+      $$3.a("right_arm", fuw.c().a(23, 0).a(-1.25F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new fuv(-0.1F)), fut.a(-1.75F, 0.25F, 0.0F));
+      $$3.a("left_arm", fuw.c().a(23, 6).a(-0.75F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new fuv(-0.1F)), fut.a(1.75F, 0.25F, 0.0F));
+      $$3.a("left_wing", fuw.c().a(16, 14).a().a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fuv(0.0F)).a(false), fut.a(0.5F, 1.0F, 1.0F));
+      $$3.a("right_wing", fuw.c().a(16, 14).a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fuv(0.0F)), fut.a(-0.5F, 1.0F, 1.0F));
+      return fux.a($$0, 32, 32);
    }
 
-   public fua a(boolean $$0) {
-      this.e = $$0;
-      return this;
+   public void a(cif $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fur::c);
+      this.j.f = $$4 * (float) (Math.PI / 180.0);
+      this.j.e = $$5 * (float) (Math.PI / 180.0);
+      float $$6 = axw.b($$3 * 5.5F * (float) (Math.PI / 180.0)) * 0.1F;
+      this.f.g = (float) (Math.PI / 5) + $$6;
+      this.g.g = -((float) (Math.PI / 5) + $$6);
+      if ($$0.gq()) {
+         this.b.e = 0.0F;
+         this.a($$0.eV(), $$0.eW(), $$6);
+      } else {
+         this.b.e = (float) (Math.PI / 20);
+      }
+
+      this.i.f = 1.0995574F + axw.b($$3 * 45.836624F * (float) (Math.PI / 180.0)) * (float) (Math.PI / 180.0) * 16.2F;
+      this.h.f = -this.i.f;
+      this.i.e = 0.47123888F;
+      this.i.g = -0.47123888F;
+      this.h.e = 0.47123888F;
+      this.h.g = 0.47123888F;
    }
 
-   public fua a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, ftz $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new fty($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
+   private void a(csd $$0, csd $$1, float $$2) {
+      if ($$0.d() && $$1.d()) {
+         this.f.e = -1.2217305F;
+         this.f.f = (float) (Math.PI / 12);
+         this.f.g = -0.47123888F - $$2;
+         this.g.e = -1.2217305F;
+         this.g.f = (float) (-Math.PI / 12);
+         this.g.g = 0.47123888F + $$2;
+      } else {
+         if (!$$0.d()) {
+            this.f.e = (float) (Math.PI * 7.0 / 6.0);
+            this.f.f = (float) (Math.PI / 12);
+            this.f.g = -0.47123888F - $$2;
+         }
+
+         if (!$$1.d()) {
+            this.g.e = (float) (Math.PI * 7.0 / 6.0);
+            this.g.f = (float) (-Math.PI / 12);
+            this.g.g = 0.47123888F + $$2;
+         }
+      }
    }
 
-   public fua a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new fty($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, ftz.a, this.e, 1.0F, 1.0F, a));
-      return this;
+   @Override
+   public fur a() {
+      return this.a;
    }
 
-   public fua a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new fty(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ftz.a, this.e, 1.0F, 1.0F, a));
-      return this;
+   @Override
+   public void a(bqy $$0, exn $$1) {
+      boolean $$2 = $$0 == bqy.b;
+      fur $$3 = $$2 ? this.f : this.g;
+      this.a.a($$1);
+      this.b.a($$1);
+      $$3.a($$1);
+      $$1.b(0.55F, 0.55F, 0.55F);
+      this.a($$1, $$2);
    }
 
-   public fua a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ij> $$6) {
-      this.b.add(new fty(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ftz.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public fua a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new fty($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, ftz.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fua a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, ftz $$7) {
-      this.b.add(new fty($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fua a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new fty(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, ftz.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fua a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, ftz $$6, float $$7, float $$8) {
-      this.b.add(new fty(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public fua a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, ftz $$6) {
-      this.b.add(new fty(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<fty> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static fua c() {
-      return new fua();
+   private void a(exn $$0, boolean $$1) {
+      if ($$1) {
+         $$0.a(0.046875, -0.15625, 0.078125);
+      } else {
+         $$0.a(-0.046875, -0.15625, 0.078125);
+      }
    }
 }

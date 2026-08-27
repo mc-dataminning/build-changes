@@ -1,17 +1,30 @@
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface eqe<T extends eqe<T>> {
-   T b(eql.a var1);
+public class eqe extends epo {
+   public static final Codec<eqe> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(awd.b(ld.E).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, eqe::new)
+   );
+   private final awd<crv> b;
 
-   default <E> T a_(Iterable<E> $$0, Function<E, eql.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private eqe(List<erh> $$0, awd<crv> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   T d();
+   @Override
+   public epq b() {
+      return epr.B;
+   }
+
+   @Override
+   public csd a(csd $$0, eoa $$1) {
+      crw.a($$0, this.b, $$1.b());
+      return $$0;
+   }
+
+   public static epo.a<?> a(awd<crv> $$0) {
+      return a($$1 -> new eqe($$1, $$0));
+   }
 }

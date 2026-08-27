@@ -1,63 +1,59 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cfu<T extends cfo> {
-   private static cfu<?>[] l = new cfu[0];
-   public static final cfu<cfk> a = a(cfk.class, "HoldingPattern");
-   public static final cfu<cfs> b = a(cfs.class, "StrafePlayer");
-   public static final cfu<cfm> c = a(cfm.class, "LandingApproach");
-   public static final cfu<cfn> d = a(cfn.class, "Landing");
-   public static final cfu<cft> e = a(cft.class, "Takeoff");
-   public static final cfu<cfq> f = a(cfq.class, "SittingFlaming");
-   public static final cfu<cfr> g = a(cfr.class, "SittingScanning");
-   public static final cfu<cfp> h = a(cfp.class, "SittingAttacking");
-   public static final cfu<cfi> i = a(cfi.class, "ChargingPlayer");
-   public static final cfu<cfj> j = a(cfj.class, "Dying");
-   public static final cfu<cfl> k = a(cfl.class, "Hover");
-   private final Class<? extends cfo> m;
-   private final int n;
-   private final String o;
+public class cfu extends cfr {
+   @Nullable
+   private etf b;
+   private int c;
 
-   private cfu(int $$0, Class<? extends cfo> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public cfo a(cfe $$0) {
-      try {
-         Constructor<? extends cfo> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends cfo> a() throws NoSuchMethodException {
-      return this.m.getConstructor(cfe.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cfu(cfp $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void b() {
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.ej().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.ej().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.ej().i() - 0.5F) * 8.0F;
+         this.a.dN().a(kw.v, this.a.ds() + (double)$$0, this.a.du() + 2.0 + (double)$$1, this.a.dy() + (double)$$2, 0.0, 0.0, 0.0);
+      }
    }
 
-   public static cfu<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void c() {
+      this.c++;
+      if (this.b == null) {
+         im $$0 = this.a.dN().a(dvq.a.e, dyt.a(this.a.r()));
+         this.b = etf.c($$0);
+      }
+
+      double $$1 = this.b.c(this.a.ds(), this.a.du(), this.a.dy());
+      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.Q && !this.a.R) {
+         this.a.t(1.0F);
+      } else {
+         this.a.t(0.0F);
+      }
    }
 
-   public static int c() {
-      return l.length;
+   @Override
+   public void d() {
+      this.b = null;
+      this.c = 0;
    }
 
-   private static <T extends cfo> cfu<T> a(Class<T> $$0, String $$1) {
-      cfu<T> $$2 = new cfu<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public float f() {
+      return 3.0F;
+   }
+
+   @Nullable
+   @Override
+   public etf g() {
+      return this.b;
+   }
+
+   @Override
+   public cgf<cfu> i() {
+      return cgf.j;
    }
 }

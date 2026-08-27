@@ -1,185 +1,106 @@
-public final class ave {
-   public static final avt<dch> a = a("wool");
-   public static final avt<dch> b = a("planks");
-   public static final avt<dch> c = a("stone_bricks");
-   public static final avt<dch> d = a("wooden_buttons");
-   public static final avt<dch> e = a("stone_buttons");
-   public static final avt<dch> f = a("buttons");
-   public static final avt<dch> g = a("wool_carpets");
-   public static final avt<dch> h = a("wooden_doors");
-   public static final avt<dch> i = a("wooden_stairs");
-   public static final avt<dch> j = a("wooden_slabs");
-   public static final avt<dch> k = a("wooden_fences");
-   public static final avt<dch> l = a("pressure_plates");
-   public static final avt<dch> m = a("wooden_pressure_plates");
-   public static final avt<dch> n = a("stone_pressure_plates");
-   public static final avt<dch> o = a("wooden_trapdoors");
-   public static final avt<dch> p = a("doors");
-   public static final avt<dch> q = a("saplings");
-   public static final avt<dch> r = a("logs_that_burn");
-   public static final avt<dch> s = a("overworld_natural_logs");
-   public static final avt<dch> t = a("logs");
-   public static final avt<dch> u = a("dark_oak_logs");
-   public static final avt<dch> v = a("oak_logs");
-   public static final avt<dch> w = a("birch_logs");
-   public static final avt<dch> x = a("acacia_logs");
-   public static final avt<dch> y = a("cherry_logs");
-   public static final avt<dch> z = a("jungle_logs");
-   public static final avt<dch> A = a("spruce_logs");
-   public static final avt<dch> B = a("mangrove_logs");
-   public static final avt<dch> C = a("crimson_stems");
-   public static final avt<dch> D = a("warped_stems");
-   public static final avt<dch> E = a("bamboo_blocks");
-   public static final avt<dch> F = a("wart_blocks");
-   public static final avt<dch> G = a("banners");
-   public static final avt<dch> H = a("sand");
-   public static final avt<dch> I = a("smelts_to_glass");
-   public static final avt<dch> J = a("stairs");
-   public static final avt<dch> K = a("slabs");
-   public static final avt<dch> L = a("walls");
-   public static final avt<dch> M = a("anvil");
-   public static final avt<dch> N = a("rails");
-   public static final avt<dch> O = a("leaves");
-   public static final avt<dch> P = a("trapdoors");
-   public static final avt<dch> Q = a("small_flowers");
-   public static final avt<dch> R = a("beds");
-   public static final avt<dch> S = a("fences");
-   public static final avt<dch> T = a("tall_flowers");
-   public static final avt<dch> U = a("flowers");
-   public static final avt<dch> V = a("piglin_repellents");
-   public static final avt<dch> W = a("gold_ores");
-   public static final avt<dch> X = a("iron_ores");
-   public static final avt<dch> Y = a("diamond_ores");
-   public static final avt<dch> Z = a("redstone_ores");
-   public static final avt<dch> aa = a("lapis_ores");
-   public static final avt<dch> ab = a("coal_ores");
-   public static final avt<dch> ac = a("emerald_ores");
-   public static final avt<dch> ad = a("copper_ores");
-   public static final avt<dch> ae = a("candles");
-   public static final avt<dch> af = a("dirt");
-   public static final avt<dch> ag = a("terracotta");
-   public static final avt<dch> ah = a("badlands_terracotta");
-   public static final avt<dch> ai = a("concrete_powder");
-   public static final avt<dch> aj = a("completes_find_tree_tutorial");
-   public static final avt<dch> ak = a("flower_pots");
-   public static final avt<dch> al = a("enderman_holdable");
-   public static final avt<dch> am = a("ice");
-   public static final avt<dch> an = a("valid_spawn");
-   public static final avt<dch> ao = a("impermeable");
-   public static final avt<dch> ap = a("underwater_bonemeals");
-   public static final avt<dch> aq = a("coral_blocks");
-   public static final avt<dch> ar = a("wall_corals");
-   public static final avt<dch> as = a("coral_plants");
-   public static final avt<dch> at = a("corals");
-   public static final avt<dch> au = a("bamboo_plantable_on");
-   public static final avt<dch> av = a("standing_signs");
-   public static final avt<dch> aw = a("wall_signs");
-   public static final avt<dch> ax = a("signs");
-   public static final avt<dch> ay = a("ceiling_hanging_signs");
-   public static final avt<dch> az = a("wall_hanging_signs");
-   public static final avt<dch> aA = a("all_hanging_signs");
-   public static final avt<dch> aB = a("all_signs");
-   public static final avt<dch> aC = a("dragon_immune");
-   public static final avt<dch> aD = a("dragon_transparent");
-   public static final avt<dch> aE = a("wither_immune");
-   public static final avt<dch> aF = a("wither_summon_base_blocks");
-   public static final avt<dch> aG = a("beehives");
-   public static final avt<dch> aH = a("crops");
-   public static final avt<dch> aI = a("bee_growables");
-   public static final avt<dch> aJ = a("portals");
-   public static final avt<dch> aK = a("fire");
-   public static final avt<dch> aL = a("nylium");
-   public static final avt<dch> aM = a("beacon_base_blocks");
-   public static final avt<dch> aN = a("soul_speed_blocks");
-   public static final avt<dch> aO = a("wall_post_override");
-   public static final avt<dch> aP = a("climbable");
-   public static final avt<dch> aQ = a("fall_damage_resetting");
-   public static final avt<dch> aR = a("shulker_boxes");
-   public static final avt<dch> aS = a("hoglin_repellents");
-   public static final avt<dch> aT = a("soul_fire_base_blocks");
-   public static final avt<dch> aU = a("strider_warm_blocks");
-   public static final avt<dch> aV = a("campfires");
-   public static final avt<dch> aW = a("guarded_by_piglins");
-   public static final avt<dch> aX = a("prevent_mob_spawning_inside");
-   public static final avt<dch> aY = a("fence_gates");
-   public static final avt<dch> aZ = a("unstable_bottom_center");
-   public static final avt<dch> ba = a("mushroom_grow_block");
-   public static final avt<dch> bb = a("infiniburn_overworld");
-   public static final avt<dch> bc = a("infiniburn_nether");
-   public static final avt<dch> bd = a("infiniburn_end");
-   public static final avt<dch> be = a("base_stone_overworld");
-   public static final avt<dch> bf = a("stone_ore_replaceables");
-   public static final avt<dch> bg = a("deepslate_ore_replaceables");
-   public static final avt<dch> bh = a("base_stone_nether");
-   public static final avt<dch> bi = a("overworld_carver_replaceables");
-   public static final avt<dch> bj = a("nether_carver_replaceables");
-   public static final avt<dch> bk = a("candle_cakes");
-   public static final avt<dch> bl = a("cauldrons");
-   public static final avt<dch> bm = a("crystal_sound_blocks");
-   public static final avt<dch> bn = a("inside_step_sound_blocks");
-   public static final avt<dch> bo = a("combination_step_sound_blocks");
-   public static final avt<dch> bp = a("camel_sand_step_sound_blocks");
-   public static final avt<dch> bq = a("occludes_vibration_signals");
-   public static final avt<dch> br = a("dampens_vibrations");
-   public static final avt<dch> bs = a("dripstone_replaceable_blocks");
-   public static final avt<dch> bt = a("cave_vines");
-   public static final avt<dch> bu = a("moss_replaceable");
-   public static final avt<dch> bv = a("lush_ground_replaceable");
-   public static final avt<dch> bw = a("azalea_root_replaceable");
-   public static final avt<dch> bx = a("small_dripleaf_placeable");
-   public static final avt<dch> by = a("big_dripleaf_placeable");
-   public static final avt<dch> bz = a("snow");
-   public static final avt<dch> bA = a("mineable/axe");
-   public static final avt<dch> bB = a("mineable/hoe");
-   public static final avt<dch> bC = a("mineable/pickaxe");
-   public static final avt<dch> bD = a("mineable/shovel");
-   public static final avt<dch> bE = a("sword_efficient");
-   public static final avt<dch> bF = a("needs_diamond_tool");
-   public static final avt<dch> bG = a("needs_iron_tool");
-   public static final avt<dch> bH = a("needs_stone_tool");
-   public static final avt<dch> bI = a("features_cannot_replace");
-   public static final avt<dch> bJ = a("lava_pool_stone_cannot_replace");
-   public static final avt<dch> bK = a("geode_invalid_blocks");
-   public static final avt<dch> bL = a("frog_prefer_jump_to");
-   public static final avt<dch> bM = a("sculk_replaceable");
-   public static final avt<dch> bN = a("sculk_replaceable_world_gen");
-   public static final avt<dch> bO = a("ancient_city_replaceable");
-   public static final avt<dch> bP = a("vibration_resonators");
-   public static final avt<dch> bQ = a("animals_spawnable_on");
-   public static final avt<dch> bR = a("armadillo_spawnable_on");
-   public static final avt<dch> bS = a("axolotls_spawnable_on");
-   public static final avt<dch> bT = a("goats_spawnable_on");
-   public static final avt<dch> bU = a("mooshrooms_spawnable_on");
-   public static final avt<dch> bV = a("parrots_spawnable_on");
-   public static final avt<dch> bW = a("polar_bears_spawnable_on_alternate");
-   public static final avt<dch> bX = a("rabbits_spawnable_on");
-   public static final avt<dch> bY = a("foxes_spawnable_on");
-   public static final avt<dch> bZ = a("wolves_spawnable_on");
-   public static final avt<dch> ca = a("frogs_spawnable_on");
-   public static final avt<dch> cb = a("azalea_grows_on");
-   public static final avt<dch> cc = a("convertable_to_mud");
-   public static final avt<dch> cd = a("mangrove_logs_can_grow_through");
-   public static final avt<dch> ce = a("mangrove_roots_can_grow_through");
-   public static final avt<dch> cf = a("dead_bush_may_place_on");
-   public static final avt<dch> cg = a("snaps_goat_horn");
-   public static final avt<dch> ch = a("replaceable_by_trees");
-   public static final avt<dch> ci = a("snow_layer_cannot_survive_on");
-   public static final avt<dch> cj = a("snow_layer_can_survive_on");
-   public static final avt<dch> ck = a("invalid_spawn_inside");
-   public static final avt<dch> cl = a("sniffer_diggable_block");
-   public static final avt<dch> cm = a("sniffer_egg_hatch_boost");
-   public static final avt<dch> cn = a("trail_ruins_replaceable");
-   public static final avt<dch> co = a("replaceable");
-   public static final avt<dch> cp = a("enchantment_power_provider");
-   public static final avt<dch> cq = a("enchantment_power_transmitter");
-   public static final avt<dch> cr = a("maintains_farmland");
-   public static final avt<dch> cs = a("blocks_wind_charge_explosions");
-   public static final avt<dch> ct = a("does_not_block_hoppers");
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-   private ave() {
+public class ave extends avc {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
+
+   public int a(Collection<cwi<?>> $$0, aqf $$1) {
+      List<akf> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cwi<?> $$4 : $$0) {
+         akf $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().an_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            am.g.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(adt.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   private static avt<dch> a(String $$0) {
-      return avt.a(ku.f, new ajv($$0));
+   public int b(Collection<cwi<?>> $$0, aqf $$1) {
+      List<akf> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cwi<?> $$4 : $$0) {
+         akf $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(adt.a.c, $$1, $$2);
+      return $$3;
+   }
+
+   private void a(adt.a $$0, aqf $$1, List<akf> $$2) {
+      $$1.d.b(new adt($$0, $$2, Collections.emptyList(), this.a()));
+   }
+
+   public ty b() {
+      ty $$0 = new ty();
+      this.a().b($$0);
+      ue $$1 = new ue();
+
+      for (akf $$2 : this.a) {
+         $$1.add(ut.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      ue $$3 = new ue();
+
+      for (akf $$4 : this.b) {
+         $$3.add(ut.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
+   }
+
+   public void a(ty $$0, cwj $$1) {
+      this.a(avd.a($$0));
+      ue $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      ue $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
+   }
+
+   private void a(ue $$0, Consumer<cwi<?>> $$1, cwj $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            akf $$5 = new akf($$4);
+            Optional<cwi<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
+   }
+
+   public void a(aqf $$0) {
+      $$0.d.b(new adt(adt.a.a, this.a, this.b, this.a()));
    }
 }

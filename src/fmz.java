@@ -1,63 +1,33 @@
-import javax.annotation.Nullable;
+public class fmz extends feu {
+   private static final akf a = new akf("widget/page_forward_highlighted");
+   private static final akf b = new akf("widget/page_forward");
+   private static final akf c = new akf("widget/page_backward_highlighted");
+   private static final akf d = new akf("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-public abstract class fmz extends fjx {
-   private static final int b = 100;
-   private final wi c;
-   @Nullable
-   private final wi d;
-   private final wi o;
-   @Nullable
-   protected fea a;
-   @Nullable
-   private fej p;
-   private final fhj q;
-
-   protected fmz(wi $$0, wi $$1, wi $$2) {
-      this($$0, $$1, null, $$2);
+   public fmz(int $$0, int $$1, boolean $$2, feu.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, wr.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
-
-   protected fmz(wi $$0, wi $$1, @Nullable wi $$2, wi $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.o = $$3;
-      this.q = new fhj(0, 0, this.k, this.l);
-   }
-
-   protected abstract fhm m();
 
    @Override
-   protected void aM_() {
-      fhp $$0 = this.q.a(fhp.d().a(8));
-      $$0.c().b();
-      $$0.a(new fff(this.n(), this.m));
-      this.p = $$0.a(new fej(this.k - 100, this.c, this.m, 12), $$0x -> $$0x.a(12));
-      this.p.b(false);
-      fhp $$1 = $$0.a(fhp.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(fea.a(this.d, this.m).a());
+   public void b(feh $$0, int $$1, int $$2, float $$3) {
+      akf $$4;
+      if (this.u) {
+         $$4 = this.A() ? a : b;
+      } else {
+         $$4 = this.A() ? c : d;
       }
 
-      $$1.a(this.m());
-      this.q.a($$1x -> {
-         fdw var10000 = this.c($$1x);
-      });
-      this.c();
+      $$0.a($$4, this.C(), this.D(), 23, 13);
    }
 
    @Override
-   protected void c() {
-      if (this.p != null) {
-         this.p.d(this.k - 100);
+   public void a(grf $$0) {
+      if (this.v) {
+         $$0.a(gpw.a(auz.cy, 1.0F));
       }
-
-      this.q.a();
-      fhj.a(this.q, this.G());
-   }
-
-   @Override
-   public wi i() {
-      return this.o;
    }
 }

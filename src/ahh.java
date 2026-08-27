@@ -1,33 +1,29 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class ahh implements yz<afx> {
+   public static final yq<vs, ahh> a = yz.a(ahh::a, ahh::new);
+   private final int b;
 
-public class ahh implements yp<afn> {
-   public static final yg<vi, ahh> a = yp.a(ahh::a, ahh::new);
-   private final UUID b;
-
-   public ahh(UUID $$0) {
+   public ahh(int $$0) {
       this.b = $$0;
    }
 
-   private ahh(vi $$0) {
-      this.b = $$0.n();
+   private ahh(vs $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b);
+   private void a(vs $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yr<ahh> a() {
-      return afl.bZ;
+   public zb<ahh> a() {
+      return afv.bP;
    }
 
-   public void a(afn $$0) {
+   public void a(afx $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bqa a(apu $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
    }
 }

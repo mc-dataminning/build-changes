@@ -1,54 +1,51 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import java.util.function.Supplier;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.slf4j.Logger;
 
-public enum il implements ayg {
-   a("down_east", ij.a, ij.f),
-   b("down_north", ij.a, ij.c),
-   c("down_south", ij.a, ij.d),
-   d("down_west", ij.a, ij.e),
-   e("up_east", ij.b, ij.f),
-   f("up_north", ij.b, ij.c),
-   g("up_south", ij.b, ij.d),
-   h("up_west", ij.b, ij.e),
-   i("west_up", ij.e, ij.b),
-   j("east_up", ij.f, ij.b),
-   k("north_up", ij.c, ij.b),
-   l("south_up", ij.d, ij.b);
-
-   private static final Int2ObjectMap<il> m = ac.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
-      for (il $$1 : values()) {
-         $$0.put(b($$1.p, $$1.o), $$1);
+public class il {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Map<ir, j> a = ac.a(Maps.newEnumMap(ir.class), $$0 -> {
+      $$0.put(ir.d, j.a());
+      $$0.put(ir.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
+      $$0.put(ir.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
+      $$0.put(ir.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
+      $$0.put(ir.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
+      $$0.put(ir.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
+   });
+   public static final Map<ir, j> b = ac.a(Maps.newEnumMap(ir.class), $$0 -> {
+      for (ir $$1 : ir.values()) {
+         $$0.put($$1, a.get($$1).b());
       }
    });
-   private final String n;
-   private final ij o;
-   private final ij p;
 
-   private static int b(ij $$0, ij $$1) {
-      return $$1.ordinal() << 3 | $$0.ordinal();
+   public static j a(j $$0) {
+      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
+      $$1.mul($$0.c());
+      $$1.translate(-0.5F, -0.5F, -0.5F);
+      return new j($$1);
    }
 
-   private il(String $$0, ij $$1, ij $$2) {
-      this.n = $$0;
-      this.p = $$1;
-      this.o = $$2;
+   public static j b(j $$0) {
+      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
+      $$1.mul($$0.c());
+      $$1.translate(0.5F, 0.5F, 0.5F);
+      return new j($$1);
    }
 
-   @Override
-   public String c() {
-      return this.n;
-   }
-
-   public static il a(ij $$0, ij $$1) {
-      int $$2 = b($$0, $$1);
-      return (il)m.get($$2);
-   }
-
-   public ij a() {
-      return this.p;
-   }
-
-   public ij b() {
-      return this.o;
+   public static j a(j $$0, ir $$1, Supplier<String> $$2) {
+      ir $$3 = ir.a($$0.c(), $$1);
+      j $$4 = $$0.b();
+      if ($$4 == null) {
+         c.warn($$2.get());
+         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
+      } else {
+         j $$5 = b.get($$1).a($$4).a(a.get($$3));
+         return a($$5);
+      }
    }
 }

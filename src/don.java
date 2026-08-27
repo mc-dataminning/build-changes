@@ -1,170 +1,251 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collections;
-import java.util.HashSet;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
-import java.util.function.Function;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class don {
-   public static final String a = "spawn_data";
-   private static final String n = "next_mob_spawns_at";
-   public static MapCodec<don> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jh.b.optionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
-               jh.b.optionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
-               Codec.LONG.optionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
-               Codec.LONG.optionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
-               czx.b.optionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
-               ajv.a.optionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, don::new)
-   );
-   protected final Set<UUID> c = new HashSet<>();
-   protected final Set<UUID> d = new HashSet<>();
-   protected long e;
-   protected long f;
-   protected int g;
-   protected Optional<czx> h;
-   protected Optional<ajv> i;
-   protected bmp<czx> j;
+public class don extends dnd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 90;
+   private static final int c = 10;
    @Nullable
-   protected bqa k;
-   protected double l;
-   protected double m;
+   private UUID d;
+   private doo e = this.f();
+   private doo f = this.f();
+   private boolean g;
 
-   public don() {
-      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
+   public don(im $$0, dpy $$1) {
+      this(dnf.h, $$0, $$1);
    }
 
-   public don(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<czx> $$5, Optional<ajv> $$6) {
-      this.c.addAll($$0);
-      this.d.addAll($$1);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
+   public don(dnf $$0, im $$1, dpy $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a(dom $$0) {
-      bmp<czx> $$1 = $$0.i();
-      if ($$1.d()) {
-         this.j = bmp.a(this.h.orElseGet(czx::new));
+   protected doo f() {
+      return new doo();
+   }
+
+   public boolean a(ckl $$0) {
+      if (this.n().b() instanceof djv $$1) {
+         etf $$2 = $$1.m(this.n());
+         double $$3 = $$0.ds() - ((double)this.az_().u() + $$2.c);
+         double $$4 = $$0.dy() - ((double)this.az_().w() + $$2.e);
+         float $$5 = $$1.g(this.n());
+         float $$6 = (float)(axw.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
+         return axw.d($$5, $$6) <= 90.0F;
       } else {
-         this.j = $$1;
+         return false;
       }
    }
 
-   public void a() {
-      this.c.clear();
-      this.g = 0;
-      this.f = 0L;
-      this.e = 0L;
-      this.d.clear();
+   public doo a(boolean $$0) {
+      return $$0 ? this.e : this.f;
    }
 
-   public boolean a(dol $$0, axt $$1) {
-      boolean $$2 = this.b($$0, $$1).a().b("id", 8);
-      return $$2 || !this.j.d();
+   public doo j() {
+      return this.e;
    }
 
-   public boolean a(dom $$0, int $$1) {
-      return this.g >= $$0.a($$1);
+   public doo k() {
+      return this.f;
    }
 
-   public boolean b() {
-      return this.d.isEmpty();
+   public int b() {
+      return 10;
    }
 
-   public boolean a(apu $$0, dom $$1, int $$2) {
-      return $$0.Y() >= this.f && this.d.size() < $$1.b($$2);
+   public int c() {
+      return 90;
    }
 
-   public int a(id $$0) {
-      if (this.c.isEmpty()) {
-         ac.a("Trial Spawner at " + $$0 + " has no detected players");
+   @Override
+   protected void b(ty $$0, ix.a $$1) {
+      super.b($$0, $$1);
+      DynamicOps<uv> $$2 = $$1.a(um.a);
+      doo.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
+      doo.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
+      $$0.a("is_waxed", this.g);
+   }
+
+   @Override
+   public void a(ty $$0, ix.a $$1) {
+      super.a($$0, $$1);
+      DynamicOps<uv> $$2 = $$1.a(um.a);
+      if ($$0.e("front_text")) {
+         doo.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
       }
 
-      return Math.max(0, this.c.size() - 1);
-   }
-
-   public void a(apu $$0, id $$1, dok $$2, dok.a $$3, int $$4) {
-      List<UUID> $$5 = $$2.detect($$0, $$3, $$1, (double)$$4);
-      boolean $$6 = this.c.addAll($$5);
-      if ($$6) {
-         this.f = Math.max($$0.Y() + 40L, this.f);
-         $$0.c(3013, $$1, this.c.size());
+      if ($$0.e("back_text")) {
+         doo.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
       }
+
+      this.g = $$0.q("is_waxed");
    }
 
-   public boolean a(apu $$0, dom $$1, float $$2) {
-      long $$3 = this.e - (long)$$1.h();
-      return (float)$$0.Y() >= (float)$$3 + $$2;
-   }
-
-   public boolean b(apu $$0, dom $$1, float $$2) {
-      long $$3 = this.e - (long)$$1.h();
-      return (float)($$0.Y() - $$3) % $$2 == 0.0F;
-   }
-
-   public boolean a(apu $$0) {
-      return $$0.Y() >= this.e;
-   }
-
-   public void a(dol $$0, axt $$1, bqg<?> $$2) {
-      this.b($$0, $$1).a().a("id", kt.g.b($$2).toString());
-   }
-
-   protected czx b(dol $$0, axt $$1) {
-      if (this.h.isPresent()) {
-         return this.h.get();
-      } else {
-         czx $$2 = this.j.b($$1).map(bmr.b::b).orElseGet(czx::new);
-         this.h = Optional.of($$2);
-         $$0.e();
-         return $$2;
+   private doo a(doo $$0) {
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         ws $$2 = this.a($$0.a($$1, false));
+         ws $$3 = this.a($$0.a($$1, true));
+         $$0 = $$0.a($$1, $$2, $$3);
       }
+
+      return $$0;
    }
 
-   @Nullable
-   public bqa a(dol $$0, czg $$1, doo $$2) {
-      if ($$0.a($$1) && $$2.d()) {
-         if (this.k == null) {
-            to $$3 = this.b($$0, $$1.E_()).a();
-            if ($$3.b("id", 8)) {
-               this.k = bqg.a($$3, $$1, Function.identity());
-            }
+   private ws a(ws $$0) {
+      if (this.o instanceof aqe $$1) {
+         try {
+            return wv.a(a(null, $$1, this.p), $$0, null, 0);
+         } catch (CommandSyntaxException var4) {
          }
+      }
 
-         return this.k;
+      return $$0;
+   }
+
+   public void a(ckl $$0, boolean $$1, List<aqw> $$2) {
+      if (!this.u() && $$0.cx().equals(this.t()) && this.o != null) {
+         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
+         this.a(null);
+         this.o.a(this.az_(), this.n(), this.n(), 3);
       } else {
-         return null;
+         a.warn("Player {} just tried to change non-editable sign", $$0.ad().getString());
       }
    }
 
-   public to a(doo $$0) {
-      to $$1 = new to();
-      if ($$0 == doo.c) {
-         $$1.a("next_mob_spawns_at", this.f);
+   public boolean a(UnaryOperator<doo> $$0, boolean $$1) {
+      doo $$2 = this.a($$1);
+      return this.a($$0.apply($$2), $$1);
+   }
+
+   private doo a(ckl $$0, List<aqw> $$1, doo $$2) {
+      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+         aqw $$4 = $$1.get($$3);
+         xp $$5 = $$2.a($$3, $$0.Y()).a();
+         if ($$0.Y()) {
+            $$2 = $$2.a($$3, ws.b($$4.b()).b($$5));
+         } else {
+            $$2 = $$2.a($$3, ws.b($$4.d()).b($$5), ws.b($$4.b()).b($$5));
+         }
       }
 
-      this.h
-         .ifPresent($$1x -> $$1.a("spawn_data", (ul)czx.b.encodeStart(uc.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
-      return $$1;
+      return $$2;
    }
 
-   public double c() {
-      return this.l;
+   public boolean a(doo $$0, boolean $$1) {
+      return $$1 ? this.c($$0) : this.b($$0);
    }
 
-   public double d() {
-      return this.m;
+   private boolean b(doo $$0) {
+      if ($$0 != this.f) {
+         this.f = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean c(doo $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(boolean $$0, ckl $$1) {
+      return this.u() && this.a($$0).b($$1);
+   }
+
+   public boolean a(ckl $$0, czu $$1, im $$2, boolean $$3) {
+      boolean $$4 = false;
+
+      for (ws $$5 : this.a($$3).b($$0.Y())) {
+         xp $$6 = $$5.a();
+         wq $$7 = $$6.h();
+         if ($$7 != null && $$7.a() == wq.a.c) {
+            $$0.cM().aH().a(a($$0, $$1, $$2), $$7.b());
+            $$4 = true;
+         }
+      }
+
+      return $$4;
+   }
+
+   private static ec a(@Nullable ckl $$0, czu $$1, im $$2) {
+      String $$3 = $$0 == null ? "Sign" : $$0.ad().getString();
+      ws $$4 = (ws)($$0 == null ? ws.b("Sign") : $$0.O_());
+      return new ec(eb.a, etf.b($$2), ete.a, (aqe)$$1, 2, $$3, $$4, $$1.o(), $$0);
+   }
+
+   public abr l() {
+      return abr.a(this);
+   }
+
+   @Override
+   public ty a(ix.a $$0) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   public void a(@Nullable UUID $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public UUID t() {
+      return this.d;
+   }
+
+   private void v() {
+      this.e();
+      this.o.a(this.az_(), this.n(), this.n(), 3);
+   }
+
+   public boolean u() {
+      return this.g;
+   }
+
+   public boolean b(boolean $$0) {
+      if (this.g != $$0) {
+         this.g = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(UUID $$0) {
+      ckl $$1 = this.o.b($$0);
+      return $$1 == null || $$1.i((double)this.az_().u(), (double)this.az_().v(), (double)this.az_().w()) > 64.0;
+   }
+
+   public static void a(czu $$0, im $$1, dpy $$2, don $$3) {
+      UUID $$4 = $$3.t();
+      if ($$4 != null) {
+         $$3.a($$3, $$0, $$4);
+      }
+   }
+
+   private void a(don $$0, czu $$1, UUID $$2) {
+      if ($$0.b($$2)) {
+         $$0.a(null);
+      }
+   }
+
+   public auy d() {
+      return auz.BL;
    }
 }

@@ -1,49 +1,125 @@
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bsp extends bsl<cjn> {
+public class bsp {
+   public static final int a = 48;
+
+   public static bsx<brm> a(Predicate<iv<cck>> $$0, cah<iu> $$1, boolean $$2, Optional<Byte> $$3) {
+      return a($$0, $$1, $$1, $$2, $$3);
+   }
+
+   public static bsx<brm> a(Predicate<iv<cck>> $$0, cah<iu> $$1, cah<iu> $$2, boolean $$3, Optional<Byte> $$4) {
+      int $$5 = 5;
+      int $$6 = 20;
+      MutableLong $$7 = new MutableLong(0L);
+      Long2ObjectMap<bsp.a> $$8 = new Long2ObjectOpenHashMap();
+      buh<brm> $$9 = bwj.a(
+         (Function<bwj.b<brm>, ? extends App<bwj.c<brm>, bwm<brm>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
+                  if ($$3 && $$7x.p_()) {
+                     return false;
+                  } else if ($$7.getValue() == 0L) {
+                     $$7.setValue($$6xx.Y() + (long)$$6xx.z.a(20));
+                     return false;
+                  } else if ($$6xx.Y() < $$7.getValue()) {
+                     return false;
+                  } else {
+                     $$7.setValue($$8x + 20L + (long)$$6xx.E_().a(20));
+                     cch $$9x = $$6xx.y();
+                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bsp.a)$$1xxxx.getValue()).b($$8x));
+                     Predicate<im> $$10 = $$2xxxx -> {
+                        bsp.a $$3xxxx = (bsp.a)$$8.get($$2xxxx.a());
+                        if ($$3xxxx == null) {
+                           return true;
+                        } else if (!$$3xxxx.c($$8x)) {
+                           return false;
+                        } else {
+                           $$3xxxx.a($$8x);
+                           return true;
+                        }
+                     };
+                     Set<Pair<iv<cck>, im>> $$11 = $$9x.c($$0, $$10, $$7x.dn(), 48, cch.b.a).limit(5L).collect(Collectors.toSet());
+                     emf $$12 = a($$7x, $$11);
+                     if ($$12 != null && $$12.j()) {
+                        im $$13 = $$12.l();
+                        $$9x.c($$13).ifPresent($$8xx -> {
+                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
+                           $$5xx.a(iu.a($$6xx.ae(), $$13));
+                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
+                           $$8.clear();
+                           afu.c($$6xx, $$13);
+                        });
+                     } else {
+                        for (Pair<iv<cck>, im> $$14 : $$11) {
+                           $$8.computeIfAbsent(((im)$$14.getSecond()).a(), $$2xxxx -> new bsp.a($$6xx.z, $$8x));
+                        }
+                     }
+
+                     return true;
+                  }
+               }))
+      );
+      return $$2 == $$1 ? $$9 : bwj.a((Function<bwj.b<brm>, ? extends App<bwj.c<brm>, bwm<brm>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   }
+
    @Nullable
-   private cll c;
+   public static emf a(brg $$0, Set<Pair<iv<cck>, im>> $$1) {
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         Set<im> $$2 = new HashSet<>();
+         int $$3 = 1;
 
-   public bsp(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
-   }
+         for (Pair<iv<cck>, im> $$4 : $$1) {
+            $$3 = Math.max($$3, ((cck)((iv)$$4.getFirst()).a()).c());
+            $$2.add((im)$$4.getSecond());
+         }
 
-   protected boolean a(apu $$0, cjn $$1) {
-      id $$2 = $$1.dm();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && btu.a($$0, $$1, $$2);
-   }
-
-   protected boolean a(apu $$0, cjn $$1, long $$2) {
-      return this.c != null && !this.c.d();
-   }
-
-   protected void b(apu $$0, cjn $$1, long $$2) {
-      this.c = null;
-      $$1.dP().a($$0.Z(), $$0.Y());
-   }
-
-   protected void c(apu $$0, cjn $$1, long $$2) {
-      axt $$3 = $$1.ei();
-      if ($$3.a(100) == 0) {
-         $$1.gs();
-      }
-
-      if ($$3.a(200) == 0 && btu.a($$0, $$1, $$1.dm())) {
-         cql $$4 = ac.a(cql.values(), $$3);
-         int $$5 = $$3.a(3);
-         crs $$6 = this.a($$4, $$5);
-         ckn $$7 = new ckn($$1.dM(), $$1, $$1.dr(), $$1.dv(), $$1.dx(), $$6);
-         $$1.dM().b($$7);
+         return $$0.K().a($$2, $$3);
       }
    }
 
-   private crs a(cql $$0, int $$1) {
-      crs $$2 = new crs(crv.us);
-      $$2.b(jr.K, new cuh((byte)$$1, List.of(new cug(cug.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
+   static class a {
+      private static final int a = 40;
+      private static final int b = 80;
+      private static final int c = 400;
+      private final ayd d;
+      private long e;
+      private long f;
+      private int g;
+
+      a(ayd $$0, long $$1) {
+         this.d = $$0;
+         this.a($$1);
+      }
+
+      public void a(long $$0) {
+         this.e = $$0;
+         int $$1 = this.g + this.d.a(40) + 40;
+         this.g = Math.min($$1, 400);
+         this.f = $$0 + (long)this.g;
+      }
+
+      public boolean b(long $$0) {
+         return $$0 - this.e < 400L;
+      }
+
+      public boolean c(long $$0) {
+         return $$0 >= this.f;
+      }
+
+      @Override
+      public String toString() {
+         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
+      }
    }
 }

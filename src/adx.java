@@ -1,29 +1,36 @@
-public class adx implements yp<aba> {
-   public static final yg<vi, adx> a = yp.a(adx::a, adx::new);
-   private final int b;
+public record adx(afs e, byte f) implements yz<abk> {
+   public static final yq<wd, adx> a = yz.a(adx::a, adx::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public adx(dqz $$0) {
-      this.b = $$0.r();
+   private adx(wd $$0) {
+      this(new afs($$0), $$0.readByte());
    }
 
-   private adx(vi $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vi $$0) {
-      $$0.c(this.b);
+   private void a(wd $$0) {
+      this.e.a($$0);
+      $$0.k(this.f);
    }
 
    @Override
-   public yr<adx> a() {
-      return afl.av;
+   public zb<adx> a() {
+      return afv.al;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
+   }
+
+   public afs b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

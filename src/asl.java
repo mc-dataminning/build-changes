@@ -1,31 +1,29 @@
-import io.netty.buffer.ByteBuf;
+import java.nio.file.Path;
+import java.util.Map;
 
-public record asl(String c, String d, String e) {
-   public static final yg<ByteBuf, asl> a = yg.a(ye.k, asl::b, ye.k, asl::c, ye.k, asl::d, asl::new);
-   public static final String b = "minecraft";
+interface asl {
+   asl a = new asl() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
+   };
+   asl b = new asl() {
+      @Override
+      public String toString() {
+         return "relative";
+      }
+   };
 
-   public static asl a(String $$0) {
-      return new asl("minecraft", $$0, aa.b().b());
+   public static record a(Map<String, asi> c) implements asl {
+      public Map<String, asi> a() {
+         return this.c;
+      }
    }
 
-   public boolean a() {
-      return this.c.equals("minecraft");
-   }
-
-   @Override
-   public String toString() {
-      return this.c + ":" + this.d + ":" + this.e;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public String c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.e;
+   public static record b(Path c) implements asl {
+      public Path a() {
+         return this.c;
+      }
    }
 }

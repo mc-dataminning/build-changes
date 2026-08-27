@@ -1,105 +1,37 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dit implements ayg {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dit extends dcv {
+   public static final MapCodec<dit> a = b(dit::new);
 
-   public static final Codec<dit> e = ayg.a(dit::values);
-   private final String f;
-   private final h g;
-
-   private dit(String $$0, h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<dit> a() {
+      return a;
    }
 
-   public dit a(dit $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public ij a(ij $$0) {
-      if ($$0.o() == ij.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dit a(axt $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<dit> b(axt $$0) {
-      return ac.b(values(), $$0);
+   protected dit(dpx.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected bos a(csd $$0, dpy $$1, czu $$2, im $$3, ckl $$4, bop $$5, etb $$6) {
+      if (!$$0.a(csg.rV)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.B) {
+         return bos.a($$2.B);
+      } else {
+         ir $$7 = $$6.b();
+         ir $$8 = $$7.o() == ir.a.b ? $$4.cF().g() : $$7;
+         $$2.a(null, $$3, auz.uH, ava.e, 1.0F, 1.0F);
+         $$2.a($$3, dcx.ee.n().a(ddp.b, $$8), 11);
+         cgv $$9 = new cgv(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new csd(csg.rY, 4)
+         );
+         $$9.o(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bre.d($$5));
+         $$2.a($$4, dur.M, $$3);
+         $$4.b(avj.c.b(csg.rV));
+         return bos.a($$2.B);
+      }
    }
 }

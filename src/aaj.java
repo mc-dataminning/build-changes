@@ -1,14 +1,31 @@
-public interface aaj extends yv {
-   @Override
-   default vh b() {
-      return vh.e;
+public record aaj(int c, emf d, float e) implements aaa {
+   public static final yq<vs, aaj> a = aaa.a(aaj::a, aaj::new);
+   public static final aaa.b<aaj> b = aaa.a("debug/path");
+
+   private aaj(vs $$0) {
+      this($$0.readInt(), emf.b($$0), $$0.readFloat());
    }
 
-   void a(aak var1);
+   private void a(vs $$0) {
+      $$0.p(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
+   }
 
-   void a(aal var1);
+   @Override
+   public aaa.b<aaj> a() {
+      return b;
+   }
 
-   void a(aan var1);
+   public int b() {
+      return this.c;
+   }
 
-   void a(aam var1);
+   public emf c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
 }

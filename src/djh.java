@@ -1,42 +1,48 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface djh extends dco, dgx {
+public class djh extends dcv {
+   public static final MapCodec<djh> h = b(djh::new);
+   public static final dqw<ir.a> i = dqo.I;
+
    @Override
-   default boolean a(@Nullable cka $$0, cym $$1, id $$2, dpi $$3, ela $$4) {
-      return $$4 == elc.c;
+   public MapCodec<? extends djh> a() {
+      return h;
+   }
+
+   public djh(dpx.d $$0) {
+      super($$0);
+      this.k(this.n().a(i, ir.a.b));
    }
 
    @Override
-   default boolean a(czh $$0, id $$1, dpi $$2, elb $$3) {
-      if (!$$2.c(dpy.C) && $$3.a() == elc.c) {
-         if (!$$0.x_()) {
-            $$0.a($$1, $$2.a(dpy.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
+   protected dpy a(dpy $$0, dji $$1) {
+      return b($$0, $$1);
+   }
 
-         return true;
-      } else {
-         return false;
+   public static dpy b(dpy $$0, dji $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((ir.a)$$0.c(i)) {
+               case a:
+                  return $$0.a(i, ir.a.c);
+               case c:
+                  return $$0.a(i, ir.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
       }
    }
 
    @Override
-   default crs a(@Nullable cka $$0, czh $$1, id $$2, dpi $$3) {
-      if ($$3.c(dpy.C)) {
-         $$1.a($$2, $$3.a(dpy.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new crs(crv.qy);
-      } else {
-         return crs.i;
-      }
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(i);
    }
 
    @Override
-   default Optional<aun> as_() {
-      return elc.c.j();
+   public dpy a(cvl $$0) {
+      return this.n().a(i, $$0.k().o());
    }
 }

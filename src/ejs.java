@@ -1,20 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public class ejs extends ejk {
-   public static final Codec<ejs> a = avt.a(ku.f).fieldOf("tag").xmap(ejs::new, $$0 -> $$0.b).codec();
-   private final avt<dch> b;
+public class ejs extends ejt {
+   public static final Codec<ejs> a = Codec.unit(() -> ejs.b);
+   public static final ejs b = new ejs();
 
-   public ejs(avt<dch> $$0) {
-      this.b = $$0;
+   private ejs() {
    }
 
    @Override
-   public boolean a(dpi $$0, axt $$1) {
-      return $$0.a(this.b);
+   public boolean a(im $$0, im $$1, im $$2, ayd $$3) {
+      return true;
    }
 
    @Override
-   protected ejl<?> a() {
-      return ejl.d;
+   protected eju<?> a() {
+      return eju.a;
    }
 }

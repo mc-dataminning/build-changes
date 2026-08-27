@@ -1,109 +1,89 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
 
-public class dzg extends dye<eay> {
-   public dzg(Codec<eay> $$0) {
+public class dzg extends dyu<ebf> {
+   public dzg(Codec<ebf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyg<eay> $$0) {
-      dab $$1 = $$0.b();
-      id $$2 = $$0.e();
-      if (!$$1.a_($$2).i()) {
+   public boolean a(dyw<ebf> $$0) {
+      im $$1 = $$0.e();
+      ayd $$2 = $$0.d();
+      dap $$3 = $$0.b();
+
+      while ($$3.u($$1) && $$1.v() > $$3.I_() + 2) {
+         $$1 = $$1.d();
+      }
+
+      if (!$$3.a_($$1).a(dcx.dP)) {
          return false;
       } else {
-         axt $$3 = $$0.d();
-         id $$4 = $$0.e();
-         eay $$5 = $$0.f();
-         id.a $$6 = $$4.j();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
+         $$1 = $$1.b($$2.a(4));
+         int $$4 = $$2.a(4) + 7;
+         int $$5 = $$4 / 4 + $$2.a(2);
+         if ($$5 > 1 && $$2.a(60) == 0) {
+            $$1 = $$1.b(10 + $$2.a(30));
+         }
+
+         for (int $$6 = 0; $$6 < $$4; $$6++) {
+            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
+            int $$8 = axw.f($$7);
+
+            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+               float $$10 = (float)axw.a($$9) - 0.25F;
+
+               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
+                  float $$12 = (float)axw.a($$11) - 0.25F;
+                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
+                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
+                     dpy $$13 = $$3.a_($$1.b($$9, $$6, $$11));
+                     if ($$13.i() || b($$13) || $$13.a(dcx.dP) || $$13.a(dcx.dO)) {
+                        this.a($$3, $$1.b($$9, $$6, $$11), dcx.iC.n());
+                     }
+
+                     if ($$6 != 0 && $$8 > 1) {
+                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
+                        if ($$13.i() || b($$13) || $$13.a(dcx.dP) || $$13.a(dcx.dO)) {
+                           this.a($$3, $$1.b($$9, -$$6, $$11), dcx.iC.n());
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         int $$14 = $$5 - 1;
+         if ($$14 < 0) {
+            $$14 = 0;
+         } else if ($$14 > 1) {
+            $$14 = 1;
+         }
+
+         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
+            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
+               im $$17 = $$1.b($$15, -1, $$16);
+               int $$18 = 50;
+               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
+                  $$18 = $$2.a(5);
+               }
+
+               while ($$17.v() > 50) {
+                  dpy $$19 = $$3.a_($$17);
+                  if (!$$19.i() && !b($$19) && !$$19.a(dcx.dP) && !$$19.a(dcx.dO) && !$$19.a(dcx.iC)) {
+                     break;
+                  }
+
+                  this.a($$3, $$17, dcx.iC.n());
+                  $$17 = $$17.d();
+                  if (--$$18 <= 0) {
+                     $$17 = $$17.c($$2.a(5) + 1);
+                     $$18 = $$2.a(5);
+                  }
+               }
+            }
          }
 
          return true;
-      }
-   }
-
-   private static boolean a(dab $$0, eay $$1, id $$2) {
-      id.a $$3 = $$2.j();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(ij.b);
-         dpi $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean a(dpi $$0, int $$1, int $$2) {
-      if ($$0.i()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.u().a(avj.a);
-      }
-   }
-
-   private static boolean a(dab $$0, drf $$1, eay $$2, axt $$3, id.a $$4, id $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(ij.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            id $$7 = $$4.d();
-            if ($$0.b_($$7).a(avj.b) || !$$0.a_($$7).e()) {
-               return false;
-            }
-
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(id $$0, int $$1, dab $$2, eay $$3, axt $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      id.a $$7 = $$0.j();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
-   }
-
-   private static void a(dab $$0, eay $$1, axt $$2, int $$3, int $$4, id.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dpi> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(dab $$0, eay $$1, axt $$2, id $$3, id.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dpi $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, ij.a)) {
-               $$0.a($$4, $$8, 2);
-            }
-         }
       }
    }
 }

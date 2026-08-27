@@ -1,69 +1,49 @@
-public class ig {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   public static final int d = 3;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private int l;
-   private int m;
-   private int n;
-   private int o;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
-   public ig(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3 - $$0 + 1;
-      this.i = $$4 - $$1 + 1;
-      this.j = $$5 - $$2 + 1;
-      this.k = this.h * this.i * this.j;
+public class ig implements hw<StringArgumentType, ig.a> {
+   public void a(ig.a $$0, vs $$1) {
+      $$1.a((Enum<?>)$$0.b);
    }
 
-   public boolean a() {
-      if (this.l == this.k) {
-         return false;
-      } else {
-         this.m = this.l % this.h;
-         int $$0 = this.l / this.h;
-         this.n = $$0 % this.i;
-         this.o = $$0 / this.i;
-         this.l++;
-         return true;
-      }
+   public ig.a a(vs $$0) {
+      StringType $$1 = $$0.b(StringType.class);
+      return new ig.a($$1);
    }
 
-   public int b() {
-      return this.e + this.m;
+   public void a(ig.a $$0, JsonObject $$1) {
+      $$1.addProperty("type", switch ($$0.b) {
+         case SINGLE_WORD -> "word";
+         case QUOTABLE_PHRASE -> "phrase";
+         case GREEDY_PHRASE -> "greedy";
+         default -> throw new IncompatibleClassChangeError();
+      });
    }
 
-   public int c() {
-      return this.f + this.n;
+   public ig.a a(StringArgumentType $$0) {
+      return new ig.a($$0.getType());
    }
 
-   public int d() {
-      return this.g + this.o;
-   }
+   public final class a implements hw.a<StringArgumentType> {
+      final StringType b;
 
-   public int e() {
-      int $$0 = 0;
-      if (this.m == 0 || this.m == this.h - 1) {
-         $$0++;
+      public a(StringType $$1) {
+         this.b = $$1;
       }
 
-      if (this.n == 0 || this.n == this.i - 1) {
-         $$0++;
+      public StringArgumentType a(dy $$0) {
+         return switch (this.b) {
+            case SINGLE_WORD -> StringArgumentType.word();
+            case QUOTABLE_PHRASE -> StringArgumentType.string();
+            case GREEDY_PHRASE -> StringArgumentType.greedyString();
+            default -> throw new IncompatibleClassChangeError();
+         };
       }
 
-      if (this.o == 0 || this.o == this.j - 1) {
-         $$0++;
+      @Override
+      public hw<StringArgumentType, ?> a() {
+         return ig.this;
       }
-
-      return $$0;
    }
 }

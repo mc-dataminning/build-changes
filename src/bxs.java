@@ -1,86 +1,95 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public abstract class bxs extends byb {
+   protected brg d;
+   protected im e = im.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class bxs extends byn {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
-
-   public bxs(brb $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public bxs(brg $$0) {
+      this.d = $$0;
+      if (!cbz.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
    }
 
-   @Nullable
-   @Override
-   protected esj h() {
-      float $$0 = this.b.dM().z.i();
-      if (this.b.dM().z.i() < 0.3F) {
-         return this.k();
+   protected boolean h() {
+      if (!this.f) {
+         return false;
       } else {
-         esj $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
+         dpy $$0 = this.d.dN().a_(this.e);
+         if (!($$0.b() instanceof dfb)) {
+            this.f = false;
+            return false;
          } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
+            return $$0.c(dfb.c);
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
    }
 
-   @Nullable
-   private esj k() {
-      return cbq.a(this.b, 10, 7);
+   protected void a(boolean $$0) {
+      if (this.f) {
+         dpy $$1 = this.d.dN().a_(this.e);
+         if ($$1.b() instanceof dfb) {
+            ((dfb)$$1.b()).a(this.d, this.d.dN(), $$1, this.e, $$0);
+         }
+      }
    }
 
-   @Nullable
-   private esj l() {
-      apu $$0 = (apu)this.b.dM();
-      List<cjn> $$1 = $$0.a(bqg.bi, this.b.cH().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
+   @Override
+   public boolean a() {
+      if (!cbz.a(this.d)) {
+         return false;
+      } else if (!this.d.Q) {
+         return false;
       } else {
-         cjn $$2 = $$1.get(this.b.dM().z.a($$1.size()));
-         esj $$3 = $$2.dk();
-         return cbq.a(this.b, 10, 7, $$3);
+         cao $$0 = (cao)this.d.K();
+         emf $$1 = $$0.j();
+         if ($$1 != null && !$$1.c() && $$0.f()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               emd $$3 = $$1.a($$2);
+               this.e = new im($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.i((double)this.e.u(), this.d.du(), (double)this.e.w()) > 2.25)) {
+                  this.f = dfb.a(this.d.dN(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
+
+            this.e = this.d.dn().c();
+            this.f = dfb.a(this.d.dN(), this.e);
+            return this.f;
+         } else {
+            return false;
+         }
       }
    }
 
-   @Nullable
-   private esj m() {
-      jg $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         id $$1 = this.a($$0);
-         return $$1 == null ? null : cbq.a(this.b, 10, 7, esj.c($$1));
+   @Override
+   public boolean b() {
+      return !this.a;
+   }
+
+   @Override
+   public void c() {
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.ds());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dy());
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.ds());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dy());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
-   }
-
-   @Nullable
-   private jg n() {
-      apu $$0 = (apu)this.b.dM();
-      List<jg> $$1 = jg.a(jg.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private id a(jg $$0) {
-      apu $$1 = (apu)this.b.dM();
-      cbw $$2 = $$1.y();
-      List<id> $$3 = $$2.c($$0x -> true, $$0.q(), 8, cbw.b.b).map(cbx::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(cjn $$0) {
-      return $$0.a(this.b.dM().Y());
    }
 }

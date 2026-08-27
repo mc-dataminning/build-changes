@@ -1,63 +1,165 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class diu extends dcq implements dck {
-   public static final MapCodec<diu> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dox.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, diu::new)
-   );
-   public static final dqi f = dpy.aU;
-   protected static final float g = 6.0F;
-   protected static final etc h = dch.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final dox i;
+public class diu extends dck {
+   public static final MapCodec<diu> d = b(diu::new);
+   public static final dqw<drc> e = dqo.ag;
 
    @Override
-   public MapCodec<? extends diu> a() {
+   public MapCodec<diu> a() {
+      return d;
+   }
+
+   protected diu(dpx.d $$0) {
+      super(false, $$0);
+      this.k(this.E.b().a(e, drc.a).a(c, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected void a(dpy $$0, czu $$1, im $$2, dcv $$3) {
+      if ($$3.n().m() && new div($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
+      }
+   }
+
+   @Override
+   public drb<drc> c() {
       return e;
    }
 
-   protected diu(dox $$0, dph.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
+   @Override
+   protected dpy a(dpy $$0, dji $$1) {
+      drc $$2 = $$0.c(e);
+
+      return $$0.a(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield drc.a;
+               case b:
+                  yield drc.b;
+               case c:
+                  yield drc.d;
+               case d:
+                  yield drc.c;
+               case e:
+                  yield drc.f;
+               case f:
+                  yield drc.e;
+               case g:
+                  yield drc.i;
+               case h:
+                  yield drc.j;
+               case i:
+                  yield drc.g;
+               case j:
+                  yield drc.h;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield drc.b;
+               case b:
+                  yield drc.a;
+               case c:
+                  yield drc.e;
+               case d:
+                  yield drc.f;
+               case e:
+                  yield drc.d;
+               case f:
+                  yield drc.c;
+               case g:
+                  yield drc.j;
+               case h:
+                  yield drc.g;
+               case i:
+                  yield drc.h;
+               case j:
+                  yield drc.i;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield drc.b;
+               case b:
+                  yield drc.a;
+               case c:
+                  yield drc.f;
+               case d:
+                  yield drc.e;
+               case e:
+                  yield drc.c;
+               case f:
+                  yield drc.d;
+               case g:
+                  yield drc.h;
+               case h:
+                  yield drc.i;
+               case i:
+                  yield drc.j;
+               case j:
+                  yield drc.g;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         default -> $$2;
+      });
    }
 
    @Override
-   protected etc a(dpi $$0, cym $$1, id $$2, eso $$3) {
-      return h;
-   }
-
-   @Override
-   protected void b(dpi $$0, apu $$1, id $$2, axt $$3) {
-      if ($$1.A($$2.c()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
+   protected dpy a(dpy $$0, dhs $$1) {
+      drc $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, drc.f);
+               case f:
+                  return $$0.a(e, drc.e);
+               case g:
+                  return $$0.a(e, drc.j);
+               case h:
+                  return $$0.a(e, drc.i);
+               case i:
+                  return $$0.a(e, drc.h);
+               case j:
+                  return $$0.a(e, drc.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, drc.d);
+               case d:
+                  return $$0.a(e, drc.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, drc.h);
+               case h:
+                  return $$0.a(e, drc.g);
+               case i:
+                  return $$0.a(e, drc.j);
+               case j:
+                  return $$0.a(e, drc.i);
+            }
       }
-   }
 
-   public void a(apu $$0, id $$1, dpi $$2, axt $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
-      } else {
-         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
-      }
+      return super.a($$0, $$1);
    }
 
    @Override
-   public boolean b(czj $$0, id $$1, dpi $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
-      return (double)$$0.z.i() < 0.45;
-   }
-
-   @Override
-   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(f);
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(e, c);
    }
 }

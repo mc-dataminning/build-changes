@@ -1,59 +1,72 @@
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.List;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.Stack;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class alc {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wi.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wi.c("commands.banip.failed"));
+   private static final int a = 2;
 
-   public static void a(CommandDispatcher<dv> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dw.a("ban-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)dw.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((dv)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(dw.a("reason", em.a()).executes($$0x -> a((dv)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), em.a($$0x, "reason"))))
-            )
-      );
-   }
-
-   private static int a(dv $$0, String $$1, @Nullable wi $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
+   private static alc.b a(ae $$0, boolean $$1) {
+      Optional<ar> $$2 = $$0.c();
+      if ($$2.isEmpty()) {
+         return alc.b.b;
+      } else if ($$1) {
+         return alc.b.a;
       } else {
-         apv $$3 = $$0.l().ah().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.A(), $$2);
-         } else {
-            throw a.create();
-         }
+         return $$2.get().j() ? alc.b.b : alc.b.c;
       }
    }
 
-   private static int b(dv $$0, String $$1, @Nullable wi $$2) throws CommandSyntaxException {
-      ato $$3 = $$0.l().ah().g();
-      if ($$3.a($$1)) {
-         throw b.create();
-      } else {
-         List<apv> $$4 = $$0.l().ah().b($$1);
-         atp $$5 = new atp($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> wi.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> wi.a("commands.banip.info", $$4.size(), gk.a($$4)), true);
+   private static boolean a(Stack<alc.b> $$0) {
+      for (int $$1 = 0; $$1 <= 2; $$1++) {
+         alc.b $$2 = (alc.b)$$0.peek($$1);
+         if ($$2 == alc.b.a) {
+            return true;
          }
 
-         for (apv $$6 : $$4) {
-            $$6.d.b(wi.c("multiplayer.disconnect.ip_banned"));
+         if ($$2 == alc.b.b) {
+            return false;
          }
-
-         return $$4.size();
       }
+
+      return false;
+   }
+
+   private static boolean a(ag $$0, Stack<alc.b> $$1, Predicate<ag> $$2, alc.a $$3) {
+      boolean $$4 = $$2.test($$0);
+      alc.b $$5 = a($$0.a(), $$4);
+      boolean $$6 = $$4;
+      $$1.push($$5);
+
+      for (ag $$7 : $$0.e()) {
+         $$6 |= a($$7, $$1, $$2, $$3);
+      }
+
+      boolean $$8 = $$6 || a($$1);
+      $$1.pop();
+      $$3.accept($$0, $$8);
+      return $$6;
+   }
+
+   public static void a(ag $$0, Predicate<ag> $$1, alc.a $$2) {
+      ag $$3 = $$0.d();
+      Stack<alc.b> $$4 = new ObjectArrayList();
+
+      for (int $$5 = 0; $$5 <= 2; $$5++) {
+         $$4.push(alc.b.c);
+      }
+
+      a($$3, $$4, $$1, $$2);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(ag var1, boolean var2);
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

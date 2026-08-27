@@ -1,15 +1,18 @@
-public class cwl extends cvb {
-   public cwl(String $$0, cvh $$1, cvp $$2, crs $$3, float $$4, int $$5) {
-      super(cvx.d, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+public interface cwl<T extends cwg<?>> {
+   cwl<cvx> a = a("crafting");
+   cwl<cwv> b = a("smelting");
+   cwl<cvs> c = a("blasting");
+   cwl<cwz> d = a("smoking");
+   cwl<cvu> e = a("campfire_cooking");
+   cwl<cxa> f = a("stonecutting");
+   cwl<cww> g = a("smithing");
 
-   @Override
-   public crs g() {
-      return new crs(dcj.nV);
-   }
-
-   @Override
-   public cvw<?> ao_() {
-      return cvw.r;
+   static <T extends cwg<?>> cwl<T> a(final String $$0) {
+      return ji.a(lc.s, new akf($$0), new cwl<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

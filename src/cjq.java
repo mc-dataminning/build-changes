@@ -1,68 +1,153 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.function.Function;
 
-public record cjq(String q, Predicate<in<cbz>> r, Predicate<in<cbz>> s, ImmutableSet<crn> t, ImmutableSet<dch> u, @Nullable aun v) {
-   public static final Predicate<in<cbz>> a = $$0 -> $$0.a(avo.a);
-   public static final cjq b = a("none", cbz.a, a, null);
-   public static final cjq c = a("armorer", cca.a, auo.AC);
-   public static final cjq d = a("butcher", cca.b, auo.AD);
-   public static final cjq e = a("cartographer", cca.c, auo.AE);
-   public static final cjq f = a("cleric", cca.d, auo.AF);
-   public static final cjq g = a("farmer", cca.e, ImmutableSet.of(crv.pv, crv.pu, crv.vj, crv.rx), ImmutableSet.of(dcj.cC), auo.AG);
-   public static final cjq h = a("fisherman", cca.f, auo.AH);
-   public static final cjq i = a("fletcher", cca.g, auo.AI);
-   public static final cjq j = a("leatherworker", cca.h, auo.AJ);
-   public static final cjq k = a("librarian", cca.i, auo.AK);
-   public static final cjq l = a("mason", cca.j, auo.AL);
-   public static final cjq m = a("nitwit", cbz.a, cbz.a, null);
-   public static final cjq n = a("shepherd", cca.k, auo.AM);
-   public static final cjq o = a("toolsmith", cca.l, auo.AN);
-   public static final cjq p = a("weaponsmith", cca.m, auo.AO);
+public class cjq {
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = axw.f(100.0F);
+   public static final int a = axw.f(133.59999F);
+   public static final int b = axw.f(84.0F);
+   private static final int i = axw.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<cbo<? extends cbn<? super cjp>>> k = List.of(cbo.d, cbo.x);
+   private static final List<cah<?>> l = List.of(
+      cah.g,
+      cah.h,
+      cah.k,
+      cah.l,
+      cah.M,
+      cah.n,
+      cah.m,
+      cah.E,
+      cah.t,
+      cah.o,
+      cah.p,
+      cah.B,
+      cah.ay,
+      cah.az,
+      cah.aA,
+      cah.aB,
+      cah.aC,
+      cah.aD,
+      cah.aE,
+      cah.aF,
+      cah.aG,
+      cah.aH,
+      cah.aI,
+      cah.aJ,
+      cah.aK,
+      cah.aL
+   );
+   private static final bsx<cjp> m = bwj.a(
+      (Function<bwj.b<cjp>, ? extends App<bwj.c<cjp>, bwm<cjp>>>)($$0 -> $$0.group($$0.a(cah.aE)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(ayy.a, 1200L);
+               }
 
-   @Override
-   public String toString() {
-      return this.q;
+               return true;
+            }))
+   );
+
+   public static void a(cjp $$0) {
+      $$0.dQ().a(ImmutableList.of(cma.y, cma.z, cma.x, cma.k, cma.w, cma.v, cma.b));
    }
 
-   private static cjq a(String $$0, aju<cbz> $$1, @Nullable aun $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   protected static bsf<?> a(cjp $$0, Dynamic<?> $$1) {
+      bsf.b<cjp> $$2 = bsf.a(l, k);
+      bsf<cjp> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(cma.a));
+      $$3.b(cma.b);
+      $$3.f();
+      return $$3;
    }
 
-   private static cjq a(String $$0, Predicate<in<cbz>> $$1, Predicate<in<cbz>> $$2, @Nullable aun $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   private static void a(bsf<cjp> $$0) {
+      $$0.a(cma.a, 0, ImmutableList.of(new bvq(0.8F), bwu.a(), new buc(45, 90), new bug()));
    }
 
-   private static cjq a(String $$0, aju<cbz> $$1, ImmutableSet<crn> $$2, ImmutableSet<dch> $$3, @Nullable aun $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   private static void b(bsf<cjp> $$0) {
+      $$0.a(cma.y, 5, ImmutableList.of(new bwq(a)), cah.aC);
    }
 
-   private static cjq a(String $$0, Predicate<in<cbz>> $$1, Predicate<in<cbz>> $$2, ImmutableSet<crn> $$3, ImmutableSet<dch> $$4, @Nullable aun $$5) {
-      return ja.a(kt.z, new ajv($$0), new cjq($$0, $$1, $$2, $$3, $$4, $$5));
+   private static void c(bsf<cjp> $$0) {
+      $$0.a(cma.z, ImmutableList.of(Pair.of(0, new bwr()), Pair.of(1, new bwp(h))), ImmutableSet.of(Pair.of(cah.ay, cai.b), Pair.of(cah.aE, cai.b)));
    }
 
-   public String a() {
-      return this.q;
+   private static void d(bsf<cjp> $$0) {
+      $$0.a(
+         cma.b,
+         10,
+         ImmutableList.of(
+            bwt.a(cjp::gp), bwx.a(), new but(ImmutableMap.of(cah.aB, cai.b), ImmutableList.of(Pair.of(buo.a(0.5F), 2), Pair.of(new btg(30, 60), 1)))
+         )
+      );
    }
 
-   public Predicate<in<cbz>> b() {
-      return this.r;
+   private static void e(bsf<cjp> $$0) {
+      $$0.a(cma.w, 5, ImmutableList.of(bwt.a(cjp::gp), btp.a(cah.az, 2, 0.7F)), cah.az);
    }
 
-   public Predicate<in<cbz>> c() {
-      return this.s;
+   private static void f(bsf<cjp> $$0) {
+      $$0.a(cma.v, 5, ImmutableList.of(bwt.a(cjp::gp), new bwv(i)), cah.aB);
    }
 
-   public ImmutableSet<crn> d() {
-      return this.t;
+   private static void g(bsf<cjp> $$0) {
+      $$0.a(cma.x, 10, ImmutableList.of(new bws()), cah.ay);
    }
 
-   public ImmutableSet<dch> e() {
-      return this.u;
+   private static void a(cjp $$0, bsf<cjp> $$1) {
+      $$1.a(
+         cma.k,
+         10,
+         ImmutableList.of(
+            m, bvl.a($$1x -> !$$0.y().d() || !$$0.b($$1x), cjq::b, false), buv.a($$1x -> a($$0, $$1x), (float)$$0.g(bsl.k)), bvb.a(1.2F), new bww(), bud.a(18)
+         ),
+         cah.o
+      );
    }
 
-   @Nullable
-   public aun f() {
-      return this.v;
+   private static boolean a(cjp $$0, bre $$1) {
+      return $$0.dQ().c(cah.o).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static void b(cjp $$0, bre $$1) {
+      if (!$$0.b($$1)) {
+         $$0.c($$1);
+      }
+
+      a((bre)$$0);
+   }
+
+   public static void a(bre $$0) {
+      if ($$0.dQ().a(cah.aE)) {
+         $$0.dQ().a(cah.aE, ayy.a, 1200L);
+      }
+   }
+
+   public static void a(cjp $$0, im $$1) {
+      if ($$0.dN().C_().a($$1) && !$$0.gp().isPresent() && !$$0.dQ().c(cah.o).isPresent()) {
+         a((bre)$$0);
+         $$0.dQ().a(cah.aG, ayy.a, 100L);
+         $$0.dQ().a(cah.n, new bsz($$1), 100L);
+         $$0.dQ().a(cah.az, $$1, 100L);
+         $$0.dQ().b(cah.m);
+      }
    }
 }

@@ -1,40 +1,103 @@
-import java.util.HashMap;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fvh {
-   private final Map<aju<? extends ja<?>>, avw.a> a = new HashMap<>();
+   private static final Logger a = LogUtils.getLogger();
+   private final fcu b;
+   private final grs c;
+   private final ak d = new ak();
+   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private fvh.a f;
+   @Nullable
+   private af g;
 
-   public void a(aju<? extends ja<?>> $$0, avw.a $$1) {
-      this.a.put($$0, $$1);
+   public fvh(fcu $$0, grs $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static void a() {
-      cqe.e().n();
-   }
-
-   private static void b() {
-      dmc.f();
-      dcj.a();
-   }
-
-   private void a(jb $$0, Predicate<aju<? extends ja<?>>> $$1) {
-      this.a.forEach(($$2, $$3) -> {
-         if ($$1.test((aju<? extends ja<?>>)$$2)) {
-            $$3.a($$0.d((aju<? extends ja<?>>)$$2));
-         }
-      });
-   }
-
-   public void a(jb $$0, boolean $$1) {
-      if ($$1) {
-         this.a($$0, je.a::contains);
-      } else {
-         $$0.c().filter($$0x -> !je.a.contains($$0x.a())).forEach($$0x -> $$0x.b().m());
-         this.a($$0, $$0x -> true);
-         b();
+   public void a(afo $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
       }
 
-      a();
+      this.d.a($$0.e());
+      this.d.a($$0.b());
+
+      for (Entry<akf, ah> $$1 : $$0.f().entrySet()) {
+         ag $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ah $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.r != null) {
+                  this.c.a(this.b.r, $$2.b());
+               }
+
+               Optional<ar> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fha($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
+         }
+      }
+   }
+
+   public ak a() {
+      return this.d;
+   }
+
+   public void a(@Nullable af $$0, boolean $$1) {
+      fvn $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(ahg.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
+      }
+   }
+
+   public void a(@Nullable fvh.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ag $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
+   }
+
+   @Nullable
+   public af a(akf $$0) {
+      ag $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
+
+   public interface a extends ak.a {
+      void a(ag var1, ah var2);
+
+      void a(@Nullable af var1);
    }
 }

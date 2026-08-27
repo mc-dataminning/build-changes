@@ -1,37 +1,42 @@
-public class abn implements yp<aba> {
-   public static final yg<vi, abn> a = yp.a(abn::a, abn::new);
-   private final boc b;
-   private final boolean c;
+public class abn implements yz<abk> {
+   public static final yq<vs, abn> a = yz.a(abn::a, abn::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
 
-   public abn(boc $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public abn(bql $$0, int $$1) {
+      this.g = $$0.aj();
+      this.h = $$1;
    }
 
-   private abn(vi $$0) {
-      this.b = boc.a($$0.readUnsignedByte());
-      this.c = $$0.readBoolean();
+   private abn(vs $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
    }
 
-   private void a(vi $$0) {
-      $$0.k(this.b.a());
-      $$0.a(this.c);
+   private void a(vs $$0) {
+      $$0.c(this.g);
+      $$0.k(this.h);
    }
 
    @Override
-   public yr<abn> a() {
-      return afl.m;
+   public zb<abn> a() {
+      return afv.e;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.c;
+   public int b() {
+      return this.g;
    }
 
-   public boc e() {
-      return this.b;
+   public int e() {
+      return this.h;
    }
 }

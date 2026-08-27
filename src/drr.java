@@ -1,11 +1,5 @@
-import javax.annotation.Nullable;
-
 public interface drr {
-   @Nullable
-   drq c(int var1, int var2);
+   dpy a(int var1);
 
-   default void a(czp $$0, jg $$1) {
-   }
-
-   cym q();
+   void a(int var1, dpy var2);
 }

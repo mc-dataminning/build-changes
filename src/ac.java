@@ -86,7 +86,7 @@ public class ac {
    private static final DateTimeFormatter n = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
    public static final int a = 8;
    public static final long b = 1000000L;
-   public static ayk.a c = System::nanoTime;
+   public static ayu.a c = System::nanoTime;
    public static final Ticker d = new Ticker() {
       public long read() {
          return ac.c.getAsLong();
@@ -105,11 +105,11 @@ public class ac {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(dql<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(drb<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable ajv $$1) {
+   public static String a(String $$0, @Nullable akf $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -130,7 +130,7 @@ public class ac {
    }
 
    private static ExecutorService b(String $$0) {
-      int $$1 = axm.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
+      int $$1 = axw.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -229,7 +229,7 @@ public class ac {
       }
 
       if ($$1 instanceof y $$2) {
-         ajx.a($$2.a().e());
+         akh.a($$2.a().e());
          System.exit(-1);
       }
 
@@ -238,7 +238,7 @@ public class ac {
 
    @Nullable
    public static Type<?> a(TypeReference $$0, String $$1) {
-      return !aa.aV ? null : b($$0, $$1);
+      return !aa.aW ? null : b($$0, $$1);
    }
 
    @Nullable
@@ -246,10 +246,10 @@ public class ac {
       Type<?> $$2 = null;
 
       try {
-         $$2 = ayt.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = azd.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
-         if (aa.aW) {
+         if (aa.aX) {
             throw var4;
          }
       }
@@ -258,7 +258,7 @@ public class ac {
    }
 
    public static Runnable a(String $$0, Runnable $$1) {
-      return aa.aW ? () -> {
+      return aa.aX ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -272,7 +272,7 @@ public class ac {
    }
 
    public static <V> Supplier<V> a(String $$0, Supplier<V> $$1) {
-      return aa.aW ? () -> {
+      return aa.aX ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -288,8 +288,8 @@ public class ac {
       } : $$1;
    }
 
-   public static <T> String a(ja<T> $$0, T $$1) {
-      ajv $$2 = $$0.b($$1);
+   public static <T> String a(ji<T> $$0, T $$1) {
+      akf $$2 = $$0.b($$1);
       return $$2 == null ? "[unregistered]" : $$2.toString();
    }
 
@@ -469,20 +469,20 @@ public class ac {
 
    public static void a(String $$0) {
       g.error($$0);
-      if (aa.aW) {
+      if (aa.aX) {
          c($$0);
       }
    }
 
    public static void a(String $$0, Throwable $$1) {
       g.error($$0, $$1);
-      if (aa.aW) {
+      if (aa.aX) {
          c($$0);
       }
    }
 
    public static <T extends Throwable> T b(T $$0) {
-      if (aa.aW) {
+      if (aa.aX) {
          g.error("Trying to throw a fatal exception, pausing in IDE", $$0);
          c($$0.getMessage());
       }
@@ -511,19 +511,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, axt $$1) {
+   public static <T> T a(T[] $$0, ayd $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, axt $$1) {
+   public static int a(int[] $$0, ayd $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, axt $$1) {
+   public static <T> T a(List<T> $$0, ayd $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, axt $$1) {
+   public static <T> Optional<T> b(List<T> $$0, ayd $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -718,8 +718,8 @@ public class ac {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> ayb<K, V> a(Function<K, V> $$0) {
-      return new ayb<>($$0);
+   public static <K, V> ayl<K, V> a(Function<K, V> $$0) {
+      return new ayl<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -754,13 +754,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, axt $$1) {
+   public static <T> List<T> a(Stream<T> $$0, ayd $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       c($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, axt $$1) {
+   public static IntArrayList a(IntStream $$0, ayd $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -772,19 +772,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, axt $$1) {
+   public static <T> List<T> b(T[] $$0, ayd $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, axt $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, ayd $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> void c(List<T> $$0, axt $$1) {
+   public static <T> void c(List<T> $$0, ayd $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {

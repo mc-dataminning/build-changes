@@ -1,22 +1,24 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.handler.codec.EncoderException;
-import io.netty.handler.codec.MessageToByteEncoder;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-@Sharable
-public class wc extends MessageToByteEncoder<ByteBuf> {
-   public static final int a = 3;
+public class wc extends vq {
+   private static final Logger h = LogUtils.getLogger();
+   private static final ws i = ws.c("disconnect.exceeded_packet_rate");
+   private final int j;
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      int $$4 = vz.a($$3);
-      if ($$4 > 3) {
-         throw new EncoderException("unable to fit " + $$3 + " into 3");
-      } else {
-         $$2.ensureWritable($$4 + $$3);
-         vz.a($$2, $$3);
-         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
+   public wc(int $$0) {
+      super(za.a);
+      this.j = $$0;
+   }
+
+   @Override
+   protected void c() {
+      super.c();
+      float $$0 = this.o();
+      if ($$0 > (float)this.j) {
+         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
+         this.a(new zh(i), vz.a(() -> this.a(i)));
+         this.m();
       }
    }
 }

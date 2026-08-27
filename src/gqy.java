@@ -1,74 +1,87 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class gqy {
-   public static final gqy a = new gqy(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<gqu<gqy.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+   private final Set<gqy.a> a = Sets.newIdentityHashSet();
+   final evi b;
+   final Executor c;
 
-   protected gqy(Ticker $$0) {
-      this.c = $$0;
+   public gqy(evi $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public synchronized void a(gqu<gqy.a> $$0) {
-      this.a($$0, (Function<gqu<gqy.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
-
-   public synchronized void a(gqu<gqy.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<gqu<gqy.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(gqu<gqy.a> $$0, Function<gqu<gqy.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(gqu<gqy.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+   public CompletableFuture<gqy.a> a(evi.c $$0) {
+      CompletableFuture<gqy.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         evh $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gqy.a $$3 = new gqy.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
          }
-      }
+      });
+      return $$1;
    }
 
-   public void a(gqr $$0) {
-      $$0.send(gqs.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((gqu<gqy.a>)$$1, new gqy.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gqs.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(gqu.B, new gqy.a((int)$$1)));
-            this.d.clear();
+   public void a(Consumer<Stream<evh>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gqy.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gqy.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
          }
       });
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
+   public void b() {
+      this.a.forEach(gqy.a::b);
+      this.a.clear();
    }
 
-   public static record a(int b) {
-      public static final Codec<gqy.a> a = Codec.INT.xmap(gqy.a::new, $$0 -> $$0.b);
+   public class a {
+      @Nullable
+      evh b;
+      private boolean c;
 
-      public int a() {
-         return this.b;
+      public boolean a() {
+         return this.c;
+      }
+
+      public a(evh $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<evh> $$0) {
+         gqy.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         gqy.this.b.a(this.b);
+         this.b = null;
       }
    }
 }

@@ -1,173 +1,388 @@
-import java.util.ArrayList;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
+import java.util.UUID;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-class fou {
-   private static final int a = 44;
-   private final List<fou.c> b;
+public class fou extends fkt {
+   static final akf a = new akf("icon/checkmark");
+   private static final ws b = ws.c("gui.chatSelection.title");
+   private static final ws c = ws.c("gui.chatSelection.context");
+   @Nullable
+   private final fkt d;
+   private final fwu r;
+   private feu s;
+   private ffn u;
+   @Nullable
+   private fou.a v;
+   final fwn.a w;
+   private final Consumer<fwn.a> x;
+   private fot y;
 
-   fou(List<fou.c> $$0) {
-      this.b = $$0;
+   public fou(@Nullable fkt $$0, fwu $$1, fwn.a $$2, Consumer<fwn.a> $$3) {
+      super(b);
+      this.d = $$0;
+      this.r = $$1;
+      this.w = $$2.d();
+      this.x = $$3;
    }
 
-   public void a() {
-      this.b.forEach(fou.c::a);
+   @Override
+   protected void aM_() {
+      this.y = new fot(this.r, this::a);
+      this.u = ffn.a(this.p, c, this.n - 16);
+      this.v = this.c(new fou.a(this.m, (this.u.a() + 1) * 9));
+      this.c(feu.a(wr.k, $$0 -> this.d()).a(this.n / 2 - 155, this.o - 32, 150, 20).a());
+      this.s = this.c(feu.a(wr.d, $$0 -> {
+         this.x.accept(this.w);
+         this.d();
+      }).a(this.n / 2 - 155 + 160, this.o - 32, 150, 20).a());
+      this.D();
+      this.m();
+      this.v.a((double)this.v.o());
    }
 
-   public static fou.a a(int $$0) {
-      return new fou.a($$0);
+   private boolean a(fwj $$0) {
+      return $$0.a(this.w.f());
    }
 
-   public static class a {
-      final int a;
-      private final List<fou.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fou.b> f = Optional.empty();
+   private void m() {
+      int $$0 = this.v.d();
+      this.y.a($$0, this.v);
+   }
 
-      public a(int $$0) {
-         this.a = $$0;
+   void C() {
+      this.m();
+   }
+
+   void D() {
+      this.s.j = !this.w.a().isEmpty();
+   }
+
+   @Override
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 10, 16777215);
+      AbuseReportLimits $$4 = this.r.a().b();
+      int $$5 = this.w.a().size();
+      int $$6 = $$4.maxReportedMessageCount();
+      ws $$7 = ws.a("gui.chatSelection.selected", $$5, $$6);
+      $$0.a(this.p, $$7, this.n / 2, 16 + 9 * 3 / 2, -1);
+      this.u.a($$0, this.n / 2, this.v.I());
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.d);
+   }
+
+   @Override
+   public ws i() {
+      return wr.a(super.i(), c);
+   }
+
+   public class a extends ffq<fou.a.b> implements fot.a {
+      @Nullable
+      private fou.a.c m;
+
+      public a(fcu $$1, int $$2) {
+         super($$1, fou.this.n, fou.this.o - $$2 - 80, 40, 16);
       }
 
-      void a() {
-         this.e++;
+      @Override
+      public void a(double $$0) {
+         double $$1 = this.n();
+         super.a($$0);
+         if ((float)this.o() > 1.0E-5F && $$0 <= 1.0E-5F && !axw.b($$0, $$1)) {
+            fou.this.C();
+         }
       }
 
-      public fou.d a(wi $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fou.d $$3 = new fou.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
+      @Override
+      public void a(int $$0, fwj.a $$1) {
+         boolean $$2 = $$1.a(fou.this.w.f());
+         fwh $$3 = $$1.h();
+         fcp $$4 = $$3.a($$1.g());
+         fou.a.b $$5 = new fou.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
+         this.c($$5);
+         this.a($$1, $$2);
       }
 
-      public fou.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fou.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fou a(Consumer<fhn> $$0) {
-         fhk $$1 = new fhk().b(this.d);
-         $$1.a(fhq.a(this.a - 44), 0, 0);
-         $$1.a(fhq.a(44), 0, 1);
-         List<fou.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fou.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
+      private void a(fwj.a $$0, boolean $$1) {
+         fou.a.b $$2 = new fou.a.e($$0.f(), $$0.d(), $$1);
+         this.c($$2);
+         fou.a.c $$3 = new fou.a.c($$0.e(), $$2);
+         if (this.m != null && this.m.a($$3)) {
+            this.d(this.m.b());
          }
 
-         $$1.a();
-         $$0.accept($$1);
-         fou $$4 = new fou($$2);
-         $$4.a();
-         return $$4;
+         this.m = $$3;
       }
 
-      public fou.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fou.b($$0, $$1));
-         return this;
-      }
-   }
-
-   static record b(int a, boolean b) {
-   }
-
-   static record c(fef<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
+      @Override
+      public void a(ws $$0) {
+         this.c(new fou.a.f());
+         this.c(new fou.a.a($$0));
+         this.c(new fou.a.f());
+         this.m = null;
       }
 
-      public fef<Boolean> b() {
-         return this.a;
+      @Override
+      public int b() {
+         return Math.min(350, this.g - 50);
       }
 
-      public BooleanSupplier c() {
-         return this.b;
+      @Override
+      public int d() {
+         return axw.e(this.h, this.d);
       }
 
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
-   }
-
-   public static class d {
-      private final wi a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private wi d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
-
-      d(wi $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
-
-      public fou.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fou.d a(wi $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      fou.c a(fou.a $$0, fhk $$1, int $$2) {
-         $$0.a();
-         fff $$3 = new fff(this.a, fby.Q().h).d();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fou.b> $$4 = $$0.f;
-         fef.a<Boolean> $$5 = fef.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            ffj $$7 = ffj.a(this.d);
-            $$5.a($$1x -> $$7);
+      @Override
+      protected void a(feh $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+         fou.a.b $$9 = this.d($$4);
+         if (this.b($$9)) {
+            boolean $$10 = this.h() == $$9;
+            int $$11 = this.aI_() && $$10 ? -1 : -8355712;
+            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
          }
 
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> wh.a(this.a, $$0x.d(), this.d));
+         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.u() == $$9, $$3);
+      }
+
+      private boolean b(fou.a.b $$0) {
+         if ($$0.c()) {
+            boolean $$1 = this.h() == $$0;
+            boolean $$2 = this.h() == null;
+            boolean $$3 = this.u() == $$0;
+            return $$1 || $$2 && $$3 && $$0.d();
          } else {
-            $$5.a($$0x -> wh.a(this.a, $$0x.d()));
+            return false;
+         }
+      }
+
+      @Nullable
+      protected fou.a.b b(fiy $$0) {
+         return this.a($$0, fou.a.b::c);
+      }
+
+      public void a(@Nullable fou.a.b $$0) {
+         super.a($$0);
+         fou.a.b $$1 = this.b(fiy.a);
+         if ($$1 == null) {
+            fou.this.C();
+         }
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         fou.a.b $$3 = this.h();
+         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public int I() {
+         return this.F() + 9;
+      }
+
+      public class a extends fou.a.b {
+         private static final int c = -6250336;
+         private final ws d;
+
+         public a(ws $$1) {
+            this.d = $$1;
          }
 
-         fef<Boolean> $$8 = $$5.a(0, 0, this.f, 20, wi.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
+         @Override
+         public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$2 + $$5 / 2;
+            int $$11 = $$3 + $$4 - 8;
+            int $$12 = fou.this.p.a(this.d);
+            int $$13 = ($$3 + $$11 - $$12) / 2;
+            int $$14 = $$10 - 9 / 2;
+            $$0.b(fou.this.p, this.d, $$13, $$14, -6250336);
          }
 
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               wi $$4x = this.d.f().a(n.h);
-               fdj $$5x = fby.Q().h;
-               fes $$6x = new fes($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.v() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
+         @Override
+         public ws a() {
+            return this.d;
+         }
+      }
+
+      public abstract class b extends ffq.a<fou.a.b> {
+         @Override
+         public ws a() {
+            return wr.a;
          }
 
-         return new fou.c($$8, this.b, this.e);
+         public boolean b() {
+            return false;
+         }
+
+         public boolean c() {
+            return false;
+         }
+
+         public boolean d() {
+            return this.c();
+         }
+      }
+
+      static record c(UUID a, fou.a.b b) {
+         public boolean a(fou.a.c $$0) {
+            return $$0.a.equals(this.a);
+         }
+      }
+
+      public class d extends fou.a.b {
+         private static final int c = 9;
+         private static final int d = 8;
+         private static final int e = 11;
+         private static final int f = 4;
+         private final int g;
+         private final wx h;
+         private final ws i;
+         @Nullable
+         private final List<axi> j;
+         @Nullable
+         private final fcp.a k;
+         @Nullable
+         private final List<axi> l;
+         private final boolean m;
+         private final boolean n;
+
+         public d(int $$1, ws $$2, ws $$3, @Nullable fcp $$4, boolean $$5, boolean $$6) {
+            this.g = $$1;
+            this.k = x.a($$4, fcp::f);
+            this.l = $$4 != null && $$4.g() != null ? fou.this.p.c($$4.g(), a.this.b()) : null;
+            this.m = $$5;
+            this.n = $$6;
+            wx $$7 = fou.this.p.a($$2, this.e() - fou.this.p.a(wr.u));
+            if ($$2 != $$7) {
+               this.h = wx.a($$7, wr.u);
+               this.j = fou.this.p.c($$2, a.this.b());
+            } else {
+               this.h = $$2;
+               this.j = null;
+            }
+
+            this.i = $$3;
+         }
+
+         @Override
+         public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            if (this.b() && this.m) {
+               this.a($$0, $$2, $$3, $$5);
+            }
+
+            int $$10 = $$3 + this.f();
+            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fou.this.p, tt.a().a(this.h), $$10, $$11, this.m ? -1 : -1593835521);
+            if (this.j != null && $$8) {
+               fou.this.b(this.j);
+            }
+
+            int $$12 = fou.this.p.a(this.h);
+            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
+         }
+
+         private void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+            if (this.k != null) {
+               int $$6 = $$2 + ($$3 - this.k.d) / 2;
+               this.k.a($$0, $$1, $$6);
+               if (this.l != null && $$4 >= $$1 && $$4 <= $$1 + this.k.c && $$5 >= $$6 && $$5 <= $$6 + this.k.d) {
+                  fou.this.b(this.l);
+               }
+            }
+         }
+
+         private void a(feh $$0, int $$1, int $$2, int $$3) {
+            int $$5 = $$1 + ($$3 - 8) / 2;
+            RenderSystem.enableBlend();
+            $$0.a(fou.a, $$2, $$5, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         private int e() {
+            int $$0 = this.k != null ? this.k.c + 4 : 0;
+            return a.this.b() - this.f() - 4 - $$0;
+         }
+
+         private int f() {
+            return this.n ? 11 : 0;
+         }
+
+         @Override
+         public ws a() {
+            return (ws)(this.b() ? ws.a("narrator.select", this.i) : this.i);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(null);
+            return this.h();
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            return fiv.a($$0) ? this.h() : false;
+         }
+
+         @Override
+         public boolean b() {
+            return fou.this.w.b(this.g);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+
+         @Override
+         public boolean d() {
+            return this.m;
+         }
+
+         private boolean h() {
+            if (this.m) {
+               fou.this.w.a(this.g);
+               fou.this.D();
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public class e extends fou.a.b {
+         private static final int c = 12;
+         private static final int d = 4;
+         private final ws e;
+         private final Supplier<gnn> f;
+         private final boolean g;
+
+         public e(GameProfile $$1, ws $$2, boolean $$3) {
+            this.e = $$2;
+            this.g = $$3;
+            this.f = a.this.c.an().a($$1);
+         }
+
+         @Override
+         public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 - 12 + 4;
+            int $$11 = $$2 + ($$5 - 12) / 2;
+            fft.a($$0, this.f.get(), $$10, $$11, 12);
+            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fou.this.p, this.e, $$10 + 12 + 4, $$12, this.g ? -1 : -1593835521);
+         }
+      }
+
+      public class f extends fou.a.b {
+         @Override
+         public void a(feh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         }
       }
    }
 }

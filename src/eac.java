@@ -1,23 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eac implements eai {
-   public static final Codec<eac> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bnk.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bnk.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eac::new)
-   );
-   private final bnk b;
-   private final bnk c;
-
-   public eac(bnk $$0, bnk $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class eac extends dyu<ebr> {
+   public eac(Codec<ebr> $$0) {
+      super($$0);
    }
 
-   public bnk a() {
-      return this.b;
-   }
-
-   public bnk b() {
-      return this.c;
+   @Override
+   public boolean a(dyw<ebr> $$0) {
+      ayd $$1 = $$0.d();
+      ebr $$2 = $$0.f();
+      dap $$3 = $$0.b();
+      im $$4 = $$0.e();
+      drv $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      efk $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

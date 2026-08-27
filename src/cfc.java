@@ -1,63 +1,49 @@
 import javax.annotation.Nullable;
 
-public class cfc extends bqa {
-   public final cfe b;
-   public final String c;
-   private final bqd d;
-
-   public cfc(cfe $$0, String $$1, float $$2, float $$3) {
-      super($$0.ai(), $$0.dM());
-      this.d = bqd.b($$2, $$3);
-      this.j_();
-      this.b = $$0;
-      this.c = $$1;
+public class cfc extends cew {
+   public cfc(bqr<? extends cfc> $$0, czu $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(aje.a $$0) {
+   protected auy v() {
+      return auz.pm;
    }
 
    @Override
-   protected void a(to $$0) {
+   protected auy gN() {
+      return auz.pn;
    }
 
    @Override
-   protected void b(to $$0) {
-   }
-
-   @Override
-   public boolean bw() {
-      return true;
+   protected auy o_() {
+      return auz.pp;
    }
 
    @Nullable
    @Override
-   public crs dz() {
-      return this.b.dz();
+   protected auy gw() {
+      return auz.pq;
    }
 
    @Override
-   public boolean a(boy $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   protected auy d(bpj $$0) {
+      return auz.pr;
    }
 
    @Override
-   public boolean t(bqa $$0) {
-      return this == $$0 || this.b == $$0;
+   protected void gV() {
+      this.a(auz.ps, 0.4F, 1.0F);
    }
 
    @Override
-   public yp<aba> di() {
-      throw new UnsupportedOperationException();
+   protected void gp() {
+      this.a(auz.po, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
    }
 
+   @Nullable
    @Override
-   public bqd a(bre $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean dK() {
-      return false;
+   public bqf a(aqe $$0, bqf $$1) {
+      return bqr.as.a((czu)$$0);
    }
 }

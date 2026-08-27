@@ -1,40 +1,32 @@
-import javax.annotation.Nullable;
+import java.util.function.UnaryOperator;
 
-public interface nq {
-   ajv a = new ajv("recipes/root");
-
-   nq a(String var1, an<?> var2);
-
-   nq a(@Nullable String var1);
-
-   crn a();
-
-   void a(ns var1, ajv var2);
-
-   default void a(ns $$0) {
-      this.a($$0, a(this.a()));
+public class nq {
+   @Deprecated
+   public static akf a(String $$0) {
+      return new akf("minecraft", "block/" + $$0);
    }
 
-   default void a(ns $$0, String $$1) {
-      ajv $$2 = a(this.a());
-      ajv $$3 = new ajv($$1);
-      if ($$3.equals($$2)) {
-         throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
-      } else {
-         this.a($$0, $$3);
-      }
+   public static akf b(String $$0) {
+      return new akf("minecraft", "item/" + $$0);
    }
 
-   static ajv a(czf $$0) {
-      return kt.h.b($$0.p());
+   public static akf a(dcv $$0, String $$1) {
+      akf $$2 = lc.e.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
    }
 
-   static cvi a(nr $$0) {
-      return switch ($$0) {
-         case a -> cvi.a;
-         case e, f -> cvi.c;
-         case c -> cvi.b;
-         default -> cvi.d;
-      };
+   public static akf a(dcv $$0) {
+      akf $$1 = lc.e.b($$0);
+      return $$1.d("block/");
+   }
+
+   public static akf a(cry $$0) {
+      akf $$1 = lc.h.b($$0);
+      return $$1.d("item/");
+   }
+
+   public static akf a(cry $$0, String $$1) {
+      akf $$2 = lc.h.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

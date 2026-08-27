@@ -1,114 +1,63 @@
-public class cho extends cgo {
-   private static final int c = 300;
-   private static final aja<Boolean> d = aje.a(cho.class, ajc.k);
-   public static final String b = "StrayConversionTime";
-   private int e;
-   private int bX;
-
-   public cho(bqg<? extends cho> $$0, czg $$1) {
+public class cho extends cik {
+   public cho(bqr<? extends cho> $$0, czu $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void a(aje.a $$0) {
-      super.a($$0);
-      $$0.a(d, false);
-   }
-
-   public boolean gq() {
-      return this.an().a(d);
-   }
-
-   public void w(boolean $$0) {
-      this.an.a(d, $$0);
+   public static boolean a(bqr<cho> $$0, daj $$1, bri $$2, im $$3, ayd $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && (bri.a($$2) || $$1.h($$3));
    }
 
    @Override
-   public boolean gp() {
-      return this.gq();
-   }
-
-   @Override
-   public void l() {
-      if (!this.dM().B && this.bA() && !this.gd()) {
-         if (this.aA) {
-            if (this.gq()) {
-               this.bX--;
-               if (this.bX < 0) {
-                  this.gr();
-               }
-            } else {
-               this.e++;
-               if (this.e >= 140) {
-                  this.b(300);
-               }
-            }
-         } else {
-            this.e = -1;
-            this.w(false);
-         }
-      }
-
-      super.l();
-   }
-
-   @Override
-   public void b(to $$0) {
-      super.b($$0);
-      $$0.a("StrayConversionTime", this.gq() ? this.bX : -1);
-   }
-
-   @Override
-   public void a(to $$0) {
-      super.a($$0);
-      if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
-         this.b($$0.h("StrayConversionTime"));
-      }
-   }
-
-   private void b(int $$0) {
-      this.bX = $$0;
-      this.w(true);
-   }
-
-   protected void gr() {
-      this.a(bqg.aX, true);
-      if (!this.aU()) {
-         this.dM().a(null, 1048, this.dm(), 0);
-      }
-   }
-
-   @Override
-   public boolean dA() {
+   protected boolean ad_() {
       return false;
    }
 
    @Override
-   protected aun v() {
-      return auo.wF;
+   protected auy v() {
+      return auz.mP;
    }
 
    @Override
-   protected aun d(boy $$0) {
-      return auo.wQ;
+   protected auy d(bpj $$0) {
+      return auz.mS;
    }
 
    @Override
-   protected aun o_() {
-      return auo.wH;
+   protected auy o_() {
+      return auz.mR;
    }
 
    @Override
-   aun u() {
-      return auo.wS;
+   protected auy gp() {
+      return auz.mT;
    }
 
    @Override
-   protected void a(boy $$0, int $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$0.d() instanceof cgs $$4 && $$4.go()) {
-         $$4.gp();
-         this.a(crv.uj);
+   public boolean C(bql $$0) {
+      boolean $$1 = super.C($$0);
+      if ($$1 && this.eV().d() && $$0 instanceof bre) {
+         float $$2 = this.dN().d_(this.dn()).b();
+         ((bre)$$0).b(new bpx(bpz.q, 140 * (int)$$2), this);
       }
+
+      return $$1;
+   }
+
+   @Override
+   protected boolean gr() {
+      return true;
+   }
+
+   @Override
+   protected void ac_() {
+      this.b(bqr.bt);
+      if (!this.aU()) {
+         this.dN().a(null, 1041, this.dn(), 0);
+      }
+   }
+
+   @Override
+   protected csd gq() {
+      return csd.i;
    }
 }

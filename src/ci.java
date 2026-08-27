@@ -1,32 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public record ci(cm.d c, Optional<br> d) implements bs {
-   public static final MapCodec<ci> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(awu.a(cm.d.d, "blocks_set_on_fire", cm.d.c).forGetter(ci::b), awu.a(br.a, "entity_struck").forGetter(ci::c)).apply($$0, ci::new)
-   );
+public class ci {
+   public static final ch.a<cc> a = a("damage", cc.a);
+   public static final ch.a<ce.a> b = a("enchantments", ce.a.a);
+   public static final ch.a<ce.b> c = a("stored_enchantments", ce.b.a);
+   public static final ch.a<cf> d = a("potion_contents", cf.a);
+   public static final ch.a<cb> e = a("custom_data", cb.a);
 
-   public static ci a(cm.d $$0) {
-      return new ci($$0, Optional.empty());
+   private static <T extends ch> ch.a<T> a(String $$0, Codec<T> $$1) {
+      return ji.a(lc.au, $$0, new ch.a<>($$1));
    }
 
-   @Override
-   public bs.a a() {
-      return bs.b.b;
-   }
-
-   @Override
-   public boolean a(bqa $$0, apu $$1, @Nullable esj $$2) {
-      return !($$0 instanceof bqs $$3) ? false : this.c.d($$3.r()) && (this.d.isEmpty() || $$3.u().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
-   }
-
-   public cm.d b() {
-      return this.c;
-   }
-
-   public Optional<br> c() {
-      return this.d;
+   public static ch.a<?> a(ji<ch.a<?>> $$0) {
+      return a;
    }
 }

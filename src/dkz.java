@@ -1,30 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkz extends dfw {
+public class dkz extends dfd implements dcy {
    public static final MapCodec<dkz> c = b(dkz::new);
-   public static final etc g = dch.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
 
    @Override
    public MapCodec<dkz> a() {
       return c;
    }
 
-   public dkz(dph.d $$0) {
-      super($$0, ij.b, g, false, 0.1);
+   public dkz(dpx.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected int a(axt $$0) {
-      return dhm.a($$0);
+   public boolean b(czx $$0, im $$1, dpy $$2) {
+      return true;
    }
 
    @Override
-   protected dch b() {
-      return dcj.oC;
+   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
+      return true;
    }
 
    @Override
-   protected boolean g(dpi $$0) {
-      return dhm.a($$0);
+   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
+      a($$0, $$2, new csd(this));
    }
 }

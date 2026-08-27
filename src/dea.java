@@ -1,200 +1,223 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dea extends dbt {
-   public static final MapCodec<dea> a = b(dea::new);
-   public static final dpz b = dpy.bx;
-   public static final dpz c = dpy.A;
-   private static final dqg<il> d = dpy.T;
-   private static final int e = 6;
-   private static final int f = 4;
-   private static final cvt g = new cvt(10);
-
-   public dea(dph.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, il.k).a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
-   }
+public class dea extends dcv {
+   public static final MapCodec<dea> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lc.e.q().fieldOf("plant").forGetter($$0x -> $$0x.e), u()).apply($$0, dea::new)
+   );
+   public static final int b = 5;
+   public static final dqy c = dqo.au;
+   protected static final ety d = dcv.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   private final dcv e;
 
    @Override
-   protected MapCodec<dea> a() {
+   public MapCodec<dea> a() {
       return a;
    }
 
+   protected dea(dcv $$0, dpx.d $$1) {
+      super($$1);
+      this.e = $$0;
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   }
+
    @Override
-   protected boolean d_(dpi $$0) {
+   protected void a(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected boolean e_(dpy $$0) {
+      return $$0.c(c) < 5;
+   }
+
+   @Override
+   public ety b_(dpy $$0, cza $$1, im $$2) {
+      return d;
+   }
+
+   @Override
+   protected void b(dpy $$0, aqe $$1, im $$2, ayd $$3) {
+      im $$4 = $$2.c();
+      if ($$1.u($$4) && $$4.v() < $$1.al()) {
+         int $$5 = $$0.c(c);
+         if ($$5 < 5) {
+            boolean $$6 = false;
+            boolean $$7 = false;
+            dpy $$8 = $$1.a_($$2.d());
+            if ($$8.a(dcx.fz)) {
+               $$6 = true;
+            } else if ($$8.a(this.e)) {
+               int $$9 = 1;
+
+               for (int $$10 = 0; $$10 < 4; $$10++) {
+                  dpy $$11 = $$1.a_($$2.c($$9 + 1));
+                  if (!$$11.a(this.e)) {
+                     if ($$11.a(dcx.fz)) {
+                        $$7 = true;
+                     }
+                     break;
+                  }
+
+                  $$9++;
+               }
+
+               if ($$9 < 2 || $$9 <= $$3.a($$7 ? 5 : 4)) {
+                  $$6 = true;
+               }
+            } else if ($$8.i()) {
+               $$6 = true;
+            }
+
+            if ($$6 && b($$1, $$4, null) && $$1.u($$2.b(2))) {
+               $$1.a($$2, deb.a($$1, $$2, this.e.n()), 2);
+               this.a($$1, $$4, $$5);
+            } else if ($$5 < 4) {
+               int $$12 = $$3.a(4);
+               if ($$7) {
+                  $$12++;
+               }
+
+               boolean $$13 = false;
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  ir $$15 = ir.c.a.a($$3);
+                  im $$16 = $$2.a($$15);
+                  if ($$1.u($$16) && $$1.u($$16.d()) && b($$1, $$16, $$15.g())) {
+                     this.a($$1, $$16, $$5 + 1);
+                     $$13 = true;
+                  }
+               }
+
+               if ($$13) {
+                  $$1.a($$2, deb.a($$1, $$2, this.e.n()), 2);
+               } else {
+                  this.a($$1, $$2);
+               }
+            } else {
+               this.a($$1, $$2);
+            }
+         }
+      }
+   }
+
+   private void a(czu $$0, im $$1, int $$2) {
+      $$0.a($$1, this.n().a(c, Integer.valueOf($$2)), 2);
+      $$0.c(1033, $$1, 0);
+   }
+
+   private void a(czu $$0, im $$1) {
+      $$0.a($$1, this.n().a(c, Integer.valueOf(5)), 2);
+      $$0.c(1034, $$1, 0);
+   }
+
+   private static boolean b(czx $$0, im $$1, @Nullable ir $$2) {
+      for (ir $$3 : ir.c.a) {
+         if ($$3 != $$2 && !$$0.u($$1.a($$3))) {
+            return false;
+         }
+      }
+
       return true;
    }
 
    @Override
-   protected int a(dpi $$0, czg $$1, id $$2) {
-      return $$1.c_($$2) instanceof dnc $$4 ? $$4.t() : 0;
-   }
-
-   @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dch $$3, id $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      boolean $$7 = $$0.c(c);
-      dmo $$8 = $$1.c_($$2);
-      if ($$6 && !$$7) {
-         $$1.a($$2, this, 4);
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
-         this.a($$8, true);
-      } else if (!$$6 && $$7) {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)), 2);
-         this.a($$8, false);
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$1 != ir.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dpi $$0, apu $$1, id $$2, axt $$3) {
-      this.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
-      return $$0.B ? null : a($$2, dmq.P, dnc::a);
-   }
-
-   private void a(@Nullable dmo $$0, boolean $$1) {
-      if ($$0 instanceof dnc $$2) {
-         $$2.a($$1);
-      }
-   }
-
-   @Override
-   public dmo a(id $$0, dpi $$1) {
-      dnc $$2 = new dnc($$0, $$1);
-      $$2.a($$1.b(c) && $$1.c(c));
-      return $$2;
-   }
-
-   @Override
-   public dpi a(cux $$0) {
-      ij $$1 = $$0.d().g();
-
-      ij $$2 = switch ($$1) {
-         case a -> $$0.g().g();
-         case b -> $$0.g();
-         case c, d, e, f -> ij.b;
-      };
-      return this.n().a(d, il.a($$1, $$2)).a(c, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   public void a(czg $$0, id $$1, dpi $$2, bqt $$3, crs $$4) {
-      if ($$2.c(c)) {
-         $$0.a($$1, this, 4);
-      }
-   }
-
-   @Override
-   protected void a(dpi $$0, czg $$1, id $$2, dpi $$3, boolean $$4) {
-      bob.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected bof a(dpi $$0, czg $$1, id $$2, cka $$3, esf $$4) {
-      if ($$1.B) {
-         return bof.a;
-      } else {
-         dmo $$5 = $$1.c_($$2);
-         if ($$5 instanceof dnc) {
-            $$3.a((dnc)$$5);
-         }
-
-         return bof.b;
-      }
-   }
-
-   protected void a(dpi $$0, apu $$1, id $$2) {
-      if ($$1.c_($$2) instanceof dnc $$3) {
-         Optional<cvj> $$5 = a($$1, $$3);
-         if ($$5.isEmpty()) {
-            $$1.c(1050, $$2, 0);
+   protected boolean a(dpy $$0, czx $$1, im $$2) {
+      dpy $$3 = $$1.a_($$2.d());
+      if (!$$3.a(this.e) && !$$3.a(dcx.fz)) {
+         if (!$$3.i()) {
+            return false;
          } else {
-            cvj $$6 = $$5.get();
-            crs $$7 = $$6.a($$3, $$1.H_());
-            if ($$7.d()) {
-               $$1.c(1050, $$2, 0);
-            } else {
-               $$3.d(6);
-               $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 2);
-               $$7.a($$1);
-               this.a($$1, $$2, $$3, $$7, $$0);
+            boolean $$4 = false;
 
-               for (crs $$8 : $$6.a($$3)) {
-                  if (!$$8.d()) {
-                     this.a($$1, $$2, $$3, $$8, $$0);
+            for (ir $$5 : ir.c.a) {
+               dpy $$6 = $$1.a_($$2.a($$5));
+               if ($$6.a(this.e)) {
+                  if ($$4) {
+                     return false;
                   }
+
+                  $$4 = true;
+               } else if (!$$6.i()) {
+                  return false;
                }
-
-               $$3.j().forEach($$0x -> {
-                  if (!$$0x.d()) {
-                     $$0x.g(1);
-                  }
-               });
-               $$3.e();
-            }
-         }
-      }
-   }
-
-   public static Optional<cvj> a(czg $$0, cnm $$1) {
-      return g.a($$0, $$1);
-   }
-
-   private void a(czg $$0, id $$1, dnc $$2, crs $$3, dpi $$4) {
-      ij $$5 = $$4.c(d).a();
-      bny $$6 = dnn.a($$0, $$1.a($$5));
-      crs $$7 = $$3.r();
-      if ($$6 != null && ($$6 instanceof dnc || $$3.G() > $$6.ah_())) {
-         while (!$$7.d()) {
-            crs $$8 = $$7.c(1);
-            crs $$9 = dnn.a($$2, $$6, $$8, $$5.g());
-            if (!$$9.d()) {
-               break;
             }
 
-            $$7.g(1);
+            return $$4;
          }
-      } else if ($$6 != null) {
-         while (!$$7.d()) {
-            int $$10 = $$7.G();
-            $$7 = dnn.a($$2, $$6, $$7, $$5.g());
-            if ($$10 == $$7.G()) {
-               break;
-            }
-         }
-      }
-
-      if (!$$7.d()) {
-         esj $$11 = esj.b($$1).a($$5, 0.7);
-         jy.a($$0, $$7, 6, $$5, $$11);
-         $$0.c(1049, $$1, 0);
-         $$0.c(2010, $$1, $$5.d());
+      } else {
+         return true;
       }
    }
 
    @Override
-   protected dim b_(dpi $$0) {
-      return dim.c;
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      $$0.a(c);
+   }
+
+   public static void a(czv $$0, im $$1, ayd $$2, int $$3) {
+      $$0.a($$1, deb.a($$0, $$1, dcx.ku.n()), 2);
+      a($$0, $$1, $$2, $$1, $$3, 0);
+   }
+
+   private static void a(czv $$0, im $$1, ayd $$2, im $$3, int $$4, int $$5) {
+      dcv $$6 = dcx.ku;
+      int $$7 = $$2.a(4) + 1;
+      if ($$5 == 0) {
+         $$7++;
+      }
+
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         im $$9 = $$1.b($$8 + 1);
+         if (!b($$0, $$9, null)) {
+            return;
+         }
+
+         $$0.a($$9, deb.a($$0, $$9, $$6.n()), 2);
+         $$0.a($$9.d(), deb.a($$0, $$9.d(), $$6.n()), 2);
+      }
+
+      boolean $$10 = false;
+      if ($$5 < 4) {
+         int $$11 = $$2.a(4);
+         if ($$5 == 0) {
+            $$11++;
+         }
+
+         for (int $$12 = 0; $$12 < $$11; $$12++) {
+            ir $$13 = ir.c.a.a($$2);
+            im $$14 = $$1.b($$7).a($$13);
+            if (Math.abs($$14.u() - $$3.u()) < $$4 && Math.abs($$14.w() - $$3.w()) < $$4 && $$0.u($$14) && $$0.u($$14.d()) && b($$0, $$14, $$13.g())) {
+               $$10 = true;
+               $$0.a($$14, deb.a($$0, $$14, $$6.n()), 2);
+               $$0.a($$14.a($$13.g()), deb.a($$0, $$14.a($$13.g()), $$6.n()), 2);
+               a($$0, $$14, $$2, $$3, $$4, $$5 + 1);
+            }
+         }
+      }
+
+      if (!$$10) {
+         $$0.a($$1.b($$7), dcx.kv.n().a(c, Integer.valueOf(5)), 2);
+      }
    }
 
    @Override
-   protected dpi a(dpi $$0, dit $$1) {
-      return $$0.a(d, $$1.a().a($$0.c(d)));
-   }
-
-   @Override
-   protected dpi a(dpi $$0, dhd $$1) {
-      return $$0.a(d, $$1.a().a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(d, c, b);
+   protected void a(czu $$0, dpy $$1, etb $$2, cld $$3) {
+      im $$4 = $$2.a();
+      if (!$$0.B && $$3.a($$0, $$4) && $$3.b($$0)) {
+         $$0.a($$4, true, $$3);
+      }
    }
 }

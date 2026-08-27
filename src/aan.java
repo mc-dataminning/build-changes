@@ -1,23 +1,23 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-public record aan(Set<ajv> b) implements yp<aaj> {
-   public static final yg<vi, aan> a = yp.a(aan::a, aan::new);
+public record aan(List<im> c) implements aaa {
+   public static final yq<vs, aan> a = aaa.a(aan::a, aan::new);
+   public static final aaa.b<aan> b = aaa.a("debug/raids");
 
-   private aan(vi $$0) {
-      this($$0.a(HashSet::new, vi::q));
+   private aan(vs $$0) {
+      this($$0.a(im.b));
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b, vi::a);
+   private void a(vs $$0) {
+      $$0.a(this.c, im.b);
    }
 
    @Override
-   public yr<aan> a() {
-      return aao.c;
+   public aaa.b<aan> a() {
+      return b;
    }
 
-   public void a(aaj $$0) {
-      $$0.a(this);
+   public List<im> b() {
+      return this.c;
    }
 }

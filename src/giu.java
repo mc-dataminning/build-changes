@@ -1,27 +1,25 @@
-public class giu extends ggx<cdl, ftm<cdl>> {
-   public giu(gfr.a $$0) {
-      super($$0, new ftm<>($$0.a(ftu.cc)), 0.5F);
-      this.a(new gkr(this, $$0.f()));
-      this.a(new gks(this));
+public class giu<T extends cds> extends ght<T, ftt<T>> {
+   private static final akf a = new akf("textures/entity/squid/squid.png");
+
+   public giu(ggn.a $$0, ftt<T> $$1) {
+      super($$0, $$1, 0.7F);
    }
 
-   protected float a(cdl $$0, float $$1) {
-      return $$0.gx();
+   public akf a(T $$0) {
+      return a;
    }
 
-   public void a(cdl $$0, float $$1, float $$2, ewr $$3, gai $$4, int $$5) {
-      if ($$0.gw()) {
-         float $$6 = $$0.G($$2);
-         this.f.a($$6, $$6, $$6);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gw()) {
-         this.f.a(1.0F, 1.0F, 1.0F);
-      }
+   protected void a(T $$0, exn $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = axw.i($$4, $$0.c, $$0.b);
+      float $$7 = axw.i($$4, $$0.e, $$0.d);
+      $$1.a(0.0F, 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      $$1.a(a.b.rotationDegrees($$6));
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, -1.2F, 0.0F);
    }
 
-   public ajv a(cdl $$0) {
-      return $$0.gt();
+   protected float a(T $$0, float $$1) {
+      return axw.i($$1, $$0.cb, $$0.ca);
    }
 }

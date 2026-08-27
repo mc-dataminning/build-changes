@@ -1,105 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cf extends cx<cf.a> {
+public record cf(iz<cua> c) implements de<cuc> {
+   public static final Codec<cf> a = jk.a(ld.Y).xmap(cf::new, cf::b);
+
    @Override
-   public Codec<cf.a> a() {
-      return cf.a.a;
+   public jy<cuc> a() {
+      return jz.x;
    }
 
-   public void a(apv $$0, bqa $$1, boy $$2) {
-      enk $$3 = br.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
+   public boolean a(csd $$0, cuc $$1) {
+      Optional<iv<cua>> $$2 = $$1.f();
+      return !$$2.isEmpty() && this.c.a($$2.get());
    }
 
-   public static record a(Optional<bc> b, Optional<bc> c, Optional<bg> d) implements cx.a {
-      public static final Codec<cf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(awu.a(br.b, "player").forGetter(cf.a::a), awu.a(br.b, "entity").forGetter(cf.a::e), awu.a(bg.a, "killing_blow").forGetter(cf.a::f))
-               .apply($$0, cf.a::new)
-      );
+   public static ch a(iz<cua> $$0) {
+      return new cf($$0);
+   }
 
-      public static an<cf.a> a(Optional<br> $$0) {
-         return am.c.a(new cf.a(Optional.empty(), br.a($$0), Optional.empty()));
-      }
-
-      public static an<cf.a> a(br.a $$0) {
-         return am.c.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), Optional.empty()));
-      }
-
-      public static an<cf.a> b() {
-         return am.c.a(new cf.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static an<cf.a> a(Optional<br> $$0, Optional<bg> $$1) {
-         return am.c.a(new cf.a(Optional.empty(), br.a($$0), $$1));
-      }
-
-      public static an<cf.a> a(br.a $$0, Optional<bg> $$1) {
-         return am.c.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), $$1));
-      }
-
-      public static an<cf.a> a(Optional<br> $$0, bg.a $$1) {
-         return am.c.a(new cf.a(Optional.empty(), br.a($$0), Optional.of($$1.b())));
-      }
-
-      public static an<cf.a> a(br.a $$0, bg.a $$1) {
-         return am.c.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), Optional.of($$1.b())));
-      }
-
-      public static an<cf.a> c() {
-         return am.Z.a(new cf.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static an<cf.a> b(Optional<br> $$0) {
-         return am.d.a(new cf.a(Optional.empty(), br.a($$0), Optional.empty()));
-      }
-
-      public static an<cf.a> b(br.a $$0) {
-         return am.d.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), Optional.empty()));
-      }
-
-      public static an<cf.a> d() {
-         return am.d.a(new cf.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static an<cf.a> b(Optional<br> $$0, Optional<bg> $$1) {
-         return am.d.a(new cf.a(Optional.empty(), br.a($$0), $$1));
-      }
-
-      public static an<cf.a> b(br.a $$0, Optional<bg> $$1) {
-         return am.d.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), $$1));
-      }
-
-      public static an<cf.a> b(Optional<br> $$0, bg.a $$1) {
-         return am.d.a(new cf.a(Optional.empty(), br.a($$0), Optional.of($$1.b())));
-      }
-
-      public static an<cf.a> b(br.a $$0, bg.a $$1) {
-         return am.d.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), Optional.of($$1.b())));
-      }
-
-      public boolean a(apv $$0, enk $$1, boy $$2) {
-         return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
-      }
-
-      @Override
-      public void a(bd $$0) {
-         cx.a.super.a($$0);
-         $$0.a(this.c, ".entity");
-      }
-
-      @Override
-      public Optional<bc> a() {
-         return this.b;
-      }
-
-      public Optional<bc> e() {
-         return this.c;
-      }
-
-      public Optional<bg> f() {
-         return this.d;
-      }
+   public iz<cua> b() {
+      return this.c;
    }
 }

@@ -1,11 +1,15 @@
-public abstract class ggk<T extends cgn> extends ggx<T, frj<T>> {
-   protected ggk(gfr.a $$0, frj<T> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new gjh<>(this, $$0.f(), $$0.d()));
+public class ggk extends ght<chi, frq<chi>> {
+   private static final akf a = new akf("textures/entity/endermite.png");
+
+   public ggk(ggn.a $$0) {
+      super($$0, new frq<>($$0.a(fuq.Y)), 0.3F);
    }
 
-   protected void a(T $$0, ewr $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   protected float a(chi $$0) {
+      return 180.0F;
+   }
+
+   public akf b(chi $$0) {
+      return a;
    }
 }

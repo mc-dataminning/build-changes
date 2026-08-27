@@ -1,41 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
 
-public class eol extends eox {
-   public static final Codec<eol> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eol::new));
+@FunctionalInterface
+interface eol {
+   eol b = ($$0, $$1) -> false;
+   eol c = ($$0, $$1) -> true;
 
-   private eol(List<eql> $$0) {
-      super($$0);
+   boolean expand(eoa var1, Consumer<eos> var2);
+
+   default eol and(eol $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
    }
 
-   @Override
-   public eoz b() {
-      return epa.u;
-   }
-
-   @Override
-   public crs a(crs $$0, enk $$1) {
-      Float $$2 = $$1.c(epx.j);
-      if ($$2 != null) {
-         axt $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.G();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.e($$6);
-      }
-
-      return $$0;
-   }
-
-   public static eox.a<?> c() {
-      return a(eol::new);
+   default eol or(eol $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
    }
 }

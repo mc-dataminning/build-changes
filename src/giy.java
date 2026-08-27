@@ -1,24 +1,40 @@
-public class giy<T extends bqt, M extends fsa<T>> extends gkl<T, M> {
-   private final gfp a;
+public class giy<T extends bql & cla> extends ggm<T> {
+   private static final float a = 12.25F;
+   private final ghl f;
+   private final float g;
+   private final boolean h;
 
-   public giy(gfr.a $$0, ggs<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public giy(ggn.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.f = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   public giy(ggn.a $$0) {
+      this($$0, 1.0F, false);
    }
 
    @Override
-   protected int a(T $$0) {
-      return $$0.eQ();
+   protected int a(T $$0, im $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
    @Override
-   protected void a(ewr $$0, gai $$1, int $$2, bqa $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = axm.c($$4 * $$4 + $$6 * $$6);
-      cki $$9 = new cki($$3.dM(), $$3.dr(), $$3.dt(), $$3.dx(), crs.i);
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.N = $$9.dC();
-      $$9.O = $$9.dE();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   public void a(T $$0, float $$1, float $$2, exn $$3, gbe $$4, int $$5) {
+      if ($$0.ai >= 2 || !(this.c.b.g().g($$0) < 12.25)) {
+         $$3.a();
+         $$3.b(this.g, this.g, this.g);
+         $$3.a(this.c.b());
+         $$3.a(a.d.rotationDegrees(180.0F));
+         this.f.a($$0.p(), csa.h, $$5, gmf.d, $$3, $$4, $$0.dN(), $$0.aj());
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public akf a(bql $$0) {
+      return gmn.e;
    }
 }

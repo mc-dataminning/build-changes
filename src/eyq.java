@@ -1,56 +1,55 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.UUID;
 
-public class eyq extends eyn {
-   private static final Logger e = LogUtils.getLogger();
-   public List<eyp> a;
-   public int b;
-   public int c;
-   public int d;
+public class eyq extends ezj implements ezd {
+   @SerializedName("name")
+   private String a;
+   @SerializedName("uuid")
+   private UUID b;
+   @SerializedName("operator")
+   private boolean c;
+   @SerializedName("accepted")
+   private boolean d;
+   @SerializedName("online")
+   private boolean e;
 
-   public eyq() {
+   public String a() {
+      return this.a;
    }
 
-   public eyq(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
+   public void a(String $$0) {
+      this.a = $$0;
+   }
+
+   public UUID b() {
+      return this.b;
+   }
+
+   public void a(UUID $$0) {
+      this.b = $$0;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public void a(boolean $$0) {
       this.c = $$0;
-      this.d = -1;
    }
 
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   public boolean d() {
+      return this.d;
    }
 
-   public static eyq a(String $$0) {
-      eyq $$1 = new eyq();
-      $$1.a = Lists.newArrayList();
+   public void b(boolean $$0) {
+      this.d = $$0;
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
+   public boolean e() {
+      return this.e;
+   }
 
-            while ($$4.hasNext()) {
-               $$1.a.add(eyp.a($$4.next().getAsJsonObject()));
-            }
-         }
-
-         $$1.b = fak.a("page", $$3, 0);
-         $$1.c = fak.a("size", $$3, 0);
-         $$1.d = fak.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
-      }
-
-      return $$1;
+   public void c(boolean $$0) {
+      this.e = $$0;
    }
 }

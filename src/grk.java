@@ -1,38 +1,29 @@
-public class grk implements grn {
-   private static final int a = 600;
-   private static final wi b = wi.c("tutorial.open_inventory.title");
-   private static final wi c = wi.a("tutorial.open_inventory.description", grm.a("inventory"));
-   private final grm d;
-   private fgj e;
-   private int f;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-   public grk(grm $$0) {
-      this.d = $$0;
-   }
+public record grk(gro b, grr c) {
+   public static final Codec<grk> a = gro.a.dispatchStable(grk::a, gro::c);
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gro.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new fgj(fgj.a.d, b, c, false);
-            this.d.e().aA().a(this.e);
+   public grk(gro b, grr c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
          }
-      }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
    }
 
-   @Override
-   public void c() {
-      this.d.a(gro.e);
+   public gro a() {
+      return this.b;
+   }
+
+   public grr b() {
+      return this.c;
    }
 }

@@ -1,96 +1,60 @@
-public interface bpb {
-   aju<bpa> a = aju.a(ku.s, new ajv("in_fire"));
-   aju<bpa> b = aju.a(ku.s, new ajv("lightning_bolt"));
-   aju<bpa> c = aju.a(ku.s, new ajv("on_fire"));
-   aju<bpa> d = aju.a(ku.s, new ajv("lava"));
-   aju<bpa> e = aju.a(ku.s, new ajv("hot_floor"));
-   aju<bpa> f = aju.a(ku.s, new ajv("in_wall"));
-   aju<bpa> g = aju.a(ku.s, new ajv("cramming"));
-   aju<bpa> h = aju.a(ku.s, new ajv("drown"));
-   aju<bpa> i = aju.a(ku.s, new ajv("starve"));
-   aju<bpa> j = aju.a(ku.s, new ajv("cactus"));
-   aju<bpa> k = aju.a(ku.s, new ajv("fall"));
-   aju<bpa> l = aju.a(ku.s, new ajv("fly_into_wall"));
-   aju<bpa> m = aju.a(ku.s, new ajv("out_of_world"));
-   aju<bpa> n = aju.a(ku.s, new ajv("generic"));
-   aju<bpa> o = aju.a(ku.s, new ajv("magic"));
-   aju<bpa> p = aju.a(ku.s, new ajv("wither"));
-   aju<bpa> q = aju.a(ku.s, new ajv("dragon_breath"));
-   aju<bpa> r = aju.a(ku.s, new ajv("dry_out"));
-   aju<bpa> s = aju.a(ku.s, new ajv("sweet_berry_bush"));
-   aju<bpa> t = aju.a(ku.s, new ajv("freeze"));
-   aju<bpa> u = aju.a(ku.s, new ajv("stalagmite"));
-   aju<bpa> v = aju.a(ku.s, new ajv("falling_block"));
-   aju<bpa> w = aju.a(ku.s, new ajv("falling_anvil"));
-   aju<bpa> x = aju.a(ku.s, new ajv("falling_stalactite"));
-   aju<bpa> y = aju.a(ku.s, new ajv("sting"));
-   aju<bpa> z = aju.a(ku.s, new ajv("mob_attack"));
-   aju<bpa> A = aju.a(ku.s, new ajv("mob_attack_no_aggro"));
-   aju<bpa> B = aju.a(ku.s, new ajv("player_attack"));
-   aju<bpa> C = aju.a(ku.s, new ajv("arrow"));
-   aju<bpa> D = aju.a(ku.s, new ajv("trident"));
-   aju<bpa> E = aju.a(ku.s, new ajv("mob_projectile"));
-   aju<bpa> F = aju.a(ku.s, new ajv("spit"));
-   aju<bpa> G = aju.a(ku.s, new ajv("wind_charge"));
-   aju<bpa> H = aju.a(ku.s, new ajv("fireworks"));
-   aju<bpa> I = aju.a(ku.s, new ajv("fireball"));
-   aju<bpa> J = aju.a(ku.s, new ajv("unattributed_fireball"));
-   aju<bpa> K = aju.a(ku.s, new ajv("wither_skull"));
-   aju<bpa> L = aju.a(ku.s, new ajv("thrown"));
-   aju<bpa> M = aju.a(ku.s, new ajv("indirect_magic"));
-   aju<bpa> N = aju.a(ku.s, new ajv("thorns"));
-   aju<bpa> O = aju.a(ku.s, new ajv("explosion"));
-   aju<bpa> P = aju.a(ku.s, new ajv("player_explosion"));
-   aju<bpa> Q = aju.a(ku.s, new ajv("sonic_boom"));
-   aju<bpa> R = aju.a(ku.s, new ajv("bad_respawn_point"));
-   aju<bpa> S = aju.a(ku.s, new ajv("outside_border"));
-   aju<bpa> T = aju.a(ku.s, new ajv("generic_kill"));
+public class bpb {
+   public static final float a = 1.0F;
+   protected float b = 20.0F;
+   protected long c = ayv.a / 20L;
+   protected int d = 0;
+   protected boolean e = true;
+   protected boolean f = false;
 
-   static void a(pz<bpa> $$0) {
-      $$0.a(a, new bpa("inFire", 0.1F, bow.d));
-      $$0.a(b, new bpa("lightningBolt", 0.1F));
-      $$0.a(c, new bpa("onFire", 0.0F, bow.d));
-      $$0.a(d, new bpa("lava", 0.1F, bow.d));
-      $$0.a(e, new bpa("hotFloor", 0.1F, bow.d));
-      $$0.a(f, new bpa("inWall", 0.0F));
-      $$0.a(g, new bpa("cramming", 0.0F));
-      $$0.a(h, new bpa("drown", 0.0F, bow.c));
-      $$0.a(i, new bpa("starve", 0.0F));
-      $$0.a(j, new bpa("cactus", 0.1F));
-      $$0.a(k, new bpa("fall", box.b, 0.0F, bow.a, bpc.b));
-      $$0.a(l, new bpa("flyIntoWall", 0.0F));
-      $$0.a(m, new bpa("outOfWorld", 0.0F));
-      $$0.a(n, new bpa("generic", 0.0F));
-      $$0.a(o, new bpa("magic", 0.0F));
-      $$0.a(p, new bpa("wither", 0.0F));
-      $$0.a(q, new bpa("dragonBreath", 0.0F));
-      $$0.a(r, new bpa("dryout", 0.1F));
-      $$0.a(s, new bpa("sweetBerryBush", 0.1F, bow.e));
-      $$0.a(t, new bpa("freeze", 0.0F, bow.f));
-      $$0.a(u, new bpa("stalagmite", 0.0F));
-      $$0.a(v, new bpa("fallingBlock", 0.1F));
-      $$0.a(w, new bpa("anvil", 0.1F));
-      $$0.a(x, new bpa("fallingStalactite", 0.1F));
-      $$0.a(y, new bpa("sting", 0.1F));
-      $$0.a(z, new bpa("mob", 0.1F));
-      $$0.a(A, new bpa("mob", 0.1F));
-      $$0.a(B, new bpa("player", 0.1F));
-      $$0.a(C, new bpa("arrow", 0.1F));
-      $$0.a(D, new bpa("trident", 0.1F));
-      $$0.a(E, new bpa("mob", 0.1F));
-      $$0.a(F, new bpa("mob", 0.1F));
-      $$0.a(H, new bpa("fireworks", 0.1F));
-      $$0.a(J, new bpa("onFire", 0.1F, bow.d));
-      $$0.a(I, new bpa("fireball", 0.1F, bow.d));
-      $$0.a(K, new bpa("witherSkull", 0.1F));
-      $$0.a(L, new bpa("thrown", 0.1F));
-      $$0.a(M, new bpa("indirectMagic", 0.0F));
-      $$0.a(N, new bpa("thorns", 0.1F, bow.b));
-      $$0.a(O, new bpa("explosion", box.c, 0.1F));
-      $$0.a(P, new bpa("explosion.player", box.c, 0.1F));
-      $$0.a(Q, new bpa("sonic_boom", box.c, 0.0F));
-      $$0.a(R, new bpa("badRespawnPoint", box.c, 0.1F, bow.a, bpc.c));
-      $$0.a(S, new bpa("outsideBorder", 0.0F));
-      $$0.a(T, new bpa("genericKill", 0.0F));
+   public void a(float $$0) {
+      this.b = Math.max($$0, 1.0F);
+      this.c = (long)((double)ayv.a / (double)this.b);
+   }
+
+   public float f() {
+      return this.b;
+   }
+
+   public float g() {
+      return (float)this.c / (float)ayv.b;
+   }
+
+   public long h() {
+      return this.c;
+   }
+
+   public boolean i() {
+      return this.e;
+   }
+
+   public boolean j() {
+      return this.d > 0;
+   }
+
+   public void c(int $$0) {
+      this.d = $$0;
+   }
+
+   public int k() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean l() {
+      return this.f;
+   }
+
+   public void m() {
+      this.e = !this.f || this.d > 0;
+      if (this.d > 0) {
+         this.d--;
+      }
+   }
+
+   public boolean a(bql $$0) {
+      return !this.i() && !($$0 instanceof ckl) && $$0.cV() <= 0;
    }
 }

@@ -1,34 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dha extends dgq implements dck {
-   public static final MapCodec<dha> a = b(dha::new);
+public class dha extends dgj implements dhm {
+   public static final MapCodec<dha> c = b(dha::new);
 
    @Override
    public MapCodec<dha> a() {
-      return a;
+      return c;
    }
 
-   public dha(dph.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(czj $$0, id $$1, dpi $$2) {
-      return $$0.a_($$1.d()).i();
+   protected dha(dpx.d $$0) {
+      super($$0, ir.b, etv.b(), true);
    }
 
    @Override
-   public boolean a(czg $$0, axt $$1, id $$2, dpi $$3) {
-      return true;
+   protected dgk c() {
+      return (dgk)dcx.mc;
    }
 
    @Override
-   public void a(apu $$0, axt $$1, id $$2, dpi $$3) {
-      $$0.a($$2.d(), dhb.c(), 2);
+   protected elr c_(dpy $$0) {
+      return els.c.a(false);
    }
 
    @Override
-   public id a(id $$0) {
-      return $$0.d();
+   protected boolean m(dpy $$0) {
+      return this.c().m($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable ckl $$0, cza $$1, im $$2, dpy $$3, elq $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(czv $$0, im $$1, dpy $$2, elr $$3) {
+      return false;
    }
 }

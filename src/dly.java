@@ -1,47 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dly extends dfj {
-   public static final MapCodec<dly> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dfj::b), u()).apply($$0, dly::new));
+public class dly extends dde {
+   public static final MapCodec<dly> a = b(dly::new);
+   protected static final ety b = dcv.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
    public MapCodec<dly> a() {
-      return e;
+      return a;
    }
 
-   public dly(in<bpk> $$0, float $$1, dph.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dly(cur $$0, dph.d $$1) {
-      super($$0, $$1);
+   protected dly(dpx.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean b(dpi $$0, cym $$1, id $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dcj.dV) || $$0.a(dcj.dW) || $$0.a(dcj.dX);
-   }
-
-   @Override
-   public void a(dpi $$0, czg $$1, id $$2, axt $$3) {
-      etc $$4 = this.a($$0, $$1, $$2, eso.a());
-      esj $$5 = $$4.a().f();
-      double $$6 = (double)$$2.u() + $$5.c;
-      double $$7 = (double)$$2.w() + $$5.e;
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         if ($$3.h()) {
-            $$1.a(kn.ac, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
-         }
+   protected void a(dpy $$0, czu $$1, im $$2, bql $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof aqe && $$3 instanceof cmi) {
+         $$1.a(new im($$2), true, $$3);
       }
    }
 
    @Override
-   protected void a(dpi $$0, czg $$1, id $$2, bqa $$3) {
-      if (!$$1.B && $$1.ak() != boc.a) {
-         if ($$3 instanceof bqt $$4 && !$$4.b($$1.ai().p())) {
-            $$4.b(new bpm(bpo.t, 40));
-         }
-      }
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(dpy $$0, cza $$1, im $$2) {
+      elr $$3 = $$1.b_($$2);
+      elr $$4 = $$1.b_($$2.c());
+      return ($$3.a() == els.c || $$0.b() instanceof dgt) && $$4.a() == els.a;
    }
 }

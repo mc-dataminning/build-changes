@@ -1,29 +1,66 @@
-public class adz implements yp<aba> {
-   public static final yg<vi, adz> a = yp.a(adz::a, adz::new);
-   private final int b;
+import it.unimi.dsi.fastutil.shorts.ShortIterator;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
+import java.util.function.BiConsumer;
 
-   public adz(int $$0) {
-      this.b = $$0;
+public class adz implements yz<abk> {
+   public static final yq<vs, adz> a = yz.a(adz::a, adz::new);
+   private static final int b = 12;
+   private final jo c;
+   private final short[] d;
+   private final dpy[] e;
+
+   public adz(jo $$0, ShortSet $$1, dsf $$2) {
+      this.c = $$0;
+      int $$3 = $$1.size();
+      this.d = new short[$$3];
+      this.e = new dpy[$$3];
+      int $$4 = 0;
+
+      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
+         short $$5 = (Short)var6.next();
+         this.d[$$4] = $$5;
+         this.e[$$4] = $$2.a(jo.a($$5), jo.b($$5), jo.c($$5));
+      }
    }
 
-   private adz(vi $$0) {
-      this.b = $$0.readByte();
+   private adz(vs $$0) {
+      this.c = jo.a($$0.readLong());
+      int $$1 = $$0.l();
+      this.d = new short[$$1];
+      this.e = new dpy[$$1];
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         long $$3 = $$0.m();
+         this.d[$$2] = (short)((int)($$3 & 4095L));
+         this.e[$$2] = dcv.q.a((int)($$3 >>> 12));
+      }
    }
 
-   private void a(vi $$0) {
-      $$0.k(this.b);
+   private void a(vs $$0) {
+      $$0.b(this.c.s());
+      $$0.c(this.d.length);
+
+      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
+         $$0.a((long)dcv.i(this.e[$$1]) << 12 | (long)this.d[$$1]);
+      }
    }
 
    @Override
-   public yr<adz> a() {
-      return afl.ax;
+   public zb<adz> a() {
+      return afv.an;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public void a(BiConsumer<im, dpy> $$0) {
+      im.a $$1 = new im.a();
+
+      for (int $$2 = 0; $$2 < this.d.length; $$2++) {
+         short $$3 = this.d[$$2];
+         $$1.d(this.c.d($$3), this.c.e($$3), this.c.f($$3));
+         $$0.accept($$1, this.e[$$2]);
+      }
    }
 }

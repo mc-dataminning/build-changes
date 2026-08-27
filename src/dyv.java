@@ -1,115 +1,80 @@
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
 import org.slf4j.Logger;
 
-public class dyv extends dye<eap> {
+public class dyv {
    private static final Logger a = LogUtils.getLogger();
-   private static final bqg<?>[] b = new bqg[]{bqg.aM, bqg.bt, bqg.bt, bqg.aV};
-   private static final dpi c = dcj.nc.n();
-
-   public dyv(Codec<eap> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(dyg<eap> $$0) {
-      Predicate<dpi> $$1 = dye.a(ave.bI);
-      id $$2 = $$0.e();
-      axt $$3 = $$0.d();
-      dab $$4 = $$0.b();
-      int $$5 = 3;
-      int $$6 = $$3.a(2) + 2;
-      int $$7 = -$$6 - 1;
-      int $$8 = $$6 + 1;
-      int $$9 = -1;
-      int $$10 = 4;
-      int $$11 = $$3.a(2) + 2;
-      int $$12 = -$$11 - 1;
-      int $$13 = $$11 + 1;
-      int $$14 = 0;
-
-      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
-         for (int $$16 = -1; $$16 <= 4; $$16++) {
-            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
-               id $$18 = $$2.b($$15, $$16, $$17);
-               boolean $$19 = $$4.a_($$18).e();
-               if ($$16 == -1 && !$$19) {
-                  return false;
-               }
-
-               if ($$16 == 4 && !$$19) {
-                  return false;
-               }
-
-               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.c())) {
-                  $$14++;
-               }
-            }
+   private static final LoadingCache<aqe, dyv.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<aqe, dyv.b>() {
+         public dyv.b a(aqe $$0) {
+            return new dyv.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
          }
-      }
+      });
 
-      if ($$14 >= 1 && $$14 <= 5) {
-         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
-            for (int $$21 = 3; $$21 >= -1; $$21--) {
-               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
-                  id $$23 = $$2.b($$20, $$21, $$22);
-                  dpi $$24 = $$4.a_($$23);
-                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
-                     if ($$23.v() >= $$4.I_() && !$$4.a_($$23.d()).e()) {
-                        $$4.a($$23, c, 2);
-                     } else if ($$24.e() && !$$24.a(dcj.cv)) {
-                        if ($$21 == -1 && $$3.a(4) != 0) {
-                           this.a($$4, $$23, dcj.cn.n(), $$1);
-                        } else {
-                           this.a($$4, $$23, dcj.m.n(), $$1);
-                        }
-                     }
-                  } else if (!$$24.a(dcj.cv) && !$$24.a(dcj.ct)) {
-                     this.a($$4, $$23, c, $$1);
-                  }
-               }
-            }
-         }
-
-         for (int $$25 = 0; $$25 < 2; $$25++) {
-            for (int $$26 = 0; $$26 < 3; $$26++) {
-               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
-               int $$28 = $$2.v();
-               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
-               id $$30 = new id($$27, $$28, $$29);
-               if ($$4.u($$30)) {
-                  int $$31 = 0;
-
-                  for (ij $$32 : ij.c.a) {
-                     if ($$4.a_($$30.a($$32)).e()) {
-                        $$31++;
-                     }
-                  }
-
-                  if ($$31 == 1) {
-                     this.a($$4, $$30, efu.a($$4, $$30, dcj.cv.n()), $$1);
-                     bon.a($$4, $$3, $$30, eni.d);
-                     break;
-                  }
-               }
-            }
-         }
-
-         this.a($$4, $$2, dcj.ct.n(), $$1);
-         if ($$4.c_($$2) instanceof doc $$34) {
-            $$34.a(this.a($$3), $$3);
-         } else {
-            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
-         }
-
-         return true;
-      } else {
-         return false;
+   public static void a(aqe $$0) {
+      try {
+         ((dyv.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
       }
    }
 
-   private bqg<?> a(axt $$0) {
-      return ac.a(b, $$0);
+   public static void a(aqe $$0, dyh<?, ?> $$1, Optional<efk> $$2) {
+      try {
+         ((dyv.b)b.get($$0)).a().computeInt(new dyv.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
+      }
+   }
+
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
+
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ae().a().toString();
+               boolean $$3 = $$0.o().x();
+               ji<efk> $$4 = $$0.H_().d(ld.aH);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::d).<akf>map(ake::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
+            }
+         );
+   }
+
+   static record a(dyh<?, ?> a, Optional<efk> b) {
+   }
+
+   static record b(Object2IntMap<dyv.a> a, MutableInt b) {
    }
 }

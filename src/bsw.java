@@ -1,44 +1,101 @@
-import java.util.Optional;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class bsw implements btz {
-   private final bqa a;
-   private final boolean b;
+public abstract class bsw<E extends bre> implements bsx<E> {
+   public static final int a = 60;
+   protected final Map<cah<?>, cai> b;
+   private bsw.a c = bsw.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-   public bsw(bqa $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bsw(Map<cah<?>, cai> $$0) {
+      this($$0, 60);
+   }
+
+   public bsw(Map<cah<?>, cai> $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bsw(Map<cah<?>, cai> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
    }
 
    @Override
-   public esj a() {
-      return this.b ? this.a.dk().b(0.0, (double)this.a.cI(), 0.0) : this.a.dk();
+   public bsw.a a() {
+      return this.c;
    }
 
    @Override
-   public id b() {
-      return this.a.dm();
-   }
-
-   @Override
-   public boolean a(bqt $$0) {
-      if (this.a instanceof bqt $$1) {
-         if (!$$1.bA()) {
-            return false;
-         } else {
-            Optional<bzy> $$3 = $$0.dP().c(bzw.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
+   public final boolean e(aqe $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bsw.a.b;
+         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
          return true;
+      } else {
+         return false;
       }
    }
 
-   public bqa c() {
-      return this.a;
+   protected void d(aqe $$0, E $$1, long $$2) {
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public final void f(aqe $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(aqe $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(aqe $$0, E $$1, long $$2) {
+      this.c = bsw.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(aqe $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(aqe $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(aqe $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<cah<?>, cai> $$1 : this.b.entrySet()) {
+         cah<?> $$2 = $$1.getKey();
+         cai $$3 = $$1.getValue();
+         if (!$$0.dQ().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

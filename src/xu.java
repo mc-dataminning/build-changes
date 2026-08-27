@@ -1,15 +1,18 @@
-import java.util.Locale;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class xu extends IllegalArgumentException {
-   public xu(xt $$0, String $$1) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
-   }
+public interface xu {
+   MapCodec<xu> c = wu.a(new xu.a[]{xv.b, xt.b, yc.b}, xu.a::a, xu::a, "source");
 
-   public xu(xt $$0, int $$1) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
-   }
+   Stream<ty> a(ec var1) throws CommandSyntaxException;
 
-   public xu(xt $$0, Throwable $$1) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   xu.a<?> a();
+
+   public static record a<T extends xu>(MapCodec<T> a, String b) implements ayq {
+      @Override
+      public String c() {
+         return this.b;
+      }
    }
 }

@@ -1,47 +1,18 @@
+import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 
-public abstract class cbc<E extends bqt> {
-   private static final axt a = axt.b();
-   private static final int c = 20;
-   protected static final int b = 16;
-   private static final cbj d = cbj.b().a(16.0);
-   private static final cbj e = cbj.b().a(16.0).e();
-   private static final cbj f = cbj.a().a(16.0);
-   private static final cbj g = cbj.a().a(16.0).e();
-   private static final cbj h = cbj.a().a(16.0).d();
-   private static final cbj i = cbj.a().a(16.0).d().e();
-   private final int j;
-   private long k;
-
-   public cbc(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+public class cbc extends cbn<bre> {
+   @Override
+   public Set<cah<?>> a() {
+      return ImmutableSet.of(cah.X);
    }
 
-   public cbc() {
-      this(20);
-   }
-
-   public final void b(apu $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$0, $$1);
+   @Override
+   protected void a(aqe $$0, bre $$1) {
+      if ($$1.bc()) {
+         $$1.dQ().a(cah.X, ayy.a);
+      } else {
+         $$1.dQ().b(cah.X);
       }
-   }
-
-   protected abstract void a(apu var1, E var2);
-
-   public abstract Set<bzw<?>> a();
-
-   public static boolean b(bqt $$0, bqt $$1) {
-      return $$0.dP().b(bzw.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
-   }
-
-   public static boolean c(bqt $$0, bqt $$1) {
-      return $$0.dP().b(bzw.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
-   }
-
-   public static boolean d(bqt $$0, bqt $$1) {
-      return $$0.dP().b(bzw.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

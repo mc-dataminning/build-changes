@@ -1,104 +1,130 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fih extends fjx {
-   private static final wi a = wi.c("accessibility.onboarding.screen.title");
-   private static final wi b = wi.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final fep o;
-   private final fcc p;
-   private final boolean q;
-   private boolean r;
-   private float s;
-   private final Runnable u;
-   @Nullable
-   private fej v;
-   @Nullable
-   private fdw w;
-   private final fhl x = new fhl(this, this.m(), 33);
+public class fih implements fii {
+   public static final int a = 33;
+   private static final int b = 30;
+   private final fif c = new fif();
+   private final fif d = new fif();
+   private final fif e = new fif();
+   private final fkt f;
+   private int g;
+   private int h;
 
-   public fih(fcc $$0, Runnable $$1) {
-      super(a);
-      this.p = $$0;
-      this.u = $$1;
-      this.o = new fep(true);
-      this.q = fby.Q().aY().a();
+   public fih(fkt $$0) {
+      this($$0, 33);
+   }
+
+   public fih(fkt $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public fih(fkt $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   public void aM_() {
-      fhp $$0 = this.x.c(fhp.d());
-      $$0.c().b().a(4);
-      this.v = $$0.a(new fej(this.k, this.i, this.m), $$0x -> $$0x.a(8));
-      this.w = this.p.as().a(this.p);
-      this.w.j = this.q;
-      $$0.a(this.w);
-      $$0.a(fec.b(150, $$0x -> this.a(new fii(this, this.j.m)), false));
-      $$0.a(fec.a(150, $$0x -> this.a(new fjg(this, this.j.m, this.j.ag())), false));
-      this.x.b(fdy.a(wh.j, $$0x -> this.d()).a());
-      this.x.a(this::c);
-      this.c();
+   public void m(int $$0) {
    }
 
    @Override
-   protected void c() {
-      if (this.v != null) {
-         this.v.b(this.k);
-      }
-
-      this.x.a();
+   public void n(int $$0) {
    }
 
    @Override
-   protected void aC_() {
-      if (this.q && this.w != null) {
-         this.b(this.w);
-      } else {
-         super.aC_();
-      }
-   }
-
-   private int m() {
-      return 90;
+   public int C() {
+      return 0;
    }
 
    @Override
-   public void d() {
-      this.a(this.u);
-   }
-
-   private void a(fjx $$0) {
-      this.a(() -> this.j.a($$0));
-   }
-
-   private void a(Runnable $$0) {
-      this.p.ae = false;
-      this.p.av();
-      Narrator.getNarrator().clear();
-      $$0.run();
+   public int D() {
+      return 0;
    }
 
    @Override
-   public void a(fdl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.C();
-      this.o.a($$0, this.k, 1.0F);
+   public int x() {
+      return this.f.n;
    }
 
    @Override
-   protected void a(fdl $$0, float $$1) {
-      f.a(0.0F);
+   public int v() {
+      return this.f.o;
    }
 
-   private void C() {
-      if (!this.r && this.q) {
-         if (this.s < 40.0F) {
-            this.s++;
-         } else if (this.j.aC()) {
-            Narrator.getNarrator().say(b.getString(), true);
-            this.r = true;
-         }
-      }
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.f.o - this.c() - this.b();
+   }
+
+   @Override
+   public void b(Consumer<fij> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.n);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.n);
+      this.d.a($$1);
+      this.d.a();
+      this.d.n(this.f.o - $$1);
+      this.e.b(this.f.n);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.o - $$1 - this.e.v();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends fij> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends fij> T a(T $$0, Consumer<fik> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public void a(ws $$0, fef $$1) {
+      this.c.a(new fgb($$0, $$1));
+   }
+
+   public <T extends fij> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends fij> T b(T $$0, Consumer<fik> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends fij> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends fij> T c(T $$0, Consumer<fik> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

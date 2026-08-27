@@ -1,5 +1,29 @@
-import java.util.List;
+public class gps extends gpk {
+   private final bql n;
 
-public interface gps<T> {
-   List<T> search(String var1);
+   public gps(auy $$0, ava $$1, float $$2, float $$3, bql $$4, long $$5) {
+      super($$0, $$1, ayd.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.ds());
+      this.g = (double)((float)this.n.du());
+      this.h = (double)((float)this.n.dy());
+   }
+
+   @Override
+   public boolean s() {
+      return !this.n.aU();
+   }
+
+   @Override
+   public void q() {
+      if (this.n.dI()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.ds());
+         this.g = (double)((float)this.n.du());
+         this.h = (double)((float)this.n.dy());
+      }
+   }
 }

@@ -1,255 +1,140 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fnc {
-   private final asp a;
-   final List<asm> b;
-   final List<asm> c;
-   final Function<asm, ajv> d;
-   final Runnable e;
-   private final Consumer<asp> f;
+public class fnc extends fms<cpg> {
+   private static final akf D = new akf("container/smithing/error");
+   private static final akf E = new akf("item/empty_slot_smithing_template_armor_trim");
+   private static final akf F = new akf("item/empty_slot_smithing_template_netherite_upgrade");
+   private static final ws G = ws.c("container.upgrade.missing_template_tooltip");
+   private static final ws H = ws.c("container.upgrade.error_tooltip");
+   private static final List<akf> I = List.of(E, F);
+   private static final int J = 44;
+   private static final int K = 15;
+   private static final int L = 28;
+   private static final int M = 21;
+   private static final int N = 65;
+   private static final int O = 46;
+   private static final int P = 115;
+   private static final int Q = 210;
+   private static final int R = 25;
+   private static final Vector3f S = new Vector3f();
+   private static final Quaternionf T = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
+   private static final int U = 25;
+   private static final int V = 75;
+   private static final int W = 141;
+   private final fmh X = new fmh(0);
+   private final fmh Y = new fmh(1);
+   private final fmh Z = new fmh(2);
+   @Nullable
+   private cgl aa;
 
-   public fnc(Runnable $$0, Function<asm, ajv> $$1, asp $$2, Consumer<asp> $$3) {
-      this.e = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = Lists.newArrayList($$2.f());
-      Collections.reverse(this.b);
-      this.c = Lists.newArrayList($$2.c());
-      this.c.removeAll(this.b);
-      this.f = $$3;
+   public fnc(cpg $$0, ckk $$1, ws $$2) {
+      super($$0, $$1, $$2, new akf("textures/gui/container/smithing.png"));
+      this.r = 44;
+      this.s = 15;
    }
 
-   public Stream<fnc.a> a() {
-      return this.c.stream().map($$0 -> new fnc.d($$0));
+   @Override
+   protected void E() {
+      this.aa = new cgl(this.m.r, 0.0, 0.0, 0.0);
+      this.aa.b(true);
+      this.aa.a(true);
+      this.aa.aZ = 210.0F;
+      this.aa.s(25.0F);
+      this.aa.bb = this.aa.dD();
+      this.aa.bc = this.aa.dD();
+      this.b(this.w.b(3).g());
    }
 
-   public Stream<fnc.a> b() {
-      return this.b.stream().map($$0 -> new fnc.c($$0));
+   @Override
+   public void C() {
+      super.C();
+      Optional<ctf> $$0 = this.F();
+      this.X.a(I);
+      this.Y.a($$0.map(ctf::k).orElse(List.of()));
+      this.Z.a($$0.map(ctf::l).orElse(List.of()));
    }
 
-   void e() {
-      this.a.a(Lists.reverse(this.b).stream().map(asm::g).collect(ImmutableList.toImmutableList()));
+   private Optional<ctf> F() {
+      csd $$0 = this.w.b(0).g();
+      return !$$0.d() && $$0.f() instanceof ctf $$1 ? Optional.of($$1) : Optional.empty();
    }
 
-   public void c() {
-      this.e();
-      this.f.accept(this.a);
+   @Override
+   public void a(feh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2);
    }
 
-   public void d() {
-      this.a.a();
-      this.b.retainAll(this.a.c());
-      this.c.clear();
-      this.c.addAll(this.a.c());
-      this.c.removeAll(this.b);
+   @Override
+   protected void a(feh $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.X.a(this.w, $$0, $$1, this.z, this.A);
+      this.Y.a(this.w, $$0, $$1, this.z, this.A);
+      this.Z.a(this.w, $$0, $$1, this.z, this.A);
+      fmr.a($$0, (float)(this.z + 141), (float)(this.A + 75), 25.0F, S, T, null, this.aa);
    }
 
-   public interface a {
-      ajv a();
-
-      asn b();
-
-      String c();
-
-      wi d();
-
-      wi e();
-
-      asq f();
-
-      default wi g() {
-         return this.f().a(this.e());
+   @Override
+   public void a(cnh $$0, int $$1, csd $$2) {
+      if ($$1 == 3) {
+         this.b($$2);
       }
-
-      boolean h();
-
-      boolean i();
-
-      void j();
-
-      void k();
-
-      void l();
-
-      void m();
-
-      boolean n();
-
-      default boolean o() {
-         return !this.n();
-      }
-
-      default boolean p() {
-         return this.n() && !this.i();
-      }
-
-      boolean q();
-
-      boolean r();
    }
 
-   abstract class b implements fnc.a {
-      private final asm b;
+   private void b(csd $$0) {
+      if (this.aa != null) {
+         for (bqs $$1 : bqs.values()) {
+            this.aa.a($$1, csd.i);
+         }
 
-      public b(asm $$0) {
-         this.b = $$0;
+         if (!$$0.d()) {
+            csd $$2 = $$0.r();
+            if ($$0.f() instanceof cps $$3) {
+               this.aa.a($$3.k(), $$2);
+            } else {
+               this.aa.a(bqs.b, $$2);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void c(feh $$0, int $$1, int $$2) {
+      if (this.I()) {
+         $$0.a(D, $$1 + 65, $$2 + 46, 28, 21);
+      }
+   }
+
+   private void d(feh $$0, int $$1, int $$2) {
+      Optional<ws> $$3 = Optional.empty();
+      if (this.I() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+         $$3 = Optional.of(H);
       }
 
-      protected abstract List<asm> s();
-
-      protected abstract List<asm> t();
-
-      @Override
-      public ajv a() {
-         return fnc.this.d.apply(this.b);
-      }
-
-      @Override
-      public asn b() {
-         return this.b.d();
-      }
-
-      @Override
-      public String c() {
-         return this.b.g();
-      }
-
-      @Override
-      public wi d() {
-         return this.b.b();
-      }
-
-      @Override
-      public wi e() {
-         return this.b.c();
-      }
-
-      @Override
-      public asq f() {
-         return this.b.l();
-      }
-
-      @Override
-      public boolean h() {
-         return this.b.j();
-      }
-
-      @Override
-      public boolean i() {
-         return this.b.i();
-      }
-
-      protected void u() {
-         this.s().remove(this.b);
-         this.b.k().a(this.t(), this.b, asm::h, true);
-         fnc.this.e.run();
-         fnc.this.e();
-         this.v();
-      }
-
-      private void v() {
-         if (this.b.g().equals("high_contrast")) {
-            fcb<Boolean> $$0 = fby.Q().m.t();
-            $$0.a(!$$0.c());
+      if (this.y != null) {
+         csd $$4 = this.w.b(0).g();
+         csd $$5 = this.y.g();
+         if ($$4.d()) {
+            if (this.y.e == 0) {
+               $$3 = Optional.of(G);
+            }
+         } else if ($$4.f() instanceof ctf $$6 && $$5.d()) {
+            if (this.y.e == 1) {
+               $$3 = Optional.of($$6.i());
+            } else if (this.y.e == 2) {
+               $$3 = Optional.of($$6.j());
+            }
          }
       }
 
-      protected void a(int $$0) {
-         List<asm> $$1 = this.s();
-         int $$2 = $$1.indexOf(this.b);
-         $$1.remove($$2);
-         $$1.add($$2 + $$0, this.b);
-         fnc.this.e.run();
-      }
-
-      @Override
-      public boolean q() {
-         List<asm> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 > 0 && !$$0.get($$1 - 1).j();
-      }
-
-      @Override
-      public void l() {
-         this.a(-1);
-      }
-
-      @Override
-      public boolean r() {
-         List<asm> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
-      }
-
-      @Override
-      public void m() {
-         this.a(1);
-      }
+      $$3.ifPresent($$3x -> $$0.b(this.p, this.p.c($$3x, 115), $$1, $$2));
    }
 
-   class c extends fnc.b {
-      public c(asm $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected List<asm> s() {
-         return fnc.this.b;
-      }
-
-      @Override
-      protected List<asm> t() {
-         return fnc.this.c;
-      }
-
-      @Override
-      public boolean n() {
-         return true;
-      }
-
-      @Override
-      public void j() {
-      }
-
-      @Override
-      public void k() {
-         this.u();
-      }
-   }
-
-   class d extends fnc.b {
-      public d(asm $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected List<asm> s() {
-         return fnc.this.c;
-      }
-
-      @Override
-      protected List<asm> t() {
-         return fnc.this.b;
-      }
-
-      @Override
-      public boolean n() {
-         return false;
-      }
-
-      @Override
-      public void j() {
-         this.u();
-      }
-
-      @Override
-      public void k() {
-      }
+   private boolean I() {
+      return this.w.b(0).h() && this.w.b(1).h() && this.w.b(2).h() && !this.w.b(this.w.o()).h();
    }
 }

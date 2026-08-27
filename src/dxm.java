@@ -1,66 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxm extends dye<dzz> {
-   public dxm(Codec<dzz> $$0) {
-      super($$0);
+public class dxm extends dxo {
+   public static final Codec<dxm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dxo.d.forGetter($$0x -> $$0x), bnt.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dxm.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dxm::new)
+   );
+   public final bnt b;
+   public final dxm.a c;
+
+   public dxm(float $$0, een $$1, bnt $$2, dwk $$3, dxp $$4, iz<dcv> $$5, bnt $$6, dxm.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   @Override
-   public boolean a(dyg<dzz> $$0) {
-      dab $$1 = $$0.b();
-      dzz $$2 = $$0.f();
-      axt $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
-
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
-         return false;
-      } else {
-         id.a $$8 = $$0.e().j();
-         id.a $$9 = $$8.j().c($$2.b());
-
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
-
-            $$9.c($$2.b());
-         }
-
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               dzz.a $$13 = $$2.a().get($$11);
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
-               }
-            }
-         }
-
-         return true;
-      }
+   public dxm(dxo $$0, bnt $$1, dxm.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
    }
 
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
+   public static class a {
+      public static final Codec<dxm.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bnt.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bnt.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  axe.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bnt.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, dxm.a::new)
+      );
+      public final bnt b;
+      public final bnt c;
+      public final int d;
+      public final bnt e;
+      public final float f;
+      public final float g;
 
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
+      public a(bnt $$0, bnt $$1, int $$2, bnt $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
    }
 }

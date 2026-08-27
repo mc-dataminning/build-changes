@@ -1,84 +1,63 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fnv extends fnu<fvr.a> {
-   private static final int v = 120;
-   private static final wi w = wi.c("gui.chatReport.title");
-   private static final wi x = wi.c("gui.chatReport.select_chat");
-   private final fhp y = fhp.d().a(8);
-   private feq z;
-   private fdy A;
-   private fdy B;
-   private fdy C;
+public abstract class fnv extends fkt {
+   private static final int b = 100;
+   private final ws c;
+   @Nullable
+   private final ws d;
+   private final ws r;
+   @Nullable
+   protected few a;
+   @Nullable
+   private fff s;
+   private final fif u;
 
-   private fnv(fjx $$0, fvy $$1, fvr.a $$2) {
-      super(w, $$0, $$1, $$2);
+   protected fnv(ws $$0, ws $$1, ws $$2) {
+      this($$0, $$1, null, $$2);
    }
 
-   public fnv(fjx $$0, fvy $$1, UUID $$2) {
-      this($$0, $$1, new fvr.a($$2, $$1.a().b()));
+   protected fnv(ws $$0, ws $$1, @Nullable ws $$2, ws $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.r = $$3;
+      this.u = new fif(0, 0, this.n, this.o);
    }
 
-   public fnv(fjx $$0, fvy $$1, fvr $$2) {
-      this($$0, $$1, new fvr.a($$2, $$1.a().b()));
-   }
+   protected abstract fii m();
 
    @Override
    protected void aM_() {
-      this.y.c().b();
-      this.y.a(new fff(this.i, this.m));
-      this.B = this.y.a(fdy.a(x, $$0x -> this.j.a(new fnx(this, this.s, this.u, $$0xx -> {
-            this.u = $$0xx;
-            this.C();
-         }))).a(280).a());
-      this.C = fdy.a(c, $$0x -> this.j.a(new foa(this, this.u.h(), $$0xx -> {
-            this.u.a($$0xx);
-            this.C();
-         }))).a(280).a();
-      this.y.a(fhh.a(this.m, this.C, b));
-      this.z = this.a(280, 9 * 8, $$0x -> {
-         this.u.a($$0x);
-         this.C();
-      });
-      this.y.a(fhh.a(this.m, this.z, d, $$0x -> $$0x.e(12)));
-      fhp $$0 = this.y.a(fhp.e().a(8));
-      $$0.a(fdy.a(wh.k, $$0x -> this.d()).a(120).a());
-      this.A = $$0.a(fdy.a(a, $$0x -> this.m()).a(120).a());
-      this.y.a($$1 -> {
-         fdw var10000 = this.c($$1);
+      fil $$0 = this.u.a(fil.d().a(8));
+      $$0.c().b();
+      $$0.a(new fgb(this.n(), this.p));
+      this.s = $$0.a(new fff(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
+      this.s.b(false);
+      fil $$1 = $$0.a(fil.d().a(8));
+      $$1.c().b();
+      if (this.d != null) {
+         this.a = $$1.a(few.a(this.d, this.p).a());
+      }
+
+      $$1.a(this.m());
+      this.u.a($$1x -> {
+         fes var10000 = this.c($$1x);
       });
       this.c();
-      this.C();
    }
 
    @Override
    protected void c() {
-      this.y.a();
-      fhj.a(this.y, this.G());
-   }
-
-   private void C() {
-      IntSet $$0 = this.u.a();
-      if ($$0.isEmpty()) {
-         this.B.b(x);
-      } else {
-         this.B.b(wi.a("gui.chatReport.selected_chat", $$0.size()));
+      if (this.s != null) {
+         this.s.d(this.n - 100);
       }
 
-      fvw $$1 = this.u.h();
-      if ($$1 != null) {
-         this.C.b($$1.b());
-      } else {
-         this.C.b(c);
-      }
-
-      fvu.b $$2 = this.u.c();
-      this.A.j = $$2 == null;
-      this.A.a(x.a($$2, fvu.b::a));
+      this.u.a();
+      fif.a(this.u, this.G());
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.z.b($$0, $$1, $$2);
+   public ws i() {
+      return this.r;
    }
 }

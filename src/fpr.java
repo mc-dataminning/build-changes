@@ -1,98 +1,59 @@
-public class fpr extends fre<cdo> implements fpu {
-   private final ftv a;
-   private final ftv b;
-   private final ftv f;
-   private final ftv g;
-   private final ftv h;
-   private final ftv i;
-   private final ftv j;
-   private static final float k = (float) (Math.PI / 4);
-   private static final float l = -1.134464F;
-   private static final float m = (float) (-Math.PI / 3);
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-   public fpr(ftv $$0) {
-      super(gaq::i);
-      this.a = $$0.b("root");
-      this.b = this.a.b("head");
-      this.f = this.a.b("body");
-      this.g = this.f.b("right_arm");
-      this.h = this.f.b("left_arm");
-      this.i = this.f.b("right_wing");
-      this.j = this.f.b("left_wing");
+public record fpr(dwo a, ji<dtr> b, dwl c, jc<ako> d, akp e, dao f) {
+   public fpr(dwm $$0, jc<ako> $$1, akp $$2, dao $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   @Override
-   public ftv a() {
+   public fpr(dwo $$0, dwl $$1, jc<ako> $$2, akp $$3, dao $$4) {
+      this($$0, $$2.a(ako.c).d(ld.aS), $$1, $$2.a(ako.c), $$3, $$4);
+   }
+
+   public fpr a(dwo $$0, dwl $$1) {
+      return new fpr($$0, this.b, $$1, this.d, this.e, this.f);
+   }
+
+   public fpr a(fpr.b $$0) {
+      return new fpr($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public fpr a(fpr.a $$0) {
+      return new fpr(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   }
+
+   public jj.b a() {
+      return this.d.a();
+   }
+
+   public dwo b() {
       return this.a;
    }
 
-   public static fub b() {
-      fud $$0 = new fud();
-      fue $$1 = $$0.a();
-      fue $$2 = $$1.a("root", fua.c(), ftx.a(0.0F, 23.5F, 0.0F));
-      $$2.a("head", fua.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new ftz(0.0F)), ftx.a(0.0F, -3.99F, 0.0F));
-      fue $$3 = $$2.a(
-         "body",
-         fua.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new ftz(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new ftz(-0.2F)),
-         ftx.a(0.0F, -4.0F, 0.0F)
-      );
-      $$3.a("right_arm", fua.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new ftz(-0.01F)), ftx.a(-1.75F, 0.5F, 0.0F));
-      $$3.a("left_arm", fua.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new ftz(-0.01F)), ftx.a(1.75F, 0.5F, 0.0F));
-      $$3.a("right_wing", fua.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new ftz(0.0F)), ftx.a(-0.5F, 0.0F, 0.6F));
-      $$3.a("left_wing", fua.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new ftz(0.0F)), ftx.a(0.5F, 0.0F, 0.6F));
-      return fub.a($$0, 32, 32);
+   public ji<dtr> c() {
+      return this.b;
    }
 
-   public void a(cdo $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(ftv::c);
-      float $$6 = $$3 * 20.0F * (float) (Math.PI / 180.0) + $$1;
-      float $$7 = axm.b($$6) * (float) Math.PI * 0.15F + $$2;
-      float $$8 = $$3 - (float)$$0.ah;
-      float $$9 = $$3 * 9.0F * (float) (Math.PI / 180.0);
-      float $$10 = Math.min($$2 / 0.3F, 1.0F);
-      float $$11 = 1.0F - $$10;
-      float $$12 = $$0.G($$8);
-      if ($$0.gn()) {
-         float $$13 = $$3 * 8.0F * (float) (Math.PI / 180.0) + $$2;
-         float $$14 = axm.b($$13) * 16.0F * (float) (Math.PI / 180.0);
-         float $$15 = $$0.H($$8);
-         float $$16 = axm.b($$13) * 14.0F * (float) (Math.PI / 180.0);
-         float $$17 = axm.b($$13) * 30.0F * (float) (Math.PI / 180.0);
-         this.a.f = $$0.go() ? (float) (Math.PI * 4) * $$15 : this.a.f;
-         this.a.g = $$14 * (1.0F - $$15);
-         this.b.f = $$17 * (1.0F - $$15);
-         this.b.g = $$16 * (1.0F - $$15);
-      } else {
-         this.b.e = $$5 * (float) (Math.PI / 180.0);
-         this.b.f = $$4 * (float) (Math.PI / 180.0);
-      }
-
-      this.i.e = 0.43633232F * (1.0F - $$10);
-      this.i.f = (float) (-Math.PI / 4) + $$7;
-      this.j.e = 0.43633232F * (1.0F - $$10);
-      this.j.f = (float) (Math.PI / 4) - $$7;
-      this.f.e = $$10 * (float) (Math.PI / 4);
-      float $$18 = $$12 * axm.i($$10, (float) (-Math.PI / 3), -1.134464F);
-      this.a.c = this.a.c + (float)Math.cos((double)$$9) * 0.25F * $$11;
-      this.g.e = $$18;
-      this.h.e = $$18;
-      float $$19 = $$11 * (1.0F - $$12);
-      float $$20 = 0.43633232F - axm.b($$9 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$19;
-      this.h.g = -$$20;
-      this.g.g = $$20;
-      this.g.f = 0.27925268F * $$12;
-      this.h.f = -0.27925268F * $$12;
+   public dwl d() {
+      return this.c;
    }
 
-   @Override
-   public void a(bqn $$0, ewr $$1) {
-      float $$2 = 1.0F;
-      float $$3 = 3.0F;
-      this.a.a($$1);
-      this.f.a($$1);
-      $$1.a(0.0F, 0.0625F, 0.1875F);
-      $$1.a(a.b.rotation(this.g.e));
-      $$1.b(0.7F, 0.7F, 0.7F);
-      $$1.a(0.0625F, 0.0F, 0.0F);
+   public jc<ako> e() {
+      return this.d;
+   }
+
+   public akp f() {
+      return this.e;
+   }
+
+   public dao g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<jj.b, dwl, dwl> {
+   }
+
+   public interface b extends UnaryOperator<dwo> {
    }
 }

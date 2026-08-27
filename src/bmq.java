@@ -1,52 +1,141 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
 
-public class bmq {
-   public static final Codec<bmq> a = Codec.INT.xmap(bmq::a, bmq::a);
-   private static final bmq b = new bmq(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
+public class bmq implements bms {
+   public static final int a = 10;
+   @Nullable
+   private static Consumer<Path> b = null;
+   private final Map<bml, List<bmx>> c = new Object2ObjectOpenHashMap();
+   private final bky d;
+   private final Executor e;
+   private final bmw f;
+   private final Consumer<bld> g;
+   private final Consumer<Path> h;
+   private final bmn i;
+   private final LongSupplier j;
+   private final long k;
+   private int l;
+   private blc m;
+   private volatile boolean n;
+   private Set<bml> o = ImmutableSet.of();
 
-   private bmq(int $$0) {
-      this.d = $$0;
+   private bmq(bmn $$0, LongSupplier $$1, Executor $$2, bmw $$3, Consumer<bld> $$4, Consumer<Path> $$5) {
+      this.i = $$0;
+      this.j = $$1;
+      this.d = new bky($$1, () -> this.l);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = b == null ? $$5 : $$5.andThen(b);
+      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
+      this.m = new bkx(this.j, () -> this.l, false);
+      this.d.c();
    }
 
-   public static bmq a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new bmq($$0);
+   public static bmq a(bmn $$0, LongSupplier $$1, Executor $$2, bmw $$3, Consumer<bld> $$4, Consumer<Path> $$5) {
+      return new bmq($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public synchronized void a() {
+      if (this.e()) {
+         this.n = true;
       }
    }
 
-   public int a() {
-      return this.d;
+   @Override
+   public synchronized void b() {
+      if (this.e()) {
+         this.m = blb.a;
+         this.g.accept(bkz.a);
+         this.a(this.o);
+      }
    }
 
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aW) {
-            c.warn("Found 0 weight, make sure this is intentional!");
+   @Override
+   public void c() {
+      this.g();
+      this.o = this.i.a(() -> this.m);
+
+      for (bml $$0 : this.o) {
+         $$0.a();
+      }
+
+      this.l++;
+   }
+
+   @Override
+   public void d() {
+      this.g();
+      if (this.l != 0) {
+         for (bml $$0 : this.o) {
+            $$0.a(this.l);
+            if ($$0.g()) {
+               bmx $$1 = new bmx(Instant.now(), this.l, this.m.d());
+               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+            }
+         }
+
+         if (!this.n && this.j.getAsLong() <= this.k) {
+            this.m = new bkx(this.j, () -> this.l, false);
+         } else {
+            this.n = false;
+            bld $$2 = this.d.e();
+            this.m = blb.a;
+            this.g.accept($$2);
+            this.a($$2);
          }
       }
    }
 
    @Override
-   public String toString() {
-      return Integer.toString(this.d);
+   public boolean e() {
+      return this.d.a();
    }
 
    @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
+   public ble f() {
+      return ble.a(this.d.d(), this.m);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof bmq && this.d == ((bmq)$$0).d;
+   private void g() {
+      if (!this.e()) {
+         throw new IllegalStateException("Not started!");
+      }
+   }
+
+   private void a(bld $$0) {
+      HashSet<bml> $$1 = new HashSet<>(this.o);
+      this.e.execute(() -> {
+         Path $$2 = this.f.a($$1, this.c, $$0);
+         this.a($$1);
+         this.h.accept($$2);
+      });
+   }
+
+   private void a(Collection<bml> $$0) {
+      for (bml $$1 : $$0) {
+         $$1.b();
+      }
+
+      this.c.clear();
+      this.d.b();
+   }
+
+   public static void a(Consumer<Path> $$0) {
+      b = $$0;
    }
 }

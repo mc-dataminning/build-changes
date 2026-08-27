@@ -1,47 +1,69 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
 import javax.annotation.Nullable;
 
-public class euw implements euu {
-   private final Int2ObjectMap<eut.a> b;
-
-   public euw(Map<Integer, Float> $$0) {
-      this.b = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (eut.a)() -> $$1));
-   }
-
-   @Nullable
-   @Override
-   public eut a(int $$0) {
-      return (eut)this.b.get($$0);
-   }
-
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.b.keySet());
-   }
-
-   public static record a(Map<Integer, Float> c) implements fha {
-      public static final MapCodec<euw.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(awu.x, Codec.FLOAT).fieldOf("advances").forGetter(euw.a::c)).apply($$0, euw.a::new)
-      );
-
-      @Override
-      public fhb a() {
-         return fhb.c;
+public record euw<T>(T d, im e, long f, eva g, long h) {
+   public static final Comparator<euw<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
+      } else {
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+      }
+   };
+   public static final Comparator<euw<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<euw<?>> c = new Strategy<euw<?>>() {
+      public int a(euw<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
       }
 
-      @Override
-      public Either<fha.b, fha.c> b() {
-         fha.b $$0 = $$0x -> new euw(this.c);
-         return Either.left($$0);
+      public boolean a(@Nullable euw<?> $$0, @Nullable euw<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+         }
       }
+   };
+
+   public euw(T $$0, im $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, eva.d, $$3);
+   }
+
+   public euw(T d, im e, long f, eva g, long h) {
+      e = e.i();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
+   }
+
+   public static <T> euw<T> a(T $$0, im $$1) {
+      return new euw<>($$0, $$1, 0L, eva.d, 0L);
+   }
+
+   public T a() {
+      return this.d;
+   }
+
+   public im b() {
+      return this.e;
+   }
+
+   public long c() {
+      return this.f;
+   }
+
+   public eva d() {
+      return this.g;
+   }
+
+   public long e() {
+      return this.h;
    }
 }

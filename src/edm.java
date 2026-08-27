@@ -1,76 +1,71 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import java.util.Set;
 
-public abstract class edm {
-   public static final Codec<edm> c = kt.X.q().dispatch(edm::a, edn::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
+public class edm extends edq {
+   public static final Codec<edm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               ecz.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               axe.a(ir.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, edm::new)
+   );
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final ecz e;
    protected final int f;
-   protected final int g;
+   protected final List<ir> g;
 
-   protected static <P extends edm> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
+   public edm(float $$0, int $$1, int $$2, ecz $$3, int $$4, List<ir> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   public edm(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
+   @Override
+   public void a(edq.a $$0) {
+      Set<im> $$1 = new HashSet<>();
+      ayd $$2 = $$0.b();
 
-   protected abstract edn<?> a();
+      for (im $$3 : ac.a($$0.d(), $$2)) {
+         ir $$4 = ac.a(this.g, $$2);
+         im $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            im $$6 = $$5.b(-this.c, -this.d, -this.c);
+            im $$7 = $$5.b(this.c, this.d, this.c);
 
-   public abstract List<ebu.a> a(czm var1, BiConsumer<id, dpi> var2, axt var3, int var4, id var5, ebe var6);
+            for (im $$8 : im.c($$6, $$7)) {
+               $$1.add($$8.i());
+            }
 
-   public int a(axt $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
-
-   private static boolean c(czm $$0, id $$1) {
-      return $$0.a($$1, $$0x -> dye.b($$0x) && !$$0x.a(dcj.i) && !$$0x.a(dcj.fl));
-   }
-
-   protected static void a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, id $$3, ebe $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
       }
    }
 
-   protected boolean b(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, id $$3, ebe $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, id $$3, ebe $$4, Function<dpi, dpi> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
+   private boolean a(edq.a $$0, im $$1, ir $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         im $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
       }
+
+      return true;
    }
 
-   protected void a(czm $$0, BiConsumer<id, dpi> $$1, axt $$2, id.a $$3, ebe $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(czm $$0, id $$1) {
-      return dzq.c($$0, $$1);
-   }
-
-   public boolean b(czm $$0, id $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(ave.t));
+   @Override
+   protected edr<?> a() {
+      return edr.f;
    }
 }

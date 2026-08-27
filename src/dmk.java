@@ -1,25 +1,20 @@
-public class dmk extends dmo {
-   private cql a;
+import com.mojang.serialization.MapCodec;
 
-   public dmk(id $$0, dpi $$1) {
-      super(dmq.y, $$0, $$1);
-      this.a = ((dca)$$1.b()).b();
+public class dmk extends dgj {
+   public static final MapCodec<dmk> c = b(dmk::new);
+   public static final ety e = dcv.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+
+   @Override
+   public MapCodec<dmk> a() {
+      return c;
    }
 
-   public dmk(id $$0, dpi $$1, cql $$2) {
-      super(dmq.y, $$0, $$1);
-      this.a = $$2;
+   public dmk(dpx.d $$0) {
+      super($$0, ir.a, e, false);
    }
 
-   public abh b() {
-      return abh.a(this);
-   }
-
-   public cql c() {
-      return this.a;
-   }
-
-   public void a(cql $$0) {
-      this.a = $$0;
+   @Override
+   protected dgk c() {
+      return (dgk)dcx.oz;
    }
 }

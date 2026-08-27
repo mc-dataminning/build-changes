@@ -1,197 +1,219 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public abstract class eto {
+   private static final ir.a[] d = ir.a.values();
+   protected final int a;
+   protected final int b;
+   protected final int c;
 
-public class eto extends emi {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final etn c;
-
-   public eto(etn $$0) {
-      this.c = $$0;
+   protected eto(int $$0, int $$1, int $$2) {
+      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      } else {
+         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
+      }
    }
 
-   public eto b(to $$0, ip.a $$1) {
-      this.b($$0.c("Objectives", 10), $$1);
-      this.c.a($$0.c("PlayerScores", 10), $$1);
-      if ($$0.b("DisplaySlots", 10)) {
-         this.a($$0.p("DisplaySlots"));
-      }
-
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10), $$1);
-      }
-
-      return this;
+   public boolean a(ij $$0, int $$1, int $$2, int $$3) {
+      return this.e($$0.a($$1, $$2, $$3, ir.a.a), $$0.a($$1, $$2, $$3, ir.a.b), $$0.a($$1, $$2, $$3, ir.a.c));
    }
 
-   private void a(tu $$0, ip.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         to $$3 = $$0.a($$2);
-         String $$4 = $$3.l("Name");
-         eti $$5 = this.c.c($$4);
-         wi $$6 = wi.a.a($$3.l("DisplayName"), $$1);
-         if ($$6 != null) {
-            $$5.a($$6);
-         }
+   public boolean e(int $$0, int $$1, int $$2) {
+      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
+         return false;
+      } else {
+         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
+      }
+   }
 
-         if ($$3.b("TeamColor", 8)) {
-            $$5.a(n.b($$3.l("TeamColor")));
-         }
+   public boolean b(ij $$0, int $$1, int $$2, int $$3) {
+      return this.b($$0.a($$1, $$2, $$3, ir.a.a), $$0.a($$1, $$2, $$3, ir.a.b), $$0.a($$1, $$2, $$3, ir.a.c));
+   }
 
-         if ($$3.b("AllowFriendlyFire", 99)) {
-            $$5.a($$3.q("AllowFriendlyFire"));
-         }
+   public abstract boolean b(int var1, int var2, int var3);
 
-         if ($$3.b("SeeFriendlyInvisibles", 99)) {
-            $$5.b($$3.q("SeeFriendlyInvisibles"));
-         }
+   public abstract void c(int var1, int var2, int var3);
 
-         if ($$3.b("MemberNamePrefix", 8)) {
-            wi $$7 = wi.a.a($$3.l("MemberNamePrefix"), $$1);
-            if ($$7 != null) {
-               $$5.b($$7);
+   public boolean a() {
+      for (ir.a $$0 : d) {
+         if (this.a($$0) >= this.b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public abstract int a(ir.a var1);
+
+   public abstract int b(ir.a var1);
+
+   public int a(ir.a $$0, int $$1, int $$2) {
+      int $$3 = this.c($$0);
+      if ($$1 >= 0 && $$2 >= 0) {
+         ir.a $$4 = ij.b.a($$0);
+         ir.a $$5 = ij.c.a($$0);
+         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
+            ij $$6 = ij.a(ir.a.a, $$0);
+
+            for (int $$7 = 0; $$7 < $$3; $$7++) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7;
+               }
+            }
+
+            return $$3;
+         } else {
+            return $$3;
+         }
+      } else {
+         return $$3;
+      }
+   }
+
+   public int b(ir.a $$0, int $$1, int $$2) {
+      if ($$1 >= 0 && $$2 >= 0) {
+         ir.a $$3 = ij.b.a($$0);
+         ir.a $$4 = ij.c.a($$0);
+         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
+            int $$5 = this.c($$0);
+            ij $$6 = ij.a(ir.a.a, $$0);
+
+            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7 + 1;
+               }
+            }
+
+            return 0;
+         } else {
+            return 0;
+         }
+      } else {
+         return 0;
+      }
+   }
+
+   public int c(ir.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
+
+   public int b() {
+      return this.c(ir.a.a);
+   }
+
+   public int c() {
+      return this.c(ir.a.b);
+   }
+
+   public int d() {
+      return this.c(ir.a.c);
+   }
+
+   public void a(eto.b $$0, boolean $$1) {
+      this.a($$0, ij.a, $$1);
+      this.a($$0, ij.b, $$1);
+      this.a($$0, ij.c, $$1);
+   }
+
+   private void a(eto.b $$0, ij $$1, boolean $$2) {
+      ij $$3 = $$1.a();
+      int $$4 = this.c($$3.a(ir.a.a));
+      int $$5 = this.c($$3.a(ir.a.b));
+      int $$6 = this.c($$3.a(ir.a.c));
+
+      for (int $$7 = 0; $$7 <= $$4; $$7++) {
+         for (int $$8 = 0; $$8 <= $$5; $$8++) {
+            int $$9 = -1;
+
+            for (int $$10 = 0; $$10 <= $$6; $$10++) {
+               int $$11 = 0;
+               int $$12 = 0;
+
+               for (int $$13 = 0; $$13 <= 1; $$13++) {
+                  for (int $$14 = 0; $$14 <= 1; $$14++) {
+                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
+                        $$11++;
+                        $$12 ^= $$13 ^ $$14;
+                     }
+                  }
+               }
+
+               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
+                  if ($$2) {
+                     if ($$9 == -1) {
+                        $$9 = $$10;
+                     }
+                  } else {
+                     $$0.consume(
+                        $$3.a($$7, $$8, $$10, ir.a.a),
+                        $$3.a($$7, $$8, $$10, ir.a.b),
+                        $$3.a($$7, $$8, $$10, ir.a.c),
+                        $$3.a($$7, $$8, $$10 + 1, ir.a.a),
+                        $$3.a($$7, $$8, $$10 + 1, ir.a.b),
+                        $$3.a($$7, $$8, $$10 + 1, ir.a.c)
+                     );
+                  }
+               } else if ($$9 != -1) {
+                  $$0.consume(
+                     $$3.a($$7, $$8, $$9, ir.a.a),
+                     $$3.a($$7, $$8, $$9, ir.a.b),
+                     $$3.a($$7, $$8, $$9, ir.a.c),
+                     $$3.a($$7, $$8, $$10, ir.a.a),
+                     $$3.a($$7, $$8, $$10, ir.a.b),
+                     $$3.a($$7, $$8, $$10, ir.a.c)
+                  );
+                  $$9 = -1;
+               }
             }
          }
+      }
+   }
 
-         if ($$3.b("MemberNameSuffix", 8)) {
-            wi $$8 = wi.a.a($$3.l("MemberNameSuffix"), $$1);
-            if ($$8 != null) {
-               $$5.c($$8);
+   public void b(eto.b $$0, boolean $$1) {
+      eti.a(this, $$0, $$1);
+   }
+
+   public void a(eto.a $$0) {
+      this.a($$0, ij.a);
+      this.a($$0, ij.b);
+      this.a($$0, ij.c);
+   }
+
+   private void a(eto.a $$0, ij $$1) {
+      ij $$2 = $$1.a();
+      ir.a $$3 = $$2.a(ir.a.c);
+      int $$4 = this.c($$2.a(ir.a.a));
+      int $$5 = this.c($$2.a(ir.a.b));
+      int $$6 = this.c($$3);
+      ir $$7 = ir.a($$3, ir.b.b);
+      ir $$8 = ir.a($$3, ir.b.a);
+
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         for (int $$10 = 0; $$10 < $$5; $$10++) {
+            boolean $$11 = false;
+
+            for (int $$12 = 0; $$12 <= $$6; $$12++) {
+               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
+               if (!$$11 && $$13) {
+                  $$0.consume($$7, $$2.a($$9, $$10, $$12, ir.a.a), $$2.a($$9, $$10, $$12, ir.a.b), $$2.a($$9, $$10, $$12, ir.a.c));
+               }
+
+               if ($$11 && !$$13) {
+                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, ir.a.a), $$2.a($$9, $$10, $$12 - 1, ir.a.b), $$2.a($$9, $$10, $$12 - 1, ir.a.c));
+               }
+
+               $$11 = $$13;
             }
          }
-
-         if ($$3.b("NameTagVisibility", 8)) {
-            etp.b $$9 = etp.b.a($$3.l("NameTagVisibility"));
-            if ($$9 != null) {
-               $$5.a($$9);
-            }
-         }
-
-         if ($$3.b("DeathMessageVisibility", 8)) {
-            etp.b $$10 = etp.b.a($$3.l("DeathMessageVisibility"));
-            if ($$10 != null) {
-               $$5.b($$10);
-            }
-         }
-
-         if ($$3.b("CollisionRule", 8)) {
-            etp.a $$11 = etp.a.a($$3.l("CollisionRule"));
-            if ($$11 != null) {
-               $$5.a($$11);
-            }
-         }
-
-         this.a($$5, $$3.c("Players", 8));
       }
    }
 
-   private void a(eti $$0, tu $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
+   public interface a {
+      void consume(ir var1, int var2, int var3, int var4);
    }
 
-   private void a(to $$0) {
-      for (String $$1 : $$0.e()) {
-         ete $$2 = ete.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            etf $$4 = this.c.a($$3);
-            this.c.a($$2, $$4);
-         }
-      }
-   }
-
-   private void b(tu $$0, ip.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         to $$3 = $$0.a($$2);
-         String $$4 = $$3.l("CriteriaName");
-         etq $$5 = etq.a($$4).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$4, etq.b.d());
-            return etq.b;
-         });
-         String $$6 = $$3.l("Name");
-         wi $$7 = wi.a.a($$3.l("DisplayName"), $$1);
-         etq.a $$8 = etq.a.a($$3.l("RenderType"));
-         boolean $$9 = $$3.q("display_auto_update");
-         xy $$10 = (xy)ya.b.parse($$1.a(uc.a), $$3.c("format")).result().orElse(null);
-         this.c.a($$6, $$5, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   @Override
-   public to a(to $$0, ip.a $$1) {
-      $$0.a("Objectives", this.b($$1));
-      $$0.a("PlayerScores", this.c.a($$1));
-      $$0.a("Teams", this.a($$1));
-      this.b($$0);
-      return $$0;
-   }
-
-   private tu a(ip.a $$0) {
-      tu $$1 = new tu();
-
-      for (eti $$3 : this.c.g()) {
-         to $$4 = new to();
-         $$4.a("Name", $$3.b());
-         $$4.a("DisplayName", wi.a.a($$3.c(), $$0));
-         if ($$3.n().b() >= 0) {
-            $$4.a("TeamColor", $$3.n().g());
-         }
-
-         $$4.a("AllowFriendlyFire", $$3.h());
-         $$4.a("SeeFriendlyInvisibles", $$3.i());
-         $$4.a("MemberNamePrefix", wi.a.a($$3.e(), $$0));
-         $$4.a("MemberNameSuffix", wi.a.a($$3.f(), $$0));
-         $$4.a("NameTagVisibility", $$3.j().e);
-         $$4.a("DeathMessageVisibility", $$3.k().e);
-         $$4.a("CollisionRule", $$3.l().e);
-         tu $$5 = new tu();
-
-         for (String $$6 : $$3.g()) {
-            $$5.add(uj.a($$6));
-         }
-
-         $$4.a("Players", $$5);
-         $$1.add($$4);
-      }
-
-      return $$1;
-   }
-
-   private void b(to $$0) {
-      to $$1 = new to();
-
-      for (ete $$2 : ete.values()) {
-         etf $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
-      }
-   }
-
-   private tu b(ip.a $$0) {
-      tu $$1 = new tu();
-
-      for (etf $$3 : this.c.c()) {
-         to $$4 = new to();
-         $$4.a("Name", $$3.b());
-         $$4.a("CriteriaName", $$3.c().d());
-         $$4.a("DisplayName", wi.a.a($$3.d(), $$0));
-         $$4.a("RenderType", $$3.h().a());
-         $$4.a("display_auto_update", $$3.e());
-         xy $$5 = $$3.f();
-         if ($$5 != null) {
-            ya.b.encodeStart($$0.a(uc.a), $$5).result().ifPresent($$1x -> $$4.a("format", $$1x));
-         }
-
-         $$1.add($$4);
-      }
-
-      return $$1;
+   public interface b {
+      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
    }
 }

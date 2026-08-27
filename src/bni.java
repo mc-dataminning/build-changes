@@ -1,27 +1,50 @@
 import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
-public abstract class bni implements bnn {
-   private static final Codec<Either<Float, bni>> a = Codec.either(Codec.FLOAT, kt.L.q().dispatch(bni::c, bnj::codec));
-   public static final Codec<bni> c = a.xmap(
-      $$0 -> (bni)$$0.map(bng::a, $$0x -> $$0x), $$0 -> $$0.c() == bnj.a ? Either.left(((bng)$$0).d()) : Either.right($$0)
-   );
+public interface bni<Msg> extends AutoCloseable {
+   String bx();
 
-   public static Codec<bni> a(float $$0, float $$1) {
-      return awu.b(c, (Function<bni, DataResult<bni>>)($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      }));
+   void a(Msg var1);
+
+   @Override
+   default void close() {
    }
 
-   public abstract float a();
+   default <Source> CompletableFuture<Source> b(Function<? super bni<Source>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
+      this.a($$2);
+      return $$1;
+   }
 
-   public abstract float b();
+   default <Source> CompletableFuture<Source> c(Function<? super bni<Either<Source, Exception>>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
+         $$1x.ifLeft($$1::complete);
+         $$1x.ifRight($$1::completeExceptionally);
+      }));
+      this.a($$2);
+      return $$1;
+   }
 
-   public abstract bnj<?> c();
+   static <Msg> bni<Msg> a(final String $$0, final Consumer<Msg> $$1) {
+      return new bni<Msg>() {
+         @Override
+         public String bx() {
+            return $$0;
+         }
+
+         @Override
+         public void a(Msg $$0x) {
+            $$1.accept($$0);
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
+   }
 }

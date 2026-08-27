@@ -1,64 +1,146 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class epa {
-   public static final BiFunction<crs, enk, crs> a = ($$0, $$1) -> $$0;
-   private static final Codec<eoy> F = kt.G.q().dispatch("function", eoy::b, eoz::a);
-   public static final Codec<eoy> b = awu.a((Supplier<Codec<eoy>>)(() -> awu.e(F, epc.b)));
-   public static final eoz c = a("set_count", epl.a);
-   public static final eoz d = a("enchant_with_levels", eor.a);
-   public static final eoz e = a("enchant_randomly", eoq.a);
-   public static final eoz f = a("set_enchantments", epj.a);
-   public static final eoz g = a("set_custom_data", epi.a);
-   public static final eoz h = a("set_components", epf.a);
-   public static final eoz i = a("furnace_smelt", epr.a);
-   public static final eoz j = a("looting_enchant", epb.b);
-   public static final eoz k = a("set_damage", epm.a);
-   public static final eoz l = a("set_attributes", epd.a);
-   public static final eoz m = a("set_name", epo.a);
-   public static final eoz n = a("exploration_map", eos.f);
-   public static final eoz o = a("set_stew_effect", epq.a);
-   public static final eoz p = a("copy_name", eop.a);
-   public static final eoz q = a("set_contents", epg.a);
-   public static final eoz r = a("limit_count", eow.a);
-   public static final eoz s = a("apply_bonus", eok.a);
-   public static final eoz t = a("set_loot_table", eph.a);
-   public static final eoz u = a("explosion_decay", eol.a);
-   public static final eoz v = a("set_lore", epn.a);
-   public static final eoz w = a("fill_player_head", eot.a);
-   public static final eoz x = a("copy_custom_data", eoo.a);
-   public static final eoz y = a("copy_state", eom.a);
-   public static final eoz z = a("set_banner_pattern", epe.a);
-   public static final eoz A = a("set_potion", epp.a);
-   public static final eoz B = a("set_instrument", epk.a);
-   public static final eoz C = a("reference", eou.a);
-   public static final eoz D = a("sequence", epc.a);
-   public static final eoz E = a("copy_components", eon.a);
+public class epa extends epo {
+   private static final Map<akf, epa.c> b = Stream.of(epa.a.a, epa.d.b, epa.e.b).collect(Collectors.toMap(epa.c::a, Function.identity()));
+   private static final Codec<epa.c> c = akf.a.comapFlatMap($$0 -> {
+      epa.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, epa.c::a);
+   private static final MapCodec<epa.b> d = axe.a("formula", "parameters", c, epa.b::a, epa.c::b);
+   public static final Codec<epa> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and($$0.group(lc.f.r().fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, epa::new)
+   );
+   private final iv<cxn> e;
+   private final epa.b f;
 
-   private static eoz a(String $$0, Codec<? extends eoy> $$1) {
-      return ja.a(kt.G, new ajv($$0), new eoz($$1));
+   private epa(List<erh> $$0, iv<cxn> $$1, epa.b $$2) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static BiFunction<crs, enk, crs> a(List<? extends BiFunction<crs, enk, crs>> $$0) {
-      List<BiFunction<crs, enk, crs>> $$1 = List.copyOf($$0);
+   @Override
+   public epq b() {
+      return epr.s;
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<crs, enk, crs> $$2 = $$1.get(0);
-            BiFunction<crs, enk, crs> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
-         }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<crs, enk, crs> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
+   @Override
+   public Set<eqq<?>> a() {
+      return ImmutableSet.of(eqt.i);
+   }
+
+   @Override
+   public csd a(csd $$0, eoa $$1) {
+      csd $$2 = $$1.c(eqt.i);
+      if ($$2 != null) {
+         int $$3 = cxo.a(this.e.a(), $$2);
+         int $$4 = this.f.a($$1.b(), $$0.G(), $$3);
+         $$0.e($$4);
+      }
+
+      return $$0;
+   }
+
+   public static epo.a<?> a(cxn $$0, float $$1, int $$2) {
+      return a($$3 -> new epa($$3, $$0.k(), new epa.a($$2, $$1)));
+   }
+
+   public static epo.a<?> a(cxn $$0) {
+      return a($$1 -> new epa($$1, $$0.k(), new epa.d()));
+   }
+
+   public static epo.a<?> b(cxn $$0) {
+      return a($$1 -> new epa($$1, $$0.k(), new epa.e(1)));
+   }
+
+   public static epo.a<?> a(cxn $$0, int $$1) {
+      return a($$2 -> new epa($$2, $$0.k(), new epa.e($$1)));
+   }
+
+   static record a(int b, float c) implements epa.b {
+      private static final Codec<epa.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(epa.a::b), Codec.FLOAT.fieldOf("probability").forGetter(epa.a::c)).apply($$0, epa.a::new)
+      );
+      public static final epa.c a = new epa.c(new akf("binomial_with_bonus_count"), d);
+
+      @Override
+      public int a(ayd $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
          }
 
-         return $$1x;
-      };
-      };
+         return $$1;
+      }
+
+      @Override
+      public epa.c a() {
+         return a;
+      }
+   }
+
+   interface b {
+      int a(ayd var1, int var2, int var3);
+
+      epa.c a();
+   }
+
+   static record c(akf a, Codec<? extends epa.b> b) {
+   }
+
+   static record d() implements epa.b {
+      public static final Codec<epa.d> a = Codec.unit(epa.d::new);
+      public static final epa.c b = new epa.c(new akf("ore_drops"), a);
+
+      @Override
+      public int a(ayd $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public epa.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements epa.b {
+      public static final Codec<epa.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(epa.e::b)).apply($$0, epa.e::new)
+      );
+      public static final epa.c b = new epa.c(new akf("uniform_bonus_count"), a);
+
+      @Override
+      public int a(ayd $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public epa.c a() {
+         return b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

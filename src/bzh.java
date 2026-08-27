@@ -1,42 +1,67 @@
 import java.util.EnumSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class bzh extends bzq {
-   private final ccu a;
+public class bzh extends byb {
+   private static final int a = 10;
+   private final brm b;
+   private final int c;
    @Nullable
-   private bqt b;
-   private final cbj c = cbj.a().a(64.0);
+   private im d;
 
-   public bzh(ccu $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(bxq.a.d));
+   public bzh(brm $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
+      this.a(EnumSet.of(byb.a.a));
    }
 
    @Override
    public boolean a() {
-      ese $$0 = this.a.cH().c(10.0, 8.0, 10.0);
-      List<? extends bqt> $$1 = this.a.dM().a(cjn.class, this.c, this.a, $$0);
-      List<cka> $$2 = this.a.dM().a(this.c, this.a, $$0);
-
-      for (bqt $$3 : $$1) {
-         cjn $$4 = (cjn)$$3;
-
-         for (cka $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
-            }
+      if (this.b.cP()) {
+         return false;
+      } else if (this.b.dN().Q()) {
+         return false;
+      } else if (this.b.ej().a(this.c) != 0) {
+         return false;
+      } else {
+         aqe $$0 = (aqe)this.b.dN();
+         im $$1 = this.b.dn();
+         if (!$$0.a($$1, 6)) {
+            return false;
+         } else {
+            etf $$2 = ccb.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(jo.a($$1x))));
+            this.d = $$2 == null ? null : im.a($$2);
+            return this.d != null;
          }
       }
-
-      return this.b == null ? false : !(this.b instanceof cka) || !this.b.N_() && !((cka)this.b).f();
    }
 
    @Override
-   public void c() {
-      this.a.h(this.b);
-      super.c();
+   public boolean b() {
+      return this.d != null && !this.b.K().l() && this.b.K().h().equals(this.d);
+   }
+
+   @Override
+   public void e() {
+      if (this.d != null) {
+         cap $$0 = this.b.K();
+         if ($$0.l() && !this.d.a(this.b.dl(), 10.0)) {
+            etf $$1 = etf.c(this.d);
+            etf $$2 = this.b.dl();
+            etf $$3 = $$2.d($$1);
+            $$1 = $$3.a(0.4).e($$1);
+            etf $$4 = $$1.d($$2).d().a(10.0).e($$2);
+            im $$5 = im.a($$4);
+            $$5 = this.b.dN().a(dvq.a.f, $$5);
+            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
+               this.h();
+            }
+         }
+      }
+   }
+
+   private void h() {
+      ayd $$0 = this.b.ej();
+      im $$1 = this.b.dN().a(dvq.a.f, this.b.dn().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      this.b.K().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

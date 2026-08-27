@@ -1,57 +1,66 @@
-public class cog extends cos {
-   private final coe a;
-   private final cka b;
-   private int c;
-   private final cyd h;
+public class cog extends cnh {
+   public static final int k = 5;
+   private final boj l;
 
-   public cog(cka $$0, cyd $$1, coe $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+   public cog(int $$0, ckk $$1) {
+      this($$0, $$1, new boz(5));
    }
 
-   @Override
-   public boolean a(crs $$0) {
-      return false;
-   }
+   public cog(int $$0, ckk $$1, boj $$2) {
+      super(cop.q, $$0);
+      this.l = $$2;
+      a($$2, 5);
+      $$2.d_($$1.m);
+      int $$3 = 51;
 
-   @Override
-   public crs a(int $$0) {
-      if (this.h()) {
-         this.c = this.c + Math.min($$0, this.g().G());
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         this.a(new cpd($$2, $$4, 44 + $$4 * 18, 20));
       }
 
-      return super.a($$0);
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cpd($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
+         }
+      }
+
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cpd($$1, $$7, 8 + $$7 * 18, 109));
+      }
    }
 
    @Override
-   protected void a(crs $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
+   public boolean a(ckl $$0) {
+      return this.l.a($$0);
    }
 
    @Override
-   protected void b_(crs $$0) {
-      $$0.a(this.b.dM(), this.b, this.c);
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cka $$0, crs $$1) {
-      this.b_($$1);
-      cye $$2 = this.a.g();
-      if ($$2 != null) {
-         crs $$3 = this.a.a(0);
-         crs $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(auz.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
+   public csd a(ckl $$0, int $$1) {
+      csd $$2 = csd.i;
+      cpd $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         csd $$4 = $$3.g();
+         $$2 = $$4.r();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return csd.i;
+            }
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return csd.i;
          }
 
-         this.h.u(this.h.u() + $$2.q());
+         if ($$4.d()) {
+            $$3.e(csd.i);
+         } else {
+            $$3.b();
+         }
       }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(ckl $$0) {
+      super.b($$0);
+      this.l.c($$0);
    }
 }

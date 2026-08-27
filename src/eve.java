@@ -1,9 +1,9 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.meta.TypeQualifierDefault;
 
-public class eve extends evd {
-   public eve(int $$0, int $$1, boolean $$2, boolean $$3) {
-      super($$2);
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.a($$0, $$1, $$3);
-   }
+@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.CLASS)
+public @interface eve {
 }

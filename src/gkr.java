@@ -1,61 +1,39 @@
-import java.util.Map;
+public class gkr<T extends bre, M extends frr<T> & fqq> extends gky<T, M> {
+   private final gba a;
 
-public class gkr extends gkc<cdl, ftm<cdl>> {
-   private final ftm<cdl> a;
-   private static final Map<bpy.a, ajv> b = Map.of(
-      bpy.a.b,
-      new ajv("textures/entity/wolf/wolf_armor_crackiness_low.png"),
-      bpy.a.c,
-      new ajv("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
-      bpy.a.d,
-      new ajv("textures/entity/wolf/wolf_armor_crackiness_high.png")
-   );
-
-   public gkr(ghm<cdl, ftm<cdl>> $$0, ftr $$1) {
+   public gkr(gii<T, M> $$0, gba $$1) {
       super($$0);
-      this.a = new ftm<>($$1.a(ftu.cd));
+      this.a = $$1;
    }
 
-   public void a(ewr $$0, gai $$1, int $$2, cdl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gz()) {
-         crs $$10 = $$3.fP();
-         if ($$10.f() instanceof cpg $$11) {
-            this.c().a(this.a);
-            this.a.a($$3, $$4, $$5, $$6);
-            this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-            ewv var14 = $$1.getBuffer(gaq.e($$11.b()));
-            this.a.a($$0, var14, $$2, glj.d, 1.0F, 1.0F, 1.0F, 1.0F);
-            this.a($$0, $$1, $$2, $$10, $$11);
-            this.a($$0, $$1, $$2, $$10);
+   public void a(exn $$0, gbe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fs() == bqy.b;
+      csd $$11 = $$10 ? $$3.eW() : $$3.eV();
+      csd $$12 = $$10 ? $$3.eV() : $$3.eW();
+      if (!$$11.d() || !$$12.d()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
          }
+
+         this.a($$3, $$12, csa.c, bqy.b, $$0, $$1, $$2);
+         this.a($$3, $$11, csa.b, bqy.a, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 
-   private void a(ewr $$0, gai $$1, int $$2, crs $$3, cpg $$4) {
-      if ($$3.a(avm.ba)) {
-         int $$5 = cuf.a($$3, 0);
-         if (aww.b.a($$5) == 0) {
-            return;
-         }
-
-         ajv $$6 = $$4.c();
-         if ($$6 == null) {
-            return;
-         }
-
-         float $$7 = (float)aww.b.b($$5) / 255.0F;
-         float $$8 = (float)aww.b.c($$5) / 255.0F;
-         float $$9 = (float)aww.b.d($$5) / 255.0F;
-         this.a.a($$0, $$1.getBuffer(gaq.e($$6)), $$2, glj.d, $$7, $$8, $$9, 1.0F);
-      }
-   }
-
-   private void a(ewr $$0, gai $$1, int $$2, crs $$3) {
-      bpy.a $$4 = bpy.b.a($$3);
-      if ($$4 != bpy.a.a) {
-         ajv $$5 = b.get($$4);
-         ewv $$6 = $$1.getBuffer(gaq.i($$5));
-         this.a.a($$0, $$6, $$2, glj.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected void a(bre $$0, csd $$1, csa $$2, bqy $$3, exn $$4, gbe $$5, int $$6) {
+      if (!$$1.d()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == bqy.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
       }
    }
 }

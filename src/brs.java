@@ -1,5 +1,3 @@
-public interface brs<T> {
-   void a(T var1);
-
-   T d();
+public interface brs {
+   void a(cce var1, bql var2);
 }

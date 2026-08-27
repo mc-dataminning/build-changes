@@ -1,27 +1,17 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
-
-public class fxx {
-   private final List<ajv> a;
-
-   private fxx(List<ajv> $$0) {
-      this.a = $$0;
+public class fxx extends fxy<kq> {
+   protected fxx(fvm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, kq $$7, fzn $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   public List<ajv> a() {
-      return this.a;
-   }
+   public static class a implements fyv<kq> {
+      private final fzn a;
 
-   public static fxx a(JsonObject $$0) {
-      JsonArray $$1 = axc.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new fxx(List.of());
-      } else {
-         List<ajv> $$2 = Streams.stream($$1).map($$0x -> axc.a($$0x, "texture")).map(ajv::new).collect(ImmutableList.toImmutableList());
-         return new fxx($$2);
+      public a(fzn $$0) {
+         this.a = $$0;
+      }
+
+      public fys a(kq $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fxx($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

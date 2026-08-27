@@ -1,21 +1,34 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+import javax.annotation.Nullable;
 
-public class euh {
-   public static void a(evc $$0, float $$1) {
-      ConcurrentLinkedQueue<evb> $$2 = $$0.i();
+public interface euh {
+   int a();
+
+   void a(int var1);
+
+   default int b(int $$0) {
+      int $$1 = this.a() + $$0;
+      this.a($$1);
+      return $$1;
    }
 
-   public static void b(evc $$0, float $$1) {
-      ConcurrentLinkedQueue<evb> $$2 = $$0.j();
+   default int b() {
+      return this.b(1);
    }
 
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
+   default void c() {
+      this.a(0);
    }
 
-   public static double b() {
-      return GLFW.glfwGetTime();
-   }
+   boolean d();
+
+   void e();
+
+   void f();
+
+   @Nullable
+   ws g();
+
+   void a(@Nullable ws var1);
+
+   void a(@Nullable yi var1);
 }

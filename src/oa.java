@@ -1,21 +1,21 @@
-import java.util.function.Function;
+public enum oa {
+   a("building_blocks"),
+   b("decorations"),
+   c("redstone"),
+   d("transportation"),
+   e("tools"),
+   f("combat"),
+   g("food"),
+   h("brewing"),
+   i("misc");
 
-public class oa {
-   private final Function<cvi, cvs<?>> a;
+   private final String j;
 
-   public oa(Function<cvi, cvs<?>> $$0) {
-      this.a = $$0;
+   private oa(String $$0) {
+      this.j = $$0;
    }
 
-   public static oa a(Function<cvi, cvs<?>> $$0) {
-      return new oa($$0);
-   }
-
-   public void a(ns $$0, String $$1) {
-      this.a($$0, new ajv($$1));
-   }
-
-   public void a(ns $$0, ajv $$1) {
-      $$0.a($$1, this.a.apply(cvi.d), null);
+   public String a() {
+      return this.j;
    }
 }

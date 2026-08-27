@@ -1,4 +1,7 @@
-@FunctionalInterface
-public interface yj<O, T> {
-   void encode(T var1, O var2);
+import com.mojang.serialization.MapCodec;
+
+public interface yj<T extends yi> {
+   MapCodec<T> a();
+
+   yq<wd, T> b();
 }

@@ -1,23 +1,61 @@
-import java.util.List;
-import java.util.UUID;
+public class adf implements yz<abk> {
+   public static final yq<vs, adf> a = yz.a(adf::a, adf::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-public record adf(List<UUID> b) implements yp<aba> {
-   public static final yg<vi, adf> a = yp.a(adf::a, adf::new);
-
-   private adf(vi $$0) {
-      this($$0.a(jh.g));
+   public adf(bql $$0) {
+      this.b = $$0.ds();
+      this.c = $$0.du();
+      this.d = $$0.dy();
+      this.e = $$0.dD();
+      this.f = $$0.dF();
    }
 
-   private void a(vi $$0) {
-      $$0.a(this.b, jh.g);
+   private adf(vs $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+   }
+
+   private void a(vs $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public yr<adf> a() {
-      return afl.ae;
+   public zb<adf> a() {
+      return afv.U;
    }
 
-   public void a(aba $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
+   }
+
+   public double b() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

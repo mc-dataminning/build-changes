@@ -1,7 +1,7 @@
-public enum dqq implements ayg {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dqq implements ayq {
+   a("single"),
+   b("left"),
+   c("right");
 
    private final String d;
 
@@ -10,12 +10,15 @@ public enum dqq implements ayg {
    }
 
    @Override
-   public String toString() {
+   public String c() {
       return this.d;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public dqq a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

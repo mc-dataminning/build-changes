@@ -1,91 +1,111 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+import java.util.function.Consumer;
 
-public class fil {
-   private static final wi b = wi.c("gui.banned.title.temporary").a(n.r);
-   private static final wi c = wi.c("gui.banned.title.permanent").a(n.r);
-   public static final wi a = wi.c("gui.banned.name.title").a(n.r);
-   private static final wi d = wi.c("gui.banned.skin.title").a(n.r);
-   private static final wi e = wi.a("gui.banned.skin.description", wi.b("https://aka.ms/mcjavamoderation"));
+public class fil implements fii {
+   private final fig a;
+   private final fil.a b;
+   private int c = 0;
 
-   public static fio a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fio($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", wh.m, true);
+   private fil(fil.a $$0) {
+      this(0, 0, $$0);
    }
 
-   public static fio a(Runnable $$0) {
-      String $$1 = "https://aka.ms/mcjavamoderation";
-      return new fio($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
+   public fil(int $$0, int $$1, fil.a $$2) {
+      this.a = new fig($$0, $$1);
+      this.b = $$2;
+   }
+
+   public fil a(int $$0) {
+      this.b.a(this.a, $$0);
+      return this;
+   }
+
+   public fik b() {
+      return this.a.b();
+   }
+
+   public fik c() {
+      return this.a.c();
+   }
+
+   public <T extends fij> T a(T $$0, fik $$1) {
+      return this.b.a(this.a, $$0, this.c++, $$1);
+   }
+
+   public <T extends fij> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fij> T a(T $$0, Consumer<fik> $$1) {
+      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
+   }
+
+   @Override
+   public void b(Consumer<fij> $$0) {
+      this.a.b($$0);
+   }
+
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public int x() {
+      return this.a.x();
+   }
+
+   @Override
+   public int v() {
+      return this.a.v();
+   }
+
+   @Override
+   public void m(int $$0) {
+      this.a.m($$0);
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.a.n($$0);
+   }
+
+   @Override
+   public int C() {
+      return this.a.C();
+   }
+
+   @Override
+   public int D() {
+      return this.a.D();
+   }
+
+   public static fil d() {
+      return new fil(fil.a.b);
+   }
+
+   public static fil e() {
+      return new fil(fil.a.a);
+   }
+
+   public static enum a {
+      a,
+      b;
+
+      void a(fig $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1);
+               break;
+            case b:
+               $$0.b($$1);
          }
-
-         $$0.run();
-      }, d, e, "https://aka.ms/mcjavamoderation", wh.m, true);
-   }
-
-   public static fio a(String $$0, Runnable $$1) {
-      String $$2 = "https://aka.ms/mcjavamoderation";
-      return new fio($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$1.run();
-      }, a, wi.a("gui.banned.name.description", wi.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", wh.m, true);
-   }
-
-   private static wi a(BanDetails $$0) {
-      return f($$0) ? b : c;
-   }
-
-   private static wi b(BanDetails $$0) {
-      return wi.a("gui.banned.description", c($$0), d($$0), wi.b("https://aka.ms/mcjavamoderation"));
-   }
-
-   private static wi c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         fvq $$4 = fvq.a($$3);
-         wi $$5;
-         if ($$4 != null) {
-            $$5 = wl.a($$4.a().f(), xf.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = wi.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = wi.a("gui.banned.description.reason_id", $$3).a(n.r);
-         }
-
-         return wi.a("gui.banned.description.reason", $$5);
-      } else {
-         return wi.c("gui.banned.description.unknownreason");
       }
-   }
 
-   private static wi d(BanDetails $$0) {
-      if (f($$0)) {
-         wi $$1 = e($$0);
-         return wi.a("gui.banned.description.temporary", wi.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return wi.c("gui.banned.description.permanent").a(n.r);
+      public <T extends fij> T a(fig $$0, T $$1, int $$2, fik $$3) {
+         return (T)(switch (this) {
+            case a -> $$0.a($$1, 0, $$2, $$3);
+            case b -> $$0.a($$1, $$2, 0, $$3);
+         });
       }
-   }
-
-   private static wi e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return wh.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? wh.c($$1.toMinutes()) : wh.b($$1.toHours());
-      }
-   }
-
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
    }
 }

@@ -1,24 +1,32 @@
-public class byt extends bxq {
-   private final brb a;
+public class byt extends bxs {
+   private final boolean a;
+   private int b;
 
-   public byt(brb $$0) {
-      this.a = $$0;
+   public byt(brg $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean a() {
-      return this.a.dM().Q() && this.a.d(bqh.f).d() && cbo.a(this.a);
+   public boolean b() {
+      return this.a && this.b > 0 && super.b();
    }
 
    @Override
    public void c() {
-      ((cad)this.a.K()).d(true);
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
    public void d() {
-      if (cbo.a(this.a)) {
-         ((cad)this.a.K()).d(false);
-      }
+      this.a(false);
+   }
+
+   @Override
+   public void e() {
+      this.b--;
+      super.e();
    }
 }

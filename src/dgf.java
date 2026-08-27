@@ -1,69 +1,72 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 
-public class dgf extends dch {
-   public static final MapCodec<dgf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kt.e.q().fieldOf("host").forGetter(dgf::b), u()).apply($$0, dgf::new));
-   private final dch b;
-   private static final Map<dch, dch> c = Maps.newIdentityHashMap();
-   private static final Map<dpi, dpi> d = Maps.newIdentityHashMap();
-   private static final Map<dpi, dpi> e = Maps.newIdentityHashMap();
+public class dgf extends dhv implements dcy, djw {
+   public static final MapCodec<dgf> a = b(dgf::new);
+   private static final dqp c = dqo.C;
+   private final dhw d = new dhw(this);
 
    @Override
-   public MapCodec<? extends dgf> a() {
+   public MapCodec<dgf> a() {
       return a;
    }
 
-   public dgf(dch $$0, dph.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
+   public dgf(dpx.d $$0) {
+      super($$0);
+      this.k(this.n().a(c, Boolean.valueOf(false)));
    }
 
-   public dch b() {
-      return this.b;
-   }
-
-   public static boolean m(dpi $$0) {
-      return c.containsKey($$0.b());
-   }
-
-   private void a(apu $$0, id $$1) {
-      chn $$2 = bqg.aL.a((czg)$$0);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.Q();
-      }
+   public static ToIntFunction<dpy> b(int $$0) {
+      return $$1 -> dhv.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected void a(dpi $$0, apu $$1, id $$2, crs $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.aa().b(czc.h) && cxa.a(cxc.v, $$3) == 0) {
-         this.a($$1, $$2);
+   protected void a(dpz.a<dcv, dpy> $$0) {
+      super.a($$0);
+      $$0.a(c);
+   }
+
+   @Override
+   protected dpy a(dpy $$0, ir $$1, dpy $$2, czv $$3, im $$4, im $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, els.c, els.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static dpi n(dpi $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).n());
+   @Override
+   protected boolean a(dpy $$0, cvl $$1) {
+      return !$$1.n().a(csg.fW) || super.a($$0, $$1);
    }
 
-   public dpi o(dpi $$0) {
-      return a(e, $$0, () -> this.b().n());
+   @Override
+   public boolean b(czx $$0, im $$1, dpy $$2) {
+      return ir.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
    }
 
-   private static dpi a(Map<dpi, dpi> $$0, dpi $$1, Supplier<dpi> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dpi $$2x = $$2.get();
+   @Override
+   public boolean a(czu $$0, ayd $$1, im $$2, dpy $$3) {
+      return true;
+   }
 
-         for (dql $$3 : $$1x.B()) {
-            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
-         }
+   @Override
+   public void a(aqe $$0, ayd $$1, im $$2, dpy $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
+   }
 
-         return $$2x;
-      });
+   @Override
+   protected elr c_(dpy $$0) {
+      return $$0.c(c) ? els.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected boolean a_(dpy $$0, cza $$1, im $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public dhw c() {
+      return this.d;
    }
 }

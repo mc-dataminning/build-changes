@@ -1,180 +1,144 @@
+import java.util.Optional;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class clf extends ckg {
-   private static final aja<Byte> h = aje.a(clf.class, ajc.a);
-   private static final aja<Boolean> i = aje.a(clf.class, ajc.k);
-   private boolean j;
-   public int g;
+public final class clf {
+   private static final float a = 0.3F;
 
-   public clf(bqg<? extends clf> $$0, czg $$1) {
-      super($$0, $$1);
+   public static etd a(bql $$0, Predicate<bql> $$1) {
+      etf $$2 = $$0.dq();
+      czu $$3 = $$0.dN();
+      etf $$4 = $$0.dl();
+      return a($$4, $$0, $$1, $$2, $$3, 0.3F, czd.a.a);
    }
 
-   public clf(czg $$0, bqt $$1, crs $$2) {
-      super(bqg.be, $$1, $$0, $$2);
-      this.an.a(h, (byte)cxa.i($$2));
-      this.an.a(i, $$2.x());
+   public static etd a(bql $$0, Predicate<bql> $$1, czd.a $$2) {
+      etf $$3 = $$0.dq();
+      czu $$4 = $$0.dN();
+      etf $$5 = $$0.dl();
+      return a($$5, $$0, $$1, $$3, $$4, 0.3F, $$2);
    }
 
-   @Override
-   protected void a(aje.a $$0) {
-      super.a($$0);
-      $$0.a(h, (byte)0);
-      $$0.a(i, false);
+   public static etd a(bql $$0, Predicate<bql> $$1, double $$2) {
+      etf $$3 = $$0.f(0.0F).a($$2);
+      czu $$4 = $$0.dN();
+      etf $$5 = $$0.bv();
+      return a($$5, $$0, $$1, $$3, $$4, 0.0F, czd.a.a);
    }
 
-   @Override
-   public void l() {
-      if (this.c > 4) {
-         this.j = true;
+   private static etd a(etf $$0, bql $$1, Predicate<bql> $$2, etf $$3, czu $$4, float $$5, czd.a $$6) {
+      etf $$7 = $$0.e($$3);
+      etd $$8 = $$4.a(new czd($$0, $$7, $$6, czd.b.a, $$1));
+      if ($$8.c() != etd.a.a) {
+         $$7 = $$8.e();
       }
 
-      bqa $$0 = this.u();
-      int $$1 = this.an.a(h);
-      if ($$1 > 0 && (this.j || this.G()) && $$0 != null) {
-         if (!this.M()) {
-            if (!this.dM().B && this.d == ckg.a.b) {
-               this.a(this.w(), 0.1F);
-            }
-
-            this.am();
-         } else {
-            this.p(true);
-            esj $$2 = $$0.bu().d(this.dk());
-            this.p(this.dr(), this.dt() + $$2.d * 0.015 * (double)$$1, this.dx());
-            if (this.dM().B) {
-               this.ad = this.dt();
-            }
-
-            double $$3 = 0.05 * (double)$$1;
-            this.g(this.dp().a(0.95).e($$2.d().a($$3)));
-            if (this.g == 0) {
-               this.a(auo.zg, 10.0F, 1.0F);
-            }
-
-            this.g++;
-         }
+      etd $$9 = a($$4, $$1, $$0, $$7, $$1.cI().b($$3).g(1.0), $$2, $$5);
+      if ($$9 != null) {
+         $$8 = $$9;
       }
 
-      super.l();
-   }
-
-   private boolean M() {
-      bqa $$0 = this.u();
-      return $$0 == null || !$$0.bA() ? false : !($$0 instanceof apv) || !$$0.N_();
-   }
-
-   @Override
-   public boolean H() {
-      return this.an.a(i);
+      return $$8;
    }
 
    @Nullable
-   @Override
-   protected esg a(esj $$0, esj $$1) {
-      return this.j ? null : super.a($$0, $$1);
-   }
+   public static etc a(bql $$0, etf $$1, etf $$2, eta $$3, Predicate<bql> $$4, double $$5) {
+      czu $$6 = $$0.dN();
+      double $$7 = $$5;
+      bql $$8 = null;
+      etf $$9 = null;
 
-   @Override
-   protected void a(esg $$0) {
-      bqa $$1 = $$0.a();
-      float $$2 = 8.0F;
-      if ($$1 instanceof bqt $$3) {
-         $$2 += cxa.a(this.y(), $$3.ai());
-      }
-
-      bqa $$4 = this.u();
-      boy $$5 = this.dN().a(this, (bqa)($$4 == null ? this : $$4));
-      this.j = true;
-      aun $$6 = auo.ze;
-      if ($$1.a($$5, $$2)) {
-         if ($$1.ai() == bqg.H) {
-            return;
-         }
-
-         if ($$1 instanceof bqt $$7) {
-            if ($$4 instanceof bqt) {
-               cxa.a($$7, $$4);
-               cxa.b((bqt)$$4, $$7);
+      for (bql $$10 : $$6.a($$0, $$3, $$4)) {
+         eta $$11 = $$10.cI().g((double)$$10.bI());
+         Optional<etf> $$12 = $$11.b($$1, $$2);
+         if ($$11.d($$1)) {
+            if ($$7 >= 0.0) {
+               $$8 = $$10;
+               $$9 = $$12.orElse($$1);
+               $$7 = 0.0;
             }
-
-            this.a($$7);
-         }
-      }
-
-      this.g(this.dp().d(-0.01, -0.1, -0.01));
-      float $$8 = 1.0F;
-      if (this.dM() instanceof apu && this.dM().ab() && this.K()) {
-         id $$9 = $$1.dm();
-         if (this.dM().h($$9)) {
-            bqs $$10 = bqg.al.a(this.dM());
-            if ($$10 != null) {
-               $$10.e(esj.c($$9));
-               $$10.b($$4 instanceof apv ? (apv)$$4 : null);
-               this.dM().b($$10);
-               $$6 = auo.zl;
-               $$8 = 5.0F;
+         } else if ($$12.isPresent()) {
+            etf $$13 = $$12.get();
+            double $$14 = $$1.g($$13);
+            if ($$14 < $$7 || $$7 == 0.0) {
+               if ($$10.cX() == $$0.cX()) {
+                  if ($$7 == 0.0) {
+                     $$8 = $$10;
+                     $$9 = $$13;
+                  }
+               } else {
+                  $$8 = $$10;
+                  $$9 = $$13;
+                  $$7 = $$14;
+               }
             }
          }
       }
 
-      this.a($$6, $$8, 1.0F);
+      return $$8 == null ? null : new etc($$8, $$9);
    }
 
-   public boolean K() {
-      return cxa.k(this.y());
+   @Nullable
+   public static etc a(czu $$0, bql $$1, etf $$2, etf $$3, eta $$4, Predicate<bql> $$5) {
+      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
    }
 
-   @Override
-   protected boolean a(cka $$0) {
-      return super.a($$0) || this.G() && this.e($$0) && $$0.fZ().e(this.w());
+   @Nullable
+   public static etc a(czu $$0, bql $$1, etf $$2, etf $$3, eta $$4, Predicate<bql> $$5, float $$6) {
+      double $$7 = Double.MAX_VALUE;
+      bql $$8 = null;
+
+      for (bql $$9 : $$0.a($$1, $$4, $$5)) {
+         eta $$10 = $$9.cI().g((double)$$6);
+         Optional<etf> $$11 = $$10.b($$2, $$3);
+         if ($$11.isPresent()) {
+            double $$12 = $$2.g($$11.get());
+            if ($$12 < $$7) {
+               $$8 = $$9;
+               $$7 = $$12;
+            }
+         }
+      }
+
+      return $$8 == null ? null : new etc($$8);
    }
 
-   @Override
-   protected crs x() {
-      return new crs(crv.vN);
-   }
+   public static void a(bql $$0, float $$1) {
+      etf $$2 = $$0.dq();
+      if ($$2.g() != 0.0) {
+         double $$3 = $$2.h();
+         $$0.r((float)(axw.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
+         $$0.s((float)(axw.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
 
-   @Override
-   protected aun r() {
-      return auo.zf;
-   }
+         while ($$0.dF() - $$0.P < -180.0F) {
+            $$0.P -= 360.0F;
+         }
 
-   @Override
-   public void b_(cka $$0) {
-      if (this.e($$0) || this.u() == null) {
-         super.b_($$0);
+         while ($$0.dF() - $$0.P >= 180.0F) {
+            $$0.P += 360.0F;
+         }
+
+         while ($$0.dD() - $$0.O < -180.0F) {
+            $$0.O -= 360.0F;
+         }
+
+         while ($$0.dD() - $$0.O >= 180.0F) {
+            $$0.O += 360.0F;
+         }
+
+         $$0.s(axw.i($$1, $$0.P, $$0.dF()));
+         $$0.r(axw.i($$1, $$0.O, $$0.dD()));
       }
    }
 
-   @Override
-   public void a(to $$0) {
-      super.a($$0);
-      this.j = $$0.q("DealtDamage");
-      this.an.a(h, (byte)cxa.i(this.y()));
+   public static bop a(bre $$0, cry $$1) {
+      return $$0.eV().a($$1) ? bop.a : bop.b;
    }
 
-   @Override
-   public void b(to $$0) {
-      super.b($$0);
-      $$0.a("DealtDamage", this.j);
-   }
-
-   @Override
-   public void p() {
-      int $$0 = this.an.a(h);
-      if (this.d != ckg.a.b || $$0 <= 0) {
-         super.p();
-      }
-   }
-
-   @Override
-   protected float E() {
-      return 0.99F;
-   }
-
-   @Override
-   public boolean k(double $$0, double $$1, double $$2) {
-      return true;
+   public static ckr a(bre $$0, csd $$1, float $$2) {
+      cpw $$3 = (cpw)($$1.f() instanceof cpw ? $$1.f() : csg.ov);
+      ckr $$4 = $$3.a($$0.dN(), $$1, $$0);
+      $$4.a($$0, $$2);
+      return $$4;
    }
 }

@@ -1,57 +1,50 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
 import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
 
-public class fan {
-   private static final Map<String, fan.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final ajv c = new ajv("textures/gui/presets/isles.png");
-
-   public static ajv a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
-   }
-
-   private static ajv b(String $$0, String $$1) {
-      fan.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         evs $$3 = a($$1);
-         if ($$3 == null) {
-            ajv $$4 = gli.b();
-            a.put($$0, new fan.a($$1, $$4));
-            return $$4;
-         } else {
-            ajv $$5 = new ajv("realms", "dynamic/" + $$0);
-            fby.Q().aa().a($$5, new glf($$3));
-            a.put($$0, new fan.a($$1, $$5));
-            return $$5;
-         }
-      }
-   }
-
+public class fan extends gsq {
+   private static final ws a = ws.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final fil c = fil.d();
+   private final fkt B;
    @Nullable
-   private static evs a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+   private ffo C;
 
-      try {
-         return evs.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
+   public fan(fkt $$0) {
+      super(fcm.a);
+      this.B = $$0;
    }
 
-   public static record a(String a, ajv b) {
+   @Override
+   public void aM_() {
+      this.c.a(15).c().b();
+      this.C = new ffo(a, this.p).b(true);
+      this.c.a(this.C);
+      fil $$0 = this.c.a(fil.e().a(8));
+      ws $$1 = ws.c("mco.account.privacy.info.button");
+      $$0.a(feu.a($$1, fjk.b(this, "https://aka.ms/MinecraftGDPR")).a());
+      $$0.a(feu.a(wr.k, $$0x -> this.d()).a());
+      this.c.a($$1x -> {
+         fes var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.B);
+   }
+
+   @Override
+   protected void c() {
+      if (this.C != null) {
+         this.C.d(this.n - 15);
+      }
+
+      this.c.a();
+      fif.a(this.c, this.G());
+   }
+
+   @Override
+   public ws i() {
+      return a;
    }
 }

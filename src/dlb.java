@@ -1,73 +1,73 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dlb extends dbt {
-   public static final MapCodec<dlb> a = b(dlb::new);
-   public static final dql<dov> b = dpy.bz;
-   public static final dqc c = dgc.aE;
+public class dlb extends dfd implements dhm {
+   public static final MapCodec<dlb> c = b(dlb::new);
+   public static final dqw<dqu> d = dfd.b;
+   protected static final float e = 6.0F;
+   protected static final ety f = dcv.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dlb> a() {
-      return a;
+      return c;
    }
 
-   public dlb(dph.d $$0) {
+   public dlb(dpx.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, ij.c).a(b, dov.a));
    }
 
    @Override
-   public boh a(crs $$0, dpi $$1, czg $$2, id $$3, cka $$4, boe $$5, esf $$6) {
-      if ($$0.d() || $$1.c(b) != dov.b) {
-         return boh.d;
-      } else if ($$2 instanceof apu $$7) {
-         if ($$7.c_($$3) instanceof doq $$9) {
-            doq.b.a($$7, $$3, $$1, $$9.f(), $$9.b(), $$9.c(), $$4, $$0);
-            return boh.a;
-         } else {
-            return boh.d;
+   protected ety a(dpy $$0, cza $$1, im $$2, etk $$3) {
+      return f;
+   }
+
+   @Override
+   protected boolean b(dpy $$0, cza $$1, im $$2) {
+      return $$0.d($$1, $$2, ir.b) && !$$0.a(dcx.kJ);
+   }
+
+   @Override
+   public csd a(czx $$0, im $$1, dpy $$2) {
+      return new csd(dcx.bw);
+   }
+
+   @Nullable
+   @Override
+   public dpy a(cvl $$0) {
+      dpy $$1 = super.a($$0);
+      if ($$1 != null) {
+         elr $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(avt.a) && $$2.e() == 8) {
+            return $$1;
          }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected boolean a(dpy $$0, czx $$1, im $$2) {
+      if ($$0.c(d) == dqu.a) {
+         dpy $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == dqu.b;
       } else {
-         return boh.b;
+         elr $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(avt.a) && $$4.e() == 8;
       }
    }
 
-   @Nullable
    @Override
-   public dmo a(id $$0, dpi $$1) {
-      return new doq($$0, $$1);
+   protected elr c_(dpy $$0) {
+      return els.c.a(false);
    }
 
    @Override
-   protected void a(dpj.a<dch, dpi> $$0) {
-      $$0.a(c, b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dmo> dmp<T> a(czg $$0, dpi $$1, dmq<T> $$2) {
-      return $$0 instanceof apu $$3
-         ? a($$2, dmq.R, ($$1x, $$2x, $$3x, $$4) -> doq.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, dmq.R, ($$0x, $$1x, $$2x, $$3x) -> doq.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+   public boolean a(@Nullable ckl $$0, cza $$1, im $$2, dpy $$3, elq $$4) {
+      return false;
    }
 
    @Override
-   public dpi a(cux $$0) {
-      return this.n().a(c, $$0.g().g());
-   }
-
-   @Override
-   public dpi a(dpi $$0, dit $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dpi a(dpi $$0, dhd $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dim b_(dpi $$0) {
-      return dim.c;
+   public boolean a(czv $$0, im $$1, dpy $$2, elr $$3) {
+      return false;
    }
 }

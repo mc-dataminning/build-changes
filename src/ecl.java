@@ -1,50 +1,28 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ecl extends ecn {
-   public static final Codec<ecl> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axe.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               eke.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               awu.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, ecl::new)
-   );
-   private final axe<Integer> i;
-   private final eke.a j;
-   private final float k;
-   private final eke l;
+public class ecl<P extends eck> {
+   public static final ecl<ecf> a = a("blob_foliage_placer", ecf.a);
+   public static final ecl<ecq> b = a("spruce_foliage_placer", ecq.a);
+   public static final ecl<eco> c = a("pine_foliage_placer", eco.a);
+   public static final ecl<ece> d = a("acacia_foliage_placer", ece.a);
+   public static final ecl<ecg> e = a("bush_foliage_placer", ecg.c);
+   public static final ecl<ecj> f = a("fancy_foliage_placer", ecj.c);
+   public static final ecl<ecm> g = a("jungle_foliage_placer", ecm.a);
+   public static final ecl<ecn> h = a("mega_pine_foliage_placer", ecn.a);
+   public static final ecl<eci> i = a("dark_oak_foliage_placer", eci.a);
+   public static final ecl<ecp> j = a("random_spread_foliage_placer", ecp.a);
+   public static final ecl<ech> k = a("cherry_foliage_placer", ech.a);
+   private final Codec<P> l;
 
-   public ecl(axe<Integer> $$0, eke.a $$1, float $$2, long $$3, eke.a $$4, float $$5, List<dpi> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = eke.b(new dvz(new dvb($$3)), $$1);
+   private static <P extends eck> ecl<P> a(String $$0, Codec<P> $$1) {
+      return ji.a(lc.W, $$0, new ecl<>($$1));
    }
 
-   @Override
-   protected eck<?> a() {
-      return eck.e;
+   private ecl(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   public dpi a(axt $$0, id $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)axm.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dpi> $$4 = Lists.newArrayListWithCapacity($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
-   }
-
-   protected double a(id $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   public Codec<P> a() {
+      return this.l;
    }
 }

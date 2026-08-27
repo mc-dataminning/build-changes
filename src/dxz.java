@@ -1,173 +1,118 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class dxz extends dye<eag> {
-   public dxz(Codec<eag> $$0) {
+public class dxz extends dyu<eas> {
+   private static final ImmutableList<dcv> a = ImmutableList.of(dcx.H, dcx.F, dcx.kJ, dcx.dW, dcx.fn, dcx.fo, dcx.fp, dcx.fq, dcx.cv, dcx.ct);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int an = 15;
+
+   public dxz(Codec<eas> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dyg<eag> $$0) {
-      dab $$1 = $$0.b();
-      id $$2 = $$0.e();
-      eag $$3 = $$0.f();
-      axt $$4 = $$0.d();
-      if (!dya.a($$1, $$2)) {
+   public boolean a(dyw<eas> $$0) {
+      int $$1 = $$0.c().e();
+      im $$2 = $$0.e();
+      dap $$3 = $$0.b();
+      ayd $$4 = $$0.d();
+      eas $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.j())) {
          return false;
       } else {
-         int $$5 = $$3.c.a($$4);
-         float $$6 = $$3.i.a($$4);
-         float $$7 = $$3.h.a($$4);
-         int $$8 = $$3.d.a($$4);
-         int $$9 = $$3.d.a($$4);
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
 
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
-               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
-               id $$13 = $$2.b($$10, 0, $$11);
-               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
+         for (im $$11 : im.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
             }
          }
 
-         return true;
+         return $$10;
       }
    }
 
-   private void a(dab $$0, axt $$1, id $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, eag $$9) {
-      Optional<duq> $$10 = duq.a($$0, $$2, $$9.b, dya::c, dya::d);
-      if (!$$10.isEmpty()) {
-         OptionalInt $$11 = $$10.get().b();
-         OptionalInt $$12 = $$10.get().c();
-         if (!$$11.isEmpty() || !$$12.isEmpty()) {
-            boolean $$13 = $$1.i() < $$5;
-            duq $$15;
-            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
-               int $$14 = $$12.getAsInt();
-               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
-               $$0.a($$2.h($$14), dcj.G.n(), 2);
-            } else {
-               $$15 = $$10.get();
-            }
+   private boolean a(czv $$0, int $$1, im $$2, int $$3, int $$4) {
+      boolean $$5 = false;
 
-            OptionalInt $$17 = $$15.c();
-            boolean $$18 = $$1.j() < $$6;
-            int $$22;
-            if ($$11.isPresent() && $$18 && !this.a((czj)$$0, $$2.h($$11.getAsInt()))) {
-               int $$19 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$11.getAsInt()), $$19, ij.b);
-               int $$20;
-               if ($$17.isPresent()) {
-                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
+      for (im $$6 : im.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         im $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
+
+            for (im.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (im)$$10)) {
+                  this.a($$0, $$10, dcx.dY.n());
+                  $$10.c(ir.b);
+                  $$5 = true;
                } else {
-                  $$20 = $$7;
+                  if (!$$0.a_($$10).a(dcx.dY)) {
+                     break;
+                  }
+
+                  $$10.c(ir.b);
                }
-
-               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
-            } else {
-               $$22 = 0;
-            }
-
-            boolean $$24 = $$1.j() < $$6;
-            int $$26;
-            if ($$17.isPresent() && $$24 && !this.a((czj)$$0, $$2.h($$17.getAsInt()))) {
-               int $$25 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$17.getAsInt()), $$25, ij.a);
-               if ($$11.isPresent()) {
-                  $$26 = Math.max(0, $$22 + axm.b($$1, -$$9.e, $$9.e));
-               } else {
-                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
-               }
-            } else {
-               $$26 = 0;
-            }
-
-            int $$36;
-            int $$35;
-            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
-               int $$29 = $$17.getAsInt();
-               int $$30 = $$11.getAsInt();
-               int $$31 = Math.max($$30 - $$22, $$29 + 1);
-               int $$32 = Math.min($$29 + $$26, $$30 - 1);
-               int $$33 = axm.b($$1, $$31, $$32 + 1);
-               int $$34 = $$33 - 1;
-               $$35 = $$30 - $$33;
-               $$36 = $$34 - $$29;
-            } else {
-               $$35 = $$22;
-               $$36 = $$26;
-            }
-
-            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
-            if ($$11.isPresent()) {
-               dya.a($$0, $$2.h($$11.getAsInt() - 1), ij.a, $$35, $$39);
-            }
-
-            if ($$17.isPresent()) {
-               dya.a($$0, $$2.h($$17.getAsInt() + 1), ij.b, $$36, $$39);
             }
          }
       }
+
+      return $$5;
    }
 
-   private boolean a(czj $$0, id $$1) {
-      return $$0.a_($$1).a(dcj.H);
-   }
-
-   private int a(axt $$0, int $$1, int $$2, float $$3, int $$4, eag $$5) {
-      if ($$0.i() > $$3) {
-         return 0;
-      } else {
-         int $$6 = Math.abs($$1) + Math.abs($$2);
-         float $$7 = (float)axm.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
-         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
-      }
-   }
-
-   private boolean b(dab $$0, id $$1) {
-      dpi $$2 = $$0.a_($$1);
-      if (!$$2.a(dcj.G) && !$$2.a(dcj.su) && !$$2.a(dcj.st)) {
-         if ($$0.a_($$1.c()).u().a(avj.a)) {
-            return false;
-         } else {
-            for (ij $$3 : ij.c.a) {
-               if (!this.a((czh)$$0, $$1.a($$3))) {
-                  return false;
-               }
-            }
-
-            return this.a((czh)$$0, $$1.d());
+   @Nullable
+   private static im a(czv $$0, int $$1, im.a $$2, int $$3) {
+      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
          }
-      } else {
+
+         $$2.c(ir.a);
+      }
+
+      return null;
+   }
+
+   private static boolean a(czv $$0, int $$1, im.a $$2) {
+      if (!a($$0, $$1, (im)$$2)) {
          return false;
+      } else {
+         dpy $$3 = $$0.a_($$2.c(ir.a));
+         $$2.c(ir.b);
+         return !$$3.i() && !a.contains($$3.b());
       }
    }
 
-   private boolean a(czh $$0, id $$1) {
-      dpi $$2 = $$0.a_($$1);
-      return $$2.a(ave.be) || $$2.u().a(avj.a);
-   }
-
-   private void a(dab $$0, id $$1, int $$2, ij $$3) {
-      id.a $$4 = $$1.j();
-
-      for (int $$5 = 0; $$5 < $$2; $$5++) {
-         if (!dya.c($$0, $$4)) {
-            return;
+   @Nullable
+   private static im a(czv $$0, im.a $$1, int $$2) {
+      while ($$1.v() < $$0.al() && $$2 > 0) {
+         $$2--;
+         dpy $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
          }
 
-         $$4.c($$3);
+         if ($$3.i()) {
+            return $$1;
+         }
+
+         $$1.c(ir.b);
       }
+
+      return null;
    }
 
-   private double a(int $$0, int $$1, int $$2, int $$3, eag $$4) {
-      int $$5 = $$0 - Math.abs($$2);
-      int $$6 = $$1 - Math.abs($$3);
-      int $$7 = Math.min($$5, $$6);
-      return (double)axm.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
-   }
-
-   private static float a(axt $$0, float $$1, float $$2, float $$3, float $$4) {
-      return bne.a($$0, $$3, $$4, $$1, $$2);
+   private static boolean a(czv $$0, int $$1, im $$2) {
+      dpy $$3 = $$0.a_($$2);
+      return $$3.i() || $$3.a(dcx.H) && $$2.v() <= $$1;
    }
 }

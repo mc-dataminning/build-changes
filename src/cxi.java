@@ -1,25 +1,25 @@
-public class cxi extends cwz {
-   protected cxi(cwz.a $$0, avt<crn> $$1, bqh... $$2) {
-      super($$0, $$1, $$2);
+public class cxi extends cxn {
+   public cxi(cxn.a $$0, bqs... $$1) {
+      super($$0, avw.bp, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return 50;
    }
 
    @Override
    public int a() {
-      return 3;
+      return 4;
    }
 
    @Override
-   public boolean a(cwz $$0) {
-      return super.a($$0) && $$0 != cxc.v;
+   public boolean a(cxn $$0) {
+      return super.a($$0) && $$0 != cxq.I;
    }
 }

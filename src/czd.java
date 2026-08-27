@@ -1,103 +1,76 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import java.util.function.Predicate;
 
-public enum czd implements ayg {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
+public class czd {
+   private final etf a;
+   private final etf b;
+   private final czd.a c;
+   private final czd.b d;
+   private final etk e;
 
-   public static final czd e = a;
-   public static final ayg.a<czd> f = ayg.a(czd::values);
-   private static final IntFunction<czd> g = awd.a(czd::a, values(), awd.a.a);
-   private static final int h = -1;
-   private final int i;
-   private final String j;
-   private final wi k;
-   private final wi l;
-
-   private czd(int $$0, String $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = wi.c("selectWorld.gameMode." + $$1);
-      this.l = wi.c("gameMode." + $$1);
+   public czd(etf $$0, etf $$1, czd.a $$2, czd.b $$3, bql $$4) {
+      this($$0, $$1, $$2, $$3, etk.a($$4));
    }
 
-   public int a() {
-      return this.i;
+   public czd(etf $$0, etf $$1, czd.a $$2, czd.b $$3, etk $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public String b() {
-      return this.j;
+   public etf a() {
+      return this.b;
    }
 
-   @Override
-   public String c() {
-      return this.j;
+   public etf b() {
+      return this.a;
    }
 
-   public wi d() {
-      return this.l;
+   public ety a(dpy $$0, cza $$1, im $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
    }
 
-   public wi e() {
-      return this.k;
+   public ety a(elr $$0, cza $$1, im $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : etv.a();
    }
 
-   public void a(cjx $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
-      } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
+   public static enum a implements czd.c {
+      a(dpx.a::b),
+      b(dpx.a::a),
+      c(dpx.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(avo.aQ) ? etv.b() : etv.a());
+
+      private final czd.c e;
+
+      private a(czd.c $$0) {
+         this.e = $$0;
       }
 
-      $$0.e = !this.f();
+      @Override
+      public ety get(dpy $$0, cza $$1, im $$2, etk $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
+      }
    }
 
-   public boolean f() {
-      return this == c || this == d;
+   public static enum b {
+      a($$0 -> false),
+      b(elr::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(avt.a));
+
+      private final Predicate<elr> e;
+
+      private b(Predicate<elr> $$0) {
+         this.e = $$0;
+      }
+
+      public boolean a(elr $$0) {
+         return this.e.test($$0);
+      }
    }
 
-   public boolean g() {
-      return this == b;
-   }
-
-   public boolean h() {
-      return this == a || this == c;
-   }
-
-   public static czd a(int $$0) {
-      return g.apply($$0);
-   }
-
-   public static czd a(String $$0) {
-      return a($$0, a);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static czd a(String $$0, @Nullable czd $$1) {
-      czd $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   public static int a(@Nullable czd $$0) {
-      return $$0 != null ? $$0.i : -1;
-   }
-
-   @Nullable
-   public static czd b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
+   public interface c {
+      ety get(dpy var1, cza var2, im var3, etk var4);
    }
 }

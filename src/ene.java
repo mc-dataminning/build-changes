@@ -1,546 +1,533 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import io.netty.buffer.ByteBuf;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ene implements enf, eng {
-   private static final Logger f = LogUtils.getLogger();
-   public static final String a = "LevelName";
-   protected static final String b = "Player";
-   protected static final String c = "WorldGenSettings";
-   private czk g;
-   private final dvy h;
-   private final ene.a i;
-   private final Lifecycle j;
-   private id k;
-   private float l;
-   private long m;
-   private long n;
-   @Nullable
-   private final to o;
-   private final int p;
-   private int q;
-   private boolean r;
+public class ene extends emy {
+   private static final Logger i = LogUtils.getLogger();
+   private static final int j = 128;
+   private static final int k = 64;
+   public static final int a = 4;
+   public static final int b = 256;
+   public final int c;
+   public final int d;
+   public final ake<czu> e;
+   private final boolean l;
+   private final boolean m;
+   public final byte f;
+   public byte[] g = new byte[16384];
+   public final boolean h;
+   private final List<ene.a> n = Lists.newArrayList();
+   private final Map<ckl, ene.a> o = Maps.newHashMap();
+   private final Map<String, emz> p = Maps.newHashMap();
+   final Map<String, ena> q = Maps.newLinkedHashMap();
+   private final Map<String, enb> r = Maps.newHashMap();
    private int s;
-   private boolean t;
-   private int u;
-   private boolean v;
-   private boolean w;
-   private dqz.c x;
-   private dtd.a y;
-   @Nullable
-   private to z;
-   private int A;
-   private int B;
-   @Nullable
-   private UUID C;
-   private final Set<String> D;
-   private boolean E;
-   private final Set<String> F;
-   private final erw<MinecraftServer> G;
 
-   private ene(
-      @Nullable to $$0,
-      boolean $$1,
-      id $$2,
-      float $$3,
-      long $$4,
-      long $$5,
-      int $$6,
-      int $$7,
-      int $$8,
-      boolean $$9,
-      int $$10,
-      boolean $$11,
-      boolean $$12,
-      boolean $$13,
-      dqz.c $$14,
-      int $$15,
-      int $$16,
-      @Nullable UUID $$17,
-      Set<String> $$18,
-      Set<String> $$19,
-      erw<MinecraftServer> $$20,
-      @Nullable to $$21,
-      dtd.a $$22,
-      czk $$23,
-      dvy $$24,
-      ene.a $$25,
-      Lifecycle $$26
-   ) {
-      this.E = $$1;
-      this.k = $$2;
+   public static emy.a<ene> a() {
+      return new emy.a<>(() -> {
+         throw new IllegalStateException("Should never create an empty map saved data");
+      }, ene::b, azc.j);
+   }
+
+   private ene(int $$0, int $$1, byte $$2, boolean $$3, boolean $$4, boolean $$5, ake<czu> $$6) {
+      this.f = $$2;
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$6;
       this.l = $$3;
       this.m = $$4;
-      this.n = $$5;
-      this.p = $$6;
-      this.q = $$7;
-      this.s = $$8;
-      this.r = $$9;
-      this.u = $$10;
-      this.t = $$11;
-      this.v = $$12;
-      this.w = $$13;
-      this.x = $$14;
-      this.A = $$15;
-      this.B = $$16;
-      this.C = $$17;
-      this.D = $$18;
-      this.F = $$19;
-      this.o = $$0;
-      this.G = $$20;
-      this.z = $$21;
-      this.y = $$22;
-      this.g = $$23;
-      this.h = $$24;
-      this.i = $$25;
-      this.j = $$26;
+      this.h = $$5;
+      this.c();
    }
 
-   public ene(czk $$0, dvy $$1, ene.a $$2, Lifecycle $$3) {
-      this(
-         null,
-         false,
-         id.c,
-         0.0F,
-         0L,
-         0L,
-         19133,
-         0,
-         0,
-         false,
-         0,
-         false,
-         false,
-         false,
-         dqz.e,
-         0,
-         0,
-         null,
-         Sets.newLinkedHashSet(),
-         new HashSet<>(),
-         new erw<>(erv.a),
-         null,
-         dtd.a.b,
-         $$0.h(),
-         $$1,
-         $$2,
-         $$3
-      );
+   public static ene a(double $$0, double $$1, byte $$2, boolean $$3, boolean $$4, ake<czu> $$5) {
+      int $$6 = 128 * (1 << $$2);
+      int $$7 = axw.a(($$0 + 64.0) / (double)$$6);
+      int $$8 = axw.a(($$1 + 64.0) / (double)$$6);
+      int $$9 = $$7 * $$6 + $$6 / 2 - 64;
+      int $$10 = $$8 * $$6 + $$6 / 2 - 64;
+      return new ene($$9, $$10, $$2, $$3, $$4, false, $$5);
    }
 
-   public static <T> ene a(Dynamic<T> $$0, czk $$1, ene.a $$2, dvy $$3, Lifecycle $$4) {
-      long $$5 = $$0.get("Time").asLong(0L);
-      return new ene(
-         (to)to.a.parse($$0.get("Player").orElseEmptyMap()).result().orElse(null),
-         $$0.get("WasModded").asBoolean(false),
-         new id($$0.get("SpawnX").asInt(0), $$0.get("SpawnY").asInt(0), $$0.get("SpawnZ").asInt(0)),
-         $$0.get("SpawnAngle").asFloat(0.0F),
-         $$5,
-         $$0.get("DayTime").asLong($$5),
-         enc.a($$0).a(),
-         $$0.get("clearWeatherTime").asInt(0),
-         $$0.get("rainTime").asInt(0),
-         $$0.get("raining").asBoolean(false),
-         $$0.get("thunderTime").asInt(0),
-         $$0.get("thundering").asBoolean(false),
-         $$0.get("initialized").asBoolean(true),
-         $$0.get("DifficultyLocked").asBoolean(false),
-         dqz.c.a($$0, dqz.e),
-         $$0.get("WanderingTraderSpawnDelay").asInt(0),
-         $$0.get("WanderingTraderSpawnChance").asInt(0),
-         (UUID)$$0.get("WanderingTraderId").read(jh.a).result().orElse(null),
-         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
-         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
-         new erw<>(erv.a, $$0.get("ScheduledEvents").asStream()),
-         (to)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
-         $$0.get("DragonFight").read(dtd.a.a).resultOrPartial(f::error).orElse(dtd.a.b),
-         $$1,
-         $$3,
-         $$2,
-         $$4
-      );
+   public static ene a(byte $$0, boolean $$1, ake<czu> $$2) {
+      return new ene(0, 0, $$0, false, false, $$1, $$2);
+   }
+
+   public static ene b(ty $$0, ix.a $$1) {
+      ake<czu> $$2 = (ake<czu>)dtq.a(new Dynamic(um.a, $$0.c("dimension")))
+         .resultOrPartial(i::error)
+         .orElseThrow(() -> new IllegalArgumentException("Invalid map dimension: " + $$0.c("dimension")));
+      int $$3 = $$0.h("xCenter");
+      int $$4 = $$0.h("zCenter");
+      byte $$5 = (byte)axw.a($$0.f("scale"), 0, 4);
+      boolean $$6 = !$$0.b("trackingPosition", 1) || $$0.q("trackingPosition");
+      boolean $$7 = $$0.q("unlimitedTracking");
+      boolean $$8 = $$0.q("locked");
+      ene $$9 = new ene($$3, $$4, $$5, $$6, $$7, $$8, $$2);
+      byte[] $$10 = $$0.m("colors");
+      if ($$10.length == 16384) {
+         $$9.g = $$10;
+      }
+
+      akd<uv> $$11 = $$1.a(um.a);
+
+      for (emz $$13 : emz.b.parse($$11, $$0.c("banners")).resultOrPartial($$0x -> i.warn("Failed to parse map banner: '{}'", $$0x)).orElse(List.of())) {
+         $$9.p.put($$13.b(), $$13);
+         $$9.a($$13.a(), null, $$13.b(), (double)$$13.c().u(), (double)$$13.c().w(), 180.0, $$13.e().orElse(null));
+      }
+
+      ue $$14 = $$0.c("frames", 10);
+
+      for (int $$15 = 0; $$15 < $$14.size(); $$15++) {
+         enb $$16 = enb.a($$14.a($$15));
+         if ($$16 != null) {
+            $$9.r.put($$16.e(), $$16);
+            $$9.a(ena.a.b, null, "frame-" + $$16.d(), (double)$$16.b().u(), (double)$$16.b().w(), (double)$$16.c(), null);
+         }
+      }
+
+      return $$9;
    }
 
    @Override
-   public to a(jb $$0, @Nullable to $$1) {
+   public ty a(ty $$0, ix.a $$1) {
+      akf.a.encodeStart(um.a, this.e.a()).resultOrPartial(i::error).ifPresent($$1x -> $$0.a("dimension", $$1x));
+      $$0.a("xCenter", this.c);
+      $$0.a("zCenter", this.d);
+      $$0.a("scale", this.f);
+      $$0.a("colors", this.g);
+      $$0.a("trackingPosition", this.l);
+      $$0.a("unlimitedTracking", this.m);
+      $$0.a("locked", this.h);
+      akd<uv> $$2 = $$1.a(um.a);
+      $$0.a("banners", ac.a(emz.b.encodeStart($$2, List.copyOf(this.p.values())), IllegalStateException::new));
+      ue $$3 = new ue();
+
+      for (enb $$4 : this.r.values()) {
+         $$3.add($$4.a());
+      }
+
+      $$0.a("frames", $$3);
+      return $$0;
+   }
+
+   public ene b() {
+      ene $$0 = new ene(this.c, this.d, this.f, this.l, this.m, true, this.e);
+      $$0.p.putAll(this.p);
+      $$0.q.putAll(this.q);
+      $$0.s = this.s;
+      System.arraycopy(this.g, 0, $$0.g, 0, this.g.length);
+      $$0.c();
+      return $$0;
+   }
+
+   public ene e() {
+      return a((double)this.c, (double)this.d, (byte)axw.a(this.f + 1, 0, 4), this.l, this.m, this.e);
+   }
+
+   private static Predicate<csd> a(csd $$0) {
+      enc $$1 = $$0.a(jz.s);
+      return $$2 -> $$2 == $$0 ? true : $$2.a($$0.f()) && Objects.equals($$1, $$2.a(jz.s));
+   }
+
+   public void a(ckl $$0, csd $$1) {
+      if (!this.o.containsKey($$0)) {
+         ene.a $$2 = new ene.a($$0);
+         this.o.put($$0, $$2);
+         this.n.add($$2);
+      }
+
+      Predicate<csd> $$3 = a($$1);
+      if (!$$0.ga().b($$3)) {
+         this.a($$0.ad().getString());
+      }
+
+      for (int $$4 = 0; $$4 < this.n.size(); $$4++) {
+         ene.a $$5 = this.n.get($$4);
+         String $$6 = $$5.a.ad().getString();
+         if (!$$5.a.dI() && ($$5.a.ga().b($$3) || $$1.B())) {
+            if (!$$1.B() && $$5.a.dN().ae() == this.e && this.l) {
+               this.a(ena.a.a, $$5.a.dN(), $$6, $$5.a.ds(), $$5.a.dy(), (double)$$5.a.dD(), null);
+            }
+         } else {
+            this.o.remove($$5.a);
+            this.n.remove($$5);
+            this.a($$6);
+         }
+      }
+
+      if ($$1.B() && this.l) {
+         cgo $$7 = $$1.C();
+         im $$8 = $$7.D();
+         enb $$9 = this.r.get(enb.a($$8));
+         if ($$9 != null && $$7.aj() != $$9.d() && this.r.containsKey($$9.e())) {
+            this.a("frame-" + $$9.d());
+         }
+
+         enb $$10 = new enb($$8, $$7.cF().e() * 90, $$7.aj());
+         this.a(ena.a.b, $$0.dN(), "frame-" + $$7.aj(), (double)$$8.u(), (double)$$8.w(), (double)($$7.cF().e() * 90), null);
+         this.r.put($$10.e(), $$10);
+      }
+
+      cva $$11 = $$1.a(jz.t, cva.a);
+      if (!this.q.keySet().containsAll($$11.a().keySet())) {
+         $$11.a().forEach(($$1x, $$2) -> {
+            if (!this.q.containsKey($$1x)) {
+               this.a($$2.a(), $$0.dN(), $$1x, $$2.b(), $$2.c(), (double)$$2.d(), null);
+            }
+         });
+      }
+   }
+
+   private void a(String $$0) {
+      ena $$1 = this.q.remove($$0);
+      if ($$1 != null && $$1.c().h()) {
+         this.s--;
+      }
+
+      this.i();
+   }
+
+   public static void a(csd $$0, im $$1, String $$2, ena.a $$3) {
+      cva.a $$4 = new cva.a($$3, (double)$$1.u(), (double)$$1.w(), 180.0F);
+      $$0.a(jz.t, cva.a, $$2x -> $$2x.a($$2, $$4));
+      if ($$3.f()) {
+         $$0.b(jz.r, new cvb($$3.g()));
+      }
+   }
+
+   private void a(ena.a $$0, @Nullable czv $$1, String $$2, double $$3, double $$4, double $$5, @Nullable ws $$6) {
+      int $$7 = 1 << this.f;
+      float $$8 = (float)($$3 - (double)this.c) / (float)$$7;
+      float $$9 = (float)($$4 - (double)this.d) / (float)$$7;
+      byte $$10 = (byte)((int)((double)($$8 * 2.0F) + 0.5));
+      byte $$11 = (byte)((int)((double)($$9 * 2.0F) + 0.5));
+      int $$12 = 63;
+      byte $$13;
+      if ($$8 >= -63.0F && $$9 >= -63.0F && $$8 <= 63.0F && $$9 <= 63.0F) {
+         $$5 += $$5 < 0.0 ? -8.0 : 8.0;
+         $$13 = (byte)((int)($$5 * 16.0 / 360.0));
+         if (this.e == czu.i && $$1 != null) {
+            int $$14 = (int)($$1.A_().d() / 10L);
+            $$13 = (byte)($$14 * $$14 * 34187121 + $$14 * 121 >> 15 & 15);
+         }
+      } else {
+         if ($$0 != ena.a.a) {
+            this.a($$2);
+            return;
+         }
+
+         int $$15 = 320;
+         if (Math.abs($$8) < 320.0F && Math.abs($$9) < 320.0F) {
+            $$0 = ena.a.g;
+         } else {
+            if (!this.m) {
+               this.a($$2);
+               return;
+            }
+
+            $$0 = ena.a.h;
+         }
+
+         $$13 = 0;
+         if ($$8 <= -63.0F) {
+            $$10 = -128;
+         }
+
+         if ($$9 <= -63.0F) {
+            $$11 = -128;
+         }
+
+         if ($$8 >= 63.0F) {
+            $$10 = 127;
+         }
+
+         if ($$9 >= 63.0F) {
+            $$11 = 127;
+         }
+      }
+
+      ena $$18 = new ena($$0, $$10, $$11, $$13, Optional.ofNullable($$6));
+      ena $$19 = this.q.put($$2, $$18);
+      if (!$$18.equals($$19)) {
+         if ($$19 != null && $$19.c().h()) {
+            this.s--;
+         }
+
+         if ($$0.h()) {
+            this.s++;
+         }
+
+         this.i();
+      }
+   }
+
+   @Nullable
+   public yz<?> a(enc $$0, ckl $$1) {
+      ene.a $$2 = this.o.get($$1);
+      return $$2 == null ? null : $$2.a($$0);
+   }
+
+   private void a(int $$0, int $$1) {
+      this.c();
+
+      for (ene.a $$2 : this.n) {
+         $$2.a($$0, $$1);
+      }
+   }
+
+   private void i() {
+      this.c();
+      this.n.forEach(ene.a::b);
+   }
+
+   public ene.a a(ckl $$0) {
+      ene.a $$1 = this.o.get($$0);
       if ($$1 == null) {
-         $$1 = this.o;
+         $$1 = new ene.a($$0);
+         this.o.put($$0, $$1);
+         this.n.add($$1);
       }
 
-      to $$2 = new to();
-      this.a($$0, $$2, $$1);
-      return $$2;
-   }
-
-   private void a(jb $$0, to $$1, @Nullable to $$2) {
-      $$1.a("ServerBrands", a(this.D));
-      $$1.a("WasModded", this.E);
-      if (!this.F.isEmpty()) {
-         $$1.a("removed_features", a(this.F));
-      }
-
-      to $$3 = new to();
-      $$3.a("Name", aa.b().c());
-      $$3.a("Id", aa.b().d().c());
-      $$3.a("Snapshot", !aa.b().g());
-      $$3.a("Series", aa.b().d().b());
-      $$1.a("Version", $$3);
-      ud.e($$1);
-      DynamicOps<ul> $$4 = $$0.a(uc.a);
-      dvw.a($$4, this.h, $$0).resultOrPartial(ac.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
-      $$1.a("GameType", this.g.b().a());
-      $$1.a("SpawnX", this.k.u());
-      $$1.a("SpawnY", this.k.v());
-      $$1.a("SpawnZ", this.k.w());
-      $$1.a("SpawnAngle", this.l);
-      $$1.a("Time", this.m);
-      $$1.a("DayTime", this.n);
-      $$1.a("LastPlayed", ac.d());
-      $$1.a("LevelName", this.g.a());
-      $$1.a("version", 19133);
-      $$1.a("clearWeatherTime", this.q);
-      $$1.a("rainTime", this.s);
-      $$1.a("raining", this.r);
-      $$1.a("thunderTime", this.u);
-      $$1.a("thundering", this.t);
-      $$1.a("hardcore", this.g.c());
-      $$1.a("allowCommands", this.g.e());
-      $$1.a("initialized", this.v);
-      this.x.a($$1);
-      $$1.a("Difficulty", (byte)this.g.d().a());
-      $$1.a("DifficultyLocked", this.w);
-      $$1.a("GameRules", this.g.f().a());
-      $$1.a("DragonFight", ac.a(dtd.a.a.encodeStart(uc.a, this.y), IllegalStateException::new));
-      if ($$2 != null) {
-         $$1.a("Player", $$2);
-      }
-
-      DataResult<ul> $$5 = daa.b.encodeStart(uc.a, this.g.g());
-      $$5.get().ifLeft($$1x -> $$1.a((to)$$1x)).ifRight($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
-      if (this.z != null) {
-         $$1.a("CustomBossEvents", this.z);
-      }
-
-      $$1.a("ScheduledEvents", this.G.b());
-      $$1.a("WanderingTraderSpawnDelay", this.A);
-      $$1.a("WanderingTraderSpawnChance", this.B);
-      if (this.C != null) {
-         $$1.a("WanderingTraderId", this.C);
-      }
-   }
-
-   private static tu a(Set<String> $$0) {
-      tu $$1 = new tu();
-      $$0.stream().map(uj::a).forEach($$1::add);
       return $$1;
    }
 
-   @Override
-   public id a() {
-      return this.k;
+   public boolean a(czv $$0, im $$1) {
+      double $$2 = (double)$$1.u() + 0.5;
+      double $$3 = (double)$$1.w() + 0.5;
+      int $$4 = 1 << this.f;
+      double $$5 = ($$2 - (double)this.c) / (double)$$4;
+      double $$6 = ($$3 - (double)this.d) / (double)$$4;
+      int $$7 = 63;
+      if ($$5 >= -63.0 && $$6 >= -63.0 && $$5 <= 63.0 && $$6 <= 63.0) {
+         emz $$8 = emz.a($$0, $$1);
+         if ($$8 == null) {
+            return false;
+         }
+
+         if (this.p.remove($$8.b(), $$8)) {
+            this.a($$8.b());
+            return true;
+         }
+
+         if (!this.a(256)) {
+            this.p.put($$8.b(), $$8);
+            this.a($$8.a(), $$0, $$8.b(), $$2, $$3, 180.0, $$8.e().orElse(null));
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public float b() {
-      return this.l;
+   public void a(cza $$0, int $$1, int $$2) {
+      Iterator<emz> $$3 = this.p.values().iterator();
+
+      while ($$3.hasNext()) {
+         emz $$4 = $$3.next();
+         if ($$4.c().u() == $$1 && $$4.c().w() == $$2) {
+            emz $$5 = emz.a($$0, $$4.c());
+            if (!$$4.equals($$5)) {
+               $$3.remove();
+               this.a($$4.b());
+            }
+         }
+      }
    }
 
-   @Override
-   public long c() {
-      return this.m;
+   public Collection<emz> f() {
+      return this.p.values();
    }
 
-   @Override
-   public long d() {
-      return this.n;
+   public void a(im $$0, int $$1) {
+      this.a("frame-" + $$1);
+      this.r.remove(enb.a($$0));
    }
 
-   @Nullable
-   @Override
-   public to w() {
-      return this.o;
+   public boolean a(int $$0, int $$1, byte $$2) {
+      byte $$3 = this.g[$$0 + $$1 * 128];
+      if ($$3 != $$2) {
+         this.b($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
+   public void b(int $$0, int $$1, byte $$2) {
+      this.g[$$0 + $$1 * 128] = $$2;
+      this.a($$0, $$1);
    }
 
-   @Override
-   public void b(long $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public void a(id $$0, float $$1) {
-      this.k = $$0.i();
-      this.l = $$1;
-   }
-
-   @Override
-   public String e() {
-      return this.g.a();
-   }
-
-   @Override
-   public int x() {
-      return this.p;
-   }
-
-   @Override
-   public int f() {
-      return this.q;
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.q = $$0;
-   }
-
-   @Override
    public boolean g() {
-      return this.t;
+      for (ena $$0 : this.q.values()) {
+         if ($$0.c().d()) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      this.t = $$0;
+   public void a(List<ena> $$0) {
+      this.q.clear();
+      this.s = 0;
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         ena $$2 = $$0.get($$1);
+         this.q.put("icon-" + $$1, $$2);
+         if ($$2.c().h()) {
+            this.s++;
+         }
+      }
    }
 
-   @Override
-   public int h() {
-      return this.u;
+   public Iterable<ena> h() {
+      return this.q.values();
    }
 
-   @Override
-   public void b(int $$0) {
-      this.u = $$0;
+   public boolean a(int $$0) {
+      return this.s >= $$0;
    }
 
-   @Override
-   public boolean i() {
-      return this.r;
+   public class a {
+      public final ckl a;
+      private boolean d = true;
+      private int e;
+      private int f;
+      private int g = 127;
+      private int h = 127;
+      private boolean i = true;
+      private int j;
+      public int b;
+
+      a(ckl $$1) {
+         this.a = $$1;
+      }
+
+      private ene.b a() {
+         int $$0 = this.e;
+         int $$1 = this.f;
+         int $$2 = this.g + 1 - this.e;
+         int $$3 = this.h + 1 - this.f;
+         byte[] $$4 = new byte[$$2 * $$3];
+
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            for (int $$6 = 0; $$6 < $$3; $$6++) {
+               $$4[$$5 + $$6 * $$2] = ene.this.g[$$0 + $$5 + ($$1 + $$6) * 128];
+            }
+         }
+
+         return new ene.b($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Nullable
+      yz<?> a(enc $$0) {
+         ene.b $$1;
+         if (this.d) {
+            this.d = false;
+            $$1 = this.a();
+         } else {
+            $$1 = null;
+         }
+
+         Collection<ena> $$3;
+         if (this.i && this.j++ % 5 == 0) {
+            this.i = false;
+            $$3 = ene.this.q.values();
+         } else {
+            $$3 = null;
+         }
+
+         return $$3 == null && $$1 == null ? null : new adc($$0, ene.this.f, ene.this.h, $$3, $$1);
+      }
+
+      void a(int $$0, int $$1) {
+         if (this.d) {
+            this.e = Math.min(this.e, $$0);
+            this.f = Math.min(this.f, $$1);
+            this.g = Math.max(this.g, $$0);
+            this.h = Math.max(this.h, $$1);
+         } else {
+            this.d = true;
+            this.e = $$0;
+            this.f = $$1;
+            this.g = $$0;
+            this.h = $$1;
+         }
+      }
+
+      private void b() {
+         this.i = true;
+      }
    }
 
-   @Override
-   public void b(boolean $$0) {
-      this.r = $$0;
-   }
+   public static record b(int b, int c, int d, int e, byte[] f) {
+      public static final yq<ByteBuf, Optional<ene.b>> a = yq.a(ene.b::a, ene.b::a);
 
-   @Override
-   public int j() {
-      return this.s;
-   }
+      private static void a(ByteBuf $$0, Optional<ene.b> $$1) {
+         if ($$1.isPresent()) {
+            ene.b $$2 = $$1.get();
+            $$0.writeByte($$2.d);
+            $$0.writeByte($$2.e);
+            $$0.writeByte($$2.b);
+            $$0.writeByte($$2.c);
+            vs.a($$0, $$2.f);
+         } else {
+            $$0.writeByte(0);
+         }
+      }
 
-   @Override
-   public void c(int $$0) {
-      this.s = $$0;
-   }
+      private static Optional<ene.b> a(ByteBuf $$0) {
+         int $$1 = $$0.readUnsignedByte();
+         if ($$1 > 0) {
+            int $$2 = $$0.readUnsignedByte();
+            int $$3 = $$0.readUnsignedByte();
+            int $$4 = $$0.readUnsignedByte();
+            byte[] $$5 = vs.a($$0);
+            return Optional.of(new ene.b($$3, $$4, $$1, $$2, $$5));
+         } else {
+            return Optional.empty();
+         }
+      }
 
-   @Override
-   public czd k() {
-      return this.g.b();
-   }
+      public void a(ene $$0) {
+         for (int $$1 = 0; $$1 < this.d; $$1++) {
+            for (int $$2 = 0; $$2 < this.e; $$2++) {
+               $$0.b(this.b + $$1, this.c + $$2, this.f[$$1 + $$2 * this.d]);
+            }
+         }
+      }
 
-   @Override
-   public void a(czd $$0) {
-      this.g = this.g.a($$0);
-   }
+      public int a() {
+         return this.b;
+      }
 
-   @Override
-   public boolean l() {
-      return this.g.c();
-   }
+      public int b() {
+         return this.c;
+      }
 
-   @Override
-   public boolean m() {
-      return this.g.e();
-   }
+      public int c() {
+         return this.d;
+      }
 
-   @Override
-   public boolean n() {
-      return this.v;
-   }
+      public int d() {
+         return this.e;
+      }
 
-   @Override
-   public void c(boolean $$0) {
-      this.v = $$0;
-   }
-
-   @Override
-   public czc o() {
-      return this.g.f();
-   }
-
-   @Override
-   public dqz.c p() {
-      return this.x;
-   }
-
-   @Override
-   public void a(dqz.c $$0) {
-      this.x = $$0;
-   }
-
-   @Override
-   public boc q() {
-      return this.g.d();
-   }
-
-   @Override
-   public void a(boc $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Override
-   public boolean r() {
-      return this.w;
-   }
-
-   @Override
-   public void d(boolean $$0) {
-      this.w = $$0;
-   }
-
-   @Override
-   public erw<MinecraftServer> s() {
-      return this.G;
-   }
-
-   @Override
-   public void a(p $$0, czi $$1) {
-      enf.super.a($$0, $$1);
-      eng.super.a($$0);
-   }
-
-   @Override
-   public dvy y() {
-      return this.h;
-   }
-
-   @Override
-   public boolean z() {
-      return this.i == ene.a.b;
-   }
-
-   @Override
-   public boolean A() {
-      return this.i == ene.a.c;
-   }
-
-   @Override
-   public Lifecycle B() {
-      return this.j;
-   }
-
-   @Override
-   public dtd.a C() {
-      return this.y;
-   }
-
-   @Override
-   public void a(dtd.a $$0) {
-      this.y = $$0;
-   }
-
-   @Override
-   public daa D() {
-      return this.g.g();
-   }
-
-   @Override
-   public void a(daa $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public to E() {
-      return this.z;
-   }
-
-   @Override
-   public void a(@Nullable to $$0) {
-      this.z = $$0;
-   }
-
-   @Override
-   public int t() {
-      return this.A;
-   }
-
-   @Override
-   public void d(int $$0) {
-      this.A = $$0;
-   }
-
-   @Override
-   public int u() {
-      return this.B;
-   }
-
-   @Override
-   public void e(int $$0) {
-      this.B = $$0;
-   }
-
-   @Nullable
-   @Override
-   public UUID v() {
-      return this.C;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-      this.C = $$0;
-   }
-
-   @Override
-   public void a(String $$0, boolean $$1) {
-      this.D.add($$0);
-      this.E |= $$1;
-   }
-
-   @Override
-   public boolean F() {
-      return this.E;
-   }
-
-   @Override
-   public Set<String> G() {
-      return ImmutableSet.copyOf(this.D);
-   }
-
-   @Override
-   public Set<String> H() {
-      return Set.copyOf(this.F);
-   }
-
-   @Override
-   public enf I() {
-      return this;
-   }
-
-   @Override
-   public czk J() {
-      return this.g.h();
-   }
-
-   @Deprecated
-   public static enum a {
-      a,
-      b,
-      c;
+      public byte[] e() {
+         return this.f;
+      }
    }
 }

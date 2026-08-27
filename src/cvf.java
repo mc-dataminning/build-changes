@@ -1,95 +1,36 @@
-public class cvf extends cvk {
-   public cvf(cvi $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+
+public record cvf(List<cvf.a> d) {
+   public static final cvf a = new cvf(List.of());
+   public static final Codec<cvf> b = cvf.a.a.listOf().xmap(cvf::new, cvf::a);
+   public static final yq<wd, cvf> c = cvf.a.b.a(yo.a()).a(cvf::new, cvf::a);
+
+   public cvf a(cvf.a $$0) {
+      return new cvf(ac.a(this.d, $$0));
    }
 
-   public boolean a(cnm $$0, czg $$1) {
-      int $$2 = 0;
-      crs $$3 = crs.i;
+   public List<cvf.a> a() {
+      return this.d;
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         crs $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if ($$5.a(crv.tZ)) {
-               if (!$$3.d()) {
-                  return false;
-               }
+   public static record a(iv<bpv> c, int d) {
+      public static final Codec<cvf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(lc.d.r().fieldOf("id").forGetter(cvf.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(cvf.a::c)).apply($$0, cvf.a::new)
+      );
+      public static final yq<wd, cvf.a> b = yq.a(yo.b(ld.R), cvf.a::b, yo.f, cvf.a::c, cvf.a::new);
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(crv.tY)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
+      public bpx a() {
+         return new bpx(this.c, this.d);
       }
 
-      return !$$3.d() && $$2 > 0;
-   }
-
-   public crs a(cnm $$0, jb $$1) {
-      int $$2 = 0;
-      crs $$3 = crs.i;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         crs $$5 = $$0.a($$4);
-         if (!$$5.d()) {
-            if ($$5.a(crv.tZ)) {
-               if (!$$3.d()) {
-                  return crs.i;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(crv.tY)) {
-                  return crs.i;
-               }
-
-               $$2++;
-            }
-         }
+      public iv<bpv> b() {
+         return this.c;
       }
 
-      cuv $$6 = $$3.a(jr.A);
-      if (!$$3.d() && $$2 >= 1 && $$6 != null) {
-         cuv $$7 = $$6.a();
-         if ($$7 == null) {
-            return crs.i;
-         } else {
-            crs $$8 = $$3.c($$2);
-            $$8.b(jr.A, $$7);
-            return $$8;
-         }
-      } else {
-         return crs.i;
+      public int c() {
+         return this.d;
       }
-   }
-
-   public iw<crs> a(cnm $$0) {
-      iw<crs> $$1 = iw.a($$0.b(), crs.i);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         crs $$3 = $$0.a($$2);
-         if ($$3.f().w()) {
-            $$1.set($$2, new crs($$3.f().v()));
-         } else if ($$3.f() instanceof ctn) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public cvw<?> ao_() {
-      return cvw.d;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
    }
 }
