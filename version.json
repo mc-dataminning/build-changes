@@ -152,37 +152,37 @@
     ]
   },
   "assetIndex": {
-    "id": "28",
-    "sha1": "cd51e04ddd03c3cda1bdca5d7b0fd1521479ec4f",
-    "size": 524335,
-    "totalSize": 450592406,
-    "url": "https://piston-meta.mojang.com/v1/packages/cd51e04ddd03c3cda1bdca5d7b0fd1521479ec4f/28.json"
+    "id": "29",
+    "sha1": "e9eeaade32639d73d4f7a30a007ace472c61cbd6",
+    "size": 529966,
+    "totalSize": 451101813,
+    "url": "https://piston-meta.mojang.com/v1/packages/e9eeaade32639d73d4f7a30a007ace472c61cbd6/29.json"
   },
-  "assets": "28",
+  "assets": "29",
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "b26ec81736baeeb35b4585110ef3b5bf1178c3cf",
-      "size": 31089212,
-      "url": "https://piston-data.mojang.com/v1/objects/b26ec81736baeeb35b4585110ef3b5bf1178c3cf/client.jar"
+      "sha1": "e9b472f991278db704df8ce3eb803af57f26ed07",
+      "size": 31148308,
+      "url": "https://piston-data.mojang.com/v1/objects/e9b472f991278db704df8ce3eb803af57f26ed07/client.jar"
     },
     "client_mappings": {
-      "sha1": "34d6977a2646e07ecf37493cc2e21fe587d5e3be",
-      "size": 11739625,
-      "url": "https://piston-data.mojang.com/v1/objects/34d6977a2646e07ecf37493cc2e21fe587d5e3be/client.txt"
+      "sha1": "dbda7a8747caf92e948ff44d0ed01cf0fb3e5854",
+      "size": 11776594,
+      "url": "https://piston-data.mojang.com/v1/objects/dbda7a8747caf92e948ff44d0ed01cf0fb3e5854/client.txt"
     },
     "server": {
-      "sha1": "e61a72ec98fae895ef3e80b05269ae343c42fc0b",
-      "size": 56306622,
-      "url": "https://piston-data.mojang.com/v1/objects/e61a72ec98fae895ef3e80b05269ae343c42fc0b/server.jar"
+      "sha1": "1087f90b4d73209318d87aa8deecfaae24861004",
+      "size": 56326572,
+      "url": "https://piston-data.mojang.com/v1/objects/1087f90b4d73209318d87aa8deecfaae24861004/server.jar"
     },
     "server_mappings": {
-      "sha1": "795fa6a41d2584490cac8311f4419529cee7a134",
-      "size": 8654690,
-      "url": "https://piston-data.mojang.com/v1/objects/795fa6a41d2584490cac8311f4419529cee7a134/server.txt"
+      "sha1": "e434a6854aa28c14f9103695485be4ab417fbae2",
+      "size": 8676768,
+      "url": "https://piston-data.mojang.com/v1/objects/e434a6854aa28c14f9103695485be4ab417fbae2/server.txt"
     }
   },
-  "id": "25w46a",
+  "id": "1.21.11-pre1",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
@@ -331,24 +331,24 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/jtracy/1.0.36/jtracy-1.0.36.jar",
-          "sha1": "20a63d06b621bfeb3cb21ef51b7fa40c0fc22021",
+          "path": "com/mojang/jtracy/1.0.37/jtracy-1.0.37.jar",
+          "sha1": "a3fb649b2e2b2288d2978f0b0bc3d83f62809d1e",
           "size": 12876,
-          "url": "https://libraries.minecraft.net/com/mojang/jtracy/1.0.36/jtracy-1.0.36.jar"
+          "url": "https://libraries.minecraft.net/com/mojang/jtracy/1.0.37/jtracy-1.0.37.jar"
         }
       },
-      "name": "com.mojang:jtracy:1.0.36"
+      "name": "com.mojang:jtracy:1.0.37"
     },
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/jtracy/1.0.36/jtracy-1.0.36-natives-linux.jar",
-          "sha1": "8f2967c139b024bf80024a3eab63e906c3ee2e5b",
-          "size": 193941,
-          "url": "https://libraries.minecraft.net/com/mojang/jtracy/1.0.36/jtracy-1.0.36-natives-linux.jar"
+          "path": "com/mojang/jtracy/1.0.37/jtracy-1.0.37-natives-linux.jar",
+          "sha1": "e1b4395227af41195da9e2ead13c48ee0b7d31cd",
+          "size": 193951,
+          "url": "https://libraries.minecraft.net/com/mojang/jtracy/1.0.37/jtracy-1.0.37-natives-linux.jar"
         }
       },
-      "name": "com.mojang:jtracy:1.0.36:natives-linux",
+      "name": "com.mojang:jtracy:1.0.37:natives-linux",
       "rules": [
         {
           "action": "allow",
@@ -361,13 +361,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/jtracy/1.0.36/jtracy-1.0.36-natives-macos.jar",
-          "sha1": "fc14ac6acc30865d390e87ac57fc758e4393ef60",
-          "size": 181363,
-          "url": "https://libraries.minecraft.net/com/mojang/jtracy/1.0.36/jtracy-1.0.36-natives-macos.jar"
+          "path": "com/mojang/jtracy/1.0.37/jtracy-1.0.37-natives-macos.jar",
+          "sha1": "a99fcb63b72fb623534d0ceb71bda4bed9b55b4c",
+          "size": 179562,
+          "url": "https://libraries.minecraft.net/com/mojang/jtracy/1.0.37/jtracy-1.0.37-natives-macos.jar"
         }
       },
-      "name": "com.mojang:jtracy:1.0.36:natives-macos",
+      "name": "com.mojang:jtracy:1.0.37:natives-macos",
       "rules": [
         {
           "action": "allow",
@@ -380,13 +380,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/jtracy/1.0.36/jtracy-1.0.36-natives-macos-arm64.jar",
-          "sha1": "4be9270dc14eb021954445e8895dff223875ace6",
-          "size": 195554,
-          "url": "https://libraries.minecraft.net/com/mojang/jtracy/1.0.36/jtracy-1.0.36-natives-macos-arm64.jar"
+          "path": "com/mojang/jtracy/1.0.37/jtracy-1.0.37-natives-macos-arm64.jar",
+          "sha1": "c8e971da5150aa33283c5bf4097154c0da554fb9",
+          "size": 193249,
+          "url": "https://libraries.minecraft.net/com/mojang/jtracy/1.0.37/jtracy-1.0.37-natives-macos-arm64.jar"
         }
       },
-      "name": "com.mojang:jtracy:1.0.36:natives-macos-arm64",
+      "name": "com.mojang:jtracy:1.0.37:natives-macos-arm64",
       "rules": [
         {
           "action": "allow",
@@ -399,13 +399,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/jtracy/1.0.36/jtracy-1.0.36-natives-windows.jar",
-          "sha1": "b42bc771ab0d38a920258dd771eaf4f3c08011fa",
-          "size": 47599,
-          "url": "https://libraries.minecraft.net/com/mojang/jtracy/1.0.36/jtracy-1.0.36-natives-windows.jar"
+          "path": "com/mojang/jtracy/1.0.37/jtracy-1.0.37-natives-windows.jar",
+          "sha1": "6ff6d710fd4ffd470f2799653fab57e27fed0c9d",
+          "size": 46763,
+          "url": "https://libraries.minecraft.net/com/mojang/jtracy/1.0.37/jtracy-1.0.37-natives-windows.jar"
         }
       },
-      "name": "com.mojang:jtracy:1.0.36:natives-windows",
+      "name": "com.mojang:jtracy:1.0.37:natives-windows",
       "rules": [
         {
           "action": "allow",
@@ -1836,7 +1836,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2025-11-11T13:05:00+00:00",
-  "time": "2025-11-11T13:05:00+00:00",
+  "releaseTime": "2025-11-19T08:06:45+00:00",
+  "time": "2025-11-19T08:06:45+00:00",
   "type": "snapshot"
 }
