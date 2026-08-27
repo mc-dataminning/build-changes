@@ -1,30 +1,13 @@
-import java.util.Locale;
+public class ejk {
+   public final epr a;
+   public final epr b;
+   public final float c;
+   public final float d;
 
-public interface ejk {
-   ib a();
-
-   float b();
-
-   long c();
-
-   long d();
-
-   boolean g();
-
-   boolean i();
-
-   void b(boolean var1);
-
-   boolean l();
-
-   cwa o();
-
-   bmi q();
-
-   boolean r();
-
-   default void a(p $$0, cwg $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   public ejk(epr $$0, epr $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 }

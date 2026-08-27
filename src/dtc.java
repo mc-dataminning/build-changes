@@ -1,22 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dtc implements dsb {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final dso i = new dso(this);
 
-public class dtc extends dti {
-   final aut<czf> a;
-   public static final Codec<dtc> e = RecordCodecBuilder.create($$0 -> a($$0).and(aut.a(ki.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dtc::new));
-
-   protected dtc(jf $$0, aut<czf> $$1) {
-      super($$0);
-      this.a = $$1;
+   public dtc(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   protected boolean a(dme $$0) {
-      return $$0.a(this.a);
+   public axd d() {
+      return new dtc(this.g());
    }
 
    @Override
-   public dsy<?> a() {
-      return dsy.b;
+   public dsz e() {
+      return new dsn.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

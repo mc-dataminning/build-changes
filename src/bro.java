@@ -1,101 +1,83 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class bro extends bqp<boz> {
-   private static final int c = 100;
-   private static final int d = 3;
-   private static final int e = 6;
-   private static final int f = 5;
-   private final float g;
-   @Nullable
-   private ib h;
-   private int i;
-   private int j;
-   private int k;
+public class bro<E extends bpq & cfl, T extends bpo> extends brg<E> {
+   private static final int c = 1200;
+   private int d;
+   private bro.a e = bro.a.a;
 
-   public bro(float $$0) {
-      super(ImmutableMap.of(bya.w, byb.a, bya.m, byb.b));
-      this.g = $$0;
+   public bro() {
+      super(ImmutableMap.of(byr.n, bys.c, byr.o, bys.a), 1200);
    }
 
-   protected boolean a(apa $$0, boz $$1) {
-      return $$1.o_() && this.b($$0, $$1);
+   protected boolean a(apf $$0, E $$1) {
+      bpo $$2 = b($$1);
+      return $$1.b(cqn.vQ) && bri.b($$1, $$2) && bri.a($$1, $$2, 0);
    }
 
-   protected void a(apa $$0, boz $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.a($$1).ifPresent($$2x -> {
-         this.h = $$2x;
-         this.i = 100;
-         this.j = 3 + $$0.z.a(4);
-         this.k = 0;
-         this.a($$1, $$2x);
-      });
+   protected boolean a(apf $$0, E $$1, long $$2) {
+      return $$1.dP().a(byr.o) && this.a($$0, $$1);
    }
 
-   protected void b(apa $$0, boz $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      this.h = null;
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
+   protected void b(apf $$0, E $$1, long $$2) {
+      bpo $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
    }
 
-   protected boolean c(apa $$0, boz $$1, long $$2) {
-      return $$1.o_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
-   }
+   protected void c(apf $$0, E $$1, long $$2) {
+      if ($$1.fs()) {
+         $$1.fy();
+      }
 
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected void d(apa $$0, boz $$1, long $$2) {
-      if (!this.c($$0, $$1)) {
-         this.i--;
-      } else if (this.k > 0) {
-         this.k--;
-      } else {
-         if (this.d($$0, $$1)) {
-            $$1.M().a();
-            this.j--;
-            this.k = 5;
-         }
+      if ($$1.b(cqn.vQ)) {
+         $$1.b(false);
+         cov.a($$1.fu(), false);
       }
    }
 
-   private void a(boz $$0, ib $$1) {
-      $$0.dM().a(bya.m, new byd($$1, this.g, 0));
+   private void a(E $$0, bpo $$1) {
+      if (this.e == bro.a.a) {
+         $$0.c(cjm.a($$0, cqn.vQ));
+         this.e = bro.a.b;
+         $$0.b(true);
+      } else if (this.e == bro.a.b) {
+         if (!$$0.fs()) {
+            this.e = bro.a.a;
+         }
+
+         int $$2 = $$0.fw();
+         cqk $$3 = $$0.fu();
+         if ($$2 >= cov.k($$3)) {
+            $$0.fx();
+            this.e = bro.a.c;
+            this.d = 20 + $$0.ei().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == bro.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = bro.a.d;
+         }
+      } else if (this.e == bro.a.d) {
+         $$0.a($$1, 1.0F);
+         cqk $$4 = $$0.b(cjm.a($$0, cqn.vQ));
+         cov.a($$4, false);
+         this.e = bro.a.a;
+      }
    }
 
-   private boolean b(apa $$0, boz $$1) {
-      return this.c($$0, $$1) || this.a($$1).isPresent();
+   private void b(bpq $$0, bpo $$1) {
+      $$0.dP().a(byr.n, new brr($$1, true));
    }
 
-   private boolean c(apa $$0, boz $$1) {
-      ib $$2 = $$1.dj();
-      ib $$3 = $$2.d();
-      return this.a($$0, $$2) || this.a($$0, $$3);
+   private static bpo b(bpo $$0) {
+      return $$0.dP().c(byr.o).get();
    }
 
-   private boolean d(apa $$0, boz $$1) {
-      return this.a($$0, $$1.dj());
-   }
-
-   private boolean a(apa $$0, ib $$1) {
-      return $$0.a_($$1).a(aue.R);
-   }
-
-   private Optional<ib> a(boz $$0) {
-      return $$0.dM().c(bya.w);
-   }
-
-   private boolean e(apa $$0, boz $$1) {
-      return !this.c($$0, $$1) && this.i <= 0;
-   }
-
-   private boolean f(apa $$0, boz $$1) {
-      return this.c($$0, $$1) && this.j <= 0;
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

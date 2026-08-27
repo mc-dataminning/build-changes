@@ -1,162 +1,118 @@
-import java.util.Comparator;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class ein {
-   public static final int a = 3;
-   private static final int b = 128;
-   private static final int c = 16;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = -1;
-   private static final int h = 4;
-   private static final int i = -1;
-   private static final int j = 3;
-   private static final int k = -1;
-   private static final int l = 2;
-   private static final int m = -1;
-   private final apa n;
+public final class ein extends dnb<eim, ein> {
+   public static final Codec<ein> a = a(ki.c.q(), eim::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
 
-   public ein(apa $$0) {
-      this.n = $$0;
+   public ein(eim $$0, Reference2ObjectArrayMap<doc<?>, Comparable<?>> $$1, MapCodec<ein> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public Optional<l.a> a(ib $$0, boolean $$1, dnv $$2) {
-      caa $$3 = this.n.y();
-      int $$4 = $$1 ? 16 : 128;
-      $$3.a(this.n, $$0, $$4);
-      Optional<cab> $$5 = $$3.b($$0x -> $$0x.a(cae.r), $$0, $$4, caa.b.c)
-         .filter($$1x -> $$2.a($$1x.f()))
-         .sorted(Comparator.<cab>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
-         .filter($$0x -> this.n.a_($$0x.f()).b(dmu.H))
-         .findFirst();
-      return $$5.map($$0x -> {
-         ib $$1x = $$0x.f();
-         this.n.l().a(apf.f, new cvl($$1x), 3, $$1x);
-         dme $$2x = this.n.a_($$1x);
-         return l.a($$1x, $$2x.c(dmu.H), 21, ih.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
-      });
+   public eim a() {
+      return this.e;
    }
 
-   public Optional<l.a> a(ib $$0, ih.a $$1) {
-      ih $$2 = ih.a(ih.b.a, $$1);
-      double $$3 = -1.0;
-      ib $$4 = null;
-      double $$5 = -1.0;
-      ib $$6 = null;
-      dnv $$7 = this.n.D_();
-      int $$8 = Math.min(this.n.ak(), this.n.J_() + this.n.k()) - 1;
-      ib.a $$9 = $$0.j();
-
-      for (ib.a $$10 : ib.a($$0, 16, ih.f, ih.d)) {
-         int $$11 = Math.min($$8, this.n.a(drq.a.e, $$10.u(), $$10.w()));
-         int $$12 = 1;
-         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
-            $$10.c($$2.g(), 1);
-
-            for (int $$13 = $$11; $$13 >= this.n.J_(); $$13--) {
-               $$10.q($$13);
-               if (this.a($$10)) {
-                  int $$14 = $$13;
-
-                  while ($$13 > this.n.J_() && this.a($$10.c(ih.a))) {
-                     $$13--;
-                  }
-
-                  if ($$13 + 4 <= $$8) {
-                     int $$15 = $$14 - $$13;
-                     if ($$15 <= 0 || $$15 >= 3) {
-                        $$10.q($$13);
-                        if (this.a($$10, $$9, $$2, 0)) {
-                           double $$16 = $$0.j($$10);
-                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
-                              $$3 = $$16;
-                              $$4 = $$10.i();
-                           }
-
-                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
-                              $$5 = $$16;
-                              $$6 = $$10.i();
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      if ($$3 == -1.0 && $$5 != -1.0) {
-         $$4 = $$6;
-         $$3 = $$5;
-      }
-
-      if ($$3 == -1.0) {
-         int $$17 = Math.max(this.n.J_() - -1, 70);
-         int $$18 = $$8 - 9;
-         if ($$18 < $$17) {
-            return Optional.empty();
-         }
-
-         $$4 = new ib($$0.u(), awm.a($$0.v(), $$17, $$18), $$0.w()).i();
-         ih $$19 = $$2.h();
-         if (!$$7.a($$4)) {
-            return Optional.empty();
-         }
-
-         for (int $$20 = -1; $$20 < 2; $$20++) {
-            for (int $$21 = 0; $$21 < 2; $$21++) {
-               for (int $$22 = -1; $$22 < 3; $$22++) {
-                  dme $$23 = $$22 < 0 ? czh.co.o() : czh.a.o();
-                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
-                  this.n.b($$9, $$23);
-               }
-            }
-         }
-      }
-
-      for (int $$24 = -1; $$24 < 3; $$24++) {
-         for (int $$25 = -1; $$25 < 4; $$25++) {
-            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
-               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
-               this.n.a($$9, czh.co.o(), 3);
-            }
-         }
-      }
-
-      dme $$26 = czh.ed.o().a(dei.b, $$1);
-
-      for (int $$27 = 0; $$27 < 2; $$27++) {
-         for (int $$28 = 0; $$28 < 3; $$28++) {
-            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
-            this.n.a($$9, $$26, 18);
-         }
-      }
-
-      return Optional.of(new l.a($$4.i(), 2, 3));
+   public boolean b() {
+      return this.a().c(this);
    }
 
-   private boolean a(ib.a $$0) {
-      dme $$1 = this.n.a_($$0);
-      return $$1.r() && $$1.u().c();
+   public boolean a(eim $$0) {
+      return this.e == $$0 && this.e.c(this);
    }
 
-   private boolean a(ib $$0, ib.a $$1, ih $$2, int $$3) {
-      ih $$4 = $$2.h();
+   public boolean c() {
+      return this.a().b();
+   }
 
-      for (int $$5 = -1; $$5 < 3; $$5++) {
-         for (int $$6 = -1; $$6 < 4; $$6++) {
-            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
-            if ($$6 < 0 && !this.n.a_($$1).e()) {
-               return false;
-            }
+   public float a(cwf $$0, ib $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
 
-            if ($$6 >= 0 && !this.a($$1)) {
-               return false;
+   public float d() {
+      return this.a().a(this);
+   }
+
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(cwf $$0, ib $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            ib $$4 = $$1.b($$2, 0, $$3);
+            ein $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
             }
          }
       }
 
-      return true;
+      return false;
+   }
+
+   public void a(cwz $$0, ib $$1) {
+      this.a().b($$0, $$1, this);
+   }
+
+   public void a(cwz $$0, ib $$1, axd $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(cwz $$0, ib $$1, axd $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public epr c(cwf $$0, ib $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public dmz g() {
+      return this.a().b(this);
+   }
+
+   @Nullable
+   public ka h() {
+      return this.a().h();
+   }
+
+   public boolean a(avd<eim> $$0) {
+      return this.a().k().a($$0);
+   }
+
+   public boolean a(ip<eim> $$0) {
+      return $$0.a(this.a().k());
+   }
+
+   public boolean b(eim $$0) {
+      return this.a() == $$0;
+   }
+
+   public float i() {
+      return this.a().c();
+   }
+
+   public boolean a(cwf $$0, ib $$1, eim $$2, ih $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
+
+   public eqk d(cwf $$0, ib $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   public il<eim> j() {
+      return this.e.k();
+   }
+
+   public Stream<avd<eim>> k() {
+      return this.e.k().c();
    }
 }

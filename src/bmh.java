@@ -1,44 +1,40 @@
-public class bmh {
-   public static void a(cwe $$0, ib $$1, bme $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
+
+public abstract class bmh {
+   private static final Codec<Either<Integer, bmh>> a = Codec.either(Codec.INT, ki.M.q().dispatch(bmh::c, bmi::codec));
+   public static final Codec<bmh> c = a.xmap(
+      $$0 -> (bmh)$$0.map(bme::a, $$0x -> $$0x), $$0 -> $$0.c() == bmi.a ? Either.left(((bme)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<bmh> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<bmh> e = b(1, Integer.MAX_VALUE);
+
+   public static Codec<bmh> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   public static void a(cwe $$0, bof $$1, bme $$2) {
-      a($$0, $$1.do(), $$1.dq(), $$1.du(), $$2);
+   public static <T extends bmh> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return awe.b(
+         $$2,
+         (Function<T, DataResult<T>>)($$2x -> {
+            if ($$2x.a() < $$0) {
+               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b() > $$1
+                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
+      );
    }
 
-   private static void a(cwe $$0, double $$1, double $$2, double $$3, bme $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
-   }
+   public abstract int a(axd var1);
 
-   public static void a(cwe $$0, ib $$1, iu<cpq> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
-   }
+   public abstract int a();
 
-   public static void a(cwe $$0, double $$1, double $$2, double $$3, cpq $$4) {
-      double $$5 = (double)bol.af.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+   public abstract int b();
 
-      while (!$$4.b()) {
-         cel $$11 = new cel($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
-   }
-
-   public static void a(dme $$0, dme $$1, cwe $$2, ib $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bme $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
-         }
-      }
-   }
+   public abstract bmi<?> c();
 }

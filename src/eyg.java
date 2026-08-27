@@ -1,66 +1,56 @@
-import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class eyg {
+public abstract class eyg implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final fvu[] e = new fvu[9];
-   private boolean f;
+   private boolean c = false;
 
-   public eyg(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new fvu();
-      }
-   }
-
-   private void b() {
+   protected static void a(long $$0) {
       try {
-         sy $$0 = tl.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = tn.b($$0, 1343);
-         $$0 = axs.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = fvu.a.parse(tm.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(fvu::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   public void a() {
-      try {
-         sy $$0 = tn.g(new sy());
+   public static void a(fhf $$0) {
+      ezg $$1 = ezg.Q();
+      $$1.execute(() -> $$1.a($$0));
+   }
 
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            fvu $$2 = this.a($$1);
-            DataResult<tv> $$3 = fvu.a.encodeStart(tm.a, $$2);
-            $$0.a(String.valueOf($$1), ac.a($$3, IllegalStateException::new));
-         }
+   protected void a(vu $$0) {
+      this.b();
+      ezg $$1 = ezg.Q();
+      $$1.execute(() -> $$1.a(new ewt($$0, new euk(new fhk()))));
+   }
 
-         tl.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
+   protected void a(Exception $$0) {
+      if ($$0 instanceof ewc $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(vu.b($$0.getMessage()));
       }
    }
 
-   public fvu a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
-      }
+   protected void a(ewc $$0) {
+      this.a($$0.a.b());
+   }
 
-      return this.e[$$0];
+   public abstract vu a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

@@ -1,170 +1,268 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Collections;
 
 public class akr {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vs.b("commands.datapack.unknown", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vs.b("commands.datapack.enable.failed", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vs.b("commands.datapack.disable.failed", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> vs.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
-   );
-   private static final SuggestionProvider<du> e = ($$0, $$1) -> dz.b(
-         ((du)$$0.getSource()).l().aG().d().stream().map(StringArgumentType::escapeIfRequired), $$1
-      );
-   private static final SuggestionProvider<du> f = ($$0, $$1) -> {
-      arq $$2 = ((du)$$0.getSource()).l().aG();
-      Collection<String> $$3 = $$2.d();
-      ckl $$4 = ((du)$$0.getSource()).w();
-      return dz.b(
-         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(arn::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
-      );
-   };
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("commands.bossbar.create.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vu.b("commands.bossbar.unknown", $$0));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vu.c("commands.bossbar.set.players.unchanged"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vu.c("commands.bossbar.set.name.unchanged"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(vu.c("commands.bossbar.set.color.unchanged"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(vu.c("commands.bossbar.set.style.unchanged"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(vu.c("commands.bossbar.set.value.unchanged"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(vu.c("commands.bossbar.set.max.unchanged"));
+   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(vu.c("commands.bossbar.set.visibility.unchanged.hidden"));
+   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(vu.c("commands.bossbar.set.visibility.unchanged.visible"));
+   public static final SuggestionProvider<du> a = ($$0, $$1) -> dz.a(((du)$$0.getSource()).l().aO().a(), $$1);
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("datapack").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     dv.a("enable")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
+                              "bossbar"
+                           )
+                           .requires($$0x -> $$0x.c(2)))
                         .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
-                                             "name", StringArgumentType.string()
-                                          )
-                                          .suggests(f)
-                                          .executes(
-                                             $$0x -> a(
-                                                   (du)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.i().a($$0xx, $$1, $$0xxx -> $$0xxx, false)
-                                                )
+                           dv.a("add")
+                              .then(
+                                 dv.a("id", ev.a())
+                                    .then(dv.a("name", ed.a($$1)).executes($$0x -> a((du)$$0x.getSource(), ev.e($$0x, "id"), ed.a($$0x, "name"))))
+                              )
+                        ))
+                     .then(dv.a("remove").then(dv.a("id", ev.a()).suggests(a).executes($$0x -> e((du)$$0x.getSource(), a($$0x))))))
+                  .then(dv.a("list").executes($$0x -> a((du)$$0x.getSource()))))
+               .then(
+                  dv.a("set")
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
+                                                "id", ev.a()
+                                             )
+                                             .suggests(a)
+                                             .then(
+                                                dv.a("name")
+                                                   .then(dv.a("name", ed.a($$1)).executes($$0x -> a((du)$$0x.getSource(), a($$0x), ed.a($$0x, "name"))))
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
+                                                                     "color"
+                                                                  )
+                                                                  .then(dv.a("pink").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.a))))
+                                                               .then(dv.a("blue").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.b))))
+                                                            .then(dv.a("red").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.c))))
+                                                         .then(dv.a("green").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.d))))
+                                                      .then(dv.a("yellow").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.e))))
+                                                   .then(dv.a("purple").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.f))))
+                                                .then(dv.a("white").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.g)))
                                           ))
                                        .then(
-                                          dv.a("after")
-                                             .then(
-                                                dv.a("existing", StringArgumentType.string())
-                                                   .suggests(e)
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (du)$$0x.getSource(),
-                                                            a($$0x, "name", true),
-                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
-                                                         )
-                                                   )
-                                             )
+                                          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("style")
+                                                         .then(dv.a("progress").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.b.a))))
+                                                      .then(dv.a("notched_6").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.b.b))))
+                                                   .then(dv.a("notched_10").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.b.c))))
+                                                .then(dv.a("notched_12").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.b.d))))
+                                             .then(dv.a("notched_20").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.b.e)))
                                        ))
                                     .then(
-                                       dv.a("before")
+                                       dv.a("value")
                                           .then(
-                                             dv.a("existing", StringArgumentType.string())
-                                                .suggests(e)
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (du)$$0x.getSource(),
-                                                         a($$0x, "name", true),
-                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
-                                                      )
-                                                )
+                                             dv.a("value", IntegerArgumentType.integer(0))
+                                                .executes($$0x -> a((du)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "value")))
                                           )
                                     ))
-                                 .then(dv.a("last").executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", true), List::add))))
-                              .then(dv.a("first").executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
-                        )
-                  ))
-               .then(
-                  dv.a("disable").then(dv.a("name", StringArgumentType.string()).suggests(e).executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", false))))
+                                 .then(
+                                    dv.a("max")
+                                       .then(
+                                          dv.a("max", IntegerArgumentType.integer(1))
+                                             .executes($$0x -> b((du)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "max")))
+                                       )
+                                 ))
+                              .then(
+                                 dv.a("visible")
+                                    .then(
+                                       dv.a("visible", BoolArgumentType.bool())
+                                          .executes($$0x -> a((du)$$0x.getSource(), a($$0x), BoolArgumentType.getBool($$0x, "visible")))
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)dv.a("players").executes($$0x -> a((du)$$0x.getSource(), a($$0x), Collections.emptyList())))
+                                 .then(dv.a("targets", eh.d()).executes($$0x -> a((du)$$0x.getSource(), a($$0x), eh.d($$0x, "targets"))))
+                           )
+                     )
                ))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("list").executes($$0x -> a((du)$$0x.getSource())))
-                     .then(dv.a("available").executes($$0x -> b((du)$$0x.getSource()))))
-                  .then(dv.a("enabled").executes($$0x -> c((du)$$0x.getSource())))
+               dv.a("get")
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("id", ev.a())
+                                 .suggests(a)
+                                 .then(dv.a("value").executes($$0x -> a((du)$$0x.getSource(), a($$0x)))))
+                              .then(dv.a("max").executes($$0x -> b((du)$$0x.getSource(), a($$0x)))))
+                           .then(dv.a("visible").executes($$0x -> c((du)$$0x.getSource(), a($$0x)))))
+                        .then(dv.a("players").executes($$0x -> d((du)$$0x.getSource(), a($$0x))))
+                  )
             )
       );
    }
 
-   private static int a(du $$0, arn $$1, akr.a $$2) throws CommandSyntaxException {
-      arq $$3 = $$0.l().aG();
-      List<arn> $$4 = Lists.newArrayList($$3.f());
-      $$2.apply($$4, $$1);
-      $$0.a(() -> vs.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      amf.a($$4.stream().map(arn::f).collect(Collectors.toList()), $$0);
-      return $$4.size();
+   private static int a(du $$0, akg $$1) {
+      $$0.a(() -> vu.a("commands.bossbar.get.value", $$1.e(), $$1.c()), true);
+      return $$1.c();
    }
 
-   private static int a(du $$0, arn $$1) {
-      arq $$2 = $$0.l().aG();
-      List<arn> $$3 = Lists.newArrayList($$2.f());
-      $$3.remove($$1);
-      $$0.a(() -> vs.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      amf.a($$3.stream().map(arn::f).collect(Collectors.toList()), $$0);
-      return $$3.size();
+   private static int b(du $$0, akg $$1) {
+      $$0.a(() -> vu.a("commands.bossbar.get.max", $$1.e(), $$1.d()), true);
+      return $$1.d();
+   }
+
+   private static int c(du $$0, akg $$1) {
+      if ($$1.g()) {
+         $$0.a(() -> vu.a("commands.bossbar.get.visible.visible", $$1.e()), true);
+         return 1;
+      } else {
+         $$0.a(() -> vu.a("commands.bossbar.get.visible.hidden", $$1.e()), true);
+         return 0;
+      }
+   }
+
+   private static int d(du $$0, akg $$1) {
+      if ($$1.h().isEmpty()) {
+         $$0.a(() -> vu.a("commands.bossbar.get.players.none", $$1.e()), true);
+      } else {
+         $$0.a(() -> vu.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), vx.b($$1.h(), cis::O_)), true);
+      }
+
+      return $$1.h().size();
+   }
+
+   private static int a(du $$0, akg $$1, boolean $$2) throws CommandSyntaxException {
+      if ($$1.g() == $$2) {
+         if ($$2) {
+            throw k.create();
+         } else {
+            throw j.create();
+         }
+      } else {
+         $$1.d($$2);
+         if ($$2) {
+            $$0.a(() -> vu.a("commands.bossbar.set.visible.success.visible", $$1.e()), true);
+         } else {
+            $$0.a(() -> vu.a("commands.bossbar.set.visible.success.hidden", $$1.e()), true);
+         }
+
+         return 0;
+      }
+   }
+
+   private static int a(du $$0, akg $$1, int $$2) throws CommandSyntaxException {
+      if ($$1.c() == $$2) {
+         throw h.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vu.a("commands.bossbar.set.value.success", $$1.e(), $$2), true);
+         return $$2;
+      }
+   }
+
+   private static int b(du $$0, akg $$1, int $$2) throws CommandSyntaxException {
+      if ($$1.d() == $$2) {
+         throw i.create();
+      } else {
+         $$1.b($$2);
+         $$0.a(() -> vu.a("commands.bossbar.set.max.success", $$1.e(), $$2), true);
+         return $$2;
+      }
+   }
+
+   private static int a(du $$0, akg $$1, bms.a $$2) throws CommandSyntaxException {
+      if ($$1.l().equals($$2)) {
+         throw f.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vu.a("commands.bossbar.set.color.success", $$1.e()), true);
+         return 0;
+      }
+   }
+
+   private static int a(du $$0, akg $$1, bms.b $$2) throws CommandSyntaxException {
+      if ($$1.m().equals($$2)) {
+         throw g.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vu.a("commands.bossbar.set.style.success", $$1.e()), true);
+         return 0;
+      }
+   }
+
+   private static int a(du $$0, akg $$1, vu $$2) throws CommandSyntaxException {
+      vu $$3 = vx.a($$0, $$2, null, 0);
+      if ($$1.j().equals($$3)) {
+         throw e.create();
+      } else {
+         $$1.a($$3);
+         $$0.a(() -> vu.a("commands.bossbar.set.name.success", $$1.e()), true);
+         return 0;
+      }
+   }
+
+   private static int a(du $$0, akg $$1, Collection<apg> $$2) throws CommandSyntaxException {
+      boolean $$3 = $$1.a($$2);
+      if (!$$3) {
+         throw d.create();
+      } else {
+         if ($$1.h().isEmpty()) {
+            $$0.a(() -> vu.a("commands.bossbar.set.players.success.none", $$1.e()), true);
+         } else {
+            $$0.a(() -> vu.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), vx.b($$2, cis::O_)), true);
+         }
+
+         return $$1.h().size();
+      }
    }
 
    private static int a(du $$0) {
-      return c($$0) + b($$0);
-   }
-
-   private static int b(du $$0) {
-      arq $$1 = $$0.l().aG();
-      $$1.a();
-      Collection<arn> $$2 = $$1.f();
-      Collection<arn> $$3 = $$1.c();
-      ckl $$4 = $$0.w();
-      List<arn> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
-      if ($$5.isEmpty()) {
-         $$0.a(() -> vs.c("commands.datapack.list.available.none"), false);
+      Collection<akg> $$1 = $$0.l().aO().b();
+      if ($$1.isEmpty()) {
+         $$0.a(() -> vu.c("commands.bossbar.list.bars.none"), false);
       } else {
-         $$0.a(() -> vs.a("commands.datapack.list.available.success", $$5.size(), vv.b($$5, $$0xx -> $$0xx.a(false))), false);
+         $$0.a(() -> vu.a("commands.bossbar.list.bars.some", $$1.size(), vx.b($$1, akg::e)), false);
       }
 
-      return $$5.size();
+      return $$1.size();
    }
 
-   private static int c(du $$0) {
-      arq $$1 = $$0.l().aG();
-      $$1.a();
-      Collection<? extends arn> $$2 = $$1.f();
-      if ($$2.isEmpty()) {
-         $$0.a(() -> vs.c("commands.datapack.list.enabled.none"), false);
+   private static int a(du $$0, ajh $$1, vu $$2) throws CommandSyntaxException {
+      akh $$3 = $$0.l().aO();
+      if ($$3.a($$1) != null) {
+         throw b.create($$1.toString());
       } else {
-         $$0.a(() -> vs.a("commands.datapack.list.enabled.success", $$2.size(), vv.b($$2, $$0xx -> $$0xx.a(true))), false);
-      }
-
-      return $$2.size();
-   }
-
-   private static arn a(CommandContext<du> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
-      String $$3 = StringArgumentType.getString($$0, $$1);
-      arq $$4 = ((du)$$0.getSource()).l().aG();
-      arn $$5 = $$4.c($$3);
-      if ($$5 == null) {
-         throw a.create($$3);
-      } else {
-         boolean $$6 = $$4.f().contains($$5);
-         if ($$2 && $$6) {
-            throw b.create($$3);
-         } else if (!$$2 && !$$6) {
-            throw c.create($$3);
-         } else {
-            ckl $$7 = ((du)$$0.getSource()).w();
-            ckl $$8 = $$5.d();
-            if (!$$8.a($$7)) {
-               throw d.create($$3, ckn.a($$7, $$8));
-            } else {
-               return $$5;
-            }
-         }
+         akg $$4 = $$3.a($$1, vx.a($$0, $$2, null, 0));
+         $$0.a(() -> vu.a("commands.bossbar.create.success", $$4.e()), true);
+         return $$3.b().size();
       }
    }
 
-   interface a {
-      void apply(List<arn> var1, arn var2) throws CommandSyntaxException;
+   private static int e(du $$0, akg $$1) {
+      akh $$2 = $$0.l().aO();
+      $$1.b();
+      $$2.a($$1);
+      $$0.a(() -> vu.a("commands.bossbar.remove.success", $$1.e()), true);
+      return $$2.b().size();
+   }
+
+   public static akg a(CommandContext<du> $$0) throws CommandSyntaxException {
+      ajh $$1 = ev.e($$0, "id");
+      akg $$2 = ((du)$$0.getSource()).l().aO().a($$1);
+      if ($$2 == null) {
+         throw c.create($$1.toString());
+      } else {
+         return $$2;
+      }
    }
 }

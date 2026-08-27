@@ -1,126 +1,45 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Consumer;
+public class aoo {
+   private static final int b = 33;
+   private static final int c = 32;
+   private static final int d = 31;
+   public static final int a = 33 + dpa.b();
 
-public interface aoo {
-   aoo a = new aoo() {
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return false;
-      }
-
-      @Override
-      public void a(Consumer<cvl> $$0) {
-      }
-   };
-
-   static aoo a(cvl $$0, int $$1) {
-      return new aoo.a($$0, $$1);
+   public static dpa a(int $$0) {
+      return $$0 < 33 ? dpa.n : dpa.a($$0 - 33);
    }
 
-   static void a(aoo $$0, aoo $$1, Consumer<cvl> $$2, Consumer<cvl> $$3) {
-      if (!$$0.equals($$1)) {
-         if ($$0 instanceof aoo.a $$4 && $$1 instanceof aoo.a $$5 && $$4.a($$5)) {
-            int $$6 = Math.min($$4.c(), $$5.c());
-            int $$7 = Math.min($$4.d(), $$5.d());
-            int $$8 = Math.max($$4.e(), $$5.e());
-            int $$9 = Math.max($$4.f(), $$5.f());
+   public static int a(dpa $$0) {
+      return 33 + dpa.a($$0);
+   }
 
-            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
-                  boolean $$12 = $$4.a($$10, $$11);
-                  boolean $$13 = $$5.a($$10, $$11);
-                  if ($$12 != $$13) {
-                     if ($$13) {
-                        $$2.accept(new cvl($$10, $$11));
-                     } else {
-                        $$3.accept(new cvl($$10, $$11));
-                     }
-                  }
-               }
-            }
-
-            return;
-         }
-
-         $$0.a($$3);
-         $$1.a($$2);
+   public static aoy b(int $$0) {
+      if ($$0 <= 31) {
+         return aoy.d;
+      } else if ($$0 <= 32) {
+         return aoy.c;
+      } else {
+         return $$0 <= 33 ? aoy.b : aoy.a;
       }
    }
 
-   default boolean a(cvl $$0) {
-      return this.a($$0.e, $$0.f);
+   public static int a(aoy $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
    }
 
-   default boolean a(int $$0, int $$1) {
-      return this.a($$0, $$1, true);
+   public static boolean c(int $$0) {
+      return $$0 <= 31;
    }
 
-   boolean a(int var1, int var2, boolean var3);
-
-   void a(Consumer<cvl> var1);
-
-   default boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
+   public static boolean d(int $$0) {
+      return $$0 <= 32;
    }
 
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      return a($$0, $$1, $$2, $$3, $$4, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
-      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
-      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
-      long $$9 = (long)Math.min($$6, $$7);
-      long $$10 = $$9 * $$9 + $$8 * $$8;
-      int $$11 = $$2 * $$2;
-      return $$10 < (long)$$11;
-   }
-
-   public static record a(cvl b, int c) implements aoo {
-      int c() {
-         return this.b.e - this.c - 1;
-      }
-
-      int d() {
-         return this.b.f - this.c - 1;
-      }
-
-      int e() {
-         return this.b.e + this.c + 1;
-      }
-
-      int f() {
-         return this.b.f + this.c + 1;
-      }
-
-      @VisibleForTesting
-      protected boolean a(aoo.a $$0) {
-         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return aoo.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(Consumer<cvl> $$0) {
-         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
-            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
-               if (this.a($$1, $$2)) {
-                  $$0.accept(new cvl($$1, $$2));
-               }
-            }
-         }
-      }
-
-      public cvl a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   public static boolean e(int $$0) {
+      return $$0 <= a;
    }
 }

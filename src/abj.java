@@ -1,25 +1,55 @@
-public record abj(long[] b, bij c) implements xz<aai> {
-   public static final xq<us, abj> a = xz.a(abj::a, abj::new);
+public class abj implements yb<aam> {
+   public static final xs<vf, abj> a = yb.a(abj::a, abj::new);
+   public static final int b = -1;
+   public static final int c = -2;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final cqk g;
 
-   private abj(us $$0) {
-      this($$0.d(), $$0.b(bij.class));
+   public abj(int $$0, int $$1, int $$2, cqk $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3.q();
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private abj(vf $$0) {
+      this.d = $$0.readByte();
+      this.e = $$0.l();
+      this.f = $$0.readShort();
+      this.g = cqk.f.decode($$0);
+   }
+
+   private void a(vf $$0) {
+      $$0.k(this.d);
+      $$0.c(this.e);
+      $$0.l(this.f);
+      cqk.f.encode($$0, this.g);
    }
 
    @Override
-   public yb<abj> a() {
-      return aet.A;
+   public yd<abj> a() {
+      return aex.w;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public bij e() {
-      return this.c;
+   public int b() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public cqk f() {
+      return this.g;
+   }
+
+   public int g() {
+      return this.e;
    }
 }

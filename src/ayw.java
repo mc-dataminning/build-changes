@@ -1,7 +1,10 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import java.util.Objects;
+import java.util.Optional;
 
 public class ayw extends DataFix {
    public ayw(Schema $$0, boolean $$1) {
@@ -9,8 +12,12 @@ public class ayw extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bfq.a());
       return this.fixTypeEverywhereTyped(
-         "BlockStateStructureTemplateFix", this.getInputSchema().getType(bdt.u), $$0 -> $$0.update(DSL.remainderFinder(), ayv::a)
+         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(beh.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+               Optional<String> $$3 = $$1.getOptional($$0);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : bam.a($$2);
+            })
       );
    }
 }

@@ -1,29 +1,79 @@
-public class abc implements xz<aai> {
-   public static final xq<us, abc> a = xz.a(abc::a, abc::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
 
-   public abc(int $$0) {
-      this.b = $$0;
+public record abc(List<abc.a> b) implements yb<aam> {
+   public static final xs<uu, abc> a = yb.a(abc::a, abc::new);
+   private static final int c = 2097152;
+
+   private abc(uu $$0) {
+      this($$0.a(abc.a::new));
    }
 
-   private abc(us $$0) {
-      this.b = $$0.readUnsignedByte();
+   public static abc a(List<dpg> $$0) {
+      return new abc($$0.stream().map(abc.a::new).toList());
    }
 
-   private void a(us $$0) {
-      $$0.k(this.b);
+   private void a(uu $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public yb<abc> a() {
-      return aet.t;
+   public yd<abc> a() {
+      return aex.p;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public static record a(cwg a, byte[] b) {
+      public a(dpg $$0) {
+         this($$0.f(), new byte[a($$0)]);
+         a(new uu(this.d()), $$0);
+      }
+
+      public a(uu $$0) {
+         this($$0.f(), $$0.a(2097152));
+      }
+
+      private static int a(dpg $$0) {
+         int $$1 = 0;
+
+         for (dph $$2 : $$0.d()) {
+            $$1 += $$2.i().c();
+         }
+
+         return $$1;
+      }
+
+      public uu a() {
+         return new uu(Unpooled.wrappedBuffer(this.b));
+      }
+
+      private ByteBuf d() {
+         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
+         $$0.writerIndex(0);
+         return $$0;
+      }
+
+      public static void a(uu $$0, dpg $$1) {
+         for (dph $$2 : $$1.d()) {
+            $$2.i().b($$0);
+         }
+      }
+
+      public void a(uu $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+      }
+
+      public cwg b() {
+         return this.a;
+      }
+
+      public byte[] c() {
+         return this.b;
+      }
    }
 }

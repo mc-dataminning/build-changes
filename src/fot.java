@@ -1,43 +1,57 @@
-public class fot<T extends bof> extends fnn<T> {
-   private static final String a = "body_front";
-   private static final String b = "body_back";
-   private final fqf f;
-   private final fqf g;
+import java.util.Arrays;
 
-   public fot(fqf $$0) {
-      this.f = $$0;
-      this.g = $$0.b("body_back");
+public class fot<T extends cgh> extends fol<T> {
+   private static final int a = 8;
+   private final frd b;
+   private final frd[] f = new frd[8];
+
+   public fot(frd $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fql b() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      int $$2 = 20;
-      fqo $$3 = $$1.a("body_front", fqk.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fqh.a(0.0F, 20.0F, 0.0F));
-      fqo $$4 = $$1.a("body_back", fqk.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fqh.a(0.0F, 20.0F, 8.0F));
-      $$1.a("head", fqk.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fqh.a(0.0F, 20.0F, 0.0F));
-      $$4.a("back_fin", fqk.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), fqh.a(0.0F, 0.0F, 8.0F));
-      $$3.a("top_front_fin", fqk.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), fqh.a(0.0F, -4.5F, 5.0F));
-      $$4.a("top_back_fin", fqk.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), fqh.a(0.0F, -4.5F, -1.0F));
-      $$1.a("right_fin", fqk.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fqh.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", fqk.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fqh.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      return fql.a($$0, 32, 32);
+   private static String a(int $$0) {
+      return "cube" + $$0;
    }
 
-   @Override
-   public fqf a() {
-      return this.f;
-   }
+   public static frj b() {
+      frl $$0 = new frl();
+      frm $$1 = $$0.a();
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      float $$7 = 1.0F;
-      if (!$$0.aZ()) {
-         $$6 = 1.3F;
-         $$7 = 1.7F;
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = $$2;
+         if ($$2 == 2) {
+            $$3 = 24;
+            $$4 = 10;
+         } else if ($$2 == 3) {
+            $$3 = 24;
+            $$4 = 19;
+         }
+
+         $$1.a(a($$2), fri.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), frf.a);
       }
 
-      this.g.f = -$$6 * 0.25F * awm.a($$7 * 0.6F * $$3);
+      $$1.a("inside_cube", fri.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), frf.a);
+      return frj.a($$0, 64, 32);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      float $$4 = aww.i($$3, $$0.bW, $$0.e);
+      if ($$4 < 0.0F) {
+         $$4 = 0.0F;
+      }
+
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
+      }
+   }
+
+   @Override
+   public frd a() {
+      return this.b;
    }
 }

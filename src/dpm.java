@@ -1,45 +1,24 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class dpm implements AutoCloseable {
-   private final dpe a;
-   private final DataFixer b;
-   private final axs c;
+public interface dpm<T> {
+   int a(T var1);
 
-   public dpm(Path $$0, DataFixer $$1, boolean $$2, String $$3, axs $$4) {
-      this.b = $$1;
-      this.c = $$4;
-      this.a = new dpe($$0, $$2, $$3);
-   }
+   boolean a(Predicate<T> var1);
 
-   public CompletableFuture<Optional<sy>> a(cvl $$0) {
-      return this.a.a($$0);
-   }
+   T a(int var1);
 
-   public CompletableFuture<Void> a(cvl $$0, @Nullable sy $$1) {
-      return this.a.a($$0, $$1);
-   }
+   void a(uu var1);
 
-   public sy a(sy $$0, int $$1) {
-      int $$2 = tn.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
-   }
+   void b(uu var1);
 
-   public Dynamic<tv> a(Dynamic<tv> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
-   }
+   int a();
 
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
-   }
+   int b();
 
-   @Override
-   public void close() throws IOException {
-      this.a.close();
+   dpm<T> c();
+
+   public interface a {
+      <A> dpm<A> create(int var1, iq<A> var2, dpn<A> var3, List<A> var4);
    }
 }

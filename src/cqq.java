@@ -1,21 +1,19 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cqq extends cqz {
-   public cqq(cpl.a $$0, czf $$1, czf $$2) {
-      super($$1, $$2, $$0, ih.a);
-   }
-
-   public cqq(cpl.a $$0, czf $$1, czf $$2, ih $$3) {
-      super($$1, $$2, $$0, $$3);
+public class cqq extends crw {
+   public cqq(cqf.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(ib $$0, cwe $$1, @Nullable cia $$2, cpq $$3, dme $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dku $$6 && $$1.a_($$0).b() instanceof dge $$7) {
-         $$7.a($$2, $$6, true);
-      }
+   public void a(cqk $$0, @Nullable cwz $$1, List<vu> $$2, csb $$3) {
+      csj.a($$0, $$2, 0.25F, $$1 == null ? 20.0F : $$1.s().f());
+   }
 
-      return $$5;
+   @Override
+   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aty.nC, atz.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

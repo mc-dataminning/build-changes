@@ -1,80 +1,84 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class ajf extends IOException {
-   private final List<ajf.a> a = Lists.newArrayList();
-   private final String b;
+public class ajf<T> extends aiz<T> {
+   private final ajf.b b;
 
-   public ajf(String $$0) {
-      this.a.add(new ajf.a());
-      this.b = $$0;
-   }
+   private static ajf.b a(final ajf.b $$0) {
+      return new ajf.b() {
+         private final Map<ajg<? extends iy<?>>, Optional<? extends ajf.a<?>>> b = new HashMap<>();
 
-   public ajf(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new ajf.a());
-      this.b = $$0;
-   }
-
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new ajf.a());
-   }
-
-   @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
-   }
-
-   public static ajf a(Exception $$0) {
-      if ($$0 instanceof ajf) {
-         return (ajf)$$0;
-      } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
+         @Override
+         public <T> Optional<ajf.a<T>> a(ajg<? extends iy<? extends T>> $$0x) {
+            return (Optional<ajf.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
          }
-
-         return new ajf($$1, $$0);
-      }
+      };
    }
 
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
-
-      a() {
-      }
-
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
-
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+   public static <T> ajf<T> a(DynamicOps<T> $$0, final in.a $$1) {
+      return a($$0, a(new ajf.b() {
+         @Override
+         public <E> Optional<ajf.a<E>> a(ajg<? extends iy<? extends E>> $$0) {
+            return $$1.a($$0).map($$0x -> (ajf.a<E>)(new ajf.a<>($$0x, $$0x, $$0x.g())));
          }
-      }
+      }));
+   }
+
+   public static <T> ajf<T> a(DynamicOps<T> $$0, ajf.b $$1) {
+      return new ajf<>($$0, $$1);
+   }
+
+   public static <T> Dynamic<T> a(Dynamic<T> $$0, in.a $$1) {
+      return new Dynamic(a($$0.getOps(), $$1), $$0.getValue());
+   }
+
+   private ajf(DynamicOps<T> $$0, ajf.b $$1) {
+      super($$0);
+      this.b = $$1;
+   }
+
+   public <E> Optional<io<E>> a(ajg<? extends iy<? extends E>> $$0) {
+      return this.b.a($$0).map(ajf.a::a);
+   }
+
+   public <E> Optional<im<E>> b(ajg<? extends iy<? extends E>> $$0) {
+      return this.b.a($$0).map(ajf.a::b);
+   }
+
+   public static <E, O> RecordCodecBuilder<O, im<E>> c(ajg<? extends iy<? extends E>> $$0) {
+      return awe.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof ajf<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static <E, O> RecordCodecBuilder<O, il.c<E>> d(ajg<E> $$0) {
+      ajg<? extends iy<E>> $$1 = ajg.a($$0.b());
+      return awe.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof ajf<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static record a<T>(io<T> a, im<T> b, Lifecycle c) {
+   }
+
+   public interface b {
+      <T> Optional<ajf.a<T>> a(ajg<? extends iy<? extends T>> var1);
    }
 }

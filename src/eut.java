@@ -1,2 +1,4 @@
-public interface eut {
+public class eut {
+   public volatile long a;
+   public volatile long b;
 }

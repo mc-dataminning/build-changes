@@ -1,86 +1,98 @@
-import javax.annotation.Nullable;
-
-public class cfx extends cep {
-   public cfx(bol<? extends cfx> $$0, cwe $$1) {
+public class cfx extends cgh {
+   public cfx(bpc<? extends cfx> $$0, cwz $$1) {
       super($$0, $$1);
-      this.a(eic.i, 8.0F);
+   }
+
+   public static bqu.a r() {
+      return cfy.gt().a(bqv.r, 0.2F);
+   }
+
+   public static boolean b(bpc<cfx> $$0, cxa $$1, bps $$2, ib $$3, axd $$4) {
+      return $$1.aj() != bmz.a;
    }
 
    @Override
-   protected void B() {
-      this.bQ.a(3, new bxn<>(this, cgp.class, true));
-      super.B();
+   public boolean a(cxc $$0) {
+      return $$0.f(this) && !$$0.d(this.cH());
    }
 
    @Override
-   protected ato y() {
-      return atp.BT;
+   public void a(int $$0, boolean $$1) {
+      super.a($$0, $$1);
+      this.f(bqv.a).a((double)($$0 * 3));
    }
 
    @Override
-   protected ato d(bne $$0) {
-      return atp.BV;
+   public float br() {
+      return 1.0F;
    }
 
    @Override
-   protected ato n_() {
-      return atp.BU;
+   protected ka s() {
+      return kc.F;
    }
 
    @Override
-   ato w() {
-      return atp.BW;
+   public boolean bN() {
+      return false;
    }
 
    @Override
-   protected void a(bne $$0, int $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$0.d() instanceof ces $$4 && $$4.gm()) {
-         $$4.gn();
-         this.a((cwd)cpt.ui);
-      }
+   protected int y() {
+      return super.y() * 4;
    }
 
    @Override
-   protected void a(awt $$0, bmj $$1) {
-      this.a(bom.a, new cpq(cpt.oP));
+   protected void gj() {
+      this.d *= 0.9F;
    }
 
    @Override
-   protected void b(awt $$0, bmj $$1) {
-   }
-
-   @Nullable
-   @Override
-   public bpp a(cwt $$0, bmj $$1, bpb $$2, @Nullable bpp $$3) {
-      bpp $$4 = super.a($$0, $$1, $$2, $$3);
-      this.f(bqe.c).a(4.0);
-      this.A();
-      return $$4;
+   protected void fg() {
+      epr $$0 = this.dp();
+      float $$1 = (float)this.go() * 0.1F;
+      this.o($$0.c, (double)(this.fe() + $$1), $$0.e);
+      this.au = true;
    }
 
    @Override
-   public boolean B(bof $$0) {
-      if (!super.B($$0)) {
-         return false;
+   protected void c(avd<eim> $$0) {
+      if ($$0 == aus.b) {
+         epr $$1 = this.dp();
+         this.o($$1.c, (double)(0.22F + (float)this.go() * 0.05F), $$1.e);
+         this.au = true;
       } else {
-         if ($$0 instanceof box) {
-            ((box)$$0).b(new bns(bnu.t, 200), this);
-         }
-
-         return true;
+         super.c($$0);
       }
    }
 
    @Override
-   protected cig b(cpq $$0, float $$1) {
-      cig $$2 = super.b($$0, $$1);
-      $$2.g(100);
-      return $$2;
+   protected boolean gk() {
+      return this.cY();
    }
 
    @Override
-   public boolean c(bns $$0) {
-      return $$0.a(bnu.t) ? false : super.c($$0);
+   protected float gl() {
+      return super.gl() + 2.0F;
+   }
+
+   @Override
+   protected atx d(bnv $$0) {
+      return this.gp() ? aty.nV : aty.nU;
+   }
+
+   @Override
+   protected atx n_() {
+      return this.gp() ? aty.nM : aty.nT;
+   }
+
+   @Override
+   protected atx gm() {
+      return this.gp() ? aty.nY : aty.nX;
+   }
+
+   @Override
+   protected atx gn() {
+      return aty.nW;
    }
 }

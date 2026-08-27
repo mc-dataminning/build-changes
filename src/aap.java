@@ -1,44 +1,42 @@
-import java.util.function.BiFunction;
+public class aap implements yb<aam> {
+   public static final xs<uu, aap> a = yb.a(aap::a, aap::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
 
-public class aap implements xz<aai> {
-   public static final xq<vd, aap> a = xq.a(ib.b, aap::b, xo.a(ki.h), aap::e, xo.k, aap::f, aap::new);
-   private final ib b;
-   private final djn<?> c;
-   private final sy d;
-
-   public static aap a(djl $$0, BiFunction<djl, iy, sy> $$1) {
-      iy $$2 = $$0.i().I_();
-      return new aap($$0.aD_(), $$0.r(), $$1.apply($$0, $$2));
+   public aap(bow $$0, int $$1) {
+      this.g = $$0.aj();
+      this.h = $$1;
    }
 
-   public static aap a(djl $$0) {
-      return a($$0, djl::a);
+   private aap(uu $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
    }
 
-   private aap(ib $$0, djn<?> $$1, sy $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private void a(uu $$0) {
+      $$0.c(this.g);
+      $$0.k(this.h);
    }
 
    @Override
-   public yb<aap> a() {
-      return aet.i;
+   public yd<aap> a() {
+      return aex.e;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
-      return this.b;
+   public int b() {
+      return this.g;
    }
 
-   public djn<?> e() {
-      return this.c;
-   }
-
-   public sy f() {
-      return this.d;
+   public int e() {
+      return this.h;
    }
 }

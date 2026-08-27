@@ -1,35 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class duz implements dwy {
-   public static final Codec<duz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ajc.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               ajc.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               egf.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               egf.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, duz::new)
-   );
-   public final List<ajc> b;
-   public final List<ajc> c;
-   public final il<ege> d;
-   public final il<ege> e;
-   public final int f;
+public class duz extends dvq<dxm> {
+   public duz(Codec<dxm> $$0) {
+      super($$0);
+   }
 
-   public duz(List<ajc> $$0, List<ajc> $$1, il<ege> $$2, il<ege> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+   @Override
+   public boolean a(dvs<dxm> $$0) {
+      ib $$1 = $$0.e();
+      cxu $$2 = $$0.b();
+      axd $$3 = $$0.d();
+      dxm $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
+         return false;
       } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
+
+         for (ib $$7 : ib.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(cxa $$0, ib $$1, axd $$2) {
+      ib $$3 = $$1.d();
+      dmz $$4 = $$0.a_($$3);
+      return $$4.a(dac.kE) ? $$2.h() : $$4.d($$0, $$3, ih.b);
+   }
+
+   private void a(cxa $$0, ib $$1, axd $$2, dxm $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
    }
 }

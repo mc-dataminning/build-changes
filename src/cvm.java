@@ -1,25 +1,15 @@
-import java.util.function.Predicate;
-
-public class cvm {
-   private final eov a;
-   private final eov b;
-   private final Predicate<dme> c;
-
-   public cvm(eov $$0, eov $$1, Predicate<dme> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class cvm extends cuu {
+   public cvm(cuu.a $$0, bpd... $$1) {
+      super($$0, auv.bl, $$1);
    }
 
-   public eov a() {
-      return this.b;
+   @Override
+   public int a(int $$0) {
+      return 25;
    }
 
-   public eov b() {
-      return this.a;
-   }
-
-   public Predicate<dme> c() {
-      return this.c;
+   @Override
+   public int b(int $$0) {
+      return 50;
    }
 }

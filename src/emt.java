@@ -1,36 +1,55 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
+import org.slf4j.Logger;
 
-public class emt implements emx {
-   private static final emt b = new emt();
-   public static final Codec<emt> a = Codec.unit(b);
+public class emt extends emg {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<emt> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(eop.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, emt::new)
+   );
+   private final eoo c;
+   private final boolean d;
 
-   private emt() {
+   private emt(List<ent> $$0, eoo $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public emy b() {
-      return emz.m;
+   public emi b() {
+      return emj.j;
    }
 
    @Override
-   public Set<emg<?>> a() {
-      return ImmutableSet.of(emj.j);
+   public Set<enc<?>> a() {
+      return this.c.a();
    }
 
-   public boolean a(ejy $$0) {
-      Float $$1 = $$0.c(emj.j);
-      if ($$1 != null) {
-         awt $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
+   @Override
+   public cqk a(cqk $$0, eku $$1) {
+      if ($$0.i()) {
+         int $$2 = $$0.m();
+         float $$3 = this.d ? 1.0F - (float)$$0.l() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - aww.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(aww.d($$4 * (float)$$2));
       } else {
-         return true;
+         b.warn("Couldn't set damage of loot item {}", $$0);
       }
+
+      return $$0;
    }
 
-   public static emx.a c() {
-      return () -> b;
+   public static emg.a<?> a(eoo $$0) {
+      return a($$1 -> new emt($$1, $$0, false));
+   }
+
+   public static emg.a<?> a(eoo $$0, boolean $$1) {
+      return a($$2 -> new emt($$2, $$0, $$1));
    }
 }

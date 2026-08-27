@@ -1,61 +1,30 @@
-public class ctd extends csk {
-   public ctd(csi $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public boolean a(clk $$0, cwe $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
+public enum ctd implements axq {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cpq $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if (czf.a($$5.d()) instanceof dgd) {
-               $$2++;
-            } else {
-               if (!($$5.d() instanceof coh)) {
-                  return false;
-               }
+   public static final Codec<ctd> e = axq.a(ctd::values);
+   public static final IntFunction<ctd> f = avn.a(ctd::a, values(), avn.a.a);
+   public static final xs<ByteBuf, ctd> g = xq.a(f, ctd::a);
+   private final String h;
+   private final int i;
 
-               $$3++;
-            }
-
-            if ($$3 > 1 || $$2 > 1) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 == 1 && $$3 == 1;
-   }
-
-   public cpq a(clk $$0, iy $$1) {
-      cpq $$2 = cpq.h;
-      coh $$3 = (coh)cpt.rh;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cpq $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            cpl $$6 = $$5.d();
-            if (czf.a($$6) instanceof dgd) {
-               $$2 = $$5;
-            } else if ($$6 instanceof coh) {
-               $$3 = (coh)$$6;
-            }
-         }
-      }
-
-      czf $$7 = dgd.a($$3.c());
-      return $$2.a($$7, 1);
+   private ctd(String $$0, int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public csw<?> as_() {
-      return csw.m;
+   private int a() {
+      return this.i;
    }
 }

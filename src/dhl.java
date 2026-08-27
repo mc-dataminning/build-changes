@@ -1,91 +1,60 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhl extends czf {
+public class dhl extends daa {
    public static final MapCodec<dhl> a = b(dhl::new);
-   private static final dne b = dmu.aT;
+   protected static final eqk b = daa.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
    private static final int c = 20;
-   private static final int d = 8;
 
    @Override
    public MapCodec<dhl> a() {
       return a;
    }
 
-   public dhl(dmd.d $$0) {
+   public dhl(dmy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(cwe $$0, dme $$1, eor $$2, cis $$3) {
-      int $$4 = a((cwf)$$0, $$1, $$2, (bof)$$3);
-      if ($$3.w() instanceof apb $$6) {
-         $$6.a(atz.aE);
-         am.M.a($$6, $$3, $$2.e(), $$4);
-      }
+   protected eqk b(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return b;
    }
 
-   private static int a(cwf $$0, dme $$1, eor $$2, bof $$3) {
-      int $$4 = a($$2, $$2.e());
-      int $$5 = $$3 instanceof cig ? 20 : 8;
-      if (!$$0.N().a($$2.a(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.a(), $$5);
-      }
-
-      return $$4;
+   @Override
+   protected eqk b_(dmz $$0, cwf $$1, ib $$2) {
+      return eqh.b();
    }
 
-   private static int a(eor $$0, eov $$1) {
-      ih $$2 = $$0.b();
-      double $$3 = Math.abs(awm.e($$1.c) - 0.5);
-      double $$4 = Math.abs(awm.e($$1.d) - 0.5);
-      double $$5 = Math.abs(awm.e($$1.e) - 0.5);
-      ih.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == ih.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == ih.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
+   @Override
+   protected eqk c(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return eqh.b();
+   }
+
+   @Override
+   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      dag.b($$1, $$2.c(), $$0);
+   }
+
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if ($$1 == ih.b && $$2.a(dac.G)) {
+         $$3.a($$4, this, 20);
       }
 
-      return Math.max(1, awm.c(15.0 * awm.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(cwf $$0, dme $$1, int $$2, ib $$3, int $$4) {
-      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
-      }
+   protected void b(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 
    @Override
-   protected int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
-      return $$0.c(b);
+   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
+      return false;
    }
 
    @Override
-   protected boolean f_(dme $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      if (!$$1.y_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.N().a($$2, this)) {
-            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
-         }
-      }
+   protected float d(dmz $$0, cwf $$1, ib $$2) {
+      return 0.2F;
    }
 }

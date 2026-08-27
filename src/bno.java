@@ -1,19 +1,9 @@
-class bno extends bnq {
-   protected bno(bnr $$0, int $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a(box $$0, int $$1) {
-      if ($$0 instanceof cia $$2) {
-         $$2.A(0.005F * (float)($$1 + 1));
-      }
+public interface bno extends bmv {
+   int[] a(ih var1);
 
-      return true;
-   }
+   boolean a(int var1, cqk var2, @Nullable ih var3);
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+   boolean b(int var1, cqk var2, ih var3);
 }

@@ -1,73 +1,87 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dhz extends cyr {
+public class dhz extends daa {
    public static final MapCodec<dhz> a = b(dhz::new);
-   public static final dnh<dlr> b = dmu.bz;
-   public static final dmy c = dda.aE;
+   public static final dnz b = dnp.aw;
+   protected static final float c = 6.0F;
+   protected static final eqk d = daa.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dhz> a() {
       return a;
    }
 
-   public dhz(dmd.d $$0) {
+   protected dhz(dmy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, ih.c).a(b, dlr.a));
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public bmn a(cpq $$0, dme $$1, cwe $$2, ib $$3, cia $$4, bmk $$5, eor $$6) {
-      if ($$0.b() || $$1.c(b) != dlr.b) {
-         return bmn.d;
-      } else if ($$2 instanceof apa $$7) {
-         if ($$7.c_($$3) instanceof dlm $$9) {
-            dlm.b.a($$7, $$3, $$1, $$9.f(), $$9.b(), $$9.c(), $$4, $$0);
-            return bmn.a;
-         } else {
-            return bmn.d;
-         }
-      } else {
-         return bmn.b;
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return d;
+   }
+
+   @Override
+   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   @Nullable
    @Override
-   public djl a(ib $$0, dme $$1) {
-      return new dlm($$0, $$1);
+   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if ($$1.u($$2.c())) {
+         int $$4 = 1;
+
+         while ($$1.a_($$2.c($$4)).a(this)) {
+            $$4++;
+         }
+
+         if ($$4 < 3) {
+            int $$5 = $$0.c(b);
+            if ($$5 == 15) {
+               $$1.b($$2.c(), this.o());
+               $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 4);
+            } else {
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$5 + 1)), 4);
+            }
+         }
+      }
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(c, b);
-   }
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
 
-   @Nullable
-   @Override
-   public <T extends djl> djm<T> a(cwe $$0, dme $$1, djn<T> $$2) {
-      return $$0 instanceof apa $$3
-         ? a($$2, djn.R, ($$1x, $$2x, $$3x, $$4) -> dlm.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, djn.R, ($$0x, $$1x, $$2x, $$3x) -> dlm.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dme a(crx $$0) {
-      return this.o().a(c, $$0.g().g());
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      dmz $$3 = $$1.a_($$2.d());
+      if ($$3.a(this)) {
+         return true;
+      } else {
+         if ($$3.a(aun.af) || $$3.a(aun.H)) {
+            ib $$4 = $$2.d();
+
+            for (ih $$5 : ih.c.a) {
+               dmz $$6 = $$1.a_($$4.a($$5));
+               ein $$7 = $$1.b_($$4.a($$5));
+               if ($$7.a(aus.a) || $$6.a(dac.kI)) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
    }
 
    @Override
-   public dme a(dme $$0, dfr $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dme a(dme $$0, deb $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dfk b_(dme $$0) {
-      return dfk.c;
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(b);
    }
 }

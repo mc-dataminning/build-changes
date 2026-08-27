@@ -1,24 +1,17 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ebq extends ebm {
-   public static final Codec<ebq> a = avu.k.fieldOf("chance").xmap(ebq::new, $$0 -> $$0.c).codec();
-   private final int c;
-
-   private ebq(int $$0) {
-      this.c = $$0;
-   }
-
-   public static ebq a(int $$0) {
-      return new ebq($$0);
-   }
-
+public record ebq(List<dsq.c> a) implements dsq.c {
+   @Nullable
    @Override
-   protected boolean a(ebl $$0, awt $$1, ib $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
-   }
+   public dmz calculate(dsf.b $$0) {
+      for (dsq.c $$1 : this.a) {
+         dmz $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
 
-   @Override
-   public ebo<?> b() {
-      return ebo.b;
+      return null;
    }
 }

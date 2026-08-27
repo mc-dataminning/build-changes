@@ -1,24 +1,33 @@
-public class gfm extends gfu<ces, fmy<ces>> {
-   private static final ajc a = new ajc("textures/entity/creeper/creeper_armor.png");
-   private final fmy<ces> b;
+public class gfm extends ged<ckz> {
+   private final fyk f;
 
-   public gfm(gdt<ces, fmy<ces>> $$0, fqb $$1) {
-      super($$0);
-      this.b = new fmy<>($$1.a(fqe.E));
+   public gfm(gcy.a $$0) {
+      super($$0, frc.bC);
+      this.f = $$0.c();
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
+   protected void a(ckz $$0, float $$1, dmz $$2, etz $$3, fxq $$4, int $$5) {
+      int $$6 = $$0.C();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = aww.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
    }
 
-   @Override
-   protected ajc a() {
-      return a;
-   }
+   public static void a(fyk $$0, dmz $$1, etz $$2, fxq $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = giq.a(giq.a(1.0F), 10);
+      } else {
+         $$6 = giq.d;
+      }
 
-   @Override
-   protected fne<ces> b() {
-      return this.b;
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

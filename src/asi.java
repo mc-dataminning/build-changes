@@ -1,27 +1,14 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-@FunctionalInterface
 public interface asi {
-   Optional<asd> getResource(ajc var1);
+   CompletableFuture<Void> a(asi.a var1, aso var2, bjq var3, bjq var4, Executor var5, Executor var6);
 
-   default asd getResourceOrThrow(ajc $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+   default String c() {
+      return this.getClass().getSimpleName();
    }
 
-   default InputStream open(ajc $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
-   }
-
-   default BufferedReader openAsReader(ajc $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
-   }
-
-   static asi fromMap(Map<ajc, asd> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
+   public interface a {
+      <T> CompletableFuture<T> a(T var1);
    }
 }

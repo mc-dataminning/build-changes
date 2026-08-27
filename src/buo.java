@@ -1,35 +1,40 @@
 import com.google.common.collect.ImmutableMap;
 
-public class buo<E extends che> extends bqp<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
-
-   public buo(int $$0) {
-      super(ImmutableMap.of(bya.aB, byb.a, bya.o, byb.b, bya.m, byb.b, bya.n, byb.c, bya.B, byb.c, bya.az, byb.c, bya.aG, byb.c), $$0);
+public class buo extends brg<cif> {
+   public buo() {
+      super(ImmutableMap.of());
    }
 
-   protected boolean a(apa $$0, E $$1, long $$2) {
-      return true;
+   protected boolean a(apf $$0, cif $$1, long $$2) {
+      return c($$1) || b($$1);
    }
 
-   protected void b(apa $$0, E $$1, long $$2) {
-      $$1.a(atp.Bn, 5.0F, 1.0F);
-   }
+   protected void b(apf $$0, cif $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bqp<?> $$3 = $$1.dP();
+         if (!$$3.c(ckh.g)) {
+            $$3.b(byr.t);
+            $$3.b(byr.m);
+            $$3.b(byr.n);
+            $$3.b(byr.r);
+            $$3.b(byr.q);
+         }
 
-   protected void c(apa $$0, E $$1, long $$2) {
-      if ($$1.c(bpi.m)) {
-         $$1.b(bpi.a);
+         $$3.a(ckh.g);
       }
+   }
 
-      $$1.dM().b(bya.aB);
-      $$1.dM().c(bya.B).filter($$1::a).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.c($$1x);
-         }
+   protected void c(apf $$0, cif $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
+      }
+   }
 
-         if (!$$1.dM().a(bya.az)) {
-            chf.a($$1, $$1x.dj());
-         }
-      });
+   public static boolean b(bpo $$0) {
+      return $$0.dP().a(byr.A);
+   }
+
+   public static boolean c(bpo $$0) {
+      return $$0.dP().a(byr.x);
    }
 }

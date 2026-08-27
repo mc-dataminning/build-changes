@@ -1,28 +1,30 @@
-import java.util.EnumMap;
-
 public class frf {
-   public static final int a = 5000;
-   private final frb b;
-   private final fas c;
-   private final EnumMap<bij, Long> d;
+   public static final frf a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
+   public final float f;
+   public final float g;
 
-   public frf(frb $$0, fas $$1) {
-      this.c = $$1;
+   private frf(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       this.b = $$0;
-      this.d = new EnumMap<>(bij.class);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   public void a() {
-      if (this.c.g()) {
-         this.a(bij.a);
-      }
+   public static frf a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   private void a(bij $$0) {
-      long $$1 = ac.b();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new afm($$0));
-         this.d.put($$0, $$1);
-      }
+   public static frf b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   }
+
+   public static frf a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new frf($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

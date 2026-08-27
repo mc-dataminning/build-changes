@@ -1,60 +1,84 @@
 import com.mojang.serialization.MapCodec;
 
-public class dgq extends czf {
-   public static final MapCodec<dgq> a = b(dgq::new);
-   protected static final epo b = czf.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int c = 20;
+public class dgq extends dck implements dgp {
+   public static final MapCodec<dgq> b = b(dgq::new);
 
    @Override
    public MapCodec<dgq> a() {
-      return a;
-   }
-
-   public dgq(dmd.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
       return b;
    }
 
-   @Override
-   protected epo b_(dme $$0, cvk $$1, ib $$2) {
-      return epl.b();
+   public dgq(dmy.d $$0) {
+      super(bme.a(1), $$0);
    }
 
    @Override
-   protected epo c(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return epl.b();
+   public int a(dgu.a $$0, cxa $$1, ib $$2, axd $$3, dgu $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         ib $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               ib $$10 = $$7.c();
+               dmz $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.w().e(), atz.e, 1.0F, 1.0F);
+            }
+
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+         }
+      } else {
+         return $$6;
+      }
    }
 
-   @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      czl.b($$1, $$2.c(), $$0);
+   private static int a(dgu $$0, ib $$1, ib $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = aww.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = aww.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
    }
 
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.b && $$2.a(czh.G)) {
-         $$3.a($$4, this, 20);
+   private dmz a(cxa $$0, ib $$1, axd $$2, boolean $$3) {
+      dmz $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dac.qV.o().a(dgt.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dac.qQ.o();
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$4.b(dnp.C) && !$$0.b_($$1).c() ? $$4.a(dnp.C, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(cxa $$0, ib $$1) {
+      dmz $$2 = $$0.a_($$1.c());
+      if ($$2.i() || $$2.a(dac.G) && $$2.u().b(eio.c)) {
+         int $$3 = 0;
+
+         for (ib $$4 : ib.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dmz $$5 = $$0.a_($$4);
+            if ($$5.a(dac.qQ) || $$5.a(dac.qV)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
-
-   @Override
-   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+   public boolean d() {
       return false;
-   }
-
-   @Override
-   protected float d(dme $$0, cvk $$1, ib $$2) {
-      return 0.2F;
    }
 }

@@ -1,90 +1,125 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class fxr {
-   public float[] a;
-   public final int b;
+public class fxr implements fxq {
+   private final fxq.a a;
+   private final fxq.a b = fxq.a(new etu(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public fxr(@Nullable float[] $$0, int $$1) {
+   public fxr(fxq.a $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
+   @Override
+   public eud getBuffer(fxy $$0) {
+      if ($$0.M()) {
+         eud $$1 = this.b.getBuffer($$0);
+         return new fxr.a($$1, this.c, this.d, this.e, this.f);
       } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
-   }
-
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
-   }
-
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
-
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      }
-   }
-
-   protected static class a implements JsonDeserializer<fxr> {
-      private static final int a = 0;
-
-      public fxr a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new fxr($$4, $$5);
-      }
-
-      protected int a(JsonObject $$0) {
-         int $$1 = awc.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
+         eud $$2 = this.a.getBuffer($$0);
+         Optional<fxy> $$3 = $$0.L();
+         if ($$3.isPresent()) {
+            eud $$4 = this.b.getBuffer($$3.get());
+            fxr.a $$5 = new fxr.a($$4, this.c, this.d, this.e, this.f);
+            return eug.a($$5, $$2);
          } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+            return $$2;
          }
       }
+   }
 
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = awc.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
 
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = awc.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
+   public void a() {
+      this.b.b();
+   }
 
-               return $$2;
-            }
-         }
+   static class a extends ety {
+      private final eud f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(eud $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void l() {
+      }
+
+      @Override
+      public eud a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public eud a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public eud a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public eud a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eud b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eud a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
       }
    }
 }

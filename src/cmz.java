@@ -1,61 +1,65 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cmz {
-   private final String a;
-   @Nullable
-   private dmi b;
-   private boolean c;
-   private boolean d;
-
-   public cmz(String $$0) {
-      this.a = $$0;
+public class cmz extends cnj {
+   public cmz(bmv $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   private static boolean a(dmi $$0, @Nullable dmi $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else if ($$0.b() != null && $$1.b() != null) {
-         iy $$3 = $$0.c().I_();
-         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
-      } else {
-         return false;
-      }
+   @Override
+   public void b(cqk $$0, cqk $$1) {
    }
 
-   public boolean a(cpq $$0, ix<czf> $$1, dmi $$2) {
-      if (a($$2, this.b, this.d)) {
-         return this.c;
-      } else {
-         this.b = $$2;
-         this.d = false;
-         sy $$3 = $$0.w();
-         if ($$3 != null && $$3.b(this.a, 9)) {
-            te $$4 = $$3.c(this.a, 8);
+   @Override
+   public boolean a(cis $$0) {
+      return false;
+   }
 
-            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-               String $$6 = $$4.j($$5);
+   @Override
+   public Optional<cqk> a(int $$0, int $$1, cis $$2) {
+      return Optional.empty();
+   }
 
-               try {
-                  fk.b $$7 = fk.a($$1.p(), new StringReader($$6));
-                  this.d = this.d | $$7.a();
-                  if ($$7.test($$2)) {
-                     this.c = true;
-                     return true;
-                  }
-               } catch (CommandSyntaxException var9) {
-               }
-            }
-         }
+   @Override
+   public cqk b(int $$0, int $$1, cis $$2) {
+      return cqk.h;
+   }
 
-         this.c = false;
-         return false;
-      }
+   @Override
+   public cqk d(cqk $$0) {
+      return $$0;
+   }
+
+   @Override
+   public cqk b(cqk $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(cis $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cqk $$0) {
+      return false;
+   }
+
+   @Override
+   public cqk a(int $$0) {
+      return cqk.h;
+   }
+
+   @Override
+   public void a(cis $$0, cqk $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

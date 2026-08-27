@@ -1,35 +1,20 @@
-public class cun extends ctz {
-   public cun(ctz.a $$0, bom... $$1) {
-      super($$0, aum.bb, $$1);
+public class cun extends cuu {
+   public cun(cuu.a $$0, bpd... $$1) {
+      super($$0, auv.bn, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 20;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
+      return 50;
    }
 
    @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 3;
+   public boolean a(cuu $$0) {
+      return $$0 instanceof cvd ? false : super.a($$0);
    }
 }

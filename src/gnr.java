@@ -1,38 +1,58 @@
-public class gnr implements gnu {
-   private static final int a = 600;
-   private static final vs b = vs.c("tutorial.open_inventory.title");
-   private static final vs c = vs.a("tutorial.open_inventory.description", gnt.a("inventory"));
-   private final gnt d;
-   private fcv e;
-   private int f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gnr(gnt $$0) {
-      this.d = $$0;
+public class gnr implements gns<gmj> {
+   private final List<gns<gmj>> a = Lists.newArrayList();
+   @Nullable
+   private final vu b;
+
+   public gnr(ajh $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : vu.c($$1);
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gnv.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new fcv(fcv.a.d, b, c, false);
-            this.d.e().ax().a(this.e);
+   public int e() {
+      int $$0 = 0;
+
+      for (gns<gmj> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public gmj a(axd $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (gns<gmj> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
          }
+
+         return gnq.a;
+      } else {
+         return gnq.a;
       }
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public void a(gns<gmj> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public vu a() {
+      return this.b;
    }
 
    @Override
-   public void c() {
-      this.d.a(gnv.e);
+   public void a(gnn $$0) {
+      for (gns<gmj> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

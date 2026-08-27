@@ -1,45 +1,25 @@
-public class gfw extends ggj<caw, fng<caw>> {
-   private final fwm a;
+public class gfw extends gcx<cka> {
+   private static final ajh a = new ajh("textures/entity/projectiles/wind_charge.png");
+   private final fqr f;
 
-   public gfw(gdt<caw, fng<caw>> $$0, fwm $$1) {
+   public gfw(gcy.a $$0) {
       super($$0);
-      this.a = $$1;
+      this.f = new fqr($$0.a(frc.bP));
    }
 
-   public void a(etd $$0, fwq $$1, int $$2, caw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fF();
-      boolean $$11 = $$3.o_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
-      }
+   public void a(cka $$0, float $$1, float $$2, etz $$3, fxq $$4, int $$5) {
+      float $$6 = (float)$$0.ah + $$2;
+      eud $$7 = $$4.getBuffer(fxy.a(a, this.a($$6) % 1.0F, 0.0F));
+      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
+      this.f.a($$3, $$7, $$5, giq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.E($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.o_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
-         }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
-      } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
-      }
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
+   }
 
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
-
-      cpq $$14 = $$3.c(bom.a);
-      this.a.a($$3, $$14, cpn.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public ajh a(cka $$0) {
+      return a;
    }
 }

@@ -10,48 +10,48 @@ import javax.annotation.Nullable;
 
 public class gi {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<eov, List<? extends bof>> b = ($$0, $$1) -> {
+   public static final BiConsumer<epr, List<? extends bow>> b = ($$0, $$1) -> {
    };
-   private static final dqf<bof, ?> c = new dqf<bof, bof>() {
-      public bof a(bof $$0) {
+   private static final drb<bow, ?> c = new drb<bow, bow>() {
+      public bow a(bow $$0) {
          return $$0;
       }
 
       @Override
-      public Class<? extends bof> a() {
-         return bof.class;
+      public Class<? extends bow> a() {
+         return bow.class;
       }
    };
    private final int d;
    private final boolean e;
    private final boolean f;
-   private final Predicate<bof> g;
+   private final Predicate<bow> g;
    private final cm.c h;
-   private final Function<eov, eov> i;
+   private final Function<epr, epr> i;
    @Nullable
-   private final eoq j;
-   private final BiConsumer<eov, List<? extends bof>> k;
+   private final epm j;
+   private final BiConsumer<epr, List<? extends bow>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final dqf<bof, ?> o;
+   private final drb<bow, ?> o;
    private final boolean p;
 
    public gi(
       int $$0,
       boolean $$1,
       boolean $$2,
-      Predicate<bof> $$3,
+      Predicate<bow> $$3,
       cm.c $$4,
-      Function<eov, eov> $$5,
-      @Nullable eoq $$6,
-      BiConsumer<eov, List<? extends bof>> $$7,
+      Function<epr, epr> $$5,
+      @Nullable epm $$6,
+      BiConsumer<epr, List<? extends bow>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
-      @Nullable bol<?> $$11,
+      @Nullable bpc<?> $$11,
       boolean $$12
    ) {
       this.d = $$0;
@@ -65,7 +65,7 @@ public class gi {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (dqf<bof, ?>)($$11 == null ? c : $$11);
+      this.o = (drb<bow, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -95,9 +95,9 @@ public class gi {
       }
    }
 
-   public bof a(du $$0) throws CommandSyntaxException {
+   public bow a(du $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<? extends bof> $$1 = this.b($$0);
+      List<? extends bow> $$1 = this.b($$0);
       if ($$1.isEmpty()) {
          throw eh.d.create();
       } else if ($$1.size() > 1) {
@@ -107,37 +107,37 @@ public class gi {
       }
    }
 
-   public List<? extends bof> b(du $$0) throws CommandSyntaxException {
+   public List<? extends bow> b(du $$0) throws CommandSyntaxException {
       return this.f($$0).stream().filter($$1 -> $$1.ai().a($$0.w())).toList();
    }
 
-   private List<? extends bof> f(du $$0) throws CommandSyntaxException {
+   private List<? extends bow> f(du $$0) throws CommandSyntaxException {
       this.e($$0);
       if (!this.e) {
          return this.d($$0);
       } else if (this.m != null) {
-         apb $$1 = $$0.l().ah().a(this.m);
-         return (List<? extends bof>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new apb[]{$$1}));
+         apg $$1 = $$0.l().ah().a(this.m);
+         return (List<? extends bow>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new apg[]{$$1}));
       } else if (this.n != null) {
-         for (apa $$2 : $$0.l().K()) {
-            bof $$3 = $$2.a(this.n);
+         for (apf $$2 : $$0.l().K()) {
+            bow $$3 = $$2.a(this.n);
             if ($$3 != null) {
-               return Lists.newArrayList(new bof[]{$$3});
+               return Lists.newArrayList(new bow[]{$$3});
             }
          }
 
          return Collections.emptyList();
       } else {
-         eov $$4 = this.i.apply($$0.d());
-         Predicate<bof> $$5 = this.a($$4);
+         epr $$4 = this.i.apply($$0.d());
+         Predicate<bow> $$5 = this.a($$4);
          if (this.l) {
-            return (List<? extends bof>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new bof[]{$$0.f()}) : Collections.emptyList());
+            return (List<? extends bow>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new bow[]{$$0.f()}) : Collections.emptyList());
          } else {
-            List<bof> $$6 = Lists.newArrayList();
+            List<bow> $$6 = Lists.newArrayList();
             if (this.d()) {
                this.a($$6, $$0.e(), $$4, $$5);
             } else {
-               for (apa $$7 : $$0.l().K()) {
+               for (apf $$7 : $$0.l().K()) {
                   this.a($$6, $$7, $$4, $$5);
                }
             }
@@ -147,7 +147,7 @@ public class gi {
       }
    }
 
-   private void a(List<bof> $$0, apa $$1, eov $$2, Predicate<bof> $$3) {
+   private void a(List<bow> $$0, apf $$1, epr $$2, Predicate<bow> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if (this.j != null) {
@@ -162,9 +162,9 @@ public class gi {
       return this.k == b ? this.d : Integer.MAX_VALUE;
    }
 
-   public apb c(du $$0) throws CommandSyntaxException {
+   public apg c(du $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<apb> $$1 = this.d($$0);
+      List<apg> $$1 = this.d($$0);
       if ($$1.size() != 1) {
          throw eh.e.create();
       } else {
@@ -172,32 +172,32 @@ public class gi {
       }
    }
 
-   public List<apb> d(du $$0) throws CommandSyntaxException {
+   public List<apg> d(du $$0) throws CommandSyntaxException {
       this.e($$0);
       if (this.m != null) {
-         apb $$1 = $$0.l().ah().a(this.m);
-         return (List<apb>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new apb[]{$$1}));
+         apg $$1 = $$0.l().ah().a(this.m);
+         return (List<apg>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new apg[]{$$1}));
       } else if (this.n != null) {
-         apb $$2 = $$0.l().ah().a(this.n);
-         return (List<apb>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new apb[]{$$2}));
+         apg $$2 = $$0.l().ah().a(this.n);
+         return (List<apg>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new apg[]{$$2}));
       } else {
-         eov $$3 = this.i.apply($$0.d());
-         Predicate<bof> $$4 = this.a($$3);
+         epr $$3 = this.i.apply($$0.d());
+         Predicate<bow> $$4 = this.a($$3);
          if (this.l) {
-            if ($$0.f() instanceof apb $$5 && $$4.test($$5)) {
-               return Lists.newArrayList(new apb[]{$$5});
+            if ($$0.f() instanceof apg $$5 && $$4.test($$5)) {
+               return Lists.newArrayList(new apg[]{$$5});
             }
 
             return Collections.emptyList();
          } else {
             int $$6 = this.f();
-            List<apb> $$7;
+            List<apg> $$7;
             if (this.d()) {
                $$7 = $$0.e().a($$4, $$6);
             } else {
                $$7 = Lists.newArrayList();
 
-               for (apb $$9 : $$0.l().ah().t()) {
+               for (apg $$9 : $$0.l().ah().t()) {
                   if ($$4.test($$9)) {
                      $$7.add($$9);
                      if ($$7.size() >= $$6) {
@@ -212,11 +212,11 @@ public class gi {
       }
    }
 
-   private Predicate<bof> a(eov $$0) {
-      Predicate<bof> $$1 = this.g;
+   private Predicate<bow> a(epr $$0) {
+      Predicate<bow> $$1 = this.g;
       if (this.j != null) {
-         eoq $$2 = this.j.c($$0);
-         $$1 = $$1.and($$1x -> $$2.c($$1x.cE()));
+         epm $$2 = this.j.c($$0);
+         $$1 = $$1.and($$1x -> $$2.c($$1x.cH()));
       }
 
       if (!this.h.c()) {
@@ -226,7 +226,7 @@ public class gi {
       return $$1;
    }
 
-   private <T extends bof> List<T> a(eov $$0, List<T> $$1) {
+   private <T extends bow> List<T> a(epr $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }
@@ -234,7 +234,7 @@ public class gi {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static vs a(List<? extends bof> $$0) {
-      return vv.b($$0, bof::Q_);
+   public static vu a(List<? extends bow> $$0) {
+      return vx.b($$0, bow::O_);
    }
 }

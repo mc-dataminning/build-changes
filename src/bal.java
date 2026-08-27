@@ -1,36 +1,23 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
 
-public class bal extends bct {
-   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("donkeykong", "donkey_kong");
-      $$0.put("burningskull", "burning_skull");
-      $$0.put("skullandroses", "skull_and_roses");
-   });
+public class bal extends bes {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:salmon_mob", "minecraft:salmon")
+      .put("minecraft:cod_mob", "minecraft:cod")
+      .build();
+   public static final Map<String, String> b = ImmutableMap.builder()
+      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
+      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
+      .build();
 
    public bal(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityPaintingMotiveFix", bdt.y, "minecraft:painting");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Motive").asString().result();
-      if ($$1.isPresent()) {
-         String $$2 = $$1.get().toLowerCase(Locale.ROOT);
-         return $$0.set("Motive", $$0.createString(new ajc(a.getOrDefault($$2, $$2)).toString()));
-      } else {
-         return $$0;
-      }
+      super("EntityCodSalmonFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected String a(String $$0) {
+      return a.getOrDefault($$0, $$0);
    }
 }

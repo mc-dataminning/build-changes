@@ -1,39 +1,30 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.Predicate;
 
-public abstract class bcb extends DataFix {
-   private final String a;
-   private final Predicate<String> b;
-
-   public bcb(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+public class bcb extends DataFix {
+   public bcb(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bdt.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bdt.A.typeName(), bfc.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         $$0,
-         $$2x -> {
-            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-            return $$3.isPresent() && this.b.test((String)$$3.get().getSecond())
-               ? $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
-               : $$2x;
-         }
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(beh.D);
+      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bcb::a));
    }
 
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(bcb::c)).result().orElse(false);
+      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", bcb::b);
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
+   }
+
+   private static boolean c(Dynamic<?> $$0) {
+      return $$0.get("id").asString("").equals("Iglu");
+   }
 }

@@ -1,24 +1,34 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dza<P extends dyz> {
-   public static final dza<dzi> a = a("simple_state_provider", dzi.b);
-   public static final dza<dzj> b = a("weighted_state_provider", dzj.b);
-   public static final dza<dze> c = a("noise_threshold_provider", dze.b);
-   public static final dza<dzd> d = a("noise_provider", dzd.g);
-   public static final dza<dzb> e = a("dual_noise_provider", dzb.b);
-   public static final dza<dzg> f = a("rotated_block_provider", dzg.b);
-   public static final dza<dzf> g = a("randomized_int_state_provider", dzf.b);
-   private final Codec<P> h;
+public class dza extends dzg {
+   public static final Codec<dza> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dza::new));
 
-   private static <P extends dyz> dza<P> a(String $$0, Codec<P> $$1) {
-      return ix.a(kh.V, $$0, new dza<>($$1));
+   public dza(bmh $$0, bmh $$1) {
+      super($$0, $$1);
    }
 
-   private dza(Codec<P> $$0) {
-      this.h = $$0;
+   @Override
+   protected dzh<?> a() {
+      return dzh.d;
    }
 
-   public Codec<P> a() {
-      return this.h;
+   @Override
+   protected void a(cxf $$0, dzg.b $$1, axd $$2, dyq $$3, int $$4, dzg.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      ib $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   }
+
+   @Override
+   public int a(axd $$0, int $$1, dyq $$2) {
+      return 0;
+   }
+
+   @Override
+   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

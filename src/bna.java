@@ -1,18 +1,59 @@
-public class bna {
-   public static final float a = 20.0F;
-   public static final float b = 25.0F;
-   public static final float c = 2.0F;
-   public static final float d = 0.2F;
-   private static final int e = 4;
+import javax.annotation.concurrent.Immutable;
 
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 2.0F + $$2 / 4.0F;
-      float $$4 = awm.a($$1 - $$0 / $$3, $$1 * 0.2F, 20.0F);
-      return $$0 * (1.0F - $$4 / 25.0F);
+@Immutable
+public class bna {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final bmz d;
+   private final float e;
+
+   public bna(bmz $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   public static float a(float $$0, float $$1) {
-      float $$2 = awm.a($$1, 0.0F, 20.0F);
-      return $$0 * (1.0F - $$2 / 25.0F);
+   public bmz a() {
+      return this.d;
+   }
+
+   public float b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.e >= (float)bmz.d.ordinal();
+   }
+
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+      }
+   }
+
+   private float a(bmz $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == bmz.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == bmz.d;
+         float $$5 = 0.75F;
+         float $$6 = aww.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += aww.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += aww.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == bmz.b) {
+            $$7 *= 0.5F;
+         }
+
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
    }
 }

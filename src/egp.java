@@ -1,14 +1,9 @@
 import com.mojang.serialization.Codec;
 
-public interface egp<P extends ego> {
-   egp<egm> a = a("clear", egm.a);
-   egp<egn> b = a("passthrough", egn.b);
-   egp<egl> c = a("append_static", egl.a);
-   egp<egk> d = a("append_loot", egk.a);
+public abstract class egp {
+   public static final Codec<egp> c = ki.q.q().dispatch("predicate_type", egp::a, egq::codec);
 
-   Codec<P> codec();
+   public abstract boolean a(ib var1, ib var2, ib var3, axd var4);
 
-   private static <P extends ego> egp<P> a(String $$0, Codec<P> $$1) {
-      return ix.a(kh.p, $$0, () -> $$1);
-   }
+   protected abstract egq<?> a();
 }

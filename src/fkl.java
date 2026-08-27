@@ -1,155 +1,255 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class fkl extends fgh {
-   private static final vs a = vs.c("gui.abuseReport.reason.title");
-   private static final vs b = vs.c("gui.abuseReport.reason.description");
-   private static final vs c = vs.c("gui.abuseReport.read_info");
-   private static final int k = 95;
-   private static final int l = 150;
-   private static final int m = 20;
-   private static final int n = 320;
-   private static final int o = 4;
-   @Nullable
-   private final fgh p;
-   @Nullable
-   private fkl.a q;
-   @Nullable
-   fse r;
-   private final Consumer<fse> t;
+public class fkl {
+   private final arz a;
+   final List<arw> b;
+   final List<arw> c;
+   final Function<arw, ajh> d;
+   final Runnable e;
+   private final Consumer<arz> f;
 
-   public fkl(@Nullable fgh $$0, @Nullable fse $$1, Consumer<fse> $$2) {
-      super(a);
-      this.p = $$0;
-      this.r = $$1;
-      this.t = $$2;
+   public fkl(Runnable $$0, Function<arw, ajh> $$1, arz $$2, Consumer<arz> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   @Override
-   protected void aP_() {
-      this.q = this.c(new fkl.a(this.f));
-      fkl.a.a $$0 = x.a(this.r, this.q::a);
-      this.q.a($$0);
-      int $$1 = this.g / 2 - 150 - 5;
-      this.c(fak.a(c, fez.b(this, "https://aka.ms/aboutjavareporting")).a($$1, this.o(), 150, 20).a());
-      int $$2 = this.g / 2 + 5;
-      this.c(fak.a(vr.d, $$0x -> {
-         fkl.a.a $$1x = this.q.i();
-         if ($$1x != null) {
-            this.t.accept($$1x.b());
-         }
-
-         this.f.a(this.p);
-      }).a($$2, this.o(), 150, 20).a());
-      super.aP_();
+   public Stream<fkl.a> a() {
+      return this.c.stream().map($$0 -> new fkl.d($$0));
    }
 
-   @Override
-   public void a(ezx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.E(), this.I(), this.H(), this.J(), 2130706432);
-      $$0.b(this.i, b, this.E() + 4, this.I() + 4, -8421505);
-      fkl.a.a $$4 = this.q.i();
-      if ($$4 != null) {
-         int $$5 = this.E() + 4 + 16;
-         int $$6 = this.H() - 4;
-         int $$7 = this.I() + 4 + 9 + 2;
-         int $$8 = this.J() - 4;
-         int $$9 = $$6 - $$5;
-         int $$10 = $$8 - $$7;
-         int $$11 = this.i.b($$4.b.c(), $$9);
-         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
-      }
+   public Stream<fkl.a> b() {
+      return this.b.stream().map($$0 -> new fkl.c($$0));
    }
 
-   @Override
-   public void b(ezx $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(arw::g).collect(ImmutableList.toImmutableList()));
    }
 
-   private int o() {
-      return this.h - 20 - 4;
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
    }
 
-   private int E() {
-      return (this.g - 320) / 2;
-   }
-
-   private int H() {
-      return (this.g + 320) / 2;
-   }
-
-   private int I() {
-      return this.h - 95 + 4;
-   }
-
-   private int J() {
-      return this.o() - 4;
-   }
-
-   @Override
    public void d() {
-      this.f.a(this.p);
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
    }
 
-   public class a extends fbg<fkl.a.a> {
-      public a(eyk $$1) {
-         super($$1, fkl.this.g, fkl.this.h - 95 - 40, 40, 18);
+   public interface a {
+      ajh a();
 
-         for (fse $$2 : fse.values()) {
-            this.b(new fkl.a.a($$2));
-         }
+      arx b();
+
+      String c();
+
+      vu d();
+
+      vu e();
+
+      asa f();
+
+      default vu g() {
+         return this.f().a(this.e());
       }
 
-      @Nullable
-      public fkl.a.a a(fse $$0) {
-         return this.l().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements fkl.a {
+      private final arw b;
+
+      public b(arw $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<arw> s();
+
+      protected abstract List<arw> t();
+
+      @Override
+      public ajh a() {
+         return fkl.this.d.apply(this.b);
       }
 
       @Override
-      public int b() {
-         return 320;
+      public arx b() {
+         return this.b.d();
       }
 
       @Override
-      protected int c() {
-         return this.r() - 2;
+      public String c() {
+         return this.b.g();
       }
 
-      public void a(@Nullable fkl.a.a $$0) {
-         super.a($$0);
-         fkl.this.r = $$0 != null ? $$0.b() : null;
+      @Override
+      public vu d() {
+         return this.b.b();
       }
 
-      public class a extends fbg.a<fkl.a.a> {
-         final fse b;
+      @Override
+      public vu e() {
+         return this.b.c();
+      }
 
-         public a(fse $$1) {
-            this.b = $$1;
-         }
+      @Override
+      public asa f() {
+         return this.b.l();
+      }
 
-         @Override
-         public void a(ezx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 + 1;
-            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
-            $$0.b(fkl.this.i, this.b.b(), $$10, $$11, -1);
-         }
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
 
-         @Override
-         public vs a() {
-            return vs.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
-         }
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, arw::h, true);
+         fkl.this.e.run();
+         fkl.this.e();
+         this.v();
+      }
 
-         public fse b() {
-            return this.b;
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            ezj<Boolean> $$0 = ezg.Q().m.r();
+            $$0.a(!$$0.c());
          }
+      }
+
+      protected void a(int $$0) {
+         List<arw> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fkl.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<arw> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<arw> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
+      }
+   }
+
+   class c extends fkl.b {
+      public c(arw $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<arw> s() {
+         return fkl.this.b;
+      }
+
+      @Override
+      protected List<arw> t() {
+         return fkl.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends fkl.b {
+      public d(arw $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<arw> s() {
+         return fkl.this.c;
+      }
+
+      @Override
+      protected List<arw> t() {
+         return fkl.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
       }
    }
 }

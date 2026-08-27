@@ -1,62 +1,107 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class anp implements anq {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("commands.data.block.invalid"));
-   public static final Function<String, anr.c> a = $$0 -> new anr.c() {
-         @Override
-         public anq a(CommandContext<du> $$0x) throws CommandSyntaxException {
-            ib $$1 = fo.a($$0, $$0 + "Pos");
-            djl $$2 = ((du)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw anp.b.create();
-            } else {
-               return new anp($$2, $$1);
+public class anp {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.trigger.failed.unprimed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("commands.trigger.failed.invalid"));
+
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)dv.a("trigger")
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("objective", eo.a())
+                        .suggests(($$0x, $$1) -> a((du)$$0x.getSource(), $$1))
+                        .executes($$0x -> a((du)$$0x.getSource(), ((du)$$0x.getSource()).h(), eo.a($$0x, "objective"))))
+                     .then(
+                        dv.a("add")
+                           .then(
+                              dv.a("value", IntegerArgumentType.integer())
+                                 .executes(
+                                    $$0x -> a(
+                                          (du)$$0x.getSource(),
+                                          ((du)$$0x.getSource()).h(),
+                                          eo.a($$0x, "objective"),
+                                          IntegerArgumentType.getInteger($$0x, "value")
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(
+                     dv.a("set")
+                        .then(
+                           dv.a("value", IntegerArgumentType.integer())
+                              .executes(
+                                 $$0x -> b(
+                                       (du)$$0x.getSource(), ((du)$$0x.getSource()).h(), eo.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
+   }
+
+   public static CompletableFuture<Suggestions> a(du $$0, SuggestionsBuilder $$1) {
+      equ $$2 = $$0.f();
+      List<String> $$3 = Lists.newArrayList();
+      if ($$2 != null) {
+         eqv $$4 = $$0.l().aK();
+
+         for (eqn $$5 : $$4.c()) {
+            if ($$5.c() == eqy.c) {
+               eqr $$6 = $$4.d($$2, $$5);
+               if ($$6 != null && !$$6.b()) {
+                  $$3.add($$5.b());
+               }
             }
          }
+      }
 
-         @Override
-         public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
-            return $$0.then(dv.a("block").then($$1.apply(dv.a($$0 + "Pos", fo.a()))));
+      return dz.b($$3, $$1);
+   }
+
+   private static int a(du $$0, apg $$1, eqn $$2, int $$3) throws CommandSyntaxException {
+      eqt $$4 = a($$0.l().aK(), $$1, $$2);
+      int $$5 = $$4.b($$3);
+      $$0.a(() -> vu.a("commands.trigger.add.success", $$2.g(), $$3), true);
+      return $$5;
+   }
+
+   private static int b(du $$0, apg $$1, eqn $$2, int $$3) throws CommandSyntaxException {
+      eqt $$4 = a($$0.l().aK(), $$1, $$2);
+      $$4.a($$3);
+      $$0.a(() -> vu.a("commands.trigger.set.success", $$2.g(), $$3), true);
+      return $$3;
+   }
+
+   private static int a(du $$0, apg $$1, eqn $$2) throws CommandSyntaxException {
+      eqt $$3 = a($$0.l().aK(), $$1, $$2);
+      int $$4 = $$3.b(1);
+      $$0.a(() -> vu.a("commands.trigger.simple.success", $$2.g()), true);
+      return $$4;
+   }
+
+   private static eqt a(eqv $$0, equ $$1, eqn $$2) throws CommandSyntaxException {
+      if ($$2.c() != eqy.c) {
+         throw b.create();
+      } else {
+         eqr $$3 = $$0.d($$1, $$2);
+         if ($$3 != null && !$$3.b()) {
+            eqt $$4 = $$0.c($$1, $$2);
+            $$4.f();
+            return $$4;
+         } else {
+            throw a.create();
          }
-      };
-   private final djl c;
-   private final ib d;
-
-   public anp(djl $$0, ib $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public void a(sy $$0) {
-      dme $$1 = this.c.i().a_(this.d);
-      this.c.a($$0, this.c.i().I_());
-      this.c.e();
-      this.c.i().a(this.d, $$1, $$1, 3);
-   }
-
-   @Override
-   public sy a() {
-      return this.c.b(this.c.i().I_());
-   }
-
-   @Override
-   public vs b() {
-      return vs.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
-   }
-
-   @Override
-   public vs a(tv $$0) {
-      return vs.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), tn.c($$0));
-   }
-
-   @Override
-   public vs a(em.g $$0, double $$1, int $$2) {
-      return vs.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      }
    }
 }

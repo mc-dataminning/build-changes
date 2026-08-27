@@ -1,135 +1,137 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public class ccw extends ccr {
-   private int bW = 47999;
+public class ccw {
+   private static final float a = 2.0F;
+   private static final float b = 1.0F;
+   private static final float c = 1.0F;
+   private static final float d = 0.75F;
+   private static final bmn e = bmn.a(100, 140);
+   private static final int f = 2;
+   private static final int g = 4;
+   private static final float h = 3.5714288F;
+   private static final float i = 1.25F;
 
-   public ccw(bol<? extends ccw> $$0, cwe $$1) {
-      super($$0, $$1);
+   protected static void a(ccv $$0, axd $$1) {
+      $$0.dP().a(byr.S, e.a($$1));
    }
 
-   @Override
-   public boolean gu() {
-      return true;
+   protected static bqp<?> a(bqp<ccv> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      e($$0);
+      g($$0);
+      f($$0);
+      $$0.a(ImmutableSet.of(ckh.a));
+      $$0.b(ckh.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Nullable
-   @Override
-   protected ccr gz() {
-      return bol.bc.a(this.dJ());
+   private static void b(bqp<ccv> $$0) {
+      $$0.a(ckh.a, 0, ImmutableList.of(new brb(2.0F), new bsm(45, 90), new bsq(), new brm(byr.P), new brm(byr.S)));
    }
 
-   @Override
-   public void b(sy $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.bW);
+   private static void c(bqp<ccv> $$0) {
+      $$0.a(
+         ckh.b,
+         ImmutableList.of(
+            Pair.of(0, btg.a(bpc.bx, 6.0F, bmn.a(30, 60))),
+            Pair.of(0, new bra(bpc.R)),
+            Pair.of(1, new brt($$0x -> 1.25F)),
+            Pair.of(2, bts.a(ccw::b, $$0x -> $$0x.dP().c(byr.B))),
+            Pair.of(3, bud.a(6, 1.0F)),
+            Pair.of(
+               4,
+               new btd(
+                  ImmutableMap.of(byr.m, bys.b),
+                  ImmutableList.of(Pair.of(bsy.a(1.0F), 1), Pair.of(btn.a(1.0F, 3), 1), Pair.of(new brn(), 3), Pair.of(but.a(bow::aC), 2))
+               )
+            )
+         ),
+         ImmutableSet.of(Pair.of(byr.T, bys.b), Pair.of(byr.X, bys.b))
+      );
    }
 
-   @Override
-   public void a(sy $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.bW = $$0.h("DespawnDelay");
-      }
+   private static void d(bqp<ccv> $$0) {
+      $$0.a(
+         ckh.t,
+         ImmutableList.of(
+            Pair.of(0, btg.a(bpc.bx, 6.0F, bmn.a(30, 60))),
+            Pair.of(1, new brt($$0x -> 1.25F)),
+            Pair.of(2, bts.a(ccw::b, $$0x -> $$0x.dP().c(byr.B))),
+            Pair.of(3, bud.a(8, 1.5F)),
+            Pair.of(
+               5,
+               new bru(
+                  ImmutableMap.of(byr.m, bys.b),
+                  ImmutableSet.of(),
+                  bru.a.a,
+                  bru.b.b,
+                  ImmutableList.of(Pair.of(bsy.c(0.75F), 1), Pair.of(bsy.a(1.0F, true), 1), Pair.of(btn.a(1.0F, 3), 1), Pair.of(but.a(bow::bf), 5))
+               )
+            )
+         ),
+         ImmutableSet.of(Pair.of(byr.T, bys.b), Pair.of(byr.X, bys.a))
+      );
    }
 
-   @Override
-   protected void B() {
-      super.B();
-      this.bP.a(1, new bwn(this, 2.0));
-      this.bQ.a(1, new ccw.a(this));
+   private static void e(bqp<ccv> $$0) {
+      $$0.a(
+         ckh.u,
+         ImmutableList.of(
+            Pair.of(0, btg.a(bpc.bx, 6.0F, bmn.a(30, 60))),
+            Pair.of(1, bts.a(ccw::b, $$0x -> $$0x.dP().c(byr.B))),
+            Pair.of(2, bue.a(8, 1.0F)),
+            Pair.of(3, bug.a(dac.tn)),
+            Pair.of(4, new btd(ImmutableList.of(Pair.of(bsy.a(1.0F), 2), Pair.of(btn.a(1.0F, 3), 1), Pair.of(new brn(), 2), Pair.of(but.a(bow::aC), 1))))
+         ),
+         ImmutableSet.of(Pair.of(byr.T, bys.b), Pair.of(byr.Y, bys.a))
+      );
    }
 
-   @Override
-   public void x(int $$0) {
-      this.bW = $$0;
+   private static void f(bqp<ccv> $$0) {
+      $$0.a(
+         ckh.q,
+         ImmutableList.of(Pair.of(0, new bsh(e, aty.jG)), Pair.of(1, new bsi<>(e, 2, 4, 3.5714288F, $$0x -> aty.jF, aun.bL, 0.5F, ccw::a))),
+         ImmutableSet.of(Pair.of(byr.O, bys.b), Pair.of(byr.r, bys.b), Pair.of(byr.S, bys.b), Pair.of(byr.X, bys.b))
+      );
    }
 
-   @Override
-   protected void f(cia $$0) {
-      bof $$1 = this.ga();
-      if (!($$1 instanceof cht)) {
-         super.f($$0);
-      }
+   private static void g(bqp<ccv> $$0) {
+      $$0.a(ckh.s, 0, ImmutableList.of(btv.a(), new ccx(aty.jH, aty.jC)), byr.o);
    }
 
-   @Override
-   public void d_() {
-      super.d_();
-      if (!this.dJ().B) {
-         this.hb();
-      }
-   }
-
-   private void hb() {
-      if (this.hc()) {
-         this.bW = this.hd() ? ((cht)this.ga()).gu() - 1 : this.bW - 1;
-         if (this.bW <= 0) {
-            this.a(true, false);
-            this.am();
-         }
-      }
-   }
-
-   private boolean hc() {
-      return !this.gA() && !this.he() && !this.cS();
-   }
-
-   private boolean hd() {
-      return this.ga() instanceof cht;
-   }
-
-   private boolean he() {
-      return this.fZ() && !this.hd();
-   }
-
-   @Nullable
-   @Override
-   public bpp a(cwt $$0, bmj $$1, bpb $$2, @Nullable bpp $$3) {
-      if ($$2 == bpb.h) {
-         this.c_(0);
-      }
-
-      if ($$3 == null) {
-         $$3 = new boa.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected static class a extends bxu {
-      private final ccr a;
-      private box b;
-      private int c;
-
-      public a(ccr $$0) {
-         super($$0, false);
-         this.a = $$0;
-         this.a(EnumSet.of(bvu.a.d));
-      }
-
-      @Override
-      public boolean a() {
-         if (!this.a.fZ()) {
-            return false;
-         } else if (!(this.a.ga() instanceof cht $$1)) {
-            return false;
+   private static <E extends bpq> boolean a(E $$0, ib $$1) {
+      cwz $$2 = $$0.dM();
+      ib $$3 = $$1.d();
+      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.c()).c()) {
+         dmz $$4 = $$2.a_($$1);
+         dmz $$5 = $$2.a_($$3);
+         if (!$$4.a(aun.bL) && !$$5.a(aun.bL)) {
+            eiy $$6 = ejh.a($$2, $$1.j());
+            eiy $$7 = ejh.a($$2, $$3.j());
+            return $$6 != eiy.e && (!$$4.i() || $$7 != eiy.e) ? bsj.a($$0, $$1) : true;
          } else {
-            this.b = $$1.eg();
-            int $$2 = $$1.eh();
-            return $$2 != this.c && this.a(this.b, bzn.a);
+            return true;
          }
+      } else {
+         return false;
       }
+   }
 
-      @Override
-      public void c() {
-         this.e.h(this.b);
-         bof $$0 = this.a.ga();
-         if ($$0 instanceof cht) {
-            this.c = ((cht)$$0).eh();
-         }
+   private static boolean b(ccv $$0) {
+      return !bri.a($$0);
+   }
 
-         super.c();
-      }
+   public static void a(ccv $$0) {
+      $$0.dP().a(ImmutableList.of(ckh.s, ckh.u, ckh.q, ckh.t, ckh.b));
+   }
+
+   public static ctk a() {
+      return ccv.bX;
    }
 }

@@ -1,58 +1,66 @@
 import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
 
-public class duy extends duu<duz> {
-   public duy(Codec<duz> $$0) {
+public class duy extends dvq<dxl> {
+   public duy(Codec<dxl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(duw<duz> $$0) {
-      awt $$1 = $$0.d();
-      cwz $$2 = $$0.b();
-      ib $$3 = $$0.e();
-      dfr $$4 = dfr.a($$1);
-      duz $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      egh $$7 = $$2.E().o().bb();
-      egg $$8 = $$7.a($$5.b.get($$6));
-      egg $$9 = $$7.a($$5.c.get($$6));
-      cvl $$10 = new cvl($$3);
-      eby $$11 = new eby($$10.d() - 16, $$2.J_(), $$10.e() - 16, $$10.f() + 16, $$2.ak(), $$10.g() + 16);
-      egc $$12 = new egc().a($$4).a($$11).a($$1);
-      jf $$13 = $$8.a($$4);
-      ib $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
+   public boolean a(dvs<dxl> $$0) {
+      cxu $$1 = $$0.b();
+      dxl $$2 = $$0.f();
+      axd $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
 
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(drq.a.c, $$14.u() + $$16, $$14.w() + $$17));
-         }
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
       }
 
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.J_() + 10);
-      ib $$19 = $$8.a($$14.h($$18), deb.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+      if ($$6 == 0) {
          return false;
       } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         ib.a $$8 = $$0.e().j();
+         ib.a $$9 = $$8.j().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               dxl.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
+            }
+         }
+
          return true;
       }
    }
 
-   private static int a(cwz $$0, eby $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dme $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(czh.H) || $$3.a(czh.G)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
+      }
    }
 }

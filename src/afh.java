@@ -1,23 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record afh(wl.a b) implements yb<aez> {
+   public static final xs<uu, afh> a = yb.a(afh::a, afh::new);
 
-public class afh implements xz<aev> {
-   public static final afh a = new afh();
-   public static final xq<ByteBuf, afh> b = xq.a(a);
+   private afh(uu $$0) {
+      this(wl.a.a($$0));
+   }
 
-   private afh() {
+   private void a(uu $$0) {
+      wl.a.a($$0, this.b);
    }
 
    @Override
-   public yb<afh> a() {
-      return aet.bo;
+   public yd<afh> a() {
+      return aex.bk;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
    }
 }

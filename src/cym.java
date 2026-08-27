@@ -1,67 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class cym extends czf implements dgf {
-   public static final MapCodec<cym> a = b(cym::new);
-   public static final dmv b = dmu.C;
+public class cym {
+   public static final Codec<cym> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cym.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ajf.c(kj.au)).apply($$0, cym::new)
+   );
+   public static final Codec<il<cym>> b = ajd.a(kj.aM, a);
+   private final cym.a c;
+   private final cyh.c<il<cxy>> d;
 
-   @Override
-   public MapCodec<cym> a() {
-      return a;
+   public cym(cym.a $$0, im<cxy> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   protected cym(dmd.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
+   public cyh.c<il<cxy>> a() {
+      return this.d;
    }
 
-   @Override
-   protected boolean a_(dme $$0, cvk $$1, ib $$2) {
-      return true;
+   public static Map<cym.a, cyh.c<ajg<cxy>>> b() {
+      return cym.a.f.values().stream().collect(Collectors.toMap($$0 -> (cym.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   protected dfk b_(dme $$0) {
-      return dfk.a;
-   }
+   public static record a(ajh d, cym.a.a e) {
+      public static final cym.a a = new cym.a(
+         new ajh("nether"),
+         new cym.a.a() {
+            @Override
+            public <T> cyh.c<T> apply(Function<ajg<cxy>, T> $$0) {
+               return new cyh.c<>(
+                  List.of(
+                     Pair.of(cyh.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cyf.ac)),
+                     Pair.of(cyh.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cyf.af)),
+                     Pair.of(cyh.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cyf.ae)),
+                     Pair.of(cyh.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cyf.ad)),
+                     Pair.of(cyh.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cyf.ag))
+                  )
+               );
+            }
+         }
+      );
+      public static final cym.a b = new cym.a(new ajh("overworld"), new cym.a.a() {
+         @Override
+         public <T> cyh.c<T> apply(Function<ajg<cxy>, T> $$0) {
+            return cym.a.a($$0);
+         }
+      });
+      static final Map<ajh, cym.a> f = Stream.of(a, b).collect(Collectors.toMap(cym.a::b, $$0 -> (cym.a)$$0));
+      public static final Codec<cym.a> c = ajh.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
 
-   @Override
-   protected float d(dme $$0, cvk $$1, ib $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, ehs.c, ehs.c.a($$3));
+      static <T> cyh.c<T> a(Function<ajg<cxy>, T> $$0) {
+         Builder<Pair<cyh.d, T>> $$1 = ImmutableList.builder();
+         new cyo().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new cyh.c<>($$1.build());
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      public Stream<ajg<cxy>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<ajg<cxy>>map(Pair::getSecond).distinct();
+      }
 
-   @Override
-   protected ehr c_(dme $$0) {
-      return $$0.c(b) ? ehs.c.a(false) : super.c_($$0);
-   }
+      public ajh b() {
+         return this.d;
+      }
 
-   @Nullable
-   @Override
-   public dme a(crx $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == ehs.c));
-   }
+      public cym.a.a c() {
+         return this.e;
+      }
 
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public cpq a(@Nullable cia $$0, cwf $$1, ib $$2, dme $$3) {
-      return $$0 != null && $$0.f() ? dgf.super.a($$0, $$1, $$2, $$3) : cpq.h;
-   }
-
-   @Override
-   public boolean a(@Nullable cia $$0, cvk $$1, ib $$2, dme $$3, ehq $$4) {
-      return $$0 != null && $$0.f() ? dgf.super.a($$0, $$1, $$2, $$3, $$4) : false;
+      @FunctionalInterface
+      interface a {
+         <T> cyh.c<T> apply(Function<ajg<cxy>, T> var1);
+      }
    }
 }

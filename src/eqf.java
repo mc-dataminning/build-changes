@@ -1,45 +1,53 @@
-public class eqf {
-   private static final eqp<Object> a = new eqp<Object>() {
-      @Override
-      public void a(eqm<Object> $$0) {
-      }
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-      @Override
-      public boolean a(ib $$0, Object $$1) {
-         return false;
-      }
+public class eqf extends AbstractDoubleList implements eqd {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final eqi<Object> b = new eqi<Object>() {
-      @Override
-      public void a(eqm<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(ib $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(ib $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> eqp<T> a() {
-      return (eqp<T>)a;
+   protected eqf(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static <T> eqi<T> b() {
-      return (eqi<T>)b;
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
+   }
+
+   @Override
+   public boolean a(eqd.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   }
+
+   private boolean b(eqd.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
+      }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   }
+
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

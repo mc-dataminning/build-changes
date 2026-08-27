@@ -1,85 +1,40 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 
-public final class fsp {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final fsp c = new fsp(HostAndPort.fromParts("server.invalid", 25565));
+public class fsp {
+   private final Map<ajg<? extends iy<?>>, avg.a> a = new HashMap<>();
 
-   public fsp(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
+   public void a(ajg<? extends iy<?>> $$0, avg.a $$1) {
+      this.a.put($$0, $$1);
    }
 
-   private fsp(HostAndPort $$0) {
-      this.b = $$0;
+   private static void a() {
+      cou.e().n();
    }
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
-      }
+   private static void b() {
+      djv.f();
+      dac.a();
    }
 
-   public int b() {
-      return this.b.getPort();
-   }
-
-   public static fsp a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new fsp($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
+   private void a(iz $$0, Predicate<ajg<? extends iy<?>>> $$1) {
+      this.a.forEach(($$2, $$3) -> {
+         if ($$1.test((ajg<? extends iy<?>>)$$2)) {
+            $$3.a($$0.d((ajg<? extends iy<?>>)$$2));
          }
-      }
+      });
    }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public void a(iz $$0, boolean $$1) {
+      if ($$1) {
+         this.a($$0, jc.a::contains);
       } else {
-         return $$0 instanceof fsp ? this.b.equals(((fsp)$$0).b) : false;
+         $$0.c().filter($$0x -> !jc.a.contains($$0x.a())).forEach($$0x -> $$0x.b().m());
+         this.a($$0, $$0x -> true);
+         b();
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+      a();
    }
 }

@@ -1,19 +1,11 @@
-import com.mojang.serialization.MapCodec;
-
-public class dcv extends czf {
-   public static final MapCodec<dcv> d = b(dcv::new);
-
-   @Override
-   protected MapCodec<? extends dcv> a() {
-      return d;
+public interface dcv {
+   default void a(cwz $$0, ib $$1, dmz $$2, dmz $$3, cfc $$4) {
    }
 
-   protected dcv(dmd.d $$0) {
-      super($$0);
+   default void a(cwz $$0, ib $$1, cfc $$2) {
    }
 
-   @Override
-   protected boolean a(dme $$0, dme $$1, ih $$2) {
-      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
+   default bnv a(bow $$0) {
+      return $$0.dN().a($$0);
    }
 }

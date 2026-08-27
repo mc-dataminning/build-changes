@@ -1,56 +1,76 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class exk implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class exk extends gpb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final vu b = vu.c("mco.terms.title");
+   private static final vu c = vu.c("mco.terms.sentence.1");
+   private static final vu v = vt.a().b(vu.c("mco.terms.sentence.2").c(wr.a.c(true)));
+   private final fhf w;
+   private final evg x;
+   private boolean y;
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
+   public exk(fhf $$0, evg $$1) {
+      super(b);
+      this.w = $$0;
+      this.x = $$1;
    }
 
-   public static void a(fgh $$0) {
-      eyk $$1 = eyk.P();
-      $$1.execute(() -> $$1.a($$0));
+   @Override
+   public void aO_() {
+      int $$0 = this.g / 4 - 2;
+      this.c(fbg.a(vu.c("mco.terms.buttons.agree"), $$0x -> this.E()).a(this.g / 4, g(12), $$0, 20).a());
+      this.c(fbg.a(vu.c("mco.terms.buttons.disagree"), $$0x -> this.f.a(this.w)).a(this.g / 2 + 4, g(12), $$0, 20).a());
    }
 
-   protected void a(vs $$0) {
-      this.b();
-      eyk $$1 = eyk.P();
-      $$1.execute(() -> $$1.a(new evx($$0, new eto(new fgm()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof evg $$1) {
-         this.a($$1.a.b());
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.w);
+         return true;
       } else {
-         this.a(vs.b($$0.getMessage()));
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   protected void a(evg $$0) {
-      this.a($$0.a.b());
+   private void E() {
+      eup $$0 = eup.a();
+
+      try {
+         $$0.j();
+         this.f.a(new eww(this.w, new eyf(this.w, this.x)));
+      } catch (ewc var3) {
+         a.error("Couldn't agree to TOS", var3);
+      }
    }
 
-   public abstract vs a();
-
-   public boolean d() {
-      return this.c;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.y) {
+         this.f.o.a("https://aka.ms/MinecraftRealmsTerms");
+         ac.j().a("https://aka.ms/MinecraftRealmsTerms");
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
-   public void c() {
+   @Override
+   public vu i() {
+      return vt.a(super.i(), c).b(vt.v).b(v);
    }
 
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   @Override
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 17, -1);
+      $$0.a(this.i, c, this.g / 2 - 120, g(5), -1, false);
+      int $$4 = this.i.a(c);
+      int $$5 = this.g / 2 - 121 + $$4;
+      int $$6 = g(5);
+      int $$7 = $$5 + this.i.a(v) + 1;
+      int $$8 = $$6 + 1 + 9;
+      this.y = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
+      $$0.a(this.i, v, this.g / 2 - 120 + $$4, g(5), this.y ? 7107012 : 3368635, false);
    }
 }

@@ -1,115 +1,173 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class dvl extends duu<dxf> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bol<?>[] b = new bol[]{bol.aL, bol.bs, bol.bs, bol.aU};
-   private static final dme c = czh.nc.o();
-
-   public dvl(Codec<dxf> $$0) {
+public class dvl extends dvq<dxs> {
+   public dvl(Codec<dxs> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(duw<dxf> $$0) {
-      Predicate<dme> $$1 = duu.a(aue.bH);
+   public boolean a(dvs<dxs> $$0) {
+      cxu $$1 = $$0.b();
       ib $$2 = $$0.e();
-      awt $$3 = $$0.d();
-      cwz $$4 = $$0.b();
-      int $$5 = 3;
-      int $$6 = $$3.a(2) + 2;
-      int $$7 = -$$6 - 1;
-      int $$8 = $$6 + 1;
-      int $$9 = -1;
-      int $$10 = 4;
-      int $$11 = $$3.a(2) + 2;
-      int $$12 = -$$11 - 1;
-      int $$13 = $$11 + 1;
-      int $$14 = 0;
+      dxs $$3 = $$0.f();
+      axd $$4 = $$0.d();
+      if (!dvm.a($$1, $$2)) {
+         return false;
+      } else {
+         int $$5 = $$3.c.a($$4);
+         float $$6 = $$3.i.a($$4);
+         float $$7 = $$3.h.a($$4);
+         int $$8 = $$3.d.a($$4);
+         int $$9 = $$3.d.a($$4);
 
-      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
-         for (int $$16 = -1; $$16 <= 4; $$16++) {
-            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
-               ib $$18 = $$2.b($$15, $$16, $$17);
-               boolean $$19 = $$4.a_($$18).e();
-               if ($$16 == -1 && !$$19) {
-                  return false;
-               }
-
-               if ($$16 == 4 && !$$19) {
-                  return false;
-               }
-
-               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.c())) {
-                  $$14++;
-               }
+         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
+               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
+               ib $$13 = $$2.b($$10, 0, $$11);
+               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
             }
-         }
-      }
-
-      if ($$14 >= 1 && $$14 <= 5) {
-         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
-            for (int $$21 = 3; $$21 >= -1; $$21--) {
-               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
-                  ib $$23 = $$2.b($$20, $$21, $$22);
-                  dme $$24 = $$4.a_($$23);
-                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
-                     if ($$23.v() >= $$4.J_() && !$$4.a_($$23.d()).e()) {
-                        $$4.a($$23, c, 2);
-                     } else if ($$24.e() && !$$24.a(czh.cv)) {
-                        if ($$21 == -1 && $$3.a(4) != 0) {
-                           this.a($$4, $$23, czh.cn.o(), $$1);
-                        } else {
-                           this.a($$4, $$23, czh.m.o(), $$1);
-                        }
-                     }
-                  } else if (!$$24.a(czh.cv) && !$$24.a(czh.ct)) {
-                     this.a($$4, $$23, c, $$1);
-                  }
-               }
-            }
-         }
-
-         for (int $$25 = 0; $$25 < 2; $$25++) {
-            for (int $$26 = 0; $$26 < 3; $$26++) {
-               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
-               int $$28 = $$2.v();
-               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
-               ib $$30 = new ib($$27, $$28, $$29);
-               if ($$4.u($$30)) {
-                  int $$31 = 0;
-
-                  for (ih $$32 : ih.c.a) {
-                     if ($$4.a_($$30.a($$32)).e()) {
-                        $$31++;
-                     }
-                  }
-
-                  if ($$31 == 1) {
-                     this.a($$4, $$30, eck.a($$4, $$30, czh.cv.o()), $$1);
-                     bmt.a($$4, $$3, $$30, ejw.d);
-                     break;
-                  }
-               }
-            }
-         }
-
-         this.a($$4, $$2, czh.ct.o(), $$1);
-         if ($$4.c_($$2) instanceof dky $$34) {
-            $$34.a(this.a($$3), $$3);
-         } else {
-            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
          }
 
          return true;
+      }
+   }
+
+   private void a(cxu $$0, axd $$1, ib $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, dxs $$9) {
+      Optional<dsc> $$10 = dsc.a($$0, $$2, $$9.b, dvm::c, dvm::d);
+      if (!$$10.isEmpty()) {
+         OptionalInt $$11 = $$10.get().b();
+         OptionalInt $$12 = $$10.get().c();
+         if (!$$11.isEmpty() || !$$12.isEmpty()) {
+            boolean $$13 = $$1.i() < $$5;
+            dsc $$15;
+            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
+               int $$14 = $$12.getAsInt();
+               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
+               $$0.a($$2.h($$14), dac.G.o(), 2);
+            } else {
+               $$15 = $$10.get();
+            }
+
+            OptionalInt $$17 = $$15.c();
+            boolean $$18 = $$1.j() < $$6;
+            int $$22;
+            if ($$11.isPresent() && $$18 && !this.a((cxc)$$0, $$2.h($$11.getAsInt()))) {
+               int $$19 = $$9.g.a($$1);
+               this.a($$0, $$2.h($$11.getAsInt()), $$19, ih.b);
+               int $$20;
+               if ($$17.isPresent()) {
+                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
+               } else {
+                  $$20 = $$7;
+               }
+
+               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
+            } else {
+               $$22 = 0;
+            }
+
+            boolean $$24 = $$1.j() < $$6;
+            int $$26;
+            if ($$17.isPresent() && $$24 && !this.a((cxc)$$0, $$2.h($$17.getAsInt()))) {
+               int $$25 = $$9.g.a($$1);
+               this.a($$0, $$2.h($$17.getAsInt()), $$25, ih.a);
+               if ($$11.isPresent()) {
+                  $$26 = Math.max(0, $$22 + aww.b($$1, -$$9.e, $$9.e));
+               } else {
+                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
+               }
+            } else {
+               $$26 = 0;
+            }
+
+            int $$36;
+            int $$35;
+            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
+               int $$29 = $$17.getAsInt();
+               int $$30 = $$11.getAsInt();
+               int $$31 = Math.max($$30 - $$22, $$29 + 1);
+               int $$32 = Math.min($$29 + $$26, $$30 - 1);
+               int $$33 = aww.b($$1, $$31, $$32 + 1);
+               int $$34 = $$33 - 1;
+               $$35 = $$30 - $$33;
+               $$36 = $$34 - $$29;
+            } else {
+               $$35 = $$22;
+               $$36 = $$26;
+            }
+
+            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
+            if ($$11.isPresent()) {
+               dvm.a($$0, $$2.h($$11.getAsInt() - 1), ih.a, $$35, $$39);
+            }
+
+            if ($$17.isPresent()) {
+               dvm.a($$0, $$2.h($$17.getAsInt() + 1), ih.b, $$36, $$39);
+            }
+         }
+      }
+   }
+
+   private boolean a(cxc $$0, ib $$1) {
+      return $$0.a_($$1).a(dac.H);
+   }
+
+   private int a(axd $$0, int $$1, int $$2, float $$3, int $$4, dxs $$5) {
+      if ($$0.i() > $$3) {
+         return 0;
+      } else {
+         int $$6 = Math.abs($$1) + Math.abs($$2);
+         float $$7 = (float)aww.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
+         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
+      }
+   }
+
+   private boolean b(cxu $$0, ib $$1) {
+      dmz $$2 = $$0.a_($$1);
+      if (!$$2.a(dac.G) && !$$2.a(dac.su) && !$$2.a(dac.st)) {
+         if ($$0.a_($$1.c()).u().a(aus.a)) {
+            return false;
+         } else {
+            for (ih $$3 : ih.c.a) {
+               if (!this.a((cxa)$$0, $$1.a($$3))) {
+                  return false;
+               }
+            }
+
+            return this.a((cxa)$$0, $$1.d());
+         }
       } else {
          return false;
       }
    }
 
-   private bol<?> a(awt $$0) {
-      return ac.a(b, $$0);
+   private boolean a(cxa $$0, ib $$1) {
+      dmz $$2 = $$0.a_($$1);
+      return $$2.a(aun.be) || $$2.u().a(aus.a);
+   }
+
+   private void a(cxu $$0, ib $$1, int $$2, ih $$3) {
+      ib.a $$4 = $$1.j();
+
+      for (int $$5 = 0; $$5 < $$2; $$5++) {
+         if (!dvm.c($$0, $$4)) {
+            return;
+         }
+
+         $$4.c($$3);
+      }
+   }
+
+   private double a(int $$0, int $$1, int $$2, int $$3, dxs $$4) {
+      int $$5 = $$0 - Math.abs($$2);
+      int $$6 = $$1 - Math.abs($$3);
+      int $$7 = Math.min($$5, $$6);
+      return (double)aww.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
+   }
+
+   private static float a(axd $$0, float $$1, float $$2, float $$3, float $$4) {
+      return bmb.a($$0, $$3, $$4, $$1, $$2);
    }
 }

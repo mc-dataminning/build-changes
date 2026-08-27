@@ -2,17 +2,17 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record by(Optional<aut<ehq>> b, Optional<il<ehq>> c, Optional<db> d) {
+public record by(Optional<avd<eim>> b, Optional<il<eim>> c, Optional<db> d) {
    public static final Codec<by> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avu.a(aut.a(ki.y), "tag").forGetter(by::a), avu.a(kh.c.r(), "fluid").forGetter(by::b), avu.a(db.a, "state").forGetter(by::c))
+      $$0 -> $$0.group(awe.a(avd.a(kj.y), "tag").forGetter(by::a), awe.a(ki.c.r(), "fluid").forGetter(by::b), awe.a(db.a, "state").forGetter(by::c))
             .apply($$0, by::new)
    );
 
-   public boolean a(apa $$0, ib $$1) {
+   public boolean a(apf $$0, ib $$1) {
       if (!$$0.p($$1)) {
          return false;
       } else {
-         ehr $$2 = $$0.b_($$1);
+         ein $$2 = $$0.b_($$1);
          if (this.b.isPresent() && !$$2.a(this.b.get())) {
             return false;
          } else {
@@ -21,11 +21,11 @@ public record by(Optional<aut<ehq>> b, Optional<il<ehq>> c, Optional<db> d) {
       }
    }
 
-   public Optional<aut<ehq>> a() {
+   public Optional<avd<eim>> a() {
       return this.b;
    }
 
-   public Optional<il<ehq>> b() {
+   public Optional<il<eim>> b() {
       return this.c;
    }
 
@@ -34,8 +34,8 @@ public record by(Optional<aut<ehq>> b, Optional<il<ehq>> c, Optional<db> d) {
    }
 
    public static class a {
-      private Optional<il<ehq>> a = Optional.empty();
-      private Optional<aut<ehq>> b = Optional.empty();
+      private Optional<il<eim>> a = Optional.empty();
+      private Optional<avd<eim>> b = Optional.empty();
       private Optional<db> c = Optional.empty();
 
       private a() {
@@ -45,12 +45,12 @@ public record by(Optional<aut<ehq>> b, Optional<il<ehq>> c, Optional<db> d) {
          return new by.a();
       }
 
-      public by.a a(ehq $$0) {
+      public by.a a(eim $$0) {
          this.a = Optional.of($$0.k());
          return this;
       }
 
-      public by.a a(aut<ehq> $$0) {
+      public by.a a(avd<eim> $$0) {
          this.b = Optional.of($$0);
          return this;
       }

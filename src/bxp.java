@@ -1,37 +1,67 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bxp<T extends box> extends bxn<T> {
-   private static final int i = 200;
-   private int j = 0;
+public class bxp extends bwl {
+   private final cdf a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public bxp(cjk $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<box> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
-   }
-
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+   public bxp(cdf $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(bwl.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.j > 0 || !this.e.ef().h()) {
-         return false;
-      } else if (!((cjk)this.e).gA()) {
-         return false;
+      if (!this.a.gC() && this.a.bP()) {
+         epr $$0 = cai.a(this.a, 5, 4);
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
       } else {
-         this.h();
-         return this.c != null;
+         return false;
       }
    }
 
    @Override
    public void c() {
-      this.j = b(200);
-      super.c();
+      this.a.K().a(this.c, this.d, this.e, this.b);
+   }
+
+   @Override
+   public boolean b() {
+      return !this.a.gC() && !this.a.K().l() && this.a.bP();
+   }
+
+   @Override
+   public void e() {
+      if (!this.a.gC() && this.a.ei().a(this.a(50)) == 0) {
+         bow $$0 = this.a.cQ();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof cis $$1) {
+            int $$2 = this.a.gI();
+            int $$3 = this.a.gN();
+            if ($$3 > 0 && this.a.ei().a($$3) < $$2) {
+               this.a.h($$1);
+               return;
+            }
+
+            this.a.w(5);
+         }
+
+         this.a.bE();
+         this.a.gS();
+         this.a.dM().a(this.a, (byte)6);
+      }
    }
 }

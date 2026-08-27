@@ -1,36 +1,18 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-
-public class fvx implements bki {
-   private final fwo a;
-   private final Set<bkg> b = new ObjectOpenHashSet();
-   private final bko c = new bko();
-
-   public fvx(LongSupplier $$0, fwo $$1) {
-      this.a = $$1;
-      this.b.add(bkp.a($$0));
-      this.a();
+public class fvx extends fun {
+   fvx(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fvz $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.u = 0.5F;
    }
 
-   private void a() {
-      this.b.addAll(bkp.a());
-      this.b.add(bkg.a("totalChunks", bkf.f, this.a, fwo::i));
-      this.b.add(bkg.a("renderedChunks", bkf.f, this.a, fwo::k));
-      this.b.add(bkg.a("lastViewDistance", bkf.f, this.a, fwo::j));
-      fzq $$0 = this.a.h();
-      this.b.add(bkg.a("toUpload", bkf.g, $$0, fzq::c));
-      this.b.add(bkg.a("freeBufferCount", bkf.g, $$0, fzq::d));
-      this.b.add(bkg.a("toBatchCount", bkf.g, $$0, fzq::b));
-      if (esw.a().isPresent()) {
-         this.b.add(bkg.a("gpuUtilization", bkf.i, eyk.P(), eyk::u));
+   public static class a implements fvh<kf> {
+      private final fvz a;
+
+      public a(fvz $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public Set<bkg> a(Supplier<bja> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fvx($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

@@ -1,45 +1,36 @@
-public class acb implements xz<aai> {
-   public static final xq<vd, acb> a = xz.a(acb::a, acb::new);
+import java.util.BitSet;
+import javax.annotation.Nullable;
+
+public class acb implements yb<aam> {
+   public static final xs<uu, acb> a = yb.a(acb::a, acb::new);
    private final int b;
-   private final cvd c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+   private final int c;
+   private final acc d;
 
-   public acb(int $$0, cvd $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public acb(cwg $$0, eic $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.e;
+      this.c = $$0.f;
+      this.d = new acc($$0, $$1, $$2, $$3);
    }
 
-   private acb(vd $$0) {
+   private acb(uu $$0) {
       this.b = $$0.l();
-      this.c = cvd.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
+      this.c = $$0.l();
+      this.d = new acc($$0, this.b, this.c);
    }
 
-   private void a(vd $$0) {
+   private void a(uu $$0) {
       $$0.c(this.b);
-      cvd.b.encode($$0, this.c);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+      $$0.c(this.c);
+      this.d.a($$0);
    }
 
    @Override
-   public yb<acb> a() {
-      return aet.Q;
+   public yd<acb> a() {
+      return aex.N;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
@@ -47,23 +38,11 @@ public class acb implements xz<aai> {
       return this.b;
    }
 
-   public cvd e() {
+   public int e() {
       return this.c;
    }
 
-   public int f() {
+   public acc f() {
       return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
    }
 }

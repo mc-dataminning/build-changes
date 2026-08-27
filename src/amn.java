@@ -1,92 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
 
 public class amn {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vs.b("commands.schedule.cleared.failure", $$0));
-   private static final SuggestionProvider<du> c = ($$0, $$1) -> dz.b(((du)$$0.getSource()).l().bc().I().s().a(), $$1);
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vu.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> vu.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vu.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vu.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vu.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(vu.c("commands.ride.mount.failure.wrong_dimension"));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("schedule").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dv.a("function")
-                     .then(
-                        dv.a("function", fz.a())
-                           .suggests(alh.b)
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("time", fh.a())
-                                       .executes($$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
-                                    .then(
-                                       dv.a("append")
-                                          .executes(
-                                             $$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
-                                          )
-                                    ))
-                                 .then(
-                                    dv.a("replace")
-                                       .executes($$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
-                                 )
-                           )
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ride").requires($$0x -> $$0x.c(2)))
             .then(
-               dv.a("clear")
-                  .then(
-                     dv.a("function", StringArgumentType.greedyString())
-                        .suggests(c)
-                        .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
-                  )
+               ((RequiredArgumentBuilder)dv.a("target", eh.a())
+                     .then(dv.a("mount").then(dv.a("vehicle", eh.a()).executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), eh.a($$0x, "vehicle"))))))
+                  .then(dv.a("dismount").executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"))))
             )
       );
    }
 
-   private static int a(du $$0, Pair<ajc, Either<hf<du>, Collection<hf<du>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
-      if ($$2 == 0) {
-         throw a.create();
+   private static int a(du $$0, bow $$1, bow $$2) throws CommandSyntaxException {
+      bow $$3 = $$1.cZ();
+      if ($$3 != null) {
+         throw b.create($$1.O_(), $$3.O_());
+      } else if ($$2.ai() == bpc.bx) {
+         throw d.create();
+      } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dM() != $$2.dM()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.O_(), $$2.O_());
       } else {
-         long $$4 = $$0.e().X() + (long)$$2;
-         ajc $$5 = (ajc)$$1.getFirst();
-         eoi<MinecraftServer> $$6 = $$0.l().bc().I().s();
-         ((Either)$$1.getSecond()).ifLeft($$6x -> {
-            String $$7 = $$5.toString();
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new eoe($$5));
-            $$0.a(() -> vs.a("commands.schedule.created.function", vs.a($$5), $$2, $$4), true);
-         }).ifRight($$6x -> {
-            String $$7 = "#" + $$5;
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new eof($$5));
-            $$0.a(() -> vs.a("commands.schedule.created.tag", vs.a($$5), $$2, $$4), true);
-         });
-         return Math.floorMod($$4, Integer.MAX_VALUE);
+         $$0.a(() -> vu.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
       }
    }
 
-   private static int a(du $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.l().bc().I().s().a($$1);
-      if ($$2 == 0) {
-         throw b.create($$1);
+   private static int a(du $$0, bow $$1) throws CommandSyntaxException {
+      bow $$2 = $$1.cZ();
+      if ($$2 == null) {
+         throw a.create($$1.O_());
       } else {
-         $$0.a(() -> vs.a("commands.schedule.cleared.success", $$2, $$1), true);
-         return $$2;
+         $$1.ac();
+         $$0.a(() -> vu.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
       }
    }
 }

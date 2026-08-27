@@ -1,65 +1,78 @@
-import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bwk extends bvu {
-   private final boz a;
-   private box b;
-   private int c;
+public class bwk extends bwl {
+   public static final int a = 8;
+   public static final int b = 4;
+   public static final int c = 3;
+   private final cbd d;
+   @Nullable
+   private cbd e;
+   private final double f;
+   private int g;
 
-   public bwk(boz $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bvu.a.a, bvu.a.b));
+   public bwk(cbd $$0, double $$1) {
+      this.d = $$0;
+      this.f = $$1;
    }
 
    @Override
    public boolean a() {
-      box $$0 = this.a.q();
-      if ($$0 == null) {
+      if (this.d.g() >= 0) {
          return false;
       } else {
-         this.b = $$0;
-         return true;
+         List<? extends cbd> $$0 = this.d.dM().a((Class<? extends cbd>)this.d.getClass(), this.d.cH().c(8.0, 4.0, 8.0));
+         cbd $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (cbd $$3 : $$0) {
+            if ($$3.g() >= 0) {
+               double $$4 = this.d.g($$3);
+               if (!($$4 > $$2)) {
+                  $$2 = $$4;
+                  $$1 = $$3;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 9.0) {
+            return false;
+         } else {
+            this.e = $$1;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      if (!this.b.bx()) {
+      if (this.d.g() >= 0) {
+         return false;
+      } else if (!this.e.bA()) {
          return false;
       } else {
-         return this.a.f(this.b) > 225.0 ? false : !this.a.N().l() || this.a();
+         double $$0 = this.d.g(this.e);
+         return !($$0 < 9.0) && !($$0 > 256.0);
       }
+   }
+
+   @Override
+   public void c() {
+      this.g = 0;
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.a.N().n();
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
+      this.e = null;
    }
 
    @Override
    public void e() {
-      this.a.I().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dd() * 2.0F * this.a.dd() * 2.0F);
-      double $$1 = this.a.i(this.b.do(), this.b.dq(), this.b.du());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.N().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.B(this.b);
-         }
+      if (--this.g <= 0) {
+         this.g = this.a(10);
+         this.d.K().a(this.e, this.f);
       }
    }
 }

@@ -1,69 +1,44 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.Collection;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gjc extends st {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+@FunctionalInterface
+public interface gjc {
+   Logger a = LogUtils.getLogger();
 
-   private gjc(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public static gjc a(asf $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = Maps.newHashMap();
-
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               ajc $$7 = new ajc($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
-            }
+   static gjc create(Collection<arn<?>> $$0) {
+      return ($$1, $$2) -> {
+         asq $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
          }
-      }
 
-      return new gjc(ImmutableMap.copyOf($$3), $$2);
-   }
-
-   private static void a(String $$0, List<asd> $$1, Map<String, String> $$2) {
-      for (asd $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            st.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         eta $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = eta.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
          }
-      }
+
+         gkj $$11 = $$3.a(gkj.a).orElse(gkj.e);
+         gkl $$12 = $$11.a($$7.a(), $$7.b());
+         if (aww.c($$7.a(), $$12.a()) && aww.c($$7.b(), $$12.b())) {
+            return new git($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public avy a(vx $$0) {
-      return gjd.a($$0, this.d);
-   }
+   @Nullable
+   git loadSprite(ajh var1, asm var2);
 }

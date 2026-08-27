@@ -19,22 +19,22 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 
 @Immutable
-public class ib extends jf {
+public class ib extends jg {
    public static final Codec<ib> a = Codec.INT_STREAM
       .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new ib($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
       .stable();
-   public static final xq<ByteBuf, ib> b = new xq<ByteBuf, ib>() {
+   public static final xs<ByteBuf, ib> b = new xs<ByteBuf, ib>() {
       public ib a(ByteBuf $$0) {
-         return us.b($$0);
+         return uu.b($$0);
       }
 
       public void a(ByteBuf $$0, ib $$1) {
-         us.a($$0, $$1);
+         uu.a($$0, $$1);
       }
    };
    private static final Logger e = LogUtils.getLogger();
    public static final ib c = new ib(0, 0, 0);
-   private static final int h = 1 + awm.f(awm.c(30000000));
+   private static final int h = 1 + aww.f(aww.c(30000000));
    private static final int i = h;
    public static final int d = 64 - h - i;
    private static final long j = (1L << h) - 1L;
@@ -48,7 +48,7 @@ public class ib extends jf {
       super($$0, $$1, $$2);
    }
 
-   public ib(jf $$0) {
+   public ib(jg $$0) {
       this($$0.u(), $$0.v(), $$0.w());
    }
 
@@ -77,7 +77,7 @@ public class ib extends jf {
    }
 
    public static ib a(double $$0, double $$1, double $$2) {
-      return new ib(awm.a($$0), awm.a($$1), awm.a($$2));
+      return new ib(aww.a($$0), aww.a($$1), aww.a($$2));
    }
 
    public static ib a(iv $$0) {
@@ -103,15 +103,15 @@ public class ib extends jf {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ib(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public eov b() {
-      return eov.b(this);
+   public epr b() {
+      return epr.b(this);
    }
 
-   public ib a(jf $$0) {
+   public ib a(jg $$0) {
       return this.b($$0.u(), $$0.v(), $$0.w());
    }
 
-   public ib b(jf $$0) {
+   public ib b(jg $$0) {
       return this.b(-$$0.u(), -$$0.v(), -$$0.w());
    }
 
@@ -190,7 +190,7 @@ public class ib extends jf {
       }
    }
 
-   public ib a(dfr $$0) {
+   public ib a(dgm $$0) {
       switch ($$0) {
          case a:
          default:
@@ -204,7 +204,7 @@ public class ib extends jf {
       }
    }
 
-   public ib c(jf $$0) {
+   public ib c(jg $$0) {
       return new ib(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
    }
 
@@ -220,7 +220,7 @@ public class ib extends jf {
       return new ib.a(this.u(), this.v(), this.w());
    }
 
-   public static Iterable<ib> a(awt $$0, int $$1, ib $$2, int $$3) {
+   public static Iterable<ib> a(axd $$0, int $$1, ib $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
@@ -229,7 +229,7 @@ public class ib extends jf {
       return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
    }
 
-   public static Iterable<ib> a(awt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<ib> a(axd $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -331,7 +331,7 @@ public class ib extends jf {
       return StreamSupport.stream(a($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<ib> a(eby $$0) {
+   public static Stream<ib> a(ecu $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -342,8 +342,8 @@ public class ib extends jf {
       );
    }
 
-   public static Stream<ib> a(eoq $$0) {
-      return a(awm.a($$0.a), awm.a($$0.b), awm.a($$0.c), awm.a($$0.d), awm.a($$0.e), awm.a($$0.f));
+   public static Stream<ib> a(epm $$0) {
+      return a(aww.a($$0.a), aww.a($$0.b), aww.a($$0.c), aww.a($$0.d), aww.a($$0.e), aww.a($$0.f));
    }
 
    public static Stream<ib> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -443,7 +443,7 @@ public class ib extends jf {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(awm.a($$0), awm.a($$1), awm.a($$2));
+         this(aww.a($$0), aww.a($$1), aww.a($$2));
       }
 
       @Override
@@ -467,7 +467,7 @@ public class ib extends jf {
       }
 
       @Override
-      public ib a(dfr $$0) {
+      public ib a(dgm $$0) {
          return super.a($$0).i();
       }
 
@@ -479,10 +479,10 @@ public class ib extends jf {
       }
 
       public ib.a b(double $$0, double $$1, double $$2) {
-         return this.d(awm.a($$0), awm.a($$1), awm.a($$2));
+         return this.d(aww.a($$0), aww.a($$1), aww.a($$2));
       }
 
-      public ib.a g(jf $$0) {
+      public ib.a g(jg $$0) {
          return this.d($$0.u(), $$0.v(), $$0.w());
       }
 
@@ -494,15 +494,15 @@ public class ib extends jf {
          return this.d($$0.a($$1, $$2, $$3, ih.a.a), $$0.a($$1, $$2, $$3, ih.a.b), $$0.a($$1, $$2, $$3, ih.a.c));
       }
 
-      public ib.a a(jf $$0, ih $$1) {
+      public ib.a a(jg $$0, ih $$1) {
          return this.d($$0.u() + $$1.j(), $$0.v() + $$1.k(), $$0.w() + $$1.l());
       }
 
-      public ib.a a(jf $$0, int $$1, int $$2, int $$3) {
+      public ib.a a(jg $$0, int $$1, int $$2, int $$3) {
          return this.d($$0.u() + $$1, $$0.v() + $$2, $$0.w() + $$3);
       }
 
-      public ib.a a(jf $$0, jf $$1) {
+      public ib.a a(jg $$0, jg $$1) {
          return this.d($$0.u() + $$1.u(), $$0.v() + $$1.v(), $$0.w() + $$1.w());
       }
 
@@ -518,18 +518,18 @@ public class ib extends jf {
          return this.d(this.u() + $$0, this.v() + $$1, this.w() + $$2);
       }
 
-      public ib.a h(jf $$0) {
+      public ib.a h(jg $$0) {
          return this.d(this.u() + $$0.u(), this.v() + $$0.v(), this.w() + $$0.w());
       }
 
       public ib.a a(ih.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(awm.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(aww.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), awm.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), aww.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), awm.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), aww.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }

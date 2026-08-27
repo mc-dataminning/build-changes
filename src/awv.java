@@ -1,59 +1,49 @@
-public class awv {
-   private final int a;
-   private final int b;
-   private final float c;
-   private final float d;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-   public awv(int $$0) {
-      if ($$0 < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if ($$0 > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
+public record awv(awv.a a, String b) {
+   public static awv a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new awv(awv.a.c, $$2 + " brand changed to '" + $$4 + "'");
       } else {
-         int $$1 = 1 << $$0;
-         this.a = $$1 - 1;
-         this.b = $$0;
-         this.c = (float)$$1 / 360.0F;
-         this.d = 360.0F / (float)$$1;
+         return $$3.getSigners() == null
+            ? new awv(awv.a.b, $$2 + " jar signature invalidated")
+            : new awv(awv.a.a, $$2 + " jar signature and brand is untouched");
       }
    }
 
-   public boolean a(int $$0, int $$1) {
-      int $$2 = this.a() >> 1;
-      return ($$0 & $$2) == ($$1 & $$2);
+   public boolean a() {
+      return this.a.e;
    }
 
-   public int a(ih $$0) {
-      if ($$0.o().b()) {
-         return 0;
-      } else {
-         int $$1 = $$0.e();
-         return $$1 << this.b - 2;
-      }
+   public awv a(awv $$0) {
+      return new awv((awv.a)ObjectUtils.max(new awv.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
    }
 
-   public int a(float $$0) {
-      return Math.round($$0 * this.c);
+   public String b() {
+      return this.a.d + " " + this.b;
    }
 
-   public int b(float $$0) {
-      return this.c(this.a($$0));
-   }
-
-   public float a(int $$0) {
-      return (float)$$0 * this.d;
-   }
-
-   public float b(int $$0) {
-      float $$1 = this.a(this.c($$0));
-      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
-   }
-
-   public int c(int $$0) {
-      return $$0 & this.a;
-   }
-
-   public int a() {
+   public awv.a c() {
       return this.a;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
+
+      final String d;
+      final boolean e;
+
+      private a(String $$0, boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
    }
 }

@@ -1,44 +1,57 @@
-public class glg extends gkv {
-   private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cia p;
-   private final cjt q;
-   private final boolean r;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   public glg(cia $$0, cjt $$1, boolean $$2) {
-      super($$2 ? atp.ok : atp.ol, atq.g, glm.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = glm.a.a;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+public class glg extends ajh {
+   @VisibleForTesting
+   static final char f = '#';
+   private final String g;
+
+   private glg(String $$0, String $$1, String $$2, @Nullable ajh.a $$3) {
+      super($$0, $$1, $$3);
+      this.g = $$2;
+   }
+
+   public glg(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.g = j($$2);
+   }
+
+   public glg(ajh $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static glg c(String $$0, String $$1) {
+      return new glg("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.g;
    }
 
    @Override
-   public boolean s() {
-      return !this.q.aU();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.q.dE() || !this.p.bL() || this.p.cW() != this.q) {
-         this.n();
-      } else if (this.r != this.p.be()) {
-         this.d = 0.0F;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof glg && super.equals($$0)) {
+         glg $$1 = (glg)$$0;
+         return this.g.equals($$1.g);
       } else {
-         float $$0 = (float)this.q.dm().h();
-         if ($$0 >= 0.01F) {
-            this.d = awm.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
-         }
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.g.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.g;
    }
 }

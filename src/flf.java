@@ -1,59 +1,71 @@
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public record flf(dso a, ix<dpr> b, dsl c, is<ajl> d, ajm e, cwy f) {
-   public flf(dsm $$0, is<ajl> $$1, ajm $$2, cwy $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3);
+public class flf {
+   private final fss a;
+   private final fta b;
+   private final Predicate<fsv.a> c;
+   @Nullable
+   private wp d = null;
+   private int e;
+   private int f;
+   @Nullable
+   private wk g;
+
+   public flf(ftg $$0, Predicate<fsv.a> $$1) {
+      this.a = $$0.b();
+      this.b = new fta($$0.a().b().leadingContextMessageCount());
+      this.c = $$1;
+      this.e = this.a.b();
    }
 
-   public flf(dso $$0, dsl $$1, is<ajl> $$2, ajm $$3, cwy $$4) {
-      this($$0, $$2.a(ajl.c).d(ki.aO), $$1, $$2.a(ajl.c), $$3, $$4);
+   public void a(int $$0, flf.a $$1) {
+      int $$2 = 0;
+
+      while ($$2 < $$0) {
+         fsu $$3 = this.a.b(this.e);
+         if ($$3 == null) {
+            break;
+         }
+
+         int $$4 = this.e--;
+         if ($$3 instanceof fsv.a $$5 && !$$5.g().equals(this.g)) {
+            if (this.a($$1, $$5)) {
+               if (this.f > 0) {
+                  $$1.a(vu.a("gui.chatSelection.fold", this.f));
+                  this.f = 0;
+               }
+
+               $$1.a($$4, $$5);
+               $$2++;
+            } else {
+               this.f++;
+            }
+
+            this.g = $$5.g();
+         }
+      }
    }
 
-   public flf a(dso $$0, dsl $$1) {
-      return new flf($$0, this.b, $$1, this.d, this.e, this.f);
+   private boolean a(flf.a $$0, fsv.a $$1) {
+      wk $$2 = $$1.g();
+      boolean $$3 = this.b.b($$2);
+      if (this.c.test($$1)) {
+         this.b.a($$2);
+         if (this.d != null && !this.d.a($$2.k())) {
+            $$0.a(vu.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
+         }
+
+         this.d = $$2.k();
+         return true;
+      } else {
+         return $$3;
+      }
    }
 
-   public flf a(flf.b $$0) {
-      return new flf($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
-   }
+   public interface a {
+      void a(int var1, fsv.a var2);
 
-   public flf a(flf.a $$0) {
-      return new flf(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
-   }
-
-   public iy.b a() {
-      return this.d.a();
-   }
-
-   public dso b() {
-      return this.a;
-   }
-
-   public ix<dpr> c() {
-      return this.b;
-   }
-
-   public dsl d() {
-      return this.c;
-   }
-
-   public is<ajl> e() {
-      return this.d;
-   }
-
-   public ajm f() {
-      return this.e;
-   }
-
-   public cwy g() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<iy.b, dsl, dsl> {
-   }
-
-   public interface b extends UnaryOperator<dso> {
+      void a(vu var1);
    }
 }

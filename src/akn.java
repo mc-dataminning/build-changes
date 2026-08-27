@@ -1,132 +1,254 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import java.util.UUID;
 
 public class akn {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, ajb<cwe>> a = ImmutableBiMap.of("o", cwe.h, "n", cwe.i, "e", cwe.j);
-   @Nullable
-   private static akf g;
-   @Nullable
-   private static ake h;
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vu.b("commands.attribute.failed.entity", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> vu.b("commands.attribute.failed.no_attribute", $$0, $$1)
+   );
+   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> vu.b("commands.attribute.failed.no_modifier", $$1, $$0, $$2)
+   );
+   private static final Dynamic3CommandExceptionType d = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> vu.b("commands.attribute.failed.modifier_already_present", $$2, $$1, $$0)
+   );
 
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("chase")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("attribute").requires($$0x -> $$0x.c(2)))
+            .then(
+               dv.a("target", eh.a())
                   .then(
-                     ((LiteralArgumentBuilder)dv.a("follow")
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("attribute", et.a($$1, kj.c))
+                              .then(
+                                 ((LiteralArgumentBuilder)dv.a("get")
+                                       .executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), et.a($$0x, "attribute"), 1.0)))
+                                    .then(
+                                       dv.a("scale", DoubleArgumentType.doubleArg())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   eh.a($$0x, "target"),
+                                                   et.a($$0x, "attribute"),
+                                                   DoubleArgumentType.getDouble($$0x, "scale")
+                                                )
+                                          )
+                                    )
+                              ))
                            .then(
-                              ((RequiredArgumentBuilder)dv.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((du)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
+                              ((LiteralArgumentBuilder)dv.a("base")
+                                    .then(
+                                       dv.a("set")
+                                          .then(
+                                             dv.a("value", DoubleArgumentType.doubleArg())
+                                                .executes(
+                                                   $$0x -> c(
+                                                         (du)$$0x.getSource(),
+                                                         eh.a($$0x, "target"),
+                                                         et.a($$0x, "attribute"),
+                                                         DoubleArgumentType.getDouble($$0x, "value")
+                                                      )
+                                                )
+                                          )
+                                    ))
                                  .then(
-                                    dv.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (du)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
+                                    ((LiteralArgumentBuilder)dv.a("get")
+                                          .executes($$0x -> b((du)$$0x.getSource(), eh.a($$0x, "target"), et.a($$0x, "attribute"), 1.0)))
+                                       .then(
+                                          dv.a("scale", DoubleArgumentType.doubleArg())
+                                             .executes(
+                                                $$0x -> b(
+                                                      (du)$$0x.getSource(),
+                                                      eh.a($$0x, "target"),
+                                                      et.a($$0x, "attribute"),
+                                                      DoubleArgumentType.getDouble($$0x, "scale")
+                                                   )
                                              )
                                        )
                                  )
                            ))
-                        .executes($$0x -> b((du)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)dv.a("lead")
                         .then(
-                           ((RequiredArgumentBuilder)dv.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
+                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("modifier")
+                                    .then(
+                                       dv.a("add")
+                                          .then(
+                                             dv.a("uuid", fi.a())
+                                                .then(
+                                                   dv.a("name", StringArgumentType.string())
+                                                      .then(
+                                                         ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("value", DoubleArgumentType.doubleArg())
+                                                                  .then(
+                                                                     dv.a("add")
+                                                                        .executes(
+                                                                           $$0x -> a(
+                                                                                 (du)$$0x.getSource(),
+                                                                                 eh.a($$0x, "target"),
+                                                                                 et.a($$0x, "attribute"),
+                                                                                 fi.a($$0x, "uuid"),
+                                                                                 StringArgumentType.getString($$0x, "name"),
+                                                                                 DoubleArgumentType.getDouble($$0x, "value"),
+                                                                                 bqt.a.a
+                                                                              )
+                                                                        )
+                                                                  ))
+                                                               .then(
+                                                                  dv.a("multiply")
+                                                                     .executes(
+                                                                        $$0x -> a(
+                                                                              (du)$$0x.getSource(),
+                                                                              eh.a($$0x, "target"),
+                                                                              et.a($$0x, "attribute"),
+                                                                              fi.a($$0x, "uuid"),
+                                                                              StringArgumentType.getString($$0x, "name"),
+                                                                              DoubleArgumentType.getDouble($$0x, "value"),
+                                                                              bqt.a.c
+                                                                           )
+                                                                     )
+                                                               ))
+                                                            .then(
+                                                               dv.a("multiply_base")
+                                                                  .executes(
+                                                                     $$0x -> a(
+                                                                           (du)$$0x.getSource(),
+                                                                           eh.a($$0x, "target"),
+                                                                           et.a($$0x, "attribute"),
+                                                                           fi.a($$0x, "uuid"),
+                                                                           StringArgumentType.getString($$0x, "name"),
+                                                                           DoubleArgumentType.getDouble($$0x, "value"),
+                                                                           bqt.a.b
+                                                                        )
+                                                                  )
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("remove")
+                                       .then(
+                                          dv.a("uuid", fi.a())
+                                             .executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), et.a($$0x, "attribute"), fi.a($$0x, "uuid")))
+                                       )
+                                 ))
                               .then(
-                                 dv.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (du)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
+                                 dv.a("value")
+                                    .then(
+                                       dv.a("get")
+                                          .then(
+                                             ((RequiredArgumentBuilder)dv.a("uuid", fi.a())
+                                                   .executes(
+                                                      $$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), et.a($$0x, "attribute"), fi.a($$0x, "uuid"), 1.0)
+                                                   ))
+                                                .then(
+                                                   dv.a("scale", DoubleArgumentType.doubleArg())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               eh.a($$0x, "target"),
+                                                               et.a($$0x, "attribute"),
+                                                               fi.a($$0x, "uuid"),
+                                                               DoubleArgumentType.getDouble($$0x, "scale")
+                                                            )
+                                                      )
+                                                )
                                           )
                                     )
                               )
-                        ))
-                     .executes($$0x -> a((du)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(dv.a("stop").executes($$0x -> a((du)$$0x.getSource())))
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(du $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> vs.b("You have now stopped chasing"), false);
-         h = null;
-      }
-
-      if (g != null) {
-         g.b();
-         $$0.a(() -> vs.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
-   }
-
-   private static boolean b(du $$0) {
-      if (g != null) {
-         $$0.b(vs.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(vs.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
+   private static bqr a(bow $$0, il<bqq> $$1) throws CommandSyntaxException {
+      bqr $$2 = a($$0).eT().a($$1);
+      if ($$2 == null) {
+         throw b.create($$0.ad(), a($$1));
       } else {
-         return false;
+         return $$2;
       }
    }
 
-   private static int a(du $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
+   private static bpo a(bow $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bpo)) {
+         throw a.create($$0.ad());
       } else {
-         g = new akf($$1, $$2, $$0.l().ah(), 100);
-
-         try {
-            g.a();
-            $$0.a(() -> vs.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(vs.b("Failed to start chase server on port " + $$2));
-            g = null;
-         }
-
-         return 0;
+         return (bpo)$$0;
       }
    }
 
-   private static int b(du $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
+   private static bpo b(bow $$0, il<bqq> $$1) throws CommandSyntaxException {
+      bpo $$2 = a($$0);
+      if (!$$2.eT().b($$1)) {
+         throw b.create($$0.ad(), a($$1));
       } else {
-         h = new ake($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> vs.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
+         return $$2;
       }
+   }
+
+   private static int a(du $$0, bow $$1, il<bqq> $$2, double $$3) throws CommandSyntaxException {
+      bpo $$4 = b($$1, $$2);
+      double $$5 = $$4.g($$2);
+      $$0.a(() -> vu.a("commands.attribute.value.get.success", a($$2), $$1.ad(), $$5), false);
+      return (int)($$5 * $$3);
+   }
+
+   private static int b(du $$0, bow $$1, il<bqq> $$2, double $$3) throws CommandSyntaxException {
+      bpo $$4 = b($$1, $$2);
+      double $$5 = $$4.h($$2);
+      $$0.a(() -> vu.a("commands.attribute.base_value.get.success", a($$2), $$1.ad(), $$5), false);
+      return (int)($$5 * $$3);
+   }
+
+   private static int a(du $$0, bow $$1, il<bqq> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
+      bpo $$5 = b($$1, $$2);
+      bqs $$6 = $$5.eT();
+      if (!$$6.a($$2, $$3)) {
+         throw c.create($$1.ad(), a($$2), $$3);
+      } else {
+         double $$7 = $$6.b($$2, $$3);
+         $$0.a(() -> vu.a("commands.attribute.modifier.value.get.success", vu.a($$3), a($$2), $$1.ad(), $$7), false);
+         return (int)($$7 * $$4);
+      }
+   }
+
+   private static int c(du $$0, bow $$1, il<bqq> $$2, double $$3) throws CommandSyntaxException {
+      a($$1, $$2).a($$3);
+      $$0.a(() -> vu.a("commands.attribute.base_value.set.success", a($$2), $$1.ad(), $$3), false);
+      return 1;
+   }
+
+   private static int a(du $$0, bow $$1, il<bqq> $$2, UUID $$3, String $$4, double $$5, bqt.a $$6) throws CommandSyntaxException {
+      bqr $$7 = a($$1, $$2);
+      bqt $$8 = new bqt($$3, $$4, $$5, $$6);
+      if ($$7.a($$8)) {
+         throw d.create($$1.ad(), a($$2), $$3);
+      } else {
+         $$7.d($$8);
+         $$0.a(() -> vu.a("commands.attribute.modifier.add.success", vu.a($$3), a($$2), $$1.ad()), false);
+         return 1;
+      }
+   }
+
+   private static int a(du $$0, bow $$1, il<bqq> $$2, UUID $$3) throws CommandSyntaxException {
+      bqr $$4 = a($$1, $$2);
+      if ($$4.c($$3)) {
+         $$0.a(() -> vu.a("commands.attribute.modifier.remove.success", vu.a($$3), a($$2), $$1.ad()), false);
+         return 1;
+      } else {
+         throw c.create($$1.ad(), a($$2), $$3);
+      }
+   }
+
+   private static vu a(il<bqq> $$0) {
+      return vu.c($$0.a().c());
    }
 }

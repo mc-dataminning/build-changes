@@ -1,92 +1,45 @@
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public abstract class gbx<T extends bof> {
-   protected static final float b = 0.025F;
-   protected final gbw c;
-   private final ezv a;
-   protected float d;
-   protected float e = 1.0F;
+public class gbx extends gdz<cet, fnd> {
+   public static final ajh a = new ajh("textures/entity/armorstand/wood.png");
 
-   protected gbx(gby.a $$0) {
-      this.c = $$0.a();
-      this.a = $$0.h();
+   public gbx(gcy.a $$0) {
+      super($$0, new fne($$0.a(frc.c)), 0.0F);
+      this.a(new ggz<>(this, new fnd($$0.a(frc.d)), new fnd($$0.a(frc.e)), $$0.g()));
+      this.a(new ghc<>(this, $$0.d()));
+      this.a(new ggs<>(this, $$0.f()));
+      this.a(new ggo<>(this, $$0.f(), $$0.d()));
    }
 
-   public final int b(T $$0, float $$1) {
-      ib $$2 = ib.a($$0.k($$1));
-      return fwp.a(this.a($$0, $$2), this.b($$0, $$2));
+   public ajh a(cet $$0) {
+      return a;
    }
 
-   protected int b(T $$0, ib $$1) {
-      return $$0.dJ().a(cwn.a, $$1);
+   protected void a(cet $$0, etz $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      float $$6 = (float)($$0.dM().X() - $$0.bM) + $$4;
+      if ($$6 < 5.0F) {
+         $$1.a(a.d.rotationDegrees(aww.a($$6 / 1.5F * (float) Math.PI) * 3.0F));
+      }
    }
 
-   protected int a(T $$0, ib $$1) {
-      return $$0.bK() ? 15 : $$0.dJ().a(cwn.b, $$1);
+   protected boolean b(cet $$0) {
+      double $$1 = this.c.b($$0);
+      float $$2 = $$0.bX() ? 32.0F : 64.0F;
+      return $$1 >= (double)($$2 * $$2) ? false : $$0.cB();
    }
 
-   public boolean a(T $$0, fzu $$1, double $$2, double $$3, double $$4) {
-      if (!$$0.k($$2, $$3, $$4)) {
-         return false;
-      } else if ($$0.as) {
-         return true;
+   @Nullable
+   protected fxy a(cet $$0, boolean $$1, boolean $$2, boolean $$3) {
+      if (!$$0.z()) {
+         return super.a($$0, $$1, $$2, $$3);
       } else {
-         eoq $$5 = $$0.i_().g(0.5);
-         if ($$5.e() || $$5.a() == 0.0) {
-            $$5 = new eoq($$0.do() - 2.0, $$0.dq() - 2.0, $$0.du() - 2.0, $$0.do() + 2.0, $$0.dq() + 2.0, $$0.du() + 2.0);
-         }
-
-         return $$1.a($$5);
-      }
-   }
-
-   public eov a(T $$0, float $$1) {
-      return eov.b;
-   }
-
-   public void a(T $$0, float $$1, float $$2, etd $$3, fwq $$4, int $$5) {
-      if (this.b($$0)) {
-         this.a($$0, $$0.Q_(), $$3, $$4, $$5, $$2);
-      }
-   }
-
-   protected boolean b(T $$0) {
-      return $$0.cz() || $$0.ae() && $$0 == this.c.c;
-   }
-
-   public abstract ajc a(T var1);
-
-   public ezv b() {
-      return this.a;
-   }
-
-   protected void a(T $$0, vs $$1, etd $$2, fwq $$3, int $$4, float $$5) {
-      double $$6 = this.c.b($$0);
-      if (!($$6 > 4096.0)) {
-         eov $$7 = $$0.dg().a(bog.c, 0, $$0.h($$5));
-         if ($$7 != null) {
-            boolean $$8 = !$$0.bS();
-            int $$9 = "deadmau5".equals($$1.getString()) ? -10 : 0;
-            $$2.a();
-            $$2.a($$7.c, $$7.d + 0.5, $$7.e);
-            $$2.a(this.c.b());
-            $$2.b(-0.025F, -0.025F, 0.025F);
-            Matrix4f $$10 = $$2.c().a();
-            float $$11 = eyk.P().m.a(0.25F);
-            int $$12 = (int)($$11 * 255.0F) << 24;
-            ezv $$13 = this.b();
-            float $$14 = (float)(-$$13.a($$1) / 2);
-            $$13.a($$1, $$14, (float)$$9, 553648127, false, $$10, $$3, $$8 ? ezv.a.b : ezv.a.a, $$12, $$4);
-            if ($$8) {
-               $$13.a($$1, $$14, (float)$$9, -1, false, $$10, $$3, ezv.a.a, 0, $$4);
-            }
-
-            $$2.b();
+         ajh $$4 = this.a($$0);
+         if ($$2) {
+            return fxy.c($$4, false);
+         } else {
+            return $$1 ? fxy.a($$4, false) : null;
          }
       }
-   }
-
-   protected float c(T $$0) {
-      return this.d;
    }
 }

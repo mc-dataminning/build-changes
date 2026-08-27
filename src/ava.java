@@ -1,22 +1,35 @@
-import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.List;
 
-@FunctionalInterface
-public interface ava<T> {
-   ava.a accept(T var1);
+public class ava {
+   private final List<avb> a = new ArrayList<>();
 
-   static <T> ava<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return ava.a.a;
-      };
+   public static ava a() {
+      return new ava();
    }
 
-   public static enum a {
-      a,
-      b;
+   public List<avb> b() {
+      return List.copyOf(this.a);
+   }
 
-      public boolean a() {
-         return this == b;
-      }
+   public ava a(avb $$0) {
+      this.a.add($$0);
+      return this;
+   }
+
+   public ava a(ajh $$0) {
+      return this.a(avb.a($$0));
+   }
+
+   public ava b(ajh $$0) {
+      return this.a(avb.b($$0));
+   }
+
+   public ava c(ajh $$0) {
+      return this.a(avb.c($$0));
+   }
+
+   public ava d(ajh $$0) {
+      return this.a(avb.d($$0));
    }
 }

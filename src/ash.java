@@ -1,71 +1,119 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonObject;
-import java.io.BufferedReader;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface ash {
-   ash a = new ash() {
-      @Override
-      public <T> Optional<T> a(arf<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   arx<ash> b = () -> a;
+public class ash implements ase {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, asf> c;
+   private final List<ara> d;
 
-   static ash a(InputStream $$0) throws IOException {
-      ash var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = awc.a($$1);
-         var3 = new ash() {
-            @Override
-            public <T> Optional<T> a(arf<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(awc.u($$2, $$1))) : Optional.empty();
+   public ash(arc $$0, List<ara> $$1) {
+      this.d = List.copyOf($$1);
+      Map<String, asf> $$2 = new HashMap<>();
+      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
+
+      for (ara $$4 : $$1) {
+         asn $$5 = this.a($$4);
+         Set<String> $$6 = $$4.a($$0);
+         Predicate<ajh> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
+
+         for (String $$8 : $$3) {
+            boolean $$9 = $$6.contains($$8);
+            boolean $$10 = $$5 != null && $$5.a($$8);
+            if ($$9 || $$10) {
+               asf $$11 = $$2.get($$8);
+               if ($$11 == null) {
+                  $$11 = new asf($$0, $$8);
+                  $$2.put($$8, $$11);
+               }
+
+               if ($$9 && $$10) {
+                  $$11.a($$4, $$7);
+               } else if ($$9) {
+                  $$11.a($$4);
+               } else {
+                  $$11.a($$4.b(), $$7);
+               }
             }
-         };
+         }
       }
 
-      return var3;
+      this.c = $$2;
    }
 
-   <T> Optional<T> a(arf<T> var1);
-
-   default ash a(Collection<arf<?>> $$0) {
-      ash.a $$1 = new ash.a();
-
-      for (arf<?> $$2 : $$0) {
-         this.a($$1, $$2);
+   @Nullable
+   private asn a(ara $$0) {
+      try {
+         return $$0.a(asn.a);
+      } catch (IOException var3) {
+         a.error("Failed to get filter section from pack {}", $$0.b());
+         return null;
       }
-
-      return $$1.a();
    }
 
-   private <T> void a(ash.a $$0, arf<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   @Override
+   public Set<String> a() {
+      return this.c.keySet();
    }
 
-   public static class a {
-      private final Builder<arf<?>, Object> a = ImmutableMap.builder();
+   @Override
+   public Optional<asm> getResource(ajh $$0) {
+      aso $$1 = this.c.get($$0.b());
+      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
+   }
 
-      public <T> ash.a a(arf<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
+   @Override
+   public List<asm> a(ajh $$0) {
+      aso $$1 = this.c.get($$0.b());
+      return $$1 != null ? $$1.a($$0) : List.of();
+   }
+
+   @Override
+   public Map<ajh, asm> b(String $$0, Predicate<ajh> $$1) {
+      a($$0);
+      Map<ajh, asm> $$2 = new TreeMap<>();
+
+      for (asf $$3 : this.c.values()) {
+         $$2.putAll($$3.b($$0, $$1));
       }
 
-      public ash a() {
-         final ImmutableMap<arf<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? ash.a : new ash() {
-            @Override
-            public <T> Optional<T> a(arf<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
+      return $$2;
+   }
+
+   @Override
+   public Map<ajh, List<asm>> c(String $$0, Predicate<ajh> $$1) {
+      a($$0);
+      Map<ajh, List<asm>> $$2 = new TreeMap<>();
+
+      for (asf $$3 : this.c.values()) {
+         $$2.putAll($$3.c($$0, $$1));
       }
+
+      return $$2;
+   }
+
+   private static void a(String $$0) {
+      if ($$0.endsWith("/")) {
+         throw new IllegalArgumentException("Trailing slash in path " + $$0);
+      }
+   }
+
+   @Override
+   public Stream<ara> b() {
+      return this.d.stream();
+   }
+
+   @Override
+   public void close() {
+      this.d.forEach(ara::close);
    }
 }

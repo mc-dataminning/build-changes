@@ -1,41 +1,60 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwu implements dwy {
-   public static final Codec<dwu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dme.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dme.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               blq.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               blq.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dwu::new)
-   );
-   private final dme b;
-   private final dme c;
-   private final blq d;
-   private final blq e;
-
-   public dwu(dme $$0, dme $$1, blq $$2, blq $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class dwu extends dvq<dyl> {
+   public dwu(Codec<dyl> $$0) {
+      super($$0);
    }
 
-   public dme a() {
-      return this.b;
+   @Override
+   public boolean a(dvs<dyl> $$0) {
+      cxu $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         dyl $$3 = $$0.f();
+         axd $$4 = $$0.d();
+         dgu $$5 = dgu.b();
+         int $$6 = $$3.f() + $$3.d();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         ib $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, dac.qU.o(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            ib $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ih.b)) {
+               $$1.a($$14, dac.qV.o().a(dgt.d, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
    }
 
-   public dme b() {
-      return this.c;
-   }
-
-   public blq c() {
-      return this.d;
-   }
-
-   public blq d() {
-      return this.e;
+   private boolean a(cxa $$0, ib $$1) {
+      dmz $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dgp) {
+         return true;
+      } else {
+         return !$$2.i() && (!$$2.a(dac.G) || !$$2.u().b()) ? false : ih.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+      }
    }
 }

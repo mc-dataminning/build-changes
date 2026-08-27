@@ -1,18 +1,166 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.base.Stopwatch;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface dox {
+public class dox {
+   private static final Logger a = LogUtils.getLogger();
+   private final dta b;
+   private final cyc c;
+   private final long d;
+   private final long e;
+   private final Map<edc, List<edz>> f = new Object2ObjectOpenHashMap();
+   private final Map<edw, CompletableFuture<List<cwg>>> g = new Object2ObjectArrayMap();
+   private boolean h;
+   private final List<il<edi>> i;
+
+   public static dox a(dta $$0, long $$1, cyc $$2, Stream<il<edi>> $$3) {
+      List<il<edi>> $$4 = $$3.filter($$1x -> a((edi)$$1x.a(), $$2)).toList();
+      return new dox($$0, $$2, $$1, 0L, $$4);
+   }
+
+   public static dox a(dta $$0, long $$1, cyc $$2, in<edi> $$3) {
+      List<il<edi>> $$4 = $$3.b().filter($$1x -> a((edi)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
+      return new dox($$0, $$2, $$1, $$1, $$4);
+   }
+
+   private static boolean a(edi $$0, cyc $$1) {
+      Stream<il<cxy>> $$2 = $$0.a().stream().flatMap($$0x -> {
+         edc $$1x = $$0x.a().a();
+         return $$1x.a().a();
+      });
+      return $$2.anyMatch($$1.c()::contains);
+   }
+
+   private dox(dta $$0, cyc $$1, long $$2, long $$3, List<il<edi>> $$4) {
+      this.b = $$0;
+      this.d = $$2;
+      this.c = $$1;
+      this.e = $$3;
+      this.i = $$4;
+   }
+
+   public List<il<edi>> a() {
+      return this.i;
+   }
+
+   private void e() {
+      Set<il<cxy>> $$0 = this.c.c();
+      this.a().forEach($$1 -> {
+         edi $$2 = $$1.a();
+         boolean $$3 = false;
+
+         for (edi.a $$4 : $$2.a()) {
+            edc $$5 = $$4.a().a();
+            if ($$5.a().a().anyMatch($$0::contains)) {
+               this.f.computeIfAbsent($$5, $$0xx -> new ArrayList<>()).add($$2.b());
+               $$3 = true;
+            }
+         }
+
+         if ($$3 && $$2.b() instanceof edw $$7) {
+            this.g.put($$7, this.a((il<edi>)$$1, $$7));
+         }
+      });
+   }
+
+   private CompletableFuture<List<cwg>> a(il<edi> $$0, edw $$1) {
+      if ($$1.c() == 0) {
+         return CompletableFuture.completedFuture(List.of());
+      } else {
+         Stopwatch $$2 = Stopwatch.createStarted(ac.c);
+         int $$3 = $$1.a();
+         int $$4 = $$1.c();
+         List<CompletableFuture<cwg>> $$5 = new ArrayList<>($$4);
+         int $$6 = $$1.b();
+         ip<cxy> $$7 = $$1.d();
+         axd $$8 = axd.a();
+         $$8.b(this.e);
+         double $$9 = $$8.j() * Math.PI * 2.0;
+         int $$10 = 0;
+         int $$11 = 0;
+
+         for (int $$12 = 0; $$12 < $$4; $$12++) {
+            double $$13 = (double)(4 * $$3 + $$3 * $$11 * 6) + ($$8.j() - 0.5) * (double)$$3 * 2.5;
+            int $$14 = (int)Math.round(Math.cos($$9) * $$13);
+            int $$15 = (int)Math.round(Math.sin($$9) * $$13);
+            axd $$16 = $$8.d();
+            $$5.add(CompletableFuture.supplyAsync(() -> {
+               Pair<ib, il<cxy>> $$4x = this.c.a(je.a($$14, 8), 0, je.a($$15, 8), 112, $$7::a, $$16, this.b.b());
+               if ($$4x != null) {
+                  ib $$5x = (ib)$$4x.getFirst();
+                  return new cwg(je.a($$5x.u()), je.a($$5x.w()));
+               } else {
+                  return new cwg($$14, $$15);
+               }
+            }, ac.f()));
+            $$9 += (Math.PI * 2) / (double)$$6;
+            if (++$$10 == $$6) {
+               $$11++;
+               $$10 = 0;
+               $$6 += 2 * $$6 / ($$11 + 1);
+               $$6 = Math.min($$6, $$4 - $$12);
+               $$9 += $$8.j() * Math.PI * 2.0;
+            }
+         }
+
+         return ac.d($$5).thenApply($$2x -> {
+            double $$3x = (double)$$2.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
+            a.debug("Calculation for {} took {}s", $$0, $$3x);
+            return $$2x;
+         });
+      }
+   }
+
+   public void b() {
+      if (!this.h) {
+         this.e();
+         this.h = true;
+      }
+   }
+
    @Nullable
-   eco a(ecg var1);
+   public List<cwg> a(edw $$0) {
+      this.b();
+      CompletableFuture<List<cwg>> $$1 = this.g.get($$0);
+      return $$1 != null ? $$1.join() : null;
+   }
 
-   void a(ecg var1, eco var2);
+   public List<edz> a(il<edc> $$0) {
+      this.b();
+      return this.f.getOrDefault($$0.a(), List.of());
+   }
 
-   LongSet b(ecg var1);
+   public dta c() {
+      return this.b;
+   }
 
-   void a(ecg var1, long var2);
+   public boolean a(il<edi> $$0, int $$1, int $$2, int $$3) {
+      edz $$4 = $$0.a().b();
 
-   Map<ecg, LongSet> h();
+      for (int $$5 = $$1 - $$3; $$5 <= $$1 + $$3; $$5++) {
+         for (int $$6 = $$2 - $$3; $$6 <= $$2 + $$3; $$6++) {
+            if ($$4.b(this, $$5, $$6)) {
+               return true;
+            }
+         }
+      }
 
-   void b(Map<ecg, LongSet> var1);
+      return false;
+   }
+
+   public long d() {
+      return this.d;
+   }
 }

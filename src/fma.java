@@ -1,60 +1,32 @@
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class fma<E extends bof> extends fne<E> {
-   private final boolean a;
-   private final float b;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public interface fma {
+   Map<Optional<ajg<ecr>>, fma> a = Map.of(Optional.of(ecs.b), ($$0, $$1) -> {
+      dow $$2 = $$1.d().a();
+      iz $$3 = $$1.a();
+      im<cxy> $$4 = $$3.b(kj.au);
+      im<edi> $$5 = $$3.b(kj.aG);
+      im<ecg> $$6 = $$3.b(kj.aD);
+      return new fga($$0, $$1x -> $$0.o().a(a($$1x)), $$2 instanceof dsh ? ((dsh)$$2).g() : ebf.a($$4, $$5, $$6));
+   }, Optional.of(ecs.e), ($$0, $$1) -> new ffz($$0, $$1, $$1x -> $$0.o().a(a($$1x))));
 
-   protected fma(boolean $$0, float $$1, float $$2) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
+   fhf createEditScreen(flv var1, fmd var2);
+
+   private static fmd.a a(ebf $$0) {
+      return ($$1, $$2) -> {
+         dow $$3 = new dsh($$0);
+         return $$2.a($$1, $$3);
+      };
    }
 
-   protected fma(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this(fwy::e, $$0, $$1, $$2, $$3, $$4, $$5);
+   private static fmd.a a(il<cxy> $$0) {
+      return ($$1, $$2) -> {
+         iy<dsr> $$3 = $$1.d(kj.aB);
+         il<dsr> $$4 = $$3.g(dsr.c);
+         cyc $$5 = new cyj($$0);
+         dow $$6 = new dsp($$5, $$4);
+         return $$2.a($$1, $$6);
+      };
    }
-
-   protected fma(Function<ajc, fwy> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-   }
-
-   protected fma() {
-      this(false, 5.0F, 2.0F);
-   }
-
-   @Override
-   public void a(etd $$0, eth $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         if (this.a) {
-            float $$8 = 1.5F / this.g;
-            $$0.b($$8, $$8, $$8);
-         }
-
-         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-         $$0.a();
-         float $$9 = 1.0F / this.h;
-         $$0.b($$9, $$9, $$9);
-         $$0.a(0.0F, this.i / 16.0F, 0.0F);
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-      } else {
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-      }
-   }
-
-   protected abstract Iterable<fqf> a();
-
-   protected abstract Iterable<fqf> b();
 }

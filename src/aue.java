@@ -1,182 +1,196 @@
-public final class aue {
-   public static final aut<czf> a = a("wool");
-   public static final aut<czf> b = a("planks");
-   public static final aut<czf> c = a("stone_bricks");
-   public static final aut<czf> d = a("wooden_buttons");
-   public static final aut<czf> e = a("stone_buttons");
-   public static final aut<czf> f = a("buttons");
-   public static final aut<czf> g = a("wool_carpets");
-   public static final aut<czf> h = a("wooden_doors");
-   public static final aut<czf> i = a("wooden_stairs");
-   public static final aut<czf> j = a("wooden_slabs");
-   public static final aut<czf> k = a("wooden_fences");
-   public static final aut<czf> l = a("pressure_plates");
-   public static final aut<czf> m = a("wooden_pressure_plates");
-   public static final aut<czf> n = a("stone_pressure_plates");
-   public static final aut<czf> o = a("wooden_trapdoors");
-   public static final aut<czf> p = a("doors");
-   public static final aut<czf> q = a("saplings");
-   public static final aut<czf> r = a("logs_that_burn");
-   public static final aut<czf> s = a("overworld_natural_logs");
-   public static final aut<czf> t = a("logs");
-   public static final aut<czf> u = a("dark_oak_logs");
-   public static final aut<czf> v = a("oak_logs");
-   public static final aut<czf> w = a("birch_logs");
-   public static final aut<czf> x = a("acacia_logs");
-   public static final aut<czf> y = a("cherry_logs");
-   public static final aut<czf> z = a("jungle_logs");
-   public static final aut<czf> A = a("spruce_logs");
-   public static final aut<czf> B = a("mangrove_logs");
-   public static final aut<czf> C = a("crimson_stems");
-   public static final aut<czf> D = a("warped_stems");
-   public static final aut<czf> E = a("bamboo_blocks");
-   public static final aut<czf> F = a("wart_blocks");
-   public static final aut<czf> G = a("banners");
-   public static final aut<czf> H = a("sand");
-   public static final aut<czf> I = a("smelts_to_glass");
-   public static final aut<czf> J = a("stairs");
-   public static final aut<czf> K = a("slabs");
-   public static final aut<czf> L = a("walls");
-   public static final aut<czf> M = a("anvil");
-   public static final aut<czf> N = a("rails");
-   public static final aut<czf> O = a("leaves");
-   public static final aut<czf> P = a("trapdoors");
-   public static final aut<czf> Q = a("small_flowers");
-   public static final aut<czf> R = a("beds");
-   public static final aut<czf> S = a("fences");
-   public static final aut<czf> T = a("tall_flowers");
-   public static final aut<czf> U = a("flowers");
-   public static final aut<czf> V = a("piglin_repellents");
-   public static final aut<czf> W = a("gold_ores");
-   public static final aut<czf> X = a("iron_ores");
-   public static final aut<czf> Y = a("diamond_ores");
-   public static final aut<czf> Z = a("redstone_ores");
-   public static final aut<czf> aa = a("lapis_ores");
-   public static final aut<czf> ab = a("coal_ores");
-   public static final aut<czf> ac = a("emerald_ores");
-   public static final aut<czf> ad = a("copper_ores");
-   public static final aut<czf> ae = a("candles");
-   public static final aut<czf> af = a("dirt");
-   public static final aut<czf> ag = a("terracotta");
-   public static final aut<czf> ah = a("concrete_powder");
-   public static final aut<czf> ai = a("completes_find_tree_tutorial");
-   public static final aut<czf> aj = a("flower_pots");
-   public static final aut<czf> ak = a("enderman_holdable");
-   public static final aut<czf> al = a("ice");
-   public static final aut<czf> am = a("valid_spawn");
-   public static final aut<czf> an = a("impermeable");
-   public static final aut<czf> ao = a("underwater_bonemeals");
-   public static final aut<czf> ap = a("coral_blocks");
-   public static final aut<czf> aq = a("wall_corals");
-   public static final aut<czf> ar = a("coral_plants");
-   public static final aut<czf> as = a("corals");
-   public static final aut<czf> at = a("bamboo_plantable_on");
-   public static final aut<czf> au = a("standing_signs");
-   public static final aut<czf> av = a("wall_signs");
-   public static final aut<czf> aw = a("signs");
-   public static final aut<czf> ax = a("ceiling_hanging_signs");
-   public static final aut<czf> ay = a("wall_hanging_signs");
-   public static final aut<czf> az = a("all_hanging_signs");
-   public static final aut<czf> aA = a("all_signs");
-   public static final aut<czf> aB = a("dragon_immune");
-   public static final aut<czf> aC = a("dragon_transparent");
-   public static final aut<czf> aD = a("wither_immune");
-   public static final aut<czf> aE = a("wither_summon_base_blocks");
-   public static final aut<czf> aF = a("beehives");
-   public static final aut<czf> aG = a("crops");
-   public static final aut<czf> aH = a("bee_growables");
-   public static final aut<czf> aI = a("portals");
-   public static final aut<czf> aJ = a("fire");
-   public static final aut<czf> aK = a("nylium");
-   public static final aut<czf> aL = a("beacon_base_blocks");
-   public static final aut<czf> aM = a("soul_speed_blocks");
-   public static final aut<czf> aN = a("wall_post_override");
-   public static final aut<czf> aO = a("climbable");
-   public static final aut<czf> aP = a("fall_damage_resetting");
-   public static final aut<czf> aQ = a("shulker_boxes");
-   public static final aut<czf> aR = a("hoglin_repellents");
-   public static final aut<czf> aS = a("soul_fire_base_blocks");
-   public static final aut<czf> aT = a("strider_warm_blocks");
-   public static final aut<czf> aU = a("campfires");
-   public static final aut<czf> aV = a("guarded_by_piglins");
-   public static final aut<czf> aW = a("prevent_mob_spawning_inside");
-   public static final aut<czf> aX = a("fence_gates");
-   public static final aut<czf> aY = a("unstable_bottom_center");
-   public static final aut<czf> aZ = a("mushroom_grow_block");
-   public static final aut<czf> ba = a("infiniburn_overworld");
-   public static final aut<czf> bb = a("infiniburn_nether");
-   public static final aut<czf> bc = a("infiniburn_end");
-   public static final aut<czf> bd = a("base_stone_overworld");
-   public static final aut<czf> be = a("stone_ore_replaceables");
-   public static final aut<czf> bf = a("deepslate_ore_replaceables");
-   public static final aut<czf> bg = a("base_stone_nether");
-   public static final aut<czf> bh = a("overworld_carver_replaceables");
-   public static final aut<czf> bi = a("nether_carver_replaceables");
-   public static final aut<czf> bj = a("candle_cakes");
-   public static final aut<czf> bk = a("cauldrons");
-   public static final aut<czf> bl = a("crystal_sound_blocks");
-   public static final aut<czf> bm = a("inside_step_sound_blocks");
-   public static final aut<czf> bn = a("combination_step_sound_blocks");
-   public static final aut<czf> bo = a("camel_sand_step_sound_blocks");
-   public static final aut<czf> bp = a("occludes_vibration_signals");
-   public static final aut<czf> bq = a("dampens_vibrations");
-   public static final aut<czf> br = a("dripstone_replaceable_blocks");
-   public static final aut<czf> bs = a("cave_vines");
-   public static final aut<czf> bt = a("moss_replaceable");
-   public static final aut<czf> bu = a("lush_ground_replaceable");
-   public static final aut<czf> bv = a("azalea_root_replaceable");
-   public static final aut<czf> bw = a("small_dripleaf_placeable");
-   public static final aut<czf> bx = a("big_dripleaf_placeable");
-   public static final aut<czf> by = a("snow");
-   public static final aut<czf> bz = a("mineable/axe");
-   public static final aut<czf> bA = a("mineable/hoe");
-   public static final aut<czf> bB = a("mineable/pickaxe");
-   public static final aut<czf> bC = a("mineable/shovel");
-   public static final aut<czf> bD = a("sword_efficient");
-   public static final aut<czf> bE = a("needs_diamond_tool");
-   public static final aut<czf> bF = a("needs_iron_tool");
-   public static final aut<czf> bG = a("needs_stone_tool");
-   public static final aut<czf> bH = a("features_cannot_replace");
-   public static final aut<czf> bI = a("lava_pool_stone_cannot_replace");
-   public static final aut<czf> bJ = a("geode_invalid_blocks");
-   public static final aut<czf> bK = a("frog_prefer_jump_to");
-   public static final aut<czf> bL = a("sculk_replaceable");
-   public static final aut<czf> bM = a("sculk_replaceable_world_gen");
-   public static final aut<czf> bN = a("ancient_city_replaceable");
-   public static final aut<czf> bO = a("vibration_resonators");
-   public static final aut<czf> bP = a("animals_spawnable_on");
-   public static final aut<czf> bQ = a("armadillo_spawnable_on");
-   public static final aut<czf> bR = a("axolotls_spawnable_on");
-   public static final aut<czf> bS = a("goats_spawnable_on");
-   public static final aut<czf> bT = a("mooshrooms_spawnable_on");
-   public static final aut<czf> bU = a("parrots_spawnable_on");
-   public static final aut<czf> bV = a("polar_bears_spawnable_on_alternate");
-   public static final aut<czf> bW = a("rabbits_spawnable_on");
-   public static final aut<czf> bX = a("foxes_spawnable_on");
-   public static final aut<czf> bY = a("wolves_spawnable_on");
-   public static final aut<czf> bZ = a("frogs_spawnable_on");
-   public static final aut<czf> ca = a("azalea_grows_on");
-   public static final aut<czf> cb = a("convertable_to_mud");
-   public static final aut<czf> cc = a("mangrove_logs_can_grow_through");
-   public static final aut<czf> cd = a("mangrove_roots_can_grow_through");
-   public static final aut<czf> ce = a("dead_bush_may_place_on");
-   public static final aut<czf> cf = a("snaps_goat_horn");
-   public static final aut<czf> cg = a("replaceable_by_trees");
-   public static final aut<czf> ch = a("snow_layer_cannot_survive_on");
-   public static final aut<czf> ci = a("snow_layer_can_survive_on");
-   public static final aut<czf> cj = a("invalid_spawn_inside");
-   public static final aut<czf> ck = a("sniffer_diggable_block");
-   public static final aut<czf> cl = a("sniffer_egg_hatch_boost");
-   public static final aut<czf> cm = a("trail_ruins_replaceable");
-   public static final aut<czf> cn = a("replaceable");
-   public static final aut<czf> co = a("enchantment_power_provider");
-   public static final aut<czf> cp = a("enchantment_power_transmitter");
-   public static final aut<czf> cq = a("maintains_farmland");
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-   private aue() {
+public class aue extends auj {
+   private static final Logger b = LogUtils.getLogger();
+   private final MinecraftServer c;
+   private final File d;
+   private final Set<auf<?>> e = Sets.newHashSet();
+
+   public aue(MinecraftServer $$0, File $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$1.isFile()) {
+         try {
+            this.a($$0.aD(), FileUtils.readFileToString($$1));
+         } catch (IOException var4) {
+            b.error("Couldn't read statistics file {}", $$1, var4);
+         } catch (JsonParseException var5) {
+            b.error("Couldn't parse statistics file {}", $$1, var5);
+         }
+      }
    }
 
-   private static aut<czf> a(String $$0) {
-      return aut.a(ki.f, new ajc($$0));
+   public void a() {
+      try {
+         FileUtils.writeStringToFile(this.d, this.b());
+      } catch (IOException var2) {
+         b.error("Couldn't save stats", var2);
+      }
+   }
+
+   @Override
+   public void a(cis $$0, auf<?> $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e.add($$1);
+   }
+
+   private Set<auf<?>> d() {
+      Set<auf<?>> $$0 = Sets.newHashSet(this.e);
+      this.e.clear();
+      return $$0;
+   }
+
+   public void a(DataFixer $$0, String $$1) {
+      try {
+         JsonReader $$2 = new JsonReader(new StringReader($$1));
+
+         label47: {
+            try {
+               $$2.setLenient(false);
+               JsonElement $$3 = Streams.parse($$2);
+               if (!$$3.isJsonNull()) {
+                  ta $$4 = a($$3.getAsJsonObject());
+                  $$4 = ayc.g.a($$0, $$4, tp.b($$4, 1343));
+                  if (!$$4.b("stats", 10)) {
+                     break label47;
+                  }
+
+                  ta $$5 = $$4.p("stats");
+                  Iterator var7 = $$5.e().iterator();
+
+                  while (true) {
+                     if (!var7.hasNext()) {
+                        break label47;
+                     }
+
+                     String $$6 = (String)var7.next();
+                     if ($$5.b($$6, 10)) {
+                        ac.a(
+                           ki.x.b(new ajh($$6)),
+                           $$2x -> {
+                              ta $$3x = $$5.p($$6);
+
+                              for (String $$4x : $$3x.e()) {
+                                 if ($$3x.b($$4x, 99)) {
+                                    ac.a(
+                                       this.a($$2x, $$4x),
+                                       $$2xx -> this.a.put($$2xx, $$3x.h($$4x)),
+                                       () -> b.warn("Invalid statistic in {}: Don't know what {} is", this.d, $$4x)
+                                    );
+                                 } else {
+                                    b.warn("Invalid statistic value in {}: Don't know what {} is for key {}", new Object[]{this.d, $$3x.c($$4x), $$4x});
+                                 }
+                              }
+                           },
+                           () -> b.warn("Invalid statistic type in {}: Don't know what {} is", this.d, $$6)
+                        );
+                     }
+                  }
+               }
+
+               b.error("Unable to parse Stat data from {}", this.d);
+            } catch (Throwable var10) {
+               try {
+                  $$2.close();
+               } catch (Throwable var9) {
+                  var10.addSuppressed(var9);
+               }
+
+               throw var10;
+            }
+
+            $$2.close();
+            return;
+         }
+
+         $$2.close();
+      } catch (IOException | JsonParseException var11) {
+         b.error("Unable to parse Stat data from {}", this.d, var11);
+      }
+   }
+
+   private <T> Optional<auf<T>> a(auh<T> $$0, String $$1) {
+      return Optional.ofNullable(ajh.a($$1)).flatMap($$0.b()::b).map($$0::b);
+   }
+
+   private static ta a(JsonObject $$0) {
+      ta $$1 = new ta();
+
+      for (Entry<String, JsonElement> $$2 : $$0.entrySet()) {
+         JsonElement $$3 = $$2.getValue();
+         if ($$3.isJsonObject()) {
+            $$1.a($$2.getKey(), a($$3.getAsJsonObject()));
+         } else if ($$3.isJsonPrimitive()) {
+            JsonPrimitive $$4 = $$3.getAsJsonPrimitive();
+            if ($$4.isNumber()) {
+               $$1.a($$2.getKey(), $$4.getAsInt());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   protected String b() {
+      Map<auh<?>, JsonObject> $$0 = Maps.newHashMap();
+      ObjectIterator $$3 = this.a.object2IntEntrySet().iterator();
+
+      while ($$3.hasNext()) {
+         it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<auf<?>> $$1 = (it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<auf<?>>)$$3.next();
+         auf<?> $$2 = (auf<?>)$$1.getKey();
+         $$0.computeIfAbsent($$2.a(), $$0x -> new JsonObject()).addProperty(b($$2).toString(), $$1.getIntValue());
+      }
+
+      JsonObject $$3x = new JsonObject();
+
+      for (Entry<auh<?>, JsonObject> $$4 : $$0.entrySet()) {
+         $$3x.add(ki.x.b($$4.getKey()).toString(), (JsonElement)$$4.getValue());
+      }
+
+      JsonObject $$5 = new JsonObject();
+      $$5.add("stats", $$3x);
+      $$5.addProperty("DataVersion", aa.b().d().c());
+      return $$5.toString();
+   }
+
+   private static <T> ajh b(auf<T> $$0) {
+      return $$0.a().b().b($$0.b());
+   }
+
+   public void c() {
+      this.e.addAll(this.a.keySet());
+   }
+
+   public void a(apg $$0) {
+      Object2IntMap<auf<?>> $$1 = new Object2IntOpenHashMap();
+
+      for (auf<?> $$2 : this.d()) {
+         $$1.put($$2, this.a($$2));
+      }
+
+      $$0.d.b(new aaq($$1));
    }
 }

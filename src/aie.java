@@ -1,18 +1,8 @@
-import io.netty.buffer.ByteBuf;
-
-public class aie implements xz<aid> {
-   public static final aie a = new aie();
-   public static final xq<ByteBuf, aie> b = xq.a(a);
-
-   private aie() {
-   }
-
+public interface aie extends ahy, up {
    @Override
-   public yb<aie> a() {
-      return aif.b;
+   default ut b() {
+      return ut.c;
    }
 
-   public void a(aid $$0) {
-      $$0.a(this);
-   }
+   void a(aif var1);
 }

@@ -1,17 +1,13 @@
-public interface ajs extends ajr {
-   any a();
+public final class ajs extends RuntimeException {
+   public static final ajs a = new ajs();
 
-   String b();
+   private ajs() {
+      this.setStackTrace(new StackTraceElement[0]);
+   }
 
-   int d();
-
-   String h();
-
-   String[] O();
-
-   String s();
-
-   String u();
-
-   String a(String var1);
+   @Override
+   public synchronized Throwable fillInStackTrace() {
+      this.setStackTrace(new StackTraceElement[0]);
+      return this;
+   }
 }

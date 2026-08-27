@@ -1,29 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bsg extends bqp<boz> {
-   private final blq c;
-   private final float d;
-   private final float e;
-   private final float f;
-
-   public bsg(blq $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(bya.n, byb.b, bya.Q, byb.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
-   }
-
-   protected void a(apa $$0, boz $$1, long $$2) {
-      awt $$3 = $$1.ef();
-      float $$4 = awm.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = awm.g($$1.dz() + 2.0F * $$3.i() * this.d - this.d);
-      eov $$6 = eov.a($$4, $$5);
-      $$1.dM().a(bya.n, new bqs($$1.br().e($$6)));
-      $$1.dM().a(bya.Q, this.c.a($$3));
+public class bsg {
+   public static bsr<bpo> a(int $$0, float $$1, int $$2) {
+      return but.a(
+         (Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$3 -> $$3.group(
+                  $$3.c(byr.m), $$3.a(byr.b), $$3.a(byr.C), $$3.a(byr.t), $$3.a(byr.n), $$3.a(byr.r), $$3.a(byr.q)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.y()
+                           .d($$0xxxx -> $$0xxxx.a(cav.n), $$0xxxx -> true, $$12.dm(), $$2 + 1, car.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.dk(), (double)$$2))
+                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(cav.n), $$0xxxxx -> true, car.b.c, $$12.dm(), $$0, $$12.ei()))
+                           .or(() -> $$3.<ik>a($$5).map(ik::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(ik.a($$11.ad(), $$10xx));
+                              if (!$$10xx.a($$12.dk(), (double)$$2)) {
+                                 $$4.a(new byu($$10xx, $$1, $$2));
+                              }
+                           });
+                        return true;
+                     }
+               ))
+      );
    }
 }

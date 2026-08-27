@@ -1,36 +1,26 @@
-public record ze(ib c, int d, String e, int f) implements za {
-   public static final xq<us, ze> a = za.a(ze::a, ze::new);
-   public static final za.b<ze> b = za.a("debug/game_test_add_marker");
+public record ze(ajg<drn> c, epr d) implements zc {
+   public static final xs<uu, ze> a = zc.a(ze::a, ze::new);
+   public static final zc.b<ze> b = zc.a("debug/game_event");
 
-   private ze(us $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
+   private ze(uu $$0) {
+      this($$0.a(kj.B), $$0.k());
    }
 
-   private void a(us $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
-      $$0.p(this.f);
+   private void a(uu $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public za.b<ze> a() {
+   public zc.b<ze> a() {
       return b;
    }
 
-   public ib b() {
+   public ajg<drn> b() {
       return this.c;
    }
 
-   public int c() {
+   public epr c() {
       return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
    }
 }

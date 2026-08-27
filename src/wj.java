@@ -1,44 +1,35 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+public interface wj {
+   vu a();
 
-public record wj(UUID a, cid b) {
-   public wo a(Duration $$0) {
-      return new wo.a(this.b.a(), () -> this.b.b().a($$0));
+   void a(apg var1, boolean var2, vq.a var3);
+
+   static wj a(wk $$0) {
+      return (wj)($$0.h() ? new wj.a($$0.d()) : new wj.b($$0));
    }
 
-   public wm.b a(UUID $$0) {
-      return new wm($$0, this.a).a(this.b);
+   public static record a(vu a) implements wj {
+      @Override
+      public void a(apg $$0, boolean $$1, vq.a $$2) {
+         $$0.d.a(this.a, $$2);
+      }
    }
 
-   public wj.a a() {
-      return new wj.a(this.a, this.b.b());
-   }
-
-   public boolean b() {
-      return this.b.b().a();
-   }
-
-   public UUID c() {
-      return this.a;
-   }
-
-   public cid d() {
-      return this.b;
-   }
-
-   public static record a(UUID a, cid.a b) {
-      public static wj.a a(us $$0) {
-         return new wj.a($$0.n(), new cid.a($$0));
+   public static record b(wk a) implements wj {
+      @Override
+      public vu a() {
+         return this.a.d();
       }
 
-      public static void a(us $$0, wj.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
+      @Override
+      public void a(apg $$0, boolean $$1, vq.a $$2) {
+         wk $$3 = this.a.a($$1);
+         if (!$$3.j()) {
+            $$0.d.a($$3, $$2);
+         }
       }
 
-      public wj a(GameProfile $$0, awy $$1) throws cid.b {
-         return new wj(this.a, cid.a($$1, $$0.getId(), this.b));
+      public wk b() {
+         return this.a;
       }
    }
 }

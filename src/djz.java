@@ -1,245 +1,108 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public class djz extends dkp implements clk {
-   public static final int e = 3;
-   public static final int f = 3;
-   public static final int g = 9;
-   public static final int h = 1;
-   public static final int i = 0;
-   public static final int j = 9;
-   public static final int k = 10;
-   private iu<cpq> r = iu.a(9, cpq.h);
-   private int s = 0;
-   protected final cle l = new cle() {
-      private final int[] b = new int[9];
-      private int c = 0;
-
+public class djz extends dlk {
+   private iu<cqk> e = iu.a(27, cqk.h);
+   private final dkt f = new dkt() {
       @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.c : this.b[$$0];
+      protected void a(cwz $$0, ib $$1, dmz $$2) {
+         djz.this.a($$2, aty.bz);
+         djz.this.a($$2, true);
       }
 
       @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.c = $$1;
+      protected void b(cwz $$0, ib $$1, dmz $$2) {
+         djz.this.a($$2, aty.by);
+         djz.this.a($$2, false);
+      }
+
+      @Override
+      protected void a(cwz $$0, ib $$1, dmz $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      protected boolean a(cis $$0) {
+         if ($$0.bZ instanceof clv) {
+            bmv $$1 = ((clv)$$0.bZ).l();
+            return $$1 == djz.this;
          } else {
-            this.b[$$0] = $$1;
+            return false;
          }
-      }
-
-      @Override
-      public int a() {
-         return 10;
       }
    };
 
-   public djz(ib $$0, dme $$1) {
-      super(djn.P, $$0, $$1);
+   public djz(ib $$0, dmz $$1) {
+      super(dki.A, $$0, $$1);
    }
 
    @Override
-   protected vs k() {
-      return vs.c("container.crafter");
-   }
-
-   @Override
-   protected cku a(int $$0, chz $$1) {
-      return new cli($$0, $$1, this, this.l);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.l.a($$0, $$1 ? 0 : 1);
-         this.e();
-      }
-   }
-
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.l.a($$0) == 1 : false;
-   }
-
-   @Override
-   public boolean b(int $$0, cpq $$1) {
-      if (this.l.a($$0) == 1) {
-         return false;
-      } else {
-         cpq $$2 = this.r.get($$0);
-         int $$3 = $$2.M();
-         if ($$3 >= $$2.g()) {
-            return false;
-         } else {
-            return $$2.b() ? true : !this.a($$3, $$2, $$0);
-         }
-      }
-   }
-
-   private boolean a(int $$0, cpq $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            cpq $$4 = this.a($$3);
-            if ($$4.b() || $$4.M() < $$0 && cpq.c($$4, $$1)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public void a(sy $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.s = $$0.h("crafting_ticks_remaining");
-      this.r = iu.a(this.b(), cpq.h);
-      if (!this.c_($$0)) {
-         bmf.b($$0, this.r);
-      }
-
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.l.a($$3, 0);
-      }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.l.a($$4, 1);
-         }
-      }
-
-      this.l.a(9, $$0.h("triggered"));
-   }
-
-   @Override
-   protected void b(sy $$0, in.a $$1) {
+   protected void b(ta $$0, in.a $$1) {
       super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.s);
       if (!this.b($$0)) {
-         bmf.a($$0, this.r);
+         bmw.a($$0, this.e);
       }
+   }
 
-      this.c($$0);
-      this.d($$0);
+   @Override
+   public void a(ta $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.e = iu.a(this.b(), cqk.h);
+      if (!this.c_($$0)) {
+         bmw.b($$0, this.e);
+      }
    }
 
    @Override
    public int b() {
-      return 9;
+      return 27;
    }
 
    @Override
-   public boolean aj_() {
-      for (cpq $$0 : this.r) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
+   protected iu<cqk> j() {
+      return this.e;
    }
 
    @Override
-   public cpq a(int $$0) {
-      return this.r.get($$0);
+   protected void a(iu<cqk> $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public void a(int $$0, cpq $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
+   protected vu k() {
+      return vu.c("container.barrel");
    }
 
    @Override
-   public boolean a(cia $$0) {
-      return bme.a(this, $$0);
+   protected clo a(int $$0, cir $$1) {
+      return clv.a($$0, $$1, this);
    }
 
    @Override
-   public iu<cpq> j() {
-      return this.r;
-   }
-
-   @Override
-   protected void a(iu<cpq> $$0) {
-      this.r = $$0;
-   }
-
-   @Override
-   public int f() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void a(cie $$0) {
-      for (cpq $$1 : this.r) {
-         $$0.a($$1);
+   public void d_(cis $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.f.a($$0, this.i(), this.aC_(), this.n());
       }
    }
 
-   private void c(sy $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
-   }
-
-   private void d(sy $$0) {
-      $$0.a("triggered", this.l.a(9));
-   }
-
-   public void a(boolean $$0) {
-      this.l.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean l() {
-      return this.l.a(9) == 1;
-   }
-
-   public static void a(cwe $$0, ib $$1, dme $$2, djz $$3) {
-      int $$4 = $$3.s - 1;
-      if ($$4 >= 0) {
-         $$3.s = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.a(day.b, Boolean.valueOf(false)), 3);
-         }
+   @Override
+   public void c(cis $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.f.b($$0, this.i(), this.aC_(), this.n());
       }
    }
 
-   public void d(int $$0) {
-      this.s = $$0;
-   }
-
-   public int s() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cpq $$2 = this.a($$1);
-         if (!$$2.b() || this.c($$1)) {
-            $$0++;
-         }
+   public void l() {
+      if (!this.q) {
+         this.f.c(this.i(), this.aC_(), this.n());
       }
-
-      return $$0;
    }
 
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.r.get($$0).b();
+   void a(dmz $$0, boolean $$1) {
+      this.o.a(this.aC_(), $$0.a(czg.c, Boolean.valueOf($$1)), 3);
+   }
+
+   void a(dmz $$0, atx $$1) {
+      jg $$2 = $$0.c(czg.b).q();
+      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
+      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
+      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
+      this.o.a(null, $$3, $$4, $$5, $$1, atz.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
    }
 }

@@ -1,38 +1,41 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import org.slf4j.Logger;
 
-public interface uz {
-   static uz a(final Runnable $$0) {
-      return new uz() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+public class uz<T extends va> extends MessageToByteEncoder<yb<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final vc<T> b;
 
-         @Nullable
-         @Override
-         public xz<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   public uz(vc<T> $$0) {
+      this.b = $$0;
    }
 
-   static uz a(final Supplier<xz<?>> $$0) {
-      return new uz() {
-         @Nullable
-         @Override
-         public xz<?> b() {
-            return $$0.get();
+   protected void a(ChannelHandlerContext $$0, yb<T> $$1, ByteBuf $$2) throws Exception {
+      yd<? extends yb<? super T>> $$3 = $$1.a();
+      if (a.isDebugEnabled()) {
+         a.debug(us.d, "OUT: [{}:{}] {}", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName()});
+      }
+
+      try {
+         int $$4 = $$2.writerIndex();
+         this.b.c().encode($$2, $$1);
+         int $$5 = $$2.writerIndex() - $$4;
+         if ($$5 > 8388608) {
+            throw new IllegalArgumentException("Packet too big (is " + $$5 + ", should be less than 8388608): " + $$1);
          }
-      };
-   }
 
-   default void a() {
-   }
+         bjw.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$5);
+      } catch (Throwable var10) {
+         a.error("Error sending packet {}", $$3, var10);
+         if ($$1.c()) {
+            throw new vh(var10);
+         }
 
-   @Nullable
-   default xz<?> b() {
-      return null;
+         throw var10;
+      } finally {
+         vd.b($$0, $$1);
+      }
    }
 }

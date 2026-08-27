@@ -1,23 +1,31 @@
-public class gek extends gbx<cjf> {
-   public static final ajc a = new ajc("textures/entity/trident.png");
-   private final fpk f;
+public class gek extends gee<cbt, fpd> {
+   private static final ajh a = new ajh("textures/entity/parrot/parrot_red_blue.png");
+   private static final ajh i = new ajh("textures/entity/parrot/parrot_blue.png");
+   private static final ajh j = new ajh("textures/entity/parrot/parrot_green.png");
+   private static final ajh k = new ajh("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final ajh l = new ajh("textures/entity/parrot/parrot_grey.png");
 
-   public gek(gby.a $$0) {
-      super($$0);
-      this.f = new fpk($$0.a(fqe.bE));
+   public gek(gcy.a $$0) {
+      super($$0, new fpd($$0.a(frc.aC)), 0.3F);
    }
 
-   public void a(cjf $$0, float $$1, float $$2, etd $$3, fwq $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(awm.i($$2, $$0.M, $$0.dz()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(awm.i($$2, $$0.N, $$0.dB()) + 90.0F));
-      eth $$6 = gcw.c($$4, this.f.a(this.a($$0)), false, $$0.H());
-      this.f.a($$3, $$6, $$5, ghq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ajh a(cbt $$0) {
+      return a($$0.gv());
    }
 
-   public ajc a(cjf $$0) {
-      return a;
+   public static ajh a(cbt.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
+   }
+
+   public float a(cbt $$0, float $$1) {
+      float $$2 = aww.i($$1, $$0.cd, $$0.ca);
+      float $$3 = aww.i($$1, $$0.cc, $$0.cb);
+      return (aww.a($$2) + 1.0F) * $$3;
    }
 }

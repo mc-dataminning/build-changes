@@ -1,49 +1,29 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
+public class yl implements yb<yh> {
+   public static final xs<uu, yl> a = yb.a(yl::a, yl::new);
+   private final int b;
 
-public record yl(UUID c, String d, String e, boolean f, Optional<vs> g) implements xz<yf> {
-   public static final int a = 40;
-   public static final xq<ByteBuf, yl> b = xq.a(je.g, yl::b, xo.i, yl::e, xo.b(40), yl::f, xo.a, yl::g, vu.d.a(xo::a), yl::h, yl::new);
+   public yl(int $$0) {
+      this.b = $$0;
+   }
 
-   public yl(UUID c, String d, String e, boolean f, Optional<vs> g) {
-      if (e.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
-      } else {
-         this.c = c;
-         this.d = d;
-         this.e = e;
-         this.f = f;
-         this.g = g;
-      }
+   private yl(uu $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(uu $$0) {
+      $$0.p(this.b);
    }
 
    @Override
-   public yb<yl> a() {
-      return yp.f;
+   public yd<yl> a() {
+      return yr.d;
    }
 
-   public void a(yf $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public UUID b() {
-      return this.c;
-   }
-
-   public String e() {
-      return this.d;
-   }
-
-   public String f() {
-      return this.e;
-   }
-
-   public boolean g() {
-      return this.f;
-   }
-
-   public Optional<vs> h() {
-      return this.g;
+   public int b() {
+      return this.b;
    }
 }

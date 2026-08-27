@@ -1,90 +1,62 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
 
-public class bfd extends Schema {
-   public bfd(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bfd extends bdh {
+   public bfd(Schema $$0, String $$1) {
+      super($$0, false, "Villager profession data fix (" + $$1 + ")", beh.y, $$1);
    }
 
-   protected static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("ArmorItems", DSL.list(bdt.t.in($$0)), "HandItems", DSL.list(bdt.t.in($$0)), "body_armor_item", bdt.t.in($$0));
-   }
-
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "ArmorStand");
-      a($$0, $$1, "Creeper");
-      a($$0, $$1, "Skeleton");
-      a($$0, $$1, "Spider");
-      a($$0, $$1, "Giant");
-      a($$0, $$1, "Zombie");
-      a($$0, $$1, "Slime");
-      a($$0, $$1, "Ghast");
-      a($$0, $$1, "PigZombie");
-      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bdt.z.in($$0), a($$0)));
-      a($$0, $$1, "CaveSpider");
-      a($$0, $$1, "Silverfish");
-      a($$0, $$1, "Blaze");
-      a($$0, $$1, "LavaSlime");
-      a($$0, $$1, "EnderDragon");
-      a($$0, $$1, "WitherBoss");
-      a($$0, $$1, "Bat");
-      a($$0, $$1, "Witch");
-      a($$0, $$1, "Endermite");
-      a($$0, $$1, "Guardian");
-      a($$0, $$1, "Pig");
-      a($$0, $$1, "Sheep");
-      a($$0, $$1, "Cow");
-      a($$0, $$1, "Chicken");
-      a($$0, $$1, "Squid");
-      a($$0, $$1, "Wolf");
-      a($$0, $$1, "MushroomCow");
-      a($$0, $$1, "SnowMan");
-      a($$0, $$1, "Ozelot");
-      a($$0, $$1, "VillagerGolem");
-      $$0.register(
-         $$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(bdt.t.in($$0)), "ArmorItem", bdt.t.in($$0), "SaddleItem", bdt.t.in($$0), a($$0))
-      );
-      a($$0, $$1, "Rabbit");
-      $$0.register(
-         $$1,
-         "Villager",
-         $$1x -> DSL.optionalFields(
-               "Inventory",
-               DSL.list(bdt.t.in($$0)),
-               "Offers",
-               DSL.optionalFields("Recipes", DSL.list(DSL.optionalFields("buy", bdt.t.in($$0), "buyB", bdt.t.in($$0), "sell", bdt.t.in($$0)))),
-               a($$0)
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Dynamic<?> $$1 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      return $$0.set(
+         DSL.remainderFinder(),
+         $$1.remove("Profession")
+            .remove("Career")
+            .remove("CareerLevel")
+            .set(
+               "VillagerData",
+               $$1.createMap(
+                  ImmutableMap.of(
+                     $$1.createString("type"),
+                     $$1.createString("minecraft:plains"),
+                     $$1.createString("profession"),
+                     $$1.createString(a($$1.get("Profession").asInt(0), $$1.get("Career").asInt(0))),
+                     $$1.createString("level"),
+                     (Dynamic)DataFixUtils.orElse($$1.get("CareerLevel").result(), $$1.createInt(1))
+                  )
+               )
             )
       );
-      a($$0, $$1, "Shulker");
-      $$0.registerSimple($$1, "AreaEffectCloud");
-      $$0.registerSimple($$1, "ShulkerBullet");
-      return $$1;
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bdt.f,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(DSL.optionalFields("nbt", bdt.x.in($$0))),
-               "blocks",
-               DSL.list(DSL.optionalFields("nbt", bdt.s.in($$0))),
-               "palette",
-               DSL.list(bdt.u.in($$0))
-            )
-      );
-      $$0.registerType(false, bdt.u, DSL::remainder);
-      $$0.registerType(false, bdt.v, DSL::remainder);
+   private static String a(int $$0, int $$1) {
+      if ($$0 == 0) {
+         if ($$1 == 2) {
+            return "minecraft:fisherman";
+         } else if ($$1 == 3) {
+            return "minecraft:shepherd";
+         } else {
+            return $$1 == 4 ? "minecraft:fletcher" : "minecraft:farmer";
+         }
+      } else if ($$0 == 1) {
+         return $$1 == 2 ? "minecraft:cartographer" : "minecraft:librarian";
+      } else if ($$0 == 2) {
+         return "minecraft:cleric";
+      } else if ($$0 == 3) {
+         if ($$1 == 2) {
+            return "minecraft:weaponsmith";
+         } else {
+            return $$1 == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
+         }
+      } else if ($$0 == 4) {
+         return $$1 == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
+      } else {
+         return $$0 == 5 ? "minecraft:nitwit" : "minecraft:none";
+      }
    }
 }

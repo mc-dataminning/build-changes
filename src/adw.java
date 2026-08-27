@@ -1,20 +1,74 @@
-public record adw(int b) implements xz<aai> {
-   public static final xq<us, adw> a = xz.a(adw::a, adw::new);
+import java.util.Optional;
 
-   private adw(us $$0) {
-      this($$0.l());
+public class adw implements yb<aam> {
+   public static final xs<vf, adw> a = yb.a(adw::a, adw::new);
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   private final String e;
+   private final vu f;
+   private final eqy.a g;
+   private final Optional<xk> h;
+   private final int i;
+
+   public adw(eqn $$0, int $$1) {
+      this.e = $$0.b();
+      this.f = $$0.d();
+      this.g = $$0.h();
+      this.h = Optional.ofNullable($$0.f());
+      this.i = $$1;
    }
 
-   private void a(us $$0) {
-      $$0.c(this.b);
+   private adw(vf $$0) {
+      this.e = $$0.p();
+      this.i = $$0.readByte();
+      if (this.i != 0 && this.i != 2) {
+         this.f = vt.a;
+         this.g = eqy.a.a;
+         this.h = Optional.empty();
+      } else {
+         this.f = vw.b.decode($$0);
+         this.g = $$0.b(eqy.a.class);
+         this.h = xm.d.decode($$0);
+      }
+   }
+
+   private void a(vf $$0) {
+      $$0.a(this.e);
+      $$0.k(this.i);
+      if (this.i == 0 || this.i == 2) {
+         vw.b.encode($$0, this.f);
+         $$0.a(this.g);
+         xm.d.encode($$0, this.h);
+      }
    }
 
    @Override
-   public yb<adw> a() {
-      return aet.aM;
+   public yd<adw> a() {
+      return aex.aI;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
+   }
+
+   public String b() {
+      return this.e;
+   }
+
+   public vu e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.i;
+   }
+
+   public eqy.a g() {
+      return this.g;
+   }
+
+   public Optional<xk> h() {
+      return this.h;
    }
 }

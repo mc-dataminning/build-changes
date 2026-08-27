@@ -1,19 +1,23 @@
-public interface yf extends aac, un {
-   void a(yi var1);
+import io.netty.buffer.ByteBuf;
 
-   void a(yj var1);
+public class yf<B extends ByteBuf, L extends va> {
+   private final xr.a<B, yb<? super L>, yd<? extends yb<? super L>>> a = xr.a(yb::a);
+   private final yc b;
 
-   void a(yg var1);
+   public yf(yc $$0) {
+      this.b = $$0;
+   }
 
-   void a(yh var1);
+   public <T extends yb<? super L>> yf<B, L> a(yd<T> $$0, xs<? super B, T> $$1) {
+      if ($$0.a() != this.b) {
+         throw new IllegalArgumentException("Invalid packet flow for packet " + $$0 + ", expected " + this.b.name());
+      } else {
+         this.a.a($$0, $$1);
+         return this;
+      }
+   }
 
-   void a(yl var1);
-
-   void a(yk var1);
-
-   void a(yo var1);
-
-   void a(ym var1);
-
-   void a(yn var1);
+   public xs<B, yb<? super L>> a() {
+      return this.a.a();
+   }
 }

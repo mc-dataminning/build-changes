@@ -1,25 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public class ekm extends ekt {
-   public static final Codec<ekm> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ekm::new));
+public class ekm {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final ekc d;
+   private final boolean e;
 
-   private ekm(int $$0, int $$1, List<emx> $$2, List<ell> $$3) {
-      super($$0, $$1, $$2, $$3);
+   private ekm(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new ekc($$3, $$4);
+      this.e = $$5;
    }
 
-   @Override
-   public eks a() {
-      return ekp.b;
+   public static ekm a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new ekm(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(aa.b().c()),
+            $$3.get("Id").asInt(aa.b().d().c()),
+            $$3.get("Series").asString(ekc.a),
+            $$3.get("Snapshot").asBoolean(!aa.b().g())
+         )
+         : new ekm($$1, $$2, "", 0, ekc.a, false);
    }
 
-   @Override
-   public void a(Consumer<cpq> $$0, ejy $$1) {
+   public int a() {
+      return this.a;
    }
 
-   public static ekt.a<?> b() {
-      return a(ekm::new);
+   public long b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.c;
+   }
+
+   public ekc d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
    }
 }

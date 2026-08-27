@@ -1,20 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxw implements dwy {
+public class dxw implements dxu {
    public static final Codec<dxw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               dzv.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
+               dzv.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
             )
             .apply($$0, dxw::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
+   public final dzv b;
+   public final dzv c;
+   public final int d;
 
-   public dxw(int $$0, int $$1, float $$2) {
+   public dxw(dzv $$0, dzv $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;

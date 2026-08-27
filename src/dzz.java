@@ -1,44 +1,40 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dzz extends eac {
-   public static final Codec<dzz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dzz::new));
+public class dzz extends dzy {
+   public static final Codec<dzz> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dzz::new));
+   protected final List<dmz> h;
 
-   public dzz(int $$0, int $$1, int $$2) {
+   protected static <P extends dzz> P4<Mu<P>, Long, ehq.a, Float, List<dmz>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dmz.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public dzz(long $$0, ehq.a $$1, float $$2, List<dmz> $$3) {
       super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected ead<?> a() {
-      return ead.c;
+   protected dzw<?> a() {
+      return dzw.d;
    }
 
    @Override
-   public List<dyk.a> a(cwk $$0, BiConsumer<ib, dme> $$1, awt $$2, int $$3, ib $$4, dxu $$5) {
-      ib $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      ib.a $$7 = new ib.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
-      }
-
-      return ImmutableList.of(new dyk.a($$4.b($$3), 0, true));
+   public dmz a(axd $$0, ib $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   private void a(cwk $$0, BiConsumer<ib, dme> $$1, awt $$2, ib.a $$3, dxu $$4, ib $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+   protected dmz a(List<dmz> $$0, ib $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dmz a(List<dmz> $$0, double $$1) {
+      double $$2 = aww.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

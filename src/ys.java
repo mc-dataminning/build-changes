@@ -1,15 +1,11 @@
-import java.util.List;
+public interface ys extends aaj, afa {
+   void a(yv var1);
 
-public record ys(za b) implements xz<yq> {
-   private static final int c = 32767;
-   public static final xq<us, ys> a = za.<us>a($$0 -> zb.a($$0, 32767), List.of(new za.c<>(yy.b, yy.a))).a(ys::new, ys::b);
+   void a(yw var1);
 
-   @Override
-   public yb<ys> a() {
-      return yp.k;
-   }
+   void a(yu var1);
 
-   public void a(yq $$0) {
-      $$0.a(this);
-   }
+   void a(yx var1);
+
+   void a(yt var1);
 }

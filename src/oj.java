@@ -1,47 +1,61 @@
+import com.google.common.annotations.VisibleForTesting;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public abstract class oj<T> extends oo<T> {
-   private final Function<T, ajb<T>> d;
+public class oj extends oq<drn> {
+   @VisibleForTesting
+   static final List<ajg<drn>> d = List.of(
+      drn.b.h(),
+      drn.c.h(),
+      drn.d.h(),
+      drn.f.h(),
+      drn.g.h(),
+      drn.h.h(),
+      drn.i.h(),
+      drn.a.h(),
+      drn.e.h(),
+      drn.j.h(),
+      drn.k.h(),
+      drn.l.h(),
+      drn.m.h(),
+      drn.n.h(),
+      drn.o.h(),
+      drn.p.h(),
+      drn.q.h(),
+      drn.r.h(),
+      drn.s.h(),
+      drn.t.h(),
+      drn.u.h(),
+      drn.v.h(),
+      drn.w.h(),
+      drn.y.h(),
+      drn.z.h(),
+      drn.A.h(),
+      drn.B.h(),
+      drn.C.h(),
+      drn.G.h(),
+      drn.H.h(),
+      drn.I.h(),
+      drn.J.h(),
+      drn.K.h(),
+      drn.M.h(),
+      drn.O.h(),
+      drn.P.h(),
+      drn.Q.h(),
+      drn.R.h(),
+      drn.S.h()
+   );
 
-   public oj(kq $$0, ajb<? extends ix<T>> $$1, CompletableFuture<in.a> $$2, Function<T, ajb<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+   public oj(kr $$0, CompletableFuture<in.a> $$1) {
+      super($$0, kj.B, $$1);
    }
 
-   public oj(kq $$0, ajb<? extends ix<T>> $$1, CompletableFuture<in.a> $$2, CompletableFuture<oo.c<T>> $$3, Function<T, ajb<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
-   }
-
-   protected oj.a<T> a(aut<T> $$0) {
-      auq $$1 = this.c($$0);
-      return new oj.a<>($$1, this.d);
-   }
-
-   protected static class a<T> extends oo.b<T> {
-      private final Function<T, ajb<T>> a;
-
-      a(auq $$0, Function<T, ajb<T>> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public oj.a<T> a(aut<T> $$0) {
-         super.b($$0);
-         return this;
-      }
-
-      public final oj.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
-
-      @SafeVarargs
-      public final oj.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
-      }
+   @Override
+   protected void a(in.a $$0) {
+      this.b(aut.a).a(d).a(drw.e_).a(drn.x.h());
+      this.b(aut.c).a(drn.L.h());
+      this.b(aut.b).a(d).a(drw.e_).a(drn.N.h()).b(aut.c);
+      this.b(aut.d).a(drn.A.h(), drn.K.h(), drn.P.h(), drn.Q.h(), drn.D.h(), drn.C.h());
+      this.b(aut.e).a(drn.H.h());
    }
 }

@@ -1,77 +1,62 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bvg extends bvu {
-   private static final bzn d = bzn.b().a(8.0).d();
-   protected final cam a;
-   private final Class<? extends cam> e;
-   protected final cwe b;
-   @Nullable
-   protected cam c;
-   private int f;
-   private final double g;
+public class bvg extends brg<chw> {
+   private static final int d = 15;
+   private static final int e = 20;
+   private static final double f = 0.5;
+   private static final double g = 2.5;
+   public static final int c = 40;
+   private static final int h = aww.c(34.0);
+   private static final int i = aww.f(60.0F);
 
-   public bvg(cam $$0, double $$1) {
-      this($$0, $$1, (Class<? extends cam>)$$0.getClass());
+   public bvg() {
+      super(ImmutableMap.of(byr.o, bys.a, byr.aJ, bys.b, byr.aK, bys.c, byr.aL, bys.c), i);
    }
 
-   public bvg(cam $$0, double $$1, Class<? extends cam> $$2) {
-      this.a = $$0;
-      this.b = $$0.dJ();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(bvu.a.a, bvu.a.b));
+   protected boolean a(apf $$0, chw $$1) {
+      return $$1.a($$1.dP().c(byr.o).get(), 15.0, 20.0);
    }
 
-   @Override
-   public boolean a() {
-      if (!this.a.gp()) {
-         return false;
-      } else {
-         this.c = this.h();
-         return this.c != null;
+   protected boolean a(apf $$0, chw $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(apf $$0, chw $$1, long $$2) {
+      $$1.dP().a(byr.p, true, (long)i);
+      $$1.dP().a(byr.aL, axy.a, (long)h);
+      $$0.a($$1, (byte)62);
+      $$1.a(aty.Bs, 3.0F, 1.0F);
+   }
+
+   protected void c(apf $$0, chw $$1, long $$2) {
+      $$1.dP().c(byr.o).ifPresent($$1x -> $$1.G().a($$1x.dk()));
+      if (!$$1.dP().a(byr.aL) && !$$1.dP().a(byr.aK)) {
+         $$1.dP().a(byr.aK, axy.a, (long)(i - h));
+         $$1.dP().c(byr.o).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            epr $$3 = $$1.dk().e($$1.dj().b(box.d, 0, $$1.dC()));
+            epr $$4 = $$2x.bu().d($$3);
+            epr $$5 = $$4.d();
+            int $$6 = aww.a($$4.f()) + 7;
+
+            for (int $$7 = 1; $$7 < $$6; $$7++) {
+               epr $$8 = $$3.e($$5.a((double)$$7));
+               $$0.a(kc.B, $$8.c, $$8.d, $$8.e, 1, 0.0, 0.0, 0.0, 0.0);
+            }
+
+            $$1.a(aty.Br, 3.0F, 1.0F);
+            $$2x.a($$0.ah().e($$1), 10.0F);
+            double $$9 = 0.5 * (1.0 - $$2x.g(bqv.n));
+            double $$10 = 2.5 * (1.0 - $$2x.g(bqv.n));
+            $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
+         });
       }
    }
 
-   @Override
-   public boolean b() {
-      return this.c.bx() && this.c.gp() && this.f < 60 && !this.c.gi();
+   protected void d(apf $$0, chw $$1, long $$2) {
+      a($$1, 40);
    }
 
-   @Override
-   public void d() {
-      this.c = null;
-      this.f = 0;
-   }
-
-   @Override
-   public void e() {
-      this.a.I().a(this.c, 10.0F, (float)this.a.ab());
-      this.a.N().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
-         this.g();
-      }
-   }
-
-   @Nullable
-   private cam h() {
-      List<? extends cam> $$0 = this.b.a(this.e, d, this.a, this.a.cE().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      cam $$2 = null;
-
-      for (cam $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gi() && this.a.f($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.f($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a((apa)this.b, this.c);
+   public static void a(bpo $$0, int $$1) {
+      $$0.dP().a(byr.aJ, axy.a, (long)$$1);
    }
 }

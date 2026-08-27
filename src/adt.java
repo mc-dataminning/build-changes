@@ -1,44 +1,60 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
 
-public class adt implements xz<aai> {
-   public static final xq<us, adt> a = xz.a(adt::a, adt::new);
-   private final int b;
-   private final int[] c;
+public class adt implements yb<aam> {
+   public static final xs<vf, adt> a = yb.a(adt::a, adt::new);
+   private static final byte b = -128;
+   private final int c;
+   private final List<Pair<bpd, cqk>> d;
 
-   public adt(bof $$0) {
-      this.b = $$0.aj();
-      List<bof> $$1 = $$0.cM();
-      this.c = new int[$$1.size()];
+   public adt(int $$0, List<Pair<bpd, cqk>> $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).aj();
+   private adt(vf $$0) {
+      this.c = $$0.l();
+      bpd[] $$1 = bpd.values();
+      this.d = Lists.newArrayList();
+
+      int $$2;
+      do {
+         $$2 = $$0.readByte();
+         bpd $$3 = $$1[$$2 & 127];
+         cqk $$4 = cqk.f.decode($$0);
+         this.d.add(Pair.of($$3, $$4));
+      } while (($$2 & -128) != 0);
+   }
+
+   private void a(vf $$0) {
+      $$0.c(this.c);
+      int $$1 = this.d.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<bpd, cqk> $$3 = this.d.get($$2);
+         bpd $$4 = (bpd)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.k($$5 ? $$6 | -128 : $$6);
+         cqk.f.encode($$0, (cqk)$$3.getSecond());
       }
    }
 
-   private adt(us $$0) {
-      this.b = $$0.l();
-      this.c = $$0.c();
-   }
-
-   private void a(us $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-   }
-
    @Override
-   public yb<adt> a() {
-      return aet.aJ;
+   public yd<adt> a() {
+      return aex.aF;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
+   public int b() {
       return this.c;
    }
 
-   public int e() {
-      return this.b;
+   public List<Pair<bpd, cqk>> e() {
+      return this.d;
    }
 }

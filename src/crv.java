@@ -1,52 +1,60 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public class crv {
-   public static final ajb<cru> a = a("sentry");
-   public static final ajb<cru> b = a("dune");
-   public static final ajb<cru> c = a("coast");
-   public static final ajb<cru> d = a("wild");
-   public static final ajb<cru> e = a("ward");
-   public static final ajb<cru> f = a("eye");
-   public static final ajb<cru> g = a("vex");
-   public static final ajb<cru> h = a("tide");
-   public static final ajb<cru> i = a("snout");
-   public static final ajb<cru> j = a("rib");
-   public static final ajb<cru> k = a("spire");
-   public static final ajb<cru> l = a("wayfinder");
-   public static final ajb<cru> m = a("shaper");
-   public static final ajb<cru> n = a("silence");
-   public static final ajb<cru> o = a("raiser");
-   public static final ajb<cru> p = a("host");
+public class crv extends cry {
+   private final float a;
+   private final Multimap<il<bqq>, bqt> b;
 
-   public static void a(pj<cru> $$0) {
-      a($$0, cpt.xn, a);
-      a($$0, cpt.xo, b);
-      a($$0, cpt.xp, c);
-      a($$0, cpt.xq, d);
-      a($$0, cpt.xr, e);
-      a($$0, cpt.xs, f);
-      a($$0, cpt.xt, g);
-      a($$0, cpt.xu, h);
-      a($$0, cpt.xv, i);
-      a($$0, cpt.xw, j);
-      a($$0, cpt.xx, k);
-      a($$0, cpt.xy, l);
-      a($$0, cpt.xz, m);
-      a($$0, cpt.xA, n);
-      a($$0, cpt.xB, o);
-      a($$0, cpt.xC, p);
+   public crv(crx $$0, int $$1, float $$2, cqf.a $$3) {
+      super($$0, $$3);
+      this.a = (float)$$1 + $$0.c();
+      Builder<il<bqq>, bqt> $$4 = ImmutableMultimap.builder();
+      $$4.put(bqv.c, new bqt(m, "Weapon modifier", (double)this.a, bqt.a.a));
+      $$4.put(bqv.e, new bqt(n, "Weapon modifier", (double)$$2, bqt.a.a));
+      this.b = $$4.build();
    }
 
-   public static Optional<il.c<cru>> a(iy $$0, cpq $$1) {
-      return $$0.d(ki.aK).h().filter($$1x -> $$1.a(((cru)$$1x.a()).b())).findFirst();
+   public float h() {
+      return this.a;
    }
 
-   private static void a(pj<cru> $$0, cpl $$1, ajb<cru> $$2) {
-      cru $$3 = new cru($$2.a(), kh.h.e($$1), vs.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   @Override
+   public boolean a(dmz $$0, cwz $$1, ib $$2, cis $$3) {
+      return !$$3.f();
    }
 
-   private static ajb<cru> a(String $$0) {
-      return ajb.a(ki.aK, new ajc($$0));
+   @Override
+   public float a(cqk $$0, dmz $$1) {
+      if ($$1.a(dac.bs)) {
+         return 15.0F;
+      } else {
+         return $$1.a(aun.bE) ? 1.5F : 1.0F;
+      }
+   }
+
+   @Override
+   public boolean a(cqk $$0, bpo $$1, bpo $$2) {
+      $$0.a(1, $$2, bpd.a);
+      return true;
+   }
+
+   @Override
+   public boolean a(cqk $$0, cwz $$1, dmz $$2, ib $$3, bpo $$4) {
+      if ($$2.h($$1, $$3) != 0.0F) {
+         $$0.a(2, $$4, bpd.a);
+      }
+
+      return true;
+   }
+
+   @Override
+   public boolean a_(dmz $$0) {
+      return $$0.a(dac.bs);
+   }
+
+   @Override
+   public Multimap<il<bqq>, bqt> a(bpd $$0) {
+      return $$0 == bpd.a ? this.b : super.a($$0);
    }
 }

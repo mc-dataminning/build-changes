@@ -1,74 +1,30 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
 
-public abstract class ayu extends DataFix {
-   private final String a;
-
-   public ayu(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+public class ayu extends bdh {
+   public ayu(Schema $$0, boolean $$1) {
+      super($$0, $$1, "BlockEntityBannerColorFix", beh.s, "minecraft:banner");
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bdt.z);
-      Type<Pair<String, String>> $$1 = DSL.named(bdt.z.typeName(), bfc.a());
-      if (!Objects.equals($$0, $$1)) {
-         throw new IllegalStateException("block type is not what was expected.");
-      } else {
-         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-            this.a + " for block_state", this.getInputSchema().getType(bdt.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
-         );
-         TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
-            this.a + " for flat_block_state",
-            this.getInputSchema().getType(bdt.v),
-            $$0x -> $$0x.update(
-                  DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
-               )
-         );
-         return TypeRewriteRule.seq($$2, new TypeRewriteRule[]{$$3, $$4});
-      }
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      $$0 = $$0.update("Base", $$0x -> $$0x.createInt(15 - $$0x.asInt(0)));
+      return $$0.update(
+         "Patterns",
+         $$0x -> (Dynamic)DataFixUtils.orElse(
+               $$0x.asStreamOpt()
+                  .map($$0xx -> $$0xx.map($$0xxx -> $$0xxx.update("Color", $$0xxxx -> $$0xxxx.createInt(15 - $$0xxxx.asInt(0)))))
+                  .map($$0x::createList)
+                  .result(),
+               $$0x
+            )
+      );
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      return $$1.isPresent() ? $$0.set("Name", $$0.createString(this.a($$1.get()))) : $$0;
-   }
-
-   private String b(String $$0) {
-      int $$1 = $$0.indexOf(91);
-      int $$2 = $$0.indexOf(123);
-      int $$3 = $$0.length();
-      if ($$1 > 0) {
-         $$3 = $$1;
-      }
-
-      if ($$2 > 0) {
-         $$3 = Math.min($$3, $$2);
-      }
-
-      String $$4 = $$0.substring(0, $$3);
-      String $$5 = this.a($$4);
-      return $$5 + $$0.substring($$3);
-   }
-
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new ayu($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

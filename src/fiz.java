@@ -1,25 +1,9 @@
-import org.joml.Matrix4f;
+public class fiz extends fif<cmk> {
+   private static final ajh y = new ajh("container/furnace/lit_progress");
+   private static final ajh z = new ajh("container/furnace/burn_progress");
+   private static final ajh A = new ajh("textures/gui/container/furnace.png");
 
-public interface fiz {
-   static fiz a(avy $$0) {
-      return new fiy($$0);
-   }
-
-   static fiz a(cmx $$0) {
-      if ($$0 instanceof cmw) {
-         return new fix((cmw)$$0);
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
-      }
-   }
-
-   int a();
-
-   int a(ezv var1);
-
-   default void a(ezv $$0, int $$1, int $$2, Matrix4f $$3, fwq.a $$4) {
-   }
-
-   default void a(ezv $$0, int $$1, int $$2, ezx $$3) {
+   public fiz(cmk $$0, cir $$1, vu $$2) {
+      super($$0, new fla(), $$1, $$2, A, y, z);
    }
 }

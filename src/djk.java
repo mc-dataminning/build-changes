@@ -1,20 +1,33 @@
-public class djk extends dja {
-   public djk(ib $$0, dme $$1) {
-      super(djn.C, $$0, $$1, csx.c);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class djk extends dht implements dje {
+   public static final MapCodec<djk> I = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dje.a.e.fieldOf("weathering_state").forGetter(dbb::c), dmz.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, djk::new)
+   );
+   private final dje.a J;
+
+   @Override
+   public MapCodec<djk> a() {
+      return I;
+   }
+
+   public djk(dje.a $$0, dmz $$1, dmy.d $$2) {
+      super($$1, $$2);
+      this.J = $$0;
    }
 
    @Override
-   protected vs k() {
-      return vs.c("container.blast_furnace");
+   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected int a(cpq $$0) {
-      return super.a($$0) / 2;
+   protected boolean e_(dmz $$0) {
+      return dje.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected cku a(int $$0, chz $$1) {
-      return new cky($$0, $$1, this, this.n);
+   public dje.a i() {
+      return this.J;
    }
 }

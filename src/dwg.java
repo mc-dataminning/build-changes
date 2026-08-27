@@ -1,197 +1,195 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import java.util.Iterator;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dwg extends duu<dxu> {
-   private static final int a = 19;
-
-   public dwg(Codec<dxu> $$0) {
+public class dwg extends dvq<dxx> {
+   public dwg(Codec<dxx> $$0) {
       super($$0);
    }
 
-   private static boolean d(cwk $$0, ib $$1) {
-      return $$0.a($$1, $$0x -> $$0x.a(czh.ff));
-   }
-
-   public static boolean b(cwk $$0, ib $$1) {
-      return $$0.a($$1, $$0x -> $$0x.i() || $$0x.a(aue.O));
-   }
-
-   private static void b(cwm $$0, ib $$1, dme $$2) {
-      $$0.a($$1, $$2, 19);
-   }
-
-   public static boolean c(cwk $$0, ib $$1) {
-      return $$0.a($$1, $$0x -> $$0x.i() || $$0x.a(aue.cg));
-   }
-
-   private boolean a(cwz $$0, awt $$1, ib $$2, BiConsumer<ib, dme> $$3, BiConsumer<ib, dme> $$4, dyk.b $$5, dxu $$6) {
-      int $$7 = $$6.d.a($$1);
-      int $$8 = $$6.f.a($$1, $$7, $$6);
-      int $$9 = $$7 - $$8;
-      int $$10 = $$6.f.a($$1, $$9);
-      ib $$11 = $$6.g.<ib>map($$2x -> $$2x.a($$2, $$1)).orElse($$2);
-      int $$12 = Math.min($$2.v(), $$11.v());
-      int $$13 = Math.max($$2.v(), $$11.v()) + $$7 + 1;
-      if ($$12 >= $$0.J_() + 1 && $$13 <= $$0.ak()) {
-         OptionalInt $$14 = $$6.h.c();
-         int $$15 = this.a($$0, $$7, $$11, $$6);
-         if ($$15 >= $$7 || !$$14.isEmpty() && $$15 >= $$14.getAsInt()) {
-            if ($$6.g.isPresent() && !$$6.g.get().a($$0, $$3, $$1, $$2, $$11, $$6)) {
+   @Override
+   public boolean a(dvs<dxx> $$0) {
+      cxu $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      dxx $$3 = $$0.f();
+      axd $$4 = $$0.d();
+      if (!dvm.a($$1, $$2)) {
+         return false;
+      } else {
+         Optional<dsc> $$5 = dsc.a($$1, $$2, $$3.b, dvm::c, dvm::a);
+         if (!$$5.isEmpty() && $$5.get() instanceof dsc.b) {
+            dsc.b $$6 = (dsc.b)$$5.get();
+            if ($$6.g() < 4) {
                return false;
             } else {
-               List<dyk.a> $$16 = $$6.d.a($$0, $$4, $$1, $$15, $$11, $$6);
-               $$16.forEach($$7x -> $$6.f.a($$0, $$5, $$1, $$6, $$15, $$7x, $$8, $$10));
+               int $$7 = (int)((float)$$6.g() * $$3.e);
+               int $$8 = aww.a($$7, $$3.c.a(), $$3.c.b());
+               int $$9 = aww.b($$4, $$3.c.a(), $$8);
+               dwg.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
+               dwg.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
+               dwg.b $$12;
+               if ($$10.a($$3) && $$11.a($$3)) {
+                  $$12 = new dwg.b($$2.v(), $$4, $$3.h);
+               } else {
+                  $$12 = dwg.b.a();
+               }
+
+               boolean $$14 = $$10.a($$1, $$12);
+               boolean $$15 = $$11.a($$1, $$12);
+               if ($$14) {
+                  $$10.a($$1, $$4, $$12);
+               }
+
+               if ($$15) {
+                  $$11.a($$1, $$4, $$12);
+               }
+
                return true;
             }
          } else {
             return false;
          }
-      } else {
-         return false;
       }
    }
 
-   private int a(cwk $$0, int $$1, ib $$2, dxu $$3) {
-      ib.a $$4 = new ib.a();
-
-      for (int $$5 = 0; $$5 <= $$1 + 1; $$5++) {
-         int $$6 = $$3.h.a($$1, $$5);
-
-         for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-            for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-               $$4.a($$2, $$7, $$5, $$8);
-               if (!$$3.d.b($$0, $$4) || !$$3.j && d($$0, $$4)) {
-                  return $$5 - 2;
-               }
-            }
-         }
-      }
-
-      return $$1;
+   private static dwg.a a(ib $$0, boolean $$1, axd $$2, int $$3, bmf $$4, bmf $$5) {
+      return new dwg.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
    }
 
-   @Override
-   protected void a(cwm $$0, ib $$1, dme $$2) {
-      b($$0, $$1, $$2);
-   }
+   private void a(cxu $$0, ib $$1, dsc.b $$2, dwg.b $$3) {
+      $$0.a($$3.a($$1.h($$2.e() - 1)), dac.cz.o(), 2);
+      $$0.a($$3.a($$1.h($$2.f() + 1)), dac.ch.o(), 2);
 
-   @Override
-   public final boolean a(duw<dxu> $$0) {
-      final cwz $$1 = $$0.b();
-      awt $$2 = $$0.d();
-      ib $$3 = $$0.e();
-      dxu $$4 = $$0.f();
-      Set<ib> $$5 = Sets.newHashSet();
-      Set<ib> $$6 = Sets.newHashSet();
-      final Set<ib> $$7 = Sets.newHashSet();
-      Set<ib> $$8 = Sets.newHashSet();
-      BiConsumer<ib, dme> $$9 = ($$2x, $$3x) -> {
-         $$5.add($$2x.i());
-         $$1.a($$2x, $$3x, 19);
-      };
-      BiConsumer<ib, dme> $$10 = ($$2x, $$3x) -> {
-         $$6.add($$2x.i());
-         $$1.a($$2x, $$3x, 19);
-      };
-      dyk.b $$11 = new dyk.b() {
-         @Override
-         public void a(ib $$0, dme $$1x) {
-            $$7.add($$0.i());
-            $$1.a($$0, $$1, 19);
+      for (ib.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(ih.b)) {
+         ib $$5 = $$3.a($$4);
+         if (dvm.a($$0, $$5) || $$0.a_($$5).a(dac.su)) {
+            $$0.a($$5, dac.gM.o(), 2);
          }
-
-         @Override
-         public boolean a(ib $$0) {
-            return $$7.contains($$0);
-         }
-      };
-      BiConsumer<ib, dme> $$12 = ($$2x, $$3x) -> {
-         $$8.add($$2x.i());
-         $$1.a($$2x, $$3x, 19);
-      };
-      boolean $$13 = this.a($$1, $$2, $$3, $$9, $$10, $$11, $$4);
-      if ($$13 && (!$$6.isEmpty() || !$$7.isEmpty())) {
-         if (!$$4.i.isEmpty()) {
-            dzq.a $$14 = new dzq.a($$1, $$12, $$2, $$6, $$7, $$5);
-            $$4.i.forEach($$1x -> $$1x.a($$14));
-         }
-
-         return eby.a(Iterables.concat($$5, $$6, $$7, $$8)).map($$4x -> {
-            epe $$5x = a($$1, $$4x, $$6, $$8, $$5);
-            egg.a($$1, 3, $$5x, $$4x.h(), $$4x.i(), $$4x.j());
-            return true;
-         }).orElse(false);
-      } else {
-         return false;
       }
    }
 
-   private static epe a(cwf $$0, eby $$1, Set<ib> $$2, Set<ib> $$3, Set<ib> $$4) {
-      epe $$5 = new eoy($$1.d(), $$1.e(), $$1.f());
-      int $$6 = 7;
-      List<Set<ib>> $$7 = Lists.newArrayList();
+   static final class a {
+      private ib a;
+      private final boolean b;
+      private int c;
+      private final double d;
+      private final double e;
 
-      for (int $$8 = 0; $$8 < 7; $$8++) {
-         $$7.add(Sets.newHashSet());
+      a(ib $$0, boolean $$1, int $$2, double $$3, double $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
       }
 
-      for (ib $$9 : Lists.newArrayList(Sets.union($$3, $$4))) {
-         if ($$1.b($$9)) {
-            $$5.c($$9.u() - $$1.h(), $$9.v() - $$1.i(), $$9.w() - $$1.j());
-         }
+      private int a() {
+         return this.a(0.0F);
       }
 
-      ib.a $$10 = new ib.a();
-      int $$11 = 0;
-      $$7.get(0).addAll($$2);
+      private int b() {
+         return this.b ? this.a.v() : this.a.v() - this.a();
+      }
 
-      while (true) {
-         while ($$11 >= 7 || !$$7.get($$11).isEmpty()) {
-            if ($$11 >= 7) {
-               return $$5;
-            }
+      private int c() {
+         return !this.b ? this.a.v() : this.a.v() + this.a();
+      }
 
-            Iterator<ib> $$12 = $$7.get($$11).iterator();
-            ib $$13 = $$12.next();
-            $$12.remove();
-            if ($$1.b($$13)) {
-               if ($$11 != 0) {
-                  dme $$14 = $$0.a_($$13);
-                  b($$0, $$13, $$14.a(dmu.aC, Integer.valueOf($$11)));
+      boolean a(cxu $$0, dwg.b $$1) {
+         while (this.c > 1) {
+            ib.a $$2 = this.a.j();
+            int $$3 = Math.min(10, this.a());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               if ($$0.a_($$2).a(dac.H)) {
+                  return false;
                }
 
-               $$5.c($$13.u() - $$1.h(), $$13.v() - $$1.i(), $$13.w() - $$1.j());
+               if (dvm.a($$0, $$1.a($$2), this.c)) {
+                  this.a = $$2;
+                  return true;
+               }
 
-               for (ih $$15 : ih.values()) {
-                  $$10.a($$13, $$15);
-                  if ($$1.b($$10)) {
-                     int $$16 = $$10.u() - $$1.h();
-                     int $$17 = $$10.v() - $$1.i();
-                     int $$18 = $$10.w() - $$1.j();
-                     if (!$$5.b($$16, $$17, $$18)) {
-                        dme $$19 = $$0.a_($$10);
-                        OptionalInt $$20 = ddo.n($$19);
-                        if (!$$20.isEmpty()) {
-                           int $$21 = Math.min($$20.getAsInt(), $$11 + 1);
-                           if ($$21 < 7) {
-                              $$7.get($$21).add($$10.i());
-                              $$11 = Math.min($$11, $$21);
-                           }
+               $$2.c(this.b ? ih.a : ih.b);
+            }
+
+            this.c /= 2;
+         }
+
+         return false;
+      }
+
+      private int a(float $$0) {
+         return (int)dvm.a((double)$$0, (double)this.c, this.e, this.d);
+      }
+
+      void a(cxu $$0, axd $$1, dwg.b $$2) {
+         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
+            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
+               float $$5 = aww.c((float)($$3 * $$3 + $$4 * $$4));
+               if (!($$5 > (float)this.c)) {
+                  int $$6 = this.a($$5);
+                  if ($$6 > 0) {
+                     if ((double)$$1.i() < 0.2) {
+                        $$6 = (int)((float)$$6 * aww.b($$1, 0.8F, 1.0F));
+                     }
+
+                     ib.a $$7 = this.a.b($$3, 0, $$4).j();
+                     boolean $$8 = false;
+                     int $$9 = this.b ? $$0.a(dsm.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
+
+                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
+                        ib $$11 = $$2.a($$7);
+                        if (dvm.b($$0, $$11)) {
+                           $$8 = true;
+                           daa $$12 = dac.su;
+                           $$0.a($$11, $$12.o(), 2);
+                        } else if ($$8 && $$0.a_($$11).a(aun.be)) {
+                           break;
                         }
+
+                        $$7.c(this.b ? ih.b : ih.a);
                      }
                   }
                }
             }
          }
+      }
 
-         $$11++;
+      boolean a(dxx $$0) {
+         return this.c >= $$0.i && this.d >= (double)$$0.j;
+      }
+   }
+
+   static final class b {
+      private final int a;
+      @Nullable
+      private final epr b;
+
+      b(int $$0, axd $$1, bmf $$2) {
+         this.a = $$0;
+         float $$3 = $$2.a($$1);
+         float $$4 = aww.b($$1, 0.0F, (float) Math.PI);
+         this.b = new epr((double)(aww.b($$4) * $$3), 0.0, (double)(aww.a($$4) * $$3));
+      }
+
+      private b() {
+         this.a = 0;
+         this.b = null;
+      }
+
+      static dwg.b a() {
+         return new dwg.b();
+      }
+
+      ib a(ib $$0) {
+         if (this.b == null) {
+            return $$0;
+         } else {
+            int $$1 = this.a - $$0.v();
+            epr $$2 = this.b.a((double)$$1);
+            return $$0.b(aww.a($$2.c), 0, aww.a($$2.e));
+         }
       }
    }
 }

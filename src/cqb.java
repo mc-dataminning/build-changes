@@ -1,23 +1,15 @@
-public class cqb extends cpl {
-   public cqb(cpl.a $$0) {
+public class cqb extends cqf implements crj {
+   public cqb(cqf.a $$0) {
       super($$0);
    }
 
    @Override
-   public bml a(cpq $$0, cia $$1, box $$2, bmk $$3) {
-      if ($$0.B() && !($$2 instanceof cia)) {
-         if (!$$1.dJ().B && $$2.bx()) {
-            $$2.b($$0.z());
-            if ($$2 instanceof boz) {
-               ((boz)$$2).fQ();
-            }
-
-            $$0.h(1);
-         }
-
-         return bml.a($$1.dJ().B);
+   public boolean a(cwz $$0, dlp $$1, boolean $$2, cis $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.aC_(), aty.mQ, atz.e, 1.0F, 1.0F);
+         return true;
       } else {
-         return bml.d;
+         return false;
       }
    }
 }

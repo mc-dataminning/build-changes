@@ -1,42 +1,45 @@
-public class fol<T extends bof> extends fnn<T> {
-   private final fqf a;
-   private final fqf b;
-   private final fqf f;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-   public fol(fqf $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+public abstract class fol<E extends bow> extends foc<E> {
+   private static final Vector3f a = new Vector3f();
+
+   public fol() {
+      this(fxy::e);
    }
 
-   public static fql b() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fqk.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fqh.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fqk.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fqh.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", fqk.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fqh.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", fqk.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fqh.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", fqk.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fqh.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", fqk.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fqh.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fqk.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fqh.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fqk.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fqh.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", fqk.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fqh.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", fqk.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fqh.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", fqk.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fqh.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", fqk.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fqh.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fqk.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fqh.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return fql.a($$0, 32, 32);
+   public fol(Function<ajh, fxy> $$0) {
+      super($$0);
    }
 
    @Override
-   public fqf a() {
-      return this.a;
+   public void a(etz $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * awm.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * awm.a($$3 * 0.2F);
+   public abstract frd a();
+
+   public Optional<frd> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
+   }
+
+   protected void a(bos $$0, ezx $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
+   }
+
+   protected void a(ezx $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      ezz.a(this, $$0, $$5, $$6, a);
+   }
+
+   protected void a(bos $$0, ezx $$1, float $$2, float $$3) {
+      $$0.a($$2, $$3);
+      $$0.a($$1x -> ezz.a(this, $$1, $$1x.b(), 1.0F, a));
+   }
+
+   protected void a(ezx $$0) {
+      ezz.a(this, $$0, 0L, 1.0F, a);
    }
 }

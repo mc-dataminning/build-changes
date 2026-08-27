@@ -1,121 +1,183 @@
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fku extends fgh {
-   private static final int a = 8;
-   private static final vs b = vs.c("telemetry_info.screen.title");
-   private static final vs c = vs.c("telemetry_info.screen.description").a(n.h);
-   private static final vs k = vs.c("telemetry_info.button.privacy_statement");
-   private static final vs l = vs.c("telemetry_info.button.give_feedback");
-   private static final vs m = vs.c("telemetry_info.button.show_data");
-   private static final vs n = vs.c("telemetry_info.opt_in.description");
-   private final fgh o;
-   private final eyo p;
+public class fku {
+   public static final int a = 20;
+   private static final fct b = new fct(new ajh("recipe_book/page_forward"), new ajh("recipe_book/page_forward_highlighted"));
+   private static final fct c = new fct(new ajh("recipe_book/page_backward"), new ajh("recipe_book/page_backward_highlighted"));
+   private final List<fkw> d = Lists.newArrayListWithCapacity(20);
    @Nullable
-   private fkt q;
-   private double r;
+   private fkw e;
+   private final fks f = new fks();
+   private ezg g;
+   private final List<fky> h = Lists.newArrayList();
+   private List<fkx> i = ImmutableList.of();
+   private fcm j;
+   private fcm k;
+   private int l;
+   private int m;
+   private aub n;
+   @Nullable
+   private ctp<?> o;
+   @Nullable
+   private fkx p;
 
-   public fku(fgh $$0, eyo $$1) {
-      super(b);
-      this.o = $$0;
-      this.p = $$1;
-   }
-
-   @Override
-   public vs i() {
-      return vr.a(super.i(), c);
-   }
-
-   @Override
-   protected void aP_() {
-      fdu $$0 = new fdu();
-      $$0.c().a(8);
-      $$0.a(this.h);
-      fea $$1 = $$0.a(fea.d(), $$0.b().a(0.5F, 0.0F));
-      $$1.c().b().e(8);
-      $$1.a(new fbr(this.p(), this.i));
-      $$1.a(new fbe(c, this.i).c(this.g - 16).b(true));
-      fdv $$2 = this.a(fak.a(k, this::b).a(), fak.a(l, this::c).a());
-      $$1.a($$2);
-      fdx $$3 = this.o();
-      $$0.a();
-      $$3.a();
-      int $$4 = $$2.C() + $$2.u();
-      int $$5 = $$3.u();
-      int $$6 = this.h - $$4 - $$5 - 16;
-      this.q = new fkt(0, 0, this.g - 40, $$6, this.f.h);
-      this.q.a(this.r);
-      this.q.a($$0x -> this.r = $$0x);
-      $$1.a(this.q);
-      $$1.a($$3);
-      $$0.a();
-      fdu.a($$0, 0, 0, this.g, this.h, 0.5F, 0.0F);
-      $$0.a($$1x -> {
-         fai var10000 = this.c($$1x);
-      });
-   }
-
-   @Override
-   protected void aG_() {
-      this.b(this.q);
-   }
-
-   private fdx o() {
-      fea $$0 = fea.d();
-      $$0.c().b().e(4);
-      if (this.f.C()) {
-         $$0.a(this.E());
-      }
-
-      $$0.a(this.a(fak.a(m, this::d).a(), fak.a(vr.d, this::a).a()));
-      return $$0;
-   }
-
-   private fai E() {
-      eyn<Boolean> $$0 = this.p.af();
-      fam $$1 = fam.a(n, this.f.h).a($$0).a(this::a).a();
-      $$1.j = this.f.C();
-      return $$1;
-   }
-
-   private void a(fai $$0, boolean $$1) {
-      if (this.q != null) {
-         this.q.b($$1);
+   public fku() {
+      for (int $$0 = 0; $$0 < 20; $$0++) {
+         this.d.add(new fkw());
       }
    }
 
-   private void a(fak $$0) {
-      this.f.a(this.o);
+   public void a(ezg $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.n = $$0.s.m();
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
+      }
+
+      this.j = new fcm($$1 + 93, $$2 + 137, 12, 17, false);
+      this.j.a(b);
+      this.k = new fcm($$1 + 38, $$2 + 137, 12, 17, true);
+      this.k.a(c);
    }
 
-   private void b(fak $$0) {
-      fez.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
+   public void a(fkt $$0) {
+      this.h.remove($$0);
+      this.h.add($$0);
    }
 
-   private void c(fak $$0) {
-      fez.a(this, "https://aka.ms/javafeedback?ref=game");
+   public void a(List<fkx> $$0, boolean $$1) {
+      this.i = $$0;
+      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
+      if (this.l <= this.m || $$1) {
+         this.m = 0;
+      }
+
+      this.f();
    }
 
-   private void d(fak $$0) {
-      Path $$1 = this.f.t().b();
-      ac.j().a($$1.toUri());
+   private void f() {
+      int $$0 = 20 * this.m;
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         fkw $$2 = this.d.get($$1);
+         if ($$0 + $$1 < this.i.size()) {
+            fkx $$3 = this.i.get($$0 + $$1);
+            $$2.a($$3, this);
+            $$2.k = true;
+         } else {
+            $$2.k = false;
+         }
+      }
+
+      this.g();
    }
 
-   @Override
-   public void d() {
-      this.f.a(this.o);
+   private void g() {
+      this.j.k = this.l > 1 && this.m < this.l - 1;
+      this.k.k = this.l > 1 && this.m > 0;
    }
 
-   @Override
-   public void b(ezx $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void a(fat $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      if (this.l > 1) {
+         vu $$6 = vu.a("gui.recipebook.page", this.m + 1, this.l);
+         int $$7 = this.g.h.a($$6);
+         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
+      }
+
+      this.e = null;
+
+      for (fkw $$8 : this.d) {
+         $$8.a($$0, $$3, $$4, $$5);
+         if ($$8.k && $$8.z()) {
+            this.e = $$8;
+         }
+      }
+
+      this.k.a($$0, $$3, $$4, $$5);
+      this.j.a($$0, $$3, $$4, $$5);
+      this.f.a($$0, $$3, $$4, $$5);
    }
 
-   private fdv a(fai $$0, fai $$1) {
-      fdv $$2 = new fdv();
-      $$2.c().b().f(4);
-      $$2.a($$0, 0, 0);
-      $$2.a($$1, 0, 1);
-      return $$2;
+   public void a(fat $$0, int $$1, int $$2) {
+      if (this.g.y != null && this.e != null && !this.f.c()) {
+         $$0.a(this.g.h, this.e.e(), $$1, $$2);
+      }
+   }
+
+   @Nullable
+   public ctp<?> a() {
+      return this.o;
+   }
+
+   @Nullable
+   public fkx b() {
+      return this.p;
+   }
+
+   public void c() {
+      this.f.b(false);
+   }
+
+   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.o = null;
+      this.p = null;
+      if (this.f.c()) {
+         if (this.f.a($$0, $$1, $$2)) {
+            this.o = this.f.b();
+            this.p = this.f.a();
+         } else {
+            this.f.b(false);
+         }
+
+         return true;
+      } else if (this.j.a($$0, $$1, $$2)) {
+         this.m++;
+         this.f();
+         return true;
+      } else if (this.k.a($$0, $$1, $$2)) {
+         this.m--;
+         this.f();
+         return true;
+      } else {
+         for (fkw $$7 : this.d) {
+            if ($$7.a($$0, $$1, $$2)) {
+               if ($$2 == 0) {
+                  this.o = $$7.d();
+                  this.p = $$7.a();
+               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
+                  this.f.a(this.g, $$7.a(), $$7.B(), $$7.C(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.w());
+               }
+
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public void a(List<ctp<?>> $$0) {
+      for (fky $$1 : this.h) {
+         $$1.a($$0);
+      }
+   }
+
+   public ezg d() {
+      return this.g;
+   }
+
+   public aub e() {
+      return this.n;
+   }
+
+   protected void a(Consumer<fbe> $$0) {
+      $$0.accept(this.j);
+      $$0.accept(this.k);
+      this.d.forEach($$0);
    }
 }

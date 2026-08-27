@@ -1,6 +1,15 @@
-public interface qd {
-   static void a(pj<ecm> $$0) {
-      im<ecg> $$1 = $$0.a(ki.aE);
-      $$0.a(ebz.t, new ecm($$1.b(eca.H), new edb(32, 8, edc.a, 94251327)));
+public class qd {
+   public static final ajg<eel> a = a("empty");
+
+   public static ajg<eel> a(String $$0) {
+      return ajg.a(kj.aH, new ajh($$0));
+   }
+
+   public static void a(pl<eel> $$0, String $$1, eel $$2) {
+      ps.a($$0, $$1, $$2);
+   }
+
+   public static void a(pl<eel> $$0) {
+      qc.a($$0);
    }
 }

@@ -1,31 +1,27 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.google.common.math.Quantiles;
+import com.google.common.math.Quantiles.ScaleAndIndexes;
+import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
+import java.util.Comparator;
+import java.util.Map;
 
-public record bjx(Duration a, @Nullable String b, long c) {
-   public static bjx.a a(Duration $$0, List<bjx> $$1) {
-      long $$2 = $$1.stream().mapToLong($$0x -> $$0x.c).sum();
-      return new bjx.a(
-         $$2,
-         (double)$$2 / (double)$$0.getSeconds(),
-         (long)$$1.size(),
-         (double)$$1.size() / (double)$$0.getSeconds(),
-         $$1.stream().map(bjx::a).reduce(Duration.ZERO, Duration::plus),
-         $$1.stream()
-            .filter($$0x -> $$0x.b != null)
-            .collect(Collectors.groupingBy($$0x -> $$0x.b, Collectors.summingLong($$0x -> $$0x.c)))
-            .entrySet()
-            .stream()
-            .sorted(Entry.<String, Long>comparingByValue().reversed())
-            .map($$0x -> Pair.of((String)$$0x.getKey(), (Long)$$0x.getValue()))
-            .limit(10L)
-            .toList()
-      );
+public class bjx {
+   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
+
+   private bjx() {
    }
 
-   public static record a(long a, double b, long c, double d, Duration e, List<Pair<String, Long>> f) {
+   public static Map<Integer, Double> a(long[] $$0) {
+      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   }
+
+   public static Map<Integer, Double> a(double[] $$0) {
+      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   }
+
+   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
+      Int2DoubleSortedMap $$1 = ac.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
+      return Int2DoubleSortedMaps.unmodifiable($$1);
    }
 }

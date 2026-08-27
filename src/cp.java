@@ -9,14 +9,14 @@ public class cp extends cx<cp.a> {
       return cp.a.a;
    }
 
-   public void a(apb $$0, cpq $$1, @Nullable bof $$2) {
-      ejy $$3 = br.b($$0, $$2);
+   public void a(apg $$0, cqk $$1, @Nullable bow $$2) {
+      eku $$3 = br.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
    public static record a(Optional<bc> b, Optional<cc> c, Optional<bc> d) implements cx.a {
       public static final Codec<cp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avu.a(br.b, "player").forGetter(cp.a::a), avu.a(cc.a, "item").forGetter(cp.a::b), avu.a(br.b, "entity").forGetter(cp.a::c))
+         $$0 -> $$0.group(awe.a(br.b, "player").forGetter(cp.a::a), awe.a(cc.a, "item").forGetter(cp.a::b), awe.a(br.b, "entity").forGetter(cp.a::c))
                .apply($$0, cp.a::new)
       );
 
@@ -28,7 +28,7 @@ public class cp extends cx<cp.a> {
          return am.S.a(new cp.a($$0, $$1, $$2));
       }
 
-      public boolean a(apb $$0, cpq $$1, ejy $$2) {
+      public boolean a(apg $$0, cqk $$1, eku $$2) {
          return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 

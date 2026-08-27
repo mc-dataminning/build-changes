@@ -1,32 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dwx implements dwy {
-   public static final Codec<dwx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ib.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dwx::new)
-   );
-   private final Optional<ib> b;
-   private final boolean c;
-
-   private dwx(Optional<ib> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dwx extends dvq<dym> {
+   public dwx(Codec<dym> $$0) {
+      super($$0);
    }
 
-   public static dwx a(ib $$0, boolean $$1) {
-      return new dwx(Optional.of($$0), $$1);
-   }
+   @Override
+   public boolean a(dvs<dym> $$0) {
+      dym $$1 = $$0.f();
+      cxu $$2 = $$0.b();
+      ib $$3 = $$0.e();
+      dmz $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dci) {
+            if (!$$2.u($$3.c())) {
+               return false;
+            }
 
-   public static dwx a() {
-      return new dwx(Optional.empty(), false);
-   }
+            dci.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
 
-   public Optional<ib> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+         return true;
+      } else {
+         return false;
+      }
    }
 }

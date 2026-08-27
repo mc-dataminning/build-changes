@@ -1,70 +1,72 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public record dqy(il<dqr> b, float c, eov d, @Nullable UUID e, @Nullable UUID f, @Nullable bof g) {
-   public static final Codec<dqy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kh.a.r().fieldOf("game_event").forGetter(dqy::a),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dqy::b),
-               eov.a.fieldOf("pos").forGetter(dqy::c),
-               je.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
-               je.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dqy($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
-   );
+public class dqy<T extends dqu> {
+   private static final Logger a = LogUtils.getLogger();
+   private final avo<T> b;
+   private drh c;
 
-   public dqy(il<dqr> $$0, float $$1, eov $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
-      this($$0, $$1, $$2, $$3, $$4, null);
+   public dqy(Class<T> $$0, drh $$1) {
+      this.c = $$1;
+      this.b = new avo<>($$0);
    }
 
-   public dqy(il<dqr> $$0, float $$1, eov $$2, @Nullable bof $$3) {
-      this($$0, $$1, $$2, $$3 == null ? null : $$3.ct(), a($$3), $$3);
+   public void a(T $$0) {
+      this.b.add($$0);
    }
 
-   @Nullable
-   private static UUID a(@Nullable bof $$0) {
-      if ($$0 instanceof cis $$1 && $$1.w() != null) {
-         return $$1.w().ct();
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
+
+   public avj.a a(epm $$0, avj<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cH().c($$0) && $$1.accept($$2).a()) {
+            return avj.a.b;
+         }
       }
 
-      return null;
+      return avj.a.a;
    }
 
-   public Optional<bof> a(apa $$0) {
-      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   public <U extends T> avj.a a(drb<T, U> $$0, epm $$1, avj<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
+      if ($$3.isEmpty()) {
+         return avj.a.a;
+      } else {
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cH().c($$1) && $$2.accept($$5).a()) {
+               return avj.a.b;
+            }
+         }
+
+         return avj.a.a;
+      }
    }
 
-   public Optional<bof> b(apa $$0) {
-      return this.a($$0).filter($$0x -> $$0x instanceof cis).map($$0x -> (cis)$$0x).map(cis::w).or(() -> Optional.ofNullable(this.f).map($$0::a));
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   public il<dqr> a() {
-      return this.b;
+   public Stream<T> b() {
+      return this.b.stream();
    }
 
-   public float b() {
+   public drh c() {
       return this.c;
    }
 
-   public eov c() {
-      return this.d;
+   public drh a(drh $$0) {
+      drh $$1 = this.c;
+      this.c = $$0;
+      return $$1;
    }
 
-   @Nullable
-   public UUID d() {
-      return this.e;
-   }
-
-   @Nullable
-   public UUID e() {
-      return this.f;
-   }
-
-   @Nullable
-   public bof f() {
-      return this.g;
+   @axz
+   public int d() {
+      return this.b.size();
    }
 }

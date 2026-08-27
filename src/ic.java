@@ -12,22 +12,22 @@ public class ic<T> {
    }
 
    public T a(T $$0, in.a $$1, in.a $$2) {
-      DynamicOps<Object> $$3 = aja.a(awf.a, $$1);
-      DynamicOps<Object> $$4 = aja.a(awf.a, $$2);
+      DynamicOps<Object> $$3 = ajf.a(awp.a, $$1);
+      DynamicOps<Object> $$4 = ajf.a(awp.a, $$2);
       Object $$5 = ac.a(this.a.encodeStart($$3, $$0), $$0x -> new IllegalStateException("Failed to encode: " + $$0x));
       return ac.a(this.a.parse($$4, $$5), $$0x -> new IllegalStateException("Failed to decode: " + $$0x));
    }
 
    public static class a {
-      private final Map<ajb<? extends ix<?>>, ic<?>> a = new HashMap<>();
+      private final Map<ajg<? extends iy<?>>, ic<?>> a = new HashMap<>();
 
-      public <T> ic.a a(ajb<? extends ix<? extends T>> $$0, Codec<T> $$1) {
+      public <T> ic.a a(ajg<? extends iy<? extends T>> $$0, Codec<T> $$1) {
          this.a.put($$0, new ic($$1));
          return this;
       }
 
       @Nullable
-      public <T> ic<T> a(ajb<? extends ix<? extends T>> $$0) {
+      public <T> ic<T> a(ajg<? extends iy<? extends T>> $$0) {
          return (ic<T>)this.a.get($$0);
       }
    }

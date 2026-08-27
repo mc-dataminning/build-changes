@@ -1,36 +1,61 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.nio.ByteBuffer;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
 
 public class erz {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+   @Nullable
+   private ByteBuffer a;
+   private final AudioFormat b;
+   private boolean c;
+   private int d;
 
-   public static void a() {
-      RenderSystem.setupLevelDiffuseLighting(c, d);
+   public erz(ByteBuffer $$0, AudioFormat $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static void b() {
-      RenderSystem.setupLevelDiffuseLighting(a, b);
+   OptionalInt a() {
+      if (!this.c) {
+         if (this.a == null) {
+            return OptionalInt.empty();
+         }
+
+         int $$0 = ery.a(this.b);
+         int[] $$1 = new int[1];
+         AL10.alGenBuffers($$1);
+         if (ery.a("Creating buffer")) {
+            return OptionalInt.empty();
+         }
+
+         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
+         if (ery.a("Assigning buffer data")) {
+            return OptionalInt.empty();
+         }
+
+         this.d = $$1[0];
+         this.c = true;
+         this.a = null;
+      }
+
+      return OptionalInt.of(this.d);
    }
 
-   public static void c() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   public void b() {
+      if (this.c) {
+         AL10.alDeleteBuffers(new int[]{this.d});
+         if (ery.a("Deleting stream buffers")) {
+            return;
+         }
+      }
+
+      this.c = false;
    }
 
-   public static void d() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
-   }
-
-   public static void e() {
-      RenderSystem.setShaderLights(e, f);
-   }
-
-   public static void a(Quaternionf $$0) {
-      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
+   public OptionalInt c() {
+      OptionalInt $$0 = this.a();
+      this.c = false;
+      return $$0;
    }
 }

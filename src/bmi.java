@@ -1,49 +1,16 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public enum bmi implements axg {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
+public interface bmi<P extends bmh> {
+   bmi<bme> a = a("constant", bme.b);
+   bmi<bmn> b = a("uniform", bmn.a);
+   bmi<blz> c = a("biased_to_bottom", blz.a);
+   bmi<bma> d = a("clamped", bma.a);
+   bmi<bmo> e = a("weighted_list", bmo.a);
+   bmi<bmc> f = a("clamped_normal", bmc.a);
 
-   public static final axg.a<bmi> e = axg.a(bmi::values);
-   private static final IntFunction<bmi> f = ave.a(bmi::a, values(), ave.a.b);
-   private final int g;
-   private final String h;
+   Codec<P> codec();
 
-   private bmi(int $$0, String $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   public int a() {
-      return this.g;
-   }
-
-   public vs b() {
-      return vs.c("options.difficulty." + this.h);
-   }
-
-   public vs d() {
-      return vs.c("options.difficulty." + this.h + ".info");
-   }
-
-   public static bmi a(int $$0) {
-      return f.apply($$0);
-   }
-
-   @Nullable
-   public static bmi a(String $$0) {
-      return e.a($$0);
-   }
-
-   public String e() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
+   static <P extends bmh> bmi<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.M, $$0, () -> $$1);
    }
 }

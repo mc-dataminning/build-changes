@@ -1,36 +1,43 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bzk extends bza {
-   private static final ImmutableMap<bol<?>, Float> a = ImmutableMap.builder()
-      .put(bol.A, 8.0F)
-      .put(bol.I, 12.0F)
-      .put(bol.ab, 8.0F)
-      .put(bol.ac, 12.0F)
-      .put(bol.aA, 15.0F)
-      .put(bol.aF, 12.0F)
-      .put(bol.bg, 8.0F)
-      .put(bol.bi, 10.0F)
-      .put(bol.br, 10.0F)
-      .put(bol.bs, 8.0F)
-      .put(bol.bu, 8.0F)
-      .build();
-
+public class bzk extends bzx<chc> {
    @Override
-   protected boolean a(box $$0, box $$1) {
-      return this.b($$1) && this.e($$0, $$1);
+   public Set<byr<?>> a() {
+      return ImmutableSet.of(byr.h, byr.aw, byr.aq, byr.ap, byr.as, byr.at, new byr[0]);
    }
 
-   private boolean e(box $$0, box $$1) {
-      float $$2 = (Float)a.get($$1.ai());
-      return $$1.f((bof)$$0) <= (double)($$2 * $$2);
+   protected void a(apf $$0, chc $$1) {
+      bqp<?> $$2 = $$1.dP();
+      $$2.a(byr.aw, this.b($$0, $$1));
+      Optional<chi> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<chc> $$5 = Lists.newArrayList();
+      byt $$6 = $$2.c(byr.h).orElse(byt.a());
+
+      for (bpo $$7 : $$6.b($$0x -> !$$0x.o_() && ($$0x instanceof chi || $$0x instanceof chc))) {
+         if ($$7 instanceof chi $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof chc $$9) {
+            $$5.add($$9);
+         }
+      }
+
+      $$2.a(byr.aq, $$3);
+      $$2.a(byr.ap, $$5);
+      $$2.a(byr.as, $$4);
+      $$2.a(byr.at, $$5.size());
    }
 
-   @Override
-   protected bya<box> b() {
-      return bya.A;
-   }
-
-   private boolean b(box $$0) {
-      return a.containsKey($$0.ai());
+   private Optional<ib> b(apf $$0, chc $$1) {
+      return ib.a($$1.dm(), 8, 4, $$1x -> $$0.a_($$1x).a(aun.aS));
    }
 }

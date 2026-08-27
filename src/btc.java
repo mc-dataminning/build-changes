@@ -1,29 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class btc {
-   public static bqq<box> a(int $$0, BiPredicate<box, box> $$1) {
-      return buc.a(
-         (Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$2 -> $$2.group($$2.b(bya.o), $$2.a(bya.ab), $$2.c(bya.ai), $$2.a(bya.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     box $$10 = $$2.b($$3);
-                     if (!$$10.ev()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-                        $$5.a($$10.dj(), (long)$$0);
-                        if ($$10.ai() != bol.bw || $$7.Z().b(cwa.N)) {
-                           $$3.b();
-                           $$4.b();
-                        }
-
-                        return true;
+   public static brh<bpo> a() {
+      return but.a((Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$0 -> $$0.group($$0.b(byr.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.z.i() <= 0.95F) {
+                  return false;
+               } else {
+                  ib $$5 = $$0.<ik>b($$1).b();
+                  if ($$5.a($$3.dm(), 3.0)) {
+                     dmz $$6 = $$2.a_($$5);
+                     if ($$6.a(dac.od)) {
+                        czw $$7 = (czw)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
-                  }))
-      );
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

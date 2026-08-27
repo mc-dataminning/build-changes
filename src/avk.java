@@ -1,234 +1,346 @@
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.bytes.ByteArrays;
-import java.nio.charset.StandardCharsets;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.MessageDigest;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.spec.EncodedKeySpec;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.Base64.Encoder;
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
+import com.google.common.annotations.VisibleForTesting;
+import java.io.Serializable;
+import java.util.AbstractList;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.RandomAccess;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class avk {
-   private static final String h = "AES";
-   private static final int i = 128;
-   private static final String j = "RSA";
-   private static final int k = 1024;
-   private static final String l = "ISO_8859_1";
-   private static final String m = "SHA-1";
-   public static final String a = "SHA256withRSA";
-   public static final int b = 256;
-   private static final String n = "-----BEGIN RSA PRIVATE KEY-----";
-   private static final String o = "-----END RSA PRIVATE KEY-----";
-   public static final String c = "-----BEGIN RSA PUBLIC KEY-----";
-   private static final String p = "-----END RSA PUBLIC KEY-----";
-   public static final String d = "\n";
-   public static final Encoder e = Base64.getMimeEncoder(76, "\n".getBytes(StandardCharsets.UTF_8));
-   public static final Codec<PublicKey> f = Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(b($$0));
-      } catch (avl var2) {
-         return DataResult.error(var2::getMessage);
-      }
-   }, avk::a);
-   public static final Codec<PrivateKey> g = Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(a($$0));
-      } catch (avl var2) {
-         return DataResult.error(var2::getMessage);
-      }
-   }, avk::a);
+public class avk<T> extends AbstractList<T> implements Serializable, Cloneable, Deque<T>, RandomAccess {
+   private static final int a = 1;
+   private Object[] b;
+   private int c;
+   private int d;
 
-   public static SecretKey a() throws avl {
-      try {
-         KeyGenerator $$0 = KeyGenerator.getInstance("AES");
-         $$0.init(128);
-         return $$0.generateKey();
-      } catch (Exception var1) {
-         throw new avl(var1);
+   public avk() {
+      this(1);
+   }
+
+   public avk(int $$0) {
+      this.b = new Object[$$0];
+      this.c = 0;
+      this.d = 0;
+   }
+
+   @Override
+   public int size() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public int a() {
+      return this.b.length;
+   }
+
+   private int a(int $$0) {
+      return ($$0 + this.c) % this.b.length;
+   }
+
+   @Override
+   public T get(int $$0) {
+      this.b($$0);
+      return this.c(this.a($$0));
+   }
+
+   private static void a(int $$0, int $$1) {
+      if ($$0 < 0 || $$0 >= $$1) {
+         throw new IndexOutOfBoundsException($$0);
       }
    }
 
-   public static KeyPair b() throws avl {
-      try {
-         KeyPairGenerator $$0 = KeyPairGenerator.getInstance("RSA");
-         $$0.initialize(1024);
-         return $$0.generateKeyPair();
-      } catch (Exception var1) {
-         throw new avl(var1);
-      }
+   private void b(int $$0) {
+      a($$0, this.d);
    }
 
-   public static byte[] a(String $$0, PublicKey $$1, SecretKey $$2) throws avl {
-      try {
-         return a($$0.getBytes("ISO_8859_1"), $$2.getEncoded(), $$1.getEncoded());
-      } catch (Exception var4) {
-         throw new avl(var4);
-      }
+   private T c(int $$0) {
+      return (T)this.b[$$0];
    }
 
-   private static byte[] a(byte[]... $$0) throws Exception {
-      MessageDigest $$1 = MessageDigest.getInstance("SHA-1");
-
-      for (byte[] $$2 : $$0) {
-         $$1.update($$2);
-      }
-
-      return $$1.digest();
-   }
-
-   private static <T extends Key> T a(String $$0, String $$1, String $$2, avk.a<T> $$3) throws avl {
-      int $$4 = $$0.indexOf($$1);
-      if ($$4 != -1) {
-         $$4 += $$1.length();
-         int $$5 = $$0.indexOf($$2, $$4);
-         $$0 = $$0.substring($$4, $$5 + 1);
-      }
-
-      try {
-         return $$3.apply(Base64.getMimeDecoder().decode($$0));
-      } catch (IllegalArgumentException var6) {
-         throw new avl(var6);
-      }
-   }
-
-   public static PrivateKey a(String $$0) throws avl {
-      return a($$0, "-----BEGIN RSA PRIVATE KEY-----", "-----END RSA PRIVATE KEY-----", avk::b);
-   }
-
-   public static PublicKey b(String $$0) throws avl {
-      return a($$0, "-----BEGIN RSA PUBLIC KEY-----", "-----END RSA PUBLIC KEY-----", avk::a);
-   }
-
-   public static String a(PublicKey $$0) {
-      if (!"RSA".equals($$0.getAlgorithm())) {
-         throw new IllegalArgumentException("Public key must be RSA");
-      } else {
-         return "-----BEGIN RSA PUBLIC KEY-----\n" + e.encodeToString($$0.getEncoded()) + "\n-----END RSA PUBLIC KEY-----\n";
-      }
-   }
-
-   public static String a(PrivateKey $$0) {
-      if (!"RSA".equals($$0.getAlgorithm())) {
-         throw new IllegalArgumentException("Private key must be RSA");
-      } else {
-         return "-----BEGIN RSA PRIVATE KEY-----\n" + e.encodeToString($$0.getEncoded()) + "\n-----END RSA PRIVATE KEY-----\n";
-      }
-   }
-
-   private static PrivateKey b(byte[] $$0) throws avl {
-      try {
-         EncodedKeySpec $$1 = new PKCS8EncodedKeySpec($$0);
-         KeyFactory $$2 = KeyFactory.getInstance("RSA");
-         return $$2.generatePrivate($$1);
-      } catch (Exception var3) {
-         throw new avl(var3);
-      }
-   }
-
-   public static PublicKey a(byte[] $$0) throws avl {
-      try {
-         EncodedKeySpec $$1 = new X509EncodedKeySpec($$0);
-         KeyFactory $$2 = KeyFactory.getInstance("RSA");
-         return $$2.generatePublic($$1);
-      } catch (Exception var3) {
-         throw new avl(var3);
-      }
-   }
-
-   public static SecretKey a(PrivateKey $$0, byte[] $$1) throws avl {
-      byte[] $$2 = b($$0, $$1);
-
-      try {
-         return new SecretKeySpec($$2, "AES");
-      } catch (Exception var4) {
-         throw new avl(var4);
-      }
-   }
-
-   public static byte[] a(Key $$0, byte[] $$1) throws avl {
-      return a(1, $$0, $$1);
-   }
-
-   public static byte[] b(Key $$0, byte[] $$1) throws avl {
-      return a(2, $$0, $$1);
-   }
-
-   private static byte[] a(int $$0, Key $$1, byte[] $$2) throws avl {
-      try {
-         return a($$0, $$1.getAlgorithm(), $$1).doFinal($$2);
-      } catch (Exception var4) {
-         throw new avl(var4);
-      }
-   }
-
-   private static Cipher a(int $$0, String $$1, Key $$2) throws Exception {
-      Cipher $$3 = Cipher.getInstance($$1);
-      $$3.init($$0, $$2);
+   @Override
+   public T set(int $$0, T $$1) {
+      this.b($$0);
+      Objects.requireNonNull($$1);
+      int $$2 = this.a($$0);
+      T $$3 = this.c($$2);
+      this.b[$$2] = $$1;
       return $$3;
    }
 
-   public static Cipher a(int $$0, Key $$1) throws avl {
-      try {
-         Cipher $$2 = Cipher.getInstance("AES/CFB8/NoPadding");
-         $$2.init($$0, $$1, new IvParameterSpec($$1.getEncoded()));
-         return $$2;
-      } catch (Exception var3) {
-         throw new avl(var3);
+   @Override
+   public void add(int $$0, T $$1) {
+      a($$0, this.d + 1);
+      Objects.requireNonNull($$1);
+      if (this.d == this.b.length) {
+         this.b();
+      }
+
+      int $$2 = this.a($$0);
+      if ($$0 == this.d) {
+         this.b[$$2] = $$1;
+      } else if ($$0 == 0) {
+         this.c--;
+         if (this.c < 0) {
+            this.c = this.c + this.b.length;
+         }
+
+         this.b[this.a(0)] = $$1;
+      } else {
+         for (int $$3 = this.d - 1; $$3 >= $$0; $$3--) {
+            this.b[this.a($$3 + 1)] = this.b[this.a($$3)];
+         }
+
+         this.b[$$2] = $$1;
+      }
+
+      this.modCount++;
+      this.d++;
+   }
+
+   private void b() {
+      int $$0 = this.b.length + Math.max(this.b.length >> 1, 1);
+      Object[] $$1 = new Object[$$0];
+      this.a($$1, this.d);
+      this.c = 0;
+      this.b = $$1;
+   }
+
+   @Override
+   public T remove(int $$0) {
+      this.b($$0);
+      int $$1 = this.a($$0);
+      T $$2 = this.c($$1);
+      if ($$0 == 0) {
+         this.b[$$1] = null;
+         this.c++;
+      } else if ($$0 == this.d - 1) {
+         this.b[$$1] = null;
+      } else {
+         for (int $$3 = $$0 + 1; $$3 < this.d; $$3++) {
+            this.b[this.a($$3 - 1)] = this.get($$3);
+         }
+
+         this.b[this.a(this.d - 1)] = null;
+      }
+
+      this.modCount++;
+      this.d--;
+      return $$2;
+   }
+
+   @Override
+   public boolean removeIf(Predicate<? super T> $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.d; $$2++) {
+         T $$3 = this.get($$2);
+         if ($$0.test($$3)) {
+            $$1++;
+         } else if ($$1 != 0) {
+            this.b[this.a($$2 - $$1)] = $$3;
+            this.b[this.a($$2)] = null;
+         }
+      }
+
+      this.modCount += $$1;
+      this.d -= $$1;
+      return $$1 != 0;
+   }
+
+   private void a(Object[] $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0[$$2] = this.get($$2);
       }
    }
 
-   interface a<T extends Key> {
-      T apply(byte[] var1) throws avl;
-   }
-
-   public static record b(long b, byte[] c) {
-      public static final avk.b a = new avk.b(0L, ByteArrays.EMPTY_ARRAY);
-
-      public b(us $$0) {
-         this($$0.readLong(), $$0.b());
-      }
-
-      public boolean a() {
-         return this.c.length > 0;
-      }
-
-      public static void a(us $$0, avk.b $$1) {
-         $$0.b($$1.b);
-         $$0.a($$1.c);
-      }
-
-      public byte[] b() {
-         return Longs.toByteArray(this.b);
-      }
-
-      public long c() {
-         return this.b;
-      }
-
-      public byte[] d() {
-         return this.c;
+   @Override
+   public void replaceAll(UnaryOperator<T> $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         int $$2 = this.a($$1);
+         this.b[$$2] = Objects.requireNonNull($$0.apply(this.c($$1)));
       }
    }
 
-   public static class c {
-      private static final SecureRandom a = new SecureRandom();
+   @Override
+   public void forEach(Consumer<? super T> $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         $$0.accept(this.get($$1));
+      }
+   }
 
-      public static long a() {
-         return a.nextLong();
+   @Override
+   public void addFirst(T $$0) {
+      this.add(0, $$0);
+   }
+
+   @Override
+   public void addLast(T $$0) {
+      this.add(this.d, $$0);
+   }
+
+   @Override
+   public boolean offerFirst(T $$0) {
+      this.addFirst($$0);
+      return true;
+   }
+
+   @Override
+   public boolean offerLast(T $$0) {
+      this.addLast($$0);
+      return true;
+   }
+
+   @Override
+   public T removeFirst() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.remove(0);
+      }
+   }
+
+   @Override
+   public T removeLast() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.remove(this.d - 1);
+      }
+   }
+
+   @Nullable
+   @Override
+   public T pollFirst() {
+      return this.d == 0 ? null : this.removeFirst();
+   }
+
+   @Nullable
+   @Override
+   public T pollLast() {
+      return this.d == 0 ? null : this.removeLast();
+   }
+
+   @Override
+   public T getFirst() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.get(0);
+      }
+   }
+
+   @Override
+   public T getLast() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.get(this.d - 1);
+      }
+   }
+
+   @Nullable
+   @Override
+   public T peekFirst() {
+      return this.d == 0 ? null : this.getFirst();
+   }
+
+   @Nullable
+   @Override
+   public T peekLast() {
+      return this.d == 0 ? null : this.getLast();
+   }
+
+   @Override
+   public boolean removeFirstOccurrence(Object $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         T $$2 = this.get($$1);
+         if (Objects.equals($$0, $$2)) {
+            this.remove($$1);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public boolean removeLastOccurrence(Object $$0) {
+      for (int $$1 = this.d - 1; $$1 >= 0; $$1--) {
+         T $$2 = this.get($$1);
+         if (Objects.equals($$0, $$2)) {
+            this.remove($$1);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public boolean offer(T $$0) {
+      return this.offerLast($$0);
+   }
+
+   @Override
+   public T remove() {
+      return this.removeFirst();
+   }
+
+   @Nullable
+   @Override
+   public T poll() {
+      return this.pollFirst();
+   }
+
+   @Override
+   public T element() {
+      return this.getFirst();
+   }
+
+   @Nullable
+   @Override
+   public T peek() {
+      return this.peekFirst();
+   }
+
+   @Override
+   public void push(T $$0) {
+      this.addFirst($$0);
+   }
+
+   @Override
+   public T pop() {
+      return this.removeFirst();
+   }
+
+   @Override
+   public Iterator<T> descendingIterator() {
+      return new avk.a();
+   }
+
+   class a implements Iterator<T> {
+      private int b = avk.this.size() - 1;
+
+      public a() {
+      }
+
+      @Override
+      public boolean hasNext() {
+         return this.b >= 0;
+      }
+
+      @Override
+      public T next() {
+         return avk.this.get(this.b--);
+      }
+
+      @Override
+      public void remove() {
+         avk.this.remove(this.b + 1);
       }
    }
 }

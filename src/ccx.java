@@ -1,35 +1,132 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-public enum ccx implements axg {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
+public class ccx extends brg<ccv> {
+   public static final int c = 100;
+   public static final int d = 6;
+   public static final int e = 10;
+   private static final float h = 1.75F;
+   private static final float i = 0.75F;
+   public static final int f = 100;
+   public static final int g = 5;
+   private int j;
+   private int k;
+   private final atx l;
+   private final atx m;
+   private epr n;
+   private ccx.a o = ccx.a.d;
 
-   public static final Codec<ccx> h = axg.a(ccx::values);
-   private static final IntFunction<ccx> i = ave.a(ccx::a, values(), ave.a.b);
-   private final int j;
-   private final String k;
-
-   private ccx(int $$0, String $$1) {
-      this.j = $$0;
-      this.k = $$1;
+   public ccx(atx $$0, atx $$1) {
+      super(ImmutableMap.of(byr.m, bys.b, byr.n, bys.c, byr.o, bys.a, byr.Z, bys.b), 100);
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   public int a() {
-      return this.j;
+   protected boolean a(apf $$0, ccv $$1) {
+      bpo $$2 = $$1.dP().c(byr.o).get();
+      boolean $$3 = this.a($$1, $$2);
+      if (!$$3) {
+         $$1.dP().b(byr.o);
+         this.b($$1, $$2);
+      }
+
+      return $$3 && $$1.ap() != bpz.i && ccv.j($$2);
    }
 
-   public static ccx a(int $$0) {
-      return i.apply($$0);
+   protected boolean a(apf $$0, ccv $$1, long $$2) {
+      return $$1.dP().a(byr.o) && this.o != ccx.a.d && !$$1.dP().a(byr.Z);
    }
 
-   @Override
-   public String c() {
-      return this.k;
+   protected void b(apf $$0, ccv $$1, long $$2) {
+      bpo $$3 = $$1.dP().c(byr.o).get();
+      bri.a($$1, $$3);
+      $$1.b($$3);
+      $$1.dP().a(byr.m, new byu($$3.dk(), 2.0F, 0));
+      this.k = 10;
+      this.o = ccx.a.a;
+   }
+
+   protected void c(apf $$0, ccv $$1, long $$2) {
+      $$1.dP().b(byr.o);
+      $$1.r();
+      $$1.b(bpz.a);
+   }
+
+   private void b(apf $$0, ccv $$1) {
+      $$0.a(null, $$1, this.m, atz.g, 2.0F, 1.0F);
+      Optional<bow> $$2 = $$1.s();
+      if ($$2.isPresent()) {
+         bow $$3 = $$2.get();
+         if ($$3.bA()) {
+            $$1.C($$3);
+            if (!$$3.bA()) {
+               $$3.a(bow.c.a);
+            }
+         }
+      }
+   }
+
+   protected void d(apf $$0, ccv $$1, long $$2) {
+      bpo $$3 = $$1.dP().c(byr.o).get();
+      $$1.b($$3);
+      switch (this.o) {
+         case a:
+            if ($$3.f($$1) < 1.75F) {
+               $$0.a(null, $$1, this.l, atz.g, 2.0F, 1.0F);
+               $$1.b(bpz.j);
+               $$3.g($$3.dk().a($$1.dk()).d().a(0.75));
+               this.n = $$3.dk();
+               this.j = 0;
+               this.o = ccx.a.b;
+            } else if (this.k <= 0) {
+               $$1.dP().a(byr.m, new byu($$3.dk(), 2.0F, 0));
+               this.k = 10;
+            } else {
+               this.k--;
+            }
+            break;
+         case b:
+            if (this.j++ >= 6) {
+               this.o = ccx.a.c;
+               this.b($$0, $$1);
+            }
+            break;
+         case c:
+            if (this.j >= 10) {
+               this.o = ccx.a.d;
+            } else {
+               this.j++;
+            }
+         case d:
+      }
+   }
+
+   private boolean a(ccv $$0, bpo $$1) {
+      ejc $$2 = $$0.K().a($$1, 0);
+      return $$2 != null && $$2.m() < 1.75F;
+   }
+
+   private void b(ccv $$0, bpo $$1) {
+      List<UUID> $$2 = $$0.dP().c(byr.aa).orElseGet(ArrayList::new);
+      boolean $$3 = !$$2.contains($$1.cw());
+      if ($$2.size() == 5 && $$3) {
+         $$2.remove(0);
+      }
+
+      if ($$3) {
+         $$2.add($$1.cw());
+      }
+
+      $$0.dP().a(byr.aa, $$2, 100L);
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

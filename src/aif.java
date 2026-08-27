@@ -1,12 +1,20 @@
-public class aif {
-   public static final yb<aib> a = a("status_response");
-   public static final yb<aie> b = b("status_request");
+public record aif(aig b) implements yb<aie> {
+   public static final xs<uu, aif> a = yb.a(aif::a, aif::new);
 
-   private static <T extends xz<aia>> yb<T> a(String $$0) {
-      return new yb<>(ya.b, new ajc($$0));
+   private aif(uu $$0) {
+      this($$0.a(aig.a));
    }
 
-   private static <T extends xz<aid>> yb<T> b(String $$0) {
-      return new yb<>(ya.a, new ajc($$0));
+   private void a(uu $$0) {
+      $$0.a(aig.a, this.b);
+   }
+
+   @Override
+   public yd<aif> a() {
+      return aij.a;
+   }
+
+   public void a(aie $$0) {
+      $$0.a(this);
    }
 }

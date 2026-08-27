@@ -1,40 +1,69 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class abm implements xz<aai> {
-   public static final xq<us, abm> a = xz.a(abm::a, abm::new);
-   private final int b;
-   private final byte c;
+public record abm(int b, il<bnx> c, int d, int e, Optional<epr> f) implements yb<aam> {
+   public static final xs<vf, abm> a = yb.a(abm::a, abm::new);
+   private static final xs<vf, il<bnx>> g = xq.b(kj.r);
 
-   public abm(bof $$0, byte $$1) {
-      this.b = $$0.aj();
-      this.c = $$1;
+   public abm(bow $$0, bnv $$1) {
+      this($$0.aj(), $$1.k(), $$1.d() != null ? $$1.d().aj() : -1, $$1.c() != null ? $$1.c().aj() : -1, Optional.ofNullable($$1.i()));
    }
 
-   private abm(us $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
+   private abm(vf $$0) {
+      this($$0.l(), g.decode($$0), a((uu)$$0), a((uu)$$0), $$0.b($$0x -> new epr($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
    }
 
-   private void a(us $$0) {
-      $$0.p(this.b);
-      $$0.k(this.c);
+   private static void a(uu $$0, int $$1) {
+      $$0.c($$1 + 1);
+   }
+
+   private static int a(uu $$0) {
+      return $$0.l() - 1;
+   }
+
+   private void a(vf $$0) {
+      $$0.c(this.b);
+      g.encode($$0, this.c);
+      a($$0, this.d);
+      a($$0, this.e);
+      $$0.a(this.f, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+         $$0x.a($$1.b());
+         $$0x.a($$1.c());
+      });
    }
 
    @Override
-   public yb<abm> a() {
-      return aet.D;
+   public yd<abm> a() {
+      return aex.z;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bof a(cwe $$0) {
-      return $$0.a(this.b);
+   public bnv a(cwz $$0) {
+      if (this.f.isPresent()) {
+         return new bnv(this.c, this.f.get());
+      } else {
+         bow $$1 = $$0.a(this.d);
+         bow $$2 = $$0.a(this.e);
+         return new bnv(this.c, $$2, $$1);
+      }
    }
 
-   public byte b() {
+   public il<bnx> e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public Optional<epr> h() {
+      return this.f;
    }
 }

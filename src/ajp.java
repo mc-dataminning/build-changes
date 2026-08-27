@@ -1,97 +1,321 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.datafixers.util.Pair;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
 import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ajp implements arz {
+public class ajp {
    private static final Logger a = LogUtils.getLogger();
-   private static final aiv b = new aiv("functions", ".mcfunction");
-   private volatile Map<ajc, hf<du>> c = ImmutableMap.of();
-   private final auu<hf<du>> d = new auu<>(this::a, "tags/functions");
-   private volatile Map<ajc, Collection<hf<du>>> e = Map.of();
-   private final int f;
-   private final CommandDispatcher<du> g;
+   private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
+   private final atb c;
+   private final Path d;
+   private ak e;
+   private final Map<af, ah> f = new LinkedHashMap<>();
+   private final Set<af> g = new HashSet<>();
+   private final Set<af> h = new HashSet<>();
+   private final Set<ag> i = new HashSet<>();
+   private apg j;
+   @Nullable
+   private af k;
+   private boolean l = true;
+   private final Codec<ajp.a> m;
 
-   public Optional<hf<du>> a(ajc $$0) {
-      return Optional.ofNullable(this.c.get($$0));
+   public ajp(DataFixer $$0, atb $$1, ajt $$2, Path $$3, apg $$4) {
+      this.c = $$1;
+      this.d = $$3;
+      this.j = $$4;
+      this.e = $$2.a();
+      int $$5 = 1343;
+      this.m = ayc.p.a(ajp.a.a, $$0, 1343);
+      this.d($$2);
    }
 
-   public Map<ajc, hf<du>> a() {
-      return this.c;
+   public void a(apg $$0) {
+      this.j = $$0;
    }
 
-   public Collection<hf<du>> b(ajc $$0) {
-      return this.e.getOrDefault($$0, List.of());
+   public void a() {
+      for (ap<?> $$0 : ki.aq) {
+         $$0.a(this);
+      }
    }
 
-   public Iterable<ajc> b() {
-      return this.e.keySet();
+   public void a(ajt $$0) {
+      this.a();
+      this.f.clear();
+      this.g.clear();
+      this.i.clear();
+      this.h.clear();
+      this.l = true;
+      this.k = null;
+      this.e = $$0.a();
+      this.d($$0);
    }
 
-   public ajp(int $$0, CommandDispatcher<du> $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   private void b(ajt $$0) {
+      for (af $$1 : $$0.b()) {
+         this.d($$1);
+      }
    }
 
-   @Override
-   public CompletableFuture<Void> a(arz.a $$0, asf $$1, bjc $$2, bjc $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Map<ajc, List<auu.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
-      CompletableFuture<Map<ajc, CompletableFuture<hf<du>>>> $$7 = CompletableFuture.<Map<ajc, asd>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
-         Map<ajc, CompletableFuture<hf<du>>> $$2x = Maps.newHashMap();
-         du $$3x = new du(dt.a, eov.b, eou.a, null, this.f, "", vr.a, null, null);
-
-         for (Entry<ajc, asd> $$4x : $$1x.entrySet()) {
-            ajc $$5x = $$4x.getKey();
-            ajc $$6x = b.b($$5x);
-            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
-               List<String> $$3xx = a($$4x.getValue());
-               return hf.a($$6x, this.g, $$3x, $$3xx);
-            }, $$4));
+   private void c(ajt $$0) {
+      for (af $$1 : $$0.b()) {
+         ae $$2 = $$1.b();
+         if ($$2.e().isEmpty()) {
+            this.a($$1, "");
+            $$2.d().a(this.j);
          }
+      }
+   }
 
-         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
-         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
-      });
-      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
-         Map<ajc, CompletableFuture<hf<du>>> $$1x = (Map<ajc, CompletableFuture<hf<du>>>)$$0x.getSecond();
-         Builder<ajc, hf<du>> $$2x = ImmutableMap.builder();
-         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
-               if ($$3x != null) {
-                  a.error("Failed to load function {}", $$1xx, $$3x);
-               } else {
-                  $$2x.put($$1xx, $$2xxx);
+   private void d(ajt $$0) {
+      if (Files.isRegularFile(this.d)) {
+         try {
+            JsonReader $$1 = new JsonReader(Files.newBufferedReader(this.d, StandardCharsets.UTF_8));
+
+            try {
+               $$1.setLenient(false);
+               JsonElement $$2 = Streams.parse($$1);
+               ajp.a $$3 = ac.a(this.m.parse(JsonOps.INSTANCE, $$2), JsonParseException::new);
+               this.a($$0, $$3);
+            } catch (Throwable var6) {
+               try {
+                  $$1.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
                }
 
-               return null;
-            }).join());
-         this.c = $$2x.build();
-         this.e = this.d.a((Map<ajc, List<auu.a>>)$$0x.getFirst());
-      }, $$5);
+               throw var6;
+            }
+
+            $$1.close();
+         } catch (JsonParseException var7) {
+            a.error("Couldn't parse player advancements in {}", this.d, var7);
+         } catch (IOException var8) {
+            a.error("Couldn't access player advancements in {}", this.d, var8);
+         }
+      }
+
+      this.c($$0);
+      this.b($$0);
    }
 
-   private static List<String> a(asd $$0) {
+   public void b() {
+      JsonElement $$0 = ac.a(this.m.encodeStart(JsonOps.INSTANCE, this.c()), IllegalStateException::new);
+
       try {
-         List var2;
-         try (BufferedReader $$1 = $$0.e()) {
-            var2 = $$1.lines().toList();
+         v.c(this.d.getParent());
+
+         try (Writer $$1 = Files.newBufferedWriter(this.d, StandardCharsets.UTF_8)) {
+            b.toJson($$0, $$1);
+         }
+      } catch (IOException var7) {
+         a.error("Couldn't save player advancements to {}", this.d, var7);
+      }
+   }
+
+   private void a(ajt $$0, ajp.a $$1) {
+      $$1.a(($$1x, $$2) -> {
+         af $$3 = $$0.a($$1x);
+         if ($$3 == null) {
+            a.warn("Ignored advancement '{}' in progress file {} - it doesn't exist anymore?", $$1x, this.d);
+         } else {
+            this.a($$3, $$2);
+            this.h.add($$3);
+            this.c($$3);
+         }
+      });
+   }
+
+   private ajp.a c() {
+      Map<ajh, ah> $$0 = new LinkedHashMap<>();
+      this.f.forEach(($$1, $$2) -> {
+         if ($$2.b()) {
+            $$0.put($$1.a(), $$2);
+         }
+      });
+      return new ajp.a($$0);
+   }
+
+   public boolean a(af $$0, String $$1) {
+      boolean $$2 = false;
+      ah $$3 = this.b($$0);
+      boolean $$4 = $$3.a();
+      if ($$3.a($$1)) {
+         this.e($$0);
+         this.h.add($$0);
+         $$2 = true;
+         if (!$$4 && $$3.a()) {
+            $$0.b().d().a(this.j);
+            $$0.b().c().ifPresent($$1x -> {
+               if ($$1x.i() && this.j.dM().Z().b(cwv.A)) {
+                  this.c.a($$1x.e().a($$0, this.j), false);
+               }
+            });
+         }
+      }
+
+      if (!$$4 && $$3.a()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   public boolean b(af $$0, String $$1) {
+      boolean $$2 = false;
+      ah $$3 = this.b($$0);
+      boolean $$4 = $$3.a();
+      if ($$3.b($$1)) {
+         this.d($$0);
+         this.h.add($$0);
+         $$2 = true;
+      }
+
+      if ($$4 && !$$3.a()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   private void c(af $$0) {
+      ag $$1 = this.e.a($$0);
+      if ($$1 != null) {
+         this.i.add($$1.d());
+      }
+   }
+
+   private void d(af $$0) {
+      ah $$1 = this.b($$0);
+      if (!$$1.a()) {
+         for (Entry<String, an<?>> $$2 : $$0.b().e().entrySet()) {
+            ao $$3 = $$1.c($$2.getKey());
+            if ($$3 != null && !$$3.a()) {
+               this.a($$0, $$2.getKey(), $$2.getValue());
+            }
+         }
+      }
+   }
+
+   private <T extends aq> void a(af $$0, String $$1, an<T> $$2) {
+      $$2.a().a(this, new ap.a<>($$2.b(), $$0, $$1));
+   }
+
+   private void e(af $$0) {
+      ah $$1 = this.b($$0);
+
+      for (Entry<String, an<?>> $$2 : $$0.b().e().entrySet()) {
+         ao $$3 = $$1.c($$2.getKey());
+         if ($$3 != null && ($$3.a() || $$1.a())) {
+            this.b($$0, $$2.getKey(), $$2.getValue());
+         }
+      }
+   }
+
+   private <T extends aq> void b(af $$0, String $$1, an<T> $$2) {
+      $$2.a().b(this, new ap.a<>($$2.b(), $$0, $$1));
+   }
+
+   public void b(apg $$0) {
+      if (this.l || !this.i.isEmpty() || !this.h.isEmpty()) {
+         Map<ajh, ah> $$1 = new HashMap<>();
+         Set<af> $$2 = new HashSet<>();
+         Set<ajh> $$3 = new HashSet<>();
+
+         for (ag $$4 : this.i) {
+            this.a($$4, $$2, $$3);
          }
 
-         return var2;
-      } catch (IOException var6) {
-         throw new CompletionException(var6);
+         this.i.clear();
+
+         for (af $$5 : this.h) {
+            if (this.g.contains($$5)) {
+               $$1.put($$5.a(), this.f.get($$5));
+            }
+         }
+
+         this.h.clear();
+         if (!$$1.isEmpty() || !$$2.isEmpty() || !$$3.isEmpty()) {
+            $$0.d.b(new aeq(this.l, $$2, $$3, $$1));
+         }
+      }
+
+      this.l = false;
+   }
+
+   public void a(@Nullable af $$0) {
+      af $$1 = this.k;
+      if ($$0 != null && $$0.b().a() && $$0.b().c().isPresent()) {
+         this.k = $$0;
+      } else {
+         this.k = null;
+      }
+
+      if ($$1 != this.k) {
+         this.j.d.b(new adc(this.k == null ? null : this.k.a()));
+      }
+   }
+
+   public ah b(af $$0) {
+      ah $$1 = this.f.get($$0);
+      if ($$1 == null) {
+         $$1 = new ah();
+         this.a($$0, $$1);
+      }
+
+      return $$1;
+   }
+
+   private void a(af $$0, ah $$1) {
+      $$1.a($$0.b().f());
+      this.f.put($$0, $$1);
+   }
+
+   private void a(ag $$0, Set<af> $$1, Set<ajh> $$2) {
+      ake.a($$0, $$0x -> this.b($$0x.b()).a(), ($$2x, $$3) -> {
+         af $$4 = $$2x.b();
+         if ($$3) {
+            if (this.g.add($$4)) {
+               $$1.add($$4);
+               if (this.f.containsKey($$4)) {
+                  this.h.add($$4);
+               }
+            }
+         } else if (this.g.remove($$4)) {
+            $$2.add($$4.a());
+         }
+      });
+   }
+
+   static record a(Map<ajh, ah> b) {
+      public static final Codec<ajp.a> a = Codec.unboundedMap(ajh.a, ah.a).xmap(ajp.a::new, ajp.a::a);
+
+      public void a(BiConsumer<ajh, ah> $$0) {
+         this.b.entrySet().stream().sorted(Entry.comparingByValue()).forEach($$1 -> $$0.accept($$1.getKey(), $$1.getValue()));
+      }
+
+      public Map<ajh, ah> a() {
+         return this.b;
       }
    }
 }

@@ -1,20 +1,8 @@
-public interface eoz {
-   eoz a = ($$0, $$1) -> false;
-   eoz b = ($$0, $$1) -> !$$0 && !$$1;
-   eoz c = ($$0, $$1) -> $$1 && !$$0;
-   eoz d = ($$0, $$1) -> !$$0;
-   eoz e = ($$0, $$1) -> $$0 && !$$1;
-   eoz f = ($$0, $$1) -> !$$1;
-   eoz g = ($$0, $$1) -> $$0 != $$1;
-   eoz h = ($$0, $$1) -> !$$0 || !$$1;
-   eoz i = ($$0, $$1) -> $$0 && $$1;
-   eoz j = ($$0, $$1) -> $$0 == $$1;
-   eoz k = ($$0, $$1) -> $$1;
-   eoz l = ($$0, $$1) -> !$$0 || $$1;
-   eoz m = ($$0, $$1) -> $$0;
-   eoz n = ($$0, $$1) -> $$0 || !$$1;
-   eoz o = ($$0, $$1) -> $$0 || $$1;
-   eoz p = ($$0, $$1) -> true;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean apply(boolean var1, boolean var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eoz {
 }

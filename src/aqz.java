@@ -1,65 +1,9 @@
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import java.util.Optional;
 
-class aqz extends FileStore {
-   private final String a;
-
-   public aqz(String $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String name() {
-      return this.a;
-   }
-
-   @Override
-   public String type() {
-      return "index";
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public long getTotalSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
-      return $$0 == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(String $$0) {
-      return "basic".equals($$0);
-   }
-
-   @Nullable
-   @Override
-   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
-      return null;
-   }
-
-   @Override
-   public Object getAttribute(String $$0) throws IOException {
-      throw new UnsupportedOperationException();
+public record aqz(String a, vu b, asa c, Optional<arv> d) {
+   public vu a(boolean $$0, vu $$1) {
+      return vx.a(this.c.a(vu.b(this.a)))
+         .a($$2 -> $$2.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new wa(wa.a.a, vu.i().b(this.b).f("\n").b($$1))));
    }
 }

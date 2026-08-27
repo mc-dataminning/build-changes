@@ -1,49 +1,111 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public class blx extends blq {
-   public static final Codec<blx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bkv.b(blq.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, blx::new)
-   );
-   private final bkv<blq> b;
-   private final int f;
-   private final int g;
+public interface blx<T, F> {
+   @Nullable
+   F a();
 
-   public blx(bkv<blq> $$0) {
-      this.b = $$0;
-      List<bkx.b<blq>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+   boolean a(T var1);
 
-      for (bkx.b<blq> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
+   boolean b();
+
+   int c();
+
+   public static final class a implements blx<blx.b, Runnable> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
+
+      public a(int $$0) {
+         this.a = new Queue[$$0];
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
+         }
       }
 
-      this.f = $$2;
-      this.g = $$3;
+      @Nullable
+      public Runnable d() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public boolean a(blx.b $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
+         } else {
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.get() == 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b.get();
+      }
    }
 
-   @Override
-   public int a(awt $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   public static final class b implements Runnable {
+      final int a;
+      private final Runnable b;
+
+      public b(int $$0, Runnable $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void run() {
+         this.b.run();
+      }
+
+      public int a() {
+         return this.a;
+      }
    }
 
-   @Override
-   public int a() {
-      return this.f;
-   }
+   public static final class c<T> implements blx<T, T> {
+      private final Queue<T> a;
 
-   @Override
-   public int b() {
-      return this.g;
-   }
+      public c(Queue<T> $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public blr<?> c() {
-      return blr.e;
+      @Nullable
+      @Override
+      public T a() {
+         return this.a.poll();
+      }
+
+      @Override
+      public boolean a(T $$0) {
+         return this.a.add($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public int c() {
+         return this.a.size();
+      }
    }
 }

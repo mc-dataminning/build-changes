@@ -1,38 +1,37 @@
-public class fox<T extends bof> extends fnn<T> {
+public class fox<T extends bow> extends fol<T> {
    private static final String a = "main";
-   private final fqf b;
-   private final fqf f;
+   private final frd b;
 
-   public fox(fqf $$0) {
+   public fox(frd $$0) {
       this.b = $$0;
-      this.f = $$0.b("main");
    }
 
-   public static fql b() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
+   public static frj b() {
+      frl $$0 = new frl();
+      frm $$1 = $$0.a();
+      int $$2 = 2;
       $$1.a(
          "main",
-         fqk.c()
+         fri.c()
             .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         fqh.a
+            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
+         frf.a
       );
-      return fql.a($$0, 64, 32);
-   }
-
-   @Override
-   public fqf a() {
-      return this.b;
+      return frj.a($$0, 64, 32);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public frd a() {
+      return this.b;
    }
 }

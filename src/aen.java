@@ -1,34 +1,50 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-public class aen implements xz<aai> {
-   public static final xq<vd, aen> a = xq.a(xo.d, aen::b, aen.a.b.a(xo.a()), aen::e, aen::new);
+public class aen implements yb<aam> {
+   public static final xs<uu, aen> a = yb.a(aen::a, aen::new);
    private final int b;
-   private final List<aen.a> c;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+   private final boolean h;
 
-   public aen(int $$0, Collection<bqa> $$1) {
-      this.b = $$0;
-      this.c = Lists.newArrayList();
-
-      for (bqa $$2 : $$1) {
-         this.c.add(new aen.a($$2.a(), $$2.b(), $$2.c()));
-      }
+   public aen(bow $$0) {
+      this.b = $$0.aj();
+      epr $$1 = $$0.dl();
+      this.c = $$1.c;
+      this.d = $$1.d;
+      this.e = $$1.e;
+      this.f = (byte)((int)($$0.dC() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dE() * 256.0F / 360.0F));
+      this.h = $$0.aC();
    }
 
-   private aen(int $$0, List<aen.a> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private aen(uu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
+      this.h = $$0.readBoolean();
+   }
+
+   private void a(uu $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public yb<aen> a() {
-      return aet.bb;
+   public yd<aen> a() {
+      return aex.aZ;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
@@ -36,26 +52,27 @@ public class aen implements xz<aai> {
       return this.b;
    }
 
-   public List<aen.a> e() {
+   public double e() {
       return this.c;
    }
 
-   public static record a(il<bpz> c, double d, Collection<bqc> e) {
-      public static final xq<ByteBuf, bqc> a = xq.a(
-         je.g, bqc::a, xo.g, bqc::c, bqc.a.e, bqc::b, ($$0, $$1, $$2) -> new bqc($$0, "Unknown synced attribute modifier", $$1, $$2)
-      );
-      public static final xq<vd, aen.a> b = xq.a(xo.b(ki.c), aen.a::a, xo.g, aen.a::b, a.a(xo.a(ArrayList::new)), aen.a::c, aen.a::new);
+   public double f() {
+      return this.d;
+   }
 
-      public il<bpz> a() {
-         return this.c;
-      }
+   public double g() {
+      return this.e;
+   }
 
-      public double b() {
-         return this.d;
-      }
+   public byte h() {
+      return this.f;
+   }
 
-      public Collection<bqc> c() {
-         return this.e;
-      }
+   public byte i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
    }
 }

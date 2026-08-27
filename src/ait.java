@@ -1,8 +1,8 @@
-public class ait {
-   public static final ajb<cpl> a = a("pumpkin_seeds");
-   public static final ajb<cpl> b = a("melon_seeds");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static ajb<cpl> a(String $$0) {
-      return ajb.a(ki.F, new ajc($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ait {
 }

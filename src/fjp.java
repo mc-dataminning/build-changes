@@ -1,236 +1,140 @@
-public class fjp extends fbg<fjp.a> {
-   static final ajc a = new ajc("transferable_list/select_highlighted");
-   static final ajc m = new ajc("transferable_list/select");
-   static final ajc n = new ajc("transferable_list/unselect_highlighted");
-   static final ajc o = new ajc("transferable_list/unselect");
-   static final ajc p = new ajc("transferable_list/move_up_highlighted");
-   static final ajc q = new ajc("transferable_list/move_up");
-   static final ajc r = new ajc("transferable_list/move_down_highlighted");
-   static final ajc t = new ajc("transferable_list/move_down");
-   static final vs u = vs.c("pack.incompatible");
-   static final vs v = vs.c("pack.incompatible.confirm.title");
-   private final vs w;
-   final fjo x;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   public fjp(eyk $$0, fjo $$1, int $$2, int $$3, vs $$4) {
-      super($$0, $$2, $$3 - 83, 32, 36);
-      this.x = $$1;
-      this.w = $$4;
-      this.e = false;
-      this.a(true, (int)(9.0F * 1.5F));
+public class fjp extends fjf<cnk> {
+   private static final ajh x = new ajh("container/smithing/error");
+   private static final ajh y = new ajh("item/empty_slot_smithing_template_armor_trim");
+   private static final ajh z = new ajh("item/empty_slot_smithing_template_netherite_upgrade");
+   private static final vu A = vu.c("container.upgrade.missing_template_tooltip");
+   private static final vu B = vu.c("container.upgrade.error_tooltip");
+   private static final List<ajh> C = List.of(y, z);
+   private static final int D = 44;
+   private static final int E = 15;
+   private static final int F = 28;
+   private static final int G = 21;
+   private static final int H = 65;
+   private static final int I = 46;
+   private static final int J = 115;
+   private static final int K = 210;
+   private static final int L = 25;
+   private static final Vector3f M = new Vector3f();
+   private static final Quaternionf N = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
+   private static final int O = 25;
+   private static final int P = 75;
+   private static final int Q = 141;
+   private final fiu R = new fiu(0);
+   private final fiu S = new fiu(1);
+   private final fiu T = new fiu(2);
+   @Nullable
+   private cet U;
+
+   public fjp(cnk $$0, cir $$1, vu $$2) {
+      super($$0, $$1, $$2, new ajh("textures/gui/container/smithing.png"));
+      this.l = 44;
+      this.m = 15;
    }
 
    @Override
-   protected void a(ezx $$0, int $$1, int $$2) {
-      vs $$3 = vs.i().b(this.w).a(n.t, n.r);
-      $$0.a(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.C() + 3, $$2), 16777215, false);
+   protected void I() {
+      this.U = new cet(this.f.r, 0.0, 0.0, 0.0);
+      this.U.s(true);
+      this.U.a(true);
+      this.U.aX = 210.0F;
+      this.U.s(25.0F);
+      this.U.aZ = this.U.dC();
+      this.U.ba = this.U.dC();
+      this.b(this.p.b(3).g());
    }
 
    @Override
-   public int b() {
-      return this.g;
+   public void E() {
+      super.E();
+      Optional<crm> $$0 = this.J();
+      this.R.a(C);
+      this.S.a($$0.map(crm::y).orElse(List.of()));
+      this.T.a($$0.map(crm::z).orElse(List.of()));
+   }
+
+   private Optional<crm> J() {
+      cqk $$0 = this.p.b(0).g();
+      return !$$0.b() && $$0.d() instanceof crm $$1 ? Optional.of($$1) : Optional.empty();
    }
 
    @Override
-   protected int c() {
-      return this.D() - 6;
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.i() != null) {
-         switch ($$0) {
-            case 32:
-            case 257:
-               this.i().c();
-               return true;
-            default:
-               if (fgh.v()) {
-                  switch ($$0) {
-                     case 264:
-                        this.i().f();
-                        return true;
-                     case 265:
-                        this.i().e();
-                        return true;
-                  }
-               }
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
+   protected void a(fat $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.R.a(this.p, $$0, $$1, this.t, this.u);
+      this.S.a(this.p, $$0, $$1, this.t, this.u);
+      this.T.a(this.p, $$0, $$1, this.t, this.u);
+      fje.a($$0, (float)(this.t + 141), (float)(this.u + 75), 25.0F, M, N, null, this.U);
    }
 
-   public static class a extends fbg.a<fjp.a> {
-      private static final int b = 157;
-      private static final int c = 157;
-      private static final String d = "...";
-      private final fjp e;
-      protected final eyk a;
-      private final fjn.a f;
-      private final avy g;
-      private final fbd h;
-      private final avy i;
-      private final fbd j;
-
-      public a(eyk $$0, fjp $$1, fjn.a $$2) {
-         this.a = $$0;
-         this.f = $$2;
-         this.e = $$1;
-         this.g = a($$0, $$2.d());
-         this.h = b($$0, $$2.g());
-         this.i = a($$0, fjp.u);
-         this.j = b($$0, $$2.b().b());
+   @Override
+   public void a(clo $$0, int $$1, cqk $$2) {
+      if ($$1 == 3) {
+         this.b($$2);
       }
+   }
 
-      private static avy a(eyk $$0, vs $$1) {
-         int $$2 = $$0.h.a($$1);
-         if ($$2 > 157) {
-            vx $$3 = vx.a($$0.h.a($$1, 157 - $$0.h.b("...")), vx.e("..."));
-            return st.a().a($$3);
-         } else {
-            return $$1.g();
-         }
-      }
-
-      private static fbd b(eyk $$0, vs $$1) {
-         return fbd.a($$0.h, $$1, 157, 2);
-      }
-
-      @Override
-      public vs a() {
-         return vs.a("narrator.select", this.f.d());
-      }
-
-      @Override
-      public void a(ezx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         aro $$10 = this.f.b();
-         if (!$$10.a()) {
-            $$0.a($$3 - 1, $$2 - 1, $$3 + $$4 - 3, $$2 + $$5 + 1, -8978432);
+   private void b(cqk $$0) {
+      if (this.U != null) {
+         for (bpd $$1 : bpd.values()) {
+            this.U.a($$1, cqk.h);
          }
 
-         $$0.a(this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         avy $$11 = this.g;
-         fbd $$12 = this.h;
-         if (this.d() && (this.a.m.W().c() || $$8 || this.e.i() == this && this.e.aK_())) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$13 = $$6 - $$3;
-            int $$14 = $$7 - $$2;
-            if (!this.f.b().a()) {
-               $$11 = this.i;
-               $$12 = this.j;
-            }
-
-            if (this.f.o()) {
-               if ($$13 < 32) {
-                  $$0.a(fjp.a, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(fjp.m, $$3, $$2, 32, 32);
-               }
+         if (!$$0.b()) {
+            cqk $$2 = $$0.q();
+            if ($$0.d() instanceof cnw $$3) {
+               this.U.a($$3.i(), $$2);
             } else {
-               if (this.f.p()) {
-                  if ($$13 < 16) {
-                     $$0.a(fjp.n, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fjp.o, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.q()) {
-                  if ($$13 < 32 && $$13 > 16 && $$14 < 16) {
-                     $$0.a(fjp.p, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fjp.q, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.r()) {
-                  if ($$13 < 32 && $$13 > 16 && $$14 > 16) {
-                     $$0.a(fjp.r, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fjp.t, $$3, $$2, 32, 32);
-                  }
-               }
+               this.U.a(bpd.b, $$2);
             }
          }
+      }
+   }
 
-         $$0.b(this.a.h, $$11, $$3 + 32 + 2, $$2 + 1, 16777215);
-         $$12.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
+   @Override
+   protected void c(fat $$0, int $$1, int $$2) {
+      if (this.K()) {
+         $$0.a(x, $$1 + 65, $$2 + 46, 28, 21);
+      }
+   }
+
+   private void d(fat $$0, int $$1, int $$2) {
+      Optional<vu> $$3 = Optional.empty();
+      if (this.K() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+         $$3 = Optional.of(B);
       }
 
-      public String b() {
-         return this.f.c();
-      }
-
-      private boolean d() {
-         return !this.f.h() || !this.f.i();
-      }
-
-      public void c() {
-         if (this.f.o() && this.g()) {
-            this.e.x.a(this.e);
-         } else if (this.f.p()) {
-            this.f.k();
-            this.e.x.a(this.e);
-         }
-      }
-
-      void e() {
-         if (this.f.q()) {
-            this.f.l();
-         }
-      }
-
-      void f() {
-         if (this.f.r()) {
-            this.f.m();
-         }
-      }
-
-      private boolean g() {
-         if (this.f.b().a()) {
-            this.f.j();
-            return true;
-         } else {
-            vs $$0 = this.f.b().c();
-            this.a.a(new ffa($$0x -> {
-               this.a.a(this.e.x);
-               if ($$0x) {
-                  this.f.j();
-               }
-            }, fjp.v, $$0));
-            return false;
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)this.e.q();
-         double $$4 = $$1 - (double)this.e.g(this.e.l().indexOf(this));
-         if (this.d() && $$3 <= 32.0) {
-            this.e.x.o();
-            if (this.f.o()) {
-               this.g();
-               return true;
+      if (this.r != null) {
+         cqk $$4 = this.p.b(0).g();
+         cqk $$5 = this.r.g();
+         if ($$4.b()) {
+            if (this.r.e == 0) {
+               $$3 = Optional.of(A);
             }
-
-            if ($$3 < 16.0 && this.f.p()) {
-               this.f.k();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
-               this.f.l();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
-               this.f.m();
-               return true;
+         } else if ($$4.d() instanceof crm $$6 && $$5.b()) {
+            if (this.r.e == 1) {
+               $$3 = Optional.of($$6.i());
+            } else if (this.r.e == 2) {
+               $$3 = Optional.of($$6.j());
             }
          }
-
-         return false;
       }
+
+      $$3.ifPresent($$3x -> $$0.b(this.i, this.i.c($$3x, 115), $$1, $$2));
+   }
+
+   private boolean K() {
+      return this.p.b(0).h() && this.p.b(1).h() && this.p.b(2).h() && !this.p.b(this.p.o()).h();
    }
 }

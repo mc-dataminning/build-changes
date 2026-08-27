@@ -1,192 +1,174 @@
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cjw extends cjv implements boq, cjx {
-   private static final int i = 27;
-   private iu<cpq> j = iu.a(27, cpq.h);
-   @Nullable
-   private ajc k;
-   private long l;
+public class cjw extends cjr implements cjh {
+   public static final double b = 4.0;
+   private static final double d = 16.0;
+   public static final Predicate<bpo> c = $$0 -> $$0.fm() || $$0.bN();
 
-   public cjw(bol<? extends cjv> $$0, cwe $$1) {
+   public cjw(bpc<? extends cjw> $$0, cwz $$1) {
       super($$0, $$1);
    }
 
-   public cjw(cwe $$0, double $$1, double $$2, double $$3) {
-      super(bol.q, $$0);
-      this.a_($$1, $$2, $$3);
-      this.J = $$1;
-      this.K = $$2;
-      this.L = $$3;
+   public cjw(cwz $$0, bpo $$1) {
+      super(bpc.aD, $$1, $$0);
+   }
+
+   public cjw(cwz $$0, double $$1, double $$2, double $$3) {
+      super(bpc.aD, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected float x() {
-      return 0.15F;
+   protected cqf r() {
+      return cqn.vl;
    }
 
    @Override
-   protected int z() {
-      return 1;
+   protected double aW() {
+      return 0.05;
    }
 
    @Override
-   protected void b(sy $$0) {
-      super.b($$0);
-      this.c($$0);
-   }
-
-   @Override
-   protected void a(sy $$0) {
+   protected void a(epn $$0) {
       super.a($$0);
-      this.b_($$0);
-   }
+      if (!this.dM().B) {
+         cqk $$1 = this.p();
+         il<csh> $$2 = csj.d($$1);
+         List<boj> $$3 = csj.a($$1);
+         boolean $$4 = $$2.a(csk.c) && $$3.isEmpty();
+         ih $$5 = $$0.b();
+         ib $$6 = $$0.a();
+         ib $$7 = $$6.a($$5);
+         if ($$4) {
+            this.a($$7);
+            this.a($$7.a($$5.g()));
 
-   @Override
-   public void a(bne $$0) {
-      this.b(this.ai_());
-      this.a($$0, this.dJ(), this);
-   }
-
-   @Override
-   public void a(bof.c $$0) {
-      if (!this.dJ().B && $$0.a()) {
-         bmh.a(this.dJ(), this, this);
+            for (ih $$8 : ih.c.a) {
+               this.a($$7.a($$8));
+            }
+         }
       }
-
-      super.a($$0);
    }
 
    @Override
-   public bml a(cia $$0, bmk $$1) {
-      if (this.q($$0) && !$$0.fK()) {
-         return super.a($$0, $$1);
-      } else {
-         bml $$2 = this.c_($$0);
-         if ($$2.a()) {
-            this.a(dqr.k, $$0);
-            cgr.a($$0, true);
+   protected void a(epp $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         cqk $$1 = this.p();
+         il<csh> $$2 = csj.d($$1);
+         List<boj> $$3 = csj.a($$1);
+         boolean $$4 = $$2.a(csk.c) && $$3.isEmpty();
+         if ($$4) {
+            this.s();
+         } else if (!$$3.isEmpty()) {
+            if (this.w()) {
+               this.a($$1, $$2);
+            } else {
+               this.a($$3, $$0.c() == epp.a.c ? ((epo)$$0).a() : null);
+            }
          }
 
-         return $$2;
+         int $$5 = $$2.a().b() ? 2007 : 2002;
+         this.dM().c($$5, this.dm(), csj.c($$1));
+         this.am();
       }
    }
 
-   @Override
-   public void b(cia $$0) {
-      $$0.a((bmp)this);
-      if (!$$0.dJ().B) {
-         this.a(dqr.k, $$0);
-         cgr.a($$0, true);
+   private void s() {
+      epm $$0 = this.cH().c(4.0, 2.0, 4.0);
+
+      for (bpo $$2 : this.dM().a(bpo.class, $$0, c)) {
+         double $$3 = this.g($$2);
+         if ($$3 < 16.0) {
+            if ($$2.fm()) {
+               $$2.a(this.dN().c(this, this.af_()), 1.0F);
+            }
+
+            if ($$2.bN() && $$2.bA()) {
+               $$2.aF();
+            }
+         }
+      }
+
+      for (ccn $$5 : this.dM().a(ccn.class, $$0)) {
+         $$5.r();
       }
    }
 
-   @Override
-   public cpl ai_() {
-      return switch (this.y()) {
-         case b -> cpt.nW;
-         case c -> cpt.nY;
-         case d -> cpt.oa;
-         case e -> cpt.oc;
-         case f -> cpt.oe;
-         case g -> cpt.og;
-         case h -> cpt.oi;
-         case i -> cpt.ok;
-         default -> cpt.nU;
-      };
-   }
+   private void a(List<boj> $$0, @Nullable bow $$1) {
+      epm $$2 = this.cH().c(4.0, 2.0, 4.0);
+      List<bpo> $$3 = this.dM().a(bpo.class, $$2);
+      if (!$$3.isEmpty()) {
+         bow $$4 = this.H();
 
-   @Override
-   public void a() {
-      this.f();
-   }
+         for (bpo $$5 : $$3) {
+            if ($$5.fD()) {
+               double $$6 = this.g($$5);
+               if ($$6 < 16.0) {
+                  double $$7;
+                  if ($$5 == $$1) {
+                     $$7 = 1.0;
+                  } else {
+                     $$7 = 1.0 - Math.sqrt($$6) / 4.0;
+                  }
 
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cpq a(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public cpq a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cpq b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cpq $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bpo a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cia $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public cku createMenu(int $$0, chz $$1, cia $$2) {
-      if (this.k != null && $$2.P_()) {
-         return null;
-      } else {
-         this.e($$1.m);
-         return clb.a($$0, $$1, this);
+                  for (boj $$9 : $$0) {
+                     il<boh> $$10 = $$9.b();
+                     if ($$10.a().a()) {
+                        $$10.a().a(this, this.af_(), $$5, $$9.d(), $$7);
+                     } else {
+                        int $$11 = $$9.a($$1x -> (int)($$7 * (double)$$1x + 0.5));
+                        boj $$12 = new boj($$10, $$11, $$9.d(), $$9.e(), $$9.f());
+                        if (!$$12.a(20)) {
+                           $$5.b($$12, $$4);
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
    }
 
-   public void e(@Nullable cia $$0) {
-      this.f($$0);
+   private void a(cqk $$0, il<csh> $$1) {
+      bot $$2 = new bot(this.dM(), this.dr(), this.dt(), this.dx());
+      if (this.af_() instanceof bpo $$3) {
+         $$2.a($$3);
+      }
+
+      $$2.a(3.0F);
+      $$2.b(-0.5F);
+      $$2.d(10);
+      $$2.c(-$$2.g() / (float)$$2.k());
+      $$2.a($$1);
+
+      for (boj $$4 : csj.b($$0)) {
+         $$2.a(new boj($$4));
+      }
+
+      ta $$5 = $$0.w();
+      if ($$5 != null && $$5.b("CustomPotionColor", 99)) {
+         $$2.a($$5.h("CustomPotionColor"));
+      }
+
+      this.dM().b($$2);
    }
 
-   @Nullable
-   @Override
-   public ajc C() {
-      return this.k;
+   private boolean w() {
+      return this.p().a(cqn.vo);
    }
 
-   @Override
-   public void a(@Nullable ajc $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public long D() {
-      return this.l;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public iu<cpq> E() {
-      return this.j;
-   }
-
-   @Override
-   public void G() {
-      this.j = iu.a(this.b(), cpq.h);
-   }
-
-   @Override
-   public void c(cia $$0) {
-      this.dJ().a(dqr.j, this.dh(), dqr.a.a($$0));
+   private void a(ib $$0) {
+      dmz $$1 = this.dM().a_($$0);
+      if ($$1.a(aun.aK)) {
+         this.dM().a($$0, false, this);
+      } else if (cys.c($$1)) {
+         cys.a(null, $$1, this.dM(), $$0);
+      } else if (dao.g($$1)) {
+         this.dM().a(null, 1009, $$0, 0);
+         dao.a(this.af_(), this.dM(), $$0, $$1);
+         this.dM().b($$0, $$1.a(dao.c, Boolean.valueOf(false)));
+      }
    }
 }

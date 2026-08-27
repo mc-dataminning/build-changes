@@ -1,96 +1,57 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class ddh extends cyr {
-   public static final MapCodec<ddh> a = b(ddh::new);
-   public static final dmv b = dmu.n;
+public class ddh extends cyv {
+   public static final MapCodec<ddh> c = b(ddh::new);
 
    @Override
    public MapCodec<ddh> a() {
-      return a;
+      return c;
    }
 
-   protected ddh(dmd.d $$0) {
+   protected ddh(dmy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(cwe $$0, ib $$1, dme $$2, @Nullable box $$3, cpq $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      sy $$5 = cnl.a($$4);
-      if ($$5 != null && $$5.e("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
-      }
-   }
-
-   @Override
-   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dkm $$5) {
-         $$5.l();
-         return bml.a($$1.B);
-      } else {
-         return bml.d;
-      }
-   }
-
-   @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dkm $$5) {
-            $$5.l();
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public djl a(ib $$0, dme $$1) {
-      return new dkm($$0, $$1);
-   }
-
-   @Override
-   public boolean f_(dme $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
-      if ($$1.c_($$2) instanceof dkm $$4 && $$4.j()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean d_(dme $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dme $$0, cwe $$1, ib $$2) {
-      if ($$1.c_($$2) instanceof dkm $$3 && $$3.f().d() instanceof cqi $$4) {
-         return $$4.h();
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected dfk b_(dme $$0) {
-      return dfk.c;
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(b);
+   public dkg a(ib $$0, dmz $$1) {
+      return new dlc($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends djl> djm<T> a(cwe $$0, dme $$1, djn<T> $$2) {
-      return $$1.c(b) ? a($$2, djn.e, dkm::a) : null;
+   public <T extends dkg> dkh<T> a(cwz $$0, dmz $$1, dki<T> $$2) {
+      return a($$0, $$2, dki.a);
+   }
+
+   @Override
+   protected void a(cwz $$0, ib $$1, cis $$2) {
+      dkg $$3 = $$0.c_($$1);
+      if ($$3 instanceof dlc) {
+         $$2.a((bng)$$3);
+         $$2.a(aui.am);
+      }
+   }
+
+   @Override
+   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, aty.jN, atz.e, 1.0F, 1.0F, false);
+         }
+
+         ih $$7 = $$0.c(a);
+         ih.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ih.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ih.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(kc.ac, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(kc.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

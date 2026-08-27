@@ -1,46 +1,57 @@
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class atd {
-   private final ByteArrayOutputStream a;
-   private final DataOutputStream b;
+public class atd extends atf<GameProfile> {
+   private final int a;
+   private final boolean b;
 
-   public atd(int $$0) {
-      this.a = new ByteArrayOutputStream($$0);
-      this.b = new DataOutputStream(this.a);
+   public atd(GameProfile $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public void a(byte[] $$0) throws IOException {
-      this.b.write($$0, 0, $$0.length);
+   public atd(JsonObject $$0) {
+      super(b($$0));
+      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
+      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
    }
 
-   public void a(String $$0) throws IOException {
-      this.b.writeBytes($$0);
-      this.b.write(0);
+   public int a() {
+      return this.a;
    }
 
-   public void a(int $$0) throws IOException {
-      this.b.write($$0);
+   public boolean b() {
+      return this.b;
    }
 
-   public void a(short $$0) throws IOException {
-      this.b.writeShort(Short.reverseBytes($$0));
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         $$0.addProperty("level", this.a);
+         $$0.addProperty("bypassesPlayerLimit", this.b);
+      }
    }
 
-   public void b(int $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes($$0));
-   }
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
 
-   public void a(float $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
-   }
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
 
-   public byte[] a() {
-      return this.a.toByteArray();
-   }
-
-   public void b() {
-      this.a.reset();
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

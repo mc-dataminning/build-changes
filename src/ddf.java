@@ -1,82 +1,87 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddf extends dbb {
-   public static final MapCodec<ddf> i = b(ddf::new);
+public class ddf extends ddx {
+   public static final MapCodec<ddf> a = b(ddf::new);
+   public static final int b = 3;
+   public static final dnz c = dnp.as;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
-   public MapCodec<? extends ddf> a() {
-      return i;
+   public MapCodec<ddf> a() {
+      return a;
    }
 
-   protected ddf(dmd.d $$0) {
-      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+   public ddf(dmy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dme a(crx $$0) {
-      cvk $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      ehr $$3 = $$0.q().b_($$0.a());
-      ib $$4 = $$2.e();
-      ib $$5 = $$2.f();
-      ib $$6 = $$2.g();
-      ib $$7 = $$2.h();
-      dme $$8 = $$1.a_($$4);
-      dme $$9 = $$1.a_($$5);
-      dme $$10 = $$1.a_($$6);
-      dme $$11 = $$1.a_($$7);
-      return this.o()
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ih.d))))
-         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ih.c))))
-         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ih.f))))
-         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ih.e))))
-         .a(e, Boolean.valueOf($$3.a() == ehs.c));
+   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, ehs.c, ehs.c.a($$3));
+   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         ib.a $$4 = new ib.a();
+
+         for (ih $$5 : ih.values()) {
+            $$4.a($$2, $$5);
+            dmz $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, aww.a($$3, 20, 40));
+            }
+         }
+      } else {
+         $$1.a($$2, this, aww.a($$3, 20, 40));
+      }
+   }
+
+   private boolean e(dmz $$0, cwz $$1, ib $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
+      }
+   }
+
+   @Override
+   protected void a(dmz $$0, cwz $$1, ib $$2, daa $$3, ib $$4, boolean $$5) {
+      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
       }
 
-      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected epo c(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return epl.a();
-   }
+   private boolean a(cwf $$0, ib $$1, int $$2) {
+      int $$3 = 0;
+      ib.a $$4 = new ib.a();
 
-   @Override
-   protected boolean a(dme $$0, dme $$1, ih $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
-
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
+      for (ih $$5 : ih.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
          }
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   public final boolean a(dme $$0, boolean $$1) {
-      return !j($$0) && $$1 || $$0.b() instanceof ddf || $$0.a(aue.L);
+      return true;
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public cqk a(cxc $$0, ib $$1, dmz $$2) {
+      return cqk.h;
    }
 }

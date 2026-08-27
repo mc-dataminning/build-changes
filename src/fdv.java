@@ -1,218 +1,323 @@
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.Reader;
 import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fdv extends fdr {
-   private final List<fdy> c = new ArrayList<>();
-   private final List<fdv.a> d = new ArrayList<>();
-   private final fdz e = fdz.i();
-   private int f = 0;
-   private int g = 0;
+public class fdv implements asi, AutoCloseable {
+   static final Logger b = LogUtils.getLogger();
+   private static final String c = "fonts.json";
+   public static final ajh a = new ajh("minecraft", "missing");
+   private static final aja d = aja.a("font");
+   private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   private final fdx f;
+   private final List<esc> g = new ArrayList<>();
+   private final Map<ajh, fdx> h = new HashMap<>();
+   private final gja i;
+   @Nullable
+   private volatile fdx j;
 
-   public fdv() {
-      this(0, 0);
+   public fdv(gja $$0) {
+      this.i = $$0;
+      this.f = ac.a(new fdx($$0, a), $$0x -> $$0x.a(List.of(d()), Set.of()));
    }
 
-   public fdv(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
+   private static esc.a d() {
+      return new esc.a(new fdt(), fdw.a.b);
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = 0;
-      int $$1 = 0;
+   public CompletableFuture<Void> a(asi.a $$0, aso $$1, bjq $$2, bjq $$3, Executor $$4, Executor $$5) {
+      $$2.a();
+      $$2.b();
+      return this.a($$1, $$4).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   }
 
-      for (fdv.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
+   private CompletableFuture<fdv.d> a(aso $$0, Executor $$1) {
+      List<CompletableFuture<fdv.e>> $$2 = new ArrayList<>();
+
+      for (Entry<ajh, List<asm>> $$3 : d.b($$0).entrySet()) {
+         ajh $$4 = d.b($$3.getKey());
+         $$2.add(CompletableFuture.supplyAsync(() -> {
+            List<Pair<fdv.a, fei.a>> $$4x = a($$3.getValue(), $$4);
+            fdv.e $$5 = new fdv.e($$4);
+
+            for (Pair<fdv.a, fei.a> $$6 : $$4x) {
+               fdv.a $$7 = (fdv.a)$$6.getFirst();
+               fdw.a $$8 = ((fei.a)$$6.getSecond()).b();
+               ((fei.a)$$6.getSecond()).a().b().ifLeft($$5x -> {
+                  CompletableFuture<Optional<esc>> $$6x = this.a($$7, $$5x, $$0, $$1);
+                  $$5.a($$7, $$8, $$6x);
+               }).ifRight($$3xx -> $$5.a($$7, $$8, $$3xx));
+            }
+
+            return $$5;
+         }, $$1));
       }
 
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
+      return ac.d($$2)
+         .thenCompose(
+            $$1x -> {
+               List<CompletableFuture<Optional<esc>>> $$2x = $$1x.stream().flatMap(fdv.e::d).collect(Collectors.toCollection(ArrayList::new));
+               esc.a $$3x = d();
+               $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x.a())));
+               return ac.d($$2x)
+                  .thenCompose(
+                     $$3xx -> {
+                        Map<ajh, List<esc.a>> $$4x = this.a($$1x);
+                        CompletableFuture<?>[] $$5 = $$4x.values()
+                           .stream()
+                           .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
+                           .toArray(CompletableFuture[]::new);
+                        return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
+                           List<esc> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
+                           return new fdv.d($$4x, $$3xxx);
+                        });
+                     }
+                  );
+            }
+         );
+   }
 
-      for (fdv.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
-
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
+   private CompletableFuture<Optional<esc>> a(fdv.a $$0, fei.b $$1, aso $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            return Optional.of($$1.load($$2));
+         } catch (Exception var4x) {
+            b.warn("Failed to load builder {}, rejecting", $$0, var4x);
+            return Optional.empty();
          }
+      }, $$3);
+   }
 
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
+   private Map<ajh, List<esc.a>> a(List<fdv.e> $$0) {
+      Map<ajh, List<esc.a>> $$1 = new HashMap<>();
+      awb<ajh, fdv.e> $$2 = new awb<>();
+      $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
+      $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
+      return $$1;
+   }
 
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
+   private void a(List<esc.a> $$0, esc.a $$1) {
+      $$0.add(0, $$1);
+      IntSet $$2 = new IntOpenHashSet();
+
+      for (esc.a $$3 : $$0) {
+         $$2.addAll($$3.a().a());
+      }
+
+      $$2.forEach($$1x -> {
+         if ($$1x != 32) {
+            for (esc.a $$2x : Lists.reverse($$0)) {
+               if ($$2x.a().a($$1x) != null) {
+                  break;
+               }
+            }
+         }
+      });
+   }
+
+   private static Set<fdw> b(ezk $$0) {
+      Set<fdw> $$1 = EnumSet.noneOf(fdw.class);
+      if ($$0.N().c()) {
+         $$1.add(fdw.a);
+      }
+
+      if ($$0.O().c()) {
+         $$1.add(fdw.b);
+      }
+
+      return $$1;
+   }
+
+   private void a(fdv.d $$0, bjq $$1) {
+      $$1.a();
+      $$1.a("closing");
+      this.h.values().forEach(fdx::close);
+      this.h.clear();
+      this.g.forEach(esc::close);
+      this.g.clear();
+      Set<fdw> $$2 = b(ezg.Q().m);
+      $$1.b("reloading");
+      $$0.a().forEach(($$1x, $$2x) -> {
+         fdx $$3 = new fdx(this.i, $$1x);
+         $$3.a(Lists.reverse($$2x), $$2);
+         this.h.put($$1x, $$3);
+      });
+      this.g.addAll($$0.b);
+      this.j = null;
+      $$1.c();
+      $$1.b();
+      if (!this.h.containsKey(ezg.b)) {
+         throw new IllegalStateException("Default font failed to load");
+      }
+   }
+
+   public void a(ezk $$0) {
+      Set<fdw> $$1 = b($$0);
+
+      for (fdx $$2 : this.h.values()) {
+         $$2.a($$1);
+      }
+   }
+
+   private static List<Pair<fdv.a, fei.a>> a(List<asm> $$0, ajh $$1) {
+      List<Pair<fdv.a, fei.a>> $$2 = new ArrayList<>();
+
+      for (asm $$3 : $$0) {
+         try (Reader $$4 = $$3.e()) {
+            JsonElement $$5 = (JsonElement)e.fromJson($$4, JsonElement.class);
+            fdv.c $$6 = ac.a(fdv.c.a.parse(JsonOps.INSTANCE, $$5), JsonParseException::new);
+            List<fei.a> $$7 = $$6.b;
+
+            for (int $$8 = $$7.size() - 1; $$8 >= 0; $$8--) {
+               fdv.a $$9 = new fdv.a($$1, $$3.b(), $$8);
+               $$2.add(Pair.of($$9, $$7.get($$8)));
+            }
+         } catch (Exception var13) {
+            b.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{$$1, "fonts.json", $$3.b(), var13});
          }
       }
 
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
-      }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (fdv.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
-         }
-
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.B() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.C() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
+      return $$2;
    }
 
-   public <T extends fdy> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
+   public far a() {
+      return new far(this::b, false);
    }
 
-   public <T extends fdy> T a(T $$0, int $$1, int $$2, fdz $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   public far b() {
+      return new far(this::b, true);
    }
 
-   public <T extends fdy> T a(T $$0, int $$1, int $$2, Consumer<fdz> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
+   private fdx a(ajh $$0) {
+      return this.h.getOrDefault($$0, this.f);
    }
 
-   public <T extends fdy> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends fdy> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fdz $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
+   private fdx b(ajh $$0) {
+      fdx $$1 = this.j;
+      if ($$1 != null && $$0.equals($$1.a())) {
+         return $$1;
       } else {
-         this.d.add(new fdv.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
+         fdx $$2 = this.a($$0);
+         this.j = $$2;
+         return $$2;
       }
-   }
-
-   public <T extends fdy> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fdz> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
-   }
-
-   public fdv a(int $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public fdv b(int $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public fdv c(int $$0) {
-      return this.a($$0).b($$0);
    }
 
    @Override
-   public void b(Consumer<fdy> $$0) {
-      this.c.forEach($$0);
+   public void close() {
+      this.h.values().forEach(fdx::close);
+      this.g.forEach(esc::close);
+      this.f.close();
    }
 
-   public fdz b() {
-      return this.e.g();
-   }
-
-   public fdz c() {
-      return this.e;
-   }
-
-   public fdv.b d(int $$0) {
-      return new fdv.b($$0);
-   }
-
-   static class a extends fdr.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(fdy $$0, int $$1, int $$2, int $$3, int $$4, fdz $$5) {
-         super($$0, $$5.h());
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-      }
-
-      public int c() {
-         return this.c + this.e - 1;
-      }
-
-      public int d() {
-         return this.d + this.f - 1;
+   static record a(ajh a, String b, int c) {
+      @Override
+      public String toString() {
+         return "(" + this.a + ": builder #" + this.c + " from pack " + this.b + ")";
       }
    }
 
-   public final class b {
-      private final int b;
-      private int c;
+   static record b(fdv.a a, fdw.a b, Either<CompletableFuture<Optional<esc>>, ajh> c) {
 
-      b(int $$1) {
-         this.b = $$1;
+      public Optional<List<esc.a>> a(Function<ajh, List<esc.a>> $$0) {
+         return (Optional<List<esc.a>>)this.c.map($$0x -> ((Optional)$$0x.join()).map($$0xx -> List.of(new esc.a($$0xx, this.b))), $$1 -> {
+            List<esc.a> $$2 = $$0.apply($$1);
+            if ($$2 == null) {
+               fdv.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
+               return Optional.empty();
+            } else {
+               return Optional.of($$2.stream().map(this::a).toList());
+            }
+         });
       }
 
-      public <T extends fdy> T a(T $$0) {
-         return this.a($$0, 1);
+      private esc.a a(esc.a $$0) {
+         return new esc.a($$0.a(), this.b.a($$0.b()));
+      }
+   }
+
+   static record c(List<fei.a> b) {
+      public static final Codec<fdv.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fei.a.a.listOf().fieldOf("providers").forGetter(fdv.c::a)).apply($$0, fdv.c::new)
+      );
+
+      public List<fei.a> a() {
+         return this.b;
+      }
+   }
+
+   static record d(Map<ajh, List<esc.a>> a, List<esc> b) {
+   }
+
+   static record e(ajh a, List<fdv.b> b, Set<ajh> c) implements awb.a<ajh> {
+
+      public e(ajh $$0) {
+         this($$0, new ArrayList<>(), new HashSet<>());
       }
 
-      public <T extends fdy> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
+      public void a(fdv.a $$0, fdw.a $$1, fei.c $$2) {
+         this.b.add(new fdv.b($$0, $$1, Either.right($$2.a())));
+         this.c.add($$2.a());
       }
 
-      public <T extends fdy> T a(T $$0, fdz $$1) {
-         return this.a($$0, 1, $$1);
+      public void a(fdv.a $$0, fdw.a $$1, CompletableFuture<Optional<esc>> $$2) {
+         this.b.add(new fdv.b($$0, $$1, Either.left($$2)));
       }
 
-      public <T extends fdy> T a(T $$0, int $$1, fdz $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = awm.d(this.c, this.b);
+      private Stream<CompletableFuture<Optional<esc>>> d() {
+         return this.b.stream().flatMap($$0 -> $$0.c.left().stream());
+      }
+
+      public Optional<List<esc.a>> a(Function<ajh, List<esc.a>> $$0) {
+         List<esc.a> $$1 = new ArrayList<>();
+
+         for (fdv.b $$2 : this.b) {
+            Optional<List<esc.a>> $$3 = $$2.a($$0);
+            if (!$$3.isPresent()) {
+               return Optional.empty();
+            }
+
+            $$1.addAll($$3.get());
          }
 
-         this.c += $$1;
-         return fdv.this.a($$0, $$3, $$4, 1, $$1, $$2);
+         return Optional.of($$1);
       }
 
-      public fdv a() {
-         return fdv.this;
+      @Override
+      public void a(Consumer<ajh> $$0) {
+         this.c.forEach($$0);
       }
 
-      public fdz b() {
-         return fdv.this.b();
-      }
-
-      public fdz c() {
-         return fdv.this.c();
+      @Override
+      public void b(Consumer<ajh> $$0) {
       }
    }
 }

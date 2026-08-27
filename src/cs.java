@@ -18,30 +18,30 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc> g, Map<ajc, cs.c> h, Optional<br> i) implements bs {
+public record cs(cm.d d, Optional<cww> e, List<cs.e<?>> f, Object2BooleanMap<ajh> g, Map<ajh, cs.c> h, Optional<br> i) implements bs {
    public static final int b = 100;
    public static final MapCodec<cs> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               avu.a(cm.d.d, "level", cm.d.c).forGetter(cs::b),
-               cwb.f.optionalFieldOf("gamemode").forGetter(cs::c),
-               avu.a(cs.e.a.listOf(), "stats", List.of()).forGetter(cs::d),
-               avu.a(avu.d(ajc.a), "recipes", Object2BooleanMaps.emptyMap()).forGetter(cs::e),
-               avu.a(Codec.unboundedMap(ajc.a, cs.c.b), "advancements", Map.of()).forGetter(cs::f),
-               avu.a(br.a, "looking_at").forGetter(cs::g)
+               awe.a(cm.d.d, "level", cm.d.c).forGetter(cs::b),
+               cww.f.optionalFieldOf("gamemode").forGetter(cs::c),
+               awe.a(cs.e.a.listOf(), "stats", List.of()).forGetter(cs::d),
+               awe.a(awe.d(ajh.a), "recipes", Object2BooleanMaps.emptyMap()).forGetter(cs::e),
+               awe.a(Codec.unboundedMap(ajh.a, cs.c.b), "advancements", Map.of()).forGetter(cs::f),
+               awe.a(br.a, "looking_at").forGetter(cs::g)
             )
             .apply($$0, cs::new)
    );
 
    @Override
-   public boolean a(bof $$0, apa $$1, @Nullable eov $$2) {
-      if (!($$0 instanceof apb $$3)) {
+   public boolean a(bow $$0, apf $$1, @Nullable epr $$2) {
+      if (!($$0 instanceof apg $$3)) {
          return false;
-      } else if (!this.d.d($$3.ck)) {
+      } else if (!this.d.d($$3.cm)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$3.f.b()) {
          return false;
       } else {
-         aua $$5 = $$3.H();
+         auj $$5 = $$3.H();
 
          for (cs.e<?> $$6 : this.f) {
             if (!$$6.a($$5)) {
@@ -49,21 +49,21 @@ public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc
             }
          }
 
-         ats $$7 = $$3.I();
+         aub $$7 = $$3.I();
          ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
-            Entry<ajc> $$8 = (Entry<ajc>)var13.next();
-            if ($$7.b((ajc)$$8.getKey()) != $$8.getBooleanValue()) {
+            Entry<ajh> $$8 = (Entry<ajh>)var13.next();
+            if ($$7.b((ajh)$$8.getKey()) != $$8.getBooleanValue()) {
                return false;
             }
          }
 
          if (!this.h.isEmpty()) {
-            ajk $$9 = $$3.Q();
-            ajo $$10 = $$3.cI().aE();
+            ajp $$9 = $$3.Q();
+            ajt $$10 = $$3.cL().aE();
 
-            for (java.util.Map.Entry<ajc, cs.c> $$11 : this.h.entrySet()) {
+            for (java.util.Map.Entry<ajh, cs.c> $$11 : this.h.entrySet()) {
                af $$12 = $$10.a($$11.getKey());
                if ($$12 == null || !$$11.getValue().test($$9.b($$12))) {
                   return false;
@@ -72,16 +72,16 @@ public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc
          }
 
          if (this.i.isPresent()) {
-            eov $$13 = $$3.br();
-            eov $$14 = $$3.f(1.0F);
-            eov $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
-            eos $$16 = ciu.a($$3.dJ(), $$3, $$13, $$15, new eoq($$13, $$15).g(1.0), $$0x -> !$$0x.P_(), 0.0F);
-            if ($$16 == null || $$16.c() != eot.a.c) {
+            epr $$13 = $$3.bu();
+            epr $$14 = $$3.f(1.0F);
+            epr $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
+            epo $$16 = cjm.a($$3.dM(), $$3, $$13, $$15, new epm($$13, $$15).g(1.0), $$0x -> !$$0x.N_(), 0.0F);
+            if ($$16 == null || $$16.c() != epp.a.c) {
                return false;
             }
 
-            bof $$17 = $$16.a();
-            if (!this.i.get().a($$3, $$17) || !$$3.D($$17)) {
+            bow $$17 = $$16.a();
+            if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
                return false;
             }
          }
@@ -99,7 +99,7 @@ public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc
       return this.d;
    }
 
-   public Optional<cwb> c() {
+   public Optional<cww> c() {
       return this.e;
    }
 
@@ -107,11 +107,11 @@ public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc
       return this.f;
    }
 
-   public Object2BooleanMap<ajc> e() {
+   public Object2BooleanMap<ajh> e() {
       return this.g;
    }
 
-   public Map<ajc, cs.c> f() {
+   public Map<ajh, cs.c> f() {
       return this.h;
    }
 
@@ -120,7 +120,7 @@ public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc
    }
 
    static record a(Object2BooleanMap<String> c) implements cs.c {
-      public static final Codec<cs.a> a = avu.d(Codec.STRING).xmap(cs.a::new, cs.a::a);
+      public static final Codec<cs.a> a = awe.d(Codec.STRING).xmap(cs.a::new, cs.a::a);
 
       public boolean a(ah $$0) {
          ObjectIterator var2 = this.c.object2BooleanEntrySet().iterator();
@@ -167,10 +167,10 @@ public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc
 
    public static class d {
       private cm.d a = cm.d.c;
-      private Optional<cwb> b = Optional.empty();
+      private Optional<cww> b = Optional.empty();
       private final Builder<cs.e<?>> c = ImmutableList.builder();
-      private final Object2BooleanMap<ajc> d = new Object2BooleanOpenHashMap();
-      private final Map<ajc, cs.c> e = Maps.newHashMap();
+      private final Object2BooleanMap<ajh> d = new Object2BooleanOpenHashMap();
+      private final Map<ajh, cs.c> e = Maps.newHashMap();
       private Optional<br> f = Optional.empty();
 
       public static cs.d a() {
@@ -182,17 +182,17 @@ public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc
          return this;
       }
 
-      public <T> cs.d a(aty<T> $$0, il.c<T> $$1, cm.d $$2) {
+      public <T> cs.d a(auh<T> $$0, il.c<T> $$1, cm.d $$2) {
          this.c.add(new cs.e<>($$0, $$1, $$2));
          return this;
       }
 
-      public cs.d a(ajc $$0, boolean $$1) {
+      public cs.d a(ajh $$0, boolean $$1) {
          this.d.put($$0, $$1);
          return this;
       }
 
-      public cs.d a(cwb $$0) {
+      public cs.d a(cww $$0) {
          this.b = Optional.of($$0);
          return this;
       }
@@ -202,12 +202,12 @@ public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc
          return this;
       }
 
-      public cs.d b(ajc $$0, boolean $$1) {
+      public cs.d b(ajh $$0, boolean $$1) {
          this.e.put($$0, new cs.b($$1));
          return this;
       }
 
-      public cs.d a(ajc $$0, Map<String, Boolean> $$1) {
+      public cs.d a(ajh $$0, Map<String, Boolean> $$1) {
          this.e.put($$0, new cs.a(new Object2BooleanOpenHashMap($$1)));
          return this;
       }
@@ -217,25 +217,25 @@ public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc
       }
    }
 
-   static record e<T>(aty<T> b, il<T> c, cm.d d, Supplier<atw<T>> e) {
-      public static final Codec<cs.e<?>> a = kh.x.q().dispatch(cs.e::a, cs.e::a);
+   static record e<T>(auh<T> b, il<T> c, cm.d d, Supplier<auf<T>> e) {
+      public static final Codec<cs.e<?>> a = ki.x.q().dispatch(cs.e::a, cs.e::a);
 
-      public e(aty<T> $$0, il<T> $$1, cm.d $$2) {
+      public e(auh<T> $$0, il<T> $$1, cm.d $$2) {
          this($$0, $$1, $$2, Suppliers.memoize(() -> $$0.b($$1.a())));
       }
 
-      private static <T> Codec<cs.e<T>> a(aty<T> $$0) {
+      private static <T> Codec<cs.e<T>> a(auh<T> $$0) {
          return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.b().r().fieldOf("stat").forGetter(cs.e::b), avu.a(cm.d.d, "value", cm.d.c).forGetter(cs.e::c))
+            $$1 -> $$1.group($$0.b().r().fieldOf("stat").forGetter(cs.e::b), awe.a(cm.d.d, "value", cm.d.c).forGetter(cs.e::c))
                   .apply($$1, ($$1x, $$2) -> new cs.e<>($$0, $$1x, $$2))
          );
       }
 
-      public boolean a(aua $$0) {
+      public boolean a(auj $$0) {
          return this.d.d($$0.a(this.e.get()));
       }
 
-      public aty<T> a() {
+      public auh<T> a() {
          return this.b;
       }
 
@@ -247,7 +247,7 @@ public record cs(cm.d d, Optional<cwb> e, List<cs.e<?>> f, Object2BooleanMap<ajc
          return this.d;
       }
 
-      public Supplier<atw<T>> d() {
+      public Supplier<auf<T>> d() {
          return this.e;
       }
    }

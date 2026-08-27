@@ -1,36 +1,45 @@
-public interface auh {
-   aut<bol<?>> a = a("skeletons");
-   aut<bol<?>> b = a("zombies");
-   aut<bol<?>> c = a("raiders");
-   aut<bol<?>> d = a("undead");
-   aut<bol<?>> e = a("beehive_inhabitors");
-   aut<bol<?>> f = a("arrows");
-   aut<bol<?>> g = a("impact_projectiles");
-   aut<bol<?>> h = a("powder_snow_walkable_mobs");
-   aut<bol<?>> i = a("axolotl_always_hostiles");
-   aut<bol<?>> j = a("axolotl_hunt_targets");
-   aut<bol<?>> k = a("freeze_immune_entity_types");
-   aut<bol<?>> l = a("freeze_hurts_extra_types");
-   aut<bol<?>> m = a("can_breathe_under_water");
-   aut<bol<?>> n = a("frog_food");
-   aut<bol<?>> o = a("fall_damage_immune");
-   aut<bol<?>> p = a("dismounts_underwater");
-   aut<bol<?>> q = a("non_controlling_rider");
-   aut<bol<?>> r = a("deflects_projectiles");
-   aut<bol<?>> s = a("can_turn_in_boats");
-   aut<bol<?>> t = a("illager");
-   aut<bol<?>> u = a("aquatic");
-   aut<bol<?>> v = a("arthropod");
-   aut<bol<?>> w = a("ignores_poison_and_regen");
-   aut<bol<?>> x = a("inverted_healing_and_harm");
-   aut<bol<?>> y = a("wither_friends");
-   aut<bol<?>> z = a("illager_friends");
-   aut<bol<?>> A = a("not_scary_for_pufferfish");
-   aut<bol<?>> B = a("sensitive_to_impaling");
-   aut<bol<?>> C = a("sensitive_to_bane_of_arthropods");
-   aut<bol<?>> D = a("no_anger_from_wind_charge");
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private static aut<bol<?>> a(String $$0) {
-      return aut.a(ki.u, new ajc($$0));
+public class auh<T> implements Iterable<auf<T>> {
+   private final iy<T> a;
+   private final Map<T, auf<T>> b = new IdentityHashMap<>();
+   private final vu c;
+   private final xs<vf, auf<T>> d;
+
+   public auh(iy<T> $$0, vu $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = xq.a($$0.c()).a(this::b, auf::b);
+   }
+
+   public xs<vf, auf<T>> a() {
+      return this.d;
+   }
+
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public auf<T> a(T $$0, aug $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new auf<>(this, (T)$$1x, $$1));
+   }
+
+   public iy<T> b() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<auf<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public auf<T> b(T $$0) {
+      return this.a($$0, aug.b);
+   }
+
+   public vu c() {
+      return this.c;
    }
 }

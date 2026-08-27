@@ -1,62 +1,79 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 
-public class dxd implements dwy {
-   public static final Codec<dxd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kh.e.q().fieldOf("block").flatXmap(dxd::a, DataResult::success).orElse((dee)czh.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               iz.a(ki.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, dxd::new)
-   );
-   public final dee b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final ip<czf> h;
-   private final ObjectArrayList<ih> i;
-
-   private static DataResult<dee> a(czf $$0) {
-      return $$0 instanceof dee $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+public class dxd extends dvq<dyr> {
+   public dxd(Codec<dyr> $$0) {
+      super($$0);
    }
 
-   public dxd(dee $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, ip<czf> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(ih.b);
-      }
+   @Override
+   public boolean a(dvs<dyr> $$0) {
+      cxu $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      if (a($$1, $$2)) {
+         return false;
+      } else {
+         axd $$3 = $$0.d();
+         dyr $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         ib.a $$8 = new ib.a();
 
-      if ($$2) {
-         this.i.add(ih.a);
-      }
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(aww.a($$3, -$$5, $$5), aww.a($$3, -$$6, $$6), aww.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (ib)$$8)) {
+               int $$10 = aww.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
+               }
 
-      if ($$4) {
-         ih.c.a.forEach(this.i::add);
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
+
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
+            }
+         }
+
+         return true;
       }
    }
 
-   public List<ih> a(awt $$0, ih $$1) {
-      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   private static boolean a(cxa $$0, ib.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.s($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).i());
+
+      $$1.e(0, 1, 0);
+      return true;
    }
 
-   public List<ih> a(awt $$0) {
-      return ac.a(this.i, $$0);
+   public static void a(cxa $$0, axd $$1, ib.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.c())) {
+               $$0.a($$2, dac.oB.o().a(ddp.e, Integer.valueOf(aww.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dac.oC.o(), 2);
+         }
+
+         $$2.c(ih.b);
+      }
+   }
+
+   private static boolean a(cxa $$0, ib $$1) {
+      if (!$$0.u($$1)) {
+         return true;
+      } else {
+         dmz $$2 = $$0.a_($$1.d());
+         return !$$2.a(dac.dV) && !$$2.a(dac.on) && !$$2.a(dac.op);
+      }
    }
 }

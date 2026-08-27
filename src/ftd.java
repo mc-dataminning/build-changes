@@ -1,70 +1,67 @@
-public class ftd extends fve {
-   ftd(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.d(3.0F);
-      this.b(0.25F, 0.25F);
-      if ($$7) {
-         this.t = this.r.a(50) + 280;
-      } else {
-         this.t = this.r.a(50) + 80;
-      }
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-      this.u = 3.0E-6F;
-      this.j = $$4;
-      this.k = $$5 + (double)(this.r.i() / 500.0F);
-      this.l = $$6;
+public record ftd(String a, @Nullable ftd.a b) {
+   public static ftd a() {
+      return a(null);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ < this.t && !(this.y <= 0.0F)) {
-         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.s >= this.t - 60 && this.y > 0.01F) {
-            this.y -= 0.015F;
+   public static ftd a(String $$0) {
+      return a(new ftd.a.b($$0));
+   }
+
+   public static ftd a(evg $$0) {
+      return a(new ftd.a.a($$0));
+   }
+
+   public static ftd a(@Nullable ftd.a $$0) {
+      return new ftd(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof ftd.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof ftd.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("24w06a");
+      if (ezg.e().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public ftd.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements ftd.a {
+         public a(evg $$0) {
+            this($$0.a, $$0.n);
          }
-      } else {
-         this.k();
-      }
-   }
-
-   @Override
-   public fui b() {
-      return fui.c;
-   }
-
-   public static class a implements fuh<ke> {
-      private final fuz a;
-
-      public a(fuz $$0) {
-         this.a = $$0;
       }
 
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ftd $$8 = new ftd($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-         $$8.e(0.9F);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements fuh<ke> {
-      private final fuz a;
-
-      public b(fuz $$0) {
-         this.a = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ftd $$8 = new ftd($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
-         $$8.e(0.95F);
-         $$8.a(this.a);
-         return $$8;
+      public static record b(String a) implements ftd.a {
       }
    }
 }

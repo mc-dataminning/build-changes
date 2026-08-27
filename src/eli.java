@@ -1,22 +1,25 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public interface eli<T extends eli<T>> {
-   T b(ell.a var1);
+public class eli extends elp {
+   public static final Codec<eli> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, eli::new));
 
-   default <E> T a(Iterable<E> $$0, Function<E, ell.a> $$1) {
-      T $$2 = this.c();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private eli(int $$0, int $$1, List<ent> $$2, List<emh> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   default <E> T a(E[] $$0, Function<E, ell.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   @Override
+   public elo a() {
+      return ell.b;
    }
 
-   T c();
+   @Override
+   public void a(Consumer<cqk> $$0, eku $$1) {
+   }
+
+   public static elp.a<?> b() {
+      return a(eli::new);
+   }
 }

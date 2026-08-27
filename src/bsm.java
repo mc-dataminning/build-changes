@@ -1,15 +1,19 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
 
-public class bsm<E extends box> extends brd<E> {
-   public bsm(List<Pair<? extends bqq<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
+public class bsm extends brg<bpq> {
+   public bsm(int $$0, int $$1) {
+      super(ImmutableMap.of(byr.n, bys.a), $$0, $$1);
    }
 
-   public bsm(Map<bya<?>, byb> $$0, List<Pair<? extends bqq<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), brd.a.b, brd.b.a, $$1);
+   protected boolean a(apf $$0, bpq $$1, long $$2) {
+      return $$1.dP().c(byr.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   }
+
+   protected void b(apf $$0, bpq $$1, long $$2) {
+      $$1.dP().b(byr.n);
+   }
+
+   protected void c(apf $$0, bpq $$1, long $$2) {
+      $$1.dP().c(byr.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
    }
 }

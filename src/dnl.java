@@ -1,7 +1,7 @@
-public enum dnl implements axg {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum dnl implements axq {
+   a("none"),
+   b("small"),
+   c("large");
 
    private final String d;
 

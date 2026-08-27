@@ -1,84 +1,50 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
+public class fkg extends fhf {
+   private static final int a = 600;
+   private final us b;
+   private fbg c;
+   private int k;
+   private final fex l = fex.d();
 
-public class fkg extends fkf<frz.a> {
-   private static final int r = 120;
-   private static final vs t = vs.c("gui.chatReport.title");
-   private static final vs u = vs.c("gui.chatReport.select_chat");
-   private final fea v = fea.d().a(8);
-   private fbc w;
-   private fak x;
-   private fak y;
-   private fak z;
-
-   private fkg(fgh $$0, fsg $$1, frz.a $$2) {
-      super(t, $$0, $$1, $$2);
-   }
-
-   public fkg(fgh $$0, fsg $$1, UUID $$2) {
-      this($$0, $$1, new frz.a($$2, $$1.a().b()));
-   }
-
-   public fkg(fgh $$0, fsg $$1, frz $$2) {
-      this($$0, $$1, new frz.a($$2, $$1.a().b()));
+   public fkg(vu $$0, us $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   protected void aP_() {
-      this.v.c().b();
-      this.v.a(new fbr(this.e, this.i));
-      this.y = this.v.a(fak.a(u, $$0x -> this.f.a(new fki(this, this.p, this.q, $$0xx -> {
-            this.q = $$0xx;
-            this.E();
-         }))).a(280).a());
-      this.z = fak.a(c, $$0x -> this.f.a(new fkl(this, this.q.h(), $$0xx -> {
-            this.q.a($$0xx);
-            this.E();
-         }))).a(280).a();
-      this.v.a(fds.a(this.i, this.z, b));
-      this.w = this.a(280, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.E();
-      });
-      this.v.a(fds.a(this.i, this.w, k, $$0x -> $$0x.e(12)));
-      fea $$0 = this.v.a(fea.e().a(8));
-      $$0.a(fak.a(vr.k, $$0x -> this.d()).a(120).a());
-      this.x = $$0.a(fak.a(a, $$0x -> this.o()).a(120).a());
-      this.v.a($$1 -> {
-         fai var10000 = this.c($$1);
+   public boolean aM_() {
+      return false;
+   }
+
+   @Override
+   protected void aO_() {
+      this.l.c().b().a(10);
+      this.l.a(new fcn(this.e, this.i));
+      this.c = this.l.a(fbg.a(vt.p, $$0 -> this.b.a(ffy.a)).a());
+      this.c.j = false;
+      this.l.a();
+      this.l.a($$1 -> {
+         fbe var10000 = this.c($$1);
       });
       this.c();
-      this.E();
    }
 
    @Override
    protected void c() {
-      this.v.a();
-      fdu.a(this.v, this.F());
-   }
-
-   private void E() {
-      IntSet $$0 = this.q.a();
-      if ($$0.isEmpty()) {
-         this.y.b(u);
-      } else {
-         this.y.b(vs.a("gui.chatReport.selected_chat", $$0.size()));
-      }
-
-      fse $$1 = this.q.h();
-      if ($$1 != null) {
-         this.z.b($$1.b());
-      } else {
-         this.z.b(c);
-      }
-
-      fsc.b $$2 = this.q.c();
-      this.x.j = $$2 == null;
-      this.x.a(x.a($$2, fsc.b::a));
+      fer.a(this.l, this.F());
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.w.b($$0, $$1, $$2);
+   public void e() {
+      super.e();
+      this.k++;
+      if (this.k == 600) {
+         this.c.j = true;
+      }
+
+      if (this.b.i()) {
+         this.b.b();
+      } else {
+         this.b.n();
+      }
    }
 }

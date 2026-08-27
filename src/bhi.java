@@ -4,16 +4,15 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bhi extends bfc {
+public class bhi extends bfq {
    public bhi(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:item_display", $$1x -> DSL.optionalFields("item", bdt.t.in($$0)));
-      $$0.register($$1, "minecraft:block_display", $$1x -> DSL.optionalFields("block_state", bdt.u.in($$0)));
-      $$0.registerSimple($$1, "minecraft:text_display");
+      $$0.register($$1, "minecraft:glow_squid", () -> bfr.a($$0));
+      $$0.register($$1, "minecraft:glow_item_frame", $$1x -> DSL.optionalFields("Item", beh.t.in($$0)));
       return $$1;
    }
 }

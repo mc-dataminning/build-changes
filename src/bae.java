@@ -1,35 +1,56 @@
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
-public class bae extends bct {
-   public bae(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityHorseSaddleFix", bdt.y, "EntityHorse");
+public class bae extends bdh {
+   private static final String[] a = new String[]{
+      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
+   };
+
+   public bae(Schema $$0, String $$1, String $$2) {
+      super($$0, false, $$1, beh.s, $$2);
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      $$0 = $$0.update("front_text", bae::b);
+      $$0 = $$0.update("back_text", bae::b);
+
+      for (String $$1 : a) {
+         $$0 = $$0.remove($$1);
+      }
+
+      return $$0;
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
+      if ($$1) {
+         return $$0.remove("_filtered_correct");
+      } else {
+         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
+         if ($$2.isEmpty()) {
+            return $$0;
+         } else {
+            Dynamic<T> $$3 = ayb.a($$0.getOps());
+            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
+            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
+               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
+               return $$2x.equals($$3) ? $$4x : $$2x;
+            }).toList();
+            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
+               ? $$0.remove("filtered_messages")
+               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
+         }
+      }
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bdt.A.typeName(), bfc.a()));
-      Type<?> $$2 = this.getInputSchema().getTypeRaw(bdt.t);
-      OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
-      Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
-      Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
-         Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
-         $$6 = $$6.set($$1, Pair.of(bdt.A.typeName(), "minecraft:saddle"));
-         Dynamic<?> $$7 = $$5.emptyMap();
-         $$7 = $$7.set("Count", $$7.createByte((byte)1));
-         $$7 = $$7.set("Damage", $$7.createShort((short)0));
-         $$6 = $$6.set(DSL.remainderFinder(), $$7);
-         $$5.remove("Saddle");
-         return $$0.set($$3, $$6).set(DSL.remainderFinder(), $$5);
-      } else {
-         return $$0;
-      }
+      return $$0.update(DSL.remainderFinder(), bae::a);
    }
 }

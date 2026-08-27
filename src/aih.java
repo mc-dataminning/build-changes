@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface aih extends afa, aib {
+   @Override
+   default ut b() {
+      return ut.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aih {
+   void a(aii var1);
 }

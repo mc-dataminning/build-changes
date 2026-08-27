@@ -1,78 +1,101 @@
-public class csm extends csk {
-   private static final csp a = csp.a(cpt.qN);
-   private static final csp b = csp.a(cpt.pt);
-   private static final csp c = csp.a(cpt.ur);
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import org.slf4j.Logger;
 
-   public csm(csi $$0) {
-      super($$0);
+public class csm {
+   public static final Codec<csm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(csn.b.fieldOf("material").forGetter(csm::b), csp.b.fieldOf("pattern").forGetter(csm::a)).apply($$0, csm::new)
+   );
+   private static final Logger c = LogUtils.getLogger();
+   public static final String b = "Trim";
+   private static final vu d = vu.c(ac.a("item", new ajh("smithing_template.upgrade"))).a(n.h);
+   private final il<csn> e;
+   private final il<csp> f;
+   private final Function<il<cnx>, ajh> g;
+   private final Function<il<cnx>, ajh> h;
+
+   public csm(il<csn> $$0, il<csp> $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = ac.b($$1x -> {
+         ajh $$2 = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
+      });
+      this.h = ac.b($$1x -> {
+         ajh $$2 = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
+      });
    }
 
-   public boolean a(clk $$0, cwe $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
+   private String c(il<cnx> $$0) {
+      Map<il<cnx>, String> $$1 = this.e.a().d();
+      String $$2 = $$1.get($$0);
+      return $$2 != null ? $$2 : this.e.a().a();
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cpq $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
+   public boolean a(il<csp> $$0, il<csn> $$1) {
+      return $$0.equals(this.f) && $$1.equals(this.e);
+   }
 
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
+   public il<csp> a() {
+      return this.f;
+   }
+
+   public il<csn> b() {
+      return this.e;
+   }
+
+   public ajh a(il<cnx> $$0) {
+      return this.g.apply($$0);
+   }
+
+   public ajh b(il<cnx> $$0) {
+      return this.h.apply($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof csm $$1) ? false : this.f.equals($$1.f) && this.e.equals($$1.e);
+   }
+
+   public static boolean a(iz $$0, cqk $$1, csm $$2) {
+      if ($$1.a(auv.aM)) {
+         $$1.x().a("Trim", (tx)a.encodeStart(ajf.a(to.a, $$0), $$2).result().orElseThrow());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static Optional<csm> a(iz $$0, cqk $$1, boolean $$2) {
+      if ($$1.a(auv.aM) && $$1.w() != null && $$1.w().e("Trim")) {
+         ta $$3 = $$1.c("Trim");
+         csm $$4 = (csm)a.parse(ajf.a(to.a, $$0), $$3).resultOrPartial($$1x -> {
+            if (!$$2) {
+               c.warn($$1x);
             }
-         }
+         }).orElse(null);
+         return Optional.ofNullable($$4);
+      } else {
+         return Optional.empty();
       }
-
-      return $$2 && $$3 >= 1;
    }
 
-   public cpq a(clk $$0, iy $$1) {
-      cpq $$2 = new cpq(cpt.uq, 3);
-      sy $$3 = $$2.b("Fireworks");
-      te $$4 = new te();
-      int $$5 = 0;
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cpq $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if (b.a($$7)) {
-               $$5++;
-            } else if (c.a($$7)) {
-               sy $$8 = $$7.c("Explosion");
-               if ($$8 != null) {
-                  $$4.add($$8);
-               }
-            }
-         }
+   public static void a(cqk $$0, iz $$1, List<vu> $$2) {
+      Optional<csm> $$3 = a($$1, $$0, true);
+      if ($$3.isPresent()) {
+         csm $$4 = $$3.get();
+         $$2.add(d);
+         $$2.add(vt.a().b($$4.a().a().a($$4.b())));
+         $$2.add(vt.a().b($$4.b().a().e()));
       }
-
-      $$3.a("Flight", (byte)$$5);
-      if (!$$4.isEmpty()) {
-         $$3.a("Explosions", $$4);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cpq a(iy $$0) {
-      return new cpq(cpt.uq);
-   }
-
-   @Override
-   public csw<?> as_() {
-      return csw.g;
    }
 }

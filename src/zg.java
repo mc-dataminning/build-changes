@@ -1,45 +1,36 @@
-import java.util.List;
+public record zg(ib c, int d, String e, int f) implements zc {
+   public static final xs<uu, zg> a = zc.a(zg::a, zg::new);
+   public static final zc.b<zg> b = zc.a("debug/game_test_add_marker");
 
-public record zg(int c, ib d, List<zg.a> e) implements za {
-   public static final xq<us, zg> a = za.a(zg::a, zg::new);
-   public static final za.b<zg> b = za.a("debug/goal_selector");
-
-   private zg(us $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(zg.a::new));
+   private zg(uu $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private void a(us $$0) {
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(uu $$0) {
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.a(this.e);
+      $$0.p(this.f);
    }
 
    @Override
-   public za.b<zg> a() {
+   public zc.b<zg> a() {
       return b;
    }
 
-   public int b() {
+   public ib b() {
       return this.c;
    }
 
-   public ib c() {
+   public int c() {
       return this.d;
    }
 
-   public List<zg.a> d() {
+   public String d() {
       return this.e;
    }
 
-   public static record a(int a, boolean b, String c) {
-      public a(us $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
-      }
-
-      public void a(us $$0) {
-         $$0.p(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-      }
+   public int e() {
+      return this.f;
    }
 }

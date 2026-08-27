@@ -8,17 +8,17 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class hr {
-   private static final Map<ajc, SuggestionProvider<dz>> e = Maps.newHashMap();
-   private static final ajc f = new ajc("ask_server");
+   private static final Map<ajh, SuggestionProvider<dz>> e = Maps.newHashMap();
+   private static final ajh f = new ajh("ask_server");
    public static final SuggestionProvider<dz> a = a(f, ($$0, $$1) -> ((dz)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<du> b = a(new ajc("all_recipes"), ($$0, $$1) -> dz.a(((dz)$$0.getSource()).t(), $$1));
-   public static final SuggestionProvider<du> c = a(new ajc("available_sounds"), ($$0, $$1) -> dz.a(((dz)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<du> b = a(new ajh("all_recipes"), ($$0, $$1) -> dz.a(((dz)$$0.getSource()).t(), $$1));
+   public static final SuggestionProvider<du> c = a(new ajh("available_sounds"), ($$0, $$1) -> dz.a(((dz)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<du> d = a(
-      new ajc("summonable_entities"),
-      ($$0, $$1) -> dz.a(kh.g.s().filter($$1x -> $$1x.a(((dz)$$0.getSource()).w()) && $$1x.c()), $$1, bol::a, $$0x -> vs.c(ac.a("entity", bol.a($$0x))))
+      new ajh("summonable_entities"),
+      ($$0, $$1) -> dz.a(ki.g.s().filter($$1x -> $$1x.a(((dz)$$0.getSource()).w()) && $$1x.c()), $$1, bpc::a, $$0x -> vu.c(ac.a("entity", bpc.a($$0x))))
    );
 
-   public static <S extends dz> SuggestionProvider<S> a(ajc $$0, SuggestionProvider<dz> $$1) {
+   public static <S extends dz> SuggestionProvider<S> a(ajh $$0, SuggestionProvider<dz> $$1) {
       if (e.containsKey($$0)) {
          throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
       } else {
@@ -27,11 +27,11 @@ public class hr {
       }
    }
 
-   public static SuggestionProvider<dz> a(ajc $$0) {
+   public static SuggestionProvider<dz> a(ajh $$0) {
       return e.getOrDefault($$0, a);
    }
 
-   public static ajc a(SuggestionProvider<dz> $$0) {
+   public static ajh a(SuggestionProvider<dz> $$0) {
       return $$0 instanceof hr.a ? ((hr.a)$$0).b : f;
    }
 
@@ -41,9 +41,9 @@ public class hr {
 
    protected static class a implements SuggestionProvider<dz> {
       private final SuggestionProvider<dz> a;
-      final ajc b;
+      final ajh b;
 
-      public a(ajc $$0, SuggestionProvider<dz> $$1) {
+      public a(ajh $$0, SuggestionProvider<dz> $$1) {
          this.a = $$1;
          this.b = $$0;
       }

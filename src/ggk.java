@@ -1,21 +1,24 @@
-public class ggk<T extends bof & bpm, M extends fne<T>> extends ggj<T, M> {
-   private final ajc a;
-   private final M b;
+public class ggk extends ghj<cfo, foa<cfo>> {
+   private final fyk a;
 
-   public ggk(gdt<T, M> $$0, M $$1, ajc $$2) {
+   public ggk(get<cfo, foa<cfo>> $$0, fyk $$1) {
       super($$0);
-      this.b = $$1;
-      this.a = $$2;
+      this.a = $$1;
    }
 
-   @Override
-   public void a(etd $$0, fwq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eth $$10 = $$1.getBuffer(fwy.e(this.a));
-         this.b.a($$0, $$10, $$2, ghq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(etz $$0, fxq $$1, int $$2, cfo $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dmz $$10 = $$3.gn();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, giq.d);
+         $$0.b();
       }
    }
 }

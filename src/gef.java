@@ -1,25 +1,18 @@
-public class gef<T extends cbl> extends gde<T, fph<T>> {
-   private static final ajc a = new ajc("textures/entity/squid/squid.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gef(gby.a $$0, fph<T> $$1) {
-      super($$0, $$1, 0.7F);
+public class gef extends gee<cbq, fnv<cbq>> {
+   private static final Map<cbq.a, ajh> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cbq.a.b, new ajh("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cbq.a.a, new ajh("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public gef(gcy.a $$0) {
+      super($$0, new fnv<>($$0.a(frc.ay)), 0.7F);
+      this.a(new ghe<>(this, $$0.c()));
    }
 
-   public ajc a(T $$0) {
-      return a;
-   }
-
-   protected void a(T $$0, etd $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = awm.i($$4, $$0.c, $$0.b);
-      float $$7 = awm.i($$4, $$0.e, $$0.d);
-      $$1.a(0.0F, 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      $$1.a(a.b.rotationDegrees($$6));
-      $$1.a(a.d.rotationDegrees($$7));
-      $$1.a(0.0F, -1.2F, 0.0F);
-   }
-
-   protected float a(T $$0, float $$1) {
-      return awm.i($$1, $$0.bY, $$0.bX);
+   public ajh a(cbq $$0) {
+      return a.get($$0.s());
    }
 }

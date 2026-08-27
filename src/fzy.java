@@ -1,66 +1,118 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import org.joml.Matrix4f;
+import java.util.EnumSet;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fzy {
-   private static final int a = avw.b.a(255, 255, 100, 255);
-   private static final int b = avw.b.a(255, 100, 255, 255);
-   private static final int c = avw.b.a(255, 0, 255, 0);
-   private static final int d = avw.b.a(255, 255, 165, 0);
-   private static final int e = avw.b.a(255, 255, 0, 0);
-   private static final int f = 20;
-   private static final float g = (float) (Math.PI / 10);
-   private final eyk h;
-   private final Map<Integer, yz.a> i = new HashMap<>();
+public class fzy implements fzq<dkw> {
+   private static final String a = "neck";
+   private static final String b = "front";
+   private static final String c = "back";
+   private static final String d = "left";
+   private static final String e = "right";
+   private static final String f = "top";
+   private static final String g = "bottom";
+   private final frd h;
+   private final frd i;
+   private final frd j;
+   private final frd k;
+   private final frd l;
+   private final frd m;
+   private final frd n;
+   private final glc o = Objects.requireNonNull(fyf.c(dkx.a));
+   private static final float p = 0.125F;
 
-   public fzy(eyk $$0) {
-      this.h = $$0;
+   public fzy(fzr.a $$0) {
+      frd $$1 = $$0.a(frc.G);
+      this.h = $$1.b("neck");
+      this.m = $$1.b("top");
+      this.n = $$1.b("bottom");
+      frd $$2 = $$0.a(frc.H);
+      this.i = $$2.b("front");
+      this.j = $$2.b("back");
+      this.k = $$2.b("left");
+      this.l = $$2.b("right");
    }
 
-   public void a(etd $$0, fwq $$1, double $$2, double $$3, double $$4) {
-      fvs $$5 = this.h.s;
-      $$5.dJ().a(bol.m, $$5.cE().g(100.0), $$0x -> true).forEach($$6 -> {
-         Optional<yz.a> $$7 = Optional.ofNullable(this.i.get($$6.aj()));
-         $$7.map(yz.a::d).map($$1xx -> $$5.dJ().a($$1xx)).map($$0xx -> $$0xx.l(this.h.at())).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dh(), $$6x, b);
-            eov $$7x = $$6x.b(0.0, 0.01F, 0.0);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fwy.a(2.0)), $$7x, 4.0F, c);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fwy.a(2.0)), $$7x, 8.0F, d);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(fwy.a(2.0)), $$7x, 20.0F, e);
-         });
-         $$7.map(yz.a::e).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dh(), $$6x.b(), a);
-            gac.a($$0, $$1, eoq.a(eov.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
-         });
-      });
+   public static frj b() {
+      frl $$0 = new frl();
+      frm $$1 = $$0.a();
+      frh $$2 = new frh(0.2F);
+      frh $$3 = new frh(-0.1F);
+      $$1.a(
+         "neck",
+         fri.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
+         frf.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
+      );
+      fri $$4 = fri.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
+      $$1.a("top", $$4, frf.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      $$1.a("bottom", $$4, frf.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      return frj.a($$0, 32, 32);
    }
 
-   private static void a(etd $$0, fwq $$1, double $$2, double $$3, double $$4, eov $$5, eov $$6, int $$7) {
-      eth $$8 = $$1.getBuffer(fwy.a(2.0));
-      $$8.a($$0.c(), (float)($$5.c - $$2), (float)($$5.d - $$3), (float)($$5.e - $$4)).a($$7).e();
-      $$8.a($$0.c(), (float)($$6.c - $$2), (float)($$6.d - $$3), (float)($$6.e - $$4)).a($$7).e();
+   public static frj c() {
+      frl $$0 = new frl();
+      frm $$1 = $$0.a();
+      fri $$2 = fri.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ih.c));
+      $$1.a("back", $$2, frf.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
+      $$1.a("left", $$2, frf.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
+      $$1.a("right", $$2, frf.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
+      $$1.a("front", $$2, frf.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
+      return frj.a($$0, 16, 16);
    }
 
-   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, eth $$4, eov $$5, float $$6, int $$7) {
-      for (int $$8 = 0; $$8 < 20; $$8++) {
-         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   @Nullable
+   private static glc a(cqf $$0) {
+      glc $$1 = fyf.c(dkx.a($$0));
+      if ($$1 == null) {
+         $$1 = fyf.c(dkx.a(cqn.qK));
       }
 
-      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return $$1;
    }
 
-   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, eth $$5, eov $$6, float $$7, int $$8) {
-      float $$9 = (float)$$0 * (float) (Math.PI / 10);
-      eov $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
-      $$5.a($$1, (float)($$10.c - $$2), (float)($$10.d - $$3), (float)($$10.e - $$4)).a($$8).e();
+   public void a(dkw $$0, float $$1, etz $$2, fxq $$3, int $$4, int $$5) {
+      $$2.a();
+      ih $$6 = $$0.k();
+      $$2.a(0.5, 0.0, 0.5);
+      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
+      $$2.a(-0.5, 0.0, -0.5);
+      dkw.b $$7 = $$0.i;
+      if ($$7 != null && $$0.i() != null) {
+         float $$8 = ((float)($$0.i().X() - $$0.h) + $$1) / (float)$$7.c;
+         if ($$8 >= 0.0F && $$8 <= 1.0F) {
+            if ($$7 == dkw.b.a) {
+               float $$9 = 0.015625F;
+               float $$10 = $$8 * (float) (Math.PI * 2);
+               float $$11 = -1.5F * (aww.b($$10) + 0.5F) * aww.a($$10 / 2.0F);
+               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
+               float $$12 = aww.a($$10);
+               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+            } else {
+               float $$13 = aww.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
+               float $$14 = 1.0F - $$8;
+               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+            }
+         }
+      }
+
+      eud $$15 = this.o.a($$3, fxy::c);
+      this.h.a($$2, $$15, $$4, $$5);
+      this.m.a($$2, $$15, $$4, $$5);
+      this.n.a($$2, $$15, $$4, $$5);
+      dkw.a $$16 = $$0.l();
+      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
+      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
+      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
+      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
+      $$2.b();
    }
 
-   public void a() {
-      this.i.clear();
-   }
+   private void a(frd $$0, etz $$1, fxq $$2, int $$3, int $$4, @Nullable glc $$5) {
+      if ($$5 == null) {
+         $$5 = a(cqn.qK);
+      }
 
-   public void a(yz.a $$0) {
-      this.i.put($$0.c(), $$0);
+      if ($$5 != null) {
+         $$0.a($$1, $$5.a($$2, fxy::c), $$3, $$4);
+      }
    }
 }

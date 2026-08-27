@@ -1,245 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class cxj {
-   public static final Codec<cxj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
-               cxj.b.d.optionalFieldOf("grass_color_modifier", cxj.b.a).forGetter($$0x -> $$0x.h),
-               cxc.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
-               ato.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
-               cxb.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
-               cxa.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
-               atm.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
-            )
-            .apply($$0, cxj::new)
-   );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final cxj.b h;
-   private final Optional<cxc> i;
-   private final Optional<il<ato>> j;
-   private final Optional<cxb> k;
-   private final Optional<cxa> l;
-   private final Optional<atm> m;
+   private final Long2ObjectMap<List<apg>> a = new Long2ObjectOpenHashMap();
+   private final Map<apg, cxj.a> b = Maps.newHashMap();
+   private final aop c;
 
-   cxj(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      cxj.b $$6,
-      Optional<cxc> $$7,
-      Optional<il<ato>> $$8,
-      Optional<cxb> $$9,
-      Optional<cxa> $$10,
-      Optional<atm> $$11
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
+   public cxj(aop $$0) {
+      this.c = $$0;
    }
 
-   public int a() {
-      return this.b;
+   private List<apg> a(cwg $$0) {
+      return (List<apg>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public Optional<Integer> e() {
-      return this.f;
-   }
-
-   public Optional<Integer> f() {
-      return this.g;
-   }
-
-   public cxj.b g() {
-      return this.h;
-   }
-
-   public Optional<cxc> h() {
-      return this.i;
-   }
-
-   public Optional<il<ato>> i() {
-      return this.j;
-   }
-
-   public Optional<cxb> j() {
-      return this.k;
-   }
-
-   public Optional<cxa> k() {
-      return this.l;
-   }
-
-   public Optional<atm> l() {
-      return this.m;
-   }
-
-   public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private cxj.b g = cxj.b.a;
-      private Optional<cxc> h = Optional.empty();
-      private Optional<il<ato>> i = Optional.empty();
-      private Optional<cxb> j = Optional.empty();
-      private Optional<cxa> k = Optional.empty();
-      private Optional<atm> l = Optional.empty();
-
-      public cxj.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cxj.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cxj.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cxj.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cxj.a e(int $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public cxj.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public cxj.a a(cxj.b $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public cxj.a a(cxc $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public cxj.a a(il<ato> $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public cxj.a a(cxb $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public cxj.a a(cxa $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public cxj.a a(@Nullable atm $$0) {
-         this.l = Optional.ofNullable($$0);
-         return this;
-      }
-
-      public cxj a() {
-         return new cxj(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l
-         );
+   public void a(cwg $$0, bpr $$1) {
+      for (apg $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new cxj.a()).a($$1);
       }
    }
 
-   public static enum b implements axg {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
+   public boolean a(bpr $$0, cwg $$1) {
+      for (apg $$2 : this.a($$1)) {
+         cxj.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
          }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
-         }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = cxd.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
-         }
-      };
-
-      private final String e;
-      public static final Codec<cxj.b> d = axg.a(cxj.b::values);
-
-      public abstract int a(double var1, double var3, int var5);
-
-      b(String $$0) {
-         this.e = $$0;
       }
 
-      public String a() {
-         return this.e;
+      return false;
+   }
+
+   static class a {
+      private final Object2IntMap<bpr> a = new Object2IntOpenHashMap(bpr.values().length);
+
+      public void a(bpr $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      public boolean b(bpr $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
       }
    }
 }

@@ -1,85 +1,100 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public abstract class fvp extends cia {
-   @Nullable
-   private frk g;
-   protected eov b;
-   public float c;
-   public float d;
-   public float e;
-   public final fra f;
+public class fvp extends fwe {
+   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
+   private static final float F = 1.0472F;
+   private int G;
 
-   public fvp(fra $$0, GameProfile $$1) {
-      super($$0, $$0.T(), $$0.U(), $$1);
-      this.b = eov.b;
-      this.f = $$0;
+   fvp(fry $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.G = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
    @Override
-   public boolean P_() {
-      frk $$0 = this.a();
-      return $$0 != null && $$0.e() == cwb.d;
+   public float b(float $$0) {
+      return this.D * aww.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
    }
 
    @Override
-   public boolean f() {
-      frk $$0 = this.a();
-      return $$0 != null && $$0.e() == cwb.b;
+   public void a(eud $$0, eyr $$1, float $$2) {
+      if (this.G <= 0) {
+         this.y = 1.0F - aww.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
+      }
    }
 
-   @Nullable
-   protected frk a() {
-      if (this.g == null) {
-         this.g = eyk.P().K().a(this.ct());
+   private void a(eud $$0, eyr $$1, float $$2, Consumer<Quaternionf> $$3) {
+      epr $$4 = $$1.b();
+      float $$5 = (float)(aww.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(aww.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(aww.d((double)$$2, this.f, this.i) - $$4.c());
+      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
+      $$3.accept($$8);
+      $$8.transform(b);
+      Vector3f[] $$9 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$10 = this.b($$2);
+
+      for (int $$11 = 0; $$11 < 4; $$11++) {
+         Vector3f $$12 = $$9[$$11];
+         $$12.rotate($$8);
+         $$12.mul($$10);
+         $$12.add($$5, $$6, $$7);
       }
 
-      return this.g;
+      int $$13 = this.a($$2);
+      this.a($$0, $$9[0], this.d(), this.f(), $$13);
+      this.a($$0, $$9[1], this.d(), this.e(), $$13);
+      this.a($$0, $$9[2], this.c(), this.e(), $$13);
+      this.a($$0, $$9[3], this.c(), this.f(), $$13);
+   }
+
+   private void a(eud $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
+      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
    }
 
    @Override
-   public void l() {
-      this.b = this.dm();
-      super.l();
+   public int a(float $$0) {
+      return 240;
    }
 
-   public eov C(float $$0) {
-      return this.b.a(this.dm(), (double)$$0);
+   @Override
+   public fvi b() {
+      return fvi.c;
    }
 
-   public giy b() {
-      frk $$0 = this.a();
-      return $$0 == null ? gir.a(this.ct()) : $$0.g();
+   @Override
+   public void a() {
+      if (this.G > 0) {
+         this.G--;
+      } else {
+         super.a();
+      }
    }
 
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.fW().b) {
-         $$0 *= 1.1F;
+   public static class a implements fvh<ke> {
+      private final fvz a;
+
+      public a(fvz $$0) {
+         this.a = $$0;
       }
 
-      $$0 *= ((float)this.g(bqe.o) / this.fW().b() + 1.0F) / 2.0F;
-      if (this.fW().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
+      public fve a(ke $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fvp $$8 = new fvp($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
-
-      cpq $$1 = this.fr();
-      if (this.fp()) {
-         if ($$1.a(cpt.ot)) {
-            int $$2 = this.ft();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (eyk.P().m.ax().a() && this.gt()) {
-            return 0.1F;
-         }
-      }
-
-      return awm.i(eyk.P().m.ah().c().floatValue(), 1.0F, $$0);
    }
 }

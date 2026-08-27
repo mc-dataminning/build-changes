@@ -1,43 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dax extends cyq {
-   public static final MapCodec<dax> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dau.a.forGetter($$0x -> $$0x.f), u()).apply($$0, dax::new));
-   private final czf f;
+public class dax extends ddp implements dad, daw {
+   public static final MapCodec<dax> c = b(dax::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<dax> a() {
-      return e;
+      return c;
    }
 
-   protected dax(czf $$0, dmd.d $$1) {
-      super($$1);
-      this.f = $$0;
-   }
-
-   @Override
-   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      this.a($$0, (cwf)$$1, $$2);
+   public dax(dmy.d $$0) {
+      super($$0, ih.a, q_, false, 0.1);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(r_, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.f.o().a(d, Boolean.valueOf(false)).a(c, $$0.c(c)), 2);
-      }
+   protected int a(axd $$0) {
+      return 1;
    }
 
    @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
-         return czh.a.o();
-      } else {
-         if ($$0.c(d)) {
-            $$3.a($$4, ehs.c, ehs.c.a($$3));
-         }
+   protected boolean g(dmz $$0) {
+      return $$0.i();
+   }
 
-         this.a($$0, $$3, $$4);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   @Override
+   protected daa b() {
+      return dac.sw;
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dmz $$1) {
+      return $$1.a(r_, $$0.c(r_));
+   }
+
+   @Override
+   protected dmz a(dmz $$0, axd $$1) {
+      return super.a($$0, $$1).a(r_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   public cqk a(cxc $$0, ib $$1, dmz $$2) {
+      return new cqk(cqn.wn);
+   }
+
+   @Override
+   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
+      return daw.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      super.a($$0);
+      $$0.a(r_);
+   }
+
+   @Override
+   public boolean b(cxc $$0, ib $$1, dmz $$2) {
+      return !$$2.c(r_);
+   }
+
+   @Override
+   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
+      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
    }
 }

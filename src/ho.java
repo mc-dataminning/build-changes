@@ -12,12 +12,12 @@ import java.util.Map;
 public class ho {
    private static final Map<Class<?>, hn<?, ?>> a = Maps.newHashMap();
 
-   private static <A extends ArgumentType<?>, T extends hn.a<A>> hn<A, T> a(ix<hn<?, ?>> $$0, String $$1, Class<? extends A> $$2, hn<A, T> $$3) {
+   private static <A extends ArgumentType<?>, T extends hn.a<A>> hn<A, T> a(iy<hn<?, ?>> $$0, String $$1, Class<? extends A> $$2, hn<A, T> $$3) {
       a.put($$2, $$3);
-      return ix.a($$0, $$1, $$3);
+      return iy.a($$0, $$1, $$3);
    }
 
-   public static hn<?, ?> a(ix<hn<?, ?>> $$0) {
+   public static hn<?, ?> a(iy<hn<?, ?>> $$0) {
       a($$0, "brigadier:bool", BoolArgumentType.class, hq.a(BoolArgumentType::bool));
       a($$0, "brigadier:float", FloatArgumentType.class, new ht());
       a($$0, "brigadier:double", DoubleArgumentType.class, new hs());
@@ -67,9 +67,9 @@ public class ho {
       a($$0, "template_mirror", ff.class, hq.a(ff::a));
       a($$0, "template_rotation", fg.class, hq.a(fg::a));
       a($$0, "heightmap", ek.class, hq.a(ek::a));
-      if (aa.aV) {
-         a($$0, "test_argument", sp.class, hq.a(sp::a));
-         a($$0, "test_class", sl.class, hq.a(sl::a));
+      if (aa.aW) {
+         a($$0, "test_argument", sr.class, hq.a(sr::a));
+         a($$0, "test_class", sn.class, hq.a(sn::a));
       }
 
       return a($$0, "uuid", fi.class, hq.a(fi::a));

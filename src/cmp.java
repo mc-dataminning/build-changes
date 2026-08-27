@@ -1,156 +1,239 @@
 import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class cmp {
-   private final int a;
-   public final bme d;
-   public int e;
-   public final int f;
-   public final int g;
+public class cmp extends cnb<cme> {
+   public static final int k = 0;
+   public static final int l = 0;
+   public static final int m = 1;
+   public static final int n = 5;
+   public static final int o = 5;
+   public static final int p = 9;
+   public static final int q = 9;
+   public static final int r = 36;
+   public static final int s = 36;
+   public static final int t = 45;
+   public static final int u = 45;
+   public static final ajh v = new ajh("textures/atlas/blocks.png");
+   public static final ajh w = new ajh("item/empty_armor_slot_helmet");
+   public static final ajh x = new ajh("item/empty_armor_slot_chestplate");
+   public static final ajh y = new ajh("item/empty_armor_slot_leggings");
+   public static final ajh z = new ajh("item/empty_armor_slot_boots");
+   public static final ajh A = new ajh("item/empty_armor_slot_shield");
+   static final ajh[] C = new ajh[]{z, y, x, w};
+   private static final bpd[] D = new bpd[]{bpd.f, bpd.e, bpd.d, bpd.c};
+   private final cme E = new cno(this, 2, 2);
+   private final cne F = new cne();
+   public final boolean B;
+   private final cis G;
 
-   public cmp(bme $$0, int $$1, int $$2, int $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
+   public cmp(cir $$0, boolean $$1, final cis $$2) {
+      super(null, 0);
+      this.B = $$1;
+      this.G = $$2;
+      this.a(new cnf($$0.m, this.E, this.F, 0, 154, 28));
 
-   public void b(cpq $$0, cpq $$1) {
-      int $$2 = $$1.M() - $$0.M();
-      if ($$2 > 0) {
-         this.a($$1, $$2);
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         for (int $$4 = 0; $$4 < 2; $$4++) {
+            this.a(new cnj(this.E, $$4 + $$3 * 2, 98 + $$4 * 18, 18 + $$3 * 18));
+         }
       }
-   }
 
-   protected void a(cpq $$0, int $$1) {
-   }
-
-   protected void b(int $$0) {
-   }
-
-   protected void b_(cpq $$0) {
-   }
-
-   public void a(cia $$0, cpq $$1) {
-      this.b();
-   }
-
-   public boolean a(cpq $$0) {
-      return true;
-   }
-
-   public cpq g() {
-      return this.d.a(this.a);
-   }
-
-   public boolean h() {
-      return !this.g().b();
-   }
-
-   public void e(cpq $$0) {
-      this.a($$0, this.g());
-   }
-
-   public void a(cpq $$0, cpq $$1) {
-      this.f($$0);
-   }
-
-   public void f(cpq $$0) {
-      this.d.a(this.a, $$0);
-      this.b();
-   }
-
-   public void b() {
-      this.d.e();
-   }
-
-   public int a() {
-      return this.d.al_();
-   }
-
-   public int a_(cpq $$0) {
-      return Math.min(this.a(), $$0.g());
-   }
-
-   @Nullable
-   public Pair<ajc, ajc> c() {
-      return null;
-   }
-
-   public cpq a(int $$0) {
-      return this.d.a(this.a, $$0);
-   }
-
-   public boolean a(cia $$0) {
-      return true;
-   }
-
-   public boolean d() {
-      return true;
-   }
-
-   public Optional<cpq> a(int $$0, int $$1, cia $$2) {
-      if (!this.a($$2)) {
-         return Optional.empty();
-      } else if (!this.b($$2) && $$1 < this.g().M()) {
-         return Optional.empty();
-      } else {
-         $$0 = Math.min($$0, $$1);
-         cpq $$3 = this.a($$0);
-         if ($$3.b()) {
-            return Optional.empty();
-         } else {
-            if (this.g().b()) {
-               this.a(cpq.h, $$3);
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         final bpd $$6 = D[$$5];
+         this.a(new cnj($$0, 39 - $$5, 8, 8 + $$5 * 18) {
+            @Override
+            public void a(cqk $$0, cqk $$1) {
+               cmp.a($$2, $$6, $$0, $$1);
+               super.a($$0, $$1);
             }
 
-            return Optional.of($$3);
+            @Override
+            public int a() {
+               return 1;
+            }
+
+            @Override
+            public boolean a(cqk $$0) {
+               return $$6 == bpq.h($$0);
+            }
+
+            @Override
+            public boolean a(cis $$0) {
+               cqk $$1 = this.g();
+               return !$$1.b() && !$$0.f() && cuv.d($$1) ? false : super.a($$0);
+            }
+
+            @Override
+            public Pair<ajh, ajh> c() {
+               return Pair.of(cmp.v, cmp.C[$$6.b()]);
+            }
+         });
+      }
+
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         for (int $$8 = 0; $$8 < 9; $$8++) {
+            this.a(new cnj($$0, $$8 + ($$7 + 1) * 9, 8 + $$8 * 18, 84 + $$7 * 18));
          }
+      }
+
+      for (int $$9 = 0; $$9 < 9; $$9++) {
+         this.a(new cnj($$0, $$9, 8 + $$9 * 18, 142));
+      }
+
+      this.a(new cnj($$0, 40, 77, 62) {
+         @Override
+         public void a(cqk $$0, cqk $$1) {
+            cmp.a($$2, bpd.b, $$0, $$1);
+            super.a($$0, $$1);
+         }
+
+         @Override
+         public Pair<ajh, ajh> c() {
+            return Pair.of(cmp.v, cmp.A);
+         }
+      });
+   }
+
+   static void a(cis $$0, bpd $$1, cqk $$2, cqk $$3) {
+      $$0.a($$1, $$3, $$2);
+   }
+
+   public static boolean f(int $$0) {
+      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
+   }
+
+   @Override
+   public void a(ciw $$0) {
+      this.E.a($$0);
+   }
+
+   @Override
+   public void l() {
+      this.F.a();
+      this.E.a();
+   }
+
+   @Override
+   public boolean a(ctp<? extends ctn<cme>> $$0) {
+      return $$0.b().a(this.E, this.G.dM());
+   }
+
+   @Override
+   public void a(bmv $$0) {
+      cmf.a(this, this.G.dM(), this.G, this.E, this.F);
+   }
+
+   @Override
+   public void b(cis $$0) {
+      super.b($$0);
+      this.F.a();
+      if (!$$0.dM().B) {
+         this.a($$0, this.E);
       }
    }
 
-   public cpq b(int $$0, int $$1, cia $$2) {
-      Optional<cpq> $$3 = this.a($$0, $$1, $$2);
-      $$3.ifPresent($$1x -> this.a($$2, $$1x));
-      return $$3.orElse(cpq.h);
-   }
-
-   public cpq d(cpq $$0) {
-      return this.b($$0, $$0.M());
-   }
-
-   public cpq b(cpq $$0, int $$1) {
-      if (!$$0.b() && this.a($$0)) {
-         cpq $$2 = this.g();
-         int $$3 = Math.min(Math.min($$1, $$0.M()), this.a_($$0) - $$2.M());
-         if ($$2.b()) {
-            this.e($$0.a($$3));
-         } else if (cpq.c($$2, $$0)) {
-            $$0.h($$3);
-            $$2.g($$3);
-            this.e($$2);
-         }
-
-         return $$0;
-      } else {
-         return $$0;
-      }
-   }
-
-   public boolean b(cia $$0) {
-      return this.a($$0) && this.a(this.g());
-   }
-
-   public int i() {
-      return this.a;
-   }
-
-   public boolean e() {
+   @Override
+   public boolean a(cis $$0) {
       return true;
    }
 
-   public boolean f() {
-      return false;
+   @Override
+   public cqk a(cis $$0, int $$1) {
+      cqk $$2 = cqk.h;
+      cnj $$3 = this.i.get($$1);
+      if ($$3.h()) {
+         cqk $$4 = $$3.g();
+         $$2 = $$4.q();
+         bpd $$5 = bpq.h($$2);
+         if ($$1 == 0) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cqk.h;
+            }
+
+            $$3.b($$4, $$2);
+         } else if ($$1 >= 1 && $$1 < 5) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cqk.h;
+            }
+         } else if ($$1 >= 5 && $$1 < 9) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cqk.h;
+            }
+         } else if ($$5.a() == bpd.a.b && !this.i.get(8 - $$5.b()).h()) {
+            int $$6 = 8 - $$5.b();
+            if (!this.a($$4, $$6, $$6 + 1, false)) {
+               return cqk.h;
+            }
+         } else if ($$5 == bpd.b && !this.i.get(45).h()) {
+            if (!this.a($$4, 45, 46, false)) {
+               return cqk.h;
+            }
+         } else if ($$1 >= 9 && $$1 < 36) {
+            if (!this.a($$4, 36, 45, false)) {
+               return cqk.h;
+            }
+         } else if ($$1 >= 36 && $$1 < 45) {
+            if (!this.a($$4, 9, 36, false)) {
+               return cqk.h;
+            }
+         } else if (!this.a($$4, 9, 45, false)) {
+            return cqk.h;
+         }
+
+         if ($$4.b()) {
+            $$3.a(cqk.h, $$2);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cqk.h;
+         }
+
+         $$3.a($$0, $$4);
+         if ($$1 == 0) {
+            $$0.a($$4, false);
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public boolean a(cqk $$0, cnj $$1) {
+      return $$1.d != this.F && super.a($$0, $$1);
+   }
+
+   @Override
+   public int m() {
+      return 0;
+   }
+
+   @Override
+   public int n() {
+      return this.E.f();
+   }
+
+   @Override
+   public int o() {
+      return this.E.g();
+   }
+
+   @Override
+   public int p() {
+      return 5;
+   }
+
+   public cme q() {
+      return this.E;
+   }
+
+   @Override
+   public cnc t() {
+      return cnc.a;
+   }
+
+   @Override
+   public boolean e(int $$0) {
+      return $$0 != this.m();
    }
 }

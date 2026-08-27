@@ -8,13 +8,13 @@ public class ba extends cx<ba.a> {
       return ba.a.a;
    }
 
-   public void a(apb $$0, int $$1) {
+   public void a(apg $$0, int $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static record a(Optional<bc> b, cm.d c) implements cx.a {
       public static final Codec<ba.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avu.a(br.b, "player").forGetter(ba.a::a), avu.a(cm.d.d, "level", cm.d.c).forGetter(ba.a::c)).apply($$0, ba.a::new)
+         $$0 -> $$0.group(awe.a(br.b, "player").forGetter(ba.a::a), awe.a(cm.d.d, "level", cm.d.c).forGetter(ba.a::c)).apply($$0, ba.a::new)
       );
 
       public static an<ba.a> b() {

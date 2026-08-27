@@ -1,38 +1,21 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gjm {
-   public static final gjn a = new gjn();
-   public static final String b = "villager";
-   private final gjm.a c;
+public class gjm implements gjd {
+   public static final Codec<gjm> b = RecordCodecBuilder.create($$0 -> $$0.group(axe.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gjm::new));
+   private final axe c;
 
-   public gjm(gjm.a $$0) {
+   public gjm(axe $$0) {
       this.c = $$0;
    }
 
-   public gjm.a a() {
-      return this.c;
+   @Override
+   public void a(aso $$0, gjd.a $$1) {
+      $$1.a(this.c.c());
    }
 
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
-
-      private static final Map<String, gjm.a> d = Arrays.stream(values()).collect(Collectors.toMap(gjm.a::a, $$0 -> (gjm.a)$$0));
-      private final String e;
-
-      private a(String $$0) {
-         this.e = $$0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      public static gjm.a a(String $$0) {
-         return d.getOrDefault($$0, a);
-      }
+   @Override
+   public gjf a() {
+      return gjg.c;
    }
 }

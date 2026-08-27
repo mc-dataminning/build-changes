@@ -1,56 +1,24 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
 
-public class cdj extends cdh {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private eov d;
-   private int e;
+public enum cdj {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
 
-   public cdj(cdf $$0) {
-      super($$0);
+   private static final IntFunction<cdj> f = avn.a(cdj::a, values(), avn.a.b);
+   private final int g;
+
+   private cdj(int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public void c() {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.gi().a(cdv.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gi().a(cdv.a);
-      } else {
-         double $$0 = this.d.c(this.a.do(), this.a.dq(), this.a.du());
-         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.O || this.a.P) {
-            this.e++;
-         }
-      }
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   public void d() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(eov $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public float f() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public eov g() {
-      return this.d;
-   }
-
-   @Override
-   public cdv<cdj> i() {
-      return cdv.i;
+   public static cdj a(int $$0) {
+      return f.apply($$0);
    }
 }

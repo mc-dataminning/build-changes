@@ -1,70 +1,211 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record dli(int c, int d, float e, float f, float g, float h, int i, int j, bkv<cwv> k, bkv<ajc> l) {
-   public static dli a = new dli(14, 4, 6.0F, 2.0F, 2.0F, 1.0F, 40, 36000, bkv.b(), bkv.<ajc>a().a(ejw.aN).a(ejw.aM).a());
-   public static MapCodec<dli> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).optionalFieldOf("required_player_range", a.c).forGetter(dli::a),
-               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dli::b),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dli::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dli::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dli::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dli::f),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dli::g),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", a.j).forGetter(dli::h),
-               cwv.c.optionalFieldOf("spawn_potentials", bkv.b()).forGetter(dli::i),
-               bkv.a(ajc.a).optionalFieldOf("loot_tables_to_eject", a.l).forGetter(dli::j)
-            )
-            .apply($$0, dli::new)
-   );
+public class dli extends dkg implements bmt, bng {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 0;
+   public static final int d = 1;
+   private final bmv e = new bmv() {
+      @Override
+      public int b() {
+         return 1;
+      }
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
+      @Override
+      public boolean ai_() {
+         return dli.this.g.b();
+      }
+
+      @Override
+      public cqk a(int $$0) {
+         return $$0 == 0 ? dli.this.g : cqk.h;
+      }
+
+      @Override
+      public cqk a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            cqk $$2 = dli.this.g.a($$1);
+            if (dli.this.g.b()) {
+               dli.this.k();
+            }
+
+            return $$2;
+         } else {
+            return cqk.h;
+         }
+      }
+
+      @Override
+      public cqk b(int $$0) {
+         if ($$0 == 0) {
+            cqk $$1 = dli.this.g;
+            dli.this.g = cqk.h;
+            dli.this.k();
+            return $$1;
+         } else {
+            return cqk.h;
+         }
+      }
+
+      @Override
+      public void a(int $$0, cqk $$1) {
+      }
+
+      @Override
+      public int ak_() {
+         return 1;
+      }
+
+      @Override
+      public void e() {
+         dli.this.e();
+      }
+
+      @Override
+      public boolean a(cis $$0) {
+         return bmv.a(dli.this, $$0) && dli.this.c();
+      }
+
+      @Override
+      public boolean b(int $$0, cqk $$1) {
+         return false;
+      }
+
+      @Override
+      public void a() {
+      }
+   };
+   private final cly f = new cly() {
+      @Override
+      public int a(int $$0) {
+         return $$0 == 0 ? dli.this.h : 0;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            dli.this.a($$1);
+         }
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+   };
+   cqk g = cqk.h;
+   int h;
+   private int i;
+
+   public dli(ib $$0, dmz $$1) {
+      super(dki.D, $$0, $$1);
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public float e() {
+   public cqk b() {
       return this.g;
    }
 
-   public float f() {
+   public boolean c() {
+      return this.g.a(cqn.tX) || this.g.a(cqn.tY);
+   }
+
+   public void a(cqk $$0) {
+      this.a($$0, null);
+   }
+
+   void k() {
+      this.h = 0;
+      this.i = 0;
+      dek.a(null, this.i(), this.aC_(), this.n(), false);
+   }
+
+   public void a(cqk $$0, @Nullable cis $$1) {
+      this.g = this.b($$0, $$1);
+      this.h = 0;
+      this.i = csg.k(this.g);
+      this.e();
+   }
+
+   void a(int $$0) {
+      int $$1 = aww.a($$0, 0, this.i - 1);
+      if ($$1 != this.h) {
+         this.h = $$1;
+         this.e();
+         dek.a(this.i(), this.aC_(), this.n());
+      }
+   }
+
+   public int f() {
       return this.h;
    }
 
-   public int g() {
-      return this.i;
+   public int j() {
+      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
+      return aww.d($$0 * 14.0F) + (this.c() ? 1 : 0);
    }
 
-   public int h() {
-      return this.j;
+   private cqk b(cqk $$0, @Nullable cis $$1) {
+      if (this.o instanceof apf && $$0.a(cqn.tY)) {
+         csg.a($$0, this.a($$1), $$1);
+      }
+
+      return $$0;
    }
 
-   public bkv<cwv> i() {
-      return this.k;
+   private du a(@Nullable cis $$0) {
+      String $$1;
+      vu $$2;
+      if ($$0 == null) {
+         $$1 = "Lectern";
+         $$2 = vu.b("Lectern");
+      } else {
+         $$1 = $$0.ad().getString();
+         $$2 = $$0.O_();
+      }
+
+      epr $$5 = epr.b(this.p);
+      return new du(dt.a, $$5, epq.a, (apf)this.o, 2, $$1, $$2, this.o.o(), $$0);
    }
 
-   public bkv<ajc> j() {
-      return this.l;
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public void a(ta $$0, in.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("Book", 10)) {
+         this.g = this.b(cqk.a($$0.p("Book")), null);
+      } else {
+         this.g = cqk.h;
+      }
+
+      this.i = csg.k(this.g);
+      this.h = aww.a($$0.h("Page"), 0, this.i - 1);
+   }
+
+   @Override
+   protected void b(ta $$0, in.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b().b()) {
+         $$0.a("Book", this.b().b(new ta()));
+         $$0.a("Page", this.h);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.a(cqk.h);
+   }
+
+   @Override
+   public clo createMenu(int $$0, cir $$1, cis $$2) {
+      return new cms($$0, this.e, this.f);
+   }
+
+   @Override
+   public vu O_() {
+      return vu.c("container.lectern");
    }
 }

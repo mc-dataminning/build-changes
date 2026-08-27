@@ -1,87 +1,41 @@
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public class sn<T> implements si, sq {
-   static final sq a = Stream::empty;
-   static final si b = Stream::empty;
-   private final sq c;
-   private final si d;
-   private final du e;
-   private final Function<sn<T>, T> f;
+public class sn implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
 
-   @Override
-   public Stream<ib> findStructureBlockPos() {
-      return this.d.findStructureBlockPos();
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      if (ry.b($$1)) {
+         return $$1;
+      } else {
+         Message $$2 = vu.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
+      }
    }
 
-   sn(du $$0, Function<sn<T>, T> $$1, sq $$2, si $$3) {
-      this.e = $$0;
-      this.f = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static sn a() {
+      return new sn();
    }
 
-   T b() {
-      return this.f.apply(this);
+   public static String a(CommandContext<du> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
    }
 
-   public du a() {
-      return this.e;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return dz.b(ry.b().stream(), $$1);
    }
 
-   @Override
-   public Stream<so> findTestFunctions() {
-      return this.c.findTestFunctions();
-   }
-
-   public static class a<T> {
-      private final Function<sn<T>, T> a;
-
-      public a(Function<sn<T>, T> $$0) {
-         this.a = $$0;
-      }
-
-      public T a(CommandContext<du> $$0, int $$1) {
-         du $$2 = (du)$$0.getSource();
-         return new sn<>($$2, this.a, sn.a, () -> sk.a($$1, $$2.d(), $$2.e())).b();
-      }
-
-      public T a(CommandContext<du> $$0) {
-         du $$1 = (du)$$0.getSource();
-         ib $$2 = ib.a($$1.d());
-         return new sn<>($$1, this.a, sn.a, () -> sk.b($$2, 15, $$1.e()).stream()).b();
-      }
-
-      public T b(CommandContext<du> $$0) {
-         du $$1 = (du)$$0.getSource();
-         ib $$2 = ib.a($$1.d());
-         return new sn<>($$1, this.a, sn.a, () -> sk.c($$2, 200, $$1.e())).b();
-      }
-
-      public T c(CommandContext<du> $$0) {
-         du $$1 = (du)$$0.getSource();
-         return new sn<>($$1, this.a, sn.a, () -> sk.a(ib.a($$1.d()), $$1.i().K(), $$1.e())).b();
-      }
-
-      public T d(CommandContext<du> $$0) {
-         return new sn<>((du)$$0.getSource(), this.a, () -> rw.a().stream(), sn.b).b();
-      }
-
-      public T a(CommandContext<du> $$0, String $$1) {
-         return new sn<>((du)$$0.getSource(), this.a, () -> rw.a($$1), sn.b).b();
-      }
-
-      public T a(CommandContext<du> $$0, boolean $$1) {
-         return new sn<>((du)$$0.getSource(), this.a, () -> rw.c().filter($$1x -> !$$1 || $$1x.h()), sn.b).b();
-      }
-
-      public T b(CommandContext<du> $$0, String $$1) {
-         return new sn<>((du)$$0.getSource(), this.a, () -> Stream.of(sp.a($$0, $$1)), sn.b).b();
-      }
-
-      public T e(CommandContext<du> $$0) {
-         return this.a($$0, false);
-      }
+   public Collection<String> getExamples() {
+      return a;
    }
 }

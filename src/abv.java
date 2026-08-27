@@ -1,53 +1,29 @@
-public class abv implements xz<aai> {
-   public static final xq<us, abv> a = xz.a(abv::a, abv::new);
-   private final int b;
-   private final ib c;
-   private final int d;
-   private final boolean e;
+public record abv(int b, float c) implements yb<aam> {
+   public static final xs<uu, abv> a = yb.a(abv::a, abv::new);
 
-   public abv(int $$0, ib $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1.i();
-      this.d = $$2;
-      this.e = $$3;
+   public abv(bpo $$0) {
+      this($$0.aj(), $$0.eG());
    }
 
-   private abv(us $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.e();
-      this.d = $$0.readInt();
-      this.e = $$0.readBoolean();
+   private abv(uu $$0) {
+      this($$0.l(), $$0.readFloat());
    }
 
-   private void a(us $$0) {
-      $$0.p(this.b);
+   private void a(uu $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
    }
 
    @Override
-   public yb<abv> a() {
-      return aet.L;
+   public yd<abv> a() {
+      return aex.I;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public ib g() {
+   public float e() {
       return this.c;
    }
 }

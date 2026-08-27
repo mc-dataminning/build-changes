@@ -1,15 +1,9 @@
-import java.util.List;
+public class ajl {
+   public final String a;
+   public final du b;
 
-public enum ajl {
-   a,
-   b,
-   c,
-   d;
-
-   private static final List<ajl> e = List.of(values());
-   private static final iy.b f = iy.a(kh.at);
-
-   public static is<ajl> a() {
-      return new is<>(e).a(a, f);
+   public ajl(String $$0, du $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

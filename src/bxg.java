@@ -1,16 +1,42 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bxg extends bxh {
-   public bxg(bpf $$0, double $$1) {
-      super($$0, $$1);
+public class bxg extends bwl {
+   private final bpq a;
+   private double b;
+   private double c;
+   private int d;
+
+   public bxg(bpq $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bwl.a.a, bwl.a.b));
    }
 
-   @Nullable
    @Override
-   protected eov h() {
-      eov $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      eov $$2 = bzt.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : bzp.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean a() {
+      return this.a.ei().i() < 0.02F;
+   }
+
+   @Override
+   public boolean b() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public void c() {
+      double $$0 = (Math.PI * 2) * this.a.ei().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.ei().a(20);
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.d--;
+      this.a.G().a(this.a.dr() + this.b, this.a.dv(), this.a.dx() + this.c);
    }
 }

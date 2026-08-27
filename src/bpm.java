@@ -1,13 +1,6 @@
-import javax.annotation.Nullable;
+import java.util.Map;
+import org.joml.Vector3f;
 
 public interface bpm {
-   boolean g();
-
-   void a(@Nullable atq var1);
-
-   default ato Z_() {
-      return atp.ms;
-   }
-
-   boolean i();
+   Map<String, Vector3f> a();
 }

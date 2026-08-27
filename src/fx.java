@@ -13,15 +13,15 @@ public class fx implements fq {
    }
 
    @Override
-   public eov a(du $$0) {
-      eov $$1 = $$0.d();
-      return new eov(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public epr a(du $$0) {
+      epr $$1 = $$0.d();
+      return new epr(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
    }
 
    @Override
-   public eou b(du $$0) {
-      eou $$1 = $$0.k();
-      return new eou((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public epq b(du $$0) {
+      epq $$1 = $$0.k();
+      return new epq((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class fx implements fq {
       return new fx(new fw(false, $$0), new fw(false, $$1), new fw(false, $$2));
    }
 
-   public static fx a(eou $$0) {
+   public static fx a(epq $$0) {
       return new fx(new fw(false, (double)$$0.i), new fw(false, (double)$$0.j), new fw(true, 0.0));
    }
 

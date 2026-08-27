@@ -1,128 +1,101 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class edm extends edn {
-   private static final Codec<Either<ajc, egg>> a = Codec.of(edm::a, ajc.a.map(Either::left));
-   public static final Codec<edm> b = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, edm::new));
-   protected final Either<ajc, egg> c;
-   protected final il<ege> d;
+public abstract class edm extends edg {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected ehc b;
+   protected egy c;
+   protected ib d;
 
-   private static <T> DataResult<T> a(Either<ajc, egg> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<ajc> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : ajc.a.encode($$3.get(), $$1, $$2);
+   public edm(edt $$0, int $$1, ehd $$2, ajh $$3, String $$4, egy $$5, ib $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(ih.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
    }
 
-   protected static <E extends edm> RecordCodecBuilder<E, il<ege>> b() {
-      return egf.d.fieldOf("processors").forGetter($$0 -> $$0.d);
+   public edm(edt $$0, ta $$1, ehd $$2, Function<ajh, egy> $$3) {
+      super($$0, $$1);
+      this.a(ih.c);
+      this.a = $$1.l("Template");
+      this.d = new ib($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      ajh $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
    }
 
-   protected static <E extends edm> RecordCodecBuilder<E, Either<ajc, egg>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
-   }
-
-   protected edm(Either<ajc, egg> $$0, il<ege> $$1, edp.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
+   protected ajh b() {
+      return new ajh(this.a);
    }
 
    @Override
-   public jf a(egh $$0, dfr $$1) {
-      egg $$2 = this.a($$0);
-      return $$2.a($$1);
+   protected void a(eds $$0, ta $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
    }
 
-   private egg a(egh $$0) {
-      return (egg)this.c.map($$0::a, Function.identity());
-   }
+   @Override
+   public void a(cxu $$0, cxs $$1, dow $$2, axd $$3, ecu $$4, cwg $$5, ib $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (ehc.c $$8 : this.b.a(this.d, this.c, dac.pa)) {
+            if ($$8.c() != null) {
+               doj $$9 = doj.valueOf($$8.c().l("mode"));
+               if ($$9 == doj.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
 
-   public List<egg.c> a(egh $$0, ib $$1, dfr $$2, boolean $$3) {
-      egg $$4 = this.a($$0);
-      List<egg.c> $$5 = $$4.a($$1, new egc().a($$2), czh.pa, $$3);
-      List<egg.c> $$6 = Lists.newArrayList();
+         for (ehc.c $$11 : this.b.a(this.d, this.c, dac.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dmz $$13 = dac.a.o();
 
-      for (egg.c $$7 : $$5) {
-         sy $$8 = $$7.c();
-         if ($$8 != null) {
-            dno $$9 = dno.valueOf($$8.l("mode"));
-            if ($$9 == dno.d) {
-               $$6.add($$7);
+               try {
+                  $$13 = fm.a($$0.a(kj.f), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
+
+               $$0.a($$11.a(), $$13, 3);
             }
          }
       }
+   }
 
-      return $$6;
+   protected abstract void a(String var1, ib var2, cxo var3, axd var4, ecu var5);
+
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
    }
 
    @Override
-   public List<egg.c> a(egh $$0, ib $$1, dfr $$2, awt $$3) {
-      egg $$4 = this.a($$0);
-      ObjectArrayList<egg.c> $$5 = $$4.a($$1, new egc().a($$2), czh.pb, true);
-      ac.c($$5, $$3);
-      a($$5);
-      return $$5;
+   public dgm a() {
+      return this.c.d();
    }
 
-   @VisibleForTesting
-   static void a(List<egg.c> $$0) {
-      $$0.sort(Comparator.<egg.c>comparingInt($$0x -> x.a($$0x.c(), $$0xx -> $$0xx.h("selection_priority"), 0)).reversed());
+   public ehc c() {
+      return this.b;
    }
 
-   @Override
-   public eby a(egh $$0, ib $$1, dfr $$2) {
-      egg $$3 = this.a($$0);
-      return $$3.b(new egc().a($$2), $$1);
+   public ib d() {
+      return this.d;
    }
 
-   @Override
-   public boolean a(egh $$0, cwz $$1, cwx $$2, dob $$3, ib $$4, ib $$5, dfr $$6, eby $$7, awt $$8, boolean $$9) {
-      egg $$10 = this.a($$0);
-      egc $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
-      } else {
-         for (egg.c $$13 : egg.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
-         }
-
-         return true;
-      }
-   }
-
-   protected egc a(dfr $$0, eby $$1, boolean $$2) {
-      egc $$3 = new egc();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(efi.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(efo.b);
-      }
-
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
-   }
-
-   @Override
-   public edo<?> a() {
-      return edo.a;
-   }
-
-   @Override
-   public String toString() {
-      return "Single[" + this.c + "]";
+   public egy e() {
+      return this.c;
    }
 }

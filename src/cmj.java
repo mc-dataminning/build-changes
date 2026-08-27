@@ -1,30 +1,22 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+public class cmj extends cnj {
+   private final clp a;
 
-public interface cmj {
-   void a(@Nullable csu<?> var1);
-
-   @Nullable
-   csu<?> d();
-
-   default void a(cia $$0, List<cpq> $$1) {
-      csu<?> $$2 = this.d();
-      if ($$2 != null) {
-         $$0.a($$2, $$1);
-         if (!$$2.b().ar_()) {
-            $$0.a(Collections.singleton($$2));
-            this.a(null);
-         }
-      }
+   public cmj(clp $$0, bmv $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
-   default boolean a(cwe $$0, apb $$1, csu<?> $$2) {
-      if (!$$2.b().ar_() && $$0.Z().b(cwa.w) && !$$1.I().b($$2)) {
-         return false;
-      } else {
-         this.a($$2);
-         return true;
-      }
+   @Override
+   public boolean a(cqk $$0) {
+      return this.a.d($$0) || c($$0);
+   }
+
+   @Override
+   public int a_(cqk $$0) {
+      return c($$0) ? 1 : super.a_($$0);
+   }
+
+   public static boolean c(cqk $$0) {
+      return $$0.a(cqn.qx);
    }
 }

@@ -1,112 +1,121 @@
-import com.mojang.authlib.GameProfile;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class fls implements fln, flo {
-   private static final ajc a = new ajc("spectator/teleport_to_team");
-   private static final vs b = vs.c("spectatorMenu.team_teleport");
-   private static final vs c = vs.c("spectatorMenu.team_teleport.prompt");
-   private final List<flo> d;
+public class fls extends fhf {
+   private static final int a = 8;
+   private static final vu b = vu.c("telemetry_info.screen.title");
+   private static final vu c = vu.c("telemetry_info.screen.description").a(n.h);
+   private static final vu k = vu.c("telemetry_info.button.privacy_statement");
+   private static final vu l = vu.c("telemetry_info.button.give_feedback");
+   private static final vu m = vu.c("telemetry_info.button.show_data");
+   private static final vu n = vu.c("telemetry_info.opt_in.description");
+   private final fhf o;
+   private final ezk p;
+   @Nullable
+   private flr q;
+   private double r;
 
-   public fls() {
-      eyk $$0 = eyk.P();
-      this.d = a($$0, $$0.r.K());
-   }
-
-   private static List<flo> a(eyk $$0, epz $$1) {
-      return $$1.g().stream().flatMap($$1x -> fls.a.a($$0, $$1x).stream()).toList();
-   }
-
-   @Override
-   public List<flo> a() {
-      return this.d;
+   public fls(fhf $$0, ezk $$1) {
+      super(b);
+      this.o = $$0;
+      this.p = $$1;
    }
 
    @Override
-   public vs b() {
-      return c;
+   public vu i() {
+      return vt.a(super.i(), c);
    }
 
    @Override
-   public void a(flm $$0) {
-      $$0.a(this);
+   protected void aO_() {
+      fer $$0 = new fer();
+      $$0.c().a(8);
+      $$0.a(this.h);
+      fex $$1 = $$0.a(fex.d(), $$0.b().a(0.5F, 0.0F));
+      $$1.c().b().e(8);
+      $$1.a(new fcn(this.p(), this.i));
+      $$1.a(new fca(c, this.i).c(this.g - 16).b(true));
+      fes $$2 = this.a(fbg.a(k, this::b).a(), fbg.a(l, this::c).a());
+      $$1.a($$2);
+      feu $$3 = this.o();
+      $$0.a();
+      $$3.a();
+      int $$4 = $$2.C() + $$2.u();
+      int $$5 = $$3.u();
+      int $$6 = this.h - $$4 - $$5 - 16;
+      this.q = new flr(0, 0, this.g - 40, $$6, this.f.h);
+      this.q.a(this.r);
+      this.q.a($$0x -> this.r = $$0x);
+      $$1.a(this.q);
+      $$1.a($$3);
+      $$0.a();
+      fer.a($$0, 0, 0, this.g, this.h, 0.5F, 0.0F);
+      $$0.a($$1x -> {
+         fbe var10000 = this.c($$1x);
+      });
    }
 
    @Override
-   public vs aQ_() {
-      return b;
+   protected void aF_() {
+      this.b(this.q);
+   }
+
+   private feu o() {
+      fex $$0 = fex.d();
+      $$0.c().b().e(4);
+      if (this.f.D()) {
+         $$0.a(this.E());
+      }
+
+      $$0.a(this.a(fbg.a(m, this::d).a(), fbg.a(vt.d, this::a).a()));
+      return $$0;
+   }
+
+   private fbe E() {
+      ezj<Boolean> $$0 = this.p.ag();
+      fbi $$1 = fbi.a(n, this.f.h).a($$0).a(this::a).a();
+      $$1.j = this.f.D();
+      return $$1;
+   }
+
+   private void a(fbe $$0, boolean $$1) {
+      if (this.q != null) {
+         this.q.b($$1);
+      }
+   }
+
+   private void a(fbg $$0) {
+      this.f.a(this.o);
+   }
+
+   private void b(fbg $$0) {
+      ffw.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
+   }
+
+   private void c(fbg $$0) {
+      ffw.a(this, "https://aka.ms/javafeedback?ref=game");
+   }
+
+   private void d(fbg $$0) {
+      Path $$1 = this.f.u().b();
+      ac.j().a($$1.toUri());
    }
 
    @Override
-   public void a(ezx $$0, float $$1, int $$2) {
-      $$0.a(a, 0, 0, 16, 16);
+   public void d() {
+      this.f.a(this.o);
    }
 
    @Override
-   public boolean aR_() {
-      return !this.d.isEmpty();
+   public void b(fat $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 
-   static class a implements flo {
-      private final epu a;
-      private final Supplier<giy> b;
-      private final List<frk> c;
-
-      private a(epu $$0, List<frk> $$1, Supplier<giy> $$2) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-      }
-
-      public static Optional<flo> a(eyk $$0, epu $$1) {
-         List<frk> $$2 = new ArrayList<>();
-
-         for (String $$3 : $$1.g()) {
-            frk $$4 = $$0.K().a($$3);
-            if ($$4 != null && $$4.e() != cwb.d) {
-               $$2.add($$4);
-            }
-         }
-
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            GameProfile $$5 = $$2.get(awt.a().a($$2.size())).a();
-            Supplier<giy> $$6 = $$0.am().a($$5);
-            return Optional.of(new fls.a($$1, $$2, $$6));
-         }
-      }
-
-      @Override
-      public void a(flm $$0) {
-         $$0.a(new flr(this.c));
-      }
-
-      @Override
-      public vs aQ_() {
-         return this.a.c();
-      }
-
-      @Override
-      public void a(ezx $$0, float $$1, int $$2) {
-         Integer $$3 = this.a.n().f();
-         if ($$3 != null) {
-            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
-            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
-            float $$6 = (float)($$3 & 0xFF) / 255.0F;
-            $$0.a(1, 1, 15, 15, awm.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
-         }
-
-         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
-         fbj.a($$0, this.b.get(), 2, 2, 12);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      }
-
-      @Override
-      public boolean aR_() {
-         return true;
-      }
+   private fes a(fbe $$0, fbe $$1) {
+      fes $$2 = new fes();
+      $$2.c().b().f(4);
+      $$2.a($$0, 0, 0);
+      $$2.a($$1, 0, 1);
+      return $$2;
    }
 }

@@ -1,172 +1,106 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class ckx extends cko implements dle {
+   private boolean e = true;
 
-public class ckx extends cku {
-   private static final int k = 0;
-   private static final int l = 1;
-   private static final int m = 3;
-   private static final int n = 1;
-   private static final int o = 28;
-   private static final int p = 28;
-   private static final int q = 37;
-   private static final int r = 0;
-   private final bme s = new bmu(1) {
-      @Override
-      public boolean b(int $$0, cpq $$1) {
-         return $$1.a(aum.aw);
-      }
-
-      @Override
-      public int al_() {
-         return 1;
-      }
-   };
-   private final ckx.a t;
-   private final clf u;
-   private final cle v;
-
-   public ckx(int $$0, bme $$1) {
-      this($$0, $$1, new cmo(3), clf.a);
+   public ckx(bpc<? extends ckx> $$0, cwz $$1) {
+      super($$0, $$1);
    }
 
-   public ckx(int $$0, bme $$1, cle $$2, clf $$3) {
-      super(cmb.j, $$0);
-      a($$2, 3);
-      this.v = $$2;
-      this.u = $$3;
-      this.t = new ckx.a(this.s, 0, 136, 110);
-      this.a(this.t);
-      this.a($$2);
-      int $$4 = 36;
-      int $$5 = 137;
+   public ckx(cwz $$0, double $$1, double $$2, double $$3) {
+      super(bpc.aa, $$1, $$2, $$3, $$0);
+   }
 
-      for (int $$6 = 0; $$6 < 3; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new cmp($$1, $$7 + $$6 * 9 + 9, 36 + $$7 * 18, 137 + $$6 * 18));
-         }
+   @Override
+   public ckn.a v() {
+      return ckn.a.f;
+   }
+
+   @Override
+   public dmz x() {
+      return dac.hc.o();
+   }
+
+   @Override
+   public int z() {
+      return 1;
+   }
+
+   @Override
+   public int b() {
+      return 5;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.G()) {
+         this.p($$4);
       }
+   }
 
-      for (int $$8 = 0; $$8 < 9; $$8++) {
-         this.a(new cmp($$1, $$8, 36 + $$8 * 18, 195));
+   public boolean G() {
+      return this.e;
+   }
+
+   public void p(boolean $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public double H() {
+      return this.dr();
+   }
+
+   @Override
+   public double I() {
+      return this.dt() + 0.5;
+   }
+
+   @Override
+   public double J() {
+      return this.dx();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dM().B && this.bA() && this.G() && this.K()) {
+         this.e();
+      }
+   }
+
+   public boolean K() {
+      if (dlf.a(this.dM(), this)) {
+         return true;
+      } else {
+         for (cfd $$1 : this.dM().a(cfd.class, this.cH().c(0.25, 0.0, 0.25), bpb.a)) {
+            if (dlf.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   public void b(cia $$0) {
+   protected cqf ah_() {
+      return cqn.nP;
+   }
+
+   @Override
+   protected void b(ta $$0) {
       super.b($$0);
-      if (!$$0.dJ().B) {
-         cpq $$1 = this.t.a(this.t.a());
-         if (!$$1.b()) {
-            $$0.a($$1, false);
-         }
-      }
+      $$0.a("Enabled", this.e);
    }
 
    @Override
-   public boolean a(cia $$0) {
-      return a(this.u, $$0, czh.fO);
+   protected void a(ta $$0) {
+      super.a($$0);
+      this.e = $$0.e("Enabled") ? $$0.q("Enabled") : true;
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      super.a($$0, $$1);
-      this.d();
-   }
-
-   @Override
-   public cpq a(cia $$0, int $$1) {
-      cpq $$2 = cpq.h;
-      cmp $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cpq $$4 = $$3.g();
-         $$2 = $$4.q();
-         if ($$1 == 0) {
-            if (!this.a($$4, 1, 37, true)) {
-               return cpq.h;
-            }
-
-            $$3.b($$4, $$2);
-         } else if (!this.t.h() && this.t.a($$4) && $$4.M() == 1) {
-            if (!this.a($$4, 0, 1, false)) {
-               return cpq.h;
-            }
-         } else if ($$1 >= 1 && $$1 < 28) {
-            if (!this.a($$4, 28, 37, false)) {
-               return cpq.h;
-            }
-         } else if ($$1 >= 28 && $$1 < 37) {
-            if (!this.a($$4, 1, 28, false)) {
-               return cpq.h;
-            }
-         } else if (!this.a($$4, 1, 37, false)) {
-            return cpq.h;
-         }
-
-         if ($$4.b()) {
-            $$3.e(cpq.h);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.M() == $$2.M()) {
-            return cpq.h;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   public int l() {
-      return this.v.a(0);
-   }
-
-   public static int a(@Nullable il<bnq> $$0) {
-      return $$0 == null ? 0 : kh.d.t().a($$0) + 1;
-   }
-
-   @Nullable
-   public static il<bnq> e(int $$0) {
-      return $$0 == 0 ? null : kh.d.t().a($$0 - 1);
-   }
-
-   @Nullable
-   public il<bnq> m() {
-      return e(this.v.a(1));
-   }
-
-   @Nullable
-   public il<bnq> n() {
-      return e(this.v.a(2));
-   }
-
-   public void a(Optional<il<bnq>> $$0, Optional<il<bnq>> $$1) {
-      if (this.t.h()) {
-         this.v.a(1, a($$0.orElse(null)));
-         this.v.a(2, a($$1.orElse(null)));
-         this.t.a(1);
-         this.u.a(cwe::q);
-      }
-   }
-
-   public boolean o() {
-      return !this.s.a(0).b();
-   }
-
-   class a extends cmp {
-      public a(bme $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cpq $$0) {
-         return $$0.a(aum.aw);
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
+   public clo a(int $$0, cir $$1) {
+      return new cmn($$0, $$1, this);
    }
 }

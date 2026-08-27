@@ -1,77 +1,34 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
 
 public class alb {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vs.b("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vs.b("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vs.b("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> vs.b("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vs.c("commands.enchant.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.b("Source is not a mob"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.b("Path not found"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vu.b("Target not reached"));
 
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("enchant").requires($$0x -> $$0x.c(2)))
-            .then(
-               dv.a("targets", eh.b())
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("enchantment", et.a($$1, ki.t))
-                           .executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), et.g($$0x, "enchantment"), 1)))
-                        .then(
-                           dv.a("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a(
-                                       (du)$$0x.getSource(), eh.b($$0x, "targets"), et.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debugpath").requires($$0x -> $$0x.c(2)))
+            .then(dv.a("to", fo.a()).executes($$0x -> a((du)$$0x.getSource(), fo.a($$0x, "to"))))
       );
    }
 
-   private static int a(du $$0, Collection<? extends bof> $$1, il<ctz> $$2, int $$3) throws CommandSyntaxException {
-      ctz $$4 = $$2.a();
-      if ($$3 > $$4.a()) {
-         throw d.create($$3, $$4.a());
+   private static int a(du $$0, ib $$1) throws CommandSyntaxException {
+      if (!($$0.f() instanceof bpq $$3)) {
+         throw a.create();
       } else {
-         int $$5 = 0;
-
-         for (bof $$6 : $$1) {
-            if ($$6 instanceof box) {
-               box $$7 = (box)$$6;
-               cpq $$8 = $$7.eR();
-               if (!$$8.b()) {
-                  if ($$4.a($$8) && cua.a(cua.a($$8).keySet(), $$4)) {
-                     $$8.a($$4, $$3);
-                     $$5++;
-                  } else if ($$1.size() == 1) {
-                     throw c.create($$8.d().m($$8).getString());
-                  }
-               } else if ($$1.size() == 1) {
-                  throw b.create($$7.ad().getString());
-               }
-            } else if ($$1.size() == 1) {
-               throw a.create($$6.ad().getString());
-            }
-         }
-
-         if ($$5 == 0) {
-            throw e.create();
+         byz $$4 = new byy($$3, $$0.e());
+         ejc $$5 = $$4.a($$1, 0);
+         aew.a($$0.e(), $$3, $$5, $$4.q());
+         if ($$5 == null) {
+            throw b.create();
+         } else if (!$$5.j()) {
+            throw c.create();
          } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> vs.a("commands.enchant.success.single", $$4.d($$3), $$1.iterator().next().Q_()), true);
-            } else {
-               $$0.a(() -> vs.a("commands.enchant.success.multiple", $$4.d($$3), $$1.size()), true);
-            }
-
-            return $$5;
+            $$0.a(() -> vu.b("Made path"), true);
+            return 1;
          }
       }
    }

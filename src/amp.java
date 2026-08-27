@@ -1,13 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class amp {
-   public static void a(CommandDispatcher<du> $$0, boolean $$1) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
-         long $$1x = ((du)$$0x.getSource()).e().C();
-         vs $$2 = vv.a(String.valueOf($$1x));
-         ((du)$$0x.getSource()).a(() -> vs.a("commands.seed.success", $$2), false);
-         return (int)$$1x;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.save.alreadyOff"));
+
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         du $$1 = (du)$$0x.getSource();
+         boolean $$2 = false;
+
+         for (apf $$3 : $$1.l().K()) {
+            if ($$3 != null && !$$3.e) {
+               $$3.e = true;
+               $$2 = true;
+            }
+         }
+
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> vu.c("commands.save.disabled"), true);
+            return 1;
+         }
       }));
    }
 }

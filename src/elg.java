@@ -1,40 +1,45 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class elg extends elk {
-   public static final Codec<elg> a = RecordCodecBuilder.create($$0 -> a($$0).and(ejy.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, elg::new));
-   private final ejy.b b;
+public abstract class elg extends eln {
+   protected final List<eln> d;
+   private final elf a;
 
-   public elg(List<emx> $$0, ejy.b $$1) {
-      super($$0);
-      this.b = $$1;
+   protected elg(List<eln> $$0, List<ent> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public elm b() {
-      return eln.v;
-   }
-
-   @Override
-   public Set<emg<?>> a() {
-      return ImmutableSet.of(this.b.a());
-   }
-
-   @Override
-   public cpq a(cpq $$0, ejy $$1) {
-      if ($$0.a(cpt.uj) && $$1.c(this.b.a()) instanceof cia $$2) {
-         GameProfile $$3 = $$2.fU();
-         $$0.x().a("SkullOwner", tn.a(new sy(), $$3));
+   public void a(eld $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
       }
 
-      return $$0;
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
 
-   public static elk.a<?> a(ejy.b $$0) {
-      return a($$1 -> new elg($$1, $$0));
+   protected abstract elf a(List<? extends elf> var1);
+
+   @Override
+   public final boolean expand(eku $$0, Consumer<elm> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
+   }
+
+   public static <T extends elg> Codec<T> a(elg.a<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(awe.a(ell.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
+
+   @FunctionalInterface
+   public interface a<T extends elg> {
+      T create(List<eln> var1, List<ent> var2);
    }
 }

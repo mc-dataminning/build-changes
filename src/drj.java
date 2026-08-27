@@ -1,105 +1,35 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface drj {
-   Codec<drj> b = drk.b;
-   Codec<il<drj>> c = aiy.a(ki.ay, b);
-   Codec<drj> d = c.xmap(drk.j::new, $$0 -> (il)($$0 instanceof drk.j $$1 ? $$1.j() : new il.a<>($$0)));
+public class drj implements drr {
+   public static final Codec<drj> a = RecordCodecBuilder.create($$0 -> $$0.group(ib.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, drj::new));
+   public static final xs<vf, drj> b = xs.a(ib.b, $$0 -> $$0.e, drj::new);
+   private final ib e;
 
-   double a(drj.b var1);
-
-   void a(double[] var1, drj.a var2);
-
-   drj a(drj.f var1);
-
-   double a();
-
-   double b();
-
-   awg<? extends drj> c();
-
-   default drj a(double $$0, double $$1) {
-      return new drk.g(this, $$0, $$1);
+   public drj(ib $$0) {
+      this.e = $$0;
    }
 
-   default drj d() {
-      return drk.a(this, drk.k.a.a);
+   @Override
+   public Optional<epr> a(cwz $$0) {
+      return Optional.of(epr.b(this.e));
    }
 
-   default drj e() {
-      return drk.a(this, drk.k.a.b);
+   @Override
+   public drs<drj> a() {
+      return drs.a;
    }
 
-   default drj f() {
-      return drk.a(this, drk.k.a.c);
-   }
-
-   default drj g() {
-      return drk.a(this, drk.k.a.d);
-   }
-
-   default drj h() {
-      return drk.a(this, drk.k.a.e);
-   }
-
-   default drj i() {
-      return drk.a(this, drk.k.a.f);
-   }
-
-   public interface a {
-      drj.b a(int var1);
-
-      void a(double[] var1, drj var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dss d() {
-         return dss.a();
-      }
-   }
-
-   public static record c(il<egu.a> b, @Nullable egu c) {
-      public static final Codec<drj.c> a = egu.a.b.xmap($$0 -> new drj.c($$0, null), drj.c::b);
-
-      public c(il<egu.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
-   }
-
-   public interface d extends drj {
+   public static class a implements drs<drj> {
       @Override
-      default void a(double[] $$0, drj.a $$1) {
-         $$1.a($$0, this);
+      public Codec<drj> a() {
+         return drj.a;
       }
 
       @Override
-      default drj a(drj.f $$0) {
-         return $$0.apply(this);
-      }
-   }
-
-   public static record e(int a, int b, int c) implements drj.b {
-   }
-
-   public interface f {
-      drj apply(drj var1);
-
-      default drj.c a(drj.c $$0) {
-         return $$0;
+      public xs<vf, drj> b() {
+         return drj.b;
       }
    }
 }

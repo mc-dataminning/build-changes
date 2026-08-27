@@ -1,69 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyh extends dyk {
+public record dyh(int b, int c, int d, il<ecg> e) implements dxu {
    public static final Codec<dyh> a = RecordCodecBuilder.create(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  blq.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
-               )
+      $$0 -> $$0.group(
+               awe.k.fieldOf("tries").orElse(128).forGetter(dyh::a),
+               awe.j.fieldOf("xz_spread").orElse(7).forGetter(dyh::b),
+               awe.j.fieldOf("y_spread").orElse(3).forGetter(dyh::c),
+               ecg.b.fieldOf("feature").forGetter(dyh::d)
             )
             .apply($$0, dyh::new)
    );
-   private final blq b;
-   private final float c;
-   private final float g;
-   private final float h;
-   private final float i;
 
-   public dyh(blq $$0, blq $$1, blq $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected dyl<?> a() {
-      return dyl.k;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(cwk $$0, dyk.b $$1, awt $$2, dxu $$3, int $$4, dyk.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      ib $$10 = $$5.a().b($$8);
-      int $$11 = $$7 + $$5.b() - 1;
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
-
-      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
-         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
-      }
-
-      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   public int a(awt $$0, int $$1, dxu $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(awt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
-         return true;
-      } else {
-         boolean $$6 = $$1 == $$4 && $$3 == $$4;
-         boolean $$7 = $$4 > 2;
-         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
-      }
+   public il<ecg> d() {
+      return this.e;
    }
 }

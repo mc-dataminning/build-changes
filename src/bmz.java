@@ -1,4 +1,49 @@
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public record bmz(bne a, float b, @Nullable bnj c, float d) {
+public enum bmz implements axq {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
+
+   public static final axq.a<bmz> e = axq.a(bmz::values);
+   private static final IntFunction<bmz> f = avn.a(bmz::a, values(), avn.a.b);
+   private final int g;
+   private final String h;
+
+   private bmz(int $$0, String $$1) {
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   public int a() {
+      return this.g;
+   }
+
+   public vu b() {
+      return vu.c("options.difficulty." + this.h);
+   }
+
+   public vu d() {
+      return vu.c("options.difficulty." + this.h + ".info");
+   }
+
+   public static bmz a(int $$0) {
+      return f.apply($$0);
+   }
+
+   @Nullable
+   public static bmz a(String $$0) {
+      return e.a($$0);
+   }
+
+   public String e() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
+   }
 }

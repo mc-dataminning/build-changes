@@ -1,289 +1,166 @@
-public class eze {
-   public static final ezb a = ezb.a.a(0.375F)
-      .a("body", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a), new ezc(0.1667F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a)))
-      .a(
-         "body",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.1667F, ezd.a(0.0F, 5.0F, 0.0F), eza.b.a),
-            new ezc(0.2083F, ezd.a(0.0F, 6.0F, -1.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, 6.0F, -1.0F), eza.b.a),
-            new ezc(0.375F, ezd.a(0.0F, -1.0F, -1.0F), eza.b.a)
-         )
-      )
-      .a("tail", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a), new ezc(0.1667F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a)))
-      .a(
-         "tail",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.1667F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.2083F, ezd.a(0.0F, 0.0F, -2.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, 0.0F, -2.0F), eza.b.a)
-         )
-      )
-      .a("head", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a), new ezc(0.1667F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a)))
-      .a(
-         "head",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.1667F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.2083F, ezd.a(0.0F, 2.0F, 1.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, 2.0F, 1.0F), eza.b.a),
-            new ezc(0.375F, ezd.a(0.0F, 2.0F, 1.0F), eza.b.a)
-         )
-      )
-      .a("right_hind_leg", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a), new ezc(0.1667F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a)))
-      .a(
-         "right_hind_leg",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.1667F, ezd.a(0.0F, 4.0F, 0.0F), eza.b.a),
-            new ezc(0.2083F, ezd.a(0.0F, 8.0F, -2.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, 8.0F, -2.0F), eza.b.a),
-            new ezc(0.375F, ezd.a(0.0F, 5.0F, -2.0F), eza.b.a)
-         )
-      )
-      .a("left_hind_leg", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a), new ezc(0.1667F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a)))
-      .a(
-         "left_hind_leg",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.1667F, ezd.a(0.0F, 4.0F, 0.0F), eza.b.a),
-            new ezc(0.2083F, ezd.a(0.0F, 8.0F, -2.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, 8.0F, -2.0F), eza.b.a),
-            new ezc(0.375F, ezd.a(0.0F, 3.0F, -2.0F), eza.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eza(
-            eza.d.b,
-            new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.1667F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.2083F, ezd.b(-32.5F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.1667F, ezd.a(0.0F, 4.0F, 0.0F), eza.b.a),
-            new ezc(0.2083F, ezd.a(-1.0F, 9.0F, -1.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(-1.0F, 9.0F, -1.0F), eza.b.a),
-            new ezc(0.375F, ezd.a(-1.0F, 2.0F, -1.0F), eza.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eza(
-            eza.d.b,
-            new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.1667F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.2083F, ezd.b(-35.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.1667F, ezd.a(0.0F, 4.0F, 0.0F), eza.b.a),
-            new ezc(0.2083F, ezd.a(1.0F, 9.0F, -1.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(1.0F, 9.0F, -1.0F), eza.b.a),
-            new ezc(0.375F, ezd.a(1.0F, 2.0F, -1.0F), eza.b.a)
-         )
-      )
-      .a("cube", new eza(eza.d.b, new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a), new ezc(0.1667F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a)))
-      .a(
-         "cube",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 3.0F, 0.0F), eza.b.a),
-            new ezc(0.1667F, ezd.a(0.0F, 8.0F, 0.0F), eza.b.a),
-            new ezc(0.2083F, ezd.a(0.0F, 7.0F, 0.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, 7.0F, 0.0F), eza.b.a),
-            new ezc(0.375F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .b();
-   public static final ezb b = ezb.a.a(1.45833F)
-      .a()
-      .a(
-         "body",
-         new eza(
-            eza.d.b,
-            new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.125F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.25F, ezd.b(0.0F, 0.0F, 2.1F), eza.b.a),
-            new ezc(0.5F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.8333F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.9583F, ezd.b(0.0F, 0.0F, -2.1F), eza.b.a),
-            new ezc(1.25F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.4583F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .a(
-         "body",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.125F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, -0.2F, 0.0F), eza.b.a),
-            new ezc(0.5F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.8333F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.9583F, ezd.a(0.0F, -0.2F, 0.0F), eza.b.a),
-            new ezc(1.25F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.4583F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .a(
-         "tail",
-         new eza(
-            eza.d.b,
-            new ezc(0.0F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.25F, ezd.b(5.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.5F, ezd.b(-2.5F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.7083F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.9583F, ezd.b(5.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.2083F, ezd.b(-2.5F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.4583F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eza(
-            eza.d.b,
-            new ezc(0.0F, ezd.b(-50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.25F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.5F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.75F, ezd.b(50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.0F, ezd.b(50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.2917F, ezd.b(-20.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.4583F, ezd.b(-50.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, 0.0F, -0.5F), eza.b.a),
-            new ezc(0.5F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.0F, ezd.a(0.0F, 0.0F, -0.5F), eza.b.a),
-            new ezc(1.2917F, ezd.a(0.0F, 1.0F, -0.18F), eza.b.a),
-            new ezc(1.4583F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eza(
-            eza.d.b,
-            new ezc(0.0F, ezd.b(50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.25F, ezd.b(50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.5417F, ezd.b(-20.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.7083F, ezd.b(-50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.9583F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.2083F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.4583F, ezd.b(50.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, -0.25F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, 0.0F, -0.5F), eza.b.a),
-            new ezc(0.5417F, ezd.a(0.0F, 1.0F, -0.18F), eza.b.a),
-            new ezc(0.7083F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.9583F, ezd.a(0.0F, 0.0F, -0.5F), eza.b.a),
-            new ezc(1.2083F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.4583F, ezd.a(0.0F, 0.0F, -0.25F), eza.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eza(
-            eza.d.b,
-            new ezc(0.0F, ezd.b(50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.25F, ezd.b(50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.5417F, ezd.b(-20.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.7083F, ezd.b(-50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.9583F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.2083F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.4583F, ezd.b(50.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, -0.25F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, 0.0F, -0.5F), eza.b.a),
-            new ezc(0.5417F, ezd.a(0.0F, 1.0F, -0.18F), eza.b.a),
-            new ezc(0.7083F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.9583F, ezd.a(0.0F, 0.0F, -0.5F), eza.b.a),
-            new ezc(1.2083F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.4583F, ezd.a(0.0F, 0.0F, -0.25F), eza.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eza(
-            eza.d.b,
-            new ezc(0.0F, ezd.b(-50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.25F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.5F, ezd.b(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.75F, ezd.b(50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.0F, ezd.b(50.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.2917F, ezd.b(-20.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.4583F, ezd.b(-50.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new eza(
-            eza.d.a,
-            new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(0.25F, ezd.a(0.0F, 0.0F, -0.5F), eza.b.a),
-            new ezc(0.5F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a),
-            new ezc(1.0F, ezd.a(0.0F, 0.0F, -0.5F), eza.b.a),
-            new ezc(1.2917F, ezd.a(0.0F, 1.0F, -0.18F), eza.b.a),
-            new ezc(1.4583F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a)
-         )
-      )
-      .b();
-   public static final ezb c = ezb.a.a(1.5F)
-      .a()
-      .a("body", new eza(eza.d.a, new ezc(0.0F, ezd.a(0.0F, -1.0F, -1.0F), eza.b.a)))
-      .a("head", new eza(eza.d.a, new ezc(0.0F, ezd.a(0.0F, 2.0F, 1.0F), eza.b.a)))
-      .a("right_hind_leg", new eza(eza.d.a, new ezc(0.0F, ezd.a(0.0F, 5.0F, -2.0F), eza.b.a)))
-      .a("left_hind_leg", new eza(eza.d.a, new ezc(0.0F, ezd.a(0.0F, 3.0F, -2.0F), eza.b.a)))
-      .a(
-         "right_front_leg",
-         new eza(
-            eza.d.b,
-            new ezc(0.0F, ezd.b(-32.5F, 0.0F, 0.0F), eza.b.b),
-            new ezc(0.75F, ezd.b(-45.0F, 0.0F, 0.0F), eza.b.b),
-            new ezc(1.5F, ezd.b(-32.5F, 0.0F, 0.0F), eza.b.b)
-         )
-      )
-      .a("right_front_leg", new eza(eza.d.a, new ezc(0.0F, ezd.a(-1.0F, 2.0F, -1.0F), eza.b.b)))
-      .a(
-         "left_front_leg",
-         new eza(
-            eza.d.b,
-            new ezc(0.0F, ezd.b(-35.0F, 0.0F, 0.0F), eza.b.b),
-            new ezc(0.75F, ezd.b(-22.5F, 0.0F, 0.0F), eza.b.b),
-            new ezc(1.5F, ezd.b(-35.0F, 0.0F, 0.0F), eza.b.b)
-         )
-      )
-      .a("left_front_leg", new eza(eza.d.a, new ezc(0.0F, ezd.a(1.0F, 2.0F, -1.0F), eza.b.b)))
-      .a("cube", new eza(eza.d.a, new ezc(0.0F, ezd.a(0.0F, 0.0F, 0.0F), eza.b.a)))
-      .b();
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
+
+public class eze implements Comparable<eze> {
+   private static final Map<String, eze> h = Maps.newHashMap();
+   private static final Map<esu.a, eze> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final esu.a m;
+   private final String n;
+   private esu.a o;
+   private boolean p;
+   private int q;
+
+   public static void a(esu.a $$0) {
+      eze $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
+      }
+   }
+
+   public static void a(esu.a $$0, boolean $$1) {
+      eze $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
+   }
+
+   public static void a() {
+      for (eze $$0 : h.values()) {
+         if ($$0.o.a() == esu.b.a && $$0.o.b() != esu.bv.b()) {
+            $$0.a(esu.a(ezg.Q().aO().i(), $$0.o.b()));
+         }
+      }
+   }
+
+   public static void b() {
+      for (eze $$0 : h.values()) {
+         $$0.n();
+      }
+   }
+
+   public static void c() {
+      for (eze $$0 : h.values()) {
+         if ($$0 instanceof ezu $$1) {
+            $$1.n();
+         }
+      }
+   }
+
+   public static void d() {
+      i.clear();
+
+      for (eze $$0 : h.values()) {
+         i.put($$0.o, $$0);
+      }
+   }
+
+   public eze(String $$0, int $$1, String $$2) {
+      this($$0, esu.b.a, $$1, $$2);
+   }
+
+   public eze(String $$0, esu.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
+         return false;
+      } else {
+         this.q--;
+         return true;
+      }
+   }
+
+   private void n() {
+      this.q = 0;
+      this.a(false);
+   }
+
+   public String h() {
+      return this.l;
+   }
+
+   public esu.a i() {
+      return this.m;
+   }
+
+   public void b(esu.a $$0) {
+      this.o = $$0;
+   }
+
+   public int a(eze $$0) {
+      return this.n.equals($$0.n) ? gke.a(this.l).compareTo(gke.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   }
+
+   public static Supplier<vu> a(String $$0) {
+      eze $$1 = h.get($$0);
+      return $$1 == null ? () -> vu.c($$0) : $$1::k;
+   }
+
+   public boolean b(eze $$0) {
+      return this.o.equals($$0.o);
+   }
+
+   public boolean j() {
+      return this.o.equals(esu.bv);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 == esu.bv.b() ? this.o.a() == esu.b.b && this.o.b() == $$1 : this.o.a() == esu.b.a && this.o.b() == $$0;
+   }
+
+   public boolean a(int $$0) {
+      return this.o.a() == esu.b.c && this.o.b() == $$0;
+   }
+
+   public vu k() {
+      return this.o.d();
+   }
+
+   public boolean l() {
+      return this.o.equals(this.m);
+   }
+
+   public String m() {
+      return this.o.c();
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
+   }
 }

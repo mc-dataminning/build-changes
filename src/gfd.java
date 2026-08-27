@@ -1,9 +1,11 @@
-public class gfd extends gau<cfz, fpx<cfz>> {
-   public gfd(gby.a $$0) {
-      this($$0, fqe.cb, fqe.ce, fqe.cf);
+public class gfd extends gby<cjq> {
+   public static final ajh a = new ajh("textures/entity/projectiles/spectral_arrow.png");
+
+   public gfd(gcy.a $$0) {
+      super($$0);
    }
 
-   public gfd(gby.a $$0, fqd $$1, fqd $$2, fqd $$3) {
-      super($$0, new fpx<>($$0.a($$1)), new fpx<>($$0.a($$2)), new fpx<>($$0.a($$3)));
+   public ajh a(cjq $$0) {
+      return a;
    }
 }

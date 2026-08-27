@@ -1,37 +1,29 @@
-public class fmx<T extends bof> extends foo<T> {
-   public fmx(fqf $$0) {
-      super($$0, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
+import java.util.function.Function;
+
+public abstract class fmx<E extends bow> extends fol<E> {
+   private final float a;
+   private final float b;
+
+   public fmx(float $$0, float $$1) {
+      this($$0, $$1, fxy::e);
    }
 
-   public static fql c() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      int $$2 = 12;
-      $$1.a(
-         "head",
-         fqk.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-            .a(22, 0)
-            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
-            .a(22, 0)
-            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
-         fqh.a(0.0F, 4.0F, -8.0F)
-      );
-      $$1.a(
-         "body",
-         fqk.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
-         fqh.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      fqk $$3 = fqk.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      $$1.a("right_hind_leg", $$3, fqh.a(-4.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$3, fqh.a(4.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$3, fqh.a(-4.0F, 12.0F, -6.0F));
-      $$1.a("left_front_leg", $$3, fqh.a(4.0F, 12.0F, -6.0F));
-      return fql.a($$0, 64, 32);
+   public fmx(float $$0, float $$1, Function<ajh, fxy> $$2) {
+      super($$2);
+      this.b = $$1;
+      this.a = $$0;
    }
 
-   public fqf d() {
-      return this.a;
+   @Override
+   public void a(etz $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(this.a, this.a, this.a);
+         $$0.a(0.0F, this.b / 16.0F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+      } else {
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

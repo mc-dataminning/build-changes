@@ -1,20 +1,23 @@
-public record aad(ajc b) implements xz<aac> {
-   public static final xq<us, aad> a = xz.a(aad::a, aad::new);
+import io.netty.buffer.ByteBuf;
 
-   private aad(us $$0) {
-      this($$0.q());
-   }
+public class aad implements yb<aac> {
+   public static final aad a = new aad();
+   public static final xs<ByteBuf, aad> b = xs.a(a);
 
-   private void a(us $$0) {
-      $$0.a(this.b);
+   private aad() {
    }
 
    @Override
-   public yb<aad> a() {
-      return aae.a;
+   public yd<aad> a() {
+      return aaa.e;
    }
 
    public void a(aac $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,28 +1,33 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyl<P extends dyk> {
-   public static final dyl<dyf> a = a("blob_foliage_placer", dyf.a);
-   public static final dyl<dyq> b = a("spruce_foliage_placer", dyq.a);
-   public static final dyl<dyo> c = a("pine_foliage_placer", dyo.a);
-   public static final dyl<dye> d = a("acacia_foliage_placer", dye.a);
-   public static final dyl<dyg> e = a("bush_foliage_placer", dyg.c);
-   public static final dyl<dyj> f = a("fancy_foliage_placer", dyj.c);
-   public static final dyl<dym> g = a("jungle_foliage_placer", dym.a);
-   public static final dyl<dyn> h = a("mega_pine_foliage_placer", dyn.a);
-   public static final dyl<dyi> i = a("dark_oak_foliage_placer", dyi.a);
-   public static final dyl<dyp> j = a("random_spread_foliage_placer", dyp.a);
-   public static final dyl<dyh> k = a("cherry_foliage_placer", dyh.a);
-   private final Codec<P> l;
+public record dyl(int b, int c, int d, int e, int f, bmh g, float h) implements dxu {
+   public static final Codec<dyl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dyl::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dyl::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dyl::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dyl::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dyl::f),
+               bmh.c.fieldOf("extra_rare_growths").forGetter(dyl::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dyl::h)
+            )
+            .apply($$0, dyl::new)
+   );
 
-   private static <P extends dyk> dyl<P> a(String $$0, Codec<P> $$1) {
-      return ix.a(kh.W, $$0, new dyl<>($$1));
+   public int a() {
+      return this.b;
    }
 
-   private dyl(Codec<P> $$0) {
-      this.l = $$0;
+   public int b() {
+      return this.c;
    }
 
-   public Codec<P> a() {
-      return this.l;
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

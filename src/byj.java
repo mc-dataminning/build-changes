@@ -1,50 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class byj extends byh {
-   @Nullable
-   private ib p;
+public class byj extends byl {
+   private final bqk a;
+   private bpo b;
+   private int c;
 
-   public byj(boz $$0, cwe $$1) {
-      super($$0, $$1);
+   public byj(bqk $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(bwl.a.d));
    }
 
    @Override
-   public eig a(ib $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public eig a(bof $$0, int $$1) {
-      this.p = $$0.dj();
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(bof $$0, double $$1) {
-      eig $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
+   public boolean a() {
+      if (this.a.r() && !this.a.gn()) {
+         bpo $$0 = this.a.P_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.el();
+            int $$1 = $$0.em();
+            return $$1 != this.c && this.a(this.b, cae.a) && this.a.a(this.b, $$0);
+         }
       } else {
-         this.p = $$0.dj();
-         this.d = $$1;
-         return true;
+         return false;
       }
    }
 
    @Override
    public void c() {
-      if (!this.l()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.dh(), (double)this.a.dd())
-               && (!(this.a.dq() > (double)this.p.v()) || !ib.a((double)this.p.u(), this.a.dq(), (double)this.p.w()).a(this.a.dh(), (double)this.a.dd()))) {
-               this.a.K().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
+      this.e.h(this.b);
+      bpo $$0 = this.a.P_();
+      if ($$0 != null) {
+         this.c = $$0.em();
       }
+
+      super.c();
    }
 }

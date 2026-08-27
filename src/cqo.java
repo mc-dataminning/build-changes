@@ -1,59 +1,50 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class cqo extends coc {
-   protected static final Map<czf, dme> a = Maps.newHashMap(
-      new Builder()
-         .put(czh.i, czh.kE.o())
-         .put(czh.j, czh.kE.o())
-         .put(czh.l, czh.kE.o())
-         .put(czh.k, czh.kE.o())
-         .put(czh.fl, czh.kE.o())
-         .put(czh.sH, czh.kE.o())
-         .build()
-   );
+public class cqo extends cqf {
+   private static final String a = "Recipes";
+   private static final Logger b = LogUtils.getLogger();
 
-   public cqo(crd $$0, float $$1, float $$2, cpl.a $$3) {
-      super($$1, $$2, $$0, aue.bC, $$3);
+   public cqo(cqf.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bml a(crz $$0) {
-      cwe $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      dme $$3 = $$1.a_($$2);
-      if ($$0.k() == ih.a) {
-         return bml.d;
-      } else {
-         cia $$4 = $$0.o();
-         dme $$5 = a.get($$3.b());
-         dme $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, atp.wd, atq.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof czt && $$3.c(czt.c)) {
-            if (!$$1.y_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
+   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
+      cqk $$3 = $$1.b($$2);
+      ta $$4 = $$3.w();
+      if (!$$1.fM()) {
+         $$1.a($$2, cqk.h);
+      }
 
-            czt.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(czt.c, Boolean.valueOf(false));
-         }
+      if ($$4 != null && $$4.b("Recipes", 9)) {
+         if (!$$0.B) {
+            tg $$5 = $$4.c("Recipes", 8);
+            List<ctp<?>> $$6 = Lists.newArrayList();
+            ctq $$7 = $$0.o().aJ();
 
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(dqr.c, $$2, dqr.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, box.d($$0.p()));
+            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
+               String $$9 = $$5.j($$8);
+               Optional<ctp<?>> $$10 = $$7.a(new ajh($$9));
+               if (!$$10.isPresent()) {
+                  b.error("Invalid recipe: {}", $$9);
+                  return bnd.d($$3);
                }
+
+               $$6.add($$10.get());
             }
 
-            return bml.a($$1.B);
-         } else {
-            return bml.d;
+            $$1.a($$6);
+            $$1.b(aui.c.b(this));
          }
+
+         return bnd.a($$3, $$0.x_());
+      } else {
+         b.error("Tag not valid: {}", $$4);
+         return bnd.d($$3);
       }
    }
 }

@@ -1,34 +1,24 @@
+import java.util.UUID;
+import java.util.stream.Stream;
+
 public interface dqu {
-   dqu a = new dqu() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   int aj();
 
-      @Override
-      public void a(dqt $$0) {
-      }
+   UUID cw();
 
-      @Override
-      public void b(dqt $$0) {
-      }
+   ib dm();
 
-      @Override
-      public boolean a(il<dqr> $$0, eov $$1, dqr.a $$2, dqu.a $$3) {
-         return false;
-      }
-   };
+   epm cH();
 
-   boolean a();
+   void a(dqv var1);
 
-   void a(dqt var1);
+   Stream<? extends dqu> cR();
 
-   void b(dqt var1);
+   Stream<? extends dqu> cS();
 
-   boolean a(il<dqr> var1, eov var2, dqr.a var3, dqu.a var4);
+   void b(bow.c var1);
 
-   @FunctionalInterface
-   public interface a {
-      void visit(dqt var1, eov var2);
-   }
+   boolean dK();
+
+   boolean dL();
 }

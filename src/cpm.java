@@ -1,65 +1,48 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class cpm {
-   private final Map<cpl, cpm.a> a = Maps.newHashMap();
-   private int b;
+public interface cpm {
+   bpd i();
 
-   public boolean a(cpl $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   default il<atx> as_() {
+      return aty.as;
    }
 
-   public float a(cpl $$0, float $$1) {
-      cpm.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return awm.a($$4 / $$3, 0.0F, 1.0F);
+   default bnd<cqk> a(cqf $$0, cwz $$1, cis $$2, bnb $$3) {
+      cqk $$4 = $$2.b($$3);
+      bpd $$5 = bpq.h($$4);
+      if (!$$2.c($$5)) {
+         return bnd.c($$4);
       } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<cpl, cpm.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<cpl, cpm.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
+         cqk $$6 = $$2.d($$5);
+         if ((!cuv.d($$6) || $$2.f()) && !cqk.a($$4, $$6)) {
+            if (!$$1.x_()) {
+               $$2.b(aui.c.b($$0));
             }
+
+            cqk $$7 = $$6.b() ? $$4 : $$6.c();
+            cqk $$8 = $$2.f() ? $$4.q() : $$4.c();
+            $$2.a($$5, $$8);
+            return bnd.a($$7, $$1.x_());
+         } else {
+            return bnd.d($$4);
          }
       }
    }
 
-   public void a(cpl $$0, int $$1) {
-      this.a.put($$0, new cpm.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
+   @Nullable
+   static cpm c_(cqk $$0) {
+      cqf $$3 = $$0.d();
+      if ($$3 instanceof cpm) {
+         return (cpm)$$3;
+      } else {
+         if ($$0.d() instanceof cof $$2) {
+            daa var6 = $$2.d();
+            if (var6 instanceof cpm) {
+               return (cpm)var6;
+            }
+         }
 
-   public void b(cpl $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(cpl $$0, int $$1) {
-   }
-
-   protected void c(cpl $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         return null;
       }
    }
 }

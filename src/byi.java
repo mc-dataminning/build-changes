@@ -1,375 +1,40 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public abstract class byi {
-   private static final int p = 20;
-   private static final int q = 100;
-   private static final float r = 0.25F;
-   protected final boz a;
-   protected final cwe b;
-   @Nullable
-   protected eig c;
-   protected double d;
-   protected int e;
-   protected int f;
-   protected eov g = eov.b;
-   protected jf h = jf.g;
-   protected long i;
-   protected long j;
-   protected double k;
-   protected float l = 0.5F;
-   protected boolean m;
-   protected long n;
-   protected eif o;
-   @Nullable
-   private ib s;
-   private int t;
-   private float u = 1.0F;
-   private final eii v;
-   private boolean w;
+public class byi extends byl {
+   private final bqk a;
+   private bpo b;
+   private int c;
 
-   public byi(boz $$0, cwe $$1) {
+   public byi(bqk $$0) {
+      super($$0, false);
       this.a = $$0;
-      this.b = $$1;
-      int $$2 = awm.a($$0.g(bqe.i) * 16.0);
-      this.v = this.a($$2);
+      this.a(EnumSet.of(bwl.a.d));
    }
 
-   public void g() {
-      this.u = 1.0F;
-   }
-
-   public void a(float $$0) {
-      this.u = $$0;
-   }
-
-   @Nullable
-   public ib h() {
-      return this.s;
-   }
-
-   protected abstract eii a(int var1);
-
-   public void a(double $$0) {
-      this.d = $$0;
-   }
-
-   public void i() {
-      if (this.b.X() - this.n > 20L) {
-         if (this.s != null) {
-            this.c = null;
-            this.c = this.a(this.s, this.t);
-            this.n = this.b.X();
-            this.m = false;
-         }
-      } else {
-         this.m = true;
-      }
-   }
-
-   @Nullable
-   public final eig a(double $$0, double $$1, double $$2, int $$3) {
-      return this.a(ib.a($$0, $$1, $$2), $$3);
-   }
-
-   @Nullable
-   public eig a(Stream<ib> $$0, int $$1) {
-      return this.a($$0.collect(Collectors.toSet()), 8, false, $$1);
-   }
-
-   @Nullable
-   public eig a(Set<ib> $$0, int $$1) {
-      return this.a($$0, 8, false, $$1);
-   }
-
-   @Nullable
-   public eig a(ib $$0, int $$1) {
-      return this.a(ImmutableSet.of($$0), 8, false, $$1);
-   }
-
-   @Nullable
-   public eig a(ib $$0, int $$1, int $$2) {
-      return this.a(ImmutableSet.of($$0), 8, false, $$1, (float)$$2);
-   }
-
-   @Nullable
-   public eig a(bof $$0, int $$1) {
-      return this.a(ImmutableSet.of($$0.dj()), 16, true, $$1);
-   }
-
-   @Nullable
-   protected eig a(Set<ib> $$0, int $$1, boolean $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, (float)this.a.g(bqe.i));
-   }
-
-   @Nullable
-   protected eig a(Set<ib> $$0, int $$1, boolean $$2, int $$3, float $$4) {
-      if ($$0.isEmpty()) {
-         return null;
-      } else if (this.a.dq() < (double)this.b.J_()) {
-         return null;
-      } else if (!this.a()) {
-         return null;
-      } else if (this.c != null && !this.c.c() && $$0.contains(this.s)) {
-         return this.c;
-      } else {
-         this.b.ae().a("pathfind");
-         ib $$5 = $$2 ? this.a.dj().c() : this.a.dj();
-         int $$6 = (int)($$4 + (float)$$1);
-         cwr $$7 = new cwr(this.b, $$5.b(-$$6, -$$6, -$$6), $$5.b($$6, $$6, $$6));
-         eig $$8 = this.v.a($$7, this.a, $$0, $$4, $$3, this.u);
-         this.b.ae().c();
-         if ($$8 != null && $$8.l() != null) {
-            this.s = $$8.l();
-            this.t = $$3;
-            this.f();
-         }
-
-         return $$8;
-      }
-   }
-
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.a(this.a($$0, $$1, $$2, 1), $$3);
-   }
-
-   public boolean a(bof $$0, double $$1) {
-      eig $$2 = this.a($$0, 1);
-      return $$2 != null && this.a($$2, $$1);
-   }
-
-   public boolean a(@Nullable eig $$0, double $$1) {
-      if ($$0 == null) {
-         this.c = null;
-         return false;
-      } else {
-         if (!$$0.a(this.c)) {
-            this.c = $$0;
-         }
-
-         if (this.l()) {
+   @Override
+   public boolean a() {
+      if (this.a.r() && !this.a.gn()) {
+         bpo $$0 = this.a.P_();
+         if ($$0 == null) {
             return false;
          } else {
-            this.U_();
-            if (this.c.e() <= 0) {
-               return false;
-            } else {
-               this.d = $$1;
-               eov $$2 = this.b();
-               this.f = this.e;
-               this.g = $$2;
-               return true;
-            }
+            this.b = $$0.ej();
+            int $$1 = $$0.ek();
+            return $$1 != this.c && this.a(this.b, cae.a) && this.a.a(this.b, $$0);
          }
+      } else {
+         return false;
       }
    }
 
-   @Nullable
-   public eig j() {
-      return this.c;
-   }
-
+   @Override
    public void c() {
-      this.e++;
-      if (this.m) {
-         this.i();
+      this.e.h(this.b);
+      bpo $$0 = this.a.P_();
+      if ($$0 != null) {
+         this.c = $$0.ek();
       }
 
-      if (!this.l()) {
-         if (this.a()) {
-            this.k();
-         } else if (this.c != null && !this.c.c()) {
-            eov $$0 = this.b();
-            eov $$1 = this.c.a(this.a);
-            if ($$0.d > $$1.d && !this.a.aC() && awm.a($$0.c) == awm.a($$1.c) && awm.a($$0.e) == awm.a($$1.e)) {
-               this.c.a();
-            }
-         }
-
-         aes.a(this.b, this.a, this.c, this.l);
-         if (!this.l()) {
-            eov $$2 = this.c.a(this.a);
-            this.a.K().a($$2.c, this.a($$2), $$2.e, this.d);
-         }
-      }
-   }
-
-   protected double a(eov $$0) {
-      ib $$1 = ib.a($$0);
-      return this.b.a_($$1.d()).i() ? $$0.d : eil.a(this.b, $$1);
-   }
-
-   protected void k() {
-      eov $$0 = this.b();
-      this.l = this.a.dd() > 0.75F ? this.a.dd() / 2.0F : 0.75F - this.a.dd() / 2.0F;
-      jf $$1 = this.c.g();
-      double $$2 = Math.abs(this.a.do() - ((double)$$1.u() + 0.5));
-      double $$3 = Math.abs(this.a.dq() - (double)$$1.v());
-      double $$4 = Math.abs(this.a.du() - ((double)$$1.w() + 0.5));
-      boolean $$5 = $$2 < (double)this.l && $$4 < (double)this.l && $$3 < 1.0;
-      if ($$5 || this.b(this.c.h().l) && this.c($$0)) {
-         this.c.a();
-      }
-
-      this.b($$0);
-   }
-
-   private boolean c(eov $$0) {
-      if (this.c.f() + 1 >= this.c.e()) {
-         return false;
-      } else {
-         eov $$1 = eov.c(this.c.g());
-         if (!$$0.a((iv)$$1, 2.0)) {
-            return false;
-         } else if (this.a($$0, this.c.a(this.a))) {
-            return true;
-         } else {
-            eov $$2 = eov.c(this.c.d(this.c.f() + 1));
-            eov $$3 = $$1.d($$0);
-            eov $$4 = $$2.d($$0);
-            double $$5 = $$3.g();
-            double $$6 = $$4.g();
-            boolean $$7 = $$6 < $$5;
-            boolean $$8 = $$5 < 0.5;
-            if (!$$7 && !$$8) {
-               return false;
-            } else {
-               eov $$9 = $$3.d();
-               eov $$10 = $$4.d();
-               return $$10.b($$9) < 0.0;
-            }
-         }
-      }
-   }
-
-   protected void b(eov $$0) {
-      if (this.e - this.f > 100) {
-         float $$1 = this.a.fh() >= 1.0F ? this.a.fh() : this.a.fh() * this.a.fh();
-         float $$2 = $$1 * 100.0F * 0.25F;
-         if ($$0.g(this.g) < (double)($$2 * $$2)) {
-            this.w = true;
-            this.n();
-         } else {
-            this.w = false;
-         }
-
-         this.f = this.e;
-         this.g = $$0;
-      }
-
-      if (this.c != null && !this.c.c()) {
-         jf $$3 = this.c.g();
-         long $$4 = this.b.X();
-         if ($$3.equals(this.h)) {
-            this.i = this.i + ($$4 - this.j);
-         } else {
-            this.h = $$3;
-            double $$5 = $$0.f(eov.c(this.h));
-            this.k = this.a.fh() > 0.0F ? $$5 / (double)this.a.fh() * 20.0 : 0.0;
-         }
-
-         if (this.k > 0.0 && (double)this.i > this.k * 3.0) {
-            this.e();
-         }
-
-         this.j = $$4;
-      }
-   }
-
-   private void e() {
-      this.f();
-      this.n();
-   }
-
-   private void f() {
-      this.h = jf.g;
-      this.i = 0L;
-      this.k = 0.0;
-      this.w = false;
-   }
-
-   public boolean l() {
-      return this.c == null || this.c.c();
-   }
-
-   public boolean m() {
-      return !this.l();
-   }
-
-   public void n() {
-      this.c = null;
-   }
-
-   protected abstract eov b();
-
-   protected abstract boolean a();
-
-   protected void U_() {
-      if (this.c != null) {
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            eie $$1 = this.c.a($$0);
-            eie $$2 = $$0 + 1 < this.c.e() ? this.c.a($$0 + 1) : null;
-            dme $$3 = this.b.a_(new ib($$1.a, $$1.b, $$1.c));
-            if ($$3.a(aue.bk)) {
-               this.c.a($$0, $$1.a($$1.a, $$1.b + 1, $$1.c));
-               if ($$2 != null && $$1.b >= $$2.b) {
-                  this.c.a($$0 + 1, $$1.a($$2.a, $$1.b + 1, $$2.c));
-               }
-            }
-         }
-      }
-   }
-
-   protected boolean a(eov $$0, eov $$1) {
-      return false;
-   }
-
-   public boolean b(eic $$0) {
-      return $$0 != eic.n && $$0 != eic.p && $$0 != eic.d;
-   }
-
-   protected static boolean a(boz $$0, eov $$1, eov $$2, boolean $$3) {
-      eov $$4 = new eov($$2.c, $$2.d + (double)$$0.de() * 0.5, $$2.e);
-      return $$0.dJ().a(new cvn($$1, $$4, cvn.a.a, $$3 ? cvn.b.c : cvn.b.a, $$0)).c() == eot.a.a;
-   }
-
-   public boolean a(ib $$0) {
-      ib $$1 = $$0.d();
-      return this.b.a_($$1).i(this.b, $$1);
-   }
-
-   public eif o() {
-      return this.o;
-   }
-
-   public void a(boolean $$0) {
-      this.o.c($$0);
-   }
-
-   public boolean p() {
-      return this.o.f();
-   }
-
-   public boolean b(ib $$0) {
-      if (this.m) {
-         return false;
-      } else if (this.c != null && !this.c.c() && this.c.e() != 0) {
-         eie $$1 = this.c.d();
-         eov $$2 = new eov(((double)$$1.a + this.a.do()) / 2.0, ((double)$$1.b + this.a.dq()) / 2.0, ((double)$$1.c + this.a.du()) / 2.0);
-         return $$0.a($$2, (double)(this.c.e() - this.c.f()));
-      } else {
-         return false;
-      }
-   }
-
-   public float q() {
-      return this.l;
-   }
-
-   public boolean r() {
-      return this.w;
+      super.c();
    }
 }

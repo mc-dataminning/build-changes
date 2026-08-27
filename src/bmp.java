@@ -1,3 +1,8 @@
-public interface bmp extends cma {
-   vs Q_();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bmp {
 }

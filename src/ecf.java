@@ -1,29 +1,37 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ecf extends ecg {
-   private final ecf.a d;
+public class ecf extends ecn {
+   public static final Codec<ecf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ecf::new)
+   );
+   private final double c;
+   private final int d;
    private final int e;
-   private final int f;
 
-   protected ecf(ecf.a $$0, int $$1, int $$2, ecg.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private ecf(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static ecf a(double $$0, int $$1, int $$2) {
+      return new ecf($$0, $$1, $$2);
    }
 
    @Override
-   public Optional<ecg.b> a(ecg.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, drq.a.a, $$1 -> this.a($$1, $$0));
+   protected int a(axd $$0, ib $$1) {
+      double $$2 = cxy.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
    }
 
-   private void a(ecy $$0, ecg.a $$1) {
-      cvl $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      eck construct(dsp var1, int var2, int var3);
+   @Override
+   public eck<?> b() {
+      return eck.h;
    }
 }

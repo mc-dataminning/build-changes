@@ -1,29 +1,27 @@
-public class fvf extends fuq {
-   fvf(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuz $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      }
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
+
+public class fvf {
+   private final List<ajh> a;
+
+   private fvf(List<ajh> $$0) {
+      this.a = $$0;
    }
 
-   public static class a implements fuh<ke> {
-      private final fuz a;
+   public List<ajh> a() {
+      return this.a;
+   }
 
-      public a(fuz $$0) {
-         this.a = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fvf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   public static fvf a(JsonObject $$0) {
+      JsonArray $$1 = awm.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new fvf(List.of());
+      } else {
+         List<ajh> $$2 = Streams.stream($$1).map($$0x -> awm.a($$0x, "texture")).map(ajh::new).collect(ImmutableList.toImmutableList());
+         return new fvf($$2);
       }
    }
 }

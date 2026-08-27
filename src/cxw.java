@@ -1,43 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class cxw extends cyr {
-   private final cog a;
+public class cxw {
+   public static final Codec<cxw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atx.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, cxw::new)
+   );
+   public static final cxw b = new cxw(aty.h, 6000, 8, 2.0);
+   private final il<atx> c;
+   private final int d;
+   private final int e;
+   private final double f;
 
-   protected cxw(cog $$0, dmd.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public cxw(il<atx> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   protected abstract MapCodec<? extends cxw> a();
-
-   @Override
-   public boolean a(dme $$0) {
-      return true;
+   public il<atx> a() {
+      return this.c;
    }
 
-   @Override
-   public djl a(ib $$0, dme $$1) {
-      return new djb($$0, $$1, this.a);
+   public int b() {
+      return this.d;
    }
 
-   @Override
-   public void a(cwe $$0, ib $$1, dme $$2, @Nullable box $$3, cpq $$4) {
-      if ($$0.B) {
-         $$0.a($$1, djn.t).ifPresent($$1x -> $$1x.b($$4));
-      } else if ($$4.B()) {
-         $$0.a($$1, djn.t).ifPresent($$1x -> $$1x.a($$4.z()));
-      }
+   public int c() {
+      return this.e;
    }
 
-   @Override
-   public cpq a(cwh $$0, ib $$1, dme $$2) {
-      djl $$3 = $$0.c_($$1);
-      return $$3 instanceof djb ? ((djb)$$3).c() : super.a($$0, $$1, $$2);
-   }
-
-   public cog b() {
-      return this.a;
+   public double d() {
+      return this.f;
    }
 }

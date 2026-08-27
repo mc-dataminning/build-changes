@@ -1,100 +1,133 @@
-public class fhs extends fhg<cli> {
-   private static final ajc x = new ajc("container/crafter/disabled_slot");
-   private static final ajc y = new ajc("container/crafter/powered_redstone");
-   private static final ajc z = new ajc("container/crafter/unpowered_redstone");
-   private static final ajc A = new ajc("textures/gui/container/crafter.png");
-   private static final vs B = vs.c("gui.togglable_slot");
-   private final cia C;
+enum fhs {
+   a(
+      new fhs.a(
+         new ajh("advancements/tab_above_left_selected"), new ajh("advancements/tab_above_middle_selected"), new ajh("advancements/tab_above_right_selected")
+      ),
+      new fhs.a(new ajh("advancements/tab_above_left"), new ajh("advancements/tab_above_middle"), new ajh("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new fhs.a(
+         new ajh("advancements/tab_below_left_selected"), new ajh("advancements/tab_below_middle_selected"), new ajh("advancements/tab_below_right_selected")
+      ),
+      new fhs.a(new ajh("advancements/tab_below_left"), new ajh("advancements/tab_below_middle"), new ajh("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new fhs.a(
+         new ajh("advancements/tab_left_top_selected"), new ajh("advancements/tab_left_middle_selected"), new ajh("advancements/tab_left_bottom_selected")
+      ),
+      new fhs.a(new ajh("advancements/tab_left_top"), new ajh("advancements/tab_left_middle"), new ajh("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new fhs.a(
+         new ajh("advancements/tab_right_top_selected"), new ajh("advancements/tab_right_middle_selected"), new ajh("advancements/tab_right_bottom_selected")
+      ),
+      new fhs.a(new ajh("advancements/tab_right_top"), new ajh("advancements/tab_right_middle"), new ajh("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-   public fhs(cli $$0, chz $$1, vs $$2) {
-      super($$0, $$1, $$2);
-      this.C = $$1.m;
+   private final fhs.a e;
+   private final fhs.a f;
+   private final int g;
+   private final int h;
+   private final int i;
+
+   private fhs(fhs.a $$0, fhs.a $$1, int $$2, int $$3, int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   @Override
-   protected void aP_() {
-      super.aP_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   public int a() {
+      return this.i;
    }
 
-   @Override
-   protected void a(cmp $$0, int $$1, int $$2, cld $$3) {
-      if ($$0 instanceof clj && !$$0.h() && !this.C.P_()) {
-         switch ($$3) {
-            case a:
-               if (this.p.e($$1)) {
-                  this.a($$1);
-               } else if (this.p.g().b()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               cpq $$4 = this.C.fV().a($$2);
-               if (this.p.e($$1) && !$$4.b()) {
-                  this.a($$1);
-               }
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.p.a($$0, $$1);
-      super.a($$0, this.p.j, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.C.a(atp.zK.a(), 0.4F, $$2);
-   }
-
-   @Override
-   public void a(ezx $$0, cmp $$1) {
-      if ($$1 instanceof clj $$2 && this.p.e($$1.e)) {
-         this.a($$0, $$2);
-         return;
-      }
-
-      super.a($$0, $$1);
-   }
-
-   private void a(ezx $$0, clj $$1) {
-      $$0.a(x, $$1.f - 1, $$1.g - 1, 18, 18);
-   }
-
-   @Override
-   public void a(ezx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      this.a($$0, $$1, $$2);
-      if (this.r instanceof clj && !this.p.e(this.r.e) && this.p.g().b() && !this.r.h() && !this.C.P_()) {
-         $$0.a(this.i, B, $$1, $$2);
-      }
-   }
-
-   private void c(ezx $$0) {
-      int $$1 = this.g / 2 + 9;
-      int $$2 = this.h / 2 - 48;
-      ajc $$3;
-      if (this.p.l()) {
-         $$3 = y;
+   public void a(fat $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      fhs.a $$5 = $$3 ? this.e : this.f;
+      ajh $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
       } else {
-         $$3 = z;
+         $$6 = $$5.b();
       }
 
-      $$0.a($$3, $$1, $$2, 16, 16);
+      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
    }
 
-   @Override
-   protected void a(ezx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
+   public void a(fat $$0, int $$1, int $$2, int $$3, cqk $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
+      }
+
+      $$0.b($$4, $$5, $$6);
+   }
+
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
+   }
+
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   }
+
+   static record a(ajh a, ajh b, ajh c) {
    }
 }

@@ -1,17 +1,15 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 
-public class ban extends bee {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
-
+public class ban extends ber {
    public ban(Schema $$0, boolean $$1) {
-      super("EntityPufferfishRenameFix", $$0, $$1);
+      super("EntityElderGuardianSplitFix", $$0, $$1);
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      return Pair.of(Objects.equals($$0, "Guardian") && $$1.get("Elder").asBoolean(false) ? "ElderGuardian" : $$0, $$1);
    }
 }

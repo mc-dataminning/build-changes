@@ -1,86 +1,54 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class azn extends DataFix {
-   private static final int a = 16;
-
-   public azn(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public azn(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "ChunkToProtoChunkFix", this.getInputSchema().getType(bdt.c), this.getOutputSchema().getType(bdt.c), $$0 -> $$0.update("Level", azn::a)
+   protected TypeRewriteRule makeRule() {
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
+         this.getInputSchema().getType(beh.t)
+      );
+      Type<?> $$1 = this.getInputSchema().getType(beh.y);
+      return TypeRewriteRule.seq(
+         this.a($$0, $$1, "minecraft:llama"), new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
       );
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("TerrainPopulated").asBoolean(false);
-      boolean $$2 = $$0.get("LightPopulated").asNumber().result().isEmpty() || $$0.get("LightPopulated").asBoolean(false);
-      String $$3;
-      if ($$1) {
-         if ($$2) {
-            $$3 = "mobs_spawned";
-         } else {
-            $$3 = "decorated";
-         }
-      } else {
-         $$3 = "carved";
-      }
-
-      return c(b($$0)).set("Status", $$0.createString($$3)).set("hasLegacyStructureData", $$0.createBoolean(true));
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.update("Biomes", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asByteBufferOpt().result().map($$1x -> {
-            int[] $$2 = new int[256];
-
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               if ($$3 < $$1x.capacity()) {
-                  $$2[$$3] = $$1x.get($$3) & 255;
-               }
-            }
-
-            return $$0.createIntList(Arrays.stream($$2));
-         }), $$1));
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse(
-         $$0.get("TileTicks")
-            .asStreamOpt()
-            .result()
-            .map(
-               $$1 -> {
-                  List<ShortList> $$2 = IntStream.range(0, 16).mapToObj($$0xx -> new ShortArrayList()).collect(Collectors.toList());
-                  $$1.forEach($$1x -> {
-                     int $$2x = $$1x.get("x").asInt(0);
-                     int $$3 = $$1x.get("y").asInt(0);
-                     int $$4 = $$1x.get("z").asInt(0);
-                     short $$5 = a($$2x, $$3, $$4);
-                     $$2.get($$3 >> 4).add($$5);
-                  });
-                  return $$0.remove("TileTicks")
-                     .set(
-                        "ToBeTicked",
-                        $$0.createList($$2.stream().map($$1x -> $$0.createList($$1x.intStream().mapToObj($$1xx -> $$0.createShort((short)$$1xx)))))
-                     );
-               }
-            ),
-         $$0
+   private TypeRewriteRule a(
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0, Type<?> $$1, String $$2
+   ) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(beh.y, $$2);
+      OpticFinder<?> $$4 = DSL.namedChoice($$2, $$3);
+      OpticFinder<?> $$5 = $$3.findField("Items");
+      return this.fixTypeEverywhereTyped(
+         "Fix non-zero indexing in chest horse type " + $$2,
+         $$1,
+         $$3x -> $$3x.updateTyped(
+               $$4,
+               $$2xx -> $$2xx.updateTyped(
+                     $$5,
+                     $$1xxx -> $$1xxx.update(
+                           $$0,
+                           $$0xxxx -> $$0xxxx.mapSecond(
+                                 $$0xxxxx -> $$0xxxxx.mapSecond(
+                                       $$0xxxxxx -> $$0xxxxxx.mapSecond(
+                                             $$0xxxxxxx -> $$0xxxxxxx.update("Slot", $$0xxxxxxxx -> $$0xxxxxxxx.createByte((byte)($$0xxxxxxxx.asInt(2) - 2)))
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
-   }
-
-   private static short a(int $$0, int $$1, int $$2) {
-      return (short)($$0 & 15 | ($$1 & 15) << 4 | ($$2 & 15) << 8);
    }
 }

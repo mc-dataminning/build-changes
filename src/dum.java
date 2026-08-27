@@ -1,67 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dum extends duu<dwu> {
-   private static final ImmutableList<czf> a = ImmutableList.of(czh.F, czh.fn, czh.fo, czh.fp, czh.fq, czh.cv, czh.ct);
-   private static final ih[] b = ih.values();
-   private static final double c = 0.9;
+public class dum extends dtj {
+   private final iz a;
+   private final dsq b;
+   private final dta c;
+   private final dtd.o d;
 
-   public dum(Codec<dwu> $$0) {
-      super($$0);
+   public dum(dsp $$0, iz $$1, cxb $$2, dsq $$3, dta $$4, dtd.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   public boolean a(duw<dwu> $$0) {
-      boolean $$1 = false;
-      awt $$2 = $$0.d();
-      cwz $$3 = $$0.b();
-      dwu $$4 = $$0.f();
-      ib $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (ib $$13 : ib.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            ib $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
+   @Deprecated
+   public Optional<dmz> a(Function<ib, il<cxy>> $$0, dov $$1, ib $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
    }
 
-   private static boolean a(cwf $$0, ib $$1, dwu $$2) {
-      dme $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (ih $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != ih.b || !$$5 && $$4 == ih.b) {
-               return false;
-            }
-         }
+   @Deprecated
+   public iz c() {
+      return this.a;
+   }
 
-         return true;
-      }
+   public dta d() {
+      return this.c;
    }
 }

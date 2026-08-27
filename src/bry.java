@@ -1,37 +1,41 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class bry {
-   public static bsa<box> a(float $$0) {
-      return buc.a((Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$1 -> $$1.group($$1.c(bya.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dj())) {
-                  return false;
-               } else {
-                  Optional<eov> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new byd($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+public class bry extends brg<cif> {
+   private static final int d = 1200;
+   final float c;
+
+   public bry(float $$0) {
+      super(ImmutableMap.of(byr.d, bys.a), 1200);
+      this.c = $$0;
    }
 
-   @Nullable
-   private static eov a(apa $$0, box $$1) {
-      awt $$2 = $$1.ef();
-      ib $$3 = $$1.dj();
+   protected boolean a(apf $$0, cif $$1) {
+      return $$1.dP().g().map($$0x -> $$0x == ckh.b || $$0x == ckh.c || $$0x == ckh.d).orElse(true);
+   }
 
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         ib $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return eov.c($$5);
+   protected boolean a(apf $$0, cif $$1, long $$2) {
+      return $$1.dP().a(byr.d);
+   }
+
+   protected void b(apf $$0, cif $$1, long $$2) {
+      bri.a($$1, $$1.dP().c(byr.d).get().b(), this.c, 1);
+   }
+
+   protected void c(apf $$0, cif $$1, long $$2) {
+      Optional<ik> $$3 = $$1.dP().c(byr.d);
+      $$3.ifPresent($$1x -> {
+         ib $$2x = $$1x.b();
+         apf $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            car $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            aew.c($$0, $$2x);
          }
-      }
-
-      return null;
-   }
-
-   public static boolean a(apa $$0, box $$1, ib $$2) {
-      return $$0.h($$2) && (double)$$0.a(drq.a.e, $$2).v() <= $$1.dq();
+      });
+      $$1.dP().b(byr.d);
    }
 }

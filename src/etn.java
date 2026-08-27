@@ -1,70 +1,101 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class etn {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<etn.a> b;
+   private static final int a = 32768;
+   private final etn.a b;
+   private final String c;
+   private int d;
 
-   public static CompletableFuture<etn.a> a() {
-      if (b == null || a(b)) {
-         b = b();
+   protected etn(etn.a $$0, int $$1, String $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = $$2;
+   }
+
+   public void a(etp $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager.glAttachShader($$0.a(), this.c());
+   }
+
+   public void a() {
+      if (this.d != -1) {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.d);
+         this.d = -1;
+         this.b.c().remove(this.c);
       }
-
-      return b;
    }
 
-   private static boolean a(CompletableFuture<etn.a> $$0) {
-      etn.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   public String b() {
+      return this.c;
    }
 
-   private static CompletableFuture<etn.a> b() {
-      return CompletableFuture.supplyAsync(() -> {
-         ett $$0 = ett.a();
+   public static etn a(etn.a $$0, String $$1, InputStream $$2, String $$3, etg $$4) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$5 = b($$0, $$1, $$2, $$3, $$4);
+      etn $$6 = new etn($$0, $$5, $$1);
+      $$0.c().put($$1, $$6);
+      return $$6;
+   }
 
-         try {
-            if ($$0.g() != ett.a.a) {
-               return new etn.a(etn.b.b);
-            } else {
-               return !$$0.f() ? new etn.a(etn.b.c) : new etn.a(etn.b.a);
-            }
-         } catch (evg var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new etn.a(etn.b.d) : new etn.a(var2);
+   protected static int b(etn.a $$0, String $$1, InputStream $$2, String $$3, etg $$4) throws IOException {
+      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
+      if ($$5 == null) {
+         throw new IOException("Could not load program " + $$0.a());
+      } else {
+         int $$6 = GlStateManager.glCreateShader($$0.d());
+         GlStateManager.glShaderSource($$6, $$4.a($$5));
+         GlStateManager.glCompileShader($$6);
+         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
+            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
+            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
+         } else {
+            return $$6;
          }
-      }, ac.g());
-   }
-
-   public static record a(etn.b a, @Nullable evg b) {
-      public a(etn.b $$0) {
-         this($$0, null);
-      }
-
-      public a(evg $$0) {
-         this(etn.b.e, $$0);
-      }
-
-      @Nullable
-      public fgh a(fgh $$0) {
-         return (fgh)(switch (this.a) {
-            case a -> null;
-            case b -> new evs($$0);
-            case c -> new ewd($$0);
-            case d -> new evx(vs.c("mco.error.invalid.session.title"), vs.c("mco.error.invalid.session.message"), $$0);
-            case e -> new evx(Objects.requireNonNull(this.b), $$0);
-         });
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   protected int c() {
+      return this.d;
+   }
+
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
+
+      private final String c;
+      private final String d;
+      private final int e;
+      private final Map<String, etn> f = Maps.newHashMap();
+
+      private a(String $$0, String $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public String a() {
+         return this.c;
+      }
+
+      public String b() {
+         return this.d;
+      }
+
+      int d() {
+         return this.e;
+      }
+
+      public Map<String, etn> c() {
+         return this.f;
+      }
    }
 }

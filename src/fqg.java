@@ -1,81 +1,94 @@
-public class fqg {
-   public static final String a = "left_fin";
-   public static final String b = "right_fin";
-   public static final String c = "top_fin";
-   public static final String d = "bottom_fin";
-   public static final String e = "tail_fin";
-   public static final String f = "left_blue_fin";
-   public static final String g = "right_blue_fin";
-   public static final String h = "left_arm";
-   public static final String i = "right_arm";
-   public static final String j = "left_wing";
-   public static final String k = "right_wing";
-   public static final String l = "left_wing_base";
-   public static final String m = "right_wing_base";
-   public static final String n = "left_wing_tip";
-   public static final String o = "right_wing_tip";
-   public static final String p = "left_ear";
-   public static final String q = "right_ear";
-   public static final String r = "left_leg";
-   public static final String s = "right_leg";
-   public static final String t = "left_hind_leg";
-   public static final String u = "right_hind_leg";
-   public static final String v = "left_mid_leg";
-   public static final String w = "right_mid_leg";
-   public static final String x = "left_front_leg";
-   public static final String y = "right_front_leg";
-   public static final String z = "left_hind_foot";
-   public static final String A = "right_hind_foot";
-   public static final String B = "left_front_foot";
-   public static final String C = "right_front_foot";
-   public static final String D = "feet";
-   public static final String E = "left_hind_leg_tip";
-   public static final String F = "right_hind_leg_tip";
-   public static final String G = "left_front_leg_tip";
-   public static final String H = "right_front_leg_tip";
-   public static final String I = "left_lid";
-   public static final String J = "right_lid";
-   public static final String K = "left_chest";
-   public static final String L = "right_chest";
-   public static final String M = "left_horn";
-   public static final String N = "right_horn";
-   public static final String O = "left_eye";
-   public static final String P = "right_eye";
-   public static final String Q = "jaw";
-   public static final String R = "nose";
-   public static final String S = "arms";
-   public static final String T = "tail";
-   public static final String U = "cube";
-   public static final String V = "beak";
-   public static final String W = "back_fin";
-   public static final String X = "mane";
-   public static final String Y = "neck";
-   public static final String Z = "mouth";
-   public static final String aa = "head";
-   public static final String ab = "hat";
-   public static final String ac = "body";
-   public static final String ad = "hat_rim";
-   public static final String ae = "jacket";
-   public static final String af = "top_gills";
-   public static final String ag = "left_gills";
-   public static final String ah = "right_gills";
-   public static final String ai = "root";
-   public static final String aj = "croaking_body";
-   public static final String ak = "tongue";
-   public static final String al = "tongue_r1";
-   public static final String am = "left_hand";
-   public static final String an = "right_hand";
-   public static final String ao = "left_foot";
-   public static final String ap = "right_foot";
-   public static final String aq = "eyes";
-   public static final String ar = "right_tendril";
-   public static final String as = "left_tendril";
-   public static final String at = "right_ribcage";
-   public static final String au = "left_ribcage";
-   public static final String av = "wind_body";
-   public static final String aw = "wind_top";
-   public static final String ax = "wind_mid";
-   public static final String ay = "wind_bottom";
-   public static final String az = "rods";
-   public static final String aA = "bone";
+public class fqg<T extends cgl> extends fol<T> {
+   private static final String a = "right_bottom_bristle";
+   private static final String b = "right_middle_bristle";
+   private static final String f = "right_top_bristle";
+   private static final String g = "left_top_bristle";
+   private static final String h = "left_middle_bristle";
+   private static final String i = "left_bottom_bristle";
+   private final frd j;
+   private final frd k;
+   private final frd l;
+   private final frd m;
+   private final frd n;
+   private final frd o;
+   private final frd p;
+   private final frd q;
+   private final frd r;
+   private final frd s;
+
+   public fqg(frd $$0) {
+      this.j = $$0;
+      this.k = $$0.b("right_leg");
+      this.l = $$0.b("left_leg");
+      this.m = $$0.b("body");
+      this.n = this.m.b("right_bottom_bristle");
+      this.o = this.m.b("right_middle_bristle");
+      this.p = this.m.b("right_top_bristle");
+      this.q = this.m.b("left_top_bristle");
+      this.r = this.m.b("left_middle_bristle");
+      this.s = this.m.b("left_bottom_bristle");
+   }
+
+   public static frj b() {
+      frl $$0 = new frl();
+      frm $$1 = $$0.a();
+      $$1.a("right_leg", fri.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), frf.a(-4.0F, 8.0F, 0.0F));
+      $$1.a("left_leg", fri.c().a(0, 55).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), frf.a(4.0F, 8.0F, 0.0F));
+      frm $$2 = $$1.a("body", fri.c().a(0, 0).a(-8.0F, -6.0F, -8.0F, 16.0F, 14.0F, 16.0F), frf.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_bottom_bristle", fri.c().a(16, 65).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), frf.a(-8.0F, 4.0F, -8.0F, 0.0F, 0.0F, -1.2217305F));
+      $$2.a("right_middle_bristle", fri.c().a(16, 49).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), frf.a(-8.0F, -1.0F, -8.0F, 0.0F, 0.0F, -1.134464F));
+      $$2.a("right_top_bristle", fri.c().a(16, 33).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), frf.a(-8.0F, -5.0F, -8.0F, 0.0F, 0.0F, -0.87266463F));
+      $$2.a("left_top_bristle", fri.c().a(16, 33).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), frf.a(8.0F, -6.0F, -8.0F, 0.0F, 0.0F, 0.87266463F));
+      $$2.a("left_middle_bristle", fri.c().a(16, 49).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), frf.a(8.0F, -2.0F, -8.0F, 0.0F, 0.0F, 1.134464F));
+      $$2.a("left_bottom_bristle", fri.c().a(16, 65).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), frf.a(8.0F, 3.0F, -8.0F, 0.0F, 0.0F, 1.2217305F));
+      return frj.a($$0, 64, 128);
+   }
+
+   public void a(cgl $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$2 = Math.min(0.25F, $$2);
+      if (!$$0.bP()) {
+         this.m.e = $$5 * (float) (Math.PI / 180.0);
+         this.m.f = $$4 * (float) (Math.PI / 180.0);
+      } else {
+         this.m.e = 0.0F;
+         this.m.f = 0.0F;
+      }
+
+      float $$6 = 1.5F;
+      this.m.g = 0.1F * aww.a($$1 * 1.5F) * 4.0F * $$2;
+      this.m.c = 2.0F;
+      this.m.c = this.m.c - 2.0F * aww.b($$1 * 1.5F) * 2.0F * $$2;
+      this.l.e = aww.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
+      this.k.e = aww.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
+      this.l.g = (float) (Math.PI / 18) * aww.b($$1 * 1.5F * 0.5F) * $$2;
+      this.k.g = (float) (Math.PI / 18) * aww.b($$1 * 1.5F * 0.5F + (float) Math.PI) * $$2;
+      this.l.c = 8.0F + 2.0F * aww.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
+      this.k.c = 8.0F + 2.0F * aww.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
+      this.n.g = -1.2217305F;
+      this.o.g = -1.134464F;
+      this.p.g = -0.87266463F;
+      this.q.g = 0.87266463F;
+      this.r.g = 1.134464F;
+      this.s.g = 1.2217305F;
+      float $$7 = aww.b($$1 * 1.5F + (float) Math.PI) * $$2;
+      this.n.g += $$7 * 1.3F;
+      this.o.g += $$7 * 1.2F;
+      this.p.g += $$7 * 0.6F;
+      this.q.g += $$7 * 0.6F;
+      this.r.g += $$7 * 1.2F;
+      this.s.g += $$7 * 1.3F;
+      float $$8 = 1.0F;
+      float $$9 = 1.0F;
+      this.n.g = this.n.g + 0.05F * aww.a($$3 * 1.0F * -0.4F);
+      this.o.g = this.o.g + 0.1F * aww.a($$3 * 1.0F * 0.2F);
+      this.p.g = this.p.g + 0.1F * aww.a($$3 * 1.0F * 0.4F);
+      this.q.g = this.q.g + 0.1F * aww.a($$3 * 1.0F * 0.4F);
+      this.r.g = this.r.g + 0.1F * aww.a($$3 * 1.0F * 0.2F);
+      this.s.g = this.s.g + 0.05F * aww.a($$3 * 1.0F * -0.4F);
+   }
+
+   @Override
+   public frd a() {
+      return this.j;
+   }
 }

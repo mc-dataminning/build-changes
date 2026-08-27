@@ -1,37 +1,101 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class brg {
-   public static bqq<chn> a(float $$0, int $$1) {
-      return buc.a((Function<buc.b<chn>, ? extends App<buc.c<chn>, buf<chn>>>)($$2 -> $$2.group($$2.c(bya.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.dj())) {
-                  return false;
-               } else {
-                  caa $$6 = $$3.y();
-                  int $$7 = $$6.a(jd.a($$4.dj()));
-                  eov $$8 = null;
+public abstract class brg<E extends bpo> implements brh<E> {
+   public static final int a = 60;
+   protected final Map<byr<?>, bys> b;
+   private brg.a c = brg.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     eov $$10 = bzu.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(jd.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(jd.a(ib.a($$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
+   public brg(Map<byr<?>, bys> $$0) {
+      this($$0, 60);
+   }
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
+   public brg(Map<byr<?>, bys> $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
 
-                  if ($$8 != null) {
-                     $$2x.a(new byd($$8, $$0, $$1));
-                  }
+   public brg(Map<byr<?>, bys> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
+   }
 
-                  return true;
-               }
-            })));
+   @Override
+   public brg.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(apf $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = brg.a.b;
+         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void d(apf $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void f(apf $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(apf $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(apf $$0, E $$1, long $$2) {
+      this.c = brg.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(apf $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(apf $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(apf $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<byr<?>, bys> $$1 : this.b.entrySet()) {
+         byr<?> $$2 = $$1.getKey();
+         bys $$3 = $$1.getValue();
+         if (!$$0.dP().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

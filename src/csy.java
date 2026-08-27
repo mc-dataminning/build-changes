@@ -1,84 +1,90 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Map;
-
-public class csy extends csk {
-   public csy(csi $$0) {
+public class csy extends ctf {
+   public csy(ctd $$0) {
       super($$0);
    }
 
-   public boolean a(clk $$0, cwe $$1) {
-      List<cpq> $$2 = Lists.newArrayList();
+   public boolean a(cme $$0, cwz $$1) {
+      cpb $$2 = null;
+      cqk $$3 = null;
+      cqk $$4 = null;
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cpq $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cpq $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.M() != 1 || $$4.M() != 1 || !$$5.d().p()) {
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         cqk $$6 = $$0.a($$5);
+         if (!$$6.b()) {
+            cqf $$7 = $$6.d();
+            if (!($$7 instanceof coc)) {
+               return false;
+            }
+
+            coc $$8 = (coc)$$7;
+            if ($$2 == null) {
+               $$2 = $$8.b();
+            } else if ($$2 != $$8.b()) {
+               return false;
+            }
+
+            int $$9 = djw.c($$6);
+            if ($$9 > 6) {
+               return false;
+            }
+
+            if ($$9 > 0) {
+               if ($$3 != null) {
                   return false;
                }
+
+               $$3 = $$6;
+            } else {
+               if ($$4 != null) {
+                  return false;
+               }
+
+               $$4 = $$6;
             }
          }
       }
 
-      return $$2.size() == 2;
+      return $$3 != null && $$4 != null;
    }
 
-   public cpq a(clk $$0, iy $$1) {
-      List<cpq> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cpq $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cpq $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.M() != 1 || $$4.M() != 1 || !$$5.d().p()) {
-                  return cpq.h;
-               }
+   public cqk a(cme $$0, iz $$1) {
+      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+         cqk $$3 = $$0.a($$2);
+         if (!$$3.b()) {
+            int $$4 = djw.c($$3);
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
             }
          }
       }
 
-      if ($$2.size() == 2) {
-         cpq $$6 = $$2.get(0);
-         cpq $$7 = $$2.get(1);
-         if ($$6.a($$7.d()) && $$6.M() == 1 && $$7.M() == 1 && $$6.d().p()) {
-            cpl $$8 = $$6.d();
-            int $$9 = $$8.o() - $$6.l();
-            int $$10 = $$8.o() - $$7.l();
-            int $$11 = $$9 + $$10 + $$8.o() * 5 / 100;
-            int $$12 = $$8.o() - $$11;
-            if ($$12 < 0) {
-               $$12 = 0;
-            }
+      return cqk.h;
+   }
 
-            cpq $$13 = new cpq($$6.d());
-            $$13.b($$12);
-            Map<ctz, Integer> $$14 = cua.a($$6);
-            Map<ctz, Integer> $$15 = cua.a($$7);
-            kh.f.s().filter(ctz::c).forEach($$3x -> {
-               int $$4 = Math.max($$14.getOrDefault($$3x, 0), $$15.getOrDefault($$3x, 0));
-               if ($$4 > 0) {
-                  $$13.a($$3x, $$4);
-               }
-            });
-            return $$13;
+   public iu<cqk> a(cme $$0) {
+      iu<cqk> $$1 = iu.a($$0.b(), cqk.h);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cqk $$3 = $$0.a($$2);
+         if (!$$3.b()) {
+            if ($$3.d().u()) {
+               $$1.set($$2, new cqk($$3.d().t()));
+            } else if (djw.c($$3) > 0) {
+               $$1.set($$2, $$3.c(1));
+            }
          }
       }
 
-      return cpq.h;
+      return $$1;
+   }
+
+   @Override
+   public ctr<?> ar_() {
+      return ctr.k;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
       return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public csw<?> as_() {
-      return csw.o;
    }
 }

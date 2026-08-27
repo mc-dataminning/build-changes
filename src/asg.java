@@ -1,17 +1,19 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-public interface asg extends arz {
-   @Override
-   default CompletableFuture<Void> a(arz.a $$0, asf $$1, bjc $$2, bjc $$3, Executor $$4, Executor $$5) {
-      return $$0.a(axo.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+@FunctionalInterface
+public interface asg<T> {
+   static asg<InputStream> create(Path $$0) {
+      return () -> Files.newInputStream($$0);
    }
 
-   void a(asf var1);
+   static asg<InputStream> create(ZipFile $$0, ZipEntry $$1) {
+      return () -> $$0.getInputStream($$1);
+   }
+
+   T get() throws IOException;
 }

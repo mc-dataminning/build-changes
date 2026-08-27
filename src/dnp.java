@@ -1,23 +1,132 @@
-public enum dnp implements axg {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
-
-   private final String e;
-   private final boolean f;
-
-   private dnp(String $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
-   }
-
-   public boolean a() {
-      return this.f;
-   }
+public class dnp {
+   public static final dnq a = dnq.a("attached");
+   public static final dnq b = dnq.a("bottom");
+   public static final dnq c = dnq.a("conditional");
+   public static final dnq d = dnq.a("disarmed");
+   public static final dnq e = dnq.a("drag");
+   public static final dnq f = dnq.a("enabled");
+   public static final dnq g = dnq.a("extended");
+   public static final dnq h = dnq.a("eye");
+   public static final dnq i = dnq.a("falling");
+   public static final dnq j = dnq.a("hanging");
+   public static final dnq k = dnq.a("has_bottle_0");
+   public static final dnq l = dnq.a("has_bottle_1");
+   public static final dnq m = dnq.a("has_bottle_2");
+   public static final dnq n = dnq.a("has_record");
+   public static final dnq o = dnq.a("has_book");
+   public static final dnq p = dnq.a("inverted");
+   public static final dnq q = dnq.a("in_wall");
+   public static final dnq r = dnq.a("lit");
+   public static final dnq s = dnq.a("locked");
+   public static final dnq t = dnq.a("occupied");
+   public static final dnq u = dnq.a("open");
+   public static final dnq v = dnq.a("persistent");
+   public static final dnq w = dnq.a("powered");
+   public static final dnq x = dnq.a("short");
+   public static final dnq y = dnq.a("signal_fire");
+   public static final dnq z = dnq.a("snowy");
+   public static final dnq A = dnq.a("triggered");
+   public static final dnq B = dnq.a("unstable");
+   public static final dnq C = dnq.a("waterlogged");
+   public static final dnq D = dnq.a("berries");
+   public static final dnq E = dnq.a("bloom");
+   public static final dnq F = dnq.a("shrieking");
+   public static final dnq G = dnq.a("can_summon");
+   public static final dnx<ih.a> H = dnx.a("axis", ih.a.class, ih.a.a, ih.a.c);
+   public static final dnx<ih.a> I = dnx.a("axis", ih.a.class);
+   public static final dnq J = dnq.a("up");
+   public static final dnq K = dnq.a("down");
+   public static final dnq L = dnq.a("north");
+   public static final dnq M = dnq.a("east");
+   public static final dnq N = dnq.a("south");
+   public static final dnq O = dnq.a("west");
+   public static final dnt P = dnt.a("facing", ih.c, ih.f, ih.d, ih.e, ih.b, ih.a);
+   public static final dnt Q = dnt.a("facing", $$0 -> $$0 != ih.b);
+   public static final dnt R = dnt.a("facing", ih.c.a);
+   public static final dnz S = dnz.a("flower_amount", 1, 4);
+   public static final dnx<ij> T = dnx.a("orientation", ij.class);
+   public static final dnx<dnk> U = dnx.a("face", dnk.class);
+   public static final dnx<dnn> V = dnx.a("attachment", dnn.class);
+   public static final dnx<dol> W = dnx.a("east", dol.class);
+   public static final dnx<dol> X = dnx.a("north", dol.class);
+   public static final dnx<dol> Y = dnx.a("south", dol.class);
+   public static final dnx<dol> Z = dnx.a("west", dol.class);
+   public static final dnx<doe> aa = dnx.a("east", doe.class);
+   public static final dnx<doe> ab = dnx.a("north", doe.class);
+   public static final dnx<doe> ac = dnx.a("south", doe.class);
+   public static final dnx<doe> ad = dnx.a("west", doe.class);
+   public static final dnx<dnv> ae = dnx.a("half", dnv.class);
+   public static final dnx<dny> af = dnx.a("half", dny.class);
+   public static final dnx<dod> ag = dnx.a("shape", dod.class);
+   public static final dnx<dod> ah = dnx.a("shape", dod.class, $$0 -> $$0 != dod.j && $$0 != dod.i && $$0 != dod.g && $$0 != dod.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dnz aq = dnz.a("age", 0, 1);
+   public static final dnz ar = dnz.a("age", 0, 2);
+   public static final dnz as = dnz.a("age", 0, 3);
+   public static final dnz at = dnz.a("age", 0, 4);
+   public static final dnz au = dnz.a("age", 0, 5);
+   public static final dnz av = dnz.a("age", 0, 7);
+   public static final dnz aw = dnz.a("age", 0, 15);
+   public static final dnz ax = dnz.a("age", 0, 25);
+   public static final dnz ay = dnz.a("bites", 0, 6);
+   public static final dnz az = dnz.a("candles", 1, 4);
+   public static final dnz aA = dnz.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dnz aC = dnz.a("distance", 1, 7);
+   public static final dnz aD = dnz.a("eggs", 1, 4);
+   public static final dnz aE = dnz.a("hatch", 0, 2);
+   public static final dnz aF = dnz.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dnz aK = dnz.a("level", 1, 3);
+   public static final dnz aL = dnz.a("level", 0, 8);
+   public static final dnz aM = dnz.a("level", 1, 8);
+   public static final dnz aN = dnz.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dnz aP = dnz.a("level", 0, 15);
+   public static final dnz aQ = dnz.a("moisture", 0, 7);
+   public static final dnz aR = dnz.a("note", 0, 24);
+   public static final dnz aS = dnz.a("pickles", 1, 4);
+   public static final dnz aT = dnz.a("power", 0, 15);
+   public static final dnz aU = dnz.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dnz aW = dnz.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dnz aZ = dnz.a("charges", 0, 4);
+   public static final dnz ba = dnz.a("rotation", 0, dof.a());
+   public static final dnx<dnm> bb = dnx.a("part", dnm.class);
+   public static final dnx<dnr> bc = dnx.a("type", dnr.class);
+   public static final dnx<dns> bd = dnx.a("mode", dns.class);
+   public static final dnx<dnu> be = dnx.a("hinge", dnu.class);
+   public static final dnx<doa> bf = dnx.a("instrument", doa.class);
+   public static final dnx<dob> bg = dnx.a("type", dob.class);
+   public static final dnx<doh> bh = dnx.a("type", doh.class);
+   public static final dnx<doi> bi = dnx.a("shape", doi.class);
+   public static final dnx<doj> bj = dnx.a("mode", doj.class);
+   public static final dnx<dnl> bk = dnx.a("leaves", dnl.class);
+   public static final dnx<dok> bl = dnx.a("tilt", dok.class);
+   public static final dnt bm = dnt.a("vertical_direction", ih.b, ih.a);
+   public static final dnx<dnw> bn = dnx.a("thickness", dnw.class);
+   public static final dnx<dog> bo = dnx.a("sculk_sensor_phase", dog.class);
+   public static final dnq bp = dnq.a("slot_0_occupied");
+   public static final dnq bq = dnq.a("slot_1_occupied");
+   public static final dnq br = dnq.a("slot_2_occupied");
+   public static final dnq bs = dnq.a("slot_3_occupied");
+   public static final dnq bt = dnq.a("slot_4_occupied");
+   public static final dnq bu = dnq.a("slot_5_occupied");
+   public static final dnz bv = dnz.a("dusted", 0, 3);
+   public static final dnq bw = dnq.a("cracked");
+   public static final dnq bx = dnq.a("crafting");
+   public static final dnx<dmf> by = dnx.a("trial_spawner_state", dmf.class);
+   public static final dnx<dmm> bz = dnx.a("vault_state", dmm.class);
 }

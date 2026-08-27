@@ -1,51 +1,18 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class atw {
+   private static final int h = 20;
+   private static final int i = 600;
+   private static final int j = 12000;
+   private static final int k = 24000;
+   private static final int l = 6000;
+   public static final atv a = new atv(aty.pA, 20, 600, true);
+   public static final atv b = new atv(aty.pf, 12000, 24000, false);
+   public static final atv c = new atv(aty.pg, 0, 0, true);
+   public static final atv d = new atv(aty.px, 0, 0, true);
+   public static final atv e = new atv(aty.py, 6000, 24000, true);
+   public static final atv f = a(aty.pZ);
+   public static final atv g = a(aty.pz);
 
-public class atw<T> extends eqc {
-   public static final xq<vd, atw<?>> a = xo.a(ki.ag).b(atw::a, aty::a);
-   private final atx o;
-   private final T p;
-   private final aty<T> q;
-
-   protected atw(aty<T> $$0, T $$1, atx $$2) {
-      super(a($$0, $$1));
-      this.q = $$0;
-      this.o = $$2;
-      this.p = $$1;
-   }
-
-   public static <T> String a(aty<T> $$0, T $$1) {
-      return a(kh.x.b($$0)) + ":" + a($$0.b().b($$1));
-   }
-
-   private static <T> String a(@Nullable ajc $$0) {
-      return $$0.toString().replace(':', '.');
-   }
-
-   public aty<T> a() {
-      return this.q;
-   }
-
-   public T b() {
-      return this.p;
-   }
-
-   public String a(int $$0) {
-      return this.o.format($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof atw && Objects.equals(this.d(), ((atw)$$0).d());
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d().hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
+   public static atv a(il<atx> $$0) {
+      return new atv($$0, 12000, 24000, false);
    }
 }

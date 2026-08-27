@@ -1,12 +1,17 @@
-import com.mojang.serialization.Codec;
-import java.util.Map;
+import java.io.IOException;
 
-public record gjs(Map<String, gjf> d) {
-   public static final Codec<String> a = avu.b(1, 16);
-   public static final Codec<gjs> b = Codec.unboundedMap(a, gjf.a).xmap(gjs::new, gjs::a);
-   public static final arg<gjs> c = arg.a("language", b);
+public class gjs extends ast<int[]> {
+   private static final ajh a = new ajh("textures/colormap/foliage.png");
 
-   public Map<String, gjf> a() {
-      return this.d;
+   protected int[] a(aso $$0, bjq $$1) {
+      try {
+         return gjv.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
+   }
+
+   protected void a(int[] $$0, aso $$1, bjq $$2) {
+      cwt.a($$0);
    }
 }

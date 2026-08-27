@@ -1,73 +1,30 @@
-import com.mojang.serialization.Codec;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record cnd(Map<cnc.a, Integer> b, int c, il<ato> d, Supplier<csp> e, List<cnd.a> f, float g, float h) {
-   public static final Codec<il<cnd>> a = kh.as.r();
+public interface cnd {
+   void a(@Nullable ctp<?> var1);
 
-   public int a(cnc.a $$0) {
-      return this.b.getOrDefault($$0, 0);
-   }
+   @Nullable
+   ctp<?> d();
 
-   public Map<cnc.a, Integer> a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public il<ato> c() {
-      return this.d;
-   }
-
-   public Supplier<csp> d() {
-      return this.e;
-   }
-
-   public List<cnd.a> e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public static final class a {
-      private final ajc a;
-      private final String b;
-      private final boolean c;
-      private final ajc d;
-      private final ajc e;
-
-      public a(ajc $$0, String $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = this.b(true);
-         this.e = this.b(false);
+   default void a(cis $$0, List<cqk> $$1) {
+      ctp<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().aq_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
+         }
       }
+   }
 
-      public a(ajc $$0) {
-         this($$0, "", false);
-      }
-
-      private ajc b(boolean $$0) {
-         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
-      }
-
-      public ajc a(boolean $$0) {
-         return $$0 ? this.d : this.e;
-      }
-
-      public boolean a() {
-         return this.c;
+   default boolean a(cwz $$0, apg $$1, ctp<?> $$2) {
+      if (!$$2.b().aq_() && $$0.Z().b(cwv.w) && !$$1.I().b($$2)) {
+         return false;
+      } else {
+         this.a($$2);
+         return true;
       }
    }
 }

@@ -37,7 +37,7 @@ public class ChunkGenerationEvent extends Event {
    @Label("Level")
    public final String level;
 
-   public ChunkGenerationEvent(cvl $$0, ajb<cwe> $$1, String $$2) {
+   public ChunkGenerationEvent(cwg $$0, ajg<cwz> $$1, String $$2) {
       this.targetStatus = $$2;
       this.level = $$1.toString();
       this.chunkPosX = $$0.e;

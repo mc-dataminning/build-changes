@@ -1,66 +1,77 @@
 import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import java.util.Collections;
 import java.util.List;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public class gll implements JsonDeserializer<glk> {
-   private static final blo a = blm.a(1.0F);
+public class gll implements gkz {
+   private final int a;
+   private final List<blo.b<gkz>> b;
+   private final gkz c;
 
-   public glk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = awc.m($$0, "entry");
-      boolean $$4 = awc.a($$3, "replace", false);
-      String $$5 = awc.a($$3, "subtitle", null);
-      List<glj> $$6 = this.a($$3);
-      return new glk($$6, $$4, $$5);
+   public gll(List<blo.b<gkz>> $$0) {
+      this.b = $$0;
+      this.a = blp.a($$0);
+      this.c = $$0.get(0).b();
    }
 
-   private List<glj> a(JsonObject $$0) {
-      List<glj> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = awc.v($$0, "sounds");
+   @Override
+   public List<fyn> a(@Nullable dmz $$0, @Nullable ih $$1, axd $$2) {
+      return blp.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (awc.a($$4)) {
-               String $$5 = awc.a($$4, "sound");
-               $$1.add(new glj($$5, a, a, 1, glj.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(awc.m($$4, "sound")));
-            }
+   @Override
+   public boolean a() {
+      return this.c.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.c.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.c();
+   }
+
+   @Override
+   public boolean d() {
+      return this.c.d();
+   }
+
+   @Override
+   public giz e() {
+      return this.c.e();
+   }
+
+   @Override
+   public fyz f() {
+      return this.c.f();
+   }
+
+   @Override
+   public fyx g() {
+      return this.c.g();
+   }
+
+   public static class a {
+      private final List<blo.b<gkz>> a = Lists.newArrayList();
+
+      public gll.a a(@Nullable gkz $$0, int $$1) {
+         if ($$0 != null) {
+            this.a.add(blo.a($$0, $$1));
+         }
+
+         return this;
+      }
+
+      @Nullable
+      public gkz a() {
+         if (this.a.isEmpty()) {
+            return null;
+         } else {
+            return (gkz)(this.a.size() == 1 ? this.a.get(0).b() : new gll(this.a));
          }
       }
-
-      return $$1;
-   }
-
-   private glj b(JsonObject $$0) {
-      String $$1 = awc.i($$0, "name");
-      glj.a $$2 = this.a($$0, glj.a.a);
-      float $$3 = awc.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = awc.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = awc.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = awc.a($$0, "preload", false);
-      boolean $$7 = awc.a($$0, "stream", false);
-      int $$8 = awc.a($$0, "attenuation_distance", 16);
-      return new glj($$1, blm.a($$3), blm.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private glj.a a(JsonObject $$0, glj.a $$1) {
-      glj.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = glj.a.a(awc.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
-      }
-
-      return $$2;
    }
 }

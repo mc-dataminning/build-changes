@@ -1,40 +1,29 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
 public class alv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.pardon.failed"));
-
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("pardon").requires($$0x -> $$0x.c(3)))
-            .then(
-               dv.a("targets", ej.a())
-                  .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ah().f().a(), $$1))
-                  .executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets")))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("list").executes($$0x -> a((du)$$0x.getSource())))
+            .then(dv.a("uuids").executes($$0x -> b((du)$$0x.getSource())))
       );
    }
 
-   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      asy $$2 = $$0.l().ah().f();
-      int $$3 = 0;
+   private static int a(du $$0) {
+      return a($$0, cis::O_);
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
-            $$3++;
-            $$0.a(() -> vs.a("commands.pardon.success", vs.b($$4.getName())), true);
-         }
-      }
+   private static int b(du $$0) {
+      return a($$0, $$0x -> vu.a("commands.list.nameAndId", $$0x.ad(), vu.a($$0x.fY().getId())));
+   }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
-      }
+   private static int a(du $$0, Function<apg, vu> $$1) {
+      atb $$2 = $$0.l().ah();
+      List<apg> $$3 = $$2.t();
+      vu $$4 = vx.b($$3, $$1);
+      $$0.a(() -> vu.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

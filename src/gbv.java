@@ -1,15 +1,16 @@
-public class gbv extends gde<cex, fnd<cex>> {
-   private static final ajc a = new ajc("textures/entity/endermite.png");
+public class gbv extends gee<cch, fmz> {
+   private static final ajh a = new ajh("textures/entity/allay/allay.png");
 
-   public gbv(gby.a $$0) {
-      super($$0, new fnd<>($$0.a(fqe.U)), 0.3F);
+   public gbv(gcy.a $$0) {
+      super($$0, new fmz($$0.a(frc.a)), 0.4F);
+      this.a(new ghc<>(this, $$0.d()));
    }
 
-   protected float a(cex $$0) {
-      return 180.0F;
-   }
-
-   public ajc b(cex $$0) {
+   public ajh a(cch $$0) {
       return a;
+   }
+
+   protected int a(cch $$0, ib $$1) {
+      return 15;
    }
 }

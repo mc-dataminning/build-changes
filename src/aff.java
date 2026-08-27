@@ -1,34 +1,42 @@
-public class aff implements xz<aev> {
-   public static final xq<us, aff> a = xz.a(aff::a, aff::new);
-   private final aff.a b;
+import java.time.Instant;
 
-   public aff(aff.a $$0) {
-      this.b = $$0;
+public record aff(String b, Instant c, long d, eb e, wb.b f) implements yb<aez> {
+   public static final xs<uu, aff> a = yb.a(aff::a, aff::new);
+
+   private aff(uu $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), new eb($$0), new wb.b($$0));
    }
 
-   private aff(us $$0) {
-      this.b = $$0.b(aff.a.class);
-   }
-
-   private void a(us $$0) {
-      $$0.a(this.b);
+   private void a(uu $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      this.e.a($$0);
+      this.f.a($$0);
    }
 
    @Override
-   public yb<aff> a() {
-      return aet.bm;
+   public yd<aff> a() {
+      return aex.bi;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public aff.a b() {
-      return this.b;
+   public Instant e() {
+      return this.c;
    }
 
-   public static enum a {
-      a,
-      b;
+   public long f() {
+      return this.d;
+   }
+
+   public eb g() {
+      return this.e;
+   }
+
+   public wb.b h() {
+      return this.f;
    }
 }

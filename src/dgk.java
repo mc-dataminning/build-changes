@@ -1,31 +1,26 @@
 import com.mojang.serialization.MapCodec;
 
-public class dgk extends daz {
-   public static final MapCodec<dgk> b = b(dgk::new);
-   private static final vs c = vs.c("container.upgrade");
+public class dgk extends daj {
+   public static final MapCodec<dgk> a = b(dgk::new);
+   protected static final float b = 6.0F;
+   protected static final eqk c = daa.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dgk> a() {
-      return b;
+      return a;
    }
 
-   protected dgk(dmd.d $$0) {
+   protected dgk(dmy.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bmp b(dme $$0, cwe $$1, ib $$2) {
-      return new bmv(($$2x, $$3, $$4) -> new cmq($$2x, $$3, clf.a($$1, $$2)), c);
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return c;
    }
 
    @Override
-   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
-      if ($$1.B) {
-         return bml.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(atz.aF);
-         return bml.b;
-      }
+   protected boolean b(dmz $$0, cwf $$1, ib $$2) {
+      return $$0.a(aun.aL) || $$0.a(dac.dX) || super.b($$0, $$1, $$2);
    }
 }

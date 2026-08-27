@@ -1,18 +1,9 @@
-public class ajw implements Runnable {
-   private final int a;
-   private final Runnable b;
+public interface ajw {
+   String af();
 
-   public ajw(int $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   String L();
 
-   public int a() {
-      return this.a;
-   }
+   int M();
 
-   @Override
-   public void run() {
-      this.b.run();
-   }
+   int N();
 }

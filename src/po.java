@@ -1,42 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.OptionalLong;
 
 public class po {
-   public static final ajb<edp> a = pq.a("pillager_outpost/base_plates");
-
-   public static void a(pj<edp> $$0) {
-      im<ege> $$1 = $$0.a(ki.aF);
-      il<ege> $$2 = $$1.b(pr.q);
-      im<edp> $$3 = $$0.a(ki.aH);
-      il<edp> $$4 = $$3.b(pq.a);
-      $$0.a(a, new edp($$4, ImmutableList.of(Pair.of(edn.a("pillager_outpost/base_plate"), 1)), edp.a.b));
-      pq.a(
-         $$0,
-         "pillager_outpost/towers",
-         new edp(
-            $$4,
-            ImmutableList.of(Pair.of(edn.b(ImmutableList.of(edn.a("pillager_outpost/watchtower"), edn.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            edp.a.b
+   public static void a(pl<dqm> $$0) {
+      $$0.a(
+         dqk.a,
+         new dqm(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, aun.bb, dqk.e, 0.0F, new dqm.a(false, true, bmn.a(0, 7), 0))
+      );
+      $$0.a(
+         dqk.b,
+         new dqm(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, aun.bc, dqk.f, 0.1F, new dqm.a(true, false, bme.a(7), 15))
+      );
+      $$0.a(
+         dqk.c,
+         new dqm(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, aun.bd, dqk.g, 0.0F, new dqm.a(false, true, bmn.a(0, 7), 0)
          )
       );
-      pq.a($$0, "pillager_outpost/feature_plates", new edp($$4, ImmutableList.of(Pair.of(edn.a("pillager_outpost/feature_plate"), 1)), edp.a.a));
-      pq.a(
-         $$0,
-         "pillager_outpost/features",
-         new edp(
-            $$4,
-            ImmutableList.of(
-               Pair.of(edn.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(edn.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(edn.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(edn.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(edn.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(edn.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(edn.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(edn.g(), 6)
-            ),
-            edp.a.b
-         )
+      $$0.a(
+         dqk.d,
+         new dqm(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, aun.bb, dqk.e, 0.0F, new dqm.a(false, true, bmn.a(0, 7), 0))
       );
    }
 }

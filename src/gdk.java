@@ -1,31 +1,16 @@
-public class gdk extends gde<cbc, foe> {
-   private static final ajc a = new ajc("textures/entity/parrot/parrot_red_blue.png");
-   private static final ajc i = new ajc("textures/entity/parrot/parrot_blue.png");
-   private static final ajc j = new ajc("textures/entity/parrot/parrot_green.png");
-   private static final ajc k = new ajc("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final ajc l = new ajc("textures/entity/parrot/parrot_grey.png");
+public class gdk extends gff<bpg> {
+   private static final ajh a = new ajh("textures/entity/squid/glow_squid.png");
 
-   public gdk(gby.a $$0) {
-      super($$0, new foe($$0.a(fqe.aC)), 0.3F);
+   public gdk(gcy.a $$0, fqf<bpg> $$1) {
+      super($$0, $$1);
    }
 
-   public ajc a(cbc $$0) {
-      return a($$0.gt());
+   public ajh a(bpg $$0) {
+      return a;
    }
 
-   public static ajc a(cbc.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
-   }
-
-   public float a(cbc $$0, float $$1) {
-      float $$2 = awm.i($$1, $$0.cb, $$0.bY);
-      float $$3 = awm.i($$1, $$0.ca, $$0.bZ);
-      return (awm.a($$2) + 1.0F) * $$3;
+   protected int a(bpg $$0, ib $$1) {
+      int $$2 = (int)aww.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

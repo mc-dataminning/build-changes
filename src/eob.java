@@ -1,18 +1,60 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class eob {
-   private static final Codec<eoa> d = kh.K.q().dispatch(eoa::a, enz::a);
-   public static final Codec<eoa> a = avu.a(
-      (Supplier<Codec<eoa>>)(() -> Codec.either(enx.b, d)
-            .xmap($$0 -> (eoa)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof enx $$1 ? Either.left($$1) : Either.right($$0)))
+public record eob(Optional<Long> b, ekt c) implements ent {
+   public static final Codec<eob> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(awe.a(Codec.LONG, "period").forGetter(eob::c), ekt.a.fieldOf("value").forGetter(eob::d)).apply($$0, eob::new)
    );
-   public static final enz b = a("fixed", eny.a);
-   public static final enz c = a("context", enx.a);
 
-   private static enz a(String $$0, Codec<? extends eoa> $$1) {
-      return ix.a(kh.K, new ajc($$0), new enz($$1));
+   @Override
+   public enu b() {
+      return env.r;
+   }
+
+   @Override
+   public Set<enc<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(eku $$0) {
+      apf $$1 = $$0.d();
+      long $$2 = $$1.Y();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static eob.a a(ekt $$0) {
+      return new eob.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public ekt d() {
+      return this.c;
+   }
+
+   public static class a implements ent.a {
+      private Optional<Long> a = Optional.empty();
+      private final ekt b;
+
+      public a(ekt $$0) {
+         this.b = $$0;
+      }
+
+      public eob.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public eob a() {
+         return new eob(this.a, this.b);
+      }
    }
 }

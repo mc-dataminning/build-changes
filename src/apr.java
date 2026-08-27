@@ -1,35 +1,43 @@
-import java.util.Objects;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
 
-public record apr(String b, vw c) {
-   public static final apr a = a("");
+public class apr implements apo {
+   private final apo a;
+   private final blv<Runnable> b;
+   private boolean c;
 
-   public static apr a(String $$0) {
-      return new apr($$0, vw.c);
+   private apr(apo $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = blv.a($$1, "progressListener");
    }
 
-   public static apr b(String $$0) {
-      return new apr($$0, vw.b);
+   public static apr a(apo $$0, Executor $$1) {
+      apr $$2 = new apr($$0, $$1);
+      $$2.a();
+      return $$2;
    }
 
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
+   @Override
+   public void a(cwg $$0) {
+      this.b.a(() -> this.a.a($$0));
    }
 
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
+   @Override
+   public void a(cwg $$0, @Nullable dpa $$1) {
+      if (this.c) {
+         this.b.a(() -> this.a.a($$0, $$1));
+      }
    }
 
-   public boolean c() {
-      return !this.c.a();
+   @Override
+   public void a() {
+      this.c = true;
+      this.b.a(this.a::a);
    }
 
-   public String d() {
-      return this.b;
-   }
-
-   public vw e() {
-      return this.c;
+   @Override
+   public void b() {
+      this.c = false;
+      this.b.a(this.a::b);
    }
 }

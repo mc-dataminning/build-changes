@@ -1,46 +1,43 @@
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import java.io.IOException;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.MessageToMessageDecoder;
 import java.util.List;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class uw<T extends uy> extends ByteToMessageDecoder implements vb {
-   private static final Logger a = LogUtils.getLogger();
-   private final va<T> b;
+public class uw extends MessageToMessageDecoder<yb<?>> {
+   private final ya a;
+   @Nullable
+   private ya.a b;
 
-   public uw(va<T> $$0) {
-      this.b = $$0;
+   public uw(ya $$0) {
+      this.a = $$0;
    }
 
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      int $$3 = $$1.readableBytes();
-      if ($$3 != 0) {
-         xz<? super T> $$4 = this.b.c().decode($$1);
-         yb<? extends xz<? super T>> $$5 = $$4.a();
-         bji.e.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
-         if ($$1.readableBytes() > 0) {
-            throw new IOException(
-               "Packet "
-                  + this.b.a().a()
-                  + "/"
-                  + $$5
-                  + " ("
-                  + $$4.getClass().getSimpleName()
-                  + ") was larger than I expected, found "
-                  + $$1.readableBytes()
-                  + " bytes extra whilst reading packet "
-                  + $$5
-            );
-         } else {
-            $$2.add($$4);
-            if (a.isDebugEnabled()) {
-               a.debug(uq.c, " IN: [{}:{}] {}", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName()});
-            }
-
-            vb.a($$0, $$4);
+   protected void a(ChannelHandlerContext $$0, yb<?> $$1, List<Object> $$2) throws Exception {
+      if (this.b != null) {
+         a($$1);
+         yb<?> $$3 = this.b.a($$1);
+         if ($$3 != null) {
+            this.b = null;
+            $$2.add($$3);
          }
+      } else {
+         ya.a $$4 = this.a.a($$1);
+         if ($$4 != null) {
+            a($$1);
+            this.b = $$4;
+         } else {
+            $$2.add($$1);
+            if ($$1.d()) {
+               $$0.pipeline().remove($$0.name());
+            }
+         }
+      }
+   }
+
+   private static void a(yb<?> $$0) {
+      if ($$0.d()) {
+         throw new DecoderException("Terminal message received in bundle");
       }
    }
 }

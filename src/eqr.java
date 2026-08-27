@@ -1,29 +1,19 @@
-import java.util.function.Function;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class eqr<T> implements eqi<T> {
-   private final Function<ib, eqp<T>> a;
+public interface eqr {
+   int a();
 
-   public eqr(Function<ib, eqp<T>> $$0) {
-      this.a = $$0;
+   boolean b();
+
+   @Nullable
+   xk c();
+
+   default wi a(xk $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
    }
 
-   @Override
-   public boolean a(ib $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
-   }
-
-   @Override
-   public void a(eqm<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(ib $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   static wi a(@Nullable eqr $$0, xk $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
    }
 }

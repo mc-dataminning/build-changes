@@ -1,30 +1,28 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dzc extends dyz {
-   protected final long c;
-   protected final egu.a d;
-   protected final float e;
-   protected final egu f;
+public class dzc extends dzb {
+   public static final Codec<dzc> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dzc::new));
 
-   protected static <P extends dzc> P3<Mu<P>, Long, egu.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         egu.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         avu.l.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public dzc(bmh $$0, bmh $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   protected dzc(long $$0, egu.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = egu.b(new dsp(new drr($$0)), $$1);
+   @Override
+   protected dzh<?> a() {
+      return dzh.e;
    }
 
-   protected double a(ib $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   @Override
+   protected void a(cxf $$0, dzg.b $$1, axd $$2, dyq $$3, int $$4, dzg.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

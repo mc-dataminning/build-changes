@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface erk<T> {
+   void a(eri<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@eqw
-@eqv
-interface erk {
+   boolean a(ib var1, T var2);
+
+   int a();
 }

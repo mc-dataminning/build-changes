@@ -1,35 +1,38 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.Codec;
 import java.util.function.IntFunction;
 
-public enum bpi {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8),
-   j(9),
-   k(10),
-   l(11),
-   m(12),
-   n(13),
-   o(14),
-   p(15),
-   q(16),
-   r(17);
+public enum bpi implements awy, axq {
+   a(0, "left", "options.mainHand.left"),
+   b(1, "right", "options.mainHand.right");
 
-   public static final IntFunction<bpi> s = ave.a(bpi::a, values(), ave.a.a);
-   public static final xq<ByteBuf, bpi> t = xo.a(s, bpi::a);
-   private final int u;
+   public static final Codec<bpi> c = axq.a(bpi::values);
+   public static final IntFunction<bpi> d = avn.a(bpi::a, values(), avn.a.a);
+   private final int e;
+   private final String f;
+   private final String g;
 
-   private bpi(int $$0) {
-      this.u = $$0;
+   private bpi(int $$0, String $$1, String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
+   public bpi e() {
+      return this == a ? b : a;
+   }
+
+   @Override
    public int a() {
-      return this.u;
+      return this.e;
+   }
+
+   @Override
+   public String b() {
+      return this.g;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

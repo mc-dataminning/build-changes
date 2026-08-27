@@ -1,21 +1,33 @@
-public record abl(vs b, vo.a c) implements xz<aai> {
-   public static final xq<vd, abl> a = xq.a(vu.b, abl::b, vo.a.a, abl::e, abl::new);
+import java.util.List;
 
-   @Override
-   public yb<abl> a() {
-      return aet.C;
+public record abl(abl.a b, List<String> c) implements yb<aam> {
+   public static final xs<uu, abl> a = yb.a(abl::a, abl::new);
+
+   private abl(uu $$0) {
+      this($$0.b(abl.a.class), $$0.a(uu::p));
    }
 
-   public void a(aai $$0) {
+   private void a(uu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, uu::a);
+   }
+
+   @Override
+   public yd<abl> a() {
+      return aex.y;
+   }
+
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public List<String> e() {
+      return this.c;
    }
 
-   public vo.a e() {
-      return this.c;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

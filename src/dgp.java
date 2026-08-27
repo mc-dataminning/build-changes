@@ -1,33 +1,52 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class dgp extends cys {
-   public static final MapCodec<dgp> c = b(dgp::new);
+public interface dgp {
+   dgp s_ = new dgp() {
+      @Override
+      public boolean a(cxa $$0, ib $$1, dmz $$2, @Nullable Collection<ih> $$3, boolean $$4) {
+         if ($$3 == null) {
+            return ((dgv)dac.qT).i().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
+         } else if (!$$3.isEmpty()) {
+            return !$$2.i() && !$$2.u().b(eio.c) ? false : dgv.a($$0, $$1, $$2, $$3);
+         } else {
+            return dgp.super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
 
-   @Override
-   public MapCodec<dgp> a() {
-      return c;
+      @Override
+      public int a(dgu.a $$0, cxa $$1, ib $$2, axd $$3, dgu $$4, boolean $$5) {
+         return $$0.c() > 0 ? $$0.b() : 0;
+      }
+
+      @Override
+      public int i_(int $$0) {
+         return Math.max($$0 - 1, 0);
+      }
+   };
+
+   default byte b() {
+      return 1;
    }
 
-   public dgp(dmd.d $$0) {
-      super($$0, 2.0F);
+   default void a(cxa $$0, dmz $$1, ib $$2, axd $$3) {
    }
 
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      return this.a($$0, $$3, $$4) ? this.o() : czh.a.o();
+   default boolean a(cxa $$0, ib $$1, axd $$2) {
+      return false;
    }
 
-   @Override
-   protected boolean a(dme $$0, cwh $$1, ib $$2) {
-      return m($$1.a_($$2.d()));
+   default boolean a(cxa $$0, ib $$1, dmz $$2, @Nullable Collection<ih> $$3, boolean $$4) {
+      return ((dez)dac.qT).c().a($$2, $$0, $$1, $$4) > 0L;
    }
 
-   public static boolean m(dme $$0) {
-      return $$0.a(aue.aS);
-   }
-
-   @Override
-   protected boolean f(dme $$0) {
+   default boolean d() {
       return true;
    }
+
+   default int i_(int $$0) {
+      return 1;
+   }
+
+   int a(dgu.a var1, cxa var2, ib var3, axd var4, dgu var5, boolean var6);
 }

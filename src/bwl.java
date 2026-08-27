@@ -1,49 +1,57 @@
 import java.util.EnumSet;
 
-public class bwl extends bvu {
-   private static final bzn b = bzn.b().a(6.0);
-   public static final int a = 400;
-   private final cay c;
-   private chn d;
-   private int e;
+public abstract class bwl {
+   private final EnumSet<bwl.a> a = EnumSet.noneOf(bwl.a.class);
 
-   public bwl(cay $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(bvu.a.a, bvu.a.b));
-   }
+   public abstract boolean a();
 
-   @Override
-   public boolean a() {
-      if (!this.c.dJ().P()) {
-         return false;
-      } else if (this.c.ef().a(8000) != 0) {
-         return false;
-      } else {
-         this.d = this.c.dJ().a(chn.class, b, this.c, this.c.do(), this.c.dq(), this.c.du(), this.c.cE().c(6.0, 2.0, 6.0));
-         return this.d != null;
-      }
-   }
-
-   @Override
    public boolean b() {
-      return this.e > 0;
+      return this.a();
    }
 
-   @Override
+   public boolean Q_() {
+      return true;
+   }
+
    public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
    }
 
-   @Override
    public void d() {
-      this.c.w(false);
-      this.d = null;
+   }
+
+   public boolean R_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bwl.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public void e() {
-      this.c.I().a(this.d, 30.0F, 30.0F);
-      this.e--;
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<bwl.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.R_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return aww.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

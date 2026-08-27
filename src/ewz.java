@@ -1,57 +1,50 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
 import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
 
-public class ewz {
-   private static final Map<String, ewz.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final ajc c = new ajc("textures/gui/presets/isles.png");
-
-   public static ajc a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
-   }
-
-   private static ajc b(String $$0, String $$1) {
-      ewz.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         ese $$3 = a($$1);
-         if ($$3 == null) {
-            ajc $$4 = ghp.b();
-            a.put($$0, new ewz.a($$1, $$4));
-            return $$4;
-         } else {
-            ajc $$5 = new ajc("realms", "dynamic/" + $$0);
-            eyk.P().Z().a($$5, new ghm($$3));
-            a.put($$0, new ewz.a($$1, $$5));
-            return $$5;
-         }
-      }
-   }
-
+public class ewz extends gpb {
+   private static final vu a = vu.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final fex c = fex.d();
+   private final fhf v;
    @Nullable
-   private static ese a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+   private fca w;
 
-      try {
-         return ese.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
+   public ewz(fhf $$0) {
+      super(eyy.a);
+      this.v = $$0;
    }
 
-   public static record a(String a, ajc b) {
+   @Override
+   public void aO_() {
+      this.c.a(15).c().b();
+      this.w = new fca(a, this.i).b(true);
+      this.c.a(this.w);
+      fex $$0 = this.c.a(fex.e().a(8));
+      vu $$1 = vu.c("mco.account.privacy.info.button");
+      $$0.a(fbg.a($$1, ffw.b(this, "https://aka.ms/MinecraftGDPR")).a());
+      $$0.a(fbg.a(vt.k, $$0x -> this.d()).a());
+      this.c.a($$1x -> {
+         fbe var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.v);
+   }
+
+   @Override
+   protected void c() {
+      if (this.w != null) {
+         this.w.c(this.g - 15);
+      }
+
+      this.c.a();
+      fer.a(this.c, this.F());
+   }
+
+   @Override
+   public vu i() {
+      return a;
    }
 }

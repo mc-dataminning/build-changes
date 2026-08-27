@@ -1,45 +1,68 @@
-public class aei implements xz<aai> {
-   public static final xq<us, aei> a = xz.a(aei::a, aei::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public aei(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public class aei implements yb<aam> {
+   public static final xs<uu, aei> a = yb.a(aei::a, aei::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   @Nullable
+   private final ajh d;
+   @Nullable
+   private final atz e;
+
+   public aei(@Nullable ajh $$0, @Nullable atz $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private aei(us $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+   private aei(uu $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.e = $$0.b(atz.class);
+      } else {
+         this.e = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.d = $$0.q();
+      } else {
+         this.d = null;
+      }
    }
 
-   private void a(us $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+   private void a(uu $$0) {
+      if (this.e != null) {
+         if (this.d != null) {
+            $$0.k(3);
+            $$0.a(this.e);
+            $$0.a(this.d);
+         } else {
+            $$0.k(1);
+            $$0.a(this.e);
+         }
+      } else if (this.d != null) {
+         $$0.k(2);
+         $$0.a(this.d);
+      } else {
+         $$0.k(0);
+      }
    }
 
    @Override
-   public yb<aei> a() {
-      return aet.aY;
+   public yd<aei> a() {
+      return aex.aU;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
+   @Nullable
+   public ajh b() {
       return this.d;
+   }
+
+   @Nullable
+   public atz e() {
+      return this.e;
    }
 }

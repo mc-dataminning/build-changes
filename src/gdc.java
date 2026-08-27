@@ -1,27 +1,52 @@
-public class gdc extends gde<cff, fnu<cff>> {
-   private static final ajc a = new ajc("textures/entity/slime/magmacube.png");
+public class gdc extends gcx<bpe> {
+   private static final ajh a = new ajh("textures/entity/experience_orb.png");
+   private static final fxy f = fxy.g(a);
 
-   public gdc(gby.a $$0) {
-      super($$0, new fnu<>($$0.a(fqe.aw)), 0.25F);
+   public gdc(gcy.a $$0) {
+      super($$0);
+      this.d = 0.15F;
+      this.e = 0.75F;
    }
 
-   protected int a(cff $$0, ib $$1) {
-      return 15;
+   protected int a(bpe $$0, ib $$1) {
+      return aww.a(super.a($$0, $$1) + 7, 0, 15);
    }
 
-   public ajc a(cff $$0) {
-      return a;
-   }
-
-   public void a(cff $$0, float $$1, float $$2, etd $$3, fwq $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gm();
+   public void a(bpe $$0, float $$1, float $$2, etz $$3, fxq $$4, int $$5) {
+      $$3.a();
+      int $$6 = $$0.r();
+      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
+      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
+      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
+      float $$11 = 1.0F;
+      float $$12 = 0.5F;
+      float $$13 = 0.25F;
+      float $$14 = 255.0F;
+      float $$15 = ((float)$$0.ah + $$2) / 2.0F;
+      int $$16 = (int)((aww.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$17 = 255;
+      int $$18 = (int)((aww.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$3.a(0.0F, 0.1F, 0.0F);
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      float $$19 = 0.3F;
+      $$3.b(0.3F, 0.3F, 0.3F);
+      eud $$20 = $$4.getBuffer(f);
+      etz.a $$21 = $$3.c();
+      a($$20, $$21, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
+      a($$20, $$21, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
+      a($$20, $$21, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
+      a($$20, $$21, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected void a(cff $$0, etd $$1, float $$2) {
-      int $$3 = $$0.gm();
-      float $$4 = awm.i($$2, $$0.bU, $$0.e) / ((float)$$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
+   private static void a(eud $$0, etz.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).c(giq.d).b($$9).b($$1, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public ajh a(bpe $$0) {
+      return a;
    }
 }

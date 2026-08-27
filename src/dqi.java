@@ -1,45 +1,45 @@
-import java.util.UUID;
-import java.util.function.Consumer;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Dynamic;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
-public class dqi<T extends dpy> implements dqh<T> {
-   private final dqa<T> a;
-   private final dqd<T> b;
+public class dqi implements AutoCloseable {
+   private final dpz a;
+   private final DataFixer b;
+   private final ayc c;
 
-   public dqi(dqa<T> $$0, dqd<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public dqi(dqg $$0, Path $$1, DataFixer $$2, boolean $$3, ayc $$4) {
+      this.b = $$2;
+      this.c = $$4;
+      this.a = new dpz($$0, $$1, $$3);
    }
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
+   public CompletableFuture<Optional<ta>> a(cwg $$0) {
       return this.a.a($$0);
    }
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
+   public CompletableFuture<Void> a(cwg $$0, @Nullable ta $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public ta a(ta $$0, int $$1) {
+      int $$2 = tp.b($$0, $$1);
+      return this.c.a(this.b, $$0, $$2);
+   }
+
+   public Dynamic<tx> a(Dynamic<tx> $$0, int $$1) {
+      return this.c.a(this.b, $$0, $$1);
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
       return this.a.a($$0);
    }
 
    @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
-
-   @Override
-   public <U extends T> void a(dqf<T, U> $$0, ava<U> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void a(eoq $$0, Consumer<T> $$1) {
-      this.b.b($$0, ava.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(dqf<T, U> $$0, eoq $$1, ava<U> $$2) {
-      this.b.a($$0, $$1, $$2);
+   public void close() throws IOException {
+      this.a.close();
    }
 }

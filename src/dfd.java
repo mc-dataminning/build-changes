@@ -1,165 +1,115 @@
 import com.mojang.serialization.MapCodec;
 
-public class dfd extends cyu {
-   public static final MapCodec<dfd> d = b(dfd::new);
-   public static final dnc<dni> e = dmu.ag;
+public class dfd extends daa {
+   public static final MapCodec<dfd> a = b(dfd::new);
+   public static final dnx<ih.a> b = dnp.H;
+   protected static final int c = 2;
+   protected static final eqk d = daa.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final eqk e = daa.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
 
    @Override
    public MapCodec<dfd> a() {
-      return d;
+      return a;
    }
 
-   protected dfd(dmd.d $$0) {
-      super(false, $$0);
-      this.k(this.E.b().a(e, dni.a).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3) {
-      if ($$3.o().m() && new dfe($$1, $$2, $$0).b() == 3) {
-         this.a($$1, $$2, $$0, false);
-      }
+   public dfd(dmy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ih.a.a));
    }
 
    @Override
-   public dnh<dni> c() {
-      return e;
-   }
-
-   @Override
-   protected dme a(dme $$0, dfr $$1) {
-      dni $$2 = $$0.c(e);
-
-      return $$0.a(e, switch ($$1) {
-         case c -> {
-            switch ($$2) {
-               case a:
-                  yield dni.a;
-               case b:
-                  yield dni.b;
-               case c:
-                  yield dni.d;
-               case d:
-                  yield dni.c;
-               case e:
-                  yield dni.f;
-               case f:
-                  yield dni.e;
-               case g:
-                  yield dni.i;
-               case h:
-                  yield dni.j;
-               case i:
-                  yield dni.g;
-               case j:
-                  yield dni.h;
-               default:
-                  throw new IncompatibleClassChangeError();
-            }
-         }
-         case d -> {
-            switch ($$2) {
-               case a:
-                  yield dni.b;
-               case b:
-                  yield dni.a;
-               case c:
-                  yield dni.e;
-               case d:
-                  yield dni.f;
-               case e:
-                  yield dni.d;
-               case f:
-                  yield dni.c;
-               case g:
-                  yield dni.j;
-               case h:
-                  yield dni.g;
-               case i:
-                  yield dni.h;
-               case j:
-                  yield dni.i;
-               default:
-                  throw new IncompatibleClassChangeError();
-            }
-         }
-         case b -> {
-            switch ($$2) {
-               case a:
-                  yield dni.b;
-               case b:
-                  yield dni.a;
-               case c:
-                  yield dni.f;
-               case d:
-                  yield dni.e;
-               case e:
-                  yield dni.c;
-               case f:
-                  yield dni.d;
-               case g:
-                  yield dni.h;
-               case h:
-                  yield dni.i;
-               case i:
-                  yield dni.j;
-               case j:
-                  yield dni.g;
-               default:
-                  throw new IncompatibleClassChangeError();
-            }
-         }
-         default -> $$2;
-      });
-   }
-
-   @Override
-   protected dme a(dme $$0, deb $$1) {
-      dni $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(e, dni.f);
-               case f:
-                  return $$0.a(e, dni.e);
-               case g:
-                  return $$0.a(e, dni.j);
-               case h:
-                  return $$0.a(e, dni.i);
-               case i:
-                  return $$0.a(e, dni.h);
-               case j:
-                  return $$0.a(e, dni.g);
-               default:
-                  return super.a($$0, $$1);
-            }
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      switch ((ih.a)$$0.c(b)) {
          case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(e, dni.d);
-               case d:
-                  return $$0.a(e, dni.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(e, dni.h);
-               case h:
-                  return $$0.a(e, dni.g);
-               case i:
-                  return $$0.a(e, dni.j);
-               case j:
-                  return $$0.a(e, dni.i);
-            }
+            return e;
+         case a:
+         default:
+            return d;
       }
-
-      return super.a($$0, $$1);
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(e, c);
+   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if ($$1.D_().j() && $$1.Z().b(cwv.e) && $$3.a(2000) < $$1.aj().a()) {
+         while ($$1.a_($$2).a(this)) {
+            $$2 = $$2.d();
+         }
+
+         if ($$1.a_($$2).a($$1, $$2, bpc.bw)) {
+            bow $$4 = bpc.bw.a($$1, $$2.c(), bps.d);
+            if ($$4 != null) {
+               $$4.au();
+            }
+         }
+      }
+   }
+
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      ih.a $$6 = $$1.o();
+      ih.a $$7 = $$0.c(b);
+      boolean $$8 = $$7 != $$6 && $$6.d();
+      return !$$8 && !$$2.a(this) && !new ejl($$3, $$4, $$7).c() ? dac.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dmz $$0, cwz $$1, ib $$2, bow $$3) {
+      if ($$3.ct()) {
+         $$3.f($$2);
+      }
+   }
+
+   @Override
+   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
+      if ($$3.a(100) == 0) {
+         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, aty.ud, atz.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
+      }
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         double $$5 = (double)$$2.u() + $$3.j();
+         double $$6 = (double)$$2.v() + $$3.j();
+         double $$7 = (double)$$2.w() + $$3.j();
+         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
+         int $$11 = $$3.a(2) * 2 - 1;
+         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
+            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
+            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
+         } else {
+            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
+            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
+         }
+
+         $$1.a(kc.aa, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
+   }
+
+   @Override
+   public cqk a(cxc $$0, ib $$1, dmz $$2) {
+      return cqk.h;
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dgm $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((ih.a)$$0.c(b)) {
+               case c:
+                  return $$0.a(b, ih.a.a);
+               case a:
+                  return $$0.a(b, ih.a.c);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(b);
    }
 }

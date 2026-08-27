@@ -1,68 +1,62 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SortedMap;
 
 public class fxw {
-   private final ajc a;
-   private final List<fxw.b> b;
+   private final fyb a = new fyb();
+   private final fyc b;
+   private final fxq.a c;
+   private final fxq.a d;
+   private final fxr e;
 
-   public fxw(ajc $$0, List<fxw.b> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
+   public fxw(int $$0) {
+      this.b = fyc.a($$0);
+      SortedMap<fxy, etu> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(fyf.h(), this.a.a(fxy.c()));
+         $$0x.put(fyf.i(), this.a.a(fxy.e()));
+         $$0x.put(fyf.a(), this.a.a(fxy.d()));
+         $$0x.put(fyf.k(), this.a.a(fxy.f()));
+         a($$0x, fyf.b());
+         a($$0x, fyf.c());
+         a($$0x, fyf.d());
+         a($$0x, fyf.e());
+         a($$0x, fyf.f());
+         $$0x.put(fyf.g(), new etu(786432));
+         a($$0x, fxy.j());
+         a($$0x, fxy.k());
+         a($$0x, fxy.m());
+         a($$0x, fxy.n());
+         a($$0x, fxy.l());
+         a($$0x, fxy.o());
+         a($$0x, fxy.p());
+         a($$0x, fxy.i());
+         gle.l.forEach($$1x -> a($$0x, $$1x));
+      });
+      this.d = fxq.a(new etu(1536));
+      this.c = fxq.a($$1, new etu(786432));
+      this.e = new fxr(this.c);
    }
 
-   public ajc a() {
+   private static void a(Object2ObjectLinkedOpenHashMap<fxy, etu> $$0, fxy $$1) {
+      $$0.put($$1, new etu($$1.I()));
+   }
+
+   public fyb a() {
       return this.a;
    }
 
-   public Stream<fxw.b> b() {
-      return this.b.stream();
+   public fyc b() {
+      return this.b;
    }
 
-   protected static class a implements JsonDeserializer<fxw> {
-      public fxw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ajc $$4 = new ajc(awc.i($$3, "model"));
-         List<fxw.b> $$5 = this.a($$3);
-         return new fxw($$4, $$5);
-      }
-
-      protected List<fxw.b> a(JsonObject $$0) {
-         Map<ajc, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = awc.u($$0, "predicate");
-
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(new ajc($$3.getKey()), awc.e($$3.getValue(), $$3.getKey()));
-         }
-
-         return $$1.entrySet().stream().map($$0x -> new fxw.b((ajc)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
-      }
+   public fxq.a c() {
+      return this.c;
    }
 
-   public static class b {
-      private final ajc a;
-      private final float b;
+   public fxq.a d() {
+      return this.d;
+   }
 
-      public b(ajc $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public ajc a() {
-         return this.a;
-      }
-
-      public float b() {
-         return this.b;
-      }
+   public fxr e() {
+      return this.e;
    }
 }

@@ -1,48 +1,61 @@
-import java.util.EnumSet;
-import java.util.Set;
+public class bpk {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final aiq c;
+   private final aim<Integer> d;
+   private final aim<Boolean> e;
+   private boolean f;
+   private int g;
 
-public enum bpk {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4);
-
-   public static final Set<bpk> f = Set.of(values());
-   public static final Set<bpk> g = Set.of(e, d);
-   private final int h;
-
-   private bpk(int $$0) {
-      this.h = $$0;
+   public bpk(aiq $$0, aim<Integer> $$1, aim<Boolean> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private int a() {
-      return 1 << this.h;
+   public void a() {
+      this.f = true;
+      this.g = 0;
    }
 
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
-   }
-
-   public static Set<bpk> a(int $$0) {
-      Set<bpk> $$1 = EnumSet.noneOf(bpk.class);
-
-      for (bpk $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
-         }
+   public boolean a(axd $$0) {
+      if (this.f) {
+         return false;
+      } else {
+         this.f = true;
+         this.g = 0;
+         this.c.a(this.d, $$0.a(841) + 140);
+         return true;
       }
-
-      return $$1;
    }
 
-   public static int a(Set<bpk> $$0) {
-      int $$1 = 0;
-
-      for (bpk $$2 : $$0) {
-         $$1 |= $$2.a();
+   public void b() {
+      if (this.f && this.g++ > this.e()) {
+         this.f = false;
       }
+   }
 
-      return $$1;
+   public float c() {
+      return this.f ? 1.0F + 1.15F * aww.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
+   }
+
+   private int e() {
+      return this.c.a(this.d);
+   }
+
+   public void a(ta $$0) {
+      $$0.a("Saddle", this.d());
+   }
+
+   public void b(ta $$0) {
+      this.a($$0.q("Saddle"));
+   }
+
+   public void a(boolean $$0) {
+      this.c.a(this.e, $$0);
+   }
+
+   public boolean d() {
+      return this.c.a(this.e);
    }
 }

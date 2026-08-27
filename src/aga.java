@@ -1,64 +1,45 @@
-public class aga implements xz<aev> {
-   public static final xq<us, aga> a = xz.a(aga::a, aga::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private final float d;
-   private final float e;
-   private final boolean f;
-   private final boolean g;
+public class aga implements yb<aez> {
+   public static final xs<uu, aga> a = yb.a(aga::a, aga::new);
+   private final int b;
+   private final ajh c;
+   private final boolean d;
 
-   public aga(float $$0, float $$1, boolean $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public aga(int $$0, ctp<?> $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$2;
    }
 
-   private aga(us $$0) {
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) > 0;
-      this.g = ($$1 & 2) > 0;
+   private aga(uu $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.q();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(us $$0) {
+   private void a(uu $$0) {
+      $$0.k(this.b);
+      $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
    }
 
    @Override
-   public yb<aga> a() {
-      return aet.bK;
+   public yd<aga> a() {
+      return aex.bG;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 
-   public float e() {
-      return this.e;
+   public ajh e() {
+      return this.c;
    }
 
    public boolean f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
+      return this.d;
    }
 }

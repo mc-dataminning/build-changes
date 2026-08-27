@@ -1,42 +1,30 @@
-public class ful extends fuk {
-   ful(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D *= 1.5F;
-      this.t = (int)(Math.random() * 2.0) + 60;
-   }
+public class ful extends ftx {
+   private static final int a = 12235202;
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
-      return this.D * $$1;
+   protected ful(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fvz $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)awg.b.b(12235202) / 255.0F - $$9;
+      this.w = (float)awg.b.c(12235202) / 255.0F - $$9;
+      this.x = (float)awg.b.d(12235202) / 255.0F - $$9;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         this.g = this.g + this.j * (double)$$0;
-         this.h = this.h + this.k * (double)$$0;
-         this.i = this.i + this.l * (double)$$0;
-      }
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
+      super.a();
    }
 
-   public static class a implements fuh<ke> {
-      private final fuz a;
+   public static class a implements fvh<kf> {
+      private final fvz a;
 
-      public a(fuz $$0) {
+      public a(fvz $$0) {
          this.a = $$0;
       }
 
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ful $$8 = new ful($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ful($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

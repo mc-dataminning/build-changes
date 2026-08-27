@@ -1,11 +1,32 @@
-public interface bqq<E extends box> {
-   bqp.a a();
+public class bqq {
+   public static final int a = 64;
+   private final double b;
+   private boolean c;
+   private final String d;
 
-   boolean e(apa var1, E var2, long var3);
+   protected bqq(String $$0, double $$1) {
+      this.b = $$1;
+      this.d = $$0;
+   }
 
-   void f(apa var1, E var2, long var3);
+   public double a() {
+      return this.b;
+   }
 
-   void g(apa var1, E var2, long var3);
+   public boolean b() {
+      return this.c;
+   }
 
-   String b();
+   public bqq a(boolean $$0) {
+      this.c = $$0;
+      return this;
+   }
+
+   public double a(double $$0) {
+      return $$0;
+   }
+
+   public String c() {
+      return this.d;
+   }
 }

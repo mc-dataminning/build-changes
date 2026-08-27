@@ -1,103 +1,245 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class cye extends cyd implements dgf {
-   public static final MapCodec<cye> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.k), Codec.FLOAT.fieldOf("aabb_offset").forGetter($$0x -> $$0x.l), u())
+public class cye {
+   public static final Codec<cye> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               cye.b.d.optionalFieldOf("grass_color_modifier", cye.b.a).forGetter($$0x -> $$0x.h),
+               cxx.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               atx.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               cxw.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               cxv.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               atv.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+            )
             .apply($$0, cye::new)
    );
-   public static final dmv c = dmu.C;
-   public static final dmy d = dmu.P;
-   private final float k;
-   private final float l;
-   protected final epo e;
-   protected final epo f;
-   protected final epo g;
-   protected final epo h;
-   protected final epo i;
-   protected final epo j;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final cye.b h;
+   private final Optional<cxx> i;
+   private final Optional<il<atx>> j;
+   private final Optional<cxw> k;
+   private final Optional<cxv> l;
+   private final Optional<atv> m;
 
-   @Override
-   public MapCodec<cye> a() {
-      return b;
+   cye(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      cye.b $$6,
+      Optional<cxx> $$7,
+      Optional<il<atx>> $$8,
+      Optional<cxw> $$9,
+      Optional<cxv> $$10,
+      Optional<atv> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
    }
 
-   public cye(float $$0, float $$1, dmd.d $$2) {
-      super($$2);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(d, ih.b));
-      this.i = czf.a((double)$$1, 0.0, (double)$$1, (double)(16.0F - $$1), (double)$$0, (double)(16.0F - $$1));
-      this.j = czf.a((double)$$1, (double)(16.0F - $$0), (double)$$1, (double)(16.0F - $$1), 16.0, (double)(16.0F - $$1));
-      this.e = czf.a((double)$$1, (double)$$1, (double)(16.0F - $$0), (double)(16.0F - $$1), (double)(16.0F - $$1), 16.0);
-      this.f = czf.a((double)$$1, (double)$$1, 0.0, (double)(16.0F - $$1), (double)(16.0F - $$1), (double)$$0);
-      this.g = czf.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16.0F - $$1), (double)(16.0F - $$1));
-      this.h = czf.a((double)(16.0F - $$0), (double)$$1, (double)$$1, 16.0, (double)(16.0F - $$1), (double)(16.0F - $$1));
-      this.k = $$0;
-      this.l = $$1;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      ih $$4 = $$0.c(d);
-      switch ($$4) {
-         case c:
-            return this.e;
-         case d:
-            return this.f;
-         case f:
-            return this.g;
-         case e:
-            return this.h;
-         case a:
-            return this.j;
-         case b:
-         default:
-            return this.i;
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
+      return this.f;
+   }
+
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public cye.b g() {
+      return this.h;
+   }
+
+   public Optional<cxx> h() {
+      return this.i;
+   }
+
+   public Optional<il<atx>> i() {
+      return this.j;
+   }
+
+   public Optional<cxw> j() {
+      return this.k;
+   }
+
+   public Optional<cxv> k() {
+      return this.l;
+   }
+
+   public Optional<atv> l() {
+      return this.m;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private cye.b g = cye.b.a;
+      private Optional<cxx> h = Optional.empty();
+      private Optional<il<atx>> i = Optional.empty();
+      private Optional<cxw> j = Optional.empty();
+      private Optional<cxv> k = Optional.empty();
+      private Optional<atv> l = Optional.empty();
+
+      public cye.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public cye.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public cye.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public cye.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public cye.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public cye.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public cye.a a(cye.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public cye.a a(cxx $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public cye.a a(il<atx> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public cye.a a(cxw $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public cye.a a(cxv $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public cye.a a(@Nullable atv $$0) {
+         this.l = Optional.ofNullable($$0);
+         return this;
+      }
+
+      public cye a() {
+         return new cye(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
+         );
       }
    }
 
-   @Override
-   protected boolean a(dme $$0, cwh $$1, ib $$2) {
-      ih $$3 = $$0.c(d);
-      ib $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).d($$1, $$4, $$3);
-   }
+   public static enum b implements axq {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = cxy.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
 
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, ehs.c, ehs.c.a($$3));
+      private final String e;
+      public static final Codec<cye.b> d = axq.a(cye.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(String $$0) {
+         this.e = $$0;
       }
 
-      return $$1 == $$0.c(d).g() && !$$0.a($$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      public String a() {
+         return this.e;
+      }
 
-   @Nullable
-   @Override
-   public dme a(crx $$0) {
-      cwf $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      return this.o().a(c, Boolean.valueOf($$1.b_($$2).a() == ehs.c)).a(d, $$0.k());
-   }
-
-   @Override
-   protected dme a(dme $$0, dfr $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected dme a(dme $$0, deb $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected ehr c_(dme $$0) {
-      return $$0.c(c) ? ehs.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(c, d);
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

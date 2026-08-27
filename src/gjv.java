@@ -1,20 +1,17 @@
+import java.io.IOException;
+import java.io.InputStream;
+
 public class gjv {
-   public static final gjw a = new gjw();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+   @Deprecated
+   public static int[] a(aso $$0, ajh $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         eta $$3 = eta.a($$2);
+      ) {
+         var4 = $$3.e();
+      }
 
-   public gjv(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public boolean a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
+      return var4;
    }
 }

@@ -1,33 +1,45 @@
-import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class ate {
-   public static final int a = 1460;
-   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+   private int a;
+   private int b;
 
-   public static String a(byte[] $$0, int $$1, int $$2) {
-      int $$3 = $$2 - 1;
-      int $$4 = $$1 > $$3 ? $$3 : $$1;
+   public boolean a(int $$0) {
+      return this.b >= this.b($$0);
+   }
 
-      while (0 != $$0[$$4] && $$4 < $$3) {
-         $$4++;
+   public boolean a(int $$0, List<apg> $$1) {
+      int $$2 = (int)$$1.stream().filter(cis::gc).count();
+      return $$2 >= this.b($$0);
+   }
+
+   public int b(int $$0) {
+      return Math.max(1, aww.f((float)(this.a * $$0) / 100.0F));
+   }
+
+   public void a() {
+      this.b = 0;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean a(List<apg> $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      this.a = 0;
+      this.b = 0;
+
+      for (apg $$3 : $$0) {
+         if (!$$3.N_()) {
+            this.a++;
+            if ($$3.fI()) {
+               this.b++;
+            }
+         }
       }
 
-      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
-   }
-
-   public static int a(byte[] $$0, int $$1) {
-      return b($$0, $$1, $$0.length);
-   }
-
-   public static int b(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
-   }
-
-   public static int c(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
-   }
-
-   public static String a(byte $$0) {
-      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
+      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

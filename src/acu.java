@@ -1,28 +1,79 @@
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public record acu(String b, @Nullable String c) implements xz<aai> {
-   public static final xq<us, acu> a = xz.a(acu::a, acu::new);
+public class acu implements yb<aam> {
+   public static final xs<uu, acu> a = yb.a(acu::a, acu::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final Set<bqb> g;
+   private final int h;
 
-   private acu(us $$0) {
-      this($$0.p(), $$0.c(us::p));
+   public acu(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bqb> $$5, int $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   private void a(us $$0) {
+   private acu(uu $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = bqb.a($$0.readUnsignedByte());
+      this.h = $$0.l();
+   }
+
+   private void a(uu $$0) {
       $$0.a(this.b);
-      $$0.a(this.c, us::a);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.k(bqb.a(this.g));
+      $$0.c(this.h);
    }
 
    @Override
-   public yb<acu> a() {
-      return aet.cc;
+   public yd<acu> a() {
+      return aex.ah;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public String e() {
+   public double b() {
+      return this.b;
+   }
+
+   public double e() {
       return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.h;
+   }
+
+   public Set<bqb> j() {
+      return this.g;
    }
 }

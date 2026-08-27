@@ -1,26 +1,18 @@
-public class fov<T extends cbi> extends foo<T> {
-   private float j;
+import java.util.function.Function;
 
-   public fov(fqf $$0) {
-      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
+public abstract class fov<E extends bow> extends foc<E> {
+   public fov() {
+      this(fxy::e);
    }
 
-   public static fql c() {
-      fqn $$0 = foo.a(12, fqj.a);
-      fqo $$1 = $$0.a();
-      $$1.a("head", fqk.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fqh.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fqk.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fqh.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return fql.a($$0, 64, 32);
+   public fov(Function<ajh, fxy> $$0) {
+      super($$0);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.c = 6.0F + $$0.E($$3) * 9.0F;
-      this.j = $$0.F($$3);
+   @Override
+   public void a(etz $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.e = this.j;
-   }
+   public abstract Iterable<frd> d();
 }

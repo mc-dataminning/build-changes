@@ -2,26 +2,32 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 
 public class bbi extends DataFix {
    public bbi(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bdt.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bdt.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bbi::a));
-      }
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "EntityStringUuidFix",
+         this.getInputSchema().getType(beh.y),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> {
+                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
+                  if ($$1.isPresent()) {
+                     UUID $$2 = UUID.fromString($$1.get());
+                     return $$0x.remove("UUID")
+                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
+                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
+                  } else {
+                     return $$0x;
+                  }
+               }
+            )
+      );
    }
 }

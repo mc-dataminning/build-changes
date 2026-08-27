@@ -1,14 +1,29 @@
-public interface ahi extends aaf, aew {
-   @Override
-   default ur b() {
-      return ur.d;
+public class ahi implements yb<ahe> {
+   public static final xs<uu, ahi> a = yb.a(ahi::a, ahi::new);
+   private final int b;
+
+   public ahi(int $$0) {
+      this.b = $$0;
    }
 
-   void a(ahk var1);
+   private ahi(uu $$0) {
+      this.b = $$0.l();
+   }
 
-   void a(ahl var1);
+   private void a(uu $$0) {
+      $$0.c(this.b);
+   }
 
-   void a(ahj var1);
+   @Override
+   public yd<ahi> a() {
+      return ahk.d;
+   }
 
-   void a(ahm var1);
+   public void a(ahe $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
 }

@@ -1,29 +1,46 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhq extends dcv {
-   public static final MapCodec<dhq> b = b(dhq::new);
-
-   protected dhq(dmd.d $$0) {
+public abstract class dhq extends dhj {
+   protected dhq(dmy.d $$0) {
       super($$0);
    }
 
-   @Override
-   protected MapCodec<? extends dhq> a() {
-      return b;
+   private static boolean b(dmz $$0, cxc $$1, ib $$2) {
+      ib $$3 = $$2.c();
+      dmz $$4 = $$1.a_($$3);
+      if ($$4.a(dac.dN) && $$4.c(dhi.c) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
+      } else {
+         int $$5 = eie.a($$1, $$0, $$2, $$4, $$3, ih.b, $$4.b($$1, $$3));
+         return $$5 < $$1.O();
+      }
    }
 
    @Override
-   protected epo c(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return epl.a();
+   protected abstract MapCodec<? extends dhq> a();
+
+   private static boolean c(dmz $$0, cxc $$1, ib $$2) {
+      ib $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(aus.a);
    }
 
    @Override
-   protected float d(dme $$0, cvk $$1, ib $$2) {
-      return 1.0F;
-   }
+   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dac.j.o());
+      } else {
+         if ($$1.A($$2.c()) >= 9) {
+            dmz $$4 = this.o();
 
-   @Override
-   protected boolean a_(dme $$0, cvk $$1, ib $$2) {
-      return true;
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               ib $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dac.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dac.dN))));
+               }
+            }
+         }
+      }
    }
 }

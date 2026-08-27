@@ -1,58 +1,24 @@
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class bzu {
-   @Nullable
-   public static eov a(bpf $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::h);
+public class bzu extends bzx<bpo> {
+   @Override
+   public Set<byr<?>> a() {
+      return ImmutableSet.of(byr.j, byr.k, byr.l);
    }
 
-   @Nullable
-   public static eov a(bpf $$0, int $$1, int $$2, ToDoubleFunction<ib> $$3) {
-      boolean $$4 = bzs.a($$0, $$1);
-      return bzv.a(() -> {
-         ib $$4x = bzv.a($$0.ef(), $$1, $$2);
-         ib $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
-   }
-
-   @Nullable
-   public static eov a(bpf $$0, int $$1, int $$2, eov $$3) {
-      eov $$4 = $$3.a($$0.do(), $$0.dq(), $$0.du());
-      boolean $$5 = bzs.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   public static eov b(bpf $$0, int $$1, int $$2, eov $$3) {
-      eov $$4 = $$0.dh().d($$3);
-      boolean $$5 = bzs.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   private static eov a(bpf $$0, int $$1, int $$2, eov $$3, boolean $$4) {
-      return bzv.a($$0, () -> {
-         ib $$5 = bzv.a($$0.ef(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            ib $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
-         }
-      });
-   }
-
-   @Nullable
-   public static ib a(bpf $$0, ib $$1) {
-      $$1 = bzv.a($$1, $$0.dJ().ak(), $$1x -> bzs.c($$0, $$1x));
-      return !bzs.a($$0, $$1) && !bzs.b($$0, $$1) ? $$1 : null;
-   }
-
-   @Nullable
-   public static ib a(bpf $$0, int $$1, boolean $$2, ib $$3) {
-      ib $$4 = bzv.a($$0, $$1, $$0.ef(), $$3);
-      return !bzs.a($$4, $$0) && !bzs.a($$2, $$0, $$4) && !bzs.a($$0.N(), $$4) ? $$4 : null;
+   @Override
+   protected void a(apf $$0, bpo $$1) {
+      List<cis> $$2 = $$0.x().stream().filter(bpb.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::g)).collect(Collectors.toList());
+      bqp<?> $$3 = $$1.dP();
+      $$3.a(byr.j, $$2);
+      List<cis> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(byr.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cis> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(byr.l, $$5);
    }
 }

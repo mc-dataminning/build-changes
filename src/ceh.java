@@ -1,17 +1,26 @@
-public class ceh {
-   private final int a;
-   private final int b;
+import javax.annotation.Nullable;
 
-   public ceh(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public interface ceh {
+   boolean a();
 
-   public int a() {
-      return this.a;
-   }
+   void b();
 
-   public int b() {
-      return this.b;
-   }
+   void c();
+
+   void a(cdw var1, ib var2, bnv var3, @Nullable cis var4);
+
+   void d();
+
+   void e();
+
+   float f();
+
+   float h();
+
+   cen<? extends ceh> i();
+
+   @Nullable
+   epr g();
+
+   float a(bnv var1, float var2);
 }

@@ -1,52 +1,81 @@
-public class cto extends csk {
-   public cto(csi $$0) {
-      super($$0);
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class cto {
+   private final cto.a[] a;
+   private WeakReference<ctq> b = new WeakReference<>(null);
+
+   public cto(int $$0) {
+      this.a = new cto.a[$$0];
    }
 
-   public boolean a(clk $$0, cwe $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.f(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.g(); $$3++) {
-               cpq $$4 = $$0.a($$2 + $$3 * $$0.f());
-               if ($$4.b()) {
-                  return false;
-               }
+   public Optional<cte> a(cwz $$0, cme $$1) {
+      if ($$1.ai_()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
 
-               if ($$2 == 1 && $$3 == 1) {
-                  if (!$$4.a(cpt.vn)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cpt.ou)) {
-                  return false;
-               }
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            cto.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1.h())) {
+               this.a($$2);
+               return Optional.ofNullable($$3.b());
             }
          }
 
-         return true;
-      } else {
-         return false;
+         return this.a($$1, $$0);
       }
    }
 
-   public cpq a(clk $$0, iy $$1) {
-      cpq $$2 = $$0.a(1 + $$0.f());
-      if (!$$2.a(cpt.vn)) {
-         return cpq.h;
-      } else {
-         cpq $$3 = new cpq(cpt.vm, 8);
-         cro.a($$3, cro.d($$2));
-         cro.a($$3, cro.b($$2));
-         return $$3;
+   private void a(cwz $$0) {
+      ctq $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+   private Optional<cte> a(cme $$0, cwz $$1) {
+      Optional<ctp<cte>> $$2 = $$1.r().a(cts.a, $$0, $$1);
+      this.a($$0.h(), $$2.map(ctp::b).orElse(null));
+      return $$2.map(ctp::b);
    }
 
-   @Override
-   public csw<?> as_() {
-      return csw.j;
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         cto.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(List<cqk> $$0, @Nullable cte $$1) {
+      iu<cqk> $$2 = iu.a($$0.size(), cqk.h);
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         $$2.set($$3, $$0.get($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new cto.a($$2, $$1);
+   }
+
+   static record a(iu<cqk> a, @Nullable cte b) {
+      public boolean a(List<cqk> $$0) {
+         if (this.a.size() != $$0.size()) {
+            return false;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cqk.c(this.a.get($$1), $$0.get($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

@@ -1,17 +1,67 @@
-import com.mojang.serialization.Codec;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class ekp {
-   public static final Codec<ekr> a = kh.F.q().dispatch(ekr::a, eks::a);
-   public static final eks b = a("empty", ekm.a);
-   public static final eks c = a("item", eko.a);
-   public static final eks d = a("loot_table", eku.a);
-   public static final eks e = a("dynamic", ekl.a);
-   public static final eks f = a("tag", ekw.a);
-   public static final eks g = a("alternatives", eki.a);
-   public static final eks h = a("sequence", ekv.a);
-   public static final eks i = a("group", ekn.a);
+public interface ekp extends ekr {
+   @Override
+   String e();
 
-   private static eks a(String $$0, Codec<? extends ekr> $$1) {
-      return ix.a(kh.F, new ajc($$0), new eks($$1));
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(p $$0, cxb $$1) {
+      ekr.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
+
+   int f();
+
+   void a(int var1);
+
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
+
+   @Nullable
+   UUID v();
+
+   void a(UUID var1);
+
+   cww k();
+
+   void a(doq.c var1);
+
+   doq.c p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(cww var1);
+
+   epe<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
 }

@@ -1,11 +1,9 @@
-public class gdh extends gde<cba, foc<cba>> {
-   private static final ajc a = new ajc("textures/entity/cat/ocelot.png");
-
-   public gdh(gby.a $$0) {
-      super($$0, new foc<>($$0.a(fqe.aA)), 0.4F);
+public class gdh extends gee<ccv, fof<ccv>> {
+   public gdh(gcy.a $$0) {
+      super($$0, new fof<>($$0.a(frc.aa)), 0.3F);
    }
 
-   public ajc a(cba $$0) {
-      return a;
+   public ajh a(ccv $$0) {
+      return $$0.y().a();
    }
 }

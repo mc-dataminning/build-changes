@@ -1,7 +1,22 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface ddv {
-   boolean a(@Nullable cia var1, cvk var2, ib var3, dme var4, ehq var5);
+public abstract class ddv extends daa {
+   public static final dnt aE = dnp.R;
 
-   boolean a(cwf var1, ib var2, dme var3, ehr var4);
+   protected ddv(dmy.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected abstract MapCodec<? extends ddv> a();
+
+   @Override
+   protected dmz a(dmz $$0, dgm $$1) {
+      return $$0.a(aE, $$1.a($$0.c(aE)));
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dew $$1) {
+      return $$0.a($$1.a($$0.c(aE)));
+   }
 }

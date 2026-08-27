@@ -1,33 +1,23 @@
-import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
 
-public record ym(ajc c, byte[] d) implements xz<yf> {
-   public static final xq<us, ym> a = xz.a(ym::a, ym::new);
-   private static final int e = 5120;
-   public static final xq<ByteBuf, byte[]> b = xo.a(5120);
+public record ym(Optional<UUID> b) implements yb<yh> {
+   public static final xs<uu, ym> a = yb.a(ym::a, ym::new);
 
-   private ym(us $$0) {
-      this($$0.q(), b.decode($$0));
+   private ym(uu $$0) {
+      this($$0.b(jf.g));
    }
 
-   private void a(us $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
+   private void a(uu $$0) {
+      $$0.a(this.b, jf.g);
    }
 
    @Override
-   public yb<ym> a() {
-      return yp.g;
+   public yd<ym> a() {
+      return yr.e;
    }
 
-   public void a(yf $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
-   }
-
-   public ajc b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
    }
 }

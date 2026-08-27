@@ -1,25 +1,25 @@
-public class adj implements xz<aai> {
-   public static final xq<us, adj> a = xz.a(adj::a, adj::new);
+public class adj implements yb<aam> {
+   public static final xs<uu, adj> a = yb.a(adj::a, adj::new);
    private final int b;
 
-   public adj(int $$0) {
-      this.b = $$0;
+   public adj(doq $$0) {
+      this.b = $$0.r();
    }
 
-   private adj(us $$0) {
+   private adj(uu $$0) {
       this.b = $$0.l();
    }
 
-   private void a(us $$0) {
+   private void a(uu $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public yb<adj> a() {
-      return aet.az;
+   public yd<adj> a() {
+      return aex.av;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 

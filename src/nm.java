@@ -1,12 +1,21 @@
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 
-public class nm extends nd {
-   public nm(kq $$0, CompletableFuture<in.a> $$1) {
-      super($$0, $$1);
+public class nm {
+   private final Function<ctd, ctn<?>> a;
+
+   public nm(Function<ctd, ctn<?>> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void a(nc $$0) {
-      ne.a(nb.e, cpt.qT).a('#', cpt.uA).a('-', cpt.pr).b("-#-").b("# #").b("###").b("has_string", a(cpt.pr)).a($$0);
+   public static nm a(Function<ctd, ctn<?>> $$0) {
+      return new nm($$0);
+   }
+
+   public void a(ne $$0, String $$1) {
+      this.a($$0, new ajh($$1));
+   }
+
+   public void a(ne $$0, ajh $$1) {
+      $$0.a($$1, this.a.apply(ctd.d), null);
    }
 }

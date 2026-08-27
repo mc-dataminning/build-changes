@@ -1,132 +1,117 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dsr implements awt {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dsr> b = dsq.a.xmap($$0 -> new dsr($$0), $$0 -> $$0.e);
-   private dsq e;
-   private final drs f = new drs(this);
+public record dsr(dsu j, dmz k, dmz l, dss m, dtd.o n, List<cyh.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<dsr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dsu.a.fieldOf("noise").forGetter(dsr::f),
+               dmz.b.fieldOf("default_block").forGetter(dsr::g),
+               dmz.b.fieldOf("default_fluid").forGetter(dsr::h),
+               dss.a.fieldOf("noise_router").forGetter(dsr::i),
+               dtd.o.b.fieldOf("surface_rule").forGetter(dsr::j),
+               cyh.d.a.listOf().fieldOf("spawn_target").forGetter(dsr::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dsr::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dsr::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dsr::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dsr::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dsr::n)
+            )
+            .apply($$0, dsr::new)
+   );
+   public static final Codec<il<dsr>> b = ajd.a(kj.aB, a);
+   public static final ajg<dsr> c = ajg.a(kj.aB, new ajh("overworld"));
+   public static final ajg<dsr> d = ajg.a(kj.aB, new ajh("large_biomes"));
+   public static final ajg<dsr> e = ajg.a(kj.aB, new ajh("amplified"));
+   public static final ajg<dsr> f = ajg.a(kj.aB, new ajh("nether"));
+   public static final ajg<dsr> g = ajg.a(kj.aB, new ajh("end"));
+   public static final ajg<dsr> h = ajg.a(kj.aB, new ajh("caves"));
+   public static final ajg<dsr> i = ajg.a(kj.aB, new ajh("floating_islands"));
 
-   public dsr(long $$0) {
-      this.e = new dsq(dsf.c($$0));
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   public dsr(dsf.a $$0) {
-      this.e = new dsq($$0);
+   public boolean b() {
+      return this.r;
    }
 
-   public dsr(long $$0, long $$1) {
-      this.e = new dsq($$0, $$1);
+   public boolean c() {
+      return this.s;
    }
 
-   private dsr(dsq $$0) {
-      this.e = $$0;
+   public dtl.a d() {
+      return this.t ? dtl.a.a : dtl.a.b;
    }
 
-   @Override
-   public awt d() {
-      return new dsr(this.e.a(), this.e.a());
+   public static void a(pl<dsr> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   @Override
-   public dsd e() {
-      return new dsr.a(this.e.a(), this.e.a());
+   private static dsr b(pl<?> $$0) {
+      return new dsr(dsu.d, dac.fz.o(), dac.a.o(), dst.a($$0.a(kj.ay)), py.c(), List.of(), 0, true, false, false, true);
    }
 
-   @Override
-   public void b(long $$0) {
-      this.e = new dsq(dsf.c($$0));
-      this.f.a();
+   private static dsr c(pl<?> $$0) {
+      return new dsr(dsu.c, dac.dV.o(), dac.H.o(), dst.a($$0.a(kj.ay), $$0.a(kj.aC)), py.b(), List.of(), 32, false, false, false, true);
    }
 
-   @Override
-   public int f() {
-      return (int)this.e.a();
+   private static dsr a(pl<?> $$0, boolean $$1, boolean $$2) {
+      return new dsr(dsu.b, dac.b.o(), dac.G.o(), dst.a($$0.a(kj.ay), $$0.a(kj.aC), $$2, $$1), py.a(), new cyo().a(), 63, false, true, true, false);
    }
 
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
-      }
+   private static dsr d(pl<?> $$0) {
+      return new dsr(dsu.e, dac.b.o(), dac.G.o(), dst.b($$0.a(kj.ay), $$0.a(kj.aC)), py.a(false, true, true), List.of(), 32, false, false, false, true);
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
+   private static dsr e(pl<?> $$0) {
+      return new dsr(dsu.f, dac.b.o(), dac.G.o(), dst.c($$0.a(kj.ay), $$0.a(kj.aC)), py.a(false, false, false), List.of(), -64, false, false, false, true);
    }
 
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
+   public static dsr e() {
+      return new dsr(dsu.b, dac.b.o(), dac.a.o(), dst.a(), py.d(), List.of(), 63, true, false, false, false);
    }
 
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
+   public dsu f() {
+      return this.j;
    }
 
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
+   public dmz g() {
+      return this.k;
    }
 
-   @Override
-   public double k() {
-      return this.f.b();
+   public dmz h() {
+      return this.l;
    }
 
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
+   public dss i() {
+      return this.m;
    }
 
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
+   public dtd.o j() {
+      return this.n;
    }
 
-   public static class a implements dsd {
-      private final long a;
-      private final long b;
+   public List<cyh.d> k() {
+      return this.o;
+   }
 
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public int l() {
+      return this.p;
+   }
 
-      @Override
-      public awt a(int $$0, int $$1, int $$2) {
-         long $$3 = awm.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dsr($$4, this.b);
-      }
+   public boolean m() {
+      return this.r;
+   }
 
-      @Override
-      public awt a(String $$0) {
-         dsf.a $$1 = dsf.a($$0);
-         return new dsr($$1.a(this.a, this.b));
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
-      }
+   public boolean n() {
+      return this.t;
    }
 }

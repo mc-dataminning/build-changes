@@ -1,96 +1,146 @@
-import com.google.common.annotations.VisibleForTesting;
+public class dkq extends dkg {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final cwa d = new cwa() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dkq.this.e();
+      }
 
-public class dkq extends djl implements dqt.b<dkq.a> {
-   private final dkq.a a;
+      @Override
+      public apf e() {
+         return (apf)dkq.this.o;
+      }
 
-   public dkq(ib $$0, dme $$1) {
-      super(djn.K, $$0, $$1);
-      this.a = new dkq.a($$1, new dqn($$0));
-   }
+      @Override
+      public void f() {
+         dmz $$0 = dkq.this.o.a_(dkq.this.p);
+         this.e().a(dkq.this.p, $$0, $$0, 3);
+      }
 
-   public static void a(cwe $$0, ib $$1, dme $$2, dkq $$3) {
-      $$3.a.d().a($$0, $$1, $$0.F_(), true);
+      @Override
+      public epr g() {
+         return epr.b(dkq.this.p);
+      }
+
+      @Override
+      public du i() {
+         ih $$0 = dkq.this.n().c(dbj.b);
+         return new du(this, epr.b(dkq.this.p), new epq(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dkq.this.o();
+      }
+   };
+
+   public dkq(ib $$0, dmz $$1) {
+      super(dki.w, $$0, $$1);
    }
 
    @Override
-   public void a(sy $$0, in.a $$1) {
-      this.a.b.a($$0);
-   }
-
-   @Override
-   protected void b(sy $$0, in.a $$1) {
-      this.a.b.b($$0);
+   protected void b(ta $$0, in.a $$1) {
       super.b($$0, $$1);
+      this.d.a($$0);
+      $$0.a("powered", this.c());
+      $$0.a("conditionMet", this.j());
+      $$0.a("auto", this.d());
    }
 
-   public dkq.a b() {
+   @Override
+   public void a(ta $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.d.b($$0);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   public cwa b() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean c() {
       return this.a;
    }
 
-   public static class a implements dqt {
-      public static final int a = 8;
-      final dfz b;
-      private final dme c;
-      private final dqv d;
+   public boolean d() {
+      return this.b;
+   }
 
-      public a(dme $$0, dqv $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dfz.a();
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.l() != dkq.a.a) {
+         this.t();
       }
+   }
 
-      @Override
-      public dqv a() {
-         return this.d;
+   public void f() {
+      dkq.a $$0 = this.l();
+      if ($$0 == dkq.a.b && (this.a || this.b) && this.o != null) {
+         this.t();
       }
+   }
 
-      @Override
-      public int b() {
-         return 8;
+   private void t() {
+      daa $$0 = this.n().b();
+      if ($$0 instanceof dbj) {
+         this.k();
+         this.o.a(this.p, $$0, 1);
       }
+   }
 
-      @Override
-      public dqt.a c() {
-         return dqt.a.b;
-      }
+   public boolean j() {
+      return this.c;
+   }
 
-      @Override
-      public boolean a(apa $$0, il<dqr> $$1, dqr.a $$2, eov $$3) {
-         if ($$1.a(dqr.p) && $$2.a() instanceof box $$4) {
-            if (!$$4.eC()) {
-               int $$5 = $$4.ed();
-               if ($$4.eb() && $$5 > 0) {
-                  this.b.a(ib.a($$3.a(ih.b, 0.5)), $$5);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eB();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, ib.a($$1x), this.c, $$0.F_()));
-            }
-
-            return true;
+   public boolean k() {
+      this.c = true;
+      if (this.s()) {
+         ib $$0 = this.p.a(this.o.a_(this.p).c(dbj.b).g());
+         if (this.o.a_($$0).b() instanceof dbj) {
+            dkg $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof dkq && ((dkq)$$1).b().k() > 0;
          } else {
-            return false;
+            this.c = false;
          }
       }
 
-      @VisibleForTesting
-      public dfz d() {
-         return this.b;
-      }
+      return this.c;
+   }
 
-      private void a(apa $$0, ib $$1, dme $$2, awt $$3) {
-         $$0.a($$1, $$2.a(dfw.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(kb.G, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, atp.vt, atq.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+   public dkq.a l() {
+      dmz $$0 = this.n();
+      if ($$0.a(dac.fN)) {
+         return dkq.a.c;
+      } else if ($$0.a(dac.kG)) {
+         return dkq.a.b;
+      } else {
+         return $$0.a(dac.kH) ? dkq.a.a : dkq.a.c;
       }
+   }
 
-      private void a(cwe $$0, box $$1) {
-         if ($$1.eg() instanceof apb $$3) {
-            bne $$4 = $$1.ew() == null ? $$0.ah().a((cia)$$3) : $$1.ew();
-            am.Z.a($$3, $$1, $$4);
-         }
-      }
+   public boolean s() {
+      dmz $$0 = this.o.a_(this.aC_());
+      return $$0.b() instanceof dbj ? $$0.c(dbj.c) : false;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

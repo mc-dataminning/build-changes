@@ -5,7 +5,7 @@ public interface gv extends AutoCloseable {
 
    void a(String var1);
 
-   void a(int var1, ajc var2, int var3);
+   void a(int var1, ajh var2, int var3);
 
    @Override
    void close();

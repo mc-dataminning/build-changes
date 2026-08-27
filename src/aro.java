@@ -1,33 +1,28 @@
-public enum aro {
-   a("old"),
-   b("new"),
-   c("compatible");
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
 
-   private final vs d;
-   private final vs e;
+public interface aro<T> extends arn<T> {
+   JsonObject a(T var1);
 
-   private aro(String $$0) {
-      this.d = vs.c("pack.incompatible." + $$0).a(n.h);
-      this.e = vs.c("pack.incompatible.confirm." + $$0);
-   }
+   static <T> aro<T> a(final String $$0, final Codec<T> $$1) {
+      return new aro<T>() {
+         @Override
+         public String a() {
+            return $$0;
+         }
 
-   public boolean a() {
-      return this == c;
-   }
+         @Override
+         public T a(JsonObject $$0x) {
+            return ac.a($$1.parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
+         }
 
-   public static aro a(awe<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
-      }
-   }
-
-   public vs b() {
-      return this.d;
-   }
-
-   public vs c() {
-      return this.e;
+         @Override
+         public JsonObject a(T $$0x) {
+            return ac.<JsonElement, IllegalArgumentException>a($$1.encodeStart(JsonOps.INSTANCE, $$0), IllegalArgumentException::new).getAsJsonObject();
+         }
+      };
    }
 }

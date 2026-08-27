@@ -1,78 +1,53 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
 
-public class fpn<T extends cbn> extends foo<T> {
-   private static final String j = "egg_belly";
-   private final fqf k;
+public class fpn<T extends bow> extends fmy<T> {
+   protected final frd a;
+   protected final frd b;
+   protected final frd f;
+   protected final frd g;
+   protected final frd h;
+   protected final frd i;
 
-   public fpn(fqf $$0) {
-      super($$0, true, 120.0F, 0.0F, 9.0F, 6.0F, 120);
-      this.k = $$0.b("egg_belly");
+   protected fpn(frd $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, int $$6) {
+      super($$1, $$2, $$3, $$4, $$5, (float)$$6);
+      this.a = $$0.b("head");
+      this.b = $$0.b("body");
+      this.f = $$0.b("right_hind_leg");
+      this.g = $$0.b("left_hind_leg");
+      this.h = $$0.b("right_front_leg");
+      this.i = $$0.b("left_front_leg");
    }
 
-   public static fql c() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      $$1.a("head", fqk.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), fqh.a(0.0F, 19.0F, -10.0F));
-      $$1.a(
-         "body",
-         fqk.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
-         fqh.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      $$1.a("egg_belly", fqk.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), fqh.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 1;
-      $$1.a("right_hind_leg", fqk.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fqh.a(-3.5F, 22.0F, 11.0F));
-      $$1.a("left_hind_leg", fqk.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fqh.a(3.5F, 22.0F, 11.0F));
-      $$1.a("right_front_leg", fqk.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fqh.a(-5.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", fqk.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fqh.a(5.0F, 21.0F, -4.0F));
-      return fql.a($$0, 128, 64);
+   public static frl a(int $$0, frh $$1) {
+      frl $$2 = new frl();
+      frm $$3 = $$2.a();
+      $$3.a("head", fri.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), frf.a(0.0F, (float)(18 - $$0), -6.0F));
+      $$3.a("body", fri.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), frf.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fri $$4 = fri.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
+      $$3.a("right_hind_leg", $$4, frf.a(-3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("left_hind_leg", $$4, frf.a(3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("right_front_leg", $$4, frf.a(-3.0F, (float)(24 - $$0), -5.0F));
+      $$3.a("left_front_leg", $$4, frf.a(3.0F, (float)(24 - $$0), -5.0F));
+      return $$2;
    }
 
    @Override
-   protected Iterable<fqf> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.k));
+   protected Iterable<frd> a() {
+      return ImmutableList.of(this.a);
    }
 
+   @Override
+   protected Iterable<frd> b() {
+      return ImmutableList.of(this.b, this.f, this.g, this.h, this.i);
+   }
+
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.f.e = awm.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
-      this.g.e = awm.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
-      this.h.g = awm.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
-      this.i.g = awm.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
-      this.h.e = 0.0F;
-      this.i.e = 0.0F;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
-      this.f.f = 0.0F;
-      this.g.f = 0.0F;
-      if (!$$0.aZ() && $$0.aC()) {
-         float $$6 = $$0.w() ? 4.0F : 1.0F;
-         float $$7 = $$0.w() ? 2.0F : 1.0F;
-         float $$8 = 5.0F;
-         this.h.f = awm.b($$6 * $$1 * 5.0F + (float) Math.PI) * 8.0F * $$2 * $$7;
-         this.h.g = 0.0F;
-         this.i.f = awm.b($$6 * $$1 * 5.0F) * 8.0F * $$2 * $$7;
-         this.i.g = 0.0F;
-         this.f.f = awm.b($$1 * 5.0F + (float) Math.PI) * 3.0F * $$2;
-         this.f.e = 0.0F;
-         this.g.f = awm.b($$1 * 5.0F) * 3.0F * $$2;
-         this.g.e = 0.0F;
-      }
-
-      this.k.k = !this.e && $$0.u();
-   }
-
-   @Override
-   public void a(etd $$0, eth $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      boolean $$8 = this.k.k;
-      if ($$8) {
-         $$0.a();
-         $$0.a(0.0F, -0.08F, 0.0F);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if ($$8) {
-         $$0.b();
-      }
+      this.a.e = $$5 * (float) (Math.PI / 180.0);
+      this.a.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = aww.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = aww.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = aww.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = aww.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

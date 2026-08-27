@@ -1,37 +1,27 @@
-public abstract class bsa<E extends box> implements bqq<E>, buf<E> {
-   private bqp.a a;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-   public bsa() {
-      this.a = bqp.a.a;
+public class bsa {
+   public static brh<bpo> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   @Override
-   public final bqp.a a() {
-      return this.a;
-   }
-
-   @Override
-   public final boolean e(apa $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bqp.a.b;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final void f(apa $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(apa $$0, E $$1, long $$2) {
-      this.a = bqp.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   public static <E extends bpo> brh<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return but.a((Function<but.b<E>, ? extends App<but.c<E>, buw<E>>>)($$4 -> {
+         but<E, ? extends buu<? extends K1, byu>> $$5 = $$2 ? $$4.a(byr.m) : $$4.c(byr.m);
+         return $$4.group($$4.a(byr.n), $$5, $$4.b(byr.L), $$4.a(byr.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               cfd $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dM().C_().a($$11.dm())) {
+                  byu $$12 = new byu(new brr($$11, false), $$1, 0);
+                  $$4x.a(new brr($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

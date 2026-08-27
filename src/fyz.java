@@ -1,36 +1,90 @@
-public class fyz implements fyq<dkf> {
-   public static final gkc a = new gkc(ghy.e, new ajc("entity/enchanting_table_book"));
-   private final fmm b;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-   public fyz(fyr.a $$0) {
-      this.b = new fmm($$0.a(fqe.n));
+public class fyz {
+   public static final fyz a = new fyz();
+   public final fyy b;
+   public final fyy c;
+   public final fyy d;
+   public final fyy e;
+   public final fyy f;
+   public final fyy g;
+   public final fyy h;
+   public final fyy i;
+
+   private fyz() {
+      this(fyy.a, fyy.a, fyy.a, fyy.a, fyy.a, fyy.a, fyy.a, fyy.a);
    }
 
-   public void a(dkf $$0, float $$1, etd $$2, fwq $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + awm.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public fyz(fyz $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+   }
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+   public fyz(fyy $$0, fyy $$1, fyy $$2, fyy $$3, fyy $$4, fyy $$5, fyy $$6, fyy $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public fyy a(cqh $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> fyy.a;
+      };
+   }
+
+   public boolean b(cqh $$0) {
+      return this.a($$0) != fyy.a;
+   }
+
+   protected static class a implements JsonDeserializer<fyz> {
+      public fyz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         fyy $$4 = this.a($$2, $$3, cqh.c);
+         fyy $$5 = this.a($$2, $$3, cqh.b);
+         if ($$5 == fyy.a) {
+            $$5 = $$4;
+         }
+
+         fyy $$6 = this.a($$2, $$3, cqh.e);
+         fyy $$7 = this.a($$2, $$3, cqh.d);
+         if ($$7 == fyy.a) {
+            $$7 = $$6;
+         }
+
+         fyy $$8 = this.a($$2, $$3, cqh.f);
+         fyy $$9 = this.a($$2, $$3, cqh.g);
+         fyy $$10 = this.a($$2, $$3, cqh.h);
+         fyy $$11 = this.a($$2, $$3, cqh.i);
+         return new fyz($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
+      private fyy a(JsonDeserializationContext $$0, JsonObject $$1, cqh $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (fyy)$$0.deserialize($$1.get($$3), fyy.class) : fyy.a;
       }
-
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = awm.i($$1, $$0.c, $$0.b);
-      float $$10 = awm.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = awm.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = awm.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, awm.a($$10, 0.0F, 1.0F), awm.a($$11, 0.0F, 1.0F), $$12);
-      eth $$13 = a.a($$3, fwy::c);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
    }
 }

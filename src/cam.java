@@ -1,219 +1,119 @@
-import java.util.Optional;
-import java.util.UUID;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
-public abstract class cam extends boa {
-   protected static final int bX = 6000;
-   private int bV;
+public class cam {
+   private static final int a = 10;
+
+   public static ib a(axd $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new ib($$3, $$4, $$5);
+   }
+
    @Nullable
-   private UUID bW;
-
-   protected cam(bol<? extends cam> $$0, cwe $$1) {
-      super($$0, $$1);
-      this.a(eic.n, 16.0F);
-      this.a(eic.o, -1.0F);
-   }
-
-   @Override
-   protected void aa() {
-      if (this.h() != 0) {
-         this.bV = 0;
-      }
-
-      super.aa();
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      if (this.h() != 0) {
-         this.bV = 0;
-      }
-
-      if (this.bV > 0) {
-         this.bV--;
-         if (this.bV % 10 == 0) {
-            double $$0 = this.af.k() * 0.02;
-            double $$1 = this.af.k() * 0.02;
-            double $$2 = this.af.k() * 0.02;
-            this.dJ().a(kb.O, this.d(1.0), this.dr() + 0.5, this.g(1.0), $$0, $$1, $$2);
-         }
-      }
-   }
-
-   @Override
-   public boolean a(bne $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
+   public static ib a(axd $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = aww.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)aww.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return ib.a($$10, (double)$$12, $$11);
       } else {
-         this.bV = 0;
-         return super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public float a(ib $$0, cwh $$1) {
-      return $$1.a_($$0.d()).a(czh.i) ? 10.0F : $$1.w($$0);
-   }
-
-   @Override
-   public void b(sy $$0) {
-      super.b($$0);
-      $$0.a("InLove", this.bV);
-      if (this.bW != null) {
-         $$0.a("LoveCause", this.bW);
-      }
-   }
-
-   @Override
-   public void a(sy $$0) {
-      super.a($$0);
-      this.bV = $$0.h("InLove");
-      this.bW = $$0.b("LoveCause") ? $$0.a("LoveCause") : null;
-   }
-
-   public static boolean b(bol<? extends cam> $$0, cwf $$1, bpb $$2, ib $$3, awt $$4) {
-      boolean $$5 = bpb.b($$2) || a($$1, $$3);
-      return $$1.a_($$3.d()).a(aue.bP) && $$5;
-   }
-
-   protected static boolean a(cvh $$0, ib $$1) {
-      return $$0.b($$1, 0) > 8;
-   }
-
-   @Override
-   public int Q() {
-      return 120;
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
-   }
-
-   @Override
-   public int ed() {
-      return 1 + this.dJ().z.a(3);
-   }
-
-   public boolean o(cpq $$0) {
-      return $$0.a(cpt.pv);
-   }
-
-   @Override
-   public bml b(cia $$0, bmk $$1) {
-      cpq $$2 = $$0.b($$1);
-      if (this.o($$2)) {
-         int $$3 = this.h();
-         if (!this.dJ().B && $$3 == 0 && this.gm()) {
-            this.a($$0, $$1, $$2);
-            this.g($$0);
-            return bml.a;
-         }
-
-         if (this.o_()) {
-            this.a($$0, $$1, $$2);
-            this.a(d_(-$$3), true);
-            return bml.a(this.dJ().B);
-         }
-
-         if (this.dJ().B) {
-            return bml.b;
-         }
-      }
-
-      return super.b($$0, $$1);
-   }
-
-   protected void a(cia $$0, bmk $$1, cpq $$2) {
-      if (!$$0.fW().d) {
-         $$2.h(1);
-      }
-   }
-
-   public boolean gm() {
-      return this.bV <= 0;
-   }
-
-   public void g(@Nullable cia $$0) {
-      this.bV = 600;
-      if ($$0 != null) {
-         this.bW = $$0.ct();
-      }
-
-      this.dJ().a(this, (byte)18);
-   }
-
-   public void t(int $$0) {
-      this.bV = $$0;
-   }
-
-   public int gn() {
-      return this.bV;
-   }
-
-   @Nullable
-   public apb go() {
-      if (this.bW == null) {
          return null;
+      }
+   }
+
+   @VisibleForTesting
+   public static ib a(ib $$0, int $$1, Predicate<ib> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
       } else {
-         cia $$0 = this.dJ().b(this.bW);
-         return $$0 instanceof apb ? (apb)$$0 : null;
-      }
-   }
+         ib $$3 = $$0.c();
 
-   public boolean gp() {
-      return this.bV > 0;
-   }
-
-   public void gq() {
-      this.bV = 0;
-   }
-
-   public boolean a(cam $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return $$0.getClass() != this.getClass() ? false : this.gp() && $$0.gp();
-      }
-   }
-
-   public void a(apa $$0, cam $$1) {
-      boa $$2 = this.a($$0, (boa)$$1);
-      if ($$2 != null) {
-         $$2.a(true);
-         $$2.b(this.do(), this.dq(), this.du(), 0.0F, 0.0F);
-         this.a($$0, $$1, $$2);
-         $$0.a_($$2);
-      }
-   }
-
-   public void a(apa $$0, cam $$1, @Nullable boa $$2) {
-      Optional.ofNullable(this.go()).or(() -> Optional.ofNullable($$1.go())).ifPresent($$2x -> {
-         $$2x.a(atz.P);
-         am.p.a($$2x, this, $$1, $$2);
-      });
-      this.c_(6000);
-      $$1.c_(6000);
-      this.gq();
-      $$1.gq();
-      $$0.a(this, (byte)18);
-      if ($$0.Z().b(cwa.f)) {
-         $$0.b(new bon($$0, this.do(), this.dq(), this.du(), this.ef().a(7) + 1));
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 18) {
-         for (int $$1 = 0; $$1 < 7; $$1++) {
-            double $$2 = this.af.k() * 0.02;
-            double $$3 = this.af.k() * 0.02;
-            double $$4 = this.af.k() * 0.02;
-            this.dJ().a(kb.O, this.d(1.0), this.dr() + 0.5, this.g(1.0), $$2, $$3, $$4);
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
          }
-      } else {
-         super.b($$0);
+
+         return $$3;
       }
+   }
+
+   @VisibleForTesting
+   public static ib a(ib $$0, int $$1, int $$2, Predicate<ib> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         ib $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         ib $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            ib $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
+            }
+
+            $$5 = $$6;
+         }
+
+         return $$5;
+      }
+   }
+
+   @Nullable
+   public static epr a(bpw $$0, Supplier<ib> $$1) {
+      return a($$1, $$0::h);
+   }
+
+   @Nullable
+   public static epr a(Supplier<ib> $$0, ToDoubleFunction<ib> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      ib $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         ib $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
+         }
+      }
+
+      return $$3 != null ? epr.c($$3) : null;
+   }
+
+   public static ib a(bpw $$0, int $$1, axd $$2, ib $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.fZ() && $$1 > 1) {
+         ib $$6 = $$0.fW();
+         if ($$0.dr() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dx() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return ib.a((double)$$4 + $$0.dr(), (double)$$3.v() + $$0.dt(), (double)$$5 + $$0.dx());
    }
 }

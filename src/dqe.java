@@ -1,63 +1,106 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.function.Consumer;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
 
-public class dqe {
-   private Int2ObjectMap<bof> a = new Int2ObjectLinkedOpenHashMap();
-   private Int2ObjectMap<bof> b = new Int2ObjectLinkedOpenHashMap();
-   @Nullable
-   private Int2ObjectMap<bof> c;
+public final class dqe implements AutoCloseable {
+   public static final String a = ".mca";
+   private static final int b = 256;
+   private final Long2ObjectLinkedOpenHashMap<dqd> c = new Long2ObjectLinkedOpenHashMap();
+   private final dqg d;
+   private final Path e;
+   private final boolean f;
 
-   private void a() {
-      if (this.c == this.a) {
-         this.b.clear();
-         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
+   dqe(dqg $$0, Path $$1, boolean $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.d = $$0;
+   }
 
-         while ($$1.hasNext()) {
-            Entry<bof> $$0 = (Entry<bof>)$$1.next();
-            this.b.put($$0.getIntKey(), (bof)$$0.getValue());
+   private dqd b(cwg $$0) throws IOException {
+      long $$1 = cwg.c($$0.h(), $$0.i());
+      dqd $$2 = (dqd)this.c.getAndMoveToFirst($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         if (this.c.size() >= 256) {
+            ((dqd)this.c.removeLast()).close();
          }
 
-         Int2ObjectMap<bof> $$1x = this.a;
-         this.a = this.b;
-         this.b = $$1x;
+         v.c(this.e);
+         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
+         dqd $$4 = new dqd(this.d, $$3, this.e, this.f);
+         this.c.putAndMoveToFirst($$1, $$4);
+         return $$4;
       }
    }
 
-   public void a(bof $$0) {
-      this.a();
-      this.a.put($$0.aj(), $$0);
+   @Nullable
+   public ta a(cwg $$0) throws IOException {
+      dqd $$1 = this.b($$0);
+
+      ta var4;
+      try (DataInputStream $$2 = $$1.a($$0)) {
+         if ($$2 == null) {
+            return null;
+         }
+
+         var4 = tn.a($$2);
+      }
+
+      return var4;
    }
 
-   public void b(bof $$0) {
-      this.a();
-      this.a.remove($$0.aj());
+   public void a(cwg $$0, tu $$1) throws IOException {
+      dqd $$2 = this.b($$0);
+
+      try (DataInputStream $$3 = $$2.a($$0)) {
+         if ($$3 != null) {
+            tn.a((DataInput)$$3, $$1, tj.a());
+         }
+      }
    }
 
-   public boolean c(bof $$0) {
-      return this.a.containsKey($$0.aj());
-   }
-
-   public void a(Consumer<bof> $$0) {
-      if (this.c != null) {
-         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+   protected void a(cwg $$0, @Nullable ta $$1) throws IOException {
+      dqd $$2 = this.b($$0);
+      if ($$1 == null) {
+         $$2.d($$0);
       } else {
-         this.c = this.a;
+         try (DataOutputStream $$3 = $$2.c($$0)) {
+            tn.a($$1, (DataOutput)$$3);
+         }
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      awd<IOException> $$0 = new awd<>();
+      ObjectIterator var2 = this.c.values().iterator();
+
+      while (var2.hasNext()) {
+         dqd $$1 = (dqd)var2.next();
 
          try {
-            ObjectIterator var2 = this.a.values().iterator();
-
-            while (var2.hasNext()) {
-               bof $$1 = (bof)var2.next();
-               $$0.accept($$1);
-            }
-         } finally {
-            this.c = null;
+            $$1.close();
+         } catch (IOException var5) {
+            $$0.a(var5);
          }
+      }
+
+      $$0.a();
+   }
+
+   public void a() throws IOException {
+      ObjectIterator var1 = this.c.values().iterator();
+
+      while (var1.hasNext()) {
+         dqd $$0 = (dqd)var1.next();
+         $$0.b();
       }
    }
 }

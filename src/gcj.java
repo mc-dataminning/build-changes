@@ -1,19 +1,17 @@
-public class gcj extends gde<cfb, fnr<cfb>> {
-   private static final ajc a = new ajc("textures/entity/zombie/zombie.png");
-   private final float i;
+public class gcj extends gee<cbi, fnr<cbi>> {
+   private static final ajh a = new ajh("textures/entity/chicken.png");
 
-   public gcj(gby.a $$0, float $$1) {
-      super($$0, new fnj($$0.a(fqe.ad)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new ggc<>(this, $$0.d()));
-      this.a(new gfz<>(this, new fnj($$0.a(fqe.ae)), new fnj($$0.a(fqe.af)), $$0.g()));
+   public gcj(gcy.a $$0) {
+      super($$0, new fnr<>($$0.a(frc.v)), 0.3F);
    }
 
-   protected void a(cfb $$0, etd $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
-   }
-
-   public ajc a(cfb $$0) {
+   public ajh a(cbi $$0) {
       return a;
+   }
+
+   protected float a(cbi $$0, float $$1) {
+      float $$2 = aww.i($$1, $$0.cb, $$0.bX);
+      float $$3 = aww.i($$1, $$0.ca, $$0.bY);
+      return (aww.a($$2) + 1.0F) * $$3;
    }
 }

@@ -1,33 +1,60 @@
 import java.util.List;
 
-public record abh(abh.a b, List<String> c) implements xz<aai> {
-   public static final xq<us, abh> a = xz.a(abh::a, abh::new);
+public class abh implements yb<aam> {
+   public static final xs<vf, abh> a = yb.a(abh::a, abh::new);
+   private final int b;
+   private final int c;
+   private final List<cqk> d;
+   private final cqk e;
 
-   private abh(us $$0) {
-      this($$0.b(abh.a.class), $$0.a(us::p));
+   public abh(int $$0, int $$1, iu<cqk> $$2, cqk $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = iu.a($$2.size(), cqk.h);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.d.set($$4, $$2.get($$4).q());
+      }
+
+      this.e = $$3.q();
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, us::a);
+   private abh(vf $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.l();
+      this.d = cqk.g.decode($$0);
+      this.e = cqk.f.decode($$0);
+   }
+
+   private void a(vf $$0) {
+      $$0.k(this.b);
+      $$0.c(this.c);
+      cqk.g.encode($$0, this.d);
+      cqk.f.encode($$0, this.e);
    }
 
    @Override
-   public yb<abh> a() {
-      return aet.y;
+   public yd<abh> a() {
+      return aex.u;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public List<cqk> e() {
+      return this.d;
+   }
+
+   public cqk f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.c;
    }
 }

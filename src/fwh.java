@@ -1,51 +1,61 @@
-public enum fwh {
-   a(new fwh.b(fwh.a.f, fwh.a.e, fwh.a.a), new fwh.b(fwh.a.f, fwh.a.e, fwh.a.d), new fwh.b(fwh.a.c, fwh.a.e, fwh.a.d), new fwh.b(fwh.a.c, fwh.a.e, fwh.a.a)),
-   b(new fwh.b(fwh.a.f, fwh.a.b, fwh.a.d), new fwh.b(fwh.a.f, fwh.a.b, fwh.a.a), new fwh.b(fwh.a.c, fwh.a.b, fwh.a.a), new fwh.b(fwh.a.c, fwh.a.b, fwh.a.d)),
-   c(new fwh.b(fwh.a.c, fwh.a.b, fwh.a.d), new fwh.b(fwh.a.c, fwh.a.e, fwh.a.d), new fwh.b(fwh.a.f, fwh.a.e, fwh.a.d), new fwh.b(fwh.a.f, fwh.a.b, fwh.a.d)),
-   d(new fwh.b(fwh.a.f, fwh.a.b, fwh.a.a), new fwh.b(fwh.a.f, fwh.a.e, fwh.a.a), new fwh.b(fwh.a.c, fwh.a.e, fwh.a.a), new fwh.b(fwh.a.c, fwh.a.b, fwh.a.a)),
-   e(new fwh.b(fwh.a.f, fwh.a.b, fwh.a.d), new fwh.b(fwh.a.f, fwh.a.e, fwh.a.d), new fwh.b(fwh.a.f, fwh.a.e, fwh.a.a), new fwh.b(fwh.a.f, fwh.a.b, fwh.a.a)),
-   f(new fwh.b(fwh.a.c, fwh.a.b, fwh.a.a), new fwh.b(fwh.a.c, fwh.a.e, fwh.a.a), new fwh.b(fwh.a.c, fwh.a.e, fwh.a.d), new fwh.b(fwh.a.c, fwh.a.b, fwh.a.d));
+public class fwh extends fwe {
+   private final fvz a;
+   private static final int b = 8;
 
-   private static final fwh[] g = ac.a(new fwh[6], $$0 -> {
-      $$0[fwh.a.e] = a;
-      $$0[fwh.a.b] = b;
-      $$0[fwh.a.d] = c;
-      $$0[fwh.a.a] = d;
-      $$0[fwh.a.f] = e;
-      $$0[fwh.a.c] = f;
-   });
-   private final fwh.b[] h;
-
-   public static fwh a(ih $$0) {
-      return g[$$0.d()];
+   protected fwh(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fvz $$8) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$8;
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.j *= 0.0;
+      this.k *= 0.9;
+      this.l *= 0.0;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      this.D *= 0.75F * $$7;
+      this.t = (int)(8.0F / aww.b(this.r, 0.5F, 1.0F) * $$7);
+      this.t = Math.max(this.t, 1);
+      this.b($$8);
+      this.n = true;
    }
 
-   private fwh(fwh.b... $$0) {
-      this.h = $$0;
+   @Override
+   public fvi b() {
+      return fvi.b;
    }
 
-   public fwh.b a(int $$0) {
-      return this.h[$$0];
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
-   public static final class a {
-      public static final int a = ih.d.d();
-      public static final int b = ih.b.d();
-      public static final int c = ih.f.d();
-      public static final int d = ih.c.d();
-      public static final int e = ih.a.d();
-      public static final int f = ih.e.d();
+   @Override
+   public fvr.a p() {
+      return fvr.a.b;
    }
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
 
-      b(int $$0, int $$1, int $$2) {
+   @Override
+   public float b(float $$0) {
+      return this.D * aww.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fvh<kf> {
+      private final fvz a;
+
+      public a(fvz $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fwh($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
       }
    }
 }

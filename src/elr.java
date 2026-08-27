@@ -1,64 +1,49 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class elr extends elk {
-   private static final Codec<Pair<il<djc>, cog>> b = Codec.mapPair(kh.am.r().fieldOf("pattern"), cog.q.fieldOf("color")).codec();
-   public static final Codec<elr> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
-            .apply($$0, elr::new)
-   );
-   private final List<Pair<il<djc>, cog>> c;
-   private final boolean d;
+public class elr extends elg {
+   public static final Codec<elr> a = a(elr::new);
 
-   elr(List<emx> $$0, List<Pair<il<djc>, cog>> $$1, boolean $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   elr(List<eln> $$0, List<ent> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected cpq a(cpq $$0, ejy $$1) {
-      sy $$2 = cnl.a($$0);
-      if ($$2 == null) {
-         $$2 = new sy();
-      }
-
-      djc.a $$3 = new djc.a();
-      this.c.forEach($$3::a);
-      te $$4 = $$3.a();
-      te $$5;
-      if (this.d) {
-         $$5 = $$2.c("Patterns", 10).e();
-         $$5.addAll($$4);
-      } else {
-         $$5 = $$4;
-      }
-
-      $$2.a("Patterns", $$5);
-      cnl.a($$0, djn.t, $$2);
-      return $$0;
+   public elo a() {
+      return ell.h;
    }
 
    @Override
-   public elm b() {
-      return eln.y;
+   protected elf a(List<? extends elf> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (elf)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (elf $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   public static elr.a a(boolean $$0) {
+   public static elr.a a(eln.a<?>... $$0) {
       return new elr.a($$0);
    }
 
-   public static class a extends elk.a<elr.a> {
-      private final Builder<Pair<il<djc>, cog>> a = ImmutableList.builder();
-      private final boolean b;
+   public static class a extends eln.a<elr.a> {
+      private final Builder<eln> a = ImmutableList.builder();
 
-      a(boolean $$0) {
-         this.b = $$0;
+      public a(eln.a<?>... $$0) {
+         for (eln.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
       protected elr.a a() {
@@ -66,17 +51,14 @@ public class elr extends elk {
       }
 
       @Override
-      public ell b() {
-         return new elr(this.g(), this.a.build(), this.b);
-      }
-
-      public elr.a a(ajb<djc> $$0, cog $$1) {
-         return this.a(kh.am.f($$0), $$1);
-      }
-
-      public elr.a a(il<djc> $$0, cog $$1) {
-         this.a.add(Pair.of($$0, $$1));
+      public elr.a c(eln.a<?> $$0) {
+         this.a.add($$0.b());
          return this;
+      }
+
+      @Override
+      public eln b() {
+         return new elr(this.a.build(), this.f());
       }
    }
 }

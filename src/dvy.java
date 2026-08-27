@@ -1,60 +1,46 @@
 import com.mojang.serialization.Codec;
 
-public class dvy extends duu<dxp> {
-   public dvy(Codec<dxp> $$0) {
+public class dvy extends dut {
+   public dvy(Codec<dxw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(duw<dxp> $$0) {
-      cwz $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
-         return false;
-      } else {
-         dxp $$3 = $$0.f();
-         awt $$4 = $$0.d();
-         dfz $$5 = dfz.b();
-         int $$6 = $$3.f() + $$3.d();
+   protected void a(cxa $$0, axd $$1, ib $$2, int $$3, ib.a $$4, dxw $$5) {
+      int $$6 = $$5.d;
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).i($$0, $$4)) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dmz $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(ddw.e) && $$19.b(ddw.c) && $$19.b(ddw.b) && $$19.b(ddw.d)) {
+                     $$19 = $$19.a(ddw.e, Boolean.valueOf($$15))
+                        .a(ddw.c, Boolean.valueOf($$16))
+                        .a(ddw.b, Boolean.valueOf($$17))
+                        .a(ddw.d, Boolean.valueOf($$18));
+                  }
 
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
-         }
-
-         ib $$11 = $$2.d();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
-            $$1.a($$2, czh.qU.o(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            ib $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ih.b)) {
-               $$1.a($$14, czh.qV.o().a(dfy.d, Boolean.valueOf(true)), 3);
+                  this.a($$0, $$4, $$19);
+               }
             }
          }
-
-         return true;
       }
    }
 
-   private boolean a(cwf $$0, ib $$1) {
-      dme $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dfu) {
-         return true;
-      } else {
-         return !$$2.i() && (!$$2.a(czh.G) || !$$2.u().b()) ? false : ih.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
-      }
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

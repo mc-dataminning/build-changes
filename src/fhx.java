@@ -1,26 +1,31 @@
-public class fhx extends fhg<cln> {
-   private static final ajc x = new ajc("textures/gui/container/dispenser.png");
+public class fhx extends fgx {
+   private static final int c = 24;
 
-   public fhx(cln $$0, chz $$1, vs $$2) {
-      super($$0, $$1, $$2);
+   public fhx(fhf $$0, ezk $$1) {
+      super($$0, $$1, vu.c("controls.title"));
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   protected void aO_() {
+      super.aO_();
+      int $$0 = this.g / 2 - 155;
+      int $$1 = $$0 + 160;
+      int $$2 = this.h / 6 - 12;
+      this.c(fbg.a(vu.c("options.mouse_settings"), $$0x -> this.f.a(new fgt(this, this.b))).a($$0, $$2, 150, 20).a());
+      this.c(fbg.a(vu.c("controls.keybinds"), $$0x -> this.f.a(new fhz(this, this.b))).a($$1, $$2, 150, 20).a());
+      $$2 += 24;
+      this.c(this.b.aa().a(this.b, $$0, $$2, 150));
+      this.c(this.b.ab().a(this.b, $$1, $$2, 150));
+      $$2 += 24;
+      this.c(this.b.F().a(this.b, $$0, $$2, 150));
+      this.c(this.b.G().a(this.b, $$1, $$2, 150));
+      $$2 += 24;
+      this.c(fbg.a(vt.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, $$2, 200, 20).a());
    }
 
    @Override
-   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(ezx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
    }
 }

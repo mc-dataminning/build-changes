@@ -1,22 +1,20 @@
-public enum ewx {
-   a(0, ebw.a),
-   b(1, ebw.b),
-   c(2, ebw.c),
-   d(3, ebw.d);
+public class ewx extends eww {
+   private final eyg a;
 
-   private final int e;
-   private final vs f;
-
-   private ewx(int $$0, ajb<ebv> $$1) {
-      this.e = $$0;
-      this.f = vs.c($$1.a().f("generator"));
+   public ewx(fhf $$0, eyg $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
-   public vs a() {
-      return this.f;
+   @Override
+   public void e() {
+      super.e();
+      this.a.c();
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   protected void f() {
+      this.a.b();
+      super.f();
    }
 }

@@ -1,25 +1,20 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public interface cvq extends cvv, cwh, cwj {
-   @Override
-   default <T extends djl> Optional<T> a(ib $$0, djn<T> $$1) {
-      return cwh.super.a($$0, $$1);
+public class cvq extends cuu {
+   protected cvq(cuu.a $$0, bpd... $$1) {
+      super($$0, auv.bj, $$1);
    }
 
    @Override
-   default List<epo> c(@Nullable bof $$0, eoq $$1) {
-      return cvv.super.c($$0, $$1);
+   public int a(int $$0) {
+      return 15;
    }
 
    @Override
-   default boolean a(@Nullable bof $$0, epo $$1) {
-      return cvv.super.a($$0, $$1);
+   public int b(int $$0) {
+      return super.a($$0) + 50;
    }
 
    @Override
-   default ib a(drq.a $$0, ib $$1) {
-      return cwh.super.a($$0, $$1);
+   public boolean a(cuu $$0) {
+      return super.a($$0) && $$0 != cux.x;
    }
 }

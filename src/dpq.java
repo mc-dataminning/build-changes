@@ -1,232 +1,283 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.OptionalLong;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public record dpq(
-   OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, aut<czf> v, ajc w, float x, dpq.a y
-) {
-   public static final int a = ib.d;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<dpq> h = avu.c(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  avu.a(Codec.LONG.optionalFieldOf("fixed_time")).forGetter(dpq::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(dpq::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dpq::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dpq::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(dpq::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dpq::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(dpq::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dpq::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dpq::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(dpq::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dpq::p),
-                  aut.b(ki.f).fieldOf("infiniburn").forGetter(dpq::q),
-                  ajc.a.fieldOf("effects").orElse(dpo.e).forGetter(dpq::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dpq::s),
-                  dpq.a.a.forGetter(dpq::t)
-               )
-               .apply($$0, dpq::new)
-      )
-   );
-   private static final int z = 8;
-   public static final float[] i = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<il<dpq>> j = aiy.a(ki.az, h);
+public class dpq extends dov {
+   @Nullable
+   private volatile eic n;
+   private volatile dpa o = dpa.c;
+   private final List<ta> p = Lists.newArrayList();
+   private final Map<dsi.a, dou> q = new Object2ObjectArrayMap();
+   @Nullable
+   private dsa r;
+   private final erg<daa> s;
+   private final erg<eim> t;
 
-   public dpq(
-      OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, aut<czf> v, ajc w, float x, dpq.a y
-   ) {
-      if (t < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (s + t > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (u > t) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (t % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (s % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
-      } else {
-         this.k = k;
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
-      }
+   public dpq(cwg $$0, dpt $$1, cxb $$2, iy<cxy> $$3, @Nullable dtp $$4) {
+      this($$0, $$1, null, new erg<>(), new erg<>(), $$2, $$3, $$4);
    }
 
-   @Deprecated
-   public static DataResult<ajb<cwe>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(cwe.i);
-         }
-
-         if ($$2 == 0) {
-            return DataResult.success(cwe.h);
-         }
-
-         if ($$2 == 1) {
-            return DataResult.success(cwe.j);
-         }
-      }
-
-      return cwe.g.parse($$0);
+   public dpq(cwg $$0, dpt $$1, @Nullable dph[] $$2, erg<daa> $$3, erg<eim> $$4, cxb $$5, iy<cxy> $$6, @Nullable dtp $$7) {
+      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
+      this.s = $$3;
+      this.t = $$4;
    }
 
-   public static double a(dpq $$0, dpq $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
-   }
-
-   public static Path a(ajb<cwe> $$0, Path $$1) {
-      if ($$0 == cwe.h) {
-         return $$1;
-      } else if ($$0 == cwe.j) {
-         return $$1.resolve("DIM1");
-      } else {
-         return $$0 == cwe.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
-      }
-   }
-
-   public boolean a() {
-      return this.k.isPresent();
-   }
-
-   public float a(long $$0) {
-      double $$1 = awm.e((double)this.k.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
-   }
-
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
-   }
-
-   public boolean b() {
-      return this.y.a();
-   }
-
-   public boolean c() {
-      return this.y.b();
-   }
-
-   public blq d() {
-      return this.y.c();
-   }
-
-   public int e() {
-      return this.y.d();
-   }
-
-   public OptionalLong f() {
-      return this.k;
-   }
-
-   public boolean g() {
-      return this.l;
-   }
-
-   public boolean h() {
-      return this.m;
-   }
-
-   public boolean i() {
-      return this.n;
-   }
-
-   public boolean j() {
-      return this.o;
-   }
-
-   public double k() {
-      return this.p;
-   }
-
-   public boolean l() {
-      return this.q;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public int n() {
+   @Override
+   public erl<daa> o() {
       return this.s;
    }
 
-   public int o() {
+   @Override
+   public erl<eim> p() {
       return this.t;
    }
 
-   public int p() {
-      return this.u;
+   @Override
+   public dov.a q() {
+      return new dov.a(this.s, this.t);
    }
 
-   public aut<czf> q() {
-      return this.v;
+   @Override
+   public dmz a_(ib $$0) {
+      int $$1 = $$0.v();
+      if (this.d($$1)) {
+         return dac.nb.o();
+      } else {
+         dph $$2 = this.b(this.e($$1));
+         return $$2.c() ? dac.a.o() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+      }
    }
 
-   public ajc r() {
-      return this.w;
+   @Override
+   public ein b_(ib $$0) {
+      int $$1 = $$0.v();
+      if (this.d($$1)) {
+         return eio.a.g();
+      } else {
+         dph $$2 = this.b(this.e($$1));
+         return $$2.c() ? eio.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+      }
    }
 
-   public float s() {
-      return this.x;
+   @Nullable
+   @Override
+   public dmz a(ib $$0, dmz $$1, boolean $$2) {
+      int $$3 = $$0.u();
+      int $$4 = $$0.v();
+      int $$5 = $$0.w();
+      if ($$4 >= this.I_() && $$4 < this.ak()) {
+         int $$6 = this.e($$4);
+         dph $$7 = this.b($$6);
+         boolean $$8 = $$7.c();
+         if ($$8 && $$1.a(dac.a)) {
+            return $$1;
+         } else {
+            int $$9 = je.b($$3);
+            int $$10 = je.b($$4);
+            int $$11 = je.b($$5);
+            dmz $$12 = $$7.a($$9, $$10, $$11, $$1);
+            if (this.o.b(dpa.k)) {
+               boolean $$13 = $$7.c();
+               if ($$13 != $$8) {
+                  this.n.a($$0, $$13);
+               }
+
+               if (eie.a(this, $$0, $$12, $$1)) {
+                  this.i.a(this, $$9, $$4, $$11);
+                  this.n.a($$0);
+               }
+            }
+
+            EnumSet<dsm.a> $$14 = this.j().h();
+            EnumSet<dsm.a> $$15 = null;
+
+            for (dsm.a $$16 : $$14) {
+               dsm $$17 = this.h.get($$16);
+               if ($$17 == null) {
+                  if ($$15 == null) {
+                     $$15 = EnumSet.noneOf(dsm.a.class);
+                  }
+
+                  $$15.add($$16);
+               }
+            }
+
+            if ($$15 != null) {
+               dsm.a(this, $$15);
+            }
+
+            for (dsm.a $$18 : $$14) {
+               this.h.get($$18).a($$9, $$4, $$11, $$1);
+            }
+
+            return $$12;
+         }
+      } else {
+         return dac.nb.o();
+      }
    }
 
-   public dpq.a t() {
-      return this.y;
+   @Override
+   public void a(dkg $$0) {
+      this.k.put($$0.aC_(), $$0);
    }
 
-   public static record a(boolean b, boolean c, blq d, int e) {
-      public static final MapCodec<dpq.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dpq.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(dpq.a::b),
-                  blq.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dpq.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dpq.a::d)
-               )
-               .apply($$0, dpq.a::new)
-      );
+   @Nullable
+   @Override
+   public dkg c_(ib $$0) {
+      return this.k.get($$0);
+   }
 
-      public boolean a() {
-         return this.b;
+   public Map<ib, dkg> D() {
+      return this.k;
+   }
+
+   public void b(ta $$0) {
+      this.p.add($$0);
+   }
+
+   @Override
+   public void a(bow $$0) {
+      if (!$$0.bO()) {
+         ta $$1 = new ta();
+         $$0.e($$1);
+         this.b($$1);
+      }
+   }
+
+   @Override
+   public void a(edc $$0, edk $$1) {
+      dsa $$2 = this.x();
+      if ($$2 != null && $$1.b()) {
+         ecu $$3 = $$1.a();
+         cxb $$4 = this.z();
+         if ($$3.i() < $$4.I_() || $$3.l() >= $$4.ak()) {
+            return;
+         }
       }
 
-      public boolean b() {
-         return this.c;
+      super.a($$0, $$1);
+   }
+
+   public List<ta> E() {
+      return this.p;
+   }
+
+   @Override
+   public dpa j() {
+      return this.o;
+   }
+
+   public void a(dpa $$0) {
+      this.o = $$0;
+      if (this.r != null && $$0.b(this.r.a())) {
+         this.a(null);
       }
 
-      public blq c() {
-         return this.d;
-      }
+      this.a(true);
+   }
 
-      public int d() {
-         return this.e;
+   @Override
+   public il<cxy> getNoiseBiome(int $$0, int $$1, int $$2) {
+      if (this.k().b(dpa.f)) {
+         return super.getNoiseBiome($$0, $$1, $$2);
+      } else {
+         throw new IllegalStateException("Asking for biomes before we have biomes");
       }
+   }
+
+   public static short g(ib $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      int $$4 = $$1 & 15;
+      int $$5 = $$2 & 15;
+      int $$6 = $$3 & 15;
+      return (short)($$4 | $$5 << 4 | $$6 << 8);
+   }
+
+   public static ib a(short $$0, int $$1, cwg $$2) {
+      int $$3 = je.a($$2.e, $$0 & 15);
+      int $$4 = je.a($$1, $$0 >>> 4 & 15);
+      int $$5 = je.a($$2.f, $$0 >>> 8 & 15);
+      return new ib($$3, $$4, $$5);
+   }
+
+   @Override
+   public void e(ib $$0) {
+      if (!this.s($$0)) {
+         dov.a(this.b, this.e($$0.v())).add(g($$0));
+      }
+   }
+
+   @Override
+   public void a(short $$0, int $$1) {
+      dov.a(this.b, $$1).add($$0);
+   }
+
+   public Map<ib, ta> F() {
+      return Collections.unmodifiableMap(this.j);
+   }
+
+   @Nullable
+   @Override
+   public ta a(ib $$0, in.a $$1) {
+      dkg $$2 = this.c_($$0);
+      return $$2 != null ? $$2.b($$1) : this.j.get($$0);
+   }
+
+   @Override
+   public void d(ib $$0) {
+      this.k.remove($$0);
+      this.j.remove($$0);
+   }
+
+   @Nullable
+   public dou a(dsi.a $$0) {
+      return this.q.get($$0);
+   }
+
+   public dou b(dsi.a $$0) {
+      return this.q.computeIfAbsent($$0, $$0x -> new dou(this.J_(), this.I_()));
+   }
+
+   public void a(dsi.a $$0, dou $$1) {
+      this.q.put($$0, $$1);
+   }
+
+   public void a(eic $$0) {
+      this.n = $$0;
+   }
+
+   public void a(@Nullable dsa $$0) {
+      this.r = $$0;
+   }
+
+   @Nullable
+   @Override
+   public dsa x() {
+      return this.r;
+   }
+
+   private static <T> erd<T> a(erg<T> $$0) {
+      return new erd<>($$0.b());
+   }
+
+   public erd<daa> G() {
+      return a(this.s);
+   }
+
+   public erd<eim> H() {
+      return a(this.t);
+   }
+
+   @Override
+   public cxb z() {
+      return (cxb)(this.y() ? dsa.b : this);
    }
 }

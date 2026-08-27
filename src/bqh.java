@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bqh {
+public interface bqh {
+   boolean isSpawnPositionOk(cxc var1, ib var2, @Nullable bpc<?> var3);
+
+   default ib a(cxc $$0, ib $$1) {
+      return $$1;
+   }
 }

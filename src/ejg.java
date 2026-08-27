@@ -1,30 +1,38 @@
-public class ejg {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+public class ejg extends eja {
+   private float m = Float.MAX_VALUE;
+   private eja n;
+   private boolean o;
 
-   public ejg(int $$0) {
-      this($$0, a);
+   public ejg(eja $$0) {
+      super($$0.a, $$0.b, $$0.c);
    }
 
-   public ejg(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ejg(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean a() {
-      return !this.c.equals(a);
+   public void a(float $$0, eja $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
+      }
    }
 
-   public String b() {
-      return this.c;
+   public eja d() {
+      return this.n;
    }
 
-   public int c() {
-      return this.b;
+   public void e() {
+      this.o = true;
    }
 
-   public boolean a(ejg $$0) {
-      return this.b().equals($$0.b());
+   public boolean f() {
+      return this.o;
+   }
+
+   public static ejg c(uu $$0) {
+      ejg $$1 = new ejg($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

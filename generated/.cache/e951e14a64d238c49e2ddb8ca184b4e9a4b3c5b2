@@ -1,4 +1,4 @@
-// 24w05b	2026-08-28T01:34:31.0847447	vanilla/Advancements
+// 24w06a	2026-08-28T01:36:38.1259618	vanilla/Advancements
 849c05d758ef1a6bf5df272913910628ba3f292d data\minecraft\advancements\husbandry\breed_an_animal.json
 94243793a06932f033e5b2a7e1baa92acf72193d data\minecraft\advancements\adventure\salvage_sherd.json
 bb78c4858f40a742849e94490612c55e2d2ac958 data\minecraft\advancements\husbandry\plant_any_sniffer_seed.json
@@ -11,8 +11,8 @@ bb78c4858f40a742849e94490612c55e2d2ac958 data\minecraft\advancements\husbandry\p
 5717976b0ecf07bc0851943b3aa019b7a8c07240 data\minecraft\advancements\end\dragon_egg.json
 f1388249010025eab8fbe8d938b9ffa46051a19c data\minecraft\advancements\husbandry\bred_all_animals.json
 11a26f5ed8c5a96d184b995a1f39df987643e58f data\minecraft\advancements\nether\loot_bastion.json
-77e8e282ba0c3b8d6077f4db94a00e36669789a7 data\minecraft\advancements\nether\create_beacon.json
 4c740b3add7bcf669ecf8cb950e2f46733d0e3ed data\minecraft\advancements\nether\create_full_beacon.json
+77e8e282ba0c3b8d6077f4db94a00e36669789a7 data\minecraft\advancements\nether\create_beacon.json
 d065fc7404af5665174b0019efd55969cf1c18e7 data\minecraft\advancements\story\upgrade_tools.json
 914a434d7ca14ecf07211794aaf2d7afa44c8828 data\minecraft\advancements\adventure\summon_iron_golem.json
 2c6ded2a8802380f2f6e1ed64d9a735006cbcc9f data\minecraft\advancements\husbandry\feed_snifflet.json

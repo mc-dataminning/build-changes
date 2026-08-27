@@ -1,22 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class deh extends dgv {
-   public static final MapCodec<deh> a = b(deh::new);
+public class deh extends cyt {
+   public static final MapCodec<deh> d = b(deh::new);
 
    @Override
    public MapCodec<deh> a() {
-      return a;
+      return d;
    }
 
-   public deh(dmd.d $$0) {
-      super($$0);
+   public deh(dmy.d $$0) {
+      super($$0, ji.e);
    }
 
    @Override
-   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(kb.W, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
+   protected double b(dmz $$0) {
+      return 0.9375;
+   }
+
+   @Override
+   public boolean d(dmz $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dmz $$0, cwz $$1, ib $$2, bow $$3) {
+      if (this.a($$0, $$2, $$3)) {
+         $$3.ay();
       }
+   }
+
+   @Override
+   protected int a(dmz $$0, cwz $$1, ib $$2) {
+      return 3;
    }
 }

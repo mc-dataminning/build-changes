@@ -1,31 +1,16 @@
-public class gbu extends gde<cew, fnc<cew>> {
-   private static final ajc a = new ajc("textures/entity/enderman/enderman.png");
-   private final awt i = awt.a();
+public abstract class gbu<T extends cgr, M extends fqv<T>> extends gdp<T, M> {
+   private static final ajh a = new ajh("textures/entity/zombie/zombie.png");
 
-   public gbu(gby.a $$0) {
-      super($$0, new fnc<>($$0.a(fqe.T)), 0.5F);
-      this.a(new gft<>(this));
-      this.a(new gfk(this, $$0.c()));
+   protected gbu(gcy.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new ggz<>(this, $$2, $$3, $$0.g()));
    }
 
-   public void a(cew $$0, float $$1, float $$2, etd $$3, fwq $$4, int $$5) {
-      dme $$6 = $$0.gl();
-      fnc<cew> $$7 = this.a();
-      $$7.a = $$6 != null;
-      $$7.b = $$0.gm();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public eov a(cew $$0, float $$1) {
-      if ($$0.gm()) {
-         double $$2 = 0.02 * (double)$$0.dY();
-         return new eov(this.i.k() * $$2, 0.0, this.i.k() * $$2);
-      } else {
-         return super.a($$0, $$1);
-      }
-   }
-
-   public ajc a(cew $$0) {
+   public ajh a(cgr $$0) {
       return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gu();
    }
 }

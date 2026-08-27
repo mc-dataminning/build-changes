@@ -1,22 +1,20 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class egl implements ego {
-   public static final Codec<egl> a = RecordCodecBuilder.create($$0 -> $$0.group(sy.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, egl::new));
-   private final sy b;
+public class egl extends egz {
+   public static final Codec<egl> a = Codec.unit(() -> egl.b);
+   public static final egl b = new egl();
 
-   public egl(sy $$0) {
-      this.b = $$0;
+   @Nullable
+   @Override
+   public ehc.c a(cxc $$0, ib $$1, ib $$2, ehc.c $$3, ehc.c $$4, egy $$5) {
+      ib $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(dac.H);
+      return $$7 && !daa.a($$4.b().j($$0, $$6)) ? new ehc.c($$6, dac.H.o(), $$4.c()) : $$4;
    }
 
    @Override
-   public sy a(awt $$0, @Nullable sy $$1) {
-      return $$1 == null ? this.b.h() : $$1.a(this.b);
-   }
-
-   @Override
-   public egp<?> a() {
-      return egp.c;
+   protected ehb<?> a() {
+      return ehb.m;
    }
 }

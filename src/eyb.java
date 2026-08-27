@@ -1,38 +1,53 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class eyb {
-   private final frb a;
-   private int b = -1;
-   @Nullable
-   private Consumer<sy> c;
+public class eyb extends eyg {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vu c = vu.c("mco.configure.world.closing");
+   private final evg d;
+   private final ewp e;
 
-   public eyb(frb $$0) {
-      this.a = $$0;
+   public eyb(evg $$0, ewp $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public boolean a(int $$0, @Nullable sy $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   @Override
+   public void run() {
+      eup $$0 = eup.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = evg.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (ewd var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
       }
    }
 
-   private int a(Consumer<sy> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<sy> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new afo($$2, $$0));
-   }
-
-   public void a(ib $$0, Consumer<sy> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new aey($$2, $$0));
+   @Override
+   public vu a() {
+      return c;
    }
 }

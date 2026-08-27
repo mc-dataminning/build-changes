@@ -1,44 +1,47 @@
 import com.mojang.serialization.Codec;
 
-public class dvx extends duu<dxg> {
-   private static final int a = 7;
-
-   dvx(Codec<dxg> $$0) {
+public class dvx extends dvq<dyb> {
+   public dvx(Codec<dyb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(duw<dxg> $$0) {
-      cwz $$1 = $$0.b();
-      awt $$2 = $$0.d();
-      dxg $$3 = $$0.f();
-      ib $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      ib.a $$6 = new ib.a();
+   public boolean a(dvs<dyb> $$0) {
+      cxu $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      axd $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dmz $$4 = $$1.a_($$2.c());
+         if (!$$4.a(dac.dV) && !$$4.a(dac.dY) && !$$4.a(dac.pr)) {
+            return false;
+         } else {
+            $$1.a($$2, dac.ec.o(), 2);
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dme $$8 = $$1.a_($$6);
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               ib $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).i()) {
+                  int $$7 = 0;
 
-         for (dxg.a $$9 : $$3.b) {
-            if (dvp.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
+                  for (ih $$8 : ih.values()) {
+                     if ($$1.a_($$6.a($$8)).a(dac.ec)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
+                  }
+
+                  if ($$7 == 1) {
+                     $$1.a($$6, dac.ec.o(), 2);
+                  }
+               }
             }
+
+            return true;
          }
       }
-
-      return true;
-   }
-
-   private void a(ib.a $$0, awt $$1, ib $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(awt $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

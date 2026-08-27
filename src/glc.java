@@ -1,44 +1,67 @@
-public class glc extends gkv {
-   public static final int n = 20;
-   private final fvs o;
-   private int p;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public glc(fvs $$0) {
-      super(atp.hI, atq.h, glm.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public class glc {
+   public static final Comparator<glc> a = Comparator.<glc, ajh>comparing(glc::a).thenComparing(glc::b);
+   private final ajh b;
+   private final ajh c;
+   @Nullable
+   private fxy d;
+
+   public glc(ajh $$0, ajh $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public ajh a() {
+      return this.b;
+   }
+
+   public ajh b() {
+      return this.c;
+   }
+
+   public giz c() {
+      return ezg.Q().a(this.a()).apply(this.b());
+   }
+
+   public fxy a(Function<ajh, fxy> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
+      }
+
+      return this.d;
+   }
+
+   public eud a(fxq $$0, Function<ajh, fxy> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
+
+   public eud a(fxq $$0, Function<ajh, fxy> $$1, boolean $$2) {
+      return this.c().a(gdw.c($$0, this.a($$1), true, $$2));
    }
 
    @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dE() && (this.p <= 20 || this.o.fy())) {
-         this.f = (double)((float)this.o.do());
-         this.g = (double)((float)this.o.dq());
-         this.h = (double)((float)this.o.du());
-         float $$0 = (float)this.o.dm().g();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = awm.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
-
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         glc $$1 = (glc)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
       } else {
-         this.n();
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
+
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

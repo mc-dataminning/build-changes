@@ -1,60 +1,56 @@
-public class ctn extends csk {
-   public ctn(csi $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
 
-   public boolean a(clk $$0, cwe $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
+public interface ctn<C extends bmv> {
+   Codec<ctn<?>> h = ki.t.q().dispatch(ctn::ar_, ctr::a);
+   xs<vf, ctn<?>> i = xq.a(kj.Y).b(ctn::ar_, ctr::b);
 
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cpq $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if ($$7.a(czh.cf.l()) && !$$4) {
-               $$4 = true;
-            } else if ($$7.a(czh.cg.l()) && !$$3) {
-               $$3 = true;
-            } else if ($$7.a(aum.O) && !$$2) {
-               $$2 = true;
-            } else {
-               if (!$$7.a(cpt.pp) || $$5) {
-                  return false;
-               }
+   boolean a(C var1, cwz var2);
 
-               $$5 = true;
-            }
+   cqk a(C var1, iz var2);
+
+   boolean a(int var1, int var2);
+
+   cqk a(iz var1);
+
+   default iu<cqk> a(C $$0) {
+      iu<cqk> $$1 = iu.a($$0.b(), cqk.h);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cqf $$3 = $$0.a($$2).d();
+         if ($$3.u()) {
+            $$1.set($$2, new cqk($$3.t()));
          }
       }
 
-      return $$2 && $$4 && $$3 && $$5;
+      return $$1;
    }
 
-   public cpq a(clk $$0, iy $$1) {
-      cpq $$2 = new cpq(cpt.vQ, 1);
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cpq $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            dhg $$5 = dhg.a($$4.d());
-            if ($$5 != null) {
-               cra.a($$2, $$5.b());
-               break;
-            }
-         }
-      }
-
-      return $$2;
+   default iu<ctk> a() {
+      return iu.a();
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+   default boolean aq_() {
+      return false;
    }
 
-   @Override
-   public csw<?> as_() {
-      return csw.n;
+   default boolean h() {
+      return true;
+   }
+
+   default String c() {
+      return "";
+   }
+
+   default cqk g() {
+      return new cqk(dac.cA);
+   }
+
+   ctr<?> ar_();
+
+   cts<?> e();
+
+   default boolean i() {
+      iu<ctk> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

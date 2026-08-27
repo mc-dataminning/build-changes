@@ -3,14 +3,14 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bhx extends Schema {
+public class bhx extends bfq {
    public bhx(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "ElderGuardian", () -> bfd.a($$0));
+      $$0.register($$1, "minecraft:sniffer", () -> bfr.a($$0));
       return $$1;
    }
 }

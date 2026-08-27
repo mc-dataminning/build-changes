@@ -1,4 +1,7 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
 
-public record elm(Codec<? extends ell> a) {
+public interface elm {
+   int a(float var1);
+
+   void a(Consumer<cqk> var1, eku var2);
 }

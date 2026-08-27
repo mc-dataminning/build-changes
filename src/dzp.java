@@ -1,59 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzp extends dzq {
-   public static final Codec<dzp> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dzp::new, $$0 -> $$0.b).codec();
-   private final float b;
+public record dzp(dzv b, float c) {
+   public static final Codec<dzp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dzv.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dzp::new)
+   );
 
-   @Override
-   protected dzr<?> a() {
-      return dzr.b;
+   public dzv a() {
+      return this.b;
    }
 
-   public dzp(float $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(dzq.a $$0) {
-      awt $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            ib $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               a($$3, dia.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ib $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               a($$4, dia.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ib $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               a($$5, dia.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ib $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               a($$6, dia.c, $$0);
-            }
-         }
-      });
-   }
-
-   private static void a(ib $$0, dmv $$1, dzq.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
-
-      for (ib var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.d();
-      }
+   public float b() {
+      return this.c;
    }
 }

@@ -1,53 +1,49 @@
-public class agn implements xz<aev> {
-   public static final xq<us, agn> a = xz.a(agn::a, agn::new);
-   private static final int b = 384;
-   private final ib c;
-   private final String[] d;
-   private final boolean e;
+import javax.annotation.Nullable;
 
-   public agn(ib $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = new String[]{$$2, $$3, $$4, $$5};
+public class agn implements yb<aez> {
+   public static final xs<uu, agn> a = yb.a(agn::a, agn::new);
+   private final int b;
+   private final String c;
+   private final boolean d;
+
+   public agn(int $$0, String $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private agn(us $$0) {
-      this.c = $$0.e();
-      this.e = $$0.readBoolean();
-      this.d = new String[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.d[$$1] = $$0.d(384);
-      }
+   private agn(uu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.p();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(us $$0) {
+   private void a(uu $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.e);
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         $$0.a(this.d[$$1]);
-      }
+      $$0.a(this.d);
    }
 
    @Override
-   public yb<agn> a() {
-      return aet.bX;
+   public yd<agn> a() {
+      return aex.bT;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
+   @Nullable
+   public cwa a(cwz $$0) {
+      bow $$1 = $$0.a(this.b);
+      return $$1 instanceof ckv ? ((ckv)$$1).B() : null;
+   }
+
+   public String b() {
       return this.c;
    }
 
    public boolean e() {
-      return this.e;
-   }
-
-   public String[] f() {
       return this.d;
    }
 }

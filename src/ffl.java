@@ -1,31 +1,24 @@
-public class ffl extends fgh {
-   private final vs a;
-
-   public ffl(vs $$0, vs $$1) {
-      super($$0);
-      this.a = $$1;
+public record ffl(int a, int b) {
+   public static ffl a(ffj $$0, int $$1, int $$2) {
+      return switch ($$0) {
+         case a -> new ffl($$1, $$2);
+         case b -> new ffl($$2, $$1);
+      };
    }
 
-   @Override
-   protected void aP_() {
-      super.aP_();
-      this.c(fak.a(vr.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
+   public ffl a(ffk $$0) {
+      return switch ($$0) {
+         case b -> new ffl(this.a, this.b + 1);
+         case a -> new ffl(this.a, this.b - 1);
+         case c -> new ffl(this.a - 1, this.b);
+         case d -> new ffl(this.a + 1, this.b);
+      };
    }
 
-   @Override
-   public void a(ezx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 90, 16777215);
-      $$0.a(this.i, this.a, this.g / 2, 110, 16777215);
-   }
-
-   @Override
-   public void b(ezx $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, -12574688, -11530224);
-   }
-
-   @Override
-   public boolean aN_() {
-      return false;
+   public int a(ffj $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+      };
    }
 }

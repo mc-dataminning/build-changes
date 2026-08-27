@@ -1,181 +1,133 @@
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public abstract class drg {
-   public static drg.b a(int $$0, int $$1) {
-      return new drg.b($$0 - 1, $$1 + 1);
+public class drg<T extends dqu> {
+   static final Logger a = LogUtils.getLogger();
+   final drc<T> b;
+   final dqw<T> c;
+   final dqz<T> d;
+   private final LongSet e = new LongOpenHashSet();
+   private final drd<T> f;
+
+   public drg(Class<T> $$0, drc<T> $$1) {
+      this.c = new dqw<>();
+      this.d = new dqz<>($$0, $$0x -> this.e.contains($$0x) ? drh.c : drh.b);
+      this.b = $$1;
+      this.f = new dre<>(this.c, this.d);
    }
 
-   public static drg.b b(int $$0, int $$1) {
-      return new drg.b($$0, $$1);
+   public void a(cwg $$0) {
+      long $$1 = $$0.a();
+      this.e.add($$1);
+      this.d.b($$1).forEach($$0x -> {
+         drh $$1x = $$0x.a(drh.c);
+         if (!$$1x.a()) {
+            $$0x.b().filter($$0xx -> !$$0xx.dL()).forEach(this.b::e);
+         }
+      });
    }
 
-   public static drg a(int $$0) {
-      return new drg.c($$0, false);
+   public void b(cwg $$0) {
+      long $$1 = $$0.a();
+      this.e.remove($$1);
+      this.d.b($$1).forEach($$0x -> {
+         drh $$1x = $$0x.a(drh.b);
+         if ($$1x.a()) {
+            $$0x.b().filter($$0xx -> !$$0xx.dL()).forEach(this.b::d);
+         }
+      });
    }
 
-   public static drg b(int $$0) {
-      return new drg.c($$0 + 1, false);
+   public drd<T> a() {
+      return this.f;
    }
 
-   public static drg c(int $$0) {
-      return new drg.c($$0, true);
-   }
-
-   public static drg d(int $$0) {
-      return new drg.c($$0 - 1, true);
-   }
-
-   public static drg a() {
-      return drg.a.a;
-   }
-
-   public static drg a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
-      } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+   public void a(T $$0) {
+      this.c.a($$0);
+      long $$1 = je.c($$0.dm());
+      dqy<T> $$2 = this.d.c($$1);
+      $$2.a($$0);
+      $$0.a(new drg.a($$0, $$1, $$2));
+      this.b.g($$0);
+      this.b.c($$0);
+      if ($$0.dL() || $$2.c().a()) {
+         this.b.e($$0);
       }
    }
 
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public drg a(OptionalInt $$0) {
-      return a($$0, this.b());
+   @axz
+   public int b() {
+      return this.c.b();
    }
 
-   public drg b(OptionalInt $$0) {
-      return a(this.c(), $$0);
-   }
-
-   public static Optional<drg> a(cwk $$0, ib $$1, int $$2, Predicate<dme> $$3, Predicate<dme> $$4) {
-      ib.a $$5 = $$1.j();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ih.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ih.a);
-         return Optional.of(a($$8, $$7));
+   void a(long $$0, dqy<T> $$1) {
+      if ($$1.a()) {
+         this.d.e($$0);
       }
    }
 
-   private static OptionalInt a(cwk $$0, int $$1, Predicate<dme> $$2, Predicate<dme> $$3, ib.a $$4, int $$5, ih $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   @axz
+   public String c() {
+      return this.c.b() + "," + this.d.b() + "," + this.e.size();
    }
 
-   public static final class a extends drg {
-      static final drg.a a = new drg.a();
+   class a implements dqv {
+      private final T c;
+      private long d;
+      private dqy<T> e;
 
-      private a() {
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
+      a(T $$0, long $$1, dqy<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
 
       @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
+      public void a() {
+         ib $$0 = this.c.dm();
+         long $$1 = je.c($$0);
+         if ($$1 != this.d) {
+            drh $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               drg.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, je.a(this.d), $$1});
+            }
 
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
-   }
-
-   public static final class b extends drg {
-      private final int a;
-      private final int b;
-
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
+            drg.this.a(this.d, this.e);
+            dqy<T> $$3 = drg.this.d.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            drg.this.b.a(this.c);
+            if (!this.c.dL()) {
+               boolean $$4 = $$2.a();
+               boolean $$5 = $$3.c().a();
+               if ($$4 && !$$5) {
+                  drg.this.b.d(this.c);
+               } else if (!$$4 && $$5) {
+                  drg.this.b.e(this.c);
+               }
+            }
          }
       }
 
       @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
+      public void a(bow.c $$0) {
+         if (!this.e.b(this.c)) {
+            drg.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, je.a(this.d), $$0});
+         }
 
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
+         drh $$1 = this.e.c();
+         if ($$1.a() || this.c.dL()) {
+            drg.this.b.d(this.c);
+         }
 
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
-      }
-   }
-
-   public static final class c extends drg {
-      private final int a;
-      private final boolean b;
-
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+         drg.this.b.b(this.c);
+         drg.this.b.f(this.c);
+         drg.this.c.b(this.c);
+         this.c.a(a);
+         drg.this.a(this.d, this.e);
       }
    }
 }

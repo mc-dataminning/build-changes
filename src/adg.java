@@ -1,32 +1,45 @@
-import javax.annotation.Nullable;
+public class adg implements yb<aam> {
+   public static final xs<uu, adg> a = yb.a(adg::a, adg::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-public class adg implements xz<aai> {
-   public static final xq<us, adg> a = xz.a(adg::a, adg::new);
-   private final int b;
-
-   public adg(bof $$0) {
-      this.b = $$0.aj();
+   public adg(doq $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   private adg(us $$0) {
-      this.b = $$0.l();
+   private adg(uu $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private void a(us $$0) {
-      $$0.c(this.b);
+   private void a(uu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yb<adg> a() {
-      return aet.aw;
+   public yd<adg> a() {
+      return aex.as;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bof a(cwe $$0) {
-      return $$0.a(this.b);
+   public double b() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

@@ -1,7 +1,8 @@
-import java.util.function.BiConsumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface don extends cvk {
-   void a(BiConsumer<ib, dme> var1);
-
-   ehb B();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface don {
 }

@@ -1,45 +1,62 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class efo extends egd {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<efo> a = Codec.unit(() -> efo.b);
-   public static final efo b = new efo();
+public class efo extends edc {
+   public static final Codec<efo> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a($$0),
+               efo.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, efo::new)
+   );
+   public final efo.a e;
+   public final float f;
+   public final float g;
 
-   private efo() {
+   public efo(edc.c $$0, efo.a $$1, float $$2, float $$3) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   @Nullable
    @Override
-   public egg.c a(cwh $$0, ib $$1, ib $$2, egg.c $$3, egg.c $$4, egc $$5) {
-      dme $$6 = $$4.b();
-      if ($$6.a(czh.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
+   public Optional<edc.b> a(edc.a $$0) {
+      return a($$0, dsm.a.c, $$1 -> this.a($$1, $$0));
+   }
 
-            dme $$9;
-            try {
-               fm.a $$8 = fm.a($$0.a(ki.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               throw new RuntimeException(var11);
-            }
+   private void a(edu $$0, edc.a $$1) {
+      ib $$2 = new ib($$1.h().d(), 90, $$1.h().e());
+      dgm $$3 = dgm.a($$1.f());
+      efn.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   }
 
-            return $$9.a(czh.kN) ? null : new egg.c($$4.a(), $$9, null);
-         }
-      } else {
-         return $$4;
+   @Override
+   public edl<?> e() {
+      return edl.k;
+   }
+
+   public static enum a implements axq {
+      a("warm"),
+      b("cold");
+
+      public static final Codec<efo.a> c = axq.a(efo.a::values);
+      private final String d;
+
+      private a(String $$0) {
+         this.d = $$0;
       }
-   }
 
-   @Override
-   protected egf<?> a() {
-      return egf.h;
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

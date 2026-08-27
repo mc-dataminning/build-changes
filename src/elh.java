@@ -1,60 +1,30 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class elh extends elk {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<elh> a = RecordCodecBuilder.create($$0 -> a($$0).and(ajc.a.fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, elh::new));
-   private final ajc c;
+public class elh extends elp {
+   public static final Codec<elh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajh.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, elh::new)
+   );
+   private final ajh j;
 
-   private elh(List<emx> $$0, ajc $$1) {
-      super($$0);
-      this.c = $$1;
+   private elh(ajh $$0, int $$1, int $$2, List<ent> $$3, List<emh> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public elm b() {
-      return eln.B;
+   public elo a() {
+      return ell.e;
    }
 
    @Override
-   public void a(ekh $$0) {
-      eka<ell> $$1 = new eka<>(ekd.b, this.c);
-      if ($$0.a($$1)) {
-         $$0.b("Function " + this.c + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.c + "}", $$1)), () -> $$0.b("Unknown function table called " + this.c));
-      }
+   public void a(Consumer<cqk> $$0, eku $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   @Override
-   protected cpq a(cpq $$0, ejy $$1) {
-      ell $$2 = $$1.a().getElement(ekd.b, this.c);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c);
-         return $$0;
-      } else {
-         ejy.c<?> $$3 = ejy.a($$2);
-         if ($$1.b($$3)) {
-            cpq var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
-      }
-   }
-
-   public static elk.a<?> a(ajc $$0) {
-      return a($$1 -> new elh($$1, $$0));
+   public static elp.a<?> a(ajh $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new elh($$0, $$1, $$2, $$3, $$4));
    }
 }

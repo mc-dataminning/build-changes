@@ -1,147 +1,34 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.ToIntFunction;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class ald {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.experience.set.points.invalid"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vu.b("commands.difficulty.failure", $$0));
 
    public static void a(CommandDispatcher<du> $$0) {
-      LiteralCommandNode<du> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("experience").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     dv.a("add")
-                        .then(
-                           dv.a("targets", eh.d())
-                              .then(
-                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("amount", IntegerArgumentType.integer())
-                                          .executes(
-                                             $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.a)
-                                          ))
-                                       .then(
-                                          dv.a("points")
-                                             .executes(
-                                                $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.a)
-                                             )
-                                       ))
-                                    .then(
-                                       dv.a("levels")
-                                          .executes(
-                                             $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.b)
-                                          )
-                                    )
-                              )
-                        )
-                  ))
-               .then(
-                  dv.a("set")
-                     .then(
-                        dv.a("targets", eh.d())
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("amount", IntegerArgumentType.integer(0))
-                                       .executes(
-                                          $$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.a)
-                                       ))
-                                    .then(
-                                       dv.a("points")
-                                          .executes(
-                                             $$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.a)
-                                          )
-                                    ))
-                                 .then(
-                                    dv.a("levels")
-                                       .executes(
-                                          $$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ald.a.b)
-                                       )
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               dv.a("query")
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("targets", eh.c())
-                           .then(dv.a("points").executes($$0x -> a((du)$$0x.getSource(), eh.e($$0x, "targets"), ald.a.a))))
-                        .then(dv.a("levels").executes($$0x -> a((du)$$0x.getSource(), eh.e($$0x, "targets"), ald.a.b)))
-                  )
-            )
-      );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
-   }
+      LiteralArgumentBuilder<du> $$1 = dv.a("difficulty");
 
-   private static int a(du $$0, apb $$1, ald.a $$2) {
-      int $$3 = $$2.f.applyAsInt($$1);
-      $$0.a(() -> vs.a("commands.experience.query." + $$2.e, $$1.Q_(), $$3), false);
-      return $$3;
-   }
-
-   private static int a(du $$0, Collection<? extends apb> $$1, int $$2, ald.a $$3) {
-      for (apb $$4 : $$1) {
-         $$3.c.accept($$4, $$2);
+      for (bmz $$2 : bmz.values()) {
+         $$1.then(dv.a($$2.e()).executes($$1x -> a((du)$$1x.getSource(), $$2)));
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> vs.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().Q_()), true);
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         bmz $$1x = ((du)$$0x.getSource()).e().aj();
+         ((du)$$0x.getSource()).a(() -> vu.a("commands.difficulty.query", $$1x.b()), false);
+         return $$1x.a();
+      }));
+   }
+
+   public static int a(du $$0, bmz $$1) throws CommandSyntaxException {
+      MinecraftServer $$2 = $$0.l();
+      if ($$2.bc().q() == $$1) {
+         throw a.create($$1.e());
       } else {
-         $$0.a(() -> vs.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int b(du $$0, Collection<? extends apb> $$1, int $$2, ald.a $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (apb $$5 : $$1) {
-         if ($$3.d.test($$5, $$2)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vs.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vs.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$1.size();
-      }
-   }
-
-   static enum a {
-      a("points", cia::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.ge()) {
-            return false;
-         } else {
-            $$0.a($$1);
-            return true;
-         }
-      }, $$0 -> awm.d($$0.cm * (float)$$0.ge())),
-      b("levels", apb::c, ($$0, $$1) -> {
-         $$0.b($$1);
-         return true;
-      }, $$0 -> $$0.ck);
-
-      public final BiConsumer<apb, Integer> c;
-      public final BiPredicate<apb, Integer> d;
-      public final String e;
-      final ToIntFunction<apb> f;
-
-      private a(String $$0, BiConsumer<apb, Integer> $$1, BiPredicate<apb, Integer> $$2, ToIntFunction<apb> $$3) {
-         this.c = $$1;
-         this.e = $$0;
-         this.d = $$2;
-         this.f = $$3;
+         $$2.a($$1, true);
+         $$0.a(() -> vu.a("commands.difficulty.success", $$1.b()), true);
+         return 0;
       }
    }
 }

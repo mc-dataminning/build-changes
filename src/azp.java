@@ -1,38 +1,48 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
+import com.mojang.datafixers.types.Type;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
 public class azp extends DataFix {
-   private final String a;
-   private final String b;
-   private final UnaryOperator<String> c;
-
-   public azp(Schema $$0, String $$1, String $$2, UnaryOperator<String> $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+   public azp(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bdt.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
-   }
+      Type<?> $$0 = this.getInputSchema().getType(beh.c);
+      OpticFinder<?> $$1 = $$0.findField("Level");
+      return this.fixTypeEverywhereTyped("Leaves fix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> {
+               Optional<IntStream> $$1xx = $$0xxx.get("Biomes").asIntStreamOpt().result();
+               if ($$1xx.isEmpty()) {
+                  return $$0xxx;
+               } else {
+                  int[] $$2 = $$1xx.get().toArray();
+                  if ($$2.length != 256) {
+                     return $$0xxx;
+                  } else {
+                     int[] $$3 = new int[1024];
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         this.b,
-         $$0x -> $$0x.update(
-               "criteria",
-               $$0xx -> $$0xx.updateMapValues(
-                     $$0xxx -> $$0xxx.mapFirst(
-                           $$0xxxx -> (Dynamic)DataFixUtils.orElse($$0xxxx.asString().map($$1 -> $$0xxxx.createString(this.c.apply($$1))).result(), $$0xxxx)
-                        )
-                  )
-            )
-      );
+                     for (int $$4 = 0; $$4 < 4; $$4++) {
+                        for (int $$5 = 0; $$5 < 4; $$5++) {
+                           int $$6 = ($$5 << 2) + 2;
+                           int $$7 = ($$4 << 2) + 2;
+                           int $$8 = $$7 << 4 | $$6;
+                           $$3[$$4 << 2 | $$5] = $$2[$$8];
+                        }
+                     }
+
+                     for (int $$9 = 1; $$9 < 64; $$9++) {
+                        System.arraycopy($$3, 0, $$3, $$9 * 16, 16);
+                     }
+
+                     return $$0xxx.set("Biomes", $$0xxx.createIntList(Arrays.stream($$3)));
+                  }
+               }
+            })));
    }
 }

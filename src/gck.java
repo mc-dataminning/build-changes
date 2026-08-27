@@ -1,16 +1,21 @@
-public class gck extends gef<bop> {
-   private static final ajc a = new ajc("textures/entity/squid/glow_squid.png");
+public class gck extends gee<cbj, fns<cbj>> {
+   private static final ajh a = new ajh("textures/entity/fish/cod.png");
 
-   public gck(gby.a $$0, fph<bop> $$1) {
-      super($$0, $$1);
+   public gck(gcy.a $$0) {
+      super($$0, new fns<>($$0.a(frc.w)), 0.3F);
    }
 
-   public ajc a(bop $$0) {
+   public ajh a(cbj $$0) {
       return a;
    }
 
-   protected int a(bop $$0, ib $$1) {
-      int $$2 = (int)awm.b(0.0F, 15.0F, 1.0F - (float)$$0.A() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+   protected void a(cbj $$0, etz $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = 4.3F * aww.a(0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.bc()) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

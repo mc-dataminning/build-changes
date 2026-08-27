@@ -1,328 +1,345 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class dfz {
-   public static final int a = 24;
-   public static final int b = 1000;
-   public static final float c = 0.5F;
-   private static final int e = 32;
-   public static final int d = 11;
-   final boolean f;
-   private final aut<czf> g;
-   private final int h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private List<dfz.a> l = new ArrayList<>();
-   private static final Logger m = LogUtils.getLogger();
+   private final cwz a;
+   private final ib b;
+   private final czp c;
+   private dmz d;
+   private final boolean e;
+   private final List<ib> f = Lists.newArrayList();
 
-   public dfz(boolean $$0, aut<czf> $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$5;
+   public dfz(cwz $$0, ib $$1, dmz $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = (czp)$$2.b();
+      dod $$3 = $$2.c(this.c.c());
+      this.e = this.c.b();
+      this.a($$3);
    }
 
-   public static dfz a() {
-      return new dfz(false, aue.bL, 10, 4, 10, 5);
-   }
-
-   public static dfz b() {
-      return new dfz(true, aue.bM, 50, 1, 5, 10);
-   }
-
-   public aut<czf> c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public int e() {
-      return this.i;
-   }
-
-   public int f() {
-      return this.j;
-   }
-
-   public int g() {
-      return this.k;
-   }
-
-   public boolean h() {
+   public List<ib> a() {
       return this.f;
    }
 
-   @VisibleForTesting
-   public List<dfz.a> i() {
-      return this.l;
-   }
-
-   public void j() {
-      this.l.clear();
-   }
-
-   public void a(sy $$0) {
-      if ($$0.b("cursors", 9)) {
-         this.l.clear();
-         List<dfz.a> $$1 = (List<dfz.a>)dfz.a.b.listOf().parse(new Dynamic(tm.a, $$0.c("cursors", 10))).resultOrPartial(m::error).orElseGet(ArrayList::new);
-         int $$2 = Math.min($$1.size(), 32);
-
-         for (int $$3 = 0; $$3 < $$2; $$3++) {
-            this.a($$1.get($$3));
-         }
+   private void a(dod $$0) {
+      this.f.clear();
+      switch ($$0) {
+         case a:
+            this.f.add(this.b.e());
+            this.f.add(this.b.f());
+            break;
+         case b:
+            this.f.add(this.b.g());
+            this.f.add(this.b.h());
+            break;
+         case c:
+            this.f.add(this.b.g());
+            this.f.add(this.b.h().c());
+            break;
+         case d:
+            this.f.add(this.b.g().c());
+            this.f.add(this.b.h());
+            break;
+         case e:
+            this.f.add(this.b.e().c());
+            this.f.add(this.b.f());
+            break;
+         case f:
+            this.f.add(this.b.e());
+            this.f.add(this.b.f().c());
+            break;
+         case g:
+            this.f.add(this.b.h());
+            this.f.add(this.b.f());
+            break;
+         case h:
+            this.f.add(this.b.g());
+            this.f.add(this.b.f());
+            break;
+         case i:
+            this.f.add(this.b.g());
+            this.f.add(this.b.e());
+            break;
+         case j:
+            this.f.add(this.b.h());
+            this.f.add(this.b.e());
       }
    }
 
-   public void b(sy $$0) {
-      dfz.a.b.listOf().encodeStart(tm.a, this.l).resultOrPartial(m::error).ifPresent($$1 -> $$0.a("cursors", $$1));
-   }
-
-   public void a(ib $$0, int $$1) {
-      while ($$1 > 0) {
-         int $$2 = Math.min($$1, 1000);
-         this.a(new dfz.a($$0, $$2));
-         $$1 -= $$2;
-      }
-   }
-
-   private void a(dfz.a $$0) {
-      if (this.l.size() < 32) {
-         this.l.add($$0);
-      }
-   }
-
-   public void a(cwf $$0, ib $$1, awt $$2, boolean $$3) {
-      if (!this.l.isEmpty()) {
-         List<dfz.a> $$4 = new ArrayList<>();
-         Map<ib, dfz.a> $$5 = new HashMap<>();
-         Object2IntMap<ib> $$6 = new Object2IntOpenHashMap();
-
-         for (dfz.a $$7 : this.l) {
-            $$7.a($$0, $$1, $$2, this, $$3);
-            if ($$7.e <= 0) {
-               $$0.c(3006, $$7.a(), 0);
-            } else {
-               ib $$8 = $$7.a();
-               $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
-               dfz.a $$9 = $$5.get($$8);
-               if ($$9 == null) {
-                  $$5.put($$8, $$7);
-                  $$4.add($$7);
-               } else if (!this.h() && $$7.e + $$9.e <= 1000) {
-                  $$9.a($$7);
-               } else {
-                  $$4.add($$7);
-                  if ($$7.e < $$9.e) {
-                     $$5.put($$8, $$7);
-                  }
-               }
-            }
-         }
-
-         ObjectIterator var16 = $$6.object2IntEntrySet().iterator();
-
-         while (var16.hasNext()) {
-            Entry<ib> $$10 = (Entry<ib>)var16.next();
-            ib $$11 = (ib)$$10.getKey();
-            int $$12 = $$10.getIntValue();
-            dfz.a $$13 = $$5.get($$11);
-            Collection<ih> $$14 = $$13 == null ? null : $$13.d();
-            if ($$12 > 0 && $$14 != null) {
-               int $$15 = (int)(Math.log1p((double)$$12) / 2.3F) + 1;
-               int $$16 = ($$15 << 6) + dee.a($$14);
-               $$0.c(3006, $$11, $$16);
-            }
-         }
-
-         this.l = $$4;
-      }
-   }
-
-   public static class a {
-      private static final ObjectArrayList<jf> c = ac.a(
-         new ObjectArrayList(18),
-         $$0 -> ib.b(new ib(-1, -1, -1), new ib(1, 1, 1))
-               .filter($$0x -> ($$0x.u() == 0 || $$0x.v() == 0 || $$0x.w() == 0) && !$$0x.equals(ib.c))
-               .map(ib::i)
-               .forEach($$0::add)
-      );
-      public static final int a = 1;
-      private ib d;
-      int e;
-      private int f;
-      private int g;
-      @Nullable
-      private Set<ih> h;
-      private static final Codec<Set<ih>> i = ih.g.listOf().xmap($$0 -> Sets.newEnumSet($$0, ih.class), Lists::newArrayList);
-      public static final Codec<dfz.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ib.a.fieldOf("pos").forGetter(dfz.a::a),
-                  Codec.intRange(0, 1000).fieldOf("charge").orElse(0).forGetter(dfz.a::b),
-                  Codec.intRange(0, 1).fieldOf("decay_delay").orElse(1).forGetter(dfz.a::c),
-                  Codec.intRange(0, Integer.MAX_VALUE).fieldOf("update_delay").orElse(0).forGetter($$0x -> $$0x.f),
-                  i.optionalFieldOf("facings").forGetter($$0x -> Optional.ofNullable($$0x.d()))
-               )
-               .apply($$0, dfz.a::new)
-      );
-
-      private a(ib $$0, int $$1, int $$2, int $$3, Optional<Set<ih>> $$4) {
-         this.d = $$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.f = $$3;
-         this.h = $$4.orElse(null);
-      }
-
-      public a(ib $$0, int $$1) {
-         this($$0, $$1, 1, 0, Optional.empty());
-      }
-
-      public ib a() {
-         return this.d;
-      }
-
-      public int b() {
-         return this.e;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      @Nullable
-      public Set<ih> d() {
-         return this.h;
-      }
-
-      private boolean a(cwf $$0, ib $$1, boolean $$2) {
-         if (this.e <= 0) {
-            return false;
-         } else if ($$2) {
-            return true;
+   private void d() {
+      for (int $$0 = 0; $$0 < this.f.size(); $$0++) {
+         dfz $$1 = this.b(this.f.get($$0));
+         if ($$1 != null && $$1.a(this)) {
+            this.f.set($$0, $$1.b);
          } else {
-            return $$0 instanceof apa $$3 ? $$3.n($$1) : false;
+            this.f.remove($$0--);
          }
       }
+   }
 
-      public void a(cwf $$0, ib $$1, awt $$2, dfz $$3, boolean $$4) {
-         if (this.a($$0, $$1, $$3.f)) {
-            if (this.f > 0) {
-               this.f--;
-            } else {
-               dme $$5 = $$0.a_(this.d);
-               dfu $$6 = a($$5);
-               if ($$4 && $$6.a($$0, this.d, $$5, this.h, $$3.h())) {
-                  if ($$6.d()) {
-                     $$5 = $$0.a_(this.d);
-                     $$6 = a($$5);
-                  }
+   private boolean a(ib $$0) {
+      return czp.a(this.a, $$0) || czp.a(this.a, $$0.c()) || czp.a(this.a, $$0.d());
+   }
 
-                  $$0.a(null, this.d, atp.vm, atq.e, 1.0F, 1.0F);
-               }
-
-               this.e = $$6.a(this, $$0, $$1, $$2, $$3, $$4);
-               if (this.e <= 0) {
-                  $$6.a($$0, $$5, this.d, $$2);
-               } else {
-                  ib $$7 = a($$0, this.d, $$2);
-                  if ($$7 != null) {
-                     $$6.a($$0, $$5, this.d, $$2);
-                     this.d = $$7.i();
-                     if ($$3.h() && !this.d.a(new jf($$1.u(), this.d.v(), $$1.w()), 15.0)) {
-                        this.e = 0;
-                        return;
-                     }
-
-                     $$5 = $$0.a_($$7);
-                  }
-
-                  if ($$5.b() instanceof dfu) {
-                     this.h = dee.m($$5);
-                  }
-
-                  this.g = $$6.i_(this.g);
-                  this.f = $$6.b();
-               }
-            }
-         }
-      }
-
-      void a(dfz.a $$0) {
-         this.e = this.e + $$0.e;
-         $$0.e = 0;
-         this.f = Math.min(this.f, $$0.f);
-      }
-
-      private static dfu a(dme $$0) {
-         return $$0.b() instanceof dfu $$1 ? $$1 : dfu.s_;
-      }
-
-      private static List<jf> a(awt $$0) {
-         return ac.a(c, $$0);
-      }
-
-      @Nullable
-      private static ib a(cwf $$0, ib $$1, awt $$2) {
-         ib.a $$3 = $$1.j();
-         ib.a $$4 = $$1.j();
-
-         for (jf $$5 : a($$2)) {
-            $$4.a($$1, $$5);
-            dme $$6 = $$0.a_($$4);
-            if ($$6.b() instanceof dfu && a($$0, $$1, $$4)) {
-               $$3.g($$4);
-               if (dga.a($$0, $$6, $$4)) {
-                  break;
-               }
-            }
-         }
-
-         return $$3.equals($$1) ? null : $$3;
-      }
-
-      private static boolean a(cwf $$0, ib $$1, ib $$2) {
-         if ($$1.k($$2) == 1) {
-            return true;
+   @Nullable
+   private dfz b(ib $$0) {
+      dmz $$2 = this.a.a_($$0);
+      if (czp.g($$2)) {
+         return new dfz(this.a, $$0, $$2);
+      } else {
+         ib $$1 = $$0.c();
+         $$2 = this.a.a_($$1);
+         if (czp.g($$2)) {
+            return new dfz(this.a, $$1, $$2);
          } else {
-            ib $$3 = $$2.b($$1);
-            ih $$4 = ih.a(ih.a.a, $$3.u() < 0 ? ih.b.b : ih.b.a);
-            ih $$5 = ih.a(ih.a.b, $$3.v() < 0 ? ih.b.b : ih.b.a);
-            ih $$6 = ih.a(ih.a.c, $$3.w() < 0 ? ih.b.b : ih.b.a);
-            if ($$3.u() == 0) {
-               return a($$0, $$1, $$5) || a($$0, $$1, $$6);
+            $$1 = $$0.d();
+            $$2 = this.a.a_($$1);
+            return czp.g($$2) ? new dfz(this.a, $$1, $$2) : null;
+         }
+      }
+   }
+
+   private boolean a(dfz $$0) {
+      return this.c($$0.b);
+   }
+
+   private boolean c(ib $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         ib $$2 = this.f.get($$1);
+         if ($$2.u() == $$0.u() && $$2.w() == $$0.w()) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   protected int b() {
+      int $$0 = 0;
+
+      for (ih $$1 : ih.c.a) {
+         if (this.a(this.b.a($$1))) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   private boolean b(dfz $$0) {
+      return this.a($$0) || this.f.size() != 2;
+   }
+
+   private void c(dfz $$0) {
+      this.f.add($$0.b);
+      ib $$1 = this.b.e();
+      ib $$2 = this.b.f();
+      ib $$3 = this.b.g();
+      ib $$4 = this.b.h();
+      boolean $$5 = this.c($$1);
+      boolean $$6 = this.c($$2);
+      boolean $$7 = this.c($$3);
+      boolean $$8 = this.c($$4);
+      dod $$9 = null;
+      if ($$5 || $$6) {
+         $$9 = dod.a;
+      }
+
+      if ($$7 || $$8) {
+         $$9 = dod.b;
+      }
+
+      if (!this.e) {
+         if ($$6 && $$8 && !$$5 && !$$7) {
+            $$9 = dod.g;
+         }
+
+         if ($$6 && $$7 && !$$5 && !$$8) {
+            $$9 = dod.h;
+         }
+
+         if ($$5 && $$7 && !$$6 && !$$8) {
+            $$9 = dod.i;
+         }
+
+         if ($$5 && $$8 && !$$6 && !$$7) {
+            $$9 = dod.j;
+         }
+      }
+
+      if ($$9 == dod.a) {
+         if (czp.a(this.a, $$1.c())) {
+            $$9 = dod.e;
+         }
+
+         if (czp.a(this.a, $$2.c())) {
+            $$9 = dod.f;
+         }
+      }
+
+      if ($$9 == dod.b) {
+         if (czp.a(this.a, $$4.c())) {
+            $$9 = dod.c;
+         }
+
+         if (czp.a(this.a, $$3.c())) {
+            $$9 = dod.d;
+         }
+      }
+
+      if ($$9 == null) {
+         $$9 = dod.a;
+      }
+
+      this.d = this.d.a(this.c.c(), $$9);
+      this.a.a(this.b, this.d, 3);
+   }
+
+   private boolean d(ib $$0) {
+      dfz $$1 = this.b($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         $$1.d();
+         return $$1.b(this);
+      }
+   }
+
+   public dfz a(boolean $$0, boolean $$1, dod $$2) {
+      ib $$3 = this.b.e();
+      ib $$4 = this.b.f();
+      ib $$5 = this.b.g();
+      ib $$6 = this.b.h();
+      boolean $$7 = this.d($$3);
+      boolean $$8 = this.d($$4);
+      boolean $$9 = this.d($$5);
+      boolean $$10 = this.d($$6);
+      dod $$11 = null;
+      boolean $$12 = $$7 || $$8;
+      boolean $$13 = $$9 || $$10;
+      if ($$12 && !$$13) {
+         $$11 = dod.a;
+      }
+
+      if ($$13 && !$$12) {
+         $$11 = dod.b;
+      }
+
+      boolean $$14 = $$8 && $$10;
+      boolean $$15 = $$8 && $$9;
+      boolean $$16 = $$7 && $$10;
+      boolean $$17 = $$7 && $$9;
+      if (!this.e) {
+         if ($$14 && !$$7 && !$$9) {
+            $$11 = dod.g;
+         }
+
+         if ($$15 && !$$7 && !$$10) {
+            $$11 = dod.h;
+         }
+
+         if ($$17 && !$$8 && !$$10) {
+            $$11 = dod.i;
+         }
+
+         if ($$16 && !$$8 && !$$9) {
+            $$11 = dod.j;
+         }
+      }
+
+      if ($$11 == null) {
+         if ($$12 && $$13) {
+            $$11 = $$2;
+         } else if ($$12) {
+            $$11 = dod.a;
+         } else if ($$13) {
+            $$11 = dod.b;
+         }
+
+         if (!this.e) {
+            if ($$0) {
+               if ($$14) {
+                  $$11 = dod.g;
+               }
+
+               if ($$15) {
+                  $$11 = dod.h;
+               }
+
+               if ($$16) {
+                  $$11 = dod.j;
+               }
+
+               if ($$17) {
+                  $$11 = dod.i;
+               }
             } else {
-               return $$3.v() == 0 ? a($$0, $$1, $$4) || a($$0, $$1, $$6) : a($$0, $$1, $$4) || a($$0, $$1, $$5);
+               if ($$17) {
+                  $$11 = dod.i;
+               }
+
+               if ($$16) {
+                  $$11 = dod.j;
+               }
+
+               if ($$15) {
+                  $$11 = dod.h;
+               }
+
+               if ($$14) {
+                  $$11 = dod.g;
+               }
             }
          }
       }
 
-      private static boolean a(cwf $$0, ib $$1, ih $$2) {
-         ib $$3 = $$1.a($$2);
-         return !$$0.a_($$3).d($$0, $$3, $$2.g());
+      if ($$11 == dod.a) {
+         if (czp.a(this.a, $$3.c())) {
+            $$11 = dod.e;
+         }
+
+         if (czp.a(this.a, $$4.c())) {
+            $$11 = dod.f;
+         }
       }
+
+      if ($$11 == dod.b) {
+         if (czp.a(this.a, $$6.c())) {
+            $$11 = dod.c;
+         }
+
+         if (czp.a(this.a, $$5.c())) {
+            $$11 = dod.d;
+         }
+      }
+
+      if ($$11 == null) {
+         $$11 = $$2;
+      }
+
+      this.a($$11);
+      this.d = this.d.a(this.c.c(), $$11);
+      if ($$1 || this.a.a_(this.b) != this.d) {
+         this.a.a(this.b, this.d, 3);
+
+         for (int $$18 = 0; $$18 < this.f.size(); $$18++) {
+            dfz $$19 = this.b(this.f.get($$18));
+            if ($$19 != null) {
+               $$19.d();
+               if ($$19.b(this)) {
+                  $$19.c(this);
+               }
+            }
+         }
+      }
+
+      return this;
+   }
+
+   public dmz c() {
+      return this.d;
    }
 }

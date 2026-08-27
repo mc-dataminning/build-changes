@@ -1,184 +1,121 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.ArrayUtils;
 
-public class fha extends faq<fha.b> {
-   final fhb a;
-   int m;
+public class fha extends fhf {
+   private static final ajh a = new ajh("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int k = 4;
+   private static final int l = 204;
+   private static final int m = 98;
+   private static final vu n = vu.c("menu.returnToGame");
+   private static final vu o = vu.c("gui.advancements");
+   private static final vu p = vu.c("gui.stats");
+   private static final vu q = vu.c("menu.sendFeedback");
+   private static final vu r = vu.c("menu.reportBugs");
+   private static final vu t = vu.c("menu.options");
+   private static final vu u = vu.c("menu.shareToLan");
+   private static final vu v = vu.c("menu.playerReporting");
+   private static final vu w = vu.c("menu.returnToMenu");
+   private static final vu x = vu.c("menu.savingLevel");
+   private static final vu y = vu.c("menu.game");
+   private static final vu z = vu.c("menu.paused");
+   private final boolean A;
+   @Nullable
+   private fbg B;
 
-   public fha(fhb $$0, eyk $$1) {
-      super($$1, $$0.g + 45, $$0.h - 52, 20, 20);
-      this.a = $$0;
-      eyi[] $$2 = (eyi[])ArrayUtils.clone($$1.m.X);
-      Arrays.sort((Object[])$$2);
-      String $$3 = null;
+   public fha(boolean $$0) {
+      super($$0 ? y : z);
+      this.A = $$0;
+   }
 
-      for (eyi $$4 : $$2) {
-         String $$5 = $$4.f();
-         if (!$$5.equals($$3)) {
-            $$3 = $$5;
-            this.b(new fha.a(vs.c($$5)));
-         }
+   public boolean o() {
+      return this.A;
+   }
 
-         vs $$6 = vs.c($$4.h());
-         int $$7 = $$1.h.a($$6);
-         if ($$7 > this.m) {
-            this.m = $$7;
-         }
+   @Override
+   protected void aO_() {
+      if (this.A) {
+         this.E();
+      }
 
-         this.b(new fha.c($$4, $$6));
+      this.c(new fcn(0, this.A ? 40 : 10, this.g, 9, this.e, this.i));
+   }
+
+   private void E() {
+      fes $$0 = new fes();
+      $$0.c().a(4, 4, 4, 0);
+      fes.b $$1 = $$0.d(2);
+      $$1.a(fbg.a(n, $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(o, () -> new fhv(this.f.s.cu.q())));
+      $$1.a(this.a(p, () -> new fho(this, this.f.s.j())));
+      $$1.a(this.a(q, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
+      $$1.a(this.a(r, "https://aka.ms/snapshotbugs?ref=game")).j = !aa.b().d().a();
+      $$1.a(this.a(t, () -> new fgw(this, this.f.m)));
+      if (this.f.U() && !this.f.V().r()) {
+         $$1.a(this.a(u, () -> new fhg(this)));
+      } else {
+         $$1.a(this.a(v, flp::new));
+      }
+
+      vu $$2 = this.f.T() ? w : vt.p;
+      this.B = $$1.a(fbg.a($$2, $$0x -> {
+         $$0x.j = false;
+         this.f.ba().a(this.f, this, this::H, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      fer.a($$0, 0, 0, this.g, this.h, 0.5F, 0.25F);
+      $$0.a(this::c);
+   }
+
+   private void H() {
+      boolean $$0 = this.f.T();
+      fsm $$1 = this.f.S();
+      this.f.r.W();
+      if ($$0) {
+         this.f.b(new fgl(x));
+      } else {
+         this.f.y();
+      }
+
+      fhk $$2 = new fhk();
+      if ($$0) {
+         this.f.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.f.a(new euk($$2));
+      } else {
+         this.f.a(new fkd($$2));
       }
    }
 
-   public void d() {
-      eyi.d();
-      this.e();
-   }
-
+   @Override
    public void e() {
-      this.l().forEach(fha.b::b);
+      super.e();
    }
 
    @Override
-   protected int c() {
-      return super.c() + 15;
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.A && this.f != null && this.f.ba().c() && this.B != null) {
+         $$0.a(a, this.B.B() + this.B.w() - 17, this.B.C() + 3, 15, 15);
+      }
    }
 
    @Override
-   public int b() {
-      return super.b() + 32;
-   }
-
-   public class a extends fha.b {
-      final vs b;
-      private final int c;
-
-      public a(vs $$1) {
-         this.b = $$1;
-         this.c = fha.this.c.h.a(this.b);
-      }
-
-      @Override
-      public void a(ezx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(fha.this.c.h, this.b, fha.this.c.y.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, 16777215, false);
-      }
-
-      @Nullable
-      @Override
-      public ezu a(fel $$0) {
-         return null;
-      }
-
-      @Override
-      public List<? extends fcg> l() {
-         return Collections.emptyList();
-      }
-
-      @Override
-      public List<? extends fed> a() {
-         return ImmutableList.of(new fed() {
-            @Override
-            public fed.a s() {
-               return fed.a.b;
-            }
-
-            @Override
-            public void b(fef $$0) {
-               $$0.a(fee.a, a.this.b);
-            }
-         });
-      }
-
-      @Override
-      protected void b() {
+   public void b(fat $$0, int $$1, int $$2, float $$3) {
+      if (this.A) {
+         super.b($$0, $$1, $$2, $$3);
       }
    }
 
-   public abstract static class b extends faq.a<fha.b> {
-      abstract void b();
+   private fbg a(vu $$0, Supplier<fhf> $$1) {
+      return fbg.a($$0, $$1x -> this.f.a($$1.get())).a(98).a();
    }
 
-   public class c extends fha.b {
-      private final eyi b;
-      private final vs c;
-      private final fak d;
-      private final fak e;
-      private boolean f = false;
-
-      c(eyi $$1, vs $$2) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = fak.a($$2, $$1x -> {
-            fha.this.a.c = $$1;
-            fha.this.d();
-         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? vs.a("narrator.controls.unbound", $$2) : vs.a("narrator.controls.bound", $$2, $$2x.get())).a();
-         this.e = fak.a(vs.c("controls.reset"), $$1x -> {
-            fha.this.c.m.a($$1, $$1.i());
-            fha.this.d();
-         }).a(0, 0, 50, 20).a($$1x -> vs.a("narrator.controls.reset", $$2)).a();
-         this.b();
-      }
-
-      @Override
-      public void a(ezx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int var10003 = $$3 + 90 - fha.this.m;
-         $$0.a(fha.this.c.h, this.c, var10003, $$2 + $$5 / 2 - 9 / 2, 16777215, false);
-         this.e.m($$3 + 190);
-         this.e.n($$2);
-         this.e.a($$0, $$6, $$7, $$9);
-         this.d.m($$3 + 105);
-         this.d.n($$2);
-         if (this.f) {
-            int $$10 = 3;
-            int $$11 = this.d.B() - 6;
-            $$0.a($$11, $$2 + 2, $$11 + 3, $$2 + $$5 + 2, n.m.f() | 0xFF000000);
-         }
-
-         this.d.a($$0, $$6, $$7, $$9);
-      }
-
-      @Override
-      public List<? extends fcg> l() {
-         return ImmutableList.of(this.d, this.e);
-      }
-
-      @Override
-      public List<? extends fed> a() {
-         return ImmutableList.of(this.d, this.e);
-      }
-
-      @Override
-      protected void b() {
-         this.d.b(this.b.k());
-         this.e.j = !this.b.l();
-         this.f = false;
-         wg $$0 = vs.i();
-         if (!this.b.j()) {
-            for (eyi $$1 : fha.this.c.m.X) {
-               if ($$1 != this.b && this.b.b($$1)) {
-                  if (this.f) {
-                     $$0.f(", ");
-                  }
-
-                  this.f = true;
-                  $$0.b(vs.c($$1.h()));
-               }
-            }
-         }
-
-         if (this.f) {
-            this.d.b(vs.b("[ ").b(this.d.x().f().a(n.p)).f(" ]").a(n.m));
-            this.d.a(fbv.a(vs.a("controls.keybinds.duplicateKeybinds", $$0)));
-         } else {
-            this.d.a(null);
-         }
-
-         if (fha.this.a.c == this.b) {
-            this.d.b(vs.b("> ").b(this.d.x().f().a(n.p, n.t)).f(" <").a(n.o));
-         }
-      }
+   private fbg a(vu $$0, String $$1) {
+      return fbg.a($$0, ffw.b(this, $$1)).a(98).a();
    }
 }

@@ -1,12 +1,24 @@
-public class gel extends gay<cii> {
-   public static final ajc a = new ajc("textures/entity/projectiles/arrow.png");
-   public static final ajc f = new ajc("textures/entity/projectiles/tipped_arrow.png");
+public class gel extends gee<cga, fpe<cga>> {
+   private static final ajh a = new ajh("textures/entity/phantom.png");
 
-   public gel(gby.a $$0) {
-      super($$0);
+   public gel(gcy.a $$0) {
+      super($$0, new fpe<>($$0.a(frc.aD)), 0.75F);
+      this.a(new ghh<>(this));
    }
 
-   public ajc a(cii $$0) {
-      return $$0.H() > 0 ? f : a;
+   public ajh a(cga $$0) {
+      return a;
+   }
+
+   protected void a(cga $$0, etz $$1, float $$2) {
+      int $$3 = $$0.r();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(cga $$0, etz $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dE()));
    }
 }

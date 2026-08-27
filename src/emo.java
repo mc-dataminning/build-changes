@@ -3,57 +3,81 @@ import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-public abstract class emo implements emx {
-   protected final List<emx> c;
-   private final Predicate<ejy> a;
+public class emo extends emg {
+   public static final Codec<emo> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(ki.k.r().fieldOf("type").forGetter($$0x -> $$0x.b), ell.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .apply($$0, emo::new)
+   );
+   private final il<dki<?>> b;
+   private final List<eln> c;
 
-   protected emo(List<emx> $$0, Predicate<ejy> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends emo> Codec<T> a(Function<List<emx>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(emz.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends emo> Codec<T> b(Function<List<emx>, T> $$0) {
-      return emz.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(ejy $$0) {
-      return this.a.test($$0);
+   emo(List<ent> $$0, il<dki<?>> $$1, List<eln> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public void a(ekh $$0) {
-      emx.super.a($$0);
+   public emi b() {
+      return emj.p;
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+   @Override
+   public cqk a(cqk $$0, eku $$1) {
+      if ($$0.b()) {
+         return $$0;
+      } else {
+         iu<cqk> $$2 = iu.a();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(elc.a($$1.d(), $$2::add), $$1)));
+         ta $$3 = new ta();
+         bmw.a($$3, $$2);
+         ta $$4 = cof.a($$0);
+         if ($$4 == null) {
+            $$4 = $$3;
+         } else {
+            $$4.a($$3);
+         }
+
+         cof.a($$0, this.b.a(), $$4);
+         return $$0;
       }
    }
 
-   public abstract static class a implements emx.a {
-      private final Builder<emx> a = ImmutableList.builder();
+   @Override
+   public void a(eld $$0) {
+      super.a($$0);
 
-      protected a(emx.a... $$0) {
-         for (emx.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   public static emo.a a(dki<?> $$0) {
+      return new emo.a($$0);
+   }
+
+   public static class a extends emg.a<emo.a> {
+      private final Builder<eln> a = ImmutableList.builder();
+      private final dki<?> b;
+
+      public a(dki<?> $$0) {
+         this.b = $$0;
       }
 
-      public void a(emx.a $$0) {
-         this.a.add($$0.build());
+      protected emo.a a() {
+         return this;
+      }
+
+      public emo.a a(eln.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
       }
 
       @Override
-      public emx build() {
-         return this.a(this.a.build());
+      public emh b() {
+         return new emo(this.g(), this.b.a(), this.a.build());
       }
-
-      protected abstract emx a(List<emx> var1);
    }
 }

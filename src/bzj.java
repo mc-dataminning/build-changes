@@ -1,28 +1,41 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class bzj extends bzg<box> {
-   @Override
-   public Set<bya<?>> a() {
-      return ImmutableSet.of(bya.i);
+public class bzj extends bzx<bpo> {
+   private static final int a = 200;
+   private static final int c = 599;
+
+   public bzj() {
+      this(200);
+   }
+
+   public bzj(int $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(apa $$0, box $$1) {
-      $$1.dM().a(bya.i, this.a($$1));
+   protected void a(apf $$0, bpo $$1) {
+      a($$1);
    }
 
-   private List<box> a(box $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   @Override
+   public Set<byr<?>> a() {
+      return ImmutableSet.of(byr.g);
    }
 
-   private boolean b(box $$0) {
-      return $$0.ai() == bol.bh && $$0.o_();
+   public static void a(bpo $$0) {
+      Optional<List<bpo>> $$1 = $$0.dP().c(byr.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(bpc.af));
+         if ($$2) {
+            b($$0);
+         }
+      }
    }
 
-   private byc c(box $$0) {
-      return $$0.dM().c(bya.h).orElse(byc.a());
+   public static void b(bpo $$0) {
+      $$0.dP().a(byr.F, true, 599L);
    }
 }

@@ -1,66 +1,40 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dzq {
-   public static final Codec<dzq> h = kh.Z.q().dispatch(dzq::a, dzr::a);
+public record dzq(ip<daa> b, ip<daa> c, dzv d, int e, int f, float g) {
+   public static final Codec<dzq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ja.a(kj.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               ja.a(kj.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               dzv.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dzq::new)
+   );
 
-   protected abstract dzr<?> a();
+   public ip<daa> a() {
+      return this.b;
+   }
 
-   public abstract void a(dzq.a var1);
+   public ip<daa> b() {
+      return this.c;
+   }
 
-   public static final class a {
-      private final cwk a;
-      private final BiConsumer<ib, dme> b;
-      private final awt c;
-      private final ObjectArrayList<ib> d;
-      private final ObjectArrayList<ib> e;
-      private final ObjectArrayList<ib> f;
+   public dzv c() {
+      return this.d;
+   }
 
-      public a(cwk $$0, BiConsumer<ib, dme> $$1, awt $$2, Set<ib> $$3, Set<ib> $$4, Set<ib> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(jf::v));
-         this.e.sort(Comparator.comparingInt(jf::v));
-         this.f.sort(Comparator.comparingInt(jf::v));
-      }
+   public int d() {
+      return this.e;
+   }
 
-      public void a(ib $$0, dmv $$1) {
-         this.a($$0, czh.ff.o().a($$1, Boolean.valueOf(true)));
-      }
+   public int e() {
+      return this.f;
+   }
 
-      public void a(ib $$0, dme $$1) {
-         this.b.accept($$0, $$1);
-      }
-
-      public boolean a(ib $$0) {
-         return this.a.a($$0, dmd.a::i);
-      }
-
-      public cwk a() {
-         return this.a;
-      }
-
-      public awt b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<ib> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<ib> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<ib> e() {
-         return this.f;
-      }
+   public float f() {
+      return this.g;
    }
 }

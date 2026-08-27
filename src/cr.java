@@ -8,14 +8,14 @@ public class cr extends cx<cr.a> {
       return cr.a.a;
    }
 
-   public void a(apb $$0, cpq $$1, bof $$2) {
-      ejy $$3 = br.b($$0, $$2);
+   public void a(apg $$0, cqk $$1, bow $$2) {
+      eku $$3 = br.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
    public static record a(Optional<bc> b, Optional<cc> c, Optional<bc> d) implements cx.a {
       public static final Codec<cr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avu.a(br.b, "player").forGetter(cr.a::a), avu.a(cc.a, "item").forGetter(cr.a::b), avu.a(br.b, "entity").forGetter(cr.a::c))
+         $$0 -> $$0.group(awe.a(br.b, "player").forGetter(cr.a::a), awe.a(cc.a, "item").forGetter(cr.a::b), awe.a(br.b, "entity").forGetter(cr.a::c))
                .apply($$0, cr.a::new)
       );
 
@@ -27,7 +27,7 @@ public class cr extends cx<cr.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(cpq $$0, ejy $$1) {
+      public boolean a(cqk $$0, eku $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 

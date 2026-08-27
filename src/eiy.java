@@ -1,144 +1,38 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.function.IntFunction;
+public enum eiy {
+   a(-1.0F),
+   b(0.0F),
+   c(0.0F),
+   d(0.0F),
+   e(0.0F),
+   f(-1.0F),
+   g(0.0F),
+   h(-1.0F),
+   i(-1.0F),
+   j(8.0F),
+   k(8.0F),
+   l(0.0F),
+   m(-1.0F),
+   n(8.0F),
+   o(16.0F),
+   p(8.0F),
+   q(-1.0F),
+   r(0.0F),
+   s(-1.0F),
+   t(-1.0F),
+   u(4.0F),
+   v(-1.0F),
+   w(8.0F),
+   x(0.0F),
+   y(0.0F),
+   z(0.0F);
 
-public record eiy(eiy.a b, byte c, byte d, byte e, Optional<vs> f) {
-   public static final xq<vd, eiy> a = xq.a(eiy.a.K, eiy::c, xo.b, eiy::d, xo.b, eiy::e, xo.b, eiy::f, vu.c, eiy::g, eiy::new);
+   private final float A;
 
-   public eiy(eiy.a b, byte c, byte d, byte e, Optional<vs> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   private eiy(float $$0) {
+      this.A = $$0;
    }
 
-   public byte a() {
-      return this.b.b();
-   }
-
-   public boolean b() {
-      return this.b.e();
-   }
-
-   public eiy.a c() {
-      return this.b;
-   }
-
-   public byte d() {
-      return this.c;
-   }
-
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<vs> g() {
-      return this.f;
-   }
-
-   public static enum a implements axg {
-      a(0, "player", false, true),
-      b(1, "frame", true, true),
-      c(2, "red_marker", false, true),
-      d(3, "blue_marker", false, true),
-      e(4, "target_x", true, false),
-      f(5, "target_point", true, false),
-      g(6, "player_off_map", false, true),
-      h(7, "player_off_limits", false, true),
-      i(8, "mansion", true, 5393476, false, true),
-      j(9, "monument", true, 3830373, false, true),
-      k(10, "banner_white", true, true),
-      l(11, "banner_orange", true, true),
-      m(12, "banner_magenta", true, true),
-      n(13, "banner_light_blue", true, true),
-      o(14, "banner_yellow", true, true),
-      p(15, "banner_lime", true, true),
-      q(16, "banner_pink", true, true),
-      r(17, "banner_gray", true, true),
-      s(18, "banner_light_gray", true, true),
-      t(19, "banner_cyan", true, true),
-      u(20, "banner_purple", true, true),
-      v(21, "banner_blue", true, true),
-      w(22, "banner_brown", true, true),
-      x(23, "banner_green", true, true),
-      y(24, "banner_red", true, true),
-      z(25, "banner_black", true, true),
-      A(26, "red_x", true, false),
-      B(27, "village_desert", true, ehv.w.ak, false, true),
-      C(28, "village_plains", true, ehv.w.ak, false, true),
-      D(29, "village_savanna", true, ehv.w.ak, false, true),
-      E(30, "village_snowy", true, ehv.w.ak, false, true),
-      F(31, "village_taiga", true, ehv.w.ak, false, true),
-      G(32, "jungle_temple", true, ehv.w.ak, false, true),
-      H(33, "swamp_hut", true, ehv.w.ak, false, true);
-
-      public static final IntFunction<eiy.a> I = ave.a(eiy.a::a, values(), ave.a.a);
-      public static final Codec<eiy.a> J = axg.a(eiy.a::values);
-      public static final xq<ByteBuf, eiy.a> K = xo.a(I, eiy.a::a);
-      private final int L;
-      private final String M;
-      private final byte N;
-      private final boolean O;
-      private final int P;
-      private final boolean Q;
-      private final boolean R;
-
-      private a(int $$0, String $$1, boolean $$2, boolean $$3) {
-         this($$0, $$1, $$2, -1, $$3, false);
-      }
-
-      private a(int $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
-         this.L = $$0;
-         this.M = $$1;
-         this.R = $$4;
-         this.N = (byte)this.ordinal();
-         this.O = $$2;
-         this.P = $$3;
-         this.Q = $$5;
-      }
-
-      public int a() {
-         return this.L;
-      }
-
-      public byte b() {
-         return this.N;
-      }
-
-      public boolean d() {
-         return this.Q;
-      }
-
-      public boolean e() {
-         return this.O;
-      }
-
-      public boolean f() {
-         return this.P >= 0;
-      }
-
-      public int g() {
-         return this.P;
-      }
-
-      public static eiy.a a(byte $$0) {
-         return values()[awm.a($$0, 0, values().length - 1)];
-      }
-
-      public boolean h() {
-         return this.R;
-      }
-
-      @Override
-      public String c() {
-         return this.M;
-      }
+   public float a() {
+      return this.A;
    }
 }

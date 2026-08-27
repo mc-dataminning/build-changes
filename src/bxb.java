@@ -1,48 +1,65 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bxb extends bvu {
-   private final ces a;
-   @Nullable
-   private box b;
+public class bxb extends bwl {
+   private final bpq a;
+   private bpo b;
+   private int c;
 
-   public bxb(ces $$0) {
+   public bxb(bpq $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bvu.a.a));
+      this.a(EnumSet.of(bwl.a.a, bwl.a.b));
    }
 
    @Override
    public boolean a() {
-      box $$0 = this.a.q();
-      return this.a.w() > 0 || $$0 != null && this.a.f((bof)$$0) < 9.0;
+      bpo $$0 = this.a.p();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
-   public void c() {
-      this.a.N().n();
-      this.b = this.a.q();
+   public boolean b() {
+      if (!this.b.bA()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.K().l() || this.a();
+      }
    }
 
    @Override
    public void d() {
       this.b = null;
+      this.a.K().n();
    }
 
    @Override
-   public boolean T_() {
+   public boolean R_() {
       return true;
    }
 
    @Override
    public void e() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.f((bof)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.O().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
+      this.a.G().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dg() * 2.0F * this.a.dg() * 2.0F);
+      double $$1 = this.a.i(this.b.dr(), this.b.dt(), this.b.dx());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.K().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
+         }
       }
    }
 }

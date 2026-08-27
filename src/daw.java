@@ -1,50 +1,29 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class daw extends cyp {
-   public static final MapCodec<daw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dau.a.forGetter($$0x -> $$0x.e), u()).apply($$0, daw::new));
-   private final czf e;
-   protected static final float b = 6.0F;
-   protected static final epo c = czf.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+public interface daw {
+   eqk q_ = daa.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   dnq r_ = dnp.D;
 
-   @Override
-   public MapCodec<daw> a() {
-      return a;
-   }
-
-   protected daw(czf $$0, dmd.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      this.a($$0, (cwf)$$1, $$2);
-   }
-
-   @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.e.o().a(d, Boolean.valueOf(false)), 2);
-      }
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.a && !$$0.a($$3, $$4)) {
-         return czh.a.o();
+   static bnc a(@Nullable bow $$0, dmz $$1, cwz $$2, ib $$3) {
+      if ($$1.c(r_)) {
+         daa.a($$2, $$3, new cqk(cqn.wn, 1));
+         float $$4 = aww.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, aty.dZ, atz.e, 1.0F, $$4);
+         dmz $$5 = $$1.a(r_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(drn.c, $$3, drn.a.a($$0, $$5));
+         return bnc.a($$2.B);
       } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, ehs.c, ehs.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return bnc.d;
       }
    }
 
-   @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return c;
+   static boolean i_(dmz $$0) {
+      return $$0.b(r_) && $$0.c(r_);
+   }
+
+   static ToIntFunction<dmz> h_(int $$0) {
+      return $$1 -> $$1.c(dnp.D) ? $$0 : 0;
    }
 }

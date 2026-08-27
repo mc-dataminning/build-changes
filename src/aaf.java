@@ -1,3 +1,8 @@
-public interface aaf extends aew {
-   void a(aag var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aaf {
 }

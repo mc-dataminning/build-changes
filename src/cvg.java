@@ -1,261 +1,91 @@
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class cvg extends cuu {
+   public final cvg.a b;
 
-public abstract class cvg {
-   public static final String b = "SpawnData";
-   private static final Logger a = LogUtils.getLogger();
-   private static final int c = 1;
-   private int d = 20;
-   private bkv<cwv> e = bkv.b();
-   @Nullable
-   private cwv f;
-   private double g;
-   private double h;
-   private int i = 200;
-   private int j = 800;
-   private int k = 4;
-   @Nullable
-   private bof l;
-   private int m = 6;
-   private int n = 16;
-   private int o = 4;
-
-   public void a(bol<?> $$0, @Nullable cwe $$1, awt $$2, ib $$3) {
-      this.a($$1, $$2, $$3).a().a("id", kh.g.b($$0).toString());
+   public cvg(cuu.a $$0, cvg.a $$1, bpd... $$2) {
+      super($$0, $$1 == cvg.a.c ? auv.bb : auv.bf, $$2);
+      this.b = $$1;
    }
 
-   private boolean c(cwe $$0, ib $$1) {
-      return $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, (double)this.n);
+   @Override
+   public int a(int $$0) {
+      return this.b.a() + ($$0 - 1) * this.b.b();
    }
 
-   public void a(cwe $$0, ib $$1) {
-      if (!this.c($$0, $$1)) {
-         this.h = this.g;
-      } else if (this.l != null) {
-         awt $$2 = $$0.F_();
-         double $$3 = (double)$$1.u() + $$2.j();
-         double $$4 = (double)$$1.v() + $$2.j();
-         double $$5 = (double)$$1.w() + $$2.j();
-         $$0.a(kb.ab, $$3, $$4, $$5, 0.0, 0.0, 0.0);
-         $$0.a(kb.E, $$3, $$4, $$5, 0.0, 0.0, 0.0);
-         if (this.d > 0) {
-            this.d--;
-         }
-
-         this.h = this.g;
-         this.g = (this.g + (double)(1000.0F / ((float)this.d + 200.0F))) % 360.0;
-      }
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + this.b.b();
    }
 
-   public void a(apa $$0, ib $$1) {
-      if (this.c($$0, $$1)) {
-         if (this.d == -1) {
-            this.d($$0, $$1);
-         }
-
-         if (this.d > 0) {
-            this.d--;
-         } else {
-            boolean $$2 = false;
-            awt $$3 = $$0.F_();
-            cwv $$4 = this.a($$0, $$3, $$1);
-
-            for (int $$5 = 0; $$5 < this.k; $$5++) {
-               sy $$6 = $$4.a();
-               Optional<bol<?>> $$7 = bol.a($$6);
-               if ($$7.isEmpty()) {
-                  this.d($$0, $$1);
-                  return;
-               }
-
-               te $$8 = $$6.c("Pos", 6);
-               int $$9 = $$8.size();
-               double $$10 = $$9 >= 1 ? $$8.h(0) : (double)$$1.u() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
-               double $$11 = $$9 >= 2 ? $$8.h(1) : (double)($$1.v() + $$3.a(3) - 1);
-               double $$12 = $$9 >= 3 ? $$8.h(2) : (double)$$1.w() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
-               if ($$0.b($$7.get().a($$10, $$11, $$12))) {
-                  ib $$13 = ib.a($$10, $$11, $$12);
-                  if ($$4.b().isPresent()) {
-                     if (!$$7.get().f().d() && $$0.aj() == bmi.a) {
-                        continue;
-                     }
-
-                     cwv.a $$14 = $$4.b().get();
-                     if (!$$14.a($$13, $$0)) {
-                        continue;
-                     }
-                  } else if (!bps.a($$7.get(), $$0, bpb.c, $$13, $$0.F_())) {
-                     continue;
-                  }
-
-                  bof $$15 = bol.a($$6, $$0, $$3x -> {
-                     $$3x.b($$10, $$11, $$12, $$3x.dz(), $$3x.dB());
-                     return $$3x;
-                  });
-                  if ($$15 == null) {
-                     this.d($$0, $$1);
-                     return;
-                  }
-
-                  int $$16 = $$0.a(
-                        dqf.b($$15.getClass()),
-                        new eoq((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 1), (double)($$1.w() + 1))
-                           .g((double)this.o),
-                        bok.f
-                     )
-                     .size();
-                  if ($$16 >= this.m) {
-                     this.d($$0, $$1);
-                     return;
-                  }
-
-                  $$15.b($$15.do(), $$15.dq(), $$15.du(), $$3.i() * 360.0F, 0.0F);
-                  if ($$15 instanceof boz $$17) {
-                     if ($$4.b().isEmpty() && !$$17.a($$0, bpb.c) || !$$17.a($$0)) {
-                        continue;
-                     }
-
-                     boolean $$18 = $$4.a().f() == 1 && $$4.a().b("id", 8);
-                     if ($$18) {
-                        ((boz)$$15).a($$0, $$0.d_($$15.dj()), bpb.c, null);
-                     }
-                  }
-
-                  if (!$$0.e($$15)) {
-                     this.d($$0, $$1);
-                     return;
-                  }
-
-                  $$0.c(2004, $$1, 0);
-                  $$0.a($$15, dqr.t, $$13);
-                  if ($$15 instanceof boz) {
-                     ((boz)$$15).S();
-                  }
-
-                  $$2 = true;
-               }
-            }
-
-            if ($$2) {
-               this.d($$0, $$1);
-            }
-         }
-      }
+   @Override
+   public int a() {
+      return 4;
    }
 
-   private void d(cwe $$0, ib $$1) {
-      awt $$2 = $$0.z;
-      if (this.j <= this.i) {
-         this.d = this.i;
+   @Override
+   public int a(int $$0, bnv $$1) {
+      if ($$1.a(aup.e)) {
+         return 0;
+      } else if (this.b == cvg.a.a) {
+         return $$0;
+      } else if (this.b == cvg.a.b && $$1.a(aup.j)) {
+         return $$0 * 2;
+      } else if (this.b == cvg.a.c && $$1.a(aup.n)) {
+         return $$0 * 3;
+      } else if (this.b == cvg.a.d && $$1.a(aup.m)) {
+         return $$0 * 2;
       } else {
-         this.d = this.i + $$2.a(this.j - this.i);
+         return this.b == cvg.a.e && $$1.a(aup.k) ? $$0 * 2 : 0;
       }
-
-      this.e.b($$2).ifPresent($$2x -> this.a($$0, $$1, (cwv)$$2x.b()));
-      this.a($$0, $$1, 1);
    }
 
-   public void a(@Nullable cwe $$0, ib $$1, sy $$2) {
-      this.d = $$2.g("Delay");
-      boolean $$3 = $$2.b("SpawnData", 10);
-      if ($$3) {
-         cwv $$4 = cwv.b.parse(tm.a, $$2.p("SpawnData")).resultOrPartial($$0x -> a.warn("Invalid SpawnData: {}", $$0x)).orElseGet(cwv::new);
-         this.a($$0, $$1, $$4);
-      }
-
-      boolean $$5 = $$2.b("SpawnPotentials", 9);
-      if ($$5) {
-         te $$6 = $$2.c("SpawnPotentials", 10);
-         this.e = cwv.c.parse(tm.a, $$6).resultOrPartial($$0x -> a.warn("Invalid SpawnPotentials list: {}", $$0x)).orElseGet(bkv::b);
+   @Override
+   public boolean a(cuu $$0) {
+      if ($$0 instanceof cvg $$1) {
+         return this.b == $$1.b ? false : this.b == cvg.a.c || $$1.b == cvg.a.c;
       } else {
-         this.e = bkv.a(this.f != null ? this.f : new cwv());
-      }
-
-      if ($$2.b("MinSpawnDelay", 99)) {
-         this.i = $$2.g("MinSpawnDelay");
-         this.j = $$2.g("MaxSpawnDelay");
-         this.k = $$2.g("SpawnCount");
-      }
-
-      if ($$2.b("MaxNearbyEntities", 99)) {
-         this.m = $$2.g("MaxNearbyEntities");
-         this.n = $$2.g("RequiredPlayerRange");
-      }
-
-      if ($$2.b("SpawnRange", 99)) {
-         this.o = $$2.g("SpawnRange");
-      }
-
-      this.l = null;
-   }
-
-   public sy a(sy $$0) {
-      $$0.a("Delay", (short)this.d);
-      $$0.a("MinSpawnDelay", (short)this.i);
-      $$0.a("MaxSpawnDelay", (short)this.j);
-      $$0.a("SpawnCount", (short)this.k);
-      $$0.a("MaxNearbyEntities", (short)this.m);
-      $$0.a("RequiredPlayerRange", (short)this.n);
-      $$0.a("SpawnRange", (short)this.o);
-      if (this.f != null) {
-         $$0.a("SpawnData", (tv)cwv.b.encodeStart(tm.a, this.f).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData")));
-      }
-
-      $$0.a("SpawnPotentials", (tv)cwv.c.encodeStart(tm.a, this.e).result().orElseThrow());
-      return $$0;
-   }
-
-   @Nullable
-   public bof b(cwe $$0, ib $$1) {
-      if (this.l == null) {
-         sy $$2 = this.a($$0, $$0.F_(), $$1).a();
-         if (!$$2.b("id", 8)) {
-            return null;
-         }
-
-         this.l = bol.a($$2, $$0, Function.identity());
-         if ($$2.f() == 1 && this.l instanceof boz) {
-         }
-      }
-
-      return this.l;
-   }
-
-   public boolean a(cwe $$0, int $$1) {
-      if ($$1 == 1) {
-         if ($$0.B) {
-            this.d = this.i;
-         }
-
-         return true;
-      } else {
-         return false;
+         return super.a($$0);
       }
    }
 
-   protected void a(@Nullable cwe $$0, ib $$1, cwv $$2) {
-      this.f = $$2;
+   public static int a(bpo $$0, int $$1) {
+      int $$2 = cuv.a(cux.b, $$0);
+      if ($$2 > 0) {
+         $$1 -= aww.d((float)$$1 * (float)$$2 * 0.15F);
+      }
+
+      return $$1;
    }
 
-   private cwv a(@Nullable cwe $$0, awt $$1, ib $$2) {
-      if (this.f != null) {
-         return this.f;
-      } else {
-         this.a($$0, $$2, this.e.b($$1).map(bkx.b::b).orElseGet(cwv::new));
+   public static double a(bpo $$0, double $$1) {
+      int $$2 = cuv.a(cux.d, $$0);
+      if ($$2 > 0) {
+         $$1 *= aww.a(1.0 - (double)$$2 * 0.15, 0.0, 1.0);
+      }
+
+      return $$1;
+   }
+
+   public static enum a {
+      a(1, 11),
+      b(10, 8),
+      c(5, 6),
+      d(5, 8),
+      e(3, 6);
+
+      private final int f;
+      private final int g;
+
+      private a(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public int a() {
          return this.f;
       }
-   }
 
-   public abstract void a(cwe var1, ib var2, int var3);
-
-   public double a() {
-      return this.g;
-   }
-
-   public double b() {
-      return this.h;
+      public int b() {
+         return this.g;
+      }
    }
 }

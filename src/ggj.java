@@ -1,48 +1,46 @@
-public abstract class ggj<T extends bof, M extends fne<T>> {
-   private final gdt<T, M> a;
-
-   public ggj(gdt<T, M> $$0) {
-      this.a = $$0;
+public class ggj extends ghj<fwp, fpi<fwp>> {
+   public ggj(get<fwp, fpi<fwp>> $$0) {
+      super($$0);
    }
 
-   protected static <T extends box> void a(
-      fne<T> $$0,
-      fne<T> $$1,
-      ajc $$2,
-      etd $$3,
-      fwq $$4,
-      int $$5,
-      T $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      if (!$$6.cb()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+   public void a(etz $$0, fxq $$1, int $$2, fwp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ce() && $$3.a(cit.a)) {
+         gjy $$10 = $$3.b();
+         if ($$10.c() != null) {
+            cqk $$11 = $$3.d(bpd.e);
+            if (!$$11.a(cqn.nS)) {
+               $$0.a();
+               $$0.a(0.0F, 0.0F, 0.125F);
+               double $$12 = aww.d((double)$$6, $$3.cf, $$3.ci) - aww.d((double)$$6, $$3.K, $$3.dr());
+               double $$13 = aww.d((double)$$6, $$3.cg, $$3.cj) - aww.d((double)$$6, $$3.L, $$3.dt());
+               double $$14 = aww.d((double)$$6, $$3.ch, $$3.ck) - aww.d((double)$$6, $$3.M, $$3.dx());
+               float $$15 = aww.j($$6, $$3.aY, $$3.aX);
+               double $$16 = (double)aww.a($$15 * (float) (Math.PI / 180.0));
+               double $$17 = (double)(-aww.b($$15 * (float) (Math.PI / 180.0)));
+               float $$18 = (float)$$13 * 10.0F;
+               $$18 = aww.a($$18, -6.0F, 32.0F);
+               float $$19 = (float)($$12 * $$16 + $$14 * $$17) * 100.0F;
+               $$19 = aww.a($$19, 0.0F, 150.0F);
+               float $$20 = (float)($$12 * $$17 - $$14 * $$16) * 100.0F;
+               $$20 = aww.a($$20, -20.0F, 20.0F);
+               if ($$19 < 0.0F) {
+                  $$19 = 0.0F;
+               }
+
+               float $$21 = aww.i($$6, $$3.cc, $$3.cd);
+               $$18 += aww.a(aww.i($$6, $$3.X, $$3.Y) * 6.0F) * 32.0F * $$21;
+               if ($$3.bX()) {
+                  $$18 += 25.0F;
+               }
+
+               $$0.a(a.b.rotationDegrees(6.0F + $$19 / 2.0F + $$18));
+               $$0.a(a.f.rotationDegrees($$20 / 2.0F));
+               $$0.a(a.d.rotationDegrees(180.0F - $$20 / 2.0F));
+               eud $$22 = $$1.getBuffer(fxy.c($$10.c()));
+               this.c().b($$0, $$22, $$2, giq.d);
+               $$0.b();
+            }
+         }
       }
    }
-
-   protected static <T extends box> void a(fne<T> $$0, ajc $$1, etd $$2, fwq $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
-      eth $$9 = $$3.getBuffer(fwy.e($$1));
-      $$0.a($$2, $$9, $$4, gcz.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
-   }
-
-   public M c() {
-      return this.a.a();
-   }
-
-   protected ajc a(T $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(etd var1, fwq var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

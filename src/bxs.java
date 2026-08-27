@@ -1,40 +1,48 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bxs extends bxu {
-   private final bpt a;
-   private box b;
-   private int c;
+public class bxs extends bwl {
+   private final cfk a;
+   @Nullable
+   private bpo b;
 
-   public bxs(bpt $$0) {
-      super($$0, false);
+   public bxs(cfk $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bvu.a.d));
+      this.a(EnumSet.of(bwl.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.a.u() && !this.a.gl()) {
-         box $$0 = this.a.R_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.ei();
-            int $$1 = $$0.ej();
-            return $$1 != this.c && this.a(this.b, bzn.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
+      bpo $$0 = this.a.p();
+      return this.a.s() > 0 || $$0 != null && this.a.g((bow)$$0) < 9.0;
    }
 
    @Override
    public void c() {
-      this.e.h(this.b);
-      box $$0 = this.a.R_();
-      if ($$0 != null) {
-         this.c = $$0.ej();
-      }
+      this.a.K().n();
+      this.b = this.a.p();
+   }
 
-      super.c();
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((bow)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.M().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
+      }
    }
 }

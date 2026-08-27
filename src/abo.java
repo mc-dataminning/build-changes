@@ -1,20 +1,20 @@
-public record abo(cvl b) implements xz<aai> {
-   public static final xq<us, abo> a = xz.a(abo::a, abo::new);
+public record abo(wg.a b) implements yb<aam> {
+   public static final xs<uu, abo> a = yb.a(abo::a, abo::new);
 
-   private abo(us $$0) {
-      this($$0.f());
+   private abo(uu $$0) {
+      this(wg.a.a($$0));
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b);
+   private void a(uu $$0) {
+      wg.a.a($$0, this.b);
    }
 
    @Override
-   public yb<abo> a() {
-      return aet.F;
+   public yd<abo> a() {
+      return aex.B;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 }

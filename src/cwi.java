@@ -1,78 +1,76 @@
-import com.mojang.serialization.Dynamic;
+import java.util.function.Predicate;
 
-public final class cwi {
-   private final String a;
-   private final cwb b;
-   private final boolean c;
-   private final bmi d;
-   private final boolean e;
-   private final cwa f;
-   private final cwy g;
+public class cwi {
+   private final epr a;
+   private final epr b;
+   private final cwi.a c;
+   private final cwi.b d;
+   private final epw e;
 
-   public cwi(String $$0, cwb $$1, boolean $$2, bmi $$3, boolean $$4, cwa $$5, cwy $$6) {
+   public cwi(epr $$0, epr $$1, cwi.a $$2, cwi.b $$3, bow $$4) {
+      this($$0, $$1, $$2, $$3, epw.a($$4));
+   }
+
+   public cwi(epr $$0, epr $$1, cwi.a $$2, cwi.b $$3, epw $$4) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
       this.d = $$3;
       this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
    }
 
-   public static cwi a(Dynamic<?> $$0, cwy $$1) {
-      cwb $$2 = cwb.a($$0.get("GameType").asInt(0));
-      return new cwi(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bmi.a($$0x.byteValue())).result().orElse(bmi.c),
-         $$0.get("allowCommands").asBoolean($$2 == cwb.b),
-         new cwa($$0.get("GameRules")),
-         $$1
-      );
-   }
-
-   public String a() {
-      return this.a;
-   }
-
-   public cwb b() {
+   public epr a() {
       return this.b;
    }
 
-   public boolean c() {
-      return this.c;
+   public epr b() {
+      return this.a;
    }
 
-   public bmi d() {
-      return this.d;
+   public eqk a(dmz $$0, cwf $$1, ib $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
    }
 
-   public boolean e() {
-      return this.e;
+   public eqk a(ein $$0, cwf $$1, ib $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : eqh.a();
    }
 
-   public cwa f() {
-      return this.f;
+   public static enum a implements cwi.c {
+      a(dmy.a::b),
+      b(dmy.a::a),
+      c(dmy.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(aun.aQ) ? eqh.b() : eqh.a());
+
+      private final cwi.c e;
+
+      private a(cwi.c $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public eqk get(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
+      }
    }
 
-   public cwy g() {
-      return this.g;
+   public static enum b {
+      a($$0 -> false),
+      b(ein::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(aus.a));
+
+      private final Predicate<ein> e;
+
+      private b(Predicate<ein> $$0) {
+         this.e = $$0;
+      }
+
+      public boolean a(ein $$0) {
+         return this.e.test($$0);
+      }
    }
 
-   public cwi a(cwb $$0) {
-      return new cwi(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
-   }
-
-   public cwi a(bmi $$0) {
-      return new cwi(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
-   }
-
-   public cwi a(cwy $$0) {
-      return new cwi(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
-   }
-
-   public cwi h() {
-      return new cwi(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
+   public interface c {
+      eqk get(dmz var1, cwf var2, ib var3, epw var4);
    }
 }

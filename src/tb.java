@@ -2,37 +2,37 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class tb extends to {
-   private static final int c = 12;
-   public static final tb a = new tb(0.0F);
-   public static final tx<tb> b = new tx.a<tb>() {
-      public tb a(DataInput $$0, th $$1) throws IOException {
+public class tb extends tq {
+   private static final int c = 16;
+   public static final tb a = new tb(0.0);
+   public static final tz<tb> b = new tz.a<tb>() {
+      public tb a(DataInput $$0, tj $$1) throws IOException {
          return tb.a(d($$0, $$1));
       }
 
       @Override
-      public ts.b a(DataInput $$0, ts $$1, th $$2) throws IOException {
+      public tu.b a(DataInput $$0, tu $$1, tj $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static float d(DataInput $$0, th $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
+      private static double d(DataInput $$0, tj $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
       }
 
       @Override
       public int c() {
-         return 4;
+         return 8;
       }
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "DOUBLE";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
+         return "TAG_Double";
       }
 
       @Override
@@ -40,33 +40,33 @@ public class tb extends to {
          return true;
       }
    };
-   private final float w;
+   private final double w;
 
-   private tb(float $$0) {
+   private tb(double $$0) {
       this.w = $$0;
    }
 
-   public static tb a(float $$0) {
-      return $$0 == 0.0F ? a : new tb($$0);
+   public static tb a(double $$0) {
+      return $$0 == 0.0 ? a : new tb($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
+      $$0.writeDouble(this.w);
    }
 
    @Override
    public int a() {
-      return 12;
+      return 16;
    }
 
    @Override
    public byte b() {
-      return 5;
+      return 6;
    }
 
    @Override
-   public tx<tb> c() {
+   public tz<tb> c() {
       return b;
    }
 
@@ -81,42 +81,43 @@ public class tb extends to {
 
    @Override
    public int hashCode() {
-      return Float.floatToIntBits(this.w);
+      long $$0 = Double.doubleToLongBits(this.w);
+      return (int)($$0 ^ $$0 >>> 32);
    }
 
    @Override
-   public void a(tz $$0) {
+   public void a(ub $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.w;
+      return (long)Math.floor(this.w);
    }
 
    @Override
    public int g() {
-      return awm.d(this.w);
+      return aww.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(awm.d(this.w) & 65535);
+      return (short)(aww.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(awm.d(this.w) & 0xFF);
+      return (byte)(aww.a(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.w;
+      return this.w;
    }
 
    @Override
    public float k() {
-      return this.w;
+      return (float)this.w;
    }
 
    @Override
@@ -125,7 +126,7 @@ public class tb extends to {
    }
 
    @Override
-   public ts.b a(ts $$0) {
+   public tu.b a(tu $$0) {
       return $$0.a(this.w);
    }
 }

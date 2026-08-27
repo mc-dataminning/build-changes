@@ -1,224 +1,290 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ewm extends gob {
-   private static final int v = 2;
-   public static final List<bmi> a = ImmutableList.of(bmi.a, bmi.b, bmi.c, bmi.d);
-   private static final int w = 0;
-   public static final List<cwb> b = ImmutableList.of(cwb.a, cwb.b, cwb.c);
-   private static final vs x = vs.c("mco.configure.world.edit.slot.name");
-   static final vs y = vs.c("mco.configure.world.spawnProtection");
-   private static final vs z = vs.c("mco.configure.world.spawn_toggle.title").a(n.m, n.r);
-   private fat A;
-   protected final evt c;
-   private int B;
-   private int C;
-   private final eur D;
-   private final euk.d E;
-   private bmi F;
-   private cwb G;
-   private final String H;
-   private String I;
-   private boolean J;
-   private boolean K;
-   private boolean L;
-   private boolean M;
-   int N;
-   private boolean O;
-   private boolean P;
-   ewm.a Q;
+public class ewm extends gpb {
+   static final Logger a = LogUtils.getLogger();
+   static final vu b = vu.c("mco.backup.button.restore");
+   static final vu c = vu.c("mco.backup.changes.tooltip");
+   private static final vu v = vu.c("mco.configure.world.backup");
+   private static final vu w = vu.c("mco.backup.nobackups");
+   private final ewp x;
+   List<euv> y = Collections.emptyList();
+   ewm.a z;
+   int A = -1;
+   private final int B;
+   private fbg C;
+   private fbg D;
+   private fbg E;
+   Boolean F = false;
+   final evg G;
+   private static final String H = "uploaded";
 
-   public ewm(evt $$0, eur $$1, euk.d $$2, int $$3) {
-      super(vs.c("mco.configure.world.buttons.options"));
-      this.c = $$0;
-      this.D = $$1;
-      this.E = $$2;
-      this.F = a(a, $$1.h, 2);
-      this.G = a(b, $$1.i, 0);
-      this.H = $$1.b($$3);
-      this.a($$1.a($$3));
-      if ($$2 == euk.d.a) {
-         this.J = $$1.a;
-         this.N = $$1.e;
-         this.P = $$1.g;
-         this.L = $$1.b;
-         this.M = $$1.c;
-         this.K = $$1.d;
-         this.O = $$1.f;
-      } else {
-         this.J = true;
-         this.N = 0;
-         this.P = false;
-         this.L = true;
-         this.M = true;
-         this.K = true;
-         this.O = true;
-      }
+   public ewm(ewp $$0, evg $$1, int $$2) {
+      super(v);
+      this.x = $$0;
+      this.G = $$1;
+      this.B = $$2;
+   }
+
+   @Override
+   public void aO_() {
+      (new Thread("Realms-fetch-backups") {
+         @Override
+         public void run() {
+            eup $$0 = eup.a();
+
+            try {
+               List<euv> $$1 = $$0.e(ewm.this.G.a).a;
+               ewm.this.f.execute(() -> {
+                  ewm.this.y = $$1;
+                  ewm.this.F = ewm.this.y.isEmpty();
+                  ewm.this.z.H();
+
+                  for (euv $$1x : ewm.this.y) {
+                     ewm.this.z.a($$1x);
+                  }
+               });
+            } catch (ewc var3) {
+               ewm.a.error("Couldn't request backups", var3);
+            }
+         }
+      }).start();
+      this.C = this.c((fbg)fbg.a(vu.c("mco.backup.button.download"), $$0 -> this.J()).a(this.g - 135, g(1), 120, 20).a());
+      this.D = this.c((fbg)fbg.a(vu.c("mco.backup.button.restore"), $$0 -> this.a(this.A)).a(this.g - 135, g(3), 120, 20).a());
+      this.E = this.c((fbg)fbg.a(vu.c("mco.backup.changes.tooltip"), $$0 -> {
+         this.f.a(new ewl(this, this.y.get(this.A)));
+         this.A = -1;
+      }).a(this.g - 135, g(5), 120, 20).a());
+      this.c((fbg)fbg.a(vt.k, $$0 -> this.f.a(this.x)).a(this.g - 100, this.h - 35, 85, 20).a());
+      this.z = this.c(new ewm.a());
+      this.E();
+   }
+
+   void E() {
+      this.D.k = this.I();
+      this.E.k = this.H();
+   }
+
+   private boolean H() {
+      return this.A == -1 ? false : !this.y.get(this.A).e.isEmpty();
+   }
+
+   private boolean I() {
+      return this.A == -1 ? false : !this.G.j;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.f.a(this.c);
+         this.f.a(this.x);
          return true;
       } else {
          return super.a($$0, $$1, $$2);
       }
    }
 
-   private static <T> T a(List<T> $$0, int $$1, int $$2) {
-      try {
-         return $$0.get($$1);
-      } catch (IndexOutOfBoundsException var4) {
-         return $$0.get($$2);
-      }
-   }
-
-   private static <T> int a(List<T> $$0, T $$1, int $$2) {
-      int $$3 = $$0.indexOf($$1);
-      return $$3 == -1 ? $$2 : $$3;
-   }
-
-   @Override
-   public void aP_() {
-      this.C = 170;
-      this.B = this.g / 2 - this.C;
-      int $$0 = this.g / 2 + 10;
-      if (this.E != euk.d.a) {
-         vs $$1;
-         if (this.E == euk.d.c) {
-            $$1 = vs.c("mco.configure.world.edit.subscreen.adventuremap");
-         } else if (this.E == euk.d.e) {
-            $$1 = vs.c("mco.configure.world.edit.subscreen.inspiration");
-         } else {
-            $$1 = vs.c("mco.configure.world.edit.subscreen.experience");
-         }
-
-         this.a(new gnz($$1, this.g / 2, 26, 16711680));
-      }
-
-      this.A = this.d(new fat(this.f.h, this.B, g(1), this.C, 20, null, vs.c("mco.configure.world.edit.slot.name")));
-      this.A.f(10);
-      this.A.a(this.I);
-      this.A.b(this::a);
-      far<Boolean> $$4 = this.c(far.b(this.J).a($$0, g(1), this.C, 20, vs.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.J = $$1));
-      this.c(far.a(cwb::e).a(b).a(this.G).a(this.B, g(3), this.C, 20, vs.c("selectWorld.gameMode"), ($$0x, $$1) -> this.G = $$1));
-      vs $$5 = vs.c("mco.configure.world.spawn_toggle.message");
-      far<Boolean> $$6 = this.c(far.b(this.L).a($$0, g(3), this.C, 20, vs.c("mco.configure.world.spawnAnimals"), this.a($$5, $$0x -> this.L = $$0x)));
-      far<Boolean> $$7 = far.b(this.F != bmi.a && this.M)
-         .a($$0, g(5), this.C, 20, vs.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.M = $$0x));
-      this.c(far.a(bmi::b).a(a).a(this.F).a(this.B, g(5), this.C, 20, vs.c("options.difficulty"), ($$1, $$2) -> {
-         this.F = $$2;
-         if (this.E == euk.d.a) {
-            boolean $$3 = this.F != bmi.a;
-            $$7.j = $$3;
-            $$7.a($$3 && this.M);
-         }
-      }));
-      this.c($$7);
-      this.Q = this.c(new ewm.a(this.B, g(7), this.C, this.N, 0.0F, 16.0F));
-      far<Boolean> $$8 = this.c(
-         far.b(this.K)
-            .a(
-               $$0,
-               g(7),
-               this.C,
-               20,
-               vs.c("mco.configure.world.spawnNPCs"),
-               this.a(vs.c("mco.configure.world.spawn_toggle.message.npc"), $$0x -> this.K = $$0x)
-            )
-      );
-      far<Boolean> $$9 = this.c(far.b(this.P).a(this.B, g(9), this.C, 20, vs.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.P = $$1));
-      far<Boolean> $$10 = this.c(far.b(this.O).a($$0, g(9), this.C, 20, vs.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.O = $$1));
-      if (this.E != euk.d.a) {
-         $$4.j = false;
-         $$6.j = false;
-         $$8.j = false;
-         $$7.j = false;
-         this.Q.j = false;
-         $$10.j = false;
-         $$9.j = false;
-      }
-
-      if (this.F == bmi.a) {
-         $$7.j = false;
-      }
-
-      this.c(fak.a(vs.c("mco.configure.world.buttons.done"), $$0x -> this.E()).a(this.B, g(13), this.C, 20).a());
-      this.c(fak.a(vr.e, $$0x -> this.f.a(this.c)).a($$0, g(13), this.C, 20).a());
-   }
-
-   private far.b<Boolean> a(vs $$0, Consumer<Boolean> $$1) {
-      return ($$2, $$3) -> {
-         if ($$3) {
-            $$1.accept(true);
-         } else {
-            this.f.a(new ffa($$1xx -> {
-               if ($$1xx) {
-                  $$1.accept(false);
-               }
-
+   void a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.y.size() && !this.G.j) {
+         this.A = $$0;
+         Date $$1 = this.y.get($$0).b;
+         String $$2 = DateFormat.getDateTimeInstance(3, 3).format($$1);
+         vu $$3 = exw.a($$1);
+         vu $$4 = vu.a("mco.configure.world.restore.question.line1", $$2, $$3);
+         vu $$5 = vu.c("mco.configure.world.restore.question.line2");
+         this.f.a(new ewv($$0x -> {
+            if ($$0x) {
+               this.L();
+            } else {
+               this.A = -1;
                this.f.a(this);
-            }, z, $$0, vr.i, vr.e));
+            }
+         }, ewv.a.a, $$4, $$5, true));
+      }
+   }
+
+   private void J() {
+      vu $$0 = vu.c("mco.configure.world.restore.download.question.line1");
+      vu $$1 = vu.c("mco.configure.world.restore.download.question.line2");
+      this.f.a(new ewv($$0x -> {
+         if ($$0x) {
+            this.K();
+         } else {
+            this.f.a(this);
          }
-      };
+      }, ewv.a.b, $$0, $$1, true));
+   }
+
+   private void K() {
+      this.f.a(new eww(this.x.f(), new eye(this.G.a, this.B, this.G.c + " (" + this.G.i.get(this.G.n).a(this.G.n) + ")", this)));
+   }
+
+   private void L() {
+      euv $$0 = this.y.get(this.A);
+      this.A = -1;
+      this.f.a(new eww(this.x.f(), new eym($$0, this.G.a, this.x)));
    }
 
    @Override
-   public vs i() {
-      return vr.a(this.p(), this.o());
-   }
-
-   @Override
-   public void a(ezx $$0, int $$1, int $$2, float $$3) {
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      $$0.a(this.i, x, this.B + this.C / 2 - this.i.a(x) / 2, g(0) - 5, -1, false);
-      this.A.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(String $$0) {
-      if ($$0.equals(this.H)) {
-         this.I = "";
-      } else {
-         this.I = $$0;
+      $$0.a(this.i, this.e, this.g / 2, 12, -1);
+      if (this.F) {
+         $$0.a(this.i, w, 20, this.h / 2 - 10, -1, false);
       }
+
+      this.C.j = !this.F;
    }
 
-   private void E() {
-      int $$0 = a(a, this.F, 2);
-      int $$1 = a(b, this.G, 0);
-      if (this.E != euk.d.c && this.E != euk.d.d && this.E != euk.d.e) {
-         boolean $$2 = this.E == euk.d.a && this.F != bmi.a && this.M;
-         this.c.a(new eur(this.J, this.L, $$2, this.K, this.N, this.O, $$0, $$1, this.P, this.I, this.D.j, this.D.k));
-      } else {
-         this.c.a(new eur(this.D.a, this.D.b, this.D.c, this.D.d, this.D.e, this.D.f, $$0, $$1, this.D.g, this.I, this.D.j, this.D.k));
+   class a extends gpa<ewm.b> {
+      public a() {
+         super(ewm.this.g - 150, ewm.this.h - 47, 32, 36);
       }
-   }
 
-   class a extends fag {
-      private final double d;
-      private final double e;
-
-      public a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5) {
-         super($$0, $$1, $$2, 20, vr.a, 0.0);
-         this.d = (double)$$4;
-         this.e = (double)$$5;
-         this.c = (double)((awm.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
-         this.b();
+      public void a(euv $$0) {
+         this.a((ewm.b)(ewm.this.new b($$0)));
       }
 
       @Override
-      public void a() {
-         if (ewm.this.Q.j) {
-            ewm.this.N = (int)awm.d(awm.a(this.c, 0.0, 1.0), this.d, this.e);
+      public int b() {
+         return (int)((double)this.g * 0.93);
+      }
+
+      @Override
+      public int a() {
+         return this.n() * 36;
+      }
+
+      @Override
+      public int c() {
+         return this.g - 5;
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         this.b($$0);
+      }
+
+      public void b(int $$0) {
+         ewm.this.A = $$0;
+         ewm.this.E();
+      }
+
+      public void a(@Nullable ewm.b $$0) {
+         super.a($$0);
+         ewm.this.A = this.l().indexOf($$0);
+         ewm.this.E();
+      }
+   }
+
+   class b extends fcc.a<ewm.b> {
+      private static final int b = 2;
+      private static final int c = 7;
+      private static final fct d = new fct(new ajh("backup/changes"), new ajh("backup/changes_highlighted"));
+      private static final fct e = new fct(new ajh("backup/restore"), new ajh("backup/restore_highlighted"));
+      private final euv f;
+      private final List<fbe> g = new ArrayList<>();
+      @Nullable
+      private fbs h;
+      @Nullable
+      private fbs i;
+
+      public b(euv $$0) {
+         this.f = $$0;
+         this.a($$0);
+         if (!$$0.e.isEmpty()) {
+            this.b();
+         }
+
+         if (!ewm.this.G.j) {
+            this.c();
          }
       }
 
+      private void a(euv $$0) {
+         int $$1 = ewm.this.y.indexOf($$0);
+         if ($$1 != ewm.this.y.size() - 1) {
+            euv $$2 = ewm.this.y.get($$1 + 1);
+
+            for (String $$3 : $$0.d.keySet()) {
+               if (!$$3.contains("uploaded") && $$2.d.containsKey($$3)) {
+                  if (!$$0.d.get($$3).equals($$2.d.get($$3))) {
+                     this.a($$3);
+                  }
+               } else {
+                  this.a($$3);
+               }
+            }
+         }
+      }
+
+      private void a(String $$0) {
+         if ($$0.contains("uploaded")) {
+            String $$1 = DateFormat.getDateTimeInstance(3, 3).format(this.f.b);
+            this.f.e.put($$0, $$1);
+            this.f.a(true);
+         } else {
+            this.f.e.put($$0, this.f.d.get($$0));
+         }
+      }
+
+      private void b() {
+         int $$0 = 9;
+         int $$1 = 9;
+         int $$2 = ewm.this.z.r() - 9 - 28;
+         int $$3 = ewm.this.z.g(ewm.this.y.indexOf(this.f)) + 2;
+         this.i = new fbs($$2, $$3, 9, 9, d, $$0x -> ewm.this.f.a(new ewl(ewm.this, this.f)), vt.a);
+         this.i.a(fcr.a(ewm.c));
+         this.g.add(this.i);
+      }
+
+      private void c() {
+         int $$0 = 17;
+         int $$1 = 10;
+         int $$2 = ewm.this.z.r() - 17 - 7;
+         int $$3 = ewm.this.z.g(ewm.this.y.indexOf(this.f)) + 2;
+         this.h = new fbs($$2, $$3, 17, 10, e, $$0x -> ewm.this.a(ewm.this.y.indexOf(this.f)), vt.a);
+         this.h.a(fcr.a(ewm.b));
+         this.g.add(this.h);
+      }
+
       @Override
-      protected void b() {
-         this.b(vr.a(ewm.y, (vs)(ewm.this.N == 0 ? vr.c : vs.b(String.valueOf(ewm.this.N)))));
+      public boolean a(double $$0, double $$1, int $$2) {
+         if (this.h != null) {
+            this.h.a($$0, $$1, $$2);
+         }
+
+         if (this.i != null) {
+            this.i.a($$0, $$1, $$2);
+         }
+
+         return true;
+      }
+
+      @Override
+      public void a(fat $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = this.f.a() ? -8388737 : 16777215;
+         $$0.a(ewm.this.i, vu.a("mco.backup.entry", exw.a(this.f.b)), $$3, $$2 + 1, $$10, false);
+         $$0.a(ewm.this.i, this.a(this.f.b), $$3, $$2 + 12, 5000268, false);
+         this.g.forEach($$5x -> {
+            $$5x.n($$2 + 2);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
+      }
+
+      private String a(Date $$0) {
+         return DateFormat.getDateTimeInstance(3, 3).format($$0);
+      }
+
+      @Override
+      public vu a() {
+         return vu.a("narrator.select", this.f.b.toString());
       }
    }
 }

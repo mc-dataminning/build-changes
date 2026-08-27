@@ -1,29 +1,100 @@
-public class aez implements xz<aev> {
-   public static final xq<us, aez> a = xz.a(aez::a, aez::new);
-   private final bmi b;
-
-   public aez(bmi $$0) {
-      this.b = $$0;
-   }
-
-   private aez(us $$0) {
-      this.b = bmi.a($$0.readUnsignedByte());
-   }
-
-   private void a(us $$0) {
-      $$0.k(this.b.a());
-   }
-
+public interface aez extends aib, ys {
    @Override
-   public yb<aez> a() {
-      return aet.bg;
+   default ut b() {
+      return ut.b;
    }
 
-   public void a(aev $$0) {
-      $$0.a(this);
-   }
+   void a(ags var1);
 
-   public bmi b() {
-      return this.b;
-   }
+   void a(afg var1);
+
+   void a(aff var1);
+
+   void a(afe var1);
+
+   void a(afj var1);
+
+   void a(afm var1);
+
+   void a(afn var1);
+
+   void a(aga var1);
+
+   void a(afo var1);
+
+   void a(aft var1);
+
+   void a(afw var1);
+
+   void a(agb var1);
+
+   void a(agc var1);
+
+   void a(agd var1);
+
+   void a(age var1);
+
+   void a(agl var1);
+
+   void a(ago var1);
+
+   void a(agr var1);
+
+   void a(agu var1);
+
+   void a(agv var1);
+
+   void a(agt var1);
+
+   void a(afy var1);
+
+   void a(afx var1);
+
+   void a(afb var1);
+
+   void a(agg var1);
+
+   void a(agf var1);
+
+   void a(agi var1);
+
+   void a(afk var1);
+
+   void a(agm var1);
+
+   void a(agn var1);
+
+   void a(afz var1);
+
+   void a(agh var1);
+
+   void a(agk var1);
+
+   void a(agq var1);
+
+   void a(agj var1);
+
+   void a(afr var1);
+
+   void a(afs var1);
+
+   void a(afp var1);
+
+   void a(afc var1);
+
+   void a(agp var1);
+
+   void a(afu var1);
+
+   void a(afd var1);
+
+   void a(afv var1);
+
+   void a(afh var1);
+
+   void a(afl var1);
+
+   void a(afi var1);
+
+   void a(afq var1);
 }

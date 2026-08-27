@@ -1,83 +1,60 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class els extends elk {
+public class els extends elp {
    public static final Codec<els> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(kh.k.r().fieldOf("type").forGetter($$0x -> $$0x.b), ekp.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+      $$0 -> $$0.group(avd.a(kj.F).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
             .apply($$0, els::new)
    );
-   private final il<djn<?>> b;
-   private final List<ekr> c;
+   private final avd<cqf> j;
+   private final boolean k;
 
-   els(List<emx> $$0, il<djn<?>> $$1, List<ekr> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+   private els(avd<cqf> $$0, boolean $$1, int $$2, int $$3, List<ent> $$4, List<emh> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public elm b() {
-      return eln.p;
+   public elo a() {
+      return ell.f;
    }
 
    @Override
-   public cpq a(cpq $$0, ejy $$1) {
-      if ($$0.b()) {
-         return $$0;
+   public void a(Consumer<cqk> $$0, eku $$1) {
+      ki.h.c(this.j).forEach($$1x -> $$0.accept(new cqk($$1x)));
+   }
+
+   private boolean a(eku $$0, Consumer<elm> $$1) {
+      if (!this.a($$0)) {
+         return false;
       } else {
-         iu<cpq> $$2 = iu.a();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ekg.a($$1.d(), $$2::add), $$1)));
-         sy $$3 = new sy();
-         bmf.a($$3, $$2);
-         sy $$4 = cnl.a($$0);
-         if ($$4 == null) {
-            $$4 = $$3;
-         } else {
-            $$4.a($$3);
+         for (final il<cqf> $$2 : ki.h.c(this.j)) {
+            $$1.accept(new elp.c() {
+               @Override
+               public void a(Consumer<cqk> $$0, eku $$1) {
+                  $$0.accept(new cqk($$2));
+               }
+            });
          }
 
-         cnl.a($$0, this.b.a(), $$4);
-         return $$0;
+         return true;
       }
    }
 
    @Override
-   public void a(ekh $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
+   public boolean expand(eku $$0, Consumer<elm> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static els.a a(djn<?> $$0) {
-      return new els.a($$0);
+   public static elp.a<?> a(avd<cqf> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new els($$0, false, $$1, $$2, $$3, $$4));
    }
 
-   public static class a extends elk.a<els.a> {
-      private final Builder<ekr> a = ImmutableList.builder();
-      private final djn<?> b;
-
-      public a(djn<?> $$0) {
-         this.b = $$0;
-      }
-
-      protected els.a a() {
-         return this;
-      }
-
-      public els.a a(ekr.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ell b() {
-         return new els(this.g(), this.b.a(), this.a.build());
-      }
+   public static elp.a<?> b(avd<cqf> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new els($$0, true, $$1, $$2, $$3, $$4));
    }
 }

@@ -1,37 +1,41 @@
-import java.util.Locale;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-public enum fse {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
+public class fse {
+   private final arz a = asc.c();
+   private final Map<arv, String> b;
 
-   private final String k;
-   private final vs l;
-   private final vs m;
-
-   private fse(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = vs.c($$1);
-      this.m = vs.c($$1 + ".description");
+   public fse() {
+      this.a.a();
+      Builder<arv, String> $$0 = ImmutableMap.builder();
+      this.a.c().forEach($$1 -> {
+         aqz $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
+      });
+      this.b = $$0.build();
    }
 
-   public String a() {
-      return this.k;
+   public List<arv> a(List<arv> $$0) {
+      List<arv> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
+
+      for (arv $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
+         }
+      }
+
+      this.a.a($$2);
+      return $$1;
    }
 
-   public vs b() {
-      return this.l;
-   }
-
-   public vs c() {
-      return this.m;
+   public ase a() {
+      List<ara> $$0 = this.a.g();
+      return new ash(arc.b, $$0);
    }
 }

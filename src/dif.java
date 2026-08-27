@@ -1,59 +1,44 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dif extends cyb {
-   public static final MapCodec<dif> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgg.a.b.fieldOf("kind").forGetter(cyb::b), u()).apply($$0, dif::new));
-   public static final dmy d = dda.aE;
-   private static final Map<ih, epo> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         ih.c,
-         czf.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
-         ih.d,
-         czf.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         ih.f,
-         czf.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
-         ih.e,
-         czf.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
-      )
-   );
+public class dif extends dci implements deq {
+   public static final MapCodec<dif> c = b(dif::new);
+   public static final dnx<dnv> d = dci.b;
+   protected static final float e = 6.0F;
+   protected static final eqk f = daa.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
-   public MapCodec<? extends dif> a() {
+   public MapCodec<dif> a() {
       return c;
    }
 
-   protected dif(dgg.a $$0, dmd.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(d, ih.c));
+   public dif(dmy.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String g() {
-      return this.l().a();
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return f;
    }
 
    @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return b.get($$0.c(d));
+   protected boolean b(dmz $$0, cwf $$1, ib $$2) {
+      return $$0.d($$1, $$2, ih.b) && !$$0.a(dac.kJ);
    }
 
    @Override
-   public dme a(crx $$0) {
-      dme $$1 = super.a($$0);
-      cvk $$2 = $$0.q();
-      ib $$3 = $$0.a();
-      ih[] $$4 = $$0.f();
+   public cqk a(cxc $$0, ib $$1, dmz $$2) {
+      return new cqk(dac.bw);
+   }
 
-      for (ih $$5 : $$4) {
-         if ($$5.o().d()) {
-            ih $$6 = $$5.g();
-            $$1 = $$1.a(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
-            }
+   @Nullable
+   @Override
+   public dmz a(css $$0) {
+      dmz $$1 = super.a($$0);
+      if ($$1 != null) {
+         ein $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(aus.a) && $$2.e() == 8) {
+            return $$1;
          }
       }
 
@@ -61,18 +46,28 @@ public class dif extends cyb {
    }
 
    @Override
-   protected dme a(dme $$0, dfr $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      if ($$0.c(d) == dnv.a) {
+         dmz $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == dnv.b;
+      } else {
+         ein $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(aus.a) && $$4.e() == 8;
+      }
    }
 
    @Override
-   protected dme a(dme $$0, deb $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   protected ein c_(dmz $$0) {
+      return eio.c.a(false);
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   public boolean a(@Nullable cis $$0, cwf $$1, ib $$2, dmz $$3, eim $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cxa $$0, ib $$1, dmz $$2, ein $$3) {
+      return false;
    }
 }

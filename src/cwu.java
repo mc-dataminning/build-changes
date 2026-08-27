@@ -1,92 +1,34 @@
-public interface cwu extends cvk {
-   ih[] C = ih.values();
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   default int a(ib $$0, ih $$1) {
-      return this.a_($$0).c(this, $$0, $$1);
+public class cwu extends ejs {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
+
+   public static ejs.a<cwu> a() {
+      return new ejs.a<>(cwu::new, cwu::b, ayc.i);
    }
 
-   default int e_(ib $$0) {
-      int $$1 = 0;
-      $$1 = Math.max($$1, this.a($$0.d(), ih.a));
-      if ($$1 >= 15) {
-         return $$1;
-      } else {
-         $$1 = Math.max($$1, this.a($$0.c(), ih.b));
-         if ($$1 >= 15) {
-            return $$1;
-         } else {
-            $$1 = Math.max($$1, this.a($$0.e(), ih.c));
-            if ($$1 >= 15) {
-               return $$1;
-            } else {
-               $$1 = Math.max($$1, this.a($$0.f(), ih.d));
-               if ($$1 >= 15) {
-                  return $$1;
-               } else {
-                  $$1 = Math.max($$1, this.a($$0.g(), ih.e));
-                  if ($$1 >= 15) {
-                     return $$1;
-                  } else {
-                     $$1 = Math.max($$1, this.a($$0.h(), ih.f));
-                     return $$1 >= 15 ? $$1 : $$1;
-                  }
-               }
-            }
-         }
-      }
+   private cwu(LongSet $$0) {
+      this.c = $$0;
    }
 
-   default int a(ib $$0, ih $$1, boolean $$2) {
-      dme $$3 = this.a_($$0);
-      if ($$2) {
-         return dbh.m($$3) ? this.a($$0, $$1) : 0;
-      } else if ($$3.a(czh.ha)) {
-         return 15;
-      } else if ($$3.a(czh.cw)) {
-         return $$3.c(dfg.f);
-      } else {
-         return $$3.m() ? this.a($$0, $$1) : 0;
-      }
+   public cwu() {
+      this(new LongOpenHashSet());
    }
 
-   default boolean b(ib $$0, ih $$1) {
-      return this.c($$0, $$1) > 0;
+   public static cwu b(ta $$0, in.a $$1) {
+      return new cwu(new LongOpenHashSet($$0.o("Forced")));
    }
 
-   default int c(ib $$0, ih $$1) {
-      dme $$2 = this.a_($$0);
-      int $$3 = $$2.b(this, $$0, $$1);
-      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   @Override
+   public ta a(ta $$0, in.a $$1) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
    }
 
-   default boolean C(ib $$0) {
-      if (this.c($$0.d(), ih.a) > 0) {
-         return true;
-      } else if (this.c($$0.c(), ih.b) > 0) {
-         return true;
-      } else if (this.c($$0.e(), ih.c) > 0) {
-         return true;
-      } else if (this.c($$0.f(), ih.d) > 0) {
-         return true;
-      } else {
-         return this.c($$0.g(), ih.e) > 0 ? true : this.c($$0.h(), ih.f) > 0;
-      }
-   }
-
-   default int D(ib $$0) {
-      int $$1 = 0;
-
-      for (ih $$2 : C) {
-         int $$3 = this.c($$0.a($$2), $$2);
-         if ($$3 >= 15) {
-            return 15;
-         }
-
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1;
+   public LongSet b() {
+      return this.c;
    }
 }

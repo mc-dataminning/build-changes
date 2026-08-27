@@ -1,54 +1,26 @@
-import javax.annotation.Nullable;
+import java.util.function.BooleanSupplier;
 
-public interface ezu {
-   static ezu a(fcg $$0) {
-      return new ezu.a($$0);
+public class ezu extends eze {
+   private final BooleanSupplier h;
+
+   public ezu(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
+      super($$0, esu.b.a, $$1, $$2);
+      this.h = $$3;
    }
 
-   @Nullable
-   static ezu a(fcf $$0, @Nullable ezu $$1) {
-      return $$1 == null ? null : new ezu.b($$0, $$1);
-   }
-
-   static ezu a(fcg $$0, fcf... $$1) {
-      ezu $$2 = a($$0);
-
-      for (fcf $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
-   }
-
-   fcg a();
-
-   void a(boolean var1);
-
-   public static record a(fcg a) implements ezu {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
-      }
-   }
-
-   public static record b(fcf a, ezu b) implements ezu {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
+   @Override
+   public void a(boolean $$0) {
+      if (this.h.getAsBoolean()) {
+         if ($$0) {
+            super.a(!this.e());
          }
-
-         this.b.a($$0);
+      } else {
+         super.a($$0);
       }
+   }
 
-      public fcf b() {
-         return this.a;
-      }
-
-      public ezu c() {
-         return this.b;
-      }
+   @Override
+   protected void n() {
+      super.a(false);
    }
 }

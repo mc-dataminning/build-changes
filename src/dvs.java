@@ -1,28 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dvs extends duu<dxl> {
-   public dvs(Codec<dxl> $$0) {
-      super($$0);
+public class dvs<FC extends dxu> {
+   private final Optional<dvd<?, ?>> a;
+   private final cxu b;
+   private final dow c;
+   private final axd d;
+   private final ib e;
+   private final FC f;
+
+   public dvs(Optional<dvd<?, ?>> $$0, cxu $$1, dow $$2, axd $$3, ib $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(duw<dxl> $$0) {
-      dxl $$1 = $$0.f();
-      awt $$2 = $$0.d();
-      ib $$3 = $$0.e();
-      cwz $$4 = $$0.b();
-      int $$5 = 0;
-      ib.a $$6 = new ib.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public Optional<dvd<?, ?>> a() {
+      return this.a;
+   }
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
-         }
-      }
+   public cxu b() {
+      return this.b;
+   }
 
-      return $$5 > 0;
+   public dow c() {
+      return this.c;
+   }
+
+   public axd d() {
+      return this.d;
+   }
+
+   public ib e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

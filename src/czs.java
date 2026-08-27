@@ -1,61 +1,61 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class czs extends dfx {
+public class czs extends czm implements czr {
    public static final MapCodec<czs> a = b(czs::new);
-   public static final dmy b = dmu.R;
 
    @Override
    public MapCodec<czs> a() {
       return a;
    }
 
-   public czs(dmd.d $$0) {
+   public czs(dmy.d $$0) {
       super($$0);
-      this.k(this.o().a(b, ih.c));
+   }
+
+   @Override
+   public cpb b() {
+      return cpb.a;
+   }
+
+   @Override
+   public dkg a(ib $$0, dmz $$1) {
+      return new dkb($$0, $$1);
    }
 
    @Nullable
    @Override
-   public djl a(ib $$0, dme $$1) {
-      return new djq($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends djl> djm<T> a(cwe $$0, dme $$1, djn<T> $$2) {
-      return !$$0.B ? a($$2, djn.J, ($$0x, $$1x, $$2x, $$3) -> dra.c.a($$0x, $$3.gn(), $$3.go())) : null;
-   }
-
-   @Nullable
-   @Override
-   public dme a(crx $$0) {
-      return super.a($$0).a(b, $$0.g());
+   public <T extends dkg> dkh<T> a(cwz $$0, dmz $$1, dki<T> $$2) {
+      return a($$2, dki.o, dkb::a);
    }
 
    @Override
-   public int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
+      if ($$1.B) {
+         return bnc.a;
+      } else {
+         dkg $$5 = $$1.c_($$2);
+         if ($$5 instanceof dkb) {
+            $$3.a((dkb)$$5);
+            $$3.a(aui.ab);
+         }
+
+         return bnc.b;
+      }
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   protected dgf b_(dmz $$0) {
+      return dgf.c;
    }
 
    @Override
-   public dme a(dme $$0, dfr $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dme a(dme $$0, deb $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public int c() {
-      return 10;
+   public void a(cwz $$0, ib $$1, dmz $$2, bpo $$3, cqk $$4) {
+      if ($$4.B()) {
+         dkg $$5 = $$0.c_($$1);
+         if ($$5 instanceof dkb) {
+            ((dkb)$$5).a($$4.z());
+         }
+      }
    }
 }

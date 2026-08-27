@@ -1,268 +1,96 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.Predicate;
 
-public class dbg extends cyu {
-   public static final MapCodec<dbg> d = b(dbg::new);
-   public static final dnc<dni> e = dmu.ah;
-   public static final dmv f = dmu.w;
-   private static final int g = 20;
+public class dbg extends dfn {
+   public static final MapCodec<dbg> a = b(dbg::new);
 
    @Override
    public MapCodec<dbg> a() {
-      return d;
+      return a;
    }
 
-   public dbg(dmd.d $$0) {
-      super(true, $$0);
-      this.k(this.E.b().a(f, Boolean.valueOf(false)).a(e, dni.a).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean f_(dme $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, bof $$3) {
-      if (!$$1.B) {
-         if (!$$0.c(f)) {
-            this.a($$1, $$2, $$0);
-         }
-      }
-   }
-
-   @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if ($$0.c(f)) {
-         this.a($$1, $$2, $$0);
-      }
-   }
-
-   @Override
-   protected int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
-      return $$0.c(f) ? 15 : 0;
-   }
-
-   @Override
-   protected int b(dme $$0, cvk $$1, ib $$2, ih $$3) {
-      if (!$$0.c(f)) {
-         return 0;
-      } else {
-         return $$3 == ih.b ? 15 : 0;
-      }
-   }
-
-   private void a(cwe $$0, ib $$1, dme $$2) {
-      if (this.a($$2, (cwh)$$0, $$1)) {
-         boolean $$3 = $$2.c(f);
-         boolean $$4 = false;
-         List<cjt> $$5 = this.a($$0, $$1, cjt.class, $$0x -> true);
-         if (!$$5.isEmpty()) {
-            $$4 = true;
-         }
-
-         if ($$4 && !$$3) {
-            dme $$6 = $$2.a(f, Boolean.valueOf(true));
-            $$0.a($$1, $$6, 3);
-            this.b($$0, $$1, $$6, true);
-            $$0.a($$1, this);
-            $$0.a($$1.d(), this);
-            $$0.b($$1, $$2, $$6);
-         }
-
-         if (!$$4 && $$3) {
-            dme $$7 = $$2.a(f, Boolean.valueOf(false));
-            $$0.a($$1, $$7, 3);
-            this.b($$0, $$1, $$7, false);
-            $$0.a($$1, this);
-            $$0.a($$1.d(), this);
-            $$0.b($$1, $$2, $$7);
-         }
-
-         if ($$4) {
-            $$0.a($$1, this, 20);
-         }
-
-         $$0.c($$1, this);
-      }
-   }
-
-   protected void b(cwe $$0, ib $$1, dme $$2, boolean $$3) {
-      dfe $$4 = new dfe($$0, $$1, $$2);
-
-      for (ib $$6 : $$4.a()) {
-         dme $$7 = $$0.a_($$6);
-         $$0.a($$7, $$6, $$7.b(), $$1, false);
-      }
-   }
-
-   @Override
-   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         dme $$5 = this.a($$0, $$1, $$2, $$4);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public dnh<dni> c() {
-      return e;
-   }
-
-   @Override
-   protected boolean d_(dme $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dme $$0, cwe $$1, ib $$2) {
-      if ($$0.c(f)) {
-         List<ckb> $$3 = this.a($$1, $$2, ckb.class, $$0x -> true);
-         if (!$$3.isEmpty()) {
-            return $$3.get(0).C().k();
-         }
-
-         List<cjt> $$4 = this.a($$1, $$2, cjt.class, bok.d);
-         if (!$$4.isEmpty()) {
-            return cku.b((bme)$$4.get(0));
-         }
-      }
-
-      return 0;
-   }
-
-   private <T extends cjt> List<T> a(cwe $$0, ib $$1, Class<T> $$2, Predicate<bof> $$3) {
-      return $$0.a($$2, this.a($$1), $$3);
-   }
-
-   private eoq a(ib $$0) {
-      double $$1 = 0.2;
-      return new eoq(
-         (double)$$0.u() + 0.2, (double)$$0.v(), (double)$$0.w() + 0.2, (double)($$0.u() + 1) - 0.2, (double)($$0.v() + 1) - 0.2, (double)($$0.w() + 1) - 0.2
+   protected dbg(dmy.d $$0) {
+      super(0.3125F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+            .a(f, Boolean.valueOf(false))
+            .a(g, Boolean.valueOf(false))
       );
    }
 
    @Override
-   protected dme a(dme $$0, dfr $$1) {
-      switch ($$1) {
-         case c:
-            switch ((dni)$$0.c(e)) {
-               case c:
-                  return $$0.a(e, dni.d);
-               case d:
-                  return $$0.a(e, dni.c);
-               case e:
-                  return $$0.a(e, dni.f);
-               case f:
-                  return $$0.a(e, dni.e);
-               case g:
-                  return $$0.a(e, dni.i);
-               case h:
-                  return $$0.a(e, dni.j);
-               case i:
-                  return $$0.a(e, dni.g);
-               case j:
-                  return $$0.a(e, dni.h);
-            }
-         case d:
-            switch ((dni)$$0.c(e)) {
-               case c:
-                  return $$0.a(e, dni.e);
-               case d:
-                  return $$0.a(e, dni.f);
-               case e:
-                  return $$0.a(e, dni.d);
-               case f:
-                  return $$0.a(e, dni.c);
-               case g:
-                  return $$0.a(e, dni.j);
-               case h:
-                  return $$0.a(e, dni.g);
-               case i:
-                  return $$0.a(e, dni.h);
-               case j:
-                  return $$0.a(e, dni.i);
-               case a:
-                  return $$0.a(e, dni.b);
-               case b:
-                  return $$0.a(e, dni.a);
-            }
-         case b:
-            switch ((dni)$$0.c(e)) {
-               case c:
-                  return $$0.a(e, dni.f);
-               case d:
-                  return $$0.a(e, dni.e);
-               case e:
-                  return $$0.a(e, dni.c);
-               case f:
-                  return $$0.a(e, dni.d);
-               case g:
-                  return $$0.a(e, dni.h);
-               case h:
-                  return $$0.a(e, dni.i);
-               case i:
-                  return $$0.a(e, dni.j);
-               case j:
-                  return $$0.a(e, dni.g);
-               case a:
-                  return $$0.a(e, dni.b);
-               case b:
-                  return $$0.a(e, dni.a);
-            }
-         default:
-            return $$0;
+   public dmz a(css $$0) {
+      return a($$0.q(), $$0.a(), this.o());
+   }
+
+   public static dmz a(cwf $$0, ib $$1, dmz $$2) {
+      dmz $$3 = $$0.a_($$1.d());
+      dmz $$4 = $$0.a_($$1.c());
+      dmz $$5 = $$0.a_($$1.e());
+      dmz $$6 = $$0.a_($$1.h());
+      dmz $$7 = $$0.a_($$1.f());
+      dmz $$8 = $$0.a_($$1.g());
+      daa $$9 = $$2.b();
+      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(dac.kv) || $$3.a(dac.fz)))
+         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(dac.kv)))
+         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(dac.kv)))
+         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(dac.kv)))
+         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(dac.kv)))
+         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(dac.kv)));
+   }
+
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         boolean $$6 = $$2.a(this) || $$2.a(dac.kv) || $$1 == ih.a && $$2.a(dac.fz);
+         return $$0.a(h.get($$1), Boolean.valueOf($$6));
       }
    }
 
    @Override
-   protected dme a(dme $$0, deb $$1) {
-      dni $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(e, dni.f);
-               case f:
-                  return $$0.a(e, dni.e);
-               case g:
-                  return $$0.a(e, dni.j);
-               case h:
-                  return $$0.a(e, dni.i);
-               case i:
-                  return $$0.a(e, dni.h);
-               case j:
-                  return $$0.a(e, dni.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(e, dni.d);
-               case d:
-                  return $$0.a(e, dni.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(e, dni.h);
-               case h:
-                  return $$0.a(e, dni.g);
-               case i:
-                  return $$0.a(e, dni.j);
-               case j:
-                  return $$0.a(e, dni.i);
-            }
+   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
-
-      return super.a($$0, $$1);
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(e, f, c);
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      dmz $$3 = $$1.a_($$2.d());
+      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
+
+      for (ih $$5 : ih.c.a) {
+         ib $$6 = $$2.a($$5);
+         dmz $$7 = $$1.a_($$6);
+         if ($$7.a(this)) {
+            if ($$4) {
+               return false;
+            }
+
+            dmz $$8 = $$1.a_($$6.d());
+            if ($$8.a(this) || $$8.a(dac.fz)) {
+               return true;
+            }
+         }
+      }
+
+      return $$3.a(this) || $$3.a(dac.fz);
+   }
+
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(b, c, d, e, f, g);
+   }
+
+   @Override
+   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
+      return false;
    }
 }

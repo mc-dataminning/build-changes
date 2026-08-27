@@ -1,19 +1,19 @@
-public class cwc {
-   private static int[] a = new int[65536];
+public interface cwc extends cwf {
+   float a(ih var1, boolean var2);
 
-   public static void a(int[] $$0) {
-      a = $$0;
+   eic y_();
+
+   int a(ib var1, cwk var2);
+
+   default int a(cxi $$0, ib $$1) {
+      return this.y_().a($$0).b($$1);
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? -65281 : a[$$4];
+   default int b(ib $$0, int $$1) {
+      return this.y_().a($$0, $$1);
    }
 
-   public static int a() {
-      return a(0.5, 1.0);
+   default boolean h(ib $$0) {
+      return this.a(cxi.a, $$0) >= this.O();
    }
 }

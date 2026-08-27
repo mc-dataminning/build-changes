@@ -1,31 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dvd implements dwy {
-   public static final Codec<dvd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dme.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dme.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dme.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dme.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               dsx.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dvd::new)
-   );
-   public final dme b;
-   public final dme c;
-   public final dme d;
-   public final dme e;
-   public final dsx f;
-   public final boolean g;
+public record dvd<FC extends dxu, F extends dvq<FC>>(F d, FC e) {
+   public static final Codec<dvd<?, ?>> a = ki.Q.q().dispatch($$0 -> $$0.d, dvq::a);
+   public static final Codec<il<dvd<?, ?>>> b = ajd.a(kj.ax, a);
+   public static final Codec<ip<dvd<?, ?>>> c = ja.a(kj.ax, a);
 
-   public dvd(dme $$0, dme $$1, dme $$2, dme $$3, dsx $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public boolean a(cxu $$0, dow $$1, axd $$2, ib $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<dvd<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
+   }
+
+   @Override
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
+
+   public F b() {
+      return this.d;
+   }
+
+   public FC c() {
+      return this.e;
    }
 }

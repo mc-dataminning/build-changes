@@ -1,3 +1,8 @@
-public class agx {
-   public static final va<agy> a = ye.a(ur.a, $$0 -> $$0.a(agw.a, agv.a));
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface agx {
 }

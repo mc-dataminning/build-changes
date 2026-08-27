@@ -1,119 +1,55 @@
-import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.util.HashMap;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ary implements arv {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, arw> b;
-   private final List<aqt> c;
+public abstract class ary<T> {
+   private final eph a;
 
-   public ary(aqu $$0, List<aqt> $$1) {
-      this.c = List.copyOf($$1);
-      Map<String, arw> $$2 = new HashMap<>();
-      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
-
-      for (aqt $$4 : $$1) {
-         ase $$5 = this.a($$4);
-         Set<String> $$6 = $$4.a($$0);
-         Predicate<ajc> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
-
-         for (String $$8 : $$3) {
-            boolean $$9 = $$6.contains($$8);
-            boolean $$10 = $$5 != null && $$5.a($$8);
-            if ($$9 || $$10) {
-               arw $$11 = $$2.get($$8);
-               if ($$11 == null) {
-                  $$11 = new arw($$0, $$8);
-                  $$2.put($$8, $$11);
-               }
-
-               if ($$9 && $$10) {
-                  $$11.a($$4, $$7);
-               } else if ($$9) {
-                  $$11.a($$4);
-               } else {
-                  $$11.a($$4.a(), $$7);
-               }
-            }
-         }
-      }
-
-      this.b = $$2;
+   protected ary(eph $$0) {
+      this.a = $$0;
    }
 
    @Nullable
-   private ase a(aqt $$0) {
+   public T a(Path $$0, List<epi> $$1) throws IOException {
+      Path $$2 = $$0;
+
+      BasicFileAttributes $$3;
       try {
-         return $$0.a(ase.a);
-      } catch (IOException var3) {
-         a.error("Failed to get filter section from pack {}", $$0.a());
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
          return null;
       }
-   }
 
-   @Override
-   public Set<String> a() {
-      return this.b.keySet();
-   }
+      if ($$3.isSymbolicLink()) {
+         this.a.a($$0, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         }
 
-   @Override
-   public Optional<asd> getResource(ajc $$0) {
-      asf $$1 = this.b.get($$0.b());
-      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
-   }
-
-   @Override
-   public List<asd> a(ajc $$0) {
-      asf $$1 = this.b.get($$0.b());
-      return $$1 != null ? $$1.a($$0) : List.of();
-   }
-
-   @Override
-   public Map<ajc, asd> b(String $$0, Predicate<ajc> $$1) {
-      a($$0);
-      Map<ajc, asd> $$2 = new TreeMap<>();
-
-      for (arw $$3 : this.b.values()) {
-         $$2.putAll($$3.b($$0, $$1));
+         $$2 = Files.readSymbolicLink($$0);
+         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
       }
 
-      return $$2;
-   }
-
-   @Override
-   public Map<ajc, List<asd>> c(String $$0, Predicate<ajc> $$1) {
-      a($$0);
-      Map<ajc, List<asd>> $$2 = new TreeMap<>();
-
-      for (arw $$3 : this.b.values()) {
-         $$2.putAll($$3.c($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   private static void a(String $$0) {
-      if ($$0.endsWith("/")) {
-         throw new IllegalArgumentException("Trailing slash in path " + $$0);
+      if ($$3.isDirectory()) {
+         this.a.b($$2, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         } else {
+            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
+         }
+      } else {
+         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
       }
    }
 
-   @Override
-   public Stream<aqt> b() {
-      return this.c.stream();
-   }
+   @Nullable
+   protected abstract T d(Path var1) throws IOException;
 
-   @Override
-   public void close() {
-      this.c.forEach(aqt::close);
-   }
+   @Nullable
+   protected abstract T c(Path var1) throws IOException;
 }

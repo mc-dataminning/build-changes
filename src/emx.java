@@ -1,22 +1,28 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface emx extends ejz, Predicate<ejy> {
-   emy b();
+public class emx extends emg {
+   public static final Codec<emx> a = RecordCodecBuilder.create($$0 -> a($$0).and(ki.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, emx::new));
+   private final il<csh> b;
 
-   @FunctionalInterface
-   public interface a {
-      emx build();
+   private emx(List<ent> $$0, il<csh> $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
-      default emx.a invert() {
-         return emu.a(this);
-      }
+   @Override
+   public emi b() {
+      return emj.z;
+   }
 
-      default emm.a or(emx.a $$0) {
-         return emm.a(this, $$0);
-      }
+   @Override
+   public cqk a(cqk $$0, eku $$1) {
+      csj.a($$0, this.b);
+      return $$0;
+   }
 
-      default eml.a and(emx.a $$0) {
-         return eml.a(this, $$0);
-      }
+   public static emg.a<?> a(il<csh> $$0) {
+      return a($$1 -> new emx($$1, $$0));
    }
 }

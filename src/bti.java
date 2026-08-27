@@ -1,30 +1,21 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bti {
-   public static bqq<chn> a(bya<List<ik>> $$0, float $$1, int $$2, int $$3, bya<ik> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return buc.a(
-         (Function<buc.b<chn>, ? extends App<buc.c<chn>, buf<chn>>>)($$6 -> $$6.group($$6.a(bya.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<ik> $$11 = $$6.b($$6x);
-                     ik $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
+   public static brh<bpo> a(bpc<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return but.a(
+         (Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$2x -> $$2x.group($$2x.a(byr.n), $$2x.c(byr.q), $$2x.b(byr.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bpo> $$9 = $$2x.<byt>b($$5).a($$3xx -> $$3xx.g((bow)$$7) <= (double)$$2 && $$0.equals($$3xx.ai()));
+                     if ($$9.isEmpty()) {
                         return false;
                      } else {
-                        ik $$13 = $$11.get($$8.F_().a($$11.size()));
-                        if ($$13 != null && $$8.ad() == $$13.a() && $$12.b().a($$9.dh(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new byd($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
+                        bpo $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new brr($$10, true));
+                        return true;
                      }
                   }))
       );

@@ -1,29 +1,37 @@
-public class ago implements xz<aev> {
-   public static final xq<us, ago> a = xz.a(ago::a, ago::new);
-   private final bmk b;
+public class ago implements yb<aez> {
+   public static final xs<vf, ago> a = yb.a(ago::a, ago::new);
+   private final int b;
+   private final cqk c;
 
-   public ago(bmk $$0) {
+   public ago(int $$0, cqk $$1) {
       this.b = $$0;
+      this.c = $$1.q();
    }
 
-   private ago(us $$0) {
-      this.b = $$0.b(bmk.class);
+   private ago(vf $$0) {
+      this.b = $$0.readShort();
+      this.c = cqk.f.decode($$0);
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b);
+   private void a(vf $$0) {
+      $$0.l(this.b);
+      cqk.f.encode($$0, this.c);
    }
 
    @Override
-   public yb<ago> a() {
-      return aet.bY;
+   public yd<ago> a() {
+      return aex.bU;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public bmk b() {
+   public int b() {
       return this.b;
+   }
+
+   public cqk e() {
+      return this.c;
    }
 }

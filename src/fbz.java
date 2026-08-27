@@ -1,89 +1,146 @@
-public abstract class fbz {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final ezv d;
-   protected final bim e;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.List;
 
-   protected fbz(ezv $$0, bim $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public int a(int $$0) {
-      return Math.min(this.e.c() + 2, $$0);
-   }
-
-   public void a(ezx $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(fwy.E(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
-      int $$8 = this.e.d() - $$7;
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         int $$11 = $$7 + $$9;
-         long $$12 = this.b($$11);
-         $$5 = Math.min($$5, $$12);
-         $$6 = Math.max($$6, $$12);
-         $$4 += $$12;
-         this.a($$0, $$3, $$10, $$11);
+public interface fbz {
+   fbz a = new fbz() {
+      @Override
+      public int a(fat $$0, int $$1, int $$2) {
+         return $$2;
       }
 
-      $$0.a(fwy.E(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(fwy.E(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(fwy.E(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(fwy.E(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$13 = this.a((double)$$5) + " min";
-         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$15 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+      @Override
+      public int a(fat $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
       }
 
-      this.d($$0, $$1, $$2, $$3);
+      @Override
+      public int b(fat $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int c(fat $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public void a(fat $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static fbz a(far $$0, vz $$1, int $$2) {
+      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new fbz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   protected void a(ezx $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2, $$3);
+   static fbz a(far $$0, vz $$1, int $$2, int $$3) {
+      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new fbz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   protected void b(ezx $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3);
-      int $$5 = this.b((double)$$4);
-      int $$6 = this.a($$4);
-      $$0.a(fwy.E(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
+   static fbz a(far $$0, vu... $$1) {
+      return b($$0, Arrays.stream($$1).map(vu::g).map($$1x -> new fbz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   protected void c(ezx $$0, int $$1, int $$2, int $$3) {
+   static fbz a(far $$0, List<vu> $$1) {
+      return b($$0, $$1.stream().map(vu::g).map($$1x -> new fbz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   protected long b(int $$0) {
-      return this.e.a($$0);
+   static fbz b(final far $$0, final List<fbz.a> $$1) {
+      return $$1.isEmpty() ? a : new fbz() {
+         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
+
+         @Override
+         public int a(fat $$0x, int $$1x, int $$2) {
+            return this.a($$0, $$1, $$2, 9, 16777215);
+         }
+
+         @Override
+         public int a(fat $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fbz.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int b(fat $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fbz.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int c(fat $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fbz.a $$6 : $$1) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public void a(fat $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
+            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
+            if ($$6 > 0) {
+               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
+            }
+         }
+
+         @Override
+         public int a() {
+            return $$1.size();
+         }
+
+         @Override
+         public int b() {
+            return this.d;
+         }
+      };
    }
 
-   protected void d(ezx $$0, int $$1, int $$2, int $$3) {
-   }
+   int a(fat var1, int var2, int var3);
 
-   protected void a(ezx $$0, String $$1, int $$2, int $$3) {
-      $$0.a(fwy.E(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
+   int a(fat var1, int var2, int var3, int var4, int var5);
 
-   protected abstract String a(double var1);
+   int b(fat var1, int var2, int var3, int var4, int var5);
 
-   protected abstract int b(double var1);
+   int c(fat var1, int var2, int var3, int var4, int var5);
 
-   protected abstract int a(long var1);
+   void a(fat var1, int var2, int var3, int var4, int var5, int var6);
 
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = awm.a($$0, $$1, $$5);
-      return $$0 < $$3 ? avw.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : avw.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+   int a();
+
+   int b();
+
+   public static class a {
+      final awi a;
+      final int b;
+
+      a(awi $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

@@ -1,343 +1,180 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class arw implements asf {
-   static final Logger b = LogUtils.getLogger();
-   protected final List<arw.d> a = Lists.newArrayList();
-   private final aqu c;
-   private final String d;
+public class arw {
+   private static final Logger a = LogUtils.getLogger();
+   private final aqz b;
+   private final arw.c c;
+   private final arw.a d;
+   private final arb e;
 
-   public arw(aqu $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   @Nullable
+   public static arw a(aqz $$0, arw.c $$1, arc $$2, arb $$3) {
+      int $$4 = aa.b().a($$2);
+      arw.a $$5 = a($$0, $$1, $$4);
+      return $$5 != null ? new arw($$0, $$1, $$5, $$3) : null;
    }
 
-   public void a(aqt $$0) {
-      this.a($$0.a(), $$0, null);
+   public arw(aqz $$0, arw.c $$1, arw.a $$2, arb $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public void a(aqt $$0, Predicate<ajc> $$1) {
-      this.a($$0.a(), $$0, $$1);
-   }
-
-   public void a(String $$0, Predicate<ajc> $$1) {
-      this.a($$0, null, $$1);
-   }
-
-   private void a(String $$0, @Nullable aqt $$1, @Nullable Predicate<ajc> $$2) {
-      this.a.add(new arw.d($$0, $$1, $$2));
-   }
-
-   @Override
-   public Set<String> a() {
-      return ImmutableSet.of(this.d);
-   }
-
-   @Override
-   public Optional<asd> getResource(ajc $$0) {
-      for (int $$1 = this.a.size() - 1; $$1 >= 0; $$1--) {
-         arw.d $$2 = this.a.get($$1);
-         aqt $$3 = $$2.b;
-         if ($$3 != null) {
-            arx<InputStream> $$4 = $$3.a(this.c, $$0);
-            if ($$4 != null) {
-               arx<ash> $$5 = this.a($$0, $$1);
-               return Optional.of(a($$3, $$0, $$4, $$5));
+   @Nullable
+   public static arw.a a(aqz $$0, arw.c $$1, int $$2) {
+      try {
+         arw.a var11;
+         try (ara $$3 = $$1.a($$0)) {
+            arp $$4 = $$3.a(arp.b);
+            if ($$4 == null) {
+               a.warn("Missing metadata in pack {}", $$0.a());
+               return null;
             }
+
+            aqw $$5 = $$3.a(aqw.a);
+            clf $$6 = $$5 != null ? $$5.a() : clf.a();
+            awo<Integer> $$7 = a($$0.a(), $$4);
+            arx $$8 = arx.a($$7, $$2);
+            aqy $$9 = $$3.a(aqy.a);
+            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
+            var11 = new arw.a($$4.a(), $$8, $$6, $$10);
          }
 
-         if ($$2.a($$0)) {
-            b.warn("Resource {} not found, but was filtered by pack {}", $$0, $$2.a);
-            return Optional.empty();
-         }
+         return var11;
+      } catch (Exception var14) {
+         a.warn("Failed to read pack {} metadata", $$0.a(), var14);
+         return null;
       }
-
-      return Optional.empty();
    }
 
-   private static asd a(aqt $$0, ajc $$1, arx<InputStream> $$2, arx<ash> $$3) {
-      return new asd($$0, a($$1, $$0, $$2), $$3);
-   }
-
-   private static arx<InputStream> a(ajc $$0, aqt $$1, arx<InputStream> $$2) {
-      return b.isDebugEnabled() ? () -> new arw.c($$2.get(), $$0, $$1.a()) : $$2;
-   }
-
-   @Override
-   public List<asd> a(ajc $$0) {
-      ajc $$1 = d($$0);
-      List<asd> $$2 = new ArrayList<>();
-      boolean $$3 = false;
-      String $$4 = null;
-
-      for (int $$5 = this.a.size() - 1; $$5 >= 0; $$5--) {
-         arw.d $$6 = this.a.get($$5);
-         aqt $$7 = $$6.b;
-         if ($$7 != null) {
-            arx<InputStream> $$8 = $$7.a(this.c, $$0);
-            if ($$8 != null) {
-               arx<ash> $$9;
-               if ($$3) {
-                  $$9 = ash.b;
-               } else {
-                  $$9 = () -> {
-                     arx<InputStream> $$2x = $$7.a(this.c, $$1);
-                     return $$2x != null ? b($$2x) : ash.a;
-                  };
-               }
-
-               $$2.add(new asd($$7, $$8, $$9));
-            }
-         }
-
-         if ($$6.a($$0)) {
-            $$4 = $$6.a;
-            break;
-         }
-
-         if ($$6.a($$1)) {
-            $$3 = true;
-         }
-      }
-
-      if ($$2.isEmpty() && $$4 != null) {
-         b.warn("Resource {} not found, but was filtered by pack {}", $$0, $$4);
-      }
-
-      return Lists.reverse($$2);
-   }
-
-   private static boolean b(ajc $$0) {
-      return $$0.a().endsWith(".mcmeta");
-   }
-
-   private static ajc c(ajc $$0) {
-      String $$1 = $$0.a().substring(0, $$0.a().length() - ".mcmeta".length());
-      return $$0.c($$1);
-   }
-
-   static ajc d(ajc $$0) {
-      return $$0.c($$0.a() + ".mcmeta");
-   }
-
-   @Override
-   public Map<ajc, asd> b(String $$0, Predicate<ajc> $$1) {
-      record a(aqt a, arx<InputStream> b, int c) {
-      }
-
-      Map<ajc, a> $$2 = new HashMap<>();
-      Map<ajc, a> $$3 = new HashMap<>();
-      int $$4 = this.a.size();
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         arw.d $$6 = this.a.get($$5);
-         $$6.a($$2.keySet());
-         $$6.a($$3.keySet());
-         aqt $$7 = $$6.b;
-         if ($$7 != null) {
-            int $$8 = $$5;
-            $$7.a(this.c, this.d, $$0, ($$5x, $$6x) -> {
-               if (b($$5x)) {
-                  if ($$1.test(c($$5x))) {
-                     $$3.put($$5x, new a($$7, $$6x, $$8));
-                  }
-               } else if ($$1.test($$5x)) {
-                  $$2.put($$5x, new a($$7, $$6x, $$8));
-               }
-            });
-         }
-      }
-
-      Map<ajc, asd> $$9 = Maps.newTreeMap();
-      $$2.forEach(($$2x, $$3x) -> {
-         ajc $$4x = d($$2x);
-         a $$5x = $$3.get($$4x);
-         arx<ash> $$6x;
-         if ($$5x != null && $$5x.c >= $$3x.c) {
-            $$6x = a($$5x.b);
+   private static awo<Integer> a(String $$0, arp $$1) {
+      int $$2 = $$1.b();
+      if ($$1.c().isEmpty()) {
+         return new awo<>($$2);
+      } else {
+         awo<Integer> $$3 = $$1.c().get();
+         if (!$$3.a($$2)) {
+            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
+            return new awo<>($$2);
          } else {
-            $$6x = ash.b;
-         }
-
-         $$9.put($$2x, a($$3x.a, $$2x, $$3x.b, $$6x));
-      });
-      return $$9;
-   }
-
-   private arx<ash> a(ajc $$0, int $$1) {
-      return () -> {
-         ajc $$2 = d($$0);
-
-         for (int $$3 = this.a.size() - 1; $$3 >= $$1; $$3--) {
-            arw.d $$4 = this.a.get($$3);
-            aqt $$5 = $$4.b;
-            if ($$5 != null) {
-               arx<InputStream> $$6 = $$5.a(this.c, $$2);
-               if ($$6 != null) {
-                  return b($$6);
-               }
-            }
-
-            if ($$4.a($$2)) {
-               break;
-            }
-         }
-
-         return ash.a;
-      };
-   }
-
-   private static arx<ash> a(arx<InputStream> $$0) {
-      return () -> b($$0);
-   }
-
-   private static ash b(arx<InputStream> $$0) throws IOException {
-      ash var2;
-      try (InputStream $$1 = $$0.get()) {
-         var2 = ash.a($$1);
-      }
-
-      return var2;
-   }
-
-   private static void a(arw.d $$0, Map<ajc, arw.b> $$1) {
-      for (arw.b $$2 : $$1.values()) {
-         if ($$0.a($$2.a)) {
-            $$2.c.clear();
-         } else if ($$0.a($$2.b())) {
-            $$2.d.clear();
+            return $$3;
          }
       }
    }
 
-   private void a(arw.d $$0, String $$1, Predicate<ajc> $$2, Map<ajc, arw.b> $$3) {
-      aqt $$4 = $$0.b;
-      if ($$4 != null) {
-         $$4.a(this.c, this.d, $$1, ($$3x, $$4x) -> {
-            if (b($$3x)) {
-               ajc $$5 = c($$3x);
-               if (!$$2.test($$5)) {
-                  return;
-               }
+   public aqz a() {
+      return this.b;
+   }
 
-               $$3.computeIfAbsent($$5, arw.b::new).d.put($$4, $$4x);
-            } else {
-               if (!$$2.test($$3x)) {
-                  return;
-               }
+   public vu b() {
+      return this.b.b();
+   }
 
-               $$3.computeIfAbsent($$3x, arw.b::new).c.add(new arw.e($$4, $$4x));
-            }
-         });
+   public vu c() {
+      return this.d.a();
+   }
+
+   public vu a(boolean $$0) {
+      return this.b.a($$0, this.d.a);
+   }
+
+   public arx d() {
+      return this.d.b();
+   }
+
+   public clf e() {
+      return this.d.c();
+   }
+
+   public ara f() {
+      return this.c.a(this.b, this.d);
+   }
+
+   public String g() {
+      return this.b.a();
+   }
+
+   public arb h() {
+      return this.e;
+   }
+
+   public boolean i() {
+      return this.e.a();
+   }
+
+   public boolean j() {
+      return this.e.c();
+   }
+
+   public arw.b k() {
+      return this.e.b();
+   }
+
+   public asa l() {
+      return this.b.c();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof arw $$1) ? false : this.b.equals($$1.b);
       }
    }
 
    @Override
-   public Map<ajc, List<asd>> c(String $$0, Predicate<ajc> $$1) {
-      Map<ajc, arw.b> $$2 = Maps.newHashMap();
+   public int hashCode() {
+      return this.b.hashCode();
+   }
 
-      for (arw.d $$3 : this.a) {
-         a($$3, $$2);
-         this.a($$3, $$0, $$1, $$2);
-      }
+   public static record a(vu a, arx b, clf c, List<String> d) {
+   }
 
-      TreeMap<ajc, List<asd>> $$4 = Maps.newTreeMap();
+   public static enum b {
+      a,
+      b;
 
-      for (arw.b $$5 : $$2.values()) {
-         if (!$$5.c.isEmpty()) {
-            List<asd> $$6 = new ArrayList<>();
-
-            for (arw.e $$7 : $$5.c) {
-               aqt $$8 = $$7.a;
-               arx<InputStream> $$9 = $$5.d.get($$8);
-               arx<ash> $$10 = $$9 != null ? a($$9) : ash.b;
-               $$6.add(a($$8, $$5.a, $$7.b, $$10));
+      public <T> int a(List<T> $$0, T $$1, Function<T, arb> $$2, boolean $$3) {
+         arw.b $$4 = $$3 ? this.a() : this;
+         if ($$4 == b) {
+            int $$5;
+            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
+               arb $$6 = $$2.apply($$0.get($$5));
+               if (!$$6.c() || $$6.b() != this) {
+                  break;
+               }
             }
 
-            $$4.put($$5.a, $$6);
+            $$0.add($$5, $$1);
+            return $$5;
+         } else {
+            int $$7;
+            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
+               arb $$8 = $$2.apply($$0.get($$7));
+               if (!$$8.c() || $$8.b() != this) {
+                  break;
+               }
+            }
+
+            $$0.add($$7 + 1, $$1);
+            return $$7 + 1;
          }
       }
 
-      return $$4;
-   }
-
-   @Override
-   public Stream<aqt> b() {
-      return this.a.stream().map($$0 -> $$0.b).filter(Objects::nonNull);
-   }
-
-   static record b(ajc a, ajc b, List<arw.e> c, Map<aqt, arx<InputStream>> d) {
-
-      b(ajc $$0) {
-         this($$0, arw.d($$0), new ArrayList<>(), new Object2ObjectArrayMap());
+      public arw.b a() {
+         return this == a ? b : a;
       }
    }
 
-   static class c extends FilterInputStream {
-      private final Supplier<String> a;
-      private boolean b;
+   public interface c {
+      ara a(aqz var1);
 
-      public c(InputStream $$0, ajc $$1, String $$2) {
-         super($$0);
-         Exception $$3 = new Exception("Stacktrace");
-         this.a = () -> {
-            StringWriter $$3x = new StringWriter();
-            $$3.printStackTrace(new PrintWriter($$3x));
-            return "Leaked resource: '" + $$1 + "' loaded from pack: '" + $$2 + "'\n" + $$3x;
-         };
-      }
-
-      @Override
-      public void close() throws IOException {
-         super.close();
-         this.b = true;
-      }
-
-      @Override
-      protected void finalize() throws Throwable {
-         if (!this.b) {
-            arw.b.warn("{}", this.a.get());
-         }
-
-         super.finalize();
-      }
-   }
-
-   static record d(String a, @Nullable aqt b, @Nullable Predicate<ajc> c) {
-
-      public void a(Collection<ajc> $$0) {
-         if (this.c != null) {
-            $$0.removeIf(this.c);
-         }
-      }
-
-      public boolean a(ajc $$0) {
-         return this.c != null && this.c.test($$0);
-      }
-   }
-
-   static record e(aqt a, arx<InputStream> b) {
+      ara a(aqz var1, arw.a var2);
    }
 }

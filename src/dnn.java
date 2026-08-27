@@ -1,23 +1,17 @@
-public enum dnn implements axg {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+public enum dnn implements axq {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String f;
+   private final String e;
 
    private dnn(String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.f;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.e;
    }
 }

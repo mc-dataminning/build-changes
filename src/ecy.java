@@ -1,70 +1,106 @@
 import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public class ecy implements ecl {
-   private final List<eck> a = Lists.newArrayList();
+public class ecy extends edg {
+   private static final Logger d = LogUtils.getLogger();
+   protected final eej a;
+   protected ib b;
+   private final int h;
+   protected final dgm c;
+   private final List<eee> i = Lists.newArrayList();
+   private final ehd j;
+
+   public ecy(ehd $$0, eej $$1, ib $$2, int $$3, dgm $$4, ecu $$5) {
+      super(edt.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
+   }
+
+   public ecy(eds $$0, ta $$1) {
+      super(edt.ad, $$1);
+      this.j = $$0.c();
+      this.b = new ib($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<tx> $$2 = ajf.a(to.a, $$0.b());
+      this.a = (eej)eej.e
+         .parse($$2, $$1.p("pool_element"))
+         .resultOrPartial(d::error)
+         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
+      this.c = dgm.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      tg $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(eee.a(new Dynamic($$2, $$1x))));
+   }
 
    @Override
-   public void a(eck $$0) {
-      this.a.add($$0);
+   protected void a(eds $$0, ta $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<tx> $$2 = ajf.a(to.a, $$0.b());
+      eej.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      tg $$3 = new tg();
+
+      for (eee $$4 : this.i) {
+         $$3.add((tx)$$4.a($$2).getValue());
+      }
+
+      $$1.a("junctions", $$3);
    }
 
-   @Nullable
    @Override
-   public eck a(eby $$0) {
-      return eck.a(this.a, $$0);
+   public void a(cxu $$0, cxs $$1, dow $$2, axd $$3, ecu $$4, cwg $$5, ib $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
    }
 
-   @Deprecated
-   public void a(int $$0) {
-      for (eck $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
+   public void a(cxu $$0, cxs $$1, dow $$2, axd $$3, ecu $$4, ib $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
    }
 
-   @Deprecated
-   public int a(int $$0, int $$1, awt $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      eby $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
    }
 
-   /** @deprecated */
-   public void a(awt $$0, int $$1, int $$2) {
-      eby $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
+   @Override
+   public dgm a() {
+      return this.c;
    }
 
-   public ecv a() {
-      return new ecv(this.a);
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
    }
 
-   public void b() {
-      this.a.clear();
+   public eej b() {
+      return this.a;
    }
 
-   public boolean c() {
-      return this.a.isEmpty();
+   public ib c() {
+      return this.b;
    }
 
-   public eby d() {
-      return eck.a(this.a.stream());
+   public int d() {
+      return this.h;
+   }
+
+   public void a(eee $$0) {
+      this.i.add($$0);
+   }
+
+   public List<eee> e() {
+      return this.i;
    }
 }

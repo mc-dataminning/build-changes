@@ -1,91 +1,18 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public enum dps {
-   a {
-      @Override
-      public void a(apa $$0, dpt $$1, List<cde> $$2, int $$3, ib $$4) {
-         ib $$5 = new ib(0, 128, 0);
+public interface dps {
+   @Nullable
+   edk a(edc var1);
 
-         for (cde $$6 : $$2) {
-            $$6.a($$5);
-         }
+   void a(edc var1, edk var2);
 
-         $$1.a(b);
-      }
-   },
-   b {
-      @Override
-      public void a(apa $$0, dpt $$1, List<cde> $$2, int $$3, ib $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new ib(0, 128, 0), 0);
-            }
-         } else {
-            $$1.a(c);
-         }
-      }
-   },
-   c {
-      @Override
-      public void a(apa $$0, dpt $$1, List<cde> $$2, int $$3, ib $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<dwe.a> $$8 = dwe.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               dwe.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (cde $$11 : $$2) {
-                     $$11.a(new ib($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
+   LongSet b(edc var1);
 
-                  for (ib $$13 : ib.a(new ib($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new ib($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
+   void a(edc var1, long var2);
 
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, cwe.a.b);
-                  dxs $$14 = new dxs(true, ImmutableList.of($$10), new ib(0, 128, 0));
-                  duu.J.a($$14, $$0, $$0.l().g(), awt.a(), new ib($$10.a(), 45, $$10.b()));
-               }
-            } else if ($$6) {
-               $$1.a(d);
-            }
-         }
-      }
-   },
-   d {
-      @Override
-      public void a(apa $$0, dpt $$1, List<cde> $$2, int $$3, ib $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
+   Map<edc, LongSet> h();
 
-            for (cde $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.do(), $$5.dq(), $$5.du(), 6.0F, cwe.a.a);
-               $$5.am();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new ib(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (cde $$6 : $$2) {
-               $$6.a(new ib(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new ib(0, 128, 0), 0);
-         }
-      }
-   },
-   e {
-      @Override
-      public void a(apa $$0, dpt $$1, List<cde> $$2, int $$3, ib $$4) {
-      }
-   };
-
-   public abstract void a(apa var1, dpt var2, List<cde> var3, int var4, ib var5);
+   void b(Map<edc, LongSet> var1);
 }

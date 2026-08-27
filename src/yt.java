@@ -1,29 +1,20 @@
-public class yt implements xz<yq> {
-   public static final xq<us, yt> a = xz.a(yt::a, yt::new);
-   private final long b;
+public record yt(aou b) implements yb<ys> {
+   public static final xs<uu, yt> a = yb.a(yt::a, yt::new);
 
-   public yt(long $$0) {
-      this.b = $$0;
+   private yt(uu $$0) {
+      this(new aou($$0));
    }
 
-   private yt(us $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(us $$0) {
-      $$0.b(this.b);
+   private void a(uu $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public yb<yt> a() {
-      return yp.l;
+   public yd<yt> a() {
+      return yr.j;
    }
 
-   public void a(yq $$0) {
+   public void a(ys $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

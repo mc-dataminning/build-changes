@@ -1,11 +1,287 @@
-import javax.annotation.Nullable;
+public class fuh extends fwe {
+   private final eim b;
+   protected boolean a;
 
-public interface fuh<T extends jz> {
-   @Nullable
-   fue createParticle(T var1, fra var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   fuh(fry $$0, double $$1, double $$2, double $$3, eim $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.b = $$4;
+   }
 
-   public interface a<T extends jz> {
-      @Nullable
-      fve createParticle(T var1, fra var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   protected eim g() {
+      return this.b;
+   }
+
+   @Override
+   public fvi b() {
+      return fvi.b;
+   }
+
+   @Override
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      this.h();
+      if (!this.o) {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.i();
+         if (!this.o) {
+            this.j *= 0.98F;
+            this.k *= 0.98F;
+            this.l *= 0.98F;
+            if (this.b != eio.a) {
+               ib $$0 = ib.a(this.g, this.h, this.i);
+               ein $$1 = this.c.b_($$0);
+               if ($$1.a() == this.b && this.h < (double)((float)$$0.v() + $$1.a((cwf)this.c, $$0))) {
+                  this.k();
+               }
+            }
+         }
+      }
+   }
+
+   protected void h() {
+      if (this.t-- <= 0) {
+         this.k();
+      }
+   }
+
+   protected void i() {
+   }
+
+   public static fwe a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.b($$1, $$2, $$3, $$4, eio.c, kc.n);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fwe b(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.e($$1, $$2, $$3, $$4, eio.c, kc.ak);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fwe c(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new fuh.a($$1, $$2, $$3, $$4, eio.e, kc.k);
+   }
+
+   public static fwe d(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.e($$1, $$2, $$3, $$4, eio.e, kc.l);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static fwe e(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.c($$1, $$2, $$3, $$4, eio.e);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static fwe f(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh.b $$8 = new fuh.b($$1, $$2, $$3, $$4, eio.a, kc.au);
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.622F, 0.508F, 0.082F);
+      return $$8;
+   }
+
+   public static fwe g(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.g($$1, $$2, $$3, $$4, eio.a, kc.av);
+      $$8.u = 0.01F;
+      $$8.a(0.582F, 0.448F, 0.082F);
+      return $$8;
+   }
+
+   public static fwe h(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.c($$1, $$2, $$3, $$4, eio.a);
+      $$8.t = (int)(128.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.522F, 0.408F, 0.082F);
+      return $$8;
+   }
+
+   public static fwe i(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.b($$1, $$2, $$3, $$4, eio.c, kc.aM);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fwe j(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.d($$1, $$2, $$3, $$4, eio.c, kc.ak);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fwe k(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new fuh.a($$1, $$2, $$3, $$4, eio.e, kc.aK);
+   }
+
+   public static fwe l(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.d($$1, $$2, $$3, $$4, eio.e, kc.l);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static fwe m(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.f($$1, $$2, $$3, $$4, eio.a);
+      $$8.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      $$8.u = 0.007F;
+      $$8.a(0.92F, 0.782F, 0.72F);
+      return $$8;
+   }
+
+   public static fwe n(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      int $$8 = (int)(64.0F / aww.b($$1.E_(), 0.1F, 0.9F));
+      fuh $$9 = new fuh.f($$1, $$2, $$3, $$4, eio.a, $$8);
+      $$9.u = 0.005F;
+      $$9.a(0.32F, 0.5F, 0.22F);
+      return $$9;
+   }
+
+   public static fwe o(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh.b $$8 = new fuh.b($$1, $$2, $$3, $$4, eio.a, kc.aD);
+      $$8.a = true;
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static fwe p(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.e($$1, $$2, $$3, $$4, eio.a, kc.aE);
+      $$8.a = true;
+      $$8.u = 0.01F;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static fwe q(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fuh $$8 = new fuh.c($$1, $$2, $$3, $$4, eio.a);
+      $$8.a = true;
+      $$8.t = (int)(28.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   static class a extends fuh.b {
+      a(fry $$0, double $$1, double $$2, double $$3, eim $$4, ka $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void h() {
+         this.v = 1.0F;
+         this.w = 16.0F / (float)(40 - this.t + 16);
+         this.x = 4.0F / (float)(40 - this.t + 8);
+         super.h();
+      }
+   }
+
+   static class b extends fuh {
+      private final ka b;
+
+      b(fry $$0, double $$1, double $$2, double $$3, eim $$4, ka $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+         this.u *= 0.02F;
+         this.t = 40;
+      }
+
+      @Override
+      protected void h() {
+         if (this.t-- <= 0) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+
+      @Override
+      protected void i() {
+         this.j *= 0.02;
+         this.k *= 0.02;
+         this.l *= 0.02;
+      }
+   }
+
+   static class c extends fuh {
+      c(fry $$0, double $$1, double $$2, double $$3, eim $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      }
+   }
+
+   static class d extends fuh.e {
+      d(fry $$0, double $$1, double $$2, double $$3, eim $$4, ka $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            atx $$0 = this.g() == eio.e ? aty.hm : aty.hn;
+            float $$1 = aww.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, $$0, atz.e, $$1, 1.0F, false);
+         }
+      }
+   }
+
+   static class e extends fuh.f {
+      protected final ka b;
+
+      e(fry $$0, double $$1, double $$2, double $$3, eim $$4, ka $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   static class f extends fuh {
+      f(fry $$0, double $$1, double $$2, double $$3, eim $$4) {
+         this($$0, $$1, $$2, $$3, $$4, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
+      }
+
+      f(fry $$0, double $$1, double $$2, double $$3, eim $$4, int $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+         }
+      }
+   }
+
+   static class g extends fuh.e {
+      g(fry $$0, double $$1, double $$2, double $$3, eim $$4, ka $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            float $$0 = aww.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, aty.bU, atz.e, $$0, 1.0F, false);
+         }
+      }
    }
 }

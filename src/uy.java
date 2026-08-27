@@ -1,27 +1,46 @@
-public interface uy {
-   ya a();
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import java.io.IOException;
+import java.util.List;
+import org.slf4j.Logger;
 
-   ur b();
+public class uy<T extends va> extends ByteToMessageDecoder implements vd {
+   private static final Logger a = LogUtils.getLogger();
+   private final vc<T> b;
 
-   void a(vs var1);
-
-   boolean c();
-
-   default boolean a(xz<?> $$0) {
-      return this.c();
+   public uy(vc<T> $$0) {
+      this.b = $$0;
    }
 
-   default boolean d() {
-      return true;
-   }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         yb<? super T> $$4 = this.b.c().decode($$1);
+         yd<? extends yb<? super T>> $$5 = $$4.a();
+         bjw.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         if ($$1.readableBytes() > 0) {
+            throw new IOException(
+               "Packet "
+                  + this.b.a().a()
+                  + "/"
+                  + $$5
+                  + " ("
+                  + $$4.getClass().getSimpleName()
+                  + ") was larger than I expected, found "
+                  + $$1.readableBytes()
+                  + " bytes extra whilst reading packet "
+                  + $$5
+            );
+         } else {
+            $$2.add($$4);
+            if (a.isDebugEnabled()) {
+               a.debug(us.c, " IN: [{}:{}] {}", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName()});
+            }
 
-   default void a(o $$0) {
-      p $$1 = $$0.a("Connection");
-      $$1.a("Protocol", () -> this.b().a());
-      $$1.a("Flow", () -> this.a().toString());
-      this.a($$1);
-   }
-
-   default void a(p $$0) {
+            vd.a($$0, $$4);
+         }
+      }
    }
 }

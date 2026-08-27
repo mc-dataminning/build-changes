@@ -1,20 +1,20 @@
-public record afe(float b) implements xz<aev> {
-   public static final xq<us, afe> a = xz.a(afe::a, afe::new);
+public record afe(int b) implements yb<aez> {
+   public static final xs<uu, afe> a = yb.a(afe::a, afe::new);
 
-   private afe(us $$0) {
-      this($$0.readFloat());
+   private afe(uu $$0) {
+      this($$0.l());
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b);
+   private void a(uu $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yb<afe> a() {
-      return aet.bl;
+   public yd<afe> a() {
+      return aex.bh;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 }

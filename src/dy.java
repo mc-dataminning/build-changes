@@ -42,7 +42,7 @@ public class dy {
       Object var5;
       try {
          JsonElement $$4 = Streams.parse($$3);
-         var5 = ac.a($$2.parse(aja.a(JsonOps.INSTANCE, $$0), $$4), JsonParseException::new);
+         var5 = ac.a($$2.parse(ajf.a(JsonOps.INSTANCE, $$0), $$4), JsonParseException::new);
       } catch (StackOverflowError var9) {
          throw new JsonParseException(var9);
       } finally {

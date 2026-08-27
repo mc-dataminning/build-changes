@@ -1,3 +1,4 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.io.Files;
@@ -6,124 +7,288 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.ProfileLookupCallback;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
-import java.util.Collection;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class asx<K, V extends asw<K>> {
+public class asx {
    private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
-   private final File c;
-   private final Map<String, V> d = Maps.newHashMap();
-
-   public asx(File $$0) {
-      this.c = $$0;
-   }
-
-   public File b() {
-      return this.c;
-   }
-
-   public void a(V $$0) {
-      this.d.put(this.a($$0.g()), $$0);
-
-      try {
-         this.e();
-      } catch (IOException var3) {
-         a.warn("Could not save the list after adding a user.", var3);
-      }
-   }
-
+   private static final int b = 1000;
+   private static final int c = 1;
+   private static boolean d;
+   private final Map<String, asx.a> e = Maps.newConcurrentMap();
+   private final Map<UUID, asx.a> f = Maps.newConcurrentMap();
+   private final Map<String, CompletableFuture<Optional<GameProfile>>> g = Maps.newConcurrentMap();
+   private final GameProfileRepository h;
+   private final Gson i = new GsonBuilder().create();
+   private final File j;
+   private final AtomicLong k = new AtomicLong();
    @Nullable
-   public V b(K $$0) {
-      this.g();
-      return this.d.get(this.a($$0));
+   private Executor l;
+
+   public asx(GameProfileRepository $$0, File $$1) {
+      this.h = $$0;
+      this.j = $$1;
+      Lists.reverse(this.b()).forEach(this::a);
    }
 
-   public void c(K $$0) {
-      this.d.remove(this.a($$0));
+   private void a(asx.a $$0) {
+      GameProfile $$1 = $$0.a();
+      $$0.a(this.e());
+      this.e.put($$1.getName().toLowerCase(Locale.ROOT), $$0);
+      this.f.put($$1.getId(), $$0);
+   }
 
-      try {
-         this.e();
-      } catch (IOException var3) {
-         a.warn("Could not save the list after removing a user.", var3);
+   private static Optional<GameProfile> a(GameProfileRepository $$0, String $$1) {
+      if (!cis.c($$1)) {
+         return c($$1);
+      } else {
+         final AtomicReference<GameProfile> $$2 = new AtomicReference<>();
+         ProfileLookupCallback $$3 = new ProfileLookupCallback() {
+            public void onProfileLookupSucceeded(GameProfile $$0) {
+               $$2.set($$0);
+            }
+
+            public void onProfileLookupFailed(String $$0, Exception $$1) {
+               $$2.set(null);
+            }
+         };
+         $$0.findProfilesByNames(new String[]{$$1}, $$3);
+         GameProfile $$4 = $$2.get();
+         return $$4 != null ? Optional.of($$4) : c($$1);
       }
    }
 
-   public void b(asw<K> $$0) {
-      this.c($$0.g());
+   private static Optional<GameProfile> c(String $$0) {
+      return d() ? Optional.empty() : Optional.of(jf.b($$0));
    }
 
-   public String[] a() {
-      return this.d.keySet().toArray(new String[0]);
+   public static void a(boolean $$0) {
+      d = $$0;
    }
 
-   public boolean c() {
-      return this.d.size() < 1;
+   private static boolean d() {
+      return d;
    }
 
-   protected String a(K $$0) {
-      return $$0.toString();
+   public void a(GameProfile $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      $$1.setTime(new Date());
+      $$1.add(2, 1);
+      Date $$2 = $$1.getTime();
+      asx.a $$3 = new asx.a($$0, $$2);
+      this.a($$3);
+      this.c();
    }
 
-   protected boolean d(K $$0) {
-      return this.d.containsKey(this.a($$0));
+   private long e() {
+      return this.k.incrementAndGet();
    }
 
-   private void g() {
-      List<K> $$0 = Lists.newArrayList();
+   public Optional<GameProfile> a(String $$0) {
+      String $$1 = $$0.toLowerCase(Locale.ROOT);
+      asx.a $$2 = this.e.get($$1);
+      boolean $$3 = false;
+      if ($$2 != null && new Date().getTime() >= $$2.b.getTime()) {
+         this.f.remove($$2.a().getId());
+         this.e.remove($$2.a().getName().toLowerCase(Locale.ROOT));
+         $$3 = true;
+         $$2 = null;
+      }
 
-      for (V $$1 : this.d.values()) {
-         if ($$1.f()) {
-            $$0.add($$1.g());
+      Optional<GameProfile> $$4;
+      if ($$2 != null) {
+         $$2.a(this.e());
+         $$4 = Optional.of($$2.a());
+      } else {
+         $$4 = a(this.h, $$1);
+         if ($$4.isPresent()) {
+            this.a($$4.get());
+            $$3 = false;
          }
       }
 
-      for (K $$2 : $$0) {
-         this.d.remove(this.a($$2));
+      if ($$3) {
+         this.c();
+      }
+
+      return $$4;
+   }
+
+   public CompletableFuture<Optional<GameProfile>> b(String $$0) {
+      if (this.l == null) {
+         throw new IllegalStateException("No executor");
+      } else {
+         CompletableFuture<Optional<GameProfile>> $$1 = this.g.get($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            CompletableFuture<Optional<GameProfile>> $$2 = CompletableFuture.<Optional<GameProfile>>supplyAsync(() -> this.a($$0), ac.f())
+               .whenCompleteAsync(($$1x, $$2x) -> this.g.remove($$0), this.l);
+            this.g.put($$0, $$2);
+            return $$2;
+         }
       }
    }
 
-   protected abstract asw<K> a(JsonObject var1);
-
-   public Collection<V> d() {
-      return this.d.values();
-   }
-
-   public void e() throws IOException {
-      JsonArray $$0 = new JsonArray();
-      this.d.values().stream().map($$0x -> ac.a(new JsonObject(), $$0x::a)).forEach($$0::add);
-
-      try (BufferedWriter $$1 = Files.newWriter(this.c, StandardCharsets.UTF_8)) {
-         b.toJson($$0, $$1);
+   public Optional<GameProfile> a(UUID $$0) {
+      asx.a $$1 = this.f.get($$0);
+      if ($$1 == null) {
+         return Optional.empty();
+      } else {
+         $$1.a(this.e());
+         return Optional.of($$1.a());
       }
    }
 
-   public void f() throws IOException {
-      if (this.c.exists()) {
-         try (BufferedReader $$0 = Files.newReader(this.c, StandardCharsets.UTF_8)) {
-            this.d.clear();
-            JsonArray $$1 = (JsonArray)b.fromJson($$0, JsonArray.class);
-            if ($$1 == null) {
-               return;
+   public void a(Executor $$0) {
+      this.l = $$0;
+   }
+
+   public void a() {
+      this.l = null;
+   }
+
+   private static DateFormat f() {
+      return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
+   }
+
+   public List<asx.a> b() {
+      List<asx.a> $$0 = Lists.newArrayList();
+
+      try {
+         Object var9;
+         try (Reader $$1 = Files.newReader(this.j, StandardCharsets.UTF_8)) {
+            JsonArray $$2 = (JsonArray)this.i.fromJson($$1, JsonArray.class);
+            if ($$2 != null) {
+               DateFormat $$3 = f();
+               $$2.forEach($$2x -> a($$2x, $$3).ifPresent($$0::add));
+               return $$0;
             }
 
-            for (JsonElement $$2 : $$1) {
-               JsonObject $$3 = awc.m($$2, "entry");
-               asw<K> $$4 = this.a($$3);
-               if ($$4.g() != null) {
-                  this.d.put(this.a($$4.g()), (V)$$4);
+            var9 = $$0;
+         }
+
+         return (List<asx.a>)var9;
+      } catch (FileNotFoundException var7) {
+      } catch (JsonParseException | IOException var8) {
+         a.warn("Failed to load profile cache {}", this.j, var8);
+      }
+
+      return $$0;
+   }
+
+   public void c() {
+      JsonArray $$0 = new JsonArray();
+      DateFormat $$1 = f();
+      this.a(1000).forEach($$2x -> $$0.add(a($$2x, $$1)));
+      String $$2 = this.i.toJson($$0);
+
+      try (Writer $$3 = Files.newWriter(this.j, StandardCharsets.UTF_8)) {
+         $$3.write($$2);
+      } catch (IOException var9) {
+      }
+   }
+
+   private Stream<asx.a> a(int $$0) {
+      return ImmutableList.copyOf(this.f.values()).stream().sorted(Comparator.comparing(asx.a::c).reversed()).limit((long)$$0);
+   }
+
+   private static JsonElement a(asx.a $$0, DateFormat $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("name", $$0.a().getName());
+      $$2.addProperty("uuid", $$0.a().getId().toString());
+      $$2.addProperty("expiresOn", $$1.format($$0.b()));
+      return $$2;
+   }
+
+   private static Optional<asx.a> a(JsonElement $$0, DateFormat $$1) {
+      if ($$0.isJsonObject()) {
+         JsonObject $$2 = $$0.getAsJsonObject();
+         JsonElement $$3 = $$2.get("name");
+         JsonElement $$4 = $$2.get("uuid");
+         JsonElement $$5 = $$2.get("expiresOn");
+         if ($$3 != null && $$4 != null) {
+            String $$6 = $$4.getAsString();
+            String $$7 = $$3.getAsString();
+            Date $$8 = null;
+            if ($$5 != null) {
+               try {
+                  $$8 = $$1.parse($$5.getAsString());
+               } catch (ParseException var12) {
                }
             }
+
+            if ($$7 != null && $$6 != null && $$8 != null) {
+               UUID $$9;
+               try {
+                  $$9 = UUID.fromString($$6);
+               } catch (Throwable var11) {
+                  return Optional.empty();
+               }
+
+               return Optional.of(new asx.a(new GameProfile($$9, $$7), $$8));
+            } else {
+               return Optional.empty();
+            }
+         } else {
+            return Optional.empty();
          }
+      } else {
+         return Optional.empty();
+      }
+   }
+
+   static class a {
+      private final GameProfile a;
+      final Date b;
+      private volatile long c;
+
+      a(GameProfile $$0, Date $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public GameProfile a() {
+         return this.a;
+      }
+
+      public Date b() {
+         return this.b;
+      }
+
+      public void a(long $$0) {
+         this.c = $$0;
+      }
+
+      public long c() {
+         return this.c;
       }
    }
 }

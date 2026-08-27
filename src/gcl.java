@@ -1,11 +1,11 @@
-public class gcl extends gde<cck, fnk<cck>> {
-   private static final ajc a = new ajc("textures/entity/goat/goat.png");
+public class gcl extends gee<cbk, fnv<cbk>> {
+   private static final ajh a = new ajh("textures/entity/cow/cow.png");
 
-   public gcl(gby.a $$0) {
-      super($$0, new fnk<>($$0.a(fqe.ah)), 0.7F);
+   public gcl(gcy.a $$0) {
+      super($$0, new fnv<>($$0.a(frc.C)), 0.7F);
    }
 
-   public ajc a(cck $$0) {
+   public ajh a(cbk $$0) {
       return a;
    }
 }

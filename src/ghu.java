@@ -1,138 +1,64 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class ghu {
-   public static final Set<arf<?>> a = Set.of(gjj.a);
-   private static final Logger b = LogUtils.getLogger();
-   private final ajc c;
-   private final int d;
-   private final int e;
-   private final int f;
+public class ghu<T extends bpo & cih, M extends foc<T> & fqn> extends ghj<T, M> {
+   private static final Int2ObjectMap<ajh> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, new ajh("stone"));
+      $$0.put(2, new ajh("iron"));
+      $$0.put(3, new ajh("gold"));
+      $$0.put(4, new ajh("emerald"));
+      $$0.put(5, new ajh("diamond"));
+   });
+   private final Object2ObjectMap<cik, gkm.a> b = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<cii, gkm.a> c = new Object2ObjectOpenHashMap();
+   private final aso d;
+   private final String e;
 
-   public ghu(ajc $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
+   public ghu(get<T, M> $$0, aso $$1, String $$2) {
+      super($$0);
       this.d = $$1;
       this.e = $$2;
-      this.f = $$3;
    }
 
-   public static ghu a(ghy $$0) {
-      return new ghu($$0.g(), $$0.h(), $$0.i(), $$0.j());
-   }
-
-   public ghu.a a(List<ght> $$0, int $$1, Executor $$2) {
-      int $$3 = this.d;
-      ghw<ght> $$4 = new ghw<>($$3, $$3, $$1);
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = 1 << $$1;
-
-      for (ght $$7 : $$0) {
-         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
-         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
-         if ($$8 < $$6) {
-            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), awm.f($$6), awm.f($$8)});
-            $$6 = $$8;
+   public void a(etz $$0, fxq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ce()) {
+         cig $$10 = $$3.gy();
+         cik $$11 = $$10.a();
+         cii $$12 = $$10.b();
+         gkm.a $$13 = this.a(this.b, "type", ki.y, $$11);
+         gkm.a $$14 = this.a(this.c, "profession", ki.z, $$12);
+         M $$15 = this.c();
+         $$15.a($$14 == gkm.a.a || $$14 == gkm.a.b && $$13 != gkm.a.c);
+         ajh $$16 = this.a("type", ki.y.b($$11));
+         a($$15, $$16, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         $$15.a(true);
+         if ($$12 != cii.b && !$$3.o_()) {
+            ajh $$17 = this.a("profession", ki.z.b($$12));
+            a($$15, $$17, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            if ($$12 != cii.m) {
+               ajh $$18 = this.a("profession_level", (ajh)a.get(aww.a($$10.c(), 1, a.size())));
+               a($$15, $$18, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            }
          }
-
-         $$4.a($$7);
       }
-
-      int $$9 = Math.min($$5, $$6);
-      int $$10 = awm.f($$9);
-      int $$11;
-      if ($$10 < $$1) {
-         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
-         $$11 = $$10;
-      } else {
-         $$11 = $$1;
-      }
-
-      try {
-         $$4.c();
-      } catch (ghx var16) {
-         o $$14 = o.a(var16, "Stitching");
-         p $$15 = $$14.a("Stitcher");
-         $$15.a(
-            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
-         );
-         $$15.a("Max Texture Size", $$3);
-         throw new y($$14);
-      }
-
-      int $$16 = Math.max($$4.a(), this.e);
-      int $$17 = Math.max($$4.b(), this.f);
-      Map<ajc, ghz> $$18 = this.a($$4, $$16, $$17);
-      ghz $$19 = $$18.get(ghp.b());
-      CompletableFuture<Void> $$20;
-      if ($$11 > 0) {
-         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
-      } else {
-         $$20 = CompletableFuture.completedFuture(null);
-      }
-
-      return new ghu.a($$16, $$17, $$11, $$19, $$18, $$20);
    }
 
-   public static CompletableFuture<List<ght>> a(gic $$0, List<Function<gic, ght>> $$1, Executor $$2) {
-      List<CompletableFuture<ght>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (ght)$$2x.apply($$0), $$2)).toList();
-      return ac.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
+   private ajh a(String $$0, ajh $$1) {
+      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
    }
 
-   public CompletableFuture<ghu.a> a(asf $$0, ajc $$1, int $$2, Executor $$3) {
-      return this.a($$0, $$1, $$2, $$3, a);
-   }
-
-   public CompletableFuture<ghu.a> a(asf $$0, ajc $$1, int $$2, Executor $$3, Collection<arf<?>> $$4) {
-      gic $$5 = gic.create($$4);
-      return CompletableFuture.<List<Function<gic, ght>>>supplyAsync(() -> gie.a($$0, $$1).a($$0), $$3)
-         .thenCompose($$2x -> a($$5, $$2x, $$3))
-         .thenApply($$2x -> this.a($$2x, $$2, $$3));
-   }
-
-   private Map<ajc, ghz> a(ghw<ght> $$0, int $$1, int $$2) {
-      Map<ajc, ghz> $$3 = new HashMap<>();
-      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new ghz(this.c, $$3x, $$1, $$2, $$4, $$5)));
-      return $$3;
-   }
-
-   public static record a(int a, int b, int c, ghz d, Map<ajc, ghz> e, CompletableFuture<Void> f) {
-      public CompletableFuture<ghu.a> a() {
-         return this.f.thenApply($$0 -> this);
-      }
-
-      public int b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public ghz e() {
-         return this.d;
-      }
-
-      public Map<ajc, ghz> f() {
-         return this.e;
-      }
-
-      public CompletableFuture<Void> g() {
-         return this.f;
-      }
+   public <K> gkm.a a(Object2ObjectMap<K, gkm.a> $$0, String $$1, ig<K> $$2, K $$3) {
+      return (gkm.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
+            try {
+               return $$0xx.f().a(gkm.a).map(gkm::a);
+            } catch (IOException var2x) {
+               return Optional.empty();
+            }
+         }).orElse(gkm.a.a));
    }
 }

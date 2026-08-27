@@ -1,32 +1,57 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class fcc extends fbz {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 500;
+public abstract class fcc<E extends fcc.a<E>> extends fbb<E> {
+   private static final vu a = vu.c("narration.selection.usage");
 
-   public fcc(ezv $$0, bim $$1) {
-      super($$0, $$1);
+   public fcc(ezg $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Nullable
+   @Override
+   public faq a(ffi $$0) {
+      if (this.n() == 0) {
+         return null;
+      } else if (this.aJ_() && $$0 instanceof ffi.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? faq.a(this, faq.a($$2)) : null;
+      } else if (!this.aJ_()) {
+         E $$3 = this.i();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
+
+         return $$3 == null ? null : faq.a(this, faq.a($$3));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   protected void d(ezx $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   public void a(ffc $$0) {
+      E $$1 = this.t();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.i();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
+      }
+
+      if (this.aJ_()) {
+         $$0.a(ffb.d, a);
+      }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
-   }
+   public abstract static class a<E extends fcc.a<E>> extends fbb.a<E> implements ffd {
+      public abstract vu a();
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+      @Override
+      public void b(ffc $$0) {
+         $$0.a(ffb.a, this.a());
+      }
    }
 }

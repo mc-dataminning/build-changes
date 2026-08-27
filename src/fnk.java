@@ -1,41 +1,61 @@
-public class fnk<T extends cck> extends foo<T> {
-   public fnk(fqf $$0) {
-      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
+public class fnk extends foz {
+   private static final String a = "left_pages";
+   private static final String b = "right_pages";
+   private static final String c = "flip_page1";
+   private static final String d = "flip_page2";
+   private final frd e;
+   private final frd f;
+   private final frd g;
+   private final frd h;
+   private final frd i;
+   private final frd j;
+   private final frd k;
+
+   public fnk(frd $$0) {
+      super(fxy::c);
+      this.e = $$0;
+      this.f = $$0.b("left_lid");
+      this.g = $$0.b("right_lid");
+      this.h = $$0.b("left_pages");
+      this.i = $$0.b("right_pages");
+      this.j = $$0.b("flip_page1");
+      this.k = $$0.b("flip_page2");
    }
 
-   public static fql c() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      fqo $$2 = $$1.a(
-         "head",
-         fqk.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         fqh.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", fqk.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fqh.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", fqk.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fqh.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", fqk.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), fqh.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", fqk.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), fqh.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", fqk.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fqh.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", fqk.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fqh.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", fqk.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fqh.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", fqk.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fqh.a(-3.0F, 14.0F, -6.0F));
-      return fql.a($$0, 64, 64);
+   public static frj a() {
+      frl $$0 = new frl();
+      frm $$1 = $$0.a();
+      $$1.a("left_lid", fri.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), frf.a(0.0F, 0.0F, -1.0F));
+      $$1.a("right_lid", fri.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), frf.a(0.0F, 0.0F, 1.0F));
+      $$1.a("seam", fri.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), frf.b(0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left_pages", fri.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), frf.a);
+      $$1.a("right_pages", fri.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), frf.a);
+      fri $$2 = fri.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
+      $$1.a("flip_page1", $$2, frf.a);
+      $$1.a("flip_page2", $$2, frf.a);
+      return frj.a($$0, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.b("left_horn").k = $$0.gl();
-      this.a.b("right_horn").k = $$0.gr();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.gw();
-      if ($$6 != 0.0F) {
-         this.a.e = $$6;
-      }
+   @Override
+   public void a(etz $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public void b(etz $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      float $$4 = (aww.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
+      this.f.f = (float) Math.PI + $$4;
+      this.g.f = -$$4;
+      this.h.f = $$4;
+      this.i.f = -$$4;
+      this.j.f = $$4 - $$4 * 2.0F * $$1;
+      this.k.f = $$4 - $$4 * 2.0F * $$2;
+      this.h.b = aww.a($$4);
+      this.i.b = aww.a($$4);
+      this.j.b = aww.a($$4);
+      this.k.b = aww.a($$4);
    }
 }

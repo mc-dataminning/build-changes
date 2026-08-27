@@ -1,39 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhj extends czo implements czi {
-   public static final MapCodec<dhj> a = b(dhj::new);
-   protected static final float b = 6.0F;
-   protected static final epo c = czf.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class dhj extends daa {
+   public static final MapCodec<dhj> b = b(dhj::new);
+   public static final dnq c = dnp.z;
 
    @Override
-   public MapCodec<dhj> a() {
-      return a;
+   protected MapCodec<? extends dhj> a() {
+      return b;
    }
 
-   protected dhj(dmd.d $$0) {
+   protected dhj(dmy.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return c;
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      return $$1 == ih.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean b(cwh $$0, ib $$1, dme $$2) {
-      return true;
+   public dmz a(css $$0) {
+      dmz $$1 = $$0.q().a_($$0.a().c());
+      return this.o().a(c, Boolean.valueOf(m($$1)));
+   }
+
+   private static boolean m(dmz $$0) {
+      return $$0.a(aun.bz);
    }
 
    @Override
-   public boolean a(cwe $$0, awt $$1, ib $$2, dme $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(apa $$0, awt $$1, ib $$2, dme $$3) {
-      dbn $$4 = (dbn)($$3.a(czh.bu) ? czh.iI : czh.iH);
-      if ($$4.o().a($$0, $$2) && $$0.u($$2.c())) {
-         dbn.a($$0, $$4.o(), $$2, 2);
-      }
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(c);
    }
 }

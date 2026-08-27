@@ -1,8 +1,2 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@eqw
-@eqv
-interface erl {
+public interface erl<T> extends erk<T> {
 }

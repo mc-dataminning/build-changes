@@ -1,110 +1,70 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+public abstract class cyf {
+   public static final ajg<cxy> a = a("the_void");
+   public static final ajg<cxy> b = a("plains");
+   public static final ajg<cxy> c = a("sunflower_plains");
+   public static final ajg<cxy> d = a("snowy_plains");
+   public static final ajg<cxy> e = a("ice_spikes");
+   public static final ajg<cxy> f = a("desert");
+   public static final ajg<cxy> g = a("swamp");
+   public static final ajg<cxy> h = a("mangrove_swamp");
+   public static final ajg<cxy> i = a("forest");
+   public static final ajg<cxy> j = a("flower_forest");
+   public static final ajg<cxy> k = a("birch_forest");
+   public static final ajg<cxy> l = a("dark_forest");
+   public static final ajg<cxy> m = a("old_growth_birch_forest");
+   public static final ajg<cxy> n = a("old_growth_pine_taiga");
+   public static final ajg<cxy> o = a("old_growth_spruce_taiga");
+   public static final ajg<cxy> p = a("taiga");
+   public static final ajg<cxy> q = a("snowy_taiga");
+   public static final ajg<cxy> r = a("savanna");
+   public static final ajg<cxy> s = a("savanna_plateau");
+   public static final ajg<cxy> t = a("windswept_hills");
+   public static final ajg<cxy> u = a("windswept_gravelly_hills");
+   public static final ajg<cxy> v = a("windswept_forest");
+   public static final ajg<cxy> w = a("windswept_savanna");
+   public static final ajg<cxy> x = a("jungle");
+   public static final ajg<cxy> y = a("sparse_jungle");
+   public static final ajg<cxy> z = a("bamboo_jungle");
+   public static final ajg<cxy> A = a("badlands");
+   public static final ajg<cxy> B = a("eroded_badlands");
+   public static final ajg<cxy> C = a("wooded_badlands");
+   public static final ajg<cxy> D = a("meadow");
+   public static final ajg<cxy> E = a("cherry_grove");
+   public static final ajg<cxy> F = a("grove");
+   public static final ajg<cxy> G = a("snowy_slopes");
+   public static final ajg<cxy> H = a("frozen_peaks");
+   public static final ajg<cxy> I = a("jagged_peaks");
+   public static final ajg<cxy> J = a("stony_peaks");
+   public static final ajg<cxy> K = a("river");
+   public static final ajg<cxy> L = a("frozen_river");
+   public static final ajg<cxy> M = a("beach");
+   public static final ajg<cxy> N = a("snowy_beach");
+   public static final ajg<cxy> O = a("stony_shore");
+   public static final ajg<cxy> P = a("warm_ocean");
+   public static final ajg<cxy> Q = a("lukewarm_ocean");
+   public static final ajg<cxy> R = a("deep_lukewarm_ocean");
+   public static final ajg<cxy> S = a("ocean");
+   public static final ajg<cxy> T = a("deep_ocean");
+   public static final ajg<cxy> U = a("cold_ocean");
+   public static final ajg<cxy> V = a("deep_cold_ocean");
+   public static final ajg<cxy> W = a("frozen_ocean");
+   public static final ajg<cxy> X = a("deep_frozen_ocean");
+   public static final ajg<cxy> Y = a("mushroom_fields");
+   public static final ajg<cxy> Z = a("dripstone_caves");
+   public static final ajg<cxy> aa = a("lush_caves");
+   public static final ajg<cxy> ab = a("deep_dark");
+   public static final ajg<cxy> ac = a("nether_wastes");
+   public static final ajg<cxy> ad = a("warped_forest");
+   public static final ajg<cxy> ae = a("crimson_forest");
+   public static final ajg<cxy> af = a("soul_sand_valley");
+   public static final ajg<cxy> ag = a("basalt_deltas");
+   public static final ajg<cxy> ah = a("the_end");
+   public static final ajg<cxy> ai = a("end_highlands");
+   public static final ajg<cxy> aj = a("end_midlands");
+   public static final ajg<cxy> ak = a("small_end_islands");
+   public static final ajg<cxy> al = a("end_barrens");
 
-public class cyf extends dcb {
-   public static final MapCodec<cyf> a = b(cyf::new);
-   public static final dmy b = dda.aE;
-   private static final epo c = czf.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final epo d = czf.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final epo e = czf.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final epo f = czf.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final epo g = czf.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final epo h = czf.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final epo i = czf.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final epo j = epl.a(c, d, e, f);
-   private static final epo k = epl.a(c, g, h, i);
-   private static final vs l = vs.c("container.repair");
-   private static final float m = 2.0F;
-   private static final int n = 40;
-
-   @Override
-   public MapCodec<cyf> a() {
-      return a;
-   }
-
-   public cyf(dmd.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ih.c));
-   }
-
-   @Override
-   public dme a(crx $$0) {
-      return this.o().a(b, $$0.g().h());
-   }
-
-   @Override
-   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
-      if ($$1.B) {
-         return bml.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(atz.aC);
-         return bml.b;
-      }
-   }
-
-   @Nullable
-   @Override
-   protected bmp b(dme $$0, cwe $$1, ib $$2) {
-      return new bmv(($$2x, $$3, $$4) -> new ckw($$2x, $$3, clf.a($$1, $$2)), l);
-   }
-
-   @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      ih $$4 = $$0.c(b);
-      return $$4.o() == ih.a.a ? j : k;
-   }
-
-   @Override
-   protected void a(cek $$0) {
-      $$0.b(2.0F, 40);
-   }
-
-   @Override
-   public void a(cwe $$0, ib $$1, dme $$2, dme $$3, cek $$4) {
-      if (!$$4.aU()) {
-         $$0.c(1031, $$1, 0);
-      }
-   }
-
-   @Override
-   public void a(cwe $$0, ib $$1, cek $$2) {
-      if (!$$2.aU()) {
-         $$0.c(1029, $$1, 0);
-      }
-   }
-
-   @Override
-   public bne a(bof $$0) {
-      return $$0.dK().b($$0);
-   }
-
-   @Nullable
-   public static dme e(dme $$0) {
-      if ($$0.a(czh.gS)) {
-         return czh.gT.o().a(b, $$0.c(b));
-      } else {
-         return $$0.a(czh.gT) ? czh.gU.o().a(b, $$0.c(b)) : null;
-      }
-   }
-
-   @Override
-   protected dme a(dme $$0, dfr $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
-      return false;
-   }
-
-   @Override
-   public int b(dme $$0, cvk $$1, ib $$2) {
-      return $$0.d($$1, $$2).ak;
+   private static ajg<cxy> a(String $$0) {
+      return ajg.a(kj.au, new ajh($$0));
    }
 }

@@ -1,22 +1,10 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+import java.io.Closeable;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class gni {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+public interface gni extends Closeable {
+   AudioFormat a();
 
-   public gni(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
-   }
-
-   public void a(gmy $$0) {
-      if (this.b != null) {
-         $$0.send(gmz.d, $$0x -> {
-            $$0x.a(gnb.x, (int)this.b.toMillis());
-            $$0x.a(gnb.y, this.a);
-         });
-      }
-   }
+   ByteBuffer a(int var1) throws IOException;
 }

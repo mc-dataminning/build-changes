@@ -1,16 +1,29 @@
-public record abg(cpl b, int c) implements xz<aai> {
-   public static final xq<vd, abg> a = xq.a(xo.a(ki.F), abg::b, xo.d, abg::e, abg::new);
+public class abg implements yb<aam> {
+   public static final xs<uu, abg> a = yb.a(abg::a, abg::new);
+   private final int b;
 
-   @Override
-   public yb<abg> a() {
-      return aet.x;
+   public abg(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(aai $$0) {
+   private abg(uu $$0) {
+      this.b = $$0.readUnsignedByte();
+   }
+
+   private void a(uu $$0) {
+      $$0.k(this.b);
+   }
+
+   @Override
+   public yd<abg> a() {
+      return aex.t;
+   }
+
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

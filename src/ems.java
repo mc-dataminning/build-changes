@@ -1,84 +1,45 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
 
-public record ems(Map<String, ejx> b, ejy.b c) implements emx {
+public class ems extends emg {
    public static final Codec<ems> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, ejx.a).fieldOf("scores").forGetter(ems::c), ejy.b.e.fieldOf("entity").forGetter(ems::d))
+      $$0 -> a($$0)
+            .and($$0.group(eop.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
             .apply($$0, ems::new)
    );
+   private final eoo b;
+   private final boolean c;
 
-   @Override
-   public emy b() {
-      return emz.i;
+   private ems(List<ent> $$0, eoo $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<emg<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   public emi b() {
+      return emj.c;
    }
 
-   public boolean a(ejy $$0) {
-      bof $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         epz $$2 = $$0.d().f();
-
-         for (Entry<String, ejx> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   @Override
+   public Set<enc<?>> a() {
+      return this.b.a();
    }
 
-   protected boolean a(ejy $$0, bof $$1, epz $$2, String $$3, ejx $$4) {
-      epr $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         epv $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
+   @Override
+   public cqk a(cqk $$0, eku $$1) {
+      int $$2 = this.c ? $$0.M() : 0;
+      $$0.f(aww.a($$2 + this.b.a($$1), 0, $$0.g()));
+      return $$0;
    }
 
-   public static ems.a a(ejy.b $$0) {
-      return new ems.a($$0);
+   public static emg.a<?> a(eoo $$0) {
+      return a($$1 -> new ems($$1, $$0, false));
    }
 
-   public Map<String, ejx> c() {
-      return this.b;
-   }
-
-   public ejy.b d() {
-      return this.c;
-   }
-
-   public static class a implements emx.a {
-      private final Builder<String, ejx> a = ImmutableMap.builder();
-      private final ejy.b b;
-
-      public a(ejy.b $$0) {
-         this.b = $$0;
-      }
-
-      public ems.a a(String $$0, ejx $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public emx build() {
-         return new ems(this.a.build(), this.b);
-      }
+   public static emg.a<?> a(eoo $$0, boolean $$1) {
+      return a($$2 -> new ems($$2, $$0, $$1));
    }
 }

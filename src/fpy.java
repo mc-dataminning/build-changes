@@ -1,44 +1,57 @@
-public class fpy<T extends cfz> extends fnr<T> implements fpp {
-   private final fqf a = this.l.b("hat_rim");
-
-   public fpy(fqf $$0) {
+public class fpy<T extends bpq & cgc> extends fop<T> {
+   public fpy(frd $$0) {
       super($$0);
    }
 
-   public static fql c() {
-      fqn $$0 = fnr.a(fqj.a, 0.0F);
-      fqo $$1 = $$0.a();
-      $$1.a("head", new fqk().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), fqh.a);
-      fqo $$2 = $$1.a("hat", fqk.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fqj(0.5F)), fqh.a);
-      $$2.a("hat_rim", fqk.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fqh.b((float) (-Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("body", fqk.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fqj(0.05F)), fqh.a);
-      $$1.a("right_arm", fqk.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fqh.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fqk.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fqh.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fqk.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fqh.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", fqk.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fqh.a(2.0F, 12.0F, 0.0F));
-      return fql.a($$0, 64, 64);
+   public static frj c() {
+      frl $$0 = fop.a(frh.a, 0.0F);
+      frm $$1 = $$0.a();
+      $$1.a("right_arm", fri.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), frf.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fri.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), frf.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fri.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), frf.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fri.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), frf.a(2.0F, 12.0F, 0.0F));
+      return frj.a($$0, 64, 32);
    }
 
-   public static fql a(fqj $$0) {
-      fqn $$1 = fnr.a($$0, 0.0F);
-      fqo $$2 = $$1.a();
-      $$2.a("head", fqk.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fqh.a);
-      $$2.a("body", fqk.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), fqh.a);
-      $$2.a("right_leg", fqk.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fqh.a(-2.0F, 12.0F, 0.0F));
-      $$2.a("left_leg", fqk.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fqh.a(2.0F, 12.0F, 0.0F));
-      $$2.a("hat").a("hat_rim", fqk.c(), fqh.a);
-      return fql.a($$1, 64, 32);
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = fop.a.a;
+      this.r = fop.a.a;
+      cqk $$4 = $$0.b(bnb.a);
+      if ($$4.a(cqn.ot) && $$0.gf()) {
+         if ($$0.fr() == bpi.b) {
+            this.s = fop.a.d;
+         } else {
+            this.r = fop.a.d;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      fmc.a(this.o, this.n, $$0.gd(), this.c, $$3);
+      cqk $$6 = $$0.eU();
+      if ($$0.gf() && ($$6.b() || !$$6.a(cqn.ot))) {
+         float $$7 = aww.a(this.c * (float) Math.PI);
+         float $$8 = aww.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
+         this.n.g = 0.0F;
+         this.o.g = 0.0F;
+         this.n.f = -(0.1F - $$7 * 0.6F);
+         this.o.f = 0.1F - $$7 * 0.6F;
+         this.n.e = (float) (-Math.PI / 2);
+         this.o.e = (float) (-Math.PI / 2);
+         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
+         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
+         fna.a(this.n, this.o, $$3);
+      }
    }
 
    @Override
-   public void a(boolean $$0) {
-      this.k.k = $$0;
-      this.l.k = $$0;
-      this.a.k = $$0;
+   public void a(bpi $$0, etz $$1) {
+      float $$2 = $$0 == bpi.b ? 1.0F : -1.0F;
+      frd $$3 = this.a($$0);
+      $$3.b += $$2;
+      $$3.a($$1);
+      $$3.b -= $$2;
    }
 }

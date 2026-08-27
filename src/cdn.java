@@ -1,80 +1,135 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cdn extends cdh {
-   private static final bzn b = bzn.a().d();
+public class cdn extends cdi {
+   private int bY = 47999;
+
+   public cdn(bpc<? extends cdn> $$0, cwz $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   public boolean gw() {
+      return true;
+   }
+
    @Nullable
-   private eig c;
-   @Nullable
-   private eov d;
-
-   public cdn(cdf $$0) {
-      super($$0);
+   @Override
+   protected cdi gB() {
+      return bpc.bd.a(this.dM());
    }
 
    @Override
-   public cdv<cdn> i() {
-      return cdv.c;
+   public void b(ta $$0) {
+      super.b($$0);
+      $$0.a("DespawnDelay", this.bY);
    }
 
    @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
-   }
-
-   @Override
-   public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.do(), this.a.dq(), this.a.du());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.O || this.a.P) {
-         this.j();
+   public void a(ta $$0) {
+      super.a($$0);
+      if ($$0.b("DespawnDelay", 99)) {
+         this.bY = $$0.h("DespawnDelay");
       }
    }
 
-   @Nullable
    @Override
-   public eov g() {
-      return this.d;
+   protected void z() {
+      super.z();
+      this.bR.a(1, new bxe(this, 2.0));
+      this.bS.a(1, new cdn.a(this));
    }
 
-   private void j() {
-      if (this.c == null || this.c.c()) {
-         int $$0 = this.a.A();
-         ib $$1 = this.a.dJ().a(drq.a.f, dut.a(this.a.u()));
-         cia $$2 = this.a.dJ().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-         int $$4;
-         if ($$2 != null) {
-            eov $$3 = new eov($$2.do(), 0.0, $$2.du()).d();
-            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
+   @Override
+   public void x(int $$0) {
+      this.bY = $$0;
+   }
+
+   @Override
+   protected void f(cis $$0) {
+      bow $$1 = this.gc();
+      if (!($$1 instanceof cil)) {
+         super.f($$0);
+      }
+   }
+
+   @Override
+   public void m_() {
+      super.m_();
+      if (!this.dM().B) {
+         this.hc();
+      }
+   }
+
+   private void hc() {
+      if (this.hd()) {
+         this.bY = this.he() ? ((cil)this.gc()).gw() - 1 : this.bY - 1;
+         if (this.bY <= 0) {
+            this.a(true, false);
+            this.am();
+         }
+      }
+   }
+
+   private boolean hd() {
+      return !this.gC() && !this.hf() && !this.cV();
+   }
+
+   private boolean he() {
+      return this.gc() instanceof cil;
+   }
+
+   private boolean hf() {
+      return this.gb() && !this.he();
+   }
+
+   @Nullable
+   @Override
+   public bqg a(cxo $$0, bna $$1, bps $$2, @Nullable bqg $$3) {
+      if ($$2 == bps.h) {
+         this.c_(0);
+      }
+
+      if ($$3 == null) {
+         $$3 = new bor.a(false);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected static class a extends byl {
+      private final cdi a;
+      private bpo b;
+      private int c;
+
+      public a(cdi $$0) {
+         super($$0, false);
+         this.a = $$0;
+         this.a(EnumSet.of(bwl.a.d));
+      }
+
+      @Override
+      public boolean a() {
+         if (!this.a.gb()) {
+            return false;
+         } else if (!(this.a.gc() instanceof cil $$1)) {
+            return false;
          } else {
-            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
-         }
-
-         eie $$6 = new eie($$1.u(), $$1.v(), $$1.w());
-         this.c = this.a.a($$0, $$4, $$6);
-         if (this.c != null) {
-            this.c.a();
+            this.b = $$1.ej();
+            int $$2 = $$1.ek();
+            return $$2 != this.c && this.a(this.b, cae.a);
          }
       }
 
-      this.k();
-      if (this.c != null && this.c.c()) {
-         this.a.gi().a(cdv.d);
-      }
-   }
+      @Override
+      public void c() {
+         this.e.h(this.b);
+         bow $$0 = this.a.gc();
+         if ($$0 instanceof cil) {
+            this.c = ((cil)$$0).ek();
+         }
 
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         jf $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new eov($$1, $$3, $$2);
+         super.c();
       }
    }
 }

@@ -1,71 +1,56 @@
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class crz {
-   @Nullable
-   private final cia a;
-   private final bmk b;
-   private final eor c;
-   private final cwe d;
-   private final cpq e;
+public enum crz implements crx {
+   a(0, 59, 2.0F, 0.0F, 15, () -> ctk.a(auv.b)),
+   b(1, 131, 4.0F, 1.0F, 5, () -> ctk.a(auv.ax)),
+   c(2, 250, 6.0F, 2.0F, 14, () -> ctk.a(cqn.oD)),
+   d(3, 1561, 8.0F, 3.0F, 10, () -> ctk.a(cqn.ox)),
+   e(0, 32, 12.0F, 0.0F, 22, () -> ctk.a(cqn.oH)),
+   f(4, 2031, 9.0F, 4.0F, 15, () -> ctk.a(cqn.oI));
 
-   public crz(cia $$0, bmk $$1, eor $$2) {
-      this($$0.dJ(), $$0, $$1, $$0.b($$1), $$2);
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final awr<ctk> l;
+
+   private crz(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<ctk> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = new awr<>($$5);
    }
 
-   protected crz(cwe $$0, @Nullable cia $$1, bmk $$2, cpq $$3, eor $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   @Override
+   public int a() {
+      return this.h;
    }
 
-   protected final eor j() {
-      return this.c;
+   @Override
+   public float b() {
+      return this.i;
    }
 
-   public ib a() {
-      return this.c.a();
+   @Override
+   public float c() {
+      return this.j;
    }
 
-   public ih k() {
-      return this.c.b();
+   @Override
+   public int d() {
+      return this.g;
    }
 
-   public eov l() {
-      return this.c.e();
+   @Override
+   public int e() {
+      return this.k;
    }
 
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public cpq n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cia o() {
-      return this.a;
-   }
-
-   public bmk p() {
-      return this.b;
-   }
-
-   public cwe q() {
-      return this.d;
-   }
-
-   public ih g() {
-      return this.a == null ? ih.c : this.a.cB();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fK();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dz();
+   @Override
+   public ctk f() {
+      return this.l.a();
    }
 }

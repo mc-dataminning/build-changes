@@ -1,42 +1,89 @@
 import java.util.EnumSet;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bwi extends bvu {
-   private final bpf a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class bwi extends bwl {
+   private final bpq a;
+   private final Predicate<bpq> b;
+   @Nullable
+   private bpq c;
+   private final double d;
+   private final byz e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public bwi(bpf $$0, double $$1) {
+   public bwi(bpq $$0, double $$1, float $$2, float $$3) {
       this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(bvu.a.a));
-   }
-
-   @Override
-   public boolean a() {
-      if (this.a.fT()) {
-         return false;
-      } else {
-         eov $$0 = bzr.a(this.a, 16, 7, eov.c(this.a.fU()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.c;
-            this.c = $$0.d;
-            this.d = $$0.e;
-            return true;
-         }
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.K();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(bwl.a.a, bwl.a.b));
+      if (!($$0.K() instanceof byy) && !($$0.K() instanceof byx)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
       }
    }
 
    @Override
+   public boolean a() {
+      List<bpq> $$0 = this.a.dM().a(bpq.class, this.a.cH().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (bpq $$1 : $$0) {
+            if (!$$1.ce()) {
+               this.c = $$1;
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   @Override
    public boolean b() {
-      return !this.a.N().l();
+      return this.c != null && !this.e.l() && this.a.g(this.c) > (double)(this.g * this.g);
    }
 
    @Override
    public void c() {
-      this.a.N().a(this.b, this.c, this.d, this.e);
+      this.f = 0;
+      this.h = this.a.a(eiy.j);
+      this.a.a(eiy.j, 0.0F);
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+      this.e.n();
+      this.a.a(eiy.j, this.h);
+   }
+
+   @Override
+   public void e() {
+      if (this.c != null && !this.a.gb()) {
+         this.a.G().a(this.c, 10.0F, (float)this.a.Z());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.dr() - this.c.dr();
+            double $$1 = this.a.dt() - this.c.dt();
+            double $$2 = this.a.dx() - this.c.dx();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.n();
+               bvn $$4 = this.c.G();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.dr() && $$4.f() == this.a.dt() && $$4.g() == this.a.dx()) {
+                  double $$5 = this.c.dr() - this.a.dr();
+                  double $$6 = this.c.dx() - this.a.dx();
+                  this.e.a(this.a.dr() - $$5, this.a.dt(), this.a.dx() - $$6, this.d);
+               }
+            }
+         }
+      }
    }
 }

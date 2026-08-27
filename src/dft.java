@@ -1,151 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dft extends czf implements dgf {
+public class dft extends daa implements dah {
    public static final MapCodec<dft> a = b(dft::new);
-   private static final int f = 1;
-   private static final epo g;
-   private static final epo h;
-   private static final epo i = czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   private static final epo j = epl.b().a(0.0, -1.0, 0.0);
-   public static final int b = 7;
-   public static final dne c = dmu.aW;
-   public static final dmv d = dmu.C;
-   public static final dmv e = dmu.b;
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final eqk f = eqh.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
    public MapCodec<dft> a() {
       return a;
    }
 
-   protected dft(dmd.d $$0) {
+   public dft(dmy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(7)).a(d, Boolean.valueOf(false)).a(e, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(c, d, e);
+   protected boolean a(dmz $$0, dmz $$1, ih $$2) {
+      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
    }
 
    @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      if (!$$3.a($$0.b().l())) {
-         return $$0.c(e) ? h : g;
-      } else {
-         return epl.b();
-      }
+   protected eqk f(dmz $$0, cwf $$1, ib $$2) {
+      return eqh.a();
    }
 
    @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2) {
-      return epl.b();
-   }
-
-   @Override
-   protected boolean a(dme $$0, crx $$1) {
-      return $$1.n().a(this.l());
-   }
-
-   @Override
-   public dme a(crx $$0) {
-      ib $$1 = $$0.a();
-      cwe $$2 = $$0.q();
-      int $$3 = a($$2, $$1);
-      return this.o().a(d, Boolean.valueOf($$2.b_($$1).a() == ehs.c)).a(c, Integer.valueOf($$3)).a(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
-   }
-
-   @Override
-   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      if (!$$1.B) {
-         $$1.a($$2, this, 1);
-      }
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ehs.c, ehs.c.a($$3));
-      }
-
-      if (!$$3.y_()) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
-   }
-
-   @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      int $$4 = a($$1, $$2);
-      dme $$5 = $$0.a(c, Integer.valueOf($$4)).a(e, Boolean.valueOf(this.a($$1, $$2, $$4)));
-      if ($$5.c(c) == 7) {
-         if ($$0.c(c) == 7) {
-            cek.a($$1, $$2, $$5);
-         } else {
-            $$1.b($$2, true);
-         }
-      } else if ($$0 != $$5) {
-         $$1.a($$2, $$5, 3);
-      }
-   }
-
-   @Override
-   protected boolean a(dme $$0, cwh $$1, ib $$2) {
-      return a($$1, $$2) < 7;
-   }
-
-   @Override
-   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      if ($$3.a(epl.b(), $$2, true) && !$$3.b()) {
-         return g;
-      } else {
-         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(j, $$2, true) ? i : epl.a();
-      }
-   }
-
-   @Override
-   protected ehr c_(dme $$0) {
-      return $$0.c(d) ? ehs.c.a(false) : super.c_($$0);
-   }
-
-   private boolean a(cvk $$0, ib $$1, int $$2) {
-      return $$2 > 0 && !$$0.a_($$1.d()).a(this);
-   }
-
-   public static int a(cvk $$0, ib $$1) {
-      ib.a $$2 = $$1.j().c(ih.a);
-      dme $$3 = $$0.a_($$2);
-      int $$4 = 7;
-      if ($$3.a(czh.nS)) {
-         $$4 = $$3.c(c);
-      } else if ($$3.d($$0, $$2, ih.b)) {
-         return 0;
-      }
-
-      for (ih $$5 : ih.c.a) {
-         dme $$6 = $$0.a_($$2.a($$1, $$5));
-         if ($$6.a(czh.nS)) {
-            $$4 = Math.min($$4, $$6.c(c) + 1);
-            if ($$4 == 1) {
-               break;
+   protected void a(dmz $$0, cwz $$1, ib $$2, bow $$3) {
+      if (!($$3 instanceof bpo) || $$3.dn().a(this)) {
+         $$3.a($$0, new epr(0.9F, 1.5, 0.9F));
+         if ($$1.B) {
+            axd $$4 = $$1.E_();
+            boolean $$5 = $$3.ac != $$3.dr() || $$3.ae != $$3.dx();
+            if ($$5 && $$4.h()) {
+               $$1.a(
+                  kc.aI,
+                  $$3.dr(),
+                  (double)($$2.v() + 1),
+                  $$3.dx(),
+                  (double)(aww.b($$4, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(aww.b($$4, -1.0F, 1.0F) * 0.083333336F)
+               );
             }
          }
       }
 
-      return $$4;
+      $$3.o(true);
+      if (!$$1.B) {
+         if ($$3.bN() && ($$1.Z().b(cwv.c) || $$3 instanceof cis) && $$3.a($$1, $$2)) {
+            $$1.b($$2, false);
+         }
+
+         $$3.a_(false);
+      }
    }
 
-   static {
-      epo $$0 = czf.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
-      epo $$1 = czf.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
-      epo $$2 = czf.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
-      epo $$3 = czf.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
-      epo $$4 = czf.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
-      g = epl.a($$0, $$1, $$2, $$3, $$4);
-      epo $$5 = czf.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
-      epo $$6 = czf.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-      epo $$7 = czf.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
-      epo $$8 = czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
-      h = epl.a(dft.i, g, $$6, $$5, $$8, $$7);
+   @Override
+   public void a(cwz $$0, dmz $$1, ib $$2, bow $$3, float $$4) {
+      if (!((double)$$4 < 4.0) && $$3 instanceof bpo $$5) {
+         bpo.a $$7 = $$5.eI();
+         atx $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
+      }
+   }
+
+   @Override
+   protected eqk b(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      if ($$3 instanceof eqb $$4) {
+         bow $$5 = $$4.c();
+         if ($$5 != null) {
+            if ($$5.ab > 2.5F) {
+               return f;
+            }
+
+            boolean $$6 = $$5 instanceof cfc;
+            if ($$6 || a($$5) && $$3.a(eqh.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
+            }
+         }
+      }
+
+      return eqh.a();
+   }
+
+   @Override
+   protected eqk c(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return eqh.a();
+   }
+
+   public static boolean a(bow $$0) {
+      if ($$0.ai().a(auq.h)) {
+         return true;
+      } else {
+         return $$0 instanceof bpo ? ((bpo)$$0).d(bpd.c).a(cqn.pA) : false;
+      }
+   }
+
+   @Override
+   public cqk a(@Nullable cis $$0, cxa $$1, ib $$2, dmz $$3) {
+      $$1.a($$2, dac.a.o(), 11);
+      if (!$$1.x_()) {
+         $$1.c(2001, $$2, daa.i($$3));
+      }
+
+      return new cqk(cqn.qA);
+   }
+
+   @Override
+   public Optional<atx> av_() {
+      return Optional.of(aty.dh);
+   }
+
+   @Override
+   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
+      return true;
    }
 }

@@ -1,74 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gjg implements asg {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gjf b = new gjf("US", "English", false);
-   private Map<String, gjf> c = ImmutableMap.of("en_us", b);
-   private String d;
+public class gjg {
+   private static final BiMap<ajh, gjf> i = HashBiMap.create();
+   public static final gjf a = a("single", gjl.b);
+   public static final gjf b = a("directory", gji.b);
+   public static final gjf c = a("filter", gjm.b);
+   public static final gjf d = a("unstitch", gjn.b);
+   public static final gjf e = a("paletted_permutations", gjk.b);
+   public static Codec<gjf> f = ajh.a.flatXmap($$0 -> {
+      gjf $$1 = (gjf)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      ajh $$1 = (ajh)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<gjd> g = f.dispatch(gjd::a, gjf::a);
+   public static Codec<List<gjd>> h = g.listOf().fieldOf("sources").codec();
 
-   public gjg(String $$0) {
-      this.d = $$0;
-   }
-
-   private static Map<String, gjf> a(Stream<aqt> $$0) {
-      Map<String, gjf> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            gjs $$2 = $$1x.a(gjs.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
-   }
-
-   @Override
-   public void a(asf $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         gjf $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
+   private static gjf a(String $$0, Codec<? extends gjd> $$1) {
+      gjf $$2 = new gjf($$1);
+      ajh $$3 = new ajh($$0);
+      gjf $$4 = (gjf)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
+      } else {
+         return $$2;
       }
-
-      gjc $$4 = gjc.a($$0, $$1, $$2);
-      gje.a($$4);
-      st.a($$4);
-   }
-
-   public void a(String $$0) {
-      this.d = $$0;
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, gjf> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public gjf b(String $$0) {
-      return this.c.get($$0);
    }
 }

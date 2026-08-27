@@ -1,37 +1,32 @@
-public class adk implements xz<aai> {
-   public static final xq<us, adk> a = xz.a(adk::a, adk::new);
-   private final ib b;
-   private final float c;
+import javax.annotation.Nullable;
 
-   public adk(ib $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class adk implements yb<aam> {
+   public static final xs<uu, adk> a = yb.a(adk::a, adk::new);
+   private final int b;
+
+   public adk(bow $$0) {
+      this.b = $$0.aj();
    }
 
-   private adk(us $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private adk(uu $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(uu $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yb<adk> a() {
-      return aet.aA;
+   public yd<adk> a() {
+      return aex.aw;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
-      return this.b;
-   }
-
-   public float e() {
-      return this.c;
+   @Nullable
+   public bow a(cwz $$0) {
+      return $$0.a(this.b);
    }
 }

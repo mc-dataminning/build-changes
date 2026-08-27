@@ -1,60 +1,103 @@
-import com.mojang.serialization.Codec;
-import java.time.Instant;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum frt implements axg {
-   a("secure"),
-   b("modified"),
-   c("not_secure");
+public class frt {
+   private static final Logger a = LogUtils.getLogger();
+   private final ezg b;
+   private final god c;
+   private final ak d = new ak();
+   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private frt.a f;
+   @Nullable
+   private af g;
 
-   public static final Codec<frt> d = axg.a(frt::values);
-   private final String e;
-
-   private frt(String $$0) {
-      this.e = $$0;
+   public frt(ezg $$0, god $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static frt a(wi $$0, vs $$1, Instant $$2) {
-      if (!$$0.i() || $$0.b($$2)) {
-         return c;
-      } else {
-         return a($$0, $$1) ? b : a;
+   public void a(aeq $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
+      }
+
+      this.d.a($$0.e());
+      this.d.a($$0.b());
+
+      for (Entry<ajh, ah> $$1 : $$0.f().entrySet()) {
+         ag $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ah $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.r != null) {
+                  this.c.a(this.b.r, $$2.b());
+               }
+
+               Optional<ar> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fdm($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
+         }
       }
    }
 
-   private static boolean a(wi $$0, vs $$1) {
-      if (!$$1.getString().contains($$0.c())) {
-         return true;
-      } else {
-         vs $$2 = $$0.n();
-         return $$2 == null ? false : a($$2);
+   public ak a() {
+      return this.d;
+   }
+
+   public void a(@Nullable af $$0, boolean $$1) {
+      frz $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(agi.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
       }
    }
 
-   private static boolean a(vs $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), wp.a).orElse(false);
-   }
-
-   private static boolean a(wp $$0) {
-      return !$$0.k().equals(wp.b);
-   }
-
-   public boolean a() {
-      return this == c;
+   public void a(@Nullable frt.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ag $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
    }
 
    @Nullable
-   public eyf a(wi $$0) {
-      return switch (this) {
-         case b -> eyf.a($$0.c());
-         case c -> eyf.c();
-         default -> null;
-      };
+   public af a(ajh $$0) {
+      ag $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public interface a extends ak.a {
+      void a(ag var1, ah var2);
+
+      void a(@Nullable af var1);
    }
 }

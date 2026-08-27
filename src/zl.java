@@ -1,21 +1,31 @@
-public record zl(ib c) implements za {
-   public static final xq<us, zl> a = za.a(zl::a, zl::new);
-   public static final za.b<zl> b = za.a("debug/poi_removed");
+public record zl(int c, ejc d, float e) implements zc {
+   public static final xs<uu, zl> a = zc.a(zl::a, zl::new);
+   public static final zc.b<zl> b = zc.a("debug/path");
 
-   private zl(us $$0) {
-      this($$0.e());
+   private zl(uu $$0) {
+      this($$0.readInt(), ejc.b($$0), $$0.readFloat());
    }
 
-   private void a(us $$0) {
-      $$0.a(this.c);
+   private void a(uu $$0) {
+      $$0.p(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public za.b<zl> a() {
+   public zc.b<zl> a() {
       return b;
    }
 
-   public ib b() {
+   public int b() {
       return this.c;
+   }
+
+   public ejc c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

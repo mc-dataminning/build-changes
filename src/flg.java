@@ -1,274 +1,395 @@
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
+import java.util.UUID;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class flg {
-   private static final vs a = vs.c("selectWorld.newWorld");
-   private final List<Consumer<flg>> b = new ArrayList<>();
-   private String c = a.getString();
-   private flg.a d = flg.a.a;
-   private bmi e = bmi.c;
+public class flg extends fhf {
+   static final ajh a = new ajh("icon/checkmark");
+   private static final vu b = vu.c("gui.chatSelection.title");
+   private static final vu c = vu.c("gui.chatSelection.context").a(n.h);
    @Nullable
-   private Boolean f;
-   private String g;
-   private boolean h;
-   private boolean i;
-   private final Path j;
-   private String k;
-   private flf l;
-   private flg.b m;
-   private final List<flg.b> n = new ArrayList<>();
-   private final List<flg.b> o = new ArrayList<>();
-   private cwa p = new cwa();
+   private final fhf k;
+   private final ftg l;
+   private fbg m;
+   private fbz n;
+   @Nullable
+   private flg.a o;
+   final fsz.a p;
+   private final Consumer<fsz.a> q;
+   private flf r;
 
-   public flg(Path $$0, flf $$1, Optional<ajb<ebv>> $$2, OptionalLong $$3) {
-      this.j = $$0;
+   public flg(@Nullable fhf $$0, ftg $$1, fsz.a $$2, Consumer<fsz.a> $$3) {
+      super(b);
+      this.k = $$0;
       this.l = $$1;
-      this.m = new flg.b(a($$1, $$2).orElse(null));
-      this.r();
-      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
-      this.h = $$1.b().c();
-      this.i = $$1.b().d();
-      this.k = this.c(this.c);
+      this.p = $$2.d();
+      this.q = $$3;
    }
 
-   public void a(Consumer<flg> $$0) {
-      this.b.add($$0);
+   @Override
+   protected void aO_() {
+      this.r = new flf(this.l, this::a);
+      this.n = fbz.a(this.i, c, this.g - 16);
+      this.o = this.c(new flg.a(this.f, (this.n.a() + 1) * 9));
+      this.c(fbg.a(vt.k, $$0 -> this.d()).a(this.g / 2 - 155, this.h - 32, 150, 20).a());
+      this.m = this.c(fbg.a(vt.d, $$0 -> {
+         this.q.accept(this.p);
+         this.d();
+      }).a(this.g / 2 - 155 + 160, this.h - 32, 150, 20).a());
+      this.H();
+      this.o();
+      this.o.a((double)this.o.p());
    }
 
-   public void a() {
-      boolean $$0 = this.j();
-      if ($$0 != this.l.b().d()) {
-         this.l = this.l.a($$1x -> $$1x.a($$0));
+   private boolean a(fsv $$0) {
+      return $$0.a(this.p.f());
+   }
+
+   private void o() {
+      int $$0 = this.o.d();
+      this.r.a($$0, this.o);
+   }
+
+   void E() {
+      this.o();
+   }
+
+   void H() {
+      this.m.j = !this.p.a().isEmpty();
+   }
+
+   @Override
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      AbuseReportLimits $$4 = this.l.a().b();
+      int $$5 = this.p.a().size();
+      int $$6 = $$4.maxReportedMessageCount();
+      vu $$7 = vu.a("gui.chatSelection.selected", $$5, $$6);
+      $$0.a(this.i, $$7, this.g / 2, 16 + 9 * 3 / 2, 10526880);
+      this.n.a($$0, this.g / 2, this.o.e());
+   }
+
+   @Override
+   public void b(fat $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.k);
+   }
+
+   @Override
+   public vu i() {
+      return vt.a(super.i(), c);
+   }
+
+   public class a extends fcc<flg.a.b> implements flf.a {
+      @Nullable
+      private flg.a.c m;
+
+      public a(ezg $$1, int $$2) {
+         super($$1, flg.this.g, flg.this.h - $$2 - 80, 40, 16);
       }
 
-      boolean $$1 = this.i();
-      if ($$1 != this.l.b().c()) {
-         this.l = this.l.a($$1x -> $$1x.b($$1));
-      }
-
-      for (Consumer<flg> $$2 : this.b) {
-         $$2.accept(this);
-      }
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
-      this.k = this.c($$0);
-      this.a();
-   }
-
-   private String c(String $$0) {
-      String $$1 = $$0.trim();
-
-      try {
-         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
-      } catch (Exception var5) {
-         try {
-            return v.a(this.j, "World", "");
-         } catch (IOException var4) {
-            throw new RuntimeException("Could not create save folder", var4);
+      @Override
+      public void a(double $$0) {
+         double $$1 = this.o();
+         super.a($$0);
+         if ((float)this.p() > 1.0E-5F && $$0 <= 1.0E-5F && !aww.b($$0, $$1)) {
+            flg.this.E();
          }
       }
-   }
 
-   public String b() {
-      return this.c;
-   }
-
-   public String c() {
-      return this.k;
-   }
-
-   public void a(flg.a $$0) {
-      this.d = $$0;
-      this.a();
-   }
-
-   public flg.a d() {
-      return this.l() ? flg.a.d : this.d;
-   }
-
-   public void a(bmi $$0) {
-      this.e = $$0;
-      this.a();
-   }
-
-   public bmi e() {
-      return this.f() ? bmi.d : this.e;
-   }
-
-   public boolean f() {
-      return this.d() == flg.a.b;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-      this.a();
-   }
-
-   public boolean g() {
-      if (this.l()) {
-         return true;
-      } else if (this.f()) {
-         return false;
-      } else {
-         return this.f == null ? this.d() == flg.a.c : this.f;
-      }
-   }
-
-   public void b(String $$0) {
-      this.g = $$0;
-      this.l = this.l.a($$0x -> $$0x.a(dso.a(this.h())));
-      this.a();
-   }
-
-   public String h() {
-      return this.g;
-   }
-
-   public void b(boolean $$0) {
-      this.h = $$0;
-      this.a();
-   }
-
-   public boolean i() {
-      return this.l() ? false : this.h;
-   }
-
-   public void c(boolean $$0) {
-      this.i = $$0;
-      this.a();
-   }
-
-   public boolean j() {
-      return !this.l() && !this.f() ? this.i : false;
-   }
-
-   public void a(flf $$0) {
-      this.l = $$0;
-      this.r();
-      this.a();
-   }
-
-   public flf k() {
-      return this.l;
-   }
-
-   public void a(flf.a $$0) {
-      this.l = this.l.a($$0);
-      this.a();
-   }
-
-   protected boolean a(cwy $$0) {
-      cwy $$1 = this.l.g();
-      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
-         this.l = new flf(this.l.b(), this.l.c(), this.l.d(), this.l.e(), this.l.f(), $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean l() {
-      return this.l.d().c();
-   }
-
-   public void a(flg.b $$0) {
-      this.m = $$0;
-      il<ebv> $$1 = $$0.c();
-      if ($$1 != null) {
-         this.a(($$1x, $$2) -> $$1.a().a());
-      }
-   }
-
-   public flg.b m() {
-      return this.m;
-   }
-
-   @Nullable
-   public flc n() {
-      il<ebv> $$0 = this.m().c();
-      return $$0 != null ? flc.a.get($$0.e()) : null;
-   }
-
-   public List<flg.b> o() {
-      return this.n;
-   }
-
-   public List<flg.b> p() {
-      return this.o;
-   }
-
-   private void r() {
-      ix<ebv> $$0 = this.k().a().d(ki.aL);
-      this.n.clear();
-      this.n.addAll(a($$0, auy.a).orElseGet(() -> $$0.h().map(flg.b::new).toList()));
-      this.o.clear();
-      this.o.addAll(a($$0, auy.b).orElse(this.n));
-      il<ebv> $$1 = this.m.c();
-      if ($$1 != null) {
-         this.m = a(this.k(), $$1.e()).map(flg.b::new).orElse(this.n.get(0));
-      }
-   }
-
-   private static Optional<il<ebv>> a(flf $$0, Optional<ajb<ebv>> $$1) {
-      return $$1.flatMap($$1x -> $$0.a().d(ki.aL).b($$1x));
-   }
-
-   private static Optional<List<flg.b>> a(ix<ebv> $$0, aut<ebv> $$1) {
-      return $$0.b($$1).map($$0x -> $$0x.a().map(flg.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
-   }
-
-   public void a(cwa $$0) {
-      this.p = $$0;
-      this.a();
-   }
-
-   public cwa q() {
-      return this.p;
-   }
-
-   public static enum a {
-      a("survival", cwb.a),
-      b("hardcore", cwb.a),
-      c("creative", cwb.b),
-      d("spectator", cwb.d);
-
-      public final cwb e;
-      public final vs f;
-      private final vs g;
-
-      private a(String $$0, cwb $$1) {
-         this.e = $$1;
-         this.f = vs.c("selectWorld.gameMode." + $$0);
-         this.g = vs.c("selectWorld.gameMode." + $$0 + ".info");
+      @Override
+      public void a(int $$0, fsv.a $$1) {
+         boolean $$2 = $$1.a(flg.this.p.f());
+         fst $$3 = $$1.h();
+         ezb $$4 = $$3.a($$1.g());
+         flg.a.b $$5 = new flg.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
+         this.c($$5);
+         this.a($$1, $$2);
       }
 
-      public vs a() {
-         return this.g;
+      private void a(fsv.a $$0, boolean $$1) {
+         flg.a.b $$2 = new flg.a.e($$0.f(), $$0.d(), $$1);
+         this.c($$2);
+         flg.a.c $$3 = new flg.a.c($$0.e(), $$2);
+         if (this.m != null && this.m.a($$3)) {
+            this.d(this.m.b());
+         }
+
+         this.m = $$3;
       }
-   }
 
-   public static record b(@Nullable il<ebv> a) {
-      private static final vs b = vs.c("generator.custom");
-
-      public vs a() {
-         return Optional.ofNullable(this.a).flatMap(il::e).map($$0 -> vs.c($$0.a().f("generator"))).orElse(b);
+      @Override
+      public void a(vu $$0) {
+         this.c(new flg.a.f());
+         this.c(new flg.a.a($$0));
+         this.c(new flg.a.f());
+         this.m = null;
       }
 
-      public boolean b() {
-         return Optional.ofNullable(this.a).flatMap(il::e).filter($$0 -> $$0.equals(ebw.d)).isPresent();
+      @Override
+      protected int c() {
+         return (this.g + this.b()) / 2;
+      }
+
+      @Override
+      public int b() {
+         return Math.min(350, this.g - 50);
+      }
+
+      public int d() {
+         return aww.e(this.h, this.d);
+      }
+
+      @Override
+      protected void a(fat $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+         flg.a.b $$9 = this.d($$4);
+         if (this.b($$9)) {
+            boolean $$10 = this.i() == $$9;
+            int $$11 = this.aJ_() && $$10 ? -1 : -8355712;
+            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
+         }
+
+         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.t() == $$9, $$3);
+      }
+
+      private boolean b(flg.a.b $$0) {
+         if ($$0.c()) {
+            boolean $$1 = this.i() == $$0;
+            boolean $$2 = this.i() == null;
+            boolean $$3 = this.t() == $$0;
+            return $$1 || $$2 && $$3 && $$0.d();
+         } else {
+            return false;
+         }
       }
 
       @Nullable
-      public il<ebv> c() {
-         return this.a;
+      protected flg.a.b b(ffk $$0) {
+         return this.a($$0, flg.a.b::c);
+      }
+
+      public void a(@Nullable flg.a.b $$0) {
+         super.a($$0);
+         flg.a.b $$1 = this.b(ffk.a);
+         if ($$1 == null) {
+            flg.this.E();
+         }
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         flg.a.b $$3 = this.i();
+         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+
+      public int e() {
+         return this.E() + 9;
+      }
+
+      public class a extends flg.a.b {
+         private static final int c = -6250336;
+         private final vu d;
+
+         public a(vu $$1) {
+            this.d = $$1;
+         }
+
+         @Override
+         public void a(fat $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$2 + $$5 / 2;
+            int $$11 = $$3 + $$4 - 8;
+            int $$12 = flg.this.i.a(this.d);
+            int $$13 = ($$3 + $$11 - $$12) / 2;
+            int $$14 = $$10 - 9 / 2;
+            $$0.b(flg.this.i, this.d, $$13, $$14, -6250336);
+         }
+
+         @Override
+         public vu a() {
+            return this.d;
+         }
+      }
+
+      public abstract class b extends fcc.a<flg.a.b> {
+         @Override
+         public vu a() {
+            return vt.a;
+         }
+
+         public boolean b() {
+            return false;
+         }
+
+         public boolean c() {
+            return false;
+         }
+
+         public boolean d() {
+            return this.c();
+         }
+      }
+
+      static record c(UUID a, flg.a.b b) {
+         public boolean a(flg.a.c $$0) {
+            return $$0.a.equals(this.a);
+         }
+      }
+
+      public class d extends flg.a.b {
+         private static final int c = 9;
+         private static final int d = 8;
+         private static final int e = 11;
+         private static final int f = 4;
+         private final int g;
+         private final vz h;
+         private final vu i;
+         @Nullable
+         private final List<awi> j;
+         @Nullable
+         private final ezb.a k;
+         @Nullable
+         private final List<awi> l;
+         private final boolean m;
+         private final boolean n;
+
+         public d(int $$1, vu $$2, vu $$3, @Nullable ezb $$4, boolean $$5, boolean $$6) {
+            this.g = $$1;
+            this.k = x.a($$4, ezb::f);
+            this.l = $$4 != null && $$4.g() != null ? flg.this.i.c($$4.g(), a.this.b()) : null;
+            this.m = $$5;
+            this.n = $$6;
+            vz $$7 = flg.this.i.a($$2, this.e() - flg.this.i.a(vt.u));
+            if ($$2 != $$7) {
+               this.h = vz.a($$7, vt.u);
+               this.j = flg.this.i.c($$2, a.this.b());
+            } else {
+               this.h = $$2;
+               this.j = null;
+            }
+
+            this.i = $$3;
+         }
+
+         @Override
+         public void a(fat $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            if (this.b() && this.m) {
+               this.a($$0, $$2, $$3, $$5);
+            }
+
+            int $$10 = $$3 + this.f();
+            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(flg.this.i, sv.a().a(this.h), $$10, $$11, this.m ? -1 : -1593835521);
+            if (this.j != null && $$8) {
+               flg.this.b(this.j);
+            }
+
+            int $$12 = flg.this.i.a(this.h);
+            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
+         }
+
+         private void a(fat $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+            if (this.k != null) {
+               int $$6 = $$2 + ($$3 - this.k.d) / 2;
+               this.k.a($$0, $$1, $$6);
+               if (this.l != null && $$4 >= $$1 && $$4 <= $$1 + this.k.c && $$5 >= $$6 && $$5 <= $$6 + this.k.d) {
+                  flg.this.b(this.l);
+               }
+            }
+         }
+
+         private void a(fat $$0, int $$1, int $$2, int $$3) {
+            int $$5 = $$1 + ($$3 - 8) / 2;
+            RenderSystem.enableBlend();
+            $$0.a(flg.a, $$2, $$5, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         private int e() {
+            int $$0 = this.k != null ? this.k.c + 4 : 0;
+            return a.this.b() - this.f() - 4 - $$0;
+         }
+
+         private int f() {
+            return this.n ? 11 : 0;
+         }
+
+         @Override
+         public vu a() {
+            return (vu)(this.b() ? vu.a("narrator.select", this.i) : this.i);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(null);
+            return this.g();
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            return ffh.a($$0) ? this.g() : false;
+         }
+
+         @Override
+         public boolean b() {
+            return flg.this.p.b(this.g);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+
+         @Override
+         public boolean d() {
+            return this.m;
+         }
+
+         private boolean g() {
+            if (this.m) {
+               flg.this.p.a(this.g);
+               flg.this.H();
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public class e extends flg.a.b {
+         private static final int c = 12;
+         private final vu d;
+         private final Supplier<gjy> e;
+         private final boolean f;
+
+         public e(GameProfile $$1, vu $$2, boolean $$3) {
+            this.d = $$2;
+            this.f = $$3;
+            this.e = a.this.c.an().a($$1);
+         }
+
+         @Override
+         public void a(fat $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 - 12 - 4;
+            int $$11 = $$2 + ($$5 - 12) / 2;
+            fcf.a($$0, this.e.get(), $$10, $$11, 12);
+            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(flg.this.i, this.d, $$3, $$12, this.f ? -1 : -1593835521);
+         }
+      }
+
+      public class f extends flg.a.b {
+         @Override
+         public void a(fat $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         }
       }
    }
 }

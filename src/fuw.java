@@ -1,115 +1,49 @@
-public class fuw extends fve {
-   private static final awt a = awt.a();
-   private final fuz b;
+public class fuw extends fwe {
+   private final fvz a;
 
-   fuw(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuz $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
-
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
+   protected fuw(fry $$0, double $$1, double $$2, double $$3, double $$4, fvz $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
    @Override
-   public fui b() {
-      return fui.c;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.e(0.0F);
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         this.e(awm.i(0.05F, this.y, 1.0F));
+         this.b(this.a);
       }
    }
 
-   private boolean g() {
-      eyk $$0 = eyk.P();
-      fvs $$1 = $$0.s;
-      return $$1 != null && $$1.br().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ax().a() && $$1.gt();
+   @Override
+   public fvi b() {
+      return fvi.d;
    }
 
-   public static class a implements fuh<ke> {
-      private final fuz a;
+   public static class a implements fvh<kf> {
+      private final fvz a;
 
-      public a(fuz $$0) {
+      public a(fvz $$0) {
          this.a = $$0;
       }
 
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fue $$8 = new fuw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(0.15F);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class b implements fuh<ke> {
-      private final fuz a;
-
-      public b(fuz $$0) {
-         this.a = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fuw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class c implements fuh<ke> {
-      private final fuz a;
-
-      public c(fuz $$0) {
-         this.a = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fue $$8 = new fuw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class d implements fuh<ke> {
-      private final fuz a;
-
-      public d(fuz $$0) {
-         this.a = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fuw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class e implements fuh<ke> {
-      private final fuz a;
-
-      public e(fuz $$0) {
-         this.a = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fuw $$8 = new fuw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.z.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
-         return $$8;
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fuw($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

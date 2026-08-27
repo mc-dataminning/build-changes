@@ -1,42 +1,29 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Supplier;
 
-public record env(ens b, ens c) implements ens {
-   public static final Codec<env> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ent.a.fieldOf("min").forGetter(env::c), ent.a.fieldOf("max").forGetter(env::d)).apply($$0, env::new)
-   );
+public class env {
+   private static final Codec<ent> t = ki.H.q().dispatch("condition", ent::b, enu::a);
+   public static final Codec<ent> a = awe.a((Supplier<Codec<ent>>)(() -> awe.e(t, enh.b)));
+   public static final enu b = a("inverted", enq.a);
+   public static final enu c = a("any_of", eni.a);
+   public static final enu d = a("all_of", enh.a);
+   public static final enu e = a("random_chance", eny.a);
+   public static final enu f = a("random_chance_with_looting", enz.a);
+   public static final enu g = a("entity_properties", enw.a);
+   public static final enu h = a("killed_by_player", enx.a);
+   public static final enu i = a("entity_scores", eno.a);
+   public static final enu j = a("block_state_property", ens.a);
+   public static final enu k = a("match_tool", eoa.a);
+   public static final enu l = a("table_bonus", enj.a);
+   public static final enu m = a("survives_explosion", enp.a);
+   public static final enu n = a("damage_source_properties", enn.a);
+   public static final enu o = a("location_check", enr.a);
+   public static final enu p = a("weather_check", eod.a);
+   public static final enu q = a("reference", enl.a);
+   public static final enu r = a("time_check", eob.a);
+   public static final enu s = a("value_check", eoc.a);
 
-   @Override
-   public enr b() {
-      return ent.c;
-   }
-
-   public static env a(float $$0, float $$1) {
-      return new env(enq.a($$0), enq.a($$1));
-   }
-
-   @Override
-   public int a(ejy $$0) {
-      return awm.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(ejy $$0) {
-      return awm.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<emg<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public ens c() {
-      return this.b;
-   }
-
-   public ens d() {
-      return this.c;
+   private static enu a(String $$0, Codec<? extends ent> $$1) {
+      return iy.a(ki.H, new ajh($$0), new enu($$1));
    }
 }

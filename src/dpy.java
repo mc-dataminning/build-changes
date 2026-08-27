@@ -1,24 +1,94 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public interface dpy {
-   int aj();
+public class dpy implements dqx<bow> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Entities";
+   private static final String c = "Position";
+   private final apf d;
+   private final dqi e;
+   private final LongSet f = new LongOpenHashSet();
+   private final blv<Runnable> g;
 
-   UUID ct();
+   public dpy(dqi $$0, apf $$1, Executor $$2) {
+      this.e = $$0;
+      this.d = $$1;
+      this.g = blv.a($$2, "entity-deserializer");
+   }
 
-   ib dj();
+   @Override
+   public CompletableFuture<dqs<bow>> a(cwg $$0) {
+      return this.f.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.e.a($$0).thenApplyAsync($$1 -> {
+         if ($$1.isEmpty()) {
+            this.f.add($$0.a());
+            return b($$0);
+         } else {
+            try {
+               cwg $$2 = a($$1.get());
+               if (!Objects.equals($$0, $$2)) {
+                  a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
+               }
+            } catch (Exception var6) {
+               a.warn("Failed to parse chunk {} position info", $$0, var6);
+            }
 
-   eoq cE();
+            ta $$4 = this.e.a($$1.get(), -1);
+            tg $$5 = $$4.c("Entities", 10);
+            List<bow> $$6 = bpc.a($$5, this.d).collect(ImmutableList.toImmutableList());
+            return new dqs<>($$0, $$6);
+         }
+      }, this.g::a);
+   }
 
-   void a(dpz var1);
+   private static cwg a(ta $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new cwg($$1[0], $$1[1]);
+   }
 
-   Stream<? extends dpy> cO();
+   private static void a(ta $$0, cwg $$1) {
+      $$0.a("Position", new te(new int[]{$$1.e, $$1.f}));
+   }
 
-   Stream<? extends dpy> cP();
+   private static dqs<bow> b(cwg $$0) {
+      return new dqs<>($$0, ImmutableList.of());
+   }
 
-   void b(bof.c var1);
+   @Override
+   public void a(dqs<bow> $$0) {
+      cwg $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.f.add($$1.a())) {
+            this.e.a($$1, null);
+         }
+      } else {
+         tg $$2 = new tg();
+         $$0.b().forEach($$1x -> {
+            ta $$2x = new ta();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         ta $$3 = tp.f(new ta());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.e.a($$1, $$3).exceptionally($$1x -> {
+            a.error("Failed to store chunk {}", $$1, $$1x);
+            return null;
+         });
+         this.f.remove($$1.a());
+      }
+   }
 
-   boolean dH();
-
-   boolean dI();
+   @Override
+   public void a(boolean $$0) {
+      this.e.a($$0).join();
+      this.g.a();
+   }
 }

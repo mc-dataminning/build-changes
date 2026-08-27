@@ -1,20 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwo {
-   public static final Codec<dwo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ebk.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, dwo::new)
-   );
-   public final il<ebk> b;
-   public final float c;
-
-   public dwo(il<ebk> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dwo extends dvq<dyh> {
+   public dwo(Codec<dyh> $$0) {
+      super($$0);
    }
 
-   public boolean a(cwz $$0, dob $$1, awt $$2, ib $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(dvs<dyh> $$0) {
+      dyh $$1 = $$0.f();
+      axd $$2 = $$0.d();
+      ib $$3 = $$0.e();
+      cxu $$4 = $$0.b();
+      int $$5 = 0;
+      ib.a $$6 = new ib.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
+
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
+         }
+      }
+
+      return $$5 > 0;
    }
 }

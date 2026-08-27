@@ -1,27 +1,52 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class blo implements blt {
-   private static final Codec<Either<Float, blo>> a = Codec.either(Codec.FLOAT, kh.L.q().dispatch(blo::c, blp::codec));
-   public static final Codec<blo> c = a.xmap(
-      $$0 -> (blo)$$0.map(blm::a, $$0x -> $$0x), $$0 -> $$0.c() == blp.a ? Either.left(((blm)$$0).d()) : Either.right($$0)
-   );
+public interface blo {
+   bln a();
 
-   public static Codec<blo> a(float $$0, float $$1) {
-      return avu.a(c, (Function<blo, DataResult<blo>>)($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      }));
+   static <T> blo.b<T> a(T $$0, int $$1) {
+      return new blo.b<>($$0, bln.a($$1));
    }
 
-   public abstract float a();
+   public static class a implements blo {
+      private final bln a;
 
-   public abstract float b();
+      public a(int $$0) {
+         this.a = bln.a($$0);
+      }
 
-   public abstract blp<?> c();
+      public a(bln $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public bln a() {
+         return this.a;
+      }
+   }
+
+   public static class b<T> implements blo {
+      private final T a;
+      private final bln b;
+
+      b(T $$0, bln $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public T b() {
+         return this.a;
+      }
+
+      @Override
+      public bln a() {
+         return this.b;
+      }
+
+      public static <E> Codec<blo.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(blo.b::b), bln.a.fieldOf("weight").forGetter(blo.b::a)).apply($$1, blo.b::new)
+         );
+      }
+   }
 }

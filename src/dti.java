@@ -1,21 +1,26 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dti implements dsx {
-   protected final jf f;
+public record dti(dtk b, dth c) {
+   public static final Codec<dti> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dtk.a.forGetter(dti::a), dth.a.forGetter(dti::b)).apply($$0, $$0.stable(dti::new))
+   );
 
-   protected static <P extends dti> P1<Mu<P>, jf> a(Instance<P> $$0) {
-      return $$0.group(jf.v(16).optionalFieldOf("offset", jf.g).forGetter($$0x -> $$0x.f));
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dtk $$1, dth $$2) {
+      return a.encodeStart($$0, new dti($$1, $$2));
    }
 
-   protected dti(jf $$0) {
-      this.f = $$0;
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dtk $$1, iz $$2) {
+      return a($$0, $$1, new dth($$2.d(kj.aO)));
    }
 
-   public final boolean a(cwz $$0, ib $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   public dtk a() {
+      return this.b;
    }
 
-   protected abstract boolean a(dme var1);
+   public dth b() {
+      return this.c;
+   }
 }

@@ -1,37 +1,76 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class gap implements gac.a {
-   private static final int a = 60;
-   private final Set<jd> b = Sets.newHashSet();
+public class gap {
+   private final Long2ObjectMap<gap.a> a = new Long2ObjectOpenHashMap();
 
-   gap() {
-   }
+   @Nullable
+   public gao a(cwz $$0, ib $$1, ib $$2, int $$3) {
+      int $$4 = je.a($$1.u() - $$3);
+      int $$5 = je.a($$1.w() - $$3);
+      int $$6 = je.a($$2.u() + $$3);
+      int $$7 = je.a($$2.w() + $$3);
+      gap.a[][] $$8 = new gap.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   public void a(jd $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(jd $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(etd $$0, fwq $$1, double $$2, double $$3, double $$4) {
-      ib $$5 = ib.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.q(), 60.0)) {
-            a($$0, $$1, $$3x);
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (gap.a)this.a.computeIfAbsent(cwg.c($$9, $$10), $$1x -> new gap.a($$0.d(cwg.a($$1x), cwg.b($$1x))));
          }
-      });
+      }
+
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
+      } else {
+         gan[][] $$11 = new gan[$$6 - $$4 + 1][$$7 - $$5 + 1];
+
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
+         }
+
+         return new gao($$0, $$4, $$5, $$11);
+      }
    }
 
-   private static void a(etd $$0, fwq $$1, jd $$2) {
-      gac.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
+   private static boolean a(ib $$0, ib $$1, int $$2, int $$3, gap.a[][] $$4) {
+      int $$5 = je.a($$0.u());
+      int $$6 = je.a($$0.w());
+      int $$7 = je.a($$1.u());
+      int $$8 = je.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            dpg $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   static final class a {
+      private final dpg a;
+      @Nullable
+      private gan b;
+
+      a(dpg $$0) {
+         this.a = $$0;
+      }
+
+      public dpg a() {
+         return this.a;
+      }
+
+      public gan b() {
+         if (this.b == null) {
+            this.b = new gan(this.a);
+         }
+
+         return this.b;
+      }
    }
 }

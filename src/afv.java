@@ -1,29 +1,29 @@
-public class afv implements xz<aev> {
-   public static final xq<us, afv> a = xz.a(afv::a, afv::new);
-   private final int b;
+public class afv implements yb<aez> {
+   public static final xs<uu, afv> a = yb.a(afv::a, afv::new);
+   private final boolean b;
 
-   public afv(int $$0) {
+   public afv(boolean $$0) {
       this.b = $$0;
    }
 
-   private afv(us $$0) {
-      this.b = $$0.l();
+   private afv(uu $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(us $$0) {
-      $$0.c(this.b);
+   private void a(uu $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yb<afv> a() {
-      return aet.bF;
+   public yd<afv> a() {
+      return aex.by;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
       return this.b;
    }
 }

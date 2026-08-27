@@ -1,18 +1,17 @@
-import com.mojang.serialization.Codec;
+public class dtj {
+   private final int a;
+   private final int b;
 
-class dtj implements dsx {
-   public static dtj a = new dtj();
-   public static final Codec<dtj> e = Codec.unit(() -> a);
-
-   private dtj() {
+   public dtj(dow $$0, cxb $$1) {
+      this.a = Math.max($$1.I_(), $$0.f());
+      this.b = Math.min($$1.J_(), $$0.d());
    }
 
-   public boolean a(cwz $$0, ib $$1) {
-      return true;
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public dsy<?> a() {
-      return dsy.l;
+   public int b() {
+      return this.b;
    }
 }

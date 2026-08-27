@@ -1,40 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class dch extends czo implements dhg {
-   protected static final MapCodec<List<dhg.a>> a = dhg.a.b.fieldOf("suspicious_stew_effects");
-   public static final MapCodec<dch> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dch::b), u()).apply($$0, dch::new));
-   protected static final float c = 3.0F;
-   protected static final epo d = czf.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
-   private final List<dhg.a> e;
+public class dch {
+   public static <S extends dkg> dch.c<S> a(
+      dki<S> $$0, Function<dmz, dch.a> $$1, Function<dmz, ih> $$2, dnt $$3, dmz $$4, cxa $$5, ib $$6, BiPredicate<cxa, ib> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return dch.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return dch.b::b;
+      } else {
+         dch.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == dch.a.a;
+         boolean $$11 = $$9 == dch.a.b;
+         if ($$10) {
+            return new dch.c.b<>($$8);
+         } else {
+            ib $$12 = $$6.a($$2.apply($$4));
+            dmz $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               dch.a $$14 = $$1.apply($$13);
+               if ($$14 != dch.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return dch.b::b;
+                  }
 
-   @Override
-   public MapCodec<? extends dch> a() {
-      return b;
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new dch.c.a<>($$16, $$17);
+                  }
+               }
+            }
+
+            return new dch.c.b<>($$8);
+         }
+      }
    }
 
-   public dch(il<bnq> $$0, int $$1, dmd.d $$2) {
-      this(a($$0, $$1), $$2);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   public dch(List<dhg.a> $$0, dmd.d $$1) {
-      super($$1);
-      this.e = $$0;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   protected static List<dhg.a> a(il<bnq> $$0, int $$1) {
-      return List.of(new dhg.a($$0, $$1 * 20));
-   }
+   public interface c<S> {
+      <T> T apply(dch.b<? super S, T> var1);
 
-   @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      eov $$4 = $$0.n($$1, $$2);
-      return d.a($$4.c, $$4.d, $$4.e);
-   }
+      public static final class a<S> implements dch.c<S> {
+         private final S a;
+         private final S b;
 
-   @Override
-   public List<dhg.a> b() {
-      return this.e;
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(dch.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
+
+      public static final class b<S> implements dch.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(dch.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

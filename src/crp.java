@@ -1,58 +1,150 @@
-public class crp {
-   public static final ajb<crm> a = ajb.a(ki.X, new ajc("empty"));
-   public static final il<crm> b = a(a, new crm());
-   public static final il<crm> c = a("water", new crm());
-   public static final il<crm> d = a("mundane", new crm());
-   public static final il<crm> e = a("thick", new crm());
-   public static final il<crm> f = a("awkward", new crm());
-   public static final il<crm> g = a("night_vision", new crm(new bns(bnu.p, 3600)));
-   public static final il<crm> h = a("long_night_vision", new crm("night_vision", new bns(bnu.p, 9600)));
-   public static final il<crm> i = a("invisibility", new crm(new bns(bnu.n, 3600)));
-   public static final il<crm> j = a("long_invisibility", new crm("invisibility", new bns(bnu.n, 9600)));
-   public static final il<crm> k = a("leaping", new crm(new bns(bnu.h, 3600)));
-   public static final il<crm> l = a("long_leaping", new crm("leaping", new bns(bnu.h, 9600)));
-   public static final il<crm> m = a("strong_leaping", new crm("leaping", new bns(bnu.h, 1800, 1)));
-   public static final il<crm> n = a("fire_resistance", new crm(new bns(bnu.l, 3600)));
-   public static final il<crm> o = a("long_fire_resistance", new crm("fire_resistance", new bns(bnu.l, 9600)));
-   public static final il<crm> p = a("swiftness", new crm(new bns(bnu.a, 3600)));
-   public static final il<crm> q = a("long_swiftness", new crm("swiftness", new bns(bnu.a, 9600)));
-   public static final il<crm> r = a("strong_swiftness", new crm("swiftness", new bns(bnu.a, 1800, 1)));
-   public static final il<crm> s = a("slowness", new crm(new bns(bnu.b, 1800)));
-   public static final il<crm> t = a("long_slowness", new crm("slowness", new bns(bnu.b, 4800)));
-   public static final il<crm> u = a("strong_slowness", new crm("slowness", new bns(bnu.b, 400, 3)));
-   public static final il<crm> v = a("turtle_master", new crm("turtle_master", new bns(bnu.b, 400, 3), new bns(bnu.k, 400, 2)));
-   public static final il<crm> w = a("long_turtle_master", new crm("turtle_master", new bns(bnu.b, 800, 3), new bns(bnu.k, 800, 2)));
-   public static final il<crm> x = a("strong_turtle_master", new crm("turtle_master", new bns(bnu.b, 400, 5), new bns(bnu.k, 400, 3)));
-   public static final il<crm> y = a("water_breathing", new crm(new bns(bnu.m, 3600)));
-   public static final il<crm> z = a("long_water_breathing", new crm("water_breathing", new bns(bnu.m, 9600)));
-   public static final il<crm> A = a("healing", new crm(new bns(bnu.f, 1)));
-   public static final il<crm> B = a("strong_healing", new crm("healing", new bns(bnu.f, 1, 1)));
-   public static final il<crm> C = a("harming", new crm(new bns(bnu.g, 1)));
-   public static final il<crm> D = a("strong_harming", new crm("harming", new bns(bnu.g, 1, 1)));
-   public static final il<crm> E = a("poison", new crm(new bns(bnu.s, 900)));
-   public static final il<crm> F = a("long_poison", new crm("poison", new bns(bnu.s, 1800)));
-   public static final il<crm> G = a("strong_poison", new crm("poison", new bns(bnu.s, 432, 1)));
-   public static final il<crm> H = a("regeneration", new crm(new bns(bnu.j, 900)));
-   public static final il<crm> I = a("long_regeneration", new crm("regeneration", new bns(bnu.j, 1800)));
-   public static final il<crm> J = a("strong_regeneration", new crm("regeneration", new bns(bnu.j, 450, 1)));
-   public static final il<crm> K = a("strength", new crm(new bns(bnu.e, 3600)));
-   public static final il<crm> L = a("long_strength", new crm("strength", new bns(bnu.e, 9600)));
-   public static final il<crm> M = a("strong_strength", new crm("strength", new bns(bnu.e, 1800, 1)));
-   public static final il<crm> N = a("weakness", new crm(new bns(bnu.r, 1800)));
-   public static final il<crm> O = a("long_weakness", new crm("weakness", new bns(bnu.r, 4800)));
-   public static final il<crm> P = a("luck", new crm("luck", new bns(bnu.z, 6000)));
-   public static final il<crm> Q = a("slow_falling", new crm(new bns(bnu.B, 1800)));
-   public static final il<crm> R = a("long_slow_falling", new crm("slow_falling", new bns(bnu.B, 4800)));
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   private static il<crm> a(String $$0, crm $$1) {
-      return ix.b(kh.i, new ajc($$0), $$1);
+public class crp extends cqf {
+   private static final Map<bpc<? extends bpq>, crp> a = Maps.newIdentityHashMap();
+   private final int b;
+   private final int c;
+   private final bpc<?> d;
+
+   public crp(bpc<? extends bpq> $$0, int $$1, int $$2, cqf.a $$3) {
+      super($$3);
+      this.d = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      a.put($$0, this);
    }
 
-   private static il<crm> a(ajb<crm> $$0, crm $$1) {
-      return ix.b(kh.i, $$0, $$1);
+   @Override
+   public bnc a(csu $$0) {
+      cwz $$1 = $$0.q();
+      if (!($$1 instanceof apf)) {
+         return bnc.a;
+      } else {
+         cqk $$2 = $$0.n();
+         ib $$3 = $$0.a();
+         ih $$4 = $$0.k();
+         dmz $$5 = $$1.a_($$3);
+         if ($$1.c_($$3) instanceof cxr $$6) {
+            bpc<?> $$7 = this.a($$2.w());
+            $$6.a($$7, $$1.E_());
+            $$1.a($$3, $$5, $$5, 3);
+            $$1.a($$0.o(), drn.c, $$3);
+            $$2.h(1);
+            return bnc.b;
+         } else {
+            ib $$8;
+            if ($$5.k($$1, $$3).c()) {
+               $$8 = $$3;
+            } else {
+               $$8 = $$3.a($$4);
+            }
+
+            bpc<?> $$10 = this.a($$2.w());
+            if ($$10.a((apf)$$1, $$2, $$0.o(), $$8, bps.m, true, !Objects.equals($$3, $$8) && $$4 == ih.b) != null) {
+               $$2.h(1);
+               $$1.a($$0.o(), drn.t, $$3);
+            }
+
+            return bnc.b;
+         }
+      }
    }
 
-   public static il<crm> a(ix<crm> $$0) {
-      return b;
+   @Override
+   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
+      cqk $$3 = $$1.b($$2);
+      epn $$4 = a($$0, $$1, cwi.b.b);
+      if ($$4.c() != epp.a.b) {
+         return bnd.c($$3);
+      } else if (!($$0 instanceof apf)) {
+         return bnd.a($$3);
+      } else {
+         ib $$6 = $$4.a();
+         if (!($$0.a_($$6).b() instanceof dep)) {
+            return bnd.c($$3);
+         } else if ($$0.a($$1, $$6) && $$1.a($$6, $$4.b(), $$3)) {
+            bpc<?> $$7 = this.a($$3.w());
+            bow $$8 = $$7.a((apf)$$0, $$3, $$1, $$6, bps.m, false, false);
+            if ($$8 == null) {
+               return bnd.c($$3);
+            } else {
+               $$3.a(1, $$1);
+               $$1.b(aui.c.b(this));
+               $$0.a($$1, drn.t, $$8.dk());
+               return bnd.b($$3);
+            }
+         } else {
+            return bnd.d($$3);
+         }
+      }
+   }
+
+   public boolean a(@Nullable ta $$0, bpc<?> $$1) {
+      return Objects.equals(this.a($$0), $$1);
+   }
+
+   public int a(int $$0) {
+      return $$0 == 0 ? this.b : this.c;
+   }
+
+   @Nullable
+   public static crp a(@Nullable bpc<?> $$0) {
+      return a.get($$0);
+   }
+
+   public static Iterable<crp> h() {
+      return Iterables.unmodifiableIterable(a.values());
+   }
+
+   public bpc<?> a(@Nullable ta $$0) {
+      if ($$0 != null && $$0.b("EntityTag", 10)) {
+         ta $$1 = $$0.p("EntityTag");
+         if ($$1.b("id", 8)) {
+            return bpc.a($$1.l("id")).orElse(this.d);
+         }
+      }
+
+      return this.d;
+   }
+
+   @Override
+   public clf m() {
+      return this.d.m();
+   }
+
+   public Optional<bpq> a(cis $$0, bpq $$1, bpc<? extends bpq> $$2, apf $$3, epr $$4, cqk $$5) {
+      if (!this.a($$5.w(), $$2)) {
+         return Optional.empty();
+      } else {
+         bpq $$6;
+         if ($$1 instanceof bor) {
+            $$6 = ((bor)$$1).a($$3, (bor)$$1);
+         } else {
+            $$6 = $$2.a((cwz)$$3);
+         }
+
+         if ($$6 == null) {
+            return Optional.empty();
+         } else {
+            $$6.a(true);
+            if (!$$6.o_()) {
+               return Optional.empty();
+            } else {
+               $$6.b($$4.a(), $$4.b(), $$4.c(), 0.0F, 0.0F);
+               $$3.a_($$6);
+               if ($$5.B()) {
+                  $$6.b($$5.z());
+               }
+
+               $$5.a(1, $$0);
+               return Optional.of($$6);
+            }
+         }
+      }
    }
 }

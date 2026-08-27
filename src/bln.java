@@ -1,44 +1,52 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import org.slf4j.Logger;
 
-public class bln extends blq {
-   public static final bln a = new bln(0);
-   public static final Codec<bln> b = avu.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bln::new, bln::d);
-   private final int f;
-
-   public static bln a(int $$0) {
-      return $$0 == 0 ? a : new bln($$0);
-   }
+public class bln {
+   public static final Codec<bln> a = Codec.INT.xmap(bln::a, bln::a);
+   private static final bln b = new bln(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
    private bln(int $$0) {
-      this.f = $$0;
+      this.d = $$0;
    }
 
-   public int d() {
-      return this.f;
+   public static bln a(int $$0) {
+      if ($$0 == 1) {
+         return b;
+      } else {
+         b($$0);
+         return new bln($$0);
+      }
    }
 
-   @Override
-   public int a(awt $$0) {
-      return this.f;
-   }
-
-   @Override
    public int a() {
-      return this.f;
+      return this.d;
    }
 
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public blr<?> c() {
-      return blr.a;
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && aa.aW) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
+      }
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return Integer.toString(this.d);
+   }
+
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.d);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof bln && this.d == ((bln)$$0).d;
    }
 }

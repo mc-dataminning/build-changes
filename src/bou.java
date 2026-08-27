@@ -1,3 +1,6 @@
+import javax.annotation.Nullable;
+
 public interface bou {
-   boolean a();
+   @Nullable
+   bpo T_();
 }

@@ -1,14 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class om extends oo<cad> {
-   public om(kq $$0, CompletableFuture<in.a> $$1) {
-      super($$0, ki.U, $$1);
+public abstract class om extends ol<cqf> {
+   private final CompletableFuture<oq.c<daa>> d;
+   private final Map<avd<daa>, avd<cqf>> g = new HashMap<>();
+
+   public om(kr $$0, CompletableFuture<in.a> $$1, CompletableFuture<oq.c<daa>> $$2) {
+      super($$0, kj.F, $$1, $$0x -> $$0x.k().h());
+      this.d = $$2;
+   }
+
+   public om(kr $$0, CompletableFuture<in.a> $$1, CompletableFuture<oq.c<cqf>> $$2, CompletableFuture<oq.c<daa>> $$3) {
+      super($$0, kj.F, $$1, $$2, $$0x -> $$0x.k().h());
+      this.d = $$3;
+   }
+
+   protected void a(avd<daa> $$0, avd<cqf> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(in.a $$0) {
-      this.b(auo.a).a(cae.a, cae.b, cae.c, cae.d, cae.e, cae.f, cae.g, cae.h, cae.i, cae.j, cae.k, cae.l, cae.m);
-      this.b(auo.b).b(auo.a).a(cae.n, cae.o);
-      this.b(auo.c).a(cae.p, cae.q);
+   protected CompletableFuture<in.a> b() {
+      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            ava $$3 = this.c((avd<cqf>)$$2);
+            Optional<ava> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (in.a)$$0;
+      });
    }
 }

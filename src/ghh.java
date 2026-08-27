@@ -1,6 +1,12 @@
-import javax.annotation.Nullable;
+public class ghh<T extends cga> extends ggv<T, fpe<T>> {
+   private static final fxy a = fxy.p(new ajh("textures/entity/phantom_eyes.png"));
 
-@Deprecated
-public interface ghh {
-   float call(cpq var1, @Nullable fra var2, @Nullable box var3, int var4);
+   public ghh(get<T, fpe<T>> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public fxy a() {
+      return a;
+   }
 }

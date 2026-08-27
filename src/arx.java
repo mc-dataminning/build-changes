@@ -1,19 +1,33 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+public enum arx {
+   a("old"),
+   b("new"),
+   c("compatible");
 
-@FunctionalInterface
-public interface arx<T> {
-   static arx<InputStream> create(Path $$0) {
-      return () -> Files.newInputStream($$0);
+   private final vu d;
+   private final vu e;
+
+   private arx(String $$0) {
+      this.d = vu.c("pack.incompatible." + $$0).a(n.h);
+      this.e = vu.c("pack.incompatible.confirm." + $$0);
    }
 
-   static arx<InputStream> create(ZipFile $$0, ZipEntry $$1) {
-      return () -> $$0.getInputStream($$1);
+   public boolean a() {
+      return this == c;
    }
 
-   T get() throws IOException;
+   public static arx a(awo<Integer> $$0, int $$1) {
+      if ($$0.b() < $$1) {
+         return a;
+      } else {
+         return $$1 < $$0.a() ? b : c;
+      }
+   }
+
+   public vu b() {
+      return this.d;
+   }
+
+   public vu c() {
+      return this.e;
+   }
 }

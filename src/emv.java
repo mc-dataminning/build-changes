@@ -1,45 +1,68 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record emv(Optional<ck> b, ib c) implements emx {
-   private static final MapCodec<ib> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               avu.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(jf::u),
-               avu.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(jf::v),
-               avu.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(jf::w)
-            )
-            .apply($$0, ib::new)
-   );
+public class emv extends emg {
+   private static final Logger b = LogUtils.getLogger();
    public static final Codec<emv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avu.a(ck.a, "predicate").forGetter(emv::c), d.forGetter(emv::d)).apply($$0, emv::new)
+      $$0 -> a($$0).and($$0.group(awe.a(vw.a, "name").forGetter($$0x -> $$0x.c), awe.a(eku.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, emv::new)
    );
+   private final Optional<vu> c;
+   private final Optional<eku.b> d;
+
+   private emv(List<ent> $$0, Optional<vu> $$1, Optional<eku.b> $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+   }
 
    @Override
-   public emy b() {
-      return emz.o;
+   public emi b() {
+      return emj.l;
    }
 
-   public boolean a(ejy $$0) {
-      eov $$1 = $$0.c(emj.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   @Override
+   public Set<enc<?>> a() {
+      return this.d.<Set<enc<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
    }
 
-   public static emx.a a(ck.a $$0) {
-      return () -> new emv(Optional.of($$0.b()), ib.c);
+   public static UnaryOperator<vu> a(eku $$0, @Nullable eku.b $$1) {
+      if ($$1 != null) {
+         bow $$2 = $$0.c($$1.a());
+         if ($$2 != null) {
+            du $$3 = $$2.dd().a(2);
+            return $$2x -> {
+               try {
+                  return vx.a($$3, $$2x, $$2, 0);
+               } catch (CommandSyntaxException var4) {
+                  b.warn("Failed to resolve text component", var4);
+                  return $$2x;
+               }
+            };
+         }
+      }
+
+      return $$0x -> $$0x;
    }
 
-   public static emx.a a(ck.a $$0, ib $$1) {
-      return () -> new emv(Optional.of($$0.b()), $$1);
+   @Override
+   public cqk a(cqk $$0, eku $$1) {
+      this.c.ifPresent($$2 -> $$0.a(a($$1, this.d.orElse(null)).apply($$2)));
+      return $$0;
    }
 
-   public Optional<ck> c() {
-      return this.b;
+   public static emg.a<?> a(vu $$0) {
+      return a($$1 -> new emv($$1, Optional.of($$0), Optional.empty()));
    }
 
-   public ib d() {
-      return this.c;
+   public static emg.a<?> a(vu $$0, eku.b $$1) {
+      return a($$2 -> new emv($$2, Optional.of($$0), Optional.of($$1)));
    }
 }

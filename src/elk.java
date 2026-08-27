@@ -1,77 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public abstract class elk implements ell {
-   protected final List<emx> g;
-   private final Predicate<ejy> a;
+public class elk extends elp {
+   public static final Codec<elk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ki.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, elk::new)
+   );
+   private final il<cqf> j;
 
-   protected elk(List<emx> $$0) {
-      this.g = $$0;
-      this.a = ac.a($$0);
+   private elk(il<cqf> $$0, int $$1, int $$2, List<ent> $$3, List<emh> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
-
-   protected static <T extends elk> P1<Mu<T>, List<emx>> a(Instance<T> $$0) {
-      return $$0.group(avu.a(emz.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
-   }
-
-   public final cpq b(cpq $$0, ejy $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract cpq a(cpq var1, ejy var2);
 
    @Override
-   public void a(ekh $$0) {
-      ell.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
+   public elo a() {
+      return ell.c;
    }
 
-   protected static elk.a<?> a(Function<List<emx>, ell> $$0) {
-      return new elk.b($$0);
+   @Override
+   public void a(Consumer<cqk> $$0, eku $$1) {
+      $$0.accept(new cqk(this.j));
    }
 
-   public abstract static class a<T extends elk.a<T>> implements ell.a, emq<T> {
-      private final Builder<emx> a = ImmutableList.builder();
-
-      public T a(emx.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
-      }
-
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<emx> g() {
-         return this.a.build();
-      }
-   }
-
-   static final class b extends elk.a<elk.b> {
-      private final Function<List<emx>, ell> a;
-
-      public b(Function<List<emx>, ell> $$0) {
-         this.a = $$0;
-      }
-
-      protected elk.b a() {
-         return this;
-      }
-
-      @Override
-      public ell b() {
-         return this.a.apply(this.g());
-      }
+   public static elp.a<?> a(cwy $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new elk($$0.l().k(), $$1, $$2, $$3, $$4));
    }
 }

@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.UUID;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface glq {
+public interface glq {
+   void a(UUID var1, glq.b var2);
+
+   void a(UUID var1, glq.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
+
+   public static enum b {
+      a,
+      b;
+   }
 }

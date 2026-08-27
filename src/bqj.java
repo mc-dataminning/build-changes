@@ -1,84 +1,117 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class bqj extends bqp<cam> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bol<? extends cam> f;
-   private final float g;
-   private final int h;
-   private static final int i = 2;
-   private long j;
+public class bqj {
+   private static final Map<bpc<?>, bqj.a> a = Maps.newHashMap();
 
-   public bqj(bol<? extends cam> $$0) {
-      this($$0, 1.0F, 2);
-   }
-
-   public bqj(bol<? extends cam> $$0, float $$1, int $$2) {
-      super(ImmutableMap.of(bya.h, byb.a, bya.r, byb.b, bya.m, byb.c, bya.n, byb.c, bya.Z, byb.b), 110);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   protected boolean a(apa $$0, cam $$1) {
-      return $$1.gp() && this.c($$1).isPresent();
-   }
-
-   protected void a(apa $$0, cam $$1, long $$2) {
-      cam $$3 = this.c($$1).get();
-      $$1.dM().a(bya.r, $$3);
-      $$3.dM().a(bya.r, $$1);
-      bqr.a($$1, (box)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.ef().a(50);
-      this.j = $$2 + (long)$$4;
-   }
-
-   protected boolean b(apa $$0, cam $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
-      } else {
-         cam $$3 = this.a($$1);
-         return $$3.bx() && $$1.a($$3) && bqr.a($$1.dM(), $$3) && $$2 <= this.j && !$$1.gi() && !$$3.gi();
+   private static <T extends bpq> void a(bpc<T> $$0, bqh $$1, dsm.a $$2, bqj.b<T> $$3) {
+      bqj.a $$4 = a.put($$0, new bqj.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + ki.g.b($$0));
       }
    }
 
-   protected void c(apa $$0, cam $$1, long $$2) {
-      cam $$3 = this.a($$1);
-      bqr.a($$1, (box)$$3, this.g, this.h);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.j) {
-            $$1.a($$0, $$3);
-            $$1.dM().b(bya.r);
-            $$3.dM().b(bya.r);
-         }
-      }
+   public static bqh a(bpc<?> $$0) {
+      bqj.a $$1 = a.get($$0);
+      return $$1 == null ? bqi.a : $$1.b;
    }
 
-   protected void d(apa $$0, cam $$1, long $$2) {
-      $$1.dM().b(bya.r);
-      $$1.dM().b(bya.m);
-      $$1.dM().b(bya.n);
-      this.j = 0L;
+   public static boolean a(bpc<?> $$0, cxc $$1, ib $$2) {
+      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
    }
 
-   private cam a(cam $$0) {
-      return (cam)$$0.dM().c(bya.r).get();
+   public static dsm.a b(@Nullable bpc<?> $$0) {
+      bqj.a $$1 = a.get($$0);
+      return $$1 == null ? dsm.a.f : $$1.a;
    }
 
-   private boolean b(cam $$0) {
-      bpy<?> $$1 = $$0.dM();
-      return $$1.a(bya.r) && $$1.c(bya.r).get().ai() == this.f;
+   public static <T extends bow> boolean a(bpc<T> $$0, cxo $$1, bps $$2, ib $$3, axd $$4) {
+      bqj.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
    }
 
-   private Optional<? extends cam> c(cam $$0) {
-      return $$0.dM().c(bya.h).get().a($$1 -> {
-         if ($$1.ai() == this.f && $$1 instanceof cam $$2 && $$0.a($$2) && !$$2.gi()) {
-            return true;
-         }
+   static {
+      a(bpc.g, bqi.b, dsm.a.f, ccn::a);
+      a(bpc.u, bqi.b, dsm.a.f, ccf::c);
+      a(bpc.y, bqi.b, dsm.a.f, ccf::c);
+      a(bpc.B, bqi.b, dsm.a.f, cfm::a);
+      a(bpc.Y, bqi.b, dsm.a.f, cfu::b);
+      a(bpc.aE, bqi.b, dsm.a.f, ccf::c);
+      a(bpc.aH, bqi.b, dsm.a.f, ccf::c);
+      a(bpc.aW, bqi.b, dsm.a.f, ccf::c);
+      a(bpc.bf, bqi.b, dsm.a.f, ccd::b);
+      a(bpc.d, bqi.d, dsm.a.f, cck::c);
+      a(bpc.h, bqi.d, dsm.a.f, cay::b);
+      a(bpc.j, bqi.d, dsm.a.f, cfy::c);
+      a(bpc.q, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.t, bqi.d, dsm.a.f, cbd::b);
+      a(bpc.w, bqi.d, dsm.a.f, cbd::b);
+      a(bpc.x, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.z, bqi.d, dsm.a.f, cbd::b);
+      a(bpc.H, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.I, bqi.d, dsm.a.f, cfp::b);
+      a(bpc.F, bqi.d, dsm.a.f, bpq::a);
+      a(bpc.R, bqi.d, dsm.a.f, ccv::c);
+      a(bpc.T, bqi.d, dsm.a.f, cfs::b);
+      a(bpc.U, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.W, bqi.b, dsm.a.f, bpg::a);
+      a(bpc.X, bqi.d, dsm.a.f, cdb::c);
+      a(bpc.ab, bqi.d, dsm.a.f, cbd::b);
+      a(bpc.ac, bqi.d, dsm.a.f, cfv::a);
+      a(bpc.af, bqi.d, dsm.a.f, bpq::a);
+      a(bpc.am, bqi.d, dsm.a.f, cbd::b);
+      a(bpc.ao, bqi.d, dsm.a.f, cfx::b);
+      a(bpc.ar, bqi.d, dsm.a.f, cbq::c);
+      a(bpc.as, bqi.d, dsm.a.f, cbd::b);
+      a(bpc.at, bqi.d, dsm.a.e, cbr::c);
+      a(bpc.aw, bqi.d, dsm.a.e, cbt::c);
+      a(bpc.ay, bqi.d, dsm.a.f, cbd::b);
+      a(bpc.Z, bqi.d, dsm.a.f, chc::c);
+      a(bpc.az, bqi.d, dsm.a.f, chi::b);
+      a(bpc.aB, bqi.d, dsm.a.f, cfz::b);
+      a(bpc.aC, bqi.d, dsm.a.f, cbv::c);
+      a(bpc.aF, bqi.d, dsm.a.f, cbx::c);
+      a(bpc.aI, bqi.d, dsm.a.f, cbd::b);
+      a(bpc.aL, bqi.d, dsm.a.f, cgf::b);
+      a(bpc.aM, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.aN, bqi.d, dsm.a.f, cdl::c);
+      a(bpc.aO, bqi.d, dsm.a.f, cgh::c);
+      a(bpc.aR, bqi.d, dsm.a.f, bpq::a);
+      a(bpc.aV, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.aX, bqi.d, dsm.a.f, cgk::a);
+      a(bpc.aY, bqi.c, dsm.a.f, cgl::c);
+      a(bpc.bg, bqi.d, dsm.a.f, cce::c);
+      a(bpc.bi, bqi.d, dsm.a.f, bpq::a);
+      a(bpc.bn, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.bo, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.bp, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.br, bqi.d, dsm.a.f, ccg::c);
+      a(bpc.bt, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.bu, bqi.d, dsm.a.f, cdp::c);
+      a(bpc.bw, bqi.d, dsm.a.f, cgt::b);
+      a(bpc.bv, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.p, bqi.d, dsm.a.f, cbd::b);
+      a(bpc.D, bqi.b, dsm.a.f, cfu::b);
+      a(bpc.J, bqi.a, dsm.a.f, cfy::b);
+      a(bpc.Q, bqi.a, dsm.a.f, cbn::c);
+      a(bpc.ad, bqi.a, dsm.a.f, cfy::b);
+      a(bpc.av, bqi.a, dsm.a.f, cbd::b);
+      a(bpc.ax, bqi.a, dsm.a.f, bpq::a);
+      a(bpc.aG, bqi.d, dsm.a.f, cfy::b);
+      a(bpc.aJ, bqi.a, dsm.a.f, bpq::a);
+      a(bpc.bd, bqi.a, dsm.a.f, cbd::b);
+      a(bpc.bh, bqi.a, dsm.a.f, cfy::b);
+      a(bpc.bj, bqi.a, dsm.a.f, cfy::b);
+      a(bpc.bk, bqi.d, dsm.a.f, bpq::a);
+      a(bpc.bl, bqi.a, dsm.a.f, bpq::a);
+   }
 
-         return false;
-      }).map(cam.class::cast);
+   static record a(dsm.a a, bqh b, bqj.b<?> c) {
+   }
+
+   @FunctionalInterface
+   public interface b<T extends bow> {
+      boolean test(bpc<T> var1, cxo var2, bps var3, ib var4, axd var5);
    }
 }

@@ -1,36 +1,35 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class bcm extends DataFix {
-   private static final String a = "WorldGenSettings";
-   private static final List<String> b = List.of(
-      "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
-   );
-
-   public bcm(Schema $$0) {
-      super($$0, false);
+   public bcm(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(bdt.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Dynamic<?> $$1 = $$0x.get("WorldGenSettings").orElseEmptyMap();
-
-               for (String $$2 : b) {
-                  Optional<? extends Dynamic<?>> $$3 = $$0x.get($$2).result();
-                  if ($$3.isPresent()) {
-                     $$0x = $$0x.remove($$2);
-                     $$1 = $$1.set($$2, $$3.get());
-                  }
-               }
-
-               return $$0x.set("WorldGenSettings", $$1);
-            })
-      );
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(beh.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(beh.A.typeName(), bfq.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
+            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
+            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+         } else {
+            return $$2x;
+         }
+      });
    }
 }

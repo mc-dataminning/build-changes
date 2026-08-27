@@ -1,28 +1,23 @@
-import com.mojang.serialization.Codec;
+public enum bnc {
+   a,
+   b,
+   c,
+   d,
+   e;
 
-public enum bnc implements axg {
-   a("hurt", atp.tE),
-   b("thorns", atp.yQ),
-   c("drowning", atp.tF),
-   d("burning", atp.tH),
-   e("poking", atp.tI),
-   f("freezing", atp.tG);
-
-   public static final Codec<bnc> g = axg.a(bnc::values);
-   private final String h;
-   private final ato i;
-
-   private bnc(String $$0, ato $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public boolean a() {
+      return this == a || this == b || this == c;
    }
 
-   @Override
-   public String c() {
-      return this.h;
+   public boolean b() {
+      return this == a;
    }
 
-   public ato a() {
-      return this.i;
+   public boolean c() {
+      return this == a || this == b;
+   }
+
+   public static bnc a(boolean $$0) {
+      return $$0 ? a : b;
    }
 }

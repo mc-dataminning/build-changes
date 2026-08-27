@@ -16,30 +16,30 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum ih implements axg {
-   a(0, 1, -1, "down", ih.b.b, ih.a.b, new jf(0, -1, 0)),
-   b(1, 0, -1, "up", ih.b.a, ih.a.b, new jf(0, 1, 0)),
-   c(2, 3, 2, "north", ih.b.b, ih.a.c, new jf(0, 0, -1)),
-   d(3, 2, 0, "south", ih.b.a, ih.a.c, new jf(0, 0, 1)),
-   e(4, 5, 1, "west", ih.b.b, ih.a.a, new jf(-1, 0, 0)),
-   f(5, 4, 3, "east", ih.b.a, ih.a.a, new jf(1, 0, 0));
+public enum ih implements axq {
+   a(0, 1, -1, "down", ih.b.b, ih.a.b, new jg(0, -1, 0)),
+   b(1, 0, -1, "up", ih.b.a, ih.a.b, new jg(0, 1, 0)),
+   c(2, 3, 2, "north", ih.b.b, ih.a.c, new jg(0, 0, -1)),
+   d(3, 2, 0, "south", ih.b.a, ih.a.c, new jg(0, 0, 1)),
+   e(4, 5, 1, "west", ih.b.b, ih.a.a, new jg(-1, 0, 0)),
+   f(5, 4, 3, "east", ih.b.a, ih.a.a, new jg(1, 0, 0));
 
-   public static final axg.a<ih> g = axg.a(ih::values);
-   public static final Codec<ih> h = avu.a(g, ih::a);
-   public static final IntFunction<ih> i = ave.a(ih::d, values(), ave.a.b);
-   public static final xq<ByteBuf, ih> j = xo.a(i, ih::d);
+   public static final axq.a<ih> g = axq.a(ih::values);
+   public static final Codec<ih> h = awe.b(g, ih::a);
+   public static final IntFunction<ih> i = avn.a(ih::d, values(), avn.a.b);
+   public static final xs<ByteBuf, ih> j = xq.a(i, ih::d);
    private final int k;
    private final int l;
    private final int m;
    private final String n;
    private final ih.a o;
    private final ih.b p;
-   private final jf q;
+   private final jg q;
    private static final ih[] r = values();
    private static final ih[] s = Arrays.stream(r).sorted(Comparator.comparingInt($$0 -> $$0.k)).toArray(ih[]::new);
    private static final ih[] t = Arrays.stream(r).filter($$0 -> $$0.o().d()).sorted(Comparator.comparingInt($$0 -> $$0.m)).toArray(ih[]::new);
 
-   private ih(int $$0, int $$1, int $$2, String $$3, ih.b $$4, ih.a $$5, jf $$6) {
+   private ih(int $$0, int $$1, int $$2, String $$3, ih.b $$4, ih.a $$5, jg $$6) {
       this.k = $$0;
       this.m = $$2;
       this.l = $$1;
@@ -49,13 +49,13 @@ public enum ih implements axg {
       this.q = $$6;
    }
 
-   public static ih[] a(bof $$0) {
+   public static ih[] a(bow $$0) {
       float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = awm.a($$1);
-      float $$4 = awm.b($$1);
-      float $$5 = awm.a($$2);
-      float $$6 = awm.b($$2);
+      float $$3 = aww.a($$1);
+      float $$4 = aww.b($$1);
+      float $$5 = aww.a($$2);
+      float $$6 = aww.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -85,12 +85,12 @@ public enum ih implements axg {
    }
 
    public static ih a(Matrix4f $$0, ih $$1) {
-      jf $$2 = $$1.q();
+      jg $$2 = $$1.q();
       Vector4f $$3 = $$0.transform(new Vector4f((float)$$2.u(), (float)$$2.v(), (float)$$2.w(), 0.0F));
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<ih> a(awt $$0) {
+   public static Collection<ih> a(axd $$0) {
       return ac.b(values(), $$0);
    }
 
@@ -121,7 +121,7 @@ public enum ih implements axg {
       return this.p;
    }
 
-   public static ih a(bof $$0, ih.a $$1) {
+   public static ih a(bow $$0, ih.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.h(1.0F)) ? f : e;
          case c -> d.a($$0.h(1.0F)) ? d : c;
@@ -239,11 +239,11 @@ public enum ih implements axg {
    }
 
    public static ih a(int $$0) {
-      return s[awm.a($$0 % s.length)];
+      return s[aww.a($$0 % s.length)];
    }
 
    public static ih b(int $$0) {
-      return t[awm.a($$0 % t.length)];
+      return t[aww.a($$0 % t.length)];
    }
 
    @Nullable
@@ -276,7 +276,7 @@ public enum ih implements axg {
    }
 
    public static ih a(double $$0) {
-      return b(awm.a($$0 / 90.0 + 0.5) & 3);
+      return b(aww.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static ih a(ih.a $$0, ih.b $$1) {
@@ -291,7 +291,7 @@ public enum ih implements axg {
       return (float)((this.m & 3) * 90);
    }
 
-   public static ih b(awt $$0) {
+   public static ih b(axd $$0) {
       return ac.a(r, $$0);
    }
 
@@ -338,18 +338,18 @@ public enum ih implements axg {
       throw new IllegalArgumentException("No such direction: " + $$0 + " " + $$1);
    }
 
-   public jf q() {
+   public jg q() {
       return this.q;
    }
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -awm.a($$1);
-      float $$3 = awm.b($$1);
+      float $$2 = -aww.a($$1);
+      float $$3 = aww.b($$1);
       return (float)this.q.u() * $$2 + (float)this.q.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements axg, Predicate<ih> {
+   public static enum a implements axq, Predicate<ih> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -385,7 +385,7 @@ public enum ih implements axg {
       };
 
       public static final ih.a[] d = values();
-      public static final axg.a<ih.a> e = axg.a(ih.a::values);
+      public static final axq.a<ih.a> e = axq.a(ih.a::values);
       private final String f;
 
       a(String $$0) {
@@ -414,7 +414,7 @@ public enum ih implements axg {
          return this.f;
       }
 
-      public static ih.a a(awt $$0) {
+      public static ih.a a(axd $$0) {
          return ac.a(d, $$0);
       }
 
@@ -481,11 +481,11 @@ public enum ih implements axg {
          this.d = $$1;
       }
 
-      public ih a(awt $$0) {
+      public ih a(axd $$0) {
          return ac.a(this.c, $$0);
       }
 
-      public ih.a b(awt $$0) {
+      public ih.a b(axd $$0) {
          return ac.a(this.d, $$0);
       }
 
@@ -502,7 +502,7 @@ public enum ih implements axg {
          return Arrays.stream(this.c);
       }
 
-      public List<ih> c(awt $$0) {
+      public List<ih> c(axd $$0) {
          return ac.b(this.c, $$0);
       }
    }

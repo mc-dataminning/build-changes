@@ -1,47 +1,36 @@
-public class bwq extends bvu {
-   private final cco a;
-   private int b;
+public class bwq extends bwl {
+   private final cca a;
+   private apg b;
+   private boolean c;
 
-   public bwq(cco $$0) {
+   public bwq(cca $$0) {
       this.a = $$0;
-      this.a($$0);
-   }
-
-   @Override
-   public void c() {
-      this.a.gQ();
-      this.h();
-   }
-
-   private void h() {
-      ato $$0 = this.a.gP();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return false;
    }
 
    @Override
    public boolean a() {
-      this.b++;
-      if (this.b > 0 && this.a.ef().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fa() && this.a.ef().a(10) == 0;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(cco $$0) {
-      this.b = -$$0.gU();
+      apg $$0 = (apg)this.a.P_();
+      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.ga().b && !$$0.bc() && !$$0.aA;
+      return !this.a.gn() && $$1 && this.a.gw();
    }
 
    @Override
-   public boolean T_() {
-      return true;
+   public boolean Q_() {
+      return !this.c;
+   }
+
+   @Override
+   public void c() {
+      this.b = (apg)this.a.P_();
+      this.c = false;
+   }
+
+   @Override
+   public void e() {
+      if (!this.c && !this.a.y() && !this.a.gb()) {
+         if (this.a.cH().c(this.b.cH())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

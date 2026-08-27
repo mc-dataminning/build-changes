@@ -1,164 +1,51 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
 
-public class ezp {
-   private static final int a = 256;
-   private final ThreadLocal<ezp.b> b = ThreadLocal.withInitial(ezp.b::new);
-   private final Long2ObjectLinkedOpenHashMap<ezp.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<ib> e;
+public enum ezp {
+   a(new cqk(cqn.qR)),
+   b(new cqk(dac.cj)),
+   c(new cqk(cqn.lG)),
+   d(new cqk(cqn.pc), new cqk(cqn.oU)),
+   e(new cqk(cqn.qz), new cqk(cqn.os)),
+   f(new cqk(cqn.qR)),
+   g(new cqk(cqn.pW)),
+   h(new cqk(dac.b)),
+   i(new cqk(cqn.qz), new cqk(cqn.oy)),
+   j(new cqk(cqn.qR)),
+   k(new cqk(dac.dI)),
+   l(new cqk(cqn.pa), new cqk(cqn.pP)),
+   m(new cqk(cqn.qR)),
+   n(new cqk(cqn.pW)),
+   o(new cqk(cqn.fE)),
+   p(new cqk(cqn.pS)),
+   q(new cqk(cqn.pW)),
+   r(new cqk(cqn.hA));
 
-   public ezp(ToIntFunction<ib> $$0) {
-      this.e = $$0;
+   public static final List<ezp> s = ImmutableList.of(m, n);
+   public static final List<ezp> t = ImmutableList.of(j, k, l);
+   public static final List<ezp> u = ImmutableList.of(f, g, h, i);
+   public static final List<ezp> v = ImmutableList.of(a, d, b, e, c);
+   public static final Map<ezp, List<ezp>> w = ImmutableMap.of(
+      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+   );
+   private final List<cqk> x;
+
+   private ezp(cqk... $$0) {
+      this.x = ImmutableList.copyOf($$0);
    }
 
-   public int a(ib $$0) {
-      int $$1 = jd.a($$0.u());
-      int $$2 = jd.a($$0.w());
-      ezp.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
-      }
-
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
-      } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
-      }
+   public static List<ezp> a(cnc $$0) {
+      return switch ($$0) {
+         case a -> v;
+         case b -> u;
+         case c -> t;
+         case d -> s;
+      };
    }
 
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
-
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = cvl.c($$0 + $$2, $$1 + $$3);
-               ezp.a $$5 = (ezp.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
-               }
-            }
-         }
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(ezp.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   private ezp.a b(int $$0, int $$1) {
-      long $$2 = cvl.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         ezp.a $$3 = (ezp.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
-      }
-
-      this.d.writeLock().lock();
-
-      ezp.a $$5;
-      try {
-         ezp.a $$4 = (ezp.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new ezp.a();
-            if (this.c.size() >= 256) {
-               ezp.a $$6 = (ezp.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
-            }
-
-            this.c.put($$2, $$5);
-            return $$5;
-         }
-
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
-      }
-
-      return $$5;
-   }
-
-   static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = awm.h(16);
-      private volatile boolean d;
-
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
-         }
-
-         this.b.writeLock().lock();
-
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
-         }
-
-         return var12;
-      }
-
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
-      }
-   }
-
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
-      @Nullable
-      ezp.a c;
-
-      private b() {
-      }
+   public List<cqk> a() {
+      return this.x;
    }
 }

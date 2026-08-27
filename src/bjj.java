@@ -1,27 +1,195 @@
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongMaps;
+import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.time.Duration;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.Logger;
 
-public class bjj {
-   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
+public class bjj implements bjo {
+   private static final long a = Duration.ofMillis(100L).toNanos();
+   private static final Logger c = LogUtils.getLogger();
+   private final List<String> d = Lists.newArrayList();
+   private final LongList e = new LongArrayList();
+   private final Map<String, bjj.a> f = Maps.newHashMap();
+   private final IntSupplier g;
+   private final LongSupplier h;
+   private final long i;
+   private final int j;
+   private String k = "";
+   private boolean l;
+   @Nullable
+   private bjj.a m;
+   private final boolean n;
+   private final Set<Pair<String, bkw>> o = new ObjectArraySet();
 
-   private bjj() {
+   public bjj(LongSupplier $$0, IntSupplier $$1, boolean $$2) {
+      this.i = $$0.getAsLong();
+      this.h = $$0;
+      this.j = $$1.getAsInt();
+      this.g = $$1;
+      this.n = $$2;
    }
 
-   public static Map<Integer, Double> a(long[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   @Override
+   public void a() {
+      if (this.l) {
+         c.error("Profiler tick already started - missing endTick()?");
+      } else {
+         this.l = true;
+         this.k = "";
+         this.d.clear();
+         this.a("root");
+      }
    }
 
-   public static Map<Integer, Double> a(double[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   @Override
+   public void b() {
+      if (!this.l) {
+         c.error("Profiler tick already ended - missing startTick()?");
+      } else {
+         this.c();
+         this.l = false;
+         if (!this.k.isEmpty()) {
+            c.error("Profiler tick ended before path was fully popped (remainder: '{}'). Mismatched push/pop?", LogUtils.defer(() -> bjp.b(this.k)));
+         }
+      }
    }
 
-   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
-      Int2DoubleSortedMap $$1 = ac.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
-      return Int2DoubleSortedMaps.unmodifiable($$1);
+   @Override
+   public void a(String $$0) {
+      if (!this.l) {
+         c.error("Cannot push '{}' to profiler if profiler tick hasn't started - missing startTick()?", $$0);
+      } else {
+         if (!this.k.isEmpty()) {
+            this.k = this.k + "\u001e";
+         }
+
+         this.k = this.k + $$0;
+         this.d.add(this.k);
+         this.e.add(ac.c());
+         this.m = null;
+      }
+   }
+
+   @Override
+   public void a(Supplier<String> $$0) {
+      this.a($$0.get());
+   }
+
+   @Override
+   public void a(bkw $$0) {
+      this.o.add(Pair.of(this.k, $$0));
+   }
+
+   @Override
+   public void c() {
+      if (!this.l) {
+         c.error("Cannot pop from profiler if profiler tick hasn't started - missing startTick()?");
+      } else if (this.e.isEmpty()) {
+         c.error("Tried to pop one too many times! Mismatched push() and pop()?");
+      } else {
+         long $$0 = ac.c();
+         long $$1 = this.e.removeLong(this.e.size() - 1);
+         this.d.remove(this.d.size() - 1);
+         long $$2 = $$0 - $$1;
+         bjj.a $$3 = this.f();
+         $$3.c += $$2;
+         $$3.d++;
+         $$3.a = Math.max($$3.a, $$2);
+         $$3.b = Math.min($$3.b, $$2);
+         if (this.n && $$2 > a) {
+            c.warn("Something's taking too long! '{}' took aprox {} ms", LogUtils.defer(() -> bjp.b(this.k)), LogUtils.defer(() -> (double)$$2 / 1000000.0));
+         }
+
+         this.k = this.d.isEmpty() ? "" : this.d.get(this.d.size() - 1);
+         this.m = null;
+      }
+   }
+
+   @Override
+   public void b(String $$0) {
+      this.c();
+      this.a($$0);
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+      this.c();
+      this.a($$0);
+   }
+
+   private bjj.a f() {
+      if (this.m == null) {
+         this.m = this.f.computeIfAbsent(this.k, $$0 -> new bjj.a());
+      }
+
+      return this.m;
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+      this.f().e.addTo($$0, (long)$$1);
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+      this.f().e.addTo($$0.get(), (long)$$1);
+   }
+
+   @Override
+   public bjp d() {
+      return new bjm(this.f, this.i, this.j, this.h.getAsLong(), this.g.getAsInt());
+   }
+
+   @Nullable
+   @Override
+   public bjj.a c(String $$0) {
+      return this.f.get($$0);
+   }
+
+   @Override
+   public Set<Pair<String, bkw>> e() {
+      return this.o;
+   }
+
+   public static class a implements bjr {
+      long a = Long.MIN_VALUE;
+      long b = Long.MAX_VALUE;
+      long c;
+      long d;
+      final Object2LongOpenHashMap<String> e = new Object2LongOpenHashMap();
+
+      @Override
+      public long a() {
+         return this.c;
+      }
+
+      @Override
+      public long b() {
+         return this.a;
+      }
+
+      @Override
+      public long c() {
+         return this.d;
+      }
+
+      @Override
+      public Object2LongMap<String> d() {
+         return Object2LongMaps.unmodifiable(this.e);
+      }
    }
 }

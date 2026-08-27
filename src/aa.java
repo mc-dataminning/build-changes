@@ -10,22 +10,22 @@ public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3811;
+   public static final int b = 3815;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "24w05b";
+   public static final String d = "24w06a";
    @Deprecated
    public static final int e = 766;
    @Deprecated
-   public static final int f = 175;
+   public static final int f = 176;
    public static final int g = 3798;
-   private static final int bl = 30;
+   private static final int bn = 30;
    public static final boolean h = true;
    @Deprecated
-   public static final int i = 25;
+   public static final int i = 26;
    @Deprecated
-   public static final int j = 30;
+   public static final int j = 31;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -114,26 +114,28 @@ public class aa {
    public static final boolean aQ = false;
    public static final boolean aR = false;
    public static final long aS = Duration.ofMillis(300L).toNanos();
-   public static final boolean aT = false;
-   public static boolean aU = true;
-   public static boolean aV;
-   public static Set<TypeReference> aW = Set.of();
-   public static final int aX = 16;
-   public static final int aY = 256;
-   public static final int aZ = 32500;
-   public static final int ba = 1000000;
-   public static final int bb = 32;
-   public static final char[] bc = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
-   public static final int bd = 20;
-   public static final int be = 50;
-   public static final int bf = 1200;
-   public static final int bg = 24000;
-   public static final float bh = 1365.3334F;
-   public static final float bi = 0.87890625F;
-   public static final float bj = 17.578125F;
-   public static final int bk = 64;
+   public static final float aT = 3600000.0F;
+   public static final boolean aU = false;
+   public static boolean aV = true;
+   public static boolean aW;
+   public static Set<TypeReference> aX = Set.of();
+   public static final int aY = 16;
+   public static final int aZ = 256;
+   public static final int ba = 32500;
+   public static final int bb = 2000000;
+   public static final int bc = 1000000;
+   public static final int bd = 32;
+   public static final char[] be = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
+   public static final int bf = 20;
+   public static final int bg = 50;
+   public static final int bh = 1200;
+   public static final int bi = 24000;
+   public static final float bj = 1365.3334F;
+   public static final float bk = 0.87890625F;
+   public static final float bl = 17.578125F;
+   public static final int bm = 64;
    @Nullable
-   private static ad bm;
+   private static ad bo;
 
    public static boolean a(char $$0) {
       return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
@@ -158,39 +160,39 @@ public class aa {
    }
 
    public static void a(ad $$0) {
-      if (bm == null) {
-         bm = $$0;
-      } else if ($$0 != bm) {
+      if (bo == null) {
+         bo = $$0;
+      } else if ($$0 != bo) {
          throw new IllegalStateException("Cannot override the current game version!");
       }
    }
 
    public static void a() {
-      if (bm == null) {
-         bm = t.a();
+      if (bo == null) {
+         bo = t.a();
       }
    }
 
    public static ad b() {
-      if (bm == null) {
+      if (bo == null) {
          throw new IllegalStateException("Game version not set");
       } else {
-         return bm;
+         return bo;
       }
    }
 
    public static int c() {
-      return 1073741999;
+      return 1073742000;
    }
 
-   public static boolean a(cvl $$0) {
+   public static boolean a(cwg $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !as ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
    }
 
    public static void d() {
-      aW = axs.t;
+      aX = ayc.t;
    }
 
    static {

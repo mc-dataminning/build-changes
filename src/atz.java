@@ -1,98 +1,22 @@
-public class atz {
-   public static final aty<czf> a = a("mined", kh.e);
-   public static final aty<cpl> b = a("crafted", kh.h);
-   public static final aty<cpl> c = a("used", kh.h);
-   public static final aty<cpl> d = a("broken", kh.h);
-   public static final aty<cpl> e = a("picked_up", kh.h);
-   public static final aty<cpl> f = a("dropped", kh.h);
-   public static final aty<bol<?>> g = a("killed", kh.g);
-   public static final aty<bol<?>> h = a("killed_by", kh.g);
-   public static final aty<ajc> i = a("custom", kh.m);
-   public static final ajc j = a("leave_game", atx.b);
-   public static final ajc k = a("play_time", atx.e);
-   public static final ajc l = a("total_world_time", atx.e);
-   public static final ajc m = a("time_since_death", atx.e);
-   public static final ajc n = a("time_since_rest", atx.e);
-   public static final ajc o = a("sneak_time", atx.e);
-   public static final ajc p = a("walk_one_cm", atx.d);
-   public static final ajc q = a("crouch_one_cm", atx.d);
-   public static final ajc r = a("sprint_one_cm", atx.d);
-   public static final ajc s = a("walk_on_water_one_cm", atx.d);
-   public static final ajc t = a("fall_one_cm", atx.d);
-   public static final ajc u = a("climb_one_cm", atx.d);
-   public static final ajc v = a("fly_one_cm", atx.d);
-   public static final ajc w = a("walk_under_water_one_cm", atx.d);
-   public static final ajc x = a("minecart_one_cm", atx.d);
-   public static final ajc y = a("boat_one_cm", atx.d);
-   public static final ajc z = a("pig_one_cm", atx.d);
-   public static final ajc A = a("horse_one_cm", atx.d);
-   public static final ajc B = a("aviate_one_cm", atx.d);
-   public static final ajc C = a("swim_one_cm", atx.d);
-   public static final ajc D = a("strider_one_cm", atx.d);
-   public static final ajc E = a("jump", atx.b);
-   public static final ajc F = a("drop", atx.b);
-   public static final ajc G = a("damage_dealt", atx.c);
-   public static final ajc H = a("damage_dealt_absorbed", atx.c);
-   public static final ajc I = a("damage_dealt_resisted", atx.c);
-   public static final ajc J = a("damage_taken", atx.c);
-   public static final ajc K = a("damage_blocked_by_shield", atx.c);
-   public static final ajc L = a("damage_absorbed", atx.c);
-   public static final ajc M = a("damage_resisted", atx.c);
-   public static final ajc N = a("deaths", atx.b);
-   public static final ajc O = a("mob_kills", atx.b);
-   public static final ajc P = a("animals_bred", atx.b);
-   public static final ajc Q = a("player_kills", atx.b);
-   public static final ajc R = a("fish_caught", atx.b);
-   public static final ajc S = a("talked_to_villager", atx.b);
-   public static final ajc T = a("traded_with_villager", atx.b);
-   public static final ajc U = a("eat_cake_slice", atx.b);
-   public static final ajc V = a("fill_cauldron", atx.b);
-   public static final ajc W = a("use_cauldron", atx.b);
-   public static final ajc X = a("clean_armor", atx.b);
-   public static final ajc Y = a("clean_banner", atx.b);
-   public static final ajc Z = a("clean_shulker_box", atx.b);
-   public static final ajc aa = a("interact_with_brewingstand", atx.b);
-   public static final ajc ab = a("interact_with_beacon", atx.b);
-   public static final ajc ac = a("inspect_dropper", atx.b);
-   public static final ajc ad = a("inspect_hopper", atx.b);
-   public static final ajc ae = a("inspect_dispenser", atx.b);
-   public static final ajc af = a("play_noteblock", atx.b);
-   public static final ajc ag = a("tune_noteblock", atx.b);
-   public static final ajc ah = a("pot_flower", atx.b);
-   public static final ajc ai = a("trigger_trapped_chest", atx.b);
-   public static final ajc aj = a("open_enderchest", atx.b);
-   public static final ajc ak = a("enchant_item", atx.b);
-   public static final ajc al = a("play_record", atx.b);
-   public static final ajc am = a("interact_with_furnace", atx.b);
-   public static final ajc an = a("interact_with_crafting_table", atx.b);
-   public static final ajc ao = a("open_chest", atx.b);
-   public static final ajc ap = a("sleep_in_bed", atx.b);
-   public static final ajc aq = a("open_shulker_box", atx.b);
-   public static final ajc ar = a("open_barrel", atx.b);
-   public static final ajc as = a("interact_with_blast_furnace", atx.b);
-   public static final ajc at = a("interact_with_smoker", atx.b);
-   public static final ajc au = a("interact_with_lectern", atx.b);
-   public static final ajc av = a("interact_with_campfire", atx.b);
-   public static final ajc aw = a("interact_with_cartography_table", atx.b);
-   public static final ajc ax = a("interact_with_loom", atx.b);
-   public static final ajc ay = a("interact_with_stonecutter", atx.b);
-   public static final ajc az = a("bell_ring", atx.b);
-   public static final ajc aA = a("raid_trigger", atx.b);
-   public static final ajc aB = a("raid_win", atx.b);
-   public static final ajc aC = a("interact_with_anvil", atx.b);
-   public static final ajc aD = a("interact_with_grindstone", atx.b);
-   public static final ajc aE = a("target_hit", atx.b);
-   public static final ajc aF = a("interact_with_smithing_table", atx.b);
+public enum atz {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-   private static ajc a(String $$0, atx $$1) {
-      ajc $$2 = new ajc($$0);
-      ix.a(kh.m, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+   private final String k;
+
+   private atz(String $$0) {
+      this.k = $$0;
    }
 
-   private static <T> aty<T> a(String $$0, ix<T> $$1) {
-      vs $$2 = vs.c("stat_type.minecraft." + $$0);
-      return ix.a(kh.x, $$0, new aty<>($$1, $$2));
+   public String a() {
+      return this.k;
    }
 }

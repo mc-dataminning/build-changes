@@ -1,40 +1,48 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class blq {
-   private static final Codec<Either<Integer, blq>> a = Codec.either(Codec.INT, kh.M.q().dispatch(blq::c, blr::codec));
-   public static final Codec<blq> c = a.xmap(
-      $$0 -> (blq)$$0.map(bln::a, $$0x -> $$0x), $$0 -> $$0.c() == blr.a ? Either.left(((bln)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<blq> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<blq> e = b(1, Integer.MAX_VALUE);
+public class blq<E extends blo> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   public static Codec<blq> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+   blq(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = blp.a($$0);
    }
 
-   public static <T extends blq> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return avu.a(
-         $$2,
-         (Function<T, DataResult<T>>)($$2x -> {
-            if ($$2x.a() < $$0) {
-               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b() > $$1
-                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
-            }
-         })
-      );
+   public static <E extends blo> blq<E> c() {
+      return new blq<>(ImmutableList.of());
    }
 
-   public abstract int a(awt var1);
+   @SafeVarargs
+   public static <E extends blo> blq<E> a(E... $$0) {
+      return new blq<>(ImmutableList.copyOf($$0));
+   }
 
-   public abstract int a();
+   public static <E extends blo> blq<E> a(List<E> $$0) {
+      return new blq<>($$0);
+   }
 
-   public abstract int b();
+   public boolean d() {
+      return this.b.isEmpty();
+   }
 
-   public abstract blr<?> c();
+   public Optional<E> b(axd $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return blp.a(this.b, $$1);
+      }
+   }
+
+   public List<E> e() {
+      return this.b;
+   }
+
+   public static <E extends blo> Codec<blq<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(blq::a, blq::e);
+   }
 }

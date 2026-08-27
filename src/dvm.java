@@ -1,73 +1,111 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.function.Consumer;
 
-public class dvm extends duu<dxd> {
-   public dvm(Codec<dxd> $$0) {
-      super($$0);
+public class dvm {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
+
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
    }
 
-   @Override
-   public boolean a(duw<dxd> $$0) {
-      cwz $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      awt $$3 = $$0.d();
-      dxd $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
+   protected static boolean a(cxu $$0, ib $$1, int $$2) {
+      if (b($$0, $$1)) {
          return false;
       } else {
-         List<ih> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            ib.a $$6 = $$2.j();
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
 
-            for (ih $$7 : $$5) {
-               $$6.g($$2);
-               List<ih> $$8 = $$4.a($$3, $$7.g());
-
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dme $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
-               }
-            }
-
-            return false;
-         }
-      }
-   }
-
-   public static boolean a(cwz $$0, ib $$1, dme $$2, dxd $$3, awt $$4, List<ih> $$5) {
-      ib.a $$6 = $$1.j();
-
-      for (ih $$7 : $$5) {
-         dme $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dme $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(aww.b($$5) * (float)$$2);
+            int $$7 = (int)(aww.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
                return false;
             }
+         }
 
-            $$0.a($$1, $$9, 3);
-            $$0.y($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
+         return true;
+      }
+   }
 
-            return true;
+   protected static boolean a(cxa $$0, ib $$1) {
+      return $$0.a($$1, dvm::c);
+   }
+
+   protected static boolean b(cxa $$0, ib $$1) {
+      return $$0.a($$1, dvm::e);
+   }
+
+   protected static void a(ih $$0, int $$1, boolean $$2, Consumer<dmz> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dnw.e));
+
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dnw.d));
          }
       }
 
-      return false;
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dnw.c));
+      }
+
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dnw.a : dnw.b));
+      }
    }
 
-   private static boolean c(dme $$0) {
-      return $$0.i() || $$0.a(czh.G);
+   protected static void a(cxa $$0, ib $$1, ih $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         ib.a $$5 = $$1.j();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(dac.st)) {
+               $$3x = $$3x.a(dfr.d, Boolean.valueOf($$0.z($$5)));
+            }
+
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
+   }
+
+   protected static boolean c(cxa $$0, ib $$1) {
+      dmz $$2 = $$0.a_($$1);
+      if ($$2.a(aun.bs)) {
+         $$0.a($$1, dac.su.o(), 2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static dmz a(ih $$0, dnw $$1) {
+      return dac.st.o().a(dfr.b, $$0).a(dfr.c, $$1);
+   }
+
+   public static boolean a(dmz $$0) {
+      return b($$0) || $$0.a(dac.H);
+   }
+
+   public static boolean b(dmz $$0) {
+      return $$0.a(dac.su) || $$0.a(aun.bs);
+   }
+
+   public static boolean c(dmz $$0) {
+      return $$0.i() || $$0.a(dac.G);
+   }
+
+   public static boolean d(dmz $$0) {
+      return !$$0.i() && !$$0.a(dac.G);
+   }
+
+   public static boolean e(dmz $$0) {
+      return $$0.i() || $$0.a(dac.G) || $$0.a(dac.H);
    }
 }

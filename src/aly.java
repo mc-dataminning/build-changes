@@ -1,84 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
 
 public class aly {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vs.c("commands.perf.alreadyRunning"));
-
    public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
-            .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource())))
+      LiteralCommandNode<du> $$1 = $$0.register(
+         (LiteralArgumentBuilder)dv.a("msg").then(dv.a("targets", eh.d()).then(dv.a("message", el.a()).executes($$0x -> {
+            Collection<apg> $$1x = eh.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               el.a($$0x, "message", $$2 -> a((du)$$0x.getSource(), $$1x, $$2));
+            }
+
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)dv.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)dv.a("w").redirect($$1));
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aW()) {
-         throw c.create();
-      } else {
-         Consumer<bjb> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> vs.c("commands.perf.started"), false);
-         return 0;
-      }
-   }
+   private static void a(du $$0, Collection<apg> $$1, wk $$2) {
+      vq.a $$3 = vq.a(vq.e, $$0);
+      wj $$4 = wj.a($$2);
+      boolean $$5 = false;
 
-   private static int b(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aW()) {
-         throw b.create();
-      } else {
-         $$1.aY();
-         return 0;
-      }
-   }
-
-   private static void a(du $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.bc().e(), aa.b().b());
-
-      String $$4;
-      try {
-         $$4 = v.a(bkr.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(vs.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
+      for (apg $$6 : $$1) {
+         vq.a $$7 = vq.a(vq.f, $$0).c($$6.O_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
       }
 
-      try (avx $$7 = new avx(bkr.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> vs.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(du $$0, bjb $$1) {
-      if ($$1 != bix.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)axl.a;
-         $$0.a(() -> vs.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+      if ($$5) {
+         $$0.a(atb.f);
       }
    }
 }

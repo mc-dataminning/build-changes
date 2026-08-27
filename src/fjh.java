@@ -1,25 +1,95 @@
-public class fjh extends fjk {
-   private static final vs b = vs.c("multiplayerWarning.header").a(n.r);
-   private static final vs c = vs.c("multiplayerWarning.message");
-   private static final vs k = vs.c("multiplayerWarning.check");
-   private static final vs l = b.f().f("\n").b(c);
-   private final fgh m;
+public class fjh extends fil implements fjj<cms> {
+   private final cms q;
+   private final cma r = new cma() {
+      @Override
+      public void a(clo $$0, int $$1, cqk $$2) {
+         fjh.this.M();
+      }
 
-   public fjh(fgh $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+      @Override
+      public void a(clo $$0, int $$1, int $$2) {
+         if ($$1 == 0) {
+            fjh.this.N();
+         }
+      }
+   };
+
+   public fjh(cms $$0, cir $$1, vu $$2) {
+      this.q = $$0;
+   }
+
+   public cms L() {
+      return this.q;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.c(fak.a(vr.i, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.v = true;
-            this.f.m.as();
-         }
+   protected void aO_() {
+      super.aO_();
+      this.q.a(this.r);
+   }
 
-         this.f.a(new fjf(this.m));
-      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(fak.a(vr.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+   @Override
+   public void d() {
+      this.f.s.r();
+      super.d();
+   }
+
+   @Override
+   public void k() {
+      super.k();
+      this.q.b(this.r);
+   }
+
+   @Override
+   protected void o() {
+      if (this.f.s.gl()) {
+         this.c(fbg.a(vt.d, $$0 -> this.d()).a(this.g / 2 - 100, 196, 98, 20).a());
+         this.c(fbg.a(vu.c("lectern.take_book"), $$0 -> this.g(3)).a(this.g / 2 + 2, 196, 98, 20).a());
+      } else {
+         super.o();
+      }
+   }
+
+   @Override
+   protected void I() {
+      this.g(1);
+   }
+
+   @Override
+   protected void J() {
+      this.g(2);
+   }
+
+   @Override
+   protected boolean b(int $$0) {
+      if ($$0 != this.q.m()) {
+         this.g(100 + $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void g(int $$0) {
+      this.f.q.a(this.q.j, $$0);
+   }
+
+   @Override
+   public boolean m() {
+      return false;
+   }
+
+   void M() {
+      cqk $$0 = this.q.l();
+      this.a(fil.a.a($$0));
+   }
+
+   void N() {
+      this.a(this.q.m());
+   }
+
+   @Override
+   protected void K() {
+      this.f.s.r();
    }
 }

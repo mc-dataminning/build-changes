@@ -1,118 +1,208 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class cgt extends cgp {
-   private static final int bW = 50;
-   private static final float bX = 0.35F;
-   private static final int bY = 7;
-   protected static final ImmutableList<bzh<? extends bzg<? super cgt>>> e = ImmutableList.of(bzh.c, bzh.d, bzh.b, bzh.f, bzh.m);
-   protected static final ImmutableList<bya<?>> bV = ImmutableList.of(
-      bya.n, bya.v, bya.g, bya.h, bya.k, bya.l, bya.ao, bya.an, bya.x, bya.y, bya.m, bya.E, new bya[]{bya.o, bya.p, bya.q, bya.t, bya.ab, bya.M, bya.b}
-   );
-
-   public cgt(bol<? extends cgt> $$0, cwe $$1) {
-      super($$0, $$1);
-      this.bK = 20;
-   }
-
-   public static bqd.a A() {
-      return cfg.gr().a(bqe.n, 50.0).a(bqe.o, 0.35F).a(bqe.c, 7.0);
-   }
-
+public class cgt extends cgr implements bpu {
+   private static final boz c = bpc.bw.n().a(0.5F).b(0.97F);
+   private static final UUID d = UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718");
+   private static final bqt ca = new bqt(d, "Attacking speed boost", 0.05, bqt.a.a);
+   private static final bmn cb = axv.a(0, 1);
+   private int cc;
+   private static final bmn cd = axv.a(20, 39);
+   private int ce;
    @Nullable
-   @Override
-   public bpp a(cwt $$0, bmj $$1, bpb $$2, @Nullable bpp $$3) {
-      cgu.a(this);
-      this.a($$0.F_(), $$1);
-      return super.a($$0, $$1, $$2, $$3);
+   private UUID cf;
+   private static final int cg = 10;
+   private static final bmn ch = axv.a(4, 6);
+   private int ci;
+
+   public cgt(bpc<? extends cgt> $$0, cwz $$1) {
+      super($$0, $$1);
+      this.a(eiy.i, 8.0F);
    }
 
    @Override
-   protected void a(awt $$0, bmj $$1) {
-      this.a(bom.a, new cpq(cpt.oX));
+   public void a(@Nullable UUID $$0) {
+      this.cf = $$0;
    }
 
    @Override
-   protected bpy.b<cgt> dN() {
-      return bpy.a(bV, e);
+   protected void s() {
+      this.bR.a(2, new bya(this, 1.0, false));
+      this.bR.a(7, new bxy(this, 1.0));
+      this.bS.a(1, new byd(this).a());
+      this.bS.a(2, new bye<>(this, cis.class, 10, true, false, this::a_));
+      this.bS.a(3, new byk<>(this, true));
+   }
+
+   public static bqu.a gx() {
+      return cgr.gr().a(bqv.u, 0.0).a(bqv.r, 0.23F).a(bqv.c, 5.0);
    }
 
    @Override
-   protected bpy<?> a(Dynamic<?> $$0) {
-      return cgu.a(this, this.dN().a($$0));
+   public boz e(bpz $$0) {
+      return this.o_() ? c : super.e($$0);
    }
 
    @Override
-   public bpy<cgt> dM() {
-      return (bpy<cgt>)super.dM();
-   }
-
-   @Override
-   public boolean u() {
+   protected boolean gp() {
       return false;
    }
 
    @Override
-   public boolean k(cpq $$0) {
-      return $$0.a(cpt.oX) ? super.k($$0) : false;
-   }
-
-   @Override
-   protected void aa() {
-      this.dJ().ae().a("piglinBruteBrain");
-      this.dM().a((apa)this.dJ(), this);
-      this.dJ().ae().c();
-      cgu.b(this);
-      cgu.c(this);
-      super.aa();
-   }
-
-   @Override
-   public cgs gn() {
-      return this.gd() && this.go() ? cgs.a : cgs.f;
-   }
-
-   @Override
-   public boolean a(bne $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if (this.dJ().B) {
-         return false;
-      } else {
-         if ($$2 && $$0.d() instanceof box) {
-            cgu.a(this, (box)$$0.d());
+   protected void Y() {
+      bqr $$0 = this.f(bqv.r);
+      if (this.Y_()) {
+         if (!this.o_() && !$$0.a(ca)) {
+            $$0.c(ca);
          }
 
-         return $$2;
+         this.gy();
+      } else if ($$0.a(ca)) {
+         $$0.b(ca.a());
+      }
+
+      this.a((apf)this.dM(), true);
+      if (this.p() != null) {
+         this.gz();
+      }
+
+      if (this.Y_()) {
+         this.bc = this.ah;
+      }
+
+      super.Y();
+   }
+
+   private void gy() {
+      if (this.cc > 0) {
+         this.cc--;
+         if (this.cc == 0) {
+            this.gB();
+         }
       }
    }
 
-   @Override
-   protected ato y() {
-      return atp.ti;
+   private void gz() {
+      if (this.ci > 0) {
+         this.ci--;
+      } else {
+         if (this.M().a(this.p())) {
+            this.gA();
+         }
+
+         this.ci = ch.a(this.ag);
+      }
+   }
+
+   private void gA() {
+      double $$0 = this.g(bqv.k);
+      epm $$1 = epm.a(this.dk()).c($$0, 10.0, $$0);
+      this.dM()
+         .a(cgt.class, $$1, bpb.f)
+         .stream()
+         .filter($$0x -> $$0x != this)
+         .filter($$0x -> $$0x.p() == null)
+         .filter($$0x -> !$$0x.s(this.p()))
+         .forEach($$0x -> $$0x.h(this.p()));
+   }
+
+   private void gB() {
+      this.a(aty.CW, this.fb() * 2.0F, this.fc() * 1.8F);
    }
 
    @Override
-   protected ato d(bne $$0) {
-      return atp.tl;
+   public void h(@Nullable bpo $$0) {
+      if (this.p() == null && $$0 != null) {
+         this.cc = cb.a(this.ag);
+         this.ci = ch.a(this.ag);
+      }
+
+      if ($$0 instanceof cis) {
+         this.c((cis)$$0);
+      }
+
+      super.h($$0);
    }
 
    @Override
-   protected ato n_() {
-      return atp.tk;
+   public void c() {
+      this.a(cd.a(this.ag));
+   }
+
+   public static boolean b(bpc<cgt> $$0, cxa $$1, bps $$2, ib $$3, axd $$4) {
+      return $$1.aj() != bmz.a && !$$1.a_($$3.d()).a(dac.kK);
    }
 
    @Override
-   protected void b(ib $$0, dme $$1) {
-      this.a(atp.tm, 0.15F, 1.0F);
-   }
-
-   protected void gs() {
-      this.b(atp.tj);
+   public boolean a(cxc $$0) {
+      return $$0.f(this) && !$$0.d(this.cH());
    }
 
    @Override
-   protected void gp() {
-      this.b(atp.tn);
+   public void b(ta $$0) {
+      super.b($$0);
+      this.c($$0);
+   }
+
+   @Override
+   public void a(ta $$0) {
+      super.a($$0);
+      this.a(this.dM(), $$0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.ce = $$0;
+   }
+
+   @Override
+   public int a() {
+      return this.ce;
+   }
+
+   @Override
+   protected atx v() {
+      return this.Y_() ? aty.CW : aty.CV;
+   }
+
+   @Override
+   protected atx d(bnv $$0) {
+      return aty.CY;
+   }
+
+   @Override
+   protected atx n_() {
+      return aty.CX;
+   }
+
+   @Override
+   protected void a(axd $$0, bna $$1) {
+      this.a(bpd.a, new cqk(cqn.oU));
+   }
+
+   @Override
+   protected cqk go() {
+      return cqk.h;
+   }
+
+   @Override
+   protected void gw() {
+      this.f(bqv.u).a(0.0);
+   }
+
+   @Nullable
+   @Override
+   public UUID b() {
+      return this.cf;
+   }
+
+   @Override
+   public boolean f(cis $$0) {
+      return this.a_((bpo)$$0);
+   }
+
+   @Override
+   public boolean k(cqk $$0) {
+      return this.j($$0);
    }
 }

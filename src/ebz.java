@@ -1,26 +1,28 @@
-public interface ebz {
-   ajb<ecm> a = a("villages");
-   ajb<ecm> b = a("desert_pyramids");
-   ajb<ecm> c = a("igloos");
-   ajb<ecm> d = a("jungle_temples");
-   ajb<ecm> e = a("swamp_huts");
-   ajb<ecm> f = a("pillager_outposts");
-   ajb<ecm> g = a("ocean_monuments");
-   ajb<ecm> h = a("woodland_mansions");
-   ajb<ecm> i = a("buried_treasures");
-   ajb<ecm> j = a("mineshafts");
-   ajb<ecm> k = a("ruined_portals");
-   ajb<ecm> l = a("shipwrecks");
-   ajb<ecm> m = a("ocean_ruins");
-   ajb<ecm> n = a("nether_complexes");
-   ajb<ecm> o = a("nether_fossils");
-   ajb<ecm> p = a("end_cities");
-   ajb<ecm> q = a("ancient_cities");
-   ajb<ecm> r = a("strongholds");
-   ajb<ecm> s = a("trail_ruins");
-   ajb<ecm> t = a("trial_chambers");
+import com.mojang.serialization.Codec;
 
-   private static ajb<ecm> a(String $$0) {
-      return ajb.a(ki.aG, new ajc($$0));
+public class ebz extends ecn {
+   public static final Codec<ebz> a = bmh.b(0, 256).fieldOf("count").xmap(ebz::new, $$0 -> $$0.c).codec();
+   private final bmh c;
+
+   private ebz(bmh $$0) {
+      this.c = $$0;
+   }
+
+   public static ebz a(bmh $$0) {
+      return new ebz($$0);
+   }
+
+   public static ebz a(int $$0) {
+      return a(bme.a($$0));
+   }
+
+   @Override
+   protected int a(axd $$0, ib $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public eck<?> b() {
+      return eck.f;
    }
 }

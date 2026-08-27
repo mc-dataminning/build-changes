@@ -1,63 +1,59 @@
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class goa<E extends fbg.a<E>> extends fbg<E> {
-   protected goa(int $$0, int $$1, int $$2, int $$3) {
-      super(eyk.P(), $$0, $$1, $$2, $$3);
+public class goa implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final bjc d;
+   @Nullable
+   private CompletableFuture<Optional<gnw>> e;
+
+   private goa(bjc $$0) {
+      this.d = $$0;
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.n() != 0) {
-         this.a(this.d($$0));
+   public static CompletableFuture<Optional<goa>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            bjc $$1 = bjc.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new goa($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
+         }
+      }, ac.f());
+   }
+
+   public CompletableFuture<Optional<gnx>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               bjc.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new gnw($$1, ac.f()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
+            }
+         }, ac.f());
       }
+
+      return this.e.thenApply($$0 -> $$0.map(gnw::a));
    }
 
    @Override
-   public void a(int $$0) {
-      this.p($$0);
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int c() {
-      return this.q() + this.b();
-   }
-
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int n() {
-      return super.n();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int q() {
-      return super.q();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void H() {
-      this.m();
+   public void close() {
+      if (this.e != null) {
+         this.e.thenAccept($$0 -> $$0.ifPresent(gnw::close));
+      }
    }
 }

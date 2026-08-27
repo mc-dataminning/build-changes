@@ -1,54 +1,26 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.function.UnaryOperator;
 
 public class aza extends DataFix {
-   public aza(Schema $$0) {
-      super($$0, false);
+   private final String a;
+   private final UnaryOperator<String> b;
+
+   private aza(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   protected TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
-         this.getInputSchema().getType(bdt.t)
-      );
-      Type<?> $$1 = this.getInputSchema().getType(bdt.y);
-      return TypeRewriteRule.seq(
-         this.a($$0, $$1, "minecraft:llama"), new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
-      );
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(beh.s);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(beh.s);
+      return this.fixTypeEverywhere(this.a, $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst(this.b));
    }
 
-   private TypeRewriteRule a(
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0, Type<?> $$1, String $$2
-   ) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bdt.y, $$2);
-      OpticFinder<?> $$4 = DSL.namedChoice($$2, $$3);
-      OpticFinder<?> $$5 = $$3.findField("Items");
-      return this.fixTypeEverywhereTyped(
-         "Fix non-zero indexing in chest horse type " + $$2,
-         $$1,
-         $$3x -> $$3x.updateTyped(
-               $$4,
-               $$2xx -> $$2xx.updateTyped(
-                     $$5,
-                     $$1xxx -> $$1xxx.update(
-                           $$0,
-                           $$0xxxx -> $$0xxxx.mapSecond(
-                                 $$0xxxxx -> $$0xxxxx.mapSecond(
-                                       $$0xxxxxx -> $$0xxxxxx.mapSecond(
-                                             $$0xxxxxxx -> $$0xxxxxxx.update("Slot", $$0xxxxxxxx -> $$0xxxxxxxx.createByte((byte)($$0xxxxxxxx.asInt(2) - 2)))
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   public static DataFix a(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      return new aza($$0, $$1, $$2);
    }
 }

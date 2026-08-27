@@ -1,3 +1,5 @@
-interface dos<T> {
-   int onResize(int var1, T var2);
+public interface dos {
+   dmz a(int var1);
+
+   void a(int var1, dmz var2);
 }

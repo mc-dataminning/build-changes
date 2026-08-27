@@ -1,37 +1,25 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+public class bzf extends bzr {
+   public static final float a = 8.0F;
 
-public class bzf {
-   private final boz a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
-
-   public bzf(boz $$0) {
-      this.a = $$0;
+   @Override
+   protected boolean a(bpo $$0, bpo $$1) {
+      return this.f($$0, $$1) && $$1.bf() && (this.b($$1) || this.e($$0, $$1)) && bzx.c($$0, $$1);
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   private boolean e(bpo $$0, bpo $$1) {
+      return !$$0.dP().a(byr.U) && $$1.ai().a(auq.j);
    }
 
-   public boolean a(bof $$0) {
-      int $$1 = $$0.aj();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dJ().ae().a("hasLineOfSight");
-         boolean $$2 = this.a.D($$0);
-         this.a.dJ().ae().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
+   private boolean b(bpo $$0) {
+      return $$0.ai().a(auq.i);
+   }
 
-         return $$2;
-      }
+   private boolean f(bpo $$0, bpo $$1) {
+      return $$1.g((bow)$$0) <= 64.0;
+   }
+
+   @Override
+   protected byr<bpo> b() {
+      return byr.B;
    }
 }

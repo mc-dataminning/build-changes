@@ -1,40 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class ded extends czf {
-   public static final MapCodec<ded> a = b(ded::new);
-   protected static final epo b = czf.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+public class ded extends ddp implements deq {
+   public static final MapCodec<ded> c = b(ded::new);
+   protected static final eqk g = daa.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<ded> a() {
-      return a;
+      return c;
    }
 
-   public ded(dmd.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return b;
+   protected ded(dmy.d $$0) {
+      super($$0, ih.b, g, true, 0.14);
    }
 
    @Override
-   protected epo b_(dme $$0, cvk $$1, ib $$2) {
-      return epl.b();
+   protected boolean g(dmz $$0) {
+      return $$0.a(dac.G);
    }
 
    @Override
-   protected epo c(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return epl.b();
+   protected daa b() {
+      return dac.md;
    }
 
    @Override
-   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+   protected boolean m(dmz $$0) {
+      return !$$0.a(dac.kJ);
+   }
+
+   @Override
+   public boolean a(@Nullable cis $$0, cwf $$1, ib $$2, dmz $$3, eim $$4) {
       return false;
    }
 
    @Override
-   protected float d(dme $$0, cvk $$1, ib $$2) {
-      return 0.2F;
+   public boolean a(cxa $$0, ib $$1, dmz $$2, ein $$3) {
+      return false;
+   }
+
+   @Override
+   protected int a(axd $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public dmz a(css $$0) {
+      ein $$1 = $$0.q().b_($$0.a());
+      return $$1.a(aus.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected ein c_(dmz $$0) {
+      return eio.c.a(false);
    }
 }

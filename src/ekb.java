@@ -1,89 +1,84 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.util.Collection;
-import java.util.HashMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.stream.Stream;
 
-public class ekb implements arz, ekc {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   public static final eka<ekg> a = new eka<>(ekd.c, ejw.a);
-   private final in.a d;
-   private Map<eka<?>, ?> e = Map.of();
-   private Multimap<ekd<?>, ajc> f = ImmutableMultimap.of();
+public class ekb {
+   private static final String a = "command_storage_";
+   private final Map<String, ekb.a> b = Maps.newHashMap();
+   private final eke c;
 
-   public ekb(in.a $$0) {
-      this.d = $$0;
+   public ekb(eke $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public final CompletableFuture<Void> a(arz.a $$0, asf $$1, bjc $$2, bjc $$3, Executor $$4, Executor $$5) {
-      Map<ekd<?>, Map<ajc, ?>> $$6 = new HashMap<>();
-      CompletableFuture<?>[] $$7 = ekd.b().map($$3x -> a($$3x, this.d, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
-      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
+   private ekb.a a(String $$0) {
+      ekb.a $$1 = new ekb.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   private static <T> CompletableFuture<?> a(ekd<T> $$0, in.a $$1, asf $$2, Executor $$3, Map<ekd<?>, Map<ajc, ?>> $$4) {
-      aja<JsonElement> $$5 = aja.a(JsonOps.INSTANCE, $$1);
-      Map<ajc, T> $$6 = new HashMap<>();
-      $$4.put($$0, $$6);
-      return CompletableFuture.runAsync(() -> {
-         Map<ajc, JsonElement> $$4x = new HashMap<>();
-         asj.a($$2, $$0.a(), c, $$4x);
-         $$4x.forEach(($$3xx, $$4xx) -> $$0.a($$3xx, $$5, $$4xx).ifPresent($$2xxx -> $$6.put($$3xx, (T)$$2xxx)));
-      }, $$3);
+   private ejs.a<ekb.a> b(String $$0) {
+      return new ejs.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), ayc.h);
    }
 
-   private void a(Map<ekd<?>, Map<ajc, ?>> $$0) {
-      Object $$1 = $$0.get(ekd.c).remove(ejw.a);
-      if ($$1 != null) {
-         b.warn("Datapack tried to redefine {} loot table, ignoring", ejw.a);
+   public ta a(ajh $$0) {
+      String $$1 = $$0.b();
+      ekb.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new ta();
+   }
+
+   public void a(ajh $$0, ta $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   }
+
+   public Stream<ajh> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   }
+
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends ejs {
+      private static final String a = "contents";
+      private final Map<String, ta> b = Maps.newHashMap();
+
+      ekb.a a(ta $$0) {
+         ta $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
+
+         return this;
       }
 
-      Builder<eka<?>, Object> $$2 = ImmutableMap.builder();
-      com.google.common.collect.ImmutableMultimap.Builder<ekd<?>, ajc> $$3 = ImmutableMultimap.builder();
-      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
-            $$2.put(new eka($$2x, $$3xx), $$4x);
-            $$3.put($$2x, $$3xx);
-         }));
-      $$2.put(a, ekg.a);
-      awr.a $$4 = new awr.a();
-      final Map<eka<?>, ?> $$5 = $$2.build();
-      ekh $$6 = new ekh($$4, emi.p, new ekc() {
-         @Nullable
-         @Override
-         public <T> T getElement(eka<T> $$0) {
-            return (T)$$5.get($$0);
+      @Override
+      public ta a(ta $$0, in.a $$1) {
+         ta $$2 = new ta();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.h()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
+
+      public ta a(String $$0) {
+         ta $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new ta();
+      }
+
+      public void a(String $$0, ta $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
          }
-      });
-      $$5.forEach(($$1x, $$2x) -> a($$6, $$1x, $$2x));
-      $$4.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-      this.e = $$5;
-      this.f = $$3.build();
-   }
 
-   private static <T> void a(ekh $$0, eka<T> $$1, Object $$2) {
-      $$1.a().a($$0, $$1, (T)$$2);
-   }
+         this.c();
+      }
 
-   @Nullable
-   @Override
-   public <T> T getElement(eka<T> $$0) {
-      return (T)this.e.get($$0);
-   }
-
-   public Collection<ajc> a(ekd<?> $$0) {
-      return this.f.get($$0);
+      public Stream<ajh> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> new ajh($$0, $$1));
+      }
    }
 }

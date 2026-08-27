@@ -1,108 +1,29 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.BiConsumer;
+import java.util.OptionalInt;
 
-public class dyv extends dyw {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final Codec<dyv> c = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(dyu.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, dyv::new)
-   );
-   private final dyu h;
+public abstract class dyv {
+   public static final Codec<dyv> a = ki.aa.q().dispatch(dyv::b, dyw::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public dyv(blq $$0, dyz $$1, Optional<dyt> $$2, dyu $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   protected static <S extends dyv> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   @Override
-   public boolean a(cwk $$0, BiConsumer<ib, dme> $$1, awt $$2, ib $$3, ib $$4, dxu $$5) {
-      List<ib> $$6 = Lists.newArrayList();
-      ib.a $$7 = $$3.j();
-
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
-         }
-
-         $$7.c(ih.b);
-      }
-
-      $$6.add($$4.d());
-
-      for (ih $$8 : ih.c.a) {
-         ib $$9 = $$4.a($$8);
-         List<ib> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (ib $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
+   public dyv(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   private boolean a(cwk $$0, awt $$1, ib $$2, ih $$3, ib $$4, List<ib> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (ib $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
-            }
-         }
+   protected abstract dyw<?> b();
 
-         return true;
-      } else {
-         return false;
-      }
-   }
+   public abstract int a(int var1, int var2);
 
-   protected List<ib> a(ib $$0, ih $$1, awt $$2, ib $$3) {
-      ib $$4 = $$0.d();
-      ib $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
-      }
-   }
-
-   @Override
-   protected boolean a(cwk $$0, ib $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
-   }
-
-   @Override
-   protected void a(cwk $$0, BiConsumer<ib, dme> $$1, awt $$2, ib $$3, dxu $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         dme $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected dyx<?> a() {
-      return dyx.a;
+   public OptionalInt c() {
+      return this.c;
    }
 }

@@ -1,64 +1,60 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Objects;
+import java.util.Optional;
 
-public class efm extends egd {
-   public static final Codec<efm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egf.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), blq.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, efm::new)
-   );
-   private final egd b;
-   private final blq c;
+public class efm extends edc {
+   public static final Codec<efm> d = a(efm::new);
 
-   public efm(egd $$0, blq $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public efm(edc.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected egf<?> a() {
-      return egf.o;
-   }
+   public Optional<edc.b> a(edc.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
 
-   @Override
-   public final List<egg.c> a(cwt $$0, ib $$1, ib $$2, List<egg.c> $$3, List<egg.c> $$4, egc $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            awt $$6 = awt.a($$0.E().C()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  egg.c $$12 = $$3.get($$11);
-                  egg.c $$13 = $$4.get($$11);
-                  egg.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
+      for (il<cxy> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(aum.X)) {
+            return Optional.empty();
          }
-      } else {
-         return $$4;
       }
+
+      return a($$0, dsm.a.c, $$1x -> a($$1x, $$0));
+   }
+
+   private static edg a(cwg $$0, dtl $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      ih $$4 = ih.c.a.a($$1);
+      return new efl.h($$1, $$2, $$3, $$4);
+   }
+
+   private static void a(edu $$0, edc.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static edr a(cwg $$0, long $$1, edr $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         dtl $$3 = new dtl(new dsn(dtb.a()));
+         $$3.c($$1, $$0.e, $$0.f);
+         edg $$4 = $$2.c().get(0);
+         ecu $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         ih $$8 = ih.c.a.a($$3);
+         ih $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         edg $$10 = new efl.h($$3, $$6, $$7, $$9);
+         edu $$11 = new edu();
+         $$11.a($$10);
+         return $$11.a();
+      }
+   }
+
+   @Override
+   public edl<?> e() {
+      return edl.j;
    }
 }

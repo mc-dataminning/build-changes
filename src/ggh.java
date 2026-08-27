@@ -1,12 +1,13 @@
-public class ggh<T extends cfi> extends gfv<T, fof<T>> {
-   private static final fwy a = fwy.p(new ajc("textures/entity/phantom_eyes.png"));
+public class ggh extends ghj<cgu, fnl<cgu>> {
+   private static final fxy a = fxy.q(new ajh("textures/entity/breeze/breeze_eyes.png"));
 
-   public ggh(gdt<T, fof<T>> $$0) {
+   public ggh(get<cgu, fnl<cgu>> $$0) {
       super($$0);
    }
 
-   @Override
-   public fwy a() {
-      return a;
+   public void a(etz $$0, fxq $$1, int $$2, cgu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      eud $$10 = $$1.getBuffer(a);
+      fnl<cgu> $$11 = this.c();
+      gce.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, giq.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

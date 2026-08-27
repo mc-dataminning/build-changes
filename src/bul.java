@@ -1,40 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bul extends bqp<che> {
-   private static final int c = 25;
-   private static final int d = 20;
+public class bul {
+   private static final int a = 36;
 
-   public bul() {
-      super(ImmutableMap.of(bya.ay, byb.a, bya.o, byb.b, bya.aF, byb.c, bya.aD, byb.c), chf.b);
-   }
+   public static brh<bpo> a() {
+      return but.a(
+         (Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$0 -> $$0.group($$0.a(byr.x), $$0.a(byr.y), $$0.a(byr.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bpo>a($$2).filter($$1xx -> $$1xx.g((bow)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dP().a($$4.Y(), $$4.X());
+                     }
 
-   protected void a(apa $$0, che $$1, long $$2) {
-      bpy<che> $$3 = $$1.dM();
-      $$3.a(bya.aD, axo.a, 25L);
-      $$3.b(bya.m);
-      box $$4 = $$1.dM().c(bya.ay).get();
-      bqr.a($$1, $$4);
-      $$1.b(bpi.l);
-      $$1.a($$4, 20, false);
-   }
-
-   protected boolean b(apa $$0, che $$1, long $$2) {
-      return true;
-   }
-
-   protected void c(apa $$0, che $$1, long $$2) {
-      if (!$$1.dM().a(bya.aD) && !$$1.dM().a(bya.aF)) {
-         $$1.dM().a(bya.aF, axo.a, (long)(chf.b - 25));
-         $$1.a(atp.Bm, 3.0F, 1.0F);
-      }
-   }
-
-   protected void d(apa $$0, che $$1, long $$2) {
-      if ($$1.c(bpi.l)) {
-         $$1.b(bpi.a);
-      }
-
-      $$1.dM().c(bya.ay).ifPresent($$1::j);
-      $$1.dM().b(bya.ay);
+                     return true;
+                  }))
+      );
    }
 }

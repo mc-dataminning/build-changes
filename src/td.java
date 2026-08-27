@@ -2,21 +2,22 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class td extends to {
-   private static final int b = 12;
-   public static final tx<td> a = new tx.a<td>() {
-      public td a(DataInput $$0, th $$1) throws IOException {
+public class td extends tq {
+   private static final int c = 12;
+   public static final td a = new td(0.0F);
+   public static final tz<td> b = new tz.a<td>() {
+      public td a(DataInput $$0, tj $$1) throws IOException {
          return td.a(d($$0, $$1));
       }
 
       @Override
-      public ts.b a(DataInput $$0, ts $$1, th $$2) throws IOException {
+      public tu.b a(DataInput $$0, tu $$1, tj $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static int d(DataInput $$0, th $$1) throws IOException {
+      private static float d(DataInput $$0, tj $$1) throws IOException {
          $$1.b(12L);
-         return $$0.readInt();
+         return $$0.readFloat();
       }
 
       @Override
@@ -26,12 +27,12 @@ public class td extends to {
 
       @Override
       public String a() {
-         return "INT";
+         return "FLOAT";
       }
 
       @Override
       public String b() {
-         return "TAG_Int";
+         return "TAG_Float";
       }
 
       @Override
@@ -39,19 +40,19 @@ public class td extends to {
          return true;
       }
    };
-   private final int c;
+   private final float w;
 
-   td(int $$0) {
-      this.c = $$0;
+   private td(float $$0) {
+      this.w = $$0;
    }
 
-   public static td a(int $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? td.a.a[$$0 - -128] : new td($$0);
+   public static td a(float $$0) {
+      return $$0 == 0.0F ? a : new td($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c);
+      $$0.writeFloat(this.w);
    }
 
    @Override
@@ -61,12 +62,12 @@ public class td extends to {
 
    @Override
    public byte b() {
-      return 3;
+      return 5;
    }
 
    @Override
-   public tx<td> c() {
-      return a;
+   public tz<td> c() {
+      return b;
    }
 
    public td e() {
@@ -75,71 +76,56 @@ public class td extends to {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof td && this.c == ((td)$$0).c;
+      return this == $$0 ? true : $$0 instanceof td && this.w == ((td)$$0).w;
    }
 
    @Override
    public int hashCode() {
-      return this.c;
+      return Float.floatToIntBits(this.w);
    }
 
    @Override
-   public void a(tz $$0) {
+   public void a(ub $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.c;
+      return (long)this.w;
    }
 
    @Override
    public int g() {
-      return this.c;
+      return aww.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(this.c & 65535);
+      return (short)(aww.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(this.c & 0xFF);
+      return (byte)(aww.d(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.c;
+      return (double)this.w;
    }
 
    @Override
    public float k() {
-      return (float)this.c;
+      return this.w;
    }
 
    @Override
    public Number l() {
-      return this.c;
+      return this.w;
    }
 
    @Override
-   public ts.b a(ts $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final td[] a = new td[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new td(-128 + $$0);
-         }
-      }
+   public tu.b a(tu $$0) {
+      return $$0.a(this.w);
    }
 }

@@ -1,46 +1,127 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class coh extends cpl implements cqp {
-   private static final Map<cog, coh> a = Maps.newEnumMap(cog.class);
-   private final cog b;
+public class coh extends cqf {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
 
-   public coh(cog $$0, cpl.a $$1) {
-      super($$1);
-      this.b = $$0;
-      a.put($$0, this);
+   public coh(cqf.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bml a(cpq $$0, cia $$1, box $$2, bmk $$3) {
-      if ($$2 instanceof cbi $$4 && $$4.bx() && !$$4.A() && $$4.w() != this.b) {
-         $$4.dJ().a($$1, $$4, atp.hy, atq.h, 1.0F, 1.0F);
-         if (!$$1.dJ().B) {
-            $$4.b(this.b);
+   public bnc a(csu $$0) {
+      cwz $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      ib $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.B) {
+            $$0.o().b(drn.C);
+            $$1.c(1505, $$2, 15);
+         }
+
+         return bnc.a($$1.B);
+      } else {
+         dmz $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.d($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
+            if (!$$1.B) {
+               $$0.o().b(drn.C);
+               $$1.c(1505, $$3, 15);
+            }
+
+            return bnc.a($$1.B);
+         } else {
+            return bnc.d;
+         }
+      }
+   }
+
+   public static boolean a(cqk $$0, cwz $$1, ib $$2) {
+      dmz $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dad $$4 && $$4.b($$1, $$2, $$3)) {
+         if ($$1 instanceof apf) {
+            if ($$4.a($$1, $$1.z, $$2, $$3)) {
+               $$4.a((apf)$$1, $$1.z, $$2, $$3);
+            }
+
             $$0.h(1);
          }
 
-         return bml.a($$1.dJ().B);
+         return true;
       }
 
-      return bml.d;
+      return false;
    }
 
-   public cog c() {
-      return this.b;
-   }
+   public static boolean a(cqk $$0, cwz $$1, ib $$2, @Nullable ih $$3) {
+      if ($$1.a_($$2).a(dac.G) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof apf)) {
+            return true;
+         } else {
+            axd $$4 = $$1.E_();
 
-   public static coh a(cog $$0) {
-      return a.get($$0);
-   }
+            label78:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               ib $$6 = $$2;
+               dmz $$7 = dac.bw.o();
 
-   @Override
-   public boolean a(cwe $$0, dku $$1, boolean $$2, cia $$3) {
-      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
-         $$0.a(null, $$1.aD_(), atp.hy, atq.e, 1.0F, 1.0F);
-         return true;
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).r($$1, $$6)) {
+                     continue label78;
+                  }
+               }
+
+               il<cxy> $$9 = $$1.t($$6);
+               if ($$9.a(aum.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = ki.e.a(aun.ar, $$1.z).map($$0x -> ((daa)$$0x.a()).o()).orElse($$7);
+                     if ($$7.b(czl.c)) {
+                        $$7 = $$7.a(czl.c, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = ki.e.a(aun.ap, $$1.z).map($$0x -> ((daa)$$0x.a()).o()).orElse($$7);
+                  }
+               }
+
+               if ($$7.a(aun.ar, $$0x -> $$0x.b(czl.c))) {
+                  for (int $$10 = 0; !$$7.a((cxc)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.a(czl.c, ih.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((cxc)$$1, $$6)) {
+                  dmz $$11 = $$1.a_($$6);
+                  if ($$11.a(dac.G) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(dac.bw) && $$4.a(10) == 0) {
+                     ((dad)dac.bw).a((apf)$$1, $$4, $$6, $$11);
+                  }
+               }
+            }
+
+            $$0.h(1);
+            return true;
+         }
       } else {
          return false;
+      }
+   }
+
+   public static void a(cxa $$0, ib $$1, int $$2) {
+      dmz $$3 = $$0.a_($$1);
+      if ($$3.b() instanceof dad $$4) {
+         ib $$5 = $$4.a($$1);
+         switch ($$4.at_()) {
+            case a:
+               awz.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, kc.N);
+               break;
+            case b:
+               awz.a($$0, $$5, $$2, kc.N);
+         }
+      } else if ($$3.a(dac.G)) {
+         awz.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, kc.N);
       }
    }
 }

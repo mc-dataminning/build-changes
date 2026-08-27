@@ -1,23 +1,26 @@
-public class fun extends fve {
-   private final fuz a;
+public class fun extends fwe {
+   private final fvz a;
 
-   fun(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
+   protected fun(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fvz $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.1F;
+      this.B = 0.9F;
       this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public fui b() {
-      return fui.c;
+   public fvi b() {
+      return fvi.b;
    }
 
    @Override
@@ -26,15 +29,15 @@ public class fun extends fve {
       this.b(this.a);
    }
 
-   public static record a(fuz a) implements fuh<kc> {
-      public fue a(kc $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fun $$8 = new fun($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.b();
-         $$8.z = $$0.b();
-         $$8.a($$1.z.a(12) + 8);
-         return $$8;
+   public static class a implements fvh<kf> {
+      private final fvz a;
+
+      public a(fvz $$0) {
+         this.a = $$0;
+      }
+
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fun($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

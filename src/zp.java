@@ -1,29 +1,23 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-public record zp(Set<jd> c, Set<jd> d) implements za {
-   public static final xq<us, zp> a = za.a(zp::a, zp::new);
-   public static final za.b<zp> b = za.a("debug/village_sections");
+public record zp(List<ib> c) implements zc {
+   public static final xs<uu, zp> a = zc.a(zp::a, zp::new);
+   public static final zc.b<zp> b = zc.a("debug/raids");
 
-   private zp(us $$0) {
-      this($$0.a(HashSet::new, us::g), $$0.a(HashSet::new, us::g));
+   private zp(uu $$0) {
+      this($$0.a(ib.b));
    }
 
-   private void a(us $$0) {
-      $$0.a(this.c, us::a);
-      $$0.a(this.d, us::a);
+   private void a(uu $$0) {
+      $$0.a(this.c, ib.b);
    }
 
    @Override
-   public za.b<zp> a() {
+   public zc.b<zp> a() {
       return b;
    }
 
-   public Set<jd> b() {
+   public List<ib> b() {
       return this.c;
-   }
-
-   public Set<jd> c() {
-      return this.d;
    }
 }

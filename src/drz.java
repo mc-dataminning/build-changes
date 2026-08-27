@@ -1,71 +1,148 @@
-public class drz {
-   public static final ajb<egu.a> a = a("temperature");
-   public static final ajb<egu.a> b = a("vegetation");
-   public static final ajb<egu.a> c = a("continentalness");
-   public static final ajb<egu.a> d = a("erosion");
-   public static final ajb<egu.a> e = a("temperature_large");
-   public static final ajb<egu.a> f = a("vegetation_large");
-   public static final ajb<egu.a> g = a("continentalness_large");
-   public static final ajb<egu.a> h = a("erosion_large");
-   public static final ajb<egu.a> i = a("ridge");
-   public static final ajb<egu.a> j = a("offset");
-   public static final ajb<egu.a> k = a("aquifer_barrier");
-   public static final ajb<egu.a> l = a("aquifer_fluid_level_floodedness");
-   public static final ajb<egu.a> m = a("aquifer_lava");
-   public static final ajb<egu.a> n = a("aquifer_fluid_level_spread");
-   public static final ajb<egu.a> o = a("pillar");
-   public static final ajb<egu.a> p = a("pillar_rareness");
-   public static final ajb<egu.a> q = a("pillar_thickness");
-   public static final ajb<egu.a> r = a("spaghetti_2d");
-   public static final ajb<egu.a> s = a("spaghetti_2d_elevation");
-   public static final ajb<egu.a> t = a("spaghetti_2d_modulator");
-   public static final ajb<egu.a> u = a("spaghetti_2d_thickness");
-   public static final ajb<egu.a> v = a("spaghetti_3d_1");
-   public static final ajb<egu.a> w = a("spaghetti_3d_2");
-   public static final ajb<egu.a> x = a("spaghetti_3d_rarity");
-   public static final ajb<egu.a> y = a("spaghetti_3d_thickness");
-   public static final ajb<egu.a> z = a("spaghetti_roughness");
-   public static final ajb<egu.a> A = a("spaghetti_roughness_modulator");
-   public static final ajb<egu.a> B = a("cave_entrance");
-   public static final ajb<egu.a> C = a("cave_layer");
-   public static final ajb<egu.a> D = a("cave_cheese");
-   public static final ajb<egu.a> E = a("ore_veininess");
-   public static final ajb<egu.a> F = a("ore_vein_a");
-   public static final ajb<egu.a> G = a("ore_vein_b");
-   public static final ajb<egu.a> H = a("ore_gap");
-   public static final ajb<egu.a> I = a("noodle");
-   public static final ajb<egu.a> J = a("noodle_thickness");
-   public static final ajb<egu.a> K = a("noodle_ridge_a");
-   public static final ajb<egu.a> L = a("noodle_ridge_b");
-   public static final ajb<egu.a> M = a("jagged");
-   public static final ajb<egu.a> N = a("surface");
-   public static final ajb<egu.a> O = a("surface_secondary");
-   public static final ajb<egu.a> P = a("clay_bands_offset");
-   public static final ajb<egu.a> Q = a("badlands_pillar");
-   public static final ajb<egu.a> R = a("badlands_pillar_roof");
-   public static final ajb<egu.a> S = a("badlands_surface");
-   public static final ajb<egu.a> T = a("iceberg_pillar");
-   public static final ajb<egu.a> U = a("iceberg_pillar_roof");
-   public static final ajb<egu.a> V = a("iceberg_surface");
-   public static final ajb<egu.a> W = a("surface_swamp");
-   public static final ajb<egu.a> X = a("calcite");
-   public static final ajb<egu.a> Y = a("gravel");
-   public static final ajb<egu.a> Z = a("powder_snow");
-   public static final ajb<egu.a> aa = a("packed_ice");
-   public static final ajb<egu.a> ab = a("ice");
-   public static final ajb<egu.a> ac = a("soul_sand_layer");
-   public static final ajb<egu.a> ad = a("gravel_layer");
-   public static final ajb<egu.a> ae = a("patch");
-   public static final ajb<egu.a> af = a("netherrack");
-   public static final ajb<egu.a> ag = a("nether_wart");
-   public static final ajb<egu.a> ah = a("nether_state_selector");
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-   private static ajb<egu.a> a(String $$0) {
-      return ajb.a(ki.aC, new ajc($$0));
+public class drz implements dsg.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ac.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
+            }
+         }
+      }
+   });
+   private final ObjectListIterator<drz.a> h;
+   private final ObjectListIterator<eee> i;
+
+   public static drz a(cxs $$0, cwg $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<drz.a> $$4 = new ObjectArrayList(10);
+      ObjectList<eee> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != edn.a).forEach($$5x -> {
+         edn $$6 = $$5x.h().d();
+
+         for (edg $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof ecy) {
+                  ecy $$8 = (ecy)$$7;
+                  eel.a $$9 = $$8.b().e();
+                  if ($$9 == eel.a.b) {
+                     $$4.add(new drz.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (eee $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new drz.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new drz($$4.iterator(), $$5.iterator());
    }
 
-   public static egu a(im<egu.a> $$0, dsd $$1, ajb<egu.a> $$2) {
-      il<egu.a> $$3 = $$0.b($$2);
-      return egu.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   @VisibleForTesting
+   public drz(ObjectListIterator<drz.a> $$0, ObjectListIterator<eee> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public double a(dsf.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         drz.a $$5 = (drz.a)this.h.next();
+         ecu $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a($$8, $$12, $$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         eee $$13 = (eee)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
+   }
+
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
+   }
+
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
+   }
+
+   private static double a(int $$0, int $$1, int $$2) {
+      double $$3 = aww.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
+      return aww.a($$3, 0.0, 6.0, 1.0, 0.0);
+   }
+
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = aww.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * aww.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
+      }
+   }
+
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
+   }
+
+   private static double b(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
+   }
+
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = aww.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
+
+   @VisibleForTesting
+   public static record a(ecu a, edn b, int c) {
    }
 }

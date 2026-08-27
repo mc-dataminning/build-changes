@@ -1,118 +1,82 @@
-public class fzh implements fyq<dkz> {
-   public fzh(fyr.a $$0) {
-   }
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public void a(dkz $$0, float $$1, etd $$2, fwq $$3, int $$4, int $$5) {
-      if (eyk.P().s.gs() || eyk.P().s.P_()) {
-         ib $$6 = $$0.f();
-         jf $$7 = $$0.j();
-         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
-            if ($$0.t() == dno.a || $$0.t() == dno.b) {
-               double $$8 = (double)$$6.u();
-               double $$9 = (double)$$6.w();
-               double $$10 = (double)$$6.v();
-               double $$11 = $$10 + (double)$$7.v();
-               double $$12;
-               double $$13;
-               switch ($$0.k()) {
-                  case b:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)(-$$7.w());
-                     break;
-                  case c:
-                     $$12 = (double)(-$$7.u());
-                     $$13 = (double)$$7.w();
-                     break;
-                  default:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)$$7.w();
-               }
+public class fzh {
+   private final fzd a;
+   private final fza b;
 
-               double $$30;
-               double $$31;
-               double $$32;
-               double $$33;
-               switch ($$0.l()) {
-                  case b:
-                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 - $$13;
-                     $$33 = $$31 + $$12;
-                     break;
-                  case c:
-                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 - $$12;
-                     $$33 = $$31 - $$13;
-                     break;
-                  case d:
-                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 + $$13;
-                     $$33 = $$31 - $$12;
-                     break;
-                  default:
-                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 + $$12;
-                     $$33 = $$31 + $$13;
-               }
-
-               float $$34 = 1.0F;
-               float $$35 = 0.9F;
-               float $$36 = 0.5F;
-               eth $$37 = $$3.getBuffer(fwy.y());
-               if ($$0.t() == dno.a || $$0.D()) {
-                  fwo.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
-               }
-
-               if ($$0.t() == dno.a && $$0.C()) {
-                  this.a($$0, $$37, $$6, $$2);
-               }
-            }
-         }
+   public fzh(fzd $$0, fza $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   private void a(dkz $$0, eth $$1, ib $$2, etd $$3) {
-      cvk $$4 = $$0.i();
-      ib $$5 = $$0.aD_();
-      ib $$6 = $$5.a((jf)$$2);
-
-      for (ib $$7 : ib.a($$6, $$6.a($$0.j()).b(-1, -1, -1))) {
-         dme $$8 = $$4.a_($$7);
-         boolean $$9 = $$8.i();
-         boolean $$10 = $$8.a(czh.kN);
-         boolean $$11 = $$8.a(czh.hW);
-         boolean $$12 = $$8.a(czh.hX);
-         boolean $$13 = $$10 || $$11 || $$12;
-         if ($$9 || $$13) {
-            float $$14 = $$9 ? 0.05F : 0.0F;
-            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
-            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
-            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
-            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
-            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
-            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
-            if ($$9) {
-               fwo.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
-            } else if ($$10) {
-               fwo.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
-            } else if ($$11) {
-               fwo.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
-            } else if ($$12) {
-               fwo.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
-            }
-         }
-      }
+   public fza a() {
+      return this.b;
    }
 
-   public boolean a(dkz $$0) {
-      return true;
+   public Predicate<dmz> a(dna<daa, dmz> $$0) {
+      return this.a.getPredicate($$0);
    }
 
    @Override
-   public int aS_() {
-      return 96;
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<fzh> {
+      public fzh a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new fzh(this.b($$3), (fza)$$2.deserialize($$3.get("apply"), fza.class));
+      }
+
+      private fzd b(JsonObject $$0) {
+         return $$0.has("when") ? a(awm.u($$0, "when")) : fzd.b;
+      }
+
+      @VisibleForTesting
+      static fzd a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<fzd> $$2 = Streams.stream(awm.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fzg($$2);
+            } else if ($$0.has("AND")) {
+               List<fzd> $$3 = Streams.stream(awm.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fzc($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new fzc($$1.stream().map(fzh.a::a).collect(Collectors.toList()));
+         }
+      }
+
+      private static fzd a(Entry<String, JsonElement> $$0) {
+         return new fze($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

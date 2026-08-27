@@ -1,31 +1,57 @@
-public class glb implements gkw {
-   private final fvs a;
-   private boolean b;
-   private boolean c = true;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public glb(fvs $$0) {
+public class glb implements gkz {
+   private final fyz a;
+   private final fyx b;
+   private final giz c;
+   private final boolean d;
+
+   public glb(fyz $$0, fyx $$1, giz $$2, boolean $$3) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public void a() {
-      cwe $$0 = this.a.dJ();
-      dme $$1 = $$0.c(this.a.cE().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(czh.nd)).findFirst().orElse(null);
-      if ($$1 != null) {
-         if (!this.b && !this.c && $$1.a(czh.nd) && !this.a.P_()) {
-            boolean $$2 = $$1.c(czl.b);
-            if ($$2) {
-               this.a.a(atp.cT, 1.0F, 1.0F);
-            } else {
-               this.a.a(atp.cR, 1.0F, 1.0F);
-            }
-         }
+   public List<fyn> a(@Nullable dmz $$0, @Nullable ih $$1, axd $$2) {
+      return Collections.emptyList();
+   }
 
-         this.b = true;
-      } else {
-         this.b = false;
-      }
+   @Override
+   public boolean a() {
+      return false;
+   }
 
-      this.c = false;
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d;
+   }
+
+   @Override
+   public boolean d() {
+      return true;
+   }
+
+   @Override
+   public giz e() {
+      return this.c;
+   }
+
+   @Override
+   public fyz f() {
+      return this.a;
+   }
+
+   @Override
+   public fyx g() {
+      return this.b;
    }
 }

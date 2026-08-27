@@ -1,91 +1,43 @@
-public class djd {
-   public static final ajb<djc> a = a("base");
-   public static final ajb<djc> b = a("square_bottom_left");
-   public static final ajb<djc> c = a("square_bottom_right");
-   public static final ajb<djc> d = a("square_top_left");
-   public static final ajb<djc> e = a("square_top_right");
-   public static final ajb<djc> f = a("stripe_bottom");
-   public static final ajb<djc> g = a("stripe_top");
-   public static final ajb<djc> h = a("stripe_left");
-   public static final ajb<djc> i = a("stripe_right");
-   public static final ajb<djc> j = a("stripe_center");
-   public static final ajb<djc> k = a("stripe_middle");
-   public static final ajb<djc> l = a("stripe_downright");
-   public static final ajb<djc> m = a("stripe_downleft");
-   public static final ajb<djc> n = a("small_stripes");
-   public static final ajb<djc> o = a("cross");
-   public static final ajb<djc> p = a("straight_cross");
-   public static final ajb<djc> q = a("triangle_bottom");
-   public static final ajb<djc> r = a("triangle_top");
-   public static final ajb<djc> s = a("triangles_bottom");
-   public static final ajb<djc> t = a("triangles_top");
-   public static final ajb<djc> u = a("diagonal_left");
-   public static final ajb<djc> v = a("diagonal_up_right");
-   public static final ajb<djc> w = a("diagonal_up_left");
-   public static final ajb<djc> x = a("diagonal_right");
-   public static final ajb<djc> y = a("circle");
-   public static final ajb<djc> z = a("rhombus");
-   public static final ajb<djc> A = a("half_vertical");
-   public static final ajb<djc> B = a("half_horizontal");
-   public static final ajb<djc> C = a("half_vertical_right");
-   public static final ajb<djc> D = a("half_horizontal_bottom");
-   public static final ajb<djc> E = a("border");
-   public static final ajb<djc> F = a("curly_border");
-   public static final ajb<djc> G = a("gradient");
-   public static final ajb<djc> H = a("gradient_up");
-   public static final ajb<djc> I = a("bricks");
-   public static final ajb<djc> J = a("globe");
-   public static final ajb<djc> K = a("creeper");
-   public static final ajb<djc> L = a("skull");
-   public static final ajb<djc> M = a("flower");
-   public static final ajb<djc> N = a("mojang");
-   public static final ajb<djc> O = a("piglin");
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   private static ajb<djc> a(String $$0) {
-      return ajb.a(ki.d, new ajc($$0));
+public class djd extends dil implements dha {
+   public static final MapCodec<djd> a = b(djd::new);
+   public static final dnq c = dnp.C;
+
+   @Override
+   protected MapCodec<? extends djd> a() {
+      return a;
    }
 
-   public static djc a(ix<djc> $$0) {
-      ix.a($$0, a, new djc("b"));
-      ix.a($$0, b, new djc("bl"));
-      ix.a($$0, c, new djc("br"));
-      ix.a($$0, d, new djc("tl"));
-      ix.a($$0, e, new djc("tr"));
-      ix.a($$0, f, new djc("bs"));
-      ix.a($$0, g, new djc("ts"));
-      ix.a($$0, h, new djc("ls"));
-      ix.a($$0, i, new djc("rs"));
-      ix.a($$0, j, new djc("cs"));
-      ix.a($$0, k, new djc("ms"));
-      ix.a($$0, l, new djc("drs"));
-      ix.a($$0, m, new djc("dls"));
-      ix.a($$0, n, new djc("ss"));
-      ix.a($$0, o, new djc("cr"));
-      ix.a($$0, p, new djc("sc"));
-      ix.a($$0, q, new djc("bt"));
-      ix.a($$0, r, new djc("tt"));
-      ix.a($$0, s, new djc("bts"));
-      ix.a($$0, t, new djc("tts"));
-      ix.a($$0, u, new djc("ld"));
-      ix.a($$0, v, new djc("rd"));
-      ix.a($$0, w, new djc("lud"));
-      ix.a($$0, x, new djc("rud"));
-      ix.a($$0, y, new djc("mc"));
-      ix.a($$0, z, new djc("mr"));
-      ix.a($$0, A, new djc("vh"));
-      ix.a($$0, B, new djc("hh"));
-      ix.a($$0, C, new djc("vhr"));
-      ix.a($$0, D, new djc("hhb"));
-      ix.a($$0, E, new djc("bo"));
-      ix.a($$0, F, new djc("cbo"));
-      ix.a($$0, G, new djc("gra"));
-      ix.a($$0, H, new djc("gru"));
-      ix.a($$0, I, new djc("bri"));
-      ix.a($$0, J, new djc("glb"));
-      ix.a($$0, K, new djc("cre"));
-      ix.a($$0, L, new djc("sku"));
-      ix.a($$0, M, new djc("flo"));
-      ix.a($$0, N, new djc("moj"));
-      return ix.a($$0, O, new djc("pig"));
+   protected djd(dmy.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dmz a(css $$0) {
+      ein $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(eio.c)));
+   }
+
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eio.c, eio.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected ein c_(dmz $$0) {
+      return $$0.c(c) ? eio.c.a(true) : super.c_($$0);
+   }
+
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(c);
    }
 }

@@ -1,52 +1,37 @@
-public class fnd<T extends bof> extends fnn<T> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final fqf g;
-   private final fqf[] h;
-
-   public fnd(fqf $$0) {
-      this.g = $$0;
-      this.h = new fqf[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.h[$$1] = $$0.b(a($$1));
-      }
+public class fnd extends fop<cet> {
+   public fnd(frd $$0) {
+      super($$0);
    }
 
-   private static String a(int $$0) {
-      return "segment" + $$0;
+   public static frj a(frh $$0) {
+      frl $$1 = fop.a($$0, 0.0F);
+      frm $$2 = $$1.a();
+      $$2.a("head", fri.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), frf.a(0.0F, 1.0F, 0.0F));
+      $$2.a("hat", fri.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), frf.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_leg", fri.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), frf.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", fri.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), frf.a(1.9F, 11.0F, 0.0F));
+      return frj.a($$1, 64, 32);
    }
 
-   public static fql b() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      float $$2 = -3.5F;
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            fqk.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            fqh.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
-         }
-      }
-
-      return fql.a($$0, 64, 32);
-   }
-
-   @Override
-   public fqf a() {
-      return this.g;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
-         this.h[$$6].f = awm.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
-         this.h[$$6].b = awm.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
-      }
+   public void a(cet $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.k.e = (float) (Math.PI / 180.0) * $$0.A().b();
+      this.k.f = (float) (Math.PI / 180.0) * $$0.A().c();
+      this.k.g = (float) (Math.PI / 180.0) * $$0.A().d();
+      this.m.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.m.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.m.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.o.e = (float) (Math.PI / 180.0) * $$0.C().b();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.C().c();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.C().d();
+      this.n.e = (float) (Math.PI / 180.0) * $$0.D().b();
+      this.n.f = (float) (Math.PI / 180.0) * $$0.D().c();
+      this.n.g = (float) (Math.PI / 180.0) * $$0.D().d();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
+      this.p.e = (float) (Math.PI / 180.0) * $$0.G().b();
+      this.p.f = (float) (Math.PI / 180.0) * $$0.G().c();
+      this.p.g = (float) (Math.PI / 180.0) * $$0.G().d();
+      this.l.a(this.k);
    }
 }

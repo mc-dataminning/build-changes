@@ -1,25 +1,35 @@
 public interface aup {
-   aut<ecg> a = a("eye_of_ender_located");
-   aut<ecg> b = a("dolphin_located");
-   aut<ecg> c = a("on_woodland_explorer_maps");
-   aut<ecg> d = a("on_ocean_explorer_maps");
-   aut<ecg> e = a("on_savanna_village_maps");
-   aut<ecg> f = a("on_desert_village_maps");
-   aut<ecg> g = a("on_plains_village_maps");
-   aut<ecg> h = a("on_taiga_village_maps");
-   aut<ecg> i = a("on_snowy_village_maps");
-   aut<ecg> j = a("on_jungle_explorer_maps");
-   aut<ecg> k = a("on_swamp_explorer_maps");
-   aut<ecg> l = a("on_treasure_maps");
-   aut<ecg> m = a("cats_spawn_in");
-   aut<ecg> n = a("cats_spawn_as_black");
-   aut<ecg> o = a("village");
-   aut<ecg> p = a("mineshaft");
-   aut<ecg> q = a("shipwreck");
-   aut<ecg> r = a("ruined_portal");
-   aut<ecg> s = a("ocean_ruin");
+   avd<bnx> a = a("damages_helmet");
+   avd<bnx> b = a("breeze_immune_to");
+   avd<bnx> c = a("bypasses_armor");
+   avd<bnx> d = a("bypasses_shield");
+   avd<bnx> e = a("bypasses_invulnerability");
+   avd<bnx> f = a("bypasses_cooldown");
+   avd<bnx> g = a("bypasses_effects");
+   avd<bnx> h = a("bypasses_resistance");
+   avd<bnx> i = a("bypasses_enchantments");
+   avd<bnx> j = a("is_fire");
+   avd<bnx> k = a("is_projectile");
+   avd<bnx> l = a("witch_resistant_to");
+   avd<bnx> m = a("is_explosion");
+   avd<bnx> n = a("is_fall");
+   avd<bnx> o = a("is_drowning");
+   avd<bnx> p = a("is_freezing");
+   avd<bnx> q = a("is_lightning");
+   avd<bnx> r = a("no_anger");
+   avd<bnx> s = a("no_impact");
+   avd<bnx> t = a("always_most_significant_fall");
+   avd<bnx> u = a("wither_immune_to");
+   avd<bnx> v = a("ignites_armor_stands");
+   avd<bnx> w = a("burns_armor_stands");
+   avd<bnx> x = a("avoids_guardian_thorns");
+   avd<bnx> y = a("always_triggers_silverfish");
+   avd<bnx> z = a("always_hurts_ender_dragons");
+   avd<bnx> A = a("no_knockback");
+   avd<bnx> B = a("always_kills_armor_stands");
+   avd<bnx> C = a("can_break_armor_stand");
 
-   private static aut<ecg> a(String $$0) {
-      return aut.a(ki.aE, new ajc($$0));
+   private static avd<bnx> a(String $$0) {
+      return avd.a(kj.r, new ajh($$0));
    }
 }

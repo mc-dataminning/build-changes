@@ -1,31 +1,24 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bso {
-   public static bqq<box> a(bpa $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ai().f()), $$1);
-   }
+   private static final int a = 1;
 
-   public static bsa<box> a(bol<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ai()), $$1);
-   }
-
-   public static bsa<box> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static bsa<box> a(Predicate<box> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return buc.a(
-         (Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$2x -> $$2x.group($$2x.c(bya.n), $$2x.b(bya.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<box> $$8 = $$2x.<byc>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((bof)$$6) <= (double)$$2 && !$$6.w($$2xxxx)));
-                     if ($$8.isEmpty()) {
+   public static brh<bpo> a(float $$0) {
+      return but.a(
+         (Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$1 -> $$1.group($$1.a(byr.n), $$1.c(byr.m), $$1.b(byr.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bO()) {
                         return false;
                      } else {
-                        $$3.a(new bra($$8.get(), true));
+                        bow $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new brr($$8, true));
+                           $$3.a(new byu(new brr($$8, false), $$0, 1));
+                        }
+
                         return true;
                      }
                   }))

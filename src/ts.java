@@ -1,48 +1,145 @@
-public interface ts {
-   ts.b a();
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-   ts.b a(String var1);
+public class ts extends tq {
+   private static final int b = 10;
+   public static final tz<ts> a = new tz.a<ts>() {
+      public ts a(DataInput $$0, tj $$1) throws IOException {
+         return ts.a(d($$0, $$1));
+      }
 
-   ts.b a(byte var1);
+      @Override
+      public tu.b a(DataInput $$0, tu $$1, tj $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
 
-   ts.b a(short var1);
+      private static short d(DataInput $$0, tj $$1) throws IOException {
+         $$1.b(10L);
+         return $$0.readShort();
+      }
 
-   ts.b a(int var1);
+      @Override
+      public int c() {
+         return 2;
+      }
 
-   ts.b a(long var1);
+      @Override
+      public String a() {
+         return "SHORT";
+      }
 
-   ts.b a(float var1);
+      @Override
+      public String b() {
+         return "TAG_Short";
+      }
 
-   ts.b a(double var1);
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final short c;
 
-   ts.b a(byte[] var1);
-
-   ts.b a(int[] var1);
-
-   ts.b a(long[] var1);
-
-   ts.b a(tx<?> var1, int var2);
-
-   ts.a a(tx<?> var1);
-
-   ts.a a(tx<?> var1, String var2);
-
-   ts.a b(tx<?> var1, int var2);
-
-   ts.b b();
-
-   ts.b b(tx<?> var1);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   ts(short $$0) {
+      this.c = $$0;
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   public static ts a(short $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? ts.a.a[$$0 - -128] : new ts($$0);
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeShort(this.c);
+   }
+
+   @Override
+   public int a() {
+      return 10;
+   }
+
+   @Override
+   public byte b() {
+      return 2;
+   }
+
+   @Override
+   public tz<ts> c() {
+      return a;
+   }
+
+   public ts e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ts && this.c == ((ts)$$0).c;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c;
+   }
+
+   @Override
+   public void a(ub $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)this.c;
+   }
+
+   @Override
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public short h() {
+      return this.c;
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(this.c & 255);
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.c;
+   }
+
+   @Override
+   public Number l() {
+      return this.c;
+   }
+
+   @Override
+   public tu.b a(tu $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final ts[] a = new ts[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new ts((short)(-128 + $$0));
+         }
+      }
    }
 }

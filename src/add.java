@@ -1,29 +1,19 @@
-public class add implements xz<aai> {
-   public static final xq<us, add> a = xz.a(add::a, add::new);
-   private final double b;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public add(dnv $$0) {
-      this.b = $$0.k();
-   }
-
-   private add(us $$0) {
-      this.b = $$0.readDouble();
-   }
-
-   private void a(us $$0) {
-      $$0.a(this.b);
-   }
+public record add(vu b, Optional<byte[]> c) implements yb<aam> {
+   public static final xs<ByteBuf, add> a = xs.a(vw.d, add::b, xq.h.a(xq::a), add::e, add::new);
 
    @Override
-   public yb<add> a() {
-      return aet.at;
+   public yd<add> a() {
+      return aex.ap;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public Optional<byte[]> e() {
+      return this.c;
    }
 }

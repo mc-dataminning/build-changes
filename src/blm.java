@@ -1,44 +1,52 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
 
-public class blm extends blo {
-   public static final blm a = new blm(0.0F);
-   public static final Codec<blm> b = avu.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(blm::new, blm::d);
-   private final float d;
-
-   public static blm a(float $$0) {
-      return $$0 == 0.0F ? a : new blm($$0);
+public class blm<E> extends blq<blo.b<E>> {
+   public static <E> Codec<blm<E>> a(Codec<E> $$0) {
+      return blo.b.a($$0).listOf().xmap(blm::new, blq::e);
    }
 
-   private blm(float $$0) {
-      this.d = $$0;
+   public static <E> Codec<blm<E>> b(Codec<E> $$0) {
+      return awe.a(blo.b.a($$0).listOf()).xmap(blm::new, blq::e);
    }
 
-   public float d() {
-      return this.d;
+   blm(List<? extends blo.b<E>> $$0) {
+      super($$0);
    }
 
-   @Override
-   public float a(awt $$0) {
-      return this.d;
+   public static <E> blm.a<E> a() {
+      return new blm.a<>();
    }
 
-   @Override
-   public float a() {
-      return this.d;
+   public static <E> blm<E> b() {
+      return new blm<>(List.of());
    }
 
-   @Override
-   public float b() {
-      return this.d + 1.0F;
+   public static <E> blm<E> a(E $$0) {
+      return new blm<>(List.of(blo.a($$0, 1)));
    }
 
-   @Override
-   public blp<?> c() {
-      return blp.a;
+   public Optional<E> a(axd $$0) {
+      return this.b($$0).map(blo.b::b);
    }
 
-   @Override
-   public String toString() {
-      return Float.toString(this.d);
+   public static class a<E> {
+      private final Builder<blo.b<E>> a = ImmutableList.builder();
+
+      public blm.a<E> a(E $$0) {
+         return this.a($$0, 1);
+      }
+
+      public blm.a<E> a(E $$0, int $$1) {
+         this.a.add(blo.a($$0, $$1));
+         return this;
+      }
+
+      public blm<E> a() {
+         return new blm<>(this.a.build());
+      }
    }
 }

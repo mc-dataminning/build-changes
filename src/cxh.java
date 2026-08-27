@@ -1,141 +1,25 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class cxh implements cxg {
-   public static final Codec<cxh> a = kh.ab.q().dispatchStable(cxh::a, Function.identity());
-   private final Supplier<Set<il<cxd>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
+public interface cxh {
+   boolean a(ib var1, dmz var2, int var3, int var4);
 
-   protected cxh() {
+   default boolean a(ib $$0, dmz $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   protected abstract Codec<? extends cxh> a();
+   boolean a(ib var1, boolean var2);
 
-   protected abstract Stream<il<cxd>> b();
-
-   public Set<il<cxd>> c() {
-      return this.b.get();
+   default boolean b(ib $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   public Set<il<cxd>> a(int $$0, int $$1, int $$2, int $$3, cxm.f $$4) {
-      int $$5 = iw.a($$0 - $$3);
-      int $$6 = iw.a($$1 - $$3);
-      int $$7 = iw.a($$2 - $$3);
-      int $$8 = iw.a($$0 + $$3);
-      int $$9 = iw.a($$1 + $$3);
-      int $$10 = iw.a($$2 + $$3);
-      int $$11 = $$8 - $$5 + 1;
-      int $$12 = $$9 - $$6 + 1;
-      int $$13 = $$10 - $$7 + 1;
-      Set<il<cxd>> $$14 = Sets.newHashSet();
-
-      for (int $$15 = 0; $$15 < $$13; $$15++) {
-         for (int $$16 = 0; $$16 < $$11; $$16++) {
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               int $$18 = $$5 + $$16;
-               int $$19 = $$6 + $$17;
-               int $$20 = $$7 + $$15;
-               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
-            }
-         }
-      }
-
-      return $$14;
+   default boolean a(ib $$0, boolean $$1, @Nullable bow $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   @Nullable
-   public Pair<ib, il<cxd>> a(int $$0, int $$1, int $$2, int $$3, Predicate<il<cxd>> $$4, awt $$5, cxm.f $$6) {
-      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
-   }
+   boolean a(ib var1, boolean var2, @Nullable bow var3, int var4);
 
-   @Nullable
-   public Pair<ib, il<cxd>> a(ib $$0, int $$1, int $$2, int $$3, Predicate<il<cxd>> $$4, cxm.f $$5, cwh $$6) {
-      Set<il<cxd>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
-      if ($$7.isEmpty()) {
-         return null;
-      } else {
-         int $$8 = Math.floorDiv($$1, $$2);
-         int[] $$9 = awm.a($$0.v(), $$6.J_() + 1, $$6.ak(), $$3).toArray();
-
-         for (ib.a $$10 : ib.a(ib.c, $$8, ih.f, ih.d)) {
-            int $$11 = $$0.u() + $$10.u() * $$2;
-            int $$12 = $$0.w() + $$10.w() * $$2;
-            int $$13 = iw.a($$11);
-            int $$14 = iw.a($$12);
-
-            for (int $$15 : $$9) {
-               int $$16 = iw.a($$15);
-               il<cxd> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
-               if ($$7.contains($$17)) {
-                  return Pair.of(new ib($$11, $$15, $$12), $$17);
-               }
-            }
-         }
-
-         return null;
-      }
-   }
-
-   @Nullable
-   public Pair<ib, il<cxd>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<il<cxd>> $$5, awt $$6, boolean $$7, cxm.f $$8) {
-      int $$9 = iw.a($$0);
-      int $$10 = iw.a($$2);
-      int $$11 = iw.a($$3);
-      int $$12 = iw.a($$1);
-      Pair<ib, il<cxd>> $$13 = null;
-      int $$14 = 0;
-      int $$15 = $$7 ? 0 : $$11;
-      int $$16 = $$15;
-
-      while ($$16 <= $$11) {
-         for (int $$17 = aa.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
-            boolean $$18 = Math.abs($$17) == $$16;
-
-            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
-               if ($$7) {
-                  boolean $$20 = Math.abs($$19) == $$16;
-                  if (!$$20 && !$$18) {
-                     continue;
-                  }
-               }
-
-               int $$21 = $$9 + $$19;
-               int $$22 = $$10 + $$17;
-               il<cxd> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
-               if ($$5.test($$23)) {
-                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
-                     ib $$24 = new ib(iw.c($$21), $$1, iw.c($$22));
-                     if ($$7) {
-                        return Pair.of($$24, $$23);
-                     }
-
-                     $$13 = Pair.of($$24, $$23);
-                  }
-
-                  $$14++;
-               }
-            }
-         }
-
-         $$16 += $$4;
-      }
-
-      return $$13;
-   }
-
-   @Override
-   public abstract il<cxd> getNoiseBiome(int var1, int var2, int var3, cxm.f var4);
-
-   public void a(List<String> $$0, ib $$1, cxm.f $$2) {
+   default boolean b(bow $$0) {
+      return false;
    }
 }

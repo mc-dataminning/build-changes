@@ -1,71 +1,49 @@
-import javax.annotation.Nullable;
+public class fge extends fhf {
+   private static final ajh a = new ajh("textures/gui/demo_background.png");
+   private fbz b = fbz.a;
+   private fbz c = fbz.a;
 
-public class fge extends fgh implements aws {
-   @Nullable
-   private vs a;
-   @Nullable
-   private vs b;
-   private int c;
-   private boolean k;
-   private final boolean l;
-
-   public fge(boolean $$0) {
-      super(eyc.a);
-      this.l = $$0;
+   public fge() {
+      super(vu.c("demo.help.title"));
    }
 
    @Override
-   public boolean aN_() {
-      return false;
+   protected void aO_() {
+      int $$0 = -16;
+      this.c(fbg.a(vu.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ac.j().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.c(fbg.a(vu.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      ezk $$1 = this.f.m;
+      this.b = fbz.a(
+         this.i,
+         vu.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         vu.c("demo.help.movementMouse"),
+         vu.a("demo.help.jump", $$1.B.k()),
+         vu.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = fbz.a(this.i, vu.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected boolean aO_() {
-      return false;
+   public void b(fat $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public void a(vs $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(vs $$0) {
-      this.a = $$0;
-      this.c(vs.c("menu.working"));
-   }
-
-   @Override
-   public void c(vs $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.k = true;
-   }
-
-   @Override
-   public void a(ezx $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (this.l) {
-            this.f.a(null);
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
-         }
-
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.i, vs.i().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
-         }
-      }
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

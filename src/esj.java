@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@eqw
-@eqv
-interface esj {
+public interface esj {
+   void execute();
 }

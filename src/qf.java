@@ -1,9 +1,6 @@
-public class qf {
-   public static void a(pj<edp> $$0) {
-      pp.a($$0);
-      pt.a($$0);
-      ps.a($$0);
-      pl.a($$0);
-      px.a($$0);
+public interface qf {
+   static void a(pl<edi> $$0) {
+      im<edc> $$1 = $$0.a(kj.aE);
+      $$0.a(ecv.t, new edi($$1.b(ecw.H), new edx(32, 8, edy.a, 94251327)));
    }
 }

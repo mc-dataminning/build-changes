@@ -1,65 +1,162 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fsb extends fsc {
-   private final String f;
+public class fsb implements dz {
+   private final frz a;
+   private final ezg b;
+   private int c = -1;
+   @Nullable
+   private CompletableFuture<Suggestions> d;
+   private final Set<String> e = new HashSet<>();
 
-   fsb(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public fsb(frz $$0, ezg $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public String a() {
-      return this.f;
-   }
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
 
-   public fsb c() {
-      fsb $$0 = new fsb(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
+      for (fsj $$1 : this.a.n()) {
+         $$0.add($$1.a().getName());
+      }
+
       return $$0;
    }
 
    @Override
-   public fgh a(fgh $$0, fsg $$1) {
-      return new fkj($$0, $$1, this);
+   public Collection<String> z() {
+      if (this.e.isEmpty()) {
+         return this.q();
+      } else {
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.e);
+         return $$0;
+      }
    }
 
-   public static class a extends fsc.a<fsb> {
-      public a(fsb $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   @Override
+   public Collection<String> A() {
+      return (Collection<String>)(this.b.v != null && this.b.v.c() == epp.a.c ? Collections.singleton(((epo)this.b.v).a().cx()) : Collections.emptyList());
+   }
+
+   @Override
+   public Collection<String> r() {
+      return this.a.z().f();
+   }
+
+   @Override
+   public Stream<ajh> s() {
+      return this.b.ak().d().stream();
+   }
+
+   @Override
+   public Stream<ajh> t() {
+      return this.a.k().d();
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      fws $$1 = this.b.s;
+      return $$1 != null ? $$1.m($$0) : $$0 == 0;
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(ajg<? extends iy<?>> $$0, dz.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.v().c($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.d != null) {
+         this.d.cancel(false);
       }
 
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new fsb(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+      this.d = new CompletableFuture<>();
+      int $$1 = ++this.c;
+      this.a.b(new afk($$1, $$0.getInput()));
+      return this.d;
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
+   }
 
-      @Nullable
-      @Override
-      public fsc.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fsc.b.d : null;
-      }
+   private static String a(int $$0) {
+      return Integer.toString($$0);
+   }
 
-      @Override
-      public Either<fsc.c, fsc.b> a(fsg $$0) {
-         fsc.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new fsc.c(this.a.a, fsf.c, $$3));
-         }
+   @Override
+   public Collection<dz.b> B() {
+      epp $$0 = this.b.v;
+      if ($$0 != null && $$0.c() == epp.a.b) {
+         ib $$1 = ((epn)$$0).a();
+         return Collections.singleton(new dz.b(a($$1.u()), a($$1.v()), a($$1.w())));
+      } else {
+         return dz.super.B();
+      }
+   }
+
+   @Override
+   public Collection<dz.b> C() {
+      epp $$0 = this.b.v;
+      if ($$0 != null && $$0.c() == epp.a.b) {
+         epr $$1 = $$0.e();
+         return Collections.singleton(new dz.b(a($$1.c), a($$1.d), a($$1.e)));
+      } else {
+         return dz.super.C();
+      }
+   }
+
+   @Override
+   public Set<ajg<cwz>> u() {
+      return this.a.v();
+   }
+
+   @Override
+   public iz v() {
+      return this.a.w();
+   }
+
+   @Override
+   public clf w() {
+      return this.a.y();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.c) {
+         this.d.complete($$1);
+         this.d = null;
+         this.c = -1;
+      }
+   }
+
+   public void a(abl.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.e.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.e::remove);
+            break;
+         case c:
+            this.e.clear();
+            this.e.addAll($$1);
       }
    }
 }

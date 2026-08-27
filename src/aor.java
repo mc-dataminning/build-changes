@@ -1,85 +1,168 @@
-public class aor extends apc {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-   public aor(apb $$0) {
-      super($$0);
+public class aor implements aon.c, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<blu<?>, aoq<? extends Function<blu<axy>, ?>>> b;
+   private final Set<blu<?>> c;
+   private final blv<blx.b> d;
+
+   public aor(List<blu<?>> $$0, Executor $$1, int $$2) {
+      this.b = $$0.stream().collect(Collectors.toMap(Function.identity(), $$1x -> new aoq<>($$1x.bx() + "_queue", $$2)));
+      this.c = Sets.newHashSet($$0);
+      this.d = new blv<>(new blx.a(4), $$1, "sorter");
+   }
+
+   public boolean a() {
+      return this.d.c() || this.b.values().stream().anyMatch(aoq::b);
+   }
+
+   public static <T> aor.a<T> a(Function<blu<axy>, T> $$0, long $$1, IntSupplier $$2) {
+      return new aor.a<>($$0, $$1, $$2);
+   }
+
+   public static aor.a<Runnable> a(Runnable $$0, long $$1, IntSupplier $$2) {
+      return new aor.a<>($$1x -> () -> {
+            $$0.run();
+            $$1x.a(axy.a);
+         }, $$1, $$2);
+   }
+
+   public static aor.a<Runnable> a(aon $$0, Runnable $$1) {
+      return a($$1, $$0.l().a(), $$0::n);
+   }
+
+   public static <T> aor.a<T> a(aon $$0, Function<blu<axy>, T> $$1) {
+      return a($$1, $$0.l().a(), $$0::n);
+   }
+
+   public static aor.b a(Runnable $$0, long $$1, boolean $$2) {
+      return new aor.b($$0, $$1, $$2);
+   }
+
+   public <T> blu<aor.a<T>> a(blu<T> $$0, boolean $$1) {
+      return this.d.<blu<aor.a<T>>>b($$2 -> new blx.b(0, () -> {
+            this.b($$0);
+            $$2.a(blu.a("chunk priority sorter around " + $$0.bx(), $$2xx -> this.a($$0, $$2xx.a, $$2xx.b, $$2xx.c, $$1)));
+         })).join();
+   }
+
+   public blu<aor.b> a(blu<Runnable> $$0) {
+      return this.d
+         .<blu<aor.b>>b($$1 -> new blx.b(0, () -> $$1.a(blu.a("chunk priority sorter around " + $$0.bx(), $$1xx -> this.a($$0, $$1xx.b, $$1xx.a, $$1xx.c)))))
+         .join();
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.X();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.d.b(new abp(abp.g, 0.0F));
-      }
+   public void onLevelChange(cwg $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+      this.d.a(new blx.b(0, () -> {
+         int $$4 = $$1.getAsInt();
+         this.b.values().forEach($$3xx -> $$3xx.a($$4, $$0, $$2));
+         $$3.accept($$2);
+      }));
+   }
 
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
-      }
-
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.d.b(new abp(abp.g, 104.0F));
-            } else {
-               this.d.a(vs.c("demo.day." + $$1));
-            }
+   private <T> void a(blu<T> $$0, long $$1, Runnable $$2, boolean $$3) {
+      this.d.a(new blx.b(1, () -> {
+         aoq<Function<blu<axy>, T>> $$4 = this.b($$0);
+         $$4.a($$1, $$3);
+         if (this.c.remove($$0)) {
+            this.a($$4, $$0);
          }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.d.b(new abp(abp.g, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.d.b(new abp(abp.g, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.d.b(new abp(abp.g, 103.0F));
+
+         $$2.run();
+      }));
+   }
+
+   private <T> void a(blu<T> $$0, Function<blu<axy>, T> $$1, long $$2, IntSupplier $$3, boolean $$4) {
+      this.d.a(new blx.b(2, () -> {
+         aoq<Function<blu<axy>, T>> $$5 = this.b($$0);
+         int $$6 = $$3.getAsInt();
+         $$5.a(Optional.of($$1), $$2, $$6);
+         if ($$4) {
+            $$5.a(Optional.empty(), $$2, $$6);
          }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(vs.c("demo.day.warning"));
+
+         if (this.c.remove($$0)) {
+            this.a($$5, $$0);
+         }
+      }));
+   }
+
+   private <T> void a(aoq<Function<blu<axy>, T>> $$0, blu<T> $$1) {
+      this.d.a(new blx.b(3, () -> {
+         Stream<Either<Function<blu<axy>, T>, Runnable>> $$2 = $$0.a();
+         if ($$2 == null) {
+            this.c.add($$1);
+         } else {
+            CompletableFuture.allOf($$2.map($$1xx -> (CompletableFuture)$$1xx.map($$1::b, $$0xxx -> {
+                  $$0xxx.run();
+                  return CompletableFuture.completedFuture(axy.a);
+               })).toArray(CompletableFuture[]::new)).thenAccept($$2x -> this.a($$0, $$1));
+         }
+      }));
+   }
+
+   private <T> aoq<Function<blu<axy>, T>> b(blu<T> $$0) {
+      aoq<? extends Function<blu<axy>, ?>> $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("No queue for: " + $$0));
+      } else {
+         return (aoq<Function<blu<axy>, T>>)$$1;
       }
    }
 
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(vs.c("demo.reminder"));
-         this.g = 0;
-      }
+   @VisibleForTesting
+   public String b() {
+      return this.b
+            .entrySet()
+            .stream()
+            .map($$0 -> $$0.getKey().bx() + "=[" + $$0.getValue().c().stream().map($$0x -> $$0x + ":" + new cwg($$0x)).collect(Collectors.joining(",")) + "]")
+            .collect(Collectors.joining(","))
+         + ", s="
+         + this.c.size();
    }
 
    @Override
-   public void a(ib $$0, afy.a $$1, ih $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
+   public void close() {
+      this.b.keySet().forEach(blu::close);
+   }
+
+   public static final class a<T> {
+      final Function<blu<axy>, T> a;
+      final long b;
+      final IntSupplier c;
+
+      a(Function<blu<axy>, T> $$0, long $$1, IntSupplier $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 
-   @Override
-   public bml a(apb $$0, cwe $$1, cpq $$2, bmk $$3) {
-      if (this.f) {
-         this.f();
-         return bml.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
-   }
+   public static final class b {
+      final Runnable a;
+      final long b;
+      final boolean c;
 
-   @Override
-   public bml a(apb $$0, cwe $$1, cpq $$2, bmk $$3, eor $$4) {
-      if (this.f) {
-         this.f();
-         return bml.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+      b(Runnable $$0, long $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

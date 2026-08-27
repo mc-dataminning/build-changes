@@ -1,60 +1,55 @@
-@FunctionalInterface
-public interface gby<T extends bof> {
-   gbx<T> create(gby.a var1);
+public abstract class gby<T extends ciy> extends gcx<T> {
+   public gby(gcy.a $$0) {
+      super($$0);
+   }
 
-   public static class a {
-      private final gbw a;
-      private final gcw b;
-      private final fxk c;
-      private final fwm d;
-      private final asf e;
-      private final fqb f;
-      private final ezv g;
-
-      public a(gbw $$0, gcw $$1, fxk $$2, fwm $$3, asf $$4, fqb $$5, ezv $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   public void a(T $$0, float $$1, float $$2, etz $$3, fxq $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(aww.i($$2, $$0.N, $$0.dC()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(aww.i($$2, $$0.O, $$0.dE())));
+      int $$6 = 0;
+      float $$7 = 0.0F;
+      float $$8 = 0.5F;
+      float $$9 = 0.0F;
+      float $$10 = 0.15625F;
+      float $$11 = 0.0F;
+      float $$12 = 0.15625F;
+      float $$13 = 0.15625F;
+      float $$14 = 0.3125F;
+      float $$15 = 0.05625F;
+      float $$16 = (float)$$0.e - $$2;
+      if ($$16 > 0.0F) {
+         float $$17 = -aww.a($$16 * 3.0F) * $$16;
+         $$3.a(a.f.rotationDegrees($$17));
       }
 
-      public gbw a() {
-         return this.a;
+      $$3.a(a.b.rotationDegrees(45.0F));
+      $$3.b(0.05625F, 0.05625F, 0.05625F);
+      $$3.a(-4.0F, 0.0F, 0.0F);
+      eud $$18 = $$4.getBuffer(fxy.d(this.a($$0)));
+      etz.a $$19 = $$3.c();
+      this.a($$19, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
+      this.a($$19, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
+      this.a($$19, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
+      this.a($$19, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
+      this.a($$19, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
+      this.a($$19, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
+      this.a($$19, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
+      this.a($$19, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
+
+      for (int $$20 = 0; $$20 < 4; $$20++) {
+         $$3.a(a.b.rotationDegrees(90.0F));
+         this.a($$19, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
+         this.a($$19, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
+         this.a($$19, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
+         this.a($$19, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
       }
 
-      public gcw b() {
-         return this.b;
-      }
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      public fxk c() {
-         return this.c;
-      }
-
-      public fwm d() {
-         return this.d;
-      }
-
-      public asf e() {
-         return this.e;
-      }
-
-      public fqb f() {
-         return this.f;
-      }
-
-      public gkf g() {
-         return this.c.a().a();
-      }
-
-      public fqf a(fqd $$0) {
-         return this.f.a($$0);
-      }
-
-      public ezv h() {
-         return this.g;
-      }
+   public void a(etz.a $$0, eud $$1, int $$2, int $$3, int $$4, float $$5, float $$6, int $$7, int $$8, int $$9, int $$10) {
+      $$1.a($$0, (float)$$2, (float)$$3, (float)$$4).a(255, 255, 255, 255).a($$5, $$6).c(giq.d).b($$10).b($$0, (float)$$7, (float)$$9, (float)$$8).e();
    }
 }

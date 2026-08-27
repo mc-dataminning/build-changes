@@ -1,31 +1,129 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class daz extends czf {
-   public static final MapCodec<daz> a = b(daz::new);
-   private static final vs b = vs.c("container.crafting");
+public class daz extends dgz {
+   public static final MapCodec<daz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dom.a.fieldOf("wood_type").forGetter(dgz::d), u()).apply($$0, daz::new));
+   public static final dnz b = dnp.ba;
+   public static final dnq c = dnp.a;
+   protected static final float d = 5.0F;
+   protected static final eqk e = daa.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+   private static final Map<Integer, eqk> i = Maps.newHashMap(
+      ImmutableMap.of(
+         0,
+         daa.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         4,
+         daa.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
+         8,
+         daa.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         12,
+         daa.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
+      )
+   );
 
    @Override
-   public MapCodec<? extends daz> a() {
+   public MapCodec<daz> a() {
       return a;
    }
 
-   protected daz(dmd.d $$0) {
-      super($$0);
+   public daz(dom $$0, dmy.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
-      if ($$1.B) {
-         return bml.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(atz.an);
-         return bml.b;
+   protected bne a(cqk $$0, dmz $$1, cwz $$2, ib $$3, cis $$4, bnb $$5, epn $$6) {
+      if ($$2.c_($$3) instanceof dlp $$7 && this.a($$4, $$6, $$7, $$0)) {
+         return bne.e;
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   private boolean a(cis $$0, epn $$1, dlp $$2, cqk $$3) {
+      return !$$2.a($$2.a($$0), $$0) && $$3.d() instanceof cpx && $$1.b().equals(ih.a);
    }
 
    @Override
-   protected bmp b(dme $$0, cwe $$1, ib $$2) {
-      return new bmv(($$2x, $$3, $$4) -> new cll($$2x, $$3, clf.a($$1, $$2)), b);
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      return $$1.a_($$2.c()).a($$1, $$2.c(), ih.a, dia.b);
+   }
+
+   @Override
+   public dmz a(css $$0) {
+      cwz $$1 = $$0.q();
+      ein $$2 = $$1.b_($$0.a());
+      ib $$3 = $$0.a().c();
+      dmz $$4 = $$1.a_($$3);
+      boolean $$5 = $$4.a(aun.aA);
+      ih $$6 = ih.a((double)$$0.i());
+      boolean $$7 = !daa.a($$4.k($$1, $$3), ih.a) || $$0.h();
+      if ($$5 && !$$0.h()) {
+         if ($$4.b(diy.b)) {
+            ih $$8 = $$4.c(diy.b);
+            if ($$8.o().a($$6)) {
+               $$7 = false;
+            }
+         } else if ($$4.b(b)) {
+            Optional<ih> $$9 = dof.a($$4.c(b));
+            if ($$9.isPresent() && $$9.get().o().a($$6)) {
+               $$7 = false;
+            }
+         }
+      }
+
+      int $$10 = !$$7 ? dof.a($$6.g()) : dof.a($$0.i() + 180.0F);
+      return this.o().a(c, Boolean.valueOf($$7)).a(b, Integer.valueOf($$10)).a(f, Boolean.valueOf($$2.a() == eio.c));
+   }
+
+   @Override
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      eqk $$4 = i.get($$0.c(b));
+      return $$4 == null ? e : $$4;
+   }
+
+   @Override
+   protected eqk b_(dmz $$0, cwf $$1, ib $$2) {
+      return this.a($$0, $$1, $$2, epw.a());
+   }
+
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      return $$1 == ih.b && !this.a($$0, $$3, $$4) ? dac.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public float g(dmz $$0) {
+      return dof.b($$0.c(b));
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dgm $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dew $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(b, c, f);
+   }
+
+   @Override
+   public dkg a(ib $$0, dmz $$1) {
+      return new dld($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dkg> dkh<T> a(cwz $$0, dmz $$1, dki<T> $$2) {
+      return a($$2, dki.i, dlp::a);
    }
 }

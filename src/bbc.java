@@ -1,39 +1,35 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.List;
 
-public class bbc extends bct {
-   private static final int a = 6;
-   private static final awt b = awt.a();
+public class bbc extends DataFix {
+   private static final Codec<List<Float>> a = Codec.FLOAT.listOf();
 
    public bbc(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityZombieVillagerTypeFix", bdt.y, "Zombie");
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("IsVillager").asBoolean(false)) {
-         if ($$0.get("ZombieType").result().isEmpty()) {
-            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
-            if ($$1 == -1) {
-               $$1 = this.a(b.a(6));
-            }
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "EntityRedundantChanceTagsFix", this.getInputSchema().getType(beh.y), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               if (a($$0x.get("HandDropChances"), 2)) {
+                  $$0x = $$0x.remove("HandDropChances");
+               }
 
-            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
-         }
+               if (a($$0x.get("ArmorDropChances"), 4)) {
+                  $$0x = $$0x.remove("ArmorDropChances");
+               }
 
-         $$0 = $$0.remove("IsVillager");
-      }
-
-      return $$0;
+               return $$0x;
+            })
+      );
    }
 
-   private int a(int $$0) {
-      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   private static boolean a(OptionalDynamic<?> $$0, int $$1) {
+      return $$0.flatMap(a::parse).map($$1x -> $$1x.size() == $$1 && $$1x.stream().allMatch($$0xx -> $$0xx == 0.0F)).result().orElse(false);
    }
 }

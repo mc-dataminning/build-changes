@@ -1,17 +1,35 @@
-public record fbx(ajc a, ajc b, ajc c, ajc d) {
-   public fbx(ajc $$0, ajc $$1) {
-      this($$0, $$0, $$1, $$1);
+public class fbx {
+   public static final ajh a = new ajh("textures/gui/title/minecraft.png");
+   public static final ajh b = new ajh("textures/gui/title/minceraft.png");
+   public static final ajh c = new ajh("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)axd.a().i() < 1.0E-4;
+   private final boolean o;
+
+   public fbx(boolean $$0) {
+      this.o = $$0;
    }
 
-   public fbx(ajc $$0, ajc $$1, ajc $$2) {
-      this($$0, $$1, $$2, $$1);
+   public void a(fat $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   public ajc a(boolean $$0, boolean $$1) {
-      if ($$0) {
-         return $$1 ? this.c : this.a;
-      } else {
-         return $$1 ? this.d : this.b;
-      }
+   public void a(fat $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

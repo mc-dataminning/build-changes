@@ -1,17 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public final class aus {
+   public static final avd<eim> a = a("water");
+   public static final avd<eim> b = a("lava");
 
-public record aus(List<aur> b, boolean c) {
-   public static final Codec<aus> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aur.a.listOf().fieldOf("values").forGetter(aus::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(aus::b)).apply($$0, aus::new)
-   );
-
-   public List<aur> a() {
-      return this.b;
+   private aus() {
    }
 
-   public boolean b() {
-      return this.c;
+   private static avd<eim> a(String $$0) {
+      return avd.a(kj.y, new ajh($$0));
    }
 }

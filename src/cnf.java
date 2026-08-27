@@ -1,42 +1,80 @@
-import java.util.function.Consumer;
+public class cnf extends cnj {
+   private final cme a;
+   private final cis b;
+   private int c;
 
-public class cnf extends cpl {
-   public cnf(cpl.a $$0) {
-      super($$0);
+   public cnf(cis $$0, cme $$1, bmv $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public bml a(crz $$0) {
-      ih $$1 = $$0.k();
-      if ($$1 == ih.a) {
-         return bml.e;
-      } else {
-         cwe $$2 = $$0.q();
-         crx $$3 = new crx($$0);
-         ib $$4 = $$3.a();
-         cpq $$5 = $$0.n();
-         eov $$6 = eov.c($$4);
-         eoq $$7 = bol.e.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof apa $$8) {
-               Consumer<ceb> $$9 = bol.a($$8, $$5, $$0.o());
-               ceb $$10 = bol.e.b($$8, $$9, $$4, bpb.m, true, true);
-               if ($$10 == null) {
-                  return bml.e;
-               }
+   public boolean a(cqk $$0) {
+      return false;
+   }
 
-               float $$11 = (float)awm.d((awm.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.do(), $$10.dq(), $$10.du(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.do(), $$10.dq(), $$10.du(), atp.aB, atq.e, 0.75F, 0.8F);
-               $$10.a(dqr.t, $$0.o());
+   @Override
+   public cqk a(int $$0) {
+      if (this.h()) {
+         this.c = this.c + Math.min($$0, this.g().M());
+      }
+
+      return super.a($$0);
+   }
+
+   @Override
+   protected void a(cqk $$0, int $$1) {
+      this.c += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b(int $$0) {
+      this.c += $$0;
+   }
+
+   @Override
+   protected void b_(cqk $$0) {
+      if (this.c > 0) {
+         $$0.a(this.b.dM(), this.b, this.c);
+      }
+
+      if (this.d instanceof cnd $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.c = 0;
+   }
+
+   @Override
+   public void a(cis $$0, cqk $$1) {
+      this.b_($$1);
+      iu<cqk> $$2 = $$0.dM().r().c(cts.a, this.a, $$0.dM());
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         cqk $$4 = this.a.a($$3);
+         cqk $$5 = $$2.get($$3);
+         if (!$$4.b()) {
+            this.a.a($$3, 1);
+            $$4 = this.a.a($$3);
+         }
+
+         if (!$$5.b()) {
+            if ($$4.b()) {
+               this.a.a($$3, $$5);
+            } else if (cqk.c($$4, $$5)) {
+               $$5.g($$4.M());
+               this.a.a($$3, $$5);
+            } else if (!this.b.fZ().e($$5)) {
+               this.b.a($$5, false);
             }
-
-            $$5.h(1);
-            return bml.a($$2.B);
-         } else {
-            return bml.e;
          }
       }
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

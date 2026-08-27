@@ -1,40 +1,103 @@
-import java.util.List;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public interface cww {
-   void a(bol<?> var1, awt var2);
+public enum cww implements axq {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   static void a(cpq $$0, List<vs> $$1, String $$2) {
-      vs $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
+   public static final cww e = a;
+   public static final axq.a<cww> f = axq.a(cww::values);
+   private static final IntFunction<cww> g = avn.a(cww::a, values(), avn.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final vu k;
+   private final vu l;
+
+   private cww(int $$0, String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = vu.c("selectWorld.gameMode." + $$1);
+      this.l = vu.c("gameMode." + $$1);
+   }
+
+   public int a() {
+      return this.i;
+   }
+
+   public String b() {
+      return this.j;
+   }
+
+   @Override
+   public String c() {
+      return this.j;
+   }
+
+   public vu d() {
+      return this.l;
+   }
+
+   public vu e() {
+      return this.k;
+   }
+
+   public void a(cip $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
       } else {
-         $$1.add(vr.a);
-         $$1.add(vs.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(vr.a().b(vs.c("block.minecraft.spawner.desc2").a(n.j)));
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
       }
+
+      $$0.e = !this.f();
+   }
+
+   public boolean f() {
+      return this == c || this == d;
+   }
+
+   public boolean g() {
+      return this == b;
+   }
+
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static cww a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static cww a(String $$0) {
+      return a($$0, a);
    }
 
    @Nullable
-   static vs a(cpq $$0, String $$1) {
-      sy $$2 = cnl.a($$0);
-      if ($$2 != null) {
-         ajc $$3 = a($$2, $$1);
-         if ($$3 != null) {
-            return kh.g.b($$3).map($$0x -> vs.c($$0x.g()).a(n.h)).orElse(null);
-         }
-      }
+   @Contract("_,!null->!null;_,null->_")
+   public static cww a(String $$0, @Nullable cww $$1) {
+      cww $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
 
-      return null;
+   public static int a(@Nullable cww $$0) {
+      return $$0 != null ? $$0.i : -1;
    }
 
    @Nullable
-   private static ajc a(sy $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return ajc.a($$2);
-      } else {
-         return null;
-      }
+   public static cww b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

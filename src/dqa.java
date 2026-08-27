@@ -1,61 +1,31 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import org.apache.commons.io.FileUtils;
 
-public class dqa<T extends dpy> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+public class dqa extends dpx {
+   private final dpz a;
+   private final Path b;
 
-   public <U extends T> void a(dqf<T, U> $$0, ava<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
+   public dqa(dqg $$0, Path $$1, dqg $$2, Path $$3, DataFixer $$4, boolean $$5) {
+      super($$0, $$1, $$4, $$5);
+      this.b = $$3;
+      this.a = new dpz($$2, $$3, $$5);
+   }
 
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
-         }
+   @Override
+   public CompletableFuture<Void> a(cwg $$0, ta $$1) {
+      this.f($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
       }
-   }
-
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
-   }
-
-   public void a(T $$0) {
-      UUID $$1 = $$0.ct();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
-      } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.aj(), $$0);
-      }
-   }
-
-   public void b(T $$0) {
-      this.c.remove($$0.ct());
-      this.b.remove($$0.aj());
-   }
-
-   @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
-   }
-
-   public int b() {
-      return this.c.size();
    }
 }

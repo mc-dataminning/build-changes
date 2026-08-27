@@ -1,106 +1,58 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dcu extends dcs implements czi {
-   public static final dne e = dmu.ax;
-   public static final int f = 25;
-   private final double c;
+public abstract class dcu extends ddv {
+   public static final dnx<dnk> K = dnp.U;
 
-   protected dcu(dmd.d $$0, ih $$1, epo $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.k(this.E.b().a(e, Integer.valueOf(0)));
+   protected dcu(dmy.d $$0) {
+      super($$0);
    }
 
    @Override
    protected abstract MapCodec<? extends dcu> a();
 
    @Override
-   public dme a(cwf $$0) {
-      return this.o().a(e, Integer.valueOf($$0.F_().a(25)));
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      return b($$1, $$2, m($$0).g());
    }
 
+   public static boolean b(cxc $$0, ib $$1, ih $$2) {
+      ib $$3 = $$1.a($$2);
+      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   }
+
+   @Nullable
    @Override
-   protected boolean e_(dme $$0) {
-      return $$0.c(e) < 25;
-   }
-
-   @Override
-   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         ib $$4 = $$2.a(this.a);
-         if (this.g($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.z));
-         }
-      }
-   }
-
-   protected dme a(dme $$0, awt $$1) {
-      return $$0.a(e);
-   }
-
-   public dme n(dme $$0) {
-      return $$0.a(e, Integer.valueOf(25));
-   }
-
-   public boolean o(dme $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected dme a(dme $$0, dme $$1) {
-      return $$1;
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
-         if (this.b) {
-            $$3.a($$4, ehs.c, ehs.c.a($$3));
+   public dmz a(css $$0) {
+      for (ih $$1 : $$0.f()) {
+         dmz $$2;
+         if ($$1.o() == ih.a.b) {
+            $$2 = this.o().a(K, $$1 == ih.b ? dnk.c : dnk.a).a(aE, $$0.g());
+         } else {
+            $$2 = this.o().a(K, dnk.b).a(aE, $$1.g());
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return this.a($$0, this.b().o());
+         if ($$2.a((cxc)$$0.q(), $$0.a())) {
+            return $$2;
+         }
       }
+
+      return null;
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(e);
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dac.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public boolean b(cwh $$0, ib $$1, dme $$2) {
-      return this.g($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(cwe $$0, awt $$1, ib $$2, dme $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(apa $$0, awt $$1, ib $$2, dme $$3) {
-      ib $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
-
-      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
+   protected static ih m(dmz $$0) {
+      switch ((dnk)$$0.c(K)) {
+         case c:
+            return ih.a;
+         case a:
+            return ih.b;
+         default:
+            return $$0.c(aE);
       }
-   }
-
-   protected abstract int a(awt var1);
-
-   protected abstract boolean g(dme var1);
-
-   @Override
-   protected dcu c() {
-      return this;
    }
 }

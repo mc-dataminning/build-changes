@@ -1,59 +1,85 @@
-public class fsx extends fve {
-   private final fuz a;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-   protected fsx(
-      fra $$0,
-      double $$1,
-      double $$2,
-      double $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      float $$10,
-      fuz $$11,
-      float $$12,
-      int $$13,
-      float $$14,
-      boolean $$15
-   ) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.u = $$14;
-      this.C = true;
-      this.a = $$11;
-      this.j *= (double)$$4;
-      this.k *= (double)$$5;
-      this.l *= (double)$$6;
-      this.j += $$7;
-      this.k += $$8;
-      this.l += $$9;
-      float $$16 = $$0.z.i() * $$12;
-      this.v = $$16;
-      this.w = $$16;
-      this.x = $$16;
-      this.D *= 0.75F * $$10;
-      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
-      this.t = Math.max(this.t, 1);
-      this.b($$11);
-      this.n = $$15;
+public interface fsx {
+   static fsx a(ftd $$0, UserApiService $$1) {
+      return new fsx.b($$0, $$1);
    }
 
-   @Override
-   public fui b() {
-      return fui.b;
+   CompletableFuture<Unit> a(UUID var1, ftf var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * awm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public static class a extends wu {
+      public a(vu $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public static record b(ftd a, UserApiService b) implements fsx {
+      private static final vu c = vu.c("gui.abuseReport.send.service_unavailable");
+      private static final vu d = vu.c("gui.abuseReport.send.http_error");
+      private static final vu e = vu.c("gui.abuseReport.send.json_error");
+
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, ftf $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               vu $$5 = this.a(var7);
+               throw new CompletionException(new fsx.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               vu $$7 = this.a(var8);
+               throw new CompletionException(new fsx.a($$7, var8));
+            }
+         }, ac.g());
+      }
+
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private vu a(MinecraftClientHttpException $$0) {
+         return vu.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private vu a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public ftd c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
+      }
    }
 }

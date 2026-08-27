@@ -1,16 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
 
-abstract class dsz implements dsx {
-   protected final List<dsx> e;
-
-   protected dsz(List<dsx> $$0) {
-      this.e = $$0;
+public interface dsz {
+   default axd a(ib $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   public static <T extends dsz> Codec<T> a(Function<List<dsx>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(dsx.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
+   default axd a(ajh $$0) {
+      return this.a($$0.toString());
    }
+
+   axd a(String var1);
+
+   axd a(int var1, int var2, int var3);
+
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

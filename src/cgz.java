@@ -1,32 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.Map;
 
-public class cgz {
-   public static bqq<box> a(int $$0, int $$1) {
-      return buc.a(
-         (Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$2 -> $$2.group($$2.b(bya.ad), $$2.b(bya.L), $$2.a(bya.ae), $$2.a(bya.af))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.eS().b()) {
-                        return false;
-                     } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
-                        } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
-                        }
+public class cgz extends brg<cgu> {
+   public cgz() {
+      super(Map.of(byr.o, bys.a, byr.aZ, bys.b, byr.ba, bys.b, byr.m, bys.b, byr.aV, bys.b));
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   protected boolean a(apf $$0, cgu $$1) {
+      return $$1.bO() || $$1.bc() || $$1.c(bol.y) != null;
+   }
+
+   protected boolean a(apf $$0, cgu $$1, long $$2) {
+      return false;
+   }
+
+   protected void b(apf $$0, cgu $$1, long $$2) {
+      $$1.dP().a(byr.aV, axy.a, 60L);
    }
 }

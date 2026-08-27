@@ -1,7 +1,7 @@
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public enum ij implements axg {
+public enum ij implements axq {
    a("down_east", ih.a, ih.f),
    b("down_north", ih.a, ih.c),
    c("down_south", ih.a, ih.d),

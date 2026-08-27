@@ -1,32 +1,64 @@
-public class gbg extends gde<cap, fmp<cap>> {
-   public gbg(gby.a $$0) {
-      super($$0, new fmp<>($$0.a(fqe.p)), 0.4F);
-      this.a(new gfl(this, $$0.f()));
+import java.util.Map.Entry;
+import org.joml.Vector3f;
+
+public class gbg implements gbc.a {
+   private final ezg a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
+
+   public gbg(ezg $$0) {
+      this.a = $$0;
    }
 
-   public ajc a(cap $$0) {
-      return $$0.gr();
-   }
+   @Override
+   public void a(etz $$0, fxq $$1, double $$2, double $$3, double $$4) {
+      cxa $$5 = this.a.r;
+      eud $$6 = $$1.getBuffer(fxy.A());
+      ib $$7 = ib.a($$2, 0.0, $$4);
 
-   protected void a(cap $$0, etd $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b(0.8F, 0.8F, 0.8F);
-   }
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dov $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
 
-   protected void a(cap $$0, etd $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.E($$4);
-      if ($$6 > 0.0F) {
-         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
-         $$1.a(a.f.rotationDegrees(awm.j($$6, 0.0F, 90.0F)));
-         ib $$7 = $$0.dj();
+            for (Entry<dsm.a, dsm> $$11 : $$10.e()) {
+               dsm.a $$12 = $$11.getKey();
+               cwg $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
 
-         for (cia $$9 : $$0.dJ().a(cia.class, new eoq($$7).c(2.0, 2.0, 2.0))) {
-            if ($$9.fF()) {
-               $$1.a(0.15F * $$6, 0.0F, 0.0F);
-               break;
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = je.a($$13.e, $$15);
+                     int $$18 = je.a($$13.f, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     fxo.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
             }
          }
       }
+   }
+
+   private Vector3f a(dsm.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

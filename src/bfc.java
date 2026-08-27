@@ -1,42 +1,26 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.Const.PrimitiveType;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.PrimitiveCodec;
+import com.mojang.serialization.Dynamic;
+import java.util.Map;
 
-public class bfc extends Schema {
-   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
-      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
-         return $$0.getStringValue($$1).map(bfc::a);
-      }
+public class bfc extends bdh {
+   private final Map<String, String> a;
 
-      public <T> T a(DynamicOps<T> $$0, String $$1) {
-         return (T)$$0.createString($$1);
-      }
-
-      @Override
-      public String toString() {
-         return "NamespacedString";
-      }
-   };
-   private static final Type<String> b = new PrimitiveType(a);
-
-   public bfc(int $$0, Schema $$1) {
-      super($$0, $$1);
+   public bfc(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
+      super($$0, false, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   public static String a(String $$0) {
-      ajc $$1 = ajc.a($$0);
-      return $$1 != null ? $$1.toString() : $$0;
-   }
-
-   public static Type<String> a() {
-      return b;
-   }
-
-   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
-      return super.getChoiceType($$0, a($$1));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
+            )
+      );
    }
 }

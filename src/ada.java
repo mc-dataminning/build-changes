@@ -1,12 +1,37 @@
-public record ada(vs b) implements xz<aai> {
-   public static final xq<vd, ada> a = xq.a(vu.b, ada::b, ada::new);
+public class ada implements yb<aam> {
+   public static final xs<uu, ada> a = yb.a(ada::a, ada::new);
+   private final int b;
+   private final byte c;
 
-   @Override
-   public yb<ada> a() {
-      return aet.aq;
+   public ada(bow $$0, byte $$1) {
+      this.b = $$0.aj();
+      this.c = $$1;
    }
 
-   public void a(aai $$0) {
+   private ada(uu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
+   }
+
+   private void a(uu $$0) {
+      $$0.c(this.b);
+      $$0.k(this.c);
+   }
+
+   @Override
+   public yd<ada> a() {
+      return aex.am;
+   }
+
+   public void a(aam $$0) {
       $$0.a(this);
+   }
+
+   public bow a(cwz $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
+      return this.c;
    }
 }

@@ -1,159 +1,77 @@
-public class djs extends dkp implements dko {
-   private static final int e = 1;
-   private iu<cpq> f = iu.a(27, cpq.h);
-   private final djy g = new djy() {
-      @Override
-      protected void a(cwe $$0, ib $$1, dme $$2) {
-         djs.a($$0, $$1, $$2, atp.eI);
-      }
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-      @Override
-      protected void b(cwe $$0, ib $$1, dme $$2) {
-         djs.a($$0, $$1, $$2, atp.eG);
-      }
+public class djs extends dhb {
+   public static final MapCodec<djs> b = b(djs::new);
+   @Nullable
+   private static dne h;
+   @Nullable
+   private static dne i;
 
-      @Override
-      protected void a(cwe $$0, ib $$1, dme $$2, int $$3, int $$4) {
-         djs.this.a($$0, $$1, $$2, $$3, $$4);
-      }
+   @Override
+   public MapCodec<djs> a() {
+      return b;
+   }
 
-      @Override
-      protected boolean a(cia $$0) {
-         if (!($$0.bX instanceof clb)) {
-            return false;
-         } else {
-            bme $$1 = ((clb)$$0.bX).l();
-            return $$1 == djs.this || $$1 instanceof bmd && ((bmd)$$1).a(djs.this);
+   protected djs(dmy.d $$0) {
+      super(dhb.b.d, $$0);
+   }
+
+   @Override
+   public void a(cwz $$0, ib $$1, dmz $$2, @Nullable bpo $$3, cqk $$4) {
+      a($$0, $$1);
+   }
+
+   public static void a(cwz $$0, ib $$1) {
+      if ($$0.c_($$1) instanceof dlr $$2) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(cwz $$0, ib $$1, dlr $$2) {
+      if (!$$0.B) {
+         dmz $$3 = $$2.n();
+         boolean $$4 = $$3.a(dac.gG) || $$3.a(dac.gH);
+         if ($$4 && $$1.v() >= $$0.I_() && $$0.aj() != bmz.a) {
+            dne.b $$5 = s().a($$0, $$1);
+            if ($$5 != null) {
+               cer $$6 = bpc.bo.a($$0);
+               if ($$6 != null) {
+                  dau.a($$0, $$5);
+                  ib $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ih.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aX = $$5.b().o() == ih.a.a ? 0.0F : 90.0F;
+                  $$6.r();
+
+                  for (apg $$8 : $$0.a(apg.class, $$6.cH().g(50.0))) {
+                     am.o.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  dau.b($$0, $$5);
+               }
+            }
          }
       }
-   };
-   private final djt h = new djt();
-
-   protected djs(djn<?> $$0, ib $$1, dme $$2) {
-      super($$0, $$1, $$2);
    }
 
-   public djs(ib $$0, dme $$1) {
-      this(djn.b, $$0, $$1);
+   public static boolean b(cwz $$0, ib $$1, cqk $$2) {
+      return $$2.a(cqn.uj) && $$1.v() >= $$0.I_() + 2 && $$0.aj() != bmz.a && !$$0.B ? y().a($$0, $$1) != null : false;
    }
 
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected vs k() {
-      return vs.c("container.chest");
-   }
-
-   @Override
-   public void a(sy $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.f = iu.a(this.b(), cpq.h);
-      if (!this.c_($$0)) {
-         bmf.b($$0, this.f);
-      }
-   }
-
-   @Override
-   protected void b(sy $$0, in.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b($$0)) {
-         bmf.a($$0, this.f);
-      }
-   }
-
-   public static void a(cwe $$0, ib $$1, dme $$2, djs $$3) {
-      $$3.h.a();
-   }
-
-   static void a(cwe $$0, ib $$1, dme $$2, ato $$3) {
-      dmw $$4 = $$2.c(dai.d);
-      if ($$4 != dmw.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dmw.c) {
-            ih $$8 = dai.h($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, atq.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.h.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   @Override
-   public void d_(cia $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.g.a($$0, this.i(), this.aD_(), this.n());
-      }
-   }
-
-   @Override
-   public void c(cia $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.g.b($$0, this.i(), this.aD_(), this.n());
-      }
-   }
-
-   @Override
-   protected iu<cpq> j() {
-      return this.f;
-   }
-
-   @Override
-   protected void a(iu<cpq> $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.h.a($$0);
-   }
-
-   public static int a(cvk $$0, ib $$1) {
-      dme $$2 = $$0.a_($$1);
-      if ($$2.t()) {
-         djl $$3 = $$0.c_($$1);
-         if ($$3 instanceof djs) {
-            return ((djs)$$3).g.a();
-         }
+   private static dne s() {
+      if (h == null) {
+         h = dnf.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(aun.aF)).a('^', dnd.a(dni.a(dac.gG).or(dni.a(dac.gH)))).a('~', $$0 -> $$0.a().i()).b();
       }
 
-      return 0;
+      return h;
    }
 
-   public static void a(djs $$0, djs $$1) {
-      iu<cpq> $$2 = $$0.j();
-      $$0.a($$1.j());
-      $$1.a($$2);
-   }
-
-   @Override
-   protected cku a(int $$0, chz $$1) {
-      return clb.a($$0, $$1, this);
-   }
-
-   public void l() {
-      if (!this.q) {
-         this.g.c(this.i(), this.aD_(), this.n());
+   private static dne y() {
+      if (i == null) {
+         i = dnf.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(aun.aF)).a('~', $$0 -> $$0.a().i()).b();
       }
-   }
 
-   protected void a(cwe $$0, ib $$1, dme $$2, int $$3, int $$4) {
-      czf $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+      return i;
    }
 }

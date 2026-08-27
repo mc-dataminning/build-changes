@@ -1,152 +1,193 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fbm extends fgh {
-   private static final ajc a = new ajc("popup/background");
-   private static final int b = 12;
-   private static final int c = 18;
-   private static final int k = 6;
-   private static final int l = 130;
-   private static final int m = 64;
-   private static final int n = 250;
-   private final fgh o;
+public abstract class fbm<E extends fbm.a<E>> extends fbb<E> {
+   public fbm(ezg $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
    @Nullable
-   private final ajc p;
-   private final vs q;
-   private final List<fbm.b> r;
-   @Nullable
-   private final Runnable t;
-   private final int u;
-   private final fea v = fea.d();
-
-   fbm(fgh $$0, int $$1, @Nullable ajc $$2, vs $$3, vs $$4, List<fbm.b> $$5, @Nullable Runnable $$6) {
-      super($$3);
-      this.o = $$0;
-      this.p = $$2;
-      this.q = $$4;
-      this.r = $$5;
-      this.t = $$6;
-      this.u = $$1 - 36;
-   }
-
    @Override
-   public void aH_() {
-      super.aH_();
-      this.o.q();
-   }
-
-   @Override
-   protected void aP_() {
-      this.v.a(12).c().b();
-      this.v.a(new fbe(this.e.f().a(n.r), this.i).c(this.u).b(true));
-      if (this.p != null) {
-         this.v.a(fax.a(130, 64, this.p, 130, 64));
-      }
-
-      this.v.a(new fbe(this.q, this.i).c(this.u).b(true));
-      this.v.a(this.o());
-      this.v.a($$1 -> {
-         fai var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   private fea o() {
-      int $$0 = 6 * (this.r.size() - 1);
-      int $$1 = Math.min((this.u - $$0) / this.r.size(), 150);
-      fea $$2 = fea.e();
-      $$2.a(6);
-
-      for (fbm.b $$3 : this.r) {
-         $$2.a(fak.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
-      }
-
-      return $$2;
-   }
-
-   @Override
-   protected void c() {
-      this.o.a(this.f, this.g, this.h);
-      this.v.a();
-      fdu.a(this.v, this.F());
-   }
-
-   @Override
-   public void b(ezx $$0, int $$1, int $$2, float $$3) {
-      this.o.a($$0, -1, -1, $$3);
-      $$0.e();
-      RenderSystem.clear(256, eyk.a);
-      this.a($$0);
-      $$0.a(a, this.v.B() - 18, this.v.C() - 18, this.v.w() + 36, this.v.u() + 36);
-   }
-
-   @Override
-   public vs i() {
-      return vr.a(this.e, this.q);
-   }
-
-   @Override
-   public void d() {
-      if (this.t != null) {
-         this.t.run();
-      }
-
-      this.f.a(this.o);
-   }
-
-   public static class a {
-      private final fgh a;
-      private final vs b;
-      private vs c = vr.a;
-      private int d = 250;
-      @Nullable
-      private ajc e;
-      private final List<fbm.b> f = new ArrayList<>();
-      @Nullable
-      private Runnable g = null;
-
-      public a(fgh $$0, vs $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fbm.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fbm.a a(ajc $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fbm.a a(vs $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fbm.a a(vs $$0, Consumer<fbm> $$1) {
-         this.f.add(new fbm.b($$0, $$1));
-         return this;
-      }
-
-      public fbm.a a(Runnable $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public fbm a() {
-         if (this.f.isEmpty()) {
-            throw new IllegalStateException("Popup must have at least one button");
+   public faq a(ffi $$0) {
+      if (this.n() == 0) {
+         return null;
+      } else if (!($$0 instanceof ffi.a $$1)) {
+         return super.a($$0);
+      } else {
+         E $$2 = this.k();
+         if ($$1.b().a() == ffj.a && $$2 != null) {
+            return faq.a(this, $$2.a($$0));
          } else {
-            return new fbm(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+            int $$3 = -1;
+            ffk $$4 = $$1.b();
+            if ($$2 != null) {
+               $$3 = $$2.l().indexOf($$2.aI_());
+            }
+
+            if ($$3 == -1) {
+               switch ($$4) {
+                  case c:
+                     $$3 = Integer.MAX_VALUE;
+                     $$4 = ffk.b;
+                     break;
+                  case d:
+                     $$3 = 0;
+                     $$4 = ffk.b;
+                     break;
+                  default:
+                     $$3 = 0;
+               }
+            }
+
+            E $$5 = $$2;
+
+            faq $$6;
+            do {
+               $$5 = this.a($$4, $$0x -> !$$0x.l().isEmpty(), $$5);
+               if ($$5 == null) {
+                  return null;
+               }
+
+               $$6 = $$5.a($$1, $$3);
+            } while ($$6 == null);
+
+            return faq.a(this, $$6);
          }
       }
    }
 
-   static record b(vs a, Consumer<fbm> b) {
+   @Override
+   public void a(@Nullable fdc $$0) {
+      super.a($$0);
+      if ($$0 == null) {
+         this.a(null);
+      }
+   }
+
+   @Override
+   public ffa.a s() {
+      return this.aJ_() ? ffa.a.c : super.s();
+   }
+
+   @Override
+   protected boolean e(int $$0) {
+      return false;
+   }
+
+   @Override
+   public void a(ffc $$0) {
+      E $$1 = this.t();
+      if ($$1 != null) {
+         $$1.a($$0.a());
+         this.a($$0, $$1);
+      } else {
+         E $$2 = this.k();
+         if ($$2 != null) {
+            $$2.a($$0.a());
+            this.a($$0, $$2);
+         }
+      }
+
+      $$0.a(ffb.d, vu.c("narration.component_list.usage"));
+   }
+
+   public abstract static class a<E extends fbm.a<E>> extends fbb.a<E> implements fdb {
+      @Nullable
+      private fdc a;
+      @Nullable
+      private ffa b;
+      private boolean c;
+
+      @Override
+      public boolean aH_() {
+         return this.c;
+      }
+
+      @Override
+      public void b(boolean $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return fdb.super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(@Nullable fdc $$0) {
+         if (this.a != null) {
+            this.a.a(false);
+         }
+
+         if ($$0 != null) {
+            $$0.a(true);
+         }
+
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public fdc aI_() {
+         return this.a;
+      }
+
+      @Nullable
+      public faq a(ffi $$0, int $$1) {
+         if (this.l().isEmpty()) {
+            return null;
+         } else {
+            faq $$2 = this.l().get(Math.min($$1, this.l().size() - 1)).a($$0);
+            return faq.a(this, $$2);
+         }
+      }
+
+      @Nullable
+      @Override
+      public faq a(ffi $$0) {
+         if ($$0 instanceof ffi.a $$1) {
+            int $$2 = switch ($$1.b()) {
+               case c -> -1;
+               case d -> 1;
+               case a, b -> 0;
+            };
+            if ($$2 == 0) {
+               return null;
+            }
+
+            int $$3 = aww.a($$2 + this.l().indexOf(this.aI_()), 0, this.l().size() - 1);
+
+            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.l().size(); $$4 += $$2) {
+               fdc $$5 = this.l().get($$4);
+               faq $$6 = $$5.a($$0);
+               if ($$6 != null) {
+                  return faq.a(this, $$6);
+               }
+            }
+         }
+
+         return fdb.super.a($$0);
+      }
+
+      public abstract List<? extends ffa> a();
+
+      void a(ffc $$0) {
+         List<? extends ffa> $$1 = this.a();
+         fhf.b $$2 = fhf.a($$1, this.b);
+         if ($$2 != null) {
+            if ($$2.c.a()) {
+               this.b = $$2.a;
+            }
+
+            if ($$1.size() > 1) {
+               $$0.a(ffb.b, vu.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
+               if ($$2.c == ffa.a.c) {
+                  $$0.a(ffb.d, vu.c("narration.component_list.usage"));
+               }
+            }
+
+            $$2.a.b($$0.a());
+         }
+      }
    }
 }

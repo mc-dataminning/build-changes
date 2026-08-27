@@ -1,65 +1,54 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dcw extends czf implements dgf {
-   public static final MapCodec<dcw> a = b(dcw::new);
-   private static final dmv c = dmu.C;
-   protected static final epo b = czf.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
-
-   @Override
-   public MapCodec<dcw> a() {
-      return a;
-   }
-
-   protected dcw(dmd.d $$0) {
+public abstract class dcw extends daa implements dcv {
+   public dcw(dmy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(c);
+   protected abstract MapCodec<? extends dcw> a();
+
+   @Override
+   protected void b(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
    }
 
    @Override
-   protected ehr c_(dme $$0) {
-      return $$0.c(c) ? ehs.c.a(false) : super.c_($$0);
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      $$3.a($$4, this, this.b());
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Nullable
    @Override
-   public dme a(crx $$0) {
-      dme $$1 = super.a($$0);
-      if ($$1 != null) {
-         ehr $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == ehs.c));
-      } else {
-         return null;
+   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if (m($$1.a_($$2.d())) && $$2.v() >= $$1.I_()) {
+         cfc $$4 = cfc.a($$1, $$2, $$0);
+         this.a($$4);
       }
    }
 
-   @Override
-   protected boolean a(dme $$0, cwh $$1, ib $$2) {
-      ib $$3 = $$2.c();
-      dme $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, ih.a);
+   protected void a(cfc $$0) {
+   }
+
+   protected int b() {
+      return 2;
+   }
+
+   public static boolean m(dmz $$0) {
+      return $$0.i() || $$0.a(aun.aK) || $$0.k() || $$0.r();
    }
 
    @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return b;
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.b && !this.a($$0, $$3, $$4)) {
-         return czh.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, ehs.c, ehs.c.a($$3));
+   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
+      if ($$3.a(16) == 0) {
+         ib $$4 = $$2.d();
+         if (m($$1.a_($$4))) {
+            awz.a($$1, $$2, $$3, new ju(kc.C, $$0));
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+   }
+
+   public int b(dmz $$0, cwf $$1, ib $$2) {
+      return -16777216;
    }
 }

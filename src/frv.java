@@ -1,119 +1,249 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface frv extends fru {
-   static frv.a a(GameProfile $$0, wi $$1, frt $$2) {
-      return new frv.a($$0, $$1, $$2);
+public abstract class frv implements yh {
+   private static final vu i = vu.c("disconnect.lost");
+   private static final Logger j = LogUtils.getLogger();
+   protected final ezg a;
+   protected final us b;
+   @Nullable
+   protected final fsm c;
+   @Nullable
+   protected String d;
+   protected final god e;
+   @Nullable
+   protected final fhf f;
+   protected boolean g;
+   private final List<frv.a> k = new ArrayList<>();
+   protected final Map<ajh, byte[]> h;
+
+   protected frv(ezg $$0, us $$1, fsc $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2.f();
+      this.d = $$2.e();
+      this.e = $$2.b();
+      this.f = $$2.g();
+      this.h = $$2.h();
    }
 
-   static frv.b a(vs $$0, Instant $$1) {
-      return new frv.b($$0, $$1);
+   @Override
+   public void a(yk $$0) {
+      this.a(new yv($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
    }
 
-   vs b();
-
-   default vs c() {
-      return this.b();
+   @Override
+   public void a(yl $$0) {
+      ye.a($$0, this, this.a);
+      this.b(new yw($$0.b()));
    }
 
-   boolean a(UUID var1);
-
-   public static record a(GameProfile c, wi d, frt e) implements frv {
-      public static final Codec<frv.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  avu.v.fieldOf("profile").forGetter(frv.a::f), wi.a.forGetter(frv.a::g), frt.d.optionalFieldOf("trust_level", frt.a).forGetter(frv.a::h)
-               )
-               .apply($$0, frv.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public vs b() {
-         if (!this.d.o().a()) {
-            vs $$0 = this.d.o().b(this.d.c());
-            return (vs)($$0 != null ? $$0 : vs.i());
+   @Override
+   public void a(yi $$0) {
+      zc $$1 = $$0.b();
+      if (!($$1 instanceof zd)) {
+         ye.a($$0, this, this.a);
+         if ($$1 instanceof za $$2) {
+            this.d = $$2.b();
+            this.e.a($$2.b());
          } else {
-            return this.d.d();
+            this.a($$1);
          }
       }
+   }
 
-      @Override
-      public vs c() {
-         vs $$0 = this.b();
-         vs $$1 = this.i();
-         return vs.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
+   protected abstract void a(zc var1);
 
-      public vs d() {
-         vs $$0 = this.i();
-         return vs.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private vs i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return vs.b($$0.format(f)).a(n.u, n.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public fru.a a() {
-         return fru.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public wi g() {
-         return this.d;
-      }
-
-      public frt h() {
-         return this.e;
+   @Override
+   public void a(yn $$0) {
+      ye.a($$0, this, this.a);
+      UUID $$1 = $$0.b();
+      URL $$2 = a($$0.e());
+      if ($$2 == null) {
+         this.b.a(new yx($$1, yx.a.f));
+      } else {
+         String $$3 = $$0.f();
+         boolean $$4 = $$0.g();
+         fsm.a $$5 = this.c != null ? this.c.b() : fsm.a.c;
+         if ($$5 != fsm.a.c && (!$$4 || $$5 != fsm.a.b)) {
+            this.a.ae().a($$1, $$2, $$3);
+         } else {
+            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
+         }
       }
    }
 
-   public static record b(vs c, Instant d) implements frv {
-      public static final Codec<frv.b> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(vu.a.fieldOf("message").forGetter(frv.b::d), avu.n.fieldOf("time_stamp").forGetter(frv.b::e)).apply($$0, frv.b::new)
-      );
+   @Override
+   public void a(ym $$0) {
+      ye.a($$0, this, this.a);
+      $$0.b().ifPresentOrElse($$0x -> this.a.ae().a($$0x), () -> this.a.ae().e());
+   }
 
-      @Override
-      public vs b() {
-         return this.c;
+   static vu a(vu $$0, @Nullable vu $$1) {
+      return (vu)($$1 == null ? $$0 : vu.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
+   }
+
+   @Nullable
+   private static URL a(String $$0) {
+      try {
+         URL $$1 = new URL($$0);
+         String $$2 = $$1.getProtocol();
+         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
+      } catch (MalformedURLException var3) {
+         return null;
+      }
+   }
+
+   @Override
+   public void a(aah $$0) {
+      ye.a($$0, this, this.a);
+      this.b.a(new aak($$0.b(), this.h.get($$0.b())));
+   }
+
+   @Override
+   public void a(yo $$0) {
+      ye.a($$0, this, this.a);
+      this.h.put($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(yp $$0) {
+      ye.a($$0, this, this.a);
+      if (this.c == null) {
+         throw new IllegalStateException("Cannot transfer to server from singleplayer");
+      } else {
+         this.g = true;
+         this.b.a(vu.c("disconnect.transfer"));
+         this.b.m();
+         this.b.n();
+         ftp $$1 = new ftp($$0.b(), $$0.e());
+         ffy.a(Objects.requireNonNullElseGet(this.f, fhk::new), this.a, $$1, this.c, false, new fsq(this.h));
+      }
+   }
+
+   @Override
+   public void a(yj $$0) {
+      this.b.a($$0.b());
+   }
+
+   protected void f() {
+      Iterator<frv.a> $$0 = this.k.iterator();
+
+      while ($$0.hasNext()) {
+         frv.a $$1 = $$0.next();
+         if ($$1.b().getAsBoolean()) {
+            this.b($$1.a);
+            $$0.remove();
+         } else if ($$1.c() <= ac.b()) {
+            $$0.remove();
+         }
+      }
+   }
+
+   public void b(yb<?> $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   public void a(vu $$0) {
+      this.e.c();
+      this.a.a(this.b($$0), this.g);
+      j.warn("Client disconnected with reason: {}", $$0.getString());
+   }
+
+   @Override
+   public void a(p $$0) {
+      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
+      $$0.a("Server brand", () -> this.d);
+   }
+
+   protected fhf b(vu $$0) {
+      fhf $$1 = Objects.requireNonNullElseGet(this.f, () -> new fkd(new fhk()));
+      return (fhf)(this.c != null && this.c.e() ? new gox($$1, i, $$0) : new fgg($$1, i, $$0));
+   }
+
+   @Nullable
+   public String g() {
+      return this.d;
+   }
+
+   private void a(yb<? extends vg> $$0, BooleanSupplier $$1, Duration $$2) {
+      if ($$1.getAsBoolean()) {
+         this.b($$0);
+      } else {
+         this.k.add(new frv.a($$0, $$1, ac.b() + $$2.toMillis()));
+      }
+   }
+
+   private fhf a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable vu $$4) {
+      fhf $$5 = this.a.y;
+      return $$5 instanceof frv.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new frv.b(this.a, $$5, List.of(new frv.b.a($$0, $$1, $$2)), $$3, $$4);
+   }
+
+   static record a(yb<? extends vg> a, BooleanSupplier b, long c) {
+   }
+
+   class b extends ffx {
+      private final List<frv.b.a> l;
+      @Nullable
+      private final fhf m;
+
+      b(ezg $$0, @Nullable fhf $$1, List<frv.b.a> $$2, boolean $$3, @Nullable vu $$4) {
+         super(
+            $$5 -> {
+               $$0.a($$1);
+               glo $$6 = $$0.ae();
+               if ($$5) {
+                  if (frv.this.c != null) {
+                     frv.this.c.a(fsm.a.a);
+                  }
+
+                  $$6.g();
+               } else {
+                  $$6.h();
+                  if ($$3) {
+                     frv.this.b.a(vu.c("multiplayer.requiredTexturePrompt.disconnect"));
+                  } else if (frv.this.c != null) {
+                     frv.this.c.a(fsm.a.b);
+                  }
+               }
+
+               for (frv.b.a $$7 : $$2) {
+                  $$6.a($$7.a, $$7.b, $$7.c);
+               }
+
+               if (frv.this.c != null) {
+                  fsn.b(frv.this.c);
+               }
+            },
+            $$3 ? vu.c("multiplayer.requiredTexturePrompt.line1") : vu.c("multiplayer.texturePrompt.line1"),
+            frv.a($$3 ? vu.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : vu.c("multiplayer.texturePrompt.line2"), $$4),
+            $$3 ? vt.i : vt.f,
+            $$3 ? vt.p : vt.g
+         );
+         this.l = $$2;
+         this.m = $$1;
       }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
+      public frv.b a(ezg $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable vu $$5) {
+         List<frv.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.l.size() + 1).addAll(this.l).add(new frv.b.a($$1, $$2, $$3)).build();
+         return frv.this.new b($$0, this.m, $$6, $$4, $$5);
       }
 
-      @Override
-      public fru.a a() {
-         return fru.a.b;
-      }
-
-      public vs d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
+      static record a(UUID a, URL b, String c) {
       }
    }
 }

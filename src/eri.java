@@ -1,47 +1,69 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
 import javax.annotation.Nullable;
 
-public class eri implements erg {
-   private final Int2ObjectMap<erf.a> b;
-
-   public eri(Map<Integer, Float> $$0) {
-      this.b = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (erf.a)() -> $$1));
-   }
-
-   @Nullable
-   @Override
-   public erf a(int $$0) {
-      return (erf)this.b.get($$0);
-   }
-
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.b.keySet());
-   }
-
-   public static record a(Map<Integer, Float> c) implements fdl {
-      public static final MapCodec<eri.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(avu.x, Codec.FLOAT).fieldOf("advances").forGetter(eri.a::c)).apply($$0, eri.a::new)
-      );
-
-      @Override
-      public fdm a() {
-         return fdm.c;
+public record eri<T>(T d, ib e, long f, erm g, long h) {
+   public static final Comparator<eri<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
+      } else {
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+      }
+   };
+   public static final Comparator<eri<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<eri<?>> c = new Strategy<eri<?>>() {
+      public int a(eri<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
       }
 
-      @Override
-      public Either<fdl.a, fdl.b> b() {
-         fdl.a $$0 = $$0x -> new eri(this.c);
-         return Either.left($$0);
+      public boolean a(@Nullable eri<?> $$0, @Nullable eri<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+         }
       }
+   };
+
+   public eri(T $$0, ib $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, erm.d, $$3);
+   }
+
+   public eri(T d, ib e, long f, erm g, long h) {
+      e = e.i();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
+   }
+
+   public static <T> eri<T> a(T $$0, ib $$1) {
+      return new eri<>($$0, $$1, 0L, erm.d, 0L);
+   }
+
+   public T a() {
+      return this.d;
+   }
+
+   public ib b() {
+      return this.e;
+   }
+
+   public long c() {
+      return this.f;
+   }
+
+   public erm d() {
+      return this.g;
+   }
+
+   public long e() {
+      return this.h;
    }
 }

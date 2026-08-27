@@ -1,88 +1,102 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dci extends czf {
-   public static final MapCodec<dci> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kh.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dci::new)
-   );
-   private static final Map<czf, czf> d = Maps.newHashMap();
-   public static final float b = 3.0F;
-   protected static final epo c = czf.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final czf e;
+public class dci extends daj {
+   public static final MapCodec<dci> a = b(dci::new);
+   public static final dnx<dnv> b = dnp.ae;
 
    @Override
-   public MapCodec<dci> a() {
+   public MapCodec<? extends dci> a() {
       return a;
    }
 
-   public dci(czf $$0, dmd.d $$1) {
-      super($$1);
-      this.e = $$0;
-      d.put($$0, this);
+   public dci(dmy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, dnv.b));
    }
 
    @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return c;
-   }
-
-   @Override
-   protected bmn a(cpq $$0, dme $$1, cwe $$2, ib $$3, cia $$4, bmk $$5, eor $$6) {
-      dme $$8 = ($$0.d() instanceof cnl $$7 ? d.getOrDefault($$7.d(), czh.a) : czh.a).o();
-      if ($$8.i()) {
-         return bmn.d;
-      } else if (!this.i()) {
-         return bmn.b;
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      dnv $$6 = $$0.c(b);
+      if ($$1.o() != ih.a.b || $$6 == dnv.b != ($$1 == ih.b) || $$2.a(this) && $$2.c(b) != $$6) {
+         return $$6 == dnv.b && $$1 == ih.a && !$$0.a($$3, $$4) ? dac.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         $$2.a($$3, $$8, 3);
-         $$2.a($$4, dqr.c, $$3);
-         $$4.a(atz.ah);
-         if (!$$4.fW().d) {
-            $$0.h(1);
-         }
+         return dac.a.o();
+      }
+   }
 
-         return bmn.a($$2.B);
+   @Nullable
+   @Override
+   public dmz a(css $$0) {
+      ib $$1 = $$0.a();
+      cwz $$2 = $$0.q();
+      return $$1.v() < $$2.ak() - 1 && $$2.a_($$1.c()).a($$0) ? super.a($$0) : null;
+   }
+
+   @Override
+   public void a(cwz $$0, ib $$1, dmz $$2, bpo $$3, cqk $$4) {
+      ib $$5 = $$1.c();
+      $$0.a($$5, c($$0, $$5, this.o().a(b, dnv.a)), 3);
+   }
+
+   @Override
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      if ($$0.c(b) != dnv.a) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         dmz $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(b) == dnv.b;
+      }
+   }
+
+   public static void a(cxa $$0, dmz $$1, ib $$2, int $$3) {
+      ib $$4 = $$2.c();
+      $$0.a($$2, c($$0, $$2, $$1.a(b, dnv.b)), $$3);
+      $$0.a($$4, c($$0, $$4, $$1.a(b, dnv.a)), $$3);
+   }
+
+   public static dmz c(cxc $$0, ib $$1, dmz $$2) {
+      return $$2.b(dnp.C) ? $$2.a(dnp.C, Boolean.valueOf($$0.z($$1))) : $$2;
+   }
+
+   @Override
+   public dmz a(cwz $$0, ib $$1, dmz $$2, cis $$3) {
+      if (!$$0.B) {
+         if ($$3.f()) {
+            b($$0, $$1, $$2, $$3);
+         } else {
+            a($$2, $$0, $$1, null, $$3, $$3.eU());
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(cwz $$0, cis $$1, ib $$2, dmz $$3, @Nullable dkg $$4, cqk $$5) {
+      super.a($$0, $$1, $$2, dac.a.o(), $$4, $$5);
+   }
+
+   protected static void b(cwz $$0, ib $$1, dmz $$2, cis $$3) {
+      dnv $$4 = $$2.c(b);
+      if ($$4 == dnv.a) {
+         ib $$5 = $$1.d();
+         dmz $$6 = $$0.a_($$5);
+         if ($$6.a($$2.b()) && $$6.c(b) == dnv.b) {
+            dmz $$7 = $$6.u().b(eio.c) ? dac.G.o() : dac.a.o();
+            $$0.a($$5, $$7, 35);
+            $$0.a($$3, 2001, $$5, daa.i($$6));
+         }
       }
    }
 
    @Override
-   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
-      if (this.i()) {
-         return bml.b;
-      } else {
-         cpq $$5 = new cpq(this.e);
-         if (!$$3.i($$5)) {
-            $$3.a($$5, false);
-         }
-
-         $$1.a($$2, czh.fR.o(), 3);
-         $$1.a($$3, dqr.c, $$2);
-         return bml.a($$1.B);
-      }
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public cpq a(cwh $$0, ib $$1, dme $$2) {
-      return this.i() ? super.a($$0, $$1, $$2) : new cpq(this.e);
-   }
-
-   private boolean i() {
-      return this.e == czh.a;
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      return $$1 == ih.a && !$$0.a($$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public czf b() {
-      return this.e;
-   }
-
-   @Override
-   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
-      return false;
+   protected long a(dmz $$0, ib $$1) {
+      return aww.b($$1.u(), $$1.c($$0.c(b) == dnv.b ? 0 : 1).v(), $$1.w());
    }
 }

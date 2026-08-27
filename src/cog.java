@@ -1,99 +1,67 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import java.util.List;
+import java.util.function.Predicate;
 
-public enum cog implements axg {
-   a(0, "white", 16383998, ehv.i, 15790320, 16777215),
-   b(1, "orange", 16351261, ehv.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, ehv.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, ehv.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, ehv.s, 14602026, 16776960),
-   f(5, "lime", 8439583, ehv.t, 4312372, 12582656),
-   g(6, "pink", 15961002, ehv.u, 14188952, 16738740),
-   h(7, "gray", 4673362, ehv.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, ehv.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, ehv.x, 2651799, 65535),
-   k(10, "purple", 8991416, ehv.y, 8073150, 10494192),
-   l(11, "blue", 3949738, ehv.z, 2437522, 255),
-   m(12, "brown", 8606770, ehv.A, 5320730, 9127187),
-   n(13, "green", 6192150, ehv.B, 3887386, 65280),
-   o(14, "red", 11546150, ehv.C, 11743532, 16711680),
-   p(15, "black", 1908001, ehv.D, 1973019, 0);
+public class cog extends cqf {
+   private static final Predicate<bow> a = bpb.f.and(bow::bw);
+   private final ckp.b b;
+   private final boolean c;
 
-   private static final IntFunction<cog> r = ave.a(cog::a, values(), ave.a.a);
-   private static final Int2ObjectOpenHashMap<cog> s = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (cog)$$0))
-   );
-   public static final axg.a<cog> q = axg.a(cog::values);
-   private final int t;
-   private final String u;
-   private final ehv v;
-   private final float[] w;
-   private final int x;
-   private final int y;
-
-   private cog(int $$0, String $$1, int $$2, ehv $$3, int $$4, int $$5) {
-      this.t = $$0;
-      this.u = $$1;
-      this.v = $$3;
-      this.y = $$5;
-      int $$6 = ($$2 & 0xFF0000) >> 16;
-      int $$7 = ($$2 & 0xFF00) >> 8;
-      int $$8 = ($$2 & 0xFF) >> 0;
-      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
-      this.x = $$4;
-   }
-
-   public int a() {
-      return this.t;
-   }
-
-   public String b() {
-      return this.u;
-   }
-
-   public float[] d() {
-      return this.w;
-   }
-
-   public ehv e() {
-      return this.v;
-   }
-
-   public int f() {
-      return this.x;
-   }
-
-   public int g() {
-      return this.y;
-   }
-
-   public static cog a(int $$0) {
-      return r.apply($$0);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cog a(String $$0, @Nullable cog $$1) {
-      cog $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   @Nullable
-   public static cog b(int $$0) {
-      return (cog)s.get($$0);
+   public cog(boolean $$0, ckp.b $$1, cqf.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public String toString() {
-      return this.u;
+   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
+      cqk $$3 = $$1.b($$2);
+      epp $$4 = a($$0, $$1, cwi.b.c);
+      if ($$4.c() == epp.a.a) {
+         return bnd.c($$3);
+      } else {
+         epr $$5 = $$1.f(1.0F);
+         double $$6 = 5.0;
+         List<bow> $$7 = $$0.a($$1, $$1.cH().b($$5.a(5.0)).g(1.0), a);
+         if (!$$7.isEmpty()) {
+            epr $$8 = $$1.bu();
+
+            for (bow $$9 : $$7) {
+               epm $$10 = $$9.cH().g((double)$$9.bH());
+               if ($$10.d($$8)) {
+                  return bnd.c($$3);
+               }
+            }
+         }
+
+         if ($$4.c() == epp.a.b) {
+            ckp $$11 = this.a($$0, $$4, $$3, $$1);
+            $$11.a(this.b);
+            $$11.r($$1.dC());
+            if (!$$0.a($$11, $$11.cH())) {
+               return bnd.d($$3);
+            } else {
+               if (!$$0.B) {
+                  $$0.b($$11);
+                  $$0.a($$1, drn.t, $$4.e());
+                  $$3.a(1, $$1);
+               }
+
+               $$1.b(aui.c.b(this));
+               return bnd.a($$3, $$0.x_());
+            }
+         } else {
+            return bnd.c($$3);
+         }
+      }
    }
 
-   @Override
-   public String c() {
-      return this.u;
+   private ckp a(cwz $$0, epp $$1, cqk $$2, cis $$3) {
+      epr $$4 = $$1.e();
+      ckp $$5 = (ckp)(this.c ? new ckq($$0, $$4.c, $$4.d, $$4.e) : new ckp($$0, $$4.c, $$4.d, $$4.e));
+      if ($$0 instanceof apf $$6) {
+         bpc.<ckp>a($$6, $$2, $$3).accept($$5);
+      }
+
+      return $$5;
    }
 }

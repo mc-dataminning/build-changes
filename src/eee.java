@@ -1,80 +1,102 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 
 public class eee {
-   public static final int a = 90;
-   static final ajc b = new ajc("igloo/top");
-   private static final ajc c = new ajc("igloo/middle");
-   private static final ajc d = new ajc("igloo/bottom");
-   static final Map<ajc, ib> e = ImmutableMap.of(b, new ib(3, 5, 5), c, new ib(1, 3, 1), d, new ib(3, 6, 7));
-   static final Map<ajc, ib> f = ImmutableMap.of(b, ib.c, c, new ib(2, -3, 4), d, new ib(0, -3, -2));
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final eel.a e;
 
-   public static void a(egh $$0, ib $$1, dfr $$2, ecl $$3, awt $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new eee.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new eee.a($$0, c, $$1, $$2, $$6 * 3));
-         }
-      }
-
-      $$3.a(new eee.a($$0, b, $$1, $$2, 0));
+   public eee(int $$0, int $$1, int $$2, int $$3, eel.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static class a extends ecq {
-      public a(egh $$0, ajc $$1, ib $$2, dfr $$3, int $$4) {
-         super(ecx.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
-      }
+   public int a() {
+      return this.a;
+   }
 
-      public a(egh $$0, sy $$1) {
-         super(ecx.I, $$1, $$0, $$1x -> a(dfr.valueOf($$1.l("Rot")), $$1x));
-      }
+   public int b() {
+      return this.b;
+   }
 
-      private static egc a(dfr $$0, ajc $$1) {
-         return new egc().a($$0).a(deb.a).a(eee.e.get($$1)).a(efi.b);
-      }
+   public int c() {
+      return this.c;
+   }
 
-      private static ib a(ajc $$0, ib $$1, int $$2) {
-         return $$1.a(eee.f.get($$0)).c($$2);
-      }
+   public int d() {
+      return this.d;
+   }
 
-      @Override
-      protected void a(ecw $$0, sy $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
+   public eel.a e() {
+      return this.e;
+   }
 
-      @Override
-      protected void a(String $$0, ib $$1, cwt $$2, awt $$3, eby $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, czh.a.o(), 3);
-            djl $$5 = $$2.c_($$1.d());
-            if ($$5 instanceof djs) {
-               ((djs)$$5).a(ejw.C, $$3.g());
-            }
+   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      Builder<T, T> $$1 = ImmutableMap.builder();
+      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
+         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
+         .put($$0.createString("source_z"), $$0.createInt(this.c))
+         .put($$0.createString("delta_y"), $$0.createInt(this.d))
+         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
+      return new Dynamic($$0, $$0.createMap($$1.build()));
+   }
+
+   public static <T> eee a(Dynamic<T> $$0) {
+      return new eee(
+         $$0.get("source_x").asInt(0),
+         $$0.get("source_ground_y").asInt(0),
+         $$0.get("source_z").asInt(0),
+         $$0.get("delta_y").asInt(0),
+         eel.a.a($$0.get("dest_proj").asString(""))
+      );
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         eee $$1 = (eee)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.d != $$1.d ? false : this.e == $$1.e;
          }
+      } else {
+         return false;
       }
+   }
 
-      @Override
-      public void a(cwz $$0, cwx $$1, dob $$2, awt $$3, eby $$4, cvl $$5, ib $$6) {
-         ajc $$7 = new ajc(this.a);
-         egc $$8 = a(this.c.d(), $$7);
-         ib $$9 = eee.f.get($$7);
-         ib $$10 = this.d.a((jf)egg.a($$8, new ib(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(drq.a.a, $$10.u(), $$10.w());
-         ib $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(eee.b)) {
-            ib $$13 = this.d.a((jf)egg.a($$8, new ib(3, 0, 5)));
-            dme $$14 = $$0.a_($$13.d());
-            if (!$$14.i() && !$$14.a(czh.cO)) {
-               $$0.a($$13, czh.dP.o(), 3);
-            }
-         }
+   @Override
+   public int hashCode() {
+      int $$0 = this.a;
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + this.e.hashCode();
+   }
 
-         this.d = $$12;
-      }
+   @Override
+   public String toString() {
+      return "JigsawJunction{sourceX="
+         + this.a
+         + ", sourceGroundY="
+         + this.b
+         + ", sourceZ="
+         + this.c
+         + ", deltaY="
+         + this.d
+         + ", destProjection="
+         + this.e
+         + "}";
    }
 }

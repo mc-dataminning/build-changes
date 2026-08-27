@@ -1,54 +1,22 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class ccp extends ccn {
-   public ccp(bol<? extends ccp> $$0, cwe $$1) {
-      super($$0, $$1);
+public class ccp extends brg<ccn> {
+   public ccp() {
+      super(ImmutableMap.of(byr.N, bys.a, byr.y, bys.a), 200);
    }
 
-   @Override
-   protected ato y() {
-      return atp.gS;
+   protected boolean a(apf $$0, ccn $$1) {
+      return $$1.bf();
    }
 
-   @Override
-   protected ato gK() {
-      return atp.gT;
+   protected boolean a(apf $$0, ccn $$1, long $$2) {
+      return $$1.bf() && $$1.dP().a(byr.N);
    }
 
-   @Override
-   protected ato n_() {
-      return atp.gV;
-   }
-
-   @Nullable
-   @Override
-   protected ato gs() {
-      return atp.gW;
-   }
-
-   @Override
-   protected ato d(bne $$0) {
-      return atp.gX;
-   }
-
-   @Override
-   public boolean a(cam $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof ccp) && !($$0 instanceof ccq) ? false : this.gT() && ((cco)$$0).gT();
-      }
-   }
-
-   @Nullable
-   @Override
-   public boa a(apa $$0, boa $$1) {
-      bol<? extends cco> $$2 = $$1 instanceof ccq ? bol.ar : bol.y;
-      cco $$3 = $$2.a((cwe)$$0);
-      if ($$3 != null) {
-         this.a($$1, $$3);
-      }
-
-      return $$3;
+   protected void b(apf $$0, ccn $$1, long $$2) {
+      bqp<ccn> $$3 = $$1.dP();
+      $$3.b(byr.m);
+      $$3.b(byr.n);
+      $$1.b(new boj(bol.j, 200, 0));
    }
 }

@@ -1,17 +1,18 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.crypto.Cipher;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ul extends MessageToMessageDecoder<ByteBuf> {
-   private final uk a;
+public class ul {
+   private final AtomicInteger a = new AtomicInteger();
+   private final biw b;
 
-   public ul(Cipher $$0) {
-      this.a = new uk($$0);
+   public ul(biw $$0) {
+      this.b = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      $$2.add(this.a.a($$0, $$1));
+   public void a(int $$0) {
+      this.a.getAndAdd($$0);
+   }
+
+   public void a() {
+      this.b.a((long)this.a.getAndSet(0));
    }
 }

@@ -1,114 +1,100 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcy extends dcv {
-   public static final MapCodec<dcy> a = b(dcy::new);
-   private static final double c = 0.13;
-   private static final double e = 0.08;
-   private static final double f = 0.05;
-   private static final int g = 20;
-   protected static final epo b = czf.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+public class dcy extends dbw {
+   public static final MapCodec<dcy> i = b(dcy::new);
+   private final eqk[] j;
 
    @Override
    public MapCodec<dcy> a() {
-      return a;
+      return i;
    }
 
-   public dcy(dmd.d $$0) {
-      super($$0);
-   }
-
-   private static boolean c(bof $$0) {
-      return $$0 instanceof box || $$0 instanceof cjt || $$0 instanceof cem || $$0 instanceof cjv;
-   }
-
-   @Override
-   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return b;
-   }
-
-   @Override
-   public void a(cwe $$0, dme $$1, ib $$2, bof $$3, float $$4) {
-      $$3.a(atp.mc, 1.0F, 1.0F);
-      if (!$$0.B) {
-         $$0.a($$3, (byte)54);
-      }
-
-      if ($$3.a($$4, 0.2F, $$0.ah().k())) {
-         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
-      }
+   public dcy(dmy.d $$0) {
+      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
+      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
    }
 
    @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, bof $$3) {
-      if (this.a($$2, $$3)) {
-         this.a($$3, $$2);
-         this.d($$3);
-         this.a($$1, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   protected eqk f(dmz $$0, cwf $$1, ib $$2) {
+      return this.j[this.g($$0)];
    }
 
-   private boolean a(ib $$0, bof $$1) {
-      if ($$1.aC()) {
-         return false;
-      } else if ($$1.dq() > (double)$$0.v() + 0.9375 - 1.0E-7) {
-         return false;
-      } else if ($$1.dm().d >= -0.08) {
-         return false;
+   @Override
+   protected eqk c(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return this.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
+      return false;
+   }
+
+   public boolean a(dmz $$0, boolean $$1, ih $$2) {
+      daa $$3 = $$0.b();
+      boolean $$4 = this.m($$0);
+      boolean $$5 = $$3 instanceof dcz && dcz.a($$0, $$2);
+      return !j($$0) && $$1 || $$4 || $$5;
+   }
+
+   private boolean m(dmz $$0) {
+      return $$0.a(aun.S) && $$0.a(aun.k) == this.o().a(aun.k);
+   }
+
+   @Override
+   protected bne a(cqk $$0, dmz $$1, cwz $$2, ib $$3, cis $$4, bnb $$5, epn $$6) {
+      if ($$2.B) {
+         return $$0.a(cqn.uH) ? bne.a : bne.e;
       } else {
-         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.do());
-         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.du());
-         double $$4 = 0.4375 + (double)($$1.dd() / 2.0F);
-         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
-   private void a(bof $$0, ib $$1) {
-      if ($$0 instanceof apb && $$0.dJ().X() % 20L == 0L) {
-         am.K.a((apb)$$0, $$0.dJ().a_($$1));
+   @Override
+   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
+      return !$$1.x_() ? cqp.a($$3, $$1, $$2) : bnc.d;
+   }
+
+   @Override
+   public dmz a(css $$0) {
+      cwf $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      ein $$3 = $$0.q().b_($$0.a());
+      ib $$4 = $$2.e();
+      ib $$5 = $$2.h();
+      ib $$6 = $$2.f();
+      ib $$7 = $$2.g();
+      dmz $$8 = $$1.a_($$4);
+      dmz $$9 = $$1.a_($$5);
+      dmz $$10 = $$1.a_($$6);
+      dmz $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ih.d), ih.d)))
+         .a(b, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ih.e), ih.e)))
+         .a(c, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ih.c), ih.c)))
+         .a(d, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ih.f), ih.f)))
+         .a(e, Boolean.valueOf($$3.a() == eio.c));
+   }
+
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, eio.c, eio.c.a($$3));
       }
+
+      return $$1.o().e() == ih.c.a ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void d(bof $$0) {
-      eov $$1 = $$0.dm();
-      if ($$1.d < -0.13) {
-         double $$2 = -0.05 / $$1.d;
-         $$0.g(new eov($$1.c * $$2, -0.05, $$1.e * $$2));
-      } else {
-         $$0.g(new eov($$1.c, -0.05, $$1.e));
-      }
-
-      $$0.n();
-   }
-
-   private void a(cwe $$0, bof $$1) {
-      if (c($$1)) {
-         if ($$0.z.a(5) == 0) {
-            $$1.a(atp.mc, 1.0F, 1.0F);
-         }
-
-         if (!$$0.B && $$0.z.a(5) == 0) {
-            $$0.a($$1, (byte)53);
-         }
-      }
-   }
-
-   public static void a(bof $$0) {
-      a($$0, 5);
-   }
-
-   public static void b(bof $$0) {
-      a($$0, 10);
-   }
-
-   private static void a(bof $$0, int $$1) {
-      if ($$0.dJ().B) {
-         dme $$2 = czh.pg.o();
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$0.dJ().a(new jt(kb.c, $$2), $$0.do(), $$0.dq(), $$0.du(), 0.0, 0.0, 0.0);
-         }
-      }
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

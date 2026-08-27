@@ -1,161 +1,137 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public class dap extends dbh implements dbx {
-   public static final MapCodec<dap> a = b(dap::new);
-   public static final dnc<dmx> b = dmu.bd;
+public class dap extends cys implements dha {
+   public static final MapCodec<dap> c = b(dap::new);
+   public static final int d = 1;
+   public static final int e = 4;
+   public static final dnz f = dnp.az;
+   public static final dnq g = cys.b;
+   public static final dnq h = dnp.C;
+   public static final ToIntFunction<dmz> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
+   private static final Int2ObjectMap<List<epr>> j = ac.a(() -> {
+      Int2ObjectMap<List<epr>> $$0 = new Int2ObjectOpenHashMap();
+      $$0.defaultReturnValue(ImmutableList.of());
+      $$0.put(1, ImmutableList.of(new epr(0.5, 0.5, 0.5)));
+      $$0.put(2, ImmutableList.of(new epr(0.375, 0.44, 0.5), new epr(0.625, 0.5, 0.44)));
+      $$0.put(3, ImmutableList.of(new epr(0.5, 0.313, 0.625), new epr(0.375, 0.44, 0.5), new epr(0.56, 0.5, 0.44)));
+      $$0.put(4, ImmutableList.of(new epr(0.44, 0.313, 0.56), new epr(0.625, 0.44, 0.56), new epr(0.375, 0.44, 0.375), new epr(0.56, 0.5, 0.375)));
+      return Int2ObjectMaps.unmodifiable($$0);
+   });
+   private static final eqk k = daa.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
+   private static final eqk l = daa.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
+   private static final eqk m = daa.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
+   private static final eqk n = daa.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
 
    @Override
    public MapCodec<dap> a() {
-      return a;
+      return c;
    }
 
-   public dap(dmd.d $$0) {
+   public dap(dmy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(aE, ih.c).a(d, Boolean.valueOf(false)).a(b, dmx.a));
+      this.k(this.E.b().a(f, Integer.valueOf(1)).a(g, Boolean.valueOf(false)).a(h, Boolean.valueOf(false)));
    }
 
    @Override
-   protected int g(dme $$0) {
-      return 2;
-   }
-
-   @Override
-   public dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      return $$1 == ih.a && !this.b($$3, $$5, $$2) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected int a(cvk $$0, ib $$1, dme $$2) {
-      djl $$3 = $$0.c_($$1);
-      return $$3 instanceof djw ? ((djw)$$3).b() : 0;
-   }
-
-   private int e(cwe $$0, ib $$1, dme $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      if ($$3 == 0) {
-         return 0;
+   protected bne a(cqk $$0, dmz $$1, cwz $$2, ib $$3, cis $$4, bnb $$5, epn $$6) {
+      if ($$0.b() && $$4.ga().e && $$1.c(g)) {
+         a($$4, $$1, $$2, $$3);
+         return bne.a($$2.B);
       } else {
-         int $$4 = this.a((cwu)$$0, $$1, $$2);
-         if ($$4 > $$3) {
-            return 0;
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+   }
+
+   @Override
+   protected boolean a(dmz $$0, css $$1) {
+      return !$$1.h() && $$1.n().d() == this.l() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public dmz a(css $$0) {
+      dmz $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(f);
+      } else {
+         ein $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == eio.c;
+         return super.a($$0).a(h, Boolean.valueOf($$3));
+      }
+   }
+
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if ($$0.c(h)) {
+         $$3.a($$4, eio.c, eio.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected ein c_(dmz $$0) {
+      return $$0.c(h) ? eio.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      switch ($$0.c(f)) {
+         case 1:
+         default:
+            return k;
+         case 2:
+            return l;
+         case 3:
+            return m;
+         case 4:
+            return n;
+      }
+   }
+
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(f, g, h);
+   }
+
+   @Override
+   public boolean a(cxa $$0, ib $$1, dmz $$2, ein $$3) {
+      if (!$$2.c(h) && $$3.a() == eio.c) {
+         dmz $$4 = $$2.a(h, Boolean.valueOf(true));
+         if ($$2.c(g)) {
+            a(null, $$4, $$0, $$1);
          } else {
-            return $$2.c(b) == dmx.b ? $$3 - $$4 : $$3;
+            $$0.a($$1, $$4, 3);
          }
-      }
-   }
 
-   @Override
-   protected boolean a(cwe $$0, ib $$1, dme $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      if ($$3 == 0) {
+         $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         return true;
+      } else {
          return false;
-      } else {
-         int $$4 = this.a((cwu)$$0, $$1, $$2);
-         return $$3 > $$4 ? true : $$3 == $$4 && $$2.c(b) == dmx.a;
       }
    }
 
-   @Override
-   protected int b(cwe $$0, ib $$1, dme $$2) {
-      int $$3 = super.b($$0, $$1, $$2);
-      ih $$4 = $$2.c(aE);
-      ib $$5 = $$1.a($$4);
-      dme $$6 = $$0.a_($$5);
-      if ($$6.n()) {
-         $$3 = $$6.a($$0, $$5);
-      } else if ($$3 < 15 && $$6.g($$0, $$5)) {
-         $$5 = $$5.a($$4);
-         $$6 = $$0.a_($$5);
-         cee $$7 = this.a($$0, $$4, $$5);
-         int $$8 = Math.max($$7 == null ? Integer.MIN_VALUE : $$7.K(), $$6.n() ? $$6.a($$0, $$5) : Integer.MIN_VALUE);
-         if ($$8 != Integer.MIN_VALUE) {
-            $$3 = $$8;
-         }
-      }
-
-      return $$3;
-   }
-
-   @Nullable
-   private cee a(cwe $$0, ih $$1, ib $$2) {
-      List<cee> $$3 = $$0.a(
-         cee.class,
-         new eoq((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)($$2.u() + 1), (double)($$2.v() + 1), (double)($$2.w() + 1)),
-         $$1x -> $$1x != null && $$1x.cB() == $$1
-      );
-      return $$3.size() == 1 ? $$3.get(0) : null;
+   public static boolean g(dmz $$0) {
+      return $$0.a(aun.ae, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
    }
 
    @Override
-   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
-      if (!$$3.fW().e) {
-         return bml.d;
-      } else {
-         $$0 = $$0.a(b);
-         float $$5 = $$0.c(b) == dmx.b ? 0.55F : 0.5F;
-         $$1.a($$3, $$2, atp.fe, atq.e, 0.3F, $$5);
-         $$1.a($$2, $$0, 2);
-         this.f($$1, $$2, $$0);
-         return bml.a($$1.B);
-      }
+   protected Iterable<epr> b(dmz $$0) {
+      return (Iterable<epr>)j.get($$0.c(f));
    }
 
    @Override
-   protected void c(cwe $$0, ib $$1, dme $$2) {
-      if (!$$0.N().b($$1, this)) {
-         int $$3 = this.e($$0, $$1, $$2);
-         djl $$4 = $$0.c_($$1);
-         int $$5 = $$4 instanceof djw ? ((djw)$$4).b() : 0;
-         if ($$3 != $$5 || $$2.c(d) != this.a($$0, $$1, $$2)) {
-            eqq $$6 = this.b($$0, $$1, $$2) ? eqq.c : eqq.d;
-            $$0.a($$1, this, 2, $$6);
-         }
-      }
-   }
-
-   private void f(cwe $$0, ib $$1, dme $$2) {
-      int $$3 = this.e($$0, $$1, $$2);
-      djl $$4 = $$0.c_($$1);
-      int $$5 = 0;
-      if ($$4 instanceof djw $$6) {
-         $$5 = $$6.b();
-         $$6.a($$3);
-      }
-
-      if ($$5 != $$3 || $$2.c(b) == dmx.a) {
-         boolean $$7 = this.a($$0, $$1, $$2);
-         boolean $$8 = $$2.c(d);
-         if ($$8 && !$$7) {
-            $$0.a($$1, $$2.a(d, Boolean.valueOf(false)), 2);
-         } else if (!$$8 && $$7) {
-            $$0.a($$1, $$2.a(d, Boolean.valueOf(true)), 2);
-         }
-
-         this.d($$0, $$1, $$2);
-      }
+   protected boolean d(dmz $$0) {
+      return !$$0.c(h) && super.d($$0);
    }
 
    @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      this.f($$1, $$2, $$0);
-   }
-
-   @Override
-   protected boolean a(dme $$0, cwe $$1, ib $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      djl $$5 = $$1.c_($$2);
-      return $$5 != null && $$5.a_($$3, $$4);
-   }
-
-   @Override
-   public djl a(ib $$0, dme $$1) {
-      return new djw($$0, $$1);
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(aE, b, d);
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      return daa.a($$1, $$2.d(), ih.b);
    }
 }

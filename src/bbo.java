@@ -1,30 +1,38 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class bbo extends DataFix {
+public class bbo extends ber {
    public bbo(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super("EntityZombieSplitFix", $$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bdt.D);
-      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bbo::a));
-   }
+   @Override
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals("Zombie", $$0)) {
+         String $$2 = "Zombie";
+         int $$3 = $$1.get("ZombieType").asInt(0);
+         switch ($$3) {
+            case 0:
+            default:
+               break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+               $$2 = "ZombieVillager";
+               $$1 = $$1.set("Profession", $$1.createInt($$3 - 1));
+               break;
+            case 6:
+               $$2 = "Husk";
+         }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(bbo::c)).result().orElse(false);
-      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", bbo::b);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
-   }
-
-   private static boolean c(Dynamic<?> $$0) {
-      return $$0.get("id").asString("").equals("Iglu");
+         $$1 = $$1.remove("ZombieType");
+         return Pair.of($$2, $$1);
+      } else {
+         return Pair.of($$0, $$1);
+      }
    }
 }

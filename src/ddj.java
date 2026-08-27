@@ -1,40 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class ddj extends dct implements ddv {
-   public static final MapCodec<ddj> c = b(ddj::new);
+public class ddj extends ddv {
+   public static final MapCodec<ddj> a = b(ddj::new);
 
    @Override
    public MapCodec<ddj> a() {
-      return c;
+      return a;
    }
 
-   protected ddj(dmd.d $$0) {
-      super($$0, ih.b, epl.b(), true);
-   }
-
-   @Override
-   protected dcu c() {
-      return (dcu)czh.mc;
+   public ddj(dmy.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected ehr c_(dme $$0) {
-      return ehs.c.a(false);
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(aE);
    }
 
    @Override
-   protected boolean m(dme $$0) {
-      return this.c().m($$0);
-   }
-
-   @Override
-   public boolean a(@Nullable cia $$0, cvk $$1, ib $$2, dme $$3, ehq $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(cwf $$0, ib $$1, dme $$2, ehr $$3) {
-      return false;
+   public dmz a(css $$0) {
+      return this.o().a(aE, $$0.g().g());
    }
 }

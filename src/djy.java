@@ -1,82 +1,91 @@
-import java.util.List;
+public class djy {
+   public static final ajg<djx> a = a("base");
+   public static final ajg<djx> b = a("square_bottom_left");
+   public static final ajg<djx> c = a("square_bottom_right");
+   public static final ajg<djx> d = a("square_top_left");
+   public static final ajg<djx> e = a("square_top_right");
+   public static final ajg<djx> f = a("stripe_bottom");
+   public static final ajg<djx> g = a("stripe_top");
+   public static final ajg<djx> h = a("stripe_left");
+   public static final ajg<djx> i = a("stripe_right");
+   public static final ajg<djx> j = a("stripe_center");
+   public static final ajg<djx> k = a("stripe_middle");
+   public static final ajg<djx> l = a("stripe_downright");
+   public static final ajg<djx> m = a("stripe_downleft");
+   public static final ajg<djx> n = a("small_stripes");
+   public static final ajg<djx> o = a("cross");
+   public static final ajg<djx> p = a("straight_cross");
+   public static final ajg<djx> q = a("triangle_bottom");
+   public static final ajg<djx> r = a("triangle_top");
+   public static final ajg<djx> s = a("triangles_bottom");
+   public static final ajg<djx> t = a("triangles_top");
+   public static final ajg<djx> u = a("diagonal_left");
+   public static final ajg<djx> v = a("diagonal_up_right");
+   public static final ajg<djx> w = a("diagonal_up_left");
+   public static final ajg<djx> x = a("diagonal_right");
+   public static final ajg<djx> y = a("circle");
+   public static final ajg<djx> z = a("rhombus");
+   public static final ajg<djx> A = a("half_vertical");
+   public static final ajg<djx> B = a("half_horizontal");
+   public static final ajg<djx> C = a("half_vertical_right");
+   public static final ajg<djx> D = a("half_horizontal_bottom");
+   public static final ajg<djx> E = a("border");
+   public static final ajg<djx> F = a("curly_border");
+   public static final ajg<djx> G = a("gradient");
+   public static final ajg<djx> H = a("gradient_up");
+   public static final ajg<djx> I = a("bricks");
+   public static final ajg<djx> J = a("globe");
+   public static final ajg<djx> K = a("creeper");
+   public static final ajg<djx> L = a("skull");
+   public static final ajg<djx> M = a("flower");
+   public static final ajg<djx> N = a("mojang");
+   public static final ajg<djx> O = a("piglin");
 
-public abstract class djy {
-   private static final int a = 5;
-   private int b;
-   private double c;
-
-   protected abstract void a(cwe var1, ib var2, dme var3);
-
-   protected abstract void b(cwe var1, ib var2, dme var3);
-
-   protected abstract void a(cwe var1, ib var2, dme var3, int var4, int var5);
-
-   protected abstract boolean a(cia var1);
-
-   public void a(cia $$0, cwe $$1, ib $$2, dme $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, dqr.k, $$2);
-         d($$1, $$2, $$3);
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gv(), this.c);
+   private static ajg<djx> a(String $$0) {
+      return ajg.a(kj.d, new ajh($$0));
    }
 
-   public void b(cia $$0, cwe $$1, ib $$2, dme $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, dqr.j, $$2);
-         this.c = 0.0;
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
-   }
-
-   private List<cia> a(cwe $$0, ib $$1) {
-      double $$2 = this.c + 4.0;
-      eoq $$3 = new eoq($$1).g($$2);
-      return $$0.a(dqf.a(cia.class), $$3, this::a);
-   }
-
-   public void c(cwe $$0, ib $$1, dme $$2) {
-      List<cia> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
-
-      for (cia $$4 : $$3) {
-         this.c = Math.max($$4.gv(), this.c);
-      }
-
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, dqr.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, dqr.j, $$1);
-         }
-
-         this.b = $$5;
-      }
-
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
-      }
-   }
-
-   public int a() {
-      return this.b;
-   }
-
-   private static void d(cwe $$0, ib $$1, dme $$2) {
-      $$0.a($$1, $$2.b(), 5);
+   public static djx a(iy<djx> $$0) {
+      iy.a($$0, a, new djx("b"));
+      iy.a($$0, b, new djx("bl"));
+      iy.a($$0, c, new djx("br"));
+      iy.a($$0, d, new djx("tl"));
+      iy.a($$0, e, new djx("tr"));
+      iy.a($$0, f, new djx("bs"));
+      iy.a($$0, g, new djx("ts"));
+      iy.a($$0, h, new djx("ls"));
+      iy.a($$0, i, new djx("rs"));
+      iy.a($$0, j, new djx("cs"));
+      iy.a($$0, k, new djx("ms"));
+      iy.a($$0, l, new djx("drs"));
+      iy.a($$0, m, new djx("dls"));
+      iy.a($$0, n, new djx("ss"));
+      iy.a($$0, o, new djx("cr"));
+      iy.a($$0, p, new djx("sc"));
+      iy.a($$0, q, new djx("bt"));
+      iy.a($$0, r, new djx("tt"));
+      iy.a($$0, s, new djx("bts"));
+      iy.a($$0, t, new djx("tts"));
+      iy.a($$0, u, new djx("ld"));
+      iy.a($$0, v, new djx("rd"));
+      iy.a($$0, w, new djx("lud"));
+      iy.a($$0, x, new djx("rud"));
+      iy.a($$0, y, new djx("mc"));
+      iy.a($$0, z, new djx("mr"));
+      iy.a($$0, A, new djx("vh"));
+      iy.a($$0, B, new djx("hh"));
+      iy.a($$0, C, new djx("vhr"));
+      iy.a($$0, D, new djx("hhb"));
+      iy.a($$0, E, new djx("bo"));
+      iy.a($$0, F, new djx("cbo"));
+      iy.a($$0, G, new djx("gra"));
+      iy.a($$0, H, new djx("gru"));
+      iy.a($$0, I, new djx("bri"));
+      iy.a($$0, J, new djx("glb"));
+      iy.a($$0, K, new djx("cre"));
+      iy.a($$0, L, new djx("sku"));
+      iy.a($$0, M, new djx("flo"));
+      iy.a($$0, N, new djx("moj"));
+      return iy.a($$0, O, new djx("pig"));
    }
 }

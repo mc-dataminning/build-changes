@@ -1,171 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class det extends dbn implements czi {
-   public static final MapCodec<det> c = b(det::new);
-   public static final dne d = dmu.at;
-   public static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 1;
-   private static final epo h = czf.a(3.0, 0.0, 3.0, 13.0, 15.0, 13.0);
-   private static final epo i = czf.a(3.0, -1.0, 3.0, 13.0, 16.0, 13.0);
-   private static final epo j = czf.a(5.0, -1.0, 5.0, 11.0, 3.0, 11.0);
-   private static final epo k = czf.a(3.0, -1.0, 3.0, 13.0, 5.0, 13.0);
-   private static final epo[] l = new epo[]{czf.a(3.0, 0.0, 3.0, 13.0, 11.0, 13.0), h};
-   private static final epo[] m = new epo[]{j, czf.a(3.0, -1.0, 3.0, 13.0, 14.0, 13.0), i, i, i};
+public class det extends dej implements dad {
+   public static final MapCodec<det> a = b(det::new);
 
    @Override
    public MapCodec<det> a() {
-      return c;
+      return a;
    }
 
-   public det(dmd.d $$0) {
+   public det(dmy.d $$0) {
       super($$0);
    }
 
-   @Nullable
    @Override
-   public dme a(crx $$0) {
-      return this.o();
-   }
-
-   @Override
-   public epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return $$0.c(b) == dna.a ? l[Math.min(Math.abs(4 - ($$0.c(d) + 1)), l.length - 1)] : m[$$0.c(d)];
+   public boolean b(cxc $$0, ib $$1, dmz $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   public epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      if ($$0.c(d) == 0) {
-         return j;
-      } else {
-         return $$0.c(b) == dna.b ? k : super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if (b($$0.c(d))) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return $$0.a($$3, $$4) ? $$0 : czh.a.o();
-      }
-   }
-
-   @Override
-   public boolean a(dme $$0, cwh $$1, ib $$2) {
-      return m($$0) && !b($$1, $$2) ? false : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean b(dme $$0, cvk $$1, ib $$2) {
-      return $$0.a(czh.cC);
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(d);
-      super.a($$0);
-   }
-
-   @Override
-   public void a(dme $$0, cwe $$1, ib $$2, bof $$3) {
-      if ($$3 instanceof cfl && $$1.Z().b(cwa.c)) {
-         $$1.a($$2, true, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(dme $$0, crx $$1) {
-      return false;
-   }
-
-   @Override
-   public void a(cwe $$0, ib $$1, dme $$2, box $$3, cpq $$4) {
-   }
-
-   @Override
-   public boolean e_(dme $$0) {
-      return $$0.c(b) == dna.b && !this.n($$0);
-   }
-
-   @Override
-   public void b(dme $$0, apa $$1, ib $$2, awt $$3) {
-      float $$4 = dba.a(this, $$1, $$2);
-      boolean $$5 = $$3.a((int)(25.0F / $$4) + 1) == 0;
-      if ($$5) {
-         this.a($$1, $$0, $$2, 1);
-      }
-   }
-
-   private void a(apa $$0, dme $$1, ib $$2, int $$3) {
-      int $$4 = Math.min($$1.c(d) + $$3, 4);
-      if (this.a($$0, $$2, $$1, $$4)) {
-         dme $$5 = $$1.a(d, Integer.valueOf($$4));
-         $$0.a($$2, $$5, 2);
-         if (b($$4)) {
-            $$0.a($$2.c(), $$5.a(b, dna.a), 3);
-         }
-      }
-   }
-
-   private static boolean a(cwh $$0, ib $$1) {
-      dme $$2 = $$0.a_($$1);
-      return $$2.i() || $$2.a(czh.kB);
-   }
-
-   private static boolean b(cwh $$0, ib $$1) {
-      return dba.a($$0, $$1);
-   }
-
-   private static boolean m(dme $$0) {
-      return $$0.a(czh.kB) && $$0.c(b) == dna.b;
-   }
-
-   private static boolean b(int $$0) {
-      return $$0 >= 3;
-   }
-
-   private boolean a(cwh $$0, ib $$1, dme $$2, int $$3) {
-      return !this.n($$2) && b($$0, $$1) && (!b($$3) || a($$0, $$1.c()));
-   }
-
-   private boolean n(dme $$0) {
-      return $$0.c(d) >= 4;
-   }
-
-   @Nullable
-   private det.a d(cwh $$0, ib $$1, dme $$2) {
-      if (m($$2)) {
-         return new det.a($$1, $$2);
-      } else {
-         ib $$3 = $$1.d();
-         dme $$4 = $$0.a_($$3);
-         return m($$4) ? new det.a($$3, $$4) : null;
-      }
-   }
-
-   @Override
-   public boolean b(cwh $$0, ib $$1, dme $$2) {
-      det.a $$3 = this.d($$0, $$1, $$2);
-      return $$3 == null ? false : this.a($$0, $$3.a, $$3.b, $$3.b.c(d) + 1);
-   }
-
-   @Override
-   public boolean a(cwe $$0, awt $$1, ib $$2, dme $$3) {
+   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
       return true;
    }
 
    @Override
-   public void a(apa $$0, awt $$1, ib $$2, dme $$3) {
-      det.a $$4 = this.d($$0, $$2, $$3);
-      if ($$4 != null) {
-         this.a($$0, $$4.b, $$4.a, 1);
-      }
+   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
+      $$0.a($$2.d(), deu.c(), 2);
    }
 
-   static record a(ib a, dme b) {
+   @Override
+   public ib a(ib $$0) {
+      return $$0.d();
    }
 }

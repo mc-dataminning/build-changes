@@ -8,12 +8,12 @@ public record eb(List<eb.a> b) {
    private static final int c = 8;
    private static final int d = 16;
 
-   public eb(us $$0) {
-      this($$0.a(us.a(ArrayList::new, 8), eb.a::new));
+   public eb(uu $$0) {
+      this($$0.a(uu.a(ArrayList::new, 8), eb.a::new));
    }
 
    @Nullable
-   public we a(String $$0) {
+   public wg a(String $$0) {
       for (eb.a $$1 : this.b) {
          if ($$1.a.equals($$0)) {
             return $$1.b;
@@ -23,13 +23,13 @@ public record eb(List<eb.a> b) {
       return null;
    }
 
-   public void a(us $$0) {
+   public void a(uu $$0) {
       $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static eb a(wk<?> $$0, eb.b $$1) {
+   public static eb a(wm<?> $$0, eb.b $$1) {
       List<eb.a> $$2 = $$0.a().stream().map($$1x -> {
-         we $$2x = $$1.sign($$1x.c());
+         wg $$2x = $$1.sign($$1x.c());
          return $$2x != null ? new eb.a($$1x.a(), $$2x) : null;
       }).filter(Objects::nonNull).toList();
       return new eb($$2);
@@ -39,21 +39,21 @@ public record eb(List<eb.a> b) {
       return this.b;
    }
 
-   public static record a(String a, we b) {
+   public static record a(String a, wg b) {
 
-      public a(us $$0) {
-         this($$0.d(16), we.a($$0));
+      public a(uu $$0) {
+         this($$0.d(16), wg.a($$0));
       }
 
-      public void a(us $$0) {
+      public void a(uu $$0) {
          $$0.a(this.a, 16);
-         we.a($$0, this.b);
+         wg.a($$0, this.b);
       }
    }
 
    @FunctionalInterface
    public interface b {
       @Nullable
-      we sign(String var1);
+      wg sign(String var1);
    }
 }

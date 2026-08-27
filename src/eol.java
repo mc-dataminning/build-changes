@@ -1,79 +1,53 @@
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class eol {
-   private final PathMatcher a;
+public record eol(eoo b, eoo c) implements eoo {
+   public static final Codec<eol> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eop.a.fieldOf("n").forGetter(eol::c), eop.a.fieldOf("p").forGetter(eol::d)).apply($$0, eol::new)
+   );
 
-   public eol(PathMatcher $$0) {
-      this.a = $$0;
+   @Override
+   public eon b() {
+      return eop.d;
    }
 
-   public void a(Path $$0, List<eom> $$1) throws IOException {
-      Path $$2 = Files.readSymbolicLink($$0);
-      if (!this.a.matches($$2)) {
-         $$1.add(new eom($$0, $$2));
-      }
-   }
+   @Override
+   public int a(eku $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      axd $$3 = $$0.b();
+      int $$4 = 0;
 
-   public List<eom> a(Path $$0) throws IOException {
-      List<eom> $$1 = new ArrayList<>();
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   public List<eom> a(Path $$0, boolean $$1) throws IOException {
-      List<eom> $$2 = new ArrayList<>();
-
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return $$2;
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
       }
 
-      if ($$3.isRegularFile()) {
-         throw new IOException("Path " + $$0 + " is not a directory");
-      } else {
-         if ($$3.isSymbolicLink()) {
-            if (!$$1) {
-               this.a($$0, $$2);
-               return $$2;
-            }
-
-            $$0 = Files.readSymbolicLink($$0);
-         }
-
-         this.b($$0, $$2);
-         return $$2;
-      }
+      return $$4;
    }
 
-   public void b(Path $$0, final List<eom> $$1) throws IOException {
-      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            if ($$1.isSymbolicLink()) {
-               eol.this.a($$0, $$1);
-            }
-         }
+   @Override
+   public float b(eku $$0) {
+      return (float)this.a($$0);
+   }
 
-         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.preVisitDirectory($$0, $$1);
-         }
+   public static eol a(int $$0, float $$1) {
+      return new eol(eom.a((float)$$0), eom.a($$1));
+   }
 
-         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.visitFile($$0, $$1);
-         }
-      });
+   @Override
+   public Set<enc<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public eoo c() {
+      return this.b;
+   }
+
+   public eoo d() {
+      return this.c;
    }
 }

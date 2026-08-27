@@ -1,37 +1,18 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.UUID;
 
-public class glr<T> extends gls<T> {
-   private final List<T> c;
-   private final Function<T, Stream<String>> d;
-   private glv<T> e = glv.a();
+public interface glr {
+   void scheduleReload(glr.a var1);
 
-   public glr(Function<T, Stream<String>> $$0, Function<T, Stream<ajc>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = $$2;
-      this.d = $$0;
+   public interface a {
+      void a();
+
+      void a(boolean var1);
+
+      List<glr.b> b();
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.e = glv.a(this.c, this.d);
-   }
-
-   @Override
-   protected List<T> a(String $$0) {
-      return this.e.search($$0);
-   }
-
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.e.search($$1);
-      Iterator<T> $$5 = new glu<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new glt<T>($$2.iterator(), $$5, this.a));
+   public static record b(UUID a, Path b) {
    }
 }

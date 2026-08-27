@@ -1,25 +1,30 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class ekc {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-@FunctionalInterface
-public interface ekc {
-   @Nullable
-   <T> T getElement(eka<T> var1);
-
-   @Nullable
-   default <T> T getElement(ekd<T> $$0, ajc $$1) {
-      return this.getElement(new eka<>($$0, $$1));
+   public ekc(int $$0) {
+      this($$0, a);
    }
 
-   default <T> Optional<T> getElementOptional(eka<T> $$0) {
-      return Optional.ofNullable(this.getElement($$0));
+   public ekc(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   default <T> Optional<T> getElementOptional(ekd<T> $$0, ajc $$1) {
-      return this.getElementOptional(new eka<>($$0, $$1));
+   public boolean a() {
+      return !this.c.equals(a);
    }
 
-   default ekg getLootTable(ajc $$0) {
-      return this.getElementOptional(ekd.c, $$0).orElse(ekg.a);
+   public String b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean a(ekc $$0) {
+      return this.b().equals($$0.b());
    }
 }

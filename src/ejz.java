@@ -1,12 +1,8 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ejz {
-   default Set<emg<?>> a() {
-      return ImmutableSet.of();
-   }
-
-   default void a(ekh $$0) {
-      $$0.a(this);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ejz {
 }

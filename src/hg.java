@@ -54,7 +54,7 @@ class hg<T extends dw<T>> {
       this.b.add(new hi.b<>($$3, this.a($$3.b()), $$2));
    }
 
-   public hf<T> a(ajc $$0) {
+   public hf<T> a(ajh $$0) {
       return (hf<T>)(this.b != null ? new hi<>($$0, this.b, this.c) : new hj<>($$0, this.a));
    }
 }

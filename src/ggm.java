@@ -1,11 +1,24 @@
-public class ggm extends ggj<cfm, foy<cfm>> {
-   public ggm(gdt<cfm, foy<cfm>> $$0) {
+public class ggm extends ggu<cfk, fnw<cfk>> {
+   private static final ajh a = new ajh("textures/entity/creeper/creeper_armor.png");
+   private final fnw<cfk> b;
+
+   public ggm(get<cfk, fnw<cfk>> $$0, fqz $$1) {
       super($$0);
+      this.b = new fnw<>($$1.a(frc.E));
    }
 
-   public void a(etd $$0, fwq $$1, int $$2, cfm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ajc $$10 = gdx.a($$3.gm());
-      eth $$11 = $$1.getBuffer(fwy.c($$10));
-      this.c().c().a($$0, $$11, $$2, gcz.c($$3, 0.0F));
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected ajh a() {
+      return a;
+   }
+
+   @Override
+   protected foc<cfk> b() {
+      return this.b;
    }
 }

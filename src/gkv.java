@@ -1,17 +1,20 @@
-public abstract class gkv extends gku implements gln {
-   private boolean n;
+public class gkv {
+   public static final gkw a = new gkw();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-   protected gkv(ato $$0, atq $$1, awt $$2) {
-      super($$0, $$1, $$2);
+   public gkv(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public boolean m() {
-      return this.n;
+   public boolean a() {
+      return this.d;
    }
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public boolean b() {
+      return this.e;
    }
 }

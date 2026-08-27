@@ -1,78 +1,60 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class fkp {
-   private final eyk a;
-   private final Set<UUID> b = Sets.newHashSet();
-   private final UserApiService c;
-   private final Map<String, UUID> d = Maps.newHashMap();
-   private boolean e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+public abstract class fkp extends fkt {
+   private static final fct i = new fct(
+      new ajh("recipe_book/furnace_filter_enabled"),
+      new ajh("recipe_book/furnace_filter_disabled"),
+      new ajh("recipe_book/furnace_filter_enabled_highlighted"),
+      new ajh("recipe_book/furnace_filter_disabled_highlighted")
+   );
+   @Nullable
+   private ctk j;
 
-   public fkp(eyk $$0, UserApiService $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   @Override
+   protected void a() {
+      this.f.a(i);
    }
 
-   public void a(UUID $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(UUID $$0) {
-      this.b.remove($$0);
-   }
-
-   public boolean c(UUID $$0) {
-      return this.d($$0) || this.e($$0);
-   }
-
-   public boolean d(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public void a() {
-      this.e = true;
-      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
-   }
-
-   public void b() {
-      this.e = false;
-   }
-
-   public boolean e(UUID $$0) {
-      if (!this.e) {
-         return false;
-      } else {
-         this.f.join();
-         return this.c.isBlockedPlayer($$0);
+   @Override
+   public void a(@Nullable cnj $$0) {
+      super.a($$0);
+      if ($$0 != null && $$0.e < this.g.p()) {
+         this.e.a();
       }
    }
 
-   public Set<UUID> c() {
-      return this.b;
-   }
+   @Override
+   public void a(ctp<?> $$0, List<cnj> $$1) {
+      cqk $$2 = $$0.b().a(this.h.r.H_());
+      this.e.a($$0);
+      this.e.a(ctk.a($$2), $$1.get(2).f, $$1.get(2).g);
+      iu<ctk> $$3 = $$0.b().a();
+      cnj $$4 = $$1.get(1);
+      if ($$4.g().b()) {
+         if (this.j == null) {
+            this.j = ctk.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.I())).map(cqk::new));
+         }
 
-   public UUID a(String $$0) {
-      return this.d.getOrDefault($$0, ac.d);
-   }
+         this.e.a(this.j, $$4.f, $$4.g);
+      }
 
-   public void a(frk $$0) {
-      GameProfile $$1 = $$0.a();
-      this.d.put($$1.getName(), $$1.getId());
-      if (this.a.y instanceof fkr $$2) {
-         $$2.a($$0);
+      Iterator<ctk> $$5 = $$3.iterator();
+
+      for (int $$6 = 0; $$6 < 2; $$6++) {
+         if (!$$5.hasNext()) {
+            return;
+         }
+
+         ctk $$7 = $$5.next();
+         if (!$$7.c()) {
+            cnj $$8 = $$1.get($$6);
+            this.e.a($$7, $$8.f, $$8.g);
+         }
       }
    }
 
-   public void f(UUID $$0) {
-      if (this.a.y instanceof fkr $$1) {
-         $$1.a($$0);
-      }
-   }
+   protected abstract Set<cqf> b();
 }

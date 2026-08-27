@@ -1,101 +1,145 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
 
-public record dmt(String r, boolean s, boolean t, boolean u, dmt.a v, dgr w, ato x, ato y, ato z, ato A, ato B, ato C, ato D, ato E) {
-   private static final Map<String, dmt> F = new Object2ObjectArrayMap();
-   public static final Codec<dmt> a = avu.a(dmt::b, F::get);
-   public static final dmt b = a(new dmt("iron", false, false, false, dmt.a.a, dgr.g, atp.mO, atp.mP, atp.mW, atp.mX, atp.oh, atp.oi, atp.yx, atp.yy));
-   public static final dmt c = a(new dmt("copper", true, true, false, dmt.a.a, dgr.aj, atp.fA, atp.fB, atp.fH, atp.fI, atp.oh, atp.oi, atp.yx, atp.yy));
-   public static final dmt d = a(new dmt("gold", false, true, false, dmt.a.a, dgr.g, atp.mO, atp.mP, atp.mW, atp.mX, atp.oh, atp.oi, atp.yx, atp.yy));
-   public static final dmt e = a(new dmt("stone", true, true, false, dmt.a.b, dgr.f, atp.mO, atp.mP, atp.mW, atp.mX, atp.yC, atp.yD, atp.yx, atp.yy));
-   public static final dmt f = a(
-      new dmt("polished_blackstone", true, true, false, dmt.a.b, dgr.f, atp.mO, atp.mP, atp.mW, atp.mX, atp.yC, atp.yD, atp.yx, atp.yy)
-   );
-   public static final dmt g = a(new dmt("oak"));
-   public static final dmt h = a(new dmt("spruce"));
-   public static final dmt i = a(new dmt("birch"));
-   public static final dmt j = a(new dmt("acacia"));
-   public static final dmt k = a(new dmt("cherry", true, true, true, dmt.a.a, dgr.aU, atp.ew, atp.ex, atp.ey, atp.ez, atp.eC, atp.eD, atp.eA, atp.eB));
-   public static final dmt l = a(new dmt("jungle"));
-   public static final dmt m = a(new dmt("dark_oak"));
-   public static final dmt n = a(new dmt("crimson", true, true, true, dmt.a.a, dgr.aT, atp.qj, atp.qk, atp.ql, atp.qm, atp.qp, atp.qq, atp.qn, atp.qo));
-   public static final dmt o = a(new dmt("warped", true, true, true, dmt.a.a, dgr.aT, atp.qj, atp.qk, atp.ql, atp.qm, atp.qp, atp.qq, atp.qn, atp.qo));
-   public static final dmt p = a(new dmt("mangrove"));
-   public static final dmt q = a(new dmt("bamboo", true, true, true, dmt.a.a, dgr.aS, atp.bm, atp.bn, atp.bo, atp.bp, atp.bs, atp.bt, atp.bq, atp.br));
+public class dmt extends dcd {
+   public static final MapCodec<dmt> b = b(dmt::new);
+   public static final dnx<dob> c = dnp.bg;
+   public static final dnq d = dnp.x;
+   public static final float e = 4.0F;
+   protected static final eqk f = daa.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final eqk g = daa.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final eqk h = daa.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final eqk i = daa.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final eqk j = daa.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final eqk k = daa.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float l = 2.0F;
+   protected static final float m = 6.0F;
+   protected static final float n = 10.0F;
+   protected static final eqk o = daa.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final eqk F = daa.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final eqk G = daa.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final eqk H = daa.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final eqk I = daa.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final eqk J = daa.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final eqk K = daa.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final eqk L = daa.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final eqk M = daa.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final eqk N = daa.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final eqk O = daa.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final eqk P = daa.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final eqk[] Q = a(true);
+   private static final eqk[] R = a(false);
 
-   public dmt(String $$0) {
-      this($$0, true, true, true, dmt.a.a, dgr.b, atp.Ch, atp.Ci, atp.Cj, atp.Ck, atp.Cn, atp.Co, atp.Cl, atp.Cm);
+   @Override
+   protected MapCodec<dmt> a() {
+      return b;
    }
 
-   private static dmt a(dmt $$0) {
-      F.put($$0.r, $$0);
-      return $$0;
+   private static eqk[] a(boolean $$0) {
+      return Arrays.stream(ih.values()).map($$1 -> a($$1, $$0)).toArray(eqk[]::new);
    }
 
-   public static Stream<dmt> a() {
-      return F.values().stream();
+   private static eqk a(ih $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return eqh.a(k, $$1 ? L : F);
+         case b:
+            return eqh.a(j, $$1 ? K : o);
+         case c:
+            return eqh.a(i, $$1 ? N : H);
+         case d:
+            return eqh.a(h, $$1 ? M : G);
+         case e:
+            return eqh.a(g, $$1 ? P : J);
+         case f:
+            return eqh.a(f, $$1 ? O : I);
+      }
    }
 
-   public String b() {
-      return this.r;
+   public dmt(dmy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, ih.c).a(c, dob.a).a(d, Boolean.valueOf(false)));
    }
 
-   public boolean c() {
-      return this.s;
+   @Override
+   protected boolean g_(dmz $$0) {
+      return true;
    }
 
-   public boolean d() {
-      return this.t;
+   @Override
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return ($$0.c(d) ? Q : R)[$$0.c(a).ordinal()];
    }
 
-   public boolean e() {
-      return this.u;
+   private boolean a(dmz $$0, dmz $$1) {
+      daa $$2 = $$0.c(c) == dob.a ? dac.by : dac.br;
+      return $$1.a($$2) && $$1.c(dms.c) && $$1.c(a) == $$0.c(a);
    }
 
-   public dmt.a f() {
-      return this.v;
+   @Override
+   public dmz a(cwz $$0, ib $$1, dmz $$2, cis $$3) {
+      if (!$$0.B && $$3.ga().d) {
+         ib $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public dgr g() {
-      return this.w;
+   @Override
+   protected void a(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         ib $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
+         }
+      }
    }
 
-   public ato h() {
-      return this.x;
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? dac.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ato i() {
-      return this.y;
+   @Override
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      dmz $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(dac.bQ) && $$3.c(a) == $$0.c(a);
    }
 
-   public ato j() {
-      return this.z;
+   @Override
+   protected void a(dmz $$0, cwz $$1, ib $$2, daa $$3, ib $$4, boolean $$5) {
+      if ($$0.a((cxc)$$1, $$2)) {
+         $$1.a($$2.a($$0.c(a).g()), $$3, $$4);
+      }
    }
 
-   public ato k() {
-      return this.A;
+   @Override
+   public cqk a(cxc $$0, ib $$1, dmz $$2) {
+      return new cqk($$2.c(c) == dob.b ? dac.br : dac.by);
    }
 
-   public ato l() {
-      return this.B;
+   @Override
+   protected dmz a(dmz $$0, dgm $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
-   public ato m() {
-      return this.C;
+   @Override
+   protected dmz a(dmz $$0, dew $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
-   public ato n() {
-      return this.D;
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(a, c, d);
    }
 
-   public ato o() {
-      return this.E;
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
+      return false;
    }
 }

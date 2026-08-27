@@ -1,16 +1,17 @@
-public record zf() implements za {
-   public static final xq<us, zf> a = za.a(zf::a, zf::new);
-   public static final za.b<zf> b = za.a("debug/game_test_clear");
-
-   private zf(us $$0) {
-      this();
-   }
-
-   private void a(us $$0) {
-   }
+public record zf(drr c, int d) implements zc {
+   public static final xs<vf, zf> a = xs.a(drr.d, zf::b, xq.d, zf::c, zf::new);
+   public static final zc.b<zf> b = zc.a("debug/game_event_listeners");
 
    @Override
-   public za.b<zf> a() {
+   public zc.b<zf> a() {
       return b;
+   }
+
+   public drr b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

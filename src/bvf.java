@@ -1,62 +1,35 @@
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
 
-public class bvf extends bvu {
-   private final bpf a;
+public class bvf<E extends chw> extends brg<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
 
-   public bvf(bpf $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bvu.a.a, bvu.a.b));
+   public bvf(int $$0) {
+      super(ImmutableMap.of(byr.aB, bys.a, byr.o, bys.b, byr.m, bys.b, byr.n, bys.c, byr.B, bys.c, byr.az, bys.c, byr.aG, bys.c), $$0);
    }
 
-   @Override
-   public boolean a() {
-      return this.a.cf() < 140;
+   protected boolean a(apf $$0, E $$1, long $$2) {
+      return true;
    }
 
-   @Override
-   public boolean b() {
-      return this.a();
+   protected void b(apf $$0, E $$1, long $$2) {
+      $$1.a(aty.Bq, 5.0F, 1.0F);
    }
 
-   @Override
-   public boolean S_() {
-      return false;
-   }
+   protected void c(apf $$0, E $$1, long $$2) {
+      if ($$1.c(bpz.m)) {
+         $$1.b(bpz.a);
+      }
 
-   @Override
-   public void c() {
-      this.h();
-   }
-
-   private void h() {
-      Iterable<ib> $$0 = ib.b(
-         awm.a(this.a.do() - 1.0), this.a.dp(), awm.a(this.a.du() - 1.0), awm.a(this.a.do() + 1.0), awm.a(this.a.dq() + 8.0), awm.a(this.a.du() + 1.0)
-      );
-      ib $$1 = null;
-
-      for (ib $$2 : $$0) {
-         if (this.a(this.a.dJ(), $$2)) {
-            $$1 = $$2;
-            break;
+      $$1.dP().b(byr.aB);
+      $$1.dP().c(byr.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
          }
-      }
 
-      if ($$1 == null) {
-         $$1 = ib.a(this.a.do(), this.a.dq() + 8.0, this.a.du());
-      }
-
-      this.a.N().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
-   }
-
-   @Override
-   public void e() {
-      this.h();
-      this.a.a(0.02F, new eov((double)this.a.bl, (double)this.a.bm, (double)this.a.bn));
-      this.a.a(bpc.a, this.a.dm());
-   }
-
-   private boolean a(cwh $$0, ib $$1) {
-      dme $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(czh.nd)) && $$2.a($$0, $$1, eih.a);
+         if (!$$1.dP().a(byr.az)) {
+            chx.a($$1, $$1x.dm());
+         }
+      });
    }
 }

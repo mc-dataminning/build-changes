@@ -1,43 +1,39 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fbv implements feg {
-   private static final int a = 170;
-   private final vs b;
-   @Nullable
-   private List<avy> c;
-   @Nullable
-   private final vs d;
+public class fbv extends fbe {
+   private final far a;
 
-   private fbv(vs $$0, @Nullable vs $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
-
-   public static fbv a(vs $$0, @Nullable vs $$1) {
-      return new fbv($$0, $$1);
-   }
-
-   public static fbv a(vs $$0) {
-      return new fbv($$0, $$0);
+   public fbv(far $$0, vu $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
    @Override
-   public void b(fef $$0) {
-      if (this.d != null) {
-         $$0.a(fee.c, this.d);
-      }
+   protected void b(fat $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.B() + this.w() / 2;
+      int $$5 = this.C() + this.u() / 2;
+      vu $$6 = this.x();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = fgq.a(ac.b());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
-   public List<avy> a(eyk $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
-      }
-
-      return this.c;
+   @Override
+   protected void a(ffc $$0) {
    }
 
-   public static List<avy> a(eyk $$0, vs $$1) {
-      return $$0.h.c($$1, 170);
+   @Override
+   public void a(gnq $$0) {
+   }
+
+   @Override
+   public boolean A() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public faq a(ffi $$0) {
+      return null;
    }
 }

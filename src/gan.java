@@ -1,107 +1,71 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.Nullable;
 
-public class gan implements gac.a {
-   private final eyk a;
-   private final Map<ajb<cwe>, Map<String, eby>> b = Maps.newIdentityHashMap();
-   private final Map<ajb<cwe>, Map<String, zo.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+class gan {
+   private final Map<ib, dkg> a;
+   @Nullable
+   private final List<dpo<dmz>> b;
+   private final boolean c;
+   private final dpg d;
 
-   public gan(eyk $$0) {
-      this.a = $$0;
-   }
+   gan(dpg $$0) {
+      this.d = $$0;
+      this.c = $$0.F().ag();
+      this.a = ImmutableMap.copyOf($$0.G());
+      if ($$0 instanceof dpc) {
+         this.b = null;
+      } else {
+         dph[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
 
-   @Override
-   public void a(etd $$0, fwq $$1, double $$2, double $$3, double $$4) {
-      exv $$5 = this.a.j.m();
-      ajb<cwe> $$6 = this.a.r.ad();
-      ib $$7 = ib.a($$5.b().c, 0.0, $$5.b().e);
-      eth $$8 = $$1.getBuffer(fwy.y());
-      if (this.b.containsKey($$6)) {
-         for (eby $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               fwo.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
+         for (dph $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
          }
       }
+   }
 
-      Map<String, zo.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (zo.a $$11 : $$10.values()) {
-            eby $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  fwo.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  fwo.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
+   @Nullable
+   public dkg a(ib $$0) {
+      return this.a.get($$0);
+   }
+
+   public dmz b(ib $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dmz $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dac.hW.o();
+         }
+
+         if ($$2 == 70) {
+            $$4 = dsd.a($$1, $$3);
+         }
+
+         return $$4 == null ? dac.a.o() : $$4;
+      } else if (this.b == null) {
+         return dac.a.o();
+      } else {
+         try {
+            int $$5 = this.d.e($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               dpo<dmz> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
                }
             }
+
+            return dac.a.o();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new y($$8);
          }
       }
-   }
-
-   public void a(eby $$0, List<zo.a> $$1, ajb<cwe> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, zo.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (zo.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
    }
 }

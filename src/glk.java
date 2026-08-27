@@ -1,28 +1,12 @@
-import java.util.List;
+import java.util.Collection;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class glk {
-   private final List<glj> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
+public interface glk {
+   Collection<ajh> f();
 
-   public glk(List<glj> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public List<glj> a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
-   }
+   void a(Function<ajh, glk> var1);
 
    @Nullable
-   public String c() {
-      return this.c;
-   }
+   gkz a(gld var1, Function<glc, giz> var2, glh var3, ajh var4);
 }

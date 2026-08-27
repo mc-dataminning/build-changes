@@ -1,151 +1,57 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ctz {
-   private final bom[] b;
-   private final ctz.a c;
-   private final aut<cpl> d;
-   @Nullable
-   protected String a;
-   private final il.c<ctz> e = kh.f.g(this);
+public class ctz<T extends csw> implements ctr<T> {
+   private final csw.a<T> x;
+   private final Codec<T> y;
+   private final xs<vf, T> z;
 
-   @Nullable
-   public static ctz c(int $$0) {
-      return kh.f.a($$0);
+   public ctz(csw.a<T> $$0, int $$1) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  awe.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                  ctc.d.fieldOf("category").orElse(ctc.c).forGetter($$0xx -> $$0xx.b),
+                  ctk.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  ki.h.q().xmap(cqk::new, cqk::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
+               )
+               .apply($$2, $$0::create)
+      );
+      this.z = xs.a(this::a, this::a);
    }
 
-   protected ctz(ctz.a $$0, aut<cpl> $$1, bom[] $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.b = $$2;
+   @Override
+   public Codec<T> a() {
+      return this.y;
    }
 
-   public Map<bom, cpq> a(box $$0) {
-      Map<bom, cpq> $$1 = Maps.newEnumMap(bom.class);
-
-      for (bom $$2 : this.b) {
-         cpq $$3 = $$0.c($$2);
-         if (!$$3.b()) {
-            $$1.put($$2, $$3);
-         }
-      }
-
-      return $$1;
+   @Override
+   public xs<vf, T> b() {
+      return this.z;
    }
 
-   public aut<cpl> d() {
-      return this.d;
+   private T a(vf $$0) {
+      String $$1 = $$0.p();
+      ctc $$2 = $$0.b(ctc.class);
+      ctk $$3 = ctk.b.decode($$0);
+      cqk $$4 = cqk.f.decode($$0);
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.l();
+      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public ctz.a e() {
-      return this.c;
+   private void a(vf $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      ctk.b.encode($$0, $$1.d);
+      cqk.f.encode($$0, $$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
    }
 
-   public int f() {
-      return 1;
-   }
-
-   public int a() {
-      return 1;
-   }
-
-   public int a(int $$0) {
-      return 1 + $$0 * 10;
-   }
-
-   public int b(int $$0) {
-      return this.a($$0) + 5;
-   }
-
-   public int a(int $$0, bne $$1) {
-      return 0;
-   }
-
-   public float a(int $$0, @Nullable bol<?> $$1) {
-      return 0.0F;
-   }
-
-   public final boolean b(ctz $$0) {
-      return this.a($$0) && $$0.a(this);
-   }
-
-   protected boolean a(ctz $$0) {
-      return this != $$0;
-   }
-
-   protected String g() {
-      if (this.a == null) {
-         this.a = ac.a("enchantment", kh.f.b(this));
-      }
-
-      return this.a;
-   }
-
-   public String h() {
-      return this.g();
-   }
-
-   public vs d(int $$0) {
-      wg $$1 = vs.c(this.h());
-      if (this.c()) {
-         $$1.a(n.m);
-      } else {
-         $$1.a(n.h);
-      }
-
-      if ($$0 != 1 || this.a() != 1) {
-         $$1.b(vr.v).b(vs.c("enchantment.level." + $$0));
-      }
-
-      return $$1;
-   }
-
-   public boolean a(cpq $$0) {
-      return $$0.d().k().a(this.d);
-   }
-
-   public void a(box $$0, bof $$1, int $$2) {
-   }
-
-   public void b(box $$0, bof $$1, int $$2) {
-   }
-
-   public boolean b() {
-      return false;
-   }
-
-   public boolean c() {
-      return false;
-   }
-
-   public boolean i() {
-      return true;
-   }
-
-   public boolean j() {
-      return true;
-   }
-
-   @Deprecated
-   public il.c<ctz> k() {
-      return this.e;
-   }
-
-   public static enum a {
-      a(10),
-      b(5),
-      c(2),
-      d(1);
-
-      private final int e;
-
-      private a(int $$0) {
-         this.e = $$0;
-      }
-
-      public int a() {
-         return this.e;
-      }
+   public csw a(String $$0, ctc $$1, ctk $$2, cqk $$3, float $$4, int $$5) {
+      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

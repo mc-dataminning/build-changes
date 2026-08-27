@@ -1,51 +1,37 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Map;
+import java.util.Locale;
 
 public class ayl extends DataFix {
-   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("Airportal", "minecraft:end_portal");
-      $$0.put("Banner", "minecraft:banner");
-      $$0.put("Beacon", "minecraft:beacon");
-      $$0.put("Cauldron", "minecraft:brewing_stand");
-      $$0.put("Chest", "minecraft:chest");
-      $$0.put("Comparator", "minecraft:comparator");
-      $$0.put("Control", "minecraft:command_block");
-      $$0.put("DLDetector", "minecraft:daylight_detector");
-      $$0.put("Dropper", "minecraft:dropper");
-      $$0.put("EnchantTable", "minecraft:enchanting_table");
-      $$0.put("EndGateway", "minecraft:end_gateway");
-      $$0.put("EnderChest", "minecraft:ender_chest");
-      $$0.put("FlowerPot", "minecraft:flower_pot");
-      $$0.put("Furnace", "minecraft:furnace");
-      $$0.put("Hopper", "minecraft:hopper");
-      $$0.put("MobSpawner", "minecraft:mob_spawner");
-      $$0.put("Music", "minecraft:noteblock");
-      $$0.put("Piston", "minecraft:piston");
-      $$0.put("RecordPlayer", "minecraft:jukebox");
-      $$0.put("Sign", "minecraft:sign");
-      $$0.put("Skull", "minecraft:skull");
-      $$0.put("Structure", "minecraft:structure_block");
-      $$0.put("Trap", "minecraft:dispenser");
-   });
+   private final String a;
+   private final TypeReference b;
 
-   public ayl(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public ayl(Schema $$0, String $$1, TypeReference $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bdt.t);
-      Type<?> $$1 = this.getOutputSchema().getType(bdt.t);
-      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bdt.s);
-      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bdt.s);
-      return TypeRewriteRule.seq(
-         this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
-         this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
-      );
+      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
+      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
+      return this.a(this.a, $$0, $$1);
+   }
+
+   protected final <K> TypeRewriteRule a(String $$0, TaggedChoiceType<K> $$1, TaggedChoiceType<?> $$2) {
+      if ($$1.getKeyType() != $$2.getKeyType()) {
+         throw new IllegalStateException("Could not inject: key type is not the same");
+      } else {
+         return this.fixTypeEverywhere($$0, $$1, $$2, $$1x -> $$1xx -> {
+               if (!$$2.hasType($$1xx.getFirst())) {
+                  throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown type %s in %s ", $$1xx.getFirst(), this.b));
+               } else {
+                  return $$1xx;
+               }
+            });
+      }
    }
 }

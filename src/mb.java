@@ -1,41 +1,33 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.util.function.BiConsumer;
 
-public class mb implements ko {
-   private final kq d;
-   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
-
-   public mb(kq $$0) {
-      this.d = $$0;
-   }
-
-   public <T> mb a(arg<T> $$0, T $$1) {
-      this.e.put($$0.a(), () -> $$0.a($$1));
-      return this;
-   }
-
+public class mb implements lm {
    @Override
-   public CompletableFuture<?> a(km $$0) {
-      JsonObject $$1 = new JsonObject();
-      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
-      return ko.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
-   }
-
-   @Override
-   public final String a() {
-      return "Pack Metadata";
-   }
-
-   public static mb a(kq $$0, vs $$1) {
-      return new mb($$0).a(arh.b, new arh($$1, t.a.a(aqu.b), Optional.empty()));
-   }
-
-   public static mb a(kq $$0, vs $$1, ckl $$2) {
-      return a($$0, $$1).a(aqq.a, new aqq($$2));
+   public void generate(BiConsumer<ajh, elc.a> $$0) {
+      $$0.accept(
+         eks.aL,
+         elc.b()
+            .a(
+               elb.a()
+                  .a(eom.a(1.0F))
+                  .a(elk.a(cqn.qO).a(5).a(new elz.a().a(cux.l)))
+                  .a(elk.a(cqn.pI).a(8).a(new elz.a().a(cux.l)))
+                  .a(elk.a(cqn.sj).a(8).a(emx.a(csk.n)))
+                  .a(elk.a(cqn.vl).a(8).a(emx.a(csk.n)))
+                  .a(elk.a(cqn.sj).a(10).a(emx.a(csk.c)))
+                  .a(elk.a(cqn.vs).a(10).a(ems.a(eor.a(10.0F, 36.0F))))
+                  .a(elk.a(cqn.se).a(10).a(ems.a(eor.a(2.0F, 4.0F))))
+                  .a(elk.a(cqn.pr).a(20).a(ems.a(eor.a(3.0F, 9.0F))))
+                  .a(elk.a(cqn.oA).a(20).a(ems.a(eor.a(5.0F, 12.0F))))
+                  .a(elk.a(cqn.eD).a(40))
+                  .a(elk.a(cqn.wx).a(40).a(ems.a(eor.a(1.0F, 3.0F))))
+                  .a(elk.a(cqn.tV).a(40))
+                  .a(elk.a(cqn.qC).a(40).a(ems.a(eor.a(2.0F, 4.0F))))
+                  .a(elk.a(cqn.fn).a(40).a(ems.a(eor.a(2.0F, 8.0F))))
+                  .a(elk.a(cqn.uu).a(40).a(ems.a(eor.a(2.0F, 8.0F))))
+                  .a(elk.a(cqn.vm).a(40).a(ems.a(eor.a(6.0F, 12.0F))))
+                  .a(elk.a(cqn.aj).a(40).a(ems.a(eor.a(8.0F, 16.0F))))
+                  .a(elk.a(cqn.wy).a(40).a(ems.a(eor.a(8.0F, 16.0F))))
+            )
+      );
    }
 }

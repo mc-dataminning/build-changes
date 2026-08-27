@@ -1,34 +1,93 @@
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public interface clf {
-   clf a = new clf() {
-      @Override
-      public <T> Optional<T> a(BiFunction<cwe, ib, T> $$0) {
-         return Optional.empty();
+public final class clf {
+   private static final clf b = new clf(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final clg c;
+   private final long d;
+
+   private clf(@Nullable clg $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   static clf a(clg $$0, Collection<cld> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new clf($$0, $$2);
       }
-   };
+   }
 
-   static clf a(final cwe $$0, final ib $$1) {
-      return new clf() {
-         @Override
-         public <T> Optional<T> a(BiFunction<cwe, ib, T> $$0x) {
-            return Optional.of($$0.apply($$0, $$1));
+   public static clf a() {
+      return b;
+   }
+
+   public static clf a(cld $$0) {
+      return new clf($$0.a, $$0.b);
+   }
+
+   public static clf a(cld $$0, cld... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new clf($$0.a, $$2);
+   }
+
+   private static long a(clg $$0, long $$1, Iterable<cld> $$2) {
+      for (cld $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
          }
-      };
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
    }
 
-   <T> Optional<T> a(BiFunction<cwe, ib, T> var1);
-
-   default <T> T a(BiFunction<cwe, ib, T> $$0, T $$1) {
-      return this.a($$0).orElse($$1);
+   public boolean b(cld $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
    }
 
-   default void a(BiConsumer<cwe, ib> $$0) {
-      this.a(($$1, $$2) -> {
-         $$0.accept($$1, $$2);
-         return Optional.empty();
-      });
+   public boolean a(clf $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public clf b(clf $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new clf(this.c, this.d | $$0.d);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof clf $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

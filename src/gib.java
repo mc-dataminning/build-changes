@@ -1,3 +1,8 @@
-public interface gib {
-   void e();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gib {
 }

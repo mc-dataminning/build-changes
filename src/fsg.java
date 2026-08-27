@@ -1,73 +1,41 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class fsg {
+   private final fws a;
+   private final fry b;
+   private final fxo c;
+   private fsg.a d = fsg.a.a;
 
-public final class fsg {
-   private static final int a = 1024;
-   private final frx b;
-   private final fsd c;
-   private final frs d;
-   @Nullable
-   private fsc e;
-
-   public fsg(frx $$0, fsd $$1, frs $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fsg(fws $$0, fry $$1, fxo $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static fsg a(fsd $$0, UserApiService $$1) {
-      frs $$2 = new frs(1024);
-      frx $$3 = frx.a($$0, $$1);
-      return new fsg($$3, $$0, $$2);
-   }
-
-   public void a(eyk $$0, fgh $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         fsc $$4 = this.e.b();
-         $$0.a(
-            new ffa(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               vs.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               vs.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               vs.c("gui.abuseReport.draft.edit"),
-               vs.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
+   public void a() {
+      switch (this.d) {
+         case b:
+            ib $$0 = this.a.dm();
+            boolean $$1 = this.b.d($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.N_() || !this.a.bA()) {
+               this.d = fsg.a.c;
+            }
+         case a:
+         case c:
       }
    }
 
-   public frx a() {
-      return this.b;
+   public boolean b() {
+      return this.d == fsg.a.c;
    }
 
-   public frs b() {
-      return this.d;
+   public void c() {
+      if (this.d == fsg.a.a) {
+         this.d = fsg.a.b;
+      }
    }
 
-   public boolean a(fsd $$0) {
-      return Objects.equals(this.c, $$0);
-   }
-
-   public void a(@Nullable fsc $$0) {
-      this.e = $$0;
-   }
-
-   public boolean c() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

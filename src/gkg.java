@@ -1,57 +1,74 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Locale;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gkg extends ajc {
-   @VisibleForTesting
-   static final char f = '#';
-   private final String g;
+public class gkg implements asp {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gkf b = new gkf("US", "English", false);
+   private Map<String, gkf> c = ImmutableMap.of("en_us", b);
+   private String d;
 
-   private gkg(String $$0, String $$1, String $$2, @Nullable ajc.a $$3) {
-      super($$0, $$1, $$3);
-      this.g = $$2;
+   public gkg(String $$0) {
+      this.d = $$0;
    }
 
-   public gkg(String $$0, String $$1, String $$2) {
-      super($$0, $$1);
-      this.g = j($$2);
-   }
-
-   public gkg(ajc $$0, String $$1) {
-      this($$0.b(), $$0.a(), j($$1), null);
-   }
-
-   public static gkg c(String $$0, String $$1) {
-      return new gkg("minecraft", $$0, $$1);
-   }
-
-   private static String j(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String f() {
-      return this.g;
+   private static Map<String, gkf> a(Stream<ara> $$0) {
+      Map<String, gkf> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            gks $$2 = $$1x.a(gks.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 instanceof gkg && super.equals($$0)) {
-         gkg $$1 = (gkg)$$0;
-         return this.g.equals($$1.g);
-      } else {
-         return false;
+   public void a(aso $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         gkf $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
       }
+
+      gkc $$4 = gkc.a($$0, $$1, $$2);
+      gke.a($$4);
+      sv.a($$4);
    }
 
-   @Override
-   public int hashCode() {
-      return 31 * super.hashCode() + this.g.hashCode();
+   public void a(String $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public String toString() {
-      return super.toString() + "#" + this.g;
+   public String a() {
+      return this.d;
+   }
+
+   public SortedMap<String, gkf> b() {
+      return new TreeMap<>(this.c);
+   }
+
+   @Nullable
+   public gkf b(String $$0) {
+      return this.c.get($$0);
    }
 }

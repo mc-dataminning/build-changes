@@ -1,274 +1,289 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.ArabicShapingException;
+import com.ibm.icu.text.Bidi;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class far<T> extends fab {
-   public static final BooleanSupplier a = fgh::w;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final vs c;
-   private int d;
-   private T f;
-   private final far.c<T> m;
-   private final Function<T, vs> n;
-   private final Function<far<T>, wg> o;
-   private final far.b<T> p;
-   private final boolean q;
-   private final eyn.l<T> r;
+public class far {
+   private static final float d = 0.01F;
+   private static final Vector3f e = new Vector3f(0.0F, 0.0F, 0.03F);
+   public static final int a = 8;
+   public final int b = 9;
+   public final axd c = axd.a();
+   private final Function<ajh, fdx> f;
+   final boolean g;
+   private final ezs h;
 
-   far(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      vs $$4,
-      vs $$5,
-      int $$6,
-      T $$7,
-      far.c<T> $$8,
-      Function<T, vs> $$9,
-      Function<far<T>, wg> $$10,
-      far.b<T> $$11,
-      eyn.l<T> $$12,
-      boolean $$13
-   ) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.f = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.f();
-   }
-
-   private void f() {
-      this.a(this.r.apply(this.f));
-   }
-
-   @Override
-   public void b() {
-      if (fgh.v()) {
-         this.a(-1);
-      } else {
-         this.a(1);
-      }
-   }
-
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = awm.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
-   }
-
-   private T b(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(awm.b(this.d + $$0, $$1.size()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
-      }
-
-      return true;
-   }
-
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
-
-      this.b($$0);
-   }
-
-   private void b(T $$0) {
-      vs $$1 = this.c($$0);
-      this.b($$1);
+   public far(Function<ajh, fdx> $$0, boolean $$1) {
       this.f = $$0;
-      this.f();
+      this.g = $$1;
+      this.h = new ezs(($$0x, $$1x) -> this.a($$1x.k()).a($$0x, this.g).a($$1x.b()));
    }
 
-   private vs c(T $$0) {
-      return (vs)(this.q ? this.n.apply($$0) : this.d($$0));
+   fdx a(ajh $$0) {
+      return this.f.apply($$0);
    }
 
-   private wg d(T $$0) {
-      return vr.a(this.c, this.n.apply($$0));
-   }
-
-   public T a() {
-      return this.f;
-   }
-
-   @Override
-   protected wg aM_() {
-      return this.o.apply(this);
-   }
-
-   @Override
-   public void a(fef $$0) {
-      $$0.a(fee.a, this.aM_());
-      if (this.j) {
-         T $$1 = this.b(1);
-         vs $$2 = this.c($$1);
-         if (this.aK_()) {
-            $$0.a(fee.d, vs.a("narration.cycle_button.usage.focused", $$2));
-         } else {
-            $$0.a(fee.d, vs.a("narration.cycle_button.usage.hovered", $$2));
-         }
+   public String a(String $$0) {
+      try {
+         Bidi $$1 = new Bidi(new ArabicShaping(8).shape($$0), 127);
+         $$1.setReorderingMode(0);
+         return $$1.writeReordered(2);
+      } catch (ArabicShapingException var3) {
+         return $$0;
       }
    }
 
-   public wg d() {
-      return a_((vs)(this.q ? this.d(this.f) : this.x()));
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fxq $$6, far.a $$7, int $$8, int $$9) {
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, this.a());
    }
 
-   public static <T> far.a<T> a(Function<T, vs> $$0) {
-      return new far.a<>($$0);
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fxq $$6, far.a $$7, int $$8, int $$9, boolean $$10) {
+      return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
    }
 
-   public static far.a<Boolean> a(vs $$0, vs $$1) {
-      return new far.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   public int a(vu $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fxq $$6, far.a $$7, int $$8, int $$9) {
+      return this.a($$0.g(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public static far.a<Boolean> e() {
-      return new far.a<Boolean>($$0 -> $$0 ? vr.b : vr.c).a(b);
+   public int a(awi $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fxq $$6, far.a $$7, int $$8, int $$9) {
+      return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public static far.a<Boolean> b(boolean $$0) {
-      return e().a($$0);
+   public void a(awi $$0, float $$1, float $$2, int $$3, int $$4, Matrix4f $$5, fxq $$6, int $$7) {
+      int $$8 = a($$4);
+      far.b $$9 = new far.b($$6, 0.0F, 0.0F, $$8, false, $$5, far.a.a, $$7);
+
+      for (int $$10 = -1; $$10 <= 1; $$10++) {
+         for (int $$11 = -1; $$11 <= 1; $$11++) {
+            if ($$10 != 0 || $$11 != 0) {
+               float[] $$12 = new float[]{$$1};
+               int $$13 = $$10;
+               int $$14 = $$11;
+               $$0.accept(($$6x, $$7x, $$8x) -> {
+                  boolean $$9x = $$7x.b();
+                  fdx $$10x = this.a($$7x.k());
+                  esb $$11x = $$10x.a($$8x, this.g);
+                  $$9.l = $$12[0] + (float)$$13 * $$11x.b();
+                  $$9.m = $$2 + (float)$$14 * $$11x.b();
+                  $$12[0] += $$11x.a($$9x);
+                  return $$9.accept($$6x, $$7x.a($$8), $$8x);
+               });
+            }
+         }
+      }
+
+      far.b $$15 = new far.b($$6, $$1, $$2, a($$3), false, $$5, far.a.c, $$7);
+      $$0.accept($$15);
+      $$15.a(0, $$1);
    }
 
-   public static class a<T> {
-      private int a;
+   private static int a(int $$0) {
+      return ($$0 & -67108864) == 0 ? $$0 | 0xFF000000 : $$0;
+   }
+
+   private int b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fxq $$6, far.a $$7, int $$8, int $$9, boolean $$10) {
+      if ($$10) {
+         $$0 = this.a($$0);
+      }
+
+      $$3 = a($$3);
+      Matrix4f $$11 = new Matrix4f($$5);
+      if ($$4) {
+         this.b($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9);
+         $$11.translate(e);
+      }
+
+      $$1 = this.b($$0, $$1, $$2, $$3, false, $$11, $$6, $$7, $$8, $$9);
+      return (int)$$1 + ($$4 ? 1 : 0);
+   }
+
+   private int b(awi $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fxq $$6, far.a $$7, int $$8, int $$9) {
+      $$3 = a($$3);
+      Matrix4f $$10 = new Matrix4f($$5);
+      if ($$4) {
+         this.c($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9);
+         $$10.translate(e);
+      }
+
+      $$1 = this.c($$0, $$1, $$2, $$3, false, $$10, $$6, $$7, $$8, $$9);
+      return (int)$$1 + ($$4 ? 1 : 0);
+   }
+
+   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fxq $$6, far.a $$7, int $$8, int $$9) {
+      far.b $$10 = new far.b($$6, $$1, $$2, $$3, $$4, $$5, $$7, $$9);
+      axp.c($$0, wr.a, $$10);
+      return $$10.a($$8, $$1);
+   }
+
+   private float c(awi $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fxq $$6, far.a $$7, int $$8, int $$9) {
+      far.b $$10 = new far.b($$6, $$1, $$2, $$3, $$4, $$5, $$7, $$9);
+      $$0.accept($$10);
+      return $$10.a($$8, $$1);
+   }
+
+   void a(feb $$0, boolean $$1, boolean $$2, float $$3, float $$4, float $$5, Matrix4f $$6, eud $$7, float $$8, float $$9, float $$10, float $$11, int $$12) {
+      $$0.a($$2, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12);
+      if ($$1) {
+         $$0.a($$2, $$4 + $$3, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12);
+      }
+   }
+
+   public int b(String $$0) {
+      return aww.f(this.h.a($$0));
+   }
+
+   public int a(vz $$0) {
+      return aww.f(this.h.a($$0));
+   }
+
+   public int a(awi $$0) {
+      return aww.f(this.h.a($$0));
+   }
+
+   public String a(String $$0, int $$1, boolean $$2) {
+      return $$2 ? this.h.c($$0, $$1, wr.a) : this.h.b($$0, $$1, wr.a);
+   }
+
+   public String a(String $$0, int $$1) {
+      return this.h.b($$0, $$1, wr.a);
+   }
+
+   public vz a(vz $$0, int $$1) {
+      return this.h.a($$0, $$1, wr.a);
+   }
+
+   public int b(String $$0, int $$1) {
+      return 9 * this.h.g($$0, $$1, wr.a).size();
+   }
+
+   public int b(vz $$0, int $$1) {
+      return 9 * this.h.b($$0, $$1, wr.a).size();
+   }
+
+   public List<awi> c(vz $$0, int $$1) {
+      return sv.a().a(this.h.b($$0, $$1, wr.a));
+   }
+
+   public boolean a() {
+      return sv.a().b();
+   }
+
+   public ezs b() {
+      return this.h;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   class b implements awj {
+      final fxq a;
+      private final boolean c;
+      private final float d;
+      private final float e;
+      private final float f;
+      private final float g;
+      private final float h;
+      private final Matrix4f i;
+      private final far.a j;
+      private final int k;
+      float l;
+      float m;
       @Nullable
-      private T b;
-      private final Function<T, vs> c;
-      private eyn.l<T> d = $$0x -> null;
-      private Function<far<T>, wg> e = far::d;
-      private far.c<T> f = far.c.a(ImmutableList.of());
-      private boolean g;
+      private List<feb.a> n;
 
-      public a(Function<T, vs> $$0) {
-         this.c = $$0;
-      }
-
-      public far.a<T> a(Collection<T> $$0) {
-         return this.a(far.c.a($$0));
-      }
-
-      @SafeVarargs
-      public final far.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public far.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(far.c.a(far.a, $$0, $$1));
-      }
-
-      public far.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(far.c.a($$0, $$1, $$2));
-      }
-
-      public far.a<T> a(far.c<T> $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public far.a<T> a(eyn.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public far.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
+      private void a(feb.a $$0) {
+         if (this.n == null) {
+            this.n = Lists.newArrayList();
          }
 
-         return this;
+         this.n.add($$0);
       }
 
-      public far.a<T> a(Function<far<T>, wg> $$0) {
-         this.e = $$0;
-         return this;
+      public b(fxq $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, far.a $$6, int $$7) {
+         this.a = $$0;
+         this.l = $$1;
+         this.m = $$2;
+         this.c = $$4;
+         this.d = $$4 ? 0.25F : 1.0F;
+         this.e = (float)($$3 >> 16 & 0xFF) / 255.0F * this.d;
+         this.f = (float)($$3 >> 8 & 0xFF) / 255.0F * this.d;
+         this.g = (float)($$3 & 0xFF) / 255.0F * this.d;
+         this.h = (float)($$3 >> 24 & 0xFF) / 255.0F;
+         this.i = $$5;
+         this.j = $$6;
+         this.k = $$7;
       }
 
-      public far.a<T> a() {
-         this.g = true;
-         return this;
-      }
-
-      public far<T> a(int $$0, int $$1, int $$2, int $$3, vs $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
-
-      public far<T> a(int $$0, int $$1, int $$2, int $$3, vs $$4, far.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
+      @Override
+      public boolean accept(int $$0, wr $$1, int $$2) {
+         fdx $$3 = far.this.a($$1.k());
+         esb $$4 = $$3.a($$2, far.this.g);
+         feb $$5 = $$1.f() && $$2 != 32 ? $$3.a($$4) : $$3.a($$2);
+         boolean $$6 = $$1.b();
+         float $$7 = this.h;
+         wt $$8 = $$1.a();
+         float $$10;
+         float $$11;
+         float $$12;
+         if ($$8 != null) {
+            int $$9 = $$8.a();
+            $$10 = (float)($$9 >> 16 & 0xFF) / 255.0F * this.d;
+            $$11 = (float)($$9 >> 8 & 0xFF) / 255.0F * this.d;
+            $$12 = (float)($$9 & 0xFF) / 255.0F * this.d;
          } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            vs $$8 = this.c.apply($$7);
-            vs $$9 = (vs)(this.g ? $$8 : vr.a($$4, $$8));
-            return new far<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+            $$10 = this.e;
+            $$11 = this.f;
+            $$12 = this.g;
          }
-      }
-   }
 
-   public interface b<T> {
-      void onValueChange(far<T> var1, T var2);
-   }
+         if (!($$5 instanceof fec)) {
+            float $$16 = $$6 ? $$4.a() : 0.0F;
+            float $$17 = this.c ? $$4.b() : 0.0F;
+            eud $$18 = this.a.getBuffer($$5.a(this.j));
+            far.this.a($$5, $$6, $$1.c(), $$16, this.l + $$17, this.m + $$17, this.i, $$18, $$10, $$11, $$12, $$7, this.k);
+         }
 
-   public interface c<T> {
-      List<T> a();
+         float $$19 = $$4.a($$6);
+         float $$20 = this.c ? 1.0F : 0.0F;
+         if ($$1.d()) {
+            this.a(new feb.a(this.l + $$20 - 1.0F, this.m + $$20 + 4.5F, this.l + $$20 + $$19, this.m + $$20 + 4.5F - 1.0F, 0.01F, $$10, $$11, $$12, $$7));
+         }
 
-      List<T> b();
+         if ($$1.e()) {
+            this.a(new feb.a(this.l + $$20 - 1.0F, this.m + $$20 + 9.0F, this.l + $$20 + $$19, this.m + $$20 + 9.0F - 1.0F, 0.01F, $$10, $$11, $$12, $$7));
+         }
 
-      static <T> far.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new far.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$1;
-            }
-         };
+         this.l += $$19;
+         return true;
       }
 
-      static <T> far.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new far.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
-            }
+      public float a(int $$0, float $$1) {
+         if ($$0 != 0) {
+            float $$2 = (float)($$0 >> 24 & 0xFF) / 255.0F;
+            float $$3 = (float)($$0 >> 16 & 0xFF) / 255.0F;
+            float $$4 = (float)($$0 >> 8 & 0xFF) / 255.0F;
+            float $$5 = (float)($$0 & 0xFF) / 255.0F;
+            this.a(new feb.a($$1 - 1.0F, this.m + 9.0F, this.l + 1.0F, this.m - 1.0F, 0.01F, $$3, $$4, $$5, $$2));
+         }
 
-            @Override
-            public List<T> b() {
-               return $$3;
+         if (this.n != null) {
+            feb $$6 = far.this.a(wr.b).b();
+            eud $$7 = this.a.getBuffer($$6.a(this.j));
+
+            for (feb.a $$8 : this.n) {
+               $$6.a($$8, this.i, $$7, this.k);
             }
-         };
+         }
+
+         return this.l;
       }
    }
 }

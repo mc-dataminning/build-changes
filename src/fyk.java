@@ -1,8 +1,84 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fyk implements asp {
+   private final fyj a;
+   private final fym b;
+   private final fxd c;
+   private final fyl d;
+   private final axd e = axd.a();
+   private final fak f;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fyk {
+   public fyk(fyj $$0, fxd $$1, fak $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new fym(this.f);
+      this.d = new fyl();
+   }
+
+   public fyj a() {
+      return this.a;
+   }
+
+   public void a(dmz $$0, ib $$1, cwc $$2, etz $$3, eud $$4) {
+      if ($$0.l() == dgf.c) {
+         gkz $$5 = this.a.b($$0);
+         long $$6 = $$0.a($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, giq.d);
+      }
+   }
+
+   public void a(dmz $$0, ib $$1, cwc $$2, etz $$3, eud $$4, boolean $$5, axd $$6) {
+      try {
+         dgf $$7 = $$0.l();
+         if ($$7 == dgf.c) {
+            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), giq.d);
+         }
+      } catch (Throwable var11) {
+         o $$9 = o.a(var11, "Tesselating block in world");
+         p $$10 = $$9.a("Block being tesselated");
+         p.a($$10, $$2, $$1, $$0);
+         throw new y($$9);
+      }
+   }
+
+   public void a(ib $$0, cwc $$1, eud $$2, dmz $$3, ein $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new y($$6);
+      }
+   }
+
+   public fym b() {
+      return this.b;
+   }
+
+   public gkz a(dmz $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(dmz $$0, etz $$1, fxq $$2, int $$3, int $$4) {
+      dgf $$5 = $$0.l();
+      if ($$5 != dgf.a) {
+         switch ($$5) {
+            case c:
+               gkz $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(fxl.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.a(new cqk($$0.b()), cqh.a, $$1, $$2, $$3, $$4);
+         }
+      }
+   }
+
+   @Override
+   public void a(aso $$0) {
+      this.d.a();
+   }
 }

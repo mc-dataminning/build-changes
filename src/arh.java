@@ -1,27 +1,65 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.io.IOException;
+import java.nio.file.FileStore;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.FileAttributeView;
+import java.nio.file.attribute.FileStoreAttributeView;
+import javax.annotation.Nullable;
 
-public record arh(vs c, int d, Optional<awe<Integer>> e) {
-   public static final Codec<arh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               vu.a.fieldOf("description").forGetter(arh::a),
-               Codec.INT.fieldOf("pack_format").forGetter(arh::b),
-               awe.a(Codec.INT).optionalFieldOf("supported_formats").forGetter(arh::c)
-            )
-            .apply($$0, arh::new)
-   );
-   public static final arg<arh> b = arg.a("pack", a);
+class arh extends FileStore {
+   private final String a;
 
-   public vs a() {
-      return this.c;
+   public arh(String $$0) {
+      this.a = $$0;
    }
 
-   public int b() {
-      return this.d;
+   @Override
+   public String name() {
+      return this.a;
    }
 
-   public Optional<awe<Integer>> c() {
-      return this.e;
+   @Override
+   public String type() {
+      return "index";
+   }
+
+   @Override
+   public boolean isReadOnly() {
+      return true;
+   }
+
+   @Override
+   public long getTotalSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUsableSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUnallocatedSpace() {
+      return 0L;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
+      return $$0 == BasicFileAttributeView.class;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(String $$0) {
+      return "basic".equals($$0);
+   }
+
+   @Nullable
+   @Override
+   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
+      return null;
+   }
+
+   @Override
+   public Object getAttribute(String $$0) throws IOException {
+      throw new UnsupportedOperationException();
    }
 }

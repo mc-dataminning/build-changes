@@ -1,12 +1,11 @@
 public class auo {
-   public static final aut<cad> a = a("acquirable_job_site");
-   public static final aut<cad> b = a("village");
-   public static final aut<cad> c = a("bee_home");
+   public static final avd<cbh> a = a("default_spawns");
+   public static final avd<cbh> b = a("full_moon_spawns");
 
    private auo() {
    }
 
-   private static aut<cad> a(String $$0) {
-      return aut.a(ki.U, new ajc($$0));
+   private static avd<cbh> a(String $$0) {
+      return avd.a(kj.l, new ajh($$0));
    }
 }

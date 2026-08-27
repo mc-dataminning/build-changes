@@ -1,96 +1,64 @@
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
+import java.util.List;
 
-public class wm {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private wn b;
-   private Instant c = Instant.EPOCH;
+public record wm<S>(List<wm.a<S>> a) {
+   public static <S> wm<S> a(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<wm.a<S>> $$4 = a($$1, $$2);
 
-   public wm(UUID $$0, UUID $$1) {
-      this.b = wn.a($$0, $$1);
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null) {
+         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
+         if (!$$6) {
+            break;
+         }
+
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
+      }
+
+      return new wm<>($$4);
    }
 
-   public wm.c a(awz $$0) {
-      return $$1 -> {
-         wn $$2 = this.a();
-         return $$2 == null ? null : new we($$0.sign($$2x -> wi.a($$2x, $$2, $$1)));
-      };
-   }
+   private static <S> List<wm.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<wm.a<S>> $$2 = new ArrayList<>();
 
-   public wm.b a(cid $$0) {
-      awy $$1 = $$0.a();
-      return ($$2, $$3) -> {
-         wn $$4 = this.a();
-         if ($$4 == null) {
-            throw new wm.a(vs.c("chat.disabled.chain_broken"), false);
-         } else if ($$0.b().a()) {
-            throw new wm.a(vs.c("chat.disabled.expiredProfileKey"), false);
-         } else if ($$3.b().isBefore(this.c)) {
-            throw new wm.a(vs.c("multiplayer.disconnect.out_of_order_chat"), true);
-         } else {
-            this.c = $$3.b();
-            wi $$5 = new wi($$4, $$2, $$3, null, vw.c);
-            if (!$$5.a($$1)) {
-               throw new wm.a(vs.c("multiplayer.disconnect.unsigned_chat"), true);
-            } else {
-               if ($$5.a(Instant.now())) {
-                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof fa) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new wm.a<>($$4, $$6));
                }
-
-               return $$5;
             }
          }
-      };
-   }
-
-   @Nullable
-   private wn a() {
-      wn $$0 = this.b;
-      if ($$0 != null) {
-         this.b = $$0.a();
       }
 
-      return $$0;
+      return $$2;
    }
 
-   public static class a extends ws {
-      private final boolean a;
-
-      public a(vs $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
       }
 
-      public boolean a() {
+      public ArgumentCommandNode<S, ?> b() {
          return this.a;
       }
-   }
 
-   @FunctionalInterface
-   public interface b {
-      static wm.b unsigned(UUID $$0, BooleanSupplier $$1) {
-         return ($$2, $$3) -> {
-            if ($$1.getAsBoolean()) {
-               throw new wm.a(vs.c("chat.disabled.missingProfileKey"), false);
-            } else {
-               return wi.a($$0, $$3.a());
-            }
-         };
+      public String c() {
+         return this.b;
       }
-
-      wi unpack(@Nullable we var1, wl var2) throws wm.a;
-   }
-
-   @FunctionalInterface
-   public interface c {
-      wm.c a = $$0 -> null;
-
-      @Nullable
-      we pack(wl var1);
    }
 }

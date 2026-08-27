@@ -1,41 +1,75 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.Arrays;
 import java.util.function.Function;
-import java.util.function.IntFunction;
 
-public class baz extends bct {
-   private final String a;
-   private final IntFunction<String> b;
-
-   public baz(Schema $$0, String $$1, TypeReference $$2, String $$3, String $$4, IntFunction<String> $$5) {
-      super($$0, false, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b = $$5;
+public class baz extends DataFix {
+   public baz(Schema $$0) {
+      super($$0, false);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, Function<Dynamic<T>, Dynamic<T>> $$3) {
-      return $$0.map($$4 -> {
-         DynamicOps<T> $$5 = $$0.getOps();
-         Function<T, T> $$6 = $$2xx -> (T)$$3.apply(new Dynamic($$5, $$2xx)).getValue();
-         return $$5.get($$4, $$1).map($$4x -> $$5.set($$4, $$2, $$6.apply((T)$$4x))).result().orElse($$4);
-      });
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(beh.y), this::a);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> a(
-               $$0x,
-               this.a,
-               "variant",
-               $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asNumber().map($$1 -> $$0xx.createString(this.b.apply($$1.intValue()))).result(), $$0xx)
-            )
-      );
+   private Typed<?> a(Typed<?> $$0) {
+      $$0 = this.a($$0, "minecraft:egg", this::d);
+      $$0 = this.a($$0, "minecraft:ender_pearl", this::d);
+      $$0 = this.a($$0, "minecraft:experience_bottle", this::d);
+      $$0 = this.a($$0, "minecraft:snowball", this::d);
+      $$0 = this.a($$0, "minecraft:potion", this::d);
+      $$0 = this.a($$0, "minecraft:potion", this::c);
+      $$0 = this.a($$0, "minecraft:llama_spit", this::b);
+      $$0 = this.a($$0, "minecraft:arrow", this::a);
+      $$0 = this.a($$0, "minecraft:spectral_arrow", this::a);
+      return this.a($$0, "minecraft:trident", this::a);
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      long $$1 = $$0.get("OwnerUUIDMost").asLong(0L);
+      long $$2 = $$0.get("OwnerUUIDLeast").asLong(0L);
+      return this.a($$0, $$1, $$2).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      OptionalDynamic<?> $$1 = $$0.get("Owner");
+      long $$2 = $$1.get("OwnerUUIDMost").asLong(0L);
+      long $$3 = $$1.get("OwnerUUIDLeast").asLong(0L);
+      return this.a($$0, $$2, $$3).remove("Owner");
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      OptionalDynamic<?> $$1 = $$0.get("Potion");
+      return $$0.set("Item", $$1.orElseEmptyMap()).remove("Potion");
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      String $$1 = "owner";
+      OptionalDynamic<?> $$2 = $$0.get("owner");
+      long $$3 = $$2.get("M").asLong(0L);
+      long $$4 = $$2.get("L").asLong(0L);
+      return this.a($$0, $$3, $$4).remove("owner");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, long $$1, long $$2) {
+      String $$3 = "OwnerUUID";
+      return $$1 != 0L && $$2 != 0L ? $$0.set("OwnerUUID", $$0.createIntList(Arrays.stream(a($$1, $$2)))) : $$0;
+   }
+
+   private static int[] a(long $$0, long $$1) {
+      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
+   }
+
+   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(beh.y, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(beh.y, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

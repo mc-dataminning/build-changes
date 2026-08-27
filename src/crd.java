@@ -1,13 +1,20 @@
-public interface crd {
-   int a();
+public class crd extends cqf {
+   public crd(cqf.a $$0) {
+      super($$0);
+   }
 
-   float b();
+   @Override
+   public bnc a(cqk $$0, cis $$1, bpo $$2, bnb $$3) {
+      if ($$2 instanceof bqd $$4 && $$2.bA() && !$$4.i() && $$4.f()) {
+         if (!$$1.dM().B) {
+            $$4.a(atz.g);
+            $$2.dM().a($$2, drn.v, $$2.dk());
+            $$0.h(1);
+         }
 
-   float c();
+         return bnc.a($$1.dM().B);
+      }
 
-   int d();
-
-   int e();
-
-   csp f();
+      return bnc.d;
+   }
 }

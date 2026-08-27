@@ -1,29 +1,110 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class goc {
-   private final float a;
-   private final AtomicReference<goc.a> b = new AtomicReference<>();
+   final Map<gob<?>, Object> a;
 
-   public goc(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   goc(Map<gob<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public void a(eyc $$0, vs $$1) {
-      goc.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new goc.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   public static goc.a a() {
+      return new goc.a();
+   }
+
+   public static Codec<goc> a(final List<gob<?>> $$0) {
+      return (new MapCodec<goc>() {
+         public <T> RecordBuilder<T> a(goc $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
+
+            for (gob<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
+
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(goc $$0x, RecordBuilder<T> $$1, gob<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<goc> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<goc.a> $$2 = DataResult.success(new goc.a());
+
+            for (gob<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(goc.a::a);
+         }
+
+         private <T, V> DataResult<goc.a> a(DataResult<goc.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gob<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(gob::b).map($$0::createString);
+         }
+      }).codec();
+   }
+
+   @Nullable
+   public <T> T a(gob<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public Set<gob<?>> b() {
+      return this.a.keySet();
+   }
+
+   public static class a {
+      private final Map<gob<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
       }
-   }
 
-   static class a {
-      final vs a;
-      final RateLimiter b;
+      public <T> goc.a a(gob<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
 
-      a(vs $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      public <T> goc.a b(gob<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public goc.a a(goc $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public goc a() {
+         return new goc(this.a);
       }
    }
 }

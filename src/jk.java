@@ -1,21 +1,28 @@
-public record jk(apa a, ib b, dme c, dkd d) {
-   public eov a() {
-      return this.b.b();
+public abstract class jk extends jn {
+   @Override
+   public cqk a(jl $$0, cqk $$1) {
+      cwz $$2 = $$0.b();
+      iv $$3 = dcf.a($$0);
+      ih $$4 = $$0.d().c(dcf.b);
+      cjk $$5 = this.a($$2, $$3, $$1);
+      $$5.c((double)$$4.j(), (double)((float)$$4.k() + 0.1F), (double)$$4.l(), this.b(), this.a());
+      $$2.b($$5);
+      $$1.h(1);
+      return $$1;
    }
 
-   public apa b() {
-      return this.a;
+   @Override
+   protected void a(jl $$0) {
+      $$0.b().c(1002, $$0.c(), 0);
    }
 
-   public ib c() {
-      return this.b;
+   protected abstract cjk a(cwz var1, iv var2, cqk var3);
+
+   protected float a() {
+      return 6.0F;
    }
 
-   public dme d() {
-      return this.c;
-   }
-
-   public dkd e() {
-      return this.d;
+   protected float b() {
+      return 1.1F;
    }
 }

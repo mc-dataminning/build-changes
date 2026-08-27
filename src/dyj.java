@@ -1,28 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyj extends dyf {
-   public static final Codec<dyj> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dyj::new));
+public class dyj implements dxu {
+   public static final Codec<dyj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dmz.b.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dmz.b.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bmh.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dyj::new)
+   );
+   public final dmz b;
+   public final dmz c;
+   private final bmh d;
 
-   public dyj(blq $$0, blq $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dyj(dmz $$0, dmz $$1, bmh $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   protected dyl<?> a() {
-      return dyl.f;
-   }
-
-   @Override
-   protected void a(cwk $$0, dyk.b $$1, awt $$2, dxu $$3, int $$4, dyk.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(awt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return awm.k((float)$$1 + 0.5F) + awm.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public bmh a() {
+      return this.d;
    }
 }

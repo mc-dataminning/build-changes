@@ -1,4 +1,4 @@
-// 24w05b	2026-08-28T01:34:31.1287213	vanilla/Tags for minecraft:block
+// 24w06a	2026-08-28T01:36:38.1659866	vanilla/Tags for minecraft:block
 882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data\minecraft\tags\blocks\stone_ore_replaceables.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data\minecraft\tags\blocks\frogs_spawnable_on.json
@@ -57,7 +57,7 @@ f90b8e6674252583fae1583255b371b3c95c36d5 data\minecraft\tags\blocks\mooshrooms_s
 af26b6f8afbcb74c6e990850cb8baf45137075f4 data\minecraft\tags\blocks\dirt.json
 9cf89cc089a03f7415393823473c106253d62661 data\minecraft\tags\blocks\wall_corals.json
 11016ca20eef8807f79a3d6958510957c0501d65 data\minecraft\tags\blocks\iron_ores.json
-68c3f1710803eed08ada39abe7d3fff027f7ab23 data\minecraft\tags\blocks\armadillo_spawnable_on.json
+52601cc0888aa51f164cf44aa8c088293bb40ce6 data\minecraft\tags\blocks\armadillo_spawnable_on.json
 c8ec59201ede7ff6cb74a70bd44fb6be642a3f40 data\minecraft\tags\blocks\stone_pressure_plates.json
 afd862ebc333a8df53174530faee5f54c15a71a7 data\minecraft\tags\blocks\nether_carver_replaceables.json
 c3344f6e568a707914a420dacbf9b082a8ff1787 data\minecraft\tags\blocks\stone_bricks.json
@@ -94,6 +94,7 @@ d1460748ca1e7a947c8151d5f7b4a6e429241c23 data\minecraft\tags\blocks\overworld_ca
 84ec8be9cdb0097dbc6e35113fbd00d2157a310c data\minecraft\tags\blocks\mangrove_logs_can_grow_through.json
 f8376cab397acf16d638e5a8595dc07d123925c5 data\minecraft\tags\blocks\planks.json
 88dcd99364a64f164a26461c5d5b9da0cb960b10 data\minecraft\tags\blocks\trapdoors.json
+9eaa40cdc7d24db027be3eac878536ce597e2b3a data\minecraft\tags\blocks\badlands_terracotta.json
 5338100e594200c9c08cc4228d31ae3b14f5bdd1 data\minecraft\tags\blocks\buttons.json
 d5aebde1fd1141df86b6ed4ace3f720504b32ab2 data\minecraft\tags\blocks\soul_fire_base_blocks.json
 c2be2e0fe32ef15e0f55b691a324afc166447e17 data\minecraft\tags\blocks\snaps_goat_horn.json

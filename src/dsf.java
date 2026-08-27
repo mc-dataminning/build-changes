@@ -1,63 +1,105 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public final class dsf {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public interface dsf {
+   Codec<dsf> b = dsg.b;
+   Codec<il<dsf>> c = ajd.a(kj.ay, b);
+   Codec<dsf> d = c.xmap(dsg.j::new, $$0 -> (il)($$0 instanceof dsg.j $$1 ? $$1.j() : new il.a<>($$0)));
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   double a(dsf.b var1);
+
+   void a(double[] var1, dsf.a var2);
+
+   dsf a(dsf.f var1);
+
+   double a();
+
+   double b();
+
+   awq<? extends dsf> c();
+
+   default dsf a(double $$0, double $$1) {
+      return new dsg.g(this, $$0, $$1);
    }
 
-   public static dsf.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dsf.a($$1, $$2);
+   default dsf d() {
+      return dsg.a(this, dsg.k.a.a);
    }
 
-   public static dsf.a c(long $$0) {
-      return b($$0).a();
+   default dsf e() {
+      return dsg.a(this, dsg.k.a.b);
    }
 
-   public static dsf.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dsf.a($$2, $$3);
+   default dsf f() {
+      return dsg.a(this, dsg.k.a.c);
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   default dsf g() {
+      return dsg.a(this, dsg.k.a.d);
    }
 
-   public static record a(long a, long b) {
-      public dsf.a a(long $$0, long $$1) {
-         return new dsf.a(this.a ^ $$0, this.b ^ $$1);
+   default dsf h() {
+      return dsg.a(this, dsg.k.a.e);
+   }
+
+   default dsf i() {
+      return dsg.a(this, dsg.k.a.f);
+   }
+
+   public interface a {
+      dsf.b a(int var1);
+
+      void a(double[] var1, dsf var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default dto d() {
+         return dto.a();
+      }
+   }
+
+   public static record c(il<ehq.a> b, @Nullable ehq c) {
+      public static final Codec<dsf.c> a = ehq.a.b.xmap($$0 -> new dsf.c($$0, null), dsf.c::b);
+
+      public c(il<ehq.a> $$0) {
+         this($$0, null);
       }
 
-      public dsf.a a(dsf.a $$0) {
-         return this.a($$0.a, $$0.b);
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
       }
 
-      public dsf.a a() {
-         return new dsf.a(dsf.a(this.a), dsf.a(this.b));
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
+   }
+
+   public interface d extends dsf {
+      @Override
+      default void a(double[] $$0, dsf.a $$1) {
+         $$1.a($$0, this);
       }
 
-      public long b() {
-         return this.a;
+      @Override
+      default dsf a(dsf.f $$0) {
+         return $$0.apply(this);
       }
+   }
 
-      public long c() {
-         return this.b;
+   public static record e(int a, int b, int c) implements dsf.b {
+   }
+
+   public interface f {
+      dsf apply(dsf var1);
+
+      default dsf.c a(dsf.c $$0) {
+         return $$0;
       }
    }
 }

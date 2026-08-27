@@ -1,12 +1,11 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+public interface bja {
+   int c();
 
-public interface bja extends bjc {
-   bjb d();
+   int d();
 
-   @Nullable
-   biv.a c(String var1);
+   long a(int var1);
 
-   Set<Pair<String, bkf>> e();
+   long a(int var1, int var2);
+
+   void e();
 }

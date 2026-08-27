@@ -1,41 +1,39 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public class gir {
-   private static final giy[] a = new giy[]{
-      a("textures/entity/player/slim/alex.png", giy.a.a),
-      a("textures/entity/player/slim/ari.png", giy.a.a),
-      a("textures/entity/player/slim/efe.png", giy.a.a),
-      a("textures/entity/player/slim/kai.png", giy.a.a),
-      a("textures/entity/player/slim/makena.png", giy.a.a),
-      a("textures/entity/player/slim/noor.png", giy.a.a),
-      a("textures/entity/player/slim/steve.png", giy.a.a),
-      a("textures/entity/player/slim/sunny.png", giy.a.a),
-      a("textures/entity/player/slim/zuri.png", giy.a.a),
-      a("textures/entity/player/wide/alex.png", giy.a.b),
-      a("textures/entity/player/wide/ari.png", giy.a.b),
-      a("textures/entity/player/wide/efe.png", giy.a.b),
-      a("textures/entity/player/wide/kai.png", giy.a.b),
-      a("textures/entity/player/wide/makena.png", giy.a.b),
-      a("textures/entity/player/wide/noor.png", giy.a.b),
-      a("textures/entity/player/wide/steve.png", giy.a.b),
-      a("textures/entity/player/wide/sunny.png", giy.a.b),
-      a("textures/entity/player/wide/zuri.png", giy.a.b)
-   };
+public class gir extends gis {
+   @Nullable
+   private CompletableFuture<gis.a> f;
 
-   public static ajc a() {
-      return a[6].a();
+   public gir(aso $$0, ajh $$1, Executor $$2) {
+      super($$1);
+      this.f = CompletableFuture.supplyAsync(() -> gis.a.a($$0, $$1), $$2);
    }
 
-   public static giy a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Override
+   protected gis.a b(aso $$0) {
+      if (this.f != null) {
+         gis.a $$1 = this.f.join();
+         this.f = null;
+         return $$1;
+      } else {
+         return gis.a.a($$0, this.e);
+      }
    }
 
-   public static giy a(GameProfile $$0) {
-      return a($$0.getId());
+   public CompletableFuture<Void> d() {
+      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
    }
 
-   private static giy a(String $$0, giy.a $$1) {
-      return new giy(new ajc($$0), null, null, null, $$1, true);
+   @Override
+   public void a(gja $$0, aso $$1, ajh $$2, Executor $$3) {
+      this.f = CompletableFuture.supplyAsync(() -> gis.a.a($$1, this.e), ac.f());
+      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
+   }
+
+   private static Executor a(Executor $$0) {
+      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

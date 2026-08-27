@@ -28,27 +28,27 @@ public class ey implements ArgumentType<ey.b> {
       return $$3.a($$1, $$1x -> dz.b(((du)$$0.getSource()).q(), $$1x));
    };
    private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vs.c("argument.scoreHolder.empty"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vu.c("argument.scoreHolder.empty"));
    final boolean d;
 
    public ey(boolean $$0) {
       this.d = $$0;
    }
 
-   public static epy a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static equ a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1).iterator().next();
    }
 
-   public static Collection<epy> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<equ> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, Collections::emptyList);
    }
 
-   public static Collection<epy> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<equ> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, ((du)$$0.getSource()).l().aK()::e);
    }
 
-   public static Collection<epy> a(CommandContext<du> $$0, String $$1, Supplier<Collection<epy>> $$2) throws CommandSyntaxException {
-      Collection<epy> $$3 = ((ey.b)$$0.getArgument($$1, ey.b.class)).getNames((du)$$0.getSource(), $$2);
+   public static Collection<equ> a(CommandContext<du> $$0, String $$1, Supplier<Collection<equ>> $$2) throws CommandSyntaxException {
+      Collection<equ> $$3 = ((ey.b)$$0.getArgument($$1, ey.b.class)).getNames((du)$$0.getSource(), $$2);
       if ($$3.isEmpty()) {
          throw eh.d.create();
       } else {
@@ -83,7 +83,7 @@ public class ey implements ArgumentType<ey.b> {
          String $$4 = $$0.getString().substring($$3, $$0.getCursor());
          if ($$4.equals("*")) {
             return ($$0x, $$1) -> {
-               Collection<epy> $$2 = $$1.get();
+               Collection<equ> $$2 = $$1.get();
                if ($$2.isEmpty()) {
                   throw c.create();
                } else {
@@ -91,7 +91,7 @@ public class ey implements ArgumentType<ey.b> {
                }
             };
          } else {
-            List<epy> $$5 = List.of(epy.d($$4));
+            List<equ> $$5 = List.of(equ.d($$4));
             if ($$4.startsWith("#")) {
                return ($$1, $$2) -> $$5;
             } else {
@@ -99,11 +99,11 @@ public class ey implements ArgumentType<ey.b> {
                   UUID $$6 = UUID.fromString($$4);
                   return ($$2, $$3x) -> {
                      MinecraftServer $$4x = $$2.l();
-                     epy $$5x = null;
-                     List<epy> $$6x = null;
+                     equ $$5x = null;
+                     List<equ> $$6x = null;
 
-                     for (apa $$7 : $$4x.K()) {
-                        bof $$8 = $$7.a($$6);
+                     for (apf $$7 : $$4x.K()) {
+                        bow $$8 = $$7.a($$6);
                         if ($$8 != null) {
                            if ($$5x == null) {
                               $$5x = $$8;
@@ -127,7 +127,7 @@ public class ey implements ArgumentType<ey.b> {
                } catch (IllegalArgumentException var6) {
                   return ($$2, $$3x) -> {
                      MinecraftServer $$4x = $$2.l();
-                     apb $$5x = $$4x.ah().a($$4);
+                     apg $$5x = $$4x.ah().a($$4);
                      return $$5x != null ? List.of($$5x) : $$5;
                   };
                }
@@ -143,7 +143,7 @@ public class ey implements ArgumentType<ey.b> {
    public static class a implements hn<ey, ey.a.a> {
       private static final byte a = 1;
 
-      public void a(ey.a.a $$0, us $$1) {
+      public void a(ey.a.a $$0, uu $$1) {
          int $$2 = 0;
          if ($$0.b) {
             $$2 |= 1;
@@ -152,7 +152,7 @@ public class ey implements ArgumentType<ey.b> {
          $$1.k($$2);
       }
 
-      public ey.a.a a(us $$0) {
+      public ey.a.a a(uu $$0) {
          byte $$1 = $$0.readByte();
          boolean $$2 = ($$1 & 1) != 0;
          return new ey.a.a($$2);
@@ -186,7 +186,7 @@ public class ey implements ArgumentType<ey.b> {
 
    @FunctionalInterface
    public interface b {
-      Collection<epy> getNames(du var1, Supplier<Collection<epy>> var2) throws CommandSyntaxException;
+      Collection<equ> getNames(du var1, Supplier<Collection<equ>> var2) throws CommandSyntaxException;
    }
 
    public static class c implements ey.b {
@@ -197,8 +197,8 @@ public class ey implements ArgumentType<ey.b> {
       }
 
       @Override
-      public Collection<epy> getNames(du $$0, Supplier<Collection<epy>> $$1) throws CommandSyntaxException {
-         List<? extends bof> $$2 = this.a.b($$0);
+      public Collection<equ> getNames(du $$0, Supplier<Collection<equ>> $$1) throws CommandSyntaxException {
+         List<? extends bow> $$2 = this.a.b($$0);
          if ($$2.isEmpty()) {
             throw eh.d.create();
          } else {

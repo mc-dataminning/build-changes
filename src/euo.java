@@ -1,54 +1,73 @@
 import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
 import java.util.List;
-import java.util.UUID;
-import org.slf4j.Logger;
+import org.apache.commons.io.IOUtils;
 
-public class euo extends euz {
-   private static final Logger c = LogUtils.getLogger();
-   public long a;
-   public List<UUID> b;
-
-   public static euo a(JsonObject $$0) {
-      euo $$1 = new euo();
-
-      try {
-         $$1.a = eww.a("serverId", $$0, -1L);
-         String $$2 = eww.b("playerList", $$0, null);
-         if ($$2 != null) {
-            JsonElement $$3 = JsonParser.parseString($$2);
-            if ($$3.isJsonArray()) {
-               $$1.b = a($$3.getAsJsonArray());
-            } else {
-               $$1.b = Lists.newArrayList();
-            }
-         } else {
-            $$1.b = Lists.newArrayList();
-         }
-      } catch (Exception var4) {
-         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
+public class euo {
+   public static List<evq> a(euo.a... $$0) {
+      for (euo.a $$1 : $$0) {
+         a($$1.j);
       }
 
-      return $$1;
+      List<evq> $$2 = Lists.newArrayList();
+
+      for (euo.a $$3 : $$0) {
+         $$2.add(new evq($$3.i, a($$3.j)));
+      }
+
+      $$2.sort(Comparator.comparingInt(evq::a));
+      return $$2;
    }
 
-   private static List<UUID> a(JsonArray $$0) {
-      List<UUID> $$1 = new ArrayList<>($$0.size());
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
 
-      for (JsonElement $$2 : $$0) {
-         if ($$2.isJsonObject()) {
-            UUID $$3 = eww.a("playerId", $$2.getAsJsonObject(), null);
-            if ($$3 != null) {
-               $$1.add($$3);
-            }
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
          }
       }
 
-      return $$1;
+      return (int)((double)$$2 / 5.0);
+   }
+
+   private static long b() {
+      return ac.b();
+   }
+
+   public static List<evq> a() {
+      return a(euo.a.values());
+   }
+
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+
+      final String i;
+      final String j;
+
+      private a(String $$0, String $$1) {
+         this.i = $$0;
+         this.j = $$1;
+      }
    }
 }

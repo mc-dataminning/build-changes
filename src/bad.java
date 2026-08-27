@@ -1,75 +1,18 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.datafixers.types.Type;
 
 public class bad extends DataFix {
-   private static final Set<String> a = Sets.newHashSet(
-      new String[]{
-         "ArmorStand",
-         "Bat",
-         "Blaze",
-         "CaveSpider",
-         "Chicken",
-         "Cow",
-         "Creeper",
-         "EnderDragon",
-         "Enderman",
-         "Endermite",
-         "EntityHorse",
-         "Ghast",
-         "Giant",
-         "Guardian",
-         "LavaSlime",
-         "MushroomCow",
-         "Ozelot",
-         "Pig",
-         "PigZombie",
-         "Rabbit",
-         "Sheep",
-         "Shulker",
-         "Silverfish",
-         "Skeleton",
-         "Slime",
-         "SnowMan",
-         "Spider",
-         "Squid",
-         "Villager",
-         "VillagerGolem",
-         "Witch",
-         "WitherBoss",
-         "Wolf",
-         "Zombie"
-      }
-   );
+   private static final String a = "minecraft:decorated_pot";
 
-   public bad(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bad(Schema $$0) {
+      super($$0, true);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
-      float $$3;
-      if ($$1.isPresent()) {
-         $$3 = $$1.get().floatValue();
-         $$0 = $$0.remove("HealF");
-      } else {
-         if (!$$2.isPresent()) {
-            return $$0;
-         }
-
-         $$3 = $$2.get().floatValue();
-      }
-
-      return $$0.set("Health", $$0.createFloat($$3));
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bdt.y), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(beh.s, "minecraft:decorated_pot");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(beh.s, "minecraft:decorated_pot");
+      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
    }
 }

@@ -1,24 +1,20 @@
-public class cuo extends ctz {
-   public cuo(ctz.a $$0, bom... $$1) {
-      super($$0, aum.bg, $$1);
+public class cuo extends cuu {
+   public cuo(cuu.a $$0, bpd... $$1) {
+      super($$0, auv.bn, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 5 + ($$0 - 1) * 9;
+      return 12 + ($$0 - 1) * 20;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
+      return this.a($$0) + 25;
    }
 
    @Override
    public int a() {
-      return 3;
-   }
-
-   public static float e(int $$0) {
-      return 1.0F - 1.0F / (float)($$0 + 1);
+      return 2;
    }
 }

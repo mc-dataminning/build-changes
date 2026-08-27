@@ -1,35 +1,25 @@
-public class cup extends ctz {
-   public cup(ctz.a $$0, bom... $$1) {
-      super($$0, aum.bc, $$1);
+public class cup extends cuu {
+   public cup(cuu.a $$0, bpd... $$1) {
+      super($$0, auv.bp, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 25;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 50;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
-   }
-
-   @Override
-   public boolean j() {
-      return false;
+      return 50;
    }
 
    @Override
    public int a() {
-      return 3;
+      return 4;
+   }
+
+   @Override
+   public boolean a(cuu $$0) {
+      return super.a($$0) && $$0 != cux.I;
    }
 }

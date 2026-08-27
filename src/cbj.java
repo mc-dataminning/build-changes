@@ -1,30 +1,30 @@
-public abstract class cbj extends bpt {
-   private static final int bY = 100;
-   private int bZ;
-
-   protected cbj(bol<? extends cbj> $$0, cwe $$1) {
+public class cbj extends cbc {
+   public cbj(bpc<? extends cbj> $$0, cwz $$1) {
       super($$0, $$1);
    }
 
-   public boolean b(apb $$0) {
-      sy $$1 = new sy();
-      $$1.a("id", this.bw());
-      this.f($$1);
-      if ($$0.h($$1)) {
-         this.am();
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public cqk b() {
+      return new cqk(cqn.qG);
    }
 
    @Override
-   public void l() {
-      this.bZ++;
-      super.l();
+   protected atx v() {
+      return aty.fd;
    }
 
-   public boolean gu() {
-      return this.bZ > 100;
+   @Override
+   protected atx n_() {
+      return aty.fe;
+   }
+
+   @Override
+   protected atx d(bnv $$0) {
+      return aty.fg;
+   }
+
+   @Override
+   protected atx go() {
+      return aty.ff;
    }
 }

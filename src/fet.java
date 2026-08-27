@@ -1,49 +1,122 @@
-public class fet extends fgj {
-   private static eyn<?>[] a(eyo $$0) {
-      return new eyn[]{
-         $$0.ap(),
-         $$0.T(),
-         $$0.r(),
-         $$0.F(),
-         $$0.p(),
-         $$0.V(),
-         $$0.n(),
-         $$0.o(),
-         $$0.y(),
-         $$0.z(),
-         $$0.Z(),
-         $$0.aa(),
-         $$0.ag(),
-         $$0.ah(),
-         $$0.ai(),
-         $$0.al(),
-         $$0.aj(),
-         $$0.ak(),
-         $$0.b(),
-         $$0.a(),
-         $$0.q(),
-         $$0.c(),
-         $$0.s()
-      };
+import java.util.function.Consumer;
+
+public class fet implements feu {
+   public static final int a = 36;
+   private static final int b = 30;
+   private final fer c = new fer();
+   private final fer d = new fer();
+   private final fer e = new fer();
+   private final fhf f;
+   private int g;
+   private int h;
+
+   public fet(fhf $$0) {
+      this($$0, 36);
    }
 
-   public fet(fgh $$0, eyo $$1) {
-      super($$0, $$1, vs.c("options.accessibility.title"), a($$1));
+   public fet(fhf $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public fet(fhf $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      fai $$0 = this.k.b(this.b.r());
-      if ($$0 != null && !this.f.ab().b().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fbv.a(vs.c("options.accessibility.high_contrast.error.tooltip")));
-      }
+   public void m(int $$0) {
    }
 
    @Override
-   protected void j() {
-      this.c(fak.a(vs.c("options.accessibility.link"), fez.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
-      this.c(fak.a(vr.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
+   public void n(int $$0) {
+   }
+
+   @Override
+   public int B() {
+      return 0;
+   }
+
+   @Override
+   public int C() {
+      return 0;
+   }
+
+   @Override
+   public int w() {
+      return this.f.g;
+   }
+
+   @Override
+   public int u() {
+      return this.f.h;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   @Override
+   public void b(Consumer<fev> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.g);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.g);
+      this.d.a($$1);
+      this.d.a();
+      this.d.n(this.f.h - $$1);
+      this.e.b(this.f.g);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.h - $$1 - this.e.u();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends fev> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends fev> T a(T $$0, Consumer<few> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public <T extends fev> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends fev> T b(T $$0, Consumer<few> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends fev> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends fev> T c(T $$0, Consumer<few> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

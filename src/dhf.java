@@ -1,28 +1,31 @@
-public enum dhf {
-   a {
-      @Override
-      public boolean a(dme $$0, cvk $$1, ib $$2, ih $$3) {
-         return czf.a($$0.l($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final epo e = czf.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
 
-      @Override
-      public boolean a(dme $$0, cvk $$1, ib $$2, ih $$3) {
-         return !epl.c($$0.l($$1, $$2).a($$3), this.e, eoz.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final epo e = epl.a(epl.b(), czf.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), eoz.e);
+public class dhf extends dbu {
+   public static final MapCodec<dhf> b = b(dhf::new);
+   private static final vu c = vu.c("container.upgrade");
 
-      @Override
-      public boolean a(dme $$0, cvk $$1, ib $$2, ih $$3) {
-         return !epl.c($$0.l($$1, $$2).a($$3), this.e, eoz.c);
-      }
-   };
+   @Override
+   public MapCodec<dhf> a() {
+      return b;
+   }
 
-   public abstract boolean a(dme var1, cvk var2, ib var3, ih var4);
+   protected dhf(dmy.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected bng b(dmz $$0, cwz $$1, ib $$2) {
+      return new bnm(($$2x, $$3, $$4) -> new cnk($$2x, $$3, clz.a($$1, $$2)), c);
+   }
+
+   @Override
+   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
+      if ($$1.B) {
+         return bnc.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(aui.aF);
+         return bnc.b;
+      }
+   }
 }

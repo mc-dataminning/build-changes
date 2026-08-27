@@ -1,3 +1,5 @@
-public interface ahu extends uy {
-   void a(ahv var1);
+public record ahu(ajh a) implements ahs {
+   @Override
+   public void a(uu $$0) {
+   }
 }

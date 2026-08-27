@@ -1,259 +1,78 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.stream.Stream.Builder;
 
-public class eby {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eby> a = Codec.INT_STREAM
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 6).map($$0x -> new eby($$0x[0], $$0x[1], $$0x[2], $$0x[3], $$0x[4], $$0x[5])),
-         $$0 -> IntStream.of($$0.c, $$0.d, $$0.e, $$0.f, $$0.g, $$0.h)
-      )
-      .stable();
-   private int c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+@Deprecated
+public class eby extends ecj {
+   public static final Codec<eby> a = bmh.b(0, 256).fieldOf("count").xmap(eby::new, $$0 -> $$0.c).codec();
+   private final bmh c;
 
-   public eby(ib $$0) {
-      this($$0.u(), $$0.v(), $$0.w(), $$0.u(), $$0.v(), $$0.w());
+   private eby(bmh $$0) {
+      this.c = $$0;
    }
 
-   public eby(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      if ($$3 < $$0 || $$4 < $$1 || $$5 < $$2) {
-         String $$6 = "Invalid bounding box data, inverted bounds for: " + this;
-         if (aa.aV) {
-            throw new IllegalStateException($$6);
+   public static eby a(bmh $$0) {
+      return new eby($$0);
+   }
+
+   public static eby a(int $$0) {
+      return a(bme.a($$0));
+   }
+
+   @Override
+   public Stream<ib> a_(ech $$0, axd $$1, ib $$2) {
+      Builder<ib> $$3 = Stream.builder();
+      int $$4 = 0;
+
+      boolean $$5;
+      do {
+         $$5 = false;
+
+         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
+            int $$7 = $$1.a(16) + $$2.u();
+            int $$8 = $$1.a(16) + $$2.w();
+            int $$9 = $$0.a(dsm.a.e, $$7, $$8);
+            int $$10 = a($$0, $$7, $$9, $$8, $$4);
+            if ($$10 != Integer.MAX_VALUE) {
+               $$3.add(new ib($$7, $$10, $$8));
+               $$5 = true;
+            }
          }
 
-         b.error($$6);
-         this.c = Math.min($$0, $$3);
-         this.d = Math.min($$1, $$4);
-         this.e = Math.min($$2, $$5);
-         this.f = Math.max($$0, $$3);
-         this.g = Math.max($$1, $$4);
-         this.h = Math.max($$2, $$5);
-      }
-   }
+         $$4++;
+      } while ($$5);
 
-   public static eby a(jf $$0, jf $$1) {
-      return new eby(
-         Math.min($$0.u(), $$1.u()),
-         Math.min($$0.v(), $$1.v()),
-         Math.min($$0.w(), $$1.w()),
-         Math.max($$0.u(), $$1.u()),
-         Math.max($$0.v(), $$1.v()),
-         Math.max($$0.w(), $$1.w())
-      );
-   }
-
-   public static eby a() {
-      return new eby(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
-   }
-
-   public static eby a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, ih $$9) {
-      switch ($$9) {
-         case d:
-         default:
-            return new eby($$0 + $$3, $$1 + $$4, $$2 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$8 - 1 + $$5);
-         case c:
-            return new eby($$0 + $$3, $$1 + $$4, $$2 - $$8 + 1 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$5);
-         case e:
-            return new eby($$0 - $$8 + 1 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
-         case f:
-            return new eby($$0 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$8 - 1 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
-      }
-   }
-
-   public Stream<cvl> b() {
-      int $$0 = jd.a(this.h());
-      int $$1 = jd.a(this.j());
-      int $$2 = jd.a(this.k());
-      int $$3 = jd.a(this.m());
-      return cvl.a(new cvl($$0, $$1), new cvl($$2, $$3));
-   }
-
-   public boolean a(eby $$0) {
-      return this.f >= $$0.c && this.c <= $$0.f && this.h >= $$0.e && this.e <= $$0.h && this.g >= $$0.d && this.d <= $$0.g;
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, int $$3) {
-      return this.f >= $$0 && this.c <= $$2 && this.h >= $$1 && this.e <= $$3;
-   }
-
-   public static Optional<eby> a(Iterable<ib> $$0) {
-      Iterator<ib> $$1 = $$0.iterator();
-      if (!$$1.hasNext()) {
-         return Optional.empty();
-      } else {
-         eby $$2 = new eby($$1.next());
-         $$1.forEachRemaining($$2::a);
-         return Optional.of($$2);
-      }
-   }
-
-   public static Optional<eby> b(Iterable<eby> $$0) {
-      Iterator<eby> $$1 = $$0.iterator();
-      if (!$$1.hasNext()) {
-         return Optional.empty();
-      } else {
-         eby $$2 = $$1.next();
-         eby $$3 = new eby($$2.c, $$2.d, $$2.e, $$2.f, $$2.g, $$2.h);
-         $$1.forEachRemaining($$3::b);
-         return Optional.of($$3);
-      }
-   }
-
-   @Deprecated
-   public eby b(eby $$0) {
-      this.c = Math.min(this.c, $$0.c);
-      this.d = Math.min(this.d, $$0.d);
-      this.e = Math.min(this.e, $$0.e);
-      this.f = Math.max(this.f, $$0.f);
-      this.g = Math.max(this.g, $$0.g);
-      this.h = Math.max(this.h, $$0.h);
-      return this;
-   }
-
-   @Deprecated
-   public eby a(ib $$0) {
-      this.c = Math.min(this.c, $$0.u());
-      this.d = Math.min(this.d, $$0.v());
-      this.e = Math.min(this.e, $$0.w());
-      this.f = Math.max(this.f, $$0.u());
-      this.g = Math.max(this.g, $$0.v());
-      this.h = Math.max(this.h, $$0.w());
-      return this;
-   }
-
-   @Deprecated
-   public eby a(int $$0, int $$1, int $$2) {
-      this.c += $$0;
-      this.d += $$1;
-      this.e += $$2;
-      this.f += $$0;
-      this.g += $$1;
-      this.h += $$2;
-      return this;
-   }
-
-   @Deprecated
-   public eby a(jf $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
-   }
-
-   public eby b(int $$0, int $$1, int $$2) {
-      return new eby(this.c + $$0, this.d + $$1, this.e + $$2, this.f + $$0, this.g + $$1, this.h + $$2);
-   }
-
-   public eby a(int $$0) {
-      return new eby(this.h() - $$0, this.i() - $$0, this.j() - $$0, this.k() + $$0, this.l() + $$0, this.m() + $$0);
-   }
-
-   public boolean b(jf $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
-   }
-
-   public boolean c(int $$0, int $$1, int $$2) {
-      return $$0 >= this.c && $$0 <= this.f && $$2 >= this.e && $$2 <= this.h && $$1 >= this.d && $$1 <= this.g;
-   }
-
-   public jf c() {
-      return new jf(this.f - this.c, this.g - this.d, this.h - this.e);
-   }
-
-   public int d() {
-      return this.f - this.c + 1;
-   }
-
-   public int e() {
-      return this.g - this.d + 1;
-   }
-
-   public int f() {
-      return this.h - this.e + 1;
-   }
-
-   public ib g() {
-      return new ib(this.c + (this.f - this.c + 1) / 2, this.d + (this.g - this.d + 1) / 2, this.e + (this.h - this.e + 1) / 2);
-   }
-
-   public void a(Consumer<ib> $$0) {
-      ib.a $$1 = new ib.a();
-      $$0.accept($$1.d(this.f, this.g, this.h));
-      $$0.accept($$1.d(this.c, this.g, this.h));
-      $$0.accept($$1.d(this.f, this.d, this.h));
-      $$0.accept($$1.d(this.c, this.d, this.h));
-      $$0.accept($$1.d(this.f, this.g, this.e));
-      $$0.accept($$1.d(this.c, this.g, this.e));
-      $$0.accept($$1.d(this.f, this.d, this.e));
-      $$0.accept($$1.d(this.c, this.d, this.e));
+      return $$3.build();
    }
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("minX", this.c)
-         .add("minY", this.d)
-         .add("minZ", this.e)
-         .add("maxX", this.f)
-         .add("maxY", this.g)
-         .add("maxZ", this.h)
-         .toString();
+   public eck<?> b() {
+      return eck.i;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof eby $$1)
-            ? false
-            : this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f && this.g == $$1.g && this.h == $$1.h;
+   private static int a(ech $$0, int $$1, int $$2, int $$3, int $$4) {
+      ib.a $$5 = new ib.a($$1, $$2, $$3);
+      int $$6 = 0;
+      dmz $$7 = $$0.a($$5);
+
+      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
+         $$5.q($$8 - 1);
+         dmz $$9 = $$0.a($$5);
+         if (!a($$9) && a($$7) && !$$9.a(dac.F)) {
+            if ($$6 == $$4) {
+               return $$5.v() + 1;
+            }
+
+            $$6++;
+         }
+
+         $$7 = $$9;
       }
+
+      return Integer.MAX_VALUE;
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.d, this.e, this.f, this.g, this.h);
-   }
-
-   public int h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.d;
-   }
-
-   public int j() {
-      return this.e;
-   }
-
-   public int k() {
-      return this.f;
-   }
-
-   public int l() {
-      return this.g;
-   }
-
-   public int m() {
-      return this.h;
+   private static boolean a(dmz $$0) {
+      return $$0.i() || $$0.a(dac.G) || $$0.a(dac.H);
    }
 }

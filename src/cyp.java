@@ -1,72 +1,59 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class cyp extends czf implements dgf {
-   public static final dmv d = dmu.C;
-   private static final epo a = czf.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+public class cyp extends cyc {
+   public static final Codec<cyp> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajf.d(cyf.ah), ajf.d(cyf.ai), ajf.d(cyf.aj), ajf.d(cyf.ak), ajf.d(cyf.al)).apply($$0, $$0.stable(cyp::new))
+   );
+   private final il<cxy> c;
+   private final il<cxy> d;
+   private final il<cxy> e;
+   private final il<cxy> f;
+   private final il<cxy> g;
 
-   protected cyp(dmd.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
+   public static cyp a(im<cxy> $$0) {
+      return new cyp($$0.b(cyf.ah), $$0.b(cyf.ai), $$0.b(cyf.aj), $$0.b(cyf.ak), $$0.b(cyf.al));
+   }
+
+   private cyp(il<cxy> $$0, il<cxy> $$1, il<cxy> $$2, il<cxy> $$3, il<cxy> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected abstract MapCodec<? extends cyp> a();
-
-   protected void a(dme $$0, cwf $$1, ib $$2) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.F_().a(40));
-      }
+   protected Stream<il<cxy>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
-   protected static boolean e(dme $$0, cvk $$1, ib $$2) {
-      if ($$0.c(d)) {
-         return true;
+   @Override
+   protected Codec<? extends cyc> a() {
+      return b;
+   }
+
+   @Override
+   public il<cxy> getNoiseBiome(int $$0, int $$1, int $$2, cyh.f $$3) {
+      int $$4 = iw.c($$0);
+      int $$5 = iw.c($$1);
+      int $$6 = iw.c($$2);
+      int $$7 = je.a($$4);
+      int $$8 = je.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
       } else {
-         for (ih $$3 : ih.values()) {
-            if ($$1.b_($$2.a($$3)).a(auj.a)) {
-               return true;
-            }
+         int $$9 = (je.a($$4) * 2 + 1) * 8;
+         int $$10 = (je.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dsf.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
-
-         return false;
       }
-   }
-
-   @Nullable
-   @Override
-   public dme a(crx $$0) {
-      ehr $$1 = $$0.q().b_($$0.a());
-      return this.o().a(d, Boolean.valueOf($$1.a(auj.a) && $$1.e() == 8));
-   }
-
-   @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return a;
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ehs.c, ehs.c.a($$3));
-      }
-
-      return $$1 == ih.a && !this.a($$0, (cwh)$$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dme $$0, cwh $$1, ib $$2) {
-      ib $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, ih.b);
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(d);
-   }
-
-   @Override
-   protected ehr c_(dme $$0) {
-      return $$0.c(d) ? ehs.c.a(false) : super.c_($$0);
    }
 }

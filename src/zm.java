@@ -1,18 +1,19 @@
-public record zm(ib c, int d) implements za {
-   public static final xq<us, zm> a = za.a(zm::a, zm::new);
-   public static final za.b<zm> b = za.a("debug/poi_ticket_count");
+public record zm(ib c, String d, int e) implements zc {
+   public static final xs<uu, zm> a = zc.a(zm::a, zm::new);
+   public static final zc.b<zm> b = zc.a("debug/poi_added");
 
-   private zm(us $$0) {
-      this($$0.e(), $$0.readInt());
+   private zm(uu $$0) {
+      this($$0.e(), $$0.p(), $$0.readInt());
    }
 
-   private void a(us $$0) {
+   private void a(uu $$0) {
       $$0.a(this.c);
-      $$0.p(this.d);
+      $$0.a(this.d);
+      $$0.p(this.e);
    }
 
    @Override
-   public za.b<zm> a() {
+   public zc.b<zm> a() {
       return b;
    }
 
@@ -20,7 +21,11 @@ public record zm(ib c, int d) implements za {
       return this.c;
    }
 
-   public int c() {
+   public String c() {
       return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

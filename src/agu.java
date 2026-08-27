@@ -1,26 +1,45 @@
-public enum agu {
-   a,
-   b,
-   c;
+public class agu implements yb<aez> {
+   public static final xs<uu, agu> a = yb.a(agu::a, agu::new);
+   private final epn b;
+   private final bnb c;
+   private final int d;
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
-
-   public static agu a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public agu(bnb $$0, epn $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   private agu(uu $$0) {
+      this.c = $$0.b(bnb.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
+   }
+
+   private void a(uu $$0) {
+      $$0.a(this.c);
+      $$0.a(this.b);
+      $$0.c(this.d);
+   }
+
+   @Override
+   public yd<agu> a() {
+      return aex.ca;
+   }
+
+   public void a(aez $$0) {
+      $$0.a(this);
+   }
+
+   public bnb b() {
+      return this.c;
+   }
+
+   public epn e() {
+      return this.b;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

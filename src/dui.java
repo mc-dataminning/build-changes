@@ -1,57 +1,52 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dui extends duj {
-   public dui(Codec<dxf> $$0) {
-      super($$0);
+public class dui extends duk {
+   public static final Codec<dui> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               duk.d.forGetter($$0x -> $$0x), bmf.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dui.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dui::new)
+   );
+   public final bmf b;
+   public final dui.a c;
+
+   public dui(float $$0, ebj $$1, bmf $$2, dtg $$3, dul $$4, ip<daa> $$5, bmf $$6, dui.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   @Override
-   protected boolean a(cwf $$0, awt $$1, ib $$2, dme $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
-         return false;
-      } else {
-         ih $$4 = ih.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<ih> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+   public dui(duk $$0, bmf $$1, dui.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   }
 
-         for (ih $$8 : $$6.subList(0, $$5)) {
-            ib.a $$9 = $$2.j();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            ih $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(ih.b);
-               ih[] $$13 = new ih[]{$$8, ih.b};
-               $$11 = ac.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
+   public static class a {
+      public static final Codec<dui.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bmf.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bmf.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  awe.j.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bmf.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, dui.a::new)
+      );
+      public final bmf b;
+      public final bmf c;
+      public final int d;
+      public final bmf e;
+      public final float f;
+      public final float g;
 
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(ih.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(ih.b);
-               }
-            }
-         }
-
-         return true;
+      public a(bmf $$0, bmf $$1, int $$2, bmf $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
    }
 }

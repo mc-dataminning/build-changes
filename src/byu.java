@@ -1,30 +1,35 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+public class byu {
+   private final bsu a;
+   private final float b;
+   private final int c;
 
-public class byu extends bzg<box> {
-   @Override
-   public Set<bya<?>> a() {
-      return ImmutableSet.of(bya.x, bya.y);
+   public byu(ib $$0, float $$1, int $$2) {
+      this(new brj($$0), $$1, $$2);
    }
 
-   @Override
-   protected void a(apa $$0, box $$1) {
-      bpy<?> $$2 = $$1.dM();
-      bne $$3 = $$1.ew();
-      if ($$3 != null) {
-         $$2.a(bya.x, $$1.ew());
-         bof $$4 = $$3.d();
-         if ($$4 instanceof box) {
-            $$2.a(bya.y, (box)$$4);
-         }
-      } else {
-         $$2.b(bya.x);
-      }
+   public byu(epr $$0, float $$1, int $$2) {
+      this(new brj(ib.a($$0)), $$1, $$2);
+   }
 
-      $$2.c(bya.y).ifPresent($$2x -> {
-         if (!$$2x.bx() || $$2x.dJ() != $$0) {
-            $$2.b(bya.y);
-         }
-      });
+   public byu(bow $$0, float $$1, int $$2) {
+      this(new brr($$0, false), $$1, $$2);
+   }
+
+   public byu(bsu $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public bsu a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
    }
 }

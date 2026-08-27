@@ -1,37 +1,51 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public interface atx {
-   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-   atx b = NumberFormat.getIntegerInstance(Locale.US)::format;
-   atx c = $$0 -> a.format((double)$$0 * 0.1);
-   atx d = $$0 -> {
-      double $$1 = (double)$$0 / 100.0;
-      double $$2 = $$1 / 1000.0;
-      if ($$2 > 0.5) {
-         return a.format($$2) + " km";
-      } else {
-         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
-      }
-   };
-   atx e = $$0 -> {
-      double $$1 = (double)$$0 / 20.0;
-      double $$2 = $$1 / 60.0;
-      double $$3 = $$2 / 60.0;
-      double $$4 = $$3 / 24.0;
-      double $$5 = $$4 / 365.0;
-      if ($$5 > 0.5) {
-         return a.format($$5) + " y";
-      } else if ($$4 > 0.5) {
-         return a.format($$4) + " d";
-      } else if ($$3 > 0.5) {
-         return a.format($$3) + " h";
-      } else {
-         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
-      }
-   };
+public class atx {
+   public static final Codec<atx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajh.a.fieldOf("sound_id").forGetter(atx::a), Codec.FLOAT.optionalFieldOf("range").forGetter(atx::b)).apply($$0, atx::a)
+   );
+   public static final Codec<il<atx>> b = ajd.a(kj.af, a);
+   public static final xs<ByteBuf, atx> c = xs.a(ajh.b, atx::a, xq.f.a(xq::a), atx::b, atx::a);
+   public static final xs<vf, il<atx>> d = xq.a(kj.af, c);
+   private static final float e = 16.0F;
+   private final ajh f;
+   private final float g;
+   private final boolean h;
 
-   String format(int var1);
+   private static atx a(ajh $$0, Optional<Float> $$1) {
+      return $$1.<atx>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   }
+
+   public static atx a(ajh $$0) {
+      return new atx($$0, 16.0F, false);
+   }
+
+   public static atx a(ajh $$0, float $$1) {
+      return new atx($$0, $$1, true);
+   }
+
+   private atx(ajh $$0, float $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   public ajh a() {
+      return this.f;
+   }
+
+   public float a(float $$0) {
+      if (this.h) {
+         return this.g;
+      } else {
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+      }
+   }
+
+   private Optional<Float> b() {
+      return this.h ? Optional.of(this.g) : Optional.empty();
+   }
 }

@@ -1,15 +1,15 @@
-public class ftw extends fve {
-   private final fuz a;
+public class ftw extends fwe {
+   private final fvz a;
 
-   protected ftw(fra $$0, double $$1, double $$2, double $$3, double $$4, fuz $$5) {
+   ftw(fry $$0, double $$1, double $$2, double $$3, double $$4, fvz $$5) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
+      this.a = $$5;
+      this.t = 4;
       float $$6 = this.r.i() * 0.6F + 0.4F;
       this.v = $$6;
       this.w = $$6;
       this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
+      this.D = 1.0F - (float)$$4 * 0.5F;
       this.b($$5);
    }
 
@@ -31,18 +31,18 @@ public class ftw extends fve {
    }
 
    @Override
-   public fui b() {
-      return fui.d;
+   public fvi b() {
+      return fvi.d;
    }
 
-   public static class a implements fuh<ke> {
-      private final fuz a;
+   public static class a implements fvh<kf> {
+      private final fvz a;
 
-      public a(fuz $$0) {
+      public a(fvz $$0) {
          this.a = $$0;
       }
 
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new ftw($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }

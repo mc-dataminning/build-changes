@@ -1,52 +1,21 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+public enum bkw {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public class bkw {
-   public static final Codec<bkw> a = Codec.INT.xmap(bkw::a, bkw::a);
-   private static final bkw b = new bkw(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
+   private final String j;
 
-   private bkw(int $$0) {
-      this.d = $$0;
+   private bkw(String $$0) {
+      this.j = $$0;
    }
 
-   public static bkw a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new bkw($$0);
-      }
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aV) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
-      }
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof bkw && this.d == ((bkw)$$0).d;
+   public String a() {
+      return this.j;
    }
 }

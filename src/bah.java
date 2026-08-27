@@ -3,31 +3,17 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bah extends bct {
+public class bah extends bdh {
    public bah(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityItemFrameDirectionFix", bdt.y, "minecraft:item_frame");
+      super($$0, $$1, "EntityArmorStandSilentFix", beh.y, "ArmorStand");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("Facing", $$0.createByte(a($$0.get("Facing").asByte((byte)0))));
+      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
       return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   private static byte a(byte $$0) {
-      switch ($$0) {
-         case 0:
-            return 3;
-         case 1:
-            return 4;
-         case 2:
-         default:
-            return 2;
-         case 3:
-            return 5;
-      }
    }
 }

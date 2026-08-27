@@ -1,8 +1,23 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cxv {
+public class cxv {
+   public static final Codec<cxv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(atx.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, cxv::new)
+   );
+   private final il<atx> b;
+   private final double c;
+
+   public cxv(il<atx> $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public il<atx> a() {
+      return this.b;
+   }
+
+   public double b() {
+      return this.c;
+   }
 }

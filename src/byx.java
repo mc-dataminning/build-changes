@@ -1,56 +1,78 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
-public class byx extends bzg<boz> {
-   private static final int a = 40;
-   private static final int c = 5;
-   private static final int d = 20;
-   private final Long2LongMap e = new Long2LongOpenHashMap();
-   private int f;
-   private long g;
-
-   public byx() {
-      super(20);
+public class byx extends byz {
+   public byx(bpq $$0, cwz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<bya<?>> a() {
-      return ImmutableSet.of(bya.w);
+   protected eje a(int $$0) {
+      this.o = new eiz();
+      this.o.a(true);
+      return new eje(this.o, $$0);
    }
 
-   protected void a(apa $$0, boz $$1) {
-      if ($$1.o_()) {
-         this.f = 0;
-         this.g = $$0.X() + (long)$$0.F_().a(20);
-         caa $$2 = $$0.y();
-         Predicate<ib> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.e.containsKey($$1x)) {
-               return false;
-            } else if (++this.f >= 5) {
-               return false;
-            } else {
-               this.e.put($$1x, this.g + 40L);
-               return true;
+   @Override
+   protected boolean a(epr $$0, epr $$1) {
+      return a(this.a, $$0, $$1, true);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.p() && this.a.bg() || !this.a.bO();
+   }
+
+   @Override
+   protected epr b() {
+      return this.a.dk();
+   }
+
+   @Override
+   public ejc a(bow $$0, int $$1) {
+      return this.a($$0.dm(), $$1);
+   }
+
+   @Override
+   public void c() {
+      this.e++;
+      if (this.m) {
+         this.i();
+      }
+
+      if (!this.l()) {
+         if (this.a()) {
+            this.k();
+         } else if (this.c != null && !this.c.c()) {
+            epr $$0 = this.c.a(this.a);
+            if (this.a.dq() == aww.a($$0.c) && this.a.ds() == aww.a($$0.d) && this.a.dw() == aww.a($$0.e)) {
+               this.c.a();
             }
-         };
-         Set<Pair<il<cad>, ib>> $$4 = $$2.b($$0x -> $$0x.a(cae.n), $$3, $$1.dj(), 48, caa.b.c).collect(Collectors.toSet());
-         eig $$5 = bqi.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            ib $$6 = $$5.l();
-            Optional<il<cad>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.dM().a(bya.w, $$6);
-            }
-         } else if (this.f < 5) {
-            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+         }
+
+         aew.a(this.b, this.a, this.c, this.l);
+         if (!this.l()) {
+            epr $$1 = this.c.a(this.a);
+            this.a.H().a($$1.c, $$1.d, $$1.e, this.d);
          }
       }
+   }
+
+   public void b(boolean $$0) {
+      this.o.b($$0);
+   }
+
+   public boolean d() {
+      return this.o.d();
+   }
+
+   public void c(boolean $$0) {
+      this.o.a($$0);
+   }
+
+   public boolean e() {
+      return this.o.d();
+   }
+
+   @Override
+   public boolean a(ib $$0) {
+      return this.b.a_($$0).a(this.b, $$0, this.a);
    }
 }

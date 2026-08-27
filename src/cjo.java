@@ -1,17 +1,61 @@
-public class cjo {
-   private final int a;
-   private final float b;
-
-   public cjo(int $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class cjo extends cje {
+   public cjo(bpc<? extends cjo> $$0, cwz $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.a;
+   public cjo(cwz $$0, bpo $$1, double $$2, double $$3, double $$4) {
+      super(bpc.aP, $$1, $$2, $$3, $$4, $$0);
    }
 
-   public float b() {
-      return this.b;
+   public cjo(cwz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super(bpc.aP, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
+   }
+
+   @Override
+   protected void a(epo $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         bow $$1 = $$0.a();
+         bow $$2 = this.af_();
+         int $$3 = $$1.az();
+         $$1.g(5);
+         if (!$$1.a(this.dN().a((cje)this, $$2), 5.0F)) {
+            $$1.i($$3);
+         } else if ($$2 instanceof bpo) {
+            this.a((bpo)$$2, $$1);
+         }
+      }
+   }
+
+   @Override
+   protected void a(epn $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         bow $$1 = this.af_();
+         if (!($$1 instanceof bpq) || this.dM().Z().b(cwv.c)) {
+            ib $$2 = $$0.a().a($$0.b());
+            if (this.dM().u($$2)) {
+               this.dM().b($$2, czn.a(this.dM(), $$2));
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(epp $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.am();
+      }
+   }
+
+   @Override
+   public boolean bw() {
+      return false;
+   }
+
+   @Override
+   public boolean a(bnv $$0, float $$1) {
+      return false;
    }
 }

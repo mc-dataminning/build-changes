@@ -1,59 +1,44 @@
 import javax.annotation.Nullable;
 
-public class cdk extends cdh {
-   @Nullable
-   private eov b;
-   private int c;
-
-   public cdk(cdf $$0) {
-      super($$0);
+public class cdk extends cde {
+   public cdk(bpc<? extends cdk> $$0, cwz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.ef().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.ef().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.ef().i() - 0.5F) * 8.0F;
-         this.a.dJ().a(kb.w, this.a.do() + (double)$$0, this.a.dq() + 2.0 + (double)$$1, this.a.du() + (double)$$2, 0.0, 0.0, 0.0);
-      }
+   protected atx v() {
+      return aty.oZ;
    }
 
    @Override
-   public void c() {
-      this.c++;
-      if (this.b == null) {
-         ib $$0 = this.a.dJ().a(drq.a.e, dut.a(this.a.u()));
-         this.b = eov.c($$0);
-      }
-
-      double $$1 = this.b.c(this.a.do(), this.a.dq(), this.a.du());
-      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.O && !this.a.P) {
-         this.a.t(1.0F);
-      } else {
-         this.a.t(0.0F);
-      }
+   protected atx gL() {
+      return aty.pa;
    }
 
    @Override
-   public void d() {
-      this.b = null;
-      this.c = 0;
-   }
-
-   @Override
-   public float f() {
-      return 3.0F;
+   protected atx n_() {
+      return aty.pc;
    }
 
    @Nullable
    @Override
-   public eov g() {
-      return this.b;
+   protected atx gu() {
+      return aty.pd;
    }
 
    @Override
-   public cdv<cdk> i() {
-      return cdv.j;
+   protected atx d(bnv $$0) {
+      return aty.pe;
+   }
+
+   @Override
+   protected void gn() {
+      this.a(aty.pb, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public bor a(apf $$0, bor $$1) {
+      return bpc.as.a((cwz)$$0);
    }
 }

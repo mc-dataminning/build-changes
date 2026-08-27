@@ -1,43 +1,51 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class ddx extends czf {
-   public static final MapCodec<ddx> a = b(ddx::new);
-   private static final int b = 20;
+public class ddx extends ddq {
+   public static final MapCodec<ddx> e = b(ddx::new);
 
    @Override
-   public MapCodec<ddx> a() {
-      return a;
+   public MapCodec<? extends ddx> a() {
+      return e;
    }
 
-   public ddx(dmd.d $$0) {
+   public ddx(dmy.d $$0) {
       super($$0);
    }
 
+   public static dmz b() {
+      return dac.G.o();
+   }
+
    @Override
-   public void a(cwe $$0, ib $$1, dme $$2, bof $$3) {
-      if (!$$3.bQ() && $$3 instanceof box && !cua.j((box)$$3)) {
-         $$3.a($$0.ah().e(), 1.0F);
+   public void a(cwz $$0, cis $$1, ib $$2, dmz $$3, @Nullable dkg $$4, cqk $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (cuv.a(cux.v, $$5) == 0) {
+         if ($$0.D_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
+
+         dmz $$6 = $$0.a_($$2.d());
+         if ($$6.d() || $$6.k()) {
+            $$0.b($$2, b());
+         }
       }
-
-      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      czl.b($$1, $$2.c(), $$0);
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.b && $$2.a(czh.G)) {
-         $$3.a($$4, this, 20);
+   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if ($$1.a(cxi.b, $$2) > 11 - $$0.b($$1, $$2)) {
+         this.d($$0, $$1, $$2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   protected void d(dmz $$0, cwz $$1, ib $$2) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.a($$2, b().b(), $$2);
+      }
    }
 }

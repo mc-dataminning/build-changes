@@ -1,19 +1,20 @@
-public interface cvh extends cvk {
-   float a(ih var1, boolean var2);
-
-   ehg z_();
-
-   int a(ib var1, cvp var2);
-
-   default int a(cwn $$0, ib $$1) {
-      return this.z_().a($$0).b($$1);
+public class cvh extends cuu {
+   public cvh(cuu.a $$0, bpd... $$1) {
+      super($$0, auv.bp, $$1);
    }
 
-   default int b(ib $$0, int $$1) {
-      return this.z_().a($$0, $$1);
+   @Override
+   public int a(int $$0) {
+      return 12 + ($$0 - 1) * 20;
    }
 
-   default boolean h(ib $$0) {
-      return this.a(cwn.a, $$0) >= this.O();
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

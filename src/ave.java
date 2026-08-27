@@ -1,83 +1,130 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ave {
-   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
-      if ($$1.length == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
+public class ave<T> {
+   private static final Logger a = LogUtils.getLogger();
+   final Function<ajh, Optional<? extends T>> b;
+   private final String c;
 
-         for (T $$3 : $$1) {
-            int $$4 = $$0.applyAsInt($$3);
-            T $$5 = (T)$$2.put($$4, $$3);
-            if ($$5 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
+   public ave(Function<ajh, Optional<? extends T>> $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public Map<ajh, List<ave.a>> a(aso $$0) {
+      Map<ajh, List<ave.a>> $$1 = Maps.newHashMap();
+      aja $$2 = aja.a(this.c);
+
+      for (Entry<ajh, List<asm>> $$3 : $$2.b($$0).entrySet()) {
+         ajh $$4 = $$3.getKey();
+         ajh $$5 = $$2.b($$4);
+
+         for (asm $$6 : $$3.getValue()) {
+            try (Reader $$7 = $$6.e()) {
+               JsonElement $$8 = JsonParser.parseReader($$7);
+               List<ave.a> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
+               avc $$10 = (avc)avc.a.parse(new Dynamic(JsonOps.INSTANCE, $$8)).getOrThrow(false, a::error);
+               if ($$10.b()) {
+                  $$9.clear();
+               }
+
+               String $$11 = $$6.b();
+               $$10.a().forEach($$2x -> $$9.add(new ave.a($$2x, $$11)));
+            } catch (Exception var17) {
+               a.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{$$5, $$4, $$6.b(), var17});
             }
          }
-
-         return $$2;
       }
+
+      return $$1;
    }
 
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
-      IntFunction<T> $$3 = a($$0, $$1);
-      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
-   }
+   private Either<Collection<ave.a>, Collection<T>> a(avb.a<T> $$0, List<ave.a> $$1) {
+      Builder<T> $$2 = ImmutableSet.builder();
+      List<ave.a> $$3 = new ArrayList<>();
 
-   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
-      int $$2 = $$1.length;
-      if ($$2 == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         T[] $$3 = (T[])$$1.clone();
-         Arrays.fill($$3, null);
-
-         for (T $$4 : $$1) {
-            int $$5 = $$0.applyAsInt($$4);
-            if ($$5 < 0 || $$5 >= $$2) {
-               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
-            }
-
-            T $$6 = $$3[$$5];
-            if ($$6 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
-            }
-
-            $$3[$$5] = $$4;
+      for (ave.a $$4 : $$1) {
+         if (!$$4.a().a($$0, $$2::add)) {
+            $$3.add($$4);
          }
-
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            if ($$3[$$7] == null) {
-               throw new IllegalArgumentException("Missing value at index: " + $$7);
-            }
-         }
-
-         return $$3;
       }
+
+      return $$3.isEmpty() ? Either.right($$2.build()) : Either.left($$3);
    }
 
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, ave.a $$2) {
-      T[] $$3 = b($$0, $$1);
-      int $$4 = $$3.length;
-
-      return switch ($$2) {
-         case a -> {
-            T $$5 = $$3[0];
-            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
+   public Map<ajh, Collection<T>> a(Map<ajh, List<ave.a>> $$0) {
+      final Map<ajh, Collection<T>> $$1 = Maps.newHashMap();
+      avb.a<T> $$2 = new avb.a<T>() {
+         @Nullable
+         @Override
+         public T a(ajh $$0) {
+            return (T)ave.this.b.apply($$0).orElse(null);
          }
-         case b -> $$2x -> $$3[awm.b($$2x, $$4)];
-         case c -> $$2x -> $$3[awm.a($$2x, 0, $$4 - 1)];
+
+         @Nullable
+         @Override
+         public Collection<T> b(ajh $$0) {
+            return $$1.get($$0);
+         }
       };
+      awb<ajh, ave.b> $$3 = new awb<>();
+      $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new ave.b($$2x)));
+      $$3.a(
+         ($$2x, $$3x) -> this.a($$2, $$3x.a)
+               .ifLeft(
+                  $$1xx -> a.error(
+                        "Couldn't load tag {} as it is missing following references: {}",
+                        $$2x,
+                        $$1xx.stream().map(Objects::toString).collect(Collectors.joining(", "))
+                     )
+               )
+               .ifRight($$2xx -> $$1.put($$2x, $$2xx))
+      );
+      return $$1;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public Map<ajh, Collection<T>> b(aso $$0) {
+      return this.a(this.a($$0));
+   }
+
+   public static record a(avb a, String b) {
+
+      @Override
+      public String toString() {
+         return this.a + " (from " + this.b + ")";
+      }
+   }
+
+   static record b(List<ave.a> a) implements awb.a<ajh> {
+
+      @Override
+      public void a(Consumer<ajh> $$0) {
+         this.a.forEach($$1 -> $$1.a.a($$0));
+      }
+
+      @Override
+      public void b(Consumer<ajh> $$0) {
+         this.a.forEach($$1 -> $$1.a.b($$0));
+      }
    }
 }

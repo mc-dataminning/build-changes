@@ -4,34 +4,24 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.Objects;
-import java.util.function.Function;
 
-public abstract class bbv extends DataFix {
-   private final String a;
-
-   public bbv(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+public class bbv extends DataFix {
+   public bbv(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(bdt.A.typeName(), bfc.a());
-      if (!Objects.equals(this.getInputSchema().getType(bdt.A), $$0)) {
-         throw new IllegalStateException("item name type is not what was expected.");
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(beh.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(beh.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
       } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bbv::a));
       }
    }
 
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new bbv($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
    }
 }

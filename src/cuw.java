@@ -1,25 +1,10 @@
-public class cuw extends ctz {
-   public cuw(ctz.a $$0, bom... $$1) {
-      super($$0, aum.bq, $$1);
-   }
+public class cuw extends blo.a {
+   public final cuu a;
+   public final int b;
 
-   @Override
-   public int a(int $$0) {
-      return 25;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
+   public cuw(cuu $$0, int $$1) {
+      super($$0.e().a());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

@@ -15,9 +15,9 @@ public interface ip<T> extends Iterable<il<T>> {
 
    int b();
 
-   Either<aut<T>, List<il<T>>> c();
+   Either<avd<T>, List<il<T>>> c();
 
-   Optional<il<T>> a(awt var1);
+   Optional<il<T>> a(axd var1);
 
    il<T> a(int var1);
 
@@ -25,11 +25,11 @@ public interface ip<T> extends Iterable<il<T>> {
 
    boolean a(io<T> var1);
 
-   Optional<aut<T>> d();
+   Optional<avd<T>> d();
 
    @Deprecated
    @VisibleForTesting
-   static <T> ip.c<T> a(io<T> $$0, aut<T> $$1) {
+   static <T> ip.c<T> a(io<T> $$0, avd<T> $$1) {
       return new ip.c<>($$0, $$1);
    }
 
@@ -66,12 +66,12 @@ public interface ip<T> extends Iterable<il<T>> {
       }
 
       @Override
-      public Either<aut<T>, List<il<T>>> c() {
+      public Either<avd<T>, List<il<T>>> c() {
          return Either.right(this.a);
       }
 
       @Override
-      public Optional<aut<T>> d() {
+      public Optional<avd<T>> d() {
          return Optional.empty();
       }
 
@@ -114,7 +114,7 @@ public interface ip<T> extends Iterable<il<T>> {
       }
 
       @Override
-      public Optional<il<T>> a(awt $$0) {
+      public Optional<il<T>> a(axd $$0) {
          return ac.b(this.e(), $$0);
       }
 
@@ -131,10 +131,10 @@ public interface ip<T> extends Iterable<il<T>> {
 
    public static class c<T> extends ip.b<T> {
       private final io<T> a;
-      private final aut<T> b;
+      private final avd<T> b;
       private List<il<T>> c = List.of();
 
-      c(io<T> $$0, aut<T> $$1) {
+      c(io<T> $$0, avd<T> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
@@ -143,7 +143,7 @@ public interface ip<T> extends Iterable<il<T>> {
          this.c = List.copyOf($$0);
       }
 
-      public aut<T> f() {
+      public avd<T> f() {
          return this.b;
       }
 
@@ -153,12 +153,12 @@ public interface ip<T> extends Iterable<il<T>> {
       }
 
       @Override
-      public Either<aut<T>, List<il<T>>> c() {
+      public Either<avd<T>, List<il<T>>> c() {
          return Either.left(this.b);
       }
 
       @Override
-      public Optional<aut<T>> d() {
+      public Optional<avd<T>> d() {
          return Optional.of(this.b);
       }
 

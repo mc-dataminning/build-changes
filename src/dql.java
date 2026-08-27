@@ -1,29 +1,14 @@
-public enum dql {
-   a(false, false),
-   b(true, false),
-   c(true, true);
-
-   private final boolean d;
-   private final boolean e;
-
-   private dql(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public boolean a() {
-      return this.e;
-   }
-
-   public boolean b() {
-      return this.d;
-   }
-
-   public static dql a(aot $$0) {
-      if ($$0.a(aot.d)) {
-         return c;
-      } else {
-         return $$0.a(aot.b) ? b : a;
-      }
-   }
+public class dql {
+   public static final int a = -64;
+   public static final int b = 384;
+   public static final int c = 384;
+   public static final int d = 384;
+   public static final int e = 0;
+   public static final int f = 256;
+   public static final int g = 128;
+   public static final int h = 128;
+   public static final int i = 0;
+   public static final int j = 256;
+   public static final int k = 128;
+   public static final int l = 256;
 }

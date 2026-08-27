@@ -1,30 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dwv(dzh b, dsx c, blq d, int e) implements dwy {
-   public static final Codec<dwv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dzh.a.fieldOf("state_provider").forGetter(dwv::a),
-               dsx.b.fieldOf("target").forGetter(dwv::b),
-               blq.b(0, 8).fieldOf("radius").forGetter(dwv::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dwv::d)
-            )
-            .apply($$0, dwv::new)
-   );
-
-   public dzh a() {
-      return this.b;
+public class dwv extends dvq<dxp> {
+   public dwv(Codec<dxp> $$0) {
+      super($$0);
    }
 
-   public dsx b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(dvs<dxp> $$0) {
+      int $$1 = 0;
+      axd $$2 = $$0.d();
+      cxu $$3 = $$0.b();
+      ib $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-   public blq c() {
-      return this.d;
-   }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dsm.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         ib $$10 = new ib($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dmz $$11 = dac.mV.o().a(dgw.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dac.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
+      }
 
-   public int d() {
-      return this.e;
+      return $$1 > 0;
    }
 }

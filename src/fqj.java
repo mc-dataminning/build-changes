@@ -1,24 +1,36 @@
-public class fqj {
-   public static final fqj a = new fqj(0.0F);
-   final float b;
-   final float c;
-   final float d;
+public class fqj<T extends bow> extends fnu<T> {
+   private final frd a;
+   private final frd b;
 
-   public fqj(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fqj(frd $$0) {
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   public fqj(float $$0) {
-      this($$0, $$0, $$0);
+   public static frj a(frh $$0) {
+      frl $$1 = new frl();
+      frm $$2 = $$1.a();
+      int $$3 = 22;
+      $$2.a("body", fri.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), frf.a(0.0F, 22.0F, 0.0F));
+      $$2.a("tail", fri.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), frf.a(0.0F, 22.0F, 3.0F));
+      $$2.a("right_fin", fri.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), frf.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", fri.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), frf.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", fri.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), frf.a(0.0F, 20.5F, -3.0F));
+      return frj.a($$1, 32, 32);
    }
 
-   public fqj a(float $$0) {
-      return new fqj(this.b + $$0, this.c + $$0, this.d + $$0);
+   @Override
+   public frd a() {
+      return this.a;
    }
 
-   public fqj a(float $$0, float $$1, float $$2) {
-      return new fqj(this.b + $$0, this.c + $$1, this.d + $$2);
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      if (!$$0.bc()) {
+         $$6 = 1.5F;
+      }
+
+      this.b.f = -$$6 * 0.45F * aww.a(0.6F * $$3);
    }
 }

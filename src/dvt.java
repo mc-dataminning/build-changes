@@ -1,24 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class dvt extends duu<dxk> {
-   public dvt(Codec<dxk> $$0) {
+public class dvt extends dvq<dxy> {
+   public dvt(Codec<dxy> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(duw<dxk> $$0) {
-      dxk $$1 = $$0.f();
-      awt $$2 = $$0.d();
-      cwz $$3 = $$0.b();
-      dob $$4 = $$0.c();
-      ib $$5 = $$0.e();
+   public boolean a(dvs<dxy> $$0) {
+      ib $$1 = $$0.e();
+      dxy $$2 = $$0.f();
+      cxu $$3 = $$0.b();
+      ib.a $$4 = new ib.a();
 
-      for (dwo $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.I_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).i()) {
+               $$3.a($$4, $$2.c, 2);
+            }
          }
       }
 
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
+      return true;
    }
 }

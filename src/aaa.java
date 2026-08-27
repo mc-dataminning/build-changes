@@ -1,23 +1,16 @@
-import io.netty.buffer.ByteBuf;
+public class aaa {
+   public static final yd<zw> a = a("finish_configuration");
+   public static final yd<zx> b = a("registry_data");
+   public static final yd<zz> c = a("update_enabled_features");
+   public static final yd<zy> d = a("select_known_packs");
+   public static final yd<aad> e = b("finish_configuration");
+   public static final yd<aae> f = b("select_known_packs");
 
-public class aaa implements xz<zz> {
-   public static final aaa a = new aaa();
-   public static final xq<ByteBuf, aaa> b = xq.a(a);
-
-   private aaa() {
+   private static <T extends yb<zv>> yd<T> a(String $$0) {
+      return new yd<>(yc.b, new ajh($$0));
    }
 
-   @Override
-   public yb<aaa> a() {
-      return zx.d;
-   }
-
-   public void a(zz $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
+   private static <T extends yb<aac>> yd<T> b(String $$0) {
+      return new yd<>(yc.a, new ajh($$0));
    }
 }

@@ -1,9 +1,17 @@
-public class gch extends gde<cce, fnh<cce>> {
-   public gch(gby.a $$0) {
-      super($$0, new fnh<>($$0.a(fqe.aa)), 0.3F);
+public class gch extends gfe<cfj> {
+   private static final ajh a = new ajh("textures/entity/spider/cave_spider.png");
+   private static final float i = 0.7F;
+
+   public gch(gcy.a $$0) {
+      super($$0, frc.s);
+      this.d *= 0.7F;
    }
 
-   public ajc a(cce $$0) {
-      return $$0.A().a();
+   protected void a(cfj $$0, etz $$1, float $$2) {
+      $$1.b(0.7F, 0.7F, 0.7F);
+   }
+
+   public ajh a(cfj $$0) {
+      return a;
    }
 }

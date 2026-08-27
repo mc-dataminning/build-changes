@@ -11,22 +11,22 @@ public interface il<T> {
 
    boolean b();
 
-   boolean a(ajc var1);
+   boolean a(ajh var1);
 
-   boolean a(ajb<T> var1);
+   boolean a(ajg<T> var1);
 
-   boolean a(Predicate<ajb<T>> var1);
+   boolean a(Predicate<ajg<T>> var1);
 
-   boolean a(aut<T> var1);
+   boolean a(avd<T> var1);
 
    @Deprecated
    boolean a(il<T> var1);
 
-   Stream<aut<T>> c();
+   Stream<avd<T>> c();
 
-   Either<ajb<T>, T> d();
+   Either<ajg<T>, T> d();
 
-   Optional<ajb<T>> e();
+   Optional<ajg<T>> e();
 
    il.b f();
 
@@ -47,17 +47,17 @@ public interface il<T> {
       }
 
       @Override
-      public boolean a(ajc $$0) {
+      public boolean a(ajh $$0) {
          return false;
       }
 
       @Override
-      public boolean a(ajb<T> $$0) {
+      public boolean a(ajg<T> $$0) {
          return false;
       }
 
       @Override
-      public boolean a(aut<T> $$0) {
+      public boolean a(avd<T> $$0) {
          return false;
       }
 
@@ -67,17 +67,17 @@ public interface il<T> {
       }
 
       @Override
-      public boolean a(Predicate<ajb<T>> $$0) {
+      public boolean a(Predicate<ajg<T>> $$0) {
          return false;
       }
 
       @Override
-      public Either<ajb<T>, T> d() {
+      public Either<ajg<T>, T> d() {
          return Either.right(this.a);
       }
 
       @Override
-      public Optional<ajb<T>> e() {
+      public Optional<ajg<T>> e() {
          return Optional.empty();
       }
 
@@ -97,7 +97,7 @@ public interface il<T> {
       }
 
       @Override
-      public Stream<aut<T>> c() {
+      public Stream<avd<T>> c() {
          return Stream.of();
       }
    }
@@ -109,21 +109,21 @@ public interface il<T> {
 
    public static class c<T> implements il<T> {
       private final io<T> a;
-      private Set<aut<T>> b = Set.of();
+      private Set<avd<T>> b = Set.of();
       private final il.c.a c;
       @Nullable
-      private ajb<T> d;
+      private ajg<T> d;
       @Nullable
       private T e;
 
-      protected c(il.c.a $$0, io<T> $$1, @Nullable ajb<T> $$2, @Nullable T $$3) {
+      protected c(il.c.a $$0, io<T> $$1, @Nullable ajg<T> $$2, @Nullable T $$3) {
          this.a = $$1;
          this.c = $$0;
          this.d = $$2;
          this.e = $$3;
       }
 
-      public static <T> il.c<T> a(io<T> $$0, ajb<T> $$1) {
+      public static <T> il.c<T> a(io<T> $$0, ajg<T> $$1) {
          return new il.c<>(il.c.a.a, $$0, $$1, null);
       }
 
@@ -132,7 +132,7 @@ public interface il<T> {
          return new il.c<>(il.c.a.b, $$0, null, $$1);
       }
 
-      public ajb<T> h() {
+      public ajg<T> h() {
          if (this.d == null) {
             throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
          } else {
@@ -150,17 +150,17 @@ public interface il<T> {
       }
 
       @Override
-      public boolean a(ajc $$0) {
+      public boolean a(ajh $$0) {
          return this.h().a().equals($$0);
       }
 
       @Override
-      public boolean a(ajb<T> $$0) {
+      public boolean a(ajg<T> $$0) {
          return this.h() == $$0;
       }
 
       @Override
-      public boolean a(aut<T> $$0) {
+      public boolean a(avd<T> $$0) {
          return this.b.contains($$0);
       }
 
@@ -170,7 +170,7 @@ public interface il<T> {
       }
 
       @Override
-      public boolean a(Predicate<ajb<T>> $$0) {
+      public boolean a(Predicate<ajg<T>> $$0) {
          return $$0.test(this.h());
       }
 
@@ -180,12 +180,12 @@ public interface il<T> {
       }
 
       @Override
-      public Either<ajb<T>, T> d() {
+      public Either<ajg<T>, T> d() {
          return Either.left(this.h());
       }
 
       @Override
-      public Optional<ajb<T>> e() {
+      public Optional<ajg<T>> e() {
          return Optional.of(this.h());
       }
 
@@ -199,7 +199,7 @@ public interface il<T> {
          return this.d != null && this.e != null;
       }
 
-      void b(ajb<T> $$0) {
+      void b(ajg<T> $$0) {
          if (this.d != null && $$0 != this.d) {
             throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
          } else {
@@ -215,12 +215,12 @@ public interface il<T> {
          }
       }
 
-      void a(Collection<aut<T>> $$0) {
+      void a(Collection<avd<T>> $$0) {
          this.b = Set.copyOf($$0);
       }
 
       @Override
-      public Stream<aut<T>> c() {
+      public Stream<avd<T>> c() {
          return this.b.stream();
       }
 

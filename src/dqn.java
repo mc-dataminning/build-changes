@@ -1,35 +1,19 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dqn implements dqv {
-   public static final Codec<dqn> a = RecordCodecBuilder.create($$0 -> $$0.group(ib.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, dqn::new));
-   public static final xq<vd, dqn> b = xq.a(ib.b, $$0 -> $$0.e, dqn::new);
-   private final ib e;
+public record dqn(il<dqm> e, dow f) {
+   public static final Codec<dqn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dqm.j.fieldOf("type").forGetter(dqn::a), dow.a.fieldOf("generator").forGetter(dqn::b)).apply($$0, $$0.stable(dqn::new))
+   );
+   public static final ajg<dqn> b = ajg.a(kj.aO, new ajh("overworld"));
+   public static final ajg<dqn> c = ajg.a(kj.aO, new ajh("the_nether"));
+   public static final ajg<dqn> d = ajg.a(kj.aO, new ajh("the_end"));
 
-   public dqn(ib $$0) {
-      this.e = $$0;
+   public il<dqm> a() {
+      return this.e;
    }
 
-   @Override
-   public Optional<eov> a(cwe $$0) {
-      return Optional.of(eov.b(this.e));
-   }
-
-   @Override
-   public dqw<dqn> a() {
-      return dqw.a;
-   }
-
-   public static class a implements dqw<dqn> {
-      @Override
-      public Codec<dqn> a() {
-         return dqn.a;
-      }
-
-      @Override
-      public xq<vd, dqn> b() {
-         return dqn.b;
-      }
+   public dow b() {
+      return this.f;
    }
 }

@@ -1,3 +1,8 @@
-public interface boq {
-   void b(cia var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface boq {
 }

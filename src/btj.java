@@ -1,28 +1,26 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class btj extends bqp<boz> {
-   private final float c;
+public class btj {
+   public static brh<bpo> a() {
+      return but.a((Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$0 -> $$0.a((buw<bpo>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               bqp<?> $$3 = $$1.dP();
+               ckd $$4 = $$0x.d($$1.dm());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(ckh.h);
+                     $$3.a(ckh.h);
+                  } else {
+                     $$3.b(ckh.i);
+                     $$3.a(ckh.i);
+                  }
+               }
 
-   public btj(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   public static boolean a(boz $$0) {
-      return $$0.aZ() && $$0.b(auj.a) > $$0.dc() || $$0.bn();
-   }
-
-   protected boolean a(apa $$0, boz $$1) {
-      return a($$1);
-   }
-
-   protected boolean a(apa $$0, boz $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(apa $$0, boz $$1, long $$2) {
-      if ($$1.ef().i() < this.c) {
-         $$1.M().a();
-      }
+               return true;
+            }
+         }))));
    }
 }

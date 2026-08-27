@@ -1,39 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dhs extends dai {
-   public static final MapCodec<dhs> n = b(dhs::new);
+public class dhs extends dea implements czr {
+   public static final MapCodec<dhs> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cpb.q.fieldOf("color").forGetter(dhs::b), u()).apply($$0, dhs::new));
+   private final cpb k;
 
    @Override
    public MapCodec<dhs> a() {
-      return n;
+      return j;
    }
 
-   public dhs(dmd.d $$0) {
-      super($$0, () -> djn.c);
-   }
-
-   @Override
-   public djl a(ib $$0, dme $$1) {
-      return new dld($$0, $$1);
-   }
-
-   @Override
-   protected atw<ajc> c() {
-      return atz.i.b(atz.ai);
-   }
-
-   @Override
-   protected boolean f_(dme $$0) {
-      return true;
+   public dhs(cpb $$0, dmy.d $$1) {
+      super($$1);
+      this.k = $$0;
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
-      return awm.a(djs.a($$1, $$2), 0, 15);
-   }
-
-   @Override
-   protected int b(dme $$0, cvk $$1, ib $$2, ih $$3) {
-      return $$3 == ih.b ? $$0.b($$1, $$2, $$3) : 0;
+   public cpb b() {
+      return this.k;
    }
 }

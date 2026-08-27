@@ -1,38 +1,79 @@
-public class fuo extends fve {
-   private final fuz a;
+import javax.annotation.Nullable;
 
-   fuo(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.0F);
-      this.n = false;
+public class fuo extends fwe {
+   private final float a;
+   private final fvz b;
+
+   fuo(fry $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fvz $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
       this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
+   public fvi b() {
+      return fvi.b;
    }
 
    @Override
-   public fui b() {
-      return fui.c;
+   public float b(float $$0) {
+      return this.D * aww.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.a);
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
+      }
    }
 
-   public static record a(fuz a) implements fuh<ke> {
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fuo $$8 = new fuo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.a($$1.z.a(4) + 6);
-         return $$8;
+   public static class a implements fvh<ju> {
+      private final fvz a;
+
+      public a(fvz $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      public fve a(ju $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dmz $$8 = $$0.b();
+         if (!$$8.i() && $$8.l() == dgf.a) {
+            return null;
+         } else {
+            ib $$9 = ib.a($$2, $$3, $$4);
+            int $$10 = ezg.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dcw) {
+               $$10 = ((dcw)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new fuo($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

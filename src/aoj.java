@@ -1,45 +1,25 @@
-public class aoj {
-   private static final int b = 33;
-   private static final int c = 32;
-   private static final int d = 31;
-   public static final int a = 33 + dof.b();
+import java.util.Vector;
+import javax.swing.JList;
+import net.minecraft.server.MinecraftServer;
 
-   public static dof a(int $$0) {
-      return $$0 < 33 ? dof.n : dof.a($$0 - 33);
+public class aoj extends JList<String> {
+   private final MinecraftServer a;
+   private int b;
+
+   public aoj(MinecraftServer $$0) {
+      this.a = $$0;
+      $$0.b(this::a);
    }
 
-   public static int a(dof $$0) {
-      return 33 + dof.a($$0);
-   }
+   public void a() {
+      if (this.b++ % 20 == 0) {
+         Vector<String> $$0 = new Vector<>();
 
-   public static aot b(int $$0) {
-      if ($$0 <= 31) {
-         return aot.d;
-      } else if ($$0 <= 32) {
-         return aot.c;
-      } else {
-         return $$0 <= 33 ? aot.b : aot.a;
+         for (int $$1 = 0; $$1 < this.a.ah().t().size(); $$1++) {
+            $$0.add(this.a.ah().t().get($$1).fY().getName());
+         }
+
+         this.setListData($$0);
       }
-   }
-
-   public static int a(aot $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
-      };
-   }
-
-   public static boolean c(int $$0) {
-      return $$0 <= 31;
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 <= 32;
-   }
-
-   public static boolean e(int $$0) {
-      return $$0 <= a;
    }
 }

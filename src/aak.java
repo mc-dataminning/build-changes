@@ -1,61 +1,28 @@
-public class aak implements xz<aai> {
-   public static final xq<us, aak> a = xz.a(aak::a, aak::new);
-   private final int b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final int f;
+import javax.annotation.Nullable;
 
-   public aak(bon $$0) {
-      this.b = $$0.aj();
-      this.c = $$0.do();
-      this.d = $$0.dq();
-      this.e = $$0.du();
-      this.f = $$0.q();
+public record aak(ajh b, @Nullable byte[] c) implements yb<aaj> {
+   public static final xs<uu, aak> a = yb.a(aak::a, aak::new);
+
+   private aak(uu $$0) {
+      this($$0.q(), $$0.c(yo.b));
    }
 
-   private aak(us $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.readShort();
-   }
-
-   private void a(us $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.l(this.f);
+   private void a(uu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, yo.b);
    }
 
    @Override
-   public yb<aak> a() {
-      return aet.d;
+   public yd<aak> a() {
+      return aai.b;
    }
 
-   public void a(aai $$0) {
+   public void a(aaj $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public double e() {
+   @Nullable
+   public byte[] e() {
       return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public double g() {
-      return this.e;
-   }
-
-   public int h() {
-      return this.f;
    }
 }

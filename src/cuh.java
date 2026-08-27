@@ -1,25 +1,15 @@
-public class cuh extends ctz {
-   protected cuh(ctz.a $$0, aut<cpl> $$1, bom... $$2) {
-      super($$0, $$1, $$2);
+public class cuh extends cub {
+   public cuh(String $$0, ctk $$1, cqk $$2) {
+      super(cts.f, ctr.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+   public boolean a(bmv $$0, cwz $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(ctz $$0) {
-      return super.a($$0) && $$0 != cuc.v;
+   public cqk g() {
+      return new cqk(dac.oc);
    }
 }

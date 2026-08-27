@@ -1,20 +1,29 @@
-public record afd(wj.a b) implements xz<aev> {
-   public static final xq<us, afd> a = xz.a(afd::a, afd::new);
+public class afd implements yb<aez> {
+   public static final xs<uu, afd> a = yb.a(afd::a, afd::new);
+   private final bmz b;
 
-   private afd(us $$0) {
-      this(wj.a.a($$0));
+   public afd(bmz $$0) {
+      this.b = $$0;
    }
 
-   private void a(us $$0) {
-      wj.a.a($$0, this.b);
+   private afd(uu $$0) {
+      this.b = bmz.a($$0.readUnsignedByte());
+   }
+
+   private void a(uu $$0) {
+      $$0.k(this.b.a());
    }
 
    @Override
-   public yb<afd> a() {
-      return aet.bk;
+   public yd<afd> a() {
+      return aex.bg;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
+   }
+
+   public bmz b() {
+      return this.b;
    }
 }

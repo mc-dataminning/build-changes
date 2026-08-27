@@ -1,11 +1,16 @@
-public abstract class gcr<T extends ceo> extends gde<T, fns<T>> {
-   protected gcr(gby.a $$0, fns<T> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new gfo<>(this, $$0.f(), $$0.d()));
+public class gcr extends gdm {
+   public static final ajh a = new ajh("textures/entity/guardian_elder.png");
+
+   public gcr(gcy.a $$0) {
+      super($$0, 1.2F, frc.R);
    }
 
-   protected void a(T $$0, etd $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   protected void a(cfu $$0, etz $$1, float $$2) {
+      $$1.b(cfn.b, cfn.b, cfn.b);
+   }
+
+   @Override
+   public ajh a(cfu $$0) {
+      return a;
    }
 }

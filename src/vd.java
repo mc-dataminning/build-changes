@@ -1,19 +1,18 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+import io.netty.channel.ChannelHandlerContext;
 
-public class vd extends us {
-   private final iy d;
-
-   public vd(ByteBuf $$0, iy $$1) {
-      super($$0);
-      this.d = $$1;
+public interface vd {
+   static void a(ChannelHandlerContext $$0, yb<?> $$1) {
+      if ($$1.d()) {
+         $$0.channel().config().setAutoRead(false);
+         $$0.pipeline().addBefore($$0.name(), "inbound_config", new vj.a());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 
-   public iy J() {
-      return this.d;
-   }
-
-   public static Function<ByteBuf, vd> a(iy $$0) {
-      return $$1 -> new vd($$1, $$0);
+   static void b(ChannelHandlerContext $$0, yb<?> $$1) {
+      if ($$1.d()) {
+         $$0.pipeline().addAfter($$0.name(), "outbound_config", new vj.c());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 }

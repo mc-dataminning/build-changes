@@ -11,13 +11,13 @@ public class ca extends cx<ca.a> {
       return ca.a.a;
    }
 
-   public void a(apb $$0, chz $$1, cpq $$2) {
+   public void a(apg $$0, cir $$1, cqk $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cpq $$7 = $$1.a($$6);
+         cqk $$7 = $$1.a($$6);
          if ($$7.b()) {
             $$4++;
          } else {
@@ -31,16 +31,16 @@ public class ca extends cx<ca.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(apb $$0, chz $$1, cpq $$2, int $$3, int $$4, int $$5) {
+   private void a(apg $$0, cir $$1, cqk $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
    public static record a(Optional<bc> b, ca.a.a c, List<cc> d) implements cx.a {
       public static final Codec<ca.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  avu.a(br.b, "player").forGetter(ca.a::a),
-                  avu.a(ca.a.a.a, "slots", ca.a.a.b).forGetter(ca.a::b),
-                  avu.a(cc.a.listOf(), "items", List.of()).forGetter(ca.a::c)
+                  awe.a(br.b, "player").forGetter(ca.a::a),
+                  awe.a(ca.a.a.a, "slots", ca.a.a.b).forGetter(ca.a::b),
+                  awe.a(cc.a.listOf(), "items", List.of()).forGetter(ca.a::c)
                )
                .apply($$0, ca.a::new)
       );
@@ -53,7 +53,7 @@ public class ca extends cx<ca.a> {
          return am.f.a(new ca.a(Optional.empty(), ca.a.a.b, List.of($$0)));
       }
 
-      public static an<ca.a> a(cwd... $$0) {
+      public static an<ca.a> a(cwy... $$0) {
          cc[] $$1 = new cc[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
@@ -63,7 +63,7 @@ public class ca extends cx<ca.a> {
          return a($$1);
       }
 
-      public boolean a(chz $$0, cpq $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cir $$0, cqk $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -77,7 +77,7 @@ public class ca extends cx<ca.a> {
                   return true;
                }
 
-               cpq $$8 = $$0.a($$7);
+               cqk $$8 = $$0.a($$7);
                if (!$$8.b()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }
@@ -105,9 +105,9 @@ public class ca extends cx<ca.a> {
       public static record a(cm.d c, cm.d d, cm.d e) {
          public static final Codec<ca.a.a> a = RecordCodecBuilder.create(
             $$0 -> $$0.group(
-                     avu.a(cm.d.d, "occupied", cm.d.c).forGetter(ca.a.a::a),
-                     avu.a(cm.d.d, "full", cm.d.c).forGetter(ca.a.a::b),
-                     avu.a(cm.d.d, "empty", cm.d.c).forGetter(ca.a.a::c)
+                     awe.a(cm.d.d, "occupied", cm.d.c).forGetter(ca.a.a::a),
+                     awe.a(cm.d.d, "full", cm.d.c).forGetter(ca.a.a::b),
+                     awe.a(cm.d.d, "empty", cm.d.c).forGetter(ca.a.a::c)
                   )
                   .apply($$0, ca.a.a::new)
          );

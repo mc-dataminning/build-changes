@@ -1,172 +1,156 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dkm extends djl implements bmc, eqg.a {
-   private static final int c = 20;
-   private cpq d = cpq.h;
-   private int e;
-   private long f;
-   private long g;
-   private boolean h;
+public class dkm extends dkg implements bmt {
+   private static final int a = 2;
+   private static final int b = 4;
+   private final iu<cqk> c = iu.a(4, cqk.h);
+   private final int[] d = new int[4];
+   private final int[] e = new int[4];
+   private final ctq.a<bmv, ctb> f = ctq.b(cts.e);
 
-   public dkm(ib $$0, dme $$1) {
-      super(djn.e, $$0, $$1);
+   public dkm(ib $$0, dmz $$1) {
+      super(dki.G, $$0, $$1);
    }
 
-   @Override
-   public void a(sy $$0, in.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("RecordItem", 10)) {
-         this.d = cpq.a($$0.p("RecordItem"));
-      }
+   public static void a(cwz $$0, ib $$1, dmz $$2, dkm $$3) {
+      boolean $$4 = false;
 
-      this.h = $$0.q("IsPlaying");
-      this.g = $$0.i("RecordStartTick");
-      this.f = $$0.i("TickCount");
-   }
-
-   @Override
-   protected void b(sy $$0, in.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f().b()) {
-         $$0.a("RecordItem", this.f().b(new sy()));
-      }
-
-      $$0.a("IsPlaying", this.h);
-      $$0.a("RecordStartTick", this.g);
-      $$0.a("TickCount", this.f);
-   }
-
-   public boolean j() {
-      return !this.f().b() && this.h;
-   }
-
-   private void a(@Nullable bof $$0, boolean $$1) {
-      if (this.o.a_(this.aD_()) == this.n()) {
-         this.o.a(this.aD_(), this.n().a(ddh.b, Boolean.valueOf($$1)), 2);
-         this.o.a(dqr.c, this.aD_(), dqr.a.a($$0, this.n()));
-      }
-   }
-
-   @VisibleForTesting
-   public void k() {
-      this.g = this.f;
-      this.h = true;
-      this.o.a(this.aD_(), this.n().b());
-      this.o.a(null, 1010, this.aD_(), cpl.a(this.f().d()));
-      this.e();
-   }
-
-   private void s() {
-      this.h = false;
-      this.o.a(dqr.F, this.aD_(), dqr.a.a(this.n()));
-      this.o.a(this.aD_(), this.n().b());
-      this.o.c(1011, this.aD_(), 0);
-      this.e();
-   }
-
-   private void b(cwe $$0, ib $$1, dme $$2) {
-      this.e++;
-      if (this.j() && this.f().d() instanceof cqi $$3) {
-         if (this.a($$3)) {
-            this.s();
-         } else if (this.u()) {
-            this.e = 0;
-            $$0.a(dqr.E, $$1, dqr.a.a($$2));
-            this.a($$0, $$1);
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         cqk $$6 = $$3.c.get($$5);
+         if (!$$6.b()) {
+            $$4 = true;
+            $$3.d[$$5]++;
+            if ($$3.d[$$5] >= $$3.e[$$5]) {
+               bmv $$7 = new bnl($$6);
+               cqk $$8 = $$3.f.a($$7, $$0).map($$2x -> ((ctb)$$2x.b()).a($$7, $$0.H_())).orElse($$6);
+               if ($$8.a($$0.I())) {
+                  bmy.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
+                  $$3.c.set($$5, cqk.h);
+                  $$0.a($$1, $$2, $$2, 3);
+                  $$0.a(drn.c, $$1, drn.a.a($$2));
+               }
+            }
          }
       }
 
-      this.f++;
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
    }
 
-   private boolean a(cqi $$0) {
-      return this.f >= this.g + (long)$$0.y() + 20L;
-   }
+   public static void b(cwz $$0, ib $$1, dmz $$2, dkm $$3) {
+      boolean $$4 = false;
 
-   private boolean u() {
-      return this.e >= 20;
-   }
-
-   @Override
-   public cpq f() {
-      return this.d;
-   }
-
-   @Override
-   public cpq c(int $$0) {
-      cpq $$1 = this.d;
-      this.d = cpq.h;
-      if (!$$1.b()) {
-         this.a(null, false);
-         this.s();
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         if ($$3.d[$$5] > 0) {
+            $$4 = true;
+            $$3.d[$$5] = aww.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
+         }
       }
 
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void c(cwz $$0, ib $$1, dmz $$2, dkm $$3) {
+      axd $$4 = $$0.z;
+      if ($$4.i() < 0.11F) {
+         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
+            dao.a($$0, $$1, $$2.c(dao.d), false);
+         }
+      }
+
+      int $$6 = $$2.c(dao.f).e();
+
+      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
+         if (!$$3.c.get($$7).b() && $$4.i() < 0.2F) {
+            ih $$8 = ih.b(Math.floorMod($$7 + $$6, 4));
+            float $$9 = 0.3125F;
+            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
+            double $$11 = (double)$$1.v() + 0.5;
+            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
+
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$0.a(kc.ac, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+            }
+         }
+      }
+   }
+
+   public iu<cqk> b() {
+      return this.c;
+   }
+
+   @Override
+   public void a(ta $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.c.clear();
+      bmw.b($$0, this.c);
+      if ($$0.b("CookingTimes", 11)) {
+         int[] $$2 = $$0.n("CookingTimes");
+         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
+      }
+
+      if ($$0.b("CookingTotalTimes", 11)) {
+         int[] $$3 = $$0.n("CookingTotalTimes");
+         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
+      }
+   }
+
+   @Override
+   protected void b(ta $$0, in.a $$1) {
+      super.b($$0, $$1);
+      bmw.a($$0, this.c, true);
+      $$0.a("CookingTimes", this.d);
+      $$0.a("CookingTotalTimes", this.e);
+   }
+
+   public aat c() {
+      return aat.a(this);
+   }
+
+   @Override
+   public ta a(in.a $$0) {
+      ta $$1 = new ta();
+      bmw.a($$1, this.c, true);
       return $$1;
    }
 
-   @Override
-   public void a(cpq $$0) {
-      if ($$0.a(aum.aq) && this.o != null) {
-         this.d = $$0;
-         this.a(null, true);
-         this.k();
-      } else if ($$0.b()) {
-         this.c(1);
-      }
+   public Optional<ctp<ctb>> a(cqk $$0) {
+      return this.c.stream().noneMatch(cqk::b) ? Optional.empty() : this.f.a(new bnl($$0), this.o);
    }
 
-   @Override
-   public int al_() {
-      return 1;
-   }
-
-   @Override
-   public djl t() {
-      return this;
-   }
-
-   @Override
-   public boolean b(int $$0, cpq $$1) {
-      return $$1.a(aum.aq) && this.a($$0).b();
-   }
-
-   @Override
-   public boolean a(bme $$0, int $$1, cpq $$2) {
-      return $$0.a_(cpq::b);
-   }
-
-   private void a(cwe $$0, ib $$1) {
-      if ($$0 instanceof apa $$2) {
-         eov $$3 = eov.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.F_().a(4) / 24.0F;
-         $$2.a(kb.X, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
-      }
-   }
-
-   public void l() {
-      if (this.o != null && !this.o.B) {
-         ib $$0 = this.aD_();
-         cpq $$1 = this.f();
-         if (!$$1.b()) {
-            this.h();
-            eov $$2 = eov.a($$0, 0.5, 1.01, 0.5).a(this.o.z, 0.7F);
-            cpq $$3 = $$1.q();
-            cel $$4 = new cel(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
-            $$4.u();
-            this.o.b($$4);
+   public boolean a(@Nullable bow $$0, cqk $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
+         cqk $$4 = this.c.get($$3);
+         if ($$4.b()) {
+            this.e[$$3] = $$2;
+            this.d[$$3] = 0;
+            this.c.set($$3, $$1.a(1));
+            this.o.a(drn.c, this.aC_(), drn.a.a($$0, this.n()));
+            this.f();
+            return true;
          }
       }
+
+      return false;
    }
 
-   public static void a(cwe $$0, ib $$1, dme $$2, dkm $$3) {
-      $$3.b($$0, $$1, $$2);
-   }
-
-   @VisibleForTesting
-   public void b(cpq $$0) {
-      this.d = $$0;
-      this.o.a(this.aD_(), this.n().b());
+   private void f() {
       this.e();
+      this.i().a(this.aC_(), this.n(), this.n(), 3);
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void d() {
+      if (this.o != null) {
+         this.f();
+      }
    }
 }

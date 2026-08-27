@@ -1,56 +1,77 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface css<C extends bme> {
-   Codec<css<?>> h = kh.t.q().dispatch(css::as_, csw::a);
-   xq<vd, css<?>> i = xo.a(ki.Y).b(css::as_, csw::b);
+public class css extends csu {
+   private final ib b;
+   protected boolean a = true;
 
-   boolean a(C var1, cwe var2);
+   public css(cis $$0, bnb $$1, cqk $$2, epn $$3) {
+      this($$0.dM(), $$0, $$1, $$2, $$3);
+   }
 
-   cpq a(C var1, iy var2);
+   public css(csu $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   }
 
-   boolean a(int var1, int var2);
+   protected css(cwz $$0, @Nullable cis $$1, bnb $$2, cqk $$3, epn $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.a().a($$4.b());
+      this.a = $$0.a_($$4.a()).a(this);
+   }
 
-   cpq a(iy var1);
+   public static css a(css $$0, ib $$1, ih $$2) {
+      return new css(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new epn(
+            new epr((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
+   }
 
-   default iu<cpq> a(C $$0) {
-      iu<cpq> $$1 = iu.a($$0.b(), cpq.h);
+   @Override
+   public ib a() {
+      return this.a ? super.a() : this.b;
+   }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cpl $$3 = $$0.a($$2).d();
-         if ($$3.u()) {
-            $$1.set($$2, new cpq($$3.t()));
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
+   }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public ih d() {
+      return ih.a(this.o())[0];
+   }
+
+   public ih e() {
+      return ih.a(this.o(), ih.a.b);
+   }
+
+   public ih[] f() {
+      ih[] $$0 = ih.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         ih $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
          }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
       }
-
-      return $$1;
-   }
-
-   default iu<csp> a() {
-      return iu.a();
-   }
-
-   default boolean ar_() {
-      return false;
-   }
-
-   default boolean h() {
-      return true;
-   }
-
-   default String c() {
-      return "";
-   }
-
-   default cpq g() {
-      return new cpq(czh.cA);
-   }
-
-   csw<?> as_();
-
-   csx<?> e();
-
-   default boolean i() {
-      iu<csp> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

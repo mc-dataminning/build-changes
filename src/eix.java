@@ -1,51 +1,145 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public record eix(ib c, cog d, Optional<vs> e) {
-   public static final Codec<eix> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ib.a.fieldOf("Pos").forGetter(eix::c), cog.q.optionalFieldOf("Color", cog.a).forGetter(eix::d), vu.e.optionalFieldOf("Name").forGetter(eix::e)
-            )
-            .apply($$0, eix::new)
-   );
-   public static final Codec<List<eix>> b = a.listOf();
+public class eix {
+   private eja[] a = new eja[128];
+   private int b;
 
-   @Nullable
-   public static eix a(cvk $$0, ib $$1) {
-      if ($$0.c_($$1) instanceof djb $$3) {
-         cog $$4 = $$3.f();
-         Optional<vs> $$5 = Optional.ofNullable($$3.af());
-         return new eix($$1, $$4, $$5);
+   public eja a(eja $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
       } else {
-         return null;
+         if (this.b == this.a.length) {
+            eja[] $$1 = new eja[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
+
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
       }
    }
 
-   public eiy.a a() {
-      return switch (this.d) {
-         case a -> eiy.a.k;
-         case b -> eiy.a.l;
-         case c -> eiy.a.m;
-         case d -> eiy.a.n;
-         case e -> eiy.a.o;
-         case f -> eiy.a.p;
-         case g -> eiy.a.q;
-         case h -> eiy.a.r;
-         case i -> eiy.a.s;
-         case j -> eiy.a.t;
-         case k -> eiy.a.u;
-         case l -> eiy.a.v;
-         case m -> eiy.a.w;
-         case n -> eiy.a.x;
-         case o -> eiy.a.y;
-         default -> eiy.a.z;
-      };
+   public void a() {
+      this.b = 0;
    }
 
-   public String b() {
-      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
+   public eja b() {
+      return this.a[0];
+   }
+
+   public eja c() {
+      eja $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
+      return $$0;
+   }
+
+   public void b(eja $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
+      }
+
+      $$0.d = -1;
+   }
+
+   public void a(eja $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      eja $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         eja $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      eja $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         eja $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         eja $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public eja[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

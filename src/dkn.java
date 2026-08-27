@@ -1,211 +1,159 @@
-import javax.annotation.Nullable;
-
-public class dkn extends djl implements bmc, bmp {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final bme e = new bme() {
+public class dkn extends dlk implements dlj {
+   private static final int e = 1;
+   private iu<cqk> f = iu.a(27, cqk.h);
+   private final dkt g = new dkt() {
       @Override
-      public int b() {
-         return 1;
+      protected void a(cwz $$0, ib $$1, dmz $$2) {
+         dkn.a($$0, $$1, $$2, aty.eL);
       }
 
       @Override
-      public boolean aj_() {
-         return dkn.this.g.b();
+      protected void b(cwz $$0, ib $$1, dmz $$2) {
+         dkn.a($$0, $$1, $$2, aty.eJ);
       }
 
       @Override
-      public cpq a(int $$0) {
-         return $$0 == 0 ? dkn.this.g : cpq.h;
+      protected void a(cwz $$0, ib $$1, dmz $$2, int $$3, int $$4) {
+         dkn.this.a($$0, $$1, $$2, $$3, $$4);
       }
 
       @Override
-      public cpq a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            cpq $$2 = dkn.this.g.a($$1);
-            if (dkn.this.g.b()) {
-               dkn.this.k();
-            }
-
-            return $$2;
+      protected boolean a(cis $$0) {
+         if (!($$0.bZ instanceof clv)) {
+            return false;
          } else {
-            return cpq.h;
+            bmv $$1 = ((clv)$$0.bZ).l();
+            return $$1 == dkn.this || $$1 instanceof bmu && ((bmu)$$1).a(dkn.this);
          }
-      }
-
-      @Override
-      public cpq b(int $$0) {
-         if ($$0 == 0) {
-            cpq $$1 = dkn.this.g;
-            dkn.this.g = cpq.h;
-            dkn.this.k();
-            return $$1;
-         } else {
-            return cpq.h;
-         }
-      }
-
-      @Override
-      public void a(int $$0, cpq $$1) {
-      }
-
-      @Override
-      public int al_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         dkn.this.e();
-      }
-
-      @Override
-      public boolean a(cia $$0) {
-         return bme.a(dkn.this, $$0) && dkn.this.c();
-      }
-
-      @Override
-      public boolean b(int $$0, cpq $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
       }
    };
-   private final cle f = new cle() {
-      @Override
-      public int a(int $$0) {
-         return $$0 == 0 ? dkn.this.h : 0;
-      }
+   private final dko h = new dko();
 
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            dkn.this.a($$1);
-         }
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-   };
-   cpq g = cpq.h;
-   int h;
-   private int i;
-
-   public dkn(ib $$0, dme $$1) {
-      super(djn.D, $$0, $$1);
+   protected dkn(dki<?> $$0, ib $$1, dmz $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public cpq b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.g.a(cpt.tW) || this.g.a(cpt.tX);
-   }
-
-   public void a(cpq $$0) {
-      this.a($$0, null);
-   }
-
-   void k() {
-      this.h = 0;
-      this.i = 0;
-      ddp.a(null, this.i(), this.aD_(), this.n(), false);
-   }
-
-   public void a(cpq $$0, @Nullable cia $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = crl.k(this.g);
-      this.e();
-   }
-
-   void a(int $$0) {
-      int $$1 = awm.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         ddp.a(this.i(), this.aD_(), this.n());
-      }
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public int j() {
-      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
-      return awm.d($$0 * 14.0F) + (this.c() ? 1 : 0);
-   }
-
-   private cpq b(cpq $$0, @Nullable cia $$1) {
-      if (this.o instanceof apa && $$0.a(cpt.tX)) {
-         crl.a($$0, this.a($$1), $$1);
-      }
-
-      return $$0;
-   }
-
-   private du a(@Nullable cia $$0) {
-      String $$1;
-      vs $$2;
-      if ($$0 == null) {
-         $$1 = "Lectern";
-         $$2 = vs.b("Lectern");
-      } else {
-         $$1 = $$0.ad().getString();
-         $$2 = $$0.Q_();
-      }
-
-      eov $$5 = eov.b(this.p);
-      return new du(dt.a, $$5, eou.a, (apa)this.o, 2, $$1, $$2, this.o.o(), $$0);
+   public dkn(ib $$0, dmz $$1) {
+      this(dki.b, $$0, $$1);
    }
 
    @Override
-   public boolean q() {
-      return true;
+   public int b() {
+      return 27;
    }
 
    @Override
-   public void a(sy $$0, in.a $$1) {
+   protected vu k() {
+      return vu.c("container.chest");
+   }
+
+   @Override
+   public void a(ta $$0, in.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(cpq.a($$0.p("Book")), null);
-      } else {
-         this.g = cpq.h;
+      this.f = iu.a(this.b(), cqk.h);
+      if (!this.c_($$0)) {
+         bmw.b($$0, this.f);
       }
-
-      this.i = crl.k(this.g);
-      this.h = awm.a($$0.h("Page"), 0, this.i - 1);
    }
 
    @Override
-   protected void b(sy $$0, in.a $$1) {
+   protected void b(ta $$0, in.a $$1) {
       super.b($$0, $$1);
-      if (!this.b().b()) {
-         $$0.a("Book", this.b().b(new sy()));
-         $$0.a("Page", this.h);
+      if (!this.b($$0)) {
+         bmw.a($$0, this.f);
+      }
+   }
+
+   public static void a(cwz $$0, ib $$1, dmz $$2, dkn $$3) {
+      $$3.h.a();
+   }
+
+   static void a(cwz $$0, ib $$1, dmz $$2, atx $$3) {
+      dnr $$4 = $$2.c(dbd.d);
+      if ($$4 != dnr.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dnr.c) {
+            ih $$8 = dbd.h($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, atz.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
    }
 
    @Override
-   public void a() {
-      this.a(cpq.h);
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.h.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
    }
 
    @Override
-   public cku createMenu(int $$0, chz $$1, cia $$2) {
-      return new cly($$0, this.e, this.f);
+   public void d_(cis $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.g.a($$0, this.i(), this.aC_(), this.n());
+      }
    }
 
    @Override
-   public vs Q_() {
-      return vs.c("container.lectern");
+   public void c(cis $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.g.b($$0, this.i(), this.aC_(), this.n());
+      }
+   }
+
+   @Override
+   protected iu<cqk> j() {
+      return this.f;
+   }
+
+   @Override
+   protected void a(iu<cqk> $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.h.a($$0);
+   }
+
+   public static int a(cwf $$0, ib $$1) {
+      dmz $$2 = $$0.a_($$1);
+      if ($$2.t()) {
+         dkg $$3 = $$0.c_($$1);
+         if ($$3 instanceof dkn) {
+            return ((dkn)$$3).g.a();
+         }
+      }
+
+      return 0;
+   }
+
+   public static void a(dkn $$0, dkn $$1) {
+      iu<cqk> $$2 = $$0.j();
+      $$0.a($$1.j());
+      $$1.a($$2);
+   }
+
+   @Override
+   protected clo a(int $$0, cir $$1) {
+      return clv.a($$0, $$1, this);
+   }
+
+   public void l() {
+      if (!this.q) {
+         this.g.c(this.i(), this.aC_(), this.n());
+      }
+   }
+
+   protected void a(cwz $$0, ib $$1, dmz $$2, int $$3, int $$4) {
+      daa $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

@@ -1,67 +1,40 @@
-public class fvd extends fve {
-   private final ib a;
-   private final float b;
-   private final float F;
-
-   public fvd(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dme $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, ib.a($$1, $$2, $$3));
+public class fvd extends fwe {
+   fvd(fry $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, aww.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, aww.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, aww.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
    }
 
-   public fvd(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dme $$7, ib $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(eyk.P().ao().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(czh.i)) {
-         int $$9 = eyk.P().av().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
+   @Override
+   public fvi b() {
+      return fvi.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * aww.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fvh<kf> {
+      private final fvz a;
+
+      public a(fvz $$0) {
+         this.a = $$0;
       }
 
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
-   }
-
-   @Override
-   public fui b() {
-      return fui.a;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? fwo.a(this.c, this.a) : $$1;
-   }
-
-   public static class a implements fuh<jt> {
-      public fue a(jt $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dme $$8 = $$0.b();
-         return !$$8.i() && !$$8.a(czh.bQ) && $$8.z() ? new fvd($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fvd $$8 = new fvd($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

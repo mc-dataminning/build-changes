@@ -1,25 +1,11 @@
-public class axc {
-   private double a;
-   private double b;
-   private double c;
+public interface axc {
+   void a(vu var1);
 
-   public double a(double $$0, double $$1) {
-      this.a += $$0;
-      double $$2 = this.a - this.b;
-      double $$3 = awm.d(0.5, this.c, $$2);
-      double $$4 = Math.signum($$2);
-      if ($$4 * $$2 > $$4 * this.c) {
-         $$2 = $$3;
-      }
+   void b(vu var1);
 
-      this.c = $$3;
-      this.b += $$2 * $$1;
-      return $$2 * $$1;
-   }
+   void c(vu var1);
 
-   public void a() {
-      this.a = 0.0;
-      this.b = 0.0;
-      this.c = 0.0;
-   }
+   void a(int var1);
+
+   void a();
 }

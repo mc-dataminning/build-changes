@@ -1,49 +1,87 @@
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
-public class sp implements ArgumentType<so> {
-   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+public class sp<T> implements sk, ss {
+   static final ss a = Stream::empty;
+   static final sk b = Stream::empty;
+   private final ss c;
+   private final sk d;
+   private final du e;
+   private final Function<sp<T>, T> f;
 
-   public so a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      Optional<so> $$2 = rw.e($$1);
-      if ($$2.isPresent()) {
-         return $$2.get();
-      } else {
-         Message $$3 = vs.b("No such test: " + $$1);
-         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
+   @Override
+   public Stream<ib> findStructureBlockPos() {
+      return this.d.findStructureBlockPos();
+   }
+
+   sp(du $$0, Function<sp<T>, T> $$1, ss $$2, sk $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   T b() {
+      return this.f.apply(this);
+   }
+
+   public du a() {
+      return this.e;
+   }
+
+   @Override
+   public Stream<sq> findTestFunctions() {
+      return this.c.findTestFunctions();
+   }
+
+   public static class a<T> {
+      private final Function<sp<T>, T> a;
+
+      public a(Function<sp<T>, T> $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static sp a() {
-      return new sp();
-   }
+      public T a(CommandContext<du> $$0, int $$1) {
+         du $$2 = (du)$$0.getSource();
+         return new sp<>($$2, this.a, sp.a, () -> sm.a($$1, $$2.d(), $$2.e())).b();
+      }
 
-   public static so a(CommandContext<du> $$0, String $$1) {
-      return (so)$$0.getArgument($$1, so.class);
-   }
+      public T a(CommandContext<du> $$0) {
+         du $$1 = (du)$$0.getSource();
+         ib $$2 = ib.a($$1.d());
+         return new sp<>($$1, this.a, sp.a, () -> sm.b($$2, 15, $$1.e()).stream()).b();
+      }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return a($$0, $$1);
-   }
+      public T b(CommandContext<du> $$0) {
+         du $$1 = (du)$$0.getSource();
+         ib $$2 = ib.a($$1.d());
+         return new sp<>($$1, this.a, sp.a, () -> sm.c($$2, 200, $$1.e())).b();
+      }
 
-   public static <S> CompletableFuture<Suggestions> a(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      Stream<String> $$2 = rw.a().stream().map(so::c);
-      return dz.b($$2, $$1);
-   }
+      public T c(CommandContext<du> $$0) {
+         du $$1 = (du)$$0.getSource();
+         return new sp<>($$1, this.a, sp.a, () -> sm.a(ib.a($$1.d()), $$1.i().K(), $$1.e())).b();
+      }
 
-   public Collection<String> getExamples() {
-      return a;
+      public T d(CommandContext<du> $$0) {
+         return new sp<>((du)$$0.getSource(), this.a, () -> ry.a().stream(), sp.b).b();
+      }
+
+      public T a(CommandContext<du> $$0, String $$1) {
+         return new sp<>((du)$$0.getSource(), this.a, () -> ry.a($$1), sp.b).b();
+      }
+
+      public T a(CommandContext<du> $$0, boolean $$1) {
+         return new sp<>((du)$$0.getSource(), this.a, () -> ry.c().filter($$1x -> !$$1 || $$1x.h()), sp.b).b();
+      }
+
+      public T b(CommandContext<du> $$0, String $$1) {
+         return new sp<>((du)$$0.getSource(), this.a, () -> Stream.of(sr.a($$0, $$1)), sp.b).b();
+      }
+
+      public T e(CommandContext<du> $$0) {
+         return this.a($$0, false);
+      }
    }
 }

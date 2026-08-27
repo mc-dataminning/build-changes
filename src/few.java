@@ -1,91 +1,143 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+public interface few {
+   few a(int var1);
 
-public class few {
-   private static final vs b = vs.c("gui.banned.title.temporary").a(n.r);
-   private static final vs c = vs.c("gui.banned.title.permanent").a(n.r);
-   public static final vs a = vs.c("gui.banned.name.title").a(n.r);
-   private static final vs d = vs.c("gui.banned.skin.title").a(n.r);
-   private static final vs e = vs.a("gui.banned.skin.description", vs.b("https://aka.ms/mcjavamoderation"));
+   few a(int var1, int var2);
 
-   public static fez a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fez($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", vr.m, true);
+   few a(int var1, int var2, int var3, int var4);
+
+   few b(int var1);
+
+   few c(int var1);
+
+   few d(int var1);
+
+   few e(int var1);
+
+   few f(int var1);
+
+   few g(int var1);
+
+   few a(float var1, float var2);
+
+   few a(float var1);
+
+   few b(float var1);
+
+   default few a() {
+      return this.a(0.0F);
    }
 
-   public static fez a(Runnable $$0) {
-      String $$1 = "https://aka.ms/mcjavamoderation";
-      return new fez($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$0.run();
-      }, d, e, "https://aka.ms/mcjavamoderation", vr.m, true);
+   default few b() {
+      return this.a(0.5F);
    }
 
-   public static fez a(String $$0, Runnable $$1) {
-      String $$2 = "https://aka.ms/mcjavamoderation";
-      return new fez($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$1.run();
-      }, a, vs.a("gui.banned.name.description", vs.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", vr.m, true);
+   default few c() {
+      return this.a(1.0F);
    }
 
-   private static vs a(BanDetails $$0) {
-      return f($$0) ? b : c;
+   default few d() {
+      return this.b(0.0F);
    }
 
-   private static vs b(BanDetails $$0) {
-      return vs.a("gui.banned.description", c($$0), d($$0), vs.b("https://aka.ms/mcjavamoderation"));
+   default few e() {
+      return this.b(0.5F);
    }
 
-   private static vs c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         fry $$4 = fry.a($$3);
-         vs $$5;
-         if ($$4 != null) {
-            $$5 = vv.a($$4.a().f(), wp.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = vs.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = vs.a("gui.banned.description.reason_id", $$3).a(n.r);
-         }
+   default few f() {
+      return this.b(1.0F);
+   }
 
-         return vs.a("gui.banned.description.reason", $$5);
-      } else {
-         return vs.c("gui.banned.description.unknownreason");
+   few g();
+
+   few.a h();
+
+   static few i() {
+      return new few.a();
+   }
+
+   public static class a implements few {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
+
+      public a() {
       }
-   }
 
-   private static vs d(BanDetails $$0) {
-      if (f($$0)) {
-         vs $$1 = e($$0);
-         return vs.a("gui.banned.description.temporary", vs.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return vs.c("gui.banned.description.permanent").a(n.r);
+      public a(few.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
       }
-   }
 
-   private static vs e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return vr.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? vr.c($$1.toMinutes()) : vr.b($$1.toHours());
+      public few.a h(int $$0) {
+         return this.b($$0, $$0);
       }
-   }
 
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+      public few.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public few.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public few.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public few.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public few.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public few.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public few.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public few.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public few.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public few.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public few.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public few.a j() {
+         return new few.a(this);
+      }
+
+      @Override
+      public few.a h() {
+         return this;
+      }
    }
 }

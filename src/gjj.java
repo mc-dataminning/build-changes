@@ -1,58 +1,46 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class gjj {
-   public static final gjk a = new gjk();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final gjj e = new gjj(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public gjl a(int $$0, int $$1) {
-         return new gjl($$0, $$1);
+   private final ajh a;
+   private final asm b;
+   private final AtomicReference<eta> c = new AtomicReference<>();
+   private final AtomicInteger d;
+
+   public gjj(ajh $$0, asm $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
+   }
+
+   public eta a() throws IOException {
+      eta $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = eta.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
       }
-   };
-   private final List<gji> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
 
-   public gjj(List<gji> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
+      return $$0;
    }
 
-   public gjl a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new gjl(this.g, this.h) : new gjl(this.g, $$1);
-      } else if (this.h != -1) {
-         return new gjl($$0, this.h);
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new gjl($$2, $$2);
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         eta $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
       }
-   }
-
-   public int a() {
-      return this.i;
-   }
-
-   public boolean b() {
-      return this.j;
-   }
-
-   public void a(gjj.a $$0) {
-      for (gji $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
    }
 }

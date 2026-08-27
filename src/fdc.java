@@ -1,17 +1,58 @@
-public record fdc(fwy a, fwy b, fwy c) {
-   public static fdc a(ajc $$0) {
-      return new fdc(fwy.u($$0), fwy.y($$0), fwy.w($$0));
+import javax.annotation.Nullable;
+
+public interface fdc extends fcq {
+   long s = 250L;
+
+   default void f(double $$0, double $$1) {
    }
 
-   public static fdc b(ajc $$0) {
-      return new fdc(fwy.t($$0), fwy.x($$0), fwy.v($$0));
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   public fwy a(ezv.a $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-         case c -> this.c;
-      };
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean b(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
+   }
+
+   @Nullable
+   default faq a(ffi $$0) {
+      return null;
+   }
+
+   default boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aJ_();
+
+   @Nullable
+   default faq aK_() {
+      return this.aJ_() ? faq.a(this) : null;
+   }
+
+   default ffm F() {
+      return ffm.a();
    }
 }

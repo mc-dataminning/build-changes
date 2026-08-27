@@ -1,45 +1,39 @@
-public class adr implements xz<aai> {
-   public static final xq<us, adr> a = xz.a(adr::a, adr::new);
-   private final float b;
+import javax.annotation.Nullable;
+
+public class adr implements yb<aam> {
+   public static final xs<uu, adr> a = yb.a(adr::a, adr::new);
+   private final int b;
    private final int c;
-   private final float d;
 
-   public adr(float $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public adr(bow $$0, @Nullable bow $$1) {
+      this.b = $$0.aj();
+      this.c = $$1 != null ? $$1.aj() : 0;
    }
 
-   private adr(us $$0) {
-      this.b = $$0.readFloat();
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
+   private adr(uu $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private void a(uu $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public yb<adr> a() {
-      return aet.aH;
+   public yd<adr> a() {
+      return aex.aD;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
       return this.b;
    }
 
    public int e() {
       return this.c;
-   }
-
-   public float f() {
-      return this.d;
    }
 }

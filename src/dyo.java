@@ -1,48 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dyo extends dyk {
+public class dyo implements dxu {
    public static final Codec<dyo> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(blq.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dyo::new)
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               dxa.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               ib.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, dyo::new)
    );
-   private final blq b;
+   private final boolean b;
+   private final List<dxa.a> c;
+   @Nullable
+   private final ib d;
 
-   public dyo(blq $$0, blq $$1, blq $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public dyo(boolean $$0, List<dxa.a> $$1, @Nullable ib $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   @Override
-   protected dyl<?> a() {
-      return dyl.c;
+   private dyo(boolean $$0, List<dxa.a> $$1, Optional<ib> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   protected void a(cwk $$0, dyk.b $$1, awt $$2, dxu $$3, int $$4, dyk.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
-         }
-      }
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
-   public int a(awt $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   public List<dxa.a> b() {
+      return this.c;
    }
 
-   @Override
-   public int a(awt $$0, int $$1, dxu $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(awt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   @Nullable
+   public ib c() {
+      return this.d;
    }
 }

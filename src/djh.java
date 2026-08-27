@@ -1,25 +1,33 @@
-public class djh extends djl {
-   private cog a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public djh(ib $$0, dme $$1) {
-      super(djn.y, $$0, $$1);
-      this.a = ((cyy)$$1.b()).b();
+public class djh extends daa implements dje {
+   public static final MapCodec<djh> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dje.a.e.fieldOf("weathering_state").forGetter(dbb::c), u()).apply($$0, djh::new)
+   );
+   private final dje.a e;
+
+   @Override
+   public MapCodec<djh> a() {
+      return d;
    }
 
-   public djh(ib $$0, dme $$1, cog $$2) {
-      super(djn.y, $$0, $$1);
-      this.a = $$2;
+   public djh(dje.a $$0, dmy.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
-   public aap b() {
-      return aap.a(this);
+   @Override
+   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
-   public cog c() {
-      return this.a;
+   @Override
+   protected boolean e_(dmz $$0) {
+      return dje.c($$0.b()).isPresent();
    }
 
-   public void a(cog $$0) {
-      this.a = $$0;
+   public dje.a i() {
+      return this.e;
    }
 }

@@ -1,24 +1,46 @@
-public record ael(int b) implements xz<aai> {
-   public static final xq<us, ael> a = xz.a(ael::a, ael::new);
+import javax.annotation.Nullable;
 
-   private ael(us $$0) {
-      this($$0.l());
+public class ael implements yb<aam> {
+   public static final xs<uu, ael> a = yb.a(ael::a, ael::new);
+   private final int b;
+   @Nullable
+   private final ta c;
+
+   public ael(int $$0, @Nullable ta $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static ael a(bmw $$0) {
-      return new ael($$0.k());
+   private ael(uu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(us $$0) {
+   private void a(uu $$0) {
       $$0.c(this.b);
+      $$0.a((tx)this.c);
    }
 
    @Override
-   public yb<ael> a() {
-      return aet.ce;
+   public yd<ael> a() {
+      return aex.aX;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   @Nullable
+   public ta e() {
+      return this.c;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

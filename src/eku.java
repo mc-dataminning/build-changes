@@ -1,42 +1,142 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class eku extends ekt {
-   public static final Codec<eku> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ajc.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eku::new)
-   );
-   private final ajc j;
+public class eku {
+   private final ela a;
+   private final axd b;
+   private final eky c;
+   private final Set<eku.c<?>> d = Sets.newLinkedHashSet();
 
-   private eku(ajc $$0, int $$1, int $$2, List<emx> $$3, List<ell> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   eku(ela $$0, axd $$1, eky $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public eks a() {
-      return ekp.d;
+   public boolean a(enc<?> $$0) {
+      return this.a.a($$0);
    }
 
-   @Override
-   public void a(Consumer<cpq> $$0, ejy $$1) {
-      ekg $$2 = $$1.a().getLootTable(this.j);
-      $$2.a($$1, $$0);
+   public <T> T b(enc<T> $$0) {
+      return this.a.b($$0);
    }
 
-   @Override
-   public void a(ekh $$0) {
-      eka<ekg> $$1 = new eka<>(ekd.c, this.j);
-      if ($$0.a($$1)) {
-         $$0.b("Table " + this.j + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.j + "}", $$1)), () -> $$0.b("Unknown loot table called " + this.j));
+   public void a(ajh $$0, Consumer<cqk> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Nullable
+   public <T> T c(enc<T> $$0) {
+      return this.a.d($$0);
+   }
+
+   public boolean a(eku.c<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean b(eku.c<?> $$0) {
+      return this.d.add($$0);
+   }
+
+   public void c(eku.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public eky a() {
+      return this.c;
+   }
+
+   public axd b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.b();
+   }
+
+   public apf d() {
+      return this.a.a();
+   }
+
+   public static eku.c<elc> a(elc $$0) {
+      return new eku.c<>(ekz.c, $$0);
+   }
+
+   public static eku.c<ent> a(ent $$0) {
+      return new eku.c<>(ekz.a, $$0);
+   }
+
+   public static eku.c<emh> a(emh $$0) {
+      return new eku.c<>(ekz.b, $$0);
+   }
+
+   public static class a {
+      private final ela a;
+      @Nullable
+      private axd b;
+
+      public a(ela $$0) {
+         this.a = $$0;
+      }
+
+      public eku.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = axd.a($$0);
+         }
+
+         return this;
+      }
+
+      public apf a() {
+         return this.a.a();
+      }
+
+      public eku a(Optional<ajh> $$0) {
+         apf $$1 = this.a();
+         MinecraftServer $$2 = $$1.o();
+         axd $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
+         return new eku(this.a, $$3, $$2.aM());
       }
    }
 
-   public static ekt.a<?> a(ajc $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eku($$0, $$1, $$2, $$3, $$4));
+   public static enum b implements axq {
+      a("this", enf.a),
+      b("killer", enf.d),
+      c("direct_killer", enf.e),
+      d("killer_player", enf.b);
+
+      public static final axq.a<eku.b> e = axq.a(eku.b::values);
+      private final String f;
+      private final enc<? extends bow> g;
+
+      private b(String $$0, enc<? extends bow> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public enc<? extends bow> a() {
+         return this.g;
+      }
+
+      public static eku.b a(String $$0) {
+         eku.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static record c<T>(ekz<T> a, T b) {
    }
 }

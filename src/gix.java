@@ -1,15 +1,15 @@
-public class gix extends gjb {
-   private static final ajc a = new ajc("back");
+import java.util.Collection;
+import java.util.Locale;
 
-   public gix(gia $$0) {
-      super($$0, new ajc("textures/atlas/paintings.png"), new ajc("paintings"));
+public class gix extends RuntimeException {
+   private final Collection<giw.a> a;
+
+   public gix(giw.a $$0, Collection<giw.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   public ghz a(ceh $$0) {
-      return this.a(kh.l.b($$0));
-   }
-
-   public ghz a() {
-      return this.a(a);
+   public Collection<giw.a> a() {
+      return this.a;
    }
 }

@@ -1,113 +1,91 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class dig extends dho {
-   public static final MapCodec<dig> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dig::new));
-   public static final dmy g = dda.aE;
-   protected static final float h = 2.5F;
-   private static final Map<ih, epo> i = Maps.newEnumMap(
-      ImmutableMap.of(
-         ih.c,
-         czf.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
-         ih.d,
-         czf.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
-         ih.e,
-         czf.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
-         ih.f,
-         czf.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
-      )
-   );
+public class dig extends daa {
+   public static final MapCodec<dig> a = b(dig::new);
+   private static final dnz b = dnp.aT;
+   private static final int c = 20;
+   private static final int d = 8;
 
    @Override
    public MapCodec<dig> a() {
-      return f;
+      return a;
    }
 
-   protected dig(ke $$0, dmd.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(g, ih.c));
-   }
-
-   @Override
-   public String g() {
-      return this.l().a();
+   public dig(dmy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return m($$0);
+   protected void a(cwz $$0, dmz $$1, epn $$2, cjk $$3) {
+      int $$4 = a((cxa)$$0, $$1, $$2, (bow)$$3);
+      if ($$3.af_() instanceof apg $$6) {
+         $$6.a(aui.aE);
+         am.M.a($$6, $$3, $$2.e(), $$4);
+      }
    }
 
-   public static epo m(dme $$0) {
-      return i.get($$0.c(g));
-   }
-
-   @Override
-   protected boolean a(dme $$0, cwh $$1, ib $$2) {
-      return b($$1, $$2, $$0.c(g));
-   }
-
-   public static boolean b(cwh $$0, ib $$1, ih $$2) {
-      ib $$3 = $$1.a($$2.g());
-      dme $$4 = $$0.a_($$3);
-      return $$4.d($$0, $$3, $$2);
-   }
-
-   @Nullable
-   @Override
-   public dme a(crx $$0) {
-      dme $$1 = this.o();
-      cwh $$2 = $$0.q();
-      ib $$3 = $$0.a();
-      ih[] $$4 = $$0.f();
-
-      for (ih $$5 : $$4) {
-         if ($$5.o().d()) {
-            ih $$6 = $$5.g();
-            $$1 = $$1.a(g, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
+   private static int a(cxa $$0, dmz $$1, epn $$2, bow $$3) {
+      int $$4 = a($$2, $$2.e());
+      int $$5 = $$3 instanceof ciy ? 20 : 8;
+      if (!$$0.N().a($$2.a(), $$1.b())) {
+         a($$0, $$1, $$4, $$2.a(), $$5);
       }
 
-      return null;
+      return $$4;
+   }
+
+   private static int a(epn $$0, epr $$1) {
+      ih $$2 = $$0.b();
+      double $$3 = Math.abs(aww.e($$1.c) - 0.5);
+      double $$4 = Math.abs(aww.e($$1.d) - 0.5);
+      double $$5 = Math.abs(aww.e($$1.e) - 0.5);
+      ih.a $$6 = $$2.o();
+      double $$7;
+      if ($$6 == ih.a.b) {
+         $$7 = Math.max($$3, $$5);
+      } else if ($$6 == ih.a.c) {
+         $$7 = Math.max($$3, $$4);
+      } else {
+         $$7 = Math.max($$4, $$5);
+      }
+
+      return Math.max(1, aww.c(15.0 * aww.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
+   }
+
+   private static void a(cxa $$0, dmz $$1, int $$2, ib $$3, int $$4) {
+      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
+      $$0.a($$3, $$1.b(), $$4);
    }
 
    @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? czh.a.o() : $$0;
+   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if ($$0.c(b) != 0) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
+      }
    }
 
    @Override
-   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
-      ih $$4 = $$0.c(g);
-      double $$5 = (double)$$2.u() + 0.5;
-      double $$6 = (double)$$2.v() + 0.7;
-      double $$7 = (double)$$2.w() + 0.5;
-      double $$8 = 0.22;
-      double $$9 = 0.27;
-      ih $$10 = $$4.g();
-      $$1.a(kb.ab, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   protected int a(dmz $$0, cwf $$1, ib $$2, ih $$3) {
+      return $$0.c(b);
    }
 
    @Override
-   protected dme a(dme $$0, dfr $$1) {
-      return $$0.a(g, $$1.a($$0.c(g)));
+   protected boolean f_(dmz $$0) {
+      return true;
    }
 
    @Override
-   protected dme a(dme $$0, deb $$1) {
-      return $$0.a($$1.a($$0.c(g)));
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(g);
+   protected void b(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
+      if (!$$1.x_() && !$$0.a($$3.b())) {
+         if ($$0.c(b) > 0 && !$$1.N().a($$2, this)) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
+         }
+      }
    }
 }

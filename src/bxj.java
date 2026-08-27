@@ -1,32 +1,13 @@
-public class bxj extends bwe {
-   private final cfz b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public bxj(cfz $$0, double $$1, boolean $$2) {
+public class bxj extends bxi {
+   public bxj(bpw $$0, double $$1, int $$2) {
       super($$0, $$1, $$2);
-      this.b = $$0;
    }
 
+   @Nullable
    @Override
-   public void c() {
-      super.c();
-      this.c = 0;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+   protected epr h() {
+      return bri.a(this.b, 10, 7);
    }
 }

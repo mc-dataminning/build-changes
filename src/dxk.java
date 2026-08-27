@@ -1,22 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class dxk implements dwy {
+public class dxk {
    public static final Codec<dxk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(dxk::new, dwo.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), ebk.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(ecg.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, dxk::new)
    );
-   public final List<dwo> b;
-   public final il<ebk> c;
+   public final il<ecg> b;
+   public final float c;
 
-   public dxk(List<dwo> $$0, il<ebk> $$1) {
+   public dxk(il<ecg> $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   @Override
-   public Stream<duh<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+   public boolean a(cxu $$0, dow $$1, axd $$2, ib $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

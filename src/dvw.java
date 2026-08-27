@@ -1,109 +1,149 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import java.util.List;
 import java.util.function.Predicate;
 
-public class dvw extends duu<dxo> {
-   public dvw(Codec<dxo> $$0) {
+public class dvw extends dvq<dxv> {
+   private static final ih[] a = ih.values();
+
+   public dvw(Codec<dxv> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(duw<dxo> $$0) {
-      cwz $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      if (!$$1.a_($$2).i()) {
-         return false;
-      } else {
-         awt $$3 = $$0.d();
-         ib $$4 = $$0.e();
-         dxo $$5 = $$0.f();
-         ib.a $$6 = $$4.j();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
+   public boolean a(dvs<dxv> $$0) {
+      dxv $$1 = $$0.f();
+      axd $$2 = $$0.d();
+      ib $$3 = $$0.e();
+      cxu $$4 = $$0.b();
+      int $$5 = $$1.l;
+      int $$6 = $$1.n;
+      List<Pair<ib, Integer>> $$7 = Lists.newLinkedList();
+      int $$8 = $$1.j.a($$2);
+      dtl $$9 = new dtl(new dsn($$4.C()));
+      ehq $$10 = ehq.a($$9, -4, 1.0);
+      List<ib> $$11 = Lists.newLinkedList();
+      double $$12 = (double)$$8 / (double)$$1.i.b();
+      dsl $$13 = $$1.d;
+      dsj $$14 = $$1.c;
+      dsk $$15 = $$1.e;
+      double $$16 = 1.0 / Math.sqrt($$13.b);
+      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
+      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
+      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
+      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
+      boolean $$21 = (double)$$2.i() < $$15.b;
+      int $$22 = 0;
+
+      for (int $$23 = 0; $$23 < $$8; $$23++) {
+         int $$24 = $$1.i.a($$2);
+         int $$25 = $$1.i.a($$2);
+         int $$26 = $$1.i.a($$2);
+         ib $$27 = $$3.b($$24, $$25, $$26);
+         dmz $$28 = $$4.a_($$27);
+         if ($$28.i() || $$28.a(aun.bK)) {
+            if (++$$22 > $$1.p) {
+               return false;
+            }
          }
 
-         return true;
+         $$7.add(Pair.of($$27, $$1.k.a($$2)));
       }
-   }
 
-   private static boolean a(cwz $$0, dxo $$1, ib $$2) {
-      ib.a $$3 = $$2.j();
+      if ($$21) {
+         int $$29 = $$2.a(4);
+         int $$30 = $$8 * 2 + 1;
+         if ($$29 == 0) {
+            $$11.add($$3.b($$30, 7, 0));
+            $$11.add($$3.b($$30, 5, 0));
+            $$11.add($$3.b($$30, 1, 0));
+         } else if ($$29 == 1) {
+            $$11.add($$3.b(0, 7, $$30));
+            $$11.add($$3.b(0, 5, $$30));
+            $$11.add($$3.b(0, 1, $$30));
+         } else if ($$29 == 2) {
+            $$11.add($$3.b($$30, 7, $$30));
+            $$11.add($$3.b($$30, 5, $$30));
+            $$11.add($$3.b($$30, 1, $$30));
+         } else {
+            $$11.add($$3.b(0, 7, 0));
+            $$11.add($$3.b(0, 5, 0));
+            $$11.add($$3.b(0, 1, 0));
+         }
+      }
 
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(ih.b);
-         dme $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
+      List<ib> $$31 = Lists.newArrayList();
+      Predicate<dmz> $$32 = a($$1.c.g);
+
+      for (ib $$33 : ib.a($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
+         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
+         double $$35 = 0.0;
+         double $$36 = 0.0;
+
+         for (Pair<ib, Integer> $$37 : $$7) {
+            $$35 += aww.f($$33.j((jg)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
+         }
+
+         for (ib $$38 : $$11) {
+            $$36 += aww.f($$33.j($$38) + (double)$$15.d) + $$34;
+         }
+
+         if (!($$35 < $$19)) {
+            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
+               this.a($$4, $$33, dac.a.o(), $$32);
+
+               for (ih $$39 : a) {
+                  ib $$40 = $$33.a($$39);
+                  ein $$41 = $$4.b_($$40);
+                  if (!$$41.c()) {
+                     $$4.a($$40, $$41.a(), 0);
+                  }
+               }
+            } else if ($$35 >= $$16) {
+               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
+            } else if ($$35 >= $$17) {
+               boolean $$42 = (double)$$2.i() < $$1.g;
+               if ($$42) {
+                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
+               } else {
+                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
+               }
+
+               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
+                  $$31.add($$33.i());
+               }
+            } else if ($$35 >= $$18) {
+               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
+            } else if ($$35 >= $$19) {
+               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
+            }
+         }
+      }
+
+      List<dmz> $$43 = $$14.f;
+
+      for (ib $$44 : $$31) {
+         dmz $$45 = ac.a($$43, $$2);
+
+         for (ih $$46 : a) {
+            if ($$45.b(dnp.P)) {
+               $$45 = $$45.a(dnp.P, $$46);
+            }
+
+            ib $$47 = $$44.a($$46);
+            dmz $$48 = $$4.a_($$47);
+            if ($$45.b(dnp.C)) {
+               $$45 = $$45.a(dnp.C, Boolean.valueOf($$48.u().b()));
+            }
+
+            if (dai.g($$48)) {
+               this.a($$4, $$47, $$45, $$32);
+               break;
+            }
          }
       }
 
       return true;
-   }
-
-   private static boolean a(dme $$0, int $$1, int $$2) {
-      if ($$0.i()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.u().a(auj.a);
-      }
-   }
-
-   private static boolean a(cwz $$0, dob $$1, dxo $$2, awt $$3, ib.a $$4, ib $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(ih.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            ib $$7 = $$4.d();
-            if ($$0.b_($$7).a(auj.b) || !$$0.a_($$7).e()) {
-               return false;
-            }
-
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(ib $$0, int $$1, cwz $$2, dxo $$3, awt $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      ib.a $$7 = $$0.j();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
-   }
-
-   private static void a(cwz $$0, dxo $$1, awt $$2, int $$3, int $$4, ib.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dme> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(cwz $$0, dxo $$1, awt $$2, ib $$3, ib.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dme $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, ih.a)) {
-               $$0.a($$4, $$8, 2);
-            }
-         }
-      }
    }
 }

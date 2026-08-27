@@ -1,141 +1,47 @@
 import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
 
-public class azm extends DataFix {
-   private static final ImmutableMap<String, Pair<String, ImmutableMap<String, String>>> a = ImmutableMap.builder()
-      .put(
-         "EndCity",
-         Pair.of(
-            "ECP",
-            ImmutableMap.builder().put("second_floor", "second_floor_1").put("third_floor", "third_floor_1").put("third_floor_c", "third_floor_2").build()
-         )
-      )
-      .put(
-         "Mansion",
-         Pair.of(
-            "WMP",
-            ImmutableMap.builder()
-               .put("carpet_south", "carpet_south_1")
-               .put("carpet_west", "carpet_west_1")
-               .put("indoors_door", "indoors_door_1")
-               .put("indoors_wall", "indoors_wall_1")
-               .build()
-         )
-      )
-      .put(
-         "Igloo",
-         Pair.of(
-            "Iglu",
-            ImmutableMap.builder()
-               .put("minecraft:igloo/igloo_bottom", "minecraft:igloo/bottom")
-               .put("minecraft:igloo/igloo_middle", "minecraft:igloo/middle")
-               .put("minecraft:igloo/igloo_top", "minecraft:igloo/top")
-               .build()
-         )
-      )
-      .put(
-         "Ocean_Ruin",
-         Pair.of(
-            "ORP",
-            ImmutableMap.builder()
-               .put("minecraft:ruin/big_ruin1_brick", "minecraft:underwater_ruin/big_brick_1")
-               .put("minecraft:ruin/big_ruin2_brick", "minecraft:underwater_ruin/big_brick_2")
-               .put("minecraft:ruin/big_ruin3_brick", "minecraft:underwater_ruin/big_brick_3")
-               .put("minecraft:ruin/big_ruin8_brick", "minecraft:underwater_ruin/big_brick_8")
-               .put("minecraft:ruin/big_ruin1_cracked", "minecraft:underwater_ruin/big_cracked_1")
-               .put("minecraft:ruin/big_ruin2_cracked", "minecraft:underwater_ruin/big_cracked_2")
-               .put("minecraft:ruin/big_ruin3_cracked", "minecraft:underwater_ruin/big_cracked_3")
-               .put("minecraft:ruin/big_ruin8_cracked", "minecraft:underwater_ruin/big_cracked_8")
-               .put("minecraft:ruin/big_ruin1_mossy", "minecraft:underwater_ruin/big_mossy_1")
-               .put("minecraft:ruin/big_ruin2_mossy", "minecraft:underwater_ruin/big_mossy_2")
-               .put("minecraft:ruin/big_ruin3_mossy", "minecraft:underwater_ruin/big_mossy_3")
-               .put("minecraft:ruin/big_ruin8_mossy", "minecraft:underwater_ruin/big_mossy_8")
-               .put("minecraft:ruin/big_ruin_warm4", "minecraft:underwater_ruin/big_warm_4")
-               .put("minecraft:ruin/big_ruin_warm5", "minecraft:underwater_ruin/big_warm_5")
-               .put("minecraft:ruin/big_ruin_warm6", "minecraft:underwater_ruin/big_warm_6")
-               .put("minecraft:ruin/big_ruin_warm7", "minecraft:underwater_ruin/big_warm_7")
-               .put("minecraft:ruin/ruin1_brick", "minecraft:underwater_ruin/brick_1")
-               .put("minecraft:ruin/ruin2_brick", "minecraft:underwater_ruin/brick_2")
-               .put("minecraft:ruin/ruin3_brick", "minecraft:underwater_ruin/brick_3")
-               .put("minecraft:ruin/ruin4_brick", "minecraft:underwater_ruin/brick_4")
-               .put("minecraft:ruin/ruin5_brick", "minecraft:underwater_ruin/brick_5")
-               .put("minecraft:ruin/ruin6_brick", "minecraft:underwater_ruin/brick_6")
-               .put("minecraft:ruin/ruin7_brick", "minecraft:underwater_ruin/brick_7")
-               .put("minecraft:ruin/ruin8_brick", "minecraft:underwater_ruin/brick_8")
-               .put("minecraft:ruin/ruin1_cracked", "minecraft:underwater_ruin/cracked_1")
-               .put("minecraft:ruin/ruin2_cracked", "minecraft:underwater_ruin/cracked_2")
-               .put("minecraft:ruin/ruin3_cracked", "minecraft:underwater_ruin/cracked_3")
-               .put("minecraft:ruin/ruin4_cracked", "minecraft:underwater_ruin/cracked_4")
-               .put("minecraft:ruin/ruin5_cracked", "minecraft:underwater_ruin/cracked_5")
-               .put("minecraft:ruin/ruin6_cracked", "minecraft:underwater_ruin/cracked_6")
-               .put("minecraft:ruin/ruin7_cracked", "minecraft:underwater_ruin/cracked_7")
-               .put("minecraft:ruin/ruin8_cracked", "minecraft:underwater_ruin/cracked_8")
-               .put("minecraft:ruin/ruin1_mossy", "minecraft:underwater_ruin/mossy_1")
-               .put("minecraft:ruin/ruin2_mossy", "minecraft:underwater_ruin/mossy_2")
-               .put("minecraft:ruin/ruin3_mossy", "minecraft:underwater_ruin/mossy_3")
-               .put("minecraft:ruin/ruin4_mossy", "minecraft:underwater_ruin/mossy_4")
-               .put("minecraft:ruin/ruin5_mossy", "minecraft:underwater_ruin/mossy_5")
-               .put("minecraft:ruin/ruin6_mossy", "minecraft:underwater_ruin/mossy_6")
-               .put("minecraft:ruin/ruin7_mossy", "minecraft:underwater_ruin/mossy_7")
-               .put("minecraft:ruin/ruin8_mossy", "minecraft:underwater_ruin/mossy_8")
-               .put("minecraft:ruin/ruin_warm1", "minecraft:underwater_ruin/warm_1")
-               .put("minecraft:ruin/ruin_warm2", "minecraft:underwater_ruin/warm_2")
-               .put("minecraft:ruin/ruin_warm3", "minecraft:underwater_ruin/warm_3")
-               .put("minecraft:ruin/ruin_warm4", "minecraft:underwater_ruin/warm_4")
-               .put("minecraft:ruin/ruin_warm5", "minecraft:underwater_ruin/warm_5")
-               .put("minecraft:ruin/ruin_warm6", "minecraft:underwater_ruin/warm_6")
-               .put("minecraft:ruin/ruin_warm7", "minecraft:underwater_ruin/warm_7")
-               .put("minecraft:ruin/ruin_warm8", "minecraft:underwater_ruin/warm_8")
-               .put("minecraft:ruin/big_brick_1", "minecraft:underwater_ruin/big_brick_1")
-               .put("minecraft:ruin/big_brick_2", "minecraft:underwater_ruin/big_brick_2")
-               .put("minecraft:ruin/big_brick_3", "minecraft:underwater_ruin/big_brick_3")
-               .put("minecraft:ruin/big_brick_8", "minecraft:underwater_ruin/big_brick_8")
-               .put("minecraft:ruin/big_mossy_1", "minecraft:underwater_ruin/big_mossy_1")
-               .put("minecraft:ruin/big_mossy_2", "minecraft:underwater_ruin/big_mossy_2")
-               .put("minecraft:ruin/big_mossy_3", "minecraft:underwater_ruin/big_mossy_3")
-               .put("minecraft:ruin/big_mossy_8", "minecraft:underwater_ruin/big_mossy_8")
-               .put("minecraft:ruin/big_cracked_1", "minecraft:underwater_ruin/big_cracked_1")
-               .put("minecraft:ruin/big_cracked_2", "minecraft:underwater_ruin/big_cracked_2")
-               .put("minecraft:ruin/big_cracked_3", "minecraft:underwater_ruin/big_cracked_3")
-               .put("minecraft:ruin/big_cracked_8", "minecraft:underwater_ruin/big_cracked_8")
-               .put("minecraft:ruin/big_warm_4", "minecraft:underwater_ruin/big_warm_4")
-               .put("minecraft:ruin/big_warm_5", "minecraft:underwater_ruin/big_warm_5")
-               .put("minecraft:ruin/big_warm_6", "minecraft:underwater_ruin/big_warm_6")
-               .put("minecraft:ruin/big_warm_7", "minecraft:underwater_ruin/big_warm_7")
-               .build()
-         )
-      )
+public final class azm {
+   public static final ImmutableMap<String, String> a = ImmutableMap.builder()
+      .put("minecraft:badlands_plateau", "minecraft:badlands")
+      .put("minecraft:bamboo_jungle_hills", "minecraft:bamboo_jungle")
+      .put("minecraft:birch_forest_hills", "minecraft:birch_forest")
+      .put("minecraft:dark_forest_hills", "minecraft:dark_forest")
+      .put("minecraft:desert_hills", "minecraft:desert")
+      .put("minecraft:desert_lakes", "minecraft:desert")
+      .put("minecraft:giant_spruce_taiga_hills", "minecraft:old_growth_spruce_taiga")
+      .put("minecraft:giant_spruce_taiga", "minecraft:old_growth_spruce_taiga")
+      .put("minecraft:giant_tree_taiga_hills", "minecraft:old_growth_pine_taiga")
+      .put("minecraft:giant_tree_taiga", "minecraft:old_growth_pine_taiga")
+      .put("minecraft:gravelly_mountains", "minecraft:windswept_gravelly_hills")
+      .put("minecraft:jungle_edge", "minecraft:sparse_jungle")
+      .put("minecraft:jungle_hills", "minecraft:jungle")
+      .put("minecraft:modified_badlands_plateau", "minecraft:badlands")
+      .put("minecraft:modified_gravelly_mountains", "minecraft:windswept_gravelly_hills")
+      .put("minecraft:modified_jungle_edge", "minecraft:sparse_jungle")
+      .put("minecraft:modified_jungle", "minecraft:jungle")
+      .put("minecraft:modified_wooded_badlands_plateau", "minecraft:wooded_badlands")
+      .put("minecraft:mountain_edge", "minecraft:windswept_hills")
+      .put("minecraft:mountains", "minecraft:windswept_hills")
+      .put("minecraft:mushroom_field_shore", "minecraft:mushroom_fields")
+      .put("minecraft:shattered_savanna", "minecraft:windswept_savanna")
+      .put("minecraft:shattered_savanna_plateau", "minecraft:windswept_savanna")
+      .put("minecraft:snowy_mountains", "minecraft:snowy_plains")
+      .put("minecraft:snowy_taiga_hills", "minecraft:snowy_taiga")
+      .put("minecraft:snowy_taiga_mountains", "minecraft:snowy_taiga")
+      .put("minecraft:snowy_tundra", "minecraft:snowy_plains")
+      .put("minecraft:stone_shore", "minecraft:stony_shore")
+      .put("minecraft:swamp_hills", "minecraft:swamp")
+      .put("minecraft:taiga_hills", "minecraft:taiga")
+      .put("minecraft:taiga_mountains", "minecraft:taiga")
+      .put("minecraft:tall_birch_forest", "minecraft:old_growth_birch_forest")
+      .put("minecraft:tall_birch_hills", "minecraft:old_growth_birch_forest")
+      .put("minecraft:wooded_badlands_plateau", "minecraft:wooded_badlands")
+      .put("minecraft:wooded_hills", "minecraft:forest")
+      .put("minecraft:wooded_mountains", "minecraft:windswept_forest")
+      .put("minecraft:lofty_peaks", "minecraft:jagged_peaks")
+      .put("minecraft:snowcapped_peaks", "minecraft:frozen_peaks")
       .build();
 
-   public azm(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bdt.D);
-      return this.fixTypeEverywhereTyped("ChunkStructuresTemplateRenameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Children", $$1 -> $$0.createList($$1.asStream().map($$1x -> this.a($$0, $$1x))));
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1) {
-      String $$2 = $$0.get("id").asString("");
-      if (a.containsKey($$2)) {
-         Pair<String, ImmutableMap<String, String>> $$3 = (Pair<String, ImmutableMap<String, String>>)a.get($$2);
-         if (((String)$$3.getFirst()).equals($$1.get("id").asString(""))) {
-            String $$4 = $$1.get("Template").asString("");
-            $$1 = $$1.set("Template", $$1.createString((String)((ImmutableMap)$$3.getSecond()).getOrDefault($$4, $$4)));
-         }
-      }
-
-      return $$1;
+   private azm() {
    }
 }

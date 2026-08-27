@@ -1,31 +1,141 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
 
-public class blc implements ThreadFactory {
-   private static final Logger a = LogUtils.getLogger();
-   private final ThreadGroup b;
-   private final AtomicInteger c = new AtomicInteger(1);
-   private final String d;
+public class blc implements ble {
+   public static final int a = 10;
+   @Nullable
+   private static Consumer<Path> b = null;
+   private final Map<bkx, List<blj>> c = new Object2ObjectOpenHashMap();
+   private final bjk d;
+   private final Executor e;
+   private final bli f;
+   private final Consumer<bjp> g;
+   private final Consumer<Path> h;
+   private final bkz i;
+   private final LongSupplier j;
+   private final long k;
+   private int l;
+   private bjo m;
+   private volatile boolean n;
+   private Set<bkx> o = ImmutableSet.of();
 
-   public blc(String $$0) {
-      SecurityManager $$1 = System.getSecurityManager();
-      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
-      this.d = $$0 + "-";
+   private blc(bkz $$0, LongSupplier $$1, Executor $$2, bli $$3, Consumer<bjp> $$4, Consumer<Path> $$5) {
+      this.i = $$0;
+      this.j = $$1;
+      this.d = new bjk($$1, () -> this.l);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = b == null ? $$5 : $$5.andThen(b);
+      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
+      this.m = new bjj(this.j, () -> this.l, false);
+      this.d.c();
+   }
+
+   public static blc a(bkz $$0, LongSupplier $$1, Executor $$2, bli $$3, Consumer<bjp> $$4, Consumer<Path> $$5) {
+      return new blc($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public Thread newThread(Runnable $$0) {
-      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
-      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
-         a.error("Caught exception in thread {} from {}", $$1x, $$0);
-         a.error("", $$2);
-      });
-      if ($$1.getPriority() != 5) {
-         $$1.setPriority(5);
+   public synchronized void a() {
+      if (this.e()) {
+         this.n = true;
+      }
+   }
+
+   @Override
+   public synchronized void b() {
+      if (this.e()) {
+         this.m = bjn.a;
+         this.g.accept(bjl.a);
+         this.a(this.o);
+      }
+   }
+
+   @Override
+   public void c() {
+      this.g();
+      this.o = this.i.a(() -> this.m);
+
+      for (bkx $$0 : this.o) {
+         $$0.a();
       }
 
-      return $$1;
+      this.l++;
+   }
+
+   @Override
+   public void d() {
+      this.g();
+      if (this.l != 0) {
+         for (bkx $$0 : this.o) {
+            $$0.a(this.l);
+            if ($$0.g()) {
+               blj $$1 = new blj(Instant.now(), this.l, this.m.d());
+               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+            }
+         }
+
+         if (!this.n && this.j.getAsLong() <= this.k) {
+            this.m = new bjj(this.j, () -> this.l, false);
+         } else {
+            this.n = false;
+            bjp $$2 = this.d.e();
+            this.m = bjn.a;
+            this.g.accept($$2);
+            this.a($$2);
+         }
+      }
+   }
+
+   @Override
+   public boolean e() {
+      return this.d.a();
+   }
+
+   @Override
+   public bjq f() {
+      return bjq.a(this.d.d(), this.m);
+   }
+
+   private void g() {
+      if (!this.e()) {
+         throw new IllegalStateException("Not started!");
+      }
+   }
+
+   private void a(bjp $$0) {
+      HashSet<bkx> $$1 = new HashSet<>(this.o);
+      this.e.execute(() -> {
+         Path $$2 = this.f.a($$1, this.c, $$0);
+         this.a($$1);
+         this.h.accept($$2);
+      });
+   }
+
+   private void a(Collection<bkx> $$0) {
+      for (bkx $$1 : $$0) {
+         $$1.b();
+      }
+
+      this.c.clear();
+      this.d.b();
+   }
+
+   public static void a(Consumer<Path> $$0) {
+      b = $$0;
    }
 }

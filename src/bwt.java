@@ -1,94 +1,86 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bwt extends bvu {
-   private final boz a;
-   private final cfk b;
+public class bwt extends bwl {
+   public static final float a = 0.02F;
+   protected final bpq b;
    @Nullable
-   private box c;
-   private int d = -1;
-   private final double e;
-   private int f;
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
+   protected bow c;
+   protected final float d;
+   private int h;
+   protected final float e;
+   private final boolean i;
+   protected final Class<? extends bpo> f;
+   protected final cae g;
 
-   public bwt(cfk $$0, double $$1, int $$2, float $$3) {
-      this($$0, $$1, $$2, $$2, $$3);
+   public bwt(bpq $$0, Class<? extends bpo> $$1, float $$2) {
+      this($$0, $$1, $$2, 0.02F);
    }
 
-   public bwt(cfk $$0, double $$1, int $$2, int $$3, float $$4) {
-      if (!($$0 instanceof box)) {
-         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+   public bwt(bpq $$0, Class<? extends bpo> $$1, float $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, false);
+   }
+
+   public bwt(bpq $$0, Class<? extends bpo> $$1, float $$2, float $$3, boolean $$4) {
+      this.b = $$0;
+      this.f = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.i = $$4;
+      this.a(EnumSet.of(bwl.a.b));
+      if ($$1 == cis.class) {
+         this.g = cae.b().a((double)$$2).a($$1x -> bpb.b($$0).test($$1x));
       } else {
-         this.b = $$0;
-         this.a = (boz)$$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-         this.j = $$4 * $$4;
-         this.a(EnumSet.of(bvu.a.a, bvu.a.b));
+         this.g = cae.b().a((double)$$2);
       }
    }
 
    @Override
    public boolean a() {
-      box $$0 = this.a.q();
-      if ($$0 != null && $$0.bx()) {
-         this.c = $$0;
-         return true;
-      } else {
+      if (this.b.ei().i() >= this.e) {
          return false;
+      } else {
+         if (this.b.p() != null) {
+            this.c = this.b.p();
+         }
+
+         if (this.f == cis.class) {
+            this.c = this.b.dM().a(this.g, this.b, this.b.dr(), this.b.dv(), this.b.dx());
+         } else {
+            this.c = this.b
+               .dM()
+               .a(this.b.dM().a(this.f, this.b.cH().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dr(), this.b.dv(), this.b.dx());
+         }
+
+         return this.c != null;
       }
    }
 
    @Override
    public boolean b() {
-      return this.a() || this.c.bx() && !this.a.N().l();
+      if (!this.c.bA()) {
+         return false;
+      } else {
+         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
+      }
+   }
+
+   @Override
+   public void c() {
+      this.h = this.a(40 + this.b.ei().a(40));
    }
 
    @Override
    public void d() {
       this.c = null;
-      this.f = 0;
-      this.d = -1;
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
    }
 
    @Override
    public void e() {
-      double $$0 = this.a.i(this.c.do(), this.c.dq(), this.c.du());
-      boolean $$1 = this.a.O().a(this.c);
-      if ($$1) {
-         this.f++;
-      } else {
-         this.f = 0;
-      }
-
-      if (!($$0 > (double)this.j) && this.f >= 5) {
-         this.a.N().n();
-      } else {
-         this.a.N().a(this.c, this.e);
-      }
-
-      this.a.I().a(this.c, 30.0F, 30.0F);
-      if (--this.d == 0) {
-         if (!$$1) {
-            return;
-         }
-
-         float $$2 = (float)Math.sqrt($$0) / this.i;
-         float $$3 = awm.a($$2, 0.1F, 1.0F);
-         this.b.a(this.c, $$3);
-         this.d = awm.d($$2 * (float)(this.h - this.g) + (float)this.g);
-      } else if (this.d < 0) {
-         this.d = awm.a(awm.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
+      if (this.c.bA()) {
+         double $$0 = this.i ? this.b.dv() : this.c.dv();
+         this.b.G().a(this.c.dr(), $$0, this.c.dx());
+         this.h--;
       }
    }
 }

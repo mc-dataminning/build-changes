@@ -1,49 +1,37 @@
-public record agv(int b, String c, int d, agu e) implements xz<agy> {
-   public static final xq<us, agv> a = xz.a(agv::a, agv::new);
-   private static final int f = 255;
+public class agv implements yb<aez> {
+   public static final xs<uu, agv> a = yb.a(agv::a, agv::new);
+   private final bnb b;
+   private final int c;
 
-   @Deprecated
-   public agv(int b, String c, int d, agu e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   public agv(bnb $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private agv(us $$0) {
-      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), agu.a($$0.l()));
+   private agv(uu $$0) {
+      this.b = $$0.b(bnb.class);
+      this.c = $$0.l();
    }
 
-   private void a(us $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
-      $$0.c(this.e.a());
+   private void a(uu $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public yb<agv> a() {
-      return agw.a;
+   public yd<agv> a() {
+      return aex.cb;
    }
 
-   public void a(agy $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public bnb b() {
+      return this.b;
    }
 
-   public String e() {
+   public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public agu g() {
-      return this.e;
    }
 }

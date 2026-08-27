@@ -1,29 +1,13 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class ast extends asx<GameProfile, asu> {
-   public ast(File $$0) {
-      super($$0);
-   }
-
+public abstract class ast<T> implements asi {
    @Override
-   protected asw<GameProfile> a(JsonObject $$0) {
-      return new asu($$0);
+   public final CompletableFuture<Void> a(asi.a $$0, aso $$1, bjq $$2, bjq $$3, Executor $$4, Executor $$5) {
+      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
    }
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(asw::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
+   protected abstract T b(aso var1, bjq var2);
 
-   public boolean a(GameProfile $$0) {
-      asu $$1 = this.b($$0);
-      return $$1 != null ? $$1.b() : false;
-   }
-
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
-   }
+   protected abstract void a(T var1, aso var2, bjq var3);
 }

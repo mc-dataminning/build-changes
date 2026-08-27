@@ -1,69 +1,459 @@
-public abstract class aon extends ehd {
-   protected aon(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.shorts.ShortOpenHashSet;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
+import javax.annotation.Nullable;
+
+public class aon {
+   public static final Either<dov, aon.a> a = Either.right(aon.a.b);
+   public static final CompletableFuture<Either<dov, aon.a>> b = CompletableFuture.completedFuture(a);
+   public static final Either<dpg, aon.a> c = Either.right(aon.a.b);
+   private static final Either<dov, aon.a> d = Either.right(aon.a.b);
+   private static final CompletableFuture<Either<dpg, aon.a>> e = CompletableFuture.completedFuture(c);
+   private static final List<dpa> f = dpa.a();
+   private final AtomicReferenceArray<CompletableFuture<Either<dov, aon.a>>> g = new AtomicReferenceArray<>(f.size());
+   private final cxb h;
+   private volatile CompletableFuture<Either<dpg, aon.a>> i = e;
+   private volatile CompletableFuture<Either<dpg, aon.a>> j = e;
+   private volatile CompletableFuture<Either<dpg, aon.a>> k = e;
+   private CompletableFuture<dov> l = CompletableFuture.completedFuture(null);
+   @Nullable
+   private final avz<aon.b> m = null;
+   private int n;
+   private int o;
+   private int p;
+   final cwg q;
+   private boolean r;
+   private final ShortSet[] s;
+   private final BitSet t = new BitSet();
+   private final BitSet u = new BitSet();
+   private final eic v;
+   private final aon.c w;
+   private final aon.d x;
+   private boolean y;
+   private CompletableFuture<Void> z = CompletableFuture.completedFuture(null);
+   private CompletableFuture<?> A = CompletableFuture.completedFuture(null);
+
+   public aon(cwg $$0, int $$1, cxb $$2, eic $$3, aon.c $$4, aon.d $$5) {
+      this.q = $$0;
+      this.h = $$2;
+      this.v = $$3;
+      this.w = $$4;
+      this.x = $$5;
+      this.n = aoo.a + 1;
+      this.o = this.n;
+      this.p = this.n;
+      this.a($$1);
+      this.s = new ShortSet[$$2.al()];
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return $$0 == cvl.a;
+   public CompletableFuture<Either<dov, aon.a>> a(dpa $$0) {
+      CompletableFuture<Either<dov, aon.a>> $$1 = this.g.get($$0.c());
+      return $$1 == null ? b : $$1;
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         cvl $$3 = new cvl($$0);
-         int $$4 = $$3.e;
-         int $$5 = $$3.f;
+   public CompletableFuture<Either<dov, aon.a>> b(dpa $$0) {
+      return aoo.a(this.o).b($$0) ? this.a($$0) : b;
+   }
 
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = cvl.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
+   public CompletableFuture<Either<dpg, aon.a>> a() {
+      return this.j;
+   }
+
+   public CompletableFuture<Either<dpg, aon.a>> b() {
+      return this.k;
+   }
+
+   public CompletableFuture<Either<dpg, aon.a>> c() {
+      return this.i;
+   }
+
+   @Nullable
+   public dpg d() {
+      CompletableFuture<Either<dpg, aon.a>> $$0 = this.a();
+      Either<dpg, aon.a> $$1 = $$0.getNow(null);
+      return $$1 == null ? null : (dpg)$$1.left().orElse(null);
+   }
+
+   public CompletableFuture<?> e() {
+      return this.A;
+   }
+
+   @Nullable
+   public dpg f() {
+      return !this.A.isDone() ? null : this.d();
+   }
+
+   @Nullable
+   public dpg g() {
+      CompletableFuture<Either<dpg, aon.a>> $$0 = this.c();
+      Either<dpg, aon.a> $$1 = $$0.getNow(null);
+      return $$1 == null ? null : (dpg)$$1.left().orElse(null);
+   }
+
+   @Nullable
+   public dpa h() {
+      for (int $$0 = f.size() - 1; $$0 >= 0; $$0--) {
+         dpa $$1 = f.get($$0);
+         CompletableFuture<Either<dov, aon.a>> $$2 = this.a($$1);
+         if ($$2.getNow(a).left().isPresent()) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   public dov i() {
+      for (int $$0 = f.size() - 1; $$0 >= 0; $$0--) {
+         dpa $$1 = f.get($$0);
+         CompletableFuture<Either<dov, aon.a>> $$2 = this.a($$1);
+         if (!$$2.isCompletedExceptionally()) {
+            Optional<dov> $$3 = $$2.getNow(a).left();
+            if ($$3.isPresent()) {
+               return $$3.get();
+            }
+         }
+      }
+
+      return null;
+   }
+
+   public CompletableFuture<dov> j() {
+      return this.l;
+   }
+
+   public void a(ib $$0) {
+      dpg $$1 = this.d();
+      if ($$1 != null) {
+         int $$2 = this.h.e($$0.v());
+         if (this.s[$$2] == null) {
+            this.r = true;
+            this.s[$$2] = new ShortOpenHashSet();
+         }
+
+         this.s[$$2].add(je.b($$0));
+      }
+   }
+
+   public void a(cxi $$0, int $$1) {
+      Either<dov, aon.a> $$2 = this.b(dpa.k).getNow(null);
+      if ($$2 != null) {
+         dov $$3 = (dov)$$2.left().orElse(null);
+         if ($$3 != null) {
+            $$3.a(true);
+            dpg $$4 = this.d();
+            if ($$4 != null) {
+               int $$5 = this.v.d();
+               int $$6 = this.v.e();
+               if ($$1 >= $$5 && $$1 <= $$6) {
+                  int $$7 = $$1 - $$5;
+                  if ($$0 == cxi.a) {
+                     this.u.set($$7);
+                  } else {
+                     this.t.set($$7);
+                  }
                }
             }
          }
       }
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      cvl $$4 = new cvl($$0);
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = cvl.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = cvl.a;
+   public void a(dpg $$0) {
+      if (this.r || !this.u.isEmpty() || !this.t.isEmpty()) {
+         cwz $$1 = $$0.F();
+         if (!this.u.isEmpty() || !this.t.isEmpty()) {
+            List<apg> $$2 = this.x.a(this.q, true);
+            if (!$$2.isEmpty()) {
+               acb $$3 = new acb($$0.f(), this.v, this.u, this.t);
+               this.a($$2, $$3);
             }
 
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
+            this.u.clear();
+            this.t.clear();
+         }
 
-               if ($$3 == 0) {
-                  return $$3;
+         if (this.r) {
+            List<apg> $$4 = this.x.a(this.q, false);
+
+            for (int $$5 = 0; $$5 < this.s.length; $$5++) {
+               ShortSet $$6 = this.s[$$5];
+               if ($$6 != null) {
+                  this.s[$$5] = null;
+                  if (!$$4.isEmpty()) {
+                     int $$7 = this.h.g($$5);
+                     je $$8 = je.a($$0.f(), $$7);
+                     if ($$6.size() == 1) {
+                        ib $$9 = $$8.g($$6.iterator().nextShort());
+                        dmz $$10 = $$1.a_($$9);
+                        this.a($$4, new aav($$9, $$10));
+                        this.a($$4, $$1, $$9, $$10);
+                     } else {
+                        dph $$11 = $$0.b($$5);
+                        adb $$12 = new adb($$8, $$6, $$11);
+                        this.a($$4, $$12);
+                        $$12.a(($$2, $$3) -> this.a($$4, $$1, $$2, $$3));
+                     }
+                  }
                }
+            }
+
+            this.r = false;
+         }
+      }
+   }
+
+   private void a(List<apg> $$0, cwz $$1, ib $$2, dmz $$3) {
+      if ($$3.t()) {
+         this.a($$0, $$1, $$2);
+      }
+   }
+
+   private void a(List<apg> $$0, cwz $$1, ib $$2) {
+      dkg $$3 = $$1.c_($$2);
+      if ($$3 != null) {
+         yb<?> $$4 = $$3.ay_();
+         if ($$4 != null) {
+            this.a($$0, $$4);
+         }
+      }
+   }
+
+   private void a(List<apg> $$0, yb<?> $$1) {
+      $$0.forEach($$1x -> $$1x.d.b($$1));
+   }
+
+   public CompletableFuture<Either<dov, aon.a>> a(dpa $$0, aop $$1) {
+      int $$2 = $$0.c();
+      CompletableFuture<Either<dov, aon.a>> $$3 = this.g.get($$2);
+      if ($$3 != null) {
+         Either<dov, aon.a> $$4 = $$3.getNow(d);
+         if ($$4 == null) {
+            String $$5 = "value in future for status: " + $$0 + " was incorrectly set to null at chunk: " + this.q;
+            throw $$1.a(new IllegalStateException("null value previously set for chunk status"), $$5);
+         }
+
+         if ($$4 == d || $$4.right().isEmpty()) {
+            return $$3;
+         }
+      }
+
+      if (aoo.a(this.o).b($$0)) {
+         CompletableFuture<Either<dov, aon.a>> $$6 = $$1.a(this, $$0);
+         this.a($$6, "schedule " + $$0);
+         this.g.set($$2, $$6);
+         return $$6;
+      } else {
+         return $$3 == null ? b : $$3;
+      }
+   }
+
+   protected void a(String $$0, CompletableFuture<?> $$1) {
+      if (this.m != null) {
+         this.m.a(new aon.b(Thread.currentThread(), $$1, $$0));
+      }
+
+      this.l = this.l.thenCombine((CompletionStage<? extends Object>)$$1, ($$0x, $$1x) -> $$0x);
+   }
+
+   private void a(CompletableFuture<? extends Either<? extends dov, aon.a>> $$0, String $$1) {
+      if (this.m != null) {
+         this.m.a(new aon.b(Thread.currentThread(), $$0, $$1));
+      }
+
+      this.l = this.l.thenCombine($$0, ($$0x, $$1x) -> (dov)$$1x.map($$0xx -> $$0xx, $$1xx -> $$0x));
+   }
+
+   public void a(CompletableFuture<?> $$0) {
+      if (this.A.isDone()) {
+         this.A = $$0;
+      } else {
+         this.A = this.A.thenCombine((CompletionStage<? extends Object>)$$0, ($$0x, $$1) -> null);
+      }
+   }
+
+   public aoy k() {
+      return aoo.b(this.o);
+   }
+
+   public cwg l() {
+      return this.q;
+   }
+
+   public int m() {
+      return this.o;
+   }
+
+   public int n() {
+      return this.p;
+   }
+
+   private void b(int $$0) {
+      this.p = $$0;
+   }
+
+   public void a(int $$0) {
+      this.o = $$0;
+   }
+
+   private void a(aop $$0, CompletableFuture<Either<dpg, aon.a>> $$1, Executor $$2, aoy $$3) {
+      this.z.cancel(false);
+      CompletableFuture<Void> $$4 = new CompletableFuture<>();
+      $$4.thenRunAsync(() -> $$0.a(this.q, $$3), $$2);
+      this.z = $$4;
+      $$1.thenAccept($$1x -> $$1x.ifLeft($$1xx -> $$4.complete(null)));
+   }
+
+   private void a(aop $$0, aoy $$1) {
+      this.z.cancel(false);
+      $$0.a(this.q, $$1);
+   }
+
+   protected void a(aop $$0, Executor $$1) {
+      dpa $$2 = aoo.a(this.n);
+      dpa $$3 = aoo.a(this.o);
+      boolean $$4 = aoo.e(this.n);
+      boolean $$5 = aoo.e(this.o);
+      aoy $$6 = aoo.b(this.n);
+      aoy $$7 = aoo.b(this.o);
+      if ($$4) {
+         Either<dov, aon.a> $$8 = Either.right(new aon.a() {
+            @Override
+            public String toString() {
+               return "Unloaded ticket level " + aon.this.q;
+            }
+         });
+
+         for (int $$9 = $$5 ? $$3.c() + 1 : 0; $$9 <= $$2.c(); $$9++) {
+            CompletableFuture<Either<dov, aon.a>> $$10 = this.g.get($$9);
+            if ($$10 == null) {
+               this.g.set($$9, CompletableFuture.completedFuture($$8));
             }
          }
       }
 
-      return $$3;
+      boolean $$11 = $$6.a(aoy.b);
+      boolean $$12 = $$7.a(aoy.b);
+      this.y |= $$12;
+      if (!$$11 && $$12) {
+         this.i = $$0.c(this);
+         this.a($$0, this.i, $$1, aoy.b);
+         this.a(this.i, "full");
+      }
+
+      if ($$11 && !$$12) {
+         this.i.complete(c);
+         this.i = e;
+      }
+
+      boolean $$13 = $$6.a(aoy.c);
+      boolean $$14 = $$7.a(aoy.c);
+      if (!$$13 && $$14) {
+         this.j = $$0.b(this);
+         this.a($$0, this.j, $$1, aoy.c);
+         this.a(this.j, "ticking");
+      }
+
+      if ($$13 && !$$14) {
+         this.j.complete(c);
+         this.j = e;
+      }
+
+      boolean $$15 = $$6.a(aoy.d);
+      boolean $$16 = $$7.a(aoy.d);
+      if (!$$15 && $$16) {
+         if (this.k != e) {
+            throw (IllegalStateException)ac.b(new IllegalStateException());
+         }
+
+         this.k = $$0.a(this);
+         this.a($$0, this.k, $$1, aoy.d);
+         this.a(this.k, "entity ticking");
+      }
+
+      if ($$15 && !$$16) {
+         this.k.complete(c);
+         this.k = e;
+      }
+
+      if (!$$7.a($$6)) {
+         this.a($$0, $$7);
+      }
+
+      this.w.onLevelChange(this.q, this::n, this.o, this::b);
+      this.n = this.o;
    }
 
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == cvl.a ? this.b($$1) : $$2 + 1;
+   public boolean o() {
+      return this.y;
    }
 
-   protected abstract int b(long var1);
+   public void p() {
+      this.y = aoo.b(this.o).a(aoy.b);
+   }
 
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(cvl.a, $$0, $$1, $$2);
+   public void a(dpf $$0) {
+      for (int $$1 = 0; $$1 < this.g.length(); $$1++) {
+         CompletableFuture<Either<dov, aon.a>> $$2 = this.g.get($$1);
+         if ($$2 != null) {
+            Optional<dov> $$3 = $$2.getNow(a).left();
+            if (!$$3.isEmpty() && $$3.get() instanceof dpq) {
+               this.g.set($$1, CompletableFuture.completedFuture(Either.left($$0)));
+            }
+         }
+      }
+
+      this.a(CompletableFuture.completedFuture(Either.left($$0.C())), "replaceProto");
+   }
+
+   public List<Pair<dpa, CompletableFuture<Either<dov, aon.a>>>> q() {
+      List<Pair<dpa, CompletableFuture<Either<dov, aon.a>>>> $$0 = new ArrayList<>();
+
+      for (int $$1 = 0; $$1 < f.size(); $$1++) {
+         $$0.add(Pair.of(f.get($$1), this.g.get($$1)));
+      }
+
+      return $$0;
+   }
+
+   public interface a {
+      aon.a b = new aon.a() {
+         @Override
+         public String toString() {
+            return "UNLOADED";
+         }
+      };
+   }
+
+   static final class b {
+      private final Thread a;
+      private final CompletableFuture<?> b;
+      private final String c;
+
+      b(Thread $$0, CompletableFuture<?> $$1, String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+   }
+
+   @FunctionalInterface
+   public interface c {
+      void onLevelChange(cwg var1, IntSupplier var2, int var3, IntConsumer var4);
+   }
+
+   public interface d {
+      List<apg> a(cwg var1, boolean var2);
    }
 }

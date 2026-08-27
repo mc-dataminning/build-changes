@@ -1,49 +1,11 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class eoh<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final eoh<MinecraftServer> a = new eoh<MinecraftServer>().a(new eoe.a()).a(new eof.a());
-   private final Map<ajc, eog.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, eog.a<C, ?>> d = Maps.newHashMap();
-
-   public eoh<C> a(eog.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
-   }
-
-   private <T extends eog<C>> eog.a<C, T> a(Class<?> $$0) {
-      return (eog.a<C, T>)this.d.get($$0);
-   }
-
-   public <T extends eog<C>> sy a(T $$0) {
-      eog.a<C, T> $$1 = this.a($$0.getClass());
-      sy $$2 = new sy();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
-   }
-
+public interface eoh {
    @Nullable
-   public eog<C> a(sy $$0) {
-      ajc $$1 = ajc.a($$0.l("Type"));
-      eog.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
-      }
-   }
+   tx a(eku var1);
+
+   Set<enc<?>> b();
+
+   eog a();
 }

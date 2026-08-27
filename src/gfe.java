@@ -1,17 +1,20 @@
-public class gfe extends gcp<cga, fpy<cga>> {
-   private static final ajc a = new ajc("textures/entity/zombie_villager/zombie_villager.png");
+public class gfe<T extends cgj> extends gee<T, fqe<T>> {
+   private static final ajh a = new ajh("textures/entity/spider/spider.png");
 
-   public gfe(gby.a $$0) {
-      super($$0, new fpy<>($$0.a(fqe.cg)), 0.5F);
-      this.a(new gfz<>(this, new fpy($$0.a(fqe.ch)), new fpy($$0.a(fqe.ci)), $$0.g()));
-      this.a(new ggu<>(this, $$0.e(), "zombie_villager"));
+   public gfe(gcy.a $$0) {
+      this($$0, frc.bt);
    }
 
-   public ajc a(cga $$0) {
+   public gfe(gcy.a $$0, frb $$1) {
+      super($$0, new fqe<>($$0.a($$1)), 0.8F);
+      this.a(new ghp<>(this));
+   }
+
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public ajh a(T $$0) {
       return a;
-   }
-
-   protected boolean b(cga $$0) {
-      return super.a($$0) || $$0.gv();
    }
 }

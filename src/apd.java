@@ -1,177 +1,514 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.util.Either;
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.IntSupplier;
+import java.util.concurrent.Executor;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class apd extends ehg implements AutoCloseable {
-   public static final int a = 1000;
-   private static final Logger d = LogUtils.getLogger();
-   private final ble<Runnable> e;
-   private final ObjectList<Pair<apd.a, Runnable>> f = new ObjectArrayList();
-   private final aok g;
-   private final bld<aom.a<Runnable>> h;
-   private final int i = 1000;
-   private final AtomicBoolean j = new AtomicBoolean();
+public class apd extends doz {
+   private static final List<dpa> b = dpa.a();
+   private final aox c;
+   final apf d;
+   final Thread e;
+   final api f;
+   private final apd.b g;
+   public final aop a;
+   private final eke h;
+   private long i;
+   private boolean j = true;
+   private boolean k = true;
+   private static final int l = 4;
+   private final long[] m = new long[4];
+   private final dpa[] n = new dpa[4];
+   private final dov[] o = new dov[4];
+   @Nullable
+   @axz
+   private cxk.d p;
 
-   public apd(doo $$0, aok $$1, boolean $$2, ble<Runnable> $$3, bld<aom.a<Runnable>> $$4) {
-      super($$0, true, $$2);
-      this.g = $$1;
-      this.h = $$4;
-      this.e = $$3;
+   public apd(apf $$0, ekk.c $$1, DataFixer $$2, ehd $$3, Executor $$4, dow $$5, int $$6, int $$7, boolean $$8, apo $$9, dqt $$10, Supplier<eke> $$11) {
+      this.d = $$0;
+      this.g = new apd.b($$0);
+      this.e = Thread.currentThread();
+      File $$12 = $$1.a($$0.ad()).resolve("data").toFile();
+      $$12.mkdirs();
+      this.h = new eke($$12, $$2, $$0.H_());
+      this.a = new aop($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
+      this.f = this.a.e();
+      this.c = this.a.j();
+      this.c.b($$7);
+      this.r();
    }
 
+   public api a() {
+      return this.f;
+   }
+
+   @Nullable
+   private aon b(long $$0) {
+      return this.a.b($$0);
+   }
+
+   public int b() {
+      return this.a.h();
+   }
+
+   private void a(long $$0, dov $$1, dpa $$2) {
+      for (int $$3 = 3; $$3 > 0; $$3--) {
+         this.m[$$3] = this.m[$$3 - 1];
+         this.n[$$3] = this.n[$$3 - 1];
+         this.o[$$3] = this.o[$$3 - 1];
+      }
+
+      this.m[0] = $$0;
+      this.n[0] = $$2;
+      this.o[0] = $$1;
+   }
+
+   @Nullable
    @Override
-   public void close() {
-   }
+   public dov a(int $$0, int $$1, dpa $$2, boolean $$3) {
+      if (Thread.currentThread() != this.e) {
+         return CompletableFuture.<dov>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+      } else {
+         bjq $$4 = this.d.ae();
+         $$4.d("getChunk");
+         long $$5 = cwg.c($$0, $$1);
 
-   @Override
-   public int a() {
-      throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
-   }
-
-   @Override
-   public void a(ib $$0) {
-      ib $$1 = $$0.i();
-      this.a(jd.a($$0.u()), jd.a($$0.w()), apd.a.a, ac.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
-   }
-
-   protected void a(cvl $$0) {
-      this.a($$0.e, $$0.f, () -> 0, apd.a.a, ac.a((Runnable)(() -> {
-         super.b($$0, false);
-         super.a($$0, false);
-
-         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(cwn.b, jd.a($$0, $$1), null);
-            super.a(cwn.a, jd.a($$0, $$1), null);
-         }
-
-         for (int $$2 = this.c.am(); $$2 < this.c.an(); $$2++) {
-            super.a(jd.a($$0, $$2), true);
-         }
-      }), (Supplier<String>)(() -> "updateChunkStatus " + $$0 + " true")));
-   }
-
-   @Override
-   public void a(jd $$0, boolean $$1) {
-      this.a($$0.a(), $$0.c(), () -> 0, apd.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "updateSectionStatus " + $$0 + " " + $$1)));
-   }
-
-   @Override
-   public void b(cvl $$0) {
-      this.a($$0.e, $$0.f, apd.a.a, ac.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
-   }
-
-   @Override
-   public void a(cvl $$0, boolean $$1) {
-      this.a($$0.e, $$0.f, apd.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
-   }
-
-   @Override
-   public void a(cwn $$0, jd $$1, @Nullable dog $$2) {
-      this.a($$1.a(), $$1.c(), () -> 0, apd.a.a, ac.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
-   }
-
-   private void a(int $$0, int $$1, apd.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.g.c(cvl.c($$0, $$1)), $$2, $$3);
-   }
-
-   private void a(int $$0, int $$1, IntSupplier $$2, apd.a $$3, Runnable $$4) {
-      this.h.a(aom.a(() -> {
-         this.f.add(Pair.of($$3, $$4));
-         if (this.f.size() >= 1000) {
-            this.f();
-         }
-      }, cvl.c($$0, $$1), $$2));
-   }
-
-   @Override
-   public void b(cvl $$0, boolean $$1) {
-      this.a($$0.e, $$0.f, () -> 0, apd.a.a, ac.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
-   }
-
-   public CompletableFuture<doa> a(doa $$0, boolean $$1) {
-      cvl $$2 = $$0.f();
-      this.a($$2.e, $$2.f, apd.a.a, ac.a((Runnable)(() -> {
-         dom[] $$2x = $$0.d();
-
-         for (int $$3 = 0; $$3 < $$0.al(); $$3++) {
-            dom $$4 = $$2x[$$3];
-            if (!$$4.c()) {
-               int $$5 = this.c.g($$3);
-               super.a(jd.a($$2, $$5), false);
+         for (int $$6 = 0; $$6 < 4; $$6++) {
+            if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
+               dov $$7 = this.o[$$6];
+               if ($$7 != null || !$$3) {
+                  return $$7;
+               }
             }
          }
-      }), (Supplier<String>)(() -> "initializeLight: " + $$2)));
-      return CompletableFuture.supplyAsync(() -> {
-         super.a($$2, $$1);
-         super.b($$2, false);
-         return $$0;
-      }, $$1x -> this.a($$2.e, $$2.f, apd.a.b, $$1x));
-   }
 
-   public CompletableFuture<doa> b(doa $$0, boolean $$1) {
-      cvl $$2 = $$0.f();
-      $$0.b(false);
-      this.a($$2.e, $$2.f, apd.a.a, ac.a((Runnable)(() -> {
-         if (!$$1) {
-            super.b($$2);
-         }
-      }), (Supplier<String>)(() -> "lightChunk " + $$2 + " " + $$1)));
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.b(true);
-         this.g.b($$2);
-         return $$0;
-      }, $$1x -> this.a($$2.e, $$2.f, apd.a.b, $$1x));
-   }
-
-   public void b() {
-      if ((!this.f.isEmpty() || super.L_()) && this.j.compareAndSet(false, true)) {
-         this.e.a(() -> {
-            this.f();
-            this.j.set(false);
+         $$4.d("getChunkCacheMiss");
+         CompletableFuture<Either<dov, aon.a>> $$8 = this.c($$0, $$1, $$2, $$3);
+         this.g.c($$8::isDone);
+         dov $$9 = (dov)$$8.join().map($$0x -> $$0x, $$1x -> {
+            if ($$3) {
+               throw (IllegalStateException)ac.b(new IllegalStateException("Chunk not there when requested: " + $$1x));
+            } else {
+               return null;
+            }
          });
+         this.a($$5, $$9, $$2);
+         return $$9;
       }
    }
 
-   private void f() {
-      int $$0 = Math.min(this.f.size(), 1000);
-      ObjectListIterator<Pair<apd.a, Runnable>> $$1 = this.f.iterator();
+   @Nullable
+   @Override
+   public dpg a(int $$0, int $$1) {
+      if (Thread.currentThread() != this.e) {
+         return null;
+      } else {
+         this.d.ae().d("getChunkNow");
+         long $$2 = cwg.c($$0, $$1);
 
-      int $$2;
-      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
-         Pair<apd.a, Runnable> $$3 = (Pair<apd.a, Runnable>)$$1.next();
-         if ($$3.getFirst() == apd.a.a) {
-            ((Runnable)$$3.getSecond()).run();
+         for (int $$3 = 0; $$3 < 4; $$3++) {
+            if ($$2 == this.m[$$3] && this.n[$$3] == dpa.n) {
+               dov $$4 = this.o[$$3];
+               return $$4 instanceof dpg ? (dpg)$$4 : null;
+            }
+         }
+
+         aon $$5 = this.b($$2);
+         if ($$5 == null) {
+            return null;
+         } else {
+            Either<dov, aon.a> $$6 = $$5.b(dpa.n).getNow(null);
+            if ($$6 == null) {
+               return null;
+            } else {
+               dov $$7 = (dov)$$6.left().orElse(null);
+               if ($$7 != null) {
+                  this.a($$2, $$7, dpa.n);
+                  if ($$7 instanceof dpg) {
+                     return (dpg)$$7;
+                  }
+               }
+
+               return null;
+            }
+         }
+      }
+   }
+
+   private void r() {
+      Arrays.fill(this.m, cwg.a);
+      Arrays.fill(this.n, null);
+      Arrays.fill(this.o, null);
+   }
+
+   public CompletableFuture<Either<dov, aon.a>> b(int $$0, int $$1, dpa $$2, boolean $$3) {
+      boolean $$4 = Thread.currentThread() == this.e;
+      CompletableFuture<Either<dov, aon.a>> $$5;
+      if ($$4) {
+         $$5 = this.c($$0, $$1, $$2, $$3);
+         this.g.c($$5::isDone);
+      } else {
+         $$5 = CompletableFuture.<CompletableFuture<Either<dov, aon.a>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+      }
+
+      return $$5;
+   }
+
+   private CompletableFuture<Either<dov, aon.a>> c(int $$0, int $$1, dpa $$2, boolean $$3) {
+      cwg $$4 = new cwg($$0, $$1);
+      long $$5 = $$4.a();
+      int $$6 = aoo.a($$2);
+      aon $$7 = this.b($$5);
+      if ($$3) {
+         this.c.a(apk.h, $$4, $$6, $$4);
+         if (this.a($$7, $$6)) {
+            bjq $$8 = this.d.ae();
+            $$8.a("chunkLoad");
+            this.s();
+            $$7 = this.b($$5);
+            $$8.c();
+            if (this.a($$7, $$6)) {
+               throw (IllegalStateException)ac.b(new IllegalStateException("No chunk holder after ticket has been added"));
+            }
          }
       }
 
-      $$1.back($$2);
-      super.a();
+      return this.a($$7, $$6) ? aon.b : $$7.a($$2, this.a);
+   }
 
-      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
-         Pair<apd.a, Runnable> $$4 = (Pair<apd.a, Runnable>)$$1.next();
-         if ($$4.getFirst() == apd.a.b) {
-            ((Runnable)$$4.getSecond()).run();
+   private boolean a(@Nullable aon $$0, int $$1) {
+      return $$0 == null || $$0.m() > $$1;
+   }
+
+   @Override
+   public boolean b(int $$0, int $$1) {
+      aon $$2 = this.b(new cwg($$0, $$1).a());
+      int $$3 = aoo.a(dpa.n);
+      return !this.a($$2, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dpi c(int $$0, int $$1) {
+      long $$2 = cwg.c($$0, $$1);
+      aon $$3 = this.b($$2);
+      if ($$3 == null) {
+         return null;
+      } else {
+         int $$4 = b.size() - 1;
+
+         while (true) {
+            dpa $$5 = b.get($$4);
+            Optional<dov> $$6 = $$3.a($$5).getNow(aon.a).left();
+            if ($$6.isPresent()) {
+               return $$6.get();
+            }
+
+            if ($$5 == dpa.k.d()) {
+               return null;
+            }
+
+            $$4--;
          }
-
-         $$1.remove();
       }
    }
 
-   public CompletableFuture<?> a(int $$0, int $$1) {
-      return CompletableFuture.runAsync(() -> {
-      }, $$2 -> this.a($$0, $$1, apd.a.b, $$2));
+   public cwz c() {
+      return this.d;
    }
 
-   static enum a {
-      a,
-      b;
+   public boolean d() {
+      return this.g.A();
+   }
+
+   boolean s() {
+      boolean $$0 = this.c.a(this.a);
+      boolean $$1 = this.a.g();
+      if (!$$0 && !$$1) {
+         return false;
+      } else {
+         this.r();
+         return true;
+      }
+   }
+
+   public boolean a(long $$0) {
+      aon $$1 = this.b($$0);
+      if ($$1 == null) {
+         return false;
+      } else if (!this.d.a($$0)) {
+         return false;
+      } else {
+         Either<dpg, aon.a> $$2 = $$1.a().getNow(null);
+         return $$2 != null && $$2.left().isPresent();
+      }
+   }
+
+   public void a(boolean $$0) {
+      this.s();
+      this.a.a($$0);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a(true);
+      this.f.close();
+      this.a.close();
+   }
+
+   @Override
+   public void a(BooleanSupplier $$0, boolean $$1) {
+      this.d.ae().a("purge");
+      this.c.a();
+      this.s();
+      this.d.ae().b("chunks");
+      if ($$1) {
+         this.t();
+         this.a.l();
+      }
+
+      this.d.ae().b("unload");
+      this.a.a($$0);
+      this.d.ae().c();
+      this.r();
+   }
+
+   private void t() {
+      long $$0 = this.d.X();
+      long $$1 = $$0 - this.i;
+      this.i = $$0;
+      if (!this.d.ag()) {
+         bjq $$2 = this.d.ae();
+         $$2.a("pollingChunks");
+         $$2.a("filteringLoadedChunks");
+         List<apd.a> $$3 = Lists.newArrayListWithCapacity(this.a.i());
+
+         for (aon $$4 : this.a.k()) {
+            dpg $$5 = $$4.d();
+            if ($$5 != null) {
+               $$3.add(new apd.a($$5, $$4));
+            }
+         }
+
+         if (this.d.o().aR().i()) {
+            $$2.b("naturalSpawnCount");
+            int $$6 = this.c.b();
+            cxk.d $$7 = cxk.a($$6, this.d.A(), this::a, new cxj(this.a));
+            this.p = $$7;
+            $$2.b("spawnAndTick");
+            boolean $$8 = this.d.Z().b(cwv.e);
+            ac.c($$3, this.d.z);
+            int $$9 = this.d.Z().c(cwv.o);
+            boolean $$10 = this.d.A_().c() % 400L == 0L;
+
+            for (apd.a $$11 : $$3) {
+               dpg $$12 = $$11.a;
+               cwg $$13 = $$12.f();
+               if (this.d.a($$13) && this.a.c($$13)) {
+                  $$12.a($$1);
+                  if ($$8 && (this.j || this.k) && this.d.C_().a($$13)) {
+                     cxk.a(this.d, $$12, $$7, this.k, this.j, $$10);
+                  }
+
+                  if (this.d.a($$13.a())) {
+                     this.d.a($$12, $$9);
+                  }
+               }
+            }
+
+            $$2.b("customSpawners");
+            if ($$8) {
+               this.d.a(this.j, this.k);
+            }
+         }
+
+         $$2.b("broadcast");
+         $$3.forEach($$0x -> $$0x.b.a($$0x.a));
+         $$2.c();
+         $$2.c();
+      }
+   }
+
+   private void a(long $$0, Consumer<dpg> $$1) {
+      aon $$2 = this.b($$0);
+      if ($$2 != null) {
+         $$2.c().getNow(aon.c).left().ifPresent($$1);
+      }
+   }
+
+   @Override
+   public String e() {
+      return Integer.toString(this.j());
+   }
+
+   @VisibleForTesting
+   public int f() {
+      return this.g.bw();
+   }
+
+   public dow g() {
+      return this.a.a();
+   }
+
+   public dox h() {
+      return this.a.b();
+   }
+
+   public dta i() {
+      return this.a.c();
+   }
+
+   @Override
+   public int j() {
+      return this.a.i();
+   }
+
+   public void a(ib $$0) {
+      int $$1 = je.a($$0.u());
+      int $$2 = je.a($$0.w());
+      aon $$3 = this.b(cwg.c($$1, $$2));
+      if ($$3 != null) {
+         $$3.a($$0);
+      }
+   }
+
+   @Override
+   public void a(cxi $$0, je $$1) {
+      this.g.execute(() -> {
+         aon $$2 = this.b($$1.r().a());
+         if ($$2 != null) {
+            $$2.a($$0, $$1.b());
+         }
+      });
+   }
+
+   public <T> void a(apk<T> $$0, cwg $$1, int $$2, T $$3) {
+      this.c.c($$0, $$1, $$2, $$3);
+   }
+
+   public <T> void b(apk<T> $$0, cwg $$1, int $$2, T $$3) {
+      this.c.d($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(cwg $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+   }
+
+   public void a(apg $$0) {
+      if (!$$0.dH()) {
+         this.a.a($$0);
+      }
+   }
+
+   public void a(bow $$0) {
+      this.a.b($$0);
+   }
+
+   public void b(bow $$0) {
+      this.a.a($$0);
+   }
+
+   public void a(bow $$0, yb<?> $$1) {
+      this.a.b($$0, $$1);
+   }
+
+   public void b(bow $$0, yb<?> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   public void a(int $$0) {
+      this.a.a($$0);
+   }
+
+   public void b(int $$0) {
+      this.c.b($$0);
+   }
+
+   @Override
+   public void a(boolean $$0, boolean $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public String a(cwg $$0) {
+      return this.a.a($$0);
+   }
+
+   public eke k() {
+      return this.h;
+   }
+
+   public car l() {
+      return this.a.m();
+   }
+
+   public dpv m() {
+      return this.a.p();
+   }
+
+   @Nullable
+   @axz
+   public cxk.d n() {
+      return this.p;
+   }
+
+   public void o() {
+      this.c.e();
+   }
+
+   static record a(dpg a, aon b) {
+   }
+
+   final class b extends bls<Runnable> {
+      b(cwz $$0) {
+         super("Chunk source main thread executor for " + $$0.ad().a());
+      }
+
+      @Override
+      protected Runnable f(Runnable $$0) {
+         return $$0;
+      }
+
+      @Override
+      protected boolean e(Runnable $$0) {
+         return true;
+      }
+
+      @Override
+      protected boolean ay() {
+         return true;
+      }
+
+      @Override
+      protected Thread az() {
+         return apd.this.e;
+      }
+
+      @Override
+      protected void d(Runnable $$0) {
+         apd.this.d.ae().d("runTask");
+         super.d($$0);
+      }
+
+      @Override
+      protected boolean A() {
+         if (apd.this.s()) {
+            return true;
+         } else {
+            apd.this.f.b();
+            return super.A();
+         }
+      }
    }
 }

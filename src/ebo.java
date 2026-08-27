@@ -1,25 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface ebo<P extends ebn> {
-   ebo<eaz> a = a("block_predicate_filter", eaz.a);
-   ebo<ebq> b = a("rarity_filter", ebq.a);
-   ebo<ebs> c = a("surface_relative_threshold_filter", ebs.a);
-   ebo<ebt> d = a("surface_water_depth_filter", ebt.a);
-   ebo<eay> e = a("biome", eay.a);
-   ebo<ebd> f = a("count", ebd.a);
-   ebo<ebi> g = a("noise_based_count", ebi.a);
-   ebo<ebj> h = a("noise_threshold_count", ebj.a);
-   ebo<ebc> i = a("count_on_every_layer", ebc.a);
-   ebo<ebe> j = a("environment_scan", ebe.a);
-   ebo<ebg> k = a("heightmap", ebg.a);
-   ebo<ebf> l = a("height_range", ebf.a);
-   ebo<ebh> m = a("in_square", ebh.a);
-   ebo<ebp> n = a("random_offset", ebp.a);
-   ebo<eba> o = a("carving_mask", eba.a);
+public class ebo extends ebj {
+   public static final Codec<ebo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(blm.b(ebj.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ebo::new)
+   );
+   private final blm<ebj> b;
 
-   Codec<P> codec();
+   public ebo(blm<ebj> $$0) {
+      this.b = $$0;
+   }
 
-   private static <P extends ebn> ebo<P> a(String $$0, Codec<P> $$1) {
-      return ix.a(kh.U, $$0, () -> $$1);
+   @Override
+   public int a(axd $$0, dtj $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   }
+
+   @Override
+   public ebk<?> a() {
+      return ebk.f;
    }
 }

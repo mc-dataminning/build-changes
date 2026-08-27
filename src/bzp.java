@@ -1,25 +1,24 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bzp {
-   @Nullable
-   public static eov a(bpf $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = bzs.a($$0, $$1);
-      return bzv.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class bzp extends bzx<bpq> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
+
+   @Override
+   public Set<byr<?>> a() {
+      return ImmutableSet.of(byr.L);
    }
 
-   @Nullable
-   public static ib a(bpf $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      ib $$8 = bzv.a($$0.ef(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         ib $$9 = bzv.a($$0, $$1, $$0.ef(), $$8);
-         if (!bzs.a($$9, $$0) && !bzs.a($$7, $$0, $$9)) {
-            $$9 = bzv.a($$9, $$0.dJ().ak(), $$1x -> bzs.c($$0, $$1x));
-            return bzs.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   protected void a(apf $$0, bpq $$1) {
+      bqp<?> $$2 = $$1.dP();
+      List<cfd> $$3 = $$0.a(cfd.class, $$1.cH().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<cfd> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(byr.L, $$4);
    }
 }

@@ -1,29 +1,7 @@
-public class bkm implements bkn {
-   public static final bkn a = new bkm();
+import jdk.jfr.consumer.RecordedEvent;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bjc f() {
-      return biz.a;
-   }
-
-   @Override
-   public void d() {
+public record bkm(double a, double b, double c) {
+   public static bkm a(RecordedEvent $$0) {
+      return new bkm((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
    }
 }

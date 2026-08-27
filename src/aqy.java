@@ -1,43 +1,34 @@
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.regex.Pattern;
 
-abstract class aqy implements BasicFileAttributes {
-   private static final FileTime a = FileTime.fromMillis(0L);
+public record aqy(List<aqy.a> b) {
+   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
+   private static final Codec<aqy> d = RecordCodecBuilder.create($$0 -> $$0.group(aqy.a.c.listOf().fieldOf("entries").forGetter(aqy::a)).apply($$0, aqy::new));
+   public static final aro<aqy> a = aro.a("overlays", d);
 
-   @Override
-   public FileTime lastModifiedTime() {
-      return a;
+   private static DataResult<String> a(String $$0) {
+      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
    }
 
-   @Override
-   public FileTime lastAccessTime() {
-      return a;
+   public List<String> a(int $$0) {
+      return this.b.stream().filter($$1 -> $$1.a($$0)).map(aqy.a::b).toList();
    }
 
-   @Override
-   public FileTime creationTime() {
-      return a;
+   public List<aqy.a> a() {
+      return this.b;
    }
 
-   @Override
-   public boolean isSymbolicLink() {
-      return false;
-   }
+   public static record a(awo<Integer> a, String b) {
+      static final Codec<aqy.a> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(awo.a(Codec.INT).fieldOf("formats").forGetter(aqy.a::a), awe.<String>b(Codec.STRING, aqy::a).fieldOf("directory").forGetter(aqy.a::b))
+               .apply($$0, aqy.a::new)
+      );
 
-   @Override
-   public boolean isOther() {
-      return false;
-   }
-
-   @Override
-   public long size() {
-      return 0L;
-   }
-
-   @Nullable
-   @Override
-   public Object fileKey() {
-      return null;
+      public boolean a(int $$0) {
+         return this.a.a($$0);
+      }
    }
 }

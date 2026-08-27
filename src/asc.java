@@ -1,70 +1,56 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
 import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class asc implements asf, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private arv b;
-   private final List<arz> c = Lists.newArrayList();
-   private final aqu d;
+public class asc extends art {
+   private static final arp c = new arp(vu.c("dataPack.vanilla.description"), aa.b().a(arc.b), Optional.empty());
+   private static final aqw d = new aqw(clh.h);
+   private static final aqs e = aqs.a(arp.b, c, aqw.a, d);
+   private static final aqz f = new aqz("vanilla", vu.c("dataPack.vanilla.name"), asa.c, Optional.of(b));
+   private static final arb g = new arb(false, arw.b.b, false);
+   private static final arb h = new arb(false, arw.b.a, false);
+   private static final ajh i = new ajh("minecraft", "datapacks");
 
-   public asc(aqu $$0) {
-      this.d = $$0;
-      this.b = new ary($$0, List.of());
+   public asc(eph $$0) {
+      super(arc.b, b(), i, $$0);
+   }
+
+   private static aqz a(String $$0, vu $$1) {
+      return new aqz($$0, $$1, asa.d, Optional.of(arv.a($$0)));
+   }
+
+   @VisibleForTesting
+   public static are b() {
+      return new arf().a(e).a("minecraft").b().a().a(f);
    }
 
    @Override
-   public void close() {
-      this.b.close();
+   protected vu a(String $$0) {
+      return vu.b($$0);
    }
 
-   public void a(arz $$0) {
-      this.c.add($$0);
-   }
-
-   public asb a(Executor $$0, Executor $$1, CompletableFuture<axo> $$2, List<aqt> $$3) {
-      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(aqt::a).collect(Collectors.joining(", "))));
-      this.b.close();
-      this.b = new ary(this.d, $$3);
-      return asl.a(this.b, this.c, $$0, $$1, $$2, a.isDebugEnabled());
-   }
-
+   @Nullable
    @Override
-   public Optional<asd> getResource(ajc $$0) {
-      return this.b.getResource($$0);
+   protected arw a(ara $$0) {
+      return arw.a(f, b($$0), arc.b, g);
    }
 
+   @Nullable
    @Override
-   public Set<String> a() {
-      return this.b.a();
+   protected arw a(String $$0, arw.c $$1, vu $$2) {
+      return arw.a(a($$0, $$2), $$1, arc.b, h);
    }
 
-   @Override
-   public List<asd> a(ajc $$0) {
-      return this.b.a($$0);
+   public static arz a(Path $$0, eph $$1) {
+      return new arz(new asc($$1), new aru($$0, arc.b, asa.e, $$1));
    }
 
-   @Override
-   public Map<ajc, asd> b(String $$0, Predicate<ajc> $$1) {
-      return this.b.b($$0, $$1);
+   public static arz c() {
+      return new arz(new asc(new eph($$0 -> true)));
    }
 
-   @Override
-   public Map<ajc, List<asd>> c(String $$0, Predicate<ajc> $$1) {
-      return this.b.c($$0, $$1);
-   }
-
-   @Override
-   public Stream<aqt> b() {
-      return this.b.b();
+   public static arz a(ekk.c $$0) {
+      return a($$0.a(eki.j), $$0.b().e());
    }
 }

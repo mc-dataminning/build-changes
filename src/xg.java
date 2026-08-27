@@ -1,29 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Locale;
 
-public class xg implements xi {
-   public static final xg a = new xg();
-   public static final xj<xg> b = new xj<xg>() {
-      private static final MapCodec<xg> a = MapCodec.unit(xg.a);
-      private static final xq<vd, xg> b = xq.a(xg.a);
-
-      @Override
-      public MapCodec<xg> a() {
-         return a;
-      }
-
-      @Override
-      public xq<vd, xg> b() {
-         return b;
-      }
-   };
-
-   @Override
-   public wg a(int $$0) {
-      return vs.i();
+public class xg extends IllegalArgumentException {
+   public xg(xf $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
    }
 
-   @Override
-   public xj<xg> a() {
-      return b;
+   public xg(xf $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   }
+
+   public xg(xf $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

@@ -1,36 +1,52 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.function.Function;
 
 public class bek extends DataFix {
-   public bek(Schema $$0) {
+   final String a;
+   final Map<String, String> b;
+
+   public bek(Schema $$0, String $$1, Map<String, String> $$2) {
       super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bdt.J);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "StructureSettingsFlatten", $$0, $$1x -> $$1x.updateTyped($$1, $$1xx -> ac.a($$1xx, $$1.type(), $$0xxx -> $$0xxx.updateMapValues(bek::a)))
-      );
+      Type<?> $$0 = this.getInputSchema().getType(beh.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
    }
 
-   private static Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.getSecond();
-      return Pair.of((Dynamic)$$0.getFirst(), $$1.update("generator", $$0x -> $$0x.update("settings", $$0xx -> $$0xx.update("structures", bek::a))));
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      $$0 = this.a($$0, "Enchantments");
+      return this.a($$0, "StoredEnchantments");
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = $$0.get("structures")
-         .orElseEmptyMap()
-         .updateMapValues($$1x -> $$1x.mapSecond($$1xx -> $$1xx.set("type", $$0.createString("minecraft:random_spread"))));
-      return (Dynamic<?>)DataFixUtils.orElse(
-         $$0.get("stronghold").result().map($$2 -> $$1.set("minecraft:stronghold", $$2.set("type", $$0.createString("minecraft:concentric_rings")))), $$1
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update(
+         $$1,
+         $$0x -> (Dynamic)$$0x.asStreamOpt()
+               .map(
+                  $$0xx -> $$0xx.map(
+                        $$0xxx -> $$0xxx.update(
+                              "id",
+                              $$1x -> (Dynamic)$$1x.asString()
+                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault($$1xx, $$1xx)))
+                                    .get()
+                                    .map(Function.identity(), $$1xx -> $$1x)
+                           )
+                     )
+               )
+               .map($$0x::createList)
+               .get()
+               .map(Function.identity(), $$1x -> $$0x)
       );
    }
 }

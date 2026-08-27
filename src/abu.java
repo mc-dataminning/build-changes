@@ -1,41 +1,33 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class abu implements xz<aai> {
-   public static final xq<vd, abu> a = xz.a(abu::a, abu::new);
+public class abu implements yb<aam> {
+   public static final xs<uu, abu> a = yb.a(abu::a, abu::new);
    private final int b;
    private final int c;
-   private final abt d;
-   private final aby e;
+   private final int d;
 
-   public abu(dol $$0, ehg $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      cvl $$4 = $$0.f();
-      this.b = $$4.e;
-      this.c = $$4.f;
-      this.d = new abt($$0);
-      this.e = new aby($$4, $$1, $$2, $$3);
+   public abu(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private abu(vd $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new abt($$0, this.b, this.c);
-      this.e = new aby($$0, this.b, this.c);
+   private abu(uu $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.l();
+      this.d = $$0.readInt();
    }
 
-   private void a(vd $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private void a(uu $$0) {
+      $$0.k(this.b);
+      $$0.c(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public yb<abu> a() {
-      return aet.K;
+   public yd<abu> a() {
+      return aex.H;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
@@ -47,11 +39,7 @@ public class abu implements xz<aai> {
       return this.c;
    }
 
-   public abt f() {
+   public int f() {
       return this.d;
-   }
-
-   public aby g() {
-      return this.e;
    }
 }

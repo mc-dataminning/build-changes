@@ -1,28 +1,17 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebd extends ebr {
-   public static final Codec<ebd> a = blq.b(0, 256).fieldOf("count").xmap(ebd::new, $$0 -> $$0.c).codec();
-   private final blq c;
+public record ebd(il<cqf> c, ebf d) {
+   public static final Codec<ebd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aje.a(kj.F).fieldOf("display").forGetter($$0x -> $$0x.c), ebf.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, ebd::new)
+   );
+   public static final Codec<il<ebd>> b = ajd.a(kj.aA, a);
 
-   private ebd(blq $$0) {
-      this.c = $$0;
+   public il<cqf> a() {
+      return this.c;
    }
 
-   public static ebd a(blq $$0) {
-      return new ebd($$0);
-   }
-
-   public static ebd a(int $$0) {
-      return a(bln.a($$0));
-   }
-
-   @Override
-   protected int a(awt $$0, ib $$1) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public ebo<?> b() {
-      return ebo.f;
+   public ebf b() {
+      return this.d;
    }
 }

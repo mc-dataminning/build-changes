@@ -1,43 +1,39 @@
-public class byk extends byi {
-   private boolean p;
+import java.util.List;
 
-   public byk(boz $$0, cwe $$1) {
-      super($$0, $$1);
+public class byk<T extends bpq & bpu> extends bwl {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
+
+   public byk(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected eii a(int $$0) {
-      this.p = this.a.ai() == bol.x;
-      this.o = new eij(this.p);
-      return new eii(this.o, $$0);
+   public boolean a() {
+      return this.b.dM().Z().b(cwv.O) && this.h();
+   }
+
+   private boolean h() {
+      return this.b.ej() != null && this.b.ej().ai() == bpc.bx && this.b.ek() > this.d;
    }
 
    @Override
-   protected boolean a() {
-      return this.p || this.a.bd();
+   public void c() {
+      this.d = this.b.ek();
+      this.b.Z_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bpu)$$0).forEach(bpu::Z_);
+      }
+
+      super.c();
    }
 
-   @Override
-   protected eov b() {
-      return new eov(this.a.do(), this.a.e(0.5), this.a.du());
-   }
-
-   @Override
-   protected double a(eov $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(eov $$0, eov $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(ib $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   private List<? extends bpq> i() {
+      double $$0 = this.b.g(bqv.k);
+      epm $$1 = epm.a(this.b.dk()).c($$0, 10.0, $$0);
+      return this.b.dM().a((Class<? extends bpq>)this.b.getClass(), $$1, bpb.f);
    }
 }

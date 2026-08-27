@@ -1,22 +1,60 @@
-public class cre extends cpl {
-   private final crd a;
+import javax.annotation.Nullable;
 
-   public cre(crd $$0, cpl.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
+public class cre extends cof {
+   public cre(daa $$0, cqf.a $$1) {
+      super($$0, $$1);
    }
 
-   public crd i() {
-      return this.a;
+   @Nullable
+   @Override
+   public css b(css $$0) {
+      ib $$1 = $$0.a();
+      cwz $$2 = $$0.q();
+      dmz $$3 = $$2.a_($$1);
+      daa $$4 = this.d();
+      if (!$$3.a($$4)) {
+         return dgo.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         ih $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == ih.b ? $$0.g() : ih.b;
+         }
+
+         int $$7 = 0;
+         ib.a $$8 = $$1.j().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.B && !$$2.k($$8)) {
+               cis $$9 = $$0.o();
+               int $$10 = $$2.ak();
+               if ($$9 instanceof apg && $$8.v() >= $$10) {
+                  ((apg)$$9).b(vu.a("build.tooHigh", $$10 - 1).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.d())) {
+               if ($$3.a($$0)) {
+                  return css.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
+      }
    }
 
    @Override
-   public int e() {
-      return this.a.e();
-   }
-
-   @Override
-   public boolean a(cpq $$0, cpq $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   protected boolean c() {
+      return false;
    }
 }

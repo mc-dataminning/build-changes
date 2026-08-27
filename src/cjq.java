@@ -1,45 +1,45 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public class cjq extends ciy {
+   private static final cqk g = new cqk(cqn.vm);
+   private int h = 200;
 
-public class cjq {
-   private final cjp a;
-   private final List<cjq.a> b = Lists.newArrayList();
-
-   public cjq(cjp $$0) {
-      this.a = $$0;
+   public cjq(bpc<? extends cjq> $$0, cwz $$1) {
+      super($$0, $$1, g);
    }
 
-   public cjq a(int $$0, cjn $$1) {
-      this.b.add(new cjq.a($$0, $$1));
-      return this;
+   public cjq(cwz $$0, bpo $$1, cqk $$2) {
+      super(bpc.aU, $$1, $$0, $$2);
    }
 
-   public cjp a() {
-      this.b.stream().map(cjq.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cjn $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   public cjq(cwz $$0, double $$1, double $$2, double $$3, cqk $$4) {
+      super(bpc.aU, $$1, $$2, $$3, $$0, $$4);
    }
 
-   static class a {
-      private final int a;
-      private final cjn b;
-
-      public a(int $$0, cjn $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void l() {
+      super.l();
+      if (this.dM().B && !this.b) {
+         this.dM().a(kc.Q, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
       }
+   }
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   protected void a(bpo $$0) {
+      super.a($$0);
+      boj $$1 = new boj(bol.x, this.h, 0);
+      $$0.b($$1, this.H());
+   }
 
-      public cjn b() {
-         return this.b;
+   @Override
+   public void a(ta $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.h = $$0.h("Duration");
       }
+   }
+
+   @Override
+   public void b(ta $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.h);
    }
 }

@@ -1,29 +1,29 @@
-public class adh implements xz<aai> {
-   public static final xq<us, adh> a = xz.a(adh::a, adh::new);
-   private final int b;
+public class adh implements yb<aam> {
+   public static final xs<uu, adh> a = yb.a(adh::a, adh::new);
+   private final double b;
 
-   public adh(int $$0) {
-      this.b = $$0;
+   public adh(doq $$0) {
+      this.b = $$0.k();
    }
 
-   private adh(us $$0) {
-      this.b = $$0.readByte();
+   private adh(uu $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(us $$0) {
-      $$0.k(this.b);
+   private void a(uu $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yb<adh> a() {
-      return aet.ax;
+   public yd<adh> a() {
+      return aex.at;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 }

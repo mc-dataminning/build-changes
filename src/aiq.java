@@ -1,188 +1,242 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.Iterator;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 
-public class aiq<C extends bme> implements aip<Integer> {
-   private static final Logger d = LogUtils.getLogger();
-   protected final cie a = new cie();
-   protected chz b;
-   protected cmh<C> c;
+public class aiq {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 254;
+   static final avp c = new avp();
+   private final aip d;
+   private final aiq.b<?>[] e;
+   private boolean f;
 
-   public aiq(cmh<C> $$0) {
-      this.c = $$0;
+   aiq(aip $$0, aiq.b<?>[] $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void a(apb $$0, @Nullable csu<? extends css<C>> $$1, boolean $$2) {
-      if ($$1 != null && $$0.I().b($$1)) {
-         this.b = $$0.fV();
-         if (this.b() || $$0.f()) {
-            this.a.a();
-            $$0.fV().a(this.a);
-            this.c.a(this.a);
-            if (this.a.a((css<?>)$$1.b(), null)) {
-               this.a($$1, $$2);
-            } else {
-               this.a();
-               $$0.d.b(new ach($$0.bX.j, $$1));
+   public static <T> aim<T> a(Class<? extends aip> $$0, ain<T> $$1) {
+      if (a.isDebugEnabled()) {
+         try {
+            Class<?> $$2 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
+            if (!$$2.equals($$0)) {
+               a.debug("defineId called for: {} from {}", new Object[]{$$0, $$2, new RuntimeException()});
             }
-
-            $$0.fV().e();
+         } catch (ClassNotFoundException var3) {
          }
+      }
+
+      int $$3 = c.c($$0);
+      if ($$3 > 254) {
+         throw new IllegalArgumentException("Data value id is too big with " + $$3 + "! (Max is 254)");
+      } else {
+         return $$1.a($$3);
       }
    }
 
-   protected void a() {
-      for (int $$0 = 0; $$0 < this.c.p(); $$0++) {
-         if (this.c.e($$0)) {
-            cpq $$1 = this.c.b($$0).g().q();
-            this.b.a($$1, false);
-            this.c.b($$0).f($$1);
-         }
-      }
-
-      this.c.l();
+   private <T> aiq.b<T> b(aim<T> $$0) {
+      return (aiq.b<T>)this.e[$$0.a()];
    }
 
-   protected void a(csu<? extends css<C>> $$0, boolean $$1) {
-      boolean $$2 = this.c.a($$0);
-      int $$3 = this.a.a($$0, null);
-      if ($$2) {
-         for (int $$4 = 0; $$4 < this.c.o() * this.c.n() + 1; $$4++) {
-            if ($$4 != this.c.m()) {
-               cpq $$5 = this.c.b($$4).g();
-               if (!$$5.b() && Math.min($$3, $$5.g()) < $$5.M() + 1) {
-                  return;
-               }
-            }
-         }
-      }
+   public <T> T a(aim<T> $$0) {
+      return this.b($$0).b();
+   }
 
-      int $$6 = this.a($$1, $$3, $$2);
-      IntList $$7 = new IntArrayList();
-      if (this.a.a((css<?>)$$0.b(), $$7, $$6)) {
-         int $$8 = $$6;
-         IntListIterator var8 = $$7.iterator();
+   public <T> void a(aim<T> $$0, T $$1) {
+      this.a($$0, $$1, false);
+   }
 
-         while (var8.hasNext()) {
-            int $$9 = (Integer)var8.next();
-            int $$10 = cie.a($$9).g();
-            if ($$10 < $$8) {
-               $$8 = $$10;
-            }
-         }
-
-         if (this.a.a((css<?>)$$0.b(), $$7, $$8)) {
-            this.a();
-            this.a(this.c.n(), this.c.o(), this.c.m(), $$0, $$7.iterator(), $$8);
-         }
+   public <T> void a(aim<T> $$0, T $$1, boolean $$2) {
+      aiq.b<T> $$3 = this.b($$0);
+      if ($$2 || ObjectUtils.notEqual($$1, $$3.b())) {
+         $$3.a($$1);
+         this.d.a($$0);
+         $$3.a(true);
+         this.f = true;
       }
    }
 
-   @Override
-   public void a(Iterator<Integer> $$0, int $$1, int $$2, int $$3, int $$4) {
-      cmp $$5 = this.c.b($$1);
-      cpq $$6 = cie.a($$0.next());
-      if (!$$6.b()) {
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            this.a($$5, $$6);
-         }
-      }
+   public boolean a() {
+      return this.f;
    }
 
-   protected int a(boolean $$0, int $$1, boolean $$2) {
-      int $$3 = 1;
-      if ($$0) {
-         $$3 = $$1;
-      } else if ($$2) {
-         $$3 = 64;
+   @Nullable
+   public List<aiq.c<?>> b() {
+      if (!this.f) {
+         return null;
+      } else {
+         this.f = false;
+         List<aiq.c<?>> $$0 = new ArrayList<>();
 
-         for (int $$4 = 0; $$4 < this.c.n() * this.c.o() + 1; $$4++) {
-            if ($$4 != this.c.m()) {
-               cpq $$5 = this.c.b($$4).g();
-               if (!$$5.b() && $$3 > $$5.M()) {
-                  $$3 = $$5.M();
-               }
+         for (aiq.b<?> $$1 : this.e) {
+            if ($$1.c()) {
+               $$1.a(false);
+               $$0.add($$1.e());
             }
          }
 
-         if ($$3 < 64) {
-            $$3++;
-         }
-      }
-
-      return $$3;
-   }
-
-   protected void a(cmp $$0, cpq $$1) {
-      int $$2 = this.b.c($$1);
-      if ($$2 != -1) {
-         cpq $$3 = this.b.a($$2);
-         if (!$$3.b()) {
-            if ($$3.M() > 1) {
-               this.b.a($$2, 1);
-            } else {
-               this.b.b($$2);
-            }
-
-            if ($$0.g().b()) {
-               $$0.f($$3.c(1));
-            } else {
-               $$0.g().g(1);
-            }
-         }
+         return $$0;
       }
    }
 
-   private boolean b() {
-      List<cpq> $$0 = Lists.newArrayList();
-      int $$1 = this.c();
+   @Nullable
+   public List<aiq.c<?>> c() {
+      List<aiq.c<?>> $$0 = null;
 
-      for (int $$2 = 0; $$2 < this.c.n() * this.c.o() + 1; $$2++) {
-         if ($$2 != this.c.m()) {
-            cpq $$3 = this.c.b($$2).g().q();
-            if (!$$3.b()) {
-               int $$4 = this.b.d($$3);
-               if ($$4 == -1 && $$0.size() <= $$1) {
-                  for (cpq $$5 : $$0) {
-                     if (cpq.b($$5, $$3) && $$5.M() != $$5.g() && $$5.M() + $$3.M() <= $$5.g()) {
-                        $$5.g($$3.M());
-                        $$3.f(0);
-                        break;
-                     }
-                  }
-
-                  if (!$$3.b()) {
-                     if ($$0.size() >= $$1) {
-                        return false;
-                     }
-
-                     $$0.add($$3);
-                  }
-               } else if ($$4 == -1) {
-                  return false;
-               }
+      for (aiq.b<?> $$1 : this.e) {
+         if (!$$1.d()) {
+            if ($$0 == null) {
+               $$0 = new ArrayList<>();
             }
-         }
-      }
 
-      return true;
-   }
-
-   private int c() {
-      int $$0 = 0;
-
-      for (cpq $$1 : this.b.i) {
-         if ($$1.b()) {
-            $$0++;
+            $$0.add($$1.e());
          }
       }
 
       return $$0;
+   }
+
+   public void a(List<aiq.c<?>> $$0) {
+      for (aiq.c<?> $$1 : $$0) {
+         aiq.b<?> $$2 = this.e[$$1.a];
+         this.a($$2, $$1);
+         this.d.a($$2.a());
+      }
+
+      this.d.a($$0);
+   }
+
+   private <T> void a(aiq.b<T> $$0, aiq.c<?> $$1) {
+      if (!Objects.equals($$1.b(), $$0.a.b())) {
+         throw new IllegalStateException(
+            String.format(
+               Locale.ROOT,
+               "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)",
+               $$0.a.a(),
+               this.d,
+               $$0.b,
+               $$0.b.getClass(),
+               $$1.c,
+               $$1.c.getClass()
+            )
+         );
+      } else {
+         $$0.a((T)$$1.c);
+      }
+   }
+
+   public static class a {
+      private final aip a;
+      private final aiq.b<?>[] b;
+
+      public a(aip $$0) {
+         this.a = $$0;
+         this.b = new aiq.b[aiq.c.b($$0.getClass())];
+      }
+
+      public <T> aiq.a a(aim<T> $$0, T $$1) {
+         int $$2 = $$0.a();
+         if ($$2 > this.b.length) {
+            throw new IllegalArgumentException("Data value id is too big with " + $$2 + "! (Max is " + this.b.length + ")");
+         } else if (this.b[$$2] != null) {
+            throw new IllegalArgumentException("Duplicate id value for " + $$2 + "!");
+         } else if (aio.b($$0.b()) < 0) {
+            throw new IllegalArgumentException("Unregistered serializer " + $$0.b() + " for " + $$2 + "!");
+         } else {
+            this.b[$$0.a()] = new aiq.b<>($$0, $$1);
+            return this;
+         }
+      }
+
+      public aiq a() {
+         for (aiq.b<?> $$0 : this.b) {
+            if ($$0 == null) {
+               throw new IllegalStateException("Entity " + this.a + " did not have all synched data values defined");
+            }
+         }
+
+         return new aiq(this.a, this.b);
+      }
+   }
+
+   public static class b<T> {
+      final aim<T> a;
+      T b;
+      private final T c;
+      private boolean d;
+
+      public b(aim<T> $$0, T $$1) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$1;
+      }
+
+      public aim<T> a() {
+         return this.a;
+      }
+
+      public void a(T $$0) {
+         this.b = $$0;
+      }
+
+      public T b() {
+         return this.b;
+      }
+
+      public boolean c() {
+         return this.d;
+      }
+
+      public void a(boolean $$0) {
+         this.d = $$0;
+      }
+
+      public boolean d() {
+         return this.c.equals(this.b);
+      }
+
+      public aiq.c<T> e() {
+         return aiq.c.a(this.a, this.b);
+      }
+   }
+
+   public static record c<T>(int a, ain<T> b, T c) {
+
+      public static <T> aiq.c<T> a(aim<T> $$0, T $$1) {
+         ain<T> $$2 = $$0.b();
+         return new aiq.c<>($$0.a(), $$2, $$2.copy($$1));
+      }
+
+      public void a(vf $$0) {
+         int $$1 = aio.b(this.b);
+         if ($$1 < 0) {
+            throw new EncoderException("Unknown serializer type " + this.b);
+         } else {
+            $$0.k(this.a);
+            $$0.c($$1);
+            this.b.codec().encode($$0, this.c);
+         }
+      }
+
+      public static aiq.c<?> a(vf $$0, int $$1) {
+         int $$2 = $$0.l();
+         ain<?> $$3 = aio.a($$2);
+         if ($$3 == null) {
+            throw new DecoderException("Unknown serializer type " + $$2);
+         } else {
+            return a($$0, $$1, $$3);
+         }
+      }
+
+      private static <T> aiq.c<T> a(vf $$0, int $$1, ain<T> $$2) {
+         return new aiq.c<>($$1, $$2, $$2.codec().decode($$0));
+      }
    }
 }

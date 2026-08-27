@@ -1,99 +1,78 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class fak extends fab {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 20;
-   public static final int o = 8;
-   protected static final fak.b p = $$0 -> $$0.get();
-   protected final fak.c q;
-   protected final fak.b r;
+public class fak {
+   private static final int a = -1;
+   private final ir<faj> b = new ir<>(32);
+   private final Map<daa, Set<doc<?>>> c = Maps.newHashMap();
 
-   public static fak.a a(vs $$0, fak.c $$1) {
-      return new fak.a($$0, $$1);
+   public static fak a() {
+      fak $$0 = new fak();
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fxc.a($$1, $$0x.c(dci.b) == dnv.a ? $$2.d() : $$2) : cwx.a(), dac.iI, dac.iH);
+      $$0.a(dci.b, dac.iI, dac.iH);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fxc.a($$1, $$2) : cwx.a(), dac.i, dac.bu, dac.bt, dac.gb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         if ($$3 != 0) {
+            return $$1 != null && $$2 != null ? fxc.a($$1, $$2) : cwx.a();
+         } else {
+            return -1;
+         }
+      }, dac.sB);
+      $$0.a(($$0x, $$1, $$2, $$3) -> cwt.a(), dac.aF);
+      $$0.a(($$0x, $$1, $$2, $$3) -> cwt.b(), dac.aG);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fxc.b($$1, $$2) : cwt.c(), dac.aE, dac.aH, dac.aI, dac.aK, dac.ff, dac.aL);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fxc.c($$1, $$2) : -1, dac.G, dac.nd, dac.fu);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dgb.b($$0x.c(dgb.f)), dac.cw);
+      $$0.a(dgb.f, dac.cw);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fxc.a($$1, $$2) : -1, dac.dS);
+      $$0.a(($$0x, $$1, $$2, $$3) -> 14731036, dac.fc, dac.fb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         int $$4 = $$0x.c(dhv.c);
+         int $$5 = $$4 * 32;
+         int $$6 = 255 - $$4 * 8;
+         int $$7 = $$4 * 4;
+         return $$5 << 16 | $$6 << 8 | $$7;
+      }, dac.fe, dac.fd);
+      $$0.a(dhv.c, dac.fe, dac.fd);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? 2129968 : 7455580, dac.fm);
+      return $$0;
    }
 
-   protected fak(int $$0, int $$1, int $$2, int $$3, vs $$4, fak.c $$5, fak.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.q = $$5;
-      this.r = $$6;
-   }
-
-   @Override
-   public void b() {
-      this.q.onPress(this);
-   }
-
-   @Override
-   protected wg aM_() {
-      return this.r.createNarrationMessage(() -> super.aM_());
-   }
-
-   @Override
-   public void a(fef $$0) {
-      this.c($$0);
-   }
-
-   public static class a {
-      private final vs a;
-      private final fak.c b;
-      @Nullable
-      private fbv c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fak.b h = fak.p;
-
-      public a(vs $$0, fak.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fak.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fak.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fak.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fak.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fak.a a(@Nullable fbv $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fak.a a(fak.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fak a() {
-         fak $$0 = new fak(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
+   public int a(dmz $$0, cwz $$1, ib $$2) {
+      faj $$3 = this.b.a(ki.e.a($$0.b()));
+      if ($$3 != null) {
+         return $$3.getColor($$0, null, null, 0);
+      } else {
+         eir $$4 = $$0.d($$1, $$2);
+         return $$4 != null ? $$4.ak : -1;
       }
    }
 
-   public interface b {
-      wg createNarrationMessage(Supplier<wg> var1);
+   public int a(dmz $$0, @Nullable cwc $$1, @Nullable ib $$2, int $$3) {
+      faj $$4 = this.b.a(ki.e.a($$0.b()));
+      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
    }
 
-   public interface c {
-      void onPress(fak var1);
+   public void a(faj $$0, daa... $$1) {
+      for (daa $$2 : $$1) {
+         this.b.a($$0, ki.e.a($$2));
+      }
+   }
+
+   private void a(Set<doc<?>> $$0, daa... $$1) {
+      for (daa $$2 : $$1) {
+         this.c.put($$2, $$0);
+      }
+   }
+
+   private void a(doc<?> $$0, daa... $$1) {
+      this.a(ImmutableSet.of($$0), $$1);
+   }
+
+   public Set<doc<?>> a(daa $$0) {
+      return this.c.getOrDefault($$0, ImmutableSet.of());
    }
 }

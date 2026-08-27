@@ -1,94 +1,161 @@
-import java.util.Arrays;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class fmk<T extends bof> extends fnn<T> {
-   private final fqf a;
-   private final fqf[] b;
-   private final fqf f;
+public class fmk {
+   static final ajh b = new ajh("spectator/close");
+   static final ajh c = new ajh("spectator/scroll_left");
+   static final ajh d = new ajh("spectator/scroll_right");
+   private static final fmm e = new fmk.a();
+   private static final fmm f = new fmk.b(-1, true);
+   private static final fmm g = new fmk.b(1, true);
+   private static final fmm h = new fmk.b(1, false);
+   private static final int i = 8;
+   static final vu j = vu.c("spectatorMenu.close");
+   static final vu k = vu.c("spectatorMenu.previous_page");
+   static final vu l = vu.c("spectatorMenu.next_page");
+   public static final fmm a = new fmm() {
+      @Override
+      public void a(fmk $$0) {
+      }
 
-   public fmk(fqf $$0) {
-      this.a = $$0;
-      this.f = $$0.b("head");
-      this.b = new fqf[12];
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+      @Override
+      public vu aP_() {
+         return vt.a;
+      }
+
+      @Override
+      public void a(fat $$0, float $$1, int $$2) {
+      }
+
+      @Override
+      public boolean aQ_() {
+         return false;
+      }
+   };
+   private final fmn m;
+   private fml n;
+   private int o = -1;
+   int p;
+
+   public fmk(fmn $$0) {
+      this.n = new fmj();
+      this.m = $$0;
    }
 
-   private static String a(int $$0) {
-      return "part" + $$0;
+   public fmm a(int $$0) {
+      int $$1 = $$0 + this.p * 6;
+      if (this.p > 0 && $$0 == 0) {
+         return f;
+      } else if ($$0 == 7) {
+         return $$1 < this.n.a().size() ? g : h;
+      } else if ($$0 == 8) {
+         return e;
+      } else {
+         return $$1 >= 0 && $$1 < this.n.a().size() ? (fmm)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
+      }
    }
 
-   public static fql b() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      $$1.a("head", fqk.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fqh.a);
-      float $$2 = 0.0F;
-      fqk $$3 = fqk.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+   public List<fmm> a() {
+      List<fmm> $$0 = Lists.newArrayList();
 
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         float $$5 = awm.b($$2) * 9.0F;
-         float $$6 = -2.0F + awm.b((float)($$4 * 2) * 0.25F);
-         float $$7 = awm.a($$2) * 9.0F;
-         $$1.a(a($$4), $$3, fqh.a($$5, $$6, $$7));
-         $$2++;
+      for (int $$1 = 0; $$1 <= 8; $$1++) {
+         $$0.add(this.a($$1));
       }
 
-      $$2 = (float) (Math.PI / 4);
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         float $$9 = awm.b($$2) * 7.0F;
-         float $$10 = 2.0F + awm.b((float)($$8 * 2) * 0.25F);
-         float $$11 = awm.a($$2) * 7.0F;
-         $$1.a(a($$8), $$3, fqh.a($$9, $$10, $$11));
-         $$2++;
-      }
-
-      $$2 = 0.47123894F;
-
-      for (int $$12 = 8; $$12 < 12; $$12++) {
-         float $$13 = awm.b($$2) * 5.0F;
-         float $$14 = 11.0F + awm.b((float)$$12 * 1.5F * 0.5F);
-         float $$15 = awm.a($$2) * 5.0F;
-         $$1.a(a($$12), $$3, fqh.a($$13, $$14, $$15));
-         $$2++;
-      }
-
-      return fql.a($$0, 64, 32);
+      return $$0;
    }
 
-   @Override
-   public fqf a() {
-      return this.a;
+   public fmm b() {
+      return this.a(this.o);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 * (float) Math.PI * -0.1F;
+   public fml c() {
+      return this.n;
+   }
 
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         this.b[$$7].c = -2.0F + awm.b(((float)($$7 * 2) + $$3) * 0.25F);
-         this.b[$$7].b = awm.b($$6) * 9.0F;
-         this.b[$$7].d = awm.a($$6) * 9.0F;
-         $$6++;
+   public void b(int $$0) {
+      fmm $$1 = this.a($$0);
+      if ($$1 != a) {
+         if (this.o == $$0 && $$1.aQ_()) {
+            $$1.a(this);
+         } else {
+            this.o = $$0;
+         }
+      }
+   }
+
+   public void d() {
+      this.m.a(this);
+   }
+
+   public int e() {
+      return this.o;
+   }
+
+   public void a(fml $$0) {
+      this.n = $$0;
+      this.o = -1;
+      this.p = 0;
+   }
+
+   public fmo f() {
+      return new fmo(this.a(), this.o);
+   }
+
+   static class a implements fmm {
+      @Override
+      public void a(fmk $$0) {
+         $$0.d();
       }
 
-      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         this.b[$$8].c = 2.0F + awm.b(((float)($$8 * 2) + $$3) * 0.25F);
-         this.b[$$8].b = awm.b($$6) * 7.0F;
-         this.b[$$8].d = awm.a($$6) * 7.0F;
-         $$6++;
+      @Override
+      public vu aP_() {
+         return fmk.j;
       }
 
-      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
-
-      for (int $$9 = 8; $$9 < 12; $$9++) {
-         this.b[$$9].c = 11.0F + awm.b(((float)$$9 * 1.5F + $$3) * 0.5F);
-         this.b[$$9].b = awm.b($$6) * 5.0F;
-         this.b[$$9].d = awm.a($$6) * 5.0F;
-         $$6++;
+      @Override
+      public void a(fat $$0, float $$1, int $$2) {
+         $$0.a(fmk.b, 0, 0, 16, 16);
       }
 
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      @Override
+      public boolean aQ_() {
+         return true;
+      }
+   }
+
+   static class b implements fmm {
+      private final int a;
+      private final boolean b;
+
+      public b(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(fmk $$0) {
+         $$0.p = $$0.p + this.a;
+      }
+
+      @Override
+      public vu aP_() {
+         return this.a < 0 ? fmk.k : fmk.l;
+      }
+
+      @Override
+      public void a(fat $$0, float $$1, int $$2) {
+         if (this.a < 0) {
+            $$0.a(fmk.c, 0, 0, 16, 16);
+         } else {
+            $$0.a(fmk.d, 0, 0, 16, 16);
+         }
+      }
+
+      @Override
+      public boolean aQ_() {
+         return this.b;
+      }
    }
 }

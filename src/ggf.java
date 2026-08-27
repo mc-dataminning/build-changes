@@ -1,25 +1,24 @@
-public class ggf extends ggj<cbb, fod<cbb>> {
-   private final fwm a;
+public class ggf<T extends bpo, M extends fpi<T>> extends ghs<T, M> {
+   private final gcw a;
 
-   public ggf(gdt<cbb, fod<cbb>> $$0, fwm $$1) {
-      super($$0);
-      this.a = $$1;
+   public ggf(gcy.a $$0, gdz<T, M> $$1) {
+      super($$1);
+      this.a = $$0.a();
    }
 
-   public void a(etd $$0, fwq $$1, int $$2, cbb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cpq $$10 = $$3.c(bom.a);
-      if ($$3.A() && !$$3.gD()) {
-         float $$11 = -0.6F;
-         float $$12 = 1.4F;
-         if ($$3.gr()) {
-            $$11 -= 0.2F * awm.a($$7 * 0.6F) + 0.2F;
-            $$12 -= 0.09F * awm.a($$7 * 0.6F);
-         }
+   @Override
+   protected int a(T $$0) {
+      return $$0.eQ();
+   }
 
-         $$0.a();
-         $$0.a(0.1F, $$12, $$11);
-         this.a.a($$3, $$10, cpn.h, false, $$0, $$1, $$2);
-         $$0.b();
-      }
+   @Override
+   protected void a(etz $$0, fxq $$1, int $$2, bow $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = aww.c($$4 * $$4 + $$6 * $$6);
+      cja $$9 = new cja($$3.dM(), $$3.dr(), $$3.dt(), $$3.dx(), cqk.h);
+      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
+      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
+      $$9.N = $$9.dC();
+      $$9.O = $$9.dE();
+      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
    }
 }

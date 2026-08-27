@@ -1,59 +1,141 @@
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.Socket;
 import java.util.List;
+import java.util.Locale;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.Scanner;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class akj {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("commands.banip.failed"));
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 5;
+   private final String c;
+   private final int d;
+   private final MinecraftServer e;
+   private volatile boolean f;
+   @Nullable
+   private Socket g;
+   @Nullable
+   private Thread h;
 
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ban-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(dv.a("reason", el.a()).executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), el.a($$0x, "reason"))))
-            )
-      );
+   public akj(String $$0, int $$1, MinecraftServer $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static int a(du $$0, String $$1, @Nullable vs $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
-      } else {
-         apb $$3 = $$0.l().ah().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.A(), $$2);
+   public void a() {
+      if (this.h != null && this.h.isAlive()) {
+         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
+      }
+
+      this.f = true;
+      this.h = new Thread(this::c, "chase-client");
+      this.h.setDaemon(true);
+      this.h.start();
+   }
+
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+      this.h = null;
+   }
+
+   public void c() {
+      String $$0 = this.c + ":" + this.d;
+
+      while (this.f) {
+         try {
+            a.info("Connecting to remote control server {}", $$0);
+            this.g = new Socket(this.c, this.d);
+            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
+
+            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
+               while (this.f) {
+                  String $$2 = $$1.readLine();
+                  if ($$2 == null) {
+                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+                     break;
+                  }
+
+                  this.a($$2);
+               }
+            } catch (IOException var8) {
+               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+            }
+         } catch (IOException var9) {
+            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
+         }
+
+         if (this.f) {
+            try {
+               Thread.sleep(5000L);
+            } catch (InterruptedException var5) {
+            }
+         }
+      }
+   }
+
+   private void a(String $$0) {
+      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
+         $$1.useLocale(Locale.ROOT);
+         String $$2 = $$1.next();
+         if ("t".equals($$2)) {
+            this.a($$1);
          } else {
-            throw a.create();
+            a.warn("Unknown message type '{}'", $$2);
          }
+      } catch (NoSuchElementException var7) {
+         a.warn("Could not parse message '{}', ignoring", $$0);
       }
    }
 
-   private static int b(du $$0, String $$1, @Nullable vs $$2) throws CommandSyntaxException {
-      asp $$3 = $$0.l().ah().g();
-      if ($$3.a($$1)) {
-         throw b.create();
+   private void a(Scanner $$0) {
+      this.b($$0)
+         .ifPresent(
+            $$0x -> this.b(
+                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.c, $$0x.b.d, $$0x.b.e, $$0x.c.j, $$0x.c.i)
+               )
+         );
+   }
+
+   private Optional<akj.a> b(Scanner $$0) {
+      ajg<cwz> $$1 = (ajg<cwz>)aks.a.get($$0.next());
+      if ($$1 == null) {
+         return Optional.empty();
       } else {
-         List<apb> $$4 = $$0.l().ah().b($$1);
-         asq $$5 = new asq($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> vs.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> vs.a("commands.banip.info", $$4.size(), gi.a($$4)), true);
-         }
-
-         for (apb $$6 : $$4) {
-            $$6.d.b(vs.c("multiplayer.disconnect.ip_banned"));
-         }
-
-         return $$4.size();
+         float $$2 = $$0.nextFloat();
+         float $$3 = $$0.nextFloat();
+         float $$4 = $$0.nextFloat();
+         float $$5 = $$0.nextFloat();
+         float $$6 = $$0.nextFloat();
+         return Optional.of(new akj.a($$1, new epr((double)$$2, (double)$$3, (double)$$4), new epq($$6, $$5)));
       }
+   }
+
+   private void b(String $$0) {
+      this.e.execute(() -> {
+         List<apg> $$1 = this.e.ah().t();
+         if (!$$1.isEmpty()) {
+            apg $$2 = $$1.get(0);
+            apf $$3 = this.e.I();
+            du $$4 = new du($$2, epr.a($$3.T()), epq.a, $$3, 4, "", vt.a, this.e, $$2);
+            dv $$5 = this.e.aH();
+            $$5.a($$4, $$0);
+         }
+      });
+   }
+
+   static record a(ajg<cwz> a, epr b, epq c) {
    }
 }

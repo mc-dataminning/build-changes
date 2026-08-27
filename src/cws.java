@@ -1,41 +1,27 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Optional;
 
 public class cws {
-   private final List<cws.a> a = Lists.newArrayList();
-
-   public void a(ib $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new cws.a($$0, $$1));
-      }
+   public Optional<Float> a(cwr $$0, cwf $$1, ib $$2, dmz $$3, ein $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
    }
 
-   public double b(ib $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (cws.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   public boolean a(cwr $$0, cwf $$1, ib $$2, dmz $$3, float $$4) {
+      return true;
    }
 
-   static class a {
-      private final ib a;
-      private final double b;
+   public boolean a(cwr $$0, bow $$1) {
+      return true;
+   }
 
-      public a(ib $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public float a() {
+      return 1.0F;
+   }
 
-      public double a(ib $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   public float b(cwr $$0, bow $$1) {
+      float $$2 = $$0.a() * 2.0F;
+      epr $$3 = $$0.b();
+      double $$4 = Math.sqrt($$1.f($$3)) / (double)$$2;
+      double $$5 = (1.0 - $$4) * (double)cwr.a($$3, $$1);
+      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
    }
 }

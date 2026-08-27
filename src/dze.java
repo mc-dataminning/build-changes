@@ -1,48 +1,51 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dze extends dzc {
-   public static final Codec<dze> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dme.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dme.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dme.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, dze::new)
-   );
-   private final float g;
-   private final float h;
-   private final dme i;
-   private final List<dme> j;
-   private final List<dme> k;
+public class dze extends dzg {
+   public static final Codec<dze> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dze::new));
 
-   public dze(long $$0, egu.a $$1, float $$2, float $$3, float $$4, dme $$5, List<dme> $$6, List<dme> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   public dze(bmh $$0, bmh $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected dza<?> a() {
-      return dza.c;
+   protected dzh<?> a() {
+      return dzh.i;
    }
 
    @Override
-   public dme a(awt $$0, ib $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
+   protected void a(cxf $$0, dzg.b $$1, axd $$2, dyq $$3, int $$4, dzg.a $$5, int $$6, int $$7, int $$8) {
+      ib $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+         }
       } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
+      }
+   }
+
+   @Override
+   public int a(axd $$0, int $$1, dyq $$2) {
+      return 4;
+   }
+
+   @Override
+   protected boolean b(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   }
+
+   @Override
+   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
       }
    }
 }

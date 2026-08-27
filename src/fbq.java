@@ -1,39 +1,72 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class fbq extends fba {
+   private final far a;
+   private final fca b;
 
-public class fbq extends fai {
-   @Nullable
-   protected fbx a;
-   protected boolean b;
-
-   public fbq(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, vr.a);
-      this.b = $$4;
+   public fbq(int $$0, int $$1, int $$2, int $$3, vu $$4, far $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new fca($$4, $$5).c(this.w() - this.b());
    }
 
-   public void a(fbx $$0) {
-      this.a = $$0;
-   }
-
-   public void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a() {
-      return this.b;
+   public fbq a(int $$0) {
+      this.b.b($$0);
+      return this;
    }
 
    @Override
-   public void a(fef $$0) {
-      this.c($$0);
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.c(this.w() - this.b());
    }
 
    @Override
-   public void b(ezx $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         RenderSystem.disableDepthTest();
-         $$0.a(this.a.a(this.b, this.z()), this.B(), this.C(), this.g, this.h);
-         RenderSystem.enableDepthTest();
+   protected int g() {
+      return this.b.u();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(fat $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aJ_()) {
+         this.a($$0, this.B() - this.a(), this.C() - this.a(), this.w() + this.b(), this.u() + this.b());
       }
+   }
+
+   @Override
+   public void b(fat $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.B(), (float)this.C(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(fat $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.B() + this.a()), (float)(this.C() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(ffc $$0) {
+      $$0.a(ffb.a, this.x());
    }
 }

@@ -1,32 +1,61 @@
-public class gbe extends gde<cgc, fmn<cgc>> {
-   private static final ajc a = new ajc("textures/entity/breeze/breeze.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gbe(gby.a $$0) {
-      super($$0, new fmn<>($$0.a(fqe.o)), 0.5F);
-      this.a(new gfi(this));
-      this.a(new gfh(this));
+public class gbe implements gbc.a {
+   private static final float a = 0.02F;
+   private final Map<ib, gbe.a> b = Maps.newHashMap();
+
+   public void a(ib $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new gbe.a($$1, $$2, ac.b() + (long)$$3));
    }
 
-   public void a(cgc $$0, float $$1, float $$2, etd $$3, fwq $$4, int $$5) {
-      fmn<cgc> $$6 = this.a();
-      a($$6, $$6.b(), $$6.d());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public ajc a(cgc $$0) {
-      return a;
+   @Override
+   public void a(etz $$0, fxq $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ac.b();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((gbe.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
    }
 
-   public static fmn<cgc> a(fmn<cgc> $$0, fqf... $$1) {
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-      $$0.e().k = false;
+   private void a(etz $$0, fxq $$1, ib $$2, gbe.a $$3) {
+      gbc.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gbc.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+      }
+   }
 
-      for (fqf $$2 : $$1) {
-         $$2.k = true;
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      return $$0;
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      }
    }
 }

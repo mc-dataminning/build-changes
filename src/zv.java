@@ -1,20 +1,14 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-
-public record zv(ajb<? extends ix<?>> b, List<jb.a> c) implements xz<zt> {
-   private static final xq<ByteBuf, ajb<? extends ix<?>>> d = ajc.b.a(ajb::a, ajb::a);
-   public static final xq<us, zv> a = xq.a(d, zv::b, jb.a.a.a(xo.a()), zv::e, zv::new);
-
+public interface zv extends yh {
    @Override
-   public yb<zv> a() {
-      return zx.b;
+   default ut b() {
+      return ut.e;
    }
 
-   public void a(zt $$0) {
-      $$0.a(this);
-   }
+   void a(zw var1);
 
-   public List<jb.a> e() {
-      return this.c;
-   }
+   void a(zx var1);
+
+   void a(zz var1);
+
+   void a(zy var1);
 }

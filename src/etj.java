@@ -1,182 +1,140 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
 public class etj {
-   private final etj.a a;
-   private final etj.b b;
+   @Nullable
+   private static etj a;
+   private final int b;
    private final int c;
    private final int d;
    private final int e;
+   private final int f;
+   private final boolean g;
+   private final boolean h;
 
-   public etj(int $$0, etj.a $$1, etj.b $$2, int $$3) {
-      if (this.a($$0, $$2)) {
-         this.b = $$2;
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$3;
-         this.e = $$1.a() * this.d;
-      } else {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+   private etj(boolean $$0, boolean $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.g = $$0;
+      this.b = $$2;
+      this.d = $$3;
+      this.c = $$4;
+      this.e = $$5;
+      this.h = $$1;
+      this.f = $$6;
+   }
+
+   public etj() {
+      this(false, true, 1, 0, 1, 0, 32774);
+   }
+
+   public etj(int $$0, int $$1, int $$2) {
+      this(false, false, $$0, $$1, $$0, $$1, $$2);
+   }
+
+   public etj(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      this(true, false, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public void a() {
+      if (!this.equals(a)) {
+         if (a == null || this.h != a.b()) {
+            a = this;
+            if (this.h) {
+               RenderSystem.disableBlend();
+               return;
+            }
+
+            RenderSystem.enableBlend();
+         }
+
+         RenderSystem.blendEquation(this.f);
+         if (this.g) {
+            RenderSystem.blendFuncSeparate(this.b, this.d, this.c, this.e);
+         } else {
+            RenderSystem.blendFunc(this.b, this.d);
+         }
       }
-   }
-
-   private boolean a(int $$0, etj.b $$1) {
-      return $$0 == 0 || $$1 == etj.b.d;
-   }
-
-   public final etj.a a() {
-      return this.a;
-   }
-
-   public final etj.b b() {
-      return this.b;
-   }
-
-   public final int c() {
-      return this.d;
-   }
-
-   public final int d() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.d + "," + this.b.a() + "," + this.a.b();
-   }
-
-   public final int e() {
-      return this.e;
-   }
-
-   public final boolean f() {
-      return this.b == etj.b.a;
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         etj $$1 = (etj)$$0;
-         if (this.d != $$1.d) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.a != $$1.a ? false : this.b == $$1.b;
-         }
-      } else {
+      } else if (!($$0 instanceof etj $$1)) {
          return false;
+      } else if (this.f != $$1.f) {
+         return false;
+      } else if (this.e != $$1.e) {
+         return false;
+      } else if (this.d != $$1.d) {
+         return false;
+      } else if (this.h != $$1.h) {
+         return false;
+      } else if (this.g != $$1.g) {
+         return false;
+      } else {
+         return this.c != $$1.c ? false : this.b == $$1.b;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
+      int $$0 = this.b;
       $$0 = 31 * $$0 + this.c;
-      return 31 * $$0 + this.d;
+      $$0 = 31 * $$0 + this.d;
+      $$0 = 31 * $$0 + this.e;
+      $$0 = 31 * $$0 + this.f;
+      $$0 = 31 * $$0 + (this.g ? 1 : 0);
+      return 31 * $$0 + (this.h ? 1 : 0);
    }
 
-   public void a(int $$0, long $$1, int $$2) {
-      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
+   public boolean b() {
+      return this.h;
    }
 
-   public void a(int $$0) {
-      this.b.a(this.c, $$0);
-   }
-
-   public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
-
-      private final int h;
-      private final String i;
-      private final int j;
-
-      private a(int $$0, String $$1, int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      public String b() {
-         return this.i;
-      }
-
-      public int c() {
-         return this.j;
+   public static int a(String $$0) {
+      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
+      if ("add".equals($$1)) {
+         return 32774;
+      } else if ("subtract".equals($$1)) {
+         return 32778;
+      } else if ("reversesubtract".equals($$1)) {
+         return 32779;
+      } else if ("reverse_subtract".equals($$1)) {
+         return 32779;
+      } else if ("min".equals($$1)) {
+         return 32775;
+      } else {
+         return "max".equals($$1) ? 32776 : 32774;
       }
    }
 
-   public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
-         }
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      }, ($$0, $$1) -> {
-      }),
-      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
-
-      private final String g;
-      private final etj.b.b h;
-      private final etj.b.a i;
-
-      private b(String $$0, etj.b.b $$1, etj.b.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
-         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.i.clearBufferState($$0, $$1);
-      }
-
-      public String a() {
-         return this.g;
-      }
-
-      @FunctionalInterface
-      interface a {
-         void clearBufferState(int var1, int var2);
-      }
-
-      @FunctionalInterface
-      interface b {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
+   public static int b(String $$0) {
+      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
+      $$1 = $$1.replaceAll("_", "");
+      $$1 = $$1.replaceAll("one", "1");
+      $$1 = $$1.replaceAll("zero", "0");
+      $$1 = $$1.replaceAll("minus", "-");
+      if ("0".equals($$1)) {
+         return 0;
+      } else if ("1".equals($$1)) {
+         return 1;
+      } else if ("srccolor".equals($$1)) {
+         return 768;
+      } else if ("1-srccolor".equals($$1)) {
+         return 769;
+      } else if ("dstcolor".equals($$1)) {
+         return 774;
+      } else if ("1-dstcolor".equals($$1)) {
+         return 775;
+      } else if ("srcalpha".equals($$1)) {
+         return 770;
+      } else if ("1-srcalpha".equals($$1)) {
+         return 771;
+      } else if ("dstalpha".equals($$1)) {
+         return 772;
+      } else {
+         return "1-dstalpha".equals($$1) ? 773 : -1;
       }
    }
 }

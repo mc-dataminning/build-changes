@@ -1,13 +1,12 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+public class jz {
+   private final int b;
+   public static final jz a = new jz(1000);
 
-public interface jz {
-   ka<?> a();
+   public jz(int $$0) {
+      this.b = $$0;
+   }
 
-   String a(in.a var1);
-
-   @Deprecated
-   public interface a<T extends jz> {
-      T b(ka<T> var1, StringReader var2, in.a var3) throws CommandSyntaxException;
+   public int a() {
+      return this.b;
    }
 }

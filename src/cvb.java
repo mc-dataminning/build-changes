@@ -1,41 +1,20 @@
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-
-public interface cvb {
-   void f(@Nullable cia var1);
-
-   @Nullable
-   cia gl();
-
-   cvd gn();
-
-   void a(cvd var1);
-
-   void a(cvc var1);
-
-   void n(cpq var1);
-
-   int w();
-
-   void u(int var1);
-
-   boolean go();
-
-   ato gp();
-
-   default boolean gx() {
-      return false;
+public class cvb extends cuu {
+   protected cvb(cuu.a $$0, bpd... $$1) {
+      super($$0, auv.bg, $$1);
    }
 
-   default void a(cia $$0, vs $$1, int $$2) {
-      OptionalInt $$3 = $$0.a(new bmv(($$0x, $$1x, $$2x) -> new cmd($$0x, $$1x, this), $$1));
-      if ($$3.isPresent()) {
-         cvd $$4 = this.gn();
-         if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.w(), this.go(), this.gx());
-         }
-      }
+   @Override
+   public int a(int $$0) {
+      return 5 + 20 * ($$0 - 1);
    }
 
-   boolean gt();
+   @Override
+   public int b(int $$0) {
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public int a() {
+      return 2;
+   }
 }

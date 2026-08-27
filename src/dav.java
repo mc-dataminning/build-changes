@@ -1,43 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dav extends cyn {
-   public static final MapCodec<dav> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dau.a.forGetter($$0x -> $$0x.c), u()).apply($$0, dav::new));
-   private final czf c;
+public class dav extends cyt {
+   public static final MapCodec<dav> d = b(dav::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
    @Override
    public MapCodec<dav> a() {
-      return b;
+      return d;
    }
 
-   protected dav(czf $$0, dmd.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
-   @Override
-   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      this.a($$0, (cwf)$$1, $$2);
+   public dav(dmy.d $$0) {
+      super($$0, ji.c);
    }
 
    @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.o().a(d, Boolean.valueOf(false)), 2);
+   public boolean d(dmz $$0) {
+      return false;
+   }
+
+   protected static boolean a(cwz $$0, cxy.c $$1) {
+      if ($$1 == cxy.c.b) {
+         return $$0.E_().i() < 0.05F;
+      } else {
+         return $$1 == cxy.c.c ? $$0.E_().i() < 0.1F : false;
       }
    }
 
    @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.a && !$$0.a($$3, $$4)) {
-         return czh.a.o();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, ehs.c, ehs.c.a($$3));
+   public void a(dmz $$0, cwz $$1, ib $$2, cxy.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == cxy.c.b) {
+            $$1.b($$2, dac.fu.o());
+            $$1.a(null, drn.c, $$2);
+         } else if ($$3 == cxy.c.c) {
+            $$1.b($$2, dac.fw.o());
+            $$1.a(null, drn.c, $$2);
          }
+      }
+   }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   protected boolean a(eim $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dmz $$0, cwz $$1, ib $$2, eim $$3) {
+      if ($$3 == eio.c) {
+         dmz $$4 = dac.fu.o();
+         $$1.b($$2, $$4);
+         $$1.a(drn.c, $$2, drn.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == eio.e) {
+         dmz $$5 = dac.fv.o();
+         $$1.b($$2, $$5);
+         $$1.a(drn.c, $$2, drn.a.a($$5));
+         $$1.c(1046, $$2, 0);
       }
    }
 }

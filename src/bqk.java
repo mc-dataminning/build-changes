@@ -1,79 +1,193 @@
-import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class bqk extends bqp<bpf> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final Predicate<bpf> g = $$0 -> $$0.eg() != null || $$0.dy() || $$0.bK();
-   private final float h;
-   private final Predicate<bpf> i;
+public abstract class bqk extends cbd implements bpv {
+   protected static final aim<Byte> bX = aiq.a(bqk.class, aio.a);
+   protected static final aim<Optional<UUID>> bY = aiq.a(bqk.class, aio.q);
+   private boolean ca;
 
-   public bqk(float $$0) {
-      this($$0, g);
+   protected bqk(bpc<? extends bqk> $$0, cwz $$1) {
+      super($$0, $$1);
    }
 
-   public bqk(float $$0, Predicate<bpf> $$1) {
-      super(ImmutableMap.of(bya.Z, byb.c, bya.x, byb.c), 100, 120);
-      this.h = $$0;
-      this.i = $$1;
+   @Override
+   protected void a(aiq.a $$0) {
+      super.a($$0);
+      $$0.a(bX, (byte)0);
+      $$0.a(bY, Optional.empty());
    }
 
-   protected boolean a(apa $$0, bpf $$1) {
-      return this.i.test($$1) && ($$1.dM().a(bya.x) || $$1.dM().a(bya.Z));
+   @Override
+   public void b(ta $$0) {
+      super.b($$0);
+      if (this.d() != null) {
+         $$0.a("Owner", this.d());
+      }
+
+      $$0.a("Sitting", this.ca);
    }
 
-   protected boolean a(apa $$0, bpf $$1, long $$2) {
-      return true;
-   }
+   @Override
+   public void a(ta $$0) {
+      super.a($$0);
+      UUID $$1;
+      if ($$0.b("Owner")) {
+         $$1 = $$0.a("Owner");
+      } else {
+         String $$2 = $$0.l("Owner");
+         $$1 = ata.a(this.cL(), $$2);
+      }
 
-   protected void b(apa $$0, bpf $$1, long $$2) {
-      $$1.dM().a(bya.Z, true);
-      $$1.dM().b(bya.m);
-   }
-
-   protected void c(apa $$0, bpf $$1, long $$2) {
-      bpy<?> $$3 = $$1.dM();
-      $$3.b(bya.Z);
-   }
-
-   protected void d(apa $$0, bpf $$1, long $$2) {
-      if ($$1.N().l()) {
-         eov $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dM().a(bya.m, new byd($$3, this.h, 0));
+      if ($$1 != null) {
+         try {
+            this.b($$1);
+            this.b(true, false);
+         } catch (Throwable var4) {
+            this.b(false, true);
          }
+      }
+
+      this.ca = $$0.q("Sitting");
+      this.x(this.ca);
+   }
+
+   @Override
+   public boolean a(cis $$0) {
+      return !this.gb();
+   }
+
+   protected void w(boolean $$0) {
+      ka $$1 = kc.P;
+      if (!$$0) {
+         $$1 = kc.ac;
+      }
+
+      for (int $$2 = 0; $$2 < 7; $$2++) {
+         double $$3 = this.ag.k() * 0.02;
+         double $$4 = this.ag.k() * 0.02;
+         double $$5 = this.ag.k() * 0.02;
+         this.dM().a($$1, this.d(1.0), this.du() + 0.5, this.g(1.0), $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 7) {
+         this.w(true);
+      } else if ($$0 == 6) {
+         this.w(false);
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public boolean r() {
+      return (this.an.a(bX) & 4) != 0;
+   }
+
+   public void b(boolean $$0, boolean $$1) {
+      byte $$2 = this.an.a(bX);
+      if ($$0) {
+         this.an.a(bX, (byte)($$2 | 4));
+      } else {
+         this.an.a(bX, (byte)($$2 & -5));
+      }
+
+      if ($$1) {
+         this.s();
+      }
+   }
+
+   protected void s() {
+   }
+
+   public boolean y() {
+      return (this.an.a(bX) & 1) != 0;
+   }
+
+   public void x(boolean $$0) {
+      byte $$1 = this.an.a(bX);
+      if ($$0) {
+         this.an.a(bX, (byte)($$1 | 1));
+      } else {
+         this.an.a(bX, (byte)($$1 & -2));
       }
    }
 
    @Nullable
-   private eov a(bpf $$0, apa $$1) {
-      if ($$0.bK()) {
-         Optional<eov> $$2 = this.a((cvk)$$1, (bof)$$0).map(eov::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return bzu.a($$0, 5, 4);
+   @Override
+   public UUID d() {
+      return this.an.a(bY).orElse(null);
    }
 
-   private Optional<ib> a(cvk $$0, bof $$1) {
-      ib $$2 = $$1.dj();
-      if (!$$0.a_($$2).k($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<ib> $$3;
-         if (awm.f($$1.dd()) == 2) {
-            $$3 = $$1x -> ib.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(auj.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(auj.a);
+   public void b(@Nullable UUID $$0) {
+      this.an.a(bY, Optional.ofNullable($$0));
+   }
+
+   public void f(cis $$0) {
+      this.b(true, true);
+      this.b($$0.cw());
+      if ($$0 instanceof apg) {
+         am.y.a((apg)$$0, this);
+      }
+   }
+
+   @Override
+   public boolean c(bpo $$0) {
+      return this.j($$0) ? false : super.c($$0);
+   }
+
+   public boolean j(bpo $$0) {
+      return $$0 == this.P_();
+   }
+
+   public boolean a(bpo $$0, bpo $$1) {
+      return true;
+   }
+
+   @Override
+   public eqq cg() {
+      if (this.r()) {
+         bpo $$0 = this.P_();
+         if ($$0 != null) {
+            return $$0.cg();
+         }
+      }
+
+      return super.cg();
+   }
+
+   @Override
+   public boolean s(bow $$0) {
+      if (this.r()) {
+         bpo $$1 = this.P_();
+         if ($$0 == $$1) {
+            return true;
          }
 
-         return ib.a($$2, 5, 1, $$3);
+         if ($$1 != null) {
+            return $$1.s($$0);
+         }
       }
+
+      return super.s($$0);
+   }
+
+   @Override
+   public void a(bnv $$0) {
+      if (!this.dM().B && this.dM().Z().b(cwv.n) && this.P_() instanceof apg) {
+         this.P_().a(this.eM().a());
+      }
+
+      super.a($$0);
+   }
+
+   public boolean gn() {
+      return this.ca;
+   }
+
+   public void y(boolean $$0) {
+      this.ca = $$0;
    }
 }

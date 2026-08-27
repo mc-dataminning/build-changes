@@ -1,42 +1,31 @@
+import com.mojang.blaze3d.platform.GLX;
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
 
 public class ess {
-   private static final Logger a = LogUtils.getLogger();
-
-   public static void a(int $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._glUseProgram($$0);
+   public static ByteBuffer a(int $$0) {
+      return MemoryUtil.memAlloc($$0);
    }
 
-   public static void a(est $$0) {
-      RenderSystem.assertOnRenderThread();
-      $$0.d().a();
-      $$0.c().a();
-      GlStateManager.glDeleteProgram($$0.a());
+   public static void a(Buffer $$0) {
+      MemoryUtil.memFree($$0);
    }
 
-   public static int a() throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = GlStateManager.glCreateProgram();
-      if ($$0 <= 0) {
-         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
-      } else {
-         return $$0;
-      }
+   public static String a() {
+      return GlStateManager._getString(7936);
    }
 
-   public static void b(est $$0) {
-      RenderSystem.assertOnRenderThread();
-      $$0.e();
-      GlStateManager.glLinkProgram($$0.a());
-      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
-      if ($$1 == 0) {
-         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
-         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
-      }
+   public static String b() {
+      return GLX._getCpuInfo();
+   }
+
+   public static String c() {
+      return GlStateManager._getString(7937);
+   }
+
+   public static String d() {
+      return GlStateManager._getString(7938);
    }
 }

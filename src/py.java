@@ -1,203 +1,202 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+
 public class py {
-   private static final float a = -0.51F;
-   private static final float b = -0.4F;
-   private static final float c = 0.1F;
-   private static final float d = -0.15F;
-   private static final axm<Float> e = axm.a;
-   private static final axm<Float> f = axm.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
-   private static final axm<Float> g = axm.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
-   private static final axm<Float> h = axm.a($$0 -> $$0 * 2.0F);
+   private static final dtd.o a = a(dac.a);
+   private static final dtd.o b = a(dac.F);
+   private static final dtd.o c = a(dac.hj);
+   private static final dtd.o d = a(dac.hk);
+   private static final dtd.o e = a(dac.iA);
+   private static final dtd.o f = a(dac.K);
+   private static final dtd.o g = a(dac.jp);
+   private static final dtd.o h = a(dac.b);
+   private static final dtd.o i = a(dac.sJ);
+   private static final dtd.o j = a(dac.j);
+   private static final dtd.o k = a(dac.l);
+   private static final dtd.o l = a(dac.k);
+   private static final dtd.o m = a(dac.fl);
+   private static final dtd.o n = a(dac.i);
+   private static final dtd.o o = a(dac.qN);
+   private static final dtd.o p = a(dac.L);
+   private static final dtd.o q = a(dac.I);
+   private static final dtd.o r = a(dac.aV);
+   private static final dtd.o s = a(dac.iC);
+   private static final dtd.o t = a(dac.dP);
+   private static final dtd.o u = a(dac.sI);
+   private static final dtd.o v = a(dac.qP);
+   private static final dtd.o w = a(dac.dO);
+   private static final dtd.o x = a(dac.G);
+   private static final dtd.o y = a(dac.H);
+   private static final dtd.o z = a(dac.dV);
+   private static final dtd.o A = a(dac.dW);
+   private static final dtd.o B = a(dac.dX);
+   private static final dtd.o C = a(dac.dY);
+   private static final dtd.o D = a(dac.pr);
+   private static final dtd.o E = a(dac.op);
+   private static final dtd.o F = a(dac.on);
+   private static final dtd.o G = a(dac.kK);
+   private static final dtd.o H = a(dac.ow);
+   private static final dtd.o I = a(dac.fz);
 
-   public static <C, I extends axm<C>> avo<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
-      axm<Float> $$4 = $$3 ? f : e;
-      avo<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
-      avo<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
-      avo<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
-      avo<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
-      return avo.<C, I>a($$0, $$4)
-         .a(-1.1F, 0.044F)
-         .a(-1.02F, -0.2222F)
-         .a(-0.51F, -0.2222F)
-         .a(-0.44F, -0.12F)
-         .a(-0.18F, -0.12F)
-         .a(-0.16F, $$5)
-         .a(-0.15F, $$5)
-         .a(-0.1F, $$6)
-         .a(0.25F, $$7)
-         .a(1.0F, $$8)
-         .a();
+   private static dtd.o a(daa $$0) {
+      return dtd.a($$0.o());
    }
 
-   public static <C, I extends axm<C>> avo<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      axm<Float> $$5 = $$4 ? g : e;
-      return avo.<C, I>a($$0, e)
-         .a(-0.19F, 3.95F)
-         .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
-         .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
-         .a(0.03F, a($$1, $$2, $$3, 5.08F, true, $$5))
-         .a(0.06F, a($$1, $$2, $$3, 4.69F, false, $$5))
-         .a();
+   public static dtd.o a() {
+      return a(true, false, true);
    }
 
-   public static <C, I extends axm<C>> avo<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      axm<Float> $$5 = $$4 ? h : e;
-      float $$6 = 0.65F;
-      return avo.<C, I>a($$0, $$5)
-         .a(-0.11F, 0.0F)
-         .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
-         .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
-         .a();
-   }
-
-   private static <C, I extends axm<C>> avo<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, axm<Float> $$7) {
-      float $$8 = -0.5775F;
-      avo<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
-      avo<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
-      return avo.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
-   }
-
-   private static <C, I extends axm<C>> avo<C, I> a(I $$0, I $$1, float $$2, float $$3, axm<Float> $$4) {
-      float $$5 = drx.a(0.4F);
-      float $$6 = drx.a(0.56666666F);
-      float $$7 = ($$5 + $$6) / 2.0F;
-      avo.b<C, I> $$8 = avo.a($$1, $$4);
-      $$8.a($$5, 0.0F);
-      if ($$3 > 0.0F) {
-         $$8.a($$7, a($$0, $$3, $$4));
-      } else {
-         $$8.a($$7, 0.0F);
+   public static dtd.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dtd.f $$3 = dtd.a(dtg.a(97), 2);
+      dtd.f $$4 = dtd.a(dtg.a(256), 0);
+      dtd.f $$5 = dtd.b(dtg.a(63), -1);
+      dtd.f $$6 = dtd.b(dtg.a(74), 1);
+      dtd.f $$7 = dtd.a(dtg.a(60), 0);
+      dtd.f $$8 = dtd.a(dtg.a(62), 0);
+      dtd.f $$9 = dtd.a(dtg.a(63), 0);
+      dtd.f $$10 = dtd.a(-1, 0);
+      dtd.f $$11 = dtd.a(0, 0);
+      dtd.f $$12 = dtd.b(-6, -1);
+      dtd.f $$13 = dtd.b();
+      dtd.f $$14 = dtd.a(cyf.W, cyf.X);
+      dtd.f $$15 = dtd.a();
+      dtd.o $$16 = dtd.a(dtd.a($$11, n), j);
+      dtd.o $$17 = dtd.a(dtd.a(dtd.e, r), q);
+      dtd.o $$18 = dtd.a(dtd.a(dtd.e, h), p);
+      dtd.f $$19 = dtd.a(cyf.P, cyf.M, cyf.N);
+      dtd.f $$20 = dtd.a(cyf.f);
+      dtd.o $$21 = dtd.a(
+         dtd.a(dtd.a(cyf.J), dtd.a(dtd.a(dtd.a(dsv.X, -0.0125, 0.0125), o), h)),
+         dtd.a(dtd.a(cyf.O), dtd.a(dtd.a(dtd.a(dsv.Y, -0.05, 0.05), $$18), h)),
+         dtd.a(dtd.a(cyf.t), dtd.a(a(1.0), h)),
+         dtd.a($$19, $$17),
+         dtd.a($$20, $$17),
+         dtd.a(dtd.a(cyf.Z), h)
+      );
+      dtd.o $$22 = dtd.a(dtd.a(dsv.Z, 0.45, 0.58), dtd.a($$11, v));
+      dtd.o $$23 = dtd.a(dtd.a(dsv.Z, 0.35, 0.6), dtd.a($$11, v));
+      dtd.o $$24 = dtd.a(
+         dtd.a(dtd.a(cyf.H), dtd.a(dtd.a($$15, s), dtd.a(dtd.a(dsv.aa, -0.5, 0.2), s), dtd.a(dtd.a(dsv.ab, -0.0625, 0.025), w), dtd.a($$11, t))),
+         dtd.a(dtd.a(cyf.G), dtd.a(dtd.a($$15, h), $$22, dtd.a($$11, t))),
+         dtd.a(dtd.a(cyf.I), h),
+         dtd.a(dtd.a(cyf.F), dtd.a($$22, j)),
+         $$21,
+         dtd.a(dtd.a(cyf.w), dtd.a(a(1.75), h)),
+         dtd.a(dtd.a(cyf.u), dtd.a(dtd.a(a(2.0), $$18), dtd.a(a(1.0), h), dtd.a(a(-1.0), j), $$18)),
+         dtd.a(dtd.a(cyf.h), u),
+         j
+      );
+      dtd.o $$25 = dtd.a(
+         dtd.a(dtd.a(cyf.H), dtd.a(dtd.a($$15, s), dtd.a(dtd.a(dsv.aa, 0.0, 0.2), s), dtd.a(dtd.a(dsv.ab, 0.0, 0.025), w), dtd.a($$11, t))),
+         dtd.a(dtd.a(cyf.G), dtd.a(dtd.a($$15, h), $$23, dtd.a($$11, t))),
+         dtd.a(dtd.a(cyf.I), dtd.a(dtd.a($$15, h), dtd.a($$11, t))),
+         dtd.a(dtd.a(cyf.F), dtd.a($$23, dtd.a($$11, t))),
+         $$21,
+         dtd.a(dtd.a(cyf.w), dtd.a(dtd.a(a(1.75), h), dtd.a(a(-0.5), l))),
+         dtd.a(dtd.a(cyf.u), dtd.a(dtd.a(a(2.0), $$18), dtd.a(a(1.0), h), dtd.a(a(-1.0), $$16), $$18)),
+         dtd.a(dtd.a(cyf.n, cyf.o), dtd.a(dtd.a(a(1.75), l), dtd.a(a(-0.95), k))),
+         dtd.a(dtd.a(cyf.e), dtd.a($$11, t)),
+         dtd.a(dtd.a(cyf.h), u),
+         dtd.a(dtd.a(cyf.Y), m),
+         $$16
+      );
+      dtd.f $$26 = dtd.a(dsv.N, -0.909, -0.5454);
+      dtd.f $$27 = dtd.a(dsv.N, -0.1818, 0.1818);
+      dtd.f $$28 = dtd.a(dsv.N, 0.5454, 0.909);
+      dtd.o $$29 = dtd.a(
+         dtd.a(
+            dtd.a,
+            dtd.a(
+               dtd.a(dtd.a(cyf.C), dtd.a($$3, dtd.a(dtd.a($$26, l), dtd.a($$27, l), dtd.a($$28, l), $$16))),
+               dtd.a(dtd.a(cyf.g), dtd.a($$8, dtd.a(dtd.a($$9), dtd.a(dtd.a(dsv.W, 0.0), x)))),
+               dtd.a(dtd.a(cyf.h), dtd.a($$7, dtd.a(dtd.a($$9), dtd.a(dtd.a(dsv.W, 0.0), x))))
+            )
+         ),
+         dtd.a(
+            dtd.a(cyf.A, cyf.B, cyf.C),
+            dtd.a(
+               dtd.a(
+                  dtd.a,
+                  dtd.a(
+                     dtd.a($$4, d),
+                     dtd.a($$6, dtd.a(dtd.a($$26, e), dtd.a($$27, e), dtd.a($$28, e), dtd.e())),
+                     dtd.a($$10, dtd.a(dtd.a(dtd.e, g), f)),
+                     dtd.a(dtd.a($$13), d),
+                     dtd.a($$12, c),
+                     $$18
+                  )
+               ),
+               dtd.a($$5, dtd.a(dtd.a($$9, dtd.a(dtd.a($$6), d)), dtd.e())),
+               dtd.a(dtd.b, dtd.a($$12, c))
+            )
+         ),
+         dtd.a(dtd.a, dtd.a($$10, dtd.a(dtd.a($$14, dtd.a($$13, dtd.a(dtd.a($$11, a), dtd.a(dtd.d(), w), x))), $$25))),
+         dtd.a($$12, dtd.a(dtd.a(dtd.a, dtd.a($$14, dtd.a($$13, x))), dtd.a(dtd.b, $$24), dtd.a($$19, dtd.a(dtd.c, r)), dtd.a($$20, dtd.a(dtd.d, r)))),
+         dtd.a(dtd.a, dtd.a(dtd.a(dtd.a(cyf.H, cyf.I), h), dtd.a(dtd.a(cyf.P, cyf.Q, cyf.R), $$17), $$18))
+      );
+      Builder<dtd.o> $$30 = ImmutableList.builder();
+      if ($$1) {
+         $$30.add(dtd.a(dtd.a(dtd.a("bedrock_roof", dtg.c(5), dtg.b())), b));
       }
 
-      if ($$2 > 0.0F) {
-         $$8.a(1.0F, a($$0, $$2, $$4));
-      } else {
-         $$8.a(1.0F, 0.0F);
+      if ($$2) {
+         $$30.add(dtd.a(dtd.a("bedrock_floor", dtg.a(), dtg.b(5)), b));
       }
 
-      return $$8.a();
+      dtd.o $$31 = dtd.a(dtd.c(), $$29);
+      $$30.add($$0 ? $$31 : $$29);
+      $$30.add(dtd.a(dtd.a("deepslate", dtg.a(0), dtg.a(8)), i));
+      return dtd.a((dtd.o[])$$30.build().toArray(dtd.o[]::new));
    }
 
-   private static <C, I extends axm<C>> avo<C, I> a(I $$0, float $$1, axm<Float> $$2) {
-      float $$3 = 0.63F * $$1;
-      float $$4 = 0.3F * $$1;
-      return avo.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
+   public static dtd.o b() {
+      dtd.f $$0 = dtd.a(dtg.a(31), 0);
+      dtd.f $$1 = dtd.a(dtg.a(32), 0);
+      dtd.f $$2 = dtd.b(dtg.a(30), 0);
+      dtd.f $$3 = dtd.a(dtd.b(dtg.a(35), 0));
+      dtd.f $$4 = dtd.a(dtg.c(5), 0);
+      dtd.f $$5 = dtd.b();
+      dtd.f $$6 = dtd.a(dsv.ac, -0.012);
+      dtd.f $$7 = dtd.a(dsv.ad, -0.012);
+      dtd.f $$8 = dtd.a(dsv.ae, -0.012);
+      dtd.f $$9 = dtd.a(dsv.af, 0.54);
+      dtd.f $$10 = dtd.a(dsv.ag, 1.17);
+      dtd.f $$11 = dtd.a(dsv.ah, 0.0);
+      dtd.o $$12 = dtd.a($$8, dtd.a($$2, dtd.a($$3, p)));
+      return dtd.a(
+         dtd.a(dtd.a("bedrock_floor", dtg.a(), dtg.b(5)), b),
+         dtd.a(dtd.a(dtd.a("bedrock_roof", dtg.c(5), dtg.b())), b),
+         dtd.a($$4, z),
+         dtd.a(dtd.a(cyf.ag), dtd.a(dtd.a(dtd.f, C), dtd.a(dtd.b, dtd.a($$12, dtd.a($$11, C), D)))),
+         dtd.a(dtd.a(cyf.af), dtd.a(dtd.a(dtd.f, dtd.a(dtd.a($$11, A), B)), dtd.a(dtd.b, dtd.a($$12, dtd.a($$11, A), B)))),
+         dtd.a(
+            dtd.a,
+            dtd.a(
+               dtd.a(dtd.a($$1), dtd.a($$5, y)),
+               dtd.a(dtd.a(cyf.ad), dtd.a(dtd.a($$9), dtd.a($$0, dtd.a(dtd.a($$10, E), F)))),
+               dtd.a(dtd.a(cyf.ae), dtd.a(dtd.a($$9), dtd.a($$0, dtd.a(dtd.a($$10, G), H))))
+            )
+         ),
+         dtd.a(
+            dtd.a(cyf.ac),
+            dtd.a(
+               dtd.a(dtd.b, dtd.a($$6, dtd.a(dtd.a(dtd.a($$5), dtd.a($$2, dtd.a($$3, A))), z))),
+               dtd.a(dtd.a, dtd.a($$0, dtd.a($$3, dtd.a($$7, dtd.a(dtd.a($$1, p), dtd.a(dtd.a($$5), p))))))
+            )
+         ),
+         z
+      );
    }
 
-   private static <C, I extends axm<C>> avo<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, axm<Float> $$5) {
-      avo<C, I> $$6 = avo.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
-      avo.b<C, I> $$7 = avo.<C, I>a($$0, $$5)
-         .a(-0.6F, $$6)
-         .a(-0.5F, avo.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
-         .a(-0.35F, $$6)
-         .a(-0.25F, $$6)
-         .a(-0.1F, avo.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
-         .a(0.03F, $$6);
-      if ($$4) {
-         avo<C, I> $$8 = avo.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
-         avo<C, I> $$9 = avo.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
-         $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
-      } else {
-         avo<C, I> $$10 = avo.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
-         avo<C, I> $$11 = avo.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
-         $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
-      }
-
-      return $$7.a();
+   public static dtd.o c() {
+      return I;
    }
 
-   private static float a(float $$0, float $$1, float $$2, float $$3) {
-      return ($$1 - $$0) / ($$3 - $$2);
+   public static dtd.o d() {
+      return a;
    }
 
-   private static <C, I extends axm<C>> avo<C, I> a(I $$0, float $$1, boolean $$2, axm<Float> $$3) {
-      avo.b<C, I> $$4 = avo.a($$0, $$3);
-      float $$5 = -0.7F;
-      float $$6 = -1.0F;
-      float $$7 = a(-1.0F, $$1, -0.7F);
-      float $$8 = 1.0F;
-      float $$9 = a(1.0F, $$1, -0.7F);
-      float $$10 = a($$1);
-      float $$11 = -0.65F;
-      if (-0.65F < $$10 && $$10 < 1.0F) {
-         float $$12 = a(-0.65F, $$1, -0.7F);
-         float $$13 = -0.75F;
-         float $$14 = a(-0.75F, $$1, -0.7F);
-         float $$15 = a($$7, $$14, -1.0F, -0.75F);
-         $$4.a(-1.0F, $$7, $$15);
-         $$4.a(-0.75F, $$14);
-         $$4.a(-0.65F, $$12);
-         float $$16 = a($$10, $$1, -0.7F);
-         float $$17 = a($$16, $$9, $$10, 1.0F);
-         float $$18 = 0.01F;
-         $$4.a($$10 - 0.01F, $$16);
-         $$4.a($$10, $$16, $$17);
-         $$4.a(1.0F, $$9, $$17);
-      } else {
-         float $$19 = a($$7, $$9, -1.0F, 1.0F);
-         if ($$2) {
-            $$4.a(-1.0F, Math.max(0.2F, $$7));
-            $$4.a(0.0F, awm.i(0.5F, $$7, $$9), $$19);
-         } else {
-            $$4.a(-1.0F, $$7, $$19);
-         }
-
-         $$4.a(1.0F, $$9, $$19);
-      }
-
-      return $$4.a();
-   }
-
-   private static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 1.17F;
-      float $$4 = 0.46082947F;
-      float $$5 = 1.0F - (1.0F - $$1) * 0.5F;
-      float $$6 = 0.5F * (1.0F - $$1);
-      float $$7 = ($$0 + 1.17F) * 0.46082947F;
-      float $$8 = $$7 * $$5 - $$6;
-      return $$0 < $$2 ? Math.max($$8, -0.2222F) : Math.max($$8, 0.0F);
-   }
-
-   private static float a(float $$0) {
-      float $$1 = 1.17F;
-      float $$2 = 0.46082947F;
-      float $$3 = 1.0F - (1.0F - $$0) * 0.5F;
-      float $$4 = 0.5F * (1.0F - $$0);
-      return $$4 / (0.46082947F * $$3) - 1.17F;
-   }
-
-   public static <C, I extends axm<C>> avo<C, I> a(
-      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, axm<Float> $$10
-   ) {
-      float $$11 = 0.6F;
-      float $$12 = 0.5F;
-      float $$13 = 0.5F;
-      avo<C, I> $$14 = a($$1, awm.i($$5, 0.6F, 1.5F), $$9, $$10);
-      avo<C, I> $$15 = a($$1, awm.i($$5, 0.6F, 1.0F), $$9, $$10);
-      avo<C, I> $$16 = a($$1, $$5, $$9, $$10);
-      avo<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, awm.i(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      avo<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      avo<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      avo<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      avo<C, I> $$21 = avo.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
-      avo<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
-      avo.b<C, I> $$23 = avo.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
-      if ($$8) {
-         $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
-      }
-
-      $$23.a(0.7F, $$22);
-      return $$23.a();
-   }
-
-   private static <C, I extends axm<C>> avo<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, axm<Float> $$7) {
-      float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
-      float $$9 = 5.0F * ($$3 - $$2);
-      return avo.<C, I>a($$0, $$7)
-         .a(-1.0F, $$1, $$8)
-         .a(-0.4F, $$2, Math.min($$8, $$9))
-         .a(0.0F, $$3, $$9)
-         .a(0.4F, $$4, 2.0F * ($$4 - $$3))
-         .a(1.0F, $$5, 0.7F * ($$5 - $$4))
-         .a();
+   private static dtd.f a(double $$0) {
+      return dtd.a(dsv.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

@@ -1,33 +1,30 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record emr(Optional<bg> b) implements emx {
-   public static final Codec<emr> a = RecordCodecBuilder.create($$0 -> $$0.group(avu.a(bg.a, "predicate").forGetter(emr::c)).apply($$0, emr::new));
+public class emr extends emg {
+   public static final Codec<emr> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(avd.b(kj.D).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, emr::new)
+   );
+   private final avd<cqc> b;
 
-   @Override
-   public emy b() {
-      return emz.n;
+   private emr(List<ent> $$0, avd<cqc> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<emg<?>> a() {
-      return ImmutableSet.of(emj.f, emj.c);
+   public emi b() {
+      return emj.A;
    }
 
-   public boolean a(ejy $$0) {
-      bne $$1 = $$0.c(emj.c);
-      eov $$2 = $$0.c(emj.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   @Override
+   public cqk a(cqk $$0, eku $$1) {
+      cqd.a($$0, this.b, $$1.b());
+      return $$0;
    }
 
-   public static emx.a a(bg.a $$0) {
-      return () -> new emr(Optional.of($$0.b()));
-   }
-
-   public Optional<bg> c() {
-      return this.b;
+   public static emg.a<?> a(avd<cqc> $$0) {
+      return a($$1 -> new emr($$1, $$0));
    }
 }

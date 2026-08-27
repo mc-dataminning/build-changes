@@ -1,79 +1,105 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dgm extends czf {
-   public static final MapCodec<dgm> a = b(dgm::new);
-   public static final int b = 2;
-   public static final dne c = dmu.aE;
-   private static final int d = 24000;
-   private static final int e = 12000;
-   private static final int f = 300;
-   private static final epo g = czf.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
+public enum dgm implements axq {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dgm> a() {
-      return a;
+   public static final Codec<dgm> e = axq.a(dgm::values);
+   private final String f;
+   private final h g;
+
+   private dgm(String $$0, h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public dgm(dmd.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   public dgm a(dgm $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
+      }
    }
 
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(c);
+   public h a() {
+      return this.g;
    }
 
-   @Override
-   public epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return g;
-   }
-
-   public int m(dme $$0) {
-      return $$0.c(c);
-   }
-
-   private boolean n(dme $$0) {
-      return this.m($$0) == 2;
-   }
-
-   @Override
-   public void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if (!this.n($$0)) {
-         $$1.a(null, $$2, atp.xR, atq.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.a(c, Integer.valueOf(this.m($$0) + 1)), 2);
+   public ih a(ih $$0) {
+      if ($$0.o() == ih.a.b) {
+         return $$0;
       } else {
-         $$1.a(null, $$2, atp.xS, atq.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         cdb $$4 = bol.aP.a((cwe)$$1);
-         if ($$4 != null) {
-            eov $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), awm.g($$1.z.i() * 360.0F), 0.0F);
-            $$1.b($$4);
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
          }
       }
    }
 
-   @Override
-   public void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.y_() && $$5) {
-         $$1.c(3009, $$2, 0);
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
       }
+   }
 
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(dqr.i, $$2, dqr.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.z.a(300));
+   public static dgm a(axd $$0) {
+      return ac.a(values(), $$0);
+   }
+
+   public static List<dgm> b(axd $$0) {
+      return ac.b(values(), $$0);
    }
 
    @Override
-   public boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
-      return false;
-   }
-
-   public static boolean a(cvk $$0, ib $$1) {
-      return $$0.a_($$1.d()).a(aue.cl);
+   public String c() {
+      return this.f;
    }
 }

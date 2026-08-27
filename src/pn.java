@@ -1,72 +1,219 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class pn {
-   @Deprecated
-   public static final egu.a a = new egu.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final ajg<eel> a = ps.a("village/desert/town_centers");
+   private static final ajg<eel> b = ps.a("village/desert/terminators");
+   private static final ajg<eel> c = ps.a("village/desert/zombie/terminators");
 
-   public static void a(pj<egu.a> $$0) {
-      a($$0, 0, drz.a, drz.b, drz.c, drz.d);
-      a($$0, -2, drz.e, drz.f, drz.g, drz.h);
-      a($$0, drz.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(drz.j, a);
-      a($$0, drz.k, -3, 1.0);
-      a($$0, drz.l, -7, 1.0);
-      a($$0, drz.m, -1, 1.0);
-      a($$0, drz.n, -5, 1.0);
-      a($$0, drz.o, -7, 1.0, 1.0);
-      a($$0, drz.p, -8, 1.0);
-      a($$0, drz.q, -8, 1.0);
-      a($$0, drz.r, -7, 1.0);
-      a($$0, drz.s, -8, 1.0);
-      a($$0, drz.t, -11, 1.0);
-      a($$0, drz.u, -11, 1.0);
-      a($$0, drz.v, -7, 1.0);
-      a($$0, drz.w, -7, 1.0);
-      a($$0, drz.x, -11, 1.0);
-      a($$0, drz.y, -8, 1.0);
-      a($$0, drz.z, -5, 1.0);
-      a($$0, drz.A, -8, 1.0);
-      a($$0, drz.B, -7, 0.4, 0.5, 1.0);
-      a($$0, drz.C, -8, 1.0);
-      a($$0, drz.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, drz.E, -8, 1.0);
-      a($$0, drz.F, -7, 1.0);
-      a($$0, drz.G, -7, 1.0);
-      a($$0, drz.H, -5, 1.0);
-      a($$0, drz.I, -8, 1.0);
-      a($$0, drz.J, -8, 1.0);
-      a($$0, drz.K, -7, 1.0);
-      a($$0, drz.L, -7, 1.0);
-      a($$0, drz.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, drz.N, -6, 1.0, 1.0, 1.0);
-      a($$0, drz.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, drz.P, -8, 1.0);
-      a($$0, drz.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, drz.R, -8, 1.0);
-      a($$0, drz.S, -6, 1.0, 1.0, 1.0);
-      a($$0, drz.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, drz.U, -3, 1.0);
-      a($$0, drz.V, -6, 1.0, 1.0, 1.0);
-      a($$0, drz.W, -2, 1.0);
-      a($$0, drz.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, drz.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, drz.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, drz.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, drz.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, drz.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, drz.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, drz.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, drz.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, drz.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, drz.ah, -4, 1.0);
-   }
-
-   private static void a(pj<egu.a> $$0, int $$1, ajb<egu.a> $$2, ajb<egu.a> $$3, ajb<egu.a> $$4, ajb<egu.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(pj<egu.a> $$0, ajb<egu.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new egu.a($$2, $$3, $$4));
+   public static void a(pl<eel> $$0) {
+      im<ecg> $$1 = $$0.a(kj.aD);
+      il<ecg> $$2 = $$1.b(ri.j);
+      il<ecg> $$3 = $$1.b(ri.a);
+      im<eha> $$4 = $$0.a(kj.aF);
+      il<eha> $$5 = $$4.b(pt.e);
+      il<eha> $$6 = $$4.b(pt.p);
+      im<eel> $$7 = $$0.a(kj.aH);
+      il<eel> $$8 = $$7.b(ps.a);
+      il<eel> $$9 = $$7.b(b);
+      il<eel> $$10 = $$7.b(c);
+      $$0.a(
+         a,
+         new eel(
+            $$8,
+            ImmutableList.of(
+               Pair.of(eej.a("village/desert/town_centers/desert_meeting_point_1"), 98),
+               Pair.of(eej.a("village/desert/town_centers/desert_meeting_point_2"), 98),
+               Pair.of(eej.a("village/desert/town_centers/desert_meeting_point_3"), 49),
+               Pair.of(eej.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
+               Pair.of(eej.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
+               Pair.of(eej.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
+            ),
+            eel.a.b
+         )
+      );
+      ps.a(
+         $$0,
+         "village/desert/streets",
+         new eel(
+            $$9,
+            ImmutableList.of(
+               Pair.of(eej.a("village/desert/streets/corner_01"), 3),
+               Pair.of(eej.a("village/desert/streets/corner_02"), 3),
+               Pair.of(eej.a("village/desert/streets/straight_01"), 4),
+               Pair.of(eej.a("village/desert/streets/straight_02"), 4),
+               Pair.of(eej.a("village/desert/streets/straight_03"), 3),
+               Pair.of(eej.a("village/desert/streets/crossroad_01"), 3),
+               Pair.of(eej.a("village/desert/streets/crossroad_02"), 3),
+               Pair.of(eej.a("village/desert/streets/crossroad_03"), 3),
+               Pair.of(eej.a("village/desert/streets/square_01"), 3),
+               Pair.of(eej.a("village/desert/streets/square_02"), 3),
+               Pair.of(eej.a("village/desert/streets/turn_01"), 3)
+            ),
+            eel.a.a
+         )
+      );
+      ps.a(
+         $$0,
+         "village/desert/zombie/streets",
+         new eel(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eej.a("village/desert/zombie/streets/corner_01"), 3),
+               Pair.of(eej.a("village/desert/zombie/streets/corner_02"), 3),
+               Pair.of(eej.a("village/desert/zombie/streets/straight_01"), 4),
+               Pair.of(eej.a("village/desert/zombie/streets/straight_02"), 4),
+               Pair.of(eej.a("village/desert/zombie/streets/straight_03"), 3),
+               Pair.of(eej.a("village/desert/zombie/streets/crossroad_01"), 3),
+               Pair.of(eej.a("village/desert/zombie/streets/crossroad_02"), 3),
+               Pair.of(eej.a("village/desert/zombie/streets/crossroad_03"), 3),
+               Pair.of(eej.a("village/desert/zombie/streets/square_01"), 3),
+               Pair.of(eej.a("village/desert/zombie/streets/square_02"), 3),
+               Pair.of(eej.a("village/desert/zombie/streets/turn_01"), 3)
+            ),
+            eel.a.a
+         )
+      );
+      ps.a(
+         $$0,
+         "village/desert/houses",
+         new eel(
+            $$9,
+            ImmutableList.of(
+               Pair.of(eej.a("village/desert/houses/desert_small_house_1"), 2),
+               Pair.of(eej.a("village/desert/houses/desert_small_house_2"), 2),
+               Pair.of(eej.a("village/desert/houses/desert_small_house_3"), 2),
+               Pair.of(eej.a("village/desert/houses/desert_small_house_4"), 2),
+               Pair.of(eej.a("village/desert/houses/desert_small_house_5"), 2),
+               Pair.of(eej.a("village/desert/houses/desert_small_house_6"), 1),
+               Pair.of(eej.a("village/desert/houses/desert_small_house_7"), 2),
+               Pair.of(eej.a("village/desert/houses/desert_small_house_8"), 2),
+               Pair.of(eej.a("village/desert/houses/desert_medium_house_1"), 2),
+               Pair.of(eej.a("village/desert/houses/desert_medium_house_2"), 2),
+               Pair.of(eej.a("village/desert/houses/desert_butcher_shop_1"), 2),
+               Pair.of(eej.a("village/desert/houses/desert_tool_smith_1"), 2),
+               new Pair[]{
+                  Pair.of(eej.a("village/desert/houses/desert_fletcher_house_1"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_shepherd_house_1"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_armorer_1"), 1),
+                  Pair.of(eej.a("village/desert/houses/desert_fisher_1"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_tannery_1"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_cartographer_house_1"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_library_1"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_mason_1"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_weaponsmith_1"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_temple_1"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_temple_2"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_large_farm_1", $$6), 11),
+                  Pair.of(eej.a("village/desert/houses/desert_farm_1", $$6), 4),
+                  Pair.of(eej.a("village/desert/houses/desert_farm_2", $$6), 4),
+                  Pair.of(eej.a("village/desert/houses/desert_animal_pen_1"), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_animal_pen_2"), 2),
+                  Pair.of(eej.g(), 5)
+               }
+            ),
+            eel.a.b
+         )
+      );
+      ps.a(
+         $$0,
+         "village/desert/zombie/houses",
+         new eel(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eej.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
+               Pair.of(eej.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
+               Pair.of(eej.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
+               Pair.of(eej.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
+               Pair.of(eej.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
+               Pair.of(eej.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
+               Pair.of(eej.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
+               Pair.of(eej.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
+               Pair.of(eej.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
+               Pair.of(eej.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
+               Pair.of(eej.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
+               Pair.of(eej.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
+               new Pair[]{
+                  Pair.of(eej.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_armorer_1", $$5), 1),
+                  Pair.of(eej.a("village/desert/houses/desert_fisher_1", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_tannery_1", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_library_1", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_mason_1", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_temple_1", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_temple_2", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_large_farm_1", $$5), 7),
+                  Pair.of(eej.a("village/desert/houses/desert_farm_1", $$5), 4),
+                  Pair.of(eej.a("village/desert/houses/desert_farm_2", $$5), 4),
+                  Pair.of(eej.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
+                  Pair.of(eej.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
+                  Pair.of(eej.g(), 5)
+               }
+            ),
+            eel.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new eel(
+            $$8,
+            ImmutableList.of(Pair.of(eej.a("village/desert/terminators/terminator_01"), 1), Pair.of(eej.a("village/desert/terminators/terminator_02"), 1)),
+            eel.a.a
+         )
+      );
+      $$0.a(
+         c,
+         new eel(
+            $$8,
+            ImmutableList.of(
+               Pair.of(eej.a("village/desert/terminators/terminator_01"), 1), Pair.of(eej.a("village/desert/zombie/terminators/terminator_02"), 1)
+            ),
+            eel.a.a
+         )
+      );
+      ps.a(
+         $$0,
+         "village/desert/decor",
+         new eel(
+            $$8,
+            ImmutableList.of(Pair.of(eej.a("village/desert/desert_lamp_1"), 10), Pair.of(eej.a($$2), 4), Pair.of(eej.a($$3), 4), Pair.of(eej.g(), 10)),
+            eel.a.b
+         )
+      );
+      ps.a(
+         $$0,
+         "village/desert/zombie/decor",
+         new eel(
+            $$8,
+            ImmutableList.of(Pair.of(eej.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(eej.a($$2), 4), Pair.of(eej.a($$3), 4), Pair.of(eej.g(), 10)),
+            eel.a.b
+         )
+      );
+      ps.a(
+         $$0,
+         "village/desert/villagers",
+         new eel(
+            $$8,
+            ImmutableList.of(
+               Pair.of(eej.a("village/desert/villagers/nitwit"), 1),
+               Pair.of(eej.a("village/desert/villagers/baby"), 1),
+               Pair.of(eej.a("village/desert/villagers/unemployed"), 10)
+            ),
+            eel.a.b
+         )
+      );
+      ps.a($$0, "village/desert/camel", new eel($$8, ImmutableList.of(Pair.of(eej.a("village/desert/camel_spawn"), 1)), eel.a.b));
+      ps.a(
+         $$0,
+         "village/desert/zombie/villagers",
+         new eel(
+            $$8,
+            ImmutableList.of(Pair.of(eej.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(eej.a("village/desert/zombie/villagers/unemployed"), 10)),
+            eel.a.b
+         )
+      );
    }
 }

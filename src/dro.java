@@ -1,22 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class dro {
-   public static final Codec<dro> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwz.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
-               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dro::new)
-   );
-   public final double b;
-   public final double c;
-   public final int d;
+   private final apf a;
 
-   public dro(double $$0, double $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public dro(apf $$0) {
+      this.a = $$0;
+   }
+
+   public void a(il<drn> $$0, epr $$1, drn.a $$2) {
+      int $$3 = $$0.a().a();
+      ib $$4 = ib.a($$1);
+      int $$5 = je.a($$4.u() - $$3);
+      int $$6 = je.a($$4.v() - $$3);
+      int $$7 = je.a($$4.w() - $$3);
+      int $$8 = je.a($$4.u() + $$3);
+      int $$9 = je.a($$4.v() + $$3);
+      int $$10 = je.a($$4.w() + $$3);
+      List<drn.b> $$11 = new ArrayList<>();
+      drq.a $$12 = ($$4x, $$5x) -> {
+         if ($$4x.c() == drp.a.b) {
+            $$11.add(new drn.b($$0, $$1, $$2, $$4x, $$5x));
+         } else {
+            $$4x.a(this.a, $$0, $$2, $$1);
+         }
+      };
+      boolean $$13 = false;
+
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
+            dov $$16 = this.a.l().a($$14, $$15);
+            if ($$16 != null) {
+               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
+                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
+               }
+            }
+         }
+      }
+
+      if (!$$11.isEmpty()) {
+         this.a($$11);
+      }
+
+      if ($$13) {
+         aew.a(this.a, $$0, $$1);
+      }
+   }
+
+   private void a(List<drn.b> $$0) {
+      Collections.sort($$0);
+
+      for (drn.b $$1 : $$0) {
+         drp $$2 = $$1.d();
+         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+      }
    }
 }

@@ -1,15 +1,23 @@
-public class dld extends djs {
-   public dld(ib $$0, dme $$1) {
-      super(djn.c, $$0, $$1);
+public class dld extends dlp {
+   private static final int a = 60;
+   private static final int b = 9;
+
+   public dld(ib $$0, dmz $$1) {
+      super(dki.i, $$0, $$1);
    }
 
    @Override
-   protected void a(cwe $$0, ib $$1, dme $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 != $$4) {
-         czf $$5 = $$2.b();
-         $$0.a($$1, $$5);
-         $$0.a($$1.d(), $$5);
-      }
+   public int b() {
+      return 9;
+   }
+
+   @Override
+   public int c() {
+      return 60;
+   }
+
+   @Override
+   public atx d() {
+      return aty.Bv;
    }
 }

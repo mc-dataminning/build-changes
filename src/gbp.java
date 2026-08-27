@@ -1,35 +1,37 @@
-public class gbp extends gbx<cij> {
-   private static final ajc a = new ajc("textures/entity/enderdragon/dragon_fireball.png");
-   private static final fwy f = fwy.e(a);
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gbp(gby.a $$0) {
-      super($$0);
+public class gbp implements gbc.a {
+   private static final int a = 60;
+   private final Set<je> b = Sets.newHashSet();
+
+   gbp() {
    }
 
-   protected int a(cij $$0, ib $$1) {
-      return 15;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public void a(cij $$0, float $$1, float $$2, etd $$3, fwq $$4, int $$5) {
-      $$3.a();
-      $$3.b(2.0F, 2.0F, 2.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      etd.a $$6 = $$3.c();
-      eth $$7 = $$4.getBuffer(f);
-      a($$7, $$6, $$5, 0.0F, 0, 0, 1);
-      a($$7, $$6, $$5, 1.0F, 0, 1, 1);
-      a($$7, $$6, $$5, 1.0F, 1, 1, 0);
-      a($$7, $$6, $$5, 0.0F, 1, 0, 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(je $$0) {
+      this.b.add($$0);
    }
 
-   private static void a(eth $$0, etd.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(255, 255, 255, 255).a((float)$$5, (float)$$6).c(ghq.d).b($$2).b($$1, 0.0F, 1.0F, 0.0F).e();
+   public void b(je $$0) {
+      this.b.remove($$0);
    }
 
-   public ajc a(cij $$0) {
-      return a;
+   @Override
+   public void a(etz $$0, fxq $$1, double $$2, double $$3, double $$4) {
+      ib $$5 = ib.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(etz $$0, fxq $$1, je $$2) {
+      gbc.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

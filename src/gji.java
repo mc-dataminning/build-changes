@@ -1,22 +1,29 @@
-public class gji {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public gji(int $$0) {
-      this($$0, -1);
+public class gji implements gjd {
+   public static final Codec<gji> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gji::new)
+   );
+   private final String c;
+   private final String d;
+
+   public gji(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public gji(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Override
+   public void a(aso $$0, gjd.a $$1) {
+      aja $$2 = new aja("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         ajh $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   @Override
+   public gjf a() {
+      return gjg.b;
    }
 }

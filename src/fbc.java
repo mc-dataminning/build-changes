@@ -1,213 +1,127 @@
-import java.util.function.Consumer;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fbc extends fae {
-   private static final int a = 1;
-   private static final int b = -3092272;
-   private static final String c = "_";
-   private static final int d = -2039584;
-   private static final int e = -857677600;
-   private static final int f = 300;
-   private final ezv m;
-   private final vs n;
-   private final fbf o;
-   private long p = ac.b();
+public abstract class fbc extends fbe {
+   private static final ajh a = new ajh("widget/slider");
+   private static final ajh d = new ajh("widget/slider_highlighted");
+   private static final ajh e = new ajh("widget/slider_handle");
+   private static final ajh f = new ajh("widget/slider_handle_highlighted");
+   protected static final int b = 2;
+   private static final int m = 8;
+   private static final int n = 4;
+   protected double c;
+   private boolean o;
 
-   public fbc(ezv $$0, int $$1, int $$2, int $$3, int $$4, vs $$5, vs $$6) {
-      super($$1, $$2, $$3, $$4, $$6);
-      this.m = $$0;
-      this.n = $$5;
-      this.o = new fbf($$0, $$3 - this.b());
-      this.o.a(this::k);
+   public fbc(int $$0, int $$1, int $$2, int $$3, vu $$4, double $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
    }
 
-   public void a(int $$0) {
-      this.o.a($$0);
+   private ajh d() {
+      return this.aJ_() && !this.o ? d : a;
    }
 
-   public void b(Consumer<String> $$0) {
-      this.o.a($$0);
-   }
-
-   public void a(String $$0) {
-      this.o.a($$0);
-   }
-
-   public String j() {
-      return this.o.c();
+   private ajh e() {
+      return !this.i && !this.o ? e : f;
    }
 
    @Override
-   public void a(fef $$0) {
-      $$0.a(fee.a, vs.a("gui.narrate.editBox", this.x(), this.j()));
+   protected wi aL_() {
+      return vu.a("gui.narrate.slider", this.x());
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.b($$0, $$1) && $$2 == 0) {
-         this.o.a(fgh.v());
-         this.e($$0, $$1);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else if (this.b($$0, $$1) && $$2 == 0) {
-         this.o.a(true);
-         this.e($$0, $$1);
-         this.o.a(fgh.v());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.o.e($$0);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      if (this.k && this.aK_() && aa.a($$0)) {
-         this.o.b(Character.toString($$0));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   protected void c(ezx $$0, int $$1, int $$2, float $$3) {
-      String $$4 = this.o.c();
-      if ($$4.isEmpty() && !this.aK_()) {
-         $$0.a(this.m, this.n, this.B() + this.a(), this.C() + this.a(), this.g - this.b(), -857677600);
-      } else {
-         int $$5 = this.o.d();
-         boolean $$6 = this.aK_() && (ac.b() - this.p) / 300L % 2L == 0L;
-         boolean $$7 = $$5 < $$4.length();
-         int $$8 = 0;
-         int $$9 = 0;
-         int $$10 = this.C() + this.a();
-
-         for (fbf.a $$11 : this.o.h()) {
-            boolean $$12 = this.a($$10, $$10 + 9);
-            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.B() + this.a(), $$10, -2039584) - 1;
-                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
-                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
-               }
-            } else {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.B() + this.a(), $$10, -2039584) - 1;
-               }
-
-               $$9 = $$10;
-            }
-
-            $$10 += 9;
-         }
-
-         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
-            $$0.b(this.m, "_", $$8, $$9, -3092272);
-         }
-
-         if (this.o.i()) {
-            fbf.a $$13 = this.o.e();
-            int $$14 = this.B() + this.a();
-            $$10 = this.C() + this.a();
-
-            for (fbf.a $$15 : this.o.h()) {
-               if ($$13.a() > $$15.b()) {
-                  $$10 += 9;
-               } else {
-                  if ($$15.a() > $$13.b()) {
-                     break;
-                  }
-
-                  if (this.a($$10, $$10 + 9)) {
-                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
-                     int $$17;
-                     if ($$13.b() > $$15.b()) {
-                        $$17 = this.g - this.a();
-                     } else {
-                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
-                     }
-
-                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
-                  }
-
-                  $$10 += 9;
-               }
-            }
+   public void a(ffc $$0) {
+      $$0.a(ffb.a, this.aL_());
+      if (this.j) {
+         if (this.aJ_()) {
+            $$0.a(ffb.d, vu.c("narration.slider.usage.focused"));
+         } else {
+            $$0.a(ffb.d, vu.c("narration.slider.usage.hovered"));
          }
       }
    }
 
    @Override
-   protected void a(ezx $$0) {
-      super.a($$0);
-      if (this.o.b()) {
-         int $$1 = this.o.a();
-         vs $$2 = vs.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
-         $$0.b(this.m, $$2, this.B() + this.g - this.m.a($$2), this.C() + this.h + 4, 10526880);
-      }
+   public void b(fat $$0, int $$1, int $$2, float $$3) {
+      ezg $$4 = ezg.Q();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.enableDepthTest();
+      $$0.a(this.d(), this.B(), this.C(), this.w(), this.u());
+      $$0.a(this.e(), this.B() + (int)(this.c * (double)(this.g - 8)), this.C(), 8, this.u());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, 2, $$5 | aww.f(this.l * 255.0F) << 24);
    }
 
    @Override
-   public int g() {
-      return 9 * this.o.f();
-   }
-
-   @Override
-   protected boolean e() {
-      return (double)this.o.f() > this.l();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0 / 2.0;
-   }
-
-   private void b(ezx $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.a(fwy.F(), $$1, $$2, $$3, $$4, -16776961);
-   }
-
-   private void k() {
-      double $$0 = this.c();
-      fbf.a $$1 = this.o.c((int)($$0 / 9.0));
-      if (this.o.d() <= $$1.a()) {
-         $$0 = (double)(this.o.g() * 9);
-      } else {
-         fbf.a $$2 = this.o.c((int)(($$0 + (double)this.h) / 9.0) - 1);
-         if (this.o.d() > $$2.b()) {
-            $$0 = (double)(this.o.g() * 9 - this.h + 9 + this.b());
-         }
-      }
-
+   public void a(double $$0, double $$1) {
       this.a($$0);
-   }
-
-   private double l() {
-      return (double)(this.h - this.b()) / 9.0;
-   }
-
-   private void e(double $$0, double $$1) {
-      double $$2 = $$0 - (double)this.B() - (double)this.a();
-      double $$3 = $$1 - (double)this.C() - (double)this.a() + this.c();
-      this.o.a($$2, $$3);
    }
 
    @Override
    public void a(boolean $$0) {
       super.a($$0);
-      if ($$0) {
-         this.p = ac.b();
+      if (!$$0) {
+         this.o = false;
+      } else {
+         ezd $$1 = ezg.Q().aX();
+         if ($$1 == ezd.b || $$1 == ezd.d) {
+            this.o = true;
+         }
       }
    }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (ffh.a($$0)) {
+         this.o = !this.o;
+         return true;
+      } else {
+         if (this.o) {
+            boolean $$3 = $$0 == 263;
+            if ($$3 || $$0 == 262) {
+               float $$4 = $$3 ? -1.0F : 1.0F;
+               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private void a(double $$0) {
+      this.b(($$0 - (double)(this.B() + 4)) / (double)(this.g - 8));
+   }
+
+   private void b(double $$0) {
+      double $$1 = this.c;
+      this.c = aww.a($$0, 0.0, 1.0);
+      if ($$1 != this.c) {
+         this.a();
+      }
+
+      this.b();
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.a($$0);
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(gnq $$0) {
+   }
+
+   @Override
+   public void a_(double $$0, double $$1) {
+      super.a(ezg.Q().ak());
+   }
+
+   protected abstract void b();
+
+   protected abstract void a();
 }

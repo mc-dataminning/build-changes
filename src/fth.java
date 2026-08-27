@@ -1,286 +1,74 @@
-public class fth extends fve {
-   private final ehq b;
-   protected boolean a;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-   fth(fra $$0, double $$1, double $$2, double $$3, ehq $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.b = $$4;
+public class fth extends ftc {
+   final Supplier<gjy> f;
+
+   fth(UUID $$0, Instant $$1, UUID $$2, Supplier<gjy> $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
    }
 
-   protected ehq g() {
-      return this.b;
+   public Supplier<gjy> a() {
+      return this.f;
+   }
+
+   public fth c() {
+      fth $$0 = new fth(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      return $$0;
    }
 
    @Override
-   public fui b() {
-      return fui.b;
+   public fhf a(fhf $$0, ftg $$1) {
+      return new flk($$0, $$1, this);
    }
 
-   @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      this.h();
-      if (!this.o) {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.i();
-         if (!this.o) {
-            this.j *= 0.98F;
-            this.k *= 0.98F;
-            this.l *= 0.98F;
-            if (this.b != ehs.a) {
-               ib $$0 = ib.a(this.g, this.h, this.i);
-               ehr $$1 = this.c.b_($$0);
-               if ($$1.a() == this.b && this.h < (double)((float)$$0.v() + $$1.a((cvk)this.c, $$0))) {
-                  this.k();
-               }
-            }
-         }
+   public static class a extends ftc.a<fth> {
+      public a(fth $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
-   }
 
-   protected void h() {
-      if (this.t-- <= 0) {
-         this.k();
-      }
-   }
-
-   protected void i() {
-   }
-
-   public static fve a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.b($$1, $$2, $$3, $$4, ehs.c, kb.n);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fve b(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.e($$1, $$2, $$3, $$4, ehs.c, kb.aj);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fve c(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      return new fth.a($$1, $$2, $$3, $$4, ehs.e, kb.k);
-   }
-
-   public static fve d(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.e($$1, $$2, $$3, $$4, ehs.e, kb.l);
-      $$8.a(1.0F, 0.2857143F, 0.083333336F);
-      return $$8;
-   }
-
-   public static fve e(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.c($$1, $$2, $$3, $$4, ehs.e);
-      $$8.a(1.0F, 0.2857143F, 0.083333336F);
-      return $$8;
-   }
-
-   public static fve f(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth.b $$8 = new fth.b($$1, $$2, $$3, $$4, ehs.a, kb.at);
-      $$8.u *= 0.01F;
-      $$8.t = 100;
-      $$8.a(0.622F, 0.508F, 0.082F);
-      return $$8;
-   }
-
-   public static fve g(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.g($$1, $$2, $$3, $$4, ehs.a, kb.au);
-      $$8.u = 0.01F;
-      $$8.a(0.582F, 0.448F, 0.082F);
-      return $$8;
-   }
-
-   public static fve h(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.c($$1, $$2, $$3, $$4, ehs.a);
-      $$8.t = (int)(128.0 / (Math.random() * 0.8 + 0.2));
-      $$8.a(0.522F, 0.408F, 0.082F);
-      return $$8;
-   }
-
-   public static fve i(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.b($$1, $$2, $$3, $$4, ehs.c, kb.aL);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fve j(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.d($$1, $$2, $$3, $$4, ehs.c, kb.aj);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fve k(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      return new fth.a($$1, $$2, $$3, $$4, ehs.e, kb.aJ);
-   }
-
-   public static fve l(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.d($$1, $$2, $$3, $$4, ehs.e, kb.l);
-      $$8.a(1.0F, 0.2857143F, 0.083333336F);
-      return $$8;
-   }
-
-   public static fve m(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.f($$1, $$2, $$3, $$4, ehs.a);
-      $$8.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      $$8.u = 0.007F;
-      $$8.a(0.92F, 0.782F, 0.72F);
-      return $$8;
-   }
-
-   public static fve n(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      int $$8 = (int)(64.0F / awm.b($$1.F_(), 0.1F, 0.9F));
-      fth $$9 = new fth.f($$1, $$2, $$3, $$4, ehs.a, $$8);
-      $$9.u = 0.005F;
-      $$9.a(0.32F, 0.5F, 0.22F);
-      return $$9;
-   }
-
-   public static fve o(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth.b $$8 = new fth.b($$1, $$2, $$3, $$4, ehs.a, kb.aC);
-      $$8.a = true;
-      $$8.u *= 0.01F;
-      $$8.t = 100;
-      $$8.a(0.51171875F, 0.03125F, 0.890625F);
-      return $$8;
-   }
-
-   public static fve p(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.e($$1, $$2, $$3, $$4, ehs.a, kb.aD);
-      $$8.a = true;
-      $$8.u = 0.01F;
-      $$8.a(0.51171875F, 0.03125F, 0.890625F);
-      return $$8;
-   }
-
-   public static fve q(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fth $$8 = new fth.c($$1, $$2, $$3, $$4, ehs.a);
-      $$8.a = true;
-      $$8.t = (int)(28.0 / (Math.random() * 0.8 + 0.2));
-      $$8.a(0.51171875F, 0.03125F, 0.890625F);
-      return $$8;
-   }
-
-   static class a extends fth.b {
-      a(fra $$0, double $$1, double $$2, double $$3, ehq $$4, jz $$5) {
-         super($$0, $$1, $$2, $$3, $$4, $$5);
+      public a(UUID $$0, Supplier<gjy> $$1, AbuseReportLimits $$2) {
+         super(new fth(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
       }
 
       @Override
-      protected void h() {
-         this.v = 1.0F;
-         this.w = 16.0F / (float)(40 - this.t + 16);
-         this.x = 4.0F / (float)(40 - this.t + 8);
-         super.h();
-      }
-   }
-
-   static class b extends fth {
-      private final jz b;
-
-      b(fra $$0, double $$1, double $$2, double $$3, ehq $$4, jz $$5) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.b = $$5;
-         this.u *= 0.02F;
-         this.t = 40;
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
       }
 
+      @Nullable
       @Override
-      protected void h() {
-         if (this.t-- <= 0) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, this.j, this.k, this.l);
+      public ftc.b c() {
+         if (this.a.e == null) {
+            return ftc.b.a;
+         } else {
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ftc.b.d : null;
          }
       }
 
       @Override
-      protected void i() {
-         this.j *= 0.02;
-         this.k *= 0.02;
-         this.l *= 0.02;
-      }
-   }
-
-   static class c extends fth {
-      c(fra $$0, double $$1, double $$2, double $$3, ehq $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      }
-   }
-
-   static class d extends fth.e {
-      d(fra $$0, double $$1, double $$2, double $$3, ehq $$4, jz $$5) {
-         super($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
-            ato $$0 = this.g() == ehs.e ? atp.hj : atp.hk;
-            float $$1 = awm.b(this.r, 0.3F, 1.0F);
-            this.c.a(this.g, this.h, this.i, $$0, atq.e, $$1, 1.0F, false);
-         }
-      }
-   }
-
-   static class e extends fth.f {
-      protected final jz b;
-
-      e(fra $$0, double $$1, double $$2, double $$3, ehq $$4, jz $$5) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.b = $$5;
-      }
-
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   static class f extends fth {
-      f(fra $$0, double $$1, double $$2, double $$3, ehq $$4) {
-         this($$0, $$1, $$2, $$3, $$4, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
-      }
-
-      f(fra $$0, double $$1, double $$2, double $$3, ehq $$4, int $$5) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.t = $$5;
-      }
-
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-         }
-      }
-   }
-
-   static class g extends fth.e {
-      g(fra $$0, double $$1, double $$2, double $$3, ehq $$4, jz $$5) {
-         super($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
-            float $$0 = awm.b(this.r, 0.3F, 1.0F);
-            this.c.a(this.g, this.h, this.i, atp.bS, atq.e, $$0, 1.0F, false);
+      public Either<ftc.c, ftc.b> a(ftg $$0) {
+         ftc.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportedEntity $$3 = new ReportedEntity(this.a.c);
+            gjy $$4 = this.a.f.get();
+            String $$5 = $$4.b();
+            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
+            return Either.left(new ftc.c(this.a.a, ftf.b, $$6));
          }
       }
    }

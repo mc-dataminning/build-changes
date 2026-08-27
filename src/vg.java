@@ -1,3 +1,6 @@
-public interface vg extends uy {
-   void e();
+public interface vg extends va {
+   @Override
+   default yc a() {
+      return yc.a;
+   }
 }

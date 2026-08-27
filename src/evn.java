@@ -1,59 +1,154 @@
-import java.util.List;
+import com.google.gson.JsonObject;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public abstract class evn {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class evn extends evv {
+   public final boolean a;
+   public final boolean b;
+   public final boolean c;
+   public final boolean d;
+   public final int e;
+   public final boolean f;
+   public final boolean g;
+   public final int h;
+   public final int i;
+   private final String o;
+   public final String j;
+   public final evg.a k;
+   public long l;
+   @Nullable
+   public String m;
+   public boolean n;
+   private static final boolean p = false;
+   private static final boolean q = true;
+   private static final boolean r = true;
+   private static final boolean s = true;
+   private static final boolean t = true;
+   private static final int u = 0;
+   private static final boolean v = false;
+   private static final int w = 2;
+   private static final int x = 0;
+   private static final String y = "";
+   private static final String z = "";
+   private static final evg.a A = evg.a.a;
+   private static final long B = -1L;
+   private static final String C = null;
 
-   public evn(int $$0, int $$1, int $$2, int $$3) {
+   public evn(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, String $$9, String $$10, evg.a $$11) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
       this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.g = $$8;
+      this.o = $$9;
+      this.j = $$10;
+      this.k = $$11;
    }
 
-   public void a(ezx $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
+   public static evn a() {
+      return new evn(true, true, true, true, 0, false, 2, 0, false, "", "", A);
    }
 
-   protected abstract void a(ezx var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
+   public static evn b() {
+      evn $$0 = a();
+      $$0.a(true);
+      return $$0;
    }
 
-   public int b() {
-      return this.d + this.b;
+   public void a(boolean $$0) {
+      this.n = $$0;
    }
 
-   public abstract void a(int var1);
+   public static evn a(JsonObject $$0) {
+      evn $$1 = new evn(
+         exs.a("pvp", $$0, true),
+         exs.a("spawnAnimals", $$0, true),
+         exs.a("spawnMonsters", $$0, true),
+         exs.a("spawnNPCs", $$0, true),
+         exs.a("spawnProtection", $$0, 0),
+         exs.a("commandBlocks", $$0, false),
+         exs.a("difficulty", $$0, 2),
+         exs.a("gameMode", $$0, 0),
+         exs.a("forceGameMode", $$0, false),
+         exs.a("slotName", $$0, ""),
+         exs.a("version", $$0, ""),
+         evg.d(exs.a("compatibility", $$0, evg.a.a.name()))
+      );
+      $$1.l = exs.a("worldTemplateId", $$0, -1L);
+      $$1.m = exs.b("worldTemplateImage", $$0, C);
+      return $$1;
+   }
 
-   public static void a(ezx $$0, List<evn> $$1, goa<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (evn $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
+   public String a(int $$0) {
+      if (ac.b(this.o)) {
+         return this.n ? gke.a("mco.configure.world.slot.empty") : this.b($$0);
+      } else {
+         return this.o;
       }
    }
 
-   public static void a(goa<?> $$0, fbg.a<?> $$1, List<evn> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.l().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.a($$6);
-         int $$7 = $$0.q();
-         int $$8 = $$0.g($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
+   public String b(int $$0) {
+      return gke.a("mco.configure.world.slot", $$0);
+   }
 
-         for (evn $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
-            }
-         }
+   public String c() {
+      JsonObject $$0 = new JsonObject();
+      if (!this.a) {
+         $$0.addProperty("pvp", this.a);
       }
+
+      if (!this.b) {
+         $$0.addProperty("spawnAnimals", this.b);
+      }
+
+      if (!this.c) {
+         $$0.addProperty("spawnMonsters", this.c);
+      }
+
+      if (!this.d) {
+         $$0.addProperty("spawnNPCs", this.d);
+      }
+
+      if (this.e != 0) {
+         $$0.addProperty("spawnProtection", this.e);
+      }
+
+      if (this.f) {
+         $$0.addProperty("commandBlocks", this.f);
+      }
+
+      if (this.h != 2) {
+         $$0.addProperty("difficulty", this.h);
+      }
+
+      if (this.i != 0) {
+         $$0.addProperty("gameMode", this.i);
+      }
+
+      if (this.g) {
+         $$0.addProperty("forceGameMode", this.g);
+      }
+
+      if (!Objects.equals(this.o, "")) {
+         $$0.addProperty("slotName", this.o);
+      }
+
+      if (!Objects.equals(this.j, "")) {
+         $$0.addProperty("version", this.j);
+      }
+
+      if (this.k != A) {
+         $$0.addProperty("compatibility", this.k.name());
+      }
+
+      return $$0.toString();
+   }
+
+   public evn d() {
+      return new evn(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.o, this.j, this.k);
    }
 }

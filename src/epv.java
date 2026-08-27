@@ -1,19 +1,20 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
-
 public interface epv {
-   int a();
+   epv a = ($$0, $$1) -> false;
+   epv b = ($$0, $$1) -> !$$0 && !$$1;
+   epv c = ($$0, $$1) -> $$1 && !$$0;
+   epv d = ($$0, $$1) -> !$$0;
+   epv e = ($$0, $$1) -> $$0 && !$$1;
+   epv f = ($$0, $$1) -> !$$1;
+   epv g = ($$0, $$1) -> $$0 != $$1;
+   epv h = ($$0, $$1) -> !$$0 || !$$1;
+   epv i = ($$0, $$1) -> $$0 && $$1;
+   epv j = ($$0, $$1) -> $$0 == $$1;
+   epv k = ($$0, $$1) -> $$1;
+   epv l = ($$0, $$1) -> !$$0 || $$1;
+   epv m = ($$0, $$1) -> $$0;
+   epv n = ($$0, $$1) -> $$0 || !$$1;
+   epv o = ($$0, $$1) -> $$0 || $$1;
+   epv p = ($$0, $$1) -> true;
 
-   boolean b();
-
-   @Nullable
-   xi c();
-
-   default wg a(xi $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
-   }
-
-   static wg a(@Nullable epv $$0, xi $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
-   }
+   boolean apply(boolean var1, boolean var2);
 }

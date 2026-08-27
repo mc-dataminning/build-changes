@@ -1,21 +1,27 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class btu {
-   private static final int a = 36;
-
-   public static bqq<box> a() {
-      return buc.a(
-         (Function<buc.b<box>, ? extends App<buc.c<box>, buf<box>>>)($$0 -> $$0.group($$0.a(bya.x), $$0.a(bya.y), $$0.a(bya.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<box>a($$2).filter($$1xx -> $$1xx.f((bof)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.dM().a($$4.Y(), $$4.X());
+   public static brh<bpo> a(Function<bpo, Optional<bsu>> $$0, Predicate<bpo> $$1, int $$2, int $$3, float $$4) {
+      return but.a(
+         (Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$5 -> $$5.group($$5.a(byr.n), $$5.a(byr.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bsu> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bsu $$11 = $$10.get();
+                        if ($$8.dk().a((iv)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bsu $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new byu($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
                      }
-
-                     return true;
                   }))
       );
    }

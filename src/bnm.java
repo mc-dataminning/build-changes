@@ -1,22 +1,19 @@
-class bnm extends bnq {
-   protected bnm(bnr $$0, int $$1) {
-      super($$0, $$1);
+public final class bnm implements bng {
+   private final vu a;
+   private final cmu b;
+
+   public bnm(cmu $$0, vu $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public vu O_() {
+      return this.a;
    }
 
    @Override
-   public boolean a(box $$0, int $$1) {
-      if ($$0 instanceof apb $$2 && !$$0.P_()) {
-         apa $$3 = $$2.z();
-         if ($$3.aj() != bmi.a && $$3.c($$0.dj())) {
-            $$3.z().a($$2);
-         }
-      }
-
-      return true;
+   public clo createMenu(int $$0, cir $$1, cis $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

@@ -1,62 +1,66 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
+import java.util.function.Predicate;
 
-public class eln {
-   public static final BiFunction<cpq, ejy, cpq> a = ($$0, $$1) -> $$0;
-   private static final Codec<ell> D = kh.G.q().dispatch("function", ell::b, elm::a);
-   public static final Codec<ell> b = avu.a((Supplier<Codec<ell>>)(() -> avu.e(D, elp.b)));
-   public static final elm c = a("set_count", elw.a);
-   public static final elm d = a("enchant_with_levels", ele.a);
-   public static final elm e = a("enchant_randomly", eld.a);
-   public static final elm f = a("set_enchantments", elu.a);
-   public static final elm g = a("set_nbt", ema.a);
-   public static final elm h = a("furnace_smelt", emd.a);
-   public static final elm i = a("looting_enchant", elo.b);
-   public static final elm j = a("set_damage", elx.a);
-   public static final elm k = a("set_attributes", elq.a);
-   public static final elm l = a("set_name", elz.a);
-   public static final elm m = a("exploration_map", elf.f);
-   public static final elm n = a("set_stew_effect", emc.a);
-   public static final elm o = a("copy_name", elb.a);
-   public static final elm p = a("set_contents", els.a);
-   public static final elm q = a("limit_count", elj.a);
-   public static final elm r = a("apply_bonus", eky.a);
-   public static final elm s = a("set_loot_table", elt.a);
-   public static final elm t = a("explosion_decay", ekz.a);
-   public static final elm u = a("set_lore", ely.a);
-   public static final elm v = a("fill_player_head", elg.a);
-   public static final elm w = a("copy_nbt", elc.a);
-   public static final elm x = a("copy_state", ela.a);
-   public static final elm y = a("set_banner_pattern", elr.a);
-   public static final elm z = a("set_potion", emb.a);
-   public static final elm A = a("set_instrument", elv.a);
-   public static final elm B = a("reference", elh.a);
-   public static final elm C = a("sequence", elp.a);
+public abstract class eln implements elf {
+   protected final List<ent> e;
+   private final Predicate<eku> a;
 
-   private static elm a(String $$0, Codec<? extends ell> $$1) {
-      return ix.a(kh.G, new ajc($$0), new elm($$1));
+   protected eln(List<ent> $$0) {
+      this.e = $$0;
+      this.a = ac.a($$0);
    }
 
-   public static BiFunction<cpq, ejy, cpq> a(List<? extends BiFunction<cpq, ejy, cpq>> $$0) {
-      List<BiFunction<cpq, ejy, cpq>> $$1 = List.copyOf($$0);
+   protected static <T extends eln> P1<Mu<T>, List<ent>> a(Instance<T> $$0) {
+      return $$0.group(awe.a(env.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<cpq, ejy, cpq> $$2 = $$1.get(0);
-            BiFunction<cpq, ejy, cpq> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
-         }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<cpq, ejy, cpq> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
-         }
+   public void a(eld $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
+   }
 
-         return $$1x;
-      };
-      };
+   protected final boolean a(eku $$0) {
+      return this.a.test($$0);
+   }
+
+   public abstract elo a();
+
+   public abstract static class a<T extends eln.a<T>> implements enm<T> {
+      private final Builder<ent> a = ImmutableList.builder();
+
+      protected abstract T aE_();
+
+      public T a(ent.a $$0) {
+         this.a.add($$0.build());
+         return this.aE_();
+      }
+
+      public final T e() {
+         return this.aE_();
+      }
+
+      protected List<ent> f() {
+         return this.a.build();
+      }
+
+      public ele.a a(eln.a<?> $$0) {
+         return new ele.a(this, $$0);
+      }
+
+      public elj.a b(eln.a<?> $$0) {
+         return new elj.a(this, $$0);
+      }
+
+      public elr.a c(eln.a<?> $$0) {
+         return new elr.a(this, $$0);
+      }
+
+      public abstract eln b();
    }
 }

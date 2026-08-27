@@ -1,55 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Set;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
 
 public class bet extends DataFix {
-   private static final Set<String> a = ImmutableSet.of(
-      "minecraft:andesite_wall",
-      "minecraft:brick_wall",
-      "minecraft:cobblestone_wall",
-      "minecraft:diorite_wall",
-      "minecraft:end_stone_brick_wall",
-      "minecraft:granite_wall",
-      new String[]{
-         "minecraft:mossy_cobblestone_wall",
-         "minecraft:mossy_stone_brick_wall",
-         "minecraft:nether_brick_wall",
-         "minecraft:prismarine_wall",
-         "minecraft:red_nether_brick_wall",
-         "minecraft:red_sandstone_wall",
-         "minecraft:sandstone_wall",
-         "minecraft:stone_brick_wall"
-      }
-   );
-
-   public bet(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bet(Schema $$0) {
+      super($$0, true);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("WallPropertyFix", this.getInputSchema().getType(bdt.u), $$0 -> $$0.update(DSL.remainderFinder(), bet::a));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(beh.C);
+      Type<?> $$1 = this.getOutputSchema().getType(beh.C);
+      OpticFinder<?> $$2 = $$0.findField("SpawnData");
+      Type<?> $$3 = $$1.findField("SpawnData").type();
+      OpticFinder<?> $$4 = $$0.findField("SpawnPotentials");
+      Type<?> $$5 = $$1.findField("SpawnPotentials").type();
+      return this.fixTypeEverywhereTyped(
+         "Fix mob spawner data structure",
+         $$0,
+         $$1,
+         $$4x -> $$4x.updateTyped($$2, $$3, $$1xx -> this.a($$3, $$1xx)).updateTyped($$4, $$5, $$1xx -> this.b($$5, $$1xx))
+      );
    }
 
-   private static String a(String $$0) {
-      return "true".equals($$0) ? "low" : "none";
+   private <T> Typed<T> a(Type<T> $$0, Typed<?> $$1) {
+      DynamicOps<?> $$2 = $$1.getOps();
+      return new Typed($$0, $$2, Pair.of($$1.getValue(), new Dynamic($$2)));
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1) {
-      return $$0.update($$1, $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().result().map(bet::a).map($$0x::createString), $$0x));
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Name").asString().result().filter(a::contains).isPresent();
-      return !$$1 ? $$0 : $$0.update("Properties", $$0x -> {
-         Dynamic<?> $$1x = a($$0x, "east");
-         $$1x = a((Dynamic<T>)$$1x, "west");
-         $$1x = a((Dynamic<T>)$$1x, "north");
-         return a((Dynamic<T>)$$1x, "south");
-      });
+   private <T> Typed<T> b(Type<T> $$0, Typed<?> $$1) {
+      DynamicOps<?> $$2 = $$1.getOps();
+      List<?> $$3 = (List<?>)$$1.getValue();
+      List<?> $$4 = $$3.stream().map($$1x -> {
+         Pair<Object, Dynamic<?>> $$2x = (Pair<Object, Dynamic<?>>)$$1x;
+         int $$3x = ((Dynamic)$$2x.getSecond()).get("Weight").asNumber().result().orElse(1).intValue();
+         Dynamic<?> $$4x = new Dynamic($$2);
+         $$4x = $$4x.set("weight", $$4x.createInt($$3x));
+         Dynamic<?> $$5 = ((Dynamic)$$2x.getSecond()).remove("Weight").remove("Entity");
+         return Pair.of(Pair.of($$2x.getFirst(), $$5), $$4x);
+      }).toList();
+      return new Typed($$0, $$2, $$4);
    }
 }

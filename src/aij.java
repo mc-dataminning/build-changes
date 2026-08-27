@@ -1,20 +1,12 @@
-public interface aij<T> {
-   xq<? super vd, T> codec();
+public class aij {
+   public static final yd<aif> a = a("status_response");
+   public static final yd<aii> b = b("status_request");
 
-   default aii<T> a(int $$0) {
-      return new aii<>($$0, this);
+   private static <T extends yb<aie>> yd<T> a(String $$0) {
+      return new yd<>(yc.b, new ajh($$0));
    }
 
-   T copy(T var1);
-
-   static <T> aij<T> a(xq<? super vd, T> $$0) {
-      return () -> $$0;
-   }
-
-   public interface a<T> extends aij<T> {
-      @Override
-      default T copy(T $$0) {
-         return $$0;
-      }
+   private static <T extends yb<aih>> yd<T> b(String $$0) {
+      return new yd<>(yc.a, new ajh($$0));
    }
 }

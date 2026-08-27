@@ -1,88 +1,48 @@
-public class agm implements xz<aev> {
-   public static final xq<us, agm> a = xz.a(agm::a, agm::new);
+public class agm implements yb<aez> {
+   public static final xs<uu, agm> a = yb.a(agm::a, agm::new);
    private static final int b = 1;
    private static final int c = 2;
    private static final int d = 4;
    private final ib e;
-   private final dkz.a f;
-   private final dno g;
-   private final String h;
-   private final ib i;
-   private final jf j;
-   private final deb k;
-   private final dfr l;
-   private final String m;
-   private final boolean n;
-   private final boolean o;
-   private final boolean p;
-   private final float q;
-   private final long r;
+   private final String f;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final dkq.a j;
 
-   public agm(
-      ib $$0, dkz.a $$1, dno $$2, String $$3, ib $$4, jf $$5, deb $$6, dfr $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
-   ) {
+   public agm(ib $$0, String $$1, dkq.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$12;
-      this.r = $$13;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$2;
    }
 
-   private agm(us $$0) {
+   private agm(uu $$0) {
       this.e = $$0.e();
-      this.f = $$0.b(dkz.a.class);
-      this.g = $$0.b(dno.class);
-      this.h = $$0.p();
-      int $$1 = 48;
-      this.i = new ib(awm.a($$0.readByte(), -48, 48), awm.a($$0.readByte(), -48, 48), awm.a($$0.readByte(), -48, 48));
-      int $$2 = 48;
-      this.j = new jf(awm.a($$0.readByte(), 0, 48), awm.a($$0.readByte(), 0, 48), awm.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(deb.class);
-      this.l = $$0.b(dfr.class);
-      this.m = $$0.d(128);
-      this.q = awm.a($$0.readFloat(), 0.0F, 1.0F);
-      this.r = $$0.m();
-      int $$3 = $$0.readByte();
-      this.n = ($$3 & 1) != 0;
-      this.o = ($$3 & 2) != 0;
-      this.p = ($$3 & 4) != 0;
+      this.f = $$0.p();
+      this.j = $$0.b(dkq.a.class);
+      int $$1 = $$0.readByte();
+      this.g = ($$1 & 1) != 0;
+      this.h = ($$1 & 2) != 0;
+      this.i = ($$1 & 4) != 0;
    }
 
-   private void a(us $$0) {
+   private void a(uu $$0) {
       $$0.a(this.e);
       $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.k(this.i.u());
-      $$0.k(this.i.v());
-      $$0.k(this.i.w());
-      $$0.k(this.j.u());
-      $$0.k(this.j.v());
-      $$0.k(this.j.w());
-      $$0.a(this.k);
-      $$0.a(this.l);
-      $$0.a(this.m);
-      $$0.a(this.q);
-      $$0.a(this.r);
+      $$0.a(this.j);
       int $$1 = 0;
-      if (this.n) {
+      if (this.g) {
          $$1 |= 1;
       }
 
-      if (this.o) {
+      if (this.h) {
          $$1 |= 2;
       }
 
-      if (this.p) {
+      if (this.i) {
          $$1 |= 4;
       }
 
@@ -90,11 +50,11 @@ public class agm implements xz<aev> {
    }
 
    @Override
-   public yb<agm> a() {
-      return aet.bW;
+   public yd<agm> a() {
+      return aex.bS;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
@@ -102,55 +62,23 @@ public class agm implements xz<aev> {
       return this.e;
    }
 
-   public dkz.a e() {
+   public String e() {
       return this.f;
    }
 
-   public dno f() {
+   public boolean f() {
       return this.g;
    }
 
-   public String g() {
+   public boolean g() {
       return this.h;
    }
 
-   public ib h() {
+   public boolean h() {
       return this.i;
    }
 
-   public jf i() {
+   public dkq.a i() {
       return this.j;
-   }
-
-   public deb j() {
-      return this.k;
-   }
-
-   public dfr k() {
-      return this.l;
-   }
-
-   public String l() {
-      return this.m;
-   }
-
-   public boolean m() {
-      return this.n;
-   }
-
-   public boolean n() {
-      return this.o;
-   }
-
-   public boolean o() {
-      return this.p;
-   }
-
-   public float p() {
-      return this.q;
-   }
-
-   public long q() {
-      return this.r;
    }
 }

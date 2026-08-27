@@ -8,17 +8,17 @@ public class cb extends cx<cb.a> {
       return cb.a.a;
    }
 
-   public void a(apb $$0, cpq $$1, int $$2) {
+   public void a(apg $$0, cqk $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
    public static record a(Optional<bc> b, Optional<cc> c, cm.d d, cm.d e) implements cx.a {
       public static final Codec<cb.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  avu.a(br.b, "player").forGetter(cb.a::a),
-                  avu.a(cc.a, "item").forGetter(cb.a::b),
-                  avu.a(cm.d.d, "durability", cm.d.c).forGetter(cb.a::c),
-                  avu.a(cm.d.d, "delta", cm.d.c).forGetter(cb.a::d)
+                  awe.a(br.b, "player").forGetter(cb.a::a),
+                  awe.a(cc.a, "item").forGetter(cb.a::b),
+                  awe.a(cm.d.d, "durability", cm.d.c).forGetter(cb.a::c),
+                  awe.a(cm.d.d, "delta", cm.d.c).forGetter(cb.a::d)
                )
                .apply($$0, cb.a::new)
       );
@@ -31,7 +31,7 @@ public class cb extends cx<cb.a> {
          return am.u.a(new cb.a($$0, $$1, $$2, cm.d.c));
       }
 
-      public boolean a(cpq $$0, int $$1) {
+      public boolean a(cqk $$0, int $$1) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else {

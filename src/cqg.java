@@ -1,31 +1,65 @@
-import java.util.function.Predicate;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public abstract class cqg extends cpl {
-   public static final Predicate<cpq> c = $$0 -> $$0.a(aum.at);
-   public static final Predicate<cpq> d = c.or($$0 -> $$0.a(cpt.uq));
+public class cqg {
+   private final Map<cqf, cqg.a> a = Maps.newHashMap();
+   private int b;
 
-   public cqg(cpl.a $$0) {
-      super($$0);
+   public boolean a(cqf $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   public Predicate<cpq> d() {
-      return this.b();
-   }
-
-   public abstract Predicate<cpq> b();
-
-   public static cpq a(box $$0, Predicate<cpq> $$1) {
-      if ($$1.test($$0.b(bmk.b))) {
-         return $$0.b(bmk.b);
+   public float a(cqf $$0, float $$1) {
+      cqg.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return aww.a($$4 / $$3, 0.0F, 1.0F);
       } else {
-         return $$1.test($$0.b(bmk.a)) ? $$0.b(bmk.a) : cpq.h;
+         return 0.0F;
       }
    }
 
-   @Override
-   public int e() {
-      return 1;
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<cqf, cqg.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<cqf, cqg.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
+         }
+      }
    }
 
-   public abstract int c();
+   public void a(cqf $$0, int $$1) {
+      this.a.put($$0, new cqg.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(cqf $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(cqf $$0, int $$1) {
+   }
+
+   protected void c(cqf $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+   }
 }

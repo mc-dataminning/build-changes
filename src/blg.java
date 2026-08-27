@@ -1,111 +1,88 @@
-import com.google.common.collect.Queues;
-import java.util.Locale;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.IntStream;
+import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-public interface blg<T, F> {
-   @Nullable
-   F a();
+public class blg implements bkz {
+   private static final Logger a = LogUtils.getLogger();
+   private final Set<bkx> b = new ObjectOpenHashSet();
+   private final blf c = new blf();
 
-   boolean a(T var1);
-
-   boolean b();
-
-   int c();
-
-   public static final class a implements blg<blg.b, Runnable> {
-      private final Queue<Runnable>[] a;
-      private final AtomicInteger b = new AtomicInteger();
-
-      public a(int $$0) {
-         this.a = new Queue[$$0];
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            this.a[$$1] = Queues.newConcurrentLinkedQueue();
-         }
-      }
-
-      @Nullable
-      public Runnable d() {
-         for (Queue<Runnable> $$0 : this.a) {
-            Runnable $$1 = $$0.poll();
-            if ($$1 != null) {
-               this.b.decrementAndGet();
-               return $$1;
-            }
-         }
-
-         return null;
-      }
-
-      public boolean a(blg.b $$0) {
-         int $$1 = $$0.a;
-         if ($$1 < this.a.length && $$1 >= 0) {
-            this.a[$$1].add($$0);
-            this.b.incrementAndGet();
-            return true;
-         } else {
-            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
-         }
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.get() == 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b.get();
+   public blg(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
       }
    }
 
-   public static final class b implements Runnable {
-      final int a;
-      private final Runnable b;
+   public static Set<bkx> a() {
+      Builder<bkx> $$0 = ImmutableSet.builder();
 
-      public b(int $$0, Runnable $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      try {
+         blg.a $$1 = new blg.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> bkx.a("cpu#" + $$1x, bkw.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
       }
 
-      @Override
-      public void run() {
-         this.b.run();
-      }
-
-      public int a() {
-         return this.a;
-      }
+      $$0.add(bkx.a("heap MiB", bkw.e, () -> (double)((float)(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576.0F)));
+      $$0.addAll(bky.a.a());
+      return $$0.build();
    }
 
-   public static final class c<T> implements blg<T, T> {
-      private final Queue<T> a;
+   @Override
+   public Set<bkx> a(Supplier<bjo> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
+   }
 
-      public c(Queue<T> $$0) {
-         this.a = $$0;
-      }
+   public static bkx a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
+         }
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
+         }
 
-      @Nullable
-      @Override
-      public T a() {
-         return this.a.poll();
-      }
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      bkx.d $$3 = new bkx.d(2.0F);
+      return bkx.a("ticktime", bkw.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
+   }
 
-      @Override
-      public boolean a(T $$0) {
-         return this.a.add($$0);
-      }
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
 
-      @Override
-      public boolean b() {
-         return this.a.isEmpty();
-      }
+      public double a(int $$0) {
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
+         }
 
-      @Override
-      public int c() {
-         return this.a.size();
+         return this.e[$$0] * 100.0;
       }
    }
 }

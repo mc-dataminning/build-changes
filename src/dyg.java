@@ -1,28 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dyg extends dyf {
-   public static final Codec<dyg> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dyg::new));
+public class dyg implements dxu {
+   public static final Codec<dyg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.apply2(dyg::new, dxk.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), ecg.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+   );
+   public final List<dxk> b;
+   public final il<ecg> c;
 
-   public dyg(blq $$0, blq $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dyg(List<dxk> $$0, il<ecg> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected dyl<?> a() {
-      return dyl.e;
-   }
-
-   @Override
-   protected void a(cwk $$0, dyk.b $$1, awt $$2, dxu $$3, int $$4, dyk.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(awt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public Stream<dvd<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

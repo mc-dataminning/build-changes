@@ -1,42 +1,55 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface cxb {
+   int J_();
 
-public class cxb {
-   public static final Codec<cxb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ato.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, cxb::new)
-   );
-   public static final cxb b = new cxb(atp.h, 6000, 8, 2.0);
-   private final il<ato> c;
-   private final int d;
-   private final int e;
-   private final double f;
+   int I_();
 
-   public cxb(il<ato> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   default int ak() {
+      return this.I_() + this.J_();
    }
 
-   public il<ato> a() {
-      return this.c;
+   default int al() {
+      return this.an() - this.am();
    }
 
-   public int b() {
-      return this.d;
+   default int am() {
+      return je.a(this.I_());
    }
 
-   public int c() {
-      return this.e;
+   default int an() {
+      return je.a(this.ak() - 1) + 1;
    }
 
-   public double d() {
-      return this.f;
+   default boolean s(ib $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.I_() || $$0 >= this.ak();
+   }
+
+   default int e(int $$0) {
+      return this.f(je.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.am();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.am();
+   }
+
+   static cxb e(final int $$0, final int $$1) {
+      return new cxb() {
+         @Override
+         public int J_() {
+            return $$1;
+         }
+
+         @Override
+         public int I_() {
+            return $$0;
+         }
+      };
    }
 }

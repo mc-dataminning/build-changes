@@ -1,39 +1,44 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class alt {
-   public static void a(CommandDispatcher<du> $$0) {
-      LiteralCommandNode<du> $$1 = $$0.register(
-         (LiteralArgumentBuilder)dv.a("msg").then(dv.a("targets", eh.d()).then(dv.a("message", el.a()).executes($$0x -> {
-            Collection<apb> $$1x = eh.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               el.a($$0x, "message", $$2 -> a((du)$$0x.getSource(), $$1x, $$2));
-            }
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.kick.owner.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("commands.kick.singleplayer.failed"));
 
-            return $$1x.size();
-         })))
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("kick").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("targets", eh.d())
+                     .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), vu.c("multiplayer.disconnect.kicked"))))
+                  .then(dv.a("reason", el.a()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), el.a($$0x, "reason"))))
+            )
       );
-      $$0.register((LiteralArgumentBuilder)dv.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)dv.a("w").redirect($$1));
    }
 
-   private static void a(du $$0, Collection<apb> $$1, wi $$2) {
-      vo.a $$3 = vo.a(vo.e, $$0);
-      wh $$4 = wh.a($$2);
-      boolean $$5 = false;
+   private static int a(du $$0, Collection<apg> $$1, vu $$2) throws CommandSyntaxException {
+      if (!$$0.l().r()) {
+         throw b.create();
+      } else {
+         int $$3 = 0;
 
-      for (apb $$6 : $$1) {
-         vo.a $$7 = vo.a(vo.f, $$0).c($$6.Q_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.j();
-      }
+         for (apg $$4 : $$1) {
+            if (!$$0.l().a($$4.fY())) {
+               $$4.d.b($$2);
+               $$0.a(() -> vu.a("commands.kick.success", $$4.O_(), $$2), true);
+               $$3++;
+            }
+         }
 
-      if ($$5) {
-         $$0.a(ass.f);
+         if ($$3 == 0) {
+            throw a.create();
+         } else {
+            return $$3;
+         }
       }
    }
 }

@@ -1,30 +1,43 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+public class bzb extends byz {
+   private boolean p;
 
-public class bzb extends bzg<box> {
-   @Override
-   public Set<bya<?>> a() {
-      return ImmutableSet.of(bya.h, bya.M, bya.an);
+   public bzb(bpq $$0, cwz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(apa $$0, box $$1) {
-      bpy<?> $$2 = $$1.dM();
-      List<cgp> $$3 = Lists.newArrayList();
-      byc $$4 = $$2.c(bya.h).orElse(byc.a());
-      Optional<boz> $$5 = $$4.a($$0x -> $$0x instanceof cfx || $$0x instanceof cdz).map(boz.class::cast);
+   protected eje a(int $$0) {
+      this.p = this.a.ai() == bpc.y;
+      this.o = new ejf(this.p);
+      return new eje(this.o, $$0);
+   }
 
-      for (box $$7 : $$2.c(bya.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cgp && ((cgp)$$7).gm()) {
-            $$3.add((cgp)$$7);
-         }
-      }
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bg();
+   }
 
-      $$2.a(bya.M, $$5);
-      $$2.a(bya.an, $$3);
+   @Override
+   protected epr b() {
+      return new epr(this.a.dr(), this.a.e(0.5), this.a.dx());
+   }
+
+   @Override
+   protected double a(epr $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(epr $$0, epr $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ib $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

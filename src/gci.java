@@ -1,19 +1,17 @@
-public class gci extends gde<cfa, fni<cfa>> {
-   private static final ajc a = new ajc("textures/entity/ghast/ghast.png");
-   private static final ajc i = new ajc("textures/entity/ghast/ghast_shooting.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gci(gby.a $$0) {
-      super($$0, new fni<>($$0.a(fqe.ac)), 1.5F);
+public class gci<T extends cde> extends gbt<T, fnq<T>> {
+   private static final Map<bpc<?>, ajh> a = Maps.newHashMap(
+      ImmutableMap.of(bpc.z, new ajh("textures/entity/horse/donkey.png"), bpc.as, new ajh("textures/entity/horse/mule.png"))
+   );
+
+   public gci(gcy.a $$0, float $$1, frb $$2) {
+      super($$0, new fnq<>($$0.a($$2)), $$1);
    }
 
-   public ajc a(cfa $$0) {
-      return $$0.u() ? i : a;
-   }
-
-   protected void a(cfa $$0, etd $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public ajh a(T $$0) {
+      return a.get($$0.ai());
    }
 }

@@ -1,71 +1,151 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.common.base.Suppliers;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
 
-public class gjk implements arf<gjj> {
-   public gjj b(JsonObject $$0) {
-      Builder<gji> $$1 = ImmutableList.builder();
-      int $$2 = awc.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
-      }
+public class gjk implements gjd {
+   static final Logger c = LogUtils.getLogger();
+   public static final Codec<gjk> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(ajh.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
+               ajh.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
+               Codec.unboundedMap(Codec.STRING, ajh.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, gjk::new)
+   );
+   private final List<ajh> d;
+   private final Map<String, ajh> e;
+   private final ajh f;
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = awc.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               gji $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = awc.a($$0, "width", -1);
-      int $$9 = awc.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = awc.a($$0, "interpolate", false);
-      return new gjj($$1.build(), $$8, $$9, $$2, $$10);
+   private gjk(List<ajh> $$0, ajh $$1, Map<String, ajh> $$2) {
+      this.d = $$0;
+      this.e = $$2;
+      this.f = $$1;
    }
 
-   @Nullable
-   private gji a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new gji(awc.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = awc.m($$1, "frames[" + $$0 + "]");
-         int $$3 = awc.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+   @Override
+   public void a(aso $$0, gjd.a $$1) {
+      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
+      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
+      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
+
+      for (ajh $$4 : this.d) {
+         ajh $$5 = a.a($$4);
+         Optional<asm> $$6 = $$0.getResource($$5);
+         if ($$6.isEmpty()) {
+            c.warn("Unable to find texture {}", $$5);
+         } else {
+            gjj $$7 = new gjj($$5, $$6.get(), $$3.size());
+
+            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
+               ajh $$9 = $$4.e("_" + $$8.getKey());
+               $$1.a($$9, new gjk.a($$7, $$8.getValue(), $$9));
+            }
+         }
+      }
+   }
+
+   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
+      if ($$1.length != $$0.length) {
+         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
+         throw new IllegalArgumentException();
+      } else {
+         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
+
+         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
+            int $$4 = $$0[$$3];
+            if (awg.a.a($$4) != 0) {
+               $$2.put(awg.a.e($$4), $$1[$$3]);
+            }
          }
 
-         int $$4 = awc.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new gji($$4, $$3);
+         return $$1x -> {
+            int $$2x = awg.a.a($$1x);
+            if ($$2x == 0) {
+               return $$1x;
+            } else {
+               int $$3x = awg.a.e($$1x);
+               int $$4x = $$2.getOrDefault($$3x, awg.a.f($$3x));
+               int $$5 = awg.a.a($$4x);
+               return awg.a.a($$2x * $$5 / 255, $$4x);
+            }
+         };
+      }
+   }
+
+   public static int[] a(aso $$0, ajh $$1) {
+      Optional<asm> $$2 = $$0.getResource(a.a($$1));
+      if ($$2.isEmpty()) {
+         c.error("Failed to load palette image {}", $$1);
+         throw new IllegalArgumentException();
       } else {
-         return null;
+         try {
+            int[] var5;
+            try (
+               InputStream $$3 = $$2.get().d();
+               eta $$4 = eta.a($$3);
+            ) {
+               var5 = $$4.d();
+            }
+
+            return var5;
+         } catch (Exception var11) {
+            c.error("Couldn't load texture {}", $$1, var11);
+            throw new IllegalArgumentException();
+         }
       }
    }
 
    @Override
-   public String a() {
-      return "animation";
+   public gjf a() {
+      return gjg.e;
+   }
+
+   static record a(gjj a, Supplier<IntUnaryOperator> b, ajh c) implements gjd.b {
+      @Nullable
+      public git a(gjc $$0) {
+         Object var3;
+         try {
+            eta $$1 = this.a.a().a(this.b.get());
+            return new git(this.c, new gkl($$1.a(), $$1.b()), $$1, asq.a);
+         } catch (IllegalArgumentException | IOException var7) {
+            gjk.c.error("unable to apply palette to {}", this.c, var7);
+            var3 = null;
+         } finally {
+            this.a.b();
+         }
+
+         return (git)var3;
+      }
+
+      @Override
+      public void a() {
+         this.a.b();
+      }
+
+      public gjj b() {
+         return this.a;
+      }
+
+      public Supplier<IntUnaryOperator> c() {
+         return this.b;
+      }
+
+      public ajh d() {
+         return this.c;
+      }
    }
 }

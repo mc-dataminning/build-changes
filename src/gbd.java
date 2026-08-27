@@ -1,71 +1,151 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.stream.Stream;
-import org.joml.Quaternionf;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class gbd extends gbx<cjv> {
-   private final Map<cjv.b, Pair<ajc, fnw<cjv>>> a;
+public class gbd implements gbc.a {
+   private final ezg a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<gbd.a> d = Lists.newArrayList();
+   private final List<gbd.b> e = Lists.newArrayList();
 
-   public gbd(gby.a $$0, boolean $$1) {
-      super($$0);
-      this.d = 0.8F;
-      this.a = Stream.of(cjv.b.values()).collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$2 -> Pair.of(new ajc(a($$2, $$1)), this.a($$0, $$2, $$1))));
+   public gbd(ezg $$0) {
+      this.a = $$0;
    }
 
-   private fnw<cjv> a(gby.a $$0, cjv.b $$1, boolean $$2) {
-      fqd $$3 = $$2 ? fqe.d($$1) : fqe.c($$1);
-      fqf $$4 = $$0.a($$3);
-      if ($$1 == cjv.b.i) {
-         return (fnw<cjv>)($$2 ? new fmr($$4) : new foq($$4));
+   @Override
+   public void a(etz $$0, fxq $$1, double $$2, double $$3, double $$4) {
+      cwz $$5 = this.a.r;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
       } else {
-         return (fnw<cjv>)($$2 ? new fmq($$4) : new fml($$4));
-      }
-   }
+         epr $$6 = new epr($$2, 0.0, $$4);
+         this.d.removeIf(gbd.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         eud $$7 = $$1.getBuffer(fxy.y());
 
-   private static String a(cjv.b $$0, boolean $$1) {
-      return $$1 ? "textures/entity/chest_boat/" + $$0.a() + ".png" : "textures/entity/boat/" + $$0.a() + ".png";
-   }
+         for (gbd.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               fxo.a($$0, $$7, eqh.a(new epm($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
+         }
 
-   public void a(cjv $$0, float $$1, float $$2, etd $$3, fwq $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.375F, 0.0F);
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      float $$6 = (float)$$0.O() - $$2;
-      float $$7 = $$0.N() - $$2;
-      if ($$7 < 0.0F) {
-         $$7 = 0.0F;
-      }
+         eud $$9 = $$1.getBuffer(fxy.A());
 
-      if ($$6 > 0.0F) {
-         $$3.a(a.b.rotationDegrees(awm.a($$6) * $$6 * $$7 / 10.0F * (float)$$0.P()));
-      }
+         for (gbd.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> fxo.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
 
-      float $$8 = $$0.a($$2);
-      if (!awm.a($$8, 0.0F)) {
-         $$3.a(new Quaternionf().setAngleAxis($$0.a($$2) * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
-      }
+         for (gbd.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               gbc.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               gbc.a($$0, $$1, ib.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
 
-      Pair<ajc, fnw<cjv>> $$9 = this.a.get($$0.y());
-      ajc $$10 = (ajc)$$9.getFirst();
-      fnw<cjv> $$11 = (fnw<cjv>)$$9.getSecond();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      $$11.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      eth $$12 = $$4.getBuffer($$11.a($$10));
-      $$11.a($$3, $$12, $$5, ghq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      if (!$$0.be()) {
-         eth $$13 = $$4.getBuffer(fwy.i());
-         if ($$11 instanceof fps $$14) {
-            $$14.c().a($$3, $$13, $$5, ghq.d);
+         for (gbd.a $$12 : this.d) {
+            epr $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.c - 0.2F;
+            double $$16 = $$13.d - 0.2F;
+            double $$17 = $$13.e - 0.2F;
+            double $$18 = $$13.c + 0.2F;
+            double $$19 = $$13.d + 0.2F + 0.5;
+            double $$20 = $$13.e + 0.2F;
+            a($$0, $$1, new epm($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            gbc.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
          }
       }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ajc a(cjv $$0) {
-      return (ajc)this.a.get($$0.y()).getFirst();
+   private static void a(etz $$0, fxq $$1, epm $$2, float $$3, float $$4, float $$5, float $$6) {
+      eyr $$7 = ezg.Q().j.m();
+      if ($$7.h()) {
+         epr $$8 = $$7.b().e();
+         gbc.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
+
+   public void a(ajg<drn> $$0, epr $$1) {
+      this.d.add(new gbd.a(ac.b(), $$0, $$1));
+   }
+
+   public void a(drr $$0, int $$1) {
+      this.e.add(new gbd.b($$0, $$1));
+   }
+
+   static record a(long a, ajg<drn> b, epr c) {
+
+      public boolean a() {
+         return ac.b() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public ajg<drn> c() {
+         return this.b;
+      }
+
+      public epr d() {
+         return this.c;
+      }
+   }
+
+   static class b implements drp {
+      public final drr a;
+      public final int b;
+
+      public b(drr $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(cwz $$0, epr $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<epr> a(cwz $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public drr a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(apf $$0, il<drn> $$1, drn.a $$2, epr $$3) {
+         return false;
+      }
    }
 }

@@ -1,107 +1,20 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 public class ank {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("commands.trigger.failed.invalid"));
-
-   public static void a(CommandDispatcher<du> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)dv.a("trigger")
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("objective", eo.a())
-                        .suggests(($$0x, $$1) -> a((du)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((du)$$0x.getSource(), ((du)$$0x.getSource()).h(), eo.a($$0x, "objective"))))
-                     .then(
-                        dv.a("add")
-                           .then(
-                              dv.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (du)$$0x.getSource(),
-                                          ((du)$$0x.getSource()).h(),
-                                          eo.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     dv.a("set")
-                        .then(
-                           dv.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (du)$$0x.getSource(), ((du)$$0x.getSource()).h(), eo.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tellraw").requires($$0x -> $$0x.c(2)))
+            .then(dv.a("targets", eh.d()).then(dv.a("message", ed.a($$1)).executes($$0x -> {
+               int $$1x = 0;
 
-   public static CompletableFuture<Suggestions> a(du $$0, SuggestionsBuilder $$1) {
-      epy $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         epz $$4 = $$0.l().aK();
-
-         for (epr $$5 : $$4.c()) {
-            if ($$5.c() == eqc.c) {
-               epv $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
+               for (apg $$2 : eh.f($$0x, "targets")) {
+                  $$2.b(vx.a((du)$$0x.getSource(), ed.a($$0x, "message"), $$2, 0), false);
+                  $$1x++;
                }
-            }
-         }
-      }
 
-      return dz.b($$3, $$1);
-   }
-
-   private static int a(du $$0, apb $$1, epr $$2, int $$3) throws CommandSyntaxException {
-      epx $$4 = a($$0.l().aK(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> vs.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
-
-   private static int b(du $$0, apb $$1, epr $$2, int $$3) throws CommandSyntaxException {
-      epx $$4 = a($$0.l().aK(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> vs.a("commands.trigger.set.success", $$2.g(), $$3), true);
-      return $$3;
-   }
-
-   private static int a(du $$0, apb $$1, epr $$2) throws CommandSyntaxException {
-      epx $$3 = a($$0.l().aK(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> vs.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static epx a(epz $$0, epy $$1, epr $$2) throws CommandSyntaxException {
-      if ($$2.c() != eqc.c) {
-         throw b.create();
-      } else {
-         epv $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            epx $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
-         } else {
-            throw a.create();
-         }
-      }
+               return $$1x;
+            })))
+      );
    }
 }

@@ -1,19 +1,21 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dya<P extends dxz> {
-   public static final dya<dyc> a = a("two_layers_feature_size", dyc.d);
-   public static final dya<dyb> b = a("three_layers_feature_size", dyb.d);
-   private final Codec<P> c;
+public class dya extends dxm {
+   public static final Codec<dya> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dzv.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               awe.k.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               awe.k.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dya::new)
+   );
+   public final int d;
+   public final int e;
 
-   private static <P extends dxz> dya<P> a(String $$0, Codec<P> $$1) {
-      return ix.a(kh.aa, $$0, new dya<>($$1));
-   }
-
-   private dya(Codec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public Codec<P> a() {
-      return this.c;
+   public dya(dzv $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

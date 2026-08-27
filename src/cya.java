@@ -1,95 +1,101 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.hash.Hashing;
 
-public abstract class cya extends cyr {
-   public static final dmy a = dda.aE;
-   public static final dmv b = dmu.r;
+public class cya {
+   public static final int a = iw.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final cya.a e;
+   private final long f;
 
-   protected cya(dmd.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, ih.c).a(b, Boolean.valueOf(false)));
+   public cya(cya.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Override
-   protected abstract MapCodec<? extends cya> a();
-
-   @Override
-   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
-      if ($$1.B) {
-         return bml.a;
-      } else {
-         this.a($$1, $$2, $$3);
-         return bml.b;
-      }
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   protected abstract void a(cwe var1, ib var2, cia var3);
-
-   @Override
-   public dme a(crx $$0) {
-      return this.o().a(a, $$0.g().g());
+   public cya a(cya.a $$0) {
+      return new cya($$0, this.f);
    }
 
-   @Override
-   public void a(cwe $$0, ib $$1, dme $$2, box $$3, cpq $$4) {
-      if ($$4.B()) {
-         djl $$5 = $$0.c_($$1);
-         if ($$5 instanceof dja) {
-            ((dja)$$5).a($$4.z());
+   public il<cxy> a(ib $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
          }
       }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
    }
 
-   @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         djl $$5 = $$1.c_($$2);
-         if ($$5 instanceof dja) {
-            if ($$1 instanceof apa) {
-               bmh.a($$1, $$2, (dja)$$5);
-               ((dja)$$5).a((apa)$$1, eov.b($$2));
-            }
-
-            super.a($$0, $$1, $$2, $$3, $$4);
-            $$1.c($$2, this);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
+   public il<cxy> a(double $$0, double $$1, double $$2) {
+      int $$3 = iw.a(aww.a($$0));
+      int $$4 = iw.a(aww.a($$1));
+      int $$5 = iw.a(aww.a($$2));
+      return this.a($$3, $$4, $$5);
    }
 
-   @Override
-   protected boolean d_(dme $$0) {
-      return true;
+   public il<cxy> b(ib $$0) {
+      int $$1 = iw.a($$0.u());
+      int $$2 = iw.a($$0.v());
+      int $$3 = iw.a($$0.w());
+      return this.a($$1, $$2, $$3);
    }
 
-   @Override
-   protected int a(dme $$0, cwe $$1, ib $$2) {
-      return cku.a($$1.c_($$2));
+   public il<cxy> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
    }
 
-   @Override
-   protected dfk b_(dme $$0) {
-      return dfk.c;
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = aws.a($$0, (long)$$1);
+      $$7 = aws.a($$7, (long)$$2);
+      $$7 = aws.a($$7, (long)$$3);
+      $$7 = aws.a($$7, (long)$$1);
+      $$7 = aws.a($$7, (long)$$2);
+      $$7 = aws.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = aws.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = aws.a($$7, $$0);
+      double $$10 = b($$7);
+      return aww.k($$6 + $$10) + aww.k($$5 + $$9) + aww.k($$4 + $$8);
    }
 
-   @Override
-   protected dme a(dme $$0, dfr $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
    }
 
-   @Override
-   protected dme a(dme $$0, deb $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Nullable
-   protected static <T extends djl> djm<T> a(cwe $$0, djn<T> $$1, djn<? extends dja> $$2) {
-      return $$0.B ? null : a($$1, $$2, dja::a);
+   public interface a {
+      il<cxy> getNoiseBiome(int var1, int var2, int var3);
    }
 }

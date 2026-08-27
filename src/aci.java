@@ -1,88 +1,29 @@
-public class aci implements xz<aai> {
-   public static final xq<us, aci> a = xz.a(aci::a, aci::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final float j;
-   private final float k;
+public class aci implements yb<aam> {
+   public static final xs<uu, aci> a = yb.a(aci::a, aci::new);
+   private final bnb b;
 
-   public aci(chx $$0) {
-      this.f = $$0.a;
-      this.g = $$0.b;
-      this.h = $$0.c;
-      this.i = $$0.d;
-      this.j = $$0.a();
-      this.k = $$0.b();
+   public aci(bnb $$0) {
+      this.b = $$0;
    }
 
-   private aci(us $$0) {
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
-      this.i = ($$1 & 8) != 0;
-      this.j = $$0.readFloat();
-      this.k = $$0.readFloat();
+   private aci(uu $$0) {
+      this.b = $$0.b(bnb.class);
    }
 
-   private void a(us $$0) {
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      if (this.h) {
-         $$1 = (byte)($$1 | 4);
-      }
-
-      if (this.i) {
-         $$1 = (byte)($$1 | 8);
-      }
-
-      $$0.k($$1);
-      $$0.a(this.j);
-      $$0.a(this.k);
+   private void a(uu $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yb<aci> a() {
-      return aet.Z;
+   public yd<aci> a() {
+      return aex.V;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public float h() {
-      return this.j;
-   }
-
-   public float i() {
-      return this.k;
+   public bnb b() {
+      return this.b;
    }
 }

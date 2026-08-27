@@ -1,22 +1,40 @@
-public class fvn extends fsx {
-   private static final int a = 12235202;
+public class fvn extends fwe {
+   private final fvz a;
 
-   protected fvn(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fuz $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
+   fvn(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fvz $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
-   public static class a implements fuh<ke> {
-      private final fuz a;
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
 
-      public a(fuz $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public fvi b() {
+      return fvi.c;
+   }
 
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fvn($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(fvz a) implements fvh<kd> {
+      public fve a(kd $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fvn $$8 = new fvn($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
+         return $$8;
       }
    }
 }

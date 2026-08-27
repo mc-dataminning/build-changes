@@ -1,102 +1,81 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dbn extends czo {
+public class dbn extends czm implements dha {
    public static final MapCodec<dbn> a = b(dbn::new);
-   public static final dnc<dna> b = dmu.ae;
+   public static final dnq b = dnp.C;
+   private static final int d = 3;
+   protected static final eqk c = daa.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
-   public MapCodec<? extends dbn> a() {
+   public MapCodec<dbn> a() {
       return a;
    }
 
-   public dbn(dmd.d $$0) {
+   public dbn(dmy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dna.b));
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      dna $$6 = $$0.c(b);
-      if ($$1.o() != ih.a.b || $$6 == dna.b != ($$1 == ih.b) || $$2.a(this) && $$2.c(b) != $$6) {
-         return $$6 == dna.b && $$1 == ih.a && !$$0.a($$3, $$4) ? czh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return czh.a.o();
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public dkg a(ib $$0, dmz $$1) {
+      return new dks($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dkg> dkh<T> a(cwz $$0, dmz $$1, dki<T> $$2) {
+      return a($$2, dki.z, $$0.B ? dks::a : dks::b);
+   }
+
+   @Override
+   protected dgf b_(dmz $$0) {
+      return dgf.b;
+   }
+
+   @Override
+   protected ein c_(dmz $$0) {
+      return $$0.c(b) ? eio.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eio.c, eio.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return c;
+   }
+
+   @Override
+   public void a(cwz $$0, ib $$1, dmz $$2, @Nullable bpo $$3, cqk $$4) {
+      if ($$4.B()) {
+         dkg $$5 = $$0.c_($$1);
+         if ($$5 instanceof dkb) {
+            ((dkb)$$5).a($$4.z());
+         }
       }
    }
 
    @Nullable
    @Override
-   public dme a(crx $$0) {
-      ib $$1 = $$0.a();
-      cwe $$2 = $$0.q();
-      return $$1.v() < $$2.ak() - 1 && $$2.a_($$1.c()).a($$0) ? super.a($$0) : null;
+   public dmz a(css $$0) {
+      ein $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(aus.a) && $$1.e() == 8));
    }
 
    @Override
-   public void a(cwe $$0, ib $$1, dme $$2, box $$3, cpq $$4) {
-      ib $$5 = $$1.c();
-      $$0.a($$5, c($$0, $$5, this.o().a(b, dna.a)), 3);
-   }
-
-   @Override
-   protected boolean a(dme $$0, cwh $$1, ib $$2) {
-      if ($$0.c(b) != dna.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         dme $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(b) == dna.b;
-      }
-   }
-
-   public static void a(cwf $$0, dme $$1, ib $$2, int $$3) {
-      ib $$4 = $$2.c();
-      $$0.a($$2, c($$0, $$2, $$1.a(b, dna.b)), $$3);
-      $$0.a($$4, c($$0, $$4, $$1.a(b, dna.a)), $$3);
-   }
-
-   public static dme c(cwh $$0, ib $$1, dme $$2) {
-      return $$2.b(dmu.C) ? $$2.a(dmu.C, Boolean.valueOf($$0.z($$1))) : $$2;
-   }
-
-   @Override
-   public dme a(cwe $$0, ib $$1, dme $$2, cia $$3) {
-      if (!$$0.B) {
-         if ($$3.f()) {
-            b($$0, $$1, $$2, $$3);
-         } else {
-            a($$2, $$0, $$1, null, $$3, $$3.eR());
-         }
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(cwe $$0, cia $$1, ib $$2, dme $$3, @Nullable djl $$4, cpq $$5) {
-      super.a($$0, $$1, $$2, czh.a.o(), $$4, $$5);
-   }
-
-   protected static void b(cwe $$0, ib $$1, dme $$2, cia $$3) {
-      dna $$4 = $$2.c(b);
-      if ($$4 == dna.a) {
-         ib $$5 = $$1.d();
-         dme $$6 = $$0.a_($$5);
-         if ($$6.a($$2.b()) && $$6.c(b) == dna.b) {
-            dme $$7 = $$6.u().b(ehs.c) ? czh.G.o() : czh.a.o();
-            $$0.a($$5, $$7, 35);
-            $$0.a($$3, 2001, $$5, czf.i($$6));
-         }
-      }
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected long a(dme $$0, ib $$1) {
-      return awm.b($$1.u(), $$1.c($$0.c(b) == dna.b ? 0 : 1).v(), $$1.w());
+   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
+      return false;
    }
 }

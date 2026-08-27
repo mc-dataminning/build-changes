@@ -1,173 +1,24 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.function.Function;
 
-public class dup extends duu<dww> {
-   public dup(Codec<dww> $$0) {
-      super($$0);
+public record dup<WC extends duk>(dur<WC> d, WC e) {
+   public static final Codec<dup<?>> a = ki.P.q().dispatch($$0 -> $$0.d, dur::c);
+   public static final Codec<il<dup<?>>> b = ajd.a(kj.aw, a);
+   public static final Codec<ip<dup<?>>> c = ja.a(kj.aw, a);
+
+   public boolean a(axd $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(duw<dww> $$0) {
-      cwz $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      dww $$3 = $$0.f();
-      awt $$4 = $$0.d();
-      if (!duq.a($$1, $$2)) {
-         return false;
-      } else {
-         int $$5 = $$3.c.a($$4);
-         float $$6 = $$3.i.a($$4);
-         float $$7 = $$3.h.a($$4);
-         int $$8 = $$3.d.a($$4);
-         int $$9 = $$3.d.a($$4);
-
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
-               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
-               ib $$13 = $$2.b($$10, 0, $$11);
-               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
-            }
-         }
-
-         return true;
-      }
+   public boolean a(dum $$0, dov $$1, Function<ib, il<cxy>> $$2, axd $$3, dry $$4, cwg $$5, dou $$6) {
+      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   private void a(cwz $$0, awt $$1, ib $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, dww $$9) {
-      Optional<drg> $$10 = drg.a($$0, $$2, $$9.b, duq::c, duq::d);
-      if (!$$10.isEmpty()) {
-         OptionalInt $$11 = $$10.get().b();
-         OptionalInt $$12 = $$10.get().c();
-         if (!$$11.isEmpty() || !$$12.isEmpty()) {
-            boolean $$13 = $$1.i() < $$5;
-            drg $$15;
-            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
-               int $$14 = $$12.getAsInt();
-               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
-               $$0.a($$2.h($$14), czh.G.o(), 2);
-            } else {
-               $$15 = $$10.get();
-            }
-
-            OptionalInt $$17 = $$15.c();
-            boolean $$18 = $$1.j() < $$6;
-            int $$22;
-            if ($$11.isPresent() && $$18 && !this.a((cwh)$$0, $$2.h($$11.getAsInt()))) {
-               int $$19 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$11.getAsInt()), $$19, ih.b);
-               int $$20;
-               if ($$17.isPresent()) {
-                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
-               } else {
-                  $$20 = $$7;
-               }
-
-               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
-            } else {
-               $$22 = 0;
-            }
-
-            boolean $$24 = $$1.j() < $$6;
-            int $$26;
-            if ($$17.isPresent() && $$24 && !this.a((cwh)$$0, $$2.h($$17.getAsInt()))) {
-               int $$25 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$17.getAsInt()), $$25, ih.a);
-               if ($$11.isPresent()) {
-                  $$26 = Math.max(0, $$22 + awm.b($$1, -$$9.e, $$9.e));
-               } else {
-                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
-               }
-            } else {
-               $$26 = 0;
-            }
-
-            int $$36;
-            int $$35;
-            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
-               int $$29 = $$17.getAsInt();
-               int $$30 = $$11.getAsInt();
-               int $$31 = Math.max($$30 - $$22, $$29 + 1);
-               int $$32 = Math.min($$29 + $$26, $$30 - 1);
-               int $$33 = awm.b($$1, $$31, $$32 + 1);
-               int $$34 = $$33 - 1;
-               $$35 = $$30 - $$33;
-               $$36 = $$34 - $$29;
-            } else {
-               $$35 = $$22;
-               $$36 = $$26;
-            }
-
-            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
-            if ($$11.isPresent()) {
-               duq.a($$0, $$2.h($$11.getAsInt() - 1), ih.a, $$35, $$39);
-            }
-
-            if ($$17.isPresent()) {
-               duq.a($$0, $$2.h($$17.getAsInt() + 1), ih.b, $$36, $$39);
-            }
-         }
-      }
+   public dur<WC> a() {
+      return this.d;
    }
 
-   private boolean a(cwh $$0, ib $$1) {
-      return $$0.a_($$1).a(czh.H);
-   }
-
-   private int a(awt $$0, int $$1, int $$2, float $$3, int $$4, dww $$5) {
-      if ($$0.i() > $$3) {
-         return 0;
-      } else {
-         int $$6 = Math.abs($$1) + Math.abs($$2);
-         float $$7 = (float)awm.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
-         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
-      }
-   }
-
-   private boolean b(cwz $$0, ib $$1) {
-      dme $$2 = $$0.a_($$1);
-      if (!$$2.a(czh.G) && !$$2.a(czh.su) && !$$2.a(czh.st)) {
-         if ($$0.a_($$1.c()).u().a(auj.a)) {
-            return false;
-         } else {
-            for (ih $$3 : ih.c.a) {
-               if (!this.a((cwf)$$0, $$1.a($$3))) {
-                  return false;
-               }
-            }
-
-            return this.a((cwf)$$0, $$1.d());
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(cwf $$0, ib $$1) {
-      dme $$2 = $$0.a_($$1);
-      return $$2.a(aue.bd) || $$2.u().a(auj.a);
-   }
-
-   private void a(cwz $$0, ib $$1, int $$2, ih $$3) {
-      ib.a $$4 = $$1.j();
-
-      for (int $$5 = 0; $$5 < $$2; $$5++) {
-         if (!duq.c($$0, $$4)) {
-            return;
-         }
-
-         $$4.c($$3);
-      }
-   }
-
-   private double a(int $$0, int $$1, int $$2, int $$3, dww $$4) {
-      int $$5 = $$0 - Math.abs($$2);
-      int $$6 = $$1 - Math.abs($$3);
-      int $$7 = Math.min($$5, $$6);
-      return (double)awm.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
-   }
-
-   private static float a(awt $$0, float $$1, float $$2, float $$3, float $$4) {
-      return blk.a($$0, $$3, $$4, $$1, $$2);
+   public WC b() {
+      return this.e;
    }
 }

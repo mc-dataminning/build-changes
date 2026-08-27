@@ -1,110 +1,58 @@
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
-public abstract class cal extends caj {
+public class cal {
    @Nullable
-   private cal b;
-   private int c = 1;
-
-   public cal(bol<? extends cal> $$0, cwe $$1) {
-      super($$0, $$1);
+   public static epr a(bpw $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, $$0::h);
    }
 
-   @Override
-   protected void B() {
-      super.B();
-      this.bP.a(5, new bvq(this));
+   @Nullable
+   public static epr a(bpw $$0, int $$1, int $$2, ToDoubleFunction<ib> $$3) {
+      boolean $$4 = caj.a($$0, $$1);
+      return cam.a(() -> {
+         ib $$4x = cam.a($$0.ei(), $$1, $$2);
+         ib $$5 = a($$0, $$1, $$4, $$4x);
+         return $$5 == null ? null : a($$0, $$5);
+      }, $$3);
    }
 
-   @Override
-   public int fM() {
-      return this.gn();
+   @Nullable
+   public static epr a(bpw $$0, int $$1, int $$2, epr $$3) {
+      epr $$4 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
+      boolean $$5 = caj.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
    }
 
-   public int gn() {
-      return super.fM();
+   @Nullable
+   public static epr b(bpw $$0, int $$1, int $$2, epr $$3) {
+      epr $$4 = $$0.dk().d($$3);
+      boolean $$5 = caj.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
    }
 
-   @Override
-   protected boolean gl() {
-      return !this.go();
-   }
-
-   public boolean go() {
-      return this.b != null && this.b.bx();
-   }
-
-   public cal a(cal $$0) {
-      this.b = $$0;
-      $$0.gu();
-      return $$0;
-   }
-
-   public void gp() {
-      this.b.gv();
-      this.b = null;
-   }
-
-   private void gu() {
-      this.c++;
-   }
-
-   private void gv() {
-      this.c--;
-   }
-
-   public boolean gq() {
-      return this.gr() && this.c < this.gn();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.gr() && this.dJ().z.a(200) == 1) {
-         List<? extends caj> $$0 = this.dJ().a((Class<? extends caj>)this.getClass(), this.cE().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.c = 1;
+   @Nullable
+   private static epr a(bpw $$0, int $$1, int $$2, epr $$3, boolean $$4) {
+      return cam.a($$0, () -> {
+         ib $$5 = cam.a($$0.ei(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
+         if ($$5 == null) {
+            return null;
+         } else {
+            ib $$6 = a($$0, $$1, $$4, $$5);
+            return $$6 == null ? null : a($$0, $$6);
          }
-      }
-   }
-
-   public boolean gr() {
-      return this.c > 1;
-   }
-
-   public boolean gs() {
-      return this.f(this.b) <= 121.0;
-   }
-
-   public void gt() {
-      if (this.go()) {
-         this.N().a(this.b, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends cal> $$0) {
-      $$0.limit((long)(this.gn() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+      });
    }
 
    @Nullable
-   @Override
-   public bpp a(cwt $$0, bmj $$1, bpb $$2, @Nullable bpp $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new cal.a(this);
-      } else {
-         this.a(((cal.a)$$3).a);
-      }
-
-      return $$3;
+   public static ib a(bpw $$0, ib $$1) {
+      $$1 = cam.a($$1, $$0.dM().ak(), $$1x -> caj.c($$0, $$1x));
+      return !caj.a($$0, $$1) && !caj.b($$0, $$1) ? $$1 : null;
    }
 
-   public static class a implements bpp {
-      public final cal a;
-
-      public a(cal $$0) {
-         this.a = $$0;
-      }
+   @Nullable
+   public static ib a(bpw $$0, int $$1, boolean $$2, ib $$3) {
+      ib $$4 = cam.a($$0, $$1, $$0.ei(), $$3);
+      return !caj.a($$4, $$0) && !caj.a($$2, $$0, $$4) && !caj.a($$0.K(), $$4) ? $$4 : null;
    }
 }

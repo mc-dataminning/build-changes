@@ -1,56 +1,73 @@
-public class dut extends duu<dxf> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final ib an = ib.c;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
 
-   public static ib a(ib $$0) {
-      return an.a((jf)$$0);
+public abstract class dut extends dvq<dxw> {
+   public dut(Codec<dxw> $$0) {
+      super($$0);
    }
 
-   public dut(boolean $$0) {
-      super(dxf.a);
-      this.ao = $$0;
+   protected void a(cxa $$0, axd $$1, ib $$2, dxw $$3, int $$4, ib.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(ih.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
+         }
+      }
+   }
+
+   protected int a(axd $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(cxa $$0, ib $$1, int $$2, ib.a $$3, dxw $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.ak()) {
+         dmz $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(aun.ba)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dmz $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(aun.O)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean a(duw<dxf> $$0) {
-      ib $$1 = $$0.e();
-      cwz $$2 = $$0.b();
-
-      for (ib $$3 : ib.a(new ib($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new ib($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, czh.F.o());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, czh.fz.o());
-               }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, czh.a.o());
-            } else if (!$$4) {
-               this.a($$2, $$3, czh.F.o());
-            } else if (this.ao) {
-               this.a($$2, new ib($$3), czh.fx.o());
-            } else {
-               this.a($$2, new ib($$3), czh.a.o());
-            }
-         }
+   public boolean a(dvs<dxw> $$0) {
+      cxu $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      axd $$3 = $$0.d();
+      dxw $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      ib.a $$6 = new ib.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
       }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), czh.F.o());
-      }
-
-      ib $$6 = $$1.b(2);
-
-      for (ih $$7 : ih.c.a) {
-         this.a($$2, $$6.a($$7), czh.cq.o().a(dig.g, $$7));
-      }
-
-      return true;
    }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(cxa var1, axd var2, ib var3, int var4, ib.a var5, dxw var6);
 }

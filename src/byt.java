@@ -1,43 +1,60 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class byt extends bzg<cgk> {
-   @Override
-   public Set<bya<?>> a() {
-      return ImmutableSet.of(bya.h, bya.aw, bya.aq, bya.ap, bya.as, bya.at, new bya[0]);
+public class byt {
+   private static final byt a = new byt();
+   private final List<bpo> b;
+   private final Predicate<bpo> c;
+
+   private byt() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   protected void a(apa $$0, cgk $$1) {
-      bpy<?> $$2 = $$1.dM();
-      $$2.a(bya.aw, this.b($$0, $$1));
-      Optional<cgq> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<cgk> $$5 = Lists.newArrayList();
-      byc $$6 = $$2.c(bya.h).orElse(byc.a());
+   public byt(bpo $$0, List<bpo> $$1) {
+      this.b = $$1;
+      Object2BooleanOpenHashMap<bpo> $$2 = new Object2BooleanOpenHashMap($$1.size());
+      Predicate<bpo> $$3 = $$1x -> bzx.b($$0, $$1x);
+      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
+   }
 
-      for (box $$7 : $$6.b($$0x -> !$$0x.o_() && ($$0x instanceof cgq || $$0x instanceof cgk))) {
-         if ($$7 instanceof cgq $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
-         }
+   public static byt a() {
+      return a;
+   }
 
-         if ($$7 instanceof cgk $$9) {
-            $$5.add($$9);
+   public Optional<bpo> a(Predicate<bpo> $$0) {
+      for (bpo $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
          }
       }
 
-      $$2.a(bya.aq, $$3);
-      $$2.a(bya.ap, $$5);
-      $$2.a(bya.as, $$4);
-      $$2.a(bya.at, $$5.size());
+      return Optional.empty();
    }
 
-   private Optional<ib> b(apa $$0, cgk $$1) {
-      return ib.a($$1.dj(), 8, 4, $$1x -> $$0.a_($$1x).a(aue.aR));
+   public Iterable<bpo> b(Predicate<bpo> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public Stream<bpo> c(Predicate<bpo> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public boolean a(bpo $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
+   }
+
+   public boolean d(Predicate<bpo> $$0) {
+      for (bpo $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

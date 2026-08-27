@@ -1,34 +1,22 @@
-public class gfx extends ggj<ccq, fnp<ccq>> {
-   private final fnp<ccq> a;
+public class gfx extends gee<cgo, fqs<cgo>> {
+   private static final ajh a = new ajh("textures/entity/witch.png");
 
-   public gfx(gdt<ccq, fnp<ccq>> $$0, fqb $$1) {
-      super($$0);
-      this.a = new fnp<>($$1.a(fqe.am));
+   public gfx(gcy.a $$0) {
+      super($$0, new fqs<>($$0.a(frc.bQ)), 0.5F);
+      this.a(new ghw<>(this, $$0.d()));
    }
 
-   public void a(etd $$0, fwq $$1, int $$2, ccq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cpq $$10 = $$3.fN();
-      if ($$10.d() instanceof cnb $$11 && $$11.c() == cnb.a.a) {
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         float $$15;
-         float $$16;
-         float $$14;
-         if ($$10.a(aum.ba)) {
-            int $$13 = coi.b($$10);
-            $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-            $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-            $$16 = (float)($$13 & 0xFF) / 255.0F;
-         } else {
-            $$14 = 1.0F;
-            $$15 = 1.0F;
-            $$16 = 1.0F;
-         }
+   public void a(cgo $$0, float $$1, float $$2, etz $$3, fxq $$4, int $$5) {
+      this.f.b(!$$0.eU().b());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         eth $$20 = $$1.getBuffer(fwy.e($$11.b()));
-         this.a.a($$0, $$20, $$2, ghq.d, $$14, $$15, $$16, 1.0F);
-         return;
-      }
+   public ajh a(cgo $$0) {
+      return a;
+   }
+
+   protected void a(cgo $$0, etz $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

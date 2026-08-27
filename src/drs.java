@@ -1,34 +1,14 @@
-public class drs {
-   public final awt a;
-   private double b;
-   private boolean c;
+import com.mojang.serialization.Codec;
 
-   public drs(awt $$0) {
-      this.a = $$0;
-   }
+public interface drs<T extends drr> {
+   drs<drj> a = a("block", new drj.a());
+   drs<drl> b = a("entity", new drl.a());
 
-   public void a() {
-      this.c = false;
-   }
+   Codec<T> a();
 
-   public double b() {
-      if (this.c) {
-         this.c = false;
-         return this.b;
-      } else {
-         double $$0;
-         double $$1;
-         double $$2;
-         do {
-            $$0 = 2.0 * this.a.j() - 1.0;
-            $$1 = 2.0 * this.a.j() - 1.0;
-            $$2 = awm.k($$0) + awm.k($$1);
-         } while ($$2 >= 1.0 || $$2 == 0.0);
+   xs<vf, T> b();
 
-         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
-         this.b = $$1 * $$3;
-         this.c = true;
-         return $$0 * $$3;
-      }
+   static <S extends drs<T>, T extends drr> S a(String $$0, S $$1) {
+      return iy.a(ki.v, $$0, $$1);
    }
 }

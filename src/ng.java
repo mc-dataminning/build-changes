@@ -1,101 +1,98 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class ng implements na {
-   private final nb b;
-   private final csh c;
-   private final cpl d;
-   private final csp e;
-   private final float f;
-   private final int g;
-   private final Map<String, an<?>> h = new LinkedHashMap<>();
+public class ng implements nc {
+   private final nd b;
+   private final cqf c;
+   private final int d;
+   private final List<String> e = Lists.newArrayList();
+   private final Map<Character, ctk> f = Maps.newLinkedHashMap();
+   private final Map<String, an<?>> g = new LinkedHashMap<>();
    @Nullable
-   private String i;
-   private final csb.a<?> j;
+   private String h;
+   private boolean i = true;
 
-   private ng(nb $$0, csh $$1, cwd $$2, csp $$3, float $$4, int $$5, csb.a<?> $$6) {
+   public ng(nd $$0, cwy $$1, int $$2) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.l();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.j = $$6;
+      this.c = $$1.l();
+      this.d = $$2;
    }
 
-   public static <T extends csb> ng a(csp $$0, nb $$1, cwd $$2, float $$3, int $$4, csw<T> $$5, csb.a<T> $$6) {
-      return new ng($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
+   public static ng a(nd $$0, cwy $$1) {
+      return a($$0, $$1, 1);
    }
 
-   public static ng a(csp $$0, nb $$1, cwd $$2, float $$3, int $$4) {
-      return new ng($$1, csh.a, $$2, $$0, $$3, $$4, csg::new);
+   public static ng a(nd $$0, cwy $$1, int $$2) {
+      return new ng($$0, $$1, $$2);
    }
 
-   public static ng b(csp $$0, nb $$1, cwd $$2, float $$3, int $$4) {
-      return new ng($$1, c($$2), $$2, $$0, $$3, $$4, cse::new);
+   public ng a(Character $$0, avd<cqf> $$1) {
+      return this.a($$0, ctk.a($$1));
    }
 
-   public static ng c(csp $$0, nb $$1, cwd $$2, float $$3, int $$4) {
-      return new ng($$1, b($$2), $$2, $$0, $$3, $$4, cth::new);
+   public ng a(Character $$0, cwy $$1) {
+      return this.a($$0, ctk.a($$1));
    }
 
-   public static ng d(csp $$0, nb $$1, cwd $$2, float $$3, int $$4) {
-      return new ng($$1, csh.a, $$2, $$0, $$3, $$4, ctl::new);
+   public ng a(Character $$0, ctk $$1) {
+      if (this.f.containsKey($$0)) {
+         throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
+      } else if ($$0 == ' ') {
+         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
+      } else {
+         this.f.put($$0, $$1);
+         return this;
+      }
+   }
+
+   public ng b(String $$0) {
+      if (!this.e.isEmpty() && $$0.length() != this.e.get(0).length()) {
+         throw new IllegalArgumentException("Pattern must be the same width on every line!");
+      } else {
+         this.e.add($$0);
+         return this;
+      }
    }
 
    public ng b(String $$0, an<?> $$1) {
-      this.h.put($$0, $$1);
+      this.g.put($$0, $$1);
       return this;
    }
 
-   public ng b(@Nullable String $$0) {
+   public ng c(@Nullable String $$0) {
+      this.h = $$0;
+      return this;
+   }
+
+   public ng a(boolean $$0) {
       this.i = $$0;
       return this;
    }
 
    @Override
-   public cpl a() {
-      return this.d;
+   public cqf a() {
+      return this.c;
    }
 
    @Override
-   public void a(nc $$0, ajc $$1) {
-      this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.h.forEach($$2::a);
-      csb $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new cpq(this.d), this.f, this.g);
-      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
+   public void a(ne $$0, ajh $$1) {
+      ctv $$2 = this.a($$1);
+      ae.a $$3 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
+      this.g.forEach($$3::a);
+      ctu $$4 = new ctu(Objects.requireNonNullElse(this.h, ""), nc.a(this.b), $$2, new cqk(this.c, this.d), this.i);
+      $$0.a($$1, $$4, $$3.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private static csh b(cwd $$0) {
-      if ($$0.l().v()) {
-         return csh.a;
-      } else {
-         return $$0.l() instanceof cnl ? csh.b : csh.c;
-      }
-   }
-
-   private static csh c(cwd $$0) {
-      return $$0.l() instanceof cnl ? csh.b : csh.c;
-   }
-
-   private static csh a(csw<? extends csb> $$0, cwd $$1) {
-      if ($$0 == csw.p) {
-         return b($$1);
-      } else if ($$0 == csw.q) {
-         return c($$1);
-      } else if ($$0 != csw.r && $$0 != csw.s) {
-         throw new IllegalStateException("Unknown cooking recipe type");
-      } else {
-         return csh.a;
-      }
-   }
-
-   private void a(ajc $$0) {
-      if (this.h.isEmpty()) {
+   private ctv a(ajh $$0) {
+      if (this.g.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
+      } else {
+         return ctv.a(this.f, this.e);
       }
    }
 }

@@ -1,173 +1,263 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
-public class cdt extends cdh {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 5;
-   private int d;
-   @Nullable
-   private eig e;
-   @Nullable
-   private eov f;
-   @Nullable
-   private box g;
-   private boolean h;
+public class cdt {
+   private static final Logger c = LogUtils.getLogger();
+   private static final int d = 6;
+   static final List<bzy<? extends bzx<? super cds>>> a = ImmutableList.of(bzy.c, bzy.f, bzy.d, bzy.y);
+   static final List<byr<?>> b = ImmutableList.of(
+      byr.n, byr.m, byr.E, byr.t, byr.Z, byr.aR, byr.aS, byr.aT, byr.aG, byr.aQ, byr.h, byr.r, new byr[]{byr.O, byr.P, byr.R}
+   );
+   private static final int e = 9600;
+   private static final float f = 1.0F;
+   private static final float g = 2.0F;
+   private static final float h = 1.25F;
+   private static final float i = 1.25F;
 
-   public cdt(cdf $$0) {
-      super($$0);
+   public static ctk a() {
+      return ctk.a(cqn.vf);
    }
 
-   @Override
-   public void c() {
-      if (this.g == null) {
-         b.warn("Skipping player strafe phase because no player was found");
-         this.a.gi().a(cdv.a);
-      } else {
-         if (this.e != null && this.e.c()) {
-            double $$0 = this.g.do();
-            double $$1 = this.g.du();
-            double $$2 = $$0 - this.a.do();
-            double $$3 = $$1 - this.a.du();
-            double $$4 = Math.sqrt($$2 * $$2 + $$3 * $$3);
-            double $$5 = Math.min(0.4F + $$4 / 80.0 - 1.0, 10.0);
-            this.f = new eov($$0, this.g.dq() + $$5, $$1);
+   protected static bqp<?> a(bqp<cds> $$0) {
+      b($$0);
+      e($$0);
+      c($$0);
+      d($$0);
+      $$0.a(Set.of(ckh.a));
+      $$0.b(ckh.b);
+      $$0.f();
+      return $$0;
+   }
+
+   static cds b(cds $$0) {
+      $$0.dP().b(byr.aS);
+      $$0.dP().b(byr.aR);
+      return $$0.a(cds.a.a);
+   }
+
+   private static void b(bqp<cds> $$0) {
+      $$0.a(ckh.a, 0, ImmutableList.of(new bua(0.8F), new brb<cds>(2.0F) {
+         protected void a(apf $$0, cds $$1, long $$2) {
+            cdt.b($$1);
+            super.b($$0, $$1, $$2);
          }
+      }, new bsq(500, 700), new brm(byr.P)));
+   }
 
-         double $$6 = this.f == null ? 0.0 : this.f.c(this.a.do(), this.a.dq(), this.a.du());
-         if ($$6 < 100.0 || $$6 > 22500.0) {
-            this.j();
-         }
+   private static void c(bqp<cds> $$0) {
+      $$0.a(ckh.v, ImmutableList.of(Pair.of(0, new cdt.e())), Set.of(Pair.of(byr.Z, bys.b), Pair.of(byr.aR, bys.a), Pair.of(byr.m, bys.a)));
+   }
 
-         double $$7 = 64.0;
-         if (this.g.f(this.a) < 4096.0) {
-            if (this.a.D(this.g)) {
-               this.d++;
-               eov $$8 = new eov(this.g.do() - this.a.do(), 0.0, this.g.du() - this.a.du()).d();
-               eov $$9 = new eov((double)awm.a(this.a.dz() * (float) (Math.PI / 180.0)), 0.0, (double)(-awm.b(this.a.dz() * (float) (Math.PI / 180.0)))).d();
-               float $$10 = (float)$$9.b($$8);
-               float $$11 = (float)(Math.acos((double)$$10) * 180.0F / (float)Math.PI);
-               $$11 += 0.5F;
-               if (this.d >= 5 && $$11 >= 0.0F && $$11 < 10.0F) {
-                  double $$12 = 1.0;
-                  eov $$13 = this.a.f(1.0F);
-                  double $$14 = this.a.e.do() - $$13.c * 1.0;
-                  double $$15 = this.a.e.e(0.5) + 0.5;
-                  double $$16 = this.a.e.du() - $$13.e * 1.0;
-                  double $$17 = this.g.do() - $$14;
-                  double $$18 = this.g.e(0.5) - $$15;
-                  double $$19 = this.g.du() - $$16;
-                  if (!this.a.aU()) {
-                     this.a.dJ().a(null, 1017, this.a.dj(), 0);
-                  }
+   private static void d(bqp<cds> $$0) {
+      $$0.a(
+         ckh.z,
+         ImmutableList.of(Pair.of(0, new cdt.a(160, 180)), Pair.of(0, new cdt.c(40))),
+         Set.of(Pair.of(byr.Z, bys.b), Pair.of(byr.m, bys.b), Pair.of(byr.aS, bys.a))
+      );
+   }
 
-                  cij $$20 = new cij(this.a.dJ(), this.a, $$17, $$18, $$19);
-                  $$20.b($$14, $$15, $$16, 0.0F, 0.0F);
-                  this.a.dJ().b($$20);
-                  this.d = 0;
-                  if (this.e != null) {
-                     while (!this.e.c()) {
-                        this.e.a();
-                     }
-                  }
-
-                  this.a.gi().a(cdv.a);
+   private static void e(bqp<cds> $$0) {
+      $$0.a(
+         ckh.b,
+         ImmutableList.of(
+            Pair.of(0, new bra(bpc.aQ) {
+               @Override
+               protected void a(apf $$0, cbd $$1, long $$2) {
+                  cdt.b((cds)$$1);
+                  super.a($$0, $$1, $$2);
                }
-            } else if (this.d > 0) {
-               this.d--;
-            }
-         } else if (this.d > 0) {
-            this.d--;
-         }
-      }
+            }),
+            Pair.of(1, new brt($$0x -> 1.25F, $$0x -> $$0x.o_() ? 2.5 : 3.5) {
+               @Override
+               protected void b(apf $$0, bpw $$1, long $$2) {
+                  cdt.b((cds)$$1);
+                  super.b($$0, $$1, $$2);
+               }
+            }),
+            Pair.of(2, new bsm(45, 90)),
+            Pair.of(3, new cdt.b(40, 100)),
+            Pair.of(
+               4,
+               new btd(
+                  ImmutableList.of(
+                     Pair.of(btn.a(1.0F, 3), 2),
+                     Pair.of(new cdt.d(40, 80), 1),
+                     Pair.of(new cdt.f(40, 80), 1),
+                     Pair.of(btf.a(bpc.bx, 6.0F), 1),
+                     Pair.of(bsy.a(1.0F), 1),
+                     Pair.of(new brq(5, 20), 2)
+                  )
+               )
+            )
+         ),
+         Set.of(Pair.of(byr.aS, bys.b))
+      );
    }
 
-   private void j() {
-      if (this.e == null || this.e.c()) {
-         int $$0 = this.a.A();
-         int $$1 = $$0;
-         if (this.a.ef().a(8) == 0) {
-            this.h = !this.h;
-            $$1 = $$0 + 6;
-         }
+   static void a(cds $$0) {
+      $$0.dP().a(ImmutableList.of(ckh.z, ckh.v, ckh.b));
+   }
 
-         if (this.h) {
-            $$1++;
+   static class a extends brg<cds> {
+      a(int $$0, int $$1) {
+         super(Map.of(byr.Z, bys.b, byr.m, bys.b, byr.aS, bys.a, byr.aG, bys.b), $$0, $$1);
+      }
+
+      protected boolean a(apf $$0, cds $$1) {
+         return $$1.gn();
+      }
+
+      protected boolean a(apf $$0, cds $$1, long $$2) {
+         return $$1.dP().c(byr.aS).isPresent() && $$1.gv() && !$$1.gr();
+      }
+
+      protected void b(apf $$0, cds $$1, long $$2) {
+         $$1.a(cds.a.f);
+      }
+
+      protected void c(apf $$0, cds $$1, long $$2) {
+         boolean $$3 = this.a($$2);
+         if ($$3) {
+            $$1.dP().a(byr.aG, axy.a, 9600L);
          } else {
-            $$1--;
+            cdt.b($$1);
          }
+      }
+   }
 
-         if (this.a.gj() != null && this.a.gj().e() > 0) {
-            $$1 %= 12;
-            if ($$1 < 0) {
-               $$1 += 12;
-            }
+   static class b extends brg<cds> {
+      b(int $$0, int $$1) {
+         super(Map.of(byr.aT, bys.a), $$0, $$1);
+      }
+
+      protected boolean a(apf $$0, cds $$1, long $$2) {
+         return true;
+      }
+
+      protected void b(apf $$0, cds $$1, long $$2) {
+         $$1.a(cds.a.b);
+      }
+
+      protected void c(apf $$0, cds $$1, long $$2) {
+         $$1.a(cds.a.a);
+         $$1.dP().b(byr.aT);
+      }
+   }
+
+   static class c extends brg<cds> {
+      c(int $$0) {
+         super(Map.of(byr.Z, bys.b, byr.m, bys.b, byr.aS, bys.a, byr.aG, bys.a), $$0, $$0);
+      }
+
+      protected boolean a(apf $$0, cds $$1) {
+         return true;
+      }
+
+      protected boolean a(apf $$0, cds $$1, long $$2) {
+         return $$1.dP().c(byr.aS).isPresent();
+      }
+
+      protected void b(apf $$0, cds $$1, long $$2) {
+         $$1.a(cds.a.g);
+      }
+
+      protected void c(apf $$0, cds $$1, long $$2) {
+         boolean $$3 = this.a($$2);
+         $$1.a(cds.a.a).w($$3);
+         $$1.dP().b(byr.aS);
+         $$1.dP().a(byr.aT, true);
+      }
+   }
+
+   static class d extends brg<cds> {
+      d(int $$0, int $$1) {
+         super(Map.of(byr.Z, bys.b, byr.aS, bys.b, byr.aR, bys.b, byr.aT, bys.b, byr.r, bys.b), $$0, $$1);
+      }
+
+      protected boolean a(apf $$0, cds $$1) {
+         return !$$1.y();
+      }
+
+      protected boolean a(apf $$0, cds $$1, long $$2) {
+         return true;
+      }
+
+      protected void b(apf $$0, cds $$1, long $$2) {
+         $$1.a(cds.a.c);
+      }
+
+      protected void c(apf $$0, cds $$1, long $$2) {
+         $$1.a(cds.a.a);
+      }
+   }
+
+   static class e extends brg<cds> {
+      e() {
+         super(Map.of(byr.m, bys.a, byr.Z, bys.b, byr.aR, bys.a), 600);
+      }
+
+      protected boolean a(apf $$0, cds $$1) {
+         return $$1.gn();
+      }
+
+      protected boolean a(apf $$0, cds $$1, long $$2) {
+         if (!$$1.gn()) {
+            $$1.a(cds.a.a);
+            return false;
          } else {
-            $$1 -= 12;
-            $$1 &= 7;
-            $$1 += 12;
-         }
-
-         this.e = this.a.a($$0, $$1, null);
-         if (this.e != null) {
-            this.e.a();
+            Optional<ib> $$3 = $$1.dP().c(byr.m).map(byu::a).map(bsu::b);
+            Optional<ib> $$4 = $$1.dP().c(byr.aR);
+            return !$$3.isEmpty() && !$$4.isEmpty() ? $$4.get().equals($$3.get()) : false;
          }
       }
 
-      this.k();
-   }
+      protected void b(apf $$0, cds $$1, long $$2) {
+         $$1.a(cds.a.e);
+      }
 
-   private void k() {
-      if (this.e != null && !this.e.c()) {
-         jf $$0 = this.e.g();
-         this.e.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
+      protected void c(apf $$0, cds $$1, long $$2) {
+         if ($$1.gv() && $$1.gn()) {
+            $$1.dP().a(byr.aS, true);
+         }
 
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.f = new eov($$1, $$3, $$2);
+         $$1.dP().b(byr.m);
+         $$1.dP().b(byr.aR);
       }
    }
 
-   @Override
-   public void d() {
-      this.d = 0;
-      this.f = null;
-      this.e = null;
-      this.g = null;
-   }
-
-   public void a(box $$0) {
-      this.g = $$0;
-      int $$1 = this.a.A();
-      int $$2 = this.a.r(this.g.do(), this.g.dq(), this.g.du());
-      int $$3 = this.g.dn();
-      int $$4 = this.g.dt();
-      double $$5 = (double)$$3 - this.a.do();
-      double $$6 = (double)$$4 - this.a.du();
-      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
-      double $$8 = Math.min(0.4F + $$7 / 80.0 - 1.0, 10.0);
-      int $$9 = awm.a(this.g.dq() + $$8);
-      eie $$10 = new eie($$3, $$9, $$4);
-      this.e = this.a.a($$1, $$2, $$10);
-      if (this.e != null) {
-         this.e.a();
-         this.k();
+   static class f extends brg<cds> {
+      f(int $$0, int $$1) {
+         super(Map.of(byr.m, bys.b, byr.aR, bys.b, byr.aG, bys.b), $$0, $$1);
       }
-   }
 
-   @Nullable
-   @Override
-   public eov g() {
-      return this.f;
-   }
+      protected boolean a(apf $$0, cds $$1) {
+         return !$$1.o_() && $$1.gn();
+      }
 
-   @Override
-   public cdv<cdt> i() {
-      return cdv.b;
+      protected boolean a(apf $$0, cds $$1, long $$2) {
+         return $$1.gn();
+      }
+
+      protected void b(apf $$0, cds $$1, long $$2) {
+         $$1.a(cds.a.d);
+      }
+
+      protected void c(apf $$0, cds $$1, long $$2) {
+         boolean $$3 = this.a($$2);
+         $$1.a(cds.a.a);
+         if ($$3) {
+            $$1.gu().ifPresent($$1x -> {
+               $$1.dP().a(byr.aR, $$1x);
+               $$1.dP().a(byr.m, new byu($$1x, 1.25F, 0));
+            });
+         }
+      }
    }
 }

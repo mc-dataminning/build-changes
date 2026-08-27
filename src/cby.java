@@ -1,22 +1,35 @@
-import com.google.common.collect.ImmutableMap;
-
-public class cby extends bqp<cbw> {
-   public cby() {
-      super(ImmutableMap.of(bya.N, byb.a, bya.y, byb.a), 200);
+public class cby extends cbc {
+   public cby(bpc<? extends cby> $$0, cwz $$1) {
+      super($$0, $$1);
    }
 
-   protected boolean a(apa $$0, cbw $$1) {
-      return $$1.bc();
+   @Override
+   public int gp() {
+      return 5;
    }
 
-   protected boolean a(apa $$0, cbw $$1, long $$2) {
-      return $$1.bc() && $$1.dM().a(bya.N);
+   @Override
+   public cqk b() {
+      return new cqk(cqn.qF);
    }
 
-   protected void b(apa $$0, cbw $$1, long $$2) {
-      bpy<cbw> $$3 = $$1.dM();
-      $$3.b(bya.m);
-      $$3.b(bya.n);
-      $$1.b(new bns(bnu.j, 200, 0));
+   @Override
+   protected atx v() {
+      return aty.vb;
+   }
+
+   @Override
+   protected atx n_() {
+      return aty.vc;
+   }
+
+   @Override
+   protected atx d(bnv $$0) {
+      return aty.ve;
+   }
+
+   @Override
+   protected atx go() {
+      return aty.vd;
    }
 }

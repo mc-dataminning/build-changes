@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eow {
+public interface eow {
+   @Nullable
+   equ a(eku var1);
+
+   eov a();
+
+   Set<enc<?>> b();
 }

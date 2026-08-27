@@ -1,49 +1,30 @@
-public class ciq extends cim {
-   private int e = 1;
+import java.util.function.IntFunction;
 
-   public ciq(bol<? extends ciq> $$0, cwe $$1) {
-      super($$0, $$1);
-   }
+public enum ciq implements awy {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
 
-   public ciq(cwe $$0, box $$1, double $$2, double $$3, double $$4, int $$5) {
-      super(bol.ai, $$1, $$2, $$3, $$4, $$0);
-      this.e = $$5;
-   }
+   private static final IntFunction<ciq> d = avn.a(ciq::a, values(), avn.a.b);
+   private final int e;
+   private final String f;
 
-   @Override
-   protected void a(eot $$0) {
-      super.a($$0);
-      if (!this.dJ().B) {
-         boolean $$1 = this.dJ().Z().b(cwa.c);
-         this.dJ().a(this, this.do(), this.dq(), this.du(), (float)this.e, $$1, cwe.a.c);
-         this.am();
-      }
+   private ciq(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   protected void a(eos $$0) {
-      super.a($$0);
-      if (!this.dJ().B) {
-         bof $$1 = $$0.a();
-         bof $$2 = this.w();
-         $$1.a(this.dK().a((cim)this, $$2), 6.0F);
-         if ($$2 instanceof box) {
-            this.a((box)$$2, $$1);
-         }
-      }
+   public int a() {
+      return this.e;
    }
 
    @Override
-   public void b(sy $$0) {
-      super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.e);
+   public String b() {
+      return this.f;
    }
 
-   @Override
-   public void a(sy $$0) {
-      super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.e = $$0.f("ExplosionPower");
-      }
+   public static ciq a(int $$0) {
+      return d.apply($$0);
    }
 }

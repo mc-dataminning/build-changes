@@ -1,76 +1,127 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class dlq {
-   static final String a = "shared_data";
-   static Codec<dlq> b = RecordCodecBuilder.create(
+   private static final Codec<vu[]> c = vw.e
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 4).map($$0x -> new vu[]{(vu)$$0x.get(0), (vu)$$0x.get(1), (vu)$$0x.get(2), (vu)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dlq> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cpq.a("display_item").forGetter($$0x -> $$0x.d),
-               je.c.optionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("connected_particles_range", dlo.b.d()).forGetter($$0x -> $$0x.f)
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.optionalFieldOf("filtered_messages").forGetter(dlq::d),
+               cpb.q.fieldOf("color").orElse(cpb.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
             )
-            .apply($$0, dlq::new)
+            .apply($$0, dlq::a)
    );
-   private cpq d = cpq.h;
-   private Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private double f = dlo.b.d();
-   boolean c;
+   public static final int b = 4;
+   private final vu[] d;
+   private final vu[] e;
+   private final cpb f;
+   private final boolean g;
+   @Nullable
+   private awi[] h;
+   private boolean i;
 
-   dlq(cpq $$0, Set<UUID> $$1, double $$2) {
+   public dlq() {
+      this(c(), c(), cpb.p, false);
+   }
+
+   public dlq(vu[] $$0, vu[] $$1, cpb $$2, boolean $$3) {
       this.d = $$0;
-      this.e.addAll($$1);
+      this.e = $$1;
       this.f = $$2;
+      this.g = $$3;
    }
 
-   dlq() {
+   private static vu[] c() {
+      return new vu[]{vt.a, vt.a, vt.a, vt.a};
    }
 
-   public cpq a() {
-      return this.d;
+   private static dlq a(vu[] $$0, Optional<vu[]> $$1, cpb $$2, boolean $$3) {
+      return new dlq($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
    }
 
-   public boolean b() {
-      return !this.d.b();
+   public boolean a() {
+      return this.g;
    }
 
-   public void a(cpq $$0) {
-      if (!cpq.a(this.d, $$0)) {
-         this.d = $$0.q();
-         this.f();
-      }
+   public dlq a(boolean $$0) {
+      return $$0 == this.g ? this : new dlq(this.d, this.e, this.f, $$0);
    }
 
-   boolean c() {
-      return !this.e.isEmpty();
-   }
-
-   Set<UUID> d() {
-      return this.e;
-   }
-
-   double e() {
+   public cpb b() {
       return this.f;
    }
 
-   void a(apa $$0, ib $$1, dlp $$2, dlo $$3, double $$4) {
-      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
-      if (!this.e.equals($$5)) {
-         this.e = $$5;
-         this.f();
+   public dlq a(cpb $$0) {
+      return $$0 == this.b() ? this : new dlq(this.d, this.e, $$0, this.g);
+   }
+
+   public vu a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
+   }
+
+   public dlq a(int $$0, vu $$1) {
+      return this.a($$0, $$1, $$1);
+   }
+
+   public dlq a(int $$0, vu $$1, vu $$2) {
+      vu[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      vu[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dlq($$3, $$4, this.f, this.g);
+   }
+
+   public boolean a(cis $$0) {
+      return Arrays.stream(this.b($$0.Y())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   }
+
+   public vu[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
+   }
+
+   public awi[] a(boolean $$0, Function<vu, awi> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new awi[4];
+
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+         }
       }
+
+      return this.h;
    }
 
-   private void f() {
-      this.c = true;
+   private Optional<vu[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   void a(dlq $$0) {
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
+   public boolean b(cis $$0) {
+      for (vu $$1 : this.b($$0.Y())) {
+         wr $$2 = $$1.a();
+         vs $$3 = $$2.h();
+         if ($$3 != null && $$3.a() == vs.a.c) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

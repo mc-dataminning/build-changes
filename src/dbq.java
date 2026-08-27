@@ -1,62 +1,43 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbq extends dbk {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<dbq> d = b(dbq::new);
-   private static final jn f = new jm();
+public class dbq extends czi {
+   public static final MapCodec<dbq> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbp.a.forGetter($$0x -> $$0x.c), u()).apply($$0, dbq::new));
+   private final daa c;
 
    @Override
    public MapCodec<dbq> a() {
-      return d;
+      return b;
    }
 
-   public dbq(dmd.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected jn a(cpq $$0) {
-      return f;
+   protected dbq(daa $$0, dmy.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public djl a(ib $$0, dme $$1) {
-      return new dke($$0, $$1);
+   protected void b(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
+      this.a($$0, (cxa)$$1, $$2);
    }
 
    @Override
-   protected void a(apa $$0, dme $$1, ib $$2) {
-      dkd $$3 = $$0.a($$2, djn.g).orElse(null);
-      if ($$3 == null) {
-         e.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.o().a(d, Boolean.valueOf(false)), 2);
+      }
+   }
+
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if ($$1 == ih.a && !$$0.a($$3, $$4)) {
+         return dac.a.o();
       } else {
-         jk $$4 = new jk($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.z);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            cpq $$6 = $$3.a($$5);
-            if (!$$6.b()) {
-               ih $$7 = $$0.a_($$2).c(b);
-               bme $$8 = dkk.a($$0, $$2.a($$7));
-               cpq $$9;
-               if ($$8 == null) {
-                  $$9 = f.dispense($$4, $$6);
-               } else {
-                  $$9 = dkk.a($$3, $$8, $$6.q().a(1), $$7.g());
-                  if ($$9.b()) {
-                     $$9 = $$6.q();
-                     $$9.h(1);
-                  } else {
-                     $$9 = $$6.q();
-                  }
-               }
-
-               $$3.a($$5, $$9);
-            }
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, eio.c, eio.c.a($$3));
          }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 }

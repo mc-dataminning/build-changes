@@ -1,119 +1,95 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+public class dsx implements cwm {
+   private int a;
 
-public interface dsx extends BiPredicate<cwz, ib> {
-   Codec<dsx> b = kh.O.q().dispatch(dsx::a, dsy::codec);
-   dsx c = a(czh.a);
-   dsx d = a(czh.a, czh.G);
+   @Override
+   public int a(apf $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.Z().b(cwv.K)) {
+         return 0;
+      } else {
+         axd $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.Y() / 24000L;
+            if ($$4 < 5L || !$$0.P()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cis $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.N_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dm(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     ib.a $$9 = $$6.dm().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        il<cxy> $$11 = $$0.t($$9);
+                        if ($$11.a(aum.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-   dsy<?> a();
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(dsm.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
 
-   static dsx a(List<dsx> $$0) {
-      return new dsv($$0);
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
+
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 
-   static dsx a(dsx... $$0) {
-      return a(List.of($$0));
-   }
+   private boolean a(apf $$0, ib $$1, axd $$2, boolean $$3) {
+      dmz $$4 = $$0.a_($$1);
+      if (!cxk.a($$0, $$1, $$4, $$4.u(), bpc.aB)) {
+         return false;
+      } else if (!cfz.b(bpc.aB, $$0, bps.p, $$1, $$2)) {
+         return false;
+      } else {
+         cfz $$5 = bpc.aB.a((cwz)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gv();
+            }
 
-   static dsx a(dsx $$0, dsx $$1) {
-      return a(List.of($$0, $$1));
-   }
-
-   static dsx b(List<dsx> $$0) {
-      return new dsw($$0);
-   }
-
-   static dsx b(dsx... $$0) {
-      return b(List.of($$0));
-   }
-
-   static dsx b(dsx $$0, dsx $$1) {
-      return b(List.of($$0, $$1));
-   }
-
-   static dsx a(jf $$0, List<czf> $$1) {
-      return new dtd($$0, ip.a(czf::r, $$1));
-   }
-
-   static dsx c(List<czf> $$0) {
-      return a(jf.g, $$0);
-   }
-
-   static dsx a(jf $$0, czf... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   static dsx a(czf... $$0) {
-      return a(jf.g, $$0);
-   }
-
-   static dsx a(jf $$0, aut<czf> $$1) {
-      return new dtc($$0, $$1);
-   }
-
-   static dsx a(aut<czf> $$0) {
-      return a(jf.g, $$0);
-   }
-
-   static dsx b(jf $$0, List<ehq> $$1) {
-      return new dte($$0, ip.a(ehq::k, $$1));
-   }
-
-   static dsx a(jf $$0, ehq... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static dsx a(ehq... $$0) {
-      return a(jf.g, $$0);
-   }
-
-   static dsx a(dsx $$0) {
-      return new dtf($$0);
-   }
-
-   static dsx a(jf $$0) {
-      return new dtg($$0);
-   }
-
-   static dsx b() {
-      return a(jf.g);
-   }
-
-   static dsx a(dme $$0, jf $$1) {
-      return new dtk($$1, $$0);
-   }
-
-   static dsx a(jf $$0, ih $$1) {
-      return new dta($$0, $$1);
-   }
-
-   static dsx a(ih $$0) {
-      return a(jf.g, $$0);
-   }
-
-   static dsx b(jf $$0) {
-      return new dth($$0);
-   }
-
-   static dsx c() {
-      return b(jf.g);
-   }
-
-   static dsx d() {
-      return c(jf.g);
-   }
-
-   static dsx c(jf $$0) {
-      return a($$0, ehs.a);
-   }
-
-   static dsx d(jf $$0) {
-      return new dtb($$0);
-   }
-
-   static dsx e() {
-      return dtj.a;
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bps.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
+      }
    }
 }

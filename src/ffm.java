@@ -1,74 +1,97 @@
-import com.google.common.hash.Hashing;
 import javax.annotation.Nullable;
 
-public class ffm implements AutoCloseable {
-   private static final ajc a = new ajc("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gia d;
-   private final ajc e;
+public record ffm(ffl a, int b, int c) {
+   private static final ffm d = new ffm(0, 0, 0, 0);
+
+   public ffm(int $$0, int $$1, int $$2, int $$3) {
+      this(new ffl($$0, $$1), $$2, $$3);
+   }
+
+   public static ffm a() {
+      return d;
+   }
+
+   public static ffm a(ffj $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new ffm($$1, $$2, $$3, $$4);
+         case b -> new ffm($$2, $$1, $$4, $$3);
+      };
+   }
+
+   public ffm a(ffk $$0) {
+      return new ffm(this.a.a($$0), this.b, this.c);
+   }
+
+   public int a(ffj $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
+   }
+
+   public int b(ffk $$0) {
+      ffj $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
+
+   public ffm c(ffk $$0) {
+      int $$1 = this.b($$0);
+      ffj $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
+
+   public boolean a(ffm $$0) {
+      return this.a($$0, ffj.a) && this.a($$0, ffj.b);
+   }
+
+   public boolean a(ffm $$0, ffj $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(ffj $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
    @Nullable
-   private ghm f;
-   private boolean g;
-
-   private ffm(gia $$0, ajc $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public ffm b(ffm $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new ffm($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
    }
 
-   public static ffm a(gia $$0, String $$1) {
-      return new ffm($$0, new ajc("minecraft", "worlds/" + ac.a($$1, ajc::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   public int b() {
+      return this.a.b();
    }
 
-   public static ffm b(gia $$0, String $$1) {
-      return new ffm($$0, new ajc("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   public int c() {
+      return this.a.b() + this.c;
    }
 
-   public void a(ese $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new ghm($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
+   public int d() {
+      return this.a.a();
    }
 
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
+   public int e() {
+      return this.a.a() + this.b;
    }
 
-   public ajc b() {
-      return this.f != null ? this.e : a;
+   public ffl f() {
+      return this.a;
    }
 
-   @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   public int g() {
+      return this.b;
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   public int h() {
+      return this.c;
    }
 }

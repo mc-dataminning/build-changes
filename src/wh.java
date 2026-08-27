@@ -1,35 +1,63 @@
-public interface wh {
-   vs a();
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   void a(apb var1, boolean var2, vo.a var3);
+public class wh {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final wg[] c;
 
-   static wh a(wi $$0) {
-      return (wh)($$0.h() ? new wh.a($$0.d()) : new wh.b($$0));
+   public wh(int $$0) {
+      this.c = new wg[$$0];
    }
 
-   public static record a(vs a) implements wh {
-      @Override
-      public void a(apb $$0, boolean $$1, vo.a $$2) {
-         $$0.d.a(this.a, $$2);
-      }
+   public static wh a() {
+      return new wh(128);
    }
 
-   public static record b(wi a) implements wh {
-      @Override
-      public vs a() {
-         return this.a.d();
-      }
-
-      @Override
-      public void a(apb $$0, boolean $$1, vo.a $$2) {
-         wi $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.d.a($$3, $$2);
+   public int a(wg $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
          }
       }
 
-      public wi b() {
-         return this.a;
+      return -1;
+   }
+
+   @Nullable
+   public wg a(int $$0) {
+      return this.c[$$0];
+   }
+
+   public void a(wn $$0, @Nullable wg $$1) {
+      List<wg> $$2 = $$0.d().a();
+      ArrayDeque<wg> $$3 = new ArrayDeque<>($$2.size() + 1);
+      $$3.addAll($$2);
+      if ($$1 != null) {
+         $$3.add($$1);
+      }
+
+      this.a($$3);
+   }
+
+   @VisibleForTesting
+   void a(List<wg> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<wg> $$0) {
+      Set<wg> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         wg $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
       }
    }
 }

@@ -1,99 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dun extends duu<dxf> {
-   private static final dmn a = dmn.a(czh.I);
-   private final dme b = czh.I.o();
-   private final dme c = czh.jF.o();
-   private final dme d = czh.aV.o();
-   private final dme an = czh.G.o();
+public class dun extends duk {
+   public static final Codec<dun> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               duk.d.forGetter($$0x -> $$0x),
+               bmf.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bmf.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bmf.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dun::new)
+   );
+   public final bmf b;
+   public final bmf c;
+   final bmf j;
 
-   public dun(Codec<dxf> $$0) {
-      super($$0);
+   public dun(float $$0, ebj $$1, bmf $$2, dtg $$3, dul $$4, ip<daa> $$5, bmf $$6, bmf $$7, bmf $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(duw<dxf> $$0) {
-      cwz $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      $$2 = $$2.c();
-
-      while ($$1.u($$2) && $$2.v() > $$1.J_() + 2) {
-         $$2 = $$2.d();
-      }
-
-      if (!a.a($$1.a_($$2))) {
-         return false;
-      } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
-                  return false;
-               }
-            }
-         }
-
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.an, 2);
-
-         for (ih $$8 : ih.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
-         }
-
-         ib $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (ih $$10 : ih.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<ib> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
-         awt $$18 = $$0.d();
-         b($$1, ac.a($$17, $$18).c(1));
-         b($$1, ac.a($$17, $$18).c(2));
-         return true;
-      }
+   public dun(float $$0, ebj $$1, bmf $$2, dtg $$3, ip<daa> $$4, bmf $$5, bmf $$6, bmf $$7) {
+      this($$0, $$1, $$2, $$3, dul.a, $$4, $$5, $$6, $$7);
    }
 
-   private static void b(cwz $$0, ib $$1) {
-      $$0.a($$1, czh.J.o(), 3);
-      $$0.a($$1, djn.N).ifPresent($$1x -> $$1x.a(ejw.aO, $$1.a()));
+   public dun(duk $$0, bmf $$1, bmf $$2, bmf $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

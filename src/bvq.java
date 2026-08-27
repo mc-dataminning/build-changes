@@ -1,61 +1,68 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+public class bvq extends bvo {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-public class bvq extends bvu {
-   private static final int a = 200;
-   private final cal b;
-   private int c;
-   private int d;
-
-   public bvq(cal $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(cal $$0) {
-      return b(200 + $$0.ef().a(200) % 20);
+   public bvq(bpq $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
    @Override
-   public boolean a() {
-      if (this.b.gr()) {
-         return false;
-      } else if (this.b.go()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
-         return false;
+   public void a() {
+      if (this.r && this.d.bc()) {
+         this.d.g(this.d.dp().b(0.0, 0.005, 0.0));
+      }
+
+      if (this.k == bvo.a.b && !this.d.K().l()) {
+         double $$0 = this.e - this.d.dr();
+         double $$1 = this.f - this.d.dt();
+         double $$2 = this.g - this.d.dx();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.C(0.0F);
+         } else {
+            float $$4 = (float)(aww.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.r(this.a(this.d.dC(), $$4, (float)this.o));
+            this.d.aX = this.d.dC();
+            this.d.aZ = this.d.dC();
+            float $$5 = (float)(this.h * this.d.g(bqv.r));
+            if (this.d.bc()) {
+               this.d.y($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(aww.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = aww.a(aww.g($$7), (float)(-this.n), (float)this.n);
+                  this.d.s(this.a(this.d.dE(), $$7, 5.0F));
+               }
+
+               float $$8 = aww.b(this.d.dE() * (float) (Math.PI / 180.0));
+               float $$9 = aww.a(this.d.dE() * (float) (Math.PI / 180.0));
+               this.d.bp = $$8 * $$5;
+               this.d.bo = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(aww.g(this.d.dC() - $$4));
+               float $$11 = a($$10);
+               this.d.y($$5 * this.q * $$11);
+            }
+         }
       } else {
-         this.d = this.a(this.b);
-         Predicate<cal> $$0 = $$0x -> $$0x.gq() || !$$0x.go();
-         List<? extends cal> $$1 = this.b.dJ().a((Class<? extends cal>)this.b.getClass(), this.b.cE().c(8.0, 8.0, 8.0), $$0);
-         cal $$2 = (cal)DataFixUtils.orElse($$1.stream().filter(cal::gq).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.go()));
-         return this.b.go();
+         this.d.y(0.0F);
+         this.d.E(0.0F);
+         this.d.D(0.0F);
+         this.d.C(0.0F);
       }
    }
 
-   @Override
-   public boolean b() {
-      return this.b.go() && this.b.gs();
-   }
-
-   @Override
-   public void c() {
-      this.c = 0;
-   }
-
-   @Override
-   public void d() {
-      this.b.gp();
-   }
-
-   @Override
-   public void e() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gt();
-      }
+   private static float a(float $$0) {
+      return 1.0F - aww.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

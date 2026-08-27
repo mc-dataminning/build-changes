@@ -1,116 +1,40 @@
-import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Set;
+import javax.annotation.Nullable;
 
 public class anb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("commands.tag.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.spectate.self"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("commands.spectate.not_spectator", $$0));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tag").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spectate").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), null, ((du)$$0x.getSource()).h())))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("targets", eh.b())
-                        .then(
-                           dv.a("add")
-                              .then(
-                                 dv.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                              )
-                        ))
-                     .then(
-                        dv.a("remove")
-                           .then(
-                              dv.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> dz.b(a(eh.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((du)$$0x.getSource(), eh.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                           )
-                     ))
-                  .then(dv.a("list").executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"))))
+               ((RequiredArgumentBuilder)dv.a("target", eh.a()).executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), ((du)$$0x.getSource()).h())))
+                  .then(dv.a("player", eh.c()).executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), eh.e($$0x, "player"))))
             )
       );
    }
 
-   private static Collection<String> a(Collection<? extends bof> $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-
-      for (bof $$2 : $$0) {
-         $$1.addAll($$2.ak());
-      }
-
-      return $$1;
-   }
-
-   private static int a(du $$0, Collection<? extends bof> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bof $$4 : $$1) {
-         if ($$4.a($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
+   private static int a(du $$0, @Nullable bow $$1, apg $$2) throws CommandSyntaxException {
+      if ($$2 == $$1) {
          throw a.create();
+      } else if ($$2.f.b() != cww.d) {
+         throw b.create($$2.O_());
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vs.a("commands.tag.add.success.single", $$2, $$1.iterator().next().Q_()), true);
+         $$2.d($$1);
+         if ($$1 != null) {
+            $$0.a(() -> vu.a("commands.spectate.success.started", $$1.O_()), false);
          } else {
-            $$0.a(() -> vs.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+            $$0.a(() -> vu.c("commands.spectate.success.stopped"), false);
          }
 
-         return $$3;
+         return 1;
       }
-   }
-
-   private static int b(du $$0, Collection<? extends bof> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bof $$4 : $$1) {
-         if ($$4.b($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vs.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vs.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int a(du $$0, Collection<? extends bof> $$1) {
-      Set<String> $$2 = Sets.newHashSet();
-
-      for (bof $$3 : $$1) {
-         $$2.addAll($$3.ak());
-      }
-
-      if ($$1.size() == 1) {
-         bof $$4 = $$1.iterator().next();
-         if ($$2.isEmpty()) {
-            $$0.a(() -> vs.a("commands.tag.list.single.empty", $$4.Q_()), false);
-         } else {
-            $$0.a(() -> vs.a("commands.tag.list.single.success", $$4.Q_(), $$2.size(), vv.a($$2)), false);
-         }
-      } else if ($$2.isEmpty()) {
-         $$0.a(() -> vs.a("commands.tag.list.multiple.empty", $$1.size()), false);
-      } else {
-         $$0.a(() -> vs.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), vv.a($$2)), false);
-      }
-
-      return $$2.size();
    }
 }

@@ -1,18 +1,24 @@
-public class ggy extends ggj<cbp, fpw<cbp>> {
-   private final fpw<cbp> a;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public ggy(gdt<cbp, fpw<cbp>> $$0, fqb $$1) {
+public class ggy extends ghj<cdh, fon<cdh>> {
+   private static final Map<cdj, ajh> a = ac.a(Maps.newEnumMap(cdj.class), $$0 -> {
+      $$0.put(cdj.a, null);
+      $$0.put(cdj.b, new ajh("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cdj.c, new ajh("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cdj.d, new ajh("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cdj.e, new ajh("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public ggy(get<cdh, fon<cdh>> $$0) {
       super($$0);
-      this.a = new fpw<>($$1.a(fqe.bZ));
    }
 
-   public void a(etd $$0, fwq $$1, int $$2, cbp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gv()) {
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eth $$10 = $$1.getBuffer(fwy.e(((cnb)cpt.oq).b()));
-         this.a.a($$0, $$10, $$2, ghq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(etz $$0, fxq $$1, int $$2, cdh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ajh $$10 = a.get($$3.s());
+      if ($$10 != null && !$$3.ce()) {
+         eud $$11 = $$1.getBuffer(fxy.i($$10));
+         this.c().a($$0, $$11, $$2, gdz.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

@@ -1,20 +1,18 @@
-public class cts extends ctz {
-   public cts(ctz.a $$0, bom... $$1) {
-      super($$0, aum.bn, $$1);
-   }
+public interface cts<T extends ctn<?>> {
+   cts<cte> a = a("crafting");
+   cts<cuc> b = a("smelting");
+   cts<csz> c = a("blasting");
+   cts<cug> d = a("smoking");
+   cts<ctb> e = a("campfire_cooking");
+   cts<cuh> f = a("stonecutting");
+   cts<cud> g = a("smithing");
 
-   @Override
-   public int a(int $$0) {
-      return 20;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public boolean a(ctz $$0) {
-      return $$0 instanceof cui ? false : super.a($$0);
+   static <T extends ctn<?>> cts<T> a(final String $$0) {
+      return iy.a(ki.s, new ajh($$0), new cts<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

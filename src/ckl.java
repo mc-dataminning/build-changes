@@ -1,93 +1,59 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public final class ckl {
-   private static final ckl b = new ckl(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final ckm c;
-   private final long d;
+public class ckl {
+   private final List<cki> a = Lists.newArrayList();
+   private int b;
 
-   private ckl(@Nullable ckm $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public ImmutableList<cki> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   static ckl a(ckm $$0, Collection<ckj> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
+   public ckl a(int $$0, float $$1) {
+      this.a.add(new cki($$0, $$1));
+      this.b();
+      return this;
+   }
+
+   public ckl a(Collection<cki> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<cki> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new ckl($$0, $$2);
-      }
-   }
+         cki $$1 = this.a.get(this.b);
+         cki $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-   public static ckl a() {
-      return b;
-   }
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cki $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
 
-   public static ckl a(ckj $$0) {
-      return new ckl($$0.a, $$0.b);
-   }
-
-   public static ckl a(ckj $$0, ckj... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new ckl($$0.a, $$2);
-   }
-
-   private static long a(ckm $$0, long $$1, Iterable<ckj> $$2) {
-      for (ckj $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+            this.b = $$6;
+            $$5 = $$7.b();
          }
 
-         $$1 |= $$3.b;
+         return $$5;
       }
-
-      return $$1;
-   }
-
-   public boolean b(ckj $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean a(ckl $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public ckl b(ckl $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new ckl(this.c, this.d | $$0.d);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof ckl $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
    }
 }

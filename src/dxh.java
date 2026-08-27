@@ -1,25 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxh implements dwy {
-   public static final Codec<dxh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dxh::new)
-   );
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
+public class dxh extends dvq<dyb> {
+   private static final ib a = new ib(8, 3, 8);
+   private static final cwg b = new cwg(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   public dxh(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public dxh(Codec<dyb> $$0) {
+      super($$0);
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
+   }
+
+   @Override
+   public boolean a(dvs<dyb> $$0) {
+      cxu $$1 = $$0.b();
+      cwg $$2 = new cwg($$0.e());
+      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
+         return true;
+      } else {
+         ib $$3 = a.h($$0.e().v() + a.v());
+         ib.a $$4 = new ib.a();
+
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, dac.m.o(), 2);
+                  } else {
+                     $$1.a($$4, dac.b.o(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

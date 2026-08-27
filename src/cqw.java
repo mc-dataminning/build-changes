@@ -1,10 +1,5 @@
-public class cqw extends cng {
-   public cqw(cpl.a $$0) {
-      super($$0);
-   }
-
-   @Override
-   public cig a(cwe $$0, cpq $$1, box $$2) {
-      return new ciy($$0, $$2, $$1.c(1));
+public class cqw extends cox {
+   protected cqw(crx $$0, int $$1, float $$2, cqf.a $$3) {
+      super((float)$$1, $$2, $$0, aun.bC, $$3);
    }
 }

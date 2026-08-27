@@ -1,90 +1,82 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Splitter;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-import org.apache.commons.lang3.math.NumberUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Optional;
 
 public class bcl extends DataFix {
-   private static final String b = "generatorOptions";
-   @VisibleForTesting
-   static final String a = "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-   private static final Splitter c = Splitter.on(';').limit(5);
-   private static final Splitter d = Splitter.on(',');
-   private static final Splitter e = Splitter.on('x').limit(2);
-   private static final Splitter f = Splitter.on('*').limit(2);
-   private static final Splitter g = Splitter.on(':').limit(3);
+   private static final Int2ObjectMap<String> a = (Int2ObjectMap<String>)DataFixUtils.make(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(0, "minecraft:protection");
+      $$0.put(1, "minecraft:fire_protection");
+      $$0.put(2, "minecraft:feather_falling");
+      $$0.put(3, "minecraft:blast_protection");
+      $$0.put(4, "minecraft:projectile_protection");
+      $$0.put(5, "minecraft:respiration");
+      $$0.put(6, "minecraft:aqua_affinity");
+      $$0.put(7, "minecraft:thorns");
+      $$0.put(8, "minecraft:depth_strider");
+      $$0.put(9, "minecraft:frost_walker");
+      $$0.put(10, "minecraft:binding_curse");
+      $$0.put(16, "minecraft:sharpness");
+      $$0.put(17, "minecraft:smite");
+      $$0.put(18, "minecraft:bane_of_arthropods");
+      $$0.put(19, "minecraft:knockback");
+      $$0.put(20, "minecraft:fire_aspect");
+      $$0.put(21, "minecraft:looting");
+      $$0.put(22, "minecraft:sweeping");
+      $$0.put(32, "minecraft:efficiency");
+      $$0.put(33, "minecraft:silk_touch");
+      $$0.put(34, "minecraft:unbreaking");
+      $$0.put(35, "minecraft:fortune");
+      $$0.put(48, "minecraft:power");
+      $$0.put(49, "minecraft:punch");
+      $$0.put(50, "minecraft:flame");
+      $$0.put(51, "minecraft:infinity");
+      $$0.put(61, "minecraft:luck_of_the_sea");
+      $$0.put(62, "minecraft:lure");
+      $$0.put(65, "minecraft:loyalty");
+      $$0.put(66, "minecraft:impaling");
+      $$0.put(67, "minecraft:riptide");
+      $$0.put(68, "minecraft:channeling");
+      $$0.put(70, "minecraft:mending");
+      $$0.put(71, "minecraft:vanishing_curse");
+   });
 
    public bcl(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("LevelFlatGeneratorInfoFix", this.getInputSchema().getType(bdt.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(beh.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped("ItemStackEnchantmentFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
    }
 
    private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("generatorName").asString("").equalsIgnoreCase("flat")
-         ? $$0.update("generatorOptions", $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map(this::a).map($$0x::createString).result(), $$0x))
-         : $$0;
-   }
-
-   @VisibleForTesting
-   String a(String $$0) {
-      if ($$0.isEmpty()) {
-         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-      } else {
-         Iterator<String> $$1 = c.split($$0).iterator();
-         String $$2 = $$1.next();
-         int $$3;
-         String $$4;
-         if ($$1.hasNext()) {
-            $$3 = NumberUtils.toInt($$2, 0);
-            $$4 = $$1.next();
-         } else {
-            $$3 = 0;
-            $$4 = $$2;
-         }
-
-         if ($$3 >= 0 && $$3 <= 3) {
-            StringBuilder $$7 = new StringBuilder();
-            Splitter $$8 = $$3 < 3 ? e : f;
-            $$7.append(StreamSupport.<String>stream(d.split($$4).spliterator(), false).map($$2x -> {
-               List<String> $$3x = $$8.splitToList($$2x);
-               int $$4x;
-               String $$5x;
-               if ($$3x.size() == 2) {
-                  $$4x = NumberUtils.toInt($$3x.get(0));
-                  $$5x = $$3x.get(1);
-               } else {
-                  $$4x = 1;
-                  $$5x = $$3x.get(0);
-               }
-
-               List<String> $$8x = g.splitToList($$5x);
-               int $$9 = $$8x.get(0).equals("minecraft") ? 1 : 0;
-               String $$10 = $$8x.get($$9);
-               int $$11 = $$3 == 3 ? azv.a("minecraft:" + $$10) : NumberUtils.toInt($$10, 0);
-               int $$12 = $$9 + 1;
-               int $$13 = $$8x.size() > $$12 ? NumberUtils.toInt($$8x.get($$12), 0) : 0;
-               return ($$4x == 1 ? "" : $$4x + "*") + ayv.b($$11 << 4 | $$13).get("Name").asString("");
-            }).collect(Collectors.joining(",")));
-
-            while ($$1.hasNext()) {
-               $$7.append(';').append($$1.next());
-            }
-
-            return $$7.toString();
-         } else {
-            return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-         }
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("ench")
+         .asStreamOpt()
+         .map($$0x -> $$0x.map($$0xx -> $$0xx.set("id", $$0xx.createString((String)a.getOrDefault($$0xx.get("id").asInt(0), "null")))))
+         .map($$0::createList)
+         .result();
+      if ($$1.isPresent()) {
+         $$0 = $$0.remove("ench").set("Enchantments", $$1.get());
       }
+
+      return $$0.update(
+         "StoredEnchantments",
+         $$0x -> (Dynamic)DataFixUtils.orElse(
+               $$0x.asStreamOpt()
+                  .map($$0xx -> $$0xx.map($$0xxx -> $$0xxx.set("id", $$0xxx.createString((String)a.getOrDefault($$0xxx.get("id").asInt(0), "null")))))
+                  .map($$0x::createList)
+                  .result(),
+               $$0x
+            )
+      );
    }
 }

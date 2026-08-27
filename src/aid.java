@@ -1,8 +1,8 @@
-public interface aid extends aew, ahx {
-   @Override
-   default ur b() {
-      return ur.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(aie var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aid {
 }

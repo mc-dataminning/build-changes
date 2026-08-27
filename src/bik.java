@@ -1,19 +1,16 @@
-public class bik extends big {
-   private final bih c;
-   private final bij d;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   public bik(int $$0, bih $$1, bij $$2) {
-      this($$0, $$1, $$2, new long[$$0]);
+public class bik extends Schema {
+   public bik(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public bik(int $$0, bih $$1, bij $$2, long[] $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   @Override
-   protected void a() {
-      this.c.a(new abj((long[])this.b.clone(), this.d));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "PolarBear", () -> bfr.a($$0));
+      return $$1;
    }
 }

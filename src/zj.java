@@ -1,31 +1,35 @@
-public record zj(int c, eig d, float e) implements za {
-   public static final xq<us, zj> a = za.a(zj::a, zj::new);
-   public static final za.b<zj> b = za.a("debug/path");
+public record zj(zj.a c) implements zc {
+   public static final xs<uu, zj> a = zc.a(zj::a, zj::new);
+   public static final zc.b<zj> b = zc.a("debug/hive");
 
-   private zj(us $$0) {
-      this($$0.readInt(), eig.b($$0), $$0.readFloat());
+   private zj(uu $$0) {
+      this(new zj.a($$0));
    }
 
-   private void a(us $$0) {
-      $$0.p(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(uu $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public za.b<zj> a() {
+   public zc.b<zj> a() {
       return b;
    }
 
-   public int b() {
+   public zj.a b() {
       return this.c;
    }
 
-   public eig c() {
-      return this.d;
-   }
+   public static record a(ib a, String b, int c, int d, boolean e) {
+      public a(uu $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
 
-   public float d() {
-      return this.e;
+      public void a(uu $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
    }
 }

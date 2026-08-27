@@ -1,44 +1,61 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dul extends duj {
-   public dul(Codec<dxf> $$0) {
-      super($$0);
+public class dul {
+   public static final dul a = new dul(false, dac.gz.o(), dac.pL.o(), dac.ej.o(), dac.aQ.o());
+   public static final Codec<dul> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dul::a),
+               dmz.b.optionalFieldOf("air_state", a.b()).forGetter(dul::b),
+               dmz.b.optionalFieldOf("water_state", a.b()).forGetter(dul::c),
+               dmz.b.optionalFieldOf("lava_state", a.b()).forGetter(dul::d),
+               dmz.b.optionalFieldOf("barrier_state", a.b()).forGetter(dul::e)
+            )
+            .apply($$0, dul::new)
+   );
+   private final boolean c;
+   private final dmz d;
+   private final dmz e;
+   private final dmz f;
+   private final dmz g;
+
+   public static dul a(boolean $$0, dmz $$1, dmz $$2, dmz $$3, dmz $$4) {
+      return new dul($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   protected boolean a(cwf $$0, awt $$1, ib $$2, dme $$3) {
-      ib.a $$4 = $$2.j();
-      int $$5 = $$1.a(3) + 1;
+   public static dul a(dmz $$0, dmz $$1, dmz $$2, dmz $$3) {
+      return new dul(false, $$0, $$1, $$2, $$3);
+   }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
+   public static dul a(boolean $$0, dmz $$1) {
+      return new dul($$0, $$1, a.c(), a.d(), a.e());
+   }
 
-         $$4.c(ih.b);
-      }
+   private dul(boolean $$0, dmz $$1, dmz $$2, dmz $$3, dmz $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
 
-      ib $$7 = $$4.i();
-      int $$8 = $$1.a(3) + 2;
-      List<ih> $$9 = ih.c.a.c($$1);
+   public boolean a() {
+      return this.c;
+   }
 
-      for (ih $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
+   public dmz b() {
+      return this.d;
+   }
 
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(ih.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
-         }
-      }
+   public dmz c() {
+      return this.e;
+   }
 
-      return true;
+   public dmz d() {
+      return this.f;
+   }
+
+   public dmz e() {
+      return this.g;
    }
 }

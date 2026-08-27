@@ -1,29 +1,12 @@
-public class ade implements xz<aai> {
-   public static final xq<us, ade> a = xz.a(ade::a, ade::new);
-   private final int b;
-
-   public ade(dnv $$0) {
-      this.b = $$0.q();
-   }
-
-   private ade(us $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(us $$0) {
-      $$0.c(this.b);
-   }
+public record ade(vu b) implements yb<aam> {
+   public static final xs<vf, ade> a = xs.a(vw.b, ade::b, ade::new);
 
    @Override
-   public yb<ade> a() {
-      return aet.au;
+   public yd<ade> a() {
+      return aex.aq;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

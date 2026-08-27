@@ -1,32 +1,28 @@
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-
-public class cnb extends cnc {
-   private final ajc d;
-   private final cnb.a e;
-
-   public cnb(il<cnd> $$0, cnb.a $$1, cpl.a $$2) {
-      super($$0, cnc.a.e, $$2);
-      this.e = $$1;
-      this.d = $$1.c.apply($$0.e().orElseThrow().a());
+public abstract class cnb<C extends bmv> extends clo {
+   public cnb(cmv<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public ajc b() {
-      return this.d;
+   public void a(boolean $$0, ctp<?> $$1, apg $$2) {
+      new aiv<>(this).a($$2, (ctp<? extends ctn<C>>)$$1, $$0);
    }
 
-   public cnb.a c() {
-      return this.e;
-   }
+   public abstract void a(ciw var1);
 
-   public static enum a {
-      a($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/entity/horse/armor/horse_armor_" + $$0x + ".png"))),
-      b($$0 -> $$0.c("textures/entity/wolf/wolf_armor.png"));
+   @Override
+   public abstract void l();
 
-      final Function<ajc, ajc> c;
+   public abstract boolean a(ctp<? extends ctn<C>> var1);
 
-      private a(Function<ajc, ajc> $$0) {
-         this.c = $$0;
-      }
-   }
+   public abstract int m();
+
+   public abstract int n();
+
+   public abstract int o();
+
+   public abstract int p();
+
+   public abstract cnc t();
+
+   public abstract boolean e(int var1);
 }

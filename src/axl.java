@@ -1,13 +1,24 @@
-import java.util.concurrent.TimeUnit;
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class axl {
-   public static final long a = TimeUnit.SECONDS.toNanos(1L);
-   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
-   public static final long c = TimeUnit.SECONDS.toMillis(1L);
-   public static final long d = TimeUnit.HOURS.toSeconds(1L);
-   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
+public class axl<K, V> {
+   private final Function<K, V> a;
+   @Nullable
+   private K b = (K)null;
+   @Nullable
+   private V c;
 
-   public static blw a(int $$0, int $$1) {
-      return blw.a($$0 * 20, $$1 * 20);
+   public axl(Function<K, V> $$0) {
+      this.a = $$0;
+   }
+
+   public V a(K $$0) {
+      if (this.c == null || !Objects.equals(this.b, $$0)) {
+         this.c = this.a.apply($$0);
+         this.b = $$0;
+      }
+
+      return this.c;
    }
 }

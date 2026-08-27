@@ -1,38 +1,61 @@
-public class eik extends eie {
-   private float m = Float.MAX_VALUE;
-   private eie n;
-   private boolean o;
-
-   public eik(eie $$0) {
-      super($$0.a, $$0.b, $$0.c);
+public class eik extends eim {
+   @Override
+   public cqf a() {
+      return cqn.a;
    }
 
-   public eik(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   public boolean a(ein $$0, cwf $$1, ib $$2, eim $$3, ih $$4) {
+      return true;
    }
 
-   public void a(float $$0, eie $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
-      }
+   @Override
+   public epr a(cwf $$0, ib $$1, ein $$2) {
+      return epr.b;
    }
 
-   public eie d() {
-      return this.n;
+   @Override
+   public int a(cxc $$0) {
+      return 0;
    }
 
-   public void e() {
-      this.o = true;
+   @Override
+   protected boolean b() {
+      return true;
    }
 
-   public boolean f() {
-      return this.o;
+   @Override
+   protected float c() {
+      return 0.0F;
    }
 
-   public static eik c(us $$0) {
-      eik $$1 = new eik($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   @Override
+   public float a(ein $$0, cwf $$1, ib $$2) {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(ein $$0) {
+      return 0.0F;
+   }
+
+   @Override
+   protected dmz b(ein $$0) {
+      return dac.a.o();
+   }
+
+   @Override
+   public boolean c(ein $$0) {
+      return false;
+   }
+
+   @Override
+   public int d(ein $$0) {
+      return 0;
+   }
+
+   @Override
+   public eqk b(ein $$0, cwf $$1, ib $$2) {
+      return eqh.a();
    }
 }

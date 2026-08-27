@@ -1,99 +1,121 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class glj implements gms<glj> {
-   public static final aiv a = new aiv("sounds", ".ogg");
-   private final ajc b;
-   private final blt c;
-   private final blt d;
-   private final int e;
-   private final glj.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
+public class glj implements gkz {
+   protected final List<fyn> a;
+   protected final Map<ih, List<fyn>> b;
+   protected final boolean c;
+   protected final boolean d;
+   protected final boolean e;
+   protected final giz f;
+   protected final fyz g;
+   protected final fyx h;
 
-   public glj(String $$0, blt $$1, blt $$2, int $$3, glj.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = new ajc($$0);
-      this.c = $$1;
-      this.d = $$2;
+   public glj(List<fyn> $$0, Map<ih, List<fyn>> $$1, boolean $$2, boolean $$3, boolean $$4, giz $$5, fyz $$6, fyx $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$4;
       this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
-   public ajc a() {
-      return this.b;
+   @Override
+   public List<fyn> a(@Nullable dmz $$0, @Nullable ih $$1, axd $$2) {
+      return $$1 == null ? this.a : this.b.get($$1);
    }
 
-   public ajc b() {
-      return a.a(this.b);
-   }
-
-   public blt c() {
+   @Override
+   public boolean a() {
       return this.c;
    }
 
-   public blt d() {
+   @Override
+   public boolean b() {
       return this.d;
    }
 
    @Override
-   public int e() {
+   public boolean c() {
       return this.e;
    }
 
-   public glj a(awt $$0) {
-      return this;
+   @Override
+   public boolean d() {
+      return false;
    }
 
    @Override
-   public void a(gmn $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public glj.a f() {
+   public giz e() {
       return this.f;
    }
 
-   public boolean g() {
+   @Override
+   public fyz f() {
       return this.g;
    }
 
-   public boolean h() {
+   @Override
+   public fyx g() {
       return this.h;
    }
 
-   public int i() {
-      return this.i;
-   }
+   public static class a {
+      private final List<fyn> a = Lists.newArrayList();
+      private final Map<ih, List<fyn>> b = Maps.newEnumMap(ih.class);
+      private final fyx c;
+      private final boolean d;
+      private giz e;
+      private final boolean f;
+      private final boolean g;
+      private final fyz h;
 
-   @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
+      public a(fys $$0, fyx $$1, boolean $$2) {
+         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
       }
 
-      @Nullable
-      public static glj.a a(String $$0) {
-         for (glj.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
+      private a(boolean $$0, boolean $$1, boolean $$2, fyz $$3, fyx $$4) {
+         for (ih $$5 : ih.values()) {
+            this.b.put($$5, Lists.newArrayList());
          }
 
-         return null;
+         this.c = $$4;
+         this.d = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+      }
+
+      public glj.a a(ih $$0, fyn $$1) {
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public glj.a a(fyn $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public glj.a a(giz $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public glj.a a() {
+         return this;
+      }
+
+      public gkz b() {
+         if (this.e == null) {
+            throw new RuntimeException("Missing particle!");
+         } else {
+            return new glj(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
+         }
       }
    }
 }

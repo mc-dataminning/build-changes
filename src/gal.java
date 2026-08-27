@@ -1,45 +1,30 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+public class gal implements fzq<dmh> {
+   private final gdw a;
+   private final axd b = axd.a();
 
-public class gal implements gac.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final eyk c;
-   private Collection<ib> d = Lists.newArrayList();
-
-   public gal(eyk $$0) {
-      this.c = $$0;
+   public gal(fzr.a $$0) {
+      this.a = $$0.d();
    }
 
-   public void a(Collection<ib> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public void a(etd $$0, fwq $$1, double $$2, double $$3, double $$4) {
-      ib $$5 = this.b().c();
-
-      for (ib $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+   public void a(dmh $$0, float $$1, etz $$2, fxq $$3, int $$4, int $$5) {
+      if (dmh.a.a($$0.c())) {
+         cwz $$6 = $$0.i();
+         if ($$6 != null) {
+            cqk $$7 = $$0.c().a();
+            if (!$$7.b()) {
+               this.b.b((long)gdu.a($$7));
+               dmi $$8 = $$0.d();
+               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
+            }
          }
       }
    }
 
-   private static void a(etd $$0, fwq $$1, ib $$2) {
-      gac.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
-
-   private static void a(etd $$0, fwq $$1, String $$2, ib $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      gac.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private exv b() {
-      return this.c.j.m();
+   public static void a(float $$0, cwz $$1, etz $$2, fxq $$3, int $$4, cqk $$5, gdw $$6, float $$7, float $$8, axd $$9) {
+      $$2.a();
+      $$2.a(0.5F, 0.4F, 0.5F);
+      $$2.a(a.d.rotationDegrees(aww.j($$0, $$7, $$8)));
+      gdu.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
+      $$2.b();
    }
 }

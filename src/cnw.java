@@ -1,109 +1,158 @@
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
+import com.mojang.serialization.Codec;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Supplier;
 
-public class cnw extends cpl {
-   private static final Logger d = LogUtils.getLogger();
-   public static final String a = "LodestonePos";
-   public static final String b = "LodestoneDimension";
-   public static final String c = "LodestoneTracked";
-
-   public cnw(cpl.a $$0) {
-      super($$0);
-   }
-
-   public static boolean d(cpq $$0) {
-      sy $$1 = $$0.w();
-      return $$1 != null && ($$1.e("LodestoneDimension") || $$1.e("LodestonePos"));
-   }
-
-   private static Optional<ajb<cwe>> c(sy $$0) {
-      return cwe.g.parse(tm.a, $$0.c("LodestoneDimension")).result();
-   }
-
-   @Nullable
-   public static ik a(sy $$0) {
-      boolean $$1 = $$0.e("LodestonePos");
-      boolean $$2 = $$0.e("LodestoneDimension");
-      if ($$1 && $$2) {
-         Optional<ajb<cwe>> $$3 = c($$0);
-         if ($$3.isPresent()) {
-            ib $$4 = tn.b($$0.p("LodestonePos"));
-            return ik.a($$3.get(), $$4);
-         }
+public class cnw extends cqf implements cpm {
+   private static final EnumMap<cnw.a, UUID> d = ac.a(new EnumMap<>(cnw.a.class), $$0 -> {
+      $$0.put(cnw.a.d, UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"));
+      $$0.put(cnw.a.c, UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"));
+      $$0.put(cnw.a.b, UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"));
+      $$0.put(cnw.a.a, UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"));
+      $$0.put(cnw.a.e, UUID.fromString("C1C72771-8B8E-BA4A-ACE0-81A93C8928B2"));
+   });
+   public static final jo a = new jn() {
+      @Override
+      protected cqk a(jl $$0, cqk $$1) {
+         return cnw.a($$0, $$1) ? $$1 : super.a($$0, $$1);
       }
+   };
+   protected final cnw.a b;
+   protected final il<cnx> c;
+   private final Supplier<Multimap<il<bqq>, bqt>> e;
 
-      return null;
-   }
-
-   @Nullable
-   public static ik a(cwe $$0) {
-      return $$0.E_().j() ? ik.a($$0.ad(), $$0.T()) : null;
-   }
-
-   @Override
-   public boolean i(cpq $$0) {
-      return d($$0) || super.i($$0);
-   }
-
-   @Override
-   public void a(cpq $$0, cwe $$1, bof $$2, int $$3, boolean $$4) {
-      if (!$$1.B) {
-         if (d($$0)) {
-            sy $$5 = $$0.x();
-            if ($$5.e("LodestoneTracked") && !$$5.q("LodestoneTracked")) {
-               return;
-            }
-
-            Optional<ajb<cwe>> $$6 = c($$5);
-            if ($$6.isPresent() && $$6.get() == $$1.ad() && $$5.e("LodestonePos")) {
-               ib $$7 = tn.b($$5.p("LodestonePos"));
-               if (!$$1.k($$7) || !((apa)$$1).y().a(cae.s, $$7)) {
-                  $$5.r("LodestonePos");
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public bml a(crz $$0) {
-      ib $$1 = $$0.a();
-      cwe $$2 = $$0.q();
-      if (!$$2.a_($$1).a(czh.pq)) {
-         return super.a($$0);
+   public static boolean a(jl $$0, cqk $$1) {
+      ib $$2 = $$0.c().a($$0.d().c(dcf.b));
+      List<bpo> $$3 = $$0.b().a(bpo.class, new epm($$2), bpb.f.and(new bpb.a($$1)));
+      if ($$3.isEmpty()) {
+         return false;
       } else {
-         $$2.a(null, $$1, atp.nP, atq.h, 1.0F, 1.0F);
-         cia $$3 = $$0.o();
-         cpq $$4 = $$0.n();
-         boolean $$5 = !$$3.fW().d && $$4.M() == 1;
-         if ($$5) {
-            this.a($$2.ad(), $$1, $$4.x());
-         } else {
-            cpq $$6 = $$4.a(cpt.qR, 1);
-            if (!$$3.fW().d) {
-               $$4.h(1);
-            }
-
-            this.a($$2.ad(), $$1, $$6.x());
-            if (!$$3.fV().e($$6)) {
-               $$3.a($$6, false);
-            }
+         bpo $$4 = $$3.get(0);
+         bpd $$5 = bpq.h($$1);
+         cqk $$6 = $$1.a(1);
+         $$4.a($$5, $$6);
+         if ($$4 instanceof bpq) {
+            ((bpq)$$4).a($$5, 2.0F);
+            ((bpq)$$4).fS();
          }
 
-         return bml.a($$2.B);
+         return true;
       }
    }
 
-   private void a(ajb<cwe> $$0, ib $$1, sy $$2) {
-      $$2.a("LodestonePos", tn.a($$1));
-      cwe.g.encodeStart(tm.a, $$0).resultOrPartial(d::error).ifPresent($$1x -> $$2.a("LodestoneDimension", $$1x));
-      $$2.a("LodestoneTracked", true);
+   public cnw(il<cnx> $$0, cnw.a $$1, cqf.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
+      dcf.a(this, a);
+      this.e = Suppliers.memoize(() -> {
+         int $$2x = $$0.a().a($$1);
+         float $$3 = $$0.a().f();
+         Builder<il<bqq>, bqt> $$4 = ImmutableMultimap.builder();
+         UUID $$5 = d.get($$1);
+         $$4.put(bqv.a, new bqt($$5, "Armor modifier", (double)$$2x, bqt.a.a));
+         $$4.put(bqv.b, new bqt($$5, "Armor toughness", (double)$$3, bqt.a.a));
+         float $$6 = $$0.a().g();
+         if ($$6 > 0.0F) {
+            $$4.put(bqv.n, new bqt($$5, "Armor knockback resistance", (double)$$6, bqt.a.a));
+         }
+
+         return $$4.build();
+      });
+   }
+
+   public cnw.a d() {
+      return this.b;
    }
 
    @Override
-   public String j(cpq $$0) {
-      return d($$0) ? "item.minecraft.lodestone_compass" : super.j($$0);
+   public int e() {
+      return this.c.a().b();
+   }
+
+   public il<cnx> f() {
+      return this.c;
+   }
+
+   @Override
+   public boolean a(cqk $$0, cqk $$1) {
+      return this.c.a().d().get().a($$1) || super.a($$0, $$1);
+   }
+
+   @Override
+   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
+
+   @Override
+   public Multimap<il<bqq>, bqt> a(bpd $$0) {
+      return $$0 == this.b.a() ? this.e.get() : super.a($$0);
+   }
+
+   public int g() {
+      return this.c.a().a(this.b);
+   }
+
+   public float h() {
+      return this.c.a().f();
+   }
+
+   @Override
+   public bpd i() {
+      return this.b.a();
+   }
+
+   @Override
+   public il<atx> as_() {
+      return this.f().a().c();
+   }
+
+   public static enum a implements axq {
+      a(bpd.f, "helmet"),
+      b(bpd.e, "chestplate"),
+      c(bpd.d, "leggings"),
+      d(bpd.c, "boots"),
+      e(bpd.g, "body");
+
+      public static final Codec<cnw.a> f = axq.b(cnw.a::values);
+      private final bpd g;
+      private final String h;
+
+      private a(bpd $$0, String $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public int a(int $$0) {
+         return switch (this) {
+            case a -> 11;
+            case b -> 16;
+            case c -> 15;
+            case d -> 13;
+            case e -> 20;
+         } * $$0;
+      }
+
+      public bpd a() {
+         return this.g;
+      }
+
+      public String b() {
+         return this.h;
+      }
+
+      public boolean d() {
+         return this == a || this == b || this == c || this == d;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
    }
 }

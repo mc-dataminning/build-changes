@@ -1,83 +1,84 @@
-public abstract class fdr implements fdx {
-   private int c;
-   private int d;
-   protected int a;
-   protected int b;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   public fdr(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
+public class fdr implements fdp {
+   private static final ajh g = new ajh("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final fdr.a h;
+   private final vu i;
+   @Nullable
+   private final vu j;
+   private fdp.a k = fdp.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
+
+   public fdr(fdr.a $$0, vu $$1, @Nullable vu $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
    @Override
-   public void m(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.B() + ($$0 - this.B());
-         $$1.m($$2);
-      });
-      this.c = $$0;
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.C() + ($$0 - this.C());
-         $$1.n($$2);
-      });
-      this.d = $$0;
-   }
-
-   @Override
-   public int B() {
-      return this.c;
-   }
-
-   @Override
-   public int C() {
-      return this.d;
-   }
-
-   @Override
-   public int w() {
-      return this.a;
-   }
-
-   @Override
-   public int u() {
-      return this.b;
-   }
-
-   protected abstract static class a {
-      public final fdy a;
-      public final fdz.a b;
-
-      protected a(fdy $$0, fdz $$1) {
-         this.a = $$0;
-         this.b = $$1.h();
+   public fdp.a a(fat $$0, fdq $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
       }
 
-      public int a() {
-         return this.a.u() + this.b.b + this.b.d;
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = aww.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
+         }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
       }
 
-      public int b() {
-         return this.a.w() + this.b.a + this.b.c;
+      return this.k;
+   }
+
+   public void c() {
+      this.k = fdp.a.b;
+   }
+
+   public void a(float $$0) {
+      this.n = $$0;
+   }
+
+   public static enum a {
+      a(new ajh("toast/movement_keys")),
+      b(new ajh("toast/mouse")),
+      c(new ajh("toast/tree")),
+      d(new ajh("toast/recipe_book")),
+      e(new ajh("toast/wooden_planks")),
+      f(new ajh("toast/social_interactions")),
+      g(new ajh("toast/right_click"));
+
+      private final ajh h;
+
+      private a(ajh $$0) {
+         this.h = $$0;
       }
 
-      public void a(int $$0, int $$1) {
-         float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.w() - this.b.c);
-         int $$4 = (int)awm.i(this.b.e, $$2, $$3);
-         this.a.m($$4 + $$0);
-      }
-
-      public void b(int $$0, int $$1) {
-         float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.u() - this.b.d);
-         int $$4 = Math.round(awm.i(this.b.f, $$2, $$3));
-         this.a.n($$4 + $$0);
+      public void a(fat $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
    }
 }

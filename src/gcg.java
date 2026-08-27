@@ -1,27 +1,32 @@
-public class gcg extends gde<caw, fng<caw>> {
-   private static final ajc a = new ajc("textures/entity/fox/fox.png");
-   private static final ajc i = new ajc("textures/entity/fox/fox_sleep.png");
-   private static final ajc j = new ajc("textures/entity/fox/snow_fox.png");
-   private static final ajc k = new ajc("textures/entity/fox/snow_fox_sleep.png");
-
-   public gcg(gby.a $$0) {
-      super($$0, new fng<>($$0.a(fqe.Z)), 0.4F);
-      this.a(new gfw(this, $$0.d()));
+public class gcg extends gee<cbg, fnn<cbg>> {
+   public gcg(gcy.a $$0) {
+      super($$0, new fnn<>($$0.a(frc.p)), 0.4F);
+      this.a(new ggl(this, $$0.f()));
    }
 
-   protected void a(caw $$0, etd $$1, float $$2, float $$3, float $$4, float $$5) {
+   public ajh a(cbg $$0) {
+      return $$0.gt();
+   }
+
+   protected void a(cbg $$0, etz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b(0.8F, 0.8F, 0.8F);
+   }
+
+   protected void a(cbg $$0, etz $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gr() || $$0.gl()) {
-         float $$6 = -awm.i($$4, $$0.N, $$0.dB());
-         $$1.a(a.b.rotationDegrees($$6));
-      }
-   }
+      float $$6 = $$0.G($$4);
+      if ($$6 > 0.0F) {
+         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
+         $$1.a(a.f.rotationDegrees(aww.j($$6, 0.0F, 90.0F)));
+         ib $$7 = $$0.dm();
 
-   public ajc a(caw $$0) {
-      if ($$0.w() == caw.v.a) {
-         return $$0.fF() ? i : a;
-      } else {
-         return $$0.fF() ? k : j;
+         for (cis $$9 : $$0.dM().a(cis.class, new epm($$7).c(2.0, 2.0, 2.0))) {
+            if ($$9.fI()) {
+               $$1.a(0.15F * $$6, 0.0F, 0.0F);
+               break;
+            }
+         }
       }
    }
 }

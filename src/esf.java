@@ -1,105 +1,196 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.Objects;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWMonitorCallback;
-import org.slf4j.Logger;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Bitmap;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FT_GlyphSlot;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-public class esf {
-   private static final Logger a = LogUtils.getLogger();
-   private final Long2ObjectMap<esc> b = new Long2ObjectOpenHashMap();
-   private final esd c;
-
-   public esf(esd $$0) {
-      RenderSystem.assertInInitPhase();
-      this.c = $$0;
-      GLFW.glfwSetMonitorCallback(this::a);
-      PointerBuffer $$1 = GLFW.glfwGetMonitors();
-      if ($$1 != null) {
-         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
-            long $$3 = $$1.get($$2);
-            this.b.put($$3, $$0.createMonitor($$3));
-         }
-      }
-   }
-
-   private void a(long $$0, int $$1) {
-      RenderSystem.assertOnRenderThread();
-      if ($$1 == 262145) {
-         this.b.put($$0, this.c.createMonitor($$0));
-         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
-      } else if ($$1 == 262146) {
-         this.b.remove($$0);
-         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
-      }
-   }
-
+public class esf implements esc {
    @Nullable
-   public esc a(long $$0) {
-      RenderSystem.assertInInitPhase();
-      return (esc)this.b.get($$0);
-   }
-
+   private ByteBuffer b;
    @Nullable
-   public esc a(esh $$0) {
-      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
-      if ($$1 != 0L) {
-         return this.a($$1);
-      } else {
-         int $$2 = $$0.q();
-         int $$3 = $$2 + $$0.m();
-         int $$4 = $$0.r();
-         int $$5 = $$4 + $$0.n();
-         int $$6 = -1;
-         esc $$7 = null;
-         long $$8 = GLFW.glfwGetPrimaryMonitor();
-         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
-         ObjectIterator var12 = this.b.values().iterator();
+   private FT_Face c;
+   final float d;
+   private final IntSet e = new IntArraySet();
 
-         while (var12.hasNext()) {
-            esc $$9 = (esc)var12.next();
-            int $$10 = $$9.c();
-            int $$11 = $$10 + $$9.b().a();
-            int $$12 = $$9.d();
-            int $$13 = $$12 + $$9.b().b();
-            int $$14 = a($$2, $$10, $$11);
-            int $$15 = a($$3, $$10, $$11);
-            int $$16 = a($$4, $$12, $$13);
-            int $$17 = a($$5, $$12, $$13);
-            int $$18 = Math.max(0, $$15 - $$14);
-            int $$19 = Math.max(0, $$17 - $$16);
-            int $$20 = $$18 * $$19;
-            if ($$20 > $$6) {
-               $$7 = $$9;
-               $$6 = $$20;
-            } else if ($$20 == $$6 && $$8 == $$9.f()) {
-               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
-               $$7 = $$9;
+   public esf(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      $$6.codePoints().forEach(this.e::add);
+      int $$7 = Math.round($$2 * $$3);
+      FreeType.FT_Set_Pixel_Sizes($$1, $$7, $$7);
+      float $$8 = $$4 * $$3;
+      float $$9 = -$$5 * $$3;
+      MemoryStack $$10 = MemoryStack.stackPush();
+
+      try {
+         FT_Vector $$11 = feh.a(FT_Vector.malloc($$10), $$8, $$9);
+         FreeType.FT_Set_Transform($$1, null, $$11);
+      } catch (Throwable var15) {
+         if ($$10 != null) {
+            try {
+               $$10.close();
+            } catch (Throwable var14) {
+               var15.addSuppressed(var14);
             }
          }
 
-         a.debug("Selected monitor: {}", $$7);
-         return $$7;
+         throw var15;
+      }
+
+      if ($$10 != null) {
+         $$10.close();
       }
    }
 
-   public static int a(int $$0, int $$1, int $$2) {
-      if ($$0 < $$1) {
-         return $$1;
+   @Nullable
+   @Override
+   public esb a(int $$0) {
+      FT_Face $$1 = this.b();
+      if (this.e.contains($$0)) {
+         return null;
       } else {
-         return $$0 > $$2 ? $$2 : $$0;
+         int $$2 = FreeType.FT_Get_Char_Index($$1, (long)$$0);
+         if ($$2 == 0) {
+            return null;
+         } else {
+            feh.a(FreeType.FT_Load_Glyph($$1, $$2, 4194312), "Loading glyph");
+            FT_GlyphSlot $$3 = Objects.requireNonNull($$1.glyph(), "Glyph not initialized");
+            float $$4 = feh.a($$3.advance());
+            FT_Bitmap $$5 = $$3.bitmap();
+            int $$6 = $$3.bitmap_left();
+            int $$7 = $$3.bitmap_top();
+            int $$8 = $$5.width();
+            int $$9 = $$5.rows();
+            return (esb)($$8 > 0 && $$9 > 0 ? new esf.a((float)$$6, (float)$$7, $$8, $$9, $$4, $$2) : () -> $$4 / this.d);
+         }
       }
    }
 
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
-      if ($$0 != null) {
-         $$0.free();
+   FT_Face b() {
+      if (this.b != null && this.c != null) {
+         return this.c;
+      } else {
+         throw new IllegalStateException("Provider already closed");
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.c != null) {
+         feh.a(FreeType.FT_Done_Face(this.c), "Deleting face");
+         this.c = null;
+      }
+
+      MemoryUtil.memFree(this.b);
+      this.b = null;
+   }
+
+   @Override
+   public IntSet a() {
+      FT_Face $$0 = this.b();
+      IntSet $$1 = new IntOpenHashSet();
+      MemoryStack $$2 = MemoryStack.stackPush();
+
+      try {
+         IntBuffer $$3 = $$2.mallocInt(1);
+
+         for (long $$4 = FreeType.FT_Get_First_Char($$0, $$3); $$3.get(0) != 0; $$4 = FreeType.FT_Get_Next_Char($$0, $$4, $$3)) {
+            $$1.add((int)$$4);
+         }
+      } catch (Throwable var8) {
+         if ($$2 != null) {
+            try {
+               $$2.close();
+            } catch (Throwable var7) {
+               var8.addSuppressed(var7);
+            }
+         }
+
+         throw var8;
+      }
+
+      if ($$2 != null) {
+         $$2.close();
+      }
+
+      $$1.removeAll(this.e);
+      return $$1;
+   }
+
+   class a implements esb {
+      final int b;
+      final int c;
+      final float d;
+      final float e;
+      private final float f;
+      final int g;
+
+      a(float $$0, float $$1, int $$2, int $$3, float $$4, int $$5) {
+         this.b = $$2;
+         this.c = $$3;
+         this.f = $$4 / esf.this.d;
+         this.d = $$0 / esf.this.d;
+         this.e = $$1 / esf.this.d;
+         this.g = $$5;
+      }
+
+      @Override
+      public float getAdvance() {
+         return this.f;
+      }
+
+      @Override
+      public feb bake(Function<esd, feb> $$0) {
+         return $$0.apply(new esd() {
+            @Override
+            public int a() {
+               return a.this.b;
+            }
+
+            @Override
+            public int b() {
+               return a.this.c;
+            }
+
+            @Override
+            public float d() {
+               return esf.this.d;
+            }
+
+            @Override
+            public float i() {
+               return a.this.d;
+            }
+
+            @Override
+            public float j() {
+               return a.this.e;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               FT_Face $$2 = esf.this.b();
+               eta $$3 = new eta(eta.a.d, a.this.b, a.this.c, false);
+               $$3.a($$2, a.this.g);
+               $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
+            }
+
+            @Override
+            public boolean c() {
+               return false;
+            }
+         });
       }
    }
 }

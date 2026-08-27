@@ -58,12 +58,14 @@ public record hk(List<String> a, List<String> b) {
 
       for (int $$2 = 0; $$2 < this.b.size(); $$2++) {
          $$1.append(this.a.get($$2)).append($$0.get($$2));
+         hf.a($$1);
       }
 
       if (this.a.size() > this.b.size()) {
          $$1.append(this.a.get(this.a.size() - 1));
       }
 
+      hf.a($$1);
       return $$1.toString();
    }
 }

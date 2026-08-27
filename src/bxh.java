@@ -1,26 +1,47 @@
-import javax.annotation.Nullable;
+public class bxh extends bwl {
+   private final cdf a;
+   private int b;
 
-public class bxh extends bwr {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public bxh(bpf $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public bxh(cdf $$0) {
+      this.a = $$0;
+      this.a($$0);
    }
 
-   public bxh(bpf $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected eov h() {
-      if (this.b.bc()) {
-         eov $$0 = bzu.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.ef().i() >= this.j ? bzu.a(this.b, 10, 7) : super.h();
+   public void c() {
+      this.a.gR();
+      this.h();
+   }
+
+   private void h() {
+      atx $$0 = this.a.gQ();
+      if ($$0 != null) {
+         this.a.a($$0);
       }
+   }
+
+   @Override
+   public boolean b() {
+      return false;
+   }
+
+   @Override
+   public boolean a() {
+      this.b++;
+      if (this.b > 0 && this.a.ei().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fd() && this.a.ei().a(10) == 0;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(cdf $$0) {
+      this.b = -$$0.gV();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
    }
 }

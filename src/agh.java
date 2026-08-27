@@ -1,29 +1,29 @@
-public class agh implements xz<aev> {
-   public static final xq<us, agh> a = xz.a(agh::a, agh::new);
-   private final int b;
+public class agh implements yb<aez> {
+   public static final xs<uu, agh> a = yb.a(agh::a, agh::new);
+   private final String b;
 
-   public agh(int $$0) {
+   public agh(String $$0) {
       this.b = $$0;
    }
 
-   private agh(us $$0) {
-      this.b = $$0.readShort();
+   private agh(uu $$0) {
+      this.b = $$0.p();
    }
 
-   private void a(us $$0) {
-      $$0.l(this.b);
+   private void a(uu $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yb<agh> a() {
-      return aet.bR;
+   public yd<agh> a() {
+      return aex.bN;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public String b() {
       return this.b;
    }
 }

@@ -1,26 +1,13 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.concurrent.CompletableFuture;
 
-public class pa {
-   public static final ajb<edp> a = pq.a("ancient_city/city_center");
+public class pa extends oq<ecr> {
+   public pa(kr $$0, CompletableFuture<in.a> $$1) {
+      super($$0, kj.aL, $$1);
+   }
 
-   public static void a(pj<edp> $$0) {
-      im<ege> $$1 = $$0.a(ki.aF);
-      il<ege> $$2 = $$1.b(pr.G);
-      im<edp> $$3 = $$0.a(ki.aH);
-      il<edp> $$4 = $$3.b(pq.a);
-      $$0.a(
-         a,
-         new edp(
-            $$4,
-            ImmutableList.of(
-               Pair.of(edn.b("ancient_city/city_center/city_center_1", $$2), 1),
-               Pair.of(edn.b("ancient_city/city_center/city_center_2", $$2), 1),
-               Pair.of(edn.b("ancient_city/city_center/city_center_3", $$2), 1)
-            ),
-            edp.a.b
-         )
-      );
-      pb.a($$0);
+   @Override
+   protected void a(in.a $$0) {
+      this.b(avh.a).a(ecs.a).a(ecs.b).a(ecs.c).a(ecs.d).a(ecs.e);
+      this.b(avh.b).b(avh.a).a(ecs.f);
    }
 }

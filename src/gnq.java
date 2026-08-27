@@ -1,110 +1,280 @@
-public class gnq implements gnu {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final vs f = vs.a("tutorial.move.title", gnt.a("forward"), gnt.a("left"), gnt.a("back"), gnt.a("right"));
-   private static final vs g = vs.a("tutorial.move.description", gnt.a("jump"));
-   private static final vs h = vs.c("tutorial.look.title");
-   private static final vs i = vs.c("tutorial.look.description");
-   private final gnt j;
-   private fcv k;
-   private fcv l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gnq(gnt $$0) {
-      this.j = $$0;
+public class gnq extends ast<gnq.a> {
+   public static final gmj a = new gmj("minecraft:empty", bmd.a(1.0F), bmd.a(1.0F), 1, gmj.a.a, false, false, 16);
+   public static final ajh b = new ajh("minecraft", "intentionally_empty");
+   public static final gnr c = new gnr(b, null);
+   public static final gmj d = new gmj(b.toString(), bmd.a(1.0F), bmd.a(1.0F), 1, gmj.a.a, false, false, 16);
+   static final Logger e = LogUtils.getLogger();
+   private static final String f = "sounds.json";
+   private static final Gson g = new GsonBuilder().registerTypeHierarchyAdapter(vu.class, new vu.b()).registerTypeAdapter(gmk.class, new gml()).create();
+   private static final TypeToken<Map<String, gmk>> h = new TypeToken<Map<String, gmk>>() {
+   };
+   private final Map<ajh, gnr> i = Maps.newHashMap();
+   private final gnn j;
+   private final Map<ajh, asm> k = new HashMap<>();
+
+   public gnq(ezk $$0) {
+      this.j = new gnn(this, $$0, asr.fromMap(this.k));
    }
 
-   @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
+   protected gnq.a a(aso $$0, bjq $$1) {
+      gnq.a $$2 = new gnq.a();
+      $$1.a();
+      $$1.a("list");
+      $$2.a($$0);
+      $$1.c();
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
+      for (String $$3 : $$0.a()) {
+         $$1.a($$3);
 
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
+         try {
+            for (asm $$5 : $$0.a(new ajh($$3, "sounds.json"))) {
+               $$1.a($$5.b());
+
+               try (Reader $$6 = $$5.e()) {
+                  $$1.a("parse");
+                  Map<String, gmk> $$7 = awm.a(g, $$6, h);
+                  $$1.b("register");
+
+                  for (Entry<String, gmk> $$8 : $$7.entrySet()) {
+                     $$2.a(new ajh($$3, $$8.getKey()), $$8.getValue());
+                  }
+
+                  $$1.c();
+               } catch (RuntimeException var15) {
+                  e.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$5.b(), var15});
+               }
+
+               $$1.c();
+            }
+         } catch (IOException var16) {
          }
 
-         this.r = this.m;
+         $$1.c();
       }
 
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
+      $$1.b();
+      return $$2;
+   }
 
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(gnv.b);
-         } else {
-            this.j.a(gnv.f);
+   protected void a(gnq.a $$0, aso $$1, bjq $$2) {
+      $$0.a(this.i, this.k, this.j);
+      if (aa.aW) {
+         for (ajh $$3 : this.i.keySet()) {
+            gnr $$4 = this.i.get($$3);
+            if (!vx.b($$4.a()) && ki.b.d($$3)) {
+               e.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
+            }
          }
       }
 
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new fcv(fcv.a.a, f, g, true);
-            this.j.e().ax().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fcv(fcv.a.b, h, i, true);
-            this.j.e().ax().a(this.l);
+      if (e.isDebugEnabled()) {
+         for (ajh $$5 : this.i.keySet()) {
+            if (!ki.b.d($$5)) {
+               e.debug("Not having sound event for: {}", $$5);
+            }
          }
+      }
+
+      this.j.a();
+   }
+
+   public List<String> a() {
+      return this.j.h();
+   }
+
+   public erw b() {
+      return this.j.i();
+   }
+
+   static boolean a(gmj $$0, ajh $$1, asr $$2) {
+      ajh $$3 = $$0.b();
+      if ($$2.getResource($$3).isEmpty()) {
+         e.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
+         return false;
+      } else {
+         return true;
       }
    }
 
-   @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
-      }
+   @Nullable
+   public gnr a(ajh $$0) {
+      return this.i.get($$0);
    }
 
-   @Override
-   public void a(fvq $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
-      }
+   public Collection<ajh> d() {
+      return this.i.keySet();
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+   public void a(gmn $$0) {
+      this.j.a($$0);
+   }
+
+   public void a(gmm $$0) {
+      this.j.c($$0);
+   }
+
+   public void a(gmm $$0, int $$1) {
+      this.j.a($$0, $$1);
+   }
+
+   public void a(eyr $$0) {
+      this.j.a($$0);
+   }
+
+   public void e() {
+      this.j.e();
+   }
+
+   public void f() {
+      this.j.d();
+   }
+
+   public void g() {
+      this.j.b();
+   }
+
+   public void h() {
+      this.j.c();
+   }
+
+   public void a(boolean $$0) {
+      this.j.a($$0);
+   }
+
+   public void i() {
+      this.j.f();
+   }
+
+   public void a(atz $$0, float $$1) {
+      if ($$0 == atz.a && $$1 <= 0.0F) {
+         this.f();
+      }
+
+      this.j.a($$0, $$1);
+   }
+
+   public void b(gmm $$0) {
+      this.j.a($$0);
+   }
+
+   public boolean c(gmm $$0) {
+      return this.j.b($$0);
+   }
+
+   public void a(gnp $$0) {
+      this.j.a($$0);
+   }
+
+   public void b(gnp $$0) {
+      this.j.b($$0);
+   }
+
+   public void a(@Nullable ajh $$0, @Nullable atz $$1) {
+      this.j.a($$0, $$1);
+   }
+
+   public String j() {
+      return this.j.g();
+   }
+
+   public void k() {
+      this.j.a();
+   }
+
+   protected static class a {
+      final Map<ajh, gnr> a = Maps.newHashMap();
+      private Map<ajh, asm> b = Map.of();
+
+      void a(aso $$0) {
+         this.b = gmj.a.a($$0);
+      }
+
+      void a(ajh $$0, gmk $$1) {
+         gnr $$2 = this.a.get($$0);
+         boolean $$3 = $$2 == null;
+         if ($$3 || $$1.b()) {
+            if (!$$3) {
+               gnq.e.debug("Replaced sound event location {}", $$0);
+            }
+
+            $$2 = new gnr($$0, $$1.c());
+            this.a.put($$0, $$2);
+         }
+
+         asr $$4 = asr.fromMap(this.b);
+
+         for (final gmj $$5 : $$1.a()) {
+            final ajh $$6 = $$5.a();
+            gns<gmj> $$8;
+            switch ($$5.f()) {
+               case a:
+                  if (!gnq.a($$5, $$0, $$4)) {
+                     continue;
+                  }
+
+                  $$8 = $$5;
+                  break;
+               case b:
+                  $$8 = new gns<gmj>() {
+                     @Override
+                     public int e() {
+                        gnr $$0 = a.this.a.get($$6);
+                        return $$0 == null ? 0 : $$0.e();
+                     }
+
+                     public gmj a(axd $$0) {
+                        gnr $$1 = a.this.a.get($$6);
+                        if ($$1 == null) {
+                           return gnq.a;
+                        } else {
+                           gmj $$2 = $$1.a($$0);
+                           return new gmj(
+                              $$2.a().toString(), new bmj($$2.c(), $$5.c()), new bmj($$2.d(), $$5.d()), $$5.e(), gmj.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i()
+                           );
+                        }
+                     }
+
+                     @Override
+                     public void a(gnn $$0) {
+                        gnr $$1 = a.this.a.get($$6);
+                        if ($$1 != null) {
+                           $$1.a($$0);
+                        }
+                     }
+                  };
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
+            }
+
+            $$2.a($$8);
+         }
+      }
+
+      public void a(Map<ajh, gnr> $$0, Map<ajh, asm> $$1, gnn $$2) {
+         $$0.clear();
+         $$1.clear();
+         $$1.putAll(this.b);
+
+         for (Entry<ajh, gnr> $$3 : this.a.entrySet()) {
+            $$0.put($$3.getKey(), $$3.getValue());
+            $$3.getValue().a($$2);
+         }
       }
    }
 }

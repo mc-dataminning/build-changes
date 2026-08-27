@@ -1,45 +1,36 @@
-public class agb implements xz<aev> {
-   public static final xq<us, agb> a = xz.a(agb::a, agb::new);
-   private final cmi b;
+public class agb implements yb<aez> {
+   public static final xs<uu, agb> a = yb.a(agb::a, agb::new);
+   private static final int b = 2;
    private final boolean c;
-   private final boolean d;
 
-   public agb(cmi $$0, boolean $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public agb(cip $$0) {
+      this.c = $$0.b;
    }
 
-   private agb(us $$0) {
-      this.b = $$0.b(cmi.class);
-      this.c = $$0.readBoolean();
-      this.d = $$0.readBoolean();
+   private agb(uu $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(uu $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
    @Override
-   public yb<agb> a() {
-      return aet.bL;
+   public yd<agb> a() {
+      return aex.bH;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public cmi b() {
-      return this.b;
-   }
-
-   public boolean e() {
+   public boolean b() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

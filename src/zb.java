@@ -1,23 +1,61 @@
-public record zb(ajc a) implements za {
-   public static <T extends us> xq<T, zb> a(ajc $$0, int $$1) {
-      return za.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.j($$3);
-            return new zb($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
+import java.util.UUID;
+
+public record zb(zb.a c) implements zc {
+   public static final xs<uu, zb> a = zc.a(zb::a, zb::new);
+   public static final zc.b<zb> b = zc.a("debug/breeze");
+
+   private zb(uu $$0) {
+      this(new zb.a($$0));
+   }
+
+   private void a(uu $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public za.b<zb> a() {
-      return new za.b<>(this.a);
+   public zc.b<zb> a() {
+      return b;
    }
 
-   public ajc b() {
-      return this.a;
+   public zb.a b() {
+      return this.c;
+   }
+
+   public static record a(UUID a, int b, Integer c, ib d) {
+      public a(uu $$0) {
+         this($$0.n(), $$0.readInt(), $$0.c(uu::readInt), $$0.c(ib.b));
+      }
+
+      public void a(uu $$0) {
+         $$0.a(this.a);
+         $$0.p(this.b);
+         $$0.a(this.c, uu::p);
+         $$0.a(this.d, ib.b);
+      }
+
+      public String a() {
+         return aev.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public ib e() {
+         return this.d;
+      }
    }
 }

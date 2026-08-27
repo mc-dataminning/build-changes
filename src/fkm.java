@@ -1,77 +1,318 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import com.google.common.collect.Maps;
+import com.google.common.hash.Hashing;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.slf4j.Logger;
 
-public class fkm extends fkf<fsh.a> {
-   private static final int r = 120;
-   private static final int t = 85;
-   private static final int u = 178;
-   private static final vs v = vs.c("gui.abuseReport.skin.title");
-   private final fea w = fea.d().a(8);
-   private fbc x;
-   private fak y;
-   private fak z;
+public class fkm extends fhf {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 200;
+   private static final vu c = vu.c("pack.dropInfo").a(n.h);
+   private static final vu k = vu.c("pack.folderInfo");
+   private static final int l = 20;
+   private static final ajh m = new ajh("textures/misc/unknown_pack.png");
+   private final fkl n;
+   @Nullable
+   private fkm.a o;
+   private long p;
+   private fkn q;
+   private fkn r;
+   private final Path t;
+   private fbg u;
+   private final Map<String, ajh> v = Maps.newHashMap();
 
-   private fkm(fgh $$0, fsg $$1, fsh.a $$2) {
-      super(v, $$0, $$1, $$2);
-   }
-
-   public fkm(fgh $$0, fsg $$1, UUID $$2, Supplier<giy> $$3) {
-      this($$0, $$1, new fsh.a($$2, $$3, $$1.a().b()));
-   }
-
-   public fkm(fgh $$0, fsg $$1, fsh $$2) {
-      this($$0, $$1, new fsh.a($$2, $$1.a().b()));
+   public fkm(arz $$0, Consumer<arz> $$1, Path $$2, vu $$3) {
+      super($$3);
+      this.n = new fkl(this::H, this::a, $$0, $$1);
+      this.t = $$2;
+      this.o = fkm.a.a($$2);
    }
 
    @Override
-   protected void aP_() {
-      this.w.c().b();
-      this.w.a(new fbr(this.e, this.i));
-      fea $$0 = this.w.a(fea.e().a(8));
-      $$0.c().e();
-      $$0.a(new fbk(85, 120, this.f.aQ(), this.q.e().a()));
-      fea $$1 = $$0.a(fea.d().a(8));
-      this.z = fak.a(c, $$0x -> this.f.a(new fkl(this, this.q.h(), $$0xx -> {
-            this.q.a($$0xx);
-            this.E();
-         }))).a(178).a();
-      $$1.a(fds.a(this.i, this.z, b));
-      this.x = this.a(178, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.E();
-      });
-      $$1.a(fds.a(this.i, this.x, k, $$0x -> $$0x.e(12)));
-      fea $$2 = this.w.a(fea.e().a(8));
-      $$2.a(fak.a(vr.k, $$0x -> this.d()).a(120).a());
-      this.y = $$2.a(fak.a(a, $$0x -> this.o()).a(120).a());
-      this.w.a($$1x -> {
-         fai var10000 = this.c($$1x);
-      });
-      this.c();
+   public void d() {
+      this.n.c();
       this.E();
    }
 
-   @Override
-   protected void c() {
-      this.w.a();
-      fdu.a(this.w, this.F());
+   private void E() {
+      if (this.o != null) {
+         try {
+            this.o.close();
+            this.o = null;
+         } catch (Exception var2) {
+         }
+      }
    }
 
-   private void E() {
-      fse $$0 = this.q.h();
-      if ($$0 != null) {
-         this.z.b($$0.b());
-      } else {
-         this.z.b(c);
+   @Override
+   protected void aO_() {
+      this.q = this.c(new fkn(this.f, this, 200, this.h, vu.c("pack.available.title")));
+      this.q.m(this.g / 2 - 4 - 200);
+      this.r = this.c(new fkn(this.f, this, 200, this.h, vu.c("pack.selected.title")));
+      this.r.m(this.g / 2 + 4);
+      this.c(fbg.a(vu.c("pack.openFolder"), $$0 -> ac.j().a(this.t.toUri())).a(this.g / 2 - 154, this.h - 48, 150, 20).a(fcr.a(k)).a());
+      this.u = this.c(fbg.a(vt.d, $$0 -> this.d()).a(this.g / 2 + 4, this.h - 48, 150, 20).a());
+      this.I();
+   }
+
+   @Override
+   public void e() {
+      if (this.o != null) {
+         try {
+            if (this.o.a()) {
+               this.p = 20L;
+            }
+         } catch (IOException var2) {
+            a.warn("Failed to poll for directory {} changes, stopping", this.t);
+            this.E();
+         }
       }
 
-      fsc.b $$1 = this.q.c();
-      this.y.j = $$1 == null;
-      this.y.a(x.a($$1, fsc.b::a));
+      if (this.p > 0L && --this.p == 0L) {
+         this.I();
+      }
+   }
+
+   private void H() {
+      this.a(this.r, this.n.b());
+      this.a(this.q, this.n.a());
+      this.u.j = !this.r.l().isEmpty();
+   }
+
+   private void a(fkn $$0, Stream<fkl.a> $$1) {
+      $$0.l().clear();
+      fkn.a $$2 = $$0.i();
+      String $$3 = $$2 == null ? "" : $$2.b();
+      $$0.a(null);
+      $$1.forEach($$2x -> {
+         fkn.a $$3x = new fkn.a(this.f, $$0, $$2x);
+         $$0.l().add($$3x);
+         if ($$2x.c().equals($$3)) {
+            $$0.a($$3x);
+         }
+      });
+   }
+
+   public void a(fkn $$0) {
+      fkn $$1 = this.r == $$0 ? this.q : this.r;
+      this.a(faq.a($$1.j(), $$1, this));
+   }
+
+   public void o() {
+      this.r.a(null);
+      this.q.a(null);
+   }
+
+   private void I() {
+      this.n.d();
+      this.H();
+      this.p = 0L;
+      this.v.clear();
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.x.b($$0, $$1, $$2);
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      $$0.a(this.i, c, this.g / 2, 20, 16777215);
+   }
+
+   @Override
+   public void b(fat $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   protected static void a(ezg $$0, List<Path> $$1, Path $$2) {
+      MutableBoolean $$3 = new MutableBoolean();
+      $$1.forEach($$2x -> {
+         try (Stream<Path> $$3x = Files.walk($$2x)) {
+            $$3x.forEach($$3xx -> {
+               try {
+                  ac.b($$2x.getParent(), $$2, $$3xx);
+               } catch (IOException var5) {
+                  a.warn("Failed to copy datapack file  from {} to {}", new Object[]{$$3xx, $$2, var5});
+                  $$3.setTrue();
+               }
+            });
+         } catch (IOException var8) {
+            a.warn("Failed to copy datapack file from {} to {}", $$2x, $$2);
+            $$3.setTrue();
+         }
+      });
+      if ($$3.isTrue()) {
+         fdo.c($$0, $$2.toString());
+      }
+   }
+
+   @Override
+   public void a(List<Path> $$0) {
+      String $$1 = a($$0).collect(Collectors.joining(", "));
+      this.f.a(new ffx($$1x -> {
+         if ($$1x) {
+            List<Path> $$2 = new ArrayList<>($$0.size());
+            Set<Path> $$3 = new HashSet<>($$0);
+            ary<Path> $$4 = new ary<Path>(this.f.be()) {
+               protected Path a(Path $$0) {
+                  return $$0;
+               }
+
+               protected Path b(Path $$0) {
+                  return $$0;
+               }
+            };
+            List<epi> $$5 = new ArrayList<>();
+
+            for (Path $$6 : $$0) {
+               try {
+                  Path $$7 = $$4.a($$6, $$5);
+                  if ($$7 == null) {
+                     a.warn("Path {} does not seem like pack", $$6);
+                  } else {
+                     $$2.add($$7);
+                     $$3.remove($$7);
+                  }
+               } catch (IOException var10) {
+                  a.warn("Failed to check {} for packs", $$6, var10);
+               }
+            }
+
+            if (!$$5.isEmpty()) {
+               this.f.a(fgu.b(() -> this.f.a(this)));
+               return;
+            }
+
+            if (!$$2.isEmpty()) {
+               a(this.f, $$2, this.t);
+               this.I();
+            }
+
+            if (!$$3.isEmpty()) {
+               String $$9 = a($$3).collect(Collectors.joining(", "));
+               this.f.a(new ffr(() -> this.f.a(this), vu.c("pack.dropRejected.title"), vu.a("pack.dropRejected.message", $$9)));
+               return;
+            }
+         }
+
+         this.f.a(this);
+      }, vu.c("pack.dropConfirm"), vu.b($$1)));
+   }
+
+   private static Stream<String> a(Collection<Path> $$0) {
+      return $$0.stream().map(Path::getFileName).map(Path::toString);
+   }
+
+   private ajh a(gja $$0, arw $$1) {
+      try {
+         ajh var9;
+         try (ara $$2 = $$1.f()) {
+            asg<InputStream> $$3 = $$2.a("pack.png");
+            if ($$3 == null) {
+               return m;
+            }
+
+            String $$4 = $$1.g();
+            ajh $$5 = new ajh("minecraft", "pack/" + ac.a($$4, ajh::b) + "/" + Hashing.sha1().hashUnencodedChars($$4) + "/icon");
+
+            try (InputStream $$6 = $$3.get()) {
+               eta $$7 = eta.a($$6);
+               $$0.a($$5, new gim($$7));
+               var9 = $$5;
+            }
+         }
+
+         return var9;
+      } catch (Exception var14) {
+         a.warn("Failed to load icon from pack {}", $$1.g(), var14);
+         return m;
+      }
+   }
+
+   private ajh a(arw $$0) {
+      return this.v.computeIfAbsent($$0.g(), $$1 -> this.a(this.f.aa(), $$0));
+   }
+
+   static class a implements AutoCloseable {
+      private final WatchService a;
+      private final Path b;
+
+      public a(Path $$0) throws IOException {
+         this.b = $$0;
+         this.a = $$0.getFileSystem().newWatchService();
+
+         try {
+            this.b($$0);
+
+            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream($$0)) {
+               for (Path $$2 : $$1) {
+                  if (Files.isDirectory($$2, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$2);
+                  }
+               }
+            }
+         } catch (Exception var7) {
+            this.a.close();
+            throw var7;
+         }
+      }
+
+      @Nullable
+      public static fkm.a a(Path $$0) {
+         try {
+            return new fkm.a($$0);
+         } catch (IOException var2) {
+            fkm.a.warn("Failed to initialize pack directory {} monitoring", $$0, var2);
+            return null;
+         }
+      }
+
+      private void b(Path $$0) throws IOException {
+         $$0.register(this.a, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
+      }
+
+      public boolean a() throws IOException {
+         boolean $$0 = false;
+
+         WatchKey $$1;
+         while (($$1 = this.a.poll()) != null) {
+            for (WatchEvent<?> $$3 : $$1.pollEvents()) {
+               $$0 = true;
+               if ($$1.watchable() == this.b && $$3.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
+                  Path $$4 = this.b.resolve((Path)$$3.context());
+                  if (Files.isDirectory($$4, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$4);
+                  }
+               }
+            }
+
+            $$1.reset();
+         }
+
+         return $$0;
+      }
+
+      @Override
+      public void close() throws IOException {
+         this.a.close();
+      }
    }
 }

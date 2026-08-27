@@ -1,31 +1,33 @@
-import java.util.Map;
+import io.netty.buffer.ByteBuf;
 
-public class yo implements xz<yf> {
-   public static final xq<us, yo> a = xz.a(yo::a, yo::new);
-   private final Map<ajb<? extends ix<?>>, auw.a> b;
+public record yo(ajh c, byte[] d) implements yb<yh> {
+   public static final xs<uu, yo> a = yb.a(yo::a, yo::new);
+   private static final int e = 5120;
+   public static final xs<ByteBuf, byte[]> b = xq.a(5120);
 
-   public yo(Map<ajb<? extends ix<?>>, auw.a> $$0) {
-      this.b = $$0;
+   private yo(uu $$0) {
+      this($$0.q(), b.decode($$0));
    }
 
-   private yo(us $$0) {
-      this.b = $$0.a(us::r, auw.a::b);
-   }
-
-   private void a(us $$0) {
-      $$0.a(this.b, us::b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(uu $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
    }
 
    @Override
-   public yb<yo> a() {
-      return yp.i;
+   public yd<yo> a() {
+      return yr.g;
    }
 
-   public void a(yf $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
    }
 
-   public Map<ajb<? extends ix<?>>, auw.a> b() {
-      return this.b;
+   public ajh b() {
+      return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

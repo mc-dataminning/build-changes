@@ -10,15 +10,15 @@ public class cj extends cx<cj.a> {
       return cj.a.a;
    }
 
-   public void a(apb $$0, bow $$1, List<bof> $$2) {
-      List<ejy> $$3 = $$2.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
-      ejy $$4 = br.b($$0, $$1);
+   public void a(apg $$0, bpn $$1, List<bow> $$2) {
+      List<eku> $$3 = $$2.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
+      eku $$4 = br.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
    public static record a(Optional<bc> b, Optional<bc> c, Optional<bc> d) implements cx.a {
       public static final Codec<cj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avu.a(br.b, "player").forGetter(cj.a::a), avu.a(br.b, "lightning").forGetter(cj.a::b), avu.a(br.b, "bystander").forGetter(cj.a::c))
+         $$0 -> $$0.group(awe.a(br.b, "player").forGetter(cj.a::a), awe.a(br.b, "lightning").forGetter(cj.a::b), awe.a(br.b, "bystander").forGetter(cj.a::c))
                .apply($$0, cj.a::new)
       );
 
@@ -26,7 +26,7 @@ public class cj extends cx<cj.a> {
          return am.V.a(new cj.a(Optional.empty(), br.a($$0), br.a($$1)));
       }
 
-      public boolean a(ejy $$0, List<ejy> $$1) {
+      public boolean a(eku $$0, List<eku> $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
       }
 

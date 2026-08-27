@@ -1,104 +1,165 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FreeType;
+import javax.annotation.Nullable;
 
-public record fdo(ajc c, float d, float e, fdo.a f, String g) implements fdl {
-   private static final Codec<String> h = avu.a(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
-   public static final MapCodec<fdo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ajc.a.fieldOf("file").forGetter(fdo::c),
-               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fdo::d),
-               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fdo::e),
-               fdo.a.b.optionalFieldOf("shift", fdo.a.a).forGetter(fdo::f),
-               h.optionalFieldOf("skip", "").forGetter(fdo::g)
-            )
-            .apply($$0, fdo::new)
-   );
+public class fdo implements fdp {
+   private static final ajh a = new ajh("toast/system");
+   private static final int d = 200;
+   private static final int e = 12;
+   private static final int f = 10;
+   private final fdo.a g;
+   private vu h;
+   private List<awi> i;
+   private long j;
+   private boolean k;
+   private final int l;
+   private boolean m;
 
-   @Override
-   public fdm a() {
-      return fdm.b;
+   public fdo(fdo.a $$0, vu $$1, @Nullable vu $$2) {
+      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(ezg.Q().h.a($$1), $$2 == null ? 0 : ezg.Q().h.a($$2))));
+   }
+
+   public static fdo a(ezg $$0, fdo.a $$1, vu $$2, vu $$3) {
+      far $$4 = $$0.h;
+      List<awi> $$5 = $$4.c($$3, 200);
+      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
+      return new fdo($$1, $$2, $$5, $$6 + 30);
+   }
+
+   private fdo(fdo.a $$0, vu $$1, List<awi> $$2, int $$3) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.l = $$3;
+   }
+
+   private static ImmutableList<awi> a(@Nullable vu $$0) {
+      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
    }
 
    @Override
-   public Either<fdl.a, fdl.b> b() {
-      return Either.left(this::a);
+   public int a() {
+      return this.l;
    }
 
-   private erg a(asf $$0) throws IOException {
-      FT_Face $$1 = null;
-      ByteBuffer $$2 = null;
+   @Override
+   public int b() {
+      return 20 + Math.max(this.i.size(), 1) * 12;
+   }
 
-      try {
-         erj var14;
-         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
-            $$2 = TextureUtil.readResource($$3);
-            $$2.flip();
-            MemoryStack $$4 = MemoryStack.stackPush();
+   public void c() {
+      this.m = true;
+   }
 
-            try {
-               PointerBuffer $$5 = $$4.mallocPointer(1);
-               fdk.a(FreeType.FT_New_Memory_Face(fdk.a(), $$2, 0L, $$5), "Initializing font face");
-               $$1 = FT_Face.create($$5.get());
-            } catch (Throwable var10) {
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (Throwable var9) {
-                     var10.addSuppressed(var9);
-                  }
-               }
+   @Override
+   public fdp.a a(fat $$0, fdq $$1, long $$2) {
+      if (this.k) {
+         this.j = $$2;
+         this.k = false;
+      }
 
-               throw var10;
-            }
+      int $$3 = this.a();
+      if ($$3 == 160 && this.i.size() <= 1) {
+         $$0.a(a, 0, 0, $$3, this.b());
+      } else {
+         int $$4 = this.b();
+         int $$5 = 28;
+         int $$6 = Math.min(4, $$4 - 28);
+         this.a($$0, $$3, 0, 0, 28);
 
-            if ($$4 != null) {
-               $$4.close();
-            }
-
-            String $$6 = FreeType.FT_Get_Font_Format($$1);
-            if (!"TrueType".equals($$6)) {
-               throw new IOException("Font is not in TTF format, was " + $$6);
-            }
-
-            fdk.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
-            var14 = new erj($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
+            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
          }
 
-         return var14;
-      } catch (Exception var12) {
-         if ($$1 != null) {
-            FreeType.FT_Done_Face($$1);
-         }
+         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
+      }
 
-         MemoryUtil.memFree($$2);
-         throw var12;
+      if (this.i.isEmpty()) {
+         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
+      } else {
+         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
+
+         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
+            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
+         }
+      }
+
+      double $$9 = (double)this.g.h * $$1.c();
+      long $$10 = $$2 - this.j;
+      return !this.m && (double)$$10 < $$9 ? fdp.a.a : fdp.a.b;
+   }
+
+   private void a(fat $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$2 == 0 ? 20 : 5;
+      int $$6 = Math.min(60, $$1 - $$5);
+      ajh $$7 = a;
+      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
+
+      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
+         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
+      }
+
+      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
+   }
+
+   public void a(vu $$0, @Nullable vu $$1) {
+      this.h = $$0;
+      this.i = a($$1);
+      this.k = true;
+   }
+
+   public fdo.a d() {
+      return this.g;
+   }
+
+   public static void a(fdq $$0, fdo.a $$1, vu $$2, @Nullable vu $$3) {
+      $$0.a(new fdo($$1, $$2, $$3));
+   }
+
+   public static void b(fdq $$0, fdo.a $$1, vu $$2, @Nullable vu $$3) {
+      fdo $$4 = $$0.a(fdo.class, $$1);
+      if ($$4 == null) {
+         a($$0, $$1, $$2, $$3);
+      } else {
+         $$4.a($$2, $$3);
       }
    }
 
-   public static record a(float c, float d) {
-      public static final fdo.a a = new fdo.a(0.0F, 0.0F);
-      public static final Codec<fdo.a> b = Codec.FLOAT
-         .listOf()
-         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new fdo.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+   public static void a(fdq $$0, fdo.a $$1) {
+      fdo $$2 = $$0.a(fdo.class, $$1);
+      if ($$2 != null) {
+         $$2.c();
+      }
+   }
 
-      public float a() {
-         return this.c;
+   public static void a(ezg $$0, String $$1) {
+      a($$0.aA(), fdo.a.d, vu.c("selectWorld.access_failure"), vu.b($$1));
+   }
+
+   public static void b(ezg $$0, String $$1) {
+      a($$0.aA(), fdo.a.d, vu.c("selectWorld.delete_failure"), vu.b($$1));
+   }
+
+   public static void c(ezg $$0, String $$1) {
+      a($$0.aA(), fdo.a.e, vu.c("pack.copyFailure"), vu.b($$1));
+   }
+
+   public static class a {
+      public static final fdo.a a = new fdo.a();
+      public static final fdo.a b = new fdo.a();
+      public static final fdo.a c = new fdo.a();
+      public static final fdo.a d = new fdo.a();
+      public static final fdo.a e = new fdo.a();
+      public static final fdo.a f = new fdo.a();
+      public static final fdo.a g = new fdo.a(10000L);
+      final long h;
+
+      public a(long $$0) {
+         this.h = $$0;
       }
 
-      public float b() {
-         return this.d;
+      public a() {
+         this(5000L);
       }
    }
 }

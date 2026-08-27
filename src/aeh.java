@@ -1,46 +1,23 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
 
-public class aeh implements xz<aai> {
-   public static final xq<us, aeh> a = xz.a(aeh::a, aeh::new);
-   private final int b;
-   @Nullable
-   private final sy c;
+public class aeh implements yb<aam> {
+   public static final aeh a = new aeh();
+   public static final xs<ByteBuf, aeh> b = xs.a(a);
 
-   public aeh(int $$0, @Nullable sy $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private aeh(us $$0) {
-      this.b = $$0.l();
-      this.c = $$0.o();
-   }
-
-   private void a(us $$0) {
-      $$0.c(this.b);
-      $$0.a((tv)this.c);
+   private aeh() {
    }
 
    @Override
-   public yb<aeh> a() {
-      return aet.aX;
+   public yd<aeh> a() {
+      return aex.aT;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   @Nullable
-   public sy e() {
-      return this.c;
-   }
-
    @Override
-   public boolean c() {
+   public boolean d() {
       return true;
    }
 }

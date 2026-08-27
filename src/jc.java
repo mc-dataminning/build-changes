@@ -1,65 +1,62 @@
+import com.mojang.serialization.DynamicOps;
 import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class jc {
-   public static final xq<ByteBuf, jc> a = new xq<ByteBuf, jc>() {
-      public jc a(ByteBuf $$0) {
-         return new jc($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   public static final Set<ajg<? extends iy<?>>> a = ajc.c.stream().map(ajc.c::a).collect(Collectors.toUnmodifiableSet());
+
+   public static void a(DynamicOps<tx> $$0, iz $$1, Set<arv> $$2, BiConsumer<ajg<? extends iy<?>>, List<jc.a>> $$3) {
+      ajc.c.forEach($$4 -> a($$0, (ajc.c<?>)$$4, $$1, $$2, $$3));
+   }
+
+   private static <T> void a(DynamicOps<tx> $$0, ajc.c<T> $$1, iz $$2, Set<arv> $$3, BiConsumer<ajg<? extends iy<?>>, List<jc.a>> $$4) {
+      $$2.c($$1.a()).ifPresent($$4x -> {
+         List<jc.a> $$5 = new ArrayList<>($$4x.b());
+         $$4x.h().forEach($$5x -> {
+            boolean $$6 = $$4x.c($$5x.h()).flatMap(ix::a).filter($$3::contains).isPresent();
+            Optional<tx> $$7;
+            if ($$6) {
+               $$7 = Optional.empty();
+            } else {
+               tx $$8 = ac.a($$1.b().encodeStart($$0, $$5x.a()), $$1xxx -> new IllegalArgumentException("Failed to serialize " + $$5x.h() + ": " + $$1xxx));
+               $$7 = Optional.of($$8);
+            }
+
+            $$5.add(new jc.a($$5x.h().a(), $$7));
+         });
+         $$4.accept($$4x.c(), $$5);
+      });
+   }
+
+   private static Stream<iz.d<?>> a(iz $$0) {
+      return $$0.c().filter($$0x -> a.contains($$0x.a()));
+   }
+
+   public static Stream<iz.d<?>> a(is<ajq> $$0) {
+      return a($$0.c(ajq.b));
+   }
+
+   public static Stream<iz.d<?>> b(is<ajq> $$0) {
+      Stream<iz.d<?>> $$1 = $$0.a(ajq.a).c();
+      Stream<iz.d<?>> $$2 = a($$0);
+      return Stream.concat($$2, $$1);
+   }
+
+   public static record a(ajh b, Optional<tx> c) {
+      public static final xs<ByteBuf, jc.a> a = xs.a(ajh.b, jc.a::a, xq.j.a(xq::a), jc.a::b, jc.a::new);
+
+      public ajh a() {
+         return this.b;
       }
 
-      public void a(ByteBuf $$0, jc $$1) {
-         $$0.writeFloat($$1.b);
-         $$0.writeFloat($$1.c);
-         $$0.writeFloat($$1.d);
+      public Optional<tx> b() {
+         return this.c;
       }
-   };
-   protected final float b;
-   protected final float c;
-   protected final float d;
-
-   public jc(float $$0, float $$1, float $$2) {
-      this.b = !Float.isInfinite($$0) && !Float.isNaN($$0) ? $$0 % 360.0F : 0.0F;
-      this.c = !Float.isInfinite($$1) && !Float.isNaN($$1) ? $$1 % 360.0F : 0.0F;
-      this.d = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
-   }
-
-   public jc(te $$0) {
-      this($$0.i(0), $$0.i(1), $$0.i(2));
-   }
-
-   public te a() {
-      te $$0 = new te();
-      $$0.add(tb.a(this.b));
-      $$0.add(tb.a(this.c));
-      $$0.add(tb.a(this.d));
-      return $$0;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof jc $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.c;
-   }
-
-   public float d() {
-      return this.d;
-   }
-
-   public float e() {
-      return awm.g(this.b);
-   }
-
-   public float f() {
-      return awm.g(this.c);
-   }
-
-   public float g() {
-      return awm.g(this.d);
    }
 }

@@ -1,26 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface drp {
+   drr a();
 
-public class drp {
-   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
-   public static final Codec<drp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
-               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
-               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
-               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, drp::new)
-   );
-   public final double b;
-   public final double c;
-   public final double d;
-   public final double e;
+   int b();
 
-   public drp(double $$0, double $$1, double $$2, double $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   boolean a(apf var1, il<drn> var2, drn.a var3, epr var4);
+
+   default drp.a c() {
+      return drp.a.a;
+   }
+
+   public static enum a {
+      a,
+      b;
+   }
+
+   public interface b<T extends drp> {
+      T c();
    }
 }

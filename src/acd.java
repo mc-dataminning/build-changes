@@ -1,61 +1,85 @@
-public class acd implements xz<aai> {
-   public static final xq<us, acd> a = xz.a(acd::a, acd::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public acd(bof $$0) {
-      this.b = $$0.do();
-      this.c = $$0.dq();
-      this.d = $$0.du();
-      this.e = $$0.dz();
-      this.f = $$0.dB();
+public record acd(int b, boolean c, Set<ajg<cwz>> d, int e, int f, int g, boolean h, boolean i, boolean j, aeu k, boolean l) implements yb<aam> {
+   public static final xs<vf, acd> a = yb.a(acd::a, acd::new);
+
+   private acd(vf $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(kj.aN)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new aeu($$0),
+         $$0.readBoolean()
+      );
    }
 
-   private acd(us $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-   }
-
-   private void a(us $$0) {
-      $$0.a(this.b);
+   private void a(vf $$0) {
+      $$0.p(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+      $$0.a(this.d, uu::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public yb<acd> a() {
-      return aet.U;
+   public yd<acd> a() {
+      return aex.O;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
+   public boolean e() {
       return this.c;
    }
 
-   public double f() {
+   public Set<ajg<cwz>> f() {
       return this.d;
    }
 
-   public float g() {
+   public int g() {
       return this.e;
    }
 
-   public float h() {
+   public int h() {
       return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public aeu m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

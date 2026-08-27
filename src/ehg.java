@@ -1,154 +1,28 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ehg implements ehj {
-   public static final int b = 1;
-   protected final cwg c;
-   @Nullable
-   private final ehi<?, ?> a;
-   @Nullable
-   private final ehi<?, ?> d;
+public class ehg implements ehk {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<ehg> a = RecordCodecBuilder.create($$0 -> $$0.group(ajh.a.fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, ehg::new));
+   private final ajh d;
 
-   public ehg(doo $$0, boolean $$1, boolean $$2) {
-      this.c = $$0.q();
-      this.a = $$1 ? new egz($$0) : null;
-      this.d = $$2 ? new ehk($$0) : null;
+   public ehg(ajh $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void a(ib $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0);
-      }
+   public ta a(axd $$0, @Nullable ta $$1) {
+      ta $$2 = $$1 == null ? new ta() : $$1.h();
+      ajh.a.encodeStart(to.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
+      $$2.a("LootTableSeed", $$0.g());
+      return $$2;
    }
 
    @Override
-   public boolean L_() {
-      return this.d != null && this.d.L_() ? true : this.a != null && this.a.L_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.d != null) {
-         $$0 += this.d.a();
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(jd $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(cvl $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(cvl $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public ehe a(cwn $$0) {
-      if ($$0 == cwn.b) {
-         return (ehe)(this.a == null ? ehe.a.a : this.a);
-      } else {
-         return (ehe)(this.d == null ? ehe.a.a : this.d);
-      }
-   }
-
-   public String a(cwn $$0, jd $$1) {
-      if ($$0 == cwn.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.b($$1.s());
-      }
-
-      return "n/a";
-   }
-
-   public ehf.b b(cwn $$0, jd $$1) {
-      if ($$0 == cwn.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.c($$1.s());
-      }
-
-      return ehf.b.a;
-   }
-
-   public void a(cwn $$0, jd $$1, @Nullable dog $$2) {
-      if ($$0 == cwn.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
-         }
-      } else if (this.d != null) {
-         this.d.a($$1.s(), $$2);
-      }
-   }
-
-   public void b(cvl $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0, $$1);
-      }
-   }
-
-   public int a(ib $$0, int $$1) {
-      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(jd $$0) {
-      long $$1 = $$0.s();
-      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
-   }
-
-   public int c() {
-      return this.c.al() + 2;
-   }
-
-   public int d() {
-      return this.c.am() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
+   public ehl<?> a() {
+      return ehl.d;
    }
 }

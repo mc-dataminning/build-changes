@@ -1,128 +1,138 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
-import java.util.List;
+public class foj extends fol<cfu> {
+   private static final float[] a = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
+   private static final float[] b = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
+   private static final float[] f = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
+   private static final float[] g = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
+   private static final float[] h = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
+   private static final float[] i = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
+   private static final String j = "eye";
+   private static final String k = "tail0";
+   private static final String l = "tail1";
+   private static final String m = "tail2";
+   private final frd n;
+   private final frd o;
+   private final frd p;
+   private final frd[] q;
+   private final frd[] r;
 
-public class foj<T extends box> extends fnr<T> {
-   private static final String a = "ear";
-   private static final String A = "cloak";
-   private static final String B = "left_sleeve";
-   private static final String C = "right_sleeve";
-   private static final String D = "left_pants";
-   private static final String E = "right_pants";
-   private final List<fqf> F;
-   public final fqf b;
-   public final fqf w;
-   public final fqf x;
-   public final fqf y;
-   public final fqf z;
-   private final fqf G;
-   private final fqf H;
-   private final boolean I;
+   public foj(frd $$0) {
+      this.n = $$0;
+      this.q = new frd[12];
+      this.o = $$0.b("head");
 
-   public foj(fqf $$0, boolean $$1) {
-      super($$0, fwy::i);
-      this.I = $$1;
-      this.H = $$0.b("ear");
-      this.G = $$0.b("cloak");
-      this.b = $$0.b("left_sleeve");
-      this.w = $$0.b("right_sleeve");
-      this.x = $$0.b("left_pants");
-      this.y = $$0.b("right_pants");
-      this.z = $$0.b("jacket");
-      this.F = $$0.e().filter($$0x -> !$$0x.d()).collect(ImmutableList.toImmutableList());
-   }
-
-   public static fqn a(fqj $$0, boolean $$1) {
-      fqn $$2 = fnr.a($$0, 0.0F);
-      fqo $$3 = $$2.a();
-      $$3.a("ear", fqk.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, $$0), fqh.a);
-      $$3.a("cloak", fqk.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, $$0, 1.0F, 0.5F), fqh.a(0.0F, 0.0F, 0.0F));
-      float $$4 = 0.25F;
-      if ($$1) {
-         $$3.a("left_arm", fqk.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), fqh.a(5.0F, 2.5F, 0.0F));
-         $$3.a("right_arm", fqk.c().a(40, 16).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), fqh.a(-5.0F, 2.5F, 0.0F));
-         $$3.a("left_sleeve", fqk.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), fqh.a(5.0F, 2.5F, 0.0F));
-         $$3.a("right_sleeve", fqk.c().a(40, 32).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), fqh.a(-5.0F, 2.5F, 0.0F));
-      } else {
-         $$3.a("left_arm", fqk.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fqh.a(5.0F, 2.0F, 0.0F));
-         $$3.a("left_sleeve", fqk.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fqh.a(5.0F, 2.0F, 0.0F));
-         $$3.a("right_sleeve", fqk.c().a(40, 32).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fqh.a(-5.0F, 2.0F, 0.0F));
+      for (int $$1 = 0; $$1 < this.q.length; $$1++) {
+         this.q[$$1] = this.o.b(a($$1));
       }
 
-      $$3.a("left_leg", fqk.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fqh.a(1.9F, 12.0F, 0.0F));
-      $$3.a("left_pants", fqk.c().a(0, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fqh.a(1.9F, 12.0F, 0.0F));
-      $$3.a("right_pants", fqk.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fqh.a(-1.9F, 12.0F, 0.0F));
-      $$3.a("jacket", fqk.c().a(16, 32).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.25F)), fqh.a);
-      return $$2;
+      this.p = this.o.b("eye");
+      this.r = new frd[3];
+      this.r[0] = this.o.b("tail0");
+      this.r[1] = this.r[0].b("tail1");
+      this.r[2] = this.r[1].b("tail2");
+   }
+
+   private static String a(int $$0) {
+      return "spike" + $$0;
+   }
+
+   public static frj b() {
+      frl $$0 = new frl();
+      frm $$1 = $$0.a();
+      frm $$2 = $$1.a(
+         "head",
+         fri.c()
+            .a(0, 0)
+            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
+            .a(0, 28)
+            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
+            .a(0, 28)
+            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
+            .a(16, 40)
+            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
+            .a(16, 40)
+            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
+         frf.a
+      );
+      fri $$3 = fri.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         float $$5 = b($$4, 0.0F, 0.0F);
+         float $$6 = c($$4, 0.0F, 0.0F);
+         float $$7 = d($$4, 0.0F, 0.0F);
+         float $$8 = (float) Math.PI * a[$$4];
+         float $$9 = (float) Math.PI * b[$$4];
+         float $$10 = (float) Math.PI * f[$$4];
+         $$2.a(a($$4), $$3, frf.a($$5, $$6, $$7, $$8, $$9, $$10));
+      }
+
+      $$2.a("eye", fri.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), frf.a(0.0F, 0.0F, -8.25F));
+      frm $$11 = $$2.a("tail0", fri.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), frf.a);
+      frm $$12 = $$11.a("tail1", fri.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), frf.a(-1.5F, 0.5F, 14.0F));
+      $$12.a("tail2", fri.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), frf.a(0.5F, 0.5F, 6.0F));
+      return frj.a($$0, 64, 64);
    }
 
    @Override
-   protected Iterable<fqf> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.x, this.y, this.b, this.w, this.z));
+   public frd a() {
+      return this.n;
    }
 
-   public void a(etd $$0, eth $$1, int $$2, int $$3) {
-      this.H.a(this.k);
-      this.H.b = 0.0F;
-      this.H.c = 0.0F;
-      this.H.a($$0, $$1, $$2, $$3);
-   }
+   public void a(cfu $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ah;
+      this.o.f = $$4 * (float) (Math.PI / 180.0);
+      this.o.e = $$5 * (float) (Math.PI / 180.0);
+      float $$7 = (1.0F - $$0.H($$6)) * 0.55F;
+      this.a($$3, $$7);
+      bow $$8 = ezg.Q().ao();
+      if ($$0.gp()) {
+         $$8 = $$0.gq();
+      }
 
-   public void b(etd $$0, eth $$1, int $$2, int $$3) {
-      this.G.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.x.a(this.q);
-      this.y.a(this.p);
-      this.b.a(this.o);
-      this.w.a(this.n);
-      this.z.a(this.m);
-      if ($$0.c(bom.e).b()) {
-         if ($$0.bU()) {
-            this.G.d = 1.4F;
-            this.G.c = 1.85F;
+      if ($$8 != null) {
+         epr $$9 = $$8.j(0.0F);
+         epr $$10 = $$0.j(0.0F);
+         double $$11 = $$9.d - $$10.d;
+         if ($$11 > 0.0) {
+            this.p.c = 0.0F;
          } else {
-            this.G.d = 0.0F;
-            this.G.c = 0.0F;
+            this.p.c = 1.0F;
          }
-      } else if ($$0.bU()) {
-         this.G.d = 0.3F;
-         this.G.c = 0.8F;
-      } else {
-         this.G.d = -1.1F;
-         this.G.c = -0.85F;
+
+         epr $$12 = $$0.f(0.0F);
+         $$12 = new epr($$12.c, 0.0, $$12.e);
+         epr $$13 = new epr($$10.c - $$9.c, 0.0, $$10.e - $$9.e).d().b((float) (Math.PI / 2));
+         double $$14 = $$12.b($$13);
+         this.p.b = aww.c((float)Math.abs($$14)) * 2.0F * (float)Math.signum($$14);
+      }
+
+      this.p.k = true;
+      float $$15 = $$0.G($$6);
+      this.r[0].f = aww.a($$15) * (float) Math.PI * 0.05F;
+      this.r[1].f = aww.a($$15) * (float) Math.PI * 0.1F;
+      this.r[2].f = aww.a($$15) * (float) Math.PI * 0.15F;
+   }
+
+   private void a(float $$0, float $$1) {
+      for (int $$2 = 0; $$2 < 12; $$2++) {
+         this.q[$$2].b = b($$2, $$0, $$1);
+         this.q[$$2].c = c($$2, $$0, $$1);
+         this.q[$$2].d = d($$2, $$0, $$1);
       }
    }
 
-   @Override
-   public void b_(boolean $$0) {
-      super.b_($$0);
-      this.b.k = $$0;
-      this.w.k = $$0;
-      this.x.k = $$0;
-      this.y.k = $$0;
-      this.z.k = $$0;
-      this.G.k = $$0;
-      this.H.k = $$0;
+   private static float a(int $$0, float $$1, float $$2) {
+      return 1.0F + aww.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
    }
 
-   @Override
-   public void a(bor $$0, etd $$1) {
-      fqf $$2 = this.a($$0);
-      if (this.I) {
-         float $$3 = 0.5F * (float)($$0 == bor.b ? 1 : -1);
-         $$2.b += $$3;
-         $$2.a($$1);
-         $$2.b -= $$3;
-      } else {
-         $$2.a($$1);
-      }
+   private static float b(int $$0, float $$1, float $$2) {
+      return g[$$0] * a($$0, $$1, $$2);
    }
 
-   public fqf a(awt $$0) {
-      return this.F.get($$0.a(this.F.size()));
+   private static float c(int $$0, float $$1, float $$2) {
+      return 16.0F + h[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float d(int $$0, float $$1, float $$2) {
+      return i[$$0] * a($$0, $$1, $$2);
    }
 }

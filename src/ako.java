@@ -1,66 +1,59 @@
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class ako {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vs.b("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vs.b("clear.failed.multiple", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("commands.banip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("commands.banip.failed"));
 
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("clear").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).h()), $$0xx -> true, -1)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ban-ip").requires($$0x -> $$0x.c(3)))
             .then(
-               ((RequiredArgumentBuilder)dv.a("targets", eh.d()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), $$0xx -> true, -1)))
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("item", gd.a($$1)).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), gd.a($$0x, "item"), -1)))
-                        .then(
-                           dv.a("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), gd.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
-                              )
-                        )
-                  )
+               ((RequiredArgumentBuilder)dv.a("target", StringArgumentType.word())
+                     .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
+                  .then(dv.a("reason", el.a()).executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), el.a($$0x, "reason"))))
             )
       );
    }
 
-   private static int a(du $$0, Collection<apb> $$1, Predicate<cpq> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (apb $$5 : $$1) {
-         $$4 += $$5.fV().a($$2, $$3, $$5.bW.q());
-         $$5.bX.d();
-         $$5.bW.a($$5.fV());
-      }
-
-      if ($$4 == 0) {
-         if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().ad());
-         } else {
-            throw b.create($$1.size());
-         }
+   private static int a(du $$0, String $$1, @Nullable vu $$2) throws CommandSyntaxException {
+      if (InetAddresses.isInetAddress($$1)) {
+         return b($$0, $$1, $$2);
       } else {
-         int $$6 = $$4;
-         if ($$3 == 0) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> vs.a("commands.clear.test.single", $$6, $$1.iterator().next().Q_()), true);
-            } else {
-               $$0.a(() -> vs.a("commands.clear.test.multiple", $$6, $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> vs.a("commands.clear.success.single", $$6, $$1.iterator().next().Q_()), true);
+         apg $$3 = $$0.l().ah().a($$1);
+         if ($$3 != null) {
+            return b($$0, $$3.A(), $$2);
          } else {
-            $$0.a(() -> vs.a("commands.clear.success.multiple", $$6, $$1.size()), true);
+            throw a.create();
+         }
+      }
+   }
+
+   private static int b(du $$0, String $$1, @Nullable vu $$2) throws CommandSyntaxException {
+      asy $$3 = $$0.l().ah().g();
+      if ($$3.a($$1)) {
+         throw b.create();
+      } else {
+         List<apg> $$4 = $$0.l().ah().b($$1);
+         asz $$5 = new asz($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+         $$3.a($$5);
+         $$0.a(() -> vu.a("commands.banip.success", $$1, $$5.d()), true);
+         if (!$$4.isEmpty()) {
+            $$0.a(() -> vu.a("commands.banip.info", $$4.size(), gi.a($$4)), true);
          }
 
-         return $$4;
+         for (apg $$6 : $$4) {
+            $$6.d.b(vu.c("multiplayer.disconnect.ip_banned"));
+         }
+
+         return $$4.size();
       }
    }
 }

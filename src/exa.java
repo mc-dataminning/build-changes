@@ -1,41 +1,233 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Date;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class exa {
-   private static final vs a = vs.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
+public class exa extends gpb {
+   static final ajh a = new ajh("pending_invite/accept_highlighted");
+   static final ajh b = new ajh("pending_invite/accept");
+   static final ajh c = new ajh("pending_invite/reject_highlighted");
+   static final ajh v = new ajh("pending_invite/reject");
+   private static final Logger w = LogUtils.getLogger();
+   private static final vu x = vu.c("mco.invites.nopending");
+   static final vu y = vu.c("mco.invites.button.accept");
+   static final vu z = vu.c("mco.invites.button.reject");
+   private final fhf A;
+   private final CompletableFuture<List<euz>> B = CompletableFuture.supplyAsync(() -> {
+      try {
+         return eup.a().i().a;
+      } catch (ewc var1x) {
+         w.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, ac.g());
+   @Nullable
+   vu C;
+   exa.b D;
+   int E = -1;
+   private fbg F;
+   private fbg G;
 
-   public static vs a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
-      } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return vs.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return vs.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return vs.a("mco.time.hoursAgo", $$3);
-         } else {
-            long $$4 = $$1 / 86400L;
-            return vs.a("mco.time.daysAgo", $$4);
+   public exa(fhf $$0, vu $$1) {
+      super($$1);
+      this.A = $$0;
+   }
+
+   @Override
+   public void aO_() {
+      euk.f();
+      this.D = new exa.b();
+      this.B.thenAcceptAsync($$0 -> {
+         List<exa.a> $$1 = $$0.stream().map($$0x -> new exa.a($$0x)).toList();
+         this.D.a($$1);
+         if ($$1.isEmpty()) {
+            this.f.aY().b(x);
+         }
+      }, this.j);
+      this.c(this.D);
+      this.F = this.c((fbg)fbg.a(y, $$0 -> {
+         this.a(this.E, true);
+         this.E = -1;
+         this.E();
+      }).a(this.g / 2 - 174, this.h - 32, 100, 20).a());
+      this.c((fbg)fbg.a(vt.d, $$0 -> this.d()).a(this.g / 2 - 50, this.h - 32, 100, 20).a());
+      this.G = this.c((fbg)fbg.a(z, $$0 -> {
+         this.a(this.E, false);
+         this.E = -1;
+         this.E();
+      }).a(this.g / 2 + 74, this.h - 32, 100, 20).a());
+      this.E();
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.A);
+   }
+
+   void a(int $$0, boolean $$1) {
+      if ($$0 < this.D.n()) {
+         String $$2 = this.D.l().get($$0).c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               eup $$2x = eup.a();
+               if ($$1) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
+               }
+
+               return true;
+            } catch (ewc var3x) {
+               w.error("Couldn't handle invite", var3x);
+               return false;
+            }
+         }, ac.g()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.D.b($$0);
+               ewf $$3 = this.f.bb();
+               if ($$1) {
+                  $$3.c.a();
+               }
+
+               $$3.d.a();
+            }
+         }, this.j);
+      }
+   }
+
+   @Override
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.C = null;
+      $$0.a(this.i, this.e, this.g / 2, 12, -1);
+      if (this.C != null) {
+         $$0.a(this.i, this.C, $$1, $$2);
+      }
+
+      if (this.B.isDone() && this.D.n() == 0) {
+         $$0.a(this.i, x, this.g / 2, this.h / 2 - 20, -1);
+      }
+   }
+
+   void E() {
+      this.F.k = this.a(this.E);
+      this.G.k = this.a(this.E);
+   }
+
+   private boolean a(int $$0) {
+      return $$0 != -1;
+   }
+
+   class a extends fcc.a<exa.a> {
+      private static final int b = 38;
+      final euz c;
+      private final List<ewj> d;
+
+      a(euz $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new exa.a.a(), new exa.a.b());
+      }
+
+      @Override
+      public void a(fat $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         ewj.a(exa.this.D, this, this.d, $$2, $$0, $$1);
+         return true;
+      }
+
+      private void a(fat $$0, euz $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.a(exa.this.i, $$1.b, $$2 + 38, $$3 + 1, -1, false);
+         $$0.a(exa.this.i, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
+         $$0.a(exa.this.i, exw.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
+         ewj.a($$0, this.d, exa.this.D, $$2, $$3, $$4, $$5);
+         exw.a($$0, $$2, $$3, 32, $$1.d);
+      }
+
+      @Override
+      public vu a() {
+         vu $$0 = vt.b(vu.b(this.c.b), vu.b(this.c.c), exw.a(this.c.e));
+         return vu.a("narrator.select", $$0);
+      }
+
+      class a extends ewj {
+         a() {
+            super(15, 15, 215, 5);
+         }
+
+         @Override
+         protected void a(fat $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? exa.a : exa.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               exa.this.C = exa.y;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            exa.this.a($$0, true);
+         }
+      }
+
+      class b extends ewj {
+         b() {
+            super(15, 15, 235, 5);
+         }
+
+         @Override
+         protected void a(fat $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? exa.c : exa.v, $$1, $$2, 18, 18);
+            if ($$3) {
+               exa.this.C = exa.z;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            exa.this.a($$0, false);
          }
       }
    }
 
-   public static vs a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
-   }
+   class b extends gpa<exa.a> {
+      public b() {
+         super(exa.this.g, exa.this.h - 72, 32, 36);
+      }
 
-   public static void a(ezx $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      eyk $$5 = eyk.P();
-      ProfileResult $$6 = $$5.al().fetchProfile($$4, false);
-      giy $$7 = $$6 != null ? $$5.am().b($$6.profile()) : gir.a($$4);
-      fbj.a($$0, $$7.a(), $$1, $$2, $$3);
+      public void b(int $$0) {
+         this.i($$0);
+      }
+
+      @Override
+      public int a() {
+         return this.n() * 36;
+      }
+
+      @Override
+      public int b() {
+         return 260;
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         this.c($$0);
+      }
+
+      public void c(int $$0) {
+         exa.this.E = $$0;
+         exa.this.E();
+      }
+
+      public void a(@Nullable exa.a $$0) {
+         super.a($$0);
+         exa.this.E = this.l().indexOf($$0);
+         exa.this.E();
+      }
    }
 }

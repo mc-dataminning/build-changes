@@ -1,120 +1,179 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntComparators;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class ctk implements cti {
-   final csp a;
-   final csp b;
-   final csp c;
+public final class ctk implements Predicate<cqk> {
+   public static final ctk a = new ctk(Stream.empty());
+   public static final xs<vf, ctk> b = cqk.g.a($$0 -> b($$0.stream().map(ctk.a::new)), $$0 -> Arrays.asList($$0.a()));
+   private final ctk.c[] e;
+   @Nullable
+   private cqk[] f;
+   @Nullable
+   private IntList g;
+   public static final Codec<ctk> c = a(true);
+   public static final Codec<ctk> d = a(false);
 
-   public ctk(csp $$0, csp $$1, csp $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private ctk(Stream<? extends ctk.c> $$0) {
+      this.e = $$0.toArray(ctk.c[]::new);
    }
 
-   @Override
-   public boolean a(bme $$0, cwe $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
+   private ctk(ctk.c[] $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public cpq a(bme $$0, iy $$1) {
-      cpq $$2 = $$0.a(1);
-      if (this.b.a($$2)) {
-         Optional<il.c<crs>> $$3 = crt.a($$1, $$0.a(2));
-         Optional<il.c<cru>> $$4 = crv.a($$1, $$0.a(0));
-         if ($$3.isPresent() && $$4.isPresent()) {
-            Optional<crr> $$5 = crr.a($$1, $$2, false);
-            if ($$5.isPresent() && $$5.get().a($$4.get(), $$3.get())) {
-               return cpq.h;
-            }
+   public cqk[] a() {
+      if (this.f == null) {
+         this.f = Arrays.stream(this.e).flatMap($$0 -> $$0.a().stream()).distinct().toArray(cqk[]::new);
+      }
 
-            cpq $$6 = $$2.q();
-            $$6.f(1);
-            crr $$7 = new crr($$3.get(), $$4.get());
-            if (crr.a($$1, $$6, $$7)) {
-               return $$6;
+      return this.f;
+   }
+
+   public boolean a(@Nullable cqk $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if (this.c()) {
+         return $$0.b();
+      } else {
+         for (cqk $$1 : this.a()) {
+            if ($$1.a($$0.d())) {
+               return true;
             }
          }
-      }
 
-      return cpq.h;
+         return false;
+      }
    }
 
-   @Override
-   public cpq a(iy $$0) {
-      cpq $$1 = new cpq(cpt.pG);
-      Optional<il.c<cru>> $$2 = $$0.d(ki.aK).h().findFirst();
-      if ($$2.isPresent()) {
-         Optional<il.c<crs>> $$3 = $$0.d(ki.aJ).b(crt.d);
-         if ($$3.isPresent()) {
-            crr $$4 = new crr($$3.get(), $$2.get());
-            crr.a($$0, $$1, $$4);
+   public IntList b() {
+      if (this.g == null) {
+         cqk[] $$0 = this.a();
+         this.g = new IntArrayList($$0.length);
+
+         for (cqk $$1 : $$0) {
+            this.g.add(ciw.c($$1));
          }
+
+         this.g.sort(IntComparators.NATURAL_COMPARATOR);
       }
 
-      return $$1;
+      return this.g;
+   }
+
+   public boolean c() {
+      return this.e.length == 0;
    }
 
    @Override
-   public boolean a(cpq $$0) {
-      return this.a.a($$0);
+   public boolean equals(Object $$0) {
+      return $$0 instanceof ctk $$1 ? Arrays.equals((Object[])this.e, (Object[])$$1.e) : false;
    }
 
-   @Override
-   public boolean b(cpq $$0) {
-      return this.b.a($$0);
+   private static ctk b(Stream<? extends ctk.c> $$0) {
+      ctk $$1 = new ctk($$0);
+      return $$1.c() ? a : $$1;
    }
 
-   @Override
-   public boolean c(cpq $$0) {
-      return this.c.a($$0);
+   public static ctk d() {
+      return a;
    }
 
-   @Override
-   public csw<?> as_() {
-      return csw.v;
+   public static ctk a(cwy... $$0) {
+      return a(Arrays.stream($$0).map(cqk::new));
    }
 
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(csp::c);
+   public static ctk a(cqk... $$0) {
+      return a(Arrays.stream($$0));
    }
 
-   public static class a implements csw<ctk> {
-      private static final Codec<ctk> y = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  csp.c.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  csp.c.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  csp.c.fieldOf("addition").forGetter($$0x -> $$0x.c)
-               )
-               .apply($$0, ctk::new)
-      );
-      public static final xq<vd, ctk> x = xq.a(ctk.a::a, ctk.a::a);
+   public static ctk a(Stream<cqk> $$0) {
+      return b($$0.filter($$0x -> !$$0x.b()).map(ctk.a::new));
+   }
+
+   public static ctk a(avd<cqf> $$0) {
+      return b(Stream.of(new ctk.b($$0)));
+   }
+
+   private static Codec<ctk> a(boolean $$0) {
+      Codec<ctk.c[]> $$1 = Codec.list(ctk.c.a)
+         .comapFlatMap(
+            $$1x -> !$$0 && $$1x.size() < 1
+                  ? DataResult.error(() -> "Item array cannot be empty, at least one item must be defined")
+                  : DataResult.success($$1x.toArray(new ctk.c[0])),
+            List::of
+         );
+      return awe.c($$1, ctk.c.a)
+         .flatComapMap(
+            $$0x -> (ctk)$$0x.map(ctk::new, $$0xx -> new ctk(new ctk.c[]{$$0xx})),
+            $$1x -> {
+               if ($$1x.e.length == 1) {
+                  return DataResult.success(Either.right($$1x.e[0]));
+               } else {
+                  return $$1x.e.length == 0 && !$$0
+                     ? DataResult.error(() -> "Item array cannot be empty, at least one item must be defined")
+                     : DataResult.success(Either.left($$1x.e));
+               }
+            }
+         );
+   }
+
+   static record a(cqk b) implements ctk.c {
+      static final Codec<ctk.a> c = RecordCodecBuilder.create($$0 -> $$0.group(cqk.d.fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, ctk.a::new));
 
       @Override
-      public Codec<ctk> a() {
-         return y;
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof ctk.a $$1) ? false : $$1.b.d().equals(this.b.d()) && $$1.b.M() == this.b.M();
       }
 
       @Override
-      public xq<vd, ctk> b() {
-         return x;
+      public Collection<cqk> a() {
+         return Collections.singleton(this.b);
+      }
+   }
+
+   static record b(avd<cqf> b) implements ctk.c {
+      static final Codec<ctk.b> c = RecordCodecBuilder.create($$0 -> $$0.group(avd.a(kj.F).fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, ctk.b::new));
+
+      @Override
+      public boolean equals(Object $$0) {
+         return $$0 instanceof ctk.b $$1 ? $$1.b.b().equals(this.b.b()) : false;
       }
 
-      private static ctk a(vd $$0) {
-         csp $$1 = csp.b.decode($$0);
-         csp $$2 = csp.b.decode($$0);
-         csp $$3 = csp.b.decode($$0);
-         return new ctk($$1, $$2, $$3);
-      }
+      @Override
+      public Collection<cqk> a() {
+         List<cqk> $$0 = Lists.newArrayList();
 
-      private static void a(vd $$0, ctk $$1) {
-         csp.b.encode($$0, $$1.a);
-         csp.b.encode($$0, $$1.b);
-         csp.b.encode($$0, $$1.c);
+         for (il<cqf> $$1 : ki.h.c(this.b)) {
+            $$0.add(new cqk($$1));
+         }
+
+         return $$0;
       }
+   }
+
+   interface c {
+      Codec<ctk.c> a = awe.a(ctk.a.c, ctk.b.c).xmap($$0 -> (ctk.c)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
+         if ($$0 instanceof ctk.b $$1) {
+            return Either.right($$1);
+         } else if ($$0 instanceof ctk.a $$2) {
+            return Either.left($$2);
+         } else {
+            throw new UnsupportedOperationException("This is neither an item value nor a tag value.");
+         }
+      });
+
+      Collection<cqk> a();
    }
 }

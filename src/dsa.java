@@ -1,68 +1,97 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
+
 public final class dsa {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dpa> e = ki.n
+      .q()
+      .comapFlatMap($$0 -> $$0 == dpa.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dsa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dsa::a),
+               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dsa::new)
+   );
+   private static final Set<ajg<cxy>> f = Set.of(cyf.aa, cyf.Z, cyf.ab);
+   public static final cxb b = new cxb() {
+      @Override
+      public int J_() {
+         return 64;
+      }
 
-   private dsa() {
+      @Override
+      public int I_() {
+         return -64;
+      }
+   };
+   private final dpa g;
+   private final BitSet h;
+
+   private dsa(dpa $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
    }
 
-   protected static dru.c a(drj $$0, drj $$1, drj $$2, dsd $$3) {
-      dme $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dsa.a $$8 = $$6 > 0.0 ? dsa.a.a : dsa.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = awm.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               awt $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = awm.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
+   @Nullable
+   public static dsa a(ta $$0) {
+      dpa $$1 = dpa.a($$0.l("target_status"));
+      return $$1 == dpa.c ? null : new dsa($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
+
+   public static void a(dpq $$0) {
+      int $$1 = 4;
+      ib.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dac.F)) {
+            $$0.a($$1x, dac.sJ.o(), false);
          }
-      };
+      });
    }
 
-   protected static enum a {
-      a(czh.ra.o(), czh.tg.o(), czh.c.o(), 0, 50),
-      b(czh.Q.o(), czh.tf.o(), czh.qz.o(), -60, -8);
+   public void b(dpq $$0) {
+      cxb $$1 = $$0.z();
+      int $$2 = $$1.I_();
+      int $$3 = $$1.ak() - 1;
 
-      final dme e;
-      final dme f;
-      final dme g;
-      protected final int c;
-      protected final int d;
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               ib.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dac.a.o(), false));
+            }
+         }
+      }
+   }
 
-      private a(dme $$0, dme $$1, dme $$2, int $$3, int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+   public dpa a() {
+      return this.g;
+   }
+
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static cyb a(cyb $$0, dov $$1) {
+      if (!$$1.y()) {
+         return $$0;
+      } else {
+         Predicate<ajg<cxy>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            il<cxy> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
    }
 }

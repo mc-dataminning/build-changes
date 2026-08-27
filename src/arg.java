@@ -1,28 +1,43 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import javax.annotation.Nullable;
 
-public interface arg<T> extends arf<T> {
-   JsonObject a(T var1);
+abstract class arg implements BasicFileAttributes {
+   private static final FileTime a = FileTime.fromMillis(0L);
 
-   static <T> arg<T> a(final String $$0, final Codec<T> $$1) {
-      return new arg<T>() {
-         @Override
-         public String a() {
-            return $$0;
-         }
+   @Override
+   public FileTime lastModifiedTime() {
+      return a;
+   }
 
-         @Override
-         public T a(JsonObject $$0x) {
-            return ac.a($$1.parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
-         }
+   @Override
+   public FileTime lastAccessTime() {
+      return a;
+   }
 
-         @Override
-         public JsonObject a(T $$0x) {
-            return ac.<JsonElement, IllegalArgumentException>a($$1.encodeStart(JsonOps.INSTANCE, $$0), IllegalArgumentException::new).getAsJsonObject();
-         }
-      };
+   @Override
+   public FileTime creationTime() {
+      return a;
+   }
+
+   @Override
+   public boolean isSymbolicLink() {
+      return false;
+   }
+
+   @Override
+   public boolean isOther() {
+      return false;
+   }
+
+   @Override
+   public long size() {
+      return 0L;
+   }
+
+   @Nullable
+   @Override
+   public Object fileKey() {
+      return null;
    }
 }

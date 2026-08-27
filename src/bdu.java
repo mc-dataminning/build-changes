@@ -1,34 +1,30 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 public class bdu extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
-
-   public bdu(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   public bdu(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
+   public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(bdt.c),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
-            )
-      );
-   }
+         "OptionsKeyTranslationFix",
+         this.getInputSchema().getType(beh.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
+                     if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
+                        String $$2 = ((Dynamic)$$1x.getValue()).asString("");
+                        if (!$$2.startsWith("key.mouse") && !$$2.startsWith("scancode.")) {
+                           return Pair.of((Dynamic)$$1x.getKey(), $$0x.createString("key.keyboard." + $$2.substring("key.".length())));
+                        }
+                     }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bfc::a).map(this.b).map($$0::createString);
-      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
+                     return Pair.of((Dynamic)$$1x.getKey(), (Dynamic)$$1x.getValue());
+                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
+      );
    }
 }

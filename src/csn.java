@@ -1,68 +1,41 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class csn extends csk {
-   private static final csp a = csp.a(cpt.ur);
+public record csn(String c, il<cqf> d, float e, Map<il<cnx>, String> f, vu g) {
+   public static final Codec<csn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awe.y.fieldOf("asset_name").forGetter(csn::a),
+               aje.a(kj.F).fieldOf("ingredient").forGetter(csn::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(csn::c),
+               Codec.unboundedMap(cnx.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(csn::d),
+               vw.a.fieldOf("description").forGetter(csn::e)
+            )
+            .apply($$0, csn::new)
+   );
+   public static final Codec<il<csn>> b = ajd.a(kj.aJ, a);
 
-   public csn(csi $$0) {
-      super($$0);
+   public static csn a(String $$0, cqf $$1, float $$2, vu $$3, Map<il<cnx>, String> $$4) {
+      return new csn($$0, ki.h.e($$1), $$2, $$4, $$3);
    }
 
-   public boolean a(clk $$0, cwe $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cpq $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof coh) {
-               $$2 = true;
-            } else {
-               if (!a.a($$5)) {
-                  return false;
-               }
-
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
-      }
-
-      return $$3 && $$2;
+   public String a() {
+      return this.c;
    }
 
-   public cpq a(clk $$0, iy $$1) {
-      List<Integer> $$2 = Lists.newArrayList();
-      cpq $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cpq $$5 = $$0.a($$4);
-         cpl $$6 = $$5.d();
-         if ($$6 instanceof coh) {
-            $$2.add(((coh)$$6).c().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.b("Explosion").b("FadeColors", $$2);
-         return $$3;
-      } else {
-         return cpq.h;
-      }
+   public il<cqf> b() {
+      return this.d;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public float c() {
+      return this.e;
    }
 
-   @Override
-   public csw<?> as_() {
-      return csw.i;
+   public Map<il<cnx>, String> d() {
+      return this.f;
+   }
+
+   public vu e() {
+      return this.g;
    }
 }

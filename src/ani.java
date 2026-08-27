@@ -1,126 +1,48 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.function.Function;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.List;
 
 public class ani {
-   public static void a(CommandDispatcher<du> $$0, dq $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("title").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
-                                    "targets", eh.d()
-                                 )
-                                 .then(dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets")))))
-                              .then(dv.a("reset").executes($$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets")))))
-                           .then(
-                              dv.a("title")
-                                 .then(
-                                    dv.a("title", ed.a($$1))
-                                       .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), ed.a($$0x, "title"), "title", adz::new))
-                                 )
-                           ))
-                        .then(
-                           dv.a("subtitle")
-                              .then(
-                                 dv.a("title", ed.a($$1))
-                                    .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), ed.a($$0x, "title"), "subtitle", adx::new))
-                              )
-                        ))
-                     .then(
-                        dv.a("actionbar")
-                           .then(
-                              dv.a("title", ed.a($$1))
-                                 .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), ed.a($$0x, "title"), "actionbar", ada::new))
-                           )
-                     ))
-                  .then(
-                     dv.a("times")
-                        .then(
-                           dv.a("fadeIn", fh.a())
-                              .then(
-                                 dv.a("stay", fh.a())
-                                    .then(
-                                       dv.a("fadeOut", fh.a())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (du)$$0x.getSource(),
-                                                   eh.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   private static final wr a = wr.a.a(new wa(wa.a.a, vu.c("chat.type.team.hover"))).a(new vs(vs.a.d, "/teammsg "));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("commands.teammsg.failed.noteam"));
+
+   public static void a(CommandDispatcher<du> $$0) {
+      LiteralCommandNode<du> $$1 = $$0.register((LiteralArgumentBuilder)dv.a("teammsg").then(dv.a("message", el.a()).executes($$0x -> {
+         du $$1x = (du)$$0x.getSource();
+         bow $$2 = $$1x.g();
+         eqq $$3 = $$2.cg();
+         if ($$3 == null) {
+            throw b.create();
+         } else {
+            List<apg> $$4 = $$1x.l().ah().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cg() == $$3).toList();
+            if (!$$4.isEmpty()) {
+               el.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
+            }
+
+            return $$4.size();
+         }
+      })));
+      $$0.register((LiteralArgumentBuilder)dv.a("tm").redirect($$1));
    }
 
-   private static int a(du $$0, Collection<apb> $$1) {
-      aaz $$2 = new aaz(false);
+   private static void a(du $$0, bow $$1, eqq $$2, List<apg> $$3, wk $$4) {
+      vu $$5 = $$2.d().c(a);
+      vq.a $$6 = vq.a(vq.g, $$0).c($$5);
+      vq.a $$7 = vq.a(vq.h, $$0).c($$5);
+      wj $$8 = wj.a($$4);
+      boolean $$9 = false;
 
-      for (apb $$3 : $$1) {
-         $$3.d.b($$2);
+      for (apg $$10 : $$3) {
+         vq.a $$11 = $$10 == $$1 ? $$7 : $$6;
+         boolean $$12 = $$0.a($$10);
+         $$10.a($$8, $$12, $$11);
+         $$9 |= $$12 && $$4.j();
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> vs.a("commands.title.cleared.single", $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vs.a("commands.title.cleared.multiple", $$1.size()), true);
+      if ($$9) {
+         $$0.a(atb.f);
       }
-
-      return $$1.size();
-   }
-
-   private static int b(du $$0, Collection<apb> $$1) {
-      aaz $$2 = new aaz(true);
-
-      for (apb $$3 : $$1) {
-         $$3.d.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vs.a("commands.title.reset.single", $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vs.a("commands.title.reset.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(du $$0, Collection<apb> $$1, vs $$2, String $$3, Function<vs, xz<?>> $$4) throws CommandSyntaxException {
-      for (apb $$5 : $$1) {
-         $$5.d.b($$4.apply(vv.a($$0, $$2, $$5, 0)));
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vs.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vs.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(du $$0, Collection<apb> $$1, int $$2, int $$3, int $$4) {
-      aea $$5 = new aea($$2, $$3, $$4);
-
-      for (apb $$6 : $$1) {
-         $$6.d.b($$5);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vs.a("commands.title.times.single", $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vs.a("commands.title.times.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
    }
 }

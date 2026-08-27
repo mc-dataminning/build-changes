@@ -1,50 +1,19 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bvh extends bwh {
-   private final cap g;
+public class bvh {
+   private static final bmh a = bmn.a(100, 200);
 
-   public bvh(cap $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(bvu.a.c, bvu.a.a));
-   }
-
-   @Override
-   public boolean a() {
-      return this.g.u() && !this.g.gl() && !this.g.gt() && super.a();
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.g.y(false);
-   }
-
-   @Override
-   protected int a(bpf $$0) {
-      return 40;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.A(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.y(false);
-      if (!this.m()) {
-         this.g.A(false);
-      } else if (!this.g.gt()) {
-         this.g.A(true);
-      }
-   }
-
-   @Override
-   protected boolean a(cwh $$0, ib $$1) {
-      return $$0.u($$1.c()) && $$0.a_($$1).a(aue.R);
+   public static brh<bpo> a() {
+      return but.a(
+         (Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$0 -> $$0.group($$0.a(byr.aB), $$0.a(byr.m), $$0.c(byr.aG), $$0.b(byr.B), $$0.c(byr.az))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(axy.a);
+                     $$2.a(axy.a, (long)a.a($$3x.E_()));
+                     $$1.b();
+                     $$4x.b(bpz.m);
+                     return true;
+                  }))
+      );
    }
 }

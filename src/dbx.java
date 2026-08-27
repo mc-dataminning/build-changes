@@ -1,16 +1,31 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dbx {
-   @Nullable
-   djl a(ib var1, dme var2);
+public class dbx extends daa {
+   public static final MapCodec<dbx> a = b(dbx::new);
 
-   @Nullable
-   default <T extends djl> djm<T> a(cwe $$0, dme $$1, djn<T> $$2) {
-      return null;
+   @Override
+   public MapCodec<dbx> a() {
+      return a;
    }
 
-   @Nullable
-   default <T extends djl> dqt a(apa $$0, T $$1) {
-      return $$1 instanceof dqt.b<?> $$2 ? $$2.c() : null;
+   public dbx(dmy.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
+      if ($$3.a(5) == 0) {
+         ih $$4 = ih.b($$3);
+         if ($$4 != ih.b) {
+            ib $$5 = $$2.a($$4);
+            dmz $$6 = $$1.a_($$5);
+            if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
+               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
+               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
+               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
+               $$1.a(kc.aC, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
+            }
+         }
+      }
    }
 }

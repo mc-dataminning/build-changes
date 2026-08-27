@@ -1,39 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import java.util.List;
 
-public class dyc extends dxz {
-   public static final Codec<dyc> d = RecordCodecBuilder.create(
+public class dyc implements dxu {
+   public static final Codec<dyc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
+               Codec.list(dyc.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, dyc::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
+   public final List<dyc.a> b;
+   public final int c;
+   public final float d;
 
-   public dyc(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   public dyc(List<dyc.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
    }
 
-   public dyc(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public dyc(List<dyc.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
    }
 
-   @Override
-   protected dya<?> b() {
-      return dya.a;
+   public dyc(egw $$0, dmz $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new dyc.a($$0, $$1)), $$2, $$3);
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public dyc(egw $$0, dmz $$1, int $$2) {
+      this(ImmutableList.of(new dyc.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static dyc.a a(egw $$0, dmz $$1) {
+      return new dyc.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<dyc.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(egw.c.fieldOf("target").forGetter($$0x -> $$0x.b), dmz.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, dyc.a::new)
+      );
+      public final egw b;
+      public final dmz c;
+
+      a(egw $$0, dmz $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

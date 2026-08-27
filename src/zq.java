@@ -1,46 +1,57 @@
-public record zq(ib c, float d, float e, float f, float g, float h) implements za {
-   public static final xq<us, zq> a = za.a(zq::a, zq::new);
-   public static final za.b<zq> b = za.a("debug/worldgen_attempt");
+import java.util.List;
 
-   private zq(us $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record zq(ajg<cwz> c, ecu d, List<zq.a> e) implements zc {
+   public static final xs<uu, zq> a = zc.a(zq::a, zq::new);
+   public static final zc.b<zq> b = zc.a("debug/structures");
+
+   private zq(uu $$0) {
+      this($$0.a(kj.aN), b($$0), $$0.a(zq.a::new));
    }
 
-   private void a(us $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+   private void a(uu $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
    }
 
    @Override
-   public za.b<zq> a() {
+   public zc.b<zq> a() {
       return b;
    }
 
-   public ib b() {
+   static ecu b(uu $$0) {
+      return new ecu($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   }
+
+   static void a(uu $$0, ecu $$1) {
+      $$0.p($$1.h());
+      $$0.p($$1.i());
+      $$0.p($$1.j());
+      $$0.p($$1.k());
+      $$0.p($$1.l());
+      $$0.p($$1.m());
+   }
+
+   public ajg<cwz> b() {
       return this.c;
    }
 
-   public float c() {
+   public ecu c() {
       return this.d;
    }
 
-   public float d() {
+   public List<zq.a> d() {
       return this.e;
    }
 
-   public float e() {
-      return this.f;
-   }
+   public static record a(ecu a, boolean b) {
+      public a(uu $$0) {
+         this(zq.b($$0), $$0.readBoolean());
+      }
 
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
+      public void a(uu $$0) {
+         zq.a($$0, this.a);
+         $$0.a(this.b);
+      }
    }
 }

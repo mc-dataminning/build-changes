@@ -1,5 +1,21 @@
-public class avl extends Exception {
-   public avl(Throwable $$0) {
-      super($$0);
-   }
+import java.util.function.IntConsumer;
+
+public interface avl {
+   int a(int var1, int var2);
+
+   void b(int var1, int var2);
+
+   int a(int var1);
+
+   long[] a();
+
+   int b();
+
+   int c();
+
+   void a(IntConsumer var1);
+
+   void a(int[] var1);
+
+   avl d();
 }

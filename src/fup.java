@@ -1,100 +1,339 @@
-import java.util.function.Consumer;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
 
-public class fup extends fve {
-   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
-   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
-   private static final float F = 1.0472F;
-   private int G;
+public class fup {
+   public static class a implements fvh<kf> {
+      private final fvz a;
 
-   fup(fra $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.G = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * awm.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a(eth $$0, exv $$1, float $$2) {
-      if (this.G <= 0) {
-         this.y = 1.0F - awm.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
-      }
-   }
-
-   private void a(eth $$0, exv $$1, float $$2, Consumer<Quaternionf> $$3) {
-      eov $$4 = $$1.b();
-      float $$5 = (float)(awm.d((double)$$2, this.d, this.g) - $$4.a());
-      float $$6 = (float)(awm.d((double)$$2, this.e, this.h) - $$4.b());
-      float $$7 = (float)(awm.d((double)$$2, this.f, this.i) - $$4.c());
-      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
-      $$3.accept($$8);
-      $$8.transform(b);
-      Vector3f[] $$9 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$10 = this.b($$2);
-
-      for (int $$11 = 0; $$11 < 4; $$11++) {
-         Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$8);
-         $$12.mul($$10);
-         $$12.add($$5, $$6, $$7);
-      }
-
-      int $$13 = this.a($$2);
-      this.a($$0, $$9[0], this.d(), this.f(), $$13);
-      this.a($$0, $$9[1], this.d(), this.e(), $$13);
-      this.a($$0, $$9[2], this.c(), this.e(), $$13);
-      this.a($$0, $$9[3], this.c(), this.f(), $$13);
-   }
-
-   private void a(eth $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
-      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public fui b() {
-      return fui.c;
-   }
-
-   @Override
-   public void a() {
-      if (this.G > 0) {
-         this.G--;
-      } else {
-         super.a();
-      }
-   }
-
-   public static class a implements fuh<kd> {
-      private final fuz a;
-
-      public a(fuz $$0) {
+      public a(fvz $$0) {
          this.a = $$0;
       }
 
-      public fue a(kd $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fup $$8 = new fup($$1, $$2, $$3, $$4, $$0.b());
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fup.b $$8 = new fup.b($$1, $$2, $$3, $$4);
          $$8.a(this.a);
-         $$8.e(1.0F);
          return $$8;
+      }
+   }
+
+   public static class b extends fwe {
+      b(fry $$0, double $$1, double $$2, double $$3) {
+         super($$0, $$1, $$2, $$3);
+         this.t = 4;
+      }
+
+      @Override
+      public fvi b() {
+         return fvi.c;
+      }
+
+      @Override
+      public void a(eud $$0, eyr $$1, float $$2) {
+         this.e(0.6F - ((float)this.s + $$2 - 1.0F) * 0.25F * 0.5F);
+         super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public float b(float $$0) {
+         return 7.1F * aww.a(((float)this.s + $$0 - 1.0F) * 0.25F * (float) Math.PI);
+      }
+   }
+
+   static class c extends fvq {
+      private boolean b;
+      private boolean F;
+      private final fvg G;
+      private float H;
+      private float I;
+      private float J;
+      private boolean K;
+
+      c(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fvg $$7, fvz $$8) {
+         super($$0, $$1, $$2, $$3, $$8, 0.1F);
+         this.j = $$4;
+         this.k = $$5;
+         this.l = $$6;
+         this.G = $$7;
+         this.D *= 0.75F;
+         this.t = 48 + this.r.a(12);
+         this.b($$8);
+      }
+
+      public void a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      public void b(boolean $$0) {
+         this.F = $$0;
+      }
+
+      @Override
+      public void a(eud $$0, eyr $$1, float $$2) {
+         if (!this.F || this.s < this.t / 3 || (this.s + this.t) / 3 % 2 == 0) {
+            super.a($$0, $$1, $$2);
+         }
+      }
+
+      @Override
+      public void a() {
+         super.a();
+         if (this.b && this.s < this.t / 2 && (this.s + this.t) % 2 == 0) {
+            fup.c $$0 = new fup.c(this.c, this.g, this.h, this.i, 0.0, 0.0, 0.0, this.G, this.a);
+            $$0.e(0.99F);
+            $$0.a(this.v, this.w, this.x);
+            $$0.s = $$0.t / 2;
+            if (this.K) {
+               $$0.K = true;
+               $$0.H = this.H;
+               $$0.I = this.I;
+               $$0.J = this.J;
+            }
+
+            $$0.F = this.F;
+            this.G.a($$0);
+         }
+      }
+   }
+
+   public static class d implements fvh<kf> {
+      private final fvz a;
+
+      public d(fvz $$0) {
+         this.a = $$0;
+      }
+
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fup.c $$8 = new fup.c($$1, $$2, $$3, $$4, $$5, $$6, $$7, ezg.Q().g, this.a);
+         $$8.e(0.99F);
+         return $$8;
+      }
+   }
+
+   public static class e extends fvc {
+      private int a;
+      private final fvg b;
+      private tg D;
+      private boolean E;
+
+      public e(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fvg $$7, @Nullable ta $$8) {
+         super($$0, $$1, $$2, $$3);
+         this.j = $$4;
+         this.k = $$5;
+         this.l = $$6;
+         this.b = $$7;
+         this.t = 8;
+         if ($$8 != null) {
+            this.D = $$8.c("Explosions", 10);
+            if (this.D.isEmpty()) {
+               this.D = null;
+            } else {
+               this.t = this.D.size() * 2 - 1;
+
+               for (int $$9 = 0; $$9 < this.D.size(); $$9++) {
+                  ta $$10 = this.D.a($$9);
+                  if ($$10.q("Flicker")) {
+                     this.E = true;
+                     this.t += 15;
+                     break;
+                  }
+               }
+            }
+         }
+      }
+
+      @Override
+      public void a() {
+         if (this.a == 0 && this.D != null) {
+            boolean $$0 = this.c();
+            boolean $$1 = false;
+            if (this.D.size() >= 3) {
+               $$1 = true;
+            } else {
+               for (int $$2 = 0; $$2 < this.D.size(); $$2++) {
+                  ta $$3 = this.D.a($$2);
+                  if (cpp.a.a($$3.f("Type")) == cpp.a.b) {
+                     $$1 = true;
+                     break;
+                  }
+               }
+            }
+
+            atx $$4;
+            if ($$1) {
+               $$4 = $$0 ? aty.iD : aty.iC;
+            } else {
+               $$4 = $$0 ? aty.iB : aty.iA;
+            }
+
+            this.c.a(this.g, this.h, this.i, $$4, atz.i, 20.0F, 0.95F + this.r.i() * 0.1F, true);
+         }
+
+         if (this.a % 2 == 0 && this.D != null && this.a / 2 < this.D.size()) {
+            int $$6 = this.a / 2;
+            ta $$7 = this.D.a($$6);
+            cpp.a $$8 = cpp.a.a($$7.f("Type"));
+            boolean $$9 = $$7.q("Trail");
+            boolean $$10 = $$7.q("Flicker");
+            int[] $$11 = $$7.n("Colors");
+            int[] $$12 = $$7.n("FadeColors");
+            if ($$11.length == 0) {
+               $$11 = new int[]{cpb.p.f()};
+            }
+
+            switch ($$8) {
+               case a:
+               default:
+                  this.a(0.25, 2, $$11, $$12, $$9, $$10);
+                  break;
+               case b:
+                  this.a(0.5, 4, $$11, $$12, $$9, $$10);
+                  break;
+               case c:
+                  this.a(
+                     0.5,
+                     new double[][]{
+                        {0.0, 1.0},
+                        {0.3455, 0.309},
+                        {0.9511, 0.309},
+                        {0.3795918367346939, -0.12653061224489795},
+                        {0.6122448979591837, -0.8040816326530612},
+                        {0.0, -0.35918367346938773}
+                     },
+                     $$11,
+                     $$12,
+                     $$9,
+                     $$10,
+                     false
+                  );
+                  break;
+               case d:
+                  this.a(
+                     0.5,
+                     new double[][]{
+                        {0.0, 0.2},
+                        {0.2, 0.2},
+                        {0.2, 0.6},
+                        {0.6, 0.6},
+                        {0.6, 0.2},
+                        {0.2, 0.2},
+                        {0.2, 0.0},
+                        {0.4, 0.0},
+                        {0.4, -0.6},
+                        {0.2, -0.6},
+                        {0.2, -0.4},
+                        {0.0, -0.4}
+                     },
+                     $$11,
+                     $$12,
+                     $$9,
+                     $$10,
+                     true
+                  );
+                  break;
+               case e:
+                  this.a($$11, $$12, $$9, $$10);
+            }
+
+            int $$13 = $$11[0];
+            float $$14 = (float)(($$13 & 0xFF0000) >> 16) / 255.0F;
+            float $$15 = (float)(($$13 & 0xFF00) >> 8) / 255.0F;
+            float $$16 = (float)(($$13 & 0xFF) >> 0) / 255.0F;
+            fve $$17 = this.b.a(kc.M, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            $$17.a($$14, $$15, $$16);
+         }
+
+         this.a++;
+         if (this.a > this.t) {
+            if (this.E) {
+               boolean $$18 = this.c();
+               atx $$19 = $$18 ? aty.iH : aty.iG;
+               this.c.a(this.g, this.h, this.i, $$19, atz.i, 20.0F, 0.9F + this.r.i() * 0.15F, true);
+            }
+
+            this.k();
+         }
+      }
+
+      private boolean c() {
+         ezg $$0 = ezg.Q();
+         return $$0.j.m().b().c(this.g, this.h, this.i) >= 256.0;
+      }
+
+      private void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int[] $$6, int[] $$7, boolean $$8, boolean $$9) {
+         fup.c $$10 = (fup.c)this.b.a(kc.D, $$0, $$1, $$2, $$3, $$4, $$5);
+         $$10.a($$8);
+         $$10.b($$9);
+         $$10.e(0.99F);
+         int $$11 = this.r.a($$6.length);
+         $$10.b($$6[$$11]);
+         if ($$7.length > 0) {
+            $$10.c(ac.a($$7, this.r));
+         }
+      }
+
+      private void a(double $$0, int $$1, int[] $$2, int[] $$3, boolean $$4, boolean $$5) {
+         double $$6 = this.g;
+         double $$7 = this.h;
+         double $$8 = this.i;
+
+         for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
+            for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
+               for (int $$11 = -$$1; $$11 <= $$1; $$11++) {
+                  double $$12 = (double)$$10 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$13 = (double)$$9 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$14 = (double)$$11 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$15 = Math.sqrt($$12 * $$12 + $$13 * $$13 + $$14 * $$14) / $$0 + this.r.k() * 0.05;
+                  this.a($$6, $$7, $$8, $$12 / $$15, $$13 / $$15, $$14 / $$15, $$2, $$3, $$4, $$5);
+                  if ($$9 != -$$1 && $$9 != $$1 && $$10 != -$$1 && $$10 != $$1) {
+                     $$11 += $$1 * 2 - 1;
+                  }
+               }
+            }
+         }
+      }
+
+      private void a(double $$0, double[][] $$1, int[] $$2, int[] $$3, boolean $$4, boolean $$5, boolean $$6) {
+         double $$7 = $$1[0][0];
+         double $$8 = $$1[0][1];
+         this.a(this.g, this.h, this.i, $$7 * $$0, $$8 * $$0, 0.0, $$2, $$3, $$4, $$5);
+         float $$9 = this.r.i() * (float) Math.PI;
+         double $$10 = $$6 ? 0.034 : 0.34;
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            double $$12 = (double)$$9 + (double)((float)$$11 * (float) Math.PI) * $$10;
+            double $$13 = $$7;
+            double $$14 = $$8;
+
+            for (int $$15 = 1; $$15 < $$1.length; $$15++) {
+               double $$16 = $$1[$$15][0];
+               double $$17 = $$1[$$15][1];
+
+               for (double $$18 = 0.25; $$18 <= 1.0; $$18 += 0.25) {
+                  double $$19 = aww.d($$18, $$13, $$16) * $$0;
+                  double $$20 = aww.d($$18, $$14, $$17) * $$0;
+                  double $$21 = $$19 * Math.sin($$12);
+                  $$19 *= Math.cos($$12);
+
+                  for (double $$22 = -1.0; $$22 <= 1.0; $$22 += 2.0) {
+                     this.a(this.g, this.h, this.i, $$19 * $$22, $$20, $$21 * $$22, $$2, $$3, $$4, $$5);
+                  }
+               }
+
+               $$13 = $$16;
+               $$14 = $$17;
+            }
+         }
+      }
+
+      private void a(int[] $$0, int[] $$1, boolean $$2, boolean $$3) {
+         double $$4 = this.r.k() * 0.05;
+         double $$5 = this.r.k() * 0.05;
+
+         for (int $$6 = 0; $$6 < 70; $$6++) {
+            double $$7 = this.j * 0.5 + this.r.k() * 0.15 + $$4;
+            double $$8 = this.l * 0.5 + this.r.k() * 0.15 + $$5;
+            double $$9 = this.k * 0.5 + this.r.j() * 0.5;
+            this.a(this.g, this.h, this.i, $$7, $$9, $$8, $$0, $$1, $$2, $$3);
+         }
       }
    }
 }

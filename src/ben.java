@@ -1,118 +1,44 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class ben extends DataFix {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 4096;
-   private static final short c = 12;
-
    public ben(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bdt.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
-         throw new IllegalStateException("Tile entity type is not a list type.");
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(beh.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(beh.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
       } else {
-         OpticFinder<? extends List<?>> $$4 = DSL.fieldFinder("TileEntities", $$3);
-         Type<?> $$5 = this.getInputSchema().getType(bdt.c);
-         OpticFinder<?> $$6 = $$5.findField("Level");
-         OpticFinder<?> $$7 = $$6.type().findField("Sections");
-         Type<?> $$8 = $$7.type();
-         if (!($$8 instanceof ListType)) {
-            throw new IllegalStateException("Expecting sections to be a list.");
-         } else {
-            Type<?> $$9 = ((ListType)$$8).getElement();
-            OpticFinder<?> $$10 = DSL.typeFinder($$9);
-            return TypeRewriteRule.seq(
-               new axz(this.getOutputSchema(), "AddTrappedChestFix", bdt.s).makeRule(),
-               this.fixTypeEverywhereTyped("Trapped Chest fix", $$5, $$4x -> $$4x.updateTyped($$6, $$3xx -> {
-                     Optional<? extends Typed<?>> $$4xx = $$3xx.getOptionalTyped($$7);
-                     if ($$4xx.isEmpty()) {
-                        return $$3xx;
-                     } else {
-                        List<? extends Typed<?>> $$5x = $$4xx.get().getAllTyped($$10);
-                        IntSet $$6x = new IntOpenHashSet();
-
-                        for (Typed<?> $$7x : $$5x) {
-                           ben.a $$8x = new ben.a($$7x, this.getInputSchema());
-                           if (!$$8x.b()) {
-                              for (int $$9x = 0; $$9x < 4096; $$9x++) {
-                                 int $$10x = $$8x.c($$9x);
-                                 if ($$8x.a($$10x)) {
-                                    $$6x.add($$8x.c() << 12 | $$9x);
-                                 }
-                              }
-                           }
-                        }
-
-                        Dynamic<?> $$11 = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
-                        int $$12 = $$11.get("xPos").asInt(0);
-                        int $$13 = $$11.get("zPos").asInt(0);
-                        TaggedChoiceType<String> $$14 = this.getInputSchema().findChoiceType(bdt.s);
-                        return $$3xx.updateTyped($$4, $$4xxx -> $$4xxx.updateTyped($$14.finder(), $$4xxxx -> {
-                              Dynamic<?> $$5xx = (Dynamic<?>)$$4xxxx.getOrCreate(DSL.remainderFinder());
-                              int $$6xx = $$5xx.get("x").asInt(0) - ($$12 << 4);
-                              int $$7xx = $$5xx.get("y").asInt(0);
-                              int $$8xx = $$5xx.get("z").asInt(0) - ($$13 << 4);
-                              return $$6x.contains(bci.a($$6xx, $$7xx, $$8xx)) ? $$4xxxx.update($$14.finder(), $$0xxxxx -> $$0xxxxx.mapFirst($$0xxxxxx -> {
-                                    if (!Objects.equals($$0xxxxxx, "minecraft:chest")) {
-                                       a.warn("Block Entity was expected to be a chest");
-                                    }
-
-                                    return "minecraft:trapped_chest";
-                                 })) : $$4xxxx;
-                           }));
-                     }
-                  }))
-            );
-         }
+         return this.fixTypeEverywhere("POI reorganization", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(ben::a));
       }
    }
 
-   public static final class a extends bci.b {
-      @Nullable
-      private IntSet h;
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Map<Dynamic<T>, Dynamic<T>> $$1 = Maps.newHashMap();
 
-      public a(Typed<?> $$0, Schema $$1) {
-         super($$0, $$1);
-      }
-
-      @Override
-      protected boolean a() {
-         this.h = new IntOpenHashSet();
-
-         for (int $$0 = 0; $$0 < this.e.size(); $$0++) {
-            Dynamic<?> $$1 = this.e.get($$0);
-            String $$2 = $$1.get("Name").asString("");
-            if (Objects.equals($$2, "minecraft:trapped_chest")) {
-               this.h.add($$0);
-            }
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         String $$3 = String.valueOf($$2);
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).result();
+         if ($$4.isPresent()) {
+            Dynamic<T> $$5 = $$4.get();
+            Dynamic<T> $$6 = $$0.createMap(ImmutableMap.of($$0.createString("Records"), $$5));
+            $$1.put($$0.createInt($$2), $$6);
+            $$0 = $$0.remove($$3);
          }
-
-         return this.h.isEmpty();
       }
 
-      public boolean a(int $$0) {
-         return this.h.contains($$0);
-      }
+      return $$0.set("Sections", $$0.createMap($$1));
    }
 }

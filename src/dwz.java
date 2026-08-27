@@ -1,53 +1,39 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwz implements dwy {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<dwz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               drn.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               drp.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               dro.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               blq.b(1, 20).fieldOf("outer_wall_distance").orElse(blw.a(4, 5)).forGetter($$0x -> $$0x.i),
-               blq.b(1, 20).fieldOf("distribution_points").orElse(blw.a(3, 4)).forGetter($$0x -> $$0x.j),
-               blq.b(0, 10).fieldOf("point_offset").orElse(blw.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
-            )
-            .apply($$0, dwz::new)
-   );
-   public final drn c;
-   public final drp d;
-   public final dro e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final blq i;
-   public final blq j;
-   public final blq k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+public class dwz extends dvq<dyb> {
+   public dwz(Codec<dyb> $$0) {
+      super($$0);
+   }
 
-   public dwz(drn $$0, drp $$1, dro $$2, double $$3, double $$4, boolean $$5, blq $$6, blq $$7, blq $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   @Override
+   public boolean a(dvs<dyb> $$0) {
+      cxu $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      ib.a $$3 = new ib.a();
+      ib.a $$4 = new ib.a();
+
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dsm.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(ih.a, 1);
+            cxy $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, dac.dO.o(), 2);
+            }
+
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, dac.dN.o(), 2);
+               dmz $$11 = $$1.a_($$4);
+               if ($$11.b(dhj.c)) {
+                  $$1.a($$4, $$11.a(dhj.c, Boolean.valueOf(true)), 2);
+               }
+            }
+         }
+      }
+
+      return true;
    }
 }

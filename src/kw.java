@@ -1,8 +1,11 @@
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class kw {
-   public static kr a(kq $$0, CompletableFuture<in.a> $$1) {
-      return new kr($$0, $$1, List.of(new lb(), new ky(), new kx(), new kz(), new la()));
+public class kw implements kt {
+   @Override
+   public void a(in.a $$0, Consumer<af> $$1) {
+      af $$2 = kt.a("adventure/root");
+      ky.a($$2, $$1, Stream.concat(ky.a.stream(), Stream.of(bpc.m)).collect(Collectors.toList()));
    }
 }

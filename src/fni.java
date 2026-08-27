@@ -1,44 +1,94 @@
-public class fni<T extends bof> extends fnn<T> {
-   private final fqf a;
-   private final fqf[] b = new fqf[9];
+import java.util.Arrays;
 
-   public fni(fqf $$0) {
+public class fni<T extends bow> extends fol<T> {
+   private final frd a;
+   private final frd[] b;
+   private final frd f;
+
+   public fni(frd $$0) {
       this.a = $$0;
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+      this.f = $$0.b("head");
+      this.b = new frd[12];
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
    private static String a(int $$0) {
-      return "tentacle" + $$0;
+      return "part" + $$0;
    }
 
-   public static fql b() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      $$1.a("body", fqk.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fqh.a(0.0F, 17.6F, 0.0F));
-      awt $$2 = awt.a(1660L);
+   public static frj b() {
+      frl $$0 = new frl();
+      frm $$1 = $$0.a();
+      $$1.a("head", fri.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), frf.a);
+      float $$2 = 0.0F;
+      fri $$3 = fri.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
 
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), fqk.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fqh.a($$4, 24.6F, $$5));
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = aww.b($$2) * 9.0F;
+         float $$6 = -2.0F + aww.b((float)($$4 * 2) * 0.25F);
+         float $$7 = aww.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, frf.a($$5, $$6, $$7));
+         $$2++;
       }
 
-      return fql.a($$0, 64, 32);
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = aww.b($$2) * 7.0F;
+         float $$10 = 2.0F + aww.b((float)($$8 * 2) * 0.25F);
+         float $$11 = aww.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, frf.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = aww.b($$2) * 5.0F;
+         float $$14 = 11.0F + aww.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = aww.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, frf.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return frj.a($$0, 64, 32);
+   }
+
+   @Override
+   public frd a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
-         this.b[$$6].e = 0.2F * awm.a($$3 * 0.3F + (float)$$6) + 0.4F;
-      }
-   }
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
 
-   @Override
-   public fqf a() {
-      return this.a;
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         this.b[$$7].c = -2.0F + aww.b(((float)($$7 * 2) + $$3) * 0.25F);
+         this.b[$$7].b = aww.b($$6) * 9.0F;
+         this.b[$$7].d = aww.a($$6) * 9.0F;
+         $$6++;
+      }
+
+      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         this.b[$$8].c = 2.0F + aww.b(((float)($$8 * 2) + $$3) * 0.25F);
+         this.b[$$8].b = aww.b($$6) * 7.0F;
+         this.b[$$8].d = aww.a($$6) * 7.0F;
+         $$6++;
+      }
+
+      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+
+      for (int $$9 = 8; $$9 < 12; $$9++) {
+         this.b[$$9].c = 11.0F + aww.b(((float)$$9 * 1.5F + $$3) * 0.5F);
+         this.b[$$9].b = aww.b($$6) * 5.0F;
+         this.b[$$9].d = aww.a($$6) * 5.0F;
+         $$6++;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

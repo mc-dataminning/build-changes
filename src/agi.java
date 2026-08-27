@@ -1,84 +1,60 @@
-public class agi implements xz<aev> {
-   public static final xq<us, agi> a = xz.a(agi::a, agi::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final ib e;
-   private final String f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final djv.a j;
+import javax.annotation.Nullable;
 
-   public agi(ib $$0, String $$1, djv.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$2;
+public class agi implements yb<aez> {
+   public static final xs<uu, agi> a = yb.a(agi::a, agi::new);
+   private final agi.a b;
+   @Nullable
+   private final ajh c;
+
+   public agi(agi.a $$0, @Nullable ajh $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private agi(us $$0) {
-      this.e = $$0.e();
-      this.f = $$0.p();
-      this.j = $$0.b(djv.a.class);
-      int $$1 = $$0.readByte();
-      this.g = ($$1 & 1) != 0;
-      this.h = ($$1 & 2) != 0;
-      this.i = ($$1 & 4) != 0;
+   public static agi a(af $$0) {
+      return new agi(agi.a.a, $$0.a());
    }
 
-   private void a(us $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.j);
-      int $$1 = 0;
-      if (this.g) {
-         $$1 |= 1;
-      }
+   public static agi b() {
+      return new agi(agi.a.b, null);
+   }
 
-      if (this.h) {
-         $$1 |= 2;
+   private agi(uu $$0) {
+      this.b = $$0.b(agi.a.class);
+      if (this.b == agi.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
       }
+   }
 
-      if (this.i) {
-         $$1 |= 4;
+   private void a(uu $$0) {
+      $$0.a(this.b);
+      if (this.b == agi.a.a) {
+         $$0.a(this.c);
       }
-
-      $$0.k($$1);
    }
 
    @Override
-   public yb<agi> a() {
-      return aet.bS;
+   public yd<agi> a() {
+      return aex.bO;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public ib b() {
-      return this.e;
+   public agi.a e() {
+      return this.b;
    }
 
-   public String e() {
-      return this.f;
+   @Nullable
+   public ajh f() {
+      return this.c;
    }
 
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public boolean h() {
-      return this.i;
-   }
-
-   public djv.a i() {
-      return this.j;
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,162 +1,351 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class frd implements dz {
-   private final frb a;
-   private final eyk b;
-   private int c = -1;
-   @Nullable
-   private CompletableFuture<Suggestions> d;
-   private final Set<String> e = new HashSet<>();
+public final class frd {
+   public static final float a = 1.0F;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h = 1.0F;
+   public float i = 1.0F;
+   public float j = 1.0F;
+   public boolean k = true;
+   public boolean l;
+   private final List<frd.a> m;
+   private final Map<String, frd> n;
+   private frf o = frf.a;
 
-   public frd(frb $$0, eyk $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public frd(List<frd.a> $$0, Map<String, frd> $$1) {
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
-
-      for (frk $$1 : this.a.n()) {
-         $$0.add($$1.a().getName());
-      }
-
-      return $$0;
+   public frf a() {
+      return frf.a(this.b, this.c, this.d, this.e, this.f, this.g);
    }
 
-   @Override
-   public Collection<String> z() {
-      if (this.e.isEmpty()) {
-         return this.q();
+   public frf b() {
+      return this.o;
+   }
+
+   public void a(frf $$0) {
+      this.o = $$0;
+   }
+
+   public void c() {
+      this.b(this.o);
+   }
+
+   public void b(frf $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = 1.0F;
+      this.i = 1.0F;
+      this.j = 1.0F;
+   }
+
+   public void a(frd $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.j = $$0.j;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+   }
+
+   public boolean a(String $$0) {
+      return this.n.containsKey($$0);
+   }
+
+   public frd b(String $$0) {
+      frd $$1 = this.n.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException("Can't find part " + $$0);
       } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.e);
-         return $$0;
+         return $$1;
       }
    }
 
-   @Override
-   public Collection<String> A() {
-      return (Collection<String>)(this.b.v != null && this.b.v.c() == eot.a.c ? Collections.singleton(((eos)this.b.v).a().cu()) : Collections.emptyList());
+   public void a(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public Collection<String> r() {
-      return this.a.z().f();
+   public void b(float $$0, float $$1, float $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public Stream<ajc> s() {
-      return this.b.aj().d().stream();
+   public void a(etz $$0, eud $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 
-   @Override
-   public Stream<ajc> t() {
-      return this.a.k().d();
-   }
+   public void a(etz $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.k) {
+         if (!this.m.isEmpty() || !this.n.isEmpty()) {
+            $$0.a();
+            this.a($$0);
+            if (!this.l) {
+               this.a($$0.c(), $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+            }
 
-   @Override
-   public boolean c(int $$0) {
-      fvs $$1 = this.b.s;
-      return $$1 != null ? $$1.m($$0) : $$0 == 0;
-   }
+            for (frd $$8 : this.n.values()) {
+               $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+            }
 
-   @Override
-   public CompletableFuture<Suggestions> a(ajb<? extends ix<?>> $$0, dz.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.v().c($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.d != null) {
-         this.d.cancel(false);
-      }
-
-      this.d = new CompletableFuture<>();
-      int $$1 = ++this.c;
-      this.a.b(new afg($$1, $$0.getInput()));
-      return this.d;
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<dz.b> B() {
-      eot $$0 = this.b.v;
-      if ($$0 != null && $$0.c() == eot.a.b) {
-         ib $$1 = ((eor)$$0).a();
-         return Collections.singleton(new dz.b(a($$1.u()), a($$1.v()), a($$1.w())));
-      } else {
-         return dz.super.B();
+            $$0.b();
+         }
       }
    }
 
-   @Override
-   public Collection<dz.b> C() {
-      eot $$0 = this.b.v;
-      if ($$0 != null && $$0.c() == eot.a.b) {
-         eov $$1 = $$0.e();
-         return Collections.singleton(new dz.b(a($$1.c), a($$1.d), a($$1.e)));
-      } else {
-         return dz.super.C();
+   public void a(etz $$0, frd.d $$1) {
+      this.a($$0, $$1, "");
+   }
+
+   private void a(etz $$0, frd.d $$1, String $$2) {
+      if (!this.m.isEmpty() || !this.n.isEmpty()) {
+         $$0.a();
+         this.a($$0);
+         etz.a $$3 = $$0.c();
+
+         for (int $$4 = 0; $$4 < this.m.size(); $$4++) {
+            $$1.visit($$3, $$2, $$4, this.m.get($$4));
+         }
+
+         String $$5 = $$2 + "/";
+         this.n.forEach(($$3x, $$4) -> $$4.a($$0, $$1, $$5 + $$3x));
+         $$0.b();
       }
    }
 
-   @Override
-   public Set<ajb<cwe>> u() {
-      return this.a.v();
-   }
+   public void a(etz $$0) {
+      $$0.a(this.b / 16.0F, this.c / 16.0F, this.d / 16.0F);
+      if (this.e != 0.0F || this.f != 0.0F || this.g != 0.0F) {
+         $$0.a(new Quaternionf().rotationZYX(this.g, this.f, this.e));
+      }
 
-   @Override
-   public iy v() {
-      return this.a.w();
-   }
-
-   @Override
-   public ckl w() {
-      return this.a.y();
-   }
-
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.c) {
-         this.d.complete($$1);
-         this.d = null;
-         this.c = -1;
+      if (this.h != 1.0F || this.i != 1.0F || this.j != 1.0F) {
+         $$0.b(this.h, this.i, this.j);
       }
    }
 
-   public void a(abh.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.e.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.e::remove);
-            break;
-         case c:
-            this.e.clear();
-            this.e.addAll($$1);
+   private void a(etz.a $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      for (frd.a $$8 : this.m) {
+         $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
+   }
+
+   public frd.a a(axd $$0) {
+      return this.m.get($$0.a(this.m.size()));
+   }
+
+   public boolean d() {
+      return this.m.isEmpty();
+   }
+
+   public void a(Vector3f $$0) {
+      this.b = this.b + $$0.x();
+      this.c = this.c + $$0.y();
+      this.d = this.d + $$0.z();
+   }
+
+   public void b(Vector3f $$0) {
+      this.e = this.e + $$0.x();
+      this.f = this.f + $$0.y();
+      this.g = this.g + $$0.z();
+   }
+
+   public void c(Vector3f $$0) {
+      this.h = this.h + $$0.x();
+      this.i = this.i + $$0.y();
+      this.j = this.j + $$0.z();
+   }
+
+   public Stream<frd> e() {
+      return Stream.concat(Stream.of(this), this.n.values().stream().flatMap(frd::e));
+   }
+
+   public static class a {
+      private final frd.b[] g;
+      public final float a;
+      public final float b;
+      public final float c;
+      public final float d;
+      public final float e;
+      public final float f;
+
+      public a(
+         int $$0,
+         int $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         float $$9,
+         float $$10,
+         boolean $$11,
+         float $$12,
+         float $$13,
+         Set<ih> $$14
+      ) {
+         this.a = $$2;
+         this.b = $$3;
+         this.c = $$4;
+         this.d = $$2 + $$5;
+         this.e = $$3 + $$6;
+         this.f = $$4 + $$7;
+         this.g = new frd.b[$$14.size()];
+         float $$15 = $$2 + $$5;
+         float $$16 = $$3 + $$6;
+         float $$17 = $$4 + $$7;
+         $$2 -= $$8;
+         $$3 -= $$9;
+         $$4 -= $$10;
+         $$15 += $$8;
+         $$16 += $$9;
+         $$17 += $$10;
+         if ($$11) {
+            float $$18 = $$15;
+            $$15 = $$2;
+            $$2 = $$18;
+         }
+
+         frd.c $$19 = new frd.c($$2, $$3, $$4, 0.0F, 0.0F);
+         frd.c $$20 = new frd.c($$15, $$3, $$4, 0.0F, 8.0F);
+         frd.c $$21 = new frd.c($$15, $$16, $$4, 8.0F, 8.0F);
+         frd.c $$22 = new frd.c($$2, $$16, $$4, 8.0F, 0.0F);
+         frd.c $$23 = new frd.c($$2, $$3, $$17, 0.0F, 0.0F);
+         frd.c $$24 = new frd.c($$15, $$3, $$17, 0.0F, 8.0F);
+         frd.c $$25 = new frd.c($$15, $$16, $$17, 8.0F, 8.0F);
+         frd.c $$26 = new frd.c($$2, $$16, $$17, 8.0F, 0.0F);
+         float $$27 = (float)$$0;
+         float $$28 = (float)$$0 + $$7;
+         float $$29 = (float)$$0 + $$7 + $$5;
+         float $$30 = (float)$$0 + $$7 + $$5 + $$5;
+         float $$31 = (float)$$0 + $$7 + $$5 + $$7;
+         float $$32 = (float)$$0 + $$7 + $$5 + $$7 + $$5;
+         float $$33 = (float)$$1;
+         float $$34 = (float)$$1 + $$7;
+         float $$35 = (float)$$1 + $$7 + $$6;
+         int $$36 = 0;
+         if ($$14.contains(ih.a)) {
+            this.g[$$36++] = new frd.b(new frd.c[]{$$24, $$23, $$19, $$20}, $$28, $$33, $$29, $$34, $$12, $$13, $$11, ih.a);
+         }
+
+         if ($$14.contains(ih.b)) {
+            this.g[$$36++] = new frd.b(new frd.c[]{$$21, $$22, $$26, $$25}, $$29, $$34, $$30, $$33, $$12, $$13, $$11, ih.b);
+         }
+
+         if ($$14.contains(ih.e)) {
+            this.g[$$36++] = new frd.b(new frd.c[]{$$19, $$23, $$26, $$22}, $$27, $$34, $$28, $$35, $$12, $$13, $$11, ih.e);
+         }
+
+         if ($$14.contains(ih.c)) {
+            this.g[$$36++] = new frd.b(new frd.c[]{$$20, $$19, $$22, $$21}, $$28, $$34, $$29, $$35, $$12, $$13, $$11, ih.c);
+         }
+
+         if ($$14.contains(ih.f)) {
+            this.g[$$36++] = new frd.b(new frd.c[]{$$24, $$20, $$21, $$25}, $$29, $$34, $$31, $$35, $$12, $$13, $$11, ih.f);
+         }
+
+         if ($$14.contains(ih.d)) {
+            this.g[$$36] = new frd.b(new frd.c[]{$$23, $$24, $$25, $$26}, $$31, $$34, $$32, $$35, $$12, $$13, $$11, ih.d);
+         }
+      }
+
+      public void a(etz.a $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         Matrix4f $$8 = $$0.a();
+         Vector3f $$9 = new Vector3f();
+
+         for (frd.b $$10 : this.g) {
+            Vector3f $$11 = $$0.a($$10.b, $$9);
+            float $$12 = $$11.x();
+            float $$13 = $$11.y();
+            float $$14 = $$11.z();
+
+            for (frd.c $$15 : $$10.a) {
+               float $$16 = $$15.a.x() / 16.0F;
+               float $$17 = $$15.a.y() / 16.0F;
+               float $$18 = $$15.a.z() / 16.0F;
+               Vector3f $$19 = $$8.transformPosition($$16, $$17, $$18, $$9);
+               $$1.a($$19.x(), $$19.y(), $$19.z(), $$4, $$5, $$6, $$7, $$15.b, $$15.c, $$3, $$2, $$12, $$13, $$14);
+            }
+         }
+      }
+   }
+
+   static class b {
+      public final frd.c[] a;
+      public final Vector3f b;
+
+      public b(frd.c[] $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, boolean $$7, ih $$8) {
+         this.a = $$0;
+         float $$9 = 0.0F / $$5;
+         float $$10 = 0.0F / $$6;
+         $$0[0] = $$0[0].a($$3 / $$5 - $$9, $$2 / $$6 + $$10);
+         $$0[1] = $$0[1].a($$1 / $$5 + $$9, $$2 / $$6 + $$10);
+         $$0[2] = $$0[2].a($$1 / $$5 + $$9, $$4 / $$6 - $$10);
+         $$0[3] = $$0[3].a($$3 / $$5 - $$9, $$4 / $$6 - $$10);
+         if ($$7) {
+            int $$11 = $$0.length;
+
+            for (int $$12 = 0; $$12 < $$11 / 2; $$12++) {
+               frd.c $$13 = $$0[$$12];
+               $$0[$$12] = $$0[$$11 - 1 - $$12];
+               $$0[$$11 - 1 - $$12] = $$13;
+            }
+         }
+
+         this.b = $$8.m();
+         if ($$7) {
+            this.b.mul(-1.0F, 1.0F, 1.0F);
+         }
+      }
+   }
+
+   static class c {
+      public final Vector3f a;
+      public final float b;
+      public final float c;
+
+      public c(float $$0, float $$1, float $$2, float $$3, float $$4) {
+         this(new Vector3f($$0, $$1, $$2), $$3, $$4);
+      }
+
+      public frd.c a(float $$0, float $$1) {
+         return new frd.c(this.a, $$0, $$1);
+      }
+
+      public c(Vector3f $$0, float $$1, float $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      void visit(etz.a var1, String var2, int var3, frd.a var4);
    }
 }

@@ -1,17 +1,18 @@
-public interface ehj {
-   void a(ib var1);
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-   boolean L_();
+public class ehj implements ehk {
+   public static final ehj a = new ehj();
+   public static final Codec<ehj> b = Codec.unit(a);
 
-   int a();
-
-   default void a(ib $$0, boolean $$1) {
-      this.a(jd.a($$0), $$1);
+   @Nullable
+   @Override
+   public ta a(axd $$0, @Nullable ta $$1) {
+      return $$1;
    }
 
-   void a(jd var1, boolean var2);
-
-   void a(cvl var1, boolean var2);
-
-   void b(cvl var1);
+   @Override
+   public ehl<?> a() {
+      return ehl.b;
+   }
 }

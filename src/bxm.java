@@ -1,102 +1,129 @@
 import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class bxm extends bxu {
-   private static final bzn a = bzn.a().d().e();
-   private static final int b = 10;
-   private boolean c;
-   private int d;
-   private final Class<?>[] i;
-   @Nullable
-   private Class<?>[] j;
+public class bxm<T extends cfy & cgc & cfl> extends bwl {
+   public static final bmn a = axv.a(1, 2);
+   private final T b;
+   private bxm.a c = bxm.a.a;
+   private final double d;
+   private final float e;
+   private int f;
+   private int g;
+   private int h;
 
-   public bxm(bpf $$0, Class<?>... $$1) {
-      super($$0, true);
-      this.i = $$1;
-      this.a(EnumSet.of(bvu.a.d));
+   public bxm(T $$0, double $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2 * $$2;
+      this.a(EnumSet.of(bwl.a.a, bwl.a.b));
    }
 
    @Override
    public boolean a() {
-      int $$0 = this.e.eh();
-      box $$1 = this.e.eg();
-      if ($$0 != this.d && $$1 != null) {
-         if ($$1.ai() == bol.bw && this.e.dJ().Z().b(cwa.O)) {
-            return false;
-         } else {
-            for (Class<?> $$2 : this.i) {
-               if ($$2.isAssignableFrom($$1.getClass())) {
-                  return false;
-               }
-            }
-
-            return this.a($$1, a);
-         }
-      } else {
-         return false;
-      }
+      return this.i() && this.h();
    }
 
-   public bxm a(Class<?>... $$0) {
-      this.c = true;
-      this.j = $$0;
-      return this;
+   private boolean h() {
+      return this.b.b(cqn.vQ);
    }
 
    @Override
-   public void c() {
-      this.e.h(this.e.eg());
-      this.g = this.e.q();
-      this.d = this.e.eh();
-      this.h = 300;
-      if (this.c) {
-         this.h();
-      }
-
-      super.c();
+   public boolean b() {
+      return this.i() && (this.a() || !this.b.K().l()) && this.h();
    }
 
-   protected void h() {
-      double $$0 = this.l();
-      eoq $$1 = eoq.a(this.e.dh()).c($$0, 10.0, $$0);
-      List<? extends boz> $$2 = this.e.dJ().a((Class<? extends boz>)this.e.getClass(), $$1, bok.f);
-      Iterator var5 = $$2.iterator();
+   private boolean i() {
+      return this.b.p() != null && this.b.p().bA();
+   }
 
-      while (true) {
-         boz $$3;
-         while (true) {
-            if (!var5.hasNext()) {
-               return;
-            }
+   @Override
+   public void d() {
+      super.d();
+      this.b.v(false);
+      this.b.h(null);
+      this.f = 0;
+      if (this.b.fs()) {
+         this.b.fy();
+         this.b.b(false);
+         cov.a(this.b.fu(), false);
+      }
+   }
 
-            $$3 = (boz)var5.next();
-            if (this.e != $$3 && $$3.q() == null && (!(this.e instanceof bpt) || ((bpt)this.e).R_() == ((bpt)$$3).R_()) && !$$3.r(this.e.eg())) {
-               if (this.j == null) {
-                  break;
-               }
+   @Override
+   public boolean R_() {
+      return true;
+   }
 
-               boolean $$4 = false;
-
-               for (Class<?> $$5 : this.j) {
-                  if ($$3.getClass() == $$5) {
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  break;
-               }
-            }
+   @Override
+   public void e() {
+      bpo $$0 = this.b.p();
+      if ($$0 != null) {
+         boolean $$1 = this.b.M().a($$0);
+         boolean $$2 = this.f > 0;
+         if ($$1 != $$2) {
+            this.f = 0;
          }
 
-         this.a($$3, this.e.eg());
+         if ($$1) {
+            this.f++;
+         } else {
+            this.f--;
+         }
+
+         double $$3 = this.b.g($$0);
+         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
+         if ($$4) {
+            this.h--;
+            if (this.h <= 0) {
+               this.b.K().a($$0, this.k() ? this.d : this.d * 0.5);
+               this.h = a.a(this.b.ei());
+            }
+         } else {
+            this.h = 0;
+            this.b.K().n();
+         }
+
+         this.b.G().a($$0, 30.0F, 30.0F);
+         if (this.c == bxm.a.a) {
+            if (!$$4) {
+               this.b.c(cjm.a(this.b, cqn.vQ));
+               this.c = bxm.a.b;
+               this.b.b(true);
+            }
+         } else if (this.c == bxm.a.b) {
+            if (!this.b.fs()) {
+               this.c = bxm.a.a;
+            }
+
+            int $$5 = this.b.fw();
+            cqk $$6 = this.b.fu();
+            if ($$5 >= cov.k($$6)) {
+               this.b.fx();
+               this.c = bxm.a.c;
+               this.g = 20 + this.b.ei().a(20);
+               this.b.b(false);
+            }
+         } else if (this.c == bxm.a.c) {
+            this.g--;
+            if (this.g == 0) {
+               this.c = bxm.a.d;
+            }
+         } else if (this.c == bxm.a.d && $$1) {
+            this.b.a($$0, 1.0F);
+            cqk $$7 = this.b.b(cjm.a(this.b, cqn.vQ));
+            cov.a($$7, false);
+            this.c = bxm.a.a;
+         }
       }
    }
 
-   protected void a(boz $$0, box $$1) {
-      $$0.h($$1);
+   private boolean k() {
+      return this.c == bxm.a.a;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

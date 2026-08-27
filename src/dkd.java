@@ -1,79 +1,334 @@
-public class dkd extends dkp {
-   public static final int e = 9;
-   private iu<cpq> f = iu.a(9, cpq.h);
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   protected dkd(djn<?> $$0, ib $$1, dme $$2) {
-      super($$0, $$1, $$2);
-   }
+public class dkd extends dkg {
+   public static final String a = "flower_pos";
+   public static final String b = "MinOccupationTicks";
+   public static final String c = "EntityData";
+   public static final String d = "TicksInHive";
+   public static final String e = "HasNectar";
+   public static final String f = "Bees";
+   private static final List<String> i = Arrays.asList(
+      "Air",
+      "ArmorDropChances",
+      "ArmorItems",
+      "Brain",
+      "CanPickUpLoot",
+      "DeathTime",
+      "FallDistance",
+      "FallFlying",
+      "Fire",
+      "HandDropChances",
+      "HandItems",
+      "HurtByTimestamp",
+      "HurtTime",
+      "LeftHanded",
+      "Motion",
+      "NoGravity",
+      "OnGround",
+      "PortalCooldown",
+      "Pos",
+      "Rotation",
+      "CannotEnterHiveTicks",
+      "TicksSincePollination",
+      "CropsGrownSincePollination",
+      "hive_pos",
+      "Passengers",
+      "leash",
+      "UUID"
+   );
+   public static final int g = 3;
+   private static final int j = 400;
+   private static final int k = 2400;
+   public static final int h = 600;
+   private final List<dkd.a> l = Lists.newArrayList();
+   @Nullable
+   private ib m;
 
-   public dkd(ib $$0, dme $$1) {
-      this(djn.f, $$0, $$1);
+   public dkd(ib $$0, dmz $$1) {
+      super(dki.H, $$0, $$1);
    }
 
    @Override
-   public int b() {
-      return 9;
-   }
-
-   public int a(awt $$0) {
-      this.e_(null);
-      int $$1 = -1;
-      int $$2 = 1;
-
-      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
-         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
-         }
+   public void e() {
+      if (this.b()) {
+         this.a(null, this.o.a_(this.aC_()), dkd.b.c);
       }
 
-      return $$1;
+      super.e();
    }
 
-   public int a(cpq $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         if (this.f.get($$1).b()) {
-            this.a($$1, $$0);
-            return $$1;
+   public boolean b() {
+      if (this.o == null) {
+         return false;
+      } else {
+         for (ib $$0 : ib.a(this.p.b(-1, -1, -1), this.p.b(1, 1, 1))) {
+            if (this.o.a_($$0).b() instanceof dda) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public boolean c() {
+      return this.l.isEmpty();
+   }
+
+   public boolean d() {
+      return this.l.size() == 3;
+   }
+
+   public void a(@Nullable cis $$0, dmz $$1, dkd.b $$2) {
+      List<bow> $$3 = this.a($$1, $$2);
+      if ($$0 != null) {
+         for (bow $$4 : $$3) {
+            if ($$4 instanceof cbe) {
+               cbe $$5 = (cbe)$$4;
+               if ($$0.dk().g($$4.dk()) <= 16.0) {
+                  if (!this.j()) {
+                     $$5.h($$0);
+                  } else {
+                     $$5.u(400);
+                  }
+               }
+            }
          }
       }
+   }
 
-      return -1;
+   private List<bow> a(dmz $$0, dkd.b $$1) {
+      List<bow> $$2 = Lists.newArrayList();
+      this.l.removeIf($$3 -> a(this.o, this.p, $$0, $$3, $$2, $$1, this.m));
+      if (!$$2.isEmpty()) {
+         super.e();
+      }
+
+      return $$2;
+   }
+
+   public void a(bow $$0, boolean $$1) {
+      this.a($$0, $$1, 0);
+   }
+
+   @axz
+   public int f() {
+      return this.l.size();
+   }
+
+   public static int a(dmz $$0) {
+      return $$0.c(czu.c);
+   }
+
+   @axz
+   public boolean j() {
+      return dao.a(this.o, this.aC_());
+   }
+
+   public void a(bow $$0, boolean $$1, int $$2) {
+      if (this.l.size() < 3) {
+         $$0.ac();
+         $$0.bE();
+         ta $$3 = new ta();
+         $$0.e($$3);
+         this.a($$3, $$2, $$1);
+         if (this.o != null) {
+            if ($$0 instanceof cbe $$4 && $$4.s() && (!this.l() || this.o.z.h())) {
+               this.m = $$4.r();
+            }
+
+            ib $$5 = this.aC_();
+            this.o.a(null, (double)$$5.u(), (double)$$5.v(), (double)$$5.w(), aty.bV, atz.e, 1.0F, 1.0F);
+            this.o.a(drn.c, $$5, drn.a.a($$0, this.n()));
+         }
+
+         $$0.am();
+         super.e();
+      }
+   }
+
+   public void a(ta $$0, int $$1, boolean $$2) {
+      this.l.add(new dkd.a($$0, $$1, $$2 ? 2400 : 600));
+   }
+
+   private static boolean a(cwz $$0, ib $$1, dmz $$2, dkd.a $$3, @Nullable List<bow> $$4, dkd.b $$5, @Nullable ib $$6) {
+      if (($$0.Q() || $$0.ab()) && $$5 != dkd.b.c) {
+         return false;
+      } else {
+         ta $$7 = $$3.a.h();
+         b($$7);
+         $$7.a("hive_pos", tp.a($$1));
+         $$7.a("NoGravity", true);
+         ih $$8 = $$2.c(czu.b);
+         ib $$9 = $$1.a($$8);
+         boolean $$10 = !$$0.a_($$9).k($$0, $$9).c();
+         if ($$10 && $$5 != dkd.b.c) {
+            return false;
+         } else {
+            bow $$11 = bpc.a($$7, $$0, $$0x -> $$0x);
+            if ($$11 != null) {
+               if (!$$11.ai().a(auq.e)) {
+                  return false;
+               } else {
+                  if ($$11 instanceof cbe $$12) {
+                     if ($$6 != null && !$$12.s() && $$0.z.i() < 0.9F) {
+                        $$12.i($$6);
+                     }
+
+                     if ($$5 == dkd.b.a) {
+                        $$12.gB();
+                        if ($$2.a(aun.aG, $$0x -> $$0x.b(czu.c))) {
+                           int $$13 = a($$2);
+                           if ($$13 < 5) {
+                              int $$14 = $$0.z.a(100) == 0 ? 2 : 1;
+                              if ($$13 + $$14 > 5) {
+                                 $$14--;
+                              }
+
+                              $$0.b($$1, $$2.a(czu.c, Integer.valueOf($$13 + $$14)));
+                           }
+                        }
+                     }
+
+                     a($$3.b, $$12);
+                     if ($$4 != null) {
+                        $$4.add($$12);
+                     }
+
+                     float $$15 = $$11.dg();
+                     double $$16 = $$10 ? 0.0 : 0.55 + (double)($$15 / 2.0F);
+                     double $$17 = (double)$$1.u() + 0.5 + $$16 * (double)$$8.j();
+                     double $$18 = (double)$$1.v() + 0.5 - (double)($$11.dh() / 2.0F);
+                     double $$19 = (double)$$1.w() + 0.5 + $$16 * (double)$$8.l();
+                     $$11.b($$17, $$18, $$19, $$11.dC(), $$11.dE());
+                  }
+
+                  $$0.a(null, $$1, aty.bW, atz.e, 1.0F, 1.0F);
+                  $$0.a(drn.c, $$1, drn.a.a($$11, $$0.a_($$1)));
+                  return $$0.b($$11);
+               }
+            } else {
+               return false;
+            }
+         }
+      }
+   }
+
+   static void b(ta $$0) {
+      for (String $$1 : i) {
+         $$0.r($$1);
+      }
+   }
+
+   private static void a(int $$0, cbe $$1) {
+      int $$2 = $$1.g();
+      if ($$2 < 0) {
+         $$1.c_(Math.min(0, $$2 + $$0));
+      } else if ($$2 > 0) {
+         $$1.c_(Math.max(0, $$2 - $$0));
+      }
+
+      $$1.t(Math.max(0, $$1.gp() - $$0));
+   }
+
+   private boolean l() {
+      return this.m != null;
+   }
+
+   private static void a(cwz $$0, ib $$1, dmz $$2, List<dkd.a> $$3, @Nullable ib $$4) {
+      boolean $$5 = false;
+      Iterator<dkd.a> $$6 = $$3.iterator();
+
+      while ($$6.hasNext()) {
+         dkd.a $$7 = $$6.next();
+         if ($$7.b > $$7.c) {
+            dkd.b $$8 = $$7.a.q("HasNectar") ? dkd.b.a : dkd.b.b;
+            if (a($$0, $$1, $$2, $$7, null, $$8, $$4)) {
+               $$5 = true;
+               $$6.remove();
+            }
+         }
+
+         $$7.b++;
+      }
+
+      if ($$5) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(cwz $$0, ib $$1, dmz $$2, dkd $$3) {
+      a($$0, $$1, $$2, $$3.l, $$3.m);
+      if (!$$3.l.isEmpty() && $$0.E_().j() < 0.005) {
+         double $$4 = (double)$$1.u() + 0.5;
+         double $$5 = (double)$$1.v();
+         double $$6 = (double)$$1.w() + 0.5;
+         $$0.a(null, $$4, $$5, $$6, aty.bY, atz.e, 1.0F, 1.0F);
+      }
+
+      aew.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected vs k() {
-      return vs.c("container.dispenser");
-   }
-
-   @Override
-   public void a(sy $$0, in.a $$1) {
+   public void a(ta $$0, in.a $$1) {
       super.a($$0, $$1);
-      this.f = iu.a(this.b(), cpq.h);
-      if (!this.c_($$0)) {
-         bmf.b($$0, this.f);
+      this.l.clear();
+      tg $$2 = $$0.c("Bees", 10);
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         ta $$4 = $$2.a($$3);
+         dkd.a $$5 = new dkd.a($$4.p("EntityData").h(), $$4.h("TicksInHive"), $$4.h("MinOccupationTicks"));
+         this.l.add($$5);
       }
+
+      this.m = tp.a($$0, "flower_pos").orElse(null);
    }
 
    @Override
-   protected void b(sy $$0, in.a $$1) {
+   protected void b(ta $$0, in.a $$1) {
       super.b($$0, $$1);
-      if (!this.b($$0)) {
-         bmf.a($$0, this.f);
+      $$0.a("Bees", this.k());
+      if (this.l()) {
+         $$0.a("flower_pos", tp.a(this.m));
       }
    }
 
-   @Override
-   protected iu<cpq> j() {
-      return this.f;
+   public tg k() {
+      tg $$0 = new tg();
+
+      for (dkd.a $$1 : this.l) {
+         ta $$2 = $$1.a.h();
+         $$2.r("UUID");
+         ta $$3 = new ta();
+         $$3.a("EntityData", $$2);
+         $$3.a("TicksInHive", $$1.b);
+         $$3.a("MinOccupationTicks", $$1.c);
+         $$0.add($$3);
+      }
+
+      return $$0;
    }
 
-   @Override
-   protected void a(iu<cpq> $$0) {
-      this.f = $$0;
+   static class a {
+      final ta a;
+      int b;
+      final int c;
+
+      a(ta $$0, int $$1, int $$2) {
+         dkd.b($$0);
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
    }
 
-   @Override
-   protected cku a(int $$0, chz $$1) {
-      return new cln($$0, $$1, this);
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

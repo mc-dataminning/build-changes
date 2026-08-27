@@ -1,35 +1,70 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class elj extends elk {
-   public static final Codec<elj> a = RecordCodecBuilder.create($$0 -> a($$0).and(ejx.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, elj::new));
-   private final ejx b;
+public class elj extends elg {
+   public static final Codec<elj> a = a(elj::new);
 
-   private elj(List<emx> $$0, ejx $$1) {
-      super($$0);
-      this.b = $$1;
+   elj(List<eln> $$0, List<ent> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public elm b() {
-      return eln.q;
+   public elo a() {
+      return ell.i;
    }
 
    @Override
-   public Set<emg<?>> a() {
-      return this.b.a();
+   protected elf a(List<? extends elf> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (elf)$$0.get(0);
+         case 2 -> {
+            elf $$1 = $$0.get(0);
+            elf $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (elf $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public cpq a(cpq $$0, ejy $$1) {
-      int $$2 = this.b.a($$1, $$0.M());
-      $$0.f($$2);
-      return $$0;
+   public static elj.a a(eln.a<?>... $$0) {
+      return new elj.a($$0);
    }
 
-   public static elk.a<?> a(ejx $$0) {
-      return a($$1 -> new elj($$1, $$0));
+   public static class a extends eln.a<elj.a> {
+      private final Builder<eln> a = ImmutableList.builder();
+
+      public a(eln.a<?>... $$0) {
+         for (eln.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected elj.a a() {
+         return this;
+      }
+
+      @Override
+      public elj.a b(eln.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eln b() {
+         return new elj(this.a.build(), this.f());
+      }
    }
 }

@@ -1,31 +1,25 @@
-import com.google.common.collect.Lists;
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.Bidi;
-import com.ibm.icu.text.BidiRun;
-import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class gjd {
-   public static avy a(vx $$0, boolean $$1) {
-      wq $$2 = wq.a($$0, UCharacter::getMirror, gjd::a);
-      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
-      $$3.setReorderingMode(0);
-      List<avy> $$4 = Lists.newArrayList();
-      int $$5 = $$3.countRuns();
+public interface gjd {
+   aja a = new aja("textures", ".png");
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         BidiRun $$7 = $$3.getVisualRun($$6);
-         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+   void a(aso var1, gjd.a var2);
+
+   gjf a();
+
+   public interface a {
+      default void a(ajh $$0, asm $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
       }
 
-      return avy.composite($$4);
+      void a(ajh var1, gjd.b var2);
+
+      void a(Predicate<ajh> var1);
    }
 
-   private static String a(String $$0) {
-      try {
-         return new ArabicShaping(8).shape($$0);
-      } catch (Exception var2) {
-         return $$0;
+   public interface b extends Function<gjc, git> {
+      default void a() {
       }
    }
 }

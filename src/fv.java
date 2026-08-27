@@ -12,8 +12,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class fv implements ArgumentType<fq> {
    private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("argument.pos3d.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vs.c("argument.pos.mixed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("argument.pos3d.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("argument.pos.mixed"));
    private final boolean d;
 
    public fv(boolean $$0) {
@@ -28,7 +28,7 @@ public class fv implements ArgumentType<fq> {
       return new fv($$0);
    }
 
-   public static eov a(CommandContext<du> $$0, String $$1) {
+   public static epr a(CommandContext<du> $$0, String $$1) {
       return ((fq)$$0.getArgument($$1, fq.class)).a((du)$$0.getSource());
    }
 

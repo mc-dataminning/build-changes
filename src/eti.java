@@ -1,162 +1,95 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class eti {
-   private final ImmutableList<etj> a;
-   private final ImmutableMap<String, etj> b;
-   private final IntList c = new IntArrayList();
-   private final int d;
-   @Nullable
-   private etg e;
-
-   public eti(ImmutableMap<String, etj> $$0) {
-      this.b = $$0;
-      this.a = $$0.values().asList();
-      int $$1 = 0;
-      UnmodifiableIterator var3 = $$0.values().iterator();
-
-      while (var3.hasNext()) {
-         etj $$2 = (etj)var3.next();
-         this.c.add($$1);
-         $$1 += $$2.e();
-      }
-
-      this.d = $$1;
+   public void a(float $$0) {
    }
 
-   @Override
-   public String toString() {
-      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
+   public void a(float $$0, float $$1) {
    }
 
-   public int a() {
-      return this.b() / 4;
+   public void a(float $$0, float $$1, float $$2) {
    }
 
-   public int b() {
-      return this.d;
+   public void a(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   public ImmutableList<etj> c() {
-      return this.a;
+   public void b(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   public ImmutableList<String> d() {
-      return this.b.keySet().asList();
+   public void a(int $$0, int $$1, int $$2, int $$3) {
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         eti $$1 = (eti)$$0;
-         return this.d != $$1.d ? false : this.b.equals($$1.b);
-      } else {
-         return false;
-      }
+   public void a(int $$0) {
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public void a(int $$0, int $$1) {
    }
 
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::h);
-      } else {
-         this.h();
-      }
+   public void a(int $$0, int $$1, int $$2) {
    }
 
-   private void h() {
-      int $$0 = this.b();
-      List<etj> $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
-      }
+   public void b(int $$0, int $$1, int $$2, int $$3) {
    }
 
-   public void f() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::i);
-      } else {
-         this.i();
-      }
+   public void a(float[] $$0) {
    }
 
-   private void i() {
-      ImmutableList<etj> $$0 = this.c();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         etj $$2 = (etj)$$0.get($$1);
-         $$2.a($$1);
-      }
+   public void a(Vector3f $$0) {
    }
 
-   public etg g() {
-      etg $$0 = this.e;
-      if ($$0 == null) {
-         this.e = $$0 = new etg(etg.a.b);
-      }
-
-      return $$0;
+   public void a(Vector4f $$0) {
    }
 
-   public static enum a {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      public static eti.a a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
+   public void c(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   public static enum b {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
 
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
 
-      private b(int $$0, int $$1, int $$2, boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
-      }
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
 
-      public int a(int $$0) {
-         return switch (this) {
-            case b, c, d, e, f, g -> $$0;
-            case a, h -> $$0 / 4 * 6;
-            default -> 0;
-         };
-      }
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+   }
+
+   public void a(Matrix4f $$0) {
+   }
+
+   public void a(Matrix3f $$0) {
    }
 }

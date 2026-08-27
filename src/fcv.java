@@ -1,84 +1,89 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public abstract class fcv {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final far d;
+   protected final bja e;
 
-public class fcv implements fct {
-   private static final ajc g = new ajc("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final fcv.a h;
-   private final vs i;
-   @Nullable
-   private final vs j;
-   private fct.a k = fct.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
-
-   public fcv(fcv.a $$0, vs $$1, @Nullable vs $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   protected fcv(far $$0, bja $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public fct.a a(ezx $$0, fcu $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
-      } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
-      }
-
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = awm.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
-         } else {
-            $$4 = -11206656;
-         }
-
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
-      }
-
-      return this.k;
+   public int a(int $$0) {
+      return Math.min(this.e.c() + 2, $$0);
    }
 
-   public void c() {
-      this.k = fct.a.b;
-   }
+   public void a(fat $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(fxy.E(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
+      int $$8 = this.e.d() - $$7;
 
-   public void a(float $$0) {
-      this.n = $$0;
-   }
-
-   public static enum a {
-      a(new ajc("toast/movement_keys")),
-      b(new ajc("toast/mouse")),
-      c(new ajc("toast/tree")),
-      d(new ajc("toast/recipe_book")),
-      e(new ajc("toast/wooden_planks")),
-      f(new ajc("toast/social_interactions")),
-      g(new ajc("toast/right_click"));
-
-      private final ajc h;
-
-      private a(ajc $$0) {
-         this.h = $$0;
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
       }
 
-      public void a(ezx $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
+      $$0.a(fxy.E(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(fxy.E(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(fxy.E(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(fxy.E(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
       }
+
+      this.d($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(fat $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
+   }
+
+   protected void b(fat $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(fxy.E(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
+   }
+
+   protected void c(fat $$0, int $$1, int $$2, int $$3) {
+   }
+
+   protected long b(int $$0) {
+      return this.e.a($$0);
+   }
+
+   protected void d(fat $$0, int $$1, int $$2, int $$3) {
+   }
+
+   protected void a(fat $$0, String $$1, int $$2, int $$3) {
+      $$0.a(fxy.E(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   }
+
+   protected abstract String a(double var1);
+
+   protected abstract int b(double var1);
+
+   protected abstract int a(long var1);
+
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = aww.a($$0, $$1, $$5);
+      return $$0 < $$3 ? awg.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : awg.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

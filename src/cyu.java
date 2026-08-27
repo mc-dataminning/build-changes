@@ -1,140 +1,16 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public abstract class cyu extends czf implements dgf {
-   protected static final epo a = czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final epo b = czf.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final dmv c = dmu.C;
-   private final boolean d;
+public abstract class cyu<E extends dkg> extends czm {
+   protected final Supplier<dki<? extends E>> a;
 
-   public static boolean a(cwe $$0, ib $$1) {
-      return g($$0.a_($$1));
-   }
-
-   public static boolean g(dme $$0) {
-      return $$0.a(aue.N) && $$0.b() instanceof cyu;
-   }
-
-   protected cyu(boolean $$0, dmd.d $$1) {
-      super($$1);
-      this.d = $$0;
+   protected cyu(dmy.d $$0, Supplier<dki<? extends E>> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends cyu> a();
+   protected abstract MapCodec<? extends cyu<E>> a();
 
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      dni $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
-      return $$4 != null && $$4.b() ? b : a;
-   }
-
-   @Override
-   protected boolean a(dme $$0, cwh $$1, ib $$2) {
-      return c($$1, $$2.d());
-   }
-
-   @Override
-   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
-      }
-   }
-
-   protected dme a(dme $$0, cwe $$1, ib $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3, ib $$4, boolean $$5) {
-      if (!$$1.B && $$1.a_($$2).a(this)) {
-         dni $$6 = $$0.c(this.c());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   private static boolean a(ib $$0, cwe $$1, dni $$2) {
-      if (!c($$1, $$0.d())) {
-         return true;
-      } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.h());
-            case d:
-               return !c($$1, $$0.g());
-            case e:
-               return !c($$1, $$0.e());
-            case f:
-               return !c($$1, $$0.f());
-            default:
-               return false;
-         }
-      }
-   }
-
-   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3) {
-   }
-
-   protected dme a(cwe $$0, ib $$1, dme $$2, boolean $$3) {
-      if ($$0.B) {
-         return $$2;
-      } else {
-         dni $$4 = $$2.c(this.c());
-         return new dfe($$0, $$1, $$2).a($$0.C($$1), $$3, $$4).c();
-      }
-   }
-
-   @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      if (!$$4) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$0.c(this.c()).b()) {
-            $$1.a($$2.c(), this);
-         }
-
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.d(), this);
-         }
-      }
-   }
-
-   @Override
-   public dme a(crx $$0) {
-      ehr $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == ehs.c;
-      dme $$3 = super.o();
-      ih $$4 = $$0.g();
-      boolean $$5 = $$4 == ih.f || $$4 == ih.e;
-      return $$3.a(this.c(), $$5 ? dni.b : dni.a).a(c, Boolean.valueOf($$2));
-   }
-
-   public abstract dnh<dni> c();
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, ehs.c, ehs.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected ehr c_(dme $$0) {
-      return $$0.c(c) ? ehs.c.a(false) : super.c_($$0);
-   }
+   public abstract dch.c<? extends dkn> a(dmz var1, cwz var2, ib var3, boolean var4);
 }

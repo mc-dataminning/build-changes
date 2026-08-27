@@ -1,31 +1,111 @@
 import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Lifecycle;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class iz {
-   public static <E> Codec<ix<E>> a(ajb<? extends ix<E>> $$0, Lifecycle $$1, Codec<E> $$2) {
-      Codec<Map<ajb<E>, E>> $$3 = Codec.unboundedMap(ajb.a($$0), $$2);
-      return $$3.xmap($$2x -> {
-         jg<E> $$3x = new it<>($$0, $$1);
-         $$2x.forEach(($$2xx, $$3xx) -> $$3x.a($$2xx, (E)$$3xx, $$1));
-         return $$3x.l();
-      }, $$0x -> ImmutableMap.copyOf($$0x.g()));
+public interface iz extends in.a {
+   Logger a = LogUtils.getLogger();
+   iz.b b = new iz.c(Map.of()).d();
+
+   <E> Optional<iy<E>> c(ajg<? extends iy<? extends E>> var1);
+
+   @Override
+   default <T> Optional<in.b<T>> a(ajg<? extends iy<? extends T>> $$0) {
+      return this.c($$0).map(iy::p);
    }
 
-   public static <E> Codec<ip<E>> a(ajb<? extends ix<E>> $$0, Codec<E> $$1) {
-      return a($$0, $$1, false);
+   default <E> iy<E> d(ajg<? extends iy<? extends E>> $$0) {
+      return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
    }
 
-   public static <E> Codec<ip<E>> a(ajb<? extends ix<E>> $$0, Codec<E> $$1, boolean $$2) {
-      return aiw.a($$0, aiy.a($$0, $$1), $$2);
+   Stream<iz.d<?>> c();
+
+   @Override
+   default Stream<ajg<? extends iy<?>>> a() {
+      return this.c().map(iz.d::a);
    }
 
-   public static <E> Codec<ip<E>> a(ajb<? extends ix<E>> $$0) {
-      return a($$0, false);
+   static iz.b a(final iy<? extends iy<?>> $$0) {
+      return new iz.b() {
+         @Override
+         public <T> Optional<iy<T>> c(ajg<? extends iy<? extends T>> $$0x) {
+            iy<iy<T>> $$1 = (iy<iy<T>>)$$0;
+            return $$1.e((ajg<iy<T>>)$$0);
+         }
+
+         @Override
+         public Stream<iz.d<?>> c() {
+            return $$0.g().stream().map(iz.d::a);
+         }
+
+         @Override
+         public iz.b d() {
+            return this;
+         }
+      };
    }
 
-   public static <E> Codec<ip<E>> a(ajb<? extends ix<E>> $$0, boolean $$1) {
-      return aiw.a($$0, aiz.a($$0), $$1);
+   default iz.b d() {
+      class a extends iz.c implements iz.b {
+         protected a(Stream<iz.d<?>> $$1) {
+            super($$1);
+         }
+      }
+
+      return new a(this.c().map(iz.d::c));
+   }
+
+   default Lifecycle e() {
+      return this.c().map($$0 -> $$0.b.d()).reduce(Lifecycle.stable(), Lifecycle::add);
+   }
+
+   public interface b extends iz {
+   }
+
+   public static class c implements iz {
+      private final Map<? extends ajg<? extends iy<?>>, ? extends iy<?>> c;
+
+      public c(List<? extends iy<?>> $$0) {
+         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(iy::c, $$0x -> $$0x));
+      }
+
+      public c(Map<? extends ajg<? extends iy<?>>, ? extends iy<?>> $$0) {
+         this.c = Map.copyOf($$0);
+      }
+
+      public c(Stream<iz.d<?>> $$0) {
+         this.c = $$0.collect(ImmutableMap.toImmutableMap(iz.d::a, iz.d::b));
+      }
+
+      @Override
+      public <E> Optional<iy<E>> c(ajg<? extends iy<? extends E>> $$0) {
+         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
+      }
+
+      @Override
+      public Stream<iz.d<?>> c() {
+         return this.c.entrySet().stream().map(iz.d::a);
+      }
+   }
+
+   public static record d<T>(ajg<? extends iy<T>> a, iy<T> b) {
+
+      private static <T, R extends iy<? extends T>> iz.d<T> a(Entry<? extends ajg<? extends iy<?>>, R> $$0) {
+         return a((ajg<? extends iy<?>>)$$0.getKey(), $$0.getValue());
+      }
+
+      private static <T> iz.d<T> a(ajg<? extends iy<?>> $$0, iy<?> $$1) {
+         return new iz.d<>((ajg<? extends iy<T>>)$$0, (iy<T>)$$1);
+      }
+
+      private iz.d<T> c() {
+         return new iz.d<>(this.a, this.b.l());
+      }
    }
 }

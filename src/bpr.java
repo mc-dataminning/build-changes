@@ -1,38 +1,57 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public interface bpr {
-   bpq a = ($$0, $$1, $$2) -> true;
-   bpq b = ($$0, $$1, $$2) -> {
-      if ($$2 != null && $$0.D_().a($$1)) {
-         ib $$3 = $$1.c();
-         return $$0.b_($$1).a(auj.a) && !$$0.a_($$3).g($$0, $$3);
-      } else {
-         return false;
-      }
-   };
-   bpq c = ($$0, $$1, $$2) -> $$2 != null && $$0.D_().a($$1) ? $$0.b_($$1).a(auj.b) : false;
-   bpq d = new bpq() {
-      @Override
-      public boolean isSpawnPositionOk(cwh $$0, ib $$1, @Nullable bol<?> $$2) {
-         if ($$2 != null && $$0.D_().a($$1)) {
-            ib $$3 = $$1.c();
-            ib $$4 = $$1.d();
-            dme $$5 = $$0.a_($$4);
-            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
-         } else {
-            return false;
-         }
-      }
+public enum bpr implements axq {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
 
-      private boolean a(cwh $$0, ib $$1, bol<?> $$2) {
-         dme $$3 = $$0.a_($$1);
-         return cwp.a($$0, $$1, $$3, $$3.u(), $$2);
-      }
+   public static final Codec<bpr> i = axq.a(bpr::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
 
-      @Override
-      public ib a(cwh $$0, ib $$1) {
-         ib $$2 = $$1.d();
-         return $$0.a_($$2).a($$0, $$2, eih.a) ? $$2 : $$1;
-      }
-   };
+   private bpr(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
+   }
+
+   public String a() {
+      return this.m;
+   }
+
+   @Override
+   public String c() {
+      return this.m;
+   }
+
+   public int b() {
+      return this.j;
+   }
+
+   public boolean d() {
+      return this.k;
+   }
+
+   public boolean e() {
+      return this.l;
+   }
+
+   public int f() {
+      return this.o;
+   }
+
+   public int g() {
+      return 32;
+   }
 }

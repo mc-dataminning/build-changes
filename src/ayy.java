@@ -1,26 +1,38 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class ayy extends DataFix {
+public class ayy extends bdh {
    public ayy(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "BlockEntityJukeboxFix", beh.s, "minecraft:jukebox");
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
-         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
-      } else {
-         return $$0;
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Type<?> $$1 = this.getInputSchema().getChoiceType(beh.s, "minecraft:jukebox");
+      Type<?> $$2 = $$1.findFieldType("RecordItem");
+      OpticFinder<?> $$3 = DSL.fieldFinder("RecordItem", $$2);
+      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      int $$5 = $$4.get("Record").asInt(0);
+      if ($$5 > 0) {
+         $$4.remove("Record");
+         String $$6 = bcp.a(bce.a($$5), 0);
+         if ($$6 != null) {
+            Dynamic<?> $$7 = $$4.emptyMap();
+            $$7 = $$7.set("id", $$7.createString($$6));
+            $$7 = $$7.set("Count", $$7.createByte((byte)1));
+            return $$0.set(
+                  $$3,
+                  (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not create record item stack."))).getFirst()
+               )
+               .set(DSL.remainderFinder(), $$4);
+         }
       }
-   }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bdt.u), $$0 -> $$0.update(DSL.remainderFinder(), ayy::a));
+      return $$0;
    }
 }

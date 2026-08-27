@@ -1,35 +1,72 @@
-import com.mojang.serialization.Codec;
+public abstract class csw implements ctn<bmv> {
+   protected final cts<?> a;
+   protected final ctc b;
+   protected final String c;
+   protected final ctk d;
+   protected final cqk e;
+   protected final float f;
+   protected final int g;
 
-public interface csw<T extends css<?>> {
-   csw<csz> a = a("crafting_shaped", new csz.a());
-   csw<ctb> b = a("crafting_shapeless", new ctb.a());
-   csw<csc> c = a("crafting_special_armordye", new ctf<>(csc::new));
-   csw<csf> d = a("crafting_special_bookcloning", new ctf<>(csf::new));
-   csw<csq> e = a("crafting_special_mapcloning", new ctf<>(csq::new));
-   csw<csr> f = a("crafting_special_mapextending", new ctf<>(csr::new));
-   csw<csm> g = a("crafting_special_firework_rocket", new ctf<>(csm::new));
-   csw<cso> h = a("crafting_special_firework_star", new ctf<>(cso::new));
-   csw<csn> i = a("crafting_special_firework_star_fade", new ctf<>(csn::new));
-   csw<cto> j = a("crafting_special_tippedarrow", new ctf<>(cto::new));
-   csw<csd> k = a("crafting_special_bannerduplicate", new ctf<>(csd::new));
-   csw<ctc> l = a("crafting_special_shielddecoration", new ctf<>(ctc::new));
-   csw<ctd> m = a("crafting_special_shulkerboxcoloring", new ctf<>(ctd::new));
-   csw<ctn> n = a("crafting_special_suspiciousstew", new ctf<>(ctn::new));
-   csw<csy> o = a("crafting_special_repairitem", new ctf<>(csy::new));
-   csw<cth> p = a("smelting", new cte<>(cth::new, 200));
-   csw<cse> q = a("blasting", new cte<>(cse::new, 100));
-   csw<ctl> r = a("smoking", new cte<>(ctl::new, 100));
-   csw<csg> s = a("campfire_cooking", new cte<>(csg::new, 100));
-   csw<ctm> t = a("stonecutting", new ctg.b<>(ctm::new));
-   csw<ctj> u = a("smithing_transform", new ctj.a());
-   csw<ctk> v = a("smithing_trim", new ctk.a());
-   csw<csl> w = a("crafting_decorated_pot", new ctf<>(csl::new));
+   public csw(cts<?> $$0, String $$1, ctc $$2, ctk $$3, cqk $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+   }
 
-   Codec<T> a();
+   @Override
+   public boolean a(bmv $$0, cwz $$1) {
+      return this.d.a($$0.a(0));
+   }
 
-   xq<vd, T> b();
+   @Override
+   public cqk a(bmv $$0, iz $$1) {
+      return this.e.q();
+   }
 
-   static <S extends csw<T>, T extends css<?>> S a(String $$0, S $$1) {
-      return ix.a(kh.t, $$0, $$1);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public iu<ctk> a() {
+      iu<ctk> $$0 = iu.a();
+      $$0.add(this.d);
+      return $$0;
+   }
+
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public cqk a(iz $$0) {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public cts<?> e() {
+      return this.a;
+   }
+
+   public ctc f() {
+      return this.b;
+   }
+
+   public interface a<T extends csw> {
+      T create(String var1, ctc var2, ctk var3, cqk var4, float var5, int var6);
    }
 }

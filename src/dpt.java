@@ -1,521 +1,390 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ContiguousSet;
-import com.google.common.collect.DiscreteDomain;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Range;
 import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
+import java.util.EnumSet;
+import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
 public class dpt {
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = 1200;
-   private static final int f = 100;
-   public static final int a = 20;
-   private static final int g = 8;
-   public static final int b = 9;
-   private static final int h = 20;
-   private static final int i = 96;
-   public static final int c = 128;
-   private final Predicate<bof> j;
-   private final aox k = (aox)new aox(vs.c("entity.minecraft.ender_dragon"), bmb.a.a, bmb.b.a).b(true).c(true);
-   private final apa l;
-   private final ib m;
-   private final ObjectArrayList<Integer> n = new ObjectArrayList();
-   private final dmj o;
-   private int p;
-   private int q;
-   private int r;
-   private int s = 21;
-   private boolean t;
-   private boolean u;
-   private boolean v = false;
-   @Nullable
-   private UUID w;
-   private boolean x = true;
-   @Nullable
-   private ib y;
-   @Nullable
-   private dps z;
-   private int A;
-   @Nullable
-   private List<cde> B;
+   private static final Logger b = LogUtils.getLogger();
+   public static final dpt a = new dpt(cwo.a);
+   private static final String c = "Indices";
+   private static final ii[] d = ii.values();
+   private final EnumSet<ii> e = EnumSet.noneOf(ii.class);
+   private final List<erh<daa>> f = Lists.newArrayList();
+   private final List<erh<eim>> g = Lists.newArrayList();
+   private final int[][] h;
+   static final Map<daa, dpt.a> i = new IdentityHashMap<>();
+   static final Set<dpt.a> j = Sets.newHashSet();
 
-   public dpt(apa $$0, long $$1, dpt.a $$2) {
-      this($$0, $$1, $$2, ib.c);
+   private dpt(cxb $$0) {
+      this.h = new int[$$0.al()][];
    }
 
-   public dpt(apa $$0, long $$1, dpt.a $$2, ib $$3) {
-      this.l = $$0;
-      this.m = $$3;
-      this.j = bok.a.and(bok.a((double)$$3.u(), (double)(128 + $$3.v()), (double)$$3.w(), 192.0));
-      this.x = $$2.c;
-      this.w = $$2.g.orElse(null);
-      this.t = $$2.d;
-      this.u = $$2.e;
-      if ($$2.f) {
-         this.z = dps.a;
-      }
+   public dpt(ta $$0, cxb $$1) {
+      this($$1);
+      if ($$0.b("Indices", 10)) {
+         ta $$2 = $$0.p("Indices");
 
-      this.y = $$2.h.orElse(null);
-      this.n.addAll($$2.i.orElseGet(() -> {
-         ObjectArrayList<Integer> $$1x = new ObjectArrayList(ContiguousSet.create(Range.closedOpen(0, 20), DiscreteDomain.integers()));
-         ac.c($$1x, awt.a($$1));
-         return $$1x;
-      }));
-      this.o = dmk.a()
-         .a("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
-         .a("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
-         .a("       ", "       ", "       ", "   #   ", "       ", "       ", "       ")
-         .a("  ###  ", " #   # ", "#     #", "#  #  #", "#     #", " #   # ", "  ###  ")
-         .a("       ", "  ###  ", " ##### ", " ##### ", " ##### ", "  ###  ", "       ")
-         .a('#', dmi.a(dmm.a(czh.F)))
-         .b();
-   }
-
-   @Deprecated
-   @VisibleForTesting
-   public void a() {
-      this.v = true;
-   }
-
-   public dpt.a b() {
-      return new dpt.a(this.x, this.t, this.u, false, Optional.ofNullable(this.w), Optional.ofNullable(this.y), Optional.of(this.n));
-   }
-
-   public void c() {
-      this.k.d(!this.t);
-      if (++this.s >= 20) {
-         this.o();
-         this.s = 0;
-      }
-
-      if (!this.k.h().isEmpty()) {
-         this.l.l().a(apf.b, new cvl(0, 0), 9, axo.a);
-         boolean $$0 = this.n();
-         if (this.x && $$0) {
-            this.j();
-            this.x = false;
-         }
-
-         if (this.z != null) {
-            if (this.B == null && $$0) {
-               this.z = null;
-               this.g();
-            }
-
-            this.z.a(this.l, this, this.B, this.A++, this.y);
-         }
-
-         if (!this.t) {
-            if ((this.w == null || ++this.p >= 1200) && $$0) {
-               this.k();
-               this.p = 0;
-            }
-
-            if (++this.r >= 100 && $$0) {
-               this.p();
-               this.r = 0;
-            }
-         }
-      } else {
-         this.l.l().b(apf.b, new cvl(0, 0), 9, axo.a);
-      }
-   }
-
-   private void j() {
-      d.info("Scanning for legacy world dragon fight...");
-      boolean $$0 = this.l();
-      if ($$0) {
-         d.info("Found that the dragon has been killed in this world already.");
-         this.u = true;
-      } else {
-         d.info("Found that the dragon has not yet been killed in this world.");
-         this.u = false;
-         if (this.m() == null) {
-            this.a(false);
-         }
-      }
-
-      List<? extends cdf> $$1 = this.l.i();
-      if ($$1.isEmpty()) {
-         this.t = true;
-      } else {
-         cdf $$2 = $$1.get(0);
-         this.w = $$2.ct();
-         d.info("Found that there's a dragon still alive ({})", $$2);
-         this.t = false;
-         if (!$$0) {
-            d.info("But we didn't have a portal, let's remove it.");
-            $$2.am();
-            this.w = null;
-         }
-      }
-
-      if (!this.u && this.t) {
-         this.t = false;
-      }
-   }
-
-   private void k() {
-      List<? extends cdf> $$0 = this.l.i();
-      if ($$0.isEmpty()) {
-         d.debug("Haven't seen the dragon, respawning it");
-         this.r();
-      } else {
-         d.debug("Haven't seen our dragon, but found another one to use.");
-         this.w = $$0.get(0).ct();
-      }
-   }
-
-   protected void a(dps $$0) {
-      if (this.z == null) {
-         throw new IllegalStateException("Dragon respawn isn't in progress, can't skip ahead in the animation.");
-      } else {
-         this.A = 0;
-         if ($$0 == dps.e) {
-            this.z = null;
-            this.t = false;
-            cdf $$1 = this.r();
-            if ($$1 != null) {
-               for (apb $$2 : this.k.h()) {
-                  am.o.a($$2, $$1);
-               }
-            }
-         } else {
-            this.z = $$0;
-         }
-      }
-   }
-
-   private boolean l() {
-      for (int $$0 = -8; $$0 <= 8; $$0++) {
-         for (int $$1 = -8; $$1 <= 8; $$1++) {
-            dol $$2 = this.l.d($$0, $$1);
-
-            for (djl $$3 : $$2.G().values()) {
-               if ($$3 instanceof dlb) {
-                  return true;
-               }
+         for (int $$3 = 0; $$3 < this.h.length; $$3++) {
+            String $$4 = String.valueOf($$3);
+            if ($$2.b($$4, 11)) {
+               this.h[$$3] = $$2.n($$4);
             }
          }
       }
 
-      return false;
+      int $$5 = $$0.h("Sides");
+
+      for (ii $$6 : ii.values()) {
+         if (($$5 & 1 << $$6.ordinal()) != 0) {
+            this.e.add($$6);
+         }
+      }
+
+      a($$0, "neighbor_block_ticks", $$0x -> ki.e.b(ajh.a($$0x)).or(() -> Optional.of(dac.a)), this.f);
+      a($$0, "neighbor_fluid_ticks", $$0x -> ki.c.b(ajh.a($$0x)).or(() -> Optional.of(eio.a)), this.g);
    }
 
-   @Nullable
-   private dmj.b m() {
-      cvl $$0 = new cvl(this.m);
+   private static <T> void a(ta $$0, String $$1, Function<String, Optional<T>> $$2, List<erh<T>> $$3) {
+      if ($$0.b($$1, 9)) {
+         for (tx $$5 : $$0.c($$1, 10)) {
+            erh.a((ta)$$5, $$2).ifPresent($$3::add);
+         }
+      }
+   }
 
-      for (int $$1 = -8 + $$0.e; $$1 <= 8 + $$0.e; $$1++) {
-         for (int $$2 = -8 + $$0.f; $$2 <= 8 + $$0.f; $$2++) {
-            dol $$3 = this.l.d($$1, $$2);
+   public void a(dpg $$0) {
+      this.b($$0);
 
-            for (djl $$4 : $$3.G().values()) {
-               if ($$4 instanceof dlb) {
-                  dmj.b $$5 = this.o.a(this.l, $$4.aD_());
-                  if ($$5 != null) {
-                     ib $$6 = $$5.a(3, 3, 3).d();
-                     if (this.y == null) {
-                        this.y = $$6;
-                     }
+      for (ii $$1 : d) {
+         a($$0, $$1);
+      }
 
-                     return $$5;
+      cwz $$2 = $$0.F();
+      this.f.forEach($$1x -> {
+         daa $$2x = $$1x.a() == dac.a ? $$2.a_($$1x.b()).b() : (daa)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      this.g.forEach($$1x -> {
+         eim $$2x = $$1x.a() == eio.a ? $$2.b_($$1x.b()).a() : (eim)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      j.forEach($$1x -> $$1x.a($$2));
+   }
+
+   private static void a(dpg $$0, ii $$1) {
+      cwz $$2 = $$0.F();
+      if ($$0.r().e.remove($$1)) {
+         Set<ih> $$3 = $$1.a();
+         int $$4 = 0;
+         int $$5 = 15;
+         boolean $$6 = $$3.contains(ih.f);
+         boolean $$7 = $$3.contains(ih.e);
+         boolean $$8 = $$3.contains(ih.d);
+         boolean $$9 = $$3.contains(ih.c);
+         boolean $$10 = $$3.size() == 1;
+         cwg $$11 = $$0.f();
+         int $$12 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 1);
+         int $$13 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 14);
+         int $$14 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 1);
+         int $$15 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 14);
+         ih[] $$16 = ih.values();
+         ib.a $$17 = new ib.a();
+
+         for (ib $$18 : ib.b($$12, $$2.I_(), $$14, $$13, $$2.ak() - 1, $$15)) {
+            dmz $$19 = $$2.a_($$18);
+            dmz $$20 = $$19;
+
+            for (ih $$21 : $$16) {
+               $$17.a($$18, $$21);
+               $$20 = a($$20, $$21, $$2, $$18, $$17);
+            }
+
+            daa.a($$19, $$20, $$2, $$18, 18);
+         }
+      }
+   }
+
+   private static dmz a(dmz $$0, ih $$1, cxa $$2, ib $$3, ib $$4) {
+      return i.getOrDefault($$0.b(), dpt.b.b).a($$0, $$1, $$2.a_($$4), $$2, $$3, $$4);
+   }
+
+   private void b(dpg $$0) {
+      ib.a $$1 = new ib.a();
+      ib.a $$2 = new ib.a();
+      cwg $$3 = $$0.f();
+      cxa $$4 = $$0.F();
+
+      for (int $$5 = 0; $$5 < this.h.length; $$5++) {
+         dph $$6 = $$0.b($$5);
+         int[] $$7 = this.h[$$5];
+         this.h[$$5] = null;
+         if ($$7 != null && $$7.length > 0) {
+            ih[] $$8 = ih.values();
+            dpo<dmz> $$9 = $$6.h();
+            int $$10 = $$0.g($$5);
+            int $$11 = je.c($$10);
+
+            for (int $$12 : $$7) {
+               int $$13 = $$12 & 15;
+               int $$14 = $$12 >> 8 & 15;
+               int $$15 = $$12 >> 4 & 15;
+               $$1.d($$3.d() + $$13, $$11 + $$14, $$3.e() + $$15);
+               dmz $$16 = $$9.a($$12);
+               dmz $$17 = $$16;
+
+               for (ih $$18 : $$8) {
+                  $$2.a($$1, $$18);
+                  if (je.a($$1.u()) == $$3.e && je.a($$1.w()) == $$3.f) {
+                     $$17 = a($$17, $$18, $$4, $$1, $$2);
                   }
                }
+
+               daa.a($$16, $$17, $$4, $$1, 18);
             }
          }
       }
 
-      ib $$7 = dut.a(this.m);
-      int $$8 = this.l.a(drq.a.e, $$7).v();
+      for (int $$19 = 0; $$19 < this.h.length; $$19++) {
+         if (this.h[$$19] != null) {
+            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.g($$19), $$3.e, $$3.f});
+         }
 
-      for (int $$9 = $$8; $$9 >= this.l.J_(); $$9--) {
-         dmj.b $$10 = this.o.a(this.l, new ib($$7.u(), $$9, $$7.w()));
-         if ($$10 != null) {
-            if (this.y == null) {
-               this.y = $$10.a(3, 3, 3).d();
-            }
+         this.h[$$19] = null;
+      }
+   }
 
-            return $$10;
+   public boolean a() {
+      for (int[] $$0 : this.h) {
+         if ($$0 != null) {
+            return false;
          }
       }
 
-      return null;
+      return this.e.isEmpty();
    }
 
-   private boolean n() {
-      if (this.v) {
-         return true;
-      } else {
-         cvl $$0 = new cvl(this.m);
+   public ta b() {
+      ta $$0 = new ta();
+      ta $$1 = new ta();
 
-         for (int $$1 = -8 + $$0.e; $$1 <= 8 + $$0.e; $$1++) {
-            for (int $$2 = 8 + $$0.f; $$2 <= 8 + $$0.f; $$2++) {
-               doa $$3 = this.l.a($$1, $$2, dof.n, false);
-               if (!($$3 instanceof dol)) {
-                  return false;
-               }
-
-               aot $$4 = ((dol)$$3).D();
-               if (!$$4.a(aot.c)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private void o() {
-      Set<apb> $$0 = Sets.newHashSet();
-
-      for (apb $$1 : this.l.a(this.j)) {
-         this.k.a($$1);
-         $$0.add($$1);
-      }
-
-      Set<apb> $$2 = Sets.newHashSet(this.k.h());
-      $$2.removeAll($$0);
-
-      for (apb $$3 : $$2) {
-         this.k.b($$3);
-      }
-   }
-
-   private void p() {
-      this.r = 0;
-      this.q = 0;
-
-      for (dwe.a $$0 : dwe.a(this.l)) {
-         this.q = this.q + this.l.a(cde.class, $$0.f()).size();
-      }
-
-      d.debug("Found {} end crystals still alive", this.q);
-   }
-
-   public void a(cdf $$0) {
-      if ($$0.ct().equals(this.w)) {
-         this.k.a(0.0F);
-         this.k.d(false);
-         this.a(true);
-         this.q();
-         if (!this.u) {
-            this.l.b(this.l.a(drq.a.e, dut.a(this.m)), czh.fA.o());
-         }
-
-         this.u = true;
-         this.t = true;
-      }
-   }
-
-   @Deprecated
-   @VisibleForTesting
-   public void d() {
-      this.n.clear();
-   }
-
-   private void q() {
-      if (!this.n.isEmpty()) {
-         int $$0 = (Integer)this.n.remove(this.n.size() - 1);
-         int $$1 = awm.a(96.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 20) * (double)$$0)));
-         int $$2 = awm.a(96.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 20) * (double)$$0)));
-         this.a(new ib($$1, 75, $$2));
-      }
-   }
-
-   private void a(ib $$0) {
-      this.l.c(3000, $$0, 0);
-      this.l.I_().c(ki.ax).flatMap($$0x -> $$0x.b(qn.c)).ifPresent($$1 -> $$1.a().a(this.l, this.l.l().g(), awt.a(), $$0));
-   }
-
-   private void a(boolean $$0) {
-      dut $$1 = new dut($$0);
-      if (this.y == null) {
-         this.y = this.l.a(drq.a.f, dut.a(this.m)).d();
-
-         while (this.l.a_(this.y).a(czh.F) && this.y.v() > this.l.A_()) {
-            this.y = this.y.d();
+      for (int $$2 = 0; $$2 < this.h.length; $$2++) {
+         String $$3 = String.valueOf($$2);
+         if (this.h[$$2] != null && this.h[$$2].length != 0) {
+            $$1.a($$3, this.h[$$2]);
          }
       }
 
-      if ($$1.a(dwy.m, this.l, this.l.l().g(), awt.a(), this.y)) {
-         int $$2 = awm.e(4, 16);
-         this.l.l().a.a(new cvl(this.y), $$2);
+      if (!$$1.g()) {
+         $$0.a("Indices", $$1);
       }
-   }
 
-   @Nullable
-   private cdf r() {
-      this.l.m(new ib(this.m.u(), 128 + this.m.v(), this.m.w()));
-      cdf $$0 = bol.E.a((cwe)this.l);
-      if ($$0 != null) {
-         $$0.a(this);
-         $$0.h(this.m);
-         $$0.gi().a(cdv.a);
-         $$0.b((double)this.m.u(), (double)(128 + this.m.v()), (double)this.m.w(), this.l.z.i() * 360.0F, 0.0F);
-         this.l.b($$0);
-         this.w = $$0.ct();
+      int $$4 = 0;
+
+      for (ii $$5 : this.e) {
+         $$4 |= 1 << $$5.ordinal();
+      }
+
+      $$0.a("Sides", (byte)$$4);
+      if (!this.f.isEmpty()) {
+         tg $$6 = new tg();
+         this.f.forEach($$1x -> $$6.add($$1x.a($$0xx -> ki.e.b($$0xx).toString())));
+         $$0.a("neighbor_block_ticks", $$6);
+      }
+
+      if (!this.g.isEmpty()) {
+         tg $$7 = new tg();
+         this.g.forEach($$1x -> $$7.add($$1x.a($$0xx -> ki.c.b($$0xx).toString())));
+         $$0.a("neighbor_fluid_ticks", $$7);
       }
 
       return $$0;
    }
 
-   public void b(cdf $$0) {
-      if ($$0.ct().equals(this.w)) {
-         this.k.a($$0.eu() / $$0.eL());
-         this.p = 0;
-         if ($$0.ae()) {
-            this.k.a($$0.Q_());
-         }
+   public interface a {
+      dmz a(dmz var1, ih var2, dmz var3, cxa var4, ib var5, ib var6);
+
+      default void a(cxa $$0) {
       }
    }
 
-   public int e() {
-      return this.q;
-   }
-
-   public void a(cde $$0, bne $$1) {
-      if (this.z != null && this.B.contains($$0)) {
-         d.debug("Aborting respawn sequence");
-         this.z = null;
-         this.A = 0;
-         this.h();
-         this.a(true);
-      } else {
-         this.p();
-         bof $$2 = this.l.a(this.w);
-         if ($$2 instanceof cdf) {
-            ((cdf)$$2).a($$0, $$0.dj(), $$1);
+   static enum b implements dpt.a {
+      a(
+         dac.kO,
+         dac.ed,
+         dac.lM,
+         dac.lN,
+         dac.lO,
+         dac.lP,
+         dac.lQ,
+         dac.lR,
+         dac.lS,
+         dac.lT,
+         dac.lU,
+         dac.lV,
+         dac.lW,
+         dac.lX,
+         dac.lY,
+         dac.lZ,
+         dac.ma,
+         dac.mb,
+         dac.gS,
+         dac.gT,
+         dac.gU,
+         dac.fA,
+         dac.L,
+         dac.I,
+         dac.K,
+         dac.cE,
+         dac.cF,
+         dac.cG,
+         dac.cH,
+         dac.cI,
+         dac.cJ,
+         dac.cK,
+         dac.cR,
+         dac.cS,
+         dac.cT,
+         dac.cU,
+         dac.cW,
+         dac.cX,
+         dac.da,
+         dac.db,
+         dac.dc,
+         dac.dd,
+         dac.df,
+         dac.dg,
+         dac.dl,
+         dac.dm,
+         dac.dn,
+         dac.do,
+         dac.dq,
+         dac.dr
+      ) {
+         @Override
+         public dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+            return $$0;
          }
-      }
-   }
+      },
+      b {
+         @Override
+         public dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+            return $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+         }
+      },
+      c(dac.cv, dac.gV) {
+         @Override
+         public dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+            if ($$2.a($$0.b()) && $$1.o().d() && $$0.c(dbd.d) == dnr.a && $$2.c(dbd.d) == dnr.a) {
+               ih $$6 = $$0.c(dbd.c);
+               if ($$1.o() != $$6.o() && $$6 == $$2.c(dbd.c)) {
+                  dnr $$7 = $$1 == $$6.h() ? dnr.b : dnr.c;
+                  $$3.a($$5, $$2.a(dbd.d, $$7.a()), 18);
+                  if ($$6 == ih.c || $$6 == ih.f) {
+                     dkg $$8 = $$3.c_($$4);
+                     dkg $$9 = $$3.c_($$5);
+                     if ($$8 instanceof dkn && $$9 instanceof dkn) {
+                        dkn.a((dkn)$$8, (dkn)$$9);
+                     }
+                  }
 
-   public boolean f() {
-      return this.u;
-   }
-
-   public void g() {
-      if (this.t && this.z == null) {
-         ib $$0 = this.y;
-         if ($$0 == null) {
-            d.debug("Tried to respawn, but need to find the portal first.");
-            dmj.b $$1 = this.m();
-            if ($$1 == null) {
-               d.debug("Couldn't find a portal, so we made one.");
-               this.a(true);
-            } else {
-               d.debug("Found the exit portal & saved its location for next time.");
+                  return $$0.a(dbd.d, $$7);
+               }
             }
 
-            $$0 = this.y;
+            return $$0;
          }
+      },
+      d(true, dac.aI, dac.aJ, dac.aG, dac.aK, dac.aH, dac.aE, dac.aF) {
+         private final ThreadLocal<List<ObjectSet<ib>>> g = ThreadLocal.withInitial(() -> Lists.newArrayListWithCapacity(7));
 
-         List<cde> $$2 = Lists.newArrayList();
-         ib $$3 = $$0.b(1);
+         @Override
+         public dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+            dmz $$6 = $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+            if ($$0 != $$6) {
+               int $$7 = $$6.c(dnp.aC);
+               List<ObjectSet<ib>> $$8 = this.g.get();
+               if ($$8.isEmpty()) {
+                  for (int $$9 = 0; $$9 < 7; $$9++) {
+                     $$8.add(new ObjectOpenHashSet());
+                  }
+               }
 
-         for (ih $$4 : ih.c.a) {
-            List<cde> $$5 = this.l.a(cde.class, new eoq($$3.a($$4, 2)));
-            if ($$5.isEmpty()) {
-               return;
+               $$8.get($$7).add($$4.i());
             }
 
-            $$2.addAll($$5);
+            return $$0;
          }
 
-         d.debug("Found all crystals, respawning dragon.");
-         this.a($$2);
-      }
-   }
+         @Override
+         public void a(cxa $$0) {
+            ib.a $$1 = new ib.a();
+            List<ObjectSet<ib>> $$2 = this.g.get();
 
-   private void a(List<cde> $$0) {
-      if (this.t && this.z == null) {
-         for (dmj.b $$1 = this.m(); $$1 != null; $$1 = this.m()) {
-            for (int $$2 = 0; $$2 < this.o.c(); $$2++) {
-               for (int $$3 = 0; $$3 < this.o.b(); $$3++) {
-                  for (int $$4 = 0; $$4 < this.o.a(); $$4++) {
-                     dmi $$5 = $$1.a($$2, $$3, $$4);
-                     if ($$5.a().a(czh.F) || $$5.a().a(czh.fx)) {
-                        this.l.b($$5.d(), czh.fz.o());
+            for (int $$3 = 2; $$3 < $$2.size(); $$3++) {
+               int $$4 = $$3 - 1;
+               ObjectSet<ib> $$5 = $$2.get($$4);
+               ObjectSet<ib> $$6 = $$2.get($$3);
+               ObjectIterator var8 = $$5.iterator();
+
+               while (var8.hasNext()) {
+                  ib $$7 = (ib)var8.next();
+                  dmz $$8 = $$0.a_($$7);
+                  if ($$8.c(dnp.aC) >= $$4) {
+                     $$0.a($$7, $$8.a(dnp.aC, Integer.valueOf($$4)), 18);
+                     if ($$3 != 7) {
+                        for (ih $$9 : f) {
+                           $$1.a($$7, $$9);
+                           dmz $$10 = $$0.a_($$1);
+                           if ($$10.b(dnp.aC) && $$8.c(dnp.aC) > $$3) {
+                              $$6.add($$1.i());
+                           }
+                        }
                      }
                   }
                }
             }
+
+            $$2.clear();
+         }
+      },
+      e(dac.fe, dac.fd) {
+         @Override
+         public dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+            if ($$0.c(dhv.c) == 7) {
+               daa $$6 = $$0.a(dac.fd) ? dac.eZ : dac.fa;
+               if ($$2.a($$6)) {
+                  return ($$0.a(dac.fd) ? dac.fb : dac.fc).o().a(ddv.aE, $$1);
+               }
+            }
+
+            return $$0;
+         }
+      };
+
+      public static final ih[] f = ih.values();
+
+      b(daa... $$0) {
+         this(false, $$0);
+      }
+
+      b(boolean $$0, daa... $$1) {
+         for (daa $$2 : $$1) {
+            dpt.i.put($$2, this);
          }
 
-         this.z = dps.a;
-         this.A = 0;
-         this.a(false);
-         this.B = $$0;
-      }
-   }
-
-   public void h() {
-      for (dwe.a $$0 : dwe.a(this.l)) {
-         for (cde $$2 : this.l.a(cde.class, $$0.f())) {
-            $$2.m(false);
-            $$2.a(null);
+         if ($$0) {
+            dpt.j.add(this);
          }
-      }
-   }
-
-   @Nullable
-   public UUID i() {
-      return this.w;
-   }
-
-   public static record a(boolean c, boolean d, boolean e, boolean f, Optional<UUID> g, Optional<ib> h, Optional<List<Integer>> i) {
-      public static final Codec<dpt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("NeedsStateScanning").orElse(true).forGetter(dpt.a::a),
-                  Codec.BOOL.fieldOf("DragonKilled").orElse(false).forGetter(dpt.a::b),
-                  Codec.BOOL.fieldOf("PreviouslyKilled").orElse(false).forGetter(dpt.a::c),
-                  Codec.BOOL.optionalFieldOf("IsRespawning", false).forGetter(dpt.a::d),
-                  je.a.optionalFieldOf("Dragon").forGetter(dpt.a::e),
-                  ib.a.optionalFieldOf("ExitPortalLocation").forGetter(dpt.a::f),
-                  Codec.list(Codec.INT).optionalFieldOf("Gateways").forGetter(dpt.a::g)
-               )
-               .apply($$0, dpt.a::new)
-      );
-      public static final dpt.a b = new dpt.a(true, false, false, false, Optional.empty(), Optional.empty(), Optional.empty());
-
-      public boolean a() {
-         return this.c;
-      }
-
-      public boolean b() {
-         return this.d;
-      }
-
-      public boolean c() {
-         return this.e;
-      }
-
-      public boolean d() {
-         return this.f;
-      }
-
-      public Optional<UUID> e() {
-         return this.g;
-      }
-
-      public Optional<ib> f() {
-         return this.h;
-      }
-
-      public Optional<List<Integer>> g() {
-         return this.i;
       }
    }
 }

@@ -1,56 +1,35 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class djc {
-   final String a;
+public class djc extends daj {
+   public static final MapCodec<djc> a = b(djc::new);
+   protected static final eqk b = daa.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
-   public djc(String $$0) {
-      this.a = $$0;
+   @Override
+   public MapCodec<djc> a() {
+      return a;
    }
 
-   public static ajc a(ajb<djc> $$0, boolean $$1) {
-      String $$2 = $$1 ? "banner" : "shield";
-      return $$0.a().d("entity/" + $$2 + "/");
+   protected djc(dmy.d $$0) {
+      super($$0);
    }
 
-   public String a() {
-      return this.a;
+   @Override
+   protected void a(dmz $$0, cwz $$1, ib $$2, bow $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof apf && $$3 instanceof ckp) {
+         $$1.a(new ib($$2), true, $$3);
+      }
    }
 
-   @Nullable
-   public static il<djc> a(String $$0) {
-      return kh.am.h().filter($$1 -> $$1.a().a.equals($$0)).findAny().orElse(null);
+   @Override
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return b;
    }
 
-   public static class a {
-      private final List<Pair<il<djc>, cog>> a = Lists.newArrayList();
-
-      public djc.a a(ajb<djc> $$0, cog $$1) {
-         return this.a(kh.am.f($$0), $$1);
-      }
-
-      public djc.a a(il<djc> $$0, cog $$1) {
-         return this.a(Pair.of($$0, $$1));
-      }
-
-      public djc.a a(Pair<il<djc>, cog> $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public te a() {
-         te $$0 = new te();
-
-         for (Pair<il<djc>, cog> $$1 : this.a) {
-            sy $$2 = new sy();
-            $$2.a("Pattern", ((djc)((il)$$1.getFirst()).a()).a);
-            $$2.a("Color", ((cog)$$1.getSecond()).a());
-            $$0.add($$2);
-         }
-
-         return $$0;
-      }
+   @Override
+   protected boolean b(dmz $$0, cwf $$1, ib $$2) {
+      ein $$3 = $$1.b_($$2);
+      ein $$4 = $$1.b_($$2.c());
+      return ($$3.a() == eio.c || $$0.b() instanceof ddx) && $$4.a() == eio.a;
    }
 }

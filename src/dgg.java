@@ -1,82 +1,81 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
 
-public class dgg extends cyb {
-   public static final MapCodec<dgg> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgg.a.b.fieldOf("kind").forGetter(cyb::b), u()).apply($$0, dgg::new));
-   public static final int d = dnk.a();
-   private static final int b = d + 1;
-   public static final dne e = dmu.ba;
-   protected static final epo f = czf.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final epo g = czf.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+public class dgg extends dcc {
+   public static final MapCodec<dgg> a = b(dgg::new);
+   public static final dnq b = dnp.s;
+   public static final dnz e = dnp.aA;
 
    @Override
-   public MapCodec<? extends dgg> a() {
-      return c;
+   public MapCodec<dgg> a() {
+      return a;
    }
 
-   protected dgg(dgg.a $$0, dmd.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(e, Integer.valueOf(0)));
+   protected dgg(dmy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(aE, ih.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return this.b() == dgg.b.h ? g : f;
-   }
-
-   @Override
-   protected epo f(dme $$0, cvk $$1, ib $$2) {
-      return epl.a();
-   }
-
-   @Override
-   public dme a(crx $$0) {
-      return super.a($$0).a(e, Integer.valueOf(dnk.a($$0.i())));
-   }
-
-   @Override
-   protected dme a(dme $$0, dfr $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected dme a(dme $$0, deb $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends axg {
-      Map<String, dgg.a> a = new Object2ObjectArrayMap();
-      Codec<dgg.a> b = avu.a(axg::c, a::get);
-   }
-
-   public static enum b implements dgg.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
+      if (!$$3.ga().e) {
+         return bnc.d;
+      } else {
+         $$1.a($$2, $$0.a(e), 3);
+         return bnc.a($$1.B);
       }
+   }
 
-      @Override
-      public String c() {
-         return this.j;
+   @Override
+   protected int g(dmz $$0) {
+      return $$0.c(e) * 2;
+   }
+
+   @Override
+   public dmz a(css $$0) {
+      dmz $$1 = super.a($$0);
+      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
+   }
+
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if ($$1 == ih.a && !this.b($$3, $$5, $$2)) {
+         return dac.a.o();
+      } else {
+         return !$$3.x_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+   }
+
+   @Override
+   public boolean c(cxc $$0, ib $$1, dmz $$2) {
+      return this.a((cxp)$$0, $$1, $$2) > 0;
+   }
+
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
+      if ($$0.c(d)) {
+         ih $$4 = $$0.c(aE);
+         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
+         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         float $$8 = -5.0F;
+         if ($$3.h()) {
+            $$8 = (float)($$0.c(e) * 2 - 1);
+         }
+
+         $$8 /= 16.0F;
+         double $$9 = (double)($$8 * (float)$$4.j());
+         double $$10 = (double)($$8 * (float)$$4.l());
+         $$1.a(jw.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(aE, e, b, d);
    }
 }

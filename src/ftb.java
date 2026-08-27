@@ -1,49 +1,65 @@
-public class ftb extends fve {
-   ftb(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+
+public class ftb extends ftc {
+   private final String f;
+
+   ftb(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
+   }
+
+   public String a() {
+      return this.f;
+   }
+
+   public ftb c() {
+      ftb $$0 = new ftb(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      return $$0;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(ib.a(this.g, this.h, this.i)).a(auj.a)) {
-            this.k();
+   public fhf a(fhf $$0, ftg $$1) {
+      return new flh($$0, $$1, this);
+   }
+
+   public static class a extends ftc.a<ftb> {
+      public a(ftb $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
+      }
+
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new ftb(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
+
+      @Nullable
+      @Override
+      public ftc.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ftc.b.d : null;
+      }
+
+      @Override
+      public Either<ftc.c, ftc.b> a(ftg $$0) {
+         ftc.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new ftc.c(this.a.a, ftf.c, $$3));
          }
-      }
-   }
-
-   @Override
-   public fui b() {
-      return fui.b;
-   }
-
-   public static class a implements fuh<ke> {
-      private final fuz a;
-
-      public a(fuz $$0) {
-         this.a = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ftb $$8 = new ftb($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
       }
    }
 }

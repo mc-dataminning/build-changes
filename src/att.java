@@ -1,153 +1,113 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class att {
-   private static final Map<cmi, Pair<String, String>> a = ImmutableMap.of(
-      cmi.a,
-      Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cmi.b,
-      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cmi.c,
-      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cmi.d,
-      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
-   );
-   private final Map<cmi, att.a> b;
+public class att extends atq {
+   private static final Logger d = LogUtils.getLogger();
+   private final ServerSocket e;
+   private final String f;
+   private final List<ats> g = Lists.newArrayList();
+   private final ajx h;
 
-   private att(Map<cmi, att.a> $$0) {
-      this.b = $$0;
+   private att(ajx $$0, ServerSocket $$1, String $$2) {
+      super("RCON Listener");
+      this.h = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public att() {
-      this(ac.a(Maps.newEnumMap(cmi.class), $$0 -> {
-         for (cmi $$1 : cmi.values()) {
-            $$0.put($$1, new att.a(false, false));
+   private void d() {
+      this.g.removeIf($$0 -> !$$0.c());
+   }
+
+   @Override
+   public void run() {
+      try {
+         while (this.a) {
+            try {
+               Socket $$0 = this.e.accept();
+               ats $$1 = new ats(this.h, this.f, $$0);
+               $$1.a();
+               this.g.add($$1);
+               this.d();
+            } catch (SocketTimeoutException var7) {
+               this.d();
+            } catch (IOException var8) {
+               if (this.a) {
+                  d.info("IO exception: ", var8);
+               }
+            }
          }
-      }));
+      } finally {
+         this.a(this.e);
+      }
    }
 
-   public boolean a(cmi $$0) {
-      return this.b.get($$0).a;
-   }
-
-   public void a(cmi $$0, boolean $$1) {
-      this.b.get($$0).a = $$1;
-   }
-
-   public boolean b(cmi $$0) {
-      return this.b.get($$0).b;
-   }
-
-   public void b(cmi $$0, boolean $$1) {
-      this.b.get($$0).b = $$1;
-   }
-
-   public static att a(us $$0) {
-      Map<cmi, att.a> $$1 = Maps.newEnumMap(cmi.class);
-
-      for (cmi $$2 : cmi.values()) {
-         boolean $$3 = $$0.readBoolean();
-         boolean $$4 = $$0.readBoolean();
-         $$1.put($$2, new att.a($$3, $$4));
+   @Nullable
+   public static att a(ajx $$0) {
+      aod $$1 = $$0.a();
+      String $$2 = $$0.b();
+      if ($$2.isEmpty()) {
+         $$2 = "0.0.0.0";
       }
 
-      return new att($$1);
-   }
-
-   public void b(us $$0) {
-      for (cmi $$1 : cmi.values()) {
-         att.a $$2 = this.b.get($$1);
-         if ($$2 == null) {
-            $$0.a(false);
-            $$0.a(false);
+      int $$3 = $$1.s;
+      if (0 < $$3 && 65535 >= $$3) {
+         String $$4 = $$1.t;
+         if ($$4.isEmpty()) {
+            d.warn("No rcon password set in server.properties, rcon disabled!");
+            return null;
          } else {
-            $$0.a($$2.a);
-            $$0.a($$2.b);
+            try {
+               ServerSocket $$5 = new ServerSocket($$3, 0, InetAddress.getByName($$2));
+               $$5.setSoTimeout(500);
+               att $$6 = new att($$0, $$5, $$4);
+               if (!$$6.a()) {
+                  return null;
+               } else {
+                  d.info("RCON running on {}:{}", $$2, $$3);
+                  return $$6;
+               }
+            } catch (IOException var7) {
+               d.warn("Unable to initialise RCON on {}:{}", new Object[]{$$2, $$3, var7});
+               return null;
+            }
          }
-      }
-   }
-
-   public static att a(sy $$0) {
-      Map<cmi, att.a> $$1 = Maps.newEnumMap(cmi.class);
-      a.forEach(($$2, $$3) -> {
-         boolean $$4 = $$0.q((String)$$3.getFirst());
-         boolean $$5 = $$0.q((String)$$3.getSecond());
-         $$1.put($$2, new att.a($$4, $$5));
-      });
-      return new att($$1);
-   }
-
-   public void b(sy $$0) {
-      a.forEach(($$1, $$2) -> {
-         att.a $$3 = this.b.get($$1);
-         $$0.a((String)$$2.getFirst(), $$3.a);
-         $$0.a((String)$$2.getSecond(), $$3.b);
-      });
-   }
-
-   public att a() {
-      Map<cmi, att.a> $$0 = Maps.newEnumMap(cmi.class);
-
-      for (cmi $$1 : cmi.values()) {
-         att.a $$2 = this.b.get($$1);
-         $$0.put($$1, $$2.a());
-      }
-
-      return new att($$0);
-   }
-
-   public void a(att $$0) {
-      this.b.clear();
-
-      for (cmi $$1 : cmi.values()) {
-         att.a $$2 = $$0.b.get($$1);
-         this.b.put($$1, $$2.a());
+      } else {
+         d.warn("Invalid rcon port {} found in server.properties, rcon disabled!", $$3);
+         return null;
       }
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof att && this.b.equals(((att)$$0).b);
-   }
+   public void b() {
+      this.a = false;
+      this.a(this.e);
+      super.b();
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   static final class a {
-      boolean a;
-      boolean b;
-
-      public a(boolean $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public att.a a() {
-         return new att.a(this.a, this.b);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return !($$0 instanceof att.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
+      for (ats $$0 : this.g) {
+         if ($$0.c()) {
+            $$0.b();
          }
       }
 
-      @Override
-      public int hashCode() {
-         int $$0 = this.a ? 1 : 0;
-         return 31 * $$0 + (this.b ? 1 : 0);
-      }
+      this.g.clear();
+   }
 
-      @Override
-      public String toString() {
-         return "[open=" + this.a + ", filtering=" + this.b + "]";
+   private void a(ServerSocket $$0) {
+      d.debug("closeSocket: {}", $$0);
+
+      try {
+         $$0.close();
+      } catch (IOException var3) {
+         d.warn("Failed to close socket", var3);
       }
    }
 }

@@ -1,53 +1,91 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
 
-public final class gng extends gne {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class gng extends Thread {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   private static final Logger d = LogUtils.getLogger();
+   public static final String a = "224.0.2.60";
+   public static final int b = 4445;
+   private static final long e = 1500L;
+   private final String f;
+   private final DatagramSocket g;
+   private boolean h = true;
+   private final String i;
+
+   public gng(String $$0, String $$1) throws IOException {
+      super("LanServerPinger #" + c.incrementAndGet());
+      this.f = $$0;
+      this.i = $$1;
+      this.setDaemon(true);
+      this.setUncaughtExceptionHandler(new r(d));
+      this.g = new DatagramSocket();
+   }
 
    @Override
-   public void a(gmy $$0) {
-      if (eyk.P().B()) {
-         super.a($$0);
+   public void run() {
+      String $$0 = a(this.f, this.i);
+      byte[] $$1 = $$0.getBytes(StandardCharsets.UTF_8);
+
+      while (!this.isInterrupted() && this.h) {
+         try {
+            InetAddress $$2 = InetAddress.getByName("224.0.2.60");
+            DatagramPacket $$3 = new DatagramPacket($$1, $$1.length, $$2, 4445);
+            this.g.send($$3);
+         } catch (IOException var6) {
+            d.warn("LanServerPinger: {}", var6.getMessage());
+            break;
+         }
+
+         try {
+            sleep(1500L);
+         } catch (InterruptedException var5) {
+         }
       }
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
-   }
-
    @Override
-   public void f() {
-      this.b.add((long)eyk.P().n());
-      this.h();
-      this.c.add(eyk.P().o());
+   public void interrupt() {
+      super.interrupt();
+      this.h = false;
    }
 
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
+   public static String a(String $$0, String $$1) {
+      return "[MOTD]" + $$0 + "[/MOTD][AD]" + $$1 + "[/AD]";
    }
 
-   @Override
-   public void b(gmy $$0) {
-      $$0.send(gmz.c, $$0x -> {
-         $$0x.a(gnb.r, new LongArrayList(this.b));
-         $$0x.a(gnb.s, new LongArrayList(this.c));
-         $$0x.a(gnb.t, new LongArrayList(this.d));
-         $$0x.a(gnb.u, this.e());
-         $$0x.a(gnb.v, eyk.P().m.aA());
-         $$0x.a(gnb.w, (int)a);
-      });
-      this.g();
+   public static String a(String $$0) {
+      int $$1 = $$0.indexOf("[MOTD]");
+      if ($$1 < 0) {
+         return "missing no";
+      } else {
+         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[MOTD]".length());
+         return $$2 < $$1 ? "missing no" : $$0.substring($$1 + "[MOTD]".length(), $$2);
+      }
    }
 
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public static String b(String $$0) {
+      int $$1 = $$0.indexOf("[/MOTD]");
+      if ($$1 < 0) {
+         return null;
+      } else {
+         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[/MOTD]".length());
+         if ($$2 >= 0) {
+            return null;
+         } else {
+            int $$3 = $$0.indexOf("[AD]", $$1 + "[/MOTD]".length());
+            if ($$3 < 0) {
+               return null;
+            } else {
+               int $$4 = $$0.indexOf("[/AD]", $$3 + "[AD]".length());
+               return $$4 < $$3 ? null : $$0.substring($$3 + "[AD]".length(), $$4);
+            }
+         }
+      }
    }
 }

@@ -1,8 +1,26 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dtw {
+public class dtw implements dtt {
+   private final jg e;
+   private final ih f;
+   public static final Codec<dtw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jg.v(16).optionalFieldOf("offset", jg.g).forGetter($$0x -> $$0x.e), ih.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, dtw::new)
+   );
+
+   public dtw(jg $$0, ih $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(cxu $$0, ib $$1) {
+      ib $$2 = $$1.a(this.e);
+      return $$0.a_($$2).d($$0, $$2, this.f);
+   }
+
+   @Override
+   public dtu<?> a() {
+      return dtu.d;
+   }
 }

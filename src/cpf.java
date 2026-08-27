@@ -1,58 +1,30 @@
-public class cpf extends cpl {
-   private static final int a = 40;
-
-   public cpf(cpl.a $$0) {
+public class cpf extends cqf implements cpm {
+   public cpf(cqf.a $$0) {
       super($$0);
+      dcf.a(this, cnw.a);
+   }
+
+   public static boolean d(cqk $$0) {
+      return $$0.l() < $$0.m() - 1;
    }
 
    @Override
-   public cpq a(cpq $$0, cwe $$1, box $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof apb $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(atz.c.b(this));
-      }
-
-      if (!$$1.B) {
-         $$2.e(bnu.s);
-      }
-
-      if ($$0.b()) {
-         return new cpq(cpt.sk);
-      } else {
-         if ($$2 instanceof cia $$4 && !$$4.fW().d) {
-            cpq $$5 = new cpq(cpt.sk);
-            if (!$$4.fV().e($$5)) {
-               $$4.a($$5, false);
-            }
-         }
-
-         return $$0;
-      }
+   public boolean a(cqk $$0, cqk $$1) {
+      return $$1.a(cqn.vN);
    }
 
    @Override
-   public int b(cpq $$0) {
-      return 40;
+   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
+      return this.a(this, $$0, $$1, $$2);
    }
 
    @Override
-   public crj c(cpq $$0) {
-      return crj.c;
+   public il<atx> as_() {
+      return aty.ar;
    }
 
    @Override
-   public ato ao_() {
-      return atp.mf;
-   }
-
-   @Override
-   public ato ap_() {
-      return atp.mf;
-   }
-
-   @Override
-   public bmm<cpq> a(cwe $$0, cia $$1, bmk $$2) {
-      return cps.a($$0, $$1, $$2);
+   public bpd i() {
+      return bpd.e;
    }
 }

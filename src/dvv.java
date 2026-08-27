@@ -1,23 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dvv extends duu<dxm> {
-   public dvv(Codec<dxm> $$0) {
-      super($$0);
-   }
+public class dvv implements dxu {
+   public static final Codec<dvv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ajh.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               ajh.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               ehb.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               ehb.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dvv::new)
+   );
+   public final List<ajh> b;
+   public final List<ajh> c;
+   public final il<eha> d;
+   public final il<eha> e;
+   public final int f;
 
-   @Override
-   public boolean a(duw<dxm> $$0) {
-      cwz $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      dxm $$3 = $$0.f();
-
-      for (dxg.a $$4 : $$3.b) {
-         if ($$4.b.a($$1.a_($$2), $$0.d())) {
-            $$1.a($$2, $$4.c, 2);
-            break;
-         }
+   public dvv(List<ajh> $$0, List<ajh> $$1, il<eha> $$2, il<eha> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
-
-      return true;
    }
 }

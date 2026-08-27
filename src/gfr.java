@@ -1,13 +1,17 @@
-public class gfr<T extends ceu> extends ggj<T, fna<T>> {
-   private static final ajc a = new ajc("textures/entity/zombie/drowned_outer_layer.png");
-   private final fna<T> b;
+public class gfr extends gee<cgm, fqm> {
+   private static final ajh a = new ajh("textures/entity/illager/vex.png");
+   private static final ajh i = new ajh("textures/entity/illager/vex_charging.png");
 
-   public gfr(gdt<T, fna<T>> $$0, fqb $$1) {
-      super($$0);
-      this.b = new fna<>($$1.a(fqe.Q));
+   public gfr(gcy.a $$0) {
+      super($$0, new fqm($$0.a(frc.bK)), 0.3F);
+      this.a(new ghc<>(this, $$0.d()));
    }
 
-   public void a(etd $$0, fwq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   protected int a(cgm $$0, ib $$1) {
+      return 15;
+   }
+
+   public ajh a(cgm $$0) {
+      return $$0.gn() ? i : a;
    }
 }

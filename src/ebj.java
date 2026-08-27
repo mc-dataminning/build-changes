@@ -1,37 +1,13 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebj extends ebr {
-   public static final Codec<ebj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ebj::new)
+public abstract class ebj {
+   private static final Codec<Either<dtg, ebj>> a = Codec.either(dtg.a, ki.N.q().dispatch(ebj::a, ebk::codec));
+   public static final Codec<ebj> c = a.xmap(
+      $$0 -> (ebj)$$0.map(ebi::a, $$0x -> $$0x), $$0 -> $$0.a() == ebk.a ? Either.left(((ebi)$$0).b()) : Either.right($$0)
    );
-   private final double c;
-   private final int d;
-   private final int e;
 
-   private ebj(double $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
+   public abstract int a(axd var1, dtj var2);
 
-   public static ebj a(double $$0, int $$1, int $$2) {
-      return new ebj($$0, $$1, $$2);
-   }
-
-   @Override
-   protected int a(awt $$0, ib $$1) {
-      double $$2 = cxd.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
-   }
-
-   @Override
-   public ebo<?> b() {
-      return ebo.h;
-   }
+   public abstract ebk<?> a();
 }

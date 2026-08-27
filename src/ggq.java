@@ -1,35 +1,25 @@
-public class ggq<T extends box> extends ggj<T, foj<T>> {
-   public static final ajc a = new ajc("textures/entity/trident_riptide.png");
-   public static final String b = "box";
-   private final fqf c;
+public class ggq extends ghj<cbl, fnx<cbl>> {
+   private final fxm a;
 
-   public ggq(gdt<T, foj<T>> $$0, fqb $$1) {
+   public ggq(get<cbl, fnx<cbl>> $$0, fxm $$1) {
       super($$0);
-      fqf $$2 = $$1.a(fqe.aV);
-      this.c = $$2.b("box");
+      this.a = $$1;
    }
 
-   public static fql a() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      $$1.a("box", fqk.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fqh.a);
-      return fql.a($$0, 64, 64);
-   }
-
-   public void a(etd $$0, fwq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.fl()) {
-         eth $$10 = $$1.getBuffer(fwy.e(a));
-
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            $$0.a();
-            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
-            $$0.a(a.d.rotationDegrees($$12));
-            float $$13 = 0.75F * (float)$$11;
-            $$0.b($$13, $$13, $$13);
-            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
-            this.c.a($$0, $$10, $$2, ghq.d);
-            $$0.b();
-         }
+   public void a(etz $$0, fxq $$1, int $$2, cbl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fr() == bpi.b;
+      $$0.a();
+      float $$11 = 1.0F;
+      float $$12 = -1.0F;
+      float $$13 = aww.e($$3.dE()) / 60.0F;
+      if ($$3.dE() < 0.0F) {
+         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
+      } else {
+         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
       }
+
+      cqk $$14 = $$10 ? $$3.eU() : $$3.eV();
+      this.a.a($$3, $$14, cqh.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

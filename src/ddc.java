@@ -1,51 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ddc extends dcv {
-   public static final MapCodec<ddc> e = b(ddc::new);
+public class ddc extends daj implements dib {
+   protected static final MapCodec<List<dib.a>> a = dib.a.b.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<ddc> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(ddc::b), u()).apply($$0, ddc::new));
+   protected static final float c = 3.0F;
+   protected static final eqk d = daa.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+   private final List<dib.a> e;
 
    @Override
    public MapCodec<? extends ddc> a() {
-      return e;
+      return b;
    }
 
-   public ddc(dmd.d $$0) {
-      super($$0);
+   public ddc(il<boh> $$0, int $$1, dmy.d $$2) {
+      this(a($$0, $$1), $$2);
    }
 
-   public static dme b() {
-      return czh.G.o();
+   public ddc(List<dib.a> $$0, dmy.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
-   @Override
-   public void a(cwe $$0, cia $$1, ib $$2, dme $$3, @Nullable djl $$4, cpq $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (cua.a(cuc.v, $$5) == 0) {
-         if ($$0.E_().i()) {
-            $$0.a($$2, false);
-            return;
-         }
-
-         dme $$6 = $$0.a_($$2.d());
-         if ($$6.d() || $$6.k()) {
-            $$0.b($$2, b());
-         }
-      }
+   protected static List<dib.a> a(il<boh> $$0, int $$1) {
+      return List.of(new dib.a($$0, $$1 * 20));
    }
 
    @Override
-   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if ($$1.a(cwn.b, $$2) > 11 - $$0.b($$1, $$2)) {
-         this.d($$0, $$1, $$2);
-      }
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      epr $$4 = $$0.n($$1, $$2);
+      return d.a($$4.c, $$4.d, $$4.e);
    }
 
-   protected void d(dme $$0, cwe $$1, ib $$2) {
-      if ($$1.E_().i()) {
-         $$1.a($$2, false);
-      } else {
-         $$1.b($$2, b());
-         $$1.a($$2, b().b(), $$2);
-      }
+   @Override
+   public List<dib.a> b() {
+      return this.e;
    }
 }

@@ -1,37 +1,36 @@
-public class acw implements xz<aai> {
-   public static final xq<us, acw> a = xz.a(acw::a, acw::new);
-   private final int b;
-   private final byte c;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public acw(bof $$0, byte $$1) {
-      this.b = $$0.aj();
-      this.c = $$1;
+public class acw implements yb<aam> {
+   public static final xs<uu, acw> a = yb.a(acw::a, acw::new);
+   private final IntList b;
+
+   public acw(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private acw(us $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
+   public acw(int... $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(us $$0) {
-      $$0.c(this.b);
-      $$0.k(this.c);
+   private acw(uu $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(uu $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yb<acw> a() {
-      return aet.am;
+   public yd<acw> a() {
+      return aex.aj;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public bof a(cwe $$0) {
-      return $$0.a(this.b);
-   }
-
-   public byte b() {
-      return this.c;
+   public IntList b() {
+      return this.b;
    }
 }

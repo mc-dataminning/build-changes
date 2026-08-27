@@ -1,13 +1,10 @@
-public class geg extends gdz {
-   private static final ajc a = new ajc("textures/entity/skeleton/stray.png");
-
-   public geg(gby.a $$0) {
-      super($$0, fqe.bv, fqe.bw, fqe.bx);
-      this.a(new ggr<>(this, $$0.f()));
+public class geg<T extends bow> extends gcx<T> {
+   public geg(gcy.a $$0) {
+      super($$0);
    }
 
    @Override
-   public ajc a(cep $$0) {
-      return a;
+   public ajh a(T $$0) {
+      return giy.e;
    }
 }

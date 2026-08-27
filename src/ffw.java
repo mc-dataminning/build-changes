@@ -1,59 +1,69 @@
-public class ffw extends fgh {
-   private static final vs a = vs.c("symlink_warning.title.world").a(n.r);
-   private static final vs b = vs.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
-   private static final vs c = vs.c("symlink_warning.title.pack").a(n.r);
-   private static final vs k = vs.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
-   private final vs l;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+
+public class ffw extends ffx {
+   private static final vu k = vu.c("chat.copy");
+   private static final vu l = vu.c("chat.link.warning");
    private final String m;
-   private final Runnable n;
-   private final fdv o = new fdv().b(10);
+   private final boolean n;
 
-   public ffw(vs $$0, vs $$1, String $$2, Runnable $$3) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
+   public ffw(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), vu.b($$1), $$1, $$2 ? vt.e : vt.g, $$2);
    }
 
-   public static fgh a(Runnable $$0) {
-      return new ffw(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   public ffw(BooleanConsumer $$0, vu $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? vt.e : vt.g, $$3);
    }
 
-   public static fgh b(Runnable $$0) {
-      return new ffw(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
+   public ffw(BooleanConsumer $$0, vu $$1, vu $$2, String $$3, vu $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (vu)($$5 ? vu.c("chat.link.open") : vt.f);
+      this.b = $$4;
+      this.n = !$$5;
+      this.m = $$3;
    }
 
-   @Override
-   protected void aP_() {
-      super.aP_();
-      this.o.c().b();
-      fdv.b $$0 = this.o.d(1);
-      $$0.a(new fbr(this.e, this.i));
-      $$0.a(new fbe(this.l, this.i).c(this.g - 50).b(true));
-      int $$1 = 120;
-      fdv $$2 = new fdv().a(5);
-      fdv.b $$3 = $$2.d(3);
-      $$3.a(fak.a(vr.n, $$0x -> ac.j().a(this.m)).b(120, 20).a());
-      $$3.a(fak.a(vr.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
-      $$3.a(fak.a(vr.k, $$0x -> this.d()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.o.a(this::c);
+   protected static wi a(boolean $$0, String $$1) {
+      return c($$0).b(vt.v).b(vu.b($$1));
+   }
+
+   protected static wi c(boolean $$0) {
+      return vu.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   protected void c() {
-      this.o.a();
-      fdu.a(this.o, this.F());
+   protected void a(int $$0) {
+      this.c(fbg.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fbg.a(k, $$0x -> {
+         this.n();
+         this.c.accept(false);
+      }).a(this.g / 2 - 50, $$0, 100, 20).a());
+      this.c(fbg.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void n() {
+      this.f.o.a(this.m);
    }
 
    @Override
-   public vs i() {
-      return vr.a(super.i(), this.l);
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.n) {
+         $$0.a(this.i, l, this.g / 2, 110, 16764108);
+      }
    }
 
-   @Override
-   public void d() {
-      this.n.run();
+   public static void a(fhf $$0, String $$1) {
+      ezg $$2 = ezg.Q();
+      $$2.a(new ffw($$3 -> {
+         if ($$3) {
+            ac.j().a($$1);
+         }
+
+         $$2.a($$0);
+      }, $$1, true));
+   }
+
+   public static fbg.c b(fhf $$0, String $$1) {
+      return $$2 -> a($$0, $$1);
    }
 }

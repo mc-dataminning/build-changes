@@ -18,13 +18,13 @@ public class hq<A extends ArgumentType<?>> implements hn<A, hq<A>.a> {
       return new hq<>($$0);
    }
 
-   public void a(hq<A>.a $$0, us $$1) {
+   public void a(hq<A>.a $$0, uu $$1) {
    }
 
    public void a(hq<A>.a $$0, JsonObject $$1) {
    }
 
-   public hq<A>.a a(us $$0) {
+   public hq<A>.a a(uu $$0) {
       return this.a;
    }
 

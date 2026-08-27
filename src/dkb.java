@@ -1,189 +1,324 @@
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class dkb extends djl implements bmt, eqg.a {
-   public static final String e = "sherds";
-   public static final String f = "item";
-   public static final int g = 1;
-   public long h;
+public class dkb extends dkg implements bng, bnh {
+   private static final int f = 4;
+   public static final List<List<il<boh>>> a = List.of(List.of(bol.a, bol.c), List.of(bol.k, bol.h), List.of(bol.e), List.of(bol.j));
+   private static final Set<il<boh>> g = a.stream().flatMap(Collection::stream).collect(Collectors.toSet());
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   public static final int e = 3;
+   private static final int h = 10;
+   private static final vu i = vu.c("container.beacon");
+   private static final String j = "primary_effect";
+   private static final String k = "secondary_effect";
+   List<dkb.a> l = Lists.newArrayList();
+   private List<dkb.a> m = Lists.newArrayList();
+   int n;
+   private int r;
    @Nullable
-   public dkb.b i;
-   private dkb.a l;
-   private cpq m = cpq.h;
+   il<boh> s;
    @Nullable
-   protected ajc j;
-   protected long k;
-
-   public dkb(ib $$0, dme $$1) {
-      super(djn.O, $$0, $$1);
-      this.l = dkb.a.a;
-   }
-
-   @Override
-   protected void b(sy $$0, in.a $$1) {
-      super.b($$0, $$1);
-      this.l.a($$0);
-      if (!this.b($$0) && !this.m.b()) {
-         $$0.a("item", this.m.b(new sy()));
+   il<boh> t;
+   @Nullable
+   private vu u;
+   private bnf v = bnf.a;
+   private final cly w = new cly() {
+      @Override
+      public int a(int $$0) {
+         return switch ($$0) {
+            case 0 -> dkb.this.n;
+            case 1 -> clr.a(dkb.this.s);
+            case 2 -> clr.a(dkb.this.t);
+            default -> 0;
+         };
       }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               dkb.this.n = $$1;
+               break;
+            case 1:
+               if (!dkb.this.o.B && !dkb.this.l.isEmpty()) {
+                  dkb.a(dkb.this.o, dkb.this.p, aty.bN);
+               }
+
+               dkb.this.s = dkb.a(clr.e($$1));
+               break;
+            case 2:
+               dkb.this.t = dkb.a(clr.e($$1));
+         }
+      }
+
+      @Override
+      public int a() {
+         return 3;
+      }
+   };
+
+   @Nullable
+   static il<boh> a(@Nullable il<boh> $$0) {
+      return g.contains($$0) ? $$0 : null;
    }
 
-   @Override
-   public void a(sy $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.l = dkb.a.b($$0);
-      if (!this.c_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.m = cpq.a($$0.p("item"));
+   public dkb(ib $$0, dmz $$1) {
+      super(dki.o, $$0, $$1);
+   }
+
+   public static void a(cwz $$0, ib $$1, dmz $$2, dkb $$3) {
+      int $$4 = $$1.u();
+      int $$5 = $$1.v();
+      int $$6 = $$1.w();
+      ib $$7;
+      if ($$3.r < $$5) {
+         $$7 = $$1;
+         $$3.m = Lists.newArrayList();
+         $$3.r = $$1.v() - 1;
+      } else {
+         $$7 = new ib($$4, $$3.r + 1, $$6);
+      }
+
+      dkb.a $$9 = $$3.m.isEmpty() ? null : $$3.m.get($$3.m.size() - 1);
+      int $$10 = $$0.a(dsm.a.b, $$4, $$6);
+
+      for (int $$11 = 0; $$11 < 10 && $$7.v() <= $$10; $$11++) {
+         dmz $$12 = $$0.a_($$7);
+         daa $$13 = $$12.b();
+         if ($$13 instanceof czr) {
+            float[] $$14 = ((czr)$$13).b().d();
+            if ($$3.m.size() <= 1) {
+               $$9 = new dkb.a($$14);
+               $$3.m.add($$9);
+            } else if ($$9 != null) {
+               if (Arrays.equals($$14, $$9.a)) {
+                  $$9.a();
+               } else {
+                  $$9 = new dkb.a(new float[]{($$9.a[0] + $$14[0]) / 2.0F, ($$9.a[1] + $$14[1]) / 2.0F, ($$9.a[2] + $$14[2]) / 2.0F});
+                  $$3.m.add($$9);
+               }
+            }
          } else {
-            this.m = cpq.h;
+            if ($$9 == null || $$12.b((cwf)$$0, $$7) >= 15 && !$$12.a(dac.F)) {
+               $$3.m.clear();
+               $$3.r = $$10;
+               break;
+            }
+
+            $$9.a();
+         }
+
+         $$7 = $$7.c();
+         $$3.r++;
+      }
+
+      int $$15 = $$3.n;
+      if ($$0.X() % 80L == 0L) {
+         if (!$$3.l.isEmpty()) {
+            $$3.n = a($$0, $$4, $$5, $$6);
+         }
+
+         if ($$3.n > 0 && !$$3.l.isEmpty()) {
+            a($$0, $$1, $$3.n, $$3.s, $$3.t);
+            a($$0, $$1, aty.bL);
+         }
+      }
+
+      if ($$3.r >= $$10) {
+         $$3.r = $$0.I_() - 1;
+         boolean $$16 = $$15 > 0;
+         $$3.l = $$3.m;
+         if (!$$0.B) {
+            boolean $$17 = $$3.n > 0;
+            if (!$$16 && $$17) {
+               a($$0, $$1, aty.bK);
+
+               for (apg $$18 : $$0.a(apg.class, new epm((double)$$4, (double)$$5, (double)$$6, (double)$$4, (double)($$5 - 4), (double)$$6).c(10.0, 5.0, 10.0))) {
+                  am.m.a($$18, $$3.n);
+               }
+            } else if ($$16 && !$$17) {
+               a($$0, $$1, aty.bM);
+            }
          }
       }
    }
 
-   public aap j() {
-      return aap.a(this);
+   private static int a(cwz $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 1; $$5 <= 4; $$4 = $$5++) {
+         int $$6 = $$2 - $$5;
+         if ($$6 < $$0.I_()) {
+            break;
+         }
+
+         boolean $$7 = true;
+
+         for (int $$8 = $$1 - $$5; $$8 <= $$1 + $$5 && $$7; $$8++) {
+            for (int $$9 = $$3 - $$5; $$9 <= $$3 + $$5; $$9++) {
+               if (!$$0.a_(new ib($$8, $$6, $$9)).a(aun.aM)) {
+                  $$7 = false;
+                  break;
+               }
+            }
+         }
+
+         if (!$$7) {
+            break;
+         }
+      }
+
+      return $$4;
    }
 
    @Override
-   public sy a(in.a $$0) {
+   public void az_() {
+      a(this.o, this.p, aty.bM);
+      super.az_();
+   }
+
+   private static void a(cwz $$0, ib $$1, int $$2, @Nullable il<boh> $$3, @Nullable il<boh> $$4) {
+      if (!$$0.B && $$3 != null) {
+         double $$5 = (double)($$2 * 10 + 10);
+         int $$6 = 0;
+         if ($$2 >= 4 && Objects.equals($$3, $$4)) {
+            $$6 = 1;
+         }
+
+         int $$7 = (9 + $$2 * 2) * 20;
+         epm $$8 = new epm($$1).g($$5).b(0.0, (double)$$0.J_(), 0.0);
+         List<cis> $$9 = $$0.a(cis.class, $$8);
+
+         for (cis $$10 : $$9) {
+            $$10.b(new boj($$3, $$7, $$6, true, true));
+         }
+
+         if ($$2 >= 4 && !Objects.equals($$3, $$4) && $$4 != null) {
+            for (cis $$11 : $$9) {
+               $$11.b(new boj($$4, $$7, 0, true, true));
+            }
+         }
+      }
+   }
+
+   public static void a(cwz $$0, ib $$1, atx $$2) {
+      $$0.a(null, $$1, $$2, atz.e, 1.0F, 1.0F);
+   }
+
+   public List<dkb.a> b() {
+      return (List<dkb.a>)(this.n == 0 ? ImmutableList.of() : this.l);
+   }
+
+   public aat c() {
+      return aat.a(this);
+   }
+
+   @Override
+   public ta a(in.a $$0) {
       return this.d($$0);
    }
 
-   public ih k() {
-      return this.n().c(dmu.R);
+   private static void a(ta $$0, String $$1, @Nullable il<boh> $$2) {
+      if ($$2 != null) {
+         $$2.e().ifPresent($$2x -> $$0.a($$1, $$2x.a().toString()));
+      }
    }
 
-   public dkb.a l() {
-      return this.l;
+   @Nullable
+   private static il<boh> a(ta $$0, String $$1) {
+      if ($$0.b($$1, 8)) {
+         ajh $$2 = ajh.a($$0.l($$1));
+         return $$2 == null ? null : ki.d.c($$2).map(dkb::a).orElse(null);
+      } else {
+         return null;
+      }
    }
 
-   public void b(cpq $$0) {
-      this.l = dkb.a.b(cnl.a($$0));
+   @Override
+   public void a(ta $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.s = a($$0, "primary_effect");
+      this.t = a($$0, "secondary_effect");
+      if ($$0.b("CustomName", 8)) {
+         this.u = vu.a.a($$0.l("CustomName"));
+      }
+
+      this.v = bnf.b($$0);
    }
 
-   public cpq s() {
-      return a(this.l);
+   @Override
+   protected void b(ta $$0, in.a $$1) {
+      super.b($$0, $$1);
+      a($$0, "primary_effect", this.s);
+      a($$0, "secondary_effect", this.t);
+      $$0.a("Levels", this.n);
+      if (this.u != null) {
+         $$0.a("CustomName", vu.a.a(this.u));
+      }
+
+      this.v.a($$0);
    }
 
-   public static cpq a(dkb.a $$0) {
-      cpq $$1 = cpt.eB.an_();
-      sy $$2 = $$0.a(new sy());
-      cnl.a($$1, djn.O, $$2);
-      return $$1;
+   public void a(@Nullable vu $$0) {
+      this.u = $$0;
    }
 
    @Nullable
    @Override
-   public ajc aB_() {
-      return this.j;
+   public vu af() {
+      return this.u;
+   }
+
+   @Nullable
+   @Override
+   public clo createMenu(int $$0, cir $$1, cis $$2) {
+      return dka.a($$2, this.v, this.O_()) ? new clr($$0, $$1, this.w, clz.a(this.o, this.aC_())) : null;
    }
 
    @Override
-   public void a(@Nullable ajc $$0) {
-      this.j = $$0;
+   public vu O_() {
+      return this.ad();
    }
 
    @Override
-   public long aC_() {
-      return this.k;
+   public vu ad() {
+      return this.u != null ? this.u : i;
    }
 
    @Override
-   public void a(long $$0) {
-      this.k = $$0;
+   public void a(cwz $$0) {
+      super.a($$0);
+      this.r = $$0.I_() - 1;
    }
 
-   @Override
-   public cpq f() {
-      this.e_(null);
-      return this.m;
-   }
+   public static class a {
+      final float[] a;
+      private int b;
 
-   @Override
-   public cpq c(int $$0) {
-      this.e_(null);
-      cpq $$1 = this.m.a($$0);
-      if (this.m.b()) {
-         this.m = cpq.h;
+      public a(float[] $$0) {
+         this.a = $$0;
+         this.b = 1;
       }
 
-      return $$1;
-   }
-
-   @Override
-   public void a(cpq $$0) {
-      this.e_(null);
-      this.m = $$0;
-   }
-
-   @Override
-   public djl t() {
-      return this;
-   }
-
-   public void a(dkb.b $$0) {
-      if (this.o != null && !this.o.y_()) {
-         this.o.a(this.aD_(), this.n().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dkb.b.values().length) {
-         this.h = this.o.X();
-         this.i = dkb.b.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static record a(cpl b, cpl c, cpl d, cpl e) {
-      public static final dkb.a a = new dkb.a(cpt.qK, cpt.qK, cpt.qK, cpt.qK);
-
-      public sy a(sy $$0) {
-         if (this.equals(a)) {
-            return $$0;
-         } else {
-            te $$1 = new te();
-            this.a().forEach($$1x -> $$1.add(tt.a(kh.h.b($$1x).toString())));
-            $$0.a("sherds", $$1);
-            return $$0;
-         }
+      protected void a() {
+         this.b++;
       }
 
-      public Stream<cpl> a() {
-         return Stream.of(this.b, this.c, this.d, this.e);
+      public float[] b() {
+         return this.a;
       }
 
-      public static dkb.a b(@Nullable sy $$0) {
-         if ($$0 != null && $$0.b("sherds", 9)) {
-            te $$1 = $$0.c("sherds", 8);
-            return new dkb.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
-         } else {
-            return a;
-         }
-      }
-
-      private static cpl a(te $$0, int $$1) {
-         if ($$1 >= $$0.size()) {
-            return cpt.qK;
-         } else {
-            tv $$2 = $$0.k($$1);
-            return kh.h.a(ajc.a($$2.t_()));
-         }
-      }
-   }
-
-   public static enum b {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private b(int $$0) {
-         this.c = $$0;
+      public int c() {
+         return this.b;
       }
    }
 }

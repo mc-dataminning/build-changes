@@ -1,70 +1,108 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class bvn extends bvu {
-   protected final bpf a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final cwe f;
+public class bvn implements bvk {
+   protected final bpq a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
 
-   public bvn(bpf $$0, double $$1) {
+   public bvn(bpq $$0) {
       this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dJ();
-      this.a(EnumSet.of(bvu.a.a));
    }
 
-   @Override
-   public boolean a() {
-      if (this.a.q() != null) {
-         return false;
-      } else if (!this.f.P()) {
-         return false;
-      } else if (!this.a.bK()) {
-         return false;
-      } else if (!this.f.h(this.a.dj())) {
-         return false;
+   public void a(epr $$0) {
+      this.a($$0.c, $$0.d, $$0.e);
+   }
+
+   public void a(bow $$0) {
+      this.a($$0.dr(), b($$0), $$0.dx());
+   }
+
+   public void a(bow $$0, float $$1, float $$2) {
+      this.a($$0.dr(), b($$0), $$0.dx(), $$1, $$2);
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.fN(), (float)this.a.Z());
+   }
+
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
+   }
+
+   public void a() {
+      if (this.c()) {
+         this.a.s(0.0F);
+      }
+
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.aZ = this.a(this.a.aZ, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.s(this.a(this.a.dE(), $$0, this.c)));
       } else {
-         return !this.a.c(bom.f).b() ? false : this.h();
+         this.a.aZ = this.a(this.a.aZ, this.a.aX, 10.0F);
+      }
+
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.K().l()) {
+         this.a.aZ = aww.c(this.a.aZ, this.a.aX, (float)this.a.aa());
       }
    }
 
-   protected boolean h() {
-      eov $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
-         return true;
-      }
+   protected boolean c() {
+      return true;
    }
 
-   @Override
-   public boolean b() {
-      return !this.a.N().l();
+   public boolean d() {
+      return this.d > 0;
    }
 
-   @Override
-   public void c() {
-      this.a.N().a(this.b, this.c, this.d, this.e);
+   public double e() {
+      return this.e;
    }
 
-   @Nullable
-   protected eov i() {
-      awt $$0 = this.a.ef();
-      ib $$1 = this.a.dj();
+   public double f() {
+      return this.f;
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         ib $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.h($$3) < 0.0F) {
-            return eov.c($$3);
-         }
-      }
+   public double g() {
+      return this.g;
+   }
 
-      return null;
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.dr();
+      double $$1 = this.f - this.a.dv();
+      double $$2 = this.g - this.a.dx();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(aww.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.dr();
+      double $$1 = this.g - this.a.dx();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(aww.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = aww.c($$0, $$1);
+      float $$4 = aww.a($$3, -$$2, $$2);
+      return $$0 + $$4;
+   }
+
+   private static double b(bow $$0) {
+      return $$0 instanceof bpo ? $$0.dv() : ($$0.cH().b + $$0.cH().e) / 2.0;
    }
 }

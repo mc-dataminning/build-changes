@@ -1,36 +1,29 @@
-import java.util.function.Function;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public enum gnv {
-   a("movement", gnq::new),
-   b("find_tree", gnp::new),
-   c("punch_tree", gns::new),
-   d("open_inventory", gnr::new),
-   e("craft_planks", gno::new),
-   f("none", gnn::new);
+public record gnv(gnz b, goc c) {
+   public static final Codec<gnv> a = gnz.a.dispatchStable(gnv::a, gnz::c);
 
-   private final String g;
-   private final Function<gnt, ? extends gnu> h;
-
-   private <T extends gnu> gnv(String $$0, Function<gnt, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   public gnu a(gnt $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static gnv a(String $$0) {
-      for (gnv $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
+   public gnv(gnz b, goc c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
          }
-      }
+      });
+      this.b = b;
+      this.c = c;
+   }
 
-      return f;
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
+   }
+
+   public gnz a() {
+      return this.b;
+   }
+
+   public goc b() {
+      return this.c;
    }
 }

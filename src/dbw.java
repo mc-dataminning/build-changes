@@ -1,132 +1,148 @@
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public class dbw extends cxz<dkg> implements dgf {
-   public static final MapCodec<dbw> b = b(dbw::new);
-   public static final dmy c = dda.aE;
-   public static final dmv d = dmu.C;
-   protected static final epo e = czf.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final vs f = vs.c("container.enderchest");
+public abstract class dbw extends daa implements dha {
+   public static final dnq a = dfn.b;
+   public static final dnq b = dfn.c;
+   public static final dnq c = dfn.d;
+   public static final dnq d = dfn.e;
+   public static final dnq e = dnp.C;
+   protected static final Map<ih, dnq> f = dfn.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
+   protected final eqk[] g;
+   protected final eqk[] h;
+   private final Object2IntMap<dmz> i = new Object2IntOpenHashMap();
 
-   @Override
-   public MapCodec<dbw> a() {
-      return b;
-   }
+   protected dbw(float $$0, float $$1, float $$2, float $$3, float $$4, dmy.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.E.a().iterator();
 
-   protected dbw(dmd.d $$0) {
-      super($$0, () -> djn.d);
-      this.k(this.E.b().a(c, ih.c).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public dbm.c<? extends djs> a(dme $$0, cwe $$1, ib $$2, boolean $$3) {
-      return dbm.b::b;
-   }
-
-   @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return e;
-   }
-
-   @Override
-   protected dfk b_(dme $$0) {
-      return dfk.b;
+      while (var7.hasNext()) {
+         dmz $$6 = (dmz)var7.next();
+         this.g($$6);
+      }
    }
 
    @Override
-   public dme a(crx $$0) {
-      ehr $$1 = $$0.q().b_($$0.a());
-      return this.o().a(c, $$0.g().g()).a(d, Boolean.valueOf($$1.a() == ehs.c));
+   protected abstract MapCodec<? extends dbw> a();
+
+   protected eqk[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      eqk $$9 = daa.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      eqk $$10 = daa.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      eqk $$11 = daa.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      eqk $$12 = daa.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      eqk $$13 = daa.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      eqk $$14 = eqh.a($$10, $$13);
+      eqk $$15 = eqh.a($$11, $$12);
+      eqk[] $$16 = new eqk[]{
+         eqh.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         eqh.a($$11, $$10),
+         eqh.a($$12, $$10),
+         eqh.a($$15, $$10),
+         $$13,
+         eqh.a($$11, $$13),
+         eqh.a($$12, $$13),
+         eqh.a($$15, $$13),
+         $$14,
+         eqh.a($$11, $$14),
+         eqh.a($$12, $$14),
+         eqh.a($$15, $$14)
+      };
+
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = eqh.a($$9, $$16[$$17]);
+      }
+
+      return $$16;
    }
 
    @Override
-   protected bml a(dme $$0, cwe $$1, ib $$2, cia $$3, eor $$4) {
-      cmg $$5 = $$3.gi();
-      djl $$6 = $$1.c_($$2);
-      if ($$5 != null && $$6 instanceof dkg) {
-         ib $$7 = $$2.c();
-         if ($$1.a_($$7).g($$1, $$7)) {
-            return bml.a($$1.B);
-         } else if ($$1.B) {
-            return bml.a;
-         } else {
-            dkg $$8 = (dkg)$$6;
-            $$5.a($$8);
-            $$3.a(new bmv(($$1x, $$2x, $$3x) -> clb.a($$1x, $$2x, $$5), f));
-            $$3.a(atz.aj);
-            cgr.a($$3, true);
-            return bml.b;
+   protected boolean a_(dmz $$0, cwf $$1, ib $$2) {
+      return !$$0.c(e);
+   }
+
+   @Override
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return this.h[this.g($$0)];
+   }
+
+   @Override
+   protected eqk b(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return this.g[this.g($$0)];
+   }
+
+   private static int a(ih $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int g(dmz $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(ih.c);
          }
-      } else {
-         return bml.a($$1.B);
-      }
+
+         if ($$0x.c(b)) {
+            $$1 |= a(ih.f);
+         }
+
+         if ($$0x.c(c)) {
+            $$1 |= a(ih.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(ih.e);
+         }
+
+         return $$1;
+      });
    }
 
    @Override
-   public djl a(ib $$0, dme $$1) {
-      return new dkg($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends djl> djm<T> a(cwe $$0, dme $$1, djn<T> $$2) {
-      return $$0.B ? a($$2, djn.d, dkg::a) : null;
+   protected ein c_(dmz $$0) {
+      return $$0.c(e) ? eio.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         int $$5 = $$3.a(2) * 2 - 1;
-         int $$6 = $$3.a(2) * 2 - 1;
-         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
-         double $$8 = (double)((float)$$2.v() + $$3.i());
-         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
-         double $$10 = (double)($$3.i() * (float)$$5);
-         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
-         double $$12 = (double)($$3.i() * (float)$$6);
-         $$1.a(kb.Z, $$7, $$8, $$9, $$10, $$11, $$12);
-      }
-   }
-
-   @Override
-   protected dme a(dme $$0, dfr $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected dme a(dme $$0, deb $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   protected ehr c_(dme $$0) {
-      return $$0.c(d) ? ehs.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ehs.c, ehs.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dme $$0, cvk $$1, ib $$2, eih $$3) {
+   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
       return false;
    }
 
    @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      djl $$4 = $$1.c_($$2);
-      if ($$4 instanceof dkg) {
-         ((dkg)$$4).b();
+   protected dmz a(dmz $$0, dgm $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
+         case d:
+            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
+         case b:
+            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dew $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
+         case c:
+            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
       }
    }
 }

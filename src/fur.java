@@ -1,80 +1,136 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class fur extends fwe {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final boolean G;
+   private final fve.a H;
 
-public abstract class fur extends fue {
-   protected float D;
-   private final Quaternionf a = new Quaternionf();
+   fur(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, fve.a.a);
+   }
 
-   protected fur(fra $$0, double $$1, double $$2, double $$3) {
+   fur(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, fve.a $$8) {
       super($$0, $$1, $$2, $$3);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-   }
-
-   protected fur(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-   }
-
-   public fur.a p() {
-      return fur.a.a;
-   }
-
-   @Override
-   public void a(eth $$0, exv $$1, float $$2) {
-      eov $$3 = $$1.b();
-      float $$4 = (float)(awm.d((double)$$2, this.d, this.g) - $$3.a());
-      float $$5 = (float)(awm.d((double)$$2, this.e, this.h) - $$3.b());
-      float $$6 = (float)(awm.d((double)$$2, this.f, this.i) - $$3.c());
-      this.p().setRotation(this.a, $$1, $$2);
-      if (this.z != 0.0F) {
-         this.a.rotateZ(awm.i($$2, this.A, this.z));
-      }
-
-      Vector3f[] $$7 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$8 = this.b($$2);
-
-      for (int $$9 = 0; $$9 < 4; $$9++) {
-         Vector3f $$10 = $$7[$$9];
-         $$10.rotate(this.a);
-         $$10.mul($$8);
-         $$10.add($$4, $$5, $$6);
-      }
-
-      float $$11 = this.c();
-      float $$12 = this.d();
-      float $$13 = this.e();
-      float $$14 = this.f();
-      int $$15 = this.a($$2);
-      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
-   }
-
-   public float b(float $$0) {
-      return this.D;
+      this.G = $$7;
+      this.H = $$8;
+      this.e($$8.b());
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      float $$9 = this.r.i() * 0.6F + 0.4F;
+      this.v = 0.9F * $$9;
+      this.w = 0.9F * $$9;
+      this.x = $$9;
+      this.n = false;
+      this.t = (int)(Math.random() * 10.0) + 30;
    }
 
    @Override
-   public fue d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
+   public fvi b() {
+      return this.H.a() ? fvi.b : fvi.c;
    }
 
-   protected abstract float c();
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
 
-   protected abstract float d();
+   @Override
+   public int a(float $$0) {
+      if (this.G) {
+         return 240;
+      } else {
+         int $$1 = super.a($$0);
+         float $$2 = (float)this.s / (float)this.t;
+         $$2 *= $$2;
+         $$2 *= $$2;
+         int $$3 = $$1 & 0xFF;
+         int $$4 = $$1 >> 16 & 0xFF;
+         $$4 += (int)($$2 * 15.0F * 16.0F);
+         if ($$4 > 240) {
+            $$4 = 240;
+         }
 
-   protected abstract float e();
+         return $$3 | $$4 << 16;
+      }
+   }
 
-   protected abstract float f();
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         $$0 = 1.0F - $$0;
+         float $$1 = 1.0F - $$0;
+         $$1 *= $$1;
+         $$1 *= $$1;
+         this.g = this.a + this.j * (double)$$0;
+         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
+         this.i = this.F + this.l * (double)$$0;
+      }
+   }
 
-   public interface a {
-      fur.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      fur.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+   @Override
+   public void a(eud $$0, eyr $$1, float $$2) {
+      this.e(this.H.a(this.s, this.t, $$2));
+      super.a($$0, $$1, $$2);
+   }
 
-      void setRotation(Quaternionf var1, exv var2, float var3);
+   public static class a implements fvh<kf> {
+      private final fvz a;
+
+      public a(fvz $$0) {
+         this.a = $$0;
+      }
+
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fur $$8 = new fur($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fvh<kf> {
+      private final fvz a;
+
+      public b(fvz $$0) {
+         this.a = $$0;
+      }
+
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fur $$8 = new fur($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements fvh<kf> {
+      private final fvz a;
+
+      public c(fvz $$0) {
+         this.a = $$0;
+      }
+
+      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fur $$8 = new fur($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new fve.a(0.0F, 0.6F, 0.25F, 1.0F));
+         $$8.d(1.5F);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

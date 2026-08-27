@@ -1,19 +1,14 @@
 import com.mojang.serialization.Codec;
 
-public class efe extends ega {
-   public static final Codec<efe> a = Codec.unit(() -> efe.b);
-   public static final efe b = new efe();
+public class efe extends edb {
+   public static final Codec<efe> d = a(efe::new);
 
-   private efe() {
+   public efe(edc.c $$0) {
+      super(efd::new, 12, 15, $$0);
    }
 
    @Override
-   public boolean a(dme $$0, awt $$1) {
-      return true;
-   }
-
-   @Override
-   protected egb<?> a() {
-      return egb.a;
+   public edl<?> e() {
+      return edl.g;
    }
 }

@@ -1,24 +1,59 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public record aeq(il<dpq> a, ajb<cwe> b, long c, cwb d, @Nullable cwb e, boolean f, boolean g, Optional<ik> h, int i) {
-   private static final xq<vd, il<dpq>> j = xo.b(ki.az);
+public class aeq implements yb<aam> {
+   public static final xs<vf, aeq> a = yb.a(aeq::a, aeq::new);
+   private final boolean b;
+   private final List<af> c;
+   private final Set<ajh> d;
+   private final Map<ajh, ah> e;
 
-   public aeq(vd $$0) {
-      this(
-         j.decode($$0), $$0.a(ki.aN), $$0.readLong(), cwb.a($$0.readByte()), cwb.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(us::h), $$0.l()
-      );
+   public aeq(boolean $$0, Collection<af> $$1, Set<ajh> $$2, Map<ajh, ah> $$3) {
+      this.b = $$0;
+      this.c = List.copyOf($$1);
+      this.d = Set.copyOf($$2);
+      this.e = Map.copyOf($$3);
    }
 
-   public void a(vd $$0) {
-      j.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(cwb.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, us::a);
-      $$0.c(this.i);
+   private aeq(vf $$0) {
+      this.b = $$0.readBoolean();
+      this.c = af.b.decode($$0);
+      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, uu::q);
+      this.e = $$0.a(uu::q, ah::b);
+   }
+
+   private void a(vf $$0) {
+      $$0.a(this.b);
+      af.b.encode($$0, this.c);
+      $$0.a(this.d, uu::a);
+      $$0.a(this.e, uu::a, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   @Override
+   public yd<aeq> a() {
+      return aex.ba;
+   }
+
+   public void a(aam $$0) {
+      $$0.a(this);
+   }
+
+   public List<af> b() {
+      return this.c;
+   }
+
+   public Set<ajh> e() {
+      return this.d;
+   }
+
+   public Map<ajh, ah> f() {
+      return this.e;
+   }
+
+   public boolean g() {
+      return this.b;
    }
 }

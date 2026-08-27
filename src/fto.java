@@ -1,79 +1,35 @@
-import javax.annotation.Nullable;
+import java.net.InetSocketAddress;
 
-public class fto extends fve {
-   private final float a;
-   private final fuz b;
+public interface fto {
+   String a();
 
-   fto(fra $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fuz $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
-   }
+   String b();
 
-   @Override
-   public fui b() {
-      return fui.b;
-   }
+   int c();
 
-   @Override
-   public float b(float $$0) {
-      return this.D * awm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   InetSocketAddress d();
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
+   static fto a(final InetSocketAddress $$0) {
+      return new fto() {
+         @Override
+         public String a() {
+            return $$0.getAddress().getHostName();
          }
 
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
-   }
-
-   public static class a implements fuh<jt> {
-      private final fuz a;
-
-      public a(fuz $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      public fue a(jt $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dme $$8 = $$0.b();
-         if (!$$8.i() && $$8.l() == dfk.a) {
-            return null;
-         } else {
-            ib $$9 = ib.a($$2, $$3, $$4);
-            int $$10 = eyk.P().av().a($$8, $$1, $$9);
-            if ($$8.b() instanceof dcb) {
-               $$10 = ((dcb)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new fto($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         @Override
+         public String b() {
+            return $$0.getAddress().getHostAddress();
          }
-      }
+
+         @Override
+         public int c() {
+            return $$0.getPort();
+         }
+
+         @Override
+         public InetSocketAddress d() {
+            return $$0;
+         }
+      };
    }
 }

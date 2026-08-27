@@ -1,20 +1,15 @@
-public class cum extends ctz {
-   public cum(ctz.a $$0, bom... $$1) {
-      super($$0, aum.bp, $$1);
+public class cum extends cuu {
+   public cum(cuu.a $$0, bpd... $$1) {
+      super($$0, auv.bn, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 12 + ($$0 - 1) * 20;
+      return 20;
    }
 
    @Override
    public int b(int $$0) {
       return 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
    }
 }

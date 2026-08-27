@@ -1,171 +1,147 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import org.slf4j.Logger;
+import java.util.UUID;
 
-public class bms extends eiw {
-   private static final Logger a = LogUtils.getLogger();
-   private final long b;
-   private int c;
-   private boolean d = true;
-   private boolean e = true;
-   private final Map<ajc, bmr> f = new Object2ObjectOpenHashMap();
+public abstract class bms {
+   private final UUID h;
+   protected vu a;
+   protected float b;
+   protected bms.a c;
+   protected bms.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
 
-   public static eiw.a<bms> a(long $$0) {
-      return new eiw.a<>(() -> new bms($$0), ($$1, $$2) -> a($$0, $$1), axs.m);
+   public bms(UUID $$0, vu $$1, bms.a $$2, bms.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   public bms(long $$0) {
+   public UUID i() {
+      return this.h;
+   }
+
+   public vu j() {
+      return this.a;
+   }
+
+   public void a(vu $$0) {
+      this.a = $$0;
+   }
+
+   public float k() {
+      return this.b;
+   }
+
+   public void a(float $$0) {
       this.b = $$0;
    }
 
-   public awt a(ajc $$0) {
-      awt $$1 = this.f.computeIfAbsent($$0, this::c).a();
-      return new bms.a($$1);
+   public bms.a l() {
+      return this.c;
    }
 
-   private bmr c(ajc $$0) {
-      return this.b($$0, this.c, this.d, this.e);
-   }
-
-   private bmr b(ajc $$0, int $$1, boolean $$2, boolean $$3) {
-      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
-      return new bmr($$4, $$3 ? Optional.of($$0) : Optional.empty());
-   }
-
-   public void a(BiConsumer<ajc, bmr> $$0) {
-      this.f.forEach($$0);
-   }
-
-   public void a(int $$0, boolean $$1, boolean $$2) {
+   public void a(bms.a $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   @Override
-   public sy a(sy $$0, in.a $$1) {
-      $$0.a("salt", this.c);
-      $$0.a("include_world_seed", this.d);
-      $$0.a("include_sequence_id", this.e);
-      sy $$2 = new sy();
-      this.f.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), (tv)bmr.a.encodeStart(tm.a, $$2x).result().orElseThrow()));
-      $$0.a("sequences", $$2);
-      return $$0;
+   public bms.b m() {
+      return this.d;
    }
 
-   private static boolean a(sy $$0, String $$1, boolean $$2) {
-      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
+   public void a(bms.b $$0) {
+      this.d = $$0;
    }
 
-   public static bms a(long $$0, sy $$1) {
-      bms $$2 = new bms($$0);
-      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
-      sy $$3 = $$1.p("sequences");
+   public boolean n() {
+      return this.e;
+   }
 
-      for (String $$5 : $$3.e()) {
-         try {
-            bmr $$6 = (bmr)((Pair)bmr.a.decode(tm.a, $$3.c($$5)).result().get()).getFirst();
-            $$2.f.put(new ajc($$5), $$6);
-         } catch (Exception var9) {
-            a.error("Failed to load random sequence {}", $$5, var9);
+   public bms a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.f;
+   }
+
+   public bms b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public bms c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean p() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(String $$0, n $$1) {
+         this.h = $$0;
+         this.i = $$1;
+      }
+
+      public n a() {
+         return this.i;
+      }
+
+      public String b() {
+         return this.h;
+      }
+
+      public static bms.a a(String $$0) {
+         for (bms.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
          }
-      }
 
-      return $$2;
+         return g;
+      }
    }
 
-   public int a() {
-      int $$0 = this.f.size();
-      this.f.clear();
-      return $$0;
-   }
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-   public void b(ajc $$0) {
-      this.f.put($$0, this.c($$0));
-   }
+      private final String f;
 
-   public void a(ajc $$0, int $$1, boolean $$2, boolean $$3) {
-      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
-   }
-
-   class a implements awt {
-      private final awt c;
-
-      a(awt $$0) {
-         this.c = $$0;
+      private b(String $$0) {
+         this.f = $$0;
       }
 
-      @Override
-      public awt d() {
-         bms.this.c();
-         return this.c.d();
+      public String a() {
+         return this.f;
       }
 
-      @Override
-      public dsd e() {
-         bms.this.c();
-         return this.c.e();
-      }
-
-      @Override
-      public void b(long $$0) {
-         bms.this.c();
-         this.c.b($$0);
-      }
-
-      @Override
-      public int f() {
-         bms.this.c();
-         return this.c.f();
-      }
-
-      @Override
-      public int a(int $$0) {
-         bms.this.c();
-         return this.c.a($$0);
-      }
-
-      @Override
-      public long g() {
-         bms.this.c();
-         return this.c.g();
-      }
-
-      @Override
-      public boolean h() {
-         bms.this.c();
-         return this.c.h();
-      }
-
-      @Override
-      public float i() {
-         bms.this.c();
-         return this.c.i();
-      }
-
-      @Override
-      public double j() {
-         bms.this.c();
-         return this.c.j();
-      }
-
-      @Override
-      public double k() {
-         bms.this.c();
-         return this.c.k();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return $$0 instanceof bms.a $$1 ? this.c.equals($$1.c) : false;
+      public static bms.b a(String $$0) {
+         for (bms.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
          }
+
+         return a;
       }
    }
 }

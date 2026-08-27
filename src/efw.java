@@ -1,22 +1,24 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class efw extends egd {
-   public final aut<czf> a;
-   public static final Codec<efw> b = aut.b(ki.f).xmap(efw::new, $$0 -> $$0.a);
+public class efw extends edc {
+   public static final Codec<efw> d = a(efw::new);
 
-   public efw(aut<czf> $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public egg.c a(cwh $$0, ib $$1, ib $$2, egg.c $$3, egg.c $$4, egc $$5) {
-      return duu.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public efw(edc.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected egf<?> a() {
-      return egf.n;
+   public Optional<edc.b> a(edc.a $$0) {
+      return a($$0, dsm.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(edu $$0, edc.a $$1) {
+      $$0.a(new efv($$1.f(), $$1.h().d(), $$1.h().e()));
+   }
+
+   @Override
+   public edl<?> e() {
+      return edl.o;
    }
 }

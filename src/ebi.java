@@ -1,37 +1,34 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebi extends ebr {
-   public static final Codec<ebi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ebi::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class ebi extends ebj {
+   public static final ebi a = new ebi(dtg.a(0));
+   public static final Codec<ebi> b = awe.e(dtg.a, dtg.a.fieldOf("value").codec()).xmap(ebi::new, ebi::b);
+   private final dtg d;
 
-   private ebi(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public static ebi a(dtg $$0) {
+      return new ebi($$0);
    }
 
-   public static ebi a(int $$0, double $$1, double $$2) {
-      return new ebi($$0, $$1, $$2);
+   private ebi(dtg $$0) {
+      this.d = $$0;
+   }
+
+   public dtg b() {
+      return this.d;
    }
 
    @Override
-   protected int a(awt $$0, ib $$1) {
-      double $$2 = cxd.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public int a(axd $$0, dtj $$1) {
+      return this.d.a($$1);
    }
 
    @Override
-   public ebo<?> b() {
-      return ebo.g;
+   public ebk<?> a() {
+      return ebk.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

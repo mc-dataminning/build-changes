@@ -1,42 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class bze extends bzg<chn> {
-   private static final int a = 40;
-
-   public bze() {
-      super(40);
-   }
-
-   protected void a(apa $$0, chn $$1) {
-      ajb<cwe> $$2 = $$0.ad();
-      ib $$3 = $$1.dj();
-      List<ik> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               ib $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gw().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(ik.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bpy<?> $$10 = $$1.dM();
-      if (!$$4.isEmpty()) {
-         $$10.a(bya.f, $$4);
-      } else {
-         $$10.b(bya.f);
-      }
-   }
-
+public class bze extends bzx<bor> {
    @Override
-   public Set<bya<?>> a() {
-      return ImmutableSet.of(bya.f);
+   public Set<byr<?>> a() {
+      return ImmutableSet.of(byr.K, byr.h);
+   }
+
+   protected void a(apf $$0, bor $$1) {
+      $$1.dP().c(byr.h).ifPresent($$1x -> this.a($$1, $$1x));
+   }
+
+   private void a(bor $$0, byt $$1) {
+      Optional<bor> $$2 = $$1.a($$1x -> $$1x.ai() == $$0.ai() && !$$1x.o_()).map(bor.class::cast);
+      $$0.dP().a(byr.K, $$2);
    }
 }

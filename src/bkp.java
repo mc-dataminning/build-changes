@@ -1,88 +1,56 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.IntStream;
-import org.slf4j.Logger;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
 
-public class bkp implements bki {
-   private static final Logger a = LogUtils.getLogger();
-   private final Set<bkg> b = new ObjectOpenHashSet();
-   private final bko c = new bko();
+public final class bkp<T> {
+   private final bkp.a a;
+   private final List<Pair<T, bkp.a>> b;
+   private final Duration c;
 
-   public bkp(LongSupplier $$0, boolean $$1) {
-      this.b.add(a($$0));
-      if ($$1) {
-         this.b.addAll(a());
-      }
+   public bkp(Duration $$0, List<Pair<T, bkp.a>> $$1) {
+      this.c = $$0;
+      this.a = $$1.stream().<bkp.a>map(Pair::getSecond).reduce(new bkp.a(0L, 0L), bkp.a::a);
+      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bkp.a.c)).limit(10L).toList();
    }
 
-   public static Set<bkg> a() {
-      Builder<bkg> $$0 = ImmutableSet.builder();
-
-      try {
-         bkp.a $$1 = new bkp.a();
-         IntStream.range(0, $$1.a).mapToObj($$1x -> bkg.a("cpu#" + $$1x, bkf.h, () -> $$1.a($$1))).forEach($$0::add);
-      } catch (Throwable var2) {
-         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
-      }
-
-      $$0.add(bkg.a("heap MiB", bkf.e, () -> (double)((float)(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576.0F)));
-      $$0.addAll(bkh.a.a());
-      return $$0.build();
+   public double a() {
+      return (double)this.a.a / (double)this.c.getSeconds();
    }
 
-   @Override
-   public Set<bkg> a(Supplier<bja> $$0) {
-      this.b.addAll(this.c.a($$0));
+   public double b() {
+      return (double)this.a.b / (double)this.c.getSeconds();
+   }
+
+   public long c() {
+      return this.a.a;
+   }
+
+   public long d() {
+      return this.a.b;
+   }
+
+   public List<Pair<T, bkp.a>> e() {
       return this.b;
    }
 
-   public static bkg a(final LongSupplier $$0) {
-      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
-         public long read() {
-            return $$0.getAsLong();
-         }
-      });
-      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
-         if ($$0x.isRunning()) {
-            $$0x.stop();
-         }
+   public static record a(long a, long b) {
+      static final Comparator<bkp.a> c = Comparator.comparing(bkp.a::c).thenComparing(bkp.a::b).reversed();
 
-         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
-         $$0x.reset();
-         return (double)$$1x;
-      };
-      bkg.d $$3 = new bkg.d(2.0F);
-      return bkg.a("ticktime", bkf.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
-   }
+      bkp.a a(bkp.a $$0) {
+         return new bkp.a(this.a + $$0.a, this.b + $$0.b);
+      }
 
-   static class a {
-      private final SystemInfo b = new SystemInfo();
-      private final CentralProcessor c = this.b.getHardware().getProcessor();
-      public final int a = this.c.getLogicalProcessorCount();
-      private long[][] d = this.c.getProcessorCpuLoadTicks();
-      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
-      private long f;
+      public float a() {
+         return (float)this.b / (float)this.a;
+      }
 
-      public double a(int $$0) {
-         long $$1 = System.currentTimeMillis();
-         if (this.f == 0L || this.f + 501L < $$1) {
-            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
-            this.d = this.c.getProcessorCpuLoadTicks();
-            this.f = $$1;
-         }
+      public long b() {
+         return this.a;
+      }
 
-         return this.e[$$0] * 100.0;
+      public long c() {
+         return this.b;
       }
    }
 }

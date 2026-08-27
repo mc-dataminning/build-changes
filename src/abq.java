@@ -1,45 +1,40 @@
-public class abq implements xz<aai> {
-   public static final xq<us, abq> a = xz.a(abq::a, abq::new);
+import javax.annotation.Nullable;
+
+public class abq implements yb<aam> {
+   public static final xs<uu, abq> a = yb.a(abq::a, abq::new);
    private final int b;
-   private final int c;
-   private final int d;
+   private final byte c;
 
-   public abq(int $$0, int $$1, int $$2) {
-      this.b = $$0;
+   public abq(bow $$0, byte $$1) {
+      this.b = $$0.aj();
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private abq(us $$0) {
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.l();
-      this.d = $$0.readInt();
+   private abq(uu $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
    }
 
-   private void a(us $$0) {
-      $$0.k(this.b);
-      $$0.c(this.c);
-      $$0.p(this.d);
+   private void a(uu $$0) {
+      $$0.p(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public yb<abq> a() {
-      return aet.H;
+   public yd<abq> a() {
+      return aex.D;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bow a(cwz $$0) {
+      return $$0.a(this.b);
    }
 
-   public int e() {
+   public byte b() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

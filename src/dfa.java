@@ -1,253 +1,160 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dfa extends cyu {
-   public static final MapCodec<dfa> d = b(dfa::new);
-   public static final dnc<dni> e = dmu.ah;
-   public static final dmv f = dmu.w;
+public class dfa {
+   public static final dfa.e[] a = new dfa.e[]{dfa.e.a, dfa.e.b, dfa.e.c};
+   private final dfa.b b;
 
-   @Override
-   public MapCodec<dfa> a() {
-      return d;
+   public dfa(dez $$0) {
+      this(new dfa.a($$0));
    }
 
-   protected dfa(dmd.d $$0) {
-      super(true, $$0);
-      this.k(this.E.b().a(e, dni.a).a(f, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   public dfa(dfa.b $$0) {
+      this.b = $$0;
    }
 
-   protected boolean a(cwe $$0, ib $$1, dme $$2, boolean $$3, int $$4) {
-      if ($$4 >= 8) {
-         return false;
-      } else {
-         int $$5 = $$1.u();
-         int $$6 = $$1.v();
-         int $$7 = $$1.w();
-         boolean $$8 = true;
-         dni $$9 = $$2.c(e);
-         switch ($$9) {
-            case a:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-               }
-               break;
-            case b:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-               }
-               break;
-            case c:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-                  $$6++;
-                  $$8 = false;
-               }
+   public boolean a(dmz $$0, cwf $$1, ib $$2, ih $$3) {
+      return ih.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
+   }
 
-               $$9 = dni.b;
-               break;
-            case d:
-               if ($$3) {
-                  $$5--;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$5++;
-               }
+   public Optional<dfa.c> a(dmz $$0, cxa $$1, ib $$2, axd $$3) {
+      return ih.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
+   }
 
-               $$9 = dni.b;
-               break;
-            case e:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-                  $$6++;
-                  $$8 = false;
-               }
+   public long a(dmz $$0, cxa $$1, ib $$2, boolean $$3) {
+      return ih.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   }
 
-               $$9 = dni.a;
-               break;
-            case f:
-               if ($$3) {
-                  $$7++;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$7--;
-               }
+   public Optional<dfa.c> a(dmz $$0, cxa $$1, ib $$2, ih $$3, axd $$4, boolean $$5) {
+      return ih.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
 
-               $$9 = dni.a;
+   private long a(dmz $$0, cxa $$1, ib $$2, ih $$3, boolean $$4) {
+      return ih.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<dfa.c> a(dmz $$0, cxa $$1, ib $$2, ih $$3, ih $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<dfa.c> a(dmz $$0, cwf $$1, ib $$2, ih $$3, ih $$4, dfa.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (dfa.e $$6 : this.b.a()) {
+            dfa.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
+            }
          }
 
-         return this.a($$0, new ib($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new ib($$5, $$6 - 1, $$7), $$3, $$4, $$9);
+         return Optional.empty();
+      } else {
+         return Optional.empty();
       }
    }
 
-   protected boolean a(cwe $$0, ib $$1, boolean $$2, int $$3, dni $$4) {
-      dme $$5 = $$0.a_($$1);
-      if (!$$5.a(this)) {
+   public Optional<dfa.c> a(cxa $$0, dfa.c $$1, boolean $$2) {
+      dmz $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
+   }
+
+   public static class a implements dfa.b {
+      protected dez a;
+
+      public a(dez $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public dmz a(dmz $$0, cwf $$1, ib $$2, ih $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(cwf $$0, ib $$1, ib $$2, ih $$3, dmz $$4) {
+         return $$4.i() || $$4.a(this.a) || $$4.a(dac.G) && $$4.u().b();
+      }
+
+      @Override
+      public boolean a(cwf $$0, ib $$1, dfa.c $$2) {
+         dmz $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
+      }
+   }
+
+   public interface b {
+      @Nullable
+      dmz a(dmz var1, cwf var2, ib var3, ih var4);
+
+      boolean a(cwf var1, ib var2, dfa.c var3);
+
+      default dfa.e[] a() {
+         return dfa.a;
+      }
+
+      default boolean a(dmz $$0, ih $$1) {
+         return dez.a($$0, $$1);
+      }
+
+      default boolean a(dmz $$0) {
          return false;
-      } else {
-         dni $$6 = $$5.c(e);
-         if ($$4 != dni.b || $$6 != dni.a && $$6 != dni.e && $$6 != dni.f) {
-            if ($$4 != dni.a || $$6 != dni.b && $$6 != dni.c && $$6 != dni.d) {
-               if (!$$5.c(f)) {
-                  return false;
-               } else {
-                  return $$0.C($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
-               }
-            } else {
-               return false;
+      }
+
+      default boolean b(dmz $$0, ih $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(cxa $$0, dfa.c $$1, dmz $$2, boolean $$3) {
+         dmz $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
             }
+
+            return $$0.a($$1.a(), $$4, 2);
          } else {
             return false;
          }
       }
    }
 
-   @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3) {
-      boolean $$4 = $$0.c(f);
-      boolean $$5 = $$1.C($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
-      if ($$5 != $$4) {
-         $$1.a($$2, $$0.a(f, Boolean.valueOf($$5)), 3);
-         $$1.a($$2.d(), this);
-         if ($$0.c(e).b()) {
-            $$1.a($$2.c(), this);
+   public static record c(ib a, ih b) {
+   }
+
+   @FunctionalInterface
+   public interface d {
+      boolean test(cwf var1, ib var2, dfa.c var3);
+   }
+
+   public static enum e {
+      a {
+         @Override
+         public dfa.c a(ib $$0, ih $$1, ih $$2) {
+            return new dfa.c($$0, $$1);
          }
-      }
-   }
+      },
+      b {
+         @Override
+         public dfa.c a(ib $$0, ih $$1, ih $$2) {
+            return new dfa.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public dfa.c a(ib $$0, ih $$1, ih $$2) {
+            return new dfa.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
 
-   @Override
-   public dnh<dni> c() {
-      return e;
-   }
-
-   @Override
-   protected dme a(dme $$0, dfr $$1) {
-      switch ($$1) {
-         case c:
-            switch ((dni)$$0.c(e)) {
-               case c:
-                  return $$0.a(e, dni.d);
-               case d:
-                  return $$0.a(e, dni.c);
-               case e:
-                  return $$0.a(e, dni.f);
-               case f:
-                  return $$0.a(e, dni.e);
-               case g:
-                  return $$0.a(e, dni.i);
-               case h:
-                  return $$0.a(e, dni.j);
-               case i:
-                  return $$0.a(e, dni.g);
-               case j:
-                  return $$0.a(e, dni.h);
-            }
-         case d:
-            switch ((dni)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, dni.b);
-               case b:
-                  return $$0.a(e, dni.a);
-               case c:
-                  return $$0.a(e, dni.e);
-               case d:
-                  return $$0.a(e, dni.f);
-               case e:
-                  return $$0.a(e, dni.d);
-               case f:
-                  return $$0.a(e, dni.c);
-               case g:
-                  return $$0.a(e, dni.j);
-               case h:
-                  return $$0.a(e, dni.g);
-               case i:
-                  return $$0.a(e, dni.h);
-               case j:
-                  return $$0.a(e, dni.i);
-            }
-         case b:
-            switch ((dni)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, dni.b);
-               case b:
-                  return $$0.a(e, dni.a);
-               case c:
-                  return $$0.a(e, dni.f);
-               case d:
-                  return $$0.a(e, dni.e);
-               case e:
-                  return $$0.a(e, dni.c);
-               case f:
-                  return $$0.a(e, dni.d);
-               case g:
-                  return $$0.a(e, dni.h);
-               case h:
-                  return $$0.a(e, dni.i);
-               case i:
-                  return $$0.a(e, dni.j);
-               case j:
-                  return $$0.a(e, dni.g);
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected dme a(dme $$0, deb $$1) {
-      dni $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(e, dni.f);
-               case f:
-                  return $$0.a(e, dni.e);
-               case g:
-                  return $$0.a(e, dni.j);
-               case h:
-                  return $$0.a(e, dni.i);
-               case i:
-                  return $$0.a(e, dni.h);
-               case j:
-                  return $$0.a(e, dni.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(e, dni.d);
-               case d:
-                  return $$0.a(e, dni.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(e, dni.h);
-               case h:
-                  return $$0.a(e, dni.g);
-               case i:
-                  return $$0.a(e, dni.j);
-               case j:
-                  return $$0.a(e, dni.i);
-            }
-      }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(e, f, c);
+      public abstract dfa.c a(ib var1, ih var2, ih var3);
    }
 }

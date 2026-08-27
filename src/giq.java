@@ -1,69 +1,59 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class giq extends arl {
-   private static final arh c = new arh(vs.c("resourcePack.vanilla.description"), aa.b().a(aqu.a), Optional.empty());
-   private static final aqm d = aqm.a(arh.b, c);
-   private static final vs e = vs.c("resourcePack.vanilla.name");
-   public static final String b = "high_contrast";
-   private static final Map<String, vs> f = Map.of(
-      "programmer_art", vs.c("resourcePack.programmer_art.name"), "high_contrast", vs.c("resourcePack.high_contrast.name")
-   );
-   private static final ajc g = new ajc("minecraft", "resourcepacks");
-   @Nullable
-   private final Path h;
+public class giq implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final gim f = new gim(16, 16, false);
 
-   public giq(Path $$0, eol $$1) {
-      super(aqu.a, b($$0), g, $$1);
-      this.h = this.a($$0);
-   }
+   public giq() {
+      eta $$0 = this.f.e();
 
-   @Nullable
-   private Path a(Path $$0) {
-      if (aa.aV && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1308622593);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, $$3 << 24 | 16777215);
+            }
          }
       }
 
-      return null;
-   }
-
-   private static aqw b(Path $$0) {
-      aqx $$1 = new aqx().a(d).a("minecraft", "realms");
-      return $$1.b().a().a(aqu.a, $$0).c();
-   }
-
-   @Override
-   protected vs a(String $$0) {
-      vs $$1 = f.get($$0);
-      return (vs)($$1 != null ? $$1 : vs.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected arn a(aqt $$0) {
-      return arn.a("vanilla", e, true, b($$0), aqu.a, arn.b.b, arr.c);
-   }
-
-   @Nullable
-   @Override
-   protected arn a(String $$0, arn.c $$1, vs $$2) {
-      return arn.a($$0, $$2, false, $$1, aqu.a, arn.b.a, arr.c);
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
    }
 
    @Override
-   protected void a(BiConsumer<String, Function<String, arn>> $$0) {
-      super.a($$0);
-      if (this.h != null) {
-         this.a(this.h, $$0);
-      }
+   public void close() {
+      this.f.close();
+   }
+
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f::a, 16);
+   }
+
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
+   }
+
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
+
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
+
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

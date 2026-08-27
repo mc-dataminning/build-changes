@@ -1,48 +1,67 @@
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface fss {
-   Logger a = LogUtils.getLogger();
-   fss b = $$0 -> Optional.empty();
+public class fss {
+   private final fsu[] a;
+   private int b;
 
-   Optional<fsp> lookupRedirect(fsp var1);
+   public static Codec<fss> a(int $$0) {
+      return Codec.list(fsu.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new fss($$0, $$1));
+            },
+            fss::c
+         );
+   }
 
-   static fss createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   public fss(int $$0) {
+      this.a = new fsu[$$0];
+   }
+
+   private fss(int $$0, List<fsu> $$1) {
+      this.a = $$1.toArray(fsu[]::new);
+      this.b = $$1.size();
+   }
+
+   private List<fsu> c() {
+      List<fsu> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new fsp($$4x[3], fsp.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
+      return $$0;
+   }
 
-         return Optional.empty();
-      };
+   public void a(fsu $$0) {
+      this.a[this.c(this.b++)] = $$0;
+   }
+
+   @Nullable
+   public fsu b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   }
+
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
+
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
+
+   public int b() {
+      return this.b - 1;
+   }
+
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

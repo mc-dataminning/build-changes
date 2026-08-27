@@ -1,73 +1,38 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import net.minecraft.server.MinecraftServer;
 
-public class brc extends bqp<bpf> {
-   public static final int c = 100;
-   public static final double d = 2.5;
-   public static final double e = 3.5;
-   private final Function<box, Float> f;
-   private final Function<box, Double> g;
-
-   public brc(Function<box, Float> $$0) {
-      this($$0, $$0x -> 2.5);
-   }
-
-   public brc(Function<box, Float> $$0, Function<box, Double> $$1) {
-      super(ac.a(() -> {
-         Builder<bya<?>, byb> $$0x = ImmutableMap.builder();
-         $$0x.put(bya.n, byb.c);
-         $$0x.put(bya.m, byb.c);
-         $$0x.put(bya.P, byb.b);
-         $$0x.put(bya.R, byb.c);
-         $$0x.put(bya.O, byb.a);
-         $$0x.put(bya.r, byb.b);
-         $$0x.put(bya.Z, byb.b);
-         return $$0x.build();
-      }));
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   protected float a(bpf $$0) {
-      return this.f.apply($$0);
-   }
-
-   private Optional<cia> b(bpf $$0) {
-      return $$0.dM().c(bya.O);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected boolean a(apa $$0, bpf $$1, long $$2) {
-      return this.b($$1).isPresent() && !$$1.dM().a(bya.r) && !$$1.dM().a(bya.Z);
-   }
-
-   protected void b(apa $$0, bpf $$1, long $$2) {
-      $$1.dM().a(bya.R, true);
-   }
-
-   protected void c(apa $$0, bpf $$1, long $$2) {
-      bpy<?> $$3 = $$1.dM();
-      $$3.a(bya.P, 100);
-      $$3.a(bya.R, false);
-      $$3.b(bya.m);
-      $$3.b(bya.n);
-   }
-
-   protected void d(apa $$0, bpf $$1, long $$2) {
-      cia $$3 = this.b($$1).get();
-      bpy<?> $$4 = $$1.dM();
-      $$4.a(bya.n, new bra($$3, true));
-      double $$5 = this.g.apply($$1);
-      if ($$1.f($$3) < awm.k($$5)) {
-         $$4.b(bya.m);
-      } else {
-         $$4.a(bya.m, new byd(new bra($$3, false), this.a($$1), 2));
-      }
+public class brc {
+   public static brh<cif> a() {
+      return but.a(
+         (Function<but.b<cif>, ? extends App<but.c<cif>, buw<cif>>>)($$0 -> $$0.group($$0.b(byr.d), $$0.a(byr.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        ik $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.dk(), 2.0) && !$$4.gx()) {
+                           return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if ($$4.gy().b() != cii.b) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.o();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.y().c($$6.b()))
+                                 .flatMap($$0xxx -> ki.z.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gy().a($$2xx));
+                                    $$4.c($$3);
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 }

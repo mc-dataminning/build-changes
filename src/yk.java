@@ -1,23 +1,29 @@
-import java.util.Optional;
-import java.util.UUID;
+public class yk implements yb<yh> {
+   public static final xs<uu, yk> a = yb.a(yk::a, yk::new);
+   private final long b;
 
-public record yk(Optional<UUID> b) implements xz<yf> {
-   public static final xq<us, yk> a = xz.a(yk::a, yk::new);
-
-   private yk(us $$0) {
-      this($$0.b(je.g));
+   public yk(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b, je.g);
+   private yk(uu $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(uu $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public yb<yk> a() {
-      return yp.e;
+   public yd<yk> a() {
+      return yr.c;
    }
 
-   public void a(yf $$0) {
+   public void a(yh $$0) {
       $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

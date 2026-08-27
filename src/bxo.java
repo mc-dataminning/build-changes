@@ -1,19 +1,24 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bxo extends bwl {
+   private final bpw a;
 
-public class bxo<T extends box> extends bxn<T> {
-   private boolean i = true;
-
-   public bxo(cjk $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<box> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public bxo(bpw $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      return this.i && super.a();
+      return this.a.dM().P() && this.a.d(bpd.f).b() && caj.a(this.a);
+   }
+
+   @Override
+   public void c() {
+      ((byy)this.a.K()).d(true);
+   }
+
+   @Override
+   public void d() {
+      if (caj.a(this.a)) {
+         ((byy)this.a.K()).d(false);
+      }
    }
 }

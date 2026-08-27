@@ -1,29 +1,37 @@
-public class ack implements xz<aai> {
-   public static final xq<us, ack> a = xz.a(ack::a, ack::new);
-   private final int b;
+public class ack implements yb<aam> {
+   public static final xs<uu, ack> a = yb.a(ack::a, ack::new);
+   private final ib b;
+   private final boolean c;
 
-   public ack(bnb $$0) {
-      this($$0.b());
-   }
-
-   public ack(int $$0) {
+   public ack(ib $$0, boolean $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private ack(us $$0) {
-      this.b = $$0.l();
+   private ack(uu $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(us $$0) {
-      $$0.c(this.b);
+   private void a(uu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yb<ack> a() {
-      return aet.ab;
+   public yd<ack> a() {
+      return aex.X;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
+   }
+
+   public ib b() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

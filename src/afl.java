@@ -1,30 +1,23 @@
-public record afl(int b, int c, boolean d) implements xz<aev> {
-   public static final xq<us, afl> a = xz.a(afl::a, afl::new);
+import io.netty.buffer.ByteBuf;
 
-   private afl(us $$0) {
-      this($$0.l(), $$0.l(), $$0.readBoolean());
-   }
+public class afl implements yb<aez> {
+   public static final afl a = new afl();
+   public static final xs<ByteBuf, afl> b = xs.a(a);
 
-   private void a(us $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private afl() {
    }
 
    @Override
-   public yb<afl> a() {
-      return aet.bs;
+   public yd<afl> a() {
+      return aex.bo;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

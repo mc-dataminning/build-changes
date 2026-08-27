@@ -1,60 +1,181 @@
-public class dsc implements cvr {
-   private int a;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-   @Override
-   public int a(apa $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.Z().b(cwa.C)) {
-         return 0;
+public abstract class dsc {
+   public static dsc.b a(int $$0, int $$1) {
+      return new dsc.b($$0 - 1, $$1 + 1);
+   }
+
+   public static dsc.b b(int $$0, int $$1) {
+      return new dsc.b($$0, $$1);
+   }
+
+   public static dsc a(int $$0) {
+      return new dsc.c($$0, false);
+   }
+
+   public static dsc b(int $$0) {
+      return new dsc.c($$0 + 1, false);
+   }
+
+   public static dsc c(int $$0) {
+      return new dsc.c($$0, true);
+   }
+
+   public static dsc d(int $$0) {
+      return new dsc.c($$0 - 1, true);
+   }
+
+   public static dsc a() {
+      return dsc.a.a;
+   }
+
+   public static dsc a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
       } else {
-         awt $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.C_() < 5 && $$0.E_().g()) {
-               return 0;
-            } else {
-               int $$4 = 0;
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
+   }
 
-               for (apb $$5 : $$0.x()) {
-                  if (!$$5.P_()) {
-                     ib $$6 = $$5.dj();
-                     if (!$$0.E_().g() || $$6.v() >= $$0.A_() && $$0.h($$6)) {
-                        bmj $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           atv $$8 = $$5.H();
-                           int $$9 = awm.a($$8.a(atz.i.b(atz.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              ib $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              dme $$12 = $$0.a_($$11);
-                              ehr $$13 = $$0.b_($$11);
-                              if (cwp.a($$0, $$11, $$12, $$13, bol.aw)) {
-                                 bpp $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+   public abstract OptionalInt b();
 
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    cfi $$17 = bol.aw.a((cwe)$$0);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, bpb.a, $$14);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
+   public abstract OptionalInt c();
 
-               return $$4;
-            }
+   public abstract OptionalInt d();
+
+   public dsc a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public dsc b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<dsc> a(cxf $$0, ib $$1, int $$2, Predicate<dmz> $$3, Predicate<dmz> $$4) {
+      ib.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ih.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ih.a);
+         return Optional.of(a($$8, $$7));
+      }
+   }
+
+   private static OptionalInt a(cxf $$0, int $$1, Predicate<dmz> $$2, Predicate<dmz> $$3, ib.a $$4, int $$5, ih $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends dsc {
+      static final dsc.a a = new dsc.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends dsc {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
          }
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
+   }
+
+   public static final class c extends dsc {
+      private final int a;
+      private final boolean b;
+
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
       }
    }
 }

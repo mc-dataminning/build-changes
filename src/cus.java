@@ -1,27 +1,29 @@
-import javax.annotation.Nullable;
-
-public class cus extends ctz {
-   public cus(ctz.a $$0, bom... $$1) {
-      super($$0, aum.bl, $$1);
+public class cus extends cuu {
+   protected cus(cuu.a $$0, bpd... $$1) {
+      super($$0, auv.bm, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1 + ($$0 - 1) * 8;
+      return 5 + ($$0 - 1) * 8;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 20;
+      return super.a($$0) + 50;
    }
 
    @Override
    public int a() {
-      return 5;
+      return 3;
    }
 
    @Override
-   public float a(int $$0, @Nullable bol<?> $$1) {
-      return $$1 != null && $$1.a(auh.u) ? (float)$$0 * 2.5F : 0.0F;
+   public boolean a(cqk $$0) {
+      return $$0.j() ? false : super.a($$0);
+   }
+
+   public static boolean a(cqk $$0, int $$1, axd $$2) {
+      return $$0.d() instanceof cnw && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
    }
 }

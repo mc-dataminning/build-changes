@@ -1,41 +1,24 @@
 public class frh {
-   private final fvs a;
-   private final fra b;
-   private final fwo c;
-   private frh.a d = frh.a.a;
+   public static final frh a = new frh(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   public frh(fvs $$0, fra $$1, fwo $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public frh(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            ib $$0 = this.a.dj();
-            boolean $$1 = this.b.d($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.P_() || !this.a.bx()) {
-               this.d = frh.a.c;
-            }
-         case a:
-         case c:
-      }
+   public frh(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   public boolean b() {
-      return this.d == frh.a.c;
+   public frh a(float $$0) {
+      return new frh(this.b + $$0, this.c + $$0, this.d + $$0);
    }
 
-   public void c() {
-      if (this.d == frh.a.a) {
-         this.d = frh.a.b;
-      }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public frh a(float $$0, float $$1, float $$2) {
+      return new frh(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

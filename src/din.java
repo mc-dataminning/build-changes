@@ -1,33 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class din extends dii implements dij {
-   public static final MapCodec<din> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dij.a.e.fieldOf("weathering_state").forGetter(din::i), u()).apply($$0, din::new)
-   );
-   private final dij.a f;
+public class din extends dbd {
+   public static final MapCodec<din> n = b(din::new);
 
    @Override
-   protected MapCodec<din> a() {
-      return e;
+   public MapCodec<din> a() {
+      return n;
    }
 
-   protected din(dij.a $$0, dmd.d $$1) {
-      super($$1);
-      this.f = $$0;
+   public din(dmy.d $$0) {
+      super($$0, () -> dki.c);
    }
 
    @Override
-   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public dkg a(ib $$0, dmz $$1) {
+      return new dly($$0, $$1);
    }
 
    @Override
-   protected boolean e_(dme $$0) {
-      return dij.c($$0.b()).isPresent();
+   protected auf<ajh> c() {
+      return aui.i.b(aui.ai);
    }
 
-   public dij.a i() {
-      return this.f;
+   @Override
+   protected boolean f_(dmz $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dmz $$0, cwf $$1, ib $$2, ih $$3) {
+      return aww.a(dkn.a($$1, $$2), 0, 15);
+   }
+
+   @Override
+   protected int b(dmz $$0, cwf $$1, ib $$2, ih $$3) {
+      return $$3 == ih.b ? $$0.b($$1, $$2, $$3) : 0;
    }
 }

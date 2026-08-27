@@ -1,51 +1,23 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
+public class gne {
+   private final String a;
+   private final String b;
+   private long c;
 
-public abstract class gne {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
-
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+   public gne(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = ac.b();
    }
 
-   public void a(gmy $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
-      }
-
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
-      }
+   public String a() {
+      return this.a;
    }
 
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   public String b() {
+      return this.b;
    }
 
-   public boolean c() {
-      return this.c >= 10;
+   public void c() {
+      this.c = ac.b();
    }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(gmy var1);
 }

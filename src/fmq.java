@@ -1,30 +1,112 @@
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class fmq extends fml {
-   private static final String a = "chest_bottom";
-   private static final String b = "chest_lid";
-   private static final String f = "chest_lock";
+public class fmq implements fml, fmm {
+   private static final ajh a = new ajh("spectator/teleport_to_team");
+   private static final vu b = vu.c("spectatorMenu.team_teleport");
+   private static final vu c = vu.c("spectatorMenu.team_teleport.prompt");
+   private final List<fmm> d;
 
-   public fmq(fqf $$0) {
-      super($$0);
+   public fmq() {
+      ezg $$0 = ezg.Q();
+      this.d = a($$0, $$0.r.K());
+   }
+
+   private static List<fmm> a(ezg $$0, eqv $$1) {
+      return $$1.g().stream().flatMap($$1x -> fmq.a.a($$0, $$1x).stream()).toList();
    }
 
    @Override
-   protected Builder<fqf> a(fqf $$0) {
-      Builder<fqf> $$1 = super.a($$0);
-      $$1.add($$0.b("chest_bottom"));
-      $$1.add($$0.b("chest_lid"));
-      $$1.add($$0.b("chest_lock"));
-      return $$1;
+   public List<fmm> a() {
+      return this.d;
    }
 
-   public static fql e() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      fml.a($$1);
-      $$1.a("chest_bottom", fqk.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fqh.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", fqk.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fqh.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", fqk.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fqh.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return fql.a($$0, 128, 128);
+   @Override
+   public vu b() {
+      return c;
+   }
+
+   @Override
+   public void a(fmk $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public vu aP_() {
+      return b;
+   }
+
+   @Override
+   public void a(fat $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aQ_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fmm {
+      private final eqq a;
+      private final Supplier<gjy> b;
+      private final List<fsj> c;
+
+      private a(eqq $$0, List<fsj> $$1, Supplier<gjy> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
+
+      public static Optional<fmm> a(ezg $$0, eqq $$1) {
+         List<fsj> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            fsj $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != cww.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(axd.a().a($$2.size())).a();
+            Supplier<gjy> $$6 = $$0.an().a($$5);
+            return Optional.of(new fmq.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(fmk $$0) {
+         $$0.a(new fmp(this.c));
+      }
+
+      @Override
+      public vu aP_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(fat $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, aww.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         fcf.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aQ_() {
+         return true;
+      }
    }
 }

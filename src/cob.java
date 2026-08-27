@@ -1,87 +1,86 @@
-import java.util.Collection;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cob extends cpl {
-   public cob(cpl.a $$0) {
-      super($$0);
+public class cob extends cox {
+   protected static final Map<daa, daa> a = new Builder()
+      .put(dac.ao, dac.aw)
+      .put(dac.U, dac.al)
+      .put(dac.au, dac.aC)
+      .put(dac.aa, dac.ak)
+      .put(dac.as, dac.aA)
+      .put(dac.Y, dac.ai)
+      .put(dac.at, dac.aB)
+      .put(dac.Z, dac.aj)
+      .put(dac.aq, dac.ay)
+      .put(dac.W, dac.ag)
+      .put(dac.ar, dac.az)
+      .put(dac.X, dac.ah)
+      .put(dac.ap, dac.ax)
+      .put(dac.V, dac.af)
+      .put(dac.oj, dac.ok)
+      .put(dac.ol, dac.om)
+      .put(dac.os, dac.ot)
+      .put(dac.ou, dac.ov)
+      .put(dac.av, dac.aD)
+      .put(dac.ab, dac.am)
+      .put(dac.ae, dac.an)
+      .build();
+
+   protected cob(crx $$0, float $$1, float $$2, cqf.a $$3) {
+      super($$1, $$2, $$0, aun.bA, $$3);
    }
 
    @Override
-   public boolean i(cpq $$0) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dme $$0, cwe $$1, ib $$2, cia $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(bmk.a));
-      }
-
-      return false;
-   }
-
-   @Override
-   public bml a(crz $$0) {
-      cia $$1 = $$0.o();
-      cwe $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         ib $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bml.e;
-         }
-      }
-
-      return bml.a($$2.B);
-   }
-
-   private boolean a(cia $$0, dme $$1, cwf $$2, ib $$3, boolean $$4, cpq $$5) {
-      if (!$$0.gs()) {
-         return false;
+   public bnc a(csu $$0) {
+      cwz $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      cis $$3 = $$0.o();
+      Optional<dmz> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
+      if ($$4.isEmpty()) {
+         return bnc.d;
       } else {
-         czf $$6 = $$1.b();
-         dmf<czf, dme> $$7 = $$6.n();
-         Collection<dnh<?>> $$8 = $$7.d();
-         String $$9 = kh.e.b($$6).toString();
-         if ($$8.isEmpty()) {
-            a($$0, vs.a(this.a() + ".empty", $$9));
-            return false;
+         cqk $$5 = $$0.n();
+         if ($$3 instanceof apg) {
+            am.N.a((apg)$$3, $$2, $$5);
+         }
+
+         $$1.a($$2, $$4.get(), 11);
+         $$1.a(drn.c, $$2, drn.a.a($$3, $$4.get()));
+         if ($$3 != null) {
+            $$5.a(1, $$3, bpo.d($$0.p()));
+         }
+
+         return bnc.a($$1.B);
+      }
+   }
+
+   private Optional<dmz> a(cwz $$0, ib $$1, @Nullable cis $$2, dmz $$3) {
+      Optional<dmz> $$4 = this.b($$3);
+      if ($$4.isPresent()) {
+         $$0.a($$2, $$1, aty.aH, atz.e, 1.0F, 1.0F);
+         return $$4;
+      } else {
+         Optional<dmz> $$5 = dje.b($$3);
+         if ($$5.isPresent()) {
+            $$0.a($$2, $$1, aty.aI, atz.e, 1.0F, 1.0F);
+            $$0.a($$2, 3005, $$1, 0);
+            return $$5;
          } else {
-            sy $$10 = $$5.b("DebugProperty");
-            String $$11 = $$10.l($$9);
-            dnh<?> $$12 = $$7.a($$11);
-            if ($$4) {
-               if ($$12 == null) {
-                  $$12 = $$8.iterator().next();
-               }
-
-               dme $$13 = a($$1, $$12, $$0.fK());
-               $$2.a($$3, $$13, 18);
-               a($$0, vs.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
+            Optional<dmz> $$6 = Optional.ofNullable((daa)cqa.b.get().get($$3.b())).map($$1x -> $$1x.l($$3));
+            if ($$6.isPresent()) {
+               $$0.a($$2, $$1, aty.aJ, atz.e, 1.0F, 1.0F);
+               $$0.a($$2, 3004, $$1, 0);
+               return $$6;
             } else {
-               $$12 = a($$8, $$12, $$0.fK());
-               String $$14 = $$12.f();
-               $$10.a($$9, $$14);
-               a($$0, vs.a(this.a() + ".select", $$14, a($$1, $$12)));
+               return Optional.empty();
             }
-
-            return true;
          }
       }
    }
 
-   private static <T extends Comparable<T>> dme a(dme $$0, dnh<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
-   }
-
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
-   }
-
-   private static void a(cia $$0, vs $$1) {
-      ((apb)$$0).b($$1, true);
-   }
-
-   private static <T extends Comparable<T>> String a(dme $$0, dnh<T> $$1) {
-      return $$1.a($$0.c($$1));
+   private Optional<dmz> b(dmz $$0) {
+      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.o().a(dgl.i, $$0.c(dgl.i)));
    }
 }

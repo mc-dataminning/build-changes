@@ -1,83 +1,64 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfj extends dfi {
-   public static final MapCodec<dfj> h = b(dfj::new);
-   public static final dmy i = dda.aE;
-   public static final dmv j = dfi.d;
+public class dfj extends daa implements dad {
+   public static final MapCodec<dfj> a = b(dfj::new);
 
    @Override
    public MapCodec<dfj> a() {
-      return h;
+      return a;
    }
 
-   protected dfj(dmd.d $$0) {
+   protected dfj(dmy.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, ih.c).a(j, Boolean.valueOf(true)));
+   }
+
+   private static boolean b(dmz $$0, cxc $$1, ib $$2) {
+      ib $$3 = $$2.c();
+      dmz $$4 = $$1.a_($$3);
+      int $$5 = eie.a($$1, $$0, $$2, $$4, $$3, ih.b, $$4.b($$1, $$3));
+      return $$5 < $$1.O();
    }
 
    @Override
-   public String g() {
-      return this.l().a();
-   }
-
-   @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return dig.m($$0);
-   }
-
-   @Override
-   protected boolean a(dme $$0, cwh $$1, ib $$2) {
-      return dig.b($$1, $$2, $$0.c(i));
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? czh.a.o() : $$0;
-   }
-
-   @Nullable
-   @Override
-   public dme a(crx $$0) {
-      dme $$1 = czh.cq.a($$0);
-      return $$1 == null ? null : this.o().a(i, $$1.c(i));
-   }
-
-   @Override
-   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
-      if ($$0.c(j)) {
-         ih $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(jv.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dac.dV.o());
       }
    }
 
    @Override
-   protected boolean a(cwe $$0, ib $$1, dme $$2) {
-      ih $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   public boolean b(cxc $$0, ib $$1, dmz $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
+      return true;
    }
 
    @Override
-   protected dme a(dme $$0, dfr $$1) {
-      return $$0.a(i, $$1.a($$0.c(i)));
+   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
+      dmz $$4 = $$0.a_($$2);
+      ib $$5 = $$2.c();
+      dow $$6 = $$0.l().g();
+      iy<dvd<?, ?>> $$7 = $$0.H_().d(kj.ax);
+      if ($$4.a(dac.ow)) {
+         this.a($$7, qs.h, $$0, $$6, $$1, $$5);
+      } else if ($$4.a(dac.on)) {
+         this.a($$7, qs.j, $$0, $$6, $$1, $$5);
+         this.a($$7, qs.l, $$0, $$6, $$1, $$5);
+         if ($$1.a(8) == 0) {
+            this.a($$7, qs.n, $$0, $$6, $$1, $$5);
+         }
+      }
+   }
+
+   private void a(iy<dvd<?, ?>> $$0, ajg<dvd<?, ?>> $$1, apf $$2, dow $$3, axd $$4, ib $$5) {
+      $$0.b($$1).ifPresent($$4x -> ((dvd)$$4x.a()).a($$2, $$3, $$4, $$5));
    }
 
    @Override
-   protected dme a(dme $$0, deb $$1) {
-      return $$0.a($$1.a($$0.c(i)));
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(i, j);
+   public dad.a at_() {
+      return dad.a.a;
    }
 }

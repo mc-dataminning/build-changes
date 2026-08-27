@@ -10,9 +10,9 @@ public class bdp extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "RandomSequenceSettingsFix",
-         this.getInputSchema().getType(bdt.m),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", $$0xx -> $$0xx.emptyMap().set("sequences", $$0xx)))
+         "OptionsAccessibilityOnboardFix",
+         this.getInputSchema().getType(beh.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("onboardAccessibility", $$0x.createBoolean(false)))
       );
    }
 }

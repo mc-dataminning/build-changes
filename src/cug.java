@@ -1,20 +1,15 @@
-public class cug extends ctz {
-   protected cug(ctz.a $$0, bom... $$1) {
-      super($$0, aum.bg, $$1);
+public class cug extends csw {
+   public cug(String $$0, ctc $$1, ctk $$2, cqk $$3, float $$4, int $$5) {
+      super(cts.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 5 + 20 * ($$0 - 1);
+   public cqk g() {
+      return new cqk(dac.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 2;
+   public ctr<?> ar_() {
+      return ctr.r;
    }
 }

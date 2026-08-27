@@ -1,148 +1,151 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Sets;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.DirectoryStream;
+import java.net.Proxy;
+import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Stream;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aqv extends aql {
-   private static final Logger c = LogUtils.getLogger();
-   private static final Joiner d = Joiner.on("/");
-   private final Path e;
+public class aqv implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 20;
+   private final Path c;
+   private final bjd<aqv.e> d;
+   private final blv<Runnable> e = blv.a(ac.h(), "download-queue");
 
-   public aqv(String $$0, Path $$1, boolean $$2) {
-      super($$0, $$2);
-      this.e = $$1;
+   public aqv(Path $$0) throws IOException {
+      this.c = $$0;
+      v.c($$0);
+      this.d = bjd.a(aqv.e.a, $$0.resolve("log.json"));
+      aqu.a($$0, 20);
    }
 
-   @Nullable
-   @Override
-   public arx<InputStream> a(String... $$0) {
-      v.a($$0);
-      Path $$1 = v.a(this.e, List.of($$0));
-      return Files.exists($$1) ? arx.create($$1) : null;
-   }
+   private aqv.b b(aqv.a $$0, Map<UUID, aqv.c> $$1) {
+      aqv.b $$2 = new aqv.b();
+      $$1.forEach(
+         ($$2x, $$3) -> {
+            Path $$4 = this.c.resolve($$2x.toString());
+            Path $$5 = null;
 
-   public static boolean a(Path $$0) {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public arx<InputStream> a(aqu $$0, ajc $$1) {
-      Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
-      return a($$1, $$2);
-   }
-
-   public static arx<InputStream> a(ajc $$0, Path $$1) {
-      return (arx<InputStream>)v.c($$0.a()).get().map($$1x -> {
-         Path $$2 = v.a($$1, $$1x);
-         return b($$2);
-      }, $$1x -> {
-         c.error("Invalid path {}: {}", $$0, $$1x.message());
-         return null;
-      });
-   }
-
-   @Nullable
-   private static arx<InputStream> b(Path $$0) {
-      return Files.exists($$0) && a($$0) ? arx.create($$0) : null;
-   }
-
-   @Override
-   public void a(aqu $$0, String $$1, String $$2, aqt.a $$3) {
-      v.c($$2).get().ifLeft($$3x -> {
-         Path $$4 = this.e.resolve($$0.a()).resolve($$1);
-         a($$1, $$4, $$3x, $$3);
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
-   }
-
-   public static void a(String $$0, Path $$1, List<String> $$2, aqt.a $$3) {
-      Path $$4 = v.a($$1, $$2);
-
-      try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-         $$5.forEach($$3x -> {
-            String $$4x = d.join($$1.relativize($$3x));
-            ajc $$5x = ajc.a($$0, $$4x);
-            if ($$5x == null) {
-               ac.a(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
-            } else {
-               $$3.accept($$5x, arx.create($$3x));
+            try {
+               $$5 = awn.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
+               $$2.a.put($$2x, $$5);
+            } catch (Exception var9) {
+               a.error("Failed to download {}", $$3.a, var9);
+               $$2.b.add($$2x);
             }
-         });
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$4, var11);
-      }
-   }
 
-   @Override
-   public Set<String> a(aqu $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-      Path $$2 = this.e.resolve($$0.a());
-
-      try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
-         for (Path $$4 : $$3) {
-            String $$5 = $$4.getFileName().toString();
-            if (ajc.h($$5)) {
-               $$1.add($$5);
-            } else {
-               c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);
+            try {
+               this.d
+                  .a(
+                     new aqv.e(
+                        $$2x,
+                        $$3.a.toString(),
+                        Instant.now(),
+                        Optional.ofNullable($$3.b).map(HashCode::toString),
+                        $$5 != null ? this.a($$5) : Either.left("download_failed")
+                     )
+                  );
+            } catch (Exception var8) {
+               a.error("Failed to log download of {}", $$3.a, var8);
             }
          }
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$2, var11);
-      }
+      );
+      return $$2;
+   }
 
-      return $$1;
+   private Either<String, aqv.d> a(Path $$0) {
+      try {
+         long $$1 = Files.size($$0);
+         Path $$2 = this.c.relativize($$0);
+         return Either.right(new aqv.d($$2.toString(), $$1));
+      } catch (IOException var5) {
+         a.error("Failed to get file size of {}", $$0, var5);
+         return Either.left("no_access");
+      }
+   }
+
+   public CompletableFuture<aqv.b> a(aqv.a $$0, Map<UUID, aqv.c> $$1) {
+      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a);
    }
 
    @Override
-   public void close() {
+   public void close() throws IOException {
+      this.e.close();
+      this.d.close();
    }
 
-   public static class a implements arn.c {
-      private final Path a;
-      private final boolean b;
+   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, awn.a e) {
+   }
 
-      public a(Path $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static record b(Map<UUID, Path> a, Set<UUID> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashSet<>());
+      }
+   }
+
+   public static record c(URL a, @Nullable HashCode b) {
+   }
+
+   static record d(String b, long c) {
+      public static final Codec<aqv.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(aqv.d::a), Codec.LONG.fieldOf("size").forGetter(aqv.d::b)).apply($$0, aqv.d::new)
+      );
+
+      public String a() {
+         return this.b;
       }
 
-      @Override
-      public aqt a(String $$0) {
-         return new aqv($$0, this.a, this.b);
+      public long b() {
+         return this.c;
+      }
+   }
+
+   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, aqv.d> f) {
+      public static final Codec<aqv.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  jf.d.fieldOf("id").forGetter(aqv.e::a),
+                  Codec.STRING.fieldOf("url").forGetter(aqv.e::b),
+                  awe.n.fieldOf("time").forGetter(aqv.e::c),
+                  Codec.STRING.optionalFieldOf("hash").forGetter(aqv.e::d),
+                  Codec.mapEither(Codec.STRING.fieldOf("error"), aqv.d.a.fieldOf("file")).forGetter(aqv.e::e)
+               )
+               .apply($$0, aqv.e::new)
+      );
+
+      public UUID a() {
+         return this.b;
       }
 
-      @Override
-      public aqt a(String $$0, arn.a $$1) {
-         aqt $$2 = this.a($$0);
-         List<String> $$3 = $$1.d();
-         if ($$3.isEmpty()) {
-            return $$2;
-         } else {
-            List<aqt> $$4 = new ArrayList<>($$3.size());
+      public String b() {
+         return this.c;
+      }
 
-            for (String $$5 : $$3) {
-               Path $$6 = this.a.resolve($$5);
-               $$4.add(new aqv($$0, $$6, this.b));
-            }
+      public Instant c() {
+         return this.d;
+      }
 
-            return new aqn($$2, $$4);
-         }
+      public Optional<String> d() {
+         return this.e;
+      }
+
+      public Either<String, aqv.d> e() {
+         return this.f;
       }
    }
 }

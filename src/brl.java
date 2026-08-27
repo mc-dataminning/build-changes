@@ -1,32 +1,18 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 public class brl {
-   public static bqq<bpf> a(float $$0) {
-      return buc.a(
-         (Function<buc.b<bpf>, ? extends App<buc.c<bpf>, buf<bpf>>>)($$1 -> $$1.group($$1.c(bya.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dj())) {
-                           return false;
-                        } else {
-                           ib $$5 = $$3.dj();
-                           List<ib> $$6 = ib.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(ib::i).collect(Collectors.toList());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new byd($$2x, $$0, 0)));
-                           return true;
-                        }
-                     }
-               ))
+   public static <E extends bpo, T> brh<E> a(Predicate<E> $$0, byr<? extends T> $$1, byr<T> $$2, bmn $$3) {
+      return but.a(
+         (Function<but.b<E>, ? extends App<but.c<E>, buw<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
+                  }
+               }))
       );
    }
 }

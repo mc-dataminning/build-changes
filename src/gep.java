@@ -1,16 +1,16 @@
-public class gep extends gde<cbn, fpn<cbn>> {
-   private static final ajc a = new ajc("textures/entity/turtle/big_sea_turtle.png");
+public class gep extends gee<cbv, fpj<cbv>> {
+   private static final ajh a = new ajh("textures/entity/bear/polarbear.png");
 
-   public gep(gby.a $$0) {
-      super($$0, new fpn<>($$0.a(fqe.bJ)), 0.7F);
+   public gep(gcy.a $$0) {
+      super($$0, new fpj<>($$0.a(frc.aW)), 0.9F);
    }
 
-   protected float a(cbn $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.83F : $$1;
-   }
-
-   public ajc b(cbn $$0) {
+   public ajh a(cbv $$0) {
       return a;
+   }
+
+   protected void a(cbv $$0, etz $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

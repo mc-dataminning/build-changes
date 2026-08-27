@@ -1,50 +1,42 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dzb extends dzd {
-   public static final Codec<dzb> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awe.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               egu.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               avu.l.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, dzb::new)
-   );
-   private final awe<Integer> i;
-   private final egu.a j;
-   private final float k;
-   private final egu l;
+public class dzb extends dzg {
+   public static final Codec<dzb> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dzb::new));
+   protected final int b;
 
-   public dzb(awe<Integer> $$0, egu.a $$1, float $$2, long $$3, egu.a $$4, float $$5, List<dme> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = egu.b(new dsp(new drr($$3)), $$1);
+   protected static <P extends dzb> P3<Mu<P>, bmh, bmh, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
+   }
+
+   public dzb(bmh $$0, bmh $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected dza<?> a() {
-      return dza.e;
+   protected dzh<?> a() {
+      return dzh.a;
    }
 
    @Override
-   public dme a(awt $$0, ib $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)awm.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dme> $$4 = Lists.newArrayListWithCapacity($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+   protected void a(cxf $$0, dzg.b $$1, axd $$2, dyq $$3, int $$4, dzg.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
-
-      return this.a($$4, $$1, (double)this.e);
    }
 
-   protected double a(ib $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   @Override
+   public int a(axd $$0, int $$1, dyq $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

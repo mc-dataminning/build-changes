@@ -1,65 +1,112 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class ebe extends ebn {
-   private final ih c;
-   private final dsx d;
-   private final dsx e;
-   private final int f;
-   public static final Codec<ebe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ih.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
-               dsx.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
-               dsx.b.optionalFieldOf("allowed_search_condition", dsx.e()).forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ebe::new)
-   );
+public class ebe {
+   public static final ajg<ebd> a = a("classic_flat");
+   public static final ajg<ebd> b = a("tunnelers_dream");
+   public static final ajg<ebd> c = a("water_world");
+   public static final ajg<ebd> d = a("overworld");
+   public static final ajg<ebd> e = a("snowy_kingdom");
+   public static final ajg<ebd> f = a("bottomless_pit");
+   public static final ajg<ebd> g = a("desert");
+   public static final ajg<ebd> h = a("redstone_ready");
+   public static final ajg<ebd> i = a("the_void");
 
-   private ebe(ih $$0, dsx $$1, dsx $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public static void a(pl<ebd> $$0) {
+      new ebe.a($$0).a();
    }
 
-   public static ebe a(ih $$0, dsx $$1, dsx $$2, int $$3) {
-      return new ebe($$0, $$1, $$2, $$3);
+   private static ajg<ebd> a(String $$0) {
+      return ajg.a(kj.aA, new ajh($$0));
    }
 
-   public static ebe a(ih $$0, dsx $$1, int $$2) {
-      return a($$0, $$1, dsx.e(), $$2);
-   }
+   static class a {
+      private final pl<ebd> a;
 
-   @Override
-   public Stream<ib> a_(ebl $$0, awt $$1, ib $$2) {
-      ib.a $$3 = $$2.j();
-      cwz $$4 = $$0.d();
-      if (!this.e.test($$4, $$3)) {
-         return Stream.of();
-      } else {
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            if (this.d.test($$4, $$3)) {
-               return Stream.of($$3);
-            }
+      a(pl<ebd> $$0) {
+         this.a = $$0;
+      }
 
-            $$3.c(this.c);
-            if ($$4.d($$3.v())) {
-               return Stream.of();
-            }
-
-            if (!this.e.test($$4, $$3)) {
-               break;
-            }
+      private void a(ajg<ebd> $$0, cwy $$1, ajg<cxy> $$2, Set<ajg<edi>> $$3, boolean $$4, boolean $$5, ebc... $$6) {
+         im<edi> $$7 = this.a.a(kj.aG);
+         im<ecg> $$8 = this.a.a(kj.aD);
+         im<cxy> $$9 = this.a.a(kj.au);
+         ip.a<edi> $$10 = ip.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         ebf $$11 = new ebf(Optional.of($$10), $$9.b($$2), ebf.b($$8));
+         if ($$4) {
+            $$11.a();
          }
 
-         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
-      }
-   }
+         if ($$5) {
+            $$11.b();
+         }
 
-   @Override
-   public ebo<?> b() {
-      return ebo.j;
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
+         }
+
+         this.a.a($$0, new ebd($$1.l().k(), $$11));
+      }
+
+      public void a() {
+         this.a(ebe.a, dac.i, cyf.b, ImmutableSet.of(ecv.a), false, false, new ebc(1, dac.i), new ebc(2, dac.j), new ebc(1, dac.F));
+         this.a(ebe.b, dac.b, cyf.t, ImmutableSet.of(ecv.j, ecv.r), true, false, new ebc(1, dac.i), new ebc(5, dac.j), new ebc(230, dac.b), new ebc(1, dac.F));
+         this.a(
+            ebe.c,
+            cqn.qy,
+            cyf.T,
+            ImmutableSet.of(ecv.m, ecv.l, ecv.g),
+            false,
+            false,
+            new ebc(90, dac.G),
+            new ebc(5, dac.L),
+            new ebc(5, dac.j),
+            new ebc(5, dac.b),
+            new ebc(64, dac.sJ),
+            new ebc(1, dac.F)
+         );
+         this.a(
+            ebe.d,
+            dac.bt,
+            cyf.b,
+            ImmutableSet.of(ecv.a, ecv.j, ecv.f, ecv.k, ecv.r),
+            true,
+            true,
+            new ebc(1, dac.i),
+            new ebc(3, dac.j),
+            new ebc(59, dac.b),
+            new ebc(1, dac.F)
+         );
+         this.a(
+            ebe.e,
+            dac.dN,
+            cyf.d,
+            ImmutableSet.of(ecv.a, ecv.c),
+            false,
+            false,
+            new ebc(1, dac.dN),
+            new ebc(1, dac.i),
+            new ebc(3, dac.j),
+            new ebc(59, dac.b),
+            new ebc(1, dac.F)
+         );
+         this.a(ebe.f, cqn.ps, cyf.b, ImmutableSet.of(ecv.a), false, false, new ebc(1, dac.i), new ebc(3, dac.j), new ebc(2, dac.m));
+         this.a(
+            ebe.g,
+            dac.I,
+            cyf.f,
+            ImmutableSet.of(ecv.a, ecv.b, ecv.j, ecv.r),
+            true,
+            false,
+            new ebc(8, dac.I),
+            new ebc(52, dac.aV),
+            new ebc(3, dac.b),
+            new ebc(1, dac.F)
+         );
+         this.a(ebe.h, cqn.lG, cyf.f, ImmutableSet.of(), false, false, new ebc(116, dac.aV), new ebc(3, dac.b), new ebc(1, dac.F));
+         this.a(ebe.i, dac.hW, cyf.a, ImmutableSet.of(), true, false, new ebc(1, dac.a));
+      }
    }
 }

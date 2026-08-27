@@ -1,85 +1,204 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
+import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
+import com.mojang.authlib.exceptions.InvalidCredentialsException;
+import com.mojang.authlib.exceptions.UserBannedException;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.logging.LogUtils;
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.client.ClientBrandRetriever;
+import org.slf4j.Logger;
 
-public interface frx {
-   static frx a(fsd $$0, UserApiService $$1) {
-      return new frx.b($$0, $$1);
+public class frx implements ahe {
+   private static final Logger a = LogUtils.getLogger();
+   private final ezg b;
+   @Nullable
+   private final fsm c;
+   @Nullable
+   private final fhf d;
+   private final Consumer<vu> e;
+   private final us f;
+   private final boolean g;
+   @Nullable
+   private final Duration h;
+   @Nullable
+   private String i;
+   private final Map<ajh, byte[]> j;
+   private final boolean k;
+   private final AtomicReference<frx.a> l = new AtomicReference<>(frx.a.a);
+
+   public frx(us $$0, ezg $$1, @Nullable fsm $$2, @Nullable fhf $$3, boolean $$4, @Nullable Duration $$5, Consumer<vu> $$6, @Nullable fsq $$7) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$6;
+      this.g = $$4;
+      this.h = $$5;
+      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
+      this.k = $$7 != null;
    }
 
-   CompletableFuture<Unit> a(UUID var1, fsf var2, AbuseReport var3);
-
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
+   private void a(frx.a $$0) {
+      frx.a $$1 = this.l.updateAndGet($$1x -> {
+         if (!$$0.f.contains($$1x)) {
+            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
+         } else {
+            return $$0;
+         }
+      });
+      this.e.accept($$1.e);
    }
 
-   public static class a extends ws {
-      public a(vs $$0, Throwable $$1) {
-         super($$0, $$1);
+   @Override
+   public void a(ahh $$0) {
+      this.a(frx.a.b);
+
+      Cipher $$4;
+      Cipher $$5;
+      String $$3;
+      ahp $$7;
+      try {
+         SecretKey $$1 = avu.a();
+         PublicKey $$2 = $$0.e();
+         $$3 = new BigInteger(avu.a($$0.b(), $$2, $$1)).toString(16);
+         $$4 = avu.a(2, $$1);
+         $$5 = avu.a(1, $$1);
+         byte[] $$6 = $$0.f();
+         $$7 = new ahp($$1, $$2, $$6);
+      } catch (Exception var9) {
+         throw new IllegalStateException("Protocol error", var9);
       }
-   }
 
-   public static record b(fsd a, UserApiService b) implements frx {
-      private static final vs c = vs.c("gui.abuseReport.send.service_unavailable");
-      private static final vs d = vs.c("gui.abuseReport.send.http_error");
-      private static final vs e = vs.c("gui.abuseReport.send.json_error");
+      if ($$0.g()) {
+         ac.g().submit(() -> {
+            vu $$4x = this.b($$3);
+            if ($$4x != null) {
+               if (this.c == null || !this.c.d()) {
+                  this.f.a($$4x);
+                  return;
+               }
 
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, fsf $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
-
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               vs $$5 = this.a(var7);
-               throw new CompletionException(new frx.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               vs $$7 = this.a(var8);
-               throw new CompletionException(new frx.a($$7, var8));
+               a.warn($$4x.getString());
             }
-         }, ac.g());
-      }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
+            this.a($$7, $$4, $$5);
+         });
+      } else {
+         this.a($$7, $$4, $$5);
       }
+   }
 
-      private vs a(MinecraftClientHttpException $$0) {
-         return vs.a("gui.abuseReport.send.error_message", $$0.getMessage());
+   private void a(ahp $$0, Cipher $$1, Cipher $$2) {
+      this.a(frx.a.c);
+      this.f.a($$0, vb.a(() -> this.f.a($$1, $$2)));
+   }
+
+   @Nullable
+   private vu b(String $$0) {
+      try {
+         this.e().joinServer(this.b.X().b(), this.b.X().d(), $$0);
+         return null;
+      } catch (AuthenticationUnavailableException var3) {
+         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.serversUnavailable"));
+      } catch (InvalidCredentialsException var4) {
+         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.invalidSession"));
+      } catch (InsufficientPrivilegesException var5) {
+         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.userBanned"));
+      } catch (AuthenticationException var7) {
+         return vu.a("disconnect.loginFailedInfo", var7.getMessage());
       }
+   }
 
-      private vs a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new IncompatibleClassChangeError();
-         };
+   private MinecraftSessionService e() {
+      return this.b.am();
+   }
+
+   @Override
+   public void a(ahg $$0) {
+      this.a(frx.a.d);
+      GameProfile $$1 = $$0.b();
+      this.f.a(aab.b, new frw(this.b, this.f, new fsc($$1, this.b.u().a(this.g, this.h, this.i), fsa.a().a(), clh.h, null, this.c, this.d, this.j)));
+      this.f.a(ahq.a);
+      this.f.a(aab.a);
+      this.f.a(new yu(new za(ClientBrandRetriever.getClientModName())));
+      this.f.a(new yt(this.b.m.au()));
+   }
+
+   @Override
+   public void a(vu $$0) {
+      vu $$1 = this.k ? vt.q : vt.r;
+      if (this.c != null && this.c.e()) {
+         this.b.a(new gox(this.d, $$1, $$0));
+      } else {
+         this.b.a(new fgg(this.d, $$1, $$0));
       }
+   }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
+   @Override
+   public boolean c() {
+      return this.f.i();
+   }
+
+   @Override
+   public void a(ahj $$0) {
+      this.f.a($$0.b());
+   }
+
+   @Override
+   public void a(ahi $$0) {
+      if (!this.f.e()) {
+         this.f.a($$0.b(), false);
       }
+   }
 
-      public fsd c() {
-         return this.a;
-      }
+   @Override
+   public void a(ahf $$0) {
+      this.e.accept(vu.c("connect.negotiating"));
+      this.f.a(new ahn($$0.b(), null));
+   }
 
-      public UserApiService d() {
-         return this.b;
+   public void a(@Nullable String $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public void a(aah $$0) {
+      this.f.a(new aak($$0.b(), this.j.get($$0.b())));
+   }
+
+   @Override
+   public void a(p $$0) {
+      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
+      $$0.a("Login phase", () -> this.l.get().toString());
+   }
+
+   static enum a {
+      a(vu.c("connect.connecting"), Set.of()),
+      b(vu.c("connect.authorizing"), Set.of(a)),
+      c(vu.c("connect.encrypting"), Set.of(b)),
+      d(vu.c("connect.joining"), Set.of(c, a));
+
+      final vu e;
+      final Set<frx.a> f;
+
+      private a(vu $$0, Set<frx.a> $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
    }
 }

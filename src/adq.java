@@ -1,45 +1,52 @@
-public class adq implements xz<aai> {
-   public static final xq<us, adq> a = xz.a(adq::a, adq::new);
-   private final float b;
-   private final int c;
-   private final int d;
+import java.util.ArrayList;
+import java.util.List;
 
-   public adq(float $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record adq(int c, List<aiq.c<?>> d) implements yb<aam> {
+   public static final xs<vf, adq> a = yb.a(adq::b, adq::new);
+   public static final int b = 255;
+
+   private adq(vf $$0) {
+      this($$0.l(), a($$0));
    }
 
-   private adq(us $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   private static void a(List<aiq.c<?>> $$0, vf $$1) {
+      for (aiq.c<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.k(255);
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b);
-      $$0.c(this.d);
+   private static List<aiq.c<?>> a(vf $$0) {
+      List<aiq.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(aiq.c.a($$0, $$2));
+      }
+
+      return $$1;
+   }
+
+   private void b(vf $$0) {
       $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public yb<adq> a() {
-      return aet.aG;
+   public yd<adq> a() {
+      return aex.aC;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.b;
-   }
-
-   public int e() {
+   public int b() {
       return this.c;
    }
 
-   public int f() {
+   public List<aiq.c<?>> e() {
       return this.d;
    }
 }

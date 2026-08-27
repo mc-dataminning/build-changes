@@ -1,136 +1,54 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.base.Charsets;
 import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
 import org.slf4j.Logger;
 
 public class eyv {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
-   private int c;
-   private final DataOutputStream d;
-   private final byte[] e;
-   private final int f;
-   private final int g;
-   private File h;
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final avk<String> e = new avk<>(50);
 
-   public static void a(File $$0, erp $$1, Consumer<vs> $$2) {
-      a($$0, null, $$1, $$2);
-   }
-
-   public static void a(File $$0, @Nullable String $$1, erp $$2, Consumer<vs> $$3) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
-      } else {
-         b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private static void b(File $$0, @Nullable String $$1, erp $$2, Consumer<vs> $$3) {
-      ese $$4 = a($$2);
-      File $$5 = new File($$0, "screenshots");
-      $$5.mkdir();
-      File $$6;
-      if ($$1 == null) {
-         $$6 = a($$5);
-      } else {
-         $$6 = new File($$5, $$1);
-      }
-
-      ac.g().execute(() -> {
-         try {
-            $$4.a($$6);
-            vs $$3x = vs.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new vq(vq.a.b, $$6.getAbsolutePath())));
-            $$3.accept(vs.a("screenshot.success", $$3x));
+   public eyv(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
          } catch (Exception var7) {
-            b.warn("Couldn't save screenshot", var7);
-            $$3.accept(vs.a("screenshot.failure", var7.getMessage()));
-         } finally {
-            $$4.close();
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
          }
-      });
+      }
    }
 
-   public static ese a(erp $$0) {
-      int $$1 = $$0.c;
-      int $$2 = $$0.d;
-      ese $$3 = new ese($$1, $$2, false);
-      RenderSystem.bindTexture($$0.f());
-      $$3.a(0, true);
-      $$3.h();
-      return $$3;
-   }
-
-   private static File a(File $$0) {
-      String $$1 = ac.e();
-      int $$2 = 1;
-
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
          }
 
-         $$2++;
+         this.e.addLast($$0);
+         this.b();
       }
    }
 
-   public eyv(File $$0, int $$1, int $$2, int $$3) throws IOException {
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      File $$4 = new File($$0, "screenshots");
-      $$4.mkdir();
-      String $$5 = "huge_" + ac.e();
-      int $$6 = 1;
-
-      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
-         $$6++;
-      }
-
-      byte[] $$7 = new byte[18];
-      $$7[2] = 2;
-      $$7[12] = (byte)($$1 % 256);
-      $$7[13] = (byte)($$1 / 256);
-      $$7[14] = (byte)($$2 % 256);
-      $$7[15] = (byte)($$2 / 256);
-      $$7[16] = 24;
-      this.e = new byte[$$1 * $$3 * 3];
-      this.d = new DataOutputStream(new FileOutputStream(this.h));
-      this.d.write($$7);
-   }
-
-   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$3;
-      int $$6 = $$4;
-      if ($$3 > this.f - $$1) {
-         $$5 = this.f - $$1;
-      }
-
-      if ($$4 > this.g - $$2) {
-         $$6 = this.g - $$2;
-      }
-
-      this.c = $$6;
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
-         int $$8 = ($$1 + $$7 * this.f) * 3;
-         $$0.get(this.e, $$8, $$5 * 3);
+   private void b() {
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
+         }
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
       }
    }
 
-   public void a() throws IOException {
-      this.d.write(this.e, 0, this.f * 3 * this.c);
-   }
-
-   public File b() throws IOException {
-      this.d.close();
-      return this.h;
+   public Collection<String> a() {
+      return this.e;
    }
 }

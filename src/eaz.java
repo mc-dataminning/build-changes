@@ -1,25 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eaz extends ebm {
-   public static final Codec<eaz> a = RecordCodecBuilder.create($$0 -> $$0.group(dsx.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, eaz::new));
-   private final dsx c;
+public class eaz<P extends eay> {
+   public static final eaz<eax> a = a("straight_trunk_placer", eax.a);
+   public static final eaz<eau> b = a("forking_trunk_placer", eau.a);
+   public static final eaz<eav> c = a("giant_trunk_placer", eav.a);
+   public static final eaz<eaw> d = a("mega_jungle_trunk_placer", eaw.b);
+   public static final eaz<eas> e = a("dark_oak_trunk_placer", eas.a);
+   public static final eaz<eat> f = a("fancy_trunk_placer", eat.a);
+   public static final eaz<eaq> g = a("bending_trunk_placer", eaq.a);
+   public static final eaz<eba> h = a("upwards_branching_trunk_placer", eba.a);
+   public static final eaz<ear> i = a("cherry_trunk_placer", ear.a);
+   private final Codec<P> j;
 
-   private eaz(dsx $$0) {
-      this.c = $$0;
+   private static <P extends eay> eaz<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.X, $$0, new eaz<>($$1));
    }
 
-   public static eaz a(dsx $$0) {
-      return new eaz($$0);
+   private eaz(Codec<P> $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   protected boolean a(ebl $$0, awt $$1, ib $$2) {
-      return this.c.test($$0.d(), $$2);
-   }
-
-   @Override
-   public ebo<?> b() {
-      return ebo.a;
+   public Codec<P> a() {
+      return this.j;
    }
 }

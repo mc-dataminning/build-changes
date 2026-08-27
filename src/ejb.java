@@ -1,48 +1,83 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class ejb extends eiw {
-   public static final String a = "idcounts";
-   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
+public abstract class ejb {
+   protected cxm a;
+   protected bpq b;
+   protected final Int2ObjectMap<eja> c = new Int2ObjectOpenHashMap();
+   protected int d;
+   protected int e;
+   protected int f;
+   protected boolean g;
+   protected boolean h;
+   protected boolean i;
+   protected boolean j;
 
-   public static eiw.a<ejb> a() {
-      return new eiw.a<>(ejb::new, ejb::b, axs.k);
+   public void a(cxm $$0, bpq $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c.clear();
+      this.d = aww.d($$1.dg() + 1.0F);
+      this.e = aww.d($$1.dh() + 1.0F);
+      this.f = aww.d($$1.dg() + 1.0F);
    }
 
-   public ejb() {
-      this.b.defaultReturnValue(-1);
+   public void b() {
+      this.a = null;
+      this.b = null;
    }
 
-   public static ejb b(sy $$0, in.a $$1) {
-      ejb $$2 = new ejb();
-
-      for (String $$3 : $$0.e()) {
-         if ($$0.b($$3, 99)) {
-            $$2.b.put($$3, $$0.h($$3));
-         }
-      }
-
-      return $$2;
+   protected eja b(ib $$0) {
+      return this.b($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Override
-   public sy a(sy $$0, in.a $$1) {
-      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<String> $$2 = (Entry<String>)var3.next();
-         $$0.a((String)$$2.getKey(), $$2.getIntValue());
-      }
-
-      return $$0;
+   protected eja b(int $$0, int $$1, int $$2) {
+      return (eja)this.c.computeIfAbsent(eja.b($$0, $$1, $$2), $$3 -> new eja($$0, $$1, $$2));
    }
 
-   public eja b() {
-      int $$0 = this.b.getInt("map") + 1;
-      this.b.put("map", $$0);
-      this.c();
-      return new eja($$0);
+   public abstract eja a();
+
+   public abstract ejg a(double var1, double var3, double var5);
+
+   protected ejg a(eja $$0) {
+      return new ejg($$0);
+   }
+
+   public abstract int a(eja[] var1, eja var2);
+
+   public abstract eiy a(cwf var1, int var2, int var3, int var4, bpq var5);
+
+   public abstract eiy a(cwf var1, int var2, int var3, int var4);
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public void c(boolean $$0) {
+      this.i = $$0;
+   }
+
+   public void d(boolean $$0) {
+      this.j = $$0;
+   }
+
+   public boolean d() {
+      return this.g;
+   }
+
+   public boolean e() {
+      return this.h;
+   }
+
+   public boolean f() {
+      return this.i;
+   }
+
+   public boolean g() {
+      return this.j;
    }
 }

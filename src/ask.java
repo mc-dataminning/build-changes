@@ -1,13 +1,18 @@
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 
-public abstract class ask<T> implements arz {
-   @Override
-   public final CompletableFuture<Void> a(arz.a $$0, asf $$1, bjc $$2, bjc $$3, Executor $$4, Executor $$5) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
+public interface ask {
+   CompletableFuture<?> a();
+
+   float b();
+
+   default boolean c() {
+      return this.a().isDone();
    }
 
-   protected abstract T b(asf var1, bjc var2);
-
-   protected abstract void a(T var1, asf var2, bjc var3);
+   default void d() {
+      CompletableFuture<?> $$0 = this.a();
+      if ($$0.isCompletedExceptionally()) {
+         $$0.join();
+      }
+   }
 }

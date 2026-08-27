@@ -1,23 +1,20 @@
-public class djt {
-   private boolean a;
-   private float b;
-   private float c;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
-      }
+public class djt extends dja {
+   public static final MapCodec<djt> b = b(djt::new);
+
+   @Override
+   public MapCodec<djt> a() {
+      return b;
    }
 
-   public float a(float $$0) {
-      return awm.i($$0, this.c, this.b);
+   protected djt(dmy.d $$0) {
+      super(dhb.b.d, $$0);
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   public void a(cwz $$0, ib $$1, dmz $$2, @Nullable bpo $$3, cqk $$4) {
+      djs.a($$0, $$1);
    }
 }

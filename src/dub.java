@@ -1,45 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dub extends duu<dwr> {
-   public dub(Codec<dwr> $$0) {
-      super($$0);
+class dub implements dtt {
+   public static final Codec<dub> a = RecordCodecBuilder.create($$0 -> $$0.group(dtt.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dub::new));
+   private final dtt e;
+
+   public dub(dtt $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(cxu $$0, ib $$1) {
+      return !this.e.test($$0, $$1);
    }
 
    @Override
-   public boolean a(duw<dwr> $$0) {
-      ib $$1 = $$0.e();
-      cwz $$2 = $$0.b();
-      awt $$3 = $$0.d();
-
-      dwr $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.J_() + 3; $$1 = $$1.d()) {
-         if (!$$2.u($$1.d())) {
-            dme $$5 = $$2.a_($$1.d());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
-
-      if ($$1.v() <= $$2.J_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (ib $$11 : ib.a($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
-
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
-
-         return true;
-      }
+   public dtu<?> a() {
+      return dtu.k;
    }
 }

@@ -1,175 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dbh extends dda {
-   protected static final epo c = czf.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   public static final dmv d = dmu.w;
+public class dbh extends ddv implements dad {
+   public static final MapCodec<dbh> a = b(dbh::new);
+   public static final int b = 2;
+   public static final dnz c = dnp.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final eqk[] m = new eqk[]{
+      daa.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), daa.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), daa.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final eqk[] n = new eqk[]{
+      daa.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), daa.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), daa.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final eqk[] o = new eqk[]{
+      daa.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), daa.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), daa.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final eqk[] F = new eqk[]{
+      daa.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), daa.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), daa.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
-   protected dbh(dmd.d $$0) {
+   @Override
+   public MapCodec<dbh> a() {
+      return a;
+   }
+
+   public dbh(dmy.d $$0) {
       super($$0);
+      this.k(this.E.b().a(aE, ih.c).a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dbh> a();
-
-   @Override
-   protected epo a(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return c;
+   protected boolean e_(dmz $$0) {
+      return $$0.c(c) < 2;
    }
 
    @Override
-   protected boolean a(dme $$0, cwh $$1, ib $$2) {
-      ib $$3 = $$2.d();
-      return this.b($$1, $$3, $$1.a_($$3));
-   }
-
-   protected boolean b(cwh $$0, ib $$1, dme $$2) {
-      return $$2.a($$0, $$1, ih.b, dhf.c);
+   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
+      if ($$1.z.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.a(c, Integer.valueOf($$4 + 1)), 2);
+         }
+      }
    }
 
    @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if (!this.c((cwh)$$1, $$2, $$0)) {
-         boolean $$4 = $$0.c(d);
-         boolean $$5 = this.a((cwe)$$1, $$2, $$0);
-         if ($$4 && !$$5) {
-            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 2);
-         } else if (!$$4) {
-            $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 2);
-            if (!$$5) {
-               $$1.a($$2, this, this.g($$0), eqq.b);
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      dmz $$3 = $$1.a_($$2.a($$0.c(aE)));
+      return $$3.a(aun.z);
+   }
+
+   @Override
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      int $$4 = $$0.c(c);
+      switch ((ih)$$0.c(aE)) {
+         case d:
+            return F[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
+      }
+   }
+
+   @Nullable
+   @Override
+   public dmz a(css $$0) {
+      dmz $$1 = this.o();
+      cxc $$2 = $$0.q();
+      ib $$3 = $$0.a();
+
+      for (ih $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.a(aE, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
          }
       }
+
+      return null;
    }
 
    @Override
-   protected int b(dme $$0, cvk $$1, ib $$2, ih $$3) {
-      return $$0.b($$1, $$2, $$3);
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? dac.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected int a(dme $$0, cvk $$1, ib $$2, ih $$3) {
-      if (!$$0.c(d)) {
-         return 0;
-      } else {
-         return $$0.c(aE) == $$3 ? this.a($$1, $$2, $$0) : 0;
-      }
+   public boolean b(cxc $$0, ib $$1, dmz $$2) {
+      return $$2.c(c) < 2;
    }
 
    @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, czf $$3, ib $$4, boolean $$5) {
-      if ($$0.a((cwh)$$1, $$2)) {
-         this.c($$1, $$2, $$0);
-      } else {
-         djl $$6 = $$0.t() ? $$1.c_($$2) : null;
-         a($$0, $$1, $$2, $$6);
-         $$1.a($$2, false);
-
-         for (ih $$7 : ih.values()) {
-            $$1.a($$2.a($$7), this);
-         }
-      }
-   }
-
-   protected void c(cwe $$0, ib $$1, dme $$2) {
-      if (!this.c((cwh)$$0, $$1, $$2)) {
-         boolean $$3 = $$2.c(d);
-         boolean $$4 = this.a($$0, $$1, $$2);
-         if ($$3 != $$4 && !$$0.N().b($$1, this)) {
-            eqq $$5 = eqq.c;
-            if (this.b((cvk)$$0, $$1, $$2)) {
-               $$5 = eqq.a;
-            } else if ($$3) {
-               $$5 = eqq.b;
-            }
-
-            $$0.a($$1, this, this.g($$2), $$5);
-         }
-      }
-   }
-
-   public boolean c(cwh $$0, ib $$1, dme $$2) {
-      return false;
-   }
-
-   protected boolean a(cwe $$0, ib $$1, dme $$2) {
-      return this.b($$0, $$1, $$2) > 0;
-   }
-
-   protected int b(cwe $$0, ib $$1, dme $$2) {
-      ih $$3 = $$2.c(aE);
-      ib $$4 = $$1.a($$3);
-      int $$5 = $$0.c($$4, $$3);
-      if ($$5 >= 15) {
-         return $$5;
-      } else {
-         dme $$6 = $$0.a_($$4);
-         return Math.max($$5, $$6.a(czh.cw) ? $$6.c(dfg.f) : 0);
-      }
-   }
-
-   protected int a(cwu $$0, ib $$1, dme $$2) {
-      ih $$3 = $$2.c(aE);
-      ih $$4 = $$3.h();
-      ih $$5 = $$3.i();
-      boolean $$6 = this.b();
-      return Math.max($$0.a($$1.a($$4), $$4, $$6), $$0.a($$1.a($$5), $$5, $$6));
-   }
-
-   @Override
-   protected boolean f_(dme $$0) {
+   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
       return true;
    }
 
    @Override
-   public dme a(crx $$0) {
-      return this.o().a(aE, $$0.g().g());
+   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
+      $$0.a($$2, $$3.a(c, Integer.valueOf($$3.c(c) + 1)), 2);
    }
 
    @Override
-   public void a(cwe $$0, ib $$1, dme $$2, box $$3, cpq $$4) {
-      if (this.a($$0, $$1, $$2)) {
-         $$0.a($$1, this, 1);
-      }
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(aE, c);
    }
 
    @Override
-   protected void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      this.d($$1, $$2, $$0);
-   }
-
-   @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         this.d($$1, $$2, $$0);
-      }
-   }
-
-   protected void d(cwe $$0, ib $$1, dme $$2) {
-      ih $$3 = $$2.c(aE);
-      ib $$4 = $$1.a($$3.g());
-      $$0.a($$4, this, $$1);
-      $$0.a($$4, this, $$3);
-   }
-
-   protected boolean b() {
+   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
       return false;
    }
-
-   protected int a(cvk $$0, ib $$1, dme $$2) {
-      return 15;
-   }
-
-   public static boolean m(dme $$0) {
-      return $$0.b() instanceof dbh;
-   }
-
-   public boolean b(cvk $$0, ib $$1, dme $$2) {
-      ih $$3 = $$2.c(aE).g();
-      dme $$4 = $$0.a_($$1.a($$3));
-      return m($$4) && $$4.c(aE) != $$3;
-   }
-
-   protected abstract int g(dme var1);
 }

@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-@FunctionalInterface
 public interface cma {
-   @Nullable
-   cku createMenu(int var1, chz var2, cia var3);
+   void a(clo var1, int var2, cqk var3);
+
+   void a(clo var1, int var2, int var3);
 }

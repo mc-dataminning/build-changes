@@ -1,18 +1,29 @@
-import java.util.Optional;
+public class agg implements yb<aez> {
+   public static final xs<uu, agg> a = yb.a(agg::a, agg::new);
+   private final ajh b;
 
-public record agg(Optional<il<bnq>> b, Optional<il<bnq>> c) implements xz<aev> {
-   public static final xq<vd, agg> a = xq.a(xo.b(ki.Q).a(xo::a), agg::b, xo.b(ki.Q).a(xo::a), agg::e, agg::new);
-
-   @Override
-   public yb<agg> a() {
-      return aet.bQ;
+   public agg(ctp<?> $$0) {
+      this.b = $$0.a();
    }
 
-   public void a(aev $$0) {
+   private agg(uu $$0) {
+      this.b = $$0.q();
+   }
+
+   private void a(uu $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public yd<agg> a() {
+      return aex.bM;
+   }
+
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public Optional<il<bnq>> e() {
-      return this.c;
+   public ajh b() {
+      return this.b;
    }
 }

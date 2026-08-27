@@ -1,104 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class czk extends cyr implements dca {
-   public static final MapCodec<czk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kh.e.q().fieldOf("turns_into").forGetter(czk::b),
-               kh.b.q().fieldOf("brush_sound").forGetter(czk::c),
-               kh.b.q().fieldOf("brush_comleted_sound").forGetter(czk::d),
-               u()
-            )
-            .apply($$0, czk::new)
-   );
-   private static final dne c = dmu.bv;
-   public static final int b = 2;
-   private final czf d;
-   private final ato e;
-   private final ato f;
+public abstract class czk extends daa implements dha {
+   public static final dnq d = dnp.C;
+   private static final eqk a = daa.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
-   @Override
-   public MapCodec<czk> a() {
-      return a;
-   }
-
-   public czk(czf $$0, ato $$1, ato $$2, dmd.d $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected czk(dmy.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(c);
-   }
+   protected abstract MapCodec<? extends czk> a();
 
-   @Override
-   public dfk b_(dme $$0) {
-      return dfk.c;
-   }
-
-   @Override
-   public void b(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      $$1.a($$2, this, 2);
-   }
-
-   @Override
-   public dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      $$3.a($$4, this, 2);
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if ($$1.c_($$2) instanceof djp $$4) {
-         $$4.b();
-      }
-
-      if (dcb.m($$1.a_($$2.d())) && $$2.v() >= $$1.J_()) {
-         cek $$5 = cek.a($$1, $$2, $$0);
-         $$5.s();
+   protected void a(dmz $$0, cxa $$1, ib $$2) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this, 60 + $$1.E_().a(40));
       }
    }
 
-   @Override
-   public void a(cwe $$0, ib $$1, cek $$2) {
-      eov $$3 = $$2.cE().f();
-      $$0.c(2001, ib.a($$3), czf.i($$2.u()));
-      $$0.a($$2, dqr.f, $$3);
-   }
-
-   @Override
-   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
-      if ($$3.a(16) == 0) {
-         ib $$4 = $$2.d();
-         if (dcb.m($$1.a_($$4))) {
-            double $$5 = (double)$$2.u() + $$3.j();
-            double $$6 = (double)$$2.v() - 0.05;
-            double $$7 = (double)$$2.w() + $$3.j();
-            $$1.a(new jt(kb.B, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
+   protected static boolean e(dmz $$0, cwf $$1, ib $$2) {
+      if ($$0.c(d)) {
+         return true;
+      } else {
+         for (ih $$3 : ih.values()) {
+            if ($$1.b_($$2.a($$3)).a(aus.a)) {
+               return true;
+            }
          }
+
+         return false;
       }
    }
 
    @Nullable
    @Override
-   public djl a(ib $$0, dme $$1) {
-      return new djp($$0, $$1);
+   public dmz a(css $$0) {
+      ein $$1 = $$0.q().b_($$0.a());
+      return this.o().a(d, Boolean.valueOf($$1.a(aus.a) && $$1.e() == 8));
    }
 
-   public czf b() {
-      return this.d;
+   @Override
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return a;
    }
 
-   public ato c() {
-      return this.e;
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eio.c, eio.c.a($$3));
+      }
+
+      return $$1 == ih.a && !this.a($$0, (cxc)$$3, $$4) ? dac.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ato d() {
-      return this.f;
+   @Override
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      ib $$3 = $$2.d();
+      return $$1.a_($$3).d($$1, $$3, ih.b);
+   }
+
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   protected ein c_(dmz $$0) {
+      return $$0.c(d) ? eio.c.a(false) : super.c_($$0);
    }
 }

@@ -1,62 +1,46 @@
-public class evx extends gob {
-   private final fgh a;
-   private final evx.a b;
-   private fbd c = fbd.a;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public evx(evg $$0, fgh $$1) {
-      super(eyc.a);
-      this.a = $$1;
-      this.b = a($$0);
+public class evx extends evv {
+   private static final Logger j = LogUtils.getLogger();
+   public String a = "";
+   public String b = "";
+   public String c = "";
+   public String d = "";
+   public String e = "";
+   @Nullable
+   public String f;
+   public String g = "";
+   public String h = "";
+   public evx.a i = evx.a.a;
+
+   public static evx a(JsonObject $$0) {
+      evx $$1 = new evx();
+
+      try {
+         $$1.a = exs.b("id", $$0, "");
+         $$1.b = exs.b("name", $$0, "");
+         $$1.c = exs.b("version", $$0, "");
+         $$1.d = exs.b("author", $$0, "");
+         $$1.e = exs.b("link", $$0, "");
+         $$1.f = exs.b("image", $$0, null);
+         $$1.g = exs.b("trailer", $$0, "");
+         $$1.h = exs.b("recommendedPlayers", $$0, "");
+         $$1.i = evx.a.valueOf(exs.b("type", $$0, evx.a.a.name()));
+      } catch (Exception var3) {
+         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+      }
+
+      return $$1;
    }
 
-   public evx(vs $$0, fgh $$1) {
-      super(eyc.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public evx(vs $$0, vs $$1, fgh $$2) {
-      super(eyc.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static evx.a a(evg $$0) {
-      etv $$1 = $$0.a;
-      return a(vs.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static evx.a a(vs $$0) {
-      return a(vs.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static evx.a a(vs $$0, vs $$1) {
-      return new evx.a($$0, $$1);
-   }
-
-   @Override
-   public void aP_() {
-      this.c(fak.a(vr.h, $$0 -> this.d()).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
-      this.c = fbd.a(this.i, this.b.b, this.g * 3 / 4);
-   }
-
-   @Override
-   public void d() {
-      this.f.a(this.a);
-   }
-
-   @Override
-   public vs i() {
-      return vs.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(ezx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
-      this.c.a($$0, this.g / 2, 100, 9, -2142128);
-   }
-
-   static record a(vs a, vs b) {
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

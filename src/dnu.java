@@ -1,15 +1,14 @@
-public enum dnu {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dnu implements axq {
+   a,
+   b;
 
-   private final int d;
-
-   private dnu(int $$0) {
-      this.d = $$0;
+   @Override
+   public String toString() {
+      return this.c();
    }
 
-   public int a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this == a ? "left" : "right";
    }
 }

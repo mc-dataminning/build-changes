@@ -1,45 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class aln {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vs.c("commands.jfr.start.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vs.b("commands.jfr.dump.failed", $$0));
-
-   private aln() {
-   }
+   public static final int a = 2;
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("jfr").requires($$0x -> $$0x.c(4)))
-               .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
-            .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("gamemode", ei.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((du)$$0x.getSource()).h()), ei.a($$0x, "gamemode"))))
+                  .then(dv.a("target", eh.d()).executes($$0x -> a($$0x, eh.f($$0x, "target"), ei.a($$0x, "gamemode"))))
+            )
       );
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      bjg $$1 = bjg.a($$0.l());
-      if (!bji.e.a($$1)) {
-         throw a.create();
+   private static void a(du $$0, apg $$1, cww $$2) {
+      vu $$3 = vu.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> vu.a("commands.gamemode.success.self", $$3), true);
       } else {
-         $$0.a(() -> vs.c("commands.jfr.started"), false);
-         return 1;
+         if ($$0.e().Z().b(cwv.p)) {
+            $$1.a(vu.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> vu.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
       }
    }
 
-   private static int b(du $$0) throws CommandSyntaxException {
-      try {
-         Path $$1 = Paths.get(".").relativize(bji.e.b().normalize());
-         Path $$2 = $$0.l().r() && !aa.aV ? $$1 : $$1.toAbsolutePath();
-         vs $$3 = vs.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new vq(vq.a.f, $$2.toString())).a(new vy(vy.a.a, vs.c("chat.copy.click"))));
-         $$0.a(() -> vs.a("commands.jfr.stopped", $$3), false);
-         return 1;
-      } catch (Throwable var4) {
-         throw b.create(var4.getMessage());
+   private static int a(CommandContext<du> $$0, Collection<apg> $$1, cww $$2) {
+      int $$3 = 0;
+
+      for (apg $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((du)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
       }
+
+      return $$3;
    }
 }

@@ -1,68 +1,40 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bvc extends bvu {
-   private final cbp a;
-   @Nullable
-   private cia b;
-   private final cwe c;
-   private final float d;
-   private int e;
-   private final bzn f;
+public class bvc extends brg<chw> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public bvc(cbp $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$0.dJ();
-      this.d = $$1;
-      this.f = bzn.b().a((double)$$1);
-      this.a(EnumSet.of(bvu.a.b));
+   public bvc() {
+      super(ImmutableMap.of(byr.ay, bys.a, byr.o, bys.b, byr.aF, bys.c, byr.aD, bys.c), chx.b);
    }
 
-   @Override
-   public boolean a() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
+   protected void a(apf $$0, chw $$1, long $$2) {
+      bqp<chw> $$3 = $$1.dP();
+      $$3.a(byr.aD, axy.a, 25L);
+      $$3.b(byr.m);
+      bpo $$4 = $$1.dP().c(byr.ay).get();
+      bri.a($$1, $$4);
+      $$1.b(bpz.l);
+      $$1.a($$4, 20, false);
    }
 
-   @Override
-   public boolean b() {
-      if (!this.b.bx()) {
-         return false;
-      } else {
-         return this.a.f((bof)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+   protected boolean b(apf $$0, chw $$1, long $$2) {
+      return true;
+   }
+
+   protected void c(apf $$0, chw $$1, long $$2) {
+      if (!$$1.dP().a(byr.aD) && !$$1.dP().a(byr.aF)) {
+         $$1.dP().a(byr.aF, axy.a, (long)(chx.b - 25));
+         $$1.a(aty.Bp, 3.0F, 1.0F);
       }
    }
 
-   @Override
-   public void c() {
-      this.a.A(true);
-      this.e = this.a(40 + this.a.ef().a(40));
-   }
-
-   @Override
-   public void d() {
-      this.a.A(false);
-      this.b = null;
-   }
-
-   @Override
-   public void e() {
-      this.a.I().a(this.b.do(), this.b.ds(), this.b.du(), 10.0F, (float)this.a.ab());
-      this.e--;
-   }
-
-   private boolean a(cia $$0) {
-      for (bmk $$1 : bmk.values()) {
-         cpq $$2 = $$0.b($$1);
-         if (this.a.u() && $$2.a(cpt.ry)) {
-            return true;
-         }
-
-         if (this.a.o($$2)) {
-            return true;
-         }
+   protected void d(apf $$0, chw $$1, long $$2) {
+      if ($$1.c(bpz.l)) {
+         $$1.b(bpz.a);
       }
 
-      return false;
+      $$1.dP().c(byr.ay).ifPresent($$1::j);
+      $$1.dP().b(byr.ay);
    }
 }

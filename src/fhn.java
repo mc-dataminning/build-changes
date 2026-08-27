@@ -1,332 +1,286 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.Collections;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class fhn extends fgh {
-   public static final int a = 16;
-   public static final int b = 36;
-   public static final int c = 30;
-   public static final fhn.a k = new fhn.a() {
-      @Override
-      public int a() {
-         return 0;
-      }
+public class fhn extends fhf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ajh b = new ajh("textures/misc/vignette.png");
+   private static final vu c = vu.b("============").a(n.p);
+   private static final String k = "           ";
+   private static final String l = "" + n.p + n.q + n.k + n.l;
+   private static final float m = 5.0F;
+   private static final float n = 15.0F;
+   private final boolean o;
+   private final Runnable p;
+   private float q;
+   private List<awi> r;
+   private IntSet t;
+   private int u;
+   private boolean v;
+   private final IntSet w = new IntOpenHashSet();
+   private float x;
+   private final float y;
+   private int z;
+   private final fbx A = new fbx(false);
 
-      @Override
-      public vx a(int $$0) {
-         return vx.b;
-      }
-   };
-   public static final ajc l = new ajc("textures/gui/book.png");
-   protected static final int m = 114;
-   protected static final int n = 128;
-   protected static final int o = 192;
-   protected static final int p = 192;
-   private fhn.a q;
-   private int r;
-   private List<avy> t = Collections.emptyList();
-   private int u = -1;
-   private vs v = vr.a;
-   private fio w;
-   private fio x;
-   private final boolean y;
-
-   public fhn(fhn.a $$0) {
-      this($$0, true);
-   }
-
-   public fhn() {
-      this(k, false);
-   }
-
-   private fhn(fhn.a $$0, boolean $$1) {
-      super(eyc.a);
-      this.q = $$0;
-      this.y = $$1;
-   }
-
-   public void a(fhn.a $$0) {
-      this.q = $$0;
-      this.r = awm.a(this.r, 0, $$0.a());
-      this.L();
-      this.u = -1;
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = awm.a($$0, 0, this.q.a() - 1);
-      if ($$1 != this.r) {
-         this.r = $$1;
-         this.L();
-         this.u = -1;
-         return true;
+   public fhn(boolean $$0, Runnable $$1) {
+      super(eyy.a);
+      this.o = $$0;
+      this.p = $$1;
+      if (!$$0) {
+         this.y = 0.75F;
       } else {
-         return false;
+         this.y = 0.5F;
       }
+
+      this.z = 1;
+      this.x = this.y;
    }
 
-   protected boolean b(int $$0) {
-      return this.a($$0);
+   private float o() {
+      return this.v ? this.y * (5.0F + (float)this.w.size() * 15.0F) * (float)this.z : this.y * (float)this.z;
    }
 
    @Override
-   protected void aP_() {
-      this.o();
-      this.E();
-   }
-
-   protected void o() {
-      this.c(fak.a(vr.d, $$0 -> this.d()).a(this.g / 2 - 100, 196, 200, 20).a());
-   }
-
-   protected void E() {
-      int $$0 = (this.g - 192) / 2;
-      int $$1 = 2;
-      this.w = this.c(new fio($$0 + 116, 159, true, $$0x -> this.J(), this.y));
-      this.x = this.c(new fio($$0 + 43, 159, false, $$0x -> this.I(), this.y));
-      this.L();
-   }
-
-   private int H() {
-      return this.q.a();
-   }
-
-   protected void I() {
-      if (this.r > 0) {
-         this.r--;
+   public void e() {
+      this.f.s().a();
+      this.f.ak().a(false);
+      float $$0 = (float)(this.u + this.h + this.h + 24);
+      if (this.q > $$0) {
+         this.E();
       }
-
-      this.L();
-   }
-
-   protected void J() {
-      if (this.r < this.H() - 1) {
-         this.r++;
-      }
-
-      this.L();
-   }
-
-   private void L() {
-      this.w.k = this.r < this.H() - 1;
-      this.x.k = this.r > 0;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         switch ($$0) {
-            case 266:
-               this.x.b();
-               return true;
-            case 267:
-               this.w.b();
-               return true;
-            default:
-               return false;
-         }
-      }
-   }
-
-   @Override
-   public void a(ezx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.g - 192) / 2;
-      int $$5 = 2;
-      if (this.u != this.r) {
-         vx $$6 = this.q.b(this.r);
-         this.t = this.i.c($$6, 114);
-         this.v = vs.a("book.pageIndicator", this.r + 1, Math.max(this.H(), 1));
+      if ($$0 == 265) {
+         this.z = -1;
+      } else if ($$0 == 341 || $$0 == 345) {
+         this.w.add($$0);
+      } else if ($$0 == 32) {
+         this.v = true;
       }
 
-      this.u = this.r;
-      int $$7 = this.i.a(this.v);
-      $$0.a(this.i, this.v, $$4 - $$7 + 192 - 44, 18, 0, false);
-      int $$8 = Math.min(128 / 9, this.t.size());
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         avy $$10 = this.t.get($$9);
-         $$0.a(this.i, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
-      }
-
-      wp $$11 = this.b((double)$$1, (double)$$2);
-      if ($$11 != null) {
-         $$0.a(this.i, $$11, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void b(ezx $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(l, (this.g - 192) / 2, 2, 0, 0, 192, 192);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         wp $$3 = this.b($$0, $$1);
-         if ($$3 != null && this.a($$3)) {
-            return true;
-         }
-      }
-
+      this.x = this.o();
       return super.a($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(wp $$0) {
-      vq $$1 = $$0.h();
-      if ($$1 == null) {
-         return false;
-      } else if ($$1.a() == vq.a.e) {
-         String $$2 = $$1.b();
+   public boolean b(int $$0, int $$1, int $$2) {
+      if ($$0 == 265) {
+         this.z = 1;
+      }
 
-         try {
-            int $$3 = Integer.parseInt($$2) - 1;
-            return this.b($$3);
-         } catch (Exception var5) {
-            return false;
-         }
-      } else {
-         boolean $$4 = super.a($$0);
-         if ($$4 && $$1.a() == vq.a.c) {
-            this.K();
+      if ($$0 == 32) {
+         this.v = false;
+      } else if ($$0 == 341 || $$0 == 345) {
+         this.w.remove($$0);
+      }
+
+      this.x = this.o();
+      return super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public void d() {
+      this.E();
+   }
+
+   private void E() {
+      this.p.run();
+   }
+
+   @Override
+   protected void aO_() {
+      if (this.r == null) {
+         this.r = Lists.newArrayList();
+         this.t = new IntOpenHashSet();
+         if (this.o) {
+            this.a("texts/end.txt", this::a);
          }
 
-         return $$4;
+         this.a("texts/credits.json", this::b);
+         if (this.o) {
+            this.a("texts/postcredits.txt", this::a);
+         }
+
+         this.u = this.r.size() * 12;
       }
    }
 
-   protected void K() {
-      this.f.a(null);
+   private void a(String $$0, fhn.a $$1) {
+      try (Reader $$2 = this.f.ab().openAsReader(new ajh($$0))) {
+         $$1.read($$2);
+      } catch (Exception var8) {
+         a.error("Couldn't load credits", var8);
+      }
    }
 
-   @Nullable
-   public wp b(double $$0, double $$1) {
-      if (this.t.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = awm.a($$0 - (double)((this.g - 192) / 2) - 36.0);
-         int $$3 = awm.a($$1 - 2.0 - 30.0);
-         if ($$2 >= 0 && $$3 >= 0) {
-            int $$4 = Math.min(128 / 9, this.t.size());
-            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
-               int $$5 = $$3 / 9;
-               if ($$5 >= 0 && $$5 < this.t.size()) {
-                  avy $$6 = this.t.get($$5);
-                  return this.f.h.b().a($$6, $$2);
-               } else {
-                  return null;
+   private void a(Reader $$0) throws IOException {
+      BufferedReader $$1 = new BufferedReader($$0);
+      axd $$2 = axd.a(8124371L);
+
+      String $$3;
+      while (($$3 = $$1.readLine()) != null) {
+         $$3 = $$3.replaceAll("PLAYERNAME", this.f.X().c());
+
+         int $$4;
+         while (($$4 = $$3.indexOf(l)) != -1) {
+            String $$5 = $$3.substring(0, $$4);
+            String $$6 = $$3.substring($$4 + l.length());
+            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
+         }
+
+         this.a($$3);
+         this.H();
+      }
+
+      for (int $$7 = 0; $$7 < 8; $$7++) {
+         this.H();
+      }
+   }
+
+   private void b(Reader $$0) {
+      for (JsonElement $$2 : awm.b($$0)) {
+         JsonObject $$3 = $$2.getAsJsonObject();
+         String $$4 = $$3.get("section").getAsString();
+         this.a(c, true);
+         this.a(vu.b($$4).a(n.o), true);
+         this.a(c, true);
+         this.H();
+         this.H();
+
+         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
+            JsonObject $$7 = $$6.getAsJsonObject();
+            String $$8 = $$7.get("discipline").getAsString();
+            if (StringUtils.isNotEmpty($$8)) {
+               this.a(vu.b($$8).a(n.o), true);
+               this.H();
+               this.H();
+            }
+
+            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
+               JsonObject $$11 = $$10.getAsJsonObject();
+               String $$12 = $$11.get("title").getAsString();
+               JsonArray $$13 = $$11.getAsJsonArray("names");
+               this.a(vu.b($$12).a(n.h), false);
+
+               for (JsonElement $$14 : $$13) {
+                  String $$15 = $$14.getAsString();
+                  this.a(vu.b("           ").f($$15).a(n.p), false);
                }
+
+               this.H();
+               this.H();
+            }
+         }
+      }
+   }
+
+   private void H() {
+      this.r.add(awi.a);
+   }
+
+   private void a(String $$0) {
+      this.r.addAll(this.f.h.c(vu.b($$0), 256));
+   }
+
+   private void a(vu $$0, boolean $$1) {
+      if ($$1) {
+         this.t.add(this.r.size());
+      }
+
+      this.r.add($$0.g());
+   }
+
+   @Override
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
+      this.q = Math.max(0.0F, this.q + $$3 * this.x);
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = this.g / 2 - 128;
+      int $$5 = this.h + 50;
+      float $$6 = -this.q;
+      $$0.c().a();
+      $$0.c().a(0.0F, $$6, 0.0F);
+      this.A.a($$0, this.g, 1.0F, $$5);
+      int $$7 = $$5 + 100;
+
+      for (int $$8 = 0; $$8 < this.r.size(); $$8++) {
+         if ($$8 == this.r.size() - 1) {
+            float $$9 = (float)$$7 + $$6 - (float)(this.h / 2 - 6);
+            if ($$9 < 0.0F) {
+               $$0.c().a(0.0F, -$$9, 0.0F);
+            }
+         }
+
+         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.h) {
+            awi $$10 = this.r.get($$8);
+            if (this.t.contains($$8)) {
+               $$0.a(this.i, $$10, $$4 + 128, $$7, 16777215);
             } else {
-               return null;
+               $$0.b(this.i, $$10, $$4, $$7, 16777215);
             }
-         } else {
-            return null;
-         }
-      }
-   }
-
-   static List<String> a(sy $$0) {
-      Builder<String> $$1 = ImmutableList.builder();
-      a($$0, $$1::add);
-      return $$1.build();
-   }
-
-   public static void a(sy $$0, Consumer<String> $$1) {
-      te $$2 = $$0.c("pages", 8).e();
-      IntFunction<String> $$4;
-      if (eyk.P().aR() && $$0.b("filtered_pages", 10)) {
-         sy $$3 = $$0.p("filtered_pages");
-         $$4 = $$2x -> {
-            String $$3x = String.valueOf($$2x);
-            return $$3.e($$3x) ? $$3.l($$3x) : $$2.j($$2x);
-         };
-      } else {
-         $$4 = $$2::j;
-      }
-
-      for (int $$6 = 0; $$6 < $$2.size(); $$6++) {
-         $$1.accept($$4.apply($$6));
-      }
-   }
-
-   public interface a {
-      int a();
-
-      vx a(int var1);
-
-      default vx b(int $$0) {
-         return $$0 >= 0 && $$0 < this.a() ? this.a($$0) : vx.b;
-      }
-
-      static fhn.a a(cpq $$0) {
-         if ($$0.a(cpt.tX)) {
-            return new fhn.c($$0);
-         } else {
-            return (fhn.a)($$0.a(cpt.tW) ? new fhn.b($$0) : fhn.k);
-         }
-      }
-   }
-
-   public static class b implements fhn.a {
-      private final List<String> a;
-
-      public b(cpq $$0) {
-         this.a = b($$0);
-      }
-
-      private static List<String> b(cpq $$0) {
-         sy $$1 = $$0.w();
-         return (List<String>)($$1 != null ? fhn.a($$1) : ImmutableList.of());
-      }
-
-      @Override
-      public int a() {
-         return this.a.size();
-      }
-
-      @Override
-      public vx a(int $$0) {
-         return vx.e(this.a.get($$0));
-      }
-   }
-
-   public static class c implements fhn.a {
-      private final List<String> a;
-
-      public c(cpq $$0) {
-         this.a = b($$0);
-      }
-
-      private static List<String> b(cpq $$0) {
-         sy $$1 = $$0.w();
-         return (List<String>)($$1 != null && crl.a($$1) ? fhn.a($$1) : ImmutableList.of(vs.a.a(vs.c("book.invalid.tag").a(n.e))));
-      }
-
-      @Override
-      public int a() {
-         return this.a.size();
-      }
-
-      @Override
-      public vx a(int $$0) {
-         String $$1 = this.a.get($$0);
-
-         try {
-            vx $$2 = vs.a.a($$1);
-            if ($$2 != null) {
-               return $$2;
-            }
-         } catch (Exception var4) {
          }
 
-         return vx.e($$1);
+         $$7 += 12;
       }
+
+      $$0.c().b();
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
+      $$0.a(b, 0, 0, 0, 0.0F, 0.0F, this.g, this.h, this.g, this.h);
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   }
+
+   @Override
+   public void b(fat $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.g;
+      float $$5 = this.q * 0.5F;
+      int $$6 = 64;
+      float $$7 = this.q / this.y;
+      float $$8 = $$7 * 0.02F;
+      float $$9 = (float)(this.u + this.h + this.h + 24) / this.y;
+      float $$10 = ($$9 - 20.0F - $$7) * 0.005F;
+      if ($$10 < $$8) {
+         $$8 = $$10;
+      }
+
+      if ($$8 > 1.0F) {
+         $$8 = 1.0F;
+      }
+
+      $$8 *= $$8;
+      $$8 = $$8 * 96.0F / 255.0F;
+      $$0.a($$8, $$8, $$8, 1.0F);
+      $$0.a(d, 0, 0, 0, 0.0F, $$5, $$4, this.h, 64, 64);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void k() {
+      this.f.s().b(atw.c);
+   }
+
+   @Override
+   public atv D() {
+      return atw.c;
+   }
+
+   @FunctionalInterface
+   interface a {
+      void read(Reader var1) throws IOException;
    }
 }

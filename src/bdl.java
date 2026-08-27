@@ -1,22 +1,18 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 
-public class bdl extends axx {
-   public bdl(Schema $$0) {
-      super($$0, bdt.b);
+public class bdl extends DataFix {
+   public bdl(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(beh.E);
       return this.fixTypeEverywhereTyped(
-         "PlayerUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> {
-            OpticFinder<?> $$1 = $$0.getType().findField("RootVehicle");
-            return $$0.updateTyped($$1, $$1.type(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> c($$0xx, "Attach", "Attach").orElse($$0xx)))
-               .update(DSL.remainderFinder(), $$0x -> bay.c(bay.b($$0x)));
-         }
+         "ObjectiveDisplayNameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("DisplayName", ayb::a))
       );
    }
 }

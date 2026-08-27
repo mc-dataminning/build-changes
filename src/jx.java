@@ -1,43 +1,39 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
+import java.util.Locale;
+import org.joml.Vector3f;
 
-public class jx implements jz {
-   public static final jz.a<jx> a = new jz.a<jx>() {
-      public jx a(ka<jx> $$0, StringReader $$1, in.a $$2) throws CommandSyntaxException {
-         $$1.expect(' ');
-         gc.a $$3 = new gc($$2).a($$1);
-         cpq $$4 = new gb($$3.a(), $$3.b()).a(1, false);
-         return new jx($$0, $$4);
-      }
-   };
-   private final ka<jx> b;
-   private final cpq c;
+public abstract class jx implements ka {
+   public static final float f = 0.01F;
+   public static final float g = 4.0F;
+   protected final Vector3f h;
+   protected final float i;
 
-   public static Codec<jx> a(ka<jx> $$0) {
-      return cpq.a.xmap($$1 -> new jx($$0, $$1), $$0x -> $$0x.c);
+   public jx(Vector3f $$0, float $$1) {
+      this.h = $$0;
+      this.i = aww.a($$1, 0.01F, 4.0F);
    }
 
-   public static xq<? super vd, jx> b(ka<jx> $$0) {
-      return cpq.f.a($$1 -> new jx($$0, $$1), $$0x -> $$0x.c);
-   }
-
-   public jx(ka<jx> $$0, cpq $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static Vector3f a(StringReader $$0) throws CommandSyntaxException {
+      $$0.expect(' ');
+      float $$1 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$2 = $$0.readFloat();
+      $$0.expect(' ');
+      float $$3 = $$0.readFloat();
+      return new Vector3f($$1, $$2, $$3);
    }
 
    @Override
    public String a(in.a $$0) {
-      return kh.j.b(this.a()) + " " + new gb(this.c.e(), this.c.w()).b();
+      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f", ki.j.b(this.a()), this.h.x(), this.h.y(), this.h.z(), this.i);
    }
 
-   @Override
-   public ka<jx> a() {
-      return this.b;
+   public Vector3f d() {
+      return this.h;
    }
 
-   public cpq b() {
-      return this.c;
+   public float e() {
+      return this.i;
    }
 }

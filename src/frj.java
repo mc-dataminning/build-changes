@@ -1,17 +1,17 @@
 public class frj {
-   private final frb a;
-   private final bii b;
+   private final frl a;
+   private final frk b;
 
-   public frj(frb $$0, bii $$1) {
+   private frj(frl $$0, frk $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public void a() {
-      this.a.b(new ahy(ac.b()));
+   public frd a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   public void a(ahv $$0) {
-      this.b.a(ac.b() - $$0.b());
+   public static frj a(frl $$0, int $$1, int $$2) {
+      return new frj($$0, new frk($$1, $$2));
    }
 }

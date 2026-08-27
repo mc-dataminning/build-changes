@@ -1,84 +1,75 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public class cxq extends cxh {
-   private static final MapCodec<il<cxd>> d = cxd.c.fieldOf("biome");
-   public static final MapCodec<cxm.c<il<cxd>>> b = cxm.c.a(d).fieldOf("biomes");
-   private static final MapCodec<il<cxr>> e = cxr.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final Codec<cxq> c = Codec.mapEither(b, e).xmap(cxq::new, $$0 -> $$0.f).codec();
-   private final Either<cxm.c<il<cxd>>, il<cxr>> f;
+public record cxq(ta d, Optional<cxq.a> e) {
+   public static final String a = "entity";
+   public static final Codec<cxq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ta.a.fieldOf("entity").forGetter($$0x -> $$0x.d), cxq.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
+            .apply($$0, cxq::new)
+   );
+   public static final Codec<blm<cxq>> c = blm.a(b);
 
-   private cxq(Either<cxm.c<il<cxd>>, il<cxr>> $$0) {
-      this.f = $$0;
+   public cxq() {
+      this(new ta(), Optional.empty());
    }
 
-   public static cxq a(cxm.c<il<cxd>> $$0) {
-      return new cxq(Either.left($$0));
+   public cxq(ta d, Optional<cxq.a> e) {
+      if (d.e("id")) {
+         ajh $$2 = ajh.a(d.l("id"));
+         if ($$2 != null) {
+            d.a("id", $$2.toString());
+         } else {
+            d.r("id");
+         }
+      }
+
+      this.d = d;
+      this.e = e;
    }
 
-   public static cxq a(il<cxr> $$0) {
-      return new cxq(Either.right($$0));
+   public ta a() {
+      return this.d;
    }
 
-   private cxm.c<il<cxd>> d() {
-      return (cxm.c<il<cxd>>)this.f.map($$0 -> $$0, $$0 -> ((cxr)$$0.a()).a());
+   public Optional<cxq.a> b() {
+      return this.e;
    }
 
-   @Override
-   protected Stream<il<cxd>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   public ta c() {
+      return this.d;
    }
 
-   @Override
-   protected Codec<? extends cxh> a() {
-      return c;
+   public Optional<cxq.a> d() {
+      return this.e;
    }
 
-   public boolean a(ajb<cxr> $$0) {
-      Optional<il<cxr>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
-   }
-
-   @Override
-   public il<cxd> getNoiseBiome(int $$0, int $$1, int $$2, cxm.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @axp
-   public il<cxd> a(cxm.h $$0) {
-      return this.d().a($$0);
-   }
-
-   @Override
-   public void a(List<String> $$0, ib $$1, cxm.f $$2) {
-      int $$3 = iw.a($$1.u());
-      int $$4 = iw.a($$1.v());
-      int $$5 = iw.a($$1.w());
-      cxm.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = cxm.a($$6.d());
-      float $$8 = cxm.a($$6.e());
-      float $$9 = cxm.a($$6.b());
-      float $$10 = cxm.a($$6.c());
-      float $$11 = cxm.a($$6.g());
-      double $$12 = (double)drx.a($$11);
-      cxt $$13 = new cxt();
-      $$0.add(
-         "Biome builder PV: "
-            + cxt.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
+   public static record a(awo<Integer> b, awo<Integer> c) {
+      private static final awo<Integer> d = new awo<>(0, 15);
+      public static final Codec<cxq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, cxq.a::new)
       );
+
+      private static DataResult<awo<Integer>> a(awo<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<awo<Integer>> a(String $$0) {
+         return awe.a(awo.a.optionalFieldOf($$0, d), cxq.a::a);
+      }
+
+      public boolean a(ib $$0, apf $$1) {
+         return this.b.a($$1.a(cxi.b, $$0)) && this.c.a($$1.a(cxi.a, $$0));
+      }
+
+      public awo<Integer> a() {
+         return this.b;
+      }
+
+      public awo<Integer> b() {
+         return this.c;
+      }
    }
 }

@@ -1,23 +1,20 @@
-public interface czi {
-   boolean b(cwh var1, ib var2, dme var3);
+import com.mojang.serialization.MapCodec;
 
-   boolean a(cwe var1, awt var2, ib var3, dme var4);
+public class czi extends czk {
+   public static final MapCodec<czi> a = b(czi::new);
+   private static final eqk b = daa.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
-   void a(apa var1, awt var2, ib var3, dme var4);
-
-   default ib a(ib $$0) {
-      return switch (this.au_()) {
-         case a -> $$0.c();
-         case b -> $$0;
-      };
+   @Override
+   public MapCodec<? extends czi> a() {
+      return a;
    }
 
-   default czi.a au_() {
-      return czi.a.b;
+   protected czi(dmy.d $$0) {
+      super($$0);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return b;
    }
 }

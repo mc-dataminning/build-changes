@@ -1,29 +1,118 @@
 import com.mojang.logging.LogUtils;
-import java.io.OutputStream;
 import java.io.PrintStream;
-import javax.annotation.Nullable;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import org.slf4j.Logger;
 
-public class ajj extends PrintStream {
-   private static final Logger b = LogUtils.getLogger();
-   protected final String a;
+public class ajj {
+   public static final PrintStream a = System.out;
+   private static volatile boolean c;
+   private static final Logger d = LogUtils.getLogger();
+   public static final AtomicLong b = new AtomicLong(-1L);
 
-   public ajj(String $$0, OutputStream $$1) {
-      super($$1);
-      this.a = $$0;
+   public static void a() {
+      if (!c) {
+         c = true;
+         Instant $$0 = Instant.now();
+         if (ki.at.e().isEmpty()) {
+            throw new IllegalStateException("Unable to load registries");
+         } else {
+            dda.b();
+            dbl.b();
+            if (bpc.a(bpc.bx) == null) {
+               throw new IllegalStateException("Failed loading EntityTypes");
+            } else {
+               csi.a();
+               gk.a();
+               jo.c();
+               ji.a();
+               ki.a();
+               cou.a();
+               d();
+               b.set(Duration.between($$0, Instant.now()).toMillis());
+            }
+         }
+      }
    }
 
-   @Override
-   public void println(@Nullable String $$0) {
-      this.a($$0);
+   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
+      sv $$3 = sv.a();
+      $$0.forEach($$3x -> {
+         String $$4 = $$1.apply((T)$$3x);
+         if (!$$3.b($$4)) {
+            $$2.add($$4);
+         }
+      });
    }
 
-   @Override
-   public void println(Object $$0) {
-      this.a(String.valueOf($$0));
+   private static void a(final Set<String> $$0) {
+      final sv $$1 = sv.a();
+      cwv.a(new cwv.c() {
+         @Override
+         public <T extends cwv.g<T>> void a(cwv.e<T> $$0x, cwv.f<T> $$1x) {
+            if (!$$1.b($$0.b())) {
+               $$0.add($$0.a());
+            }
+         }
+      });
    }
 
-   protected void a(@Nullable String $$0) {
-      b.info("[{}]: {}", this.a, $$0);
+   public static Set<String> b() {
+      Set<String> $$0 = new TreeSet<>();
+      a(ki.u, bqq::c, $$0);
+      a(ki.g, bpc::g, $$0);
+      a(ki.d, boh::d, $$0);
+      a(ki.h, cqf::a, $$0);
+      a(ki.f, cuu::h, $$0);
+      a(ki.e, daa::g, $$0);
+      a(ki.m, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a($$0);
+      return $$0;
+   }
+
+   public static void a(Supplier<String> $$0) {
+      if (!c) {
+         throw b($$0);
+      }
+   }
+
+   private static RuntimeException b(Supplier<String> $$0) {
+      try {
+         String $$1 = $$0.get();
+         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
+      } catch (Exception var3) {
+         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
+         $$3.addSuppressed(var3);
+         return $$3;
+      }
+   }
+
+   public static void c() {
+      a(() -> "validate");
+      if (aa.aW) {
+         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
+         dv.b();
+      }
+
+      bqw.a();
+   }
+
+   private static void d() {
+      if (d.isDebugEnabled()) {
+         System.setErr(new ajm("STDERR", System.err));
+         System.setOut(new ajm("STDOUT", a));
+      } else {
+         System.setErr(new ajo("STDERR", System.err));
+         System.setOut(new ajo("STDOUT", a));
+      }
+   }
+
+   public static void a(String $$0) {
+      a.println($$0);
    }
 }

@@ -1,29 +1,39 @@
-public class afr implements xz<aev> {
-   public static final xq<us, afr> a = xz.a(afr::a, afr::new);
-   private final boolean b;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-   public afr(boolean $$0) {
-      this.b = $$0;
-   }
+public record afr(int c, List<String> d, Optional<String> e) implements yb<aez> {
+   public static final int a = 4;
+   private static final int f = 128;
+   private static final int g = 8192;
+   private static final int h = 200;
+   public static final xs<uu, afr> b = xs.a(xq.d, afr::b, xq.b(8192).a(xq.a(uu.a(ArrayList::new, 200))), afr::e, xq.b(128).a(xq::a), afr::f, afr::new);
 
-   private afr(us $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(us $$0) {
-      $$0.a(this.b);
+   public afr(int c, List<String> d, Optional<String> e) {
+      d = List.copyOf(d);
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
    @Override
-   public yb<afr> a() {
-      return aet.by;
+   public yd<afr> a() {
+      return aex.bu;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.b;
+   public int b() {
+      return this.c;
+   }
+
+   public List<String> e() {
+      return this.d;
+   }
+
+   public Optional<String> f() {
+      return this.e;
    }
 }

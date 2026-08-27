@@ -1,40 +1,32 @@
-import java.util.EnumSet;
+public class bxd extends bwc {
+   private final boolean a;
+   private int b;
 
-public class bxd extends bvu {
-   private final chi a;
-
-   public bxd(chi $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bvu.a.c, bvu.a.a));
+   public bxd(bpq $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean a() {
-      if (!this.a.bx()) {
-         return false;
-      } else if (this.a.aZ()) {
-         return false;
-      } else if (!this.a.aC()) {
-         return false;
-      } else if (this.a.S) {
-         return false;
-      } else {
-         cia $$0 = this.a.gl();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.f($$0) > 16.0 ? false : $$0.bX != null;
-         }
-      }
+   public boolean b() {
+      return this.a && this.b > 0 && super.b();
    }
 
    @Override
    public void c() {
-      this.a.N().n();
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
    public void d() {
-      this.a.f(null);
+      this.a(false);
+   }
+
+   @Override
+   public void e() {
+      this.b--;
+      super.e();
    }
 }

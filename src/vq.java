@@ -1,81 +1,84 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class vq {
+public record vq(vr j, vr k) {
    public static final Codec<vq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(vq.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, vq::new)
+      $$0 -> $$0.group(vr.a.fieldOf("chat").forGetter(vq::a), vr.a.fieldOf("narration").forGetter(vq::b)).apply($$0, vq::new)
    );
-   private final vq.a b;
-   private final String c;
+   public static final vr b = vr.a("chat.type.text");
+   public static final ajg<vq> c = a("chat");
+   public static final ajg<vq> d = a("say_command");
+   public static final ajg<vq> e = a("msg_command_incoming");
+   public static final ajg<vq> f = a("msg_command_outgoing");
+   public static final ajg<vq> g = a("team_msg_command_incoming");
+   public static final ajg<vq> h = a("team_msg_command_outgoing");
+   public static final ajg<vq> i = a("emote_command");
 
-   public vq(vq.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private static ajg<vq> a(String $$0) {
+      return ajg.a(kj.av, new ajh($$0));
    }
 
-   public vq.a a() {
-      return this.b;
+   public static void a(pl<vq> $$0) {
+      $$0.a(c, new vq(b, vr.a("chat.type.text.narrate")));
+      $$0.a(d, new vq(vr.a("chat.type.announcement"), vr.a("chat.type.text.narrate")));
+      $$0.a(e, new vq(vr.b("commands.message.display.incoming"), vr.a("chat.type.text.narrate")));
+      $$0.a(f, new vq(vr.c("commands.message.display.outgoing"), vr.a("chat.type.text.narrate")));
+      $$0.a(g, new vq(vr.d("chat.type.team.text"), vr.a("chat.type.text.narrate")));
+      $$0.a(h, new vq(vr.d("chat.type.team.sent"), vr.a("chat.type.text.narrate")));
+      $$0.a(i, new vq(vr.a("chat.type.emote"), vr.a("chat.type.emote")));
    }
 
-   public String b() {
-      return this.c;
+   public static vq.a a(ajg<vq> $$0, bow $$1) {
+      return a($$0, $$1.dM().H_(), $$1.O_());
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         vq $$1 = (vq)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public static vq.a a(ajg<vq> $$0, du $$1) {
+      return a($$0, $$1.v(), $$1.b());
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
+   public static vq.a a(ajg<vq> $$0, iz $$1, vu $$2) {
+      iy<vq> $$3 = $$1.d(kj.av);
+      return new vq.a($$3.g($$0), $$2);
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public vr a() {
+      return this.j;
    }
 
-   public static enum a implements axg {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
+   public vr b() {
+      return this.k;
+   }
 
-      public static final MapCodec<vq.a> g = axg.a(vq.a::values).fieldOf("action");
-      public static final MapCodec<vq.a> h = avu.a(g, vq.a::a);
-      private final boolean i;
-      private final String j;
+   public static record a(il<vq> b, vu c, Optional<vu> d) {
+      public static final xs<vf, vq.a> a = xs.a(xq.b(kj.av), vq.a::a, vw.b, vq.a::b, vw.c, vq.a::c, vq.a::new);
 
-      private a(String $$0, boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
+      a(il<vq> $$0, vu $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      public boolean a() {
-         return this.i;
+      public vu a(vu $$0) {
+         return this.b.a().a().a($$0, this);
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      public vu b(vu $$0) {
+         return this.b.a().b().a($$0, this);
       }
 
-      public static DataResult<vq.a> a(vq.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      public vq.a c(vu $$0) {
+         return new vq.a(this.b, this.c, Optional.of($$0));
+      }
+
+      public il<vq> a() {
+         return this.b;
+      }
+
+      public vu b() {
+         return this.c;
+      }
+
+      public Optional<vu> c() {
+         return this.d;
       }
    }
 }

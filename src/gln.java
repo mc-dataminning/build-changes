@@ -1,5 +1,8 @@
-public interface gln extends glm {
-   boolean m();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void q();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gln {
 }

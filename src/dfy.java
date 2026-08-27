@@ -1,117 +1,165 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfy extends cyr implements dgf {
-   public static final MapCodec<dfy> a = b(dfy::new);
-   public static final dmv b = dmu.F;
-   public static final dmv c = dmu.C;
-   public static final dmv d = dmu.G;
-   protected static final epo e = czf.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final double f = e.c(ih.a.b);
+public class dfy extends czp {
+   public static final MapCodec<dfy> d = b(dfy::new);
+   public static final dnx<dod> e = dnp.ag;
 
    @Override
    public MapCodec<dfy> a() {
-      return a;
+      return d;
    }
 
-   public dfy(dmd.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(b);
-      $$0.a(c);
-      $$0.a(d);
+   protected dfy(dmy.d $$0) {
+      super(false, $$0);
+      this.k(this.E.b().a(e, dod.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(cwe $$0, ib $$1, dme $$2, bof $$3) {
-      if ($$0 instanceof apa $$4) {
-         apb $$5 = dks.a($$3);
-         if ($$5 != null) {
-            $$4.a($$1, djn.L).ifPresent($$2x -> $$2x.a($$4, $$5));
+   protected void a(dmz $$0, cwz $$1, ib $$2, daa $$3) {
+      if ($$3.o().m() && new dfz($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
+      }
+   }
+
+   @Override
+   public doc<dod> c() {
+      return e;
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dgm $$1) {
+      dod $$2 = $$0.c(e);
+
+      return $$0.a(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dod.a;
+               case b:
+                  yield dod.b;
+               case c:
+                  yield dod.d;
+               case d:
+                  yield dod.c;
+               case e:
+                  yield dod.f;
+               case f:
+                  yield dod.e;
+               case g:
+                  yield dod.i;
+               case h:
+                  yield dod.j;
+               case i:
+                  yield dod.g;
+               case j:
+                  yield dod.h;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
          }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dod.b;
+               case b:
+                  yield dod.a;
+               case c:
+                  yield dod.e;
+               case d:
+                  yield dod.f;
+               case e:
+                  yield dod.d;
+               case f:
+                  yield dod.c;
+               case g:
+                  yield dod.j;
+               case h:
+                  yield dod.g;
+               case i:
+                  yield dod.h;
+               case j:
+                  yield dod.i;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dod.b;
+               case b:
+                  yield dod.a;
+               case c:
+                  yield dod.f;
+               case d:
+                  yield dod.e;
+               case e:
+                  yield dod.c;
+               case f:
+                  yield dod.d;
+               case g:
+                  yield dod.h;
+               case h:
+                  yield dod.i;
+               case i:
+                  yield dod.j;
+               case j:
+                  yield dod.g;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         default -> $$2;
+      });
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dew $$1) {
+      dod $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, dod.f);
+               case f:
+                  return $$0.a(e, dod.e);
+               case g:
+                  return $$0.a(e, dod.j);
+               case h:
+                  return $$0.a(e, dod.i);
+               case i:
+                  return $$0.a(e, dod.h);
+               case j:
+                  return $$0.a(e, dod.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, dod.d);
+               case d:
+                  return $$0.a(e, dod.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, dod.h);
+               case h:
+                  return $$0.a(e, dod.g);
+               case i:
+                  return $$0.a(e, dod.j);
+               case j:
+                  return $$0.a(e, dod.i);
+            }
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, dme $$3, boolean $$4) {
-      if ($$1 instanceof apa $$5 && $$0.c(b) && !$$0.a($$3.b())) {
-         $$5.a($$2, djn.L).ifPresent($$1x -> $$1x.a($$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-         $$1.a($$2, djn.L).ifPresent($$1x -> $$1x.a($$1));
-      }
-   }
-
-   @Override
-   protected dfk b_(dme $$0) {
-      return dfk.c;
-   }
-
-   @Override
-   protected epo b(dme $$0, cvk $$1, ib $$2, epa $$3) {
-      return e;
-   }
-
-   @Override
-   protected epo f(dme $$0, cvk $$1, ib $$2) {
-      return e;
-   }
-
-   @Override
-   protected boolean g_(dme $$0) {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public djl a(ib $$0, dme $$1) {
-      return new dks($$0, $$1);
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, ehs.c, ehs.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dme a(crx $$0) {
-      return this.o().a(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == ehs.c));
-   }
-
-   @Override
-   protected ehr c_(dme $$0) {
-      return $$0.c(c) ? ehs.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected void a(dme $$0, apa $$1, ib $$2, cpq $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, bln.a(5));
-      }
-   }
-
-   @Nullable
-   @Override
-   public <T extends djl> djm<T> a(cwe $$0, dme $$1, djn<T> $$2) {
-      return !$$0.B ? cyr.a($$2, djn.L, ($$0x, $$1x, $$2x, $$3) -> dra.c.a($$0x, $$3.gn(), $$3.go())) : null;
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(e, c);
    }
 }

@@ -1,79 +1,59 @@
-public class fmd extends flz<cbt> {
-   private static final float a = 16.02F;
-   private static final float b = 25.0F;
-   private static final float f = 22.5F;
-   private static final float g = 16.5F;
-   private static final float h = 2.5F;
-   private static final String i = "head_cube";
-   private static final String j = "right_ear_cube";
-   private static final String k = "left_ear_cube";
-   private final fqf l;
-   private final fqf m;
-   private final fqf n;
-   private final fqf o;
-   private final fqf p;
-   private final fqf q;
-   private final fqf r;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-   public fmd(fqf $$0) {
-      super(0.6F, 16.02F);
-      this.l = $$0;
-      this.m = $$0.b("body");
-      this.n = $$0.b("right_hind_leg");
-      this.o = $$0.b("left_hind_leg");
-      this.q = this.m.b("head");
-      this.r = this.m.b("tail");
-      this.p = $$0.b("cube");
+public record fmd(dtk a, iy<dqn> b, dth c, is<ajq> d, ajr e, cxt f) {
+   public fmd(dti $$0, is<ajq> $$1, ajr $$2, cxt $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   public static fql b() {
-      fqn $$0 = new fqn();
-      fqo $$1 = $$0.a();
-      fqo $$2 = $$1.a(
-         "body",
-         fqk.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fqj(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fqj(0.0F)),
-         fqh.a(0.0F, 21.0F, 4.0F)
-      );
-      $$2.a("tail", fqk.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new fqj(0.0F)), fqh.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
-      fqo $$3 = $$2.a("head", fqk.c(), fqh.a(0.0F, -2.0F, -11.0F));
-      $$3.a("head_cube", fqk.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fqj(0.0F)), fqh.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
-      fqo $$4 = $$3.a("right_ear", fqk.c(), fqh.a(-1.0F, -1.0F, 0.0F));
-      $$4.a("right_ear_cube", fqk.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fqj(0.0F)), fqh.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
-      fqo $$5 = $$3.a("left_ear", fqk.c(), fqh.a(1.0F, -2.0F, 0.0F));
-      $$5.a("left_ear_cube", fqk.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fqj(0.0F)), fqh.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
-      $$1.a("right_hind_leg", fqk.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fqj(0.0F)), fqh.a(-2.0F, 21.0F, 4.0F));
-      $$1.a("left_hind_leg", fqk.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fqj(0.0F)), fqh.a(2.0F, 21.0F, 4.0F));
-      $$1.a("right_front_leg", fqk.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fqj(0.0F)), fqh.a(-2.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", fqk.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fqj(0.0F)), fqh.a(2.0F, 21.0F, -4.0F));
-      $$1.a("cube", fqk.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new fqj(0.0F)), fqh.a(0.0F, 24.0F, 0.0F));
-      return fql.a($$0, 64, 64);
+   public fmd(dtk $$0, dth $$1, is<ajq> $$2, ajr $$3, cxt $$4) {
+      this($$0, $$2.a(ajq.c).d(kj.aO), $$1, $$2.a(ajq.c), $$3, $$4);
    }
 
-   @Override
-   public fqf a() {
-      return this.l;
+   public fmd a(dtk $$0, dth $$1) {
+      return new fmd($$0, this.b, $$1, this.d, this.e, this.f);
    }
 
-   public void a(cbt $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fqf::c);
-      if ($$0.A()) {
-         this.m.l = true;
-         this.o.k = false;
-         this.n.k = false;
-         this.r.k = false;
-         this.p.k = true;
-      } else {
-         this.m.l = false;
-         this.o.k = true;
-         this.n.k = true;
-         this.r.k = true;
-         this.p.k = false;
-         this.q.e = awm.a($$5, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
-         this.q.f = awm.a($$4, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
-      }
+   public fmd a(fmd.b $$0) {
+      return new fmd($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   }
 
-      this.a(eze.b, $$1, $$2, 16.5F, 2.5F);
-      this.a($$0.bZ, eze.c, $$3, 1.0F);
-      this.a($$0.ca, eze.a, $$3, 1.0F);
+   public fmd a(fmd.a $$0) {
+      return new fmd(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   }
+
+   public iz.b a() {
+      return this.d.a();
+   }
+
+   public dtk b() {
+      return this.a;
+   }
+
+   public iy<dqn> c() {
+      return this.b;
+   }
+
+   public dth d() {
+      return this.c;
+   }
+
+   public is<ajq> e() {
+      return this.d;
+   }
+
+   public ajr f() {
+      return this.e;
+   }
+
+   public cxt g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<iz.b, dth, dth> {
+   }
+
+   public interface b extends UnaryOperator<dtk> {
    }
 }

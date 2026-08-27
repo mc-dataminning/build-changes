@@ -1,35 +1,43 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class cyr extends czf implements dbx {
-   protected cyr(dmd.d $$0) {
-      super($$0);
+public abstract class cyr extends czm {
+   private final cpb a;
+
+   protected cyr(cpb $$0, dmy.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
    protected abstract MapCodec<? extends cyr> a();
 
    @Override
-   protected dfk b_(dme $$0) {
-      return dfk.a;
+   public boolean a(dmz $$0) {
+      return true;
    }
 
    @Override
-   protected boolean a(dme $$0, cwe $$1, ib $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      djl $$5 = $$1.c_($$2);
-      return $$5 == null ? false : $$5.a_($$3, $$4);
+   public dkg a(ib $$0, dmz $$1) {
+      return new djw($$0, $$1, this.a);
    }
 
-   @Nullable
    @Override
-   protected bmp b(dme $$0, cwe $$1, ib $$2) {
-      djl $$3 = $$1.c_($$2);
-      return $$3 instanceof bmp ? (bmp)$$3 : null;
+   public void a(cwz $$0, ib $$1, dmz $$2, @Nullable bpo $$3, cqk $$4) {
+      if ($$0.B) {
+         $$0.a($$1, dki.t).ifPresent($$1x -> $$1x.b($$4));
+      } else if ($$4.B()) {
+         $$0.a($$1, dki.t).ifPresent($$1x -> $$1x.a($$4.z()));
+      }
    }
 
-   @Nullable
-   protected static <E extends djl, A extends djl> djm<A> a(djn<A> $$0, djn<E> $$1, djm<? super E> $$2) {
-      return $$1 == $$0 ? $$2 : null;
+   @Override
+   public cqk a(cxc $$0, ib $$1, dmz $$2) {
+      dkg $$3 = $$0.c_($$1);
+      return $$3 instanceof djw ? ((djw)$$3).c() : super.a($$0, $$1, $$2);
+   }
+
+   public cpb b() {
+      return this.a;
    }
 }

@@ -1,26 +1,30 @@
-public abstract class eot {
-   protected final eov a;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   protected eot(eov $$0) {
-      this.a = $$0;
+public record eot(eku.b c) implements eow {
+   public static final Codec<eot> a = RecordCodecBuilder.create($$0 -> $$0.group(eku.b.e.fieldOf("target").forGetter(eot::c)).apply($$0, eot::new));
+   public static final Codec<eot> b = eku.b.e.xmap(eot::new, eot::c);
+
+   public static eow a(eku.b $$0) {
+      return new eot($$0);
    }
 
-   public double a(bof $$0) {
-      double $$1 = this.a.c - $$0.do();
-      double $$2 = this.a.d - $$0.dq();
-      double $$3 = this.a.e - $$0.du();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   @Override
+   public eov a() {
+      return eox.c;
    }
 
-   public abstract eot.a c();
-
-   public eov e() {
-      return this.a;
+   @Nullable
+   @Override
+   public equ a(eku $$0) {
+      return $$0.c(this.c.a());
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public Set<enc<?>> b() {
+      return ImmutableSet.of(this.c.a());
    }
 }

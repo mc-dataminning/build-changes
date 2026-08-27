@@ -1,87 +1,99 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class gmj {
-   private final Set<gmj.a> a = Sets.newIdentityHashSet();
-   final eqy b;
-   final Executor c;
+public class gmj implements gns<gmj> {
+   public static final aja a = new aja("sounds", ".ogg");
+   private final ajh b;
+   private final bmk c;
+   private final bmk d;
+   private final int e;
+   private final gmj.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public gmj(eqy $$0, Executor $$1) {
-      this.b = $$0;
+   public gmj(String $$0, bmk $$1, bmk $$2, int $$3, gmj.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new ajh($$0);
       this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   public CompletableFuture<gmj.a> a(eqy.c $$0) {
-      CompletableFuture<gmj.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         eqx $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            gmj.a $$3 = new gmj.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
-         }
-      });
-      return $$1;
+   public ajh a() {
+      return this.b;
    }
 
-   public void a(Consumer<Stream<eqx>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   public ajh b() {
+      return a.a(this.b);
    }
 
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<gmj.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            gmj.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
+   public bmk c() {
+      return this.c;
    }
 
-   public void b() {
-      this.a.forEach(gmj.a::b);
-      this.a.clear();
+   public bmk d() {
+      return this.d;
    }
 
-   public class a {
+   @Override
+   public int e() {
+      return this.e;
+   }
+
+   public gmj a(axd $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(gnn $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public gmj.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
       @Nullable
-      eqx b;
-      private boolean c;
-
-      public boolean a() {
-         return this.c;
-      }
-
-      public a(eqx $$1) {
-         this.b = $$1;
-      }
-
-      public void a(Consumer<eqx> $$0) {
-         gmj.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
+      public static gmj.a a(String $$0) {
+         for (gmj.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
             }
-         });
-      }
+         }
 
-      public void b() {
-         this.c = true;
-         gmj.this.b.a(this.b);
-         this.b = null;
+         return null;
       }
    }
 }

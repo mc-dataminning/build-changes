@@ -1,17 +1,34 @@
-public class gfn<T extends box, M extends fne<T>> extends ggj<T, M> {
-   private final fwm a;
+public class gfn extends gcx<cfe> {
+   private final fyk a;
 
-   public gfn(gdt<T, M> $$0, fwm $$1) {
+   public gfn(gcy.a $$0) {
       super($$0);
-      this.a = $$1;
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public void a(etd $$0, fwq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      cpq $$10 = $$3.c(bom.a);
-      this.a.a($$3, $$10, cpn.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public void a(cfe $$0, float $$1, float $$2, etz $$3, fxq $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.5F, 0.0F);
+      int $$6 = $$0.r();
+      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+         $$7 = aww.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      $$3.a(a.d.rotationDegrees(-90.0F));
+      $$3.a(-0.5F, -0.5F, 0.5F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      gfm.a(this.a, $$0.s(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public ajh a(cfe $$0) {
+      return giy.e;
    }
 }

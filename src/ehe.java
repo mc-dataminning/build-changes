@@ -1,49 +1,20 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public interface ehe extends ehj {
-   @Nullable
-   dog a(jd var1);
+public class ehe extends egw {
+   public static final Codec<ehe> a = avd.a(kj.f).fieldOf("tag").xmap(ehe::new, $$0 -> $$0.b).codec();
+   private final avd<daa> b;
 
-   int b(ib var1);
+   public ehe(avd<daa> $$0) {
+      this.b = $$0;
+   }
 
-   public static enum a implements ehe {
-      a;
+   @Override
+   public boolean a(dmz $$0, axd $$1) {
+      return $$0.a(this.b);
+   }
 
-      @Nullable
-      @Override
-      public dog a(jd $$0) {
-         return null;
-      }
-
-      @Override
-      public int b(ib $$0) {
-         return 0;
-      }
-
-      @Override
-      public void a(ib $$0) {
-      }
-
-      @Override
-      public boolean L_() {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public void a(jd $$0, boolean $$1) {
-      }
-
-      @Override
-      public void a(cvl $$0, boolean $$1) {
-      }
-
-      @Override
-      public void b(cvl $$0) {
-      }
+   @Override
+   protected egx<?> a() {
+      return egx.d;
    }
 }

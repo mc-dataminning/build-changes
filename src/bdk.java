@@ -1,49 +1,80 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.CompoundList.CompoundListType;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class bdk extends DataFix {
-   public bdk(Schema $$0) {
-      super($$0, false);
+   public bdk(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bdt.c);
-      OpticFinder<?> $$1 = $$0.findField("block_ticks");
-      return this.fixTypeEverywhereTyped("Handle ticks saved in the wrong chunk", $$0, $$1x -> {
-         Optional<? extends Typed<?>> $$2 = $$1x.getOptionalTyped($$1);
-         Optional<? extends Dynamic<?>> $$3 = $$2.isPresent() ? $$2.get().write().result() : Optional.empty();
-         return $$1x.update(DSL.remainderFinder(), $$1xx -> {
-            int $$2x = $$1xx.get("xPos").asInt(0);
-            int $$3x = $$1xx.get("zPos").asInt(0);
-            Optional<? extends Dynamic<?>> $$4 = $$1xx.get("fluid_ticks").get().result();
-            $$1xx = a($$1xx, $$2x, $$3x, $$3, "neighbor_block_ticks");
-            return a($$1xx, $$2x, $$3x, $$4, "neighbor_fluid_ticks");
-         });
-      });
+      CompoundListType<String, ?> $$0 = DSL.compoundList(DSL.string(), this.getInputSchema().getType(beh.D));
+      OpticFinder<? extends List<? extends Pair<String, ?>>> $$1 = $$0.finder();
+      return this.a($$0);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2, Optional<? extends Dynamic<?>> $$3, String $$4) {
-      if ($$3.isPresent()) {
-         List<? extends Dynamic<?>> $$5 = $$3.get().asStream().filter($$2x -> {
-            int $$3x = $$2x.get("x").asInt(0);
-            int $$4x = $$2x.get("z").asInt(0);
-            int $$5x = Math.abs($$1 - ($$3x >> 4));
-            int $$6 = Math.abs($$2 - ($$4x >> 4));
-            return ($$5x != 0 || $$6 != 0) && $$5x <= 1 && $$6 <= 1;
-         }).toList();
-         if (!$$5.isEmpty()) {
-            $$0 = $$0.set("UpgradeData", $$0.get("UpgradeData").orElseEmptyMap().set($$4, $$0.createList($$5.stream())));
-         }
-      }
-
-      return $$0;
+   private <SF> TypeRewriteRule a(CompoundListType<String, SF> $$0) {
+      Type<?> $$1 = this.getInputSchema().getType(beh.c);
+      Type<?> $$2 = this.getInputSchema().getType(beh.D);
+      OpticFinder<?> $$3 = $$1.findField("Level");
+      OpticFinder<?> $$4 = $$3.type().findField("Structures");
+      OpticFinder<?> $$5 = $$4.type().findField("Starts");
+      OpticFinder<List<Pair<String, SF>>> $$6 = $$0.finder();
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped(
+            "NewVillageFix",
+            $$1,
+            $$4x -> $$4x.updateTyped(
+                  $$3,
+                  $$3xx -> $$3xx.updateTyped(
+                        $$4,
+                        $$2xxx -> $$2xxx.updateTyped(
+                                 $$5,
+                                 $$1xxxx -> $$1xxxx.update(
+                                       $$6,
+                                       $$0xxxxx -> $$0xxxxx.stream()
+                                             .filter($$0xxxxxx -> !Objects.equals($$0xxxxxx.getFirst(), "Village"))
+                                             .map($$0xxxxxx -> $$0xxxxxx.mapFirst($$0xxxxxxx -> $$0xxxxxxx.equals("New_Village") ? "Village" : $$0xxxxxxx))
+                                             .collect(Collectors.toList())
+                                    )
+                              )
+                              .update(
+                                 DSL.remainderFinder(),
+                                 $$0xxxx -> $$0xxxx.update(
+                                       "References",
+                                       $$0xxxxx -> {
+                                          Optional<? extends Dynamic<?>> $$1xxxx = $$0xxxxx.get("New_Village").result();
+                                          return ((Dynamic)DataFixUtils.orElse(
+                                                $$1xxxx.map($$1xxxxx -> $$0xxxxx.remove("New_Village").set("Village", $$1xxxxx)), $$0xxxxx
+                                             ))
+                                             .remove("Village");
+                                       }
+                                    )
+                              )
+                     )
+               )
+         ),
+         this.fixTypeEverywhereTyped(
+            "NewVillageStartFix",
+            $$2,
+            $$0x -> $$0x.update(
+                  DSL.remainderFinder(),
+                  $$0xx -> $$0xx.update(
+                        "id", $$0xxx -> Objects.equals(bfq.a($$0xxx.asString("")), "minecraft:new_village") ? $$0xxx.createString("minecraft:village") : $$0xxx
+                     )
+               )
+         )
+      );
    }
 }

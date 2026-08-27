@@ -1,90 +1,96 @@
-public class fix implements fiz {
-   private static final ajc a = new ajc("container/bundle/background");
-   private static final int b = 4;
-   private static final int c = 1;
-   private static final int d = 18;
-   private static final int e = 20;
-   private final iu<cpq> f;
-   private final int g;
+public class fix {
+   private static final ajh a = new ajh("minecraft", "alt");
+   private static final wr b = wr.a.a(a);
+   private static final fix c = new fix();
+   private final axd d = axd.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-   public fix(cmw $$0) {
-      this.f = $$0.a();
-      this.g = $$0.b();
+   private fix() {
    }
 
-   @Override
-   public int a() {
-      return this.c() + 4;
+   public static fix a() {
+      return c;
    }
 
-   @Override
-   public int a(ezv $$0) {
-      return this.b();
-   }
+   public vz a(far $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
 
-   private int b() {
-      return this.d() * 18 + 2;
-   }
-
-   private int c() {
-      return this.e() * 20 + 2;
-   }
-
-   @Override
-   public void a(ezv $$0, int $$1, int $$2, ezx $$3) {
-      int $$4 = this.d();
-      int $$5 = this.e();
-      $$3.a(a, $$1, $$2, this.b(), this.c());
-      boolean $$6 = this.g >= 64;
-      int $$7 = 0;
-
-      for (int $$8 = 0; $$8 < $$5; $$8++) {
-         for (int $$9 = 0; $$9 < $$4; $$9++) {
-            int $$10 = $$1 + $$9 * 18 + 1;
-            int $$11 = $$2 + $$8 * 20 + 1;
-            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
          }
+
+         $$2.append(ac.a(this.e, this.d));
       }
+
+      return $$0.b().a(vu.b($$2.toString()).c(b), $$1, wr.a);
    }
 
-   private void a(int $$0, int $$1, int $$2, boolean $$3, ezx $$4, ezv $$5) {
-      if ($$2 >= this.f.size()) {
-         this.a($$4, $$0, $$1, $$3 ? fix.a.a : fix.a.b);
-      } else {
-         cpq $$6 = this.f.get($$2);
-         this.a($$4, $$0, $$1, fix.a.b);
-         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
-         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
-         if ($$2 == 0) {
-            fhg.a($$4, $$0 + 1, $$1 + 1, 0);
-         }
-      }
-   }
-
-   private void a(ezx $$0, int $$1, int $$2, fix.a $$3) {
-      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
-   }
-
-   private int d() {
-      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.size() + 1.0)));
-   }
-
-   private int e() {
-      return (int)Math.ceil(((double)this.f.size() + 1.0) / (double)this.d());
-   }
-
-   static enum a {
-      a(new ajc("container/bundle/blocked_slot"), 18, 20),
-      b(new ajc("container/bundle/slot"), 18, 20);
-
-      public final ajc c;
-      public final int d;
-      public final int e;
-
-      private a(ajc $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

@@ -1,59 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+public abstract class cjr extends cjs implements cjh {
+   private static final aim<cqk> b = aiq.a(cjr.class, aio.h);
 
-public class cjr {
-   private final List<cjo> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<cjo> a() {
-      return ImmutableList.copyOf(this.a);
+   public cjr(bpc<? extends cjr> $$0, cwz $$1) {
+      super($$0, $$1);
    }
 
-   public cjr a(int $$0, float $$1) {
-      this.a.add(new cjo($$0, $$1));
-      this.b();
-      return this;
+   public cjr(bpc<? extends cjr> $$0, double $$1, double $$2, double $$3, cwz $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public cjr a(Collection<cjo> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   public cjr(bpc<? extends cjr> $$0, bpo $$1, cwz $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cjo> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
+   public void a(cqk $$0) {
+      this.an().a(b, $$0.c(1));
    }
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
+   protected abstract cqf r();
+
+   @Override
+   public cqk p() {
+      return this.an().a(b);
+   }
+
+   @Override
+   protected void a(aiq.a $$0) {
+      $$0.a(b, new cqk(this.r()));
+   }
+
+   @Override
+   public void b(ta $$0) {
+      super.b($$0);
+      $$0.a("Item", this.p().b(new ta()));
+   }
+
+   @Override
+   public void a(ta $$0) {
+      super.a($$0);
+      if ($$0.b("Item", 10)) {
+         this.a(cqk.a($$0.p("Item")));
       } else {
-         cjo $$1 = this.a.get(this.b);
-         cjo $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cjo $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+         this.a(new cqk(this.r()));
       }
    }
 }

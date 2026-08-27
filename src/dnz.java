@@ -1,51 +1,71 @@
-import java.util.BitSet;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 
-public class dnz {
-   private final int a;
-   private final BitSet b;
-   private dnz.a c = ($$0x, $$1x, $$2) -> false;
+public class dnz extends doc<Integer> {
+   private final ImmutableSet<Integer> a;
+   private final int b;
+   private final int c;
 
-   public dnz(int $$0, int $$1) {
-      this.a = $$1;
-      this.b = new BitSet(256 * $$0);
+   protected dnz(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         Set<Integer> $$3 = Sets.newHashSet();
+
+         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
+            $$3.add($$4);
+         }
+
+         this.a = ImmutableSet.copyOf($$3);
+      }
    }
 
-   public void a(dnz.a $$0) {
-      this.c = $$0;
+   @Override
+   public Collection<Integer> a() {
+      return this.a;
    }
 
-   public dnz(long[] $$0, int $$1) {
-      this.a = $$1;
-      this.b = BitSet.valueOf($$0);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dnz $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
    }
 
-   private int c(int $$0, int $$1, int $$2) {
-      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.b.set(this.c($$0, $$1, $$2));
+   public static dnz a(String $$0, int $$1, int $$2) {
+      return new dnz($$0, $$1, $$2);
    }
 
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         Integer $$1 = Integer.valueOf($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
    }
 
-   public Stream<ib> a(cvl $$0) {
-      return this.b.stream().mapToObj($$1 -> {
-         int $$2 = $$1 & 15;
-         int $$3 = $$1 >> 4 & 15;
-         int $$4 = $$1 >> 8;
-         return $$0.a($$2, $$4 + this.a, $$3);
-      });
-   }
-
-   public long[] a() {
-      return this.b.toLongArray();
-   }
-
-   public interface a {
-      boolean test(int var1, int var2, int var3);
+   public String a(Integer $$0) {
+      return $$0.toString();
    }
 }

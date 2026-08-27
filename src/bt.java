@@ -3,13 +3,13 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import java.util.Optional;
 
-public record bt(ip<bol<?>> b) {
-   public static final Codec<bt> a = Codec.either(aut.b(ki.u), kh.g.r())
+public record bt(ip<bpc<?>> b) {
+   public static final Codec<bt> a = Codec.either(avd.b(kj.u), ki.g.r())
       .flatComapMap(
-         $$0 -> (bt)$$0.map($$0x -> new bt(kh.g.a($$0x)), $$0x -> new bt(ip.a($$0x))),
+         $$0 -> (bt)$$0.map($$0x -> new bt(ki.g.a($$0x)), $$0x -> new bt(ip.a($$0x))),
          $$0 -> {
-            ip<bol<?>> $$1 = $$0.a();
-            Optional<aut<bol<?>>> $$2 = $$1.d();
+            ip<bpc<?>> $$1 = $$0.a();
+            Optional<avd<bpc<?>>> $$2 = $$1.d();
             if ($$2.isPresent()) {
                return DataResult.success(Either.left($$2.get()));
             } else {
@@ -20,19 +20,19 @@ public record bt(ip<bol<?>> b) {
          }
       );
 
-   public static bt a(bol<?> $$0) {
+   public static bt a(bpc<?> $$0) {
       return new bt(ip.a($$0.r()));
    }
 
-   public static bt a(aut<bol<?>> $$0) {
-      return new bt(kh.g.a($$0));
+   public static bt a(avd<bpc<?>> $$0) {
+      return new bt(ki.g.a($$0));
    }
 
-   public boolean b(bol<?> $$0) {
+   public boolean b(bpc<?> $$0) {
       return $$0.a(this.b);
    }
 
-   public ip<bol<?>> a() {
+   public ip<bpc<?>> a() {
       return this.b;
    }
 }

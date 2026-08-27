@@ -1,73 +1,139 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class cat extends cam {
-   private static final boi bV = bol.v.n().a(0.5F).b(0.665F);
+public class cat {
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<cas> b = new Short2ObjectOpenHashMap();
+   private final Map<il<cau>, Set<cas>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   public cat(bol<? extends cat> $$0, cwe $$1) {
-      super($$0, $$1);
+   public static Codec<cat> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     RecordCodecBuilder.point($$0),
+                     Codec.BOOL.optionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
+                     cas.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
+                  )
+                  .apply($$1, cat::new)
+         )
+         .orElseGet(ac.a("Failed to read POI section: ", a::error), () -> new cat($$0, false, ImmutableList.of()));
    }
 
-   @Override
-   protected void B() {
-      this.bP.a(0, new bvo(this));
-      this.bP.a(1, new bwn(this, 2.0));
-      this.bP.a(2, new bvg(this, 1.0));
-      this.bP.a(3, new bxc(this, 1.25, csp.a(cpt.pv), false));
-      this.bP.a(4, new bvt(this, 1.25));
-      this.bP.a(5, new bxh(this, 1.0));
-      this.bP.a(6, new bwc(this, cia.class, 6.0F));
-      this.bP.a(7, new bwp(this));
+   public cat(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
    }
 
-   public static bqd.a u() {
-      return boz.C().a(bqe.n, 10.0).a(bqe.o, 0.2F);
+   private cat(Runnable $$0, boolean $$1, List<cas> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
    }
 
-   @Override
-   protected ato y() {
-      return atp.fO;
+   public Stream<cas> a(Predicate<il<cau>> $$0, car.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((il<cau>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
    }
 
-   @Override
-   protected ato d(bne $$0) {
-      return atp.fQ;
-   }
-
-   @Override
-   protected ato n_() {
-      return atp.fP;
-   }
-
-   @Override
-   protected void b(ib $$0, dme $$1) {
-      this.a(atp.fS, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float eY() {
-      return 0.4F;
-   }
-
-   @Override
-   public bml b(cia $$0, bmk $$1) {
-      cpq $$2 = $$0.b($$1);
-      if ($$2.a(cpt.qx) && !this.o_()) {
-         $$0.a(atp.fR, 1.0F, 1.0F);
-         cpq $$3 = cps.a($$2, $$0, cpt.qD.an_());
-         $$0.a($$1, $$3);
-         return bml.a(this.dJ().B);
-      } else {
-         return super.b($$0, $$1);
+   public void a(ib $$0, il<cau> $$1) {
+      if (this.a(new cas($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
+         this.d.run();
       }
    }
 
-   @Nullable
-   public cat b(apa $$0, boa $$1) {
-      return bol.v.a((cwe)$$0);
+   private boolean a(cas $$0) {
+      ib $$1 = $$0.f();
+      il<cau> $$2 = $$0.g();
+      short $$3 = je.b($$1);
+      cas $$4 = (cas)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.g())) {
+            return false;
+         }
+
+         ac.a("POI data mismatch: already registered at " + $$1);
+      }
+
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
+      return true;
    }
 
-   @Override
-   public boi e(bpi $$0) {
-      return this.o_() ? bV : super.e($$0);
+   public void a(ib $$0) {
+      cas $$1 = (cas)this.b.remove(je.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
+      } else {
+         this.c.get($$1.g()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
+         this.d.run();
+      }
+   }
+
+   @Deprecated
+   @axz
+   public int b(ib $$0) {
+      return this.e($$0).map(cas::a).orElse(0);
+   }
+
+   public boolean c(ib $$0) {
+      cas $$1 = (cas)this.b.get(je.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)ac.b(new IllegalStateException("POI never registered at " + $$0));
+      } else {
+         boolean $$2 = $$1.c();
+         this.d.run();
+         return $$2;
+      }
+   }
+
+   public boolean a(ib $$0, Predicate<il<cau>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
+   }
+
+   public Optional<il<cau>> d(ib $$0) {
+      return this.e($$0).map(cas::g);
+   }
+
+   private Optional<cas> e(ib $$0) {
+      return Optional.ofNullable((cas)this.b.get(je.b($$0)));
+   }
+
+   public void a(Consumer<BiConsumer<ib, il<cau>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<cas> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.b();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = je.b($$1x);
+            cas $$4 = (cas)$$1.computeIfAbsent($$3, $$2x -> new cas($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
+      }
+   }
+
+   private void b() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   boolean a() {
+      return this.e;
    }
 }

@@ -1,49 +1,29 @@
-import javax.annotation.Nullable;
-
-public class agj implements xz<aev> {
-   public static final xq<us, agj> a = xz.a(agj::a, agj::new);
+public class agj implements yb<aez> {
+   public static final xs<uu, agj> a = yb.a(agj::a, agj::new);
    private final int b;
-   private final String c;
-   private final boolean d;
 
-   public agj(int $$0, String $$1, boolean $$2) {
+   public agj(int $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   private agj(us $$0) {
+   private agj(uu $$0) {
       this.b = $$0.l();
-      this.c = $$0.p();
-      this.d = $$0.readBoolean();
    }
 
-   private void a(us $$0) {
+   private void a(uu $$0) {
       $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
    }
 
    @Override
-   public yb<agj> a() {
-      return aet.bT;
+   public yd<agj> a() {
+      return aex.bP;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public cvf a(cwe $$0) {
-      bof $$1 = $$0.a(this.b);
-      return $$1 instanceof ckb ? ((ckb)$$1).C() : null;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public boolean e() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

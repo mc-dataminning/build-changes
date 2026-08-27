@@ -13,11 +13,11 @@ public enum ii {
    h(ih.c, ih.e);
 
    private final Set<ih> i;
-   private final jf j;
+   private final jg j;
 
    private ii(ih... $$0) {
       this.i = Sets.immutableEnumSet(Arrays.asList($$0));
-      this.j = new jf(0, 0, 0);
+      this.j = new jg(0, 0, 0);
 
       for (ih $$1 : $$0) {
          this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());

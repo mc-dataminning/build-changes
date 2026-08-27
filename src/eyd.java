@@ -1,39 +1,69 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum eyd implements awo {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
-
-   private static final IntFunction<eyd> d = ave.a(eyd::a, values(), ave.a.b);
-   private final int e;
+public class eyd extends eyg {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vu c = vu.c("mco.snapshot.creating");
+   private final long d;
+   private final exz e;
    private final String f;
+   private final String g;
+   private final euk h;
+   @Nullable
+   private eyi i;
+   @Nullable
+   private eyj j;
 
-   private eyd(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eyd(euk $$0, long $$1, exz $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$0;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public void run() {
+      eup $$0 = eup.a();
+
+      try {
+         evg $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new eyi($$1.a, this.f, this.g);
+         this.j = new eyj(this.e, $$1.a, exe.a, () -> ezg.Q().execute(() -> euk.a($$1, this.h, true)));
+         if (this.d()) {
+            return;
+         }
+
+         this.i.run();
+         if (this.d()) {
+            return;
+         }
+
+         this.j.run();
+      } catch (ewc var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
+      }
    }
 
    @Override
-   public String b() {
-      return this.f;
+   public vu a() {
+      return c;
    }
 
    @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
+      }
 
-   public static eyd a(int $$0) {
-      return d.apply($$0);
+      if (this.j != null) {
+         this.j.b();
+      }
    }
 }

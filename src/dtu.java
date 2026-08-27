@@ -1,42 +1,22 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dtu extends dts {
-   public dtu(Codec<dtr> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(ehs.e, ehs.c);
-   }
+public interface dtu<P extends dtt> {
+   dtu<dtz> a = a("matching_blocks", dtz.a);
+   dtu<dty> b = a("matching_block_tag", dty.e);
+   dtu<dua> c = a("matching_fluids", dua.a);
+   dtu<dtw> d = a("has_sturdy_face", dtw.a);
+   dtu<dud> e = a("solid", dud.a);
+   dtu<duc> f = a("replaceable", duc.a);
+   dtu<dug> g = a("would_survive", dug.a);
+   dtu<dtx> h = a("inside_world_bounds", dtx.a);
+   dtu<dts> i = a("any_of", dts.a);
+   dtu<dtr> j = a("all_of", dtr.a);
+   dtu<dub> k = a("not", dub.a);
+   dtu<duf> l = a("true", duf.e);
 
-   @Override
-   protected int a() {
-      return 10;
-   }
+   Codec<P> codec();
 
-   @Override
-   protected float a(awt $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
-   }
-
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(dtq $$0, dtr $$1, doa $$2, Function<ib, il<cxd>> $$3, dnz $$4, ib.a $$5, ib.a $$6, drc $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dme $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9, false);
-         return true;
-      } else {
-         return false;
-      }
+   private static <P extends dtt> dtu<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.O, $$0, () -> $$1);
    }
 }

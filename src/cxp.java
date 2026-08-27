@@ -1,134 +1,92 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public interface cxp extends cwf {
+   ih[] C = ih.values();
 
-public class cxp {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bkz<cxp.c> a = bkz.c();
-   public static final cxp b = new cxp.a().a();
-   public static final MapCodec<cxp> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bpa.i, bkz.c(cxp.c.a).promotePartial(ac.a("Spawn data: ", d::error)), axg.a(bpa.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(kh.g.q(), cxp.b.a, kh.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, cxp::new)
-   );
-   private final float f;
-   private final Map<bpa, bkz<cxp.c>> g;
-   private final Map<bol<?>, cxp.b> h;
-
-   cxp(float $$0, Map<bpa, bkz<cxp.c>> $$1, Map<bol<?>, cxp.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   default int a(ib $$0, ih $$1) {
+      return this.a_($$0).c(this, $$0, $$1);
    }
 
-   public bkz<cxp.c> a(bpa $$0) {
-      return this.g.getOrDefault($$0, a);
-   }
-
-   @Nullable
-   public cxp.b a(bol<?> $$0) {
-      return this.h.get($$0);
-   }
-
-   public float a() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Map<bpa, List<cxp.c>> a = Stream.of(bpa.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<bol<?>, cxp.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public cxp.a a(bpa $$0, cxp.c $$1) {
-         this.a.get($$0).add($$1);
-         return this;
-      }
-
-      public cxp.a a(bol<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new cxp.b($$2, $$1));
-         return this;
-      }
-
-      public cxp.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public cxp a() {
-         return new cxp(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bkz.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
-         );
+   default int e_(ib $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.d(), ih.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.c(), ih.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.e(), ih.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.f(), ih.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.g(), ih.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.h(), ih.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
       }
    }
 
-   public static record b(double b, double c) {
-      public static final Codec<cxp.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, cxp.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
+   default int a(ib $$0, ih $$1, boolean $$2) {
+      dmz $$3 = this.a_($$0);
+      if ($$2) {
+         return dcc.m($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(dac.ha)) {
+         return 15;
+      } else if ($$3.a(dac.cw)) {
+         return $$3.c(dgb.f);
+      } else {
+         return $$3.m() ? this.a($$0, $$1) : 0;
       }
    }
 
-   public static class c extends bkx.a {
-      public static final Codec<cxp.c> a = avu.a(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     kh.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     bkw.a.fieldOf("weight").forGetter(bkx.a::a),
-                     avu.k.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     avu.k.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, cxp.c::new)
-         ),
-         (Function<cxp.c, DataResult<cxp.c>>)($$0 -> $$0.c > $$0.d
-               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
-               : DataResult.success($$0))
-      );
-      public final bol<?> b;
-      public final int c;
-      public final int d;
+   default boolean b(ib $$0, ih $$1) {
+      return this.c($$0, $$1) > 0;
+   }
 
-      public c(bol<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, bkw.a($$1), $$2, $$3);
+   default int c(ib $$0, ih $$1) {
+      dmz $$2 = this.a_($$0);
+      int $$3 = $$2.b(this, $$0, $$1);
+      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean C(ib $$0) {
+      if (this.c($$0.d(), ih.a) > 0) {
+         return true;
+      } else if (this.c($$0.c(), ih.b) > 0) {
+         return true;
+      } else if (this.c($$0.e(), ih.c) > 0) {
+         return true;
+      } else if (this.c($$0.f(), ih.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.g(), ih.e) > 0 ? true : this.c($$0.h(), ih.f) > 0;
+      }
+   }
+
+   default int D(ib $$0) {
+      int $$1 = 0;
+
+      for (ih $$2 : C) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
       }
 
-      public c(bol<?> $$0, bkw $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bpa.h ? bol.ax : $$0;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return bol.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
-      }
+      return $$1;
    }
 }

@@ -1,147 +1,48 @@
-public class fts extends fve {
-   static final awt a = awt.a();
-   private final fuz b;
+import com.mojang.logging.LogUtils;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import org.slf4j.Logger;
 
-   fts(fra $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.b = $$7;
-      this.D *= 0.75F;
-      this.n = false;
-      this.b($$7);
-   }
+@FunctionalInterface
+public interface fts {
+   Logger a = LogUtils.getLogger();
+   fts b = $$0 -> Optional.empty();
 
-   @Override
-   public fui b() {
-      return fui.c;
-   }
+   Optional<ftp> lookupRedirect(ftp var1);
 
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = awm.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
+   static fts createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
       }
 
-      return $$3 | $$4 << 16;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements fuh<ke> {
-      private final double a = 0.25;
-      private final fuz b;
-
-      public a(fuz $$0) {
-         this.b = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fts $$8 = new fts($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
-         int $$9 = 2;
-         int $$10 = 4;
-         $$8.a($$1.z.a(2) + 2);
-         return $$8;
-      }
-   }
-
-   public static class b implements fuh<ke> {
-      private final fuz a;
-
-      public b(fuz $$0) {
-         this.a = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fts $$8 = new fts($$1, $$2, $$3, $$4, 0.5 - fts.a.j(), $$6, 0.5 - fts.a.j(), this.a);
-         if ($$1.z.h()) {
-            $$8.a(0.6F, 1.0F, 0.8F);
-         } else {
-            $$8.a(0.08F, 0.4F, 0.4F);
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
+            try {
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new ftp($$4x[3], ftp.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
+            }
          }
 
-         $$8.k *= 0.2F;
-         if ($$5 == 0.0 && $$7 == 0.0) {
-            $$8.j *= 0.1F;
-            $$8.l *= 0.1F;
-         }
-
-         $$8.a((int)(8.0 / ($$1.z.j() * 0.8 + 0.2)));
-         return $$8;
-      }
-   }
-
-   public static class c implements fuh<ke> {
-      private final double a = 0.01;
-      private final fuz b;
-
-      public c(fuz $$0) {
-         this.b = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fts $$8 = new fts($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         if ($$1.z.h()) {
-            $$8.a(0.29F, 0.58F, 0.51F);
-         } else {
-            $$8.a(0.43F, 0.77F, 0.62F);
-         }
-
-         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class d implements fuh<ke> {
-      private final double a = 0.01;
-      private final fuz b;
-
-      public d(fuz $$0) {
-         this.b = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fts $$8 = new fts($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class e implements fuh<ke> {
-      private final double a = 0.01;
-      private final fuz b;
-
-      public e(fuz $$0) {
-         this.b = $$0;
-      }
-
-      public fue a(ke $$0, fra $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fts $$8 = new fts($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(0.91F, 0.55F, 0.08F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
-      }
+         return Optional.empty();
+      };
    }
 }

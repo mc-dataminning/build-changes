@@ -1,11 +1,19 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public interface ego {
-   Codec<ego> c = kh.p.q().dispatch(ego::a, egp::codec);
+public class ego extends egp {
+   public static final Codec<ego> a = Codec.unit(() -> ego.b);
+   public static final ego b = new ego();
 
-   @Nullable
-   sy a(awt var1, @Nullable sy var2);
+   private ego() {
+   }
 
-   egp<?> a();
+   @Override
+   public boolean a(ib $$0, ib $$1, ib $$2, axd $$3) {
+      return true;
+   }
+
+   @Override
+   protected egq<?> a() {
+      return egq.a;
+   }
 }

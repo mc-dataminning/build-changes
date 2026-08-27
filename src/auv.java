@@ -1,45 +1,130 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
+public final class auv {
+   public static final avd<cqf> a = a("wool");
+   public static final avd<cqf> b = a("planks");
+   public static final avd<cqf> c = a("stone_bricks");
+   public static final avd<cqf> d = a("wooden_buttons");
+   public static final avd<cqf> e = a("stone_buttons");
+   public static final avd<cqf> f = a("buttons");
+   public static final avd<cqf> g = a("wool_carpets");
+   public static final avd<cqf> h = a("wooden_doors");
+   public static final avd<cqf> i = a("wooden_stairs");
+   public static final avd<cqf> j = a("wooden_slabs");
+   public static final avd<cqf> k = a("wooden_fences");
+   public static final avd<cqf> l = a("fence_gates");
+   public static final avd<cqf> m = a("wooden_pressure_plates");
+   public static final avd<cqf> n = a("wooden_trapdoors");
+   public static final avd<cqf> o = a("doors");
+   public static final avd<cqf> p = a("saplings");
+   public static final avd<cqf> q = a("logs_that_burn");
+   public static final avd<cqf> r = a("logs");
+   public static final avd<cqf> s = a("dark_oak_logs");
+   public static final avd<cqf> t = a("oak_logs");
+   public static final avd<cqf> u = a("birch_logs");
+   public static final avd<cqf> v = a("acacia_logs");
+   public static final avd<cqf> w = a("cherry_logs");
+   public static final avd<cqf> x = a("jungle_logs");
+   public static final avd<cqf> y = a("spruce_logs");
+   public static final avd<cqf> z = a("mangrove_logs");
+   public static final avd<cqf> A = a("crimson_stems");
+   public static final avd<cqf> B = a("warped_stems");
+   public static final avd<cqf> C = a("bamboo_blocks");
+   public static final avd<cqf> D = a("wart_blocks");
+   public static final avd<cqf> E = a("banners");
+   public static final avd<cqf> F = a("sand");
+   public static final avd<cqf> G = a("smelts_to_glass");
+   public static final avd<cqf> H = a("stairs");
+   public static final avd<cqf> I = a("slabs");
+   public static final avd<cqf> J = a("walls");
+   public static final avd<cqf> K = a("anvil");
+   public static final avd<cqf> L = a("rails");
+   public static final avd<cqf> M = a("leaves");
+   public static final avd<cqf> N = a("trapdoors");
+   public static final avd<cqf> O = a("small_flowers");
+   public static final avd<cqf> P = a("beds");
+   public static final avd<cqf> Q = a("fences");
+   public static final avd<cqf> R = a("tall_flowers");
+   public static final avd<cqf> S = a("flowers");
+   public static final avd<cqf> T = a("piglin_repellents");
+   public static final avd<cqf> U = a("piglin_loved");
+   public static final avd<cqf> V = a("ignored_by_piglin_babies");
+   public static final avd<cqf> W = a("piglin_food");
+   public static final avd<cqf> X = a("fox_food");
+   public static final avd<cqf> Y = a("gold_ores");
+   public static final avd<cqf> Z = a("iron_ores");
+   public static final avd<cqf> aa = a("diamond_ores");
+   public static final avd<cqf> ab = a("redstone_ores");
+   public static final avd<cqf> ac = a("lapis_ores");
+   public static final avd<cqf> ad = a("coal_ores");
+   public static final avd<cqf> ae = a("emerald_ores");
+   public static final avd<cqf> af = a("copper_ores");
+   public static final avd<cqf> ag = a("non_flammable_wood");
+   public static final avd<cqf> ah = a("soul_fire_base_blocks");
+   public static final avd<cqf> ai = a("candles");
+   public static final avd<cqf> aj = a("dirt");
+   public static final avd<cqf> ak = a("terracotta");
+   public static final avd<cqf> al = a("completes_find_tree_tutorial");
+   public static final avd<cqf> am = a("boats");
+   public static final avd<cqf> an = a("chest_boats");
+   public static final avd<cqf> ao = a("fishes");
+   public static final avd<cqf> ap = a("signs");
+   public static final avd<cqf> aq = a("music_discs");
+   public static final avd<cqf> ar = a("creeper_drop_music_discs");
+   public static final avd<cqf> as = a("coals");
+   public static final avd<cqf> at = a("arrows");
+   public static final avd<cqf> au = a("lectern_books");
+   public static final avd<cqf> av = a("bookshelf_books");
+   public static final avd<cqf> aw = a("beacon_payment_items");
+   public static final avd<cqf> ax = a("stone_tool_materials");
+   public static final avd<cqf> ay = a("stone_crafting_materials");
+   public static final avd<cqf> az = a("freeze_immune_wearables");
+   public static final avd<cqf> aA = a("axolotl_tempt_items");
+   public static final avd<cqf> aB = a("dampens_vibrations");
+   public static final avd<cqf> aC = a("cluster_max_harvestables");
+   public static final avd<cqf> aD = a("compasses");
+   public static final avd<cqf> aE = a("hanging_signs");
+   public static final avd<cqf> aF = a("creeper_igniters");
+   public static final avd<cqf> aG = a("noteblock_top_instruments");
+   public static final avd<cqf> aH = a("foot_armor");
+   public static final avd<cqf> aI = a("leg_armor");
+   public static final avd<cqf> aJ = a("chest_armor");
+   public static final avd<cqf> aK = a("head_armor");
+   public static final avd<cqf> aL = a("skulls");
+   public static final avd<cqf> aM = a("trimmable_armor");
+   public static final avd<cqf> aN = a("trim_materials");
+   public static final avd<cqf> aO = a("trim_templates");
+   public static final avd<cqf> aP = a("sniffer_food");
+   public static final avd<cqf> aQ = a("decorated_pot_sherds");
+   public static final avd<cqf> aR = a("decorated_pot_ingredients");
+   public static final avd<cqf> aS = a("swords");
+   public static final avd<cqf> aT = a("axes");
+   public static final avd<cqf> aU = a("hoes");
+   public static final avd<cqf> aV = a("pickaxes");
+   public static final avd<cqf> aW = a("shovels");
+   public static final avd<cqf> aX = a("tools");
+   public static final avd<cqf> aY = a("breaks_decorated_pots");
+   public static final avd<cqf> aZ = a("villager_plantable_seeds");
+   public static final avd<cqf> ba = a("dyeable");
+   public static final avd<cqf> bb = a("enchantable/foot_armor");
+   public static final avd<cqf> bc = a("enchantable/leg_armor");
+   public static final avd<cqf> bd = a("enchantable/chest_armor");
+   public static final avd<cqf> be = a("enchantable/head_armor");
+   public static final avd<cqf> bf = a("enchantable/armor");
+   public static final avd<cqf> bg = a("enchantable/sword");
+   public static final avd<cqf> bh = a("enchantable/weapon");
+   public static final avd<cqf> bi = a("enchantable/mining");
+   public static final avd<cqf> bj = a("enchantable/mining_loot");
+   public static final avd<cqf> bk = a("enchantable/fishing");
+   public static final avd<cqf> bl = a("enchantable/trident");
+   public static final avd<cqf> bm = a("enchantable/durability");
+   public static final avd<cqf> bn = a("enchantable/bow");
+   public static final avd<cqf> bo = a("enchantable/equippable");
+   public static final avd<cqf> bp = a("enchantable/crossbow");
+   public static final avd<cqf> bq = a("enchantable/vanishing");
 
-public class auv implements arz {
-   private static final Map<ajb<? extends ix<?>>, String> a = Map.of(
-      ki.f, "tags/blocks", ki.u, "tags/entity_types", ki.y, "tags/fluids", ki.B, "tags/game_events", ki.F, "tags/items"
-   );
-   private final iy b;
-   private List<auv.a<?>> c = List.of();
-
-   public auv(iy $$0) {
-      this.b = $$0;
+   private auv() {
    }
 
-   public List<auv.a<?>> a() {
-      return this.c;
-   }
-
-   public static String a(ajb<? extends ix<?>> $$0) {
-      String $$1 = a.get($$0);
-      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
-   }
-
-   @Override
-   public CompletableFuture<Void> a(arz.a $$0, asf $$1, bjc $$2, bjc $$3, Executor $$4, Executor $$5) {
-      List<? extends CompletableFuture<? extends auv.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
-      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
-         .thenCompose($$0::a)
-         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
-   }
-
-   private <T> CompletableFuture<auv.a<T>> a(asf $$0, Executor $$1, iy.d<T> $$2) {
-      ajb<? extends ix<T>> $$3 = $$2.a();
-      ix<T> $$4 = $$2.b();
-      auu<il<T>> $$5 = new auu<>($$4::c, a($$3));
-      return CompletableFuture.supplyAsync(() -> new auv.a<>($$3, $$5.b($$0)), $$1);
-   }
-
-   public static record a<T>(ajb<? extends ix<T>> a, Map<ajc, Collection<il<T>>> b) {
+   private static avd<cqf> a(String $$0) {
+      return avd.a(kj.F, new ajh($$0));
    }
 }

@@ -1,82 +1,55 @@
 import java.util.List;
 
 public class qr {
-   public static final ajb<duh<?, ?>> a = qo.a("ore_magma");
-   public static final ajb<duh<?, ?>> b = qo.a("ore_soul_sand");
-   public static final ajb<duh<?, ?>> c = qo.a("ore_nether_gold");
-   public static final ajb<duh<?, ?>> d = qo.a("ore_quartz");
-   public static final ajb<duh<?, ?>> e = qo.a("ore_gravel_nether");
-   public static final ajb<duh<?, ?>> f = qo.a("ore_blackstone");
-   public static final ajb<duh<?, ?>> g = qo.a("ore_dirt");
-   public static final ajb<duh<?, ?>> h = qo.a("ore_gravel");
-   public static final ajb<duh<?, ?>> i = qo.a("ore_granite");
-   public static final ajb<duh<?, ?>> j = qo.a("ore_diorite");
-   public static final ajb<duh<?, ?>> k = qo.a("ore_andesite");
-   public static final ajb<duh<?, ?>> l = qo.a("ore_tuff");
-   public static final ajb<duh<?, ?>> m = qo.a("ore_coal");
-   public static final ajb<duh<?, ?>> n = qo.a("ore_coal_buried");
-   public static final ajb<duh<?, ?>> o = qo.a("ore_iron");
-   public static final ajb<duh<?, ?>> p = qo.a("ore_iron_small");
-   public static final ajb<duh<?, ?>> q = qo.a("ore_gold");
-   public static final ajb<duh<?, ?>> r = qo.a("ore_gold_buried");
-   public static final ajb<duh<?, ?>> s = qo.a("ore_redstone");
-   public static final ajb<duh<?, ?>> t = qo.a("ore_diamond_small");
-   public static final ajb<duh<?, ?>> u = qo.a("ore_diamond_medium");
-   public static final ajb<duh<?, ?>> v = qo.a("ore_diamond_large");
-   public static final ajb<duh<?, ?>> w = qo.a("ore_diamond_buried");
-   public static final ajb<duh<?, ?>> x = qo.a("ore_lapis");
-   public static final ajb<duh<?, ?>> y = qo.a("ore_lapis_buried");
-   public static final ajb<duh<?, ?>> z = qo.a("ore_infested");
-   public static final ajb<duh<?, ?>> A = qo.a("ore_emerald");
-   public static final ajb<duh<?, ?>> B = qo.a("ore_ancient_debris_large");
-   public static final ajb<duh<?, ?>> C = qo.a("ore_ancient_debris_small");
-   public static final ajb<duh<?, ?>> D = qo.a("ore_copper_small");
-   public static final ajb<duh<?, ?>> E = qo.a("ore_copper_large");
-   public static final ajb<duh<?, ?>> F = qo.a("ore_clay");
+   public static final ajg<dvd<?, ?>> a = qq.a("ice_spike");
+   public static final ajg<dvd<?, ?>> b = qq.a("ice_patch");
+   public static final ajg<dvd<?, ?>> c = qq.a("forest_rock");
+   public static final ajg<dvd<?, ?>> d = qq.a("iceberg_packed");
+   public static final ajg<dvd<?, ?>> e = qq.a("iceberg_blue");
+   public static final ajg<dvd<?, ?>> f = qq.a("blue_ice");
+   public static final ajg<dvd<?, ?>> g = qq.a("lake_lava");
+   public static final ajg<dvd<?, ?>> h = qq.a("disk_clay");
+   public static final ajg<dvd<?, ?>> i = qq.a("disk_gravel");
+   public static final ajg<dvd<?, ?>> j = qq.a("disk_sand");
+   public static final ajg<dvd<?, ?>> k = qq.a("freeze_top_layer");
+   public static final ajg<dvd<?, ?>> l = qq.a("disk_grass");
+   public static final ajg<dvd<?, ?>> m = qq.a("bonus_chest");
+   public static final ajg<dvd<?, ?>> n = qq.a("void_start_platform");
+   public static final ajg<dvd<?, ?>> o = qq.a("desert_well");
+   public static final ajg<dvd<?, ?>> p = qq.a("spring_lava_overworld");
+   public static final ajg<dvd<?, ?>> q = qq.a("spring_lava_frozen");
+   public static final ajg<dvd<?, ?>> r = qq.a("spring_water");
 
-   public static void a(pj<duh<?, ?>> $$0) {
-      ega $$1 = new egi(aue.bd);
-      ega $$2 = new egi(aue.be);
-      ega $$3 = new egi(aue.bf);
-      ega $$4 = new efj(czh.dV);
-      ega $$5 = new egi(aue.bg);
-      List<dxg.a> $$6 = List.of(dxg.a($$2, czh.P.o()), dxg.a($$3, czh.Q.o()));
-      List<dxg.a> $$7 = List.of(dxg.a($$2, czh.N.o()), dxg.a($$3, czh.O.o()));
-      List<dxg.a> $$8 = List.of(dxg.a($$2, czh.cx.o()), dxg.a($$3, czh.cy.o()));
-      List<dxg.a> $$9 = List.of(dxg.a($$2, czh.aR.o()), dxg.a($$3, czh.aS.o()));
-      List<dxg.a> $$10 = List.of(dxg.a($$2, czh.ra.o()), dxg.a($$3, czh.rb.o()));
-      List<dxg.a> $$11 = List.of(dxg.a($$2, czh.R.o()), dxg.a($$3, czh.S.o()));
-      qo.a($$0, a, duu.I, new dxg($$4, czh.kJ.o(), 33));
-      qo.a($$0, b, duu.I, new dxg($$4, czh.dW.o(), 12));
-      qo.a($$0, c, duu.I, new dxg($$4, czh.T.o(), 10));
-      qo.a($$0, d, duu.I, new dxg($$4, czh.hb.o(), 14));
-      qo.a($$0, e, duu.I, new dxg($$4, czh.L.o(), 33));
-      qo.a($$0, f, duu.I, new dxg($$4, czh.pr.o(), 33));
-      qo.a($$0, g, duu.I, new dxg($$1, czh.j.o(), 33));
-      qo.a($$0, h, duu.I, new dxg($$1, czh.L.o(), 33));
-      qo.a($$0, i, duu.I, new dxg($$1, czh.c.o(), 64));
-      qo.a($$0, j, duu.I, new dxg($$1, czh.e.o(), 64));
-      qo.a($$0, k, duu.I, new dxg($$1, czh.g.o(), 64));
-      qo.a($$0, l, duu.I, new dxg($$1, czh.qz.o(), 64));
-      qo.a($$0, m, duu.I, new dxg($$11, 17));
-      qo.a($$0, n, duu.I, new dxg($$11, 17, 0.5F));
-      qo.a($$0, o, duu.I, new dxg($$6, 9));
-      qo.a($$0, p, duu.I, new dxg($$6, 4));
-      qo.a($$0, q, duu.I, new dxg($$7, 9));
-      qo.a($$0, r, duu.I, new dxg($$7, 9, 0.5F));
-      qo.a($$0, s, duu.I, new dxg(List.of(dxg.a($$2, czh.dI.o()), dxg.a($$3, czh.dJ.o())), 8));
-      qo.a($$0, t, duu.I, new dxg($$8, 4, 0.5F));
-      qo.a($$0, v, duu.I, new dxg($$8, 12, 0.7F));
-      qo.a($$0, w, duu.I, new dxg($$8, 8, 1.0F));
-      qo.a($$0, u, duu.I, new dxg($$8, 8, 0.5F));
-      qo.a($$0, x, duu.I, new dxg($$9, 7));
-      qo.a($$0, y, duu.I, new dxg($$9, 7, 1.0F));
-      qo.a($$0, z, duu.I, new dxg(List.of(dxg.a($$2, czh.eN.o()), dxg.a($$3, czh.td.o())), 9));
-      qo.a($$0, A, duu.I, new dxg(List.of(dxg.a($$2, czh.fE.o()), dxg.a($$3, czh.fF.o())), 3));
-      qo.a($$0, B, duu.ae, new dxg($$5, czh.pj.o(), 3, 1.0F));
-      qo.a($$0, C, duu.ae, new dxg($$5, czh.pj.o(), 2, 1.0F));
-      qo.a($$0, D, duu.I, new dxg($$10, 10));
-      qo.a($$0, E, duu.I, new dxg($$10, 20));
-      qo.a($$0, F, duu.I, new dxg($$1, czh.dR.o(), 33));
+   public static void a(pl<dvd<?, ?>> $$0) {
+      qq.a($$0, a, dvq.s);
+      qq.a($$0, b, dvq.G, new dxr(ead.a(dac.iC), dtt.c(List.of(dac.j, dac.i, dac.l, dac.k, dac.fl, dac.dP, dac.dO)), bmn.a(2, 3), 1));
+      qq.a($$0, c, dvq.F, new dxn(dac.cn.o()));
+      qq.a($$0, d, dvq.E, new dxn(dac.iC.o()));
+      qq.a($$0, e, dvq.E, new dxn(dac.mW.o()));
+      qq.a($$0, f, dvq.D);
+      qq.a($$0, g, dvq.H, new dwf.a(dzv.a(dac.H.o()), dzv.a(dac.b.o())));
+      qq.a($$0, h, dvq.G, new dxr(ead.a(dac.dR), dtt.c(List.of(dac.j, dac.dR)), bmn.a(2, 3), 1));
+      qq.a($$0, i, dvq.G, new dxr(ead.a(dac.L), dtt.c(List.of(dac.j, dac.i)), bmn.a(2, 5), 2));
+      qq.a(
+         $$0, j, dvq.G, new dxr(new ead(dzv.a(dac.I), List.of(new ead.a(dtt.a(ih.a.q(), dac.a), dzv.a(dac.aV)))), dtt.c(List.of(dac.j, dac.i)), bmn.a(2, 6), 2)
+      );
+      qq.a($$0, k, dvq.u);
+      qq.a(
+         $$0,
+         l,
+         dvq.G,
+         new dxr(
+            new ead(dzv.a(dac.j), List.of(new ead.a(dtt.a(dtt.b(dtt.b(ih.b.q()), dtt.a(ih.b.q(), eio.c))), dzv.a(dac.i)))),
+            dtt.c(List.of(dac.j, dac.sI)),
+            bmn.a(2, 6),
+            2
+         )
+      );
+      qq.a($$0, m, dvq.ac);
+      qq.a($$0, n, dvq.n);
+      qq.a($$0, o, dvq.o);
+      qq.a($$0, p, dvq.k, new dyp(eio.e.g(), true, 4, 1, ip.a(daa::r, dac.b, dac.c, dac.e, dac.g, dac.sJ, dac.qz, dac.qN, dac.j)));
+      qq.a($$0, q, dvq.k, new dyp(eio.e.g(), true, 4, 1, ip.a(daa::r, dac.dP, dac.qP, dac.iC)));
+      qq.a($$0, r, dvq.k, new dyp(eio.c.g(), true, 4, 1, ip.a(daa::r, dac.b, dac.c, dac.e, dac.g, dac.sJ, dac.qz, dac.qN, dac.j, dac.dP, dac.qP, dac.iC)));
    }
 }

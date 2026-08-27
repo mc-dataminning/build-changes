@@ -1,33 +1,28 @@
 import javax.annotation.Nullable;
 
-public class acy implements xz<aai> {
-   public static final xq<us, acy> a = xz.a(acy::a, acy::new);
-   @Nullable
-   private final ajc b;
+public record acy(String b, @Nullable String c) implements yb<aam> {
+   public static final xs<uu, acy> a = yb.a(acy::a, acy::new);
 
-   public acy(@Nullable ajc $$0) {
-      this.b = $$0;
+   private acy(uu $$0) {
+      this($$0.p(), $$0.c(uu::p));
    }
 
-   private acy(us $$0) {
-      this.b = $$0.c(us::q);
-   }
-
-   private void a(us $$0) {
-      $$0.a(this.b, us::a);
+   private void a(uu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, uu::a);
    }
 
    @Override
-   public yb<acy> a() {
-      return aet.ao;
+   public yd<acy> a() {
+      return aex.cc;
    }
 
-   public void a(aai $$0) {
+   public void a(aam $$0) {
       $$0.a(this);
    }
 
    @Nullable
-   public ajc b() {
-      return this.b;
+   public String e() {
+      return this.c;
    }
 }

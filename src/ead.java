@@ -1,26 +1,49 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ead<P extends eac> {
-   public static final ead<eab> a = a("straight_trunk_placer", eab.a);
-   public static final ead<dzy> b = a("forking_trunk_placer", dzy.a);
-   public static final ead<dzz> c = a("giant_trunk_placer", dzz.a);
-   public static final ead<eaa> d = a("mega_jungle_trunk_placer", eaa.b);
-   public static final ead<dzw> e = a("dark_oak_trunk_placer", dzw.a);
-   public static final ead<dzx> f = a("fancy_trunk_placer", dzx.a);
-   public static final ead<dzu> g = a("bending_trunk_placer", dzu.a);
-   public static final ead<eae> h = a("upwards_branching_trunk_placer", eae.a);
-   public static final ead<dzv> i = a("cherry_trunk_placer", dzv.a);
-   private final Codec<P> j;
+public record ead(dzv b, List<ead.a> c) {
+   public static final Codec<ead> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dzv.a.fieldOf("fallback").forGetter(ead::a), ead.a.a.listOf().fieldOf("rules").forGetter(ead::b)).apply($$0, ead::new)
+   );
 
-   private static <P extends eac> ead<P> a(String $$0, Codec<P> $$1) {
-      return ix.a(kh.X, $$0, new ead<>($$1));
+   public static ead a(dzv $$0) {
+      return new ead($$0, List.of());
    }
 
-   private ead(Codec<P> $$0) {
-      this.j = $$0;
+   public static ead a(daa $$0) {
+      return a(dzv.a($$0));
    }
 
-   public Codec<P> a() {
-      return this.j;
+   public dmz a(cxu $$0, axd $$1, ib $$2) {
+      for (ead.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
+      }
+
+      return this.b.a($$1, $$2);
+   }
+
+   public dzv a() {
+      return this.b;
+   }
+
+   public List<ead.a> b() {
+      return this.c;
+   }
+
+   public static record a(dtt b, dzv c) {
+      public static final Codec<ead.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dtt.b.fieldOf("if_true").forGetter(ead.a::a), dzv.a.fieldOf("then").forGetter(ead.a::b)).apply($$0, ead.a::new)
+      );
+
+      public dtt a() {
+         return this.b;
+      }
+
+      public dzv b() {
+         return this.c;
+      }
    }
 }

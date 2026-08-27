@@ -1,166 +1,36 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class eyi implements Comparable<eyi> {
-   private static final Map<String, eyi> h = Maps.newHashMap();
-   private static final Map<ery.a, eyi> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final ery.a m;
-   private final String n;
-   private ery.a o;
-   private boolean p;
-   private int q;
+public class eyi extends eyg {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vu c = vu.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   public static void a(ery.a $$0) {
-      eyi $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
+   public eyi(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public void run() {
+      eup $$0 = eup.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (ewc var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
       }
    }
 
-   public static void a(ery.a $$0, boolean $$1) {
-      eyi $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   public static void a() {
-      for (eyi $$0 : h.values()) {
-         if ($$0.o.a() == ery.b.a && $$0.o.b() != ery.bv.b()) {
-            $$0.a(ery.a(eyk.P().aN().i(), $$0.o.b()));
-         }
-      }
-   }
-
-   public static void b() {
-      for (eyi $$0 : h.values()) {
-         $$0.n();
-      }
-   }
-
-   public static void c() {
-      for (eyi $$0 : h.values()) {
-         if ($$0 instanceof eyy $$1) {
-            $$1.n();
-         }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (eyi $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public eyi(String $$0, int $$1, String $$2) {
-      this($$0, ery.b.a, $$1, $$2);
-   }
-
-   public eyi(String $$0, ery.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
-      } else {
-         this.q--;
-         return true;
-      }
-   }
-
-   private void n() {
-      this.q = 0;
-      this.a(false);
-   }
-
-   public String h() {
-      return this.l;
-   }
-
-   public ery.a i() {
-      return this.m;
-   }
-
-   public void b(ery.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(eyi $$0) {
-      return this.n.equals($$0.n) ? gje.a(this.l).compareTo(gje.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<vs> a(String $$0) {
-      eyi $$1 = h.get($$0);
-      return $$1 == null ? () -> vs.c($$0) : $$1::k;
-   }
-
-   public boolean b(eyi $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(ery.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == ery.bv.b() ? this.o.a() == ery.b.b && this.o.b() == $$1 : this.o.a() == ery.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == ery.b.c && this.o.b() == $$0;
-   }
-
-   public vs k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
+   @Override
+   public vu a() {
+      return c;
    }
 }

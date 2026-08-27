@@ -1,24 +1,119 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import java.util.List;
+import java.util.function.BiPredicate;
 
-public record dtt<WC extends dto>(dtv<WC> d, WC e) {
-   public static final Codec<dtt<?>> a = kh.P.q().dispatch($$0 -> $$0.d, dtv::c);
-   public static final Codec<il<dtt<?>>> b = aiy.a(ki.aw, a);
-   public static final Codec<ip<dtt<?>>> c = iz.a(ki.aw, a);
+public interface dtt extends BiPredicate<cxu, ib> {
+   Codec<dtt> b = ki.O.q().dispatch(dtt::a, dtu::codec);
+   dtt c = a(dac.a);
+   dtt d = a(dac.a, dac.G);
 
-   public boolean a(awt $$0) {
-      return this.d.a(this.e, $$0);
+   dtu<?> a();
+
+   static dtt a(List<dtt> $$0) {
+      return new dtr($$0);
    }
 
-   public boolean a(dtq $$0, doa $$1, Function<ib, il<cxd>> $$2, awt $$3, drc $$4, cvl $$5, dnz $$6) {
-      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   static dtt a(dtt... $$0) {
+      return a(List.of($$0));
    }
 
-   public dtv<WC> a() {
-      return this.d;
+   static dtt a(dtt $$0, dtt $$1) {
+      return a(List.of($$0, $$1));
    }
 
-   public WC b() {
-      return this.e;
+   static dtt b(List<dtt> $$0) {
+      return new dts($$0);
+   }
+
+   static dtt b(dtt... $$0) {
+      return b(List.of($$0));
+   }
+
+   static dtt b(dtt $$0, dtt $$1) {
+      return b(List.of($$0, $$1));
+   }
+
+   static dtt a(jg $$0, List<daa> $$1) {
+      return new dtz($$0, ip.a(daa::r, $$1));
+   }
+
+   static dtt c(List<daa> $$0) {
+      return a(jg.g, $$0);
+   }
+
+   static dtt a(jg $$0, daa... $$1) {
+      return a($$0, List.of($$1));
+   }
+
+   static dtt a(daa... $$0) {
+      return a(jg.g, $$0);
+   }
+
+   static dtt a(jg $$0, avd<daa> $$1) {
+      return new dty($$0, $$1);
+   }
+
+   static dtt a(avd<daa> $$0) {
+      return a(jg.g, $$0);
+   }
+
+   static dtt b(jg $$0, List<eim> $$1) {
+      return new dua($$0, ip.a(eim::k, $$1));
+   }
+
+   static dtt a(jg $$0, eim... $$1) {
+      return b($$0, List.of($$1));
+   }
+
+   static dtt a(eim... $$0) {
+      return a(jg.g, $$0);
+   }
+
+   static dtt a(dtt $$0) {
+      return new dub($$0);
+   }
+
+   static dtt a(jg $$0) {
+      return new duc($$0);
+   }
+
+   static dtt b() {
+      return a(jg.g);
+   }
+
+   static dtt a(dmz $$0, jg $$1) {
+      return new dug($$1, $$0);
+   }
+
+   static dtt a(jg $$0, ih $$1) {
+      return new dtw($$0, $$1);
+   }
+
+   static dtt a(ih $$0) {
+      return a(jg.g, $$0);
+   }
+
+   static dtt b(jg $$0) {
+      return new dud($$0);
+   }
+
+   static dtt c() {
+      return b(jg.g);
+   }
+
+   static dtt d() {
+      return c(jg.g);
+   }
+
+   static dtt c(jg $$0) {
+      return a($$0, eio.a);
+   }
+
+   static dtt d(jg $$0) {
+      return new dtx($$0);
+   }
+
+   static dtt e() {
+      return duf.a;
    }
 }

@@ -1,27 +1,28 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bwf extends bwr {
-   private static final int i = 10;
-   private static final int j = 7;
+public class bwf extends bwl {
+   private final bpq a;
 
-   public bwf(bpf $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public bwf(bpq $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bwl.a.c));
+      $$0.K().a(true);
    }
 
    @Override
    public boolean a() {
-      apa $$0 = (apa)this.b.dJ();
-      ib $$1 = this.b.dj();
-      return $$0.c($$1) ? false : super.a();
+      return this.a.bc() && this.a.b(aus.a) > this.a.df() || this.a.bq();
    }
 
-   @Nullable
    @Override
-   protected eov h() {
-      apa $$0 = (apa)this.b.dJ();
-      ib $$1 = this.b.dj();
-      jd $$2 = jd.a($$1);
-      jd $$3 = bqr.a($$0, $$2, 2);
-      return $$3 != $$2 ? bzr.a(this.b, 10, 7, eov.c($$3.q()), (float) (Math.PI / 2)) : null;
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.a.ei().i() < 0.8F) {
+         this.a.I().a();
+      }
    }
 }

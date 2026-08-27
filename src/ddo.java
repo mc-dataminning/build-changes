@@ -1,124 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
+import java.util.Optional;
 
-public class ddo extends czf implements dgf {
-   public static final MapCodec<ddo> b = b(ddo::new);
-   public static final int c = 7;
-   public static final dne d = dmu.aC;
-   public static final dmv e = dmu.v;
-   public static final dmv f = dmu.C;
-   private static final int a = 1;
-
-   @Override
-   public MapCodec<? extends ddo> a() {
-      return b;
-   }
-
-   public ddo(dmd.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+public abstract class ddo extends ddn implements dad {
+   protected ddo(dmy.d $$0, ih $$1, eqk $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected epo b_(dme $$0, cvk $$1, ib $$2) {
-      return epl.a();
+   protected abstract MapCodec<? extends ddo> a();
+
+   protected dmz a(dmz $$0, dmz $$1) {
+      return $$1;
    }
 
    @Override
-   protected boolean e_(dme $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
-   }
-
-   @Override
-   protected void b(dme $$0, apa $$1, ib $$2, awt $$3) {
-      if (this.m($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   protected boolean m(dme $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
-   }
-
-   @Override
-   protected void a(dme $$0, apa $$1, ib $$2, awt $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
-   }
-
-   @Override
-   protected int g(dme $$0, cvk $$1, ib $$2) {
-      return 1;
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, ehs.c, ehs.c.a($$3));
-      }
-
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(d) != $$6) {
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
          $$3.a($$4, this, 1);
       }
 
-      return $$0;
-   }
-
-   private static dme a(dme $$0, cwf $$1, ib $$2) {
-      int $$3 = 7;
-      ib.a $$4 = new ib.a();
-
-      for (ih $$5 : ih.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
-         }
-      }
-
-      return $$0.a(d, Integer.valueOf($$3));
-   }
-
-   private static int o(dme $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(dme $$0) {
-      if ($$0.a(aue.t)) {
-         return OptionalInt.of(0);
+      ddp $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
       } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
-      }
-   }
-
-   @Override
-   protected ehr c_(dme $$0) {
-      return $$0.c(f) ? ehs.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
-      if ($$1.r($$2.c())) {
-         if ($$3.a(15) == 1) {
-            ib $$4 = $$2.d();
-            dme $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, ih.b)) {
-               awp.a($$1, $$2, $$3, kb.m);
-            }
+         if (this.b) {
+            $$3.a($$4, eio.c, eio.c.a($$3));
          }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      $$0.a(d, e, f);
+   public cqk a(cxc $$0, ib $$1, dmz $$2) {
+      return new cqk(this.c());
    }
 
    @Override
-   public dme a(crx $$0) {
-      ehr $$1 = $$0.q().b_($$0.a());
-      dme $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == ehs.c));
-      return a($$2, $$0.q(), $$0.a());
+   public boolean b(cxc $$0, ib $$1, dmz $$2) {
+      Optional<ib> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
+   }
+
+   @Override
+   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
+      Optional<ib> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dmz $$5 = $$0.a_($$4.get());
+         ((ddp)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<ib> a(cwf $$0, ib $$1, daa $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   protected boolean a(dmz $$0, css $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().l()) ? false : $$2;
+   }
+
+   @Override
+   protected daa b() {
+      return this;
    }
 }

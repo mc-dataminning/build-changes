@@ -2,29 +2,40 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class elv extends elk {
-   public static final Codec<elv> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(aut.b(ki.D).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, elv::new)
-   );
-   private final aut<cpi> b;
+public class elv extends emg {
+   public static final Codec<elv> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, elv::new));
 
-   private elv(List<emx> $$0, aut<cpi> $$1) {
+   private elv(List<ent> $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public elm b() {
-      return eln.A;
+   public emi b() {
+      return emj.t;
    }
 
    @Override
-   public cpq a(cpq $$0, ejy $$1) {
-      cpj.a($$0, this.b, $$1.b());
+   public cqk a(cqk $$0, eku $$1) {
+      Float $$2 = $$1.c(enf.j);
+      if ($$2 != null) {
+         axd $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.M();
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.f($$6);
+      }
+
       return $$0;
    }
 
-   public static elk.a<?> a(aut<cpi> $$0) {
-      return a($$1 -> new elv($$1, $$0));
+   public static emg.a<?> c() {
+      return a(elv::new);
    }
 }

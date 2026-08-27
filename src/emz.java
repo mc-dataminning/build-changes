@@ -1,29 +1,42 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class emz {
-   private static final Codec<emx> t = kh.H.q().dispatch("condition", emx::b, emy::a);
-   public static final Codec<emx> a = avu.a((Supplier<Codec<emx>>)(() -> avu.e(t, eml.b)));
-   public static final emy b = a("inverted", emu.a);
-   public static final emy c = a("any_of", emm.a);
-   public static final emy d = a("all_of", eml.a);
-   public static final emy e = a("random_chance", enc.a);
-   public static final emy f = a("random_chance_with_looting", end.a);
-   public static final emy g = a("entity_properties", ena.a);
-   public static final emy h = a("killed_by_player", enb.a);
-   public static final emy i = a("entity_scores", ems.a);
-   public static final emy j = a("block_state_property", emw.a);
-   public static final emy k = a("match_tool", ene.a);
-   public static final emy l = a("table_bonus", emn.a);
-   public static final emy m = a("survives_explosion", emt.a);
-   public static final emy n = a("damage_source_properties", emr.a);
-   public static final emy o = a("location_check", emv.a);
-   public static final emy p = a("weather_check", enh.a);
-   public static final emy q = a("reference", emp.a);
-   public static final emy r = a("time_check", enf.a);
-   public static final emy s = a("value_check", eng.a);
+public class emz extends emg {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<emz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, emz::new));
 
-   private static emy a(String $$0, Codec<? extends emx> $$1) {
-      return ix.a(kh.H, new ajc($$0), new emy($$1));
+   private emz(List<ent> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public emi b() {
+      return emj.h;
+   }
+
+   @Override
+   public cqk a(cqk $$0, eku $$1) {
+      if ($$0.b()) {
+         return $$0;
+      } else {
+         Optional<ctp<cuc>> $$2 = $$1.d().r().a(cts.b, new bnl($$0), $$1.d());
+         if ($$2.isPresent()) {
+            cqk $$3 = $$2.get().b().a($$1.d().H_());
+            if (!$$3.b()) {
+               return $$3.c($$0.M());
+            }
+         }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
+      }
+   }
+
+   public static emg.a<?> c() {
+      return a(emz::new);
    }
 }

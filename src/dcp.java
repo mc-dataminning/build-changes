@@ -1,72 +1,82 @@
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
 
-public class dcp extends dee implements czi, dgf {
+public class dcp extends daa {
    public static final MapCodec<dcp> a = b(dcp::new);
-   private static final dmv c = dmu.C;
-   private final def d = new def(this);
+   public static final dnt b = ddv.aE;
+   public static final dnq c = dnp.h;
+   protected static final eqk d = daa.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final eqk e = daa.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final eqk f = eqh.a(d, e);
+   private static dne g;
 
    @Override
    public MapCodec<dcp> a() {
       return a;
    }
 
-   public dcp(dmd.d $$0) {
+   public dcp(dmy.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dme> b(int $$0) {
-      return $$1 -> dee.n($$1) ? $$0 : 0;
+      this.k(this.E.b().a(b, ih.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dmf.a<czf, dme> $$0) {
-      super.a($$0);
-      $$0.a(c);
-   }
-
-   @Override
-   protected dme a(dme $$0, ih $$1, dme $$2, cwf $$3, ib $$4, ib $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, ehs.c, ehs.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dme $$0, crx $$1) {
-      return !$$1.n().a(cpt.fV) || super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean b(cwh $$0, ib $$1, dme $$2) {
-      return ih.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
-   }
-
-   @Override
-   public boolean a(cwe $$0, awt $$1, ib $$2, dme $$3) {
+   protected boolean g_(dmz $$0) {
       return true;
    }
 
    @Override
-   public void a(apa $$0, awt $$1, ib $$2, dme $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return $$0.c(c) ? f : d;
    }
 
    @Override
-   protected ehr c_(dme $$0) {
-      return $$0.c(c) ? ehs.c.a(false) : super.c_($$0);
+   public dmz a(css $$0) {
+      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
    }
 
    @Override
-   protected boolean a_(dme $$0, cvk $$1, ib $$2) {
-      return $$0.u().c();
+   protected boolean d_(dmz $$0) {
+      return true;
    }
 
    @Override
-   public def c() {
-      return this.d;
+   protected int a(dmz $$0, cwz $$1, ib $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dgm $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dew $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dne b() {
+      if (g == null) {
+         g = dnf.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dnd.a(dni.a))
+            .a('^', dnd.a(dni.a(dac.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ih.d))))
+            .a('>', dnd.a(dni.a(dac.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ih.e))))
+            .a('v', dnd.a(dni.a(dac.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ih.c))))
+            .a('<', dnd.a(dni.a(dac.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ih.f))))
+            .b();
+      }
+
+      return g;
+   }
+
+   @Override
+   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
+      return false;
    }
 }

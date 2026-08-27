@@ -1,11 +1,17 @@
-import java.util.Set;
+public class cki {
+   private final int a;
+   private final float b;
 
-public interface cki {
-   Set<ajb<? extends ix<? extends cki>>> by = Set.of(ki.F, ki.f, ki.u, ki.P);
+   public cki(int $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   ckl m();
+   public int a() {
+      return this.a;
+   }
 
-   default boolean a(ckl $$0) {
-      return this.m().a($$0);
+   public float b() {
+      return this.b;
    }
 }

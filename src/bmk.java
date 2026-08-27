@@ -1,4 +1,3 @@
-public enum bmk {
-   a,
-   b;
+public interface bmk {
+   float a(axd var1);
 }

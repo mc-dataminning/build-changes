@@ -1,5 +1,12 @@
-public interface clg {
-   void a(cku var1, int var2, cpq var3);
+public class clg {
+   private final String a;
 
-   void a(cku var1, int var2, int var3);
+   public clg(String $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.a;
+   }
 }

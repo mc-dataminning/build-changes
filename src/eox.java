@@ -1,46 +1,18 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class eox extends epo {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public class eox {
+   private static final Codec<eow> d = ki.K.q().dispatch(eow::a, eov::a);
+   public static final Codec<eow> a = awe.a(
+      (Supplier<Codec<eow>>)(() -> Codec.either(eot.b, d)
+            .xmap($$0 -> (eow)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof eot $$1 ? Either.left($$1) : Either.right($$0)))
+   );
+   public static final eov b = a("fixed", eou.a);
+   public static final eov c = a("context", eot.a);
 
-   protected eox(epe $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
-   }
-
-   eox(epe $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
-   }
-
-   @Override
-   protected DoubleList a(ih.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
-      }
+   private static eov a(String $$0, Codec<? extends eow> $$1) {
+      return iy.a(ki.K, new ajh($$0), new eov($$1));
    }
 }

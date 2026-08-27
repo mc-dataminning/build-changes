@@ -1,57 +1,42 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class gkb implements gjz {
-   private final fxz a;
-   private final fxx b;
-   private final ghz c;
-   private final boolean d;
+public abstract class gkb implements asi, AutoCloseable {
+   private final giy a;
+   private final ajh b;
+   private final Set<arn<?>> c;
 
-   public gkb(fxz $$0, fxx $$1, ghz $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public gkb(gja $$0, ajh $$1, ajh $$2) {
+      this($$0, $$1, $$2, giu.a);
+   }
+
+   public gkb(gja $$0, ajh $$1, ajh $$2, Set<arn<?>> $$3) {
+      this.b = $$2;
+      this.a = new giy($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
+   }
+
+   protected giz a(ajh $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public List<fxn> a(@Nullable dme $$0, @Nullable ih $$1, awt $$2) {
-      return Collections.emptyList();
+   public final CompletableFuture<Void> a(asi.a $$0, aso $$1, bjq $$2, bjq $$3, Executor $$4, Executor $$5) {
+      return giu.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(giu.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   }
+
+   private void a(giu.a $$0, bjq $$1) {
+      $$1.a();
+      $$1.a("upload");
+      this.a.a($$0);
+      $$1.c();
+      $$1.b();
    }
 
    @Override
-   public boolean a() {
-      return false;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d;
-   }
-
-   @Override
-   public boolean d() {
-      return true;
-   }
-
-   @Override
-   public ghz e() {
-      return this.c;
-   }
-
-   @Override
-   public fxz f() {
-      return this.a;
-   }
-
-   @Override
-   public fxx g() {
-      return this.b;
+   public void close() {
+      this.a.f();
    }
 }

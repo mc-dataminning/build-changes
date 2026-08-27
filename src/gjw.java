@@ -1,14 +1,9 @@
-import com.google.gson.JsonObject;
-
-public class gjw implements arf<gjv> {
-   public gjv b(JsonObject $$0) {
-      boolean $$1 = awc.a($$0, "blur", false);
-      boolean $$2 = awc.a($$0, "clamp", false);
-      return new gjv($$1, $$2);
+public class gjw extends gkb {
+   public gjw(gja $$0) {
+      super($$0, new ajh("textures/atlas/mob_effects.png"), new ajh("mob_effects"));
    }
 
-   @Override
-   public String a() {
-      return "texture";
+   public giz a(il<boh> $$0) {
+      return this.a($$0.e().map(ajg::a).orElseGet(gip::b));
    }
 }

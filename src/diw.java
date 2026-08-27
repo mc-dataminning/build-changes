@@ -1,48 +1,87 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Map;
 
-public class diw extends dch {
-   public static final MapCodec<diw> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dch::b), u()).apply($$0, diw::new));
+public class diw extends cyr {
+   public static final MapCodec<diw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cpb.q.fieldOf("color").forGetter(cyr::b), u()).apply($$0, diw::new));
+   public static final dnt b = ddv.aE;
+   private static final Map<ih, eqk> c = Maps.newEnumMap(
+      ImmutableMap.of(
+         ih.c,
+         daa.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
+         ih.d,
+         daa.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
+         ih.e,
+         daa.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
+         ih.f,
+         daa.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
+      )
+   );
 
    @Override
    public MapCodec<diw> a() {
-      return e;
+      return a;
    }
 
-   public diw(il<bnq> $$0, int $$1, dmd.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public diw(List<dhg.a> $$0, dmd.d $$1) {
+   public diw(cpb $$0, dmy.d $$1) {
       super($$0, $$1);
+      this.k(this.E.b().a(b, ih.c));
    }
 
    @Override
-   protected boolean b(dme $$0, cvk $$1, ib $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(czh.dV) || $$0.a(czh.dW) || $$0.a(czh.dX);
+   public String g() {
+      return this.l().a();
    }
 
    @Override
-   public void a(dme $$0, cwe $$1, ib $$2, awt $$3) {
-      epo $$4 = this.a($$0, $$1, $$2, epa.a());
-      eov $$5 = $$4.a().f();
-      double $$6 = (double)$$2.u() + $$5.c;
-      double $$7 = (double)$$2.w() + $$5.e;
+   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
 
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         if ($$3.h()) {
-            $$1.a(kb.ab, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
+   @Override
+   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
+      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? dac.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+      return c.get($$0.c(b));
+   }
+
+   @Override
+   public dmz a(css $$0) {
+      dmz $$1 = this.o();
+      cxc $$2 = $$0.q();
+      ib $$3 = $$0.a();
+      ih[] $$4 = $$0.f();
+
+      for (ih $$5 : $$4) {
+         if ($$5.o().d()) {
+            ih $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
       }
+
+      return null;
    }
 
    @Override
-   protected void a(dme $$0, cwe $$1, ib $$2, bof $$3) {
-      if (!$$1.B && $$1.aj() != bmi.a) {
-         if ($$3 instanceof box $$4 && !$$4.b($$1.ah().p())) {
-            $$4.b(new bns(bnu.t, 40));
-         }
-      }
+   protected dmz a(dmz $$0, dgm $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dmz a(dmz $$0, dew $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dna.a<daa, dmz> $$0) {
+      $$0.a(b);
    }
 }

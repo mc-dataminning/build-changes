@@ -1,49 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dzh(dyz b, List<dzh.a> c) {
-   public static final Codec<dzh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dyz.a.fieldOf("fallback").forGetter(dzh::a), dzh.a.a.listOf().fieldOf("rules").forGetter(dzh::b)).apply($$0, dzh::new)
-   );
+public class dzh<P extends dzg> {
+   public static final dzh<dzb> a = a("blob_foliage_placer", dzb.a);
+   public static final dzh<dzm> b = a("spruce_foliage_placer", dzm.a);
+   public static final dzh<dzk> c = a("pine_foliage_placer", dzk.a);
+   public static final dzh<dza> d = a("acacia_foliage_placer", dza.a);
+   public static final dzh<dzc> e = a("bush_foliage_placer", dzc.c);
+   public static final dzh<dzf> f = a("fancy_foliage_placer", dzf.c);
+   public static final dzh<dzi> g = a("jungle_foliage_placer", dzi.a);
+   public static final dzh<dzj> h = a("mega_pine_foliage_placer", dzj.a);
+   public static final dzh<dze> i = a("dark_oak_foliage_placer", dze.a);
+   public static final dzh<dzl> j = a("random_spread_foliage_placer", dzl.a);
+   public static final dzh<dzd> k = a("cherry_foliage_placer", dzd.a);
+   private final Codec<P> l;
 
-   public static dzh a(dyz $$0) {
-      return new dzh($$0, List.of());
+   private static <P extends dzg> dzh<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.W, $$0, new dzh<>($$1));
    }
 
-   public static dzh a(czf $$0) {
-      return a(dyz.a($$0));
+   private dzh(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   public dme a(cwz $$0, awt $$1, ib $$2) {
-      for (dzh.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public dyz a() {
-      return this.b;
-   }
-
-   public List<dzh.a> b() {
-      return this.c;
-   }
-
-   public static record a(dsx b, dyz c) {
-      public static final Codec<dzh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dsx.b.fieldOf("if_true").forGetter(dzh.a::a), dyz.a.fieldOf("then").forGetter(dzh.a::b)).apply($$0, dzh.a::new)
-      );
-
-      public dsx a() {
-         return this.b;
-      }
-
-      public dyz b() {
-         return this.c;
-      }
+   public Codec<P> a() {
+      return this.l;
    }
 }

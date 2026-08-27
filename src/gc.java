@@ -15,26 +15,26 @@ public class gc {
    }
 
    public gc.a a(StringReader $$0) throws CommandSyntaxException {
-      final MutableObject<il<cpl>> $$1 = new MutableObject();
-      final MutableObject<sy> $$2 = new MutableObject();
+      final MutableObject<il<cqf>> $$1 = new MutableObject();
+      final MutableObject<ta> $$2 = new MutableObject();
       this.a.a($$0, new gf.c() {
          @Override
-         public void a(il<cpl> $$0) {
+         public void a(il<cqf> $$0) {
             $$1.setValue($$0);
          }
 
          @Override
-         public void a(sy $$0) {
+         public void a(ta $$0) {
             $$2.setValue($$0);
          }
       });
-      return new gc.a(Objects.requireNonNull((il<cpl>)$$1.getValue(), "Parser gave no item"), (sy)$$2.getValue());
+      return new gc.a(Objects.requireNonNull((il<cqf>)$$1.getValue(), "Parser gave no item"), (ta)$$2.getValue());
    }
 
    public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
       return this.a.a($$0);
    }
 
-   public static record a(il<cpl> a, @Nullable sy b) {
+   public static record a(il<cqf> a, @Nullable ta b) {
    }
 }

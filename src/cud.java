@@ -1,20 +1,22 @@
-public class cud extends ctz {
-   protected cud(ctz.a $$0, bom... $$1) {
-      super($$0, aum.bg, $$1);
+public interface cud extends ctn<bmv> {
+   @Override
+   default cts<?> e() {
+      return cts.g;
    }
 
    @Override
-   public int a(int $$0) {
-      return 10 + 20 * ($$0 - 1);
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
+   default cqk g() {
+      return new cqk(dac.ob);
    }
 
-   @Override
-   public int a() {
-      return 2;
-   }
+   boolean a(cqk var1);
+
+   boolean b(cqk var1);
+
+   boolean c(cqk var1);
 }

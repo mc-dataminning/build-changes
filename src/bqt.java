@@ -1,66 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bqt extends bqp<chn> {
+public class bqt {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<bqt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jf.a.fieldOf("UUID").forGetter(bqt::a),
+               Codec.STRING.fieldOf("Name").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("Amount").forGetter(bqt::c),
+               bqt.a.f.fieldOf("Operation").forGetter(bqt::b)
+            )
+            .apply($$0, bqt::new)
+   );
+   private final double c;
+   private final bqt.a d;
+   private final String e;
+   private final UUID f;
+
+   public bqt(String $$0, double $$1, bqt.a $$2) {
+      this(aww.a(axd.c()), $$0, $$1, $$2);
+   }
+
+   public bqt(UUID $$0, String $$1, double $$2, bqt.a $$3) {
+      this.f = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public UUID a() {
+      return this.f;
+   }
+
+   public bqt.a b() {
+      return this.d;
+   }
+
+   public double c() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bqt $$1 = (bqt)$$0;
+         return Objects.equals(this.f, $$1.f);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "AttributeModifier{amount=" + this.c + ", operation=" + this.d + ", name='" + this.e + "', id=" + this.f + "}";
+   }
+
+   public ta d() {
+      ta $$0 = new ta();
+      $$0.a("Name", this.e);
+      $$0.a("Amount", this.c);
+      $$0.a("Operation", this.d.a());
+      $$0.a("UUID", this.f);
+      return $$0;
+   }
+
    @Nullable
-   private cjj c;
-
-   public bqt(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
-   }
-
-   protected boolean a(apa $$0, chn $$1) {
-      ib $$2 = $$1.dj();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && bry.a($$0, $$1, $$2);
-   }
-
-   protected boolean a(apa $$0, chn $$1, long $$2) {
-      return this.c != null && !this.c.d();
-   }
-
-   protected void b(apa $$0, chn $$1, long $$2) {
-      this.c = null;
-      $$1.dM().a($$0.Y(), $$0.X());
-   }
-
-   protected void c(apa $$0, chn $$1, long $$2) {
-      awt $$3 = $$1.ef();
-      if ($$3.a(100) == 0) {
-         $$1.gq();
-      }
-
-      if ($$3.a(200) == 0 && bry.a($$0, $$1, $$1.dj())) {
-         cog $$4 = ac.a(cog.values(), $$3);
-         int $$5 = $$3.a(3);
-         cpq $$6 = this.a($$4, $$5);
-         cin $$7 = new cin($$1.dJ(), $$1, $$1.do(), $$1.ds(), $$1.du(), $$6);
-         $$1.dJ().b($$7);
+   public static bqt a(ta $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         bqt.a $$2 = bqt.a.d.apply($$0.h("Operation"));
+         return new bqt($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         b.warn("Unable to create attribute: {}", var3.getMessage());
+         return null;
       }
    }
 
-   private cpq a(cog $$0, int $$1) {
-      cpq $$2 = new cpq(cpt.uq, 1);
-      cpq $$3 = new cpq(cpt.ur);
-      sy $$4 = $$3.b("Explosion");
-      List<Integer> $$5 = Lists.newArrayList();
-      $$5.add($$0.f());
-      $$4.b("Colors", $$5);
-      $$4.a("Type", (byte)cov.a.e.a());
-      sy $$6 = $$2.b("Fireworks");
-      te $$7 = new te();
-      sy $$8 = $$3.c("Explosion");
-      if ($$8 != null) {
-         $$7.add($$8);
+   public static enum a implements axq {
+      a("addition", 0),
+      b("multiply_base", 1),
+      c("multiply_total", 2);
+
+      public static final IntFunction<bqt.a> d = avn.a(bqt.a::a, values(), avn.a.a);
+      public static final xs<ByteBuf, bqt.a> e = xq.a(d, bqt.a::a);
+      public static final Codec<bqt.a> f = axq.a(bqt.a::values);
+      private final String g;
+      private final int h;
+
+      private a(String $$0, int $$1) {
+         this.g = $$0;
+         this.h = $$1;
       }
 
-      $$6.a("Flight", (byte)$$1);
-      if (!$$7.isEmpty()) {
-         $$6.a("Explosions", $$7);
+      public int a() {
+         return this.h;
       }
 
-      return $$2;
+      @Override
+      public String c() {
+         return this.g;
+      }
    }
 }

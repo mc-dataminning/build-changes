@@ -1,7 +1,34 @@
-public interface eqo<T> {
-   void a(eqm<T> var1);
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   boolean a(ib var1, T var2);
+public record eqo(String a, int b, @Nullable vu c, @Nullable xk d) {
+   public boolean a() {
+      return this.a.startsWith("#");
+   }
 
-   int a();
+   public vu b() {
+      return (vu)(this.c != null ? this.c : vu.b(this.c()));
+   }
+
+   public wi a(xk $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   @Nullable
+   public vu e() {
+      return this.c;
+   }
+
+   @Nullable
+   public xk f() {
+      return this.d;
+   }
 }

@@ -1,118 +1,65 @@
-import com.mojang.logging.LogUtils;
-import java.io.PrintStream;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
 
-public class aje {
-   public static final PrintStream a = System.out;
-   private static volatile boolean c;
-   private static final Logger d = LogUtils.getLogger();
-   public static final AtomicLong b = new AtomicLong(-1L);
+public final class aje<E> implements Codec<il<E>> {
+   private final ajg<? extends iy<E>> a;
 
-   public static void a() {
-      if (!c) {
-         c = true;
-         Instant $$0 = Instant.now();
-         if (kh.at.e().isEmpty()) {
-            throw new IllegalStateException("Unable to load registries");
-         } else {
-            dcf.b();
-            daq.b();
-            if (bol.a(bol.bw) == null) {
-               throw new IllegalStateException("Failed loading EntityTypes");
-            } else {
-               crn.a();
-               gk.a();
-               jn.c();
-               jh.a();
-               kh.a();
-               cnz.a();
-               d();
-               b.set(Duration.between($$0, Instant.now()).toMillis());
+   public static <E> aje<E> a(ajg<? extends iy<E>> $$0) {
+      return new aje<>($$0);
+   }
+
+   private aje(ajg<? extends iy<E>> $$0) {
+      this.a = $$0;
+   }
+
+   public <T> DataResult<T> a(il<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof ajf<?> $$3) {
+         Optional<io<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
             }
+
+            return (DataResult<T>)$$0.d()
+               .map(
+                  $$2x -> ajh.a.encode($$2x.a(), $$1, $$2),
+                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
+               );
          }
       }
+
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
-      st $$3 = st.a();
-      $$0.forEach($$3x -> {
-         String $$4 = $$1.apply((T)$$3x);
-         if (!$$3.b($$4)) {
-            $$2.add($$4);
+   public <T> DataResult<Pair<il<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof ajf<?> $$2) {
+         Optional<im<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            return ajh.a
+               .decode($$0, $$1)
+               .flatMap(
+                  $$1x -> {
+                     ajh $$2x = (ajh)$$1x.getFirst();
+                     return $$3.get()
+                        .a(ajg.a(this.a, $$2x))
+                        .<DataResult>map(DataResult::success)
+                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
+                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
+                        .setLifecycle(Lifecycle.stable());
+                  }
+               );
          }
-      });
-   }
-
-   private static void a(final Set<String> $$0) {
-      final st $$1 = st.a();
-      cwa.a(new cwa.c() {
-         @Override
-         public <T extends cwa.g<T>> void a(cwa.e<T> $$0x, cwa.f<T> $$1x) {
-            if (!$$1.b($$0.b())) {
-               $$0.add($$0.a());
-            }
-         }
-      });
-   }
-
-   public static Set<String> b() {
-      Set<String> $$0 = new TreeSet<>();
-      a(kh.u, bpz::c, $$0);
-      a(kh.g, bol::g, $$0);
-      a(kh.d, bnq::d, $$0);
-      a(kh.h, cpl::a, $$0);
-      a(kh.f, ctz::h, $$0);
-      a(kh.e, czf::g, $$0);
-      a(kh.m, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
-      a($$0);
-      return $$0;
-   }
-
-   public static void a(Supplier<String> $$0) {
-      if (!c) {
-         throw b($$0);
-      }
-   }
-
-   private static RuntimeException b(Supplier<String> $$0) {
-      try {
-         String $$1 = $$0.get();
-         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
-      } catch (Exception var3) {
-         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
-         $$3.addSuppressed(var3);
-         return $$3;
-      }
-   }
-
-   public static void c() {
-      a(() -> "validate");
-      if (aa.aV) {
-         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
-         dv.b();
       }
 
-      bqf.a();
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   private static void d() {
-      if (d.isDebugEnabled()) {
-         System.setErr(new ajh("STDERR", System.err));
-         System.setOut(new ajh("STDOUT", a));
-      } else {
-         System.setErr(new ajj("STDERR", System.err));
-         System.setOut(new ajj("STDOUT", a));
-      }
-   }
-
-   public static void a(String $$0) {
-      a.println($$0);
+   @Override
+   public String toString() {
+      return "RegistryFixedCodec[" + this.a + "]";
    }
 }

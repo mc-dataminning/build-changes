@@ -1,61 +1,166 @@
-public class aft implements xz<aev> {
-   public static final xq<us, aft> a = xz.a(aft::a, aft::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public aft(bof $$0) {
-      this.b = $$0.do();
-      this.c = $$0.dq();
-      this.d = $$0.du();
-      this.e = $$0.dz();
-      this.f = $$0.dB();
+public class aft implements yb<aez> {
+   public static final xs<uu, aft> a = yb.a(aft::a, aft::new);
+   private final int b;
+   private final aft.a c;
+   private final boolean d;
+   static final aft.a e = new aft.a() {
+      @Override
+      public aft.b a() {
+         return aft.b.b;
+      }
+
+      @Override
+      public void a(aft.c $$0) {
+         $$0.a();
+      }
+
+      @Override
+      public void a(uu $$0) {
+      }
+   };
+
+   private aft(int $$0, boolean $$1, aft.a $$2) {
+      this.b = $$0;
+      this.c = $$2;
+      this.d = $$1;
    }
 
-   private aft(us $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   public static aft a(bow $$0, boolean $$1) {
+      return new aft($$0.aj(), $$1, e);
    }
 
-   private void a(us $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public static aft a(bow $$0, boolean $$1, bnb $$2) {
+      return new aft($$0.aj(), $$1, new aft.d($$2));
+   }
+
+   public static aft a(bow $$0, boolean $$1, bnb $$2, epr $$3) {
+      return new aft($$0.aj(), $$1, new aft.e($$2, $$3));
+   }
+
+   private aft(uu $$0) {
+      this.b = $$0.l();
+      aft.b $$1 = $$0.b(aft.b.class);
+      this.c = $$1.d.apply($$0);
+      this.d = $$0.readBoolean();
+   }
+
+   private void a(uu $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
    }
 
    @Override
-   public yb<aft> a() {
-      return aet.bD;
+   public yd<aft> a() {
+      return aex.bw;
    }
 
-   public void a(aev $$0) {
+   public void a(aez $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   @Nullable
+   public bow a(apf $$0) {
+      return $$0.b(this.b);
    }
 
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
+   public boolean b() {
       return this.d;
    }
 
-   public float g() {
-      return this.e;
+   public void a(aft.c $$0) {
+      this.c.a($$0);
    }
 
-   public float h() {
-      return this.f;
+   interface a {
+      aft.b a();
+
+      void a(aft.c var1);
+
+      void a(uu var1);
+   }
+
+   static enum b {
+      a(aft.d::new),
+      b($$0 -> aft.e),
+      c(aft.e::new);
+
+      final Function<uu, aft.a> d;
+
+      private b(Function<uu, aft.a> $$0) {
+         this.d = $$0;
+      }
+   }
+
+   public interface c {
+      void a(bnb var1);
+
+      void a(bnb var1, epr var2);
+
+      void a();
+   }
+
+   static class d implements aft.a {
+      private final bnb a;
+
+      d(bnb $$0) {
+         this.a = $$0;
+      }
+
+      private d(uu $$0) {
+         this.a = $$0.b(bnb.class);
+      }
+
+      @Override
+      public aft.b a() {
+         return aft.b.a;
+      }
+
+      @Override
+      public void a(aft.c $$0) {
+         $$0.a(this.a);
+      }
+
+      @Override
+      public void a(uu $$0) {
+         $$0.a(this.a);
+      }
+   }
+
+   static class e implements aft.a {
+      private final bnb a;
+      private final epr b;
+
+      e(bnb $$0, epr $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private e(uu $$0) {
+         this.b = new epr((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bnb.class);
+      }
+
+      @Override
+      public aft.b a() {
+         return aft.b.c;
+      }
+
+      @Override
+      public void a(aft.c $$0) {
+         $$0.a(this.a, this.b);
+      }
+
+      @Override
+      public void a(uu $$0) {
+         $$0.a((float)this.b.c);
+         $$0.a((float)this.b.d);
+         $$0.a((float)this.b.e);
+         $$0.a(this.a);
+      }
    }
 }

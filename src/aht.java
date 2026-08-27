@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record aht() implements ahr {
+   public static final aht a = new aht();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aht {
+   @Override
+   public void a(uu $$0) {
+   }
 }

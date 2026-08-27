@@ -1,77 +1,68 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+public class fgn extends ffv {
+   private fbg c;
 
-public class fgn extends fgh {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final vs k;
-   private final vx l;
-   private final ImmutableList<fgn.a> m;
-   private fbd n = fbd.a;
-   private int o;
-   private int p;
-
-   protected fgn(vs $$0, List<vs> $$1, ImmutableList<fgn.a> $$2) {
-      super($$0);
-      this.l = vx.a($$1);
-      this.k = vr.a($$0, vv.a($$1, vr.a));
-      this.m = $$2;
+   public fgn() {
+      super("");
    }
 
    @Override
-   public vs i() {
-      return this.k;
+   protected void aO_() {
+      super.aO_();
+      this.c = fbg.a(vu.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
+      this.c(this.c);
    }
 
    @Override
-   public void aP_() {
-      UnmodifiableIterator $$1 = this.m.iterator();
-
-      while ($$1.hasNext()) {
-         fgn.a $$0 = (fgn.a)$$1.next();
-         this.p = Math.max(this.p, 20 + this.i.a($$0.a) + 20);
-      }
-
-      int $$1x = 5 + this.p + 5;
-      int $$2 = $$1x * this.m.size();
-      this.n = fbd.a(this.i, this.l, $$2);
-      int $$3 = this.n.a() * 9;
-      this.o = (int)((double)this.h / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.o + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.g / 2.0 - (double)$$2 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.m.iterator(); var6.hasNext(); $$5 += $$1x) {
-         fgn.a $$6 = (fgn.a)var6.next();
-         this.c(fak.a($$6.a, $$6.b).a($$5, $$4, this.p, 20).a());
+   public void a(fat $$0, int $$1, int $$2, float $$3) {
+      if (!this.f.J().a(this.f.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public void a(ezx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.o - 9 * 2, -1);
-      this.n.a($$0, this.g / 2, this.o);
+   public void b(fat $$0, int $$1, int $$2, float $$3) {
    }
 
    @Override
-   public void b(ezx $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void d() {
+      this.E();
    }
 
    @Override
-   public boolean aN_() {
-      return false;
+   public boolean a(char $$0, int $$1) {
+      return !this.f.J().a(this.f.T()) ? true : super.a($$0, $$1);
    }
 
-   public static final class a {
-      final vs a;
-      final fak.c b;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.E();
+      }
 
-      public a(vs $$0, fak.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      if (!this.f.J().a(this.f.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.f.l.d().d();
+         return true;
+      }
+   }
+
+   private void E() {
+      frz $$0 = this.f.s.cu;
+      $$0.b(new agd(this.f.s, agd.a.c));
+   }
+
+   public void o() {
+      if (this.b.a().isEmpty()) {
+         this.f.a(null);
+      } else {
+         this.f.a(new ffv(this.b.a()));
       }
    }
 }

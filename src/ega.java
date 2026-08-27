@@ -1,9 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public abstract class ega {
-   public static final Codec<ega> c = kh.o.q().dispatch("predicate_type", ega::a, egb::codec);
+public class ega extends egw {
+   public static final Codec<ega> a = Codec.unit(() -> ega.b);
+   public static final ega b = new ega();
 
-   public abstract boolean a(dme var1, awt var2);
+   private ega() {
+   }
 
-   protected abstract egb<?> a();
+   @Override
+   public boolean a(dmz $$0, axd $$1) {
+      return true;
+   }
+
+   @Override
+   protected egx<?> a() {
+      return egx.a;
+   }
 }

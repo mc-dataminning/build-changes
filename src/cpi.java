@@ -1,23 +1,10 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cpi(il<ato> b, int c, float d) {
-   public static final Codec<cpi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ato.b.fieldOf("sound_event").forGetter(cpi::a), avu.k.fieldOf("use_duration").forGetter(cpi::b), avu.l.fieldOf("range").forGetter(cpi::c)
-            )
-            .apply($$0, cpi::new)
-   );
-
-   public il<ato> a() {
-      return this.b;
+public class cpi extends cqf {
+   public cpi(cqf.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
+   @Override
+   public boolean i(cqk $$0) {
+      return true;
    }
 }

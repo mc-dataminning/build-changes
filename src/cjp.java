@@ -1,39 +1,51 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
-public class cjp {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final cjp c = a("empty").a(0, cjn.b).a();
-   public static final cjp d = a("simple").a(5000, cjn.c).a(11000, cjn.e).a();
-   public static final cjp e = a("villager_baby").a(10, cjn.b).a(3000, cjn.d).a(6000, cjn.b).a(10000, cjn.d).a(12000, cjn.e).a();
-   public static final cjp f = a("villager_default").a(10, cjn.b).a(2000, cjn.c).a(9000, cjn.f).a(11000, cjn.b).a(12000, cjn.e).a();
-   private final Map<cjn, cjr> g = Maps.newHashMap();
-
-   protected static cjq a(String $$0) {
-      cjp $$1 = ix.a(kh.D, $$0, new cjp());
-      return new cjq($$1);
+public class cjp extends cjr {
+   public cjp(bpc<? extends cjp> $$0, cwz $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(cjn $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new cjr());
+   public cjp(cwz $$0, bpo $$1) {
+      super(bpc.aS, $$1, $$0);
+   }
+
+   public cjp(cwz $$0, double $$1, double $$2, double $$3) {
+      super(bpc.aS, $$1, $$2, $$3, $$0);
+   }
+
+   @Override
+   protected cqf r() {
+      return cqn.qB;
+   }
+
+   private ka s() {
+      cqk $$0 = this.p();
+      return (ka)(!$$0.b() && !$$0.a(this.r()) ? new jy(kc.R, $$0) : kc.U);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         ka $$1 = this.s();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dM().a($$1, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
-   protected cjr b(cjn $$0) {
-      return this.g.get($$0);
+   @Override
+   protected void a(epo $$0) {
+      super.a($$0);
+      bow $$1 = $$0.a();
+      int $$2 = $$1 instanceof cfi ? 3 : 0;
+      $$1.a(this.dN().b(this, this.af_()), (float)$$2);
    }
 
-   protected List<cjr> c(cjn $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
-   }
-
-   public cjn a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cjn.b);
+   @Override
+   protected void a(epp $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.dM().a(this, (byte)3);
+         this.am();
+      }
    }
 }

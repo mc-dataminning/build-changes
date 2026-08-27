@@ -1,7 +1,7 @@
 public interface fq {
-   eov a(du var1);
+   epr a(du var1);
 
-   eou b(du var1);
+   epq b(du var1);
 
    default ib c(du $$0) {
       return ib.a(this.a($$0));
