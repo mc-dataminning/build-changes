@@ -1,42 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eee extends eed {
-   public static final Codec<eee> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(afw.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eee::new)
-   );
-   private final afw j;
+public class eee {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
 
-   private eee(afw $$0, int $$1, int $$2, List<egh> $$3, List<eev> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public eee(eeb.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(edz.c).toFile();
+      this.c.mkdirs();
    }
 
-   @Override
-   public eec a() {
-      return edz.d;
-   }
-
-   @Override
-   public void a(Consumer<ckj> $$0, edi $$1) {
-      edq $$2 = $$1.a().getLootTable(this.j);
-      $$2.a($$1, $$0);
-   }
-
-   @Override
-   public void a(edr $$0) {
-      edk<edq> $$1 = new edk<>(edn.c, this.j);
-      if ($$0.a($$1)) {
-         $$0.a("Table " + this.j + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.j + "}", $$1)), () -> $$0.a("Unknown loot table called " + this.j));
+   public void a(cdm $$0) {
+      try {
+         rz $$1 = $$0.f(new rz());
+         File $$2 = File.createTempFile($$0.cw() + "-", ".dat", this.c);
+         sm.a($$1, $$2);
+         File $$3 = new File(this.c, $$0.cw() + ".dat");
+         File $$4 = new File(this.c, $$0.cw() + ".dat_old");
+         ac.a($$3, $$2, $$4);
+      } catch (Exception var6) {
+         b.warn("Failed to save player data for {}", $$0.ab().getString());
       }
    }
 
-   public static eed.a<?> a(afw $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eee($$0, $$1, $$2, $$3, $$4));
+   @Nullable
+   public rz b(cdm $$0) {
+      rz $$1 = null;
+
+      try {
+         File $$2 = new File(this.c, $$0.cw() + ".dat");
+         if ($$2.exists() && $$2.isFile()) {
+            $$1 = sm.a($$2, si.a());
+         }
+      } catch (Exception var4) {
+         b.warn("Failed to load player data for {}", $$0.ab().getString());
+      }
+
+      if ($$1 != null) {
+         int $$4 = so.b($$1, -1);
+         $$0.g(aun.b.a(this.a, $$1, $$4));
+      }
+
+      return $$1;
+   }
+
+   public String[] a() {
+      String[] $$0 = this.c.list();
+      if ($$0 == null) {
+         $$0 = new String[0];
+      }
+
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         if ($$0[$$1].endsWith(".dat")) {
+            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
+         }
+      }
+
+      return $$0;
    }
 }

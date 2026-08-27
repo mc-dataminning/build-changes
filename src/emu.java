@@ -1,408 +1,140 @@
-import com.google.common.hash.Hashing;
-import com.google.common.io.Files;
-import com.mojang.logging.LogUtils;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Path;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.CountingOutputStream;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.slf4j.Logger;
 
 public class emu {
-   static final Logger a = LogUtils.getLogger();
-   volatile boolean b;
-   volatile boolean c;
-   volatile boolean d;
-   volatile boolean e;
    @Nullable
-   private volatile File f;
-   volatile File g;
-   @Nullable
-   private volatile HttpGet h;
-   @Nullable
-   private Thread i;
-   private final RequestConfig j = RequestConfig.custom().setSocketTimeout(120000).setConnectTimeout(120000).build();
-   private static final String[] k = new String[]{
-      "CON",
-      "COM",
-      "PRN",
-      "AUX",
-      "CLOCK$",
-      "NUL",
-      "COM1",
-      "COM2",
-      "COM3",
-      "COM4",
-      "COM5",
-      "COM6",
-      "COM7",
-      "COM8",
-      "COM9",
-      "LPT1",
-      "LPT2",
-      "LPT3",
-      "LPT4",
-      "LPT5",
-      "LPT6",
-      "LPT7",
-      "LPT8",
-      "LPT9"
-   };
+   private static emu a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final boolean g;
+   private final boolean h;
 
-   public long a(String $$0) {
-      CloseableHttpClient $$1 = null;
-      HttpGet $$2 = null;
-
-      long var5;
-      try {
-         $$2 = new HttpGet($$0);
-         $$1 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-         CloseableHttpResponse $$3 = $$1.execute($$2);
-         return Long.parseLong($$3.getFirstHeader("Content-Length").getValue());
-      } catch (Throwable var16) {
-         a.error("Unable to get content length for download");
-         var5 = 0L;
-      } finally {
-         if ($$2 != null) {
-            $$2.releaseConnection();
-         }
-
-         if ($$1 != null) {
-            try {
-               $$1.close();
-            } catch (IOException var15) {
-               a.error("Could not close http client", var15);
-            }
-         }
-      }
-
-      return var5;
+   private emu(boolean $$0, boolean $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.g = $$0;
+      this.b = $$2;
+      this.d = $$3;
+      this.c = $$4;
+      this.e = $$5;
+      this.h = $$1;
+      this.f = $$6;
    }
 
-   public void a(eoe $$0, String $$1, epa.a $$2, ecy $$3) {
-      if (this.i == null) {
-         this.i = new Thread(() -> {
-            CloseableHttpClient $$4 = null;
+   public emu() {
+      this(false, true, 1, 0, 1, 0, 32774);
+   }
 
-            try {
-               this.f = File.createTempFile("backup", ".tar.gz");
-               this.h = new HttpGet($$0.a);
-               $$4 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-               HttpResponse $$5 = $$4.execute(this.h);
-               $$2.b = Long.parseLong($$5.getFirstHeader("Content-Length").getValue());
-               if ($$5.getStatusLine().getStatusCode() == 200) {
-                  OutputStream $$12 = new FileOutputStream(this.f);
-                  emu.b $$13 = new emu.b($$1.trim(), this.f, $$3, $$2);
-                  emu.a $$14 = new emu.a($$12);
-                  $$14.a($$13);
-                  IOUtils.copy($$5.getEntity().getContent(), $$14);
-                  return;
-               }
+   public emu(int $$0, int $$1, int $$2) {
+      this(false, false, $$0, $$1, $$0, $$1, $$2);
+   }
 
-               this.d = true;
-               this.h.abort();
-            } catch (Exception var93) {
-               a.error("Caught exception while downloading: {}", var93.getMessage());
-               this.d = true;
-               return;
-            } finally {
-               this.h.releaseConnection();
-               if (this.f != null) {
-                  this.f.delete();
-               }
-
-               if (!this.d) {
-                  if (!$$0.b.isEmpty() && !$$0.c.isEmpty()) {
-                     try {
-                        this.f = File.createTempFile("resources", ".tar.gz");
-                        this.h = new HttpGet($$0.b);
-                        HttpResponse $$28 = $$4.execute(this.h);
-                        $$2.b = Long.parseLong($$28.getFirstHeader("Content-Length").getValue());
-                        if ($$28.getStatusLine().getStatusCode() != 200) {
-                           this.d = true;
-                           this.h.abort();
-                           return;
-                        }
-
-                        OutputStream $$29 = new FileOutputStream(this.f);
-                        emu.c $$30 = new emu.c(this.f, $$2, $$0);
-                        emu.a $$31 = new emu.a($$29);
-                        $$31.a($$30);
-                        IOUtils.copy($$28.getEntity().getContent(), $$31);
-                     } catch (Exception var91) {
-                        a.error("Caught exception while downloading: {}", var91.getMessage());
-                        this.d = true;
-                     } finally {
-                        this.h.releaseConnection();
-                        if (this.f != null) {
-                           this.f.delete();
-                        }
-                     }
-                  } else {
-                     this.c = true;
-                  }
-               }
-
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (IOException var90) {
-                     a.error("Failed to close Realms download client");
-                  }
-               }
-            }
-         });
-         this.i.setUncaughtExceptionHandler(new eoi(a));
-         this.i.start();
-      }
+   public emu(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      this(true, false, $$0, $$1, $$2, $$3, $$4);
    }
 
    public void a() {
-      if (this.h != null) {
-         this.h.abort();
-      }
+      if (!this.equals(a)) {
+         if (a == null || this.h != a.b()) {
+            a = this;
+            if (this.h) {
+               RenderSystem.disableBlend();
+               return;
+            }
 
-      if (this.f != null) {
-         this.f.delete();
-      }
+            RenderSystem.enableBlend();
+         }
 
-      this.b = true;
+         RenderSystem.blendEquation(this.f);
+         if (this.g) {
+            RenderSystem.blendFuncSeparate(this.b, this.d, this.c, this.e);
+         } else {
+            RenderSystem.blendFunc(this.b, this.d);
+         }
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof emu $$1)) {
+         return false;
+      } else if (this.f != $$1.f) {
+         return false;
+      } else if (this.e != $$1.e) {
+         return false;
+      } else if (this.d != $$1.d) {
+         return false;
+      } else if (this.h != $$1.h) {
+         return false;
+      } else if (this.g != $$1.g) {
+         return false;
+      } else {
+         return this.c != $$1.c ? false : this.b == $$1.b;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      $$0 = 31 * $$0 + this.e;
+      $$0 = 31 * $$0 + this.f;
+      $$0 = 31 * $$0 + (this.g ? 1 : 0);
+      return 31 * $$0 + (this.h ? 1 : 0);
    }
 
    public boolean b() {
-      return this.c;
+      return this.h;
    }
 
-   public boolean c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static String b(String $$0) {
-      $$0 = $$0.replaceAll("[\\./\"]", "_");
-
-      for (String $$1 : k) {
-         if ($$0.equalsIgnoreCase($$1)) {
-            $$0 = "_" + $$0 + "_";
-         }
-      }
-
-      return $$0;
-   }
-
-   void a(String $$0, @Nullable File $$1, ecy $$2) throws IOException {
-      Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
-      int $$4 = 1;
-
-      for (char $$5 : aa.ba) {
-         $$0 = $$0.replace($$5, '_');
-      }
-
-      if (StringUtils.isEmpty($$0)) {
-         $$0 = "Realm";
-      }
-
-      $$0 = b($$0);
-
-      try {
-         for (ecy.b $$6 : $$2.b()) {
-            String $$7 = $$6.a();
-            if ($$7.toLowerCase(Locale.ROOT).startsWith($$0.toLowerCase(Locale.ROOT))) {
-               Matcher $$8 = $$3.matcher($$7);
-               if ($$8.matches()) {
-                  int $$9 = Integer.parseInt($$8.group(1));
-                  if ($$9 > $$4) {
-                     $$4 = $$9;
-                  }
-               } else {
-                  $$4++;
-               }
-            }
-         }
-      } catch (Exception var43) {
-         a.error("Error getting level list", var43);
-         this.d = true;
-         return;
-      }
-
-      String $$13;
-      if ($$2.a($$0) && $$4 <= 1) {
-         $$13 = $$0;
+   public static int a(String $$0) {
+      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
+      if ("add".equals($$1)) {
+         return 32774;
+      } else if ("subtract".equals($$1)) {
+         return 32778;
+      } else if ("reversesubtract".equals($$1)) {
+         return 32779;
+      } else if ("reverse_subtract".equals($$1)) {
+         return 32779;
+      } else if ("min".equals($$1)) {
+         return 32775;
       } else {
-         $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-         if (!$$2.a($$13)) {
-            boolean $$12 = false;
-
-            while (!$$12) {
-               $$4++;
-               $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-               if ($$2.a($$13)) {
-                  $$12 = true;
-               }
-            }
-         }
-      }
-
-      TarArchiveInputStream $$14 = null;
-      File $$15 = new File(ero.O().p.getAbsolutePath(), "saves");
-
-      try {
-         $$15.mkdir();
-         $$14 = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream($$1))));
-
-         for (TarArchiveEntry $$16 = $$14.getNextTarEntry(); $$16 != null; $$16 = $$14.getNextTarEntry()) {
-            File $$17 = new File($$15, $$16.getName().replace("world", $$13));
-            if ($$16.isDirectory()) {
-               $$17.mkdirs();
-            } else {
-               $$17.createNewFile();
-
-               try (FileOutputStream $$18 = new FileOutputStream($$17)) {
-                  IOUtils.copy($$14, $$18);
-               }
-            }
-         }
-      } catch (Exception var41) {
-         a.error("Error extracting world", var41);
-         this.d = true;
-      } finally {
-         if ($$14 != null) {
-            $$14.close();
-         }
-
-         if ($$1 != null) {
-            $$1.delete();
-         }
-
-         try (ecy.c $$28 = $$2.d($$13)) {
-            $$28.a($$13.trim());
-            Path $$29 = $$28.a(ecw.e);
-            a($$29.toFile());
-         } catch (IOException var39) {
-            a.error("Failed to rename unpacked realms level {}", $$13, var39);
-         } catch (ehu var40) {
-            a.warn("{}", var40.getMessage());
-         }
-
-         this.g = new File($$15, $$13 + File.separator + "resources.zip");
+         return "max".equals($$1) ? 32776 : 32774;
       }
    }
 
-   private static void a(File $$0) {
-      if ($$0.exists()) {
-         try {
-            rt $$1 = se.a($$0);
-            rt $$2 = $$1.p("Data");
-            $$2.r("Player");
-            se.a($$1, $$0);
-         } catch (Exception var3) {
-            a.info("Exception while removing player tag", var3);
-         }
-      }
-   }
-
-   static class a extends CountingOutputStream {
-      @Nullable
-      private ActionListener a;
-
-      public a(OutputStream $$0) {
-         super($$0);
-      }
-
-      public void a(ActionListener $$0) {
-         this.a = $$0;
-      }
-
-      protected void afterWrite(int $$0) throws IOException {
-         super.afterWrite($$0);
-         if (this.a != null) {
-            this.a.actionPerformed(new ActionEvent(this, 0, null));
-         }
-      }
-   }
-
-   class b implements ActionListener {
-      private final String b;
-      private final File c;
-      private final ecy d;
-      private final epa.a e;
-
-      b(String $$0, File $$1, ecy $$2, epa.a $$3) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.e.a = ((emu.a)$$0.getSource()).getByteCount();
-         if (this.e.a >= this.e.b && !emu.this.b && !emu.this.d) {
-            try {
-               emu.this.e = true;
-               emu.this.a(this.b, this.c, this.d);
-            } catch (IOException var3) {
-               emu.a.error("Error extracting archive", var3);
-               emu.this.d = true;
-            }
-         }
-      }
-   }
-
-   class c implements ActionListener {
-      private final File b;
-      private final epa.a c;
-      private final eoe d;
-
-      c(File $$0, epa.a $$1, eoe $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.c.a = ((emu.a)$$0.getSource()).getByteCount();
-         if (this.c.a >= this.c.b && !emu.this.b) {
-            try {
-               String $$1 = Hashing.sha1().hashBytes(Files.toByteArray(this.b)).toString();
-               if ($$1.equals(this.d.c)) {
-                  FileUtils.copyFile(this.b, emu.this.g);
-                  emu.this.c = true;
-               } else {
-                  emu.a.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", this.d.c, $$1);
-                  FileUtils.deleteQuietly(this.b);
-                  emu.this.d = true;
-               }
-            } catch (IOException var3) {
-               emu.a.error("Error copying resourcepack file: {}", var3.getMessage());
-               emu.this.d = true;
-            }
-         }
+   public static int b(String $$0) {
+      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
+      $$1 = $$1.replaceAll("_", "");
+      $$1 = $$1.replaceAll("one", "1");
+      $$1 = $$1.replaceAll("zero", "0");
+      $$1 = $$1.replaceAll("minus", "-");
+      if ("0".equals($$1)) {
+         return 0;
+      } else if ("1".equals($$1)) {
+         return 1;
+      } else if ("srccolor".equals($$1)) {
+         return 768;
+      } else if ("1-srccolor".equals($$1)) {
+         return 769;
+      } else if ("dstcolor".equals($$1)) {
+         return 774;
+      } else if ("1-dstcolor".equals($$1)) {
+         return 775;
+      } else if ("srcalpha".equals($$1)) {
+         return 770;
+      } else if ("1-srcalpha".equals($$1)) {
+         return 771;
+      } else if ("dstalpha".equals($$1)) {
+         return 772;
+      } else {
+         return "1-dstalpha".equals($$1) ? 773 : -1;
       }
    }
 }

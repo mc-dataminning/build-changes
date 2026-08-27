@@ -1,12 +1,12 @@
 public class dx extends Exception {
-   private final ui a;
+   private final ur a;
 
-   public dx(ui $$0) {
+   public dx(ur $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
-   public ui a() {
+   public ur a() {
       return this.a;
    }
 }

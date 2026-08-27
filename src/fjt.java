@@ -1,13 +1,9 @@
-import java.util.List;
+public class fjt<T extends cbt> extends ffy<T> {
+   public fjt(fkb $$0) {
+      super($$0);
+   }
 
-public enum fjt {
-   a,
-   b;
-
-   private static final List<fjt> c = List.of(values());
-   private static final ip.b d = ip.a(jy.aq);
-
-   public static ij<fjt> a() {
-      return new ij<>(c).a(a, d);
+   public boolean a(T $$0) {
+      return $$0.fW();
    }
 }

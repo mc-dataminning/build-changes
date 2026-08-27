@@ -1,34 +1,10 @@
-public class fws extends fuc<bzr> {
-   private final fpu a;
-
-   public fws(fud.a $$0) {
+public class fws<T extends bki> extends fvj<T> {
+   public fws(fvk.a $$0) {
       super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
    }
 
-   public void a(bzr $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.s();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = asy.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      fwr.a(this.a, cuc.ck.o(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public afw a(bzr $$0) {
-      return fzz.e;
+   @Override
+   public agg a(T $$0) {
+      return gbg.e;
    }
 }

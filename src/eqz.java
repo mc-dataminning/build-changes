@@ -1,223 +1,167 @@
-import java.util.Arrays;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class eqz {
-   private boolean b;
-   private cqf c;
-   private bjt d;
-   private eif e = eif.b;
-   private final ht.a f = new ht.a();
-   private final Vector3f g = new Vector3f(0.0F, 0.0F, 1.0F);
-   private final Vector3f h = new Vector3f(0.0F, 1.0F, 0.0F);
-   private final Vector3f i = new Vector3f(1.0F, 0.0F, 0.0F);
-   private float j;
-   private float k;
-   private final Quaternionf l = new Quaternionf(0.0F, 0.0F, 0.0F, 1.0F);
-   private boolean m;
-   private float n;
-   private float o;
-   public static final float a = 0.083333336F;
+   static final Logger a = LogUtils.getLogger();
+   final Executor b;
+   final TimeUnit c;
+   final auf d;
 
-   public void a(cqf $$0, bjt $$1, boolean $$2, boolean $$3, float $$4) {
-      this.b = true;
-      this.c = $$0;
-      this.d = $$1;
-      this.m = $$2;
-      this.a($$1.h($$4), $$1.g($$4));
-      this.b(asy.d((double)$$4, $$1.K, $$1.dq()), asy.d((double)$$4, $$1.L, $$1.ds()) + (double)asy.i($$4, this.o, this.n), asy.d((double)$$4, $$1.M, $$1.dw()));
-      if ($$2) {
-         if ($$3) {
-            this.a(this.k + 180.0F, -this.j);
-         }
-
-         this.a(-this.a(4.0), 0.0, 0.0);
-      } else if ($$1 instanceof bkj && ((bkj)$$1).fD()) {
-         hx $$5 = ((bkj)$$1).fF();
-         this.a($$5 != null ? $$5.p() - 180.0F : 0.0F, 0.0F);
-         this.a(0.0, 0.3, 0.0);
-      }
+   public eqz(Executor $$0, TimeUnit $$1, auf $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a() {
-      if (this.d != null) {
-         this.o = this.n;
-         this.n = this.n + (this.d.cH() - this.n) * 0.5F;
-      }
-   }
-
-   private double a(double $$0) {
-      for (int $$1 = 0; $$1 < 8; $$1++) {
-         float $$2 = (float)(($$1 & 1) * 2 - 1);
-         float $$3 = (float)(($$1 >> 1 & 1) * 2 - 1);
-         float $$4 = (float)(($$1 >> 2 & 1) * 2 - 1);
-         $$2 *= 0.1F;
-         $$3 *= 0.1F;
-         $$4 *= 0.1F;
-         eif $$5 = this.e.b((double)$$2, (double)$$3, (double)$$4);
-         eif $$6 = new eif(
-            this.e.c - (double)this.g.x() * $$0 + (double)$$2,
-            this.e.d - (double)this.g.y() * $$0 + (double)$$3,
-            this.e.e - (double)this.g.z() * $$0 + (double)$$4
-         );
-         eid $$7 = this.c.a(new cqi($$5, $$6, cqi.a.c, cqi.b.a, this.d));
-         if ($$7.c() != eid.a.a) {
-            double $$8 = $$7.e().f(this.e);
-            if ($$8 < $$0) {
-               $$0 = $$8;
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   protected void a(double $$0, double $$1, double $$2) {
-      double $$3 = (double)this.g.x() * $$0 + (double)this.h.x() * $$1 + (double)this.i.x() * $$2;
-      double $$4 = (double)this.g.y() * $$0 + (double)this.h.y() * $$1 + (double)this.i.y() * $$2;
-      double $$5 = (double)this.g.z() * $$0 + (double)this.h.z() * $$1 + (double)this.i.z() * $$2;
-      this.a(new eif(this.e.c + $$3, this.e.d + $$4, this.e.e + $$5));
-   }
-
-   protected void a(float $$0, float $$1) {
-      this.j = $$1;
-      this.k = $$0;
-      this.l.rotationYXZ(-$$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), 0.0F);
-      this.g.set(0.0F, 0.0F, 1.0F).rotate(this.l);
-      this.h.set(0.0F, 1.0F, 0.0F).rotate(this.l);
-      this.i.set(1.0F, 0.0F, 0.0F).rotate(this.l);
-   }
-
-   protected void b(double $$0, double $$1, double $$2) {
-      this.a(new eif($$0, $$1, $$2));
-   }
-
-   protected void a(eif $$0) {
-      this.e = $$0;
-      this.f.b($$0.c, $$0.d, $$0.e);
-   }
-
-   public eif b() {
-      return this.e;
-   }
-
-   public ht c() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.j;
-   }
-
-   public float e() {
-      return this.k;
-   }
-
-   public Quaternionf f() {
-      return this.l;
-   }
-
-   public bjt g() {
-      return this.d;
-   }
-
-   public boolean h() {
-      return this.b;
-   }
-
-   public boolean i() {
-      return this.m;
-   }
-
-   public eqz.a j() {
-      ero $$0 = ero.O();
-      double $$1 = (double)$$0.aM().k() / (double)$$0.aM().l();
-      double $$2 = Math.tan((double)((float)$$0.m.ad().c().intValue() * (float) (Math.PI / 180.0)) / 2.0) * 0.05F;
-      double $$3 = $$2 * $$1;
-      eif $$4 = new eif(this.g).a(0.05F);
-      eif $$5 = new eif(this.i).a($$3);
-      eif $$6 = new eif(this.h).a($$2);
-      return new eqz.a($$4, $$5, $$6);
-   }
-
-   public ebg k() {
-      if (!this.b) {
-         return ebg.d;
+   public <T> eqz.e<T> a(String $$0, Callable<T> $$1, Duration $$2, era $$3) {
+      long $$4 = this.c.convert($$2);
+      if ($$4 == 0L) {
+         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
       } else {
-         ebe $$0 = this.c.b_(this.f);
-         if ($$0.a(aqx.a) && this.e.d < (double)((float)this.f.v() + $$0.a(this.c, this.f))) {
-            return ebg.b;
-         } else {
-            eqz.a $$1 = this.j();
+         return new eqz.e<>($$0, $$1, $$4, $$3);
+      }
+   }
 
-            for (eif $$3 : Arrays.asList($$1.a, $$1.a(), $$1.b(), $$1.c(), $$1.d())) {
-               eif $$4 = this.e.e($$3);
-               ht $$5 = ht.a($$4);
-               ebe $$6 = this.c.b_($$5);
-               if ($$6.a(aqx.b)) {
-                  if ($$4.d <= (double)($$6.a(this.c, $$5) + (float)$$5.v())) {
-                     return ebg.a;
-                  }
-               } else {
-                  dgb $$7 = this.c.a_($$5);
-                  if ($$7.a(cuc.qC)) {
-                     return ebg.c;
-                  }
-               }
-            }
+   public eqz.c a() {
+      return new eqz.c();
+   }
 
-            return ebg.d;
+   static record a<T>(Either<T, Exception> a, long b) {
+   }
+
+   class b<T> {
+      private final eqz.e<T> b;
+      private final Consumer<T> c;
+      private long d = -1L;
+
+      b(eqz.e<T> $$0, Consumer<T> $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      void a(long $$0) {
+         this.b.a($$0);
+         this.a();
+      }
+
+      void a() {
+         eqz.d<T> $$0 = this.b.g;
+         if ($$0 != null && this.d < $$0.b) {
+            this.c.accept($$0.a);
+            this.d = $$0.b;
+         }
+      }
+
+      void b() {
+         eqz.d<T> $$0 = this.b.g;
+         if ($$0 != null) {
+            this.c.accept($$0.a);
+            this.d = $$0.b;
+         }
+      }
+
+      void c() {
+         this.b.a();
+         this.d = -1L;
+      }
+   }
+
+   public class c {
+      private final List<eqz.b<?>> b = new ArrayList<>();
+
+      public <T> void a(eqz.e<T> $$0, Consumer<T> $$1) {
+         eqz.b<T> $$2 = eqz.this.new b<>($$0, $$1);
+         this.b.add($$2);
+         $$2.a();
+      }
+
+      public void a() {
+         for (eqz.b<?> $$0 : this.b) {
+            $$0.b();
+         }
+      }
+
+      public void b() {
+         for (eqz.b<?> $$0 : this.b) {
+            $$0.a(eqz.this.d.get(eqz.this.c));
+         }
+      }
+
+      public void c() {
+         for (eqz.b<?> $$0 : this.b) {
+            $$0.c();
          }
       }
    }
 
-   public final Vector3f l() {
-      return this.g;
+   static record d<T>(T a, long b) {
    }
 
-   public final Vector3f m() {
-      return this.h;
-   }
+   public class e<T> {
+      private final String b;
+      private final Callable<T> c;
+      private final long d;
+      private final era e;
+      @Nullable
+      private CompletableFuture<eqz.a<T>> f;
+      @Nullable
+      eqz.d<T> g;
+      private long h = -1L;
 
-   public final Vector3f n() {
-      return this.i;
-   }
-
-   public void o() {
-      this.c = null;
-      this.d = null;
-      this.b = false;
-   }
-
-   public static class a {
-      final eif a;
-      private final eif b;
-      private final eif c;
-
-      a(eif $$0, eif $$1, eif $$2) {
-         this.a = $$0;
+      e(String $$1, Callable<T> $$2, long $$3, era $$4) {
          this.b = $$1;
          this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
       }
 
-      public eif a() {
-         return this.a.e(this.c).e(this.b);
+      void a(long $$0) {
+         if (this.f != null) {
+            eqz.a<T> $$1 = this.f.getNow(null);
+            if ($$1 == null) {
+               return;
+            }
+
+            this.f = null;
+            long $$2 = $$1.b;
+            $$1.a().ifLeft($$1x -> {
+               this.g = new eqz.d<>((T)$$1x, $$2);
+               this.h = $$2 + this.d * this.e.a();
+            }).ifRight($$1x -> {
+               long $$2x = this.e.b();
+               eqz.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
+               this.h = $$2 + this.d * $$2x;
+            });
+         }
+
+         if (this.h <= $$0) {
+            this.f = CompletableFuture.supplyAsync(() -> {
+               try {
+                  T $$0x = this.c.call();
+                  long $$1x = eqz.this.d.get(eqz.this.c);
+                  return new eqz.a<>(Either.left($$0x), $$1x);
+               } catch (Exception var4x) {
+                  long $$3 = eqz.this.d.get(eqz.this.c);
+                  return new eqz.a<>(Either.right(var4x), $$3);
+               }
+            }, eqz.this.b);
+         }
       }
 
-      public eif b() {
-         return this.a.e(this.c).d(this.b);
-      }
-
-      public eif c() {
-         return this.a.d(this.c).e(this.b);
-      }
-
-      public eif d() {
-         return this.a.d(this.c).d(this.b);
-      }
-
-      public eif a(float $$0, float $$1) {
-         return this.a.e(this.c.a((double)$$1)).d(this.b.a((double)$$0));
+      public void a() {
+         this.f = null;
+         this.g = null;
+         this.h = -1L;
       }
    }
 }

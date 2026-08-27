@@ -1,12 +1,17 @@
-public abstract class fuu<T extends bkl, M extends fgk<T>> extends fvj<T, M> {
-   public fuu(fud.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class fuu<T extends byh> extends fuh<T, fgq<T>> {
+   private static final Map<bkm<?>, agg> a = Maps.newHashMap(
+      ImmutableMap.of(bkm.w, new agg("textures/entity/horse/donkey.png"), bkm.ap, new agg("textures/entity/horse/mule.png"))
+   );
+
+   public fuu(fvk.a $$0, float $$1, fjz $$2) {
+      super($$0, new fgq<>($$0.a($$2)), $$1);
    }
 
-   public fuu(fud.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new fxq<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new fxu<>(this, $$0.f()));
-      this.a(new fye<>(this, $$0.d()));
+   public agg a(T $$0) {
+      return a.get($$0.ag());
    }
 }

@@ -1,32 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Locale;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 
-public record art(int b) {
-   private static final String c = "#";
-   public static final Codec<art> a = Codec.STRING.comapFlatMap($$0 -> {
-      if (!$$0.startsWith("#")) {
-         return DataResult.error(() -> "Not a color code: " + $$0);
-      } else {
-         try {
-            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
-            return DataResult.success(new art($$1));
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
-         }
-      }
-   }, art::b);
+public class art implements aox {
+   private static final Map<agf<? extends io<?>>, String> a = Map.of(
+      jz.e, "tags/blocks", jz.t, "tags/entity_types", jz.x, "tags/fluids", jz.A, "tags/game_events", jz.E, "tags/items"
+   );
+   private final ip b;
+   private List<art.a<?>> c = List.of();
 
-   private String b() {
-      return String.format(Locale.ROOT, "#%08X", this.b);
+   public art(ip $$0) {
+      this.b = $$0;
+   }
+
+   public List<art.a<?>> a() {
+      return this.c;
+   }
+
+   public static String a(agf<? extends io<?>> $$0) {
+      String $$1 = a.get($$0);
+      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
    }
 
    @Override
-   public String toString() {
-      return this.b();
+   public CompletableFuture<Void> a(aox.a $$0, apd $$1, bfh $$2, bfh $$3, Executor $$4, Executor $$5) {
+      List<? extends CompletableFuture<? extends art.a<?>>> $$6 = this.b.b().map($$2x -> this.a($$1, $$4, $$2x)).toList();
+      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
+         .thenCompose($$0::a)
+         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
    }
 
-   public int a() {
-      return this.b;
+   private <T> CompletableFuture<art.a<T>> a(apd $$0, Executor $$1, ip.d<T> $$2) {
+      agf<? extends io<T>> $$3 = $$2.a();
+      io<T> $$4 = $$2.b();
+      ars<ib<T>> $$5 = new ars<>($$2x -> $$4.b(agf.a($$3, $$2x)), a($$3));
+      return CompletableFuture.supplyAsync(() -> new art.a<>($$3, $$5.b($$0)), $$1);
+   }
+
+   public static record a<T>(agf<? extends io<T>> a, Map<agg, Collection<ib<T>>> b) {
    }
 }

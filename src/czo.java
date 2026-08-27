@@ -1,34 +1,49 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class czo extends dba {
-   public static final MapCodec<czo> b = b(czo::new);
+public class czo extends cut implements dbt {
+   public static final MapCodec<czo> a = b(czo::new);
+   public static final dhn b = dhm.C;
 
    @Override
    public MapCodec<czo> a() {
-      return b;
+      return a;
    }
 
-   protected czo(dga.d $$0) {
-      super(dba.b.e, $$0);
+   protected czo(dgv.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(cqz $$0, ht $$1, dgb $$2, @Nullable bkj $$3, ckj $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$0.c_($$1) instanceof dfh $$6) {
-         GameProfile $$7 = null;
-         if ($$4.u()) {
-            rt $$8 = $$4.v();
-            if ($$8.b("SkullOwner", 10)) {
-               $$7 = sg.a($$8.p("SkullOwner"));
-            } else if ($$8.b("SkullOwner", 8) && !ac.b($$8.l("SkullOwner"))) {
-               $$7 = new GameProfile(ac.d, $$8.l("SkullOwner"));
-            }
-         }
+   public boolean a(dgw $$0, dgw $$1, hx $$2) {
+      return $$1.a(cuv.ac) && $$2.o() == hx.a.b;
+   }
 
-         $$6.a($$7);
+   @Nullable
+   @Override
+   public dgw a(cnj $$0) {
+      ecg $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ech.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
+   }
+
+   @Override
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, ech.c, ech.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public ecg c_(dgw $$0) {
+      return $$0.c(b) ? ech.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(b);
    }
 }

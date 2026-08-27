@@ -1,97 +1,59 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class atr {
+   private final int a;
+   private final int b;
+   private final float c;
+   private final float d;
 
-public interface atr {
-   int W = 16;
-
-   String c();
-
-   static <E extends Enum<E> & atr> atr.a<E> a(Supplier<E[]> $$0) {
-      return a($$0, $$0x -> $$0x);
-   }
-
-   static <E extends Enum<E> & atr> atr.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
-      E[] $$2 = (E[])$$0.get();
-      Function<String, E> $$3 = a($$2, $$1);
-      return new atr.a<>($$2, $$3);
-   }
-
-   static <T extends atr> Codec<T> b(Supplier<T[]> $$0) {
-      T[] $$1 = (T[])$$0.get();
-      Function<String, T> $$2 = a($$1, $$0x -> $$0x);
-      ToIntFunction<T> $$3 = ac.e(Arrays.asList($$1));
-      return new atr.b<>($$1, $$2, $$3);
-   }
-
-   static <T extends atr> Function<String, T> a(T[] $$0, Function<String, String> $$1) {
-      if ($$0.length > 16) {
-         Map<String, T> $$2 = Arrays.<atr>stream($$0).collect(Collectors.toMap($$1x -> $$1.apply($$1x.c()), $$0x -> (T)$$0x));
-         return $$1x -> $$1x == null ? null : $$2.get($$1x);
+   public atr(int $$0) {
+      if ($$0 < 2) {
+         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
+      } else if ($$0 > 30) {
+         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
       } else {
-         return $$2x -> {
-            for (T $$3 : $$0) {
-               if ($$1.apply($$3.c()).equals($$2x)) {
-                  return $$3;
-               }
-            }
-
-            return null;
-         };
+         int $$1 = 1 << $$0;
+         this.a = $$1 - 1;
+         this.b = $$0;
+         this.c = (float)$$1 / 360.0F;
+         this.d = 360.0F / (float)$$1;
       }
    }
 
-   static Keyable a(final atr[] $$0) {
-      return new Keyable() {
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return Arrays.stream($$0).map(atr::c).map($$0::createString);
-         }
-      };
+   public boolean a(int $$0, int $$1) {
+      int $$2 = this.a() >> 1;
+      return ($$0 & $$2) == ($$1 & $$2);
    }
 
-   @Deprecated
-   public static class a<E extends Enum<E> & atr> extends atr.b<E> {
-      private final Function<String, E> a;
-
-      public a(E[] $$0, Function<String, E> $$1) {
-         super($$0, $$1, $$0x -> ((Enum)$$0x).ordinal());
-         this.a = $$1;
-      }
-
-      @Nullable
-      public E a(@Nullable String $$0) {
-         return this.a.apply($$0);
-      }
-
-      public E a(@Nullable String $$0, E $$1) {
-         return Objects.requireNonNullElse(this.a($$0), $$1);
+   public int a(hx $$0) {
+      if ($$0.o().b()) {
+         return 0;
+      } else {
+         int $$1 = $$0.e();
+         return $$1 << this.b - 2;
       }
    }
 
-   public static class b<S extends atr> implements Codec<S> {
-      private final Codec<S> a;
+   public int a(float $$0) {
+      return Math.round($$0 * this.c);
+   }
 
-      public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
-         this.a = asg.b(asg.a(atr::c, $$1), asg.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
-      }
+   public int b(float $$0) {
+      return this.c(this.a($$0));
+   }
 
-      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {
-         return this.a.decode($$0, $$1);
-      }
+   public float a(int $$0) {
+      return (float)$$0 * this.d;
+   }
 
-      public <T> DataResult<T> a(S $$0, DynamicOps<T> $$1, T $$2) {
-         return this.a.encode($$0, $$1, $$2);
-      }
+   public float b(int $$0) {
+      float $$1 = this.a(this.c($$0));
+      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
+   }
+
+   public int c(int $$0) {
+      return $$0 & this.a;
+   }
+
+   public int a() {
+      return this.a;
    }
 }

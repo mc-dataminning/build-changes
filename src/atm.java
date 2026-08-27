@@ -1,24 +1,29 @@
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class atm<K, V> {
-   private final Function<K, V> a;
-   @Nullable
-   private K b = (K)null;
-   @Nullable
-   private V c;
+public record atm(int a, int b) {
+   private static final long c = -8552249625308161526L;
+   private static final int d = 1229472850;
+   private static final int e = 13;
 
-   public atm(Function<K, V> $$0) {
-      this.a = $$0;
+   public static atm a(InputStream $$0) throws IOException {
+      DataInputStream $$1 = new DataInputStream($$0);
+      if ($$1.readLong() != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$1.readInt() != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$1.readInt() != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
+      } else {
+         int $$2 = $$1.readInt();
+         int $$3 = $$1.readInt();
+         return new atm($$2, $$3);
+      }
    }
 
-   public V a(K $$0) {
-      if (this.c == null || !Objects.equals(this.b, $$0)) {
-         this.c = this.a.apply($$0);
-         this.b = $$0;
-      }
-
-      return this.c;
+   public static atm a(byte[] $$0) throws IOException {
+      return a(new ByteArrayInputStream($$0));
    }
 }

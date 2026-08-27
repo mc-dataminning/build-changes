@@ -1,70 +1,85 @@
-public class fpg {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-   public fpg(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public abstract class fpg extends cdm {
+   @Nullable
+   private flf cm;
+   protected eji b;
+   public float c;
+   public float d;
+   public float e;
+   public final fkw f;
+
+   public fpg(fkw $$0, GameProfile $$1) {
+      super($$0, $$0.R(), $$0.S(), $$1);
+      this.b = eji.b;
+      this.f = $$0;
    }
 
-   public fpg a(fpg $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
+   @Override
+   public boolean N_() {
+      flf $$0 = this.a();
+      return $$0 != null && $$0.e() == crp.d;
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public boolean f() {
+      flf $$0 = this.a();
+      return $$0 != null && $$0.e() == crp.b;
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   protected flf a() {
+      if (this.cm == null) {
+         this.cm = esr.N().I().a(this.cv());
+      }
+
+      return this.cm;
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
+   @Override
+   public void l() {
+      this.b = this.do();
+      super.l();
    }
 
-   public void b(int $$0) {
-      this.b = $$0;
+   public eji C(float $$0) {
+      return this.b.a(this.do(), (double)$$0);
    }
 
-   public int c() {
-      return this.c;
+   public gch b() {
+      flf $$0 = this.a();
+      return $$0 == null ? gbz.a(this.cv()) : $$0.g();
    }
 
-   public int d() {
-      return this.d;
-   }
+   public float c() {
+      float $$0 = 1.0F;
+      if (this.fT().b) {
+         $$0 *= 1.1F;
+      }
 
-   public void c(int $$0) {
-      this.c = $$0;
-   }
+      $$0 *= ((float)this.b(bme.m) / this.fT().b() + 1.0F) / 2.0F;
+      if (this.fT().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
+         $$0 = 1.0F;
+      }
 
-   public void d(int $$0) {
-      this.d = $$0;
-   }
+      clb $$1 = this.fp();
+      if (this.fn()) {
+         if ($$1.a(cle.nG)) {
+            int $$2 = this.fr();
+            float $$3 = (float)$$2 / 20.0F;
+            if ($$3 > 1.0F) {
+               $$3 = 1.0F;
+            } else {
+               $$3 *= $$3;
+            }
 
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+            $$0 *= 1.0F - $$3 * 0.15F;
+         } else if (esr.N().m.ax().a() && this.gq()) {
+            return 0.1F;
+         }
+      }
 
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+      return ati.i(esr.N().m.ah().c().floatValue(), 1.0F, $$0);
    }
 }

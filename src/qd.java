@@ -1,71 +1,46 @@
 import java.util.List;
 
 public class qd {
-   public static final dvh a = dva.a(dlk.a.e);
-   public static final dvh b = dva.a(dlk.a.c);
-   public static final dvh c = dva.a(dlk.a.a);
-   public static final dvh d = dva.a(dlk.a.d);
-   public static final dvh e = duz.a(dme.a(), dme.b());
-   public static final dvh f = duz.a(dme.b(10), dme.c(10));
-   public static final dvh g = duz.a(dme.b(8), dme.c(8));
-   public static final dvh h = duz.a(dme.b(4), dme.c(4));
-   public static final dvh i = duz.a(dme.a(), dme.a(256));
+   public static final agf<dvz> a = qj.a("seagrass_warm");
+   public static final agf<dvz> b = qj.a("seagrass_normal");
+   public static final agf<dvz> c = qj.a("seagrass_cold");
+   public static final agf<dvz> d = qj.a("seagrass_river");
+   public static final agf<dvz> e = qj.a("seagrass_swamp");
+   public static final agf<dvz> f = qj.a("seagrass_deep_warm");
+   public static final agf<dvz> g = qj.a("seagrass_deep");
+   public static final agf<dvz> h = qj.a("seagrass_deep_cold");
+   public static final agf<dvz> i = qj.a("seagrass_simple");
+   public static final agf<dvz> j = qj.a("sea_pickle");
+   public static final agf<dvz> k = qj.a("kelp_cold");
+   public static final agf<dvz> l = qj.a("kelp_warm");
+   public static final agf<dvz> m = qj.a("warm_ocean_vegetation");
 
-   public static void a(oo<dve> $$0) {
-      px.a($$0);
-      py.a($$0);
-      pz.a($$0);
-      qa.a($$0);
-      qb.a($$0);
-      qc.a($$0);
-      qe.a($$0);
-      qf.a($$0);
-      qg.a($$0);
+   private static List<dwc> a(int $$0) {
+      return List.of(dvw.a(), qj.b, dvs.a($$0), dvn.a());
    }
 
-   public static afv<dve> a(String $$0) {
-      return afv.a(jz.az, new afw($$0));
-   }
-
-   public static void a(oo<dve> $$0, afv<dve> $$1, ib<dob<?, ?>> $$2, List<dvh> $$3) {
-      $$0.a($$1, new dve($$2, List.copyOf($$3)));
-   }
-
-   public static void a(oo<dve> $$0, afv<dve> $$1, ib<dob<?, ?>> $$2, dvh... $$3) {
-      a($$0, $$1, $$2, List.of($$3));
-   }
-
-   public static dvh a(int $$0, float $$1, int $$2) {
-      float $$3 = 1.0F / $$1;
-      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
-         throw new IllegalStateException("Chance data cannot be represented as list weight");
-      } else {
-         bgl<bhg> $$4 = bgl.<bhg>a().a(bhd.a($$0), (int)$$3 - 1).a(bhd.a($$0 + $$2), 1).a();
-         return dux.a(new bhn($$4));
-      }
-   }
-
-   public static dvg a() {
-      return dut.a(dmr.c);
-   }
-
-   public static dut a(cua $$0) {
-      return dut.a(dmr.a($$0.o(), ht.b));
-   }
-
-   public static ib<dve> a(ib<dob<?, ?>> $$0, dvh... $$1) {
-      return ib.a(new dve($$0, List.of($$1)));
-   }
-
-   public static <FC extends dqs, F extends doo<FC>> ib<dve> a(F $$0, FC $$1, dvh... $$2) {
-      return a(ib.a(new dob($$0, $$1)), $$2);
-   }
-
-   public static <FC extends dqs, F extends doo<FC>> ib<dve> a(F $$0, FC $$1) {
-      return a($$0, $$1, dmr.c);
-   }
-
-   public static <FC extends dqs, F extends doo<FC>> ib<dve> a(F $$0, FC $$1, dmr $$2) {
-      return a($$0, $$1, dut.a($$2));
+   public static void a(ou<dvz> $$0) {
+      ic<dow<?, ?>> $$1 = $$0.a(jz.au);
+      ib.c<dow<?, ?>> $$2 = $$1.b(pr.a);
+      ib.c<dow<?, ?>> $$3 = $$1.b(pr.b);
+      ib.c<dow<?, ?>> $$4 = $$1.b(pr.c);
+      ib.c<dow<?, ?>> $$5 = $$1.b(pr.d);
+      ib.c<dow<?, ?>> $$6 = $$1.b(pr.f);
+      ib.c<dow<?, ?>> $$7 = $$1.b(pr.e);
+      ib.c<dow<?, ?>> $$8 = $$1.b(pr.g);
+      ib.c<dow<?, ?>> $$9 = $$1.b(pr.h);
+      qj.a($$0, a, $$2, a(80));
+      qj.a($$0, b, $$2, a(48));
+      qj.a($$0, c, $$2, a(32));
+      qj.a($$0, d, $$3, a(48));
+      qj.a($$0, e, $$4, a(64));
+      qj.a($$0, f, $$5, a(80));
+      qj.a($$0, g, $$5, a(48));
+      qj.a($$0, h, $$5, a(40));
+      qj.a($$0, i, $$6, dvp.a(dmb.a.b), dwf.a(10), dvo.a(dnm.a(dnm.a(hx.a.q(), cuv.b), dnm.a(ht.b, cuv.G), dnm.a(hx.b.q(), cuv.G))), dvn.a());
+      qj.a($$0, j, $$7, dwf.a(16), dvw.a(), qj.b, dvn.a());
+      qj.a($$0, k, $$8, dvx.a(120, 80.0, 0.0), dvw.a(), qj.b, dvn.a());
+      qj.a($$0, l, $$8, dvx.a(80, 80.0, 0.0), dvw.a(), qj.b, dvn.a());
+      qj.a($$0, m, $$9, dvx.a(20, 400.0, 0.0), dvw.a(), qj.b, dvn.a());
    }
 }

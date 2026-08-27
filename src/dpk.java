@@ -1,57 +1,80 @@
-import com.mojang.serialization.Codec;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class dpk extends doo<drb> {
-   public dpk(Codec<drb> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(doq<drb> $$0) {
-      cra $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      ate $$3 = $$0.d();
-      drb $$4 = $$0.f();
-      Optional<hx> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         ht $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && dok.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         dok.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
-
-   private static Optional<hx> a(cra $$0, ht $$1, ate $$2) {
-      boolean $$3 = dok.b($$0.a_($$1.c()));
-      boolean $$4 = dok.b($$0.a_($$1.d()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? hx.a : hx.b);
-      } else if ($$3) {
-         return Optional.of(hx.a);
-      } else {
-         return $$4 ? Optional.of(hx.b) : Optional.empty();
-      }
-   }
-
-   private static void a(cra $$0, ate $$1, ht $$2, drb $$3) {
-      dok.c($$0, $$2);
-
-      for (hx $$4 : hx.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            ht $$5 = $$2.a($$4);
-            dok.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               ht $$6 = $$5.a(hx.b($$1));
-               dok.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  ht $$7 = $$6.a(hx.b($$1));
-                  dok.c($$0, $$7);
-               }
-            }
+public class dpk {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<ama, dpk.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<ama, dpk.b>() {
+         public dpk.b a(ama $$0) {
+            return new dpk.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
          }
+      });
+
+   public static void a(ama $$0) {
+      try {
+         ((dpk.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
       }
+   }
+
+   public static void a(ama $$0, dow<?, ?> $$1, Optional<dvz> $$2) {
+      try {
+         ((dpk.b)b.get($$0)).a().computeInt(new dpk.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
+      }
+   }
+
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
+
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ac().a().toString();
+               boolean $$3 = $$0.n().v();
+               io<dvz> $$4 = $$0.H_().d(jz.aA);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::c).<agg>map(agf::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
+            }
+         );
+   }
+
+   static record a(dow<?, ?> a, Optional<dvz> b) {
+   }
+
+   static record b(Object2IntMap<dpk.a> a, MutableInt b) {
    }
 }

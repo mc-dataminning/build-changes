@@ -1,10 +1,9 @@
-public class cib extends cic {
-   public cib(cua $$0, cke.a $$1) {
-      super($$0, $$1);
+public class cib extends cgf {
+   public cib(int $$0, cdl $$1) {
+      super(chl.w, cok.d, chs.d, $$0, $$1);
    }
 
-   @Override
-   protected boolean a(cmr $$0, dgb $$1) {
-      return $$0.q().a($$0.a(), $$1, 26);
+   public cib(int $$0, cdl $$1, bij $$2, cgo $$3) {
+      super(chl.w, cok.d, chs.d, $$0, $$1, $$2, $$3);
    }
 }

@@ -1,94 +1,173 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class ffe<T extends bjt> extends fgg<T> {
-   private final fiw a;
-   private final fiw[] b;
-   private final fiw f;
+class ffe {
+   private static final int a = 44;
+   private final List<ffe.c> b;
 
-   public ffe(fiw $$0) {
-      this.a = $$0;
-      this.f = $$0.b("head");
-      this.b = new fiw[12];
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+   ffe(List<ffe.c> $$0) {
+      this.b = $$0;
    }
 
-   private static String a(int $$0) {
-      return "part" + $$0;
+   public void a() {
+      this.b.forEach(ffe.c::a);
    }
 
-   public static fjc b() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      $$1.a("head", fjb.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fiy.a);
-      float $$2 = 0.0F;
-      fjb $$3 = fjb.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         float $$5 = asy.b($$2) * 9.0F;
-         float $$6 = -2.0F + asy.b((float)($$4 * 2) * 0.25F);
-         float $$7 = asy.a($$2) * 9.0F;
-         $$1.a(a($$4), $$3, fiy.a($$5, $$6, $$7));
-         $$2++;
-      }
-
-      $$2 = (float) (Math.PI / 4);
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         float $$9 = asy.b($$2) * 7.0F;
-         float $$10 = 2.0F + asy.b((float)($$8 * 2) * 0.25F);
-         float $$11 = asy.a($$2) * 7.0F;
-         $$1.a(a($$8), $$3, fiy.a($$9, $$10, $$11));
-         $$2++;
-      }
-
-      $$2 = 0.47123894F;
-
-      for (int $$12 = 8; $$12 < 12; $$12++) {
-         float $$13 = asy.b($$2) * 5.0F;
-         float $$14 = 11.0F + asy.b((float)$$12 * 1.5F * 0.5F);
-         float $$15 = asy.a($$2) * 5.0F;
-         $$1.a(a($$12), $$3, fiy.a($$13, $$14, $$15));
-         $$2++;
-      }
-
-      return fjc.a($$0, 64, 32);
+   public static ffe.a a(int $$0) {
+      return new ffe.a($$0);
    }
 
-   @Override
-   public fiw a() {
-      return this.a;
+   public static class a {
+      final int a;
+      private final List<ffe.d> b = new ArrayList<>();
+      int c;
+      int d = 4;
+      int e;
+      Optional<ffe.b> f = Optional.empty();
+
+      public a(int $$0) {
+         this.a = $$0;
+      }
+
+      void a() {
+         this.e++;
+      }
+
+      public ffe.d a(ur $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
+         ffe.d $$3 = new ffe.d($$0, $$1, $$2, 44);
+         this.b.add($$3);
+         return $$3;
+      }
+
+      public ffe.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public ffe.a b(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ffe a(Consumer<exy> $$0) {
+         exv $$1 = new exv().b(this.d);
+         $$1.a(eyb.a(this.a - 44), 0, 0);
+         $$1.a(eyb.a(44), 0, 1);
+         List<ffe.c> $$2 = new ArrayList<>();
+         this.e = 0;
+
+         for (ffe.d $$3 : this.b) {
+            $$2.add($$3.a(this, $$1, 0));
+         }
+
+         $$1.a();
+         $$0.accept($$1);
+         ffe $$4 = new ffe($$2);
+         $$4.a();
+         return $$4;
+      }
+
+      public ffe.a a(int $$0, boolean $$1) {
+         this.f = Optional.of(new ffe.b($$0, $$1));
+         return this;
+      }
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 * (float) Math.PI * -0.1F;
+   static record b(int a, boolean b) {
+   }
 
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         this.b[$$7].c = -2.0F + asy.b(((float)($$7 * 2) + $$3) * 0.25F);
-         this.b[$$7].b = asy.b($$6) * 9.0F;
-         this.b[$$7].d = asy.a($$6) * 9.0F;
-         $$6++;
+   static record c(eut<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
+      public void a() {
+         this.a.a(this.b.getAsBoolean());
+         if (this.c != null) {
+            this.a.i = this.c.getAsBoolean();
+         }
       }
 
-      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         this.b[$$8].c = 2.0F + asy.b(((float)($$8 * 2) + $$3) * 0.25F);
-         this.b[$$8].b = asy.b($$6) * 7.0F;
-         this.b[$$8].d = asy.a($$6) * 7.0F;
-         $$6++;
+      public eut<Boolean> b() {
+         return this.a;
       }
 
-      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
-
-      for (int $$9 = 8; $$9 < 12; $$9++) {
-         this.b[$$9].c = 11.0F + asy.b(((float)$$9 * 1.5F + $$3) * 0.5F);
-         this.b[$$9].b = asy.b($$6) * 5.0F;
-         this.b[$$9].d = asy.a($$6) * 5.0F;
-         $$6++;
+      public BooleanSupplier c() {
+         return this.b;
       }
 
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      @Nullable
+      public BooleanSupplier d() {
+         return this.c;
+      }
+   }
+
+   public static class d {
+      private final ur a;
+      private final BooleanSupplier b;
+      private final Consumer<Boolean> c;
+      @Nullable
+      private ur d;
+      @Nullable
+      private BooleanSupplier e;
+      private final int f;
+
+      d(ur $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = $$3;
+      }
+
+      public ffe.d a(BooleanSupplier $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ffe.d a(ur $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      ffe.c a(ffe.a $$0, exv $$1, int $$2) {
+         $$0.a();
+         evt $$3 = new evt(this.a, esr.N().h).e();
+         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
+         Optional<ffe.b> $$4 = $$0.f;
+         eut.a<Boolean> $$5 = eut.b(this.b.getAsBoolean());
+         $$5.a();
+         boolean $$6 = this.d != null && $$4.isEmpty();
+         if ($$6) {
+            evx $$7 = evx.a(this.d);
+            $$5.a($$1x -> $$7);
+         }
+
+         if (this.d != null && !$$6) {
+            $$5.a($$0x -> uq.a(this.a, $$0x.e(), this.d));
+         } else {
+            $$5.a($$0x -> uq.a(this.a, $$0x.e()));
+         }
+
+         eut<Boolean> $$8 = $$5.a(0, 0, this.f, 20, ur.i(), ($$0x, $$1x) -> this.c.accept($$1x));
+         if (this.e != null) {
+            $$8.i = this.e.getAsBoolean();
+         }
+
+         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
+         if (this.d != null) {
+            $$4.ifPresent($$3x -> {
+               ur $$4x = this.d.f().a(n.h);
+               etz $$5x = esr.N().h;
+               evg $$6x = new evg($$4x, $$5x);
+               $$6x.j($$0.a - $$0.c - this.f);
+               $$6x.k($$3x.a());
+               $$0.a();
+               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.i() : 0;
+               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
+            });
+         }
+
+         return new ffe.c($$8, this.b, this.e);
+      }
    }
 }

@@ -1,53 +1,26 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+@FunctionalInterface
+public interface eit<T> {
+   void handle(T var1, eiv<T> var2, long var3);
 
-public class eit extends AbstractDoubleList implements eir {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
+   public abstract static class a<T, C extends eit<T>> {
+      private final agg a;
+      private final Class<?> b;
 
-   protected eit(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size() + this.b.size();
-   }
-
-   @Override
-   public boolean a(eir.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
-   }
-
-   private boolean b(eir.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
+      public a(agg $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
+      public agg a() {
+         return this.a;
       }
 
-      return true;
-   }
+      public Class<?> b() {
+         return this.b;
+      }
 
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
+      public abstract void a(rz var1, C var2);
 
-   @Override
-   public DoubleList a() {
-      return this;
+      public abstract C b(rz var1);
    }
 }

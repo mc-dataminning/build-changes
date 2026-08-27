@@ -1,20 +1,23 @@
-public class fwj<T extends caw> extends fvj<T, fhy<T>> {
-   private static final afw a = new afw("textures/entity/spider/spider.png");
+public class fwj extends fvj<bzz> {
+   private static final agg a = new agg("textures/entity/lead_knot.png");
+   private final fht<bzz> f;
 
-   public fwj(fud.a $$0) {
-      this($$0, fiv.br);
+   public fwj(fvk.a $$0) {
+      super($$0);
+      this.f = new fht<>($$0.a(fka.aq));
    }
 
-   public fwj(fud.a $$0, fiu $$1) {
-      super($$0, new fhy<>($$0.a($$1)), 0.8F);
-      this.a(new fyr<>(this));
+   public void a(bzz $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      eno $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, gay.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected float b(T $$0) {
-      return 180.0F;
-   }
-
-   public afw a(T $$0) {
+   public agg a(bzz $$0) {
       return a;
    }
 }

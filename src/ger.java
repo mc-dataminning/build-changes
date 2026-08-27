@@ -1,29 +1,32 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+public class ger implements gdz {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final fpj e;
+   private final gft f;
+   private int g = 0;
 
-public record ger(gev b, gey c) {
-   public static final Codec<ger> a = gev.a.dispatchStable(ger::a, gev::c);
+   public ger(fpj $$0, gft $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
 
-   public ger(gev b, gey c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+   @Override
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.bc()) {
+         float $$0 = this.e.dL().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((gep)(new ges.a(this.e, aqn.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((gep)(new ges.a(this.e, aqn.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((gep)(new ges.a(this.e, aqn.A)));
          }
-      });
-      this.b = b;
-      this.c = c;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
-   }
-
-   public gev a() {
-      return this.b;
-   }
-
-   public gey b() {
-      return this.c;
+      }
    }
 }

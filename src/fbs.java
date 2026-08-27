@@ -1,90 +1,90 @@
-public class fbs implements fbu {
-   private static final afw a = new afw("container/bundle/background");
-   private static final int b = 4;
-   private static final int c = 1;
-   private static final int d = 18;
-   private static final int e = 20;
-   private final il<ckj> f;
-   private final int g;
+public class fbs extends fbg<cgs> {
+   private static final agg x = new agg("container/crafter/disabled_slot");
+   private static final agg y = new agg("container/crafter/powered_redstone");
+   private static final agg z = new agg("container/crafter/unpowered_redstone");
+   private static final agg A = new agg("textures/gui/container/crafter.png");
+   private static final ur B = ur.c("gui.togglable_slot");
+   private final cdm C;
 
-   public fbs(cho $$0) {
-      this.f = $$0.a();
-      this.g = $$0.b();
+   public fbs(cgs $$0, cdl $$1, ur $$2) {
+      super($$0, $$1, $$2);
+      this.C = $$1.m;
    }
 
    @Override
-   public int a() {
-      return this.c() + 4;
+   protected void aO_() {
+      super.aO_();
+      this.l = (this.c - this.i.a(this.e)) / 2;
    }
 
    @Override
-   public int a(esw $$0) {
-      return this.b();
-   }
-
-   private int b() {
-      return this.d() * 18 + 2;
-   }
-
-   private int c() {
-      return this.e() * 20 + 2;
-   }
-
-   @Override
-   public void a(esw $$0, int $$1, int $$2, esy $$3) {
-      int $$4 = this.d();
-      int $$5 = this.e();
-      $$3.a(a, $$1, $$2, this.b(), this.c());
-      boolean $$6 = this.g >= 64;
-      int $$7 = 0;
-
-      for (int $$8 = 0; $$8 < $$5; $$8++) {
-         for (int $$9 = 0; $$9 < $$4; $$9++) {
-            int $$10 = $$1 + $$9 * 18 + 1;
-            int $$11 = $$2 + $$8 * 20 + 1;
-            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
-         }
-      }
-   }
-
-   private void a(int $$0, int $$1, int $$2, boolean $$3, esy $$4, esw $$5) {
-      if ($$2 >= this.f.size()) {
-         this.a($$4, $$0, $$1, $$3 ? fbs.a.a : fbs.a.b);
+   protected void a(chz $$0, int $$1, int $$2, cgn $$3) {
+      if (this.C.N_()) {
+         super.a($$0, $$1, $$2, $$3);
       } else {
-         ckj $$6 = this.f.get($$2);
-         this.a($$4, $$0, $$1, fbs.a.b);
-         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
-         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
-         if ($$2 == 0) {
-            fac.a($$4, $$0 + 1, $$1 + 1, 0);
+         if ($$1 > -1 && $$1 < 9 && $$0 instanceof cgt) {
+            if ($$0.g()) {
+               super.a($$0, $$1, $$2, $$3);
+               return;
+            }
+
+            boolean $$4 = this.p.e($$1);
+            if ($$4 || this.p.g().b()) {
+               this.p.a($$1, $$4);
+               super.a($$1, this.p.j, $$4);
+               if ($$4) {
+                  this.C.a(aqn.yy.a(), 0.4F, 1.0F);
+               } else {
+                  this.C.a(aqn.yy.a(), 0.4F, 0.75F);
+               }
+            }
          }
+
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   private void a(esy $$0, int $$1, int $$2, fbs.a $$3) {
-      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
-   }
-
-   private int d() {
-      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.size() + 1.0)));
-   }
-
-   private int e() {
-      return (int)Math.ceil(((double)this.f.size() + 1.0) / (double)this.d());
-   }
-
-   static enum a {
-      a(new afw("container/bundle/blocked_slot"), 18, 20),
-      b(new afw("container/bundle/slot"), 18, 20);
-
-      public final afw c;
-      public final int d;
-      public final int e;
-
-      private a(afw $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+   @Override
+   public void a(eub $$0, chz $$1) {
+      if ($$1 instanceof cgt $$2 && this.p.e($$1.e)) {
+         this.a($$0, $$2);
+         return;
       }
+
+      super.a($$0, $$1);
+   }
+
+   private void a(eub $$0, cgt $$1) {
+      $$0.a(x, $$1.f - 1, $$1.g - 1, 18, 18);
+   }
+
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      this.a($$0, $$1, $$2);
+      if (this.r instanceof cgt && !this.p.e(this.r.e) && this.p.g().b() && !this.r.g()) {
+         $$0.a(this.i, B, $$1, $$2);
+      }
+   }
+
+   private void c(eub $$0) {
+      int $$1 = this.g / 2 + 9;
+      int $$2 = this.h / 2 - 48;
+      agg $$3;
+      if (this.p.l()) {
+         $$3 = y;
+      } else {
+         $$3 = z;
+      }
+
+      $$0.a($$3, $$1, $$2, 16, 16);
+   }
+
+   @Override
+   protected void a(eub $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

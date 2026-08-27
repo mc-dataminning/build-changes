@@ -1,42 +1,16 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dno extends dnm {
-   public dno(Codec<dnl> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(ebf.e, ebf.c);
+abstract class dno implements dnm {
+   protected final List<dnm> e;
+
+   protected dno(List<dnm> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected int a() {
-      return 10;
-   }
-
-   @Override
-   protected float a(ate $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
-   }
-
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(dnk $$0, dnl $$1, dhx $$2, Function<ht, ib<crx>> $$3, dhw $$4, ht.a $$5, ht.a $$6, dkw $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dgb $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9, false);
-         return true;
-      } else {
-         return false;
-      }
+   public static <T extends dno> Codec<T> a(Function<List<dnm>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(dnm.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

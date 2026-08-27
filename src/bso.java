@@ -1,30 +1,42 @@
-public class bso extends bre {
-   private final bks a;
+import java.util.EnumSet;
 
-   public bso(bks $$0) {
+public class bso extends brt {
+   private final bla a;
+   private double b;
+   private double c;
+   private int d;
+
+   public bso(bla $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(brt.a.a, brt.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.a.aA() && !this.a.dL().b_(this.a.dl()).a(aqx.a);
+      return this.a.ef().i() < 0.02F;
+   }
+
+   @Override
+   public boolean b() {
+      return this.d >= 0;
    }
 
    @Override
    public void c() {
-      ht $$0 = null;
+      double $$0 = (Math.PI * 2) * this.a.ef().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.ef().a(20);
+   }
 
-      for (ht $$2 : ht.b(
-         asy.a(this.a.dq() - 2.0), asy.a(this.a.ds() - 2.0), asy.a(this.a.dw() - 2.0), asy.a(this.a.dq() + 2.0), this.a.dr(), asy.a(this.a.dw() + 2.0)
-      )) {
-         if (this.a.dL().b_($$2).a(aqx.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
+   @Override
+   public boolean R_() {
+      return true;
+   }
 
-      if ($$0 != null) {
-         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   @Override
+   public void e() {
+      this.d--;
+      this.a.G().a(this.a.dq() + this.b, this.a.du(), this.a.dw() + this.c);
    }
 }

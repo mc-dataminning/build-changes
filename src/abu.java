@@ -1,78 +1,81 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
+public class abu implements wk<yd> {
+   public static final float a = 8.0F;
+   private final ib<aqm> b;
+   private final aqo c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final float g;
+   private final float h;
+   private final long i;
 
-public class abu implements wb<xu> {
-   private final int a;
-   private final List<abu.a> b;
-
-   public abu(int $$0, Collection<bll> $$1) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-
-      for (bll $$2 : $$1) {
-         this.b.add(new abu.a($$2.a(), $$2.b(), $$2.c()));
-      }
+   public abu(ib<aqm> $$0, aqo $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = (int)($$2 * 8.0);
+      this.e = (int)($$3 * 8.0);
+      this.f = (int)($$4 * 8.0);
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   public abu(tl $$0) {
-      this.a = $$0.n();
-      this.b = $$0.a((tl.a<abu.a>)($$0x -> {
-         afw $$1 = $$0x.t();
-         blk $$2 = jy.v.a($$1);
-         double $$3 = $$0x.readDouble();
-         List<bln> $$4 = $$0x.a((tl.a<bln>)($$0xx -> new bln($$0xx.p(), "Unknown synced attribute modifier", $$0xx.readDouble(), bln.a.a($$0xx.readByte()))));
-         return new abu.a($$2, $$3, $$4);
-      }));
+   public abu(tu $$0) {
+      this.b = $$0.a(jy.c.t(), aqm::b);
+      this.c = $$0.b(aqo.class);
+      this.d = $$0.readInt();
+      this.e = $$0.readInt();
+      this.f = $$0.readInt();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readLong();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> {
-         $$0x.a(jy.v.b($$1.a()));
-         $$0x.a($$1.b());
-         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.a());
-            $$0xx.a($$1x.c());
-            $$0xx.k($$1x.b().a());
-         });
-      });
+   public void a(tu $$0) {
+      $$0.a(jy.c.t(), this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c);
+      $$0.p(this.d);
+      $$0.p(this.e);
+      $$0.p(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.b(this.i);
    }
 
-   public void a(xu $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public List<abu.a> d() {
+   public ib<aqm> a() {
       return this.b;
    }
 
-   public static class a {
-      private final blk a;
-      private final double b;
-      private final Collection<bln> c;
+   public aqo d() {
+      return this.c;
+   }
 
-      public a(blk $$0, double $$1, Collection<bln> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public double e() {
+      return (double)((float)this.d / 8.0F);
+   }
 
-      public blk a() {
-         return this.a;
-      }
+   public double f() {
+      return (double)((float)this.e / 8.0F);
+   }
 
-      public double b() {
-         return this.b;
-      }
+   public double g() {
+      return (double)((float)this.f / 8.0F);
+   }
 
-      public Collection<bln> c() {
-         return this.c;
-      }
+   public float h() {
+      return this.g;
+   }
+
+   public float i() {
+      return this.h;
+   }
+
+   public long j() {
+      return this.i;
+   }
+
+   public void a(yd $$0) {
+      $$0.a(this);
    }
 }

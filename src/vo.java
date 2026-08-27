@@ -1,70 +1,359 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class vo implements uj {
-   private static final Logger d = LogUtils.getLogger();
-   public static final MapCodec<vo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("nbt").forGetter(vo::b),
-               Codec.BOOL.optionalFieldOf("interpret", false).forGetter(vo::c),
-               uk.a.optionalFieldOf("separator").forGetter(vo::d),
-               vk.c.forGetter(vo::e)
-            )
-            .apply($$0, vo::new)
-   );
-   public static final uj.a<vo> b = new uj.a<>(a, "nbt");
-   private final boolean e;
-   private final Optional<ui> f;
-   private final String g;
-   private final vk h;
+public class vo {
+   public static final vo a = new vo(null, null, null, null, null, null, null, null, null, null);
+   public static final agg b = new agg("minecraft", "default");
    @Nullable
-   protected final el.g c;
+   final vq c;
+   @Nullable
+   final Boolean d;
+   @Nullable
+   final Boolean e;
+   @Nullable
+   final Boolean f;
+   @Nullable
+   final Boolean g;
+   @Nullable
+   final Boolean h;
+   @Nullable
+   final up i;
+   @Nullable
+   final ux j;
+   @Nullable
+   final String k;
+   @Nullable
+   final agg l;
 
-   public vo(String $$0, boolean $$1, Optional<ui> $$2, vk $$3) {
-      this($$0, a($$0), $$1, $$2, $$3);
+   private static vo a(
+      Optional<vq> $$0,
+      Optional<Boolean> $$1,
+      Optional<Boolean> $$2,
+      Optional<Boolean> $$3,
+      Optional<Boolean> $$4,
+      Optional<Boolean> $$5,
+      Optional<up> $$6,
+      Optional<ux> $$7,
+      Optional<String> $$8,
+      Optional<agg> $$9
+   ) {
+      vo $$10 = new vo(
+         $$0.orElse(null),
+         $$1.orElse(null),
+         $$2.orElse(null),
+         $$3.orElse(null),
+         $$4.orElse(null),
+         $$5.orElse(null),
+         $$6.orElse(null),
+         $$7.orElse(null),
+         $$8.orElse(null),
+         $$9.orElse(null)
+      );
+      return $$10.equals(a) ? a : $$10;
    }
 
-   private vo(String $$0, @Nullable el.g $$1, boolean $$2, Optional<ui> $$3, vk $$4) {
-      this.g = $$0;
-      this.c = $$1;
+   private vo(
+      @Nullable vq $$0,
+      @Nullable Boolean $$1,
+      @Nullable Boolean $$2,
+      @Nullable Boolean $$3,
+      @Nullable Boolean $$4,
+      @Nullable Boolean $$5,
+      @Nullable up $$6,
+      @Nullable ux $$7,
+      @Nullable String $$8,
+      @Nullable agg $$9
+   ) {
+      this.c = $$0;
+      this.d = $$1;
       this.e = $$2;
       this.f = $$3;
-      this.h = $$4;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
    }
 
    @Nullable
-   private static el.g a(String $$0) {
-      try {
-         return new el().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   public vq a() {
+      return this.c;
    }
 
-   public String b() {
-      return this.g;
+   public boolean b() {
+      return this.d == Boolean.TRUE;
    }
 
    public boolean c() {
-      return this.e;
+      return this.e == Boolean.TRUE;
    }
 
-   public Optional<ui> d() {
-      return this.f;
+   public boolean d() {
+      return this.g == Boolean.TRUE;
    }
 
-   public vk e() {
-      return this.h;
+   public boolean e() {
+      return this.f == Boolean.TRUE;
+   }
+
+   public boolean f() {
+      return this.h == Boolean.TRUE;
+   }
+
+   public boolean g() {
+      return this == a;
+   }
+
+   @Nullable
+   public up h() {
+      return this.i;
+   }
+
+   @Nullable
+   public ux i() {
+      return this.j;
+   }
+
+   @Nullable
+   public String j() {
+      return this.k;
+   }
+
+   public agg k() {
+      return this.l != null ? this.l : b;
+   }
+
+   private static <T> vo a(vo $$0, @Nullable T $$1, @Nullable T $$2) {
+      return $$1 != null && $$2 == null && $$0.equals(a) ? a : $$0;
+   }
+
+   public vo a(@Nullable vq $$0) {
+      return Objects.equals(this.c, $$0) ? this : a(new vo($$0, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l), this.c, $$0);
+   }
+
+   public vo a(@Nullable n $$0) {
+      return this.a($$0 != null ? vq.a($$0) : null);
+   }
+
+   public vo a(int $$0) {
+      return this.a(vq.a($$0));
+   }
+
+   public vo a(@Nullable Boolean $$0) {
+      return Objects.equals(this.d, $$0) ? this : a(new vo(this.c, $$0, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l), this.d, $$0);
+   }
+
+   public vo b(@Nullable Boolean $$0) {
+      return Objects.equals(this.e, $$0) ? this : a(new vo(this.c, this.d, $$0, this.f, this.g, this.h, this.i, this.j, this.k, this.l), this.e, $$0);
+   }
+
+   public vo c(@Nullable Boolean $$0) {
+      return Objects.equals(this.f, $$0) ? this : a(new vo(this.c, this.d, this.e, $$0, this.g, this.h, this.i, this.j, this.k, this.l), this.f, $$0);
+   }
+
+   public vo d(@Nullable Boolean $$0) {
+      return Objects.equals(this.g, $$0) ? this : a(new vo(this.c, this.d, this.e, this.f, $$0, this.h, this.i, this.j, this.k, this.l), this.g, $$0);
+   }
+
+   public vo e(@Nullable Boolean $$0) {
+      return Objects.equals(this.h, $$0) ? this : a(new vo(this.c, this.d, this.e, this.f, this.g, $$0, this.i, this.j, this.k, this.l), this.h, $$0);
+   }
+
+   public vo a(@Nullable up $$0) {
+      return Objects.equals(this.i, $$0) ? this : a(new vo(this.c, this.d, this.e, this.f, this.g, this.h, $$0, this.j, this.k, this.l), this.i, $$0);
+   }
+
+   public vo a(@Nullable ux $$0) {
+      return Objects.equals(this.j, $$0) ? this : a(new vo(this.c, this.d, this.e, this.f, this.g, this.h, this.i, $$0, this.k, this.l), this.j, $$0);
+   }
+
+   public vo a(@Nullable String $$0) {
+      return Objects.equals(this.k, $$0) ? this : a(new vo(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, $$0, this.l), this.k, $$0);
+   }
+
+   public vo a(@Nullable agg $$0) {
+      return Objects.equals(this.l, $$0) ? this : a(new vo(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, $$0), this.l, $$0);
+   }
+
+   public vo b(n $$0) {
+      vq $$1 = this.c;
+      Boolean $$2 = this.d;
+      Boolean $$3 = this.e;
+      Boolean $$4 = this.g;
+      Boolean $$5 = this.f;
+      Boolean $$6 = this.h;
+      switch ($$0) {
+         case q:
+            $$6 = true;
+            break;
+         case r:
+            $$2 = true;
+            break;
+         case s:
+            $$4 = true;
+            break;
+         case t:
+            $$5 = true;
+            break;
+         case u:
+            $$3 = true;
+            break;
+         case v:
+            return a;
+         default:
+            $$1 = vq.a($$0);
+      }
+
+      return new vo($$1, $$2, $$3, $$5, $$4, $$6, this.i, this.j, this.k, this.l);
+   }
+
+   public vo c(n $$0) {
+      vq $$1 = this.c;
+      Boolean $$2 = this.d;
+      Boolean $$3 = this.e;
+      Boolean $$4 = this.g;
+      Boolean $$5 = this.f;
+      Boolean $$6 = this.h;
+      switch ($$0) {
+         case q:
+            $$6 = true;
+            break;
+         case r:
+            $$2 = true;
+            break;
+         case s:
+            $$4 = true;
+            break;
+         case t:
+            $$5 = true;
+            break;
+         case u:
+            $$3 = true;
+            break;
+         case v:
+            return a;
+         default:
+            $$6 = false;
+            $$2 = false;
+            $$4 = false;
+            $$5 = false;
+            $$3 = false;
+            $$1 = vq.a($$0);
+      }
+
+      return new vo($$1, $$2, $$3, $$5, $$4, $$6, this.i, this.j, this.k, this.l);
+   }
+
+   public vo a(n... $$0) {
+      vq $$1 = this.c;
+      Boolean $$2 = this.d;
+      Boolean $$3 = this.e;
+      Boolean $$4 = this.g;
+      Boolean $$5 = this.f;
+      Boolean $$6 = this.h;
+
+      for (n $$7 : $$0) {
+         switch ($$7) {
+            case q:
+               $$6 = true;
+               break;
+            case r:
+               $$2 = true;
+               break;
+            case s:
+               $$4 = true;
+               break;
+            case t:
+               $$5 = true;
+               break;
+            case u:
+               $$3 = true;
+               break;
+            case v:
+               return a;
+            default:
+               $$1 = vq.a($$7);
+         }
+      }
+
+      return new vo($$1, $$2, $$3, $$5, $$4, $$6, this.i, this.j, this.k, this.l);
+   }
+
+   public vo a(vo $$0) {
+      if (this == a) {
+         return $$0;
+      } else {
+         return $$0 == a
+            ? this
+            : new vo(
+               this.c != null ? this.c : $$0.c,
+               this.d != null ? this.d : $$0.d,
+               this.e != null ? this.e : $$0.e,
+               this.f != null ? this.f : $$0.f,
+               this.g != null ? this.g : $$0.g,
+               this.h != null ? this.h : $$0.h,
+               this.i != null ? this.i : $$0.i,
+               this.j != null ? this.j : $$0.j,
+               this.k != null ? this.k : $$0.k,
+               this.l != null ? this.l : $$0.l
+            );
+      }
+   }
+
+   @Override
+   public String toString() {
+      final StringBuilder $$0 = new StringBuilder("{");
+
+      class a {
+         private boolean c;
+
+         private void a() {
+            if (this.c) {
+               $$0.append(',');
+            }
+
+            this.c = true;
+         }
+
+         void a(String $$0x, @Nullable Boolean $$1) {
+            if ($$1 != null) {
+               this.a();
+               if (!$$1) {
+                  $$0.append('!');
+               }
+
+               $$0.append($$0);
+            }
+         }
+
+         void a(String $$0x, @Nullable Object $$1) {
+            if ($$1 != null) {
+               this.a();
+               $$0.append($$0);
+               $$0.append('=');
+               $$0.append($$1);
+            }
+         }
+      }
+
+      a $$1 = new a();
+      $$1.a("color", this.c);
+      $$1.a("bold", this.d);
+      $$1.a("italic", this.e);
+      $$1.a("underlined", this.f);
+      $$1.a("strikethrough", this.g);
+      $$1.a("obfuscated", this.h);
+      $$1.a("clickEvent", this.i);
+      $$1.a("hoverEvent", this.j);
+      $$1.a("insertion", this.k);
+      $$1.a("font", this.l);
+      $$0.append("}");
+      return $$0.toString();
    }
 
    @Override
@@ -72,60 +361,42 @@ public class vo implements uj {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof vo $$1 && this.h.equals($$1.h) && this.f.equals($$1.f) && this.e == $$1.e && this.g.equals($$1.g)) {
-            return true;
-         }
-
-         return false;
+         return !($$0 instanceof vo $$1)
+            ? false
+            : this.d == $$1.d
+               && Objects.equals(this.a(), $$1.a())
+               && this.e == $$1.e
+               && this.h == $$1.h
+               && this.g == $$1.g
+               && this.f == $$1.f
+               && Objects.equals(this.i, $$1.i)
+               && Objects.equals(this.j, $$1.j)
+               && Objects.equals(this.k, $$1.k)
+               && Objects.equals(this.l, $$1.l);
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.e ? 1 : 0;
-      $$0 = 31 * $$0 + this.f.hashCode();
-      $$0 = 31 * $$0 + this.g.hashCode();
-      return 31 * $$0 + this.h.hashCode();
+      return Objects.hash(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k);
    }
 
-   @Override
-   public String toString() {
-      return "nbt{" + this.h + ", interpreting=" + this.e + ", separator=" + this.f + "}";
-   }
-
-   @Override
-   public uw a(@Nullable du $$0, @Nullable bjt $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.c != null) {
-         Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
-            try {
-               return this.c.a($$0x).stream();
-            } catch (CommandSyntaxException var3x) {
-               return Stream.empty();
-            }
-         }).map(sn::s_);
-         if (this.e) {
-            ui $$4 = (ui)DataFixUtils.orElse(ul.a($$0, this.f, $$1, $$2), ul.c);
-            return $$3.flatMap($$3x -> {
-               try {
-                  uw $$4x = ui.a.a($$3x);
-                  return Stream.of(ul.a($$0, $$4x, $$1, $$2));
-               } catch (Exception var5x) {
-                  d.warn("Failed to parse component: {}", $$3x, var5x);
-                  return Stream.of();
-               }
-            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(ui::i);
-         } else {
-            return ul.a($$0, this.f, $$1, $$2)
-               .map($$1x -> $$3.map(ui::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(ui::i))
-               .orElseGet(() -> ui.b($$3.collect(Collectors.joining(", "))));
-         }
-      } else {
-         return ui.i();
-      }
-   }
-
-   @Override
-   public uj.a<?> a() {
-      return b;
+   public static class b {
+      public static final MapCodec<vo> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  asq.a(vq.a, "color").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+                  asq.a(Codec.BOOL, "bold").forGetter($$0x -> Optional.ofNullable($$0x.d)),
+                  asq.a(Codec.BOOL, "italic").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+                  asq.a(Codec.BOOL, "underlined").forGetter($$0x -> Optional.ofNullable($$0x.f)),
+                  asq.a(Codec.BOOL, "strikethrough").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+                  asq.a(Codec.BOOL, "obfuscated").forGetter($$0x -> Optional.ofNullable($$0x.h)),
+                  asq.a(up.a, "clickEvent").forGetter($$0x -> Optional.ofNullable($$0x.i)),
+                  asq.a(ux.a, "hoverEvent").forGetter($$0x -> Optional.ofNullable($$0x.j)),
+                  asq.a(Codec.STRING, "insertion").forGetter($$0x -> Optional.ofNullable($$0x.k)),
+                  asq.a(agg.a, "font").forGetter($$0x -> Optional.ofNullable($$0x.l))
+               )
+               .apply($$0, vo::a)
+      );
+      public static final Codec<vo> b = a.codec();
    }
 }

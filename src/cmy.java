@@ -1,15 +1,52 @@
-public class cmy extends cmv {
-   public cmy(String $$0, cnb $$1, cnk $$2, ckj $$3, float $$4, int $$5) {
-      super(cnr.c, $$0, $$1, $$2, $$3, $$4, $$5);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cmy {
+   @Nullable
+   private final String a;
+   private final ImmutableList<bjv> b;
+   private final ib.c<cmy> c = jy.j.f(this);
+
+   public static cmy a(String $$0) {
+      return jy.j.a(agg.a($$0));
    }
 
-   @Override
-   public ckj g() {
-      return new ckj(cuc.nW);
+   public cmy(bjv... $$0) {
+      this(null, $$0);
    }
 
-   @Override
-   public cnq<?> aq_() {
-      return cnq.q;
+   public cmy(@Nullable String $$0, bjv... $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+   }
+
+   public String b(String $$0) {
+      return $$0 + (this.a == null ? jy.j.b(this).a() : this.a);
+   }
+
+   public List<bjv> a() {
+      return this.b;
+   }
+
+   public boolean b() {
+      if (!this.b.isEmpty()) {
+         UnmodifiableIterator var1 = this.b.iterator();
+
+         while (var1.hasNext()) {
+            bjv $$0 = (bjv)var1.next();
+            if ($$0.c().a()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   @Deprecated
+   public ib.c<cmy> c() {
+      return this.c;
    }
 }

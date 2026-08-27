@@ -1,54 +1,53 @@
-public class fnm extends fnc {
-   fnm(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, fnl $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)asi.b.b($$7), (float)asi.b.c($$7), (float)asi.b.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
+public class fnm extends fow {
+   fnm(fkw $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
       this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(ht.a(this.g, this.h, this.i)).i()) {
-            this.k -= 0.0074F;
-         }
-      }
+   public fnz b() {
+      return fnz.b;
    }
 
-   public static class a implements fmt<jv> {
-      private final fnl a;
+   @Override
+   public float b(float $$0) {
+      return this.D * ati.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      public a(fnl $$0) {
+   public static class a implements fny<jv> {
+      private final foq a;
+
+      public a(foq $$0) {
          this.a = $$0;
       }
 
-      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fnm($$1, $$2, $$3, $$4, $$5, $$6, $$7, asi.b.a(255, 204, 31, 102), this.a);
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fnm $$8 = new fnm($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
       }
    }
 
-   public static class b implements fmt<jv> {
-      private final fnl a;
+   public static class b implements fny<jv> {
+      private final foq a;
 
-      public b(fnl $$0) {
+      public b(foq $$0) {
          this.a = $$0;
       }
 
-      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fnm($$1, $$2, $$3, $$4, $$5, $$6, $$7, asi.b.a(255, 255, 255, 255), this.a);
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fnm $$8 = new fnm($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -1,23 +1,17 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
-public class ehd {
-   private static final Codec<ehc> f = jy.J.q().dispatch(ehc::b, ehb::a);
-   public static final Codec<ehc> a = asg.a(
-      (Supplier<Codec<ehc>>)(() -> {
-         Codec<ehc> $$0 = asg.e(f, ehf.a);
-         return Codec.either(eha.b, $$0)
-            .xmap($$0x -> (ehc)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof eha $$1 ? Either.left($$1) : Either.right($$0x));
-      })
-   );
-   public static final ehb b = a("constant", eha.a);
-   public static final ehb c = a("uniform", ehf.a);
-   public static final ehb d = a("binomial", egz.a);
-   public static final ehb e = a("score", ehe.a);
+public interface ehd<T extends ehd<T>> {
+   T b(ehk.a var1);
 
-   private static ehb a(String $$0, Codec<? extends ehc> $$1) {
-      return io.a(jy.J, new afw($$0), new ehb($$1));
+   default <E> T a_(Iterable<E> $$0, Function<E, ehk.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
+
+   T d();
 }

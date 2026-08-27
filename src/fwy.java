@@ -1,18 +1,12 @@
-public class fwy extends fuw<cba> {
-   private static final afw a = new afw("textures/entity/illager/vindicator.png");
+public class fwy extends fwq<bxa, fie<bxa>> {
+   private static final agg a = new agg("textures/entity/pig/pig.png");
 
-   public fwy(fud.a $$0) {
-      super($$0, new fgl<>($$0.a(fiv.bK)), 0.5F);
-      this.a(new fye<cba, fgl<cba>>(this, $$0.d()) {
-         public void a(emh $$0, fpb $$1, int $$2, cba $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.fW()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public fwy(fvk.a $$0) {
+      super($$0, new fie<>($$0.a(fka.aC)), 0.7F);
+      this.a(new fzt<>(this, new fie<>($$0.a(fka.aK)), new agg("textures/entity/pig/pig_saddle.png")));
    }
 
-   public afw a(cba $$0) {
+   public agg a(bxa $$0) {
       return a;
    }
 }

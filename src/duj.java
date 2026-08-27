@@ -1,62 +1,69 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class duj extends duh {
+public class duj extends dur {
    public static final Codec<duj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dme.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dme.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  asq.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bhv.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+               )
             )
             .apply($$0, duj::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final dme d;
-   private final dme e;
-   private final int f;
+   private final int b;
+   private final bhv h;
 
-   private duj(dme $$0, dme $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static duj a(dme $$0, dme $$1, int $$2) {
-      return new duj($$0, $$1, $$2);
-   }
-
-   public static duj a(dme $$0, dme $$1) {
-      return a($$0, $$1, 0);
+   public duj(int $$0, int $$1, int $$2, int $$3, bhv $$4) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
    }
 
    @Override
-   public int a(ate $$0, dmh $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return asy.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + asy.b($$0, 0, $$6) + asy.b($$0, 0, $$5);
+   protected dus<?> a() {
+      return dus.g;
+   }
+
+   @Override
+   public List<dsz.a> a(cry $$0, BiConsumer<ht, dgw> $$1, ato $$2, int $$3, ht $$4, dsj $$5) {
+      hx $$6 = hx.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      ht.a $$8 = $$4.j();
+      ht $$9 = $$8.d();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<dsz.a> $$10 = Lists.newArrayList();
+
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
          }
+
+         if (dqv.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         if ($$11 >= this.b) {
+            $$10.add(new dsz.a($$8.i(), 0, false));
+         }
+
+         $$8.c(hx.b);
       }
-   }
 
-   @Override
-   public dui<?> a() {
-      return dui.e;
-   }
+      int $$12 = this.h.a($$2);
 
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (dqv.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         $$10.add(new dsz.a($$8.i(), 0, false));
+         $$8.c($$6);
+      }
+
+      return $$10;
    }
 }

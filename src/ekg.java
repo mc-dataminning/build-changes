@@ -1,91 +1,74 @@
-import com.mojang.logging.LogUtils;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC10;
-import org.slf4j.Logger;
+import java.util.Comparator;
 
 public class ekg {
-   private static final Logger a = LogUtils.getLogger();
-
-   private static String a(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid name parameter.";
-         case 40962:
-            return "Invalid enumerated parameter value.";
-         case 40963:
-            return "Invalid parameter parameter value.";
-         case 40964:
-            return "Invalid operation.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
-   }
-
-   static boolean a(String $$0) {
-      int $$1 = AL10.alGetError();
-      if ($$1 != 0) {
-         a.error("{}: {}", $$0, a($$1));
-         return true;
+   public static final Comparator<ekg> a = ($$0, $$1) -> {
+      if ($$0.b() > $$1.b()) {
+         return 1;
       } else {
-         return false;
+         return $$0.b() < $$1.b() ? -1 : $$1.e().compareToIgnoreCase($$0.e());
       }
+   };
+   private final ekh b;
+   private final eke c;
+   private final String d;
+   private int e;
+   private boolean f;
+   private boolean g;
+
+   public ekg(ekh $$0, eke $$1, String $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = true;
+      this.g = true;
    }
 
-   private static String b(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid device.";
-         case 40962:
-            return "Invalid context.";
-         case 40963:
-            return "Illegal enum.";
-         case 40964:
-            return "Invalid value.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
-   }
-
-   static boolean a(long $$0, String $$1) {
-      int $$2 = ALC10.alcGetError($$0);
-      if ($$2 != 0) {
-         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
-         return true;
+   public void a(int $$0) {
+      if (this.c.c().e()) {
+         throw new IllegalStateException("Cannot modify read-only score");
       } else {
-         return false;
+         this.b(this.b() + $$0);
       }
    }
 
-   static int a(AudioFormat $$0) {
-      Encoding $$1 = $$0.getEncoding();
-      int $$2 = $$0.getChannels();
-      int $$3 = $$0.getSampleSizeInBits();
-      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
-         if ($$2 == 1) {
-            if ($$3 == 8) {
-               return 4352;
-            }
+   public void a() {
+      this.a(1);
+   }
 
-            if ($$3 == 16) {
-               return 4353;
-            }
-         } else if ($$2 == 2) {
-            if ($$3 == 8) {
-               return 4354;
-            }
+   public int b() {
+      return this.e;
+   }
 
-            if ($$3 == 16) {
-               return 4355;
-            }
-         }
+   public void c() {
+      this.b(0);
+   }
+
+   public void b(int $$0) {
+      int $$1 = this.e;
+      this.e = $$0;
+      if ($$1 != $$0 || this.g) {
+         this.g = false;
+         this.f().a(this);
       }
+   }
 
-      throw new IllegalArgumentException("Invalid audio format: " + $$0);
+   public eke d() {
+      return this.c;
+   }
+
+   public String e() {
+      return this.d;
+   }
+
+   public ekh f() {
+      return this.b;
+   }
+
+   public boolean g() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
    }
 }

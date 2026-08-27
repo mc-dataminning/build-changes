@@ -1,101 +1,94 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class elv {
-   private static final int a = 32768;
-   private final elv.a b;
-   private final String c;
-   private int d;
+   private final List<ConcurrentLinkedQueue<elu>> a = ImmutableList.of(
+      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
+   );
+   private volatile boolean b;
+   private volatile int c;
+   private volatile boolean d;
+   private volatile int e;
+   private volatile int f;
 
-   protected elv(elv.a $$0, int $$1, String $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = $$2;
+   public elv() {
+      this.c = this.e = this.f + 1;
    }
 
-   public void a(elx $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager.glAttachShader($$0.a(), this.c());
+   public boolean a() {
+      return !this.b && this.c == this.e;
    }
 
-   public void a() {
-      if (this.d != -1) {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.d);
-         this.d = -1;
-         this.b.c().remove(this.c);
-      }
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public static elv a(elv.a $$0, String $$1, InputStream $$2, String $$3, elo $$4) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$5 = b($$0, $$1, $$2, $$3, $$4);
-      elv $$6 = new elv($$0, $$5, $$1);
-      $$0.c().put($$1, $$6);
-      return $$6;
-   }
-
-   protected static int b(elv.a $$0, String $$1, InputStream $$2, String $$3, elo $$4) throws IOException {
-      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
-      if ($$5 == null) {
-         throw new IOException("Could not load program " + $$0.a());
+   public boolean b() {
+      if (this.b) {
+         throw new RuntimeException("ALREADY RECORDING !!!");
+      } else if (this.a()) {
+         this.c = (this.e + 1) % this.a.size();
+         this.b = true;
+         return true;
       } else {
-         int $$6 = GlStateManager.glCreateShader($$0.d());
-         GlStateManager.glShaderSource($$6, $$4.a($$5));
-         GlStateManager.glCompileShader($$6);
-         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
-            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
-            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
-         } else {
-            return $$6;
-         }
+         return false;
       }
    }
 
-   protected int c() {
-      return this.d;
+   public void a(elu $$0) {
+      if (!this.b) {
+         throw new RuntimeException("NOT RECORDING !!!");
+      } else {
+         ConcurrentLinkedQueue<elu> $$1 = this.i();
+         $$1.add($$0);
+      }
    }
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
-
-      private final String c;
-      private final String d;
-      private final int e;
-      private final Map<String, elv> f = Maps.newHashMap();
-
-      private a(String $$0, String $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+   public void c() {
+      if (this.b) {
+         this.b = false;
+      } else {
+         throw new RuntimeException("NOT RECORDING !!!");
       }
+   }
 
-      public String a() {
-         return this.c;
-      }
+   public boolean d() {
+      return !this.d && this.c != this.e;
+   }
 
-      public String b() {
-         return this.d;
+   public boolean e() {
+      if (this.d) {
+         throw new RuntimeException("ALREADY PROCESSING !!!");
+      } else if (this.d()) {
+         this.d = true;
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      int d() {
-         return this.e;
+   public void f() {
+      if (!this.d) {
+         throw new RuntimeException("NOT PROCESSING !!!");
       }
+   }
 
-      public Map<String, elv> c() {
-         return this.f;
+   public void g() {
+      if (this.d) {
+         this.d = false;
+         this.f = this.e;
+         this.e = this.c;
+      } else {
+         throw new RuntimeException("NOT PROCESSING !!!");
       }
+   }
+
+   public ConcurrentLinkedQueue<elu> h() {
+      return this.a.get(this.f);
+   }
+
+   public ConcurrentLinkedQueue<elu> i() {
+      return this.a.get(this.c);
+   }
+
+   public ConcurrentLinkedQueue<elu> j() {
+      return this.a.get(this.e);
    }
 }

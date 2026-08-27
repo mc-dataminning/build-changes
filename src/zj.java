@@ -1,73 +1,40 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+public class zj implements wk<yd> {
+   private final int a;
+   private final int b;
+   private final int c;
 
-public record zj(int a, boolean b, Set<afv<cqz>> c, int d, int e, int f, boolean g, boolean h, boolean i, abx j) implements wb<xu> {
-   public zj(tl $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(jz.aI)),
-         $$0.n(),
-         $$0.n(),
-         $$0.n(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new abx($$0)
-      );
+   public zj(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public zj(tu $$0) {
+      this.a = $$0.readUnsignedByte();
+      this.b = $$0.n();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.p(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c, tl::b);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      this.j.a($$0);
+   public void a(tu $$0) {
+      $$0.k(this.a);
+      $$0.c(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public boolean d() {
+   public int a() {
+      return this.a;
+   }
+
+   public int d() {
       return this.b;
    }
 
-   public Set<afv<cqz>> e() {
+   public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
-
-   public int h() {
-      return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public abx l() {
-      return this.j;
    }
 }

@@ -1,40 +1,16 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+public record xy(ip.b a) implements wk<xw> {
+   private static final age<sw> b = age.a(sn.a, ip.a(jy.ar));
 
-public class xy implements wb<xu> {
-   private final Object2IntMap<aqk<?>> a;
-
-   public xy(Object2IntMap<aqk<?>> $$0) {
-      this.a = $$0;
-   }
-
-   public xy(tl $$0) {
-      this.a = $$0.a(Object2IntOpenHashMap::new, $$1 -> {
-         aqm<?> $$2 = $$1.a(jy.y);
-         return a($$0, $$2);
-      }, tl::n);
-   }
-
-   private static <T> aqk<T> a(tl $$0, aqm<T> $$1) {
-      return $$1.b($$0.a($$1.a()));
-   }
-
-   public void a(xu $$0) {
-      $$0.a(this);
+   public xy(tu $$0) {
+      this($$0.<ip>a(b, is.a).c());
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.a, xy::a, tl::c);
+   public void a(tu $$0) {
+      $$0.a(b, is.a, this.a);
    }
 
-   private static <T> void a(tl $$0, aqk<T> $$1) {
-      $$0.a(jy.y, $$1.a());
-      $$0.a($$1.a().a(), $$1.b());
-   }
-
-   public Map<aqk<?>, Integer> a() {
-      return this.a;
+   public void a(xw $$0) {
+      $$0.a(this);
    }
 }

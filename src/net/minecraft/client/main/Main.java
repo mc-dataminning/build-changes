@@ -35,8 +35,8 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      gfb.a.a(gex.z, $$1);
-      gfb.a.a(gex.A, $$2);
+      ggi.a.a(gge.z, $$1);
+      ggi.a.a(gge.A, $$2);
       aa.a();
       aa.d();
       OptionParser $$3 = new OptionParser();
@@ -71,13 +71,13 @@ public class Main {
       OptionSpec<String> $$26 = $$3.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$27 = $$3.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$28 = $$3.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(esd.a.a.a(), new String[0]);
+      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(etg.a.a.a(), new String[0]);
       OptionSpec<String> $$30 = $$3.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
       OptionSpec<String> $$31 = $$3.nonOptions();
       OptionSet $$32 = $$3.parse($$0);
       List<String> $$33 = $$32.valuesOf($$31);
       if (!$$33.isEmpty()) {
-         a.info("Completely ignored arguments: " + $$33);
+         a.info("Completely ignored arguments: {}", $$33);
       }
 
       String $$34 = a($$32, $$12);
@@ -85,7 +85,7 @@ public class Main {
       if ($$34 != null) {
          try {
             $$35 = new Proxy(Type.SOCKS, new InetSocketAddress($$34, a($$32, $$13)));
-         } catch (Exception var83) {
+         } catch (Exception var85) {
          }
       }
 
@@ -110,8 +110,8 @@ public class Main {
       boolean $$45 = $$32.has("disableChat");
       String $$46 = a($$32, $$21);
       Gson $$47 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-      PropertyMap $$48 = aso.a($$47, a($$32, $$26), PropertyMap.class);
-      PropertyMap $$49 = aso.a($$47, a($$32, $$27), PropertyMap.class);
+      PropertyMap $$48 = asy.a($$47, a($$32, $$26), PropertyMap.class);
+      PropertyMap $$49 = asy.a($$47, a($$32, $$27), PropertyMap.class);
       String $$50 = a($$32, $$30);
       File $$51 = a($$32, $$9);
       File $$52 = $$32.has($$10) ? a($$32, $$10) : new File($$51, "assets/");
@@ -125,101 +125,114 @@ public class Main {
       String $$60 = a(a($$32, $$7));
       String $$61 = a(a($$32, $$8));
       if ($$32.has($$4)) {
-         bey.e.a(bew.a);
+         bfn.e.a(bfl.a);
       }
 
       o.h();
-      afy.a();
-      gfb.a.a(afy.b.get());
-      afy.c();
-      ac.k();
-      String $$62 = (String)$$29.value($$32);
-      esd.a $$63 = esd.a.a($$62);
-      if ($$63 == null) {
-         a.warn("Unrecognized user type: {}", $$62);
+
+      try {
+         agi.a();
+         ggi.a.a(agi.b.get());
+         agi.c();
+      } catch (Throwable var84) {
+         o $$63 = o.a(var84, "Bootstrap");
+         p $$64 = $$63.a("Initialization");
+         atj.a($$64);
+         esr.a(null, null, $$46, null, $$63);
+         esr.a(null, $$51, $$63);
+         return;
       }
 
-      esd $$64 = new esd((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$63);
-      feq $$65 = new feq(
-         new feq.d($$64, $$48, $$49, $$35),
-         new eky($$38, $$39, $$40, $$41, $$42),
-         new feq.a($$51, $$53, $$52, $$55),
-         new feq.b($$43, $$46, $$50, $$44, $$45),
-         new feq.c($$58, $$59, $$60, $$61)
+      String $$65 = (String)$$29.value($$32);
+      etg.a $$66 = etg.a.a($$65);
+      if ($$66 == null) {
+         a.warn("Unrecognized user type: {}", $$65);
+      }
+
+      etg $$67 = new etg((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
+      ffv $$68 = new ffv(
+         new ffv.d($$67, $$48, $$49, $$35),
+         new emb($$38, $$39, $$40, $$41, $$42),
+         new ffv.a($$51, $$53, $$52, $$55),
+         new ffv.b($$43, $$46, $$50, $$44, $$45),
+         new ffv.c($$58, $$59, $$60, $$61)
       );
-      Thread $$66 = new Thread("Client Shutdown Thread") {
+      ac.k();
+      Thread $$69 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            ero $$0 = ero.O();
+            esr $$0 = esr.N();
             if ($$0 != null) {
-               gdz $$1 = $$0.T();
+               gfg $$1 = $$0.S();
                if ($$1 != null) {
                   $$1.a(true);
                }
             }
          }
       };
-      $$66.setUncaughtExceptionHandler(new r(a));
-      Runtime.getRuntime().addShutdownHook($$66);
+      $$69.setUncaughtExceptionHandler(new r(a));
+      Runtime.getRuntime().addShutdownHook($$69);
+      final esr $$70 = null;
 
-      final ero $$67;
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$67 = new ero($$65);
+         $$70 = new esr($$68);
          RenderSystem.finishInitialization();
-      } catch (fer var81) {
-         a.warn("Failed to create window: ", var81);
+      } catch (ffw var82) {
+         ac.h();
+         a.warn("Failed to create window: ", var82);
          return;
-      } catch (Throwable var82) {
-         o $$70 = o.a(var82, "Initializing game");
-         p $$71 = $$70.a("Initialization");
-         asz.a($$71);
-         ero.a(null, null, $$65.d.b, null, $$70);
-         ero.c($$70);
+      } catch (Throwable var83) {
+         o $$73 = o.a(var83, "Initializing game");
+         p $$74 = $$73.a("Initialization");
+         atj.a($$74);
+         esr.a($$70, null, $$68.d.b, null, $$73);
+         esr.a($$70, $$68.c.a, $$73);
          return;
       }
 
-      Thread $$73;
-      if ($$67.aL()) {
-         $$73 = new Thread("Game thread") {
+      esr $$75 = $$70;
+      Thread $$76;
+      if ($$70.aK()) {
+         $$76 = new Thread("Game thread") {
             @Override
             public void run() {
                try {
                   RenderSystem.initGameThread(true);
-                  $$67.f();
+                  $$70.f();
                } catch (Throwable var2) {
                   Main.a.error("Exception in client thread", var2);
                }
             }
          };
-         $$73.start();
+         $$76.start();
 
-         while ($$67.r()) {
+         while ($$75.q()) {
          }
       } else {
-         $$73 = null;
+         $$76 = null;
 
          try {
             RenderSystem.initGameThread(false);
-            $$67.f();
-         } catch (Throwable var80) {
-            a.error("Unhandled game exception", var80);
+            $$75.f();
+         } catch (Throwable var81) {
+            a.error("Unhandled game exception", var81);
          }
       }
 
-      emd.a();
+      eng.a();
 
       try {
-         $$67.q();
-         if ($$73 != null) {
-            $$73.join();
+         $$75.p();
+         if ($$76 != null) {
+            $$76.join();
          }
-      } catch (InterruptedException var78) {
-         a.error("Exception during client thread shutdown", var78);
+      } catch (InterruptedException var79) {
+         a.error("Exception during client thread shutdown", var79);
       } finally {
-         $$67.m();
+         $$75.m();
       }
    }
 

@@ -12,20 +12,20 @@ import java.util.concurrent.CompletableFuture;
 
 public class fm implements ArgumentType<fo> {
    private static final Collection<String> d = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("argument.pos.unloaded"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.c("argument.pos.outofworld"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ui.c("argument.pos.outofbounds"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("argument.pos.unloaded"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ur.c("argument.pos.outofworld"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ur.c("argument.pos.outofbounds"));
 
    public static fm a() {
       return new fm();
    }
 
    public static ht a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      alq $$2 = ((du)$$0.getSource()).f();
+      ama $$2 = ((du)$$0.getSource()).f();
       return a($$0, $$2, $$1);
    }
 
-   public static ht a(CommandContext<du> $$0, alq $$1, String $$2) throws CommandSyntaxException {
+   public static ht a(CommandContext<du> $$0, ama $$1, String $$2) throws CommandSyntaxException {
       ht $$3 = b($$0, $$2);
       if (!$$1.A($$3)) {
          throw a.create();
@@ -42,7 +42,7 @@ public class fm implements ArgumentType<fo> {
 
    public static ht c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       ht $$2 = b($$0, $$1);
-      if (!cqz.k($$2)) {
+      if (!crs.k($$2)) {
          throw c.create();
       } else {
          return $$2;

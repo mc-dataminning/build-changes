@@ -1,151 +1,378 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.List;
+import java.util.function.BooleanSupplier;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public final class dfq {
-   private static final Map<String, dfq> k = new Object2ObjectArrayMap();
-   public static final Codec<dfq> a = asg.a((Function<dfq, String>)($$0 -> $$0.l), k::get);
-   public static final dfq b = new dfq(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(pt.g), Optional.of(pt.n), Optional.of(pt.C), Optional.of(pt.I)
-   );
-   public static final dfq c = new dfq(
-      "spruce", 0.5F, Optional.of(pt.q), Optional.of(pt.r), Optional.of(pt.k), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final dfq d = new dfq(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(pt.x), Optional.of(pt.y), Optional.empty(), Optional.empty()
-   );
-   public static final dfq e = new dfq("azalea", Optional.empty(), Optional.of(pt.w), Optional.empty());
-   public static final dfq f = new dfq("birch", Optional.empty(), Optional.of(pt.i), Optional.of(pt.F));
-   public static final dfq g = new dfq("jungle", Optional.of(pt.p), Optional.of(pt.o), Optional.empty());
-   public static final dfq h = new dfq("acacia", Optional.empty(), Optional.of(pt.j), Optional.empty());
-   public static final dfq i = new dfq("cherry", Optional.empty(), Optional.of(pt.z), Optional.of(pt.K));
-   public static final dfq j = new dfq("dark_oak", Optional.of(pt.h), Optional.empty(), Optional.empty());
-   private final String l;
-   private final float m;
-   private final Optional<afv<dob<?, ?>>> n;
-   private final Optional<afv<dob<?, ?>>> o;
-   private final Optional<afv<dob<?, ?>>> p;
-   private final Optional<afv<dob<?, ?>>> q;
-   private final Optional<afv<dob<?, ?>>> r;
-   private final Optional<afv<dob<?, ?>>> s;
+public class dfq extends dfv implements dfp {
+   public static final int f = 8;
+   public static final int g = 5;
+   private il<clb> h = il.a(5, clb.b);
+   private int i = -1;
+   private long j;
 
-   public dfq(String $$0, Optional<afv<dob<?, ?>>> $$1, Optional<afv<dob<?, ?>>> $$2, Optional<afv<dob<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   public dfq(ht $$0, dgw $$1) {
+      super(det.r, $$0, $$1);
    }
 
-   public dfq(
-      String $$0,
-      float $$1,
-      Optional<afv<dob<?, ?>>> $$2,
-      Optional<afv<dob<?, ?>>> $$3,
-      Optional<afv<dob<?, ?>>> $$4,
-      Optional<afv<dob<?, ?>>> $$5,
-      Optional<afv<dob<?, ?>>> $$6,
-      Optional<afv<dob<?, ?>>> $$7
-   ) {
-      this.l = $$0;
-      this.m = $$1;
-      this.n = $$2;
-      this.o = $$3;
-      this.p = $$4;
-      this.q = $$5;
-      this.r = $$6;
-      this.s = $$7;
-      k.put($$0, this);
-   }
-
-   @Nullable
-   private afv<dob<?, ?>> a(ate $$0, boolean $$1) {
-      if ($$0.i() < this.m) {
-         if ($$1 && this.s.isPresent()) {
-            return this.s.get();
-         }
-
-         if (this.q.isPresent()) {
-            return this.q.get();
-         }
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      this.h = il.a(this.b(), clb.b);
+      if (!this.d($$0)) {
+         bik.b($$0, this.h);
       }
 
-      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
+      this.i = $$0.h("TransferCooldown");
    }
 
-   @Nullable
-   private afv<dob<?, ?>> a(ate $$0) {
-      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
-   }
-
-   public boolean a(alq $$0, dhy $$1, ht $$2, dgb $$3, ate $$4) {
-      afv<dob<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         ib<dob<?, ?>> $$6 = $$0.H_().d(jz.at).b($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     dob<?, ?> $$9 = $$6.a();
-                     dgb $$10 = cuc.a.o();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
-
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
-                     return false;
-                  }
-               }
-            }
-         }
+   @Override
+   protected void b(rz $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bik.a($$0, this.h);
       }
 
-      afv<dob<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
+      $$0.a("TransferCooldown", this.i);
+   }
+
+   @Override
+   public int b() {
+      return this.h.size();
+   }
+
+   @Override
+   public clb a(int $$0, int $$1) {
+      this.e(null);
+      return bik.a(this.f(), $$0, $$1);
+   }
+
+   @Override
+   public void a(int $$0, clb $$1) {
+      this.e(null);
+      this.f().set($$0, $$1);
+      if ($$1.L() > this.aj_()) {
+         $$1.f(this.aj_());
+      }
+   }
+
+   @Override
+   protected ur g() {
+      return ur.c("container.hopper");
+   }
+
+   public static void a(crs $$0, ht $$1, dgw $$2, dfq $$3) {
+      $$3.i--;
+      $$3.j = $$0.V();
+      if (!$$3.j()) {
+         $$3.c(0);
+         a($$0, $$1, $$2, $$3, () -> a($$0, (dfp)$$3));
+      }
+   }
+
+   private static boolean a(crs $$0, ht $$1, dgw $$2, dfq $$3, BooleanSupplier $$4) {
+      if ($$0.B) {
          return false;
       } else {
-         ib<dob<?, ?>> $$12 = $$0.H_().d(jz.at).b($$11).orElse(null);
-         if ($$12 == null) {
+         if (!$$3.j() && $$2.c(cyn.c)) {
+            boolean $$5 = false;
+            if (!$$3.ai_()) {
+               $$5 = a($$0, $$1, $$2, (bij)$$3);
+            }
+
+            if (!$$3.i()) {
+               $$5 |= $$4.getAsBoolean();
+            }
+
+            if ($$5) {
+               $$3.c(8);
+               a($$0, $$1, $$2);
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private boolean i() {
+      for (clb $$0 : this.h) {
+         if ($$0.b() || $$0.L() != $$0.g()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(crs $$0, ht $$1, dgw $$2, bij $$3) {
+      bij $$4 = b($$0, $$1, $$2);
+      if ($$4 == null) {
+         return false;
+      } else {
+         hx $$5 = $$2.c(cyn.b).g();
+         if (b($$4, $$5)) {
             return false;
          } else {
-            dob<?, ?> $$13 = $$12.a();
-            dgb $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 4);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
+            for (int $$6 = 0; $$6 < $$3.b(); $$6++) {
+               if (!$$3.a($$6).b()) {
+                  clb $$7 = $$3.a($$6).p();
+                  clb $$8 = a($$3, $$4, $$3.a($$6, 1), $$5);
+                  if ($$8.b()) {
+                     $$4.e();
+                     return true;
+                  }
 
-               return true;
-            } else {
-               $$0.a($$2, $$3, 4);
-               return false;
+                  $$3.a($$6, $$7);
+               }
             }
+
+            return false;
          }
       }
    }
 
-   private static boolean a(dgb $$0, cqf $$1, ht $$2, int $$3, int $$4) {
-      cua $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
+   private static IntStream a(bij $$0, hx $$1) {
+      return $$0 instanceof biz ? IntStream.of(((biz)$$0).a($$1)) : IntStream.range(0, $$0.b());
    }
 
-   private boolean a(cra $$0, ht $$1) {
-      for (ht $$2 : ht.a.a($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
-         if ($$0.a_($$2).a(aqs.U)) {
+   private static boolean b(bij $$0, hx $$1) {
+      return a($$0, $$1).allMatch($$1x -> {
+         clb $$2 = $$0.a($$1x);
+         return $$2.L() >= $$2.g();
+      });
+   }
+
+   private static boolean c(bij $$0, hx $$1) {
+      return a($$0, $$1).allMatch($$1x -> $$0.a($$1x).b());
+   }
+
+   public static boolean a(crs $$0, dfp $$1) {
+      bij $$2 = c($$0, $$1);
+      if ($$2 != null) {
+         hx $$3 = hx.a;
+         return c($$2, $$3) ? false : a($$2, $$3).anyMatch($$3x -> a($$1, $$2, $$3x, $$3));
+      } else {
+         for (caf $$4 : b($$0, $$1)) {
+            if (a($$1, $$4)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private static boolean a(dfp $$0, bij $$1, int $$2, hx $$3) {
+      clb $$4 = $$1.a($$2);
+      if (!$$4.b() && a($$0, $$1, $$4, $$2, $$3)) {
+         clb $$5 = $$4.p();
+         clb $$6 = a($$1, $$0, $$1.a($$2, 1), null);
+         if ($$6.b()) {
+            $$1.e();
             return true;
          }
+
+         $$1.a($$2, $$5);
       }
 
       return false;
+   }
+
+   public static boolean a(bij $$0, caf $$1) {
+      boolean $$2 = false;
+      clb $$3 = $$1.q().p();
+      clb $$4 = a(null, $$0, $$3, null);
+      if ($$4.b()) {
+         $$2 = true;
+         $$1.a(clb.b);
+         $$1.ak();
+      } else {
+         $$1.a($$4);
+      }
+
+      return $$2;
+   }
+
+   public static clb a(@Nullable bij $$0, bij $$1, clb $$2, @Nullable hx $$3) {
+      if ($$1 instanceof biz $$4 && $$3 != null) {
+         int[] $$5 = $$4.a($$3);
+
+         for (int $$6 = 0; $$6 < $$5.length && !$$2.b(); $$6++) {
+            $$2 = b($$0, $$1, $$2, $$5[$$6], $$3);
+         }
+
+         return $$2;
+      }
+
+      int $$7 = $$1.b();
+
+      for (int $$8 = 0; $$8 < $$7 && !$$2.b(); $$8++) {
+         $$2 = b($$0, $$1, $$2, $$8, $$3);
+      }
+
+      return $$2;
+   }
+
+   private static boolean a(bij $$0, clb $$1, int $$2, @Nullable hx $$3) {
+      if (!$$0.b($$2, $$1)) {
+         return false;
+      } else {
+         if ($$0 instanceof biz $$4 && !$$4.a($$2, $$1, $$3)) {
+            return false;
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean a(bij $$0, bij $$1, clb $$2, int $$3, hx $$4) {
+      if (!$$1.a($$0, $$3, $$2)) {
+         return false;
+      } else {
+         if ($$1 instanceof biz $$5 && !$$5.b($$3, $$2, $$4)) {
+            return false;
+         }
+
+         return true;
+      }
+   }
+
+   private static clb b(@Nullable bij $$0, bij $$1, clb $$2, int $$3, @Nullable hx $$4) {
+      clb $$5 = $$1.a($$3);
+      if (a($$1, $$2, $$3, $$4)) {
+         boolean $$6 = false;
+         boolean $$7 = $$1.ai_();
+         if ($$5.b()) {
+            $$1.a($$3, $$2);
+            $$2 = clb.b;
+            $$6 = true;
+         } else if (a($$5, $$2)) {
+            int $$8 = $$2.g() - $$5.L();
+            int $$9 = Math.min($$2.L(), $$8);
+            $$2.h($$9);
+            $$5.g($$9);
+            $$6 = $$9 > 0;
+         }
+
+         if ($$6) {
+            if ($$7 && $$1 instanceof dfq $$10 && !$$10.v()) {
+               int $$11 = 0;
+               if ($$0 instanceof dfq $$12 && $$10.j >= $$12.j) {
+                  $$11 = 1;
+               }
+
+               $$10.c(8 - $$11);
+            }
+
+            $$1.e();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Nullable
+   private static bij b(crs $$0, ht $$1, dgw $$2) {
+      hx $$3 = $$2.c(cyn.b);
+      return a($$0, $$1.a($$3));
+   }
+
+   @Nullable
+   private static bij c(crs $$0, dfp $$1) {
+      return a($$0, $$1.H(), $$1.I() + 1.0, $$1.K());
+   }
+
+   public static List<caf> b(crs $$0, dfp $$1) {
+      return $$1.h()
+         .e()
+         .stream()
+         .flatMap($$2 -> $$0.a(caf.class, $$2.d($$1.H() - 0.5, $$1.I() - 0.5, $$1.K() - 0.5), bkl.a).stream())
+         .collect(Collectors.toList());
+   }
+
+   @Nullable
+   public static bij a(crs $$0, ht $$1) {
+      return a($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5);
+   }
+
+   @Nullable
+   private static bij a(crs $$0, double $$1, double $$2, double $$3) {
+      bij $$4 = null;
+      ht $$5 = ht.a($$1, $$2, $$3);
+      dgw $$6 = $$0.a_($$5);
+      cut $$7 = $$6.b();
+      if ($$7 instanceof bja) {
+         $$4 = ((bja)$$7).a($$6, $$0, $$5);
+      } else if ($$6.t()) {
+         der $$8 = $$0.c_($$5);
+         if ($$8 instanceof bij) {
+            $$4 = (bij)$$8;
+            if ($$4 instanceof dey && $$7 instanceof cvw) {
+               $$4 = cvw.a((cvw)$$7, $$6, $$0, $$5, true);
+            }
+         }
+      }
+
+      if ($$4 == null) {
+         List<bki> $$9 = $$0.a((bki)null, new ejd($$1 - 0.5, $$2 - 0.5, $$3 - 0.5, $$1 + 0.5, $$2 + 0.5, $$3 + 0.5), bkl.d);
+         if (!$$9.isEmpty()) {
+            $$4 = (bij)$$9.get($$0.z.a($$9.size()));
+         }
+      }
+
+      return $$4;
+   }
+
+   private static boolean a(clb $$0, clb $$1) {
+      return $$0.L() <= $$0.g() && clb.c($$0, $$1);
+   }
+
+   @Override
+   public double H() {
+      return (double)this.p.u() + 0.5;
+   }
+
+   @Override
+   public double I() {
+      return (double)this.p.v() + 0.5;
+   }
+
+   @Override
+   public double K() {
+      return (double)this.p.w() + 0.5;
+   }
+
+   private void c(int $$0) {
+      this.i = $$0;
+   }
+
+   private boolean j() {
+      return this.i > 0;
+   }
+
+   private boolean v() {
+      return this.i > 8;
+   }
+
+   @Override
+   protected il<clb> f() {
+      return this.h;
+   }
+
+   @Override
+   protected void a(il<clb> $$0) {
+      this.h = $$0;
+   }
+
+   public static void a(crs $$0, ht $$1, dgw $$2, bki $$3, dfq $$4) {
+      if ($$3 instanceof caf $$5 && !$$5.q().b() && ejy.c(ejy.a($$3.cG().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w()))), $$4.h(), ejm.i)) {
+         a($$0, $$1, $$2, $$4, () -> a((bij)$$4, $$5));
+      }
+   }
+
+   @Override
+   protected cge a(int $$0, cdl $$1) {
+      return new chd($$0, $$1, this);
    }
 }

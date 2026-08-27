@@ -1,143 +1,84 @@
-public interface eww {
-   eww a(int var1);
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   eww a(int var1, int var2);
+public class eww implements ewu {
+   private static final agg g = new agg("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final eww.a h;
+   private final ur i;
+   @Nullable
+   private final ur j;
+   private ewu.a k = ewu.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   eww a(int var1, int var2, int var3, int var4);
-
-   eww b(int var1);
-
-   eww c(int var1);
-
-   eww d(int var1);
-
-   eww e(int var1);
-
-   eww f(int var1);
-
-   eww g(int var1);
-
-   eww a(float var1, float var2);
-
-   eww a(float var1);
-
-   eww b(float var1);
-
-   default eww a() {
-      return this.a(0.0F);
+   public eww(eww.a $$0, ur $$1, @Nullable ur $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
-   default eww b() {
-      return this.a(0.5F);
+   @Override
+   public ewu.a a(eub $$0, ewv $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+      }
+
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = ati.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
+         }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
+      }
+
+      return this.k;
    }
 
-   default eww c() {
-      return this.a(1.0F);
+   public void c() {
+      this.k = ewu.a.b;
    }
 
-   default eww d() {
-      return this.b(0.0F);
+   public void a(float $$0) {
+      this.n = $$0;
    }
 
-   default eww e() {
-      return this.b(0.5F);
-   }
+   public static enum a {
+      a(new agg("toast/movement_keys")),
+      b(new agg("toast/mouse")),
+      c(new agg("toast/tree")),
+      d(new agg("toast/recipe_book")),
+      e(new agg("toast/wooden_planks")),
+      f(new agg("toast/social_interactions")),
+      g(new agg("toast/right_click"));
 
-   default eww f() {
-      return this.b(1.0F);
-   }
+      private final agg h;
 
-   eww g();
-
-   eww.a h();
-
-   static eww i() {
-      return new eww.a();
-   }
-
-   public static class a implements eww {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
-
-      public a() {
+      private a(agg $$0) {
+         this.h = $$0;
       }
 
-      public a(eww.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
-      }
-
-      public eww.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
-
-      public eww.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
-
-      public eww.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
-
-      public eww.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public eww.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public eww.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eww.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eww.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public eww.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public eww.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public eww.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public eww.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public eww.a j() {
-         return new eww.a(this);
-      }
-
-      @Override
-      public eww.a h() {
-         return this;
+      public void a(eub $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
    }
 }

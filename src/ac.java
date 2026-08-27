@@ -73,14 +73,15 @@ import org.slf4j.Logger;
 public class ac {
    static final Logger f = LogUtils.getLogger();
    private static final int g = 255;
-   private static final String h = "max.bg.threads";
-   private static final AtomicInteger i = new AtomicInteger(1);
-   private static final ExecutorService j = c("Main");
-   private static final ExecutorService k = m();
-   private static final DateTimeFormatter l = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
-   private static final int m = 8;
+   private static final int h = 10;
+   private static final String i = "max.bg.threads";
+   private static final AtomicInteger j = new AtomicInteger(1);
+   private static final ExecutorService k = c("Main");
+   private static final ExecutorService l = m();
+   private static final DateTimeFormatter m = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
+   private static final int n = 8;
    public static final long a = 1000000L;
-   public static atv.a b = System::nanoTime;
+   public static auf.a b = System::nanoTime;
    public static final Ticker c = new Ticker() {
       public long read() {
          return ac.b.getAsLong();
@@ -92,18 +93,18 @@ public class ac {
       .filter($$0 -> $$0.getScheme().equalsIgnoreCase("jar"))
       .findFirst()
       .orElseThrow(() -> new IllegalStateException("No jar file system provider found"));
-   private static Consumer<String> n = $$0 -> {
+   private static Consumer<String> o = $$0 -> {
    };
 
    public static <K, V> Collector<Entry<? extends K, ? extends V>, ?, Map<K, V>> a() {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(dhe<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dhz<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable afw $$1) {
+   public static String a(String $$0, @Nullable agg $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -120,11 +121,11 @@ public class ac {
    }
 
    public static String e() {
-      return l.format(ZonedDateTime.now());
+      return m.format(ZonedDateTime.now());
    }
 
    private static ExecutorService c(String $$0) {
-      int $$1 = asy.a(Runtime.getRuntime().availableProcessors() - 1, 1, l());
+      int $$1 = ati.a(Runtime.getRuntime().availableProcessors() - 1, 1, l());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -142,7 +143,7 @@ public class ac {
                   super.onTermination($$0);
                }
             };
-            $$2x.setName("Worker-" + $$0 + "-" + i.getAndIncrement());
+            $$2x.setName("Worker-" + $$0 + "-" + j.getAndIncrement());
             return $$2x;
          }, ac::a, true);
       }
@@ -169,16 +170,16 @@ public class ac {
    }
 
    public static ExecutorService f() {
-      return j;
-   }
-
-   public static ExecutorService g() {
       return k;
    }
 
+   public static ExecutorService g() {
+      return l;
+   }
+
    public static void h() {
-      a(j);
       a(k);
+      a(l);
    }
 
    private static void a(ExecutorService $$0) {
@@ -199,7 +200,7 @@ public class ac {
    private static ExecutorService m() {
       return Executors.newCachedThreadPool($$0 -> {
          Thread $$1 = new Thread($$0);
-         $$1.setName("IO-Worker-" + i.getAndIncrement());
+         $$1.setName("IO-Worker-" + j.getAndIncrement());
          $$1.setUncaughtExceptionHandler(ac::a);
          return $$1;
       });
@@ -215,8 +216,8 @@ public class ac {
          $$1 = $$1.getCause();
       }
 
-      if ($$1 instanceof y) {
-         afy.a(((y)$$1).a().e());
+      if ($$1 instanceof y $$2) {
+         agi.a($$2.a().e());
          System.exit(-1);
       }
 
@@ -233,7 +234,7 @@ public class ac {
       Type<?> $$2 = null;
 
       try {
-         $$2 = aue.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = auo.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          f.error("No data fixer registered for {}", $$1);
          if (aa.aT) {
@@ -435,7 +436,7 @@ public class ac {
    }
 
    public static void a(Consumer<String> $$0) {
-      n = $$0;
+      o = $$0;
    }
 
    private static void d(String $$0) {
@@ -443,7 +444,7 @@ public class ac {
       f.warn("Did you remember to set a breakpoint here?");
       boolean $$2 = Duration.between($$1, Instant.now()).toMillis() > 500L;
       if (!$$2) {
-         n.accept($$0);
+         o.accept($$0);
       }
    }
 
@@ -455,19 +456,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, ate $$1) {
+   public static <T> T a(T[] $$0, ato $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, ate $$1) {
+   public static int a(int[] $$0, ato $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, ate $$1) {
+   public static <T> T a(List<T> $$0, ato $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, ate $$1) {
+   public static <T> Optional<T> b(List<T> $$0, ato $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -571,18 +572,16 @@ public class ac {
       a($$0, $$1, $$2, false);
    }
 
-   public static void a(File $$0, File $$1, File $$2, boolean $$3) {
-      a($$0.toPath(), $$1.toPath(), $$2.toPath(), $$3);
-   }
-
-   public static void a(Path $$0, Path $$1, Path $$2, boolean $$3) {
-      int $$4 = 10;
-      if (!Files.exists($$0) || a(10, "create backup " + $$2, a($$2), a($$0, $$2), c($$2))) {
-         if (a(10, "remove old " + $$0, a($$0), b($$0))) {
-            if (!a(10, "replace " + $$0 + " with " + $$1, a($$1, $$0), c($$0)) && !$$3) {
-               a(10, "restore " + $$0 + " from " + $$2, a($$2, $$0), c($$0));
-            }
-         }
+   public static boolean a(Path $$0, Path $$1, Path $$2, boolean $$3) {
+      if (Files.exists($$0) && !a(10, "create backup " + $$2, a($$2), a($$0, $$2), c($$2))) {
+         return false;
+      } else if (!a(10, "remove old " + $$0, a($$0), b($$0))) {
+         return false;
+      } else if (!a(10, "replace " + $$0 + " with " + $$1, a($$1, $$0), c($$0)) && !$$3) {
+         a(10, "restore " + $$0 + " from " + $$2, a($$2, $$0), c($$0));
+         return false;
+      } else {
+         return true;
       }
    }
 
@@ -668,8 +667,8 @@ public class ac {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> atm<K, V> a(Function<K, V> $$0) {
-      return new atm<>($$0);
+   public static <K, V> atw<K, V> a(Function<K, V> $$0) {
+      return new atw<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -704,13 +703,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, ate $$1) {
+   public static <T> List<T> a(Stream<T> $$0, ato $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       b($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, ate $$1) {
+   public static IntArrayList a(IntStream $$0, ato $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -722,19 +721,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, ate $$1) {
+   public static <T> List<T> b(T[] $$0, ato $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       b($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, ate $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, ato $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       b($$2, $$1);
       return $$2;
    }
 
-   public static <T> void b(ObjectArrayList<T> $$0, ate $$1) {
+   public static <T> void b(ObjectArrayList<T> $$0, ato $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {

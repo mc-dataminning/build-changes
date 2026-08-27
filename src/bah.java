@@ -1,44 +1,19 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class bah extends aui {
-   private static final Logger b = LogUtils.getLogger();
+public class bah extends aur {
+   private final Function<String, String> a;
 
-   public bah(Schema $$0) {
-      super($$0, baa.l);
+   public bah(Schema $$0, String $$1, Function<String, String> $$2) {
+      super($$0, $$1);
+      this.a = $$2;
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "SavedDataUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> $$0x.update(
-                     "data",
-                     $$0xx -> $$0xx.update(
-                           "Raids",
-                           $$0xxx -> $$0xxx.createList(
-                                 $$0xxx.asStream()
-                                    .map(
-                                       $$0xxxx -> $$0xxxx.update(
-                                             "HeroesOfTheVillage",
-                                             $$0xxxxx -> $$0xxxxx.createList(
-                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
-                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
-                                                         return $$0xxxxxx;
-                                                      }))
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
    }
 }

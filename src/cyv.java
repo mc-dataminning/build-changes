@@ -1,57 +1,96 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public enum cyv implements atr {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class cyv extends cuf {
+   public static final MapCodec<cyv> a = b(cyv::new);
+   public static final dhn b = dhm.n;
 
-   public static final Codec<cyv> d = atr.a(cyv::values);
-   private final String e;
-   private final ui f;
-   private final h g;
-
-   private cyv(String $$0, h $$1) {
-      this.e = $$0;
-      this.f = ui.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<cyv> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case c:
-            return ($$1 - $$3) % $$1;
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dal a(hx $$0) {
-      hx.a $$1 = $$0.o();
-      return (this != b || $$1 != hx.a.c) && (this != c || $$1 != hx.a.a) ? dal.a : dal.c;
-   }
-
-   public hx b(hx $$0) {
-      if (this == c && $$0.o() == hx.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == hx.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public ui b() {
-      return this.f;
+   protected cyv(dgv.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public void a(crs $$0, ht $$1, dgw $$2, @Nullable bky $$3, clb $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      rz $$5 = ciu.a($$4);
+      if ($$5 != null && $$5.e("RecordItem")) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+      }
+   }
+
+   @Override
+   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dfs $$6) {
+         $$6.i();
+         return biq.a($$1.B);
+      } else {
+         return biq.d;
+      }
+   }
+
+   @Override
+   public void a(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dfs $$5) {
+            $$5.i();
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public der a(ht $$0, dgw $$1) {
+      return new dfs($$0, $$1);
+   }
+
+   @Override
+   public boolean f_(dgw $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dgw $$0, cqy $$1, ht $$2, hx $$3) {
+      if ($$1.c_($$2) instanceof dfs $$4 && $$4.f()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   public boolean d_(dgw $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dgw $$0, crs $$1, ht $$2) {
+      if ($$1.c_($$2) instanceof dfs $$3 && $$3.v().d() instanceof clt $$4) {
+         return $$4.h();
+      }
+
+      return 0;
+   }
+
+   @Override
+   public day b_(dgw $$0) {
+      return day.c;
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends der> des<T> a(crs $$0, dgw $$1, det<T> $$2) {
+      return $$1.c(b) ? a($$2, det.e, dfs::a) : null;
    }
 }

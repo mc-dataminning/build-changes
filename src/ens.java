@@ -1,54 +1,36 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import org.slf4j.Logger;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class ens extends eod {
-   private static final Logger c = LogUtils.getLogger();
-   public long a;
-   public List<UUID> b;
+public interface ens {
+   ens a = a(0.0F, 0.0F, 0.0F);
+   ens b = a((ens.a)($$0 -> -$$0.z()));
 
-   public static ens a(JsonObject $$0) {
-      ens $$1 = new ens();
-
-      try {
-         $$1.a = eqa.a("serverId", $$0, -1L);
-         String $$2 = eqa.a("playerList", $$0, null);
-         if ($$2 != null) {
-            JsonElement $$3 = JsonParser.parseString($$2);
-            if ($$3.isJsonArray()) {
-               $$1.b = a($$3.getAsJsonArray());
-            } else {
-               $$1.b = Lists.newArrayList();
-            }
-         } else {
-            $$1.b = Lists.newArrayList();
-         }
-      } catch (Exception var4) {
-         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
-      }
-
-      return $$1;
+   static ens a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   private static List<UUID> a(JsonArray $$0) {
-      List<UUID> $$1 = new ArrayList<>($$0.size());
+   static ens a(Vector3f $$0) {
+      return a($$0::distanceSquared);
+   }
 
-      for (JsonElement $$2 : $$0) {
-         if ($$2.isJsonObject()) {
-            UUID $$3 = eqa.a("playerId", $$2.getAsJsonObject(), null);
-            if ($$3 != null) {
-               $$1.add($$3);
-            }
+   static ens a(ens.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
          }
-      }
 
-      return $$1;
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
+   }
+
+   int[] sort(Vector3f[] var1);
+
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

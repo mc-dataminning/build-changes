@@ -1,31 +1,45 @@
-public class ftz extends fvj<cab, ffv<cab>> {
-   private static final afw a = new afw("textures/entity/enderman/enderman.png");
-   private final ate i = ate.a();
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-   public ftz(fud.a $$0) {
-      super($$0, new ffv<>($$0.a(fiv.R)), 0.5F);
-      this.a(new fxv<>(this));
-      this.a(new fxm(this, $$0.c()));
+public class ftz implements ftq.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final esr c;
+   private Collection<ht> d = Lists.newArrayList();
+
+   public ftz(esr $$0) {
+      this.c = $$0;
    }
 
-   public void a(cab $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      dgb $$6 = $$0.ge();
-      ffv<cab> $$7 = this.a();
-      $$7.a = $$6 != null;
-      $$7.b = $$0.gf();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(Collection<ht> $$0) {
+      this.d = $$0;
    }
 
-   public eif a(cab $$0, float $$1) {
-      if ($$0.gf()) {
-         double $$2 = 0.02;
-         return new eif(this.i.k() * 0.02, 0.0, this.i.k() * 0.02);
-      } else {
-         return super.a($$0, $$1);
+   @Override
+   public void a(enk $$0, fqh $$1, double $$2, double $$3, double $$4) {
+      ht $$5 = this.b().c();
+
+      for (ht $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
       }
    }
 
-   public afw a(cab $$0) {
-      return a;
+   private static void a(enk $$0, fqh $$1, ht $$2) {
+      ftq.a($$0, $$1, $$2.b(-1, -1, -1), $$2.b(1, 1, 1), 1.0F, 0.0F, 0.0F, 0.15F);
+      int $$3 = -65536;
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(enk $$0, fqh $$1, String $$2, ht $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      ftq.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private esc b() {
+      return this.c.j.m();
    }
 }

@@ -1,89 +1,365 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.util.Date;
-import java.util.UUID;
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eqa {
-   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
-   }
-
+public class eqa extends ghe {
+   private static final agg a = new agg("realm_status/expired");
+   private static final agg b = new agg("realm_status/expires_soon");
+   private static final agg c = new agg("realm_status/open");
+   private static final agg v = new agg("realm_status/closed");
+   private static final Logger w = LogUtils.getLogger();
+   private static final ur x = ur.c("mco.configure.worlds.title");
+   private static final ur y = ur.c("mco.configure.world.title");
+   private static final ur z = ur.c("mco.selectServer.expired");
+   private static final ur A = ur.c("mco.selectServer.expires.soon");
+   private static final ur B = ur.c("mco.selectServer.expires.day");
+   private static final ur C = ur.c("mco.selectServer.open");
+   private static final ur D = ur.c("mco.selectServer.closed");
+   private static final int E = 80;
+   private static final int F = 5;
    @Nullable
-   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         return null;
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
-   }
-
-   public static String a(String $$0, JsonObject $$1) {
-      String $$2 = a($$0, $$1, null);
-      if ($$2 == null) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else {
-         return $$2;
-      }
-   }
-
+   private ur G;
+   private final env H;
    @Nullable
-   public static String a(String $$0, JsonObject $$1, @Nullable String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
+   private eor I;
+   private final long J;
+   private int K;
+   private int L;
+   private eum M;
+   private eum N;
+   private eum O;
+   private eum P;
+   private eum Q;
+   private eum R;
+   private eum S;
+   private boolean T;
+   private final List<ept> U = Lists.newArrayList();
+
+   public eqa(env $$0, long $$1) {
+      super(y);
+      this.H = $$0;
+      this.J = $$1;
+   }
+
+   @Override
+   public void aO_() {
+      if (this.I == null) {
+         this.a(this.J);
+      }
+
+      this.K = this.g / 2 - 187;
+      this.L = this.g / 2 + 190;
+      this.M = this.d(eum.a(ur.c("mco.configure.world.buttons.players"), $$0x -> this.f.a(new eqm(this, this.I))).a(this.a(0, 3), h(0), 100, 20).a());
+      this.N = this.d(eum.a(ur.c("mco.configure.world.buttons.settings"), $$0x -> this.f.a(new eqs(this, this.I.g()))).a(this.a(1, 3), h(0), 100, 20).a());
+      this.O = this.d(
+         eum.a(ur.c("mco.configure.world.buttons.subscription"), $$0x -> this.f.a(new equ(this, this.I.g(), this.H))).a(this.a(2, 3), h(0), 100, 20).a()
+      );
+      this.U.clear();
+
+      for (int $$0 = 1; $$0 < 5; $$0++) {
+         this.U.add(this.a($$0));
+      }
+
+      this.S = this.d(
+         eum.a(ur.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.f.a(new eqr(ur.c("mco.template.title.minigame"), this::a, eor.d.b)))
+            .a(this.b(0), h(13) - 5, 100, 20)
+            .a()
+      );
+      this.P = this.d(
+         eum.a(ur.c("mco.configure.world.buttons.options"), $$0x -> this.f.a(new eqt(this, this.I.i.get(this.I.n).d(), this.I.m, this.I.n)))
+            .a(this.b(0), h(13) - 5, 90, 20)
+            .a()
+      );
+      this.Q = this.d(eum.a(ur.c("mco.configure.world.backup"), $$0x -> this.f.a(new epx(this, this.I.g(), this.I.n))).a(this.b(1), h(13) - 5, 90, 20).a());
+      this.R = this.d(
+         eum.a(ur.c("mco.configure.world.buttons.resetworld"), $$0x -> this.f.a(eqp.a(this, this.I.g(), () -> this.f.execute(() -> this.f.a(this.f())))))
+            .a(this.b(2), h(13) - 5, 90, 20)
+            .a()
+      );
+      this.d(eum.a(uq.k, $$0x -> this.aE_()).a(this.L - 80 + 8, h(13) - 5, 70, 20).a());
+      this.Q.i = true;
+      if (this.I == null) {
+         this.G();
+         this.F();
+         this.M.i = false;
+         this.N.i = false;
+         this.O.i = false;
       } else {
-         return $$2;
+         this.C();
+         if (this.E()) {
+            this.F();
+         } else {
+            this.G();
+         }
       }
    }
 
-   @Nullable
-   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
-      String $$3 = a($$0, $$1, null);
-      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
+   private ept a(int $$0) {
+      int $$1 = this.c($$0);
+      int $$2 = h(5) + 5;
+      ept $$3 = new ept($$1, $$2, 80, 80, $$0, $$1x -> {
+         ept.b $$2x = ((ept)$$1x).a();
+         if ($$2x != null) {
+            switch ($$2x.c) {
+               case a:
+                  break;
+               case c:
+                  this.a(this.I);
+                  break;
+               case b:
+                  if ($$2x.b) {
+                     this.D();
+                  } else if ($$2x.a) {
+                     this.b($$0, this.I);
+                  } else {
+                     this.a($$0, this.I);
+                  }
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown action " + $$2x.c);
+            }
+         }
+      });
+      if (this.I != null) {
+         $$3.a(this.I);
+      }
+
+      return this.d($$3);
    }
 
-   public static int a(String $$0, JsonObject $$1, int $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
+   private int b(int $$0) {
+      return this.K + $$0 * 95;
+   }
+
+   private int a(int $$0, int $$1) {
+      return this.g / 2 - ($$1 * 105 - 5) / 2 + $$0 * 105;
+   }
+
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.G = null;
+      $$0.a(this.i, x, this.g / 2, h(4), -1);
+      if (this.I == null) {
+         $$0.a(this.i, this.e, this.g / 2, 17, -1);
       } else {
-         return $$2;
+         String $$4 = this.I.b();
+         int $$5 = this.i.b($$4);
+         int $$6 = this.I.e == eor.c.a ? -6250336 : 8388479;
+         int $$7 = this.i.a(this.e);
+         $$0.a(this.i, this.e, this.g / 2, 12, -1);
+         $$0.a(this.i, $$4, this.g / 2, 24, $$6);
+         int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.g / 2 + $$5 / 2 + $$7 / 2 + 10);
+         this.a($$0, $$8, 7, $$1, $$2);
+         if (this.E()) {
+            $$0.a(this.i, ur.a("mco.configure.world.minigame", this.I.c()), this.K + 80 + 20 + 10, h(13), -1, false);
+         }
       }
    }
 
-   public static long a(String $$0, JsonObject $$1, long $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
+   private int c(int $$0) {
+      return this.K + ($$0 - 1) * 98;
+   }
+
+   @Override
+   public void aE_() {
+      if (this.T) {
+         this.H.g();
+      }
+
+      this.f.a(this.H);
+   }
+
+   private void a(long $$0) {
+      new Thread(() -> {
+         eoa $$1 = eoa.a();
+
+         try {
+            eor $$2 = $$1.a($$0);
+            this.f.execute(() -> {
+               this.I = $$2;
+               this.C();
+               if (this.E()) {
+                  this.b(this.S);
+               } else {
+                  this.b(this.P);
+                  this.b(this.Q);
+                  this.b(this.R);
+               }
+
+               for (ept $$1x : this.U) {
+                  $$1x.a($$2);
+               }
+            });
+         } catch (epn var5) {
+            w.error("Couldn't get own world", var5);
+            this.f.execute(() -> this.f.a(new eqe(var5, this.H)));
+         }
+      }).start();
+   }
+
+   private void C() {
+      this.M.i = !this.I.j;
+      this.N.i = !this.I.j;
+      this.O.i = true;
+      this.S.i = !this.I.j;
+      this.P.i = !this.I.j;
+      this.R.i = !this.I.j;
+   }
+
+   private void a(eor $$0) {
+      if (this.I.e == eor.c.b) {
+         env.a($$0, new eqa(this.H, this.J));
       } else {
-         return $$2;
+         this.a(true, new eqa(this.H, this.J));
       }
    }
 
-   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
-      } else {
-         return $$2;
+   private void D() {
+      eqr $$0 = new eqr(ur.c("mco.template.title.minigame"), this::a, eor.d.b);
+      $$0.a(ur.c("mco.minigame.world.info.line1"), ur.c("mco.minigame.world.info.line2"));
+      this.f.a($$0);
+   }
+
+   private void a(int $$0, eor $$1) {
+      ur $$2 = ur.c("mco.configure.world.slot.switch.question.line1");
+      ur $$3 = ur.c("mco.configure.world.slot.switch.question.line2");
+      this.f.a(new eqg($$2x -> {
+         if ($$2x) {
+            this.e();
+            this.f.a(new eqh(this.H, new ery($$1.a, $$0, () -> this.f.execute(() -> this.f.a(this.f())))));
+         } else {
+            this.f.a(this);
+         }
+      }, eqg.a.b, $$2, $$3, true));
+   }
+
+   private void b(int $$0, eor $$1) {
+      ur $$2 = ur.c("mco.configure.world.slot.switch.question.line1");
+      ur $$3 = ur.c("mco.configure.world.slot.switch.question.line2");
+      this.f.a(new eqg($$2x -> {
+         if ($$2x) {
+            this.e();
+            eqp $$3x = eqp.a(this, $$0, $$1, () -> this.f.execute(() -> this.f.a(this.f())));
+            this.f.a($$3x);
+         } else {
+            this.f.a(this);
+         }
+      }, eqg.a.b, $$2, $$3, true));
+   }
+
+   private void a(eub $$0, int $$1, int $$2, int $$3, int $$4) {
+      if (this.I.j) {
+         this.a($$0, $$1, $$2, $$3, $$4, a, () -> z);
+      } else if (this.I.e == eor.c.a) {
+         this.a($$0, $$1, $$2, $$3, $$4, v, () -> D);
+      } else if (this.I.e == eor.c.b) {
+         if (this.I.l < 7) {
+            this.a($$0, $$1, $$2, $$3, $$4, b, () -> {
+               if (this.I.l <= 0) {
+                  return A;
+               } else {
+                  return (ur)(this.I.l == 1 ? B : ur.a("mco.selectServer.expires.days", this.I.l));
+               }
+            });
+         } else {
+            this.a($$0, $$1, $$2, $$3, $$4, c, () -> C);
+         }
       }
    }
 
-   public static Date b(String $$0, JsonObject $$1) {
-      JsonElement $$2 = $$1.get($$0);
-      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
+   private void a(eub $$0, int $$1, int $$2, int $$3, int $$4, agg $$5, Supplier<ur> $$6) {
+      $$0.a($$5, $$1, $$2, 10, 28);
+      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
+         this.d($$6.get());
+      }
+   }
+
+   private boolean E() {
+      return this.I != null && this.I.m == eor.d.b;
+   }
+
+   private void F() {
+      this.a(this.P);
+      this.a(this.Q);
+      this.a(this.R);
+   }
+
+   private void a(eum $$0) {
+      $$0.j = false;
+   }
+
+   private void b(eum $$0) {
+      $$0.j = true;
+   }
+
+   private void G() {
+      this.a(this.S);
+   }
+
+   public void a(eoy $$0) {
+      eoy $$1 = this.I.i.get(this.I.n);
+      $$0.l = $$1.l;
+      $$0.m = $$1.m;
+      eoa $$2 = eoa.a();
+
+      try {
+         $$2.a(this.I.a, this.I.n, $$0);
+         this.I.i.put(this.I.n, $$0);
+      } catch (epn var5) {
+         w.error("Couldn't save slot settings", var5);
+         this.f.a(new eqe(var5, this));
+         return;
+      }
+
+      this.f.a(this);
+   }
+
+   public void a(String $$0, String $$1) {
+      String $$2 = ac.b($$1) ? null : $$1;
+      eoa $$3 = eoa.a();
+
+      try {
+         $$3.b(this.I.a, $$0, $$2);
+         this.I.a($$0);
+         this.I.b($$2);
+         this.e();
+      } catch (epn var6) {
+         w.error("Couldn't save settings", var6);
+         this.f.a(new eqe(var6, this));
+         return;
+      }
+
+      this.f.a(this);
+   }
+
+   public void a(boolean $$0, fah $$1) {
+      this.f.a(new eqh($$1, new ers(this.I, this, $$0, this.f)));
+   }
+
+   public void a(fah $$0) {
+      this.f.a(new eqh($$0, new erm(this.I, this)));
+   }
+
+   public void e() {
+      this.T = true;
+   }
+
+   private void a(@Nullable epi $$0) {
+      if ($$0 != null && epi.a.b == $$0.i) {
+         this.e();
+         this.f.a(new eqh(this.H, new erx(this.I.a, $$0, this.f())));
+      } else {
+         this.f.a(this);
+      }
+   }
+
+   public eqa f() {
+      eqa $$0 = new eqa(this.H, this.J);
+      $$0.T = this.T;
+      return $$0;
    }
 }

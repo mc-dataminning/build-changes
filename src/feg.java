@@ -1,22 +1,84 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-public class feg implements fei {
-   private static final ui a = ui.c("spectatorMenu.root.prompt");
-   private final List<fej> b = Lists.newArrayList();
+public class feg extends fef<fls.a> {
+   private static final int r = 120;
+   private static final ur t = ur.c("gui.chatReport.title");
+   private static final ur u = ur.c("gui.chatReport.select_chat");
+   private final eya v = eya.d().a(8);
+   private eve w;
+   private eum x;
+   private eum y;
+   private eum z;
 
-   public feg() {
-      this.b.add(new fem());
-      this.b.add(new fen());
+   private feg(fah $$0, flz $$1, fls.a $$2) {
+      super(t, $$0, $$1, $$2);
+   }
+
+   public feg(fah $$0, flz $$1, UUID $$2) {
+      this($$0, $$1, new fls.a($$2, $$1.a().b()));
+   }
+
+   public feg(fah $$0, flz $$1, fls $$2) {
+      this($$0, $$1, new fls.a($$2, $$1.a().b()));
    }
 
    @Override
-   public List<fej> a() {
-      return this.b;
+   protected void aO_() {
+      this.v.c().b();
+      this.v.a(new evt(this.e, this.i));
+      this.y = this.v.a(eum.a(u, $$0x -> this.f.a(new fei(this, this.p, this.q, $$0xx -> {
+            this.q = $$0xx;
+            this.C();
+         }))).a(280).a());
+      this.z = eum.a(c, $$0x -> this.f.a(new fel(this, this.q.h(), $$0xx -> {
+            this.q.a($$0xx);
+            this.C();
+         }))).a(280).a();
+      this.v.a(exs.a(this.i, this.z, b));
+      this.w = this.a(280, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.C();
+      });
+      this.v.a(exs.a(this.i, this.w, k, $$0x -> $$0x.e(12)));
+      eya $$0 = this.v.a(eya.e().a(8));
+      $$0.a(eum.a(uq.k, $$0x -> this.aE_()).a(120).a());
+      this.x = $$0.a(eum.a(a, $$0x -> this.l()).a(120).a());
+      this.v.a($$1 -> {
+         euk var10000 = this.d($$1);
+      });
+      this.c();
+      this.C();
    }
 
    @Override
-   public ui b() {
-      return a;
+   protected void c() {
+      this.v.a();
+      exu.a(this.v, this.s());
+   }
+
+   private void C() {
+      IntSet $$0 = this.q.a();
+      if ($$0.isEmpty()) {
+         this.y.b(u);
+      } else {
+         this.y.b(ur.a("gui.chatReport.selected_chat", $$0.size()));
+      }
+
+      flx $$1 = this.q.h();
+      if ($$1 != null) {
+         this.z.b($$1.b());
+      } else {
+         this.z.b(c);
+      }
+
+      flv.b $$2 = this.q.c();
+      this.x.i = $$2 == null;
+      this.x.a(x.a($$2, flv.b::a));
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.w.b($$0, $$1, $$2);
    }
 }

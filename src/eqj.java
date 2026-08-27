@@ -1,53 +1,167 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class eqj extends eqo {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ui c = ui.c("mco.configure.world.closing");
-   private final eno d;
-   private final eox e;
+public class eqj extends ghe {
+   private static final agg a = new agg("icon/unseen_notification");
+   private static final agg b = new agg("icon/news");
+   private static final agg c = new agg("icon/invite");
+   private static final agg v = new agg("icon/trial_available");
+   private final CompletableFuture<Boolean> w = enu.a().thenApply($$0 -> $$0.a() == enu.b.a);
+   @Nullable
+   private eqz.c x;
+   @Nullable
+   private eqj.a y;
+   private volatile int z;
+   private static boolean A;
+   private static boolean B;
+   private static boolean C;
+   private final eqj.a D = new eqj.a() {
+      @Override
+      public eqz.c a(epq $$0) {
+         eqz.c $$1 = $$0.a.a();
+         eqj.this.a($$0, $$1);
+         eqj.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public eqj(eno $$0, eox $$1) {
-      this.d = $$0;
-      this.e = $$1;
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final eqj.a E = new eqj.a() {
+      @Override
+      public eqz.c a(epq $$0) {
+         eqz.c $$1 = $$0.a.a();
+         eqj.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public eqj() {
+      super(esj.a);
    }
 
    @Override
-   public void run() {
-      emx $$0 = emx.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.e();
-               this.d.e = eno.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (eol var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
+   public void aO_() {
+      if (this.x != null) {
+         this.x.a();
       }
    }
 
    @Override
-   public ui a() {
-      return c;
+   public void aG_() {
+      super.aG_();
+      this.f.aX().b.a();
+   }
+
+   @Nullable
+   private eqj.a C() {
+      boolean $$0 = this.E() && this.w.getNow(false);
+      if (!$$0) {
+         return null;
+      } else {
+         return this.D() ? this.D : this.E;
+      }
+   }
+
+   @Override
+   public void d() {
+      eqj.a $$0 = this.C();
+      if (!Objects.equals(this.y, $$0)) {
+         this.y = $$0;
+         if (this.y != null) {
+            this.x = this.y.a(this.f.aX());
+         } else {
+            this.x = null;
+         }
+      }
+
+      if (this.x != null) {
+         this.x.b();
+      }
+   }
+
+   private boolean D() {
+      return this.f.m.Q().c();
+   }
+
+   private boolean E() {
+      return this.f.y instanceof fam;
+   }
+
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.w.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(eub $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(eub $$0) {
+      int $$1 = this.z;
+      int $$2 = 24;
+      int $$3 = this.h / 4 + 48;
+      int $$4 = this.g / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (C) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.y != null && this.y.a()) {
+         if (B) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (A) {
+            $$0.a(v, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(epq $$0, eqz.c $$1) {
+      $$1.a($$0.d, $$0x -> this.z = $$0x);
+      $$1.a($$0.e, $$0x -> A = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.g.a($$1x);
+         B = $$0.g.a();
+      });
+   }
+
+   void b(epq $$0, eqz.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         C = false;
+
+         for (eoq $$1x : $$0x) {
+            if (!$$1x.a()) {
+               C = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      eqz.c a(epq var1);
+
+      boolean a();
    }
 }

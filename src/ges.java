@@ -1,33 +1,52 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+public class ges {
+   public static class a extends gdy {
+      private final fpj n;
 
-public class ges implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bef<ger> b;
-   private final bgu<Runnable> c;
+      protected a(fpj $$0, aqm $$1) {
+         super($$1, aqo.i, gep.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public ges(FileChannel $$0, Executor $$1) {
-      this.b = new bef<>(ger.a, $$0);
-      this.c = bgu.a($$1, "telemetry-event-log");
+      @Override
+      public void q() {
+         if (this.n.dG() || !this.n.bc()) {
+            this.n();
+         }
+      }
    }
 
-   public get a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
+   public static class b extends gdy {
+      public static final int n = 40;
+      private final fpj o;
+      private int p;
+
+      public b(fpj $$0) {
+         super(aqn.z, aqo.i, gep.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (!this.o.dG() && this.p >= 0) {
+            if (this.o.bc()) {
+               this.p++;
+            } else {
+               this.p -= 2;
             }
-         });
-   }
 
-   @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
+      }
    }
 }

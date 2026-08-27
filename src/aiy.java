@@ -1,47 +1,40 @@
-import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.logging.LogUtils;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
 public class aiy {
-   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.pardon.failed"));
 
-   public static void a(Collection<String> $$0, du $$1) {
-      $$1.m().a($$0).exceptionally($$1x -> {
-         a.warn("Failed to execute reload", $$1x);
-         $$1.b(ui.c("commands.reload.failure"));
-         return null;
-      });
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("pardon").requires($$0x -> $$0x.c(3)))
+            .then(
+               dv.a("targets", ei.a())
+                  .suggests(($$0x, $$1) -> dy.a(((du)$$0x.getSource()).m().ac().f().a(), $$1))
+                  .executes($$0x -> a((du)$$0x.getSource(), ei.a($$0x, "targets")))
+            )
+      );
    }
 
-   private static Collection<String> a(aoe $$0, ede $$1, Collection<String> $$2) {
-      $$0.a();
-      Collection<String> $$3 = Lists.newArrayList($$2);
-      Collection<String> $$4 = $$1.F().a().b();
+   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      apw $$2 = $$0.m().ac().f();
+      int $$3 = 0;
 
-      for (String $$5 : $$0.b()) {
-         if (!$$4.contains($$5) && !$$3.contains($$5)) {
-            $$3.add($$5);
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            $$2.c($$4);
+            $$3++;
+            $$0.a(() -> ur.a("commands.pardon.success", ur.b($$4.getName())), true);
          }
       }
 
-      return $$3;
-   }
-
-   public static void a(CommandDispatcher<du> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         du $$1 = (du)$$0x.getSource();
-         MinecraftServer $$2 = $$1.m();
-         aoe $$3 = $$2.aB();
-         ede $$4 = $$2.aT();
-         Collection<String> $$5 = $$3.d();
-         Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> ui.c("commands.reload.success"), true);
-         a($$6, $$1);
-         return 0;
-      }));
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         return $$3;
+      }
    }
 }

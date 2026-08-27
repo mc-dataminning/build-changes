@@ -1,31 +1,36 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public record ehh(edi.b c) implements ehk {
-   public static final Codec<ehh> a = RecordCodecBuilder.create($$0 -> $$0.group(edi.b.e.fieldOf("target").forGetter(ehh::c)).apply($$0, ehh::new));
-   public static final Codec<ehh> b = edi.b.e.xmap(ehh::new, ehh::c);
+public record ehh(ehk b) implements ehk {
+   public static final Codec<ehh> a = RecordCodecBuilder.create($$0 -> $$0.group(ehm.a.fieldOf("term").forGetter(ehh::c)).apply($$0, ehh::new));
 
-   public static ehk a(edi.b $$0) {
-      return new ehh($$0);
+   @Override
+   public ehl b() {
+      return ehm.b;
+   }
+
+   public boolean a(eel $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public ehj a() {
-      return ehl.c;
-   }
-
-   @Nullable
-   @Override
-   public String a(edi $$0) {
-      bjt $$1 = $$0.c(this.c.a());
-      return $$1 != null ? $$1.cx() : null;
+   public Set<egt<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public Set<efq<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   public void a(eeu $$0) {
+      ehk.super.a($$0);
+      this.b.a($$0);
+   }
+
+   public static ehk.a a(ehk.a $$0) {
+      ehh $$1 = new ehh($$0.build());
+      return () -> $$1;
+   }
+
+   public ehk c() {
+      return this.b;
    }
 }

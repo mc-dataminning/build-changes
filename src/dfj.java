@@ -1,72 +1,79 @@
-import javax.annotation.Nullable;
+public class dfj extends dfv {
+   public static final int c = 9;
+   private il<clb> d = il.a(9, clb.b);
 
-public class dfj extends ddx {
-   private final cqb a = new cqb() {
-      @Override
-      public void a(cqz $$0, ht $$1, int $$2) {
-         $$0.a($$1, cuc.ct, $$2, 0);
-      }
+   protected dfj(det<?> $$0, ht $$1, dgw $$2) {
+      super($$0, $$1, $$2);
+   }
 
-      @Override
-      public void a(@Nullable cqz $$0, ht $$1, crq $$2) {
-         super.a($$0, $$1, $$2);
-         if ($$0 != null) {
-            dgb $$3 = $$0.a_($$1);
-            $$0.a($$1, $$3, $$3, 4);
+   public dfj(ht $$0, dgw $$1) {
+      this(det.f, $$0, $$1);
+   }
+
+   @Override
+   public int b() {
+      return 9;
+   }
+
+   public int a(ato $$0) {
+      this.e(null);
+      int $$1 = -1;
+      int $$2 = 1;
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         if (!this.d.get($$3).b() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
          }
       }
-   };
 
-   public dfj(ht $$0, dgb $$1) {
-      super(ddz.j, $$0, $$1);
+      return $$1;
+   }
+
+   public int a(clb $$0) {
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         if (this.d.get($$1).b()) {
+            this.a($$1, $$0);
+            return $$1;
+         }
+      }
+
+      return -1;
    }
 
    @Override
-   public void a(rt $$0) {
+   protected ur g() {
+      return ur.c("container.dispenser");
+   }
+
+   @Override
+   public void a(rz $$0) {
       super.a($$0);
-      this.a.a(this.o, this.p, $$0);
+      this.d = il.a(this.b(), clb.b);
+      if (!this.d($$0)) {
+         bik.b($$0, this.d);
+      }
    }
 
    @Override
-   protected void b(rt $$0) {
+   protected void b(rz $$0) {
       super.b($$0);
-      this.a.a($$0);
-   }
-
-   public static void a(cqz $$0, ht $$1, dgb $$2, dfj $$3) {
-      $$3.a.a($$0, $$1);
-   }
-
-   public static void b(cqz $$0, ht $$1, dgb $$2, dfj $$3) {
-      $$3.a.a((alq)$$0, $$1);
-   }
-
-   public yb c() {
-      return yb.a(this);
+      if (!this.e($$0)) {
+         bik.a($$0, this.d);
+      }
    }
 
    @Override
-   public rt av_() {
-      rt $$0 = this.o();
-      $$0.r("SpawnPotentials");
-      return $$0;
+   protected il<clb> f() {
+      return this.d;
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      return this.a.a(this.o, $$0) ? true : super.a_($$0, $$1);
+   protected void a(il<clb> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public boolean t() {
-      return true;
-   }
-
-   public void a(bjx<?> $$0, ate $$1) {
-      this.a.a($$0, this.o, $$1, this.p);
-   }
-
-   public cqb d() {
-      return this.a;
+   protected cge a(int $$0, cdl $$1) {
+      return new cgx($$0, $$1, this);
    }
 }

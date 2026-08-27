@@ -1,30 +1,46 @@
-import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class brs extends bre {
-   private final bks a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class brs extends brt {
+   public static final int a = 8;
+   public static final int b = 4;
+   public static final int c = 3;
+   private final bwj d;
+   @Nullable
+   private bwj e;
+   private final double f;
+   private int g;
 
-   public brs(bks $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(bre.a.a));
+   public brs(bwj $$0, double $$1) {
+      this.d = $$0;
+      this.f = $$1;
    }
 
    @Override
    public boolean a() {
-      if (this.a.fM()) {
+      if (this.d.h() >= 0) {
          return false;
       } else {
-         eif $$0 = buz.a(this.a, 16, 7, eif.c(this.a.fN()), (float) (Math.PI / 2));
-         if ($$0 == null) {
+         List<? extends bwj> $$0 = this.d.dL().a((Class<? extends bwj>)this.d.getClass(), this.d.cG().c(8.0, 4.0, 8.0));
+         bwj $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (bwj $$3 : $$0) {
+            if ($$3.h() >= 0) {
+               double $$4 = this.d.f($$3);
+               if (!($$4 > $$2)) {
+                  $$2 = $$4;
+                  $$1 = $$3;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 9.0) {
             return false;
          } else {
-            this.b = $$0.c;
-            this.c = $$0.d;
-            this.d = $$0.e;
+            this.e = $$1;
             return true;
          }
       }
@@ -32,11 +48,31 @@ public class brs extends bre {
 
    @Override
    public boolean b() {
-      return !this.a.L().l();
+      if (this.d.h() >= 0) {
+         return false;
+      } else if (!this.e.bv()) {
+         return false;
+      } else {
+         double $$0 = this.d.f(this.e);
+         return !($$0 < 9.0) && !($$0 > 256.0);
+      }
    }
 
    @Override
    public void c() {
-      this.a.L().a(this.b, this.c, this.d, this.e);
+      this.g = 0;
+   }
+
+   @Override
+   public void d() {
+      this.e = null;
+   }
+
+   @Override
+   public void e() {
+      if (--this.g <= 0) {
+         this.g = this.a(10);
+         this.d.L().a(this.e, this.f);
+      }
    }
 }

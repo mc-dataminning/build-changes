@@ -1,47 +1,109 @@
-public class fby {
-   public static final int a = 12;
-   private static final int f = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int g = -267386864;
-   private static final int h = 1347420415;
-   private static final int i = 1344798847;
+import com.google.common.collect.Ordering;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
-   public static void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$1 - 3;
-      int $$7 = $$2 - 3;
-      int $$8 = $$3 + 3 + 3;
-      int $$9 = $$4 + 3 + 3;
-      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
-      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
-      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
-      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
-      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
-      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
+public abstract class fby<T extends cge> extends fbg<T> {
+   private static final agg x = new agg("container/inventory/effect_background_large");
+   private static final agg y = new agg("container/inventory/effect_background_small");
+
+   public fby(T $$0, cdl $$1, ur $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
-      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
-      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
-      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2);
    }
 
-   private static void b(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
+   @Override
+   public boolean G() {
+      int $$0 = this.t + this.c + 2;
+      int $$1 = this.g - $$0;
+      return $$1 >= 32;
    }
 
-   private static void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
+   private void c(eub $$0, int $$1, int $$2) {
+      int $$3 = this.t + this.c + 2;
+      int $$4 = this.g - $$3;
+      Collection<bjv> $$5 = this.f.s.er();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
+         }
+
+         Iterable<bjv> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.u;
+            bjv $$10 = null;
+
+            for (bjv $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
+               }
+
+               $$9 += $$7;
+            }
+
+            if ($$10 != null) {
+               List<ur> $$12 = List.of(this.a($$10), bjw.a($$10, 1.0F));
+               $$0.a(this.i, $$12, Optional.empty(), $$1, $$2);
+            }
+         }
+      }
    }
 
-   private static void c(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
+   private void a(eub $$0, int $$1, int $$2, Iterable<bjv> $$3, boolean $$4) {
+      int $$5 = this.u;
+
+      for (bjv $$6 : $$3) {
+         if ($$4) {
+            $$0.a(x, $$1, $$5, 120, 32);
+         } else {
+            $$0.a(y, $$1, $$5, 32, 32);
+         }
+
+         $$5 += $$2;
+      }
    }
 
-   private static void b(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
+   private void b(eub $$0, int $$1, int $$2, Iterable<bjv> $$3, boolean $$4) {
+      gcf $$5 = this.f.aD();
+      int $$6 = this.u;
+
+      for (bjv $$7 : $$3) {
+         bjt $$8 = $$7.c();
+         gbh $$9 = $$5.a($$8);
+         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
+         $$6 += $$2;
+      }
+   }
+
+   private void a(eub $$0, int $$1, int $$2, Iterable<bjv> $$3) {
+      int $$4 = this.u;
+
+      for (bjv $$5 : $$3) {
+         ur $$6 = this.a($$5);
+         $$0.b(this.i, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         ur $$7 = bjw.a($$5, 1.0F);
+         $$0.b(this.i, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private ur a(bjv $$0) {
+      vf $$1 = $$0.c().e().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(uq.u).b(ur.c("enchantment.level." + ($$0.e() + 1)));
+      }
+
+      return $$1;
    }
 }

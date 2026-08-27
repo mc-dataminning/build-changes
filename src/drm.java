@@ -1,43 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class drm implements dqs {
+public class drm implements drn {
    public static final Codec<drm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
-               dpy.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
-               ht.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, drm::new)
+      $$0 -> $$0.group(ht.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, drm::new)
    );
-   private final boolean b;
-   private final List<dpy.a> c;
-   @Nullable
-   private final ht d;
+   private final Optional<ht> b;
+   private final boolean c;
 
-   public drm(boolean $$0, List<dpy.a> $$1, @Nullable ht $$2) {
-      this($$0, $$1, Optional.ofNullable($$2));
-   }
-
-   private drm(boolean $$0, List<dpy.a> $$1, Optional<ht> $$2) {
+   private drm(Optional<ht> $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.orElse(null);
    }
 
-   public boolean a() {
+   public static drm a(ht $$0, boolean $$1) {
+      return new drm(Optional.of($$0), $$1);
+   }
+
+   public static drm a() {
+      return new drm(Optional.empty(), false);
+   }
+
+   public Optional<ht> b() {
       return this.b;
    }
 
-   public List<dpy.a> b() {
+   public boolean c() {
       return this.c;
-   }
-
-   @Nullable
-   public ht c() {
-      return this.d;
    }
 }

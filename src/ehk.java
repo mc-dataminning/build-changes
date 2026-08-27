@@ -1,11 +1,22 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public interface ehk {
-   @Nullable
-   String a(edi var1);
+public interface ehk extends eem, Predicate<eel> {
+   ehl b();
 
-   ehj a();
+   @FunctionalInterface
+   public interface a {
+      ehk build();
 
-   Set<efq<?>> b();
+      default ehk.a invert() {
+         return ehh.a(this);
+      }
+
+      default egz.a or(ehk.a $$0) {
+         return egz.a(this, $$0);
+      }
+
+      default egy.a and(ehk.a $$0) {
+         return egy.a(this, $$0);
+      }
+   }
 }

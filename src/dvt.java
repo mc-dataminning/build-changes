@@ -1,25 +1,65 @@
-public interface dvt {
-   afv<dwg> a = a("villages");
-   afv<dwg> b = a("desert_pyramids");
-   afv<dwg> c = a("igloos");
-   afv<dwg> d = a("jungle_temples");
-   afv<dwg> e = a("swamp_huts");
-   afv<dwg> f = a("pillager_outposts");
-   afv<dwg> g = a("ocean_monuments");
-   afv<dwg> h = a("woodland_mansions");
-   afv<dwg> i = a("buried_treasures");
-   afv<dwg> j = a("mineshafts");
-   afv<dwg> k = a("ruined_portals");
-   afv<dwg> l = a("shipwrecks");
-   afv<dwg> m = a("ocean_ruins");
-   afv<dwg> n = a("nether_complexes");
-   afv<dwg> o = a("nether_fossils");
-   afv<dwg> p = a("end_cities");
-   afv<dwg> q = a("ancient_cities");
-   afv<dwg> r = a("strongholds");
-   afv<dwg> s = a("trail_ruins");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   private static afv<dwg> a(String $$0) {
-      return afv.a(jz.aC, new afw($$0));
+public class dvt extends dwc {
+   private final hx c;
+   private final dnm d;
+   private final dnm e;
+   private final int f;
+   public static final Codec<dvt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               hx.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
+               dnm.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
+               dnm.b.optionalFieldOf("allowed_search_condition", dnm.e()).forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dvt::new)
+   );
+
+   private dvt(hx $$0, dnm $$1, dnm $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public static dvt a(hx $$0, dnm $$1, dnm $$2, int $$3) {
+      return new dvt($$0, $$1, $$2, $$3);
+   }
+
+   public static dvt a(hx $$0, dnm $$1, int $$2) {
+      return a($$0, $$1, dnm.e(), $$2);
+   }
+
+   @Override
+   public Stream<ht> a_(dwa $$0, ato $$1, ht $$2) {
+      ht.a $$3 = $$2.j();
+      csm $$4 = $$0.d();
+      if (!this.e.test($$4, $$3)) {
+         return Stream.of();
+      } else {
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            if (this.d.test($$4, $$3)) {
+               return Stream.of($$3);
+            }
+
+            $$3.c(this.c);
+            if ($$4.d($$3.v())) {
+               return Stream.of();
+            }
+
+            if (!this.e.test($$4, $$3)) {
+               break;
+            }
+         }
+
+         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+      }
+   }
+
+   @Override
+   public dwd<?> b() {
+      return dwd.j;
    }
 }

@@ -1,75 +1,52 @@
-import java.util.Arrays;
-import java.util.Collection;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import java.nio.charset.StandardCharsets;
 
 public class uh {
-   public static final ui a = ui.i();
-   public static final ui b = ui.c("options.on");
-   public static final ui c = ui.c("options.off");
-   public static final ui d = ui.c("gui.done");
-   public static final ui e = ui.c("gui.cancel");
-   public static final ui f = ui.c("gui.yes");
-   public static final ui g = ui.c("gui.no");
-   public static final ui h = ui.c("gui.ok");
-   public static final ui i = ui.c("gui.proceed");
-   public static final ui j = ui.c("gui.continue");
-   public static final ui k = ui.c("gui.back");
-   public static final ui l = ui.c("gui.toTitle");
-   public static final ui m = ui.c("gui.acknowledge");
-   public static final ui n = ui.c("chat.link.open");
-   public static final ui o = ui.c("gui.copy_link_to_clipboard");
-   public static final ui p = ui.c("menu.disconnect");
-   public static final ui q = ui.c("connect.failed");
-   public static final ui r = ui.b("\n");
-   public static final ui s = ui.b(". ");
-   public static final ui t = ui.b("...");
-   public static final ui u = a();
-
-   public static uw a() {
-      return ui.b(" ");
-   }
-
-   public static uw a(long $$0) {
-      return ui.a("gui.days", $$0);
-   }
-
-   public static uw b(long $$0) {
-      return ui.a("gui.hours", $$0);
-   }
-
-   public static uw c(long $$0) {
-      return ui.a("gui.minutes", $$0);
-   }
-
-   public static ui a(boolean $$0) {
-      return $$0 ? b : c;
-   }
-
-   public static uw a(ui $$0, boolean $$1) {
-      return ui.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
-   }
-
-   public static uw a(ui $$0, ui $$1) {
-      return ui.a("options.generic_value", $$0, $$1);
-   }
-
-   public static uw a(ui... $$0) {
-      uw $$1 = ui.i();
-
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(s);
+   public static String a(ByteBuf $$0, int $$1) {
+      int $$2 = ByteBufUtil.utf8MaxBytes($$1);
+      int $$3 = ui.a($$0);
+      if ($$3 > $$2) {
+         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + $$3 + " > " + $$2 + ")");
+      } else if ($$3 < 0) {
+         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
+      } else {
+         int $$4 = $$0.readableBytes();
+         if ($$3 > $$4) {
+            throw new DecoderException("Not enough bytes in buffer, expected " + $$3 + ", but got " + $$4);
+         } else {
+            String $$5 = $$0.toString($$0.readerIndex(), $$3, StandardCharsets.UTF_8);
+            $$0.readerIndex($$0.readerIndex() + $$3);
+            if ($$5.length() > $$1) {
+               throw new DecoderException("The received string length is longer than maximum allowed (" + $$5.length() + " > " + $$1 + ")");
+            } else {
+               return $$5;
+            }
          }
       }
-
-      return $$1;
    }
 
-   public static ui b(ui... $$0) {
-      return a(Arrays.asList($$0));
-   }
+   public static void a(ByteBuf $$0, CharSequence $$1, int $$2) {
+      if ($$1.length() > $$2) {
+         throw new EncoderException("String too big (was " + $$1.length() + " characters, max " + $$2 + ")");
+      } else {
+         int $$3 = ByteBufUtil.utf8MaxBytes($$1);
+         ByteBuf $$4 = $$0.alloc().buffer($$3);
 
-   public static ui a(Collection<? extends ui> $$0) {
-      return ul.a($$0, r);
+         try {
+            int $$5 = ByteBufUtil.writeUtf8($$4, $$1);
+            int $$6 = ByteBufUtil.utf8MaxBytes($$2);
+            if ($$5 > $$6) {
+               throw new EncoderException("String too big (was " + $$5 + " bytes encoded, max " + $$6 + ")");
+            }
+
+            ui.a($$0, $$5);
+            $$0.writeBytes($$4);
+         } finally {
+            $$4.release();
+         }
+      }
    }
 }

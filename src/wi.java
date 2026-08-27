@@ -1,24 +1,15 @@
-public class wi implements wb<we> {
-   private final int a;
+public abstract class wi<T extends ua> implements wk<T> {
+   private final Iterable<wk<T>> a;
 
-   public wi(int $$0) {
+   protected wi(Iterable<wk<T>> $$0) {
       this.a = $$0;
    }
 
-   public wi(tl $$0) {
-      this.a = $$0.readInt();
+   public final Iterable<wk<T>> a() {
+      return this.a;
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.p(this.a);
-   }
-
-   public void a(we $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
+   public final void a(tu $$0) {
    }
 }

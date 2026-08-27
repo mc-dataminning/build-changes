@@ -1,18 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dpl extends doo<drd> {
-   public dpl(Codec<drd> $$0) {
-      super($$0);
+public class dpl<FC extends drn> {
+   private final Optional<dow<?, ?>> a;
+   private final csm b;
+   private final dit c;
+   private final ato d;
+   private final ht e;
+   private final FC f;
+
+   public dpl(Optional<dow<?, ?>> $$0, csm $$1, dit $$2, ato $$3, ht $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(doq<drd> $$0) {
-      ate $$1 = $$0.d();
-      drd $$2 = $$0.f();
-      crt $$3 = $$0.b();
-      dhy $$4 = $$0.c();
-      ht $$5 = $$0.e();
-      boolean $$6 = $$1.h();
-      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
+   public Optional<dow<?, ?>> a() {
+      return this.a;
+   }
+
+   public csm b() {
+      return this.b;
+   }
+
+   public dit c() {
+      return this.c;
+   }
+
+   public ato d() {
+      return this.d;
+   }
+
+   public ht e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

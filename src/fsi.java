@@ -1,29 +1,50 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
+@FunctionalInterface
+public interface fsi<T extends der> {
+   fsh<T> create(fsi.a var1);
 
-public class fsi implements fsj.a {
-   private final ero a;
-   private double b = Double.MIN_VALUE;
-   private List<eiy> c = Collections.emptyList();
+   public static class a {
+      private final fsg a;
+      private final frb b;
+      private final fwi c;
+      private final fvi d;
+      private final fjx e;
+      private final etz f;
 
-   public fsi(ero $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(emh $$0, fpb $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bjt $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dL().d($$6, $$6.cG().g(6.0)));
+      public a(fsg $$0, frb $$1, fwi $$2, fvi $$3, fjx $$4, etz $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
       }
 
-      eml $$7 = $$1.getBuffer(fpj.x());
+      public fsg a() {
+         return this.a;
+      }
 
-      for (eiy $$8 : this.c) {
-         foz.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      public frb b() {
+         return this.b;
+      }
+
+      public fvi c() {
+         return this.d;
+      }
+
+      public fwi d() {
+         return this.c;
+      }
+
+      public fjx e() {
+         return this.e;
+      }
+
+      public fkb a(fjz $$0) {
+         return this.e.a($$0);
+      }
+
+      public etz f() {
+         return this.f;
       }
    }
 }

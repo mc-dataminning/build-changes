@@ -1,124 +1,151 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dbh extends cua {
+public class dbh extends cut implements dbt {
    public static final MapCodec<dbh> a = b(dbh::new);
-   public static final int b = 8;
-   public static final dhb c = dgr.aF;
-   protected static final eiy[] d = new eiy[]{
-      eiv.a(),
-      cua.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      cua.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      cua.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      cua.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      cua.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      cua.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      cua.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      cua.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+   private static final int f = 1;
+   private static final ekb g;
+   private static final ekb h;
+   private static final ekb i = cut.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   private static final ekb j = ejy.b().a(0.0, -1.0, 0.0);
+   public static final int b = 7;
+   public static final dhw c = dhm.aW;
+   public static final dhn d = dhm.C;
+   public static final dhn e = dhm.b;
 
    @Override
    public MapCodec<dbh> a() {
       return a;
    }
 
-   protected dbh(dga.d $$0) {
+   protected dbh(dgv.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(1)));
+      this.k(this.E.b().a(c, Integer.valueOf(7)).a(d, Boolean.valueOf(false)).a(e, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
-      switch ($$3) {
-         case a:
-            return $$0.c(c) < 5;
-         case b:
-            return false;
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(c, d, e);
    }
 
    @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   public eiy c(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return d[$$0.c(c) - 1];
-   }
-
-   @Override
-   public eiy b_(dgb $$0, cqf $$1, ht $$2) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   public eiy b(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   public boolean g_(dgb $$0) {
-      return true;
-   }
-
-   @Override
-   public float b(dgb $$0, cqf $$1, ht $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
-   }
-
-   @Override
-   public boolean a(dgb $$0, crc $$1, ht $$2) {
-      dgb $$3 = $$1.a_($$2.d());
-      if ($$3.a(aqs.cg)) {
-         return false;
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      if (!$$3.a($$0.b().k())) {
+         return $$0.c(e) ? h : g;
       } else {
-         return $$3.a(aqs.ch) ? true : cua.a($$3.k($$1, $$2.d()), hx.b) || $$3.a(this) && $$3.c(c) == 8;
+         return ejy.b();
       }
    }
 
    @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      return !$$0.a($$3, $$4) ? cuc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ekb a(dgw $$0, cqy $$1, ht $$2) {
+      return ejy.b();
    }
 
    @Override
-   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if ($$1.a(cri.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
+   public boolean a(dgw $$0, cnj $$1) {
+      return $$1.n().a(this.k());
+   }
+
+   @Override
+   public dgw a(cnj $$0) {
+      ht $$1 = $$0.a();
+      crs $$2 = $$0.q();
+      int $$3 = a($$2, $$1);
+      return this.o().a(d, Boolean.valueOf($$2.b_($$1).a() == ech.c)).a(c, Integer.valueOf($$3)).a(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
+   }
+
+   @Override
+   public void b(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
+      if (!$$1.B) {
+         $$1.a($$2, this, 1);
       }
    }
 
    @Override
-   public boolean a(dgb $$0, cmr $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.k()) || $$2 >= 8) {
-         return $$2 == 1;
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, ech.c, ech.c.a($$3));
+      }
+
+      if (!$$3.x_()) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      int $$4 = a($$1, $$2);
+      dgw $$5 = $$0.a(c, Integer.valueOf($$4)).a(e, Boolean.valueOf(this.a($$1, $$2, $$4)));
+      if ($$5.c(c) == 7) {
+         if ($$0.c(c) == 7) {
+            cae.a($$1, $$2, $$5);
+         } else {
+            $$1.b($$2, true);
+         }
+      } else if ($$0 != $$5) {
+         $$1.a($$2, $$5, 3);
+      }
+   }
+
+   @Override
+   public boolean a(dgw $$0, crv $$1, ht $$2) {
+      return a($$1, $$2) < 7;
+   }
+
+   @Override
+   public ekb c(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      if ($$3.a(ejy.b(), $$2, true) && !$$3.b()) {
+         return g;
       } else {
-         return $$1.c() ? $$1.k() == hx.b : true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dgb a(cmr $$0) {
-      dgb $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
+         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(j, $$2, true) ? i : ejy.a();
       }
    }
 
    @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(c);
+   public ecg c_(dgw $$0) {
+      return $$0.c(d) ? ech.c.a(false) : super.c_($$0);
+   }
+
+   private boolean a(cqy $$0, ht $$1, int $$2) {
+      return $$2 > 0 && !$$0.a_($$1.d()).a(this);
+   }
+
+   public static int a(cqy $$0, ht $$1) {
+      ht.a $$2 = $$1.j().c(hx.a);
+      dgw $$3 = $$0.a_($$2);
+      int $$4 = 7;
+      if ($$3.a(cuv.nS)) {
+         $$4 = $$3.c(c);
+      } else if ($$3.d($$0, $$2, hx.b)) {
+         return 0;
+      }
+
+      for (hx $$5 : hx.c.a) {
+         dgw $$6 = $$0.a_($$2.a($$1, $$5));
+         if ($$6.a(cuv.nS)) {
+            $$4 = Math.min($$4, $$6.c(c) + 1);
+            if ($$4 == 1) {
+               break;
+            }
+         }
+      }
+
+      return $$4;
+   }
+
+   static {
+      ekb $$0 = cut.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
+      ekb $$1 = cut.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
+      ekb $$2 = cut.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
+      ekb $$3 = cut.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
+      ekb $$4 = cut.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
+      g = ejy.a($$0, $$1, $$2, $$3, $$4);
+      ekb $$5 = cut.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
+      ekb $$6 = cut.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+      ekb $$7 = cut.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
+      ekb $$8 = cut.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
+      h = ejy.a(dbh.i, g, $$6, $$5, $$8, $$7);
    }
 }

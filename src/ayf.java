@@ -1,37 +1,26 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
 
-public abstract class ayf extends DataFix {
-   private final String a;
+public class ayf extends ayv {
+   private static final String[] a = new String[]{
+      "minecraft:ponder_goat_horn",
+      "minecraft:sing_goat_horn",
+      "minecraft:seek_goat_horn",
+      "minecraft:feel_goat_horn",
+      "minecraft:admire_goat_horn",
+      "minecraft:call_goat_horn",
+      "minecraft:yearn_goat_horn",
+      "minecraft:dream_goat_horn"
+   };
 
-   public ayf(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public ayf(Schema $$0) {
+      super($$0, "GoatHornIdFix", $$0x -> $$0x.equals("minecraft:goat_horn"));
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(baa.z.typeName(), bbi.a());
-      if (!Objects.equals(this.getInputSchema().getType(baa.z), $$0)) {
-         throw new IllegalStateException("item name type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-      }
-   }
-
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new ayf($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      int $$1 = $$0.get("SoundVariant").asInt(0);
+      String $$2 = a[$$1 >= 0 && $$1 < a.length ? $$1 : 0];
+      return $$0.remove("SoundVariant").set("instrument", $$0.createString($$2));
    }
 }

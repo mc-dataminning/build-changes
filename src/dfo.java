@@ -1,15 +1,23 @@
-public class dfo extends dee {
-   public dfo(ht $$0, dgb $$1) {
-      super(ddz.c, $$0, $$1);
+public class dfo extends dga {
+   private static final int a = 60;
+   private static final int b = 9;
+
+   public dfo(ht $$0, dgw $$1) {
+      super(det.i, $$0, $$1);
    }
 
    @Override
-   protected void a(cqz $$0, ht $$1, dgb $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 != $$4) {
-         cua $$5 = $$2.b();
-         $$0.a($$1, $$5);
-         $$0.a($$1.d(), $$5);
-      }
+   public int c() {
+      return 9;
+   }
+
+   @Override
+   public int d() {
+      return 60;
+   }
+
+   @Override
+   public aqm f() {
+      return aqn.zT;
    }
 }

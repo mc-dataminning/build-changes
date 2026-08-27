@@ -1,27 +1,23 @@
-public class fwf extends fvj<cau, fhv<cau>> {
-   private static final afw a = new afw("textures/entity/slime/slime.png");
+public class fwf extends fwq<bwv, fhr<bwv>> {
+   private static final agg a = new agg("textures/entity/iron_golem/iron_golem.png");
 
-   public fwf(fud.a $$0) {
-      super($$0, new fhv<>($$0.a(fiv.bm)), 0.25F);
-      this.a(new fyp<>(this, $$0.f()));
+   public fwf(fvk.a $$0) {
+      super($$0, new fhr<>($$0.a(fka.ap)), 0.7F);
+      this.a(new fzj(this));
+      this.a(new fzk(this, $$0.c()));
    }
 
-   public void a(cau $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gf();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(cau $$0, emh $$1, float $$2) {
-      float $$3 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$4 = (float)$$0.gf();
-      float $$5 = asy.i($$2, $$0.bS, $$0.e) / ($$4 * 0.5F + 1.0F);
-      float $$6 = 1.0F / ($$5 + 1.0F);
-      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
-   }
-
-   public afw a(cau $$0) {
+   public agg a(bwv $$0) {
       return a;
+   }
+
+   protected void a(bwv $$0, enk $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if (!((double)$$0.aQ.a() < 0.01)) {
+         float $$5 = 13.0F;
+         float $$6 = $$0.aQ.c($$4) + 6.0F;
+         float $$7 = (Math.abs($$6 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$7));
+      }
    }
 }

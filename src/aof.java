@@ -1,33 +1,27 @@
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface aof {
-   UnaryOperator<ui> a = UnaryOperator.identity();
-   aof b = a(a, true);
-   aof c = a(a("pack.source.builtin"), true);
-   aof d = a(a("pack.source.feature"), false);
-   aof e = a(a("pack.source.world"), true);
-   aof f = a(a("pack.source.server"), true);
+public record aof(ur c, int d, Optional<ata<Integer>> e) {
+   public static final Codec<aof> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ut.a.fieldOf("description").forGetter(aof::a),
+               Codec.INT.fieldOf("pack_format").forGetter(aof::b),
+               ata.a(Codec.INT).optionalFieldOf("supported_formats").forGetter(aof::c)
+            )
+            .apply($$0, aof::new)
+   );
+   public static final aoe<aof> b = aoe.a("pack", a);
 
-   ui a(ui var1);
-
-   boolean a();
-
-   static aof a(final UnaryOperator<ui> $$0, final boolean $$1) {
-      return new aof() {
-         @Override
-         public ui a(ui $$0x) {
-            return $$0.apply($$0);
-         }
-
-         @Override
-         public boolean a() {
-            return $$1;
-         }
-      };
+   public ur a() {
+      return this.c;
    }
 
-   private static UnaryOperator<ui> a(String $$0) {
-      ui $$1 = ui.c($$0);
-      return $$1x -> ui.a("pack.nameAndSource", $$1x, $$1).a(n.h);
+   public int b() {
+      return this.d;
+   }
+
+   public Optional<ata<Integer>> c() {
+      return this.e;
    }
 }

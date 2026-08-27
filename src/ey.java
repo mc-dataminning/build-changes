@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class ey implements ArgumentType<eja> {
+public class ey implements ArgumentType<ekd> {
    private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ui.b("argument.scoreboardDisplaySlot.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ur.b("argument.scoreboardDisplaySlot.invalid", $$0));
 
    private ey() {
    }
@@ -20,13 +20,13 @@ public class ey implements ArgumentType<eja> {
       return new ey();
    }
 
-   public static eja a(CommandContext<du> $$0, String $$1) {
-      return (eja)$$0.getArgument($$1, eja.class);
+   public static ekd a(CommandContext<du> $$0, String $$1) {
+      return (ekd)$$0.getArgument($$1, ekd.class);
    }
 
-   public eja a(StringReader $$0) throws CommandSyntaxException {
+   public ekd a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      eja $$2 = eja.t.a($$1);
+      ekd $$2 = ekd.t.a($$1);
       if ($$2 == null) {
          throw a.create($$1);
       } else {
@@ -35,7 +35,7 @@ public class ey implements ArgumentType<eja> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dy.b(Arrays.stream(eja.values()).map(eja::c), $$1);
+      return dy.b(Arrays.stream(ekd.values()).map(ekd::c), $$1);
    }
 
    public Collection<String> getExamples() {

@@ -1,3 +1,8 @@
-public interface get {
-   void log(ger var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface get {
 }

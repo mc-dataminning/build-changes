@@ -1,21 +1,35 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public class bxe extends bwi {
+   public bxe(bkm<? extends bxe> $$0, crs $$1) {
+      super($$0, $$1);
+   }
 
-public class bxe {
-   public static bmb<bkj> a() {
-      return bpm.a(
-         (Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$0 -> $$0.group($$0.b(btk.M), $$0.a(btk.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.dN().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+   @Override
+   public int gg() {
+      return 5;
+   }
 
-                  return true;
-               }))
-      );
+   @Override
+   public clb b() {
+      return new clb(cle.pS);
+   }
+
+   @Override
+   protected aqm w() {
+      return aqn.tW;
+   }
+
+   @Override
+   protected aqm m_() {
+      return aqn.tX;
+   }
+
+   @Override
+   protected aqm d(bjg $$0) {
+      return aqn.tZ;
+   }
+
+   @Override
+   protected aqm gf() {
+      return aqn.tY;
    }
 }

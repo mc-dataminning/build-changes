@@ -1,12 +1,46 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public record gbr(gbs d) {
-   public static final gbr a = new gbr(gbs.b);
-   public static final Codec<gbr> b = RecordCodecBuilder.create($$0 -> $$0.group(asg.a(gbs.a, "scaling", gbs.b).forGetter(gbr::a)).apply($$0, gbr::new));
-   public static final anu<gbr> c = anu.a("gui", b);
+public class gbr {
+   private final agg a;
+   private final apb b;
+   private final AtomicReference<eml> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   public gbs a() {
-      return this.d;
+   public gbr(agg $$0, apb $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
+   }
+
+   public eml a() throws IOException {
+      eml $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = eml.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         eml $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

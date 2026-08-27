@@ -1,218 +1,54 @@
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class ews extends ewo {
-   private final List<ewv> c = new ArrayList<>();
-   private final List<ews.a> d = new ArrayList<>();
-   private final eww e = eww.i();
-   private int f = 0;
-   private int g = 0;
+public class ews implements ewu {
+   private static final agg a = new agg("toast/recipe");
+   private static final long d = 5000L;
+   private static final ur e = ur.c("recipe.toast.title");
+   private static final ur f = ur.c("recipe.toast.description");
+   private final List<coh<?>> g = Lists.newArrayList();
+   private long h;
+   private boolean i;
 
-   public ews() {
-      this(0, 0);
-   }
-
-   public ews(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
+   public ews(coh<?> $$0) {
+      this.g.add($$0);
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = 0;
-      int $$1 = 0;
-
-      for (ews.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
+   public ewu.a a(eub $$0, ewv $$1, long $$2) {
+      if (this.i) {
+         this.h = $$2;
+         this.i = false;
       }
 
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
-
-      for (ews.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
-
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
-         }
-
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
-
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
-         }
-      }
-
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
-      }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (ews.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
-         }
-
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.p() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.r() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
-   }
-
-   public <T extends ewv> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
-   }
-
-   public <T extends ewv> T a(T $$0, int $$1, int $$2, eww $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
-   }
-
-   public <T extends ewv> T a(T $$0, int $$1, int $$2, Consumer<eww> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
-   }
-
-   public <T extends ewv> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends ewv> T a(T $$0, int $$1, int $$2, int $$3, int $$4, eww $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
+      if (this.g.isEmpty()) {
+         return ewu.a.b;
       } else {
-         this.d.add(new ews.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
+         $$0.a(a, 0, 0, this.a(), this.b());
+         $$0.a($$1.b().h, e, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, f, 30, 18, -16777216, false);
+         coh<?> $$3 = this.g.get((int)((double)$$2 / Math.max(1.0, 5000.0 * $$1.c() / (double)this.g.size()) % (double)this.g.size()));
+         clb $$4 = $$3.b().g();
+         $$0.c().a();
+         $$0.c().b(0.6F, 0.6F, 1.0F);
+         $$0.b($$4, 3, 3);
+         $$0.c().b();
+         $$0.b($$3.b().a($$1.b().r.H_()), 8, 8);
+         return (double)($$2 - this.h) >= 5000.0 * $$1.c() ? ewu.a.b : ewu.a.a;
       }
    }
 
-   public <T extends ewv> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<eww> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
+   private void a(coh<?> $$0) {
+      this.g.add($$0);
+      this.i = true;
    }
 
-   public ews a(int $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public ews b(int $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public ews c(int $$0) {
-      return this.a($$0).b($$0);
-   }
-
-   @Override
-   public void b(Consumer<ewv> $$0) {
-      this.c.forEach($$0);
-   }
-
-   public eww b() {
-      return this.e.g();
-   }
-
-   public eww c() {
-      return this.e;
-   }
-
-   public ews.b d(int $$0) {
-      return new ews.b($$0);
-   }
-
-   static class a extends ewo.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(ewv $$0, int $$1, int $$2, int $$3, int $$4, eww $$5) {
-         super($$0, $$5.h());
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-      }
-
-      public int c() {
-         return this.c + this.e - 1;
-      }
-
-      public int d() {
-         return this.d + this.f - 1;
-      }
-   }
-
-   public final class b {
-      private final int b;
-      private int c;
-
-      b(int $$1) {
-         this.b = $$1;
-      }
-
-      public <T extends ewv> T a(T $$0) {
-         return this.a($$0, 1);
-      }
-
-      public <T extends ewv> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
-      }
-
-      public <T extends ewv> T a(T $$0, eww $$1) {
-         return this.a($$0, 1, $$1);
-      }
-
-      public <T extends ewv> T a(T $$0, int $$1, eww $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = asy.d(this.c, this.b);
-         }
-
-         this.c += $$1;
-         return ews.this.a($$0, $$3, $$4, 1, $$1, $$2);
-      }
-
-      public ews a() {
-         return ews.this;
-      }
-
-      public eww b() {
-         return ews.this.b();
-      }
-
-      public eww c() {
-         return ews.this.c();
+   public static void a(ewv $$0, coh<?> $$1) {
+      ews $$2 = $$0.a(ews.class, b);
+      if ($$2 == null) {
+         $$0.a(new ews($$1));
+      } else {
+         $$2.a($$1);
       }
    }
 }

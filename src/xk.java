@@ -1,22 +1,31 @@
-public record xk(ht b, float c, float d, float e, float f, float g) implements wu {
-   public static final afw a = new afw("debug/worldgen_attempt");
+public record xk(xk.a b) implements xd {
+   public static final agg a = new agg("debug/hive");
 
-   public xk(tl $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   public xk(tu $$0) {
+      this(new xk.a($$0));
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   public void a(tu $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public afw a() {
+   public agg a() {
       return a;
+   }
+
+   public static record a(ht a, String b, int c, int d, boolean e) {
+      public a(tu $$0) {
+         this($$0.e(), $$0.s(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(tu $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
    }
 }

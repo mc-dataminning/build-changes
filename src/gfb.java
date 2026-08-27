@@ -1,74 +1,63 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
-import org.slf4j.Logger;
 
-public class gfb {
-   public static final gfb a = new gfb(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<gex<gfb.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public class gfb implements ape {
+   public static final gfb.a<clb> a = new gfb.a<>();
+   public static final gfb.a<clb> b = new gfb.a<>();
+   public static final gfb.a<fdz> c = new gfb.a<>();
+   private final Map<gfb.a<?>, gfb.c<?>> d = new HashMap<>();
 
-   protected gfb(Ticker $$0) {
-      this.c = $$0;
-   }
-
-   public synchronized void a(gex<gfb.a> $$0) {
-      this.a($$0, (Function<gex<gfb.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
-
-   public synchronized void a(gex<gfb.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<gex<gfb.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(gex<gfb.a> $$0, Function<gex<gfb.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(gex<gfb.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
+   @Override
+   public void a(apd $$0) {
+      for (gfb.c<?> $$1 : this.d.values()) {
+         $$1.a();
       }
    }
 
-   public void a(geu $$0) {
-      $$0.send(gev.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((gex<gfb.a>)$$1, new gfb.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gev.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(gex.B, new gfb.a((int)$$1)));
-            this.d.clear();
-         }
-      });
+   public <T> void a(gfb.a<T> $$0, gfb.b<T> $$1) {
+      this.d.put($$0, new gfb.c<>($$1));
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
+   private <T> gfb.c<T> b(gfb.a<T> $$0) {
+      gfb.c<T> $$1 = (gfb.c<T>)this.d.get($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tree builder not registered");
+      } else {
+         return $$1;
+      }
    }
 
-   public static record a(int b) {
-      public static final Codec<gfb.a> a = Codec.INT.xmap(gfb.a::new, $$0 -> $$0.b);
+   public <T> void a(gfb.a<T> $$0, List<T> $$1) {
+      this.b($$0).a($$1);
+   }
 
-      public int a() {
-         return this.b;
+   public <T> gfc<T> a(gfb.a<T> $$0) {
+      return this.b($$0).b;
+   }
+
+   public static class a<T> {
+   }
+
+   public interface b<T> extends Function<List<T>, gez<T>> {
+   }
+
+   static class c<T> {
+      private final gfb.b<T> a;
+      gez<T> b = gez.b();
+
+      c(gfb.b<T> $$0) {
+         this.a = $$0;
+      }
+
+      void a(List<T> $$0) {
+         this.b = this.a.apply($$0);
+         this.b.a();
+      }
+
+      void a() {
+         this.b.a();
       }
    }
 }

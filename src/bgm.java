@@ -1,52 +1,79 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.WeakHashMap;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class bgm {
-   public static final Codec<bgm> a = Codec.INT.xmap(bgm::a, bgm::a);
-   private static final bgm b = new bgm(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
+   public static final bgm a = new bgm();
+   private final WeakHashMap<bgo, Void> b = new WeakHashMap<>();
 
-   private bgm(int $$0) {
-      this.d = $$0;
+   private bgm() {
    }
 
-   public static bgm a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new bgm($$0);
+   public void a(bgo $$0) {
+      this.b.put($$0, null);
+   }
+
+   public List<bgl> a() {
+      Map<String, List<bgl>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bk().stream()).collect(Collectors.groupingBy(bgl::d));
+      return a($$0);
+   }
+
+   private static List<bgl> a(Map<String, List<bgl>> $$0) {
+      return $$0.entrySet().stream().map($$0x -> {
+         String $$1 = (String)$$0x.getKey();
+         List<bgl> $$2 = (List<bgl>)$$0x.getValue();
+         return (bgl)($$2.size() > 1 ? new bgm.a($$1, $$2) : $$2.get(0));
+      }).collect(Collectors.toList());
+   }
+
+   static class a extends bgl {
+      private final List<bgl> b;
+
+      a(String $$0, List<bgl> $$1) {
+         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
+         this.b = $$1;
       }
-   }
 
-   public int a() {
-      return this.d;
-   }
+      private static bgl.c a(List<bgl> $$0) {
+         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
+      }
 
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aT) {
-            c.warn("Found 0 weight, make sure this is intentional!");
+      private static void b(List<bgl> $$0) {
+         for (bgl $$1 : $$0) {
+            $$1.a();
          }
       }
-   }
 
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
+      private static double c(List<bgl> $$0) {
+         double $$1 = 0.0;
 
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
+         for (bgl $$2 : $$0) {
+            $$1 += $$2.c().getAsDouble();
+         }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof bgm && this.d == ((bgm)$$0).d;
+         return $$1 / (double)$$0.size();
+      }
+
+      @Override
+      public boolean equals(@Nullable Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
+            return false;
+         } else if (!super.equals($$0)) {
+            return false;
+         } else {
+            bgm.a $$1 = (bgm.a)$$0;
+            return this.b.equals($$1.b);
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(super.hashCode(), this.b);
+      }
    }
 }

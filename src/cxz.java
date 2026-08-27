@@ -1,82 +1,57 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cxz extends cvu {
-   public static final MapCodec<cxz> i = b(cxz::new);
+public class cxz extends ctn {
+   public static final MapCodec<cxz> c = b(cxz::new);
 
    @Override
-   public MapCodec<? extends cxz> a() {
-      return i;
+   public MapCodec<cxz> a() {
+      return c;
    }
 
-   protected cxz(dga.d $$0) {
-      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+   protected cxz(dgv.d $$0) {
+      super($$0);
    }
 
    @Override
-   public dgb a(cmr $$0) {
-      cqf $$1 = $$0.q();
-      ht $$2 = $$0.a();
-      ebe $$3 = $$0.q().b_($$0.a());
-      ht $$4 = $$2.e();
-      ht $$5 = $$2.f();
-      ht $$6 = $$2.g();
-      ht $$7 = $$2.h();
-      dgb $$8 = $$1.a_($$4);
-      dgb $$9 = $$1.a_($$5);
-      dgb $$10 = $$1.a_($$6);
-      dgb $$11 = $$1.a_($$7);
-      return this.o()
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, hx.d))))
-         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, hx.c))))
-         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, hx.f))))
-         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, hx.e))))
-         .a(e, Boolean.valueOf($$3.a() == ebf.c));
+   public der a(ht $$0, dgw $$1) {
+      return new dfn($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends der> des<T> a(crs $$0, dgw $$1, det<T> $$2) {
+      return a($$0, $$2, det.a);
    }
 
    @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, ebf.c, ebf.c.a($$3));
+   protected void a(crs $$0, ht $$1, cdm $$2) {
+      der $$3 = $$0.c_($$1);
+      if ($$3 instanceof dfn) {
+         $$2.a((bit)$$3);
+         $$2.a(aqx.am);
       }
-
-      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public eiy b(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return eiv.a();
-   }
-
-   @Override
-   public boolean a(dgb $$0, dgb $$1, hx $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
+   public void a(dgw $$0, crs $$1, ht $$2, ato $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, aqn.iV, aqo.e, 1.0F, 1.0F, false);
          }
 
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
+         hx $$7 = $$0.c(a);
+         hx.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == hx.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == hx.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(js.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(js.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public final boolean a(dgb $$0, boolean $$1) {
-      return !j($$0) && $$1 || $$0.b() instanceof cxz || $$0.a(aqs.L);
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(a, b, d, c, e);
    }
 }

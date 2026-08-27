@@ -1,60 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class eeg extends eed {
-   public static final Codec<eeg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arh.a(jz.E).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, eeg::new)
-   );
-   private final arh<cke> j;
-   private final boolean k;
+public interface eeg extends eei {
+   @Override
+   String g();
 
-   private eeg(arh<cke> $$0, boolean $$1, int $$2, int $$3, List<egh> $$4, List<eev> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
-   }
+   void a(boolean var1);
+
+   int l();
+
+   void f(int var1);
+
+   void e(int var1);
+
+   int j();
 
    @Override
-   public eec a() {
-      return edz.f;
+   default void a(p $$0, cru $$1) {
+      eei.super.a($$0, $$1);
+      $$0.a("Level name", this::g);
+      $$0.a(
+         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
    }
 
-   @Override
-   public void a(Consumer<ckj> $$0, edi $$1) {
-      jy.i.c(this.j).forEach($$1x -> $$0.accept(new ckj($$1x)));
-   }
+   int h();
 
-   private boolean a(edi $$0, Consumer<eea> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final ib<cke> $$2 : jy.i.c(this.j)) {
-            $$1.accept(new eed.c() {
-               @Override
-               public void a(Consumer<ckj> $$0, edi $$1) {
-                  $$0.accept(new ckj($$2));
-               }
-            });
-         }
+   void a(int var1);
 
-         return true;
-      }
-   }
+   int v();
 
-   @Override
-   public boolean expand(edi $$0, Consumer<eea> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
+   void g(int var1);
 
-   public static eed.a<?> a(arh<cke> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eeg($$0, false, $$1, $$2, $$3, $$4));
-   }
+   int w();
 
-   public static eed.a<?> b(arh<cke> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eeg($$0, true, $$1, $$2, $$3, $$4));
-   }
+   void h(int var1);
+
+   @Nullable
+   UUID x();
+
+   void a(UUID var1);
+
+   crp m();
+
+   void a(din.c var1);
+
+   din.c r();
+
+   boolean p();
+
+   void c(boolean var1);
+
+   boolean o();
+
+   void a(crp var1);
+
+   eiv<MinecraftServer> u();
+
+   void a(long var1);
+
+   void b(long var1);
 }

@@ -1,44 +1,48 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dtt extends dtw {
-   public static final Codec<dtt> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dtt::new));
+public class dtt extends dtr {
+   public static final Codec<dtt> b = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dgw.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(dgw.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(dgw.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, dtt::new)
+   );
+   private final float g;
+   private final float h;
+   private final dgw i;
+   private final List<dgw> j;
+   private final List<dgw> k;
 
-   public dtt(int $$0, int $$1, int $$2) {
+   public dtt(long $$0, ebj.a $$1, float $$2, float $$3, float $$4, dgw $$5, List<dgw> $$6, List<dgw> $$7) {
       super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected dtx<?> a() {
-      return dtx.c;
+   protected dtp<?> a() {
+      return dtp.c;
    }
 
    @Override
-   public List<dse.a> a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, int $$3, ht $$4, dro $$5) {
-      ht $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      ht.a $$7 = new ht.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
+   public dgw a(ato $$0, ht $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ac.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
       }
-
-      return ImmutableList.of(new dse.a($$4.b($$3), 0, true));
-   }
-
-   private void a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, ht.a $$3, dro $$4, ht $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

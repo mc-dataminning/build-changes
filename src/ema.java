@@ -1,90 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
+import com.mojang.blaze3d.platform.GLX;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodHandles.Lookup;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
+import org.lwjgl.system.Pointer;
 
 public class ema {
-   private int a;
-
-   public static Optional<ema> a() {
-      return ema.b.a;
-   }
-
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
+   @Nullable
+   private static final MethodHandle a = GLX.make(() -> {
+      try {
+         Lookup $$0 = MethodHandles.lookup();
+         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
+         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
+         $$2.setAccessible(true);
+         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
+         $$3.setAccessible(true);
+         Object $$4 = $$3.get(null);
+         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
+      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
+         throw new RuntimeException(var5);
       }
-   }
+   });
 
-   public ema.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         ema.a $$0 = new ema.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
-   }
-
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
+   public static void a(long $$0) {
+      if (a != null) {
+         try {
+            a.invoke((long)$$0);
+         } catch (Throwable var3) {
+            throw new RuntimeException(var3);
          }
       }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
    }
 
-   static class b {
-      static final Optional<ema> a = Optional.ofNullable(a());
-
-      private b() {
-      }
-
-      @Nullable
-      private static ema a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new ema();
-      }
+   public static void a(Pointer $$0) {
+      a($$0.address());
    }
 }

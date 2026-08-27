@@ -1,29 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cys extends cyi implements cud {
-   public static final MapCodec<cys> a = b(cys::new);
+public class cys extends cyr {
+   public static final MapCodec<cys> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jy.f.q().fieldOf("host").forGetter(cyr::b), t()).apply($$0, cys::new));
 
    @Override
    public MapCodec<cys> a() {
-      return a;
+      return b;
    }
 
-   public cys(dga.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(crc $$0, ht $$1, dgb $$2) {
-      return $$0.a_($$1.d()).i();
+   public cys(cut $$0, dgv.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(dbe.i, hx.a.b));
    }
 
    @Override
-   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
-      return true;
+   public dgw a(dgw $$0, dbf $$1) {
+      return dbe.b($$0, $$1);
    }
 
    @Override
-   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
-      $$0.a($$2.d(), cyt.c(), 2);
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(dbe.i);
+   }
+
+   @Override
+   public dgw a(cnj $$0) {
+      return this.o().a(dbe.i, $$0.k().o());
    }
 }

@@ -1,80 +1,83 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public class dop {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<alq, dop.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<alq, dop.b>() {
-         public dop.b a(alq $$0) {
-            return new dop.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
-
-   public static void a(alq $$0) {
-      try {
-         ((dop.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
+public class dop extends dpj<dru> {
+   public dop(Codec<dru> $$0) {
+      super($$0);
    }
 
-   public static void a(alq $$0, dob<?, ?> $$1, Optional<dve> $$2) {
-      try {
-         ((dop.b)b.get($$0)).a().computeInt(new dop.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
+   @Override
+   public boolean a(dpl<dru> $$0) {
+      ht $$1 = $$0.e();
+      csm $$2 = $$0.b();
+      ato $$3 = $$0.d();
+      if ($$2.t($$1) && !$$2.t($$1.c())) {
+         ht.a $$4 = $$1.j();
+         ht.a $$5 = $$1.j();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ac().a().toString();
-               boolean $$3 = $$0.n().v();
-               io<dve> $$4 = $$0.H_().d(jz.az);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::c).<afw>map(afv::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+         while ($$2.t($$4)) {
+            if ($$2.r($$4)) {
+               return true;
             }
-         );
+
+            $$2.a($$4, cuv.dY.o(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, hx.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, hx.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, hx.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, hx.f));
+            $$4.c(hx.a);
+         }
+
+         $$4.c(hx.b);
+         this.a($$2, $$3, $$5.a($$4, hx.c));
+         this.a($$2, $$3, $$5.a($$4, hx.d));
+         this.a($$2, $$3, $$5.a($$4, hx.e));
+         this.a($$2, $$3, $$5.a($$4, hx.f));
+         $$4.c(hx.a);
+         ht.a $$10 = new ht.a();
+
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = ati.a($$11) * ati.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
+
+                  while ($$2.t($$5.a($$10, hx.a))) {
+                     $$10.c(hx.a);
+                     if (--$$14 <= 0) {
+                        break;
+                     }
+                  }
+
+                  if (!$$2.t($$5.a($$10, hx.a))) {
+                     $$2.a($$10, cuv.dY.o(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   static record a(dob<?, ?> a, Optional<dve> b) {
+   private void a(crt $$0, ato $$1, ht $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, cuv.dY.o(), 2);
+      }
    }
 
-   static record b(Object2IntMap<dop.a> a, MutableInt b) {
+   private boolean b(crt $$0, ato $$1, ht $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, cuv.dY.o(), 2);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

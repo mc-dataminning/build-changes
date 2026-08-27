@@ -1,125 +1,192 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
 
-public class blt {
-   public static final int a = 48;
+public abstract class blt extends bwj implements blg {
+   protected static final afm<Byte> bT = afp.a(blt.class, afo.a);
+   protected static final afm<Optional<UUID>> bU = afp.a(blt.class, afo.q);
+   private boolean bW;
 
-   public static bmb<bks> a(Predicate<ib<bvl>> $$0, btk<ia> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   protected blt(bkm<? extends blt> $$0, crs $$1) {
+      super($$0, $$1);
+      this.t();
    }
 
-   public static bmb<bks> a(Predicate<ib<bvl>> $$0, btk<ia> $$1, btk<ia> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<blt.a> $$8 = new Long2ObjectOpenHashMap();
-      bnk<bks> $$9 = bpm.a(
-         (Function<bpm.b<bks>, ? extends App<bpm.c<bks>, bpp<bks>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.n_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.V() + (long)$$6xx.z.a(20));
-                     return false;
-                  } else if ($$6xx.V() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.E_().a(20));
-                     bvi $$9x = $$6xx.w();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((blt.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<ht> $$10 = $$2xxxx -> {
-                        blt.a $$3xxxx = (blt.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<ib<bvl>, ht>> $$11 = $$9x.c($$0, $$10, $$7x.dl(), 48, bvi.b.a).limit(5L).collect(Collectors.toSet());
-                     ebt $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        ht $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(ia.a($$6xx.ac(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           abz.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<ib<bvl>, ht> $$14 : $$11) {
-                           $$8.computeIfAbsent(((ht)$$14.getSecond()).a(), $$2xxxx -> new blt.a($$6xx.z, $$8x));
-                        }
-                     }
+   @Override
+   protected void b_() {
+      super.b_();
+      this.an.a(bT, (byte)0);
+      this.an.a(bU, Optional.empty());
+   }
 
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : bpm.a((Function<bpm.b<bks>, ? extends App<bpm.c<bks>, bpp<bks>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   @Override
+   public void b(rz $$0) {
+      super.b($$0);
+      if (this.d() != null) {
+         $$0.a("Owner", this.d());
+      }
+
+      $$0.a("Sitting", this.bW);
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      UUID $$1;
+      if ($$0.b("Owner")) {
+         $$1 = $$0.a("Owner");
+      } else {
+         String $$2 = $$0.l("Owner");
+         $$1 = app.a(this.cK(), $$2);
+      }
+
+      if ($$1 != null) {
+         try {
+            this.b($$1);
+            this.x(true);
+         } catch (Throwable var4) {
+            this.x(false);
+         }
+      }
+
+      this.bW = $$0.q("Sitting");
+      this.y(this.bW);
+   }
+
+   @Override
+   public boolean a(cdm $$0) {
+      return !this.fS();
+   }
+
+   protected void w(boolean $$0) {
+      jq $$1 = js.M;
+      if (!$$0) {
+         $$1 = js.Z;
+      }
+
+      for (int $$2 = 0; $$2 < 7; $$2++) {
+         double $$3 = this.ag.k() * 0.02;
+         double $$4 = this.ag.k() * 0.02;
+         double $$5 = this.ag.k() * 0.02;
+         this.dL().a($$1, this.d(1.0), this.dt() + 0.5, this.g(1.0), $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 7) {
+         this.w(true);
+      } else if ($$0 == 6) {
+         this.w(false);
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public boolean s() {
+      return (this.an.b(bT) & 4) != 0;
+   }
+
+   public void x(boolean $$0) {
+      byte $$1 = this.an.b(bT);
+      if ($$0) {
+         this.an.b(bT, (byte)($$1 | 4));
+      } else {
+         this.an.b(bT, (byte)($$1 & -5));
+      }
+
+      this.t();
+   }
+
+   protected void t() {
+   }
+
+   public boolean y() {
+      return (this.an.b(bT) & 1) != 0;
+   }
+
+   public void y(boolean $$0) {
+      byte $$1 = this.an.b(bT);
+      if ($$0) {
+         this.an.b(bT, (byte)($$1 | 1));
+      } else {
+         this.an.b(bT, (byte)($$1 & -2));
+      }
    }
 
    @Nullable
-   public static ebt a(bkl $$0, Set<Pair<ib<bvl>, ht>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         Set<ht> $$2 = new HashSet<>();
-         int $$3 = 1;
+   @Override
+   public UUID d() {
+      return this.an.b(bU).orElse(null);
+   }
 
-         for (Pair<ib<bvl>, ht> $$4 : $$1) {
-            $$3 = Math.max($$3, ((bvl)((ib)$$4.getFirst()).a()).c());
-            $$2.add((ht)$$4.getSecond());
-         }
+   public void b(@Nullable UUID $$0) {
+      this.an.b(bU, Optional.ofNullable($$0));
+   }
 
-         return $$0.L().a($$2, $$3);
+   public void f(cdm $$0) {
+      this.x(true);
+      this.b($$0.cv());
+      if ($$0 instanceof amb) {
+         al.x.a((amb)$$0, this);
       }
    }
 
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final ate d;
-      private long e;
-      private long f;
-      private int g;
+   @Override
+   public boolean c(bky $$0) {
+      return this.j($$0) ? false : super.c($$0);
+   }
 
-      a(ate $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
+   public boolean j(bky $$0) {
+      return $$0 == this.P_();
+   }
+
+   public boolean a(bky $$0, bky $$1) {
+      return true;
+   }
+
+   @Override
+   public ekf cf() {
+      if (this.s()) {
+         bky $$0 = this.P_();
+         if ($$0 != null) {
+            return $$0.cf();
+         }
       }
 
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
+      return super.cf();
+   }
+
+   @Override
+   public boolean s(bki $$0) {
+      if (this.s()) {
+         bky $$1 = this.P_();
+         if ($$0 == $$1) {
+            return true;
+         }
+
+         if ($$1 != null) {
+            return $$1.s($$0);
+         }
       }
 
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
+      return super.s($$0);
+   }
+
+   @Override
+   public void a(bjg $$0) {
+      if (!this.dL().B && this.dL().X().b(cro.n) && this.P_() instanceof amb) {
+         this.P_().a(this.eJ().a());
       }
 
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
+      super.a($$0);
+   }
 
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
-      }
+   public boolean ge() {
+      return this.bW;
+   }
+
+   public void z(boolean $$0) {
+      this.bW = $$0;
    }
 }

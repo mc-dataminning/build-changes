@@ -1,12 +1,21 @@
 import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record gbu(Map<String, gbh> d) {
-   public static final Codec<String> a = asg.b(1, 16);
-   public static final Codec<gbu> b = Codec.unboundedMap(a, gbh.a).xmap(gbu::new, gbu::a);
-   public static final anu<gbu> c = anu.a("language", b);
+public class gbu implements gbl {
+   public static final Codec<gbu> b = RecordCodecBuilder.create($$0 -> $$0.group(atp.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gbu::new));
+   private final atp c;
 
-   public Map<String, gbh> a() {
-      return this.d;
+   public gbu(atp $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a(apd $$0, gbl.a $$1) {
+      $$1.a(this.c.c());
+   }
+
+   @Override
+   public gbn a() {
+      return gbo.c;
    }
 }

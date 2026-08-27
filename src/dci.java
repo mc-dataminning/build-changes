@@ -1,31 +1,53 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dci extends ctq {
-   protected static final MapCodec<jv> c = jy.k
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof jv $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<dci> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, dci::new));
-   protected final jv e;
+public class dci extends cut {
+   public static final MapCodec<dci> a = b(dci::new);
+   private static final ekb b = cut.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final int c = 14;
+   private static final int d = 10;
+   private static final int e = 10;
 
    @Override
-   public MapCodec<? extends dci> a() {
-      return d;
+   public MapCodec<dci> a() {
+      return a;
    }
 
-   protected dci(jv $$0, dga.d $$1) {
-      super($$1);
-      this.e = $$0;
+   public dci(dgv.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(js.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public boolean a(dgw $$0, crv $$1, ht $$2) {
+      return cut.a($$1, $$2.c(), hx.a) && !$$1.y($$2);
+   }
+
+   @Override
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      return $$1 == hx.b && !this.a($$0, $$3, $$4) ? cuv.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void a(dgw $$0, crs $$1, ht $$2, ato $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(js.au, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      ht.a $$10 = new ht.a();
+
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + ati.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + ati.a($$3, -10, 10));
+         dgw $$12 = $$1.a_($$10);
+         if (!$$12.r($$1, $$10)) {
+            $$1.a(js.ay, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   @Override
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return b;
    }
 }

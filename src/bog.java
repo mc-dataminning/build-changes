@@ -1,22 +1,71 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class bog {
-   public static bnk<bkj> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
+   private static final int a = 10;
+   private static final int b = 7;
+   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+
+   public static bnz<blh> a(float $$0) {
+      return a($$0, true);
    }
 
-   public static bnk<bkj> a(Predicate<bkj> $$0, Function<bkj, Float> $$1, int $$2) {
-      return bpm.a(
-         (Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$3 -> $$3.group($$3.c(btk.m), $$3.b(btk.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
-                  } else {
-                     $$4.a(new btn($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
-                  }
-               }))
-      );
+   public static bnz<blh> a(float $$0, boolean $$1) {
+      return a($$0, $$0x -> bvr.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.ba());
+   }
+
+   public static bmq<blh> a(float $$0, int $$1, int $$2) {
+      return a($$0, $$2x -> bvr.a($$2x, $$1, $$2), $$0x -> true);
+   }
+
+   public static bmq<blh> b(float $$0) {
+      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   }
+
+   public static bmq<blh> c(float $$0) {
+      return a($$0, bog::a, bki::ba);
+   }
+
+   private static bnz<blh> a(float $$0, Function<blh, eji> $$1, Predicate<blh> $$2) {
+      return bqb.a((Function<bqb.b<blh>, ? extends App<bqb.c<blh>, bqe<blh>>>)($$3 -> $$3.group($$3.c(btz.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               if (!$$2.test($$5)) {
+                  return false;
+               } else {
+                  Optional<eji> $$7 = Optional.ofNullable($$1.apply($$5));
+                  $$3x.a($$7.map($$1xxxx -> new buc($$1xxxx, $$0, 0)));
+                  return true;
+               }
+            })));
+   }
+
+   @Nullable
+   private static eji a(blh $$0) {
+      eji $$1 = null;
+      eji $$2 = null;
+
+      for (int[] $$3 : c) {
+         if ($$1 == null) {
+            $$2 = bmr.a($$0, $$3[0], $$3[1]);
+         } else {
+            $$2 = $$0.dj().e($$0.dj().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+         }
+
+         if ($$2 == null || $$0.dL().b_(ht.a($$2)).c()) {
+            return $$1;
+         }
+
+         $$1 = $$2;
+      }
+
+      return $$2;
+   }
+
+   @Nullable
+   private static eji a(blh $$0, int $$1, int $$2) {
+      eji $$3 = $$0.f(0.0F);
+      return bvm.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
    }
 }

@@ -1,110 +1,108 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class cta extends cwu {
-   public static final MapCodec<cta> a = b(cta::new);
-   public static final dgv b = cxu.aE;
-   private static final eiy c = cua.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final eiy d = cua.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final eiy e = cua.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final eiy f = cua.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final eiy g = cua.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final eiy h = cua.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final eiy i = cua.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final eiy j = eiv.a(c, d, e, f);
-   private static final eiy k = eiv.a(c, g, h, i);
-   private static final ui l = ui.c("container.repair");
-   private static final float m = 2.0F;
-   private static final int n = 40;
+public class cta {
+   public static <T> List<cta.b> a(List<T> $$0, Function<T, List<ig<dvz>>> $$1, boolean $$2) {
+      Object2IntMap<dvz> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   @Override
-   public MapCodec<cta> a() {
-      return a;
-   }
-
-   public cta(dga.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, hx.c));
-   }
-
-   @Override
-   public dgb a(cmr $$0) {
-      return this.o().a(b, $$0.g().h());
-   }
-
-   @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      if ($$1.B) {
-         return bib.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(aqn.aC);
-         return bib.b;
+      record a(int a, int b, dvz c) {
       }
-   }
 
-   @Nullable
-   @Override
-   public bie b(dgb $$0, cqz $$1, ht $$2) {
-      return new bij(($$2x, $$3, $$4) -> new cfr($$2x, $$3, cga.a($$1, $$2)), l);
-   }
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
 
-   @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      hx $$4 = $$0.c(b);
-      return $$4.o() == hx.a.a ? j : k;
-   }
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<ig<dvz>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
 
-   @Override
-   protected void a(bzp $$0) {
-      $$0.b(2.0F, 40);
-   }
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (ib<dvz> $$12 : $$10.get($$11)) {
+               dvz $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
+            }
+         }
 
-   @Override
-   public void a(cqz $$0, ht $$1, dgb $$2, dgb $$3, bzp $$4) {
-      if (!$$4.aS()) {
-         $$0.c(1031, $$1, 0);
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
+         }
       }
-   }
 
-   @Override
-   public void a(cqz $$0, ht $$1, bzp $$2) {
-      if (!$$2.aS()) {
-         $$0.c(1029, $$1, 0);
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
+
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && asx.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
       }
-   }
 
-   @Override
-   public bir a(bjt $$0) {
-      return $$0.dM().b($$0);
-   }
+      Collections.reverse($$18);
+      Builder<cta.b> $$25 = ImmutableList.builder();
 
-   @Nullable
-   public static dgb e(dgb $$0) {
-      if ($$0.a(cuc.gS)) {
-         return cuc.gT.o().a(b, $$0.c(b));
-      } else {
-         return $$0.a(cuc.gT) ? cuc.gU.o().a(b, $$0.c(b)) : null;
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<dvz> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new cta.b($$28));
       }
+
+      return $$25.build();
    }
 
-   @Override
-   public dgb a(dgb $$0, dal $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
-      return false;
-   }
-
-   @Override
-   public int d(dgb $$0, cqf $$1, ht $$2) {
-      return $$0.d($$1, $$2).ak;
+   public static record b(List<dvz> a, ToIntFunction<dvz> b) {
+      b(List<dvz> $$0) {
+         this($$0, ac.f($$0));
+      }
    }
 }

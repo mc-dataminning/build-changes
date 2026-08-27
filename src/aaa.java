@@ -1,74 +1,32 @@
-import java.util.Set;
+public class aaa implements wk<yd> {
+   private final int a;
+   private final agg b;
 
-public class aaa implements wb<xu> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
-   private final Set<bkx> f;
-   private final int g;
-
-   public aaa(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bkx> $$5, int $$6) {
+   public aaa(int $$0, coh<?> $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+      this.b = $$1.a();
    }
 
-   public aaa(tl $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = bkx.a($$0.readUnsignedByte());
-      this.g = $$0.n();
+   public aaa(tu $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.t();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.a);
+   public void a(tu $$0) {
+      $$0.k(this.a);
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(bkx.a(this.f));
-      $$0.c(this.g);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
-   }
-
-   public double d() {
+   public agg a() {
       return this.b;
    }
 
-   public double e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public int h() {
-      return this.g;
-   }
-
-   public Set<bkx> i() {
-      return this.f;
+   public int d() {
+      return this.a;
    }
 }

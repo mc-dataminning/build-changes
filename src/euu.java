@@ -1,72 +1,540 @@
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.DataFixUtils;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSets;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import java.lang.management.GarbageCollectorMXBean;
+import java.lang.management.ManagementFactory;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import net.minecraft.client.ClientBrandRetriever;
 
-public class euu implements exd {
-   private static final int a = 170;
-   private final ui b;
+public class euu {
+   private static final int a = 14737632;
+   private static final int b = 2;
+   private static final int c = 2;
+   private static final int d = 2;
+   private static final Map<dmf.a, String> e = ac.a(new EnumMap<>(dmf.a.class), $$0 -> {
+      $$0.put(dmf.a.a, "SW");
+      $$0.put(dmf.a.b, "S");
+      $$0.put(dmf.a.c, "OW");
+      $$0.put(dmf.a.d, "O");
+      $$0.put(dmf.a.e, "M");
+      $$0.put(dmf.a.f, "ML");
+   });
+   private final esr f;
+   private final euu.a g;
+   private final etz h;
+   private ejg i;
+   private ejg j;
    @Nullable
-   private List<ask> c;
+   private cqz k;
    @Nullable
-   private final ui d;
-   private int e;
-   private long f;
-   private boolean g;
+   private djd l;
+   @Nullable
+   private CompletableFuture<djd> m;
+   private boolean n;
+   private boolean o;
+   private boolean p;
+   private boolean q;
+   private final atq r = new atq();
+   private final atq s = new atq();
+   private final atq t = new atq();
+   private final atq u = new atq();
+   private final ewc v;
+   private final ewe w;
+   private final ewd x;
+   private final ewb y;
 
-   private euu(ui $$0, @Nullable ui $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public euu(esr $$0) {
+      this.f = $$0;
+      this.g = new euu.a();
+      this.h = $$0.h;
+      this.v = new ewc(this.h, this.r);
+      this.w = new ewe(this.h, this.s);
+      this.x = new ewd(this.h, this.t);
+      this.y = new ewb(this.h, this.u);
    }
 
-   public void a(int $$0) {
-      this.e = $$0;
+   public void a() {
+      this.m = null;
+      this.l = null;
    }
 
-   public static euu a(ui $$0, @Nullable ui $$1) {
-      return new euu($$0, $$1);
-   }
-
-   public static euu a(ui $$0) {
-      return new euu($$0, $$0);
-   }
-
-   @Override
-   public void b(exc $$0) {
-      if (this.d != null) {
-         $$0.a(exb.c, this.d);
-      }
-   }
-
-   public List<ask> a(ero $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
-      }
-
-      return this.c;
-   }
-
-   public static List<ask> a(ero $$0, ui $$1) {
-      return $$0.h.c($$1, 170);
-   }
-
-   public void a(boolean $$0, boolean $$1, exm $$2) {
-      boolean $$3 = $$0 || $$1 && ero.O().aU().b();
-      if ($$3 != this.g) {
-         if ($$3) {
-            this.f = ac.b();
+   public void a(eub $$0) {
+      this.f.aF().a("debug");
+      bki $$1 = this.f.al();
+      this.i = $$1.a(20.0, 0.0F, false);
+      this.j = $$1.a(20.0, 0.0F, true);
+      $$0.a(() -> {
+         this.b($$0);
+         this.c($$0);
+         if (this.p) {
+            int $$1x = $$0.a();
+            int $$2 = $$1x / 2;
+            this.v.a($$0, 0, this.v.a($$2));
+            if (this.f.S() != null) {
+               int $$3 = this.w.a($$2);
+               this.w.a($$0, $$1x - $$3, $$3);
+            }
          }
 
-         this.g = $$3;
+         if (this.q) {
+            int $$4 = $$0.a();
+            int $$5 = $$4 / 2;
+            if (!this.f.Q()) {
+               this.y.a($$0, 0, this.y.a($$5));
+            }
+
+            int $$6 = this.x.a($$5);
+            this.x.a($$0, $$4 - $$6, $$6);
+         }
+      });
+      this.f.aF().c();
+   }
+
+   protected void b(eub $$0) {
+      List<String> $$1 = this.b();
+      $$1.add("");
+      boolean $$2 = this.f.S() != null;
+      $$1.add(
+         "Debug charts: [F3+1] Profiler "
+            + (this.o ? "visible" : "hidden")
+            + "; [F3+2] "
+            + ($$2 ? "FPS + TPS " : "FPS ")
+            + (this.p ? "visible" : "hidden")
+            + "; [F3+3] "
+            + (!this.f.Q() ? "Bandwidth + Ping" : "Ping")
+            + (this.q ? " visible" : " hidden")
+      );
+      $$1.add("For help: press F3 + Q");
+      this.a($$0, $$1, true);
+   }
+
+   protected void c(eub $$0) {
+      List<String> $$1 = this.c();
+      this.a($$0, $$1, false);
+   }
+
+   private void a(eub $$0, List<String> $$1, boolean $$2) {
+      int $$3 = 9;
+
+      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+         String $$5 = $$1.get($$4);
+         if (!Strings.isNullOrEmpty($$5)) {
+            int $$6 = this.h.b($$5);
+            int $$7 = $$2 ? 2 : $$0.a() - 2 - $$6;
+            int $$8 = 2 + $$3 * $$4;
+            $$0.a($$7 - 1, $$8 - 1, $$7 + $$6 + 1, $$8 + $$3 - 1, -1873784752);
+         }
       }
 
-      if ($$3 && ac.b() - this.f > (long)this.e) {
-         ezd $$4 = ero.O().y;
-         if ($$4 != null) {
-            $$4.a(this, this.b($$0, $$1, $$2), $$1);
+      for (int $$9 = 0; $$9 < $$1.size(); $$9++) {
+         String $$10 = $$1.get($$9);
+         if (!Strings.isNullOrEmpty($$10)) {
+            int $$11 = this.h.b($$10);
+            int $$12 = $$2 ? 2 : $$0.a() - 2 - $$11;
+            int $$13 = 2 + $$3 * $$9;
+            $$0.a(this.h, $$10, $$12, $$13, 14737632, false);
          }
       }
    }
 
-   protected fbv b(boolean $$0, boolean $$1, exm $$2) {
-      return (fbv)(!$$0 && $$1 && ero.O().aU().b() ? new fbr($$2) : new fbx($$2));
+   protected List<String> b() {
+      gfg $$0 = this.f.S();
+      fkx $$1 = this.f.I();
+      ts $$2 = $$1.m();
+      float $$3 = $$2.r();
+      float $$4 = $$2.q();
+      String $$5;
+      if ($$0 != null) {
+         $$5 = String.format(Locale.ROOT, "Integrated server @ %.0f ms ticks, %.0f tx, %.0f rx", $$0.aL(), $$3, $$4);
+      } else {
+         $$5 = String.format(Locale.ROOT, "\"%s\" server, %.0f tx, %.0f rx", $$1.h(), $$3, $$4);
+      }
+
+      ht $$7 = this.f.al().dl();
+      if (this.f.aw()) {
+         return Lists.newArrayList(
+            new String[]{
+               "Minecraft " + aa.b().c() + " (" + this.f.h() + "/" + ClientBrandRetriever.getClientModName() + ")",
+               this.f.z,
+               $$5,
+               this.f.f.g(),
+               this.f.f.l(),
+               "P: " + this.f.g.d() + ". T: " + this.f.r.h(),
+               this.f.r.F(),
+               "",
+               String.format(Locale.ROOT, "Chunk-relative: %d %d %d", $$7.u() & 15, $$7.v() & 15, $$7.w() & 15)
+            }
+         );
+      } else {
+         bki $$8 = this.f.al();
+         hx $$9 = $$8.cD();
+
+         String $$14 = switch ($$9) {
+            case c -> "Towards negative Z";
+            case d -> "Towards positive Z";
+            case e -> "Towards negative X";
+            case f -> "Towards positive X";
+            default -> "Invalid";
+         };
+         cqz $$15 = new cqz($$7);
+         if (!Objects.equals(this.k, $$15)) {
+            this.k = $$15;
+            this.a();
+         }
+
+         crs $$16 = this.p();
+         LongSet $$17 = (LongSet)($$16 instanceof ama ? ((ama)$$16).u() : LongSets.EMPTY_SET);
+         List<String> $$18 = Lists.newArrayList(
+            new String[]{
+               "Minecraft "
+                  + aa.b().c()
+                  + " ("
+                  + this.f.h()
+                  + "/"
+                  + ClientBrandRetriever.getClientModName()
+                  + ("release".equalsIgnoreCase(this.f.i()) ? "" : "/" + this.f.i())
+                  + ")",
+               this.f.z,
+               $$5,
+               this.f.f.g(),
+               this.f.f.l(),
+               "P: " + this.f.g.d() + ". T: " + this.f.r.h(),
+               this.f.r.F()
+            }
+         );
+         String $$19 = this.o();
+         if ($$19 != null) {
+            $$18.add($$19);
+         }
+
+         $$18.add(this.f.r.ac().a() + " FC: " + $$17.size());
+         $$18.add("");
+         $$18.add(String.format(Locale.ROOT, "XYZ: %.3f / %.5f / %.3f", this.f.al().dq(), this.f.al().ds(), this.f.al().dw()));
+         $$18.add(String.format(Locale.ROOT, "Block: %d %d %d [%d %d %d]", $$7.u(), $$7.v(), $$7.w(), $$7.u() & 15, $$7.v() & 15, $$7.w() & 15));
+         $$18.add(String.format(Locale.ROOT, "Chunk: %d %d %d [%d %d in r.%d.%d.mca]", $$15.e, iu.a($$7.v()), $$15.f, $$15.j(), $$15.k(), $$15.h(), $$15.i()));
+         $$18.add(String.format(Locale.ROOT, "Facing: %s (%s) (%.1f / %.1f)", $$9, $$14, ati.g($$8.dB()), ati.g($$8.dD())));
+         djd $$20 = this.r();
+         if ($$20.C()) {
+            $$18.add("Waiting for chunk...");
+         } else {
+            int $$21 = this.f.r.i().p().a($$7, 0);
+            int $$22 = this.f.r.a(csb.a, $$7);
+            int $$23 = this.f.r.a(csb.b, $$7);
+            $$18.add("Client Light: " + $$21 + " (" + $$22 + " sky, " + $$23 + " block)");
+            djd $$24 = this.q();
+            StringBuilder $$25 = new StringBuilder("CH");
+
+            for (dmf.a $$26 : dmf.a.values()) {
+               if ($$26.b()) {
+                  $$25.append(" ").append(e.get($$26)).append(": ").append($$20.a($$26, $$7.u(), $$7.w()));
+               }
+            }
+
+            $$18.add($$25.toString());
+            $$25.setLength(0);
+            $$25.append("SH");
+
+            for (dmf.a $$27 : dmf.a.values()) {
+               if ($$27.d()) {
+                  $$25.append(" ").append(e.get($$27)).append(": ");
+                  if ($$24 != null) {
+                     $$25.append($$24.a($$27, $$7.u(), $$7.w()));
+                  } else {
+                     $$25.append("??");
+                  }
+               }
+            }
+
+            $$18.add($$25.toString());
+            if ($$7.v() >= this.f.r.I_() && $$7.v() < this.f.r.aj()) {
+               $$18.add("Biome: " + a(this.f.r.s($$7)));
+               if ($$24 != null) {
+                  float $$28 = $$16.an();
+                  long $$29 = $$24.u();
+                  bio $$30 = new bio($$16.ai(), $$16.W(), $$29, $$28);
+                  $$18.add(String.format(Locale.ROOT, "Local Difficulty: %.2f // %.2f (Day %d)", $$30.b(), $$30.d(), this.f.r.W() / 24000L));
+               } else {
+                  $$18.add("Local Difficulty: ??");
+               }
+            }
+
+            if ($$24 != null && $$24.s()) {
+               $$18.add("Blending: Old");
+            }
+         }
+
+         ama $$31 = this.n();
+         if ($$31 != null) {
+            aly $$32 = $$31.k();
+            dit $$33 = $$32.g();
+            dmt $$34 = $$32.i();
+            $$33.a($$18, $$34, $$7);
+            csz.f $$35 = $$34.b();
+            csu $$36 = $$33.c();
+            $$36.a($$18, $$7, $$35);
+            csd.d $$37 = $$32.n();
+            if ($$37 != null) {
+               Object2IntMap<blb> $$38 = $$37.b();
+               int $$39 = $$37.a();
+               $$18.add(
+                  "SC: "
+                     + $$39
+                     + ", "
+                     + Stream.of(blb.values())
+                        .map($$1x -> Character.toUpperCase($$1x.a().charAt(0)) + ": " + $$38.getInt($$1x))
+                        .collect(Collectors.joining(", "))
+               );
+            } else {
+               $$18.add("SC: N/A");
+            }
+         }
+
+         fqk $$40 = this.f.j.g();
+         if ($$40 != null) {
+            $$18.add("Shader: " + $$40.a());
+         }
+
+         $$18.add(this.f.ah().i() + String.format(Locale.ROOT, " (Mood %d%%)", Math.round(this.f.s.d() * 100.0F)));
+         return $$18;
+      }
+   }
+
+   private static String a(ib<csq> $$0) {
+      return (String)$$0.d().map($$0x -> $$0x.a().toString(), $$0x -> "[unregistered " + $$0x + "]");
+   }
+
+   @Nullable
+   private ama n() {
+      gfg $$0 = this.f.S();
+      return $$0 != null ? $$0.a(this.f.r.ac()) : null;
+   }
+
+   @Nullable
+   private String o() {
+      ama $$0 = this.n();
+      return $$0 != null ? $$0.F() : null;
+   }
+
+   private crs p() {
+      return (crs)DataFixUtils.orElse(Optional.ofNullable(this.f.S()).flatMap($$0 -> Optional.ofNullable($$0.a(this.f.r.ac()))), this.f.r);
+   }
+
+   @Nullable
+   private djd q() {
+      if (this.m == null) {
+         ama $$0 = this.n();
+         if ($$0 == null) {
+            return null;
+         }
+
+         this.m = $$0.k().b(this.k.e, this.k.f, dix.n, false).thenApply($$0x -> (djd)$$0x.map($$0xx -> (djd)$$0xx, $$0xx -> null));
+      }
+
+      return this.m.getNow(null);
+   }
+
+   private djd r() {
+      if (this.l == null) {
+         this.l = this.f.r.d(this.k.e, this.k.f);
+      }
+
+      return this.l;
+   }
+
+   protected List<String> c() {
+      long $$0 = Runtime.getRuntime().maxMemory();
+      long $$1 = Runtime.getRuntime().totalMemory();
+      long $$2 = Runtime.getRuntime().freeMemory();
+      long $$3 = $$1 - $$2;
+      List<String> $$4 = Lists.newArrayList(
+         new String[]{
+            String.format(Locale.ROOT, "Java: %s %dbit", System.getProperty("java.version"), this.f.ae() ? 64 : 32),
+            String.format(Locale.ROOT, "Mem: % 2d%% %03d/%03dMB", $$3 * 100L / $$0, c($$3), c($$0)),
+            String.format(Locale.ROOT, "Allocation rate: %03dMB /s", c(this.g.a($$3))),
+            String.format(Locale.ROOT, "Allocated: % 2d%% %03dMB", $$1 * 100L / $$0, c($$1)),
+            "",
+            String.format(Locale.ROOT, "CPU: %s", emd.b()),
+            "",
+            String.format(Locale.ROOT, "Display: %dx%d (%s)", esr.N().aL().k(), esr.N().aL().l(), emd.a()),
+            emd.c(),
+            emd.d()
+         }
+      );
+      if (this.f.aw()) {
+         return $$4;
+      } else {
+         if (this.i.c() == ejg.a.b) {
+            ht $$5 = ((eje)this.i).a();
+            dgw $$6 = this.f.r.a_($$5);
+            $$4.add("");
+            $$4.add(n.t + "Targeted Block: " + $$5.u() + ", " + $$5.v() + ", " + $$5.w());
+            $$4.add(String.valueOf(jy.f.b($$6.b())));
+            UnmodifiableIterator var12 = $$6.C().entrySet().iterator();
+
+            while (var12.hasNext()) {
+               Entry<dhz<?>, Comparable<?>> $$7 = (Entry<dhz<?>, Comparable<?>>)var12.next();
+               $$4.add(this.a($$7));
+            }
+
+            $$6.s().map($$0x -> "#" + $$0x.b()).forEach($$4::add);
+         }
+
+         if (this.j.c() == ejg.a.b) {
+            ht $$8 = ((eje)this.j).a();
+            ecg $$9 = this.f.r.b_($$8);
+            $$4.add("");
+            $$4.add(n.t + "Targeted Fluid: " + $$8.u() + ", " + $$8.v() + ", " + $$8.w());
+            $$4.add(String.valueOf(jy.d.b($$9.a())));
+            UnmodifiableIterator var17 = $$9.C().entrySet().iterator();
+
+            while (var17.hasNext()) {
+               Entry<dhz<?>, Comparable<?>> $$10 = (Entry<dhz<?>, Comparable<?>>)var17.next();
+               $$4.add(this.a($$10));
+            }
+
+            $$9.k().map($$0x -> "#" + $$0x.b()).forEach($$4::add);
+         }
+
+         bki $$11 = this.f.u;
+         if ($$11 != null) {
+            $$4.add("");
+            $$4.add(n.t + "Targeted Entity");
+            $$4.add(String.valueOf(jy.h.b($$11.ag())));
+         }
+
+         return $$4;
+      }
+   }
+
+   private String a(Entry<dhz<?>, Comparable<?>> $$0) {
+      dhz<?> $$1 = $$0.getKey();
+      Comparable<?> $$2 = $$0.getValue();
+      String $$3 = ac.a($$1, $$2);
+      if (Boolean.TRUE.equals($$2)) {
+         $$3 = n.k + $$3;
+      } else if (Boolean.FALSE.equals($$2)) {
+         $$3 = n.m + $$3;
+      }
+
+      return $$1.f() + ": " + $$3;
+   }
+
+   private static long c(long $$0) {
+      return $$0 / 1024L / 1024L;
+   }
+
+   public boolean d() {
+      return this.n && !this.f.m.Z;
+   }
+
+   public boolean e() {
+      return this.d() && this.o;
+   }
+
+   public boolean f() {
+      return this.d() && this.q;
+   }
+
+   public void g() {
+      this.n = !this.n;
+   }
+
+   public void h() {
+      this.q = !this.n || !this.q;
+      if (this.q) {
+         this.n = true;
+         this.p = false;
+      }
+   }
+
+   public void i() {
+      this.p = !this.n || !this.p;
+      if (this.p) {
+         this.n = true;
+         this.q = false;
+      }
+   }
+
+   public void j() {
+      this.o = !this.n || !this.o;
+      if (this.o) {
+         this.n = true;
+      }
+   }
+
+   public void a(long $$0) {
+      this.r.a($$0);
+   }
+
+   public void b(long $$0) {
+      this.s.a($$0);
+   }
+
+   public atq k() {
+      return this.t;
+   }
+
+   public atq l() {
+      return this.u;
+   }
+
+   public void m() {
+      this.n = false;
+      this.s.c();
+      this.t.c();
+      this.u.c();
+   }
+
+   static class a {
+      private static final int a = 500;
+      private static final List<GarbageCollectorMXBean> b = ManagementFactory.getGarbageCollectorMXBeans();
+      private long c = 0L;
+      private long d = -1L;
+      private long e = -1L;
+      private long f = 0L;
+
+      long a(long $$0) {
+         long $$1 = System.currentTimeMillis();
+         if ($$1 - this.c < 500L) {
+            return this.f;
+         } else {
+            long $$2 = a();
+            if (this.c != 0L && $$2 == this.e) {
+               double $$3 = (double)TimeUnit.SECONDS.toMillis(1L) / (double)($$1 - this.c);
+               long $$4 = $$0 - this.d;
+               this.f = Math.round((double)$$4 * $$3);
+            }
+
+            this.c = $$1;
+            this.d = $$0;
+            this.e = $$2;
+            return this.f;
+         }
+      }
+
+      private static long a() {
+         long $$0 = 0L;
+
+         for (GarbageCollectorMXBean $$1 : b) {
+            $$0 += $$1.getCollectionCount();
+         }
+
+         return $$0;
+      }
    }
 }

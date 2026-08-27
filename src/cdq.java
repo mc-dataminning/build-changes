@@ -1,141 +1,307 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntAVLTreeSet;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.BitSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public final class cdq {
-   private static final float a = 0.3F;
+public class cdq {
+   private static final int b = 0;
+   public final Int2IntMap a = new Int2IntOpenHashMap();
 
-   public static eid a(bjt $$0, Predicate<bjt> $$1) {
-      eif $$2 = $$0.do();
-      cqz $$3 = $$0.dL();
-      eif $$4 = $$0.dj();
-      return a($$4, $$0, $$1, $$2, $$3, 0.3F);
-   }
-
-   public static eid a(bjt $$0, Predicate<bjt> $$1, double $$2) {
-      eif $$3 = $$0.f(0.0F).a($$2);
-      cqz $$4 = $$0.dL();
-      eif $$5 = $$0.bp();
-      return a($$5, $$0, $$1, $$3, $$4, 0.0F);
-   }
-
-   private static eid a(eif $$0, bjt $$1, Predicate<bjt> $$2, eif $$3, cqz $$4, float $$5) {
-      eif $$6 = $$0.e($$3);
-      eid $$7 = $$4.a(new cqi($$0, $$6, cqi.a.a, cqi.b.a, $$1));
-      if ($$7.c() != eid.a.a) {
-         $$6 = $$7.e();
+   public void a(clb $$0) {
+      if (!$$0.j() && !$$0.E() && !$$0.A()) {
+         this.b($$0);
       }
-
-      eid $$8 = a($$4, $$1, $$0, $$6, $$1.cG().b($$3).g(1.0), $$2, $$5);
-      if ($$8 != null) {
-         $$7 = $$8;
-      }
-
-      return $$7;
    }
 
-   @Nullable
-   public static eic a(bjt $$0, eif $$1, eif $$2, eia $$3, Predicate<bjt> $$4, double $$5) {
-      cqz $$6 = $$0.dL();
-      double $$7 = $$5;
-      bjt $$8 = null;
-      eif $$9 = null;
+   public void b(clb $$0) {
+      this.a($$0, 64);
+   }
 
-      for (bjt $$10 : $$6.a($$0, $$3, $$4)) {
-         eia $$11 = $$10.cG().g((double)$$10.bD());
-         Optional<eif> $$12 = $$11.b($$1, $$2);
-         if ($$11.d($$1)) {
-            if ($$7 >= 0.0) {
-               $$8 = $$10;
-               $$9 = $$12.orElse($$1);
-               $$7 = 0.0;
-            }
-         } else if ($$12.isPresent()) {
-            eif $$13 = $$12.get();
-            double $$14 = $$1.g($$13);
-            if ($$14 < $$7 || $$7 == 0.0) {
-               if ($$10.cV() == $$0.cV()) {
-                  if ($$7 == 0.0) {
-                     $$8 = $$10;
-                     $$9 = $$13;
-                  }
-               } else {
-                  $$8 = $$10;
-                  $$9 = $$13;
-                  $$7 = $$14;
+   public void a(clb $$0, int $$1) {
+      if (!$$0.b()) {
+         int $$2 = c($$0);
+         int $$3 = Math.min($$1, $$0.L());
+         this.b($$2, $$3);
+      }
+   }
+
+   public static int c(clb $$0) {
+      return jy.i.a($$0.d());
+   }
+
+   boolean b(int $$0) {
+      return this.a.get($$0) > 0;
+   }
+
+   int a(int $$0, int $$1) {
+      int $$2 = this.a.get($$0);
+      if ($$2 >= $$1) {
+         this.a.put($$0, $$2 - $$1);
+         return $$0;
+      } else {
+         return 0;
+      }
+   }
+
+   void b(int $$0, int $$1) {
+      this.a.put($$0, this.a.get($$0) + $$1);
+   }
+
+   public boolean a(cof<?> $$0, @Nullable IntList $$1) {
+      return this.a($$0, $$1, 1);
+   }
+
+   public boolean a(cof<?> $$0, @Nullable IntList $$1, int $$2) {
+      return new cdq.a($$0).a($$2, $$1);
+   }
+
+   public int a(coh<?> $$0, @Nullable IntList $$1) {
+      return this.a($$0, Integer.MAX_VALUE, $$1);
+   }
+
+   public int a(coh<?> $$0, int $$1, @Nullable IntList $$2) {
+      return new cdq.a($$0.b()).b($$1, $$2);
+   }
+
+   public static clb a(int $$0) {
+      return $$0 == 0 ? clb.b : new clb(ckw.b($$0));
+   }
+
+   public void a() {
+      this.a.clear();
+   }
+
+   class a {
+      private final cof<?> b;
+      private final List<coc> c = Lists.newArrayList();
+      private final int d;
+      private final int[] e;
+      private final int f;
+      private final BitSet g;
+      private final IntList h = new IntArrayList();
+
+      public a(cof<?> $$0) {
+         this.b = $$0;
+         this.c.addAll($$0.a());
+         this.c.removeIf(coc::c);
+         this.d = this.c.size();
+         this.e = this.a();
+         this.f = this.e.length;
+         this.g = new BitSet(this.d + this.f + this.d + this.d * this.f);
+
+         for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+            IntList $$2 = this.c.get($$1).b();
+
+            for (int $$3 = 0; $$3 < this.f; $$3++) {
+               if ($$2.contains(this.e[$$3])) {
+                  this.g.set(this.d(true, $$3, $$1));
                }
             }
          }
       }
 
-      return $$8 == null ? null : new eic($$8, $$9);
-   }
+      public boolean a(int $$0, @Nullable IntList $$1) {
+         if ($$0 <= 0) {
+            return true;
+         } else {
+            int $$2;
+            for ($$2 = 0; this.a($$0); $$2++) {
+               cdq.this.a(this.e[this.h.getInt(0)], $$0);
+               int $$3 = this.h.size() - 1;
+               this.c(this.h.getInt($$3));
 
-   @Nullable
-   public static eic a(cqz $$0, bjt $$1, eif $$2, eif $$3, eia $$4, Predicate<bjt> $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
-   }
+               for (int $$4 = 0; $$4 < $$3; $$4++) {
+                  this.c(($$4 & 1) == 0, this.h.get($$4), this.h.get($$4 + 1));
+               }
 
-   @Nullable
-   public static eic a(cqz $$0, bjt $$1, eif $$2, eif $$3, eia $$4, Predicate<bjt> $$5, float $$6) {
-      double $$7 = Double.MAX_VALUE;
-      bjt $$8 = null;
+               this.h.clear();
+               this.g.clear(0, this.d + this.f);
+            }
 
-      for (bjt $$9 : $$0.a($$1, $$4, $$5)) {
-         eia $$10 = $$9.cG().g((double)$$6);
-         Optional<eif> $$11 = $$10.b($$2, $$3);
-         if ($$11.isPresent()) {
-            double $$12 = $$2.g($$11.get());
-            if ($$12 < $$7) {
-               $$8 = $$9;
-               $$7 = $$12;
+            boolean $$5 = $$2 == this.d;
+            boolean $$6 = $$5 && $$1 != null;
+            if ($$6) {
+               $$1.clear();
+            }
+
+            this.g.clear(0, this.d + this.f + this.d);
+            int $$7 = 0;
+
+            for (coc $$9 : this.b.a()) {
+               if ($$6 && $$9.c()) {
+                  $$1.add(0);
+               } else {
+                  for (int $$10 = 0; $$10 < this.f; $$10++) {
+                     if (this.b(false, $$7, $$10)) {
+                        this.c(true, $$10, $$7);
+                        cdq.this.b(this.e[$$10], $$0);
+                        if ($$6) {
+                           $$1.add(this.e[$$10]);
+                        }
+                     }
+                  }
+
+                  $$7++;
+               }
+            }
+
+            return $$5;
+         }
+      }
+
+      private int[] a() {
+         IntCollection $$0 = new IntAVLTreeSet();
+
+         for (coc $$1 : this.c) {
+            $$0.addAll($$1.b());
+         }
+
+         IntIterator $$2 = $$0.iterator();
+
+         while ($$2.hasNext()) {
+            if (!cdq.this.b($$2.nextInt())) {
+               $$2.remove();
+            }
+         }
+
+         return $$0.toIntArray();
+      }
+
+      private boolean a(int $$0) {
+         int $$1 = this.f;
+
+         for (int $$2 = 0; $$2 < $$1; $$2++) {
+            if (cdq.this.a.get(this.e[$$2]) >= $$0) {
+               this.a(false, $$2);
+
+               while (!this.h.isEmpty()) {
+                  int $$3 = this.h.size();
+                  boolean $$4 = ($$3 & 1) == 1;
+                  int $$5 = this.h.getInt($$3 - 1);
+                  if (!$$4 && !this.b($$5)) {
+                     break;
+                  }
+
+                  int $$6 = $$4 ? this.d : $$1;
+                  int $$7 = 0;
+
+                  while (true) {
+                     if ($$7 < $$6) {
+                        if (this.b($$4, $$7) || !this.a($$4, $$5, $$7) || !this.b($$4, $$5, $$7)) {
+                           $$7++;
+                           continue;
+                        }
+
+                        this.a($$4, $$7);
+                     }
+
+                     $$7 = this.h.size();
+                     if ($$7 == $$3) {
+                        this.h.removeInt($$7 - 1);
+                     }
+                     break;
+                  }
+               }
+
+               if (!this.h.isEmpty()) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+
+      private boolean b(int $$0) {
+         return this.g.get(this.d($$0));
+      }
+
+      private void c(int $$0) {
+         this.g.set(this.d($$0));
+      }
+
+      private int d(int $$0) {
+         return this.d + this.f + $$0;
+      }
+
+      private boolean a(boolean $$0, int $$1, int $$2) {
+         return this.g.get(this.d($$0, $$1, $$2));
+      }
+
+      private boolean b(boolean $$0, int $$1, int $$2) {
+         return $$0 != this.g.get(1 + this.d($$0, $$1, $$2));
+      }
+
+      private void c(boolean $$0, int $$1, int $$2) {
+         this.g.flip(1 + this.d($$0, $$1, $$2));
+      }
+
+      private int d(boolean $$0, int $$1, int $$2) {
+         int $$3 = $$0 ? $$1 * this.d + $$2 : $$2 * this.d + $$1;
+         return this.d + this.f + this.d + 2 * $$3;
+      }
+
+      private void a(boolean $$0, int $$1) {
+         this.g.set(this.c($$0, $$1));
+         this.h.add($$1);
+      }
+
+      private boolean b(boolean $$0, int $$1) {
+         return this.g.get(this.c($$0, $$1));
+      }
+
+      private int c(boolean $$0, int $$1) {
+         return ($$0 ? 0 : this.d) + $$1;
+      }
+
+      public int b(int $$0, @Nullable IntList $$1) {
+         int $$2 = 0;
+         int $$3 = Math.min($$0, this.b()) + 1;
+
+         while (true) {
+            int $$4 = ($$2 + $$3) / 2;
+            if (this.a($$4, null)) {
+               if ($$3 - $$2 <= 1) {
+                  if ($$4 > 0) {
+                     this.a($$4, $$1);
+                  }
+
+                  return $$4;
+               }
+
+               $$2 = $$4;
+            } else {
+               $$3 = $$4;
             }
          }
       }
 
-      return $$8 == null ? null : new eic($$8);
-   }
+      private int b() {
+         int $$0 = Integer.MAX_VALUE;
 
-   public static void a(bjt $$0, float $$1) {
-      eif $$2 = $$0.do();
-      if ($$2.g() != 0.0) {
-         double $$3 = $$2.h();
-         $$0.r((float)(asy.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
-         $$0.s((float)(asy.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
+         for (coc $$1 : this.c) {
+            int $$2 = 0;
+            IntListIterator var5 = $$1.b().iterator();
 
-         while ($$0.dD() - $$0.O < -180.0F) {
-            $$0.O -= 360.0F;
+            while (var5.hasNext()) {
+               int $$3 = (Integer)var5.next();
+               $$2 = Math.max($$2, cdq.this.a.get($$3));
+            }
+
+            if ($$0 > 0) {
+               $$0 = Math.min($$0, $$2);
+            }
          }
 
-         while ($$0.dD() - $$0.O >= 180.0F) {
-            $$0.O += 360.0F;
-         }
-
-         while ($$0.dB() - $$0.N < -180.0F) {
-            $$0.N -= 360.0F;
-         }
-
-         while ($$0.dB() - $$0.N >= 180.0F) {
-            $$0.N += 360.0F;
-         }
-
-         $$0.s(asy.i($$1, $$0.O, $$0.dD()));
-         $$0.r(asy.i($$1, $$0.N, $$0.dB()));
+         return $$0;
       }
-   }
-
-   public static bia a(bkj $$0, cke $$1) {
-      return $$0.eS().a($$1) ? bia.a : bia.b;
-   }
-
-   public static cdd a(bkj $$0, ckj $$1, float $$2) {
-      chx $$3 = (chx)($$1.d() instanceof chx ? $$1.d() : ckm.nH);
-      cdd $$4 = $$3.a($$0.dL(), $$1, $$0);
-      $$4.a($$0, $$2);
-      if ($$1.a(ckm.uw) && $$4 instanceof cdf) {
-         ((cdf)$$4).a($$1);
-      }
-
-      return $$4;
    }
 }

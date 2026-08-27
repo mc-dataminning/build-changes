@@ -1,111 +1,173 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dok {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
+public abstract class dok<C extends dod> {
+   public static final dok<dog> a = a("cave", new doh(dog.a));
+   public static final dok<dog> b = a("nether_cave", new doj(dog.a));
+   public static final dok<dob> c = a("canyon", new doc(dob.a));
+   protected static final dgw d = cuv.a.o();
+   protected static final dgw e = cuv.nc.o();
+   protected static final ecg f = ech.c.g();
+   protected static final ecg g = ech.e.g();
+   protected Set<ecf> h = ImmutableSet.of(ech.c);
+   private final Codec<doi<C>> i;
 
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+   private static <C extends dod, F extends dok<C>> F a(String $$0, F $$1) {
+      return io.a(jy.Q, $$0, $$1);
    }
 
-   protected static boolean a(crt $$0, ht $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+   public dok(Codec<C> $$0) {
+      this.i = $$0.fieldOf("config").xmap(this::a, doi::b).codec();
+   }
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(asy.b($$5) * (float)$$2);
-            int $$7 = (int)(asy.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
+   public doi<C> a(C $$0) {
+      return new doi<>(this, $$0);
+   }
+
+   public Codec<doi<C>> c() {
+      return this.i;
+   }
+
+   public int d() {
+      return 4;
+   }
+
+   protected boolean a(
+      dof $$0, C $$1, dis $$2, Function<ht, ib<csq>> $$3, dlr $$4, double $$5, double $$6, double $$7, double $$8, double $$9, dir $$10, dok.a $$11
+   ) {
+      cqz $$12 = $$2.f();
+      double $$13 = (double)$$12.b();
+      double $$14 = (double)$$12.c();
+      double $$15 = 16.0 + $$8 * 2.0;
+      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
+         int $$16 = $$12.d();
+         int $$17 = $$12.e();
+         int $$18 = Math.max(ati.a($$5 - $$8) - $$16 - 1, 0);
+         int $$19 = Math.min(ati.a($$5 + $$8) - $$16, 15);
+         int $$20 = Math.max(ati.a($$6 - $$9) - 1, $$0.a() + 1);
+         int $$21 = $$2.y() ? 0 : 7;
+         int $$22 = Math.min(ati.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
+         int $$23 = Math.max(ati.a($$7 - $$8) - $$17 - 1, 0);
+         int $$24 = Math.min(ati.a($$7 + $$8) - $$17, 15);
+         boolean $$25 = false;
+         ht.a $$26 = new ht.a();
+         ht.a $$27 = new ht.a();
+
+         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
+            int $$29 = $$12.a($$28);
+            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
+
+            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
+               int $$32 = $$12.b($$31);
+               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
+               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
+                  MutableBoolean $$34 = new MutableBoolean(false);
+
+                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
+                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
+                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
+                        $$10.a($$28, $$35, $$31);
+                        $$26.d($$29, $$35, $$32);
+                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
+                     }
+                  }
+               }
             }
          }
 
-         return true;
-      }
-   }
-
-   protected static boolean a(cra $$0, ht $$1) {
-      return $$0.a($$1, dok::c);
-   }
-
-   protected static boolean b(cra $$0, ht $$1) {
-      return $$0.a($$1, dok::e);
-   }
-
-   protected static void a(hx $$0, int $$1, boolean $$2, Consumer<dgb> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dgy.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dgy.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dgy.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dgy.a : dgy.b));
-      }
-   }
-
-   protected static void a(cra $$0, ht $$1, hx $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         ht.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(cuc.rs)) {
-               $$3x = $$3x.a(czq.d, Boolean.valueOf($$0.y($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(cra $$0, ht $$1) {
-      dgb $$2 = $$0.a_($$1);
-      if ($$2.a(aqs.br)) {
-         $$0.a($$1, cuc.rt.o(), 2);
-         return true;
+         return $$25;
       } else {
          return false;
       }
    }
 
-   private static dgb a(hx $$0, dgy $$1) {
-      return cuc.rs.o().a(czq.b, $$0).a(czq.c, $$1);
+   protected boolean a(dof $$0, C $$1, dis $$2, Function<ht, ib<csq>> $$3, dir $$4, ht.a $$5, ht.a $$6, dlr $$7, MutableBoolean $$8) {
+      dgw $$9 = $$2.a_($$5);
+      if ($$9.a(cuv.i) || $$9.a(cuv.fl)) {
+         $$8.setTrue();
+      }
+
+      if (!this.a($$1, $$9) && !b($$1)) {
+         return false;
+      } else {
+         dgw $$10 = this.a($$0, $$1, $$5, $$7);
+         if ($$10 == null) {
+            return false;
+         } else {
+            $$2.a($$5, $$10, false);
+            if ($$7.a() && !$$10.u().c()) {
+               $$2.e($$5);
+            }
+
+            if ($$8.isTrue()) {
+               $$6.a($$5, hx.a);
+               if ($$2.a_($$6).a(cuv.j)) {
+                  $$0.a($$3, $$2, $$6, !$$10.u().c()).ifPresent($$2x -> {
+                     $$2.a($$6, $$2x, false);
+                     if (!$$2x.u().c()) {
+                        $$2.e($$6);
+                     }
+                  });
+               }
+            }
+
+            return true;
+         }
+      }
    }
 
-   public static boolean a(dgb $$0) {
-      return b($$0) || $$0.a(cuc.H);
+   @Nullable
+   private dgw a(dof $$0, C $$1, ht $$2, dlr $$3) {
+      if ($$2.v() <= $$1.g.a($$0)) {
+         return g.g();
+      } else {
+         dgw $$4 = $$3.a(new dly.e($$2.u(), $$2.v(), $$2.w()), 0.0);
+         if ($$4 == null) {
+            return b($$1) ? $$1.h.e() : null;
+         } else {
+            return b($$1) ? b($$1, $$4) : $$4;
+         }
+      }
    }
 
-   public static boolean b(dgb $$0) {
-      return $$0.a(cuc.rt) || $$0.a(aqs.br);
+   private static dgw b(dod $$0, dgw $$1) {
+      if ($$1.a(cuv.a)) {
+         return $$0.h.b();
+      } else if ($$1.a(cuv.G)) {
+         dgw $$2 = $$0.h.c();
+         return $$2.b(dhm.C) ? $$2.a(dhm.C, Boolean.valueOf(true)) : $$2;
+      } else {
+         return $$1.a(cuv.H) ? $$0.h.d() : $$1;
+      }
    }
 
-   public static boolean c(dgb $$0) {
-      return $$0.i() || $$0.a(cuc.G);
+   public abstract boolean a(dof var1, C var2, dis var3, Function<ht, ib<csq>> var4, ato var5, dlr var6, cqz var7, dir var8);
+
+   public abstract boolean a(C var1, ato var2);
+
+   protected boolean a(C $$0, dgw $$1) {
+      return $$1.a($$0.i);
    }
 
-   public static boolean d(dgb $$0) {
-      return !$$0.i() && !$$0.a(cuc.G);
+   protected static boolean a(cqz $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
+      double $$6 = (double)$$0.b();
+      double $$7 = (double)$$0.c();
+      double $$8 = $$1 - $$6;
+      double $$9 = $$2 - $$7;
+      double $$10 = (double)($$4 - $$3);
+      double $$11 = (double)($$5 + 2.0F + 16.0F);
+      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
    }
 
-   public static boolean e(dgb $$0) {
-      return $$0.i() || $$0.a(cuc.G) || $$0.a(cuc.H);
+   private static boolean b(dod $$0) {
+      return $$0.h.a();
+   }
+
+   public interface a {
+      boolean shouldSkip(dof var1, double var2, double var4, double var6, int var8);
    }
 }

@@ -27,22 +27,22 @@ public record bq(
    Optional<bq> m,
    Optional<String> n
 ) {
-   public static final Codec<bq> a = asg.a(
+   public static final Codec<bq> a = asq.a(
       (Function<Codec<bq>, Codec<bq>>)($$0 -> RecordCodecBuilder.create(
             $$1 -> $$1.group(
-                     asg.a(bs.a, "type").forGetter(bq::b),
-                     asg.a(bh.a, "distance").forGetter(bq::c),
-                     asg.a(cj.a, "location").forGetter(bq::d),
-                     asg.a(cj.a, "stepping_on").forGetter(bq::e),
-                     asg.a(cm.a, "effects").forGetter(bq::f),
-                     asg.a(cn.a, "nbt").forGetter(bq::g),
-                     asg.a(bo.a, "flags").forGetter(bq::h),
-                     asg.a(bn.a, "equipment").forGetter(bq::i),
-                     asg.a(br.a, "type_specific").forGetter(bq::j),
-                     asg.a($$0, "vehicle").forGetter(bq::k),
-                     asg.a($$0, "passenger").forGetter(bq::l),
-                     asg.a($$0, "targeted_entity").forGetter(bq::m),
-                     asg.a(Codec.STRING, "team").forGetter(bq::n)
+                     asq.a(bs.a, "type").forGetter(bq::b),
+                     asq.a(bh.a, "distance").forGetter(bq::c),
+                     asq.a(cj.a, "location").forGetter(bq::d),
+                     asq.a(cj.a, "stepping_on").forGetter(bq::e),
+                     asq.a(cm.a, "effects").forGetter(bq::f),
+                     asq.a(cn.a, "nbt").forGetter(bq::g),
+                     asq.a(bo.a, "flags").forGetter(bq::h),
+                     asq.a(bn.a, "equipment").forGetter(bq::i),
+                     asq.a(br.a, "type_specific").forGetter(bq::j),
+                     asq.a($$0, "vehicle").forGetter(bq::k),
+                     asq.a($$0, "passenger").forGetter(bq::l),
+                     asq.a($$0, "targeted_entity").forGetter(bq::m),
+                     asq.a(Codec.STRING, "team").forGetter(bq::n)
                   )
                   .apply($$1, bq::new)
          ))
@@ -56,7 +56,7 @@ public record bq(
    public static List<bc> b(JsonObject $$0, String $$1, bg $$2) {
       JsonElement $$3 = $$0.get($$1);
       if ($$3 != null && !$$3.isJsonNull()) {
-         JsonArray $$4 = aso.n($$3, $$1);
+         JsonArray $$4 = asy.n($$3, $$1);
          List<bc> $$5 = new ArrayList<>($$4.size());
 
          for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
@@ -70,7 +70,7 @@ public record bq(
    }
 
    private static Optional<bc> a(String $$0, bg $$1, @Nullable JsonElement $$2) {
-      Optional<Optional<bc>> $$3 = bc.a($$0, $$1, $$2, efs.l);
+      Optional<Optional<bc>> $$3 = bc.a($$0, $$1, $$2, egv.l);
       if ($$3.isPresent()) {
          return $$3.get();
       } else {
@@ -92,15 +92,15 @@ public record bq(
    }
 
    public static bc a(bq $$0) {
-      egh $$1 = egk.a(edi.b.a, $$0).build();
+      ehk $$1 = ehn.a(eel.b.a, $$0).build();
       return new bc(List.of($$1));
    }
 
-   public boolean a(alr $$0, @Nullable bjt $$1) {
+   public boolean a(amb $$0, @Nullable bki $$1) {
       return this.a($$0.x(), $$0.dj(), $$1);
    }
 
-   public boolean a(alq $$0, @Nullable eif $$1, @Nullable bjt $$2) {
+   public boolean a(ama $$0, @Nullable eji $$1, @Nullable bki $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.b.isPresent() && !this.b.get().b($$2.ag())) {
@@ -118,7 +118,7 @@ public record bq(
             return false;
          } else {
             if (this.e.isPresent()) {
-               eif $$3 = eif.b($$2.aH());
+               eji $$3 = eji.b($$2.aH());
                if (!this.e.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -138,11 +138,11 @@ public record bq(
                return false;
             } else if (this.l.isPresent() && $$2.cP().stream().noneMatch($$2x -> this.l.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.m.isPresent() && !this.m.get().a($$0, $$1, $$2 instanceof bkl ? ((bkl)$$2).q() : null)) {
+            } else if (this.m.isPresent() && !this.m.get().a($$0, $$1, $$2 instanceof bla ? ((bla)$$2).q() : null)) {
                return false;
             } else {
                if (this.n.isPresent()) {
-                  ejg $$4 = $$2.cf();
+                  ekj $$4 = $$2.cf();
                   if ($$4 == null || !this.n.get().equals($$4.b())) {
                      return false;
                   }
@@ -162,9 +162,9 @@ public record bq(
       return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
    }
 
-   public static edi b(alr $$0, bjt $$1) {
-      edo $$2 = new edo.a($$0.x()).a(eft.a, $$1).a(eft.f, $$0.dj()).a(efs.l);
-      return new edi.a($$2).a(Optional.empty());
+   public static eel b(amb $$0, bki $$1) {
+      eer $$2 = new eer.a($$0.x()).a(egw.a, $$1).a(egw.f, $$0.dj()).a(egv.l);
+      return new eel.a($$2).a(Optional.empty());
    }
 
    public static class a {
@@ -186,12 +186,12 @@ public record bq(
          return new bq.a();
       }
 
-      public bq.a a(bjx<?> $$0) {
+      public bq.a a(bkm<?> $$0) {
          this.a = Optional.of(bs.a($$0));
          return this;
       }
 
-      public bq.a a(arh<bjx<?>> $$0) {
+      public bq.a a(arr<bkm<?>> $$0) {
          this.a = Optional.of(bs.a($$0));
          return this;
       }

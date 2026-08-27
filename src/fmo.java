@@ -1,18 +1,17 @@
 public class fmo extends fmq {
-   protected fmo(fjr $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
+   protected fmo(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, foq $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   protected fmo(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
+   public static class a implements fny<jv> {
+      private final foq a;
 
-   @Override
-   public final void a(eml $$0, eqz $$1, float $$2) {
-   }
+      public a(foq $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public fmu b() {
-      return fmu.f;
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fmo($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
+      }
    }
 }

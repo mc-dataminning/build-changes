@@ -1,53 +1,32 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Locale;
 
-public class asd<K, V extends asd.a<K>> {
-   private final Map<K, V> a = new HashMap<>();
-
-   public asd<K, V> a(K $$0, V $$1) {
-      this.a.put($$0, $$1);
-      return this;
-   }
-
-   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
-      if ($$1.add($$2)) {
-         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
-         V $$4 = this.a.get($$2);
-         if ($$4 != null) {
-            $$3.accept($$2, $$4);
+public record asd(int b) {
+   private static final String c = "#";
+   public static final Codec<asd> a = Codec.STRING.comapFlatMap($$0 -> {
+      if (!$$0.startsWith("#")) {
+         return DataResult.error(() -> "Not a color code: " + $$0);
+      } else {
+         try {
+            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
+            return DataResult.success(new asd($$1));
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
          }
       }
+   }, asd::b);
+
+   private String b() {
+      return String.format(Locale.ROOT, "#%08X", this.b);
    }
 
-   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
-      Collection<K> $$3 = $$0.get($$2);
-      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
+   @Override
+   public String toString() {
+      return this.b();
    }
 
-   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
-      if (!a($$0, $$1, $$2)) {
-         $$0.put($$1, $$2);
-      }
-   }
-
-   public void a(BiConsumer<K, V> $$0) {
-      Multimap<K, K> $$1 = HashMultimap.create();
-      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
-      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
-      Set<K> $$2 = new HashSet<>();
-      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
-   }
-
-   public interface a<K> {
-      void a(Consumer<K> var1);
-
-      void b(Consumer<K> var1);
+   public int a() {
+      return this.b;
    }
 }

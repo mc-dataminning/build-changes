@@ -1,11 +1,45 @@
-import javax.annotation.Nullable;
+public class fzf extends fzs<bwt, fhe<bwt>> {
+   private final fqd a;
 
-public interface fzf extends fzi {
-   @Deprecated
-   @Override
-   default float call(ckj $$0, @Nullable fjr $$1, @Nullable bkj $$2, int $$3) {
-      return asy.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
+   public fzf(fxf<bwt, fhe<bwt>> $$0, fqd $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   float unclampedCall(ckj var1, @Nullable fjr var2, @Nullable bkj var3, int var4);
+   public void a(enk $$0, fqh $$1, int $$2, bwt $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fD();
+      boolean $$11 = $$3.n_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
+      }
+
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.E($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.n_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
+      }
+
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
+      }
+
+      clb $$14 = $$3.c(bkn.a);
+      this.a.a($$3, $$14, cky.h, false, $$0, $$1, $$2);
+      $$0.b();
+   }
 }

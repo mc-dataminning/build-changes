@@ -1,53 +1,81 @@
-public class dya {
-   private static final afw[] a = new afw[]{
-      new afw("nether_fossils/fossil_1"),
-      new afw("nether_fossils/fossil_2"),
-      new afw("nether_fossils/fossil_3"),
-      new afw("nether_fossils/fossil_4"),
-      new afw("nether_fossils/fossil_5"),
-      new afw("nether_fossils/fossil_6"),
-      new afw("nether_fossils/fossil_7"),
-      new afw("nether_fossils/fossil_8"),
-      new afw("nether_fossils/fossil_9"),
-      new afw("nether_fossils/fossil_10"),
-      new afw("nether_fossils/fossil_11"),
-      new afw("nether_fossils/fossil_12"),
-      new afw("nether_fossils/fossil_13"),
-      new afw("nether_fossils/fossil_14")
-   };
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-   public static void a(dzu $$0, dwf $$1, ate $$2, ht $$3) {
-      dal $$4 = dal.a($$2);
-      $$1.a(new dya.a($$0, ac.a(a, $$2), $$3, $$4));
+public class dya extends dyc {
+   public static final Codec<dya> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dyc.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, dya::new)
+   );
+   private final List<dyc> b;
+
+   public dya(List<dyc> $$0, dye.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
+      } else {
+         this.b = $$0;
+         this.b($$1);
+      }
    }
 
-   public static class a extends dwk {
-      public a(dzu $$0, afw $$1, ht $$2, dal $$3) {
-         super(dwr.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+   @Override
+   public iw a(eaw $$0, dbf $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (dyc $$5 : this.b) {
+         iw $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
       }
 
-      public a(dzu $$0, rt $$1) {
-         super(dwr.ac, $$1, $$0, $$1x -> a(dal.valueOf($$1.l("Rot"))));
+      return new iw($$2, $$3, $$4);
+   }
+
+   @Override
+   public List<eav.c> a(eaw $$0, ht $$1, dbf $$2, ato $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public dwn a(eaw $$0, ht $$1, dbf $$2) {
+      Stream<dwn> $$3 = this.b.stream().filter($$0x -> $$0x != dxv.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return dwn.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
+   }
+
+   @Override
+   public boolean a(eaw $$0, csm $$1, csk $$2, dit $$3, ht $$4, ht $$5, dbf $$6, dwn $$7, ato $$8, boolean $$9) {
+      for (dyc $$10 : this.b) {
+         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
+            return false;
+         }
       }
 
-      private static dzp a(dal $$0) {
-         return new dzp().a($$0).a(cyv.a).a(dyv.d);
-      }
+      return true;
+   }
 
-      @Override
-      protected void a(dwq $$0, rt $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
+   @Override
+   public dyd<?> a() {
+      return dyd.b;
+   }
 
-      @Override
-      protected void a(String $$0, ht $$1, cro $$2, ate $$3, dvs $$4) {
-      }
+   @Override
+   public dyc a(dye.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
+   }
 
-      @Override
-      public void a(crt $$0, crr $$1, dhy $$2, ate $$3, dvs $$4, cqg $$5, ht $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
+   }
+
+   private void b(dye.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
    }
 }

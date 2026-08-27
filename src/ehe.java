@@ -1,60 +1,33 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record ehe(ehk b, String c, float d) implements ehc {
-   public static final Codec<ehe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehl.a.fieldOf("target").forGetter(ehe::c),
-               Codec.STRING.fieldOf("score").forGetter(ehe::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(ehe::e)
-            )
-            .apply($$0, ehe::new)
-   );
+public record ehe(Optional<bf> b) implements ehk {
+   public static final Codec<ehe> a = RecordCodecBuilder.create($$0 -> $$0.group(asq.a(bf.a, "predicate").forGetter(ehe::c)).apply($$0, ehe::new));
 
    @Override
-   public ehb b() {
-      return ehd.e;
+   public ehl b() {
+      return ehm.n;
    }
 
    @Override
-   public Set<efq<?>> a() {
-      return this.b.b();
+   public Set<egt<?>> a() {
+      return ImmutableSet.of(egw.f, egw.c);
    }
 
-   public static ehe a(edi.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
+   public boolean a(eel $$0) {
+      bjg $$1 = $$0.c(egw.c);
+      eji $$2 = $$0.c(egw.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public static ehe a(edi.b $$0, String $$1, float $$2) {
-      return new ehe(ehh.a($$0), $$1, $$2);
+   public static ehk.a a(bf.a $$0) {
+      return () -> new ehe(Optional.of($$0.b()));
    }
 
-   @Override
-   public float b(edi $$0) {
-      String $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         eje $$2 = $$0.d().f();
-         ejb $$3 = $$2.b(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            return !$$2.b($$1, $$3) ? 0.0F : (float)$$2.c($$1, $$3).b() * this.d;
-         }
-      }
-   }
-
-   public ehk c() {
+   public Optional<bf> c() {
       return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.d;
    }
 }

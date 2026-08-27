@@ -1,78 +1,76 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public class aun extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("generic.maxHealth", "generic.max_health")
-      .put("Max Health", "generic.max_health")
-      .put("zombie.spawnReinforcements", "zombie.spawn_reinforcements")
-      .put("Spawn Reinforcements Chance", "zombie.spawn_reinforcements")
-      .put("horse.jumpStrength", "horse.jump_strength")
-      .put("Jump Strength", "horse.jump_strength")
-      .put("generic.followRange", "generic.follow_range")
-      .put("Follow Range", "generic.follow_range")
-      .put("generic.knockbackResistance", "generic.knockback_resistance")
-      .put("Knockback Resistance", "generic.knockback_resistance")
-      .put("generic.movementSpeed", "generic.movement_speed")
-      .put("Movement Speed", "generic.movement_speed")
-      .put("generic.flyingSpeed", "generic.flying_speed")
-      .put("Flying Speed", "generic.flying_speed")
-      .put("generic.attackDamage", "generic.attack_damage")
-      .put("generic.attackKnockback", "generic.attack_knockback")
-      .put("generic.attackSpeed", "generic.attack_speed")
-      .put("generic.armorToughness", "generic.armor_toughness")
-      .build();
+public enum aun {
+   a(ban.a),
+   b(ban.b),
+   c(ban.c),
+   d(ban.d),
+   e(ban.e),
+   f(ban.f),
+   g(ban.g),
+   h(ban.h),
+   i(ban.i),
+   j(ban.j),
+   k(ban.k),
+   l(ban.l),
+   m(ban.m),
+   n(ban.o),
+   o(ban.n),
+   p(ban.p),
+   q(ban.q),
+   r(ban.I),
+   s(ban.r);
 
-   public aun(Schema $$0) {
-      super($$0, false);
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private aun(TypeReference $$0) {
+      this.u = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(baa.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("Rename ItemStack Attributes", $$0, $$1x -> $$1x.updateTyped($$1, aun::a)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("Rename Entity Attributes", this.getInputSchema().getType(baa.x), aun::b),
-            this.fixTypeEverywhereTyped("Rename Player Attributes", this.getInputSchema().getType(baa.b), aun::b)
+   static int a() {
+      return aa.b().d().c();
+   }
+
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(aun.a())));
          }
-      );
+
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = aun.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map($$0x -> a.getOrDefault($$0x, $$0x)).map($$0::createString), $$0);
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
    }
 
-   private static Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "AttributeModifiers",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", aun::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
    }
 
-   private static Typed<?> b(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Attributes",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", aun::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
+   public rz a(DataFixer $$0, rz $$1, int $$2, int $$3) {
+      return (rz)this.a($$0, new Dynamic(sn.a, $$1), $$2, $$3).getValue();
+   }
+
+   public rz a(DataFixer $$0, rz $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

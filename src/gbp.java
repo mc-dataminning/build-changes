@@ -1,12 +1,8 @@
-import com.google.gson.JsonObject;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gbp implements ant<gbo> {
-   public gbo b(JsonObject $$0) {
-      return new gbo(gbo.a.a(aso.a($$0, "hat", "none")));
-   }
-
-   @Override
-   public String a() {
-      return "villager";
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gbp {
 }

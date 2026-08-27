@@ -1,43 +1,52 @@
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class apd extends apl<String, ape> {
-   public apd(File $$0) {
-      super($$0);
-   }
+public interface apd extends apg {
+   Set<String> a();
 
-   @Override
-   protected apk<String> a(JsonObject $$0) {
-      return new ape($$0);
-   }
+   List<apb> a(agg var1);
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
-   }
+   Map<agg, apb> b(String var1, Predicate<agg> var2);
 
-   public boolean a(String $$0) {
-      return this.d($$0);
-   }
+   Map<agg, List<apb>> c(String var1, Predicate<agg> var2);
 
-   @Nullable
-   public ape b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
-   }
+   Stream<anr> b();
 
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
+   public static enum a implements apd {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
       }
 
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
+      @Override
+      public Optional<apb> getResource(agg $$0) {
+         return Optional.empty();
       }
 
-      return $$1;
+      @Override
+      public List<apb> a(agg $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<agg, apb> b(String $$0, Predicate<agg> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<agg, List<apb>> c(String $$0, Predicate<agg> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<anr> b() {
+         return Stream.of();
+      }
    }
 }

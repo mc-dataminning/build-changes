@@ -1,76 +1,111 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dbv extends cua {
+public class dbv extends cut implements dbt {
    public static final MapCodec<dbv> a = b(dbv::new);
-   private static final ui d = ui.c("container.stonecutter");
-   public static final dgv b = cxu.aE;
-   protected static final eiy c = cua.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   public static final dhu<die> b = dhm.bh;
+   public static final dhn c = dhm.C;
+   protected static final ekb d = cut.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final ekb e = cut.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
 
    @Override
-   public MapCodec<dbv> a() {
+   public MapCodec<? extends dbv> a() {
       return a;
    }
 
-   public dbv(dga.d $$0) {
+   public dbv(dgv.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, hx.c));
+      this.k(this.o().a(b, die.b).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dgb a(cmr $$0) {
-      return this.o().a(b, $$0.g().g());
+   public boolean g_(dgw $$0) {
+      return $$0.c(b) != die.c;
    }
 
    @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      if ($$1.B) {
-         return bib.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(aqn.ay);
-         return bib.b;
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      die $$4 = $$0.c(b);
+      switch ($$4) {
+         case c:
+            return ejy.b();
+         case a:
+            return e;
+         default:
+            return d;
       }
    }
 
    @Nullable
    @Override
-   public bie b(dgb $$0, cqz $$1, ht $$2) {
-      return new bij(($$2x, $$3, $$4) -> new chl($$2x, $$3, cga.a($$1, $$2)), d);
+   public dgw a(cnj $$0) {
+      ht $$1 = $$0.a();
+      dgw $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.a(b, die.c).a(c, Boolean.valueOf(false));
+      } else {
+         ecg $$3 = $$0.q().b_($$1);
+         dgw $$4 = this.o().a(b, die.b).a(c, Boolean.valueOf($$3.a() == ech.c));
+         hx $$5 = $$0.k();
+         return $$5 != hx.a && ($$5 == hx.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, die.a);
+      }
    }
 
    @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return c;
+   public boolean a(dgw $$0, cnj $$1) {
+      clb $$2 = $$1.n();
+      die $$3 = $$0.c(b);
+      if ($$3 == die.c || !$$2.a(this.k())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
+         hx $$5 = $$1.k();
+         return $$3 == die.b ? $$5 == hx.b || $$4 && $$5.o().d() : $$5 == hx.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
+      }
    }
 
    @Override
-   public boolean g_(dgb $$0) {
-      return true;
+   public ecg c_(dgw $$0) {
+      return $$0.c(c) ? ech.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public dae b_(dgb $$0) {
-      return dae.c;
+   public boolean a(crt $$0, ht $$1, dgw $$2, ecg $$3) {
+      return $$2.c(b) != die.c ? dbt.super.a($$0, $$1, $$2, $$3) : false;
    }
 
    @Override
-   public dgb a(dgb $$0, dal $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public boolean a(@Nullable cdm $$0, cqy $$1, ht $$2, dgw $$3, ecf $$4) {
+      return $$3.c(b) != die.c ? dbt.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 
    @Override
-   public dgb a(dgb $$0, cyv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ech.c, ech.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
-      return false;
+   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
+      switch ($$3) {
+         case a:
+            return false;
+         case b:
+            return $$1.b_($$2).a(arh.a);
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 }

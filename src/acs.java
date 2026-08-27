@@ -1,32 +1,14 @@
-public class acs implements wb<aca> {
-   private final int a;
-   private final int b;
-
-   public acs(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public acs(tl $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
+public record acs(vi.a a) implements wk<acj> {
+   public acs(tu $$0) {
+      this(vi.a.a($$0));
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
+   public void a(tu $$0) {
+      vi.a.a($$0, this.a);
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
    }
 }

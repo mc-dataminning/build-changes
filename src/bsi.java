@@ -1,22 +1,32 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bsi extends bre {
-   private final bxt a;
-   private final double b;
+public class bsi extends brt {
+   private final blh a;
+   @Nullable
+   private bky b;
    private double c;
    private double d;
    private double e;
+   private final double f;
+   private final float g;
 
-   public bsi(bxt $$0, double $$1) {
+   public bsi(blh $$0, double $$1, float $$2) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bre.a.a));
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(brt.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gt() && this.a.bO()) {
-         eif $$0 = buz.a(this.a, 5, 4);
+      this.b = this.a.q();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
+         return false;
+      } else {
+         eji $$0 = bvo.a(this.a, 16, 7, this.b.dj(), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {
@@ -25,43 +35,21 @@ public class bsi extends bre {
             this.e = $$0.e;
             return true;
          }
-      } else {
-         return false;
       }
-   }
-
-   @Override
-   public void c() {
-      this.a.L().a(this.c, this.d, this.e, this.b);
    }
 
    @Override
    public boolean b() {
-      return !this.a.gt() && !this.a.L().l() && this.a.bO();
+      return !this.a.L().l() && this.b.bv() && this.b.f(this.a) < (double)(this.g * this.g);
    }
 
    @Override
-   public void e() {
-      if (!this.a.gt() && this.a.ef().a(this.a(50)) == 0) {
-         bjt $$0 = this.a.cQ();
-         if ($$0 == null) {
-            return;
-         }
+   public void d() {
+      this.b = null;
+   }
 
-         if ($$0 instanceof ccx $$1) {
-            int $$2 = this.a.gz();
-            int $$3 = this.a.gF();
-            if ($$3 > 0 && this.a.ef().a($$3) < $$2) {
-               this.a.h($$1);
-               return;
-            }
-
-            this.a.v(5);
-         }
-
-         this.a.bA();
-         this.a.gK();
-         this.a.dL().a(this.a, (byte)6);
-      }
+   @Override
+   public void c() {
+      this.a.L().a(this.c, this.d, this.e, this.f);
    }
 }

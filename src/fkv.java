@@ -1,75 +1,177 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Supplier;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
+import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
+import com.mojang.authlib.exceptions.InvalidCredentialsException;
+import com.mojang.authlib.exceptions.UserBannedException;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.logging.LogUtils;
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.client.ClientBrandRetriever;
+import org.slf4j.Logger;
 
-public class fkv extends fkq {
-   final Supplier<gba> f;
+public class fkv implements aem {
+   private static final Logger a = LogUtils.getLogger();
+   private final esr b;
+   @Nullable
+   private final flh c;
+   @Nullable
+   private final fah d;
+   private final Consumer<ur> e;
+   private final ts f;
+   private final boolean g;
+   @Nullable
+   private final Duration h;
+   @Nullable
+   private String i;
+   private final AtomicReference<fkv.a> j = new AtomicReference<>(fkv.a.a);
 
-   fkv(UUID $$0, Instant $$1, UUID $$2, Supplier<gba> $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public fkv(ts $$0, esr $$1, @Nullable flh $$2, @Nullable fah $$3, boolean $$4, @Nullable Duration $$5, Consumer<ur> $$6) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$6;
+      this.g = $$4;
+      this.h = $$5;
    }
 
-   public Supplier<gba> a() {
-      return this.f;
-   }
-
-   public fkv c() {
-      fkv $$0 = new fkv(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
+   private void a(fkv.a $$0) {
+      fkv.a $$1 = this.j.updateAndGet($$1x -> {
+         if (!$$0.f.contains($$1x)) {
+            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
+         } else {
+            return $$0;
+         }
+      });
+      this.e.accept($$1.e);
    }
 
    @Override
-   public ezd a(ezd $$0, fku $$1) {
-      return new fdh($$0, $$1, this);
+   public void a(aep $$0) {
+      this.a(fkv.a.b);
+
+      Cipher $$4;
+      Cipher $$5;
+      String $$3;
+      aev $$7;
+      try {
+         SecretKey $$1 = ash.a();
+         PublicKey $$2 = $$0.d();
+         $$3 = new BigInteger(ash.a($$0.a(), $$2, $$1)).toString(16);
+         $$4 = ash.a(2, $$1);
+         $$5 = ash.a(1, $$1);
+         byte[] $$6 = $$0.e();
+         $$7 = new aev($$1, $$2, $$6);
+      } catch (Exception var9) {
+         throw new IllegalStateException("Protocol error", var9);
+      }
+
+      asz.a.submit(() -> {
+         ur $$4x = this.b($$3);
+         if ($$4x != null) {
+            if (this.c == null || !this.c.d()) {
+               this.f.a($$4x);
+               return;
+            }
+
+            a.warn($$4x.getString());
+         }
+
+         this.a(fkv.a.c);
+         this.f.a($$7, ub.a(() -> this.f.a($$4, $$5)));
+      });
    }
 
-   public static class a extends fkq.a<fkv> {
-      public a(fkv $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   @Nullable
+   private ur b(String $$0) {
+      try {
+         this.e().joinServer(this.b.U().b(), this.b.U().d(), $$0);
+         return null;
+      } catch (AuthenticationUnavailableException var3) {
+         return ur.a("disconnect.loginFailedInfo", ur.c("disconnect.loginFailedInfo.serversUnavailable"));
+      } catch (InvalidCredentialsException var4) {
+         return ur.a("disconnect.loginFailedInfo", ur.c("disconnect.loginFailedInfo.invalidSession"));
+      } catch (InsufficientPrivilegesException var5) {
+         return ur.a("disconnect.loginFailedInfo", ur.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+         return ur.a("disconnect.loginFailedInfo", ur.c("disconnect.loginFailedInfo.userBanned"));
+      } catch (AuthenticationException var7) {
+         return ur.a("disconnect.loginFailedInfo", var7.getMessage());
       }
+   }
 
-      public a(UUID $$0, Supplier<gba> $$1, AbuseReportLimits $$2) {
-         super(new fkv(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+   private MinecraftSessionService e() {
+      return this.b.aj();
+   }
+
+   @Override
+   public void a(aeo $$0) {
+      this.a(fkv.a.d);
+      GameProfile $$1 = $$0.a();
+      this.f.a(new aew());
+      this.f.a(new fku(this.b, this.f, new fla($$1, this.b.t().a(this.g, this.h, this.i), fky.a().a(), cfx.h, null, this.c, this.d)));
+      this.f.a(new ww(new xc(ClientBrandRetriever.getClientModName())));
+      this.f.a(new wv(this.b.m.at()));
+   }
+
+   @Override
+   public void a(ur $$0) {
+      if (this.c != null && this.c.e()) {
+         this.b.a(new gha(this.d, uq.q, $$0));
+      } else {
+         this.b.a(new ezj(this.d, uq.q, $$0));
       }
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
+   @Override
+   public boolean c() {
+      return this.f.k();
+   }
+
+   @Override
+   public void a(aer $$0) {
+      this.f.a($$0.a());
+   }
+
+   @Override
+   public void a(aeq $$0) {
+      if (!this.f.g()) {
+         this.f.a($$0.a(), false);
       }
+   }
 
-      @Nullable
-      @Override
-      public fkq.b c() {
-         if (this.a.e == null) {
-            return fkq.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fkq.b.d : null;
-         }
-      }
+   @Override
+   public void a(aen $$0) {
+      this.e.accept(ur.c("connect.negotiating"));
+      this.f.a(new aet($$0.a(), null));
+   }
 
-      @Override
-      public Either<fkq.c, fkq.b> a(fku $$0) {
-         fkq.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            gba $$4 = this.a.f.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new fkq.c(this.a.a, fkt.b, $$6));
-         }
+   public void a(String $$0) {
+      this.i = $$0;
+   }
+
+   static enum a {
+      a(ur.c("connect.connecting"), Set.of()),
+      b(ur.c("connect.authorizing"), Set.of(a)),
+      c(ur.c("connect.encrypting"), Set.of(b)),
+      d(ur.c("connect.joining"), Set.of(c, a));
+
+      final ur e;
+      final Set<fkv.a> f;
+
+      private a(ur $$0, Set<fkv.a> $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
    }
 }

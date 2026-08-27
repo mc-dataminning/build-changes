@@ -1,56 +1,32 @@
-public class acx implements wb<aca> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+public class acx implements wk<acj> {
+   private final int a;
+   private final int b;
 
-   public acx(bjt $$0) {
-      this.a = $$0.dq();
-      this.b = $$0.ds();
-      this.c = $$0.dw();
-      this.d = $$0.dB();
-      this.e = $$0.dD();
+   public acx(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public acx(tl $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-   }
-
-   @Override
-   public void a(tl $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-   }
-
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public acx(tu $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.readByte();
+   }
+
+   @Override
+   public void a(tu $$0) {
+      $$0.k(this.a);
+      $$0.k(this.b);
+   }
+
+   public int a() {
       return this.a;
    }
 
-   public double d() {
+   public int d() {
       return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

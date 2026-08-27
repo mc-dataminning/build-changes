@@ -1,45 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import java.util.List;
 
-public class drv extends drt {
-   public static final Codec<drv> d = RecordCodecBuilder.create(
+public class drv implements drn {
+   public static final Codec<drv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
+               Codec.list(drv.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, drv::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+   public final List<drv.a> b;
+   public final int c;
+   public final float d;
 
-   public drv(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public drv(List<drv.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
    }
 
-   @Override
-   protected dru<?> b() {
-      return dru.b;
+   public drv(List<drv.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
-      } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
+   public drv(eap $$0, dgw $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new drv.a($$0, $$1)), $$2, $$3);
+   }
+
+   public drv(eap $$0, dgw $$1, int $$2) {
+      this(ImmutableList.of(new drv.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static drv.a a(eap $$0, dgw $$1) {
+      return new drv.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<drv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eap.c.fieldOf("target").forGetter($$0x -> $$0x.b), dgw.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, drv.a::new)
+      );
+      public final eap b;
+      public final dgw c;
+
+      a(eap $$0, dgw $$1) {
+         this.b = $$0;
+         this.c = $$1;
       }
    }
 }

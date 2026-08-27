@@ -1,43 +1,36 @@
-public class eow extends gfx {
-   private static final ui a = ui.c("mco.client.incompatible.title");
-   private static final ui[] b = new ui[]{
-      ui.c("mco.client.incompatible.msg.line1"), ui.c("mco.client.incompatible.msg.line2"), ui.c("mco.client.incompatible.msg.line3")
-   };
-   private static final ui[] c = new ui[]{ui.c("mco.client.incompatible.msg.line1"), ui.c("mco.client.incompatible.msg.line2")};
-   private final ezd y;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-   public eow(ezd $$0) {
-      super(a);
-      this.y = $$0;
-   }
+public class eow extends epg {
+   private static final Logger b = LogUtils.getLogger();
+   public List<eov> a;
 
-   @Override
-   public void aM_() {
-      this.d(etj.a(uh.k, $$0 -> this.f.a(this.y)).a(this.g / 2 - 100, h(12), 200, 20).a());
-   }
+   public static eow a(String $$0) {
+      eow $$1 = new eow();
+      $$1.a = Lists.newArrayList();
 
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, h(3), -65536);
-      ui[] $$4 = this.C();
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("lists").isJsonArray()) {
+            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
 
-      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-         $$0.a(this.i, $$4[$$5], this.g / 2, h(5) + $$5 * 12, -1);
+            while ($$5.hasNext()) {
+               $$1.a.add(eov.a($$5.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var6) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
       }
-   }
 
-   private ui[] C() {
-      return aa.b().g() ? c : b;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.f.a(this.y);
-         return true;
-      }
+      return $$1;
    }
 }

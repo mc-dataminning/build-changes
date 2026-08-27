@@ -1,255 +1,151 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class fci extends fah {
+   private static final int a = 7;
+   private static final ur b = ur.c("jigsaw_block.joint_label");
+   private static final ur c = ur.c("jigsaw_block.pool");
+   private static final ur k = ur.c("jigsaw_block.name");
+   private static final ur l = ur.c("jigsaw_block.target");
+   private static final ur m = ur.c("jigsaw_block.final_state");
+   private final dfr n;
+   private euv o;
+   private euv p;
+   private euv q;
+   private euv r;
+   int t;
+   private boolean u = true;
+   private eut<dfr.a> v;
+   private eum w;
+   private eum x;
+   private dfr.a y;
 
-public class fci {
-   private final aoe a;
-   final List<aob> b;
-   final List<aob> c;
-   final Function<aob, afw> d;
-   final Runnable e;
-   private final Consumer<aoe> f;
-
-   public fci(Runnable $$0, Function<aob, afw> $$1, aoe $$2, Consumer<aoe> $$3) {
-      this.e = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = Lists.newArrayList($$2.f());
-      Collections.reverse(this.b);
-      this.c = Lists.newArrayList($$2.c());
-      this.c.removeAll(this.b);
-      this.f = $$3;
+   public fci(dfr $$0) {
+      super(esj.a);
+      this.n = $$0;
    }
 
-   public Stream<fci.a> a() {
-      return this.c.stream().map($$0 -> new fci.d($$0));
+   private void l() {
+      this.D();
+      this.f.a(null);
    }
 
-   public Stream<fci.a> b() {
-      return this.b.stream().map($$0 -> new fci.c($$0));
+   private void C() {
+      this.f.a(null);
    }
 
-   void e() {
-      this.a.a(Lists.reverse(this.b).stream().map(aob::f).collect(ImmutableList.toImmutableList()));
+   private void D() {
+      this.f.I().b(new adz(this.n.p(), new agg(this.o.a()), new agg(this.p.a()), new agg(this.q.a()), this.r.a(), this.y));
    }
 
-   public void c() {
-      this.e();
-      this.f.accept(this.a);
+   private void E() {
+      this.f.I().b(new ade(this.n.p(), this.t, this.u));
    }
 
-   public void d() {
-      this.a.a();
-      this.b.retainAll(this.a.c());
-      this.c.clear();
-      this.c.addAll(this.a.c());
-      this.c.removeAll(this.b);
+   @Override
+   public void aE_() {
+      this.C();
    }
 
-   public interface a {
-      afw a();
-
-      aoc b();
-
-      String c();
-
-      ui d();
-
-      ui e();
-
-      aof f();
-
-      default ui g() {
-         return this.f().a(this.e());
-      }
-
-      boolean h();
-
-      boolean i();
-
-      void j();
-
-      void k();
-
-      void l();
-
-      void m();
-
-      boolean n();
-
-      default boolean o() {
-         return !this.n();
-      }
-
-      default boolean p() {
-         return this.n() && !this.i();
-      }
-
-      boolean q();
-
-      boolean r();
-   }
-
-   abstract class b implements fci.a {
-      private final aob b;
-
-      public b(aob $$0) {
-         this.b = $$0;
-      }
-
-      protected abstract List<aob> s();
-
-      protected abstract List<aob> t();
-
-      @Override
-      public afw a() {
-         return fci.this.d.apply(this.b);
-      }
-
-      @Override
-      public aoc b() {
-         return this.b.c();
-      }
-
-      @Override
-      public String c() {
-         return this.b.f();
-      }
-
-      @Override
-      public ui d() {
-         return this.b.a();
-      }
-
-      @Override
-      public ui e() {
-         return this.b.b();
-      }
-
-      @Override
-      public aof f() {
-         return this.b.j();
-      }
-
-      @Override
-      public boolean h() {
-         return this.b.h();
-      }
-
-      @Override
-      public boolean i() {
-         return this.b.g();
-      }
-
-      protected void u() {
-         this.s().remove(this.b);
-         this.b.i().a(this.t(), this.b, Function.identity(), true);
-         fci.this.e.run();
-         fci.this.e();
-         this.v();
-      }
-
-      private void v() {
-         if (this.b.f().equals("high_contrast")) {
-            err<Boolean> $$0 = ero.O().m.q();
-            $$0.a(!$$0.c());
+   @Override
+   protected void aO_() {
+      this.q = new euv(this.i, this.g / 2 - 153, 20, 300, 20, ur.c("jigsaw_block.pool"));
+      this.q.l(128);
+      this.q.a(this.n.f().a().toString());
+      this.q.b($$0x -> this.F());
+      this.e(this.q);
+      this.o = new euv(this.i, this.g / 2 - 153, 55, 300, 20, ur.c("jigsaw_block.name"));
+      this.o.l(128);
+      this.o.a(this.n.c().toString());
+      this.o.b($$0x -> this.F());
+      this.e(this.o);
+      this.p = new euv(this.i, this.g / 2 - 153, 90, 300, 20, ur.c("jigsaw_block.target"));
+      this.p.l(128);
+      this.p.a(this.n.d().toString());
+      this.p.b($$0x -> this.F());
+      this.e(this.p);
+      this.r = new euv(this.i, this.g / 2 - 153, 125, 300, 20, ur.c("jigsaw_block.final_state"));
+      this.r.l(256);
+      this.r.a(this.n.g());
+      this.e(this.r);
+      this.y = this.n.i();
+      int $$0 = this.i.a(b) + 10;
+      this.v = this.d(eut.<dfr.a>a(dfr.a::a).a(dfr.a.values()).a(this.y).a().a(this.g / 2 - 152 + $$0, 150, 300 - $$0, 20, b, ($$0x, $$1x) -> this.y = $$1x));
+      boolean $$1 = cyu.h(this.n.q()).o().b();
+      this.v.i = $$1;
+      this.v.j = $$1;
+      this.d(new eui(this.g / 2 - 154, 180, 100, 20, uq.a, 0.0) {
+         {
+            this.b();
          }
-      }
 
-      protected void a(int $$0) {
-         List<aob> $$1 = this.s();
-         int $$2 = $$1.indexOf(this.b);
-         $$1.remove($$2);
-         $$1.add($$2 + $$0, this.b);
-         fci.this.e.run();
-      }
+         @Override
+         protected void b() {
+            this.b(ur.a("jigsaw_block.levels", fci.this.t));
+         }
 
-      @Override
-      public boolean q() {
-         List<aob> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 > 0 && !$$0.get($$1 - 1).h();
-      }
-
-      @Override
-      public void l() {
-         this.a(-1);
-      }
-
-      @Override
-      public boolean r() {
-         List<aob> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).h();
-      }
-
-      @Override
-      public void m() {
-         this.a(1);
-      }
+         @Override
+         protected void a() {
+            fci.this.t = ati.a(ati.b(0.0, 7.0, this.c));
+         }
+      });
+      this.d(eut.b(this.u).a(this.g / 2 - 50, 180, 100, 20, ur.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1x) -> this.u = $$1x));
+      this.x = this.d(eum.a(ur.c("jigsaw_block.generate"), $$0x -> {
+         this.l();
+         this.E();
+      }).a(this.g / 2 + 54, 180, 100, 20).a());
+      this.w = this.d(eum.a(uq.d, $$0x -> this.l()).a(this.g / 2 - 4 - 150, 210, 150, 20).a());
+      this.d(eum.a(uq.e, $$0x -> this.C()).a(this.g / 2 + 4, 210, 150, 20).a());
+      this.c(this.q);
+      this.F();
    }
 
-   class c extends fci.b {
-      public c(aob $$0) {
-         super($$0);
-      }
+   private void F() {
+      boolean $$0 = agg.i(this.o.a()) && agg.i(this.p.a()) && agg.i(this.q.a());
+      this.w.i = $$0;
+      this.x.i = $$0;
+   }
 
-      @Override
-      protected List<aob> s() {
-         return fci.this.b;
-      }
+   @Override
+   public void a(esr $$0, int $$1, int $$2) {
+      String $$3 = this.o.a();
+      String $$4 = this.p.a();
+      String $$5 = this.q.a();
+      String $$6 = this.r.a();
+      int $$7 = this.t;
+      dfr.a $$8 = this.y;
+      this.b($$0, $$1, $$2);
+      this.o.a($$3);
+      this.p.a($$4);
+      this.q.a($$5);
+      this.r.a($$6);
+      this.t = $$7;
+      this.y = $$8;
+      this.v.a($$8);
+   }
 
-      @Override
-      protected List<aob> t() {
-         return fci.this.c;
-      }
-
-      @Override
-      public boolean n() {
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if (!this.w.i || $$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.l();
          return true;
       }
-
-      @Override
-      public void j() {
-      }
-
-      @Override
-      public void k() {
-         this.u();
-      }
    }
 
-   class d extends fci.b {
-      public d(aob $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected List<aob> s() {
-         return fci.this.c;
-      }
-
-      @Override
-      protected List<aob> t() {
-         return fci.this.b;
-      }
-
-      @Override
-      public boolean n() {
-         return false;
-      }
-
-      @Override
-      public void j() {
-         this.u();
-      }
-
-      @Override
-      public void k() {
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.b(this.i, c, this.g / 2 - 153, 10, 10526880);
+      this.q.a($$0, $$1, $$2, $$3);
+      $$0.b(this.i, k, this.g / 2 - 153, 45, 10526880);
+      this.o.a($$0, $$1, $$2, $$3);
+      $$0.b(this.i, l, this.g / 2 - 153, 80, 10526880);
+      this.p.a($$0, $$1, $$2, $$3);
+      $$0.b(this.i, m, this.g / 2 - 153, 115, 10526880);
+      this.r.a($$0, $$1, $$2, $$3);
+      if (cyu.h(this.n.q()).o().b()) {
+         $$0.b(this.i, b, this.g / 2 - 153, 156, 16777215);
       }
    }
 }

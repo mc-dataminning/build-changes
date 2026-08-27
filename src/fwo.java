@@ -1,40 +1,27 @@
-public class fwo<T extends bjt & cdm> extends fuc<T> {
-   private static final float a = 12.25F;
-   private final fvb f;
-   private final float g;
-   private final boolean h;
+public class fwo extends fwq<caz, fhs<caz>> {
+   private static final agg a = new agg("textures/entity/slime/magmacube.png");
 
-   public fwo(fud.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public fwo(fvk.a $$0) {
+      super($$0, new fhs<>($$0.a(fka.au)), 0.25F);
    }
 
-   public fwo(fud.a $$0) {
-      this($$0, 1.0F, false);
+   protected int a(caz $$0, ht $$1) {
+      return 15;
    }
 
-   @Override
-   protected int a(T $$0, ht $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   public agg a(caz $$0) {
+      return a;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      if ($$0.ah >= 2 || !(this.c.b.g().f($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.q(), ckg.h, $$5, fzr.d, $$3, $$4, $$0.dL(), $$0.ah());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public void a(caz $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.gf();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public afw a(bjt $$0) {
-      return fzz.e;
+   protected void a(caz $$0, enk $$1, float $$2) {
+      int $$3 = $$0.gf();
+      float $$4 = ati.i($$2, $$0.bS, $$0.e) / ((float)$$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
    }
 }

@@ -1,29 +1,73 @@
 import com.mojang.serialization.Codec;
 
-public class dom extends doo<dqz> {
-   public dom(Codec<dqz> $$0) {
+public abstract class dom extends dpj<drp> {
+   public dom(Codec<drp> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(doq<dqz> $$0) {
-      crt $$1 = $$0.b();
-      ate $$2 = $$0.d();
-      ht $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
-
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = asy.d(-$$4); $$6 <= asy.f($$4); $$6++) {
-            for (int $$7 = asy.d(-$$4); $$7 <= asy.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), cuc.fz.o());
-               }
-            }
+   protected void a(crt $$0, ato $$1, ht $$2, drp $$3, int $$4, ht.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(hx.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
          }
+      }
+   }
 
-         $$4 -= (float)$$2.a(2) + 0.5F;
+   protected int a(ato $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
       }
 
-      return true;
+      return $$1;
    }
+
+   protected boolean a(crt $$0, ht $$1, int $$2, ht.a $$3, drp $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.aj()) {
+         dgw $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(arc.aZ)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dgw $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(arc.O)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(dpl<drp> $$0) {
+      csm $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      ato $$3 = $$0.d();
+      drp $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      ht.a $$6 = new ht.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(crt var1, ato var2, ht var3, int var4, ht.a var5, drp var6);
 }

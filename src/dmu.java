@@ -1,26 +1,63 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dmu implements dmr {
-   private final iw e;
-   private final hx f;
-   public static final Codec<dmu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iw.v(16).optionalFieldOf("offset", iw.g).forGetter($$0x -> $$0x.e), hx.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
-            .apply($$0, dmu::new)
-   );
+public final class dmu {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
 
-   public dmu(iw $$0, hx $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   @VisibleForTesting
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
    }
 
-   public boolean a(crt $$0, ht $$1) {
-      ht $$2 = $$1.a(this.e);
-      return $$0.a_($$2).d($$0, $$2, this.f);
+   public static dmu.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new dmu.a($$1, $$2);
    }
 
-   @Override
-   public dms<?> a() {
-      return dms.d;
+   public static dmu.a c(long $$0) {
+      return b($$0).a();
+   }
+
+   public static dmu.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new dmu.a($$2, $$3);
+   }
+
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   }
+
+   public static record a(long a, long b) {
+      public dmu.a a(long $$0, long $$1) {
+         return new dmu.a(this.a ^ $$0, this.b ^ $$1);
+      }
+
+      public dmu.a a(dmu.a $$0) {
+         return this.a($$0.a, $$0.b);
+      }
+
+      public dmu.a a() {
+         return new dmu.a(dmu.a(this.a), dmu.a(this.b));
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
+      }
    }
 }

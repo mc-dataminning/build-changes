@@ -1,16 +1,16 @@
-public class cpi extends cot {
-   public cpi(cot.a $$0, bjy... $$1) {
-      super($$0, cou.b, $$1);
+public class cpi extends cpm {
+   public cpi(cpm.a $$0, bkn... $$1) {
+      super($$0, cpn.l, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 25;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
+      return 50;
    }
 
    @Override
@@ -19,17 +19,12 @@ public class cpi extends cot {
    }
 
    @Override
-   public boolean h() {
-      return false;
+   public boolean c() {
+      return true;
    }
 
    @Override
-   public boolean i() {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 3;
+   public boolean a(clb $$0) {
+      return !$$0.a(cle.uz) && super.a($$0);
    }
 }

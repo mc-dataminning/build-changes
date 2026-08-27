@@ -1,24 +1,23 @@
-public abstract class fxw<T extends bjt & bkw, M extends ffx<T>> extends fyl<T, M> {
-   public fxw(fvy<T, M> $$0) {
+public class fxw extends fvj<ceq> {
+   public static final agg a = new agg("textures/entity/trident.png");
+   private final fjh f;
+
+   public fxw(fvk.a $$0) {
       super($$0);
+      this.f = new fjh($$0.a(fka.bC));
    }
 
-   @Override
-   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ah + $$6;
-         ffx<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         eml $$12 = $$1.getBuffer(fpj.a(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, fzr.d, 0.5F, 0.5F, 0.5F, 1.0F);
-      }
+   public void a(ceq $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(ati.i($$2, $$0.N, $$0.dB()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(ati.i($$2, $$0.O, $$0.dD()) + 90.0F));
+      eno $$6 = fwi.c($$4, this.f.a(this.a($$0)), false, $$0.F());
+      this.f.a($$3, $$6, $$5, gay.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected abstract float a(float var1);
-
-   protected abstract afw a();
-
-   protected abstract ffx<T> b();
+   public agg a(ceq $$0) {
+      return a;
+   }
 }

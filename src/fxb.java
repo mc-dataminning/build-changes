@@ -1,22 +1,16 @@
-public class fxb extends fvj<cbb, fil<cbb>> {
-   private static final afw a = new afw("textures/entity/witch.png");
+public class fxb extends fwq<bxb, fii<bxb>> {
+   private static final agg a = new agg("textures/entity/bear/polarbear.png");
 
-   public fxb(fud.a $$0) {
-      super($$0, new fil<>($$0.a(fiv.bN)), 0.5F);
-      this.a(new fyy<>(this, $$0.d()));
+   public fxb(fvk.a $$0) {
+      super($$0, new fii<>($$0.a(fka.aU)), 0.9F);
    }
 
-   public void a(cbb $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      this.f.b(!$$0.eS().b());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public afw a(cbb $$0) {
+   public agg a(bxb $$0) {
       return a;
    }
 
-   protected void a(cbb $$0, emh $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   protected void a(bxb $$0, enk $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

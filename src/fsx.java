@@ -1,44 +1,30 @@
-public class fsx implements fsj.a {
-   private final ero a;
+public class fsx implements fsh<dge> {
+   private final fvi a;
 
-   public fsx(ero $$0) {
-      this.a = $$0;
+   public fsx(fsi.a $$0) {
+      this.a = $$0.c();
    }
 
-   @Override
-   public void a(emh $$0, fpb $$1, double $$2, double $$3, double $$4) {
-      ht $$5 = this.a.s.dl();
-      crc $$6 = this.a.s.dL();
-
-      for (ht $$7 : ht.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         ebe $$8 = $$6.b_($$7);
-         if ($$8.a(aqx.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            fsj.a(
-               $$0,
-               $$1,
-               new eia(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
+   public void a(dge $$0, float $$1, enk $$2, fqh $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.0F, 0.5F);
+      cqu $$6 = $$0.d();
+      bki $$7 = $$6.a($$0.k(), $$0.k().E_(), $$0.p());
+      if ($$7 != null) {
+         float $$8 = 0.53125F;
+         float $$9 = Math.max($$7.df(), $$7.dg());
+         if ((double)$$9 > 1.0) {
+            $$8 /= $$9;
          }
+
+         $$2.a(0.0F, 0.4F, 0.0F);
+         $$2.a(a.d.rotationDegrees((float)ati.d((double)$$1, $$6.b(), $$6.a()) * 10.0F));
+         $$2.a(0.0F, -0.2F, 0.0F);
+         $$2.a(a.b.rotationDegrees(-30.0F));
+         $$2.b($$8, $$8, $$8);
+         this.a.a($$7, 0.0, 0.0, 0.0, 0.0F, $$1, $$2, $$3, $$4);
       }
 
-      for (ht $$10 : ht.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         ebe $$11 = $$6.b_($$10);
-         if ($$11.a(aqx.a)) {
-            fsj.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
-         }
-      }
+      $$2.b();
    }
 }

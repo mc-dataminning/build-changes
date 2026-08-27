@@ -8,20 +8,20 @@ import java.util.stream.Stream;
 public interface id<T> extends ic<T> {
    Stream<ib.c<T>> b();
 
-   default Stream<afv<T>> c() {
+   default Stream<agf<T>> c() {
       return this.b().map(ib.c::g);
    }
 
    Stream<ig.c<T>> d();
 
-   default Stream<arh<T>> e() {
+   default Stream<arr<T>> e() {
       return this.d().map(ig.c::f);
    }
 
    default id<T> a(final Predicate<T> $$0) {
       return new id.a<T>(this) {
          @Override
-         public Optional<ib.c<T>> a(afv<T> $$0x) {
+         public Optional<ib.c<T>> a(agf<T> $$0x) {
             return this.c.a($$0).filter($$1 -> $$0.test($$1.a()));
          }
 
@@ -40,7 +40,7 @@ public interface id<T> extends ic<T> {
       }
 
       @Override
-      public Optional<ib.c<T>> a(afv<T> $$0) {
+      public Optional<ib.c<T>> a(agf<T> $$0) {
          return this.c.a($$0);
       }
 
@@ -50,7 +50,7 @@ public interface id<T> extends ic<T> {
       }
 
       @Override
-      public Optional<ig.c<T>> a(arh<T> $$0) {
+      public Optional<ig.c<T>> a(arr<T> $$0) {
          return this.c.a($$0);
       }
 
@@ -61,26 +61,26 @@ public interface id<T> extends ic<T> {
    }
 
    public interface b {
-      <T> Optional<id.c<T>> a(afv<? extends io<? extends T>> var1);
+      <T> Optional<id.c<T>> a(agf<? extends io<? extends T>> var1);
 
-      default <T> id.c<T> b(afv<? extends io<? extends T>> $$0) {
+      default <T> id.c<T> b(agf<? extends io<? extends T>> $$0) {
          return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
       default ic.a a() {
          return new ic.a() {
             @Override
-            public <T> Optional<ic<T>> a(afv<? extends io<? extends T>> $$0) {
+            public <T> Optional<ic<T>> a(agf<? extends io<? extends T>> $$0) {
                return b.this.a($$0).map($$0x -> $$0x);
             }
          };
       }
 
       static id.b a(Stream<id.c<?>> $$0) {
-         final Map<afv<? extends io<?>>, id.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(id.c::f, $$0x -> $$0x));
+         final Map<agf<? extends io<?>>, id.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(id.c::f, $$0x -> $$0x));
          return new id.b() {
             @Override
-            public <T> Optional<id.c<T>> a(afv<? extends io<? extends T>> $$0) {
+            public <T> Optional<id.c<T>> a(agf<? extends io<? extends T>> $$0) {
                return Optional.ofNullable((id.c<T>)$$1.get($$0));
             }
          };
@@ -88,19 +88,19 @@ public interface id<T> extends ic<T> {
    }
 
    public interface c<T> extends id<T>, ie<T> {
-      afv<? extends io<? extends T>> f();
+      agf<? extends io<? extends T>> f();
 
       Lifecycle g();
 
-      default id<T> a(cfg $$0) {
-         return (id<T>)(cfd.bv.contains(this.f()) ? this.a($$1 -> ((cfd)$$1).a($$0)) : this);
+      default id<T> a(cfv $$0) {
+         return (id<T>)(cfs.bv.contains(this.f()) ? this.a($$1 -> ((cfs)$$1).a($$0)) : this);
       }
 
       public abstract static class a<T> implements id.c<T> {
          protected abstract id.c<T> a();
 
          @Override
-         public afv<? extends io<? extends T>> f() {
+         public agf<? extends io<? extends T>> f() {
             return this.a().f();
          }
 
@@ -110,7 +110,7 @@ public interface id<T> extends ic<T> {
          }
 
          @Override
-         public Optional<ib.c<T>> a(afv<T> $$0) {
+         public Optional<ib.c<T>> a(agf<T> $$0) {
             return this.a().a($$0);
          }
 
@@ -120,7 +120,7 @@ public interface id<T> extends ic<T> {
          }
 
          @Override
-         public Optional<ig.c<T>> a(arh<T> $$0) {
+         public Optional<ig.c<T>> a(arr<T> $$0) {
             return this.a().a($$0);
          }
 

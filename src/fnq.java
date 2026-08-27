@@ -1,45 +1,17 @@
-public abstract class fnq extends fnd {
-   protected gaa E;
-
-   protected fnq(fjr $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
+public class fnq extends foj {
+   protected fnq(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, foq $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
    }
 
-   protected fnq(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
+   public static class a implements fny<jv> {
+      private final foq a;
 
-   protected void a(gaa $$0) {
-      this.E = $$0;
-   }
+      public a(foq $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   protected float c() {
-      return this.E.c();
-   }
-
-   @Override
-   protected float d() {
-      return this.E.d();
-   }
-
-   @Override
-   protected float e() {
-      return this.E.g();
-   }
-
-   @Override
-   protected float f() {
-      return this.E.h();
-   }
-
-   public void a(fnl $$0) {
-      this.a($$0.a(this.r));
-   }
-
-   public void b(fnl $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fnq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

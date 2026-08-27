@@ -1,32 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dqr implements dqs {
-   public static final Codec<dqr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ht.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dqr::new)
-   );
-   private final Optional<ht> b;
-   private final boolean c;
-
-   private dqr(Optional<ht> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dqr extends dpj<dsg> {
+   public dqr(Codec<dsg> $$0) {
+      super($$0);
    }
 
-   public static dqr a(ht $$0, boolean $$1) {
-      return new dqr(Optional.of($$0), $$1);
-   }
-
-   public static dqr a() {
-      return new dqr(Optional.empty(), false);
-   }
-
-   public Optional<ht> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+   @Override
+   public boolean a(dpl<dsg> $$0) {
+      ato $$1 = $$0.d();
+      dsg $$2 = $$0.f();
+      csm $$3 = $$0.b();
+      ht $$4 = $$0.e();
+      dit $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      dvz $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

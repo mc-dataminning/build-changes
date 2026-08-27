@@ -1,21 +1,33 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class eil extends AbstractDoubleList {
-   private final int a;
+public record eil(String b) implements ein {
+   public static final Codec<eil> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eil::c)).apply($$0, eil::new));
 
-   eil(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
+   public static ein a(String $$0) {
+      return new eil($$0);
    }
 
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
+   @Override
+   public eim a() {
+      return eio.b;
    }
 
-   public int size() {
-      return this.a + 1;
+   @Nullable
+   @Override
+   public String a(eel $$0) {
+      return this.b;
+   }
+
+   @Override
+   public Set<egt<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public String c() {
+      return this.b;
    }
 }

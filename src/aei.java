@@ -1,14 +1,29 @@
-public interface aei extends acb {
-   @Override
-   default tk b() {
-      return tk.d;
+public enum aei {
+   a,
+   b;
+
+   private static final int c = 1;
+   private static final int d = 2;
+
+   public static aei a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   void a(aek var1);
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+      };
+   }
 
-   void a(ael var1);
-
-   void a(aej var1);
-
-   void a(aem var1);
+   public tt b() {
+      return switch (this) {
+         case a -> tt.c;
+         case b -> tt.d;
+      };
+   }
 }

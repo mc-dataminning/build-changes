@@ -11,17 +11,17 @@ import java.util.concurrent.CompletableFuture;
 
 public class en implements ArgumentType<String> {
    private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ui.b("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ui.b("arguments.objective.readonly", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("arguments.objective.notFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ur.b("arguments.objective.readonly", $$0));
 
    public static en a() {
       return new en();
    }
 
-   public static ejb a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static eke a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      eje $$3 = ((du)$$0.getSource()).m().aF();
-      ejb $$4 = $$3.b($$2);
+      ekh $$3 = ((du)$$0.getSource()).m().aF();
+      eke $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class en implements ArgumentType<String> {
       }
    }
 
-   public static ejb b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      ejb $$2 = a($$0, $$1);
+   public static eke b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      eke $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

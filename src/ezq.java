@@ -1,133 +1,121 @@
-enum ezq {
-   a(
-      new ezq.a(
-         new afw("advancements/tab_above_left_selected"), new afw("advancements/tab_above_middle_selected"), new afw("advancements/tab_above_right_selected")
-      ),
-      new ezq.a(new afw("advancements/tab_above_left"), new afw("advancements/tab_above_middle"), new afw("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new ezq.a(
-         new afw("advancements/tab_below_left_selected"), new afw("advancements/tab_below_middle_selected"), new afw("advancements/tab_below_right_selected")
-      ),
-      new ezq.a(new afw("advancements/tab_below_left"), new afw("advancements/tab_below_middle"), new afw("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new ezq.a(
-         new afw("advancements/tab_left_top_selected"), new afw("advancements/tab_left_middle_selected"), new afw("advancements/tab_left_bottom_selected")
-      ),
-      new ezq.a(new afw("advancements/tab_left_top"), new afw("advancements/tab_left_middle"), new afw("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new ezq.a(
-         new afw("advancements/tab_right_top_selected"), new afw("advancements/tab_right_middle_selected"), new afw("advancements/tab_right_bottom_selected")
-      ),
-      new ezq.a(new afw("advancements/tab_right_top"), new afw("advancements/tab_right_middle"), new afw("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+public class ezq extends ezz {
+   private static final ur c = ur.c("options.languageAccuracyWarning").a(n.h);
+   private ezq.a k;
+   final gcp l;
 
-   private final ezq.a e;
-   private final ezq.a f;
-   private final int g;
-   private final int h;
-   private final int i;
-
-   private ezq(ezq.a $$0, ezq.a $$1, int $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public ezq(fah $$0, esv $$1, gcp $$2) {
+      super($$0, $$1, ur.c("options.language.title"));
+      this.l = $$2;
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   protected void aO_() {
+      this.k = new ezq.a(this.f);
+      this.e(this.k);
+      this.d(this.b.N().a(this.b, this.g / 2 - 155, this.h - 38, 150));
+      this.d(eum.a(uq.d, $$0 -> this.l()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
+      super.aO_();
    }
 
-   public void a(esy $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      ezq.a $$5 = $$3 ? this.e : this.f;
-      afw $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
-      } else {
-         $$6 = $$5.b();
+   void l() {
+      ezq.a.a $$0 = this.k.f();
+      if ($$0 != null && !$$0.b.equals(this.l.a())) {
+         this.l.a($$0.b);
+         this.b.ad = $$0.b;
+         this.f.k();
+         this.b.as();
       }
 
-      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
+      this.f.a(this.a);
    }
 
-   public void a(esy $$0, int $$1, int $$2, int $$3, ckj $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (eyk.a($$0)) {
+         ezq.a.a $$3 = this.k.f();
+         if ($$3 != null) {
+            $$3.b();
+            this.l();
+            return true;
+         }
       }
 
-      $$0.b($$4, $$5, $$6);
+      return super.a($$0, $$1, $$2);
    }
 
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.k.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.i, c, this.g / 2, this.h - 56, -8355712);
+   }
+
+   @Override
+   public void b(eub $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   class a extends evi<ezq.a.a> {
+      public a(esr $$0) {
+         super($$0, ezq.this.g, ezq.this.h, 32, ezq.this.h - 65 + 4, 18);
+         String $$1 = ezq.this.l.a();
+         ezq.this.l.b().forEach(($$1x, $$2) -> {
+            ezq.a.a $$3 = new ezq.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.f() != null) {
+            this.e(this.f());
+         }
       }
-   }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      @Override
+      protected int c() {
+         return super.c() + 20;
       }
-   }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
-   }
+      @Override
+      public int b() {
+         return super.b() + 50;
+      }
 
-   static record a(afw a, afw b, afw c) {
+      public class a extends evi.a<ezq.a.a> {
+         final String b;
+         private final ur c;
+         private long d;
+
+         public a(String $$1, gco $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(ezq.this.i, this.c, a.this.e / 2, $$2 + 1, 16777215);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ac.b() - this.d < 250L) {
+               ezq.this.l();
+            }
+
+            this.d = ac.b();
+            return true;
+         }
+
+         void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public ur a() {
+            return ur.a("narrator.select", this.c);
+         }
+      }
    }
 }

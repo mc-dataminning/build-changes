@@ -1,20 +1,44 @@
-public abstract class byn extends bym {
-   public byn(byk $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class byn extends byh {
+   public byn(bkm<? extends byn> $$0, crs $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean a() {
-      return true;
+   protected aqm w() {
+      return aqn.nW;
    }
 
    @Override
-   public float a(bir $$0, float $$1) {
-      if ($$0.c() instanceof cdd) {
-         $$0.c().g(1);
-         return 0.0F;
-      } else {
-         return super.a($$0, $$1);
-      }
+   protected aqm gD() {
+      return aqn.nX;
+   }
+
+   @Override
+   protected aqm m_() {
+      return aqn.nZ;
+   }
+
+   @Nullable
+   @Override
+   protected aqm gl() {
+      return aqn.oa;
+   }
+
+   @Override
+   protected aqm d(bjg $$0) {
+      return aqn.ob;
+   }
+
+   @Override
+   protected void ge() {
+      this.a(aqn.nY, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public bkd a(ama $$0, bkd $$1) {
+      return bkm.ap.a((crs)$$0);
    }
 }

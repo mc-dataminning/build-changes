@@ -1,16 +1,31 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
 
-public interface bhh<P extends bhg> {
-   bhh<bhd> a = a("constant", bhd.b);
-   bhh<bhm> b = a("uniform", bhm.a);
-   bhh<bgy> c = a("biased_to_bottom", bgy.a);
-   bhh<bgz> d = a("clamped", bgz.a);
-   bhh<bhn> e = a("weighted_list", bhn.a);
-   bhh<bhb> f = a("clamped_normal", bhb.a);
+public class bhh implements ThreadFactory {
+   private static final Logger a = LogUtils.getLogger();
+   private final ThreadGroup b;
+   private final AtomicInteger c = new AtomicInteger(1);
+   private final String d;
 
-   Codec<P> codec();
+   public bhh(String $$0) {
+      SecurityManager $$1 = System.getSecurityManager();
+      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
+      this.d = $$0 + "-";
+   }
 
-   static <P extends bhg> bhh<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.N, $$0, () -> $$1);
+   @Override
+   public Thread newThread(Runnable $$0) {
+      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
+      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
+         a.error("Caught exception in thread {} from {}", $$1x, $$0);
+         a.error("", $$2);
+      });
+      if ($$1.getPriority() != 5) {
+         $$1.setPriority(5);
+      }
+
+      return $$1;
    }
 }

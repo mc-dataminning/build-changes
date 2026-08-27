@@ -1,18 +1,16 @@
-public record aem() implements wb<aei> {
-   public aem(tl $$0) {
-      this();
-   }
-
+public interface aem extends tp {
    @Override
-   public void a(tl $$0) {
+   default tt b() {
+      return tt.d;
    }
 
-   public void a(aei $$0) {
-      $$0.a(this);
-   }
+   void a(aep var1);
 
-   @Override
-   public tk c() {
-      return tk.e;
-   }
+   void a(aeo var1);
+
+   void a(aer var1);
+
+   void a(aeq var1);
+
+   void a(aen var1);
 }

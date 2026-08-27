@@ -1,18 +1,40 @@
 import java.util.concurrent.CompletableFuture;
 
-public class oa extends nz<dwa> {
+public class oa extends od<cab> {
    public oa(kh $$0, CompletableFuture<id.b> $$1) {
-      super($$0, jz.aA, $$1);
+      super($$0, jz.Q, $$1);
    }
 
    @Override
    protected void a(id.b $$0) {
-      this.b(ard.e).a(dvu.v);
-      this.b(ard.f).a(dvu.u);
-      this.b(ard.g).a(dvu.t);
-      this.b(ard.h).a(dvu.x);
-      this.b(ard.i).a(dvu.w);
-      this.b(ard.k).a(dvu.j);
-      this.b(ard.j).a(dvu.e);
+      this.b(arl.a)
+         .a(
+            cac.a,
+            cac.b,
+            cac.c,
+            cac.d,
+            cac.e,
+            cac.f,
+            cac.g,
+            cac.h,
+            cac.i,
+            cac.j,
+            cac.k,
+            cac.l,
+            cac.m,
+            cac.n,
+            cac.o,
+            cac.p,
+            cac.q,
+            cac.r,
+            cac.s,
+            cac.t,
+            cac.u,
+            cac.v,
+            cac.w,
+            cac.x,
+            cac.y,
+            cac.z
+         );
    }
 }

@@ -1,40 +1,55 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.authlib.GameProfile;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eeq extends eeu {
-   public static final Codec<eeq> a = RecordCodecBuilder.create($$0 -> a($$0).and(edi.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, eeq::new));
-   private final edi.b b;
+public class eeq<T> {
+   private static final Logger d = LogUtils.getLogger();
+   public static final eeq<ehk> a = new eeq<>(ehm.a, "predicates", c());
+   public static final eeq<efy> b = new eeq<>(ega.b, "item_modifiers", c());
+   public static final eeq<eet> c = new eeq<>(eet.c, "loot_tables", d());
+   private final Codec<T> e;
+   private final String f;
+   private final eeq.a<T> g;
 
-   public eeq(List<egh> $$0, edi.b $$1) {
-      super($$0);
-      this.b = $$1;
+   private eeq(Codec<T> $$0, String $$1, eeq.a<T> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public eew b() {
-      return eex.v;
+   public String a() {
+      return this.f;
    }
 
-   @Override
-   public Set<efq<?>> a() {
-      return ImmutableSet.of(this.b.a());
+   public void a(eeu $$0, een<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   @Override
-   public ckj a(ckj $$0, edi $$1) {
-      if ($$0.a(ckm.tt) && $$1.c(this.b.a()) instanceof ccx $$2) {
-         GameProfile $$3 = $$2.fR();
-         $$0.w().a("SkullOwner", sg.a(new rt(), $$3));
-      }
-
-      return $$0;
+   public Optional<T> a(agg $$0, JsonElement $$1) {
+      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
+      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$2.result();
    }
 
-   public static eeu.a<?> a(edi.b $$0) {
-      return a($$1 -> new eeq($$1, $$0));
+   public static Stream<eeq<?>> b() {
+      return Stream.of(a, b, c);
+   }
+
+   private static <T extends eem> eeq.a<T> c() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
+
+   private static eeq.a<eet> d() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void run(eeu var1, een<T> var2, T var3);
    }
 }

@@ -1,3 +1,5 @@
-interface dip<T> {
-   int onResize(int var1, T var2);
+public interface dip {
+   dgw a(int var1);
+
+   void a(int var1, dgw var2);
 }

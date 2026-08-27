@@ -1,26 +1,41 @@
-public enum era {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private static final era[] d = values();
-   private final boolean e;
-   private final boolean f;
+public interface era {
+   era a = new era() {
+      @Override
+      public long a() {
+         return 1L;
+      }
 
-   private era(boolean $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
 
-   public boolean a() {
-      return this.e;
-   }
+   long a();
 
-   public boolean b() {
-      return this.f;
-   }
+   long b();
 
-   public era c() {
-      return d[(this.ordinal() + 1) % d.length];
+   static era a(final int $$0) {
+      return new era() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

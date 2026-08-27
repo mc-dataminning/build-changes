@@ -1,55 +1,51 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class clg extends cke implements cjk {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-   public static final String c = "Base";
-
-   public clg(cke.a $$0) {
+public class clg extends ckw {
+   public clg(ckw.a $$0) {
       super($$0);
-      cwd.a(this, cht.a);
    }
 
    @Override
-   public String j(ckj $$0) {
-      return cic.a($$0) != null ? this.a() + "." + d($$0).b() : super.j($$0);
+   public biq a(cnl $$0) {
+      crs $$1 = $$0.q();
+      ht $$2 = $$0.a();
+      dgw $$3 = $$1.a_($$2);
+      if ($$3.a(arc.S)) {
+         cdm $$4 = $$0.o();
+         if (!$$1.B && $$4 != null) {
+            a($$4, $$1, $$2);
+         }
+
+         return biq.a($$1.B);
+      } else {
+         return biq.d;
+      }
    }
 
-   @Override
-   public void a(ckj $$0, @Nullable cqz $$1, List<ui> $$2, cma $$3) {
-      chz.a($$0, $$2);
-   }
+   public static biq a(cdm $$0, crs $$1, ht $$2) {
+      bzz $$3 = null;
+      boolean $$4 = false;
+      double $$5 = 7.0;
+      int $$6 = $$2.u();
+      int $$7 = $$2.v();
+      int $$8 = $$2.w();
 
-   @Override
-   public cmc c(ckj $$0) {
-      return cmc.d;
-   }
+      for (bla $$10 : $$1.a(
+         bla.class, new ejd((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
+      )) {
+         if ($$10.fT() == $$0) {
+            if ($$3 == null) {
+               $$3 = bzz.b($$1, $$2);
+               $$3.C();
+            }
 
-   @Override
-   public int b(ckj $$0) {
-      return 72000;
-   }
+            $$10.b($$3, true);
+            $$4 = true;
+         }
+      }
 
-   @Override
-   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
-      ckj $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bic.b($$3);
-   }
+      if ($$4) {
+         $$1.a(dlg.b, $$2, dlg.a.a($$0));
+      }
 
-   @Override
-   public boolean a(ckj $$0, ckj $$1) {
-      return $$1.a(ara.b) || super.a($$0, $$1);
-   }
-
-   public static cix d(ckj $$0) {
-      rt $$1 = cic.a($$0);
-      return $$1 != null ? cix.a($$1.h("Base")) : cix.a;
-   }
-
-   @Override
-   public bjy g() {
-      return bjy.b;
+      return $$4 ? biq.a : biq.d;
    }
 }

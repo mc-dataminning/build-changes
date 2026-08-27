@@ -13,15 +13,15 @@ public class fv implements fo {
    }
 
    @Override
-   public eif a(du $$0) {
-      eif $$1 = $$0.e();
-      return new eif(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public eji a(du $$0) {
+      eji $$1 = $$0.e();
+      return new eji(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
    }
 
    @Override
-   public eie b(du $$0) {
-      eie $$1 = $$0.l();
-      return new eie((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public ejh b(du $$0) {
+      ejh $$1 = $$0.l();
+      return new ejh((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class fv implements fo {
       return new fv(new fu(false, $$0), new fu(false, $$1), new fu(false, $$2));
    }
 
-   public static fv a(eie $$0) {
+   public static fv a(ejh $$0) {
       return new fv(new fu(false, (double)$$0.i), new fu(false, (double)$$0.j), new fu(true, 0.0));
    }
 

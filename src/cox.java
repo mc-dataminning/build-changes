@@ -1,46 +1,114 @@
-public class cox {
-   private static final bjy[] N = new bjy[]{bjy.f, bjy.e, bjy.d, bjy.c};
-   public static final cot a = a("protection", new cpg(cot.a.a, cpg.a.a, N));
-   public static final cot b = a("fire_protection", new cpg(cot.a.b, cpg.a.b, N));
-   public static final cot c = a("feather_falling", new cpg(cot.a.b, cpg.a.c, N));
-   public static final cot d = a("blast_protection", new cpg(cot.a.c, cpg.a.d, N));
-   public static final cot e = a("projectile_protection", new cpg(cot.a.b, cpg.a.e, N));
-   public static final cot f = a("respiration", new cpf(cot.a.c, N));
-   public static final cot g = a("aqua_affinity", new cpt(cot.a.c, N));
-   public static final cot h = a("thorns", new cpl(cot.a.d, N));
-   public static final cot i = a("depth_strider", new cps(cot.a.c, N));
-   public static final cot j = a("frost_walker", new cpa(cot.a.c, bjy.c));
-   public static final cot k = a("binding_curse", new cop(cot.a.d, N));
-   public static final cot l = a("soul_speed", new cpi(cot.a.d, bjy.c));
-   public static final cot m = a("swift_sneak", new cpk(cot.a.d, bjy.d));
-   public static final cot n = a("sharpness", new coq(cot.a.a, 0, bjy.a));
-   public static final cot o = a("smite", new coq(cot.a.b, 1, bjy.a));
-   public static final cot p = a("bane_of_arthropods", new coq(cot.a.b, 2, bjy.a));
-   public static final cot q = a("knockback", new cpb(cot.a.b, bjy.a));
-   public static final cot r = a("fire_aspect", new coy(cot.a.c, bjy.a));
-   public static final cot s = a("looting", new cpc(cot.a.c, cou.f, bjy.a));
-   public static final cot t = a("sweeping", new cpj(cot.a.c, bjy.a));
-   public static final cot u = a("efficiency", new cos(cot.a.a, bjy.a));
-   public static final cot v = a("silk_touch", new cpq(cot.a.d, bjy.a));
-   public static final cot w = a("unbreaking", new cor(cot.a.b, bjy.a));
-   public static final cot x = a("fortune", new cpc(cot.a.c, cou.g, bjy.a));
-   public static final cot y = a("power", new coj(cot.a.a, bjy.a));
-   public static final cot z = a("punch", new com(cot.a.c, bjy.a));
-   public static final cot A = a("flame", new cok(cot.a.c, bjy.a));
-   public static final cot B = a("infinity", new col(cot.a.d, bjy.a));
-   public static final cot C = a("luck_of_the_sea", new cpc(cot.a.c, cou.h, bjy.a));
-   public static final cot D = a("lure", new coz(cot.a.c, cou.h, bjy.a));
-   public static final cot E = a("loyalty", new cpo(cot.a.b, bjy.a));
-   public static final cot F = a("impaling", new cpn(cot.a.c, bjy.a));
-   public static final cot G = a("riptide", new cpp(cot.a.c, bjy.a));
-   public static final cot H = a("channeling", new cpm(cot.a.d, bjy.a));
-   public static final cot I = a("multishot", new cpe(cot.a.c, bjy.a));
-   public static final cot J = a("quick_charge", new cph(cot.a.b, bjy.a));
-   public static final cot K = a("piercing", new coo(cot.a.a, bjy.a));
-   public static final cot L = a("mending", new cpd(cot.a.c, bjy.values()));
-   public static final cot M = a("vanishing_curse", new cpr(cot.a.d, bjy.values()));
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-   private static cot a(String $$0, cot $$1) {
-      return io.a(jy.g, $$0, $$1);
+public class cox implements cov {
+   final coc a;
+   final coc b;
+   final coc c;
+
+   cox(coc $$0, coc $$1, coc $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   @Override
+   public boolean a(bij $$0, crs $$1) {
+      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
+   }
+
+   @Override
+   public clb a(bij $$0, ip $$1) {
+      clb $$2 = $$0.a(1);
+      if (this.b.a($$2)) {
+         Optional<ib.c<cne>> $$3 = cnf.a($$1, $$0.a(2));
+         Optional<ib.c<cng>> $$4 = cnh.a($$1, $$0.a(0));
+         if ($$3.isPresent() && $$4.isPresent()) {
+            Optional<cnd> $$5 = cnd.a($$1, $$2, false);
+            if ($$5.isPresent() && $$5.get().a($$4.get(), $$3.get())) {
+               return clb.b;
+            }
+
+            clb $$6 = $$2.p();
+            $$6.f(1);
+            cnd $$7 = new cnd($$3.get(), $$4.get());
+            if (cnd.a($$1, $$6, $$7)) {
+               return $$6;
+            }
+         }
+      }
+
+      return clb.b;
+   }
+
+   @Override
+   public clb a(ip $$0) {
+      clb $$1 = new clb(cle.oT);
+      Optional<ib.c<cng>> $$2 = $$0.d(jz.aG).h().findFirst();
+      if ($$2.isPresent()) {
+         Optional<ib.c<cne>> $$3 = $$0.d(jz.aF).b(cnf.d);
+         if ($$3.isPresent()) {
+            cnd $$4 = new cnd($$3.get(), $$2.get());
+            cnd.a($$0, $$1, $$4);
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean a(clb $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public boolean b(clb $$0) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   public boolean c(clb $$0) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public coj<?> aq_() {
+      return coj.v;
+   }
+
+   @Override
+   public boolean i() {
+      return Stream.of(this.a, this.b, this.c).anyMatch(coc::c);
+   }
+
+   public static class a implements coj<cox> {
+      private static final Codec<cox> x = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  coc.b.fieldOf("template").forGetter($$0x -> $$0x.a),
+                  coc.b.fieldOf("base").forGetter($$0x -> $$0x.b),
+                  coc.b.fieldOf("addition").forGetter($$0x -> $$0x.c)
+               )
+               .apply($$0, cox::new)
+      );
+
+      @Override
+      public Codec<cox> a() {
+         return x;
+      }
+
+      public cox b(tu $$0) {
+         coc $$1 = coc.b($$0);
+         coc $$2 = coc.b($$0);
+         coc $$3 = coc.b($$0);
+         return new cox($$1, $$2, $$3);
+      }
+
+      public void a(tu $$0, cox $$1) {
+         $$1.a.a($$0);
+         $$1.b.a($$0);
+         $$1.c.a($$0);
+      }
    }
 }

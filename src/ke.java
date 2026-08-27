@@ -55,7 +55,7 @@ public class ke {
    }
 
    static {
-      afy.a();
+      agi.a();
    }
 
    public class a {

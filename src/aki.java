@@ -1,58 +1,54 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class aki implements akg {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.c("commands.data.entity.invalid"));
-   public static final Function<String, akh.c> a = $$0 -> new akh.c() {
-         @Override
-         public akg a(CommandContext<du> $$0x) throws CommandSyntaxException {
-            return new aki(eg.a($$0, $$0));
-         }
-
-         @Override
-         public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
-            return $$0.then(dv.a("entity").then($$1.apply(dv.a($$0, eg.a()))));
-         }
-      };
-   private final bjt c;
-
-   public aki(bjt $$0) {
-      this.c = $$0;
+public class aki {
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("time").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("set")
+                                    .then(dv.a("day").executes($$0x -> a((du)$$0x.getSource(), 1000))))
+                                 .then(dv.a("noon").executes($$0x -> a((du)$$0x.getSource(), 6000))))
+                              .then(dv.a("night").executes($$0x -> a((du)$$0x.getSource(), 13000))))
+                           .then(dv.a("midnight").executes($$0x -> a((du)$$0x.getSource(), 18000))))
+                        .then(dv.a("time", ff.a()).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(dv.a("add").then(dv.a("time", ff.a()).executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("query")
+                        .then(dv.a("daytime").executes($$0x -> c((du)$$0x.getSource(), a(((du)$$0x.getSource()).f())))))
+                     .then(dv.a("gametime").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).f().V() % 2147483647L)))))
+                  .then(dv.a("day").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).f().W() / 24000L % 2147483647L))))
+            )
+      );
    }
 
-   @Override
-   public void a(rt $$0) throws CommandSyntaxException {
-      if (this.c instanceof ccx) {
-         throw b.create();
-      } else {
-         UUID $$1 = this.c.cv();
-         this.c.g($$0);
-         this.c.a_($$1);
+   private static int a(ama $$0) {
+      return (int)($$0.W() % 24000L);
+   }
+
+   private static int c(du $$0, int $$1) {
+      $$0.a(() -> ur.a("commands.time.query", $$1), false);
+      return $$1;
+   }
+
+   public static int a(du $$0, int $$1) {
+      for (ama $$2 : $$0.m().F()) {
+         $$2.b((long)$$1);
       }
+
+      $$0.a(() -> ur.a("commands.time.set", $$1), true);
+      return a($$0.f());
    }
 
-   @Override
-   public rt a() {
-      return cn.b(this.c);
-   }
+   public static int b(du $$0, int $$1) {
+      for (ama $$2 : $$0.m().F()) {
+         $$2.b($$2.W() + (long)$$1);
+      }
 
-   @Override
-   public ui b() {
-      return ui.a("commands.data.entity.modified", this.c.O_());
-   }
-
-   @Override
-   public ui a(sn $$0) {
-      return ui.a("commands.data.entity.query", this.c.O_(), sg.c($$0));
-   }
-
-   @Override
-   public ui a(el.g $$0, double $$1, int $$2) {
-      return ui.a("commands.data.entity.get", $$0.a(), this.c.O_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      int $$3 = a($$0.f());
+      $$0.a(() -> ur.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

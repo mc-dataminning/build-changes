@@ -1,72 +1,103 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface wa {
-   int a = 4096;
-   wa b = new wa() {
-      @Override
-      public void a(wb<?> $$0, Consumer<wb<?>> $$1) {
-         $$1.accept($$0);
-      }
+public class wa implements us {
+   private static final Logger d = LogUtils.getLogger();
+   public static final MapCodec<wa> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(wa::b), asq.a(ut.a, "separator").forGetter(wa::d)).apply($$0, wa::new)
+   );
+   public static final us.a<wa> b = new us.a<>(a, "selector");
+   private final String e;
+   @Nullable
+   private final ge f;
+   protected final Optional<ur> c;
 
-      @Nullable
-      @Override
-      public wa.a a(wb<?> $$0) {
-         return null;
-      }
-   };
-
-   static <T extends tr, P extends vz<T>> wa a(final Class<P> $$0, final Function<Iterable<wb<T>>, P> $$1, final vy<T> $$2) {
-      return new wa() {
-         @Override
-         public void a(wb<?> $$0x, Consumer<wb<?>> $$1x) {
-            if ($$0.getClass() == $$0) {
-               P $$2 = (P)$$0;
-               $$1.accept($$2);
-               $$2.a().forEach($$1);
-               $$1.accept($$2);
-            } else {
-               $$1.accept($$0);
-            }
-         }
-
-         @Nullable
-         @Override
-         public wa.a a(wb<?> $$0x) {
-            return $$0 == $$2 ? new wa.a() {
-               private final List<wb<T>> b = new ArrayList<>();
-
-               @Nullable
-               @Override
-               public wb<?> a(wb<?> $$0x) {
-                  if ($$0 == $$2) {
-                     return $$1.apply(this.b);
-                  } else if (this.b.size() >= 4096) {
-                     throw new IllegalStateException("Too many packets in a bundle");
-                  } else {
-                     this.b.add((wb<T>)$$0);
-                     return null;
-                  }
-               }
-            } : null;
-         }
-      };
+   public wa(String $$0, Optional<ur> $$1) {
+      this.e = $$0;
+      this.c = $$1;
+      this.f = a($$0);
    }
-
-   void a(wb<?> var1, Consumer<wb<?>> var2);
 
    @Nullable
-   wa.a a(wb<?> var1);
+   private static ge a(String $$0) {
+      ge $$1 = null;
 
-   public interface a {
-      @Nullable
-      wb<?> a(wb<?> var1);
+      try {
+         gf $$2 = new gf(new StringReader($$0));
+         $$1 = $$2.t();
+      } catch (CommandSyntaxException var3) {
+         d.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
+      }
+
+      return $$1;
    }
 
-   public interface b {
-      wa c();
+   @Override
+   public us.a<?> a() {
+      return b;
+   }
+
+   public String b() {
+      return this.e;
+   }
+
+   @Nullable
+   public ge c() {
+      return this.f;
+   }
+
+   public Optional<ur> d() {
+      return this.c;
+   }
+
+   @Override
+   public vf a(@Nullable du $$0, @Nullable bki $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 != null && this.f != null) {
+         Optional<? extends ur> $$3 = uu.a($$0, this.c, $$1, $$2);
+         return uu.a(this.f.b($$0), $$3, bki::O_);
+      } else {
+         return ur.i();
+      }
+   }
+
+   @Override
+   public <T> Optional<T> a(uw.b<T> $$0, vo $$1) {
+      return $$0.accept($$1, this.e);
+   }
+
+   @Override
+   public <T> Optional<T> a(uw.a<T> $$0) {
+      return $$0.accept(this.e);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof wa $$1 && this.e.equals($$1.e) && this.c.equals($$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.e.hashCode();
+      return 31 * $$0 + this.c.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "pattern{" + this.e + "}";
    }
 }

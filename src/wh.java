@@ -1,24 +1,10 @@
-public class wh implements wb<we> {
-   private final long a;
-
-   public wh(long $$0) {
-      this.a = $$0;
-   }
-
-   public wh(tl $$0) {
-      this.a = $$0.readLong();
+public class wh<T extends ua> implements wk<T> {
+   @Override
+   public final void a(tu $$0) {
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.b(this.a);
-   }
-
-   public void a(we $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 }

@@ -1,104 +1,57 @@
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
 public class erg {
-   public static final ui a = uh.a;
+   private static final Map<String, erg.a> a = Maps.newHashMap();
    private static final Logger b = LogUtils.getLogger();
-   private final ero c;
-   private final Narrator d = Narrator.getNarrator();
+   private static final agg c = new agg("textures/gui/presets/isles.png");
 
-   public erg(ero $$0) {
-      this.c = $$0;
+   public static agg a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   public void a(ui $$0) {
-      if (this.d().c()) {
-         String $$1 = $$0.getString();
-         this.b($$1);
-         this.d.say($$1, false);
-      }
-   }
-
-   public void b(ui $$0) {
-      String $$1 = $$0.getString();
-      if (this.d().d() && !$$1.isEmpty()) {
-         this.b($$1);
-         this.d.say($$1, false);
-      }
-   }
-
-   public void c(ui $$0) {
-      this.a($$0.getString());
-   }
-
-   public void a(String $$0) {
-      if (this.d().d() && !$$0.isEmpty()) {
-         this.b($$0);
-         if (this.d.active()) {
-            this.d.clear();
-            this.d.say($$0, true);
-         }
-      }
-   }
-
-   private erq d() {
-      return this.c.m.ao().c();
-   }
-
-   private void b(String $$0) {
-      if (aa.aT) {
-         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
-      }
-   }
-
-   public void a(erq $$0) {
-      this.b();
-      this.d.say(ui.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
-      evs $$1 = ero.O().ay();
-      if (this.d.active()) {
-         if ($$0 == erq.a) {
-            evq.b($$1, evq.a.b, ui.c("narrator.toast.disabled"), null);
-         } else {
-            evq.b($$1, evq.a.b, ui.c("narrator.toast.enabled"), $$0.b());
-         }
+   private static agg b(String $$0, String $$1) {
+      erg.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
       } else {
-         evq.b($$1, evq.a.b, ui.c("narrator.toast.disabled"), ui.c("options.narrator.notavailable"));
+         eml $$3 = a($$1);
+         if ($$3 == null) {
+            agg $$4 = gax.b();
+            a.put($$0, new erg.a($$1, $$4));
+            return $$4;
+         } else {
+            agg $$5 = new agg("realms", "dynamic/" + $$0);
+            esr.N().X().a($$5, new gau($$3));
+            a.put($$0, new erg.a($$1, $$5));
+            return $$5;
+         }
       }
    }
 
-   public boolean a() {
-      return this.d.active();
-   }
+   @Nullable
+   private static eml a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
 
-   public void b() {
-      if (this.d() != erq.a && this.d.active()) {
-         this.d.clear();
+      try {
+         return eml.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
       }
+
+      return null;
    }
 
-   public void c() {
-      this.d.destroy();
-   }
-
-   public void a(boolean $$0) {
-      if ($$0
-         && !this.a()
-         && !TinyFileDialogs.tinyfd_messageBox(
-            "Minecraft",
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
-            "yesno",
-            "error",
-            true
-         )) {
-         throw new erg.a("Narrator library is not active");
-      }
-   }
-
-   public static class a extends fer {
-      public a(String $$0) {
-         super($$0);
-      }
+   public static record a(String a, agg b) {
    }
 }

@@ -4,23 +4,29 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class bon {
-   public static bmb<bkj> a(Function<bkj, Optional<bnn>> $$0, Predicate<bkj> $$1, int $$2, int $$3, float $$4) {
-      return bpm.a(
-         (Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$5 -> $$5.group($$5.a(btk.n), $$5.a(btk.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<bnn> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        bnn $$11 = $$10.get();
-                        if ($$8.dj().a((im)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           bnn $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new btn($$12, $$4, $$2));
-                           return true;
-                        }
-                     } else {
+   public static bmq<bky> a(blb $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ag().f()), $$1);
+   }
+
+   public static bnz<bky> a(bkm<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ag()), $$1);
+   }
+
+   public static bnz<bky> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bnz<bky> a(Predicate<bky> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return bqb.a(
+         (Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$2x -> $$2x.group($$2x.c(btz.n), $$2x.b(btz.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bky> $$8 = $$2x.<bub>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((bki)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
+                     } else {
+                        $$3.a(new bna($$8.get(), true));
+                        return true;
                      }
                   }))
       );

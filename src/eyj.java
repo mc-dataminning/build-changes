@@ -1,74 +1,8 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class eyj implements AutoCloseable {
-   private static final afw a = new afw("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gab d;
-   private final afw e;
-   @Nullable
-   private fzn f;
-   private boolean g;
-
-   private eyj(gab $$0, afw $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static eyj a(gab $$0, String $$1) {
-      return new eyj($$0, new afw("minecraft", "worlds/" + ac.a($$1, afw::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static eyj b(gab $$0, String $$1) {
-      return new eyj($$0, new afw("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(eli $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new fzn($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public afw b() {
-      return this.f != null ? this.e : a;
-   }
-
-   @Override
-   public void close() {
-      this.a();
-      this.g = true;
-   }
-
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eyj {
 }

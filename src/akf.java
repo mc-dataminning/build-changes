@@ -1,62 +1,48 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.List;
 
-public class akf implements akg {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.c("commands.data.block.invalid"));
-   public static final Function<String, akh.c> a = $$0 -> new akh.c() {
-         @Override
-         public akg a(CommandContext<du> $$0x) throws CommandSyntaxException {
-            ht $$1 = fm.a($$0, $$0 + "Pos");
-            ddx $$2 = ((du)$$0.getSource()).f().c_($$1);
-            if ($$2 == null) {
-               throw akf.b.create();
-            } else {
-               return new akf($$2, $$1);
+public class akf {
+   private static final vo a = vo.a.a(new ux(ux.a.a, ur.c("chat.type.team.hover"))).a(new up(up.a.d, "/teammsg "));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ur.c("commands.teammsg.failed.noteam"));
+
+   public static void a(CommandDispatcher<du> $$0) {
+      LiteralCommandNode<du> $$1 = $$0.register((LiteralArgumentBuilder)dv.a("teammsg").then(dv.a("message", ek.a()).executes($$0x -> {
+         du $$1x = (du)$$0x.getSource();
+         bki $$2 = $$1x.h();
+         ekf $$3 = $$2.cf();
+         if ($$3 == null) {
+            throw b.create();
+         } else {
+            List<amb> $$4 = $$1x.m().ac().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cf() == $$3).toList();
+            if (!$$4.isEmpty()) {
+               ek.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
             }
+
+            return $$4.size();
          }
-
-         @Override
-         public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
-            return $$0.then(dv.a("block").then($$1.apply(dv.a($$0 + "Pos", fm.a()))));
-         }
-      };
-   private final ddx c;
-   private final ht d;
-
-   public akf(ddx $$0, ht $$1) {
-      this.c = $$0;
-      this.d = $$1;
+      })));
+      $$0.register((LiteralArgumentBuilder)dv.a("tm").redirect($$1));
    }
 
-   @Override
-   public void a(rt $$0) {
-      dgb $$1 = this.c.k().a_(this.d);
-      this.c.a($$0);
-      this.c.e();
-      this.c.k().a(this.d, $$1, $$1, 3);
-   }
+   private static void a(du $$0, bki $$1, ekf $$2, List<amb> $$3, vh $$4) {
+      ur $$5 = $$2.d().c(a);
+      un.a $$6 = un.a(un.g, $$0).c($$5);
+      un.a $$7 = un.a(un.h, $$0).c($$5);
+      vg $$8 = vg.a($$4);
+      boolean $$9 = false;
 
-   @Override
-   public rt a() {
-      return this.c.m();
-   }
+      for (amb $$10 : $$3) {
+         un.a $$11 = $$10 == $$1 ? $$7 : $$6;
+         boolean $$12 = $$0.a($$10);
+         $$10.a($$8, $$12, $$11);
+         $$9 |= $$12 && $$4.i();
+      }
 
-   @Override
-   public ui b() {
-      return ui.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
-   }
-
-   @Override
-   public ui a(sn $$0) {
-      return ui.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), sg.c($$0));
-   }
-
-   @Override
-   public ui a(el.g $$0, double $$1, int $$2) {
-      return ui.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      if ($$9) {
+         $$0.a(apq.f);
+      }
    }
 }

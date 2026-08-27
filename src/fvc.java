@@ -1,23 +1,23 @@
-public class fvc extends fuc<bzk> {
-   private static final afw a = new afw("textures/entity/lead_knot.png");
-   private final fgo<bzk> f;
+public class fvc extends fui<cao, fgy<cao>> {
+   private static final agg a = new agg("textures/entity/zombie/drowned.png");
 
-   public fvc(fud.a $$0) {
-      super($$0);
-      this.f = new fgo<>($$0.a(fiv.aq));
+   public fvc(fvk.a $$0) {
+      super($$0, new fgy<>($$0.a(fka.L)), new fgy<>($$0.a(fka.M)), new fgy<>($$0.a(fka.N)));
+      this.a(new fza<>(this, $$0.f()));
    }
 
-   public void a(bzk $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      eml $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, fzr.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public afw a(bzk $$0) {
+   @Override
+   public agg a(cbt $$0) {
       return a;
+   }
+
+   protected void a(cao $$0, enk $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = $$0.a($$4);
+      if ($$5 > 0.0F) {
+         float $$6 = -10.0F - $$0.dD();
+         float $$7 = ati.i($$5, 0.0F, $$6);
+         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.dg() / 2.0F, 0.0F);
+      }
    }
 }

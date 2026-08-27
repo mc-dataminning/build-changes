@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum ans {
+   a("assets"),
+   b("data");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ans {
+   private final String c;
+
+   private ans(String $$0) {
+      this.c = $$0;
+   }
+
+   public String a() {
+      return this.c;
+   }
 }

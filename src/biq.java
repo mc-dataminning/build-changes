@@ -1,19 +1,23 @@
-import com.mojang.serialization.Codec;
+public enum biq {
+   a,
+   b,
+   c,
+   d,
+   e;
 
-public enum biq implements atr {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
-
-   public static final Codec<biq> d = atr.a(biq::values);
-   private final String e;
-
-   private biq(String $$0) {
-      this.e = $$0;
+   public boolean a() {
+      return this == a || this == b || this == c;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public boolean b() {
+      return this == a;
+   }
+
+   public boolean c() {
+      return this == a || this == b;
+   }
+
+   public static biq a(boolean $$0) {
+      return $$0 ? a : b;
    }
 }

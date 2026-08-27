@@ -1,36 +1,59 @@
-import java.util.function.Function;
+import java.util.concurrent.locks.LockSupport;
 
-public enum gfr {
-   a("movement", gfm::new),
-   b("find_tree", gfl::new),
-   c("punch_tree", gfo::new),
-   d("open_inventory", gfn::new),
-   e("craft_planks", gfk::new),
-   f("none", gfj::new);
+public class gfr extends bhg<Runnable> {
+   private Thread a = this.b();
+   private volatile boolean b;
 
-   private final String g;
-   private final Function<gfp, ? extends gfq> h;
-
-   private <T extends gfq> gfr(String $$0, Function<gfp, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public gfr() {
+      super("Sound executor");
    }
 
-   public gfq a(gfp $$0) {
-      return this.h.apply($$0);
+   private Thread b() {
+      Thread $$0 = new Thread(this::c);
+      $$0.setDaemon(true);
+      $$0.setName("Sound engine");
+      $$0.start();
+      return $$0;
    }
 
-   public String a() {
-      return this.g;
+   @Override
+   protected Runnable f(Runnable $$0) {
+      return $$0;
    }
 
-   public static gfr a(String $$0) {
-      for (gfr $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   @Override
+   protected boolean e(Runnable $$0) {
+      return !this.b;
+   }
+
+   @Override
+   protected Thread au() {
+      return this.a;
+   }
+
+   private void c() {
+      while (!this.b) {
+         this.c(() -> this.b);
+      }
+   }
+
+   @Override
+   protected void bq() {
+      LockSupport.park("waiting for tasks");
+   }
+
+   public void a() {
+      this.b = true;
+      this.a.interrupt();
+
+      try {
+         this.a.join();
+      } catch (InterruptedException var2) {
+         Thread.currentThread().interrupt();
       }
 
-      return f;
+      this.bo();
+      this.b = false;
+      this.a = this.b();
    }
 }

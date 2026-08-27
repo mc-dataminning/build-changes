@@ -1,15 +1,16 @@
-public class fgu {
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = $$1 - $$0;
+public abstract class fgu<E extends bki> extends fhl<E> {
+   private float a = 1.0F;
+   private float b = 1.0F;
+   private float f = 1.0F;
 
-      while ($$3 < (float) -Math.PI) {
-         $$3 += (float) (Math.PI * 2);
-      }
+   public void a(float $$0, float $$1, float $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.f = $$2;
+   }
 
-      while ($$3 >= (float) Math.PI) {
-         $$3 -= (float) (Math.PI * 2);
-      }
-
-      return $$0 + $$2 * $$3;
+   @Override
+   public void a(enk $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      super.a($$0, $$1, $$2, $$3, this.a * $$4, this.b * $$5, this.f * $$6, $$7);
    }
 }

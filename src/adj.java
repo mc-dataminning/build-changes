@@ -1,20 +1,20 @@
-public class adj implements wb<aca> {
+public class adj implements wk<acj> {
    private final int a;
 
    public adj(int $$0) {
       this.a = $$0;
    }
 
-   public adj(tl $$0) {
+   public adj(tu $$0) {
       this.a = $$0.n();
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.c(this.a);
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 

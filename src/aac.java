@@ -1,31 +1,54 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class aac implements wb<xu> {
-   private final IntList a;
-
-   public aac(IntList $$0) {
-      this.a = new IntArrayList($$0);
-   }
-
-   public aac(int... $$0) {
-      this.a = new IntArrayList($$0);
-   }
-
-   public aac(tl $$0) {
-      this.a = $$0.a();
+public record aac(UUID a, int b, @Nullable vd c, vk.a d, @Nullable ur e, uv f, un.b g) implements wk<yd> {
+   public aac(tu $$0) {
+      this($$0.p(), $$0.n(), $$0.c(vd::a), new vk.a($$0), $$0.c(tu::m), uv.a($$0), new un.b($$0));
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.a(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c, vd::a);
+      this.d.a($$0);
+      $$0.a(this.e, tu::a);
+      uv.a($$0, this.f);
+      this.g.a($$0);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public IntList a() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   @Nullable
+   public vd e() {
+      return this.c;
+   }
+
+   public vk.a f() {
+      return this.d;
+   }
+
+   @Nullable
+   public ur g() {
+      return this.e;
+   }
+
+   public uv h() {
+      return this.f;
+   }
+
+   public un.b i() {
+      return this.g;
    }
 }

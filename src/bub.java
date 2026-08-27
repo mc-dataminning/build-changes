@@ -1,41 +1,60 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class bub extends buo<bkj> {
-   private static final int a = 200;
-   private static final int c = 599;
+public class bub {
+   private static final bub a = new bub();
+   private final List<bky> b;
+   private final Predicate<bky> c;
 
-   public bub() {
-      this(200);
+   private bub() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   public bub(int $$0) {
-      super($$0);
+   public bub(bky $$0, List<bky> $$1) {
+      this.b = $$1;
+      Object2BooleanOpenHashMap<bky> $$2 = new Object2BooleanOpenHashMap($$1.size());
+      Predicate<bky> $$3 = $$1x -> bvd.b($$0, $$1x);
+      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
    }
 
-   @Override
-   protected void a(alq $$0, bkj $$1) {
-      a($$1);
+   public static bub a() {
+      return a;
    }
 
-   @Override
-   public Set<btk<?>> a() {
-      return ImmutableSet.of(btk.g);
-   }
-
-   public static void a(bkj $$0) {
-      Optional<List<bkj>> $$1 = $$0.dN().c(btk.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ag().equals(bjx.ac));
-         if ($$2) {
-            b($$0);
+   public Optional<bky> a(Predicate<bky> $$0) {
+      for (bky $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
          }
       }
+
+      return Optional.empty();
    }
 
-   public static void b(bkj $$0) {
-      $$0.dN().a(btk.F, true, 599L);
+   public Iterable<bky> b(Predicate<bky> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public Stream<bky> c(Predicate<bky> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public boolean a(bky $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
+   }
+
+   public boolean d(Predicate<bky> $$0) {
+      for (bky $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

@@ -1,26 +1,17 @@
-public class fyp<T extends bkj> extends fyl<T, fhv<T>> {
-   private final ffx<T> a;
+public class fyp extends fwb<cbu, fju<cbu>> {
+   private static final agg a = new agg("textures/entity/zombie_villager/zombie_villager.png");
 
-   public fyp(fvy<T, fhv<T>> $$0, fis $$1) {
-      super($$0);
-      this.a = new fhv<>($$1.a(fiv.bn));
+   public fyp(fvk.a $$0) {
+      super($$0, new fju<>($$0.a(fka.cc)), 0.5F);
+      this.a(new fzi<>(this, new fju($$0.a(fka.cd)), new fju($$0.a(fka.ce)), $$0.g()));
+      this.a(new gad<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ero $$10 = ero.O();
-      boolean $$11 = $$10.b($$3) && $$3.cd();
-      if (!$$3.cd() || $$11) {
-         eml $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(fpj.q(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(fpj.i(this.a($$3)));
-         }
+   public agg a(cbu $$0) {
+      return a;
+   }
 
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, fve.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   protected boolean b(cbu $$0) {
+      return super.a($$0) || $$0.go();
    }
 }

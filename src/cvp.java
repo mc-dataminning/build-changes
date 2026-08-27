@@ -1,43 +1,29 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class cvp extends cti {
-   public static final MapCodec<cvp> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvo.a.forGetter($$0x -> $$0x.c), t()).apply($$0, cvp::new));
-   private final cua c;
+public interface cvp {
+   ekb r_ = cut.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   dhn s_ = dhm.D;
 
-   @Override
-   public MapCodec<cvp> a() {
-      return b;
-   }
-
-   protected cvp(cua $$0, dga.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
-   @Override
-   public void b(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
-      this.a($$0, (cra)$$1, $$2);
-   }
-
-   @Override
-   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.o().a(d, Boolean.valueOf(false)), 2);
-      }
-   }
-
-   @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      if ($$1 == hx.a && !$$0.a($$3, $$4)) {
-         return cuc.a.o();
+   static biq a(@Nullable bki $$0, dgw $$1, crs $$2, ht $$3) {
+      if ($$1.c(s_)) {
+         cut.a($$2, $$3, new clb(cle.vx, 1));
+         float $$4 = ati.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, aqn.dx, aqo.e, 1.0F, $$4);
+         dgw $$5 = $$1.a(s_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(dlg.c, $$3, dlg.a.a($$0, $$5));
+         return biq.a($$2.B);
       } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, ebf.c, ebf.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return biq.d;
       }
+   }
+
+   static boolean h_(dgw $$0) {
+      return $$0.b(s_) && $$0.c(s_);
+   }
+
+   static ToIntFunction<dgw> h_(int $$0) {
+      return $$1 -> $$1.c(dhm.D) ? $$0 : 0;
    }
 }

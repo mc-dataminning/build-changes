@@ -1,31 +1,49 @@
-public class adb implements wb<aca> {
-   private static final int a = 2;
-   private final boolean b;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public adb(ccu $$0) {
-      this.b = $$0.b;
+public class adb implements wk<acj> {
+   public static final int a = 4;
+   private static final int b = 128;
+   private static final int c = 8192;
+   private static final int d = 200;
+   private final int e;
+   private final List<String> f;
+   private final Optional<String> g;
+
+   public adb(int $$0, List<String> $$1, Optional<String> $$2) {
+      this.e = $$0;
+      this.f = ImmutableList.copyOf($$1);
+      this.g = $$2;
    }
 
-   public adb(tl $$0) {
-      byte $$1 = $$0.readByte();
-      this.b = ($$1 & 2) != 0;
+   public adb(tu $$0) {
+      this.e = $$0.n();
+      this.f = $$0.a(tu.a(Lists::newArrayListWithCapacity, 200), $$0x -> $$0x.d(8192));
+      this.g = $$0.b((tu.a<String>)($$0x -> $$0x.d(128)));
    }
 
    @Override
-   public void a(tl $$0) {
-      byte $$1 = 0;
-      if (this.b) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   public void a(tu $$0) {
+      $$0.c(this.e);
+      $$0.a(this.f, ($$0x, $$1) -> $$0x.a($$1, 8192));
+      $$0.a(this.g, ($$0x, $$1) -> $$0x.a($$1, 128));
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
-      return this.b;
+   public List<String> a() {
+      return this.f;
+   }
+
+   public Optional<String> d() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.e;
    }
 }

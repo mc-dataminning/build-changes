@@ -1,71 +1,97 @@
-public class dlt {
-   public static final afv<eah.a> a = a("temperature");
-   public static final afv<eah.a> b = a("vegetation");
-   public static final afv<eah.a> c = a("continentalness");
-   public static final afv<eah.a> d = a("erosion");
-   public static final afv<eah.a> e = a("temperature_large");
-   public static final afv<eah.a> f = a("vegetation_large");
-   public static final afv<eah.a> g = a("continentalness_large");
-   public static final afv<eah.a> h = a("erosion_large");
-   public static final afv<eah.a> i = a("ridge");
-   public static final afv<eah.a> j = a("offset");
-   public static final afv<eah.a> k = a("aquifer_barrier");
-   public static final afv<eah.a> l = a("aquifer_fluid_level_floodedness");
-   public static final afv<eah.a> m = a("aquifer_lava");
-   public static final afv<eah.a> n = a("aquifer_fluid_level_spread");
-   public static final afv<eah.a> o = a("pillar");
-   public static final afv<eah.a> p = a("pillar_rareness");
-   public static final afv<eah.a> q = a("pillar_thickness");
-   public static final afv<eah.a> r = a("spaghetti_2d");
-   public static final afv<eah.a> s = a("spaghetti_2d_elevation");
-   public static final afv<eah.a> t = a("spaghetti_2d_modulator");
-   public static final afv<eah.a> u = a("spaghetti_2d_thickness");
-   public static final afv<eah.a> v = a("spaghetti_3d_1");
-   public static final afv<eah.a> w = a("spaghetti_3d_2");
-   public static final afv<eah.a> x = a("spaghetti_3d_rarity");
-   public static final afv<eah.a> y = a("spaghetti_3d_thickness");
-   public static final afv<eah.a> z = a("spaghetti_roughness");
-   public static final afv<eah.a> A = a("spaghetti_roughness_modulator");
-   public static final afv<eah.a> B = a("cave_entrance");
-   public static final afv<eah.a> C = a("cave_layer");
-   public static final afv<eah.a> D = a("cave_cheese");
-   public static final afv<eah.a> E = a("ore_veininess");
-   public static final afv<eah.a> F = a("ore_vein_a");
-   public static final afv<eah.a> G = a("ore_vein_b");
-   public static final afv<eah.a> H = a("ore_gap");
-   public static final afv<eah.a> I = a("noodle");
-   public static final afv<eah.a> J = a("noodle_thickness");
-   public static final afv<eah.a> K = a("noodle_ridge_a");
-   public static final afv<eah.a> L = a("noodle_ridge_b");
-   public static final afv<eah.a> M = a("jagged");
-   public static final afv<eah.a> N = a("surface");
-   public static final afv<eah.a> O = a("surface_secondary");
-   public static final afv<eah.a> P = a("clay_bands_offset");
-   public static final afv<eah.a> Q = a("badlands_pillar");
-   public static final afv<eah.a> R = a("badlands_pillar_roof");
-   public static final afv<eah.a> S = a("badlands_surface");
-   public static final afv<eah.a> T = a("iceberg_pillar");
-   public static final afv<eah.a> U = a("iceberg_pillar_roof");
-   public static final afv<eah.a> V = a("iceberg_surface");
-   public static final afv<eah.a> W = a("surface_swamp");
-   public static final afv<eah.a> X = a("calcite");
-   public static final afv<eah.a> Y = a("gravel");
-   public static final afv<eah.a> Z = a("powder_snow");
-   public static final afv<eah.a> aa = a("packed_ice");
-   public static final afv<eah.a> ab = a("ice");
-   public static final afv<eah.a> ac = a("soul_sand_layer");
-   public static final afv<eah.a> ad = a("gravel_layer");
-   public static final afv<eah.a> ae = a("patch");
-   public static final afv<eah.a> af = a("netherrack");
-   public static final afv<eah.a> ag = a("nether_wart");
-   public static final afv<eah.a> ah = a("nether_state_selector");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-   private static afv<eah.a> a(String $$0) {
-      return afv.a(jz.ay, new afw($$0));
+public final class dlt {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dix> e = jy.o
+      .q()
+      .comapFlatMap($$0 -> $$0 == dix.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dlt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dlt::a),
+               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dlt::new)
+   );
+   private static final Set<agf<csq>> f = Set.of(csx.aa, csx.Z, csx.ab);
+   public static final cru b = new cru() {
+      @Override
+      public int J_() {
+         return 64;
+      }
+
+      @Override
+      public int I_() {
+         return -64;
+      }
+   };
+   private final dix g;
+   private final BitSet h;
+
+   private dlt(dix $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
    }
 
-   public static eah a(ic<eah.a> $$0, dlx $$1, afv<eah.a> $$2) {
-      ib<eah.a> $$3 = $$0.b($$2);
-      return eah.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   @Nullable
+   public static dlt a(rz $$0) {
+      dix $$1 = dix.a($$0.l("target_status"));
+      return $$1 == dix.c ? null : new dlt($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
+
+   public static void a(djn $$0) {
+      int $$1 = 4;
+      ht.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(cuv.F)) {
+            $$0.a($$1x, cuv.rI.o(), false);
+         }
+      });
+   }
+
+   public void b(djn $$0) {
+      cru $$1 = $$0.z();
+      int $$2 = $$1.I_();
+      int $$3 = $$1.aj() - 1;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               ht.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, cuv.a.o(), false));
+            }
+         }
+      }
+   }
+
+   public dix a() {
+      return this.g;
+   }
+
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static cst a(cst $$0, dis $$1) {
+      if (!$$1.y()) {
+         return $$0;
+      } else {
+         Predicate<agf<csq>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            ib<csq> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
+      }
    }
 }

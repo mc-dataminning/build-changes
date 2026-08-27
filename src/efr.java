@@ -1,70 +1,63 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
 
-public class efr {
-   private final Set<efq<?>> a;
-   private final Set<efq<?>> b;
+public class efr extends efx {
+   public static final Codec<efr> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(eig.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, efr::new)
+   );
+   private final eif b;
+   private final boolean c;
 
-   efr(Set<efq<?>> $$0, Set<efq<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(efq<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<efq<?>> a() {
-      return this.a;
-   }
-
-   public Set<efq<?>> b() {
-      return this.b;
+   efr(List<ehk> $$0, eif $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   public efz b() {
+      return ega.d;
    }
 
-   public void a(edr $$0, edj $$1) {
-      Set<efq<?>> $$2 = $$1.a();
-      Set<efq<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.a("Parameters " + $$3 + " are not provided in this context");
-      }
+   @Override
+   public Set<egt<?>> a() {
+      return this.b.a();
    }
 
-   public static efr.a c() {
-      return new efr.a();
+   @Override
+   public clb a(clb $$0, eel $$1) {
+      ato $$2 = $$1.b();
+      return cpo.a($$2, $$0, this.b.a($$1), this.c);
    }
 
-   public static class a {
-      private final Set<efq<?>> a = Sets.newIdentityHashSet();
-      private final Set<efq<?>> b = Sets.newIdentityHashSet();
+   public static efr.a a(eif $$0) {
+      return new efr.a($$0);
+   }
 
-      public efr.a a(efq<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
+   public static class a extends efx.a<efr.a> {
+      private final eif a;
+      private boolean b;
+
+      public a(eif $$0) {
+         this.a = $$0;
       }
 
-      public efr.a b(efq<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
+      protected efr.a a() {
+         return this;
       }
 
-      public efr a() {
-         return new efr(this.a, this.b);
+      public efr.a e() {
+         this.b = true;
+         return this;
+      }
+
+      @Override
+      public efy b() {
+         return new efr(this.g(), this.a, this.b);
       }
    }
 }

@@ -1,74 +1,89 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record vl(String d, @Nullable ge e) implements vk {
-   public static final MapCodec<vl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(vl::b)).apply($$0, vl::new));
-   public static final vk.a<vl> b = new vk.a<>(a, "entity");
-
-   public vl(String $$0) {
-      this($$0, a($$0));
-   }
-
+public class vl {
+   private static final Logger a = LogUtils.getLogger();
    @Nullable
-   private static ge a(String $$0) {
-      try {
-         gf $$1 = new gf(new StringReader($$0));
-         return $$1.t();
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   private vm b;
+
+   public vl(UUID $$0, UUID $$1) {
+      this.b = vm.a($$0, $$1);
    }
 
-   @Override
-   public Stream<rt> a(du $$0) throws CommandSyntaxException {
-      if (this.e != null) {
-         List<? extends bjt> $$1 = this.e.b($$0);
-         return $$1.stream().map(cn::b);
-      } else {
-         return Stream.empty();
-      }
+   public vl.c a(atu $$0) {
+      return $$1 -> {
+         vm $$2 = this.a();
+         return $$2 == null ? null : new vd($$0.sign($$2x -> vh.a($$2x, $$2, $$1)));
+      };
    }
 
-   @Override
-   public vk.a<?> a() {
-      return b;
-   }
+   public vl.b a(cdp $$0) {
+      att $$1 = $$0.a();
+      return ($$2, $$3) -> {
+         vm $$4 = this.a();
+         if ($$4 == null) {
+            throw new vl.a(ur.c("chat.disabled.chain_broken"), false);
+         } else if ($$0.b().a()) {
+            throw new vl.a(ur.c("chat.disabled.expiredProfileKey"), false);
+         } else {
+            vh $$5 = new vh($$4, $$2, $$3, null, uv.c);
+            if (!$$5.a($$1)) {
+               throw new vl.a(ur.c("multiplayer.disconnect.unsigned_chat"), true);
+            } else {
+               if ($$5.a(Instant.now())) {
+                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
+               }
 
-   @Override
-   public String toString() {
-      return "entity=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof vl $$1 && this.d.equals($$1.d)) {
-            return true;
+               return $$5;
+            }
          }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public String b() {
-      return this.d;
+      };
    }
 
    @Nullable
-   public ge c() {
-      return this.e;
+   private vm a() {
+      vm $$0 = this.b;
+      if ($$0 != null) {
+         this.b = $$0.a();
+      }
+
+      return $$0;
+   }
+
+   public static class a extends vr {
+      private final boolean a;
+
+      public a(ur $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public boolean a() {
+         return this.a;
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      vl.b a = ($$0, $$1) -> {
+         throw new vl.a(ur.c("chat.disabled.missingProfileKey"), false);
+      };
+
+      static vl.b unsigned(UUID $$0) {
+         return ($$1, $$2) -> vh.a($$0, $$2.a());
+      }
+
+      vh unpack(@Nullable vd var1, vk var2) throws vl.a;
+   }
+
+   @FunctionalInterface
+   public interface c {
+      vl.c a = $$0 -> null;
+
+      @Nullable
+      vd pack(vk var1);
    }
 }

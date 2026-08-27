@@ -1,16 +1,19 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class avj extends DataFix {
+public class avj extends azn {
    public avj(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "BlockEntityKeepPacked", ban.s, "DUMMY");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "BlockStateStructureTemplateFix", this.getInputSchema().getType(baa.u), $$0 -> $$0.update(DSL.remainderFinder(), avi::a)
-      );
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("keepPacked", $$0.createBoolean(true));
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), avj::a);
    }
 }

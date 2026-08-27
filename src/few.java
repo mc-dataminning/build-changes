@@ -1,98 +1,123 @@
-public class few extends fgg<bwy> implements fey {
-   private final fiw a;
-   private final fiw b;
-   private final fiw f;
-   private final fiw g;
-   private final fiw h;
-   private final fiw i;
-   private final fiw j;
-   private static final float k = (float) (Math.PI / 4);
-   private static final float l = -1.134464F;
-   private static final float m = (float) (-Math.PI / 3);
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
 
-   public few(fiw $$0) {
-      super(fpj::i);
-      this.a = $$0.b("root");
-      this.b = this.a.b("head");
-      this.f = this.a.b("body");
-      this.g = this.f.b("right_arm");
-      this.h = this.f.b("left_arm");
-      this.i = this.f.b("right_wing");
-      this.j = this.f.b("left_wing");
+public class few extends fah {
+   private static final ur a = ur.c("selectWorld.experimental.title");
+   private static final ur b = ur.c("selectWorld.experimental.message");
+   private static final ur c = ur.c("selectWorld.experimental.details");
+   private static final int k = 10;
+   private static final int l = 100;
+   private final BooleanConsumer m;
+   final Collection<aol> n;
+   private final exv o = new exv().a(10).b(20);
+
+   public few(Collection<aol> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.n = $$0;
+      this.m = $$1;
    }
 
    @Override
-   public fiw a() {
-      return this.a;
+   public ur h() {
+      return uq.a(super.h(), b);
    }
 
-   public static fjc b() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      fjf $$2 = $$1.a("root", fjb.c(), fiy.a(0.0F, 23.5F, 0.0F));
-      $$2.a("head", fjb.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fja(0.0F)), fiy.a(0.0F, -3.99F, 0.0F));
-      fjf $$3 = $$2.a(
-         "body",
-         fjb.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fja(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fja(-0.2F)),
-         fiy.a(0.0F, -4.0F, 0.0F)
-      );
-      $$3.a("right_arm", fjb.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fja(-0.01F)), fiy.a(-1.75F, 0.5F, 0.0F));
-      $$3.a("left_arm", fjb.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fja(-0.01F)), fiy.a(1.75F, 0.5F, 0.0F));
-      $$3.a("right_wing", fjb.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fja(0.0F)), fiy.a(-0.5F, 0.0F, 0.6F));
-      $$3.a("left_wing", fjb.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fja(0.0F)), fiy.a(0.5F, 0.0F, 0.6F));
-      return fjc.a($$0, 32, 32);
+   @Override
+   protected void aO_() {
+      super.aO_();
+      exv.b $$0 = this.o.d(2);
+      exz $$1 = $$0.b().b();
+      $$0.a(new evt(this.e, this.i), 2, $$1);
+      evg $$2 = $$0.a(new evg(b, this.i).b(true), 2, $$1);
+      $$2.j(310);
+      $$0.a(eum.a(c, $$0x -> this.f.a(new few.a())).a(100).a(), 2, $$1);
+      $$0.a(eum.a(uq.i, $$0x -> this.m.accept(true)).a());
+      $$0.a(eum.a(uq.k, $$0x -> this.m.accept(false)).a());
+      this.o.a($$1x -> {
+         euk var10000 = this.d($$1x);
+      });
+      this.o.a();
+      this.c();
    }
 
-   public void a(bwy $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fiw::c);
-      float $$6 = $$3 * 20.0F * (float) (Math.PI / 180.0) + $$1;
-      float $$7 = asy.b($$6) * (float) Math.PI * 0.15F + $$2;
-      float $$8 = $$3 - (float)$$0.ah;
-      float $$9 = $$3 * 9.0F * (float) (Math.PI / 180.0);
-      float $$10 = Math.min($$2 / 0.3F, 1.0F);
-      float $$11 = 1.0F - $$10;
-      float $$12 = $$0.E($$8);
-      if ($$0.ge()) {
-         float $$13 = $$3 * 8.0F * (float) (Math.PI / 180.0) + $$2;
-         float $$14 = asy.b($$13) * 16.0F * (float) (Math.PI / 180.0);
-         float $$15 = $$0.F($$8);
-         float $$16 = asy.b($$13) * 14.0F * (float) (Math.PI / 180.0);
-         float $$17 = asy.b($$13) * 30.0F * (float) (Math.PI / 180.0);
-         this.a.f = $$0.gf() ? (float) (Math.PI * 4) * $$15 : this.a.f;
-         this.a.g = $$14 * (1.0F - $$15);
-         this.b.f = $$17 * (1.0F - $$15);
-         this.b.g = $$16 * (1.0F - $$15);
-      } else {
-         this.b.e = $$5 * (float) (Math.PI / 180.0);
-         this.b.f = $$4 * (float) (Math.PI / 180.0);
+   @Override
+   protected void c() {
+      exu.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void aE_() {
+      this.m.accept(false);
+   }
+
+   class a extends fah {
+      private few.a.a b;
+
+      a() {
+         super(ur.c("selectWorld.experimental.details.title"));
       }
 
-      this.i.e = 0.43633232F * (1.0F - $$10);
-      this.i.f = (float) (-Math.PI / 4) + $$7;
-      this.j.e = 0.43633232F * (1.0F - $$10);
-      this.j.f = (float) (Math.PI / 4) - $$7;
-      this.f.e = $$10 * (float) (Math.PI / 4);
-      float $$18 = $$12 * asy.i($$10, (float) (-Math.PI / 3), -1.134464F);
-      this.a.c = this.a.c + (float)Math.cos((double)$$9) * 0.25F * $$11;
-      this.g.e = $$18;
-      this.h.e = $$18;
-      float $$19 = $$11 * (1.0F - $$12);
-      float $$20 = 0.43633232F - asy.b($$9 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$19;
-      this.h.g = -$$20;
-      this.g.g = $$20;
-      this.g.f = 0.27925268F * $$12;
-      this.h.f = -0.27925268F * $$12;
-   }
+      @Override
+      public void aE_() {
+         this.f.a(few.this);
+      }
 
-   @Override
-   public void a(bkd $$0, emh $$1) {
-      float $$2 = 1.0F;
-      float $$3 = 3.0F;
-      this.a.a($$1);
-      this.f.a($$1);
-      $$1.a(0.0F, 0.0625F, 0.1875F);
-      $$1.a(a.b.rotation(this.g.e));
-      $$1.b(0.7F, 0.7F, 0.7F);
-      $$1.a(0.0625F, 0.0F, 0.0F);
+      @Override
+      protected void aO_() {
+         super.aO_();
+         this.d(eum.a(uq.k, $$0 -> this.aE_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
+         this.b = new few.a.a(this.f, few.this.n);
+         this.e(this.b);
+      }
+
+      @Override
+      public void a(eub $$0, int $$1, int $$2, float $$3) {
+         super.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
+      }
+
+      class a extends evi<few.a.b> {
+         public a(esr $$0, Collection<aol> $$1) {
+            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
+
+            for (aol $$2 : $$1) {
+               String $$3 = cfx.a(cfx.g, $$2.d());
+               if (!$$3.isEmpty()) {
+                  ur $$4 = uu.a($$2.a().f(), vo.a.a(true));
+                  ur $$5 = ur.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, evf.a(a.this.i, $$5, this.b())));
+               }
+            }
+         }
+
+         @Override
+         public int b() {
+            return this.e * 3 / 4;
+         }
+      }
+
+      class b extends evi.a<few.a.b> {
+         private final ur b;
+         private final ur c;
+         private final evf d;
+
+         b(ur $$0, ur $$1, evf $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
+            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
+         }
+
+         @Override
+         public ur a() {
+            return ur.a("narrator.select", uq.a(this.b, this.c));
+         }
+      }
    }
 }

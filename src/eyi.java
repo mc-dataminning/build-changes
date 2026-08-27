@@ -1,31 +1,88 @@
-public class eyi extends ezd {
-   private final ui a;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public eyi(ui $$0, ui $$1) {
-      super($$0);
-      this.a = $$1;
+public class eyi {
+   int a;
+   final Map<eyi.a, eyi.b> b = Maps.newTreeMap(Comparator.<eyi.a, eye>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<eyf> $$0) {
+      this.a++;
+      $$0.accept(new eyi.c(0));
    }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.d(etj.a(uh.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean c = true;
+
+         public void a(String $$0) {
+            if (!this.c) {
+               $$1.append(". ");
+            }
+
+            this.c = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 90, 16777215);
-      $$0.a(this.i, this.a, this.g / 2, 110, 16777215);
+   static class a {
+      final eye a;
+      final int b;
+
+      a(eye $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   @Override
-   public void b(esy $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, -12574688, -11530224);
+   static class b {
+      eyh<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = eyh.a;
+         this.b = -1;
+      }
+
+      public eyi.b a(int $$0, eyh<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
    }
 
-   @Override
-   public boolean aB_() {
-      return false;
+   class c implements eyf {
+      private final int b;
+
+      c(int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(eye $$0, eyh<?> $$1) {
+         eyi.this.b.computeIfAbsent(new eyi.a($$0, this.b), $$0x -> new eyi.b()).a(eyi.this.a, $$1);
+      }
+
+      @Override
+      public eyf a() {
+         return eyi.this.new c(this.b + 1);
+      }
    }
 }

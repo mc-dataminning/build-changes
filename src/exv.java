@@ -1,224 +1,218 @@
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class exv extends ezd {
-   public static final double a = 7.0;
-   private static final ui c = ui.c("chat_screen.usage");
-   private static final int k = 210;
-   private String l = "";
-   private int m = -1;
-   protected ets b;
-   private String n;
-   etm o;
+public class exv extends exr {
+   private final List<exy> c = new ArrayList<>();
+   private final List<exv.a> d = new ArrayList<>();
+   private final exz e = exz.i();
+   private int f = 0;
+   private int g = 0;
 
-   public exv(String $$0) {
-      super(ui.c("chat_screen.title"));
-      this.n = $$0;
+   public exv() {
+      this(0, 0);
+   }
+
+   public exv(int $$0, int $$1) {
+      super($$0, $$1, 0, 0);
    }
 
    @Override
-   protected void aM_() {
-      this.m = this.f.l.d().c().size();
-      this.b = new ets(this.f.i, 4, this.h - 12, this.g - 4, 12, ui.c("chat.editBox")) {
-         @Override
-         protected uw aI_() {
-            return super.aI_().b(exv.this.o.e());
-         }
-      };
-      this.b.l(256);
-      this.b.d(false);
-      this.b.a(this.n);
-      this.b.b(this::b);
-      this.b.f(false);
-      this.e(this.b);
-      this.o = new etm(this.f, this, this.b, this.i, false, false, 1, 10, true, -805306368);
-      this.o.b(false);
-      this.o.d();
-      this.c(this.b);
-   }
+   public void a() {
+      super.a();
+      int $$0 = 0;
+      int $$1 = 0;
 
-   @Override
-   public void a(ero $$0, int $$1, int $$2) {
-      String $$3 = this.b.a();
-      this.b($$0, $$1, $$2);
-      this.c($$3);
-      this.o.d();
-   }
+      for (exv.a $$2 : this.d) {
+         $$0 = Math.max($$2.c(), $$0);
+         $$1 = Math.max($$2.d(), $$1);
+      }
 
-   @Override
-   public void aD_() {
-      this.f.l.d().d();
-   }
+      int[] $$3 = new int[$$1 + 1];
+      int[] $$4 = new int[$$0 + 1];
 
-   private void b(String $$0) {
-      String $$1 = this.b.a();
-      this.o.a(!$$1.equals(this.n));
-      this.o.d();
-   }
+      for (exv.a $$5 : this.d) {
+         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
+         c $$7 = new c($$6, $$5.e);
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.o.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 == 256) {
-         this.f.a(null);
-         return true;
-      } else if ($$0 == 257 || $$0 == 335) {
-         if (this.b(this.b.a(), true)) {
-            this.f.a(null);
+         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
+            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
          }
 
-         return true;
-      } else if ($$0 == 265) {
-         this.a(-1);
-         return true;
-      } else if ($$0 == 264) {
-         this.a(1);
-         return true;
-      } else if ($$0 == 266) {
-         this.f.l.d().a(this.f.l.d().i() - 1);
-         return true;
-      } else if ($$0 == 267) {
-         this.f.l.d().a(-this.f.l.d().i() + 1);
-         return true;
+         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
+         c $$10 = new c($$9, $$5.f);
+
+         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
+            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
+         }
+      }
+
+      int[] $$12 = new int[$$1 + 1];
+      int[] $$13 = new int[$$0 + 1];
+      $$12[0] = 0;
+
+      for (int $$14 = 1; $$14 <= $$1; $$14++) {
+         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+      }
+
+      $$13[0] = 0;
+
+      for (int $$15 = 1; $$15 <= $$0; $$15++) {
+         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
+      }
+
+      for (exv.a $$16 : this.d) {
+         int $$17 = 0;
+
+         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
+            $$17 += $$3[$$18];
+         }
+
+         $$17 += this.g * ($$16.f - 1);
+         $$16.a(this.p() + $$12[$$16.d], $$17);
+         int $$19 = 0;
+
+         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
+            $$19 += $$4[$$20];
+         }
+
+         $$19 += this.f * ($$16.e - 1);
+         $$16.b(this.r() + $$13[$$16.c], $$19);
+      }
+
+      this.a = $$12[$$1] + $$3[$$1];
+      this.b = $$13[$$0] + $$4[$$0];
+   }
+
+   public <T extends exy> T a(T $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2, this.b());
+   }
+
+   public <T extends exy> T a(T $$0, int $$1, int $$2, exz $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   }
+
+   public <T extends exy> T a(T $$0, int $$1, int $$2, Consumer<exz> $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
+   }
+
+   public <T extends exy> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
+   }
+
+   public <T extends exy> T a(T $$0, int $$1, int $$2, int $$3, int $$4, exz $$5) {
+      if ($$3 < 1) {
+         throw new IllegalArgumentException("Occupied rows must be at least 1");
+      } else if ($$4 < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
       } else {
-         return false;
+         this.d.add(new exv.a($$0, $$1, $$2, $$3, $$4, $$5));
+         this.c.add($$0);
+         return $$0;
       }
    }
 
+   public <T extends exy> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<exz> $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
+   }
+
+   public exv a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public exv b(int $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public exv c(int $$0) {
+      return this.a($$0).b($$0);
+   }
+
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      $$3 = asy.a($$3, -1.0, 1.0);
-      if (this.o.a($$3)) {
-         return true;
-      } else {
-         if (!q()) {
-            $$3 *= 7.0;
+   public void b(Consumer<exy> $$0) {
+      this.c.forEach($$0);
+   }
+
+   public exz b() {
+      return this.e.g();
+   }
+
+   public exz c() {
+      return this.e;
+   }
+
+   public exv.b d(int $$0) {
+      return new exv.b($$0);
+   }
+
+   static class a extends exr.a {
+      final int c;
+      final int d;
+      final int e;
+      final int f;
+
+      a(exy $$0, int $$1, int $$2, int $$3, int $$4, exz $$5) {
+         super($$0, $$5.h());
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+      }
+
+      public int c() {
+         return this.c + this.e - 1;
+      }
+
+      public int d() {
+         return this.d + this.f - 1;
+      }
+   }
+
+   public final class b {
+      private final int b;
+      private int c;
+
+      b(int $$1) {
+         this.b = $$1;
+      }
+
+      public <T extends exy> T a(T $$0) {
+         return this.a($$0, 1);
+      }
+
+      public <T extends exy> T a(T $$0, int $$1) {
+         return this.a($$0, $$1, this.c());
+      }
+
+      public <T extends exy> T a(T $$0, exz $$1) {
+         return this.a($$0, 1, $$1);
+      }
+
+      public <T extends exy> T a(T $$0, int $$1, exz $$2) {
+         int $$3 = this.c / this.b;
+         int $$4 = this.c % this.b;
+         if ($$4 + $$1 > this.b) {
+            $$3++;
+            $$4 = 0;
+            this.c = ati.d(this.c, this.b);
          }
 
-         this.f.l.d().a((int)$$3);
-         return true;
+         this.c += $$1;
+         return exv.this.a($$0, $$3, $$4, 1, $$1, $$2);
       }
-   }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.o.a((double)((int)$$0), (double)((int)$$1), $$2)) {
-         return true;
-      } else {
-         if ($$2 == 0) {
-            etk $$3 = this.f.l.d();
-            if ($$3.a($$0, $$1)) {
-               return true;
-            }
-
-            vf $$4 = this.a($$0, $$1);
-            if ($$4 != null && this.a($$4)) {
-               this.n = this.b.a();
-               return true;
-            }
-         }
-
-         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      public exv a() {
+         return exv.this;
       }
-   }
 
-   @Override
-   protected void a(String $$0, boolean $$1) {
-      if ($$1) {
-         this.b.a($$0);
-      } else {
-         this.b.b($$0);
+      public exz b() {
+         return exv.this.b();
       }
-   }
 
-   public void a(int $$0) {
-      int $$1 = this.m + $$0;
-      int $$2 = this.f.l.d().c().size();
-      $$1 = asy.a($$1, 0, $$2);
-      if ($$1 != this.m) {
-         if ($$1 == $$2) {
-            this.m = $$2;
-            this.b.a(this.l);
-         } else {
-            if (this.m == $$2) {
-               this.l = this.b.a();
-            }
-
-            this.b.a(this.f.l.d().c().get($$1));
-            this.o.a(false);
-            this.m = $$1;
-         }
+      public exz c() {
+         return exv.this.c();
       }
-   }
-
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      $$0.a(2, this.h - 14, this.g - 2, this.h - 2, this.f.m.a(Integer.MIN_VALUE));
-      this.b.a($$0, $$1, $$2, $$3);
-      super.a($$0, $$1, $$2, $$3);
-      this.o.a($$0, $$1, $$2);
-      erj $$4 = this.f.l.d().c((double)$$1, (double)$$2);
-      if ($$4 != null && $$4.g() != null) {
-         $$0.b(this.i, this.i.c($$4.g(), 210), $$1, $$2);
-      } else {
-         vf $$5 = this.a((double)$$1, (double)$$2);
-         if ($$5 != null && $$5.i() != null) {
-            $$0.a(this.i, $$5, $$1, $$2);
-         }
-      }
-   }
-
-   @Override
-   public void b(esy $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   private void c(String $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   protected void a(exc $$0) {
-      $$0.a(exb.a, this.m());
-      $$0.a(exb.d, c);
-      String $$1 = this.b.a();
-      if (!$$1.isEmpty()) {
-         $$0.a().a(exb.a, ui.a("chat_screen.message", $$1));
-      }
-   }
-
-   @Nullable
-   private vf a(double $$0, double $$1) {
-      return this.f.l.d().b($$0, $$1);
-   }
-
-   public boolean b(String $$0, boolean $$1) {
-      $$0 = this.a($$0);
-      if ($$0.isEmpty()) {
-         return true;
-      } else {
-         if ($$1) {
-            this.f.l.d().a($$0);
-         }
-
-         if ($$0.startsWith("/")) {
-            this.f.s.cn.c($$0.substring(1));
-         } else {
-            this.f.s.cn.b($$0);
-         }
-
-         return true;
-      }
-   }
-
-   public String a(String $$0) {
-      return ats.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

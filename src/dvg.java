@@ -1,10 +1,53 @@
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public abstract class dvg extends dvh {
-   @Override
-   public final Stream<ht> a_(dvf $$0, ate $$1, ht $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class dvg extends dvc {
+   public static final Codec<dvg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dmz.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dmz.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dvg::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dmz d;
+   private final dmz e;
+   private final int f;
+
+   private dvg(dmz $$0, dmz $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   protected abstract boolean a(dvf var1, ate var2, ht var3);
+   public static dvg a(dmz $$0, dmz $$1, int $$2) {
+      return new dvg($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(ato $$0, dnc $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = ati.a($$0, $$2 + this.f, $$3);
+         int $$5 = ati.a($$0, $$2, $$4 - 1);
+         return ati.a($$0, $$2, $$5 - 1 + this.f);
+      }
+   }
+
+   @Override
+   public dvd<?> a() {
+      return dvd.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   }
 }

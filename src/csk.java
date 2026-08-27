@@ -1,84 +1,151 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class csk extends csb {
-   private static final MapCodec<ib<crx>> d = crx.c.fieldOf("biome");
-   public static final MapCodec<csg.c<ib<crx>>> b = csg.c.a(d).fieldOf("biomes");
-   private static final MapCodec<ib<csl>> e = csl.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final Codec<csk> c = Codec.mapEither(b, e).xmap(csk::new, $$0 -> $$0.f).codec();
-   private final Either<csg.c<ib<crx>>, ib<csl>> f;
+public class csk {
+   private final crt a;
+   private final dnd b;
+   private final dww c;
 
-   private csk(Either<csg.c<ib<crx>>, ib<csl>> $$0) {
-      this.f = $$0;
+   public csk(crt $$0, dnd $$1, dww $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static csk a(csg.c<ib<crx>> $$0) {
-      return new csk(Either.left($$0));
+   public csk a(amh $$0) {
+      if ($$0.C() != this.a) {
+         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.C() + ", region: " + $$0);
+      } else {
+         return new csk($$0, this.b, this.c);
+      }
    }
 
-   public static csk a(ib<csl> $$0) {
-      return new csk(Either.right($$0));
+   public List<dxd> a(cqz $$0, Predicate<dwv> $$1) {
+      Map<dwv, LongSet> $$2 = this.a.a($$0.e, $$0.f, dix.e).h();
+      Builder<dxd> $$3 = ImmutableList.builder();
+
+      for (Entry<dwv, LongSet> $$4 : $$2.entrySet()) {
+         dwv $$5 = $$4.getKey();
+         if ($$1.test($$5)) {
+            this.a($$5, $$4.getValue(), $$3::add);
+         }
+      }
+
+      return $$3.build();
    }
 
-   private csg.c<ib<crx>> d() {
-      return (csg.c<ib<crx>>)this.f.map($$0 -> $$0, $$0 -> ((csl)$$0.a()).a());
+   public List<dxd> a(iu $$0, dwv $$1) {
+      LongSet $$2 = this.a.a($$0.a(), $$0.c(), dix.e).b($$1);
+      Builder<dxd> $$3 = ImmutableList.builder();
+      this.a($$1, $$2, $$3::add);
+      return $$3.build();
    }
 
-   @Override
-   protected Stream<ib<crx>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   public void a(dwv $$0, LongSet $$1, Consumer<dxd> $$2) {
+      LongIterator var4 = $$1.iterator();
+
+      while (var4.hasNext()) {
+         long $$3 = (Long)var4.next();
+         iu $$4 = iu.a(new cqz($$3), this.a.al());
+         dxd $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), dix.d));
+         if ($$5 != null && $$5.b()) {
+            $$2.accept($$5);
+         }
+      }
    }
 
-   @Override
-   protected Codec<? extends csb> a() {
-      return c;
+   @Nullable
+   public dxd a(iu $$0, dwv $$1, djp $$2) {
+      return $$2.a($$1);
    }
 
-   public boolean a(afv<csl> $$0) {
-      Optional<ib<csl>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
+   public void a(iu $$0, dwv $$1, dxd $$2, djp $$3) {
+      $$3.a($$1, $$2);
    }
 
-   @Override
-   public ib<crx> getNoiseBiome(int $$0, int $$1, int $$2, csg.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
+   public void a(iu $$0, dwv $$1, long $$2, djp $$3) {
+      $$3.a($$1, $$2);
    }
 
-   @aua
-   public ib<crx> a(csg.h $$0) {
-      return this.d().a($$0);
+   public boolean a() {
+      return this.b.c();
    }
 
-   @Override
-   public void a(List<String> $$0, ht $$1, csg.f $$2) {
-      int $$3 = in.a($$1.u());
-      int $$4 = in.a($$1.v());
-      int $$5 = in.a($$1.w());
-      csg.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = csg.a($$6.d());
-      float $$8 = csg.a($$6.e());
-      float $$9 = csg.a($$6.b());
-      float $$10 = csg.a($$6.c());
-      float $$11 = csg.a($$6.g());
-      double $$12 = (double)dlr.a($$11);
-      csn $$13 = new csn();
-      $$0.add(
-         "Biome builder PV: "
-            + csn.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public dxd a(ht $$0, dwv $$1) {
+      for (dxd $$2 : this.a(iu.a($$0), $$1)) {
+         if ($$2.a().b($$0)) {
+            return $$2;
+         }
+      }
+
+      return dxd.b;
+   }
+
+   public dxd a(ht $$0, agf<dwv> $$1) {
+      dwv $$2 = this.b().d(jz.aB).a($$1);
+      return $$2 == null ? dxd.b : this.b($$0, $$2);
+   }
+
+   public dxd a(ht $$0, arr<dwv> $$1) {
+      io<dwv> $$2 = this.b().d(jz.aB);
+
+      for (dxd $$3 : this.a(new cqz($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1xx -> $$1xx.a($$1)).orElse(false))) {
+         if (this.a($$0, $$3)) {
+            return $$3;
+         }
+      }
+
+      return dxd.b;
+   }
+
+   public dxd b(ht $$0, dwv $$1) {
+      for (dxd $$2 : this.a(iu.a($$0), $$1)) {
+         if (this.a($$0, $$2)) {
+            return $$2;
+         }
+      }
+
+      return dxd.b;
+   }
+
+   public boolean a(ht $$0, dxd $$1) {
+      for (dwz $$2 : $$1.i()) {
+         if ($$2.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(ht $$0) {
+      iu $$1 = iu.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dix.e).w();
+   }
+
+   public Map<dwv, LongSet> b(ht $$0) {
+      iu $$1 = iu.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dix.e).h();
+   }
+
+   public dwx a(cqz $$0, dwv $$1, boolean $$2) {
+      return this.c.a($$0, $$1, $$2);
+   }
+
+   public void a(dxd $$0) {
+      $$0.e();
+      this.c.a($$0.c(), $$0.h());
+   }
+
+   public ip b() {
+      return this.a.H_();
    }
 }

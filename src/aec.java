@@ -1,16 +1,24 @@
-public interface aec extends tg {
-   @Override
-   default tk b() {
-      return tk.d;
+public class aec implements wk<acj> {
+   private final bip a;
+
+   public aec(bip $$0) {
+      this.a = $$0;
    }
 
-   void a(aef var1);
+   public aec(tu $$0) {
+      this.a = $$0.b(bip.class);
+   }
 
-   void a(aee var1);
+   @Override
+   public void a(tu $$0) {
+      $$0.a(this.a);
+   }
 
-   void a(aeh var1);
+   public void a(acj $$0) {
+      $$0.a(this);
+   }
 
-   void a(aeg var1);
-
-   void a(aed var1);
+   public bip a() {
+      return this.a;
+   }
 }

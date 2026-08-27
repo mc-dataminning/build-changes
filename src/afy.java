@@ -1,118 +1,163 @@
-import com.mojang.logging.LogUtils;
-import java.io.PrintStream;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.ListBuilder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.ListBuilder.Builder;
+import com.mojang.serialization.RecordBuilder.MapBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class afy {
-   public static final PrintStream a = System.out;
-   private static volatile boolean c;
-   private static final Logger d = LogUtils.getLogger();
-   public static final AtomicLong b = new AtomicLong(-1L);
+public abstract class afy<T> implements DynamicOps<T> {
+   protected final DynamicOps<T> a;
 
-   public static void a() {
-      if (!c) {
-         c = true;
-         Instant $$0 = Instant.now();
-         if (jy.aq.e().isEmpty()) {
-            throw new IllegalStateException("Unable to load registries");
-         } else {
-            cwy.b();
-            cvl.b();
-            if (bjx.a(bjx.bt) == null) {
-               throw new IllegalStateException("Failed loading EntityTypes");
-            } else {
-               cmh.a();
-               gg.a();
-               je.c();
-               iy.a();
-               jy.a();
-               ciq.a();
-               d();
-               b.set(Duration.between($$0, Instant.now()).toMillis());
-            }
-         }
-      }
+   protected afy(DynamicOps<T> $$0) {
+      this.a = $$0;
    }
 
-   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
-      ro $$3 = ro.a();
-      $$0.forEach($$3x -> {
-         String $$4 = $$1.apply((T)$$3x);
-         if (!$$3.b($$4)) {
-            $$2.add($$4);
-         }
-      });
+   public T empty() {
+      return (T)this.a.empty();
    }
 
-   private static void a(final Set<String> $$0) {
-      final ro $$1 = ro.a();
-      cqv.a(new cqv.c() {
-         @Override
-         public <T extends cqv.g<T>> void a(cqv.e<T> $$0x, cqv.f<T> $$1x) {
-            if (!$$1.b($$0.b())) {
-               $$0.add($$0.a());
-            }
-         }
-      });
+   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
+      return (U)this.a.convertTo($$0, $$1);
    }
 
-   public static Set<String> b() {
-      Set<String> $$0 = new TreeSet<>();
-      a(jy.v, blk::c, $$0);
-      a(jy.h, bjx::g, $$0);
-      a(jy.e, bje::d, $$0);
-      a(jy.i, cke::a, $$0);
-      a(jy.g, cot::g, $$0);
-      a(jy.f, cua::h, $$0);
-      a(jy.n, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
-      a($$0);
-      return $$0;
+   public DataResult<Number> getNumberValue(T $$0) {
+      return this.a.getNumberValue($$0);
    }
 
-   public static void a(Supplier<String> $$0) {
-      if (!c) {
-         throw b($$0);
-      }
+   public T createNumeric(Number $$0) {
+      return (T)this.a.createNumeric($$0);
    }
 
-   private static RuntimeException b(Supplier<String> $$0) {
-      try {
-         String $$1 = $$0.get();
-         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
-      } catch (Exception var3) {
-         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
-         $$3.addSuppressed(var3);
-         return $$3;
-      }
+   public T createByte(byte $$0) {
+      return (T)this.a.createByte($$0);
    }
 
-   public static void c() {
-      a(() -> "validate");
-      if (aa.aT) {
-         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
-         dv.b();
-      }
-
-      blq.a();
+   public T createShort(short $$0) {
+      return (T)this.a.createShort($$0);
    }
 
-   private static void d() {
-      if (d.isDebugEnabled()) {
-         System.setErr(new agb("STDERR", System.err));
-         System.setOut(new agb("STDOUT", a));
-      } else {
-         System.setErr(new agd("STDERR", System.err));
-         System.setOut(new agd("STDOUT", a));
-      }
+   public T createInt(int $$0) {
+      return (T)this.a.createInt($$0);
    }
 
-   public static void a(String $$0) {
-      a.println($$0);
+   public T createLong(long $$0) {
+      return (T)this.a.createLong($$0);
+   }
+
+   public T createFloat(float $$0) {
+      return (T)this.a.createFloat($$0);
+   }
+
+   public T createDouble(double $$0) {
+      return (T)this.a.createDouble($$0);
+   }
+
+   public DataResult<Boolean> getBooleanValue(T $$0) {
+      return this.a.getBooleanValue($$0);
+   }
+
+   public T createBoolean(boolean $$0) {
+      return (T)this.a.createBoolean($$0);
+   }
+
+   public DataResult<String> getStringValue(T $$0) {
+      return this.a.getStringValue($$0);
+   }
+
+   public T createString(String $$0) {
+      return (T)this.a.createString($$0);
+   }
+
+   public DataResult<T> mergeToList(T $$0, T $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
+      return this.a.mergeToMap($$0, $$1, $$2);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
+      return this.a.getMapValues($$0);
+   }
+
+   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
+      return this.a.getMapEntries($$0);
+   }
+
+   public T createMap(Stream<Pair<T, T>> $$0) {
+      return (T)this.a.createMap($$0);
+   }
+
+   public DataResult<MapLike<T>> getMap(T $$0) {
+      return this.a.getMap($$0);
+   }
+
+   public DataResult<Stream<T>> getStream(T $$0) {
+      return this.a.getStream($$0);
+   }
+
+   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
+      return this.a.getList($$0);
+   }
+
+   public T createList(Stream<T> $$0) {
+      return (T)this.a.createList($$0);
+   }
+
+   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
+      return this.a.getByteBuffer($$0);
+   }
+
+   public T createByteList(ByteBuffer $$0) {
+      return (T)this.a.createByteList($$0);
+   }
+
+   public DataResult<IntStream> getIntStream(T $$0) {
+      return this.a.getIntStream($$0);
+   }
+
+   public T createIntList(IntStream $$0) {
+      return (T)this.a.createIntList($$0);
+   }
+
+   public DataResult<LongStream> getLongStream(T $$0) {
+      return this.a.getLongStream($$0);
+   }
+
+   public T createLongList(LongStream $$0) {
+      return (T)this.a.createLongList($$0);
+   }
+
+   public T remove(T $$0, String $$1) {
+      return (T)this.a.remove($$0, $$1);
+   }
+
+   public boolean compressMaps() {
+      return this.a.compressMaps();
+   }
+
+   public ListBuilder<T> listBuilder() {
+      return new Builder(this);
+   }
+
+   public RecordBuilder<T> mapBuilder() {
+      return new MapBuilder(this);
    }
 }

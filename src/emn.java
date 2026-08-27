@@ -1,55 +1,70 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class emn {
-   private final emn.a a;
-   private final emn.b b;
+public final class emn {
+   private final int a;
+   private final int b;
    private final int c;
    private final int d;
    private final int e;
+   private final int f;
+   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
 
-   public emn(int $$0, emn.a $$1, emn.b $$2, int $$3) {
-      if (this.a($$0, $$2)) {
-         this.b = $$2;
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$3;
-         this.e = $$1.a() * this.d;
-      } else {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
-      }
+   public emn(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   private boolean a(int $$0, emn.b $$1) {
-      return $$0 == 0 || $$1 == emn.b.d;
+   public emn(Buffer $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
    }
 
-   public final emn.a a() {
+   public emn(GLFWVidMode $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
+   }
+
+   public int a() {
       return this.a;
    }
 
-   public final emn.b b() {
+   public int b() {
       return this.b;
    }
 
-   public final int c() {
-      return this.d;
-   }
-
-   public final int d() {
+   public int c() {
       return this.c;
    }
 
-   @Override
-   public String toString() {
-      return this.d + "," + this.b.a() + "," + this.a.b();
+   public int d() {
+      return this.d;
    }
 
-   public final int e() {
+   public int e() {
       return this.e;
    }
 
-   public final boolean f() {
-      return this.b == emn.b.a;
+   public int f() {
+      return this.f;
    }
 
    @Override
@@ -58,13 +73,7 @@ public class emn {
          return true;
       } else if ($$0 != null && this.getClass() == $$0.getClass()) {
          emn $$1 = (emn)$$0;
-         if (this.d != $$1.d) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.a != $$1.a ? false : this.b == $$1.b;
-         }
+         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
       } else {
          return false;
       }
@@ -72,111 +81,50 @@ public class emn {
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + this.c;
-      return 31 * $$0 + this.d;
+      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
    }
 
-   public void a(int $$0, long $$1, int $$2) {
-      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 
-   public void a(int $$0) {
-      this.b.a(this.c, $$0);
-   }
+   public static Optional<emn> a(@Nullable String $$0) {
+      if ($$0 == null) {
+         return Optional.empty();
+      } else {
+         try {
+            Matcher $$1 = g.matcher($$0);
+            if ($$1.matches()) {
+               int $$2 = Integer.parseInt($$1.group(1));
+               int $$3 = Integer.parseInt($$1.group(2));
+               String $$4 = $$1.group(3);
+               int $$5;
+               if ($$4 == null) {
+                  $$5 = 60;
+               } else {
+                  $$5 = Integer.parseInt($$4);
+               }
 
-   public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
+               String $$7 = $$1.group(4);
+               int $$8;
+               if ($$7 == null) {
+                  $$8 = 24;
+               } else {
+                  $$8 = Integer.parseInt($$7);
+               }
 
-      private final int h;
-      private final String i;
-      private final int j;
-
-      private a(int $$0, String $$1, int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      public String b() {
-         return this.i;
-      }
-
-      public int c() {
-         return this.j;
-      }
-   }
-
-   public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
+               int $$10 = $$8 / 3;
+               return Optional.of(new emn($$2, $$3, $$10, $$10, $$10, $$5));
+            }
+         } catch (Exception var9) {
          }
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      }, ($$0, $$1) -> {
-      }),
-      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
 
-      private final String g;
-      private final emn.b.b h;
-      private final emn.b.a i;
-
-      private b(String $$0, emn.b.b $$1, emn.b.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
+         return Optional.empty();
       }
+   }
 
-      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
-         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.i.clearBufferState($$0, $$1);
-      }
-
-      public String a() {
-         return this.g;
-      }
-
-      @FunctionalInterface
-      interface a {
-         void clearBufferState(int var1, int var2);
-      }
-
-      @FunctionalInterface
-      interface b {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
-      }
+   public String g() {
+      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 }

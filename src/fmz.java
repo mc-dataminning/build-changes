@@ -1,40 +1,83 @@
-public class fmz extends fnq {
-   private final fnl a;
+public class fmz extends fow {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final foq M;
 
-   fmz(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fnl $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   fmz(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, foq $$7) {
+      super($$0, $$1, $$2, $$3);
       this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = ati.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = ati.a(this.r, 0.0F, 0.0F);
+      this.x = ati.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
       this.n = false;
+      this.M = $$7;
       this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public fmu b() {
-      return fmu.c;
-   }
-
-   @Override
    public void a() {
-      super.a();
-      this.b(this.a);
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
+         }
+
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
+      }
    }
 
-   public static record a(fnl a) implements fmt<jt> {
-      public fmq a(jt $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmz $$8 = new fmz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.c();
-         $$8.z = $$0.c();
-         $$8.a($$1.z.a(12) + 8);
-         return $$8;
+   @Override
+   public fnz b() {
+      return fnz.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * ati.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fny<jv> {
+      private final foq a;
+
+      public a(foq $$0) {
+         this.a = $$0;
+      }
+
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fmz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

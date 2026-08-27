@@ -1,51 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum erx {
-   a(new ckj(ckm.qe)),
-   b(new ckj(cuc.cj)),
-   c(new ckj(ckm.ll)),
-   d(new ckj(ckm.op), new ckj(ckm.oh)),
-   e(new ckj(ckm.pM), new ckj(ckm.nF)),
-   f(new ckj(ckm.qe)),
-   g(new ckj(ckm.pj)),
-   h(new ckj(cuc.b)),
-   i(new ckj(ckm.pM), new ckj(ckm.nL)),
-   j(new ckj(ckm.qe)),
-   k(new ckj(cuc.dI)),
-   l(new ckj(ckm.on), new ckj(ckm.pc)),
-   m(new ckj(ckm.qe)),
-   n(new ckj(ckm.pj)),
-   o(new ckj(ckm.fj)),
-   p(new ckj(ckm.pf)),
-   q(new ckj(ckm.pj)),
-   r(new ckj(ckm.hf));
+public class erx extends err {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ur c = ur.c("mco.minigame.world.starting.screen.title");
+   private final long d;
+   private final epi e;
+   private final eqa f;
 
-   public static final List<erx> s = ImmutableList.of(m, n);
-   public static final List<erx> t = ImmutableList.of(j, k, l);
-   public static final List<erx> u = ImmutableList.of(f, g, h, i);
-   public static final List<erx> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<erx, List<erx>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<ckj> x;
-
-   private erx(ckj... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+   public erx(long $$0, epi $$1, eqa $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static List<erx> a(cha $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   @Override
+   public void run() {
+      eoa $$0 = eoa.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
+            }
+         } catch (epo var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't start mini game!");
+            this.a(var5);
+         }
+      }
    }
 
-   public List<ckj> a() {
-      return this.x;
+   @Override
+   public ur a() {
+      return c;
    }
 }

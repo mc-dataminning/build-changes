@@ -1,28 +1,66 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.Set;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class eng extends eod {
-   public Set<String> a = Sets.newHashSet();
+public class eng {
+   @Nullable
+   private static enn a;
 
-   public static eng a(String $$0) {
-      eng $$1 = new eng();
-      JsonParser $$2 = new JsonParser();
-
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
-            }
-         }
-      } catch (Exception var8) {
+   public static void a() {
+      if (a != null) {
+         b();
+         enn.b();
       }
+   }
 
+   public static void b() {
+      a = null;
+   }
+
+   public static void a(enf.b $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
+      } else {
+         c($$0);
+      }
+   }
+
+   private static void c(enf.b $$0) {
+      enn $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      }
+   }
+
+   public static void b(enf.b $$0) {
+      enn $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.c();
+      }
+   }
+
+   @Nullable
+   private static enn d(enf.b $$0) {
+      RenderSystem.assertOnRenderThread();
+      if ($$0.d()) {
+         $$0.e();
+         return null;
+      } else {
+         enn $$1 = a($$0.c().g());
+         $$1.a($$0);
+         return $$1;
+      }
+   }
+
+   private static enn a(enp $$0) {
+      enn $$1 = $$0.g();
+      a($$1);
       return $$1;
+   }
+
+   private static void a(enn $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

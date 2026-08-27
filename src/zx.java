@@ -1,17 +1,24 @@
-import java.util.List;
-import java.util.UUID;
+public class zx implements wk<yd> {
+   private final bip a;
 
-public record zx(List<UUID> a) implements wb<xu> {
-   public zx(tl $$0) {
-      this($$0.a(tl::p));
+   public zx(bip $$0) {
+      this.a = $$0;
+   }
+
+   public zx(tu $$0) {
+      this.a = $$0.b(bip.class);
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.a, tl::a);
+   public void a(tu $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
+   }
+
+   public bip a() {
+      return this.a;
    }
 }

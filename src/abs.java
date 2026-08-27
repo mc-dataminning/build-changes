@@ -1,45 +1,28 @@
-public class abs implements wb<xu> {
+public class abs implements wk<yd> {
    private final int a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final byte e;
-   private final byte f;
-   private final boolean g;
+   private final int b;
+   private final int c;
 
-   public abs(bjt $$0) {
-      this.a = $$0.ah();
-      eif $$1 = $$0.dk();
-      this.b = $$1.c;
-      this.c = $$1.d;
-      this.d = $$1.e;
-      this.e = (byte)((int)($$0.dB() * 256.0F / 360.0F));
-      this.f = (byte)((int)($$0.dD() * 256.0F / 360.0F));
-      this.g = $$0.aA();
+   public abs(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public abs(tl $$0) {
-      this.a = $$0.n();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readByte();
-      this.f = $$0.readByte();
-      this.g = $$0.readBoolean();
+   public abs(tu $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.k(this.e);
-      $$0.k(this.f);
-      $$0.a(this.g);
+   public void a(tu $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
@@ -47,27 +30,11 @@ public class abs implements wb<xu> {
       return this.a;
    }
 
-   public double d() {
+   public int d() {
       return this.b;
    }
 
-   public double e() {
+   public int e() {
       return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public byte g() {
-      return this.e;
-   }
-
-   public byte h() {
-      return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
    }
 }

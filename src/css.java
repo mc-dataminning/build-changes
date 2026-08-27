@@ -1,77 +1,101 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.hash.Hashing;
 
-public abstract class css extends cua {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final eiy h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final eiy b = eiv.a(
-      eiv.b(), eiv.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), eij.e
-   );
-   protected final iy.a c;
+public class css {
+   public static final int a = in.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final css.a e;
+   private final long f;
 
-   @Override
-   protected abstract MapCodec<? extends css> a();
-
-   public css(dga.d $$0, iy.a $$1) {
-      super($$0);
-      this.c = $$1;
+   public css(css.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   protected double b(dgb $$0) {
-      return 0.0;
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   protected boolean a(dgb $$0, ht $$1, bjt $$2) {
-      return $$2.ds() < (double)$$1.v() + this.b($$0) && $$2.cG().e > (double)$$1.v() + 0.25;
+   public css a(css.a $$0) {
+      return new css($$0, this.f);
    }
 
-   @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      ckj $$6 = $$3.b($$4);
-      iy $$7 = this.c.b().get($$6.d());
-      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
-   }
+   public ib<csq> a(ht $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
 
-   @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return b;
-   }
-
-   @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2) {
-      return h;
-   }
-
-   @Override
-   public boolean d_(dgb $$0) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
-      return false;
-   }
-
-   public abstract boolean d(dgb var1);
-
-   @Override
-   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      ht $$4 = czq.a((cqz)$$1, $$2);
-      if ($$4 != null) {
-         ebd $$5 = czq.a($$1, $$4);
-         if ($$5 != ebf.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
          }
       }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
    }
 
-   protected boolean a(ebd $$0) {
-      return false;
+   public ib<csq> a(double $$0, double $$1, double $$2) {
+      int $$3 = in.a(ati.a($$0));
+      int $$4 = in.a(ati.a($$1));
+      int $$5 = in.a(ati.a($$2));
+      return this.a($$3, $$4, $$5);
    }
 
-   protected void a(dgb $$0, cqz $$1, ht $$2, ebd $$3) {
+   public ib<csq> b(ht $$0) {
+      int $$1 = in.a($$0.u());
+      int $$2 = in.a($$0.v());
+      int $$3 = in.a($$0.w());
+      return this.a($$1, $$2, $$3);
+   }
+
+   public ib<csq> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = ate.a($$0, (long)$$1);
+      $$7 = ate.a($$7, (long)$$2);
+      $$7 = ate.a($$7, (long)$$3);
+      $$7 = ate.a($$7, (long)$$1);
+      $$7 = ate.a($$7, (long)$$2);
+      $$7 = ate.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = ate.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = ate.a($$7, $$0);
+      double $$10 = b($$7);
+      return ati.k($$6 + $$10) + ati.k($$5 + $$9) + ati.k($$4 + $$8);
+   }
+
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
+
+   public interface a {
+      ib<csq> getNoiseBiome(int var1, int var2, int var3);
    }
 }

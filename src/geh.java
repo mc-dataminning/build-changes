@@ -1,62 +1,34 @@
-import javax.annotation.Nullable;
+public class geh extends gdy {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final caw r;
 
-public class geh {
-   private static final int a = 100;
-   private final ate b = ate.a();
-   private final ero c;
-   @Nullable
-   private gdi d;
-   private int e = 100;
-
-   public geh(ero $$0) {
-      this.c = $$0;
+   public geh(caw $$0) {
+      super(aqn.kp, aqo.f, gep.t());
+      this.r = $$0;
+      this.k = gep.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
-   public void a() {
-      aqa $$0 = this.c.aj();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.ai().b(this.d);
-            this.e = asy.a(this.b, 0, $$0.b() / 2);
-         }
-
-         if (!this.c.ai().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, asy.a(this.b, $$0.b(), $$0.c()));
-         }
-      }
-
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
+   @Override
+   public boolean s() {
+      return !this.r.aS();
    }
 
-   public void a(aqa $$0) {
-      this.d = gdd.a($$0.a().a());
-      if (this.d.b() != gem.a) {
-         this.c.ai().a(this.d);
+   @Override
+   public void q() {
+      if (!this.r.dG() && this.r.q() == null) {
+         this.f = (double)((float)this.r.dq());
+         this.g = (double)((float)this.r.ds());
+         this.h = (double)((float)this.r.dw());
+         float $$0 = this.r.G(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
       }
-
-      this.e = Integer.MAX_VALUE;
-   }
-
-   public void b(aqa $$0) {
-      if (this.c($$0)) {
-         this.b();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         this.c.ai().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
-   }
-
-   public boolean c(aqa $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

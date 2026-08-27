@@ -1,43 +1,26 @@
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-abstract class anm implements BasicFileAttributes {
-   private static final FileTime a = FileTime.fromMillis(0L);
+public class anm {
+   private static final anm a = new anm(Map.of());
+   private final Map<aod<?>, ?> b;
 
-   @Override
-   public FileTime lastModifiedTime() {
+   private anm(Map<aod<?>, ?> $$0) {
+      this.b = $$0;
+   }
+
+   public <T> T a(aod<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public static anm a() {
       return a;
    }
 
-   @Override
-   public FileTime lastAccessTime() {
-      return a;
+   public static <T> anm a(aod<T> $$0, T $$1) {
+      return new anm(Map.of($$0, $$1));
    }
 
-   @Override
-   public FileTime creationTime() {
-      return a;
-   }
-
-   @Override
-   public boolean isSymbolicLink() {
-      return false;
-   }
-
-   @Override
-   public boolean isOther() {
-      return false;
-   }
-
-   @Override
-   public long size() {
-      return 0L;
-   }
-
-   @Nullable
-   @Override
-   public Object fileKey() {
-      return null;
+   public static <T1, T2> anm a(aod<T1> $$0, T1 $$1, aod<T2> $$2, T2 $$3) {
+      return new anm(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

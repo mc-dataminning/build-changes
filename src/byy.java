@@ -1,173 +1,129 @@
-import com.mojang.logging.LogUtils;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class byy extends bym {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 5;
-   private int d;
-   @Nullable
-   private ebt e;
-   @Nullable
-   private eif f;
-   @Nullable
-   private bkj g;
-   private boolean h;
+public class byy extends bki {
+   private static final afm<Optional<ht>> c = afp.a(byy.class, afo.o);
+   private static final afm<Boolean> d = afp.a(byy.class, afo.k);
+   public int b;
 
-   public byy(byk $$0) {
-      super($$0);
+   public byy(bkm<? extends byy> $$0, crs $$1) {
+      super($$0, $$1);
+      this.I = true;
+      this.b = this.ag.a(100000);
+   }
+
+   public byy(crs $$0, double $$1, double $$2, double $$3) {
+      this(bkm.B, $$0);
+      this.e($$1, $$2, $$3);
    }
 
    @Override
-   public void c() {
-      if (this.g == null) {
-         b.warn("Skipping player strafe phase because no player was found");
-         this.a.gb().a(bza.a);
+   protected bki.b aU() {
+      return bki.b.a;
+   }
+
+   @Override
+   protected void b_() {
+      this.al().a(c, Optional.empty());
+      this.al().a(d, true);
+   }
+
+   @Override
+   public void l() {
+      this.b++;
+      if (this.dL() instanceof ama) {
+         ht $$0 = this.dl();
+         if (((ama)this.dL()).B() != null && this.dL().a_($$0).i()) {
+            this.dL().b($$0, cug.a(this.dL(), $$0));
+         }
+      }
+   }
+
+   @Override
+   protected void b(rz $$0) {
+      if (this.q() != null) {
+         $$0.a("BeamTarget", so.a(this.q()));
+      }
+
+      $$0.a("ShowBottom", this.s());
+   }
+
+   @Override
+   protected void a(rz $$0) {
+      if ($$0.b("BeamTarget", 10)) {
+         this.a(so.b($$0.p("BeamTarget")));
+      }
+
+      if ($$0.b("ShowBottom", 1)) {
+         this.a($$0.q("ShowBottom"));
+      }
+   }
+
+   @Override
+   public boolean br() {
+      return true;
+   }
+
+   @Override
+   public boolean a(bjg $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else if ($$0.d() instanceof byz) {
+         return false;
       } else {
-         if (this.e != null && this.e.c()) {
-            double $$0 = this.g.dq();
-            double $$1 = this.g.dw();
-            double $$2 = $$0 - this.a.dq();
-            double $$3 = $$1 - this.a.dw();
-            double $$4 = Math.sqrt($$2 * $$2 + $$3 * $$3);
-            double $$5 = Math.min(0.4F + $$4 / 80.0 - 1.0, 10.0);
-            this.f = new eif($$0, this.g.ds() + $$5, $$1);
-         }
-
-         double $$6 = this.f == null ? 0.0 : this.f.c(this.a.dq(), this.a.ds(), this.a.dw());
-         if ($$6 < 100.0 || $$6 > 22500.0) {
-            this.j();
-         }
-
-         double $$7 = 64.0;
-         if (this.g.f(this.a) < 4096.0) {
-            if (this.a.E(this.g)) {
-               this.d++;
-               eif $$8 = new eif(this.g.dq() - this.a.dq(), 0.0, this.g.dw() - this.a.dw()).d();
-               eif $$9 = new eif((double)asy.a(this.a.dB() * (float) (Math.PI / 180.0)), 0.0, (double)(-asy.b(this.a.dB() * (float) (Math.PI / 180.0)))).d();
-               float $$10 = (float)$$9.b($$8);
-               float $$11 = (float)(Math.acos((double)$$10) * 180.0F / (float)Math.PI);
-               $$11 += 0.5F;
-               if (this.d >= 5 && $$11 >= 0.0F && $$11 < 10.0F) {
-                  double $$12 = 1.0;
-                  eif $$13 = this.a.f(1.0F);
-                  double $$14 = this.a.e.dq() - $$13.c * 1.0;
-                  double $$15 = this.a.e.e(0.5) + 0.5;
-                  double $$16 = this.a.e.dw() - $$13.e * 1.0;
-                  double $$17 = this.g.dq() - $$14;
-                  double $$18 = this.g.e(0.5) - $$15;
-                  double $$19 = this.g.dw() - $$16;
-                  if (!this.a.aS()) {
-                     this.a.dL().a(null, 1017, this.a.dl(), 0);
-                  }
-
-                  cdg $$20 = new cdg(this.a.dL(), this.a, $$17, $$18, $$19);
-                  $$20.b($$14, $$15, $$16, 0.0F, 0.0F);
-                  this.a.dL().b($$20);
-                  this.d = 0;
-                  if (this.e != null) {
-                     while (!this.e.c()) {
-                        this.e.a();
-                     }
-                  }
-
-                  this.a.gb().a(bza.a);
-               }
-            } else if (this.d > 0) {
-               this.d--;
+         if (!this.dG() && !this.dL().B) {
+            this.a(bki.c.a);
+            if (!$$0.a(are.l)) {
+               bjg $$2 = $$0.d() != null ? this.dM().d(this, $$0.d()) : null;
+               this.dL().a(this, $$2, null, this.dq(), this.ds(), this.dw(), 6.0F, false, crs.a.b);
             }
-         } else if (this.d > 0) {
-            this.d--;
-         }
-      }
-   }
 
-   private void j() {
-      if (this.e == null || this.e.c()) {
-         int $$0 = this.a.y();
-         int $$1 = $$0;
-         if (this.a.ef().a(8) == 0) {
-            this.h = !this.h;
-            $$1 = $$0 + 6;
+            this.a($$0);
          }
 
-         if (this.h) {
-            $$1++;
-         } else {
-            $$1--;
-         }
-
-         if (this.a.gc() != null && this.a.gc().e() > 0) {
-            $$1 %= 12;
-            if ($$1 < 0) {
-               $$1 += 12;
-            }
-         } else {
-            $$1 -= 12;
-            $$1 &= 7;
-            $$1 += 12;
-         }
-
-         this.e = this.a.a($$0, $$1, null);
-         if (this.e != null) {
-            this.e.a();
-         }
-      }
-
-      this.k();
-   }
-
-   private void k() {
-      if (this.e != null && !this.e.c()) {
-         iw $$0 = this.e.g();
-         this.e.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.f = new eif($$1, $$3, $$2);
+         return true;
       }
    }
 
    @Override
-   public void d() {
-      this.d = 0;
-      this.f = null;
-      this.e = null;
-      this.g = null;
+   public void aj() {
+      this.a(this.dM().n());
+      super.aj();
    }
 
-   public void a(bkj $$0) {
-      this.g = $$0;
-      int $$1 = this.a.y();
-      int $$2 = this.a.r(this.g.dq(), this.g.ds(), this.g.dw());
-      int $$3 = this.g.dp();
-      int $$4 = this.g.dv();
-      double $$5 = (double)$$3 - this.a.dq();
-      double $$6 = (double)$$4 - this.a.dw();
-      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
-      double $$8 = Math.min(0.4F + $$7 / 80.0 - 1.0, 10.0);
-      int $$9 = asy.a(this.g.ds() + $$8);
-      ebr $$10 = new ebr($$3, $$9, $$4);
-      this.e = this.a.a($$1, $$2, $$10);
-      if (this.e != null) {
-         this.e.a();
-         this.k();
+   private void a(bjg $$0) {
+      if (this.dL() instanceof ama) {
+         dki $$1 = ((ama)this.dL()).B();
+         if ($$1 != null) {
+            $$1.a(this, $$0);
+         }
       }
+   }
+
+   public void a(@Nullable ht $$0) {
+      this.al().b(c, Optional.ofNullable($$0));
    }
 
    @Nullable
-   @Override
-   public eif g() {
-      return this.f;
+   public ht q() {
+      return this.al().b(c).orElse(null);
+   }
+
+   public void a(boolean $$0) {
+      this.al().b(d, $$0);
+   }
+
+   public boolean s() {
+      return this.al().b(d);
    }
 
    @Override
-   public bza<byy> i() {
-      return bza.b;
+   public boolean a(double $$0) {
+      return super.a($$0) || this.q() != null;
+   }
+
+   @Override
+   public clb dy() {
+      return new clb(cle.um);
    }
 }

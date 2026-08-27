@@ -1,30 +1,39 @@
-public class fiy {
-   public static final fiy a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
-   public final float f;
-   public final float g;
+public class fiy extends fiz {
+   private final fkb b;
+   protected final fkb a;
 
-   private fiy(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   public fiy(fkb $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+      this.a = $$0.b("head");
    }
 
-   public static fiy a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
+   public static fkj a() {
+      fkj $$0 = new fkj();
+      fkk $$1 = $$0.a();
+      $$1.a("head", fkg.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fkd.a);
+      return $$0;
    }
 
-   public static fiy b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   public static fkh b() {
+      fkj $$0 = a();
+      fkk $$1 = $$0.a();
+      $$1.a("head").a("hat", fkg.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fkf(0.25F)), fkd.a);
+      return fkh.a($$0, 64, 64);
    }
 
-   public static fiy a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new fiy($$0, $$1, $$2, $$3, $$4, $$5);
+   public static fkh c() {
+      fkj $$0 = a();
+      return fkh.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public void a(enk $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

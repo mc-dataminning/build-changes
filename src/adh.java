@@ -1,24 +1,56 @@
-public class adh implements wb<aca> {
-   private final String a;
+public class adh implements wk<acj> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public adh(String $$0) {
-      this.a = $$0;
+   public adh(bki $$0) {
+      this.a = $$0.dq();
+      this.b = $$0.ds();
+      this.c = $$0.dw();
+      this.d = $$0.dB();
+      this.e = $$0.dD();
    }
 
-   public adh(tl $$0) {
-      this.a = $$0.s();
+   public adh(tu $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public double a() {
       return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

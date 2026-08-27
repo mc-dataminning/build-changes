@@ -1,16 +1,31 @@
-public record wz() implements wu {
-   public static final afw a = new afw("debug/game_test_clear");
+public class wz implements wk<wu> {
+   private final wz.a a;
 
-   public wz(tl $$0) {
-      this();
+   public wz(wz.a $$0) {
+      this.a = $$0;
+   }
+
+   public wz(tu $$0) {
+      this.a = $$0.b(wz.a.class);
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
+      $$0.a(this.a);
    }
 
-   @Override
-   public afw a() {
-      return a;
+   public void a(wu $$0) {
+      $$0.a(this);
+   }
+
+   public wz.a a() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,24 +1,24 @@
-public class wp implements wb<wl> {
-   private final int a;
+public class wp implements wk<wn> {
+   private final ur a;
 
-   public wp(int $$0) {
+   public wp(ur $$0) {
       this.a = $$0;
    }
 
-   public wp(tl $$0) {
-      this.a = $$0.readInt();
+   public wp(tu $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.p(this.a);
+   public void a(tu $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(wl $$0) {
+   public void a(wn $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public ur a() {
       return this.a;
    }
 }

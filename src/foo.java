@@ -1,115 +1,18 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.joml.Matrix4f;
-
-public class foo {
-   private static final int a = 6;
-   private final afw[] b = new afw[6];
-
-   public foo(afw $$0) {
-      for (int $$1 = 0; $$1 < 6; $$1++) {
-         this.b[$$1] = $$0.c($$0.a() + "_" + $$1 + ".png");
-      }
+public class foo extends fnh {
+   foo(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, foq $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.u = 0.5F;
    }
 
-   public void a(ero $$0, float $$1, float $$2, float $$3) {
-      emj $$4 = emj.a();
-      emc $$5 = $$4.c();
-      Matrix4f $$6 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aM().k() / (float)$$0.aM().l(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$6, emp.a);
-      emh $$7 = RenderSystem.getModelViewStack();
-      $$7.a();
-      $$7.e();
-      $$7.a(a.b.rotationDegrees(180.0F));
-      RenderSystem.applyModelViewMatrix();
-      RenderSystem.setShader(fou::t);
-      RenderSystem.enableBlend();
-      RenderSystem.disableCull();
-      RenderSystem.depthMask(false);
-      int $$8 = 2;
+   public static class a implements fny<jv> {
+      private final foq a;
 
-      for (int $$9 = 0; $$9 < 4; $$9++) {
-         $$7.a();
-         float $$10 = ((float)($$9 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$11 = ((float)($$9 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$12 = 0.0F;
-         $$7.a($$10, $$11, 0.0F);
-         $$7.a(a.b.rotationDegrees($$1));
-         $$7.a(a.d.rotationDegrees($$2));
-         RenderSystem.applyModelViewMatrix();
-
-         for (int $$13 = 0; $$13 < 6; $$13++) {
-            RenderSystem.setShaderTexture(0, this.b[$$13]);
-            $$5.a(emm.b.h, emf.s);
-            int $$14 = Math.round(255.0F * $$3) / ($$9 + 1);
-            if ($$13 == 0) {
-               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 1) {
-               $$5.a(1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 2) {
-               $$5.a(1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 3) {
-               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 4) {
-               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 5) {
-               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            $$4.b();
-         }
-
-         $$7.b();
-         RenderSystem.applyModelViewMatrix();
-         RenderSystem.colorMask(true, true, true, false);
+      public a(foq $$0) {
+         this.a = $$0;
       }
 
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.restoreProjectionMatrix();
-      $$7.b();
-      RenderSystem.applyModelViewMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.enableDepthTest();
-   }
-
-   public CompletableFuture<Void> a(gab $$0, Executor $$1) {
-      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$2[$$3] = $$0.a(this.b[$$3], $$1);
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new foo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
-
-      return CompletableFuture.allOf($$2);
    }
 }

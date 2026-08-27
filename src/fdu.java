@@ -1,137 +1,244 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fdu extends ezd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ui b = ui.c("selectWorld.enterName");
-   private etj c;
-   private final BooleanConsumer k;
-   private ets l;
-   private final ecy.c m;
+public class fdu implements evp, ewh {
+   private static final agg b = new agg("recipe_book/overlay_recipe");
+   static final agg c = new agg("recipe_book/furnace_overlay_highlighted");
+   static final agg d = new agg("recipe_book/furnace_overlay");
+   static final agg e = new agg("recipe_book/crafting_overlay_highlighted");
+   static final agg f = new agg("recipe_book/crafting_overlay");
+   static final agg g = new agg("recipe_book/furnace_overlay_disabled_highlighted");
+   static final agg h = new agg("recipe_book/furnace_overlay_disabled");
+   static final agg i = new agg("recipe_book/crafting_overlay_disabled_highlighted");
+   static final agg j = new agg("recipe_book/crafting_overlay_disabled");
+   private static final int k = 4;
+   private static final int l = 5;
+   private static final float m = 0.375F;
+   public static final int a = 25;
+   private final List<fdu.a> n = Lists.newArrayList();
+   private boolean o;
+   private int p;
+   private int q;
+   private esr r;
+   private fdz t;
+   @Nullable
+   private coh<?> u;
+   float v;
+   boolean w;
 
-   public fdu(BooleanConsumer $$0, ecy.c $$1) {
-      super(ui.c("selectWorld.edit.title"));
-      this.k = $$0;
-      this.m = $$1;
-   }
+   public void a(esr $$0, fdz $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
+      this.r = $$0;
+      this.t = $$1;
+      if ($$0.s.bS instanceof cgf) {
+         this.w = true;
+      }
 
-   @Override
-   protected void aM_() {
-      this.c = etj.a(ui.c("selectWorld.edit.save"), $$0x -> this.l()).a(this.g / 2 - 100, this.h / 4 + 144 + 5, 98, 20).a();
-      this.l = new ets(this.i, this.g / 2 - 100, 38, 200, 20, ui.c("selectWorld.enterName"));
-      ecz $$0 = this.m.d();
-      String $$1 = $$0 == null ? "" : $$0.b();
-      this.l.a($$1);
-      this.l.b($$0x -> this.c.i = !ac.b($$0x));
-      this.e(this.l);
-      etj $$2 = this.d(etj.a(ui.c("selectWorld.edit.resetIcon"), $$0x -> {
-         this.m.f().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$0x.i = false;
-      }).a(this.g / 2 - 100, this.h / 4 + 0 + 5, 200, 20).a());
-      this.d(etj.a(ui.c("selectWorld.edit.openFolder"), $$0x -> ac.i().a(this.m.a(ecw.l).toFile())).a(this.g / 2 - 100, this.h / 4 + 24 + 5, 200, 20).a());
-      this.d(etj.a(ui.c("selectWorld.edit.backup"), $$0x -> {
-         boolean $$1x = a(this.m);
-         this.k.accept(!$$1x);
-      }).a(this.g / 2 - 100, this.h / 4 + 48 + 5, 200, 20).a());
-      this.d(etj.a(ui.c("selectWorld.edit.backupFolder"), $$0x -> {
-         ecy $$1x = this.f.l();
-         Path $$2x = $$1x.d();
+      boolean $$7 = $$0.s.m().a((chr<?>)$$0.s.bS);
+      List<coh<?>> $$8 = $$1.b(true);
+      List<coh<?>> $$9 = $$7 ? Collections.emptyList() : $$1.b(false);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
+      this.p = $$2;
+      this.q = $$3;
+      float $$14 = (float)(this.p + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$4 + 50);
+      if ($$14 > $$15) {
+         this.p = (int)((float)this.p - $$6 * (float)((int)(($$14 - $$15) / $$6)));
+      }
 
-         try {
-            v.c($$2x);
-         } catch (IOException var5) {
-            throw new RuntimeException(var5);
+      float $$16 = (float)(this.q + $$13 * 25);
+      float $$17 = (float)($$5 + 50);
+      if ($$16 > $$17) {
+         this.q = (int)((float)this.q - $$6 * (float)ati.f(($$16 - $$17) / $$6));
+      }
+
+      float $$18 = (float)this.q;
+      float $$19 = (float)($$5 - 100);
+      if ($$18 < $$19) {
+         this.q = (int)((float)this.q - $$6 * (float)ati.f(($$18 - $$19) / $$6));
+      }
+
+      this.o = true;
+      this.n.clear();
+
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         coh<?> $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.p + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.q + 5 + 25 * ($$20 / $$12);
+         if (this.w) {
+            this.n.add(new fdu.b($$23, $$24, $$22, $$21));
+         } else {
+            this.n.add(new fdu.a($$23, $$24, $$22, $$21));
          }
+      }
 
-         ac.i().a($$2x.toFile());
-      }).a(this.g / 2 - 100, this.h / 4 + 72 + 5, 200, 20).a());
-      this.d(etj.a(ui.c("selectWorld.edit.optimize"), $$0x -> this.f.a(new exs(this, ($$0xx, $$1x) -> {
-            if ($$0xx) {
-               a(this.m);
-            }
+      this.u = null;
+   }
 
-            this.f.a(fdw.a(this.f, this.k, this.f.ar(), this.m, $$1x));
-         }, ui.c("optimizeWorld.confirm.title"), ui.c("optimizeWorld.confirm.description"), true))).a(this.g / 2 - 100, this.h / 4 + 96 + 5, 200, 20).a());
-      this.d(this.c);
-      this.d(etj.a(uh.e, $$0x -> this.k.accept(false)).a(this.g / 2 + 2, this.h / 4 + 144 + 5, 98, 20).a());
-      $$2.i = this.m.f().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.c(this.l);
+   public fdz a() {
+      return this.t;
+   }
+
+   @Nullable
+   public coh<?> b() {
+      return this.u;
    }
 
    @Override
-   public void a(ero $$0, int $$1, int $$2) {
-      String $$3 = this.l.a();
-      this.b($$0, $$1, $$2);
-      this.l.a($$3);
-   }
-
-   @Override
-   public void aC_() {
-      this.k.accept(false);
-   }
-
-   private void l() {
-      try {
-         this.m.a(this.l.a().trim());
-         this.k.accept(true);
-      } catch (IOException var2) {
-         a.error("Failed to access world '{}'", this.m.b(), var2);
-         evq.a(this.f, this.m.b());
-         this.k.accept(true);
-      }
-   }
-
-   public static void a(ecy $$0, String $$1) {
-      boolean $$2 = false;
-
-      try (ecy.c $$3 = $$0.d($$1)) {
-         $$2 = true;
-         a($$3);
-      } catch (IOException var8) {
-         if (!$$2) {
-            evq.a(ero.O(), $$1);
-         }
-
-         a.warn("Failed to create backup of level {}", $$1, var8);
-      } catch (ehu var9) {
-         a.warn("{}", var9.getMessage());
-         evq.a(ero.O(), $$1);
-      }
-   }
-
-   public static boolean a(ecy.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
-
-      try {
-         $$1 = $$0.h();
-      } catch (IOException var6) {
-         $$2 = var6;
-      }
-
-      if ($$2 != null) {
-         ui $$4 = ui.c("selectWorld.edit.backupFailed");
-         ui $$5 = ui.b($$2.getMessage());
-         ero.O().ay().a(new evq(evq.a.c, $$4, $$5));
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 != 0) {
          return false;
       } else {
-         ui $$6 = ui.a("selectWorld.edit.backupCreated", $$0.b());
-         ui $$7 = ui.a("selectWorld.edit.backupSize", asy.c((double)$$1 / 1048576.0));
-         ero.O().ay().a(new evq(evq.a.c, $$6, $$7));
-         return true;
+         for (fdu.a $$3 : this.n) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.u = $$3.c;
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
-      $$0.b(this.i, b, this.g / 2 - 100 + 1, 24, 10526880);
-      this.l.a($$0, $$1, $$2, $$3);
+   public boolean a_(double $$0, double $$1) {
+      return false;
+   }
+
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      if (this.o) {
+         this.v += $$3;
+         RenderSystem.enableBlend();
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.n.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.n.size(), $$4);
+         int $$6 = ati.f((float)this.n.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(b, this.p, this.q, $$5 * 25 + 8, $$6 * 25 + 8);
+         RenderSystem.disableBlend();
+
+         for (fdu.a $$8 : this.n) {
+            $$8.a($$0, $$1, $$2, $$3);
+         }
+
+         $$0.c().b();
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.o = $$0;
+   }
+
+   public boolean c() {
+      return this.o;
+   }
+
+   @Override
+   public void b_(boolean $$0) {
+   }
+
+   @Override
+   public boolean aI_() {
+      return false;
+   }
+
+   class a extends euk implements aft<coc> {
+      final coh<?> c;
+      private final boolean d;
+      protected final List<fdu.a.a> a = Lists.newArrayList();
+
+      public a(int $$0, int $$1, coh<?> $$2, boolean $$3) {
+         super($$0, $$1, 200, 20, uq.a);
+         this.f = 24;
+         this.g = 24;
+         this.c = $$2;
+         this.d = $$3;
+         this.a($$2);
+      }
+
+      protected void a(coh<?> $$0) {
+         this.a(3, 3, -1, $$0, $$0.b().a().iterator(), 0);
+      }
+
+      @Override
+      public void a(eyf $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public void a(Iterator<coc> $$0, int $$1, int $$2, int $$3, int $$4) {
+         clb[] $$5 = $$0.next().a();
+         if ($$5.length != 0) {
+            this.a.add(new fdu.a.a(3 + $$4 * 7, 3 + $$3 * 7, $$5));
+         }
+      }
+
+      @Override
+      public void b(eub $$0, int $$1, int $$2, float $$3) {
+         agg $$4;
+         if (this.d) {
+            if (fdu.this.w) {
+               $$4 = this.n() ? fdu.c : fdu.d;
+            } else {
+               $$4 = this.n() ? fdu.e : fdu.f;
+            }
+         } else if (fdu.this.w) {
+            $$4 = this.n() ? fdu.g : fdu.h;
+         } else {
+            $$4 = this.n() ? fdu.i : fdu.j;
+         }
+
+         $$0.a($$4, this.p(), this.r(), this.f, this.g);
+         $$0.c().a();
+         $$0.c().a((double)(this.p() + 2), (double)(this.r() + 2), 150.0);
+
+         for (fdu.a.a $$8 : this.a) {
+            $$0.c().a();
+            $$0.c().a((double)$$8.b, (double)$$8.c, 0.0);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0, -8.0, 0.0);
+            if ($$8.a.length > 0) {
+               $$0.a($$8.a[ati.d(fdu.this.v / 30.0F) % $$8.a.length], 0, 0);
+            }
+
+            $$0.c().b();
+         }
+
+         $$0.c().b();
+      }
+
+      protected class a {
+         public final clb[] a;
+         public final int b;
+         public final int c;
+
+         public a(int $$1, int $$2, clb[] $$3) {
+            this.b = $$1;
+            this.c = $$2;
+            this.a = $$3;
+         }
+      }
+   }
+
+   class b extends fdu.a {
+      public b(int $$0, int $$1, coh<?> $$2, boolean $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      protected void a(coh<?> $$0) {
+         coc $$1 = $$0.b().a().get(0);
+         clb[] $$2 = $$1.a();
+         this.a.add(new fdu.a.a(10, 10, $$2));
+      }
    }
 }

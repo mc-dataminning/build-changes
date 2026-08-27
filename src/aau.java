@@ -1,40 +1,40 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class aau implements wk<yd> {
+   private final double a;
+   private final double b;
+   private final long c;
 
-public class aau implements wb<xu> {
-   private final eja a;
-   private final String b;
-
-   public aau(eja $$0, @Nullable ejb $$1) {
-      this.a = $$0;
-      if ($$1 == null) {
-         this.b = "";
-      } else {
-         this.b = $$1.b();
-      }
+   public aau(din $$0) {
+      this.a = $$0.i();
+      this.b = $$0.k();
+      this.c = $$0.j();
    }
 
-   public aau(tl $$0) {
-      this.a = $$0.a(eja.u);
-      this.b = $$0.s();
+   public aau(tu $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.o();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(eja::a, this.a);
+   public void a(tu $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public eja a() {
+   public double a() {
       return this.a;
    }
 
-   @Nullable
-   public String d() {
-      return Objects.equals(this.b, "") ? null : this.b;
+   public double d() {
+      return this.b;
+   }
+
+   public long e() {
+      return this.c;
    }
 }

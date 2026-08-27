@@ -1,39 +1,26 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fbx extends fbg<cgx> {
+   private static final agg x = new agg("textures/gui/container/dispenser.png");
 
-public class fbx implements fbv {
-   private static final int c = 5;
-   private static final int d = 12;
-   public static final int a = 3;
-   public static final int b = 5;
-   private final exm e;
-
-   public fbx(exm $$0) {
-      this.e = $$0;
+   public fbx(cgx $$0, cdl $$1, ur $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
-      if ($$6.x + $$4 > $$0 - 5) {
-         $$6.x = Math.max($$2 - 12 - $$4, 9);
-      }
-
-      $$6.y += 3;
-      int $$7 = $$5 + 3 + 3;
-      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
-      int $$9 = $$1 - 5;
-      if ($$8 + $$7 <= $$9) {
-         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
-      } else {
-         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
-      }
-
-      return $$6;
+   protected void aO_() {
+      super.aO_();
+      this.l = (this.c - this.i.a(this.e)) / 2;
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
-      return Math.round(asy.i((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(eub $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

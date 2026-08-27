@@ -26,7 +26,7 @@ public class ex implements ArgumentType<ex.b> {
       return $$3.a($$1, $$1x -> dy.b(((du)$$0.getSource()).q(), $$1x));
    };
    private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ui.c("argument.scoreHolder.empty"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ur.c("argument.scoreHolder.empty"));
    final boolean d;
 
    public ex(boolean $$0) {
@@ -102,7 +102,7 @@ public class ex implements ArgumentType<ex.b> {
    public static class a implements hf<ex, ex.a.a> {
       private static final byte a = 1;
 
-      public void a(ex.a.a $$0, tl $$1) {
+      public void a(ex.a.a $$0, tu $$1) {
          int $$2 = 0;
          if ($$0.b) {
             $$2 |= 1;
@@ -111,7 +111,7 @@ public class ex implements ArgumentType<ex.b> {
          $$1.k($$2);
       }
 
-      public ex.a.a a(tl $$0) {
+      public ex.a.a a(tu $$0) {
          byte $$1 = $$0.readByte();
          boolean $$2 = ($$1 & 1) != 0;
          return new ex.a.a($$2);
@@ -157,13 +157,13 @@ public class ex implements ArgumentType<ex.b> {
 
       @Override
       public Collection<String> getNames(du $$0, Supplier<Collection<String>> $$1) throws CommandSyntaxException {
-         List<? extends bjt> $$2 = this.a.b($$0);
+         List<? extends bki> $$2 = this.a.b($$0);
          if ($$2.isEmpty()) {
             throw eg.d.create();
          } else {
             List<String> $$3 = Lists.newArrayList();
 
-            for (bjt $$4 : $$2) {
+            for (bki $$4 : $$2) {
                $$3.add($$4.cx());
             }
 

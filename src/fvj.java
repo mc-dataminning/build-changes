@@ -1,100 +1,86 @@
 import org.joml.Matrix4f;
 
-public abstract class fvj<T extends bkl, M extends ffx<T>> extends fve<T, M> {
-   public static final int h = 24;
+public abstract class fvj<T extends bki> {
+   protected static final float b = 0.025F;
+   protected final fvi c;
+   private final etz a;
+   protected float d;
+   protected float e = 1.0F;
 
-   public fvj(fud.a $$0, M $$1, float $$2) {
-      super($$0, $$1, $$2);
+   protected fvj(fvk.a $$0) {
+      this.c = $$0.a();
+      this.a = $$0.h();
    }
 
-   protected boolean a(T $$0) {
-      return super.b($$0) && ($$0.cB() || $$0.ac() && $$0 == this.c.c);
+   public final int b(T $$0, float $$1) {
+      ht $$2 = ht.a($$0.k($$1));
+      return fqg.a(this.a($$0, $$2), this.b($$0, $$2));
    }
 
-   public boolean a(T $$0, fsc $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+   protected int b(T $$0, ht $$1) {
+      return $$0.dL().a(csb.a, $$1);
+   }
+
+   protected int a(T $$0, ht $$1) {
+      return $$0.bM() ? 15 : $$0.dL().a(csb.b, $$1);
+   }
+
+   public boolean a(T $$0, ftj $$1, double $$2, double $$3, double $$4) {
+      if (!$$0.k($$2, $$3, $$4)) {
+         return false;
+      } else if ($$0.at) {
          return true;
       } else {
-         bjt $$5 = $$0.fT();
-         return $$5 != null ? $$1.a($$5.h_()) : false;
+         ejd $$5 = $$0.h_().g(0.5);
+         if ($$5.e() || $$5.a() == 0.0) {
+            $$5 = new ejd($$0.dq() - 2.0, $$0.ds() - 2.0, $$0.dw() - 2.0, $$0.dq() + 2.0, $$0.ds() + 2.0, $$0.dw() + 2.0);
+         }
+
+         return $$1.a($$5);
       }
    }
 
-   public void a(T $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      bjt $$6 = $$0.fT();
-      if ($$6 != null) {
-         this.a($$0, $$2, $$3, $$4, $$6);
+   public eji a(T $$0, float $$1) {
+      return eji.b;
+   }
+
+   public void a(T $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
+      if (this.b($$0)) {
+         this.a($$0, $$0.O_(), $$3, $$4, $$5);
       }
    }
 
-   private <E extends bjt> void a(T $$0, float $$1, emh $$2, fpb $$3, E $$4) {
-      $$2.a();
-      eif $$5 = $$4.q($$1);
-      double $$6 = (double)(asy.i($$1, $$0.aV, $$0.aU) * (float) (Math.PI / 180.0)) + (Math.PI / 2);
-      eif $$7 = $$0.p($$1);
-      double $$8 = Math.cos($$6) * $$7.e + Math.sin($$6) * $$7.c;
-      double $$9 = Math.sin($$6) * $$7.e - Math.cos($$6) * $$7.c;
-      double $$10 = asy.d((double)$$1, $$0.K, $$0.dq()) + $$8;
-      double $$11 = asy.d((double)$$1, $$0.L, $$0.ds()) + $$7.d;
-      double $$12 = asy.d((double)$$1, $$0.M, $$0.dw()) + $$9;
-      $$2.a($$8, $$7.d, $$9);
-      float $$13 = (float)($$5.c - $$10);
-      float $$14 = (float)($$5.d - $$11);
-      float $$15 = (float)($$5.e - $$12);
-      float $$16 = 0.025F;
-      eml $$17 = $$3.getBuffer(fpj.i());
-      Matrix4f $$18 = $$2.c().a();
-      float $$19 = asy.i($$13 * $$13 + $$15 * $$15) * 0.025F / 2.0F;
-      float $$20 = $$15 * $$19;
-      float $$21 = $$13 * $$19;
-      ht $$22 = ht.a($$0.j($$1));
-      ht $$23 = ht.a($$4.j($$1));
-      int $$24 = this.a($$0, $$22);
-      int $$25 = this.c.a($$4).a($$4, $$23);
-      int $$26 = $$0.dL().a(cri.a, $$22);
-      int $$27 = $$0.dL().a(cri.a, $$23);
-
-      for (int $$28 = 0; $$28 <= 24; $$28++) {
-         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.025F, $$20, $$21, $$28, false);
-      }
-
-      for (int $$29 = 24; $$29 >= 0; $$29--) {
-         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.0F, $$20, $$21, $$29, true);
-      }
-
-      $$2.b();
+   protected boolean b(T $$0) {
+      return $$0.cB() || $$0.ac() && $$0 == this.c.c;
    }
 
-   private static void a(
-      eml $$0,
-      Matrix4f $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      int $$5,
-      int $$6,
-      int $$7,
-      int $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      int $$13,
-      boolean $$14
-   ) {
-      float $$15 = (float)$$13 / 24.0F;
-      int $$16 = (int)asy.i($$15, (float)$$5, (float)$$6);
-      int $$17 = (int)asy.i($$15, (float)$$7, (float)$$8);
-      int $$18 = fpa.a($$16, $$17);
-      float $$19 = $$13 % 2 == ($$14 ? 1 : 0) ? 0.7F : 1.0F;
-      float $$20 = 0.5F * $$19;
-      float $$21 = 0.4F * $$19;
-      float $$22 = 0.3F * $$19;
-      float $$23 = $$2 * $$15;
-      float $$24 = $$3 > 0.0F ? $$3 * $$15 * $$15 : $$3 - $$3 * (1.0F - $$15) * (1.0F - $$15);
-      float $$25 = $$4 * $$15;
-      $$0.a($$1, $$23 - $$11, $$24 + $$10, $$25 + $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
-      $$0.a($$1, $$23 + $$11, $$24 + $$9 - $$10, $$25 - $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
+   public abstract agg a(T var1);
+
+   public etz b() {
+      return this.a;
+   }
+
+   protected void a(T $$0, ur $$1, enk $$2, fqh $$3, int $$4) {
+      double $$5 = this.c.b($$0);
+      if (!($$5 > 4096.0)) {
+         boolean $$6 = !$$0.bU();
+         float $$7 = $$0.dh();
+         int $$8 = "deadmau5".equals($$1.getString()) ? -10 : 0;
+         $$2.a();
+         $$2.a(0.0F, $$7, 0.0F);
+         $$2.a(this.c.b());
+         $$2.b(-0.025F, -0.025F, 0.025F);
+         Matrix4f $$9 = $$2.c().a();
+         float $$10 = esr.N().m.a(0.25F);
+         int $$11 = (int)($$10 * 255.0F) << 24;
+         etz $$12 = this.b();
+         float $$13 = (float)(-$$12.a($$1) / 2);
+         $$12.a($$1, $$13, (float)$$8, 553648127, false, $$9, $$3, $$6 ? etz.a.b : etz.a.a, $$11, $$4);
+         if ($$6) {
+            $$12.a($$1, $$13, (float)$$8, -1, false, $$9, $$3, etz.a.a, 0, $$4);
+         }
+
+         $$2.b();
+      }
    }
 }

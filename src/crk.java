@@ -1,213 +1,184 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Objects;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public final class crk {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 24;
-   public static final int a = 8;
-   public static final int b = 128;
-   static final int e = (int)Math.pow(17.0, 2.0);
-   private static final bkm[] f = Stream.of(bkm.values()).filter($$0 -> $$0 != bkm.h).toArray(bkm[]::new);
+public class crk {
+   private static final crl a = new crl();
+   private static final int b = 16;
+   private final boolean c;
+   private final crk.a d;
+   private final ato e = ato.a();
+   private final crs f;
+   private final double g;
+   private final double h;
+   private final double i;
+   @Nullable
+   private final bki j;
+   private final float k;
+   private final bjg l;
+   private final crl m;
+   private final ObjectArrayList<ht> n = new ObjectArrayList();
+   private final Map<cdm, eji> o = Maps.newHashMap();
 
-   private crk() {
+   public crk(crs $$0, @Nullable bki $$1, double $$2, double $$3, double $$4, float $$5, List<ht> $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, false, crk.a.c, $$6);
    }
 
-   public static crk.d a(int $$0, Iterable<bjt> $$1, crk.b $$2, crj $$3) {
-      crn $$4 = new crn();
-      Object2IntOpenHashMap<bkm> $$5 = new Object2IntOpenHashMap();
+   public crk(crs $$0, @Nullable bki $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, crk.a $$7, List<ht> $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.n.addAll($$8);
+   }
 
-      for (bjt $$6 : $$1) {
-         if ($$6 instanceof bkl $$7 && ($$7.fL() || $$7.U())) {
-            continue;
+   public crk(crs $$0, @Nullable bki $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, crk.a $$7) {
+      this($$0, $$1, null, null, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public crk(crs $$0, @Nullable bki $$1, @Nullable bjg $$2, @Nullable crl $$3, double $$4, double $$5, double $$6, float $$7, boolean $$8, crk.a $$9) {
+      this.f = $$0;
+      this.j = $$1;
+      this.k = $$7;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.c = $$8;
+      this.d = $$9;
+      this.l = $$2 == null ? $$0.ag().a(this) : $$2;
+      this.m = $$3 == null ? this.a($$1) : $$3;
+   }
+
+   private crl a(@Nullable bki $$0) {
+      return (crl)($$0 == null ? a : new cri($$0));
+   }
+
+   public static float a(eji $$0, bki $$1) {
+      ejd $$2 = $$1.cG();
+      double $$3 = 1.0 / (($$2.d - $$2.a) * 2.0 + 1.0);
+      double $$4 = 1.0 / (($$2.e - $$2.b) * 2.0 + 1.0);
+      double $$5 = 1.0 / (($$2.f - $$2.c) * 2.0 + 1.0);
+      double $$6 = (1.0 - Math.floor(1.0 / $$3) * $$3) / 2.0;
+      double $$7 = (1.0 - Math.floor(1.0 / $$5) * $$5) / 2.0;
+      if (!($$3 < 0.0) && !($$4 < 0.0) && !($$5 < 0.0)) {
+         int $$8 = 0;
+         int $$9 = 0;
+
+         for (double $$10 = 0.0; $$10 <= 1.0; $$10 += $$3) {
+            for (double $$11 = 0.0; $$11 <= 1.0; $$11 += $$4) {
+               for (double $$12 = 0.0; $$12 <= 1.0; $$12 += $$5) {
+                  double $$13 = ati.d($$10, $$2.a, $$2.d);
+                  double $$14 = ati.d($$11, $$2.b, $$2.e);
+                  double $$15 = ati.d($$12, $$2.c, $$2.f);
+                  eji $$16 = new eji($$13 + $$6, $$14, $$15 + $$7);
+                  if ($$1.dL().a(new crb($$16, $$0, crb.a.a, crb.b.a, $$1)).c() == ejg.a.a) {
+                     $$8++;
+                  }
+
+                  $$9++;
+               }
+            }
          }
 
-         bkm $$8 = $$6.ag().f();
-         if ($$8 != bkm.h) {
-            ht $$9 = $$6.dl();
-            $$2.query(cqg.a($$9), $$6x -> {
-               csj.b $$7 = a($$9, $$6x).b().a($$6.ag());
-               if ($$7 != null) {
-                  $$4.a($$6.dl(), $$7.b());
-               }
-
-               if ($$6 instanceof bkl) {
-                  $$3.a($$6x.f(), $$8);
-               }
-
-               $$5.addTo($$8, 1);
-            });
-         }
-      }
-
-      return new crk.d($$0, $$5, $$4, $$3);
-   }
-
-   static crx a(ht $$0, dhx $$1) {
-      return $$1.getNoiseBiome(in.a($$0.u()), in.a($$0.v()), in.a($$0.w())).a();
-   }
-
-   public static void a(alq $$0, dii $$1, crk.d $$2, boolean $$3, boolean $$4, boolean $$5) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:241)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.DoStatement.toJava(DoStatement.java:148)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: invokevirtual alq.ad ()Lbes;
-      // 04: ldc "spawner"
-      // 06: invokeinterface bes.a (Ljava/lang/String;)V 2
-      // 0b: getstatic crk.f [Lbkm;
-      // 0e: astore 6
-      // 10: aload 6
-      // 12: arraylength
-      // 13: istore 7
-      // 15: bipush 0
-      // 16: istore 8
-      // 18: iload 8
-      // 1a: iload 7
-      // 1c: if_icmpge 7c
-      // 1f: aload 6
-      // 21: iload 8
-      // 23: aaload
-      // 24: astore 9
-      // 26: iload 3
-      // 27: ifne 32
-      // 2a: aload 9
-      // 2c: invokevirtual bkm.d ()Z
-      // 2f: ifne 76
-      // 32: iload 4
-      // 34: ifne 3f
-      // 37: aload 9
-      // 39: invokevirtual bkm.d ()Z
-      // 3c: ifeq 76
-      // 3f: iload 5
-      // 41: ifne 4c
-      // 44: aload 9
-      // 46: invokevirtual bkm.e ()Z
-      // 49: ifne 76
-      // 4c: aload 2
-      // 4d: aload 9
-      // 4f: aload 1
-      // 50: invokevirtual dii.f ()Lcqg;
-      // 53: invokevirtual crk$d.a (Lbkm;Lcqg;)Z
-      // 56: ifeq 76
-      // 59: aload 9
-      // 5b: aload 0
-      // 5c: aload 1
-      // 5d: aload 2
-      // 5e: dup
-      // 5f: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 62: pop
-      // 63: invokedynamic test (Lcrk$d;)Lcrk$c; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Lbjx;Lht;Ldhx;)Z, crk$d.a (Lbjx;Lht;Ldhx;)Z, (Lbjx;Lht;Ldhx;)Z ]
-      // 68: aload 2
-      // 69: dup
-      // 6a: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 6d: pop
-      // 6e: invokedynamic run (Lcrk$d;)Lcrk$a; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Lbkl;Ldhx;)V, crk$d.a (Lbkl;Ldhx;)V, (Lbkl;Ldhx;)V ]
-      // 73: invokestatic crk.a (Lbkm;Lalq;Ldii;Lcrk$c;Lcrk$a;)V
-      // 76: iinc 8 1
-      // 79: goto 18
-      // 7c: aload 0
-      // 7d: invokevirtual alq.ad ()Lbes;
-      // 80: invokeinterface bes.c ()V 1
-      // 85: return
-   }
-
-   public static void a(bkm $$0, alq $$1, dii $$2, crk.c $$3, crk.a $$4) {
-      ht $$5 = a($$1, $$2);
-      if ($$5.v() >= $$1.I_() + 1) {
-         a($$0, $$1, $$2, $$5, $$3, $$4);
+         return (float)$$8 / (float)$$9;
+      } else {
+         return 0.0F;
       }
    }
 
-   @aua
-   public static void a(bkm $$0, alq $$1, ht $$2) {
-      a($$0, $$1, $$1.x($$2), $$2, ($$0x, $$1x, $$2x) -> true, ($$0x, $$1x) -> {
-      });
-   }
+   public void a() {
+      this.f.a(this.j, dlg.w, new eji(this.g, this.h, this.i));
+      Set<ht> $$0 = Sets.newHashSet();
+      int $$1 = 16;
 
-   public static void a(bkm $$0, alq $$1, dhx $$2, ht $$3, crk.c $$4, crk.a $$5) {
-      crr $$6 = $$1.a();
-      dhy $$7 = $$1.k().g();
-      int $$8 = $$3.v();
-      dgb $$9 = $$2.a_($$3);
-      if (!$$9.g($$2, $$3)) {
-         ht.a $$10 = new ht.a();
-         int $$11 = 0;
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            for (int $$4 = 0; $$4 < 16; $$4++) {
+               if ($$2 == 0 || $$2 == 15 || $$3 == 0 || $$3 == 15 || $$4 == 0 || $$4 == 15) {
+                  double $$5 = (double)((float)$$2 / 15.0F * 2.0F - 1.0F);
+                  double $$6 = (double)((float)$$3 / 15.0F * 2.0F - 1.0F);
+                  double $$7 = (double)((float)$$4 / 15.0F * 2.0F - 1.0F);
+                  double $$8 = Math.sqrt($$5 * $$5 + $$6 * $$6 + $$7 * $$7);
+                  $$5 /= $$8;
+                  $$6 /= $$8;
+                  $$7 /= $$8;
+                  float $$9 = this.k * (0.7F + this.f.z.i() * 0.6F);
+                  double $$10 = this.g;
+                  double $$11 = this.h;
+                  double $$12 = this.i;
 
-         for (int $$12 = 0; $$12 < 3; $$12++) {
-            int $$13 = $$3.u();
-            int $$14 = $$3.w();
-            int $$15 = 6;
-            csj.c $$16 = null;
-            blc $$17 = null;
-            int $$18 = asy.f($$1.z.i() * 4.0F);
-            int $$19 = 0;
-
-            for (int $$20 = 0; $$20 < $$18; $$20++) {
-               $$13 += $$1.z.a(6) - $$1.z.a(6);
-               $$14 += $$1.z.a(6) - $$1.z.a(6);
-               $$10.d($$13, $$8, $$14);
-               double $$21 = (double)$$13 + 0.5;
-               double $$22 = (double)$$14 + 0.5;
-               ccx $$23 = $$1.a($$21, (double)$$8, $$22, -1.0, false);
-               if ($$23 != null) {
-                  double $$24 = $$23.i($$21, (double)$$8, $$22);
-                  if (a($$1, $$2, $$10, $$24)) {
-                     if ($$16 == null) {
-                        Optional<csj.c> $$25 = a($$1, $$6, $$7, $$0, $$1.z, $$10);
-                        if ($$25.isEmpty()) {
-                           break;
-                        }
-
-                        $$16 = $$25.get();
-                        $$18 = $$16.c + $$1.z.a(1 + $$16.d - $$16.c);
+                  for (float $$13 = 0.3F; $$9 > 0.0F; $$9 -= 0.22500001F) {
+                     ht $$14 = ht.a($$10, $$11, $$12);
+                     dgw $$15 = this.f.a_($$14);
+                     ecg $$16 = this.f.b_($$14);
+                     if (!this.f.j($$14)) {
+                        break;
                      }
 
-                     if (a($$1, $$0, $$6, $$7, $$16, $$10, $$24) && $$4.test($$16.b, $$10, $$2)) {
-                        bkl $$26 = a($$1, $$16.b);
-                        if ($$26 == null) {
-                           return;
-                        }
+                     Optional<Float> $$17 = this.m.a(this, this.f, $$14, $$15, $$16);
+                     if ($$17.isPresent()) {
+                        $$9 -= ($$17.get() + 0.3F) * 0.3F;
+                     }
 
-                        $$26.b($$21, (double)$$8, $$22, $$1.z.i() * 360.0F, 0.0F);
-                        if (a($$1, $$26, $$24)) {
-                           $$17 = $$26.a($$1, $$1.d_($$26.dl()), bkn.a, $$17, null);
-                           $$11++;
-                           $$19++;
-                           $$1.a_($$26);
-                           $$5.run($$26, $$2);
-                           if ($$11 >= $$26.fI()) {
-                              return;
-                           }
+                     if ($$9 > 0.0F && this.m.a(this, this.f, $$14, $$15, $$9)) {
+                        $$0.add($$14);
+                     }
 
-                           if ($$26.d($$19)) {
-                              break;
-                           }
-                        }
+                     $$10 += $$5 * 0.3F;
+                     $$11 += $$6 * 0.3F;
+                     $$12 += $$7 * 0.3F;
+                  }
+               }
+            }
+         }
+      }
+
+      this.n.addAll($$0);
+      float $$18 = this.k * 2.0F;
+      int $$19 = ati.a(this.g - (double)$$18 - 1.0);
+      int $$20 = ati.a(this.g + (double)$$18 + 1.0);
+      int $$21 = ati.a(this.h - (double)$$18 - 1.0);
+      int $$22 = ati.a(this.h + (double)$$18 + 1.0);
+      int $$23 = ati.a(this.i - (double)$$18 - 1.0);
+      int $$24 = ati.a(this.i + (double)$$18 + 1.0);
+      List<bki> $$25 = this.f.a_(this.j, new ejd((double)$$19, (double)$$21, (double)$$23, (double)$$20, (double)$$22, (double)$$24));
+      eji $$26 = new eji(this.g, this.h, this.i);
+
+      for (bki $$27 : $$25) {
+         if (!$$27.cL()) {
+            double $$28 = Math.sqrt($$27.e($$26)) / (double)$$18;
+            if ($$28 <= 1.0) {
+               double $$29 = $$27.dq() - this.g;
+               double $$30 = ($$27 instanceof cag ? $$27.ds() : $$27.du()) - this.h;
+               double $$31 = $$27.dw() - this.i;
+               double $$32 = Math.sqrt($$29 * $$29 + $$30 * $$30 + $$31 * $$31);
+               if ($$32 != 0.0) {
+                  $$29 /= $$32;
+                  $$30 /= $$32;
+                  $$31 /= $$32;
+                  double $$33 = (double)a($$26, $$27);
+                  double $$34 = (1.0 - $$28) * $$33;
+                  $$27.a(this.c(), (float)((int)(($$34 * $$34 + $$34) / 2.0 * 7.0 * (double)$$18 + 1.0)));
+                  double $$36;
+                  if ($$27 instanceof bky $$35) {
+                     $$36 = cpz.a($$35, $$34);
+                  } else {
+                     $$36 = $$34;
+                  }
+
+                  $$29 *= $$36;
+                  $$30 *= $$36;
+                  $$31 *= $$36;
+                  eji $$38 = new eji($$29, $$30, $$31);
+                  $$27.f($$27.do().e($$38));
+                  if ($$27 instanceof cdm) {
+                     cdm $$39 = (cdm)$$27;
+                     if (!$$39.N_() && (!$$39.f() || !$$39.fT().b)) {
+                        this.o.put($$39, $$38);
                      }
                   }
                }
@@ -216,288 +187,143 @@ public final class crk {
       }
    }
 
-   private static boolean a(alq $$0, dhx $$1, ht.a $$2, double $$3) {
-      if ($$3 <= 576.0) {
-         return false;
-      } else {
-         return $$0.R().a(new eif((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5), 24.0)
-            ? false
-            : Objects.equals(new cqg($$2), $$1.f()) || $$0.f($$2);
+   public void a(boolean $$0) {
+      if (this.f.B) {
+         this.f.a(this.g, this.h, this.i, aqn.jb, aqo.e, 4.0F, (1.0F + (this.f.z.i() - this.f.z.i()) * 0.2F) * 0.7F, false);
+      }
+
+      boolean $$1 = this.b();
+      if ($$0) {
+         if (!(this.k < 2.0F) && $$1) {
+            this.f.a(js.w, this.g, this.h, this.i, 1.0, 0.0, 0.0);
+         } else {
+            this.f.a(js.x, this.g, this.h, this.i, 1.0, 0.0, 0.0);
+         }
+      }
+
+      if ($$1) {
+         ObjectArrayList<Pair<clb, ht>> $$2 = new ObjectArrayList();
+         boolean $$3 = this.e() instanceof cdm;
+         ac.b(this.n, this.f.z);
+         ObjectListIterator var5 = this.n.iterator();
+
+         while (var5.hasNext()) {
+            ht $$4 = (ht)var5.next();
+            dgw $$5 = this.f.a_($$4);
+            cut $$6 = $$5.b();
+            if (!$$5.i()) {
+               ht $$7 = $$4.i();
+               this.f.ad().a("explosion_blocks");
+               if ($$6.a(this)) {
+                  crs $$9 = this.f;
+                  if ($$9 instanceof ama) {
+                     ama $$8 = (ama)$$9;
+                     der $$9x = $$5.t() ? this.f.c_($$4) : null;
+                     eer.a $$10 = new eer.a($$8).a(egw.f, eji.b($$4)).a(egw.i, clb.b).b(egw.h, $$9x).b(egw.a, this.j);
+                     if (this.d == crk.a.c) {
+                        $$10.a(egw.j, this.k);
+                     }
+
+                     $$5.a($$8, $$4, clb.b, $$3);
+                     $$5.a($$10).forEach($$2x -> a($$2, $$2x, $$7));
+                  }
+               }
+
+               this.f.a($$4, cuv.a.o(), 3);
+               $$6.a(this.f, $$4, this);
+               this.f.ad().c();
+            }
+         }
+
+         var5 = $$2.iterator();
+
+         while (var5.hasNext()) {
+            Pair<clb, ht> $$11 = (Pair<clb, ht>)var5.next();
+            cut.a(this.f, (ht)$$11.getSecond(), (clb)$$11.getFirst());
+         }
+      }
+
+      if (this.c) {
+         ObjectListIterator var13 = this.n.iterator();
+
+         while (var13.hasNext()) {
+            ht $$12 = (ht)var13.next();
+            if (this.e.a(3) == 0 && this.f.a_($$12).i() && this.f.a_($$12.d()).i(this.f, $$12.d())) {
+               this.f.b($$12, cug.a(this.f, $$12));
+            }
+         }
       }
    }
 
-   private static boolean a(alq $$0, bkm $$1, crr $$2, dhy $$3, csj.c $$4, ht.a $$5, double $$6) {
-      bjx<?> $$7 = $$4.b;
-      if ($$7.f() == bkm.h) {
-         return false;
-      } else if (!$$7.e() && $$6 > (double)($$7.f().f() * $$7.f().f())) {
-         return false;
-      } else if ($$7.c() && a($$0, $$2, $$3, $$1, $$4, $$5)) {
-         bld.c $$8 = bld.a($$7);
-         if (!a($$8, $$0, $$5, $$7)) {
-            return false;
-         } else {
-            return !bld.a($$7, $$0, bkn.a, $$5, $$0.z) ? false : $$0.b($$7.a((double)$$5.u() + 0.5, (double)$$5.v(), (double)$$5.w() + 0.5));
+   public boolean b() {
+      return this.d != crk.a.a;
+   }
+
+   private static void a(ObjectArrayList<Pair<clb, ht>> $$0, clb $$1, ht $$2) {
+      int $$3 = $$0.size();
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         Pair<clb, ht> $$5 = (Pair<clb, ht>)$$0.get($$4);
+         clb $$6 = (clb)$$5.getFirst();
+         if (caf.a($$6, $$1)) {
+            clb $$7 = caf.a($$6, $$1, 16);
+            $$0.set($$4, Pair.of($$7, (ht)$$5.getSecond()));
+            if ($$1.b()) {
+               return;
+            }
          }
+      }
+
+      $$0.add(Pair.of($$1, $$2));
+   }
+
+   public bjg c() {
+      return this.l;
+   }
+
+   public Map<cdm, eji> d() {
+      return this.o;
+   }
+
+   @Nullable
+   public bky e() {
+      if (this.j == null) {
+         return null;
+      } else if (this.j instanceof cag $$0) {
+         return $$0.q();
       } else {
-         return false;
+         bki $$3 = this.j;
+         if ($$3 instanceof bky) {
+            return (bky)$$3;
+         } else {
+            if (this.j instanceof cee $$2) {
+               $$3 = $$2.v();
+               if ($$3 instanceof bky) {
+                  return (bky)$$3;
+               }
+            }
+
+            return null;
+         }
       }
    }
 
    @Nullable
-   private static bkl a(alq $$0, bjx<?> $$1) {
-      try {
-         bjt var3 = $$1.a((cqz)$$0);
-         if (var3 instanceof bkl) {
-            return (bkl)var3;
-         }
-
-         c.warn("Can't spawn entity of type: {}", jy.h.b($$1));
-      } catch (Exception var4) {
-         c.warn("Failed to create mob", var4);
-      }
-
-      return null;
+   public bki f() {
+      return this.j;
    }
 
-   private static boolean a(alq $$0, bkl $$1, double $$2) {
-      return $$2 > (double)($$1.ag().f().f() * $$1.ag().f().f()) && $$1.h($$2) ? false : $$1.a($$0, bkn.a) && $$1.a($$0);
+   public void g() {
+      this.n.clear();
    }
 
-   private static Optional<csj.c> a(alq $$0, crr $$1, dhy $$2, bkm $$3, ate $$4, ht $$5) {
-      ib<crx> $$6 = $$0.s($$5);
-      return $$3 == bkm.g && $$6.a(aqr.al) && $$4.i() < 0.98F ? Optional.empty() : a($$0, $$1, $$2, $$3, $$5, $$6).b($$4);
+   public List<ht> h() {
+      return this.n;
    }
 
-   private static boolean a(alq $$0, crr $$1, dhy $$2, bkm $$3, csj.c $$4, ht $$5) {
-      return a($$0, $$1, $$2, $$3, $$5, null).e().contains($$4);
-   }
-
-   private static bgp<csj.c> a(alq $$0, crr $$1, dhy $$2, bkm $$3, ht $$4, @Nullable ib<crx> $$5) {
-      return a($$4, $$0, $$3, $$1) ? dxz.d : $$2.a($$5 != null ? $$5 : $$0.s($$4), $$1, $$3, $$4);
-   }
-
-   public static boolean a(ht $$0, alq $$1, bkm $$2, crr $$3) {
-      if ($$2 == bkm.a && $$1.a_($$0.d()).a(cuc.fn)) {
-         dwa $$4 = $$3.b().d(jz.aA).a(dvu.o);
-         return $$4 == null ? false : $$3.a($$0, $$4).b();
-      } else {
-         return false;
-      }
-   }
-
-   private static ht a(cqz $$0, dii $$1) {
-      cqg $$2 = $$1.f();
-      int $$3 = $$2.d() + $$0.z.a(16);
-      int $$4 = $$2.e() + $$0.z.a(16);
-      int $$5 = $$1.a(dlk.a.b, $$3, $$4) + 1;
-      int $$6 = asy.b($$0.z, $$0.I_(), $$5);
-      return new ht($$3, $$6, $$4);
-   }
-
-   public static boolean a(cqf $$0, ht $$1, dgb $$2, ebe $$3, bjx<?> $$4) {
-      if ($$2.r($$0, $$1)) {
-         return false;
-      } else if ($$2.m()) {
-         return false;
-      } else if (!$$3.c()) {
-         return false;
-      } else {
-         return $$2.a(aqs.aW) ? false : !$$4.a($$2);
-      }
-   }
-
-   public static boolean a(bld.c $$0, crc $$1, ht $$2, @Nullable bjx<?> $$3) {
-      if ($$0 == bld.c.c) {
-         return true;
-      } else if ($$3 != null && $$1.C_().a($$2)) {
-         dgb $$4 = $$1.a_($$2);
-         ebe $$5 = $$1.b_($$2);
-         ht $$6 = $$2.c();
-         ht $$7 = $$2.d();
-         switch ($$0) {
-            case b:
-               return $$5.a(aqx.a) && !$$1.a_($$6).g($$1, $$6);
-            case d:
-               return $$5.a(aqx.b);
-            case a:
-            default:
-               dgb $$8 = $$1.a_($$7);
-               return !$$8.a($$1, $$7, $$3) ? false : a($$1, $$2, $$4, $$5, $$3) && a($$1, $$6, $$1.a_($$6), $$1.b_($$6), $$3);
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public static void a(cro $$0, ib<crx> $$1, cqg $$2, ate $$3) {
-      csj $$4 = $$1.a().b();
-      bgp<csj.c> $$5 = $$4.a(bkm.b);
-      if (!$$5.d()) {
-         int $$6 = $$2.d();
-         int $$7 = $$2.e();
-
-         while ($$3.i() < $$4.a()) {
-            Optional<csj.c> $$8 = $$5.b($$3);
-            if (!$$8.isEmpty()) {
-               csj.c $$9 = $$8.get();
-               int $$10 = $$9.c + $$3.a(1 + $$9.d - $$9.c);
-               blc $$11 = null;
-               int $$12 = $$6 + $$3.a(16);
-               int $$13 = $$7 + $$3.a(16);
-               int $$14 = $$12;
-               int $$15 = $$13;
-
-               for (int $$16 = 0; $$16 < $$10; $$16++) {
-                  boolean $$17 = false;
-
-                  for (int $$18 = 0; !$$17 && $$18 < 4; $$18++) {
-                     ht $$19 = a($$0, $$9.b, $$12, $$13);
-                     if ($$9.b.c() && a(bld.a($$9.b), $$0, $$19, $$9.b)) {
-                        float $$20 = $$9.b.k();
-                        double $$21 = asy.a((double)$$12, (double)$$6 + (double)$$20, (double)$$6 + 16.0 - (double)$$20);
-                        double $$22 = asy.a((double)$$13, (double)$$7 + (double)$$20, (double)$$7 + 16.0 - (double)$$20);
-                        if (!$$0.b($$9.b.a($$21, (double)$$19.v(), $$22)) || !bld.a($$9.b, $$0, bkn.b, ht.a($$21, (double)$$19.v(), $$22), $$0.E_())) {
-                           continue;
-                        }
-
-                        bjt $$23;
-                        try {
-                           $$23 = $$9.b.a((cqz)$$0.C());
-                        } catch (Exception var27) {
-                           c.warn("Failed to create mob", var27);
-                           continue;
-                        }
-
-                        if ($$23 == null) {
-                           continue;
-                        }
-
-                        $$23.b($$21, (double)$$19.v(), $$22, $$3.i() * 360.0F, 0.0F);
-                        if ($$23 instanceof bkl $$26 && $$26.a($$0, bkn.b) && $$26.a($$0)) {
-                           $$11 = $$26.a($$0, $$0.d_($$26.dl()), bkn.b, $$11, null);
-                           $$0.a_($$26);
-                           $$17 = true;
-                        }
-                     }
-
-                     $$12 += $$3.a(5) - $$3.a(5);
-
-                     for ($$13 += $$3.a(5) - $$3.a(5); $$12 < $$6 || $$12 >= $$6 + 16 || $$13 < $$7 || $$13 >= $$7 + 16; $$13 = $$15 + $$3.a(5) - $$3.a(5)) {
-                        $$12 = $$14 + $$3.a(5) - $$3.a(5);
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static ht a(crc $$0, bjx<?> $$1, int $$2, int $$3) {
-      int $$4 = $$0.a(bld.b($$1), $$2, $$3);
-      ht.a $$5 = new ht.a($$2, $$4, $$3);
-      if ($$0.D_().h()) {
-         do {
-            $$5.c(hx.a);
-         } while (!$$0.a_($$5).i());
-
-         do {
-            $$5.c(hx.a);
-         } while ($$0.a_($$5).i() && $$5.v() > $$0.I_());
-      }
-
-      if (bld.a($$1) == bld.c.a) {
-         ht $$6 = $$5.d();
-         if ($$0.a_($$6).a($$0, $$6, ebu.a)) {
-            return $$6;
-         }
-      }
-
-      return $$5.i();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void run(bkl var1, dhx var2);
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void query(long var1, Consumer<dii> var3);
-   }
-
-   @FunctionalInterface
-   public interface c {
-      boolean test(bjx<?> var1, ht var2, dhx var3);
-   }
-
-   public static class d {
-      private final int a;
-      private final Object2IntOpenHashMap<bkm> b;
-      private final crn c;
-      private final Object2IntMap<bkm> d;
-      private final crj e;
-      @Nullable
-      private ht f;
-      @Nullable
-      private bjx<?> g;
-      private double h;
-
-      d(int $$0, Object2IntOpenHashMap<bkm> $$1, crn $$2, crj $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.e = $$3;
-         this.d = Object2IntMaps.unmodifiable($$1);
-      }
-
-      private boolean a(bjx<?> $$0, ht $$1, dhx $$2) {
-         this.f = $$1;
-         this.g = $$0;
-         csj.b $$3 = crk.a($$1, $$2).b().a($$0);
-         if ($$3 == null) {
-            this.h = 0.0;
-            return true;
-         } else {
-            double $$4 = $$3.b();
-            this.h = $$4;
-            double $$5 = this.c.b($$1, $$4);
-            return $$5 <= $$3.a();
-         }
-      }
-
-      private void a(bkl $$0, dhx $$1) {
-         bjx<?> $$2 = $$0.ag();
-         ht $$3 = $$0.dl();
-         double $$4;
-         if ($$3.equals(this.f) && $$2 == this.g) {
-            $$4 = this.h;
-         } else {
-            csj.b $$5 = crk.a($$3, $$1).b().a($$2);
-            if ($$5 != null) {
-               $$4 = $$5.b();
-            } else {
-               $$4 = 0.0;
-            }
-         }
-
-         this.c.a($$3, $$4);
-         bkm $$8 = $$2.f();
-         this.b.addTo($$8, 1);
-         this.e.a(new cqg($$3), $$8);
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public Object2IntMap<bkm> b() {
-         return this.d;
-      }
-
-      boolean a(bkm $$0, cqg $$1) {
-         int $$2 = $$0.b() * this.a / crk.e;
-         return this.b.getInt($$0) >= $$2 ? false : this.e.a($$0, $$1);
-      }
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

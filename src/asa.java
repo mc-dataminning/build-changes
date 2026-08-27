@@ -1,44 +1,28 @@
-public class asa {
-   private static final int a = 2;
-   private static final int b = 6;
-   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private asa() {
+public record asa(int d, int e) {
+   public static final Codec<Integer> a = asq.a(0, 15);
+   public static final Codec<asa> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a.fieldOf("block").forGetter(asa::b), a.fieldOf("sky").forGetter(asa::c)).apply($$0, asa::new)
+   );
+   public static asa c = new asa(15, 15);
+
+   public int a() {
+      return this.d << 4 | this.e << 20;
    }
 
-   public static eif a(eif $$0, asa.a $$1) {
-      int $$2 = asy.a($$0.a());
-      int $$3 = asy.a($$0.b());
-      int $$4 = asy.a($$0.c());
-      double $$5 = $$0.a() - (double)$$2;
-      double $$6 = $$0.b() - (double)$$3;
-      double $$7 = $$0.c() - (double)$$4;
-      double $$8 = 0.0;
-      eif $$9 = eif.b;
-
-      for (int $$10 = 0; $$10 < 6; $$10++) {
-         double $$11 = asy.d($$5, c[$$10 + 1], c[$$10]);
-         int $$12 = $$2 - 2 + $$10;
-
-         for (int $$13 = 0; $$13 < 6; $$13++) {
-            double $$14 = asy.d($$6, c[$$13 + 1], c[$$13]);
-            int $$15 = $$3 - 2 + $$13;
-
-            for (int $$16 = 0; $$16 < 6; $$16++) {
-               double $$17 = asy.d($$7, c[$$16 + 1], c[$$16]);
-               int $$18 = $$4 - 2 + $$16;
-               double $$19 = $$11 * $$14 * $$17;
-               $$8 += $$19;
-               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).a($$19));
-            }
-         }
-      }
-
-      return $$9.a(1.0 / $$8);
+   public static asa a(int $$0) {
+      int $$1 = $$0 >> 4 & 65535;
+      int $$2 = $$0 >> 20 & 65535;
+      return new asa($$1, $$2);
    }
 
-   @FunctionalInterface
-   public interface a {
-      eif fetch(int var1, int var2, int var3);
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
    }
 }

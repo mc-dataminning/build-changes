@@ -1,18 +1,46 @@
-public class aqb {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final aqa a = new aqa(aqd.ov, 20, 600, true);
-   public static final aqa b = new aqa(aqd.oa, 12000, 24000, false);
-   public static final aqa c = new aqa(aqd.ob, 0, 0, true);
-   public static final aqa d = new aqa(aqd.os, 0, 0, true);
-   public static final aqa e = new aqa(aqd.ot, 6000, 24000, true);
-   public static final aqa f = a(aqd.oU);
-   public static final aqa g = a(aqd.ou);
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
-   public static aqa a(ib<aqc> $$0) {
-      return new aqa($$0, 12000, 24000, false);
+public class aqb {
+   private final ByteArrayOutputStream a;
+   private final DataOutputStream b;
+
+   public aqb(int $$0) {
+      this.a = new ByteArrayOutputStream($$0);
+      this.b = new DataOutputStream(this.a);
+   }
+
+   public void a(byte[] $$0) throws IOException {
+      this.b.write($$0, 0, $$0.length);
+   }
+
+   public void a(String $$0) throws IOException {
+      this.b.writeBytes($$0);
+      this.b.write(0);
+   }
+
+   public void a(int $$0) throws IOException {
+      this.b.write($$0);
+   }
+
+   public void a(short $$0) throws IOException {
+      this.b.writeShort(Short.reverseBytes($$0));
+   }
+
+   public void b(int $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes($$0));
+   }
+
+   public void a(float $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
+   }
+
+   public byte[] a() {
+      return this.a.toByteArray();
+   }
+
+   public void b() {
+      this.a.reset();
    }
 }

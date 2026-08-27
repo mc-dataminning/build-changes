@@ -1,98 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cnz extends cnx {
+   private static final coc a = coc.a(cle.qa);
+   private static final coc b = coc.a(cle.oG);
+   private static final coc c = coc.a(cle.tC);
 
-public abstract class cnz implements cnn<bhu> {
-   protected final cnk a;
-   protected final ckj b;
-   private final cnr<?> d;
-   private final cnq<?> e;
-   protected final String c;
-
-   public cnz(cnr<?> $$0, cnq<?> $$1, String $$2, cnk $$3, ckj $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   public cnz(cnu $$0) {
+      super($$0);
    }
 
-   @Override
-   public cnr<?> e() {
-      return this.d;
+   public boolean a(cgu $$0, crs $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         clb $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
+
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
+               return false;
+            }
+         }
+      }
+
+      return $$2 && $$3 >= 1;
    }
 
-   @Override
-   public cnq<?> aq_() {
-      return this.e;
-   }
+   public clb a(cgu $$0, ip $$1) {
+      clb $$2 = new clb(cle.tB, 3);
+      rz $$3 = $$2.a("Fireworks");
+      sf $$4 = new sf();
+      int $$5 = 0;
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         clb $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (b.a($$7)) {
+               $$5++;
+            } else if (c.a($$7)) {
+               rz $$8 = $$7.b("Explosion");
+               if ($$8 != null) {
+                  $$4.add($$8);
+               }
+            }
+         }
+      }
 
-   @Override
-   public ckj a(ip $$0) {
-      return this.b;
-   }
+      $$3.a("Flight", (byte)$$5);
+      if (!$$4.isEmpty()) {
+         $$3.a("Explosions", $$4);
+      }
 
-   @Override
-   public il<cnk> a() {
-      il<cnk> $$0 = il.a();
-      $$0.add(this.a);
-      return $$0;
+      return $$2;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return true;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public ckj a(bhu $$0, ip $$1) {
-      return this.b.p();
+   public clb a(ip $$0) {
+      return new clb(cle.tB);
    }
 
-   public static class a<T extends cnz> implements cnq<T> {
-      private static final MapCodec<ckj> y = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(jy.i.q().fieldOf("result").forGetter(ckj::d), Codec.INT.fieldOf("count").forGetter(ckj::L)).apply($$0, ckj::new)
-      );
-      final cnz.a.a<T> x;
-      private final Codec<T> z;
-
-      protected a(cnz.a.a<T> $$0) {
-         this.x = $$0;
-         this.z = RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     asg.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                     cnk.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     y.forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-      }
-
-      @Override
-      public Codec<T> a() {
-         return this.z;
-      }
-
-      public T b(tl $$0) {
-         String $$1 = $$0.s();
-         cnk $$2 = cnk.b($$0);
-         ckj $$3 = $$0.r();
-         return this.x.create($$1, $$2, $$3);
-      }
-
-      public void a(tl $$0, T $$1) {
-         $$0.a($$1.c);
-         $$1.a.a($$0);
-         $$0.a($$1.b);
-      }
-
-      interface a<T extends cnz> {
-         T create(String var1, cnk var2, ckj var3);
-      }
+   @Override
+   public coj<?> aq_() {
+      return coj.g;
    }
 }

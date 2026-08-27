@@ -1,27 +1,55 @@
-public class cfk {
-   public static final int a = 20;
-   public static final float b = 20.0F;
-   public static final float c = 5.0F;
-   public static final float d = 2.5F;
-   public static final float e = 4.0F;
-   public static final int f = 80;
-   public static final int g = 10;
-   public static final int h = 18;
-   public static final int i = 6;
-   public static final int j = 0;
-   public static final float k = 0.1F;
-   public static final float l = 0.3F;
-   public static final float m = 0.6F;
-   public static final float n = 0.8F;
-   public static final float o = 1.0F;
-   public static final float p = 1.2F;
-   public static final float q = 6.0F;
-   public static final float r = 0.05F;
-   public static final float s = 0.2F;
-   public static final float t = 0.005F;
-   public static final float u = 0.1F;
-   public static final float v = 0.0F;
-   public static final float w = 0.0F;
-   public static final float x = 0.1F;
-   public static final float y = 0.01F;
+public class cfk extends cfe {
+   public cfk(bkm<? extends cfk> $$0, crs $$1) {
+      super($$0, $$1);
+   }
+
+   public cfk(crs $$0, double $$1, double $$2, double $$3) {
+      super(bkm.p, $$1, $$2, $$3, $$0);
+   }
+
+   @Override
+   protected ckw ag_() {
+      return cle.nb;
+   }
+
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   public cfd.a v() {
+      return cfd.a.b;
+   }
+
+   @Override
+   public dgw x() {
+      return cuv.cv.o().a(cvw.c, hx.c);
+   }
+
+   @Override
+   public int z() {
+      return 8;
+   }
+
+   @Override
+   public cge a(int $$0, cdl $$1) {
+      return cgl.a($$0, $$1, this);
+   }
+
+   @Override
+   public void c(cdm $$0) {
+      this.dL().a(dlg.j, this.dj(), dlg.a.a($$0));
+   }
+
+   @Override
+   public biq a(cdm $$0, bip $$1) {
+      biq $$2 = this.c_($$0);
+      if ($$2.a()) {
+         this.a(dlg.k, $$0);
+         ccd.a($$0, true);
+      }
+
+      return $$2;
+   }
 }

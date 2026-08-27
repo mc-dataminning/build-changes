@@ -1,81 +1,101 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class dxf extends dxh {
-   public static final Codec<dxf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dxh.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, dxf::new)
-   );
-   private final List<dxh> b;
+public abstract class dxf extends dwz {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected eav b;
+   protected ear c;
+   protected ht d;
 
-   public dxf(List<dxh> $$0, dxj.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+   public dxf(dxm $$0, int $$1, eaw $$2, agg $$3, String $$4, ear $$5, ht $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(hx.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
+   }
+
+   public dxf(dxm $$0, rz $$1, eaw $$2, Function<agg, ear> $$3) {
+      super($$0, $$1);
+      this.a(hx.c);
+      this.a = $$1.l("Template");
+      this.d = new ht($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      agg $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
+   }
+
+   protected agg b() {
+      return new agg(this.a);
    }
 
    @Override
-   public iw a(dzu $$0, dal $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (dxh $$5 : this.b) {
-         iw $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new iw($$2, $$3, $$4);
+   protected void a(dxl $$0, rz $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
    }
 
    @Override
-   public List<dzt.c> a(dzu $$0, ht $$1, dal $$2, ate $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
-   }
+   public void a(csm $$0, csk $$1, dit $$2, ato $$3, dwn $$4, cqz $$5, ht $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (eav.c $$8 : this.b.a(this.d, this.c, cuv.pa)) {
+            if ($$8.c() != null) {
+               dig $$9 = dig.valueOf($$8.c().l("mode"));
+               if ($$9 == dig.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
 
-   @Override
-   public dvs a(dzu $$0, ht $$1, dal $$2) {
-      Stream<dvs> $$3 = this.b.stream().filter($$0x -> $$0x != dxa.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return dvs.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
+         for (eav.c $$11 : this.b.a(this.d, this.c, cuv.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dgw $$13 = cuv.a.o();
 
-   @Override
-   public boolean a(dzu $$0, crt $$1, crr $$2, dhy $$3, ht $$4, ht $$5, dal $$6, dvs $$7, ate $$8, boolean $$9) {
-      for (dxh $$10 : this.b) {
-         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
-            return false;
+               try {
+                  $$13 = fk.a($$0.a(jz.e), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
+
+               $$0.a($$11.a(), $$13, 3);
+            }
          }
       }
+   }
 
-      return true;
+   protected abstract void a(String var1, ht var2, csh var3, ato var4, dwn var5);
+
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
    }
 
    @Override
-   public dxi<?> a() {
-      return dxi.b;
+   public dbf a() {
+      return this.c.d();
    }
 
-   @Override
-   public dxh a(dxj.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
+   public eav c() {
+      return this.b;
    }
 
-   @Override
-   public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
+   public ht d() {
+      return this.d;
    }
 
-   private void b(dxj.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+   public ear e() {
+      return this.c;
    }
 }

@@ -1,86 +1,50 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class brg extends bsb {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class brg extends bsg {
+   private final bwm g;
 
-   public brg(bks $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public brg(bwm $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(brt.a.c, brt.a.a));
    }
 
-   @Nullable
    @Override
-   protected eif h() {
-      float $$0 = this.b.dL().z.i();
-      if (this.b.dL().z.i() < 0.3F) {
-         return this.k();
-      } else {
-         eif $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
-         }
+   public boolean a() {
+      return this.g.s() && !this.g.ge() && !this.g.gm() && super.a();
+   }
 
-         return $$1 == null ? this.k() : $$1;
+   @Override
+   public void c() {
+      super.c();
+      this.g.y(false);
+   }
+
+   @Override
+   protected int a(blh $$0) {
+      return 40;
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.g.A(false);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gm()) {
+         this.g.A(true);
       }
    }
 
-   @Nullable
-   private eif k() {
-      return bvc.a(this.b, 10, 7);
-   }
-
-   @Nullable
-   private eif l() {
-      alq $$0 = (alq)this.b.dL();
-      List<cck> $$1 = $$0.a(bjx.bf, this.b.cG().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         cck $$2 = $$1.get(this.b.dL().z.a($$1.size()));
-         eif $$3 = $$2.dj();
-         return bvc.a(this.b, 10, 7, $$3);
-      }
-   }
-
-   @Nullable
-   private eif m() {
-      iu $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         ht $$1 = this.a($$0);
-         return $$1 == null ? null : bvc.a(this.b, 10, 7, eif.c($$1));
-      }
-   }
-
-   @Nullable
-   private iu n() {
-      alq $$0 = (alq)this.b.dL();
-      List<iu> $$1 = iu.a(iu.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private ht a(iu $$0) {
-      alq $$1 = (alq)this.b.dL();
-      bvi $$2 = $$1.w();
-      List<ht> $$3 = $$2.c($$0x -> true, $$0.q(), 8, bvi.b.b).map(bvj::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(cck $$0) {
-      return $$0.a(this.b.dL().V());
+   @Override
+   protected boolean a(crv $$0, ht $$1) {
+      return $$0.t($$1.c()) && $$0.a_($$1).a(arc.R);
    }
 }

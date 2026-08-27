@@ -1,136 +1,56 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class gfp {
-   private final ero a;
-   @Nullable
-   private gfq b;
-   private final List<gfp.a> c = Lists.newArrayList();
-   private final gfi d;
+   private final apg a;
+   private final Map<agg, CompletableFuture<elk>> b = Maps.newHashMap();
 
-   public gfp(ero $$0, ers $$1) {
+   public gfp(apg $$0) {
       this.a = $$0;
-      this.d = new gfi(this, $$1);
    }
 
-   public void a(foa $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
+   public CompletableFuture<elk> a(agg $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               elk var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  eli $$2 = new eli($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new elk($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
+            }
+         }, ac.f()));
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable fjr $$0, @Nullable eid $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(fjr $$0, ht $$1, dgb $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
+   public CompletableFuture<gfl> a(agg $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (gfl)($$1 ? new gfn(eli::new, $$2) : new eli($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
+         }
+      }, ac.f());
    }
 
    public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
+      this.b.values().forEach($$0 -> $$0.thenAccept(elk::b));
+      this.b.clear();
    }
 
-   public void a(ckj $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.m.r.a(this);
-   }
-
-   public void a(evt $$0, int $$1) {
-      this.c.add(new gfp.a($$0, $$1));
-      this.a.ay().a($$0);
-   }
-
-   public void a(evt $$0) {
-      this.c.removeIf($$1 -> $$1.a == $$0);
-      $$0.c();
-   }
-
-   public void d() {
-      this.c.removeIf(gfp.a::a);
-      if (this.b != null) {
-         if (this.a.r != null) {
-            this.b.a();
-         } else {
-            this.b();
-         }
-      } else if (this.a.r != null) {
-         this.c();
-      }
-   }
-
-   public void a(gfr $$0) {
-      this.a.m.r = $$0;
-      this.a.m.ar();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
-   }
-
-   public ero e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.q == null ? false : this.a.q.l() == cqw.a;
-   }
-
-   public static ui a(String $$0) {
-      return ui.d("key." + $$0).a(n.r);
-   }
-
-   public void a(ckj $$0, ckj $$1, cfx $$2) {
-      this.d.a($$0, $$1, $$2);
-   }
-
-   static final class a {
-      final evt a;
-      private final int b;
-      private int c;
-
-      a(evt $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private boolean a() {
-         this.a.a(Math.min((float)(++this.c) / (float)this.b, 1.0F));
-         if (this.c > this.b) {
-            this.a.c();
-            return true;
-         } else {
-            return false;
-         }
-      }
+   public CompletableFuture<?> a(Collection<gem> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

@@ -2,41 +2,25 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class ol {
-   public static void a(oo<dxj> $$0) {
-      ic<dxj> $$1 = $$0.a(jz.aD);
-      ib<dxj> $$2 = $$1.b(ov.a);
-      ov.a(
-         $$0,
-         "bastion/mobs/piglin",
-         new dxj(
-            $$2,
+   public static final agf<dye> a = pb.a("ancient_city/city_center");
+
+   public static void a(ou<dye> $$0) {
+      ic<eat> $$1 = $$0.a(jz.aC);
+      ib<eat> $$2 = $$1.b(pc.G);
+      ic<dye> $$3 = $$0.a(jz.aE);
+      ib<dye> $$4 = $$3.b(pb.a);
+      $$0.a(
+         a,
+         new dye(
+            $$4,
             ImmutableList.of(
-               Pair.of(dxh.b("bastion/mobs/melee_piglin"), 1),
-               Pair.of(dxh.b("bastion/mobs/sword_piglin"), 4),
-               Pair.of(dxh.b("bastion/mobs/crossbow_piglin"), 4),
-               Pair.of(dxh.b("bastion/mobs/empty"), 1)
+               Pair.of(dyc.b("ancient_city/city_center/city_center_1", $$2), 1),
+               Pair.of(dyc.b("ancient_city/city_center/city_center_2", $$2), 1),
+               Pair.of(dyc.b("ancient_city/city_center/city_center_3", $$2), 1)
             ),
-            dxj.a.b
+            dye.a.b
          )
       );
-      ov.a(
-         $$0, "bastion/mobs/hoglin", new dxj($$2, ImmutableList.of(Pair.of(dxh.b("bastion/mobs/hoglin"), 2), Pair.of(dxh.b("bastion/mobs/empty"), 1)), dxj.a.b)
-      );
-      ov.a(
-         $$0, "bastion/blocks/gold", new dxj($$2, ImmutableList.of(Pair.of(dxh.b("bastion/blocks/air"), 3), Pair.of(dxh.b("bastion/blocks/gold"), 1)), dxj.a.b)
-      );
-      ov.a(
-         $$0,
-         "bastion/mobs/piglin_melee",
-         new dxj(
-            $$2,
-            ImmutableList.of(
-               Pair.of(dxh.b("bastion/mobs/melee_piglin_always"), 1),
-               Pair.of(dxh.b("bastion/mobs/melee_piglin"), 5),
-               Pair.of(dxh.b("bastion/mobs/sword_piglin"), 1)
-            ),
-            dxj.a.b
-         )
-      );
+      om.a($$0);
    }
 }

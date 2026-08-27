@@ -1,35 +1,65 @@
-public class ckx extends cls {
-   public static final String c = "SkullOwner";
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-   public ckx(cua $$0, cua $$1, cke.a $$2) {
-      super($$0, $$1, $$2, hx.a);
+public class ckx {
+   private final Map<ckw, ckx.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(ckw $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Override
-   public ui m(ckj $$0) {
-      if ($$0.a(ckm.tt) && $$0.u()) {
-         String $$1 = null;
-         rt $$2 = $$0.v();
-         if ($$2.b("SkullOwner", 8)) {
-            $$1 = $$2.l("SkullOwner");
-         } else if ($$2.b("SkullOwner", 10)) {
-            rt $$3 = $$2.p("SkullOwner");
-            if ($$3.b("Name", 8)) {
-               $$1 = $$3.l("Name");
+   public float a(ckw $$0, float $$1) {
+      ckx.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return ati.a($$4 / $$3, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
+      }
+   }
+
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<ckw, ckx.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<ckw, ckx.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
             }
          }
-
-         if ($$1 != null) {
-            return ui.a(this.a() + ".named", $$1);
-         }
       }
-
-      return super.m($$0);
    }
 
-   @Override
-   public void b(rt $$0) {
-      super.b($$0);
-      dfh.e($$0);
+   public void a(ckw $$0, int $$1) {
+      this.a.put($$0, new ckx.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(ckw $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(ckw $$0, int $$1) {
+   }
+
+   protected void c(ckw $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

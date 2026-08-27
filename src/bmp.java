@@ -1,122 +1,101 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Map.Entry;
 
-public class bmp extends bma<cck> {
-   private static final int c = 5;
-   private static final int d = 600;
-   private static final int e = 6600;
-   private static final int f = 20;
-   private static final Map<ccn, afw> g = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(ccn.c, edg.an);
-      $$0.put(ccn.d, edg.ao);
-      $$0.put(ccn.e, edg.ap);
-      $$0.put(ccn.f, edg.aq);
-      $$0.put(ccn.g, edg.ar);
-      $$0.put(ccn.h, edg.as);
-      $$0.put(ccn.i, edg.at);
-      $$0.put(ccn.j, edg.au);
-      $$0.put(ccn.k, edg.av);
-      $$0.put(ccn.l, edg.aw);
-      $$0.put(ccn.n, edg.ax);
-      $$0.put(ccn.o, edg.ay);
-      $$0.put(ccn.p, edg.az);
-   });
-   private static final float h = 0.5F;
-   private int i = 600;
-   private boolean j;
-   private long k;
+public abstract class bmp<E extends bky> implements bmq<E> {
+   public static final int a = 60;
+   protected final Map<btz<?>, bua> b;
+   private bmp.a c = bmp.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-   public bmp(int $$0) {
-      super(ImmutableMap.of(btk.m, btl.c, btk.n, btl.c, btk.q, btl.c, btk.k, btl.a), $$0);
+   public bmp(Map<btz<?>, bua> $$0) {
+      this($$0, 60);
    }
 
-   protected boolean a(alq $$0, cck $$1) {
-      if (!this.b($$1)) {
-         return false;
-      } else if (this.i > 0) {
-         this.i--;
-         return false;
-      } else {
+   public bmp(Map<btz<?>, bua> $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bmp(Map<btz<?>, bua> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
+   }
+
+   @Override
+   public bmp.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(ama $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bmp.a.b;
+         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
          return true;
-      }
-   }
-
-   protected void a(alq $$0, cck $$1, long $$2) {
-      this.j = false;
-      this.k = $$2;
-      ccx $$3 = this.c($$1).get();
-      $$1.dN().a(btk.q, $$3);
-      bmc.a($$1, $$3);
-   }
-
-   protected boolean b(alq $$0, cck $$1, long $$2) {
-      return this.b($$1) && !this.j;
-   }
-
-   protected void c(alq $$0, cck $$1, long $$2) {
-      ccx $$3 = this.c($$1).get();
-      bmc.a($$1, $$3);
-      if (this.a($$1, $$3)) {
-         if ($$2 - this.k > 20L) {
-            this.a($$1, (bkj)$$3);
-            this.j = true;
-         }
       } else {
-         bmc.a($$1, $$3, 0.5F, 5);
+         return false;
       }
    }
 
-   protected void d(alq $$0, cck $$1, long $$2) {
-      this.i = a($$0);
-      $$1.dN().b(btk.q);
-      $$1.dN().b(btk.m);
-      $$1.dN().b(btk.n);
+   protected void d(ama $$0, E $$1, long $$2) {
    }
 
-   private void a(cck $$0, bkj $$1) {
-      for (ckj $$3 : this.a($$0)) {
-         bmc.a($$0, $$3, $$1.dj());
-      }
-   }
-
-   private List<ckj> a(cck $$0) {
-      if ($$0.n_()) {
-         return ImmutableList.of(new ckj(ckm.cP));
+   @Override
+   public final void f(ama $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
       } else {
-         ccn $$1 = $$0.gp().b();
-         if (g.containsKey($$1)) {
-            edq $$2 = $$0.dL().n().aH().getLootTable(g.get($$1));
-            edo $$3 = new edo.a((alq)$$0.dL()).a(eft.f, $$0.dj()).a(eft.a, $$0).a(efs.i);
-            return $$2.a($$3);
-         } else {
-            return ImmutableList.of(new ckj(ckm.oH));
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(ama $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(ama $$0, E $$1, long $$2) {
+      this.c = bmp.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(ama $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(ama $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(ama $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<btz<?>, bua> $$1 : this.b.entrySet()) {
+         btz<?> $$2 = $$1.getKey();
+         bua $$3 = $$1.getValue();
+         if (!$$0.dN().a($$2, $$3)) {
+            return false;
          }
       }
+
+      return true;
    }
 
-   private boolean b(cck $$0) {
-      return this.c($$0).isPresent();
-   }
-
-   private Optional<ccx> c(cck $$0) {
-      return $$0.dN().c(btk.k).filter(this::a);
-   }
-
-   private boolean a(ccx $$0) {
-      return $$0.a(bji.F);
-   }
-
-   private boolean a(cck $$0, ccx $$1) {
-      ht $$2 = $$1.dl();
-      ht $$3 = $$0.dl();
-      return $$3.a($$2, 5.0);
-   }
-
-   private static int a(alq $$0) {
-      return 600 + $$0.z.a(6001);
+   public static enum a {
+      a,
+      b;
    }
 }

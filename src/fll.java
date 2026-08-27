@@ -1,59 +1,67 @@
-public class fll extends fnq {
-   private final fnl a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   protected fll(
-      fjr $$0,
-      double $$1,
-      double $$2,
-      double $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      float $$10,
-      fnl $$11,
-      float $$12,
-      int $$13,
-      float $$14,
-      boolean $$15
-   ) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.u = $$14;
-      this.C = true;
-      this.a = $$11;
-      this.j *= (double)$$4;
-      this.k *= (double)$$5;
-      this.l *= (double)$$6;
-      this.j += $$7;
-      this.k += $$8;
-      this.l += $$9;
-      float $$16 = $$0.z.i() * $$12;
-      this.v = $$16;
-      this.w = $$16;
-      this.x = $$16;
-      this.D *= 0.75F * $$10;
-      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
-      this.t = Math.max(this.t, 1);
-      this.b($$11);
-      this.n = $$15;
+public class fll {
+   private final fln[] a;
+   private int b;
+
+   public static Codec<fll> a(int $$0) {
+      return Codec.list(fln.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new fll($$0, $$1));
+            },
+            fll::c
+         );
    }
 
-   @Override
-   public fmu b() {
-      return fmu.b;
+   public fll(int $$0) {
+      this.a = new fln[$$0];
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * asy.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   private fll(int $$0, List<fln> $$1) {
+      this.a = $$1.toArray(fln[]::new);
+      this.b = $$1.size();
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   private List<fln> c() {
+      List<fln> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
+      }
+
+      return $$0;
+   }
+
+   public void a(fln $$0) {
+      this.a[this.c(this.b++)] = $$0;
+   }
+
+   @Nullable
+   public fln b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   }
+
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
+
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
+
+   public int b() {
+      return this.b - 1;
+   }
+
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

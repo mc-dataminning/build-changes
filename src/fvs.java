@@ -1,41 +1,27 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class fvs extends fwq<bwt, fhe<bwt>> {
+   private static final agg a = new agg("textures/entity/fox/fox.png");
+   private static final agg i = new agg("textures/entity/fox/fox_sleep.png");
+   private static final agg j = new agg("textures/entity/fox/snow_fox.png");
+   private static final agg k = new agg("textures/entity/fox/snow_fox_sleep.png");
 
-public class fvs extends fuu<bkl, fhb<bkl>> {
-   private static final Map<bjx<?>, afw> a = ImmutableMap.of(
-      bjx.aw,
-      new afw("textures/entity/piglin/piglin.png"),
-      bjx.bs,
-      new afw("textures/entity/piglin/zombified_piglin.png"),
-      bjx.ax,
-      new afw("textures/entity/piglin/piglin_brute.png")
-   );
-   private static final float i = 1.0019531F;
-
-   public fvs(fud.a $$0, fiu $$1, fiu $$2, fiu $$3, boolean $$4) {
-      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
-      this.a(new fyb<>(this, new fgj($$0.a($$2)), new fgj($$0.a($$3)), $$0.g()));
+   public fvs(fvk.a $$0) {
+      super($$0, new fhe<>($$0.a(fka.X)), 0.4F);
+      this.a(new fzf(this, $$0.d()));
    }
 
-   private static fhb<bkl> a(fis $$0, fiu $$1, boolean $$2) {
-      fhb<bkl> $$3 = new fhb<>($$0.a($$1));
-      if ($$2) {
-         $$3.a.k = false;
+   protected void a(bwt $$0, enk $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$0.gk() || $$0.ge()) {
+         float $$5 = -ati.i($$4, $$0.O, $$0.dD());
+         $$1.a(a.b.rotationDegrees($$5));
       }
-
-      return $$3;
    }
 
-   public afw b(bkl $$0) {
-      afw $$1 = a.get($$0.ag());
-      if ($$1 == null) {
-         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ag());
+   public agg a(bwt $$0) {
+      if ($$0.t() == bwt.v.a) {
+         return $$0.fD() ? i : a;
       } else {
-         return $$1;
+         return $$0.fD() ? k : j;
       }
-   }
-
-   protected boolean c(bkl $$0) {
-      return super.a($$0) || $$0 instanceof cbm && ((cbm)$$0).ge();
    }
 }

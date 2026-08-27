@@ -1,95 +1,73 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cyh extends css {
-   public static final MapCodec<cyh> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(crx.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), iy.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
-            .apply($$0, cyh::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dhb g = dgr.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final crx.c j;
-
-   @Override
-   public MapCodec<cyh> a() {
-      return d;
-   }
-
-   public cyh(crx.c $$0, iy.a $$1, dga.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
+public abstract class cyh extends cyg implements cuw {
+   protected cyh(dgv.d $$0, hx $$1, ekb $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean d(dgb $$0) {
-      return $$0.c(g) == 3;
+   protected abstract MapCodec<? extends cyh> a();
+
+   protected dgw a(dgw $$0, dgw $$1) {
+      return $$1;
    }
 
    @Override
-   protected boolean a(ebd $$0) {
-      return $$0 == ebf.c && this.j == crx.c.b;
-   }
-
-   @Override
-   protected double b(dgb $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, bjt $$3) {
-      if (!$$1.B && $$3.bM() && this.a($$0, $$2, $$3)) {
-         $$3.ay();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
-         }
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
-   }
 
-   private void e(dgb $$0, cqz $$1, ht $$2) {
-      if (this.j == crx.c.c) {
-         d(cuc.fu.o().a(g, $$0.c(g)), $$1, $$2);
+      cyi $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
       } else {
-         d($$0, $$1, $$2);
-      }
-   }
+         if (this.b) {
+            $$3.a($$4, ech.c, ech.c.a($$3));
+         }
 
-   public static void d(dgb $$0, cqz $$1, ht $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dgb $$4 = $$3 == 0 ? cuc.ft.o() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dkl.c, $$2, dkl.a.a($$4));
-   }
-
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, crx.c $$3) {
-      if (cuv.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dgb $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(dkl.c, $$2, dkl.a.a($$4));
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   public int a(dgb $$0, cqz $$1, ht $$2) {
-      return $$0.c(g);
+   public clb a(crv $$0, ht $$1, dgw $$2) {
+      return new clb(this.c());
    }
 
    @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(g);
+   public boolean b(crv $$0, ht $$1, dgw $$2) {
+      Optional<ht> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
    }
 
    @Override
-   protected void a(dgb $$0, cqz $$1, ht $$2, ebd $$3) {
-      if (!this.d($$0)) {
-         dgb $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dkl.c, $$2, dkl.a.a($$4));
-         $$1.c(1047, $$2, 0);
+   public boolean a(crs $$0, ato $$1, ht $$2, dgw $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ama $$0, ato $$1, ht $$2, dgw $$3) {
+      Optional<ht> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dgw $$5 = $$0.a_($$4.get());
+         ((cyi)$$5.b()).a($$0, $$1, $$4.get(), $$5);
       }
+   }
+
+   private Optional<ht> a(cqy $$0, ht $$1, cut $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   public boolean a(dgw $$0, cnj $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().k()) ? false : $$2;
+   }
+
+   @Override
+   protected cut b() {
+      return this;
    }
 }

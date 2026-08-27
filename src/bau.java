@@ -1,25 +1,43 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import org.slf4j.Logger;
 
-public class bau extends azc {
-   private final Map<String, String> a;
+public class bau extends aus {
+   private static final Logger b = LogUtils.getLogger();
 
-   public bau(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
-      super($$0, false, $$1, $$2, $$3);
-      this.a = $$4;
+   public bau(Schema $$0) {
+      super($$0, ban.l);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "SavedDataUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> $$0x.update(
+                     "data",
+                     $$0xx -> $$0xx.update(
+                           "Raids",
+                           $$0xxx -> $$0xxx.createList(
+                                 $$0xxx.asStream()
+                                    .map(
+                                       $$0xxxx -> $$0xxxx.update(
+                                             "HeroesOfTheVillage",
+                                             $$0xxxxx -> $$0xxxxx.createList(
+                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
+                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
+                                                         return $$0xxxxxx;
+                                                      }))
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }

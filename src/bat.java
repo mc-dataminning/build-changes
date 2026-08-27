@@ -1,118 +1,176 @@
-import com.mojang.datafixers.DSL;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.mojang.serialization.OptionalDynamic;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class bat extends DataFix {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 4096;
-   private static final short c = 12;
+   private static final Pattern a = Pattern.compile("\\[(\\d+)\\]");
+   private static final Set<String> b = Sets.newHashSet(
+      new String[]{"minecraft:jigsaw", "minecraft:nvi", "minecraft:pcp", "minecraft:bastionremnant", "minecraft:runtime"}
+   );
+   private static final Set<String> c = Sets.newHashSet(new String[]{"minecraft:tree", "minecraft:flower", "minecraft:block_pile", "minecraft:random_patch"});
 
-   public bat(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bat(Schema $$0) {
+      super($$0, false);
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(baa.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
-         throw new IllegalStateException("Tile entity type is not a list type.");
-      } else {
-         OpticFinder<? extends List<?>> $$4 = DSL.fieldFinder("TileEntities", $$3);
-         Type<?> $$5 = this.getInputSchema().getType(baa.c);
-         OpticFinder<?> $$6 = $$5.findField("Level");
-         OpticFinder<?> $$7 = $$6.type().findField("Sections");
-         Type<?> $$8 = $$7.type();
-         if (!($$8 instanceof ListType)) {
-            throw new IllegalStateException("Expecting sections to be a list.");
-         } else {
-            Type<?> $$9 = ((ListType)$$8).getElement();
-            OpticFinder<?> $$10 = DSL.typeFinder($$9);
-            return TypeRewriteRule.seq(
-               new auk(this.getOutputSchema(), "AddTrappedChestFix", baa.s).makeRule(),
-               this.fixTypeEverywhereTyped("Trapped Chest fix", $$5, $$4x -> $$4x.updateTyped($$6, $$3xx -> {
-                     Optional<? extends Typed<?>> $$4xx = $$3xx.getOptionalTyped($$7);
-                     if ($$4xx.isEmpty()) {
-                        return $$3xx;
-                     } else {
-                        List<? extends Typed<?>> $$5x = $$4xx.get().getAllTyped($$10);
-                        IntSet $$6x = new IntOpenHashSet();
-
-                        for (Typed<?> $$7x : $$5x) {
-                           bat.a $$8x = new bat.a($$7x, this.getInputSchema());
-                           if (!$$8x.b()) {
-                              for (int $$9x = 0; $$9x < 4096; $$9x++) {
-                                 int $$10x = $$8x.c($$9x);
-                                 if ($$8x.a($$10x)) {
-                                    $$6x.add($$8x.c() << 12 | $$9x);
-                                 }
-                              }
-                           }
-                        }
-
-                        Dynamic<?> $$11 = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
-                        int $$12 = $$11.get("xPos").asInt(0);
-                        int $$13 = $$11.get("zPos").asInt(0);
-                        TaggedChoiceType<String> $$14 = this.getInputSchema().findChoiceType(baa.s);
-                        return $$3xx.updateTyped($$4, $$4xxx -> $$4xxx.updateTyped($$14.finder(), $$4xxxx -> {
-                              Dynamic<?> $$5xx = (Dynamic<?>)$$4xxxx.getOrCreate(DSL.remainderFinder());
-                              int $$6xx = $$5xx.get("x").asInt(0) - ($$12 << 4);
-                              int $$7xx = $$5xx.get("y").asInt(0);
-                              int $$8xx = $$5xx.get("z").asInt(0) - ($$13 << 4);
-                              return $$6x.contains(ays.a($$6xx, $$7xx, $$8xx)) ? $$4xxxx.update($$14.finder(), $$0xxxxx -> $$0xxxxx.mapFirst($$0xxxxxx -> {
-                                    if (!Objects.equals($$0xxxxxx, "minecraft:chest")) {
-                                       a.warn("Block Entity was expected to be a chest");
-                                    }
-
-                                    return "minecraft:trapped_chest";
-                                 })) : $$4xxxx;
-                           }));
-                     }
-                  }))
-            );
-         }
-      }
+      return this.writeFixAndRead("SavedDataFeaturePoolElementFix", this.getInputSchema().getType(ban.C), this.getOutputSchema().getType(ban.C), bat::b);
    }
 
-   public static final class a extends ays.b {
-      @Nullable
-      private IntSet h;
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return $$0.update("Children", bat::c);
+   }
 
-      public a(Typed<?> $$0, Schema $$1) {
-         super($$0, $$1);
-      }
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return $$0.asStreamOpt().map(bat::a).map($$0::createList).result().orElse($$0);
+   }
 
-      @Override
-      protected boolean a() {
-         this.h = new IntOpenHashSet();
+   private static Stream<? extends Dynamic<?>> a(Stream<? extends Dynamic<?>> $$0) {
+      return $$0.map(
+         $$0x -> {
+            String $$1 = $$0x.get("id").asString("");
+            if (!b.contains($$1)) {
+               return $$0x;
+            } else {
+               OptionalDynamic<?> $$2 = $$0x.get("pool_element");
+               return !$$2.get("element_type").asString("").equals("minecraft:feature_pool_element")
+                  ? $$0x
+                  : $$0x.update("pool_element", $$0xx -> $$0xx.update("feature", bat::a));
+            }
+         }
+      );
+   }
 
-         for (int $$0 = 0; $$0 < this.e.size(); $$0++) {
-            Dynamic<?> $$1 = this.e.get($$0);
-            String $$2 = $$1.get("Name").asString("");
-            if (Objects.equals($$2, "minecraft:trapped_chest")) {
-               this.h.add($$0);
+   private static <T> OptionalDynamic<T> a(Dynamic<T> $$0, String... $$1) {
+      if ($$1.length == 0) {
+         throw new IllegalArgumentException("Missing path");
+      } else {
+         OptionalDynamic<T> $$2 = $$0.get($$1[0]);
+
+         for (int $$3 = 1; $$3 < $$1.length; $$3++) {
+            String $$4 = $$1[$$3];
+            Matcher $$5 = a.matcher($$4);
+            if ($$5.matches()) {
+               int $$6 = Integer.parseInt($$5.group(1));
+               List<? extends Dynamic<T>> $$7 = $$2.asList(Function.identity());
+               if ($$6 >= 0 && $$6 < $$7.size()) {
+                  $$2 = new OptionalDynamic($$0.getOps(), DataResult.success($$7.get($$6)));
+               } else {
+                  $$2 = new OptionalDynamic($$0.getOps(), DataResult.error(() -> "Missing id:" + $$6));
+               }
+            } else {
+               $$2 = $$2.get($$4);
             }
          }
 
-         return this.h.isEmpty();
+         return $$2;
+      }
+   }
+
+   @VisibleForTesting
+   protected static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = a(
+         a($$0, "type").asString(""),
+         a($$0, "name").asString(""),
+         a($$0, "config", "state_provider", "type").asString(""),
+         a($$0, "config", "state_provider", "state", "Name").asString(""),
+         a($$0, "config", "state_provider", "entries", "[0]", "data", "Name").asString(""),
+         a($$0, "config", "foliage_placer", "type").asString(""),
+         a($$0, "config", "leaves_provider", "state", "Name").asString("")
+      );
+      return $$1.isPresent() ? $$0.createString($$1.get()) : $$0;
+   }
+
+   private static Optional<String> a(String $$0, String $$1, String $$2, String $$3, String $$4, String $$5, String $$6) {
+      String $$7;
+      if (!$$0.isEmpty()) {
+         $$7 = $$0;
+      } else {
+         if ($$1.isEmpty()) {
+            return Optional.empty();
+         }
+
+         if ("minecraft:normal_tree".equals($$1)) {
+            $$7 = "minecraft:tree";
+         } else {
+            $$7 = $$1;
+         }
       }
 
-      public boolean a(int $$0) {
-         return this.h.contains($$0);
+      if (c.contains($$7)) {
+         if ("minecraft:random_patch".equals($$7)) {
+            if ("minecraft:simple_state_provider".equals($$2)) {
+               if ("minecraft:sweet_berry_bush".equals($$3)) {
+                  return Optional.of("minecraft:patch_berry_bush");
+               }
+
+               if ("minecraft:cactus".equals($$3)) {
+                  return Optional.of("minecraft:patch_cactus");
+               }
+            } else if ("minecraft:weighted_state_provider".equals($$2) && ("minecraft:grass".equals($$4) || "minecraft:fern".equals($$4))) {
+               return Optional.of("minecraft:patch_taiga_grass");
+            }
+         } else if ("minecraft:block_pile".equals($$7)) {
+            if (!"minecraft:simple_state_provider".equals($$2) && !"minecraft:rotated_block_provider".equals($$2)) {
+               if ("minecraft:weighted_state_provider".equals($$2)) {
+                  if ("minecraft:packed_ice".equals($$4) || "minecraft:blue_ice".equals($$4)) {
+                     return Optional.of("minecraft:pile_ice");
+                  }
+
+                  if ("minecraft:jack_o_lantern".equals($$4) || "minecraft:pumpkin".equals($$4)) {
+                     return Optional.of("minecraft:pile_pumpkin");
+                  }
+               }
+            } else {
+               if ("minecraft:hay_block".equals($$3)) {
+                  return Optional.of("minecraft:pile_hay");
+               }
+
+               if ("minecraft:melon".equals($$3)) {
+                  return Optional.of("minecraft:pile_melon");
+               }
+
+               if ("minecraft:snow".equals($$3)) {
+                  return Optional.of("minecraft:pile_snow");
+               }
+            }
+         } else {
+            if ("minecraft:flower".equals($$7)) {
+               return Optional.of("minecraft:flower_plain");
+            }
+
+            if ("minecraft:tree".equals($$7)) {
+               if ("minecraft:acacia_foliage_placer".equals($$5)) {
+                  return Optional.of("minecraft:acacia");
+               }
+
+               if ("minecraft:blob_foliage_placer".equals($$5) && "minecraft:oak_leaves".equals($$6)) {
+                  return Optional.of("minecraft:oak");
+               }
+
+               if ("minecraft:pine_foliage_placer".equals($$5)) {
+                  return Optional.of("minecraft:pine");
+               }
+
+               if ("minecraft:spruce_foliage_placer".equals($$5)) {
+                  return Optional.of("minecraft:spruce");
+               }
+            }
+         }
       }
+
+      return Optional.empty();
    }
 }

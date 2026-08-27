@@ -1,35 +1,47 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public enum byc implements atr {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
+public class byc {
+   private static final float a = 2.0F;
+   private static final float b = 0.5F;
+   private static final float c = 1.25F;
 
-   public static final Codec<byc> h = atr.a(byc::values);
-   private static final IntFunction<byc> i = arr.a(byc::a, values(), arr.a.b);
-   private final int j;
-   private final String k;
-
-   private byc(int $$0, String $$1) {
-      this.j = $$0;
-      this.k = $$1;
+   protected static bly<?> a(bly<byb> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cex.a));
+      $$0.b(cex.b);
+      $$0.f();
+      return $$0;
    }
 
-   public int a() {
-      return this.j;
+   private static void b(bly<byb> $$0) {
+      $$0.a(cex.a, 0, ImmutableList.of(new bmk(2.0F), new bnu(45, 90), new bny(), new bmv(btz.O)));
    }
 
-   public static byc a(int $$0) {
-      return i.apply($$0);
+   private static void c(bly<byb> $$0) {
+      $$0.a(
+         cex.b,
+         ImmutableList.of(
+            Pair.of(0, boo.a(bkm.bt, 6.0F, bib.a(30, 60))),
+            Pair.of(1, new bnc($$0x -> 1.25F)),
+            Pair.of(
+               2,
+               new bnd(
+                  ImmutableMap.of(btz.m, bua.b),
+                  ImmutableSet.of(),
+                  bnd.a.a,
+                  bnd.b.b,
+                  ImmutableList.of(Pair.of(bog.c(0.5F), 2), Pair.of(bov.a(0.5F, 3), 3), Pair.of(bqb.a(bki::ba), 5))
+               )
+            )
+         )
+      );
    }
 
-   @Override
-   public String c() {
-      return this.k;
+   public static void a(byb $$0) {
+      $$0.dN().a(ImmutableList.of(cex.b));
    }
 }

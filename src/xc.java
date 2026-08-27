@@ -1,18 +1,17 @@
-public record xc(long b, ht c) implements wu {
-   public static final afw a = new afw("debug/neighbors_update");
+public record xc(String b) implements xd {
+   public static final agg a = new agg("brand");
 
-   public xc(tl $$0) {
-      this($$0.o(), $$0.e());
+   public xc(tu $$0) {
+      this($$0.s());
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public afw a() {
+   public agg a() {
       return a;
    }
 }

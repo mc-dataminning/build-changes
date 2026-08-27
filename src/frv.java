@@ -1,71 +1,61 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-class frv {
-   private final Map<ht, ddx> a;
-   @Nullable
-   private final List<diq<dgb>> b;
-   private final boolean c;
-   private final dii d;
+public class frv implements fru {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   frv(dii $$0) {
+   public frv(String $$0, String $$1) {
       this.d = $$0;
-      this.c = $$0.F().af();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof die) {
-         this.b = null;
-      } else {
-         dij[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dij $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+      this.e = $$1;
    }
 
-   @Nullable
-   public ddx a(ht $$0) {
-      return this.a.get($$0);
-   }
-
-   public dgb b(ht $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dgb $$4 = null;
-         if ($$2 == 60) {
-            $$4 = cuc.hW.o();
-         }
-
-         if ($$2 == 70) {
-            $$4 = dlb.a($$1, $$3);
-         }
-
-         return $$4 == null ? cuc.a.o() : $$4;
-      } else if (this.b == null) {
-         return cuc.a.o();
+   @Override
+   public Predicate<dgw> getPredicate(dgx<cut, dgw> $$0) {
+      dhz<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
       } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               diq<dgb> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
+
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dgw> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<dgw>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
             }
 
-            return cuc.a.o();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
+            return $$3 ? $$5.negate() : $$5;
          }
       }
+   }
+
+   private Predicate<dgw> a(dgx<cut, dgw> $$0, dhz<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

@@ -1,94 +1,181 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.DirectoryStream;
+import com.google.common.base.Splitter;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.FileStore;
 import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.nio.file.PathMatcher;
+import java.nio.file.WatchService;
+import java.nio.file.attribute.UserPrincipalLookupService;
+import java.nio.file.spi.FileSystemProvider;
+import java.util.HashMap;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class aoa implements aog {
-   static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final ani c;
-   private final aof d;
-   private final ehv e;
+public class aoa extends FileSystem {
+   private static final Set<String> b = Set.of("basic");
+   public static final String a = "/";
+   private static final Splitter c = Splitter.on('/');
+   private final FileStore d;
+   private final FileSystemProvider e = new anz();
+   private final any f;
 
-   public aoa(Path $$0, ani $$1, aof $$2, ehv $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   aoa(String $$0, aoa.b $$1) {
+      this.d = new anx($$0);
+      this.f = a($$1, this, "", null);
    }
 
-   private static String a(Path $$0) {
-      return $$0.getFileName().toString();
+   private static any a(aoa.b $$0, aoa $$1, String $$2, @Nullable any $$3) {
+      Object2ObjectOpenHashMap<String, any> $$4 = new Object2ObjectOpenHashMap();
+      any $$5 = new any($$1, $$2, $$3, new aob.a($$4));
+      $$0.b.forEach(($$3x, $$4x) -> $$4.put($$3x, new any($$1, $$3x, $$5, new aob.b($$4x))));
+      $$0.a.forEach(($$3x, $$4x) -> $$4.put($$3x, a($$4x, $$1, $$3x, $$5)));
+      $$4.trim();
+      return $$5;
    }
 
    @Override
-   public void a(Consumer<aob> $$0) {
-      try {
-         v.c(this.b);
-         a(this.b, this.e, false, ($$1, $$2) -> {
-            String $$3 = a($$1);
-            aob $$4 = aob.a("file/" + $$3, ui.b($$3), false, $$2, this.c, aob.b.a, this.d);
-            if ($$4 != null) {
-               $$0.accept($$4);
-            }
-         });
-      } catch (IOException var3) {
-         a.warn("Failed to list packs in {}", this.b, var3);
-      }
+   public FileSystemProvider provider() {
+      return this.e;
    }
 
-   public static void a(Path $$0, ehv $$1, boolean $$2, BiConsumer<Path, aob.c> $$3) throws IOException {
-      aoa.a $$4 = new aoa.a($$1, $$2);
+   @Override
+   public void close() {
+   }
 
-      try (DirectoryStream<Path> $$5 = Files.newDirectoryStream($$0)) {
-         for (Path $$6 : $$5) {
-            try {
-               List<ehw> $$7 = new ArrayList<>();
-               aob.c $$8 = $$4.a($$6, $$7);
-               if (!$$7.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", ehu.a($$6, $$7));
-               } else if ($$8 != null) {
-                  $$3.accept($$6, $$8);
-               } else {
-                  a.info("Found non-pack entry '{}', ignoring", $$6);
-               }
-            } catch (IOException var11) {
-               a.warn("Failed to read properties of '{}', ignoring", $$6, var11);
+   @Override
+   public boolean isOpen() {
+      return true;
+   }
+
+   @Override
+   public boolean isReadOnly() {
+      return true;
+   }
+
+   @Override
+   public String getSeparator() {
+      return "/";
+   }
+
+   @Override
+   public Iterable<Path> getRootDirectories() {
+      return List.of(this.f);
+   }
+
+   @Override
+   public Iterable<FileStore> getFileStores() {
+      return List.of(this.d);
+   }
+
+   @Override
+   public Set<String> supportedFileAttributeViews() {
+      return b;
+   }
+
+   @Override
+   public Path getPath(String $$0, String... $$1) {
+      Stream<String> $$2 = Stream.of($$0);
+      if ($$1.length > 0) {
+         $$2 = Stream.concat($$2, Stream.of($$1));
+      }
+
+      String $$3 = $$2.collect(Collectors.joining("/"));
+      if ($$3.equals("/")) {
+         return this.f;
+      } else if ($$3.startsWith("/")) {
+         any $$4 = this.f;
+
+         for (String $$5 : c.split($$3.substring(1))) {
+            if ($$5.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
             }
+
+            $$4 = $$4.a($$5);
          }
-      }
-   }
 
-   static class a extends aod<aob.c> {
-      private final boolean a;
+         return $$4;
+      } else {
+         any $$6 = null;
 
-      protected a(ehv $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
-      }
+         for (String $$7 : c.split($$3)) {
+            if ($$7.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
+            }
 
-      @Nullable
-      protected aob.c a(Path $$0) {
-         FileSystem $$1 = $$0.getFileSystem();
-         if ($$1 != FileSystems.getDefault() && !($$1 instanceof anq)) {
-            aoa.a.info("Can't open pack archive at {}", $$0);
-            return null;
+            $$6 = new any(this, $$7, $$6, aob.b);
+         }
+
+         if ($$6 == null) {
+            throw new IllegalArgumentException("Empty paths not allowed");
          } else {
-            return new anf.a($$0, this.a);
+            return $$6;
+         }
+      }
+   }
+
+   @Override
+   public PathMatcher getPathMatcher(String $$0) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public UserPrincipalLookupService getUserPrincipalLookupService() {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public WatchService newWatchService() {
+      throw new UnsupportedOperationException();
+   }
+
+   public FileStore a() {
+      return this.d;
+   }
+
+   public any b() {
+      return this.f;
+   }
+
+   public static aoa.a c() {
+      return new aoa.a();
+   }
+
+   public static class a {
+      private final aoa.b a = new aoa.b();
+
+      public aoa.a a(List<String> $$0, String $$1, Path $$2) {
+         aoa.b $$3 = this.a;
+
+         for (String $$4 : $$0) {
+            $$3 = $$3.a.computeIfAbsent($$4, $$0x -> new aoa.b());
+         }
+
+         $$3.b.put($$1, $$2);
+         return this;
+      }
+
+      public aoa.a a(List<String> $$0, Path $$1) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Path can't be empty");
+         } else {
+            int $$2 = $$0.size() - 1;
+            return this.a($$0.subList(0, $$2), $$0.get($$2), $$1);
          }
       }
 
-      protected aob.c b(Path $$0) {
-         return new anj.a($$0, this.a);
+      public FileSystem a(String $$0) {
+         return new aoa($$0, this.a);
+      }
+   }
+
+   static record b(Map<String, aoa.b> a, Map<String, Path> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashMap<>());
       }
    }
 }

@@ -1,28 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsa extends drz {
-   public static final Codec<dsa> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsa::new));
+public record dsa(int b, int c, int d, ib<dvz> e) implements drn {
+   public static final Codec<dsa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               asq.j.fieldOf("tries").orElse(128).forGetter(dsa::a),
+               asq.i.fieldOf("xz_spread").orElse(7).forGetter(dsa::b),
+               asq.i.fieldOf("y_spread").orElse(3).forGetter(dsa::c),
+               dvz.b.fieldOf("feature").forGetter(dsa::d)
+            )
+            .apply($$0, dsa::new)
+   );
 
-   public dsa(bhg $$0, bhg $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected dsf<?> a() {
-      return dsf.e;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(crf $$0, dse.b $$1, ate $$2, dro $$3, int $$4, dse.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   protected boolean a(ate $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public ib<dvz> d() {
+      return this.e;
    }
 }

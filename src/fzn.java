@@ -1,77 +1,52 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fzn<T extends bww> extends fzs<T, fgv<T>> {
+   private final frb a;
 
-public class fzn extends fzl implements fzm {
-   private static final Logger e = LogUtils.getLogger();
-   @Nullable
-   private eli f;
+   public fzn(fxf<T, fgv<T>> $$0, frb $$1) {
+      super($$0);
+      this.a = $$1;
+   }
 
-   public fzn(eli $$0) {
-      this.f = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-            this.d();
-         });
+   public void a(enk $$0, fqh $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.n_()) {
+         esr $$10 = esr.N();
+         boolean $$11 = $$10.b($$3) && $$3.cd();
+         if (!$$3.cd() || $$11) {
+            dgw $$12 = $$3.t().a();
+            int $$13 = fwl.c($$3, 0.0F);
+            gdi $$14 = this.a.a($$12);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            this.c().d().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+         }
+      }
+   }
+
+   private void a(enk $$0, fqh $$1, int $$2, boolean $$3, dgw $$4, int $$5, gdi $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(fqp.q(gbg.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
       } else {
-         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-         this.d();
-      }
-   }
-
-   public fzn(int $$0, int $$1, boolean $$2) {
-      RenderSystem.assertOnGameThreadOrInit();
-      this.f = new eli($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-   }
-
-   @Override
-   public void a(aot $$0) {
-   }
-
-   @Override
-   public void d() {
-      if (this.f != null) {
-         this.c();
-         this.f.a(0, 0, 0, false);
-      } else {
-         e.warn("Trying to upload disposed texture {}", this.a());
-      }
-   }
-
-   @Nullable
-   public eli e() {
-      return this.f;
-   }
-
-   public void a(eli $$0) {
-      if (this.f != null) {
-         this.f.close();
-      }
-
-      this.f = $$0;
-   }
-
-   @Override
-   public void close() {
-      if (this.f != null) {
-         this.f.close();
-         this.b();
-         this.f = null;
-      }
-   }
-
-   @Override
-   public void a(afw $$0, Path $$1) throws IOException {
-      if (this.f != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.f.a($$3);
+         this.a.a($$4, $$0, $$1, $$2, $$5);
       }
    }
 }

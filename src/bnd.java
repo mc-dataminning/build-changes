@@ -1,215 +1,38 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.Collections;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class bnd<E extends bkl> extends bma<E> {
-   protected static final int c = 20;
-   private static final int m = 40;
-   protected static final int d = 8;
-   private static final int n = 200;
-   private static final List<Integer> o = Lists.newArrayList(new Integer[]{65, 70, 75, 80});
-   private final bhm p;
-   protected final int e;
-   protected final int f;
-   protected final float g;
-   protected List<bnd.a> h = Lists.newArrayList();
-   protected Optional<eif> i = Optional.empty();
-   @Nullable
-   protected eif j;
-   protected int k;
-   protected long l;
-   private final Function<E, aqc> q;
-   private final BiPredicate<E, ht> r;
+public class bnd<E extends bky> implements bmq<E> {
+   private final Map<btz<?>, bua> a;
+   private final Set<btz<?>> b;
+   private final bnd.a c;
+   private final bnd.b d;
+   private final box<bmq<? super E>> e = new box<>();
+   private bmp.a f = bmp.a.a;
 
-   public bnd(bhm $$0, int $$1, int $$2, float $$3, Function<E, aqc> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, bnd::a);
+   public bnd(Map<btz<?>, bua> $$0, Set<btz<?>> $$1, bnd.a $$2, bnd.b $$3, List<Pair<? extends bmq<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((bmq<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   public static <E extends bkl> boolean a(E $$0, ht $$1) {
-      cqz $$2 = $$0.dL();
-      ht $$3 = $$1.d();
-      return $$2.a_($$3).i($$2, $$3) && $$0.a(eby.a($$2, $$1.j())) == 0.0F;
+   @Override
+   public bmp.a a() {
+      return this.f;
    }
 
-   public bnd(bhm $$0, int $$1, int $$2, float $$3, Function<E, aqc> $$4, BiPredicate<E, ht> $$5) {
-      super(ImmutableMap.of(btk.n, btl.c, btk.R, btl.b, btk.S, btl.b), 200);
-      this.p = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.q = $$4;
-      this.r = $$5;
-   }
-
-   protected boolean a(alq $$0, bkl $$1) {
-      boolean $$2 = $$1.aA() && !$$1.aX() && !$$1.bl() && !$$0.a_($$1.dl()).a(cuc.pg);
-      if (!$$2) {
-         $$1.dN().a(btk.R, this.p.a($$0.z) / 2);
-      }
-
-      return $$2;
-   }
-
-   protected boolean b(alq $$0, bkl $$1, long $$2) {
-      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.dj()) && this.k > 0 && !$$1.ba() && (this.j != null || !this.h.isEmpty());
-      if (!$$3 && $$1.dN().c(btk.S).isEmpty()) {
-         $$1.dN().a(btk.R, this.p.a($$0.z) / 2);
-         $$1.dN().b(btk.n);
-      }
-
-      return $$3;
-   }
-
-   protected void a(alq $$0, E $$1, long $$2) {
-      this.j = null;
-      this.k = 20;
-      this.i = Optional.of($$1.dj());
-      ht $$3 = $$1.dl();
-      int $$4 = $$3.u();
-      int $$5 = $$3.v();
-      int $$6 = $$3.w();
-      this.h = ht.a($$4 - this.f, $$5 - this.e, $$6 - this.f, $$4 + this.f, $$5 + this.e, $$6 + this.f)
-         .filter($$1x -> !$$1x.equals($$3))
-         .map($$1x -> new bnd.a($$1x.i(), asy.c($$3.j($$1x))))
-         .collect(Collectors.toCollection(Lists::newArrayList));
-   }
-
-   protected void c(alq $$0, E $$1, long $$2) {
-      if (this.j != null) {
-         if ($$2 - this.l >= 40L) {
-            $$1.r($$1.aU);
-            $$1.p(true);
-            double $$3 = this.j.f();
-            double $$4 = $$3 + (double)$$1.eZ();
-            $$1.f(this.j.a($$4 / $$3));
-            $$1.dN().a(btk.S, true);
-            $$0.a(null, $$1, this.q.apply($$1), aqe.g, 1.0F, 1.0F);
-         }
-      } else {
-         this.k--;
-         this.d($$0, $$1, $$2);
-      }
-   }
-
-   protected void d(alq $$0, E $$1, long $$2) {
-      while (!this.h.isEmpty()) {
-         Optional<bnd.a> $$3 = this.a($$0);
-         if (!$$3.isEmpty()) {
-            bnd.a $$4 = $$3.get();
-            ht $$5 = $$4.b();
-            if (this.a($$0, $$1, $$5)) {
-               eif $$6 = eif.b($$5);
-               eif $$7 = this.a($$1, $$6);
-               if ($$7 != null) {
-                  $$1.dN().a(btk.n, new bmd($$5));
-                  bts $$8 = $$1.L();
-                  ebt $$9 = $$8.a($$5, 0, 8);
-                  if ($$9 == null || !$$9.j()) {
-                     this.j = $$7;
-                     this.l = $$2;
-                     return;
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected Optional<bnd.a> a(alq $$0) {
-      Optional<bnd.a> $$1 = bgo.a($$0.z, this.h);
-      $$1.ifPresent(this.h::remove);
-      return $$1;
-   }
-
-   private boolean a(alq $$0, E $$1, ht $$2) {
-      ht $$3 = $$1.dl();
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      return $$4 == $$2.u() && $$5 == $$2.w() ? false : this.r.test($$1, $$2);
-   }
-
-   @Nullable
-   protected eif a(bkl $$0, eif $$1) {
-      List<Integer> $$2 = Lists.newArrayList(o);
-      Collections.shuffle($$2);
-
-      for (int $$3 : $$2) {
-         eif $$4 = this.a($$0, $$1, $$3);
-         if ($$4 != null) {
-            return $$4;
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   private eif a(bkl $$0, eif $$1, int $$2) {
-      eif $$3 = $$0.dj();
-      eif $$4 = new eif($$1.c - $$3.c, 0.0, $$1.e - $$3.e).d().a(0.5);
-      $$1 = $$1.d($$4);
-      eif $$5 = $$1.d($$3);
-      float $$6 = (float)$$2 * (float) Math.PI / 180.0F;
-      double $$7 = Math.atan2($$5.e, $$5.c);
-      double $$8 = $$5.a(0.0, $$5.d, 0.0).g();
-      double $$9 = Math.sqrt($$8);
-      double $$10 = $$5.d;
-      double $$11 = Math.sin((double)(2.0F * $$6));
-      double $$12 = 0.08;
-      double $$13 = Math.pow(Math.cos((double)$$6), 2.0);
-      double $$14 = Math.sin((double)$$6);
-      double $$15 = Math.cos((double)$$6);
-      double $$16 = Math.sin($$7);
-      double $$17 = Math.cos($$7);
-      double $$18 = $$8 * 0.08 / ($$9 * $$11 - 2.0 * $$10 * $$13);
-      if ($$18 < 0.0) {
-         return null;
-      } else {
-         double $$19 = Math.sqrt($$18);
-         if ($$19 > (double)this.g) {
-            return null;
-         } else {
-            double $$20 = $$19 * $$15;
-            double $$21 = $$19 * $$14;
-            int $$22 = asy.c($$9 / $$20) * 2;
-            double $$23 = 0.0;
-            eif $$24 = null;
-            bju $$25 = $$0.a(bkv.g);
-
-            for (int $$26 = 0; $$26 < $$22 - 1; $$26++) {
-               $$23 += $$9 / (double)$$22;
-               double $$27 = $$14 / $$15 * $$23 - Math.pow($$23, 2.0) * 0.08 / (2.0 * $$18 * Math.pow($$15, 2.0));
-               double $$28 = $$23 * $$17;
-               double $$29 = $$23 * $$16;
-               eif $$30 = new eif($$3.c + $$28, $$3.d + $$27, $$3.e + $$29);
-               if ($$24 != null && !this.a($$0, $$25, $$24, $$30)) {
-                  return null;
-               }
-
-               $$24 = $$30;
-            }
-
-            return new eif($$20 * $$17, $$21, $$20 * $$16).a(0.95F);
-         }
-      }
-   }
-
-   private boolean a(bkl $$0, bju $$1, eif $$2, eif $$3) {
-      eif $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a, $$1.b);
-      int $$6 = asy.c($$4.f() / $$5);
-      eif $$7 = $$4.d();
-      eif $$8 = $$2;
-
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.a($$5 * 0.9F));
-         if (!$$0.dL().a($$0, $$1.a($$8))) {
+   private boolean a(E $$0) {
+      for (Entry<btz<?>, bua> $$1 : this.a.entrySet()) {
+         btz<?> $$2 = $$1.getKey();
+         bua $$3 = $$1.getValue();
+         if (!$$0.dN().a($$2, $$3)) {
             return false;
          }
       }
@@ -217,16 +40,74 @@ public class bnd<E extends bkl> extends bma<E> {
       return true;
    }
 
-   public static class a extends bgn.a {
-      private final ht a;
+   @Override
+   public final boolean e(ama $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = bmp.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
 
-      public a(ht $$0, int $$1) {
-         super($$1);
-         this.a = $$0;
+   @Override
+   public final void f(ama $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == bmp.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == bmp.a.b)) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(ama $$0, E $$1, long $$2) {
+      this.f = bmp.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == bmp.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.dN()::b);
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   @Override
+   public String toString() {
+      Set<? extends bmq<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bmp.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
+   }
+
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(box::a);
+
+      private final Consumer<box<?>> c;
+
+      private a(Consumer<box<?>> $$0) {
+         this.c = $$0;
       }
 
-      public ht b() {
-         return this.a;
+      public void a(box<?> $$0) {
+         this.c.accept($$0);
       }
+   }
+
+   public static enum b {
+      a {
+         @Override
+         public <E extends bky> void a(Stream<bmq<? super E>> $$0, ama $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bmp.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+         }
+      },
+      b {
+         @Override
+         public <E extends bky> void a(Stream<bmq<? super E>> $$0, ama $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bmp.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
+
+      public abstract <E extends bky> void a(Stream<bmq<? super E>> var1, ama var2, E var3, long var4);
    }
 }

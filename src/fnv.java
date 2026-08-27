@@ -1,24 +1,97 @@
-public class fnv extends fnq {
-   private float a;
+import java.util.List;
+import java.util.Optional;
 
-   fnv(fjr $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+public abstract class fnv {
+   private static final ejd a = new ejd(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+   private static final double b = ati.k(100.0);
+   protected final fkw c;
+   protected double d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected double i;
+   protected double j;
+   protected double k;
+   protected double l;
+   private ejd D = a;
+   protected boolean m;
+   protected boolean n = true;
+   private boolean E;
+   protected boolean o;
+   protected float p = 0.6F;
+   protected float q = 1.8F;
+   protected final ato r = ato.a();
+   protected int s;
+   protected int t;
+   protected float u;
+   protected float v = 1.0F;
+   protected float w = 1.0F;
+   protected float x = 1.0F;
+   protected float y = 1.0F;
+   protected float z;
+   protected float A;
+   protected float B = 0.98F;
+   protected boolean C = false;
+
+   protected fnv(fkw $$0, double $$1, double $$2, double $$3) {
+      this.c = $$0;
+      this.b(0.2F, 0.2F);
+      this.c($$1, $$2, $$3);
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.t = (int)(4.0F / (this.r.i() * 0.9F + 0.1F));
    }
 
-   @Override
-   public fmu b() {
-      return fmu.b;
+   public fnv(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3);
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.4F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.4F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.4F;
+      double $$7 = (Math.random() + Math.random() + 1.0) * 0.15F;
+      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
+      this.j = this.j / $$8 * $$7 * 0.4F;
+      this.k = this.k / $$8 * $$7 * 0.4F + 0.1F;
+      this.l = this.l / $$8 * $$7 * 0.4F;
    }
 
-   @Override
+   public fnv c(float $$0) {
+      this.j *= (double)$$0;
+      this.k = (this.k - 0.1F) * (double)$$0 + 0.1F;
+      this.l *= (double)$$0;
+      return this;
+   }
+
+   public void b(double $$0, double $$1, double $$2) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+   }
+
+   public fnv d(float $$0) {
+      this.b(0.2F * $$0, 0.2F * $$0);
+      return this;
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      this.v = $$0;
+      this.w = $$1;
+      this.x = $$2;
+   }
+
+   protected void e(float $$0) {
+      this.y = $$0;
+   }
+
+   public void a(int $$0) {
+      this.t = $$0;
+   }
+
+   public int j() {
+      return this.t;
+   }
+
    public void a() {
       this.d = this.g;
       this.e = this.h;
@@ -26,31 +99,129 @@ public class fnv extends fnq {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * asy.b(this.a));
-         this.l = this.l + (double)(0.6F * asy.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
+         this.k = this.k - 0.04 * (double)this.u;
          this.a(this.j, this.k, this.l);
-         if (!this.c.b_(ht.a(this.g, this.h, this.i)).a(aqx.a) || this.m) {
-            this.k();
+         if (this.C && this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
          }
 
-         this.a += 0.08F;
+         this.j = this.j * (double)this.B;
+         this.k = this.k * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.m) {
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
       }
    }
 
-   public static class a implements fmt<jv> {
-      private final fnl a;
+   public abstract void a(eno var1, esc var2, float var3);
 
-      public a(fnl $$0) {
-         this.a = $$0;
-      }
+   public abstract fnz b();
 
-      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fnv $$8 = new fnv($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+   @Override
+   public String toString() {
+      return this.getClass().getSimpleName()
+         + ", Pos ("
+         + this.g
+         + ","
+         + this.h
+         + ","
+         + this.i
+         + "), RGBA ("
+         + this.v
+         + ","
+         + this.w
+         + ","
+         + this.x
+         + ","
+         + this.y
+         + "), Age "
+         + this.s;
+   }
+
+   public void k() {
+      this.o = true;
+   }
+
+   protected void b(float $$0, float $$1) {
+      if ($$0 != this.p || $$1 != this.q) {
+         this.p = $$0;
+         this.q = $$1;
+         ejd $$2 = this.n();
+         double $$3 = ($$2.a + $$2.d - (double)$$0) / 2.0;
+         double $$4 = ($$2.c + $$2.f - (double)$$0) / 2.0;
+         this.a(new ejd($$3, $$2.b, $$4, $$3 + (double)this.p, $$2.b + (double)this.q, $$4 + (double)this.p));
       }
+   }
+
+   public void c(double $$0, double $$1, double $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      float $$3 = this.p / 2.0F;
+      float $$4 = this.q;
+      this.a(new ejd($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3));
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      if (!this.E) {
+         double $$3 = $$0;
+         double $$4 = $$1;
+         double $$5 = $$2;
+         if (this.n && ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 < b) {
+            eji $$6 = bki.a(null, new eji($$0, $$1, $$2), this.n(), this.c, List.of());
+            $$0 = $$6.c;
+            $$1 = $$6.d;
+            $$2 = $$6.e;
+         }
+
+         if ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) {
+            this.a(this.n().d($$0, $$1, $$2));
+            this.l();
+         }
+
+         if (Math.abs($$4) >= 1.0E-5F && Math.abs($$1) < 1.0E-5F) {
+            this.E = true;
+         }
+
+         this.m = $$4 != $$1 && $$4 < 0.0;
+         if ($$3 != $$0) {
+            this.j = 0.0;
+         }
+
+         if ($$5 != $$2) {
+            this.l = 0.0;
+         }
+      }
+   }
+
+   protected void l() {
+      ejd $$0 = this.n();
+      this.g = ($$0.a + $$0.d) / 2.0;
+      this.h = $$0.b;
+      this.i = ($$0.c + $$0.f) / 2.0;
+   }
+
+   protected int a(float $$0) {
+      ht $$1 = ht.a(this.g, this.h, this.i);
+      return this.c.A($$1) ? fqf.a(this.c, $$1) : 0;
+   }
+
+   public boolean m() {
+      return !this.o;
+   }
+
+   public ejd n() {
+      return this.D;
+   }
+
+   public void a(ejd $$0) {
+      this.D = $$0;
+   }
+
+   public Optional<jp> o() {
+      return Optional.empty();
    }
 }

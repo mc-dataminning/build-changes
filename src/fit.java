@@ -1,224 +1,37 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+public class fit extends fhy {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final fkb e;
+   private final fkb f;
+   private final fkb g;
 
-public class fit {
-   private static final fja a = new fja(0.008F);
-   private static final fja b = new fja(1.0F);
-   private static final fja c = new fja(0.5F);
+   public fit(fkb $$0) {
+      super(fqp::c);
+      this.e = $$0;
+      this.f = $$0.b("plate");
+      this.g = $$0.b("handle");
+   }
 
-   public static Map<fiu, fjc> a() {
-      Builder<fiu, fjc> $$0 = ImmutableMap.builder();
-      fjc $$1 = fjc.a(fgk.a(fja.a, 0.0F), 64, 64);
-      fjc $$2 = fjc.a(fgj.a(b), 64, 32);
-      fjc $$3 = fjc.a(fgj.a(new fja(1.02F)), 64, 32);
-      fjc $$4 = fjc.a(fgj.a(c), 64, 32);
-      fjc $$5 = fgs.b();
-      fjc $$6 = fht.c();
-      fjc $$7 = fjc.a(fgi.a(fja.a), 64, 64);
-      fjc $$8 = fgl.b();
-      fjc $$9 = ffq.c();
-      fjc $$10 = fjc.a(fgv.a(fja.a), 64, 32);
-      fjc $$11 = fjc.a(fhb.a(fja.a), 64, 64);
-      fjc $$12 = fjc.a(fha.a(), 64, 64);
-      fjc $$13 = fht.b();
-      fjc $$14 = fgq.a(fja.a);
-      fjc $$15 = fia.b();
-      fjc $$16 = fgh.c();
-      fjc $$17 = fhs.c();
-      fjc $$18 = fjc.a(fii.b(), 64, 64);
-      fjc $$19 = fhy.b();
-      $$0.put(fiv.a, few.b());
-      $$0.put(fiv.b, ffa.c());
-      $$0.put(fiv.c, fez.a(c));
-      $$0.put(fiv.d, fez.a(b));
-      $$0.put(fiv.e, ffb.c());
-      $$0.put(fiv.f, fqv.a());
-      $$0.put(fiv.g, ffc.b());
-      $$0.put(fiv.h, fqx.c());
-      $$0.put(fiv.i, fqx.b());
-      $$0.put(fiv.j, ffd.c());
-      $$0.put(fiv.k, fqy.b());
-      $$0.put(fiv.l, ffe.b());
-      $$0.put(fiv.m, ffg.a());
-      $$0.put(fiv.n, $$10);
-      $$0.put(fiv.o, fjc.a(fgv.a(new fja(0.01F)), 64, 32));
-      $$0.put(fiv.p, ffh.b());
-      $$0.put(fiv.q, $$19);
-      $$0.put(fiv.r, frg.b());
-      $$0.put(fiv.s, $$5);
-      $$0.put(fiv.t, ffm.c());
-      $$0.put(fiv.u, ffn.b());
-      $$0.put(fiv.v, $$5);
-      $$0.put(fiv.x, frh.b());
-      $$0.put(fiv.z, frh.c());
-      $$0.put(fiv.y, frh.d());
-      $$0.put(fiv.w, frh.e());
-      $$0.put(fiv.A, $$9);
-      $$0.put(fiv.B, ffr.a(fja.a));
-      $$0.put(fiv.C, ffr.a(new fja(2.0F)));
-      $$0.put(fiv.D, $$6);
-      $$0.put(fiv.E, fri.b());
-      $$0.put(fiv.F, fri.c());
-      $$0.put(fiv.G, ffs.b());
-      $$0.put(fiv.H, ffl.c());
-      $$0.put(fiv.I, frg.d());
-      $$0.put(fiv.J, frg.c());
-      $$0.put(fiv.K, fiq.a());
-      $$0.put(fiv.L, fft.a(fja.a));
-      $$0.put(fiv.M, $$4);
-      $$0.put(fiv.N, $$4);
-      $$0.put(fiv.O, fft.a(new fja(0.25F)));
-      $$0.put(fiv.P, fge.b());
-      $$0.put(fiv.Q, ffu.c());
-      $$0.put(fiv.R, ffv.c());
-      $$0.put(fiv.S, ffw.b());
-      $$0.put(fiv.T, fty.a());
-      $$0.put(fiv.U, ftx.a());
-      $$0.put(fiv.V, $$8);
-      $$0.put(fiv.W, ffy.b());
-      $$0.put(fiv.X, ffz.c());
-      $$0.put(fiv.Y, fga.b());
-      $$0.put(fiv.Z, $$5);
-      $$0.put(fiv.aa, fgb.b());
-      $$0.put(fiv.ab, $$1);
-      $$0.put(fiv.ac, $$4);
-      $$0.put(fiv.ad, $$2);
-      $$0.put(fiv.ae, fhz.b());
-      $$0.put(fiv.af, fgd.c());
-      $$0.put(fiv.ag, fge.b());
-      $$0.put(fiv.ah, $$16);
-      $$0.put(fiv.ai, $$5);
-      $$0.put(fiv.aj, $$7);
-      $$0.put(fiv.ak, fjc.a(fgi.a(new fja(0.1F)), 64, 64));
-      $$0.put(fiv.al, $$1);
-      $$0.put(fiv.am, $$4);
-      $$0.put(fiv.an, $$2);
-      $$0.put(fiv.ao, $$8);
-      $$0.put(fiv.ap, fgm.b());
-      $$0.put(fiv.aq, fgo.b());
-      $$0.put(fiv.ar, $$14);
-      $$0.put(fiv.as, fgq.a(new fja(0.5F)));
-      $$0.put(fiv.at, fgr.b());
-      $$0.put(fiv.au, fgn.b());
-      $$0.put(fiv.av, $$5);
-      $$0.put(fiv.aw, $$9);
-      $$0.put(fiv.ax, ffl.c());
-      $$0.put(fiv.ay, $$10);
-      $$0.put(fiv.az, fgw.c());
-      $$0.put(fiv.aA, fgx.b());
-      $$0.put(fiv.aB, fgy.b());
-      $$0.put(fiv.aC, fgz.a(fja.a));
-      $$0.put(fiv.aK, fgz.a(new fja(0.5F)));
-      $$0.put(fiv.aD, $$11);
-      $$0.put(fiv.aI, $$4);
-      $$0.put(fiv.aJ, $$3);
-      $$0.put(fiv.aE, $$11);
-      $$0.put(fiv.aF, $$4);
-      $$0.put(fiv.aG, $$3);
-      $$0.put(fiv.aH, $$12);
-      $$0.put(fiv.aL, $$8);
-      $$0.put(fiv.aM, fjc.a(fhc.a(fja.a, false), 64, 64));
-      $$0.put(fiv.aN, $$13);
-      $$0.put(fiv.aO, $$4);
-      $$0.put(fiv.aP, $$2);
-      $$0.put(fiv.aQ, fjc.a(fhc.a(fja.a, true), 64, 64));
-      $$0.put(fiv.aR, $$4);
-      $$0.put(fiv.aS, $$2);
-      $$0.put(fiv.aT, fys.a());
-      $$0.put(fiv.aU, fhd.c());
-      $$0.put(fiv.aV, fhe.b());
-      $$0.put(fiv.aW, fhf.b());
-      $$0.put(fiv.aX, fhg.b());
-      $$0.put(fiv.aY, fhi.a());
-      $$0.put(fiv.aZ, fhk.b());
-      $$0.put(fiv.ba, fhl.b());
-      $$0.put(fiv.bb, fhn.c());
-      $$0.put(fiv.bc, fhm.c());
-      $$0.put(fiv.bd, fho.a());
-      $$0.put(fiv.be, fhq.a());
-      $$0.put(fiv.bf, fhp.b());
-      $$0.put(fiv.bg, fhr.b());
-      $$0.put(fiv.bh, $$17);
-      $$0.put(fiv.bj, $$4);
-      $$0.put(fiv.bk, $$2);
-      $$0.put(fiv.bi, $$7);
-      $$0.put(fiv.bl, $$6);
-      $$0.put(fiv.bm, fhv.c());
-      $$0.put(fiv.bn, fhv.b());
-      $$0.put(fiv.bo, fhw.b());
-      $$0.put(fiv.bp, fhx.b());
-      $$0.put(fiv.bq, $$5);
-      $$0.put(fiv.br, $$19);
-      $$0.put(fiv.bs, fhz.b());
-      $$0.put(fiv.bt, $$17);
-      $$0.put(fiv.bu, $$4);
-      $$0.put(fiv.bv, $$2);
-      $$0.put(fiv.bw, fjc.a(fgk.a(new fja(0.25F), 0.0F), 64, 32));
-      $$0.put(fiv.bx, $$15);
-      $$0.put(fiv.by, $$15);
-      $$0.put(fiv.bz, fib.c());
-      $$0.put(fiv.bA, $$5);
-      $$0.put(fiv.bB, $$14);
-      $$0.put(fiv.bC, fic.a());
-      $$0.put(fiv.bD, fie.a(fja.a));
-      $$0.put(fiv.bE, fie.a(a));
-      $$0.put(fiv.bF, fid.a(fja.a));
-      $$0.put(fiv.bG, fid.a(a));
-      $$0.put(fiv.bH, fif.c());
-      $$0.put(fiv.bI, fig.b());
-      $$0.put(fiv.bJ, $$18);
-      $$0.put(fiv.bK, $$8);
-      $$0.put(fiv.bL, fij.b());
-      $$0.put(fiv.bM, $$18);
-      $$0.put(fiv.bN, fil.c());
-      $$0.put(fiv.bO, fim.a(fja.a));
-      $$0.put(fiv.bP, fim.a(c));
-      $$0.put(fiv.bU, fxe.a());
-      $$0.put(fiv.bQ, $$17);
-      $$0.put(fiv.bR, $$4);
-      $$0.put(fiv.bS, $$2);
-      $$0.put(fiv.bT, $$6);
-      $$0.put(fiv.bV, fin.c());
-      $$0.put(fiv.bW, $$16);
-      $$0.put(fiv.bX, $$1);
-      $$0.put(fiv.ca, $$4);
-      $$0.put(fiv.cb, $$2);
-      $$0.put(fiv.bY, $$13);
-      $$0.put(fiv.bZ, $$7);
-      $$0.put(fiv.cc, fip.c());
-      $$0.put(fiv.cd, fip.a(c));
-      $$0.put(fiv.ce, fip.a(b));
-      $$0.put(fiv.cf, $$11);
-      $$0.put(fiv.cg, $$4);
-      $$0.put(fiv.ch, $$3);
-      fjc $$20 = fff.a();
-      fjc $$21 = ffj.e();
-      fjc $$22 = fhj.b();
-      fjc $$23 = ffk.a();
+   public static fkh a() {
+      fkj $$0 = new fkj();
+      fkk $$1 = $$0.a();
+      $$1.a("plate", fkg.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fkd.a);
+      $$1.a("handle", fkg.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fkd.a);
+      return fkh.a($$0, 64, 64);
+   }
 
-      for (ceq.b $$24 : ceq.b.values()) {
-         if ($$24 == ceq.b.i) {
-            $$0.put(fiv.c($$24), $$22);
-            $$0.put(fiv.d($$24), $$23);
-         } else {
-            $$0.put(fiv.c($$24), $$20);
-            $$0.put(fiv.d($$24), $$21);
-         }
-      }
+   public fkb b() {
+      return this.f;
+   }
 
-      fjc $$25 = fro.f();
-      dho.a().forEach($$2x -> $$0.put(fiv.a($$2x), $$25));
-      fjc $$26 = frk.e();
-      dho.a().forEach($$2x -> $$0.put(fiv.b($$2x), $$26));
-      ImmutableMap<fiu, fjc> $$27 = $$0.build();
-      List<fiu> $$28 = fiv.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
-      if (!$$28.isEmpty()) {
-         throw new IllegalStateException("Missing layer definitions: " + $$28);
-      } else {
-         return $$27;
-      }
+   public fkb c() {
+      return this.g;
+   }
+
+   @Override
+   public void a(enk $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

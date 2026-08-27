@@ -1,2 +1,8 @@
-public interface els extends elx {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@ele
+@eld
+interface els {
 }

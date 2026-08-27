@@ -1,29 +1,34 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dai extends cua implements cud {
-   public static final MapCodec<dai> a = b(dai::new);
+public class dai extends dbu {
+   public static final MapCodec<dai> b = b(dai::new);
 
    @Override
    public MapCodec<dai> a() {
-      return a;
+      return b;
    }
 
-   public dai(dga.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(crc $$0, ht $$1, dgb $$2) {
-      return $$0.a_($$1.d()).i();
+   protected dai(dgv.d $$0) {
+      super(dbu.b.e, $$0);
    }
 
    @Override
-   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
-      return true;
-   }
+   public void a(crs $$0, ht $$1, dgw $$2, @Nullable bky $$3, clb $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$0.c_($$1) instanceof dgc $$6) {
+         GameProfile $$7 = null;
+         if ($$4.u()) {
+            rz $$8 = $$4.v();
+            if ($$8.b("SkullOwner", 10)) {
+               $$7 = so.a($$8.p("SkullOwner"));
+            } else if ($$8.b("SkullOwner", 8) && !ac.b($$8.l("SkullOwner"))) {
+               $$7 = new GameProfile(ac.d, $$8.l("SkullOwner"));
+            }
+         }
 
-   @Override
-   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
-      $$0.b($$2.d(), cuc.rF.o());
+         $$6.a($$7);
+      }
    }
 }

@@ -1,713 +1,203 @@
-import javax.annotation.Nullable;
-
 public class pj {
-   protected static final int a = 4159204;
-   protected static final int b = 329011;
-   private static final int c = 12638463;
-   @Nullable
-   private static final aqa d = null;
+   private static final float a = -0.51F;
+   private static final float b = -0.4F;
+   private static final float c = 0.1F;
+   private static final float d = -0.15F;
+   private static final auh<Float> e = auh.a;
+   private static final auh<Float> f = auh.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
+   private static final auh<Float> g = auh.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
+   private static final auh<Float> h = auh.a($$0 -> $$0 * 2.0F);
 
-   protected static int a(float $$0) {
-      float $$1 = $$0 / 3.0F;
-      $$1 = asy.a($$1, -1.0F, 1.0F);
-      return asy.h(0.62222224F - $$1 * 0.05F, 0.5F + $$1 * 0.1F, 1.0F);
+   public static <C, I extends auh<C>> asl<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
+      auh<Float> $$4 = $$3 ? f : e;
+      asl<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
+      asl<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
+      asl<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
+      asl<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
+      return asl.<C, I>a($$0, $$4)
+         .a(-1.1F, 0.044F)
+         .a(-1.02F, -0.2222F)
+         .a(-0.51F, -0.2222F)
+         .a(-0.44F, -0.12F)
+         .a(-0.18F, -0.12F)
+         .a(-0.16F, $$5)
+         .a(-0.15F, $$5)
+         .a(-0.1F, $$6)
+         .a(0.25F, $$7)
+         .a(1.0F, $$8)
+         .a();
    }
 
-   private static crx a(boolean $$0, float $$1, float $$2, csj.a $$3, cry.a $$4, @Nullable aqa $$5) {
-      return a($$0, $$1, $$2, 4159204, 329011, null, null, $$3, $$4, $$5);
+   public static <C, I extends auh<C>> asl<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
+      auh<Float> $$5 = $$4 ? g : e;
+      return asl.<C, I>a($$0, e)
+         .a(-0.19F, 3.95F)
+         .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
+         .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
+         .a(0.03F, a($$1, $$2, $$3, 5.08F, true, $$5))
+         .a(0.06F, a($$1, $$2, $$3, 4.69F, false, $$5))
+         .a();
    }
 
-   private static crx a(
-      boolean $$0, float $$1, float $$2, int $$3, int $$4, @Nullable Integer $$5, @Nullable Integer $$6, csj.a $$7, cry.a $$8, @Nullable aqa $$9
+   public static <C, I extends auh<C>> asl<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
+      auh<Float> $$5 = $$4 ? h : e;
+      float $$6 = 0.65F;
+      return asl.<C, I>a($$0, $$5)
+         .a(-0.11F, 0.0F)
+         .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
+         .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
+         .a();
+   }
+
+   private static <C, I extends auh<C>> asl<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, auh<Float> $$7) {
+      float $$8 = -0.5775F;
+      asl<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
+      asl<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
+      return asl.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
+   }
+
+   private static <C, I extends auh<C>> asl<C, I> a(I $$0, I $$1, float $$2, float $$3, auh<Float> $$4) {
+      float $$5 = dmm.a(0.4F);
+      float $$6 = dmm.a(0.56666666F);
+      float $$7 = ($$5 + $$6) / 2.0F;
+      asl.b<C, I> $$8 = asl.a($$1, $$4);
+      $$8.a($$5, 0.0F);
+      if ($$3 > 0.0F) {
+         $$8.a($$7, a($$0, $$3, $$4));
+      } else {
+         $$8.a($$7, 0.0F);
+      }
+
+      if ($$2 > 0.0F) {
+         $$8.a(1.0F, a($$0, $$2, $$4));
+      } else {
+         $$8.a(1.0F, 0.0F);
+      }
+
+      return $$8.a();
+   }
+
+   private static <C, I extends auh<C>> asl<C, I> a(I $$0, float $$1, auh<Float> $$2) {
+      float $$3 = 0.63F * $$1;
+      float $$4 = 0.3F * $$1;
+      return asl.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
+   }
+
+   private static <C, I extends auh<C>> asl<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, auh<Float> $$5) {
+      asl<C, I> $$6 = asl.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
+      asl.b<C, I> $$7 = asl.<C, I>a($$0, $$5)
+         .a(-0.6F, $$6)
+         .a(-0.5F, asl.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
+         .a(-0.35F, $$6)
+         .a(-0.25F, $$6)
+         .a(-0.1F, asl.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
+         .a(0.03F, $$6);
+      if ($$4) {
+         asl<C, I> $$8 = asl.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
+         asl<C, I> $$9 = asl.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
+         $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
+      } else {
+         asl<C, I> $$10 = asl.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
+         asl<C, I> $$11 = asl.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
+         $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
+      }
+
+      return $$7.a();
+   }
+
+   private static float a(float $$0, float $$1, float $$2, float $$3) {
+      return ($$1 - $$0) / ($$3 - $$2);
+   }
+
+   private static <C, I extends auh<C>> asl<C, I> a(I $$0, float $$1, boolean $$2, auh<Float> $$3) {
+      asl.b<C, I> $$4 = asl.a($$0, $$3);
+      float $$5 = -0.7F;
+      float $$6 = -1.0F;
+      float $$7 = a(-1.0F, $$1, -0.7F);
+      float $$8 = 1.0F;
+      float $$9 = a(1.0F, $$1, -0.7F);
+      float $$10 = a($$1);
+      float $$11 = -0.65F;
+      if (-0.65F < $$10 && $$10 < 1.0F) {
+         float $$12 = a(-0.65F, $$1, -0.7F);
+         float $$13 = -0.75F;
+         float $$14 = a(-0.75F, $$1, -0.7F);
+         float $$15 = a($$7, $$14, -1.0F, -0.75F);
+         $$4.a(-1.0F, $$7, $$15);
+         $$4.a(-0.75F, $$14);
+         $$4.a(-0.65F, $$12);
+         float $$16 = a($$10, $$1, -0.7F);
+         float $$17 = a($$16, $$9, $$10, 1.0F);
+         float $$18 = 0.01F;
+         $$4.a($$10 - 0.01F, $$16);
+         $$4.a($$10, $$16, $$17);
+         $$4.a(1.0F, $$9, $$17);
+      } else {
+         float $$19 = a($$7, $$9, -1.0F, 1.0F);
+         if ($$2) {
+            $$4.a(-1.0F, Math.max(0.2F, $$7));
+            $$4.a(0.0F, ati.i(0.5F, $$7, $$9), $$19);
+         } else {
+            $$4.a(-1.0F, $$7, $$19);
+         }
+
+         $$4.a(1.0F, $$9, $$19);
+      }
+
+      return $$4.a();
+   }
+
+   private static float a(float $$0, float $$1, float $$2) {
+      float $$3 = 1.17F;
+      float $$4 = 0.46082947F;
+      float $$5 = 1.0F - (1.0F - $$1) * 0.5F;
+      float $$6 = 0.5F * (1.0F - $$1);
+      float $$7 = ($$0 + 1.17F) * 0.46082947F;
+      float $$8 = $$7 * $$5 - $$6;
+      return $$0 < $$2 ? Math.max($$8, -0.2222F) : Math.max($$8, 0.0F);
+   }
+
+   private static float a(float $$0) {
+      float $$1 = 1.17F;
+      float $$2 = 0.46082947F;
+      float $$3 = 1.0F - (1.0F - $$0) * 0.5F;
+      float $$4 = 0.5F * (1.0F - $$0);
+      return $$4 / (0.46082947F * $$3) - 1.17F;
+   }
+
+   public static <C, I extends auh<C>> asl<C, I> a(
+      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, auh<Float> $$10
    ) {
-      csd.a $$10 = new csd.a().b($$3).c($$4).a(12638463).d(a($$1)).a(crv.b).a($$9);
-      if ($$5 != null) {
-         $$10.f($$5);
+      float $$11 = 0.6F;
+      float $$12 = 0.5F;
+      float $$13 = 0.5F;
+      asl<C, I> $$14 = a($$1, ati.i($$5, 0.6F, 1.5F), $$9, $$10);
+      asl<C, I> $$15 = a($$1, ati.i($$5, 0.6F, 1.0F), $$9, $$10);
+      asl<C, I> $$16 = a($$1, $$5, $$9, $$10);
+      asl<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, ati.i(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
+      asl<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
+      asl<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
+      asl<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
+      asl<C, I> $$21 = asl.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
+      asl<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
+      asl.b<C, I> $$23 = asl.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
+      if ($$8) {
+         $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
       }
 
-      if ($$6 != null) {
-         $$10.e($$6);
-      }
-
-      return new crx.a().a($$0).a($$1).b($$2).a($$10.a()).a($$7.a()).a($$8.a()).a();
+      $$23.a(0.7F, $$22);
+      return $$23.a();
    }
 
-   private static void a(cry.a $$0) {
-      on.a($$0);
-      on.aw($$0);
-      on.b($$0);
-      on.c($$0);
-      on.ap($$0);
-      on.at($$0);
-   }
-
-   public static crx a(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2) {
-      csj.a $$3 = new csj.a();
-      on.a($$3);
-      $$3.a(bkm.b, new csj.c(bjx.bn, 8, 4, 4));
-      $$3.a(bkm.b, new csj.c(bjx.aC, 4, 2, 3));
-      $$3.a(bkm.b, new csj.c(bjx.N, 8, 2, 4));
-      if ($$2) {
-         on.c($$3);
-      } else {
-         on.b($$3);
-         on.a($$3, 100, 25, 100, false);
-      }
-
-      cry.a $$4 = new cry.a($$0, $$1);
-      a($$4);
-      on.m($$4);
-      on.n($$4);
-      on.f($$4);
-      on.j($$4);
-      $$4.a(dlg.b.j, $$2 ? qf.ar : qf.as);
-      on.V($$4);
-      on.U($$4);
-      on.ac($$4);
-      on.ad($$4);
-      on.p($$4);
-      aqa $$5 = aqb.a(aqd.oF);
-      return a(true, $$2 ? 0.25F : 0.3F, 0.8F, $$3, $$4, $$5);
-   }
-
-   public static crx a(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      on.i($$2);
-      return a($$0, $$1, 0.8F, false, true, false, $$2, aqb.a(aqd.oS));
-   }
-
-   public static crx b(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      on.i($$2);
-      $$2.a(bkm.b, new csj.c(bjx.at, 40, 1, 2)).a(bkm.a, new csj.c(bjx.aq, 2, 1, 3)).a(bkm.b, new csj.c(bjx.as, 1, 1, 2));
-      return a($$0, $$1, 0.9F, false, false, true, $$2, aqb.a(aqd.oR));
-   }
-
-   public static crx c(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      on.i($$2);
-      $$2.a(bkm.b, new csj.c(bjx.at, 40, 1, 2)).a(bkm.b, new csj.c(bjx.as, 80, 1, 2)).a(bkm.a, new csj.c(bjx.aq, 2, 1, 1));
-      return a($$0, $$1, 0.9F, true, false, true, $$2, aqb.a(aqd.oT));
-   }
-
-   private static crx a(ic<dve> $$0, ic<dnn<?>> $$1, float $$2, boolean $$3, boolean $$4, boolean $$5, csj.a $$6, aqa $$7) {
-      cry.a $$8 = new cry.a($$0, $$1);
-      a($$8);
-      on.f($$8);
-      on.j($$8);
-      if ($$3) {
-         on.r($$8);
-      } else {
-         if ($$5) {
-            on.q($$8);
-         }
-
-         if ($$4) {
-            on.F($$8);
-         } else {
-            on.E($$8);
-         }
-      }
-
-      on.Y($$8);
-      on.I($$8);
-      on.ac($$8);
-      on.ad($$8);
-      on.ah($$8);
-      if ($$4) {
-         on.ag($$8);
-      } else {
-         on.af($$8);
-      }
-
-      return a(true, 0.95F, $$2, $$6, $$8, $$7);
-   }
-
-   public static crx b(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2) {
-      csj.a $$3 = new csj.a();
-      on.a($$3);
-      $$3.a(bkm.b, new csj.c(bjx.aj, 5, 4, 6));
-      on.c($$3);
-      cry.a $$4 = new cry.a($$0, $$1);
-      a($$4);
-      on.f($$4);
-      on.j($$4);
-      if ($$2) {
-         on.D($$4);
-      } else {
-         on.C($$4);
-      }
-
-      on.V($$4);
-      on.Z($$4);
-      on.ac($$4);
-      on.ad($$4);
-      on.h($$4);
-      on.i($$4);
-      return a(true, 0.2F, 0.3F, $$3, $$4, d);
-   }
-
-   public static crx d(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      on.f($$2);
-      cry.a $$3 = new cry.a($$0, $$1);
-      on.al($$3);
-      a($$3);
-      on.f($$3);
-      on.j($$3);
-      on.V($$3);
-      on.Z($$3);
-      on.T($$3);
-      on.ac($$3);
-      on.ai($$3);
-      on.ak($$3);
-      return a(false, 2.0F, 0.0F, $$2, $$3, aqb.a(aqd.oP));
-   }
-
-   public static crx a(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2, boolean $$3, boolean $$4) {
-      csj.a $$5 = new csj.a();
-      cry.a $$6 = new cry.a($$0, $$1);
-      a($$6);
-      if ($$3) {
-         $$5.a(0.07F);
-         on.e($$5);
-         if ($$4) {
-            $$6.a(dlg.b.e, qa.a);
-            $$6.a(dlg.b.e, qa.b);
-         }
-      } else {
-         on.d($$5);
-         on.ab($$6);
-         if ($$2) {
-            $$6.a(dlg.b.j, qf.d);
-         }
-      }
-
-      on.f($$6);
-      on.j($$6);
-      if ($$3) {
-         on.H($$6);
-         on.V($$6);
-         on.Z($$6);
-      } else {
-         on.S($$6);
-      }
-
-      on.ac($$6);
-      if ($$2) {
-         $$6.a(dlg.b.j, qf.E);
-         $$6.a(dlg.b.j, qf.e);
-      } else {
-         on.ad($$6);
-      }
-
-      float $$7 = $$3 ? 0.0F : 0.8F;
-      return a(true, $$7, $$3 ? 0.5F : 0.4F, $$5, $$6, d);
-   }
-
-   public static crx e(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      on.h($$2);
-      cry.a $$3 = new cry.a($$0, $$1);
-      a($$3);
-      on.f($$3);
-      on.j($$3);
-      on.R($$3);
-      on.ad($$3);
-      return a(true, 0.9F, 1.0F, $$2, $$3, d);
-   }
-
-   public static crx a(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2, boolean $$3) {
-      cry.a $$4 = new cry.a($$0, $$1);
-      a($$4);
-      if (!$$2) {
-         on.J($$4);
-      }
-
-      on.f($$4);
-      on.j($$4);
-      if ($$2) {
-         on.z($$4);
-         on.V($$4);
-         on.K($$4);
-      } else {
-         on.y($$4);
-         on.Y($$4);
-         on.L($$4);
-      }
-
-      on.ac($$4);
-      on.ad($$4);
-      csj.a $$5 = new csj.a();
-      on.a($$5);
-      $$5.a(bkm.b, new csj.c(bjx.Y, 1, 2, 6)).a(bkm.b, new csj.c(bjx.w, 1, 1, 1));
-      on.c($$5);
-      if ($$3) {
-         $$5.a(bkm.b, new csj.c(bjx.aj, 8, 4, 4));
-      }
-
-      return a(false, 2.0F, 0.0F, $$5, $$4, d);
-   }
-
-   public static crx c(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2) {
-      csj.a $$3 = new csj.a();
-      on.c($$3);
-      cry.a $$4 = new cry.a($$0, $$1);
-      a($$4);
-      on.f($$4);
-      on.g($$4);
-      on.j($$4);
-      if ($$2) {
-         on.G($$4);
-      }
-
-      on.M($$4);
-      on.ac($$4);
-      on.ae($$4);
-      return new crx.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(new csd.a().b(4159204).c(329011).a(12638463).d(a(2.0F)).e(10387789).f(9470285).a(crv.b).a(aqb.a(aqd.oQ)).a())
-         .a($$3.a())
-         .a($$4.a())
+   private static <C, I extends auh<C>> asl<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, auh<Float> $$7) {
+      float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
+      float $$9 = 5.0F * ($$3 - $$2);
+      return asl.<C, I>a($$0, $$7)
+         .a(-1.0F, $$1, $$8)
+         .a(-0.4F, $$2, Math.min($$8, $$9))
+         .a(0.0F, $$3, $$9)
+         .a(0.4F, $$4, 2.0F * ($$4 - $$3))
+         .a(1.0F, $$5, 0.7F * ($$5 - $$4))
          .a();
-   }
-
-   private static crx a(csj.a $$0, int $$1, int $$2, cry.a $$3) {
-      return a(true, 0.5F, 0.5F, $$1, $$2, null, null, $$0, $$3, d);
-   }
-
-   private static cry.a s(ic<dve> $$0, ic<dnn<?>> $$1) {
-      cry.a $$2 = new cry.a($$0, $$1);
-      a($$2);
-      on.f($$2);
-      on.j($$2);
-      on.u($$2);
-      on.V($$2);
-      on.Z($$2);
-      on.ac($$2);
-      on.ad($$2);
-      return $$2;
-   }
-
-   public static crx d(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2) {
-      csj.a $$3 = new csj.a();
-      on.a($$3, 3, 4, 15);
-      $$3.a(bkm.g, new csj.c(bjx.aE, 15, 1, 5));
-      cry.a $$4 = s($$0, $$1);
-      $$4.a(dlg.b.j, $$2 ? px.h : px.c);
-      on.an($$4);
-      on.am($$4);
-      return a($$3, 4020182, 329011, $$4);
-   }
-
-   public static crx e(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2) {
-      csj.a $$3 = new csj.a();
-      on.a($$3, 1, 4, 10);
-      $$3.a(bkm.f, new csj.c(bjx.v, 1, 1, 2));
-      cry.a $$4 = s($$0, $$1);
-      $$4.a(dlg.b.j, $$2 ? px.g : px.b);
-      on.an($$4);
-      on.am($$4);
-      return a($$3, 4159204, 329011, $$4);
-   }
-
-   public static crx f(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2) {
-      csj.a $$3 = new csj.a();
-      if ($$2) {
-         on.a($$3, 8, 4, 8);
-      } else {
-         on.a($$3, 10, 2, 15);
-      }
-
-      $$3.a(bkm.g, new csj.c(bjx.aB, 5, 1, 3)).a(bkm.g, new csj.c(bjx.bc, 25, 8, 8)).a(bkm.f, new csj.c(bjx.v, 2, 1, 2));
-      cry.a $$4 = s($$0, $$1);
-      $$4.a(dlg.b.j, $$2 ? px.f : px.a);
-      if ($$2) {
-         on.an($$4);
-      }
-
-      on.ao($$4);
-      return a($$3, 4566514, 267827, $$4);
-   }
-
-   public static crx f(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a().a(bkm.g, new csj.c(bjx.aB, 15, 1, 3));
-      on.a($$2, 10, 4);
-      cry.a $$3 = s($$0, $$1).a(dlg.b.j, px.m).a(dlg.b.j, px.a).a(dlg.b.j, px.j);
-      return a($$2, 4445678, 270131, $$3);
-   }
-
-   public static crx g(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2) {
-      csj.a $$3 = new csj.a().a(bkm.f, new csj.c(bjx.aT, 1, 1, 4)).a(bkm.g, new csj.c(bjx.aE, 15, 1, 5)).a(bkm.b, new csj.c(bjx.az, 1, 1, 2));
-      on.c($$3);
-      $$3.a(bkm.a, new csj.c(bjx.y, 5, 1, 1));
-      float $$4 = $$2 ? 0.5F : 0.0F;
-      cry.a $$5 = new cry.a($$0, $$1);
-      on.ar($$5);
-      a($$5);
-      on.as($$5);
-      on.f($$5);
-      on.j($$5);
-      on.u($$5);
-      on.V($$5);
-      on.Z($$5);
-      on.ac($$5);
-      on.ad($$5);
-      return new crx.a().a(true).a($$4).a(crx.d.b).b(0.5F).a(new csd.a().b(3750089).c(329011).a(12638463).d(a($$4)).a(crv.b).a()).a($$3.a()).a($$5.a()).a();
-   }
-
-   public static crx b(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2, boolean $$3, boolean $$4) {
-      cry.a $$5 = new cry.a($$0, $$1);
-      a($$5);
-      aqa $$6;
-      if ($$4) {
-         $$6 = aqb.a(aqd.oO);
-         $$5.a(dlg.b.j, qf.Y);
-      } else {
-         $$6 = aqb.a(aqd.oE);
-         on.N($$5);
-      }
-
-      on.f($$5);
-      on.j($$5);
-      if ($$4) {
-         $$5.a(dlg.b.j, qf.aa);
-         $$5.a(dlg.b.j, qf.R);
-         on.Z($$5);
-      } else {
-         if ($$2) {
-            if ($$3) {
-               on.x($$5);
-            } else {
-               on.v($$5);
-            }
-         } else {
-            on.w($$5);
-         }
-
-         on.V($$5);
-         on.O($$5);
-      }
-
-      on.ac($$5);
-      on.ad($$5);
-      csj.a $$8 = new csj.a();
-      on.a($$8);
-      on.c($$8);
-      if ($$4) {
-         $$8.a(bkm.b, new csj.c(bjx.aC, 4, 2, 3));
-      } else if (!$$2) {
-         $$8.a(bkm.b, new csj.c(bjx.bn, 5, 4, 4));
-      }
-
-      float $$9 = $$2 ? 0.6F : 0.7F;
-      return a(true, $$9, $$2 ? 0.6F : 0.8F, $$8, $$5, $$6);
-   }
-
-   public static crx h(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2) {
-      csj.a $$3 = new csj.a();
-      on.a($$3);
-      $$3.a(bkm.b, new csj.c(bjx.bn, 8, 4, 4)).a(bkm.b, new csj.c(bjx.aC, 4, 2, 3)).a(bkm.b, new csj.c(bjx.N, 8, 2, 4));
-      on.c($$3);
-      float $$4 = $$2 ? -0.5F : 0.25F;
-      cry.a $$5 = new cry.a($$0, $$1);
-      a($$5);
-      on.n($$5);
-      on.f($$5);
-      on.j($$5);
-      on.s($$5);
-      on.V($$5);
-      on.aa($$5);
-      on.ad($$5);
-      if ($$2) {
-         on.o($$5);
-      } else {
-         on.p($$5);
-      }
-
-      return a(true, $$4, $$2 ? 0.4F : 0.8F, $$2 ? 4020182 : 4159204, 329011, null, null, $$3, $$5, d);
-   }
-
-   public static crx g(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      on.a($$2);
-      on.c($$2);
-      cry.a $$3 = new cry.a($$0, $$1);
-      a($$3);
-      $$3.a(dlg.b.j, qf.X);
-      on.N($$3);
-      on.f($$3);
-      on.j($$3);
-      on.V($$3);
-      on.O($$3);
-      on.ac($$3);
-      on.ad($$3);
-      aqa $$4 = aqb.a(aqd.oE);
-      return new crx.a()
-         .a(true)
-         .a(0.7F)
-         .b(0.8F)
-         .a(new csd.a().b(4159204).c(329011).a(12638463).d(a(0.7F)).a(csd.b.b).a(crv.b).a($$4).a())
-         .a($$2.a())
-         .a($$3.a())
-         .a();
-   }
-
-   public static crx h(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      on.a($$2);
-      on.c($$2);
-      $$2.a(bkm.a, new csj.c(bjx.aL, 1, 1, 1));
-      $$2.a(bkm.b, new csj.c(bjx.O, 10, 2, 5));
-      cry.a $$3 = new cry.a($$0, $$1);
-      on.al($$3);
-      a($$3);
-      on.f($$3);
-      on.k($$3);
-      on.P($$3);
-      on.ac($$3);
-      on.aj($$3);
-      $$3.a(dlg.b.j, px.e);
-      aqa $$4 = aqb.a(aqd.oD);
-      return new crx.a()
-         .a(true)
-         .a(0.8F)
-         .b(0.9F)
-         .a(new csd.a().b(6388580).c(2302743).a(12638463).d(a(0.8F)).e(6975545).a(csd.b.c).a(crv.b).a($$4).a())
-         .a($$2.a())
-         .a($$3.a())
-         .a();
-   }
-
-   public static crx i(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      on.c($$2);
-      $$2.a(bkm.a, new csj.c(bjx.aL, 1, 1, 1));
-      $$2.a(bkm.b, new csj.c(bjx.O, 10, 2, 5));
-      $$2.a(bkm.g, new csj.c(bjx.bc, 25, 8, 8));
-      cry.a $$3 = new cry.a($$0, $$1);
-      on.al($$3);
-      a($$3);
-      on.f($$3);
-      on.l($$3);
-      on.Q($$3);
-      $$3.a(dlg.b.j, px.e);
-      aqa $$4 = aqb.a(aqd.oD);
-      return new crx.a()
-         .a(true)
-         .a(0.8F)
-         .b(0.9F)
-         .a(new csd.a().b(3832426).c(5077600).a(12638463).d(a(0.8F)).e(9285927).a(csd.b.c).a(crv.b).a($$4).a())
-         .a($$2.a())
-         .a($$3.a())
-         .a();
-   }
-
-   public static crx i(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2) {
-      csj.a $$3 = new csj.a().a(bkm.f, new csj.c(bjx.aT, 2, 1, 4)).a(bkm.g, new csj.c(bjx.aE, 5, 1, 5));
-      on.c($$3);
-      $$3.a(bkm.a, new csj.c(bjx.y, $$2 ? 1 : 100, 1, 1));
-      cry.a $$4 = new cry.a($$0, $$1);
-      a($$4);
-      on.f($$4);
-      on.j($$4);
-      on.u($$4);
-      on.V($$4);
-      on.Z($$4);
-      on.ac($$4);
-      on.ad($$4);
-      if (!$$2) {
-         $$4.a(dlg.b.j, px.d);
-      }
-
-      float $$5 = $$2 ? 0.0F : 0.5F;
-      return a(true, $$5, 0.5F, $$2 ? 3750089 : 4159204, 329011, null, null, $$3, $$4, d);
-   }
-
-   public static crx b(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2, boolean $$3) {
-      csj.a $$4 = new csj.a();
-      boolean $$5 = !$$3 && !$$2;
-      if ($$5) {
-         $$4.a(bkm.b, new csj.c(bjx.bd, 5, 2, 5));
-      }
-
-      on.c($$4);
-      cry.a $$6 = new cry.a($$0, $$1);
-      a($$6);
-      on.f($$6);
-      on.j($$6);
-      on.V($$6);
-      on.Z($$6);
-      on.ac($$6);
-      on.ad($$6);
-      float $$7;
-      if ($$2) {
-         $$7 = 0.05F;
-      } else if ($$3) {
-         $$7 = 0.2F;
-      } else {
-         $$7 = 0.8F;
-      }
-
-      return a(true, $$7, $$5 ? 0.4F : 0.3F, $$2 ? 4020182 : 4159204, 329011, null, null, $$4, $$6, d);
-   }
-
-   public static crx j(ic<dve> $$0, ic<dnn<?>> $$1) {
-      cry.a $$2 = new cry.a($$0, $$1);
-      $$2.a(dlg.b.k, qa.n);
-      return a(false, 0.5F, 0.5F, new csj.a(), $$2, d);
-   }
-
-   public static crx j(ic<dve> $$0, ic<dnn<?>> $$1, boolean $$2) {
-      cry.a $$3 = new cry.a($$0, $$1);
-      csj.a $$4 = new csj.a();
-      $$4.a(bkm.b, new csj.c($$2 ? bjx.av : bjx.w, 1, 1, 2)).a(bkm.b, new csj.c(bjx.aC, 2, 2, 6)).a(bkm.b, new csj.c(bjx.aF, 2, 2, 4));
-      on.c($$4);
-      a($$3);
-      on.ab($$3);
-      on.f($$3);
-      on.j($$3);
-      if ($$2) {
-         on.W($$3);
-      } else {
-         on.X($$3);
-      }
-
-      on.h($$3);
-      on.i($$3);
-      aqa $$5 = aqb.a($$2 ? aqd.oH : aqd.oG);
-      return $$2 ? a(true, 0.5F, 0.8F, 6141935, 6141935, 11983713, 11983713, $$4, $$3, $$5) : a(true, 0.5F, 0.8F, 937679, 329011, null, null, $$4, $$3, $$5);
-   }
-
-   public static crx k(ic<dve> $$0, ic<dnn<?>> $$1) {
-      cry.a $$2 = new cry.a($$0, $$1);
-      csj.a $$3 = new csj.a();
-      $$3.a(bkm.b, new csj.c(bjx.U, 5, 1, 3));
-      on.c($$3);
-      a($$2);
-      on.aq($$2);
-      on.f($$2);
-      on.j($$2);
-      on.h($$2);
-      on.i($$2);
-      aqa $$4 = aqb.a(aqd.oJ);
-      return a(true, -0.7F, 0.9F, $$3, $$2, $$4);
-   }
-
-   public static crx l(ic<dve> $$0, ic<dnn<?>> $$1) {
-      cry.a $$2 = new cry.a($$0, $$1);
-      csj.a $$3 = new csj.a();
-      $$3.a(bkm.b, new csj.c(bjx.U, 5, 1, 3));
-      on.c($$3);
-      a($$2);
-      on.aq($$2);
-      on.f($$2);
-      on.j($$2);
-      on.h($$2);
-      on.i($$2);
-      aqa $$4 = aqb.a(aqd.oB);
-      return a(true, -0.7F, 0.9F, $$3, $$2, $$4);
-   }
-
-   public static crx m(ic<dve> $$0, ic<dnn<?>> $$1) {
-      cry.a $$2 = new cry.a($$0, $$1);
-      csj.a $$3 = new csj.a();
-      on.c($$3);
-      a($$2);
-      on.f($$2);
-      on.j($$2);
-      on.h($$2);
-      on.i($$2);
-      aqa $$4 = aqb.a(aqd.oM);
-      return a(true, 1.0F, 0.3F, $$3, $$2, $$4);
-   }
-
-   public static crx n(ic<dve> $$0, ic<dnn<?>> $$1) {
-      cry.a $$2 = new cry.a($$0, $$1);
-      csj.a $$3 = new csj.a();
-      $$3.a(bkm.b, new csj.c(bjx.aC, 4, 2, 3)).a(bkm.b, new csj.c(bjx.U, 5, 1, 3));
-      on.c($$3);
-      a($$2);
-      on.aq($$2);
-      on.f($$2);
-      on.j($$2);
-      on.ad($$2);
-      on.h($$2);
-      on.i($$2);
-      aqa $$4 = aqb.a(aqd.oK);
-      return a(true, -0.3F, 0.9F, $$3, $$2, $$4);
-   }
-
-   public static crx o(ic<dve> $$0, ic<dnn<?>> $$1) {
-      cry.a $$2 = new cry.a($$0, $$1);
-      csj.a $$3 = new csj.a();
-      on.a($$3);
-      $$3.a(bkm.b, new csj.c(bjx.bn, 8, 4, 4)).a(bkm.b, new csj.c(bjx.aC, 4, 2, 3)).a(bkm.b, new csj.c(bjx.N, 8, 2, 4));
-      on.c($$3);
-      a($$2);
-      on.aq($$2);
-      on.f($$2);
-      on.j($$2);
-      on.t($$2);
-      on.ad($$2);
-      on.h($$2);
-      on.i($$2);
-      aqa $$4 = aqb.a(aqd.oA);
-      return a(true, -0.2F, 0.8F, $$3, $$2, $$4);
-   }
-
-   public static crx p(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      $$2.a(bkm.d, new csj.c(bjx.f, 10, 4, 6));
-      $$2.a(bkm.g, new csj.c(bjx.bc, 25, 8, 8));
-      on.c($$2);
-      cry.a $$3 = new cry.a($$0, $$1);
-      a($$3);
-      on.ab($$3);
-      on.f($$3);
-      on.B($$3);
-      on.j($$3);
-      on.A($$3);
-      aqa $$4 = aqb.a(aqd.oC);
-      return a(true, 0.5F, 0.5F, $$2, $$3, $$4);
-   }
-
-   public static crx q(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      on.g($$2);
-      cry.a $$3 = new cry.a($$0, $$1);
-      a($$3);
-      on.ab($$3);
-      on.a($$3, true);
-      on.j($$3);
-      on.S($$3);
-      on.ac($$3);
-      on.ad($$3);
-      on.d($$3);
-      aqa $$4 = aqb.a(aqd.oz);
-      return a(true, 0.8F, 0.4F, $$2, $$3, $$4);
-   }
-
-   public static crx r(ic<dve> $$0, ic<dnn<?>> $$1) {
-      csj.a $$2 = new csj.a();
-      cry.a $$3 = new cry.a($$0, $$1);
-      $$3.a(dlg.a.a, op.a);
-      $$3.a(dlg.a.a, op.b);
-      $$3.a(dlg.a.a, op.c);
-      on.aw($$3);
-      on.b($$3);
-      on.c($$3);
-      on.at($$3);
-      on.ab($$3);
-      on.f($$3);
-      on.j($$3);
-      on.S($$3);
-      on.ac($$3);
-      on.ad($$3);
-      on.e($$3);
-      aqa $$4 = aqb.a(aqd.oy);
-      return a(true, 0.8F, 0.4F, $$2, $$3, $$4);
    }
 }

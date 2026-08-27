@@ -1,28 +1,78 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public record vs(afw d) implements vk {
-   public static final MapCodec<vs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(afw.a.fieldOf("storage").forGetter(vs::b)).apply($$0, vs::new));
-   public static final vk.a<vs> b = new vk.a<>(a, "storage");
+public record vs(String d, @Nullable fo e) implements vt {
+   public static final MapCodec<vs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(vs::b)).apply($$0, vs::new));
+   public static final vt.a<vs> b = new vt.a<>(a, "block");
 
-   @Override
-   public Stream<rt> a(du $$0) {
-      rt $$1 = $$0.m().aG().a(this.d);
-      return Stream.of($$1);
+   public vs(String $$0) {
+      this($$0, a($$0));
+   }
+
+   @Nullable
+   private static fo a(String $$0) {
+      try {
+         return fm.a().a(new StringReader($$0));
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
    }
 
    @Override
-   public vk.a<?> a() {
+   public Stream<rz> a(du $$0) {
+      if (this.e != null) {
+         ama $$1 = $$0.f();
+         ht $$2 = this.e.c($$0);
+         if ($$1.o($$2)) {
+            der $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.m());
+            }
+         }
+      }
+
+      return Stream.empty();
+   }
+
+   @Override
+   public vt.a<?> a() {
       return b;
    }
 
    @Override
    public String toString() {
-      return "storage=" + this.d;
+      return "block=" + this.d;
    }
 
-   public afw b() {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof vs $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   public String b() {
       return this.d;
+   }
+
+   @Nullable
+   public fo c() {
+      return this.e;
    }
 }

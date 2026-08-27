@@ -1,59 +1,35 @@
-public class bqc implements bqd {
-   private final bkl a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.Optional;
 
-   public bqc(bkl $$0) {
+public final class bqc<F extends K1, Value> {
+   private final bly<?> a;
+   private final btz<Value> b;
+   private final App<F, Value> c;
+
+   public bqc(bly<?> $$0, btz<Value> $$1, App<F, Value> $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public void a() {
-      if (this.f()) {
-         this.a.aU = this.a.dB();
-         this.c();
-         this.f = this.a.aW;
-         this.e = 0;
-      } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aW - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aW;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
-         }
-      }
+   public App<F, Value> a() {
+      return this.c;
    }
 
-   private void b() {
-      this.a.aU = asy.c(this.a.aU, this.a.aW, (float)this.a.Z());
+   public void a(Value $$0) {
+      this.a.a(this.b, Optional.of($$0));
    }
 
-   private void c() {
-      this.a.aW = asy.c(this.a.aW, this.a.aU, (float)this.a.Z());
+   public void a(Optional<Value> $$0) {
+      this.a.a(this.b, $$0);
    }
 
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = asy.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.Z() * (1.0F - $$1);
-      this.a.aU = asy.c(this.a.aU, this.a.aW, $$2);
+   public void a(Value $$0, long $$1) {
+      this.a.a(this.b, $$0, $$1);
    }
 
-   private boolean e() {
-      return !(this.a.cQ() instanceof bkl);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dq() - this.a.K;
-      double $$1 = this.a.dw() - this.a.M;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+   public void b() {
+      this.a.b(this.b);
    }
 }

@@ -1,517 +1,126 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.util.Either;
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class alo extends dib {
-   private static final List<dic> b = dic.a();
-   private final ali c;
-   final alq d;
-   final Thread e;
-   final alt f;
-   private final alo.b g;
-   public final ala a;
-   private final ecu h;
-   private long i;
-   private boolean j = true;
-   private boolean k = true;
-   private static final int l = 4;
-   private final long[] m = new long[4];
-   private final dic[] n = new dic[4];
-   private final dhx[] o = new dhx[4];
-   @Nullable
-   @aua
-   private crk.d p;
-
-   public alo(alq $$0, ecy.c $$1, DataFixer $$2, dzu $$3, Executor $$4, dhy $$5, int $$6, int $$7, boolean $$8, alz $$9, djr $$10, Supplier<ecu> $$11) {
-      this.d = $$0;
-      this.g = new alo.b($$0);
-      this.e = Thread.currentThread();
-      File $$12 = $$1.a($$0.ac()).resolve("data").toFile();
-      $$12.mkdirs();
-      this.h = new ecu($$12, $$2);
-      this.a = new ala($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
-      this.f = this.a.e();
-      this.c = this.a.j();
-      this.c.b($$7);
-      this.r();
-   }
-
-   public alt a() {
-      return this.f;
-   }
-
-   @Nullable
-   private aky b(long $$0) {
-      return this.a.b($$0);
-   }
-
-   public int b() {
-      return this.a.h();
-   }
-
-   private void a(long $$0, dhx $$1, dic $$2) {
-      for (int $$3 = 3; $$3 > 0; $$3--) {
-         this.m[$$3] = this.m[$$3 - 1];
-         this.n[$$3] = this.n[$$3 - 1];
-         this.o[$$3] = this.o[$$3 - 1];
+public interface alo {
+   alo a = new alo() {
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return false;
       }
 
-      this.m[0] = $$0;
-      this.n[0] = $$2;
-      this.o[0] = $$1;
-   }
-
-   @Nullable
-   @Override
-   public dhx a(int $$0, int $$1, dic $$2, boolean $$3) {
-      if (Thread.currentThread() != this.e) {
-         return CompletableFuture.<dhx>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
-      } else {
-         bes $$4 = this.d.ad();
-         $$4.d("getChunk");
-         long $$5 = cqg.c($$0, $$1);
-
-         for (int $$6 = 0; $$6 < 4; $$6++) {
-            if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
-               dhx $$7 = this.o[$$6];
-               if ($$7 != null || !$$3) {
-                  return $$7;
-               }
-            }
-         }
-
-         $$4.d("getChunkCacheMiss");
-         CompletableFuture<Either<dhx, aky.a>> $$8 = this.c($$0, $$1, $$2, $$3);
-         this.g.c($$8::isDone);
-         dhx $$9 = (dhx)$$8.join().map($$0x -> $$0x, $$1x -> {
-            if ($$3) {
-               throw (IllegalStateException)ac.b(new IllegalStateException("Chunk not there when requested: " + $$1x));
-            } else {
-               return null;
-            }
-         });
-         this.a($$5, $$9, $$2);
-         return $$9;
+      @Override
+      public void a(Consumer<cqz> $$0) {
       }
+   };
+
+   static alo a(cqz $$0, int $$1) {
+      return new alo.a($$0, $$1);
    }
 
-   @Nullable
-   @Override
-   public dii a(int $$0, int $$1) {
-      if (Thread.currentThread() != this.e) {
-         return null;
-      } else {
-         this.d.ad().d("getChunkNow");
-         long $$2 = cqg.c($$0, $$1);
+   static void a(alo $$0, alo $$1, Consumer<cqz> $$2, Consumer<cqz> $$3) {
+      if (!$$0.equals($$1)) {
+         if ($$0 instanceof alo.a $$4 && $$1 instanceof alo.a $$5 && $$4.a($$5)) {
+            int $$6 = Math.min($$4.c(), $$5.c());
+            int $$7 = Math.min($$4.d(), $$5.d());
+            int $$8 = Math.max($$4.e(), $$5.e());
+            int $$9 = Math.max($$4.f(), $$5.f());
 
-         for (int $$3 = 0; $$3 < 4; $$3++) {
-            if ($$2 == this.m[$$3] && this.n[$$3] == dic.n) {
-               dhx $$4 = this.o[$$3];
-               return $$4 instanceof dii ? (dii)$$4 : null;
-            }
-         }
-
-         aky $$5 = this.b($$2);
-         if ($$5 == null) {
-            return null;
-         } else {
-            Either<dhx, aky.a> $$6 = $$5.b(dic.n).getNow(null);
-            if ($$6 == null) {
-               return null;
-            } else {
-               dhx $$7 = (dhx)$$6.left().orElse(null);
-               if ($$7 != null) {
-                  this.a($$2, $$7, dic.n);
-                  if ($$7 instanceof dii) {
-                     return (dii)$$7;
+            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
+                  boolean $$12 = $$4.a($$10, $$11);
+                  boolean $$13 = $$5.a($$10, $$11);
+                  if ($$12 != $$13) {
+                     if ($$13) {
+                        $$2.accept(new cqz($$10, $$11));
+                     } else {
+                        $$3.accept(new cqz($$10, $$11));
+                     }
                   }
                }
-
-               return null;
-            }
-         }
-      }
-   }
-
-   private void r() {
-      Arrays.fill(this.m, cqg.a);
-      Arrays.fill(this.n, null);
-      Arrays.fill(this.o, null);
-   }
-
-   public CompletableFuture<Either<dhx, aky.a>> b(int $$0, int $$1, dic $$2, boolean $$3) {
-      boolean $$4 = Thread.currentThread() == this.e;
-      CompletableFuture<Either<dhx, aky.a>> $$5;
-      if ($$4) {
-         $$5 = this.c($$0, $$1, $$2, $$3);
-         this.g.c($$5::isDone);
-      } else {
-         $$5 = CompletableFuture.<CompletableFuture<Either<dhx, aky.a>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
-      }
-
-      return $$5;
-   }
-
-   private CompletableFuture<Either<dhx, aky.a>> c(int $$0, int $$1, dic $$2, boolean $$3) {
-      cqg $$4 = new cqg($$0, $$1);
-      long $$5 = $$4.a();
-      int $$6 = akz.a($$2);
-      aky $$7 = this.b($$5);
-      if ($$3) {
-         this.c.a(alv.h, $$4, $$6, $$4);
-         if (this.a($$7, $$6)) {
-            bes $$8 = this.d.ad();
-            $$8.a("chunkLoad");
-            this.s();
-            $$7 = this.b($$5);
-            $$8.c();
-            if (this.a($$7, $$6)) {
-               throw (IllegalStateException)ac.b(new IllegalStateException("No chunk holder after ticket has been added"));
-            }
-         }
-      }
-
-      return this.a($$7, $$6) ? aky.b : $$7.a($$2, this.a);
-   }
-
-   private boolean a(@Nullable aky $$0, int $$1) {
-      return $$0 == null || $$0.m() > $$1;
-   }
-
-   @Override
-   public boolean b(int $$0, int $$1) {
-      aky $$2 = this.b(new cqg($$0, $$1).a());
-      int $$3 = akz.a(dic.n);
-      return !this.a($$2, $$3);
-   }
-
-   @Nullable
-   @Override
-   public dik c(int $$0, int $$1) {
-      long $$2 = cqg.c($$0, $$1);
-      aky $$3 = this.b($$2);
-      if ($$3 == null) {
-         return null;
-      } else {
-         int $$4 = b.size() - 1;
-
-         while (true) {
-            dic $$5 = b.get($$4);
-            Optional<dhx> $$6 = $$3.a($$5).getNow(aky.a).left();
-            if ($$6.isPresent()) {
-               return $$6.get();
             }
 
-            if ($$5 == dic.k.d()) {
-               return null;
-            }
-
-            $$4--;
-         }
-      }
-   }
-
-   public cqz c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.g.x();
-   }
-
-   boolean s() {
-      boolean $$0 = this.c.a(this.a);
-      boolean $$1 = this.a.g();
-      if (!$$0 && !$$1) {
-         return false;
-      } else {
-         this.r();
-         return true;
-      }
-   }
-
-   public boolean a(long $$0) {
-      aky $$1 = this.b($$0);
-      if ($$1 == null) {
-         return false;
-      } else if (!this.d.a($$0)) {
-         return false;
-      } else {
-         Either<dii, aky.a> $$2 = $$1.a().getNow(null);
-         return $$2 != null && $$2.left().isPresent();
-      }
-   }
-
-   public void a(boolean $$0) {
-      this.s();
-      this.a.a($$0);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.a(true);
-      this.f.close();
-      this.a.close();
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0, boolean $$1) {
-      this.d.ad().a("purge");
-      this.c.a();
-      this.s();
-      this.d.ad().b("chunks");
-      if ($$1) {
-         this.t();
-      }
-
-      this.d.ad().b("unload");
-      this.a.a($$0);
-      this.d.ad().c();
-      this.r();
-   }
-
-   private void t() {
-      long $$0 = this.d.V();
-      long $$1 = $$0 - this.i;
-      this.i = $$0;
-      boolean $$2 = this.d.af();
-      if ($$2) {
-         this.a.l();
-      } else {
-         ecv $$3 = this.d.A_();
-         bes $$4 = this.d.ad();
-         $$4.a("pollingChunks");
-         int $$5 = this.d.X().c(cqv.n);
-         boolean $$6 = $$3.e() % 400L == 0L;
-         $$4.a("naturalSpawnCount");
-         int $$7 = this.c.b();
-         crk.d $$8 = crk.a($$7, this.d.y(), this::a, new crj(this.a));
-         this.p = $$8;
-         $$4.b("filteringLoadedChunks");
-         List<alo.a> $$9 = Lists.newArrayListWithCapacity($$7);
-
-         for (aky $$10 : this.a.k()) {
-            dii $$11 = $$10.d();
-            if ($$11 != null) {
-               $$9.add(new alo.a($$11, $$10));
-            }
+            return;
          }
 
-         $$4.b("spawnAndTick");
-         boolean $$12 = this.d.X().b(cqv.e);
-         Collections.shuffle($$9);
+         $$0.a($$3);
+         $$1.a($$2);
+      }
+   }
 
-         for (alo.a $$13 : $$9) {
-            dii $$14 = $$13.a;
-            cqg $$15 = $$14.f();
-            if (this.d.a($$15) && this.a.c($$15)) {
-               $$14.a($$1);
-               if ($$12 && (this.j || this.k) && this.d.C_().a($$15)) {
-                  crk.a(this.d, $$14, $$8, this.k, this.j, $$6);
-               }
+   default boolean a(cqz $$0) {
+      return this.a($$0.e, $$0.f);
+   }
 
-               if (this.d.a($$15.a())) {
-                  this.d.a($$14, $$5);
+   default boolean a(int $$0, int $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   boolean a(int var1, int var2, boolean var3);
+
+   void a(Consumer<cqz> var1);
+
+   default boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      return a($$0, $$1, $$2, $$3, $$4, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
+      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
+      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
+      long $$9 = (long)Math.min($$6, $$7);
+      long $$10 = $$9 * $$9 + $$8 * $$8;
+      int $$11 = $$2 * $$2;
+      return $$10 < (long)$$11;
+   }
+
+   public static record a(cqz b, int c) implements alo {
+      int c() {
+         return this.b.e - this.c - 1;
+      }
+
+      int d() {
+         return this.b.f - this.c - 1;
+      }
+
+      int e() {
+         return this.b.e + this.c + 1;
+      }
+
+      int f() {
+         return this.b.f + this.c + 1;
+      }
+
+      @VisibleForTesting
+      protected boolean a(alo.a $$0) {
+         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return alo.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(Consumer<cqz> $$0) {
+         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
+            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
+               if (this.a($$1, $$2)) {
+                  $$0.accept(new cqz($$1, $$2));
                }
             }
          }
-
-         $$4.b("customSpawners");
-         if ($$12) {
-            this.d.a(this.j, this.k);
-         }
-
-         $$4.b("broadcast");
-         $$9.forEach($$0x -> $$0x.b.a($$0x.a));
-         $$4.c();
-         $$4.c();
-         this.a.l();
-      }
-   }
-
-   private void a(long $$0, Consumer<dii> $$1) {
-      aky $$2 = this.b($$0);
-      if ($$2 != null) {
-         $$2.c().getNow(aky.c).left().ifPresent($$1);
-      }
-   }
-
-   @Override
-   public String e() {
-      return Integer.toString(this.j());
-   }
-
-   @VisibleForTesting
-   public int f() {
-      return this.g.bm();
-   }
-
-   public dhy g() {
-      return this.a.a();
-   }
-
-   public dhz h() {
-      return this.a.b();
-   }
-
-   public dly i() {
-      return this.a.c();
-   }
-
-   @Override
-   public int j() {
-      return this.a.i();
-   }
-
-   public void a(ht $$0) {
-      int $$1 = iu.a($$0.u());
-      int $$2 = iu.a($$0.w());
-      aky $$3 = this.b(cqg.c($$1, $$2));
-      if ($$3 != null) {
-         $$3.a($$0);
-      }
-   }
-
-   @Override
-   public void a(cri $$0, iu $$1) {
-      this.g.execute(() -> {
-         aky $$2 = this.b($$1.r().a());
-         if ($$2 != null) {
-            $$2.a($$0, $$1.b());
-         }
-      });
-   }
-
-   public <T> void a(alv<T> $$0, cqg $$1, int $$2, T $$3) {
-      this.c.c($$0, $$1, $$2, $$3);
-   }
-
-   public <T> void b(alv<T> $$0, cqg $$1, int $$2, T $$3) {
-      this.c.d($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(cqg $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-   }
-
-   public void a(alr $$0) {
-      if (!$$0.dG()) {
-         this.a.a($$0);
-      }
-   }
-
-   public void a(bjt $$0) {
-      this.a.b($$0);
-   }
-
-   public void b(bjt $$0) {
-      this.a.a($$0);
-   }
-
-   public void a(bjt $$0, wb<?> $$1) {
-      this.a.b($$0, $$1);
-   }
-
-   public void b(bjt $$0, wb<?> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   public void a(int $$0) {
-      this.a.a($$0);
-   }
-
-   public void b(int $$0) {
-      this.c.b($$0);
-   }
-
-   @Override
-   public void a(boolean $$0, boolean $$1) {
-      this.j = $$0;
-      this.k = $$1;
-   }
-
-   public String a(cqg $$0) {
-      return this.a.a($$0);
-   }
-
-   public ecu k() {
-      return this.h;
-   }
-
-   public bvi l() {
-      return this.a.m();
-   }
-
-   public dix m() {
-      return this.a.p();
-   }
-
-   @Nullable
-   @aua
-   public crk.d n() {
-      return this.p;
-   }
-
-   public void o() {
-      this.c.e();
-   }
-
-   static record a(dii a, aky b) {
-   }
-
-   final class b extends bgr<Runnable> {
-      b(cqz $$0) {
-         super("Chunk source main thread executor for " + $$0.ac().a());
       }
 
-      @Override
-      protected Runnable f(Runnable $$0) {
-         return $$0;
+      public cqz a() {
+         return this.b;
       }
 
-      @Override
-      protected boolean e(Runnable $$0) {
-         return true;
-      }
-
-      @Override
-      protected boolean at() {
-         return true;
-      }
-
-      @Override
-      protected Thread au() {
-         return alo.this.e;
-      }
-
-      @Override
-      protected void d(Runnable $$0) {
-         alo.this.d.ad().d("runTask");
-         super.d($$0);
-      }
-
-      @Override
-      protected boolean x() {
-         if (alo.this.s()) {
-            return true;
-         } else {
-            alo.this.f.b();
-            return super.x();
-         }
+      public int b() {
+         return this.c;
       }
    }
 }

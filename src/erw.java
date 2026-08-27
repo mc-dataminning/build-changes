@@ -1,46 +1,67 @@
 import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class erw {
-   private static final Logger a = LogUtils.getLogger();
-   private final ero b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+public class erw extends err {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ur c = ur.c("mco.backup.restoring");
+   private final eog d;
+   private final long e;
+   private final eqa f;
 
-   public erw(ero $$0) {
-      this.b = $$0;
+   public erw(eog $$0, long $$1, eqa $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public void a(ezd $$0) {
-      if (!this.b.af() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new fcb($$0));
-         this.d = true;
+   @Override
+   public void run() {
+      eoa $$0 = eoa.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(this.f.f());
+            return;
+         } catch (epo var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (epn var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var5);
+            a(new eqe(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
+         }
       }
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
-      }
-
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
-      }
-   }
-
-   private boolean b() {
-      try {
-         return emx.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (eok var2) {
-         return false;
-      }
+   @Override
+   public ur a() {
+      return c;
    }
 }

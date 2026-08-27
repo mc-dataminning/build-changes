@@ -1,141 +1,226 @@
-import com.google.common.base.Charsets;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.Socket;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.List;
-import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.Set;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
 
-public class agx {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private final String c;
-   private final int d;
-   private final MinecraftServer e;
-   private volatile boolean f;
-   @Nullable
-   private Socket g;
-   @Nullable
-   private Thread h;
+public class agx extends ekh {
+   private final MinecraftServer a;
+   private final Set<eke> b = Sets.newHashSet();
+   private final List<Runnable> c = Lists.newArrayList();
 
-   public agx(String $$0, int $$1, MinecraftServer $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public agx(MinecraftServer $$0) {
+      this.a = $$0;
    }
 
-   public void a() {
-      if (this.h != null && this.h.isAlive()) {
-         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
+   @Override
+   public void a(ekg $$0) {
+      super.a($$0);
+      if (this.b.contains($$0.d())) {
+         this.a.ac().a(new abn(agx.a.a, $$0.d().b(), $$0.e(), $$0.b()));
       }
 
-      this.f = true;
-      this.h = new Thread(this::c, "chase-client");
-      this.h.setDaemon(true);
-      this.h.start();
+      this.a();
    }
 
-   public void b() {
-      this.f = false;
-      IOUtils.closeQuietly(this.g);
-      this.g = null;
-      this.h = null;
+   @Override
+   public void a(String $$0) {
+      super.a($$0);
+      this.a.ac().a(new abn(agx.a.b, null, $$0, 0));
+      this.a();
    }
 
-   public void c() {
-      String $$0 = this.c + ":" + this.d;
-
-      while (this.f) {
-         try {
-            a.info("Connecting to remote control server {}", $$0);
-            this.g = new Socket(this.c, this.d);
-            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
-
-            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
-               while (this.f) {
-                  String $$2 = $$1.readLine();
-                  if ($$2 == null) {
-                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-                     break;
-                  }
-
-                  this.a($$2);
-               }
-            } catch (IOException var8) {
-               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-            }
-         } catch (IOException var9) {
-            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
-         }
-
-         if (this.f) {
-            try {
-               Thread.sleep(5000L);
-            } catch (InterruptedException var5) {
-            }
-         }
+   @Override
+   public void a(String $$0, eke $$1) {
+      super.a($$0, $$1);
+      if (this.b.contains($$1)) {
+         this.a.ac().a(new abn(agx.a.b, $$1.b(), $$0, 0));
       }
+
+      this.a();
    }
 
-   private void a(String $$0) {
-      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
-         $$1.useLocale(Locale.ROOT);
-         String $$2 = $$1.next();
-         if ("t".equals($$2)) {
-            this.a($$1);
+   @Override
+   public void a(ekd $$0, @Nullable eke $$1) {
+      eke $$2 = this.a($$0);
+      super.a($$0, $$1);
+      if ($$2 != $$1 && $$2 != null) {
+         if (this.h($$2) > 0) {
+            this.a.ac().a(new abd($$0, $$1));
          } else {
-            a.warn("Unknown message type '{}'", $$2);
+            this.g($$2);
          }
-      } catch (NoSuchElementException var7) {
-         a.warn("Could not parse message '{}', ignoring", $$0);
       }
+
+      if ($$1 != null) {
+         if (this.b.contains($$1)) {
+            this.a.ac().a(new abd($$0, $$1));
+         } else {
+            this.e($$1);
+         }
+      }
+
+      this.a();
    }
 
-   private void a(Scanner $$0) {
-      this.b($$0)
-         .ifPresent(
-            $$0x -> this.b(
-                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.c, $$0x.b.d, $$0x.b.e, $$0x.c.j, $$0x.c.i)
-               )
-         );
-   }
-
-   private Optional<agx.a> b(Scanner $$0) {
-      afv<cqz> $$1 = (afv<cqz>)ahg.a.get($$0.next());
-      if ($$1 == null) {
-         return Optional.empty();
+   @Override
+   public boolean a(String $$0, ekf $$1) {
+      if (super.a($$0, $$1)) {
+         this.a.ac().a(abm.a($$1, $$0, abm.a.a));
+         this.a();
+         return true;
       } else {
-         float $$2 = $$0.nextFloat();
-         float $$3 = $$0.nextFloat();
-         float $$4 = $$0.nextFloat();
-         float $$5 = $$0.nextFloat();
-         float $$6 = $$0.nextFloat();
-         return Optional.of(new agx.a($$1, new eif((double)$$2, (double)$$3, (double)$$4), new eie($$6, $$5)));
+         return false;
       }
    }
 
-   private void b(String $$0) {
-      this.e.execute(() -> {
-         List<alr> $$1 = this.e.ac().t();
-         if (!$$1.isEmpty()) {
-            alr $$2 = $$1.get(0);
-            alq $$3 = this.e.D();
-            du $$4 = new du($$2, eif.a($$3.R()), eie.a, $$3, 4, "", uh.a, this.e, $$2);
-            dv $$5 = this.e.aC();
-            $$5.a($$4, $$0);
-         }
-      });
+   @Override
+   public void b(String $$0, ekf $$1) {
+      super.b($$0, $$1);
+      this.a.ac().a(abm.a($$1, $$0, abm.a.b));
+      this.a();
    }
 
-   static record a(afv<cqz> a, eif b, eie c) {
+   @Override
+   public void a(eke $$0) {
+      super.a($$0);
+      this.a();
+   }
+
+   @Override
+   public void b(eke $$0) {
+      super.b($$0);
+      if (this.b.contains($$0)) {
+         this.a.ac().a(new abk($$0, 2));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void c(eke $$0) {
+      super.c($$0);
+      if (this.b.contains($$0)) {
+         this.g($$0);
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(ekf $$0) {
+      super.a($$0);
+      this.a.ac().a(abm.a($$0, true));
+      this.a();
+   }
+
+   @Override
+   public void b(ekf $$0) {
+      super.b($$0);
+      this.a.ac().a(abm.a($$0, false));
+      this.a();
+   }
+
+   @Override
+   public void c(ekf $$0) {
+      super.c($$0);
+      this.a.ac().a(abm.a($$0));
+      this.a();
+   }
+
+   public void a(Runnable $$0) {
+      this.c.add($$0);
+   }
+
+   protected void a() {
+      for (Runnable $$0 : this.c) {
+         $$0.run();
+      }
+   }
+
+   public List<wk<?>> d(eke $$0) {
+      List<wk<?>> $$1 = Lists.newArrayList();
+      $$1.add(new abk($$0, 0));
+
+      for (ekd $$2 : ekd.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new abd($$2, $$0));
+         }
+      }
+
+      for (ekg $$3 : this.i($$0)) {
+         $$1.add(new abn(agx.a.a, $$3.d().b(), $$3.e(), $$3.b()));
+      }
+
+      return $$1;
+   }
+
+   public void e(eke $$0) {
+      List<wk<?>> $$1 = this.d($$0);
+
+      for (amb $$2 : this.a.ac().t()) {
+         for (wk<?> $$3 : $$1) {
+            $$2.c.b($$3);
+         }
+      }
+
+      this.b.add($$0);
+   }
+
+   public List<wk<?>> f(eke $$0) {
+      List<wk<?>> $$1 = Lists.newArrayList();
+      $$1.add(new abk($$0, 1));
+
+      for (ekd $$2 : ekd.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new abd($$2, $$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public void g(eke $$0) {
+      List<wk<?>> $$1 = this.f($$0);
+
+      for (amb $$2 : this.a.ac().t()) {
+         for (wk<?> $$3 : $$1) {
+            $$2.c.b($$3);
+         }
+      }
+
+      this.b.remove($$0);
+   }
+
+   public int h(eke $$0) {
+      int $$1 = 0;
+
+      for (ekd $$2 : ekd.values()) {
+         if (this.a($$2) == $$0) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   public edl.a<eki> b() {
+      return new edl.a<>(this::i, this::a, aun.n);
+   }
+
+   private eki i() {
+      eki $$0 = new eki(this);
+      this.a($$0::c);
+      return $$0;
+   }
+
+   private eki a(rz $$0) {
+      return this.i().b($$0);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

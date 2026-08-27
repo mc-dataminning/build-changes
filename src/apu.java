@@ -1,8 +1,22 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.JsonObject;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface apu {
+public abstract class apu<T> {
+   @Nullable
+   private final T a;
+
+   public apu(@Nullable T $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   T g() {
+      return this.a;
+   }
+
+   boolean f() {
+      return false;
+   }
+
+   protected abstract void a(JsonObject var1);
 }

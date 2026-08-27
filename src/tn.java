@@ -1,22 +1,16 @@
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.EncoderException;
-import io.netty.handler.codec.MessageToMessageEncoder;
-import io.netty.util.AttributeKey;
-import java.util.List;
+import io.netty.handler.codec.MessageToByteEncoder;
+import javax.crypto.Cipher;
 
-public class tn extends MessageToMessageEncoder<wb<?>> {
-   private final AttributeKey<? extends wa.b> a;
+public class tn extends MessageToByteEncoder<ByteBuf> {
+   private final tl a;
 
-   public tn(AttributeKey<? extends wa.b> $$0) {
-      this.a = $$0;
+   public tn(Cipher $$0) {
+      this.a = new tl($$0);
    }
 
-   protected void a(ChannelHandlerContext $$0, wb<?> $$1, List<Object> $$2) throws Exception {
-      wa.b $$3 = (wa.b)$$0.channel().attr(this.a).get();
-      if ($$3 == null) {
-         throw new EncoderException("Bundler not configured: " + $$1);
-      } else {
-         $$3.c().a($$1, $$2::add);
-      }
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
+      this.a.a($$1, $$2);
    }
 }

@@ -1,29 +1,22 @@
-public class fmj extends fmo {
-   private int a;
-   private final int b = 8;
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   fmj(fjr $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(js.x, $$1, $$2, $$3, (double)((float)this.a / (float)this.b), 0.0, 0.0);
+@FunctionalInterface
+public interface fmj {
+   Logger a = LogUtils.getLogger();
+   fmj b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(fmh.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
       }
+   };
 
-      this.a++;
-      if (this.a == this.b) {
-         this.k();
-      }
-   }
-
-   public static class a implements fmt<jv> {
-      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fmj($$1, $$2, $$3, $$4);
-      }
-   }
+   Optional<fmh> resolve(fmi var1);
 }

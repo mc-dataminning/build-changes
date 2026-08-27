@@ -1,230 +1,134 @@
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.UUID;
 
-public class cil extends cke {
-   private static final String b = "Items";
-   public static final int a = 64;
-   private static final int c = 4;
-   private static final int d = asy.f(0.4F, 0.4F, 1.0F);
+public class cil extends ckw implements ckc {
+   private static final EnumMap<cil.a, UUID> e = ac.a(new EnumMap<>(cil.a.class), $$0 -> {
+      $$0.put(cil.a.d, UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"));
+      $$0.put(cil.a.c, UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"));
+      $$0.put(cil.a.b, UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"));
+      $$0.put(cil.a.a, UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"));
+   });
+   public static final je a = new jd() {
+      @Override
+      protected clb a(jb $$0, clb $$1) {
+         return cil.a($$0, $$1) ? $$1 : super.a($$0, $$1);
+      }
+   };
+   protected final cil.a b;
+   private final int f;
+   private final float g;
+   protected final float c;
+   protected final cim d;
+   private final Multimap<blz, bmc> h;
 
-   public cil(cke.a $$0) {
-      super($$0);
-   }
-
-   public static float d(ckj $$0) {
-      return (float)o($$0) / 64.0F;
-   }
-
-   @Override
-   public boolean a(ckj $$0, chh $$1, cfx $$2, ccx $$3) {
-      if ($$2 != cfx.b) {
+   public static boolean a(jb $$0, clb $$1) {
+      ht $$2 = $$0.c().a($$0.d().c(cwx.b));
+      List<bky> $$3 = $$0.b().a(bky.class, new ejd($$2), bkl.f.and(new bkl.a($$1)));
+      if ($$3.isEmpty()) {
          return false;
       } else {
-         ckj $$4 = $$1.e();
-         if ($$4.b()) {
-            this.a($$3);
-            p($$0).ifPresent($$2x -> b($$0, $$1.f($$2x)));
-         } else if ($$4.d().ao_()) {
-            int $$5 = (64 - o($$0)) / k($$4);
-            int $$6 = b($$0, $$1.b($$4.L(), $$5, $$3));
-            if ($$6 > 0) {
-               this.b($$3);
-            }
+         bky $$4 = $$3.get(0);
+         bkn $$5 = bla.h($$1);
+         clb $$6 = $$1.a(1);
+         $$4.a($$5, $$6);
+         if ($$4 instanceof bla) {
+            ((bla)$$4).a($$5, 2.0F);
+            ((bla)$$4).fJ();
          }
 
          return true;
       }
    }
 
-   @Override
-   public boolean a(ckj $$0, ckj $$1, chh $$2, cfx $$3, ccx $$4, blb $$5) {
-      if ($$3 == cfx.b && $$2.b($$4)) {
-         if ($$1.b()) {
-            p($$0).ifPresent($$2x -> {
-               this.a($$4);
-               $$5.a($$2x);
-            });
-         } else {
-            int $$6 = b($$0, $$1);
-            if ($$6 > 0) {
-               this.b($$4);
-               $$1.h($$6);
-            }
-         }
-
-         return true;
-      } else {
-         return false;
+   public cil(cim $$0, cil.a $$1, ckw.a $$2) {
+      super($$2.b($$0.a($$1)));
+      this.d = $$0;
+      this.b = $$1;
+      this.f = $$0.b($$1);
+      this.g = $$0.f();
+      this.c = $$0.g();
+      cwx.a(this, a);
+      Builder<blz, bmc> $$3 = ImmutableMultimap.builder();
+      UUID $$4 = e.get($$1);
+      $$3.put(bme.a, new bmc($$4, "Armor modifier", (double)this.f, bmc.a.a));
+      $$3.put(bme.b, new bmc($$4, "Armor toughness", (double)this.g, bmc.a.a));
+      if ($$0 == cin.g) {
+         $$3.put(bme.i, new bmc($$4, "Armor knockback resistance", (double)this.c, bmc.a.a));
       }
+
+      this.h = $$3.build();
+   }
+
+   public cil.a b() {
+      return this.b;
    }
 
    @Override
-   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
-      ckj $$3 = $$1.b($$2);
-      if (a($$3, $$1)) {
-         this.c($$1);
-         $$1.b(aqn.c.b(this));
-         return bic.a($$3, $$0.x_());
-      } else {
-         return bic.d($$3);
+   public int c() {
+      return this.d.a();
+   }
+
+   public cim d() {
+      return this.d;
+   }
+
+   @Override
+   public boolean a(clb $$0, clb $$1) {
+      return this.d.d().a($$1) || super.a($$0, $$1);
+   }
+
+   @Override
+   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
+
+   @Override
+   public Multimap<blz, bmc> a(bkn $$0) {
+      return $$0 == this.b.a() ? this.h : super.a($$0);
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   @Override
+   public bkn g() {
+      return this.b.a();
+   }
+
+   @Override
+   public aqm ar_() {
+      return this.d().b();
+   }
+
+   public static enum a {
+      a(bkn.f, "helmet"),
+      b(bkn.e, "chestplate"),
+      c(bkn.d, "leggings"),
+      d(bkn.c, "boots");
+
+      private final bkn e;
+      private final String f;
+
+      private a(bkn $$0, String $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
-   }
 
-   @Override
-   public boolean e(ckj $$0) {
-      return o($$0) > 0;
-   }
-
-   @Override
-   public int f(ckj $$0) {
-      return Math.min(1 + 12 * o($$0) / 64, 13);
-   }
-
-   @Override
-   public int g(ckj $$0) {
-      return d;
-   }
-
-   private static int b(ckj $$0, ckj $$1) {
-      if (!$$1.b() && $$1.d().ao_()) {
-         rt $$2 = $$0.w();
-         if (!$$2.e("Items")) {
-            $$2.a("Items", new rz());
-         }
-
-         int $$3 = o($$0);
-         int $$4 = k($$1);
-         int $$5 = Math.min($$1.L(), (64 - $$3) / $$4);
-         if ($$5 == 0) {
-            return 0;
-         } else {
-            rz $$6 = $$2.c("Items", 10);
-            Optional<rt> $$7 = a($$1, $$6);
-            if ($$7.isPresent()) {
-               rt $$8 = $$7.get();
-               ckj $$9 = ckj.a($$8);
-               $$9.g($$5);
-               $$9.b($$8);
-               $$6.remove($$8);
-               $$6.c(0, $$8);
-            } else {
-               ckj $$10 = $$1.c($$5);
-               rt $$11 = new rt();
-               $$10.b($$11);
-               $$6.c(0, $$11);
-            }
-
-            return $$5;
-         }
-      } else {
-         return 0;
+      public bkn a() {
+         return this.e;
       }
-   }
 
-   private static Optional<rt> a(ckj $$0, rz $$1) {
-      return $$0.a(ckm.qg)
-         ? Optional.empty()
-         : $$1.stream().filter(rt.class::isInstance).map(rt.class::cast).filter($$1x -> ckj.c(ckj.a($$1x), $$0)).findFirst();
-   }
-
-   private static int k(ckj $$0) {
-      if ($$0.a(ckm.qg)) {
-         return 4 + o($$0);
-      } else {
-         if (($$0.a(ckm.vC) || $$0.a(ckm.vB)) && $$0.u()) {
-            rt $$1 = cic.a($$0);
-            if ($$1 != null && !$$1.c("Bees", 10).isEmpty()) {
-               return 64;
-            }
-         }
-
-         return 64 / $$0.g();
+      public String b() {
+         return this.f;
       }
-   }
-
-   private static int o(ckj $$0) {
-      return q($$0).mapToInt($$0x -> k($$0x) * $$0x.L()).sum();
-   }
-
-   private static Optional<ckj> p(ckj $$0) {
-      rt $$1 = $$0.w();
-      if (!$$1.e("Items")) {
-         return Optional.empty();
-      } else {
-         rz $$2 = $$1.c("Items", 10);
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$3 = 0;
-            rt $$4 = $$2.a(0);
-            ckj $$5 = ckj.a($$4);
-            $$2.c(0);
-            if ($$2.isEmpty()) {
-               $$0.c("Items");
-            }
-
-            return Optional.of($$5);
-         }
-      }
-   }
-
-   private static boolean a(ckj $$0, ccx $$1) {
-      rt $$2 = $$0.w();
-      if (!$$2.e("Items")) {
-         return false;
-      } else {
-         if ($$1 instanceof alr) {
-            rz $$3 = $$2.c("Items", 10);
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               rt $$5 = $$3.a($$4);
-               ckj $$6 = ckj.a($$5);
-               $$1.a($$6, true);
-            }
-         }
-
-         $$0.c("Items");
-         return true;
-      }
-   }
-
-   private static Stream<ckj> q(ckj $$0) {
-      rt $$1 = $$0.v();
-      if ($$1 == null) {
-         return Stream.empty();
-      } else {
-         rz $$2 = $$1.c("Items", 10);
-         return $$2.stream().map(rt.class::cast).map(ckj::a);
-      }
-   }
-
-   @Override
-   public Optional<chp> h(ckj $$0) {
-      il<ckj> $$1 = il.a();
-      q($$0).forEach($$1::add);
-      return Optional.of(new cho($$1, o($$0)));
-   }
-
-   @Override
-   public void a(ckj $$0, cqz $$1, List<ui> $$2, cma $$3) {
-      $$2.add(ui.a("item.minecraft.bundle.fullness", o($$0), 64).a(n.h));
-   }
-
-   @Override
-   public void a(bzq $$0) {
-      ckl.a($$0, q($$0.q()));
-   }
-
-   private void a(bjt $$0) {
-      $$0.a(aqd.cJ, 0.8F, 0.8F + $$0.dL().E_().i() * 0.4F);
-   }
-
-   private void b(bjt $$0) {
-      $$0.a(aqd.cI, 0.8F, 0.8F + $$0.dL().E_().i() * 0.4F);
-   }
-
-   private void c(bjt $$0) {
-      $$0.a(aqd.cH, 0.8F, 0.8F + $$0.dL().E_().i() * 0.4F);
    }
 }

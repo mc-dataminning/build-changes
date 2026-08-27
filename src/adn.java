@@ -1,44 +1,56 @@
-import javax.annotation.Nullable;
-
-public class adn implements wb<aca> {
+public class adn implements wk<acj> {
    private final int a;
-   private final String b;
-   private final boolean c;
+   private final adn.a b;
+   private final int c;
 
-   public adn(int $$0, String $$1, boolean $$2) {
-      this.a = $$0;
+   public adn(bki $$0, adn.a $$1) {
+      this($$0, $$1, 0);
+   }
+
+   public adn(bki $$0, adn.a $$1, int $$2) {
+      this.a = $$0.ah();
       this.b = $$1;
       this.c = $$2;
    }
 
-   public adn(tl $$0) {
+   public adn(tu $$0) {
       this.a = $$0.n();
-      this.b = $$0.s();
-      this.c = $$0.readBoolean();
+      this.b = $$0.b(adn.a.class);
+      this.c = $$0.n();
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.c(this.a);
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.c(this.c);
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public cqa a(cqz $$0) {
-      bjt $$1 = $$0.a(this.a);
-      return $$1 instanceof cew ? ((cew)$$1).B() : null;
+   public int a() {
+      return this.a;
    }
 
-   public String a() {
+   public adn.a d() {
       return this.b;
    }
 
-   public boolean d() {
+   public int e() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

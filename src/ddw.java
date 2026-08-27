@@ -1,20 +1,33 @@
-public class ddw extends ddm {
-   public ddw(ht $$0, dgb $$1) {
-      super(ddz.C, $$0, $$1, cnr.c);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class ddw extends dcm implements ddt {
+   public static final MapCodec<ddw> I = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ddt.a.e.fieldOf("weathering_state").forGetter(cvu::c), dgw.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), t()).apply($$0, ddw::new)
+   );
+   private final ddt.a J;
+
+   @Override
+   public MapCodec<ddw> a() {
+      return I;
+   }
+
+   public ddw(ddt.a $$0, dgw $$1, dgv.d $$2) {
+      super($$1, $$2);
+      this.J = $$0;
    }
 
    @Override
-   protected ui g() {
-      return ui.c("container.blast_furnace");
+   public void b(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected int a(ckj $$0) {
-      return super.a($$0) / 2;
+   public boolean e_(dgw $$0) {
+      return ddt.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected cfp a(int $$0, ccw $$1) {
-      return new cft($$0, $$1, this, this.n);
+   public ddt.a g() {
+      return this.J;
    }
 }

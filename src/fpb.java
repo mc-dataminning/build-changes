@@ -1,94 +1,56 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+public class fpb extends fow {
+   private float a;
 
-public interface fpb {
-   static fpb.a a(emc $$0) {
-      return a(ImmutableMap.of(), $$0);
+   fpb(fkw $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
-   static fpb.a a(Map<fpj, emc> $$0, emc $$1) {
-      return new fpb.a($$1, $$0);
+   @Override
+   public fnz b() {
+      return fnz.b;
    }
 
-   eml getBuffer(fpj var1);
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * ati.b(this.a));
+         this.l = this.l + (double)(0.6F * ati.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(ht.a(this.g, this.h, this.i)).a(arh.a) || this.m) {
+            this.k();
+         }
 
-   public static class a implements fpb {
-      protected final emc a;
-      protected final Map<fpj, emc> b;
-      protected Optional<fpj> c = Optional.empty();
-      protected final Set<emc> d = Sets.newHashSet();
+         this.a += 0.08F;
+      }
+   }
 
-      protected a(emc $$0, Map<fpj, emc> $$1) {
+   public static class a implements fny<jv> {
+      private final foq a;
+
+      public a(foq $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
 
-      @Override
-      public eml getBuffer(fpj $$0) {
-         Optional<fpj> $$1 = $$0.O();
-         emc $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.N()) {
-            if (this.c.isPresent()) {
-               fpj $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
-
-            if (this.d.add($$2)) {
-               $$2.a($$0.J(), $$0.I());
-            }
-
-            this.c = $$1;
-         }
-
-         return $$2;
-      }
-
-      private emc b(fpj $$0) {
-         return this.b.getOrDefault($$0, this.a);
-      }
-
-      public void a() {
-         if (this.c.isPresent()) {
-            fpj $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
-      }
-
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            eml $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
-
-         for (fpj $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(fpj $$0) {
-         emc $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.O());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
-            }
-         }
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpb $$8 = new fpb($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

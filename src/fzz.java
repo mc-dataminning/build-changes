@@ -1,156 +1,35 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fzz<T extends bky> extends fzs<T, fih<T>> {
+   public static final agg a = new agg("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fkb c;
 
-public class fzz extends fzl implements fzm, gac {
-   private static final Logger g = LogUtils.getLogger();
-   @Deprecated
-   public static final afw e = cgo.v;
-   @Deprecated
-   public static final afw f = new afw("textures/atlas/particles.png");
-   private List<fzu> h = List.of();
-   private List<gaa.a> i = List.of();
-   private Map<afw, gaa> j = Map.of();
-   @Nullable
-   private gaa k;
-   private final afw l;
-   private final int m;
-   private int n;
-   private int o;
-   private int p;
-
-   public fzz(afw $$0) {
-      this.l = $$0;
-      this.m = RenderSystem.maxSupportedTextureSize();
+   public fzz(fxf<T, fih<T>> $$0, fjx $$1) {
+      super($$0);
+      fkb $$2 = $$1.a(fka.aT);
+      this.c = $$2.b("box");
    }
 
-   @Override
-   public void a(aot $$0) {
+   public static fkh a() {
+      fkj $$0 = new fkj();
+      fkk $$1 = $$0.a();
+      $$1.a("box", fkg.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fkd.a);
+      return fkh.a($$0, 64, 64);
    }
 
-   public void a(fzv.a $$0) {
-      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
-      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
-      this.n = $$0.b();
-      this.o = $$0.c();
-      this.p = $$0.d();
-      this.f();
-      this.j = Map.copyOf($$0.f());
-      this.k = this.j.get(fzq.b());
-      if (this.k == null) {
-         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
-      } else {
-         List<fzu> $$1 = new ArrayList<>();
-         List<gaa.a> $$2 = new ArrayList<>();
+   public void a(enk $$0, fqh $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fj()) {
+         eno $$10 = $$1.getBuffer(fqp.e(a));
 
-         for (gaa $$3 : $$0.f().values()) {
-            $$1.add($$3.e());
-
-            try {
-               $$3.j();
-            } catch (Throwable var9) {
-               o $$5 = o.a(var9, "Stitching texture atlas");
-               p $$6 = $$5.a("Texture being stitched together");
-               $$6.a("Atlas path", this.l);
-               $$6.a("Sprite", $$3);
-               throw new y($$5);
-            }
-
-            gaa.a $$7 = $$3.f();
-            if ($$7 != null) {
-               $$2.add($$7);
-            }
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, gay.d);
+            $$0.b();
          }
-
-         this.h = List.copyOf($$1);
-         this.i = List.copyOf($$2);
       }
-   }
-
-   @Override
-   public void a(afw $$0, Path $$1) throws IOException {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
-      a($$1, $$2, this.j);
-   }
-
-   private static void a(Path $$0, String $$1, Map<afw, gaa> $$2) {
-      Path $$3 = $$0.resolve($$1 + ".txt");
-
-      try (Writer $$4 = Files.newBufferedWriter($$3)) {
-         for (Entry<afw, gaa> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
-            gaa $$6 = $$5.getValue();
-            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
-         }
-      } catch (IOException var10) {
-         g.warn("Failed to write file {}", $$3, var10);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.c();
-
-      for (gaa.a $$0 : this.i) {
-         $$0.a();
-      }
-   }
-
-   @Override
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::d);
-      } else {
-         this.d();
-      }
-   }
-
-   public gaa a(afw $$0) {
-      gaa $$1 = this.j.getOrDefault($$0, this.k);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
-      } else {
-         return $$1;
-      }
-   }
-
-   public void f() {
-      this.h.forEach(fzu::close);
-      this.i.forEach(gaa.a::close);
-      this.h = List.of();
-      this.i = List.of();
-      this.j = Map.of();
-      this.k = null;
-   }
-
-   public afw g() {
-      return this.l;
-   }
-
-   public int h() {
-      return this.m;
-   }
-
-   int i() {
-      return this.n;
-   }
-
-   int j() {
-      return this.o;
-   }
-
-   public void b(fzv.a $$0) {
-      this.a(false, $$0.d() > 0);
    }
 }

@@ -1,67 +1,103 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record fkr(String a, @Nullable fkr.a b) {
-   public static fkr a() {
-      return a(null);
-   }
-
-   public static fkr a(String $$0) {
-      return a(new fkr.a.b($$0));
-   }
-
-   public static fkr a(eno $$0) {
-      return a(new fkr.a.a($$0));
-   }
-
-   public static fkr a(@Nullable fkr.a $$0) {
-      return new fkr(g(), $$0);
-   }
-
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
+public class fkr {
+   private static final Logger a = LogUtils.getLogger();
+   private final esr b;
+   private final ggg c;
+   private final ak d = new ak();
+   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
    @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof fkr.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
+   private fkr.a f;
    @Nullable
-   public RealmInfo d() {
-      return this.b instanceof fkr.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   private af g;
+
+   public fkr(esr $$0, ggg $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("23w41a");
-      if (ero.e().a()) {
-         $$0.append(" (modded)");
+   public void a(acc $$0) {
+      if ($$0.f()) {
+         this.d.a();
+         this.e.clear();
       }
 
-      return $$0.toString();
-   }
+      this.d.a($$0.d());
+      this.d.a($$0.a());
 
-   public String e() {
-      return this.a;
-   }
+      for (Entry<agg, ah> $$1 : $$0.e().entrySet()) {
+         ag $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ah $$3 = $$1.getValue();
+            $$3.a($$2.a().g());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
 
-   @Nullable
-   public fkr.a f() {
-      return this.b;
-   }
+            if (!$$0.f() && $$3.a()) {
+               if (this.b.r != null) {
+                  this.c.a(this.b.r, $$2.b());
+               }
 
-   public interface a {
-      public static record a(long a, int b) implements fkr.a {
-         public a(eno $$0) {
-            this($$0.a, $$0.n);
+               Optional<aq> $$4 = $$2.a().d();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.ax().a(new ewr($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
       }
+   }
 
-      public static record b(String a) implements fkr.a {
+   public ak a() {
+      return this.d;
+   }
+
+   public void a(@Nullable af $$0, boolean $$1) {
+      fkx $$2 = this.b.I();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(ads.a($$0));
       }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
+      }
+   }
+
+   public void a(@Nullable fkr.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ag $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
+   }
+
+   @Nullable
+   public af a(agg $$0) {
+      ag $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
+
+   public interface a extends ak.a {
+      void a(ag var1, ah var2);
+
+      void a(@Nullable af var1);
    }
 }

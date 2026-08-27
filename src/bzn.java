@@ -1,69 +1,173 @@
-public class bzn {
-   public static final afv<bzm> a = a("kebab");
-   public static final afv<bzm> b = a("aztec");
-   public static final afv<bzm> c = a("alban");
-   public static final afv<bzm> d = a("aztec2");
-   public static final afv<bzm> e = a("bomb");
-   public static final afv<bzm> f = a("plant");
-   public static final afv<bzm> g = a("wasteland");
-   public static final afv<bzm> h = a("pool");
-   public static final afv<bzm> i = a("courbet");
-   public static final afv<bzm> j = a("sea");
-   public static final afv<bzm> k = a("sunset");
-   public static final afv<bzm> l = a("creebet");
-   public static final afv<bzm> m = a("wanderer");
-   public static final afv<bzm> n = a("graham");
-   public static final afv<bzm> o = a("match");
-   public static final afv<bzm> p = a("bust");
-   public static final afv<bzm> q = a("stage");
-   public static final afv<bzm> r = a("void");
-   public static final afv<bzm> s = a("skull_and_roses");
-   public static final afv<bzm> t = a("wither");
-   public static final afv<bzm> u = a("fighters");
-   public static final afv<bzm> v = a("pointer");
-   public static final afv<bzm> w = a("pigscene");
-   public static final afv<bzm> x = a("burning_skull");
-   public static final afv<bzm> y = a("skeleton");
-   public static final afv<bzm> z = a("donkey_kong");
-   public static final afv<bzm> A = a("earth");
-   public static final afv<bzm> B = a("wind");
-   public static final afv<bzm> C = a("water");
-   public static final afv<bzm> D = a("fire");
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public static bzm a(io<bzm> $$0) {
-      io.a($$0, a, new bzm(16, 16));
-      io.a($$0, b, new bzm(16, 16));
-      io.a($$0, c, new bzm(16, 16));
-      io.a($$0, d, new bzm(16, 16));
-      io.a($$0, e, new bzm(16, 16));
-      io.a($$0, f, new bzm(16, 16));
-      io.a($$0, g, new bzm(16, 16));
-      io.a($$0, h, new bzm(32, 16));
-      io.a($$0, i, new bzm(32, 16));
-      io.a($$0, j, new bzm(32, 16));
-      io.a($$0, k, new bzm(32, 16));
-      io.a($$0, l, new bzm(32, 16));
-      io.a($$0, m, new bzm(16, 32));
-      io.a($$0, n, new bzm(16, 32));
-      io.a($$0, o, new bzm(32, 32));
-      io.a($$0, p, new bzm(32, 32));
-      io.a($$0, q, new bzm(32, 32));
-      io.a($$0, r, new bzm(32, 32));
-      io.a($$0, s, new bzm(32, 32));
-      io.a($$0, t, new bzm(32, 32));
-      io.a($$0, u, new bzm(64, 32));
-      io.a($$0, v, new bzm(64, 64));
-      io.a($$0, w, new bzm(64, 64));
-      io.a($$0, x, new bzm(64, 64));
-      io.a($$0, y, new bzm(64, 48));
-      io.a($$0, A, new bzm(32, 32));
-      io.a($$0, B, new bzm(32, 32));
-      io.a($$0, C, new bzm(32, 32));
-      io.a($$0, D, new bzm(32, 32));
-      return io.a($$0, z, new bzm(64, 48));
+public class bzn extends bzb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 5;
+   private int d;
+   @Nullable
+   private ecv e;
+   @Nullable
+   private eji f;
+   @Nullable
+   private bky g;
+   private boolean h;
+
+   public bzn(byz $$0) {
+      super($$0);
    }
 
-   private static afv<bzm> a(String $$0) {
-      return afv.a(jz.Q, new afw($$0));
+   @Override
+   public void c() {
+      if (this.g == null) {
+         b.warn("Skipping player strafe phase because no player was found");
+         this.a.gb().a(bzp.a);
+      } else {
+         if (this.e != null && this.e.c()) {
+            double $$0 = this.g.dq();
+            double $$1 = this.g.dw();
+            double $$2 = $$0 - this.a.dq();
+            double $$3 = $$1 - this.a.dw();
+            double $$4 = Math.sqrt($$2 * $$2 + $$3 * $$3);
+            double $$5 = Math.min(0.4F + $$4 / 80.0 - 1.0, 10.0);
+            this.f = new eji($$0, this.g.ds() + $$5, $$1);
+         }
+
+         double $$6 = this.f == null ? 0.0 : this.f.c(this.a.dq(), this.a.ds(), this.a.dw());
+         if ($$6 < 100.0 || $$6 > 22500.0) {
+            this.j();
+         }
+
+         double $$7 = 64.0;
+         if (this.g.f(this.a) < 4096.0) {
+            if (this.a.E(this.g)) {
+               this.d++;
+               eji $$8 = new eji(this.g.dq() - this.a.dq(), 0.0, this.g.dw() - this.a.dw()).d();
+               eji $$9 = new eji((double)ati.a(this.a.dB() * (float) (Math.PI / 180.0)), 0.0, (double)(-ati.b(this.a.dB() * (float) (Math.PI / 180.0)))).d();
+               float $$10 = (float)$$9.b($$8);
+               float $$11 = (float)(Math.acos((double)$$10) * 180.0F / (float)Math.PI);
+               $$11 += 0.5F;
+               if (this.d >= 5 && $$11 >= 0.0F && $$11 < 10.0F) {
+                  double $$12 = 1.0;
+                  eji $$13 = this.a.f(1.0F);
+                  double $$14 = this.a.e.dq() - $$13.c * 1.0;
+                  double $$15 = this.a.e.e(0.5) + 0.5;
+                  double $$16 = this.a.e.dw() - $$13.e * 1.0;
+                  double $$17 = this.g.dq() - $$14;
+                  double $$18 = this.g.e(0.5) - $$15;
+                  double $$19 = this.g.dw() - $$16;
+                  if (!this.a.aS()) {
+                     this.a.dL().a(null, 1017, this.a.dl(), 0);
+                  }
+
+                  cdv $$20 = new cdv(this.a.dL(), this.a, $$17, $$18, $$19);
+                  $$20.b($$14, $$15, $$16, 0.0F, 0.0F);
+                  this.a.dL().b($$20);
+                  this.d = 0;
+                  if (this.e != null) {
+                     while (!this.e.c()) {
+                        this.e.a();
+                     }
+                  }
+
+                  this.a.gb().a(bzp.a);
+               }
+            } else if (this.d > 0) {
+               this.d--;
+            }
+         } else if (this.d > 0) {
+            this.d--;
+         }
+      }
+   }
+
+   private void j() {
+      if (this.e == null || this.e.c()) {
+         int $$0 = this.a.y();
+         int $$1 = $$0;
+         if (this.a.ef().a(8) == 0) {
+            this.h = !this.h;
+            $$1 = $$0 + 6;
+         }
+
+         if (this.h) {
+            $$1++;
+         } else {
+            $$1--;
+         }
+
+         if (this.a.gc() != null && this.a.gc().e() > 0) {
+            $$1 %= 12;
+            if ($$1 < 0) {
+               $$1 += 12;
+            }
+         } else {
+            $$1 -= 12;
+            $$1 &= 7;
+            $$1 += 12;
+         }
+
+         this.e = this.a.a($$0, $$1, null);
+         if (this.e != null) {
+            this.e.a();
+         }
+      }
+
+      this.k();
+   }
+
+   private void k() {
+      if (this.e != null && !this.e.c()) {
+         iw $$0 = this.e.g();
+         this.e.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.f = new eji($$1, $$3, $$2);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.d = 0;
+      this.f = null;
+      this.e = null;
+      this.g = null;
+   }
+
+   public void a(bky $$0) {
+      this.g = $$0;
+      int $$1 = this.a.y();
+      int $$2 = this.a.r(this.g.dq(), this.g.ds(), this.g.dw());
+      int $$3 = this.g.dp();
+      int $$4 = this.g.dv();
+      double $$5 = (double)$$3 - this.a.dq();
+      double $$6 = (double)$$4 - this.a.dw();
+      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
+      double $$8 = Math.min(0.4F + $$7 / 80.0 - 1.0, 10.0);
+      int $$9 = ati.a(this.g.ds() + $$8);
+      ect $$10 = new ect($$3, $$9, $$4);
+      this.e = this.a.a($$1, $$2, $$10);
+      if (this.e != null) {
+         this.e.a();
+         this.k();
+      }
+   }
+
+   @Nullable
+   @Override
+   public eji g() {
+      return this.f;
+   }
+
+   @Override
+   public bzp<bzn> i() {
+      return bzp.b;
    }
 }

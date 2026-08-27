@@ -1,28 +1,181 @@
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class efl extends eeu {
-   public static final Codec<efl> a = RecordCodecBuilder.create($$0 -> a($$0).and(jy.j.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, efl::new));
-   private final ib<cmg> b;
+public class efl extends efx {
+   private static final Map<agg, efl.c> b = Stream.of(efl.a.a, efl.d.b, efl.e.b).collect(Collectors.toMap(efl.c::a, Function.identity()));
+   static final Codec<efl.c> c = agg.a.comapFlatMap($$0 -> {
+      efl.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, efl.c::a);
+   private static final MapCodec<efl.b> d = new MapCodec<efl.b>() {
+      private static final String a = "formula";
+      private static final String b = "parameters";
 
-   private efl(List<egh> $$0, ib<cmg> $$1) {
+      public <T> Stream<T> keys(DynamicOps<T> $$0) {
+         return Stream.of((T[])(new Object[]{$$0.createString("formula"), $$0.createString("parameters")}));
+      }
+
+      public <T> DataResult<efl.b> decode(DynamicOps<T> $$0, MapLike<T> $$1) {
+         T $$2 = (T)$$1.get("formula");
+         return $$2 == null ? DataResult.error(() -> "Missing type for formula in: " + $$1) : efl.c.decode($$0, $$2).flatMap($$2x -> {
+            T $$3 = Objects.requireNonNullElseGet((T)$$1.get("parameters"), $$0::emptyMap);
+            return ((efl.c)$$2x.getFirst()).b().decode($$0, $$3).map(Pair::getFirst);
+         });
+      }
+
+      public <T> RecordBuilder<T> a(efl.b $$0, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+         efl.c $$3 = $$0.a();
+         $$2.add("formula", efl.c.encodeStart($$1, $$3));
+         DataResult<T> $$4 = this.a($$3.b(), $$0, $$1);
+         if ($$4.result().isEmpty() || !Objects.equals($$4.result().get(), $$1.emptyMap())) {
+            $$2.add("parameters", $$4);
+         }
+
+         return $$2;
+      }
+
+      private <T, F extends efl.b> DataResult<T> a(Codec<F> $$0, efl.b $$1, DynamicOps<T> $$2) {
+         return $$0.encodeStart($$2, $$1);
+      }
+   };
+   public static final Codec<efl> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and($$0.group(jy.g.r().fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, efl::new)
+   );
+   private final ib<cpm> e;
+   private final efl.b f;
+
+   private efl(List<ehk> $$0, ib<cpm> $$1, efl.b $$2) {
       super($$0);
-      this.b = $$1;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public eew b() {
-      return eex.z;
+   public efz b() {
+      return ega.r;
    }
 
    @Override
-   public ckj a(ckj $$0, edi $$1) {
-      cmi.a($$0, this.b.a());
+   public Set<egt<?>> a() {
+      return ImmutableSet.of(egw.i);
+   }
+
+   @Override
+   public clb a(clb $$0, eel $$1) {
+      clb $$2 = $$1.c(egw.i);
+      if ($$2 != null) {
+         int $$3 = cpo.a(this.e.a(), $$2);
+         int $$4 = this.f.a($$1.b(), $$0.L(), $$3);
+         $$0.f($$4);
+      }
+
       return $$0;
    }
 
-   public static eeu.a<?> a(cmg $$0) {
-      return a($$1 -> new efl($$1, $$0.c()));
+   public static efx.a<?> a(cpm $$0, float $$1, int $$2) {
+      return a($$3 -> new efl($$3, $$0.j(), new efl.a($$2, $$1)));
+   }
+
+   public static efx.a<?> a(cpm $$0) {
+      return a($$1 -> new efl($$1, $$0.j(), new efl.d()));
+   }
+
+   public static efx.a<?> b(cpm $$0) {
+      return a($$1 -> new efl($$1, $$0.j(), new efl.e(1)));
+   }
+
+   public static efx.a<?> a(cpm $$0, int $$1) {
+      return a($$2 -> new efl($$2, $$0.j(), new efl.e($$1)));
+   }
+
+   static record a(int b, float c) implements efl.b {
+      private static final Codec<efl.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(efl.a::b), Codec.FLOAT.fieldOf("probability").forGetter(efl.a::c)).apply($$0, efl.a::new)
+      );
+      public static final efl.c a = new efl.c(new agg("binomial_with_bonus_count"), d);
+
+      @Override
+      public int a(ato $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
+         }
+
+         return $$1;
+      }
+
+      @Override
+      public efl.c a() {
+         return a;
+      }
+   }
+
+   interface b {
+      int a(ato var1, int var2, int var3);
+
+      efl.c a();
+   }
+
+   static record c(agg a, Codec<? extends efl.b> b) {
+   }
+
+   static record d() implements efl.b {
+      public static final Codec<efl.d> a = Codec.unit(efl.d::new);
+      public static final efl.c b = new efl.c(new agg("ore_drops"), a);
+
+      @Override
+      public int a(ato $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public efl.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements efl.b {
+      public static final Codec<efl.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(efl.e::b)).apply($$0, efl.e::new)
+      );
+      public static final efl.c b = new efl.c(new agg("uniform_bonus_count"), a);
+
+      @Override
+      public int a(ato $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public efl.c a() {
+         return b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

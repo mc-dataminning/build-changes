@@ -1,32 +1,24 @@
-public class abp implements wb<xu> {
-   private final ui a;
-   private final ui b;
+public class abp implements wk<yd> {
+   private final ur a;
 
-   public abp(ui $$0, ui $$1) {
+   public abp(ur $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public abp(tl $$0) {
+   public abp(tu $$0) {
       this.a = $$0.m();
-      this.b = $$0.m();
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public ui a() {
+   public ur a() {
       return this.a;
-   }
-
-   public ui d() {
-      return this.b;
    }
 }

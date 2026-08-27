@@ -1,194 +1,106 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.Map;
 
-public class cvj extends ctm implements cxg {
-   public static final MapCodec<cvj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), t()).apply($$0, cvj::new)
+public class cvj extends ctk {
+   public static final MapCodec<cvj> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(jy.f.q().fieldOf("candle").forGetter($$0x -> $$0x.k), t()).apply($$0, cvj::new)
    );
-   private static final Logger d = LogUtils.getLogger();
-   public static final dgv b = cwb.a;
-   public static final dgs c = dgr.c;
-   private final boolean e;
+   public static final dhn d = ctk.b;
+   protected static final float e = 1.0F;
+   protected static final ekb f = cut.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
+   protected static final ekb g = cut.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
+   protected static final ekb h = ejy.a(f, g);
+   private static final Map<cut, cvj> i = Maps.newHashMap();
+   private static final Iterable<eji> j = ImmutableList.of(new eji(0.5, 1.0, 0.5));
+   private final cut k;
 
    @Override
    public MapCodec<cvj> a() {
-      return a;
+      return c;
    }
 
-   public cvj(boolean $$0, dga.d $$1) {
+   protected cvj(cut $$0, dgv.d $$1) {
       super($$1);
-      this.k(this.E.b().a(b, hx.c).a(c, Boolean.valueOf(false)));
-      this.e = $$0;
+      this.k(this.E.b().a(d, Boolean.valueOf(false)));
+      i.put($$0, this);
+      this.k = $$0;
    }
 
    @Override
-   public ddx a(ht $$0, dgb $$1) {
-      deh $$2 = new deh($$0, $$1);
-      $$2.b(this.e);
-      return $$2;
+   protected Iterable<eji> b(dgw $$0) {
+      return j;
    }
 
    @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, cua $$3, ht $$4, boolean $$5) {
-      if (!$$1.B) {
-         if ($$1.c_($$2) instanceof deh $$7) {
-            boolean $$8 = $$1.B($$2);
-            boolean $$9 = $$7.d();
-            $$7.a($$8);
-            if (!$$9 && !$$7.f() && $$7.v() != deh.a.a) {
-               if ($$8) {
-                  $$7.j();
-                  $$1.a($$2, this, 1);
-               }
-            }
-         }
-      }
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return h;
    }
 
    @Override
-   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if ($$1.c_($$2) instanceof deh $$5) {
-         cqa $$6 = $$5.c();
-         boolean $$7 = !ats.b($$6.m());
-         deh.a $$8 = $$5.v();
-         boolean $$9 = $$5.i();
-         if ($$8 == deh.a.b) {
-            $$5.j();
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.w()) {
-               $$6.a(0);
-            }
-
-            if ($$5.d() || $$5.f()) {
-               $$1.a($$2, this, 1);
-            }
-         } else if ($$8 == deh.a.c) {
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.w()) {
-               $$6.a(0);
-            }
+   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
+      clb $$6 = $$3.b($$4);
+      if ($$6.a(cle.nE) || $$6.a(cle.tg)) {
+         return biq.d;
+      } else if (a($$5) && $$3.b($$4).b() && $$0.c(d)) {
+         a($$3, $$0, $$1, $$2);
+         return biq.a($$1.B);
+      } else {
+         biq $$7 = cvf.a($$1, $$2, cuv.eg.o(), $$3);
+         if ($$7.a()) {
+            c($$0, $$1, $$2);
          }
 
-         $$1.c($$2, this);
+         return $$7;
       }
    }
 
-   private void a(dgb $$0, cqz $$1, ht $$2, cqa $$3, boolean $$4) {
-      if ($$4) {
-         $$3.a($$1);
-      } else {
-         $$3.a(0);
-      }
-
-      a($$1, $$2, $$0.c(b));
+   private static boolean a(eje $$0) {
+      return $$0.e().d - (double)$$0.a().v() > 0.5;
    }
 
    @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      ddx $$6 = $$1.c_($$2);
-      if ($$6 instanceof deh && $$3.gp()) {
-         $$3.a((deh)$$6);
-         return bib.a($$1.B);
-      } else {
-         return bib.d;
-      }
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   public boolean d_(dgb $$0) {
+   public clb a(crv $$0, ht $$1, dgw $$2) {
+      return new clb(cuv.eg);
+   }
+
+   @Override
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      return $$1 == hx.a && !$$0.a($$3, $$4) ? cuv.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dgw $$0, crv $$1, ht $$2) {
+      return $$1.a_($$2.d()).e();
+   }
+
+   @Override
+   public int a(dgw $$0, crs $$1, ht $$2) {
+      return cvf.d;
+   }
+
+   @Override
+   public boolean d_(dgw $$0) {
       return true;
    }
 
    @Override
-   public int a(dgb $$0, cqz $$1, ht $$2) {
-      ddx $$3 = $$1.c_($$2);
-      return $$3 instanceof deh ? ((deh)$$3).c().k() : 0;
+   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
+      return false;
    }
 
-   @Override
-   public void a(cqz $$0, ht $$1, dgb $$2, bkj $$3, ckj $$4) {
-      if ($$0.c_($$1) instanceof deh $$6) {
-         cqa $$7 = $$6.c();
-         if ($$4.A()) {
-            $$7.b($$4.y());
-         }
-
-         if (!$$0.B) {
-            if (cic.a($$4) == null) {
-               $$7.a($$0.X().b(cqv.o));
-               $$6.b(this.e);
-            }
-
-            if ($$6.v() == deh.a.a) {
-               boolean $$8 = $$0.B($$1);
-               $$6.a($$8);
-            }
-         }
-      }
+   public static dgw a(cut $$0) {
+      return i.get($$0).o();
    }
 
-   @Override
-   public dae b_(dgb $$0) {
-      return dae.c;
-   }
-
-   @Override
-   public dgb a(dgb $$0, dal $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dgb a(dgb $$0, cyv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dgb a(cmr $$0) {
-      return this.o().a(b, $$0.d().g());
-   }
-
-   private static void a(cqz $$0, ht $$1, hx $$2) {
-      ht.a $$3 = $$1.j();
-      cqv $$4 = $$0.X();
-      int $$5 = $$4.c(cqv.w);
-
-      while ($$5-- > 0) {
-         $$3.c($$2);
-         dgb $$6 = $$0.a_($$3);
-         cua $$7 = $$6.b();
-         if (!$$6.a(cuc.kH) || !($$0.c_($$3) instanceof deh $$9) || $$9.v() != deh.a.a) {
-            break;
-         }
-
-         if ($$9.d() || $$9.f()) {
-            cqa $$10 = $$9.c();
-            if ($$9.j()) {
-               if (!$$10.a($$0)) {
-                  break;
-               }
-
-               $$0.c($$3, $$7);
-            } else if ($$9.w()) {
-               $$10.a(0);
-            }
-         }
-
-         $$2 = $$6.c(b);
-      }
-
-      if ($$5 <= 0) {
-         int $$11 = Math.max($$4.c(cqv.w), 0);
-         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
-      }
+   public static boolean g(dgw $$0) {
+      return $$0.a(arc.bj, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

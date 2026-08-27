@@ -8,17 +8,17 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class hj {
-   private static final Map<afw, SuggestionProvider<dy>> e = Maps.newHashMap();
-   private static final afw f = new afw("ask_server");
+   private static final Map<agg, SuggestionProvider<dy>> e = Maps.newHashMap();
+   private static final agg f = new agg("ask_server");
    public static final SuggestionProvider<dy> a = a(f, ($$0, $$1) -> ((dy)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<du> b = a(new afw("all_recipes"), ($$0, $$1) -> dy.a(((dy)$$0.getSource()).t(), $$1));
-   public static final SuggestionProvider<du> c = a(new afw("available_sounds"), ($$0, $$1) -> dy.a(((dy)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<du> b = a(new agg("all_recipes"), ($$0, $$1) -> dy.a(((dy)$$0.getSource()).t(), $$1));
+   public static final SuggestionProvider<du> c = a(new agg("available_sounds"), ($$0, $$1) -> dy.a(((dy)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<du> d = a(
-      new afw("summonable_entities"),
-      ($$0, $$1) -> dy.a(jy.h.s().filter($$1x -> $$1x.a(((dy)$$0.getSource()).w()) && $$1x.c()), $$1, bjx::a, $$0x -> ui.c(ac.a("entity", bjx.a($$0x))))
+      new agg("summonable_entities"),
+      ($$0, $$1) -> dy.a(jy.h.s().filter($$1x -> $$1x.a(((dy)$$0.getSource()).w()) && $$1x.c()), $$1, bkm::a, $$0x -> ur.c(ac.a("entity", bkm.a($$0x))))
    );
 
-   public static <S extends dy> SuggestionProvider<S> a(afw $$0, SuggestionProvider<dy> $$1) {
+   public static <S extends dy> SuggestionProvider<S> a(agg $$0, SuggestionProvider<dy> $$1) {
       if (e.containsKey($$0)) {
          throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
       } else {
@@ -27,11 +27,11 @@ public class hj {
       }
    }
 
-   public static SuggestionProvider<dy> a(afw $$0) {
+   public static SuggestionProvider<dy> a(agg $$0) {
       return e.getOrDefault($$0, a);
    }
 
-   public static afw a(SuggestionProvider<dy> $$0) {
+   public static agg a(SuggestionProvider<dy> $$0) {
       return $$0 instanceof hj.a ? ((hj.a)$$0).b : f;
    }
 
@@ -41,9 +41,9 @@ public class hj {
 
    protected static class a implements SuggestionProvider<dy> {
       private final SuggestionProvider<dy> a;
-      final afw b;
+      final agg b;
 
-      public a(afw $$0, SuggestionProvider<dy> $$1) {
+      public a(agg $$0, SuggestionProvider<dy> $$1) {
          this.a = $$1;
          this.b = $$0;
       }

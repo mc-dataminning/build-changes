@@ -1,62 +1,96 @@
-public enum dhc implements atr {
-   a("harp", aqd.qr, dhc.a.a),
-   b("basedrum", aqd.ql, dhc.a.a),
-   c("snare", aqd.qu, dhc.a.a),
-   d("hat", aqd.qs, dhc.a.a),
-   e("bass", aqd.qm, dhc.a.a),
-   f("flute", aqd.qp, dhc.a.a),
-   g("bell", aqd.qn, dhc.a.a),
-   h("guitar", aqd.qq, dhc.a.a),
-   i("chime", aqd.qo, dhc.a.a),
-   j("xylophone", aqd.qv, dhc.a.a),
-   k("iron_xylophone", aqd.qw, dhc.a.a),
-   l("cow_bell", aqd.qx, dhc.a.a),
-   m("didgeridoo", aqd.qy, dhc.a.a),
-   n("bit", aqd.qz, dhc.a.a),
-   o("banjo", aqd.qA, dhc.a.a),
-   p("pling", aqd.qt, dhc.a.a),
-   q("zombie", aqd.qB, dhc.a.b),
-   r("skeleton", aqd.qC, dhc.a.b),
-   s("creeper", aqd.qD, dhc.a.b),
-   t("dragon", aqd.qE, dhc.a.b),
-   u("wither_skeleton", aqd.qF, dhc.a.b),
-   v("piglin", aqd.qG, dhc.a.b),
-   w("custom_head", aqd.yw, dhc.a.c);
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-   private final String x;
-   private final ib<aqc> y;
-   private final dhc.a z;
+public class dhc {
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dha>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   private dhc(String $$0, ib<aqc> $$1, dhc.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   private dhc() {
+      this.c.put(' ', $$0 -> true);
    }
 
-   @Override
-   public String c() {
-      return this.x;
+   public dhc a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
+         }
+
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
+         } else {
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
+
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
+                  }
+               }
+            }
+
+            this.b.add($$0);
+            return this;
+         }
+      } else {
+         throw new IllegalArgumentException("Empty pattern for aisle");
+      }
    }
 
-   public ib<aqc> a() {
-      return this.y;
+   public static dhc a() {
+      return new dhc();
    }
 
-   public boolean b() {
-      return this.z == dhc.a.a;
+   public dhc a(char $$0, Predicate<dha> $$1) {
+      this.c.put($$0, $$1);
+      return this;
    }
 
-   public boolean d() {
-      return this.z == dhc.a.c;
+   public dhb b() {
+      return new dhb(this.c());
    }
 
-   public boolean e() {
-      return this.z != dhc.a.a;
+   private Predicate<dha>[][][] c() {
+      this.d();
+      Predicate<dha>[][][] $$0 = (Predicate<dha>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            }
+         }
+      }
+
+      return $$0;
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
+
+      for (Entry<Character, Predicate<dha>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
+         }
+      }
+
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+      }
    }
 }

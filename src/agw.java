@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface agw extends agv {
+   aky a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface agw {
+   String b();
+
+   int d();
+
+   String f();
+
+   String[] J();
+
+   String q();
+
+   String s();
+
+   String a(String var1);
 }

@@ -1,48 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class dys extends dzg {
-   public static final Codec<dys> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               hx.a.e.fieldOf("axis").orElse(hx.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dys::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final hx.a g;
+public class dys extends dwv {
+   public static final Codec<dys> d = a(dys::new);
 
-   public dys(float $$0, float $$1, int $$2, int $$3, hx.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-      }
+   public dys(dwv.c $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(ht $$0, ht $$1, ht $$2, ate $$3) {
-      hx $$4 = hx.a(hx.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= asy.b(this.b, this.d, asy.g((float)$$8, (float)this.e, (float)this.f));
+   public Optional<dwv.b> a(dwv.a $$0) {
+      dbf $$1 = dbf.a($$0.f());
+      ht $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dwv.b($$2, (Consumer<dxn>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   }
+
+   private void a(dxn $$0, ht $$1, dbf $$2, dwv.a $$3) {
+      List<dwz> $$4 = Lists.newArrayList();
+      dyr.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   protected dzh<?> a() {
-      return dzh.c;
+   public dxe<?> e() {
+      return dxe.c;
    }
 }

@@ -1,91 +1,104 @@
-public class ddp {
-   public static final afv<ddo> a = a("base");
-   public static final afv<ddo> b = a("square_bottom_left");
-   public static final afv<ddo> c = a("square_bottom_right");
-   public static final afv<ddo> d = a("square_top_left");
-   public static final afv<ddo> e = a("square_top_right");
-   public static final afv<ddo> f = a("stripe_bottom");
-   public static final afv<ddo> g = a("stripe_top");
-   public static final afv<ddo> h = a("stripe_left");
-   public static final afv<ddo> i = a("stripe_right");
-   public static final afv<ddo> j = a("stripe_center");
-   public static final afv<ddo> k = a("stripe_middle");
-   public static final afv<ddo> l = a("stripe_downright");
-   public static final afv<ddo> m = a("stripe_downleft");
-   public static final afv<ddo> n = a("small_stripes");
-   public static final afv<ddo> o = a("cross");
-   public static final afv<ddo> p = a("straight_cross");
-   public static final afv<ddo> q = a("triangle_bottom");
-   public static final afv<ddo> r = a("triangle_top");
-   public static final afv<ddo> s = a("triangles_bottom");
-   public static final afv<ddo> t = a("triangles_top");
-   public static final afv<ddo> u = a("diagonal_left");
-   public static final afv<ddo> v = a("diagonal_up_right");
-   public static final afv<ddo> w = a("diagonal_up_left");
-   public static final afv<ddo> x = a("diagonal_right");
-   public static final afv<ddo> y = a("circle");
-   public static final afv<ddo> z = a("rhombus");
-   public static final afv<ddo> A = a("half_vertical");
-   public static final afv<ddo> B = a("half_horizontal");
-   public static final afv<ddo> C = a("half_vertical_right");
-   public static final afv<ddo> D = a("half_horizontal_bottom");
-   public static final afv<ddo> E = a("border");
-   public static final afv<ddo> F = a("curly_border");
-   public static final afv<ddo> G = a("gradient");
-   public static final afv<ddo> H = a("gradient_up");
-   public static final afv<ddo> I = a("bricks");
-   public static final afv<ddo> J = a("globe");
-   public static final afv<ddo> K = a("creeper");
-   public static final afv<ddo> L = a("skull");
-   public static final afv<ddo> M = a("flower");
-   public static final afv<ddo> N = a("mojang");
-   public static final afv<ddo> O = a("piglin");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   private static afv<ddo> a(String $$0) {
-      return afv.a(jz.c, new afw($$0));
+public class ddp extends dbs {
+   public static final MapCodec<ddp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dij.a.fieldOf("wood_type").forGetter(dbs::d), t()).apply($$0, ddp::new));
+   public static final dhq b = cyo.aE;
+   protected static final float c = 2.0F;
+   protected static final float d = 4.5F;
+   protected static final float e = 12.5F;
+   private static final Map<hx, ekb> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         hx.c,
+         cut.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
+         hx.d,
+         cut.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
+         hx.f,
+         cut.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
+         hx.e,
+         cut.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
+      )
+   );
+
+   @Override
+   public MapCodec<ddp> a() {
+      return a;
    }
 
-   public static ddo a(io<ddo> $$0) {
-      io.a($$0, a, new ddo("b"));
-      io.a($$0, b, new ddo("bl"));
-      io.a($$0, c, new ddo("br"));
-      io.a($$0, d, new ddo("tl"));
-      io.a($$0, e, new ddo("tr"));
-      io.a($$0, f, new ddo("bs"));
-      io.a($$0, g, new ddo("ts"));
-      io.a($$0, h, new ddo("ls"));
-      io.a($$0, i, new ddo("rs"));
-      io.a($$0, j, new ddo("cs"));
-      io.a($$0, k, new ddo("ms"));
-      io.a($$0, l, new ddo("drs"));
-      io.a($$0, m, new ddo("dls"));
-      io.a($$0, n, new ddo("ss"));
-      io.a($$0, o, new ddo("cr"));
-      io.a($$0, p, new ddo("sc"));
-      io.a($$0, q, new ddo("bt"));
-      io.a($$0, r, new ddo("tt"));
-      io.a($$0, s, new ddo("bts"));
-      io.a($$0, t, new ddo("tts"));
-      io.a($$0, u, new ddo("ld"));
-      io.a($$0, v, new ddo("rd"));
-      io.a($$0, w, new ddo("lud"));
-      io.a($$0, x, new ddo("rud"));
-      io.a($$0, y, new ddo("mc"));
-      io.a($$0, z, new ddo("mr"));
-      io.a($$0, A, new ddo("vh"));
-      io.a($$0, B, new ddo("hh"));
-      io.a($$0, C, new ddo("vhr"));
-      io.a($$0, D, new ddo("hhb"));
-      io.a($$0, E, new ddo("bo"));
-      io.a($$0, F, new ddo("cbo"));
-      io.a($$0, G, new ddo("gra"));
-      io.a($$0, H, new ddo("gru"));
-      io.a($$0, I, new ddo("bri"));
-      io.a($$0, J, new ddo("glb"));
-      io.a($$0, K, new ddo("cre"));
-      io.a($$0, L, new ddo("sku"));
-      io.a($$0, M, new ddo("flo"));
-      io.a($$0, N, new ddo("moj"));
-      return io.a($$0, O, new ddo("pig"));
+   public ddp(dij $$0, dgv.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.k(this.E.b().a(b, hx.c).a(f, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public String h() {
+      return this.k().a();
+   }
+
+   @Override
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return i.get($$0.c(b));
+   }
+
+   @Override
+   public boolean a(dgw $$0, crv $$1, ht $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Nullable
+   @Override
+   public dgw a(cnj $$0) {
+      dgw $$1 = this.o();
+      ecg $$2 = $$0.q().b_($$0.a());
+      crv $$3 = $$0.q();
+      ht $$4 = $$0.a();
+      hx[] $$5 = $$0.f();
+
+      for (hx $$6 : $$5) {
+         if ($$6.o().d()) {
+            hx $$7 = $$6.g();
+            $$1 = $$1.a(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.a(f, Boolean.valueOf($$2.a() == ech.c));
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? cuv.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public float g(dgw $$0) {
+      return $$0.c(b).p();
+   }
+
+   @Override
+   public eji h(dgw $$0) {
+      ekb $$1 = i.get($$0.c(b));
+      return $$1.a().f();
+   }
+
+   @Override
+   public dgw a(dgw $$0, dbf $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dgw a(dgw $$0, czp $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(b, f);
    }
 }

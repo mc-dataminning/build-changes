@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Function;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ekb
-@eka
-interface ekv {
+public interface ekv<T> {
+   sw b(long var1, Function<T, String> var3);
 }

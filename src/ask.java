@@ -1,80 +1,44 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+public class ask {
+   private static final int a = 2;
+   private static final int b = 6;
+   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
 
-@FunctionalInterface
-public interface ask {
-   ask a = $$0 -> true;
-
-   boolean accept(asl var1);
-
-   static ask codepoint(int $$0, vf $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
+   private ask() {
    }
 
-   static ask forward(String $$0, vf $$1) {
-      return $$0.isEmpty() ? a : $$2 -> atq.a($$0, $$1, $$2);
-   }
+   public static eji a(eji $$0, ask.a $$1) {
+      int $$2 = ati.a($$0.a());
+      int $$3 = ati.a($$0.b());
+      int $$4 = ati.a($$0.c());
+      double $$5 = $$0.a() - (double)$$2;
+      double $$6 = $$0.b() - (double)$$3;
+      double $$7 = $$0.c() - (double)$$4;
+      double $$8 = 0.0;
+      eji $$9 = eji.b;
 
-   static ask forward(String $$0, vf $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> atq.a($$0, $$1, decorateOutput($$3, $$2));
-   }
+      for (int $$10 = 0; $$10 < 6; $$10++) {
+         double $$11 = ati.d($$5, c[$$10 + 1], c[$$10]);
+         int $$12 = $$2 - 2 + $$10;
 
-   static ask backward(String $$0, vf $$1) {
-      return $$0.isEmpty() ? a : $$2 -> atq.b($$0, $$1, $$2);
-   }
+         for (int $$13 = 0; $$13 < 6; $$13++) {
+            double $$14 = ati.d($$6, c[$$13 + 1], c[$$13]);
+            int $$15 = $$3 - 2 + $$13;
 
-   static ask backward(String $$0, vf $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> atq.b($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static asl decorateOutput(asl $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
-   }
-
-   static ask composite() {
-      return a;
-   }
-
-   static ask composite(ask $$0) {
-      return $$0;
-   }
-
-   static ask composite(ask $$0, ask $$1) {
-      return fromPair($$0, $$1);
-   }
-
-   static ask composite(ask... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
-   }
-
-   static ask composite(List<ask> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
-      }
-   }
-
-   static ask fromPair(ask $$0, ask $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
-   }
-
-   static ask fromList(List<ask> $$0) {
-      return $$1 -> {
-         for (ask $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
+            for (int $$16 = 0; $$16 < 6; $$16++) {
+               double $$17 = ati.d($$7, c[$$16 + 1], c[$$16]);
+               int $$18 = $$4 - 2 + $$16;
+               double $$19 = $$11 * $$14 * $$17;
+               $$8 += $$19;
+               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).a($$19));
             }
          }
+      }
 
-         return true;
-      };
+      return $$9.a(1.0 / $$8);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      eji fetch(int var1, int var2, int var3);
    }
 }

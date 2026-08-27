@@ -1,29 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcc extends cwg implements cud {
-   public static final MapCodec<dcc> c = b(dcc::new);
+public class dcc extends cut {
+   public static final MapCodec<dcc> b = b(dcc::new);
+   public static final dhn c = dhm.z;
 
    @Override
-   public MapCodec<dcc> a() {
-      return c;
+   protected MapCodec<? extends dcc> a() {
+      return b;
    }
 
-   public dcc(dga.d $$0) {
+   protected dcc(dgv.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(crc $$0, ht $$1, dgb $$2) {
-      return true;
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      return $$1 == hx.b ? $$0.a(c, Boolean.valueOf(h($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
-      return true;
+   public dgw a(cnj $$0) {
+      dgw $$1 = $$0.q().a_($$0.a().c());
+      return this.o().a(c, Boolean.valueOf(h($$1)));
+   }
+
+   private static boolean h(dgw $$0) {
+      return $$0.a(arc.by);
    }
 
    @Override
-   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
-      a($$0, $$2, new ckj(this));
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(c);
    }
 }

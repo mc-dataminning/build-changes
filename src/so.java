@@ -1,279 +1,625 @@
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.mojang.brigadier.StringReader;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.regex.Pattern;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class so {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("argument.nbt.trailing"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.c("argument.nbt.expected.key"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ui.c("argument.nbt.expected.value"));
-   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> ui.b("argument.nbt.list.mixed", $$0, $$1));
-   public static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> ui.b("argument.nbt.array.mixed", $$0, $$1));
-   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> ui.b("argument.nbt.array.invalid", $$0));
-   public static final char g = ',';
-   public static final char h = ':';
-   private static final char j = '[';
-   private static final char k = ']';
-   private static final char l = '}';
-   private static final char m = '{';
-   private static final Pattern n = Pattern.compile("[-+]?(?:[0-9]+[.]|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?", 2);
-   private static final Pattern o = Pattern.compile("[-+]?(?:[0-9]+[.]?|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?d", 2);
-   private static final Pattern p = Pattern.compile("[-+]?(?:[0-9]+[.]?|[0-9]*[.][0-9]+)(?:e[-+]?[0-9]+)?f", 2);
-   private static final Pattern q = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)b", 2);
-   private static final Pattern r = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)l", 2);
-   private static final Pattern s = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)s", 2);
-   private static final Pattern t = Pattern.compile("[-+]?(?:0|[1-9][0-9]*)");
-   public static final Codec<rt> i = Codec.STRING.comapFlatMap($$0 -> {
+public final class so {
+   private static final Comparator<sf> b = Comparator.<sf>comparingInt($$0 -> $$0.e(1)).thenComparingInt($$0 -> $$0.e(0)).thenComparingInt($$0 -> $$0.e(2));
+   private static final Comparator<sf> c = Comparator.<sf>comparingDouble($$0 -> $$0.h(1))
+      .thenComparingDouble($$0 -> $$0.h(0))
+      .thenComparingDouble($$0 -> $$0.h(2));
+   public static final String a = "data";
+   private static final char d = '{';
+   private static final char e = '}';
+   private static final String f = ",";
+   private static final char g = ':';
+   private static final Splitter h = Splitter.on(",");
+   private static final Splitter i = Splitter.on(':').limit(2);
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 2;
+   private static final int l = -1;
+
+   private so() {
+   }
+
+   @Nullable
+   public static GameProfile a(rz $$0) {
+      UUID $$1 = $$0.b("Id") ? $$0.a("Id") : ac.d;
+      String $$2 = $$0.l("Name");
+
       try {
-         return DataResult.success(new so(new StringReader($$0)).a(), Lifecycle.stable());
-      } catch (CommandSyntaxException var2) {
-         return DataResult.error(var2::getMessage);
-      }
-   }, rt::toString);
-   private final StringReader u;
+         GameProfile $$3 = new GameProfile($$1, $$2);
+         if ($$0.b("Properties", 10)) {
+            rz $$4 = $$0.p("Properties");
 
-   public static rt a(String $$0) throws CommandSyntaxException {
-      return new so(new StringReader($$0)).a();
-   }
+            for (String $$5 : $$4.e()) {
+               sf $$6 = $$4.c($$5, 10);
 
-   @VisibleForTesting
-   rt a() throws CommandSyntaxException {
-      rt $$0 = this.f();
-      this.u.skipWhitespace();
-      if (this.u.canRead()) {
-         throw a.createWithContext(this.u);
-      } else {
-         return $$0;
-      }
-   }
+               for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
+                  rz $$8 = $$6.a($$7);
+                  String $$9 = $$8.l("Value");
+                  if ($$8.b("Signature", 8)) {
+                     $$3.getProperties().put($$5, new Property($$5, $$9, $$8.l("Signature")));
+                  } else {
+                     $$3.getProperties().put($$5, new Property($$5, $$9));
+                  }
+               }
+            }
+         }
 
-   public so(StringReader $$0) {
-      this.u = $$0;
-   }
-
-   protected String b() throws CommandSyntaxException {
-      this.u.skipWhitespace();
-      if (!this.u.canRead()) {
-         throw b.createWithContext(this.u);
-      } else {
-         return this.u.readString();
+         return $$3;
+      } catch (Throwable var11) {
+         return null;
       }
    }
 
-   protected sn c() throws CommandSyntaxException {
-      this.u.skipWhitespace();
-      int $$0 = this.u.getCursor();
-      if (StringReader.isQuotedStringStart(this.u.peek())) {
-         return sl.a(this.u.readQuotedString());
-      } else {
-         String $$1 = this.u.readUnquotedString();
-         if ($$1.isEmpty()) {
-            this.u.setCursor($$0);
-            throw c.createWithContext(this.u);
-         } else {
-            return this.b($$1);
-         }
-      }
-   }
-
-   private sn b(String $$0) {
-      try {
-         if (p.matcher($$0).matches()) {
-            return rw.a(Float.parseFloat($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (q.matcher($$0).matches()) {
-            return rr.a(Byte.parseByte($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (r.matcher($$0).matches()) {
-            return sb.a(Long.parseLong($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (s.matcher($$0).matches()) {
-            return si.a(Short.parseShort($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (t.matcher($$0).matches()) {
-            return ry.a(Integer.parseInt($$0));
-         }
-
-         if (o.matcher($$0).matches()) {
-            return ru.a(Double.parseDouble($$0.substring(0, $$0.length() - 1)));
-         }
-
-         if (n.matcher($$0).matches()) {
-            return ru.a(Double.parseDouble($$0));
-         }
-
-         if ("true".equalsIgnoreCase($$0)) {
-            return rr.c;
-         }
-
-         if ("false".equalsIgnoreCase($$0)) {
-            return rr.b;
-         }
-      } catch (NumberFormatException var3) {
+   public static rz a(rz $$0, GameProfile $$1) {
+      if (!$$1.getName().isEmpty()) {
+         $$0.a("Name", $$1.getName());
       }
 
-      return sl.a($$0);
-   }
-
-   public sn d() throws CommandSyntaxException {
-      this.u.skipWhitespace();
-      if (!this.u.canRead()) {
-         throw c.createWithContext(this.u);
-      } else {
-         char $$0 = this.u.peek();
-         if ($$0 == '{') {
-            return this.f();
-         } else {
-            return $$0 == '[' ? this.e() : this.c();
-         }
-      }
-   }
-
-   protected sn e() throws CommandSyntaxException {
-      return this.u.canRead(3) && !StringReader.isQuotedStringStart(this.u.peek(1)) && this.u.peek(2) == ';' ? this.h() : this.g();
-   }
-
-   public rt f() throws CommandSyntaxException {
-      this.a('{');
-      rt $$0 = new rt();
-      this.u.skipWhitespace();
-
-      while (this.u.canRead() && this.u.peek() != '}') {
-         int $$1 = this.u.getCursor();
-         String $$2 = this.b();
-         if ($$2.isEmpty()) {
-            this.u.setCursor($$1);
-            throw b.createWithContext(this.u);
-         }
-
-         this.a(':');
-         $$0.a($$2, this.d());
-         if (!this.i()) {
-            break;
-         }
-
-         if (!this.u.canRead()) {
-            throw b.createWithContext(this.u);
-         }
+      if (!$$1.getId().equals(ac.d)) {
+         $$0.a("Id", $$1.getId());
       }
 
-      this.a('}');
+      if (!$$1.getProperties().isEmpty()) {
+         rz $$2 = new rz();
+
+         for (String $$3 : $$1.getProperties().keySet()) {
+            sf $$4 = new sf();
+
+            for (Property $$5 : $$1.getProperties().get($$3)) {
+               rz $$6 = new rz();
+               $$6.a("Value", $$5.value());
+               String $$7 = $$5.signature();
+               if ($$7 != null) {
+                  $$6.a("Signature", $$7);
+               }
+
+               $$4.add($$6);
+            }
+
+            $$2.a($$3, $$4);
+         }
+
+         $$0.a("Properties", $$2);
+      }
+
       return $$0;
    }
 
-   private sn g() throws CommandSyntaxException {
-      this.a('[');
-      this.u.skipWhitespace();
-      if (!this.u.canRead()) {
-         throw c.createWithContext(this.u);
-      } else {
-         rz $$0 = new rz();
-         sp<?> $$1 = null;
+   @VisibleForTesting
+   public static boolean a(@Nullable sw $$0, @Nullable sw $$1, boolean $$2) {
+      if ($$0 == $$1) {
+         return true;
+      } else if ($$0 == null) {
+         return true;
+      } else if ($$1 == null) {
+         return false;
+      } else if (!$$0.getClass().equals($$1.getClass())) {
+         return false;
+      } else if ($$0 instanceof rz $$3) {
+         rz $$4 = (rz)$$1;
 
-         while (this.u.peek() != ']') {
-            int $$2 = this.u.getCursor();
-            sn $$3 = this.d();
-            sp<?> $$4 = $$3.c();
-            if ($$1 == null) {
-               $$1 = $$4;
-            } else if ($$4 != $$1) {
-               this.u.setCursor($$2);
-               throw d.createWithContext(this.u, $$4.b(), $$1.b());
-            }
-
-            $$0.add($$3);
-            if (!this.i()) {
-               break;
-            }
-
-            if (!this.u.canRead()) {
-               throw c.createWithContext(this.u);
+         for (String $$5 : $$3.e()) {
+            sw $$6 = $$3.c($$5);
+            if (!a($$6, $$4.c($$5), $$2)) {
+               return false;
             }
          }
 
-         this.a(']');
+         return true;
+      } else {
+         if ($$0 instanceof sf $$7 && $$2) {
+            sf $$8 = (sf)$$1;
+            if ($$7.isEmpty()) {
+               return $$8.isEmpty();
+            }
+
+            for (sw $$9 : $$7) {
+               boolean $$10 = false;
+
+               for (sw $$11 : $$8) {
+                  if (a($$9, $$11, $$2)) {
+                     $$10 = true;
+                     break;
+                  }
+               }
+
+               if (!$$10) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+
+         return $$0.equals($$1);
+      }
+   }
+
+   public static sd a(UUID $$0) {
+      return new sd(iv.a($$0));
+   }
+
+   public static UUID a(sw $$0) {
+      if ($$0.c() != sd.a) {
+         throw new IllegalArgumentException("Expected UUID-Tag to be of type " + sd.a.a() + ", but found " + $$0.c().a() + ".");
+      } else {
+         int[] $$1 = ((sd)$$0).g();
+         if ($$1.length != 4) {
+            throw new IllegalArgumentException("Expected UUID-Array to be of length 4, but found " + $$1.length + ".");
+         } else {
+            return iv.a($$1);
+         }
+      }
+   }
+
+   public static ht b(rz $$0) {
+      return new ht($$0.h("X"), $$0.h("Y"), $$0.h("Z"));
+   }
+
+   public static rz a(ht $$0) {
+      rz $$1 = new rz();
+      $$1.a("X", $$0.u());
+      $$1.a("Y", $$0.v());
+      $$1.a("Z", $$0.w());
+      return $$1;
+   }
+
+   public static dgw a(ic<cut> $$0, rz $$1) {
+      if (!$$1.b("Name", 8)) {
+         return cuv.a.o();
+      } else {
+         agg $$2 = new agg($$1.l("Name"));
+         Optional<? extends ib<cut>> $$3 = $$0.a(agf.a(jz.e, $$2));
+         if ($$3.isEmpty()) {
+            return cuv.a.o();
+         } else {
+            cut $$4 = $$3.get().a();
+            dgw $$5 = $$4.o();
+            if ($$1.b("Properties", 10)) {
+               rz $$6 = $$1.p("Properties");
+               dgx<cut, dgw> $$7 = $$4.n();
+
+               for (String $$8 : $$6.e()) {
+                  dhz<?> $$9 = $$7.a($$8);
+                  if ($$9 != null) {
+                     $$5 = a($$5, $$9, $$8, $$6, $$1);
+                  }
+               }
+            }
+
+            return $$5;
+         }
+      }
+   }
+
+   private static <S extends dgy<?, S>, T extends Comparable<T>> S a(S $$0, dhz<T> $$1, String $$2, rz $$3, rz $$4) {
+      Optional<T> $$5 = $$1.b($$3.l($$2));
+      if ($$5.isPresent()) {
+         return $$0.a($$1, $$5.get());
+      } else {
+         j.warn("Unable to read property: {} with value: {} for blockstate: {}", new Object[]{$$2, $$3.l($$2), $$4});
          return $$0;
       }
    }
 
-   private sn h() throws CommandSyntaxException {
-      this.a('[');
-      int $$0 = this.u.getCursor();
-      char $$1 = this.u.read();
-      this.u.read();
-      this.u.skipWhitespace();
-      if (!this.u.canRead()) {
-         throw c.createWithContext(this.u);
-      } else if ($$1 == 'B') {
-         return new rq(this.a(rq.a, rr.a));
-      } else if ($$1 == 'L') {
-         return new sa(this.a(sa.a, sb.a));
-      } else if ($$1 == 'I') {
-         return new rx(this.a(rx.a, ry.a));
-      } else {
-         this.u.setCursor($$0);
-         throw f.createWithContext(this.u, String.valueOf($$1));
+   public static rz a(dgw $$0) {
+      rz $$1 = new rz();
+      $$1.a("Name", jy.f.b($$0.b()).toString());
+      ImmutableMap<dhz<?>, Comparable<?>> $$2 = $$0.C();
+      if (!$$2.isEmpty()) {
+         rz $$3 = new rz();
+         UnmodifiableIterator var4 = $$2.entrySet().iterator();
+
+         while (var4.hasNext()) {
+            Entry<dhz<?>, Comparable<?>> $$4 = (Entry<dhz<?>, Comparable<?>>)var4.next();
+            dhz<?> $$5 = $$4.getKey();
+            $$3.a($$5.f(), a($$5, $$4.getValue()));
+         }
+
+         $$1.a("Properties", $$3);
       }
+
+      return $$1;
    }
 
-   private <T extends Number> List<T> a(sp<?> $$0, sp<?> $$1) throws CommandSyntaxException {
-      List<T> $$2 = Lists.newArrayList();
+   public static rz a(ecg $$0) {
+      rz $$1 = new rz();
+      $$1.a("Name", jy.d.b($$0.a()).toString());
+      ImmutableMap<dhz<?>, Comparable<?>> $$2 = $$0.C();
+      if (!$$2.isEmpty()) {
+         rz $$3 = new rz();
+         UnmodifiableIterator var4 = $$2.entrySet().iterator();
 
-      while (this.u.peek() != ']') {
-         int $$3 = this.u.getCursor();
-         sn $$4 = this.d();
-         sp<?> $$5 = $$4.c();
-         if ($$5 != $$1) {
-            this.u.setCursor($$3);
-            throw e.createWithContext(this.u, $$5.b(), $$0.b());
+         while (var4.hasNext()) {
+            Entry<dhz<?>, Comparable<?>> $$4 = (Entry<dhz<?>, Comparable<?>>)var4.next();
+            dhz<?> $$5 = $$4.getKey();
+            $$3.a($$5.f(), a($$5, $$4.getValue()));
          }
 
-         if ($$1 == rr.a) {
-            $$2.add((T)((sh)$$4).i());
-         } else if ($$1 == sb.a) {
-            $$2.add((T)((sh)$$4).f());
-         } else {
-            $$2.add((T)((sh)$$4).g());
-         }
+         $$1.a("Properties", $$3);
+      }
 
-         if (!this.i()) {
+      return $$1;
+   }
+
+   private static <T extends Comparable<T>> String a(dhz<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
+   }
+
+   public static String b(sw $$0) {
+      return a($$0, false);
+   }
+
+   public static String a(sw $$0, boolean $$1) {
+      return a(new StringBuilder(), $$0, 0, $$1).toString();
+   }
+
+   public static StringBuilder a(StringBuilder $$0, sw $$1, int $$2, boolean $$3) {
+      switch ($$1.b()) {
+         case 0:
             break;
-         }
+         case 1:
+         case 2:
+         case 3:
+         case 4:
+         case 5:
+         case 6:
+         case 8:
+            $$0.append($$1);
+            break;
+         case 7:
+            rw $$4 = (rw)$$1;
+            byte[] $$5 = $$4.e();
+            int $$6 = $$5.length;
+            a($$2, $$0).append("byte[").append($$6).append("] {\n");
+            if ($$3) {
+               a($$2 + 1, $$0);
 
-         if (!this.u.canRead()) {
-            throw c.createWithContext(this.u);
-         }
+               for (int $$7 = 0; $$7 < $$5.length; $$7++) {
+                  if ($$7 != 0) {
+                     $$0.append(',');
+                  }
+
+                  if ($$7 % 16 == 0 && $$7 / 16 > 0) {
+                     $$0.append('\n');
+                     if ($$7 < $$5.length) {
+                        a($$2 + 1, $$0);
+                     }
+                  } else if ($$7 != 0) {
+                     $$0.append(' ');
+                  }
+
+                  $$0.append(String.format(Locale.ROOT, "0x%02X", $$5[$$7] & 255));
+               }
+            } else {
+               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
+            }
+
+            $$0.append('\n');
+            a($$2, $$0).append('}');
+            break;
+         case 9:
+            sf $$8 = (sf)$$1;
+            int $$9 = $$8.size();
+            int $$10 = $$8.f();
+            String $$11 = $$10 == 0 ? "undefined" : sz.a($$10).b();
+            a($$2, $$0).append("list<").append($$11).append(">[").append($$9).append("] [");
+            if ($$9 != 0) {
+               $$0.append('\n');
+            }
+
+            for (int $$12 = 0; $$12 < $$9; $$12++) {
+               if ($$12 != 0) {
+                  $$0.append(",\n");
+               }
+
+               a($$2 + 1, $$0);
+               a($$0, $$8.k($$12), $$2 + 1, $$3);
+            }
+
+            if ($$9 != 0) {
+               $$0.append('\n');
+            }
+
+            a($$2, $$0).append(']');
+            break;
+         case 10:
+            rz $$19 = (rz)$$1;
+            List<String> $$20 = Lists.newArrayList($$19.e());
+            Collections.sort($$20);
+            a($$2, $$0).append('{');
+            if ($$0.length() - $$0.lastIndexOf("\n") > 2 * ($$2 + 1)) {
+               $$0.append('\n');
+               a($$2 + 1, $$0);
+            }
+
+            int $$21 = $$20.stream().mapToInt(String::length).max().orElse(0);
+            String $$22 = Strings.repeat(" ", $$21);
+
+            for (int $$23 = 0; $$23 < $$20.size(); $$23++) {
+               if ($$23 != 0) {
+                  $$0.append(",\n");
+               }
+
+               String $$24 = $$20.get($$23);
+               a($$2 + 1, $$0).append('"').append($$24).append('"').append($$22, 0, $$22.length() - $$24.length()).append(": ");
+               a($$0, $$19.c($$24), $$2 + 1, $$3);
+            }
+
+            if (!$$20.isEmpty()) {
+               $$0.append('\n');
+            }
+
+            a($$2, $$0).append('}');
+            break;
+         case 11:
+            sd $$13 = (sd)$$1;
+            int[] $$14 = $$13.g();
+            int $$15 = 0;
+
+            for (int $$16 : $$14) {
+               $$15 = Math.max($$15, String.format(Locale.ROOT, "%X", $$16).length());
+            }
+
+            int $$17 = $$14.length;
+            a($$2, $$0).append("int[").append($$17).append("] {\n");
+            if ($$3) {
+               a($$2 + 1, $$0);
+
+               for (int $$18 = 0; $$18 < $$14.length; $$18++) {
+                  if ($$18 != 0) {
+                     $$0.append(',');
+                  }
+
+                  if ($$18 % 16 == 0 && $$18 / 16 > 0) {
+                     $$0.append('\n');
+                     if ($$18 < $$14.length) {
+                        a($$2 + 1, $$0);
+                     }
+                  } else if ($$18 != 0) {
+                     $$0.append(' ');
+                  }
+
+                  $$0.append(String.format(Locale.ROOT, "0x%0" + $$15 + "X", $$14[$$18]));
+               }
+            } else {
+               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
+            }
+
+            $$0.append('\n');
+            a($$2, $$0).append('}');
+            break;
+         case 12:
+            sg $$25 = (sg)$$1;
+            long[] $$26 = $$25.g();
+            long $$27 = 0L;
+
+            for (long $$28 : $$26) {
+               $$27 = Math.max($$27, (long)String.format(Locale.ROOT, "%X", $$28).length());
+            }
+
+            long $$29 = (long)$$26.length;
+            a($$2, $$0).append("long[").append($$29).append("] {\n");
+            if ($$3) {
+               a($$2 + 1, $$0);
+
+               for (int $$30 = 0; $$30 < $$26.length; $$30++) {
+                  if ($$30 != 0) {
+                     $$0.append(',');
+                  }
+
+                  if ($$30 % 16 == 0 && $$30 / 16 > 0) {
+                     $$0.append('\n');
+                     if ($$30 < $$26.length) {
+                        a($$2 + 1, $$0);
+                     }
+                  } else if ($$30 != 0) {
+                     $$0.append(' ');
+                  }
+
+                  $$0.append(String.format(Locale.ROOT, "0x%0" + $$27 + "X", $$26[$$30]));
+               }
+            } else {
+               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
+            }
+
+            $$0.append('\n');
+            a($$2, $$0).append('}');
+            break;
+         default:
+            $$0.append("<UNKNOWN :(>");
       }
 
-      this.a(']');
-      return $$2;
+      return $$0;
    }
 
-   private boolean i() {
-      this.u.skipWhitespace();
-      if (this.u.canRead() && this.u.peek() == ',') {
-         this.u.skip();
-         this.u.skipWhitespace();
-         return true;
+   private static StringBuilder a(int $$0, StringBuilder $$1) {
+      int $$2 = $$1.lastIndexOf("\n") + 1;
+      int $$3 = $$1.length() - $$2;
+
+      for (int $$4 = 0; $$4 < 2 * $$0 - $$3; $$4++) {
+         $$1.append(' ');
+      }
+
+      return $$1;
+   }
+
+   public static ur c(sw $$0) {
+      return new tb("", 0).a($$0);
+   }
+
+   public static String c(rz $$0) {
+      return new ss().a((sw)d($$0));
+   }
+
+   public static rz a(String $$0) throws CommandSyntaxException {
+      return e(sx.a($$0));
+   }
+
+   @VisibleForTesting
+   static rz d(rz $$0) {
+      boolean $$1 = $$0.b("palettes", 9);
+      sf $$2;
+      if ($$1) {
+         $$2 = $$0.c("palettes", 9).b(0);
       } else {
-         return false;
+         $$2 = $$0.c("palette", 10);
       }
+
+      sf $$4 = $$2.stream().map(rz.class::cast).map(so::f).map(su::a).collect(Collectors.toCollection(sf::new));
+      $$0.a("palette", $$4);
+      if ($$1) {
+         sf $$5 = new sf();
+         sf $$6 = $$0.c("palettes", 9);
+         $$6.stream().map(sf.class::cast).forEach($$2x -> {
+            rz $$3x = new rz();
+
+            for (int $$4x = 0; $$4x < $$2x.size(); $$4x++) {
+               $$3x.a($$4.j($$4x), f($$2x.a($$4x)));
+            }
+
+            $$5.add($$3x);
+         });
+         $$0.a("palettes", $$5);
+      }
+
+      if ($$0.b("entities", 9)) {
+         sf $$7 = $$0.c("entities", 10);
+         sf $$8 = $$7.stream().map(rz.class::cast).sorted(Comparator.comparing($$0x -> $$0x.c("pos", 6), c)).collect(Collectors.toCollection(sf::new));
+         $$0.a("entities", $$8);
+      }
+
+      sf $$9 = $$0.c("blocks", 10)
+         .stream()
+         .map(rz.class::cast)
+         .sorted(Comparator.comparing($$0x -> $$0x.c("pos", 3), b))
+         .peek($$1x -> $$1x.a("state", $$4.j($$1x.h("state"))))
+         .collect(Collectors.toCollection(sf::new));
+      $$0.a("data", $$9);
+      $$0.r("blocks");
+      return $$0;
    }
 
-   private void a(char $$0) throws CommandSyntaxException {
-      this.u.skipWhitespace();
-      this.u.expect($$0);
+   @VisibleForTesting
+   static rz e(rz $$0) {
+      sf $$1 = $$0.c("palette", 8);
+      Map<String, sw> $$2 = $$1.stream().map(su.class::cast).map(su::s_).collect(ImmutableMap.toImmutableMap(Function.identity(), so::b));
+      if ($$0.b("palettes", 9)) {
+         $$0.a(
+            "palettes",
+            $$0.c("palettes", 10)
+               .stream()
+               .map(rz.class::cast)
+               .map($$1x -> $$2.keySet().stream().map($$1x::l).map(so::b).collect(Collectors.toCollection(sf::new)))
+               .collect(Collectors.toCollection(sf::new))
+         );
+         $$0.r("palette");
+      } else {
+         $$0.a("palette", $$2.values().stream().collect(Collectors.toCollection(sf::new)));
+      }
+
+      if ($$0.b("data", 9)) {
+         Object2IntMap<String> $$3 = new Object2IntOpenHashMap();
+         $$3.defaultReturnValue(-1);
+
+         for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+            $$3.put($$1.j($$4), $$4);
+         }
+
+         sf $$5 = $$0.c("data", 10);
+
+         for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
+            rz $$7 = $$5.a($$6);
+            String $$8 = $$7.l("state");
+            int $$9 = $$3.getInt($$8);
+            if ($$9 == -1) {
+               throw new IllegalStateException("Entry " + $$8 + " missing from palette");
+            }
+
+            $$7.a("state", $$9);
+         }
+
+         $$0.a("blocks", $$5);
+         $$0.r("data");
+      }
+
+      return $$0;
+   }
+
+   @VisibleForTesting
+   static String f(rz $$0) {
+      StringBuilder $$1 = new StringBuilder($$0.l("Name"));
+      if ($$0.b("Properties", 10)) {
+         rz $$2 = $$0.p("Properties");
+         String $$3 = $$2.e().stream().sorted().map($$1x -> $$1x + ":" + $$2.c($$1x).s_()).collect(Collectors.joining(","));
+         $$1.append('{').append($$3).append('}');
+      }
+
+      return $$1.toString();
+   }
+
+   @VisibleForTesting
+   static rz b(String $$0) {
+      rz $$1 = new rz();
+      int $$2 = $$0.indexOf(123);
+      String $$3;
+      if ($$2 >= 0) {
+         $$3 = $$0.substring(0, $$2);
+         rz $$4 = new rz();
+         if ($$2 + 2 <= $$0.length()) {
+            String $$5 = $$0.substring($$2 + 1, $$0.indexOf(125, $$2));
+            h.split($$5).forEach($$2x -> {
+               List<String> $$3x = i.splitToList($$2x);
+               if ($$3x.size() == 2) {
+                  $$4.a($$3x.get(0), $$3x.get(1));
+               } else {
+                  j.error("Something went wrong parsing: '{}' -- incorrect gamedata!", $$0);
+               }
+            });
+            $$1.a("Properties", $$4);
+         }
+      } else {
+         $$3 = $$0;
+      }
+
+      $$1.a("Name", $$3);
+      return $$1;
+   }
+
+   public static rz g(rz $$0) {
+      int $$1 = aa.b().d().c();
+      return a($$0, $$1);
+   }
+
+   public static rz a(rz $$0, int $$1) {
+      $$0.a("DataVersion", $$1);
+      return $$0;
+   }
+
+   public static int b(rz $$0, int $$1) {
+      return $$0.b("DataVersion", 99) ? $$0.h("DataVersion") : $$1;
    }
 }

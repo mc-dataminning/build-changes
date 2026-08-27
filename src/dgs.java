@@ -1,47 +1,338 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Collection;
-import java.util.Optional;
+import java.util.Iterator;
+import java.util.List;
 
-public class dgs extends dhe<Boolean> {
-   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
+public class dgs extends der {
+   private static final int b = 2;
+   private static final double c = 0.01;
+   public static final double a = 0.51;
+   private dgw d = cuv.a.o();
+   private hx e;
+   private boolean f;
+   private boolean g;
+   private static final ThreadLocal<hx> h = ThreadLocal.withInitial(() -> null);
+   private float i;
+   private float j;
+   private long k;
+   private int l;
 
-   protected dgs(String $$0) {
-      super($$0, Boolean.class);
+   public dgs(ht $$0, dgw $$1) {
+      super(det.k, $$0, $$1);
+   }
+
+   public dgs(ht $$0, dgw $$1, dgw $$2, hx $$3, boolean $$4, boolean $$5) {
+      this($$0, $$1);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   public Collection<Boolean> a() {
-      return this.a;
+   public rz av_() {
+      return this.o();
    }
 
-   public static dgs a(String $$0) {
-      return new dgs($$0);
+   public boolean c() {
+      return this.f;
    }
 
-   @Override
-   public Optional<Boolean> b(String $$0) {
-      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
+   public hx d() {
+      return this.e;
    }
 
-   public String a(Boolean $$0) {
-      return $$0.toString();
+   public boolean f() {
+      return this.g;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dgs $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
+   public float a(float $$0) {
+      if ($$0 > 1.0F) {
+         $$0 = 1.0F;
+      }
+
+      return ati.i($$0, this.j, this.i);
+   }
+
+   public float b(float $$0) {
+      return (float)this.e.j() * this.e(this.a($$0));
+   }
+
+   public float c(float $$0) {
+      return (float)this.e.k() * this.e(this.a($$0));
+   }
+
+   public float d(float $$0) {
+      return (float)this.e.l() * this.e(this.a($$0));
+   }
+
+   private float e(float $$0) {
+      return this.f ? $$0 - 1.0F : 1.0F - $$0;
+   }
+
+   private dgw w() {
+      return !this.c() && this.f() && this.d.b() instanceof dgp
+         ? cuv.bz.o().a(dgq.d, Boolean.valueOf(this.i > 0.25F)).a(dgq.c, this.d.a(cuv.br) ? dhy.b : dhy.a).a(dgq.a, this.d.c(dgp.a))
+         : this.d;
+   }
+
+   private static void a(crs $$0, ht $$1, float $$2, dgs $$3) {
+      hx $$4 = $$3.g();
+      double $$5 = (double)($$2 - $$3.i);
+      ekb $$6 = $$3.w().k($$0, $$1);
+      if (!$$6.c()) {
+         ejd $$7 = a($$1, $$6.a(), $$3);
+         List<bki> $$8 = $$0.a_(null, dgr.a($$7, $$4, $$5).b($$7));
+         if (!$$8.isEmpty()) {
+            List<ejd> $$9 = $$6.e();
+            boolean $$10 = $$3.d.a(cuv.hV);
+            Iterator var12 = $$8.iterator();
+
+            while (true) {
+               bki $$11;
+               while (true) {
+                  if (!var12.hasNext()) {
+                     return;
+                  }
+
+                  $$11 = (bki)var12.next();
+                  if ($$11.r_() != ecl.d) {
+                     if (!$$10) {
+                        break;
+                     }
+
+                     if (!($$11 instanceof amb)) {
+                        eji $$12 = $$11.do();
+                        double $$13 = $$12.c;
+                        double $$14 = $$12.d;
+                        double $$15 = $$12.e;
+                        switch ($$4.o()) {
+                           case a:
+                              $$13 = (double)$$4.j();
+                              break;
+                           case b:
+                              $$14 = (double)$$4.k();
+                              break;
+                           case c:
+                              $$15 = (double)$$4.l();
+                        }
+
+                        $$11.o($$13, $$14, $$15);
+                        break;
+                     }
+                  }
+               }
+
+               double $$16 = 0.0;
+
+               for (ejd $$17 : $$9) {
+                  ejd $$18 = dgr.a(a($$1, $$17, $$3), $$4, $$5);
+                  ejd $$19 = $$11.cG();
+                  if ($$18.c($$19)) {
+                     $$16 = Math.max($$16, a($$18, $$4, $$19));
+                     if ($$16 >= $$5) {
+                        break;
+                     }
+                  }
+               }
+
+               if (!($$16 <= 0.0)) {
+                  $$16 = Math.min($$16, $$5) + 0.01;
+                  a($$4, $$11, $$16, $$4);
+                  if (!$$3.f && $$3.g) {
+                     a($$1, $$11, $$4, $$5);
+                  }
+               }
+            }
          }
+      }
+   }
 
-         return false;
+   private static void a(hx $$0, bki $$1, double $$2, hx $$3) {
+      h.set($$0);
+      $$1.a(ble.c, new eji($$2 * (double)$$3.j(), $$2 * (double)$$3.k(), $$2 * (double)$$3.l()));
+      h.set(null);
+   }
+
+   private static void b(crs $$0, ht $$1, float $$2, dgs $$3) {
+      if ($$3.x()) {
+         hx $$4 = $$3.g();
+         if ($$4.o().d()) {
+            double $$5 = $$3.d.k($$0, $$1).c(hx.a.b);
+            ejd $$6 = a($$1, new ejd(0.0, $$5, 0.0, 1.0, 1.5000010000000001, 1.0), $$3);
+            double $$7 = (double)($$2 - $$3.i);
+
+            for (bki $$9 : $$0.a((bki)null, $$6, $$2x -> a($$6, $$2x, $$1))) {
+               a($$4, $$9, $$7, $$4);
+            }
+         }
+      }
+   }
+
+   private static boolean a(ejd $$0, bki $$1, ht $$2) {
+      return $$1.r_() == ecl.a && $$1.aA() && ($$1.d($$2) || $$1.dq() >= $$0.a && $$1.dq() <= $$0.d && $$1.dw() >= $$0.c && $$1.dw() <= $$0.f);
+   }
+
+   private boolean x() {
+      return this.d.a(cuv.pg);
+   }
+
+   public hx g() {
+      return this.f ? this.e : this.e.g();
+   }
+
+   private static double a(ejd $$0, hx $$1, ejd $$2) {
+      switch ($$1) {
+         case f:
+            return $$0.d - $$2.a;
+         case e:
+            return $$2.d - $$0.a;
+         case b:
+         default:
+            return $$0.e - $$2.b;
+         case a:
+            return $$2.e - $$0.b;
+         case d:
+            return $$0.f - $$2.c;
+         case c:
+            return $$2.f - $$0.c;
+      }
+   }
+
+   private static ejd a(ht $$0, ejd $$1, dgs $$2) {
+      double $$3 = (double)$$2.e($$2.i);
+      return $$1.d((double)$$0.u() + $$3 * (double)$$2.e.j(), (double)$$0.v() + $$3 * (double)$$2.e.k(), (double)$$0.w() + $$3 * (double)$$2.e.l());
+   }
+
+   private static void a(ht $$0, bki $$1, hx $$2, double $$3) {
+      ejd $$4 = $$1.cG();
+      ejd $$5 = ejy.b().a().a($$0);
+      if ($$4.c($$5)) {
+         hx $$6 = $$2.g();
+         double $$7 = a($$5, $$6, $$4) + 0.01;
+         double $$8 = a($$5, $$6, $$4.a($$5)) + 0.01;
+         if (Math.abs($$7 - $$8) < 0.01) {
+            $$7 = Math.min($$7, $$3) + 0.01;
+            a($$2, $$1, $$7, $$6);
+         }
+      }
+   }
+
+   public dgw i() {
+      return this.d;
+   }
+
+   public void j() {
+      if (this.o != null && (this.j < 1.0F || this.o.B)) {
+         this.i = 1.0F;
+         this.j = this.i;
+         this.o.n(this.p);
+         this.aw_();
+         if (this.o.a_(this.p).a(cuv.bQ)) {
+            dgw $$0;
+            if (this.g) {
+               $$0 = cuv.a.o();
+            } else {
+               $$0 = cut.b(this.d, this.o, this.p);
+            }
+
+            this.o.a(this.p, $$0, 3);
+            this.o.a(this.p, $$0.b(), this.p);
+         }
+      }
+   }
+
+   public static void a(crs $$0, ht $$1, dgw $$2, dgs $$3) {
+      $$3.k = $$0.V();
+      $$3.j = $$3.i;
+      if ($$3.j >= 1.0F) {
+         if ($$0.B && $$3.l < 5) {
+            $$3.l++;
+         } else {
+            $$0.n($$1);
+            $$3.aw_();
+            if ($$0.a_($$1).a(cuv.bQ)) {
+               dgw $$4 = cut.b($$3.d, $$0, $$1);
+               if ($$4.i()) {
+                  $$0.a($$1, $$3.d, 84);
+                  cut.a($$3.d, $$4, $$0, $$1, 3);
+               } else {
+                  if ($$4.b(dhm.C) && $$4.c(dhm.C)) {
+                     $$4 = $$4.a(dhm.C, Boolean.valueOf(false));
+                  }
+
+                  $$0.a($$1, $$4, 67);
+                  $$0.a($$1, $$4.b(), $$1);
+               }
+            }
+         }
+      } else {
+         float $$5 = $$3.i + 0.5F;
+         a($$0, $$1, $$5, $$3);
+         b($$0, $$1, $$5, $$3);
+         $$3.i = $$5;
+         if ($$3.i >= 1.0F) {
+            $$3.i = 1.0F;
+         }
       }
    }
 
    @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
+   public void a(rz $$0) {
+      super.a($$0);
+      ic<cut> $$1 = (ic<cut>)(this.o != null ? this.o.a(jz.e) : jy.f.p());
+      this.d = so.a($$1, $$0.p("blockState"));
+      this.e = hx.a($$0.h("facing"));
+      this.i = $$0.j("progress");
+      this.j = this.i;
+      this.f = $$0.q("extending");
+      this.g = $$0.q("source");
+   }
+
+   @Override
+   protected void b(rz $$0) {
+      super.b($$0);
+      $$0.a("blockState", so.a(this.d));
+      $$0.a("facing", this.e.d());
+      $$0.a("progress", this.j);
+      $$0.a("extending", this.f);
+      $$0.a("source", this.g);
+   }
+
+   public ekb a(cqy $$0, ht $$1) {
+      ekb $$2;
+      if (!this.f && this.g && this.d.b() instanceof dgp) {
+         $$2 = this.d.a(dgp.c, Boolean.valueOf(true)).k($$0, $$1);
+      } else {
+         $$2 = ejy.a();
+      }
+
+      hx $$4 = h.get();
+      if ((double)this.i < 1.0 && $$4 == this.g()) {
+         return $$2;
+      } else {
+         dgw $$5;
+         if (this.f()) {
+            $$5 = cuv.bz.o().a(dgq.a, this.e).a(dgq.d, Boolean.valueOf(this.f != 1.0F - this.i < 0.25F));
+         } else {
+            $$5 = this.d;
+         }
+
+         float $$7 = this.e(this.i);
+         double $$8 = (double)((float)this.e.j() * $$7);
+         double $$9 = (double)((float)this.e.k() * $$7);
+         double $$10 = (double)((float)this.e.l() * $$7);
+         return ejy.a($$2, $$5.k($$0, $$1).a($$8, $$9, $$10));
+      }
+   }
+
+   public long v() {
+      return this.k;
+   }
+
+   @Override
+   public void a(crs $$0) {
+      super.a($$0);
+      if ($$0.a(jz.e).a(this.d.b().r().g()).isEmpty()) {
+         this.d = cuv.a.o();
+      }
    }
 }

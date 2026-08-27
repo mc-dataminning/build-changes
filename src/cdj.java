@@ -1,52 +1,55 @@
-public abstract class cdj extends cde implements cdm {
-   private static final afc<ckj> e = aff.a(cdj.class, afe.h);
+public class cdj {
+   public boolean a;
+   public boolean b;
+   public boolean c;
+   public boolean d;
+   public boolean e = true;
+   private float f = 0.05F;
+   private float g = 0.1F;
 
-   public cdj(bjx<? extends cdj> $$0, cqz $$1) {
-      super($$0, $$1);
+   public void a(rz $$0) {
+      rz $$1 = new rz();
+      $$1.a("invulnerable", this.a);
+      $$1.a("flying", this.b);
+      $$1.a("mayfly", this.c);
+      $$1.a("instabuild", this.d);
+      $$1.a("mayBuild", this.e);
+      $$1.a("flySpeed", this.f);
+      $$1.a("walkSpeed", this.g);
+      $$0.a("abilities", $$1);
    }
 
-   public cdj(bjx<? extends cdj> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cqz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   public void b(rz $$0) {
+      if ($$0.b("abilities", 10)) {
+         rz $$1 = $$0.p("abilities");
+         this.a = $$1.q("invulnerable");
+         this.b = $$1.q("flying");
+         this.c = $$1.q("mayfly");
+         this.d = $$1.q("instabuild");
+         if ($$1.b("flySpeed", 99)) {
+            this.f = $$1.j("flySpeed");
+            this.g = $$1.j("walkSpeed");
+         }
 
-   public cdj(bjx<? extends cdj> $$0, bkj $$1, double $$2, double $$3, double $$4, cqz $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(ckj $$0) {
-      if (!$$0.a(ckm.tf) || $$0.u()) {
-         this.al().b(e, $$0.c(1));
+         if ($$1.b("mayBuild", 1)) {
+            this.e = $$1.q("mayBuild");
+         }
       }
    }
 
-   protected ckj w() {
-      return this.al().b(e);
+   public float a() {
+      return this.f;
    }
 
-   @Override
-   public ckj q() {
-      ckj $$0 = this.w();
-      return $$0.b() ? new ckj(ckm.tf) : $$0;
+   public void a(float $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   protected void b_() {
-      this.al().a(e, ckj.b);
+   public float b() {
+      return this.g;
    }
 
-   @Override
-   public void b(rt $$0) {
-      super.b($$0);
-      ckj $$1 = this.w();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new rt()));
-      }
-   }
-
-   @Override
-   public void a(rt $$0) {
-      super.a($$0);
-      ckj $$1 = ckj.a($$0.p("Item"));
-      this.a($$1);
+   public void b(float $$0) {
+      this.g = $$0;
    }
 }

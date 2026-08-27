@@ -1,134 +1,123 @@
-import java.util.Comparator;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bmc {
-   private bmc() {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<bmc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iv.a.fieldOf("UUID").forGetter(bmc::a),
+               Codec.STRING.fieldOf("Name").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("Amount").forGetter(bmc::c),
+               bmc.a.d.fieldOf("Operation").forGetter(bmc::b)
+            )
+            .apply($$0, bmc::new)
+   );
+   private final double c;
+   private final bmc.a d;
+   private final String e;
+   private final UUID f;
+
+   public bmc(String $$0, double $$1, bmc.a $$2) {
+      this(ati.a(ato.c()), $$0, $$1, $$2);
    }
 
-   public static void a(bkj $$0, bkj $$1, float $$2) {
-      c($$0, $$1);
-      b($$0, $$1, $$2);
+   public bmc(UUID $$0, String $$1, double $$2, bmc.a $$3) {
+      this.f = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static boolean a(blj<?> $$0, bkj $$1) {
-      Optional<btm> $$2 = $$0.c(btk.h);
-      return $$2.isPresent() && $$2.get().a($$1);
+   public UUID a() {
+      return this.f;
    }
 
-   public static boolean a(blj<?> $$0, btk<? extends bkj> $$1, bjx<?> $$2) {
-      return a($$0, $$1, $$1x -> $$1x.ag() == $$2);
+   public bmc.a b() {
+      return this.d;
    }
 
-   private static boolean a(blj<?> $$0, btk<? extends bkj> $$1, Predicate<bkj> $$2) {
-      return $$0.c($$1).filter($$2).filter(bkj::bv).filter($$1x -> a($$0, $$1x)).isPresent();
+   public double c() {
+      return this.c;
    }
 
-   private static void c(bkj $$0, bkj $$1) {
-      a($$0, $$1);
-      a($$1, $$0);
-   }
-
-   public static void a(bkj $$0, bkj $$1) {
-      $$0.dN().a(btk.n, new bml($$1, true));
-   }
-
-   private static void b(bkj $$0, bkj $$1, float $$2) {
-      int $$3 = 2;
-      a($$0, $$1, $$2, 2);
-      a($$1, $$0, $$2, 2);
-   }
-
-   public static void a(bkj $$0, bjt $$1, float $$2, int $$3) {
-      a($$0, new bml($$1, true), $$2, $$3);
-   }
-
-   public static void a(bkj $$0, ht $$1, float $$2, int $$3) {
-      a($$0, new bmd($$1), $$2, $$3);
-   }
-
-   public static void a(bkj $$0, bnn $$1, float $$2, int $$3) {
-      btn $$4 = new btn($$1, $$2, $$3);
-      $$0.dN().a(btk.n, $$1);
-      $$0.dN().a(btk.m, $$4);
-   }
-
-   public static void a(bkj $$0, ckj $$1, eif $$2) {
-      eif $$3 = new eif(0.3F, 0.3F, 0.3F);
-      a($$0, $$1, $$2, $$3, 0.3F);
-   }
-
-   public static void a(bkj $$0, ckj $$1, eif $$2, eif $$3, float $$4) {
-      double $$5 = $$0.du() - (double)$$4;
-      bzq $$6 = new bzq($$0.dL(), $$0.dq(), $$5, $$0.dw(), $$1);
-      $$6.a($$0);
-      eif $$7 = $$2.d($$0.dj());
-      $$7 = $$7.d().d($$3.c, $$3.d, $$3.e);
-      $$6.f($$7);
-      $$6.t();
-      $$0.dL().b($$6);
-   }
-
-   public static iu a(alq $$0, iu $$1, int $$2) {
-      int $$3 = $$0.b($$1);
-      return iu.a($$1, $$2).filter($$2x -> $$0.b($$2x) < $$3).min(Comparator.comparingInt($$0::b)).orElse($$1);
-   }
-
-   public static boolean a(bkl $$0, bkj $$1, int $$2) {
-      if ($$0.eS().d() instanceof ckz $$3 && $$0.a($$3)) {
-         int $$4 = $$3.d() - $$2;
-         return $$0.a($$1, (double)$$4);
-      }
-
-      return $$0.i($$1);
-   }
-
-   public static boolean a(bkj $$0, bkj $$1, double $$2) {
-      Optional<bkj> $$3 = $$0.dN().c(btk.o);
-      if ($$3.isEmpty()) {
-         return false;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bmc $$1 = (bmc)$$0;
+         return Objects.equals(this.f, $$1.f);
       } else {
-         double $$4 = $$0.e($$3.get().dj());
-         double $$5 = $$0.e($$1.dj());
-         return $$5 > $$4 + $$2 * $$2;
+         return false;
       }
    }
 
-   public static boolean b(bkj $$0, bkj $$1) {
-      blj<?> $$2 = $$0.dN();
-      return !$$2.a(btk.h) ? false : $$2.c(btk.h).get().a($$1);
+   @Override
+   public int hashCode() {
+      return this.f.hashCode();
    }
 
-   public static bkj a(bkj $$0, Optional<bkj> $$1, bkj $$2) {
-      return $$1.isEmpty() ? $$2 : a($$0, $$1.get(), $$2);
+   @Override
+   public String toString() {
+      return "AttributeModifier{amount=" + this.c + ", operation=" + this.d + ", name='" + this.e + "', id=" + this.f + "}";
    }
 
-   public static bkj a(bkj $$0, bkj $$1, bkj $$2) {
-      eif $$3 = $$1.dj();
-      eif $$4 = $$2.dj();
-      return $$0.e($$3) < $$0.e($$4) ? $$1 : $$2;
-   }
-
-   public static Optional<bkj> a(bkj $$0, btk<UUID> $$1) {
-      Optional<UUID> $$2 = $$0.dN().c($$1);
-      return $$2.<bjt>map($$1x -> ((alq)$$0.dL()).a($$1x)).map($$0x -> $$0x instanceof bkj $$1x ? $$1x : null);
+   public rz d() {
+      rz $$0 = new rz();
+      $$0.a("Name", this.e);
+      $$0.a("Amount", this.c);
+      $$0.a("Operation", this.d.a());
+      $$0.a("UUID", this.f);
+      return $$0;
    }
 
    @Nullable
-   public static eif a(bks $$0, int $$1, int $$2) {
-      eif $$3 = buz.a($$0, $$1, $$2);
-      int $$4 = 0;
-
-      while ($$3 != null && !$$0.dL().a_(ht.a($$3)).a($$0.dL(), ht.a($$3), ebu.b) && $$4++ < 10) {
-         $$3 = buz.a($$0, $$1, $$2);
+   public static bmc a(rz $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         bmc.a $$2 = bmc.a.a($$0.h("Operation"));
+         return new bmc($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         b.warn("Unable to create attribute: {}", var3.getMessage());
+         return null;
       }
-
-      return $$3;
    }
 
-   public static boolean a(bkj $$0) {
-      return $$0.dN().a(btk.r);
+   public static enum a implements aub {
+      a("addition", 0),
+      b("multiply_base", 1),
+      c("multiply_total", 2);
+
+      private static final bmc.a[] e = new bmc.a[]{a, b, c};
+      public static final Codec<bmc.a> d = aub.a(bmc.a::values);
+      private final String f;
+      private final int g;
+
+      private a(String $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public int a() {
+         return this.g;
+      }
+
+      public static bmc.a a(int $$0) {
+         if ($$0 >= 0 && $$0 < e.length) {
+            return e[$$0];
+         } else {
+            throw new IllegalArgumentException("No operation with value " + $$0);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

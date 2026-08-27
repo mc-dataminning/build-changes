@@ -1,34 +1,23 @@
 import com.mojang.serialization.Codec;
 
-public class dug extends duh {
-   public static final dug a = new dug(dme.a(0));
-   public static final Codec<dug> b = asg.e(dme.a, dme.a.fieldOf("value").codec()).xmap(dug::new, dug::b);
-   private final dme d;
+public class dug<P extends duf> {
+   public static final dug<duh> a = a("trunk_vine", duh.a);
+   public static final dug<due> b = a("leave_vine", due.a);
+   public static final dug<dud> c = a("cocoa", dud.a);
+   public static final dug<duc> d = a("beehive", duc.a);
+   public static final dug<dua> e = a("alter_ground", dua.a);
+   public static final dug<dub> f = a("attached_to_leaves", dub.a);
+   private final Codec<P> g;
 
-   public static dug a(dme $$0) {
-      return new dug($$0);
+   private static <P extends duf> dug<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.aa, $$0, new dug<>($$1));
    }
 
-   private dug(dme $$0) {
-      this.d = $$0;
+   private dug(Codec<P> $$0) {
+      this.g = $$0;
    }
 
-   public dme b() {
-      return this.d;
-   }
-
-   @Override
-   public int a(ate $$0, dmh $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public dui<?> a() {
-      return dui.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
+   public Codec<P> a() {
+      return this.g;
    }
 }

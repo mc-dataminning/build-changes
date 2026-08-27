@@ -1,26 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public class dus extends dvg {
-   private static final dus c = new dus();
-   public static Codec<dus> a = Codec.unit(() -> c);
+public class dus<P extends dur> {
+   public static final dus<duq> a = a("straight_trunk_placer", duq.a);
+   public static final dus<dun> b = a("forking_trunk_placer", dun.a);
+   public static final dus<duo> c = a("giant_trunk_placer", duo.a);
+   public static final dus<dup> d = a("mega_jungle_trunk_placer", dup.b);
+   public static final dus<dul> e = a("dark_oak_trunk_placer", dul.a);
+   public static final dus<dum> f = a("fancy_trunk_placer", dum.a);
+   public static final dus<duj> g = a("bending_trunk_placer", duj.a);
+   public static final dus<dut> h = a("upwards_branching_trunk_placer", dut.a);
+   public static final dus<duk> i = a("cherry_trunk_placer", duk.a);
+   private final Codec<P> j;
 
-   private dus() {
+   private static <P extends dur> dus<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.Y, $$0, new dus<>($$1));
    }
 
-   public static dus a() {
-      return c;
+   private dus(Codec<P> $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   protected boolean a(dvf $$0, ate $$1, ht $$2) {
-      dve $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      ib<crx> $$4 = $$0.d().s($$2);
-      return $$0.f().a($$4).a($$3);
-   }
-
-   @Override
-   public dvi<?> b() {
-      return dvi.e;
+   public Codec<P> a() {
+      return this.j;
    }
 }

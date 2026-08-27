@@ -13,7 +13,7 @@ public record jt(float c) implements jq {
          return new jt($$2);
       }
 
-      public jt a(jr<jt> $$0, tl $$1) {
+      public jt a(jr<jt> $$0, tu $$1) {
          return new jt($$1.readFloat());
       }
    };
@@ -24,7 +24,7 @@ public record jt(float c) implements jq {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.a(this.c);
    }
 

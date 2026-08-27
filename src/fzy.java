@@ -1,15 +1,12 @@
-import java.util.Collection;
-import java.util.Locale;
+public class fzy<T extends bki, M extends fjd<T>> extends fze<T, M> {
+   private static final fqp a = fqp.p(new agg("textures/entity/spider_eyes.png"));
 
-public class fzy extends RuntimeException {
-   private final Collection<fzx.a> a;
-
-   public fzy(fzx.a $$0, Collection<fzx.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+   public fzy(fxf<T, M> $$0) {
+      super($$0);
    }
 
-   public Collection<fzx.a> a() {
-      return this.a;
+   @Override
+   public fqp a() {
+      return a;
    }
 }

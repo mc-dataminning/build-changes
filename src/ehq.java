@@ -1,26 +1,42 @@
-@FunctionalInterface
-public interface ehq<T> {
-   void handle(T var1, ehs<T> var2, long var3);
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   public abstract static class a<T, C extends ehq<T>> {
-      private final afw a;
-      private final Class<?> b;
+public record ehq(float b, float c) implements ehk {
+   public static final Codec<ehq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(ehq::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(ehq::d)).apply($$0, ehq::new)
+   );
 
-      public a(afw $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public ehl b() {
+      return ehm.f;
+   }
+
+   @Override
+   public Set<egt<?>> a() {
+      return ImmutableSet.of(egw.d);
+   }
+
+   public boolean a(eel $$0) {
+      bki $$1 = $$0.c(egw.d);
+      int $$2 = 0;
+      if ($$1 instanceof bky) {
+         $$2 = cpo.h((bky)$$1);
       }
 
-      public afw a() {
-         return this.a;
-      }
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   }
 
-      public Class<?> b() {
-         return this.b;
-      }
+   public static ehk.a a(float $$0, float $$1) {
+      return () -> new ehq($$0, $$1);
+   }
 
-      public abstract void a(rt var1, C var2);
+   public float c() {
+      return this.b;
+   }
 
-      public abstract C b(rt var1);
+   public float d() {
+      return this.c;
    }
 }

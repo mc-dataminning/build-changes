@@ -1,78 +1,64 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
+import java.util.List;
 
-public record vj(String d, @Nullable fo e) implements vk {
-   public static final MapCodec<vj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(vj::b)).apply($$0, vj::new));
-   public static final vk.a<vj> b = new vk.a<>(a, "block");
+public record vj<S>(List<vj.a<S>> a) {
+   public static <S> vj<S> a(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<vj.a<S>> $$4 = a($$1, $$2);
 
-   public vj(String $$0) {
-      this($$0, a($$0));
-   }
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null) {
+         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
+         if (!$$6) {
+            break;
+         }
 
-   @Nullable
-   private static fo a(String $$0) {
-      try {
-         return fm.a().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
       }
+
+      return new vj<>($$4);
    }
 
-   @Override
-   public Stream<rt> a(du $$0) {
-      if (this.e != null) {
-         alq $$1 = $$0.f();
-         ht $$2 = this.e.c($$0);
-         if ($$1.o($$2)) {
-            ddx $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.m());
+   private static <S> List<vj.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<vj.a<S>> $$2 = new ArrayList<>();
+
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof ez) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new vj.a<>($$4, $$6));
+               }
             }
          }
       }
 
-      return Stream.empty();
+      return $$2;
    }
 
-   @Override
-   public vk.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "block=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof vj $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
+      public ArgumentCommandNode<S, ?> b() {
+         return this.a;
+      }
 
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public fo c() {
-      return this.e;
+      public String c() {
+         return this.b;
+      }
    }
 }

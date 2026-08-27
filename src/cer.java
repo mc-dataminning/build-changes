@@ -1,192 +1,110 @@
-import javax.annotation.Nullable;
+public class cer extends cdt {
+   private static final afm<Boolean> e = afp.a(cer.class, afo.k);
 
-public class cer extends ceq implements bkc, ces {
-   private static final int i = 27;
-   private il<ckj> j = il.a(27, ckj.b);
-   @Nullable
-   private afw k;
-   private long l;
-
-   public cer(bjx<? extends ceq> $$0, cqz $$1) {
+   public cer(bkm<? extends cer> $$0, crs $$1) {
       super($$0, $$1);
    }
 
-   public cer(cqz $$0, double $$1, double $$2, double $$3) {
-      super(bjx.o, $$0);
-      this.e($$1, $$2, $$3);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
+   public cer(crs $$0, bky $$1, double $$2, double $$3, double $$4) {
+      super(bkm.bm, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   protected float w() {
-      return 0.15F;
+   protected float t() {
+      return this.w() ? 0.73F : super.t();
    }
 
    @Override
-   protected int y() {
-      return 1;
+   public boolean bM() {
+      return false;
    }
 
    @Override
-   protected void b(rt $$0) {
-      super.b($$0);
-      this.c($$0);
+   public float a(crk $$0, cqy $$1, ht $$2, dgw $$3, ecg $$4, float $$5) {
+      return this.w() && bzt.d($$3) ? Math.min(0.8F, $$5) : $$5;
    }
 
    @Override
-   protected void a(rt $$0) {
+   protected void a(ejf $$0) {
       super.a($$0);
-      this.b_($$0);
-   }
-
-   @Override
-   public void a(bir $$0) {
-      this.b(this.ag_());
-      this.a($$0, this.dL(), this);
-   }
-
-   @Override
-   public void a(bjt.c $$0) {
-      if (!this.dL().B && $$0.a()) {
-         bhx.a(this.dL(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public bib a(ccx $$0, bia $$1) {
-      if (this.r($$0) && !$$0.fI()) {
-         return super.a($$0, $$1);
-      } else {
-         bib $$2 = this.c_($$0);
-         if ($$2.a()) {
-            this.a(dkl.k, $$0);
-            cbo.a($$0, true);
+      if (!this.dL().B) {
+         bki $$1 = $$0.a();
+         boolean $$4;
+         if (this.v() instanceof bky $$3) {
+            $$4 = $$1.a(this.dM().a(this, $$3), 8.0F);
+            if ($$4) {
+               if ($$1.bv()) {
+                  this.a($$3, $$1);
+               } else {
+                  $$3.b(5.0F);
+               }
+            }
+         } else {
+            $$4 = $$1.a(this.dM().o(), 5.0F);
          }
 
-         return $$2;
+         if ($$4 && $$1 instanceof bky $$6) {
+            int $$7 = 0;
+            if (this.dL().ai() == bin.c) {
+               $$7 = 10;
+            } else if (this.dL().ai() == bin.d) {
+               $$7 = 40;
+            }
+
+            if ($$7 > 0) {
+               $$6.b(new bjv(bjx.t, 20 * $$7, 1), this.G());
+            }
+         }
       }
    }
 
    @Override
-   public void b(ccx $$0) {
-      $$0.a((bie)this);
-      if (!$$0.dL().B) {
-         this.a(dkl.k, $$0);
-         cbo.a($$0, true);
+   protected void a(ejg $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         this.dL().a(this, this.dq(), this.ds(), this.dw(), 1.0F, false, crs.a.c);
+         this.ak();
       }
    }
 
    @Override
-   public cke ag_() {
-      return switch (this.x()) {
-         case b -> ckm.nl;
-         case c -> ckm.nn;
-         case d -> ckm.np;
-         case e -> ckm.nr;
-         case f -> ckm.nt;
-         case g -> ckm.nv;
-         case h -> ckm.nx;
-         case i -> ckm.nz;
-         default -> ckm.nj;
-      };
+   public boolean br() {
+      return false;
    }
 
    @Override
-   public void a() {
-      this.f();
+   public boolean a(bjg $$0, float $$1) {
+      return false;
    }
 
    @Override
-   public int b() {
-      return 27;
+   protected void b_() {
+      this.an.a(e, false);
    }
 
    @Override
-   public ckj a(int $$0) {
-      return this.f_($$0);
+   public boolean w() {
+      return this.an.b(e);
+   }
+
+   public void a(boolean $$0) {
+      this.an.b(e, $$0);
    }
 
    @Override
-   public ckj a(int $$0, int $$1) {
-      return this.b($$0, $$1);
+   protected boolean af_() {
+      return false;
    }
 
    @Override
-   public ckj b(int $$0) {
-      return this.e_($$0);
+   public void b(rz $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.w());
    }
 
    @Override
-   public void a(int $$0, ckj $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public blb a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(ccx $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public cfp createMenu(int $$0, ccw $$1, ccx $$2) {
-      if (this.k != null && $$2.N_()) {
-         return null;
-      } else {
-         this.e($$1.m);
-         return cfw.a($$0, $$1, this);
-      }
-   }
-
-   public void e(@Nullable ccx $$0) {
-      this.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public afw B() {
-      return this.k;
-   }
-
-   @Override
-   public void a(@Nullable afw $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public long C() {
-      return this.l;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public il<ckj> E() {
-      return this.j;
-   }
-
-   @Override
-   public void F() {
-      this.j = il.a(this.b(), ckj.b);
-   }
-
-   @Override
-   public void c(ccx $$0) {
-      this.dL().a(dkl.j, this.dj(), dkl.a.a($$0));
+   public void a(rz $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

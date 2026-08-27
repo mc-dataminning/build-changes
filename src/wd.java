@@ -1,31 +1,15 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class wd {
-   private static final Logger a = LogUtils.getLogger();
-
-   public static <T extends tr> void a(wb<T> $$0, T $$1, alq $$2) throws agh {
-      a($$0, $$1, $$2.n());
+public class wd extends IllegalArgumentException {
+   public wd(wc $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
    }
 
-   public static <T extends tr> void a(wb<T> $$0, T $$1, bgr<?> $$2) throws agh {
-      if (!$$2.bl()) {
-         $$2.c(() -> {
-            if ($$1.a($$0)) {
-               try {
-                  $$0.a($$1);
-               } catch (Exception var4) {
-                  if (var4 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
-                     throw var4;
-                  }
+   public wd(wc $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   }
 
-                  a.error("Failed to handle packet {}, suppressing error", $$0, var4);
-               }
-            } else {
-               a.debug("Ignoring packet due to disconnection: {}", $$0);
-            }
-         });
-         throw agh.a;
-      }
+   public wd(wc $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

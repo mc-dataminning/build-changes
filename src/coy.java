@@ -1,20 +1,15 @@
-public class coy extends cot {
-   protected coy(cot.a $$0, bjy... $$1) {
-      super($$0, cou.f, $$1);
+public class coy extends cnn {
+   public coy(String $$0, cnt $$1, coc $$2, clb $$3, float $$4, int $$5) {
+      super(cok.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 10 + 20 * ($$0 - 1);
+   public clb g() {
+      return new clb(cuv.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 2;
+   public coj<?> aq_() {
+      return coj.r;
    }
 }

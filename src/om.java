@@ -2,227 +2,136 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class om {
-   public static void a(oo<dxj> $$0) {
-      ic<dzr> $$1 = $$0.a(jz.aB);
-      ib<dzr> $$2 = $$1.b(ow.s);
-      ib<dzr> $$3 = $$1.b(ow.B);
-      ib<dzr> $$4 = $$1.b(ow.r);
-      ib<dzr> $$5 = $$1.b(ow.C);
-      ib<dzr> $$6 = $$1.b(ow.A);
-      ic<dxj> $$7 = $$0.a(jz.aD);
-      ib<dxj> $$8 = $$7.b(ov.a);
-      ov.a($$0, "bastion/treasure/bases", new dxj($$8, ImmutableList.of(Pair.of(dxh.b("bastion/treasure/bases/lava_basin", $$2), 1)), dxj.a.b));
-      ov.a($$0, "bastion/treasure/stairs", new dxj($$8, ImmutableList.of(Pair.of(dxh.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), dxj.a.b));
-      ov.a(
+   public static void a(ou<dye> $$0) {
+      ic<dvz> $$1 = $$0.a(jz.aA);
+      ib<dvz> $$2 = $$1.b(qe.s);
+      ic<eat> $$3 = $$0.a(jz.aC);
+      ib<eat> $$4 = $$3.b(pc.H);
+      ib<eat> $$5 = $$3.b(pc.I);
+      ic<dye> $$6 = $$0.a(jz.aE);
+      ib<dye> $$7 = $$6.b(pb.a);
+      pb.a(
          $$0,
-         "bastion/treasure/bases/centers",
-         new dxj(
-            $$8,
+         "ancient_city/structures",
+         new dye(
+            $$7,
             ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/bases/centers/center_0", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/bases/centers/center_1", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/bases/centers/center_2", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/bases/centers/center_3", $$2), 1)
+               Pair.of(dyc.g(), 7),
+               Pair.of(dyc.b("ancient_city/structures/barracks", $$4), 4),
+               Pair.of(dyc.b("ancient_city/structures/chamber_1", $$4), 4),
+               Pair.of(dyc.b("ancient_city/structures/chamber_2", $$4), 4),
+               Pair.of(dyc.b("ancient_city/structures/chamber_3", $$4), 4),
+               Pair.of(dyc.b("ancient_city/structures/sauna_1", $$4), 4),
+               Pair.of(dyc.b("ancient_city/structures/small_statue", $$4), 4),
+               Pair.of(dyc.b("ancient_city/structures/large_ruin_1", $$4), 1),
+               Pair.of(dyc.b("ancient_city/structures/tall_ruin_1", $$4), 1),
+               Pair.of(dyc.b("ancient_city/structures/tall_ruin_2", $$4), 1),
+               Pair.of(dyc.b("ancient_city/structures/tall_ruin_3", $$4), 2),
+               Pair.of(dyc.b("ancient_city/structures/tall_ruin_4", $$4), 2),
+               new Pair[]{
+                  Pair.of(
+                     dyc.a(
+                        ImmutableList.of(
+                           dyc.b("ancient_city/structures/camp_1", $$4),
+                           dyc.b("ancient_city/structures/camp_2", $$4),
+                           dyc.b("ancient_city/structures/camp_3", $$4)
+                        )
+                     ),
+                     1
+                  ),
+                  Pair.of(dyc.b("ancient_city/structures/medium_ruin_1", $$4), 1),
+                  Pair.of(dyc.b("ancient_city/structures/medium_ruin_2", $$4), 1),
+                  Pair.of(dyc.b("ancient_city/structures/small_ruin_1", $$4), 1),
+                  Pair.of(dyc.b("ancient_city/structures/small_ruin_2", $$4), 1),
+                  Pair.of(dyc.b("ancient_city/structures/large_pillar_1", $$4), 1),
+                  Pair.of(dyc.b("ancient_city/structures/medium_pillar_1", $$4), 1),
+                  Pair.of(dyc.a(ImmutableList.of(dyc.b("ancient_city/structures/ice_box_1"))), 1)
+               }
             ),
-            dxj.a.b
+            dye.a.b
          )
       );
-      ov.a($$0, "bastion/treasure/brains", new dxj($$8, ImmutableList.of(Pair.of(dxh.b("bastion/treasure/brains/center_brain", $$2), 1)), dxj.a.b));
-      ov.a(
+      pb.a($$0, "ancient_city/sculk", new dye($$7, ImmutableList.of(Pair.of(dyc.a($$2), 6), Pair.of(dyc.g(), 1)), dye.a.b));
+      pb.a(
          $$0,
-         "bastion/treasure/walls",
-         new dxj(
-            $$8,
-            ImmutableList.of(Pair.of(dxh.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(dxh.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
-            dxj.a.b
-         )
-      );
-      ov.a(
-         $$0,
-         "bastion/treasure/walls/outer",
-         new dxj(
-            $$8,
+         "ancient_city/walls",
+         new dye(
+            $$7,
             ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
+               Pair.of(dyc.b("ancient_city/walls/intact_corner_wall_1", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_intersection_wall_1", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_lshape_wall_1", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 4),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_passage_1", $$5), 3),
+               Pair.of(dyc.b("ancient_city/walls/ruined_corner_wall_1", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/ruined_corner_wall_2", $$5), 1),
+               new Pair[]{
+                  Pair.of(dyc.b("ancient_city/walls/ruined_horizontal_wall_stairs_1", $$5), 2),
+                  Pair.of(dyc.b("ancient_city/walls/ruined_horizontal_wall_stairs_2", $$5), 2),
+                  Pair.of(dyc.b("ancient_city/walls/ruined_horizontal_wall_stairs_3", $$5), 3),
+                  Pair.of(dyc.b("ancient_city/walls/ruined_horizontal_wall_stairs_4", $$5), 3)
+               }
             ),
-            dxj.a.b
+            dye.a.b
          )
       );
-      ov.a(
+      pb.a(
          $$0,
-         "bastion/treasure/walls/bottom",
-         new dxj(
-            $$8,
+         "ancient_city/walls/no_corners",
+         new dye(
+            $$7,
             ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_stairs_5", $$5), 1),
+               Pair.of(dyc.b("ancient_city/walls/intact_horizontal_wall_bridge", $$5), 1)
             ),
-            dxj.a.b
+            dye.a.b
          )
       );
-      ov.a(
+      pb.a(
          $$0,
-         "bastion/treasure/walls/mid",
-         new dxj(
-            $$8,
+         "ancient_city/city_center/walls",
+         new dye(
+            $$7,
             ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
+               Pair.of(dyc.b("ancient_city/city_center/walls/bottom_1", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city_center/walls/bottom_2", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city_center/walls/bottom_left_corner", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city_center/walls/bottom_right_corner_1", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city_center/walls/bottom_right_corner_2", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city_center/walls/left", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city_center/walls/right", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city_center/walls/top", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city_center/walls/top_right_corner", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city_center/walls/top_left_corner", $$4), 1)
             ),
-            dxj.a.b
+            dye.a.b
          )
       );
-      ov.a(
+      pb.a(
          $$0,
-         "bastion/treasure/walls/top",
-         new dxj(
-            $$8,
+         "ancient_city/city/entrance",
+         new dye(
+            $$7,
             ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/top/wall_0", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/walls/top/wall_1", $$2), 1)
+               Pair.of(dyc.b("ancient_city/city/entrance/entrance_connector", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city/entrance/entrance_path_1", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city/entrance/entrance_path_2", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city/entrance/entrance_path_3", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city/entrance/entrance_path_4", $$4), 1),
+               Pair.of(dyc.b("ancient_city/city/entrance/entrance_path_5", $$4), 1)
             ),
-            dxj.a.b
-         )
-      );
-      ov.a(
-         $$0,
-         "bastion/treasure/connectors",
-         new dxj(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
-            ),
-            dxj.a.b
-         )
-      );
-      ov.a($$0, "bastion/treasure/entrances", new dxj($$8, ImmutableList.of(Pair.of(dxh.b("bastion/treasure/entrances/entrance_0", $$2), 1)), dxj.a.b));
-      ov.a(
-         $$0,
-         "bastion/treasure/ramparts",
-         new dxj(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
-               Pair.of(dxh.b("bastion/treasure/ramparts/top_wall", $$5), 1),
-               Pair.of(dxh.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
-            ),
-            dxj.a.b
-         )
-      );
-      ov.a(
-         $$0,
-         "bastion/treasure/corners/bottom",
-         new dxj(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(dxh.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
-            ),
-            dxj.a.b
-         )
-      );
-      ov.a(
-         $$0,
-         "bastion/treasure/corners/edges",
-         new dxj(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/corners/edges/bottom", $$3), 1),
-               Pair.of(dxh.b("bastion/treasure/corners/edges/middle", $$3), 1),
-               Pair.of(dxh.b("bastion/treasure/corners/edges/top", $$3), 1)
-            ),
-            dxj.a.b
-         )
-      );
-      ov.a(
-         $$0,
-         "bastion/treasure/corners/middle",
-         new dxj(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(dxh.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
-            ),
-            dxj.a.b
-         )
-      );
-      ov.a(
-         $$0,
-         "bastion/treasure/corners/top",
-         new dxj(
-            $$8,
-            ImmutableList.of(Pair.of(dxh.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(dxh.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
-            dxj.a.b
-         )
-      );
-      ov.a(
-         $$0,
-         "bastion/treasure/extensions/large_pool",
-         new dxj(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/empty", $$2), 1)
-            ),
-            dxj.a.b
-         )
-      );
-      ov.a(
-         $$0,
-         "bastion/treasure/extensions/small_pool",
-         new dxj(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
-               Pair.of(dxh.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
-            ),
-            dxj.a.b
-         )
-      );
-      ov.a(
-         $$0,
-         "bastion/treasure/extensions/houses",
-         new dxj(
-            $$8,
-            ImmutableList.of(Pair.of(dxh.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(dxh.b("bastion/treasure/extensions/house_1", $$2), 1)),
-            dxj.a.b
-         )
-      );
-      ov.a(
-         $$0,
-         "bastion/treasure/roofs",
-         new dxj(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dxh.b("bastion/treasure/roofs/wall_roof", $$6), 1),
-               Pair.of(dxh.b("bastion/treasure/roofs/corner_roof", $$6), 1),
-               Pair.of(dxh.b("bastion/treasure/roofs/center_roof", $$6), 1)
-            ),
-            dxj.a.b
+            dye.a.b
          )
       );
    }

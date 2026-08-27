@@ -1,27 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class bui extends buo<bkj> {
-   protected abstract boolean a(bkj var1, bkj var2);
+public class bui extends bug {
+   @Nullable
+   private ht p;
 
-   protected abstract btk<bkj> b();
-
-   @Override
-   public Set<btk<?>> a() {
-      return ImmutableSet.of(this.b());
+   public bui(bla $$0, crs $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(alq $$0, bkj $$1) {
-      $$1.dN().a(this.b(), this.b($$1));
+   public ecv a(ht $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
    }
 
-   private Optional<bkj> b(bkj $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   @Override
+   public ecv a(bki $$0, int $$1) {
+      this.p = $$0.dl();
+      return super.a($$0, $$1);
    }
 
-   protected Optional<btm> a(bkj $$0) {
-      return $$0.dN().c(btk.h);
+   @Override
+   public boolean a(bki $$0, double $$1) {
+      ecv $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dl();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dj(), (double)this.a.df())
+               && (!(this.a.ds() > (double)this.p.v()) || !ht.a((double)this.p.u(), this.a.ds(), (double)this.p.w()).a(this.a.dj(), (double)this.a.df()))) {
+               this.a.I().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

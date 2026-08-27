@@ -1,34 +1,33 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import org.apache.commons.compress.utils.Lists;
+import com.mojang.serialization.Codec;
 
-public record esf(float a, boolean b, Map<String, List<ese>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<ese>> b = Maps.newHashMap();
-      private boolean c;
+public enum esf implements atk, aub {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-      public static esf.a a(float $$0) {
-         return new esf.a($$0);
-      }
+   public static final Codec<esf> d = aub.a(esf::values);
+   private final int e;
+   private final String f;
+   private final String g;
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   private esf(int $$0, String $$1, String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
 
-      public esf.a a() {
-         this.c = true;
-         return this;
-      }
+   @Override
+   public String c() {
+      return this.f;
+   }
 
-      public esf.a a(String $$0, ese $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
-      }
+   @Override
+   public int a() {
+      return this.e;
+   }
 
-      public esf b() {
-         return new esf(this.a, this.c, this.b);
-      }
+   @Override
+   public String b() {
+      return this.g;
    }
 }

@@ -1,60 +1,111 @@
-public class che extends cfp {
-   private static final int k = 27;
-   private final bhu l;
+public class che extends cge {
+   private final bij k;
+   private final byi l;
 
-   public che(int $$0, ccw $$1) {
-      this($$0, $$1, new bii(27));
-   }
-
-   public che(int $$0, ccw $$1, bhu $$2) {
-      super(cgu.t, $$0);
-      a($$2, 27);
-      this.l = $$2;
+   public che(int $$0, cdl $$1, bij $$2, final byi $$3) {
+      super(null, $$0);
+      this.k = $$2;
+      this.l = $$3;
+      int $$4 = 3;
       $$2.d_($$1.m);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new chf($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
+      int $$5 = -18;
+      this.a(new chz($$2, 0, 8, 18) {
+         @Override
+         public boolean a(clb $$0) {
+            return $$0.a(cle.mZ) && !this.g() && $$3.g();
          }
-      }
 
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new chh($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+         @Override
+         public boolean d() {
+            return $$3.g();
          }
-      }
+      });
+      this.a(new chz($$2, 1, 8, 36) {
+         @Override
+         public boolean a(clb $$0) {
+            return $$3.l($$0);
+         }
 
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new chh($$1, $$9, 8 + $$9 * 18, 142));
-      }
-   }
+         @Override
+         public boolean d() {
+            return $$3.gN();
+         }
 
-   @Override
-   public boolean a(ccx $$0) {
-      return this.l.a($$0);
-   }
-
-   @Override
-   public ckj a(ccx $$0, int $$1) {
-      ckj $$2 = ckj.b;
-      chh $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.f()) {
-         ckj $$4 = $$3.e();
-         $$2 = $$4.p();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return ckj.b;
+         @Override
+         public int a() {
+            return 1;
+         }
+      });
+      if (this.a($$3)) {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            for (int $$7 = 0; $$7 < ((byh)$$3).gm(); $$7++) {
+               this.a(new chz($$2, 2 + $$7 + $$6 * ((byh)$$3).gm(), 80 + $$7 * 18, 18 + $$6 * 18));
             }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return ckj.b;
+         }
+      }
+
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         for (int $$9 = 0; $$9 < 9; $$9++) {
+            this.a(new chz($$1, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 102 + $$8 * 18 + -18));
+         }
+      }
+
+      for (int $$10 = 0; $$10 < 9; $$10++) {
+         this.a(new chz($$1, $$10, 8 + $$10 * 18, 142));
+      }
+   }
+
+   @Override
+   public boolean a(cdm $$0) {
+      return !this.l.b(this.k) && this.k.a($$0) && this.l.bv() && this.l.e($$0) < 8.0F;
+   }
+
+   private boolean a(byi $$0) {
+      return $$0 instanceof byh && ((byh)$$0).t();
+   }
+
+   @Override
+   public clb a(cdm $$0, int $$1) {
+      clb $$2 = clb.b;
+      chz $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.g()) {
+         clb $$4 = $$3.f();
+         $$2 = $$4.p();
+         int $$5 = this.k.b();
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.i.size(), true)) {
+               return clb.b;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).g()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return clb.b;
+            }
+         } else if (this.b(0).a($$4)) {
+            if (!this.a($$4, 0, 1, false)) {
+               return clb.b;
+            }
+         } else if ($$5 <= 2 || !this.a($$4, 2, $$5, false)) {
+            int $$7 = $$5 + 27;
+            int $$9 = $$7 + 9;
+            if ($$1 >= $$7 && $$1 < $$9) {
+               if (!this.a($$4, $$5, $$7, false)) {
+                  return clb.b;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$7) {
+               if (!this.a($$4, $$7, $$9, false)) {
+                  return clb.b;
+               }
+            } else if (!this.a($$4, $$7, $$7, false)) {
+               return clb.b;
+            }
+
+            return clb.b;
          }
 
          if ($$4.b()) {
-            $$3.d(ckj.b);
+            $$3.e(clb.b);
          } else {
-            $$3.d();
+            $$3.b();
          }
       }
 
@@ -62,8 +113,8 @@ public class che extends cfp {
    }
 
    @Override
-   public void b(ccx $$0) {
+   public void b(cdm $$0) {
       super.b($$0);
-      this.l.c($$0);
+      this.k.c($$0);
    }
 }

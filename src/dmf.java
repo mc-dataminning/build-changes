@@ -1,166 +1,171 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public record dmf(io<djl> b) {
-   public static final MapCodec<dmf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(iq.b(jz.aJ, Lifecycle.stable(), djl.a).fieldOf("dimensions").forGetter(dmf::d)).apply($$0, $$0.stable(dmf::new))
-   );
-   private static final Set<afv<djl>> c = ImmutableSet.of(djl.b, djl.c, djl.d);
-   private static final int d = c.size();
+public class dmf {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<dgw> b = $$0 -> !$$0.i();
+   static final Predicate<dgw> c = dgv.a::d;
+   private final arz d;
+   private final Predicate<dgw> e;
+   private final dis f;
 
-   public dmf(io<djl> b) {
-      djl $$1 = b.a(djl.b);
-      if ($$1 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         this.b = b;
-      }
+   public dmf(dis $$0, dmf.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = ati.e($$0.J_() + 1);
+      this.d = new atv($$2, 256);
    }
 
-   public static Stream<afv<djl>> a(Stream<afv<djl>> $$0) {
-      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
-   }
+   public static void a(dis $$0, Set<dmf.a> $$1) {
+      int $$2 = $$1.size();
+      ObjectList<dmf> $$3 = new ObjectArrayList($$2);
+      ObjectListIterator<dmf> $$4 = $$3.iterator();
+      int $$5 = $$0.b() + 16;
+      ht.a $$6 = new ht.a();
 
-   public dmf a(ip $$0, dhy $$1) {
-      io<djk> $$2 = $$0.d(jz.av);
-      io<djl> $$3 = a($$2, this.b, $$1);
-      return new dmf($$3);
-   }
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            for (dmf.a $$9 : $$1) {
+               $$3.add($$0.a($$9));
+            }
 
-   public static io<djl> a(io<djk> $$0, io<djl> $$1, dhy $$2) {
-      djl $$3 = $$1.a(djl.b);
-      ib<djk> $$4 = (ib<djk>)($$3 == null ? $$0.f(dji.a) : $$3.a());
-      return a($$1, $$4, $$2);
-   }
+            for (int $$10 = $$5 - 1; $$10 >= $$0.I_(); $$10--) {
+               $$6.d($$7, $$10, $$8);
+               dgw $$11 = $$0.a_($$6);
+               if (!$$11.a(cuv.a)) {
+                  while ($$4.hasNext()) {
+                     dmf $$12 = (dmf)$$4.next();
+                     if ($$12.e.test($$11)) {
+                        $$12.a($$7, $$8, $$10 + 1);
+                        $$4.remove();
+                     }
+                  }
 
-   public static io<djl> a(io<djl> $$0, ib<djk> $$1, dhy $$2) {
-      ix<djl> $$3 = new ik<>(jz.aJ, Lifecycle.experimental());
-      $$3.a(djl.b, new djl($$1, $$2), Lifecycle.stable());
+                  if ($$3.isEmpty()) {
+                     break;
+                  }
 
-      for (Entry<afv<djl>, djl> $$4 : $$0.g()) {
-         afv<djl> $$5 = $$4.getKey();
-         if ($$5 != djl.b) {
-            $$3.a($$5, $$4.getValue(), $$0.e($$4.getValue()));
+                  $$4.back($$2);
+               }
+            }
          }
       }
-
-      return $$3.l();
    }
 
-   public dhy a() {
-      djl $$0 = this.b.a(djl.b);
-      if ($$0 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         return $$0.b();
-      }
-   }
-
-   public Optional<djl> a(afv<djl> $$0) {
-      return this.b.d($$0);
-   }
-
-   public ImmutableSet<afv<cqz>> b() {
-      return this.d().g().stream().map(Entry::getKey).map(jz::a).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean c() {
-      return this.a() instanceof dlb;
-   }
-
-   private static edc.a b(io<djl> $$0) {
-      return $$0.d(djl.b).map($$0x -> {
-         dhy $$1 = $$0x.b();
-         if ($$1 instanceof dlb) {
-            return edc.a.c;
-         } else {
-            return $$1 instanceof dlf ? edc.a.b : edc.a.a;
-         }
-      }).orElse(edc.a.a);
-   }
-
-   static Lifecycle a(afv<djl> $$0, djl $$1) {
-      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
-   }
-
-   private static boolean b(afv<djl> $$0, djl $$1) {
-      if ($$0 == djl.b) {
-         return a($$1);
-      } else if ($$0 == djl.c) {
-         return b($$1);
-      } else {
-         return $$0 == djl.d ? c($$1) : false;
-      }
-   }
-
-   private static boolean a(djl $$0) {
-      ib<djk> $$1 = $$0.a();
-      if (!$$1.a(dji.a) && !$$1.a(dji.d)) {
+   public boolean a(int $$0, int $$1, int $$2, dgw $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
          return false;
       } else {
-         if ($$0.b().c() instanceof csk $$2 && !$$2.a(csm.b)) {
-            return false;
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            ht.a $$5 = new ht.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.I_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
+            }
+
+            this.a($$0, $$2, this.f.I_());
+            return true;
          }
 
-         return true;
+         return false;
       }
    }
 
-   private static boolean b(djl $$0) {
-      return $$0.a().a(dji.b) && $$0.b() instanceof dln $$1 && $$1.a(dlp.f) && $$1.c() instanceof csk $$2 && $$2.a(csm.a);
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
    }
 
-   private static boolean c(djl $$0) {
-      return $$0.a().a(dji.c) && $$0.b() instanceof dln $$1 && $$1.a(dlp.g) && $$1.c() instanceof cso;
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
    }
 
-   public dmf.b a(io<djl> $$0) {
-      Stream<afv<djl>> $$1 = Stream.concat($$0.f().stream(), this.b.f().stream()).distinct();
-
-      record a(afv<djl> a, djl b) {
-
-         Lifecycle c() {
-            return dmf.a(this.a, this.b);
-         }
-      }
-
-      List<a> $$2 = new ArrayList<>();
-      a($$1).forEach($$2x -> $$0.d($$2x).or(() -> this.b.d($$2x)).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
-      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
-      ix<djl> $$4 = new ik<>(jz.aJ, $$3);
-      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
-      io<djl> $$5 = $$4.l();
-      edc.a $$6 = b($$5);
-      return new dmf.b($$5.l(), $$6);
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.I_();
    }
 
-   public io<djl> d() {
-      return this.b;
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.I_());
    }
 
-   public static record b(io<djl> a, edc.a b) {
-      public Lifecycle a() {
-         return this.a.d();
+   public void a(dis $$0, dmf.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
+   }
+
+   public long[] a() {
+      return this.d.a();
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements aub {
+      a("WORLD_SURFACE_WG", dmf.b.a, dmf.b),
+      b("WORLD_SURFACE", dmf.b.c, dmf.b),
+      c("OCEAN_FLOOR_WG", dmf.b.a, dmf.c),
+      d("OCEAN_FLOOR", dmf.b.b, dmf.c),
+      e("MOTION_BLOCKING", dmf.b.c, $$0 -> $$0.d() || !$$0.u().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", dmf.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof czc));
+
+      public static final Codec<dmf.a> g = aub.a(dmf.a::values);
+      private final String h;
+      private final dmf.b i;
+      private final Predicate<dgw> j;
+
+      private a(String $$0, dmf.b $$1, Predicate<dgw> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
       }
 
-      public ip.b b() {
-         return new ip.c(List.of(this.a)).c();
+      public String a() {
+         return this.h;
       }
 
-      public io<djl> c() {
-         return this.a;
+      public boolean b() {
+         return this.i == dmf.b.c;
       }
 
-      public edc.a d() {
-         return this.b;
+      public boolean d() {
+         return this.i != dmf.b.a;
       }
+
+      public Predicate<dgw> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

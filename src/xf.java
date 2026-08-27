@@ -1,17 +1,18 @@
-public record xf(ht b) implements wu {
-   public static final afw a = new afw("debug/poi_removed");
+public record xf(agf<dlg> b, eji c) implements xd {
+   public static final agg a = new agg("debug/game_event");
 
-   public xf(tl $$0) {
-      this($$0.e());
+   public xf(tu $$0) {
+      this($$0.a(jz.A), $$0.k());
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.b);
+   public void a(tu $$0) {
+      $$0.b(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public afw a() {
+   public agg a() {
       return a;
    }
 }

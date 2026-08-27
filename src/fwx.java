@@ -1,26 +1,24 @@
-public class fwx extends fvj<cck, fii<cck>> {
-   private static final afw a = new afw("textures/entity/villager/villager.png");
+public class fwx extends fwq<cbc, fid<cbc>> {
+   private static final agg a = new agg("textures/entity/phantom.png");
 
-   public fwx(fud.a $$0) {
-      super($$0, new fii<>($$0.a(fiv.bJ)), 0.5F);
-      this.a(new fxq<>(this, $$0.f(), $$0.d()));
-      this.a(new fyw<>(this, $$0.e(), "villager"));
-      this.a(new fxp<>(this, $$0.d()));
+   public fwx(fvk.a $$0) {
+      super($$0, new fid<>($$0.a(fka.aB)), 0.75F);
+      this.a(new fzq<>(this));
    }
 
-   public afw a(cck $$0) {
+   public agg a(cbc $$0) {
       return a;
    }
 
-   protected void a(cck $$0, emh $$1, float $$2) {
-      float $$3 = 0.9375F;
-      if ($$0.n_()) {
-         $$3 *= 0.5F;
-         this.d = 0.25F;
-      } else {
-         this.d = 0.5F;
-      }
+   protected void a(cbc $$0, enk $$1, float $$2) {
+      int $$3 = $$0.s();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
 
-      $$1.b($$3, $$3, $$3);
+   protected void a(cbc $$0, enk $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      $$1.a(a.b.rotationDegrees($$0.dD()));
    }
 }

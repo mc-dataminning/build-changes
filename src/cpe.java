@@ -1,6 +1,6 @@
-public class cpe extends cot {
-   public cpe(cot.a $$0, bjy... $$1) {
-      super($$0, cou.m, $$1);
+public class cpe extends cpm {
+   public cpe(cpm.a $$0, bkn... $$1) {
+      super($$0, cpn.k, $$1);
    }
 
    @Override
@@ -11,10 +11,5 @@ public class cpe extends cot {
    @Override
    public int b(int $$0) {
       return 50;
-   }
-
-   @Override
-   public boolean a(cot $$0) {
-      return super.a($$0) && $$0 != cox.K;
    }
 }

@@ -1,110 +1,42 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class gck implements gcb {
-   private final List<Pair<Predicate<dgb>, gcb>> g;
-   protected final boolean a;
-   protected final boolean b;
-   protected final boolean c;
-   protected final gaa d;
-   protected final fqj e;
-   protected final fqh f;
-   private final Map<dgb, BitSet> h = new Reference2ObjectOpenHashMap();
+public abstract class gck implements aox, AutoCloseable {
+   private final gbg a;
+   private final agg b;
+   private final Set<aod<?>> c;
 
-   public gck(List<Pair<Predicate<dgb>, gcb>> $$0) {
-      this.g = $$0;
-      gcb $$1 = (gcb)$$0.iterator().next().getRight();
-      this.a = $$1.a();
-      this.b = $$1.b();
-      this.c = $$1.c();
-      this.d = $$1.e();
-      this.e = $$1.f();
-      this.f = $$1.g();
+   public gck(gbi $$0, agg $$1, agg $$2) {
+      this($$0, $$1, $$2, gbc.a);
+   }
+
+   public gck(gbi $$0, agg $$1, agg $$2, Set<aod<?>> $$3) {
+      this.b = $$2;
+      this.a = new gbg($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
+   }
+
+   protected gbh a(agg $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public List<fpx> a(@Nullable dgb $$0, @Nullable hx $$1, ate $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.h.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
+   public final CompletableFuture<Void> a(aox.a $$0, apd $$1, bfh $$2, bfh $$3, Executor $$4, Executor $$5) {
+      return gbc.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gbc.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   }
 
-            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
-               Pair<Predicate<dgb>, gcb> $$5 = this.g.get($$4);
-               if (((Predicate)$$5.getLeft()).test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.h.put($$0, $$3);
-         }
-
-         List<fpx> $$6 = Lists.newArrayList();
-         long $$7 = $$2.g();
-
-         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
-            if ($$3.get($$8)) {
-               $$6.addAll(((gcb)this.g.get($$8).getRight()).a($$0, $$1, ate.a($$7)));
-            }
-         }
-
-         return $$6;
-      }
+   private void a(gbc.a $$0, bfh $$1) {
+      $$1.a();
+      $$1.a("upload");
+      this.a.a($$0);
+      $$1.c();
+      $$1.b();
    }
 
    @Override
-   public boolean a() {
-      return this.a;
-   }
-
-   @Override
-   public boolean b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public gaa e() {
-      return this.d;
-   }
-
-   @Override
-   public fqj f() {
-      return this.e;
-   }
-
-   @Override
-   public fqh g() {
-      return this.f;
-   }
-
-   public static class a {
-      private final List<Pair<Predicate<dgb>, gcb>> a = Lists.newArrayList();
-
-      public void a(Predicate<dgb> $$0, gcb $$1) {
-         this.a.add(Pair.of($$0, $$1));
-      }
-
-      public gcb a() {
-         return new gck(this.a);
-      }
+   public void close() {
+      this.a.f();
    }
 }

@@ -1,79 +1,77 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-public class fmd extends fnq {
-   private final float a;
-   private final fnl b;
+public class fmd implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<fmd.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
 
-   fmd(fjr $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fnl $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+   public void a(ht $$0, dgw $$1, fpj $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new fmd.a(this.b, $$1, $$2.dj()));
    }
 
-   @Override
-   public fmu b() {
-      return fmu.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * asy.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public boolean a(ht $$0, dgw $$1) {
+      fmd.a $$2 = (fmd.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
       } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
+         $$2.a($$1);
+         return true;
       }
    }
 
-   public static class a implements fmt<jk> {
-      private final fnl a;
+   public void a(int $$0, fkw $$1) {
+      ObjectIterator<Entry<fmd.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
 
-      public a(fnl $$0) {
-         this.a = $$0;
+      while ($$2.hasNext()) {
+         Entry<fmd.a> $$3 = (Entry<fmd.a>)$$2.next();
+         fmd.a $$4 = (fmd.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            ht $$5 = ht.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
+      }
+   }
+
+   public fmd a() {
+      this.b++;
+      this.c = true;
+      return this;
+   }
+
+   @Override
+   public void close() {
+      this.c = false;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final eji a;
+      int b;
+      dgw c;
+
+      a(int $$0, dgw $$1, eji $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      @Nullable
-      public fmq a(jk $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dgb $$8 = $$0.c();
-         if (!$$8.i() && $$8.l() == dae.a) {
-            return null;
-         } else {
-            ht $$9 = ht.a($$2, $$3, $$4);
-            int $$10 = ero.O().aw().a($$8, $$1, $$9);
-            if ($$8.b() instanceof cwu) {
-               $$10 = ((cwu)$$8.b()).d($$8, $$1, $$9);
-            }
+      fmd.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new fmd($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      void a(dgw $$0) {
+         this.c = $$0;
       }
    }
 }

@@ -1,90 +1,95 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fsg implements fsj.a {
-   private final ero a;
-   private static final int b = asi.b.a(255, 0, 155, 155);
-   private static final int c = asi.b.a(255, 255, 255, 0);
+public class fsg implements ape {
+   private Map<det<?>, fsh<?>> d = ImmutableMap.of();
+   private final etz e;
+   private final fjx f;
+   public crs a;
+   public esc b;
+   public ejg c;
+   private final Supplier<frb> g;
+   private final Supplier<fwi> h;
+   private final Supplier<fvi> i;
 
-   public fsg(ero $$0) {
+   public fsg(etz $$0, fjx $$1, Supplier<frb> $$2, Supplier<fwi> $$3, Supplier<fvi> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   @Nullable
+   public <E extends der> fsh<E> a(E $$0) {
+      return (fsh<E>)this.d.get($$0.u());
+   }
+
+   public void a(crs $$0, esc $$1, ejg $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
+
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends der> void a(E $$0, float $$1, enk $$2, fqh $$3) {
+      fsh<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.u().a($$0.q())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
+            }
+         }
+      }
+   }
+
+   private static <T extends der> void a(fsh<T> $$0, T $$1, float $$2, enk $$3, fqh $$4) {
+      crs $$5 = $$1.k();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = fqf.a($$5, $$1.p());
+      } else {
+         $$6 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, gay.d);
+   }
+
+   public <E extends der> boolean a(E $$0, enk $$1, fqh $$2, int $$3, int $$4) {
+      fsh<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(der $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new y($$3);
+      }
+   }
+
+   public void a(@Nullable crs $$0) {
       this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
    }
 
    @Override
-   public void a(emh $$0, fpb $$1, double $$2, double $$3, double $$4) {
-      bjt $$5 = this.a.j.m().g();
-      float $$6 = (float)((double)this.a.r.I_() - $$3);
-      float $$7 = (float)((double)this.a.r.aj() - $$3);
-      cqg $$8 = $$5.dn();
-      float $$9 = (float)((double)$$8.d() - $$2);
-      float $$10 = (float)((double)$$8.e() - $$4);
-      eml $$11 = $$1.getBuffer(fpj.a(1.0));
-      Matrix4f $$12 = $$0.c().a();
-
-      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
-         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
-            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
-            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
-         }
-      }
-
-      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
-         int $$16 = $$15 % 4 == 0 ? b : c;
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-      }
-
-      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
-         int $$18 = $$17 % 4 == 0 ? b : c;
-         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-      }
-
-      for (int $$19 = this.a.r.I_(); $$19 <= this.a.r.aj(); $$19 += 2) {
-         float $$20 = (float)((double)$$19 - $$3);
-         int $$21 = $$19 % 8 == 0 ? b : c;
-         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
-         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21).e();
-         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21).e();
-         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21).e();
-         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
-         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-      }
-
-      $$11 = $$1.getBuffer(fpj.a(2.0));
-
-      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
-         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
-            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
-            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
-         }
-      }
-
-      for (int $$24 = this.a.r.I_(); $$24 <= this.a.r.aj(); $$24 += 16) {
-         float $$25 = (float)((double)$$24 - $$3);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
-      }
+   public void a(apd $$0) {
+      fsi.a $$1 = new fsi.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = fsj.a($$1);
    }
 }

@@ -1,64 +1,83 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
+public class aab implements wk<yd> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 8;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final float i;
+   private final float j;
 
-public class aab implements wb<xu> {
-   private final aab.a a;
-   private final List<afw> b;
-   private final List<afw> c;
-   private final aqh d;
-
-   public aab(aab.a $$0, Collection<afw> $$1, Collection<afw> $$2, aqh $$3) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = ImmutableList.copyOf($$2);
-      this.d = $$3;
+   public aab(cdj $$0) {
+      this.e = $$0.a;
+      this.f = $$0.b;
+      this.g = $$0.c;
+      this.h = $$0.d;
+      this.i = $$0.a();
+      this.j = $$0.b();
    }
 
-   public aab(tl $$0) {
-      this.a = $$0.b(aab.a.class);
-      this.d = aqh.a($$0);
-      this.b = $$0.a(tl::t);
-      if (this.a == aab.a.a) {
-         this.c = $$0.a(tl::t);
-      } else {
-         this.c = ImmutableList.of();
-      }
+   public aab(tu $$0) {
+      byte $$1 = $$0.readByte();
+      this.e = ($$1 & 1) != 0;
+      this.f = ($$1 & 2) != 0;
+      this.g = ($$1 & 4) != 0;
+      this.h = ($$1 & 8) != 0;
+      this.i = $$0.readFloat();
+      this.j = $$0.readFloat();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.a);
-      this.d.b($$0);
-      $$0.a(this.b, tl::a);
-      if (this.a == aab.a.a) {
-         $$0.a(this.c, tl::a);
+   public void a(tu $$0) {
+      byte $$1 = 0;
+      if (this.e) {
+         $$1 = (byte)($$1 | 1);
       }
+
+      if (this.f) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 4);
+      }
+
+      if (this.h) {
+         $$1 = (byte)($$1 | 8);
+      }
+
+      $$0.k($$1);
+      $$0.a(this.i);
+      $$0.a(this.j);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public List<afw> a() {
-      return this.b;
+   public boolean a() {
+      return this.e;
    }
 
-   public List<afw> d() {
-      return this.c;
+   public boolean d() {
+      return this.f;
    }
 
-   public aqh e() {
-      return this.d;
+   public boolean e() {
+      return this.g;
    }
 
-   public aab.a f() {
-      return this.a;
+   public boolean f() {
+      return this.h;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public float g() {
+      return this.i;
+   }
+
+   public float h() {
+      return this.j;
    }
 }

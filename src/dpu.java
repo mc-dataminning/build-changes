@@ -1,40 +1,53 @@
 import com.mojang.serialization.Codec;
 
-public class dpu extends doo<drc> {
-   public dpu(Codec<drc> $$0) {
+public class dpu extends dom {
+   public dpu(Codec<drp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doq<drc> $$0) {
-      boolean $$1 = false;
-      ate $$2 = $$0.d();
-      crt $$3 = $$0.b();
-      ht $$4 = $$0.e();
-      drc $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(dlk.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      ht $$9 = new ht($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(cuc.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dgb $$11 = $$10 ? cuc.bx.o() : cuc.bw.o();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dgb $$12 = $$11.a(dce.d, dgx.a);
-               ht $$13 = $$9.c();
-               if ($$3.a_($$13).a(cuc.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
+   protected void a(crt $$0, ato $$1, ht $$2, int $$3, ht.a $$4, drp $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-            $$1 = true;
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  if (!$$0.a_($$4).i($$0, $$4)) {
+                     dgw $$17 = $$5.b.a($$1, $$2);
+                     if ($$17.b(cyp.e) && $$17.b(cyp.c) && $$17.b(cyp.b) && $$17.b(cyp.d) && $$17.b(cyp.f)) {
+                        $$17 = $$17.a(cyp.f, Boolean.valueOf($$6 >= $$3 - 1))
+                           .a(cyp.e, Boolean.valueOf($$9 < -$$8))
+                           .a(cyp.c, Boolean.valueOf($$9 > $$8))
+                           .a(cyp.b, Boolean.valueOf($$10 < -$$8))
+                           .a(cyp.d, Boolean.valueOf($$10 > $$8));
+                     }
+
+                     this.a($$0, $$4, $$17);
+                  }
+               }
+            }
          }
       }
+   }
 
-      return $$1;
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
+      }
+
+      return $$4;
    }
 }

@@ -1,77 +1,75 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class uq {
-   private final us[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private uu d;
+   public static final ur a = ur.i();
+   public static final ur b = ur.c("options.on");
+   public static final ur c = ur.c("options.off");
+   public static final ur d = ur.c("gui.done");
+   public static final ur e = ur.c("gui.cancel");
+   public static final ur f = ur.c("gui.yes");
+   public static final ur g = ur.c("gui.no");
+   public static final ur h = ur.c("gui.ok");
+   public static final ur i = ur.c("gui.proceed");
+   public static final ur j = ur.c("gui.continue");
+   public static final ur k = ur.c("gui.back");
+   public static final ur l = ur.c("gui.toTitle");
+   public static final ur m = ur.c("gui.acknowledge");
+   public static final ur n = ur.c("chat.link.open");
+   public static final ur o = ur.c("gui.copy_link_to_clipboard");
+   public static final ur p = ur.c("menu.disconnect");
+   public static final ur q = ur.c("connect.failed");
+   public static final ur r = ur.b("\n");
+   public static final ur s = ur.b(". ");
+   public static final ur t = ur.b("...");
+   public static final ur u = a();
 
-   public uq(int $$0) {
-      this.a = new us[$$0];
+   public static vf a() {
+      return ur.b(" ");
    }
 
-   public boolean a(uu $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new us($$0, true) : null);
-         return true;
-      }
+   public static vf a(long $$0) {
+      return ur.a("gui.days", $$0);
    }
 
-   private void a(@Nullable us $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   public static vf b(long $$0) {
+      return ur.a("gui.hours", $$0);
    }
 
-   public void a(uu $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         us $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
+   public static vf c(long $$0) {
+      return ur.a("gui.minutes", $$0);
+   }
+
+   public static ur a(boolean $$0) {
+      return $$0 ? b : c;
+   }
+
+   public static vf a(ur $$0, boolean $$1) {
+      return ur.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   }
+
+   public static vf a(ur $$0, ur $$1) {
+      return ur.a("options.generic_value", $$0, $$1);
+   }
+
+   public static vf a(ur... $$0) {
+      vf $$1 = ur.i();
+
+      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+         $$1.b($$0[$$2]);
+         if ($$2 != $$0.length - 1) {
+            $$1.b(s);
          }
       }
+
+      return $$1;
    }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
+   public static ur b(ur... $$0) {
+      return a(Arrays.asList($$0));
    }
 
-   public uq.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<uu> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         us $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
-      }
-
-      up $$6 = new up($$2);
-      up.b $$7 = new up.b($$0, $$1);
-      return new uq.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(up a, up.b b) {
+   public static ur a(Collection<? extends ur> $$0) {
+      return uu.a($$0, r);
    }
 }

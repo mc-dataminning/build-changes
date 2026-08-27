@@ -18,13 +18,13 @@ public class hi<A extends ArgumentType<?>> implements hf<A, hi<A>.a> {
       return new hi<>($$0);
    }
 
-   public void a(hi<A>.a $$0, tl $$1) {
+   public void a(hi<A>.a $$0, tu $$1) {
    }
 
    public void a(hi<A>.a $$0, JsonObject $$1) {
    }
 
-   public hi<A>.a a(tl $$0) {
+   public hi<A>.a a(tu $$0) {
       return this.a;
    }
 

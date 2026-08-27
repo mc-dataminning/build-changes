@@ -1,102 +1,106 @@
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class eek extends eeu {
-   public static final Codec<eek> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  jy.f.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dhe::f).toList())
-               )
-            )
+public class eek {
+   private static final Codec<eek> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(asq.a(eig.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), asq.a(eig.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
             .apply($$0, eek::new)
    );
-   private final ib<cua> b;
-   private final Set<dhe<?>> c;
+   public static final Codec<eek> a = Codec.either(Codec.INT, b).xmap($$0 -> (eek)$$0.map(eek::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final eif c;
+   @Nullable
+   private final eif d;
+   private final eek.b e;
+   private final eek.a f;
 
-   eek(List<egh> $$0, ib<cua> $$1, Set<dhe<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   public Set<egt<?>> a() {
+      Builder<egt<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   private eek(List<egh> $$0, ib<cua> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().n()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   private eek(Optional<eif> $$0, Optional<eif> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   @Override
-   public eew b() {
-      return eex.x;
-   }
-
-   @Override
-   public Set<efq<?>> a() {
-      return ImmutableSet.of(eft.g);
-   }
-
-   @Override
-   protected ckj a(ckj $$0, edi $$1) {
-      dgb $$2 = $$1.c(eft.g);
-      if ($$2 != null) {
-         rt $$3 = $$0.w();
-         rt $$4;
-         if ($$3.b("BlockStateTag", 10)) {
-            $$4 = $$3.p("BlockStateTag");
+   private eek(@Nullable eif $$0, @Nullable eif $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
          } else {
-            $$4 = new rt();
-            $$3.a("BlockStateTag", $$4);
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-
-         for (dhe<?> $$6 : this.c) {
-            if ($$2.b($$6)) {
-               $$4.a($$6.f(), a($$2, $$6));
-            }
-         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> ati.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
-
-      return $$0;
    }
 
-   public static eek.a a(cua $$0) {
-      return new eek.a($$0);
+   public static eek a(int $$0) {
+      eid $$1 = eid.a((float)$$0);
+      return new eek(Optional.of($$1), Optional.of($$1));
    }
 
-   private static <T extends Comparable<T>> String a(dgb $$0, dhe<T> $$1) {
-      T $$2 = $$0.c($$1);
-      return $$1.a($$2);
+   public static eek a(int $$0, int $$1) {
+      return new eek(Optional.of(eid.a((float)$$0)), Optional.of(eid.a((float)$$1)));
    }
 
-   public static class a extends eeu.a<eek.a> {
-      private final ib<cua> a;
-      private final Builder<dhe<?>> b = ImmutableSet.builder();
+   public static eek b(int $$0) {
+      return new eek(Optional.of(eid.a((float)$$0)), Optional.empty());
+   }
 
-      a(cua $$0) {
-         this.a = $$0.r();
-      }
+   public static eek c(int $$0) {
+      return new eek(Optional.empty(), Optional.of(eid.a((float)$$0)));
+   }
 
-      public eek.a a(dhe<?> $$0) {
-         if (!this.a.a().n().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
+   public int a(eel $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
 
-      protected eek.a a() {
-         return this;
-      }
+   public boolean b(eel $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
 
-      @Override
-      public eev b() {
-         return new eek(this.g(), this.a, this.b.build());
-      }
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof eid $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(eel var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(eel var1, int var2);
    }
 }

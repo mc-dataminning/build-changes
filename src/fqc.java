@@ -1,377 +1,357 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.io.Reader;
-import java.io.StringReader;
-import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fqc implements gcm {
-   private static final Logger g = LogUtils.getLogger();
-   private static final fqe h = new fqe();
-   @VisibleForTesting
-   static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(fqc.class, new fqc.a())
-      .registerTypeAdapter(fpy.class, new fpy.a())
-      .registerTypeAdapter(fpz.class, new fpz.a())
-      .registerTypeAdapter(fqb.class, new fqb.a())
-      .registerTypeAdapter(fqi.class, new fqi.a())
-      .registerTypeAdapter(fqj.class, new fqj.a())
-      .registerTypeAdapter(fqg.class, new fqg.a())
-      .create();
-   private static final char i = '#';
-   public static final String b = "particle";
-   private static final boolean j = true;
-   private final List<fpy> k;
-   @Nullable
-   private final fqc.b l;
-   @Nullable
-   private final Boolean m;
-   private final fqj n;
-   private final List<fqg> o;
-   public String c = "";
-   @VisibleForTesting
-   protected final Map<String, Either<gce, String>> d;
-   @Nullable
-   protected fqc e;
-   @Nullable
-   protected afw f;
+public class fqc {
+   private static final Map<cut, fqp> a = ac.a(Maps.newHashMap(), $$0 -> {
+      fqp $$1 = fqp.t();
+      $$0.put(cuv.fI, $$1);
+      fqp $$2 = fqp.d();
+      $$0.put(cuv.i, $$2);
+      $$0.put(cuv.eW, $$2);
+      $$0.put(cuv.eY, $$2);
+      $$0.put(cuv.fH, $$2);
+      $$0.put(cuv.hc, $$2);
+      $$0.put(cuv.eX, $$2);
+      $$0.put(cuv.aH, $$2);
+      $$0.put(cuv.aE, $$2);
+      $$0.put(cuv.aF, $$2);
+      $$0.put(cuv.aI, $$2);
+      $$0.put(cuv.aJ, $$2);
+      $$0.put(cuv.aG, $$2);
+      $$0.put(cuv.aK, $$2);
+      $$0.put(cuv.aM, $$2);
+      $$0.put(cuv.aN, $$2);
+      $$0.put(cuv.ac, $$2);
+      $$0.put(cuv.aL, $$2);
+      fqp $$3 = fqp.e();
+      $$0.put(cuv.x, $$3);
+      $$0.put(cuv.y, $$3);
+      $$0.put(cuv.z, $$3);
+      $$0.put(cuv.A, $$3);
+      $$0.put(cuv.B, $$3);
+      $$0.put(cuv.C, $$3);
+      $$0.put(cuv.D, $$3);
+      $$0.put(cuv.aQ, $$3);
+      $$0.put(cuv.aZ, $$3);
+      $$0.put(cuv.ba, $$3);
+      $$0.put(cuv.bb, $$3);
+      $$0.put(cuv.bc, $$3);
+      $$0.put(cuv.bd, $$3);
+      $$0.put(cuv.be, $$3);
+      $$0.put(cuv.bf, $$3);
+      $$0.put(cuv.bg, $$3);
+      $$0.put(cuv.bh, $$3);
+      $$0.put(cuv.bi, $$3);
+      $$0.put(cuv.bj, $$3);
+      $$0.put(cuv.bk, $$3);
+      $$0.put(cuv.bl, $$3);
+      $$0.put(cuv.bm, $$3);
+      $$0.put(cuv.bn, $$3);
+      $$0.put(cuv.bo, $$3);
+      $$0.put(cuv.bp, $$3);
+      $$0.put(cuv.bq, $$3);
+      $$0.put(cuv.bs, $$3);
+      $$0.put(cuv.bt, $$3);
+      $$0.put(cuv.bu, $$3);
+      $$0.put(cuv.bv, $$3);
+      $$0.put(cuv.bw, $$3);
+      $$0.put(cuv.bx, $$3);
+      $$0.put(cuv.bR, $$3);
+      $$0.put(cuv.bT, $$3);
+      $$0.put(cuv.bU, $$3);
+      $$0.put(cuv.bV, $$3);
+      $$0.put(cuv.bW, $$3);
+      $$0.put(cuv.bX, $$3);
+      $$0.put(cuv.bY, $$3);
+      $$0.put(cuv.bZ, $$3);
+      $$0.put(cuv.ca, $$3);
+      $$0.put(cuv.cb, $$3);
+      $$0.put(cuv.cc, $$3);
+      $$0.put(cuv.cd, $$3);
+      $$0.put(cuv.ce, $$3);
+      $$0.put(cuv.cf, $$3);
+      $$0.put(cuv.cg, $$3);
+      $$0.put(cuv.cp, $$3);
+      $$0.put(cuv.cq, $$3);
+      $$0.put(cuv.ea, $$3);
+      $$0.put(cuv.eb, $$3);
+      $$0.put(cuv.cr, $$3);
+      $$0.put(cuv.cs, $$3);
+      $$0.put(cuv.ct, $$3);
+      $$0.put(cuv.cw, $$3);
+      $$0.put(cuv.cB, $$3);
+      $$0.put(cuv.cN, $$3);
+      $$0.put(cuv.cO, $$3);
+      $$0.put(cuv.cP, $$3);
+      $$0.put(cuv.dy, $$3);
+      $$0.put(cuv.dK, $$3);
+      $$0.put(cuv.dL, $$3);
+      $$0.put(cuv.dQ, $$3);
+      $$0.put(cuv.dS, $$3);
+      $$0.put(cuv.eh, $$3);
+      $$0.put(cuv.ey, $$3);
+      $$0.put(cuv.ez, $$3);
+      $$0.put(cuv.eA, $$3);
+      $$0.put(cuv.eB, $$3);
+      $$0.put(cuv.eC, $$3);
+      $$0.put(cuv.eD, $$3);
+      $$0.put(cuv.eE, $$3);
+      $$0.put(cuv.oM, $$3);
+      $$0.put(cuv.oN, $$3);
+      $$0.put(cuv.eF, $$3);
+      $$0.put(cuv.eG, $$3);
+      $$0.put(cuv.fb, $$3);
+      $$0.put(cuv.fc, $$3);
+      $$0.put(cuv.fd, $$3);
+      $$0.put(cuv.fe, $$3);
+      $$0.put(cuv.ff, $$3);
+      $$0.put(cuv.fg, $$3);
+      $$0.put(cuv.fm, $$3);
+      $$0.put(cuv.fq, $$3);
+      $$0.put(cuv.fs, $$3);
+      $$0.put(cuv.fC, $$3);
+      $$0.put(cuv.fO, $$3);
+      $$0.put(cuv.fR, $$3);
+      $$0.put(cuv.fT, $$3);
+      $$0.put(cuv.fU, $$3);
+      $$0.put(cuv.fV, $$3);
+      $$0.put(cuv.fW, $$3);
+      $$0.put(cuv.fX, $$3);
+      $$0.put(cuv.fY, $$3);
+      $$0.put(cuv.fZ, $$3);
+      $$0.put(cuv.ga, $$3);
+      $$0.put(cuv.gb, $$3);
+      $$0.put(cuv.gc, $$3);
+      $$0.put(cuv.gd, $$3);
+      $$0.put(cuv.ge, $$3);
+      $$0.put(cuv.gf, $$3);
+      $$0.put(cuv.gg, $$3);
+      $$0.put(cuv.gh, $$3);
+      $$0.put(cuv.gi, $$3);
+      $$0.put(cuv.gj, $$3);
+      $$0.put(cuv.gk, $$3);
+      $$0.put(cuv.gl, $$3);
+      $$0.put(cuv.gm, $$3);
+      $$0.put(cuv.gn, $$3);
+      $$0.put(cuv.go, $$3);
+      $$0.put(cuv.gp, $$3);
+      $$0.put(cuv.gq, $$3);
+      $$0.put(cuv.gr, $$3);
+      $$0.put(cuv.gs, $$3);
+      $$0.put(cuv.sh, $$3);
+      $$0.put(cuv.si, $$3);
+      $$0.put(cuv.fS, $$3);
+      $$0.put(cuv.gt, $$3);
+      $$0.put(cuv.gu, $$3);
+      $$0.put(cuv.gY, $$3);
+      $$0.put(cuv.hh, $$3);
+      $$0.put(cuv.hY, $$3);
+      $$0.put(cuv.iD, $$3);
+      $$0.put(cuv.iE, $$3);
+      $$0.put(cuv.iF, $$3);
+      $$0.put(cuv.iG, $$3);
+      $$0.put(cuv.iH, $$3);
+      $$0.put(cuv.iI, $$3);
+      $$0.put(cuv.kl, $$3);
+      $$0.put(cuv.km, $$3);
+      $$0.put(cuv.kn, $$3);
+      $$0.put(cuv.ko, $$3);
+      $$0.put(cuv.kp, $$3);
+      $$0.put(cuv.kq, $$3);
+      $$0.put(cuv.kr, $$3);
+      $$0.put(cuv.ks, $$3);
+      $$0.put(cuv.kt, $$3);
+      $$0.put(cuv.ku, $$3);
+      $$0.put(cuv.kv, $$3);
+      $$0.put(cuv.bS, $$3);
+      $$0.put(cuv.kA, $$3);
+      $$0.put(cuv.kC, $$3);
+      $$0.put(cuv.kB, $$3);
+      $$0.put(cuv.kD, $$3);
+      $$0.put(cuv.mc, $$3);
+      $$0.put(cuv.md, $$3);
+      $$0.put(cuv.mf, $$3);
+      $$0.put(cuv.mr, $$3);
+      $$0.put(cuv.ms, $$3);
+      $$0.put(cuv.mt, $$3);
+      $$0.put(cuv.mu, $$3);
+      $$0.put(cuv.mv, $$3);
+      $$0.put(cuv.mw, $$3);
+      $$0.put(cuv.mx, $$3);
+      $$0.put(cuv.my, $$3);
+      $$0.put(cuv.mz, $$3);
+      $$0.put(cuv.mA, $$3);
+      $$0.put(cuv.mB, $$3);
+      $$0.put(cuv.mC, $$3);
+      $$0.put(cuv.mD, $$3);
+      $$0.put(cuv.mE, $$3);
+      $$0.put(cuv.mF, $$3);
+      $$0.put(cuv.mG, $$3);
+      $$0.put(cuv.mH, $$3);
+      $$0.put(cuv.mI, $$3);
+      $$0.put(cuv.mJ, $$3);
+      $$0.put(cuv.mK, $$3);
+      $$0.put(cuv.mL, $$3);
+      $$0.put(cuv.mM, $$3);
+      $$0.put(cuv.mN, $$3);
+      $$0.put(cuv.mO, $$3);
+      $$0.put(cuv.mP, $$3);
+      $$0.put(cuv.mQ, $$3);
+      $$0.put(cuv.mR, $$3);
+      $$0.put(cuv.mS, $$3);
+      $$0.put(cuv.mT, $$3);
+      $$0.put(cuv.mU, $$3);
+      $$0.put(cuv.mV, $$3);
+      $$0.put(cuv.mX, $$3);
+      $$0.put(cuv.mY, $$3);
+      $$0.put(cuv.mZ, $$3);
+      $$0.put(cuv.na, $$3);
+      $$0.put(cuv.nS, $$3);
+      $$0.put(cuv.oc, $$3);
+      $$0.put(cuv.oe, $$3);
+      $$0.put(cuv.of, $$3);
+      $$0.put(cuv.og, $$3);
+      $$0.put(cuv.oh, $$3);
+      $$0.put(cuv.oi, $$3);
+      $$0.put(cuv.oz, $$3);
+      $$0.put(cuv.oA, $$3);
+      $$0.put(cuv.oB, $$3);
+      $$0.put(cuv.oC, $$3);
+      $$0.put(cuv.or, $$3);
+      $$0.put(cuv.ox, $$3);
+      $$0.put(cuv.oo, $$3);
+      $$0.put(cuv.oD, $$3);
+      $$0.put(cuv.oq, $$3);
+      $$0.put(cuv.pm, $$3);
+      $$0.put(cuv.pn, $$3);
+      $$0.put(cuv.po, $$3);
+      $$0.put(cuv.pp, $$3);
+      $$0.put(cuv.oU, $$3);
+      $$0.put(cuv.oV, $$3);
+      $$0.put(cuv.rs, $$3);
+      $$0.put(cuv.qy, $$3);
+      $$0.put(cuv.qx, $$3);
+      $$0.put(cuv.qw, $$3);
+      $$0.put(cuv.qv, $$3);
+      $$0.put(cuv.rr, $$3);
+      $$0.put(cuv.ru, $$3);
+      $$0.put(cuv.rv, $$3);
+      $$0.put(cuv.rw, $$3);
+      $$0.put(cuv.ry, $$3);
+      $$0.put(cuv.rx, $$3);
+      $$0.put(cuv.rz, $$3);
+      $$0.put(cuv.rA, $$3);
+      $$0.put(cuv.rC, $$3);
+      $$0.put(cuv.rD, $$3);
+      $$0.put(cuv.rE, $$3);
+      $$0.put(cuv.rF, $$3);
+      $$0.put(cuv.qD, $$3);
+      $$0.put(cuv.qE, $$3);
+      $$0.put(cuv.qG, $$3);
+      $$0.put(cuv.qI, $$3);
+      $$0.put(cuv.E, $$3);
+      $$0.put(cuv.sm, $$3);
+      fqp $$4 = fqp.f();
+      $$0.put(cuv.dO, $$4);
+      $$0.put(cuv.ed, $$4);
+      $$0.put(cuv.ei, $$4);
+      $$0.put(cuv.ej, $$4);
+      $$0.put(cuv.ek, $$4);
+      $$0.put(cuv.el, $$4);
+      $$0.put(cuv.em, $$4);
+      $$0.put(cuv.en, $$4);
+      $$0.put(cuv.eo, $$4);
+      $$0.put(cuv.ep, $$4);
+      $$0.put(cuv.eq, $$4);
+      $$0.put(cuv.er, $$4);
+      $$0.put(cuv.es, $$4);
+      $$0.put(cuv.et, $$4);
+      $$0.put(cuv.eu, $$4);
+      $$0.put(cuv.ev, $$4);
+      $$0.put(cuv.ew, $$4);
+      $$0.put(cuv.ex, $$4);
+      $$0.put(cuv.hz, $$4);
+      $$0.put(cuv.hA, $$4);
+      $$0.put(cuv.hB, $$4);
+      $$0.put(cuv.hC, $$4);
+      $$0.put(cuv.hD, $$4);
+      $$0.put(cuv.hE, $$4);
+      $$0.put(cuv.hF, $$4);
+      $$0.put(cuv.hG, $$4);
+      $$0.put(cuv.hH, $$4);
+      $$0.put(cuv.hI, $$4);
+      $$0.put(cuv.hJ, $$4);
+      $$0.put(cuv.hK, $$4);
+      $$0.put(cuv.hL, $$4);
+      $$0.put(cuv.hM, $$4);
+      $$0.put(cuv.hN, $$4);
+      $$0.put(cuv.hO, $$4);
+      $$0.put(cuv.hV, $$4);
+      $$0.put(cuv.pg, $$4);
+      $$0.put(cuv.kI, $$4);
+      $$0.put(cuv.nd, $$4);
+      $$0.put(cuv.qB, $$4);
+   });
+   private static final Map<ecf, fqp> b = ac.a(Maps.newHashMap(), $$0 -> {
+      fqp $$1 = fqp.f();
+      $$0.put(ech.b, $$1);
+      $$0.put(ech.c, $$1);
+   });
+   private static boolean c;
 
-   public static fqc a(Reader $$0) {
-      return aso.a(a, $$0, fqc.class);
-   }
-
-   public static fqc a(String $$0) {
-      return a(new StringReader($$0));
-   }
-
-   public fqc(@Nullable afw $$0, List<fpy> $$1, Map<String, Either<gce, String>> $$2, @Nullable Boolean $$3, @Nullable fqc.b $$4, fqj $$5, List<fqg> $$6) {
-      this.k = $$1;
-      this.m = $$3;
-      this.l = $$4;
-      this.d = $$2;
-      this.f = $$0;
-      this.n = $$5;
-      this.o = $$6;
-   }
-
-   public List<fpy> a() {
-      return this.k.isEmpty() && this.e != null ? this.e.a() : this.k;
-   }
-
-   public boolean b() {
-      if (this.m != null) {
-         return this.m;
+   public static fqp a(dgw $$0) {
+      cut $$1 = $$0.b();
+      if ($$1 instanceof czc) {
+         return c ? fqp.d() : fqp.c();
       } else {
-         return this.e != null ? this.e.b() : true;
+         fqp $$2 = a.get($$1);
+         return $$2 != null ? $$2 : fqp.c();
       }
    }
 
-   public fqc.b c() {
-      if (this.l != null) {
-         return this.l;
+   public static fqp b(dgw $$0) {
+      cut $$1 = $$0.b();
+      if ($$1 instanceof czc) {
+         return c ? fqp.d() : fqp.c();
       } else {
-         return this.e != null ? this.e.c() : fqc.b.b;
-      }
-   }
-
-   public boolean d() {
-      return this.f == null || this.e != null && this.e.d();
-   }
-
-   public List<fqg> e() {
-      return this.o;
-   }
-
-   private fqh a(gcf $$0, fqc $$1) {
-      return this.o.isEmpty() ? fqh.a : new fqh($$0, $$1, this.o);
-   }
-
-   @Override
-   public Collection<afw> f() {
-      Set<afw> $$0 = Sets.newHashSet();
-
-      for (fqg $$1 : this.o) {
-         $$0.add($$1.a());
-      }
-
-      if (this.f != null) {
-         $$0.add(this.f);
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(Function<afw, gcm> $$0) {
-      Set<gcm> $$1 = Sets.newLinkedHashSet();
-
-      for (fqc $$2 = this; $$2.f != null && $$2.e == null; $$2 = $$2.e) {
-         $$1.add($$2);
-         gcm $$3 = $$0.apply($$2.f);
-         if ($$3 == null) {
-            g.warn("No parent '{}' while loading model '{}'", this.f, $$2);
-         }
-
-         if ($$1.contains($$3)) {
-            g.warn(
-               "Found 'parent' loop while loading model '{}' in chain: {} -> {}",
-               new Object[]{$$2, $$1.stream().map(Object::toString).collect(Collectors.joining(" -> ")), this.f}
-            );
-            $$3 = null;
-         }
-
-         if ($$3 == null) {
-            $$2.f = gcg.n;
-            $$3 = $$0.apply($$2.f);
-         }
-
-         if (!($$3 instanceof fqc)) {
-            throw new IllegalStateException("BlockModel parent has to be a block model.");
-         }
-
-         $$2.e = (fqc)$$3;
-      }
-
-      this.o.forEach($$1x -> {
-         gcm $$2x = $$0.apply($$1x.a());
-         if (!Objects.equals($$2x, this)) {
-            $$2x.a($$0);
-         }
-      });
-   }
-
-   @Override
-   public gcb a(gcf $$0, Function<gce, gaa> $$1, gcj $$2, afw $$3) {
-      return this.a($$0, this, $$1, $$2, $$3, true);
-   }
-
-   public gcb a(gcf $$0, fqc $$1, Function<gce, gaa> $$2, gcj $$3, afw $$4, boolean $$5) {
-      gaa $$6 = $$2.apply(this.c("particle"));
-      if (this.g() == gcg.s) {
-         return new gcd(this.h(), this.a($$0, $$1), $$6, this.c().a());
-      } else {
-         gcl.a $$7 = new gcl.a(this, this.a($$0, $$1), $$5).a($$6);
-
-         for (fpy $$8 : this.a()) {
-            for (hx $$9 : $$8.c.keySet()) {
-               fpz $$10 = $$8.c.get($$9);
-               gaa $$11 = $$2.apply(this.c($$10.d));
-               if ($$10.b == null) {
-                  $$7.a(a($$8, $$10, $$11, $$9, $$3, $$4));
-               } else {
-                  $$7.a(hx.a($$3.b().c(), $$10.b), a($$8, $$10, $$11, $$9, $$3, $$4));
-               }
-            }
-         }
-
-         return $$7.b();
-      }
-   }
-
-   private static fpx a(fpy $$0, fpz $$1, gaa $$2, hx $$3, gcj $$4, afw $$5) {
-      return h.a($$0.a, $$0.b, $$1, $$2, $$3, $$4, $$0.d, $$0.e, $$5);
-   }
-
-   public boolean b(String $$0) {
-      return !fzq.b().equals(this.c($$0).b());
-   }
-
-   public gce c(String $$0) {
-      if (e($$0)) {
-         $$0 = $$0.substring(1);
-      }
-
-      List<String> $$1 = Lists.newArrayList();
-
-      while (true) {
-         Either<gce, String> $$2 = this.d($$0);
-         Optional<gce> $$3 = $$2.left();
-         if ($$3.isPresent()) {
-            return $$3.get();
-         }
-
-         $$0 = (String)$$2.right().get();
-         if ($$1.contains($$0)) {
-            g.warn("Unable to resolve texture due to reference chain {}->{} in {}", new Object[]{Joiner.on("->").join($$1), $$0, this.c});
-            return new gce(fzz.e, fzq.b());
-         }
-
-         $$1.add($$0);
-      }
-   }
-
-   private Either<gce, String> d(String $$0) {
-      for (fqc $$1 = this; $$1 != null; $$1 = $$1.e) {
-         Either<gce, String> $$2 = $$1.d.get($$0);
+         fqp $$2 = a.get($$1);
          if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      return Either.left(new gce(fzz.e, fzq.b()));
-   }
-
-   static boolean e(String $$0) {
-      return $$0.charAt(0) == '#';
-   }
-
-   public fqc g() {
-      return this.e == null ? this : this.e.g();
-   }
-
-   public fqj h() {
-      fqi $$0 = this.a(ckg.b);
-      fqi $$1 = this.a(ckg.c);
-      fqi $$2 = this.a(ckg.d);
-      fqi $$3 = this.a(ckg.e);
-      fqi $$4 = this.a(ckg.f);
-      fqi $$5 = this.a(ckg.g);
-      fqi $$6 = this.a(ckg.h);
-      fqi $$7 = this.a(ckg.i);
-      return new fqj($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   private fqi a(ckg $$0) {
-      return this.e != null && !this.n.b($$0) ? this.e.a($$0) : this.n.a($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   public static class a implements JsonDeserializer<fqc> {
-      public fqc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         List<fpy> $$4 = this.b($$2, $$3);
-         String $$5 = this.c($$3);
-         Map<String, Either<gce, String>> $$6 = this.b($$3);
-         Boolean $$7 = this.a($$3);
-         fqj $$8 = fqj.a;
-         if ($$3.has("display")) {
-            JsonObject $$9 = aso.u($$3, "display");
-            $$8 = (fqj)$$2.deserialize($$9, fqj.class);
-         }
-
-         List<fqg> $$10 = this.a($$2, $$3);
-         fqc.b $$11 = null;
-         if ($$3.has("gui_light")) {
-            $$11 = fqc.b.a(aso.i($$3, "gui_light"));
-         }
-
-         afw $$12 = $$5.isEmpty() ? null : new afw($$5);
-         return new fqc($$12, $$4, $$6, $$7, $$11, $$8, $$10);
-      }
-
-      protected List<fqg> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         List<fqg> $$2 = Lists.newArrayList();
-         if ($$1.has("overrides")) {
-            for (JsonElement $$4 : aso.v($$1, "overrides")) {
-               $$2.add((fqg)$$0.deserialize($$4, fqg.class));
-            }
-         }
-
-         return $$2;
-      }
-
-      private Map<String, Either<gce, String>> b(JsonObject $$0) {
-         afw $$1 = fzz.e;
-         Map<String, Either<gce, String>> $$2 = Maps.newHashMap();
-         if ($$0.has("textures")) {
-            JsonObject $$3 = aso.u($$0, "textures");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), a($$1, $$4.getValue().getAsString()));
-            }
-         }
-
-         return $$2;
-      }
-
-      private static Either<gce, String> a(afw $$0, String $$1) {
-         if (fqc.e($$1)) {
-            return Either.right($$1.substring(1));
+            return $$2 == fqp.f() ? fqp.g() : $$2;
          } else {
-            afw $$2 = afw.a($$1);
-            if ($$2 == null) {
-               throw new JsonParseException($$1 + " is not valid resource location");
-            } else {
-               return Either.left(new gce($$0, $$2));
-            }
+            return fqp.c();
          }
-      }
-
-      private String c(JsonObject $$0) {
-         return aso.a($$0, "parent", "");
-      }
-
-      @Nullable
-      protected Boolean a(JsonObject $$0) {
-         return $$0.has("ambientocclusion") ? aso.k($$0, "ambientocclusion") : null;
-      }
-
-      protected List<fpy> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         List<fpy> $$2 = Lists.newArrayList();
-         if ($$1.has("elements")) {
-            for (JsonElement $$3 : aso.v($$1, "elements")) {
-               $$2.add((fpy)$$0.deserialize($$3, fpy.class));
-            }
-         }
-
-         return $$2;
       }
    }
 
-   public static enum b {
-      a("front"),
-      b("side");
-
-      private final String c;
-
-      private b(String $$0) {
-         this.c = $$0;
-      }
-
-      public static fqc.b a(String $$0) {
-         for (fqc.b $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
+   public static fqp a(dgw $$0, boolean $$1) {
+      fqp $$2 = a($$0);
+      if ($$2 == fqp.f()) {
+         if (!esr.L()) {
+            return fqw.k();
+         } else {
+            return $$1 ? fqw.k() : fqw.j();
          }
-
-         throw new IllegalArgumentException("Invalid gui light: " + $$0);
-      }
-
-      public boolean a() {
-         return this == b;
+      } else {
+         return fqw.i();
       }
    }
 
-   public static class c extends RuntimeException {
-      public c(String $$0) {
-         super($$0);
+   public static fqp a(clb $$0, boolean $$1) {
+      ckw $$2 = $$0.d();
+      if ($$2 instanceof ciu) {
+         cut $$3 = ((ciu)$$2).e();
+         return a($$3.o(), $$1);
+      } else {
+         return $$1 ? fqw.k() : fqw.j();
       }
+   }
+
+   public static fqp a(ecg $$0) {
+      fqp $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : fqp.c();
+   }
+
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

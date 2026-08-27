@@ -1,37 +1,34 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 
-public class gff {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+public class gff extends apq {
+   private rz a;
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
-      }
+   public gff(gfg $$0, ij<agp> $$1, eee $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
+   @Override
+   protected void b(amb $$0) {
+      if (this.b().a($$0.fR())) {
+         this.a = $$0.f(new rz());
       }
 
-      this.d = $$0;
+      super.b($$0);
    }
 
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
+   @Override
+   public ur a(SocketAddress $$0, GameProfile $$1) {
+      return (ur)(this.b().a($$1) && this.a($$1.getName()) != null ? ur.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
    }
 
-   public void a(geu $$0) {
-      this.b.ifPresent($$1 -> $$0.send(gev.e, $$1x -> {
-            $$1x.a(gex.p, this.a($$1));
-            $$1x.a(gex.q, (int)this.c);
-         }));
+   public gfg b() {
+      return (gfg)super.c();
+   }
+
+   @Override
+   public rz r() {
+      return this.a;
    }
 }

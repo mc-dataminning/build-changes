@@ -1,45 +1,85 @@
-public class flq extends fnq {
-   private final fnl a;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-   flq(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fnl $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+public interface flq {
+   static flq a(flw $$0, UserApiService $$1) {
+      return new flq.b($$0, $$1);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
+   CompletableFuture<Unit> a(UUID var1, fly var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
+   }
+
+   public static class a extends vr {
+      public a(ur $$0, Throwable $$1) {
+         super($$0, $$1);
       }
    }
 
-   @Override
-   public fmu b() {
-      return fmu.b;
-   }
+   public static record b(flw a, UserApiService b) implements flq {
+      private static final ur c = ur.c("gui.abuseReport.send.service_unavailable");
+      private static final ur d = ur.c("gui.abuseReport.send.http_error");
+      private static final ur e = ur.c("gui.abuseReport.send.json_error");
 
-   public static class a implements fmt<jv> {
-      private final fnl a;
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fly $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-      public a(fnl $$0) {
-         this.a = $$0;
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               ur $$5 = this.a(var7);
+               throw new CompletionException(new flq.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               ur $$7 = this.a(var8);
+               throw new CompletionException(new flq.a($$7, var8));
+            }
+         }, ac.g());
       }
 
-      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new flq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private ur a(MinecraftClientHttpException $$0) {
+         return ur.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private ur a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public flw c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

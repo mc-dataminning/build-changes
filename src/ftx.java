@@ -1,88 +1,59 @@
-import org.joml.Quaternionf;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class ftx extends fuc<byj> {
-   private static final afw a = new afw("textures/entity/end_crystal/end_crystal.png");
-   private static final fpj f = fpj.e(a);
-   private static final float g = (float)Math.sin(Math.PI / 4);
-   private static final String h = "glass";
-   private static final String i = "base";
-   private final fiw j;
-   private final fiw k;
-   private final fiw l;
+public class ftx implements ftq.a {
+   private final esr a;
+   private final Map<Long, Map<ht, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
 
-   public ftx(fud.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      fiw $$1 = $$0.a(fiv.U);
-      this.k = $$1.b("glass");
-      this.j = $$1.b("cube");
-      this.l = $$1.b("base");
+   ftx(esr $$0) {
+      this.a = $$0;
    }
 
-   public static fjc a() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      $$1.a("glass", fjb.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fiy.a);
-      $$1.a("cube", fjb.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fiy.a);
-      $$1.a("base", fjb.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), fiy.a);
-      return fjc.a($$0, 64, 32);
+   public void a(long $$0, ht $$1) {
+      Map<ht, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   public void a(byj $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      $$3.a();
-      float $$6 = a($$0, $$2);
-      float $$7 = ((float)$$0.b + $$2) * 3.0F;
-      eml $$8 = $$4.getBuffer(f);
-      $$3.a();
-      $$3.b(2.0F, 2.0F, 2.0F);
-      $$3.a(0.0F, -0.5F, 0.0F);
-      int $$9 = fzr.d;
-      if ($$0.s()) {
-         this.l.a($$3, $$8, $$5, $$9);
+   @Override
+   public void a(enk $$0, fqh $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.r.V();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<ht> $$8 = Sets.newHashSet();
+      Map<ht, Integer> $$9 = Maps.newHashMap();
+      eno $$10 = $$1.getBuffer(fqp.w());
+      Iterator<Entry<Long, Map<ht, Integer>>> $$11 = this.b.entrySet().iterator();
+
+      while ($$11.hasNext()) {
+         Entry<Long, Map<ht, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<ht, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<ht, Integer> $$16 : $$14.entrySet()) {
+               ht $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  ejd $$19 = new ejd(ht.b).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  fqf.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
       }
 
-      $$3.a(a.d.rotationDegrees($$7));
-      $$3.a(0.0F, 1.5F + $$6 / 2.0F, 0.0F);
-      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
-      this.k.a($$3, $$8, $$5, $$9);
-      float $$10 = 0.875F;
-      $$3.b(0.875F, 0.875F, 0.875F);
-      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
-      $$3.a(a.d.rotationDegrees($$7));
-      this.k.a($$3, $$8, $$5, $$9);
-      $$3.b(0.875F, 0.875F, 0.875F);
-      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
-      $$3.a(a.d.rotationDegrees($$7));
-      this.j.a($$3, $$8, $$5, $$9);
-      $$3.b();
-      $$3.b();
-      ht $$11 = $$0.q();
-      if ($$11 != null) {
-         float $$12 = (float)$$11.u() + 0.5F;
-         float $$13 = (float)$$11.v() + 0.5F;
-         float $$14 = (float)$$11.w() + 0.5F;
-         float $$15 = (float)((double)$$12 - $$0.dq());
-         float $$16 = (float)((double)$$13 - $$0.ds());
-         float $$17 = (float)((double)$$14 - $$0.dw());
-         $$3.a($$15, $$16, $$17);
-         fty.a(-$$15, -$$16 + $$6, -$$17, $$2, $$0.b, $$3, $$4, $$5);
+      for (Entry<ht, Integer> $$20 : $$9.entrySet()) {
+         ht $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         ftq.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public static float a(byj $$0, float $$1) {
-      float $$2 = (float)$$0.b + $$1;
-      float $$3 = asy.a($$2 * 0.2F) / 2.0F + 0.5F;
-      $$3 = ($$3 * $$3 + $$3) * 0.4F;
-      return $$3 - 1.4F;
-   }
-
-   public afw a(byj $$0) {
-      return a;
-   }
-
-   public boolean a(byj $$0, fsc $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.q() != null;
    }
 }

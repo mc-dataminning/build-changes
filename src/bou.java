@@ -1,97 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bou extends bma<cck> {
-   private static final int c = 5;
-   private static final float d = 0.5F;
-   private Set<cke> e = ImmutableSet.of();
+public class bou {
+   public static bnz<ccz> a(btz<ia> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return bqb.a(
+         (Function<bqb.b<ccz>, ? extends App<bqb.c<ccz>, bqe<ccz>>>)($$5 -> $$5.group($$5.a(btz.E), $$5.c(btz.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     ia $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.ac() && (!$$13.isPresent() || $$9.V() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dl()) > $$3) {
+                           eji $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public bou() {
-      super(ImmutableMap.of(btk.q, btl.a, btk.h, btl.a));
-   }
+                           while ($$14 == null || ht.a($$14).k($$10.dl()) > $$3) {
+                              $$14 = bvo.a($$10, 15, 7, eji.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
 
-   protected boolean a(alq $$0, cck $$1) {
-      return bmc.a($$1.dN(), btk.q, bjx.bf);
-   }
+                           $$7.a(new buc($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dl()) > $$2) {
+                           $$7.a(new buc($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
+                     }
 
-   protected boolean a(alq $$0, cck $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(alq $$0, cck $$1, long $$2) {
-      cck $$3 = (cck)$$1.dN().c(btk.q).get();
-      bmc.a($$1, $$3, 0.5F);
-      this.e = a($$1, $$3);
-   }
-
-   protected void c(alq $$0, cck $$1, long $$2) {
-      cck $$3 = (cck)$$1.dN().c(btk.q).get();
-      if (!($$1.f($$3) > 5.0)) {
-         bmc.a($$1, $$3, 0.5F);
-         $$1.a($$0, $$3, $$2);
-         if ($$1.gw() && ($$1.gp().b() == ccn.g || $$3.gx())) {
-            a($$1, cck.bW.keySet(), $$3);
-         }
-
-         if ($$3.gp().b() == ccn.g && $$1.y().a_(ckm.oI) > ckm.oI.l() / 2) {
-            a($$1, ImmutableSet.of(ckm.oI), $$3);
-         }
-
-         if (!this.e.isEmpty() && $$1.y().a(this.e)) {
-            a($$1, this.e, $$3);
-         }
-      }
-   }
-
-   protected void d(alq $$0, cck $$1, long $$2) {
-      $$1.dN().b(btk.q);
-   }
-
-   private static Set<cke> a(cck $$0, cck $$1) {
-      ImmutableSet<cke> $$2 = $$1.gp().b().d();
-      ImmutableSet<cke> $$3 = $$0.gp().b().d();
-      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
-   }
-
-   private static void a(cck $$0, Set<cke> $$1, bkj $$2) {
-      bii $$3 = $$0.y();
-      ckj $$4 = ckj.b;
-      int $$5 = 0;
-
-      while ($$5 < $$3.b()) {
-         ckj $$6;
-         cke $$7;
-         int $$8;
-         label28: {
-            $$6 = $$3.a($$5);
-            if (!$$6.b()) {
-               $$7 = $$6.d();
-               if ($$1.contains($$7)) {
-                  if ($$6.L() > $$6.g() / 2) {
-                     $$8 = $$6.L() / 2;
-                     break label28;
-                  }
-
-                  if ($$6.L() > 24) {
-                     $$8 = $$6.L() - 24;
-                     break label28;
-                  }
-               }
-            }
-
-            $$5++;
-            continue;
-         }
-
-         $$6.h($$8);
-         $$4 = new ckj($$7, $$8);
-         break;
-      }
-
-      if (!$$4.b()) {
-         bmc.a($$0, $$4, $$2.dj());
-      }
+                     return true;
+                  }))
+      );
    }
 }

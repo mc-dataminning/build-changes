@@ -1,15 +1,19 @@
-public enum bjf {
-   a(n.j),
-   b(n.m),
-   c(n.j);
+import com.mojang.serialization.Codec;
 
-   private final n d;
+public enum bjf implements aub {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
 
-   private bjf(n $$0) {
-      this.d = $$0;
+   public static final Codec<bjf> d = aub.a(bjf::values);
+   private final String e;
+
+   private bjf(String $$0) {
+      this.e = $$0;
    }
 
-   public n a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.e;
    }
 }

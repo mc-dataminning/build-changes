@@ -1,39 +1,89 @@
-public record bvy(afw l) {
-   public static final afv<bvy> a = a("tabby");
-   public static final afv<bvy> b = a("black");
-   public static final afv<bvy> c = a("red");
-   public static final afv<bvy> d = a("siamese");
-   public static final afv<bvy> e = a("british_shorthair");
-   public static final afv<bvy> f = a("calico");
-   public static final afv<bvy> g = a("persian");
-   public static final afv<bvy> h = a("ragdoll");
-   public static final afv<bvy> i = a("white");
-   public static final afv<bvy> j = a("jellie");
-   public static final afv<bvy> k = a("all_black");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
-   private static afv<bvy> a(String $$0) {
-      return afv.a(jz.k, new afw($$0));
+public class bvy {
+   private final ht a;
+   private final ib<bwa> b;
+   private int c;
+   private final Runnable d;
+
+   public static Codec<bvy> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  ht.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
+                  agd.a(jz.T).fieldOf("type").forGetter($$0xx -> $$0xx.b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
+                  RecordCodecBuilder.point($$0)
+               )
+               .apply($$1, bvy::new)
+      );
    }
 
-   public static bvy a(io<bvy> $$0) {
-      a($$0, a, "textures/entity/cat/tabby.png");
-      a($$0, b, "textures/entity/cat/black.png");
-      a($$0, c, "textures/entity/cat/red.png");
-      a($$0, d, "textures/entity/cat/siamese.png");
-      a($$0, e, "textures/entity/cat/british_shorthair.png");
-      a($$0, f, "textures/entity/cat/calico.png");
-      a($$0, g, "textures/entity/cat/persian.png");
-      a($$0, h, "textures/entity/cat/ragdoll.png");
-      a($$0, i, "textures/entity/cat/white.png");
-      a($$0, j, "textures/entity/cat/jellie.png");
-      return a($$0, k, "textures/entity/cat/all_black.png");
+   private bvy(ht $$0, ib<bwa> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.i();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static bvy a(io<bvy> $$0, afv<bvy> $$1, String $$2) {
-      return io.a($$0, $$1, new bvy(new afw($$2)));
+   public bvy(ht $$0, ib<bwa> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   public afw a() {
-      return this.l;
+   @Deprecated
+   @auk
+   public int a() {
+      return this.c;
+   }
+
+   protected boolean b() {
+      if (this.c <= 0) {
+         return false;
+      } else {
+         this.c--;
+         this.d.run();
+         return true;
+      }
+   }
+
+   protected boolean c() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
+      }
+   }
+
+   public boolean d() {
+      return this.c > 0;
+   }
+
+   public boolean e() {
+      return this.c != this.b.a().b();
+   }
+
+   public ht f() {
+      return this.a;
+   }
+
+   public ib<bwa> g() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((bvy)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

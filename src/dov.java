@@ -1,47 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class dov extends doo<dqz> {
-   public dov(Codec<dqz> $$0) {
+public class dov extends dpj<dru> {
+   public dov(Codec<dru> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doq<dqz> $$0) {
-      crt $$1 = $$0.b();
+   public boolean a(dpl<dru> $$0) {
+      csm $$1 = $$0.b();
       ht $$2 = $$0.e();
-      ate $$3 = $$0.d();
-      if (!$$1.t($$2)) {
-         return false;
+      ato $$3 = $$0.d();
+      if ($$1.t($$2) && $$1.a_($$2.d()).a(cuv.fz)) {
+         cvy.a($$1, $$2, $$3, 8);
+         return true;
       } else {
-         dgb $$4 = $$1.a_($$2.c());
-         if (!$$4.a(cuc.dV) && !$$4.a(cuc.dY) && !$$4.a(cuc.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, cuc.ec.o(), 2);
-
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               ht $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
-
-                  for (hx $$8 : hx.values()) {
-                     if ($$1.a_($$6.a($$8)).a(cuc.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, cuc.ec.o(), 2);
-                  }
-               }
-            }
-
-            return true;
-         }
+         return false;
       }
    }
 }

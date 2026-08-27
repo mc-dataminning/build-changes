@@ -1,17 +1,31 @@
-public interface eik {
-   static eik a() {
-      return eip.a;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
+
+public record eik(eel.b c) implements ein {
+   public static final Codec<eik> a = RecordCodecBuilder.create($$0 -> $$0.group(eel.b.e.fieldOf("target").forGetter(eik::c)).apply($$0, eik::new));
+   public static final Codec<eik> b = eel.b.e.xmap(eik::new, eik::c);
+
+   public static ein a(eel.b $$0) {
+      return new eik($$0);
    }
 
-   static eik a(bjt $$0) {
-      return new eip($$0);
+   @Override
+   public eim a() {
+      return eio.c;
    }
 
-   boolean b();
+   @Nullable
+   @Override
+   public String a(eel $$0) {
+      bki $$1 = $$0.c(this.c.a());
+      return $$1 != null ? $$1.cx() : null;
+   }
 
-   boolean a(eiy var1, ht var2, boolean var3);
-
-   boolean a(cke var1);
-
-   boolean a(ebe var1, ebe var2);
+   @Override
+   public Set<egt<?>> b() {
+      return ImmutableSet.of(this.c.a());
+   }
 }

@@ -1,13 +1,8 @@
-public final class agh extends RuntimeException {
-   public static final agh a = new agh();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private agh() {
-      this.setStackTrace(new StackTraceElement[0]);
-   }
-
-   @Override
-   public synchronized Throwable fillInStackTrace() {
-      this.setStackTrace(new StackTraceElement[0]);
-      return this;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface agh {
 }

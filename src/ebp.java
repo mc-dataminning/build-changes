@@ -1,37 +1,24 @@
-public enum ebp {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F);
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-   private final float z;
-
-   private ebp(float $$0) {
-      this.z = $$0;
+public class ebp extends ebu<ebp.a> {
+   protected ebp(djg $$0) {
+      super(csb.b, $$0, new ebp.a(new Long2ObjectOpenHashMap()));
    }
 
-   public float a() {
-      return this.z;
+   @Override
+   protected int a(long $$0) {
+      long $$1 = iu.e($$0);
+      diy $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(iu.b(ht.a($$0)), iu.b(ht.b($$0)), iu.b(ht.c($$0)));
+   }
+
+   protected static final class a extends ebr<ebp.a> {
+      public a(Long2ObjectOpenHashMap<diy> $$0) {
+         super($$0);
+      }
+
+      public ebp.a a() {
+         return new ebp.a(this.a.clone());
+      }
    }
 }

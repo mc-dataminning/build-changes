@@ -1,56 +1,58 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class cxm extends cua {
-   protected final hx a;
-   protected final boolean b;
-   protected final eiy d;
+public abstract class cxm extends cyo {
+   public static final dhu<dhh> K = dhm.U;
 
-   protected cxm(dga.d $$0, hx $$1, eiy $$2, boolean $$3) {
+   protected cxm(dgv.d $$0) {
       super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
    }
 
    @Override
    protected abstract MapCodec<? extends cxm> a();
 
+   @Override
+   public boolean a(dgw $$0, crv $$1, ht $$2) {
+      return b($$1, $$2, h($$0).g());
+   }
+
+   public static boolean b(crv $$0, ht $$1, hx $$2) {
+      ht $$3 = $$1.a($$2);
+      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   }
+
    @Nullable
    @Override
-   public dgb a(cmr $$0) {
-      dgb $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
-   }
+   public dgw a(cnj $$0) {
+      for (hx $$1 : $$0.f()) {
+         dgw $$2;
+         if ($$1.o() == hx.a.b) {
+            $$2 = this.o().a(K, $$1 == hx.b ? dhh.c : dhh.a).a(aE, $$0.g());
+         } else {
+            $$2 = this.o().a(K, dhh.b).a(aE, $$1.g());
+         }
 
-   public dgb a(cra $$0) {
-      return this.o();
+         if ($$2.a((crv)$$0.q(), $$0.a())) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 
    @Override
-   public boolean a(dgb $$0, crc $$1, ht $$2) {
-      ht $$3 = $$2.a(this.a.g());
-      dgb $$4 = $$1.a_($$3);
-      return !this.h($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? cuv.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected static hx h(dgw $$0) {
+      switch ((dhh)$$0.c(K)) {
+         case c:
+            return hx.a;
+         case a:
+            return hx.b;
+         default:
+            return $$0.c(aE);
       }
    }
-
-   protected boolean h(dgb $$0) {
-      return true;
-   }
-
-   @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return this.d;
-   }
-
-   protected abstract cxo c();
-
-   protected abstract cua b();
 }

@@ -1,199 +1,123 @@
-import java.util.stream.Stream;
+import com.google.common.collect.Iterables;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public interface crc extends cqc, cqj, crp, crz.a {
+public interface crc extends cqy {
+   din C_();
+
    @Nullable
-   dhx a(int var1, int var2, dic var3, boolean var4);
+   cqy c(int var1, int var2);
 
-   @Deprecated
-   boolean b(int var1, int var2);
-
-   int a(dlk.a var1, int var2, int var3);
-
-   int B_();
-
-   crz F_();
-
-   default ib<crx> s(ht $$0) {
-      return this.F_().a($$0);
+   default boolean a(@Nullable bki $$0, ekb $$1) {
+      return true;
    }
 
-   default Stream<dgb> c(eia $$0) {
-      int $$1 = asy.a($$0.a);
-      int $$2 = asy.a($$0.d);
-      int $$3 = asy.a($$0.b);
-      int $$4 = asy.a($$0.e);
-      int $$5 = asy.a($$0.c);
-      int $$6 = asy.a($$0.f);
-      return this.a($$1, $$3, $$5, $$2, $$4, $$6) ? this.a($$0) : Stream.empty();
+   default boolean a(dgw $$0, ht $$1, ejn $$2) {
+      ekb $$3 = $$0.b(this, $$1, $$2);
+      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
    }
 
-   @Override
-   default int a(ht $$0, cqk $$1) {
-      return $$1.getColor(this.s($$0).a(), (double)$$0.u(), (double)$$0.w());
+   default boolean f(bki $$0) {
+      return this.a($$0, ejy.a($$0.cG()));
    }
 
-   @Override
-   default ib<crx> getNoiseBiome(int $$0, int $$1, int $$2) {
-      dhx $$3 = this.a(in.e($$0), in.e($$2), dic.f, false);
-      return $$3 != null ? $$3.getNoiseBiome($$0, $$1, $$2) : this.a($$0, $$1, $$2);
+   default boolean b(ejd $$0) {
+      return this.a(null, $$0);
    }
 
-   ib<crx> a(int var1, int var2, int var3);
-
-   boolean x_();
-
-   @Deprecated
-   int z_();
-
-   djk D_();
-
-   @Override
-   default int I_() {
-      return this.D_().n();
+   default boolean g(bki $$0) {
+      return this.a($$0, $$0.cG());
    }
 
-   @Override
-   default int J_() {
-      return this.D_().o();
-   }
-
-   default ht a(dlk.a $$0, ht $$1) {
-      return new ht($$1.u(), this.a($$0, $$1.u(), $$1.w()), $$1.w());
-   }
-
-   default boolean t(ht $$0) {
-      return this.a_($$0).i();
-   }
-
-   default boolean u(ht $$0) {
-      if ($$0.v() >= this.z_()) {
-         return this.g($$0);
-      } else {
-         ht $$1 = new ht($$0.u(), this.z_(), $$0.w());
-         if (!this.g($$1)) {
+   default boolean a(@Nullable bki $$0, ejd $$1) {
+      for (ekb $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
             return false;
-         } else {
-            for (ht var4 = $$1.d(); var4.v() > $$0.v(); var4 = var4.d()) {
-               dgb $$2 = this.a_(var4);
-               if ($$2.b(this, var4) > 0 && !$$2.k()) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      }
-   }
-
-   default float v(ht $$0) {
-      return this.w($$0) - 0.5F;
-   }
-
-   @Deprecated
-   default float w(ht $$0) {
-      float $$1 = (float)this.z($$0) / 15.0F;
-      float $$2 = $$1 / (4.0F - 3.0F * $$1);
-      return asy.i(this.D_().s(), $$2, 1.0F);
-   }
-
-   default dhx x(ht $$0) {
-      return this.a(iu.a($$0.u()), iu.a($$0.w()));
-   }
-
-   default dhx a(int $$0, int $$1) {
-      return this.a($$0, $$1, dic.n, true);
-   }
-
-   default dhx a(int $$0, int $$1, dic $$2) {
-      return this.a($$0, $$1, $$2, true);
-   }
-
-   @Nullable
-   @Override
-   default cqf c(int $$0, int $$1) {
-      return this.a($$0, $$1, dic.c, false);
-   }
-
-   default boolean y(ht $$0) {
-      return this.b_($$0).a(aqx.a);
-   }
-
-   default boolean d(eia $$0) {
-      int $$1 = asy.a($$0.a);
-      int $$2 = asy.c($$0.d);
-      int $$3 = asy.a($$0.b);
-      int $$4 = asy.c($$0.e);
-      int $$5 = asy.a($$0.c);
-      int $$6 = asy.c($$0.f);
-      ht.a $$7 = new ht.a();
-
-      for (int $$8 = $$1; $$8 < $$2; $$8++) {
-         for (int $$9 = $$3; $$9 < $$4; $$9++) {
-            for (int $$10 = $$5; $$10 < $$6; $$10++) {
-               dgb $$11 = this.a_($$7.d($$8, $$9, $$10));
-               if (!$$11.u().c()) {
-                  return true;
-               }
-            }
          }
       }
 
-      return false;
+      if (!this.c($$0, $$1).isEmpty()) {
+         return false;
+      } else if ($$0 == null) {
+         return true;
+      } else {
+         ekb $$3 = this.h($$0, $$1);
+         return $$3 == null || !ejy.c($$3, ejy.a($$1), ejm.i);
+      }
    }
 
-   default int z(ht $$0) {
-      return this.c($$0, this.B_());
-   }
-
-   default int c(ht $$0, int $$1) {
-      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000 ? this.b($$0, $$1) : 15;
-   }
-
-   @Deprecated
-   default boolean f(int $$0, int $$1) {
-      return this.b(iu.a($$0), iu.a($$1));
-   }
-
-   @Deprecated
-   default boolean A(ht $$0) {
-      return this.f($$0.u(), $$0.w());
-   }
-
-   @Deprecated
-   default boolean a(ht $$0, ht $$1) {
-      return this.a($$0.u(), $$0.v(), $$0.w(), $$1.u(), $$1.v(), $$1.w());
-   }
-
-   @Deprecated
-   default boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      return $$4 >= this.I_() && $$1 < this.aj() ? this.b($$0, $$2, $$3, $$5) : false;
-   }
-
-   @Deprecated
-   default boolean b(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = iu.a($$0);
-      int $$5 = iu.a($$2);
-      int $$6 = iu.a($$1);
-      int $$7 = iu.a($$3);
-
-      for (int $$8 = $$4; $$8 <= $$5; $$8++) {
-         for (int $$9 = $$6; $$9 <= $$7; $$9++) {
-            if (!this.b($$8, $$9)) {
-               return false;
-            }
+   default boolean b(@Nullable bki $$0, ejd $$1) {
+      for (ekb $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
          }
       }
 
       return true;
    }
 
-   ip H_();
+   List<ekb> c(@Nullable bki var1, ejd var2);
 
-   cfg G();
+   default Iterable<ekb> d(@Nullable bki $$0, ejd $$1) {
+      List<ekb> $$2 = this.c($$0, $$1);
+      Iterable<ekb> $$3 = this.e($$0, $$1);
+      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
+   }
 
-   default <T> id<T> a(afv<? extends io<? extends T>> $$0) {
-      io<T> $$1 = this.H_().d($$0);
-      return $$1.p().a(this.G());
+   default Iterable<ekb> e(@Nullable bki $$0, ejd $$1) {
+      return () -> new cqw<ekb>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   }
+
+   @Nullable
+   private ekb h(bki $$0, ejd $$1) {
+      din $$2 = this.C_();
+      return $$2.a($$0, $$1) ? $$2.c() : null;
+   }
+
+   default boolean f(@Nullable bki $$0, ejd $$1) {
+      cqw<ekb> $$2 = new cqw<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
+
+      while ($$2.hasNext()) {
+         if (!((ekb)$$2.next()).c()) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   default Optional<ht> g(bki $$0, ejd $$1) {
+      ht $$2 = null;
+      double $$3 = Double.MAX_VALUE;
+      cqw<ht> $$4 = new cqw<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
+
+      while ($$4.hasNext()) {
+         ht $$5 = (ht)$$4.next();
+         double $$6 = $$5.b($$0.dj());
+         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
+            $$2 = $$5.i();
+            $$3 = $$6;
+         }
+      }
+
+      return Optional.ofNullable($$2);
+   }
+
+   default Optional<eji> a(@Nullable bki $$0, ekb $$1, eji $$2, double $$3, double $$4, double $$5) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         ejd $$6 = $$1.a().c($$3, $$4, $$5);
+         ekb $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
+            .filter($$0x -> this.C_() == null || this.C_().a($$0x.a()))
+            .flatMap($$0x -> $$0x.e().stream())
+            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
+            .map(ejy::a)
+            .reduce(ejy.a(), ejy::a);
+         ekb $$8 = ejy.a($$1, $$7, ejm.e);
+         return $$8.a($$2);
+      }
    }
 }

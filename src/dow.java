@@ -1,46 +1,29 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class dow extends dnr {
-   public dow(Codec<dqu> $$0) {
-      super($$0);
+public record dow<FC extends drn, F extends dpj<FC>>(F d, FC e) {
+   public static final Codec<dow<?, ?>> a = jy.R.q().dispatch($$0 -> $$0.d, dpj::a);
+   public static final Codec<ib<dow<?, ?>>> b = agc.a(jz.au, a);
+   public static final Codec<ig<dow<?, ?>>> c = iq.a(jz.au, a);
+
+   public boolean a(csm $$0, dit $$1, ato $$2, ht $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<dow<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   protected void a(cra $$0, ate $$1, ht $$2, int $$3, ht.a $$4, dqu $$5) {
-      int $$6 = $$5.d;
-
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dgb $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(cxv.e) && $$19.b(cxv.c) && $$19.b(cxv.b) && $$19.b(cxv.d)) {
-                     $$19 = $$19.a(cxv.e, Boolean.valueOf($$15))
-                        .a(cxv.c, Boolean.valueOf($$16))
-                        .a(cxv.b, Boolean.valueOf($$17))
-                        .a(cxv.d, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
-               }
-            }
-         }
-      }
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
    }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+   public F b() {
+      return this.d;
+   }
+
+   public FC c() {
+      return this.e;
    }
 }

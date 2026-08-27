@@ -1,167 +1,247 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import java.util.List;
 
 public class pe {
-   public static final afv<dxj> a = ov.a("trail_ruins/tower");
+   public static final agf<dye> a = pb.a("village/snowy/town_centers");
+   private static final agf<dye> b = pb.a("village/snowy/terminators");
 
-   public static void a(oo<dxj> $$0) {
-      ic<dxj> $$1 = $$0.a(jz.aD);
-      ib<dxj> $$2 = $$1.b(ov.a);
-      ic<dzr> $$3 = $$0.a(jz.aB);
-      ib<dzr> $$4 = $$3.b(ow.J);
-      ib<dzr> $$5 = $$3.b(ow.K);
-      ib<dzr> $$6 = $$3.b(ow.L);
+   public static void a(ou<dye> $$0) {
+      ic<dvz> $$1 = $$0.a(jz.aA);
+      ib<dvz> $$2 = $$1.b(qm.h);
+      ib<dvz> $$3 = $$1.b(qm.c);
+      ib<dvz> $$4 = $$1.b(qm.d);
+      ic<eat> $$5 = $$0.a(jz.aC);
+      ib<eat> $$6 = $$5.b(pc.k);
+      ib<eat> $$7 = $$5.b(pc.n);
+      ib<eat> $$8 = $$5.b(pc.c);
+      ic<dye> $$9 = $$0.a(jz.aE);
+      ib<dye> $$10 = $$9.b(pb.a);
+      ib<dye> $$11 = $$9.b(b);
       $$0.a(
          a,
-         new dxj(
-            $$2,
-            List.of(
-               Pair.of(dxh.b("trail_ruins/tower/tower_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/tower_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/tower_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/tower_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/tower_5", $$4), 1)
+         new dye(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dyc.a("village/snowy/town_centers/snowy_meeting_point_1"), 100),
+               Pair.of(dyc.a("village/snowy/town_centers/snowy_meeting_point_2"), 50),
+               Pair.of(dyc.a("village/snowy/town_centers/snowy_meeting_point_3"), 150),
+               Pair.of(dyc.a("village/snowy/zombie/town_centers/snowy_meeting_point_1"), 2),
+               Pair.of(dyc.a("village/snowy/zombie/town_centers/snowy_meeting_point_2"), 1),
+               Pair.of(dyc.a("village/snowy/zombie/town_centers/snowy_meeting_point_3"), 3)
             ),
-            dxj.a.b
+            dye.a.b
          )
       );
-      ov.a(
+      pb.a(
          $$0,
-         "trail_ruins/tower/tower_top",
-         new dxj(
-            $$2,
-            List.of(
-               Pair.of(dxh.b("trail_ruins/tower/tower_top_1", $$6), 1),
-               Pair.of(dxh.b("trail_ruins/tower/tower_top_2", $$6), 1),
-               Pair.of(dxh.b("trail_ruins/tower/tower_top_3", $$6), 1),
-               Pair.of(dxh.b("trail_ruins/tower/tower_top_4", $$6), 1),
-               Pair.of(dxh.b("trail_ruins/tower/tower_top_5", $$6), 1)
+         "village/snowy/streets",
+         new dye(
+            $$11,
+            ImmutableList.of(
+               Pair.of(dyc.a("village/snowy/streets/corner_01", $$6), 2),
+               Pair.of(dyc.a("village/snowy/streets/corner_02", $$6), 2),
+               Pair.of(dyc.a("village/snowy/streets/corner_03", $$6), 2),
+               Pair.of(dyc.a("village/snowy/streets/square_01", $$6), 2),
+               Pair.of(dyc.a("village/snowy/streets/straight_01", $$6), 4),
+               Pair.of(dyc.a("village/snowy/streets/straight_02", $$6), 4),
+               Pair.of(dyc.a("village/snowy/streets/straight_03", $$6), 4),
+               Pair.of(dyc.a("village/snowy/streets/straight_04", $$6), 7),
+               Pair.of(dyc.a("village/snowy/streets/straight_06", $$6), 4),
+               Pair.of(dyc.a("village/snowy/streets/straight_08", $$6), 4),
+               Pair.of(dyc.a("village/snowy/streets/crossroad_02", $$6), 1),
+               Pair.of(dyc.a("village/snowy/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(dyc.a("village/snowy/streets/crossroad_04", $$6), 2),
+                  Pair.of(dyc.a("village/snowy/streets/crossroad_05", $$6), 2),
+                  Pair.of(dyc.a("village/snowy/streets/crossroad_06", $$6), 2),
+                  Pair.of(dyc.a("village/snowy/streets/turn_01", $$6), 3)
+               }
             ),
-            dxj.a.b
+            dye.a.a
          )
       );
-      ov.a(
+      pb.a(
          $$0,
-         "trail_ruins/tower/additions",
-         new dxj(
-            $$2,
-            List.of(
-               Pair.of(dxh.b("trail_ruins/tower/hall_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/hall_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/hall_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/hall_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/hall_5", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/large_hall_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/large_hall_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/large_hall_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/large_hall_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/large_hall_5", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/one_room_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/one_room_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/one_room_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/one_room_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/one_room_5", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/platform_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/platform_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/platform_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/platform_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/platform_5", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/stable_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/stable_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/stable_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/stable_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/tower/stable_5", $$4), 1)
+         "village/snowy/zombie/streets",
+         new dye(
+            $$11,
+            ImmutableList.of(
+               Pair.of(dyc.a("village/snowy/zombie/streets/corner_01", $$6), 2),
+               Pair.of(dyc.a("village/snowy/zombie/streets/corner_02", $$6), 2),
+               Pair.of(dyc.a("village/snowy/zombie/streets/corner_03", $$6), 2),
+               Pair.of(dyc.a("village/snowy/zombie/streets/square_01", $$6), 2),
+               Pair.of(dyc.a("village/snowy/zombie/streets/straight_01", $$6), 4),
+               Pair.of(dyc.a("village/snowy/zombie/streets/straight_02", $$6), 4),
+               Pair.of(dyc.a("village/snowy/zombie/streets/straight_03", $$6), 4),
+               Pair.of(dyc.a("village/snowy/zombie/streets/straight_04", $$6), 7),
+               Pair.of(dyc.a("village/snowy/zombie/streets/straight_06", $$6), 4),
+               Pair.of(dyc.a("village/snowy/zombie/streets/straight_08", $$6), 4),
+               Pair.of(dyc.a("village/snowy/zombie/streets/crossroad_02", $$6), 1),
+               Pair.of(dyc.a("village/snowy/zombie/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(dyc.a("village/snowy/zombie/streets/crossroad_04", $$6), 2),
+                  Pair.of(dyc.a("village/snowy/zombie/streets/crossroad_05", $$6), 2),
+                  Pair.of(dyc.a("village/snowy/zombie/streets/crossroad_06", $$6), 2),
+                  Pair.of(dyc.a("village/snowy/zombie/streets/turn_01", $$6), 3)
+               }
             ),
-            dxj.a.b
+            dye.a.a
          )
       );
-      ov.a(
+      pb.a(
          $$0,
-         "trail_ruins/roads",
-         new dxj(
-            $$2,
-            List.of(
-               Pair.of(dxh.b("trail_ruins/roads/long_road_end", $$5), 1),
-               Pair.of(dxh.b("trail_ruins/roads/road_end_1", $$5), 1),
-               Pair.of(dxh.b("trail_ruins/roads/road_section_1", $$5), 1),
-               Pair.of(dxh.b("trail_ruins/roads/road_section_2", $$5), 1),
-               Pair.of(dxh.b("trail_ruins/roads/road_section_3", $$5), 1),
-               Pair.of(dxh.b("trail_ruins/roads/road_section_4", $$5), 1),
-               Pair.of(dxh.b("trail_ruins/roads/road_spacer_1", $$5), 1)
+         "village/snowy/houses",
+         new dye(
+            $$11,
+            ImmutableList.of(
+               Pair.of(dyc.a("village/snowy/houses/snowy_small_house_1"), 2),
+               Pair.of(dyc.a("village/snowy/houses/snowy_small_house_2"), 2),
+               Pair.of(dyc.a("village/snowy/houses/snowy_small_house_3"), 2),
+               Pair.of(dyc.a("village/snowy/houses/snowy_small_house_4"), 3),
+               Pair.of(dyc.a("village/snowy/houses/snowy_small_house_5"), 2),
+               Pair.of(dyc.a("village/snowy/houses/snowy_small_house_6"), 2),
+               Pair.of(dyc.a("village/snowy/houses/snowy_small_house_7"), 2),
+               Pair.of(dyc.a("village/snowy/houses/snowy_small_house_8"), 2),
+               Pair.of(dyc.a("village/snowy/houses/snowy_medium_house_1"), 2),
+               Pair.of(dyc.a("village/snowy/houses/snowy_medium_house_2"), 2),
+               Pair.of(dyc.a("village/snowy/houses/snowy_medium_house_3"), 2),
+               Pair.of(dyc.a("village/snowy/houses/snowy_butchers_shop_1"), 2),
+               new Pair[]{
+                  Pair.of(dyc.a("village/snowy/houses/snowy_butchers_shop_2"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_tool_smith_1"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_fletcher_house_1"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_shepherds_house_1"), 3),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_armorer_house_1"), 1),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_armorer_house_2"), 1),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_fisher_cottage"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_tannery_1"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_cartographer_house_1"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_library_1"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_masons_house_1"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_masons_house_2"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_weapon_smith_1"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_temple_1"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_farm_1", $$7), 3),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_farm_2", $$7), 3),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_animal_pen_1"), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_animal_pen_2"), 2),
+                  Pair.of(dyc.g(), 6)
+               }
             ),
-            dxj.a.b
+            dye.a.b
          )
       );
-      ov.a(
+      pb.a(
          $$0,
-         "trail_ruins/buildings",
-         new dxj(
-            $$2,
-            List.of(
-               Pair.of(dxh.b("trail_ruins/buildings/group_hall_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_hall_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_hall_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_hall_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_hall_5", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/large_room_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/large_room_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/large_room_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/large_room_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/large_room_5", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/one_room_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/one_room_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/one_room_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/one_room_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/one_room_5", $$4), 1)
+         "village/snowy/zombie/houses",
+         new dye(
+            $$11,
+            ImmutableList.of(
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_small_house_1", $$8), 2),
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_small_house_2", $$8), 2),
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_small_house_3", $$8), 2),
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_small_house_4", $$8), 2),
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_small_house_5", $$8), 2),
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_small_house_6", $$8), 2),
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_small_house_7", $$8), 2),
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_small_house_8", $$8), 2),
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_medium_house_1", $$8), 2),
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_medium_house_2", $$8), 2),
+               Pair.of(dyc.a("village/snowy/zombie/houses/snowy_medium_house_3", $$8), 1),
+               Pair.of(dyc.a("village/snowy/houses/snowy_butchers_shop_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(dyc.a("village/snowy/houses/snowy_butchers_shop_2", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_tool_smith_1", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_fletcher_house_1", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_shepherds_house_1", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_armorer_house_1", $$8), 1),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_armorer_house_2", $$8), 1),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_fisher_cottage", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_tannery_1", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_cartographer_house_1", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_library_1", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_masons_house_1", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_masons_house_2", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_weapon_smith_1", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_temple_1", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_farm_1", $$8), 3),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_farm_2", $$8), 3),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_animal_pen_1", $$8), 2),
+                  Pair.of(dyc.a("village/snowy/houses/snowy_animal_pen_2", $$8), 2),
+                  Pair.of(dyc.g(), 6)
+               }
             ),
-            dxj.a.b
+            dye.a.b
          )
       );
-      ov.a(
-         $$0,
-         "trail_ruins/buildings/grouped",
-         new dxj(
-            $$2,
-            List.of(
-               Pair.of(dxh.b("trail_ruins/buildings/group_full_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_full_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_full_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_full_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_full_5", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_lower_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_lower_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_lower_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_lower_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_lower_5", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_upper_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_upper_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_upper_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_upper_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_upper_5", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_room_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_room_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_room_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_room_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/buildings/group_room_5", $$4), 1)
+      $$0.a(
+         b,
+         new dye(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dyc.a("village/plains/terminators/terminator_01", $$6), 1),
+               Pair.of(dyc.a("village/plains/terminators/terminator_02", $$6), 1),
+               Pair.of(dyc.a("village/plains/terminators/terminator_03", $$6), 1),
+               Pair.of(dyc.a("village/plains/terminators/terminator_04", $$6), 1)
             ),
-            dxj.a.b
+            dye.a.a
          )
       );
-      ov.a(
+      pb.a($$0, "village/snowy/trees", new dye($$10, ImmutableList.of(Pair.of(dyc.a($$2), 1)), dye.a.b));
+      pb.a(
          $$0,
-         "trail_ruins/decor",
-         new dxj(
-            $$2,
-            List.of(
-               Pair.of(dxh.b("trail_ruins/decor/decor_1", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/decor/decor_2", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/decor/decor_3", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/decor/decor_4", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/decor/decor_5", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/decor/decor_6", $$4), 1),
-               Pair.of(dxh.b("trail_ruins/decor/decor_7", $$4), 1)
+         "village/snowy/decor",
+         new dye(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dyc.a("village/snowy/snowy_lamp_post_01"), 4),
+               Pair.of(dyc.a("village/snowy/snowy_lamp_post_02"), 4),
+               Pair.of(dyc.a("village/snowy/snowy_lamp_post_03"), 1),
+               Pair.of(dyc.a($$2), 4),
+               Pair.of(dyc.a($$3), 4),
+               Pair.of(dyc.a($$4), 1),
+               Pair.of(dyc.g(), 9)
             ),
-            dxj.a.b
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "village/snowy/zombie/decor",
+         new dye(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dyc.a("village/snowy/snowy_lamp_post_01", $$8), 1),
+               Pair.of(dyc.a("village/snowy/snowy_lamp_post_02", $$8), 1),
+               Pair.of(dyc.a("village/snowy/snowy_lamp_post_03", $$8), 1),
+               Pair.of(dyc.a($$2), 4),
+               Pair.of(dyc.a($$3), 4),
+               Pair.of(dyc.a($$4), 4),
+               Pair.of(dyc.g(), 7)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "village/snowy/villagers",
+         new dye(
+            $$10,
+            ImmutableList.of(
+               Pair.of(dyc.a("village/snowy/villagers/nitwit"), 1),
+               Pair.of(dyc.a("village/snowy/villagers/baby"), 1),
+               Pair.of(dyc.a("village/snowy/villagers/unemployed"), 10)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "village/snowy/zombie/villagers",
+         new dye(
+            $$10,
+            ImmutableList.of(Pair.of(dyc.a("village/snowy/zombie/villagers/nitwit"), 1), Pair.of(dyc.a("village/snowy/zombie/villagers/unemployed"), 10)),
+            dye.a.b
          )
       );
    }

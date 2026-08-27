@@ -1,22 +1,26 @@
-public class fpd {
-   private final ero a;
-   private final foo b;
-   private float c;
-   private float d;
+public class fpd extends fmq {
+   private static final int a = 12235202;
 
-   public fpd(foo $$0) {
-      this.b = $$0;
-      this.a = ero.O();
+   protected fpd(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, foq $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)ass.b.b(12235202) / 255.0F;
+      this.w = (float)ass.b.c(12235202) / 255.0F;
+      this.x = (float)ass.b.d(12235202) / 255.0F;
    }
 
-   public void a(float $$0, float $$1) {
-      float $$2 = (float)((double)$$0 * this.a.m.p().c());
-      this.c = b(this.c + $$2 * 0.1F, 360.0F);
-      this.d = b(this.d + $$2 * 0.001F, (float) (Math.PI * 2));
-      this.b.a(this.a, 10.0F, -this.c, $$1);
-   }
+   public static class a implements fny<jv> {
+      private final foq a;
 
-   private static float b(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+      public a(foq $$0) {
+         this.a = $$0;
+      }
+
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ato $$8 = $$1.z;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new fpd($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      }
    }
 }

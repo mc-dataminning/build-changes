@@ -1,125 +1,62 @@
-import java.util.Optional;
-
-public class fpc implements fpb {
-   private final fpb.a a;
-   private final fpb.a b = fpb.a(new emc(256));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
-
-   public fpc(fpb.a $$0) {
-      this.a = $$0;
+public class fpc extends fow {
+   protected fpc(fkw $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public eml getBuffer(fpj $$0) {
-      if ($$0.L()) {
-         eml $$1 = this.b.getBuffer($$0);
-         return new fpc.a($$1, this.c, this.d, this.e, this.f);
+   public fnz b() {
+      return fnz.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
       } else {
-         eml $$2 = this.a.getBuffer($$0);
-         Optional<fpj> $$3 = $$0.K();
-         if ($$3.isPresent()) {
-            eml $$4 = this.b.getBuffer($$3.get());
-            fpc.a $$5 = new fpc.a($$4, this.c, this.d, this.e, this.f);
-            return emo.a($$5, $$2);
-         } else {
-            return $$2;
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
+            }
+
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         ht $$0 = ht.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).k(this.c, $$0).b(hx.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((cqy)this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
          }
       }
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+   public static class a implements fny<jv> {
+      private final foq a;
 
-   public void a() {
-      this.b.b();
-   }
-
-   static class a extends emg {
-      private final eml f;
-      private double g;
-      private double h;
-      private double i;
-      private float j;
-      private float k;
-
-      a(eml $$0, int $$1, int $$2, int $$3, int $$4) {
-         this.f = $$0;
-         super.b($$1, $$2, $$3, $$4);
+      public a(foq $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-      }
-
-      @Override
-      public void k() {
-      }
-
-      @Override
-      public eml a(double $$0, double $$1, double $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      @Override
-      public eml a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public eml a(float $$0, float $$1) {
-         this.j = $$0;
-         this.k = $$1;
-         return this;
-      }
-
-      @Override
-      public eml a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public eml b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public eml a(float $$0, float $$1, float $$2) {
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
-      }
-
-      @Override
-      public void e() {
-         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fpc $$8 = new fpc($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

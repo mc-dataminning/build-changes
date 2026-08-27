@@ -1,39 +1,59 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class aqm<T> implements Iterable<aqk<T>> {
-   private final io<T> a;
-   private final Map<T, aqk<T>> b = new IdentityHashMap<>();
-   private final ui c;
+public class aqm {
+   public static final Codec<aqm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(agg.a.fieldOf("sound_id").forGetter(aqm::a), Codec.FLOAT.optionalFieldOf("range").forGetter(aqm::b)).apply($$0, aqm::a)
+   );
+   public static final Codec<ib<aqm>> b = agc.a(jz.ae, a);
+   private static final float c = 16.0F;
+   private final agg d;
+   private final float e;
+   private final boolean f;
 
-   public aqm(io<T> $$0, ui $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   private static aqm a(agg $$0, Optional<Float> $$1) {
+      return $$1.<aqm>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
+   public static aqm a(agg $$0) {
+      return new aqm($$0, 16.0F, false);
    }
 
-   public aqk<T> a(T $$0, aql $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new aqk<>(this, (T)$$1x, $$1));
+   public static aqm a(agg $$0, float $$1) {
+      return new aqm($$0, $$1, true);
    }
 
-   public io<T> a() {
-      return this.a;
+   private aqm(agg $$0, float $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   @Override
-   public Iterator<aqk<T>> iterator() {
-      return this.b.values().iterator();
+   public agg a() {
+      return this.d;
    }
 
-   public aqk<T> b(T $$0) {
-      return this.a($$0, aql.b);
+   public float a(float $$0) {
+      if (this.f) {
+         return this.e;
+      } else {
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+      }
    }
 
-   public ui b() {
-      return this.c;
+   private Optional<Float> b() {
+      return this.f ? Optional.of(this.e) : Optional.empty();
+   }
+
+   public void a(tu $$0) {
+      $$0.a(this.d);
+      $$0.a(this.b(), tu::a);
+   }
+
+   public static aqm b(tu $$0) {
+      agg $$1 = $$0.t();
+      Optional<Float> $$2 = $$0.b(tu::readFloat);
+      return a($$1, $$2);
    }
 }

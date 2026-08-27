@@ -1,62 +1,146 @@
+import com.mojang.datafixers.Products.P2;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dsz extends dst {
-   public static final Codec<dsz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dst.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bhg.c.fieldOf("values").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dsz::new)
-   );
-   private final dst c;
-   private final String d;
-   @Nullable
-   private dhb e;
-   private final bhg f;
+public abstract class dsz {
+   public static final Codec<dsz> d = jy.X.q().dispatch(dsz::a, dta::a);
+   protected final bhv e;
+   protected final bhv f;
 
-   public dsz(dst $$0, dhb $$1, bhg $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
+   protected static <P extends dsz> P2<Mu<P>, bhv, bhv> b(Instance<P> $$0) {
+      return $$0.group(bhv.b(0, 16).fieldOf("radius").forGetter($$0x -> $$0x.e), bhv.b(0, 16).fieldOf("offset").forGetter($$0x -> $$0x.f));
+   }
 
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+   public dsz(bhv $$0, bhv $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   protected abstract dta<?> a();
+
+   public void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, int $$4, dsz.a $$5, int $$6, int $$7) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$2));
+   }
+
+   protected abstract void a(cry var1, dsz.b var2, ato var3, dsj var4, int var5, dsz.a var6, int var7, int var8, int var9);
+
+   public abstract int a(ato var1, int var2, dsj var3);
+
+   public int a(ato $$0, int $$1) {
+      return this.e.a($$0);
+   }
+
+   private int a(ato $$0) {
+      return this.f.a($$0);
+   }
+
+   protected abstract boolean a(ato var1, int var2, int var3, int var4, int var5, boolean var6);
+
+   protected boolean b(ato $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6;
+      int $$7;
+      if ($$5) {
+         $$6 = Math.min(Math.abs($$1), Math.abs($$1 - 1));
+         $$7 = Math.min(Math.abs($$3), Math.abs($$3 - 1));
+      } else {
+         $$6 = Math.abs($$1);
+         $$7 = Math.abs($$3);
+      }
+
+      return this.a($$0, $$6, $$2, $$7, $$4, $$5);
+   }
+
+   protected void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, ht $$4, int $$5, int $$6, boolean $$7) {
+      int $$8 = $$7 ? 1 : 0;
+      ht.a $$9 = new ht.a();
+
+      for (int $$10 = -$$5; $$10 <= $$5 + $$8; $$10++) {
+         for (int $$11 = -$$5; $$11 <= $$5 + $$8; $$11++) {
+            if (!this.b($$2, $$10, $$6, $$11, $$5, $$7)) {
+               $$9.a($$4, $$10, $$6, $$11);
+               a($$0, $$1, $$2, $$3, $$9);
+            }
          }
       }
    }
 
-   public dsz(dst $$0, String $$1, bhg $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   protected final void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, ht $$4, int $$5, int $$6, boolean $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      int $$10 = $$7 ? 1 : 0;
+      ht $$11 = $$4.d();
+      ht.a $$12 = new ht.a();
+
+      for (hx $$13 : hx.c.a) {
+         hx $$14 = $$13.h();
+         int $$15 = $$14.f() == hx.b.a ? $$5 + $$10 : $$5;
+         $$12.a($$4, 0, $$6 - 1, 0).c($$14, $$15).c($$13, -$$5);
+         int $$16 = -$$5;
+
+         while ($$16 < $$5 + $$10) {
+            boolean $$17 = $$1.a($$12.c(hx.b));
+            $$12.c(hx.a);
+            if ($$17 && a($$0, $$1, $$2, $$3, $$8, $$11, $$12)) {
+               $$12.c(hx.a);
+               a($$0, $$1, $$2, $$3, $$9, $$11, $$12);
+               $$12.c(hx.b);
+            }
+
+            $$16++;
+            $$12.c($$13);
+         }
+      }
    }
 
-   @Override
-   protected dsu<?> a() {
-      return dsu.g;
+   private static boolean a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, float $$4, ht $$5, ht.a $$6) {
+      if ($$6.k($$5) >= 7) {
+         return false;
+      } else {
+         return $$2.i() > $$4 ? false : a($$0, $$1, $$2, $$3, $$6);
+      }
    }
 
-   @Override
-   public dgb a(ate $$0, ht $$1) {
-      dgb $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
+   protected static boolean a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, ht $$4) {
+      if (!dqv.c($$0, $$4)) {
+         return false;
+      } else {
+         dgw $$5 = $$3.e.a($$2, $$4);
+         if ($$5.b(dhm.C)) {
+            $$5 = $$5.a(dhm.C, Boolean.valueOf($$0.b($$4, $$0x -> $$0x.a(ech.c))));
+         }
+
+         $$1.a($$4, $$5);
+         return true;
+      }
+   }
+
+   public static final class a {
+      private final ht a;
+      private final int b;
+      private final boolean c;
+
+      public a(ht $$0, int $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+      public ht a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean c() {
+         return this.c;
+      }
    }
 
-   private static dhb a(dgb $$0, String $$1) {
-      Collection<dhe<?>> $$2 = $$0.B();
-      Optional<dhb> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dhb).map($$0x -> (dhb)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
+   public interface b {
+      void a(ht var1, dgw var2);
+
+      boolean a(ht var1);
    }
 }

@@ -1,33 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import net.minecraft.server.MinecraftServer;
 
-public interface amu {
-   amu a = new amu() {
-      @Override
-      public void a() {
+public class amu implements aek {
+   private final MinecraftServer a;
+   private final ts b;
+
+   public amu(MinecraftServer $$0, ts $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public void a(aej $$0) {
+      if ($$0.f() != aei.b) {
+         throw new UnsupportedOperationException("Invalid intention " + $$0.f());
+      } else {
+         this.b.a(aei.b);
+         this.b.a(new anb(this.a, this.b));
       }
+   }
 
-      @Override
-      public void b() {
-      }
+   @Override
+   public void a(ur $$0) {
+   }
 
-      @Override
-      public CompletableFuture<amh> a(String $$0) {
-         return CompletableFuture.completedFuture(amh.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<amh>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(amh::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   void a();
-
-   void b();
-
-   CompletableFuture<amh> a(String var1);
-
-   CompletableFuture<List<amh>> a(List<String> var1);
+   @Override
+   public boolean c() {
+      return this.b.k();
+   }
 }

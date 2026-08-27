@@ -1,129 +1,817 @@
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import java.nio.channels.Channels;
+import java.nio.channels.WritableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.EnumSet;
+import java.util.Locale;
+import java.util.Set;
+import java.util.function.IntUnaryOperator;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.lwjgl.stb.STBIWriteCallback;
+import org.lwjgl.stb.STBImage;
+import org.lwjgl.stb.STBImageResize;
+import org.lwjgl.stb.STBImageWrite;
+import org.lwjgl.stb.STBTTFontinfo;
+import org.lwjgl.stb.STBTruetype;
 import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
-public interface eml {
-   eml a(double var1, double var3, double var5);
+public final class eml implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Set<StandardOpenOption> b = EnumSet.of(StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+   private final eml.a c;
+   private final int d;
+   private final int e;
+   private final boolean f;
+   private long g;
+   private final long h;
 
-   eml a(int var1, int var2, int var3, int var4);
-
-   eml a(float var1, float var2);
-
-   eml a(int var1, int var2);
-
-   eml b(int var1, int var2);
-
-   eml a(float var1, float var2, float var3);
-
-   void e();
-
-   default void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a((double)$$0, (double)$$1, (double)$$2);
-      this.a($$3, $$4, $$5, $$6);
-      this.a($$7, $$8);
-      this.c($$9);
-      this.b($$10);
-      this.a($$11, $$12, $$13);
-      this.e();
+   public eml(int $$0, int $$1, boolean $$2) {
+      this(eml.a.a, $$0, $$1, $$2);
    }
 
-   void b(int var1, int var2, int var3, int var4);
+   public eml(eml.a $$0, int $$1, int $$2, boolean $$3) {
+      if ($$1 > 0 && $$2 > 0) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.h = (long)$$1 * (long)$$2 * (long)$$0.a();
+         this.f = false;
+         if ($$3) {
+            this.g = MemoryUtil.nmemCalloc(1L, this.h);
+         } else {
+            this.g = MemoryUtil.nmemAlloc(this.h);
+         }
 
-   void k();
-
-   default eml a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
+         if (this.g == 0L) {
+            throw new IllegalStateException("Unable to allocate texture of size " + $$1 + "x" + $$2 + " (" + $$0.a() + " channels)");
+         }
+      } else {
+         throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
+      }
    }
 
-   default eml a(int $$0) {
-      return this.a(asi.b.b($$0), asi.b.c($$0), asi.b.d($$0), asi.b.a($$0));
+   private eml(eml.a $$0, int $$1, int $$2, boolean $$3, long $$4) {
+      if ($$1 > 0 && $$2 > 0) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = (long)$$1 * (long)$$2 * (long)$$0.a();
+      } else {
+         throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
+      }
    }
 
-   default eml b(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
+   @Override
+   public String toString() {
+      return "NativeImage[" + this.c + " " + this.d + "x" + this.e + "@" + this.g + (this.f ? "S" : "N") + "]";
    }
 
-   default eml c(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
+   private boolean f(int $$0, int $$1) {
+      return $$0 < 0 || $$0 >= this.d || $$1 < 0 || $$1 >= this.e;
    }
 
-   default void a(emh.a $$0, fpx $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
+   public static eml a(InputStream $$0) throws IOException {
+      return a(eml.a.a, $$0);
    }
 
-   default void a(emh.a $$0, fpx $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
-      float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
-      int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
-      int[] $$11 = $$1.b();
-      iw $$12 = $$1.e().q();
-      Matrix4f $$13 = $$0.a();
-      Vector3f $$14 = $$0.b().transform(new Vector3f((float)$$12.u(), (float)$$12.v(), (float)$$12.w()));
-      int $$15 = 8;
-      int $$16 = $$11.length / 8;
-      MemoryStack $$17 = MemoryStack.stackPush();
+   public static eml a(@Nullable eml.a $$0, InputStream $$1) throws IOException {
+      ByteBuffer $$2 = null;
+
+      eml var3;
+      try {
+         $$2 = TextureUtil.readResource($$1);
+         $$2.rewind();
+         var3 = a($$0, $$2);
+      } finally {
+         MemoryUtil.memFree($$2);
+         IOUtils.closeQuietly($$1);
+      }
+
+      return var3;
+   }
+
+   public static eml a(ByteBuffer $$0) throws IOException {
+      return a(eml.a.a, $$0);
+   }
+
+   public static eml a(byte[] $$0) throws IOException {
+      MemoryStack $$1 = MemoryStack.stackPush();
+
+      eml var3;
+      try {
+         ByteBuffer $$2 = $$1.malloc($$0.length);
+         $$2.put($$0);
+         $$2.rewind();
+         var3 = a($$2);
+      } catch (Throwable var5) {
+         if ($$1 != null) {
+            try {
+               $$1.close();
+            } catch (Throwable var4) {
+               var5.addSuppressed(var4);
+            }
+         }
+
+         throw var5;
+      }
+
+      if ($$1 != null) {
+         $$1.close();
+      }
+
+      return var3;
+   }
+
+   public static eml a(@Nullable eml.a $$0, ByteBuffer $$1) throws IOException {
+      if ($$0 != null && !$$0.w()) {
+         throw new UnsupportedOperationException("Don't know how to read format " + $$0);
+      } else if (MemoryUtil.memAddress($$1) == 0L) {
+         throw new IllegalArgumentException("Invalid buffer");
+      } else {
+         MemoryStack $$2 = MemoryStack.stackPush();
+
+         eml var7;
+         try {
+            IntBuffer $$3 = $$2.mallocInt(1);
+            IntBuffer $$4 = $$2.mallocInt(1);
+            IntBuffer $$5 = $$2.mallocInt(1);
+            ByteBuffer $$6 = STBImage.stbi_load_from_memory($$1, $$3, $$4, $$5, $$0 == null ? 0 : $$0.e);
+            if ($$6 == null) {
+               throw new IOException("Could not load image: " + STBImage.stbi_failure_reason());
+            }
+
+            var7 = new eml($$0 == null ? eml.a.a($$5.get(0)) : $$0, $$3.get(0), $$4.get(0), true, MemoryUtil.memAddress($$6));
+         } catch (Throwable var9) {
+            if ($$2 != null) {
+               try {
+                  $$2.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
+         }
+
+         if ($$2 != null) {
+            $$2.close();
+         }
+
+         return var7;
+      }
+   }
+
+   private static void a(boolean $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if ($$0) {
+         GlStateManager._texParameter(3553, 10241, $$1 ? 9987 : 9729);
+         GlStateManager._texParameter(3553, 10240, 9729);
+      } else {
+         GlStateManager._texParameter(3553, 10241, $$1 ? 9986 : 9728);
+         GlStateManager._texParameter(3553, 10240, 9728);
+      }
+   }
+
+   private void j() {
+      if (this.g == 0L) {
+         throw new IllegalStateException("Image is not allocated.");
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.g != 0L) {
+         if (this.f) {
+            STBImage.nstbi_image_free(this.g);
+         } else {
+            MemoryUtil.nmemFree(this.g);
+         }
+      }
+
+      this.g = 0L;
+   }
+
+   public int a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public eml.a c() {
+      return this.c;
+   }
+
+   public int a(int $$0, int $$1) {
+      if (this.c != eml.a.a) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "getPixelRGBA only works on RGBA images; have %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         this.j();
+         long $$2 = ((long)$$0 + (long)$$1 * (long)this.d) * 4L;
+         return MemoryUtil.memGetInt(this.g + $$2);
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2) {
+      if (this.c != eml.a.a) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "setPixelRGBA only works on RGBA images; have %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         this.j();
+         long $$3 = ((long)$$0 + (long)$$1 * (long)this.d) * 4L;
+         MemoryUtil.memPutInt(this.g + $$3, $$2);
+      }
+   }
+
+   public eml a(IntUnaryOperator $$0) {
+      if (this.c != eml.a.a) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "function application only works on RGBA images; have %s", this.c));
+      } else {
+         this.j();
+         eml $$1 = new eml(this.d, this.e, false);
+         int $$2 = this.d * this.e;
+         IntBuffer $$3 = MemoryUtil.memIntBuffer(this.g, $$2);
+         IntBuffer $$4 = MemoryUtil.memIntBuffer($$1.g, $$2);
+
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            $$4.put($$5, $$0.applyAsInt($$3.get($$5)));
+         }
+
+         return $$1;
+      }
+   }
+
+   public void b(IntUnaryOperator $$0) {
+      if (this.c != eml.a.a) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "function application only works on RGBA images; have %s", this.c));
+      } else {
+         this.j();
+         int $$1 = this.d * this.e;
+         IntBuffer $$2 = MemoryUtil.memIntBuffer(this.g, $$1);
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2.put($$3, $$0.applyAsInt($$2.get($$3)));
+         }
+      }
+   }
+
+   public int[] d() {
+      if (this.c != eml.a.a) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "getPixelsRGBA only works on RGBA images; have %s", this.c));
+      } else {
+         this.j();
+         int[] $$0 = new int[this.d * this.e];
+         MemoryUtil.memIntBuffer(this.g, this.d * this.e).get($$0);
+         return $$0;
+      }
+   }
+
+   public void a(int $$0, int $$1, byte $$2) {
+      RenderSystem.assertOnRenderThread();
+      if (!this.c.h()) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "setPixelLuminance only works on image with luminance; have %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         this.j();
+         long $$3 = ((long)$$0 + (long)$$1 * (long)this.d) * (long)this.c.a() + (long)(this.c.m() / 8);
+         MemoryUtil.memPutByte(this.g + $$3, $$2);
+      }
+   }
+
+   public byte b(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if (!this.c.o()) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "no red or luminance in %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         int $$2 = ($$0 + $$1 * this.d) * this.c.a() + this.c.s() / 8;
+         return MemoryUtil.memGetByte(this.g + (long)$$2);
+      }
+   }
+
+   public byte c(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if (!this.c.p()) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "no green or luminance in %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         int $$2 = ($$0 + $$1 * this.d) * this.c.a() + this.c.t() / 8;
+         return MemoryUtil.memGetByte(this.g + (long)$$2);
+      }
+   }
+
+   public byte d(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if (!this.c.q()) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "no blue or luminance in %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         int $$2 = ($$0 + $$1 * this.d) * this.c.a() + this.c.u() / 8;
+         return MemoryUtil.memGetByte(this.g + (long)$$2);
+      }
+   }
+
+   public byte e(int $$0, int $$1) {
+      if (!this.c.r()) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "no luminance or alpha in %s", this.c));
+      } else if (this.f($$0, $$1)) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.d, this.e));
+      } else {
+         int $$2 = ($$0 + $$1 * this.d) * this.c.a() + this.c.v() / 8;
+         return MemoryUtil.memGetByte(this.g + (long)$$2);
+      }
+   }
+
+   public void b(int $$0, int $$1, int $$2) {
+      if (this.c != eml.a.a) {
+         throw new UnsupportedOperationException("Can only call blendPixel with RGBA format");
+      } else {
+         int $$3 = this.a($$0, $$1);
+         float $$4 = (float)ass.a.a($$2) / 255.0F;
+         float $$5 = (float)ass.a.d($$2) / 255.0F;
+         float $$6 = (float)ass.a.c($$2) / 255.0F;
+         float $$7 = (float)ass.a.b($$2) / 255.0F;
+         float $$8 = (float)ass.a.a($$3) / 255.0F;
+         float $$9 = (float)ass.a.d($$3) / 255.0F;
+         float $$10 = (float)ass.a.c($$3) / 255.0F;
+         float $$11 = (float)ass.a.b($$3) / 255.0F;
+         float $$13 = 1.0F - $$4;
+         float $$14 = $$4 * $$4 + $$8 * $$13;
+         float $$15 = $$5 * $$4 + $$9 * $$13;
+         float $$16 = $$6 * $$4 + $$10 * $$13;
+         float $$17 = $$7 * $$4 + $$11 * $$13;
+         if ($$14 > 1.0F) {
+            $$14 = 1.0F;
+         }
+
+         if ($$15 > 1.0F) {
+            $$15 = 1.0F;
+         }
+
+         if ($$16 > 1.0F) {
+            $$16 = 1.0F;
+         }
+
+         if ($$17 > 1.0F) {
+            $$17 = 1.0F;
+         }
+
+         int $$18 = (int)($$14 * 255.0F);
+         int $$19 = (int)($$15 * 255.0F);
+         int $$20 = (int)($$16 * 255.0F);
+         int $$21 = (int)($$17 * 255.0F);
+         this.a($$0, $$1, ass.a.a($$18, $$19, $$20, $$21));
+      }
+   }
+
+   @Deprecated
+   public int[] e() {
+      if (this.c != eml.a.a) {
+         throw new UnsupportedOperationException("can only call makePixelArray for RGBA images.");
+      } else {
+         this.j();
+         int[] $$0 = new int[this.a() * this.b()];
+
+         for (int $$1 = 0; $$1 < this.b(); $$1++) {
+            for (int $$2 = 0; $$2 < this.a(); $$2++) {
+               int $$3 = this.a($$2, $$1);
+               $$0[$$2 + $$1 * this.a()] = ass.b.a(ass.a.a($$3), ass.a.b($$3), ass.a.c($$3), ass.a.d($$3));
+            }
+         }
+
+         return $$0;
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      this.a($$0, $$1, $$2, 0, 0, this.d, this.e, false, $$3);
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, false, $$7, $$8);
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8, boolean $$9, boolean $$10) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
+      } else {
+         this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
+   }
+
+   private void b(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8, boolean $$9, boolean $$10) {
+      try {
+         RenderSystem.assertOnRenderThreadOrInit();
+         this.j();
+         a($$7, $$9);
+         if ($$5 == this.a()) {
+            GlStateManager._pixelStore(3314, 0);
+         } else {
+            GlStateManager._pixelStore(3314, this.a());
+         }
+
+         GlStateManager._pixelStore(3316, $$3);
+         GlStateManager._pixelStore(3315, $$4);
+         this.c.c();
+         GlStateManager._texSubImage2D(3553, $$0, $$1, $$2, $$5, $$6, this.c.d(), 5121, this.g);
+         if ($$8) {
+            GlStateManager._texParameter(3553, 10242, 33071);
+            GlStateManager._texParameter(3553, 10243, 33071);
+         }
+      } finally {
+         if ($$10) {
+            this.close();
+         }
+      }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThread();
+      this.j();
+      this.c.b();
+      GlStateManager._getTexImage(3553, $$0, this.c.d(), 5121, this.g);
+      if ($$1 && this.c.i()) {
+         for (int $$2 = 0; $$2 < this.b(); $$2++) {
+            for (int $$3 = 0; $$3 < this.a(); $$3++) {
+               this.a($$3, $$2, this.a($$3, $$2) | 255 << this.c.n());
+            }
+         }
+      }
+   }
+
+   public void a(float $$0) {
+      RenderSystem.assertOnRenderThread();
+      if (this.c.a() != 1) {
+         throw new IllegalStateException("Depth buffer must be stored in NativeImage with 1 component.");
+      } else {
+         this.j();
+         this.c.b();
+         GlStateManager._readPixels(0, 0, this.d, this.e, 6402, 5121, this.g);
+      }
+   }
+
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      this.c.c();
+      GlStateManager._glDrawPixels(this.d, this.e, this.c.d(), 5121, this.g);
+   }
+
+   public void a(File $$0) throws IOException {
+      this.a($$0.toPath());
+   }
+
+   public void a(STBTTFontinfo $$0, int $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7, int $$8, int $$9) {
+      if ($$8 < 0 || $$8 + $$2 > this.a() || $$9 < 0 || $$9 + $$3 > this.b()) {
+         throw new IllegalArgumentException(
+            String.format(Locale.ROOT, "Out of bounds: start: (%s, %s) (size: %sx%s); size: %sx%s", $$8, $$9, $$2, $$3, this.a(), this.b())
+         );
+      } else if (this.c.a() != 1) {
+         throw new IllegalArgumentException("Can only write fonts into 1-component images.");
+      } else {
+         STBTruetype.nstbtt_MakeGlyphBitmapSubpixel($$0.address(), this.g + (long)$$8 + (long)($$9 * this.a()), $$2, $$3, this.a(), $$4, $$5, $$6, $$7, $$1);
+      }
+   }
+
+   public void a(Path $$0) throws IOException {
+      if (!this.c.w()) {
+         throw new UnsupportedOperationException("Don't know how to write format " + this.c);
+      } else {
+         this.j();
+
+         try (WritableByteChannel $$1 = Files.newByteChannel($$0, b)) {
+            if (!this.a($$1)) {
+               throw new IOException("Could not write image to the PNG file \"" + $$0.toAbsolutePath() + "\": " + STBImage.stbi_failure_reason());
+            }
+         }
+      }
+   }
+
+   public byte[] g() throws IOException {
+      byte[] var3;
+      try (
+         ByteArrayOutputStream $$0 = new ByteArrayOutputStream();
+         WritableByteChannel $$1 = Channels.newChannel($$0);
+      ) {
+         if (!this.a($$1)) {
+            throw new IOException("Could not write image to byte array: " + STBImage.stbi_failure_reason());
+         }
+
+         var3 = $$0.toByteArray();
+      }
+
+      return var3;
+   }
+
+   private boolean a(WritableByteChannel $$0) throws IOException {
+      eml.c $$1 = new eml.c($$0);
+
+      boolean var4;
+      try {
+         int $$2 = Math.min(this.b(), Integer.MAX_VALUE / this.a() / this.c.a());
+         if ($$2 < this.b()) {
+            a.warn("Dropping image height from {} to {} to fit the size into 32-bit signed int", this.b(), $$2);
+         }
+
+         if (STBImageWrite.nstbi_write_png_to_func($$1.address(), 0L, this.a(), $$2, this.c.a(), this.g, 0) != 0) {
+            $$1.a();
+            return true;
+         }
+
+         var4 = false;
+      } finally {
+         $$1.free();
+      }
+
+      return var4;
+   }
+
+   public void a(eml $$0) {
+      if ($$0.c() != this.c) {
+         throw new UnsupportedOperationException("Image formats don't match.");
+      } else {
+         int $$1 = this.c.a();
+         this.j();
+         $$0.j();
+         if (this.d == $$0.d) {
+            MemoryUtil.memCopy($$0.g, this.g, Math.min(this.h, $$0.h));
+         } else {
+            int $$2 = Math.min(this.a(), $$0.a());
+            int $$3 = Math.min(this.b(), $$0.b());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               int $$5 = $$4 * $$0.a() * $$1;
+               int $$6 = $$4 * this.a() * $$1;
+               MemoryUtil.memCopy($$0.g + (long)$$5, this.g + (long)$$6, (long)$$2);
+            }
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$1 + $$3; $$5++) {
+         for (int $$6 = $$0; $$6 < $$0 + $$2; $$6++) {
+            this.a($$6, $$5, $$4);
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, boolean $$6, boolean $$7) {
+      this.a(this, $$0, $$1, $$0 + $$2, $$1 + $$3, $$4, $$5, $$6, $$7);
+   }
+
+   public void a(eml $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8) {
+      for (int $$9 = 0; $$9 < $$6; $$9++) {
+         for (int $$10 = 0; $$10 < $$5; $$10++) {
+            int $$11 = $$7 ? $$5 - 1 - $$10 : $$10;
+            int $$12 = $$8 ? $$6 - 1 - $$9 : $$9;
+            int $$13 = this.a($$1 + $$10, $$2 + $$9);
+            $$0.a($$3 + $$11, $$4 + $$12, $$13);
+         }
+      }
+   }
+
+   public void h() {
+      this.j();
+      int $$0 = this.c.a();
+      int $$1 = this.a() * $$0;
+      long $$2 = MemoryUtil.nmemAlloc((long)$$1);
 
       try {
-         ByteBuffer $$18 = $$17.malloc(emf.j.b());
-         IntBuffer $$19 = $$18.asIntBuffer();
-
-         for (int $$20 = 0; $$20 < $$16; $$20++) {
-            $$19.clear();
-            $$19.put($$11, $$20 * 8, 8);
-            float $$21 = $$18.getFloat(0);
-            float $$22 = $$18.getFloat(4);
-            float $$23 = $$18.getFloat(8);
-            float $$27;
-            float $$28;
-            float $$29;
-            if ($$8) {
-               float $$24 = (float)($$18.get(12) & 255) / 255.0F;
-               float $$25 = (float)($$18.get(13) & 255) / 255.0F;
-               float $$26 = (float)($$18.get(14) & 255) / 255.0F;
-               $$27 = $$24 * $$9[$$20] * $$3;
-               $$28 = $$25 * $$9[$$20] * $$4;
-               $$29 = $$26 * $$9[$$20] * $$5;
-            } else {
-               $$27 = $$9[$$20] * $$3;
-               $$28 = $$9[$$20] * $$4;
-               $$29 = $$9[$$20] * $$5;
-            }
-
-            int $$33 = $$10[$$20];
-            float $$34 = $$18.getFloat(16);
-            float $$35 = $$18.getFloat(20);
-            Vector4f $$36 = $$13.transform(new Vector4f($$21, $$22, $$23, 1.0F));
-            this.a($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, 1.0F, $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
+         for (int $$3 = 0; $$3 < this.b() / 2; $$3++) {
+            int $$4 = $$3 * this.a() * $$0;
+            int $$5 = (this.b() - 1 - $$3) * this.a() * $$0;
+            MemoryUtil.memCopy(this.g + (long)$$4, $$2, (long)$$1);
+            MemoryUtil.memCopy(this.g + (long)$$5, this.g + (long)$$4, (long)$$1);
+            MemoryUtil.memCopy($$2, this.g + (long)$$5, (long)$$1);
          }
-      } catch (Throwable var33) {
-         if ($$17 != null) {
-            try {
-               $$17.close();
-            } catch (Throwable var32) {
-               var33.addSuppressed(var32);
-            }
-         }
-
-         throw var33;
-      }
-
-      if ($$17 != null) {
-         $$17.close();
+      } finally {
+         MemoryUtil.nmemFree($$2);
       }
    }
 
-   default eml a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector4f $$4 = $$0.transform(new Vector4f($$1, $$2, $$3, 1.0F));
-      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
+   public void a(int $$0, int $$1, int $$2, int $$3, eml $$4) {
+      this.j();
+      if ($$4.c() != this.c) {
+         throw new UnsupportedOperationException("resizeSubRectTo only works for images of the same format.");
+      } else {
+         int $$5 = this.c.a();
+         STBImageResize.nstbir_resize_uint8(this.g + (long)(($$0 + $$1 * this.a()) * $$5), $$2, $$3, this.a() * $$5, $$4.g, $$4.a(), $$4.b(), 0, $$5);
+      }
    }
 
-   default eml a(Matrix3f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transform(new Vector3f($$1, $$2, $$3));
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   public void i() {
+      ema.a(this.g);
+   }
+
+   public static enum a {
+      a(4, 6408, true, true, true, false, true, 0, 8, 16, 255, 24, true),
+      b(3, 6407, true, true, true, false, false, 0, 8, 16, 255, 255, true),
+      c(2, 33319, false, false, false, true, true, 255, 255, 255, 0, 8, true),
+      d(1, 6403, false, false, false, true, false, 0, 0, 0, 0, 255, true);
+
+      final int e;
+      private final int f;
+      private final boolean g;
+      private final boolean h;
+      private final boolean i;
+      private final boolean j;
+      private final boolean k;
+      private final int l;
+      private final int m;
+      private final int n;
+      private final int o;
+      private final int p;
+      private final boolean q;
+
+      private a(int $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6, int $$7, int $$8, int $$9, int $$10, int $$11, boolean $$12) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+         this.j = $$5;
+         this.k = $$6;
+         this.l = $$7;
+         this.m = $$8;
+         this.n = $$9;
+         this.o = $$10;
+         this.p = $$11;
+         this.q = $$12;
+      }
+
+      public int a() {
+         return this.e;
+      }
+
+      public void b() {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager._pixelStore(3333, this.a());
+      }
+
+      public void c() {
+         RenderSystem.assertOnRenderThreadOrInit();
+         GlStateManager._pixelStore(3317, this.a());
+      }
+
+      public int d() {
+         return this.f;
+      }
+
+      public boolean e() {
+         return this.g;
+      }
+
+      public boolean f() {
+         return this.h;
+      }
+
+      public boolean g() {
+         return this.i;
+      }
+
+      public boolean h() {
+         return this.j;
+      }
+
+      public boolean i() {
+         return this.k;
+      }
+
+      public int j() {
+         return this.l;
+      }
+
+      public int k() {
+         return this.m;
+      }
+
+      public int l() {
+         return this.n;
+      }
+
+      public int m() {
+         return this.o;
+      }
+
+      public int n() {
+         return this.p;
+      }
+
+      public boolean o() {
+         return this.j || this.g;
+      }
+
+      public boolean p() {
+         return this.j || this.h;
+      }
+
+      public boolean q() {
+         return this.j || this.i;
+      }
+
+      public boolean r() {
+         return this.j || this.k;
+      }
+
+      public int s() {
+         return this.j ? this.o : this.l;
+      }
+
+      public int t() {
+         return this.j ? this.o : this.m;
+      }
+
+      public int u() {
+         return this.j ? this.o : this.n;
+      }
+
+      public int v() {
+         return this.j ? this.o : this.p;
+      }
+
+      public boolean w() {
+         return this.q;
+      }
+
+      static eml.a a(int $$0) {
+         switch ($$0) {
+            case 1:
+               return d;
+            case 2:
+               return c;
+            case 3:
+               return b;
+            case 4:
+            default:
+               return a;
+         }
+      }
+   }
+
+   public static enum b {
+      a(6408),
+      b(6407),
+      c(33319),
+      d(6403);
+
+      private final int e;
+
+      private b(int $$0) {
+         this.e = $$0;
+      }
+
+      public int a() {
+         return this.e;
+      }
+   }
+
+   static class c extends STBIWriteCallback {
+      private final WritableByteChannel a;
+      @Nullable
+      private IOException b;
+
+      c(WritableByteChannel $$0) {
+         this.a = $$0;
+      }
+
+      public void invoke(long $$0, long $$1, int $$2) {
+         ByteBuffer $$3 = getData($$1, $$2);
+
+         try {
+            this.a.write($$3);
+         } catch (IOException var8) {
+            this.b = var8;
+         }
+      }
+
+      public void a() throws IOException {
+         if (this.b != null) {
+            throw this.b;
+         }
+      }
    }
 }

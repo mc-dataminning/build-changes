@@ -1,40 +1,46 @@
-public class cjq extends cke {
-   public cjq(cke.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class cjq extends ckw implements cma {
+   private static final Map<cjp, cjq> a = Maps.newEnumMap(cjp.class);
+   private final cjp b;
+
+   public cjq(cjp $$0, ckw.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bib a(cmt $$0) {
-      ccx $$1 = $$0.o();
-      cqz $$2 = $$0.q();
-      ht $$3 = $$0.a();
-      dgb $$4 = $$2.a_($$3);
-      if (!cuo.h($$4) && !cup.g($$4) && !cuq.g($$4)) {
-         ht $$5 = $$3.a($$0.k());
-         if (ctn.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, aqd.hU, aqe.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-            dgb $$6 = ctn.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, dkl.i, $$3);
-            ckj $$7 = $$0.n();
-            if ($$1 instanceof alr) {
-               al.y.a((alr)$$1, $$5, $$7);
-               $$7.a(1, $$1, $$1x -> $$1x.d($$0.p()));
-            }
-
-            return bib.a($$2.x_());
-         } else {
-            return bib.e;
+   public biq a(clb $$0, cdm $$1, bky $$2, bip $$3) {
+      if ($$2 instanceof bxf $$4 && $$4.bv() && !$$4.y() && $$4.t() != this.b) {
+         $$4.dL().a($$1, $$4, aqn.gJ, aqo.h, 1.0F, 1.0F);
+         if (!$$1.dL().B) {
+            $$4.b(this.b);
+            $$0.h(1);
          }
+
+         return biq.a($$1.dL().B);
+      }
+
+      return biq.d;
+   }
+
+   public cjp d() {
+      return this.b;
+   }
+
+   public static cjq a(cjp $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(crs $$0, dga $$1, boolean $$2, cdm $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.d()), $$2)) {
+         $$0.a(null, $$1.p(), aqn.gJ, aqo.e, 1.0F, 1.0F);
+         return true;
       } else {
-         $$2.a($$1, $$3, aqd.hU, aqe.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.a(dgr.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, dkl.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, $$1x -> $$1x.d($$0.p()));
-         }
-
-         return bib.a($$2.x_());
+         return false;
       }
    }
 }

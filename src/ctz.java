@@ -1,56 +1,99 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class ctz extends csu {
-   public static final MapCodec<ctz> c = b(ctz::new);
+public class ctz extends cuf {
+   public static final MapCodec<ctz> a = b(ctz::new);
+   public static final dhq b = dhm.P;
+   public static final dhn c = dhm.u;
 
    @Override
    public MapCodec<ctz> a() {
-      return c;
+      return a;
    }
 
-   protected ctz(dga.d $$0) {
+   public ctz(dgv.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, hx.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public ddx a(ht $$0, dgb $$1) {
-      return new ddw($$0, $$1);
+   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
+      if ($$1.B) {
+         return biq.a;
+      } else {
+         der $$6 = $$1.c_($$2);
+         if ($$6 instanceof dek) {
+            $$3.a((dek)$$6);
+            $$3.a(aqx.ar);
+            ccd.a($$3, true);
+         }
+
+         return biq.b;
+      }
+   }
+
+   @Override
+   public void a(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
+      bim.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      der $$4 = $$1.c_($$2);
+      if ($$4 instanceof dek) {
+         ((dek)$$4).i();
+      }
    }
 
    @Nullable
    @Override
-   public <T extends ddx> ddy<T> a(cqz $$0, dgb $$1, ddz<T> $$2) {
-      return a($$0, $$2, ddz.C);
+   public der a(ht $$0, dgw $$1) {
+      return new dek($$0, $$1);
    }
 
    @Override
-   protected void a(cqz $$0, ht $$1, ccx $$2) {
-      ddx $$3 = $$0.c_($$1);
-      if ($$3 instanceof ddw) {
-         $$2.a((bie)$$3);
-         $$2.a(aqn.as);
-      }
+   public day b_(dgw $$0) {
+      return day.c;
    }
 
    @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aqd.cg, aqe.e, 1.0F, 1.0F, false);
+   public void a(crs $$0, ht $$1, dgw $$2, @Nullable bky $$3, clb $$4) {
+      if ($$4.A()) {
+         der $$5 = $$0.c_($$1);
+         if ($$5 instanceof dek) {
+            ((dek)$$5).a($$4.y());
          }
-
-         hx $$7 = $$0.c(a);
-         hx.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == hx.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == hx.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(js.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   public boolean d_(dgw $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dgw $$0, crs $$1, ht $$2) {
+      return cge.a($$1.c_($$2));
+   }
+
+   @Override
+   public dgw a(dgw $$0, dbf $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dgw a(dgw $$0, czp $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public dgw a(cnj $$0) {
+      return this.o().a(b, $$0.d().g());
    }
 }

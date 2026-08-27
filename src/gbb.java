@@ -1,180 +1,316 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Iterables;
-import com.google.common.hash.Hashing;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-import com.mojang.authlib.properties.Property;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gbb {
-   private static final String a = "textures";
-   private final LoadingCache<gbb.a, CompletableFuture<gba>> b;
-   private final gbb.b c;
-   private final gbb.b d;
-   private final gbb.b e;
+public class gbb implements gbe.a, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final agg b;
+   final int c;
+   final int d;
+   private final eml e;
+   eml[] f;
+   @Nullable
+   private final gbb.a g;
+   private final apf h;
 
-   public gbb(gab $$0, Path $$1, final MinecraftSessionService $$2, final Executor $$3) {
-      this.c = new gbb.b($$0, $$1, Type.SKIN);
-      this.d = new gbb.b($$0, $$1, Type.CAPE);
-      this.e = new gbb.b($$0, $$1, Type.ELYTRA);
-      this.b = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<gbb.a, CompletableFuture<gba>>() {
-         public CompletableFuture<gba> a(gbb.a $$0) {
-            GameProfile $$1 = $$0.a();
-            return CompletableFuture.<gbb.c>supplyAsync(() -> {
-               try {
-                  try {
-                     return gbb.c.a($$2.getTextures($$1, true), true);
-                  } catch (InsecurePublicKeyException var3) {
-                     return gbb.c.a($$2.getTextures($$1, false), false);
-                  }
-               } catch (Throwable var4) {
-                  return gbb.c.a;
-               }
-            }, ac.f()).thenComposeAsync($$1x -> gbb.this.a($$1, $$1x), $$3);
-         }
-      });
+   public gbb(agg $$0, gcu $$1, eml $$2, apf $$3) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$1.b();
+      this.h = $$3;
+      gcs $$4 = $$3.a(gcs.a).orElse(gcs.e);
+      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
+      this.e = $$2;
+      this.f = new eml[]{this.e};
    }
 
-   public Supplier<gba> a(GameProfile $$0) {
-      CompletableFuture<gba> $$1 = this.c($$0);
-      gba $$2 = gas.a($$0);
-      return () -> $$1.getNow($$2);
-   }
+   public void a(int $$0) {
+      try {
+         this.f = gaw.a(this.f, $$0);
+      } catch (Throwable var6) {
+         o $$2 = o.a(var6, "Generating mipmaps for frame");
+         p $$3 = $$2.a("Sprite being mipmapped");
+         $$3.a("First frame", () -> {
+            StringBuilder $$0x = new StringBuilder();
+            if ($$0x.length() > 0) {
+               $$0x.append(", ");
+            }
 
-   public gba b(GameProfile $$0) {
-      gba $$1 = this.c($$0).getNow(null);
-      return $$1 != null ? $$1 : gas.a($$0);
-   }
-
-   public CompletableFuture<gba> c(GameProfile $$0) {
-      return (CompletableFuture<gba>)this.b.getUnchecked(new gbb.a($$0));
-   }
-
-   CompletableFuture<gba> a(GameProfile $$0, gbb.c $$1) {
-      MinecraftProfileTexture $$2 = $$1.a();
-      CompletableFuture<afw> $$3;
-      gba.a $$4;
-      if ($$2 != null) {
-         $$3 = this.c.a($$2);
-         $$4 = gba.a.a($$2.getMetadata("model"));
-      } else {
-         gba $$5 = gas.a($$0);
-         $$3 = CompletableFuture.completedFuture($$5.a());
-         $$4 = $$5.e();
+            $$0x.append(this.e.a()).append("x").append(this.e.b());
+            return $$0x.toString();
+         });
+         p $$4 = $$2.a("Frame being iterated");
+         $$4.a("Sprite name", this.b);
+         $$4.a("Sprite size", () -> this.c + " x " + this.d);
+         $$4.a("Sprite frames", () -> this.g() + " frames");
+         $$4.a("Mipmap levels", $$0);
+         throw new y($$2);
       }
+   }
 
-      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
-      MinecraftProfileTexture $$9 = $$1.b();
-      CompletableFuture<afw> $$10 = $$9 != null ? this.d.a($$9) : CompletableFuture.completedFuture(null);
-      MinecraftProfileTexture $$11 = $$1.c();
-      CompletableFuture<afw> $$12 = $$11 != null ? this.e.a($$11) : CompletableFuture.completedFuture(null);
-      return CompletableFuture.allOf($$3, $$10, $$12).thenApply($$6x -> new gba($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.d()));
+   private int g() {
+      return this.g != null ? this.g.b.size() : 1;
    }
 
    @Nullable
-   static Property d(GameProfile $$0) {
-      return (Property)Iterables.getFirst($$0.getProperties().get("textures"), null);
+   private gbb.a a(gcu $$0, int $$1, int $$2, gcs $$3) {
+      int $$4 = $$1 / $$0.a();
+      int $$5 = $$2 / $$0.b();
+      int $$6 = $$4 * $$5;
+      List<gbb.b> $$7 = new ArrayList<>();
+      $$3.a(($$1x, $$2x) -> $$7.add(new gbb.b($$1x, $$2x)));
+      if ($$7.isEmpty()) {
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            $$7.add(new gbb.b($$8, $$3.a()));
+         }
+      } else {
+         int $$9 = 0;
+         IntSet $$10 = new IntOpenHashSet();
+
+         for (Iterator<gbb.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
+            gbb.b $$12 = $$11.next();
+            boolean $$13 = true;
+            if ($$12.b <= 0) {
+               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
+               $$13 = false;
+            }
+
+            if ($$12.a < 0 || $$12.a >= $$6) {
+               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
+               $$13 = false;
+            }
+
+            if ($$13) {
+               $$10.add($$12.a);
+            } else {
+               $$11.remove();
+            }
+         }
+
+         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
+         if ($$14.length > 0) {
+            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
+         }
+      }
+
+      return $$7.size() <= 1 ? null : new gbb.a(ImmutableList.copyOf($$7), $$4, $$3.b());
    }
 
-   static record a(GameProfile a) {
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof gbb.a $$1) ? false : this.a.getId().equals($$1.a.getId()) && Objects.equals(this.b(), $$1.b());
+   void a(int $$0, int $$1, int $$2, int $$3, eml[] $$4) {
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
+      }
+   }
+
+   @Override
+   public int a() {
+      return this.c;
+   }
+
+   @Override
+   public int b() {
+      return this.d;
+   }
+
+   @Override
+   public agg c() {
+      return this.b;
+   }
+
+   public IntStream d() {
+      return this.g != null ? this.g.b() : IntStream.of(1);
+   }
+
+   @Nullable
+   public gbd e() {
+      return this.g != null ? this.g.a() : null;
+   }
+
+   public apf f() {
+      return this.h;
+   }
+
+   @Override
+   public void close() {
+      for (eml $$0 : this.f) {
+         $$0.close();
+      }
+   }
+
+   @Override
+   public String toString() {
+      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
+   }
+
+   public boolean a(int $$0, int $$1, int $$2) {
+      int $$3 = $$1;
+      int $$4 = $$2;
+      if (this.g != null) {
+         $$3 = $$1 + this.g.a($$0) * this.c;
+         $$4 = $$2 + this.g.b($$0) * this.d;
       }
 
-      @Override
-      public int hashCode() {
-         return this.a.getId().hashCode() + Objects.hashCode(this.b()) * 31;
+      return (this.e.a($$3, $$4) >> 24 & 0xFF) == 0;
+   }
+
+   public void a(int $$0, int $$1) {
+      if (this.g != null) {
+         this.g.a($$0, $$1);
+      } else {
+         this.a($$0, $$1, 0, 0, this.f);
+      }
+   }
+
+   class a {
+      final List<gbb.b> b;
+      private final int c;
+      private final boolean d;
+
+      a(List<gbb.b> $$0, int $$1, boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      @Nullable
-      private String b() {
-         Property $$0 = gbb.d(this.a);
-         return $$0 != null ? $$0.value() : null;
+      int a(int $$0) {
+         return $$0 % this.c;
+      }
+
+      int b(int $$0) {
+         return $$0 / this.c;
+      }
+
+      void a(int $$0, int $$1, int $$2) {
+         int $$3 = this.a($$2) * gbb.this.c;
+         int $$4 = this.b($$2) * gbb.this.d;
+         gbb.this.a($$0, $$1, $$3, $$4, gbb.this.f);
+      }
+
+      public gbd a() {
+         return gbb.this.new d(this, this.d ? gbb.this.new c() : null);
+      }
+
+      public void a(int $$0, int $$1) {
+         this.a($$0, $$1, this.b.get(0).a);
+      }
+
+      public IntStream b() {
+         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
       }
    }
 
    static class b {
-      private final gab a;
-      private final Path b;
-      private final Type c;
-      private final Map<String, CompletableFuture<afw>> d = new Object2ObjectOpenHashMap();
+      final int a;
+      final int b;
 
-      b(gab $$0, Path $$1, Type $$2) {
+      b(int $$0, int $$1) {
          this.a = $$0;
          this.b = $$1;
-         this.c = $$2;
-      }
-
-      public CompletableFuture<afw> a(MinecraftProfileTexture $$0) {
-         String $$1 = $$0.getHash();
-         CompletableFuture<afw> $$2 = this.d.get($$1);
-         if ($$2 == null) {
-            $$2 = this.b($$0);
-            this.d.put($$1, $$2);
-         }
-
-         return $$2;
-      }
-
-      private CompletableFuture<afw> b(MinecraftProfileTexture $$0) {
-         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
-         afw $$2 = this.a($$1);
-         Path $$3 = this.b.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
-         CompletableFuture<afw> $$4 = new CompletableFuture<>();
-         fzo $$5 = new fzo($$3.toFile(), $$0.getUrl(), gas.a(), this.c == Type.SKIN, () -> $$4.complete($$2));
-         this.a.a($$2, $$5);
-         return $$4;
-      }
-
-      private afw a(String $$0) {
-         String $$1 = switch (this.c) {
-            case SKIN -> "skins";
-            case CAPE -> "capes";
-            case ELYTRA -> "elytra";
-            default -> throw new IncompatibleClassChangeError();
-         };
-         return new afw($$1 + "/" + $$0);
       }
    }
 
-   static record c(@Nullable MinecraftProfileTexture b, @Nullable MinecraftProfileTexture c, @Nullable MinecraftProfileTexture d, boolean e) {
-      public static final gbb.c a = new gbb.c(null, null, null, true);
+   final class c implements AutoCloseable {
+      private final eml[] b = new eml[gbb.this.f.length];
 
-      public static gbb.c a(Map<Type, MinecraftProfileTexture> $$0, boolean $$1) {
-         return $$0.isEmpty() ? a : new gbb.c($$0.get(Type.SKIN), $$0.get(Type.CAPE), $$0.get(Type.ELYTRA), $$1);
+      c() {
+         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
+            int $$1 = gbb.this.c >> $$0;
+            int $$2 = gbb.this.d >> $$0;
+            this.b[$$0] = new eml($$1, $$2, false);
+         }
       }
 
+      void a(int $$0, int $$1, gbb.d $$2) {
+         gbb.a $$3 = $$2.d;
+         List<gbb.b> $$4 = $$3.b;
+         gbb.b $$5 = $$4.get($$2.b);
+         double $$6 = 1.0 - (double)$$2.c / (double)$$5.b;
+         int $$7 = $$5.a;
+         int $$8 = $$4.get(($$2.b + 1) % $$4.size()).a;
+         if ($$7 != $$8) {
+            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+               int $$10 = gbb.this.c >> $$9;
+               int $$11 = gbb.this.d >> $$9;
+
+               for (int $$12 = 0; $$12 < $$11; $$12++) {
+                  for (int $$13 = 0; $$13 < $$10; $$13++) {
+                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
+                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
+                     int $$16 = this.a($$6, $$14 >> 16 & 0xFF, $$15 >> 16 & 0xFF);
+                     int $$17 = this.a($$6, $$14 >> 8 & 0xFF, $$15 >> 8 & 0xFF);
+                     int $$18 = this.a($$6, $$14 & 0xFF, $$15 & 0xFF);
+                     this.b[$$9].a($$13, $$12, $$14 & 0xFF000000 | $$16 << 16 | $$17 << 8 | $$18);
+                  }
+               }
+            }
+
+            gbb.this.a($$0, $$1, 0, 0, this.b);
+         }
+      }
+
+      private int a(gbb.a $$0, int $$1, int $$2, int $$3, int $$4) {
+         return gbb.this.f[$$2].a($$3 + ($$0.a($$1) * gbb.this.c >> $$2), $$4 + ($$0.b($$1) * gbb.this.d >> $$2));
+      }
+
+      private int a(double $$0, int $$1, int $$2) {
+         return (int)($$0 * (double)$$1 + (1.0 - $$0) * (double)$$2);
+      }
+
+      @Override
+      public void close() {
+         for (eml $$0 : this.b) {
+            $$0.close();
+         }
+      }
+   }
+
+   class d implements gbd {
+      int b;
+      int c;
+      final gbb.a d;
       @Nullable
-      public MinecraftProfileTexture a() {
-         return this.b;
+      private final gbb.c e;
+
+      d(gbb.a $$0, @Nullable gbb.c $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      @Nullable
-      public MinecraftProfileTexture b() {
-         return this.c;
+      @Override
+      public void a(int $$0, int $$1) {
+         this.c++;
+         gbb.b $$2 = this.d.b.get(this.b);
+         if (this.c >= $$2.b) {
+            int $$3 = $$2.a;
+            this.b = (this.b + 1) % this.d.b.size();
+            this.c = 0;
+            int $$4 = this.d.b.get(this.b).a;
+            if ($$3 != $$4) {
+               this.d.a($$0, $$1, $$4);
+            }
+         } else if (this.e != null) {
+            if (!RenderSystem.isOnRenderThread()) {
+               RenderSystem.recordRenderCall(() -> this.e.a($$0, $$1, this));
+            } else {
+               this.e.a($$0, $$1, this);
+            }
+         }
       }
 
-      @Nullable
-      public MinecraftProfileTexture c() {
-         return this.d;
-      }
-
-      public boolean d() {
-         return this.e;
+      @Override
+      public void close() {
+         if (this.e != null) {
+            this.e.close();
+         }
       }
    }
 }

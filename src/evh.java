@@ -1,130 +1,356 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class evh implements fek {
-   private static final afw a = new afw("hud/hotbar");
-   private static final afw b = new afw("hud/hotbar_selection");
-   private static final long c = 5000L;
-   private static final long d = 2000L;
-   private final ero e;
-   private long f;
-   @Nullable
-   private feh g;
+public class evh {
+   public static final int a = Integer.MAX_VALUE;
+   private static final int b = 2;
+   private final etz c;
+   private final List<evh.a> d = Lists.newArrayList();
+   private String e;
+   private int f;
+   private int g;
+   private boolean h;
+   private int i = Integer.MAX_VALUE;
+   private final int j;
+   private Consumer<String> k = $$0x -> {
+   };
+   private Runnable l = () -> {
+   };
 
-   public evh(ero $$0) {
-      this.e = $$0;
+   public evh(etz $$0, int $$1) {
+      this.c = $$0;
+      this.j = $$1;
+      this.a("");
+   }
+
+   public int a() {
+      return this.i;
    }
 
    public void a(int $$0) {
-      this.f = ac.b();
-      if (this.g != null) {
-         this.g.b($$0);
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Character limit cannot be negative");
       } else {
-         this.g = new feh(this);
+         this.i = $$0;
       }
    }
 
-   private float c() {
-      long $$0 = this.f - ac.b() + 5000L;
-      return asy.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
+   public boolean b() {
+      return this.i != Integer.MAX_VALUE;
    }
 
-   public void a(esy $$0) {
-      if (this.g != null) {
-         float $$1 = this.c();
-         if ($$1 <= 0.0F) {
-            this.g.d();
-         } else {
-            int $$2 = $$0.a() / 2;
-            $$0.c().a();
-            $$0.c().a(0.0F, 0.0F, -90.0F);
-            int $$3 = asy.d((float)$$0.b() - 22.0F * $$1);
-            fel $$4 = this.g.f();
-            this.a($$0, $$1, $$2, $$3, $$4);
-            $$0.c().b();
-         }
+   public void a(Consumer<String> $$0) {
+      this.k = $$0;
+   }
+
+   public void a(Runnable $$0) {
+      this.l = $$0;
+   }
+
+   public void a(String $$0) {
+      this.e = this.c($$0);
+      this.f = this.e.length();
+      this.g = this.f;
+      this.n();
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public void b(String $$0) {
+      if (!$$0.isEmpty() || this.i()) {
+         String $$1 = this.d(aa.a($$0, true));
+         evh.a $$2 = this.e();
+         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
+         this.f = $$2.a + $$1.length();
+         this.g = this.f;
+         this.n();
       }
-   }
-
-   protected void a(esy $$0, float $$1, int $$2, int $$3, fel $$4) {
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$1);
-      $$0.a(a, $$2 - 91, $$3, 182, 22);
-      if ($$4.a() >= 0) {
-         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
-      }
-
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
-      }
-
-      RenderSystem.disableBlend();
-   }
-
-   private void a(esy $$0, int $$1, int $$2, float $$3, float $$4, fej $$5) {
-      if ($$5 != feh.a) {
-         int $$6 = (int)($$4 * 255.0F);
-         $$0.c().a();
-         $$0.c().a((float)$$2, $$3, 0.0F);
-         float $$7 = $$5.aO_() ? 1.0F : 0.25F;
-         $$0.a($$7, $$7, $$7, $$4);
-         $$5.a($$0, $$7, $$6);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-         if ($$6 > 3 && $$5.aO_()) {
-            ui $$8 = this.e.m.U[$$1].k();
-            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
-         }
-      }
-   }
-
-   public void b(esy $$0) {
-      int $$1 = (int)(this.c() * 255.0F);
-      if ($$1 > 3 && this.g != null) {
-         fej $$2 = this.g.b();
-         ui $$3 = $$2 == feh.a ? this.g.c().b() : $$2.aN_();
-         if ($$3 != null) {
-            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
-            int $$5 = $$0.b() - 35;
-            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
-         }
-      }
-   }
-
-   @Override
-   public void a(feh $$0) {
-      this.g = null;
-      this.f = 0L;
-   }
-
-   public boolean a() {
-      return this.g != null;
    }
 
    public void b(int $$0) {
-      int $$1 = this.g.e() + $$0;
-
-      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == feh.a || !this.g.a($$1).aO_())) {
-         $$1 += $$0;
+      if (!this.i()) {
+         this.g = ati.a(this.f + $$0, 0, this.e.length());
       }
 
-      if ($$1 >= 0 && $$1 <= 8) {
-         this.g.b($$1);
-         this.f = ac.b();
+      this.b("");
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public evh.a e() {
+      return new evh.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
+   }
+
+   public int f() {
+      return this.d.size();
+   }
+
+   public int g() {
+      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
+         evh.a $$1 = this.d.get($$0);
+         if (this.f >= $$1.a && this.f <= $$1.b) {
+            return $$0;
+         }
+      }
+
+      return -1;
+   }
+
+   public evh.a c(int $$0) {
+      return this.d.get(ati.a($$0, 0, this.d.size() - 1));
+   }
+
+   public void a(evy $$0, int $$1) {
+      switch ($$0) {
+         case a:
+            this.f = $$1;
+            break;
+         case b:
+            this.f += $$1;
+            break;
+         case c:
+            this.f = this.e.length() + $$1;
+      }
+
+      this.f = ati.a(this.f, 0, this.e.length());
+      this.l.run();
+      if (!this.h) {
+         this.g = this.f;
       }
    }
 
-   public void b() {
-      this.f = ac.b();
-      if (this.a()) {
-         int $$0 = this.g.e();
-         if ($$0 != -1) {
-            this.g.b($$0);
-         }
-      } else {
-         this.g = new feh(this);
+   public void d(int $$0) {
+      if ($$0 != 0) {
+         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
+         evh.a $$2 = this.f($$0);
+         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
+         this.a(evy.a, $$2.a + $$3);
       }
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = ati.a($$0);
+      int $$3 = ati.a($$1 / 9.0);
+      evh.a $$4 = this.d.get(ati.a($$3, 0, this.d.size() - 1));
+      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
+      this.a(evy.a, $$4.a + $$5);
+   }
+
+   public boolean e(int $$0) {
+      this.h = fah.q();
+      if (fah.g($$0)) {
+         this.f = this.e.length();
+         this.g = 0;
+         return true;
+      } else if (fah.f($$0)) {
+         esr.N().o.a(this.j());
+         return true;
+      } else if (fah.e($$0)) {
+         this.b(esr.N().o.a());
+         return true;
+      } else if (fah.d($$0)) {
+         esr.N().o.a(this.j());
+         this.b("");
+         return true;
+      } else {
+         switch ($$0) {
+            case 257:
+            case 335:
+               this.b("\n");
+               return true;
+            case 259:
+               if (fah.p()) {
+                  evh.a $$3 = this.k();
+                  this.b($$3.a - this.f);
+               } else {
+                  this.b(-1);
+               }
+
+               return true;
+            case 261:
+               if (fah.p()) {
+                  evh.a $$4 = this.l();
+                  this.b($$4.a - this.f);
+               } else {
+                  this.b(1);
+               }
+
+               return true;
+            case 262:
+               if (fah.p()) {
+                  evh.a $$2 = this.l();
+                  this.a(evy.a, $$2.a);
+               } else {
+                  this.a(evy.b, 1);
+               }
+
+               return true;
+            case 263:
+               if (fah.p()) {
+                  evh.a $$1 = this.k();
+                  this.a(evy.a, $$1.a);
+               } else {
+                  this.a(evy.b, -1);
+               }
+
+               return true;
+            case 264:
+               if (!fah.p()) {
+                  this.d(1);
+               }
+
+               return true;
+            case 265:
+               if (!fah.p()) {
+                  this.d(-1);
+               }
+
+               return true;
+            case 266:
+               this.a(evy.a, 0);
+               return true;
+            case 267:
+               this.a(evy.c, 0);
+               return true;
+            case 268:
+               if (fah.p()) {
+                  this.a(evy.a, 0);
+               } else {
+                  this.a(evy.a, this.m().a);
+               }
+
+               return true;
+            case 269:
+               if (fah.p()) {
+                  this.a(evy.c, 0);
+               } else {
+                  this.a(evy.a, this.m().b);
+               }
+
+               return true;
+            default:
+               return false;
+         }
+      }
+   }
+
+   public Iterable<evh.a> h() {
+      return this.d;
+   }
+
+   public boolean i() {
+      return this.g != this.f;
+   }
+
+   @VisibleForTesting
+   public String j() {
+      evh.a $$0 = this.e();
+      return this.e.substring($$0.a, $$0.b);
+   }
+
+   private evh.a m() {
+      return this.f(0);
+   }
+
+   private evh.a f(int $$0) {
+      int $$1 = this.g();
+      if ($$1 < 0) {
+         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
+      } else {
+         return this.d.get(ati.a($$1 + $$0, 0, this.d.size() - 1));
+      }
+   }
+
+   @VisibleForTesting
+   public evh.a k() {
+      if (this.e.isEmpty()) {
+         return evh.a.c;
+      } else {
+         int $$0 = ati.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         return new evh.a($$0, this.g($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public evh.a l() {
+      if (this.e.isEmpty()) {
+         return evh.a.c;
+      } else {
+         int $$0 = ati.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         return new evh.a($$0, this.g($$0));
+      }
+   }
+
+   private int g(int $$0) {
+      int $$1 = $$0;
+
+      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
+         $$1++;
+      }
+
+      return $$1;
+   }
+
+   private void n() {
+      this.o();
+      this.k.accept(this.e);
+      this.l.run();
+   }
+
+   private void o() {
+      this.d.clear();
+      if (this.e.isEmpty()) {
+         this.d.add(evh.a.c);
+      } else {
+         this.c.b().a(this.e, this.j, vo.a, false, ($$0, $$1, $$2) -> this.d.add(new evh.a($$1, $$2)));
+         if (this.e.charAt(this.e.length() - 1) == '\n') {
+            this.d.add(new evh.a(this.e.length(), this.e.length()));
+         }
+      }
+   }
+
+   private String c(String $$0) {
+      return this.b() ? auc.a($$0, this.i, false) : $$0;
+   }
+
+   private String d(String $$0) {
+      if (this.b()) {
+         int $$1 = this.i - this.e.length();
+         return auc.a($$0, $$1, false);
+      } else {
+         return $$0;
+      }
+   }
+
+   protected static record a(int a, int b) {
+      static final evh.a c = new evh.a(0, 0);
    }
 }

@@ -1,38 +1,58 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.gson.annotations.SerializedName;
+import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
 public class erf {
-   private final fjs a;
-   private int b = -1;
-   @Nullable
-   private Consumer<rt> c;
+   private static final String a = "realms_persistence.json";
+   private static final eoi b = new eoi();
+   private static final Logger c = LogUtils.getLogger();
 
-   public erf(fjs $$0) {
-      this.a = $$0;
+   public erf.a a() {
+      return b();
    }
 
-   public boolean a(int $$0, @Nullable rt $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   public void a(erf.a $$0) {
+      b($$0);
+   }
+
+   public static erf.a b() {
+      Path $$0 = c();
+
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         erf.a $$2 = b.a($$1, erf.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new erf.a();
+   }
+
+   public static void b(erf.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   private int a(Consumer<rt> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   private static Path c() {
+      return esr.N().p.toPath().resolve("realms_persistence.json");
    }
 
-   public void a(int $$0, Consumer<rt> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new acs($$2, $$0));
-   }
-
-   public void a(ht $$0, Consumer<rt> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ace($$2, $$0));
+   public static class a implements epa {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

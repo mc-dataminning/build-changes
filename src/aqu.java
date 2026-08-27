@@ -1,34 +1,50 @@
-public interface aqu {
-   arh<bit> a = a("damages_helmet");
-   arh<bit> b = a("bypasses_armor");
-   arh<bit> c = a("bypasses_shield");
-   arh<bit> d = a("bypasses_invulnerability");
-   arh<bit> e = a("bypasses_cooldown");
-   arh<bit> f = a("bypasses_effects");
-   arh<bit> g = a("bypasses_resistance");
-   arh<bit> h = a("bypasses_enchantments");
-   arh<bit> i = a("is_fire");
-   arh<bit> j = a("is_projectile");
-   arh<bit> k = a("witch_resistant_to");
-   arh<bit> l = a("is_explosion");
-   arh<bit> m = a("is_fall");
-   arh<bit> n = a("is_drowning");
-   arh<bit> o = a("is_freezing");
-   arh<bit> p = a("is_lightning");
-   arh<bit> q = a("no_anger");
-   arh<bit> r = a("no_impact");
-   arh<bit> s = a("always_most_significant_fall");
-   arh<bit> t = a("wither_immune_to");
-   arh<bit> u = a("ignites_armor_stands");
-   arh<bit> v = a("burns_armor_stands");
-   arh<bit> w = a("avoids_guardian_thorns");
-   arh<bit> x = a("always_triggers_silverfish");
-   arh<bit> y = a("always_hurts_ender_dragons");
-   arh<bit> z = a("no_knockback");
-   arh<bit> A = a("always_kills_armor_stands");
-   arh<bit> B = a("can_break_armor_stand");
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   private static arh<bit> a(String $$0) {
-      return arh.a(jz.q, new afw($$0));
+public class aqu<T> extends ekk {
+   private final aqv n;
+   private final T o;
+   private final aqw<T> p;
+
+   protected aqu(aqw<T> $$0, T $$1, aqv $$2) {
+      super(a($$0, $$1));
+      this.p = $$0;
+      this.n = $$2;
+      this.o = $$1;
+   }
+
+   public static <T> String a(aqw<T> $$0, T $$1) {
+      return a(jy.y.b($$0)) + ":" + a($$0.a().b($$1));
+   }
+
+   private static <T> String a(@Nullable agg $$0) {
+      return $$0.toString().replace(':', '.');
+   }
+
+   public aqw<T> a() {
+      return this.p;
+   }
+
+   public T b() {
+      return this.o;
+   }
+
+   public String a(int $$0) {
+      return this.n.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof aqu && Objects.equals(this.d(), ((aqu)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.n + "}";
    }
 }

@@ -1,45 +1,70 @@
-public class cax extends bzu {
-   public cax(bjx<? extends cax> $$0, cqz $$1) {
+import org.joml.Vector3f;
+
+public class cax extends cbt {
+   public cax(bkm<? extends cax> $$0, crs $$1) {
       super($$0, $$1);
    }
 
-   public static boolean a(bjx<cax> $$0, cro $$1, bkn $$2, ht $$3, ate $$4) {
-      ht $$5 = $$3;
-
-      do {
-         $$5 = $$5.c();
-      } while ($$1.a_($$5).a(cuc.qC));
-
-      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == bkn.c || $$1.g($$5.d()));
+   public static boolean a(bkm<cax> $$0, csh $$1, blc $$2, ht $$3, ato $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == blc.c || $$1.g($$3));
    }
 
    @Override
-   protected aqc w() {
-      return aqd.xB;
+   protected boolean ac_() {
+      return false;
    }
 
    @Override
-   protected aqc d(bir $$0) {
-      return aqd.xD;
+   protected aqm w() {
+      return aqn.lB;
    }
 
    @Override
-   protected aqc m_() {
-      return aqd.xC;
+   protected aqm d(bjg $$0) {
+      return aqn.lE;
    }
 
    @Override
-   aqc t() {
-      return aqd.xE;
+   protected aqm m_() {
+      return aqn.lD;
    }
 
    @Override
-   protected cdd b(ckj $$0, float $$1) {
-      cdd $$2 = super.b($$0, $$1);
-      if ($$2 instanceof cdf) {
-         ((cdf)$$2).a(new bjg(bji.b, 600));
+   protected aqm y() {
+      return aqn.lF;
+   }
+
+   @Override
+   public boolean C(bki $$0) {
+      boolean $$1 = super.C($$0);
+      if ($$1 && this.eS().b() && $$0 instanceof bky) {
+         float $$2 = this.dL().d_(this.dl()).b();
+         ((bky)$$0).b(new bjv(bjx.q, 140 * (int)$$2), this);
       }
 
-      return $$2;
+      return $$1;
+   }
+
+   @Override
+   protected boolean gf() {
+      return true;
+   }
+
+   @Override
+   protected void gh() {
+      this.b(bkm.bp);
+      if (!this.aS()) {
+         this.dL().a(null, 1041, this.dl(), 0);
+      }
+   }
+
+   @Override
+   protected clb ge() {
+      return clb.b;
+   }
+
+   @Override
+   protected Vector3f a(bki $$0, bkj $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b + 0.125F * $$2, 0.0F);
    }
 }

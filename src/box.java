@@ -1,46 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class box {
-   public static bmb<bks> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bpm.a(
-         (Function<bpm.b<bks>, ? extends App<bpm.c<bks>, bpp<bks>>>)($$3 -> $$3.group($$3.c(btk.o), $$3.c(btk.m), $$3.a(btk.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dl()).a(aqx.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           eik $$8 = eik.a($$6);
-                           ht $$9 = $$6.dl();
-                           ht.a $$10 = new ht.a();
+public class box<U> implements Iterable<U> {
+   protected final List<box.a<U>> a;
+   private final ato b = ato.a();
 
-                           label45:
-                           for (ht $$11 : ht.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, hx.a)).b($$5x, $$11, $$8).c()) {
-                                 for (hx $$12 : hx.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(hx.a)).a(cuc.G)) {
-                                       $$5.a(new bmd($$11));
-                                       $$4.a(new btn(new bmd($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
-                           }
+   public box() {
+      this.a = Lists.newArrayList();
+   }
 
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        }
-                     }
-               ))
-      );
+   private box(List<box.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
+   }
+
+   public static <U> Codec<box<U>> a(Codec<U> $$0) {
+      return box.a.a($$0).listOf().xmap(box::new, $$0x -> $$0x.a);
+   }
+
+   public box<U> a(U $$0, int $$1) {
+      this.a.add(new box.a<>($$0, $$1));
+      return this;
+   }
+
+   public box<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(box.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(box.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), box.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<box.a<E>> a(final Codec<E> $$0) {
+         return new Codec<box.a<E>>() {
+            public <T> DataResult<Pair<box.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new box.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(box.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

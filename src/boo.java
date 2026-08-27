@@ -1,42 +1,56 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+@Deprecated
 public class boo {
-   private static final int a = 200;
-
-   public static <E extends bkl> bmb<E> a(BiConsumer<E, bkj> $$0) {
-      return a($$0x -> false, $$0, true);
+   public static bmq<bky> a(float $$0, bib $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public static <E extends bkl> bmb<E> a(Predicate<bkj> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
+   public static bmq<bky> a(bkm<?> $$0, float $$1, bib $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ag()));
    }
 
-   public static <E extends bkl> bmb<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends bkl> bmb<E> a(Predicate<bkj> $$0, BiConsumer<E, bkj> $$1, boolean $$2) {
-      return bpm.a(
-         (Function<bpm.b<E>, ? extends App<bpm.c<E>, bpp<E>>>)($$3 -> $$3.group($$3.b(btk.o), $$3.a(btk.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bkj $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bv() && $$9.dL() == $$7.dL() && !$$0.test($$9)) {
-                     return true;
-                  } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
+   private static bmq<bky> a(float $$0, bib $$1, Predicate<bky> $$2) {
+      float $$3 = $$0 * $$0;
+      boo.a $$4 = new boo.a($$1);
+      return bqb.a(
+         (Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$3x -> $$3x.group($$3x.c(btz.n), $$3x.b(btz.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bky> $$9 = $$3x.<bub>b($$5).a($$2.and($$2xxxx -> $$2xxxx.f((bki)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bna($$9.get(), true));
+                        return true;
+                     }
+                  }))
       );
    }
 
-   private static boolean a(bkj $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dL().V() - $$1.get() > 200L;
+   public static final class a {
+      private final bib a;
+      private int b;
+
+      public a(bib $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(ato $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

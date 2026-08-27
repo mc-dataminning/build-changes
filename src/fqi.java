@@ -1,96 +1,125 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.util.Optional;
 
-public class fqi {
-   public static final fqi a = new fqi(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-   public final Vector3f b;
-   public final Vector3f c;
-   public final Vector3f d;
+public class fqi implements fqh {
+   private final fqh.a a;
+   private final fqh.a b = fqh.a(new enf(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public fqi(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
-      this.b = new Vector3f($$0);
-      this.c = new Vector3f($$1);
-      this.d = new Vector3f($$2);
-   }
-
-   public void a(boolean $$0, emh $$1) {
-      if (this != a) {
-         float $$2 = this.b.x();
-         float $$3 = this.b.y();
-         float $$4 = this.b.z();
-         if ($$0) {
-            $$3 = -$$3;
-            $$4 = -$$4;
-         }
-
-         int $$5 = $$0 ? -1 : 1;
-         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
-         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
-         $$1.b(this.d.x(), this.d.y(), this.d.z());
-      }
+   public fqi(fqh.a $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (this.getClass() != $$0.getClass()) {
-         return false;
+   public eno getBuffer(fqp $$0) {
+      if ($$0.K()) {
+         eno $$1 = this.b.getBuffer($$0);
+         return new fqi.a($$1, this.c, this.d, this.e, this.f);
       } else {
-         fqi $$1 = (fqi)$$0;
-         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      $$0 = 31 * $$0 + this.c.hashCode();
-      return 31 * $$0 + this.d.hashCode();
-   }
-
-   protected static class a implements JsonDeserializer<fqi> {
-      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float a = 5.0F;
-      public static final float b = 4.0F;
-
-      public fqi a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.a($$3, "rotation", c);
-         Vector3f $$5 = this.a($$3, "translation", d);
-         $$5.mul(0.0625F);
-         $$5.set(asy.a($$5.x, -5.0F, 5.0F), asy.a($$5.y, -5.0F, 5.0F), asy.a($$5.z, -5.0F, 5.0F));
-         Vector3f $$6 = this.a($$3, "scale", e);
-         $$6.set(asy.a($$6.x, -4.0F, 4.0F), asy.a($$6.y, -4.0F, 4.0F), asy.a($$6.z, -4.0F, 4.0F));
-         return new fqi($$4, $$5, $$6);
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
-         if (!$$0.has($$1)) {
-            return $$2;
+         eno $$2 = this.a.getBuffer($$0);
+         Optional<fqp> $$3 = $$0.J();
+         if ($$3.isPresent()) {
+            eno $$4 = this.b.getBuffer($$3.get());
+            fqi.a $$5 = new fqi.a($$4, this.c, this.d, this.e, this.f);
+            return enr.a($$5, $$2);
          } else {
-            JsonArray $$3 = aso.v($$0, $$1);
-            if ($$3.size() != 3) {
-               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
-            } else {
-               float[] $$4 = new float[3];
-
-               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-                  $$4[$$5] = aso.e($$3.get($$5), $$1 + "[" + $$5 + "]");
-               }
-
-               return new Vector3f($$4[0], $$4[1], $$4[2]);
-            }
+            return $$2;
          }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void a() {
+      this.b.b();
+   }
+
+   static class a extends enj {
+      private final eno f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(eno $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void l() {
+      }
+
+      @Override
+      public eno a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public eno a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public eno a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public eno a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eno b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eno a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
       }
    }
 }

@@ -1,25 +1,25 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public interface cql extends cqq, crc, cre {
-   @Override
-   default <T extends ddx> Optional<T> a(ht $$0, ddz<T> $$1) {
-      return crc.super.a($$0, $$1);
+public class cql extends cpm {
+   public cql(cpm.a $$0, bkn... $$1) {
+      super($$0, cpn.b, $$1);
    }
 
    @Override
-   default List<eiy> c(@Nullable bjt $$0, eia $$1) {
-      return cqq.super.c($$0, $$1);
+   public int a(int $$0) {
+      return $$0 * 10;
    }
 
    @Override
-   default boolean a(@Nullable bjt $$0, eiy $$1) {
-      return cqq.super.a($$0, $$1);
+   public int b(int $$0) {
+      return this.a($$0) + 15;
    }
 
    @Override
-   default ht a(dlk.a $$0, ht $$1) {
-      return crc.super.a($$0, $$1);
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(cpm $$0) {
+      return super.a($$0) && $$0 != cpq.j;
    }
 }

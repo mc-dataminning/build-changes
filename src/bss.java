@@ -1,99 +1,94 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bss extends bre {
-   private final bre a;
-   private final int b;
-   private boolean c;
+public class bss extends brt {
+   private final bla a;
+   private final cbe b;
+   @Nullable
+   private bky c;
+   private int d = -1;
+   private final double e;
+   private int f;
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
 
-   public bss(int $$0, bre $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   public bss(cbe $$0, double $$1, int $$2, float $$3) {
+      this($$0, $$1, $$2, $$2, $$3);
    }
 
-   public boolean a(bss $$0) {
-      return this.Q_() && $$0.i() < this.i();
+   public bss(cbe $$0, double $$1, int $$2, int $$3, float $$4) {
+      if (!($$0 instanceof bky)) {
+         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+      } else {
+         this.b = $$0;
+         this.a = (bla)$$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+         this.j = $$4 * $$4;
+         this.a(EnumSet.of(brt.a.a, brt.a.b));
+      }
    }
 
    @Override
    public boolean a() {
-      return this.a.a();
+      bky $$0 = this.a.q();
+      if ($$0 != null && $$0.bv()) {
+         this.c = $$0;
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean Q_() {
-      return this.a.Q_();
-   }
-
-   @Override
-   public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
-      }
+      return this.a() || this.c.bv() && !this.a.L().l();
    }
 
    @Override
    public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
-      }
+      this.c = null;
+      this.f = 0;
+      this.d = -1;
    }
 
    @Override
    public boolean R_() {
-      return this.a.R_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
+      return true;
    }
 
    @Override
    public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void a(EnumSet<bre.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<bre.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public bre k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
+      double $$0 = this.a.i(this.c.dq(), this.c.ds(), this.c.dw());
+      boolean $$1 = this.a.M().a(this.c);
+      if ($$1) {
+         this.f++;
       } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((bss)$$0).a) : false;
+         this.f = 0;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+      if (!($$0 > (double)this.j) && this.f >= 5) {
+         this.a.L().n();
+      } else {
+         this.a.L().a(this.c, this.e);
+      }
+
+      this.a.G().a(this.c, 30.0F, 30.0F);
+      if (--this.d == 0) {
+         if (!$$1) {
+            return;
+         }
+
+         float $$2 = (float)Math.sqrt($$0) / this.i;
+         float $$3 = ati.a($$2, 0.1F, 1.0F);
+         this.b.a(this.c, $$3);
+         this.d = ati.d($$2 * (float)(this.h - this.g) + (float)this.g);
+      } else if (this.d < 0) {
+         this.d = ati.a(ati.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
+      }
    }
 }

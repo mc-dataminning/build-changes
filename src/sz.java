@@ -1,42 +1,7 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+public class sz {
+   private static final sy<?>[] a = new sy[]{sb.a, rx.a, sr.a, se.a, sh.a, sc.b, sa.b, rw.a, su.a, sf.a, rz.b, sd.a, sg.a};
 
-public class sz extends sv {
-   private final Deque<sx> a = new ArrayDeque<>();
-
-   public sz(sw... $$0) {
-      sx $$1 = sx.a();
-
-      for (sw $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
-   }
-
-   @Override
-   public sk.a a(sp<?> $$0, String $$1) {
-      sx $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return sk.a.b;
-      } else {
-         if ($$0 == rt.b) {
-            sx $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public sk.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
-
-      return super.b();
+   public static sy<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < a.length ? a[$$0] : sy.a($$0);
    }
 }

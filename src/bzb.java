@@ -1,45 +1,57 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bzb {
-   private static final Logger a = LogUtils.getLogger();
-   private final byk b;
-   private final byu[] c = new byu[bza.c()];
+public abstract class bzb implements bzj {
+   protected final byz a;
+
+   public bzb(byz $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return false;
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void a(byy $$0, ht $$1, bjg $$2, @Nullable cdm $$3) {
+   }
+
+   @Override
+   public void d() {
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public float f() {
+      return 0.6F;
+   }
+
    @Nullable
-   private byu d;
-
-   public bzb(byk $$0) {
-      this.b = $$0;
-      this.a(bza.k);
+   @Override
+   public eji g() {
+      return null;
    }
 
-   public void a(bza<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
-
-         this.d = this.b((bza<byu>)$$0);
-         if (!this.b.dL().B) {
-            this.b.al().b(byk.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dL().B ? "client" : "server");
-         this.d.d();
-      }
+   @Override
+   public float a(bjg $$0, float $$1) {
+      return $$1;
    }
 
-   public byu a() {
-      return this.d;
-   }
-
-   public <T extends byu> T b(bza<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
-
-      return (T)this.c[$$1];
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.do().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

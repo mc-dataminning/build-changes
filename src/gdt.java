@@ -1,54 +1,12 @@
-import java.util.List;
-import java.util.Locale;
+import java.util.Collection;
 import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface gdt<T> {
-   static <T> gdt<T> a() {
-      return new gdt<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
+public interface gdt {
+   Collection<agg> f();
 
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
-   }
+   void a(Function<agg, gdt> var1);
 
-   static <T> gdt<T> a(List<T> $$0, Function<T, Stream<afw>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final gdw<T> $$2 = new gdw<>();
-         final gdw<T> $$3 = new gdw<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new gdt<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
-      }
-   }
-
-   List<T> a(String var1);
-
-   List<T> b(String var1);
+   @Nullable
+   gdi a(gdm var1, Function<gdl, gbh> var2, gdq var3, agg var4);
 }

@@ -1,34 +1,112 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.google.common.base.Suppliers;
+import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class csf extends csb {
-   public static final Codec<csf> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(crx.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
-            .apply($$0, csf::new)
-   );
-   private final ig<crx> c;
-   private final int d;
-   private final int e;
+public class csf implements cqy, crc {
+   protected final int a;
+   protected final int b;
+   protected final dis[][] c;
+   protected boolean d;
+   protected final crs e;
+   private final Supplier<ib<csq>> f;
 
-   public csf(ig<crx> $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1 + 2;
-      this.e = $$1;
+   public csf(crs $$0, ht $$1, ht $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.H_().d(jz.ar).f(csx.b));
+      this.a = iu.a($$1.u());
+      this.b = iu.a($$1.w());
+      int $$3 = iu.a($$2.u());
+      int $$4 = iu.a($$2.w());
+      this.c = new dis[$$3 - this.a + 1][$$4 - this.b + 1];
+      diw $$5 = $$0.J();
+      this.d = true;
+
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+         }
+      }
+
+      for (int $$8 = iu.a($$1.u()); $$8 <= iu.a($$2.u()); $$8++) {
+         for (int $$9 = iu.a($$1.w()); $$9 <= iu.a($$2.w()); $$9++) {
+            dis $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
+   }
+
+   private dis d(ht $$0) {
+      return this.a(iu.a($$0.u()), iu.a($$0.w()));
+   }
+
+   private dis a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dis $$4 = this.c[$$2][$$3];
+         return (dis)($$4 != null ? $$4 : new diz(this.e, new cqz($$0, $$1), this.f.get()));
+      } else {
+         return new diz(this.e, new cqz($$0, $$1), this.f.get());
+      }
    }
 
    @Override
-   protected Stream<ib<crx>> b() {
-      return this.c.a();
+   public din C_() {
+      return this.e.C_();
    }
 
    @Override
-   protected Codec<? extends csb> a() {
-      return b;
+   public cqy c(int $$0, int $$1) {
+      return this.a($$0, $$1);
    }
 
    @Override
-   public ib<crx> getNoiseBiome(int $$0, int $$1, int $$2, csg.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   public List<ekb> c(@Nullable bki $$0, ejd $$1) {
+      return List.of();
+   }
+
+   @Nullable
+   @Override
+   public der c_(ht $$0) {
+      dis $$1 = this.d($$0);
+      return $$1.c_($$0);
+   }
+
+   @Override
+   public dgw a_(ht $$0) {
+      if (this.r($$0)) {
+         return cuv.a.o();
+      } else {
+         dis $$1 = this.d($$0);
+         return $$1.a_($$0);
+      }
+   }
+
+   @Override
+   public ecg b_(ht $$0) {
+      if (this.r($$0)) {
+         return ech.a.g();
+      } else {
+         dis $$1 = this.d($$0);
+         return $$1.b_($$0);
+      }
+   }
+
+   @Override
+   public int I_() {
+      return this.e.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.e.J_();
+   }
+
+   public bfh a() {
+      return this.e.ad();
    }
 }

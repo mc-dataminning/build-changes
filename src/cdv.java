@@ -1,54 +1,67 @@
-public abstract class cdv extends cdw implements cdm {
-   private static final afc<ckj> b = aff.a(cdv.class, afe.h);
+import java.util.List;
 
-   public cdv(bjx<? extends cdv> $$0, cqz $$1) {
+public class cdv extends cdt {
+   public static final float e = 4.0F;
+
+   public cdv(bkm<? extends cdv> $$0, crs $$1) {
       super($$0, $$1);
    }
 
-   public cdv(bjx<? extends cdv> $$0, double $$1, double $$2, double $$3, cqz $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public cdv(bjx<? extends cdv> $$0, bkj $$1, cqz $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(ckj $$0) {
-      if (!$$0.a(this.s()) || $$0.u()) {
-         this.al().b(b, $$0.c(1));
-      }
-   }
-
-   protected abstract cke s();
-
-   protected ckj t() {
-      return this.al().b(b);
+   public cdv(crs $$0, bky $$1, double $$2, double $$3, double $$4) {
+      super(bkm.x, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public ckj q() {
-      ckj $$0 = this.t();
-      return $$0.b() ? new ckj(this.s()) : $$0;
-   }
-
-   @Override
-   protected void b_() {
-      this.al().a(b, ckj.b);
-   }
-
-   @Override
-   public void b(rt $$0) {
-      super.b($$0);
-      ckj $$1 = this.t();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new rt()));
-      }
-   }
-
-   @Override
-   public void a(rt $$0) {
+   protected void a(ejg $$0) {
       super.a($$0);
-      ckj $$1 = ckj.a($$0.p("Item"));
-      this.a($$1);
+      if ($$0.c() != ejg.a.c || !this.d(((ejf)$$0).a())) {
+         if (!this.dL().B) {
+            List<bky> $$1 = this.dL().a(bky.class, this.cG().c(4.0, 2.0, 4.0));
+            bkf $$2 = new bkf(this.dL(), this.dq(), this.ds(), this.dw());
+            bki $$3 = this.v();
+            if ($$3 instanceof bky) {
+               $$2.a((bky)$$3);
+            }
+
+            $$2.a(js.i);
+            $$2.a(3.0F);
+            $$2.b(600);
+            $$2.c((7.0F - $$2.h()) / (float)$$2.m());
+            $$2.a(new bjv(bjx.g, 1, 1));
+            if (!$$1.isEmpty()) {
+               for (bky $$4 : $$1) {
+                  double $$5 = this.f($$4);
+                  if ($$5 < 16.0) {
+                     $$2.e($$4.dq(), $$4.ds(), $$4.dw());
+                     break;
+                  }
+               }
+            }
+
+            this.dL().c(2006, this.dl(), this.aS() ? -1 : 1);
+            this.dL().b($$2);
+            this.ak();
+         }
+      }
+   }
+
+   @Override
+   public boolean br() {
+      return false;
+   }
+
+   @Override
+   public boolean a(bjg $$0, float $$1) {
+      return false;
+   }
+
+   @Override
+   protected jq s() {
+      return js.i;
+   }
+
+   @Override
+   protected boolean af_() {
+      return false;
    }
 }

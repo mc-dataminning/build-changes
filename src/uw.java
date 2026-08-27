@@ -1,125 +1,99 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class uw implements ui {
-   private final uj c;
-   private final List<ui> d;
-   private vf e;
-   private ask f = ask.a;
-   @Nullable
-   private ro g;
-
-   uw(uj $$0, List<ui> $$1, vf $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static uw a(uj $$0) {
-      return new uw($$0, Lists.newArrayList(), vf.a);
-   }
-
-   @Override
-   public uj b() {
-      return this.c;
-   }
-
-   @Override
-   public List<ui> c() {
-      return this.d;
-   }
-
-   public uw b(vf $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public vf a() {
-      return this.e;
-   }
-
-   public uw f(String $$0) {
-      return this.b(ui.b($$0));
-   }
-
-   public uw b(ui $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public uw a(UnaryOperator<vf> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public uw c(vf $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public uw a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public uw a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   @Override
-   public ask g() {
-      ro $$0 = ro.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
+public interface uw {
+   Optional<auj> a = Optional.of(auj.a);
+   uw b = new uw() {
+      @Override
+      public <T> Optional<T> a(uw.a<T> $$0) {
+         return Optional.empty();
       }
 
-      return this.f;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof uw $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+      @Override
+      public <T> Optional<T> a(uw.b<T> $$0, vo $$1) {
+         return Optional.empty();
       }
+   };
+
+   <T> Optional<T> a(uw.a<T> var1);
+
+   <T> Optional<T> a(uw.b<T> var1, vo var2);
+
+   static uw e(final String $$0) {
+      return new uw() {
+         @Override
+         public <T> Optional<T> a(uw.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(uw.b<T> $$0x, vo $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
+   static uw a(final String $$0, final vo $$1) {
+      return new uw() {
+         @Override
+         public <T> Optional<T> a(uw.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(uw.b<T> $$0x, vo $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
    }
 
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
+   static uw a(uw... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static uw a(final List<? extends uw> $$0) {
+      return new uw() {
+         @Override
+         public <T> Optional<T> a(uw.a<T> $$0x) {
+            for (uw $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
          }
 
-         if ($$1 && $$2) {
-            $$0.append(", ");
+         @Override
+         public <T> Optional<T> a(uw.b<T> $$0x, vo $$1) {
+            for (uw $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
          }
+      };
+   }
 
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
-
-         $$0.append(']');
-      }
-
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
       return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(vo var1, String var2);
    }
 }

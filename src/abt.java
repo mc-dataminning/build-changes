@@ -1,54 +1,64 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public class abt implements wk<yd> {
+   private final ib<aqm> a;
+   private final aqo b;
+   private final int c;
+   private final float d;
+   private final float e;
+   private final long f;
 
-public class abt implements wb<xu> {
-   private final boolean a;
-   private final List<af> b;
-   private final Set<afw> c;
-   private final Map<afw, ah> d;
-
-   public abt(boolean $$0, Collection<af> $$1, Set<afw> $$2, Map<afw, ah> $$3) {
+   public abt(ib<aqm> $$0, aqo $$1, bki $$2, float $$3, float $$4, long $$5) {
       this.a = $$0;
-      this.b = List.copyOf($$1);
-      this.c = Set.copyOf($$2);
-      this.d = Map.copyOf($$3);
+      this.b = $$1;
+      this.c = $$2.ah();
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public abt(tl $$0) {
-      this.a = $$0.readBoolean();
-      this.b = $$0.a(af::b);
-      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, tl::t);
-      this.d = $$0.a(tl::t, ah::b);
+   public abt(tu $$0) {
+      this.a = $$0.a(jy.c.t(), aqm::b);
+      this.b = $$0.b(aqo.class);
+      this.c = $$0.n();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      this.f = $$0.readLong();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.c, tl::a);
-      $$0.a(this.d, tl::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(tu $$0) {
+      $$0.a(jy.c.t(), this.a, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.b(this.f);
    }
 
-   public void a(xu $$0) {
-      $$0.a(this);
+   public ib<aqm> a() {
+      return this.a;
    }
 
-   public List<af> a() {
+   public aqo d() {
       return this.b;
    }
 
-   public Set<afw> d() {
+   public int e() {
       return this.c;
    }
 
-   public Map<afw, ah> e() {
+   public float f() {
       return this.d;
    }
 
-   public boolean f() {
-      return this.a;
+   public float g() {
+      return this.e;
+   }
+
+   public long h() {
+      return this.f;
+   }
+
+   public void a(yd $$0) {
+      $$0.a(this);
    }
 }

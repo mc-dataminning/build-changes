@@ -1,11 +1,8 @@
-public class cii extends cke {
-   public cii(cke.a $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public ckj a(ckj $$0, cqz $$1, bkj $$2) {
-      ckj $$3 = super.a($$0, $$1, $$2);
-      return $$2 instanceof ccx && ((ccx)$$2).fT().d ? $$3 : new ckj(ckm.oC);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@u
+@w
+interface cii {
 }

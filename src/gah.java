@@ -1,34 +1,14 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
+public class gah extends fzs<bxm, fjs<bxm>> {
+   private static final agg a = new agg("textures/entity/wolf/wolf_collar.png");
 
-public class gah {
-   private static final BiMap<afw, gag> i = HashBiMap.create();
-   public static final gag a = a("single", gam.b);
-   public static final gag b = a("directory", gaj.b);
-   public static final gag c = a("filter", gan.b);
-   public static final gag d = a("unstitch", gao.b);
-   public static final gag e = a("paletted_permutations", gal.b);
-   public static Codec<gag> f = afw.a.flatXmap($$0 -> {
-      gag $$1 = (gag)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      afw $$1 = (afw)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gae> g = f.dispatch(gae::a, gag::a);
-   public static Codec<List<gae>> h = g.listOf().fieldOf("sources").codec();
+   public gah(fxf<bxm, fjs<bxm>> $$0) {
+      super($$0);
+   }
 
-   private static gag a(String $$0, Codec<? extends gae> $$1) {
-      gag $$2 = new gag($$1);
-      afw $$3 = new afw($$0);
-      gag $$4 = (gag)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
+   public void a(enk $$0, fqh $$1, int $$2, bxm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.s() && !$$3.cd()) {
+         float[] $$10 = $$3.gn().d();
+         a(this.c(), a, $$0, $$1, $$2, $$3, $$10[0], $$10[1], $$10[2]);
       }
    }
 }

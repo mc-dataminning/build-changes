@@ -1,67 +1,71 @@
-public class cnl extends cnf {
-   public cnl(cnc $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cnl {
+   @Nullable
+   private final cdm a;
+   private final bip b;
+   private final eje c;
+   private final crs d;
+   private final clb e;
+
+   public cnl(cdm $$0, bip $$1, eje $$2) {
+      this($$0.dL(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(cgd $$0, cqz $$1) {
-      int $$2 = 0;
-      ckj $$3 = ckj.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         ckj $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(ckm.rf)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(ckm.tp)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 > 0;
+   protected cnl(crs $$0, @Nullable cdm $$1, bip $$2, clb $$3, eje $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public ckj a(cgd $$0, ip $$1) {
-      int $$2 = 0;
-      ckj $$3 = ckj.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         ckj $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(ckm.rf)) {
-               if (!$$3.b()) {
-                  return ckj.b;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(ckm.tp)) {
-                  return ckj.b;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : ckj.b;
+   protected final eje j() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public ht a() {
+      return this.c.a();
    }
 
-   @Override
-   public cnq<?> aq_() {
-      return cnq.e;
+   public hx k() {
+      return this.c.b();
+   }
+
+   public eji l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public clb n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cdm o() {
+      return this.a;
+   }
+
+   public bip p() {
+      return this.b;
+   }
+
+   public crs q() {
+      return this.d;
+   }
+
+   public hx g() {
+      return this.a == null ? hx.c : this.a.cD();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fI();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dB();
    }
 }

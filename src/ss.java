@@ -1,238 +1,241 @@
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.bytes.ByteCollection;
-import it.unimi.dsi.fastutil.bytes.ByteOpenHashSet;
-import java.util.Arrays;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
-import org.slf4j.Logger;
 
-public class ss implements sr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 8;
-   private static final ByteCollection c = new ByteOpenHashSet(Arrays.asList((byte)1, (byte)2, (byte)3, (byte)4, (byte)5, (byte)6));
-   private static final n d = n.l;
-   private static final n e = n.k;
-   private static final n f = n.g;
-   private static final n g = n.m;
-   private static final Pattern h = Pattern.compile("[A-Za-z0-9._+-]+");
-   private static final String i = String.valueOf(':');
-   private static final String j = String.valueOf(',');
-   private static final String k = "[";
-   private static final String l = "]";
-   private static final String m = ";";
-   private static final String n = " ";
-   private static final String o = "{";
-   private static final String p = "}";
-   private static final String q = "\n";
-   private final String r;
-   private final int s;
-   private ui t = uh.a;
+public class ss implements ta {
+   private static final Map<String, List<String>> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("{}", Lists.newArrayList(new String[]{"DataVersion", "author", "size", "data", "entities", "palette", "palettes"}));
+      $$0.put("{}.data.[].{}", Lists.newArrayList(new String[]{"pos", "state", "nbt"}));
+      $$0.put("{}.entities.[].{}", Lists.newArrayList(new String[]{"blockPos", "pos"}));
+   });
+   private static final Set<String> b = Sets.newHashSet(new String[]{"{}.size.[]", "{}.data.[].{}", "{}.palette.[].{}", "{}.entities.[].{}"});
+   private static final Pattern c = Pattern.compile("[A-Za-z0-9._+-]+");
+   private static final String d = String.valueOf(':');
+   private static final String e = String.valueOf(',');
+   private static final String f = "[";
+   private static final String g = "]";
+   private static final String h = ";";
+   private static final String i = " ";
+   private static final String j = "{";
+   private static final String k = "}";
+   private static final String l = "\n";
+   private final String m;
+   private final int n;
+   private final List<String> o;
+   private String p = "";
 
-   public ss(String $$0, int $$1) {
-      this.r = $$0;
-      this.s = $$1;
+   public ss() {
+      this("    ", 0, Lists.newArrayList());
    }
 
-   public ui a(sn $$0) {
+   public ss(String $$0, int $$1, List<String> $$2) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+   }
+
+   public String a(sw $$0) {
       $$0.a(this);
-      return this.t;
+      return this.p;
    }
 
    @Override
-   public void a(sl $$0) {
-      String $$1 = sl.b($$0.s_());
-      String $$2 = $$1.substring(0, 1);
-      ui $$3 = ui.b($$1.substring(1, $$1.length() - 1)).a(e);
-      this.t = ui.b($$2).b($$3).f($$2);
-   }
-
-   @Override
-   public void a(rr $$0) {
-      ui $$1 = ui.b("b").a(g);
-      this.t = ui.b(String.valueOf($$0.l())).b($$1).a(f);
-   }
-
-   @Override
-   public void a(si $$0) {
-      ui $$1 = ui.b("s").a(g);
-      this.t = ui.b(String.valueOf($$0.l())).b($$1).a(f);
-   }
-
-   @Override
-   public void a(ry $$0) {
-      this.t = ui.b(String.valueOf($$0.l())).a(f);
-   }
-
-   @Override
-   public void a(sb $$0) {
-      ui $$1 = ui.b("L").a(g);
-      this.t = ui.b(String.valueOf($$0.l())).b($$1).a(f);
-   }
-
-   @Override
-   public void a(rw $$0) {
-      ui $$1 = ui.b("f").a(g);
-      this.t = ui.b(String.valueOf($$0.k())).b($$1).a(f);
-   }
-
-   @Override
-   public void a(ru $$0) {
-      ui $$1 = ui.b("d").a(g);
-      this.t = ui.b(String.valueOf($$0.j())).b($$1).a(f);
-   }
-
-   @Override
-   public void a(rq $$0) {
-      ui $$1 = ui.b("B").a(g);
-      uw $$2 = ui.b("[").b($$1).f(";");
-      byte[] $$3 = $$0.e();
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         uw $$5 = ui.b(String.valueOf($$3[$$4])).a(f);
-         $$2.f(" ").b($$5).b($$1);
-         if ($$4 != $$3.length - 1) {
-            $$2.f(j);
-         }
-      }
-
-      $$2.f("]");
-      this.t = $$2;
+   public void a(su $$0) {
+      this.p = su.b($$0.s_());
    }
 
    @Override
    public void a(rx $$0) {
-      ui $$1 = ui.b("I").a(g);
-      uw $$2 = ui.b("[").b($$1).f(";");
-      int[] $$3 = $$0.g();
+      this.p = $$0.l() + "b";
+   }
 
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         $$2.f(" ").b(ui.b(String.valueOf($$3[$$4])).a(f));
-         if ($$4 != $$3.length - 1) {
-            $$2.f(j);
-         }
-      }
+   @Override
+   public void a(sr $$0) {
+      this.p = $$0.l() + "s";
+   }
 
-      $$2.f("]");
-      this.t = $$2;
+   @Override
+   public void a(se $$0) {
+      this.p = String.valueOf($$0.l());
+   }
+
+   @Override
+   public void a(sh $$0) {
+      this.p = $$0.l() + "L";
+   }
+
+   @Override
+   public void a(sc $$0) {
+      this.p = $$0.k() + "f";
    }
 
    @Override
    public void a(sa $$0) {
-      ui $$1 = ui.b("L").a(g);
-      uw $$2 = ui.b("[").b($$1).f(";");
-      long[] $$3 = $$0.g();
+      this.p = $$0.j() + "d";
+   }
 
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         ui $$5 = ui.b(String.valueOf($$3[$$4])).a(f);
-         $$2.f(" ").b($$5).b($$1);
-         if ($$4 != $$3.length - 1) {
-            $$2.f(j);
+   @Override
+   public void a(rw $$0) {
+      StringBuilder $$1 = new StringBuilder("[").append("B").append(";");
+      byte[] $$2 = $$0.e();
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$1.append(" ").append($$2[$$3]).append("B");
+         if ($$3 != $$2.length - 1) {
+            $$1.append(e);
          }
       }
 
-      $$2.f("]");
-      this.t = $$2;
+      $$1.append("]");
+      this.p = $$1.toString();
+   }
+
+   @Override
+   public void a(sd $$0) {
+      StringBuilder $$1 = new StringBuilder("[").append("I").append(";");
+      int[] $$2 = $$0.g();
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$1.append(" ").append($$2[$$3]);
+         if ($$3 != $$2.length - 1) {
+            $$1.append(e);
+         }
+      }
+
+      $$1.append("]");
+      this.p = $$1.toString();
+   }
+
+   @Override
+   public void a(sg $$0) {
+      String $$1 = "L";
+      StringBuilder $$2 = new StringBuilder("[").append("L").append(";");
+      long[] $$3 = $$0.g();
+
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         $$2.append(" ").append($$3[$$4]).append("L");
+         if ($$4 != $$3.length - 1) {
+            $$2.append(e);
+         }
+      }
+
+      $$2.append("]");
+      this.p = $$2.toString();
+   }
+
+   @Override
+   public void a(sf $$0) {
+      if ($$0.isEmpty()) {
+         this.p = "[]";
+      } else {
+         StringBuilder $$1 = new StringBuilder("[");
+         this.b("[]");
+         String $$2 = b.contains(this.a()) ? "" : this.m;
+         if (!$$2.isEmpty()) {
+            $$1.append("\n");
+         }
+
+         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+            $$1.append(Strings.repeat($$2, this.n + 1));
+            $$1.append(new ss($$2, this.n + 1, this.o).a($$0.k($$3)));
+            if ($$3 != $$0.size() - 1) {
+               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
+            }
+         }
+
+         if (!$$2.isEmpty()) {
+            $$1.append("\n").append(Strings.repeat($$2, this.n));
+         }
+
+         $$1.append("]");
+         this.p = $$1.toString();
+         this.b();
+      }
    }
 
    @Override
    public void a(rz $$0) {
-      if ($$0.isEmpty()) {
-         this.t = ui.b("[]");
-      } else if (c.contains($$0.f()) && $$0.size() <= 8) {
-         String $$1 = j + " ";
-         uw $$2 = ui.b("[");
-
-         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-            if ($$3 != 0) {
-               $$2.f($$1);
-            }
-
-            $$2.b(new ss(this.r, this.s).a($$0.k($$3)));
-         }
-
-         $$2.f("]");
-         this.t = $$2;
-      } else {
-         uw $$4 = ui.b("[");
-         if (!this.r.isEmpty()) {
-            $$4.f("\n");
-         }
-
-         for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-            uw $$6 = ui.b(Strings.repeat(this.r, this.s + 1));
-            $$6.b(new ss(this.r, this.s + 1).a($$0.k($$5)));
-            if ($$5 != $$0.size() - 1) {
-               $$6.f(j).f(this.r.isEmpty() ? " " : "\n");
-            }
-
-            $$4.b($$6);
-         }
-
-         if (!this.r.isEmpty()) {
-            $$4.f("\n").f(Strings.repeat(this.r, this.s));
-         }
-
-         $$4.f("]");
-         this.t = $$4;
-      }
-   }
-
-   @Override
-   public void a(rt $$0) {
       if ($$0.g()) {
-         this.t = ui.b("{}");
+         this.p = "{}";
       } else {
-         uw $$1 = ui.b("{");
-         Collection<String> $$2 = $$0.e();
-         if (a.isDebugEnabled()) {
-            List<String> $$3 = Lists.newArrayList($$0.e());
-            Collections.sort($$3);
-            $$2 = $$3;
+         StringBuilder $$1 = new StringBuilder("{");
+         this.b("{}");
+         String $$2 = b.contains(this.a()) ? "" : this.m;
+         if (!$$2.isEmpty()) {
+            $$1.append("\n");
          }
 
-         if (!this.r.isEmpty()) {
-            $$1.f("\n");
-         }
-
-         Iterator<String> $$4 = $$2.iterator();
+         Collection<String> $$3 = this.b($$0);
+         Iterator<String> $$4 = $$3.iterator();
 
          while ($$4.hasNext()) {
             String $$5 = $$4.next();
-            uw $$6 = ui.b(Strings.repeat(this.r, this.s + 1)).b(a($$5)).f(i).f(" ").b(new ss(this.r, this.s + 1).a($$0.c($$5)));
+            sw $$6 = $$0.c($$5);
+            this.b($$5);
+            $$1.append(Strings.repeat($$2, this.n + 1)).append(a($$5)).append(d).append(" ").append(new ss($$2, this.n + 1, this.o).a($$6));
+            this.b();
             if ($$4.hasNext()) {
-               $$6.f(j).f(this.r.isEmpty() ? " " : "\n");
+               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
             }
-
-            $$1.b($$6);
          }
 
-         if (!this.r.isEmpty()) {
-            $$1.f("\n").f(Strings.repeat(this.r, this.s));
+         if (!$$2.isEmpty()) {
+            $$1.append("\n").append(Strings.repeat($$2, this.n));
          }
 
-         $$1.f("}");
-         this.t = $$1;
+         $$1.append("}");
+         this.p = $$1.toString();
+         this.b();
       }
    }
 
-   protected static ui a(String $$0) {
-      if (h.matcher($$0).matches()) {
-         return ui.b($$0).a(d);
+   private void b() {
+      this.o.remove(this.o.size() - 1);
+   }
+
+   private void b(String $$0) {
+      this.o.add($$0);
+   }
+
+   protected List<String> b(rz $$0) {
+      Set<String> $$1 = Sets.newHashSet($$0.e());
+      List<String> $$2 = Lists.newArrayList();
+      List<String> $$3 = a.get(this.a());
+      if ($$3 != null) {
+         for (String $$4 : $$3) {
+            if ($$1.remove($$4)) {
+               $$2.add($$4);
+            }
+         }
+
+         if (!$$1.isEmpty()) {
+            $$1.stream().sorted().forEach($$2::add);
+         }
       } else {
-         String $$1 = sl.b($$0);
-         String $$2 = $$1.substring(0, 1);
-         ui $$3 = ui.b($$1.substring(1, $$1.length() - 1)).a(d);
-         return ui.b($$2).b($$3).f($$2);
+         $$2.addAll($$1);
+         Collections.sort($$2);
       }
+
+      return $$2;
+   }
+
+   public String a() {
+      return String.join(".", this.o);
+   }
+
+   protected static String a(String $$0) {
+      return c.matcher($$0).matches() ? $$0 : su.b($$0);
    }
 
    @Override
-   public void a(rv $$0) {
-      this.t = uh.a;
+   public void a(sb $$0) {
    }
 }

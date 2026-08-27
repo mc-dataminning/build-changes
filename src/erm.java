@@ -1,166 +1,53 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class erm implements Comparable<erm> {
-   private static final Map<String, erm> h = Maps.newHashMap();
-   private static final Map<elc.a, erm> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final elc.a m;
-   private final String n;
-   private elc.a o;
-   private boolean p;
-   private int q;
+public class erm extends err {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ur c = ur.c("mco.configure.world.closing");
+   private final eor d;
+   private final eqa e;
 
-   public static void a(elc.a $$0) {
-      erm $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public erm(eor $$0, eqa $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static void a(elc.a $$0, boolean $$1) {
-      erm $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
+   @Override
+   public void run() {
+      eoa $$0 = eoa.a();
 
-   public static void a() {
-      for (erm $$0 : h.values()) {
-         if ($$0.o.a() == elc.b.a && $$0.o.b() != elc.bv.b()) {
-            $$0.a(elc.a(ero.O().aM().i(), $$0.o.b()));
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.e();
+               this.d.e = eor.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (epo var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
          }
       }
    }
 
-   public static void b() {
-      for (erm $$0 : h.values()) {
-         $$0.n();
-      }
-   }
-
-   public static void c() {
-      for (erm $$0 : h.values()) {
-         if ($$0 instanceof esc $$1) {
-            $$1.n();
-         }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (erm $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public erm(String $$0, int $$1, String $$2) {
-      this($$0, elc.b.a, $$1, $$2);
-   }
-
-   public erm(String $$0, elc.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
-      } else {
-         this.q--;
-         return true;
-      }
-   }
-
-   private void n() {
-      this.q = 0;
-      this.a(false);
-   }
-
-   public String h() {
-      return this.l;
-   }
-
-   public elc.a i() {
-      return this.m;
-   }
-
-   public void b(elc.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(erm $$0) {
-      return this.n.equals($$0.n) ? gbg.a(this.l).compareTo(gbg.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<ui> a(String $$0) {
-      erm $$1 = h.get($$0);
-      return $$1 == null ? () -> ui.c($$0) : $$1::k;
-   }
-
-   public boolean b(erm $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(elc.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == elc.bv.b() ? this.o.a() == elc.b.b && this.o.b() == $$1 : this.o.a() == elc.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == elc.b.c && this.o.b() == $$0;
-   }
-
-   public ui k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
+   @Override
+   public ur a() {
+      return c;
    }
 }

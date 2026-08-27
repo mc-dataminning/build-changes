@@ -1,5 +1,14 @@
-import javax.annotation.Nullable;
+public enum eso {
+   a,
+   b,
+   c,
+   d;
 
-public interface eso {
-   int getColor(dgb var1, @Nullable cqc var2, @Nullable ht var3, int var4);
+   public boolean a() {
+      return this == b;
+   }
+
+   public boolean b() {
+      return this == c || this == d;
+   }
 }

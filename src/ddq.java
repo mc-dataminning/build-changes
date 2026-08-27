@@ -1,108 +1,78 @@
-public class ddq extends dfa {
-   private il<ckj> c = il.a(27, ckj.b);
-   private final dek f = new dek() {
-      @Override
-      protected void a(cqz $$0, ht $$1, dgb $$2) {
-         ddq.this.a($$2, aqd.bk);
-         ddq.this.a($$2, true);
-      }
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-      @Override
-      protected void b(cqz $$0, ht $$1, dgb $$2) {
-         ddq.this.a($$2, aqd.bj);
-         ddq.this.a($$2, false);
-      }
+public class ddq extends ctp {
+   public static final MapCodec<ddq> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbu.a.b.fieldOf("kind").forGetter(ctp::b), t()).apply($$0, ddq::new));
+   public static final dhq d = cyo.aE;
+   private static final Map<hx, ekb> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         hx.c,
+         cut.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         hx.d,
+         cut.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         hx.f,
+         cut.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         hx.e,
+         cut.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
+   );
 
-      @Override
-      protected void a(cqz $$0, ht $$1, dgb $$2, int $$3, int $$4) {
-      }
+   @Override
+   public MapCodec<? extends ddq> a() {
+      return c;
+   }
 
-      @Override
-      protected boolean a(ccx $$0) {
-         if ($$0.bS instanceof cfw) {
-            bhu $$1 = ((cfw)$$0.bS).l();
-            return $$1 == ddq.this;
-         } else {
-            return false;
+   protected ddq(dbu.a $$0, dgv.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(d, hx.c));
+   }
+
+   @Override
+   public String h() {
+      return this.k().a();
+   }
+
+   @Override
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return b.get($$0.c(d));
+   }
+
+   @Override
+   public dgw a(cnj $$0) {
+      dgw $$1 = super.a($$0);
+      cqy $$2 = $$0.q();
+      ht $$3 = $$0.a();
+      hx[] $$4 = $$0.f();
+
+      for (hx $$5 : $$4) {
+         if ($$5.o().d()) {
+            hx $$6 = $$5.g();
+            $$1 = $$1.a(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
          }
       }
-   };
 
-   public ddq(ht $$0, dgb $$1) {
-      super(ddz.A, $$0, $$1);
+      return null;
    }
 
    @Override
-   protected void b(rt $$0) {
-      super.b($$0);
-      if (!this.e($$0)) {
-         bhv.a($$0, this.c);
-      }
+   public dgw a(dgw $$0, dbf $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   public void a(rt $$0) {
+   public dgw a(dgw $$0, czp $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
       super.a($$0);
-      this.c = il.a(this.b(), ckj.b);
-      if (!this.d($$0)) {
-         bhv.b($$0, this.c);
-      }
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected il<ckj> f() {
-      return this.c;
-   }
-
-   @Override
-   protected void a(il<ckj> $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   protected ui g() {
-      return ui.c("container.barrel");
-   }
-
-   @Override
-   protected cfp a(int $$0, ccw $$1) {
-      return cfw.a($$0, $$1, this);
-   }
-
-   @Override
-   public void d_(ccx $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.f.a($$0, this.k(), this.p(), this.q());
-      }
-   }
-
-   @Override
-   public void c(ccx $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.f.b($$0, this.k(), this.p(), this.q());
-      }
-   }
-
-   public void i() {
-      if (!this.q) {
-         this.f.c(this.k(), this.p(), this.q());
-      }
-   }
-
-   void a(dgb $$0, boolean $$1) {
-      this.o.a(this.p(), $$0.a(ctg.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dgb $$0, aqc $$1) {
-      iw $$2 = $$0.c(ctg.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, aqe.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
+      $$0.a(d);
    }
 }

@@ -1,57 +1,72 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class wj implements wb<we> {
-   public static final int a = 40;
-   private final String b;
-   private final String c;
-   private final boolean d;
-   @Nullable
-   private final ui e;
-
-   public wj(String $$0, String $$1, boolean $$2, @Nullable ui $$3) {
-      if ($$1.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + $$1.length() + ")");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
+public interface wj {
+   int a = 4096;
+   wj b = new wj() {
+      @Override
+      public void a(wk<?> $$0, Consumer<wk<?>> $$1) {
+         $$1.accept($$0);
       }
+
+      @Nullable
+      @Override
+      public wj.a a(wk<?> $$0) {
+         return null;
+      }
+   };
+
+   static <T extends ua, P extends wi<T>> wj a(final Class<P> $$0, final Function<Iterable<wk<T>>, P> $$1, final wh<T> $$2) {
+      return new wj() {
+         @Override
+         public void a(wk<?> $$0x, Consumer<wk<?>> $$1x) {
+            if ($$0.getClass() == $$0) {
+               P $$2 = (P)$$0;
+               $$1.accept($$2);
+               $$2.a().forEach($$1);
+               $$1.accept($$2);
+            } else {
+               $$1.accept($$0);
+            }
+         }
+
+         @Nullable
+         @Override
+         public wj.a a(wk<?> $$0x) {
+            return $$0 == $$2 ? new wj.a() {
+               private final List<wk<T>> b = new ArrayList<>();
+
+               @Nullable
+               @Override
+               public wk<?> a(wk<?> $$0x) {
+                  if ($$0 == $$2) {
+                     return $$1.apply(this.b);
+                  } else if (this.b.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  } else {
+                     this.b.add((wk<T>)$$0);
+                     return null;
+                  }
+               }
+            } : null;
+         }
+      };
    }
 
-   public wj(tl $$0) {
-      this.b = $$0.s();
-      this.c = $$0.d(40);
-      this.d = $$0.readBoolean();
-      this.e = $$0.c(tl::m);
-   }
-
-   @Override
-   public void a(tl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, tl::a);
-   }
-
-   public void a(we $$0) {
-      $$0.a(this);
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public boolean e() {
-      return this.d;
-   }
+   void a(wk<?> var1, Consumer<wk<?>> var2);
 
    @Nullable
-   public ui f() {
-      return this.e;
+   wj.a a(wk<?> var1);
+
+   public interface a {
+      @Nullable
+      wk<?> a(wk<?> var1);
+   }
+
+   public interface b {
+      wj c();
    }
 }

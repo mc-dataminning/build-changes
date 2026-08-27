@@ -1,174 +1,281 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dgg {
-   private final Predicate<dgf>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+public class dgg extends dgh {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 200;
+   private static final int c = 40;
+   private static final int d = 2400;
+   private static final int e = 1;
+   private static final int f = 10;
+   private long g;
+   private int h;
+   @Nullable
+   private ht i;
+   private boolean j;
 
-   public dgg(Predicate<dgf>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
+   public dgg(ht $$0, dgw $$1) {
+      super(det.v, $$0, $$1);
+   }
+
+   @Override
+   protected void b(rz $$0) {
+      super.b($$0);
+      $$0.a("Age", this.g);
+      if (this.i != null) {
+         $$0.a("ExitPortal", so.a(this.i));
+      }
+
+      if (this.j) {
+         $$0.a("ExactTeleport", true);
+      }
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      this.g = $$0.i("Age");
+      if ($$0.b("ExitPortal", 10)) {
+         ht $$1 = so.b($$0.p("ExitPortal"));
+         if (crs.k($$1)) {
+            this.i = $$1;
          }
+      }
+
+      this.j = $$0.q("ExactTeleport");
+   }
+
+   public static void a(crs $$0, ht $$1, dgw $$2, dgg $$3) {
+      $$3.g++;
+      if ($$3.d()) {
+         $$3.h--;
+      }
+   }
+
+   public static void b(crs $$0, ht $$1, dgw $$2, dgg $$3) {
+      boolean $$4 = $$3.c();
+      boolean $$5 = $$3.d();
+      $$3.g++;
+      if ($$5) {
+         $$3.h--;
       } else {
-         this.c = 0;
-         this.d = 0;
-      }
-   }
+         List<bki> $$6 = $$0.a(bki.class, new ejd($$1), dgg::a);
+         if (!$$6.isEmpty()) {
+            a($$0, $$1, $$2, $$6.get($$0.z.a($$6.size())), $$3);
+         }
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public Predicate<dgf>[][][] d() {
-      return this.a;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public dgg.b a(crc $$0, ht $$1, hx $$2, hx $$3) {
-      LoadingCache<ht, dgf> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   private dgg.b a(ht $$0, hx $$1, hx $$2, LoadingCache<ht, dgf> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dgf)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
+         if ($$3.g % 2400L == 0L) {
+            c($$0, $$1, $$2, $$3);
          }
       }
 
-      return new dgg.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
+      if ($$4 != $$3.c() || $$5 != $$3.d()) {
+         a($$0, $$1, $$2);
+      }
    }
 
-   @Nullable
-   public dgg.b a(crc $$0, ht $$1) {
-      LoadingCache<ht, dgf> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+   public static boolean a(bki $$0) {
+      return bkl.f.test($$0) && !$$0.cV().au();
+   }
 
-      for (ht $$4 : ht.a($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (hx $$5 : hx.values()) {
-            for (hx $$6 : hx.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dgg.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
+   public boolean c() {
+      return this.g < 200L;
+   }
+
+   public boolean d() {
+      return this.h > 0;
+   }
+
+   public float a(float $$0) {
+      return ati.a(((float)this.g + $$0) / 200.0F, 0.0F, 1.0F);
+   }
+
+   public float b(float $$0) {
+      return 1.0F - ati.a(((float)this.h - $$0) / 40.0F, 0.0F, 1.0F);
+   }
+
+   public yk f() {
+      return yk.a(this);
+   }
+
+   @Override
+   public rz av_() {
+      return this.o();
+   }
+
+   private static void c(crs $$0, ht $$1, dgw $$2, dgg $$3) {
+      if (!$$0.B) {
+         $$3.h = 40;
+         $$0.a($$1, $$2.b(), 1, 0);
+         a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.h = 40;
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public static void a(crs $$0, ht $$1, dgw $$2, bki $$3, dgg $$4) {
+      if ($$0 instanceof ama && !$$4.d()) {
+         ama $$5 = (ama)$$0;
+         $$4.h = 100;
+         if ($$4.i == null && $$0.ac() == crs.j) {
+            ht $$6 = a($$5, $$1);
+            $$6 = $$6.b(10);
+            a.debug("Creating portal at {}", $$6);
+            a($$5, $$6, drm.a($$1, false));
+            $$4.i = $$6;
+         }
+
+         if ($$4.i != null) {
+            ht $$7 = $$4.j ? $$4.i : a($$0, $$4.i);
+            bki $$9;
+            if ($$3 instanceof cen) {
+               bki $$8 = ((cen)$$3).v();
+               if ($$8 instanceof amb) {
+                  al.d.a((amb)$$8, $$2);
+               }
+
+               if ($$8 != null) {
+                  $$9 = $$8;
+                  $$3.ak();
+               } else {
+                  $$9 = $$3;
+               }
+            } else {
+               $$9 = $$3.cV();
+            }
+
+            $$9.as();
+            $$9.n((double)$$7.u() + 0.5, (double)$$7.v(), (double)$$7.w() + 0.5);
+         }
+
+         c($$0, $$1, $$2, $$4);
+      }
+   }
+
+   private static ht a(crs $$0, ht $$1) {
+      ht $$2 = a($$0, $$1.b(0, 2, 0), 5, false);
+      a.debug("Best exit position for portal at {} is {}", $$1, $$2);
+      return $$2.c();
+   }
+
+   private static ht a(ama $$0, ht $$1) {
+      eji $$2 = b($$0, $$1);
+      djd $$3 = a((crs)$$0, $$2);
+      ht $$4 = a($$3);
+      if ($$4 == null) {
+         ht $$5 = ht.a($$2.c + 0.5, 75.0, $$2.e + 0.5);
+         a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
+         $$0.H_().c(jz.au).flatMap($$0x -> $$0x.b(pt.e)).ifPresent($$2x -> ((dow)$$2x.a()).a($$0, $$0.k().g(), ato.a($$5.a()), $$5));
+         $$4 = $$5;
+      } else {
+         a.debug("Found suitable block to teleport to: {}", $$4);
+      }
+
+      return a($$0, $$4, 16, true);
+   }
+
+   private static eji b(ama $$0, ht $$1) {
+      eji $$2 = new eji((double)$$1.u(), 0.0, (double)$$1.w()).d();
+      int $$3 = 1024;
+      eji $$4 = $$2.a(1024.0);
+
+      for (int $$5 = 16; !a($$0, $$4) && $$5-- > 0; $$4 = $$4.e($$2.a(-16.0))) {
+         a.debug("Skipping backwards past nonempty chunk at {}", $$4);
+      }
+
+      for (int var6 = 16; a($$0, $$4) && var6-- > 0; $$4 = $$4.e($$2.a(16.0))) {
+         a.debug("Skipping forward past empty chunk at {}", $$4);
+      }
+
+      a.debug("Found chunk at {}", $$4);
+      return $$4;
+   }
+
+   private static boolean a(ama $$0, eji $$1) {
+      return a((crs)$$0, $$1).a() == -1;
+   }
+
+   private static ht a(cqy $$0, ht $$1, int $$2, boolean $$3) {
+      ht $$4 = null;
+
+      for (int $$5 = -$$2; $$5 <= $$2; $$5++) {
+         for (int $$6 = -$$2; $$6 <= $$2; $$6++) {
+            if ($$5 != 0 || $$6 != 0 || $$3) {
+               for (int $$7 = $$0.aj() - 1; $$7 > ($$4 == null ? $$0.I_() : $$4.v()); $$7--) {
+                  ht $$8 = new ht($$1.u() + $$5, $$7, $$1.w() + $$6);
+                  dgw $$9 = $$0.a_($$8);
+                  if ($$9.r($$0, $$8) && ($$3 || !$$9.a(cuv.F))) {
+                     $$4 = $$8;
+                     break;
                   }
                }
             }
          }
       }
 
-      return null;
+      return $$4 == null ? $$1 : $$4;
    }
 
-   public static LoadingCache<ht, dgf> a(crc $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dgg.a($$0, $$1));
+   private static djd a(crs $$0, eji $$1) {
+      return $$0.d(ati.a($$1.c / 16.0), ati.a($$1.e / 16.0));
    }
 
-   protected static ht a(ht $$0, hx $$1, hx $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         iw $$6 = new iw($$1.j(), $$1.k(), $$1.l());
-         iw $$7 = new iw($$2.j(), $$2.k(), $$2.l());
-         iw $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
+   @Nullable
+   private static ht a(djd $$0) {
+      cqz $$1 = $$0.f();
+      ht $$2 = new ht($$1.d(), 30, $$1.e());
+      int $$3 = $$0.b() + 16 - 1;
+      ht $$4 = new ht($$1.f(), $$3, $$1.g());
+      ht $$5 = null;
+      double $$6 = 0.0;
+
+      for (ht $$7 : ht.a($$2, $$4)) {
+         dgw $$8 = $$0.a_($$7);
+         ht $$9 = $$7.c();
+         ht $$10 = $$7.b(2);
+         if ($$8.a(cuv.fz) && !$$0.a_($$9).r($$0, $$9) && !$$0.a_($$10).r($$0, $$10)) {
+            double $$11 = $$7.c(0.0, 0.0, 0.0);
+            if ($$5 == null || $$11 < $$6) {
+               $$5 = $$7;
+               $$6 = $$11;
+            }
+         }
       }
+
+      return $$5;
    }
 
-   static class a extends CacheLoader<ht, dgf> {
-      private final crc a;
-      private final boolean b;
-
-      public a(crc $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dgf a(ht $$0) {
-         return new dgf(this.a, $$0, this.b);
-      }
+   private static void a(ama $$0, ht $$1, drm $$2) {
+      dpj.L.a($$2, $$0, $$0.k().g(), ato.a(), $$1);
    }
 
-   public static class b {
-      private final ht a;
-      private final hx b;
-      private final hx c;
-      private final LoadingCache<ht, dgf> d;
-      private final int e;
-      private final int f;
-      private final int g;
+   @Override
+   public boolean a(hx $$0) {
+      return cut.a(this.q(), this.o, this.p(), $$0, this.p().a($$0));
+   }
 
-      public b(ht $$0, hx $$1, hx $$2, LoadingCache<ht, dgf> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   public int g() {
+      int $$0 = 0;
+
+      for (hx $$1 : hx.values()) {
+         $$0 += this.a($$1) ? 1 : 0;
       }
 
-      public ht a() {
-         return this.a;
-      }
+      return $$0;
+   }
 
-      public hx b() {
-         return this.b;
-      }
-
-      public hx c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dgf a(int $$0, int $$1, int $$2) {
-         return (dgf)this.d.getUnchecked(dgg.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+   public void a(ht $$0, boolean $$1) {
+      this.j = $$1;
+      this.i = $$0;
    }
 }

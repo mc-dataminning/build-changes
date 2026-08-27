@@ -1,31 +1,25 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dnk extends dmh {
-   private final ip a;
-   private final dlo b;
-   private final dly c;
-   private final dmb.o d;
+class dnk extends dno {
+   public static final Codec<dnk> a = a(dnk::new);
 
-   public dnk(dln $$0, ip $$1, crb $$2, dlo $$3, dly $$4, dmb.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public dnk(List<dnm> $$0) {
+      super($$0);
    }
 
-   @Deprecated
-   public Optional<dgb> a(Function<ht, ib<crx>> $$0, dhx $$1, ht $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public boolean a(csm $$0, ht $$1) {
+      for (dnm $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   @Deprecated
-   public ip c() {
-      return this.a;
-   }
-
-   public dly d() {
-      return this.c;
+   @Override
+   public dnn<?> a() {
+      return dnn.j;
    }
 }

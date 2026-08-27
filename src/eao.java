@@ -1,166 +1,36 @@
-public class eao {
-   private static final int b = 16;
-   public static final int a = Integer.MIN_VALUE;
-   private final int c;
-   private final arp d;
-   private final ht.a e = new ht.a();
-   private final ht.a f = new ht.a();
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public eao(crb $$0) {
-      this.c = $$0.I_() - 1;
-      int $$1 = $$0.aj();
-      int $$2 = asy.e($$1 - this.c + 1);
-      this.d = new atl($$2, 256);
+public class eao extends eas {
+   public static final Codec<eao> a = eak.b.listOf().fieldOf("rules").xmap(eao::new, $$0 -> $$0.b).codec();
+   private final ImmutableList<eak> b;
+
+   public eao(List<? extends eak> $$0) {
+      this.b = ImmutableList.copyOf($$0);
    }
 
-   public void a(dhx $$0) {
-      int $$1 = $$0.a();
-      if ($$1 == -1) {
-         this.a(this.c);
-      } else {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            for (int $$3 = 0; $$3 < 16; $$3++) {
-               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
-               this.b(c($$3, $$2), $$4);
-            }
-         }
-      }
-   }
+   @Nullable
+   @Override
+   public eav.c a(crv $$0, ht $$1, ht $$2, eav.c $$3, eav.c $$4, ear $$5) {
+      ato $$6 = ato.a(ati.a($$4.a()));
+      dgw $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
 
-   private int a(dhx $$0, int $$1, int $$2, int $$3) {
-      int $$4 = iu.c($$0.g($$1) + 1);
-      ht.a $$5 = this.e.d($$2, $$4, $$3);
-      ht.a $$6 = this.f.a($$5, hx.a);
-      dgb $$7 = cuc.a.o();
-
-      for (int $$8 = $$1; $$8 >= 0; $$8--) {
-         dij $$9 = $$0.b($$8);
-         if ($$9.c()) {
-            $$7 = cuc.a.o();
-            int $$10 = $$0.g($$8);
-            $$5.q(iu.c($$10));
-            $$6.q($$5.v() - 1);
-         } else {
-            for (int $$11 = 15; $$11 >= 0; $$11--) {
-               dgb $$12 = $$9.a($$2, $$11, $$3);
-               if (a($$0, $$5, $$7, $$6, $$12)) {
-                  return $$5.v();
-               }
-
-               $$7 = $$12;
-               $$5.g($$6);
-               $$6.c(hx.a);
-            }
+      while (var9.hasNext()) {
+         eak $$8 = (eak)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new eav.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
          }
       }
 
-      return this.c;
+      return $$4;
    }
 
-   public boolean a(cqf $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 + 1;
-      int $$5 = c($$1, $$3);
-      int $$6 = this.b($$5);
-      if ($$4 < $$6) {
-         return false;
-      } else {
-         ht $$7 = this.e.d($$1, $$2 + 1, $$3);
-         dgb $$8 = $$0.a_($$7);
-         ht $$9 = this.f.d($$1, $$2, $$3);
-         dgb $$10 = $$0.a_($$9);
-         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
-            return true;
-         } else {
-            ht $$11 = this.e.d($$1, $$2 - 1, $$3);
-            dgb $$12 = $$0.a_($$11);
-            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
-         }
-      }
-   }
-
-   private boolean a(cqf $$0, int $$1, int $$2, ht $$3, dgb $$4, ht $$5, dgb $$6) {
-      int $$7 = $$3.v();
-      if (a($$0, $$3, $$4, $$5, $$6)) {
-         if ($$7 > $$2) {
-            this.b($$1, $$7);
-            return true;
-         }
-      } else if ($$7 == $$2) {
-         this.b($$1, this.a($$0, $$5, $$6));
-         return true;
-      }
-
-      return false;
-   }
-
-   private int a(cqf $$0, ht $$1, dgb $$2) {
-      ht.a $$3 = this.e.g($$1);
-      ht.a $$4 = this.f.a($$1, hx.a);
-      dgb $$5 = $$2;
-
-      while ($$4.v() >= this.c) {
-         dgb $$6 = $$0.a_($$4);
-         if (a($$0, $$3, $$5, $$4, $$6)) {
-            return $$3.v();
-         }
-
-         $$5 = $$6;
-         $$3.g($$4);
-         $$4.c(hx.a);
-      }
-
-      return this.c;
-   }
-
-   private static boolean a(cqf $$0, ht $$1, dgb $$2, ht $$3, dgb $$4) {
-      if ($$4.b($$0, $$3) != 0) {
-         return true;
-      } else {
-         eiy $$5 = eav.a($$0, $$1, $$2, hx.a);
-         eiy $$6 = eav.a($$0, $$3, $$4, hx.b);
-         return eiv.b($$5, $$6);
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = this.b(c($$0, $$1));
-      return this.c($$2);
-   }
-
-   public int a() {
-      int $$0 = Integer.MIN_VALUE;
-
-      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
-         int $$2 = this.d.a($$1);
-         if ($$2 > $$0) {
-            $$0 = $$2;
-         }
-      }
-
-      return this.c($$0 + this.c);
-   }
-
-   private void a(int $$0) {
-      int $$1 = $$0 - this.c;
-
-      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
-         this.d.b($$2, $$1);
-      }
-   }
-
-   private void b(int $$0, int $$1) {
-      this.d.b($$0, $$1 - this.c);
-   }
-
-   private int b(int $$0) {
-      return this.d.a($$0) + this.c;
-   }
-
-   private int c(int $$0) {
-      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
+   @Override
+   protected eau<?> a() {
+      return eau.i;
    }
 }

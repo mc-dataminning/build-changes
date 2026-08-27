@@ -1,61 +1,274 @@
-public class ffg extends fgt {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final fiw e;
-   private final fiw f;
-   private final fiw g;
-   private final fiw h;
-   private final fiw i;
-   private final fiw j;
-   private final fiw k;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalLong;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public ffg(fiw $$0) {
-      super(fpj::c);
+public class ffg {
+   private static final ur a = ur.c("selectWorld.newWorld");
+   private final List<Consumer<ffg>> b = new ArrayList<>();
+   private String c = a.getString();
+   private ffg.a d = ffg.a.a;
+   private bin e = bin.c;
+   @Nullable
+   private Boolean f;
+   private String g;
+   private boolean h;
+   private boolean i;
+   private final Path j;
+   private String k;
+   private fff l;
+   private ffg.b m;
+   private final List<ffg.b> n = new ArrayList<>();
+   private final List<ffg.b> o = new ArrayList<>();
+   private cro p = new cro();
+
+   public ffg(Path $$0, fff $$1, Optional<agf<dwk>> $$2, OptionalLong $$3) {
+      this.j = $$0;
+      this.l = $$1;
+      this.m = new ffg.b(a($$1, $$2).orElse(null));
+      this.r();
+      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
+      this.h = $$1.b().c();
+      this.i = $$1.b().d();
+      this.k = this.c(this.c);
+   }
+
+   public void a(Consumer<ffg> $$0) {
+      this.b.add($$0);
+   }
+
+   public void a() {
+      boolean $$0 = this.j();
+      if ($$0 != this.l.b().d()) {
+         this.l = this.l.a($$1x -> $$1x.a($$0));
+      }
+
+      boolean $$1 = this.i();
+      if ($$1 != this.l.b().c()) {
+         this.l = this.l.a($$1x -> $$1x.b($$1));
+      }
+
+      for (Consumer<ffg> $$2 : this.b) {
+         $$2.accept(this);
+      }
+   }
+
+   public void a(String $$0) {
+      this.c = $$0;
+      this.k = this.c($$0);
+      this.a();
+   }
+
+   private String c(String $$0) {
+      String $$1 = $$0.trim();
+
+      try {
+         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
+      } catch (Exception var5) {
+         try {
+            return v.a(this.j, "World", "");
+         } catch (IOException var4) {
+            throw new RuntimeException("Could not create save folder", var4);
+         }
+      }
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.k;
+   }
+
+   public void a(ffg.a $$0) {
+      this.d = $$0;
+      this.a();
+   }
+
+   public ffg.a d() {
+      return this.l() ? ffg.a.d : this.d;
+   }
+
+   public void a(bin $$0) {
       this.e = $$0;
-      this.f = $$0.b("left_lid");
-      this.g = $$0.b("right_lid");
-      this.h = $$0.b("left_pages");
-      this.i = $$0.b("right_pages");
-      this.j = $$0.b("flip_page1");
-      this.k = $$0.b("flip_page2");
+      this.a();
    }
 
-   public static fjc a() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      $$1.a("left_lid", fjb.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fiy.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", fjb.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fiy.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", fjb.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), fiy.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", fjb.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), fiy.a);
-      $$1.a("right_pages", fjb.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), fiy.a);
-      fjb $$2 = fjb.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, fiy.a);
-      $$1.a("flip_page2", $$2, fiy.a);
-      return fjc.a($$0, 64, 32);
+   public bin e() {
+      return this.f() ? bin.d : this.e;
    }
 
-   @Override
-   public void a(emh $$0, eml $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public boolean f() {
+      return this.d() == ffg.a.b;
    }
 
-   public void b(emh $$0, eml $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(boolean $$0) {
+      this.f = $$0;
+      this.a();
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (asy.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.f.f = (float) Math.PI + $$4;
-      this.g.f = -$$4;
-      this.h.f = $$4;
-      this.i.f = -$$4;
-      this.j.f = $$4 - $$4 * 2.0F * $$1;
-      this.k.f = $$4 - $$4 * 2.0F * $$2;
-      this.h.b = asy.a($$4);
-      this.i.b = asy.a($$4);
-      this.j.b = asy.a($$4);
-      this.k.b = asy.a($$4);
+   public boolean g() {
+      if (this.l()) {
+         return true;
+      } else if (this.f()) {
+         return false;
+      } else {
+         return this.f == null ? this.d() == ffg.a.c : this.f;
+      }
+   }
+
+   public void b(String $$0) {
+      this.g = $$0;
+      this.l = this.l.a($$0x -> $$0x.a(dnd.a(this.h())));
+      this.a();
+   }
+
+   public String h() {
+      return this.g;
+   }
+
+   public void b(boolean $$0) {
+      this.h = $$0;
+      this.a();
+   }
+
+   public boolean i() {
+      return this.l() ? false : this.h;
+   }
+
+   public void c(boolean $$0) {
+      this.i = $$0;
+      this.a();
+   }
+
+   public boolean j() {
+      return !this.l() && !this.f() ? this.i : false;
+   }
+
+   public void a(fff $$0) {
+      this.l = $$0;
+      this.r();
+      this.a();
+   }
+
+   public fff k() {
+      return this.l;
+   }
+
+   public void a(fff.a $$0) {
+      this.l = this.l.a($$0);
+      this.a();
+   }
+
+   protected boolean a(csl $$0) {
+      csl $$1 = this.l.g();
+      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
+         this.l = new fff(this.l.b(), this.l.c(), this.l.d(), this.l.e(), this.l.f(), $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean l() {
+      return this.l.d().c();
+   }
+
+   public void a(ffg.b $$0) {
+      this.m = $$0;
+      ib<dwk> $$1 = $$0.c();
+      if ($$1 != null) {
+         this.a(($$1x, $$2) -> $$1.a().a());
+      }
+   }
+
+   public ffg.b m() {
+      return this.m;
+   }
+
+   @Nullable
+   public ffc n() {
+      ib<dwk> $$0 = this.m().c();
+      return $$0 != null ? ffc.a.get($$0.e()) : null;
+   }
+
+   public List<ffg.b> o() {
+      return this.n;
+   }
+
+   public List<ffg.b> p() {
+      return this.o;
+   }
+
+   private void r() {
+      io<dwk> $$0 = this.k().a().d(jz.aH);
+      this.n.clear();
+      this.n.addAll(a($$0, arv.a).orElseGet(() -> $$0.h().map(ffg.b::new).toList()));
+      this.o.clear();
+      this.o.addAll(a($$0, arv.b).orElse(this.n));
+      ib<dwk> $$1 = this.m.c();
+      if ($$1 != null) {
+         this.m = a(this.k(), $$1.e()).map(ffg.b::new).orElse(this.n.get(0));
+      }
+   }
+
+   private static Optional<ib<dwk>> a(fff $$0, Optional<agf<dwk>> $$1) {
+      return $$1.flatMap($$1x -> $$0.a().d(jz.aH).b($$1x));
+   }
+
+   private static Optional<List<ffg.b>> a(io<dwk> $$0, arr<dwk> $$1) {
+      return $$0.b($$1).map($$0x -> $$0x.a().map(ffg.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
+   }
+
+   public void a(cro $$0) {
+      this.p = $$0;
+      this.a();
+   }
+
+   public cro q() {
+      return this.p;
+   }
+
+   public static enum a {
+      a("survival", crp.a),
+      b("hardcore", crp.a),
+      c("creative", crp.b),
+      d("spectator", crp.d);
+
+      public final crp e;
+      public final ur f;
+      private final ur g;
+
+      private a(String $$0, crp $$1) {
+         this.e = $$1;
+         this.f = ur.c("selectWorld.gameMode." + $$0);
+         this.g = ur.c("selectWorld.gameMode." + $$0 + ".info");
+      }
+
+      public ur a() {
+         return this.g;
+      }
+   }
+
+   public static record b(@Nullable ib<dwk> a) {
+      private static final ur b = ur.c("generator.custom");
+
+      public ur a() {
+         return Optional.ofNullable(this.a).flatMap(ib::e).map($$0 -> ur.c($$0.a().f("generator"))).orElse(b);
+      }
+
+      public boolean b() {
+         return Optional.ofNullable(this.a).flatMap(ib::e).filter($$0 -> $$0.equals(dwl.d)).isPresent();
+      }
+
+      @Nullable
+      public ib<dwk> c() {
+         return this.a;
+      }
    }
 }

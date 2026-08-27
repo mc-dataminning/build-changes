@@ -1,72 +1,39 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.concurrent.Executor;
+public class fzl<T extends bky, M extends fhc<T> & fgd> extends fzs<T, M> {
+   private final fqd a;
 
-public abstract class fzl implements AutoCloseable {
-   public static final int a = -1;
-   protected int b = -1;
-   protected boolean c;
-   protected boolean d;
-
-   public void a(boolean $$0, boolean $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.c = $$0;
-      this.d = $$1;
-      int $$2;
-      int $$3;
-      if ($$0) {
-         $$2 = $$1 ? 9987 : 9729;
-         $$3 = 9729;
-      } else {
-         $$2 = $$1 ? 9986 : 9728;
-         $$3 = 9728;
-      }
-
-      this.c();
-      GlStateManager._texParameter(3553, 10241, $$2);
-      GlStateManager._texParameter(3553, 10240, $$3);
+   public fzl(fxf<T, M> $$0, fqd $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   public int a() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (this.b == -1) {
-         this.b = TextureUtil.generateTextureId();
-      }
+   public void a(enk $$0, fqh $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fm() == bks.b;
+      clb $$11 = $$10 ? $$3.eT() : $$3.eS();
+      clb $$12 = $$10 ? $$3.eS() : $$3.eT();
+      if (!$$11.b() || !$$12.b()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
+         }
 
-      return this.b;
-   }
-
-   public void b() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            if (this.b != -1) {
-               TextureUtil.releaseTextureId(this.b);
-               this.b = -1;
-            }
-         });
-      } else if (this.b != -1) {
-         TextureUtil.releaseTextureId(this.b);
-         this.b = -1;
+         this.a($$3, $$12, cky.c, bks.b, $$0, $$1, $$2);
+         this.a($$3, $$11, cky.b, bks.a, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 
-   public abstract void a(aot var1) throws IOException;
-
-   public void c() {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
-      } else {
-         GlStateManager._bindTexture(this.a());
+   protected void a(bky $$0, clb $$1, cky $$2, bks $$3, enk $$4, fqh $$5, int $$6) {
+      if (!$$1.b()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == bks.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
       }
-   }
-
-   public void a(gab $$0, aot $$1, afw $$2, Executor $$3) {
-      $$0.a($$2, this);
-   }
-
-   @Override
-   public void close() {
    }
 }

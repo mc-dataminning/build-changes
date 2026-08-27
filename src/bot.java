@@ -1,24 +1,29 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bot extends bma<bkl> {
-   private final float c;
+public class bot {
+   private static final int a = 1;
 
-   public bot(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
+   public static bmq<bla> a(float $$0) {
+      return a($$1 -> $$0);
    }
 
-   protected boolean a(alq $$0, bkl $$1) {
-      return $$1.aX() && $$1.b(aqx.a) > $$1.de() || $$1.bl();
-   }
+   public static bmq<bla> a(Function<bky, Float> $$0) {
+      return bqb.a(
+         (Function<bqb.b<bla>, ? extends App<bqb.c<bla>, bqe<bla>>>)($$1 -> $$1.group($$1.a(btz.m), $$1.a(btz.n), $$1.b(btz.o), $$1.a(btz.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bky $$9 = $$1.b($$4);
+                     Optional<bub> $$10 = $$1.a($$5);
+                     if ($$10.isPresent() && $$10.get().a($$9) && bmr.a($$7, $$9, 1)) {
+                        $$2.b();
+                     } else {
+                        $$3.a(new bna($$9, true));
+                        $$2.a(new buc(new bna($$9, false), $$0.apply($$7), 0));
+                     }
 
-   protected boolean a(alq $$0, bkl $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(alq $$0, bkl $$1, long $$2) {
-      if ($$1.ef().i() < this.c) {
-         $$1.K().a();
-      }
+                     return true;
+                  }))
+      );
    }
 }

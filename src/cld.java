@@ -1,60 +1,44 @@
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class cld extends cic {
-   public cld(cua $$0, cke.a $$1) {
-      super($$0, $$1);
+public class cld {
+   public static bir<clb> a(crs $$0, cdm $$1, bip $$2) {
+      $$1.c($$2);
+      return bir.b($$1.b($$2));
    }
 
-   @Nullable
-   @Override
-   public cmr b(cmr $$0) {
-      ht $$1 = $$0.a();
-      cqz $$2 = $$0.q();
-      dgb $$3 = $$2.a_($$1);
-      cua $$4 = this.e();
-      if (!$$3.a($$4)) {
-         return dan.a($$2, $$1) == 7 ? null : $$0;
+   public static clb a(clb $$0, cdm $$1, clb $$2, boolean $$3) {
+      boolean $$4 = $$1.fT().d;
+      if ($$3 && $$4) {
+         if (!$$1.fS().h($$2)) {
+            $$1.fS().e($$2);
+         }
+
+         return $$0;
       } else {
-         hx $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         if (!$$4) {
+            $$0.h(1);
+         }
+
+         if ($$0.b()) {
+            return $$2;
          } else {
-            $$5 = $$0.k() == hx.b ? $$0.g() : hx.b;
+            if (!$$1.fS().e($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
          }
-
-         int $$7 = 0;
-         ht.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.j($$8)) {
-               ccx $$9 = $$0.o();
-               int $$10 = $$2.aj();
-               if ($$9 instanceof alr && $$8.v() >= $$10) {
-                  ((alr)$$9).b(ui.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.e())) {
-               if ($$3.a($$0)) {
-                  return cmr.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
       }
    }
 
-   @Override
-   protected boolean d() {
-      return false;
+   public static clb a(clb $$0, cdm $$1, clb $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(caf $$0, Stream<clb> $$1) {
+      crs $$2 = $$0.dL();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new caf($$2, $$0.dq(), $$0.ds(), $$0.dw(), $$2x)));
+      }
    }
 }

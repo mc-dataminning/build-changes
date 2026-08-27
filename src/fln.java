@@ -1,66 +1,30 @@
-public class fln extends fnq {
-   private final float a;
-   private final float b;
+import com.mojang.serialization.Codec;
+import java.util.function.Supplier;
 
-   fln(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ckj $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-   }
+public interface fln {
+   Codec<fln> a = aub.a(fln.a::values).dispatch(fln::a, fln.a::a);
 
-   @Override
-   public fmu b() {
-      return fmu.a;
-   }
+   fln.a a();
 
-   protected fln(fjr $$0, double $$1, double $$2, double $$3, ckj $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(ero.O().aq().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
+   public static enum a implements aub {
+      a("player", () -> flo.a.b),
+      b("system", () -> flo.b.b);
 
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
+      private final String c;
+      private final Supplier<Codec<? extends fln>> d;
 
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements fmt<jo> {
-      public fmq a(jo $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fln($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
+      private a(String $$0, Supplier<Codec<? extends fln>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
-   }
 
-   public static class b implements fmt<jv> {
-      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fln($$1, $$2, $$3, $$4, new ckj(ckm.qc));
+      private Codec<? extends fln> a() {
+         return this.d.get();
       }
-   }
 
-   public static class c implements fmt<jv> {
-      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fln($$1, $$2, $$3, $$4, new ckj(ckm.pO));
+      @Override
+      public String c() {
+         return this.c;
       }
    }
 }

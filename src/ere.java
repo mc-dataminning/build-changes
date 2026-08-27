@@ -1,29 +1,22 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public enum ere {
+   a(0, dwl.a),
+   b(1, dwl.b),
+   c(2, dwl.c),
+   d(3, dwl.d);
 
-public class ere {
-   private final List<un> a = Lists.newArrayList();
+   private final int e;
+   private final ur f;
 
-   public void a(un $$0) {
-      this.a.add($$0);
+   private ere(int $$0, agf<dwk> $$1) {
+      this.e = $$0;
+      this.f = ur.c($$1.a().f("generator"));
    }
 
-   @Nullable
-   public un a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : un.a(this.a);
-      }
+   public ur a() {
+      return this.f;
    }
 
-   public un b() {
-      un $$0 = this.a();
-      return $$0 != null ? $$0 : un.b;
-   }
-
-   public void c() {
-      this.a.clear();
+   public int b() {
+      return this.e;
    }
 }

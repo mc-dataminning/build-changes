@@ -1,65 +1,57 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
 
-public interface blb {
-   blb b = new blb() {
-      @Override
-      public ckj a() {
-         return ckj.b;
-      }
+public enum blb implements aub {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
 
-      @Override
-      public boolean a(ckj $$0) {
-         return false;
-      }
-   };
+   public static final Codec<blb> i = aub.a(blb::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
 
-   static blb a(final bhu $$0, final int $$1, final Predicate<ckj> $$2) {
-      return new blb() {
-         @Override
-         public ckj a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(ckj $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
+   private blb(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
    }
 
-   static blb a(bhu $$0, int $$1) {
-      return a($$0, $$1, $$0x -> true);
+   public String a() {
+      return this.m;
    }
 
-   static blb a(final bkj $$0, final bjy $$1, final Predicate<ckj> $$2) {
-      return new blb() {
-         @Override
-         public ckj a() {
-            return $$0.c($$1);
-         }
-
-         @Override
-         public boolean a(ckj $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
+   @Override
+   public String c() {
+      return this.m;
    }
 
-   static blb a(bkj $$0, bjy $$1) {
-      return a($$0, $$1, $$0x -> true);
+   public int b() {
+      return this.j;
    }
 
-   ckj a();
+   public boolean d() {
+      return this.k;
+   }
 
-   boolean a(ckj var1);
+   public boolean e() {
+      return this.l;
+   }
+
+   public int f() {
+      return this.o;
+   }
+
+   public int g() {
+      return 32;
+   }
 }

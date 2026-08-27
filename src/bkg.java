@@ -1,3 +1,6 @@
+import javax.annotation.Nullable;
+
 public interface bkg {
-   boolean a();
+   @Nullable
+   bky T_();
 }

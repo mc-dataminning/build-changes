@@ -1,112 +1,26 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class dxj {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<ib<dxj>>> d = new MutableObject();
-   public static final Codec<dxj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               asg.a(d::getValue).fieldOf("fallback").forGetter(dxj::a),
-               Codec.mapPair(dxh.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dxj::new)
-   );
-   public static final Codec<ib<dxj>> b = ac.a(afs.a(jz.aD, a), d::setValue);
-   private final List<Pair<dxh, Integer>> e;
-   private final ObjectArrayList<dxh> f;
-   private final ib<dxj> g;
-   private int h = Integer.MIN_VALUE;
+@FunctionalInterface
+public interface dxj<C extends drn> {
+   Optional<dxi<C>> createGenerator(dxj.a<C> var1);
 
-   public dxj(ib<dxj> $$0, List<Pair<dxh, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
-
-      for (Pair<dxh, Integer> $$2 : $$1) {
-         dxh $$3 = (dxh)$$2.getFirst();
-
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
-         }
-      }
-
-      this.g = $$0;
+   static <C extends drn> dxj<C> simple(Predicate<dxj.a<C>> $$0, dxi<C> $$1) {
+      Optional<dxi<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   public dxj(ib<dxj> $$0, List<Pair<Function<dxj.a, ? extends dxh>, Integer>> $$1, dxj.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<dxj.a, ? extends dxh>, Integer> $$3 : $$1) {
-         dxh $$4 = (dxh)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   static <C extends drn> Predicate<dxj.a<C>> checkForBiomeOnTop(dmf.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   public int a(dzu $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != dxa.b).mapToInt($$1 -> $$1.a($$0, ht.b, dal.a).d()).max().orElse(0);
-      }
-
-      return this.h;
-   }
-
-   public ib<dxj> a() {
-      return this.g;
-   }
-
-   public dxh a(ate $$0) {
-      return (dxh)this.f.get($$0.a(this.f.size()));
-   }
-
-   public List<dxh> b(ate $$0) {
-      return ac.a(this.f, $$0);
-   }
-
-   public int b() {
-      return this.f.size();
-   }
-
-   public static enum a implements atr {
-      a("terrain_matching", ImmutableList.of(new dza(dlk.a.a, -1))),
-      b("rigid", ImmutableList.of());
-
-      public static final atr.a<dxj.a> c = atr.a(dxj.a::values);
-      private final String d;
-      private final ImmutableList<dzq> e;
-
-      private a(String $$0, ImmutableList<dzq> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public static dxj.a a(String $$0) {
-         return c.a($$0);
-      }
-
-      public ImmutableList<dzq> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
+   public static record a<C extends drn>(dit a, csu b, dmt c, long d, cqz e, C f, cru g, Predicate<ib<csq>> h, eaw i, ip j) {
+      public boolean a(dmf.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         ib<csq> $$4 = this.a.c().getNoiseBiome(in.a($$1), in.a($$3), in.a($$2), this.c.b());
+         return this.h.test($$4);
       }
    }
 }

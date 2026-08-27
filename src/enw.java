@@ -1,23 +1,43 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Set;
+import java.util.Locale;
 
-public class enw extends eod implements enx {
-   @SerializedName("seed")
-   private final String a;
-   @SerializedName("worldTemplateId")
-   private final long b;
-   @SerializedName("levelType")
-   private final int c;
-   @SerializedName("generateStructures")
-   private final boolean d;
-   @SerializedName("experiments")
-   private final Set<String> e;
+public enum enw {
+   a,
+   b,
+   c,
+   d;
 
-   public enw(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   private static final int e = 1024;
+
+   public static enw a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
+      } else {
+         try {
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
+         }
+      }
+   }
+
+   public static double a(long $$0, enw $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   }
+
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      }
+   }
+
+   public static String b(long $$0, enw $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

@@ -1,127 +1,151 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.base.Suppliers;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface gbs {
-   Codec<gbs> a = gbs.d.d.dispatch(gbs::a, gbs.d::a);
-   gbs b = new gbs.b();
+public class gbs implements gbl {
+   static final Logger c = LogUtils.getLogger();
+   public static final Codec<gbs> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(agg.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
+               agg.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
+               Codec.unboundedMap(Codec.STRING, agg.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, gbs::new)
+   );
+   private final List<agg> d;
+   private final Map<String, agg> e;
+   private final agg f;
 
-   gbs.d a();
+   private gbs(List<agg> $$0, agg $$1, Map<String, agg> $$2) {
+      this.d = $$0;
+      this.e = $$2;
+      this.f = $$1;
+   }
 
-   public static record a(int d, int e, gbs.a.a f) implements gbs {
-      public static final Codec<gbs.a> c = asg.a(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     asg.j.fieldOf("width").forGetter(gbs.a::b), asg.j.fieldOf("height").forGetter(gbs.a::c), gbs.a.a.g.fieldOf("border").forGetter(gbs.a::d)
-                  )
-                  .apply($$0, gbs.a::new)
-         ),
-         gbs.a::a
-      );
+   @Override
+   public void a(apd $$0, gbl.a $$1) {
+      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
+      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
+      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
 
-      private static DataResult<gbs.a> a(gbs.a $$0) {
-         gbs.a.a $$1 = $$0.d();
-         if ($$1.a() + $$1.c() >= $$0.b()) {
-            return DataResult.error(() -> "Nine-sliced texture has no horizontal center slice: " + $$1.a() + " + " + $$1.c() + " >= " + $$0.b());
+      for (agg $$4 : this.d) {
+         agg $$5 = a.a($$4);
+         Optional<apb> $$6 = $$0.getResource($$5);
+         if ($$6.isEmpty()) {
+            c.warn("Unable to find texture {}", $$5);
          } else {
-            return $$1.b() + $$1.d() >= $$0.c()
-               ? DataResult.error(() -> "Nine-sliced texture has no vertical center slice: " + $$1.b() + " + " + $$1.d() + " >= " + $$0.c())
-               : DataResult.success($$0);
-         }
-      }
+            gbr $$7 = new gbr($$5, $$6.get(), $$3.size());
 
-      @Override
-      public gbs.d a() {
-         return gbs.d.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
-
-      public gbs.a.a d() {
-         return this.f;
-      }
-
-      public static record a(int a, int b, int c, int d) {
-         private static final Codec<gbs.a.a> e = asg.j.flatComapMap($$0 -> new gbs.a.a($$0, $$0, $$0, $$0), $$0 -> {
-            OptionalInt $$1 = $$0.e();
-            return $$1.isPresent() ? DataResult.success($$1.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
-         });
-         private static final Codec<gbs.a.a> f = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     asg.i.fieldOf("left").forGetter(gbs.a.a::a),
-                     asg.i.fieldOf("top").forGetter(gbs.a.a::b),
-                     asg.i.fieldOf("right").forGetter(gbs.a.a::c),
-                     asg.i.fieldOf("bottom").forGetter(gbs.a.a::d)
-                  )
-                  .apply($$0, gbs.a.a::new)
-         );
-         static final Codec<gbs.a.a> g = Codec.either(e, f)
-            .xmap($$0 -> (gbs.a.a)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0.e().isPresent() ? Either.left($$0) : Either.right($$0));
-
-         private OptionalInt e() {
-            return this.a() == this.b() && this.b() == this.c() && this.c() == this.d() ? OptionalInt.of(this.a()) : OptionalInt.empty();
+            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
+               agg $$9 = $$4.e("_" + $$8.getKey());
+               $$1.a($$9, new gbs.a($$7, $$8.getValue(), $$9));
+            }
          }
       }
    }
 
-   public static record b() implements gbs {
-      public static final Codec<gbs.b> c = Codec.unit(gbs.b::new);
+   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
+      if ($$1.length != $$0.length) {
+         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
+         throw new IllegalArgumentException();
+      } else {
+         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
 
-      @Override
-      public gbs.d a() {
-         return gbs.d.a;
+         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
+            int $$4 = $$0[$$3];
+            if (ass.a.a($$4) != 0) {
+               $$2.put(ass.a.e($$4), $$1[$$3]);
+            }
+         }
+
+         return $$1x -> {
+            int $$2x = ass.a.a($$1x);
+            if ($$2x == 0) {
+               return $$1x;
+            } else {
+               int $$3x = ass.a.e($$1x);
+               int $$4x = $$2.getOrDefault($$3x, ass.a.f($$3x));
+               int $$5 = ass.a.a($$4x);
+               return ass.a.a($$2x * $$5 / 255, $$4x);
+            }
+         };
       }
    }
 
-   public static record c(int d, int e) implements gbs {
-      public static final Codec<gbs.c> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(asg.j.fieldOf("width").forGetter(gbs.c::b), asg.j.fieldOf("height").forGetter(gbs.c::c)).apply($$0, gbs.c::new)
-      );
+   public static int[] a(apd $$0, agg $$1) {
+      Optional<apb> $$2 = $$0.getResource(a.a($$1));
+      if ($$2.isEmpty()) {
+         c.error("Failed to load palette image {}", $$1);
+         throw new IllegalArgumentException();
+      } else {
+         try {
+            int[] var5;
+            try (
+               InputStream $$3 = $$2.get().d();
+               eml $$4 = eml.a($$3);
+            ) {
+               var5 = $$4.d();
+            }
 
-      @Override
-      public gbs.d a() {
-         return gbs.d.b;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
+            return var5;
+         } catch (Exception var11) {
+            c.error("Couldn't load texture {}", $$1, var11);
+            throw new IllegalArgumentException();
+         }
       }
    }
 
-   public static enum d implements atr {
-      a("stretch", gbs.b.c),
-      b("tile", gbs.c.c),
-      c("nine_slice", gbs.a.c);
+   @Override
+   public gbn a() {
+      return gbo.e;
+   }
 
-      public static final Codec<gbs.d> d = atr.a(gbs.d::values);
-      private final String e;
-      private final Codec<? extends gbs> f;
+   static record a(gbr a, Supplier<IntUnaryOperator> b, agg c) implements gbl.b {
+      @Nullable
+      public gbb a(gbk $$0) {
+         Object var3;
+         try {
+            eml $$1 = this.a.a().a(this.b.get());
+            return new gbb(this.c, new gcu($$1.a(), $$1.b()), $$1, apf.a);
+         } catch (IllegalArgumentException | IOException var7) {
+            gbs.c.error("unable to apply palette to {}", this.c, var7);
+            var3 = null;
+         } finally {
+            this.a.b();
+         }
 
-      private d(String $$0, Codec<? extends gbs> $$1) {
-         this.e = $$0;
-         this.f = $$1;
+         return (gbb)var3;
       }
 
       @Override
-      public String c() {
-         return this.e;
+      public void a() {
+         this.a.b();
       }
 
-      public Codec<? extends gbs> a() {
-         return this.f;
+      public gbr b() {
+         return this.a;
+      }
+
+      public Supplier<IntUnaryOperator> c() {
+         return this.b;
+      }
+
+      public agg d() {
+         return this.c;
       }
    }
 }

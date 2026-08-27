@@ -1,48 +1,39 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageCodec;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+import io.netty.util.ReferenceCountUtil;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class tz {
-   private static final int a = 5;
-   private static final int b = 127;
-   private static final int c = 128;
-   private static final int d = 7;
+public class tz extends MessageToMessageCodec<wk<?>, wk<?>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final AttributeKey<tt.a<?>> b;
+   private final AttributeKey<tt.a<?>> c;
 
-   public static int a(int $$0) {
-      for (int $$1 = 1; $$1 < 5; $$1++) {
-         if (($$0 & -1 << $$1 * 7) == 0) {
-            return $$1;
-         }
+   public tz(AttributeKey<tt.a<?>> $$0, AttributeKey<tt.a<?>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private static void a(ChannelHandlerContext $$0, wk<?> $$1, List<Object> $$2, AttributeKey<tt.a<?>> $$3) {
+      Attribute<tt.a<?>> $$4 = $$0.channel().attr($$3);
+      tt.a<?> $$5 = (tt.a<?>)$$4.get();
+      if (!$$5.b($$1)) {
+         a.error("Unrecognized packet in pipeline {}:{} - {}", new Object[]{$$5.a().a(), $$5.b(), $$1});
       }
 
-      return 5;
+      ReferenceCountUtil.retain($$1);
+      $$2.add($$1);
+      uc.a($$4, $$1);
    }
 
-   public static boolean a(byte $$0) {
-      return ($$0 & 128) == 128;
+   protected void a(ChannelHandlerContext $$0, wk<?> $$1, List<Object> $$2) throws Exception {
+      a($$0, $$1, $$2, this.b);
    }
 
-   public static int a(ByteBuf $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-
-      byte $$3;
-      do {
-         $$3 = $$0.readByte();
-         $$1 |= ($$3 & 127) << $$2++ * 7;
-         if ($$2 > 5) {
-            throw new RuntimeException("VarInt too big");
-         }
-      } while (a($$3));
-
-      return $$1;
-   }
-
-   public static ByteBuf a(ByteBuf $$0, int $$1) {
-      while (($$1 & -128) != 0) {
-         $$0.writeByte($$1 & 127 | 128);
-         $$1 >>>= 7;
-      }
-
-      $$0.writeByte($$1);
-      return $$0;
+   protected void b(ChannelHandlerContext $$0, wk<?> $$1, List<Object> $$2) throws Exception {
+      a($$0, $$1, $$2, this.c);
    }
 }

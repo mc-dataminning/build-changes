@@ -1,45 +1,21 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dnx extends doo<dqk> {
-   public dnx(Codec<dqk> $$0) {
-      super($$0);
+public abstract class dnx implements dnm {
+   protected final iw f;
+
+   protected static <P extends dnx> P1<Mu<P>, iw> a(Instance<P> $$0) {
+      return $$0.group(iw.v(16).optionalFieldOf("offset", iw.g).forGetter($$0x -> $$0x.f));
    }
 
-   @Override
-   public boolean a(doq<dqk> $$0) {
-      ht $$1 = $$0.e();
-      crt $$2 = $$0.b();
-      ate $$3 = $$0.d();
-      dqk $$4 = $$0.f();
-      if ($$1.v() < $$2.I_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
-
-         for (ht $$7 : ht.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
-            }
-         }
-
-         return true;
-      }
+   protected dnx(iw $$0) {
+      this.f = $$0;
    }
 
-   private boolean a(cra $$0, ht $$1, ate $$2) {
-      ht $$3 = $$1.d();
-      dgb $$4 = $$0.a_($$3);
-      return $$4.a(cuc.kE) ? $$2.h() : $$4.d($$0, $$3, hx.b);
+   public final boolean a(csm $$0, ht $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
 
-   private void a(cra $$0, ht $$1, ate $$2, dqk $$3) {
-      if ($$0.t($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
-      }
-   }
+   protected abstract boolean a(dgw var1);
 }

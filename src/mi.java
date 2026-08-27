@@ -1,86 +1,346 @@
-import com.google.gson.JsonElement;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
 public class mi {
-   public static final mi.a a = a(mg::a, mf.c);
-   public static final mi.a b = a(mg::a, mf.d);
-   public static final mi.a c = a(mg::k, mf.i);
-   public static final mi.a d = a(mg::k, mf.j);
-   public static final mi.a e = a(mg::q, mf.m);
-   public static final mi.a f = a(mg::l, mf.l);
-   public static final mi.a g = a(mg::B, mf.n);
-   public static final mi.a h = a(mg::A, mf.o);
-   public static final mi.a i = a(mg::f, mf.au);
-   public static final mi.a j = a(mg::g, mf.av);
-   public static final mi.a k = a(mg::g, mf.aw);
-   public static final mi.a l = a(mg::g, mf.ax);
-   public static final mi.a m = a(mg::g, mf.ay);
-   public static final mi.a n = a(mg::i, mf.aB);
-   public static final mi.a o = a(mg::j, mf.az);
-   public static final mi.a p = a(mg::u, mf.Y);
-   public static final mi.a q = a(mg::D, mf.aQ);
-   public static final mi.a r = a(mg::a, mf.ab);
-   public static final mi.a s = a(mg::x, mf.bb);
-   public static final mi.a t = a(mg::x, mf.bc);
-   public static final mi.a u = a(mg::b, mf.bi);
-   public static final mi.a v = a(mg::n, mf.i);
-   public static final mi.a w = a(mg::n, mf.j);
-   public static final mi.a x = a(mg::r, mf.m);
-   public static final mi.a y = a(mg::s, mf.i);
-   private final mg z;
-   private final me A;
+   private final Map<mj, agg> a = Maps.newHashMap();
+   private final Set<mj> b = Sets.newHashSet();
 
-   private mi(mg $$0, me $$1) {
-      this.z = $$0;
-      this.A = $$1;
-   }
-
-   public me a() {
-      return this.A;
-   }
-
-   public mg b() {
-      return this.z;
-   }
-
-   public mi a(Consumer<mg> $$0) {
-      $$0.accept(this.z);
+   public mi a(mj $$0, agg $$1) {
+      this.a.put($$0, $$1);
       return this;
    }
 
-   public afw a(cua $$0, BiConsumer<afw, Supplier<JsonElement>> $$1) {
-      return this.A.a($$0, this.z, $$1);
+   public mi b(mj $$0, agg $$1) {
+      this.a.put($$0, $$1);
+      this.b.add($$0);
+      return this;
    }
 
-   public afw a(cua $$0, String $$1, BiConsumer<afw, Supplier<JsonElement>> $$2) {
-      return this.A.a($$0, $$1, this.z, $$2);
+   public Stream<mj> a() {
+      return this.b.stream();
    }
 
-   private static mi.a a(Function<cua, mg> $$0, me $$1) {
-      return $$2 -> new mi($$0.apply($$2), $$1);
+   public mi a(mj $$0, mj $$1) {
+      this.a.put($$1, this.a.get($$0));
+      return this;
    }
 
-   public static mi a(afw $$0) {
-      return new mi(mg.b($$0), mf.c);
+   public mi b(mj $$0, mj $$1) {
+      this.a.put($$1, this.a.get($$0));
+      this.b.add($$1);
+      return this;
    }
 
-   @FunctionalInterface
-   public interface a {
-      mi get(cua var1);
-
-      default afw create(cua $$0, BiConsumer<afw, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
+   public agg a(mj $$0) {
+      for (mj $$1 = $$0; $$1 != null; $$1 = $$1.b()) {
+         agg $$2 = this.a.get($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
       }
 
-      default afw createWithSuffix(cua $$0, String $$1, BiConsumer<afw, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
+      throw new IllegalStateException("Can't find texture for slot " + $$0);
+   }
 
-      default mi.a updateTexture(Consumer<mg> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   public mi c(mj $$0, agg $$1) {
+      mi $$2 = new mi();
+      $$2.a.putAll(this.a);
+      $$2.b.addAll(this.b);
+      $$2.a($$0, $$1);
+      return $$2;
+   }
+
+   public static mi a(cut $$0) {
+      agg $$1 = G($$0);
+      return b($$1);
+   }
+
+   public static mi b(cut $$0) {
+      agg $$1 = G($$0);
+      return a($$1);
+   }
+
+   public static mi a(agg $$0) {
+      return new mi().a(mj.b, $$0);
+   }
+
+   public static mi b(agg $$0) {
+      return new mi().a(mj.a, $$0);
+   }
+
+   public static mi c(cut $$0) {
+      return d(mj.p, G($$0));
+   }
+
+   public static mi c(agg $$0) {
+      return d(mj.p, $$0);
+   }
+
+   public static mi d(cut $$0) {
+      return d(mj.q, G($$0));
+   }
+
+   public static mi d(agg $$0) {
+      return d(mj.q, $$0);
+   }
+
+   public static mi e(cut $$0) {
+      return d(mj.s, G($$0));
+   }
+
+   public static mi e(agg $$0) {
+      return d(mj.s, $$0);
+   }
+
+   public static mi f(cut $$0) {
+      return d(mj.t, G($$0));
+   }
+
+   public static mi g(cut $$0) {
+      return new mi().a(mj.P, G($$0)).a(mj.y, a($$0, "_stem"));
+   }
+
+   public static mi f(agg $$0) {
+      return d(mj.t, $$0);
+   }
+
+   public static mi h(cut $$0) {
+      return d(mj.y, G($$0));
+   }
+
+   public static mi a(cut $$0, cut $$1) {
+      return new mi().a(mj.y, G($$0)).a(mj.z, G($$1));
+   }
+
+   public static mi i(cut $$0) {
+      return d(mj.u, G($$0));
+   }
+
+   public static mi j(cut $$0) {
+      return d(mj.x, G($$0));
+   }
+
+   public static mi g(agg $$0) {
+      return d(mj.A, $$0);
+   }
+
+   public static mi b(cut $$0, cut $$1) {
+      return new mi().a(mj.v, G($$0)).a(mj.w, a($$1, "_top"));
+   }
+
+   public static mi d(mj $$0, agg $$1) {
+      return new mi().a($$0, $$1);
+   }
+
+   public static mi k(cut $$0) {
+      return new mi().a(mj.i, a($$0, "_side")).a(mj.d, a($$0, "_top"));
+   }
+
+   public static mi l(cut $$0) {
+      return new mi().a(mj.i, a($$0, "_side")).a(mj.f, a($$0, "_top"));
+   }
+
+   public static mi m(cut $$0) {
+      return new mi().a(mj.q, a($$0, "_plant")).a(mj.i, a($$0, "_side")).a(mj.f, a($$0, "_top"));
+   }
+
+   public static mi n(cut $$0) {
+      return new mi().a(mj.i, G($$0)).a(mj.d, a($$0, "_top")).a(mj.c, G($$0));
+   }
+
+   public static mi a(agg $$0, agg $$1) {
+      return new mi().a(mj.i, $$0).a(mj.d, $$1);
+   }
+
+   public static mi o(cut $$0) {
+      return new mi().a(mj.b, G($$0)).a(mj.i, a($$0, "_side")).a(mj.f, a($$0, "_top"));
+   }
+
+   public static mi p(cut $$0) {
+      return new mi().a(mj.b, G($$0)).a(mj.c, a($$0, "_particle"));
+   }
+
+   public static mi q(cut $$0) {
+      return new mi().a(mj.i, a($$0, "_side")).a(mj.f, a($$0, "_top")).a(mj.e, a($$0, "_bottom"));
+   }
+
+   public static mi r(cut $$0) {
+      agg $$1 = G($$0);
+      return new mi().a(mj.r, $$1).a(mj.i, $$1).a(mj.f, a($$0, "_top")).a(mj.e, a($$0, "_bottom"));
+   }
+
+   public static mi s(cut $$0) {
+      agg $$1 = G($$0);
+      return new mi().a(mj.b, $$1).a(mj.r, $$1).a(mj.i, $$1).a(mj.d, a($$0, "_top"));
+   }
+
+   public static mi b(agg $$0, agg $$1) {
+      return new mi().a(mj.f, $$0).a(mj.e, $$1);
+   }
+
+   public static mi t(cut $$0) {
+      return new mi().a(mj.f, a($$0, "_top")).a(mj.e, a($$0, "_bottom"));
+   }
+
+   public static mi u(cut $$0) {
+      return new mi().a(mj.c, G($$0));
+   }
+
+   public static mi h(agg $$0) {
+      return new mi().a(mj.c, $$0);
+   }
+
+   public static mi v(cut $$0) {
+      return new mi().a(mj.C, a($$0, "_0"));
+   }
+
+   public static mi w(cut $$0) {
+      return new mi().a(mj.C, a($$0, "_1"));
+   }
+
+   public static mi x(cut $$0) {
+      return new mi().a(mj.D, G($$0));
+   }
+
+   public static mi y(cut $$0) {
+      return new mi().a(mj.G, G($$0));
+   }
+
+   public static mi i(agg $$0) {
+      return new mi().a(mj.G, $$0);
+   }
+
+   public static mi a(ckw $$0) {
+      return new mi().a(mj.c, c($$0));
+   }
+
+   public static mi z(cut $$0) {
+      return new mi().a(mj.i, a($$0, "_side")).a(mj.g, a($$0, "_front")).a(mj.h, a($$0, "_back"));
+   }
+
+   public static mi A(cut $$0) {
+      return new mi().a(mj.i, a($$0, "_side")).a(mj.g, a($$0, "_front")).a(mj.f, a($$0, "_top")).a(mj.e, a($$0, "_bottom"));
+   }
+
+   public static mi B(cut $$0) {
+      return new mi().a(mj.i, a($$0, "_side")).a(mj.g, a($$0, "_front")).a(mj.f, a($$0, "_top"));
+   }
+
+   public static mi C(cut $$0) {
+      return new mi().a(mj.i, a($$0, "_side")).a(mj.g, a($$0, "_front")).a(mj.d, a($$0, "_end"));
+   }
+
+   public static mi D(cut $$0) {
+      return new mi().a(mj.f, a($$0, "_top"));
+   }
+
+   public static mi c(cut $$0, cut $$1) {
+      return new mi()
+         .a(mj.c, a($$0, "_front"))
+         .a(mj.o, G($$1))
+         .a(mj.n, a($$0, "_top"))
+         .a(mj.j, a($$0, "_front"))
+         .a(mj.l, a($$0, "_side"))
+         .a(mj.k, a($$0, "_side"))
+         .a(mj.m, a($$0, "_front"));
+   }
+
+   public static mi d(cut $$0, cut $$1) {
+      return new mi()
+         .a(mj.c, a($$0, "_front"))
+         .a(mj.o, G($$1))
+         .a(mj.n, a($$0, "_top"))
+         .a(mj.j, a($$0, "_front"))
+         .a(mj.k, a($$0, "_front"))
+         .a(mj.l, a($$0, "_side"))
+         .a(mj.m, a($$0, "_side"));
+   }
+
+   public static mi a(String $$0) {
+      return new mi()
+         .a(mj.c, a(cuv.mg, $$0 + "_north"))
+         .a(mj.e, a(cuv.mg, $$0 + "_bottom"))
+         .a(mj.f, a(cuv.mg, $$0 + "_top"))
+         .a(mj.j, a(cuv.mg, $$0 + "_north"))
+         .a(mj.k, a(cuv.mg, $$0 + "_south"))
+         .a(mj.l, a(cuv.mg, $$0 + "_east"))
+         .a(mj.m, a(cuv.mg, $$0 + "_west"));
+   }
+
+   public static mi E(cut $$0) {
+      return new mi().a(mj.K, a($$0, "_log_lit")).a(mj.C, a($$0, "_fire"));
+   }
+
+   public static mi a(cut $$0, boolean $$1) {
+      return new mi()
+         .a(mj.c, a(cuv.eg, "_side"))
+         .a(mj.e, a(cuv.eg, "_bottom"))
+         .a(mj.f, a(cuv.eg, "_top"))
+         .a(mj.i, a(cuv.eg, "_side"))
+         .a(mj.L, a($$0, $$1 ? "_lit" : ""));
+   }
+
+   public static mi j(agg $$0) {
+      return new mi()
+         .a(mj.c, a(cuv.ft, "_side"))
+         .a(mj.i, a(cuv.ft, "_side"))
+         .a(mj.f, a(cuv.ft, "_top"))
+         .a(mj.e, a(cuv.ft, "_bottom"))
+         .a(mj.M, a(cuv.ft, "_inner"))
+         .a(mj.N, $$0);
+   }
+
+   public static mi a(boolean $$0) {
+      String $$1 = $$0 ? "_can_summon" : "";
+      return new mi()
+         .a(mj.c, a(cuv.qI, "_bottom"))
+         .a(mj.i, a(cuv.qI, "_side"))
+         .a(mj.f, a(cuv.qI, "_top"))
+         .a(mj.O, a(cuv.qI, $$1 + "_inner_top"))
+         .a(mj.e, a(cuv.qI, "_bottom"));
+   }
+
+   public static mi b(ckw $$0) {
+      return new mi().a(mj.H, c($$0));
+   }
+
+   public static mi F(cut $$0) {
+      return new mi().a(mj.H, G($$0));
+   }
+
+   public static mi k(agg $$0) {
+      return new mi().a(mj.H, $$0);
+   }
+
+   public static mi c(agg $$0, agg $$1) {
+      return new mi().a(mj.H, $$0).a(mj.I, $$1);
+   }
+
+   public static mi a(agg $$0, agg $$1, agg $$2) {
+      return new mi().a(mj.H, $$0).a(mj.I, $$1).a(mj.J, $$2);
+   }
+
+   public static agg G(cut $$0) {
+      agg $$1 = jy.f.b($$0);
+      return $$1.d("block/");
+   }
+
+   public static agg a(cut $$0, String $$1) {
+      agg $$2 = jy.f.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   }
+
+   public static agg c(ckw $$0) {
+      agg $$1 = jy.i.b($$0);
+      return $$1.d("item/");
+   }
+
+   public static agg a(ckw $$0, String $$1) {
+      agg $$2 = jy.i.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

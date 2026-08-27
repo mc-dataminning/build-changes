@@ -1,19 +1,19 @@
-class bjk extends bje {
-   protected bjk(bjf $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bjk implements aub {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bjk> d = aub.a(bjk::values);
+   private final String e;
+
+   private bjk(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public void a(bkj $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0.eu() < $$0.eL()) {
-         $$0.b(1.0F);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 50 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public String c() {
+      return this.e;
    }
 }

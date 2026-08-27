@@ -1,56 +1,55 @@
-import java.util.function.Supplier;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum cly implements clw {
-   a(0, 59, 2.0F, 0.0F, 15, () -> cnk.a(ara.b)),
-   b(1, 131, 4.0F, 1.0F, 5, () -> cnk.a(ara.ax)),
-   c(2, 250, 6.0F, 2.0F, 14, () -> cnk.a(ckm.nQ)),
-   d(3, 1561, 8.0F, 3.0F, 10, () -> cnk.a(ckm.nK)),
-   e(0, 32, 12.0F, 0.0F, 22, () -> cnk.a(ckm.nU)),
-   f(4, 2031, 9.0F, 4.0F, 15, () -> cnk.a(ckm.nV));
+public class cly extends ckw implements ckc {
+   public static final int a = 5;
+   public static final float b = 3.0F;
+   public static final String c = "Base";
 
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final ast<cnk> l;
-
-   private cly(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cnk> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = new ast<>($$5);
+   public cly(ckw.a $$0) {
+      super($$0);
+      cwx.a(this, cil.a);
    }
 
    @Override
-   public int a() {
-      return this.h;
+   public String j(clb $$0) {
+      return ciu.a($$0) != null ? this.a() + "." + d($$0).b() : super.j($$0);
    }
 
    @Override
-   public float b() {
-      return this.i;
+   public void a(clb $$0, @Nullable crs $$1, List<ur> $$2, cms $$3) {
+      cir.a($$0, $$2);
    }
 
    @Override
-   public float c() {
-      return this.j;
+   public cmu c(clb $$0) {
+      return cmu.d;
    }
 
    @Override
-   public int d() {
-      return this.g;
+   public int b(clb $$0) {
+      return 72000;
    }
 
    @Override
-   public int e() {
-      return this.k;
+   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
+      clb $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bir.b($$3);
    }
 
    @Override
-   public cnk f() {
-      return this.l.a();
+   public boolean a(clb $$0, clb $$1) {
+      return $$1.a(ark.b) || super.a($$0, $$1);
+   }
+
+   public static cjp d(clb $$0) {
+      rz $$1 = ciu.a($$0);
+      return $$1 != null ? cjp.a($$1.h("Base")) : cjp.a;
+   }
+
+   @Override
+   public bkn g() {
+      return bkn.b;
    }
 }

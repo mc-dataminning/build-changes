@@ -10,10 +10,10 @@ public class aw extends cw<aw.a> {
       return new aw.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(alr $$0, bvu $$1, bvu $$2, @Nullable bjo $$3) {
-      edi $$4 = bq.b($$0, $$1);
-      edi $$5 = bq.b($$0, $$2);
-      edi $$6 = $$3 != null ? bq.b($$0, $$3) : null;
+   public void a(amb $$0, bwj $$1, bwj $$2, @Nullable bkd $$3) {
+      eel $$4 = bq.b($$0, $$1);
+      eel $$5 = bq.b($$0, $$2);
+      eel $$6 = $$3 != null ? bq.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
@@ -41,11 +41,11 @@ public class aw extends cw<aw.a> {
          return al.o.a(new aw.a(Optional.empty(), bq.a($$0), bq.a($$1), bq.a($$2)));
       }
 
-      public boolean a(edi $$0, edi $$1, @Nullable edi $$2) {
+      public boolean a(eel $$0, eel $$1, @Nullable eel $$2) {
          return !this.c.isPresent() || $$2 != null && this.c.get().a($$2) ? a(this.a, $$0) && a(this.b, $$1) || a(this.a, $$1) && a(this.b, $$0) : false;
       }
 
-      private static boolean a(Optional<bc> $$0, edi $$1) {
+      private static boolean a(Optional<bc> $$0, eel $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

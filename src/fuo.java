@@ -1,19 +1,18 @@
-public class fuo extends fvj<cag, fgk<cag>> {
-   private static final afw a = new afw("textures/entity/zombie/zombie.png");
-   private final float i;
+public class fuo extends fwq<bwk, fgi<bwk>> {
+   private static final agg a = new agg("textures/entity/bee/bee_angry.png");
+   private static final agg i = new agg("textures/entity/bee/bee_angry_nectar.png");
+   private static final agg j = new agg("textures/entity/bee/bee.png");
+   private static final agg k = new agg("textures/entity/bee/bee_nectar.png");
 
-   public fuo(fud.a $$0, float $$1) {
-      super($$0, new fgc($$0.a(fiv.ab)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new fye<>(this, $$0.d()));
-      this.a(new fyb<>(this, new fgc($$0.a(fiv.ac)), new fgc($$0.a(fiv.ad)), $$0.g()));
+   public fuo(fvk.a $$0) {
+      super($$0, new fgi<>($$0.a(fka.j)), 0.4F);
    }
 
-   protected void a(cag $$0, emh $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
-   }
-
-   public afw a(cag $$0) {
-      return a;
+   public agg a(bwk $$0) {
+      if ($$0.Y_()) {
+         return $$0.go() ? i : a;
+      } else {
+         return $$0.go() ? k : j;
+      }
    }
 }

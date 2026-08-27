@@ -1,54 +1,40 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import javax.annotation.Nullable;
 
 public class ajy {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.spectate.self"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("commands.spectate.not_spectator", $$0));
+
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("time").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("set")
-                                    .then(dv.a("day").executes($$0x -> a((du)$$0x.getSource(), 1000))))
-                                 .then(dv.a("noon").executes($$0x -> a((du)$$0x.getSource(), 6000))))
-                              .then(dv.a("night").executes($$0x -> a((du)$$0x.getSource(), 13000))))
-                           .then(dv.a("midnight").executes($$0x -> a((du)$$0x.getSource(), 18000))))
-                        .then(dv.a("time", ff.a()).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
-                  ))
-               .then(dv.a("add").then(dv.a("time", ff.a()).executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spectate").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), null, ((du)$$0x.getSource()).i())))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("query")
-                        .then(dv.a("daytime").executes($$0x -> c((du)$$0x.getSource(), a(((du)$$0x.getSource()).f())))))
-                     .then(dv.a("gametime").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).f().V() % 2147483647L)))))
-                  .then(dv.a("day").executes($$0x -> c((du)$$0x.getSource(), (int)(((du)$$0x.getSource()).f().W() / 24000L % 2147483647L))))
+               ((RequiredArgumentBuilder)dv.a("target", eg.a()).executes($$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"), ((du)$$0x.getSource()).i())))
+                  .then(dv.a("player", eg.c()).executes($$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"), eg.e($$0x, "player"))))
             )
       );
    }
 
-   private static int a(alq $$0) {
-      return (int)($$0.W() % 24000L);
-   }
+   private static int a(du $$0, @Nullable bki $$1, amb $$2) throws CommandSyntaxException {
+      if ($$2 == $$1) {
+         throw a.create();
+      } else if ($$2.e.b() != crp.d) {
+         throw b.create($$2.O_());
+      } else {
+         $$2.c($$1);
+         if ($$1 != null) {
+            $$0.a(() -> ur.a("commands.spectate.success.started", $$1.O_()), false);
+         } else {
+            $$0.a(() -> ur.c("commands.spectate.success.stopped"), false);
+         }
 
-   private static int c(du $$0, int $$1) {
-      $$0.a(() -> ui.a("commands.time.query", $$1), false);
-      return $$1;
-   }
-
-   public static int a(du $$0, int $$1) {
-      for (alq $$2 : $$0.m().F()) {
-         $$2.b((long)$$1);
+         return 1;
       }
-
-      $$0.a(() -> ui.a("commands.time.set", $$1), true);
-      return a($$0.f());
-   }
-
-   public static int b(du $$0, int $$1) {
-      for (alq $$2 : $$0.m().F()) {
-         $$2.b($$2.W() + (long)$$1);
-      }
-
-      int $$3 = a($$0.f());
-      $$0.a(() -> ui.a("commands.time.set", $$3), true);
-      return $$3;
    }
 }

@@ -1,42 +1,37 @@
-public class fns extends fmo {
-   private final bjt a;
-   private int b;
-   private final int D;
-   private final jq E;
+public class fns extends fnv {
+   private final fhy a;
+   private final fqp b = fqp.i(fvd.a);
 
-   public fns(fjr $$0, bjt $$1, jq $$2) {
-      this($$0, $$1, $$2, 3);
-   }
-
-   public fns(fjr $$0, bjt $$1, jq $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.do());
-   }
-
-   private fns(fjr $$0, bjt $$1, jq $$2, int $$3, eif $$4) {
-      super($$0, $$1.dq(), $$1.e(0.5), $$1.dw(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   fns(fkw $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fhj(esr.N().aO().a(fka.P));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
-      }
+   public fnz b() {
+      return fnz.e;
+   }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+   @Override
+   public void a(eno $$0, esc $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * ati.a($$3 * (float) Math.PI);
+      enk $$5 = new enk();
+      $$5.a($$1.f());
+      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$5.b(-1.0F, -1.0F, 1.0F);
+      $$5.a(0.0F, -1.101F, 1.5F);
+      fqh.a $$6 = esr.N().aN().c();
+      eno $$7 = $$6.getBuffer(this.b);
+      this.a.a($$5, $$7, 15728880, gay.d, 1.0F, 1.0F, 1.0F, $$4);
+      $$6.b();
+   }
+
+   public static class a implements fny<jv> {
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fns($$1, $$2, $$3, $$4);
       }
    }
 }

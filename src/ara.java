@@ -1,108 +1,16 @@
-public final class ara {
-   public static final arh<cke> a = a("wool");
-   public static final arh<cke> b = a("planks");
-   public static final arh<cke> c = a("stone_bricks");
-   public static final arh<cke> d = a("wooden_buttons");
-   public static final arh<cke> e = a("stone_buttons");
-   public static final arh<cke> f = a("buttons");
-   public static final arh<cke> g = a("wool_carpets");
-   public static final arh<cke> h = a("wooden_doors");
-   public static final arh<cke> i = a("wooden_stairs");
-   public static final arh<cke> j = a("wooden_slabs");
-   public static final arh<cke> k = a("wooden_fences");
-   public static final arh<cke> l = a("fence_gates");
-   public static final arh<cke> m = a("wooden_pressure_plates");
-   public static final arh<cke> n = a("wooden_trapdoors");
-   public static final arh<cke> o = a("doors");
-   public static final arh<cke> p = a("saplings");
-   public static final arh<cke> q = a("logs_that_burn");
-   public static final arh<cke> r = a("logs");
-   public static final arh<cke> s = a("dark_oak_logs");
-   public static final arh<cke> t = a("oak_logs");
-   public static final arh<cke> u = a("birch_logs");
-   public static final arh<cke> v = a("acacia_logs");
-   public static final arh<cke> w = a("cherry_logs");
-   public static final arh<cke> x = a("jungle_logs");
-   public static final arh<cke> y = a("spruce_logs");
-   public static final arh<cke> z = a("mangrove_logs");
-   public static final arh<cke> A = a("crimson_stems");
-   public static final arh<cke> B = a("warped_stems");
-   public static final arh<cke> C = a("bamboo_blocks");
-   public static final arh<cke> D = a("wart_blocks");
-   public static final arh<cke> E = a("banners");
-   public static final arh<cke> F = a("sand");
-   public static final arh<cke> G = a("smelts_to_glass");
-   public static final arh<cke> H = a("stairs");
-   public static final arh<cke> I = a("slabs");
-   public static final arh<cke> J = a("walls");
-   public static final arh<cke> K = a("anvil");
-   public static final arh<cke> L = a("rails");
-   public static final arh<cke> M = a("leaves");
-   public static final arh<cke> N = a("trapdoors");
-   public static final arh<cke> O = a("small_flowers");
-   public static final arh<cke> P = a("beds");
-   public static final arh<cke> Q = a("fences");
-   public static final arh<cke> R = a("tall_flowers");
-   public static final arh<cke> S = a("flowers");
-   public static final arh<cke> T = a("piglin_repellents");
-   public static final arh<cke> U = a("piglin_loved");
-   public static final arh<cke> V = a("ignored_by_piglin_babies");
-   public static final arh<cke> W = a("piglin_food");
-   public static final arh<cke> X = a("fox_food");
-   public static final arh<cke> Y = a("gold_ores");
-   public static final arh<cke> Z = a("iron_ores");
-   public static final arh<cke> aa = a("diamond_ores");
-   public static final arh<cke> ab = a("redstone_ores");
-   public static final arh<cke> ac = a("lapis_ores");
-   public static final arh<cke> ad = a("coal_ores");
-   public static final arh<cke> ae = a("emerald_ores");
-   public static final arh<cke> af = a("copper_ores");
-   public static final arh<cke> ag = a("non_flammable_wood");
-   public static final arh<cke> ah = a("soul_fire_base_blocks");
-   public static final arh<cke> ai = a("candles");
-   public static final arh<cke> aj = a("dirt");
-   public static final arh<cke> ak = a("terracotta");
-   public static final arh<cke> al = a("completes_find_tree_tutorial");
-   public static final arh<cke> am = a("boats");
-   public static final arh<cke> an = a("chest_boats");
-   public static final arh<cke> ao = a("fishes");
-   public static final arh<cke> ap = a("signs");
-   public static final arh<cke> aq = a("music_discs");
-   public static final arh<cke> ar = a("creeper_drop_music_discs");
-   public static final arh<cke> as = a("coals");
-   public static final arh<cke> at = a("arrows");
-   public static final arh<cke> au = a("lectern_books");
-   public static final arh<cke> av = a("bookshelf_books");
-   public static final arh<cke> aw = a("beacon_payment_items");
-   public static final arh<cke> ax = a("stone_tool_materials");
-   public static final arh<cke> ay = a("stone_crafting_materials");
-   public static final arh<cke> az = a("freeze_immune_wearables");
-   public static final arh<cke> aA = a("axolotl_tempt_items");
-   public static final arh<cke> aB = a("dampens_vibrations");
-   public static final arh<cke> aC = a("cluster_max_harvestables");
-   public static final arh<cke> aD = a("compasses");
-   public static final arh<cke> aE = a("hanging_signs");
-   public static final arh<cke> aF = a("creeper_igniters");
-   public static final arh<cke> aG = a("noteblock_top_instruments");
-   public static final arh<cke> aH = a("trimmable_armor");
-   public static final arh<cke> aI = a("trim_materials");
-   public static final arh<cke> aJ = a("trim_templates");
-   public static final arh<cke> aK = a("sniffer_food");
-   public static final arh<cke> aL = a("decorated_pot_sherds");
-   public static final arh<cke> aM = a("decorated_pot_ingredients");
-   public static final arh<cke> aN = a("swords");
-   public static final arh<cke> aO = a("axes");
-   public static final arh<cke> aP = a("hoes");
-   public static final arh<cke> aQ = a("pickaxes");
-   public static final arh<cke> aR = a("shovels");
-   public static final arh<cke> aS = a("tools");
-   public static final arh<cke> aT = a("breaks_decorated_pots");
-   public static final arh<cke> aU = a("villager_plantable_seeds");
+public class ara {
+   public static final arr<dei> a = a("no_item_required");
+   public static final arr<dei> b = a("pattern_item/flower");
+   public static final arr<dei> c = a("pattern_item/creeper");
+   public static final arr<dei> d = a("pattern_item/skull");
+   public static final arr<dei> e = a("pattern_item/mojang");
+   public static final arr<dei> f = a("pattern_item/globe");
+   public static final arr<dei> g = a("pattern_item/piglin");
 
    private ara() {
    }
 
-   private static arh<cke> a(String $$0) {
-      return arh.a(jz.E, new afw($$0));
+   private static arr<dei> a(String $$0) {
+      return arr.a(jz.c, new agg($$0));
    }
 }

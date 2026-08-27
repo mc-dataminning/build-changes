@@ -1,22 +1,27 @@
-public enum eqb {
-   a(0, dvq.a),
-   b(1, dvq.b),
-   c(2, dvq.c),
-   d(3, dvq.d);
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   private final int e;
-   private final ui f;
+public class eqb extends ghe {
+   protected BooleanConsumer a;
+   private final ur b;
+   private final ur c;
 
-   private eqb(int $$0, afv<dvp> $$1) {
-      this.e = $$0;
-      this.f = ui.c($$1.a().f("generator"));
+   public eqb(BooleanConsumer $$0, ur $$1, ur $$2) {
+      super(esj.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public ui a() {
-      return this.f;
+   @Override
+   public void aO_() {
+      this.d(eum.a(uq.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(9), 100, 20).a());
+      this.d(eum.a(uq.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(9), 100, 20).a());
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.b, this.g / 2, h(3), -1);
+      $$0.a(this.i, this.c, this.g / 2, h(5), -1);
    }
 }

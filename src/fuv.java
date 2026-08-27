@@ -1,18 +1,17 @@
-public class fuv extends fxh {
-   private static final afw a = new afw("textures/entity/zombie/husk.png");
+public class fuv extends fwq<bwo, fgr<bwo>> {
+   private static final agg a = new agg("textures/entity/chicken.png");
 
-   public fuv(fud.a $$0) {
-      super($$0, fiv.al, fiv.am, fiv.an);
+   public fuv(fvk.a $$0) {
+      super($$0, new fgr<>($$0.a(fka.t)), 0.3F);
    }
 
-   protected void a(cbe $$0, emh $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public afw a(cbe $$0) {
+   public agg a(bwo $$0) {
       return a;
+   }
+
+   protected float a(bwo $$0, float $$1) {
+      float $$2 = ati.i($$1, $$0.bX, $$0.bT);
+      float $$3 = ati.i($$1, $$0.bW, $$0.bU);
+      return (ati.a($$2) + 1.0F) * $$3;
    }
 }

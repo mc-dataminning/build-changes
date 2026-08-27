@@ -1,94 +1,54 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 
-public class eks {
-   private final List<ConcurrentLinkedQueue<ekr>> a = ImmutableList.of(
-      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
-   );
-   private volatile boolean b;
-   private volatile int c;
-   private volatile boolean d;
-   private volatile int e;
-   private volatile int f;
+public class eks<T> implements ekv<T>, ekx<T> {
+   private final List<ekt<T>> a = Lists.newArrayList();
+   private final Set<ekt<?>> b = new ObjectOpenCustomHashSet(ekt.a);
 
-   public eks() {
-      this.c = this.e = this.f + 1;
+   @Override
+   public void a(eku<T> $$0) {
+      ekt<T> $$1 = new ekt<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
    }
 
-   public boolean a() {
-      return !this.b && this.c == this.e;
-   }
-
-   public boolean b() {
-      if (this.b) {
-         throw new RuntimeException("ALREADY RECORDING !!!");
-      } else if (this.a()) {
-         this.c = (this.e + 1) % this.a.size();
-         this.b = true;
-         return true;
-      } else {
-         return false;
+   private void a(ekt<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
       }
    }
 
-   public void a(ekr $$0) {
-      if (!this.b) {
-         throw new RuntimeException("NOT RECORDING !!!");
-      } else {
-         ConcurrentLinkedQueue<ekr> $$1 = this.i();
-         $$1.add($$0);
+   @Override
+   public boolean a(ht $$0, T $$1) {
+      return this.b.contains(ekt.a($$1, $$0));
+   }
+
+   @Override
+   public int a() {
+      return this.a.size();
+   }
+
+   @Override
+   public sw b(long $$0, Function<T, String> $$1) {
+      sf $$2 = new sf();
+
+      for (ekt<T> $$3 : this.a) {
+         $$2.add($$3.a($$1));
       }
+
+      return $$2;
    }
 
-   public void c() {
-      if (this.b) {
-         this.b = false;
-      } else {
-         throw new RuntimeException("NOT RECORDING !!!");
-      }
+   public List<ekt<T>> b() {
+      return List.copyOf(this.a);
    }
 
-   public boolean d() {
-      return !this.d && this.c != this.e;
-   }
-
-   public boolean e() {
-      if (this.d) {
-         throw new RuntimeException("ALREADY PROCESSING !!!");
-      } else if (this.d()) {
-         this.d = true;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void f() {
-      if (!this.d) {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public void g() {
-      if (this.d) {
-         this.d = false;
-         this.f = this.e;
-         this.e = this.c;
-      } else {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public ConcurrentLinkedQueue<ekr> h() {
-      return this.a.get(this.f);
-   }
-
-   public ConcurrentLinkedQueue<ekr> i() {
-      return this.a.get(this.c);
-   }
-
-   public ConcurrentLinkedQueue<ekr> j() {
-      return this.a.get(this.e);
+   public static <T> eks<T> a(sf $$0, Function<String, Optional<T>> $$1, cqz $$2) {
+      eks<T> $$3 = new eks<>();
+      ekt.a($$0, $$1, $$2, $$3::a);
+      return $$3;
    }
 }

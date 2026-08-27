@@ -1,158 +1,143 @@
 import com.mojang.serialization.Codec;
-import java.util.BitSet;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class dpj extends doo<dra> {
-   public dpj(Codec<dra> $$0) {
-      super($$0);
+public abstract class dpj<FC extends drn> {
+   public static final dpj<dru> e = a("no_op", new dqd(dru.a));
+   public static final dpj<dsj> f = a("tree", new dqv(dsj.a));
+   public static final dpj<dsa> g = a("flower", new dqh(dsa.a));
+   public static final dpj<dsa> h = a("no_bonemeal_flower", new dqh(dsa.a));
+   public static final dpj<dsa> i = a("random_patch", new dqh(dsa.a));
+   public static final dpj<drf> j = a("block_pile", new dos(drf.a));
+   public static final dpj<dsi> k = a("spring_feature", new dqu(dsi.a));
+   public static final dpj<dru> l = a("chorus_plant", new dov(dru.a));
+   public static final dpj<dsb> m = a("replace_single_block", new dqk(dsb.a));
+   public static final dpj<dru> n = a("void_start_platform", new dra(dru.a));
+   public static final dpj<dru> o = a("desert_well", new dpc(dru.a));
+   public static final dpj<dpo> p = a("fossil", new dpn(dpo.a));
+   public static final dpj<drp> q = a("huge_red_mushroom", new dpu(drp.a));
+   public static final dpj<drp> r = a("huge_brown_mushroom", new dpr(drp.a));
+   public static final dpj<dru> s = a("ice_spike", new dpv(dru.a));
+   public static final dpj<dru> t = a("glowstone_blob", new dpq(dru.a));
+   public static final dpj<dru> u = a("freeze_top_layer", new dqs(dru.a));
+   public static final dpj<dru> v = a("vines", new dqz(dru.a));
+   public static final dpj<dre> w = a("block_column", new dor(dre.a));
+   public static final dpj<dsm> x = a("vegetation_patch", new dqy(dsm.a));
+   public static final dpj<dsm> y = a("waterlogged_vegetation_patch", new drb(dsm.a));
+   public static final dpj<dsd> z = a("root_system", new dql(dsd.a));
+   public static final dpj<drs> A = a("multiface_growth", new dqb(drs.a));
+   public static final dpj<dsl> B = a("underwater_magma", new dqx(dsl.a));
+   public static final dpj<dru> C = a("monster_room", new dqa(dru.a));
+   public static final dpj<dru> D = a("blue_ice", new dot(dru.a));
+   public static final dpj<drg> E = a("iceberg", new dpw(drg.a));
+   public static final dpj<drg> F = a("forest_rock", new doq(drg.a));
+   public static final dpj<drk> G = a("disk", new dpd(drk.a));
+   public static final dpj<dpy.a> H = a("lake", new dpy(dpy.a.a));
+   public static final dpj<drv> I = a("ore", new dqe(drv.a));
+   public static final dpj<dsh> J = a("end_spike", new dqt(dsh.a));
+   public static final dpj<dru> K = a("end_island", new dph(dru.a));
+   public static final dpj<drm> L = a("end_gateway", new dpg(drm.a));
+   public static final dqp M = a("seagrass", new dqp(drx.k));
+   public static final dpj<dru> N = a("kelp", new dpx(dru.a));
+   public static final dpj<dru> O = a("coral_tree", new dpa(dru.a));
+   public static final dpj<dru> P = a("coral_mushroom", new doz(dru.a));
+   public static final dpj<dru> Q = a("coral_claw", new dox(dru.a));
+   public static final dpj<dri> R = a("sea_pickle", new dqo(dri.a));
+   public static final dpj<dsf> S = a("simple_block", new dqq(dsf.a));
+   public static final dpj<drx> T = a("bamboo", new don(drx.k));
+   public static final dpj<dps> U = a("huge_fungus", new dpt(dps.a));
+   public static final dpj<drt> V = a("nether_forest_vegetation", new dqc(drt.c));
+   public static final dpj<dru> W = a("weeping_vines", new drc(dru.a));
+   public static final dpj<dsk> X = a("twisting_vines", new dqw(dsk.a));
+   public static final dpj<drh> Y = a("basalt_columns", new doo(drh.a));
+   public static final dpj<drj> Z = a("delta_feature", new dpb(drj.a));
+   public static final dpj<dsc> aa = a("netherrack_replace_blobs", new dqj(dsc.a));
+   public static final dpj<drr> ab = a("fill_layer", new dpm(drr.a));
+   public static final dou ac = a("bonus_chest", new dou(dru.a));
+   public static final dpj<dru> ad = a("basalt_pillar", new dop(dru.a));
+   public static final dpj<drv> ae = a("scattered_ore", new dqm(drv.a));
+   public static final dpj<drz> af = a("random_selector", new dqi(drz.a));
+   public static final dpj<dsg> ag = a("simple_random_selector", new dqr(dsg.a));
+   public static final dpj<dry> ah = a("random_boolean_selector", new dqg(dry.a));
+   public static final dpj<dro> ai = a("geode", new dpp(dro.b));
+   public static final dpj<drl> aj = a("dripstone_cluster", new dpe(drl.a));
+   public static final dpj<drq> ak = a("large_dripstone", new dpz(drq.a));
+   public static final dpj<drw> al = a("pointed_dripstone", new dqf(drw.a));
+   public static final dpj<dse> am = a("sculk_patch", new dqn(dse.a));
+   private final Codec<dow<FC, dpj<FC>>> a;
+
+   private static <C extends drn, F extends dpj<C>> F a(String $$0, F $$1) {
+      return io.a(jy.R, $$0, $$1);
    }
 
-   @Override
-   public boolean a(doq<dra> $$0) {
-      ate $$1 = $$0.d();
-      ht $$2 = $$0.e();
-      crt $$3 = $$0.b();
-      dra $$4 = $$0.f();
-      float $$5 = $$1.i() * (float) Math.PI;
-      float $$6 = (float)$$4.c / 8.0F;
-      int $$7 = asy.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
-      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
-      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
-      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
-      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
-      int $$12 = 2;
-      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
-      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
-      int $$15 = $$2.u() - asy.f($$6) - $$7;
-      int $$16 = $$2.v() - 2 - $$7;
-      int $$17 = $$2.w() - asy.f($$6) - $$7;
-      int $$18 = 2 * (asy.f($$6) + $$7);
-      int $$19 = 2 * (2 + $$7);
+   public dpj(Codec<FC> $$0) {
+      this.a = $$0.fieldOf("config").xmap($$0x -> new dow<>(this, $$0x), dow::c).codec();
+   }
 
-      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
-         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
-            if ($$16 <= $$3.a(dlk.a.c, $$20, $$21)) {
-               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
-            }
+   public Codec<dow<FC, dpj<FC>>> a() {
+      return this.a;
+   }
+
+   protected void a(csa $$0, ht $$1, dgw $$2) {
+      $$0.a($$1, $$2, 3);
+   }
+
+   public static Predicate<dgw> a(arr<cut> $$0) {
+      return $$1 -> !$$1.a($$0);
+   }
+
+   protected void a(csm $$0, ht $$1, dgw $$2, Predicate<dgw> $$3) {
+      if ($$3.test($$0.a_($$1))) {
+         $$0.a($$1, $$2, 2);
+      }
+   }
+
+   public abstract boolean a(dpl<FC> var1);
+
+   public boolean a(FC $$0, csm $$1, dit $$2, ato $$3, ht $$4) {
+      return $$1.f_($$4) ? this.a(new dpl<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
+   }
+
+   protected static boolean a(dgw $$0) {
+      return $$0.a(arc.bd);
+   }
+
+   public static boolean b(dgw $$0) {
+      return $$0.a(arc.af);
+   }
+
+   public static boolean a(cry $$0, ht $$1) {
+      return $$0.a($$1, dpj::b);
+   }
+
+   public static boolean a(Function<ht, dgw> $$0, ht $$1, Predicate<dgw> $$2) {
+      ht.a $$3 = new ht.a();
+
+      for (hx $$4 : hx.values()) {
+         $$3.a($$1, $$4);
+         if ($$2.test($$0.apply($$3))) {
+            return true;
          }
       }
 
       return false;
    }
 
-   protected boolean a(
-      crt $$0, ate $$1, dra $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
-   ) {
-      int $$14 = 0;
-      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
-      ht.a $$16 = new ht.a();
-      int $$17 = $$2.c;
-      double[] $$18 = new double[$$17 * 4];
-
-      for (int $$19 = 0; $$19 < $$17; $$19++) {
-         float $$20 = (float)$$19 / (float)$$17;
-         double $$21 = asy.d((double)$$20, $$3, $$4);
-         double $$22 = asy.d((double)$$20, $$7, $$8);
-         double $$23 = asy.d((double)$$20, $$5, $$6);
-         double $$24 = $$1.j() * (double)$$17 / 16.0;
-         double $$25 = ((double)(asy.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
-         $$18[$$19 * 4 + 0] = $$21;
-         $$18[$$19 * 4 + 1] = $$22;
-         $$18[$$19 * 4 + 2] = $$23;
-         $$18[$$19 * 4 + 3] = $$25;
-      }
-
-      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
-         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
-            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
-               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
-                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
-                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
-                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
-                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
-                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
-                     if ($$31 > 0.0) {
-                        $$18[$$27 * 4 + 3] = -1.0;
-                     } else {
-                        $$18[$$26 * 4 + 3] = -1.0;
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      try (dhv $$32 = new dhv($$0)) {
-         for (int $$33 = 0; $$33 < $$17; $$33++) {
-            double $$34 = $$18[$$33 * 4 + 3];
-            if (!($$34 < 0.0)) {
-               double $$35 = $$18[$$33 * 4 + 0];
-               double $$36 = $$18[$$33 * 4 + 1];
-               double $$37 = $$18[$$33 * 4 + 2];
-               int $$38 = Math.max(asy.a($$35 - $$34), $$9);
-               int $$39 = Math.max(asy.a($$36 - $$34), $$10);
-               int $$40 = Math.max(asy.a($$37 - $$34), $$11);
-               int $$41 = Math.max(asy.a($$35 + $$34), $$38);
-               int $$42 = Math.max(asy.a($$36 + $$34), $$39);
-               int $$43 = Math.max(asy.a($$37 + $$34), $$40);
-
-               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
-                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
-                  if ($$45 * $$45 < 1.0) {
-                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
-                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
-                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
-                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
-                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
-                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.d($$46)) {
-                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
-                                 if (!$$15.get($$50)) {
-                                    $$15.set($$50);
-                                    $$16.d($$44, $$46, $$48);
-                                    if ($$0.f_($$16)) {
-                                       dij $$51 = $$32.a($$16);
-                                       if ($$51 != null) {
-                                          int $$52 = iu.b($$44);
-                                          int $$53 = iu.b($$46);
-                                          int $$54 = iu.b($$48);
-                                          dgb $$55 = $$51.a($$52, $$53, $$54);
-
-                                          for (dra.a $$56 : $$2.b) {
-                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
-                                                $$51.a($$52, $$53, $$54, $$56.c, false);
-                                                $$14++;
-                                                break;
-                                             }
-                                          }
-                                       }
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return $$14 > 0;
+   public static boolean a(Function<ht, dgw> $$0, ht $$1) {
+      return a($$0, $$1, dgv.a::i);
    }
 
-   public static boolean a(dgb $$0, Function<ht, dgb> $$1, ate $$2, dra $$3, dra.a $$4, ht.a $$5) {
-      if (!$$4.b.a($$0, $$2)) {
-         return false;
-      } else {
-         return a($$2, $$3.d) ? true : !a($$1, $$5);
-      }
-   }
+   protected void a(csm $$0, ht $$1) {
+      ht.a $$2 = $$1.j();
 
-   protected static boolean a(ate $$0, float $$1) {
-      if ($$1 <= 0.0F) {
-         return true;
-      } else {
-         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         $$2.c(hx.b);
+         if ($$0.a_($$2).i()) {
+            return;
+         }
+
+         $$0.x($$2).e($$2);
       }
    }
 }

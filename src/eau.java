@@ -1,65 +1,25 @@
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import com.mojang.serialization.Codec;
 
-public class eau {
-   private final int a;
-   private final LongLinkedOpenHashSet[] b;
-   private int c;
+public interface eau<P extends eas> {
+   Codec<eas> a = jy.ai.q().dispatch("processor_type", eas::a, eau::codec);
+   Codec<eat> b = a.listOf().xmap(eat::new, eat::a);
+   Codec<eat> c = asq.e(b.fieldOf("processors").codec(), b);
+   Codec<ib<eat>> d = agc.a(jz.aC, c);
+   eau<dzx> e = a("block_ignore", dzx.a);
+   eau<dzz> f = a("block_rot", dzz.a);
+   eau<eac> g = a("gravity", eac.a);
+   eau<ead> h = a("jigsaw_replacement", ead.a);
+   eau<eao> i = a("rule", eao.a);
+   eau<eag> j = a("nop", eag.a);
+   eau<dzw> k = a("block_age", dzw.a);
+   eau<dzv> l = a("blackstone_replace", dzv.a);
+   eau<eae> m = a("lava_submerged_block", eae.a);
+   eau<eal> n = a("protected_blocks", eal.b);
+   eau<eab> o = a("capped", eab.a);
 
-   public eau(int $$0, final int $$1) {
-      this.a = $$0;
-      this.b = new LongLinkedOpenHashSet[$$0];
+   Codec<P> codec();
 
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
-            protected void rehash(int $$0) {
-               if ($$0 > $$1) {
-                  super.rehash($$0);
-               }
-            }
-         };
-      }
-
-      this.c = $$0;
-   }
-
-   public long a() {
-      LongLinkedOpenHashSet $$0 = this.b[this.c];
-      long $$1 = $$0.removeFirstLong();
-      if ($$0.isEmpty()) {
-         this.a(this.a);
-      }
-
-      return $$1;
-   }
-
-   public boolean b() {
-      return this.c >= this.a;
-   }
-
-   public void a(long $$0, int $$1, int $$2) {
-      LongLinkedOpenHashSet $$3 = this.b[$$1];
-      $$3.remove($$0);
-      if ($$3.isEmpty() && this.c == $$1) {
-         this.a($$2);
-      }
-   }
-
-   public void a(long $$0, int $$1) {
-      this.b[$$1].add($$0);
-      if (this.c > $$1) {
-         this.c = $$1;
-      }
-   }
-
-   private void a(int $$0) {
-      int $$1 = this.c;
-      this.c = $$0;
-
-      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
-         if (!this.b[$$2].isEmpty()) {
-            this.c = $$2;
-            break;
-         }
-      }
+   static <P extends eas> eau<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.ai, $$0, () -> $$1);
    }
 }

@@ -1,108 +1,55 @@
-import com.google.common.collect.Lists;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class yx implements wb<xu> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final List<ht> e;
-   private final float f;
-   private final float g;
-   private final float h;
+public class yx implements wk<yd> {
+   private final int a;
+   private final int b;
+   private final List<clb> c;
+   private final clb d;
 
-   public yx(double $$0, double $$1, double $$2, float $$3, List<ht> $$4, @Nullable eif $$5) {
+   public yx(int $$0, int $$1, il<clb> $$2, clb $$3) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = Lists.newArrayList($$4);
-      if ($$5 != null) {
-         this.f = (float)$$5.c;
-         this.g = (float)$$5.d;
-         this.h = (float)$$5.e;
-      } else {
-         this.f = 0.0F;
-         this.g = 0.0F;
-         this.h = 0.0F;
+      this.c = il.a($$2.size(), clb.b);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.c.set($$4, $$2.get($$4).p());
       }
+
+      this.d = $$3.p();
    }
 
-   public yx(tl $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      int $$1 = asy.a(this.a);
-      int $$2 = asy.a(this.b);
-      int $$3 = asy.a(this.c);
-      this.e = $$0.a((tl.a<ht>)($$3x -> {
-         int $$4 = $$3x.readByte() + $$1;
-         int $$5 = $$3x.readByte() + $$2;
-         int $$6 = $$3x.readByte() + $$3;
-         return new ht($$4, $$5, $$6);
-      }));
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
+   public yx(tu $$0) {
+      this.a = $$0.readUnsignedByte();
+      this.b = $$0.n();
+      this.c = $$0.a(il::a, tu::r);
+      this.d = $$0.r();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(tu $$0) {
+      $$0.k(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c, tu::a);
       $$0.a(this.d);
-      int $$1 = asy.a(this.a);
-      int $$2 = asy.a(this.b);
-      int $$3 = asy.a(this.c);
-      $$0.a(this.e, ($$3x, $$4) -> {
-         int $$5 = $$4.u() - $$1;
-         int $$6 = $$4.v() - $$2;
-         int $$7 = $$4.w() - $$3;
-         $$3x.k($$5);
-         $$3x.k($$6);
-         $$3x.k($$7);
-      });
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public float a() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.g;
-   }
-
-   public float e() {
-      return this.h;
-   }
-
-   public double f() {
+   public int a() {
       return this.a;
    }
 
-   public double g() {
-      return this.b;
-   }
-
-   public double h() {
+   public List<clb> d() {
       return this.c;
    }
 
-   public float i() {
+   public clb e() {
       return this.d;
    }
 
-   public List<ht> j() {
-      return this.e;
+   public int f() {
+      return this.b;
    }
 }

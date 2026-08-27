@@ -1,61 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.io.PrintStream;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import org.slf4j.Logger;
 
-public class agi extends aox {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private Map<afw, af> c = Map.of();
-   private ak d = new ak();
-   private final edl e;
+public class agi {
+   public static final PrintStream a = System.out;
+   private static volatile boolean c;
+   private static final Logger d = LogUtils.getLogger();
+   public static final AtomicLong b = new AtomicLong(-1L);
 
-   public agi(edl $$0) {
-      super(b, "advancements");
-      this.e = $$0;
-   }
-
-   protected void a(Map<afw, JsonElement> $$0, aot $$1, bes $$2) {
-      Builder<afw, af> $$3 = ImmutableMap.builder();
-      $$0.forEach(($$1x, $$2x) -> {
-         try {
-            JsonObject $$3x = aso.m($$2x, "advancement");
-            ae $$4x = ae.a($$3x, new bg($$1x, this.e));
-            $$3.put($$1x, new af($$1x, $$4x));
-         } catch (Exception var6) {
-            a.error("Parsing error loading custom advancement {}: {}", $$1x, var6.getMessage());
-         }
-      });
-      this.c = $$3.buildOrThrow();
-      ak $$4 = new ak();
-      $$4.a(this.c.values());
-
-      for (ag $$5 : $$4.b()) {
-         if ($$5.b().b().d().isPresent()) {
-            as.a($$5);
+   public static void a() {
+      if (!c) {
+         c = true;
+         Instant $$0 = Instant.now();
+         if (jy.ar.e().isEmpty()) {
+            throw new IllegalStateException("Unable to load registries");
+         } else {
+            cxs.b();
+            cwe.b();
+            if (bkm.a(bkm.bt) == null) {
+               throw new IllegalStateException("Failed loading EntityTypes");
+            } else {
+               cmz.a();
+               gg.a();
+               je.c();
+               iy.a();
+               jy.a();
+               cji.a();
+               d();
+               b.set(Duration.between($$0, Instant.now()).toMillis());
+            }
          }
       }
-
-      this.d = $$4;
    }
 
-   @Nullable
-   public af a(afw $$0) {
-      return this.c.get($$0);
+   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
+      ru $$3 = ru.a();
+      $$0.forEach($$3x -> {
+         String $$4 = $$1.apply((T)$$3x);
+         if (!$$3.b($$4)) {
+            $$2.add($$4);
+         }
+      });
    }
 
-   public ak a() {
-      return this.d;
+   private static void a(final Set<String> $$0) {
+      final ru $$1 = ru.a();
+      cro.a(new cro.c() {
+         @Override
+         public <T extends cro.g<T>> void a(cro.e<T> $$0x, cro.f<T> $$1x) {
+            if (!$$1.b($$0.b())) {
+               $$0.add($$0.a());
+            }
+         }
+      });
    }
 
-   public Collection<af> b() {
-      return this.c.values();
+   public static Set<String> b() {
+      Set<String> $$0 = new TreeSet<>();
+      a(jy.v, blz::c, $$0);
+      a(jy.h, bkm::g, $$0);
+      a(jy.e, bjt::d, $$0);
+      a(jy.i, ckw::a, $$0);
+      a(jy.g, cpm::g, $$0);
+      a(jy.f, cut::h, $$0);
+      a(jy.n, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a($$0);
+      return $$0;
+   }
+
+   public static void a(Supplier<String> $$0) {
+      if (!c) {
+         throw b($$0);
+      }
+   }
+
+   private static RuntimeException b(Supplier<String> $$0) {
+      try {
+         String $$1 = $$0.get();
+         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
+      } catch (Exception var3) {
+         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
+         $$3.addSuppressed(var3);
+         return $$3;
+      }
+   }
+
+   public static void c() {
+      a(() -> "validate");
+      if (aa.aT) {
+         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
+         dv.b();
+      }
+
+      bmf.a();
+   }
+
+   private static void d() {
+      if (d.isDebugEnabled()) {
+         System.setErr(new agl("STDERR", System.err));
+         System.setOut(new agl("STDOUT", a));
+      } else {
+         System.setErr(new agn("STDERR", System.err));
+         System.setOut(new agn("STDOUT", a));
+      }
+   }
+
+   public static void a(String $$0) {
+      a.println($$0);
    }
 }

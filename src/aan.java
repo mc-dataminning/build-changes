@@ -1,24 +1,31 @@
-public class aan implements wb<xu> {
-   private final int a;
+public record aan(acg d, byte e) implements wk<yd> {
+   public static final byte a = 1;
+   public static final byte b = 2;
+   public static final byte c = 3;
 
-   public aan(dhs $$0) {
-      this.a = $$0.q();
-   }
-
-   public aan(tl $$0) {
-      this.a = $$0.n();
+   public aan(tu $$0) {
+      this(new acg($$0), $$0.readByte());
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.a);
+   public void a(tu $$0) {
+      this.d.a($$0);
+      $$0.k(this.e);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public boolean a(byte $$0) {
+      return (this.e & $$0) != 0;
+   }
+
+   public acg a() {
+      return this.d;
+   }
+
+   public byte d() {
+      return this.e;
    }
 }

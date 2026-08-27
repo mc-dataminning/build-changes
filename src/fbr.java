@@ -1,26 +1,27 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fbr extends fbg<cgl> implements fcl<cgl> {
+   private static final agg x = new agg("textures/gui/container/generic_54.png");
+   private final int y;
 
-public class fbr implements fbv {
-   private final exm a;
-
-   public fbr(exm $$0) {
-      this.a = $$0;
+   public fbr(cgl $$0, cdl $$1, ur $$2) {
+      super($$0, $$1, $$2);
+      int $$3 = 222;
+      int $$4 = 114;
+      this.y = $$0.m();
+      this.k = 114 + this.y * 18;
+      this.o = this.k - 94;
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
-      }
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
 
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
-      }
-
-      return $$6;
+   @Override
+   protected void a(eub $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.y * 18 + 17);
+      $$0.a(x, $$4, $$5 + this.y * 18 + 17, 0, 126, this.c, 96);
    }
 }

@@ -1,15 +1,30 @@
-import java.util.Set;
+public class fcn extends fbf {
+   private final cqt m;
 
-public class fcn extends fcm {
-   private static final ui i = ui.c("gui.recipebook.toggleRecipes.blastable");
-
-   @Override
-   protected ui c() {
-      return i;
+   public fcn(cqt $$0) {
+      this.m = $$0;
    }
 
    @Override
-   protected Set<cke> b() {
-      return ddm.f().keySet();
+   public cqt l() {
+      return this.m;
+   }
+
+   @Override
+   int C() {
+      return 150;
+   }
+
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.a.a(this.l().m());
+   }
+
+   @Override
+   protected void a(cqt $$0) {
+      if ($$0 instanceof cfl.a $$1) {
+         this.f.I().b(new adx($$1.h().ah(), this.a.a(), $$0.o()));
+      }
    }
 }

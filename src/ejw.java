@@ -1,29 +1,53 @@
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class ejw<T> implements ejn<T> {
-   private final Function<ht, eju<T>> a;
+public class ejw extends AbstractDoubleList implements eju {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   public ejw(Function<ht, eju<T>> $$0) {
+   protected ejw(DoubleList $$0, DoubleList $$1, boolean $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public boolean a(ht $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
+   public int size() {
+      return this.a.size() + this.b.size();
    }
 
    @Override
-   public void a(ejr<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
+   public boolean a(eju.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   }
+
+   private boolean b(eju.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
+      }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
    }
 
    @Override
-   public boolean b(ht $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   public DoubleList a() {
+      return this;
    }
 }

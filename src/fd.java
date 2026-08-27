@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class fd extends fb<cyv> {
+public class fd extends fb<czp> {
    private fd() {
-      super(cyv.d, cyv::values);
+      super(czp.d, czp::values);
    }
 
-   public static fb<cyv> a() {
+   public static fb<czp> a() {
       return new fd();
    }
 
-   public static cyv a(CommandContext<du> $$0, String $$1) {
-      return (cyv)$$0.getArgument($$1, cyv.class);
+   public static czp a(CommandContext<du> $$0, String $$1) {
+      return (czp)$$0.getArgument($$1, czp.class);
    }
 }

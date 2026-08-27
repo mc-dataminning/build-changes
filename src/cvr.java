@@ -1,43 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cvr extends ctl {
-   public static final MapCodec<cvr> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvo.a.forGetter($$0x -> $$0x.f), t()).apply($$0, cvr::new));
-   private final cua f;
+public class cvr extends cyh implements cuw, cvp {
+   public static final MapCodec<cvr> c = b(cvr::new);
 
    @Override
    public MapCodec<cvr> a() {
-      return e;
+      return c;
    }
 
-   protected cvr(cua $$0, dga.d $$1) {
-      super($$1);
-      this.f = $$0;
-   }
-
-   @Override
-   public void b(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
-      this.a($$0, (cra)$$1, $$2);
+   public cvr(dgv.d $$0) {
+      super($$0, hx.a, r_, false);
+      this.k(this.E.b().a(s_, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.f.o().a(d, Boolean.valueOf(false)).a(c, $$0.c(c)), 2);
-      }
+   protected cyi c() {
+      return (cyi)cuv.ru;
    }
 
    @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
-         return cuc.a.o();
-      } else {
-         if ($$0.c(d)) {
-            $$3.a($$4, ebf.c, ebf.c.a($$3));
-         }
+   protected dgw a(dgw $$0, dgw $$1) {
+      return $$1.a(s_, $$0.c(s_));
+   }
 
-         this.a($$0, $$3, $$4);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   @Override
+   public clb a(crv $$0, ht $$1, dgw $$2) {
+      return new clb(cle.vx);
+   }
+
+   @Override
+   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
+      return cvp.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(s_);
+   }
+
+   @Override
+   public boolean b(crv $$0, ht $$1, dgw $$2) {
+      return !$$2.c(s_);
+   }
+
+   @Override
+   public boolean a(crs $$0, ato $$1, ht $$2, dgw $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ama $$0, ato $$1, ht $$2, dgw $$3) {
+      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
    }
 }

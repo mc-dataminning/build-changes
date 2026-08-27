@@ -2,71 +2,49 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dtq extends dtw {
-   public static final Codec<dtq> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dtq::new));
+public class dtq extends dts {
+   public static final Codec<dtq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ata.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               ebj.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               asq.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, dtq::new)
+   );
+   private final ata<Integer> i;
+   private final ebj.a j;
+   private final float k;
+   private final ebj l;
 
-   public dtq(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dtq(ata<Integer> $$0, ebj.a $$1, float $$2, long $$3, ebj.a $$4, float $$5, List<dgw> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = ebj.b(new dne(new dmg($$3)), $$1);
    }
 
    @Override
-   protected dtx<?> a() {
-      return dtx.e;
+   protected dtp<?> a() {
+      return dtp.e;
    }
 
    @Override
-   public List<dse.a> a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, int $$3, ht $$4, dro $$5) {
-      List<dse.a> $$6 = Lists.newArrayList();
-      ht $$7 = $$4.d();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.h(), $$5);
-      a($$0, $$1, $$2, $$7.f(), $$5);
-      a($$0, $$1, $$2, $$7.f().h(), $$5);
-      hx $$8 = hx.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
+   public dgw a(ato $$0, ht $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)ati.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dgw> $$4 = Lists.newArrayListWithCapacity($$3);
 
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         ht $$19 = new ht($$14, $$18, $$15);
-         if (dqa.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.h(), $$5);
-            this.b($$0, $$1, $$2, $$19.f(), $$5);
-            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
-         }
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
 
-      $$6.add(new dse.a(new ht($$14, $$16, $$15), 0, true));
+      return this.a($$4, $$1, (double)this.e);
+   }
 
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new ht($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new dse.a(new ht($$14 + $$20, $$16, $$15 + $$21), 0, false));
-            }
-         }
-      }
-
-      return $$6;
+   protected double a(ht $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

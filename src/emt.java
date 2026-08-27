@@ -1,43 +1,95 @@
-import java.util.Locale;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public enum emt {
-   a,
-   b,
-   c,
-   d;
-
-   private static final int e = 1024;
-
-   public static emt a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
-         }
-      }
+public class emt {
+   public void a(float $$0) {
    }
 
-   public static double a(long $$0, emt $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   public void a(float $$0, float $$1) {
    }
 
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
-      }
+   public void a(float $$0, float $$1, float $$2) {
    }
 
-   public static String b(long $$0, emt $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+   }
+
+   public void a(int $$0) {
+   }
+
+   public void a(int $$0, int $$1) {
+   }
+
+   public void a(int $$0, int $$1, int $$2) {
+   }
+
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+   }
+
+   public void a(float[] $$0) {
+   }
+
+   public void a(Vector3f $$0) {
+   }
+
+   public void a(Vector4f $$0) {
+   }
+
+   public void c(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+   }
+
+   public void a(Matrix4f $$0) {
+   }
+
+   public void a(Matrix3f $$0) {
    }
 }

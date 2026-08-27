@@ -1,45 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class dtm extends dtk {
-   public static final Codec<dtm> a = Codec.unit(() -> dtm.b);
-   public static final dtm b = new dtm();
+public class dtm<P extends dtl> {
+   public static final dtm<dtk> a = a("mangrove_root_placer", dtk.c);
+   private final Codec<P> b;
 
-   @Override
-   protected dtl<?> a() {
-      return dtl.a;
+   private static <P extends dtl> dtm<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.Z, $$0, new dtm<>($$1));
    }
 
-   @Override
-   public void a(dtk.a $$0) {
-      ate $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            ht $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dcr.d);
-            }
-         }
+   private dtm(Codec<P> $$0) {
+      this.b = $$0;
+   }
 
-         if ($$1.a(3) > 0) {
-            ht $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dcr.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ht $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dcr.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            ht $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dcr.c);
-            }
-         }
-      });
+   public Codec<P> a() {
+      return this.b;
    }
 }

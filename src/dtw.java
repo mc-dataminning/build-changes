@@ -1,76 +1,49 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public abstract class dtw {
-   public static final Codec<dtw> c = jy.Y.q().dispatch(dtw::a, dtx::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
+public record dtw(dto b, List<dtw.a> c) {
+   public static final Codec<dtw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dto.a.fieldOf("fallback").forGetter(dtw::a), dtw.a.a.listOf().fieldOf("rules").forGetter(dtw::b)).apply($$0, dtw::new)
+   );
 
-   protected static <P extends dtw> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+   public static dtw a(dto $$0) {
+      return new dtw($$0, List.of());
+   }
+
+   public static dtw a(cut $$0) {
+      return a(dto.a($$0));
+   }
+
+   public dgw a(csm $$0, ato $$1, ht $$2) {
+      for (dtw.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
+      }
+
+      return this.b.a($$1, $$2);
+   }
+
+   public dto a() {
+      return this.b;
+   }
+
+   public List<dtw.a> b() {
+      return this.c;
+   }
+
+   public static record a(dnm b, dto c) {
+      public static final Codec<dtw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dnm.b.fieldOf("if_true").forGetter(dtw.a::a), dto.a.fieldOf("then").forGetter(dtw.a::b)).apply($$0, dtw.a::new)
       );
-   }
 
-   public dtw(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   protected abstract dtx<?> a();
-
-   public abstract List<dse.a> a(crf var1, BiConsumer<ht, dgb> var2, ate var3, int var4, ht var5, dro var6);
-
-   public int a(ate $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
-
-   private static boolean c(crf $$0, ht $$1) {
-      return $$0.a($$1, $$0x -> doo.b($$0x) && !$$0x.a(cuc.i) && !$$0x.a(cuc.fl));
-   }
-
-   protected static void a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, ht $$3, dro $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+      public dnm a() {
+         return this.b;
       }
-   }
 
-   protected boolean b(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, ht $$3, dro $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, ht $$3, dro $$4, Function<dgb, dgb> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
+      public dto b() {
+         return this.c;
       }
-   }
-
-   protected void a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, ht.a $$3, dro $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(crf $$0, ht $$1) {
-      return dqa.c($$0, $$1);
-   }
-
-   public boolean b(crf $$0, ht $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(aqs.t));
    }
 }

@@ -1,60 +1,41 @@
-@FunctionalInterface
-public interface fud<T extends bjt> {
-   fuc<T> create(fud.a var1);
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public static class a {
-      private final fub a;
-      private final fvb b;
-      private final fpu c;
-      private final fox d;
-      private final aot e;
-      private final fis f;
-      private final esw g;
+public class fud implements ftq.a {
+   private static final int a = 60;
+   private final Set<iu> b = Sets.newHashSet();
 
-      public a(fub $$0, fvb $$1, fpu $$2, fox $$3, aot $$4, fis $$5, esw $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
+   fud() {
+   }
 
-      public fub a() {
-         return this.a;
-      }
+   @Override
+   public void a() {
+      this.b.clear();
+   }
 
-      public fvb b() {
-         return this.b;
-      }
+   public void a(iu $$0) {
+      this.b.add($$0);
+   }
 
-      public fpu c() {
-         return this.c;
-      }
+   public void b(iu $$0) {
+      this.b.remove($$0);
+   }
 
-      public fox d() {
-         return this.d;
-      }
+   @Override
+   public void a(enk $$0, fqh $$1, double $$2, double $$3, double $$4) {
+      ht $$5 = ht.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
 
-      public aot e() {
-         return this.e;
-      }
-
-      public fis f() {
-         return this.f;
-      }
-
-      public gch g() {
-         return this.c.a().a();
-      }
-
-      public fiw a(fiu $$0) {
-         return this.f.a($$0);
-      }
-
-      public esw h() {
-         return this.g;
-      }
+   private static void a(enk $$0, fqh $$1, iu $$2) {
+      int $$3 = 1;
+      ht $$4 = $$2.q();
+      ht $$5 = $$4.b(-1, -1, -1);
+      ht $$6 = $$4.b(1, 1, 1);
+      ftq.a($$0, $$1, $$5, $$6, 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

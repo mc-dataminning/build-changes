@@ -1,16 +1,22 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class bbn extends Schema {
-   public bbn(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bbn extends azn {
+   public bbn(Schema $$0, boolean $$1) {
+      super($$0, $$1, "WeaponSmithChestLootTableFix", ban.s, "minecraft:chest");
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("Minecart");
-      return $$1;
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            String $$1 = $$0x.get("LootTable").asString("");
+            return $$1.equals("minecraft:chests/village_blacksmith")
+               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
+               : $$0x;
+         }
+      );
    }
 }

@@ -1,80 +1,97 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class bpj extends bpk {
-   private static final List<cke> c = ImmutableList.of(ckm.oH, ckm.ur);
+public class bpj extends bmp<ccz> {
+   private static final int c = 5;
+   private static final float d = 0.5F;
+   private Set<ckw> e = ImmutableSet.of();
 
-   @Override
-   protected void a(alq $$0, cck $$1) {
-      Optional<ia> $$2 = $$1.dN().c(btk.c);
-      if (!$$2.isEmpty()) {
-         ia $$3 = $$2.get();
-         dgb $$4 = $$0.a_($$3.b());
-         if ($$4.a(cuc.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
+   public bpj() {
+      super(ImmutableMap.of(btz.q, bua.a, btz.h, bua.a));
+   }
+
+   protected boolean a(ama $$0, ccz $$1) {
+      return bmr.a($$1.dN(), btz.q, bkm.bf);
+   }
+
+   protected boolean a(ama $$0, ccz $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(ama $$0, ccz $$1, long $$2) {
+      ccz $$3 = (ccz)$$1.dN().c(btz.q).get();
+      bmr.a($$1, $$3, 0.5F);
+      this.e = a($$1, $$3);
+   }
+
+   protected void c(ama $$0, ccz $$1, long $$2) {
+      ccz $$3 = (ccz)$$1.dN().c(btz.q).get();
+      if (!($$1.f($$3) > 5.0)) {
+         bmr.a($$1, $$3, 0.5F);
+         $$1.a($$0, $$3, $$2);
+         if ($$1.gw() && ($$1.gp().b() == cdc.g || $$3.gx())) {
+            a($$1, ccz.bW.keySet(), $$3);
+         }
+
+         if ($$3.gp().b() == cdc.g && $$1.y().a_(cle.oI) > cle.oI.l() / 2) {
+            a($$1, ImmutableSet.of(cle.oI), $$3);
+         }
+
+         if (!this.e.isEmpty() && $$1.y().a(this.e)) {
+            a($$1, this.e, $$3);
          }
       }
    }
 
-   private void a(alq $$0, cck $$1, ia $$2, dgb $$3) {
-      ht $$4 = $$2.b();
-      if ($$3.c(cvl.e) == 8) {
-         $$3 = cvl.a($$1, $$3, (cqz)$$0, $$4);
-      }
+   protected void d(ama $$0, ccz $$1, long $$2) {
+      $$1.dN().b(btz.q);
+   }
 
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bii $$8 = $$1.y();
-      int $$9 = $$8.b();
-      dgb $$10 = $$3;
+   private static Set<ckw> a(ccz $$0, ccz $$1) {
+      ImmutableSet<ckw> $$2 = $$1.gp().b().d();
+      ImmutableSet<ckw> $$3 = $$0.gp().b().d();
+      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
+   }
 
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         ckj $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.d());
-         if ($$13 != -1) {
-            int $$14 = $$12.L();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
+   private static void a(ccz $$0, Set<ckw> $$1, bky $$2) {
+      bix $$3 = $$0.y();
+      clb $$4 = clb.b;
+      int $$5 = 0;
 
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = cvl.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(cvl.e) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
+      while ($$5 < $$3.b()) {
+         clb $$6;
+         ckw $$7;
+         int $$8;
+         label28: {
+            $$6 = $$3.a($$5);
+            if (!$$6.b()) {
+               $$7 = $$6.d();
+               if ($$1.contains($$7)) {
+                  if ($$6.L() > $$6.g() / 2) {
+                     $$8 = $$6.L() / 2;
+                     break label28;
+                  }
+
+                  if ($$6.L() > 24) {
+                     $$8 = $$6.L() - 24;
+                     break label28;
                   }
                }
             }
+
+            $$5++;
+            continue;
          }
+
+         $$6.h($$8);
+         $$4 = new clb($$7, $$8);
+         break;
       }
 
-      this.a($$0, $$3, $$4, $$10);
-   }
-
-   private void a(alq $$0, dgb $$1, ht $$2, dgb $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
-   }
-
-   private void a(cck $$0) {
-      bii $$1 = $$0.y();
-      if ($$1.a_(ckm.oJ) <= 36) {
-         int $$2 = $$1.a_(ckm.oI);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(ckm.oI, $$6);
-            ckj $$7 = $$1.a(new ckj(ckm.oJ, $$5));
-            if (!$$7.b()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
+      if (!$$4.b()) {
+         bmr.a($$0, $$4, $$2.dj());
       }
    }
 }

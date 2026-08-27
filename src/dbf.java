@@ -1,49 +1,105 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dbf extends csu {
-   public static final MapCodec<dbf> c = b(dbf::new);
+public enum dbf implements aub {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dbf> a() {
-      return c;
+   public static final Codec<dbf> e = aub.a(dbf::values);
+   private final String f;
+   private final h g;
+
+   private dbf(String $$0, h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   protected dbf(dga.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public ddx a(ht $$0, dgb $$1) {
-      return new dfi($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends ddx> ddy<T> a(cqz $$0, dgb $$1, ddz<T> $$2) {
-      return a($$0, $$2, ddz.B);
-   }
-
-   @Override
-   protected void a(cqz $$0, ht $$1, ccx $$2) {
-      ddx $$3 = $$0.c_($$1);
-      if ($$3 instanceof dfi) {
-         $$2.a((bie)$$3);
-         $$2.a(aqn.at);
+   public dbf a(dbf $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
       }
    }
 
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aqd.wz, aqe.e, 1.0F, 1.0F, false);
+   public h a() {
+      return this.g;
+   }
+
+   public hx a(hx $$0) {
+      if ($$0.o() == hx.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
          }
-
-         $$1.a(js.Z, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
       }
+   }
+
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public static dbf a(ato $$0) {
+      return ac.a(values(), $$0);
+   }
+
+   public static List<dbf> b(ato $$0) {
+      return ac.b(values(), $$0);
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

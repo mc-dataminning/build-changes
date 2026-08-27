@@ -1,37 +1,104 @@
-public interface evr {
-   Object b = new Object();
-   int c = 32;
+import javax.annotation.Nullable;
 
-   evr.a a(esy var1, evs var2, long var3);
+public abstract class evr extends eum {
+   protected final agg a;
+   protected final int b;
+   protected final int c;
 
-   default Object d() {
-      return b;
+   evr(int $$0, int $$1, ur $$2, int $$3, int $$4, agg $$5, eum.c $$6) {
+      super(0, 0, $$0, $$1, $$2, $$6, p);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
    }
 
-   default int a() {
-      return 160;
+   public static evr.a a(ur $$0, eum.c $$1, boolean $$2) {
+      return new evr.a($$0, $$1, $$2);
    }
 
-   default int b() {
-      return 32;
-   }
+   public static class a {
+      private final ur a;
+      private final eum.c b;
+      private final boolean c;
+      private int d = 150;
+      private int e = 20;
+      @Nullable
+      private agg f;
+      private int g;
+      private int h;
 
-   default int e() {
-      return asy.e(this.b(), 32);
-   }
-
-   public static enum a {
-      a(aqd.yD),
-      b(aqd.yE);
-
-      private final aqc c;
-
-      private a(aqc $$0) {
-         this.c = $$0;
+      public a(ur $$0, eum.c $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      public void a(gem $$0) {
-         $$0.a(gdd.a(this.c, 1.0F, 1.0F));
+      public evr.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public evr.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public evr.a a(agg $$0, int $$1, int $$2) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h = $$2;
+         return this;
+      }
+
+      public evr a() {
+         if (this.f == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (evr)(this.c
+               ? new evr.b(this.d, this.e, this.a, this.g, this.h, this.f, this.b)
+               : new evr.c(this.d, this.e, this.a, this.g, this.h, this.f, this.b));
+         }
+      }
+   }
+
+   public static class b extends evr {
+      protected b(int $$0, int $$1, ur $$2, int $$3, int $$4, agg $$5, eum.c $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+
+      @Override
+      public void b(eub $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.p() + this.k() / 2 - this.b / 2;
+         int $$5 = this.r() + this.i() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(eub $$0, etz $$1, int $$2) {
+      }
+   }
+
+   public static class c extends evr {
+      protected c(int $$0, int $$1, ur $$2, int $$3, int $$4, agg $$5, eum.c $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+
+      @Override
+      public void b(eub $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.p() + this.k() - this.b - 2;
+         int $$5 = this.r() + this.i() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(eub $$0, etz $$1, int $$2) {
+         int $$3 = this.p() + 2;
+         int $$4 = this.p() + this.k() - this.b - 4;
+         int $$5 = this.p() + this.k() / 2;
+         a($$0, $$1, this.l(), $$5, $$3, this.r(), $$4, this.r() + this.i(), $$2);
       }
    }
 }

@@ -1,15 +1,24 @@
-import java.util.Set;
+import org.joml.Matrix4f;
 
-public class fcy extends fcm {
-   private static final ui i = ui.c("gui.recipebook.toggleRecipes.smokable");
+public class fcy implements fcz {
+   private final asu a;
 
-   @Override
-   protected ui c() {
-      return i;
+   public fcy(asu $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected Set<cke> b() {
-      return ddm.f().keySet();
+   public int a(etz $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Override
+   public int a() {
+      return 10;
+   }
+
+   @Override
+   public void a(etz $$0, int $$1, int $$2, Matrix4f $$3, fqh.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, etz.a.a, 0, 15728880);
    }
 }

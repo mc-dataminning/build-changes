@@ -1,30 +1,36 @@
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.authlib.GameProfile;
+import java.util.function.Supplier;
 
-public class ffk extends fhj {
-   private static final String a = "chest_bottom";
-   private static final String b = "chest_lid";
-   private static final String f = "chest_lock";
+public class ffk implements ffo {
+   private final GameProfile a;
+   private final Supplier<gch> b;
+   private final ur c;
 
-   public ffk(fiw $$0) {
-      super($$0);
+   public ffk(GameProfile $$0) {
+      this.a = $$0;
+      this.b = esr.N().ak().a($$0);
+      this.c = ur.b($$0.getName());
    }
 
    @Override
-   protected Builder<fiw> a(fiw $$0) {
-      Builder<fiw> $$1 = super.a($$0);
-      $$1.add($$0.b("chest_bottom"));
-      $$1.add($$0.b("chest_lid"));
-      $$1.add($$0.b("chest_lock"));
-      return $$1;
+   public void a(ffm $$0) {
+      esr.N().I().b(new aed(this.a.getId()));
    }
 
-   public static fjc a() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      fhj.a($$1);
-      $$1.a("chest_bottom", fjb.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fiy.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", fjb.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fiy.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", fjb.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fiy.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return fjc.a($$0, 128, 128);
+   @Override
+   public ur aP_() {
+      return this.c;
+   }
+
+   @Override
+   public void a(eub $$0, float $$1, int $$2) {
+      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
+      evl.a($$0, this.b.get(), 2, 2, 12);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   @Override
+   public boolean aQ_() {
+      return true;
    }
 }

@@ -1,35 +1,41 @@
-import java.net.InetSocketAddress;
+public class flc {
+   private final fpj a;
+   private final fkw b;
+   private final fqf c;
+   private flc.a d = flc.a.a;
 
-public interface flc {
-   String a();
+   public flc(fpj $$0, fkw $$1, fqf $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   String b();
+   public void a() {
+      switch (this.d) {
+         case b:
+            ht $$0 = this.a.dl();
+            boolean $$1 = this.b.d($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.N_() || !this.a.bv()) {
+               this.d = flc.a.c;
+            }
+         case a:
+         case c:
+      }
+   }
 
-   int c();
+   public boolean b() {
+      return this.d == flc.a.c;
+   }
 
-   InetSocketAddress d();
+   public void c() {
+      if (this.d == flc.a.a) {
+         this.d = flc.a.b;
+      }
+   }
 
-   static flc a(final InetSocketAddress $$0) {
-      return new flc() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

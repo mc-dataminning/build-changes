@@ -1,83 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+public class fjb<T extends byv> extends ffz<T> {
+   private static final float a = 9.0F;
+   private static final float b = 100.0F;
+   private final fkb f;
+   private final fkb g;
 
-public class fjb {
-   private static final Set<hx> a = EnumSet.allOf(hx.class);
-   private final List<fiz> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
-
-   public fjb a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   public fjb(fkb $$0) {
+      super(0.5F, 24.0F);
+      this.f = $$0.b("root");
+      this.g = this.f.b("bone").b("body").b("head");
    }
 
-   public fjb a() {
-      return this.a(true);
+   public static fkh b() {
+      fkj $$0 = new fkj();
+      fkk $$1 = $$0.a().a("root", fkg.c(), fkd.a(0.0F, 5.0F, 0.0F));
+      fkk $$2 = $$1.a("bone", fkg.c(), fkd.a(0.0F, 0.0F, 0.0F));
+      fkk $$3 = $$2.a(
+         "body",
+         fkg.c()
+            .a(62, 68)
+            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new fkf(0.0F))
+            .a(62, 0)
+            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new fkf(0.5F))
+            .a(87, 68)
+            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new fkf(0.0F)),
+         fkd.a(0.0F, 0.0F, 0.0F)
+      );
+      $$2.a("right_front_leg", fkg.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(-7.5F, 10.0F, -15.0F));
+      $$2.a("right_mid_leg", fkg.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(-7.5F, 10.0F, 0.0F));
+      $$2.a("right_hind_leg", fkg.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(-7.5F, 10.0F, 15.0F));
+      $$2.a("left_front_leg", fkg.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(7.5F, 10.0F, -15.0F));
+      $$2.a("left_mid_leg", fkg.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(7.5F, 10.0F, 0.0F));
+      $$2.a("left_hind_leg", fkg.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fkf(0.0F)), fkd.a(7.5F, 10.0F, 15.0F));
+      fkk $$4 = $$3.a(
+         "head",
+         fkg.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new fkf(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new fkf(0.0F)),
+         fkd.a(0.0F, 6.5F, -19.48F)
+      );
+      $$4.a("left_ear", fkg.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fkf(0.0F)), fkd.a(6.51F, -7.5F, -4.51F));
+      $$4.a("right_ear", fkg.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fkf(0.0F)), fkd.a(-6.51F, -7.5F, -4.51F));
+      $$4.a("nose", fkg.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new fkf(0.0F)), fkd.a(0.0F, -4.5F, -11.5F));
+      $$4.a("lower_beak", fkg.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new fkf(0.0F)), fkd.a(0.0F, 2.5F, -12.5F));
+      return fkh.a($$0, 192, 192);
    }
 
-   public fjb a(boolean $$0) {
-      this.e = $$0;
-      return this;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fkb::c);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      if ($$0.t()) {
+         this.a(etn.e, $$1, $$2, 9.0F, 100.0F);
+      } else {
+         this.a(etn.d, $$1, $$2, 9.0F, 100.0F);
+      }
+
+      this.a($$0.bX, etn.f, $$3);
+      this.a($$0.bW, etn.c, $$3);
+      this.a($$0.bY, etn.g, $$3);
+      this.a($$0.bT, etn.i, $$3);
+      this.a($$0.bU, etn.b, $$3);
+      if (this.e) {
+         this.a(etn.a);
+      }
    }
 
-   public fjb a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fja $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new fiz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fjb a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new fiz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fja.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fjb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new fiz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fja.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fjb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<hx> $$6) {
-      this.b.add(new fiz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fja.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public fjb a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new fiz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fja.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fjb a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fja $$7) {
-      this.b.add(new fiz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fjb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new fiz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fja.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fjb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fja $$6, float $$7, float $$8) {
-      this.b.add(new fiz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public fjb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fja $$6) {
-      this.b.add(new fiz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<fiz> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static fjb c() {
-      return new fjb();
+   @Override
+   public fkb a() {
+      return this.f;
    }
 }

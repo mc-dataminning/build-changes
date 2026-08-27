@@ -1,74 +1,96 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class frp implements fra<dfh> {
-   private final Map<dba.a, fhu> a;
-   private static final Map<dba.a, afw> b = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dba.b.c, new afw("textures/entity/skeleton/skeleton.png"));
-      $$0.put(dba.b.d, new afw("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(dba.b.f, new afw("textures/entity/zombie/zombie.png"));
-      $$0.put(dba.b.g, new afw("textures/entity/creeper/creeper.png"));
-      $$0.put(dba.b.i, new afw("textures/entity/enderdragon/dragon.png"));
-      $$0.put(dba.b.h, new afw("textures/entity/piglin/piglin.png"));
-      $$0.put(dba.b.e, gas.a());
-   });
+public class frp {
+   public static final frp a = new frp(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public final Vector3f b;
+   public final Vector3f c;
+   public final Vector3f d;
 
-   public static Map<dba.a, fhu> a(fis $$0) {
-      Builder<dba.a, fhu> $$1 = ImmutableMap.builder();
-      $$1.put(dba.b.c, new fht($$0.a(fiv.bl)));
-      $$1.put(dba.b.d, new fht($$0.a(fiv.bT)));
-      $$1.put(dba.b.e, new fht($$0.a(fiv.aN)));
-      $$1.put(dba.b.f, new fht($$0.a(fiv.bY)));
-      $$1.put(dba.b.g, new fht($$0.a(fiv.D)));
-      $$1.put(dba.b.i, new fiq($$0.a(fiv.K)));
-      $$1.put(dba.b.h, new fha($$0.a(fiv.aH)));
-      return $$1.build();
+   public frp(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
+      this.b = new Vector3f($$0);
+      this.c = new Vector3f($$1);
+      this.d = new Vector3f($$2);
    }
 
-   public frp(frb.a $$0) {
-      this.a = a($$0.e());
+   public void a(boolean $$0, enk $$1) {
+      if (this != a) {
+         float $$2 = this.b.x();
+         float $$3 = this.b.y();
+         float $$4 = this.b.z();
+         if ($$0) {
+            $$3 = -$$3;
+            $$4 = -$$4;
+         }
+
+         int $$5 = $$0 ? -1 : 1;
+         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
+      }
    }
 
-   public void a(dfh $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      dgb $$7 = $$0.q();
-      boolean $$8 = $$7.b() instanceof dcw;
-      hx $$9 = $$8 ? $$7.c(dcw.d) : null;
-      int $$10 = $$8 ? dhh.a($$9.g()) : $$7.c(dba.e);
-      float $$11 = dhh.b($$10);
-      dba.a $$12 = ((csw)$$7.b()).b();
-      fhu $$13 = this.a.get($$12);
-      fpj $$14 = a($$12, $$0.d());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
-   }
-
-   public static void a(@Nullable hx $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5, fhu $$6, fpj $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (this.getClass() != $$0.getClass()) {
+         return false;
       } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+         frp $$1 = (frp)$$0;
+         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      $$0 = 31 * $$0 + this.c.hashCode();
+      return 31 * $$0 + this.d.hashCode();
+   }
+
+   protected static class a implements JsonDeserializer<frp> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
+      public frp a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(ati.a($$5.x, -5.0F, 5.0F), ati.a($$5.y, -5.0F, 5.0F), ati.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(ati.a($$6.x, -4.0F, 4.0F), ati.a($$6.y, -4.0F, 4.0F), ati.a($$6.z, -4.0F, 4.0F));
+         return new frp($$4, $$5, $$6);
       }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      eml $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, fzr.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-   }
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
+            return $$2;
+         } else {
+            JsonArray $$3 = asy.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
 
-   public static fpj a(dba.a $$0, @Nullable GameProfile $$1) {
-      afw $$2 = b.get($$0);
-      if ($$0 == dba.b.e && $$1 != null) {
-         gbb $$3 = ero.O().al();
-         return fpj.i($$3.b($$1).a());
-      } else {
-         return fpj.f($$2);
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = asy.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+               }
+
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            }
+         }
       }
    }
 }

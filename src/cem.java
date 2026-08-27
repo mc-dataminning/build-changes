@@ -1,59 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
-
-public class cem {
-   private final List<cej> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<cej> a() {
-      return ImmutableList.copyOf(this.a);
+public class cem extends cek {
+   public cem(bkm<? extends cem> $$0, crs $$1) {
+      super($$0, $$1);
    }
 
-   public cem a(int $$0, float $$1) {
-      this.a.add(new cej($$0, $$1));
-      this.b();
-      return this;
+   public cem(crs $$0, bky $$1) {
+      super(bkm.z, $$1, $$0);
    }
 
-   public cem a(Collection<cej> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   public cem(crs $$0, double $$1, double $$2, double $$3) {
+      super(bkm.z, $$1, $$2, $$3, $$0);
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cej> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dL()
+               .a(
+                  new jo(js.O, this.q()),
+                  this.dq(),
+                  this.ds(),
+                  this.dw(),
+                  ((double)this.ag.i() - 0.5) * 0.08,
+                  ((double)this.ag.i() - 0.5) * 0.08,
+                  ((double)this.ag.i() - 0.5) * 0.08
+               );
+         }
+      }
    }
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cej $$1 = this.a.get(this.b);
-         cej $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
+   @Override
+   protected void a(ejf $$0) {
+      super.a($$0);
+      $$0.a().a(this.dM().b(this, this.v()), 0.0F);
+   }
 
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cej $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
+   @Override
+   protected void a(ejg $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         if (this.ag.a(8) == 0) {
+            int $$1 = 1;
+            if (this.ag.a(32) == 0) {
+               $$1 = 4;
             }
 
-            this.b = $$6;
-            $$5 = $$7.b();
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               bwo $$3 = bkm.q.a(this.dL());
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.dq(), this.ds(), this.dw(), this.dB(), 0.0F);
+                  this.dL().b($$3);
+               }
+            }
          }
 
-         return $$5;
+         this.dL().a(this, (byte)3);
+         this.ak();
       }
+   }
+
+   @Override
+   protected ckw s() {
+      return cle.qd;
    }
 }

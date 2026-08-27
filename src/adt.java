@@ -1,28 +1,24 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class adt implements wk<acj> {
+   private final int a;
 
-public class adt implements wb<aca> {
-   private final UUID a;
-
-   public adt(UUID $$0) {
+   public adt(int $$0) {
       this.a = $$0;
    }
 
-   public adt(tl $$0) {
-      this.a = $$0.p();
+   public adt(tu $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.a);
+   public void a(tu $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bjt a(alq $$0) {
-      return $$0.a(this.a);
+   public int a() {
+      return this.a;
    }
 }

@@ -1,25 +1,8 @@
-public class cpc extends cot {
-   protected cpc(cot.a $$0, cou $$1, bjy... $$2) {
-      super($$0, $$1, $$2);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cot $$0) {
-      return super.a($$0) && $$0 != cox.v;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cpc {
 }

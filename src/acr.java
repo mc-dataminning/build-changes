@@ -1,49 +1,38 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-public class acr implements wb<aca> {
-   public static final int a = 4;
-   private static final int b = 128;
-   private static final int c = 8192;
-   private static final int d = 200;
-   private final int e;
-   private final List<String> f;
-   private final Optional<String> g;
-
-   public acr(int $$0, List<String> $$1, Optional<String> $$2) {
-      this.e = $$0;
-      this.f = ImmutableList.copyOf($$1);
-      this.g = $$2;
-   }
-
-   public acr(tl $$0) {
-      this.e = $$0.n();
-      this.f = $$0.a(tl.a(Lists::newArrayListWithCapacity, 200), $$0x -> $$0x.d(8192));
-      this.g = $$0.b((tl.a<String>)($$0x -> $$0x.d(128)));
+public record acr(String a, Instant b, long c, @Nullable vd d, uy.b e) implements wk<acj> {
+   public acr(tu $$0) {
+      this($$0.d(256), $$0.w(), $$0.readLong(), $$0.c(vd::a), new uy.b($$0));
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.e);
-      $$0.a(this.f, ($$0x, $$1) -> $$0x.a($$1, 8192));
-      $$0.a(this.g, ($$0x, $$1) -> $$0x.a($$1, 128));
+   public void a(tu $$0) {
+      $$0.a(this.a, 256);
+      $$0.a(this.b);
+      $$0.b(this.c);
+      $$0.a(this.d, vd::a);
+      this.e.a($$0);
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   public List<String> a() {
-      return this.f;
+   public Instant d() {
+      return this.b;
    }
 
-   public Optional<String> d() {
-      return this.g;
+   public long e() {
+      return this.c;
    }
 
-   public int e() {
+   @Nullable
+   public vd f() {
+      return this.d;
+   }
+
+   public uy.b g() {
       return this.e;
    }
 }

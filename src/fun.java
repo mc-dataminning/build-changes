@@ -1,19 +1,25 @@
-public class fun extends fvj<caf, fgb<caf>> {
-   private static final afw a = new afw("textures/entity/ghast/ghast.png");
-   private static final afw i = new afw("textures/entity/ghast/ghast_shooting.png");
+public class fun extends fwq<bwe, fgh> {
+   private static final agg a = new agg("textures/entity/bat.png");
 
-   public fun(fud.a $$0) {
-      super($$0, new fgb<>($$0.a(fiv.aa)), 1.5F);
+   public fun(fvk.a $$0) {
+      super($$0, new fgh($$0.a(fka.g)), 0.25F);
    }
 
-   public afw a(caf $$0) {
-      return $$0.s() ? i : a;
+   public agg a(bwe $$0) {
+      return a;
    }
 
-   protected void a(caf $$0, emh $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   protected void a(bwe $$0, enk $$1, float $$2) {
+      $$1.b(0.35F, 0.35F, 0.35F);
+   }
+
+   protected void a(bwe $$0, enk $$1, float $$2, float $$3, float $$4) {
+      if ($$0.t()) {
+         $$1.a(0.0F, -0.1F, 0.0F);
+      } else {
+         $$1.a(0.0F, ati.b($$2 * 0.3F) * 0.1F, 0.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

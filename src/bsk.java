@@ -1,67 +1,49 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bsk extends bre {
-   private static final int a = 10;
-   private final bks b;
-   private final int c;
-   @Nullable
-   private ht d;
+public class bsk extends brt {
+   private static final bvk b = bvk.b().a(6.0);
+   public static final int a = 400;
+   private final bwv c;
+   private ccz d;
+   private int e;
 
-   public bsk(bks $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(bre.a.a));
+   public bsk(bwv $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(brt.a.a, brt.a.b));
    }
 
    @Override
    public boolean a() {
-      if (this.b.cO()) {
+      if (!this.c.dL().N()) {
          return false;
-      } else if (this.b.dL().N()) {
-         return false;
-      } else if (this.b.ef().a(this.c) != 0) {
+      } else if (this.c.ef().a(8000) != 0) {
          return false;
       } else {
-         alq $$0 = (alq)this.b.dL();
-         ht $$1 = this.b.dl();
-         if (!$$0.a($$1, 6)) {
-            return false;
-         } else {
-            eif $$2 = bvc.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(iu.a($$1x))));
-            this.d = $$2 == null ? null : ht.a($$2);
-            return this.d != null;
-         }
+         this.d = this.c.dL().a(ccz.class, b, this.c, this.c.dq(), this.c.ds(), this.c.dw(), this.c.cG().c(6.0, 2.0, 6.0));
+         return this.d != null;
       }
    }
 
    @Override
    public boolean b() {
-      return this.d != null && !this.b.L().l() && this.b.L().h().equals(this.d);
+      return this.e > 0;
+   }
+
+   @Override
+   public void c() {
+      this.e = this.a(400);
+      this.c.w(true);
+   }
+
+   @Override
+   public void d() {
+      this.c.w(false);
+      this.d = null;
    }
 
    @Override
    public void e() {
-      if (this.d != null) {
-         bts $$0 = this.b.L();
-         if ($$0.l() && !this.d.a(this.b.dj(), 10.0)) {
-            eif $$1 = eif.c(this.d);
-            eif $$2 = this.b.dj();
-            eif $$3 = $$2.d($$1);
-            $$1 = $$3.a(0.4).e($$1);
-            eif $$4 = $$1.d($$2).d().a(10.0).e($$2);
-            ht $$5 = ht.a($$4);
-            $$5 = this.b.dL().a(dlk.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
-            }
-         }
-      }
-   }
-
-   private void h() {
-      ate $$0 = this.b.ef();
-      ht $$1 = this.b.dL().a(dlk.a.f, this.b.dl().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.L().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
+      this.c.G().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

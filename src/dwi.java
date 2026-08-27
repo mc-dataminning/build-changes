@@ -1,128 +1,29 @@
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public final class dwi {
-   public static final String a = "INVALID";
-   public static final dwi b = new dwi(null, new cqg(0, 0), 0, new dwp(List.of()));
-   private static final Logger c = LogUtils.getLogger();
-   private final dwa d;
-   private final dwp e;
-   private final cqg f;
-   private int g;
-   @Nullable
-   private volatile dvs h;
+public class dwi extends dwb {
+   public static final Codec<dwi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, dwi::new)
+   );
+   private final int c;
 
-   public dwi(dwa $$0, cqg $$1, int $$2, dwp $$3) {
-      this.d = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.e = $$3;
+   private dwi(int $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   public static dwi a(dwq $$0, rt $$1, long $$2) {
-      String $$3 = $$1.l("id");
-      if ("INVALID".equals($$3)) {
-         return b;
-      } else {
-         io<dwa> $$4 = $$0.b().d(jz.aA);
-         dwa $$5 = $$4.a(new afw($$3));
-         if ($$5 == null) {
-            c.error("Unknown stucture id: {}", $$3);
-            return null;
-         } else {
-            cqg $$6 = new cqg($$1.h("ChunkX"), $$1.h("ChunkZ"));
-            int $$7 = $$1.h("references");
-            rz $$8 = $$1.c("Children", 10);
-
-            try {
-               dwp $$9 = dwp.a($$8, $$0);
-               if ($$5 instanceof dyd) {
-                  $$9 = dyd.a($$6, $$2, $$9);
-               }
-
-               return new dwi($$5, $$6, $$7, $$9);
-            } catch (Exception var11) {
-               c.error("Failed Start with id {}", $$3, var11);
-               return null;
-            }
-         }
-      }
+   public static dwi a(int $$0) {
+      return new dwi($$0);
    }
 
-   public dvs a() {
-      dvs $$0 = this.h;
-      if ($$0 == null) {
-         $$0 = this.d.a(this.e.b());
-         this.h = $$0;
-      }
-
-      return $$0;
+   @Override
+   protected boolean a(dwa $$0, ato $$1, ht $$2) {
+      int $$3 = $$0.a(dmf.a.d, $$2.u(), $$2.w());
+      int $$4 = $$0.a(dmf.a.b, $$2.u(), $$2.w());
+      return $$4 - $$3 <= this.c;
    }
 
-   public void a(crt $$0, crr $$1, dhy $$2, ate $$3, dvs $$4, cqg $$5) {
-      List<dwe> $$6 = this.e.c();
-      if (!$$6.isEmpty()) {
-         dvs $$7 = $$6.get(0).f;
-         ht $$8 = $$7.f();
-         ht $$9 = new ht($$8.u(), $$7.h(), $$8.w());
-
-         for (dwe $$10 : $$6) {
-            if ($$10.f().a($$4)) {
-               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
-            }
-         }
-
-         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
-      }
-   }
-
-   public rt a(dwq $$0, cqg $$1) {
-      rt $$2 = new rt();
-      if (this.b()) {
-         $$2.a("id", $$0.b().d(jz.aA).b(this.d).toString());
-         $$2.a("ChunkX", $$1.e);
-         $$2.a("ChunkZ", $$1.f);
-         $$2.a("references", this.g);
-         $$2.a("Children", this.e.a($$0));
-         return $$2;
-      } else {
-         $$2.a("id", "INVALID");
-         return $$2;
-      }
-   }
-
-   public boolean b() {
-      return !this.e.a();
-   }
-
-   public cqg c() {
-      return this.f;
-   }
-
-   public boolean d() {
-      return this.g < this.g();
-   }
-
-   public void e() {
-      this.g++;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   protected int g() {
-      return 1;
-   }
-
-   public dwa h() {
-      return this.d;
-   }
-
-   public List<dwe> i() {
-      return this.e.c();
+   @Override
+   public dwd<?> b() {
+      return dwd.d;
    }
 }

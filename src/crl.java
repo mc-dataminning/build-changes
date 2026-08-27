@@ -1,25 +1,11 @@
-public final class crl implements dhu {
-   private final int a;
-   private final dgb[] b;
+import java.util.Optional;
 
-   public crl(int $$0, dgb[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class crl {
+   public Optional<Float> a(crk $$0, cqy $$1, ht $$2, dgw $$3, ecg $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
    }
 
-   @Override
-   public dgb a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : cuc.a.o();
-   }
-
-   @Override
-   public void a(int $$0, dgb $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   public boolean a(crk $$0, cqy $$1, ht $$2, dgw $$3, float $$4) {
+      return true;
    }
 }

@@ -1,37 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class bni {
-   public static bnk<bkj> a(float $$0) {
-      return bpm.a((Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$1 -> $$1.group($$1.c(btk.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.g($$3.dl())) {
-                  return false;
-               } else {
-                  Optional<eif> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new btn($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+   private static ht a(bla $$0, ht $$1) {
+      ato $$2 = $$0.dL().z;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   @Nullable
-   private static eif a(alq $$0, bkj $$1) {
-      ate $$2 = $$1.ef();
-      ht $$3 = $$1.dl();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         ht $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return eif.c($$5);
-         }
-      }
-
-      return null;
+   private static int a(ato $$0) {
+      return $$0.a(3) - 1;
    }
 
-   public static boolean a(alq $$0, bkj $$1, ht $$2) {
-      return $$0.g($$2) && (double)$$0.a(dlk.a.e, $$2).v() <= $$1.ds();
+   public static <E extends bla> bnz<E> a(btz<ht> $$0, int $$1, float $$2) {
+      return bqb.a(
+         (Function<bqb.b<E>, ? extends App<bqb.c<E>, bqe<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(btz.o), $$3.c(btz.m), $$3.a(btz.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     ht $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dl(), (double)$$1);
+                     if (!$$8) {
+                        bmr.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
+
+                     return true;
+                  }))
+      );
    }
 }

@@ -1,8 +1,5 @@
-public interface aey extends acb, acc {
-   @Override
-   default tk b() {
-      return tk.c;
-   }
+public interface aey {
+   agg a();
 
-   void a(afa var1);
+   void a(tu var1);
 }

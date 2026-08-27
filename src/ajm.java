@@ -1,22 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class ajm {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.save.failed"));
+
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("setworldspawn").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), ht.a(((du)$$0x.getSource()).e()), 0.0F)))
-            .then(
-               ((RequiredArgumentBuilder)dv.a("pos", fm.a()).executes($$0x -> a((du)$$0x.getSource(), fm.c($$0x, "pos"), 0.0F)))
-                  .then(dv.a("angle", dz.a()).executes($$0x -> a((du)$$0x.getSource(), fm.c($$0x, "pos"), dz.a($$0x, "angle"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("save-all").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((du)$$0x.getSource(), false)))
+            .then(dv.a("flush").executes($$0x -> a((du)$$0x.getSource(), true)))
       );
    }
 
-   private static int a(du $$0, ht $$1, float $$2) {
-      $$0.f().a($$1, $$2);
-      $$0.a(() -> ui.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
-      return 1;
+   private static int a(du $$0, boolean $$1) throws CommandSyntaxException {
+      $$0.a(() -> ur.c("commands.save.saving"), false);
+      MinecraftServer $$2 = $$0.m();
+      boolean $$3 = $$2.b(true, $$1, true);
+      if (!$$3) {
+         throw a.create();
+      } else {
+         $$0.a(() -> ur.c("commands.save.success"), true);
+         return 1;
+      }
    }
 }

@@ -1,26 +1,26 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class daj extends cuj {
-   public static final MapCodec<daj> a = b(daj::new);
-   protected static final float b = 6.0F;
-   protected static final eiy c = cua.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class daj extends ddq {
+   public static final MapCodec<daj> b = b(daj::new);
 
    @Override
    public MapCodec<daj> a() {
-      return a;
+      return b;
    }
 
-   protected daj(dga.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return c;
+   protected daj(dgv.d $$0) {
+      super(dbu.b.e, $$0);
    }
 
    @Override
-   protected boolean d(dgb $$0, cqf $$1, ht $$2) {
-      return $$0.a(aqs.aK) || $$0.a(cuc.dX) || super.d($$0, $$1, $$2);
+   public void a(crs $$0, ht $$1, dgw $$2, @Nullable bky $$3, clb $$4) {
+      cuv.gK.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public List<clb> a(dgw $$0, eer.a $$1) {
+      return cuv.gK.a($$0, $$1);
    }
 }

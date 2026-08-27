@@ -1,31 +1,10 @@
-import java.util.function.Predicate;
-
-public abstract class ckz extends cke {
-   public static final Predicate<ckj> c = $$0 -> $$0.a(ara.at);
-   public static final Predicate<ckj> d = c.or($$0 -> $$0.a(ckm.tA));
-
-   public ckz(cke.a $$0) {
-      super($$0);
-   }
-
-   public Predicate<ckj> e() {
-      return this.b();
-   }
-
-   public abstract Predicate<ckj> b();
-
-   public static ckj a(bkj $$0, Predicate<ckj> $$1) {
-      if ($$1.test($$0.b(bia.b))) {
-         return $$0.b(bia.b);
-      } else {
-         return $$1.test($$0.b(bia.a)) ? $$0.b(bia.a) : ckj.b;
-      }
+public class ckz extends ckm {
+   public ckz(bkm<? extends bzx> $$0, ckw.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public int c() {
-      return 1;
+   protected boolean a(cdm $$0, hx $$1, clb $$2, ht $$3) {
+      return !$$0.dL().r($$3) && $$0.a($$3, $$1, $$2);
    }
-
-   public abstract int d();
 }

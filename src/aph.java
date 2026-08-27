@@ -1,29 +1,46 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public class aph extends apl<GameProfile, api> {
-   public aph(File $$0) {
-      super($$0);
+public abstract class aph extends api<Map<agg, JsonElement>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Gson b;
+   private final String c;
+
+   public aph(Gson $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected apk<GameProfile> a(JsonObject $$0) {
-      return new api($$0);
+   protected Map<agg, JsonElement> a(apd $$0, bfh $$1) {
+      Map<agg, JsonElement> $$2 = new HashMap<>();
+      a($$0, this.c, this.b, $$2);
+      return $$2;
    }
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(apk::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
+   public static void a(apd $$0, String $$1, Gson $$2, Map<agg, JsonElement> $$3) {
+      afz $$4 = afz.a($$1);
 
-   public boolean a(GameProfile $$0) {
-      api $$1 = this.b($$0);
-      return $$1 != null ? $$1.b() : false;
-   }
+      for (Entry<agg, apb> $$5 : $$4.a($$0).entrySet()) {
+         agg $$6 = $$5.getKey();
+         agg $$7 = $$4.b($$6);
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+         try (Reader $$8 = $$5.getValue().e()) {
+            JsonElement $$9 = asy.a($$2, $$8, JsonElement.class);
+            JsonElement $$10 = $$3.put($$7, $$9);
+            if ($$10 != null) {
+               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
+            }
+         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
+            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
+         }
+      }
    }
 }

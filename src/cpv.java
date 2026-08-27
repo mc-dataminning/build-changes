@@ -1,8 +1,25 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cpv extends cpm {
+   protected cpv(cpm.a $$0, cpn $$1, bkn... $$2) {
+      super($$0, $$1, $$2);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cpv {
+   @Override
+   public int a(int $$0) {
+      return 15 + ($$0 - 1) * 9;
+   }
+
+   @Override
+   public int b(int $$0) {
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(cpm $$0) {
+      return super.a($$0) && $$0 != cpq.v;
+   }
 }

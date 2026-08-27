@@ -1,29 +1,29 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public class gfy {
-   private final float a;
-   private final AtomicReference<gfy.a> b = new AtomicReference<>();
+public record gfy(ggc b, ggf c) {
+   public static final Codec<gfy> a = ggc.a.dispatchStable(gfy::a, ggc::c);
 
-   public gfy(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public gfy(ggc b, ggf c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   public void a(erg $$0, ui $$1) {
-      gfy.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gfy.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
    }
 
-   static class a {
-      final ui a;
-      final RateLimiter b;
+   public ggc a() {
+      return this.b;
+   }
 
-      a(ui $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public ggf b() {
+      return this.c;
    }
 }

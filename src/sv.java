@@ -1,148 +1,138 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Pattern;
 
-public class sv implements sk {
-   private String a = "";
-   @Nullable
-   private sn b;
-   private final Deque<Consumer<sn>> c = new ArrayDeque<>();
+public class sv implements ta {
+   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
+   private final StringBuilder b = new StringBuilder();
 
-   @Nullable
-   public sn d() {
-      return this.b;
-   }
-
-   protected int e() {
-      return this.c.size();
-   }
-
-   private void a(sn $$0) {
-      this.c.getLast().accept($$0);
+   public String a(sw $$0) {
+      $$0.a(this);
+      return this.b.toString();
    }
 
    @Override
-   public sk.b a() {
-      this.a(rv.b);
-      return sk.b.a;
+   public void a(su $$0) {
+      this.b.append(su.b($$0.s_()));
    }
 
    @Override
-   public sk.b a(String $$0) {
-      this.a(sl.a($$0));
-      return sk.b.a;
+   public void a(rx $$0) {
+      this.b.append($$0.l()).append('b');
    }
 
    @Override
-   public sk.b a(byte $$0) {
-      this.a(rr.a($$0));
-      return sk.b.a;
+   public void a(sr $$0) {
+      this.b.append($$0.l()).append('s');
    }
 
    @Override
-   public sk.b a(short $$0) {
-      this.a(si.a($$0));
-      return sk.b.a;
+   public void a(se $$0) {
+      this.b.append($$0.l());
    }
 
    @Override
-   public sk.b a(int $$0) {
-      this.a(ry.a($$0));
-      return sk.b.a;
+   public void a(sh $$0) {
+      this.b.append($$0.l()).append('L');
    }
 
    @Override
-   public sk.b a(long $$0) {
-      this.a(sb.a($$0));
-      return sk.b.a;
+   public void a(sc $$0) {
+      this.b.append($$0.k()).append('f');
    }
 
    @Override
-   public sk.b a(float $$0) {
-      this.a(rw.a($$0));
-      return sk.b.a;
+   public void a(sa $$0) {
+      this.b.append($$0.j()).append('d');
    }
 
    @Override
-   public sk.b a(double $$0) {
-      this.a(ru.a($$0));
-      return sk.b.a;
-   }
+   public void a(rw $$0) {
+      this.b.append("[B;");
+      byte[] $$1 = $$0.e();
 
-   @Override
-   public sk.b a(byte[] $$0) {
-      this.a(new rq($$0));
-      return sk.b.a;
-   }
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
 
-   @Override
-   public sk.b a(int[] $$0) {
-      this.a(new rx($$0));
-      return sk.b.a;
-   }
-
-   @Override
-   public sk.b a(long[] $$0) {
-      this.a(new sa($$0));
-      return sk.b.a;
-   }
-
-   @Override
-   public sk.b a(sp<?> $$0, int $$1) {
-      return sk.b.a;
-   }
-
-   @Override
-   public sk.a b(sp<?> $$0, int $$1) {
-      this.c($$0);
-      return sk.a.a;
-   }
-
-   @Override
-   public sk.a a(sp<?> $$0) {
-      return sk.a.a;
-   }
-
-   @Override
-   public sk.a a(sp<?> $$0, String $$1) {
-      this.a = $$1;
-      this.c($$0);
-      return sk.a.a;
-   }
-
-   private void c(sp<?> $$0) {
-      if ($$0 == rz.a) {
-         rz $$1 = new rz();
-         this.a($$1);
-         this.c.addLast($$1::add);
-      } else if ($$0 == rt.b) {
-         rt $$2 = new rt();
-         this.a($$2);
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
-      }
-   }
-
-   @Override
-   public sk.b b() {
-      this.c.removeLast();
-      return sk.b.a;
-   }
-
-   @Override
-   public sk.b b(sp<?> $$0) {
-      if ($$0 == rz.a) {
-         rz $$1 = new rz();
-         this.b = $$1;
-         this.c.addLast($$1::add);
-      } else if ($$0 == rt.b) {
-         rt $$2 = new rt();
-         this.b = $$2;
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
-      } else {
-         this.c.addLast($$0x -> this.b = $$0x);
+         this.b.append($$1[$$2]).append('B');
       }
 
-      return sk.b.a;
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(sd $$0) {
+      this.b.append("[I;");
+      int[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]);
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(sg $$0) {
+      this.b.append("[L;");
+      long[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('L');
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(sf $$0) {
+      this.b.append('[');
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         if ($$1 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append(new sv().a($$0.k($$1)));
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(rz $$0) {
+      this.b.append('{');
+      List<String> $$1 = Lists.newArrayList($$0.e());
+      Collections.sort($$1);
+
+      for (String $$2 : $$1) {
+         if (this.b.length() != 1) {
+            this.b.append(',');
+         }
+
+         this.b.append(a($$2)).append(':').append(new sv().a($$0.c($$2)));
+      }
+
+      this.b.append('}');
+   }
+
+   protected static String a(String $$0) {
+      return a.matcher($$0).matches() ? $$0 : su.b($$0);
+   }
+
+   @Override
+   public void a(sb $$0) {
+      this.b.append("END");
    }
 }

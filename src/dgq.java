@@ -1,94 +1,145 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
 
-public record dgq(String q, boolean r, boolean s, dgq.a t, dbl u, aqc v, aqc w, aqc x, aqc y, aqc z, aqc A, aqc B, aqc C) {
-   private static final Map<String, dgq> D = new Object2ObjectArrayMap();
-   public static final Codec<dgq> a = asg.a(dgq::b, D::get);
-   public static final dgq b = a(new dgq("iron", false, false, dgq.a.a, dbl.g, aqd.lM, aqd.lN, aqd.lU, aqd.lV, aqd.nf, aqd.ng, aqd.xt, aqd.xu));
-   public static final dgq c = a(new dgq("gold", false, false, dgq.a.a, dbl.g, aqd.lM, aqd.lN, aqd.lU, aqd.lV, aqd.nf, aqd.ng, aqd.xt, aqd.xu));
-   public static final dgq d = a(new dgq("stone", true, false, dgq.a.b, dbl.f, aqd.lM, aqd.lN, aqd.lU, aqd.lV, aqd.xy, aqd.xz, aqd.xt, aqd.xu));
-   public static final dgq e = a(new dgq("polished_blackstone", true, false, dgq.a.b, dbl.f, aqd.lM, aqd.lN, aqd.lU, aqd.lV, aqd.xy, aqd.xz, aqd.xt, aqd.xu));
-   public static final dgq f = a(new dgq("oak"));
-   public static final dgq g = a(new dgq("spruce"));
-   public static final dgq h = a(new dgq("birch"));
-   public static final dgq i = a(new dgq("acacia"));
-   public static final dgq j = a(new dgq("cherry", true, true, dgq.a.a, dbl.aQ, aqd.dX, aqd.dY, aqd.dZ, aqd.ea, aqd.ed, aqd.ee, aqd.eb, aqd.ec));
-   public static final dgq k = a(new dgq("jungle"));
-   public static final dgq l = a(new dgq("dark_oak"));
-   public static final dgq m = a(new dgq("crimson", true, true, dgq.a.a, dbl.aP, aqd.ph, aqd.pi, aqd.pj, aqd.pk, aqd.pn, aqd.po, aqd.pl, aqd.pm));
-   public static final dgq n = a(new dgq("warped", true, true, dgq.a.a, dbl.aP, aqd.ph, aqd.pi, aqd.pj, aqd.pk, aqd.pn, aqd.po, aqd.pl, aqd.pm));
-   public static final dgq o = a(new dgq("mangrove"));
-   public static final dgq p = a(new dgq("bamboo", true, true, dgq.a.a, dbl.aO, aqd.aZ, aqd.ba, aqd.bb, aqd.bc, aqd.bf, aqd.bg, aqd.bd, aqd.be));
+public class dgq extends cwv {
+   public static final MapCodec<dgq> b = b(dgq::new);
+   public static final dhu<dhy> c = dhm.bg;
+   public static final dhn d = dhm.x;
+   public static final float e = 4.0F;
+   protected static final ekb f = cut.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final ekb g = cut.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final ekb h = cut.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final ekb i = cut.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final ekb j = cut.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final ekb k = cut.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float l = 2.0F;
+   protected static final float m = 6.0F;
+   protected static final float n = 10.0F;
+   protected static final ekb o = cut.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final ekb F = cut.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final ekb G = cut.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final ekb H = cut.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final ekb I = cut.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final ekb J = cut.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final ekb K = cut.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final ekb L = cut.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ekb M = cut.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final ekb N = cut.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final ekb O = cut.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final ekb P = cut.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final ekb[] Q = a(true);
+   private static final ekb[] R = a(false);
 
-   public dgq(String $$0) {
-      this($$0, true, true, dgq.a.a, dbl.b, aqd.AF, aqd.AG, aqd.AH, aqd.AI, aqd.AL, aqd.AM, aqd.AJ, aqd.AK);
+   @Override
+   protected MapCodec<dgq> a() {
+      return b;
    }
 
-   private static dgq a(dgq $$0) {
-      D.put($$0.q, $$0);
-      return $$0;
+   private static ekb[] a(boolean $$0) {
+      return Arrays.stream(hx.values()).map($$1 -> a($$1, $$0)).toArray(ekb[]::new);
    }
 
-   public static Stream<dgq> a() {
-      return D.values().stream();
+   private static ekb a(hx $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return ejy.a(k, $$1 ? L : F);
+         case b:
+            return ejy.a(j, $$1 ? K : o);
+         case c:
+            return ejy.a(i, $$1 ? N : H);
+         case d:
+            return ejy.a(h, $$1 ? M : G);
+         case e:
+            return ejy.a(g, $$1 ? P : J);
+         case f:
+            return ejy.a(f, $$1 ? O : I);
+      }
    }
 
-   public String b() {
-      return this.q;
+   public dgq(dgv.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, hx.c).a(c, dhy.a).a(d, Boolean.valueOf(false)));
    }
 
-   public boolean c() {
-      return this.r;
+   @Override
+   public boolean g_(dgw $$0) {
+      return true;
    }
 
-   public boolean d() {
-      return this.s;
+   @Override
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return ($$0.c(d) ? Q : R)[$$0.c(a).ordinal()];
    }
 
-   public dgq.a e() {
-      return this.t;
+   private boolean a(dgw $$0, dgw $$1) {
+      cut $$2 = $$0.c(c) == dhy.a ? cuv.by : cuv.br;
+      return $$1.a($$2) && $$1.c(dgp.c) && $$1.c(a) == $$0.c(a);
    }
 
-   public dbl f() {
-      return this.u;
+   @Override
+   public dgw a(crs $$0, ht $$1, dgw $$2, cdm $$3) {
+      if (!$$0.B && $$3.fT().d) {
+         ht $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public aqc g() {
-      return this.v;
+   @Override
+   public void a(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         ht $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
+         }
+      }
    }
 
-   public aqc h() {
-      return this.w;
+   @Override
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? cuv.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public aqc i() {
-      return this.x;
+   @Override
+   public boolean a(dgw $$0, crv $$1, ht $$2) {
+      dgw $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(cuv.bQ) && $$3.c(a) == $$0.c(a);
    }
 
-   public aqc j() {
-      return this.y;
+   @Override
+   public void a(dgw $$0, crs $$1, ht $$2, cut $$3, ht $$4, boolean $$5) {
+      if ($$0.a((crv)$$1, $$2)) {
+         $$1.a($$2.a($$0.c(a).g()), $$3, $$4);
+      }
    }
 
-   public aqc k() {
-      return this.z;
+   @Override
+   public clb a(crv $$0, ht $$1, dgw $$2) {
+      return new clb($$2.c(c) == dhy.b ? cuv.br : cuv.by);
    }
 
-   public aqc l() {
-      return this.A;
+   @Override
+   public dgw a(dgw $$0, dbf $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
-   public aqc m() {
-      return this.B;
+   @Override
+   public dgw a(dgw $$0, czp $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
-   public aqc n() {
-      return this.C;
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(a, c, d);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
+      return false;
    }
 }

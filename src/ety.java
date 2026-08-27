@@ -1,39 +1,54 @@
 import javax.annotation.Nullable;
 
-public class ety extends eth {
-   private final esw a;
-
-   public ety(esw $$0, ui $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
-   }
-
-   @Override
-   protected void b(esy $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.p() + this.k() / 2;
-      int $$5 = this.r() + this.i() / 2;
-      ui $$6 = this.l();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = eyp.a(ac.b());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
-   }
-
-   @Override
-   protected void a(exc $$0) {
-   }
-
-   @Override
-   public void a(gem $$0) {
-   }
-
-   @Override
-   public boolean aJ_() {
-      return false;
+public interface ety {
+   static ety a(ewh $$0) {
+      return new ety.a($$0);
    }
 
    @Nullable
-   @Override
-   public esv a(exi $$0) {
-      return null;
+   static ety a(ewg $$0, @Nullable ety $$1) {
+      return $$1 == null ? null : new ety.b($$0, $$1);
+   }
+
+   static ety a(ewh $$0, ewg... $$1) {
+      ety $$2 = a($$0);
+
+      for (ewg $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
+   }
+
+   ewh a();
+
+   void a(boolean var1);
+
+   public static record a(ewh a) implements ety {
+      @Override
+      public void a(boolean $$0) {
+         this.a.b_($$0);
+      }
+   }
+
+   public static record b(ewg a, ety b) implements ety {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public ewg b() {
+         return this.a;
+      }
+
+      public ety c() {
+         return this.b;
+      }
    }
 }

@@ -1,34 +1,27 @@
-public class eph extends gfx {
-   private static final ui a = ui.c("mco.account.privacyinfo");
-   private final ezd b;
-   private euc c = euc.a;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public eph(ezd $$0) {
-      super(erg.a);
-      this.b = $$0;
-   }
+public class eph extends epg {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   @Override
-   public void aM_() {
-      ui $$0 = ui.c("mco.account.update");
-      ui $$1 = uh.k;
-      int $$2 = Math.max(this.i.a($$0), this.i.a($$1)) + 30;
-      ui $$3 = ui.c("mco.account.privacy.info");
-      int $$4 = (int)((double)this.i.a($$3) * 1.2);
-      this.d(etj.a($$3, $$0x -> ac.i().a("https://aka.ms/MinecraftGDPR")).a(this.g / 2 - $$4 / 2, h(11), $$4, 20).a());
-      this.d(etj.a($$0, $$0x -> ac.i().a("https://aka.ms/UpdateMojangAccount")).a(this.g / 2 - ($$2 + 5), h(13), $$2, 20).a());
-      this.d(etj.a($$1, $$0x -> this.f.a(this.b)).a(this.g / 2 + 5, h(13), $$2, 20).a());
-      this.c = euc.a(this.i, a, (int)Math.round((double)this.g * 0.9));
-   }
+   public static eph a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      eph $$3 = new eph();
 
-   @Override
-   public ui h() {
-      return a;
-   }
+      try {
+         $$3.a = erd.b("downloadLink", $$2, "");
+         $$3.b = erd.b("resourcePackUrl", $$2, "");
+         $$3.c = erd.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+      }
 
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, this.g / 2, 15, 15, 16777215);
+      return $$3;
    }
 }

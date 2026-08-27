@@ -1,277 +1,119 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.math.DoubleMath;
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
-import java.util.Objects;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+import com.google.common.primitives.UnsignedLong;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public final class eiv {
-   public static final double a = 1.0E-7;
-   public static final double b = 1.0E-6;
-   private static final eiy d = ac.a(() -> {
-      eio $$0 = new eii(1, 1, 1);
-      $$0.c(0, 0, 0);
-      return new eim($$0);
-   });
-   public static final eiy c = a(
-      Double.NEGATIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      Double.POSITIVE_INFINITY,
-      Double.POSITIVE_INFINITY,
-      Double.POSITIVE_INFINITY
-   );
-   private static final eiy e = new eih(
-      new eii(0, 0, 0), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0})
-   );
+public class eiv<T> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Callback";
+   private static final String c = "Name";
+   private static final String d = "TriggerTime";
+   private final eiu<T> e;
+   private final Queue<eiv.a<T>> f = new PriorityQueue<>(c());
+   private UnsignedLong g = UnsignedLong.ZERO;
+   private final Table<String, Long, eiv.a<T>> h = HashBasedTable.create();
 
-   public static eiy a() {
-      return e;
+   private static <T> Comparator<eiv.a<T>> c() {
+      return Comparator.<eiv.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
    }
 
-   public static eiy b() {
-      return d;
-   }
-
-   public static eiy a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      if (!($$0 > $$3) && !($$1 > $$4) && !($$2 > $$5)) {
-         return b($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         throw new IllegalArgumentException("The min values need to be smaller or equals to the max values");
-      }
-   }
-
-   public static eiy b(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      if (!($$3 - $$0 < 1.0E-7) && !($$4 - $$1 < 1.0E-7) && !($$5 - $$2 < 1.0E-7)) {
-         int $$6 = a($$0, $$3);
-         int $$7 = a($$1, $$4);
-         int $$8 = a($$2, $$5);
-         if ($$6 < 0 || $$7 < 0 || $$8 < 0) {
-            return new eih(
-               d.a, DoubleArrayList.wrap(new double[]{$$0, $$3}), DoubleArrayList.wrap(new double[]{$$1, $$4}), DoubleArrayList.wrap(new double[]{$$2, $$5})
-            );
-         } else if ($$6 == 0 && $$7 == 0 && $$8 == 0) {
-            return b();
+   public eiv(eiu<T> $$0, Stream<? extends Dynamic<?>> $$1) {
+      this($$0);
+      this.f.clear();
+      this.h.clear();
+      this.g = UnsignedLong.ZERO;
+      $$1.forEach($$0x -> {
+         sw $$1x = (sw)$$0x.convert(sn.a).getValue();
+         if ($$1x instanceof rz $$2) {
+            this.a($$2);
          } else {
-            int $$9 = 1 << $$6;
-            int $$10 = 1 << $$7;
-            int $$11 = 1 << $$8;
-            eii $$12 = eii.a(
-               $$9,
-               $$10,
-               $$11,
-               (int)Math.round($$0 * (double)$$9),
-               (int)Math.round($$1 * (double)$$10),
-               (int)Math.round($$2 * (double)$$11),
-               (int)Math.round($$3 * (double)$$9),
-               (int)Math.round($$4 * (double)$$10),
-               (int)Math.round($$5 * (double)$$11)
-            );
-            return new eim($$12);
+            a.warn("Invalid format of events: {}", $$1x);
          }
-      } else {
-         return a();
-      }
+      });
    }
 
-   public static eiy a(eia $$0) {
-      return b($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   public eiv(eiu<T> $$0) {
+      this.e = $$0;
    }
 
-   @VisibleForTesting
-   protected static int a(double $$0, double $$1) {
-      if (!($$0 < -1.0E-7) && !($$1 > 1.0000001)) {
-         for (int $$2 = 0; $$2 <= 3; $$2++) {
-            int $$3 = 1 << $$2;
-            double $$4 = $$0 * (double)$$3;
-            double $$5 = $$1 * (double)$$3;
-            boolean $$6 = Math.abs($$4 - (double)Math.round($$4)) < 1.0E-7 * (double)$$3;
-            boolean $$7 = Math.abs($$5 - (double)Math.round($$5)) < 1.0E-7 * (double)$$3;
-            if ($$6 && $$7) {
-               return $$2;
-            }
+   public void a(T $$0, long $$1) {
+      while (true) {
+         eiv.a<T> $$2 = this.f.peek();
+         if ($$2 == null || $$2.a > $$1) {
+            return;
          }
 
-         return -1;
-      } else {
-         return -1;
+         this.f.remove();
+         this.h.remove($$2.c, $$1);
+         $$2.d.handle($$0, this, $$1);
       }
    }
 
-   protected static long a(int $$0, int $$1) {
-      return (long)$$0 * (long)($$1 / IntMath.gcd($$0, $$1));
-   }
-
-   public static eiy a(eiy $$0, eiy $$1) {
-      return a($$0, $$1, eij.o);
-   }
-
-   public static eiy a(eiy $$0, eiy... $$1) {
-      return Arrays.stream($$1).reduce($$0, eiv::a);
-   }
-
-   public static eiy a(eiy $$0, eiy $$1, eij $$2) {
-      return b($$0, $$1, $$2).d();
-   }
-
-   public static eiy b(eiy $$0, eiy $$1, eij $$2) {
-      if ($$2.apply(false, false)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException());
-      } else if ($$0 == $$1) {
-         return $$2.apply(true, true) ? $$0 : a();
-      } else {
-         boolean $$3 = $$2.apply(true, false);
-         boolean $$4 = $$2.apply(false, true);
-         if ($$0.c()) {
-            return $$4 ? $$1 : a();
-         } else if ($$1.c()) {
-            return $$3 ? $$0 : a();
-         } else {
-            eir $$5 = a(1, $$0.a(hx.a.a), $$1.a(hx.a.a), $$3, $$4);
-            eir $$6 = a($$5.size() - 1, $$0.a(hx.a.b), $$1.a(hx.a.b), $$3, $$4);
-            eir $$7 = a(($$5.size() - 1) * ($$6.size() - 1), $$0.a(hx.a.c), $$1.a(hx.a.c), $$3, $$4);
-            eii $$8 = eii.a($$0.a, $$1.a, $$5, $$6, $$7, $$2);
-            return (eiy)($$5 instanceof ein && $$6 instanceof ein && $$7 instanceof ein ? new eim($$8) : new eih($$8, $$5.a(), $$6.a(), $$7.a()));
-         }
+   public void a(String $$0, long $$1, eit<T> $$2) {
+      if (!this.h.contains($$0, $$1)) {
+         this.g = this.g.plus(UnsignedLong.ONE);
+         eiv.a<T> $$3 = new eiv.a<>($$1, this.g, $$0, $$2);
+         this.h.put($$0, $$1, $$3);
+         this.f.add($$3);
       }
    }
 
-   public static boolean c(eiy $$0, eiy $$1, eij $$2) {
-      if ($$2.apply(false, false)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException());
-      } else {
-         boolean $$3 = $$0.c();
-         boolean $$4 = $$1.c();
-         if (!$$3 && !$$4) {
-            if ($$0 == $$1) {
-               return $$2.apply(true, true);
-            } else {
-               boolean $$5 = $$2.apply(true, false);
-               boolean $$6 = $$2.apply(false, true);
+   public int a(String $$0) {
+      Collection<eiv.a<T>> $$1 = this.h.row($$0).values();
+      $$1.forEach(this.f::remove);
+      int $$2 = $$1.size();
+      $$1.clear();
+      return $$2;
+   }
 
-               for (hx.a $$7 : hr.d) {
-                  if ($$0.c($$7) < $$1.b($$7) - 1.0E-7) {
-                     return $$5 || $$6;
-                  }
+   public Set<String> a() {
+      return Collections.unmodifiableSet(this.h.rowKeySet());
+   }
 
-                  if ($$1.c($$7) < $$0.b($$7) - 1.0E-7) {
-                     return $$5 || $$6;
-                  }
-               }
-
-               eir $$8 = a(1, $$0.a(hx.a.a), $$1.a(hx.a.a), $$5, $$6);
-               eir $$9 = a($$8.size() - 1, $$0.a(hx.a.b), $$1.a(hx.a.b), $$5, $$6);
-               eir $$10 = a(($$8.size() - 1) * ($$9.size() - 1), $$0.a(hx.a.c), $$1.a(hx.a.c), $$5, $$6);
-               return a($$8, $$9, $$10, $$0.a, $$1.a, $$2);
-            }
-         } else {
-            return $$2.apply(!$$3, !$$4);
-         }
+   private void a(rz $$0) {
+      rz $$1 = $$0.p("Callback");
+      eit<T> $$2 = this.e.a($$1);
+      if ($$2 != null) {
+         String $$3 = $$0.l("Name");
+         long $$4 = $$0.i("TriggerTime");
+         this.a($$3, $$4, $$2);
       }
    }
 
-   private static boolean a(eir $$0, eir $$1, eir $$2, eio $$3, eio $$4, eij $$5) {
-      return !$$0.a(($$5x, $$6, $$7) -> $$1.a(($$6x, $$7x, $$8) -> $$2.a(($$7xx, $$8x, $$9) -> !$$5.apply($$3.d($$5x, $$6x, $$7xx), $$4.d($$6, $$7x, $$8x)))));
+   private rz a(eiv.a<T> $$0) {
+      rz $$1 = new rz();
+      $$1.a("Name", $$0.c);
+      $$1.a("TriggerTime", $$0.a);
+      $$1.a("Callback", this.e.a($$0.d));
+      return $$1;
    }
 
-   public static double a(hx.a $$0, eia $$1, Iterable<eiy> $$2, double $$3) {
-      for (eiy $$4 : $$2) {
-         if (Math.abs($$3) < 1.0E-7) {
-            return 0.0;
-         }
-
-         $$3 = $$4.a($$0, $$1, $$3);
-      }
-
-      return $$3;
+   public sf b() {
+      sf $$0 = new sf();
+      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
+      return $$0;
    }
 
-   public static boolean a(eiy $$0, eiy $$1, hx $$2) {
-      if ($$0 == b() && $$1 == b()) {
-         return true;
-      } else if ($$1.c()) {
-         return false;
-      } else {
-         hx.a $$3 = $$2.o();
-         hx.b $$4 = $$2.f();
-         eiy $$5 = $$4 == hx.b.a ? $$0 : $$1;
-         eiy $$6 = $$4 == hx.b.a ? $$1 : $$0;
-         eij $$7 = $$4 == hx.b.a ? eij.e : eij.c;
-         return DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)
-            && DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)
-            && !c(new eiw($$5, $$3, $$5.a.c($$3) - 1), new eiw($$6, $$3, 0), $$7);
+   public static class a<T> {
+      public final long a;
+      public final UnsignedLong b;
+      public final String c;
+      public final eit<T> d;
+
+      a(long $$0, UnsignedLong $$1, String $$2, eit<T> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
-   }
-
-   public static eiy a(eiy $$0, hx $$1) {
-      if ($$0 == b()) {
-         return b();
-      } else {
-         hx.a $$2 = $$1.o();
-         boolean $$3;
-         int $$4;
-         if ($$1.f() == hx.b.a) {
-            $$3 = DoubleMath.fuzzyEquals($$0.c($$2), 1.0, 1.0E-7);
-            $$4 = $$0.a.c($$2) - 1;
-         } else {
-            $$3 = DoubleMath.fuzzyEquals($$0.b($$2), 0.0, 1.0E-7);
-            $$4 = 0;
-         }
-
-         return (eiy)(!$$3 ? a() : new eiw($$0, $$2, $$4));
-      }
-   }
-
-   public static boolean b(eiy $$0, eiy $$1, hx $$2) {
-      if ($$0 != b() && $$1 != b()) {
-         hx.a $$3 = $$2.o();
-         hx.b $$4 = $$2.f();
-         eiy $$5 = $$4 == hx.b.a ? $$0 : $$1;
-         eiy $$6 = $$4 == hx.b.a ? $$1 : $$0;
-         if (!DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)) {
-            $$5 = a();
-         }
-
-         if (!DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)) {
-            $$6 = a();
-         }
-
-         return !c(b(), b(new eiw($$5, $$3, $$5.a.c($$3) - 1), new eiw($$6, $$3, 0), eij.o), eij.e);
-      } else {
-         return true;
-      }
-   }
-
-   public static boolean b(eiy $$0, eiy $$1) {
-      if ($$0 == b() || $$1 == b()) {
-         return true;
-      } else {
-         return $$0.c() && $$1.c() ? false : !c(b(), b($$0, $$1, eij.o), eij.e);
-      }
-   }
-
-   @VisibleForTesting
-   protected static eir a(int $$0, DoubleList $$1, DoubleList $$2, boolean $$3, boolean $$4) {
-      int $$5 = $$1.size() - 1;
-      int $$6 = $$2.size() - 1;
-      if ($$1 instanceof eil && $$2 instanceof eil) {
-         long $$7 = a($$5, $$6);
-         if ((long)$$0 * $$7 <= 256L) {
-            return new ein($$5, $$6);
-         }
-      }
-
-      if ($$1.getDouble($$5) < $$2.getDouble(0) - 1.0E-7) {
-         return new eit($$1, $$2, false);
-      } else if ($$2.getDouble($$6) < $$1.getDouble(0) - 1.0E-7) {
-         return new eit($$2, $$1, true);
-      } else {
-         return (eir)($$5 == $$6 && Objects.equals($$1, $$2) ? new eiq($$1) : new eis($$1, $$2, $$3, $$4));
-      }
-   }
-
-   public interface a {
-      void consume(double var1, double var3, double var5, double var7, double var9, double var11);
    }
 }

@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gdm {
+public interface gdm {
+   gdt a(agg var1);
+
+   @Nullable
+   gdi a(agg var1, gdq var2);
 }

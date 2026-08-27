@@ -1,120 +1,83 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.PushbackInputStream;
-import java.util.Map;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class ecu {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, ecj> b = Maps.newHashMap();
-   private final DataFixer c;
-   private final File d;
+public abstract class ecu {
+   protected csf a;
+   protected bla b;
+   protected final Int2ObjectMap<ect> c = new Int2ObjectOpenHashMap();
+   protected int d;
+   protected int e;
+   protected int f;
+   protected boolean g;
+   protected boolean h;
+   protected boolean i;
+   protected boolean j;
 
-   public ecu(File $$0, DataFixer $$1) {
-      this.c = $$1;
-      this.d = $$0;
+   public void a(csf $$0, bla $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c.clear();
+      this.d = ati.d($$1.df() + 1.0F);
+      this.e = ati.d($$1.dg() + 1.0F);
+      this.f = ati.d($$1.df() + 1.0F);
    }
 
-   private File a(String $$0) {
-      return new File(this.d, $$0 + ".dat");
+   public void b() {
+      this.a = null;
+      this.b = null;
    }
 
-   public <T extends ecj> T a(ecj.a<T> $$0, String $$1) {
-      T $$2 = this.b($$0, $$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         T $$3 = (T)$$0.a().get();
-         this.a($$1, $$3);
-         return $$3;
-      }
+   protected ect b(ht $$0) {
+      return this.b($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Nullable
-   public <T extends ecj> T b(ecj.a $$0, String $$1) {
-      ecj $$2 = this.b.get($$1);
-      if ($$2 == null && !this.b.containsKey($$1)) {
-         $$2 = this.a($$0.b(), $$0.c(), $$1);
-         this.b.put($$1, $$2);
-      }
-
-      return (T)$$2;
+   protected ect b(int $$0, int $$1, int $$2) {
+      return (ect)this.c.computeIfAbsent(ect.b($$0, $$1, $$2), $$3 -> new ect($$0, $$1, $$2));
    }
 
-   @Nullable
-   private <T extends ecj> T a(Function<rt, T> $$0, aud $$1, String $$2) {
-      try {
-         File $$3 = this.a($$2);
-         if ($$3.exists()) {
-            rt $$4 = this.a($$2, $$1, aa.b().d().c());
-            return $$0.apply($$4.p("data"));
-         }
-      } catch (Exception var6) {
-         a.error("Error loading saved data: {}", $$2, var6);
-      }
+   public abstract ect a();
 
-      return null;
+   public abstract ecz a(double var1, double var3, double var5);
+
+   protected ecz a(ect $$0) {
+      return new ecz($$0);
    }
 
-   public void a(String $$0, ecj $$1) {
-      this.b.put($$0, $$1);
+   public abstract int a(ect[] var1, ect var2);
+
+   public abstract ecr a(cqy var1, int var2, int var3, int var4, bla var5);
+
+   public abstract ecr a(cqy var1, int var2, int var3, int var4);
+
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   public rt a(String $$0, aud $$1, int $$2) throws IOException {
-      File $$3 = this.a($$0);
-
-      rt var9;
-      try (
-         FileInputStream $$4 = new FileInputStream($$3);
-         PushbackInputStream $$5 = new PushbackInputStream($$4, 2);
-      ) {
-         rt $$6;
-         if (this.a($$5)) {
-            $$6 = se.a($$5);
-         } else {
-            try (DataInputStream $$7 = new DataInputStream($$5)) {
-               $$6 = se.a((DataInput)$$7);
-            }
-         }
-
-         int $$10 = sg.b($$6, 1343);
-         var9 = $$1.a(this.c, $$6, $$10, $$2);
-      }
-
-      return var9;
+   public void b(boolean $$0) {
+      this.h = $$0;
    }
 
-   private boolean a(PushbackInputStream $$0) throws IOException {
-      byte[] $$1 = new byte[2];
-      boolean $$2 = false;
-      int $$3 = $$0.read($$1, 0, 2);
-      if ($$3 == 2) {
-         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
-         if ($$4 == 35615) {
-            $$2 = true;
-         }
-      }
-
-      if ($$3 != 0) {
-         $$0.unread($$1, 0, $$3);
-      }
-
-      return $$2;
+   public void c(boolean $$0) {
+      this.i = $$0;
    }
 
-   public void a() {
-      this.b.forEach(($$0, $$1) -> {
-         if ($$1 != null) {
-            $$1.a(this.a($$0));
-         }
-      });
+   public void d(boolean $$0) {
+      this.j = $$0;
+   }
+
+   public boolean d() {
+      return this.g;
+   }
+
+   public boolean e() {
+      return this.h;
+   }
+
+   public boolean f() {
+      return this.i;
+   }
+
+   public boolean g() {
+      return this.j;
    }
 }

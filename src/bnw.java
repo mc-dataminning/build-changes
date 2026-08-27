@@ -1,15 +1,27 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bnw<E extends bkj> extends bmo<E> {
-   public bnw(List<Pair<? extends bmb<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
-   }
+public class bnw {
+   private static final int a = 1;
 
-   public bnw(Map<btk<?>, btl> $$0, List<Pair<? extends bmb<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), bmo.a.b, bmo.b.a, $$1);
+   public static bmq<bky> a(float $$0) {
+      return bqb.a(
+         (Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$1 -> $$1.group($$1.a(btz.n), $$1.c(btz.m), $$1.b(btz.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bN()) {
+                        return false;
+                     } else {
+                        bki $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bna($$8, true));
+                           $$3.a(new buc(new bna($$8, false), $$0, 1));
+                        }
+
+                        return true;
+                     }
+                  }))
+      );
    }
 }

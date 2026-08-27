@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fzc<T extends bky> extends fze<T, fha<T>> {
+   private static final fqp a = fqp.p(new agg("textures/entity/enderman/enderman_eyes.png"));
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fzc {
+   public fzc(fxf<T, fha<T>> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public fqp a() {
+      return a;
+   }
 }

@@ -1,113 +1,211 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dft extends ctm {
-   public static final MapCodec<dft> a = b(dft::new);
-   public static final dgv b = dfv.a;
-   public static final dgz<dhd> c = dfv.c;
+public class dft extends der implements bih, bit {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 0;
+   public static final int d = 1;
+   private final bij e = new bij() {
+      @Override
+      public int b() {
+         return 1;
+      }
 
-   @Override
-   public MapCodec<dft> a() {
-      return a;
-   }
+      @Override
+      public boolean ai_() {
+         return dft.this.g.b();
+      }
 
-   public dft(dga.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, hx.c).a(c, dhd.a));
-   }
+      @Override
+      public clb a(int $$0) {
+         return $$0 == 0 ? dft.this.g : clb.b;
+      }
 
-   @Nullable
-   @Override
-   public ddx a(ht $$0, dgb $$1) {
-      return null;
-   }
+      @Override
+      public clb a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            clb $$2 = dft.this.g.a($$1);
+            if (dft.this.g.b()) {
+               dft.this.j();
+            }
 
-   public static ddx a(ht $$0, dgb $$1, dgb $$2, hx $$3, boolean $$4, boolean $$5) {
-      return new dfx($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public <T extends ddx> ddy<T> a(cqz $$0, dgb $$1, ddz<T> $$2) {
-      return a($$2, ddz.k, dfx::a);
-   }
-
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         ddx $$5 = $$1.c_($$2);
-         if ($$5 instanceof dfx) {
-            ((dfx)$$5).j();
+            return $$2;
+         } else {
+            return clb.b;
          }
       }
+
+      @Override
+      public clb b(int $$0) {
+         if ($$0 == 0) {
+            clb $$1 = dft.this.g;
+            dft.this.g = clb.b;
+            dft.this.j();
+            return $$1;
+         } else {
+            return clb.b;
+         }
+      }
+
+      @Override
+      public void a(int $$0, clb $$1) {
+      }
+
+      @Override
+      public int aj_() {
+         return 1;
+      }
+
+      @Override
+      public void e() {
+         dft.this.e();
+      }
+
+      @Override
+      public boolean a(cdm $$0) {
+         return bij.a(dft.this, $$0) && dft.this.f();
+      }
+
+      @Override
+      public boolean b(int $$0, clb $$1) {
+         return false;
+      }
+
+      @Override
+      public void a() {
+      }
+   };
+   private final cgo f = new cgo() {
+      @Override
+      public int a(int $$0) {
+         return $$0 == 0 ? dft.this.h : 0;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            dft.this.a($$1);
+         }
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+   };
+   clb g = clb.b;
+   int h;
+   private int i;
+
+   public dft(ht $$0, dgw $$1) {
+      super(det.D, $$0, $$1);
    }
 
-   @Override
-   public void a(cra $$0, ht $$1, dgb $$2) {
-      ht $$3 = $$1.a($$2.c(b).g());
-      dgb $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof dfu && $$4.c(dfu.c)) {
-         $$0.a($$3, false);
+   public clb c() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.g.a(cle.th) || this.g.a(cle.ti);
+   }
+
+   public void a(clb $$0) {
+      this.a($$0, null);
+   }
+
+   void j() {
+      this.h = 0;
+      this.i = 0;
+      czd.a(null, this.k(), this.p(), this.q(), false);
+   }
+
+   public void a(clb $$0, @Nullable cdm $$1) {
+      this.g = this.b($$0, $$1);
+      this.h = 0;
+      this.i = cmx.k(this.g);
+      this.e();
+   }
+
+   void a(int $$0) {
+      int $$1 = ati.a($$0, 0, this.i - 1);
+      if ($$1 != this.h) {
+         this.h = $$1;
+         this.e();
+         czd.a(this.k(), this.p(), this.q());
       }
    }
 
-   @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      if (!$$1.B && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return bib.b;
+   public int g() {
+      return this.h;
+   }
+
+   public int i() {
+      float $$0 = this.i > 1 ? (float)this.g() / ((float)this.i - 1.0F) : 1.0F;
+      return ati.d($$0 * 14.0F) + (this.f() ? 1 : 0);
+   }
+
+   private clb b(clb $$0, @Nullable cdm $$1) {
+      if (this.o instanceof ama && $$0.a(cle.ti)) {
+         cmx.a($$0, this.a($$1), $$1);
+      }
+
+      return $$0;
+   }
+
+   private du a(@Nullable cdm $$0) {
+      String $$1;
+      ur $$2;
+      if ($$0 == null) {
+         $$1 = "Lectern";
+         $$2 = ur.b("Lectern");
       } else {
-         return bib.d;
+         $$1 = $$0.ab().getString();
+         $$2 = $$0.O_();
+      }
+
+      eji $$5 = eji.b(this.p);
+      return new du(dt.a, $$5, ejh.a, (ama)this.o, 2, $$1, $$2, this.o.n(), $$0);
+   }
+
+   @Override
+   public boolean t() {
+      return true;
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      if ($$0.b("Book", 10)) {
+         this.g = this.b(clb.a($$0.p("Book")), null);
+      } else {
+         this.g = clb.b;
+      }
+
+      this.i = cmx.k(this.g);
+      this.h = ati.a($$0.h("Page"), 0, this.i - 1);
+   }
+
+   @Override
+   protected void b(rz $$0) {
+      super.b($$0);
+      if (!this.c().b()) {
+         $$0.a("Book", this.c().b(new rz()));
+         $$0.a("Page", this.h);
       }
    }
 
    @Override
-   public List<ckj> a(dgb $$0, edo.a $$1) {
-      dfx $$2 = this.a($$1.a(), ht.a($$1.a(eft.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.i().a($$1);
+   public void a() {
+      this.a(clb.b);
    }
 
    @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return eiv.a();
+   public cge createMenu(int $$0, cdl $$1, cdm $$2) {
+      return new chi($$0, this.e, this.f);
    }
 
    @Override
-   public eiy c(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      dfx $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : eiv.a();
-   }
-
-   @Nullable
-   private dfx a(cqf $$0, ht $$1) {
-      ddx $$2 = $$0.c_($$1);
-      return $$2 instanceof dfx ? (dfx)$$2 : null;
-   }
-
-   @Override
-   public ckj a(crc $$0, ht $$1, dgb $$2) {
-      return ckj.b;
-   }
-
-   @Override
-   public dgb a(dgb $$0, dal $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dgb a(dgb $$0, cyv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
-      return false;
+   public ur O_() {
+      return ur.c("container.lectern");
    }
 }

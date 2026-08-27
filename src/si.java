@@ -1,145 +1,60 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.google.common.annotations.VisibleForTesting;
 
-public class si extends sh {
-   private static final int b = 10;
-   public static final sp<si> a = new sp.a<si>() {
-      public si a(DataInput $$0, sc $$1) throws IOException {
-         return si.a(d($$0, $$1));
+public class si {
+   private static final int a = 512;
+   private final long b;
+   private long c;
+   private final int d;
+   private int e;
+
+   public si(long $$0, int $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public static si a(long $$0) {
+      return new si($$0, 512);
+   }
+
+   public static si a() {
+      return new si(Long.MAX_VALUE, 512);
+   }
+
+   public void a(long $$0, long $$1) {
+      this.b($$0 * $$1);
+   }
+
+   public void b(long $$0) {
+      if (this.c + $$0 > this.b) {
+         throw new sj("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
+      } else {
+         this.c += $$0;
       }
+   }
 
-      @Override
-      public sk.b a(DataInput $$0, sk $$1, sc $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
+   public void b() {
+      if (this.e >= this.d) {
+         throw new sj("Tried to read NBT tag with too high complexity, depth > " + this.d);
+      } else {
+         this.e++;
       }
+   }
 
-      private static short d(DataInput $$0, sc $$1) throws IOException {
-         $$1.b(10L);
-         return $$0.readShort();
+   public void c() {
+      if (this.e <= 0) {
+         throw new sj("NBT-Accounter tried to pop stack-depth at top-level");
+      } else {
+         this.e--;
       }
-
-      @Override
-      public int c() {
-         return 2;
-      }
-
-      @Override
-      public String a() {
-         return "SHORT";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Short";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final short c;
-
-   si(short $$0) {
-      this.c = $$0;
    }
 
-   public static si a(short $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? si.a.a[$$0 - -128] : new si($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeShort(this.c);
-   }
-
-   @Override
-   public int a() {
-      return 10;
-   }
-
-   @Override
-   public byte b() {
-      return 2;
-   }
-
-   @Override
-   public sp<si> c() {
-      return a;
-   }
-
-   public si e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof si && this.c == ((si)$$0).c;
-   }
-
-   @Override
-   public int hashCode() {
+   @VisibleForTesting
+   public long d() {
       return this.c;
    }
 
-   @Override
-   public void a(sr $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.c;
-   }
-
-   @Override
-   public int g() {
-      return this.c;
-   }
-
-   @Override
-   public short h() {
-      return this.c;
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(this.c & 255);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.c;
-   }
-
-   @Override
-   public Number l() {
-      return this.c;
-   }
-
-   @Override
-   public sk.b a(sk $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final si[] a = new si[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new si((short)(-128 + $$0));
-         }
-      }
+   @VisibleForTesting
+   public int e() {
+      return this.e;
    }
 }

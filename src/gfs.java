@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gfs {
+public interface gfs {
+   void a(gep var1, gfu var2);
 }

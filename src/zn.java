@@ -1,56 +1,52 @@
-public class zn implements wb<xu> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public zn(bjt $$0) {
-      this.a = $$0.dq();
-      this.b = $$0.ds();
-      this.c = $$0.dw();
-      this.d = $$0.dB();
-      this.e = $$0.dD();
+public class zn implements wk<yd> {
+   private final int a;
+   private final int b;
+   private final zm c;
+   private final zr d;
+
+   public zn(djd $$0, ebv $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      cqz $$4 = $$0.f();
+      this.a = $$4.e;
+      this.b = $$4.f;
+      this.c = new zm($$0);
+      this.d = new zr($$4, $$1, $$2, $$3);
    }
 
-   public zn(tl $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   public zn(tu $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = new zm($$0, this.a, this.b);
+      this.d = new zr($$0, this.a, this.b);
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   public void a(tu $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      this.c.a($$0);
+      this.d.a($$0);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public int a() {
       return this.a;
    }
 
-   public double d() {
+   public int d() {
       return this.b;
    }
 
-   public double e() {
+   public zm e() {
       return this.c;
    }
 
-   public float f() {
+   public zr f() {
       return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

@@ -1,16 +1,37 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-@FunctionalInterface
-public interface geu {
-   geu a = ($$0, $$1) -> {
-   };
+public class geu<T> extends gev<T> {
+   private final List<T> c;
+   private final Function<T, Stream<String>> d;
+   private gey<T> e = gey.a();
 
-   default geu decorate(Consumer<gey.a> $$0) {
-      return ($$1, $$2) -> this.send($$1, $$2x -> {
-            $$2.accept($$2x);
-            $$0.accept($$2x);
-         });
+   public geu(Function<T, Stream<String>> $$0, Function<T, Stream<agg>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = $$2;
+      this.d = $$0;
    }
 
-   void send(gev var1, Consumer<gey.a> var2);
+   @Override
+   public void a() {
+      super.a();
+      this.e = gey.a(this.c, this.d);
+   }
+
+   @Override
+   protected List<T> a(String $$0) {
+      return this.e.search($$0);
+   }
+
+   @Override
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.e.search($$1);
+      Iterator<T> $$5 = new gex<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new gew<T>($$2.iterator(), $$5, this.a));
+   }
 }

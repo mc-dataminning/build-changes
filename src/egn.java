@@ -1,42 +1,29 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record egn(float b, float c) implements egh {
-   public static final Codec<egn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(egn::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(egn::d)).apply($$0, egn::new)
-   );
+public class egn extends efx {
+   public static final Codec<egn> a = RecordCodecBuilder.create($$0 -> a($$0).and(sx.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, egn::new));
+   private final rz b;
 
-   @Override
-   public egi b() {
-      return egj.f;
+   private egn(List<ehk> $$0, rz $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<efq<?>> a() {
-      return ImmutableSet.of(eft.d);
+   public efz b() {
+      return ega.g;
    }
 
-   public boolean a(edi $$0) {
-      bjt $$1 = $$0.c(eft.d);
-      int $$2 = 0;
-      if ($$1 instanceof bkj) {
-         $$2 = cov.h((bkj)$$1);
-      }
-
-      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   @Override
+   public clb a(clb $$0, eel $$1) {
+      $$0.w().a(this.b);
+      return $$0;
    }
 
-   public static egh.a a(float $$0, float $$1) {
-      return () -> new egn($$0, $$1);
-   }
-
-   public float c() {
-      return this.b;
-   }
-
-   public float d() {
-      return this.c;
+   @Deprecated
+   public static efx.a<?> a(rz $$0) {
+      return a($$1 -> new egn($$1, $$0));
    }
 }

@@ -1,21 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public class dta extends dst {
-   public static final Codec<dta> b = dgb.b.fieldOf("state").xmap(dga.a::b, cua::o).xmap(dta::new, $$0 -> $$0.c).codec();
-   private final cua c;
+public class dta<P extends dsz> {
+   public static final dta<dsu> a = a("blob_foliage_placer", dsu.a);
+   public static final dta<dtf> b = a("spruce_foliage_placer", dtf.a);
+   public static final dta<dtd> c = a("pine_foliage_placer", dtd.a);
+   public static final dta<dst> d = a("acacia_foliage_placer", dst.a);
+   public static final dta<dsv> e = a("bush_foliage_placer", dsv.c);
+   public static final dta<dsy> f = a("fancy_foliage_placer", dsy.c);
+   public static final dta<dtb> g = a("jungle_foliage_placer", dtb.a);
+   public static final dta<dtc> h = a("mega_pine_foliage_placer", dtc.a);
+   public static final dta<dsx> i = a("dark_oak_foliage_placer", dsx.a);
+   public static final dta<dte> j = a("random_spread_foliage_placer", dte.a);
+   public static final dta<dsw> k = a("cherry_foliage_placer", dsw.a);
+   private final Codec<P> l;
 
-   public dta(cua $$0) {
-      this.c = $$0;
+   private static <P extends dsz> dta<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.X, $$0, new dta<>($$1));
    }
 
-   @Override
-   protected dsu<?> a() {
-      return dsu.f;
+   private dta(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   public dgb a(ate $$0, ht $$1) {
-      hx.a $$2 = hx.a.a($$0);
-      return this.c.o().a(dak.i, $$2);
+   public Codec<P> a() {
+      return this.l;
    }
 }

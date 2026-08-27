@@ -1,26 +1,37 @@
-public final class aqv {
-   public static final arh<bjx<?>> a = a("skeletons");
-   public static final arh<bjx<?>> b = a("zombies");
-   public static final arh<bjx<?>> c = a("raiders");
-   public static final arh<bjx<?>> d = a("undead");
-   public static final arh<bjx<?>> e = a("beehive_inhabitors");
-   public static final arh<bjx<?>> f = a("arrows");
-   public static final arh<bjx<?>> g = a("impact_projectiles");
-   public static final arh<bjx<?>> h = a("powder_snow_walkable_mobs");
-   public static final arh<bjx<?>> i = a("axolotl_always_hostiles");
-   public static final arh<bjx<?>> j = a("axolotl_hunt_targets");
-   public static final arh<bjx<?>> k = a("freeze_immune_entity_types");
-   public static final arh<bjx<?>> l = a("freeze_hurts_extra_types");
-   public static final arh<bjx<?>> m = a("can_breathe_under_water");
-   public static final arh<bjx<?>> n = a("frog_food");
-   public static final arh<bjx<?>> o = a("fall_damage_immune");
-   public static final arh<bjx<?>> p = a("dismounts_underwater");
-   public static final arh<bjx<?>> q = a("non_controlling_rider");
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-   private aqv() {
-   }
+public interface aqv {
+   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   aqv b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   aqv c = $$0 -> a.format((double)$$0 * 0.1);
+   aqv d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   aqv e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
+      }
+   };
 
-   private static arh<bjx<?>> a(String $$0) {
-      return arh.a(jz.t, new afw($$0));
-   }
+   String format(int var1);
 }

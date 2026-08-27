@@ -1,34 +1,34 @@
-public class fxz extends fyl<bxv, fgi<bxv>> {
-   private final fgi<bxv> a;
+public class fxz extends fvj<cag> {
+   private final frb a;
 
-   public fxz(fvy<bxv, fgi<bxv>> $$0, fis $$1) {
+   public fxz(fvk.a $$0) {
       super($$0);
-      this.a = new fgi<>($$1.a(fiv.ak));
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public void a(emh $$0, fpb $$1, int $$2, bxv $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ckj $$10 = $$3.s();
-      if ($$10.d() instanceof cjz) {
-         cjz $$11 = (cjz)$$10.d();
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         float $$13;
-         float $$14;
-         float $$15;
-         if ($$11 instanceof cja) {
-            int $$12 = ((cja)$$11).e_($$10);
-            $$13 = (float)($$12 >> 16 & 0xFF) / 255.0F;
-            $$14 = (float)($$12 >> 8 & 0xFF) / 255.0F;
-            $$15 = (float)($$12 & 0xFF) / 255.0F;
-         } else {
-            $$13 = 1.0F;
-            $$14 = 1.0F;
-            $$15 = 1.0F;
-         }
-
-         eml $$19 = $$1.getBuffer(fpj.e($$11.h()));
-         this.a.a($$0, $$19, $$2, fzr.d, $$13, $$14, $$15, 1.0F);
+   public void a(cag $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.5F, 0.0F);
+      int $$6 = $$0.s();
+      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+         $$7 = ati.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
+
+      $$3.a(a.d.rotationDegrees(-90.0F));
+      $$3.a(-0.5F, -0.5F, 0.5F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      fxy.a(this.a, $$0.t(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public agg a(cag $$0) {
+      return gbg.e;
    }
 }

@@ -1,49 +1,39 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dtb(dst b, List<dtb.a> c) {
+public class dtb extends dsz {
    public static final Codec<dtb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dst.a.fieldOf("fallback").forGetter(dtb::a), dtb.a.a.listOf().fieldOf("rules").forGetter(dtb::b)).apply($$0, dtb::new)
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dtb::new)
    );
+   protected final int b;
 
-   public static dtb a(dst $$0) {
-      return new dtb($$0, List.of());
+   public dtb(bhv $$0, bhv $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public static dtb a(cua $$0) {
-      return a(dst.a($$0));
+   @Override
+   protected dta<?> a() {
+      return dta.g;
    }
 
-   public dgb a(crt $$0, ate $$1, ht $$2) {
-      for (dtb.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
+   @Override
+   protected void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, int $$4, dsz.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public dst a() {
+   @Override
+   public int a(ato $$0, int $$1, dsj $$2) {
       return this.b;
    }
 
-   public List<dtb.a> b() {
-      return this.c;
-   }
-
-   public static record a(dmr b, dst c) {
-      public static final Codec<dtb.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dmr.b.fieldOf("if_true").forGetter(dtb.a::a), dst.a.fieldOf("then").forGetter(dtb.a::b)).apply($$0, dtb.a::new)
-      );
-
-      public dmr a() {
-         return this.b;
-      }
-
-      public dst b() {
-         return this.c;
-      }
+   @Override
+   protected boolean a(ato $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

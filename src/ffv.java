@@ -1,99 +1,96 @@
-public class ffv<T extends bkj> extends fgk<T> {
-   public boolean a;
-   public boolean b;
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-   public ffv(fiw $$0) {
-      super($$0);
+public class ffv {
+   public final ffv.d a;
+   public final emb b;
+   public final ffv.a c;
+   public final ffv.b d;
+   public final ffv.c e;
+
+   public ffv(ffv.d $$0, emb $$1, ffv.a $$2, ffv.b $$3, ffv.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static fjc c() {
-      float $$0 = -14.0F;
-      fje $$1 = fgk.a(fja.a, -14.0F);
-      fjf $$2 = $$1.a();
-      fiy $$3 = fiy.a(0.0F, -13.0F, 0.0F);
-      $$2.a("hat", fjb.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fja(-0.5F)), $$3);
-      $$2.a("head", fjb.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), $$3);
-      $$2.a("body", fjb.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), fiy.a(0.0F, -14.0F, 0.0F));
-      $$2.a("right_arm", fjb.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fiy.a(-5.0F, -12.0F, 0.0F));
-      $$2.a("left_arm", fjb.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fiy.a(5.0F, -12.0F, 0.0F));
-      $$2.a("right_leg", fjb.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fiy.a(-2.0F, -5.0F, 0.0F));
-      $$2.a("left_leg", fjb.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fiy.a(2.0F, -5.0F, 0.0F));
-      return fjc.a($$1, 64, 32);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : gcd.a(this.c.toPath(), this.d);
+      }
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.k.k = true;
-      int $$6 = -14;
-      this.m.e = 0.0F;
-      this.m.c = -14.0F;
-      this.m.d = -0.0F;
-      this.p.e -= 0.0F;
-      this.q.e -= 0.0F;
-      this.n.e *= 0.5F;
-      this.o.e *= 0.5F;
-      this.p.e *= 0.5F;
-      this.q.e *= 0.5F;
-      float $$7 = 0.4F;
-      if (this.n.e > 0.4F) {
-         this.n.e = 0.4F;
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+   }
+
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !ac.b(this.b) || !ac.b(this.c) || !ac.b(this.d);
       }
 
-      if (this.o.e > 0.4F) {
-         this.o.e = 0.4F;
+      @Nullable
+      public String b() {
+         return this.a;
       }
 
-      if (this.n.e < -0.4F) {
-         this.n.e = -0.4F;
+      @Nullable
+      public String c() {
+         return this.b;
       }
 
-      if (this.o.e < -0.4F) {
-         this.o.e = -0.4F;
+      @Nullable
+      public String d() {
+         return this.c;
       }
 
-      if (this.p.e > 0.4F) {
-         this.p.e = 0.4F;
+      @Nullable
+      public String e() {
+         return this.d;
       }
+   }
 
-      if (this.q.e > 0.4F) {
-         this.q.e = 0.4F;
+   public static class d {
+      public final etg a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(etg $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
-
-      if (this.p.e < -0.4F) {
-         this.p.e = -0.4F;
-      }
-
-      if (this.q.e < -0.4F) {
-         this.q.e = -0.4F;
-      }
-
-      if (this.a) {
-         this.n.e = -0.5F;
-         this.o.e = -0.5F;
-         this.n.g = 0.05F;
-         this.o.g = -0.05F;
-      }
-
-      this.p.d = 0.0F;
-      this.q.d = 0.0F;
-      this.p.c = -5.0F;
-      this.q.c = -5.0F;
-      this.k.d = -0.0F;
-      this.k.c = -13.0F;
-      this.l.b = this.k.b;
-      this.l.c = this.k.c;
-      this.l.d = this.k.d;
-      this.l.e = this.k.e;
-      this.l.f = this.k.f;
-      this.l.g = this.k.g;
-      if (this.b) {
-         float $$8 = 1.0F;
-         this.k.c -= 5.0F;
-      }
-
-      int $$9 = -14;
-      this.n.a(-5.0F, -12.0F, 0.0F);
-      this.o.a(5.0F, -12.0F, 0.0F);
    }
 }

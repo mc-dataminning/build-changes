@@ -1,183 +1,140 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fcr {
-   public static final int a = 20;
-   private static final euw b = new euw(new afw("recipe_book/page_forward"), new afw("recipe_book/page_forward_highlighted"));
-   private static final euw c = new euw(new afw("recipe_book/page_backward"), new afw("recipe_book/page_backward_highlighted"));
-   private final List<fct> d = Lists.newArrayListWithCapacity(20);
+public class fcr extends fch<cia> {
+   private static final agg x = new agg("container/smithing/error");
+   private static final agg y = new agg("item/empty_slot_smithing_template_armor_trim");
+   private static final agg z = new agg("item/empty_slot_smithing_template_netherite_upgrade");
+   private static final ur A = ur.c("container.upgrade.missing_template_tooltip");
+   private static final ur B = ur.c("container.upgrade.error_tooltip");
+   private static final List<agg> C = List.of(y, z);
+   private static final int D = 44;
+   private static final int E = 15;
+   private static final int F = 28;
+   private static final int G = 21;
+   private static final int H = 65;
+   private static final int I = 46;
+   private static final int J = 115;
+   private static final int K = 210;
+   private static final int L = 25;
+   private static final Vector3f M = new Vector3f();
+   private static final Quaternionf N = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
+   private static final int O = 25;
+   private static final int P = 75;
+   private static final int Q = 141;
+   private final fbw R = new fbw(0);
+   private final fbw S = new fbw(1);
+   private final fbw T = new fbw(2);
    @Nullable
-   private fct e;
-   private final fcp f = new fcp();
-   private ero g;
-   private final List<fcv> h = Lists.newArrayList();
-   private List<fcu> i = ImmutableList.of();
-   private eup j;
-   private eup k;
-   private int l;
-   private int m;
-   private aqg n;
-   @Nullable
-   private cno<?> o;
-   @Nullable
-   private fcu p;
+   private bzv U;
 
-   public fcr() {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         this.d.add(new fct());
+   public fcr(cia $$0, cdl $$1, ur $$2) {
+      super($$0, $$1, $$2, new agg("textures/gui/container/smithing.png"));
+      this.l = 44;
+      this.m = 15;
+   }
+
+   @Override
+   protected void E() {
+      this.U = new bzv(this.f.r, 0.0, 0.0, 0.0);
+      this.U.s(true);
+      this.U.a(true);
+      this.U.aU = 210.0F;
+      this.U.s(25.0F);
+      this.U.aW = this.U.dB();
+      this.U.aX = this.U.dB();
+      this.b(this.p.b(3).f());
+   }
+
+   @Override
+   public void C() {
+      super.C();
+      Optional<cmd> $$0 = this.F();
+      this.R.a(C);
+      this.S.a($$0.map(cmd::y).orElse(List.of()));
+      this.T.a($$0.map(cmd::z).orElse(List.of()));
+   }
+
+   private Optional<cmd> F() {
+      clb $$0 = this.p.b(0).f();
+      return !$$0.b() && $$0.d() instanceof cmd $$1 ? Optional.of($$1) : Optional.empty();
+   }
+
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(eub $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.R.a(this.p, $$0, $$1, this.t, this.u);
+      this.S.a(this.p, $$0, $$1, this.t, this.u);
+      this.T.a(this.p, $$0, $$1, this.t, this.u);
+      fcg.a($$0, (float)(this.t + 141), (float)(this.u + 75), 25, M, N, null, this.U);
+   }
+
+   @Override
+   public void a(cge $$0, int $$1, clb $$2) {
+      if ($$1 == 3) {
+         this.b($$2);
       }
    }
 
-   public void a(ero $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.n = $$0.s.m();
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.d.get($$3).b($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
-      }
-
-      this.j = new eup($$1 + 93, $$2 + 137, 12, 17, false);
-      this.j.a(b);
-      this.k = new eup($$1 + 38, $$2 + 137, 12, 17, true);
-      this.k.a(c);
-   }
-
-   public void a(fcq $$0) {
-      this.h.remove($$0);
-      this.h.add($$0);
-   }
-
-   public void a(List<fcu> $$0, boolean $$1) {
-      this.i = $$0;
-      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
-      if (this.l <= this.m || $$1) {
-         this.m = 0;
-      }
-
-      this.f();
-   }
-
-   private void f() {
-      int $$0 = 20 * this.m;
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         fct $$2 = this.d.get($$1);
-         if ($$0 + $$1 < this.i.size()) {
-            fcu $$3 = this.i.get($$0 + $$1);
-            $$2.a($$3, this);
-            $$2.j = true;
-         } else {
-            $$2.j = false;
-         }
-      }
-
-      this.g();
-   }
-
-   private void g() {
-      this.j.j = this.l > 1 && this.m < this.l - 1;
-      this.k.j = this.l > 1 && this.m > 0;
-   }
-
-   public void a(esy $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      if (this.l > 1) {
-         ui $$6 = ui.a("gui.recipebook.page", this.m + 1, this.l);
-         int $$7 = this.g.h.a($$6);
-         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
-      }
-
-      this.e = null;
-
-      for (fct $$8 : this.d) {
-         $$8.a($$0, $$3, $$4, $$5);
-         if ($$8.j && $$8.n()) {
-            this.e = $$8;
-         }
-      }
-
-      this.k.a($$0, $$3, $$4, $$5);
-      this.j.a($$0, $$3, $$4, $$5);
-      this.f.a($$0, $$3, $$4, $$5);
-   }
-
-   public void a(esy $$0, int $$1, int $$2) {
-      if (this.g.y != null && this.e != null && !this.f.c()) {
-         $$0.a(this.g.h, this.e.f(), $$1, $$2);
-      }
-   }
-
-   @Nullable
-   public cno<?> a() {
-      return this.o;
-   }
-
-   @Nullable
-   public fcu b() {
-      return this.p;
-   }
-
-   public void c() {
-      this.f.b(false);
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.o = null;
-      this.p = null;
-      if (this.f.c()) {
-         if (this.f.a($$0, $$1, $$2)) {
-            this.o = this.f.b();
-            this.p = this.f.a();
-         } else {
-            this.f.b(false);
+   private void b(clb $$0) {
+      if (this.U != null) {
+         for (bkn $$1 : bkn.values()) {
+            this.U.a($$1, clb.b);
          }
 
-         return true;
-      } else if (this.j.a($$0, $$1, $$2)) {
-         this.m++;
-         this.f();
-         return true;
-      } else if (this.k.a($$0, $$1, $$2)) {
-         this.m--;
-         this.f();
-         return true;
-      } else {
-         for (fct $$7 : this.d) {
-            if ($$7.a($$0, $$1, $$2)) {
-               if ($$2 == 0) {
-                  this.o = $$7.e();
-                  this.p = $$7.a();
-               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
-                  this.f.a(this.g, $$7.a(), $$7.p(), $$7.r(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.k());
-               }
-
-               return true;
+         if (!$$0.b()) {
+            clb $$2 = $$0.p();
+            if ($$0.d() instanceof cil $$3) {
+               this.U.a($$3.g(), $$2);
+            } else {
+               this.U.a(bkn.b, $$2);
             }
          }
-
-         return false;
       }
    }
 
-   public void a(List<cno<?>> $$0) {
-      for (fcv $$1 : this.h) {
-         $$1.a($$0);
+   @Override
+   protected void c(eub $$0, int $$1, int $$2) {
+      if (this.G()) {
+         $$0.a(x, $$1 + 65, $$2 + 46, 28, 21);
       }
    }
 
-   public ero d() {
-      return this.g;
+   private void d(eub $$0, int $$1, int $$2) {
+      Optional<ur> $$3 = Optional.empty();
+      if (this.G() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+         $$3 = Optional.of(B);
+      }
+
+      if (this.r != null) {
+         clb $$4 = this.p.b(0).f();
+         clb $$5 = this.r.f();
+         if ($$4.b()) {
+            if (this.r.e == 0) {
+               $$3 = Optional.of(A);
+            }
+         } else if ($$4.d() instanceof cmd $$6 && $$5.b()) {
+            if (this.r.e == 1) {
+               $$3 = Optional.of($$6.i());
+            } else if (this.r.e == 2) {
+               $$3 = Optional.of($$6.x());
+            }
+         }
+      }
+
+      $$3.ifPresent($$3x -> $$0.b(this.i, this.i.c($$3x, 115), $$1, $$2));
    }
 
-   public aqg e() {
-      return this.n;
-   }
-
-   protected void a(Consumer<eth> $$0) {
-      $$0.accept(this.j);
-      $$0.accept(this.k);
-      this.d.forEach($$0);
+   private boolean G() {
+      return this.p.b(0).g() && this.p.b(1).g() && this.p.b(2).g() && !this.p.b(this.p.o()).g();
    }
 }

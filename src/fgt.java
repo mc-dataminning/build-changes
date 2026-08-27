@@ -1,15 +1,16 @@
-import java.util.function.Function;
+public abstract class fgt<E extends bki> extends fga<E> {
+   private float a = 1.0F;
+   private float b = 1.0F;
+   private float f = 1.0F;
 
-public abstract class fgt {
-   protected final Function<afw, fpj> v;
-
-   public fgt(Function<afw, fpj> $$0) {
-      this.v = $$0;
+   public void a(float $$0, float $$1, float $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.f = $$2;
    }
 
-   public final fpj a(afw $$0) {
-      return this.v.apply($$0);
+   @Override
+   public void a(enk $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      super.a($$0, $$1, $$2, $$3, this.a * $$4, this.b * $$5, this.f * $$6, $$7);
    }
-
-   public abstract void a(emh var1, eml var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

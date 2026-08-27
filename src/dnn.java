@@ -1,24 +1,22 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
 
-public record dnn<WC extends dni>(dnp<WC> d, WC e) {
-   public static final Codec<dnn<?>> a = jy.Q.q().dispatch($$0 -> $$0.d, dnp::c);
-   public static final Codec<ib<dnn<?>>> b = afs.a(jz.as, a);
-   public static final Codec<ig<dnn<?>>> c = iq.a(jz.as, a);
+public interface dnn<P extends dnm> {
+   dnn<dns> a = a("matching_blocks", dns.a);
+   dnn<dnr> b = a("matching_block_tag", dnr.e);
+   dnn<dnt> c = a("matching_fluids", dnt.a);
+   dnn<dnp> d = a("has_sturdy_face", dnp.a);
+   dnn<dnw> e = a("solid", dnw.a);
+   dnn<dnv> f = a("replaceable", dnv.a);
+   dnn<dnz> g = a("would_survive", dnz.a);
+   dnn<dnq> h = a("inside_world_bounds", dnq.a);
+   dnn<dnl> i = a("any_of", dnl.a);
+   dnn<dnk> j = a("all_of", dnk.a);
+   dnn<dnu> k = a("not", dnu.a);
+   dnn<dny> l = a("true", dny.e);
 
-   public boolean a(ate $$0) {
-      return this.d.a(this.e, $$0);
-   }
+   Codec<P> codec();
 
-   public boolean a(dnk $$0, dhx $$1, Function<ht, ib<crx>> $$2, ate $$3, dkw $$4, cqg $$5, dhw $$6) {
-      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public dnp<WC> a() {
-      return this.d;
-   }
-
-   public WC b() {
-      return this.e;
+   private static <P extends dnm> dnn<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.P, $$0, () -> $$1);
    }
 }

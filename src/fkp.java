@@ -1,65 +1,138 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.PublicKey;
+import java.time.DateTimeException;
+import java.time.Duration;
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class fkp extends fkq {
-   private final String f;
+public class fkp implements flg {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<cdo>> g;
+   private Instant h = Instant.EPOCH;
 
-   fkp(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
-   }
-
-   public String a() {
-      return this.f;
-   }
-
-   public fkp c() {
-      fkp $$0 = new fkp(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
+   public fkp(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
+      this.g = CompletableFuture.<Optional<cdo>>supplyAsync(() -> this.c().filter($$0x -> !$$0x.c().b().a()), ac.f()).thenCompose(this::a);
    }
 
    @Override
-   public ezd a(ezd $$0, fku $$1) {
-      return new fde($$0, $$1, this);
+   public CompletableFuture<Optional<cdo>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
    }
 
-   public static class a extends fkq.a<fkp> {
-      public a(fkp $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   @Override
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cdo::a).orElse(true) : false;
+   }
 
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new fkp(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+   private CompletableFuture<Optional<cdo>> a(Optional<cdo> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!aa.aT) {
+               this.a(null);
+            }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public fkq.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fkq.b.d : null;
-      }
-
-      @Override
-      public Either<fkq.c, fkq.b> a(fku $$0) {
-         fkq.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
+            return $$0;
          } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new fkq.c(this.a.a, fkt.c, $$3));
+            try {
+               cdo $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.of($$1);
+            } catch (asi | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
+            }
          }
+      }, ac.f());
+   }
+
+   private Optional<cdo> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
+      } else {
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = cdo.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
+         }
+      }
+   }
+
+   private void a(@Nullable cdo $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
+      }
+
+      if ($$0 != null) {
+         if (aa.aT) {
+            cdo.a.encodeStart(JsonOps.INSTANCE, $$0).result().ifPresent($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
+         }
+      }
+   }
+
+   private cdo a(UserApiService $$0) throws asi, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         cdp.a $$2 = a($$1);
+         return new cdo(ash.a($$1.keyPair().privateKey()), new cdp($$2), Instant.parse($$1.refreshedAfter()));
+      } else {
+         throw new IOException("Could not retrieve profile key pair");
+      }
+   }
+
+   private static cdp.a a(KeyPairResponse $$0) throws asi {
+      KeyPair $$1 = $$0.keyPair();
+      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = ash.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new cdp.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new asi(var5);
+         }
+      } else {
+         throw new asi(new MissingException("Missing public key"));
       }
    }
 }

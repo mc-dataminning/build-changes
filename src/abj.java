@@ -1,32 +1,32 @@
-public class abj implements wb<xu> {
-   private final int a;
+public class abj implements wk<yd> {
+   private final float a;
    private final int b;
-   private final int c;
+   private final float c;
 
-   public abj(int $$0, int $$1, int $$2) {
+   public abj(float $$0, int $$1, float $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public abj(tl $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   public abj(tu $$0) {
+      this.a = $$0.readFloat();
+      this.b = $$0.n();
+      this.c = $$0.readFloat();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
+   public void a(tu $$0) {
+      $$0.a(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public float a() {
       return this.a;
    }
 
@@ -34,7 +34,7 @@ public class abj implements wb<xu> {
       return this.b;
    }
 
-   public int e() {
+   public float e() {
       return this.c;
    }
 }

@@ -1,50 +1,30 @@
-public class fcd extends ezd {
-   private static final int a = 600;
-   private final tj b;
-   private etj c;
-   private int k;
-   private final ewx l = ewx.d();
+import org.joml.Vector3f;
 
-   public fcd(ui $$0, tj $$1) {
-      super($$0);
-      this.b = $$1;
+public class fcd extends fbi {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int k = 16;
+   private static final int l = 16;
+   private final agg m = new agg("textures/gui/hanging_signs/" + this.a.b() + ".png");
+
+   public fcd(dga $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, ur.c("hanging_sign.edit"));
    }
 
    @Override
-   public boolean aB_() {
-      return false;
+   protected void b(eub $$0, dgw $$1) {
+      $$0.c().a((float)this.g / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   protected void aM_() {
-      this.l.c().b().a(10);
-      this.l.a(new euq(this.e, this.i));
-      this.c = this.l.a(etj.a(uh.p, $$0 -> this.b.a(exy.a)).a());
-      this.c.i = false;
-      this.l.a();
-      this.l.a($$1 -> {
-         eth var10000 = this.d($$1);
-      });
-      this.c();
+   protected void a(eub $$0, dgw $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.m, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
-   protected void c() {
-      ewr.a(this.l, this.s());
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.k++;
-      if (this.k == 600) {
-         this.c.i = true;
-      }
-
-      if (this.b.k()) {
-         this.b.d();
-      } else {
-         this.b.p();
-      }
+   protected Vector3f l() {
+      return c;
    }
 }

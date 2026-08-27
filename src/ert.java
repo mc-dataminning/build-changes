@@ -1,30 +1,13 @@
-import java.util.function.IntFunction;
+public class ert extends erv {
+   private final erk b;
 
-public enum ert implements ata {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
-
-   private static final IntFunction<ert> d = arr.a(ert::a, values(), arr.a.b);
-   private final int e;
-   private final String f;
-
-   private ert(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ert(erk $$0, long $$1, ur $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public String b() {
-      return this.f;
-   }
-
-   @Override
-   public int a() {
-      return this.e;
-   }
-
-   public static ert a(int $$0) {
-      return d.apply($$0);
+   protected void a(eoa $$0, long $$1) throws epn {
+      $$0.a($$1, this.b);
    }
 }

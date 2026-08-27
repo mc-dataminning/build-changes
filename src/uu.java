@@ -1,104 +1,131 @@
-import com.google.common.base.Preconditions;
-import com.mojang.serialization.Codec;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Base64;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public record uu(byte[] c) {
-   public static final Codec<uu> a = asg.n.xmap(uu::new, uu::b);
-   public static final int b = 256;
+public class uu {
+   public static final String a = ", ";
+   public static final ur b = ur.b(", ").a(n.h);
+   public static final ur c = ur.b(", ");
 
-   public uu(byte[] c) {
-      Preconditions.checkState(c.length == 256, "Invalid message signature size");
-      this.c = c;
-   }
-
-   public static uu a(tl $$0) {
-      byte[] $$1 = new byte[256];
-      $$0.b($$1);
-      return new uu($$1);
-   }
-
-   public static void a(tl $$0, uu $$1) {
-      $$0.c($$1.c);
-   }
-
-   public boolean a(atj $$0, ati $$1) {
-      return $$0.validate($$1, this.c);
-   }
-
-   public ByteBuffer a() {
-      return ByteBuffer.wrap(this.c);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public static vf a(vf $$0, vo $$1) {
+      if ($$1.g()) {
+         return $$0;
       } else {
-         if ($$0 instanceof uu $$1 && Arrays.equals(this.c, $$1.c)) {
-            return true;
+         vo $$2 = $$0.a();
+         if ($$2.g()) {
+            return $$0.b($$1);
+         } else {
+            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+         }
+      }
+   }
+
+   public static Optional<vf> a(@Nullable du $$0, Optional<ur> $$1, @Nullable bki $$2, int $$3) throws CommandSyntaxException {
+      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
+   }
+
+   public static vf a(@Nullable du $$0, ur $$1, @Nullable bki $$2, int $$3) throws CommandSyntaxException {
+      if ($$3 > 100) {
+         return $$1.f();
+      } else {
+         vf $$4 = $$1.b().a($$0, $$2, $$3 + 1);
+
+         for (ur $$5 : $$1.c()) {
+            $$4.b(a($$0, $$5, $$2, $$3 + 1));
          }
 
-         return false;
+         return $$4.c(a($$0, $$1.a(), $$2, $$3));
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
-
-   @Override
-   public String toString() {
-      return Base64.getEncoder().encodeToString(this.c);
-   }
-
-   public uu.a a(uv $$0) {
-      int $$1 = $$0.a(this);
-      return $$1 != -1 ? new uu.a($$1) : new uu.a(this);
-   }
-
-   public byte[] b() {
-      return this.c;
-   }
-
-   public static record a(int b, @Nullable uu c) {
-      public static final int a = -1;
-
-      public a(uu $$0) {
-         this(-1, $$0);
-      }
-
-      public a(int $$0) {
-         this($$0, null);
-      }
-
-      public static uu.a a(tl $$0) {
-         int $$1 = $$0.n() - 1;
-         return $$1 == -1 ? new uu.a(uu.a($$0)) : new uu.a($$1);
-      }
-
-      public static void a(tl $$0, uu.a $$1) {
-         $$0.c($$1.a() + 1);
-         if ($$1.b() != null) {
-            uu.a($$0, $$1.b());
+   private static vo a(@Nullable du $$0, vo $$1, @Nullable bki $$2, int $$3) throws CommandSyntaxException {
+      ux $$4 = $$1.i();
+      if ($$4 != null) {
+         ur $$5 = $$4.a(ux.a.a);
+         if ($$5 != null) {
+            ux $$6 = new ux(ux.a.a, a($$0, $$5, $$2, $$3 + 1));
+            return $$1.a($$6);
          }
       }
 
-      public Optional<uu> a(uv $$0) {
-         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
-      }
+      return $$1;
+   }
 
-      public int a() {
-         return this.b;
-      }
+   public static ur a(Collection<String> $$0) {
+      return a($$0, $$0x -> ur.b($$0x).a(n.k));
+   }
 
-      @Nullable
-      public uu b() {
-         return this.c;
+   public static <T extends Comparable<T>> ur a(Collection<T> $$0, Function<T, ur> $$1) {
+      if ($$0.isEmpty()) {
+         return uq.a;
+      } else if ($$0.size() == 1) {
+         return $$1.apply($$0.iterator().next());
+      } else {
+         List<T> $$2 = Lists.newArrayList($$0);
+         $$2.sort(Comparable::compareTo);
+         return b($$2, $$1);
       }
+   }
+
+   public static <T> ur b(Collection<? extends T> $$0, Function<T, ur> $$1) {
+      return a($$0, b, $$1);
+   }
+
+   public static <T> vf a(Collection<? extends T> $$0, Optional<? extends ur> $$1, Function<T, ur> $$2) {
+      return a($$0, (ur)DataFixUtils.orElse($$1, b), $$2);
+   }
+
+   public static ur a(Collection<? extends ur> $$0, ur $$1) {
+      return a($$0, $$1, Function.identity());
+   }
+
+   public static <T> vf a(Collection<? extends T> $$0, ur $$1, Function<T, ur> $$2) {
+      if ($$0.isEmpty()) {
+         return ur.i();
+      } else if ($$0.size() == 1) {
+         return $$2.apply((T)$$0.iterator().next()).f();
+      } else {
+         vf $$3 = ur.i();
+         boolean $$4 = true;
+
+         for (T $$5 : $$0) {
+            if (!$$4) {
+               $$3.b($$1);
+            }
+
+            $$3.b($$2.apply($$5));
+            $$4 = false;
+         }
+
+         return $$3;
+      }
+   }
+
+   public static vf a(ur $$0) {
+      return ur.a("chat.square_brackets", $$0);
+   }
+
+   public static ur a(Message $$0) {
+      return (ur)($$0 instanceof ur ? (ur)$$0 : ur.b($$0.getString()));
+   }
+
+   public static boolean b(@Nullable ur $$0) {
+      if ($$0 != null && $$0.b() instanceof wc $$1) {
+         String $$2 = $$1.b();
+         String $$3 = $$1.c();
+         return $$3 != null || ru.a().b($$2);
+      } else {
+         return true;
+      }
+   }
+
+   public static vf a(String $$0) {
+      return a((ur)ur.b($$0).a($$1 -> $$1.a(n.k).a(new up(up.a.f, $$0)).a(new ux(ux.a.a, ur.c("chat.copy.click"))).a($$0)));
    }
 }

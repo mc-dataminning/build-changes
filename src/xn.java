@@ -1,12 +1,19 @@
-public interface xn extends we {
-   @Override
-   default tk b() {
-      return tk.e;
+public record xn(ht b, String c, int d) implements xd {
+   public static final agg a = new agg("debug/poi_added");
+
+   public xn(tu $$0) {
+      this($$0.e(), $$0.s(), $$0.readInt());
    }
 
-   void a(xo var1);
+   @Override
+   public void a(tu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.p(this.d);
+   }
 
-   void a(xp var1);
-
-   void a(xq var1);
+   @Override
+   public agg a() {
+      return a;
+   }
 }

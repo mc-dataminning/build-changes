@@ -1,20 +1,24 @@
+import java.util.UUID;
+import java.util.stream.Stream;
+
 public interface dkn {
-   dkp a();
+   int ah();
 
-   int b();
+   UUID cv();
 
-   boolean a(alq var1, dkl var2, dkl.a var3, eif var4);
+   ht dl();
 
-   default dkn.a c() {
-      return dkn.a.a;
-   }
+   ejd cG();
 
-   public static enum a {
-      a,
-      b;
-   }
+   void a(dko var1);
 
-   public interface b<T extends dkn> {
-      T d();
-   }
+   Stream<? extends dkn> cR();
+
+   Stream<? extends dkn> cS();
+
+   void b(bki.c var1);
+
+   boolean dJ();
+
+   boolean dK();
 }

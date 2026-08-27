@@ -1,50 +1,41 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class aqk<T> extends ejh {
-   private final aql n;
-   private final T o;
-   private final aqm<T> p;
+public class aqk {
+   public static final Codec<aqk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aqm.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, aqk::new)
+   );
+   private final ib<aqm> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
 
-   protected aqk(aqm<T> $$0, T $$1, aql $$2) {
-      super(a($$0, $$1));
-      this.p = $$0;
-      this.n = $$2;
-      this.o = $$1;
+   public aqk(ib<aqm> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public static <T> String a(aqm<T> $$0, T $$1) {
-      return a(jy.y.b($$0)) + ":" + a($$0.a().b($$1));
+   public ib<aqm> a() {
+      return this.b;
    }
 
-   private static <T> String a(@Nullable afw $$0) {
-      return $$0.toString().replace(':', '.');
+   public int b() {
+      return this.c;
    }
 
-   public aqm<T> a() {
-      return this.p;
+   public int c() {
+      return this.d;
    }
 
-   public T b() {
-      return this.o;
-   }
-
-   public String a(int $$0) {
-      return this.n.format($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof aqk && Objects.equals(this.d(), ((aqk)$$0).d());
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d().hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.d() + ", formatter=" + this.n + "}";
+   public boolean d() {
+      return this.e;
    }
 }

@@ -1,73 +1,42 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class dpg extends doo<dqx> {
-   public dpg(Codec<dqx> $$0) {
+public class dpg extends dpj<drm> {
+   public dpg(Codec<drm> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doq<dqx> $$0) {
-      crt $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      ate $$3 = $$0.d();
-      dqx $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<hx> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            ht.a $$6 = $$2.j();
+   public boolean a(dpl<drm> $$0) {
+      ht $$1 = $$0.e();
+      csm $$2 = $$0.b();
+      drm $$3 = $$0.f();
 
-            for (hx $$7 : $$5) {
-               $$6.g($$2);
-               List<hx> $$8 = $$4.a($$3, $$7.g());
-
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dgb $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
+      for (ht $$4 : ht.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            ht $$9 = $$4.i();
+            this.a($$2, $$9, cuv.kF.o());
+            $$3.b().ifPresent($$3x -> {
+               der $$4x = $$2.c_($$9);
+               if ($$4x instanceof dgg $$5x) {
+                  $$5x.a($$3x, $$3.c());
+                  $$4x.e();
                }
-            }
-
-            return false;
-         }
-      }
-   }
-
-   public static boolean a(crt $$0, ht $$1, dgb $$2, dqx $$3, ate $$4, List<hx> $$5) {
-      ht.a $$6 = $$1.j();
-
-      for (hx $$7 : $$5) {
-         dgb $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dgb $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
-            }
-
-            $$0.a($$1, $$9, 3);
-            $$0.x($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
-
-            return true;
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, cuv.a.o());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, cuv.F.o());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, cuv.F.o());
+         } else {
+            this.a($$2, $$4, cuv.a.o());
          }
       }
 
-      return false;
-   }
-
-   private static boolean c(dgb $$0) {
-      return $$0.i() || $$0.a(cuc.G);
+      return true;
    }
 }

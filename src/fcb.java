@@ -1,24 +1,9 @@
-public class fcb extends fcf {
-   private static final ui b = ui.c("title.32bit.deprecation.realms.header").a(n.r);
-   private static final ui c = ui.c("title.32bit.deprecation.realms");
-   private static final ui k = ui.c("title.32bit.deprecation.realms.check");
-   private static final ui l = b.f().f("\n").b(c);
-   private final ezd m;
+public class fcb extends fbh<cha> {
+   private static final agg y = new agg("container/furnace/lit_progress");
+   private static final agg z = new agg("container/furnace/burn_progress");
+   private static final agg A = new agg("textures/gui/container/furnace.png");
 
-   public fcb(ezd $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
-   }
-
-   @Override
-   protected void a(int $$0) {
-      this.d(etj.a(uh.d, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.w = true;
-            this.f.m.ar();
-         }
-
-         this.f.a(this.m);
-      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
+   public fcb(cha $$0, cdl $$1, ur $$2) {
+      super($$0, new fec(), $$1, $$2, A, y, z);
    }
 }

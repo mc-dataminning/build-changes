@@ -1,17 +1,28 @@
-import com.mojang.serialization.Codec;
-
 public class edz {
-   public static final Codec<eeb> a = jy.G.q().dispatch(eeb::a, eec::a);
-   public static final eec b = a("empty", edw.a);
-   public static final eec c = a("item", edy.a);
-   public static final eec d = a("loot_table", eee.a);
-   public static final eec e = a("dynamic", edv.a);
-   public static final eec f = a("tag", eeg.a);
-   public static final eec g = a("alternatives", eds.a);
-   public static final eec h = a("sequence", eef.a);
-   public static final eec i = a("group", edx.a);
+   public static final edz a = new edz("advancements");
+   public static final edz b = new edz("stats");
+   public static final edz c = new edz("playerdata");
+   public static final edz d = new edz("players");
+   public static final edz e = new edz("level.dat");
+   public static final edz f = new edz("level.dat_old");
+   public static final edz g = new edz("icon.png");
+   public static final edz h = new edz("session.lock");
+   public static final edz i = new edz("generated");
+   public static final edz j = new edz("datapacks");
+   public static final edz k = new edz("resources.zip");
+   public static final edz l = new edz(".");
+   private final String m;
 
-   private static eec a(String $$0, Codec<? extends eeb> $$1) {
-      return io.a(jy.G, new afw($$0), new eec($$1));
+   private edz(String $$0) {
+      this.m = $$0;
+   }
+
+   public String a() {
+      return this.m;
+   }
+
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

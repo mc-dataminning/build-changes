@@ -15,9 +15,9 @@ public interface ig<T> extends Iterable<ib<T>> {
 
    int b();
 
-   Either<arh<T>, List<ib<T>>> c();
+   Either<arr<T>, List<ib<T>>> c();
 
-   Optional<ib<T>> a(ate var1);
+   Optional<ib<T>> a(ato var1);
 
    ib<T> a(int var1);
 
@@ -25,11 +25,11 @@ public interface ig<T> extends Iterable<ib<T>> {
 
    boolean a(ie<T> var1);
 
-   Optional<arh<T>> d();
+   Optional<arr<T>> d();
 
    @Deprecated
    @VisibleForTesting
-   static <T> ig.c<T> a(ie<T> $$0, arh<T> $$1) {
+   static <T> ig.c<T> a(ie<T> $$0, arr<T> $$1) {
       return new ig.c<>($$0, $$1);
    }
 
@@ -66,12 +66,12 @@ public interface ig<T> extends Iterable<ib<T>> {
       }
 
       @Override
-      public Either<arh<T>, List<ib<T>>> c() {
+      public Either<arr<T>, List<ib<T>>> c() {
          return Either.right(this.a);
       }
 
       @Override
-      public Optional<arh<T>> d() {
+      public Optional<arr<T>> d() {
          return Optional.empty();
       }
 
@@ -114,7 +114,7 @@ public interface ig<T> extends Iterable<ib<T>> {
       }
 
       @Override
-      public Optional<ib<T>> a(ate $$0) {
+      public Optional<ib<T>> a(ato $$0) {
          return ac.b(this.e(), $$0);
       }
 
@@ -131,10 +131,10 @@ public interface ig<T> extends Iterable<ib<T>> {
 
    public static class c<T> extends ig.b<T> {
       private final ie<T> a;
-      private final arh<T> b;
+      private final arr<T> b;
       private List<ib<T>> c = List.of();
 
-      c(ie<T> $$0, arh<T> $$1) {
+      c(ie<T> $$0, arr<T> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
@@ -143,7 +143,7 @@ public interface ig<T> extends Iterable<ib<T>> {
          this.c = List.copyOf($$0);
       }
 
-      public arh<T> f() {
+      public arr<T> f() {
          return this.b;
       }
 
@@ -153,12 +153,12 @@ public interface ig<T> extends Iterable<ib<T>> {
       }
 
       @Override
-      public Either<arh<T>, List<ib<T>>> c() {
+      public Either<arr<T>, List<ib<T>>> c() {
          return Either.left(this.b);
       }
 
       @Override
-      public Optional<arh<T>> d() {
+      public Optional<arr<T>> d() {
          return Optional.of(this.b);
       }
 

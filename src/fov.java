@@ -1,168 +1,67 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fov extends fow {
+   private final ht a;
+   private final float b;
+   private final float F;
 
-public class fov extends aoy<fov.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final afw b = new afw("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
-
-   public boolean a() {
-      return !this.c.isEmpty();
+   public fov(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dgw $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, ht.a($$1, $$2, $$3));
    }
 
-   public boolean b() {
-      return this.a() && !this.e;
-   }
-
-   public void d() {
-      this.d = true;
-   }
-
-   public void e() {
-      this.e = true;
-   }
-
-   public void f() {
-      this.e = true;
-      this.f = true;
-   }
-
-   public boolean g() {
-      return this.d && !this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public void i() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
-   @Nullable
-   public String j() {
-      return (String)this.c.get("renderer");
-   }
-
-   @Nullable
-   public String k() {
-      return (String)this.c.get("version");
-   }
-
-   @Nullable
-   public String l() {
-      return (String)this.c.get("vendor");
-   }
-
-   @Nullable
-   public String m() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected fov.a a(aot $$0, bes $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      $$1.a();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         $$1.a("compile_regex");
-         a($$5.getAsJsonArray("renderer"), $$2);
-         a($$5.getAsJsonArray("version"), $$3);
-         a($$5.getAsJsonArray("vendor"), $$4);
-         $$1.c();
+   public fov(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dgw $$7, ht $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(esr.N().am().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(cuv.i)) {
+         int $$9 = esr.N().av().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
       }
 
-      $$1.b();
-      return new fov.a($$2, $$3, $$4);
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
-   protected void a(fov.a $$0, aot $$1, bes $$2) {
-      this.c = $$0.a();
+   @Override
+   public fnz b() {
+      return fnz.a;
    }
 
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
    }
 
-   @Nullable
-   private static JsonObject c(aot $$0, bes $$1) {
-      $$1.a("parse_json");
-      JsonObject $$2 = null;
-
-      try (Reader $$3 = $$0.openAsReader(b)) {
-         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
-      } catch (JsonSyntaxException | IOException var8) {
-         a.warn("Failed to load GPU warnlist");
-      }
-
-      $$1.c();
-      return $$2;
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
    }
 
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
+   }
 
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
+   }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.A(this.a) ? fqf.a(this.c, this.a) : $$1;
+   }
 
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
-
-            while ($$4.find()) {
-               $$2.add($$4.group());
-            }
-         }
-
-         return String.join(", ", $$2);
-      }
-
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         String $$1 = a(this.a, ela.c());
-         if (!$$1.isEmpty()) {
-            $$0.put("renderer", $$1);
-         }
-
-         String $$2 = a(this.b, ela.d());
-         if (!$$2.isEmpty()) {
-            $$0.put("version", $$2);
-         }
-
-         String $$3 = a(this.c, ela.a());
-         if (!$$3.isEmpty()) {
-            $$0.put("vendor", $$3);
-         }
-
-         return $$0.build();
+   public static class a implements fny<jk> {
+      public fnv a(jk $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dgw $$8 = $$0.c();
+         return !$$8.i() && !$$8.a(cuv.bQ) && $$8.z() ? new fov($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
       }
    }
 }

@@ -1,24 +1,19 @@
-class biy extends bje {
-   protected biy(bjf $$0, int $$1) {
-      super($$0, $$1);
+public final class biy implements bit {
+   private final ur a;
+   private final chk b;
+
+   public biy(chk $$0, ur $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public void a(bkj $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0.fk() <= 0.0F && !$$0.dL().B) {
-         $$0.d(this);
-      }
+   public ur O_() {
+      return this.a;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void b(bkj $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.y(Math.max($$0.fk(), (float)(4 * (1 + $$1))));
+   public cge createMenu(int $$0, cdl $$1, cdm $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

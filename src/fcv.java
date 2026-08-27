@@ -1,5 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface fcv {
-   void a(List<cno<?>> var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fcv {
 }

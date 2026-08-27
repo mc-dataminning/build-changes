@@ -1,11 +1,10 @@
 public class arl {
-   public static final arh<dvp> a = a("normal");
-   public static final arh<dvp> b = a("extended");
+   public static final arr<cab> a = a("placeable");
 
    private arl() {
    }
 
-   private static arh<dvp> a(String $$0) {
-      return arh.a(jz.aG, new afw($$0));
+   private static arr<cab> a(String $$0) {
+      return arr.a(jz.Q, new agg($$0));
    }
 }

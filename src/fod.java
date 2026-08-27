@@ -1,88 +1,13 @@
-import com.mojang.authlib.GameProfile;
-
-public class fod extends fnz {
-   private eif cm = eif.b;
-   private int cn;
-
-   public fod(fjr $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.t(1.0F);
-      this.af = true;
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cG().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cz();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean a(bir $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.q(false);
-   }
-
-   @Override
-   public void c_() {
-      if (this.bn > 0) {
-         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
-         this.bn--;
-      }
-
-      if (this.bu > 0) {
-         this.a(this.bu, this.bt);
-         this.bu--;
-      }
-
-      if (this.cn > 0) {
-         this.g(new eif((this.cm.c - this.do().c) / (double)this.cn, (this.cm.d - this.do().d) / (double)this.cn, (this.cm.e - this.do().e) / (double)this.cn));
-         this.cn--;
-      }
-
-      this.bV = this.bW;
-      this.eP();
-      float $$1;
-      if (this.aA() && !this.ev()) {
-         $$1 = (float)Math.min(0.1, this.do().h());
-      } else {
-         $$1 = 0.0F;
-      }
-
-      this.bW = this.bW + ($$1 - this.bW) * 0.4F;
-      this.dL().ad().a("push");
-      this.fi();
-      this.dL().ad().c();
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.cm = new eif($$0, $$1, $$2);
-      this.cn = this.ag().p() + 1;
-   }
-
-   @Override
-   protected void fM() {
-   }
-
-   @Override
-   public void a(ui $$0) {
-      ero $$1 = ero.O();
-      $$1.l.d().a($$0);
-   }
-
-   @Override
-   public void a(xv $$0) {
-      super.a($$0);
-      this.bn();
+public abstract class fod extends fow {
+   protected fod(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.j = this.j * 0.01F + $$4;
+      this.k = this.k * 0.01F + $$5;
+      this.l = this.l * 0.01F + $$6;
+      this.g = this.g + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.h = this.h + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.i = this.i + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
    }
 }

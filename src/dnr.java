@@ -1,73 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dnr extends doo<dqu> {
-   public dnr(Codec<dqu> $$0) {
+public class dnr extends dnx {
+   final arr<cut> a;
+   public static final Codec<dnr> e = RecordCodecBuilder.create($$0 -> a($$0).and(arr.a(jz.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dnr::new));
+
+   protected dnr(iw $$0, arr<cut> $$1) {
       super($$0);
-   }
-
-   protected void a(cra $$0, ate $$1, ht $$2, dqu $$3, int $$4, ht.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(hx.b, $$6);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            this.a($$0, $$5, $$3.c.a($$1, $$2));
-         }
-      }
-   }
-
-   protected int a(ate $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(cra $$0, ht $$1, int $$2, ht.a $$3, dqu $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.aj()) {
-         dgb $$6 = $$0.a_($$1.d());
-         if (!b($$6) && !$$6.a(aqs.aZ)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
-
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     dgb $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.i() && !$$11.a(aqs.O)) {
-                        return false;
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
+      this.a = $$1;
    }
 
    @Override
-   public boolean a(doq<dqu> $$0) {
-      crt $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      ate $$3 = $$0.d();
-      dqu $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      ht.a $$6 = new ht.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
-      } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
-      }
+   protected boolean a(dgw $$0) {
+      return $$0.a(this.a);
    }
 
-   protected abstract int a(int var1, int var2, int var3, int var4);
-
-   protected abstract void a(cra var1, ate var2, ht var3, int var4, ht.a var5, dqu var6);
+   @Override
+   public dnn<?> a() {
+      return dnn.b;
+   }
 }

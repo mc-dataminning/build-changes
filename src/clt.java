@@ -1,50 +1,71 @@
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class clt extends cke {
-   public static final String a = "effects";
-   public static final int b = 160;
+public class clt extends ckw {
+   private static final Map<aqm, clt> a = Maps.newHashMap();
+   private final int b;
+   private final aqm c;
+   private final int d;
 
-   public clt(cke.a $$0) {
-      super($$0);
-   }
-
-   public static void a(ckj $$0, List<dca.a> $$1) {
-      rt $$2 = $$0.w();
-      dca.a.b.encodeStart(sf.a, $$1).result().ifPresent($$1x -> $$2.a("effects", $$1x));
-   }
-
-   public static void b(ckj $$0, List<dca.a> $$1) {
-      rt $$2 = $$0.w();
-      List<dca.a> $$3 = new ArrayList<>();
-      a($$0, $$3::add);
-      $$3.addAll($$1);
-      dca.a.b.encodeStart(sf.a, $$3).result().ifPresent($$1x -> $$2.a("effects", $$1x));
-   }
-
-   private static void a(ckj $$0, Consumer<dca.a> $$1) {
-      rt $$2 = $$0.v();
-      if ($$2 != null && $$2.b("effects", 9)) {
-         dca.a.b.parse(sf.a, $$2.c("effects", 10)).result().ifPresent($$1x -> $$1x.forEach($$1));
-      }
+   protected clt(int $$0, aqm $$1, ckw.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3 * 20;
+      a.put(this.c, this);
    }
 
    @Override
-   public void a(ckj $$0, @Nullable cqz $$1, List<ui> $$2, cma $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<bjg> $$4 = new ArrayList<>();
-         a($$0, $$1x -> $$4.add($$1x.a()));
-         cmi.a($$4, $$2, 1.0F);
+   public biq a(cnl $$0) {
+      crs $$1 = $$0.q();
+      ht $$2 = $$0.a();
+      dgw $$3 = $$1.a_($$2);
+      if ($$3.a(cuv.dT) && !$$3.c(cyv.b)) {
+         clb $$4 = $$0.n();
+         if (!$$1.B) {
+            cdm $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof dfs $$6) {
+               $$6.b($$4.p());
+               $$1.a(dlg.c, $$2, dlg.a.a($$5, $$3));
+            }
+
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(aqx.al);
+            }
+         }
+
+         return biq.a($$1.B);
+      } else {
+         return biq.d;
       }
    }
 
+   public int h() {
+      return this.b;
+   }
+
    @Override
-   public ckj a(ckj $$0, cqz $$1, bkj $$2) {
-      ckj $$3 = super.a($$0, $$1, $$2);
-      a($$3, $$1x -> $$2.b($$1x.a()));
-      return $$2 instanceof ccx && ((ccx)$$2).fT().d ? $$3 : new ckj(ckm.oC);
+   public void a(clb $$0, @Nullable crs $$1, List<ur> $$2, cms $$3) {
+      $$2.add(this.i().a(n.h));
+   }
+
+   public vf i() {
+      return ur.c(this.a() + ".desc");
+   }
+
+   @Nullable
+   public static clt a(aqm $$0) {
+      return a.get($$0);
+   }
+
+   public aqm x() {
+      return this.c;
+   }
+
+   public int y() {
+      return this.d;
    }
 }

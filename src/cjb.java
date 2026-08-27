@@ -1,81 +1,112 @@
-import java.util.List;
+public class cjb extends ckw {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public interface cjb {
-   String o_ = "color";
-   String p_ = "display";
-   int q_ = 10511680;
-
-   default boolean a(ckj $$0) {
-      rt $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99);
+   public cjb(ckw.a $$0) {
+      super($$0);
    }
 
-   default int e_(ckj $$0) {
-      rt $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
-   }
-
-   default void f_(ckj $$0) {
-      rt $$1 = $$0.b("display");
-      if ($$1 != null && $$1.e("color")) {
-         $$1.r("color");
-      }
-   }
-
-   default void a(ckj $$0, int $$1) {
-      $$0.a("display").a("color", $$1);
-   }
-
-   static ckj a(ckj $$0, List<ciy> $$1) {
-      ckj $$2 = ckj.b;
-      int[] $$3 = new int[3];
-      int $$4 = 0;
-      int $$5 = 0;
-      cjb $$6 = null;
-      cke $$7 = $$0.d();
-      if ($$7 instanceof cjb) {
-         $$6 = (cjb)$$7;
-         $$2 = $$0.c(1);
-         if ($$6.a($$0)) {
-            int $$8 = $$6.e_($$2);
-            float $$9 = (float)($$8 >> 16 & 0xFF) / 255.0F;
-            float $$10 = (float)($$8 >> 8 & 0xFF) / 255.0F;
-            float $$11 = (float)($$8 & 0xFF) / 255.0F;
-            $$4 += (int)(Math.max($$9, Math.max($$10, $$11)) * 255.0F);
-            $$3[0] += (int)($$9 * 255.0F);
-            $$3[1] += (int)($$10 * 255.0F);
-            $$3[2] += (int)($$11 * 255.0F);
-            $$5++;
-         }
-
-         for (ciy $$12 : $$1) {
-            float[] $$13 = $$12.d().d();
-            int $$14 = (int)($$13[0] * 255.0F);
-            int $$15 = (int)($$13[1] * 255.0F);
-            int $$16 = (int)($$13[2] * 255.0F);
-            $$4 += Math.max($$14, Math.max($$15, $$16));
-            $$3[0] += $$14;
-            $$3[1] += $$15;
-            $$3[2] += $$16;
-            $$5++;
-         }
+   @Override
+   public biq a(cnl $$0) {
+      cdm $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).c() == ejg.a.b) {
+         $$1.c($$0.p());
       }
 
-      if ($$6 == null) {
-         return ckj.b;
+      return biq.b;
+   }
+
+   @Override
+   public cmu c(clb $$0) {
+      return cmu.j;
+   }
+
+   @Override
+   public int b(clb $$0) {
+      return 200;
+   }
+
+   @Override
+   public void a(crs $$0, bky $$1, clb $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cdm $$4) {
+         ejg $$6 = this.a($$4);
+         if ($$6 instanceof eje $$7 && $$6.c() == ejg.a.b) {
+            int $$9 = this.b($$2) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               ht $$11 = $$7.a();
+               dgw $$12 = $$0.a_($$11);
+               bks $$13 = $$1.fo() == bip.a ? $$4.fm() : $$4.fm().e();
+               if ($$12.z() && $$12.l() != day.a) {
+                  this.a($$0, $$7, $$12, $$1.f(0.0F), $$13);
+               }
+
+               aqm $$15;
+               if ($$12.b() instanceof cuy $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = aqn.cl;
+               }
+
+               $$0.a($$4, $$11, $$15, aqo.e);
+               if (!$$0.x_() && $$0.c_($$11) instanceof dev $$17) {
+                  boolean $$18 = $$17.a($$0.V(), $$4, $$7.b());
+                  if ($$18) {
+                     bkn $$19 = $$2.equals($$4.c(bkn.b)) ? bkn.b : bkn.a;
+                     $$2.a(1, $$1, $$1x -> $$1x.d($$19));
+                  }
+               }
+            }
+
+            return;
+         }
+
+         $$1.fs();
       } else {
-         int $$17 = $$3[0] / $$5;
-         int $$18 = $$3[1] / $$5;
-         int $$19 = $$3[2] / $$5;
-         float $$20 = (float)$$4 / (float)$$5;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int var26 = ($$17 << 8) + $$18;
-         var26 = (var26 << 8) + $$19;
-         $$6.a($$2, var26);
-         return $$2;
+         $$1.fs();
+      }
+   }
+
+   private ejg a(cdm $$0) {
+      return cef.a($$0, $$0x -> !$$0x.N_() && $$0x.br(), (double)cdm.v($$0.f()));
+   }
+
+   private void a(crs $$0, eje $$1, dgw $$2, eji $$3, bks $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bks.b ? 1 : -1;
+      int $$7 = $$0.E_().b(7, 12);
+      jk $$8 = new jk(js.c, $$2);
+      hx $$9 = $$1.b();
+      cjb.a $$10 = cjb.a.a($$3, $$9);
+      eji $$11 = $$1.e();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.c - (double)($$9 == hx.e ? 1.0E-6F : 0.0F),
+            $$11.d,
+            $$11.e - (double)($$9 == hx.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.E_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.E_().j()
+         );
+      }
+   }
+
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
+
+      public static cjb.a a(eji $$0, hx $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new cjb.a($$0.c(), 0.0, -$$0.a());
+            case c -> new cjb.a(1.0, 0.0, -0.1);
+            case d -> new cjb.a(-1.0, 0.0, 0.1);
+            case e -> new cjb.a(-0.1, 0.0, -1.0);
+            case f -> new cjb.a(0.1, 0.0, 1.0);
+         };
       }
    }
 }

@@ -1,29 +1,26 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxe extends dxg {
-   public static final Codec<dxe> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, dxe::new));
+public interface dxe<S extends dwv> {
+   dxe<dyo> a = a("buried_treasure", dyo.d);
+   dxe<dyq> b = a("desert_pyramid", dyq.d);
+   dxe<dys> c = a("end_city", dys.d);
+   dxe<dzb> d = a("fortress", dzb.e);
+   dxe<dyu> e = a("igloo", dyu.d);
+   dxe<dyv> f = a("jigsaw", dyv.e);
+   dxe<dyx> g = a("jungle_temple", dyx.d);
+   dxe<dyz> h = a("mineshaft", dyz.d);
+   dxe<dzd> i = a("nether_fossil", dzd.d);
+   dxe<dzf> j = a("ocean_monument", dzf.d);
+   dxe<dzh> k = a("ocean_ruin", dzh.d);
+   dxe<dzj> l = a("ruined_portal", dzj.d);
+   dxe<dzl> m = a("shipwreck", dzl.d);
+   dxe<dzn> n = a("stronghold", dzn.d);
+   dxe<dzp> o = a("swamp_hut", dzp.d);
+   dxe<dzr> p = a("woodland_mansion", dzr.d);
 
-   protected dxe(Either<afw, dzt> $$0, ib<dzr> $$1, dxj.a $$2) {
-      super($$0, $$1, $$2);
-   }
+   Codec<S> codec();
 
-   @Override
-   protected dzp a(dal $$0, dvs $$1, boolean $$2) {
-      dzp $$3 = super.a($$0, $$1, $$2);
-      $$3.b(dyv.b);
-      $$3.a(dyv.d);
-      return $$3;
-   }
-
-   @Override
-   public dxi<?> a() {
-      return dxi.e;
-   }
-
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   private static <S extends dwv> dxe<S> a(String $$0, Codec<S> $$1) {
+      return io.a(jy.U, $$0, () -> $$1);
    }
 }

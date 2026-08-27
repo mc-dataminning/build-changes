@@ -1,13 +1,24 @@
-public class fyt<T extends bkl & cap, M extends ffx<T>> extends fyl<T, M> {
-   private static final afw a = new afw("textures/entity/skeleton/stray_overlay.png");
-   private final fhs<T> b;
+public class fyt extends fzs<caq, fha<caq>> {
+   private final frb a;
 
-   public fyt(fvy<T, M> $$0, fis $$1) {
+   public fyt(fxf<caq, fha<caq>> $$0, frb $$1) {
       super($$0);
-      this.b = new fhs<>($$1.a(fiv.bw));
+      this.a = $$1;
    }
 
-   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public void a(enk $$0, fqh $$1, int $$2, caq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dgw $$10 = $$3.ge();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, gay.d);
+         $$0.b();
+      }
    }
 }

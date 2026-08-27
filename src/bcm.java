@@ -4,29 +4,37 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bcm extends bbi {
+public class bcm extends bbv {
    public bcm(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register(
-         $$1,
-         "minecraft:wandering_trader",
-         $$1x -> DSL.optionalFields(
-               "Inventory",
-               DSL.list(baa.t.in($$0)),
-               "Offers",
-               DSL.optionalFields("Recipes", DSL.list(DSL.optionalFields("buy", baa.t.in($$0), "buyB", baa.t.in($$0), "sell", baa.t.in($$0)))),
-               bbj.a($$0)
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         ban.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(ban.w.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(ban.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", ban.y.in($$0))),
+                  "Sections",
+                  DSL.list(DSL.optionalFields("Palette", DSL.list(ban.u.in($$0)))),
+                  "Structures",
+                  DSL.optionalFields("Starts", DSL.compoundList(ban.C.in($$0)))
+               )
             )
       );
-      $$0.register(
-         $$1,
-         "minecraft:trader_llama",
-         $$1x -> DSL.optionalFields("Items", DSL.list(baa.t.in($$0)), "SaddleItem", baa.t.in($$0), "DecorItem", baa.t.in($$0), bbj.a($$0))
-      );
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$1.put("DUMMY", DSL::remainder);
       return $$1;
    }
 }

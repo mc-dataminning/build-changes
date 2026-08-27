@@ -1,30 +1,29 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum duv implements atr {
-   a(hx.b, 1, "ceiling"),
-   b(hx.a, -1, "floor");
+public class duv {
+   public static final Codec<duv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, dkf.c).fieldOf("height").forGetter(duv::a), jy.f.q().fieldOf("block").orElse(cuv.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, duv::new)
+   );
+   private final cut b;
+   private final int c;
 
-   public static final Codec<duv> c = atr.a(duv::values);
-   private final hx d;
-   private final int e;
-   private final String f;
-
-   private duv(hx $$0, int $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public duv(int $$0, cut $$1) {
+      this.c = $$0;
+      this.b = $$1;
    }
 
-   public hx a() {
-      return this.d;
+   public int a() {
+      return this.c;
    }
 
-   public int b() {
-      return this.e;
+   public dgw b() {
+      return this.b.o();
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + jy.f.b(this.b);
    }
 }

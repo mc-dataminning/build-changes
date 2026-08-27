@@ -1,11 +1,33 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public record ane(cfg b) {
-   private static final Codec<ane> c = RecordCodecBuilder.create($$0 -> $$0.group(cfi.e.fieldOf("enabled").forGetter(ane::a)).apply($$0, ane::new));
-   public static final anu<ane> a = anu.a("features", c);
+public interface ane {
+   ane a = new ane() {
+      @Override
+      public void a() {
+      }
 
-   public cfg a() {
-      return this.b;
-   }
+      @Override
+      public void b() {
+      }
+
+      @Override
+      public CompletableFuture<amr> a(String $$0) {
+         return CompletableFuture.completedFuture(amr.a($$0));
+      }
+
+      @Override
+      public CompletableFuture<List<amr>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(amr::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   void a();
+
+   void b();
+
+   CompletableFuture<amr> a(String var1);
+
+   CompletableFuture<List<amr>> a(List<String> var1);
 }

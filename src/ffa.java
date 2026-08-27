@@ -1,75 +1,83 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class ffa extends fez {
-   private static final String a = "right_body_stick";
-   private static final String b = "left_body_stick";
-   private static final String w = "shoulder_stick";
-   private static final String x = "base_plate";
-   private final fiw y;
-   private final fiw z;
-   private final fiw A;
-   private final fiw B;
+public class ffa extends fah {
+   private static final int a = 310;
+   private final exw b = new exw(this);
+   private final fah c;
+   private final aoo k;
+   private final Consumer<aoo> l;
+   private final Object2BooleanMap<aol> m = new Object2BooleanLinkedOpenHashMap();
 
-   public ffa(fiw $$0) {
-      super($$0);
-      this.y = $$0.b("right_body_stick");
-      this.z = $$0.b("left_body_stick");
-      this.A = $$0.b("shoulder_stick");
-      this.B = $$0.b("base_plate");
-      this.l.k = false;
-   }
+   public ffa(fah $$0, aoo $$1, Consumer<aoo> $$2) {
+      super(ur.c("experiments_screen.title"));
+      this.c = $$0;
+      this.k = $$1;
+      this.l = $$2;
 
-   public static fjc c() {
-      fje $$0 = fgk.a(fja.a, 0.0F);
-      fjf $$1 = $$0.a();
-      $$1.a("head", fjb.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), fiy.a(0.0F, 1.0F, 0.0F));
-      $$1.a("body", fjb.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), fiy.a);
-      $$1.a("right_arm", fjb.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fiy.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fjb.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fiy.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fjb.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fiy.a(-1.9F, 12.0F, 0.0F));
-      $$1.a("left_leg", fjb.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fiy.a(1.9F, 12.0F, 0.0F));
-      $$1.a("right_body_stick", fjb.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fiy.a);
-      $$1.a("left_body_stick", fjb.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fiy.a);
-      $$1.a("shoulder_stick", fjb.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), fiy.a);
-      $$1.a("base_plate", fjb.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), fiy.a(0.0F, 12.0F, 0.0F));
-      return fjc.a($$0, 64, 64);
-   }
-
-   public void a(bzg $$0, float $$1, float $$2, float $$3) {
-      this.B.e = 0.0F;
-      this.B.f = (float) (Math.PI / 180.0) * -asy.j($$3, $$0.N, $$0.dB());
-      this.B.g = 0.0F;
+      for (aol $$3 : $$1.c()) {
+         if ($$3.j() == aop.d) {
+            this.m.put($$3, $$1.f().contains($$3));
+         }
+      }
    }
 
    @Override
-   public void a(bzg $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.o.k = $$0.t();
-      this.n.k = $$0.t();
-      this.B.k = !$$0.w();
-      this.y.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.y.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.y.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.z.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.z.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.z.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.A.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.A.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.A.g = (float) (Math.PI / 180.0) * $$0.A().d();
+   protected void aO_() {
+      this.b.a(new evt(ur.c("selectWorld.experiments"), this.i));
+      eya $$0 = this.b.c(eya.d());
+      $$0.a(new evg(ur.c("selectWorld.experiments.info").a(n.m), this.i).j(310), $$0x -> $$0x.e(15));
+      ffe.a $$1 = ffe.a(310).a(2, true).b(4);
+      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
+      $$1.a($$0::a);
+      exv.b $$2 = this.b.b(new exv().a(10)).d(2);
+      $$2.a(eum.a(uq.d, $$0x -> this.l()).a());
+      $$2.a(eum.a(uq.e, $$0x -> this.aE_()).a());
+      this.b.a($$1x -> {
+         euk var10000 = this.d($$1x);
+      });
+      this.c();
+   }
+
+   private static ur a(aol $$0) {
+      String $$1 = "dataPack." + $$0.f() + ".name";
+      return (ur)(gcn.a($$1) ? ur.c($$1) : $$0.a());
    }
 
    @Override
-   protected Iterable<fiw> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.y, this.z, this.A, this.B));
+   public void aE_() {
+      this.f.a(this.c);
+   }
+
+   private void l() {
+      List<aol> $$0 = new ArrayList<>(this.k.f());
+      List<aol> $$1 = new ArrayList<>();
+      this.m.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
+         }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.k.a($$0.stream().map(aol::f).toList());
+      this.l.accept(this.k);
    }
 
    @Override
-   public void a(bkd $$0, emh $$1) {
-      fiw $$2 = this.a($$0);
-      boolean $$3 = $$2.k;
-      $$2.k = true;
-      super.a($$0, $$1);
-      $$2.k = $$3;
+   protected void c() {
+      this.b.a();
+   }
+
+   @Override
+   public void b(eub $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
+      int $$4 = 32;
+      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

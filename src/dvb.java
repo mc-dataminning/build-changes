@@ -1,23 +1,34 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public class dvb extends dvh {
-   private static final dvb c = new dvb();
-   public static final Codec<dvb> a = Codec.unit(() -> c);
+public class dvb extends dvc {
+   public static final dvb a = new dvb(dmz.a(0));
+   public static final Codec<dvb> b = asq.e(dmz.a, dmz.a.fieldOf("value").codec()).xmap(dvb::new, dvb::b);
+   private final dmz d;
 
-   public static dvb a() {
-      return c;
+   public static dvb a(dmz $$0) {
+      return new dvb($$0);
+   }
+
+   private dvb(dmz $$0) {
+      this.d = $$0;
+   }
+
+   public dmz b() {
+      return this.d;
    }
 
    @Override
-   public Stream<ht> a_(dvf $$0, ate $$1, ht $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new ht($$3, $$2.v(), $$4));
+   public int a(ato $$0, dnc $$1) {
+      return this.d.a($$1);
    }
 
    @Override
-   public dvi<?> b() {
-      return dvi.m;
+   public dvd<?> a() {
+      return dvd.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

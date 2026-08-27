@@ -1,99 +1,183 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fdw extends ezd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<afv<cqz>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(cqz.h, -13408734);
-      $$0.put(cqz.i, -10075085);
-      $$0.put(cqz.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bhp k;
+public class fdw {
+   public static final int a = 20;
+   private static final evz b = new evz(new agg("recipe_book/page_forward"), new agg("recipe_book/page_forward_highlighted"));
+   private static final evz c = new evz(new agg("recipe_book/page_backward"), new agg("recipe_book/page_backward_highlighted"));
+   private final List<fdy> d = Lists.newArrayListWithCapacity(20);
+   @Nullable
+   private fdy e;
+   private final fdu f = new fdu();
+   private esr g;
+   private final List<fea> h = Lists.newArrayList();
+   private List<fdz> i = ImmutableList.of();
+   private evs j;
+   private evs k;
+   private int l;
+   private int m;
+   private aqq n;
+   @Nullable
+   private coh<?> o;
+   @Nullable
+   private fdz p;
+
+   public fdw() {
+      for (int $$0 = 0; $$0 < 20; $$0++) {
+         this.d.add(new fdy());
+      }
+   }
+
+   public void a(esr $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.n = $$0.s.m();
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.d.get($$3).b($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
+      }
+
+      this.j = new evs($$1 + 93, $$2 + 137, 12, 17, false);
+      this.j.a(b);
+      this.k = new evs($$1 + 38, $$2 + 137, 12, 17, true);
+      this.k.a(c);
+   }
+
+   public void a(fdv $$0) {
+      this.h.remove($$0);
+      this.h.add($$0);
+   }
+
+   public void a(List<fdz> $$0, boolean $$1) {
+      this.i = $$0;
+      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
+      if (this.l <= this.m || $$1) {
+         this.m = 0;
+      }
+
+      this.f();
+   }
+
+   private void f() {
+      int $$0 = 20 * this.m;
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         fdy $$2 = this.d.get($$1);
+         if ($$0 + $$1 < this.i.size()) {
+            fdz $$3 = this.i.get($$0 + $$1);
+            $$2.a($$3, this);
+            $$2.j = true;
+         } else {
+            $$2.j = false;
+         }
+      }
+
+      this.g();
+   }
+
+   private void g() {
+      this.j.j = this.l > 1 && this.m < this.l - 1;
+      this.k.j = this.l > 1 && this.m > 0;
+   }
+
+   public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      if (this.l > 1) {
+         ur $$6 = ur.a("gui.recipebook.page", this.m + 1, this.l);
+         int $$7 = this.g.h.a($$6);
+         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
+      }
+
+      this.e = null;
+
+      for (fdy $$8 : this.d) {
+         $$8.a($$0, $$3, $$4, $$5);
+         if ($$8.j && $$8.n()) {
+            this.e = $$8;
+         }
+      }
+
+      this.k.a($$0, $$3, $$4, $$5);
+      this.j.a($$0, $$3, $$4, $$5);
+      this.f.a($$0, $$3, $$4, $$5);
+   }
+
+   public void a(eub $$0, int $$1, int $$2) {
+      if (this.g.y != null && this.e != null && !this.f.c()) {
+         $$0.a(this.g.h, this.e.f(), $$1, $$2);
+      }
+   }
 
    @Nullable
-   public static fdw a(ero $$0, BooleanConsumer $$1, DataFixer $$2, ecy.c $$3, boolean $$4) {
-      try {
-         fdw var8;
-         try (agr $$5 = $$0.y().a($$3, false)) {
-            ede $$6 = $$5.d();
-            ip.b $$7 = $$5.c().a();
-            $$3.a($$7, $$6);
-            var8 = new fdw($$1, $$2, $$3, $$6.L(), $$4, $$7.d(jz.aJ));
+   public coh<?> a() {
+      return this.o;
+   }
+
+   @Nullable
+   public fdz b() {
+      return this.p;
+   }
+
+   public void c() {
+      this.f.b(false);
+   }
+
+   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.o = null;
+      this.p = null;
+      if (this.f.c()) {
+         if (this.f.a($$0, $$1, $$2)) {
+            this.o = this.f.b();
+            this.p = this.f.a();
+         } else {
+            this.f.b(false);
          }
 
-         return var8;
-      } catch (Exception var11) {
-         a.warn("Failed to load datapacks, can't optimize world", var11);
-         return null;
-      }
-   }
+         return true;
+      } else if (this.j.a($$0, $$1, $$2)) {
+         this.m++;
+         this.f();
+         return true;
+      } else if (this.k.a($$0, $$1, $$2)) {
+         this.m--;
+         this.f();
+         return true;
+      } else {
+         for (fdy $$7 : this.d) {
+            if ($$7.a($$0, $$1, $$2)) {
+               if ($$2 == 0) {
+                  this.o = $$7.e();
+                  this.p = $$7.a();
+               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
+                  this.f.a(this.g, $$7.a(), $$7.p(), $$7.r(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.k());
+               }
 
-   private fdw(BooleanConsumer $$0, DataFixer $$1, ecy.c $$2, crd $$3, boolean $$4, io<djl> $$5) {
-      super(ui.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.k = new bhp($$2, $$1, $$5, $$4);
-   }
-
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.d(etj.a(uh.e, $$0 -> {
-         this.k.a();
-         this.c.accept(false);
-      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
-   }
-
-   @Override
-   public void d() {
-      if (this.k.b()) {
-         this.c.accept(true);
-      }
-   }
-
-   @Override
-   public void aC_() {
-      this.c.accept(false);
-   }
-
-   @Override
-   public void aD_() {
-      this.k.a();
-   }
-
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      int $$4 = this.g / 2 - 150;
-      int $$5 = this.g / 2 + 150;
-      int $$6 = this.h / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
-      if (this.k.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.i, ui.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
-         $$0.b(this.i, ui.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.i, ui.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
-
-         for (afv<cqz> $$9 : this.k.c()) {
-            int $$10 = asy.d(this.k.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
+               return true;
+            }
          }
 
-         int $$11 = this.k.f() + this.k.g();
-         ui $$12 = ui.a("optimizeWorld.progress.counter", $$11, this.k.e());
-         ui $$13 = ui.a("optimizeWorld.progress.percentage", asy.d(this.k.d() * 100.0F));
-         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+         return false;
       }
+   }
+
+   public void a(List<coh<?>> $$0) {
+      for (fea $$1 : this.h) {
+         $$1.a($$0);
+      }
+   }
+
+   public esr d() {
+      return this.g;
+   }
+
+   public aqq e() {
+      return this.n;
+   }
+
+   protected void a(Consumer<euk> $$0) {
+      $$0.accept(this.j);
+      $$0.accept(this.k);
+      this.d.forEach($$0);
    }
 }

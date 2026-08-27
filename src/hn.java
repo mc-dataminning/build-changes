@@ -2,7 +2,7 @@ import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.LongArgumentType;
 
 public class hn implements hf<LongArgumentType, hn.a> {
-   public void a(hn.a $$0, tl $$1) {
+   public void a(hn.a $$0, tu $$1) {
       boolean $$2 = $$0.b != Long.MIN_VALUE;
       boolean $$3 = $$0.c != Long.MAX_VALUE;
       $$1.k(hh.a($$2, $$3));
@@ -15,7 +15,7 @@ public class hn implements hf<LongArgumentType, hn.a> {
       }
    }
 
-   public hn.a a(tl $$0) {
+   public hn.a a(tu $$0) {
       byte $$1 = $$0.readByte();
       long $$2 = hh.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
       long $$3 = hh.b($$1) ? $$0.readLong() : Long.MAX_VALUE;

@@ -1,24 +1,23 @@
-public class clm extends cke {
-   public clm(cke.a $$0) {
+public class clm extends ckw {
+   public clm(ckw.a $$0) {
       super($$0);
    }
 
    @Override
-   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
-      ckj $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqd.wP, aqe.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cdt $$4 = new cdt($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public biq a(clb $$0, cdm $$1, bky $$2, bip $$3) {
+      if ($$0.A() && !($$2 instanceof cdm)) {
+         if (!$$1.dL().B && $$2.bv()) {
+            $$2.b($$0.y());
+            if ($$2 instanceof bla) {
+               ((bla)$$2).fJ();
+            }
 
-      $$1.b(aqn.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
-      }
+            $$0.h(1);
+         }
 
-      return bic.a($$3, $$0.x_());
+         return biq.a($$1.dL().B);
+      } else {
+         return biq.d;
+      }
    }
 }

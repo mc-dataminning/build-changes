@@ -1,15 +1,8 @@
-import java.util.AbstractList;
+public interface rs {
+   void a(qz var1);
 
-public abstract class rs<T extends sn> extends AbstractList<T> implements sn {
-   public abstract T d(int var1, T var2);
+   void b(qz var1);
 
-   public abstract void c(int var1, T var2);
-
-   public abstract T c(int var1);
-
-   public abstract boolean a(int var1, sn var2);
-
-   public abstract boolean b(int var1, sn var2);
-
-   public abstract byte f();
+   default void a() {
+   }
 }

@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ei implements ArgumentType<ei.a> {
    private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("argument.player.unknown"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("argument.player.unknown"));
 
    public static Collection<GameProfile> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((ei.a)$$0.getArgument($$1, ei.a.class)).getNames((du)$$0.getSource());
@@ -85,13 +85,13 @@ public class ei implements ArgumentType<ei.a> {
 
       @Override
       public Collection<GameProfile> getNames(du $$0) throws CommandSyntaxException {
-         List<alr> $$1 = this.a.d($$0);
+         List<amb> $$1 = this.a.d($$0);
          if ($$1.isEmpty()) {
             throw eg.e.create();
          } else {
             List<GameProfile> $$2 = Lists.newArrayList();
 
-            for (alr $$3 : $$1) {
+            for (amb $$3 : $$1) {
                $$2.add($$3.fR());
             }
 

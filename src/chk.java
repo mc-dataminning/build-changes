@@ -1,3 +1,7 @@
+import javax.annotation.Nullable;
+
+@FunctionalInterface
 public interface chk {
-   void a(cdb var1);
+   @Nullable
+   cge createMenu(int var1, cdl var2, cdm var3);
 }

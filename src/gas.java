@@ -1,41 +1,72 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.util.concurrent.Executor;
 
-public class gas {
-   private static final gba[] a = new gba[]{
-      a("textures/entity/player/slim/alex.png", gba.a.a),
-      a("textures/entity/player/slim/ari.png", gba.a.a),
-      a("textures/entity/player/slim/efe.png", gba.a.a),
-      a("textures/entity/player/slim/kai.png", gba.a.a),
-      a("textures/entity/player/slim/makena.png", gba.a.a),
-      a("textures/entity/player/slim/noor.png", gba.a.a),
-      a("textures/entity/player/slim/steve.png", gba.a.a),
-      a("textures/entity/player/slim/sunny.png", gba.a.a),
-      a("textures/entity/player/slim/zuri.png", gba.a.a),
-      a("textures/entity/player/wide/alex.png", gba.a.b),
-      a("textures/entity/player/wide/ari.png", gba.a.b),
-      a("textures/entity/player/wide/efe.png", gba.a.b),
-      a("textures/entity/player/wide/kai.png", gba.a.b),
-      a("textures/entity/player/wide/makena.png", gba.a.b),
-      a("textures/entity/player/wide/noor.png", gba.a.b),
-      a("textures/entity/player/wide/steve.png", gba.a.b),
-      a("textures/entity/player/wide/sunny.png", gba.a.b),
-      a("textures/entity/player/wide/zuri.png", gba.a.b)
-   };
+public abstract class gas implements AutoCloseable {
+   public static final int a = -1;
+   protected int b = -1;
+   protected boolean c;
+   protected boolean d;
 
-   public static afw a() {
-      return a[6].a();
+   public void a(boolean $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.c = $$0;
+      this.d = $$1;
+      int $$2;
+      int $$3;
+      if ($$0) {
+         $$2 = $$1 ? 9987 : 9729;
+         $$3 = 9729;
+      } else {
+         $$2 = $$1 ? 9986 : 9728;
+         $$3 = 9728;
+      }
+
+      this.c();
+      GlStateManager._texParameter(3553, 10241, $$2);
+      GlStateManager._texParameter(3553, 10240, $$3);
    }
 
-   public static gba a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   public int a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (this.b == -1) {
+         this.b = TextureUtil.generateTextureId();
+      }
+
+      return this.b;
    }
 
-   public static gba a(GameProfile $$0) {
-      return a($$0.getId());
+   public void b() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            if (this.b != -1) {
+               TextureUtil.releaseTextureId(this.b);
+               this.b = -1;
+            }
+         });
+      } else if (this.b != -1) {
+         TextureUtil.releaseTextureId(this.b);
+         this.b = -1;
+      }
    }
 
-   private static gba a(String $$0, gba.a $$1) {
-      return new gba(new afw($$0), null, null, null, $$1, true);
+   public abstract void a(apd var1) throws IOException;
+
+   public void c() {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
+      } else {
+         GlStateManager._bindTexture(this.a());
+      }
+   }
+
+   public void a(gbi $$0, apd $$1, agg $$2, Executor $$3) {
+      $$0.a($$2, this);
+   }
+
+   @Override
+   public void close() {
    }
 }

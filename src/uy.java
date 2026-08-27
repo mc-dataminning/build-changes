@@ -1,129 +1,71 @@
 import com.google.common.primitives.Ints;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 import java.security.SignatureException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
 
-public record uy(vd d, @Nullable uu e, vb f, @Nullable ui g, um h) {
-   public static final MapCodec<uy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               vd.a.fieldOf("link").forGetter(uy::j),
-               uu.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
-               vb.a.forGetter(uy::l),
-               uk.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
-               um.a.optionalFieldOf("filter_mask", um.c).forGetter(uy::n)
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new uy($$0x, (uu)$$1.orElse(null), $$2, (ui)$$3.orElse(null), $$4))
-   );
-   private static final UUID i = ac.d;
-   public static final Duration b = Duration.ofMinutes(5L);
-   public static final Duration c = b.plus(Duration.ofMinutes(2L));
+public record uy(List<vd> d) {
+   public static final Codec<uy> a = vd.a.listOf().xmap(uy::new, uy::a);
+   public static uy b = new uy(List.of());
+   public static final int c = 20;
 
-   public static uy a(String $$0) {
-      return a(i, $$0);
+   public void a(ats.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
+
+      for (vd $$1 : this.d) {
+         $$0.update($$1.b());
+      }
    }
 
-   public static uy a(UUID $$0, String $$1) {
-      vb $$2 = vb.a($$1);
-      vd $$3 = vd.a($$0);
-      return new uy($$3, null, $$2, null, um.c);
+   public uy.a a(ve $$0) {
+      return new uy.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   public uy a(ui $$0) {
-      ui $$1 = !$$0.equals(ui.b(this.b())) ? $$0 : null;
-      return new uy(this.d, this.e, this.f, $$1, this.h);
-   }
-
-   public uy a() {
-      return this.g != null ? new uy(this.d, this.e, this.f, null, this.h) : this;
-   }
-
-   public uy a(um $$0) {
-      return this.h.equals($$0) ? this : new uy(this.d, this.e, this.f, this.g, $$0);
-   }
-
-   public uy a(boolean $$0) {
-      return this.a($$0 ? this.h : um.c);
-   }
-
-   public static void a(ati.a $$0, vd $$1, vb $$2) throws SignatureException {
-      $$0.update(Ints.toByteArray(1));
-      $$1.a($$0);
-      $$2.a($$0);
-   }
-
-   public boolean a(atj $$0) {
-      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
-   }
-
-   public String b() {
-      return this.f.a();
-   }
-
-   public ui c() {
-      return Objects.requireNonNullElseGet(this.g, () -> ui.b(this.b()));
-   }
-
-   public Instant d() {
-      return this.f.b();
-   }
-
-   public long e() {
-      return this.f.c();
-   }
-
-   public boolean a(Instant $$0) {
-      return $$0.isAfter(this.d().plus(b));
-   }
-
-   public boolean b(Instant $$0) {
-      return $$0.isAfter(this.d().plus(c));
-   }
-
-   public UUID f() {
-      return this.d.c();
-   }
-
-   public boolean g() {
-      return this.f().equals(i);
-   }
-
-   public boolean h() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.h() && this.d.c().equals($$0);
-   }
-
-   public boolean i() {
-      return this.h.b();
-   }
-
-   public vd j() {
+   public List<vd> a() {
       return this.d;
    }
 
-   @Nullable
-   public uu k() {
-      return this.e;
+   public static record a(List<vd.a> b) {
+      public static final uy.a a = new uy.a(List.of());
+
+      public a(tu $$0) {
+         this($$0.a(tu.a(ArrayList::new, 20), vd.a::a));
+      }
+
+      public void a(tu $$0) {
+         $$0.a(this.b, vd.a::a);
+      }
+
+      public Optional<uy> a(ve $$0) {
+         List<vd> $$1 = new ArrayList<>(this.b.size());
+
+         for (vd.a $$2 : this.b) {
+            Optional<vd> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
+
+            $$1.add($$3.get());
+         }
+
+         return Optional.of(new uy($$1));
+      }
+
+      public List<vd.a> a() {
+         return this.b;
+      }
    }
 
-   public vb l() {
-      return this.f;
-   }
+   public static record b(int a, BitSet b) {
+      public b(tu $$0) {
+         this($$0.n(), $$0.e(20));
+      }
 
-   @Nullable
-   public ui m() {
-      return this.g;
-   }
-
-   public um n() {
-      return this.h;
+      public void a(tu $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
+      }
    }
 }

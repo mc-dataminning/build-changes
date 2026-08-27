@@ -1,15 +1,8 @@
-public class cif extends cke {
-   public cif(cke.a $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean d_(ckj $$0) {
-      return $$0.L() == 1;
-   }
-
-   @Override
-   public int c() {
-      return 1;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cif {
 }

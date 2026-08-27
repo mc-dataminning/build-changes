@@ -1,23 +1,26 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bor {
-   public static bmb<bks> a(btk<ia> $$0, float $$1, int $$2, int $$3) {
-      MutableLong $$4 = new MutableLong(0L);
-      return bpm.a(
-         (Function<bpm.b<bks>, ? extends App<bpm.c<bks>, bpp<bks>>>)($$5 -> $$5.group($$5.a(btk.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  ia $$10 = $$5.b($$6);
-                  if ($$7.ac() != $$10.a() || !$$10.b().a($$8.dj(), (double)$$3)) {
-                     return false;
-                  } else if ($$9 <= $$4.getValue()) {
-                     return true;
+   public static bmq<bky> a() {
+      return bqb.a((Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$0 -> $$0.a((bqe<bky>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               bly<?> $$3 = $$1.dN();
+               cet $$4 = $$0x.c($$1.dl());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(cex.h);
+                     $$3.a(cex.h);
                   } else {
-                     $$5x.a(new btn($$10.b(), $$1, $$2));
-                     $$4.setValue($$9 + 80L);
-                     return true;
+                     $$3.b(cex.i);
+                     $$3.a(cex.i);
                   }
-               }))
-      );
+               }
+
+               return true;
+            }
+         }))));
    }
 }

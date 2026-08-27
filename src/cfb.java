@@ -1,87 +1,59 @@
-public abstract class cfb extends bjt {
-   protected static final afc<Integer> f = aff.a(cfb.class, afe.b);
-   protected static final afc<Integer> g = aff.a(cfb.class, afe.b);
-   protected static final afc<Float> h = aff.a(cfb.class, afe.d);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-   public cfb(bjx<?> $$0, cqz $$1) {
-      super($$0, $$1);
+public class cfb {
+   private final List<cey> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<cey> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   @Override
-   public boolean a(bir $$0, float $$1) {
-      if (this.dL().B || this.dG()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
+   public cfb a(int $$0, float $$1) {
+      this.a.add(new cey($$0, $$1));
+      this.b();
+      return this;
+   }
+
+   public cfb a(Collection<cey> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<cey> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         this.m(-this.O());
-         this.d(10);
-         this.bo();
-         this.b(this.M() + $$1 * 10.0F);
-         this.a(dkl.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof ccx && ((ccx)$$0.d()).fT().d;
-         if (($$2 || !(this.M() > 40.0F)) && (!$$2 || !this.ah_())) {
-            if ($$2) {
-               this.ak();
+         cey $$1 = this.a.get(this.b);
+         cey $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cey $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
             }
-         } else {
-            this.a($$0);
+
+            this.b = $$6;
+            $$5 = $$7.b();
          }
 
-         return true;
+         return $$5;
       }
    }
-
-   boolean ah_() {
-      return false;
-   }
-
-   public void b(cke $$0) {
-      this.aj();
-      if (this.dL().X().b(cqv.h)) {
-         ckj $$1 = new ckj($$0);
-         if (this.ac()) {
-            $$1.a(this.ad());
-         }
-
-         this.b($$1);
-      }
-   }
-
-   @Override
-   protected void b_() {
-      this.an.a(f, 0);
-      this.an.a(g, 1);
-      this.an.a(h, 0.0F);
-   }
-
-   public void d(int $$0) {
-      this.an.b(f, $$0);
-   }
-
-   public void m(int $$0) {
-      this.an.b(g, $$0);
-   }
-
-   public void b(float $$0) {
-      this.an.b(h, $$0);
-   }
-
-   public float M() {
-      return this.an.b(h);
-   }
-
-   public int N() {
-      return this.an.b(f);
-   }
-
-   public int O() {
-      return this.an.b(g);
-   }
-
-   protected void a(bir $$0) {
-      this.b(this.ag_());
-   }
-
-   abstract cke ag_();
 }

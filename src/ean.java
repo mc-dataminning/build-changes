@@ -1,24 +1,26 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ean extends eas<ean.a> {
-   protected ean(dil $$0) {
-      super(cri.b, $$0, new ean.a(new Long2ObjectOpenHashMap()));
+public class ean extends eap {
+   public static final Codec<ean> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dgw.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, ean::new)
+   );
+   private final dgw b;
+   private final float d;
+
+   public ean(dgw $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected int a(long $$0) {
-      long $$1 = iu.e($$0);
-      did $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(iu.b(ht.a($$0)), iu.b(ht.b($$0)), iu.b(ht.c($$0)));
+   public boolean a(dgw $$0, ato $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
    }
 
-   protected static final class a extends eap<ean.a> {
-      public a(Long2ObjectOpenHashMap<did> $$0) {
-         super($$0);
-      }
-
-      public ean.a a() {
-         return new ean.a(this.a.clone());
-      }
+   @Override
+   protected eaq<?> a() {
+      return eaq.f;
    }
 }

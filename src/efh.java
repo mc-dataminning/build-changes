@@ -1,55 +1,42 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class efh extends eeu {
-   private static final Logger b = LogUtils.getLogger();
+public class efh extends efg {
    public static final Codec<efh> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(ehd.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
-            .apply($$0, efh::new)
+      $$0 -> $$0.group(agg.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, efh::new)
    );
-   private final ehc c;
-   private final boolean d;
+   private final agg j;
 
-   private efh(List<egh> $$0, ehc $$1, boolean $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   private efh(agg $$0, int $$1, int $$2, List<ehk> $$3, List<efy> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public eew b() {
-      return eex.j;
+   public eff a() {
+      return efc.d;
    }
 
    @Override
-   public Set<efq<?>> a() {
-      return this.c.a();
+   public void a(Consumer<clb> $$0, eel $$1) {
+      eet $$2 = $$1.a().getLootTable(this.j);
+      $$2.a($$1, $$0);
    }
 
    @Override
-   public ckj a(ckj $$0, edi $$1) {
-      if ($$0.i()) {
-         int $$2 = $$0.l();
-         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - asy.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(asy.d($$4 * (float)$$2));
+   public void a(eeu $$0) {
+      een<eet> $$1 = new een<>(eeq.c, this.j);
+      if ($$0.a($$1)) {
+         $$0.a("Table " + this.j + " is recursively called");
       } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+         super.a($$0);
+         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.j + "}", $$1)), () -> $$0.a("Unknown loot table called " + this.j));
       }
-
-      return $$0;
    }
 
-   public static eeu.a<?> a(ehc $$0) {
-      return a($$1 -> new efh($$1, $$0, false));
-   }
-
-   public static eeu.a<?> a(ehc $$0, boolean $$1) {
-      return a($$2 -> new efh($$2, $$0, $$1));
+   public static efg.a<?> a(agg $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new efh($$0, $$1, $$2, $$3, $$4));
    }
 }

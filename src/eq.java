@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class eq implements ArgumentType<jq> {
    private static final Collection<String> b = Arrays.asList("foo", "foo:bar", "particle with options");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ui.b("particle.notFound", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ur.b("particle.notFound", $$0));
    private final id<jr<?>> c;
 
    public eq(dp $$0) {
@@ -40,8 +40,8 @@ public class eq implements ArgumentType<jq> {
    }
 
    private static jr<?> b(StringReader $$0, id<jr<?>> $$1) throws CommandSyntaxException {
-      afw $$2 = afw.a($$0);
-      afv<jr<?>> $$3 = afv.a(jz.R, $$2);
+      agg $$2 = agg.a($$0);
+      agf<jr<?>> $$3 = agf.a(jz.R, $$2);
       return $$1.a($$3).orElseThrow(() -> a.create($$2)).a();
    }
 
@@ -50,6 +50,6 @@ public class eq implements ArgumentType<jq> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dy.a(this.c.c().map(afv::a), $$1);
+      return dy.a(this.c.c().map(agf::a), $$1);
    }
 }

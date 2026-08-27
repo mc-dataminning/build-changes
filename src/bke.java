@@ -1,195 +1,52 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class bke extends bjt implements bjr, blf {
-   private static final Logger b = LogUtils.getLogger();
-   private static final afc<Float> c = aff.a(bke.class, afe.d);
-   private static final afc<Float> d = aff.a(bke.class, afe.d);
-   private static final afc<Boolean> e = aff.a(bke.class, afe.k);
-   private static final String f = "width";
-   private static final String g = "height";
-   private static final String h = "attack";
-   private static final String i = "interaction";
-   private static final String j = "response";
-   @Nullable
-   private bke.a k;
-   @Nullable
-   private bke.a l;
+public class bke {
+   private static final long a = Long.MAX_VALUE;
+   private long b = Long.MAX_VALUE;
+   private long c;
 
-   public bke(bjx<?> $$0, cqz $$1) {
-      super($$0, $$1);
-      this.af = true;
+   public void a(int $$0) {
+      this.b = (long)$$0 * 1000L / 20L;
+      this.c = 0L;
    }
 
-   @Override
-   protected void b_() {
-      this.an.a(c, 1.0F);
-      this.an.a(d, 1.0F);
-      this.an.a(e, false);
+   public void b(int $$0) {
+      if (!this.c()) {
+         this.a($$0);
+      }
    }
 
-   @Override
-   protected void a(rt $$0) {
-      if ($$0.b("width", 99)) {
-         this.a($$0.j("width"));
-      }
-
-      if ($$0.b("height", 99)) {
-         this.b($$0.j("height"));
-      }
-
-      if ($$0.e("attack")) {
-         bke.a.a.decode(sf.a, $$0.c("attack")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.k = (bke.a)$$0x.getFirst());
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
       } else {
-         this.k = null;
-      }
-
-      if ($$0.e("interaction")) {
-         bke.a.a.decode(sf.a, $$0.c("interaction")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.l = (bke.a)$$0x.getFirst());
-      } else {
-         this.l = null;
-      }
-
-      this.a($$0.q("response"));
-      this.a(this.ao());
-   }
-
-   @Override
-   protected void b(rt $$0) {
-      $$0.a("width", this.s());
-      $$0.a("height", this.t());
-      if (this.k != null) {
-         bke.a.a.encodeStart(sf.a, this.k).result().ifPresent($$1 -> $$0.a("attack", $$1));
-      }
-
-      if (this.l != null) {
-         bke.a.a.encodeStart(sf.a, this.l).result().ifPresent($$1 -> $$0.a("interaction", $$1));
-      }
-
-      $$0.a("response", this.v());
-   }
-
-   @Override
-   public void a(afc<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0) || c.equals($$0)) {
-         this.a(this.ao());
+         this.a();
       }
    }
 
-   @Override
-   public boolean bq() {
-      return false;
+   public void a() {
+      this.b = Long.MAX_VALUE;
    }
 
-   @Override
-   public boolean br() {
-      return true;
-   }
-
-   @Override
-   public ebj r_() {
-      return ebj.d;
-   }
-
-   @Override
-   public boolean q_() {
-      return true;
-   }
-
-   @Override
-   public boolean u(bjt $$0) {
-      if ($$0 instanceof ccx $$1) {
-         this.k = new bke.a($$1.cv(), this.dL().V());
-         if ($$1 instanceof alr $$2) {
-            al.g.a($$2, this, $$1.dM().n(), 1.0F, 1.0F, false);
-         }
-
-         return !this.v();
-      } else {
-         return false;
+   public void a(Consumer<bke> $$0) {
+      if (this.c()) {
+         $$0.accept(this);
       }
    }
 
-   @Override
-   public bib a(ccx $$0, bia $$1) {
-      if (this.dL().B) {
-         return this.v() ? bib.a : bib.b;
-      } else {
-         this.l = new bke.a($$0.cv(), this.dL().V());
-         return bib.b;
+   public void a(float $$0, float $$1) {
+      if (this.c()) {
+         long $$2 = ati.b((double)($$0 * 1000.0F / 20.0F));
+         this.c = this.c + (long)((float)($$2 - this.b) * $$1);
+         this.b = $$2;
       }
    }
 
-   @Override
-   public void l() {
+   public long b() {
+      return this.c;
    }
 
-   @Nullable
-   @Override
-   public bkj T_() {
-      return this.k != null ? this.dL().b(this.k.a()) : null;
-   }
-
-   @Nullable
-   @Override
-   public bkj q() {
-      return this.l != null ? this.dL().b(this.l.a()) : null;
-   }
-
-   private void a(float $$0) {
-      this.an.b(c, $$0);
-   }
-
-   private float s() {
-      return this.an.b(c);
-   }
-
-   private void b(float $$0) {
-      this.an.b(d, $$0);
-   }
-
-   private float t() {
-      return this.an.b(d);
-   }
-
-   private void a(boolean $$0) {
-      this.an.b(e, $$0);
-   }
-
-   private boolean v() {
-      return this.an.b(e);
-   }
-
-   private bju w() {
-      return bju.b(this.s(), this.t());
-   }
-
-   @Override
-   public bju a(bkv $$0) {
-      return this.w();
-   }
-
-   @Override
-   protected eia ao() {
-      return this.w().a(this.dj());
-   }
-
-   static record a(UUID b, long c) {
-      public static final Codec<bke.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(iv.a.fieldOf("player").forGetter(bke.a::a), Codec.LONG.fieldOf("timestamp").forGetter(bke.a::b)).apply($$0, bke.a::new)
-      );
-
-      public UUID a() {
-         return this.b;
-      }
-
-      public long b() {
-         return this.c;
-      }
+   public boolean c() {
+      return this.b != Long.MAX_VALUE;
    }
 }

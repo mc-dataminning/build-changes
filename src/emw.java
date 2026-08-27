@@ -1,73 +1,40 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
-import java.util.List;
-import org.apache.commons.io.IOUtils;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class emw {
-   public static List<eny> a(emw.a... $$0) {
-      for (emw.a $$1 : $$0) {
-         a($$1.j);
+public class emw extends emy {
+   private static final emr a = new emr() {
+      @Override
+      public String a(boolean $$0, String $$1) {
+         return "#error Import statement not supported";
       }
+   };
+   private int b;
 
-      List<eny> $$2 = Lists.newArrayList();
-
-      for (emw.a $$3 : $$0) {
-         $$2.add(new eny($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(eny::a));
-      return $$2;
+   private emw(emy.a $$0, int $$1, String $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
+   public void a(emv $$0) {
+      RenderSystem.assertOnRenderThread();
+      this.b++;
+      this.a($$0);
+   }
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
-         }
+   @Override
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      this.b--;
+      if (this.b <= 0) {
+         super.a();
       }
-
-      return (int)((double)$$2 / 5.0);
    }
 
-   private static long b() {
-      return ac.b();
-   }
-
-   public static List<eny> a() {
-      return a(emw.a.values());
-   }
-
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String i;
-      final String j;
-
-      private a(String $$0, String $$1) {
-         this.i = $$0;
-         this.j = $$1;
-      }
+   public static emw a(emy.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$4 = b($$0, $$1, $$2, $$3, a);
+      emw $$5 = new emw($$0, $$4, $$1);
+      $$0.c().put($$1, $$5);
+      return $$5;
    }
 }

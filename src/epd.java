@@ -1,66 +1,31 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-public class epd extends gfx {
-   static final ui b = ui.c("mco.warning");
-   static final ui c = ui.c("mco.info");
-   private final epd.a y;
-   private final ui z;
-   private final ui A;
-   protected final BooleanConsumer a;
-   private final boolean B;
+public class epd extends epg {
+   public long a;
+   public List<epc> b = Lists.newArrayList();
 
-   public epd(BooleanConsumer $$0, epd.a $$1, ui $$2, ui $$3, boolean $$4) {
-      super(erg.a);
-      this.a = $$0;
-      this.y = $$1;
-      this.z = $$2;
-      this.A = $$3;
-      this.B = $$4;
-   }
+   public static epd a(String $$0) {
+      epd $$1 = new epd();
+      JsonParser $$2 = new JsonParser();
 
-   @Override
-   public void aM_() {
-      if (this.B) {
-         this.d(etj.a(uh.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
-         this.d(etj.a(uh.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
-      } else {
-         this.d(etj.a(uh.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = erd.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               epc $$8 = epc.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
       }
-   }
 
-   @Override
-   public ui h() {
-      return uh.b(this.y.d, this.z, this.A);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.a.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.y.d, this.g / 2, h(2), this.y.c);
-      $$0.a(this.i, this.z, this.g / 2, h(4), -1);
-      $$0.a(this.i, this.A, this.g / 2, h(6), -1);
-   }
-
-   public static enum a {
-      a(epd.b, -65536),
-      b(epd.c, 8226750);
-
-      public final int c;
-      public final ui d;
-
-      private a(ui $$0, int $$1) {
-         this.d = $$0;
-         this.c = $$1;
-      }
+      return $$1;
    }
 }

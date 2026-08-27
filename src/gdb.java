@@ -1,49 +1,12 @@
-public class gdb extends gcr {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final ceo s;
-   private float t = 0.0F;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-   public gdb(ceo $$0) {
-      super(aqd.nk, aqe.g, gdi.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.dq());
-      this.g = (double)((float)$$0.ds());
-      this.h = (double)((float)$$0.dw());
-   }
+public record gdb(Map<String, gco> d) {
+   public static final Codec<String> a = asq.b(1, 16);
+   public static final Codec<gdb> b = Codec.unboundedMap(a, gco.a).xmap(gdb::new, gdb::a);
+   public static final aoe<gdb> c = aoe.a("language", b);
 
-   @Override
-   public boolean s() {
-      return !this.s.aS();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.s.dG()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.s.dq());
-         this.g = (double)((float)this.s.ds());
-         this.h = (double)((float)this.s.dw());
-         float $$0 = (float)this.s.do().h();
-         if ($$0 >= 0.01F) {
-            this.t = asy.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = asy.i(asy.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
-         }
-      }
+   public Map<String, gco> a() {
+      return this.d;
    }
 }

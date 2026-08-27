@@ -1,167 +1,121 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class epw {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final atv d;
+public class epw extends ghe {
+   private static final ur a = ur.c("mco.backup.info.title");
+   private static final ur b = ur.c("mco.backup.unknown");
+   private final fah c;
+   final eog v;
+   final exw w = new exw(this);
+   private epw.a x;
 
-   public epw(Executor $$0, TimeUnit $$1, atv $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public epw(fah $$0, eog $$1) {
+      super(a);
+      this.c = $$0;
+      this.v = $$1;
    }
 
-   public <T> epw.e<T> a(String $$0, Callable<T> $$1, Duration $$2, epx $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   @Override
+   public void aO_() {
+      this.w.a(new evt(a, this.i));
+      this.x = new epw.a(this.f);
+      this.d(this.x);
+      this.w.b(eum.a(uq.k, $$0 -> this.aE_()).a());
+      this.w.a();
+      this.w.a($$1 -> {
+         euk var10000 = this.d($$1);
+      });
+   }
+
+   @Override
+   protected void c() {
+      this.w.a();
+      this.x.a(this.g, this.h, this.w.c(), this.h - this.w.b());
+   }
+
+   @Override
+   public void aE_() {
+      this.f.a(this.c);
+   }
+
+   ur a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
       } else {
-         return new epw.e<>($$0, $$1, $$4, $$3);
+         return (ur)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : ur.b($$1));
       }
    }
 
-   public epw.c a() {
-      return new epw.c();
-   }
-
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final epw.e<T> b;
-      private final Consumer<T> c;
-      private long d = -1L;
-
-      b(epw.e<T> $$0, Consumer<T> $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      void a(long $$0) {
-         this.b.a($$0);
-         this.a();
-      }
-
-      void a() {
-         epw.d<T> $$0 = this.b.g;
-         if ($$0 != null && this.d < $$0.b) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
-
-      void b() {
-         epw.d<T> $$0 = this.b.g;
-         if ($$0 != null) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
-
-      void c() {
-         this.b.a();
-         this.d = -1L;
+   private ur a(String $$0) {
+      try {
+         return eqt.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
       }
    }
 
-   public class c {
-      private final List<epw.b<?>> b = new ArrayList<>();
-
-      public <T> void a(epw.e<T> $$0, Consumer<T> $$1) {
-         epw.b<T> $$2 = epw.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
+   private ur b(String $$0) {
+      try {
+         return eqt.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
       }
+   }
 
-      public void a() {
-         for (epw.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (epw.b<?> $$0 : this.b) {
-            $$0.a(epw.this.d.get(epw.this.c));
-         }
-      }
-
-      public void c() {
-         for (epw.b<?> $$0 : this.b) {
-            $$0.c();
+   class a extends evi<epw.b> {
+      public a(esr $$0) {
+         super($$0, epw.this.g, epw.this.h, epw.this.w.c(), epw.this.h - epw.this.w.b(), 36);
+         if (epw.this.v.e != null) {
+            epw.this.v.e.forEach(($$0x, $$1) -> this.b(epw.this.new b($$0x, $$1)));
          }
       }
    }
 
-   static record d<T>(T a, long b) {
-   }
+   class b extends evi.a<epw.b> {
+      private static final ur b = ur.c("mco.backup.entry.templateName");
+      private static final ur c = ur.c("mco.backup.entry.gameDifficulty");
+      private static final ur d = ur.c("mco.backup.entry.name");
+      private static final ur e = ur.c("mco.backup.entry.gameServerVersion");
+      private static final ur f = ur.c("mco.backup.entry.uploaded");
+      private static final ur g = ur.c("mco.backup.entry.enabledPack");
+      private static final ur h = ur.c("mco.backup.entry.description");
+      private static final ur i = ur.c("mco.backup.entry.gameMode");
+      private static final ur j = ur.c("mco.backup.entry.seed");
+      private static final ur k = ur.c("mco.backup.entry.worldType");
+      private static final ur l = ur.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
 
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final epx e;
-      @Nullable
-      private CompletableFuture<epw.a<T>> f;
-      @Nullable
-      epw.d<T> g;
-      private long h = -1L;
-
-      e(String $$1, Callable<T> $$2, long $$3, epx $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
+      public b(String $$0, String $$1) {
+         this.m = $$0;
+         this.n = $$1;
       }
 
-      void a(long $$0) {
-         if (this.f != null) {
-            epw.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
-            }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new epw.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               epw.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
-
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = epw.this.d.get(epw.this.c);
-                  return new epw.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = epw.this.d.get(epw.this.c);
-                  return new epw.a<>(Either.right(var4x), $$3);
-               }
-            }, epw.this.b);
-         }
+      @Override
+      public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(epw.this.i, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(epw.this.i, epw.this.a(this.m, this.n), $$3, $$2 + 12, -1);
       }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
+      private ur a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public ur a() {
+         return ur.a("narrator.select", this.m + " " + this.n);
       }
    }
 }

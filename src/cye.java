@@ -1,109 +1,70 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class cye extends cua implements daz {
+public class cye extends dcj implements cuw {
    public static final MapCodec<cye> a = b(cye::new);
-   public static final dgv b = cxu.aE;
-   public static final dgs c = dgr.C;
-   protected static final float d = 3.0F;
-   protected static final eiy e = cua.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
-   protected static final eiy f = cua.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final eiy g = cua.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final eiy h = cua.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
 
    @Override
    public MapCodec<cye> a() {
       return a;
    }
 
-   protected cye(dga.d $$0) {
+   public cye(dgv.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, hx.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      switch ((hx)$$0.c(b)) {
-         case c:
-            return h;
-         case d:
-            return g;
-         case e:
-            return f;
-         case f:
-         default:
-            return e;
-      }
-   }
-
-   private boolean a(cqf $$0, ht $$1, hx $$2) {
-      dgb $$3 = $$0.a_($$1);
-      return $$3.d($$0, $$1, $$2);
+   public boolean b(crv $$0, ht $$1, dgw $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   public boolean a(dgb $$0, crc $$1, ht $$2) {
-      hx $$3 = $$0.c(b);
-      return this.a($$1, $$2.a($$3.g()), $$3);
+   public boolean a(crs $$0, ato $$1, ht $$2, dgw $$3) {
+      return true;
    }
 
    @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      if ($$1.g() == $$0.c(b) && !$$0.a($$3, $$4)) {
-         return cuc.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, ebf.c, ebf.c.a($$3));
-         }
+   public void a(ama $$0, ato $$1, ht $$2, dgw $$3) {
+      ht $$4 = $$2.c();
+      dgw $$5 = cuv.bt.o();
+      Optional<ib.c<dvz>> $$6 = $$0.H_().d(jz.aA).b(ql.n);
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         ht $$8 = $$4;
 
-   @Nullable
-   @Override
-   public dgb a(cmr $$0) {
-      if (!$$0.c()) {
-         dgb $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
-         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
-            return null;
-         }
-      }
-
-      dgb $$2 = this.o();
-      crc $$3 = $$0.q();
-      ht $$4 = $$0.a();
-      ebe $$5 = $$0.q().b_($$0.a());
-
-      for (hx $$6 : $$0.f()) {
-         if ($$6.o().d()) {
-            $$2 = $$2.a(b, $$6.g());
-            if ($$2.a($$3, $$4)) {
-               return $$2.a(c, Boolean.valueOf($$5.a() == ebf.c));
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
             }
          }
+
+         dgw $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((cuw)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.i()) {
+            ib<dvz> $$12;
+            if ($$1.a(8) == 0) {
+               List<dow<?, ?>> $$11 = $$0.s($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((dsa)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
+         }
       }
-
-      return null;
-   }
-
-   @Override
-   public dgb a(dgb $$0, dal $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dgb a(dgb $$0, cyv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public ebe c_(dgb $$0) {
-      return $$0.c(c) ? ebf.c.a(false) : super.c_($$0);
    }
 }

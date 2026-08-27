@@ -1,35 +1,53 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.Optional;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public final class bpn<F extends K1, Value> {
-   private final blj<?> a;
-   private final btk<Value> b;
-   private final App<F, Value> c;
+public class bpn {
+   public static bmq<blh> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bqb.a(
+         (Function<bqb.b<blh>, ? extends App<bqb.c<blh>, bqe<blh>>>)($$3 -> $$3.group($$3.c(btz.o), $$3.c(btz.m), $$3.a(btz.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if ($$5x.b_($$6.dl()).a(arh.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 20L + 2L);
+                        return true;
+                     } else {
+                        ht $$8 = null;
+                        ht $$9 = null;
+                        ht $$10 = $$6.dl();
 
-   public bpn(blj<?> $$0, btk<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+                        for (ht $$12 : ht.a($$10, $$0, $$0, $$0)) {
+                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
+                              dgw $$13 = $$6.dL().a_($$12.c());
+                              dgw $$14 = $$6.dL().a_($$12);
+                              if ($$14.a(cuv.G)) {
+                                 if ($$13.i()) {
+                                    $$8 = $$12.i();
+                                    break;
+                                 }
 
-   public App<F, Value> a() {
-      return this.c;
-   }
+                                 if ($$9 == null && !$$12.a($$6.dj(), 1.5)) {
+                                    $$9 = $$12.i();
+                                 }
+                              }
+                           }
+                        }
 
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
-   }
+                        if ($$8 == null) {
+                           $$8 = $$9;
+                        }
 
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
-   }
+                        if ($$8 != null) {
+                           $$5.a(new bms($$8));
+                           $$4.a(new buc(new bms($$8), $$1, 0));
+                        }
 
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+                        $$2.setValue($$7 + 40L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

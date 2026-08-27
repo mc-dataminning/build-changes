@@ -1,35 +1,88 @@
-public class fpk {
-   private final long[] a;
-   private int b;
-   private int c;
+import com.mojang.authlib.GameProfile;
 
-   public fpk(int $$0) {
-      this.a = new long[$$0];
+public class fpk extends fpg {
+   private eji cm = eji.b;
+   private int cn;
+
+   public fpk(fkw $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.t(1.0F);
+      this.af = true;
    }
 
-   public long a(long $$0) {
-      if (this.b < this.a.length) {
-         this.b++;
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cG().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
       }
 
-      this.a[this.c] = $$0;
-      this.c = (this.c + 1) % this.a.length;
-      long $$1 = Long.MAX_VALUE;
-      long $$2 = Long.MIN_VALUE;
-      long $$3 = 0L;
+      $$1 *= 64.0 * cz();
+      return $$0 < $$1 * $$1;
+   }
 
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         long $$5 = this.a[$$4];
-         $$3 += $$5;
-         $$1 = Math.min($$1, $$5);
-         $$2 = Math.max($$2, $$5);
+   @Override
+   public boolean a(bjg $$0, float $$1) {
+      return true;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.q(false);
+   }
+
+   @Override
+   public void c_() {
+      if (this.bn > 0) {
+         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
+         this.bn--;
       }
 
-      if (this.b > 2) {
-         $$3 -= $$1 + $$2;
-         return $$3 / (long)(this.b - 2);
+      if (this.bu > 0) {
+         this.a(this.bu, this.bt);
+         this.bu--;
+      }
+
+      if (this.cn > 0) {
+         this.g(new eji((this.cm.c - this.do().c) / (double)this.cn, (this.cm.d - this.do().d) / (double)this.cn, (this.cm.e - this.do().e) / (double)this.cn));
+         this.cn--;
+      }
+
+      this.bV = this.bW;
+      this.eP();
+      float $$1;
+      if (this.aA() && !this.ev()) {
+         $$1 = (float)Math.min(0.1, this.do().h());
       } else {
-         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+         $$1 = 0.0F;
       }
+
+      this.bW = this.bW + ($$1 - this.bW) * 0.4F;
+      this.dL().ad().a("push");
+      this.fi();
+      this.dL().ad().c();
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.cm = new eji($$0, $$1, $$2);
+      this.cn = this.ag().p() + 1;
+   }
+
+   @Override
+   protected void fM() {
+   }
+
+   @Override
+   public void a(ur $$0) {
+      esr $$1 = esr.N();
+      $$1.l.d().a($$0);
+   }
+
+   @Override
+   public void a(ye $$0) {
+      super.a($$0);
+      this.bn();
    }
 }

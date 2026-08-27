@@ -1,28 +1,30 @@
-public class fgo<T extends bjt> extends fgg<T> {
-   private static final String a = "knot";
-   private final fiw b;
-   private final fiw f;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fgo(fiw $$0) {
-      this.b = $$0;
-      this.f = $$0.b("knot");
-   }
+public class fgo extends fgk {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
 
-   public static fjc b() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      $$1.a("knot", fjb.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fiy.a);
-      return fjc.a($$0, 32, 32);
+   public fgo(fkb $$0) {
+      super($$0);
    }
 
    @Override
-   public fiw a() {
-      return this.b;
+   protected Builder<fkb> a(fkb $$0) {
+      Builder<fkb> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
+      return $$1;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   public static fkh e() {
+      fkj $$0 = new fkj();
+      fkk $$1 = $$0.a();
+      fgk.a($$1);
+      $$1.a("chest_bottom", fkg.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fkd.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fkg.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fkd.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fkg.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fkd.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fkh.a($$0, 128, 128);
    }
 }

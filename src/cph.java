@@ -1,11 +1,11 @@
-public class cph extends cot {
-   public cph(cot.a $$0, bjy... $$1) {
-      super($$0, cou.m, $$1);
+public class cph extends cpm {
+   public cph(cpm.a $$0, bkn... $$1) {
+      super($$0, cpn.m, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 12 + ($$0 - 1) * 20;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
@@ -15,6 +15,11 @@ public class cph extends cot {
 
    @Override
    public int a() {
-      return 3;
+      return 4;
+   }
+
+   @Override
+   public boolean a(cpm $$0) {
+      return super.a($$0) && $$0 != cpq.I;
    }
 }

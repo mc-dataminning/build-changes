@@ -1,22 +1,24 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public record abx(afv<djk> a, afv<cqz> b, long c, cqw d, @Nullable cqw e, boolean f, boolean g, Optional<ia> h, int i) {
-   public abx(tl $$0) {
-      this(
-         $$0.a(jz.av), $$0.a(jz.aI), $$0.readLong(), cqw.a($$0.readByte()), cqw.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(tl::h), $$0.n()
-      );
+public record abx(ur a, boolean b) implements wk<yd> {
+   public abx(tu $$0) {
+      this($$0.m(), $$0.readBoolean());
    }
 
-   public void a(tl $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(cqw.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, tl::a);
-      $$0.c(this.i);
+   @Override
+   public void a(tu $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+   }
+
+   public void a(yd $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   public boolean d() {
+      return this.b;
    }
 }

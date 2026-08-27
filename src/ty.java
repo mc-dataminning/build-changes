@@ -1,51 +1,56 @@
+import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import java.nio.charset.StandardCharsets;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+import java.io.IOException;
+import org.slf4j.Logger;
 
-public class ty {
-   public static String a(ByteBuf $$0, int $$1) {
-      int $$2 = ByteBufUtil.utf8MaxBytes($$1);
-      int $$3 = tz.a($$0);
-      if ($$3 > $$2) {
-         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + $$3 + " > " + $$2 + ")");
-      } else if ($$3 < 0) {
-         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
-      } else {
-         int $$4 = $$0.readableBytes();
-         if ($$3 > $$4) {
-            throw new DecoderException("Not enough bytes in buffer, expected " + $$3 + ", but got " + $$4);
-         } else {
-            String $$5 = $$0.toString($$0.readerIndex(), $$3, StandardCharsets.UTF_8);
-            $$0.readerIndex($$0.readerIndex() + $$3);
-            if ($$5.length() > $$1) {
-               throw new DecoderException("The received string length is longer than maximum allowed (" + $$5.length() + " > " + $$1 + ")");
-            } else {
-               return $$5;
-            }
-         }
-      }
+public class ty extends MessageToByteEncoder<wk<?>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final AttributeKey<tt.a<?>> b;
+
+   public ty(AttributeKey<tt.a<?>> $$0) {
+      this.b = $$0;
    }
 
-   public static void a(ByteBuf $$0, CharSequence $$1, int $$2) {
-      if ($$1.length() > $$2) {
-         throw new EncoderException("String too big (was " + $$1.length() + " characters, max " + $$2 + ")");
+   protected void a(ChannelHandlerContext $$0, wk<?> $$1, ByteBuf $$2) throws Exception {
+      Attribute<tt.a<?>> $$3 = $$0.channel().attr(this.b);
+      tt.a<?> $$4 = (tt.a<?>)$$3.get();
+      if ($$4 == null) {
+         throw new RuntimeException("ConnectionProtocol unknown: " + $$1);
       } else {
-         int $$3 = ByteBufUtil.utf8MaxBytes($$1);
-         ByteBuf $$4 = $$0.alloc().buffer($$3);
+         int $$5 = $$4.a($$1);
+         if (a.isDebugEnabled()) {
+            a.debug(ts.d, "OUT: [{}:{}] {}", new Object[]{$$4.a().a(), $$5, $$1.getClass().getName()});
+         }
 
-         try {
-            int $$5 = ByteBufUtil.writeUtf8($$4, $$1);
-            int $$6 = ByteBufUtil.utf8MaxBytes($$2);
-            if ($$5 > $$6) {
-               throw new EncoderException("String too big (was " + $$5 + " bytes encoded, max " + $$6 + ")");
+         if ($$5 == -1) {
+            throw new IOException("Can't serialize unregistered packet");
+         } else {
+            tu $$6 = new tu($$2);
+            $$6.c($$5);
+
+            try {
+               int $$7 = $$6.writerIndex();
+               $$1.a($$6);
+               int $$8 = $$6.writerIndex() - $$7;
+               if ($$8 > 8388608) {
+                  throw new IllegalArgumentException("Packet too big (is " + $$8 + ", should be less than 8388608): " + $$1);
+               }
+
+               bfn.e.b($$4.a(), $$5, $$0.channel().remoteAddress(), $$8);
+            } catch (Throwable var13) {
+               a.error("Error receiving packet {}", $$5, var13);
+               if ($$1.b()) {
+                  throw new uf(var13);
+               }
+
+               throw var13;
+            } finally {
+               uc.a($$3, $$1);
             }
-
-            tz.a($$0, $$5);
-            $$0.writeBytes($$4);
-         } finally {
-            $$4.release();
          }
       }
    }

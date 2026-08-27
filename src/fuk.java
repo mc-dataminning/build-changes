@@ -1,108 +1,45 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public class fuk extends fuc<cdl> {
-   private static final afw a = new afw("textures/entity/fishing_hook.png");
-   private static final fpj f = fpj.d(a);
-   private static final double g = 960.0;
+public class fuk extends fwl<bzv, fge> {
+   public static final agg a = new agg("textures/entity/armorstand/wood.png");
 
-   public fuk(fud.a $$0) {
-      super($$0);
+   public fuk(fvk.a $$0) {
+      super($$0, new fgf($$0.a(fka.b)), 0.0F);
+      this.a(new fzi<>(this, new fge($$0.a(fka.c)), new fge($$0.a(fka.d)), $$0.g()));
+      this.a(new fzl<>(this, $$0.d()));
+      this.a(new fzb<>(this, $$0.f()));
+      this.a(new fyx<>(this, $$0.f(), $$0.d()));
    }
 
-   public void a(cdl $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      ccx $$6 = $$0.s();
-      if ($$6 != null) {
-         $$3.a();
-         $$3.a();
-         $$3.b(0.5F, 0.5F, 0.5F);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         emh.a $$7 = $$3.c();
-         Matrix4f $$8 = $$7.a();
-         Matrix3f $$9 = $$7.b();
-         eml $$10 = $$4.getBuffer(f);
-         a($$10, $$8, $$9, $$5, 0.0F, 0, 0, 1);
-         a($$10, $$8, $$9, $$5, 1.0F, 0, 1, 1);
-         a($$10, $$8, $$9, $$5, 1.0F, 1, 1, 0);
-         a($$10, $$8, $$9, $$5, 0.0F, 1, 0, 0);
-         $$3.b();
-         int $$11 = $$6.fm() == bkd.b ? 1 : -1;
-         ckj $$12 = $$6.eS();
-         if (!$$12.a(ckm.qh)) {
-            $$11 = -$$11;
-         }
+   public agg a(bzv $$0) {
+      return a;
+   }
 
-         float $$13 = $$6.x($$2);
-         float $$14 = asy.a(asy.c($$13) * (float) Math.PI);
-         float $$15 = asy.i($$2, $$6.aV, $$6.aU) * (float) (Math.PI / 180.0);
-         double $$16 = (double)asy.a($$15);
-         double $$17 = (double)asy.b($$15);
-         double $$18 = (double)$$11 * 0.35;
-         double $$19 = 0.8;
-         double $$26;
-         double $$27;
-         double $$28;
-         float $$29;
-         if ((this.c.d == null || this.c.d.aw().a()) && $$6 == ero.O().s) {
-            double $$24 = 960.0 / (double)this.c.d.ad().c().intValue();
-            eif $$25 = this.c.b.j().a((float)$$11 * 0.525F, -0.1F);
-            $$25 = $$25.a($$24);
-            $$25 = $$25.b($$14 * 0.5F);
-            $$25 = $$25.a(-$$14 * 0.7F);
-            $$26 = asy.d((double)$$2, $$6.K, $$6.dq()) + $$25.c;
-            $$27 = asy.d((double)$$2, $$6.L, $$6.ds()) + $$25.d;
-            $$28 = asy.d((double)$$2, $$6.M, $$6.dw()) + $$25.e;
-            $$29 = $$6.cH();
-         } else {
-            $$26 = asy.d((double)$$2, $$6.K, $$6.dq()) - $$17 * $$18 - $$16 * 0.8;
-            $$27 = $$6.L + (double)$$6.cH() + ($$6.ds() - $$6.L) * (double)$$2 - 0.45;
-            $$28 = asy.d((double)$$2, $$6.M, $$6.dw()) - $$16 * $$18 + $$17 * 0.8;
-            $$29 = $$6.bW() ? -0.1875F : 0.0F;
-         }
-
-         double $$30 = asy.d((double)$$2, $$0.K, $$0.dq());
-         double $$31 = asy.d((double)$$2, $$0.L, $$0.ds()) + 0.25;
-         double $$32 = asy.d((double)$$2, $$0.M, $$0.dw());
-         float $$33 = (float)($$26 - $$30);
-         float $$34 = (float)($$27 - $$31) + $$29;
-         float $$35 = (float)($$28 - $$32);
-         eml $$36 = $$4.getBuffer(fpj.y());
-         emh.a $$37 = $$3.c();
-         int $$38 = 16;
-
-         for (int $$39 = 0; $$39 <= 16; $$39++) {
-            a($$33, $$34, $$35, $$36, $$37, a($$39, 16), a($$39 + 1, 16));
-         }
-
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(bzv $$0, enk $$1, float $$2, float $$3, float $$4) {
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      float $$5 = (float)($$0.dL().V() - $$0.bJ) + $$4;
+      if ($$5 < 5.0F) {
+         $$1.a(a.d.rotationDegrees(ati.a($$5 / 1.5F * (float) Math.PI) * 3.0F));
       }
    }
 
-   private static float a(int $$0, int $$1) {
-      return (float)$$0 / (float)$$1;
+   protected boolean b(bzv $$0) {
+      double $$1 = this.c.b($$0);
+      float $$2 = $$0.bW() ? 32.0F : 64.0F;
+      return $$1 >= (double)($$2 * $$2) ? false : $$0.cA();
    }
 
-   private static void a(eml $$0, Matrix4f $$1, Matrix3f $$2, int $$3, float $$4, int $$5, int $$6, int $$7) {
-      $$0.a($$1, $$4 - 0.5F, (float)$$5 - 0.5F, 0.0F).a(255, 255, 255, 255).a((float)$$6, (float)$$7).c(fzr.d).b($$3).a($$2, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   private static void a(float $$0, float $$1, float $$2, eml $$3, emh.a $$4, float $$5, float $$6) {
-      float $$7 = $$0 * $$5;
-      float $$8 = $$1 * ($$5 * $$5 + $$5) * 0.5F + 0.25F;
-      float $$9 = $$2 * $$5;
-      float $$10 = $$0 * $$6 - $$7;
-      float $$11 = $$1 * ($$6 * $$6 + $$6) * 0.5F + 0.25F - $$8;
-      float $$12 = $$2 * $$6 - $$9;
-      float $$13 = asy.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
-      $$10 /= $$13;
-      $$11 /= $$13;
-      $$12 /= $$13;
-      $$3.a($$4.a(), $$7, $$8, $$9).a(0, 0, 0, 255).a($$4.b(), $$10, $$11, $$12).e();
-   }
-
-   public afw a(cdl $$0) {
-      return a;
+   @Nullable
+   protected fqp a(bzv $$0, boolean $$1, boolean $$2, boolean $$3) {
+      if (!$$0.y()) {
+         return super.a($$0, $$1, $$2, $$3);
+      } else {
+         agg $$4 = this.a($$0);
+         if ($$2) {
+            return fqp.c($$4, false);
+         } else {
+            return $$1 ? fqp.a($$4, false) : null;
+         }
+      }
    }
 }

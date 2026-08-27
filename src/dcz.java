@@ -1,81 +1,91 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
 
-public interface dcz extends cvb<dcz.a> {
-   Supplier<BiMap<cua, cua>> u_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(cuc.qM, cuc.qL)
-            .put(cuc.qL, cuc.qK)
-            .put(cuc.qK, cuc.qJ)
-            .put(cuc.qS, cuc.qR)
-            .put(cuc.qR, cuc.qQ)
-            .put(cuc.qQ, cuc.qP)
-            .put(cuc.ra, cuc.qZ)
-            .put(cuc.qZ, cuc.qY)
-            .put(cuc.qY, cuc.qX)
-            .put(cuc.qW, cuc.qV)
-            .put(cuc.qV, cuc.qU)
-            .put(cuc.qU, cuc.qT)
-            .build()
-   );
-   Supplier<BiMap<cua, cua>> v_ = Suppliers.memoize(() -> u_.get().inverse());
+public class dcz extends cut {
+   public static final MapCodec<dcz> a = b(dcz::new);
+   private static final dhw b = dhm.aT;
+   private static final int c = 20;
+   private static final int d = 8;
 
-   static Optional<cua> a(cua $$0) {
-      return Optional.ofNullable((cua)v_.get().get($$0));
+   @Override
+   public MapCodec<dcz> a() {
+      return a;
    }
 
-   static cua b(cua $$0) {
-      cua $$1 = $$0;
-
-      for (cua $$2 = (cua)v_.get().get($$0); $$2 != null; $$2 = (cua)v_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
-   }
-
-   static Optional<dgb> b(dgb $$0) {
-      return a($$0.b()).map($$1 -> $$1.l($$0));
-   }
-
-   static Optional<cua> c(cua $$0) {
-      return Optional.ofNullable((cua)u_.get().get($$0));
-   }
-
-   static dgb c(dgb $$0) {
-      return b($$0.b()).l($$0);
+   public dcz(dgv.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   default Optional<dgb> i_(dgb $$0) {
-      return c($$0.b()).map($$1 -> $$1.l($$0));
+   public void a(crs $$0, dgw $$1, eje $$2, cee $$3) {
+      int $$4 = a((crt)$$0, $$1, $$2, (bki)$$3);
+      if ($$3.v() instanceof amb $$6) {
+         $$6.a(aqx.aE);
+         al.L.a($$6, $$3, $$2.e(), $$4);
+      }
+   }
+
+   private static int a(crt $$0, dgw $$1, eje $$2, bki $$3) {
+      int $$4 = a($$2, $$2.e());
+      int $$5 = $$3 instanceof cds ? 20 : 8;
+      if (!$$0.L().a($$2.a(), $$1.b())) {
+         a($$0, $$1, $$4, $$2.a(), $$5);
+      }
+
+      return $$4;
+   }
+
+   private static int a(eje $$0, eji $$1) {
+      hx $$2 = $$0.b();
+      double $$3 = Math.abs(ati.e($$1.c) - 0.5);
+      double $$4 = Math.abs(ati.e($$1.d) - 0.5);
+      double $$5 = Math.abs(ati.e($$1.e) - 0.5);
+      hx.a $$6 = $$2.o();
+      double $$7;
+      if ($$6 == hx.a.b) {
+         $$7 = Math.max($$3, $$5);
+      } else if ($$6 == hx.a.c) {
+         $$7 = Math.max($$3, $$4);
+      } else {
+         $$7 = Math.max($$4, $$5);
+      }
+
+      return Math.max(1, ati.c(15.0 * ati.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
+   }
+
+   private static void a(crt $$0, dgw $$1, int $$2, ht $$3, int $$4) {
+      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
+      $$0.a($$3, $$1.b(), $$4);
    }
 
    @Override
-   default float b() {
-      return this.c() == dcz.a.a ? 0.75F : 1.0F;
+   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      if ($$0.c(b) != 0) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
+      }
    }
 
-   public static enum a implements atr {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
+   @Override
+   public int a(dgw $$0, cqy $$1, ht $$2, hx $$3) {
+      return $$0.c(b);
+   }
 
-      public static final Codec<dcz.a> e = atr.a(dcz.a::values);
-      private final String f;
+   @Override
+   public boolean f_(dgw $$0) {
+      return true;
+   }
 
-      private a(String $$0) {
-         this.f = $$0;
-      }
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(b);
+   }
 
-      @Override
-      public String c() {
-         return this.f;
+   @Override
+   public void b(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
+      if (!$$1.x_() && !$$0.a($$3.b())) {
+         if ($$0.c(b) > 0 && !$$1.L().a($$2, this)) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
+         }
       }
    }
 }

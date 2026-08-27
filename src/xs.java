@@ -1,18 +1,21 @@
-public record xs() implements wb<xr> {
-   public xs(tl $$0) {
-      this();
+import java.util.HashSet;
+import java.util.Set;
+
+public record xs(Set<iu> b, Set<iu> c) implements xd {
+   public static final agg a = new agg("debug/village_sections");
+
+   public xs(tu $$0) {
+      this($$0.a(HashSet::new, tu::g), $$0.a(HashSet::new, tu::g));
    }
 
    @Override
-   public void a(tl $$0) {
-   }
-
-   public void a(xr $$0) {
-      $$0.a(this);
+   public void a(tu $$0) {
+      $$0.a(this.b, tu::a);
+      $$0.a(this.c, tu::a);
    }
 
    @Override
-   public tk c() {
-      return tk.b;
+   public agg a() {
+      return a;
    }
 }

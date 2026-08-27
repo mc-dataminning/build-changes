@@ -1,44 +1,47 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
 
-public class bhd extends bhg {
-   public static final bhd a = new bhd(0);
-   public static final Codec<bhd> b = asg.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bhd::new, bhd::d);
-   private final int f;
-
-   public static bhd a(int $$0) {
-      return $$0 == 0 ? a : new bhd($$0);
+public class bhd {
+   private bhd() {
    }
 
-   private bhd(int $$0) {
-      this.f = $$0;
+   public static int a(List<? extends bhc> $$0) {
+      long $$1 = 0L;
+
+      for (bhc $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$1;
+      }
    }
 
-   public int d() {
-      return this.f;
+   public static <T extends bhc> Optional<T> a(ato $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
    }
 
-   @Override
-   public int a(ate $$0) {
-      return this.f;
+   public static <T extends bhc> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Override
-   public int a() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public bhh<?> c() {
-      return bhh.a;
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.f);
+   public static <T extends bhc> Optional<T> a(ato $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

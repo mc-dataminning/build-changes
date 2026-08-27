@@ -1,369 +1,129 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ComparisonChain;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import com.mojang.logging.LogUtils;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.slf4j.Logger;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryStack;
 
-public class eno extends eod {
-   private static final Logger w = LogUtils.getLogger();
-   private static final int x = -1;
-   public long a;
-   public String b;
-   public String c;
-   public String d;
-   public eno.c e;
-   public String f;
-   public UUID g = ac.d;
-   public List<enk> h;
-   public Map<Integer, env> i;
-   public boolean j;
-   public boolean k;
-   public int l;
-   public eno.d m;
-   public int n;
-   public String o;
-   public int p;
-   public String q;
-   public long r = -1L;
-   @Nullable
-   public String s;
-   public String t = "";
-   public eno.a u = eno.a.a;
-   public enr v = new enr();
+public interface eno {
+   eno a(double var1, double var3, double var5);
 
-   public String a() {
-      return this.d;
+   eno a(int var1, int var2, int var3, int var4);
+
+   eno a(float var1, float var2);
+
+   eno a(int var1, int var2);
+
+   eno b(int var1, int var2);
+
+   eno a(float var1, float var2, float var3);
+
+   void e();
+
+   default void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a((double)$$0, (double)$$1, (double)$$2);
+      this.a($$3, $$4, $$5, $$6);
+      this.a($$7, $$8);
+      this.c($$9);
+      this.b($$10);
+      this.a($$11, $$12, $$13);
+      this.e();
    }
 
-   public String b() {
-      return this.c;
+   void b(int var1, int var2, int var3, int var4);
+
+   void l();
+
+   default eno a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
    }
 
-   public String c() {
-      return this.o;
+   default eno a(int $$0) {
+      return this.a(ass.b.b($$0), ass.b.c($$0), ass.b.d($$0), ass.b.a($$0));
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
+   default eno b(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public void b(String $$0) {
-      this.d = $$0;
+   default eno c(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public void a(ens $$0) {
-      List<String> $$1 = Lists.newArrayList();
-      int $$2 = 0;
-      MinecraftSessionService $$3 = ero.O().ak();
-
-      for (UUID $$4 : $$0.b) {
-         if (!ero.O().b($$4)) {
-            try {
-               ProfileResult $$5 = $$3.fetchProfile($$4, false);
-               if ($$5 != null) {
-                  $$1.add($$5.profile().getName());
-               }
-
-               $$2++;
-            } catch (Exception var8) {
-               w.error("Could not get name for {}", $$4, var8);
-            }
-         }
-      }
-
-      this.v.a = String.valueOf($$2);
-      this.v.b = Joiner.on('\n').join($$1);
+   default void a(enk.a $$0, fre $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
    }
 
-   public static eno a(JsonObject $$0) {
-      eno $$1 = new eno();
+   default void a(enk.a $$0, fre $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
+      float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
+      int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
+      int[] $$11 = $$1.b();
+      iw $$12 = $$1.e().q();
+      Matrix4f $$13 = $$0.a();
+      Vector3f $$14 = $$0.b().transform(new Vector3f((float)$$12.u(), (float)$$12.v(), (float)$$12.w()));
+      int $$15 = 8;
+      int $$16 = $$11.length / 8;
+      MemoryStack $$17 = MemoryStack.stackPush();
 
       try {
-         $$1.a = eqa.a("id", $$0, -1L);
-         $$1.b = eqa.a("remoteSubscriptionId", $$0, null);
-         $$1.c = eqa.a("name", $$0, null);
-         $$1.d = eqa.a("motd", $$0, null);
-         $$1.e = e(eqa.a("state", $$0, eno.c.a.name()));
-         $$1.f = eqa.a("owner", $$0, null);
-         if ($$0.get("players") != null && $$0.get("players").isJsonArray()) {
-            $$1.h = a($$0.get("players").getAsJsonArray());
-            a($$1);
-         } else {
-            $$1.h = Lists.newArrayList();
-         }
+         ByteBuffer $$18 = $$17.malloc(eni.j.b());
+         IntBuffer $$19 = $$18.asIntBuffer();
 
-         $$1.l = eqa.a("daysLeft", $$0, 0);
-         $$1.j = eqa.a("expired", $$0, false);
-         $$1.k = eqa.a("expiredTrial", $$0, false);
-         $$1.m = f(eqa.a("worldType", $$0, eno.d.a.name()));
-         $$1.g = eqa.a("ownerUUID", $$0, ac.d);
-         if ($$0.get("slots") != null && $$0.get("slots").isJsonArray()) {
-            $$1.i = b($$0.get("slots").getAsJsonArray());
-         } else {
-            $$1.i = i();
-         }
-
-         $$1.o = eqa.a("minigameName", $$0, null);
-         $$1.n = eqa.a("activeSlot", $$0, -1);
-         $$1.p = eqa.a("minigameId", $$0, -1);
-         $$1.q = eqa.a("minigameImage", $$0, null);
-         $$1.r = eqa.a("parentWorldId", $$0, -1L);
-         $$1.s = eqa.a("parentWorldName", $$0, null);
-         $$1.t = eqa.a("activeVersion", $$0, "");
-         $$1.u = g(eqa.a("compatibility", $$0, eno.a.a.name()));
-      } catch (Exception var3) {
-         w.error("Could not parse McoServer: {}", var3.getMessage());
-      }
-
-      return $$1;
-   }
-
-   private static void a(eno $$0) {
-      $$0.h
-         .sort(
-            ($$0x, $$1) -> ComparisonChain.start()
-                  .compareFalseFirst($$1.d(), $$0x.d())
-                  .compare($$0x.a().toLowerCase(Locale.ROOT), $$1.a().toLowerCase(Locale.ROOT))
-                  .result()
-         );
-   }
-
-   private static List<enk> a(JsonArray $$0) {
-      List<enk> $$1 = Lists.newArrayList();
-
-      for (JsonElement $$2 : $$0) {
-         try {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            enk $$4 = new enk();
-            $$4.a(eqa.a("name", $$3, null));
-            $$4.a(eqa.a("uuid", $$3, ac.d));
-            $$4.a(eqa.a("operator", $$3, false));
-            $$4.b(eqa.a("accepted", $$3, false));
-            $$4.c(eqa.a("online", $$3, false));
-            $$1.add($$4);
-         } catch (Exception var6) {
-         }
-      }
-
-      return $$1;
-   }
-
-   private static Map<Integer, env> b(JsonArray $$0) {
-      Map<Integer, env> $$1 = Maps.newHashMap();
-
-      for (JsonElement $$2 : $$0) {
-         try {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            JsonParser $$4 = new JsonParser();
-            JsonElement $$5 = $$4.parse($$3.get("options").getAsString());
-            env $$6;
-            if ($$5 == null) {
-               $$6 = env.a();
+         for (int $$20 = 0; $$20 < $$16; $$20++) {
+            $$19.clear();
+            $$19.put($$11, $$20 * 8, 8);
+            float $$21 = $$18.getFloat(0);
+            float $$22 = $$18.getFloat(4);
+            float $$23 = $$18.getFloat(8);
+            float $$27;
+            float $$28;
+            float $$29;
+            if ($$8) {
+               float $$24 = (float)($$18.get(12) & 255) / 255.0F;
+               float $$25 = (float)($$18.get(13) & 255) / 255.0F;
+               float $$26 = (float)($$18.get(14) & 255) / 255.0F;
+               $$27 = $$24 * $$9[$$20] * $$3;
+               $$28 = $$25 * $$9[$$20] * $$4;
+               $$29 = $$26 * $$9[$$20] * $$5;
             } else {
-               $$6 = env.a($$5.getAsJsonObject());
+               $$27 = $$9[$$20] * $$3;
+               $$28 = $$9[$$20] * $$4;
+               $$29 = $$9[$$20] * $$5;
             }
 
-            int $$8 = eqa.a("slotId", $$3, -1);
-            $$1.put($$8, $$6);
-         } catch (Exception var9) {
+            int $$33 = $$10[$$20];
+            float $$34 = $$18.getFloat(16);
+            float $$35 = $$18.getFloat(20);
+            Vector4f $$36 = $$13.transform(new Vector4f($$21, $$22, $$23, 1.0F));
+            this.a($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, 1.0F, $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
          }
-      }
-
-      for (int $$9 = 1; $$9 <= 3; $$9++) {
-         if (!$$1.containsKey($$9)) {
-            $$1.put($$9, env.b());
+      } catch (Throwable var33) {
+         if ($$17 != null) {
+            try {
+               $$17.close();
+            } catch (Throwable var32) {
+               var33.addSuppressed(var32);
+            }
          }
+
+         throw var33;
       }
 
-      return $$1;
-   }
-
-   private static Map<Integer, env> i() {
-      Map<Integer, env> $$0 = Maps.newHashMap();
-      $$0.put(1, env.b());
-      $$0.put(2, env.b());
-      $$0.put(3, env.b());
-      return $$0;
-   }
-
-   public static eno c(String $$0) {
-      try {
-         return a(new JsonParser().parse($$0).getAsJsonObject());
-      } catch (Exception var2) {
-         w.error("Could not parse McoServer: {}", var2.getMessage());
-         return new eno();
+      if ($$17 != null) {
+         $$17.close();
       }
    }
 
-   private static eno.c e(String $$0) {
-      try {
-         return eno.c.valueOf($$0);
-      } catch (Exception var2) {
-         return eno.c.a;
-      }
+   default eno a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector4f $$4 = $$0.transform(new Vector4f($$1, $$2, $$3, 1.0F));
+      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
    }
 
-   private static eno.d f(String $$0) {
-      try {
-         return eno.d.valueOf($$0);
-      } catch (Exception var2) {
-         return eno.d.a;
-      }
-   }
-
-   private static eno.a g(@Nullable String $$0) {
-      try {
-         return eno.a.valueOf($$0);
-      } catch (Exception var2) {
-         return eno.a.a;
-      }
-   }
-
-   public boolean d() {
-      return this.u == eno.a.e;
-   }
-
-   public boolean e() {
-      return this.u == eno.a.d;
-   }
-
-   public boolean f() {
-      return this.u == eno.a.c;
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.c, this.d, this.e, this.f, this.j);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0 == this) {
-         return true;
-      } else if ($$0.getClass() != this.getClass()) {
-         return false;
-      } else {
-         eno $$1 = (eno)$$0;
-         return new EqualsBuilder()
-            .append(this.a, $$1.a)
-            .append(this.c, $$1.c)
-            .append(this.d, $$1.d)
-            .append(this.e, $$1.e)
-            .append(this.f, $$1.f)
-            .append(this.j, $$1.j)
-            .append(this.m, this.m)
-            .isEquals();
-      }
-   }
-
-   public eno g() {
-      eno $$0 = new eno();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.h = this.h;
-      $$0.i = this.a(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      $$0.l = this.l;
-      $$0.v = new enr();
-      $$0.v.a = this.v.a;
-      $$0.v.b = this.v.b;
-      $$0.m = this.m;
-      $$0.g = this.g;
-      $$0.o = this.o;
-      $$0.n = this.n;
-      $$0.p = this.p;
-      $$0.q = this.q;
-      $$0.s = this.s;
-      $$0.r = this.r;
-      $$0.t = this.t;
-      $$0.u = this.u;
-      return $$0;
-   }
-
-   public Map<Integer, env> a(Map<Integer, env> $$0) {
-      Map<Integer, env> $$1 = Maps.newHashMap();
-
-      for (Entry<Integer, env> $$2 : $$0.entrySet()) {
-         $$1.put($$2.getKey(), $$2.getValue().d());
-      }
-
-      return $$1;
-   }
-
-   public boolean h() {
-      return this.r != -1L;
-   }
-
-   public String a(int $$0) {
-      return this.c + " (" + this.i.get($$0).a($$0) + ")";
-   }
-
-   public fkc d(String $$0) {
-      return new fkc(this.c, $$0, fkc.b.b);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static class b implements Comparator<eno> {
-      private final String a;
-
-      public b(String $$0) {
-         this.a = $$0;
-      }
-
-      public int a(eno $$0, eno $$1) {
-         return ComparisonChain.start()
-            .compareTrueFirst($$0.h(), $$1.h())
-            .compareTrueFirst($$0.e == eno.c.c, $$1.e == eno.c.c)
-            .compareTrueFirst($$0.k, $$1.k)
-            .compareTrueFirst($$0.f.equals(this.a), $$1.f.equals(this.a))
-            .compareFalseFirst($$0.j, $$1.j)
-            .compareTrueFirst($$0.e == eno.c.b, $$1.e == eno.c.b)
-            .compare($$0.a, $$1.a)
-            .result();
-      }
-   }
-
-   public static enum c {
-      a,
-      b,
-      c;
-   }
-
-   public static enum d {
-      a,
-      b,
-      c,
-      d,
-      e;
+   default eno a(Matrix3f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transform(new Vector3f($$1, $$2, $$3));
+      return this.a($$4.x(), $$4.y(), $$4.z());
    }
 }

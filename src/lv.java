@@ -1,78 +1,115 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class lv implements ls {
-   private final cua a;
-   private final List<ly> b;
-   private final Set<dhe<?>> c = Sets.newHashSet();
-   private final List<lw> d = Lists.newArrayList();
+public interface lv extends Supplier<JsonElement> {
+   void a(dgx<?, ?> var1);
 
-   private lv(cua $$0, List<ly> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   static lv.c a() {
+      return new lv.c();
    }
 
-   public lv a(lw $$0) {
-      $$0.b().forEach($$0x -> {
-         if (this.a.n().a($$0x.f()) != $$0x) {
-            throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
-         } else if (!this.c.add($$0x)) {
-            throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
-         }
-      });
-      this.d.add($$0);
-      return this;
+   static lv a(lv... $$0) {
+      return new lv.a(lv.b.a, Arrays.asList($$0));
    }
 
-   public JsonElement b() {
-      Stream<Pair<lx, List<ly>>> $$0 = Stream.of(Pair.of(lx.a(), this.b));
+   static lv b(lv... $$0) {
+      return new lv.a(lv.b.b, Arrays.asList($$0));
+   }
 
-      for (lw $$1 : this.d) {
-         Map<lx, List<ly>> $$2 = $$1.a();
-         $$0 = $$0.flatMap($$1x -> $$2.entrySet().stream().map($$1xx -> {
-               lx $$2x = ((lx)$$1.getFirst()).a((lx)$$1xx.getKey());
-               List<ly> $$3 = a((List<ly>)$$1.getSecond(), (List<ly>)$$1xx.getValue());
-               return Pair.of($$2x, $$3);
-            }));
+   public static class a implements lv {
+      private final lv.b a;
+      private final List<lv> b;
+
+      a(lv.b $$0, List<lv> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      Map<String, JsonElement> $$3 = new TreeMap<>();
-      $$0.forEach($$1 -> $$3.put(((lx)$$1.getFirst()).b(), ly.a((List<ly>)$$1.getSecond())));
-      JsonObject $$4 = new JsonObject();
-      $$4.add("variants", ac.a(new JsonObject(), $$1 -> $$3.forEach($$1::add)));
-      return $$4;
+      @Override
+      public void a(dgx<?, ?> $$0) {
+         this.b.forEach($$1 -> $$1.a($$0));
+      }
+
+      public JsonElement b() {
+         JsonArray $$0 = new JsonArray();
+         this.b.stream().map(Supplier::get).forEach($$0::add);
+         JsonObject $$1 = new JsonObject();
+         $$1.add(this.a.c, $$0);
+         return $$1;
+      }
    }
 
-   private static List<ly> a(List<ly> $$0, List<ly> $$1) {
-      Builder<ly> $$2 = ImmutableList.builder();
-      $$0.forEach($$2x -> $$1.forEach($$2xx -> $$2.add(ly.a($$2x, $$2xx))));
-      return $$2.build();
+   public static enum b {
+      a("AND"),
+      b("OR");
+
+      final String c;
+
+      private b(String $$0) {
+         this.c = $$0;
+      }
    }
 
-   @Override
-   public cua a() {
-      return this.a;
-   }
+   public static class c implements lv {
+      private final Map<dhz<?>, String> a = Maps.newHashMap();
 
-   public static lv a(cua $$0) {
-      return new lv($$0, ImmutableList.of(ly.a()));
-   }
+      private static <T extends Comparable<T>> String a(dhz<T> $$0, Stream<T> $$1) {
+         return $$1.<CharSequence>map($$0::a).collect(Collectors.joining("|"));
+      }
 
-   public static lv a(cua $$0, ly $$1) {
-      return new lv($$0, ImmutableList.of($$1));
-   }
+      private static <T extends Comparable<T>> String c(dhz<T> $$0, T $$1, T[] $$2) {
+         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
+      }
 
-   public static lv a(cua $$0, ly... $$1) {
-      return new lv($$0, ImmutableList.copyOf($$1));
+      private <T extends Comparable<T>> void a(dhz<T> $$0, String $$1) {
+         String $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
+         }
+      }
+
+      public final <T extends Comparable<T>> lv.c a(dhz<T> $$0, T $$1) {
+         this.a($$0, $$0.a($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> lv.c a(dhz<T> $$0, T $$1, T... $$2) {
+         this.a($$0, c($$0, $$1, $$2));
+         return this;
+      }
+
+      public final <T extends Comparable<T>> lv.c b(dhz<T> $$0, T $$1) {
+         this.a($$0, "!" + $$0.a($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> lv.c b(dhz<T> $$0, T $$1, T... $$2) {
+         this.a($$0, "!" + c($$0, $$1, $$2));
+         return this;
+      }
+
+      public JsonElement b() {
+         JsonObject $$0 = new JsonObject();
+         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
+         return $$0;
+      }
+
+      @Override
+      public void a(dgx<?, ?> $$0) {
+         List<dhz<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
+         if (!$$1.isEmpty()) {
+            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
+         }
+      }
    }
 }

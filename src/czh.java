@@ -1,127 +1,123 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class czh extends cua {
-   public static final MapCodec<czh> a = b(czh::new);
-   public static final dgz<dhc> b = dgr.bf;
-   public static final dgs c = dgr.w;
-   public static final dhb d = dgr.aR;
-   public static final int e = 3;
+public class czh extends dbb implements dbt {
+   public static final MapCodec<czh> b = b(czh::new);
+   public static final dhn c = dhm.C;
+   public static final dhn d = dhm.w;
+   private static final int k = 8;
+   public static final int e = 128;
+   private static final int l = 200;
 
    @Override
    public MapCodec<czh> a() {
-      return a;
+      return b;
    }
 
-   public czh(dga.d $$0) {
+   public czh(dgv.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dhc.a).a(d, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(a, hx.b).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
-   private dgb b(cra $$0, ht $$1, dgb $$2) {
-      dhc $$3 = $$0.a_($$1.c()).A();
-      if ($$3.e()) {
-         return $$2.a(b, $$3);
-      } else {
-         dhc $$4 = $$0.a_($$1.d()).A();
-         dhc $$5 = $$4.e() ? dhc.a : $$4;
-         return $$2.a(b, $$5);
+   @Override
+   public dgw a(cnj $$0) {
+      ecg $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ech.c;
+      return this.o().a(a, $$0.k()).a(c, Boolean.valueOf($$2));
+   }
+
+   @Override
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ech.c, ech.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public ecg c_(dgw $$0) {
+      return $$0.c(c) ? ech.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public int a(dgw $$0, cqy $$1, ht $$2, hx $$3) {
+      return $$0.c(d) ? 15 : 0;
+   }
+
+   @Override
+   public int b(dgw $$0, cqy $$1, ht $$2, hx $$3) {
+      return $$0.c(d) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   public void d(dgw $$0, crs $$1, ht $$2) {
+      $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
+      this.e($$0, $$1, $$2);
+      $$1.a($$2, this, 8);
+      $$1.c(3002, $$2, $$0.c(a).o().ordinal());
+   }
+
+   private void e(dgw $$0, crs $$1, ht $$2) {
+      $$1.a($$2.a($$0.c(a).g()), this);
+   }
+
+   @Override
+   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
+      this.e($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(dgw $$0, crs $$1, ht $$2, ato $$3) {
+      if ($$1.Y() && (long)$$1.z.a(200) <= $$1.V() % 200L && $$2.v() == $$1.a(dmf.a.b, $$2.u(), $$2.w()) - 1) {
+         atl.a($$0.c(a).o(), $$1, $$2, 0.125, js.aO, bib.a(1, 2));
       }
    }
 
    @Override
-   public dgb a(cmr $$0) {
-      return this.b($$0.q(), $$0.a(), this.o());
-   }
-
-   @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      boolean $$6 = $$1.o() == hx.a.b;
-      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, cua $$3, ht $$4, boolean $$5) {
-      boolean $$6 = $$1.B($$2);
-      if ($$6 != $$0.c(c)) {
-         if ($$6) {
-            this.a(null, $$0, $$1, $$2);
+   public void a(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d)) {
+            this.e($$0, $$1, $$2);
          }
 
-         $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)), 3);
-      }
-   }
-
-   private void a(@Nullable bjt $$0, dgb $$1, cqz $$2, ht $$3) {
-      if ($$1.c(b).e() || $$2.a_($$3.c()).i()) {
-         $$2.a($$3, this, 0, 0);
-         $$2.a($$0, dkl.H, $$3);
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      ckj $$6 = $$3.b($$4);
-      if ($$6.a(ara.aG) && $$5.b() == hx.b) {
-         return bib.d;
-      } else if ($$1.B) {
-         return bib.a;
-      } else {
-         $$0 = $$0.a(d);
-         $$1.a($$2, $$0, 3);
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(aqn.ag);
-         return bib.b;
-      }
-   }
-
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, ccx $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(aqn.af);
-      }
-   }
-
-   public static float b(int $$0) {
-      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
-   }
-
-   @Override
-   public boolean a(dgb $$0, cqz $$1, ht $$2, int $$3, int $$4) {
-      dhc $$5 = $$0.c(b);
-      float $$7;
-      if ($$5.b()) {
-         int $$6 = $$0.c(d);
-         $$7 = b($$6);
-         $$1.a(js.V, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
-      } else {
-         $$7 = 1.0F;
-      }
-
-      ib<aqc> $$10;
-      if ($$5.d()) {
-         afw $$9 = this.a($$1, $$2);
-         if ($$9 == null) {
-            return false;
+   public void b(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d) && !$$1.L().a($$2, this)) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 18);
          }
-
-         $$10 = ib.a(aqc.a($$9));
-      } else {
-         $$10 = $$5.a();
       }
+   }
 
-      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, aqe.c, 3.0F, $$7, $$1.z.g());
+   @Override
+   public void a(crs $$0, dgw $$1, eje $$2, cee $$3) {
+      if ($$0.Y() && $$3 instanceof ceq && ((ceq)$$3).I()) {
+         ht $$4 = $$2.a();
+         if ($$0.g($$4)) {
+            bkx $$5 = bkm.ai.a($$0);
+            if ($$5 != null) {
+               $$5.d(eji.c($$4.c()));
+               bki $$6 = $$3.v();
+               $$5.b($$6 instanceof amb ? (amb)$$6 : null);
+               $$0.b($$5);
+            }
+
+            $$0.a(null, $$4, aqn.xY, aqo.d, 5.0F, 1.0F);
+         }
+      }
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(a, d, c);
+   }
+
+   @Override
+   public boolean f_(dgw $$0) {
       return true;
-   }
-
-   @Nullable
-   private afw a(cqz $$0, ht $$1) {
-      return $$0.c_($$1.c()) instanceof dfh $$2 ? $$2.f() : null;
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(b, c, d);
    }
 }

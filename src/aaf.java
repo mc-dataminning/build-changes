@@ -1,32 +1,37 @@
-public class aaf implements wb<xu> {
+public class aaf implements wk<yd> {
    private final int a;
-   private final byte b;
+   private final ur b;
 
-   public aaf(bjt $$0, byte $$1) {
-      this.a = $$0.ah();
+   public aaf(int $$0, ur $$1) {
+      this.a = $$0;
       this.b = $$1;
    }
 
-   public aaf(tl $$0) {
+   public aaf(tu $$0) {
       this.a = $$0.n();
-      this.b = $$0.readByte();
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.c(this.a);
-      $$0.k(this.b);
+      $$0.a(this.b);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public bjt a(cqz $$0) {
-      return $$0.a(this.a);
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public byte a() {
+   public int a() {
+      return this.a;
+   }
+
+   public ur d() {
       return this.b;
    }
 }

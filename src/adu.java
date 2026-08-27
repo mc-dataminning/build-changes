@@ -1,40 +1,34 @@
-public class adu implements wb<aca> {
-   private final eib a;
-   private final bia b;
-   private final int c;
+import java.util.Optional;
 
-   public adu(bia $$0, eib $$1, int $$2) {
-      this.b = $$0;
-      this.a = $$1;
-      this.c = $$2;
+public class adu implements wk<acj> {
+   private final Optional<bjt> a;
+   private final Optional<bjt> b;
+
+   public adu(Optional<bjt> $$0, Optional<bjt> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public adu(tl $$0) {
-      this.b = $$0.b(bia.class);
-      this.a = $$0.y();
-      this.c = $$0.n();
+   public adu(tu $$0) {
+      this.a = $$0.b((tu.a<bjt>)($$0x -> $$0x.a(jy.e)));
+      this.b = $$0.b((tu.a<bjt>)($$0x -> $$0x.a(jy.e)));
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.a);
-      $$0.c(this.c);
+   public void a(tu $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(jy.e, $$1));
+      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(jy.e, $$1));
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   public bia a() {
-      return this.b;
-   }
-
-   public eib d() {
+   public Optional<bjt> a() {
       return this.a;
    }
 
-   public int e() {
-      return this.c;
+   public Optional<bjt> d() {
+      return this.b;
    }
 }

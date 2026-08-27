@@ -1,39 +1,26 @@
-public class fye<T extends bkj, M extends ffx<T> & fey> extends fyl<T, M> {
-   private final fox a;
+public class fye extends fwq<ccz, fjn<ccz>> {
+   private static final agg a = new agg("textures/entity/villager/villager.png");
 
-   public fye(fvy<T, M> $$0, fox $$1) {
-      super($$0);
-      this.a = $$1;
+   public fye(fvk.a $$0) {
+      super($$0, new fjn<>($$0.a(fka.bJ)), 0.5F);
+      this.a(new fyx<>(this, $$0.f(), $$0.d()));
+      this.a(new gad<>(this, $$0.e(), "villager"));
+      this.a(new fyw<>(this, $$0.d()));
    }
 
-   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == bkd.b;
-      ckj $$11 = $$10 ? $$3.eT() : $$3.eS();
-      ckj $$12 = $$10 ? $$3.eS() : $$3.eT();
-      if (!$$11.b() || !$$12.b()) {
-         $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
-         }
-
-         this.a($$3, $$12, ckg.c, bkd.b, $$0, $$1, $$2);
-         this.a($$3, $$11, ckg.b, bkd.a, $$0, $$1, $$2);
-         $$0.b();
-      }
+   public agg a(ccz $$0) {
+      return a;
    }
 
-   protected void a(bkj $$0, ckj $$1, ckg $$2, bkd $$3, emh $$4, fpb $$5, int $$6) {
-      if (!$$1.b()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == bkd.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
+   protected void a(ccz $$0, enk $$1, float $$2) {
+      float $$3 = 0.9375F;
+      if ($$0.n_()) {
+         $$3 *= 0.5F;
+         this.d = 0.25F;
+      } else {
+         this.d = 0.5F;
       }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

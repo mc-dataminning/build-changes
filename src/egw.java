@@ -1,18 +1,16 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
 public class egw {
-   private static final Codec<egv> d = jy.K.q().dispatch(egv::a, egu::a);
-   public static final Codec<egv> a = asg.a(
-      (Supplier<Codec<egv>>)(() -> Codec.either(egt.c, d)
-            .xmap($$0 -> (egv)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof egt $$1 ? Either.left($$1) : Either.right($$0)))
-   );
-   public static final egu b = a("storage", egx.a);
-   public static final egu c = a("context", egt.b);
+   public static final egt<bki> a = a("this_entity");
+   public static final egt<cdm> b = a("last_damage_player");
+   public static final egt<bjg> c = a("damage_source");
+   public static final egt<bki> d = a("killer_entity");
+   public static final egt<bki> e = a("direct_killer_entity");
+   public static final egt<eji> f = a("origin");
+   public static final egt<dgw> g = a("block_state");
+   public static final egt<der> h = a("block_entity");
+   public static final egt<clb> i = a("tool");
+   public static final egt<Float> j = a("explosion_radius");
 
-   private static egu a(String $$0, Codec<? extends egv> $$1) {
-      return io.a(jy.K, new afw($$0), new egu($$1));
+   private static <T> egt<T> a(String $$0) {
+      return new egt<>(new agg($$0));
    }
 }

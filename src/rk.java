@@ -1,84 +1,109 @@
+import com.google.common.collect.Lists;
+import java.util.Collection;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class rk {
-   private final String a;
-   private final String b;
-   private final String c;
-   private final boolean d;
-   private final int e;
-   private final int f;
-   private final Consumer<qs> g;
-   private final int h;
-   private final long i;
-   private final dal j;
+   private static final char a = ' ';
+   private static final char b = '_';
+   private static final char c = '+';
+   private static final char d = 'x';
+   private static final char e = 'X';
+   private final Collection<qz> f = Lists.newArrayList();
+   @Nullable
+   private final Collection<ra> g = Lists.newArrayList();
 
-   public rk(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<qs> $$6) {
-      this($$0, $$1, $$2, dal.a, $$3, $$4, $$5, 1, 1, $$6);
+   public rk() {
    }
 
-   public rk(String $$0, String $$1, String $$2, dal $$3, int $$4, long $$5, boolean $$6, Consumer<qs> $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 1, 1, $$7);
+   public rk(Collection<qz> $$0) {
+      this.f.addAll($$0);
    }
 
-   public rk(String $$0, String $$1, String $$2, dal $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<qs> $$9) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.j = $$3;
-      this.h = $$4;
-      this.d = $$6;
-      this.f = $$7;
-      this.e = $$8;
-      this.g = $$9;
-      this.i = $$5;
+   public void a(qz $$0) {
+      this.f.add($$0);
+      this.g.forEach($$0::a);
    }
 
-   public void a(qs $$0) {
-      this.g.accept($$0);
+   public void a(ra $$0) {
+      this.g.add($$0);
+      this.f.forEach($$1 -> $$1.a($$0));
    }
 
-   public String a() {
-      return this.b;
+   public void a(final Consumer<qz> $$0) {
+      this.a(new ra() {
+         @Override
+         public void a(qz $$0x) {
+         }
+
+         @Override
+         public void b(qz $$0x) {
+         }
+
+         @Override
+         public void c(qz $$0x) {
+            $$0.accept($$0);
+         }
+      });
    }
 
-   public String b() {
-      return this.c;
+   public int a() {
+      return (int)this.f.stream().filter(qz::i).filter(qz::r).count();
+   }
+
+   public int b() {
+      return (int)this.f.stream().filter(qz::i).filter(qz::s).count();
+   }
+
+   public int c() {
+      return (int)this.f.stream().filter(qz::k).count();
+   }
+
+   public boolean d() {
+      return this.a() > 0;
+   }
+
+   public boolean e() {
+      return this.b() > 0;
+   }
+
+   public Collection<qz> f() {
+      return this.f.stream().filter(qz::i).filter(qz::r).collect(Collectors.toList());
+   }
+
+   public Collection<qz> g() {
+      return this.f.stream().filter(qz::i).filter(qz::s).collect(Collectors.toList());
+   }
+
+   public int h() {
+      return this.f.size();
+   }
+
+   public boolean i() {
+      return this.c() == this.h();
+   }
+
+   public String j() {
+      StringBuffer $$0 = new StringBuffer();
+      $$0.append('[');
+      this.f.forEach($$1 -> {
+         if (!$$1.j()) {
+            $$0.append(' ');
+         } else if ($$1.h()) {
+            $$0.append('+');
+         } else if ($$1.i()) {
+            $$0.append((char)($$1.r() ? 'X' : 'x'));
+         } else {
+            $$0.append('_');
+         }
+      });
+      $$0.append(']');
+      return $$0.toString();
    }
 
    @Override
    public String toString() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public String e() {
-      return this.a;
-   }
-
-   public long f() {
-      return this.i;
-   }
-
-   public dal g() {
-      return this.j;
-   }
-
-   public boolean h() {
-      return this.e > 1;
-   }
-
-   public int i() {
-      return this.e;
-   }
-
-   public int j() {
-      return this.f;
+      return this.j();
    }
 }

@@ -1,41 +1,63 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class abw implements wb<xu> {
-   private final List<cno<?>> a;
+public class abw implements wk<yd> {
+   private static final int a = 1;
+   private static final int b = 2;
+   @Nullable
+   private final agg c;
+   @Nullable
+   private final aqo d;
 
-   public abw(Collection<cno<?>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   public abw(@Nullable agg $$0, @Nullable aqo $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public abw(tl $$0) {
-      this.a = $$0.a(abw::b);
+   public abw(tu $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.d = $$0.b(aqo.class);
+      } else {
+         this.d = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.c = $$0.t();
+      } else {
+         this.c = null;
+      }
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.a, abw::a);
+   public void a(tu $$0) {
+      if (this.d != null) {
+         if (this.c != null) {
+            $$0.k(3);
+            $$0.a(this.d);
+            $$0.a(this.c);
+         } else {
+            $$0.k(1);
+            $$0.a(this.d);
+         }
+      } else if (this.c != null) {
+         $$0.k(2);
+         $$0.a(this.c);
+      } else {
+         $$0.k(0);
+      }
    }
 
-   public void a(xu $$0) {
+   @Nullable
+   public agg a() {
+      return this.c;
+   }
+
+   @Nullable
+   public aqo d() {
+      return this.d;
+   }
+
+   public void a(yd $$0) {
       $$0.a(this);
-   }
-
-   public List<cno<?>> a() {
-      return this.a;
-   }
-
-   private static cno<?> b(tl $$0) {
-      afw $$1 = $$0.t();
-      afw $$2 = $$0.t();
-      cnn<?> $$3 = jy.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
-      return new cno<>($$2, $$3);
-   }
-
-   public static <T extends cnn<?>> void a(tl $$0, cno<?> $$1) {
-      $$0.a(jy.u.b($$1.b().aq_()));
-      $$0.a($$1.a());
-      ((cnq<cnn<?>>)$$1.b().aq_()).a($$0, $$1.b());
    }
 }

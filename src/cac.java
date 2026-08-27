@@ -1,118 +1,69 @@
-import org.joml.Vector3f;
+public class cac {
+   public static final agf<cab> a = a("kebab");
+   public static final agf<cab> b = a("aztec");
+   public static final agf<cab> c = a("alban");
+   public static final agf<cab> d = a("aztec2");
+   public static final agf<cab> e = a("bomb");
+   public static final agf<cab> f = a("plant");
+   public static final agf<cab> g = a("wasteland");
+   public static final agf<cab> h = a("pool");
+   public static final agf<cab> i = a("courbet");
+   public static final agf<cab> j = a("sea");
+   public static final agf<cab> k = a("sunset");
+   public static final agf<cab> l = a("creebet");
+   public static final agf<cab> m = a("wanderer");
+   public static final agf<cab> n = a("graham");
+   public static final agf<cab> o = a("match");
+   public static final agf<cab> p = a("bust");
+   public static final agf<cab> q = a("stage");
+   public static final agf<cab> r = a("void");
+   public static final agf<cab> s = a("skull_and_roses");
+   public static final agf<cab> t = a("wither");
+   public static final agf<cab> u = a("fighters");
+   public static final agf<cab> v = a("pointer");
+   public static final agf<cab> w = a("pigscene");
+   public static final agf<cab> x = a("burning_skull");
+   public static final agf<cab> y = a("skeleton");
+   public static final agf<cab> z = a("donkey_kong");
+   public static final agf<cab> A = a("earth");
+   public static final agf<cab> B = a("wind");
+   public static final agf<cab> C = a("water");
+   public static final agf<cab> D = a("fire");
 
-public class cac extends cal {
-   private static final int b = 2400;
-   private int c;
-
-   public cac(bjx<? extends cac> $$0, cqz $$1) {
-      super($$0, $$1);
-      this.bJ = 3;
+   public static cab a(io<cab> $$0) {
+      io.a($$0, a, new cab(16, 16));
+      io.a($$0, b, new cab(16, 16));
+      io.a($$0, c, new cab(16, 16));
+      io.a($$0, d, new cab(16, 16));
+      io.a($$0, e, new cab(16, 16));
+      io.a($$0, f, new cab(16, 16));
+      io.a($$0, g, new cab(16, 16));
+      io.a($$0, h, new cab(32, 16));
+      io.a($$0, i, new cab(32, 16));
+      io.a($$0, j, new cab(32, 16));
+      io.a($$0, k, new cab(32, 16));
+      io.a($$0, l, new cab(32, 16));
+      io.a($$0, m, new cab(16, 32));
+      io.a($$0, n, new cab(16, 32));
+      io.a($$0, o, new cab(32, 32));
+      io.a($$0, p, new cab(32, 32));
+      io.a($$0, q, new cab(32, 32));
+      io.a($$0, r, new cab(32, 32));
+      io.a($$0, s, new cab(32, 32));
+      io.a($$0, t, new cab(32, 32));
+      io.a($$0, u, new cab(64, 32));
+      io.a($$0, v, new cab(64, 64));
+      io.a($$0, w, new cab(64, 64));
+      io.a($$0, x, new cab(64, 64));
+      io.a($$0, y, new cab(64, 48));
+      io.a($$0, A, new cab(32, 32));
+      io.a($$0, B, new cab(32, 32));
+      io.a($$0, C, new cab(32, 32));
+      io.a($$0, D, new cab(32, 32));
+      return io.a($$0, z, new cab(64, 48));
    }
 
-   @Override
-   protected void z() {
-      this.bO.a(1, new bqy(this));
-      this.bO.a(1, new bqt(this, this.dL()));
-      this.bO.a(2, new bro(this, 1.0, false));
-      this.bO.a(3, new bsr(this, 1.0));
-      this.bO.a(7, new brm(this, ccx.class, 8.0F));
-      this.bO.a(8, new brz(this));
-      this.bP.a(1, new bsw(this).a());
-      this.bP.a(2, new bsx<>(this, ccx.class, true));
-   }
-
-   @Override
-   protected float b(bkv $$0, bju $$1) {
-      return 0.13F;
-   }
-
-   public static blo.a s() {
-      return cal.gk().a(blp.l, 8.0).a(blp.m, 0.25).a(blp.c, 2.0);
-   }
-
-   @Override
-   protected bjt.b aU() {
-      return bjt.b.c;
-   }
-
-   @Override
-   protected aqc w() {
-      return aqd.hk;
-   }
-
-   @Override
-   protected aqc d(bir $$0) {
-      return aqd.hm;
-   }
-
-   @Override
-   protected aqc m_() {
-      return aqd.hl;
-   }
-
-   @Override
-   protected void b(ht $$0, dgb $$1) {
-      this.a(aqd.hn, 0.15F, 1.0F);
-   }
-
-   @Override
-   public void a(rt $$0) {
-      super.a($$0);
-      this.c = $$0.h("Lifetime");
-   }
-
-   @Override
-   public void b(rt $$0) {
-      super.b($$0);
-      $$0.a("Lifetime", this.c);
-   }
-
-   @Override
-   public void l() {
-      this.aU = this.dB();
-      super.l();
-   }
-
-   @Override
-   public void o(float $$0) {
-      this.r($$0);
-      super.o($$0);
-   }
-
-   @Override
-   public void c_() {
-      super.c_();
-      if (this.dL().B) {
-         for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dL().a(js.X, this.d(0.5), this.dt(), this.g(0.5), (this.ag.j() - 0.5) * 2.0, -this.ag.j(), (this.ag.j() - 0.5) * 2.0);
-         }
-      } else {
-         if (!this.fL()) {
-            this.c++;
-         }
-
-         if (this.c >= 2400) {
-            this.ak();
-         }
-      }
-   }
-
-   public static boolean b(bjx<cac> $$0, cra $$1, bkn $$2, ht $$3, ate $$4) {
-      if (c($$0, $$1, $$2, $$3, $$4)) {
-         ccx $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
-         return $$5 == null;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public bko eR() {
-      return bko.c;
-   }
-
-   @Override
-   protected Vector3f a(bjt $$0, bju $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b - 0.0625F * $$2, 0.0F);
+   private static agf<cab> a(String $$0) {
+      return agf.a(jz.Q, new agg($$0));
    }
 }

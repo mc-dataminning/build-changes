@@ -1,86 +1,74 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.DoubleSupplier;
 
-public abstract class fuc<T extends bjt> {
-   protected static final float b = 0.025F;
-   protected final fub c;
-   private final esw a;
-   protected float d;
-   protected float e = 1.0F;
+public class fuc implements ftq.a {
+   private final esr a;
+   private double b = Double.MIN_VALUE;
+   private List<bki> c = Collections.emptyList();
 
-   protected fuc(fud.a $$0) {
-      this.c = $$0.a();
-      this.a = $$0.h();
+   public fuc(esr $$0) {
+      this.a = $$0;
    }
 
-   public final int b(T $$0, float $$1) {
-      ht $$2 = ht.a($$0.k($$1));
-      return fpa.a(this.a($$0, $$2), this.b($$0, $$2));
-   }
+   @Override
+   public void a(enk $$0, fqh $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bki $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dL().a_($$6, $$6.cG().g(16.0)));
+      }
 
-   protected int b(T $$0, ht $$1) {
-      return $$0.dL().a(cri.a, $$1);
-   }
+      cdm $$7 = this.a.s;
+      if ($$7 != null && $$7.aD.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      }
 
-   protected int a(T $$0, ht $$1) {
-      return $$0.bM() ? 15 : $$0.dL().a(cri.b, $$1);
-   }
-
-   public boolean a(T $$0, fsc $$1, double $$2, double $$3, double $$4) {
-      if (!$$0.k($$2, $$3, $$4)) {
-         return false;
-      } else if ($$0.at) {
-         return true;
-      } else {
-         eia $$5 = $$0.h_().g(0.5);
-         if ($$5.e() || $$5.a() == 0.0) {
-            $$5 = new eia($$0.dq() - 2.0, $$0.ds() - 2.0, $$0.dw() - 2.0, $$0.dq() + 2.0, $$0.ds() + 2.0, $$0.dw() + 2.0);
+      for (bki $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
          }
-
-         return $$1.a($$5);
       }
    }
 
-   public eif a(T $$0, float $$1) {
-      return eif.b;
-   }
-
-   public void a(T $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      if (this.b($$0)) {
-         this.a($$0, $$0.O_(), $$3, $$4, $$5);
-      }
-   }
-
-   protected boolean b(T $$0) {
-      return $$0.cB() || $$0.ac() && $$0 == this.c.c;
-   }
-
-   public abstract afw a(T var1);
-
-   public esw b() {
-      return this.a;
-   }
-
-   protected void a(T $$0, ui $$1, emh $$2, fpb $$3, int $$4) {
-      double $$5 = this.c.b($$0);
-      if (!($$5 > 4096.0)) {
-         boolean $$6 = !$$0.bU();
-         float $$7 = $$0.dh();
-         int $$8 = "deadmau5".equals($$1.getString()) ? -10 : 0;
-         $$2.a();
-         $$2.a(0.0F, $$7, 0.0F);
-         $$2.a(this.c.b());
-         $$2.b(-0.025F, -0.025F, 0.025F);
-         Matrix4f $$9 = $$2.c().a();
-         float $$10 = ero.O().m.a(0.25F);
-         int $$11 = (int)($$10 * 255.0F) << 24;
-         esw $$12 = this.b();
-         float $$13 = (float)(-$$12.a($$1) / 2);
-         $$12.a($$1, $$13, (float)$$8, 553648127, false, $$9, $$3, $$6 ? esw.a.b : esw.a.a, $$11, $$4);
-         if ($$6) {
-            $$12.a($$1, $$13, (float)$$8, -1, false, $$9, $$3, esw.a.a, 0, $$4);
+   private void a(enk $$0, fqh $$1, double $$2, double $$3, double $$4, bki $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.aD.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         ht $$12 = $$5.aH();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         ht $$13 = $$5.aF();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
          }
+      });
+   }
 
-         $$2.b();
-      }
+   private double a(bki $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.ah() + 0.132453657).hashCode() % 1000) / 1000.0;
+   }
+
+   private void a(ht $$0, enk $$1, double $$2, double $$3, double $$4, fqh $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      fqf.a($$1, $$5.getBuffer(fqp.w()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      fqf.a(
+         $$1,
+         $$5.getBuffer(fqp.w()),
+         this.a.r.a_($$0).b(this.a.r, $$0, ejn.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
+         -$$2,
+         -$$3,
+         -$$4,
+         $$7,
+         $$8,
+         $$9,
+         1.0F,
+         false
+      );
    }
 }

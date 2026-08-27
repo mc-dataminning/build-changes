@@ -1,18 +1,15 @@
-public class agp implements Runnable {
-   private final int a;
-   private final Runnable b;
+import java.util.List;
 
-   public agp(int $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public enum agp {
+   a,
+   b,
+   c,
+   d;
 
-   public int a() {
-      return this.a;
-   }
+   private static final List<agp> e = List.of(values());
+   private static final ip.b f = ip.a(jy.ar);
 
-   @Override
-   public void run() {
-      this.b.run();
+   public static ij<agp> a() {
+      return new ij<>(e).a(a, f);
    }
 }

@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
@@ -22,6 +23,7 @@ public class o {
    private final String c;
    private final Throwable d;
    private final List<p> e = Lists.newArrayList();
+   @Nullable
    private File f;
    private boolean g = true;
    private StackTraceElement[] h = new StackTraceElement[0];
@@ -126,6 +128,7 @@ public class o {
       return $$0.toString();
    }
 
+   @Nullable
    public File f() {
       return this.f;
    }
@@ -174,7 +177,7 @@ public class o {
          StackTraceElement $$6 = null;
          int $$7 = $$4.length - $$3;
          if ($$7 < 0) {
-            a.error("Negative index in crash report handler ({}/{})", new Object[]{$$4.length, $$3, ")"});
+            a.error("Negative index in crash report handler ({}/{})", $$4.length, $$3);
          }
 
          if ($$4 != null && 0 <= $$7 && $$7 < $$4.length) {
@@ -247,18 +250,18 @@ public class o {
          $$0 = $$0.getCause();
       }
 
-      o $$2;
-      if ($$0 instanceof y) {
-         $$2 = ((y)$$0).a();
+      o $$3;
+      if ($$0 instanceof y $$2) {
+         $$3 = $$2.a();
       } else {
-         $$2 = new o($$1, $$0);
+         $$3 = new o($$1, $$0);
       }
 
-      return $$2;
+      return $$3;
    }
 
    public static void h() {
-      asw.a();
+      atg.a();
       new o("Don't panic!", new Throwable()).e();
    }
 }

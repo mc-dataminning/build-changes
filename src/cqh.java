@@ -1,25 +1,20 @@
-import java.util.function.Predicate;
-
-public class cqh {
-   private final eif a;
-   private final eif b;
-   private final Predicate<dgb> c;
-
-   public cqh(eif $$0, eif $$1, Predicate<dgb> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class cqh extends cpm {
+   public cqh(cpm.a $$0, bkn... $$1) {
+      super($$0, cpn.i, $$1);
    }
 
-   public eif a() {
-      return this.b;
+   @Override
+   public int a(int $$0) {
+      return 5 + $$0 * 7;
    }
 
-   public eif b() {
-      return this.a;
+   @Override
+   public int b(int $$0) {
+      return 50;
    }
 
-   public Predicate<dgb> c() {
-      return this.c;
+   @Override
+   public int a() {
+      return 3;
    }
 }

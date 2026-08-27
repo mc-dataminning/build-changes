@@ -1,21 +1,21 @@
 public class jd implements je {
    @Override
-   public final ckj dispense(jb $$0, ckj $$1) {
-      ckj $$2 = this.a($$0, $$1);
+   public final clb dispense(jb $$0, clb $$1) {
+      clb $$2 = this.a($$0, $$1);
       this.a($$0);
-      this.a($$0, $$0.d().c(cwd.b));
+      this.a($$0, $$0.d().c(cwx.b));
       return $$2;
    }
 
-   protected ckj a(jb $$0, ckj $$1) {
-      hx $$2 = $$0.d().c(cwd.b);
-      im $$3 = cwd.a($$0);
-      ckj $$4 = $$1.a(1);
+   protected clb a(jb $$0, clb $$1) {
+      hx $$2 = $$0.d().c(cwx.b);
+      im $$3 = cwx.a($$0);
+      clb $$4 = $$1.a(1);
       a($$0.b(), $$4, 6, $$2, $$3);
       return $$1;
    }
 
-   public static void a(cqz $$0, ckj $$1, int $$2, hx $$3, im $$4) {
+   public static void a(crs $$0, clb $$1, int $$2, hx $$3, im $$4) {
       double $$5 = $$4.a();
       double $$6 = $$4.b();
       double $$7 = $$4.c();
@@ -25,7 +25,7 @@ public class jd implements je {
          $$6 -= 0.15625;
       }
 
-      bzq $$8 = new bzq($$0, $$5, $$6, $$7, $$1);
+      caf $$8 = new caf($$0, $$5, $$6, $$7, $$1);
       double $$9 = $$0.z.j() * 0.1 + 0.2;
       $$8.o(
          $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),

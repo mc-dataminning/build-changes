@@ -1,51 +1,73 @@
-public class cko extends cke {
-   public cko(cke.a $$0) {
-      super($$0);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
+public class cko extends cjl {
+   protected static final Map<cut, Pair<Predicate<cnl>, Consumer<cnl>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         cuv.i,
+         Pair.of(cko::b, b(cuv.cC.o())),
+         cuv.kE,
+         Pair.of(cko::b, b(cuv.cC.o())),
+         cuv.j,
+         Pair.of(cko::b, b(cuv.cC.o())),
+         cuv.k,
+         Pair.of(cko::b, b(cuv.j.o())),
+         cuv.rG,
+         Pair.of((Predicate<cnl>)$$0 -> true, a(cuv.j.o(), cle.ds))
+      )
+   );
+
+   protected cko(cmo $$0, int $$1, float $$2, ckw.a $$3) {
+      super((float)$$1, $$2, $$0, arc.bA, $$3);
    }
 
    @Override
-   public bib a(cmt $$0) {
-      cqz $$1 = $$0.q();
+   public biq a(cnl $$0) {
+      crs $$1 = $$0.q();
       ht $$2 = $$0.a();
-      dgb $$3 = $$1.a_($$2);
-      if ($$3.a(aqs.S)) {
-         ccx $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return bib.a($$1.B);
+      Pair<Predicate<cnl>, Consumer<cnl>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return biq.d;
       } else {
-         return bib.d;
+         Predicate<cnl> $$4 = (Predicate<cnl>)$$3.getFirst();
+         Consumer<cnl> $$5 = (Consumer<cnl>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            cdm $$6 = $$0.o();
+            $$1.a($$6, $$2, aqn.kP, aqo.e, 1.0F, 1.0F);
+            if (!$$1.B) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, $$1x -> $$1x.d($$0.p()));
+               }
+            }
+
+            return biq.a($$1.B);
+         } else {
+            return biq.d;
+         }
       }
    }
 
-   public static bib a(ccx $$0, cqz $$1, ht $$2) {
-      bzk $$3 = null;
-      boolean $$4 = false;
-      double $$5 = 7.0;
-      int $$6 = $$2.u();
-      int $$7 = $$2.v();
-      int $$8 = $$2.w();
+   public static Consumer<cnl> b(dgw $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(dlg.c, $$1.a(), dlg.a.a($$1.o(), $$0));
+      };
+   }
 
-      for (bkl $$10 : $$1.a(
-         bkl.class, new eia((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
-      )) {
-         if ($$10.fT() == $$0) {
-            if ($$3 == null) {
-               $$3 = bzk.b($$1, $$2);
-               $$3.C();
-            }
+   public static Consumer<cnl> a(dgw $$0, crr $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(dlg.c, $$2.a(), dlg.a.a($$2.o(), $$0));
+         cut.a($$2.q(), $$2.a(), $$2.k(), new clb($$1));
+      };
+   }
 
-            $$10.b($$3, true);
-            $$4 = true;
-         }
-      }
-
-      if ($$4) {
-         $$1.a(dkl.b, $$2, dkl.a.a($$0));
-      }
-
-      return $$4 ? bib.a : bib.d;
+   public static boolean b(cnl $$0) {
+      return $$0.k() != hx.a && $$0.q().a_($$0.a().c()).i();
    }
 }

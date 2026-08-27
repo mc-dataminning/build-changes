@@ -1,35 +1,45 @@
-public class fuf extends fuc<cdh> {
-   private static final afw a = new afw("textures/entity/illager/evoker_fangs.png");
-   private final ffy<cdh> f;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public fuf(fud.a $$0) {
-      super($$0);
-      this.f = new ffy<>($$0.a(fiv.W));
+public class fuf implements ftq.a {
+   private final List<ht> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(ht $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
-   public void a(cdh $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      float $$6 = $$0.a($$2);
-      if ($$6 != 0.0F) {
-         float $$7 = 2.0F;
-         if ($$6 > 0.9F) {
-            $$7 *= (1.0F - $$6) / 0.1F;
-         }
+   @Override
+   public void a(enk $$0, fqh $$1, double $$2, double $$3, double $$4) {
+      eno $$5 = $$1.getBuffer(fqp.y());
 
-         $$3.a();
-         $$3.a(a.d.rotationDegrees(90.0F - $$0.dB()));
-         $$3.b(-$$7, -$$7, $$7);
-         float $$8 = 0.03125F;
-         $$3.a(0.0, -0.626, 0.0);
-         $$3.b(0.5F, 0.5F, 0.5F);
-         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dB(), $$0.dD());
-         eml $$9 = $$4.getBuffer(this.f.a(a));
-         this.f.a($$3, $$9, $$5, fzr.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         ht $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         fqf.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
       }
-   }
-
-   public afw a(cdh $$0) {
-      return a;
    }
 }

@@ -1,20 +1,30 @@
-public class clc extends cke {
-   public clc(cke.a $$0) {
-      super($$0);
-   }
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   @Override
-   public bib a(ckj $$0, ccx $$1, bkj $$2, bia $$3) {
-      if ($$2 instanceof bkz $$4 && $$2.bv() && !$$4.i() && $$4.g()) {
-         if (!$$1.dL().B) {
-            $$4.a(aqe.g);
-            $$2.dL().a($$2, dkl.v, $$2.dj());
-            $$0.h(1);
-         }
-
-         return bib.a($$1.dL().B);
+public class clc {
+   private static final Strategy<? super clb> a = new Strategy<clb>() {
+      public int a(@Nullable clb $$0) {
+         return clc.a($$0);
       }
 
-      return bib.d;
+      public boolean a(@Nullable clb $$0, @Nullable clb $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.b() == $$1.b() && clb.c($$0, $$1);
+      }
+   };
+
+   static int a(@Nullable clb $$0) {
+      if ($$0 != null) {
+         rz $$1 = $$0.v();
+         int $$2 = 31 + $$0.d().hashCode();
+         return 31 * $$2 + ($$1 == null ? 0 : $$1.hashCode());
+      } else {
+         return 0;
+      }
+   }
+
+   public static Set<clb> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

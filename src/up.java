@@ -1,71 +1,81 @@
-import com.google.common.primitives.Ints;
 import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record up(List<uu> d) {
-   public static final Codec<up> a = uu.a.listOf().xmap(up::new, up::a);
-   public static up b = new up(List.of());
-   public static final int c = 20;
+public class up {
+   public static final Codec<up> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(up.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, up::new)
+   );
+   private final up.a b;
+   private final String c;
 
-   public void a(ati.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
+   public up(up.a $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-      for (uu $$1 : this.d) {
-         $$0.update($$1.b());
+   public up.a a() {
+      return this.b;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         up $$1 = (up)$$0;
+         return this.b == $$1.b && this.c.equals($$1.c);
+      } else {
+         return false;
       }
    }
 
-   public up.a a(uv $$0) {
-      return new up.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
+   @Override
+   public String toString() {
+      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
    }
 
-   public List<uu> a() {
-      return this.d;
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 
-   public static record a(List<uu.a> b) {
-      public static final up.a a = new up.a(List.of());
+   public static enum a implements aub {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
 
-      public a(tl $$0) {
-         this($$0.a(tl.a(ArrayList::new, 20), uu.a::a));
+      public static final MapCodec<up.a> g = aub.a(up.a::values).fieldOf("action");
+      public static final MapCodec<up.a> h = asq.a(g, up.a::a);
+      private final boolean i;
+      private final String j;
+
+      private a(String $$0, boolean $$1) {
+         this.j = $$0;
+         this.i = $$1;
       }
 
-      public void a(tl $$0) {
-         $$0.a(this.b, uu.a::a);
+      public boolean a() {
+         return this.i;
       }
 
-      public Optional<up> a(uv $$0) {
-         List<uu> $$1 = new ArrayList<>(this.b.size());
-
-         for (uu.a $$2 : this.b) {
-            Optional<uu> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
-            }
-
-            $$1.add($$3.get());
-         }
-
-         return Optional.of(new up($$1));
+      @Override
+      public String c() {
+         return this.j;
       }
 
-      public List<uu.a> a() {
-         return this.b;
-      }
-   }
-
-   public static record b(int a, BitSet b) {
-      public b(tl $$0) {
-         this($$0.n(), $$0.e(20));
-      }
-
-      public void a(tl $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
+      public static DataResult<up.a> a(up.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
       }
    }
 }

@@ -1,31 +1,20 @@
-public class gde extends gcr {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final byg p;
+public class gde {
+   public static final gdf a = new gdf();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-   public gde(byg $$0) {
-      super(aqd.wJ, aqe.g, gdi.t());
-      this.p = $$0;
-      this.k = gdi.a.b;
-      this.i = false;
-      this.j = 0;
+   public gde(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public boolean s() {
-      return !this.p.aS();
+   public boolean a() {
+      return this.d;
    }
 
-   @Override
-   public void q() {
-      if (!this.p.dG() && this.p.q() == null && this.p.gk()) {
-         this.f = (double)((float)this.p.dq());
-         this.g = (double)((float)this.p.ds());
-         this.h = (double)((float)this.p.dw());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
-         this.n();
-      }
+   public boolean b() {
+      return this.e;
    }
 }

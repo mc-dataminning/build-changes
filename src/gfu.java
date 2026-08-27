@@ -1,94 +1,58 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gfu {
-   static final Logger a = LogUtils.getLogger();
-   final ezd b;
-   volatile boolean c;
+public class gfu implements gfv<gem> {
+   private final List<gfv<gem>> a = Lists.newArrayList();
    @Nullable
-   tj d;
+   private final ur b;
 
-   public gfu(ezd $$0) {
-      this.b = $$0;
+   public gfu(agg $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : ur.c($$1);
    }
 
-   public void a(final eno $$0, fld $$1) {
-      final ero $$2 = ero.O();
-      $$2.aR();
-      $$2.aV().c(ui.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
+   @Override
+   public int e() {
+      int $$0 = 0;
 
-            try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (gfu.this.c) {
-                  return;
-               }
+      for (gfv<gem> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
 
-               gfu.this.d = tj.a($$0, $$2.m.av(), $$2.aN().l());
-               if (gfu.this.c) {
-                  return;
-               }
+      return $$0;
+   }
 
-               fjq $$1 = new fjq(gfu.this.d, $$2, $$0.d($$3), gfu.this.b, false, null, $$0xx -> {
-               });
-               if ($$0.m == eno.d.b) {
-                  $$1.a($$0.o);
-               }
+   public gem a(ato $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
 
-               if (gfu.this.c) {
-                  return;
-               }
-
-               gfu.this.d.a($$3, $$4, $$1);
-               if (gfu.this.c) {
-                  return;
-               }
-
-               gfu.this.d.a(new aek($$2.V().c(), $$2.V().b()));
-               $$2.a(fkr.a($$0));
-               $$2.aZ().a(fok.c.c, String.valueOf($$0.a), $$0.c);
-            } catch (Exception var5) {
-               $$2.ac().a();
-               if (gfu.this.c) {
-                  return;
-               }
-
-               gfu.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               gft $$5 = new gft(gfu.this.b, uh.q, ui.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
+         for (gfv<gem> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
             }
          }
-      }).start();
-   }
 
-   public void a() {
-      this.c = true;
-      if (this.d != null && this.d.k()) {
-         this.d.a(ui.c("disconnect.genericReason"));
-         this.d.p();
+         return gft.a;
+      } else {
+         return gft.a;
       }
    }
 
-   public void b() {
-      if (this.d != null) {
-         if (this.d.k()) {
-            this.d.d();
-         } else {
-            this.d.p();
-         }
+   public void a(gfv<gem> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public ur a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(gfq $$0) {
+      for (gfv<gem> $$1 : this.a) {
+         $$1.a($$0);
       }
    }
 }

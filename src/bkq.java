@@ -1,118 +1,83 @@
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class bkq extends bxi {
+   private static final afm<Integer> bX = afp.a(bkq.class, afo.b);
 
-public interface bkq {
-   String a_ = "AngerTime";
-   String b_ = "AngryAt";
+   public bkq(bkm<? extends bkq> $$0, crs $$1) {
+      super($$0, $$1);
+   }
 
-   int a();
+   @Override
+   protected jq s() {
+      return js.aK;
+   }
 
-   void a(int var1);
+   @Override
+   protected void b_() {
+      super.b_();
+      this.an.a(bX, 0);
+   }
 
-   @Nullable
-   UUID b();
+   @Override
+   protected aqm t() {
+      return aqn.jG;
+   }
 
-   void a(@Nullable UUID var1);
+   @Override
+   protected aqm w() {
+      return aqn.jD;
+   }
 
-   void c();
+   @Override
+   protected aqm d(bjg $$0) {
+      return aqn.jF;
+   }
 
-   default void c(rt $$0) {
-      $$0.a("AngerTime", this.a());
-      if (this.b() != null) {
-         $$0.a("AngryAt", this.b());
+   @Override
+   protected aqm m_() {
+      return aqn.jE;
+   }
+
+   @Override
+   public void b(rz $$0) {
+      super.b($$0);
+      $$0.a("DarkTicksRemaining", this.y());
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      this.c($$0.h("DarkTicksRemaining"));
+   }
+
+   @Override
+   public void c_() {
+      super.c_();
+      int $$0 = this.y();
+      if ($$0 > 0) {
+         this.c($$0 - 1);
       }
+
+      this.dL().a(js.aL, this.d(0.6), this.dt(), this.g(0.6), 0.0, 0.0, 0.0);
    }
 
-   default void a(cqz $$0, rt $$1) {
-      this.a($$1.h("AngerTime"));
-      if ($$0 instanceof alq) {
-         if (!$$1.b("AngryAt")) {
-            this.a(null);
-         } else {
-            UUID $$2 = $$1.a("AngryAt");
-            this.a($$2);
-            bjt $$3 = ((alq)$$0).a($$2);
-            if ($$3 != null) {
-               if ($$3 instanceof bkl) {
-                  this.a((bkl)$$3);
-               }
-
-               if ($$3.ag() == bjx.bt) {
-                  this.c((ccx)$$3);
-               }
-            }
-         }
+   @Override
+   public boolean a(bjg $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if ($$2) {
+         this.c(100);
       }
+
+      return $$2;
    }
 
-   default void a(alq $$0, boolean $$1) {
-      bkj $$2 = this.q();
-      UUID $$3 = this.b();
-      if (($$2 == null || $$2.ev()) && $$3 != null && $$0.a($$3) instanceof bkl) {
-         this.V_();
-      } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.cv())) {
-            this.a($$2.cv());
-            this.c();
-         }
-
-         if (this.a() > 0 && ($$2 == null || $$2.ag() != bjx.bt || !$$1)) {
-            this.a(this.a() - 1);
-            if (this.a() == 0) {
-               this.V_();
-            }
-         }
-      }
+   private void c(int $$0) {
+      this.an.b(bX, $$0);
    }
 
-   default boolean a_(bkj $$0) {
-      if (!this.c($$0)) {
-         return false;
-      } else {
-         return $$0.ag() == bjx.bt && this.a_($$0.dL()) ? true : $$0.cv().equals(this.b());
-      }
+   public int y() {
+      return this.an.b(bX);
    }
 
-   default boolean a_(cqz $$0) {
-      return $$0.X().b(cqv.L) && this.Y_() && this.b() == null;
+   public static boolean a(bkm<? extends bky> $$0, csh $$1, blc $$2, ht $$3, ato $$4) {
+      return $$3.v() <= $$1.z_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(cuv.G);
    }
-
-   default boolean Y_() {
-      return this.a() > 0;
-   }
-
-   default void a_(ccx $$0) {
-      if ($$0.dL().X().b(cqv.K)) {
-         if ($$0.cv().equals(this.b())) {
-            this.V_();
-         }
-      }
-   }
-
-   default void Z_() {
-      this.V_();
-      this.c();
-   }
-
-   default void V_() {
-      this.a(null);
-      this.a(null);
-      this.h(null);
-      this.a(0);
-   }
-
-   @Nullable
-   bkj eg();
-
-   void a(@Nullable bkj var1);
-
-   void c(@Nullable ccx var1);
-
-   void h(@Nullable bkj var1);
-
-   boolean c(bkj var1);
-
-   @Nullable
-   bkj q();
 }

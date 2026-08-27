@@ -1,42 +1,61 @@
-public class eyb extends ezd {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final ui c = ui.c("credits_and_attribution.screen.title");
-   private static final ui k = ui.c("credits_and_attribution.button.credits");
-   private static final ui l = ui.c("credits_and_attribution.button.attribution");
-   private static final ui m = ui.c("credits_and_attribution.button.licenses");
-   private final ezd n;
-   private final ewt o = new ewt(this);
+import java.util.function.Consumer;
 
-   public eyb(ezd $$0) {
-      super(c);
-      this.n = $$0;
+public class eyb implements exy {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
+
+   public eyb(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public eyb(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public static eyb a(int $$0) {
+      return new eyb($$0, 0);
+   }
+
+   public static eyb b(int $$0) {
+      return new eyb(0, $$0);
    }
 
    @Override
-   protected void aM_() {
-      this.o.a(new euq(this.m(), this.i));
-      ewx $$0 = this.o.c(ewx.d()).a(8);
-      $$0.c().b();
-      $$0.a(etj.a(k, $$0x -> this.l()).a(210).a());
-      $$0.a(etj.a(l, exw.b("https://aka.ms/MinecraftJavaAttribution", this, true)).a(210).a());
-      $$0.a(etj.a(m, exw.b("https://aka.ms/MinecraftJavaLicenses", this, true)).a(210).a());
-      this.o.b(etj.a(uh.d, $$0x -> this.aC_()).a());
-      this.o.a();
-      this.o.a(this::d);
+   public void f(int $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void c() {
-      this.o.a();
-   }
-
-   private void l() {
-      this.f.a(new ezl(false, () -> this.f.a(this)));
+   public void g(int $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void aC_() {
-      this.f.a(this.n);
+   public int p() {
+      return this.a;
+   }
+
+   @Override
+   public int r() {
+      return this.b;
+   }
+
+   @Override
+   public int k() {
+      return this.c;
+   }
+
+   @Override
+   public int i() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<euk> $$0) {
    }
 }

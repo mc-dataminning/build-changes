@@ -1,77 +1,154 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+import java.io.UTFDataFormatException;
+import java.util.Objects;
 
-public class su extends sv {
-   private int a;
-   private final Set<sp<?>> b;
-   private final Deque<sx> c = new ArrayDeque<>();
-
-   public su(sw... $$0) {
-      this.a = $$0.length;
-      Builder<sp<?>> $$1 = ImmutableSet.builder();
-      sx $$2 = sx.a();
-
-      for (sw $$3 : $$0) {
-         $$2.a($$3);
-         $$1.add($$3.b());
+public class su implements sw {
+   private static final int b = 36;
+   public static final sy<su> a = new sy.b<su>() {
+      public su a(DataInput $$0, si $$1) throws IOException {
+         return su.a(d($$0, $$1));
       }
 
-      this.c.push($$2);
-      $$1.add(rt.b);
-      this.b = $$1.build();
+      @Override
+      public st.b a(DataInput $$0, st $$1, si $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static String d(DataInput $$0, si $$1) throws IOException {
+         $$1.b(36L);
+         String $$2 = $$0.readUTF();
+         $$1.a(2L, (long)$$2.length());
+         return $$2;
+      }
+
+      @Override
+      public void b(DataInput $$0, si $$1) throws IOException {
+         su.a($$0);
+      }
+
+      @Override
+      public String a() {
+         return "STRING";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_String";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private static final su c = new su("");
+   private static final char w = '"';
+   private static final char x = '\'';
+   private static final char y = '\\';
+   private static final char z = '\u0000';
+   private final String A;
+
+   public static void a(DataInput $$0) throws IOException {
+      $$0.skipBytes($$0.readUnsignedShort());
+   }
+
+   private su(String $$0) {
+      Objects.requireNonNull($$0, "Null string not allowed");
+      this.A = $$0;
+   }
+
+   public static su a(String $$0) {
+      return $$0.isEmpty() ? c : new su($$0);
    }
 
    @Override
-   public sk.b b(sp<?> $$0) {
-      return $$0 != rt.b ? sk.b.c : super.b($$0);
-   }
-
-   @Override
-   public sk.a a(sp<?> $$0) {
-      sx $$1 = this.c.element();
-      if (this.e() > $$1.b()) {
-         return super.a($$0);
-      } else if (this.a <= 0) {
-         return sk.a.d;
-      } else {
-         return !this.b.contains($$0) ? sk.a.b : super.a($$0);
+   public void a(DataOutput $$0) throws IOException {
+      try {
+         $$0.writeUTF(this.A);
+      } catch (UTFDataFormatException var3) {
+         ac.a("Failed to write NBT String", var3);
+         $$0.writeUTF("");
       }
    }
 
    @Override
-   public sk.a a(sp<?> $$0, String $$1) {
-      sx $$2 = this.c.element();
-      if (this.e() > $$2.b()) {
-         return super.a($$0, $$1);
-      } else if ($$2.c().remove($$1, $$0)) {
-         this.a--;
-         return super.a($$0, $$1);
-      } else {
-         if ($$0 == rt.b) {
-            sx $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.c.push($$3);
-               return super.a($$0, $$1);
+   public int a() {
+      return 36 + 2 * this.A.length();
+   }
+
+   @Override
+   public byte b() {
+      return 8;
+   }
+
+   @Override
+   public sy<su> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return sw.super.s_();
+   }
+
+   public su e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof su && Objects.equals(this.A, ((su)$$0).A);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.A.hashCode();
+   }
+
+   @Override
+   public String s_() {
+      return this.A;
+   }
+
+   @Override
+   public void a(ta $$0) {
+      $$0.a(this);
+   }
+
+   public static String b(String $$0) {
+      StringBuilder $$1 = new StringBuilder(" ");
+      char $$2 = 0;
+
+      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
+         char $$4 = $$0.charAt($$3);
+         if ($$4 == '\\') {
+            $$1.append('\\');
+         } else if ($$4 == '"' || $$4 == '\'') {
+            if ($$2 == 0) {
+               $$2 = (char)($$4 == '"' ? 39 : 34);
+            }
+
+            if ($$2 == $$4) {
+               $$1.append('\\');
             }
          }
 
-         return sk.a.b;
+         $$1.append($$4);
       }
+
+      if ($$2 == 0) {
+         $$2 = '"';
+      }
+
+      $$1.setCharAt(0, $$2);
+      $$1.append($$2);
+      return $$1.toString();
    }
 
    @Override
-   public sk.b b() {
-      if (this.e() == this.c.element().b()) {
-         this.c.pop();
-      }
-
-      return super.b();
-   }
-
-   public int c() {
-      return this.a;
+   public st.b a(st $$0) {
+      return $$0.a(this.A);
    }
 }

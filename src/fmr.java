@@ -1,27 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
-
-public class fmr {
-   private final List<afw> a;
-
-   private fmr(List<afw> $$0) {
-      this.a = $$0;
+public class fmr extends fow {
+   fmr(fkw $$0, double $$1, double $$2, double $$3, dgw $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(esr.N().am().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
-   public List<afw> a() {
-      return this.a;
+   @Override
+   public fnz b() {
+      return fnz.a;
    }
 
-   public static fmr a(JsonObject $$0) {
-      JsonArray $$1 = aso.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new fmr(List.of());
-      } else {
-         List<afw> $$2 = Streams.stream($$1).map($$0x -> aso.a($$0x, "texture")).map(afw::new).collect(ImmutableList.toImmutableList());
-         return new fmr($$2);
+   @Override
+   public float b(float $$0) {
+      return 0.5F;
+   }
+
+   public static class a implements fny<jk> {
+      public fnv a(jk $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fmr($$1, $$2, $$3, $$4, $$0.c());
       }
    }
 }

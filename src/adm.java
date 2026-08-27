@@ -1,79 +1,62 @@
-public class adm implements wb<aca> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final ht d;
-   private final String e;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final deh.a i;
+public class adm implements wk<acj> {
+   private final ht a;
+   private final hx b;
+   private final adm.a c;
+   private final int d;
 
-   public adm(ht $$0, String $$1, deh.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$2;
+   public adm(adm.a $$0, ht $$1, hx $$2, int $$3) {
+      this.c = $$0;
+      this.a = $$1.i();
+      this.b = $$2;
+      this.d = $$3;
    }
 
-   public adm(tl $$0) {
-      this.d = $$0.e();
-      this.e = $$0.s();
-      this.i = $$0.b(deh.a.class);
-      int $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
+   public adm(adm.a $$0, ht $$1, hx $$2) {
+      this($$0, $$1, $$2, 0);
+   }
+
+   public adm(tu $$0) {
+      this.c = $$0.b(adm.a.class);
+      this.a = $$0.e();
+      this.b = hx.a($$0.readUnsignedByte());
+      this.d = $$0.n();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.i);
-      int $$1 = 0;
-      if (this.f) {
-         $$1 |= 1;
-      }
-
-      if (this.g) {
-         $$1 |= 2;
-      }
-
-      if (this.h) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+   public void a(tu $$0) {
+      $$0.a(this.c);
+      $$0.a(this.a);
+      $$0.k(this.b.d());
+      $$0.c(this.d);
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
    public ht a() {
+      return this.a;
+   }
+
+   public hx d() {
+      return this.b;
+   }
+
+   public adm.a e() {
+      return this.c;
+   }
+
+   public int f() {
       return this.d;
    }
 
-   public String d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f;
-   }
-
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public deh.a h() {
-      return this.i;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

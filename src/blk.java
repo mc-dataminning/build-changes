@@ -1,32 +1,17 @@
-public class blk {
-   public static final int a = 64;
-   private final double b;
-   private boolean c;
-   private final String d;
-
-   protected blk(String $$0, double $$1) {
-      this.b = $$1;
-      this.d = $$0;
-   }
-
-   public double a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      return this.c;
-   }
-
-   public blk a(boolean $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public double a(double $$0) {
-      return $$0;
-   }
-
-   public String c() {
-      return this.d;
-   }
+public enum blk {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h,
+   i,
+   j,
+   k,
+   l,
+   m,
+   n,
+   o;
 }

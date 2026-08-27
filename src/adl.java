@@ -1,24 +1,31 @@
-public class adl implements wb<aca> {
-   private final int a;
+public class adl implements wk<acj> {
+   private static final int a = 2;
+   private final boolean b;
 
-   public adl(int $$0) {
-      this.a = $$0;
+   public adl(cdj $$0) {
+      this.b = $$0.b;
    }
 
-   public adl(tl $$0) {
-      this.a = $$0.readShort();
+   public adl(tu $$0) {
+      byte $$1 = $$0.readByte();
+      this.b = ($$1 & 2) != 0;
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.l(this.a);
+   public void a(tu $$0) {
+      byte $$1 = 0;
+      if (this.b) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public boolean a() {
+      return this.b;
    }
 }

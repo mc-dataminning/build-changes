@@ -1,100 +1,50 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class cml {
-   public static final Codec<cml> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cmm.b.fieldOf("material").forGetter(cml::b), cmo.b.fieldOf("pattern").forGetter(cml::a)).apply($$0, cml::new)
-   );
-   private static final Logger c = LogUtils.getLogger();
-   public static final String b = "Trim";
-   private static final ui d = ui.c(ac.a("item", new afw("smithing_template.upgrade"))).a(n.h);
-   private final ib<cmm> e;
-   private final ib<cmo> f;
-   private final Function<chu, afw> g;
-   private final Function<chu, afw> h;
+public class cml extends ckw {
+   public static final String a = "effects";
+   public static final int b = 160;
 
-   public cml(ib<cmm> $$0, ib<cmo> $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = ac.b($$1x -> {
-         afw $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
-      });
-      this.h = ac.b($$1x -> {
-         afw $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
-      });
+   public cml(ckw.a $$0) {
+      super($$0);
    }
 
-   private String c(chu $$0) {
-      Map<chv, String> $$1 = this.e.a().d();
-      return $$0 instanceof chv && $$1.containsKey($$0) ? $$1.get($$0) : this.e.a().a();
+   public static void a(clb $$0, List<dcu.a> $$1) {
+      rz $$2 = $$0.w();
+      dcu.a.b.encodeStart(sn.a, $$1).result().ifPresent($$1x -> $$2.a("effects", $$1x));
    }
 
-   public boolean a(ib<cmo> $$0, ib<cmm> $$1) {
-      return $$0 == this.f && $$1 == this.e;
+   public static void b(clb $$0, List<dcu.a> $$1) {
+      rz $$2 = $$0.w();
+      List<dcu.a> $$3 = new ArrayList<>();
+      a($$0, $$3::add);
+      $$3.addAll($$1);
+      dcu.a.b.encodeStart(sn.a, $$3).result().ifPresent($$1x -> $$2.a("effects", $$1x));
    }
 
-   public ib<cmo> a() {
-      return this.f;
-   }
-
-   public ib<cmm> b() {
-      return this.e;
-   }
-
-   public afw a(chu $$0) {
-      return this.g.apply($$0);
-   }
-
-   public afw b(chu $$0) {
-      return this.h.apply($$0);
+   private static void a(clb $$0, Consumer<dcu.a> $$1) {
+      rz $$2 = $$0.v();
+      if ($$2 != null && $$2.b("effects", 9)) {
+         dcu.a.b.parse(sn.a, $$2.c("effects", 10)).result().ifPresent($$1x -> $$1x.forEach($$1));
+      }
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof cml $$1) ? false : $$1.f == this.f && $$1.e == this.e;
-   }
-
-   public static boolean a(ip $$0, ckj $$1, cml $$2) {
-      if ($$1.a(ara.aH)) {
-         $$1.w().a("Trim", (sn)a.encodeStart(afu.a(sf.a, $$0), $$2).result().orElseThrow());
-         return true;
-      } else {
-         return false;
+   public void a(clb $$0, @Nullable crs $$1, List<ur> $$2, cms $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.b()) {
+         List<bjv> $$4 = new ArrayList<>();
+         a($$0, $$1x -> $$4.add($$1x.a()));
+         cna.a($$4, $$2, 1.0F);
       }
    }
 
-   public static Optional<cml> a(ip $$0, ckj $$1, boolean $$2) {
-      if ($$1.a(ara.aH) && $$1.v() != null && $$1.v().e("Trim")) {
-         rt $$3 = $$1.b("Trim");
-         cml $$4 = (cml)a.parse(afu.a(sf.a, $$0), $$3).resultOrPartial($$1x -> {
-            if (!$$2) {
-               c.warn($$1x);
-            }
-         }).orElse(null);
-         return Optional.ofNullable($$4);
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   public static void a(ckj $$0, ip $$1, List<ui> $$2) {
-      Optional<cml> $$3 = a($$1, $$0, true);
-      if ($$3.isPresent()) {
-         cml $$4 = $$3.get();
-         $$2.add(d);
-         $$2.add(uh.a().b($$4.a().a().a($$4.b())));
-         $$2.add(uh.a().b($$4.b().a().e()));
-      }
+   @Override
+   public clb a(clb $$0, crs $$1, bky $$2) {
+      clb $$3 = super.a($$0, $$1, $$2);
+      a($$3, $$1x -> $$2.b($$1x.a()));
+      return $$2 instanceof cdm && ((cdm)$$2).fT().d ? $$3 : new clb(cle.oC);
    }
 }

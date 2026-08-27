@@ -1,146 +1,22 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 
-public interface euc {
-   euc a = new euc() {
-      @Override
-      public int a(esy $$0, int $$1, int $$2) {
-         return $$2;
-      }
+public class euc extends gck {
+   private static final Set<aod<?>> a = Set.of(gcs.a, gcy.c);
 
-      @Override
-      public int a(esy $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int b(esy $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int c(esy $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public int b() {
-         return 0;
-      }
-   };
-
-   static euc a(esw $$0, un $$1, int $$2) {
-      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new euc.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public euc(gbi $$0) {
+      super($$0, new agg("textures/atlas/gui.png"), new agg("gui"), a);
    }
 
-   static euc a(esw $$0, un $$1, int $$2, int $$3) {
-      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new euc.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   @Override
+   public gbh a(agg $$0) {
+      return super.a($$0);
    }
 
-   static euc a(esw $$0, ui... $$1) {
-      return b($$0, Arrays.stream($$1).map(ui::g).map($$1x -> new euc.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public gcz a(gbh $$0) {
+      return this.b($$0).a();
    }
 
-   static euc a(esw $$0, List<ui> $$1) {
-      return b($$0, $$1.stream().map(ui::g).map($$1x -> new euc.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
-   }
-
-   static euc b(final esw $$0, final List<euc.a> $$1) {
-      return $$1.isEmpty() ? a : new euc() {
-         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
-
-         @Override
-         public int a(esy $$0x, int $$1x, int $$2) {
-            return this.a($$0, $$1, $$2, 9, 16777215);
-         }
-
-         @Override
-         public int a(esy $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (euc.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int b(esy $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (euc.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int c(esy $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (euc.a $$6 : $$1) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public void a(esy $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
-            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
-            if ($$6 > 0) {
-               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
-            }
-         }
-
-         @Override
-         public int a() {
-            return $$1.size();
-         }
-
-         @Override
-         public int b() {
-            return this.d;
-         }
-      };
-   }
-
-   int a(esy var1, int var2, int var3);
-
-   int a(esy var1, int var2, int var3, int var4, int var5);
-
-   int b(esy var1, int var2, int var3, int var4, int var5);
-
-   int c(esy var1, int var2, int var3, int var4, int var5);
-
-   void a(esy var1, int var2, int var3, int var4, int var5, int var6);
-
-   int a();
-
-   int b();
-
-   public static class a {
-      final ask a;
-      final int b;
-
-      a(ask $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   private gcy b(gbh $$0) {
+      return $$0.e().f().a(gcy.c).orElse(gcy.a);
    }
 }

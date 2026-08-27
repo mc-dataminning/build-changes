@@ -1,14 +1,13 @@
-public class fza extends fyl<bwx, fin<bwx>> {
-   private static final afw a = new afw("textures/entity/wolf/wolf_collar.png");
+public class fza<T extends cao> extends fzs<T, fgy<T>> {
+   private static final agg a = new agg("textures/entity/zombie/drowned_outer_layer.png");
+   private final fgy<T> b;
 
-   public fza(fvy<bwx, fin<bwx>> $$0) {
+   public fza(fxf<T, fgy<T>> $$0, fjx $$1) {
       super($$0);
+      this.b = new fgy<>($$1.a(fka.O));
    }
 
-   public void a(emh $$0, fpb $$1, int $$2, bwx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s() && !$$3.cd()) {
-         float[] $$10 = $$3.gn().d();
-         a(this.c(), a, $$0, $$1, $$2, $$3, $$10[0], $$10[1], $$10[2]);
-      }
+   public void a(enk $$0, fqh $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

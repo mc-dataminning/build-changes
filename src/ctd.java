@@ -1,76 +1,84 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class ctd extends cua implements cud {
-   public static final MapCodec<ctd> a = b(ctd::new);
-   protected static final float b = 4.0F;
-   protected static final eiy c = cua.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public class ctd extends csu {
+   private static final MapCodec<ib<csq>> d = csq.c.fieldOf("biome");
+   public static final MapCodec<csz.c<ib<csq>>> b = csz.c.a(d).fieldOf("biomes");
+   private static final MapCodec<ib<cte>> e = cte.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final Codec<ctd> c = Codec.mapEither(b, e).xmap(ctd::new, $$0 -> $$0.f).codec();
+   private final Either<csz.c<ib<csq>>, ib<cte>> f;
 
-   @Override
-   public MapCodec<ctd> a() {
-      return a;
+   private ctd(Either<csz.c<ib<csq>>, ib<cte>> $$0) {
+      this.f = $$0;
    }
 
-   public ctd(dga.d $$0) {
-      super($$0);
+   public static ctd a(csz.c<ib<csq>> $$0) {
+      return new ctd(Either.left($$0));
    }
 
-   @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      eif $$4 = $$0.n($$1, $$2);
-      return c.a($$4.c, $$4.d, $$4.e);
+   public static ctd a(ib<cte> $$0) {
+      return new ctd(Either.right($$0));
    }
 
-   @Override
-   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if ($$3.a(3) == 0 && $$1.t($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(dgb $$0, crc $$1, ht $$2) {
-      return $$1.a_($$2.d()).a(aqs.at);
+   private csz.c<ib<csq>> d() {
+      return (csz.c<ib<csq>>)this.f.map($$0 -> $$0, $$0 -> ((cte)$$0.a()).a());
    }
 
    @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return cuc.a.o();
-      } else {
-         if ($$1 == hx.b && $$2.a(cuc.mZ)) {
-            $$3.a($$4, cuc.mZ.o(), 2);
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   protected Stream<ib<csq>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
    }
 
    @Override
-   public ckj a(crc $$0, ht $$1, dgb $$2) {
-      return new ckj(ckm.dv);
+   protected Codec<? extends csu> a() {
+      return c;
+   }
+
+   public boolean a(agf<cte> $$0) {
+      Optional<ib<cte>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
    }
 
    @Override
-   public boolean b(crc $$0, ht $$1, dgb $$2) {
-      return $$0.a_($$1.c()).i();
+   public ib<csq> getNoiseBiome(int $$0, int $$1, int $$2, csz.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @auk
+   public ib<csq> a(csz.h $$0) {
+      return this.d().a($$0);
    }
 
    @Override
-   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
-      this.a($$0, $$2);
-   }
-
-   @Override
-   public float a(dgb $$0, ccx $$1, cqf $$2, ht $$3) {
-      return $$1.eS().d() instanceof clu ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(cqz $$0, ht $$1) {
-      $$0.a($$1.c(), cuc.mZ.o().a(cte.i, dgn.b), 3);
+   public void a(List<String> $$0, ht $$1, csz.f $$2) {
+      int $$3 = in.a($$1.u());
+      int $$4 = in.a($$1.v());
+      int $$5 = in.a($$1.w());
+      csz.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = csz.a($$6.d());
+      float $$8 = csz.a($$6.e());
+      float $$9 = csz.a($$6.b());
+      float $$10 = csz.a($$6.c());
+      float $$11 = csz.a($$6.g());
+      double $$12 = (double)dmm.a($$11);
+      ctg $$13 = new ctg();
+      $$0.add(
+         "Biome builder PV: "
+            + ctg.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
+      );
    }
 }

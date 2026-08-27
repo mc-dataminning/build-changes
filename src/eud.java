@@ -1,69 +1,147 @@
-import java.util.OptionalInt;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import org.joml.Matrix4f;
 
-public class eud extends etg {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final atm<eud.a, euc> c;
-   private boolean d = false;
+public class eud implements AutoCloseable {
+   private static final agg a = new agg("textures/map/map_icons.png");
+   static final fqp b = fqp.s(a);
+   private static final int c = 128;
+   private static final int d = 128;
+   final gbi e;
+   private final Int2ObjectMap<eud.a> f = new Int2ObjectOpenHashMap();
 
-   public eud(ui $$0, esw $$1) {
-      this(0, 0, $$0, $$1);
+   public eud(gbi $$0) {
+      this.e = $$0;
    }
 
-   public eud(int $$0, int $$1, ui $$2, esw $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ac.a($$1x -> $$1x.c.isPresent() ? euc.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : euc.a($$3, $$1x.a, $$1x.b));
-      this.i = false;
+   public void a(int $$0, edq $$1) {
+      this.b($$0, $$1).a();
    }
 
-   public eud i(int $$0) {
-      super.a($$0);
-      return this;
+   public void a(enk $$0, fqh $$1, int $$2, edq $$3, boolean $$4, int $$5) {
+      this.b($$2, $$3).a($$0, $$1, $$4, $$5);
    }
 
-   public eud j(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
+   private eud.a b(int $$0, edq $$1) {
+      return (eud.a)this.f.compute($$0, ($$1x, $$2) -> {
+         if ($$2 == null) {
+            return new eud.a($$1x, $$1);
+         } else {
+            $$2.a($$1);
+            return $$2;
+         }
+      });
    }
 
-   public eud k(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
+   public void a() {
+      ObjectIterator var1 = this.f.values().iterator();
 
-   public eud b(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   @Override
-   public int k() {
-      return this.c.a(this.e()).b();
-   }
-
-   @Override
-   public int i() {
-      return this.c.a(this.e()).a() * 9;
-   }
-
-   @Override
-   public void b(esy $$0, int $$1, int $$2, float $$3) {
-      euc $$4 = this.c.a(this.e());
-      int $$5 = this.p();
-      int $$6 = this.r();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.k() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+      while (var1.hasNext()) {
+         eud.a $$0 = (eud.a)var1.next();
+         $$0.close();
       }
+
+      this.f.clear();
    }
 
-   private eud.a e() {
-      return new eud.a(this.l(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   @Override
+   public void close() {
+      this.a();
    }
 
-   static record a(ui a, int b, OptionalInt c) {
+   class a implements AutoCloseable {
+      private edq b;
+      private final gau c;
+      private final fqp d;
+      private boolean e = true;
+
+      a(int $$0, edq $$1) {
+         this.b = $$1;
+         this.c = new gau(128, 128, true);
+         agg $$2 = eud.this.e.a("map/" + $$0, this.c);
+         this.d = fqp.s($$2);
+      }
+
+      void a(edq $$0) {
+         boolean $$1 = this.b != $$0;
+         this.b = $$0;
+         this.e |= $$1;
+      }
+
+      public void a() {
+         this.e = true;
+      }
+
+      private void b() {
+         for (int $$0 = 0; $$0 < 128; $$0++) {
+            for (int $$1 = 0; $$1 < 128; $$1++) {
+               int $$2 = $$1 + $$0 * 128;
+               this.c.e().a($$1, $$0, eck.b(this.b.g[$$2]));
+            }
+         }
+
+         this.c.d();
+      }
+
+      void a(enk $$0, fqh $$1, boolean $$2, int $$3) {
+         if (this.e) {
+            this.b();
+            this.e = false;
+         }
+
+         int $$4 = 0;
+         int $$5 = 0;
+         float $$6 = 0.0F;
+         Matrix4f $$7 = $$0.c().a();
+         eno $$8 = $$1.getBuffer(this.d);
+         $$8.a($$7, 0.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 1.0F).b($$3).e();
+         $$8.a($$7, 128.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 1.0F).b($$3).e();
+         $$8.a($$7, 128.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 0.0F).b($$3).e();
+         $$8.a($$7, 0.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 0.0F).b($$3).e();
+         int $$9 = 0;
+
+         for (edn $$10 : this.b.g()) {
+            if (!$$2 || $$10.b()) {
+               $$0.a();
+               $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F, -0.02F);
+               $$0.a(a.f.rotationDegrees((float)($$10.f() * 360) / 16.0F));
+               $$0.b(4.0F, 4.0F, 3.0F);
+               $$0.a(-0.125F, 0.125F, 0.0F);
+               byte $$11 = $$10.a();
+               float $$12 = (float)($$11 % 16 + 0) / 16.0F;
+               float $$13 = (float)($$11 / 16 + 0) / 16.0F;
+               float $$14 = (float)($$11 % 16 + 1) / 16.0F;
+               float $$15 = (float)($$11 / 16 + 1) / 16.0F;
+               Matrix4f $$16 = $$0.c().a();
+               float $$17 = -0.001F;
+               eno $$18 = $$1.getBuffer(eud.b);
+               $$18.a($$16, -1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$13).b($$3).e();
+               $$18.a($$16, 1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$13).b($$3).e();
+               $$18.a($$16, 1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$15).b($$3).e();
+               $$18.a($$16, -1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$12, $$15).b($$3).e();
+               $$0.b();
+               if ($$10.g() != null) {
+                  etz $$19 = esr.N().h;
+                  ur $$20 = $$10.g();
+                  float $$21 = (float)$$19.a($$20);
+                  float $$22 = ati.a(25.0F / $$21, 0.0F, 6.0F / 9.0F);
+                  $$0.a();
+                  $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F - $$21 * $$22 / 2.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F + 4.0F, -0.025F);
+                  $$0.b($$22, $$22, 1.0F);
+                  $$0.a(0.0F, 0.0F, -0.1F);
+                  $$19.a($$20, 0.0F, 0.0F, -1, false, $$0.c().a(), $$1, etz.a.a, Integer.MIN_VALUE, $$3);
+                  $$0.b();
+               }
+
+               $$9++;
+            }
+         }
+      }
+
+      @Override
+      public void close() {
+         this.c.close();
+      }
    }
 }

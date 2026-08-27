@@ -1,72 +1,229 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class os {
-   @Deprecated
-   public static final eah.a a = new eah.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(oo<eah.a> $$0) {
-      a($$0, 0, dlt.a, dlt.b, dlt.c, dlt.d);
-      a($$0, -2, dlt.e, dlt.f, dlt.g, dlt.h);
-      a($$0, dlt.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dlt.j, a);
-      a($$0, dlt.k, -3, 1.0);
-      a($$0, dlt.l, -7, 1.0);
-      a($$0, dlt.m, -1, 1.0);
-      a($$0, dlt.n, -5, 1.0);
-      a($$0, dlt.o, -7, 1.0, 1.0);
-      a($$0, dlt.p, -8, 1.0);
-      a($$0, dlt.q, -8, 1.0);
-      a($$0, dlt.r, -7, 1.0);
-      a($$0, dlt.s, -8, 1.0);
-      a($$0, dlt.t, -11, 1.0);
-      a($$0, dlt.u, -11, 1.0);
-      a($$0, dlt.v, -7, 1.0);
-      a($$0, dlt.w, -7, 1.0);
-      a($$0, dlt.x, -11, 1.0);
-      a($$0, dlt.y, -8, 1.0);
-      a($$0, dlt.z, -5, 1.0);
-      a($$0, dlt.A, -8, 1.0);
-      a($$0, dlt.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dlt.C, -8, 1.0);
-      a($$0, dlt.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dlt.E, -8, 1.0);
-      a($$0, dlt.F, -7, 1.0);
-      a($$0, dlt.G, -7, 1.0);
-      a($$0, dlt.H, -5, 1.0);
-      a($$0, dlt.I, -8, 1.0);
-      a($$0, dlt.J, -8, 1.0);
-      a($$0, dlt.K, -7, 1.0);
-      a($$0, dlt.L, -7, 1.0);
-      a($$0, dlt.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlt.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dlt.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dlt.P, -8, 1.0);
-      a($$0, dlt.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlt.R, -8, 1.0);
-      a($$0, dlt.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dlt.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlt.U, -3, 1.0);
-      a($$0, dlt.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dlt.W, -2, 1.0);
-      a($$0, dlt.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlt.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlt.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlt.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlt.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dlt.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dlt.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dlt.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dlt.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dlt.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dlt.ah, -4, 1.0);
-   }
-
-   private static void a(oo<eah.a> $$0, int $$1, afv<eah.a> $$2, afv<eah.a> $$3, afv<eah.a> $$4, afv<eah.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(oo<eah.a> $$0, afv<eah.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new eah.a($$2, $$3, $$4));
+   public static void a(ou<dye> $$0) {
+      ic<eat> $$1 = $$0.a(jz.aC);
+      ib<eat> $$2 = $$1.b(pc.s);
+      ib<eat> $$3 = $$1.b(pc.B);
+      ib<eat> $$4 = $$1.b(pc.r);
+      ib<eat> $$5 = $$1.b(pc.C);
+      ib<eat> $$6 = $$1.b(pc.A);
+      ic<dye> $$7 = $$0.a(jz.aE);
+      ib<dye> $$8 = $$7.b(pb.a);
+      pb.a($$0, "bastion/treasure/bases", new dye($$8, ImmutableList.of(Pair.of(dyc.b("bastion/treasure/bases/lava_basin", $$2), 1)), dye.a.b));
+      pb.a($$0, "bastion/treasure/stairs", new dye($$8, ImmutableList.of(Pair.of(dyc.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), dye.a.b));
+      pb.a(
+         $$0,
+         "bastion/treasure/bases/centers",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/bases/centers/center_0", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/bases/centers/center_1", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/bases/centers/center_2", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/bases/centers/center_3", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a($$0, "bastion/treasure/brains", new dye($$8, ImmutableList.of(Pair.of(dyc.b("bastion/treasure/brains/center_brain", $$2), 1)), dye.a.b));
+      pb.a(
+         $$0,
+         "bastion/treasure/walls",
+         new dye(
+            $$8,
+            ImmutableList.of(Pair.of(dyc.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(dyc.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/walls/outer",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/walls/bottom",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/walls/mid",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/walls/top",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/top/wall_0", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/walls/top/wall_1", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/connectors",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a($$0, "bastion/treasure/entrances", new dye($$8, ImmutableList.of(Pair.of(dyc.b("bastion/treasure/entrances/entrance_0", $$2), 1)), dye.a.b));
+      pb.a(
+         $$0,
+         "bastion/treasure/ramparts",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
+               Pair.of(dyc.b("bastion/treasure/ramparts/top_wall", $$5), 1),
+               Pair.of(dyc.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/corners/bottom",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(dyc.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/corners/edges",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/corners/edges/bottom", $$3), 1),
+               Pair.of(dyc.b("bastion/treasure/corners/edges/middle", $$3), 1),
+               Pair.of(dyc.b("bastion/treasure/corners/edges/top", $$3), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/corners/middle",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(dyc.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/corners/top",
+         new dye(
+            $$8,
+            ImmutableList.of(Pair.of(dyc.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(dyc.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/extensions/large_pool",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/fire_room", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/empty", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/extensions/small_pool",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/fire_room", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
+               Pair.of(dyc.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/extensions/houses",
+         new dye(
+            $$8,
+            ImmutableList.of(Pair.of(dyc.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(dyc.b("bastion/treasure/extensions/house_1", $$2), 1)),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/treasure/roofs",
+         new dye(
+            $$8,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/treasure/roofs/wall_roof", $$6), 1),
+               Pair.of(dyc.b("bastion/treasure/roofs/corner_roof", $$6), 1),
+               Pair.of(dyc.b("bastion/treasure/roofs/center_roof", $$6), 1)
+            ),
+            dye.a.b
+         )
+      );
    }
 }

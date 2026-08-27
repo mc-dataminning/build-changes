@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cpu extends cpm {
+   protected cpu(cpm.a $$0, bkn... $$1) {
+      super($$0, cpn.f, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cpu {
+   @Override
+   public int a(int $$0) {
+      return 5 + 20 * ($$0 - 1);
+   }
+
+   @Override
+   public int b(int $$0) {
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public int a() {
+      return 2;
+   }
 }

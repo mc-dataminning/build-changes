@@ -1,64 +1,58 @@
-public class abk implements wb<xu> {
-   private final ib<aqc> a;
-   private final aqe b;
-   private final int c;
-   private final float d;
-   private final float e;
-   private final long f;
+public class abk implements wk<yd> {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   private final String d;
+   private final ur e;
+   private final ekk.a f;
+   private final int g;
 
-   public abk(ib<aqc> $$0, aqe $$1, bjt $$2, float $$3, float $$4, long $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.ah();
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public abk(eke $$0, int $$1) {
+      this.d = $$0.b();
+      this.e = $$0.d();
+      this.f = $$0.f();
+      this.g = $$1;
    }
 
-   public abk(tl $$0) {
-      this.a = $$0.a(jy.c.t(), aqc::b);
-      this.b = $$0.b(aqe.class);
-      this.c = $$0.n();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readLong();
+   public abk(tu $$0) {
+      this.d = $$0.s();
+      this.g = $$0.readByte();
+      if (this.g != 0 && this.g != 2) {
+         this.e = uq.a;
+         this.f = ekk.a.a;
+      } else {
+         this.e = $$0.m();
+         this.f = $$0.b(ekk.a.class);
+      }
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(jy.c.t(), this.a, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.b);
-      $$0.c(this.c);
+   public void a(tu $$0) {
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.b(this.f);
+      $$0.k(this.g);
+      if (this.g == 0 || this.g == 2) {
+         $$0.a(this.e);
+         $$0.a(this.f);
+      }
    }
 
-   public ib<aqc> a() {
-      return this.a;
+   public void a(yd $$0) {
+      $$0.a(this);
    }
 
-   public aqe d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
+   public String a() {
       return this.d;
    }
 
-   public float g() {
+   public ur d() {
       return this.e;
    }
 
-   public long h() {
-      return this.f;
+   public int e() {
+      return this.g;
    }
 
-   public void a(xu $$0) {
-      $$0.a(this);
+   public ekk.a f() {
+      return this.f;
    }
 }

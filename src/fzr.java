@@ -1,59 +1,33 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class fzr<T extends cdm, M extends fhc<T> & fgd & fhk> extends fzl<T, M> {
+   private final fqd a;
+   private static final float b = (float) (-Math.PI / 6);
+   private static final float c = (float) (Math.PI / 2);
 
-public class fzr implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final fzn f = new fzn(16, 16, false);
-
-   public fzr() {
-      eli $$0 = this.f.e();
-
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1308622593);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, $$3 << 24 | 16777215);
-            }
-         }
-      }
-
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
-      RenderSystem.activeTexture(33984);
+   public fzr(fxf<T, M> $$0, fqd $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
    @Override
-   public void close() {
-      this.f.close();
+   protected void a(bky $$0, clb $$1, cky $$2, bks $$3, enk $$4, fqh $$5, int $$6) {
+      if ($$1.a(cle.qj) && $$0.fp() == $$1 && $$0.aH == 0) {
+         this.a($$0, $$1, $$3, $$4, $$5, $$6);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f::a, 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
+   private void a(bky $$0, clb $$1, bks $$2, enk $$3, fqh $$4, int $$5) {
+      $$3.a();
+      fkb $$6 = this.c().d();
+      float $$7 = $$6.e;
+      $$6.e = ati.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$6.a($$3);
+      $$6.e = $$7;
+      fyx.a($$3, false);
+      boolean $$8 = $$2 == bks.a;
+      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      this.a.a($$0, $$1, cky.f, false, $$3, $$4, $$5);
+      $$3.b();
    }
 }

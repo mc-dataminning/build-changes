@@ -1,17 +1,50 @@
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.ImmutableList;
+import javax.annotation.Nullable;
 
-public class gax {
-   @Deprecated
-   public static int[] a(aot $$0, afw $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         eli $$3 = eli.a($$2);
-      ) {
-         var4 = $$3.e();
+public final class gax {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final agg d = new agg("missingno");
+   private static final apf e = new apf.a().a(gcs.a, new gcs(ImmutableList.of(new gcr(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static gau f;
+
+   private static eml a(int $$0, int $$1) {
+      eml $$2 = new eml($$0, $$1, false);
+      int $$3 = -16777216;
+      int $$4 = -524040;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         for (int $$6 = 0; $$6 < $$0; $$6++) {
+            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
+               $$2.a($$6, $$5, -524040);
+            } else {
+               $$2.a($$6, $$5, -16777216);
+            }
+         }
       }
 
-      return var4;
+      return $$2;
+   }
+
+   public static gbb a() {
+      eml $$0 = a(16, 16);
+      return new gbb(d, new gcu(16, 16), $$0, e);
+   }
+
+   public static agg b() {
+      return d;
+   }
+
+   public static gau c() {
+      if (f == null) {
+         eml $$0 = a(16, 16);
+         $$0.i();
+         f = new gau($$0);
+         esr.N().X().a(d, f);
+      }
+
+      return f;
    }
 }

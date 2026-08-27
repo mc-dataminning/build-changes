@@ -1,29 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvn extends dvg {
-   public static final Codec<dvn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, dvn::new)
-   );
-   private final int c;
+public class dvn extends dwb {
+   private static final dvn c = new dvn();
+   public static Codec<dvn> a = Codec.unit(() -> c);
 
-   private dvn(int $$0) {
-      this.c = $$0;
+   private dvn() {
    }
 
-   public static dvn a(int $$0) {
-      return new dvn($$0);
+   public static dvn a() {
+      return c;
    }
 
    @Override
-   protected boolean a(dvf $$0, ate $$1, ht $$2) {
-      int $$3 = $$0.a(dlk.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dlk.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   protected boolean a(dwa $$0, ato $$1, ht $$2) {
+      dvz $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      ib<csq> $$4 = $$0.d().s($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public dvi<?> b() {
-      return dvi.d;
+   public dwd<?> b() {
+      return dwd.e;
    }
 }

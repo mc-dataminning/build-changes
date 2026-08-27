@@ -1,12 +1,10 @@
-public enum cla {
-   a(n.p),
-   b(n.o),
-   c(n.l),
-   d(n.n);
+public class cla extends ciu {
+   public cla(cut $$0, ckw.a $$1) {
+      super($$0, $$1);
+   }
 
-   public final n e;
-
-   private cla(n $$0) {
-      this.e = $$0;
+   @Override
+   public String a() {
+      return this.q();
    }
 }

@@ -1,101 +1,194 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public abstract class bma<E extends bkj> implements bmb<E> {
-   public static final int a = 60;
-   protected final Map<btk<?>, btl> b;
-   private bma.a c = bma.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class bma {
+   private final blz a;
+   private final Map<bmc.a, Set<bmc>> b = Maps.newEnumMap(bmc.a.class);
+   private final Map<UUID, bmc> c = new Object2ObjectArrayMap();
+   private final Set<bmc> d = new ObjectArraySet();
+   private double e;
+   private boolean f = true;
+   private double g;
+   private final Consumer<bma> h;
 
-   public bma(Map<btk<?>, btl> $$0) {
-      this($$0, 60);
+   public bma(blz $$0, Consumer<bma> $$1) {
+      this.a = $$0;
+      this.h = $$1;
+      this.e = $$0.a();
    }
 
-   public bma(Map<btk<?>, btl> $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public blz a() {
+      return this.a;
    }
 
-   public bma(Map<btk<?>, btl> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
+   public double b() {
+      return this.e;
    }
 
-   @Override
-   public bma.a a() {
-      return this.c;
+   public void a(double $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.d();
+      }
    }
 
-   @Override
-   public final boolean e(alq $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bma.a.b;
-         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
+   public Set<bmc> a(bmc.a $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
+   }
+
+   public Set<bmc> c() {
+      return ImmutableSet.copyOf(this.c.values());
+   }
+
+   @Nullable
+   public bmc a(UUID $$0) {
+      return this.c.get($$0);
+   }
+
+   public boolean a(bmc $$0) {
+      return this.c.get($$0.a()) != null;
+   }
+
+   private void d(bmc $$0) {
+      bmc $$1 = this.c.putIfAbsent($$0.a(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.b()).add($$0);
+         this.d();
+      }
+   }
+
+   public void b(bmc $$0) {
+      this.d($$0);
+   }
+
+   public void c(bmc $$0) {
+      this.d($$0);
+      this.d.add($$0);
+   }
+
+   protected void d() {
+      this.f = true;
+      this.h.accept(this);
+   }
+
+   private void e(bmc $$0) {
+      this.a($$0.b()).remove($$0);
+      this.c.remove($$0.a());
+      this.d.remove($$0);
+      this.d();
+   }
+
+   public void b(UUID $$0) {
+      bmc $$1 = this.a($$0);
+      if ($$1 != null) {
+         this.e($$1);
+      }
+   }
+
+   public boolean c(UUID $$0) {
+      bmc $$1 = this.a($$0);
+      if ($$1 != null && this.d.contains($$1)) {
+         this.e($$1);
          return true;
       } else {
          return false;
       }
    }
 
-   protected void d(alq $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(alq $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
+   public void e() {
+      for (bmc $$0 : this.c()) {
+         this.e($$0);
       }
    }
 
-   protected void c(alq $$0, E $$1, long $$2) {
+   public double f() {
+      if (this.f) {
+         this.g = this.h();
+         this.f = false;
+      }
+
+      return this.g;
    }
 
-   @Override
-   public final void g(alq $$0, E $$1, long $$2) {
-      this.c = bma.a.a;
-      this.b($$0, $$1, $$2);
+   private double h() {
+      double $$0 = this.b();
+
+      for (bmc $$1 : this.b(bmc.a.a)) {
+         $$0 += $$1.c();
+      }
+
+      double $$2 = $$0;
+
+      for (bmc $$3 : this.b(bmc.a.b)) {
+         $$2 += $$0 * $$3.c();
+      }
+
+      for (bmc $$4 : this.b(bmc.a.c)) {
+         $$2 *= 1.0 + $$4.c();
+      }
+
+      return this.a.a($$2);
    }
 
-   protected void b(alq $$0, E $$1, long $$2) {
+   private Collection<bmc> b(bmc.a $$0) {
+      return this.b.getOrDefault($$0, Collections.emptySet());
    }
 
-   protected boolean a(alq $$0, E $$1, long $$2) {
-      return false;
+   public void a(bma $$0) {
+      this.e = $$0.e;
+      this.c.clear();
+      this.c.putAll($$0.c);
+      this.d.clear();
+      this.d.addAll($$0.d);
+      this.b.clear();
+      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).addAll($$1));
+      this.d();
    }
 
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
+   public rz g() {
+      rz $$0 = new rz();
+      $$0.a("Name", jy.v.b(this.a).toString());
+      $$0.a("Base", this.e);
+      if (!this.d.isEmpty()) {
+         sf $$1 = new sf();
+
+         for (bmc $$2 : this.d) {
+            $$1.add($$2.d());
+         }
+
+         $$0.a("Modifiers", $$1);
+      }
+
+      return $$0;
    }
 
-   protected boolean a(alq $$0, E $$1) {
-      return true;
-   }
+   public void a(rz $$0) {
+      this.e = $$0.k("Base");
+      if ($$0.b("Modifiers", 9)) {
+         sf $$1 = $$0.c("Modifiers", 10);
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<btk<?>, btl> $$1 : this.b.entrySet()) {
-         btk<?> $$2 = $$1.getKey();
-         btl $$3 = $$1.getValue();
-         if (!$$0.dN().a($$2, $$3)) {
-            return false;
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bmc $$3 = bmc.a($$1.a($$2));
+            if ($$3 != null) {
+               this.c.put($$3.a(), $$3);
+               this.a($$3.b()).add($$3);
+               this.d.add($$3);
+            }
          }
       }
 
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b;
+      this.d();
    }
 }

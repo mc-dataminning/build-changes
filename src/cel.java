@@ -1,45 +1,82 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class cel {
-   private final cek a;
-   private final List<cel.a> b = Lists.newArrayList();
-
-   public cel(cek $$0) {
-      this.a = $$0;
+public abstract class cel extends cee {
+   protected cel(bkm<? extends cel> $$0, crs $$1) {
+      super($$0, $$1);
    }
 
-   public cel a(int $$0, cei $$1) {
-      this.b.add(new cel.a($$0, $$1));
-      return this;
+   protected cel(bkm<? extends cel> $$0, double $$1, double $$2, double $$3, crs $$4) {
+      this($$0, $$4);
+      this.e($$1, $$2, $$3);
    }
 
-   public cek a() {
-      this.b.stream().map(cel.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cei $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   protected cel(bkm<? extends cel> $$0, bky $$1, crs $$2) {
+      this($$0, $$1.dq(), $$1.du() - 0.1F, $$1.dw(), $$2);
+      this.b((bki)$$1);
    }
 
-   static class a {
-      private final int a;
-      private final cei b;
-
-      public a(int $$0, cei $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cG().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
       }
 
-      public int a() {
-         return this.a;
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      ejg $$0 = cef.a(this, this::a);
+      boolean $$1 = false;
+      if ($$0.c() == ejg.a.b) {
+         ht $$2 = ((eje)$$0).a();
+         dgw $$3 = this.dL().a_($$2);
+         if ($$3.a(cuv.ed)) {
+            this.f($$2);
+            $$1 = true;
+         } else if ($$3.a(cuv.kF)) {
+            der $$4 = this.dL().c_($$2);
+            if ($$4 instanceof dgg && dgg.a(this)) {
+               dgg.a(this.dL(), $$2, $$3, this, (dgg)$$4);
+            }
+
+            $$1 = true;
+         }
       }
 
-      public cei b() {
-         return this.b;
+      if ($$0.c() != ejg.a.a && !$$1) {
+         this.a($$0);
       }
+
+      this.aO();
+      eji $$5 = this.do();
+      double $$6 = this.dq() + $$5.c;
+      double $$7 = this.ds() + $$5.d;
+      double $$8 = this.dw() + $$5.e;
+      this.H();
+      float $$11;
+      if (this.aX()) {
+         for (int $$9 = 0; $$9 < 4; $$9++) {
+            float $$10 = 0.25F;
+            this.dL().a(js.e, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
+         }
+
+         $$11 = 0.8F;
+      } else {
+         $$11 = 0.99F;
+      }
+
+      this.f($$5.a((double)$$11));
+      if (!this.aT()) {
+         eji $$13 = this.do();
+         this.o($$13.c, $$13.d - (double)this.w(), $$13.e);
+      }
+
+      this.e($$6, $$7, $$8);
+   }
+
+   protected float w() {
+      return 0.03F;
    }
 }

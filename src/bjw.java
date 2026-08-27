@@ -1,71 +1,47 @@
-import com.google.common.base.Predicates;
-import java.util.function.Predicate;
+import java.util.List;
 import javax.annotation.Nullable;
 
 public final class bjw {
-   public static final Predicate<bjt> a = bjt::bv;
-   public static final Predicate<bjt> b = $$0 -> $$0.bv() && $$0 instanceof bkj;
-   public static final Predicate<bjt> c = $$0 -> $$0.bv() && !$$0.bO() && !$$0.bN();
-   public static final Predicate<bjt> d = $$0 -> $$0 instanceof bhu && $$0.bv();
-   public static final Predicate<bjt> e = $$0 -> !($$0 instanceof ccx) || !$$0.N_() && !((ccx)$$0).f();
-   public static final Predicate<bjt> f = $$0 -> !$$0.N_();
-   public static final Predicate<bjt> g = f.and(bjt::bx);
-
-   private bjw() {
+   public static ur a(bjv $$0, float $$1) {
+      if ($$0.b()) {
+         return ur.c("effect.duration.infinite");
+      } else {
+         int $$2 = ati.d((float)$$0.d() * $$1);
+         return ur.b(auc.a($$2));
+      }
    }
 
-   public static Predicate<bjt> a(double $$0, double $$1, double $$2, double $$3) {
-      double $$4 = $$3 * $$3;
-      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
+   public static boolean a(bky $$0) {
+      return $$0.a(bjx.c) || $$0.a(bjx.C);
    }
 
-   public static Predicate<bjt> a(bjt $$0) {
-      ejg $$1 = $$0.cf();
-      ejg.a $$2 = $$1 == null ? ejg.a.a : $$1.l();
-      return (Predicate<bjt>)($$2 == ejg.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
-         if (!$$3.bs()) {
-            return false;
-         } else if (!$$0.dL().B || $$3 instanceof ccx && ((ccx)$$3).g()) {
-            ejg $$4 = $$3.cf();
-            ejg.a $$5 = $$4 == null ? ejg.a.a : $$4.l();
-            if ($$5 == ejg.a.b) {
-               return false;
-            } else {
-               boolean $$6 = $$1 != null && $$1.a($$4);
-               return ($$2 == ejg.a.d || $$5 == ejg.a.d) && $$6 ? false : $$2 != ejg.a.c && $$5 != ejg.a.c || $$6;
-            }
-         } else {
-            return false;
-         }
-      }));
-   }
-
-   public static Predicate<bjt> b(bjt $$0) {
-      return $$1 -> {
-         while ($$1.bN()) {
-            $$1 = $$1.cY();
-            if ($$1 == $$0) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-   }
-
-   public static class a implements Predicate<bjt> {
-      private final ckj a;
-
-      public a(ckj $$0) {
-         this.a = $$0;
+   public static int b(bky $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      if ($$0.a(bjx.c)) {
+         $$1 = $$0.b(bjx.c).e();
       }
 
-      public boolean a(@Nullable bjt $$0) {
-         if (!$$0.bv()) {
-            return false;
-         } else {
-            return !($$0 instanceof bkj $$1) ? false : $$1.f(this.a);
-         }
+      if ($$0.a(bjx.C)) {
+         $$2 = $$0.b(bjx.C).e();
       }
+
+      return Math.max($$1, $$2);
+   }
+
+   public static boolean c(bky $$0) {
+      return $$0.a(bjx.m) || $$0.a(bjx.C);
+   }
+
+   public static List<amb> a(ama $$0, @Nullable bki $$1, eji $$2, double $$3, bjv $$4, int $$5) {
+      bjt $$6 = $$4.c();
+      List<amb> $$7 = $$0.a(
+         $$6x -> $$6x.e.d()
+               && ($$1 == null || !$$1.s($$6x))
+               && $$2.a((im)$$6x.dj(), $$3)
+               && (!$$6x.a($$6) || $$6x.b($$6).e() < $$4.e() || $$6x.b($$6).a($$5 - 1))
+      );
+      $$7.forEach($$2x -> $$2x.b(new bjv($$4), $$1));
+      return $$7;
    }
 }

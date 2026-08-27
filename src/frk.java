@@ -1,111 +1,166 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.io.Reader;
+import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class frk extends fro {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final eif k = new eif(0.0, -0.32F, 0.073F);
-   private final Map<dho, frk.a> l;
+public class frk {
+   private final Map<String, frr> a = Maps.newLinkedHashMap();
+   private frw b;
 
-   public frk(frb.a $$0) {
-      super($$0);
-      this.l = dho.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new frk.a($$0.a(fiv.b($$1)))));
+   public static frk a(frk.a $$0, Reader $$1) {
+      return asy.a($$0.a, $$1, frk.class);
    }
 
-   @Override
-   public float b() {
-      return 1.0F;
+   public static frk a(frk.a $$0, JsonElement $$1) {
+      return (frk)$$0.a.fromJson($$1, frk.class);
    }
 
-   @Override
-   public float c() {
-      return 0.9F;
+   public frk(Map<String, frr> $$0, frw $$1) {
+      this.b = $$1;
+      this.a.putAll($$0);
    }
 
-   @Override
-   public void a(dff $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
-      dgb $$6 = $$0.q();
-      day $$7 = (day)$$6.b();
-      dho $$8 = day.a($$7);
-      frk.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
+   public frk(List<frk> $$0) {
+      frk $$1 = null;
 
-   @Override
-   void a(emh $$0, float $$1, dgb $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
+      for (frk $$2 : $$0) {
+         if ($$2.c()) {
+            this.a.clear();
+            $$1 = $$2;
+         }
 
-   @Override
-   void a(emh $$0, int $$1, int $$2, fgt $$3, eml $$4) {
-      frk.a $$5 = (frk.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   @Override
-   gce a(dho $$0) {
-      return fpp.b($$0);
-   }
-
-   @Override
-   eif d() {
-      return k;
-   }
-
-   public static fjc e() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      $$1.a("board", fjb.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fiy.a);
-      $$1.a("plank", fjb.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fiy.a);
-      fjf $$2 = $$1.a("normalChains", fjb.c(), fiy.a);
-      $$2.a("chainL1", fjb.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fiy.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", fjb.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fiy.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", fjb.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fiy.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", fjb.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fiy.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", fjb.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fiy.a);
-      return fjc.a($$0, 64, 32);
-   }
-
-   public static final class a extends fgt {
-      public final fiw a;
-      public final fiw b;
-      public final fiw c;
-      public final fiw d;
-
-      public a(fiw $$0) {
-         super(fpj::e);
-         this.a = $$0;
-         this.b = $$0.b("plank");
-         this.d = $$0.b("normalChains");
-         this.c = $$0.b("vChains");
+         this.a.putAll($$2.a);
       }
 
-      public void a(dgb $$0) {
-         boolean $$1 = !($$0.b() instanceof cuz);
-         this.b.k = $$1;
-         this.c.k = false;
-         this.d.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(dgr.a);
-            this.d.k = !$$2;
-            this.c.k = $$2;
+      if ($$1 != null) {
+         this.b = $$1.b;
+      }
+   }
+
+   @VisibleForTesting
+   public boolean a(String $$0) {
+      return this.a.get($$0) != null;
+   }
+
+   @VisibleForTesting
+   public frr b(String $$0) {
+      frr $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new frk.c();
+      } else {
+         return $$1;
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof frk $$1 && this.a.equals($$1.a)) {
+            return this.c() ? this.b.equals($$1.b) : !$$1.c();
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
+   }
+
+   public Map<String, frr> a() {
+      return this.a;
+   }
+
+   @VisibleForTesting
+   public Set<frr> b() {
+      Set<frr> $$0 = Sets.newHashSet(this.a.values());
+      if (this.c()) {
+         $$0.addAll(this.b.b());
+      }
+
+      return $$0;
+   }
+
+   public boolean c() {
+      return this.b != null;
+   }
+
+   public frw d() {
+      return this.b;
+   }
+
+   public static final class a {
+      protected final Gson a = new GsonBuilder()
+         .registerTypeAdapter(frk.class, new frk.b())
+         .registerTypeAdapter(frs.class, new frs.a())
+         .registerTypeAdapter(frr.class, new frr.a())
+         .registerTypeAdapter(frw.class, new frw.a(this))
+         .registerTypeAdapter(fry.class, new fry.a())
+         .create();
+      private dgx<cut, dgw> b;
+
+      public dgx<cut, dgw> a() {
+         return this.b;
+      }
+
+      public void a(dgx<cut, dgw> $$0) {
+         this.b = $$0;
+      }
+   }
+
+   public static class b implements JsonDeserializer<frk> {
+      public frk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Map<String, frr> $$4 = this.a($$2, $$3);
+         frw $$5 = this.b($$2, $$3);
+         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
+            return new frk($$4, $$5);
+         } else {
+            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
          }
       }
 
-      @Override
-      public void a(emh $$0, eml $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      protected Map<String, frr> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<String, frr> $$2 = Maps.newHashMap();
+         if ($$1.has("variants")) {
+            JsonObject $$3 = asy.u($$1, "variants");
+
+            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+               $$2.put($$4.getKey(), (frr)$$0.deserialize($$4.getValue(), frr.class));
+            }
+         }
+
+         return $$2;
       }
+
+      @Nullable
+      protected frw b(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("multipart")) {
+            return null;
+         } else {
+            JsonArray $$2 = asy.v($$1, "multipart");
+            return (frw)$$0.deserialize($$2, frw.class);
+         }
+      }
+   }
+
+   protected class c extends RuntimeException {
    }
 }

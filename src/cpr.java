@@ -1,25 +1,20 @@
-public class cpr extends cot {
-   public cpr(cot.a $$0, bjy... $$1) {
-      super($$0, cou.n, $$1);
+public class cpr extends cpm {
+   protected cpr(cpm.a $$0, bkn... $$1) {
+      super($$0, cpn.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 10 + 20 * ($$0 - 1);
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return super.a($$0) + 50;
    }
 
    @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
+   public int a() {
+      return 2;
    }
 }

@@ -1,30 +1,39 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
-public class axy extends DataFix {
+public class axy extends azn {
+   private static final int a = 6;
+   private static final ato b = ato.a();
+
    public axy(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "EntityZombieVillagerTypeFix", ban.x, "Zombie");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(baa.C);
-      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), axy::a));
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("IsVillager").asBoolean(false)) {
+         if ($$0.get("ZombieType").result().isEmpty()) {
+            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
+            if ($$1 == -1) {
+               $$1 = this.a(b.a(6));
+            }
+
+            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
+         }
+
+         $$0 = $$0.remove("IsVillager");
+      }
+
+      return $$0;
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(axy::c)).result().orElse(false);
-      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", axy::b);
+   private int a(int $$0) {
+      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
-   }
-
-   private static boolean c(Dynamic<?> $$0) {
-      return $$0.get("id").asString("").equals("Iglu");
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

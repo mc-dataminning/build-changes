@@ -1,32 +1,19 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class baw extends azc {
-   private static final double a = 16.0;
-   private static final double b = 48.0;
-
-   public baw(Schema $$0) {
-      super($$0, false, "Villager Follow Range Fix", baa.x, "minecraft:villager");
+public abstract class baw extends axm {
+   public baw(String $$0, Schema $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), baw::a);
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      Pair<String, Dynamic<?>> $$2 = this.a($$0, (Dynamic<?>)$$1.getOrCreate(DSL.remainderFinder()));
+      return Pair.of((String)$$2.getFirst(), $$1.set(DSL.remainderFinder(), (Dynamic)$$2.getSecond()));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         "Attributes",
-         $$1 -> $$0.createList(
-               $$1.asStream()
-                  .map(
-                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
-                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
-                           : $$0xx
-                  )
-            )
-      );
-   }
+   protected abstract Pair<String, Dynamic<?>> a(String var1, Dynamic<?> var2);
 }

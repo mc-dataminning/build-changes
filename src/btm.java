@@ -1,60 +1,64 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.EnumSet;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class btm {
-   private static final btm a = new btm();
-   private final List<bkj> b;
-   private final Predicate<bkj> c;
+public class btm<T extends bky> extends btt {
+   private static final int i = 10;
+   protected final Class<T> a;
+   protected final int b;
+   @Nullable
+   protected bky c;
+   protected bvk d;
 
-   private btm() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+   public btm(bla $$0, Class<T> $$1, boolean $$2) {
+      this($$0, $$1, 10, $$2, false, null);
    }
 
-   public btm(bkj $$0, List<bkj> $$1) {
-      this.b = $$1;
-      Object2BooleanOpenHashMap<bkj> $$2 = new Object2BooleanOpenHashMap($$1.size());
-      Predicate<bkj> $$3 = $$1x -> buo.b($$0, $$1x);
-      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
+   public btm(bla $$0, Class<T> $$1, boolean $$2, Predicate<bky> $$3) {
+      this($$0, $$1, 10, $$2, false, $$3);
    }
 
-   public static btm a() {
-      return a;
+   public btm(bla $$0, Class<T> $$1, boolean $$2, boolean $$3) {
+      this($$0, $$1, 10, $$2, $$3, null);
    }
 
-   public Optional<bkj> a(Predicate<bkj> $$0) {
-      for (bkj $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
-         }
+   public btm(bla $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bky> $$5) {
+      super($$0, $$3, $$4);
+      this.a = $$1;
+      this.b = b($$2);
+      this.a(EnumSet.of(brt.a.d));
+      this.d = bvk.a().a(this.l()).a($$5);
+   }
+
+   @Override
+   public boolean a() {
+      if (this.b > 0 && this.e.ef().a(this.b) != 0) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
       }
-
-      return Optional.empty();
    }
 
-   public Iterable<bkj> b(Predicate<bkj> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   protected ejd a(double $$0) {
+      return this.e.cG().c($$0, 4.0, $$0);
    }
 
-   public Stream<bkj> c(Predicate<bkj> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public boolean a(bkj $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
-
-   public boolean d(Predicate<bkj> $$0) {
-      for (bkj $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
-         }
+   protected void h() {
+      if (this.a != cdm.class && this.a != amb.class) {
+         this.c = this.e.dL().a(this.e.dL().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.dq(), this.e.du(), this.e.dw());
+      } else {
+         this.c = this.e.dL().a(this.d, this.e, this.e.dq(), this.e.du(), this.e.dw());
       }
+   }
 
-      return false;
+   @Override
+   public void c() {
+      this.e.h(this.c);
+      super.c();
+   }
+
+   public void a(@Nullable bky $$0) {
+      this.c = $$0;
    }
 }

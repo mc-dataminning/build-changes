@@ -1,48 +1,8 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class bgp<E extends bgn> {
-   private final int a;
-   private final ImmutableList<E> b;
-
-   bgp(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = bgo.a($$0);
-   }
-
-   public static <E extends bgn> bgp<E> c() {
-      return new bgp<>(ImmutableList.of());
-   }
-
-   @SafeVarargs
-   public static <E extends bgn> bgp<E> a(E... $$0) {
-      return new bgp<>(ImmutableList.copyOf($$0));
-   }
-
-   public static <E extends bgn> bgp<E> a(List<E> $$0) {
-      return new bgp<>($$0);
-   }
-
-   public boolean d() {
-      return this.b.isEmpty();
-   }
-
-   public Optional<E> b(ate $$0) {
-      if (this.a == 0) {
-         return Optional.empty();
-      } else {
-         int $$1 = $$0.a(this.a);
-         return bgo.a(this.b, $$1);
-      }
-   }
-
-   public List<E> e() {
-      return this.b;
-   }
-
-   public static <E extends bgn> Codec<bgp<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(bgp::a, bgp::e);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bgp {
 }

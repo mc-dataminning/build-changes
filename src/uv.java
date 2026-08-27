@@ -1,64 +1,159 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import java.util.BitSet;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import org.apache.commons.lang3.StringUtils;
 
 public class uv {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final uu[] c;
+   public static final Codec<uv> a = aub.a(uv.a::values).dispatch(uv::c, uv.a::a);
+   public static final uv b = new uv(new BitSet(0), uv.a.b);
+   public static final uv c = new uv(new BitSet(0), uv.a.a);
+   public static final vo d = vo.a.a(n.i).a(new ux(ux.a.a, ur.c("chat.filtered")));
+   static final Codec<uv> e = Codec.unit(c);
+   static final Codec<uv> f = Codec.unit(b);
+   static final Codec<uv> g = asq.s.xmap(uv::new, uv::d);
+   private static final char h = '#';
+   private final BitSet i;
+   private final uv.a j;
+
+   private uv(BitSet $$0, uv.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
+
+   private uv(BitSet $$0) {
+      this.i = $$0;
+      this.j = uv.a.c;
+   }
 
    public uv(int $$0) {
-      this.c = new uu[$$0];
+      this(new BitSet($$0), uv.a.c);
    }
 
-   public static uv a() {
-      return new uv(128);
+   private uv.a c() {
+      return this.j;
    }
 
-   public int a(uu $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
-         }
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static uv a(tu $$0) {
+      uv.a $$1 = $$0.b(uv.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new uv($$0.z(), uv.a.c);
+      };
+   }
+
+   public static void a(tu $$0, uv $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == uv.a.c) {
+         $$0.a($$1.i);
       }
+   }
 
-      return -1;
+   public void a(int $$0) {
+      this.i.set($$0);
    }
 
    @Nullable
-   public uu a(int $$0) {
-      return this.c[$$0];
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
+               }
+            }
+
+            yield new String($$1);
+         }
+      };
    }
 
-   public void a(uy $$0) {
-      List<uu> $$1 = $$0.l().d().a();
-      ArrayDeque<uu> $$2 = new ArrayDeque<>($$1.size() + 1);
-      $$2.addAll($$1);
-      uu $$3 = $$0.k();
-      if ($$3 != null) {
-         $$2.add($$3);
+   @Nullable
+   public ur b(String $$0) {
+      return switch (this.j) {
+         case a -> ur.b($$0);
+         case b -> null;
+         case c -> {
+            vf $$1 = ur.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(ur.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
+   }
+
+   public boolean a() {
+      return this.j == uv.a.a;
+   }
+
+   public boolean b() {
+      return this.j == uv.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         uv $$1 = (uv)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
+   }
+
+   static enum a implements aub {
+      a("pass_through", () -> uv.e),
+      b("fully_filtered", () -> uv.f),
+      c("partially_filtered", () -> uv.g);
+
+      private final String d;
+      private final Supplier<Codec<uv>> e;
+
+      private a(String $$0, Supplier<Codec<uv>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      this.a($$2);
-   }
+      @Override
+      public String c() {
+         return this.d;
+      }
 
-   @VisibleForTesting
-   void a(List<uu> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
-
-   private void a(ArrayDeque<uu> $$0) {
-      Set<uu> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         uu $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
-         }
+      private Codec<uv> a() {
+         return this.e.get();
       }
    }
 }

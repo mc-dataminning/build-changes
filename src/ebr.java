@@ -1,143 +1,77 @@
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public class ebr {
-   public final int a;
-   public final int b;
-   public final int c;
-   private final int m;
-   public int d = -1;
-   public float e;
-   public float f;
-   public float g;
-   @Nullable
-   public ebr h;
-   public boolean i;
-   public float j;
-   public float k;
-   public ebp l = ebp.a;
+public abstract class ebr<M extends ebr<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final diy[] d = new diy[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<diy> a;
 
-   public ebr(int $$0, int $$1, int $$2) {
+   protected ebr(Long2ObjectOpenHashMap<diy> $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.m = b($$0, $$1, $$2);
+      this.c();
+      this.e = true;
    }
 
-   public ebr a(int $$0, int $$1, int $$2) {
-      ebr $$3 = new ebr($$0, $$1, $$2);
-      $$3.d = this.d;
-      $$3.e = this.e;
-      $$3.f = this.f;
-      $$3.g = this.g;
-      $$3.h = this.h;
-      $$3.i = this.i;
-      $$3.j = this.j;
-      $$3.k = this.k;
-      $$3.l = this.l;
-      return $$3;
-   }
+   public abstract M b();
 
-   public static int b(int $$0, int $$1, int $$2) {
-      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
-   }
-
-   public float a(ebr $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return asy.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float b(ebr $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.c - this.c);
-      return asy.c($$1 * $$1 + $$2 * $$2);
-   }
-
-   public float a(ht $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return asy.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float c(ebr $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float b(ht $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float d(ebr $$0) {
-      float $$1 = (float)Math.abs($$0.a - this.a);
-      float $$2 = (float)Math.abs($$0.b - this.b);
-      float $$3 = (float)Math.abs($$0.c - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public float c(ht $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.a);
-      float $$2 = (float)Math.abs($$0.v() - this.b);
-      float $$3 = (float)Math.abs($$0.w() - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public ht a() {
-      return new ht(this.a, this.b, this.c);
-   }
-
-   public eif b() {
-      return new eif((double)this.a, (double)this.b, (double)this.c);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof ebr $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.m;
-   }
-
-   public boolean c() {
-      return this.d >= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
-   }
-
-   public void a(tl $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      $$0.a(this.g);
-   }
-
-   public static ebr b(tl $$0) {
-      ebr $$1 = new ebr($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
+   public diy a(long $$0) {
+      diy $$1 = ((diy)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
       return $$1;
    }
 
-   protected static void a(tl $$0, ebr $$1) {
-      $$1.j = $$0.readFloat();
-      $$1.k = $$0.readFloat();
-      $$1.i = $$0.readBoolean();
-      $$1.l = $$0.b(ebp.class);
-      $$1.g = $$0.readFloat();
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   @Nullable
+   public diy c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
+         }
+      }
+
+      diy $$2 = (diy)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
+
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
+
+         return $$2;
+      }
+   }
+
+   @Nullable
+   public diy d(long $$0) {
+      return (diy)this.a.remove($$0);
+   }
+
+   public void a(long $$0, diy $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
+      }
+   }
+
+   public void d() {
+      this.e = false;
    }
 }

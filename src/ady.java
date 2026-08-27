@@ -1,29 +1,32 @@
-public enum ady {
-   a,
-   b;
+public class ady implements wk<acj> {
+   private final int a;
+   private final clb b;
 
-   private static final int c = 1;
-   private static final int d = 2;
+   public ady(int $$0, clb $$1) {
+      this.a = $$0;
+      this.b = $$1.p();
+   }
 
-   public static ady a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public void a(acj $$0) {
+      $$0.a(this);
+   }
+
+   public ady(tu $$0) {
+      this.a = $$0.readShort();
+      this.b = $$0.r();
+   }
+
+   @Override
+   public void a(tu $$0) {
+      $$0.l(this.a);
+      $$0.a(this.b);
    }
 
    public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-      };
+      return this.a;
    }
 
-   public tk b() {
-      return switch (this) {
-         case a -> tk.c;
-         case b -> tk.d;
-      };
+   public clb d() {
+      return this.b;
    }
 }

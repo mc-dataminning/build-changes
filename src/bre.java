@@ -1,57 +1,62 @@
 import java.util.EnumSet;
 
-public abstract class bre {
-   private final EnumSet<bre.a> a = EnumSet.noneOf(bre.a.class);
+public class bre extends brt {
+   private final blh a;
 
-   public abstract boolean a();
+   public bre(blh $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(brt.a.a, brt.a.b));
+   }
 
+   @Override
+   public boolean a() {
+      return this.a.ch() < 140;
+   }
+
+   @Override
    public boolean b() {
       return this.a();
    }
 
+   @Override
    public boolean Q_() {
-      return true;
-   }
-
-   public void c() {
-   }
-
-   public void d() {
-   }
-
-   public boolean R_() {
       return false;
    }
 
-   public void e() {
+   @Override
+   public void c() {
+      this.h();
    }
 
-   public void a(EnumSet<bre.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   private void h() {
+      Iterable<ht> $$0 = ht.b(
+         ati.a(this.a.dq() - 1.0), this.a.dr(), ati.a(this.a.dw() - 1.0), ati.a(this.a.dq() + 1.0), ati.a(this.a.ds() + 8.0), ati.a(this.a.dw() + 1.0)
+      );
+      ht $$1 = null;
+
+      for (ht $$2 : $$0) {
+         if (this.a(this.a.dL(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = ht.a(this.a.dq(), this.a.ds() + 8.0, this.a.dw());
+      }
+
+      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public void e() {
+      this.h();
+      this.a.a(0.02F, new eji((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
+      this.a.a(ble.a, this.a.do());
    }
 
-   public EnumSet<bre.a> j() {
-      return this.a;
-   }
-
-   protected int a(int $$0) {
-      return this.R_() ? $$0 : b($$0);
-   }
-
-   protected static int b(int $$0) {
-      return asy.e($$0, 2);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   private boolean a(crv $$0, ht $$1) {
+      dgw $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(cuv.nd)) && $$2.a($$0, $$1, ecw.a);
    }
 }

@@ -1,41 +1,62 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dtu extends dtt {
-   public static final Codec<dtu> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dtu::new));
+public class dtu extends dto {
+   public static final Codec<dtu> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dto.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bhv.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dtu::new)
+   );
+   private final dto c;
+   private final String d;
+   @Nullable
+   private dhw e;
+   private final bhv f;
 
-   public dtu(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+   public dtu(dto $$0, dhw $$1, bhv $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   @Override
-   protected dtx<?> a() {
-      return dtx.d;
-   }
-
-   @Override
-   public List<dse.a> a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, int $$3, ht $$4, dro $$5) {
-      List<dse.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + asy.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + asy.a($$8) * (float)$$11);
-            ht $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
          }
+      }
+   }
 
-         $$6.add(new dse.a($$4.b($$9, $$7, $$10), -2, false));
+   public dtu(dto $$0, String $$1, bhv $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   protected dtp<?> a() {
+      return dtp.g;
+   }
+
+   @Override
+   public dgw a(ato $$0, ht $$1) {
+      dgw $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
       }
 
-      return $$6;
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   private static dhw a(dgw $$0, String $$1) {
+      Collection<dhz<?>> $$2 = $$0.B();
+      Optional<dhw> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dhw).map($$0x -> (dhw)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

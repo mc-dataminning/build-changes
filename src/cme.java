@@ -1,46 +1,24 @@
-import javax.annotation.Nullable;
-
-public class cme extends cke {
-   public cme(cke.a $$0) {
+public class cme extends ckw {
+   public cme(ckw.a $$0) {
       super($$0);
    }
 
    @Override
-   public bib a(cmt $$0) {
-      cqz $$1 = $$0.q();
-      ht $$2 = $$0.a();
-      dgb $$3 = $$1.a_($$2);
-      if ($$3.a(cuc.oa)) {
-         return cyj.a($$0.o(), $$1, $$2, $$3, $$0.n()) ? bib.a($$1.B) : bib.d;
-      } else {
-         return bib.d;
+   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
+      clb $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqn.wR, aqo.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cei $$4 = new cei($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
-   }
 
-   @Override
-   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
-      ckj $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(aqn.c.b(this));
-      return bic.a($$3, $$0.x_());
-   }
-
-   public static boolean a(@Nullable rt $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$0.b("pages", 9)) {
-         return false;
-      } else {
-         rz $$1 = $$0.c("pages", 8);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            String $$3 = $$1.j($$2);
-            if ($$3.length() > 32767) {
-               return false;
-            }
-         }
-
-         return true;
+      $$1.b(aqx.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
       }
+
+      return bir.a($$3, $$0.x_());
    }
 }

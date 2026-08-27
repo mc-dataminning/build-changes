@@ -1,24 +1,74 @@
-public class aaj implements wb<xu> {
-   private final ui a;
+import java.util.Set;
 
-   public aaj(ui $$0) {
+public class aaj implements wk<yd> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
+   private final Set<blm> f;
+   private final int g;
+
+   public aaj(double $$0, double $$1, double $$2, float $$3, float $$4, Set<blm> $$5, int $$6) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public aaj(tl $$0) {
-      this.a = $$0.m();
+   public aaj(tu $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      this.f = blm.a($$0.readUnsignedByte());
+      this.g = $$0.n();
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(blm.a(this.f));
+      $$0.c(this.g);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public ui a() {
+   public double a() {
       return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public Set<blm> i() {
+      return this.f;
    }
 }

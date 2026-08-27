@@ -1,23 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record ckb(ib<aqc> b, int c, float d) {
-   public static final Codec<ckb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aqc.b.fieldOf("sound_event").forGetter(ckb::a), asg.j.fieldOf("use_duration").forGetter(ckb::b), asg.k.fieldOf("range").forGetter(ckb::c)
-            )
-            .apply($$0, ckb::new)
-   );
-
-   public ib<aqc> a() {
-      return this.b;
+public class ckb extends ckw {
+   public ckb(ckw.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.c;
-   }
+   @Override
+   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
+      clb $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqn.hq, aqo.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      $$1.gn().a(this, 20);
+      if (!$$0.B) {
+         cen $$4 = new cen($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   public float c() {
-      return this.d;
+      $$1.b(aqx.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
+      }
+
+      return bir.a($$3, $$0.x_());
    }
 }

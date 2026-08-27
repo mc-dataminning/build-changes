@@ -81,8 +81,8 @@ public class ij<T> {
       return this.c;
    }
 
-   private static Map<afv<? extends io<?>>, io<?>> a(Stream<? extends ip> $$0) {
-      Map<afv<? extends io<?>>, io<?>> $$1 = new HashMap<>();
+   private static Map<agf<? extends io<?>>, io<?>> a(Stream<? extends ip> $$0) {
+      Map<agf<? extends io<?>>, io<?>> $$1 = new HashMap<>();
       $$0.forEach($$1x -> $$1x.b().forEach($$1xx -> {
             if ($$1.put($$1xx.a(), $$1xx.b()) != null) {
                throw new IllegalStateException("Duplicated registry " + $$1xx.a());

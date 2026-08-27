@@ -1,83 +1,73 @@
-public class zs implements wb<xu> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 8;
-   private final boolean e;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final float i;
-   private final float j;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public zs(ccu $$0) {
-      this.e = $$0.a;
-      this.f = $$0.b;
-      this.g = $$0.c;
-      this.h = $$0.d;
-      this.i = $$0.a();
-      this.j = $$0.b();
-   }
-
-   public zs(tl $$0) {
-      byte $$1 = $$0.readByte();
-      this.e = ($$1 & 1) != 0;
-      this.f = ($$1 & 2) != 0;
-      this.g = ($$1 & 4) != 0;
-      this.h = ($$1 & 8) != 0;
-      this.i = $$0.readFloat();
-      this.j = $$0.readFloat();
+public record zs(int a, boolean b, Set<agf<crs>> c, int d, int e, int f, boolean g, boolean h, boolean i, acg j) implements wk<yd> {
+   public zs(tu $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(jz.aJ)),
+         $$0.n(),
+         $$0.n(),
+         $$0.n(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new acg($$0)
+      );
    }
 
    @Override
-   public void a(tl $$0) {
-      byte $$1 = 0;
-      if (this.e) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.f) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 4);
-      }
-
-      if (this.h) {
-         $$1 = (byte)($$1 | 8);
-      }
-
-      $$0.k($$1);
+   public void a(tu $$0) {
+      $$0.p(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c, tu::b);
+      $$0.c(this.d);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
       $$0.a(this.i);
-      $$0.a(this.j);
+      this.j.a($$0);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public boolean d() {
+      return this.b;
+   }
+
+   public Set<agf<crs>> e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public int g() {
       return this.e;
    }
 
-   public boolean d() {
+   public int h() {
       return this.f;
    }
 
-   public boolean e() {
+   public boolean i() {
       return this.g;
    }
 
-   public boolean f() {
+   public boolean j() {
       return this.h;
    }
 
-   public float g() {
+   public boolean k() {
       return this.i;
    }
 
-   public float h() {
+   public acg l() {
       return this.j;
    }
 }

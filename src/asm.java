@@ -1,42 +1,43 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
-public class asm implements att, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
-   private final Executor d;
-   private volatile boolean e;
+public class asm<T> {
+   private final AtomicReferenceArray<T> a;
+   private final AtomicInteger b;
 
-   public asm(Executor $$0) {
-      this.d = $$1 -> {
-         if (!this.e) {
-            $$0.execute($$1);
-         }
-      };
+   public asm(int $$0) {
+      this.a = new AtomicReferenceArray<>($$0);
+      this.b = new AtomicInteger(0);
    }
 
-   @Override
-   public void append(att.a $$0) {
-      this.c = this.c.thenComposeAsync($$1 -> $$0.submit(this.d), this.d).exceptionally($$0x -> {
-         if ($$0x instanceof CompletionException $$1) {
-            $$0x = $$1.getCause();
-         }
+   public void a(T $$0) {
+      int $$1 = this.a.length();
 
-         if ($$0x instanceof CancellationException $$2) {
-            throw $$2;
-         } else {
-            b.error("Chain link failed, continuing to next one", $$0x);
-            return null;
-         }
-      });
+      int $$2;
+      int $$3;
+      do {
+         $$2 = this.b.get();
+         $$3 = ($$2 + 1) % $$1;
+      } while (!this.b.compareAndSet($$2, $$3));
+
+      this.a.set($$3, $$0);
    }
 
-   @Override
-   public void close() {
-      this.e = true;
+   public List<T> a() {
+      int $$0 = this.b.get();
+      Builder<T> $$1 = ImmutableList.builder();
+
+      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
+         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
+         T $$4 = this.a.get($$3);
+         if ($$4 != null) {
+            $$1.add($$4);
+         }
+      }
+
+      return $$1.build();
    }
 }

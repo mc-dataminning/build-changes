@@ -1,162 +1,255 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public class ddn extends ddx implements bif {
-   public static final int a = 6;
-   public static final String b = "Patterns";
-   public static final String c = "Pattern";
-   public static final String d = "Color";
-   @Nullable
-   private ui e;
-   private cix f;
-   @Nullable
-   private rz g;
-   @Nullable
-   private List<Pair<ib<ddo>, cix>> h;
-
-   public ddn(ht $$0, dgb $$1) {
-      super(ddz.t, $$0, $$1);
-      this.f = ((csq)$$1.b()).b();
-   }
-
-   public ddn(ht $$0, dgb $$1, cix $$2) {
-      this($$0, $$1);
-      this.f = $$2;
-   }
-
-   @Nullable
-   public static rz a(ckj $$0) {
-      rz $$1 = null;
-      rt $$2 = cic.a($$0);
-      if ($$2 != null && $$2.b("Patterns", 9)) {
-         $$1 = $$2.c("Patterns", 10).e();
-      }
-
-      return $$1;
-   }
-
-   public void a(ckj $$0, cix $$1) {
-      this.f = $$1;
-      this.b($$0);
-   }
-
-   public void b(ckj $$0) {
-      this.g = a($$0);
-      this.h = null;
-      this.e = $$0.A() ? $$0.y() : null;
-   }
+public class ddn extends cut implements dbt {
+   public static final MapCodec<ddn> a = b(ddn::new);
+   public static final dhn b = dhm.J;
+   public static final dhu<dii> c = dhm.W;
+   public static final dhu<dii> d = dhm.X;
+   public static final dhu<dii> e = dhm.Y;
+   public static final dhu<dii> f = dhm.Z;
+   public static final dhn g = dhm.C;
+   private final Map<dgw, ekb> h;
+   private final Map<dgw, ekb> i;
+   private static final int j = 3;
+   private static final int k = 14;
+   private static final int l = 4;
+   private static final int m = 1;
+   private static final int n = 7;
+   private static final int o = 9;
+   private static final ekb F = cut.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0);
+   private static final ekb G = cut.a(7.0, 0.0, 0.0, 9.0, 16.0, 9.0);
+   private static final ekb H = cut.a(7.0, 0.0, 7.0, 9.0, 16.0, 16.0);
+   private static final ekb I = cut.a(0.0, 0.0, 7.0, 9.0, 16.0, 9.0);
+   private static final ekb J = cut.a(7.0, 0.0, 7.0, 16.0, 16.0, 9.0);
 
    @Override
-   public ui ab() {
-      return (ui)(this.e != null ? this.e : ui.c("block.minecraft.banner"));
+   public MapCodec<ddn> a() {
+      return a;
    }
 
-   @Nullable
-   @Override
-   public ui ad() {
-      return this.e;
+   public ddn(dgv.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)).a(d, dii.a).a(c, dii.a).a(e, dii.a).a(f, dii.a).a(g, Boolean.valueOf(false)));
+      this.h = this.a(4.0F, 3.0F, 16.0F, 0.0F, 14.0F, 16.0F);
+      this.i = this.a(4.0F, 3.0F, 24.0F, 0.0F, 24.0F, 24.0F);
    }
 
-   public void a(ui $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(rt $$0) {
-      super.b($$0);
-      if (this.g != null) {
-         $$0.a("Patterns", this.g);
-      }
-
-      if (this.e != null) {
-         $$0.a("CustomName", ui.a.a(this.e));
+   private static ekb a(ekb $$0, dii $$1, ekb $$2, ekb $$3) {
+      if ($$1 == dii.c) {
+         return ejy.a($$0, $$3);
+      } else {
+         return $$1 == dii.b ? ejy.a($$0, $$2) : $$0;
       }
    }
 
-   @Override
-   public void a(rt $$0) {
-      super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = ui.a.a($$0.l("CustomName"));
-      }
+   private Map<dgw, ekb> a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 8.0F - $$0;
+      float $$7 = 8.0F + $$0;
+      float $$8 = 8.0F - $$1;
+      float $$9 = 8.0F + $$1;
+      ekb $$10 = cut.a((double)$$6, 0.0, (double)$$6, (double)$$7, (double)$$2, (double)$$7);
+      ekb $$11 = cut.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$4, (double)$$9);
+      ekb $$12 = cut.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$4, 16.0);
+      ekb $$13 = cut.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$4, (double)$$9);
+      ekb $$14 = cut.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$4, (double)$$9);
+      ekb $$15 = cut.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$5, (double)$$9);
+      ekb $$16 = cut.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$5, 16.0);
+      ekb $$17 = cut.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$5, (double)$$9);
+      ekb $$18 = cut.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$5, (double)$$9);
+      Builder<dgw, ekb> $$19 = ImmutableMap.builder();
 
-      this.g = $$0.c("Patterns", 10);
-      this.h = null;
-   }
+      for (Boolean $$20 : b.a()) {
+         for (dii $$21 : c.a()) {
+            for (dii $$22 : d.a()) {
+               for (dii $$23 : f.a()) {
+                  for (dii $$24 : e.a()) {
+                     ekb $$25 = ejy.a();
+                     $$25 = a($$25, $$21, $$14, $$18);
+                     $$25 = a($$25, $$23, $$13, $$17);
+                     $$25 = a($$25, $$22, $$11, $$15);
+                     $$25 = a($$25, $$24, $$12, $$16);
+                     if ($$20) {
+                        $$25 = ejy.a($$25, $$10);
+                     }
 
-   public yb a() {
-      return yb.a(this);
-   }
-
-   @Override
-   public rt av_() {
-      return this.o();
-   }
-
-   public static int c(ckj $$0) {
-      rt $$1 = cic.a($$0);
-      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
-   }
-
-   public List<Pair<ib<ddo>, cix>> c() {
-      if (this.h == null) {
-         this.h = a(this.f, this.g);
-      }
-
-      return this.h;
-   }
-
-   public static List<Pair<ib<ddo>, cix>> a(cix $$0, @Nullable rz $$1) {
-      List<Pair<ib<ddo>, cix>> $$2 = Lists.newArrayList();
-      $$2.add(Pair.of(jy.am.f(ddp.a), $$0));
-      if ($$1 != null) {
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            rt $$4 = $$1.a($$3);
-            ib<ddo> $$5 = ddo.a($$4.l("Pattern"));
-            if ($$5 != null) {
-               int $$6 = $$4.h("Color");
-               $$2.add(Pair.of($$5, cix.a($$6)));
+                     dgw $$26 = this.o().a(b, $$20).a(c, $$21).a(f, $$23).a(d, $$22).a(e, $$24);
+                     $$19.put($$26.a(g, Boolean.valueOf(false)), $$25);
+                     $$19.put($$26.a(g, Boolean.valueOf(true)), $$25);
+                  }
+               }
             }
          }
       }
 
-      return $$2;
+      return $$19.build();
    }
 
-   public static void d(ckj $$0) {
-      rt $$1 = cic.a($$0);
-      if ($$1 != null && $$1.b("Patterns", 9)) {
-         rz $$2 = $$1.c("Patterns", 10);
-         if (!$$2.isEmpty()) {
-            $$2.c($$2.size() - 1);
-            if ($$2.isEmpty()) {
-               $$1.r("Patterns");
-            }
+   @Override
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return this.h.get($$0);
+   }
+
+   @Override
+   public ekb c(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return this.i.get($$0);
+   }
+
+   @Override
+   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
+      return false;
+   }
+
+   private boolean a(dgw $$0, boolean $$1, hx $$2) {
+      cut $$3 = $$0.b();
+      boolean $$4 = $$3 instanceof cxr && cxr.a($$0, $$2);
+      return $$0.a(arc.L) || !j($$0) && $$1 || $$3 instanceof cyt || $$4;
+   }
+
+   @Override
+   public dgw a(cnj $$0) {
+      crv $$1 = $$0.q();
+      ht $$2 = $$0.a();
+      ecg $$3 = $$0.q().b_($$0.a());
+      ht $$4 = $$2.e();
+      ht $$5 = $$2.h();
+      ht $$6 = $$2.f();
+      ht $$7 = $$2.g();
+      ht $$8 = $$2.c();
+      dgw $$9 = $$1.a_($$4);
+      dgw $$10 = $$1.a_($$5);
+      dgw $$11 = $$1.a_($$6);
+      dgw $$12 = $$1.a_($$7);
+      dgw $$13 = $$1.a_($$8);
+      boolean $$14 = this.a($$9, $$9.d($$1, $$4, hx.d), hx.d);
+      boolean $$15 = this.a($$10, $$10.d($$1, $$5, hx.e), hx.e);
+      boolean $$16 = this.a($$11, $$11.d($$1, $$6, hx.c), hx.c);
+      boolean $$17 = this.a($$12, $$12.d($$1, $$7, hx.f), hx.f);
+      dgw $$18 = this.o().a(g, Boolean.valueOf($$3.a() == ech.c));
+      return this.a($$1, $$18, $$8, $$13, $$14, $$15, $$16, $$17);
+   }
+
+   @Override
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      if ($$0.c(g)) {
+         $$3.a($$4, ech.c, ech.c.a($$3));
+      }
+
+      if ($$1 == hx.a) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return $$1 == hx.b ? this.a($$3, $$0, $$5, $$2) : this.a($$3, $$4, $$0, $$5, $$2, $$1);
+      }
+   }
+
+   private static boolean a(dgw $$0, dhz<dii> $$1) {
+      return $$0.c($$1) != dii.a;
+   }
+
+   private static boolean a(ekb $$0, ekb $$1) {
+      return !ejy.c($$1, $$0, ejm.e);
+   }
+
+   private dgw a(crv $$0, dgw $$1, ht $$2, dgw $$3) {
+      boolean $$4 = a($$1, d);
+      boolean $$5 = a($$1, c);
+      boolean $$6 = a($$1, e);
+      boolean $$7 = a($$1, f);
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   private dgw a(crv $$0, ht $$1, dgw $$2, ht $$3, dgw $$4, hx $$5) {
+      hx $$6 = $$5.g();
+      boolean $$7 = $$5 == hx.c ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, d);
+      boolean $$8 = $$5 == hx.f ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, c);
+      boolean $$9 = $$5 == hx.d ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, e);
+      boolean $$10 = $$5 == hx.e ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, f);
+      ht $$11 = $$1.c();
+      dgw $$12 = $$0.a_($$11);
+      return this.a($$0, $$2, $$11, $$12, $$7, $$8, $$9, $$10);
+   }
+
+   private dgw a(crv $$0, dgw $$1, ht $$2, dgw $$3, boolean $$4, boolean $$5, boolean $$6, boolean $$7) {
+      ekb $$8 = $$3.k($$0, $$2).a(hx.a);
+      dgw $$9 = this.a($$1, $$4, $$5, $$6, $$7, $$8);
+      return $$9.a(b, Boolean.valueOf(this.a($$9, $$3, $$8)));
+   }
+
+   private boolean a(dgw $$0, dgw $$1, ekb $$2) {
+      boolean $$3 = $$1.b() instanceof ddn && $$1.c(b);
+      if ($$3) {
+         return true;
+      } else {
+         dii $$4 = $$0.c(d);
+         dii $$5 = $$0.c(e);
+         dii $$6 = $$0.c(c);
+         dii $$7 = $$0.c(f);
+         boolean $$8 = $$5 == dii.a;
+         boolean $$9 = $$7 == dii.a;
+         boolean $$10 = $$6 == dii.a;
+         boolean $$11 = $$4 == dii.a;
+         boolean $$12 = $$11 && $$8 && $$9 && $$10 || $$11 != $$8 || $$9 != $$10;
+         if ($$12) {
+            return true;
+         } else {
+            boolean $$13 = $$4 == dii.c && $$5 == dii.c || $$6 == dii.c && $$7 == dii.c;
+            return $$13 ? false : $$1.a(arc.aN) || a($$2, F);
          }
-
-         $$1.r("id");
-         cic.a($$0, ddz.t, $$1);
       }
    }
 
-   public ckj f() {
-      ckj $$0 = new ckj(ctf.a(this.f));
-      if (this.g != null && !this.g.isEmpty()) {
-         rt $$1 = new rt();
-         $$1.a("Patterns", this.g.e());
-         cic.a($$0, this.u(), $$1);
-      }
-
-      if (this.e != null) {
-         $$0.a(this.e);
-      }
-
-      return $$0;
+   private dgw a(dgw $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4, ekb $$5) {
+      return $$0.a(d, this.a($$1, $$5, G)).a(c, this.a($$2, $$5, J)).a(e, this.a($$3, $$5, H)).a(f, this.a($$4, $$5, I));
    }
 
-   public cix g() {
-      return this.f;
+   private dii a(boolean $$0, ekb $$1, ekb $$2) {
+      if ($$0) {
+         return a($$1, $$2) ? dii.c : dii.b;
+      } else {
+         return dii.a;
+      }
+   }
+
+   @Override
+   public ecg c_(dgw $$0) {
+      return $$0.c(g) ? ech.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean c(dgw $$0, cqy $$1, ht $$2) {
+      return !$$0.c(g);
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(b, d, c, f, e, g);
+   }
+
+   @Override
+   public dgw a(dgw $$0, dbf $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(d, $$0.c(e)).a(c, $$0.c(f)).a(e, $$0.c(d)).a(f, $$0.c(c));
+         case d:
+            return $$0.a(d, $$0.c(c)).a(c, $$0.c(e)).a(e, $$0.c(f)).a(f, $$0.c(d));
+         case b:
+            return $$0.a(d, $$0.c(f)).a(c, $$0.c(d)).a(e, $$0.c(c)).a(f, $$0.c(e));
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   public dgw a(dgw $$0, czp $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(d, $$0.c(e)).a(e, $$0.c(d));
+         case c:
+            return $$0.a(c, $$0.c(f)).a(f, $$0.c(c));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 }

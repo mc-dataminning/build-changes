@@ -1,7 +1,12 @@
-import java.util.function.Consumer;
+public class eea extends RuntimeException {
+   private final ur a;
 
-public interface eea {
-   int a(float var1);
+   public eea(ur $$0) {
+      super($$0.getString());
+      this.a = $$0;
+   }
 
-   void a(Consumer<ckj> var1, edi var2);
+   public ur a() {
+      return this.a;
+   }
 }

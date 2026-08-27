@@ -1,98 +1,89 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cue extends ctm {
-   public static final MapCodec<cue> a = b(cue::new);
-   public static final dgs[] b = new dgs[]{dgr.k, dgr.l, dgr.m};
-   protected static final eiy c = eiv.a(cua.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), cua.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+public class cue extends cub {
+   public static final MapCodec<cue> b = b(cue::new);
+   public static final dhq c = cyo.aE;
+   private static final Map<hx, ekb> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         hx.c,
+         cut.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         hx.d,
+         cut.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         hx.e,
+         cut.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         hx.f,
+         cut.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
 
    @Override
-   public MapCodec<cue> a() {
-      return a;
+   public MapCodec<? extends cue> a() {
+      return b;
    }
 
-   public cue(dga.d $$0) {
+   protected cue(dgv.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
+      this.k(this.E.b().a(c, hx.c).a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public dae b_(dgb $$0) {
-      return dae.c;
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return e.get($$0.c(c));
    }
 
    @Override
-   public ddx a(ht $$0, dgb $$1) {
-      return new dea($$0, $$1);
+   public dgw a(dgw $$0, dbf $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dgw a(dgw $$0, czp $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, ech.c, ech.c.a($$3));
+      }
+
+      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? cuv.a.o() : $$0;
+   }
+
+   @Override
+   public boolean a(dgw $$0, crv $$1, ht $$2) {
+      hx $$3 = $$0.c(c);
+      ht $$4 = $$2.a($$3.g());
+      dgw $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
    }
 
    @Nullable
    @Override
-   public <T extends ddx> ddy<T> a(cqz $$0, dgb $$1, ddz<T> $$2) {
-      return $$0.B ? null : a($$2, ddz.l, dea::a);
-   }
+   public dgw a(cnj $$0) {
+      dgw $$1 = super.a($$0);
+      crv $$2 = $$0.q();
+      ht $$3 = $$0.a();
+      hx[] $$4 = $$0.f();
 
-   @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return c;
-   }
-
-   @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      if ($$1.B) {
-         return bib.a;
-      } else {
-         ddx $$6 = $$1.c_($$2);
-         if ($$6 instanceof dea) {
-            $$3.a((dea)$$6);
-            $$3.a(aqn.aa);
-         }
-
-         return bib.b;
-      }
-   }
-
-   @Override
-   public void a(cqz $$0, ht $$1, dgb $$2, bkj $$3, ckj $$4) {
-      if ($$4.A()) {
-         ddx $$5 = $$0.c_($$1);
-         if ($$5 instanceof dea) {
-            ((dea)$$5).a($$4.y());
+      for (hx $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.a(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
       }
-   }
 
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
-      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
-      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
-      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
-      $$1.a(js.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
-      bhx.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean d_(dgb $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dgb $$0, cqz $$1, ht $$2) {
-      return cfp.a($$1.c_($$2));
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(b[0], b[1], b[2]);
-   }
-
-   @Override
-   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
-      return false;
+      return null;
    }
 }

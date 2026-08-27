@@ -1,23 +1,55 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface cru {
+   int J_();
 
-public class cru {
-   public static final Codec<cru> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aqc.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, cru::new)
-   );
-   private final ib<aqc> b;
-   private final double c;
+   int I_();
 
-   public cru(ib<aqc> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   default int aj() {
+      return this.I_() + this.J_();
    }
 
-   public ib<aqc> a() {
-      return this.b;
+   default int ak() {
+      return this.am() - this.al();
    }
 
-   public double b() {
-      return this.c;
+   default int al() {
+      return iu.a(this.I_());
+   }
+
+   default int am() {
+      return iu.a(this.aj() - 1) + 1;
+   }
+
+   default boolean r(ht $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.I_() || $$0 >= this.aj();
+   }
+
+   default int e(int $$0) {
+      return this.f(iu.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.al();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.al();
+   }
+
+   static cru e(final int $$0, final int $$1) {
+      return new cru() {
+         @Override
+         public int J_() {
+            return $$1;
+         }
+
+         @Override
+         public int I_() {
+            return $$0;
+         }
+      };
    }
 }

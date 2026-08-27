@@ -1,71 +1,74 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.stream.Stream;
-import org.joml.Quaternionf;
+import org.joml.FrustumIntersection;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class ftj extends fuc<ceq> {
-   private final Map<ceq.b, Pair<afw, fgp<ceq>>> a;
+public class ftj {
+   public static final int a = 4;
+   private final FrustumIntersection b = new FrustumIntersection();
+   private final Matrix4f c = new Matrix4f();
+   private Vector4f d;
+   private double e;
+   private double f;
+   private double g;
 
-   public ftj(fud.a $$0, boolean $$1) {
-      super($$0);
-      this.d = 0.8F;
-      this.a = Stream.of(ceq.b.values()).collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$2 -> Pair.of(new afw(a($$2, $$1)), this.a($$0, $$2, $$1))));
+   public ftj(Matrix4f $$0, Matrix4f $$1) {
+      this.a($$0, $$1);
    }
 
-   private fgp<ceq> a(fud.a $$0, ceq.b $$1, boolean $$2) {
-      fiu $$3 = $$2 ? fiv.d($$1) : fiv.c($$1);
-      fiw $$4 = $$0.a($$3);
-      if ($$1 == ceq.b.i) {
-         return (fgp<ceq>)($$2 ? new ffk($$4) : new fhj($$4));
-      } else {
-         return (fgp<ceq>)($$2 ? new ffj($$4) : new fff($$4));
-      }
+   public ftj(ftj $$0) {
+      this.b.set($$0.c);
+      this.c.set($$0.c);
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.d = $$0.d;
    }
 
-   private static String a(ceq.b $$0, boolean $$1) {
-      return $$1 ? "textures/entity/chest_boat/" + $$0.a() + ".png" : "textures/entity/boat/" + $$0.a() + ".png";
+   public ftj a(int $$0) {
+      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
+      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
+      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
+      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
+      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
+
+      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
+         this.b
+               .intersectAab(
+                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
+               )
+            != -2;
+         this.g = this.g - (double)(this.d.z() * 4.0F)
+      ) {
+         this.e = this.e - (double)(this.d.x() * 4.0F);
+         this.f = this.f - (double)(this.d.y() * 4.0F);
+      }
+
+      return this;
    }
 
-   public void a(ceq $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.375F, 0.0F);
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      float $$6 = (float)$$0.N() - $$2;
-      float $$7 = $$0.M() - $$2;
-      if ($$7 < 0.0F) {
-         $$7 = 0.0F;
-      }
-
-      if ($$6 > 0.0F) {
-         $$3.a(a.b.rotationDegrees(asy.a($$6) * $$6 * $$7 / 10.0F * (float)$$0.O()));
-      }
-
-      float $$8 = $$0.a($$2);
-      if (!asy.a($$8, 0.0F)) {
-         $$3.a(new Quaternionf().setAngleAxis($$0.a($$2) * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
-      }
-
-      Pair<afw, fgp<ceq>> $$9 = this.a.get($$0.x());
-      afw $$10 = (afw)$$9.getFirst();
-      fgp<ceq> $$11 = (fgp<ceq>)$$9.getSecond();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      $$11.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      eml $$12 = $$4.getBuffer($$11.a($$10));
-      $$11.a($$3, $$12, $$5, fzr.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      if (!$$0.bc()) {
-         eml $$13 = $$4.getBuffer(fpj.j());
-         if ($$11 instanceof fik $$14) {
-            $$14.c().a($$3, $$13, $$5, fzr.d);
-         }
-      }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(double $$0, double $$1, double $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public afw a(ceq $$0) {
-      return (afw)this.a.get($$0.x()).getFirst();
+   private void a(Matrix4f $$0, Matrix4f $$1) {
+      $$1.mul($$0, this.c);
+      this.b.set(this.c);
+      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   }
+
+   public boolean a(ejd $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   private boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - this.e);
+      float $$7 = (float)($$1 - this.f);
+      float $$8 = (float)($$2 - this.g);
+      float $$9 = (float)($$3 - this.e);
+      float $$10 = (float)($$4 - this.f);
+      float $$11 = (float)($$5 - this.g);
+      return this.b.testAab($$6, $$7, $$8, $$9, $$10, $$11);
    }
 }

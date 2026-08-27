@@ -1,181 +1,29 @@
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+public enum dla {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public abstract class dla {
-   public static dla.b a(int $$0, int $$1) {
-      return new dla.b($$0 - 1, $$1 + 1);
+   private final boolean d;
+   private final boolean e;
+
+   private dla(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static dla.b b(int $$0, int $$1) {
-      return new dla.b($$0, $$1);
+   public boolean a() {
+      return this.e;
    }
 
-   public static dla a(int $$0) {
-      return new dla.c($$0, false);
+   public boolean b() {
+      return this.d;
    }
 
-   public static dla b(int $$0) {
-      return new dla.c($$0 + 1, false);
-   }
-
-   public static dla c(int $$0) {
-      return new dla.c($$0, true);
-   }
-
-   public static dla d(int $$0) {
-      return new dla.c($$0 - 1, true);
-   }
-
-   public static dla a() {
-      return dla.a.a;
-   }
-
-   public static dla a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
+   public static dla a(alt $$0) {
+      if ($$0.a(alt.d)) {
+         return c;
       } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
-      }
-   }
-
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public dla a(OptionalInt $$0) {
-      return a($$0, this.b());
-   }
-
-   public dla b(OptionalInt $$0) {
-      return a(this.c(), $$0);
-   }
-
-   public static Optional<dla> a(crf $$0, ht $$1, int $$2, Predicate<dgb> $$3, Predicate<dgb> $$4) {
-      ht.a $$5 = $$1.j();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, hx.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, hx.a);
-         return Optional.of(a($$8, $$7));
-      }
-   }
-
-   private static OptionalInt a(crf $$0, int $$1, Predicate<dgb> $$2, Predicate<dgb> $$3, ht.a $$4, int $$5, hx $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
-   }
-
-   public static final class a extends dla {
-      static final dla.a a = new dla.a();
-
-      private a() {
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
-   }
-
-   public static final class b extends dla {
-      private final int a;
-      private final int b;
-
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
-         }
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
-      }
-   }
-
-   public static final class c extends dla {
-      private final int a;
-      private final boolean b;
-
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+         return $$0.a(alt.b) ? b : a;
       }
    }
 }

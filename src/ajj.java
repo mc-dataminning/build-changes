@@ -1,65 +1,136 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Unit;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
 public class ajj {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.setblock.failed"));
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<du> $$0, dp $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("setblock").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("resetchunks").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), 0, true)))
             .then(
-               dv.a("pos", fm.a())
+               ((RequiredArgumentBuilder)dv.a("range", IntegerArgumentType.integer(0, 5))
+                     .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
                   .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("block", fj.a($$1))
-                                 .executes($$0x -> a((du)$$0x.getSource(), fm.a($$0x, "pos"), fj.a($$0x, "block"), ajj.b.a, null)))
-                              .then(dv.a("destroy").executes($$0x -> a((du)$$0x.getSource(), fm.a($$0x, "pos"), fj.a($$0x, "block"), ajj.b.b, null))))
-                           .then(
-                              dv.a("keep")
-                                 .executes($$0x -> a((du)$$0x.getSource(), fm.a($$0x, "pos"), fj.a($$0x, "block"), ajj.b.a, $$0xx -> $$0xx.c().t($$0xx.d())))
-                           ))
-                        .then(dv.a("replace").executes($$0x -> a((du)$$0x.getSource(), fm.a($$0x, "pos"), fj.a($$0x, "block"), ajj.b.a, null)))
+                     dv.a("skipOldChunks", BoolArgumentType.bool())
+                        .executes(
+                           $$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
+                        )
                   )
             )
       );
    }
 
-   private static int a(du $$0, ht $$1, fh $$2, ajj.b $$3, @Nullable Predicate<dgf> $$4) throws CommandSyntaxException {
-      alq $$5 = $$0.f();
-      if ($$4 != null && !$$4.test(new dgf($$5, $$1, true))) {
-         throw a.create();
-      } else {
-         boolean $$6;
-         if ($$3 == ajj.b.b) {
-            $$5.b($$1, true);
-            $$6 = !$$2.a().i() || !$$5.a_($$1).i();
-         } else {
-            ddx $$7 = $$5.c_($$1);
-            bhs.a_($$7);
-            $$6 = true;
-         }
+   private static int a(du $$0, int $$1, boolean $$2) {
+      ama $$3 = $$0.f();
+      aly $$4 = $$3.k();
+      $$4.a.d();
+      eji $$5 = $$0.e();
+      cqz $$6 = new cqz(ht.a($$5));
+      int $$7 = $$6.f - $$1;
+      int $$8 = $$6.f + $$1;
+      int $$9 = $$6.e - $$1;
+      int $$10 = $$6.e + $$1;
 
-         if ($$6 && !$$2.a($$5, $$1, 2)) {
-            throw a.create();
-         } else {
-            $$5.b($$1, $$2.a().b());
-            $$0.a(() -> ui.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
+      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
+         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
+            cqz $$13 = new cqz($$12, $$11);
+            djd $$14 = $$4.a($$12, $$11, false);
+            if ($$14 != null && (!$$2 || !$$14.s())) {
+               for (ht $$15 : ht.b($$13.d(), $$3.I_(), $$13.e(), $$13.f(), $$3.aj() - 1, $$13.g())) {
+                  $$3.a($$15, cuv.a.o(), 16);
+               }
+            }
          }
       }
-   }
 
-   public interface a {
-      @Nullable
-      fh filter(dvs var1, ht var2, fh var3, alq var4);
-   }
+      bhj<Runnable> $$16 = bhj.a(ac.f(), "worldgen-resetchunks");
+      long $$17 = System.currentTimeMillis();
+      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
+      UnmodifiableIterator var33 = ImmutableList.of(dix.f, dix.g, dix.h, dix.i, dix.j, dix.k).iterator();
 
-   public static enum b {
-      a,
-      b;
+      while (var33.hasNext()) {
+         dix $$19 = (dix)var33.next();
+         long $$20 = System.currentTimeMillis();
+         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
+
+         for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
+            for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
+               cqz $$24 = new cqz($$23, $$22);
+               djd $$25 = $$4.a($$23, $$22, false);
+               if ($$25 != null && (!$$2 || !$$25.s())) {
+                  List<dis> $$26 = Lists.newArrayList();
+                  int $$27 = Math.max(1, $$19.e());
+
+                  for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
+                     for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
+                        dis $$30 = $$4.a($$29, $$28, $$19.d(), true);
+                        dis $$31;
+                        if ($$30 instanceof djc) {
+                           $$31 = new djc(((djc)$$30).C(), true);
+                        } else if ($$30 instanceof djd) {
+                           $$31 = new djc((djd)$$30, true);
+                        } else {
+                           $$31 = $$30;
+                        }
+
+                        $$26.add($$31);
+                     }
+                  }
+
+                  $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.p(), $$4.a(), $$0xx -> {
+                        throw new UnsupportedOperationException("Not creating full chunks here");
+                     }, $$26).thenApply($$1xx -> {
+                        if ($$19 == dix.g) {
+                           $$1xx.left().ifPresent($$0xxx -> dmf.a($$0xxx, dix.b));
+                        }
+
+                        return Unit.INSTANCE;
+                     }), $$16::a);
+               }
+            }
+         }
+
+         $$0.m().c($$21::isDone);
+         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
+      }
+
+      long $$34 = System.currentTimeMillis();
+
+      for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
+         for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
+            cqz $$37 = new cqz($$36, $$35);
+            djd $$38 = $$4.a($$36, $$35, false);
+            if ($$38 != null && (!$$2 || !$$38.s())) {
+               for (ht $$39 : ht.b($$37.d(), $$3.I_(), $$37.e(), $$37.f(), $$3.aj() - 1, $$37.g())) {
+                  $$4.a($$39);
+               }
+            }
+         }
+      }
+
+      a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
+      long $$40 = System.currentTimeMillis() - $$17;
+      $$0.a(
+         () -> ur.b(
+               String.format(
+                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
+               )
+            ),
+         true
+      );
+      return 1;
    }
 }

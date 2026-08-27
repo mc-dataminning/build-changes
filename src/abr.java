@@ -1,40 +1,24 @@
-public class abr implements wb<xu> {
-   private final int a;
-   private final int b;
-   private final int c;
+public class abr implements wk<yd> {
+   private final ur a;
 
-   public abr(int $$0, int $$1, int $$2) {
+   public abr(ur $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public abr(tl $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
-      this.c = $$0.n();
+   public abr(tu $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public void a(tu $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public ur a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

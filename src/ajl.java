@@ -1,39 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ajl {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ur.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> ur.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> ur.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ur.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ur.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(ur.c("commands.ride.mount.failure.wrong_dimension"));
+
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).i()), ht.a(((du)$$0x.getSource()).e()), 0.0F)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ride").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)dv.a("targets", eg.d())
-                     .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ht.a(((du)$$0x.getSource()).e()), 0.0F)))
-                  .then(
-                     ((RequiredArgumentBuilder)dv.a("pos", fm.a()).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), fm.c($$0x, "pos"), 0.0F)))
-                        .then(dv.a("angle", dz.a()).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), fm.c($$0x, "pos"), dz.a($$0x, "angle"))))
-                  )
+               ((RequiredArgumentBuilder)dv.a("target", eg.a())
+                     .then(dv.a("mount").then(dv.a("vehicle", eg.a()).executes($$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"), eg.a($$0x, "vehicle"))))))
+                  .then(dv.a("dismount").executes($$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"))))
             )
       );
    }
 
-   private static int a(du $$0, Collection<alr> $$1, ht $$2, float $$3) {
-      afv<cqz> $$4 = $$0.f().ac();
-
-      for (alr $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
-      }
-
-      String $$6 = $$4.a().toString();
-      if ($$1.size() == 1) {
-         $$0.a(() -> ui.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().O_()), true);
+   private static int a(du $$0, bki $$1, bki $$2) throws CommandSyntaxException {
+      bki $$3 = $$1.cY();
+      if ($$3 != null) {
+         throw b.create($$1.O_(), $$3.O_());
+      } else if ($$2.ag() == bkm.bt) {
+         throw d.create();
+      } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dL() != $$2.dL()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.O_(), $$2.O_());
       } else {
-         $$0.a(() -> ui.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+         $$0.a(() -> ur.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
       }
+   }
 
-      return $$1.size();
+   private static int a(du $$0, bki $$1) throws CommandSyntaxException {
+      bki $$2 = $$1.cY();
+      if ($$2 == null) {
+         throw a.create($$1.O_());
+      } else {
+         $$1.aa();
+         $$0.a(() -> ur.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
+      }
    }
 }

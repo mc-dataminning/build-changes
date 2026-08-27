@@ -1,56 +1,12 @@
-public class xw implements wb<xu> {
-   private final int a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final int e;
-
-   public xw(bjz $$0) {
-      this.a = $$0.ah();
-      this.b = $$0.dq();
-      this.c = $$0.ds();
-      this.d = $$0.dw();
-      this.e = $$0.q();
-   }
-
-   public xw(tl $$0) {
-      this.a = $$0.n();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readShort();
-   }
-
+public interface xw extends wn {
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.l(this.e);
+   default tt b() {
+      return tt.e;
    }
 
-   public void a(xu $$0) {
-      $$0.a(this);
-   }
+   void a(xx var1);
 
-   public int a() {
-      return this.a;
-   }
+   void a(xy var1);
 
-   public double d() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
+   void a(xz var1);
 }

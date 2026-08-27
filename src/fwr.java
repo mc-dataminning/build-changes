@@ -1,33 +1,18 @@
-public class fwr extends fvi<cfa> {
-   private final fpu f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fwr(fud.a $$0) {
-      super($$0, fiv.bA);
-      this.f = $$0.c();
+public class fwr extends fwq<bww, fgv<bww>> {
+   private static final Map<bww.a, agg> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(bww.a.b, new agg("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(bww.a.a, new agg("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public fwr(fvk.a $$0) {
+      super($$0, new fgv<>($$0.a(fka.aw)), 0.7F);
+      this.a(new fzn<>(this, $$0.c()));
    }
 
-   protected void a(cfa $$0, float $$1, dgb $$2, emh $$3, fpb $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = asy.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
-   }
-
-   public static void a(fpu $$0, dgb $$1, emh $$2, fpb $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = fzr.a(fzr.a(1.0F), 10);
-      } else {
-         $$6 = fzr.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public agg a(bww $$0) {
+      return a.get($$0.t());
    }
 }

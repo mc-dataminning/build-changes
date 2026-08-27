@@ -1,25 +1,103 @@
-public class fwk<T extends bwt> extends fvj<T, fhz<T>> {
-   private static final afw a = new afw("textures/entity/squid/squid.png");
+import org.joml.Matrix4f;
 
-   public fwk(fud.a $$0, fhz<T> $$1) {
-      super($$0, $$1, 0.7F);
+public class fwk extends fvj<bkx> {
+   public fwk(fvk.a $$0) {
+      super($$0);
    }
 
-   public afw a(T $$0) {
-      return a;
+   public void a(bkx $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
+      float[] $$6 = new float[8];
+      float[] $$7 = new float[8];
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      ato $$10 = ato.a($$0.b);
+
+      for (int $$11 = 7; $$11 >= 0; $$11--) {
+         $$6[$$11] = $$8;
+         $$7[$$11] = $$9;
+         $$8 += (float)($$10.a(11) - 5);
+         $$9 += (float)($$10.a(11) - 5);
+      }
+
+      eno $$12 = $$4.getBuffer(fqp.s());
+      Matrix4f $$13 = $$3.c().a();
+
+      for (int $$14 = 0; $$14 < 4; $$14++) {
+         ato $$15 = ato.a($$0.b);
+
+         for (int $$16 = 0; $$16 < 3; $$16++) {
+            int $$17 = 7;
+            int $$18 = 0;
+            if ($$16 > 0) {
+               $$17 = 7 - $$16;
+            }
+
+            if ($$16 > 0) {
+               $$18 = $$17 - 2;
+            }
+
+            float $$19 = $$6[$$17] - $$8;
+            float $$20 = $$7[$$17] - $$9;
+
+            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
+               float $$22 = $$19;
+               float $$23 = $$20;
+               if ($$16 == 0) {
+                  $$19 += (float)($$15.a(11) - 5);
+                  $$20 += (float)($$15.a(11) - 5);
+               } else {
+                  $$19 += (float)($$15.a(31) - 15);
+                  $$20 += (float)($$15.a(31) - 15);
+               }
+
+               float $$24 = 0.5F;
+               float $$25 = 0.45F;
+               float $$26 = 0.45F;
+               float $$27 = 0.5F;
+               float $$28 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$28 *= (float)$$21 * 0.1F + 1.0F;
+               }
+
+               float $$29 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
+               }
+
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
+            }
+         }
+      }
    }
 
-   protected void a(T $$0, emh $$1, float $$2, float $$3, float $$4) {
-      float $$5 = asy.i($$4, $$0.c, $$0.b);
-      float $$6 = asy.i($$4, $$0.e, $$0.d);
-      $$1.a(0.0F, 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      $$1.a(a.b.rotationDegrees($$5));
-      $$1.a(a.d.rotationDegrees($$6));
-      $$1.a(0.0F, -1.2F, 0.0F);
+   private static void a(
+      Matrix4f $$0,
+      eno $$1,
+      float $$2,
+      float $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      boolean $$12,
+      boolean $$13,
+      boolean $$14,
+      boolean $$15
+   ) {
+      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
    }
 
-   protected float a(T $$0, float $$1) {
-      return asy.i($$1, $$0.bW, $$0.bV);
+   public agg a(bkx $$0) {
+      return gbg.e;
    }
 }

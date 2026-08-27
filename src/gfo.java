@@ -1,74 +1,62 @@
-public class gfo implements gfq {
-   private static final int a = 600;
-   private static final ui b = ui.c("tutorial.punch_tree.title");
-   private static final ui c = ui.a("tutorial.punch_tree.description", gfp.a("attack"));
-   private final gfp d;
-   private evt e;
-   private int f;
-   private int g;
+import javax.annotation.Nullable;
 
-   public gfo(gfp $$0) {
-      this.d = $$0;
+public class gfo {
+   private static final int a = 100;
+   private final ato b = ato.a();
+   private final esr c;
+   @Nullable
+   private gep d;
+   private int e = 100;
+
+   public gfo(esr $$0) {
+      this.c = $$0;
    }
 
-   @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gfr.f);
-      } else {
-         if (this.f == 1) {
-            foc $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fS().a(ara.r)) {
-                  this.d.a(gfr.e);
-                  return;
-               }
-
-               if (gfl.a($$0)) {
-                  this.d.a(gfr.e);
-                  return;
-               }
-            }
+      aqk $$0 = this.c.ai();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.ah().b(this.d);
+            this.e = ati.a(this.b, 0, $$0.b() / 2);
          }
 
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new evt(evt.a.c, b, c, true);
-            this.d.e().ay().a(this.e);
+         if (!this.c.ah().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, ati.a(this.b, $$0.b(), $$0.c()));
          }
+      }
+
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
       }
    }
 
-   @Override
+   public void a(aqk $$0) {
+      this.d = gek.a($$0.a().a());
+      if (this.d.b() != gft.a) {
+         this.c.ah().a(this.d);
+      }
+
+      this.e = Integer.MAX_VALUE;
+   }
+
+   public void b(aqk $$0) {
+      if (this.c($$0)) {
+         this.b();
+      }
+   }
+
    public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
+      if (this.d != null) {
+         this.c.ah().b(this.d);
+         this.d = null;
       }
+
+      this.e += 100;
    }
 
-   @Override
-   public void a(fjr $$0, ht $$1, dgb $$2, float $$3) {
-      boolean $$4 = $$2.a(aqs.t);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
-         }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(gfr.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
-      }
-   }
-
-   @Override
-   public void a(ckj $$0) {
-      if ($$0.a(ara.r)) {
-         this.d.a(gfr.e);
-      }
+   public boolean c(aqk $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

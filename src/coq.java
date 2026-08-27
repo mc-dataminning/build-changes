@@ -1,59 +1,65 @@
-public class coq extends cot {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   private static final String[] g = new String[]{"all", "undead", "arthropods"};
-   private static final int[] h = new int[]{1, 5, 5};
-   private static final int[] i = new int[]{11, 8, 8};
-   private static final int[] j = new int[]{20, 20, 20};
-   public final int d;
-
-   public coq(cot.a $$0, int $$1, bjy... $$2) {
-      super($$0, cou.f, $$2);
-      this.d = $$1;
+public class coq extends cnx {
+   public coq(cnu $$0) {
+      super($$0);
    }
 
-   @Override
-   public int a(int $$0) {
-      return h[this.d] + ($$0 - 1) * i[this.d];
-   }
+   public boolean a(cgu $$0, crs $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
 
-   @Override
-   public int b(int $$0) {
-      return this.a($$0) + j[this.d];
-   }
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         clb $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (cut.a($$5.d()) instanceof dbr) {
+               $$2++;
+            } else {
+               if (!($$5.d() instanceof cjq)) {
+                  return false;
+               }
 
-   @Override
-   public int a() {
-      return 5;
-   }
+               $$3++;
+            }
 
-   @Override
-   public float a(int $$0, bko $$1) {
-      if (this.d == 0) {
-         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
-      } else if (this.d == 1 && $$1 == bko.b) {
-         return (float)$$0 * 2.5F;
-      } else {
-         return this.d == 2 && $$1 == bko.c ? (float)$$0 * 2.5F : 0.0F;
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
+            }
+         }
       }
+
+      return $$2 == 1 && $$3 == 1;
    }
 
-   @Override
-   public boolean a(cot $$0) {
-      return !($$0 instanceof coq);
-   }
+   public clb a(cgu $$0, ip $$1) {
+      clb $$2 = clb.b;
+      cjq $$3 = (cjq)cle.qu;
 
-   @Override
-   public boolean a(ckj $$0) {
-      return $$0.d() instanceof chy ? true : super.a($$0);
-   }
-
-   @Override
-   public void a(bkj $$0, bjt $$1, int $$2) {
-      if ($$1 instanceof bkj $$3 && this.d == 2 && $$2 > 0 && $$3.eR() == bko.c) {
-         int $$4 = 20 + $$0.ef().a(10 * $$2);
-         $$3.b(new bjg(bji.b, $$4, 3));
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         clb $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            ckw $$6 = $$5.d();
+            if (cut.a($$6) instanceof dbr) {
+               $$2 = $$5;
+            } else if ($$6 instanceof cjq) {
+               $$3 = (cjq)$$6;
+            }
+         }
       }
+
+      clb $$7 = dbr.b($$3.d());
+      if ($$2.u()) {
+         $$7.c($$2.v().h());
+      }
+
+      return $$7;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public coj<?> aq_() {
+      return coj.m;
    }
 }

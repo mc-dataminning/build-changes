@@ -1,11 +1,9 @@
-public class fyo extends fyl<car, fhq<car>> {
-   public fyo(fvy<car, fhq<car>> $$0) {
-      super($$0);
+public class fyo extends fui<cbt, fjt<cbt>> {
+   public fyo(fvk.a $$0) {
+      this($$0, fka.bX, fka.ca, fka.cb);
    }
 
-   public void a(emh $$0, fpb $$1, int $$2, car $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      afw $$10 = fwc.a($$3.gf());
-      eml $$11 = $$1.getBuffer(fpj.c($$10));
-      this.c().c().a($$0, $$11, $$2, fve.c($$3, 0.0F));
+   public fyo(fvk.a $$0, fjz $$1, fjz $$2, fjz $$3) {
+      super($$0, new fjt<>($$0.a($$1)), new fjt<>($$0.a($$2)), new fjt<>($$0.a($$3)));
    }
 }

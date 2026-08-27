@@ -1,40 +1,19 @@
-public class ckr extends cke {
-   private static final int a = 32;
+public class ckr extends ckw {
+   private static final String a = "textures/entity/horse/";
+   private final int b;
+   private final String c;
 
-   public ckr(cke.a $$0) {
-      super($$0);
+   public ckr(int $$0, String $$1, ckw.a $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = "textures/entity/horse/armor/horse_armor_" + $$1 + ".png";
    }
 
-   @Override
-   public ckj a(ckj $$0, cqz $$1, bkj $$2) {
-      if ($$2 instanceof alr $$3) {
-         al.z.a($$3, $$0);
-         $$3.b(aqn.c.b(this));
-      }
-
-      if ($$2 instanceof ccx && !((ccx)$$2).fT().d) {
-         $$0.h(1);
-      }
-
-      if (!$$1.B) {
-         $$2.eq();
-      }
-
-      return $$0.b() ? new ckj(ckm.pK) : $$0;
+   public agg h() {
+      return new agg(this.c);
    }
 
-   @Override
-   public int b(ckj $$0) {
-      return 32;
-   }
-
-   @Override
-   public cmc c(ckj $$0) {
-      return cmc.c;
-   }
-
-   @Override
-   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
-      return ckl.a($$0, $$1, $$2);
+   public int i() {
+      return this.b;
    }
 }

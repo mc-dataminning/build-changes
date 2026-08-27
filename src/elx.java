@@ -1,11 +1,9 @@
-public interface elx {
-   int a();
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   void b();
-
-   elv c();
-
-   elv d();
-
-   void e();
+public class elx extends elw {
+   public elx(int $$0, int $$1, boolean $$2, boolean $$3) {
+      super($$2);
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a($$0, $$1, $$3);
+   }
 }

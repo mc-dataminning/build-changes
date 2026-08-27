@@ -1,3 +1,4 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.brigadier.RedirectModifier;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.context.ContextChain;
@@ -5,12 +6,12 @@ import com.mojang.brigadier.context.ContextChain.Stage;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.annotation.Nullable;
 
 public class gs<T extends dw<T>> {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ui.b("command.forkLimit", $$0));
+   @VisibleForTesting
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ur.b("command.forkLimit", $$0));
    private final String b;
    private final ContextChain<T> c;
 
@@ -19,7 +20,7 @@ public class gs<T extends dw<T>> {
       this.c = $$1;
    }
 
-   protected void a(List<T> $$0, gn<T> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
+   protected void a(List<T> $$0, gn<T> $$1, int $$2, boolean $$3) {
       ContextChain<T> $$4 = this.c;
       boolean $$5 = $$3;
       List<T> $$6 = $$0;
@@ -41,10 +42,19 @@ public class gs<T extends dw<T>> {
                   List<T> $$11 = new ArrayList<>();
 
                   for (T $$12 : $$6) {
-                     Collection<T> $$13 = ContextChain.runModifier($$8, $$12, dw.a_(), $$5);
-                     $$11.addAll($$13);
-                     if ($$11.size() >= $$7) {
-                        throw a.create($$7);
+                     try {
+                        for (T $$14 : ContextChain.runModifier($$8, $$12, dw.a_(), $$5)) {
+                           $$11.add($$14);
+                           if ($$11.size() >= $$7) {
+                              $$14.a(a.create($$7), $$5, $$1.b());
+                              return;
+                           }
+                        }
+                     } catch (CommandSyntaxException var20) {
+                        $$12.a(var20, $$5, $$1.b());
+                        if (!$$5) {
+                           return;
+                        }
                      }
                   }
 
@@ -56,16 +66,16 @@ public class gs<T extends dw<T>> {
          }
       }
 
-      CommandContext<T> $$14 = $$4.getTopContext();
-      if ($$14.getCommand() instanceof gk<T> $$16) {
-         go<T> $$17 = b($$1, $$2);
+      CommandContext<T> $$16 = $$4.getTopContext();
+      if ($$16.getCommand() instanceof gk<T> $$18) {
+         go<T> $$19 = b($$1, $$2);
 
-         for (T $$18 : $$6) {
-            $$16.a($$18, $$4, $$5, $$17);
+         for (T $$20 : $$6) {
+            $$18.a($$20, $$4, $$5, $$19);
          }
       } else {
-         gv<T> $$19 = new gv<>(this.b, $$5, $$14);
-         gu.a($$1, $$2, $$6, ($$1x, $$2x) -> new gj<>($$1x, $$19.bind((T)$$2x)));
+         gv<T> $$21 = new gv<>(this.b, $$5, $$16);
+         gu.a($$1, $$2, $$6, ($$1x, $$2x) -> new gj<>($$1x, $$21.bind((T)$$2x)));
       }
    }
 
@@ -107,33 +117,33 @@ public class gs<T extends dw<T>> {
    }
 
    public static class a<T extends dw<T>> extends gs<T> implements gm<T> {
-      private final boolean a;
-      private final List<T> b;
+      private final boolean b;
+      private final List<T> c;
 
       public a(String $$0, ContextChain<T> $$1, boolean $$2, List<T> $$3) {
          super($$0, $$1);
-         this.a = $$2;
-         this.b = $$3;
+         this.b = $$2;
+         this.c = $$3;
       }
 
       @Override
-      public void execute(gn<T> $$0, int $$1) throws CommandSyntaxException {
-         this.a(this.b, $$0, $$1, this.a);
+      public void execute(gn<T> $$0, int $$1) {
+         this.a(this.c, $$0, $$1, this.b);
       }
    }
 
    public static class b<T extends dw<T>> extends gs<T> implements gm<T> {
-      private final T a;
+      private final T b;
 
       public b(String $$0, ContextChain<T> $$1, T $$2) {
          super($$0, $$1);
-         this.a = $$2;
+         this.b = $$2;
       }
 
       @Override
-      public void execute(gn<T> $$0, int $$1) throws CommandSyntaxException {
+      public void execute(gn<T> $$0, int $$1) {
          this.a($$0, $$1);
-         this.a(List.of(this.a), $$0, $$1, false);
+         this.a(List.of(this.b), $$0, $$1, false);
       }
    }
 
@@ -142,7 +152,7 @@ public class gs<T extends dw<T>> {
          super($$0, $$1);
       }
 
-      public void a(T $$0, gn<T> $$1, int $$2) throws CommandSyntaxException {
+      public void a(T $$0, gn<T> $$1, int $$2) {
          this.a($$1, $$2);
          this.a(List.of($$0), $$1, $$2, false);
       }

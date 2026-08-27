@@ -1,11 +1,15 @@
-public interface atd {
-   void a(ui var1);
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-   void b(ui var1);
+@Deprecated
+public class atd<T> {
+   private final Supplier<T> a;
 
-   void c(ui var1);
+   public atd(Supplier<T> $$0) {
+      this.a = Suppliers.memoize($$0::get);
+   }
 
-   void a(int var1);
-
-   void a();
+   public T a() {
+      return this.a.get();
+   }
 }

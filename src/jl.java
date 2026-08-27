@@ -6,12 +6,12 @@ import java.util.Locale;
 import org.joml.Vector3f;
 
 public class jl extends jn {
-   public static final Vector3f a = eif.a(3790560).j();
+   public static final Vector3f a = eji.a(3790560).j();
    public static final jl b = new jl(a, jm.a, 1.0F);
    public static final Codec<jl> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               asg.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
-               asg.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
+               asq.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
+               asq.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
                Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, jl::new)
@@ -25,7 +25,7 @@ public class jl extends jn {
          return new jl($$2, $$4, $$3);
       }
 
-      public jl a(jr<jl> $$0, tl $$1) {
+      public jl a(jr<jl> $$0, tu $$1) {
          Vector3f $$2 = jn.b($$1);
          float $$3 = $$1.readFloat();
          Vector3f $$4 = jn.b($$1);
@@ -48,7 +48,7 @@ public class jl extends jn {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       super.a($$0);
       $$0.a(this.i.x());
       $$0.a(this.i.y());

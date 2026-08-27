@@ -1,11 +1,98 @@
-public final class aqx {
-   public static final arh<ebd> a = a("water");
-   public static final arh<ebd> b = a("lava");
+public class aqx {
+   public static final aqw<cut> a = a("mined", jy.f);
+   public static final aqw<ckw> b = a("crafted", jy.i);
+   public static final aqw<ckw> c = a("used", jy.i);
+   public static final aqw<ckw> d = a("broken", jy.i);
+   public static final aqw<ckw> e = a("picked_up", jy.i);
+   public static final aqw<ckw> f = a("dropped", jy.i);
+   public static final aqw<bkm<?>> g = a("killed", jy.h);
+   public static final aqw<bkm<?>> h = a("killed_by", jy.h);
+   public static final aqw<agg> i = a("custom", jy.n);
+   public static final agg j = a("leave_game", aqv.b);
+   public static final agg k = a("play_time", aqv.e);
+   public static final agg l = a("total_world_time", aqv.e);
+   public static final agg m = a("time_since_death", aqv.e);
+   public static final agg n = a("time_since_rest", aqv.e);
+   public static final agg o = a("sneak_time", aqv.e);
+   public static final agg p = a("walk_one_cm", aqv.d);
+   public static final agg q = a("crouch_one_cm", aqv.d);
+   public static final agg r = a("sprint_one_cm", aqv.d);
+   public static final agg s = a("walk_on_water_one_cm", aqv.d);
+   public static final agg t = a("fall_one_cm", aqv.d);
+   public static final agg u = a("climb_one_cm", aqv.d);
+   public static final agg v = a("fly_one_cm", aqv.d);
+   public static final agg w = a("walk_under_water_one_cm", aqv.d);
+   public static final agg x = a("minecart_one_cm", aqv.d);
+   public static final agg y = a("boat_one_cm", aqv.d);
+   public static final agg z = a("pig_one_cm", aqv.d);
+   public static final agg A = a("horse_one_cm", aqv.d);
+   public static final agg B = a("aviate_one_cm", aqv.d);
+   public static final agg C = a("swim_one_cm", aqv.d);
+   public static final agg D = a("strider_one_cm", aqv.d);
+   public static final agg E = a("jump", aqv.b);
+   public static final agg F = a("drop", aqv.b);
+   public static final agg G = a("damage_dealt", aqv.c);
+   public static final agg H = a("damage_dealt_absorbed", aqv.c);
+   public static final agg I = a("damage_dealt_resisted", aqv.c);
+   public static final agg J = a("damage_taken", aqv.c);
+   public static final agg K = a("damage_blocked_by_shield", aqv.c);
+   public static final agg L = a("damage_absorbed", aqv.c);
+   public static final agg M = a("damage_resisted", aqv.c);
+   public static final agg N = a("deaths", aqv.b);
+   public static final agg O = a("mob_kills", aqv.b);
+   public static final agg P = a("animals_bred", aqv.b);
+   public static final agg Q = a("player_kills", aqv.b);
+   public static final agg R = a("fish_caught", aqv.b);
+   public static final agg S = a("talked_to_villager", aqv.b);
+   public static final agg T = a("traded_with_villager", aqv.b);
+   public static final agg U = a("eat_cake_slice", aqv.b);
+   public static final agg V = a("fill_cauldron", aqv.b);
+   public static final agg W = a("use_cauldron", aqv.b);
+   public static final agg X = a("clean_armor", aqv.b);
+   public static final agg Y = a("clean_banner", aqv.b);
+   public static final agg Z = a("clean_shulker_box", aqv.b);
+   public static final agg aa = a("interact_with_brewingstand", aqv.b);
+   public static final agg ab = a("interact_with_beacon", aqv.b);
+   public static final agg ac = a("inspect_dropper", aqv.b);
+   public static final agg ad = a("inspect_hopper", aqv.b);
+   public static final agg ae = a("inspect_dispenser", aqv.b);
+   public static final agg af = a("play_noteblock", aqv.b);
+   public static final agg ag = a("tune_noteblock", aqv.b);
+   public static final agg ah = a("pot_flower", aqv.b);
+   public static final agg ai = a("trigger_trapped_chest", aqv.b);
+   public static final agg aj = a("open_enderchest", aqv.b);
+   public static final agg ak = a("enchant_item", aqv.b);
+   public static final agg al = a("play_record", aqv.b);
+   public static final agg am = a("interact_with_furnace", aqv.b);
+   public static final agg an = a("interact_with_crafting_table", aqv.b);
+   public static final agg ao = a("open_chest", aqv.b);
+   public static final agg ap = a("sleep_in_bed", aqv.b);
+   public static final agg aq = a("open_shulker_box", aqv.b);
+   public static final agg ar = a("open_barrel", aqv.b);
+   public static final agg as = a("interact_with_blast_furnace", aqv.b);
+   public static final agg at = a("interact_with_smoker", aqv.b);
+   public static final agg au = a("interact_with_lectern", aqv.b);
+   public static final agg av = a("interact_with_campfire", aqv.b);
+   public static final agg aw = a("interact_with_cartography_table", aqv.b);
+   public static final agg ax = a("interact_with_loom", aqv.b);
+   public static final agg ay = a("interact_with_stonecutter", aqv.b);
+   public static final agg az = a("bell_ring", aqv.b);
+   public static final agg aA = a("raid_trigger", aqv.b);
+   public static final agg aB = a("raid_win", aqv.b);
+   public static final agg aC = a("interact_with_anvil", aqv.b);
+   public static final agg aD = a("interact_with_grindstone", aqv.b);
+   public static final agg aE = a("target_hit", aqv.b);
+   public static final agg aF = a("interact_with_smithing_table", aqv.b);
 
-   private aqx() {
+   private static agg a(String $$0, aqv $$1) {
+      agg $$2 = new agg($$0);
+      io.a(jy.n, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   private static arh<ebd> a(String $$0) {
-      return arh.a(jz.x, new afw($$0));
+   private static <T> aqw<T> a(String $$0, io<T> $$1) {
+      ur $$2 = ur.c("stat_type.minecraft." + $$0);
+      return io.a(jy.y, $$0, new aqw<>($$1, $$2));
    }
 }

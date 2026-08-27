@@ -1,35 +1,73 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dcy extends cuj {
-   public static final MapCodec<dcy> a = b(dcy::new);
-   protected static final eiy b = cua.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+public class dcy extends cxa implements czj {
+   public static final MapCodec<dcy> c = b(dcy::new);
+   public static final dhu<dhs> d = cxa.b;
+   protected static final float e = 6.0F;
+   protected static final ekb f = cut.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dcy> a() {
-      return a;
+      return c;
    }
 
-   protected dcy(dga.d $$0) {
+   public dcy(dgv.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, bjt $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof alq && $$3 instanceof ceq) {
-         $$1.a(new ht($$2), true, $$3);
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return f;
+   }
+
+   @Override
+   protected boolean d(dgw $$0, cqy $$1, ht $$2) {
+      return $$0.d($$1, $$2, hx.b) && !$$0.a(cuv.kJ);
+   }
+
+   @Override
+   public clb a(crv $$0, ht $$1, dgw $$2) {
+      return new clb(cuv.bw);
+   }
+
+   @Nullable
+   @Override
+   public dgw a(cnj $$0) {
+      dgw $$1 = super.a($$0);
+      if ($$1 != null) {
+         ecg $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(arh.a) && $$2.e() == 8) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public boolean a(dgw $$0, crv $$1, ht $$2) {
+      if ($$0.c(d) == dhs.a) {
+         dgw $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == dhs.b;
+      } else {
+         ecg $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(arh.a) && $$4.e() == 8;
       }
    }
 
    @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return b;
+   public ecg c_(dgw $$0) {
+      return ech.c.a(false);
    }
 
    @Override
-   protected boolean d(dgb $$0, cqf $$1, ht $$2) {
-      ebe $$3 = $$1.b_($$2);
-      ebe $$4 = $$1.b_($$2.c());
-      return ($$3.a() == ebf.c || $$0.b() instanceof cxw) && $$4.a() == ebf.a;
+   public boolean a(@Nullable cdm $$0, cqy $$1, ht $$2, dgw $$3, ecf $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(crt $$0, ht $$1, dgw $$2, ecg $$3) {
+      return false;
    }
 }

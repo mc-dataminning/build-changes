@@ -1,166 +1,88 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
 import java.util.Collection;
-import java.util.Set;
-import java.util.UUID;
+import java.util.List;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
 
-public class agu extends aln {
-   private final afw h;
-   private final Set<UUID> i = Sets.newHashSet();
-   private int j;
-   private int k = 100;
+public class agu {
+   private static final agg a = new agg("tick");
+   private static final agg b = new agg("load");
+   private final MinecraftServer c;
+   private List<gx<du>> d = ImmutableList.of();
+   private boolean e;
+   private agt f;
 
-   public agu(afw $$0, ui $$1) {
-      super($$1, bhr.a.g, bhr.b.a);
-      this.h = $$0;
-      this.a(0.0F);
+   public agu(MinecraftServer $$0, agt $$1) {
+      this.c = $$0;
+      this.f = $$1;
+      this.b($$1);
    }
 
-   public afw a() {
-      return this.h;
+   public CommandDispatcher<du> a() {
+      return this.c.aC().a();
    }
 
-   @Override
-   public void a(alr $$0) {
-      super.a($$0);
-      this.i.add($$0.cv());
-   }
-
-   public void a(UUID $$0) {
-      this.i.add($$0);
-   }
-
-   @Override
-   public void b(alr $$0) {
-      super.b($$0);
-      this.i.remove($$0.cv());
-   }
-
-   @Override
    public void b() {
-      super.b();
-      this.i.clear();
-   }
-
-   public int c() {
-      return this.j;
-   }
-
-   public int d() {
-      return this.k;
-   }
-
-   public void a(int $$0) {
-      this.j = $$0;
-      this.a(asy.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
-   }
-
-   public void b(int $$0) {
-      this.k = $$0;
-      this.a(asy.a((float)this.j / (float)$$0, 0.0F, 1.0F));
-   }
-
-   public final ui e() {
-      return ul.a(this.j()).a($$0 -> $$0.a(this.l().a()).a(new uo(uo.a.a, ui.b(this.a().toString()))).a(this.a().toString()));
-   }
-
-   public boolean a(Collection<alr> $$0) {
-      Set<UUID> $$1 = Sets.newHashSet();
-      Set<alr> $$2 = Sets.newHashSet();
-
-      for (UUID $$3 : this.i) {
-         boolean $$4 = false;
-
-         for (alr $$5 : $$0) {
-            if ($$5.cv().equals($$3)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            $$1.add($$3);
-         }
+      if (this.e) {
+         this.e = false;
+         Collection<gx<du>> $$0 = this.f.b(b);
+         this.a($$0, b);
       }
 
-      for (alr $$6 : $$0) {
-         boolean $$7 = false;
-
-         for (UUID $$8 : this.i) {
-            if ($$6.cv().equals($$8)) {
-               $$7 = true;
-               break;
-            }
-         }
-
-         if (!$$7) {
-            $$2.add($$6);
-         }
-      }
-
-      for (UUID $$9 : $$1) {
-         for (alr $$10 : this.h()) {
-            if ($$10.cv().equals($$9)) {
-               this.b($$10);
-               break;
-            }
-         }
-
-         this.i.remove($$9);
-      }
-
-      for (alr $$11 : $$2) {
-         this.a($$11);
-      }
-
-      return !$$1.isEmpty() || !$$2.isEmpty();
+      this.a(this.d, a);
    }
 
-   public rt f() {
-      rt $$0 = new rt();
-      $$0.a("Name", ui.a.a(this.a));
-      $$0.a("Visible", this.g());
-      $$0.a("Value", this.j);
-      $$0.a("Max", this.k);
-      $$0.a("Color", this.l().b());
-      $$0.a("Overlay", this.m().a());
-      $$0.a("DarkenScreen", this.n());
-      $$0.a("PlayBossMusic", this.o());
-      $$0.a("CreateWorldFog", this.p());
-      rz $$1 = new rz();
+   private void a(Collection<gx<du>> $$0, agg $$1) {
+      this.c.aM().a($$1::toString);
 
-      for (UUID $$2 : this.i) {
-         $$1.add(sg.a($$2));
+      for (gx<du> $$2 : $$0) {
+         this.a($$2, this.c());
       }
 
-      $$0.a("Players", $$1);
-      return $$0;
+      this.c.aM().c();
    }
 
-   public static agu a(rt $$0, afw $$1) {
-      agu $$2 = new agu($$1, ui.a.a($$0.l("Name")));
-      $$2.d($$0.q("Visible"));
-      $$2.a($$0.h("Value"));
-      $$2.b($$0.h("Max"));
-      $$2.a(bhr.a.a($$0.l("Color")));
-      $$2.a(bhr.b.a($$0.l("Overlay")));
-      $$2.a($$0.q("DarkenScreen"));
-      $$2.b($$0.q("PlayBossMusic"));
-      $$2.c($$0.q("CreateWorldFog"));
+   public void a(gx<du> $$0, du $$1) {
+      bfh $$2 = this.c.aM();
+      $$2.a(() -> "function " + $$0.a());
 
-      for (sn $$4 : $$0.c("Players", 11)) {
-         $$2.a(sg.a($$4));
-      }
-
-      return $$2;
-   }
-
-   public void c(alr $$0) {
-      if (this.i.contains($$0.cv())) {
-         this.a($$0);
+      try {
+         gz<du> $$3 = $$0.a(null, this.a(), $$1);
+         dv.a($$1, $$2x -> $$2x.a($$3, $$1));
+      } catch (dx var8) {
+      } finally {
+         $$2.c();
       }
    }
 
-   public void d(alr $$0) {
-      super.b($$0);
+   public void a(agt $$0) {
+      this.f = $$0;
+      this.b($$0);
+   }
+
+   private void b(agt $$0) {
+      this.d = ImmutableList.copyOf($$0.b(a));
+      this.e = true;
+   }
+
+   public du c() {
+      return this.c.aD().a(2).b();
+   }
+
+   public Optional<gx<du>> a(agg $$0) {
+      return this.f.a($$0);
+   }
+
+   public Collection<gx<du>> b(agg $$0) {
+      return this.f.b($$0);
+   }
+
+   public Iterable<agg> d() {
+      return this.f.a().keySet();
+   }
+
+   public Iterable<agg> e() {
+      return this.f.b();
    }
 }

@@ -1,56 +1,138 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gbc extends aoy<List<String>> {
-   private static final afw a = new afw("texts/splashes.txt");
-   private static final ate b = ate.a();
-   private final List<String> c = Lists.newArrayList();
-   private final esd d;
+public class gbc {
+   public static final Set<aod<?>> a = Set.of(gcs.a);
+   private static final Logger b = LogUtils.getLogger();
+   private final agg c;
+   private final int d;
+   private final int e;
+   private final int f;
 
-   public gbc(esd $$0) {
-      this.d = $$0;
+   public gbc(agg $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   protected List<String> a(aot $$0, bes $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = ero.O().Z().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+   public static gbc a(gbg $$0) {
+      return new gbc($$0.g(), $$0.h(), $$0.i(), $$0.j());
+   }
+
+   public gbc.a a(List<gbb> $$0, int $$1, Executor $$2) {
+      int $$3 = this.d;
+      gbe<gbb> $$4 = new gbe<>($$3, $$3, $$1);
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = 1 << $$1;
+
+      for (gbb $$7 : $$0) {
+         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
+         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
+         if ($$8 < $$6) {
+            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), ati.f($$6), ati.f($$8)});
+            $$6 = $$8;
          }
 
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
+         $$4.a($$7);
       }
-   }
 
-   protected void a(List<String> $$0, aot $$1, bes $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
-   }
-
-   @Nullable
-   public eun a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return eun.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return eun.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return eun.c;
-      } else if (this.c.isEmpty()) {
-         return null;
+      int $$9 = Math.min($$5, $$6);
+      int $$10 = ati.f($$9);
+      int $$11;
+      if ($$10 < $$1) {
+         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
+         $$11 = $$10;
       } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new eun(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new eun(this.c.get(b.a(this.c.size())));
+         $$11 = $$1;
+      }
+
+      try {
+         $$4.c();
+      } catch (gbf var16) {
+         o $$14 = o.a(var16, "Stitching");
+         p $$15 = $$14.a("Stitcher");
+         $$15.a(
+            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
+         );
+         $$15.a("Max Texture Size", $$3);
+         throw new y($$14);
+      }
+
+      int $$16 = Math.max($$4.a(), this.e);
+      int $$17 = Math.max($$4.b(), this.f);
+      Map<agg, gbh> $$18 = this.a($$4, $$16, $$17);
+      gbh $$19 = $$18.get(gax.b());
+      CompletableFuture<Void> $$20;
+      if ($$11 > 0) {
+         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
+      } else {
+         $$20 = CompletableFuture.completedFuture(null);
+      }
+
+      return new gbc.a($$16, $$17, $$11, $$19, $$18, $$20);
+   }
+
+   public static CompletableFuture<List<gbb>> a(gbk $$0, List<Function<gbk, gbb>> $$1, Executor $$2) {
+      List<CompletableFuture<gbb>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (gbb)$$2x.apply($$0), $$2)).toList();
+      return ac.b($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
+   }
+
+   public CompletableFuture<gbc.a> a(apd $$0, agg $$1, int $$2, Executor $$3) {
+      return this.a($$0, $$1, $$2, $$3, a);
+   }
+
+   public CompletableFuture<gbc.a> a(apd $$0, agg $$1, int $$2, Executor $$3, Collection<aod<?>> $$4) {
+      gbk $$5 = gbk.create($$4);
+      return CompletableFuture.<List<Function<gbk, gbb>>>supplyAsync(() -> gbm.a($$0, $$1).a($$0), $$3)
+         .thenCompose($$2x -> a($$5, $$2x, $$3))
+         .thenApply($$2x -> this.a($$2x, $$2, $$3));
+   }
+
+   private Map<agg, gbh> a(gbe<gbb> $$0, int $$1, int $$2) {
+      Map<agg, gbh> $$3 = new HashMap<>();
+      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new gbh(this.c, $$3x, $$1, $$2, $$4, $$5)));
+      return $$3;
+   }
+
+   public static record a(int a, int b, int c, gbh d, Map<agg, gbh> e, CompletableFuture<Void> f) {
+      public CompletableFuture<gbc.a> a() {
+         return this.f.thenApply($$0 -> this);
+      }
+
+      public int b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public gbh e() {
+         return this.d;
+      }
+
+      public Map<agg, gbh> f() {
+         return this.e;
+      }
+
+      public CompletableFuture<Void> g() {
+         return this.f;
       }
    }
 }

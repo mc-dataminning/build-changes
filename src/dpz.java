@@ -1,74 +1,194 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dpz extends doo<drn> {
-   public dpz(Codec<drn> $$0) {
+public class dpz extends dpj<drq> {
+   public dpz(Codec<drq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doq<drn> $$0) {
-      drn $$1 = $$0.f();
-      crt $$2 = $$0.b();
-      ht $$3 = $$0.e();
-      if (!$$2.a_($$3.c()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+   public boolean a(dpl<drq> $$0) {
+      csm $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      drq $$3 = $$0.f();
+      ato $$4 = $$0.d();
+      if (!dpf.a($$1, $$2)) {
          return false;
       } else {
-         dgb $$4 = $$2.a_($$3);
-         if (!$$4.i() && !$$4.a($$1.f)) {
-            return false;
+         Optional<dlv> $$5 = dlv.a($$1, $$2, $$3.b, dpf::c, dpf::a);
+         if (!$$5.isEmpty() && $$5.get() instanceof dlv.b) {
+            dlv.b $$6 = (dlv.b)$$5.get();
+            if ($$6.g() < 4) {
+               return false;
+            } else {
+               int $$7 = (int)((float)$$6.g() * $$3.e);
+               int $$8 = ati.a($$7, $$3.c.a(), $$3.c.b());
+               int $$9 = ati.b($$4, $$3.c.a(), $$8);
+               dpz.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
+               dpz.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
+               dpz.b $$12;
+               if ($$10.a($$3) && $$11.a($$3)) {
+                  $$12 = new dpz.b($$2.v(), $$4, $$3.h);
+               } else {
+                  $$12 = dpz.b.a();
+               }
+
+               boolean $$14 = $$10.a($$1, $$12);
+               boolean $$15 = $$11.a($$1, $$12);
+               if ($$14) {
+                  $$10.a($$1, $$4, $$12);
+               }
+
+               if ($$15) {
+                  $$11.a($$1, $$4, $$12);
+               }
+
+               return true;
+            }
          } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
+            return false;
+         }
+      }
+   }
+
+   private static dpz.a a(ht $$0, boolean $$1, ato $$2, int $$3, bht $$4, bht $$5) {
+      return new dpz.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
+   }
+
+   private void a(csm $$0, ht $$1, dlv.b $$2, dpz.b $$3) {
+      $$0.a($$3.a($$1.h($$2.e() - 1)), cuv.cz.o(), 2);
+      $$0.a($$3.a($$1.h($$2.f() + 1)), cuv.ch.o(), 2);
+
+      for (ht.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(hx.b)) {
+         ht $$5 = $$3.a($$4);
+         if (dpf.a($$0, $$5) || $$0.a_($$5).a(cuv.rt)) {
+            $$0.a($$5, cuv.gM.o(), 2);
+         }
+      }
+   }
+
+   static final class a {
+      private ht a;
+      private final boolean b;
+      private int c;
+      private final double d;
+      private final double e;
+
+      a(ht $$0, boolean $$1, int $$2, double $$3, double $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      private int a() {
+         return this.a(0.0F);
+      }
+
+      private int b() {
+         return this.b ? this.a.v() : this.a.v() - this.a();
+      }
+
+      private int c() {
+         return !this.b ? this.a.v() : this.a.v() + this.a();
+      }
+
+      boolean a(csm $$0, dpz.b $$1) {
+         while (this.c > 1) {
+            ht.a $$2 = this.a.j();
+            int $$3 = Math.min(10, this.a());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               if ($$0.a_($$2).a(cuv.H)) {
+                  return false;
+               }
+
+               if (dpf.a($$0, $$1.a($$2), this.c)) {
+                  this.a = $$2;
+                  return true;
+               }
+
+               $$2.c(this.b ? hx.a : hx.b);
             }
 
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
+            this.c /= 2;
+         }
 
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
+         return false;
+      }
 
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
+      private int a(float $$0) {
+         return (int)dpf.a((double)$$0, (double)this.c, this.e, this.d);
+      }
 
-            if ($$2.a_($$3.d()).a($$1.f)) {
-               $$6++;
-            }
+      void a(csm $$0, ato $$1, dpz.b $$2) {
+         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
+            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
+               float $$5 = ati.c((float)($$3 * $$3 + $$4 * $$4));
+               if (!($$5 > (float)this.c)) {
+                  int $$6 = this.a($$5);
+                  if ($$6 > 0) {
+                     if ((double)$$1.i() < 0.2) {
+                        $$6 = (int)((float)$$6 * ati.b($$1, 0.8F, 1.0F));
+                     }
 
-            int $$7 = 0;
-            if ($$2.t($$3.g())) {
-               $$7++;
-            }
+                     ht.a $$7 = this.a.b($$3, 0, $$4).j();
+                     boolean $$8 = false;
+                     int $$9 = this.b ? $$0.a(dmf.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
 
-            if ($$2.t($$3.h())) {
-               $$7++;
-            }
+                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
+                        ht $$11 = $$2.a($$7);
+                        if (dpf.b($$0, $$11)) {
+                           $$8 = true;
+                           cut $$12 = cuv.rt;
+                           $$0.a($$11, $$12.o(), 2);
+                        } else if ($$8 && $$0.a_($$11).a(arc.bd)) {
+                           break;
+                        }
 
-            if ($$2.t($$3.e())) {
-               $$7++;
+                        $$7.c(this.b ? hx.b : hx.a);
+                     }
+                  }
+               }
             }
+         }
+      }
 
-            if ($$2.t($$3.f())) {
-               $$7++;
-            }
+      boolean a(drq $$0) {
+         return this.c >= $$0.i && this.d >= (double)$$0.j;
+      }
+   }
 
-            if ($$2.t($$3.d())) {
-               $$7++;
-            }
+   static final class b {
+      private final int a;
+      @Nullable
+      private final eji b;
 
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
+      b(int $$0, ato $$1, bht $$2) {
+         this.a = $$0;
+         float $$3 = $$2.a($$1);
+         float $$4 = ati.b($$1, 0.0F, (float) Math.PI);
+         this.b = new eji((double)(ati.b($$4) * $$3), 0.0, (double)(ati.a($$4) * $$3));
+      }
 
-            return $$5 > 0;
+      private b() {
+         this.a = 0;
+         this.b = null;
+      }
+
+      static dpz.b a() {
+         return new dpz.b();
+      }
+
+      ht a(ht $$0) {
+         if (this.b == null) {
+            return $$0;
+         } else {
+            int $$1 = this.a - $$0.v();
+            eji $$2 = this.b.a((double)$$1);
+            return $$0.b(ati.a($$2.c), 0, ati.a($$2.e));
          }
       }
    }

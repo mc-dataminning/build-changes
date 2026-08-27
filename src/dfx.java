@@ -1,338 +1,117 @@
-import java.util.Iterator;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dfx extends ddx {
-   private static final int b = 2;
-   private static final double c = 0.01;
-   public static final double a = 0.51;
-   private dgb d = cuc.a.o();
-   private hx e;
-   private boolean f;
-   private boolean g;
-   private static final ThreadLocal<hx> h = ThreadLocal.withInitial(() -> null);
-   private float i;
-   private float j;
-   private long k;
-   private int l;
+public class dfx extends der implements dli.b<dlp.b>, dlp {
+   private static final Logger b = LogUtils.getLogger();
+   private dlp.a c;
+   private final dlp.b d;
+   private final dlp.d e = this.c();
+   private int g;
 
-   public dfx(ht $$0, dgb $$1) {
-      super(ddz.k, $$0, $$1);
+   protected dfx(det<?> $$0, ht $$1, dgw $$2) {
+      super($$0, $$1, $$2);
+      this.c = new dlp.a();
+      this.d = new dlp.b(this);
    }
 
-   public dfx(ht $$0, dgb $$1, dgb $$2, hx $$3, boolean $$4, boolean $$5) {
-      this($$0, $$1);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public dfx(ht $$0, dgw $$1) {
+      this(det.I, $$0, $$1);
+   }
+
+   public dlp.d c() {
+      return new dfx.a(this.p());
    }
 
    @Override
-   public rt av_() {
-      return this.o();
+   public void a(rz $$0) {
+      super.a($$0);
+      this.g = $$0.h("last_vibration_frequency");
+      if ($$0.b("listener", 10)) {
+         dlp.a.a.parse(new Dynamic(sn.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
+      }
    }
 
-   public boolean c() {
-      return this.f;
+   @Override
+   protected void b(rz $$0) {
+      super.b($$0);
+      $$0.a("last_vibration_frequency", this.g);
+      dlp.a.a.encodeStart(sn.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
    }
 
-   public hx d() {
+   @Override
+   public dlp.a gg() {
+      return this.c;
+   }
+
+   @Override
+   public dlp.d gh() {
       return this.e;
    }
 
-   public boolean f() {
+   public int f() {
       return this.g;
    }
 
-   public float a(float $$0) {
-      if ($$0 > 1.0F) {
-         $$0 = 1.0F;
-      }
-
-      return asy.i($$0, this.j, this.i);
+   public void a(int $$0) {
+      this.g = $$0;
    }
 
-   public float b(float $$0) {
-      return (float)this.e.j() * this.e(this.a($$0));
-   }
-
-   public float c(float $$0) {
-      return (float)this.e.k() * this.e(this.a($$0));
-   }
-
-   public float d(float $$0) {
-      return (float)this.e.l() * this.e(this.a($$0));
-   }
-
-   private float e(float $$0) {
-      return this.f ? $$0 - 1.0F : 1.0F - $$0;
-   }
-
-   private dgb w() {
-      return !this.c() && this.f() && this.d.b() instanceof dfu
-         ? cuc.bz.o().a(dfv.d, Boolean.valueOf(this.i > 0.25F)).a(dfv.c, this.d.a(cuc.br) ? dhd.b : dhd.a).a(dfv.a, this.d.c(dfu.a))
-         : this.d;
-   }
-
-   private static void a(cqz $$0, ht $$1, float $$2, dfx $$3) {
-      hx $$4 = $$3.g();
-      double $$5 = (double)($$2 - $$3.i);
-      eiy $$6 = $$3.w().k($$0, $$1);
-      if (!$$6.c()) {
-         eia $$7 = a($$1, $$6.a(), $$3);
-         List<bjt> $$8 = $$0.a_(null, dfw.a($$7, $$4, $$5).b($$7));
-         if (!$$8.isEmpty()) {
-            List<eia> $$9 = $$6.e();
-            boolean $$10 = $$3.d.a(cuc.hV);
-            Iterator var12 = $$8.iterator();
-
-            while (true) {
-               bjt $$11;
-               while (true) {
-                  if (!var12.hasNext()) {
-                     return;
-                  }
-
-                  $$11 = (bjt)var12.next();
-                  if ($$11.r_() != ebj.d) {
-                     if (!$$10) {
-                        break;
-                     }
-
-                     if (!($$11 instanceof alr)) {
-                        eif $$12 = $$11.do();
-                        double $$13 = $$12.c;
-                        double $$14 = $$12.d;
-                        double $$15 = $$12.e;
-                        switch ($$4.o()) {
-                           case a:
-                              $$13 = (double)$$4.j();
-                              break;
-                           case b:
-                              $$14 = (double)$$4.k();
-                              break;
-                           case c:
-                              $$15 = (double)$$4.l();
-                        }
-
-                        $$11.o($$13, $$14, $$15);
-                        break;
-                     }
-                  }
-               }
-
-               double $$16 = 0.0;
-
-               for (eia $$17 : $$9) {
-                  eia $$18 = dfw.a(a($$1, $$17, $$3), $$4, $$5);
-                  eia $$19 = $$11.cG();
-                  if ($$18.c($$19)) {
-                     $$16 = Math.max($$16, a($$18, $$4, $$19));
-                     if ($$16 >= $$5) {
-                        break;
-                     }
-                  }
-               }
-
-               if (!($$16 <= 0.0)) {
-                  $$16 = Math.min($$16, $$5) + 0.01;
-                  a($$4, $$11, $$16, $$4);
-                  if (!$$3.f && $$3.g) {
-                     a($$1, $$11, $$4, $$5);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static void a(hx $$0, bjt $$1, double $$2, hx $$3) {
-      h.set($$0);
-      $$1.a(bkp.c, new eif($$2 * (double)$$3.j(), $$2 * (double)$$3.k(), $$2 * (double)$$3.l()));
-      h.set(null);
-   }
-
-   private static void b(cqz $$0, ht $$1, float $$2, dfx $$3) {
-      if ($$3.x()) {
-         hx $$4 = $$3.g();
-         if ($$4.o().d()) {
-            double $$5 = $$3.d.k($$0, $$1).c(hx.a.b);
-            eia $$6 = a($$1, new eia(0.0, $$5, 0.0, 1.0, 1.5000010000000001, 1.0), $$3);
-            double $$7 = (double)($$2 - $$3.i);
-
-            for (bjt $$9 : $$0.a((bjt)null, $$6, $$2x -> a($$6, $$2x, $$1))) {
-               a($$4, $$9, $$7, $$4);
-            }
-         }
-      }
-   }
-
-   private static boolean a(eia $$0, bjt $$1, ht $$2) {
-      return $$1.r_() == ebj.a && $$1.aA() && ($$1.d($$2) || $$1.dq() >= $$0.a && $$1.dq() <= $$0.d && $$1.dw() >= $$0.c && $$1.dw() <= $$0.f);
-   }
-
-   private boolean x() {
-      return this.d.a(cuc.pg);
-   }
-
-   public hx g() {
-      return this.f ? this.e : this.e.g();
-   }
-
-   private static double a(eia $$0, hx $$1, eia $$2) {
-      switch ($$1) {
-         case f:
-            return $$0.d - $$2.a;
-         case e:
-            return $$2.d - $$0.a;
-         case b:
-         default:
-            return $$0.e - $$2.b;
-         case a:
-            return $$2.e - $$0.b;
-         case d:
-            return $$0.f - $$2.c;
-         case c:
-            return $$2.f - $$0.c;
-      }
-   }
-
-   private static eia a(ht $$0, eia $$1, dfx $$2) {
-      double $$3 = (double)$$2.e($$2.i);
-      return $$1.d((double)$$0.u() + $$3 * (double)$$2.e.j(), (double)$$0.v() + $$3 * (double)$$2.e.k(), (double)$$0.w() + $$3 * (double)$$2.e.l());
-   }
-
-   private static void a(ht $$0, bjt $$1, hx $$2, double $$3) {
-      eia $$4 = $$1.cG();
-      eia $$5 = eiv.b().a().a($$0);
-      if ($$4.c($$5)) {
-         hx $$6 = $$2.g();
-         double $$7 = a($$5, $$6, $$4) + 0.01;
-         double $$8 = a($$5, $$6, $$4.a($$5)) + 0.01;
-         if (Math.abs($$7 - $$8) < 0.01) {
-            $$7 = Math.min($$7, $$3) + 0.01;
-            a($$2, $$1, $$7, $$6);
-         }
-      }
-   }
-
-   public dgb i() {
+   public dlp.b g() {
       return this.d;
    }
 
-   public void j() {
-      if (this.o != null && (this.j < 1.0F || this.o.B)) {
-         this.i = 1.0F;
-         this.j = this.i;
-         this.o.n(this.p);
-         this.aw_();
-         if (this.o.a_(this.p).a(cuc.bQ)) {
-            dgb $$0;
-            if (this.g) {
-               $$0 = cuc.a.o();
-            } else {
-               $$0 = cua.b(this.d, this.o, this.p);
-            }
+   protected class a implements dlp.d {
+      public static final int b = 8;
+      protected final ht c;
+      private final dlk a;
 
-            this.o.a(this.p, $$0, 3);
-            this.o.a(this.p, $$0.b(), this.p);
-         }
+      public a(ht $$1) {
+         this.c = $$1;
+         this.a = new dlc($$1);
       }
-   }
 
-   public static void a(cqz $$0, ht $$1, dgb $$2, dfx $$3) {
-      $$3.k = $$0.V();
-      $$3.j = $$3.i;
-      if ($$3.j >= 1.0F) {
-         if ($$0.B && $$3.l < 5) {
-            $$3.l++;
-         } else {
-            $$0.n($$1);
-            $$3.aw_();
-            if ($$0.a_($$1).a(cuc.bQ)) {
-               dgb $$4 = cua.b($$3.d, $$0, $$1);
-               if ($$4.i()) {
-                  $$0.a($$1, $$3.d, 84);
-                  cua.a($$3.d, $$4, $$0, $$1, 3);
-               } else {
-                  if ($$4.b(dgr.C) && $$4.c(dgr.C)) {
-                     $$4 = $$4.a(dgr.C, Boolean.valueOf(false));
-                  }
+      @Override
+      public int a() {
+         return 8;
+      }
 
-                  $$0.a($$1, $$4, 67);
-                  $$0.a($$1, $$4.b(), $$1);
-               }
+      @Override
+      public dlk b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(ama $$0, ht $$1, dlg $$2, @Nullable dlg.a $$3) {
+         return !$$1.equals(this.c) || $$2 != dlg.f && $$2 != dlg.i ? dbl.n(dfx.this.q()) : false;
+      }
+
+      @Override
+      public void a(ama $$0, ht $$1, dlg $$2, @Nullable bki $$3, @Nullable bki $$4, float $$5) {
+         dgw $$6 = dfx.this.q();
+         if (dbl.n($$6)) {
+            dfx.this.a(dlp.a_($$2));
+            int $$7 = dlp.a_($$5, this.a());
+            if ($$6.b() instanceof dbl $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dfx.this.f());
             }
          }
-      } else {
-         float $$5 = $$3.i + 0.5F;
-         a($$0, $$1, $$5, $$3);
-         b($$0, $$1, $$5, $$3);
-         $$3.i = $$5;
-         if ($$3.i >= 1.0F) {
-            $$3.i = 1.0F;
-         }
-      }
-   }
-
-   @Override
-   public void a(rt $$0) {
-      super.a($$0);
-      ic<cua> $$1 = (ic<cua>)(this.o != null ? this.o.a(jz.e) : jy.f.p());
-      this.d = sg.a($$1, $$0.p("blockState"));
-      this.e = hx.a($$0.h("facing"));
-      this.i = $$0.j("progress");
-      this.j = this.i;
-      this.f = $$0.q("extending");
-      this.g = $$0.q("source");
-   }
-
-   @Override
-   protected void b(rt $$0) {
-      super.b($$0);
-      $$0.a("blockState", sg.a(this.d));
-      $$0.a("facing", this.e.d());
-      $$0.a("progress", this.j);
-      $$0.a("extending", this.f);
-      $$0.a("source", this.g);
-   }
-
-   public eiy a(cqf $$0, ht $$1) {
-      eiy $$2;
-      if (!this.f && this.g && this.d.b() instanceof dfu) {
-         $$2 = this.d.a(dfu.c, Boolean.valueOf(true)).k($$0, $$1);
-      } else {
-         $$2 = eiv.a();
       }
 
-      hx $$4 = h.get();
-      if ((double)this.i < 1.0 && $$4 == this.g()) {
-         return $$2;
-      } else {
-         dgb $$5;
-         if (this.f()) {
-            $$5 = cuc.bz.o().a(dfv.a, this.e).a(dfv.d, Boolean.valueOf(this.f != 1.0F - this.i < 0.25F));
-         } else {
-            $$5 = this.d;
-         }
-
-         float $$7 = this.e(this.i);
-         double $$8 = (double)((float)this.e.j() * $$7);
-         double $$9 = (double)((float)this.e.k() * $$7);
-         double $$10 = (double)((float)this.e.l() * $$7);
-         return eiv.a($$2, $$5.k($$0, $$1).a($$8, $$9, $$10));
+      @Override
+      public void e() {
+         dfx.this.e();
       }
-   }
 
-   public long v() {
-      return this.k;
-   }
-
-   @Override
-   public void a(cqz $$0) {
-      super.a($$0);
-      if ($$0.a(jz.e).a(this.d.b().r().g()).isEmpty()) {
-         this.d = cuc.a.o();
+      @Override
+      public boolean f() {
+         return true;
       }
    }
 }

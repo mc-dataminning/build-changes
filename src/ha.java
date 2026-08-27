@@ -20,30 +20,30 @@ public class ha<T extends dw<T>> implements gx<T> {
    private static final int b = 8;
    private final List<String> c;
    private final Object2ObjectLinkedOpenHashMap<List<String>, gz<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final afw e;
+   private final agg e;
    private final List<ha.a<T>> f;
 
-   public ha(afw $$0, List<ha.a<T>> $$1, List<String> $$2) {
+   public ha(agg $$0, List<ha.a<T>> $$1, List<String> $$2) {
       this.e = $$0;
       this.f = $$1;
       this.c = $$2;
    }
 
    @Override
-   public afw a() {
+   public agg a() {
       return this.e;
    }
 
-   public gz<T> a(@Nullable rt $$0, CommandDispatcher<T> $$1, T $$2) throws dx {
+   public gz<T> a(@Nullable rz $$0, CommandDispatcher<T> $$1, T $$2) throws dx {
       if ($$0 == null) {
-         throw new dx(ui.a("commands.function.error.missing_arguments", ui.a(this.a())));
+         throw new dx(ur.a("commands.function.error.missing_arguments", ur.a(this.a())));
       } else {
          List<String> $$3 = new ArrayList<>(this.c.size());
 
          for (String $$4 : this.c) {
-            sn $$5 = $$0.c($$4);
+            sw $$5 = $$0.c($$4);
             if ($$5 == null) {
-               throw new dx(ui.a("commands.function.error.missing_argument", ui.a(this.a()), $$4));
+               throw new dx(ur.a("commands.function.error.missing_argument", ur.a(this.a()), $$4));
             }
 
             $$3.add(a($$5));
@@ -64,17 +64,17 @@ public class ha<T extends dw<T>> implements gx<T> {
       }
    }
 
-   private static String a(sn $$0) {
-      if ($$0 instanceof rw $$1) {
+   private static String a(sw $$0) {
+      if ($$0 instanceof sc $$1) {
          return a.format((double)$$1.k());
-      } else if ($$0 instanceof ru $$2) {
+      } else if ($$0 instanceof sa $$2) {
          return a.format($$2.j());
-      } else if ($$0 instanceof rr $$3) {
+      } else if ($$0 instanceof rx $$3) {
          return String.valueOf($$3.i());
-      } else if ($$0 instanceof si $$4) {
+      } else if ($$0 instanceof sr $$4) {
          return String.valueOf($$4.h());
       } else {
-         return $$0 instanceof sb $$5 ? String.valueOf($$5.f()) : $$0.s_();
+         return $$0 instanceof sh $$5 ? String.valueOf($$5.f()) : $$0.s_();
       }
    }
 
@@ -98,7 +98,7 @@ public class ha<T extends dw<T>> implements gx<T> {
    interface a<T> {
       IntList a();
 
-      gq<T> a(List<String> var1, CommandDispatcher<T> var2, T var3, afw var4) throws dx;
+      gq<T> a(List<String> var1, CommandDispatcher<T> var2, T var3, agg var4) throws dx;
    }
 
    static class b<T extends dw<T>> implements ha.a<T> {
@@ -115,13 +115,13 @@ public class ha<T extends dw<T>> implements gx<T> {
          return this.b;
       }
 
-      public gq<T> a(List<String> $$0, CommandDispatcher<T> $$1, T $$2, afw $$3) throws dx {
+      public gq<T> a(List<String> $$0, CommandDispatcher<T> $$1, T $$2, agg $$3) throws dx {
          String $$4 = this.a.a($$0);
 
          try {
             return gx.a($$1, $$2, new StringReader($$4));
          } catch (CommandSyntaxException var7) {
-            throw new dx(ui.a("commands.function.error.parse", ui.a($$3), $$4, var7.getMessage()));
+            throw new dx(ur.a("commands.function.error.parse", ur.a($$3), $$4, var7.getMessage()));
          }
       }
    }
@@ -139,7 +139,7 @@ public class ha<T extends dw<T>> implements gx<T> {
       }
 
       @Override
-      public gq<T> a(List<String> $$0, CommandDispatcher<T> $$1, T $$2, afw $$3) {
+      public gq<T> a(List<String> $$0, CommandDispatcher<T> $$1, T $$2, agg $$3) {
          return this.a;
       }
    }

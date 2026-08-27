@@ -1,42 +1,50 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-public abstract class auh extends DataFix {
-   private final String a;
+public interface auh<C> {
+   auh<Float> a = a($$0 -> $$0);
 
-   public auh(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   float a(C var1);
+
+   float b();
+
+   float c();
+
+   static auh<Float> a(final Float2FloatFunction $$0) {
+      return new auh<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
+         }
+
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
+         }
+      };
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(baa.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(baa.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-      }
-   }
+   default <C2> auh<C2> a(final Function<C2, C> $$0) {
+      final auh<C> $$1 = this;
+      return new auh<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
-   }
+         @Override
+         public float b() {
+            return $$1.b();
+         }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
-
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
-   }
-
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

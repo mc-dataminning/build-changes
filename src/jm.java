@@ -5,10 +5,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.joml.Vector3f;
 
 public class jm extends jn {
-   public static final Vector3f a = eif.a(16711680).j();
+   public static final Vector3f a = eji.a(16711680).j();
    public static final jm b = new jm(a, 1.0F);
    public static final Codec<jm> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asg.d.fieldOf("color").forGetter($$0x -> $$0x.g), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)).apply($$0, jm::new)
+      $$0 -> $$0.group(asq.d.fieldOf("color").forGetter($$0x -> $$0x.g), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)).apply($$0, jm::new)
    );
    public static final jq.a<jm> d = new jq.a<jm>() {
       public jm a(jr<jm> $$0, StringReader $$1) throws CommandSyntaxException {
@@ -18,7 +18,7 @@ public class jm extends jn {
          return new jm($$2, $$3);
       }
 
-      public jm a(jr<jm> $$0, tl $$1) {
+      public jm a(jr<jm> $$0, tu $$1) {
          return new jm(jn.b($$1), $$1.readFloat());
       }
    };

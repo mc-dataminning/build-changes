@@ -1,84 +1,51 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dbw extends ctm implements cxg {
+public class dbw extends cyj {
    public static final MapCodec<dbw> a = b(dbw::new);
-   public static final dgz<dhl> b = dgr.bj;
 
    @Override
    public MapCodec<dbw> a() {
       return a;
    }
 
-   protected dbw(dga.d $$0) {
+   public dbw(dgv.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dhl.b));
    }
 
    @Override
-   public ddx a(ht $$0, dgb $$1) {
-      return new dfk($$0, $$1);
-   }
-
-   @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      ddx $$6 = $$1.c_($$2);
-      if ($$6 instanceof dfk) {
-         return ((dfk)$$6).a($$3) ? bib.a($$1.B) : bib.d;
+   public void a(crs $$0, dgw $$1, ht $$2, bki $$3, float $$4) {
+      if ($$3.bT()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
       } else {
-         return bib.d;
+         $$3.a($$4, 0.0F, $$0.ag().k());
       }
    }
 
    @Override
-   public void a(cqz $$0, ht $$1, dgb $$2, @Nullable bkj $$3, ckj $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            ddx $$5 = $$0.c_($$1);
-            if ($$5 instanceof dfk) {
-               ((dfk)$$5).a($$3);
-            }
-         }
+   public void a(cqy $$0, bki $$1) {
+      if ($$1.bT()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(bki $$0) {
+      eji $$1 = $$0.do();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof bky ? 1.0 : 0.8;
+         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
       }
    }
 
    @Override
-   public dae b_(dgb $$0) {
-      return dae.c;
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, cua $$3, ht $$4, boolean $$5) {
-      if ($$1 instanceof alq) {
-         if ($$1.c_($$2) instanceof dfk $$7) {
-            boolean $$8 = $$1.B($$2);
-            boolean $$9 = $$7.G();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((alq)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
+   public void a(crs $$0, ht $$1, dgw $$2, bki $$3) {
+      double $$4 = Math.abs($$3.do().d);
+      if ($$4 < 0.1 && !$$3.bS()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.f($$3.do().d($$5, 1.0, $$5));
       }
-   }
 
-   private void a(alq $$0, dfk $$1) {
-      switch ($$1.y()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.a($$0, false);
-            break;
-         case c:
-            $$1.E();
-         case d:
-      }
+      super.a($$0, $$1, $$2, $$3);
    }
 }

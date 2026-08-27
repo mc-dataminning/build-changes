@@ -1,7 +1,7 @@
-public enum dhi implements atr {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum dhi implements aub {
+   a("none"),
+   b("small"),
+   c("large");
 
    private final String d;
 

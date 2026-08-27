@@ -13,7 +13,7 @@ public class ju implements jq {
          return new ju($$2);
       }
 
-      public ju a(jr<ju> $$0, tl $$1) {
+      public ju a(jr<ju> $$0, tu $$1) {
          return new ju($$1.n());
       }
    };
@@ -24,7 +24,7 @@ public class ju implements jq {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.c(this.c);
    }
 
@@ -35,7 +35,7 @@ public class ju implements jq {
 
    @Override
    public jr<ju> b() {
-      return js.aP;
+      return js.aQ;
    }
 
    public int c() {

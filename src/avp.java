@@ -1,22 +1,28 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
 
 public class avp extends DataFix {
-   public avp(Schema $$0) {
-      super($$0, true);
+   public avp(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(baa.c);
-      OpticFinder<?> $$1 = $$0.findField("sections");
-      return this.fixTypeEverywhereTyped("ChunkDeleteIgnoredLightDataFix", $$0, $$1x -> {
-         boolean $$2 = ((Dynamic)$$1x.get(DSL.remainderFinder())).get("isLightOn").asBoolean(false);
-         return !$$2 ? $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight"))) : $$1x;
-      });
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(ban.y);
+      Type<?> $$1 = this.getOutputSchema().getType(ban.y);
+      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(ban.y.typeName(), DSL.or(DSL.intType(), bbv.a()));
+      Type<Pair<String, String>> $$3 = DSL.named(ban.y.typeName(), bbv.a());
+      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
+         return this.fixTypeEverywhere(
+            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(avs::a, $$0xxxx -> avs.a(bbv.a($$0xxxx))))
+         );
+      } else {
+         throw new IllegalStateException("Expected and actual types don't match.");
+      }
    }
 }

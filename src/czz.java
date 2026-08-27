@@ -1,99 +1,57 @@
 import com.mojang.serialization.MapCodec;
 
-public class czz extends cua {
+public class czz extends cvc {
    public static final MapCodec<czz> a = b(czz::new);
-   public static final dgs b = dac.d;
+   public static final int b = 3;
+   public static final dhw c = dhm.as;
+   private static final ekb[] d = new ekb[]{
+      cut.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      cut.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cut.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      cut.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
    @Override
    public MapCodec<czz> a() {
       return a;
    }
 
-   public czz(dga.d $$0) {
+   protected czz(dgv.d $$0) {
       super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, ccx $$3) {
-      d($$0, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3);
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   public void a(cqz $$0, ht $$1, dgb $$2, bjt $$3) {
-      if (!$$3.bS()) {
-         d($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   protected boolean d(dgw $$0, cqy $$1, ht $$2) {
+      return $$0.a(cuv.dW);
    }
 
    @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      if ($$1.B) {
-         a($$1, $$2);
-      } else {
-         d($$0, $$1, $$2);
-      }
-
-      ckj $$6 = $$3.b($$4);
-      return $$6.d() instanceof cic && new cmr($$3, $$4, $$6, $$5).b() ? bib.d : bib.a;
+   public boolean e_(dgw $$0) {
+      return $$0.c(c) < 3;
    }
 
-   private static void d(dgb $$0, cqz $$1, ht $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
+   @Override
+   public void b(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
    }
 
    @Override
-   public boolean e_(dgb $$0) {
-      return $$0.c(b);
+   public clb a(crv $$0, ht $$1, dgw $$2) {
+      return new clb(cle.rv);
    }
 
    @Override
-   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Override
-   public void a(dgb $$0, alq $$1, ht $$2, ckj $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4 && cov.a(cox.v, $$3) == 0) {
-         int $$5 = 1 + $$1.z.a(5);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(cqz $$0, ht $$1) {
-      double $$2 = 0.5625;
-      ate $$3 = $$0.z;
-
-      for (hx $$4 : hx.values()) {
-         ht $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            hx.a $$6 = $$4.o();
-            double $$7 = $$6 == hx.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == hx.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == hx.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(jm.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(b);
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(c);
    }
 }

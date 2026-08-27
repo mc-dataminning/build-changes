@@ -1,36 +1,20 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dti extends dtk {
-   public static final Codec<dti> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dti::new, $$0 -> $$0.b).codec();
-   private final float b;
+public record dti(dto b, float c) {
+   public static final Codec<dti> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dto.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dti::new)
+   );
 
-   public dti(float $$0) {
-      this.b = $$0;
+   public dto a() {
+      return this.b;
    }
 
-   @Override
-   protected dtl<?> a() {
-      return dtl.c;
-   }
-
-   @Override
-   public void a(dtk.a $$0) {
-      ate $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<ht> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (hx $$3x : hx.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  hx $$4 = $$3x.g();
-                  ht $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, cuc.fC.o().a(cvh.c, Integer.valueOf($$1.a(3))).a(cvh.aE, $$3x));
-                  }
-               }
-            }
-         });
-      }
+   public float b() {
+      return this.c;
    }
 }

@@ -1,70 +1,36 @@
+import com.google.common.primitives.Ints;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.security.SignatureException;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class vm implements uj {
-   public static final MapCodec<vm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, vm::new)
+public record vm(int b, UUID c, UUID d) {
+   public static final Codec<vm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(asq.i.fieldOf("index").forGetter(vm::b), iv.a.fieldOf("sender").forGetter(vm::c), iv.a.fieldOf("session_id").forGetter(vm::d))
+            .apply($$0, vm::new)
    );
-   public static final uj.a<vm> b = new uj.a<>(a, "keybind");
-   private final String c;
+
+   public static vm a(UUID $$0) {
+      return a($$0, ac.d);
+   }
+
+   public static vm a(UUID $$0, UUID $$1) {
+      return new vm(0, $$0, $$1);
+   }
+
+   public void a(ats.a $$0) throws SignatureException {
+      $$0.update(iv.b(this.c));
+      $$0.update(iv.b(this.d));
+      $$0.update(Ints.toByteArray(this.b));
+   }
+
+   public boolean a(vm $$0) {
+      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   }
+
    @Nullable
-   private Supplier<ui> d;
-
-   public vm(String $$0) {
-      this.c = $$0;
-   }
-
-   private ui c() {
-      if (this.d == null) {
-         this.d = vn.a.apply(this.c);
-      }
-
-      return this.d.get();
-   }
-
-   @Override
-   public <T> Optional<T> a(un.a<T> $$0) {
-      return this.c().a($$0);
-   }
-
-   @Override
-   public <T> Optional<T> a(un.b<T> $$0, vf $$1) {
-      return this.c().a($$0, $$1);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof vm $$1 && this.c.equals($$1.c)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.c + "}";
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   @Override
-   public uj.a<?> a() {
-      return b;
+   public vm a() {
+      return this.b == Integer.MAX_VALUE ? null : new vm(this.b + 1, this.c, this.d);
    }
 }

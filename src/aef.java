@@ -1,42 +1,32 @@
-import java.security.PublicKey;
+public class aef implements wk<acj> {
+   private final bip a;
+   private final int b;
 
-public class aef implements wb<aec> {
-   private final String a;
-   private final byte[] b;
-   private final byte[] c;
-
-   public aef(String $$0, byte[] $$1, byte[] $$2) {
+   public aef(bip $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public aef(tl $$0) {
-      this.a = $$0.d(20);
-      this.b = $$0.b();
-      this.c = $$0.b();
+   public aef(tu $$0) {
+      this.a = $$0.b(bip.class);
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.c(this.b);
    }
 
-   public void a(aec $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public bip a() {
       return this.a;
    }
 
-   public PublicKey d() throws ary {
-      return arx.a(this.b);
-   }
-
-   public byte[] e() {
-      return this.c;
+   public int d() {
+      return this.b;
    }
 }

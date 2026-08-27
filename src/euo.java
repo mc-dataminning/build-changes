@@ -1,104 +1,63 @@
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public abstract class euo extends etj {
-   protected final afw a;
-   protected final int b;
-   protected final int c;
+public class euo extends eue {
+   private static final agg a = new agg("widget/checkbox_selected_highlighted");
+   private static final agg b = new agg("widget/checkbox_selected");
+   private static final agg c = new agg("widget/checkbox_highlighted");
+   private static final agg d = new agg("widget/checkbox");
+   private static final int l = 14737632;
+   private boolean m;
+   private final boolean n;
 
-   euo(int $$0, int $$1, ui $$2, int $$3, int $$4, afw $$5, etj.c $$6) {
-      super(0, 0, $$0, $$1, $$2, $$6, o);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public euo(int $$0, int $$1, int $$2, int $$3, ur $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, true);
    }
 
-   public static euo.a a(ui $$0, etj.c $$1, boolean $$2) {
-      return new euo.a($$0, $$1, $$2);
+   public euo(int $$0, int $$1, int $$2, int $$3, ur $$4, boolean $$5, boolean $$6) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   public static class a {
-      private final ui a;
-      private final etj.c b;
-      private final boolean c;
-      private int d = 150;
-      private int e = 20;
-      @Nullable
-      private afw f;
-      private int g;
-      private int h;
+   @Override
+   public void b() {
+      this.m = !this.m;
+   }
 
-      public a(ui $$0, etj.c $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public boolean a() {
+      return this.m;
+   }
 
-      public euo.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public euo.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public euo.a a(afw $$0, int $$1, int $$2) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2;
-         return this;
-      }
-
-      public euo a() {
-         if (this.f == null) {
-            throw new IllegalStateException("Sprite not set");
+   @Override
+   public void a(eyf $$0) {
+      $$0.a(eye.a, this.aL_());
+      if (this.i) {
+         if (this.aI_()) {
+            $$0.a(eye.d, ur.c("narration.checkbox.usage.focused"));
          } else {
-            return (euo)(this.c
-               ? new euo.b(this.d, this.e, this.a, this.g, this.h, this.f, this.b)
-               : new euo.c(this.d, this.e, this.a, this.g, this.h, this.f, this.b));
+            $$0.a(eye.d, ur.c("narration.checkbox.usage.hovered"));
          }
       }
    }
 
-   public static class b extends euo {
-      protected b(int $$0, int $$1, ui $$2, int $$3, int $$4, afw $$5, etj.c $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   @Override
+   public void b(eub $$0, int $$1, int $$2, float $$3) {
+      esr $$4 = esr.N();
+      RenderSystem.enableDepthTest();
+      etz $$5 = $$4.h;
+      $$0.a(1.0F, 1.0F, 1.0F, this.k);
+      RenderSystem.enableBlend();
+      agg $$6;
+      if (this.m) {
+         $$6 = this.aI_() ? a : b;
+      } else {
+         $$6 = this.aI_() ? c : d;
       }
 
-      @Override
-      public void b(esy $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.p() + this.k() / 2 - this.b / 2;
-         int $$5 = this.r() + this.i() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(esy $$0, esw $$1, int $$2) {
-      }
-   }
-
-   public static class c extends euo {
-      protected c(int $$0, int $$1, ui $$2, int $$3, int $$4, afw $$5, etj.c $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-
-      @Override
-      public void b(esy $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.p() + this.k() - this.b - 2;
-         int $$5 = this.r() + this.i() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(esy $$0, esw $$1, int $$2) {
-         int $$3 = this.p() + 2;
-         int $$4 = this.p() + this.k() - this.b - 4;
-         int $$5 = this.p() + this.k() / 2;
-         a($$0, $$1, this.l(), $$5, $$3, this.r(), $$4, this.r() + this.i(), $$2);
+      $$0.a($$6, this.p(), this.r(), 20, this.g);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      if (this.n) {
+         $$0.b($$5, this.l(), this.p() + 24, this.r() + (this.g - 8) / 2, 14737632 | ati.f(this.k * 255.0F) << 24);
       }
    }
 }

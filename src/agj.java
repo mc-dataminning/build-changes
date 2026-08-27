@@ -1,97 +1,80 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
+import com.google.common.collect.Lists;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class agj implements aon {
-   private static final Logger a = LogUtils.getLogger();
-   private static final afp b = new afp("functions", ".mcfunction");
-   private volatile Map<afw, gx<du>> c = ImmutableMap.of();
-   private final ari<gx<du>> d = new ari<>(this::a, "tags/functions");
-   private volatile Map<afw, Collection<gx<du>>> e = Map.of();
-   private final int f;
-   private final CommandDispatcher<du> g;
+public class agj extends IOException {
+   private final List<agj.a> a = Lists.newArrayList();
+   private final String b;
 
-   public Optional<gx<du>> a(afw $$0) {
-      return Optional.ofNullable(this.c.get($$0));
+   public agj(String $$0) {
+      this.a.add(new agj.a());
+      this.b = $$0;
    }
 
-   public Map<afw, gx<du>> a() {
-      return this.c;
+   public agj(String $$0, Throwable $$1) {
+      super($$1);
+      this.a.add(new agj.a());
+      this.b = $$0;
    }
 
-   public Collection<gx<du>> b(afw $$0) {
-      return this.e.getOrDefault($$0, List.of());
+   public void a(String $$0) {
+      this.a.get(0).a($$0);
    }
 
-   public Iterable<afw> b() {
-      return this.e.keySet();
-   }
-
-   public agj(int $$0, CommandDispatcher<du> $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   public void b(String $$0) {
+      this.a.get(0).a = $$0;
+      this.a.add(0, new agj.a());
    }
 
    @Override
-   public CompletableFuture<Void> a(aon.a $$0, aot $$1, bes $$2, bes $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Map<afw, List<ari.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
-      CompletableFuture<Map<afw, CompletableFuture<gx<du>>>> $$7 = CompletableFuture.<Map<afw, aor>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
-         Map<afw, CompletableFuture<gx<du>>> $$2x = Maps.newHashMap();
-         du $$3x = new du(dt.a, eif.b, eie.a, null, this.f, "", uh.a, null, null);
-
-         for (Entry<afw, aor> $$4x : $$1x.entrySet()) {
-            afw $$5x = $$4x.getKey();
-            afw $$6x = b.b($$5x);
-            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
-               List<String> $$3xx = a($$4x.getValue());
-               return gx.a($$6x, this.g, $$3x, $$3xx);
-            }, $$4));
-         }
-
-         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
-         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
-      });
-      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
-         Map<afw, CompletableFuture<gx<du>>> $$1x = (Map<afw, CompletableFuture<gx<du>>>)$$0x.getSecond();
-         Builder<afw, gx<du>> $$2x = ImmutableMap.builder();
-         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
-               if ($$3x != null) {
-                  a.error("Failed to load function {}", $$1xx, $$3x);
-               } else {
-                  $$2x.put($$1xx, $$2xxx);
-               }
-
-               return null;
-            }).join());
-         this.c = $$2x.build();
-         this.e = this.d.a((Map<afw, List<ari.a>>)$$0x.getFirst());
-      }, $$5);
+   public String getMessage() {
+      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
    }
 
-   private static List<String> a(aor $$0) {
-      try {
-         List var2;
-         try (BufferedReader $$1 = $$0.e()) {
-            var2 = $$1.lines().toList();
+   public static agj a(Exception $$0) {
+      if ($$0 instanceof agj) {
+         return (agj)$$0;
+      } else {
+         String $$1 = $$0.getMessage();
+         if ($$0 instanceof FileNotFoundException) {
+            $$1 = "File not found";
          }
 
-         return var2;
-      } catch (IOException var6) {
-         throw new CompletionException(var6);
+         return new agj($$1, $$0);
+      }
+   }
+
+   public static class a {
+      @Nullable
+      String a;
+      private final List<String> b = Lists.newArrayList();
+
+      a() {
+      }
+
+      void a(String $$0) {
+         this.b.add(0, $$0);
+      }
+
+      @Nullable
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return StringUtils.join(this.b, "->");
+      }
+
+      @Override
+      public String toString() {
+         if (this.a != null) {
+            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
+         } else {
+            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+         }
       }
    }
 }

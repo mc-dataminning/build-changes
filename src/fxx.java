@@ -1,13 +1,12 @@
-public abstract class fxx<T extends bjt, M extends ffx<T>> extends fyl<T, M> {
-   public fxx(fvy<T, M> $$0) {
+public class fxx extends ful<cdu> {
+   public static final agg a = new agg("textures/entity/projectiles/arrow.png");
+   public static final agg f = new agg("textures/entity/projectiles/tipped_arrow.png");
+
+   public fxx(fvk.a $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      eml $$10 = $$1.getBuffer(this.a());
-      this.c().a($$0, $$10, 15728640, fzr.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public agg a(cdu $$0) {
+      return $$0.F() > 0 ? f : a;
    }
-
-   public abstract fpj a();
 }

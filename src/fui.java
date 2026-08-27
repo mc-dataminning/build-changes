@@ -1,28 +1,16 @@
-public class fui extends fuc<bzp> {
-   private final fpu a;
+public abstract class fui<T extends cbt, M extends fjt<T>> extends fwb<T, M> {
+   private static final agg a = new agg("textures/entity/zombie/zombie.png");
 
-   public fui(fud.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   protected fui(fvk.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new fzi<>(this, $$2, $$3, $$0.g()));
    }
 
-   public void a(bzp $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      dgb $$6 = $$0.t();
-      if ($$6.l() == dae.c) {
-         cqz $$7 = $$0.dL();
-         if ($$6 != $$7.a_($$0.dl()) && $$6.l() != dae.a) {
-            $$3.a();
-            ht $$8 = ht.a($$0.dq(), $$0.cG().e, $$0.dw());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fow.b($$6)), false, ate.a(), $$6.a($$0.q()), fzr.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
-      }
+   public agg a(cbt $$0) {
+      return a;
    }
 
-   public afw a(bzp $$0) {
-      return fzz.e;
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gl();
    }
 }

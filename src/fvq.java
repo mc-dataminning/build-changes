@@ -1,24 +1,27 @@
-public class fvq extends fvj<can, fgy<can>> {
-   private static final afw a = new afw("textures/entity/phantom.png");
+public class fvq extends fvj<cdz> {
+   private final fwi a;
 
-   public fvq(fud.a $$0) {
-      super($$0, new fgy<>($$0.a(fiv.aB)), 0.75F);
-      this.a(new fyj<>(this));
+   public fvq(fvk.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public afw a(can $$0) {
-      return a;
+   public void a(cdz $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      if ($$0.s()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.q(), cky.h, $$5, gay.d, $$3, $$4, $$0.dL(), $$0.ah());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected void a(can $$0, emh $$1, float $$2) {
-      int $$3 = $$0.s();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(can $$0, emh $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      $$1.a(a.b.rotationDegrees($$0.dD()));
+   public agg a(cdz $$0) {
+      return gbg.e;
    }
 }

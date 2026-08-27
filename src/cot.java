@@ -1,147 +1,98 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class cot {
-   private final bjy[] a;
-   private final cot.a b;
-   public final cou e;
-   @Nullable
-   protected String f;
-   private final ib.c<cot> c = jy.g.f(this);
+public abstract class cot implements cof<bij> {
+   protected final coc a;
+   protected final clb b;
+   private final cok<?> d;
+   private final coj<?> e;
+   protected final String c;
 
-   @Nullable
-   public static cot c(int $$0) {
-      return jy.g.a($$0);
-   }
-
-   protected cot(cot.a $$0, cou $$1, bjy[] $$2) {
-      this.b = $$0;
+   public cot(cok<?> $$0, coj<?> $$1, String $$2, coc $$3, clb $$4) {
+      this.d = $$0;
       this.e = $$1;
-      this.a = $$2;
+      this.c = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
-   public Map<bjy, ckj> a(bkj $$0) {
-      Map<bjy, ckj> $$1 = Maps.newEnumMap(bjy.class);
-
-      for (bjy $$2 : this.a) {
-         ckj $$3 = $$0.c($$2);
-         if (!$$3.b()) {
-            $$1.put($$2, $$3);
-         }
-      }
-
-      return $$1;
+   @Override
+   public cok<?> e() {
+      return this.d;
    }
 
-   public cot.a d() {
-      return this.b;
+   @Override
+   public coj<?> aq_() {
+      return this.e;
    }
 
-   public int e() {
-      return 1;
-   }
-
-   public int a() {
-      return 1;
-   }
-
-   public int a(int $$0) {
-      return 1 + $$0 * 10;
-   }
-
-   public int b(int $$0) {
-      return this.a($$0) + 5;
-   }
-
-   public int a(int $$0, bir $$1) {
-      return 0;
-   }
-
-   public float a(int $$0, bko $$1) {
-      return 0.0F;
-   }
-
-   public final boolean b(cot $$0) {
-      return this.a($$0) && $$0.a(this);
-   }
-
-   protected boolean a(cot $$0) {
-      return this != $$0;
-   }
-
-   protected String f() {
-      if (this.f == null) {
-         this.f = ac.a("enchantment", jy.g.b(this));
-      }
-
-      return this.f;
-   }
-
-   public String g() {
-      return this.f();
-   }
-
-   public ui d(int $$0) {
-      uw $$1 = ui.c(this.g());
-      if (this.c()) {
-         $$1.a(n.m);
-      } else {
-         $$1.a(n.h);
-      }
-
-      if ($$0 != 1 || this.a() != 1) {
-         $$1.b(uh.u).b(ui.c("enchantment.level." + $$0));
-      }
-
-      return $$1;
-   }
-
-   public boolean a(ckj $$0) {
-      return this.e.a($$0.d());
-   }
-
-   public void a(bkj $$0, bjt $$1, int $$2) {
-   }
-
-   public void b(bkj $$0, bjt $$1, int $$2) {
-   }
-
-   public boolean b() {
-      return false;
-   }
-
-   public boolean c() {
-      return false;
-   }
-
-   public boolean h() {
-      return true;
-   }
-
-   public boolean i() {
-      return true;
-   }
-
-   @Deprecated
-   public ib.c<cot> j() {
+   @Override
+   public String c() {
       return this.c;
    }
 
-   public static enum a {
-      a(10),
-      b(5),
-      c(2),
-      d(1);
+   @Override
+   public clb a(ip $$0) {
+      return this.b;
+   }
 
-      private final int e;
+   @Override
+   public il<coc> a() {
+      il<coc> $$0 = il.a();
+      $$0.add(this.a);
+      return $$0;
+   }
 
-      private a(int $$0) {
-         this.e = $$0;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public clb a(bij $$0, ip $$1) {
+      return this.b.p();
+   }
+
+   public static class a<T extends cot> implements coj<T> {
+      private static final MapCodec<clb> y = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(jy.i.q().fieldOf("result").forGetter(clb::d), Codec.INT.fieldOf("count").forGetter(clb::L)).apply($$0, clb::new)
+      );
+      final cot.a.a<T> x;
+      private final Codec<T> z;
+
+      protected a(cot.a.a<T> $$0) {
+         this.x = $$0;
+         this.z = RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     asq.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                     coc.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
+                     y.forGetter($$0xx -> $$0xx.b)
+                  )
+                  .apply($$1, $$0::create)
+         );
       }
 
-      public int a() {
-         return this.e;
+      @Override
+      public Codec<T> a() {
+         return this.z;
+      }
+
+      public T b(tu $$0) {
+         String $$1 = $$0.s();
+         coc $$2 = coc.b($$0);
+         clb $$3 = $$0.r();
+         return this.x.create($$1, $$2, $$3);
+      }
+
+      public void a(tu $$0, T $$1) {
+         $$0.a($$1.c);
+         $$1.a.a($$0);
+         $$0.a($$1.b);
+      }
+
+      interface a<T extends cot> {
+         T create(String var1, coc var2, clb var3);
       }
    }
 }

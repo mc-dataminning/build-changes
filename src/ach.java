@@ -1,36 +1,93 @@
-import java.time.Instant;
+import java.util.UUID;
 
-public record ach(String a, Instant b, long c, ea d, up.b e) implements wb<aca> {
-   public ach(tl $$0) {
-      this($$0.d(256), $$0.w(), $$0.readLong(), new ea($$0), new up.b($$0));
+public class ach {
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
+
+   public static String a(bki $$0) {
+      if ($$0 instanceof cdm) {
+         return $$0.ab().getString();
+      } else {
+         ur $$1 = $$0.ad();
+         return $$1 != null ? $$1.getString() : a($$0.cv());
+      }
    }
 
-   @Override
-   public void a(tl $$0) {
-      $$0.a(this.a, 256);
-      $$0.a(this.b);
-      $$0.b(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   public static String a(UUID $$0) {
+      ato $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
    }
 
-   public void a(aca $$0) {
-      $$0.a(this);
+   private static String a(ato $$0, String[] $$1) {
+      return ac.a($$1, $$0);
    }
 
-   public Instant d() {
-      return this.b;
-   }
-
-   public long e() {
-      return this.c;
-   }
-
-   public ea f() {
-      return this.d;
-   }
-
-   public up.b g() {
-      return this.e;
+   private static ato b(UUID $$0) {
+      return ato.a((long)($$0.hashCode() >> 2));
    }
 }

@@ -1,18 +1,8 @@
-public enum cnc implements atr {
-   a("building"),
-   b("redstone"),
-   c("equipment"),
-   d("misc");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static final atr.a<cnc> e = atr.a(cnc::values);
-   private final String f;
-
-   private cnc(String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cnc {
 }

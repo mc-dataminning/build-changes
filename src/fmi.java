@@ -1,49 +1,85 @@
-public class fmi extends fnq {
-   private final fnl a;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
 
-   protected fmi(fjr $$0, double $$1, double $$2, double $$3, double $$4, fnl $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+public final class fmi {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final fmi c = new fmi(HostAndPort.fromParts("server.invalid", 25565));
+
+   public fmi(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   private fmi(HostAndPort $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
+   }
+
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static fmi a(String $$0) {
+      if ($$0 == null) {
+         return c;
       } else {
-         this.b(this.a);
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new fmi($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
+      }
+   }
+
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
+      }
+
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
       }
    }
 
    @Override
-   public fmu b() {
-      return fmu.d;
+   public String toString() {
+      return this.b.toString();
    }
 
-   public static class a implements fmt<jv> {
-      private final fnl a;
-
-      public a(fnl $$0) {
-         this.a = $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fmi ? this.b.equals(((fmi)$$0).b) : false;
       }
+   }
 
-      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fmi($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

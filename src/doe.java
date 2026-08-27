@@ -1,34 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class doe extends dod {
-   public doe(Codec<dqz> $$0) {
-      super($$0);
+public class doe {
+   public static final doe a = new doe(false, cuv.gz.o(), cuv.pL.o(), cuv.ej.o(), cuv.aQ.o());
+   public static final Codec<doe> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(doe::a),
+               dgw.b.optionalFieldOf("air_state", a.b()).forGetter(doe::b),
+               dgw.b.optionalFieldOf("water_state", a.b()).forGetter(doe::c),
+               dgw.b.optionalFieldOf("lava_state", a.b()).forGetter(doe::d),
+               dgw.b.optionalFieldOf("barrier_state", a.b()).forGetter(doe::e)
+            )
+            .apply($$0, doe::new)
+   );
+   private final boolean c;
+   private final dgw d;
+   private final dgw e;
+   private final dgw f;
+   private final dgw g;
+
+   public static doe a(boolean $$0, dgw $$1, dgw $$2, dgw $$3, dgw $$4) {
+      return new doe($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   protected boolean a(cra $$0, ate $$1, ht $$2, dgb $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      ht.a $$8 = $$2.j();
+   public static doe a(dgw $$0, dgw $$1, dgw $$2, dgw $$3) {
+      return new doe(false, $$0, $$1, $$2, $$3);
+   }
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(hx.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
-               }
-            }
-         }
-      }
+   public static doe a(boolean $$0, dgw $$1) {
+      return new doe($$0, $$1, a.c(), a.d(), a.e());
+   }
 
-      return true;
+   private doe(boolean $$0, dgw $$1, dgw $$2, dgw $$3, dgw $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   public dgw b() {
+      return this.d;
+   }
+
+   public dgw c() {
+      return this.e;
+   }
+
+   public dgw d() {
+      return this.f;
+   }
+
+   public dgw e() {
+      return this.g;
    }
 }

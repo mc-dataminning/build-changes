@@ -1,41 +1,51 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cyq extends cxu {
-   public static final MapCodec<cyq> a = b(cyq::new);
-   private static final ui b = ui.c("container.loom");
+public class cyq extends cyj {
+   public static final MapCodec<cyq> e = b(cyq::new);
 
    @Override
-   public MapCodec<cyq> a() {
-      return a;
+   public MapCodec<? extends cyq> a() {
+      return e;
    }
 
-   protected cyq(dga.d $$0) {
+   public cyq(dgv.d $$0) {
       super($$0);
    }
 
+   public static dgw b() {
+      return cuv.G.o();
+   }
+
    @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      if ($$1.B) {
-         return bib.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(aqn.ax);
-         return bib.b;
+   public void a(crs $$0, cdm $$1, ht $$2, dgw $$3, @Nullable der $$4, clb $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (cpo.a(cpq.v, $$5) == 0) {
+         if ($$0.D_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
+
+         dgw $$6 = $$0.a_($$2.d());
+         if ($$6.d() || $$6.k()) {
+            $$0.b($$2, b());
+         }
       }
    }
 
    @Override
-   public bie b(dgb $$0, cqz $$1, ht $$2) {
-      return new bij(($$2x, $$3, $$4) -> new cgs($$2x, $$3, cga.a($$1, $$2)), b);
+   public void b(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      if ($$1.a(csb.b, $$2) > 11 - $$0.b($$1, $$2)) {
+         this.d($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public dgb a(cmr $$0) {
-      return this.o().a(aE, $$0.g().g());
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(aE);
+   protected void d(dgw $$0, crs $$1, ht $$2) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.a($$2, b().b(), $$2);
+      }
    }
 }

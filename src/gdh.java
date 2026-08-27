@@ -1,66 +1,70 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gdh implements JsonDeserializer<gdg> {
-   private static final bhe a = bhc.a(1.0F);
+public class gdh implements AutoCloseable {
+   private final Map<agg, gdh.a> a;
 
-   public gdg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = aso.m($$0, "entry");
-      boolean $$4 = aso.a($$3, "replace", false);
-      String $$5 = aso.a($$3, "subtitle", null);
-      List<gdf> $$6 = this.a($$3);
-      return new gdg($$6, $$4, $$5);
+   public gdh(Map<agg, agg> $$0, gbi $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         gbg $$2 = new gbg((agg)$$1x.getKey());
+         $$1.a((agg)$$1x.getKey(), $$2);
+         return new gdh.a($$2, (agg)$$1x.getValue());
+      }));
    }
 
-   private List<gdf> a(JsonObject $$0) {
-      List<gdf> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = aso.v($$0, "sounds");
+   public gbg a(agg $$0) {
+      return this.a.get($$0).a();
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (aso.a($$4)) {
-               String $$5 = aso.a($$4, "sound");
-               $$1.add(new gdf($$5, a, a, 1, gdf.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(aso.m($$4, "sound")));
-            }
-         }
+   @Override
+   public void close() {
+      this.a.values().forEach(gdh.a::close);
+      this.a.clear();
+   }
+
+   public Map<agg, CompletableFuture<gdh.b>> a(apd $$0, int $$1, Executor $$2) {
+      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
+         gdh.a $$4 = $$3.getValue();
+         return gbc.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new gdh.b($$4.a, $$1xx));
+      }));
+   }
+
+   static record a(gbg a, agg b) implements AutoCloseable {
+
+      @Override
+      public void close() {
+         this.a.f();
+      }
+   }
+
+   public static class b {
+      private final gbg a;
+      private final gbc.a b;
+
+      public b(gbg $$0, gbc.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$1;
-   }
-
-   private gdf b(JsonObject $$0) {
-      String $$1 = aso.i($$0, "name");
-      gdf.a $$2 = this.a($$0, gdf.a.a);
-      float $$3 = aso.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = aso.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = aso.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = aso.a($$0, "preload", false);
-      boolean $$7 = aso.a($$0, "stream", false);
-      int $$8 = aso.a($$0, "attenuation_distance", 16);
-      return new gdf($$1, bhc.a($$3), bhc.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private gdf.a a(JsonObject $$0, gdf.a $$1) {
-      gdf.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = gdf.a.a(aso.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
+      @Nullable
+      public gbh a(agg $$0) {
+         return this.b.f().get($$0);
       }
 
-      return $$2;
+      public gbh a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
+      }
    }
 }

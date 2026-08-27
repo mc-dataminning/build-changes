@@ -1,48 +1,25 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnz extends doo<dqz> {
-   public dnz(Codec<dqz> $$0) {
-      super($$0);
+public class dnz implements dnm {
+   public static final Codec<dnz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(iw.v(16).optionalFieldOf("offset", iw.g).forGetter($$0x -> $$0x.e), dgw.b.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, dnz::new)
+   );
+   private final iw e;
+   private final dgw f;
+
+   protected dnz(iw $$0, dgw $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(csm $$0, ht $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
    @Override
-   public boolean a(doq<dqz> $$0) {
-      ate $$1 = $$0.d();
-      crt $$2 = $$0.b();
-      cqg $$3 = new cqg($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      ht.a $$6 = new ht.a();
-      IntListIterator var8 = $$4.iterator();
-
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            ht $$9 = $$2.a(dlk.a.f, $$6);
-            if ($$2.t($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, cuc.cv.o(), 2);
-               dfa.a($$2, $$1, $$9, edg.b);
-               dgb $$10 = cuc.cp.o();
-
-               for (hx $$11 : hx.c.a) {
-                  ht $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public dnn<?> a() {
+      return dnn.g;
    }
 }

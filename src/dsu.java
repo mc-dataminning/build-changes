@@ -1,24 +1,42 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dsu<P extends dst> {
-   public static final dsu<dtc> a = a("simple_state_provider", dtc.b);
-   public static final dsu<dtd> b = a("weighted_state_provider", dtd.b);
-   public static final dsu<dsy> c = a("noise_threshold_provider", dsy.b);
-   public static final dsu<dsx> d = a("noise_provider", dsx.g);
-   public static final dsu<dsv> e = a("dual_noise_provider", dsv.b);
-   public static final dsu<dta> f = a("rotated_block_provider", dta.b);
-   public static final dsu<dsz> g = a("randomized_int_state_provider", dsz.b);
-   private final Codec<P> h;
+public class dsu extends dsz {
+   public static final Codec<dsu> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsu::new));
+   protected final int b;
 
-   private static <P extends dst> dsu<P> a(String $$0, Codec<P> $$1) {
-      return io.a(jy.W, $$0, new dsu<>($$1));
+   protected static <P extends dsu> P3<Mu<P>, bhv, bhv, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
    }
 
-   private dsu(Codec<P> $$0) {
-      this.h = $$0;
+   public dsu(bhv $$0, bhv $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public Codec<P> a() {
-      return this.h;
+   @Override
+   protected dta<?> a() {
+      return dta.a;
+   }
+
+   @Override
+   protected void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, int $$4, dsz.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   public int a(ato $$0, int $$1, dsj $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(ato $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

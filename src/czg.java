@@ -1,63 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public class czg extends cua implements cud {
+public class czg extends cut implements dbt {
    public static final MapCodec<czg> a = b(czg::new);
+   public static final int b = 15;
+   public static final dhw c = dhm.aP;
+   public static final dhn d = dhm.C;
+   public static final ToIntFunction<dgw> e = $$0 -> $$0.c(c);
 
    @Override
    public MapCodec<czg> a() {
       return a;
    }
 
-   public czg(dga.d $$0) {
+   public czg(dgv.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(crc $$0, ht $$1, dgb $$2) {
-      if (!$$0.a_($$1.c()).a((cqf)$$0, $$1)) {
-         return false;
-      } else {
-         for (ht $$3 : ht.a($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(aqs.aK)) {
-               return true;
-            }
-         }
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(c, d);
+   }
 
-         return false;
+   @Override
+   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
+      if (!$$1.B && $$3.gp()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return biq.a;
+      } else {
+         return biq.b;
       }
    }
 
    @Override
-   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return $$3.a(cle.hg) ? ejy.b() : ejy.a();
+   }
+
+   @Override
+   public boolean c(dgw $$0, cqy $$1, ht $$2) {
       return true;
    }
 
    @Override
-   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
+   public day b_(dgw $$0) {
+      return day.a;
+   }
 
-      for (ht $$6 : ht.a($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dgb $$7 = $$0.a_($$6);
-         if ($$7.a(cuc.on)) {
-            $$5 = true;
-         }
+   @Override
+   public float b(dgw $$0, cqy $$1, ht $$2) {
+      return 1.0F;
+   }
 
-         if ($$7.a(cuc.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
+   @Override
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, ech.c, ech.c.a($$3));
       }
 
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? cuc.on.o() : cuc.ow.o(), 3);
-      } else if ($$5) {
-         $$0.a($$2, cuc.on.o(), 3);
-      } else if ($$4) {
-         $$0.a($$2, cuc.ow.o(), 3);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public ecg c_(dgw $$0) {
+      return $$0.c(d) ? ech.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public clb a(crv $$0, ht $$1, dgw $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(c));
+   }
+
+   public static clb a(clb $$0, int $$1) {
+      if ($$1 != 15) {
+         rz $$2 = new rz();
+         $$2.a(c.f(), String.valueOf($$1));
+         $$0.a("BlockStateTag", $$2);
       }
+
+      return $$0;
    }
 }

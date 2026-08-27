@@ -1,51 +1,54 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public abstract class gfa {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
+public interface gfa<T> {
+   static <T> gfa<T> a() {
+      return new gfa<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
+         }
 
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   public void a(geu $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
+   static <T> gfa<T> a(List<T> $$0, Function<T, Stream<agg>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final gfd<T> $$2 = new gfd<>();
+         final gfd<T> $$3 = new gfd<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new gfa<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
-
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
-      }
    }
 
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
-   }
+   List<T> a(String var1);
 
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(geu var1);
+   List<T> b(String var1);
 }

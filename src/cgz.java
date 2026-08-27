@@ -1,28 +1,22 @@
-public abstract class cgz<C extends bhu> extends cfp {
-   public cgz(cgu<?> $$0, int $$1) {
-      super($$0, $$1);
-   }
+public class cgz extends chz {
+   private final cgf a;
 
-   public void a(boolean $$0, cno<?> $$1, alr $$2) {
-      new afk<>(this).a($$2, (cno<? extends cnn<C>>)$$1, $$0);
+   public cgz(cgf $$0, bij $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
-
-   public abstract void a(cdb var1);
 
    @Override
-   public abstract void l();
+   public boolean a(clb $$0) {
+      return this.a.d($$0) || c($$0);
+   }
 
-   public abstract boolean a(cno<? extends cnn<C>> var1);
+   @Override
+   public int a_(clb $$0) {
+      return c($$0) ? 1 : super.a_($$0);
+   }
 
-   public abstract int m();
-
-   public abstract int n();
-
-   public abstract int o();
-
-   public abstract int p();
-
-   public abstract cha t();
-
-   public abstract boolean e(int var1);
+   public static boolean c(clb $$0) {
+      return $$0.a(cle.pK);
+   }
 }

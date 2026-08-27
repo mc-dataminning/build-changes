@@ -1,7 +1,7 @@
 public interface dt {
    dt a = new dt() {
       @Override
-      public void a(ui $$0) {
+      public void a(ur $$0) {
       }
 
       @Override
@@ -20,7 +20,7 @@ public interface dt {
       }
    };
 
-   void a(ui var1);
+   void a(ur var1);
 
    boolean k_();
 

@@ -1,39 +1,80 @@
-public class bzh extends bzj {
-   public bzh(bjx<? extends bzj> $$0, cqz $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public bzh(cqz $$0, ht $$1, hx $$2) {
-      super(bjx.S, $$0, $$1, $$2);
-   }
+public class bzh extends bzb {
+   private static final bvk b = bvk.a().d();
+   @Nullable
+   private ecv c;
+   @Nullable
+   private eji d;
 
-   @Override
-   public aqc q() {
-      return aqd.jz;
-   }
-
-   @Override
-   public aqc s() {
-      return aqd.jx;
+   public bzh(byz $$0) {
+      super($$0);
    }
 
    @Override
-   public aqc t() {
-      return aqd.jy;
+   public bzp<bzh> i() {
+      return bzp.c;
    }
 
    @Override
-   public aqc v() {
-      return aqd.jw;
+   public void d() {
+      this.c = null;
+      this.d = null;
    }
 
    @Override
-   public aqc w() {
-      return aqd.jA;
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dq(), this.a.ds(), this.a.dw());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+         this.j();
+      }
    }
 
+   @Nullable
    @Override
-   protected ckj x() {
-      return new ckj(ckm.tj);
+   public eji g() {
+      return this.d;
+   }
+
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.y();
+         ht $$1 = this.a.dL().a(dmf.a.f, dpi.a(this.a.s()));
+         cdm $$2 = this.a.dL().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            eji $$3 = new eji($$2.dq(), 0.0, $$2.dw()).d();
+            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
+         } else {
+            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
+         }
+
+         ect $$6 = new ect($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gb().a(bzp.d);
+      }
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         iw $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new eji($$1, $$3, $$2);
+      }
    }
 }

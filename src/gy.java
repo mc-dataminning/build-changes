@@ -54,7 +54,7 @@ class gy<T extends dw<T>> {
       this.b.add(new ha.b<>($$2, this.a($$2.b())));
    }
 
-   public gx<T> a(afw $$0) {
+   public gx<T> a(agg $$0) {
       return (gx<T>)(this.b != null ? new ha<>($$0, this.b, this.c) : new hb<>($$0, this.a));
    }
 }

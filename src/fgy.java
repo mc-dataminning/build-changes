@@ -1,52 +1,51 @@
-public class fgy<T extends can> extends fgg<T> {
-   private static final String a = "tail_base";
-   private static final String b = "tail_tip";
-   private final fiw f;
-   private final fiw g;
-   private final fiw h;
-   private final fiw i;
-   private final fiw j;
-   private final fiw k;
-   private final fiw l;
-
-   public fgy(fiw $$0) {
-      this.f = $$0;
-      fiw $$1 = $$0.b("body");
-      this.k = $$1.b("tail_base");
-      this.l = this.k.b("tail_tip");
-      this.g = $$1.b("left_wing_base");
-      this.h = this.g.b("left_wing_tip");
-      this.i = $$1.b("right_wing_base");
-      this.j = this.i.b("right_wing_tip");
+public class fgy<T extends cbt> extends fjt<T> {
+   public fgy(fkb $$0) {
+      super($$0);
    }
 
-   public static fjc b() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      fjf $$2 = $$1.a("body", fjb.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), fiy.b(-0.1F, 0.0F, 0.0F));
-      fjf $$3 = $$2.a("tail_base", fjb.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), fiy.a(0.0F, -2.0F, 1.0F));
-      $$3.a("tail_tip", fjb.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), fiy.a(0.0F, 0.5F, 6.0F));
-      fjf $$4 = $$2.a("left_wing_base", fjb.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fiy.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
-      $$4.a("left_wing_tip", fjb.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fiy.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
-      fjf $$5 = $$2.a("right_wing_base", fjb.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fiy.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
-      $$5.a("right_wing_tip", fjb.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fiy.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
-      $$2.a("head", fjb.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), fiy.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
-      return fjc.a($$0, 64, 64);
+   public static fkh a(fkf $$0) {
+      fkj $$1 = fhp.a($$0, 0.0F);
+      fkk $$2 = $$1.a();
+      $$2.a("left_arm", fkg.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fkd.a(5.0F, 2.0F, 0.0F));
+      $$2.a("left_leg", fkg.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fkd.a(1.9F, 12.0F, 0.0F));
+      return fkh.a($$1, 64, 64);
    }
 
-   @Override
-   public fiw a() {
-      return this.f;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = fhp.a.a;
+      this.r = fhp.a.a;
+      clb $$4 = $$0.b(bip.a);
+      if ($$4.a(cle.uW) && $$0.fW()) {
+         if ($$0.fm() == bks.b) {
+            this.s = fhp.a.e;
+         } else {
+            this.r = fhp.a.e;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = ((float)$$0.t() + $$3) * 7.448451F * (float) (Math.PI / 180.0);
-      float $$7 = 16.0F;
-      this.g.g = asy.b($$6) * 16.0F * (float) (Math.PI / 180.0);
-      this.h.g = asy.b($$6) * 16.0F * (float) (Math.PI / 180.0);
-      this.i.g = -this.g.g;
-      this.j.g = -this.h.g;
-      this.k.e = -(5.0F + asy.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
-      this.l.e = -(5.0F + asy.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (this.r == fhp.a.e) {
+         this.o.e = this.o.e * 0.5F - (float) Math.PI;
+         this.o.f = 0.0F;
+      }
+
+      if (this.s == fhp.a.e) {
+         this.n.e = this.n.e * 0.5F - (float) Math.PI;
+         this.n.f = 0.0F;
+      }
+
+      if (this.u > 0.0F) {
+         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * ati.a(0.1F * $$3);
+         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * ati.a(0.1F * $$3);
+         this.n.g = this.a(this.u, this.n.g, -0.15F);
+         this.o.g = this.a(this.u, this.o.g, 0.15F);
+         this.q.e = this.q.e - this.u * 0.55F * ati.a(0.1F * $$3);
+         this.p.e = this.p.e + this.u * 0.55F * ati.a(0.1F * $$3);
+         this.k.e = 0.0F;
+      }
    }
 }

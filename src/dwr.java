@@ -1,92 +1,106 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
 import java.util.Locale;
+import org.slf4j.Logger;
 
-public interface dwr {
-   dwr a = a(dxw.a::new, "MSCorridor");
-   dwr b = a(dxw.b::new, "MSCrossing");
-   dwr c = a(dxw.d::new, "MSRoom");
-   dwr d = a(dxw.e::new, "MSStairs");
-   dwr e = a(dxy.a::new, "NeBCr");
-   dwr f = a(dxy.b::new, "NeBEF");
-   dwr g = a(dxy.c::new, "NeBS");
-   dwr h = a(dxy.d::new, "NeCCS");
-   dwr i = a(dxy.e::new, "NeCTB");
-   dwr j = a(dxy.f::new, "NeCE");
-   dwr k = a(dxy.g::new, "NeSCSC");
-   dwr l = a(dxy.h::new, "NeSCLT");
-   dwr m = a(dxy.i::new, "NeSC");
-   dwr n = a(dxy.j::new, "NeSCRT");
-   dwr o = a(dxy.k::new, "NeCSR");
-   dwr p = a(dxy.l::new, "NeMT");
-   dwr q = a(dxy.o::new, "NeRC");
-   dwr r = a(dxy.p::new, "NeSR");
-   dwr s = a(dxy.q::new, "NeStart");
-   dwr t = a(dyk.a::new, "SHCC");
-   dwr u = a(dyk.b::new, "SHFC");
-   dwr v = a(dyk.c::new, "SH5C");
-   dwr w = a(dyk.d::new, "SHLT");
-   dwr x = a(dyk.e::new, "SHLi");
-   dwr y = a(dyk.g::new, "SHPR");
-   dwr z = a(dyk.h::new, "SHPH");
-   dwr A = a(dyk.i::new, "SHRT");
-   dwr B = a(dyk.j::new, "SHRC");
-   dwr C = a(dyk.l::new, "SHSD");
-   dwr D = a(dyk.m::new, "SHStart");
-   dwr E = a(dyk.n::new, "SHS");
-   dwr F = a(dyk.o::new, "SHSSD");
-   dwr G = a(dxu::new, "TeJP");
-   dwr H = a(dye.a::a, "ORP");
-   dwr I = a(dxr.a::new, "Iglu");
-   dwr J = a(dyg::new, "RUPO");
-   dwr K = a(dym::new, "TeSH");
-   dwr L = a(dxn::new, "TeDP");
-   dwr M = a(dyc.h::new, "OMB");
-   dwr N = a(dyc.j::new, "OMCR");
-   dwr O = a(dyc.k::new, "OMDXR");
-   dwr P = a(dyc.l::new, "OMDXYR");
-   dwr Q = a(dyc.m::new, "OMDYR");
-   dwr R = a(dyc.n::new, "OMDYZR");
-   dwr S = a(dyc.o::new, "OMDZR");
-   dwr T = a(dyc.p::new, "OMEntry");
-   dwr U = a(dyc.q::new, "OMPenthouse");
-   dwr V = a(dyc.s::new, "OMSimple");
-   dwr W = a(dyc.t::new, "OMSimpleT");
-   dwr X = a(dyc.u::new, "OMWR");
-   dwr Y = a(dxp.a::new, "ECP");
-   dwr Z = a(dyo.i::new, "WMP");
-   dwr aa = a(dxl.a::new, "BTP");
-   dwr ab = a(dyi.a::new, "Shipwreck");
-   dwr ac = a(dya.a::new, "NeFos");
-   dwr ad = a(dvw::new, "jigsaw");
+public class dwr extends dwz {
+   private static final Logger d = LogUtils.getLogger();
+   protected final dyc a;
+   protected ht b;
+   private final int h;
+   protected final dbf c;
+   private final List<dxx> i = Lists.newArrayList();
+   private final eaw j;
 
-   dwe load(dwq var1, rt var2);
-
-   private static dwr a(dwr $$0, String $$1) {
-      return io.a(jy.T, $$1.toLowerCase(Locale.ROOT), $$0);
+   public dwr(eaw $$0, dyc $$1, ht $$2, int $$3, dbf $$4, dwn $$5) {
+      super(dxm.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
    }
 
-   private static dwr a(dwr.a $$0, String $$1) {
-      return a((dwr)$$0, $$1);
+   public dwr(dxl $$0, rz $$1) {
+      super(dxm.ad, $$1);
+      this.j = $$0.c();
+      this.b = new ht($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<sw> $$2 = age.a(sn.a, $$0.b());
+      this.a = (dyc)dyc.e
+         .parse($$2, $$1.p("pool_element"))
+         .resultOrPartial(d::error)
+         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
+      this.c = dbf.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      sf $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(dxx.a(new Dynamic($$2, $$1x))));
    }
 
-   private static dwr a(dwr.b $$0, String $$1) {
-      return a((dwr)$$0, $$1);
-   }
+   @Override
+   protected void a(dxl $$0, rz $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<sw> $$2 = age.a(sn.a, $$0.b());
+      dyc.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      sf $$3 = new sf();
 
-   public interface a extends dwr {
-      dwe load(rt var1);
-
-      @Override
-      default dwe load(dwq $$0, rt $$1) {
-         return this.load($$1);
+      for (dxx $$4 : this.i) {
+         $$3.add((sw)$$4.a($$2).getValue());
       }
+
+      $$1.a("junctions", $$3);
    }
 
-   public interface b extends dwr {
-      dwe load(dzu var1, rt var2);
+   @Override
+   public void a(csm $$0, csk $$1, dit $$2, ato $$3, dwn $$4, cqz $$5, ht $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
+   }
 
-      @Override
-      default dwe load(dwq $$0, rt $$1) {
-         return this.load($$0.c(), $$1);
-      }
+   public void a(csm $$0, csk $$1, dit $$2, ato $$3, dwn $$4, ht $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public dbf a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
+   }
+
+   public dyc b() {
+      return this.a;
+   }
+
+   public ht c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(dxx $$0) {
+      this.i.add($$0);
+   }
+
+   public List<dxx> e() {
+      return this.i;
    }
 }

@@ -1,21 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bpw {
-   public static <E extends ccb> bmb<E> a(Function<E, Optional<? extends bkj>> $$0) {
-      return bpm.a(
-         (Function<bpm.b<E>, ? extends App<bpm.c<E>, bpp<E>>>)($$1 -> $$1.group($$1.c(btk.ax), $$1.c(btk.o), $$1.a(btk.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends bkj> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::a).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+public class bpw extends bmp<ccz> {
+   public bpw() {
+      super(ImmutableMap.of());
+   }
+
+   protected boolean a(ama $$0, ccz $$1, long $$2) {
+      return c($$1) || b($$1);
+   }
+
+   protected void b(ama $$0, ccz $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bly<?> $$3 = $$1.dN();
+         if (!$$3.c(cex.g)) {
+            $$3.b(btz.t);
+            $$3.b(btz.m);
+            $$3.b(btz.n);
+            $$3.b(btz.r);
+            $$3.b(btz.q);
+         }
+
+         $$3.a(cex.g);
+      }
+   }
+
+   protected void c(ama $$0, ccz $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
+      }
+   }
+
+   public static boolean b(bky $$0) {
+      return $$0.dN().a(btz.A);
+   }
+
+   public static boolean c(bky $$0) {
+      return $$0.dN().a(btz.x);
    }
 }

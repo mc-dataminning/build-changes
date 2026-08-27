@@ -1,186 +1,71 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class ezp extends eyy {
+   private eum c;
 
-public class ezp {
-   private final ero a;
-   private final ezt b;
-   private final ezq c;
-   private final int d;
-   private final ag e;
-   private final aq f;
-   private final ckj g;
-   private final ui h;
-   private final ezr i;
-   private final Map<af, ezr> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
-
-   public ezp(ero $$0, ezt $$1, ezq $$2, int $$3, ag $$4, aq $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new ezr(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
+   public ezp() {
+      super("");
    }
 
-   public ezq a() {
-      return this.c;
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.c = eum.a(ur.c("multiplayer.stopSleeping"), $$0 -> this.C()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
+      this.d(this.c);
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public ag c() {
-      return this.e;
-   }
-
-   public ui d() {
-      return this.h;
-   }
-
-   public aq e() {
-      return this.f;
-   }
-
-   public void a(esy $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(esy $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(esy $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
-      }
-
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      afw $$3 = Objects.requireNonNullElse(this.f.d(), gab.a);
-      int $$4 = asy.a(this.k);
-      int $$5 = asy.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
-         }
-      }
-
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.f();
-   }
-
-   public void a(esy $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, asy.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = asy.a(this.k);
-      int $$7 = asy.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (ezr $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
-            }
-         }
-      }
-
-      $$0.c().b();
-      if ($$5) {
-         this.q = asy.a(this.q + 0.02F, 0.0F, 0.3F);
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      if (!this.f.G().a(this.f.Q())) {
+         this.c.a($$0, $$1, $$2, $$3);
       } else {
-         this.q = asy.a(this.q - 0.04F, 0.0F, 1.0F);
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   @Override
+   public void b(eub $$0, int $$1, int $$2, float $$3) {
    }
 
-   @Nullable
-   public static ezp a(ero $$0, ezt $$1, int $$2, ag $$3) {
-      Optional<aq> $$4 = $$3.a().d();
-      if ($$4.isEmpty()) {
-         return null;
-      } else {
-         for (ezq $$5 : ezq.values()) {
-            if ($$2 < $$5.a()) {
-               return new ezp($$0, $$1, $$5, $$2, $$3, $$4.get());
-            }
+   @Override
+   public void aE_() {
+      this.C();
+   }
 
-            $$2 -= $$5.a();
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.f.G().a(this.f.Q()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.C();
+      }
+
+      if (!this.f.G().a(this.f.Q())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         if (this.b(this.b.a(), true)) {
+            this.f.a(null);
+            this.b.a("");
+            this.f.l.d().d();
          }
 
-         return null;
+         return true;
       }
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = asy.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
-      }
-
-      if (this.p - this.n > 113) {
-         this.l = asy.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
-      }
+   private void C() {
+      fkx $$0 = this.f.s.cn;
+      $$0.b(new adn(this.f.s, adn.a.c));
    }
 
-   public void a(ag $$0) {
-      Optional<aq> $$1 = $$0.a().d();
-      if (!$$1.isEmpty()) {
-         ezr $$2 = new ezr(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
+   public void l() {
+      if (this.b.a().isEmpty()) {
+         this.f.a(null);
+      } else {
+         this.f.a(new eyy(this.b.a()));
       }
-   }
-
-   private void a(ezr $$0, af $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (ezr $$6 : this.j.values()) {
-         $$6.b();
-      }
-   }
-
-   @Nullable
-   public ezr a(af $$0) {
-      return this.j.get($$0);
-   }
-
-   public ezt f() {
-      return this.b;
    }
 }

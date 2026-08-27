@@ -1,13 +1,18 @@
-import javax.annotation.Nullable;
-
 public class bsc extends bsb {
-   public bsc(bks $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private final ccu h;
+
+   public bsc(ccu $$0) {
+      super($$0, cdm.class, 8.0F);
+      this.h = $$0;
    }
 
-   @Nullable
    @Override
-   protected eif h() {
-      return bmc.a(this.b, 10, 7);
+   public boolean a() {
+      if (this.h.gf()) {
+         this.c = this.h.ge();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

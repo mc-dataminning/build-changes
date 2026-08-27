@@ -1,23 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class bbf extends azc {
+public class bbf extends DataFix {
    public bbf(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Zombie Villager XP rebuild", baa.x, "minecraft:zombie_villager");
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
-         if ($$1.isEmpty()) {
-            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
-            return $$0x.set("Xp", $$0x.createInt(bax.a($$2)));
-         } else {
-            return $$0x;
-         }
-      });
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(ban.E.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(ban.E))) {
+         throw new IllegalStateException("Team type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", aum::a)));
+      }
    }
 }

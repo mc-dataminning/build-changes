@@ -1,25 +1,16 @@
-import org.joml.Matrix4f;
+public class fbu implements cgq {
+   private final esr a;
 
-public interface fbu {
-   static fbu a(ask $$0) {
-      return new fbt($$0);
+   public fbu(esr $$0) {
+      this.a = $$0;
    }
 
-   static fbu a(chp $$0) {
-      if ($$0 instanceof cho) {
-         return new fbs((cho)$$0);
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
-      }
+   @Override
+   public void a(cge $$0, int $$1, clb $$2) {
+      this.a.q.a($$2, $$1);
    }
 
-   int a();
-
-   int a(esw var1);
-
-   default void a(esw $$0, int $$1, int $$2, Matrix4f $$3, fpb.a $$4) {
-   }
-
-   default void a(esw $$0, int $$1, int $$2, esy $$3) {
+   @Override
+   public void a(cge $$0, int $$1, int $$2) {
    }
 }

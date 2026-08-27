@@ -1,21 +1,40 @@
-import javax.annotation.Nullable;
+public class clj extends ckw {
+   private static final int a = 32;
 
-public class clj extends cls {
-   public clj(cke.a $$0, cua $$1, cua $$2) {
-      super($$1, $$2, $$0, hx.a);
-   }
-
-   public clj(cke.a $$0, cua $$1, cua $$2, hx $$3) {
-      super($$1, $$2, $$0, $$3);
+   public clj(ckw.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(ht $$0, cqz $$1, @Nullable ccx $$2, ckj $$3, dgb $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dff $$6 && $$1.a_($$0).b() instanceof day $$7) {
-         $$7.a($$2, $$6, true);
+   public clb a(clb $$0, crs $$1, bky $$2) {
+      if ($$2 instanceof amb $$3) {
+         al.z.a($$3, $$0);
+         $$3.b(aqx.c.b(this));
       }
 
-      return $$5;
+      if ($$2 instanceof cdm && !((cdm)$$2).fT().d) {
+         $$0.h(1);
+      }
+
+      if (!$$1.B) {
+         $$2.eq();
+      }
+
+      return $$0.b() ? new clb(cle.pK) : $$0;
+   }
+
+   @Override
+   public int b(clb $$0) {
+      return 32;
+   }
+
+   @Override
+   public cmu c(clb $$0) {
+      return cmu.c;
+   }
+
+   @Override
+   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
+      return cld.a($$0, $$1, $$2);
    }
 }

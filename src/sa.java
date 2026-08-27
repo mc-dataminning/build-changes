@@ -1,187 +1,132 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
 
-public class sa extends rs<sb> {
-   private static final int b = 24;
-   public static final sp<sa> a = new sp.b<sa>() {
-      public sa a(DataInput $$0, sc $$1) throws IOException {
-         return new sa(d($$0, $$1));
+public class sa extends sp {
+   private static final int c = 16;
+   public static final sa a = new sa(0.0);
+   public static final sy<sa> b = new sy.a<sa>() {
+      public sa a(DataInput $$0, si $$1) throws IOException {
+         return sa.a(d($$0, $$1));
       }
 
       @Override
-      public sk.b a(DataInput $$0, sk $$1, sc $$2) throws IOException {
+      public st.b a(DataInput $$0, st $$1, si $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static long[] d(DataInput $$0, sc $$1) throws IOException {
-         $$1.b(24L);
-         int $$2 = $$0.readInt();
-         $$1.a(8L, (long)$$2);
-         long[] $$3 = new long[$$2];
-
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3[$$4] = $$0.readLong();
-         }
-
-         return $$3;
+      private static double d(DataInput $$0, si $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
       }
 
       @Override
-      public void b(DataInput $$0, sc $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 8);
+      public int c() {
+         return 8;
       }
 
       @Override
       public String a() {
-         return "LONG[]";
+         return "DOUBLE";
       }
 
       @Override
       public String b() {
-         return "TAG_Long_Array";
+         return "TAG_Double";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
       }
    };
-   private long[] c;
+   private final double w;
 
-   public sa(long[] $$0) {
-      this.c = $$0;
+   private sa(double $$0) {
+      this.w = $$0;
    }
 
-   public sa(LongSet $$0) {
-      this.c = $$0.toLongArray();
-   }
-
-   public sa(List<Long> $$0) {
-      this(a($$0));
-   }
-
-   private static long[] a(List<Long> $$0) {
-      long[] $$1 = new long[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Long $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0L : $$3;
-      }
-
-      return $$1;
+   public static sa a(double $$0) {
+      return $$0 == 0.0 ? a : new sa($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
-
-      for (long $$1 : this.c) {
-         $$0.writeLong($$1);
-      }
+      $$0.writeDouble(this.w);
    }
 
    @Override
    public int a() {
-      return 24 + 8 * this.c.length;
+      return 16;
    }
 
    @Override
    public byte b() {
-      return 12;
+      return 6;
    }
 
    @Override
-   public sp<sa> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.s_();
+   public sy<sa> c() {
+      return b;
    }
 
    public sa e() {
-      long[] $$0 = new long[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
-      return new sa($$0);
+      return this;
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof sa && Arrays.equals(this.c, ((sa)$$0).c);
+      return this == $$0 ? true : $$0 instanceof sa && this.w == ((sa)$$0).w;
    }
 
    @Override
    public int hashCode() {
-      return Arrays.hashCode(this.c);
+      long $$0 = Double.doubleToLongBits(this.w);
+      return (int)($$0 ^ $$0 >>> 32);
    }
 
    @Override
-   public void a(sr $$0) {
+   public void a(ta $$0) {
       $$0.a(this);
    }
 
-   public long[] g() {
-      return this.c;
+   @Override
+   public long f() {
+      return (long)Math.floor(this.w);
    }
 
    @Override
-   public int size() {
-      return this.c.length;
-   }
-
-   public sb a(int $$0) {
-      return sb.a(this.c[$$0]);
-   }
-
-   public sb a(int $$0, sb $$1) {
-      long $$2 = this.c[$$0];
-      this.c[$$0] = $$1.f();
-      return sb.a($$2);
-   }
-
-   public void b(int $$0, sb $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
+   public int g() {
+      return ati.a(this.w);
    }
 
    @Override
-   public boolean a(int $$0, sn $$1) {
-      if ($$1 instanceof sh) {
-         this.c[$$0] = ((sh)$$1).f();
-         return true;
-      } else {
-         return false;
-      }
+   public short h() {
+      return (short)(ati.a(this.w) & 65535);
    }
 
    @Override
-   public boolean b(int $$0, sn $$1) {
-      if ($$1 instanceof sh) {
-         this.c = ArrayUtils.add(this.c, $$0, ((sh)$$1).f());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public sb b(int $$0) {
-      long $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return sb.a($$1);
+   public byte i() {
+      return (byte)(ati.a(this.w) & 0xFF);
    }
 
    @Override
-   public byte f() {
-      return 4;
+   public double j() {
+      return this.w;
    }
 
    @Override
-   public void clear() {
-      this.c = new long[0];
+   public float k() {
+      return (float)this.w;
    }
 
    @Override
-   public sk.b a(sk $$0) {
-      return $$0.a(this.c);
+   public Number l() {
+      return this.w;
+   }
+
+   @Override
+   public st.b a(st $$0) {
+      return $$0.a(this.w);
    }
 }

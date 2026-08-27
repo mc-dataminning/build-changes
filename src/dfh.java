@@ -1,186 +1,160 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dfh extends ddx {
-   public static final String a = "SkullOwner";
-   public static final String b = "note_block_sound";
+public class dfh extends der implements eko {
+   public static final String c = "sherds";
+   public static final String d = "item";
+   public static final int e = 1;
+   public long f;
    @Nullable
-   private static Executor c;
-   @Nullable
-   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> d;
-   private static final Executor e = $$0 -> {
-      Executor $$1 = c;
-      if ($$1 != null) {
-         $$1.execute($$0);
-      }
-   };
-   @Nullable
-   private GameProfile f;
-   @Nullable
-   private afw g;
-   private int h;
-   private boolean i;
+   public dfh.b g;
+   private dfh.a h;
+   private clb i = clb.b;
 
-   public dfh(ht $$0, dgb $$1) {
-      super(ddz.p, $$0, $$1);
-   }
-
-   public static void a(final ago $$0, Executor $$1) {
-      c = $$1;
-      final BooleanSupplier $$2 = () -> d == null;
-      d = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
-               return $$2.getAsBoolean() ? CompletableFuture.completedFuture(Optional.empty()) : dfh.a($$0, $$0, $$2);
-            }
-         });
-   }
-
-   public static void c() {
-      c = null;
-      d = null;
-   }
-
-   static CompletableFuture<Optional<GameProfile>> a(String $$0, ago $$1, BooleanSupplier $$2) {
-      return $$1.e().b($$0).thenApplyAsync($$2x -> {
-         if ($$2x.isPresent() && !$$2.getAsBoolean()) {
-            UUID $$3 = ((GameProfile)$$2x.get()).getId();
-            ProfileResult $$4 = $$1.b().fetchProfile($$3, true);
-            return $$4 != null ? Optional.ofNullable($$4.profile()) : $$2x;
-         } else {
-            return Optional.empty();
-         }
-      }, ac.f());
+   public dfh(ht $$0, dgw $$1) {
+      super(det.O, $$0, $$1);
+      this.h = dfh.a.a;
    }
 
    @Override
-   protected void b(rt $$0) {
+   protected void b(rz $$0) {
       super.b($$0);
-      if (this.f != null) {
-         rt $$1 = new rt();
-         sg.a($$1, this.f);
-         $$0.a("SkullOwner", $$1);
-      }
-
-      if (this.g != null) {
-         $$0.a("note_block_sound", this.g.toString());
+      this.h.a($$0);
+      if (!this.i.b()) {
+         $$0.a("item", this.i.b(new rz()));
       }
    }
 
    @Override
-   public void a(rt $$0) {
+   public void a(rz $$0) {
       super.a($$0);
-      if ($$0.b("SkullOwner", 10)) {
-         this.a(sg.a($$0.p("SkullOwner")));
-      } else if ($$0.b("ExtraType", 8)) {
-         String $$1 = $$0.l("ExtraType");
-         if (!ats.b($$1)) {
-            this.a(new GameProfile(ac.d, $$1));
-         }
-      }
-
-      if ($$0.b("note_block_sound", 8)) {
-         this.g = afw.a($$0.l("note_block_sound"));
-      }
-   }
-
-   public static void a(cqz $$0, ht $$1, dgb $$2, dfh $$3) {
-      if ($$2.b(dba.a) && $$2.c(dba.a)) {
-         $$3.i = true;
-         $$3.h++;
+      this.h = dfh.a.b($$0);
+      if ($$0.b("item", 10)) {
+         this.i = clb.a($$0.p("item"));
       } else {
-         $$3.i = false;
+         this.i = clb.b;
       }
    }
 
-   public float a(float $$0) {
-      return this.i ? (float)this.h + $$0 : (float)this.h;
-   }
-
-   @Nullable
-   public GameProfile d() {
-      return this.f;
-   }
-
-   @Nullable
-   public afw f() {
-      return this.g;
-   }
-
-   public yb g() {
-      return yb.a(this);
+   public yk f() {
+      return yk.a(this);
    }
 
    @Override
-   public rt av_() {
+   public rz av_() {
       return this.o();
    }
 
-   public void a(@Nullable GameProfile $$0) {
-      synchronized (this) {
-         this.f = $$0;
-      }
-
-      this.i();
+   public hx g() {
+      return this.q().c(dhm.R);
    }
 
-   private void i() {
-      if (this.f != null && !ac.b(this.f.getName()) && !b(this.f)) {
-         a(this.f.getName()).thenAcceptAsync($$0 -> {
-            this.f = $$0.orElse(this.f);
-            this.e();
-         }, e);
-      } else {
-         this.e();
+   public dfh.a i() {
+      return this.h;
+   }
+
+   public void a(clb $$0) {
+      this.h = dfh.a.b(ciu.a($$0));
+   }
+
+   public clb j() {
+      return a(this.h);
+   }
+
+   public static clb a(dfh.a $$0) {
+      clb $$1 = cle.eg.al_();
+      rz $$2 = $$0.a(new rz());
+      ciu.a($$1, det.O, $$2);
+      return $$1;
+   }
+
+   @Override
+   public clb v() {
+      return this.i;
+   }
+
+   @Override
+   public clb c(int $$0) {
+      clb $$1 = this.i.a($$0);
+      if (this.i.b()) {
+         this.i = clb.b;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(clb $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public der w() {
+      return this;
+   }
+
+   public void a(dfh.b $$0) {
+      if (this.o != null && !this.o.x_()) {
+         this.o.a(this.p(), this.q().b(), 1, $$0.ordinal());
       }
    }
 
-   @Nullable
-   public static GameProfile d(rt $$0) {
-      if ($$0.b("SkullOwner", 10)) {
-         return sg.a($$0.p("SkullOwner"));
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dfh.b.values().length) {
+         this.f = this.o.V();
+         this.g = dfh.b.values()[$$1];
+         return true;
       } else {
-         if ($$0.b("SkullOwner", 8)) {
-            String $$1 = $$0.l("SkullOwner");
-            if (!ac.b($$1)) {
-               $$0.r("SkullOwner");
-               a($$0, $$1);
-            }
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public static record a(ckw b, ckw c, ckw d, ckw e) {
+      public static final dfh.a a = new dfh.a(cle.pX, cle.pX, cle.pX, cle.pX);
+
+      public rz a(rz $$0) {
+         if (this.equals(a)) {
+            return $$0;
+         } else {
+            sf $$1 = new sf();
+            this.a().forEach($$1x -> $$1.add(su.a(jy.i.b($$1x).toString())));
+            $$0.a("sherds", $$1);
+            return $$0;
          }
+      }
 
-         return null;
+      public Stream<ckw> a() {
+         return Stream.of(this.b, this.c, this.d, this.e);
+      }
+
+      public static dfh.a b(@Nullable rz $$0) {
+         if ($$0 != null && $$0.b("sherds", 9)) {
+            sf $$1 = $$0.c("sherds", 8);
+            return new dfh.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
+         } else {
+            return a;
+         }
+      }
+
+      private static ckw a(sf $$0, int $$1) {
+         if ($$1 >= $$0.size()) {
+            return cle.pX;
+         } else {
+            sw $$2 = $$0.k($$1);
+            return jy.i.a(agg.a($$2.s_()));
+         }
       }
    }
 
-   public static void e(rt $$0) {
-      String $$1 = $$0.l("SkullOwner");
-      if (!ac.b($$1)) {
-         a($$0, $$1);
+   public static enum b {
+      a(7),
+      b(10);
+
+      public final int c;
+
+      private b(int $$0) {
+         this.c = $$0;
       }
-   }
-
-   private static void a(rt $$0, String $$1) {
-      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", sg.a(new rt(), $$2.orElse(new GameProfile(ac.d, $$1)))));
-   }
-
-   private static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = d;
-      return $$1 != null && ccx.c($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
-   }
-
-   private static boolean b(GameProfile $$0) {
-      return $$0.getProperties().containsKey("textures");
    }
 }

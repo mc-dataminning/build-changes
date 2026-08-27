@@ -1,46 +1,49 @@
-public class ffr<T extends bjt> extends fgg<T> {
-   private final fiw a;
-   private final fiw b;
-   private final fiw f;
-   private final fiw g;
-   private final fiw h;
-   private final fiw i;
-   private static final int j = 6;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
-   public ffr(fiw $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.g = $$0.b("right_hind_leg");
-      this.f = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_front_leg");
-      this.h = $$0.b("left_front_leg");
+public class ffr implements ffn, ffo {
+   private static final agg a = new agg("spectator/teleport_to_player");
+   private static final Comparator<flf> b = Comparator.comparing($$0 -> $$0.a().getId());
+   private static final ur c = ur.c("spectatorMenu.teleport");
+   private static final ur d = ur.c("spectatorMenu.teleport.prompt");
+   private final List<ffo> e;
+
+   public ffr() {
+      this(esr.N().I().n());
    }
 
-   public static fjc a(fja $$0) {
-      fje $$1 = new fje();
-      fjf $$2 = $$1.a();
-      $$2.a("head", fjb.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fiy.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", fjb.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fiy.a(0.0F, 6.0F, 0.0F));
-      fjb $$3 = fjb.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, fiy.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, fiy.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, fiy.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, fiy.a(2.0F, 18.0F, -4.0F));
-      return fjc.a($$1, 64, 32);
+   public ffr(Collection<flf> $$0) {
+      this.e = $$0.stream().filter($$0x -> $$0x.e() != crp.d).sorted(b).map($$0x -> new ffk($$0x.a())).toList();
    }
 
    @Override
-   public fiw a() {
-      return this.a;
+   public List<ffo> a() {
+      return this.e;
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.e = asy.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = asy.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = asy.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = asy.b($$1 * 0.6662F) * 1.4F * $$2;
+   public ur b() {
+      return d;
+   }
+
+   @Override
+   public void a(ffm $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public ur aP_() {
+      return c;
+   }
+
+   @Override
+   public void a(eub $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aQ_() {
+      return !this.e.isEmpty();
    }
 }

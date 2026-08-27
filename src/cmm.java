@@ -1,41 +1,60 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public record cmm(String c, ib<cke> d, float e, Map<chv, String> f, ui g) {
-   public static final Codec<cmm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               asg.x.fieldOf("asset_name").forGetter(cmm::a),
-               aft.a(jz.E).fieldOf("ingredient").forGetter(cmm::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(cmm::c),
-               Codec.unboundedMap(chv.h, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cmm::d),
-               uk.a.fieldOf("description").forGetter(cmm::e)
-            )
-            .apply($$0, cmm::new)
-   );
-   public static final Codec<ib<cmm>> b = afs.a(jz.aE, a);
+public class cmm extends cmp implements cmv {
+   private final float a;
+   private final Multimap<blz, bmc> b;
 
-   public static cmm a(String $$0, cke $$1, float $$2, ui $$3, Map<chv, String> $$4) {
-      return new cmm($$0, jy.i.d($$1), $$2, $$4, $$3);
+   public cmm(cmo $$0, int $$1, float $$2, ckw.a $$3) {
+      super($$0, $$3);
+      this.a = (float)$$1 + $$0.c();
+      Builder<blz, bmc> $$4 = ImmutableMultimap.builder();
+      $$4.put(bme.c, new bmc(m, "Weapon modifier", (double)this.a, bmc.a.a));
+      $$4.put(bme.e, new bmc(n, "Weapon modifier", (double)$$2, bmc.a.a));
+      this.b = $$4.build();
    }
 
-   public String a() {
-      return this.c;
+   public float h() {
+      return this.a;
    }
 
-   public ib<cke> b() {
-      return this.d;
+   @Override
+   public boolean a(dgw $$0, crs $$1, ht $$2, cdm $$3) {
+      return !$$3.f();
    }
 
-   public float c() {
-      return this.e;
+   @Override
+   public float a(clb $$0, dgw $$1) {
+      if ($$1.a(cuv.bs)) {
+         return 15.0F;
+      } else {
+         return $$1.a(arc.bD) ? 1.5F : 1.0F;
+      }
    }
 
-   public Map<chv, String> d() {
-      return this.f;
+   @Override
+   public boolean a(clb $$0, bky $$1, bky $$2) {
+      $$0.a(1, $$2, $$0x -> $$0x.d(bkn.a));
+      return true;
    }
 
-   public ui e() {
-      return this.g;
+   @Override
+   public boolean a(clb $$0, crs $$1, dgw $$2, ht $$3, bky $$4) {
+      if ($$2.h($$1, $$3) != 0.0F) {
+         $$0.a(2, $$4, $$0x -> $$0x.d(bkn.a));
+      }
+
+      return true;
+   }
+
+   @Override
+   public boolean a_(dgw $$0) {
+      return $$0.a(cuv.bs);
+   }
+
+   @Override
+   public Multimap<blz, bmc> a(bkn $$0) {
+      return $$0 == bkn.a ? this.b : super.a($$0);
    }
 }

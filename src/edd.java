@@ -1,66 +1,13 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public class edd {
+   public final eji a;
+   public final eji b;
+   public final float c;
+   public final float d;
 
-public interface edd extends edf {
-   @Override
-   String g();
-
-   void a(boolean var1);
-
-   int l();
-
-   void f(int var1);
-
-   void e(int var1);
-
-   int j();
-
-   @Override
-   default void a(p $$0, crb $$1) {
-      edf.super.a($$0, $$1);
-      $$0.a("Level name", this::g);
-      $$0.a(
-         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
+   public edd(eji $$0, eji $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
-
-   int h();
-
-   void a(int var1);
-
-   int v();
-
-   void g(int var1);
-
-   int w();
-
-   void h(int var1);
-
-   @Nullable
-   UUID x();
-
-   void a(UUID var1);
-
-   cqw m();
-
-   void a(dhs.c var1);
-
-   dhs.c r();
-
-   boolean p();
-
-   void c(boolean var1);
-
-   boolean o();
-
-   void a(cqw var1);
-
-   ehs<MinecraftServer> u();
-
-   void a(long var1);
-
-   void b(long var1);
 }

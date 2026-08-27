@@ -1,73 +1,122 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.function.Consumer;
 
-public class exw extends exx {
-   private static final ui k = ui.c("chat.copy");
-   private static final ui l = ui.c("chat.link.warning");
-   private final String m;
-   private final boolean n;
+public class exw implements exx {
+   public static final int a = 36;
+   private static final int b = 30;
+   private final exu c = new exu();
+   private final exu d = new exu();
+   private final exu e = new exu();
+   private final fah f;
+   private int g;
+   private int h;
 
-   public exw(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), ui.b($$1), $$1, $$2 ? uh.e : uh.g, $$2);
+   public exw(fah $$0) {
+      this($$0, 36);
    }
 
-   public exw(BooleanConsumer $$0, ui $$1, String $$2, boolean $$3) {
-      this($$0, $$1, $$2, $$3 ? uh.e : uh.g, $$3);
+   public exw(fah $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   public exw(BooleanConsumer $$0, ui $$1, String $$2, ui $$3, boolean $$4) {
-      this($$0, $$1, a($$4, $$2), $$2, $$3, $$4);
-   }
-
-   public exw(BooleanConsumer $$0, ui $$1, ui $$2, String $$3, ui $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (ui)($$5 ? ui.c("chat.link.open") : uh.f);
-      this.b = $$4;
-      this.n = !$$5;
-      this.m = $$3;
-   }
-
-   protected static uw a(boolean $$0, String $$1) {
-      return c($$0).b(uh.u).b(ui.b($$1));
-   }
-
-   protected static uw c(boolean $$0) {
-      return ui.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   public exw(fah $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(etj.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
-      this.d(etj.a(k, $$0x -> {
-         this.k();
-         this.c.accept(false);
-      }).a(this.g / 2 - 50, $$0, 100, 20).a());
-      this.d(etj.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void k() {
-      this.f.o.a(this.m);
+   public void f(int $$0) {
    }
 
    @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.n) {
-         $$0.a(this.i, l, this.g / 2, 110, 16764108);
-      }
+   public void g(int $$0) {
    }
 
-   public static void a(String $$0, ezd $$1, boolean $$2) {
-      ero $$3 = ero.O();
-      $$3.a(new exw($$3x -> {
-         if ($$3x) {
-            ac.i().a($$0);
-         }
-
-         $$3.a($$1);
-      }, $$0, $$2));
+   @Override
+   public int p() {
+      return 0;
    }
 
-   public static etj.c b(String $$0, ezd $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
+   @Override
+   public int r() {
+      return 0;
+   }
+
+   @Override
+   public int k() {
+      return this.f.g;
+   }
+
+   @Override
+   public int i() {
+      return this.f.h;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   @Override
+   public void b(Consumer<exy> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.g);
+      this.c.a($$0);
+      this.c.b(0, 0);
+      this.c.a();
+      this.d.b(this.f.g);
+      this.d.a($$1);
+      this.d.a();
+      this.d.g(this.f.h - $$1);
+      this.e.b(this.f.g);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.h - $$1 - this.e.i();
+      this.e.b(0, Math.min($$2, $$3));
+   }
+
+   public <T extends exy> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends exy> T a(T $$0, Consumer<exz> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public <T extends exy> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends exy> T b(T $$0, Consumer<exz> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends exy> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends exy> T c(T $$0, Consumer<exz> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

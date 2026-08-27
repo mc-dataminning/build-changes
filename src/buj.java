@@ -1,30 +1,43 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+public class buj extends buh {
+   private boolean p;
 
-public class buj extends buo<bkj> {
-   @Override
-   public Set<btk<?>> a() {
-      return ImmutableSet.of(btk.h, btk.L, btk.am);
+   public buj(bla $$0, crs $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(alq $$0, bkj $$1) {
-      blj<?> $$2 = $$1.dN();
-      List<cbm> $$3 = Lists.newArrayList();
-      btm $$4 = $$2.c(btk.h).orElse(btm.a());
-      Optional<bkl> $$5 = $$4.a($$0x -> $$0x instanceof cbc || $$0x instanceof bze).map(bkl.class::cast);
+   protected ecx a(int $$0) {
+      this.p = this.a.ag() == bkm.v;
+      this.o = new ecy(this.p);
+      return new ecx(this.o, $$0);
+   }
 
-      for (bkj $$7 : $$2.c(btk.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cbm && ((cbm)$$7).gf()) {
-            $$3.add((cbm)$$7);
-         }
-      }
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bb();
+   }
 
-      $$2.a(btk.L, $$5);
-      $$2.a(btk.am, $$3);
+   @Override
+   protected eji b() {
+      return new eji(this.a.dq(), this.a.e(0.5), this.a.dw());
+   }
+
+   @Override
+   protected double a(eji $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(eji $$0, eji $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ht $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

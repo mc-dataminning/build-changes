@@ -1,39 +1,32 @@
-import java.util.List;
+public class abc implements wk<yd> {
+   private final ht a;
+   private final float b;
 
-public class abc implements wb<xu> {
-   private final int a;
-   private final int[] b;
-
-   public abc(bjt $$0) {
-      this.a = $$0.ah();
-      List<bjt> $$1 = $$0.cP();
-      this.b = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.b[$$2] = $$1.get($$2).ah();
-      }
+   public abc(ht $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public abc(tl $$0) {
-      this.a = $$0.n();
-      this.b = $$0.c();
+   public abc(tu $$0) {
+      this.a = $$0.e();
+      this.b = $$0.readFloat();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.a);
+   public void a(tu $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public int[] a() {
-      return this.b;
+   public ht a() {
+      return this.a;
    }
 
-   public int d() {
-      return this.a;
+   public float d() {
+      return this.b;
    }
 }

@@ -1,36 +1,30 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class bus extends bui {
-   private static final ImmutableMap<bjx<?>, Float> a = ImmutableMap.builder()
-      .put(bjx.y, 8.0F)
-      .put(bjx.G, 12.0F)
-      .put(bjx.Z, 8.0F)
-      .put(bjx.aa, 12.0F)
-      .put(bjx.ay, 15.0F)
-      .put(bjx.aD, 12.0F)
-      .put(bjx.be, 8.0F)
-      .put(bjx.bg, 10.0F)
-      .put(bjx.bo, 10.0F)
-      .put(bjx.bp, 8.0F)
-      .put(bjx.br, 8.0F)
-      .build();
-
+public class bus extends bvd<bky> {
    @Override
-   protected boolean a(bkj $$0, bkj $$1) {
-      return this.b($$1) && this.e($$0, $$1);
-   }
-
-   private boolean e(bkj $$0, bkj $$1) {
-      float $$2 = (Float)a.get($$1.ag());
-      return $$1.f((bjt)$$0) <= (double)($$2 * $$2);
+   public Set<btz<?>> a() {
+      return ImmutableSet.of(btz.x, btz.y);
    }
 
    @Override
-   protected btk<bkj> b() {
-      return btk.A;
-   }
+   protected void a(ama $$0, bky $$1) {
+      bly<?> $$2 = $$1.dN();
+      bjg $$3 = $$1.ew();
+      if ($$3 != null) {
+         $$2.a(btz.x, $$1.ew());
+         bki $$4 = $$3.d();
+         if ($$4 instanceof bky) {
+            $$2.a(btz.y, (bky)$$4);
+         }
+      } else {
+         $$2.b(btz.x);
+      }
 
-   private boolean b(bkj $$0) {
-      return a.containsKey($$0.ag());
+      $$2.c(btz.y).ifPresent($$2x -> {
+         if (!$$2x.bv() || $$2x.dL() != $$0) {
+            $$2.b(btz.y);
+         }
+      });
    }
 }

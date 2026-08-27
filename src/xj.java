@@ -1,21 +1,33 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-public record xj(Set<iu> b, Set<iu> c) implements wu {
-   public static final afw a = new afw("debug/village_sections");
+public record xj(int b, ht c, List<xj.a> d) implements xd {
+   public static final agg a = new agg("debug/goal_selector");
 
-   public xj(tl $$0) {
-      this($$0.a(HashSet::new, tl::g), $$0.a(HashSet::new, tl::g));
+   public xj(tu $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(xj.a::new));
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.b, tl::a);
-      $$0.a(this.c, tl::a);
+   public void a(tu $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public afw a() {
+   public agg a() {
       return a;
+   }
+
+   public static record a(int a, boolean b, String c) {
+      public a(tu $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+      }
+
+      public void a(tu $$0) {
+         $$0.p(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+      }
    }
 }

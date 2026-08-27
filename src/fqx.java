@@ -1,53 +1,61 @@
-public class fqx implements fra<ddt> {
-   private final fiw a;
-   private final fiw b;
+public class fqx implements eno {
+   private final eno a;
+   private final gbh b;
 
-   public fqx(frb.a $$0) {
-      this.a = $$0.a(fiv.i);
-      this.b = $$0.a(fiv.h);
+   public fqx(eno $$0, gbh $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fjc b() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      $$1.a("main", fjb.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fiy.a);
-      $$1.a("left_leg", fjb.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fiy.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fjb.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fiy.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fjc.a($$0, 64, 64);
+   @Override
+   public eno a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public static fjc c() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      $$1.a("main", fjb.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fiy.a);
-      $$1.a("left_leg", fjb.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fiy.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fjb.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fiy.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fjc.a($$0, 64, 64);
+   @Override
+   public eno a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(ddt $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
-      gce $$6 = fpp.p[$$0.d().a()];
-      cqz $$7 = $$0.k();
-      if ($$7 != null) {
-         dgb $$8 = $$0.q();
-         cwf.c<? extends ddt> $$9 = cwf.a(ddz.y, ctt::h, ctt::g, cvd.c, $$8, $$7, $$0.p(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new frd<>()).get($$4);
-         this.a($$2, $$3, $$8.c(ctt.b) == dgo.a ? this.a : this.b, $$8.c(ctt.aE), $$6, $$10, $$5, false);
-      } else {
-         this.a($$2, $$3, this.a, hx.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, hx.d, $$6, $$4, $$5, true);
-      }
+   @Override
+   public eno a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
    }
 
-   private void a(emh $$0, fpb $$1, fiw $$2, hx $$3, gce $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      eml $$8 = $$4.a($$1, fpj::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   @Override
+   public eno a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public eno b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public eno a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void l() {
+      this.a.l();
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

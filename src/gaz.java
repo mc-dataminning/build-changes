@@ -1,15 +1,39 @@
-public class gaz extends gbd {
-   private static final afw a = new afw("back");
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-   public gaz(gab $$0) {
-      super($$0, new afw("textures/atlas/paintings.png"), new afw("paintings"));
+public class gaz extends gba {
+   @Nullable
+   private CompletableFuture<gba.a> f;
+
+   public gaz(apd $$0, agg $$1, Executor $$2) {
+      super($$1);
+      this.f = CompletableFuture.supplyAsync(() -> gba.a.a($$0, $$1), $$2);
    }
 
-   public gaa a(bzm $$0) {
-      return this.a(jy.m.b($$0));
+   @Override
+   protected gba.a b(apd $$0) {
+      if (this.f != null) {
+         gba.a $$1 = this.f.join();
+         this.f = null;
+         return $$1;
+      } else {
+         return gba.a.a($$0, this.e);
+      }
    }
 
-   public gaa a() {
-      return this.a(a);
+   public CompletableFuture<Void> d() {
+      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
+   }
+
+   @Override
+   public void a(gbi $$0, apd $$1, agg $$2, Executor $$3) {
+      this.f = CompletableFuture.supplyAsync(() -> gba.a.a($$1, this.e), ac.f());
+      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
+   }
+
+   private static Executor a(Executor $$0) {
+      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

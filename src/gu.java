@@ -1,4 +1,3 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import java.util.List;
 
 public class gu<T, P> implements gm<T> {
@@ -14,7 +13,7 @@ public class gu<T, P> implements gm<T> {
    }
 
    @Override
-   public void execute(gn<T> $$0, int $$1) throws CommandSyntaxException {
+   public void execute(gn<T> $$0, int $$1) {
       P $$2 = this.b.get(this.d);
       $$0.a(this.a.create($$1, $$2));
       if (++this.d < this.b.size()) {

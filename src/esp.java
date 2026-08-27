@@ -1,78 +1,166 @@
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class esp {
-   private static final int a = -1;
-   private final ii<eso> b = new ii<>(32);
-   private final Map<cua, Set<dhe<?>>> c = Maps.newHashMap();
+public class esp implements Comparable<esp> {
+   private static final Map<String, esp> h = Maps.newHashMap();
+   private static final Map<emf.a, esp> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final emf.a m;
+   private final String n;
+   private emf.a o;
+   private boolean p;
+   private int q;
 
-   public static esp a() {
-      esp $$0 = new esp();
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fom.a($$1, $$0x.c(cwg.b) == dgx.a ? $$2.d() : $$2) : cqx.a(), cuc.iI, cuc.iH);
-      $$0.a(cwg.b, cuc.iI, cuc.iH);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fom.a($$1, $$2) : cqx.a(), cuc.i, cuc.bu, cuc.bt, cuc.gb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         if ($$3 != 0) {
-            return $$1 != null && $$2 != null ? fom.a($$1, $$2) : cqx.a();
-         } else {
-            return -1;
+   public static void a(emf.a $$0) {
+      esp $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
+      }
+   }
+
+   public static void a(emf.a $$0, boolean $$1) {
+      esp $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
+   }
+
+   public static void a() {
+      for (esp $$0 : h.values()) {
+         if ($$0.o.a() == emf.b.a && $$0.o.b() != emf.bv.b()) {
+            $$0.a(emf.a(esr.N().aL().i(), $$0.o.b()));
          }
-      }, cuc.rA);
-      $$0.a(($$0x, $$1, $$2, $$3) -> cqt.a(), cuc.aF);
-      $$0.a(($$0x, $$1, $$2, $$3) -> cqt.b(), cuc.aG);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fom.b($$1, $$2) : cqt.c(), cuc.aE, cuc.aH, cuc.aI, cuc.aK, cuc.ff, cuc.aL);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fom.c($$1, $$2) : -1, cuc.G, cuc.nd, cuc.fu);
-      $$0.a(($$0x, $$1, $$2, $$3) -> daa.b($$0x.c(daa.f)), cuc.cw);
-      $$0.a(daa.f, cuc.cw);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? fom.a($$1, $$2) : -1, cuc.dS);
-      $$0.a(($$0x, $$1, $$2, $$3) -> 14731036, cuc.fc, cuc.fb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         int $$4 = $$0x.c(dbu.c);
-         int $$5 = $$4 * 32;
-         int $$6 = 255 - $$4 * 8;
-         int $$7 = $$4 * 4;
-         return $$5 << 16 | $$6 << 8 | $$7;
-      }, cuc.fe, cuc.fd);
-      $$0.a(dbu.c, cuc.fe, cuc.fd);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? 2129968 : 7455580, cuc.fm);
-      return $$0;
+      }
    }
 
-   public int a(dgb $$0, cqz $$1, ht $$2) {
-      eso $$3 = this.b.a(jy.f.a($$0.b()));
-      if ($$3 != null) {
-         return $$3.getColor($$0, null, null, 0);
+   public static void b() {
+      for (esp $$0 : h.values()) {
+         $$0.n();
+      }
+   }
+
+   public static void c() {
+      for (esp $$0 : h.values()) {
+         if ($$0 instanceof etf $$1) {
+            $$1.n();
+         }
+      }
+   }
+
+   public static void d() {
+      i.clear();
+
+      for (esp $$0 : h.values()) {
+         i.put($$0.o, $$0);
+      }
+   }
+
+   public esp(String $$0, int $$1, String $$2) {
+      this($$0, emf.b.a, $$1, $$2);
+   }
+
+   public esp(String $$0, emf.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
+         return false;
       } else {
-         ebi $$4 = $$0.d($$1, $$2);
-         return $$4 != null ? $$4.ak : -1;
+         this.q--;
+         return true;
       }
    }
 
-   public int a(dgb $$0, @Nullable cqc $$1, @Nullable ht $$2, int $$3) {
-      eso $$4 = this.b.a(jy.f.a($$0.b()));
-      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
+   private void n() {
+      this.q = 0;
+      this.a(false);
    }
 
-   public void a(eso $$0, cua... $$1) {
-      for (cua $$2 : $$1) {
-         this.b.a($$0, jy.f.a($$2));
-      }
+   public String h() {
+      return this.l;
    }
 
-   private void a(Set<dhe<?>> $$0, cua... $$1) {
-      for (cua $$2 : $$1) {
-         this.c.put($$2, $$0);
-      }
+   public emf.a i() {
+      return this.m;
    }
 
-   private void a(dhe<?> $$0, cua... $$1) {
-      this.a(ImmutableSet.of($$0), $$1);
+   public void b(emf.a $$0) {
+      this.o = $$0;
    }
 
-   public Set<dhe<?>> a(cua $$0) {
-      return this.c.getOrDefault($$0, ImmutableSet.of());
+   public int a(esp $$0) {
+      return this.n.equals($$0.n) ? gcn.a(this.l).compareTo(gcn.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   }
+
+   public static Supplier<ur> a(String $$0) {
+      esp $$1 = h.get($$0);
+      return $$1 == null ? () -> ur.c($$0) : $$1::k;
+   }
+
+   public boolean b(esp $$0) {
+      return this.o.equals($$0.o);
+   }
+
+   public boolean j() {
+      return this.o.equals(emf.bv);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 == emf.bv.b() ? this.o.a() == emf.b.b && this.o.b() == $$1 : this.o.a() == emf.b.a && this.o.b() == $$0;
+   }
+
+   public boolean a(int $$0) {
+      return this.o.a() == emf.b.c && this.o.b() == $$0;
+   }
+
+   public ur k() {
+      return this.o.d();
+   }
+
+   public boolean l() {
+      return this.o.equals(this.m);
+   }
+
+   public String m() {
+      return this.o.c();
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
    }
 }

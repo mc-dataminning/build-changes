@@ -1,57 +1,80 @@
-import java.util.Arrays;
+public class fgn<T extends bwm> extends fia<T> {
+   private float q;
+   private float r;
+   private float s;
 
-public class fgn<T extends cau> extends fgg<T> {
-   private static final int a = 8;
-   private final fiw b;
-   private final fiw[] f = new fiw[8];
-
-   public fgn(fiw $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
-   }
-
-   private static String a(int $$0) {
-      return "cube" + $$0;
-   }
-
-   public static fjc b() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = $$2;
-         if ($$2 == 2) {
-            $$3 = 24;
-            $$4 = 10;
-         } else if ($$2 == 3) {
-            $$3 = 24;
-            $$4 = 19;
-         }
-
-         $$1.a(a($$2), fjb.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fiy.a);
-      }
-
-      $$1.a("inside_cube", fjb.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fiy.a);
-      return fjc.a($$0, 64, 32);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   public fgn(fkb $$0) {
+      super($$0);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3) {
-      float $$4 = asy.i($$3, $$0.bS, $$0.e);
-      if ($$4 < 0.0F) {
-         $$4 = 0.0F;
+      this.q = $$0.E($$3);
+      this.r = $$0.F($$3);
+      this.s = $$0.G($$3);
+      if (this.q <= 0.0F) {
+         this.n.e = 0.0F;
+         this.n.g = 0.0F;
+         this.j.e = 0.0F;
+         this.j.g = 0.0F;
+         this.k.e = 0.0F;
+         this.k.g = 0.0F;
+         this.k.b = -1.2F;
+         this.h.e = 0.0F;
+         this.i.e = 0.0F;
+         this.i.g = 0.0F;
+         this.i.b = -1.1F;
+         this.i.c = 18.0F;
       }
 
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.y()) {
+         this.o.e = (float) (Math.PI / 4);
+         this.o.c += -4.0F;
+         this.o.d += 5.0F;
+         this.n.c += -3.3F;
+         this.n.d++;
+         this.l.c += 8.0F;
+         this.l.d += -2.0F;
+         this.m.c += 2.0F;
+         this.m.d += -0.8F;
+         this.l.e = 1.7278761F;
+         this.m.e = 2.670354F;
+         this.j.e = (float) (-Math.PI / 20);
+         this.j.c = 16.1F;
+         this.j.d = -7.0F;
+         this.k.e = (float) (-Math.PI / 20);
+         this.k.c = 16.1F;
+         this.k.d = -7.0F;
+         this.h.e = (float) (-Math.PI / 2);
+         this.h.c = 21.0F;
+         this.h.d = 1.0F;
+         this.i.e = (float) (-Math.PI / 2);
+         this.i.c = 21.0F;
+         this.i.d = 1.0F;
+         this.p = 3;
       }
    }
 
-   @Override
-   public fiw a() {
-      return this.b;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (this.q > 0.0F) {
+         this.n.g = fhz.a(this.n.g, -1.2707963F, this.q);
+         this.n.f = fhz.a(this.n.f, 1.2707963F, this.q);
+         this.j.e = -1.2707963F;
+         this.k.e = -0.47079635F;
+         this.k.g = -0.2F;
+         this.k.b = -0.2F;
+         this.h.e = -0.4F;
+         this.i.e = 0.5F;
+         this.i.g = -0.5F;
+         this.i.b = -0.3F;
+         this.i.c = 20.0F;
+         this.l.e = fhz.a(this.l.e, 0.8F, this.r);
+         this.m.e = fhz.a(this.m.e, -0.4F, this.r);
+      }
+
+      if (this.s > 0.0F) {
+         this.n.e = fhz.a(this.n.e, -0.58177644F, this.s);
+      }
    }
 }

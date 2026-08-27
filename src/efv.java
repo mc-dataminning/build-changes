@@ -1,41 +1,22 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Arrays;
+import java.util.function.Function;
 
-public class efv extends efy {
-   public static final Codec<efv> a = a(efv::new);
-   public static final Codec<efv> b = b(efv::new);
+public interface efv<T extends efv<T>> {
+   T b(efy.a var1);
 
-   efv(List<egh> $$0) {
-      super($$0, egj.a($$0));
-   }
+   default <E> T a(Iterable<E> $$0, Function<E, efy.a> $$1) {
+      T $$2 = this.c();
 
-   public static efv a(List<egh> $$0) {
-      return new efv(List.copyOf($$0));
-   }
-
-   @Override
-   public egi b() {
-      return egj.d;
-   }
-
-   public static efv.a a(egh.a... $$0) {
-      return new efv.a($$0);
-   }
-
-   public static class a extends efy.a {
-      public a(egh.a... $$0) {
-         super($$0);
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
       }
 
-      @Override
-      public efv.a and(egh.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected egh a(List<egh> $$0) {
-         return new efv($$0);
-      }
+      return $$2;
    }
+
+   default <E> T a(E[] $$0, Function<E, efy.a> $$1) {
+      return this.a(Arrays.asList($$0), $$1);
+   }
+
+   T c();
 }

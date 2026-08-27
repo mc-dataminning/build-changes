@@ -1,118 +1,89 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public class vq implements uj {
-   private static final String d = "*";
-   public static final MapCodec<vq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(vq::b), Codec.STRING.fieldOf("objective").forGetter(vq::d)).apply($$0, vq::new)
-   );
-   public static final MapCodec<vq> b = a.fieldOf("score");
-   public static final uj.a<vq> c = new uj.a<>(b, "score");
-   private final String e;
+public final class vq {
+   private static final String b = "#";
+   public static final Codec<vq> a = Codec.STRING.comapFlatMap(vq::a, vq::b);
+   private static final Map<n, vq> c = Stream.of(n.values())
+      .filter(n::e)
+      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new vq($$0.f(), $$0.g())));
+   private static final Map<String, vq> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
+   private final int e;
    @Nullable
-   private final ge f;
-   private final String g;
+   private final String f;
 
-   @Nullable
-   private static ge a(String $$0) {
-      try {
-         return new gf(new StringReader($$0)).t();
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   private vq(int $$0, String $$1) {
+      this.e = $$0 & 16777215;
+      this.f = $$1;
    }
 
-   public vq(String $$0, String $$1) {
-      this.e = $$0;
-      this.f = a($$0);
-      this.g = $$1;
+   private vq(int $$0) {
+      this.e = $$0 & 16777215;
+      this.f = null;
    }
 
-   @Override
-   public uj.a<?> a() {
-      return c;
+   public int a() {
+      return this.e;
    }
 
    public String b() {
-      return this.e;
+      return this.f != null ? this.f : this.c();
    }
 
-   @Nullable
-   public ge c() {
-      return this.f;
-   }
-
-   public String d() {
-      return this.g;
-   }
-
-   private String a(du $$0) throws CommandSyntaxException {
-      if (this.f != null) {
-         List<? extends bjt> $$1 = this.f.b($$0);
-         if (!$$1.isEmpty()) {
-            if ($$1.size() != 1) {
-               throw eg.a.create();
-            }
-
-            return $$1.get(0).cx();
-         }
-      }
-
-      return this.e;
-   }
-
-   private String a(String $$0, du $$1) {
-      MinecraftServer $$2 = $$1.m();
-      if ($$2 != null) {
-         eje $$3 = $$2.aF();
-         ejb $$4 = $$3.b(this.g);
-         if ($$4 != null && $$3.b($$0, $$4)) {
-            ejd $$5 = $$3.c($$0, $$4);
-            return Integer.toString($$5.b());
-         }
-      }
-
-      return "";
-   }
-
-   @Override
-   public uw a(@Nullable du $$0, @Nullable bjt $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return ui.i();
-      } else {
-         String $$3 = this.a($$0);
-         String $$4 = $$1 != null && $$3.equals("*") ? $$1.cx() : $$3;
-         return ui.b(this.a($$4, $$0));
-      }
+   private String c() {
+      return String.format(Locale.ROOT, "#%06X", this.e);
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         vq $$1 = (vq)$$0;
+         return this.e == $$1.e;
       } else {
-         if ($$0 instanceof vq $$1 && this.e.equals($$1.e) && this.g.equals($$1.g)) {
-            return true;
-         }
-
          return false;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.e.hashCode();
-      return 31 * $$0 + this.g.hashCode();
+      return Objects.hash(this.e, this.f);
    }
 
    @Override
    public String toString() {
-      return "score{name='" + this.e + "', objective='" + this.g + "'}";
+      return this.b();
+   }
+
+   @Nullable
+   public static vq a(n $$0) {
+      return c.get($$0);
+   }
+
+   public static vq a(int $$0) {
+      return new vq($$0);
+   }
+
+   public static DataResult<vq> a(String $$0) {
+      if ($$0.startsWith("#")) {
+         try {
+            int $$1 = Integer.parseInt($$0.substring(1), 16);
+            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Invalid color value: " + $$0);
+         }
+      } else {
+         vq $$3 = d.get($$0);
+         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
+      }
    }
 }

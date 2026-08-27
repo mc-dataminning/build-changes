@@ -1,16 +1,18 @@
-public record xp(ip.b a) implements wb<xn> {
-   private static final afu<sn> b = afu.a(sf.a, ip.a(jy.aq));
+public record xp(ht b, int c) implements xd {
+   public static final agg a = new agg("debug/poi_ticket_count");
 
-   public xp(tl $$0) {
-      this($$0.<ip>a(b, is.a).c());
+   public xp(tu $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(b, is.a, this.a);
+   public void a(tu $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(xn $$0) {
-      $$0.a(this);
+   @Override
+   public agg a() {
+      return a;
    }
 }

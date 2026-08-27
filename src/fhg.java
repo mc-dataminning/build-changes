@@ -1,35 +1,44 @@
-public class fhg<T extends bjt> extends fgg<T> {
-   private final fiw a;
-   private final fiw b;
-   private final fiw f;
+public class fhg<T extends bki> extends fhl<T> {
+   private final fkb a;
+   private final fkb[] b = new fkb[9];
 
-   public fhg(fiw $$0) {
+   public fhg(fkb $$0) {
       this.a = $$0;
-      this.b = $$0.b("left_fin");
-      this.f = $$0.b("right_fin");
+
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static fjc b() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      int $$2 = 23;
-      $$1.a("body", fjb.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fiy.a(0.0F, 23.0F, 0.0F));
-      $$1.a("right_eye", fjb.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fiy.a(0.0F, 20.0F, 0.0F));
-      $$1.a("left_eye", fjb.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fiy.a(0.0F, 20.0F, 0.0F));
-      $$1.a("back_fin", fjb.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fiy.a(0.0F, 22.0F, 1.5F));
-      $$1.a("right_fin", fjb.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fiy.a(-1.5F, 22.0F, -1.5F));
-      $$1.a("left_fin", fjb.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fiy.a(1.5F, 22.0F, -1.5F));
-      return fjc.a($$0, 32, 32);
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   @Override
-   public fiw a() {
-      return this.a;
+   public static fkh b() {
+      fkj $$0 = new fkj();
+      fkk $$1 = $$0.a();
+      $$1.a("body", fkg.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fkd.a(0.0F, 17.6F, 0.0F));
+      ato $$2 = ato.a(1660L);
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), fkg.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fkd.a($$4, 24.6F, $$5));
+      }
+
+      return fkh.a($$0, 64, 32);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * asy.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * asy.a($$3 * 0.2F);
+      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
+         this.b[$$6].e = 0.2F * ati.a($$3 * 0.3F + (float)$$6) + 0.4F;
+      }
+   }
+
+   @Override
+   public fkb a() {
+      return this.a;
    }
 }

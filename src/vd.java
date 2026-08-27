@@ -1,36 +1,104 @@
-import com.google.common.primitives.Ints;
+import com.google.common.base.Preconditions;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.util.UUID;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record vd(int b, UUID c, UUID d) {
-   public static final Codec<vd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asg.i.fieldOf("index").forGetter(vd::b), iv.a.fieldOf("sender").forGetter(vd::c), iv.a.fieldOf("session_id").forGetter(vd::d))
-            .apply($$0, vd::new)
-   );
+public record vd(byte[] c) {
+   public static final Codec<vd> a = asq.n.xmap(vd::new, vd::b);
+   public static final int b = 256;
 
-   public static vd a(UUID $$0) {
-      return a($$0, ac.d);
+   public vd(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static vd a(UUID $$0, UUID $$1) {
-      return new vd(0, $$0, $$1);
+   public static vd a(tu $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new vd($$1);
    }
 
-   public void a(ati.a $$0) throws SignatureException {
-      $$0.update(iv.b(this.c));
-      $$0.update(iv.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
+   public static void a(tu $$0, vd $$1) {
+      $$0.c($$1.c);
    }
 
-   public boolean a(vd $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   public boolean a(att $$0, ats $$1) {
+      return $$0.validate($$1, this.c);
    }
 
-   @Nullable
-   public vd a() {
-      return this.b == Integer.MAX_VALUE ? null : new vd(this.b + 1, this.c, this.d);
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof vd $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
+
+   public vd.a a(ve $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new vd.a($$1) : new vd.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable vd c) {
+      public static final int a = -1;
+
+      public a(vd $$0) {
+         this(-1, $$0);
+      }
+
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static vd.a a(tu $$0) {
+         int $$1 = $$0.n() - 1;
+         return $$1 == -1 ? new vd.a(vd.a($$0)) : new vd.a($$1);
+      }
+
+      public static void a(tu $$0, vd.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            vd.a($$0, $$1.b());
+         }
+      }
+
+      public Optional<vd> a(ve $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public vd b() {
+         return this.c;
+      }
    }
 }

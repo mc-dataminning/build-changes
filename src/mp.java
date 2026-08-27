@@ -1,21 +1,20 @@
-public enum mp {
-   a("building_blocks"),
-   b("decorations"),
-   c("redstone"),
-   d("transportation"),
-   e("tools"),
-   f("combat"),
-   g("food"),
-   h("brewing"),
-   i("misc");
+import com.google.gson.JsonObject;
+import javax.annotation.Nullable;
 
-   private final String j;
+public interface mp {
+   void a(JsonObject var1);
 
-   private mp(String $$0) {
-      this.j = $$0;
+   default JsonObject a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("type", jy.u.b(this.c()).toString());
+      this.a($$0);
+      return $$0;
    }
 
-   public String a() {
-      return this.j;
-   }
+   agg b();
+
+   coj<?> c();
+
+   @Nullable
+   af d();
 }

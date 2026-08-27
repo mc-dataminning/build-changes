@@ -1,55 +1,50 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class aor {
-   private final anh a;
-   private final aol<InputStream> b;
-   private final aol<aov> c;
+public class aor extends aoj {
+   private static final aof b = new aof(ur.c("dataPack.vanilla.description"), aa.b().a(ans.b), Optional.empty());
+   private static final ano c = new ano(cfx.h);
+   private static final anm d = anm.a(aof.b, b, ano.a, c);
+   private static final ur e = ur.c("dataPack.vanilla.name");
+   private static final agg f = new agg("minecraft", "datapacks");
+
+   public aor(eiy $$0) {
+      super(ans.b, b(), f, $$0);
+   }
+
+   @VisibleForTesting
+   public static anu b() {
+      return new anv().a(d).a("minecraft").b().a().c();
+   }
+
+   @Override
+   protected ur a(String $$0) {
+      return ur.b($$0);
+   }
+
    @Nullable
-   private aov d;
-
-   public aor(anh $$0, aol<InputStream> $$1, aol<aov> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   @Override
+   protected aol a(anr $$0) {
+      return aol.a("vanilla", e, false, b($$0), ans.b, aol.b.b, aop.c);
    }
 
-   public aor(anh $$0, aol<InputStream> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = aov.b;
-      this.d = aov.a;
+   @Nullable
+   @Override
+   protected aol a(String $$0, aol.c $$1, ur $$2) {
+      return aol.a($$0, $$2, false, $$1, ans.b, aol.b.a, aop.d);
    }
 
-   public anh a() {
-      return this.a;
+   public static aoo a(Path $$0, eiy $$1) {
+      return new aoo(new aor($$1), new aok($$0, ans.b, aop.e, $$1));
    }
 
-   public String b() {
-      return this.a.a();
+   public static aoo c() {
+      return new aoo(new aor(new eiy($$0 -> true)));
    }
 
-   public boolean c() {
-      return this.a.b();
-   }
-
-   public InputStream d() throws IOException {
-      return this.b.get();
-   }
-
-   public BufferedReader e() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
-   }
-
-   public aov f() throws IOException {
-      if (this.d == null) {
-         this.d = this.c.get();
-      }
-
-      return this.d;
+   public static aoo a(eeb.c $$0) {
+      return a($$0.a(edz.j), $$0.b().e());
    }
 }

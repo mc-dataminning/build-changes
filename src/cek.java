@@ -1,39 +1,54 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+public abstract class cek extends cel implements ceb {
+   private static final afm<clb> b = afp.a(cek.class, afo.h);
 
-public class cek {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final cek c = a("empty").a(0, cei.b).a();
-   public static final cek d = a("simple").a(5000, cei.c).a(11000, cei.e).a();
-   public static final cek e = a("villager_baby").a(10, cei.b).a(3000, cei.d).a(6000, cei.b).a(10000, cei.d).a(12000, cei.e).a();
-   public static final cek f = a("villager_default").a(10, cei.b).a(2000, cei.c).a(9000, cei.f).a(11000, cei.b).a(12000, cei.e).a();
-   private final Map<cei, cem> g = Maps.newHashMap();
-
-   protected static cel a(String $$0) {
-      cek $$1 = io.a(jy.E, $$0, new cek());
-      return new cel($$1);
+   public cek(bkm<? extends cek> $$0, crs $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(cei $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new cem());
+   public cek(bkm<? extends cek> $$0, double $$1, double $$2, double $$3, crs $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public cek(bkm<? extends cek> $$0, bky $$1, crs $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(clb $$0) {
+      if (!$$0.a(this.s()) || $$0.u()) {
+         this.al().b(b, $$0.c(1));
       }
    }
 
-   protected cem b(cei $$0) {
-      return this.g.get($$0);
+   protected abstract ckw s();
+
+   protected clb t() {
+      return this.al().b(b);
    }
 
-   protected List<cem> c(cei $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   @Override
+   public clb q() {
+      clb $$0 = this.t();
+      return $$0.b() ? new clb(this.s()) : $$0;
    }
 
-   public cei a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cei.b);
+   @Override
+   protected void b_() {
+      this.al().a(b, clb.b);
+   }
+
+   @Override
+   public void b(rz $$0) {
+      super.b($$0);
+      clb $$1 = this.t();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new rz()));
+      }
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      clb $$1 = clb.a($$0.p("Item"));
+      this.a($$1);
    }
 }

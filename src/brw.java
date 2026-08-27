@@ -1,32 +1,13 @@
-public class brw extends bqv {
-   private final boolean a;
-   private int b;
+import java.util.EnumSet;
 
-   public brw(bkl $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+public class brw extends bsb {
+   public brw(bla $$0, Class<? extends bky> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(EnumSet.of(brt.a.b, brt.a.a));
    }
 
-   @Override
-   public boolean b() {
-      return this.a && this.b > 0 && super.b();
-   }
-
-   @Override
-   public void c() {
-      this.b = 20;
-      this.a(true);
-   }
-
-   @Override
-   public void d() {
-      this.a(false);
-   }
-
-   @Override
-   public void e() {
-      this.b--;
-      super.e();
+   public brw(bla $$0, Class<? extends bky> $$1, float $$2, float $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a(EnumSet.of(brt.a.b, brt.a.a));
    }
 }

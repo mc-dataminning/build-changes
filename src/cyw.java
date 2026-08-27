@@ -1,29 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cyw extends cua implements cud {
-   public static final MapCodec<cyw> a = b(cyw::new);
+public class cyw extends cyi implements czj {
+   public static final MapCodec<cyw> c = b(cyw::new);
+   protected static final ekb g = cut.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<cyw> a() {
-      return a;
+      return c;
    }
 
-   public cyw(dga.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(crc $$0, ht $$1, dgb $$2) {
-      return $$0.a_($$1.c()).i();
+   protected cyw(dgv.d $$0) {
+      super($$0, hx.b, g, true, 0.14);
    }
 
    @Override
-   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
-      return true;
+   protected boolean g(dgw $$0) {
+      return $$0.a(cuv.G);
    }
 
    @Override
-   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
-      $$0.H_().c(jz.at).flatMap($$0x -> $$0x.b(pm.n)).ifPresent($$3x -> ((dob)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2.c()));
+   protected cut b() {
+      return cuv.md;
+   }
+
+   @Override
+   protected boolean h(dgw $$0) {
+      return !$$0.a(cuv.kJ);
+   }
+
+   @Override
+   public boolean a(@Nullable cdm $$0, cqy $$1, ht $$2, dgw $$3, ecf $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(crt $$0, ht $$1, dgw $$2, ecg $$3) {
+      return false;
+   }
+
+   @Override
+   protected int a(ato $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public dgw a(cnj $$0) {
+      ecg $$1 = $$0.q().b_($$0.a());
+      return $$1.a(arh.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   public ecg c_(dgw $$0) {
+      return ech.c.a(false);
    }
 }

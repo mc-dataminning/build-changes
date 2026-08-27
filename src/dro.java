@@ -1,97 +1,53 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 
-public class dro implements dqs {
-   public static final Codec<dro> a = RecordCodecBuilder.create(
+public class dro implements drn {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<dro> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dst.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
-               dtw.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
-               dst.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
-               dse.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
-               dsq.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
-               dst.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
-               drt.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
-               dtk.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
-               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
-               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
+               dmc.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               dme.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               dmd.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               bhv.b(1, 20).fieldOf("outer_wall_distance").orElse(bib.a(4, 5)).forGetter($$0x -> $$0x.i),
+               bhv.b(1, 20).fieldOf("distribution_points").orElse(bib.a(3, 4)).forGetter($$0x -> $$0x.j),
+               bhv.b(0, 10).fieldOf("point_offset").orElse(bib.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
             )
             .apply($$0, dro::new)
    );
-   public final dst b;
-   public final dst c;
-   public final dtw d;
-   public final dst e;
-   public final dse f;
-   public final Optional<dsq> g;
-   public final drt h;
-   public final List<dtk> i;
-   public final boolean j;
-   public final boolean k;
+   public final dmc c;
+   public final dme d;
+   public final dmd e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final bhv i;
+   public final bhv j;
+   public final bhv k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   protected dro(dst $$0, dtw $$1, dst $$2, dse $$3, Optional<dsq> $$4, dst $$5, drt $$6, List<dtk> $$7, boolean $$8, boolean $$9) {
-      this.b = $$0;
+   public dro(dmc $$0, dme $$1, dmd $$2, double $$3, double $$4, boolean $$5, bhv $$6, bhv $$7, bhv $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
       this.d = $$1;
       this.e = $$2;
       this.f = $$3;
       this.g = $$4;
-      this.c = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-   }
-
-   public static class a {
-      public final dst a;
-      private final dtw c;
-      public final dst b;
-      private final dse d;
-      private final Optional<dsq> e;
-      private dst f;
-      private final drt g;
-      private List<dtk> h = ImmutableList.of();
-      private boolean i;
-      private boolean j;
-
-      public a(dst $$0, dtw $$1, dst $$2, dse $$3, Optional<dsq> $$4, drt $$5) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-         this.f = dst.a(cuc.j);
-         this.d = $$3;
-         this.e = $$4;
-         this.g = $$5;
-      }
-
-      public a(dst $$0, dtw $$1, dst $$2, dse $$3, drt $$4) {
-         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
-      }
-
-      public dro.a a(dst $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public dro.a a(List<dtk> $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public dro.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public dro.a b() {
-         this.j = true;
-         return this;
-      }
-
-      public dro c() {
-         return new dro(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
-      }
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

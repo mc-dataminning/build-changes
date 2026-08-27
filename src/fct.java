@@ -1,136 +1,172 @@
-import com.google.common.collect.Lists;
 import java.util.List;
 
-public class fct extends eth {
-   private static final afw b = new afw("recipe_book/slot_many_craftable");
-   private static final afw c = new afw("recipe_book/slot_craftable");
-   private static final afw d = new afw("recipe_book/slot_many_uncraftable");
-   private static final afw e = new afw("recipe_book/slot_uncraftable");
-   private static final float l = 15.0F;
-   private static final int m = 25;
-   public static final int a = 30;
-   private static final ui n = ui.c("gui.recipebook.moreRecipes");
-   private cgz<?> o;
-   private aqg p;
-   private fcu q;
-   private float s;
-   private float t;
-   private int u;
+public class fct extends fbg<cid> {
+   private static final agg x = new agg("container/stonecutter/scroller");
+   private static final agg y = new agg("container/stonecutter/scroller_disabled");
+   private static final agg z = new agg("container/stonecutter/recipe_selected");
+   private static final agg A = new agg("container/stonecutter/recipe_highlighted");
+   private static final agg B = new agg("container/stonecutter/recipe");
+   private static final agg C = new agg("textures/gui/container/stonecutter.png");
+   private static final int D = 12;
+   private static final int E = 15;
+   private static final int F = 4;
+   private static final int G = 3;
+   private static final int H = 16;
+   private static final int I = 18;
+   private static final int J = 54;
+   private static final int K = 52;
+   private static final int L = 14;
+   private float M;
+   private boolean N;
+   private int O;
+   private boolean P;
 
-   public fct() {
-      super(0, 0, 25, 25, uh.a);
+   public fct(cid $$0, cdl $$1, ur $$2) {
+      super($$0, $$1, $$2);
+      $$0.a(this::G);
+      this.m--;
    }
 
-   public void a(fcu $$0, fcr $$1) {
-      this.q = $$0;
-      this.o = (cgz<?>)$$1.d().s.bS;
-      this.p = $$1.e();
-      List<cno<?>> $$2 = $$0.a(this.p.a(this.o));
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
 
-      for (cno<?> $$3 : $$2) {
-         if (this.p.d($$3)) {
-            $$1.a($$2);
-            this.t = 15.0F;
-            break;
+   @Override
+   protected void a(eub $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(C, $$4, $$5, 0, 0, this.c, this.k);
+      int $$6 = (int)(41.0F * this.M);
+      agg $$7 = this.F() ? x : y;
+      $$0.a($$7, $$4 + 119, $$5 + 15 + $$6, 12, 15);
+      int $$8 = this.t + 52;
+      int $$9 = this.u + 14;
+      int $$10 = this.O + 12;
+      this.a($$0, $$2, $$3, $$8, $$9, $$10);
+      this.b($$0, $$8, $$9, $$10);
+   }
+
+   @Override
+   protected void a(eub $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.P) {
+         int $$3 = this.t + 52;
+         int $$4 = this.u + 14;
+         int $$5 = this.O + 12;
+         List<coh<coz>> $$6 = this.p.m();
+
+         for (int $$7 = this.O; $$7 < $$5 && $$7 < this.p.n(); $$7++) {
+            int $$8 = $$7 - this.O;
+            int $$9 = $$3 + $$8 % 4 * 16;
+            int $$10 = $$4 + $$8 / 4 * 18 + 2;
+            if ($$1 >= $$9 && $$1 < $$9 + 16 && $$2 >= $$10 && $$2 < $$10 + 18) {
+               $$0.b(this.i, $$6.get($$7).b().a(this.f.r.H_()), $$1, $$2);
+            }
          }
       }
    }
 
-   public fcu a() {
-      return this.q;
-   }
-
-   @Override
-   public void b(esy $$0, int $$1, int $$2, float $$3) {
-      if (!ezd.p()) {
-         this.s += $$3;
-      }
-
-      afw $$4;
-      if (this.q.c()) {
-         if (this.q.a(this.p.a(this.o)).size() > 1) {
-            $$4 = b;
+   private void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = this.O; $$6 < $$5 && $$6 < this.p.n(); $$6++) {
+         int $$7 = $$6 - this.O;
+         int $$8 = $$3 + $$7 % 4 * 16;
+         int $$9 = $$7 / 4;
+         int $$10 = $$4 + $$9 * 18 + 2;
+         agg $$11;
+         if ($$6 == this.p.l()) {
+            $$11 = z;
+         } else if ($$1 >= $$8 && $$2 >= $$10 && $$1 < $$8 + 16 && $$2 < $$10 + 18) {
+            $$11 = A;
          } else {
-            $$4 = c;
+            $$11 = B;
          }
-      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$4 = d;
+
+         $$0.a($$11, $$8, $$10 - 1, 16, 18);
+      }
+   }
+
+   private void b(eub $$0, int $$1, int $$2, int $$3) {
+      List<coh<coz>> $$4 = this.p.m();
+
+      for (int $$5 = this.O; $$5 < $$3 && $$5 < this.p.n(); $$5++) {
+         int $$6 = $$5 - this.O;
+         int $$7 = $$1 + $$6 % 4 * 16;
+         int $$8 = $$6 / 4;
+         int $$9 = $$2 + $$8 * 18 + 2;
+         $$0.a($$4.get($$5).b().a(this.f.r.H_()), $$7, $$9);
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      this.N = false;
+      if (this.P) {
+         int $$3 = this.t + 52;
+         int $$4 = this.u + 14;
+         int $$5 = this.O + 12;
+
+         for (int $$6 = this.O; $$6 < $$5; $$6++) {
+            int $$7 = $$6 - this.O;
+            double $$8 = $$0 - (double)($$3 + $$7 % 4 * 16);
+            double $$9 = $$1 - (double)($$4 + $$7 / 4 * 18);
+            if ($$8 >= 0.0 && $$9 >= 0.0 && $$8 < 16.0 && $$9 < 18.0 && this.p.b(this.f.s, $$6)) {
+               esr.N().ah().a(gek.a(aqn.yD, 1.0F));
+               this.f.q.a(this.p.j, $$6);
+               return true;
+            }
+         }
+
+         $$3 = this.t + 119;
+         $$4 = this.u + 9;
+         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 54)) {
+            this.N = true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.N && this.F()) {
+         int $$5 = this.u + 14;
+         int $$6 = $$5 + 54;
+         this.M = ((float)$$1 - (float)$$5 - 7.5F) / ((float)($$6 - $$5) - 15.0F);
+         this.M = ati.a(this.M, 0.0F, 1.0F);
+         this.O = (int)((double)(this.M * (float)this.E()) + 0.5) * 4;
+         return true;
       } else {
-         $$4 = e;
-      }
-
-      boolean $$8 = this.t > 0.0F;
-      if ($$8) {
-         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.t / 15.0F * (float) Math.PI));
-         $$0.c().a();
-         $$0.c().a((float)(this.p() + 8), (float)(this.r() + 12), 0.0F);
-         $$0.c().b($$9, $$9, 1.0F);
-         $$0.c().a((float)(-(this.p() + 8)), (float)(-(this.r() + 12)), 0.0F);
-         this.t -= $$3;
-      }
-
-      $$0.a($$4, this.p(), this.r(), this.f, this.g);
-      List<cno<?>> $$10 = this.g();
-      this.u = asy.d(this.s / 30.0F) % $$10.size();
-      ckj $$11 = $$10.get(this.u).b().a(this.q.a());
-      int $$12 = 4;
-      if (this.q.f() && this.g().size() > 1) {
-         $$0.a($$11, this.p() + $$12 + 1, this.r() + $$12 + 1, 0, 10);
-         $$12--;
-      }
-
-      $$0.b($$11, this.p() + $$12, this.r() + $$12);
-      if ($$8) {
-         $$0.c().b();
-      }
-   }
-
-   private List<cno<?>> g() {
-      List<cno<?>> $$0 = this.q.b(true);
-      if (!this.p.a(this.o)) {
-         $$0.addAll(this.q.b(false));
-      }
-
-      return $$0;
-   }
-
-   public boolean b() {
-      return this.g().size() == 1;
-   }
-
-   public cno<?> e() {
-      List<cno<?>> $$0 = this.g();
-      return $$0.get(this.u);
-   }
-
-   public List<ui> f() {
-      ckj $$0 = this.g().get(this.u).b().a(this.q.a());
-      List<ui> $$1 = Lists.newArrayList(ezd.a(ero.O(), $$0));
-      if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$1.add(n);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void a(exc $$0) {
-      ckj $$1 = this.g().get(this.u).b().a(this.q.a());
-      $$0.a(exb.a, ui.a("narration.recipe", $$1.y()));
-      if (this.q.a(this.p.a(this.o)).size() > 1) {
-         $$0.a(exb.d, ui.c("narration.button.usage.hovered"), ui.c("narration.recipe.usage.more"));
-      } else {
-         $$0.a(exb.d, ui.c("narration.button.usage.hovered"));
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   public int k() {
-      return 25;
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.F()) {
+         int $$4 = this.E();
+         float $$5 = (float)$$3 / (float)$$4;
+         this.M = ati.a(this.M - $$5, 0.0F, 1.0F);
+         this.O = (int)((double)(this.M * (float)$$4) + 0.5) * 4;
+      }
+
+      return true;
    }
 
-   @Override
-   protected boolean c(int $$0) {
-      return $$0 == 0 || $$0 == 1;
+   private boolean F() {
+      return this.P && this.p.n() > 12;
+   }
+
+   protected int E() {
+      return (this.p.n() + 4 - 1) / 4 - 3;
+   }
+
+   private void G() {
+      this.P = this.p.o();
+      if (!this.P) {
+         this.M = 0.0F;
+         this.O = 0;
+      }
    }
 }

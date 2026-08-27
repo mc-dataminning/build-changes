@@ -1,939 +1,471 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import java.util.HashSet;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
 import java.util.Set;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class faq extends fat<faq.b> {
-   private static final afw x = new afw("container/creative_inventory/scroller");
-   private static final afw y = new afw("container/creative_inventory/scroller_disabled");
-   private static final afw[] z = new afw[]{
-      new afw("container/creative_inventory/tab_top_unselected_1"),
-      new afw("container/creative_inventory/tab_top_unselected_2"),
-      new afw("container/creative_inventory/tab_top_unselected_3"),
-      new afw("container/creative_inventory/tab_top_unselected_4"),
-      new afw("container/creative_inventory/tab_top_unselected_5"),
-      new afw("container/creative_inventory/tab_top_unselected_6"),
-      new afw("container/creative_inventory/tab_top_unselected_7")
-   };
-   private static final afw[] A = new afw[]{
-      new afw("container/creative_inventory/tab_top_selected_1"),
-      new afw("container/creative_inventory/tab_top_selected_2"),
-      new afw("container/creative_inventory/tab_top_selected_3"),
-      new afw("container/creative_inventory/tab_top_selected_4"),
-      new afw("container/creative_inventory/tab_top_selected_5"),
-      new afw("container/creative_inventory/tab_top_selected_6"),
-      new afw("container/creative_inventory/tab_top_selected_7")
-   };
-   private static final afw[] B = new afw[]{
-      new afw("container/creative_inventory/tab_bottom_unselected_1"),
-      new afw("container/creative_inventory/tab_bottom_unselected_2"),
-      new afw("container/creative_inventory/tab_bottom_unselected_3"),
-      new afw("container/creative_inventory/tab_bottom_unselected_4"),
-      new afw("container/creative_inventory/tab_bottom_unselected_5"),
-      new afw("container/creative_inventory/tab_bottom_unselected_6"),
-      new afw("container/creative_inventory/tab_bottom_unselected_7")
-   };
-   private static final afw[] C = new afw[]{
-      new afw("container/creative_inventory/tab_bottom_selected_1"),
-      new afw("container/creative_inventory/tab_bottom_selected_2"),
-      new afw("container/creative_inventory/tab_bottom_selected_3"),
-      new afw("container/creative_inventory/tab_bottom_selected_4"),
-      new afw("container/creative_inventory/tab_bottom_selected_5"),
-      new afw("container/creative_inventory/tab_bottom_selected_6"),
-      new afw("container/creative_inventory/tab_bottom_selected_7")
-   };
-   private static final String D = "textures/gui/container/creative_inventory/tab_";
-   private static final String E = "CustomCreativeLock";
-   private static final int F = 5;
-   private static final int G = 9;
-   private static final int H = 26;
-   private static final int I = 32;
-   private static final int J = 12;
-   private static final int K = 15;
-   static final bii L = new bii(45);
-   private static final ui M = ui.c("inventory.binSlot");
-   private static final int N = 16777215;
-   private static cip O = ciq.b();
-   private float P;
-   private boolean Q;
-   private ets R;
+public class faq extends fah implements far {
+   static final agg c = new agg("container/slot");
+   static final agg k = new agg("statistics/header");
+   static final agg l = new agg("statistics/sort_up");
+   static final agg m = new agg("statistics/sort_down");
+   private static final ur n = ur.c("multiplayer.downloadingStats");
+   static final ur o = ur.c("stats.none");
+   protected final fah a;
+   private faq.a p;
+   faq.b q;
+   private faq.c r;
+   final aqy t;
    @Nullable
-   private List<chh> S;
-   @Nullable
-   private chh T;
-   private fap U;
-   private boolean V;
-   private boolean W;
-   private final Set<arh<cke>> X = new HashSet<>();
-   private final boolean Y;
+   private evi<?> u;
+   private boolean v = true;
+   private static final int w = 18;
+   private static final int x = 20;
+   private static final int y = 1;
+   private static final int z = 1;
+   private static final int A = 2;
+   private static final int B = 2;
+   private static final int C = 40;
+   private static final int D = 5;
+   private static final int E = 0;
+   private static final int F = -1;
+   private static final int G = 1;
 
-   public faq(ccx $$0, cfg $$1, boolean $$2) {
-      super(new faq.b($$0), $$0.fS(), uh.a);
-      $$0.bS = this.p;
-      this.k = 136;
-      this.c = 195;
-      this.Y = $$2;
-      ciq.a($$1, this.a($$0), $$0.dL().H_());
+   public faq(fah $$0, aqy $$1) {
+      super(ur.c("gui.stats"));
+      this.a = $$0;
+      this.t = $$1;
    }
 
-   private boolean a(ccx $$0) {
-      return $$0.gp() && this.Y;
+   @Override
+   protected void aO_() {
+      this.v = true;
+      this.f.I().b(new acu(acu.a.b));
    }
 
-   private void a(cfg $$0, boolean $$1, id.b $$2) {
-      if (ciq.a($$0, $$1, $$2)) {
-         for (cip $$3 : ciq.d()) {
-            Collection<ckj> $$4 = $$3.l();
-            if ($$3 == O) {
-               if ($$3.k() == cip.h.a && $$4.isEmpty()) {
-                  this.a(ciq.b());
-               } else {
-                  this.a($$4);
-               }
-            }
-         }
-      }
-   }
-
-   private void a(Collection<ckj> $$0) {
-      int $$1 = this.p.a(this.P);
-      this.p.k.clear();
-      if (O.k() == cip.h.d) {
-         this.F();
-      } else {
-         this.p.k.addAll($$0);
-      }
-
-      this.P = this.p.e($$1);
-      this.p.b(this.P);
+   public void l() {
+      this.p = new faq.a(this.f);
+      this.q = new faq.b(this.f);
+      this.r = new faq.c(this.f);
    }
 
    @Override
    public void C() {
-      super.C();
-      if (this.f != null) {
-         if (this.f.s != null) {
-            this.a(this.f.s.cn.y(), this.a(this.f.s), this.f.s.dL().H_());
-         }
+      this.d((eum)eum.a(ur.c("stat.generalButton"), $$0x -> this.a(this.p)).a(this.g / 2 - 120, this.h - 52, 80, 20).a());
+      eum $$0 = this.d((eum)eum.a(ur.c("stat.itemsButton"), $$0x -> this.a(this.q)).a(this.g / 2 - 40, this.h - 52, 80, 20).a());
+      eum $$1 = this.d((eum)eum.a(ur.c("stat.mobsButton"), $$0x -> this.a(this.r)).a(this.g / 2 + 40, this.h - 52, 80, 20).a());
+      this.d((eum)eum.a(uq.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 28, 200, 20).a());
+      if (this.q.i().isEmpty()) {
+         $$0.i = false;
+      }
 
-         if (!this.f.q.g()) {
-            this.f.a(new fbb(this.f.s));
-         }
+      if (this.r.i().isEmpty()) {
+         $$1.i = false;
       }
    }
 
    @Override
-   protected void a(@Nullable chh $$0, int $$1, int $$2, cfy $$3) {
-      if (this.a($$0)) {
-         this.R.c(false);
-         this.R.o(0);
-      }
-
-      boolean $$4 = $$3 == cfy.b;
-      $$3 = $$1 == -999 && $$3 == cfy.a ? cfy.e : $$3;
-      if ($$0 == null && O.k() != cip.h.b && $$3 != cfy.f) {
-         if (!this.p.g().b() && this.W) {
-            if ($$2 == 0) {
-               this.f.s.a(this.p.g(), true);
-               this.f.q.a(this.p.g());
-               this.p.b(ckj.b);
-            }
-
-            if ($$2 == 1) {
-               ckj $$18 = this.p.g().a(1);
-               this.f.s.a($$18, true);
-               this.f.q.a($$18);
-            }
-         }
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      if (this.v) {
+         this.b($$0, $$1, $$2, $$3);
+         $$0.a(this.i, n, this.g / 2, this.h / 2, 16777215);
+         $$0.a(this.i, b[(int)(ac.b() / 150L % (long)b.length)], this.g / 2, this.h / 2 + 9 * 2, 16777215);
       } else {
-         if ($$0 != null && !$$0.a(this.f.s)) {
-            return;
-         }
-
-         if ($$0 == this.T && $$4) {
-            for (int $$5 = 0; $$5 < this.f.s.bR.c().size(); $$5++) {
-               this.f.q.a(ckj.b, $$5);
-            }
-         } else if (O.k() == cip.h.b) {
-            if ($$0 == this.T) {
-               this.p.b(ckj.b);
-            } else if ($$3 == cfy.e && $$0 != null && $$0.f()) {
-               ckj $$6 = $$0.a($$2 == 0 ? 1 : $$0.e().g());
-               ckj $$7 = $$0.e();
-               this.f.s.a($$6, true);
-               this.f.q.a($$6);
-               this.f.q.a($$7, ((faq.c)$$0).a.e);
-            } else if ($$3 == cfy.e && !this.p.g().b()) {
-               this.f.s.a(this.p.g(), true);
-               this.f.q.a(this.p.g());
-               this.p.b(ckj.b);
-            } else {
-               this.f.s.bR.a($$0 == null ? $$1 : ((faq.c)$$0).a.e, $$2, $$3, this.f.s);
-               this.f.s.bR.d();
-            }
-         } else if ($$3 != cfy.f && $$0.d == L) {
-            ckj $$8 = this.p.g();
-            ckj $$9 = $$0.e();
-            if ($$3 == cfy.c) {
-               if (!$$9.b()) {
-                  this.f.s.fS().a($$2, $$9.c($$9.g()));
-                  this.f.s.bR.d();
-               }
-
-               return;
-            }
-
-            if ($$3 == cfy.d) {
-               if (this.p.g().b() && $$0.f()) {
-                  ckj $$10 = $$0.e();
-                  this.p.b($$10.c($$10.g()));
-               }
-
-               return;
-            }
-
-            if ($$3 == cfy.e) {
-               if (!$$9.b()) {
-                  ckj $$11 = $$9.c($$2 == 0 ? 1 : $$9.g());
-                  this.f.s.a($$11, true);
-                  this.f.q.a($$11);
-               }
-
-               return;
-            }
-
-            if (!$$8.b() && !$$9.b() && ckj.c($$8, $$9)) {
-               if ($$2 == 0) {
-                  if ($$4) {
-                     $$8.f($$8.g());
-                  } else if ($$8.L() < $$8.g()) {
-                     $$8.g(1);
-                  }
-               } else {
-                  $$8.h(1);
-               }
-            } else if (!$$9.b() && $$8.b()) {
-               int $$12 = $$4 ? $$9.g() : $$9.L();
-               this.p.b($$9.c($$12));
-            } else if ($$2 == 0) {
-               this.p.b(ckj.b);
-            } else if (!this.p.g().b()) {
-               this.p.g().h(1);
-            }
-         } else if (this.p != null) {
-            ckj $$13 = $$0 == null ? ckj.b : this.p.b($$0.e).e();
-            this.p.a($$0 == null ? $$1 : $$0.e, $$2, $$3, this.f.s);
-            if (cfp.d($$2) == 2) {
-               for (int $$14 = 0; $$14 < 9; $$14++) {
-                  this.f.q.a(this.p.b(45 + $$14).e(), 36 + $$14);
-               }
-            } else if ($$0 != null) {
-               ckj $$15 = this.p.b($$0.e).e();
-               this.f.q.a($$15, $$0.e - this.p.i.size() + 9 + 36);
-               int $$16 = 45 + $$2;
-               if ($$3 == cfy.c) {
-                  this.f.q.a($$13, $$16 - this.p.i.size() + 9 + 36);
-               } else if ($$3 == cfy.e && !$$13.b()) {
-                  ckj $$17 = $$13.c($$2 == 0 ? 1 : $$13.g());
-                  this.f.s.a($$17, true);
-                  this.f.q.a($$17);
-               }
-
-               this.f.s.bR.d();
-            }
-         }
-      }
-   }
-
-   private boolean a(@Nullable chh $$0) {
-      return $$0 != null && $$0.d == L;
-   }
-
-   @Override
-   protected void aM_() {
-      if (this.f.q.g()) {
-         super.aM_();
-         this.R = new ets(this.i, this.t + 82, this.u + 6, 80, 9, ui.c("itemGroup.search"));
-         this.R.l(50);
-         this.R.d(false);
-         this.R.g(false);
-         this.R.m(16777215);
-         this.e(this.R);
-         cip $$0 = O;
-         O = ciq.b();
-         this.a($$0);
-         this.f.s.bR.b(this.U);
-         this.U = new fap(this.f);
-         this.f.s.bR.a(this.U);
-         if (!O.i()) {
-            this.a(ciq.b());
-         }
-      } else {
-         this.f.a(new fbb(this.f.s));
+         super.a($$0, $$1, $$2, $$3);
+         this.E().a($$0, $$1, $$2, $$3);
+         $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
       }
    }
 
    @Override
-   public void a(ero $$0, int $$1, int $$2) {
-      int $$3 = this.p.a(this.P);
-      String $$4 = this.R.a();
-      this.b($$0, $$1, $$2);
-      this.R.a($$4);
-      if (!this.R.a().isEmpty()) {
-         this.F();
-      }
-
-      this.P = this.p.e($$3);
-      this.p.b(this.P);
+   public void b(eub $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 
    @Override
-   public void aD_() {
-      super.aD_();
-      if (this.f.s != null && this.f.s.fS() != null) {
-         this.f.s.bR.b(this.U);
+   public void D() {
+      if (this.v) {
+         this.l();
+         this.C();
+         this.a(this.p);
+         this.v = false;
       }
    }
 
    @Override
-   public boolean a(char $$0, int $$1) {
-      if (this.V) {
-         return false;
-      } else if (O.k() != cip.h.d) {
-         return false;
-      } else {
-         String $$2 = this.R.a();
-         if (this.R.a($$0, $$1)) {
-            if (!Objects.equals($$2, this.R.a())) {
-               this.F();
-            }
+   public boolean j() {
+      return !this.v;
+   }
 
-            return true;
-         } else {
-            return false;
+   @Nullable
+   public evi<?> E() {
+      return this.u;
+   }
+
+   public void a(@Nullable evi<?> $$0) {
+      if (this.u != null) {
+         this.f(this.u);
+      }
+
+      if ($$0 != null) {
+         this.e($$0);
+         this.u = $$0;
+      }
+   }
+
+   static String a(aqu<agg> $$0) {
+      return "stat." + $$0.b().toString().replace(':', '.');
+   }
+
+   int a(int $$0) {
+      return 115 + 40 * $$0;
+   }
+
+   void a(eub $$0, int $$1, int $$2, ckw $$3) {
+      this.a($$0, $$1 + 1, $$2 + 1, c);
+      $$0.b($$3.al_(), $$1 + 2, $$2 + 2);
+   }
+
+   void a(eub $$0, int $$1, int $$2, agg $$3) {
+      $$0.a($$3, $$1, $$2, 0, 18, 18);
+   }
+
+   class a extends evi<faq.a.a> {
+      public a(esr $$0) {
+         super($$0, faq.this.g, faq.this.h, 32, faq.this.h - 64, 10);
+         ObjectArrayList<aqu<agg>> $$1 = new ObjectArrayList(aqx.i.iterator());
+         $$1.sort(Comparator.comparing($$0x -> gcn.a(faq.a($$0x))));
+         ObjectListIterator var4 = $$1.iterator();
+
+         while (var4.hasNext()) {
+            aqu<agg> $$2 = (aqu<agg>)var4.next();
+            this.b(new faq.a.a($$2));
+         }
+      }
+
+      class a extends evi.a<faq.a.a> {
+         private final aqu<agg> b;
+         private final ur c;
+
+         a(aqu<agg> $$0) {
+            this.b = $$0;
+            this.c = ur.c(faq.a($$0));
+         }
+
+         private String b() {
+            return this.b.a(faq.this.t.a(this.b));
+         }
+
+         @Override
+         public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(faq.this.i, this.c, $$3 + 2, $$2 + 1, $$1 % 2 == 0 ? 16777215 : 9474192);
+            String $$10 = this.b();
+            $$0.b(faq.this.i, $$10, $$3 + 2 + 213 - faq.this.i.b($$10), $$2 + 1, $$1 % 2 == 0 ? 16777215 : 9474192);
+         }
+
+         @Override
+         public ur a() {
+            return ur.a("narrator.select", ur.i().b(this.c).b(uq.u).f(this.b()));
          }
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      this.V = false;
-      if (O.k() != cip.h.d) {
-         if (this.f.m.K.a($$0, $$1)) {
-            this.V = true;
-            this.a(ciq.e());
-            return true;
-         } else {
-            return super.a($$0, $$1, $$2);
-         }
-      } else {
-         boolean $$3 = !this.a(this.s) || this.s.f();
-         boolean $$4 = elc.a($$0, $$1).e().isPresent();
-         if ($$3 && $$4 && this.a($$0, $$1)) {
-            this.V = true;
-            return true;
-         } else {
-            String $$5 = this.R.a();
-            if (this.R.a($$0, $$1, $$2)) {
-               if (!Objects.equals($$5, this.R.a())) {
-                  this.F();
-               }
-
-               return true;
-            } else {
-               return this.R.aG_() && this.R.u() && $$0 != 256 ? true : super.a($$0, $$1, $$2);
-            }
-         }
-      }
-   }
-
-   @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      this.V = false;
-      return super.b($$0, $$1, $$2);
-   }
-
-   private void F() {
-      this.p.k.clear();
-      this.X.clear();
-      String $$0 = this.R.a();
-      if ($$0.isEmpty()) {
-         this.p.k.addAll(O.l());
-      } else {
-         gdv<ckj> $$1;
-         if ($$0.startsWith("#")) {
-            $$0 = $$0.substring(1);
-            $$1 = this.f.a(gdu.b);
-            this.a($$0);
-         } else {
-            $$1 = this.f.a(gdu.a);
-         }
-
-         this.p.k.addAll($$1.search($$0.toLowerCase(Locale.ROOT)));
-      }
-
-      this.P = 0.0F;
-      this.p.b(0.0F);
-   }
-
-   private void a(String $$0) {
-      int $$1 = $$0.indexOf(58);
-      Predicate<afw> $$2;
-      if ($$1 == -1) {
-         $$2 = $$1x -> $$1x.a().contains($$0);
-      } else {
-         String $$3 = $$0.substring(0, $$1).trim();
-         String $$4 = $$0.substring($$1 + 1).trim();
-         $$2 = $$2x -> $$2x.b().contains($$3) && $$2x.a().contains($$4);
-      }
-
-      jy.i.j().filter($$1x -> $$2.test($$1x.b())).forEach(this.X::add);
-   }
-
-   @Override
-   protected void b(esy $$0, int $$1, int $$2) {
-      if (O.d()) {
-         $$0.a(this.i, O.a(), 8, 6, 4210752, false);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         double $$3 = $$0 - (double)this.t;
-         double $$4 = $$1 - (double)this.u;
-
-         for (cip $$5 : ciq.c()) {
-            if (this.a($$5, $$3, $$4)) {
-               return true;
-            }
-         }
-
-         if (O.k() != cip.h.b && this.a($$0, $$1)) {
-            this.Q = this.H();
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         double $$3 = $$0 - (double)this.t;
-         double $$4 = $$1 - (double)this.u;
-         this.Q = false;
-
-         for (cip $$5 : ciq.c()) {
-            if (this.a($$5, $$3, $$4)) {
-               this.a($$5);
-               return true;
-            }
-         }
-      }
-
-      return super.b($$0, $$1, $$2);
-   }
-
-   private boolean H() {
-      return O.e() && this.p.m();
-   }
-
-   private void a(cip $$0) {
-      cip $$1 = O;
-      O = $$0;
-      this.v.clear();
-      this.p.k.clear();
-      this.l();
-      if (O.k() == cip.h.c) {
-         erk $$2 = this.f.aB();
-
-         for (int $$3 = 0; $$3 < 9; $$3++) {
-            foe $$4 = $$2.a($$3);
-            if ($$4.isEmpty()) {
-               for (int $$5 = 0; $$5 < 9; $$5++) {
-                  if ($$5 == $$3) {
-                     ckj $$6 = new ckj(ckm.qa);
-                     $$6.a("CustomCreativeLock");
-                     ui $$7 = this.f.m.U[$$3].k();
-                     ui $$8 = this.f.m.V.k();
-                     $$6.a(ui.a("inventory.hotbarInfo", $$8, $$7));
-                     this.p.k.add($$6);
-                  } else {
-                     this.p.k.add(ckj.b);
-                  }
-               }
-            } else {
-               this.p.k.addAll($$4);
-            }
-         }
-      } else if (O.k() == cip.h.a) {
-         this.p.k.addAll(O.l());
-      }
-
-      if (O.k() == cip.h.b) {
-         cfp $$9 = this.f.s.bR;
-         if (this.S == null) {
-            this.S = ImmutableList.copyOf(this.p.i);
-         }
-
-         this.p.i.clear();
-
-         for (int $$10 = 0; $$10 < $$9.i.size(); $$10++) {
-            int $$14;
-            int $$15;
-            if ($$10 >= 5 && $$10 < 9) {
-               int $$11 = $$10 - 5;
-               int $$12 = $$11 / 2;
-               int $$13 = $$11 % 2;
-               $$14 = 54 + $$12 * 54;
-               $$15 = 6 + $$13 * 27;
-            } else if ($$10 >= 0 && $$10 < 5) {
-               $$14 = -2000;
-               $$15 = -2000;
-            } else if ($$10 == 45) {
-               $$14 = 35;
-               $$15 = 20;
-            } else {
-               int $$20 = $$10 - 9;
-               int $$21 = $$20 % 9;
-               int $$22 = $$20 / 9;
-               $$14 = 9 + $$21 * 18;
-               if ($$10 >= 36) {
-                  $$15 = 112;
-               } else {
-                  $$15 = 54 + $$22 * 18;
-               }
-            }
-
-            chh $$26 = new faq.c($$9.i.get($$10), $$10, $$14, $$15);
-            this.p.i.add($$26);
-         }
-
-         this.T = new chh(L, 0, 173, 112);
-         this.p.i.add(this.T);
-      } else if ($$1.k() == cip.h.b) {
-         this.p.i.clear();
-         this.p.i.addAll(this.S);
-         this.S = null;
-      }
-
-      if (O.k() == cip.h.d) {
-         this.R.g(true);
-         this.R.f(false);
-         this.R.b_(true);
-         if ($$1 != $$0) {
-            this.R.a("");
-         }
-
-         this.F();
-      } else {
-         this.R.g(false);
-         this.R.f(true);
-         this.R.b_(false);
-         this.R.a("");
-      }
-
-      this.P = 0.0F;
-      this.p.b(0.0F);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (!this.H()) {
-         return false;
-      } else {
-         this.P = this.p.a(this.P, $$3);
-         this.p.b(this.P);
-         return true;
-      }
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      this.W = $$5 && !this.a(O, $$0, $$1);
-      return this.W;
-   }
-
-   protected boolean a(double $$0, double $$1) {
-      int $$2 = this.t;
-      int $$3 = this.u;
-      int $$4 = $$2 + 175;
-      int $$5 = $$3 + 18;
-      int $$6 = $$4 + 14;
-      int $$7 = $$5 + 112;
-      return $$0 >= (double)$$4 && $$1 >= (double)$$5 && $$0 < (double)$$6 && $$1 < (double)$$7;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.Q) {
-         int $$5 = this.u + 18;
-         int $$6 = $$5 + 112;
-         this.P = ((float)$$1 - (float)$$5 - 7.5F) / ((float)($$6 - $$5) - 15.0F);
-         this.P = asy.a(this.P, 0.0F, 1.0F);
-         this.p.b(this.P);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-
-      for (cip $$4 : ciq.c()) {
-         if (this.a($$0, $$4, $$1, $$2)) {
-            break;
-         }
-      }
-
-      if (this.T != null && O.k() == cip.h.b && this.a(this.T.f, this.T.g, 16, 16, (double)$$1, (double)$$2)) {
-         $$0.a(this.i, M, $$1, $$2);
-      }
-
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public List<ui> a(ckj $$0) {
-      boolean $$1 = this.s != null && this.s instanceof faq.a;
-      boolean $$2 = O.k() == cip.h.a;
-      boolean $$3 = O.k() == cip.h.d;
-      cma.a $$4 = this.f.m.m ? cma.a.b : cma.a.a;
-      cma $$5 = $$1 ? $$4.c() : $$4;
-      List<ui> $$6 = $$0.a(this.f.s, $$5);
-      if ($$2 && $$1) {
-         return $$6;
-      } else {
-         List<ui> $$7 = Lists.newArrayList($$6);
-         if ($$3 && $$1) {
-            this.X.forEach($$2x -> {
-               if ($$0.a($$2x)) {
-                  $$7.add(1, ui.b("#" + $$2x.b()).a(n.f));
-               }
-            });
-         }
-
-         int $$8 = 1;
-
-         for (cip $$9 : ciq.c()) {
-            if ($$9.k() != cip.h.d && $$9.a($$0)) {
-               $$7.add($$8++, $$9.a().f().a(n.j));
-            }
-         }
-
-         return $$7;
-      }
-   }
-
-   @Override
-   protected void a(esy $$0, float $$1, int $$2, int $$3) {
-      for (cip $$4 : ciq.c()) {
-         if ($$4 != O) {
-            this.a($$0, $$4);
-         }
-      }
-
-      $$0.a(new afw("textures/gui/container/creative_inventory/tab_" + O.c()), this.t, this.u, 0, 0, this.c, this.k);
-      this.R.a($$0, $$2, $$3, $$1);
-      int $$5 = this.t + 175;
-      int $$6 = this.u + 18;
-      int $$7 = $$6 + 112;
-      if (O.e()) {
-         afw $$8 = this.H() ? x : y;
-         $$0.a($$8, $$5, $$6 + (int)((float)($$7 - $$6 - 17) * this.P), 12, 15);
-      }
-
-      this.a($$0, O);
-      if (O.k() == cip.h.b) {
-         fbb.a($$0, this.t + 73, this.u + 6, this.t + 105, this.u + 49, 20, 0.0625F, (float)$$2, (float)$$3, this.f.s);
-      }
-   }
-
-   private int b(cip $$0) {
-      int $$1 = $$0.f();
-      int $$2 = 27;
-      int $$3 = 27 * $$1;
-      if ($$0.j()) {
-         $$3 = this.c - 27 * (7 - $$1) + 1;
-      }
-
-      return $$3;
-   }
-
-   private int c(cip $$0) {
-      int $$1 = 0;
-      if ($$0.g() == cip.f.a) {
-         $$1 -= 32;
-      } else {
-         $$1 += this.k;
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(cip $$0, double $$1, double $$2) {
-      int $$3 = this.b($$0);
-      int $$4 = this.c($$0);
-      return $$1 >= (double)$$3 && $$1 <= (double)($$3 + 26) && $$2 >= (double)$$4 && $$2 <= (double)($$4 + 32);
-   }
-
-   protected boolean a(esy $$0, cip $$1, int $$2, int $$3) {
-      int $$4 = this.b($$1);
-      int $$5 = this.c($$1);
-      if (this.a($$4 + 3, $$5 + 3, 21, 27, (double)$$2, (double)$$3)) {
-         $$0.a(this.i, $$1.a(), $$2, $$3);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void a(esy $$0, cip $$1) {
-      boolean $$2 = $$1 == O;
-      boolean $$3 = $$1.g() == cip.f.a;
-      int $$4 = $$1.f();
-      int $$5 = this.t + this.b($$1);
-      int $$6 = this.u - ($$3 ? 28 : -(this.k - 4));
-      afw[] $$7;
-      if ($$3) {
-         $$7 = $$2 ? A : z;
-      } else {
-         $$7 = $$2 ? C : B;
-      }
-
-      $$0.a($$7[asy.a($$4, 0, $$7.length)], $$5, $$6, 26, 32);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 100.0F);
-      $$5 += 5;
-      $$6 += 8 + ($$3 ? 1 : -1);
-      ckj $$9 = $$1.b();
-      $$0.a($$9, $$5, $$6);
-      $$0.a(this.i, $$9, $$5, $$6);
-      $$0.c().b();
-   }
-
-   public boolean E() {
-      return O.k() == cip.h.b;
-   }
-
-   public static void a(ero $$0, int $$1, boolean $$2, boolean $$3) {
-      foc $$4 = $$0.s;
-      erk $$5 = $$0.aB();
-      foe $$6 = $$5.a($$1);
-      if ($$2) {
-         for (int $$7 = 0; $$7 < ccw.g(); $$7++) {
-            ckj $$8 = (ckj)$$6.get($$7);
-            ckj $$9 = $$8.a($$4.dL().G()) ? $$8.p() : ckj.b;
-            $$4.fS().a($$7, $$9);
-            $$0.q.a($$9, 36 + $$7);
-         }
-
-         $$4.bR.d();
-      } else if ($$3) {
-         for (int $$10 = 0; $$10 < ccw.g(); $$10++) {
-            $$6.set($$10, $$4.fS().a($$10).p());
-         }
-
-         ui $$11 = $$0.m.U[$$1].k();
-         ui $$12 = $$0.m.W.k();
-         ui $$13 = ui.a("inventory.hotbarSaved", $$12, $$11);
-         $$0.l.a($$13, false);
-         $$0.aV().c($$13);
-         $$5.a();
-      }
-   }
-
-   static class a extends chh {
-      public a(bhu $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(ccx $$0) {
-         ckj $$1 = this.e();
-         return super.a($$0) && !$$1.b() ? $$1.a($$0.dL().G()) && $$1.b("CustomCreativeLock") == null : $$1.b();
-      }
-   }
-
-   public static class b extends cfp {
-      public final il<ckj> k = il.a();
-      private final cfp l;
-
-      public b(ccx $$0) {
-         super(null, 0);
-         this.l = $$0.bR;
-         ccw $$1 = $$0.fS();
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            for (int $$3 = 0; $$3 < 9; $$3++) {
-               this.a(new faq.a(faq.L, $$2 * 9 + $$3, 9 + $$3 * 18, 18 + $$2 * 18));
-            }
-         }
-
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new chh($$1, $$4, 9 + $$4 * 18, 112));
-         }
-
-         this.b(0.0F);
-      }
-
-      @Override
-      public boolean a(ccx $$0) {
-         return true;
-      }
-
-      protected int l() {
-         return asy.e(this.k.size(), 9) - 5;
-      }
-
-      protected int a(float $$0) {
-         return Math.max((int)((double)($$0 * (float)this.l()) + 0.5), 0);
-      }
-
-      protected float e(int $$0) {
-         return asy.a((float)$$0 / (float)this.l(), 0.0F, 1.0F);
-      }
-
-      protected float a(float $$0, double $$1) {
-         return asy.a($$0 - (float)($$1 / (double)this.l()), 0.0F, 1.0F);
-      }
-
-      public void b(float $$0) {
-         int $$1 = this.a($$0);
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            for (int $$3 = 0; $$3 < 9; $$3++) {
-               int $$4 = $$3 + ($$2 + $$1) * 9;
-               if ($$4 >= 0 && $$4 < this.k.size()) {
-                  faq.L.a($$3 + $$2 * 9, this.k.get($$4));
-               } else {
-                  faq.L.a($$3 + $$2 * 9, ckj.b);
-               }
-            }
-         }
-      }
-
-      public boolean m() {
-         return this.k.size() > 45;
-      }
-
-      @Override
-      public ckj a(ccx $$0, int $$1) {
-         if ($$1 >= this.i.size() - 9 && $$1 < this.i.size()) {
-            chh $$2 = this.i.get($$1);
-            if ($$2 != null && $$2.f()) {
-               $$2.d(ckj.b);
-            }
-         }
-
-         return ckj.b;
-      }
-
-      @Override
-      public boolean a(ckj $$0, chh $$1) {
-         return $$1.d != faq.L;
-      }
-
-      @Override
-      public boolean b(chh $$0) {
-         return $$0.d != faq.L;
-      }
-
-      @Override
-      public ckj g() {
-         return this.l.g();
-      }
-
-      @Override
-      public void b(ckj $$0) {
-         this.l.b($$0);
-      }
-   }
-
-   static class c extends chh {
-      final chh a;
-
-      public c(chh $$0, int $$1, int $$2, int $$3) {
-         super($$0.d, $$1, $$2, $$3);
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(ccx $$0, ckj $$1) {
-         this.a.a($$0, $$1);
-      }
-
-      @Override
-      public boolean a(ckj $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public ckj e() {
-         return this.a.e();
-      }
-
-      @Override
-      public boolean f() {
-         return this.a.f();
-      }
-
-      @Override
-      public void a(ckj $$0, ckj $$1) {
-         this.a.a($$0, $$1);
-      }
-
-      @Override
-      public void e(ckj $$0) {
-         this.a.e($$0);
-      }
-
-      @Override
-      public void d() {
-         this.a.d();
-      }
-
-      @Override
-      public int a() {
-         return this.a.a();
-      }
-
-      @Override
-      public int a_(ckj $$0) {
-         return this.a.a_($$0);
-      }
-
+   class b extends evi<faq.b.a> {
+      protected final List<aqw<cut>> a;
+      protected final List<aqw<ckw>> m;
+      private final agg[] t = new agg[]{
+         new agg("statistics/block_mined"),
+         new agg("statistics/item_broken"),
+         new agg("statistics/item_crafted"),
+         new agg("statistics/item_used"),
+         new agg("statistics/item_picked_up"),
+         new agg("statistics/item_dropped")
+      };
+      protected int n = -1;
+      protected final Comparator<faq.b.a> o = new faq.b.b();
       @Nullable
-      @Override
-      public Pair<afw, afw> b() {
-         return this.a.b();
+      protected aqw<?> p;
+      protected int q;
+
+      public b(esr $$0) {
+         super($$0, faq.this.g, faq.this.h, 32, faq.this.h - 64, 20);
+         this.a = Lists.newArrayList();
+         this.a.add(aqx.a);
+         this.m = Lists.newArrayList(new aqw[]{aqx.d, aqx.b, aqx.c, aqx.e, aqx.f});
+         this.a(true, 20);
+         Set<ckw> $$1 = Sets.newIdentityHashSet();
+
+         for (ckw $$2 : jy.i) {
+            boolean $$3 = false;
+
+            for (aqw<ckw> $$4 : this.m) {
+               if ($$4.a($$2) && faq.this.t.a($$4.b($$2)) > 0) {
+                  $$3 = true;
+               }
+            }
+
+            if ($$3) {
+               $$1.add($$2);
+            }
+         }
+
+         for (cut $$5 : jy.f) {
+            boolean $$6 = false;
+
+            for (aqw<cut> $$7 : this.a) {
+               if ($$7.a($$5) && faq.this.t.a($$7.b($$5)) > 0) {
+                  $$6 = true;
+               }
+            }
+
+            if ($$6) {
+               $$1.add($$5.k());
+            }
+         }
+
+         $$1.remove(cle.a);
+
+         for (ckw $$8 : $$1) {
+            this.b(new faq.b.a($$8));
+         }
       }
 
       @Override
-      public ckj a(int $$0) {
-         return this.a.a($$0);
+      protected void a(eub $$0, int $$1, int $$2) {
+         if (!this.c.n.b()) {
+            this.n = -1;
+         }
+
+         for (int $$3 = 0; $$3 < this.t.length; $$3++) {
+            agg $$4 = this.n == $$3 ? faq.c : faq.k;
+            faq.this.a($$0, $$1 + faq.this.a($$3) - 18, $$2 + 1, $$4);
+         }
+
+         if (this.p != null) {
+            int $$5 = faq.this.a(this.b(this.p)) - 36;
+            agg $$6 = this.q == 1 ? faq.l : faq.m;
+            faq.this.a($$0, $$1 + $$5, $$2 + 1, $$6);
+         }
+
+         for (int $$7 = 0; $$7 < this.t.length; $$7++) {
+            int $$8 = this.n == $$7 ? 1 : 0;
+            faq.this.a($$0, $$1 + faq.this.a($$7) - 18 + $$8, $$2 + 1 + $$8, this.t[$$7]);
+         }
       }
 
       @Override
-      public boolean c() {
-         return this.a.c();
+      public int b() {
+         return 375;
       }
 
       @Override
-      public boolean a(ccx $$0) {
-         return this.a.a($$0);
+      protected int c() {
+         return this.e / 2 + 140;
+      }
+
+      @Override
+      protected boolean a(int $$0, int $$1) {
+         this.n = -1;
+
+         for (int $$2 = 0; $$2 < this.t.length; $$2++) {
+            int $$3 = $$0 - faq.this.a($$2);
+            if ($$3 >= -36 && $$3 <= 0) {
+               this.n = $$2;
+               break;
+            }
+         }
+
+         if (this.n >= 0) {
+            this.a(this.a(this.n));
+            this.c.ah().a(gek.a(aqn.yy, 1.0F));
+            return true;
+         } else {
+            return super.a($$0, $$1);
+         }
+      }
+
+      private aqw<?> a(int $$0) {
+         return $$0 < this.a.size() ? this.a.get($$0) : this.m.get($$0 - this.a.size());
+      }
+
+      private int b(aqw<?> $$0) {
+         int $$1 = this.a.indexOf($$0);
+         if ($$1 >= 0) {
+            return $$1;
+         } else {
+            int $$2 = this.m.indexOf($$0);
+            return $$2 >= 0 ? $$2 + this.a.size() : -1;
+         }
+      }
+
+      @Override
+      protected void b(eub $$0, int $$1, int $$2) {
+         if ($$2 >= this.g && $$2 <= this.h) {
+            faq.b.a $$3 = this.r();
+            int $$4 = (this.e - this.b()) / 2;
+            if ($$3 != null) {
+               if ($$1 < $$4 + 40 || $$1 > $$4 + 40 + 20) {
+                  return;
+               }
+
+               ckw $$5 = $$3.b();
+               $$0.a(faq.this.i, this.a($$5), $$1, $$2);
+            } else {
+               ur $$6 = null;
+               int $$7 = $$1 - $$4;
+
+               for (int $$8 = 0; $$8 < this.t.length; $$8++) {
+                  int $$9 = faq.this.a($$8);
+                  if ($$7 >= $$9 - 18 && $$7 <= $$9) {
+                     $$6 = this.a($$8).b();
+                     break;
+                  }
+               }
+
+               if ($$6 != null) {
+                  $$0.a(faq.this.i, $$6, $$1, $$2);
+               }
+            }
+         }
+      }
+
+      protected ur a(ckw $$0) {
+         return $$0.p();
+      }
+
+      protected void a(aqw<?> $$0) {
+         if ($$0 != this.p) {
+            this.p = $$0;
+            this.q = -1;
+         } else if (this.q == -1) {
+            this.q = 1;
+         } else {
+            this.p = null;
+            this.q = 0;
+         }
+
+         this.i().sort(this.o);
+      }
+
+      class a extends evi.a<faq.b.a> {
+         private final ckw b;
+
+         a(ckw $$0) {
+            this.b = $$0;
+         }
+
+         public ckw b() {
+            return this.b;
+         }
+
+         @Override
+         public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            faq.this.a($$0, $$3 + 40, $$2, this.b);
+
+            for (int $$10 = 0; $$10 < faq.this.q.a.size(); $$10++) {
+               aqu<cut> $$11;
+               if (this.b instanceof ciu) {
+                  $$11 = faq.this.q.a.get($$10).b(((ciu)this.b).e());
+               } else {
+                  $$11 = null;
+               }
+
+               this.a($$0, $$11, $$3 + faq.this.a($$10), $$2, $$1 % 2 == 0);
+            }
+
+            for (int $$13 = 0; $$13 < faq.this.q.m.size(); $$13++) {
+               this.a($$0, faq.this.q.m.get($$13).b(this.b), $$3 + faq.this.a($$13 + faq.this.q.a.size()), $$2, $$1 % 2 == 0);
+            }
+         }
+
+         protected void a(eub $$0, @Nullable aqu<?> $$1, int $$2, int $$3, boolean $$4) {
+            ur $$5 = (ur)($$1 == null ? faq.o : ur.b($$1.a(faq.this.t.a($$1))));
+            $$0.b(faq.this.i, $$5, $$2 - faq.this.i.a($$5), $$3 + 5, $$4 ? 16777215 : 9474192);
+         }
+
+         @Override
+         public ur a() {
+            return ur.a("narrator.select", this.b.p());
+         }
+      }
+
+      class b implements Comparator<faq.b.a> {
+         public int a(faq.b.a $$0, faq.b.a $$1) {
+            ckw $$2 = $$0.b();
+            ckw $$3 = $$1.b();
+            int $$4;
+            int $$5;
+            if (b.this.p == null) {
+               $$4 = 0;
+               $$5 = 0;
+            } else if (b.this.a.contains(b.this.p)) {
+               aqw<cut> $$6 = (aqw<cut>)b.this.p;
+               $$4 = $$2 instanceof ciu ? faq.this.t.a($$6, ((ciu)$$2).e()) : -1;
+               $$5 = $$3 instanceof ciu ? faq.this.t.a($$6, ((ciu)$$3).e()) : -1;
+            } else {
+               aqw<ckw> $$9 = (aqw<ckw>)b.this.p;
+               $$4 = faq.this.t.a($$9, $$2);
+               $$5 = faq.this.t.a($$9, $$3);
+            }
+
+            return $$4 == $$5 ? b.this.q * Integer.compare(ckw.a($$2), ckw.a($$3)) : b.this.q * Integer.compare($$4, $$5);
+         }
+      }
+   }
+
+   class c extends evi<faq.c.a> {
+      public c(esr $$0) {
+         super($$0, faq.this.g, faq.this.h, 32, faq.this.h - 64, 9 * 4);
+
+         for (bkm<?> $$1 : jy.h) {
+            if (faq.this.t.a(aqx.g.b($$1)) > 0 || faq.this.t.a(aqx.h.b($$1)) > 0) {
+               this.b(new faq.c.a($$1));
+            }
+         }
+      }
+
+      class a extends evi.a<faq.c.a> {
+         private final ur b;
+         private final ur c;
+         private final boolean d;
+         private final ur e;
+         private final boolean f;
+
+         public a(bkm<?> $$0) {
+            this.b = $$0.h();
+            int $$1 = faq.this.t.a(aqx.g.b($$0));
+            if ($$1 == 0) {
+               this.c = ur.a("stat_type.minecraft.killed.none", this.b);
+               this.d = false;
+            } else {
+               this.c = ur.a("stat_type.minecraft.killed", $$1, this.b);
+               this.d = true;
+            }
+
+            int $$2 = faq.this.t.a(aqx.h.b($$0));
+            if ($$2 == 0) {
+               this.e = ur.a("stat_type.minecraft.killed_by.none", this.b);
+               this.f = false;
+            } else {
+               this.e = ur.a("stat_type.minecraft.killed_by", this.b, $$2);
+               this.f = true;
+            }
+         }
+
+         @Override
+         public void a(eub $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(faq.this.i, this.b, $$3 + 2, $$2 + 1, 16777215);
+            $$0.b(faq.this.i, this.c, $$3 + 2 + 10, $$2 + 1 + 9, this.d ? 9474192 : 6316128);
+            $$0.b(faq.this.i, this.e, $$3 + 2 + 10, $$2 + 1 + 9 * 2, this.f ? 9474192 : 6316128);
+         }
+
+         @Override
+         public ur a() {
+            return ur.a("narrator.select", uq.a(this.c, this.e));
+         }
       }
    }
 }

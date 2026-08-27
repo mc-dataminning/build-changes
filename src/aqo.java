@@ -1,28 +1,22 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+public enum aqo {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-public class aqo {
-   protected final Object2IntMap<aqk<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+   private final String k;
 
-   public aqo() {
-      this.a.defaultReturnValue(0);
+   private aqo(String $$0) {
+      this.k = $$0;
    }
 
-   public void b(ccx $$0, aqk<?> $$1, int $$2) {
-      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
-      this.a($$0, $$1, $$3);
-   }
-
-   public void a(ccx $$0, aqk<?> $$1, int $$2) {
-      this.a.put($$1, $$2);
-   }
-
-   public <T> int a(aqm<T> $$0, T $$1) {
-      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
-   }
-
-   public int a(aqk<?> $$0) {
-      return this.a.getInt($$0);
+   public String a() {
+      return this.k;
    }
 }

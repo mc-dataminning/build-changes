@@ -1,37 +1,91 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 
-public class dkh implements dkp {
-   public static final Codec<dkh> a = RecordCodecBuilder.create($$0 -> $$0.group(ht.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dkh::new));
-   final ht c;
-
-   public dkh(ht $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public Optional<eif> a(cqz $$0) {
-      return Optional.of(eif.b(this.c));
-   }
-
-   @Override
-   public dkq<?> a() {
-      return dkq.a;
-   }
-
-   public static class a implements dkq<dkh> {
-      public dkh a(tl $$0) {
-         return new dkh($$0.e());
-      }
-
-      public void a(tl $$0, dkh $$1) {
-         $$0.a($$1.c);
-      }
-
+public enum dkh {
+   a {
       @Override
-      public Codec<dkh> a() {
-         return dkh.a;
+      public void a(ama $$0, dki $$1, List<byy> $$2, int $$3, ht $$4) {
+         ht $$5 = new ht(0, 128, 0);
+
+         for (byy $$6 : $$2) {
+            $$6.a($$5);
+         }
+
+         $$1.a(b);
       }
-   }
+   },
+   b {
+      @Override
+      public void a(ama $$0, dki $$1, List<byy> $$2, int $$3, ht $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new ht(0, 128, 0), 0);
+            }
+         } else {
+            $$1.a(c);
+         }
+      }
+   },
+   c {
+      @Override
+      public void a(ama $$0, dki $$1, List<byy> $$2, int $$3, ht $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<dqt.a> $$8 = dqt.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               dqt.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (byy $$11 : $$2) {
+                     $$11.a(new ht($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
+
+                  for (ht $$13 : ht.a(new ht($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new ht($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
+
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, crs.a.b);
+                  dsh $$14 = new dsh(true, ImmutableList.of($$10), new ht(0, 128, 0));
+                  dpj.J.a($$14, $$0, $$0.k().g(), ato.a(), new ht($$10.a(), 45, $$10.b()));
+               }
+            } else if ($$6) {
+               $$1.a(d);
+            }
+         }
+      }
+   },
+   d {
+      @Override
+      public void a(ama $$0, dki $$1, List<byy> $$2, int $$3, ht $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
+
+            for (byy $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.dq(), $$5.ds(), $$5.dw(), 6.0F, crs.a.a);
+               $$5.ak();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new ht(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (byy $$6 : $$2) {
+               $$6.a(new ht(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new ht(0, 128, 0), 0);
+         }
+      }
+   },
+   e {
+      @Override
+      public void a(ama $$0, dki $$1, List<byy> $$2, int $$3, ht $$4) {
+      }
+   };
+
+   public abstract void a(ama var1, dki var2, List<byy> var3, int var4, ht var5);
 }

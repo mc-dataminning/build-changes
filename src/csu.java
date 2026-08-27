@@ -1,95 +1,141 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class csu extends ctm {
-   public static final dgv a = cxu.aE;
-   public static final dgs b = dgr.r;
+public abstract class csu implements cst {
+   public static final Codec<csu> a = jy.ac.q().dispatchStable(csu::a, Function.identity());
+   private final Supplier<Set<ib<csq>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   protected csu(dga.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, hx.c).a(b, Boolean.valueOf(false)));
+   protected csu() {
    }
 
-   @Override
-   protected abstract MapCodec<? extends csu> a();
+   protected abstract Codec<? extends csu> a();
 
-   @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      if ($$1.B) {
-         return bib.a;
-      } else {
-         this.a($$1, $$2, $$3);
-         return bib.b;
-      }
+   protected abstract Stream<ib<csq>> b();
+
+   public Set<ib<csq>> c() {
+      return this.b.get();
    }
 
-   protected abstract void a(cqz var1, ht var2, ccx var3);
+   public Set<ib<csq>> a(int $$0, int $$1, int $$2, int $$3, csz.f $$4) {
+      int $$5 = in.a($$0 - $$3);
+      int $$6 = in.a($$1 - $$3);
+      int $$7 = in.a($$2 - $$3);
+      int $$8 = in.a($$0 + $$3);
+      int $$9 = in.a($$1 + $$3);
+      int $$10 = in.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<ib<csq>> $$14 = Sets.newHashSet();
 
-   @Override
-   public dgb a(cmr $$0) {
-      return this.o().a(a, $$0.g().g());
-   }
-
-   @Override
-   public void a(cqz $$0, ht $$1, dgb $$2, bkj $$3, ckj $$4) {
-      if ($$4.A()) {
-         ddx $$5 = $$0.c_($$1);
-         if ($$5 instanceof ddm) {
-            ((ddm)$$5).a($$4.y());
-         }
-      }
-   }
-
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         ddx $$5 = $$1.c_($$2);
-         if ($$5 instanceof ddm) {
-            if ($$1 instanceof alq) {
-               bhx.a($$1, $$2, (ddm)$$5);
-               ((ddm)$$5).a((alq)$$1, eif.b($$2));
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
             }
-
-            super.a($$0, $$1, $$2, $$3, $$4);
-            $$1.c($$2, this);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4);
          }
       }
-   }
 
-   @Override
-   public boolean d_(dgb $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dgb $$0, cqz $$1, ht $$2) {
-      return cfp.a($$1.c_($$2));
-   }
-
-   @Override
-   public dae b_(dgb $$0) {
-      return dae.c;
-   }
-
-   @Override
-   public dgb a(dgb $$0, dal $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dgb a(dgb $$0, cyv $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(a, b);
+      return $$14;
    }
 
    @Nullable
-   protected static <T extends ddx> ddy<T> a(cqz $$0, ddz<T> $$1, ddz<? extends ddm> $$2) {
-      return $$0.B ? null : a($$1, $$2, ddm::a);
+   public Pair<ht, ib<csq>> a(int $$0, int $$1, int $$2, int $$3, Predicate<ib<csq>> $$4, ato $$5, csz.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   }
+
+   @Nullable
+   public Pair<ht, ib<csq>> a(ht $$0, int $$1, int $$2, int $$3, Predicate<ib<csq>> $$4, csz.f $$5, crv $$6) {
+      Set<ib<csq>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = ati.a($$0.v(), $$6.I_() + 1, $$6.aj(), $$3).toArray();
+
+         for (ht.a $$10 : ht.a(ht.b, $$8, hx.f, hx.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = in.a($$11);
+            int $$14 = in.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = in.a($$15);
+               ib<csq> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new ht($$11, $$15, $$12), $$17);
+               }
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Nullable
+   public Pair<ht, ib<csq>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ib<csq>> $$5, ato $$6, boolean $$7, csz.f $$8) {
+      int $$9 = in.a($$0);
+      int $$10 = in.a($$2);
+      int $$11 = in.a($$3);
+      int $$12 = in.a($$1);
+      Pair<ht, ib<csq>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
+
+      while ($$16 <= $$11) {
+         for (int $$17 = aa.aq ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               ib<csq> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     ht $$24 = new ht(in.c($$21), $$1, in.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
+      }
+
+      return $$13;
+   }
+
+   @Override
+   public abstract ib<csq> getNoiseBiome(int var1, int var2, int var3, csz.f var4);
+
+   public void a(List<String> $$0, ht $$1, csz.f $$2) {
    }
 }

@@ -1,20 +1,15 @@
 public class coz extends cot {
-   protected coz(cot.a $$0, cou $$1, bjy... $$2) {
-      super($$0, $$1, $$2);
+   public coz(String $$0, coc $$1, clb $$2) {
+      super(cok.f, coj.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+   public boolean a(bij $$0, crs $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
+   public clb g() {
+      return new clb(cuv.oc);
    }
 }

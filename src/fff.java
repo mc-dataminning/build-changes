@@ -1,88 +1,59 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class fff extends fgp<ceq> implements fik {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "water_patch";
-   private static final String g = "bottom";
-   private static final String h = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
-   private final fiw l;
-   private final fiw m;
-   private final fiw n;
-   private final ImmutableList<fiw> o;
-
-   public fff(fiw $$0) {
-      this.l = $$0.b("left_paddle");
-      this.m = $$0.b("right_paddle");
-      this.n = $$0.b("water_patch");
-      this.o = this.a($$0).build();
+public record fff(dnd a, io<dkg> b, dna c, ij<agp> d, agq e, csl f) {
+   public fff(dnb $$0, ij<agp> $$1, agq $$2, csl $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   protected Builder<fiw> a(fiw $$0) {
-      Builder<fiw> $$1 = new Builder();
-      $$1.add(new fiw[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
-      return $$1;
+   public fff(dnd $$0, dna $$1, ij<agp> $$2, agq $$3, csl $$4) {
+      this($$0, $$2.a(agp.c).d(jz.aK), $$1, $$2.a(agp.c), $$3, $$4);
    }
 
-   public static void a(fjf $$0) {
-      int $$1 = 32;
-      int $$2 = 6;
-      int $$3 = 20;
-      int $$4 = 4;
-      int $$5 = 28;
-      $$0.a("bottom", fjb.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fiy.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", fjb.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), fiy.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", fjb.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), fiy.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", fjb.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fiy.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", fjb.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fiy.a(0.0F, 4.0F, 9.0F));
-      int $$6 = 20;
-      int $$7 = 7;
-      int $$8 = 6;
-      float $$9 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fjb.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fiy.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         fjb.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fiy.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-      $$0.a("water_patch", fjb.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fiy.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+   public fff a(dnd $$0, dna $$1) {
+      return new fff($$0, this.b, $$1, this.d, this.e, this.f);
    }
 
-   public static fjc a() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      a($$1);
-      return fjc.a($$0, 128, 64);
+   public fff a(fff.b $$0) {
+      return new fff($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
    }
 
-   public void a(ceq $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.l, $$1);
-      a($$0, 1, this.m, $$1);
+   public fff a(fff.a $$0) {
+      return new fff(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
    }
 
-   public ImmutableList<fiw> b() {
-      return this.o;
+   public ip.b a() {
+      return this.d.a();
    }
 
-   @Override
-   public fiw c() {
-      return this.n;
+   public dnd b() {
+      return this.a;
    }
 
-   private static void a(ceq $$0, int $$1, fiw $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = asy.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (asy.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = asy.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (asy.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   public io<dkg> c() {
+      return this.b;
+   }
+
+   public dna d() {
+      return this.c;
+   }
+
+   public ij<agp> e() {
+      return this.d;
+   }
+
+   public agq f() {
+      return this.e;
+   }
+
+   public csl g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<ip.b, dna, dna> {
+   }
+
+   public interface b extends UnaryOperator<dnd> {
    }
 }

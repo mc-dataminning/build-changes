@@ -1,109 +1,115 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.datafixers.util.Pair;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+public class fon extends fow {
+   private static final ato a = ato.a();
+   private final foq b;
 
-public class fon implements aou {
-   private static final dfe[] a = Arrays.stream(cix.values())
-      .sorted(Comparator.comparingInt(cix::a))
-      .map($$0 -> new dfe($$0, ht.b, cuc.kP.o()))
-      .toArray(dfe[]::new);
-   private static final dfe b = new dfe(ht.b, cuc.kP.o());
-   private final dee c = new dee(ht.b, cuc.cv.o());
-   private final dee d = new dfo(ht.b, cuc.gV.o());
-   private final der e = new der(ht.b, cuc.fG.o());
-   private final ddn f = new ddn(ht.b, cuc.iJ.o());
-   private final ddt g = new ddt(ht.b, cuc.bn.o());
-   private final dej h = new dej(ht.b, cuc.mX.o());
-   private final dem i = new dem(ht.b, cuc.so.o());
-   private fho j;
-   private fic k;
-   private Map<dba.a, fhu> l;
-   private final fqz m;
-   private final fis n;
+   fon(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, foq $$7) {
+      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.b = $$7;
+      this.k *= 0.2F;
+      if ($$4 == 0.0 && $$6 == 0.0) {
+         this.j *= 0.1F;
+         this.l *= 0.1F;
+      }
 
-   public fon(fqz $$0, fis $$1) {
-      this.m = $$0;
-      this.n = $$1;
+      this.D *= 0.75F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.b($$7);
+      if (this.g()) {
+         this.e(0.0F);
+      }
    }
 
    @Override
-   public void a(aot $$0) {
-      this.j = new fho(this.n.a(fiv.bd));
-      this.k = new fic(this.n.a(fiv.bC));
-      this.l = frp.a(this.n);
+   public fnz b() {
+      return fnz.c;
    }
 
-   public void a(ckj $$0, ckg $$1, emh $$2, fpb $$3, int $$4, int $$5) {
-      cke $$6 = $$0.d();
-      if ($$6 instanceof cic) {
-         cua $$7 = ((cic)$$6).e();
-         if ($$7 instanceof csw $$8) {
-            rt $$9 = $$0.v();
-            GameProfile $$10 = $$9 != null ? dfh.d($$9) : null;
-            fhu $$11 = this.l.get($$8.b());
-            fpj $$12 = frp.a($$8.b(), $$10);
-            frp.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$11, $$12);
-         } else {
-            dgb $$13 = $$7.o();
-            ddx $$14;
-            if ($$7 instanceof csq) {
-               this.f.a($$0, ((csq)$$7).b());
-               $$14 = this.f;
-            } else if ($$7 instanceof ctt) {
-               this.g.a(((ctt)$$7).b());
-               $$14 = this.g;
-            } else if ($$13.a(cuc.mX)) {
-               $$14 = this.h;
-            } else if ($$13.a(cuc.cv)) {
-               $$14 = this.c;
-            } else if ($$13.a(cuc.fG)) {
-               $$14 = this.e;
-            } else if ($$13.a(cuc.gV)) {
-               $$14 = this.d;
-            } else if ($$13.a(cuc.so)) {
-               this.i.a($$0);
-               $$14 = this.i;
-            } else {
-               if (!($$7 instanceof dax)) {
-                  return;
-               }
-
-               cix $$21 = dax.b($$6);
-               if ($$21 == null) {
-                  $$14 = b;
-               } else {
-                  $$14 = a[$$21.a()];
-               }
-            }
-
-            this.m.a($$14, $$2, $$3, $$4, $$5);
-         }
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+      if (this.g()) {
+         this.e(0.0F);
       } else {
-         if ($$0.a(ckm.uy)) {
-            boolean $$25 = cic.a($$0) != null;
-            $$2.a();
-            $$2.b(1.0F, -1.0F, -1.0F);
-            gce $$26 = $$25 ? gcg.g : gcg.h;
-            eml $$27 = $$26.c().a(fvb.c($$3, this.j.a($$26.a()), true, $$0.B()));
-            this.j.c().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-            if ($$25) {
-               List<Pair<ib<ddo>, cix>> $$28 = ddn.a(clg.d($$0), ddn.a($$0));
-               fqv.a($$2, $$3, $$4, $$5, this.j.b(), $$26, false, $$28, $$0.B());
-            } else {
-               this.j.b().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-            }
+         this.e(ati.i(0.05F, this.y, 1.0F));
+      }
+   }
 
-            $$2.b();
-         } else if ($$0.a(ckm.uV)) {
-            $$2.a();
-            $$2.b(1.0F, -1.0F, -1.0F);
-            eml $$29 = fvb.c($$3, this.k.a(fic.a), false, $$0.B());
-            this.k.a($$2, $$29, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-            $$2.b();
-         }
+   private boolean g() {
+      esr $$0 = esr.N();
+      fpj $$1 = $$0.s;
+      return $$1 != null && $$1.bp().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ax().a() && $$1.gq();
+   }
+
+   public static class a implements fny<jv> {
+      private final foq a;
+
+      public a(foq $$0) {
+         this.a = $$0;
+      }
+
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fnv $$8 = new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(0.15F);
+         $$8.a((float)$$5, (float)$$6, (float)$$7);
+         return $$8;
+      }
+   }
+
+   public static class b implements fny<jv> {
+      private final foq a;
+
+      public b(foq $$0) {
+         this.a = $$0;
+      }
+
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class c implements fny<jv> {
+      private final foq a;
+
+      public c(foq $$0) {
+         this.a = $$0;
+      }
+
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fnv $$8 = new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a((float)$$5, (float)$$6, (float)$$7);
+         return $$8;
+      }
+   }
+
+   public static class d implements fny<jv> {
+      private final foq a;
+
+      public d(foq $$0) {
+         this.a = $$0;
+      }
+
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class e implements fny<jv> {
+      private final foq a;
+
+      public e(foq $$0) {
+         this.a = $$0;
+      }
+
+      public fnv a(jv $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fon $$8 = new fon($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         float $$9 = $$1.z.i() * 0.5F + 0.35F;
+         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         return $$8;
       }
    }
 }

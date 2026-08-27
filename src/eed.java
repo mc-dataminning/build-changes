@@ -1,119 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public abstract class eed extends eeb {
-   public static final int d = 1;
-   public static final int f = 0;
-   protected final int g;
-   protected final int h;
-   protected final List<eev> i;
-   final BiFunction<ckj, edi, ckj> a;
-   private final eea j = new eed.c() {
-      @Override
-      public void a(Consumer<ckj> $$0, edi $$1) {
-         eed.this.a(eev.a(eed.this.a, $$0, $$1), $$1);
-      }
-   };
+public class eed {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final edu d;
+   private final boolean e;
 
-   protected eed(int $$0, int $$1, List<egh> $$2, List<eev> $$3) {
-      super($$2);
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$3;
-      this.a = eex.a($$3);
+   private eed(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new edu($$3, $$4);
+      this.e = $$5;
    }
 
-   protected static <T extends eed> P4<Mu<T>, Integer, Integer, List<egh>, List<eev>> b(Instance<T> $$0) {
-      return $$0.group(
-            asg.a(Codec.INT, "weight", Integer.valueOf(1)).forGetter($$0x -> $$0x.g), asg.a(Codec.INT, "quality", Integer.valueOf(0)).forGetter($$0x -> $$0x.h)
+   public static eed a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new eed(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(aa.b().c()),
+            $$3.get("Id").asInt(aa.b().d().c()),
+            $$3.get("Series").asString(edu.a),
+            $$3.get("Snapshot").asBoolean(!aa.b().g())
          )
-         .and(a($$0).t1())
-         .and(asg.a(eex.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.i));
+         : new eed($$1, $$2, "", 0, edu.a, false);
    }
 
-   @Override
-   public void a(edr $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
-         this.i.get($$1).a($$0.b(".functions[" + $$1 + "]"));
-      }
+   public int a() {
+      return this.a;
    }
 
-   protected abstract void a(Consumer<ckj> var1, edi var2);
-
-   @Override
-   public boolean expand(edi $$0, Consumer<eea> $$1) {
-      if (this.a($$0)) {
-         $$1.accept(this.j);
-         return true;
-      } else {
-         return false;
-      }
+   public long b() {
+      return this.b;
    }
 
-   public static eed.a<?> a(eed.d $$0) {
-      return new eed.b($$0);
+   public String c() {
+      return this.c;
    }
 
-   public abstract static class a<T extends eed.a<T>> extends eeb.a<T> implements ees<T> {
-      protected int a = 1;
-      protected int b = 0;
-      private final Builder<eev> c = ImmutableList.builder();
-
-      public T a(eev.a $$0) {
-         this.c.add($$0.b());
-         return this.aA_();
-      }
-
-      protected List<eev> a() {
-         return this.c.build();
-      }
-
-      public T a(int $$0) {
-         this.a = $$0;
-         return this.aA_();
-      }
-
-      public T b(int $$0) {
-         this.b = $$0;
-         return this.aA_();
-      }
+   public edu d() {
+      return this.d;
    }
 
-   static class b extends eed.a<eed.b> {
-      private final eed.d c;
-
-      public b(eed.d $$0) {
-         this.c = $$0;
-      }
-
-      protected eed.b g() {
-         return this;
-      }
-
-      @Override
-      public eeb b() {
-         return this.c.build(this.a, this.b, this.f(), this.a());
-      }
-   }
-
-   protected abstract class c implements eea {
-      @Override
-      public int a(float $$0) {
-         return Math.max(asy.d((float)eed.this.g + (float)eed.this.h * $$0), 0);
-      }
-   }
-
-   @FunctionalInterface
-   protected interface d {
-      eed build(int var1, int var2, List<egh> var3, List<eev> var4);
+   public boolean e() {
+      return this.e;
    }
 }

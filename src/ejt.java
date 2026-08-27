@@ -1,7 +1,32 @@
-public interface ejt<T> {
-   void a(ejr<T> var1);
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   boolean a(ht var1, T var2);
+public class ejt implements eju {
+   private final DoubleList a;
 
-   int a();
+   public ejt(DoubleList $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a(eju.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
+   }
 }

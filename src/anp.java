@@ -1,194 +1,210 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.AccessMode;
-import java.nio.file.CopyOption;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.OpenOption;
+import java.io.InputStream;
 import java.nio.file.Path;
-import java.nio.file.ProviderMismatchException;
-import java.nio.file.ReadOnlyFileSystemException;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.DirectoryStream.Filter;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Locale;
 import java.util.Set;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-class anp extends FileSystemProvider {
-   public static final String a = "x-mc-link";
+public class anp extends anl {
+   static final Logger c = LogUtils.getLogger();
+   private final anp.b d;
+   private final String e;
 
-   @Override
-   public String getScheme() {
-      return "x-mc-link";
+   anp(String $$0, anp.b $$1, boolean $$2, String $$3) {
+      super($$0, $$2);
+      this.d = $$1;
+      this.e = $$3;
    }
 
-   @Override
-   public FileSystem newFileSystem(URI $$0, Map<String, ?> $$1) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public FileSystem getFileSystem(URI $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public Path getPath(URI $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public SeekableByteChannel newByteChannel(Path $$0, Set<? extends OpenOption> $$1, FileAttribute<?>... $$2) throws IOException {
-      if (!$$1.contains(StandardOpenOption.CREATE_NEW)
-         && !$$1.contains(StandardOpenOption.CREATE)
-         && !$$1.contains(StandardOpenOption.APPEND)
-         && !$$1.contains(StandardOpenOption.WRITE)) {
-         Path $$3 = a($$0).f().h();
-         if ($$3 == null) {
-            throw new NoSuchFileException($$0.toString());
-         } else {
-            return Files.newByteChannel($$3, $$1, $$2);
-         }
-      } else {
-         throw new UnsupportedOperationException();
-      }
-   }
-
-   @Override
-   public DirectoryStream<Path> newDirectoryStream(Path $$0, final Filter<? super Path> $$1) throws IOException {
-      final anr.a $$2 = a($$0).f().i();
-      if ($$2 == null) {
-         throw new NotDirectoryException($$0.toString());
-      } else {
-         return new DirectoryStream<Path>() {
-            @Override
-            public Iterator<Path> iterator() {
-               return $$2.a().values().stream().filter($$1xx -> {
-                  try {
-                     return $$1.accept($$1xx);
-                  } catch (IOException var3) {
-                     throw new DirectoryIteratorException(var3);
-                  }
-               }).map($$0 -> (Path)$$0).iterator();
-            }
-
-            @Override
-            public void close() {
-            }
-         };
-      }
-   }
-
-   @Override
-   public void createDirectory(Path $$0, FileAttribute<?>... $$1) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void delete(Path $$0) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void copy(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void move(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public boolean isSameFile(Path $$0, Path $$1) {
-      return $$0 instanceof ano && $$1 instanceof ano && $$0.equals($$1);
-   }
-
-   @Override
-   public boolean isHidden(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public FileStore getFileStore(Path $$0) {
-      return a($$0).a().a();
-   }
-
-   @Override
-   public void checkAccess(Path $$0, AccessMode... $$1) throws IOException {
-      if ($$1.length == 0 && !a($$0).g()) {
-         throw new NoSuchFileException($$0.toString());
-      } else {
-         AccessMode[] var3 = $$1;
-         int var4 = $$1.length;
-         int var5 = 0;
-
-         while (var5 < var4) {
-            AccessMode $$2 = var3[var5];
-            switch ($$2) {
-               case READ:
-                  if (!a($$0).g()) {
-                     throw new NoSuchFileException($$0.toString());
-                  }
-               default:
-                  var5++;
-                  break;
-               case EXECUTE:
-               case WRITE:
-                  throw new AccessDeniedException($$2.toString());
-            }
-         }
-      }
+   private static String b(ans $$0, agg $$1) {
+      return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
    }
 
    @Nullable
    @Override
-   public <V extends FileAttributeView> V getFileAttributeView(Path $$0, Class<V> $$1, LinkOption... $$2) {
-      ano $$3 = a($$0);
-      return (V)($$1 == BasicFileAttributeView.class ? $$3.j() : null);
+   public aov<InputStream> a(String... $$0) {
+      return this.b(String.join("/", $$0));
    }
 
    @Override
-   public <A extends BasicFileAttributes> A readAttributes(Path $$0, Class<A> $$1, LinkOption... $$2) throws IOException {
-      ano $$3 = a($$0).f();
-      if ($$1 == BasicFileAttributes.class) {
-         return (A)$$3.k();
+   public aov<InputStream> a(ans $$0, agg $$1) {
+      return this.b(b($$0, $$1));
+   }
+
+   private String a(String $$0) {
+      return this.e.isEmpty() ? $$0 : this.e + "/" + $$0;
+   }
+
+   @Nullable
+   private aov<InputStream> b(String $$0) {
+      ZipFile $$1 = this.d.a();
+      if ($$1 == null) {
+         return null;
       } else {
-         throw new UnsupportedOperationException("Attributes of type " + $$1.getName() + " not supported");
+         ZipEntry $$2 = $$1.getEntry(this.a($$0));
+         return $$2 == null ? null : aov.create($$1, $$2);
       }
    }
 
    @Override
-   public Map<String, Object> readAttributes(Path $$0, String $$1, LinkOption... $$2) {
-      throw new UnsupportedOperationException();
+   public Set<String> a(ans $$0) {
+      ZipFile $$1 = this.d.a();
+      if ($$1 == null) {
+         return Set.of();
+      } else {
+         Enumeration<? extends ZipEntry> $$2 = $$1.entries();
+         Set<String> $$3 = Sets.newHashSet();
+         String $$4 = this.a($$0.a() + "/");
+
+         while ($$2.hasMoreElements()) {
+            ZipEntry $$5 = $$2.nextElement();
+            String $$6 = $$5.getName();
+            String $$7 = a($$4, $$6);
+            if (!$$7.isEmpty()) {
+               if (agg.h($$7)) {
+                  $$3.add($$7);
+               } else {
+                  c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$7, this.d.a);
+               }
+            }
+         }
+
+         return $$3;
+      }
+   }
+
+   @VisibleForTesting
+   public static String a(String $$0, String $$1) {
+      if (!$$1.startsWith($$0)) {
+         return "";
+      } else {
+         int $$2 = $$0.length();
+         int $$3 = $$1.indexOf(47, $$2);
+         return $$3 == -1 ? $$1.substring($$2) : $$1.substring($$2, $$3);
+      }
    }
 
    @Override
-   public void setAttribute(Path $$0, String $$1, Object $$2, LinkOption... $$3) {
-      throw new ReadOnlyFileSystemException();
+   public void close() {
+      this.d.close();
    }
 
-   private static ano a(@Nullable Path $$0) {
-      if ($$0 == null) {
-         throw new NullPointerException();
-      } else if ($$0 instanceof ano) {
-         return (ano)$$0;
-      } else {
-         throw new ProviderMismatchException();
+   @Override
+   public void a(ans $$0, String $$1, String $$2, anr.a $$3) {
+      ZipFile $$4 = this.d.a();
+      if ($$4 != null) {
+         Enumeration<? extends ZipEntry> $$5 = $$4.entries();
+         String $$6 = this.a($$0.a() + "/" + $$1 + "/");
+         String $$7 = $$6 + $$2 + "/";
+
+         while ($$5.hasMoreElements()) {
+            ZipEntry $$8 = $$5.nextElement();
+            if (!$$8.isDirectory()) {
+               String $$9 = $$8.getName();
+               if ($$9.startsWith($$7)) {
+                  String $$10 = $$9.substring($$6.length());
+                  agg $$11 = agg.a($$1, $$10);
+                  if ($$11 != null) {
+                     $$3.accept($$11, aov.create($$4, $$8));
+                  } else {
+                     c.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public static class a implements aol.c {
+      private final File a;
+      private final boolean b;
+
+      public a(Path $$0, boolean $$1) {
+         this($$0.toFile(), $$1);
+      }
+
+      public a(File $$0, boolean $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      @Override
+      public anr a(String $$0) {
+         anp.b $$1 = new anp.b(this.a);
+         return new anp($$0, $$1, this.b, "");
+      }
+
+      @Override
+      public anr a(String $$0, aol.a $$1) {
+         anp.b $$2 = new anp.b(this.a);
+         anr $$3 = new anp($$0, $$2, this.b, "");
+         List<String> $$4 = $$1.d();
+         if ($$4.isEmpty()) {
+            return $$3;
+         } else {
+            List<anr> $$5 = new ArrayList<>($$4.size());
+
+            for (String $$6 : $$4) {
+               $$5.add(new anp($$0, $$2, this.b, $$6));
+            }
+
+            return new ann($$3, $$5);
+         }
+      }
+   }
+
+   static class b implements AutoCloseable {
+      final File a;
+      @Nullable
+      private ZipFile b;
+      private boolean c;
+
+      b(File $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      ZipFile a() {
+         if (this.c) {
+            return null;
+         } else {
+            if (this.b == null) {
+               try {
+                  this.b = new ZipFile(this.a);
+               } catch (IOException var2) {
+                  anp.c.error("Failed to open pack {}", this.a, var2);
+                  this.c = true;
+                  return null;
+               }
+            }
+
+            return this.b;
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.b != null) {
+            IOUtils.closeQuietly(this.b);
+            this.b = null;
+         }
+      }
+
+      @Override
+      protected void finalize() throws Throwable {
+         this.close();
+         super.finalize();
       }
    }
 }

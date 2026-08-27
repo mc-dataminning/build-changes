@@ -1,64 +1,72 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record va<S>(List<va.a<S>> a) {
-   public static <S> va<S> a(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<va.a<S>> $$4 = a($$1, $$2);
+public class va {
+   private final int a;
+   private final ObjectList<vb> b = new ObjectArrayList();
+   @Nullable
+   private vd c;
 
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null) {
-         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
-         if (!$$6) {
-            break;
-         }
+   public va(int $$0) {
+      this.a = $$0;
 
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
       }
-
-      return new va<>($$4);
    }
 
-   private static <S> List<va.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<va.a<S>> $$2 = new ArrayList<>();
+   public void a(vd $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new vb($$0, true));
+         this.c = $$0;
+      }
+   }
 
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof ez) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new va.a<>($$4, $$6));
+   public int a() {
+      return this.b.size();
+   }
+
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public Optional<uy> a(uy.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
+      } else {
+         ObjectList<vd> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               vb $$4 = (vb)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, null);
                }
             }
+
+            return Optional.of(new uy($$1));
          }
-      }
-
-      return $$2;
-   }
-
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
-      }
-
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
-      }
-
-      public String c() {
-         return this.b;
       }
    }
 }

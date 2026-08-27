@@ -1,19 +1,24 @@
-public interface cqc extends cqf {
-   float a(hx var1, boolean var2);
-
-   eat y_();
-
-   int a(ht var1, cqk var2);
-
-   default int a(cri $$0, ht $$1) {
-      return this.y_().a($$0).b($$1);
+public class cqc extends cpm {
+   public cqc(cpm.a $$0, bkn... $$1) {
+      super($$0, cpn.f, $$1);
    }
 
-   default int b(ht $$0, int $$1) {
-      return this.y_().a($$0, $$1);
+   @Override
+   public int a(int $$0) {
+      return 5 + ($$0 - 1) * 9;
    }
 
-   default boolean g(ht $$0) {
-      return this.a(cri.a, $$0) >= this.M();
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 15;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   public static float e(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 }

@@ -1,58 +1,29 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+public class geg extends gdy {
+   private final bki n;
 
-public class geg implements gee {
-   private final geg.a a;
-   private gee b;
-   private final BufferedInputStream c;
-
-   public geg(geg.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new geg.b(this.c));
+   public geg(aqm $$0, aqo $$1, float $$2, float $$3, bki $$4, long $$5) {
+      super($$0, $$1, ato.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dq());
+      this.g = (double)((float)this.n.ds());
+      this.h = (double)((float)this.n.dw());
    }
 
    @Override
-   public AudioFormat a() {
-      return this.b.a();
+   public boolean s() {
+      return !this.n.aS();
    }
 
    @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new geg.b(this.c));
-         $$1 = this.b.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      gee create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
-      }
-
-      @Override
-      public void close() {
+   public void q() {
+      if (this.n.dG()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.dq());
+         this.g = (double)((float)this.n.ds());
+         this.h = (double)((float)this.n.dw());
       }
    }
 }

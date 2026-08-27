@@ -1,18 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bif {
-   ui ab();
-
-   default boolean ac() {
-      return this.ad() != null;
-   }
-
-   default ui O_() {
-      return this.ab();
-   }
-
-   @Nullable
-   default ui ad() {
-      return null;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bif {
 }

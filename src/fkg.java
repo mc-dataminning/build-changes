@@ -1,67 +1,83 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Set;
 
 public class fkg {
-   private final fki[] a;
-   private int b;
+   private static final Set<hx> a = EnumSet.allOf(hx.class);
+   private final List<fke> b = Lists.newArrayList();
+   private int c;
+   private int d;
+   private boolean e;
 
-   public static Codec<fkg> a(int $$0) {
-      return Codec.list(fki.a)
-         .comapFlatMap(
-            $$1 -> {
-               int $$2 = $$1.size();
-               return $$2 > $$0
-                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
-                  : DataResult.success(new fkg($$0, $$1));
-            },
-            fkg::c
-         );
+   public fkg a(int $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      return this;
    }
 
-   public fkg(int $$0) {
-      this.a = new fki[$$0];
+   public fkg a() {
+      return this.a(true);
    }
 
-   private fkg(int $$0, List<fki> $$1) {
-      this.a = $$1.toArray(fki[]::new);
-      this.b = $$1.size();
+   public fkg a(boolean $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   private List<fki> c() {
-      List<fki> $$0 = new ArrayList<>(this.d());
-
-      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
-         $$0.add(this.b($$1));
-      }
-
-      return $$0;
+   public fkg a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fkf $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new fke($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public void a(fki $$0) {
-      this.a[this.c(this.b++)] = $$0;
+   public fkg a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new fke($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fkf.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Nullable
-   public fki b(int $$0) {
-      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   public fkg a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new fke(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fkf.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   private int c(int $$0) {
-      return $$0 % this.a.length;
+   public fkg a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<hx> $$6) {
+      this.b.add(new fke(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fkf.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
    }
 
-   public int a() {
-      return Math.max(this.b - this.a.length, 0);
+   public fkg a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new fke($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fkf.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public int b() {
-      return this.b - 1;
+   public fkg a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fkf $$7) {
+      this.b.add(new fke($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   private int d() {
-      return this.b() - this.a() + 1;
+   public fkg a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new fke(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fkf.a, $$6, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fkg a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fkf $$6, float $$7, float $$8) {
+      this.b.add(new fke(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
+   }
+
+   public fkg a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fkf $$6) {
+      this.b.add(new fke(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public List<fke> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static fkg c() {
+      return new fkg();
    }
 }

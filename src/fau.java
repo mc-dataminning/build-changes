@@ -1,96 +1,133 @@
-public class fau {
-   private static final afw a = new afw("minecraft", "alt");
-   private static final vf b = vf.a.a(a);
-   private static final fau c = new fau();
-   private final ate d = ate.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+enum fau {
+   a(
+      new fau.a(
+         new agg("advancements/tab_above_left_selected"), new agg("advancements/tab_above_middle_selected"), new agg("advancements/tab_above_right_selected")
+      ),
+      new fau.a(new agg("advancements/tab_above_left"), new agg("advancements/tab_above_middle"), new agg("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new fau.a(
+         new agg("advancements/tab_below_left_selected"), new agg("advancements/tab_below_middle_selected"), new agg("advancements/tab_below_right_selected")
+      ),
+      new fau.a(new agg("advancements/tab_below_left"), new agg("advancements/tab_below_middle"), new agg("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new fau.a(
+         new agg("advancements/tab_left_top_selected"), new agg("advancements/tab_left_middle_selected"), new agg("advancements/tab_left_bottom_selected")
+      ),
+      new fau.a(new agg("advancements/tab_left_top"), new agg("advancements/tab_left_middle"), new agg("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new fau.a(
+         new agg("advancements/tab_right_top_selected"), new agg("advancements/tab_right_middle_selected"), new agg("advancements/tab_right_bottom_selected")
+      ),
+      new fau.a(new agg("advancements/tab_right_top"), new agg("advancements/tab_right_middle"), new agg("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-   private fau() {
+   private final fau.a e;
+   private final fau.a f;
+   private final int g;
+   private final int h;
+   private final int i;
+
+   private fau(fau.a $$0, fau.a $$1, int $$2, int $$3, int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   public static fau a() {
-      return c;
+   public int a() {
+      return this.i;
    }
 
-   public un a(esw $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
-
-         $$2.append(ac.a(this.e, this.d));
+   public void a(eub $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      fau.a $$5 = $$3 ? this.e : this.f;
+      agg $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
+      } else {
+         $$6 = $$5.b();
       }
 
-      return $$0.b().a(ui.b($$2.toString()).c(b), $$1, vf.a);
+      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   public void a(eub $$0, int $$1, int $$2, int $$3, clb $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
+      }
+
+      $$0.b($$4, $$5, $$6);
+   }
+
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
+   }
+
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   }
+
+   static record a(agg a, agg b, agg c) {
    }
 }

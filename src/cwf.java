@@ -1,88 +1,71 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cwf {
-   public static <S extends ddx> cwf.c<S> a(
-      ddz<S> $$0, Function<dgb, cwf.a> $$1, Function<dgb, hx> $$2, dgv $$3, dgb $$4, cra $$5, ht $$6, BiPredicate<cra, ht> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return cwf.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return cwf.b::b;
-      } else {
-         cwf.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == cwf.a.a;
-         boolean $$11 = $$9 == cwf.a.b;
-         if ($$10) {
-            return new cwf.c.b<>($$8);
-         } else {
-            ht $$12 = $$6.a($$2.apply($$4));
-            dgb $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               cwf.a $$14 = $$1.apply($$13);
-               if ($$14 != cwf.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return cwf.b::b;
-                  }
+public class cwf extends cxo {
+   public static final MapCodec<cwf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(jy.f.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, cwf::new)
+   );
+   private final cut b;
 
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new cwf.c.a<>($$16, $$17);
-                  }
-               }
+   @Override
+   public MapCodec<cwf> a() {
+      return a;
+   }
+
+   public cwf(cut $$0, dgv.d $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(crs $$0, ht $$1, dgw $$2, dgw $$3, cae $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.o(), 3);
+      }
+   }
+
+   @Override
+   public dgw a(cnj $$0) {
+      cqy $$1 = $$0.q();
+      ht $$2 = $$0.a();
+      dgw $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.o() : super.a($$0);
+   }
+
+   private static boolean a(cqy $$0, ht $$1, dgw $$2) {
+      return n($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(cqy $$0, ht $$1) {
+      boolean $$2 = false;
+      ht.a $$3 = $$1.j();
+
+      for (hx $$4 : hx.values()) {
+         dgw $$5 = $$0.a_($$3);
+         if ($$4 != hx.a || n($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
             }
-
-            return new cwf.c.b<>($$8);
-         }
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-   }
-
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
-   }
-
-   public interface c<S> {
-      <T> T apply(cwf.b<? super S, T> var1);
-
-      public static final class a<S> implements cwf.c<S> {
-         private final S a;
-         private final S b;
-
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-
-         @Override
-         public <T> T apply(cwf.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
          }
       }
 
-      public static final class b<S> implements cwf.c<S> {
-         private final S a;
+      return $$2;
+   }
 
-         public b(S $$0) {
-            this.a = $$0;
-         }
+   private static boolean n(dgw $$0) {
+      return $$0.u().a(arh.a);
+   }
 
-         @Override
-         public <T> T apply(cwf.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   @Override
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      return a($$3, $$4) ? this.b.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public int d(dgw $$0, cqy $$1, ht $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

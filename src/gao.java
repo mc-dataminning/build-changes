@@ -1,123 +1,159 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class gao implements gae {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<gao> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               afw.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               asg.a(gao.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, gao::new)
-   );
-   private final afw d;
-   private final List<gao.a> e;
-   private final double f;
-   private final double g;
+public class gao {
+   private static final Map<agg, gap> a = Maps.newHashMap();
+   private static final String b = "CustomModelData";
+   private static final agg c = new agg("damaged");
+   private static final agg d = new agg("damage");
+   private static final gam e = ($$0x, $$1, $$2, $$3) -> $$0x.j() ? 1.0F : 0.0F;
+   private static final gam f = ($$0x, $$1, $$2, $$3) -> ati.a((float)$$0x.k() / (float)$$0x.l(), 0.0F, 1.0F);
+   private static final Map<ckw, Map<agg, gap>> g = Maps.newHashMap();
 
-   public gao(afw $$0, List<gao.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   private static gam a(agg $$0, gam $$1) {
+      a.put($$0, $$1);
+      return $$1;
    }
 
-   @Override
-   public void a(aot $$0, gae.a $$1) {
-      afw $$2 = a.a(this.d);
-      Optional<aor> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         gak $$4 = new gak($$2, $$3.get(), this.e.size());
+   private static void a(gap $$0) {
+      a.put(new agg("custom_model_data"), $$0);
+   }
 
-         for (gao.a $$5 : this.e) {
-            $$1.a($$5.b, new gao.b($$4, $$5, this.f, this.g));
+   private static void a(ckw $$0, agg $$1, gam $$2) {
+      g.computeIfAbsent($$0, $$0x -> Maps.newHashMap()).put($$1, $$2);
+   }
+
+   @Nullable
+   public static gap a(ckw $$0, agg $$1) {
+      if ($$0.n() > 0) {
+         if (d.equals($$1)) {
+            return f;
          }
+
+         if (c.equals($$1)) {
+            return e;
+         }
+      }
+
+      gap $$2 = a.get($$1);
+      if ($$2 != null) {
+         return $$2;
       } else {
-         c.warn("Missing sprite: {}", $$2);
+         Map<agg, gap> $$3 = g.get($$0);
+         return $$3 == null ? null : $$3.get($$1);
       }
    }
 
-   @Override
-   public gag a() {
-      return gah.d;
-   }
+   static {
+      a(new agg("lefthanded"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fm() != bks.b ? 1.0F : 0.0F);
+      a(new agg("cooldown"), ($$0x, $$1, $$2, $$3) -> $$2 instanceof cdm ? ((cdm)$$2).gn().a($$0x.d(), 0.0F) : 0.0F);
+      gam $$0 = ($$0x, $$1, $$2, $$3) -> {
+         if (!$$0x.a(ark.aH)) {
+            return Float.NEGATIVE_INFINITY;
+         } else {
+            return $$1 == null ? 0.0F : cnd.a($$1.H_(), $$0x, true).map(cnd::b).map(ib::a).map(cne::c).orElse(0.0F);
+         }
+      };
+      a(ls.a, $$0);
+      a(($$0x, $$1, $$2, $$3) -> $$0x.u() ? (float)$$0x.v().h("CustomModelData") : 0.0F);
+      a(cle.nG, new agg("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return $$2.fp() != $$0x ? 0.0F : (float)($$0x.r() - $$2.fq()) / 20.0F;
+         }
+      });
+      a(cle.ww, new agg("brushing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fp() == $$0x ? (float)($$2.fq() % 10) / 10.0F : 0.0F);
+      a(cle.nG, new agg("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cle.qg, new agg("filled"), ($$0x, $$1, $$2, $$3) -> cjd.d($$0x));
+      a(cle.qi, new agg("time"), new gam() {
+         private double a;
+         private double b;
+         private long c;
 
-   static record a(afw b, double c, double d, double e, double f) {
-      public static final Codec<gao.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  afw.a.fieldOf("sprite").forGetter(gao.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(gao.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(gao.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(gao.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(gao.a::e)
-               )
-               .apply($$0, gao.a::new)
-      );
+         @Override
+         public float unclampedCall(clb $$0, @Nullable fkw $$1, @Nullable bky $$2, int $$3) {
+            bki $$4 = (bki)($$2 != null ? $$2 : $$0.H());
+            if ($$4 == null) {
+               return 0.0F;
+            } else {
+               if ($$1 == null && $$4.dL() instanceof fkw) {
+                  $$1 = (fkw)$$4.dL();
+               }
 
-      public afw a() {
-         return this.b;
-      }
+               if ($$1 == null) {
+                  return 0.0F;
+               } else {
+                  double $$5;
+                  if ($$1.D_().j()) {
+                     $$5 = (double)$$1.f(1.0F);
+                  } else {
+                     $$5 = Math.random();
+                  }
 
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements gae.b {
-      private final gak a;
-      private final gao.a b;
-      private final double c;
-      private final double d;
-
-      b(gak $$0, gao.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public fzu a(gad $$0) {
-         try {
-            eli $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = asy.a(this.b.c * $$2);
-            int $$5 = asy.a(this.b.d * $$3);
-            int $$6 = asy.a(this.b.e * $$2);
-            int $$7 = asy.a(this.b.f * $$3);
-            eli $$8 = new eli(eli.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new fzu(this.b.b, new gbn($$6, $$7), $$8, aov.a);
-         } catch (Exception var16) {
-            gao.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
+                  $$5 = this.a($$1, $$5);
+                  return (float)$$5;
+               }
+            }
          }
 
-         return fzq.a();
-      }
+         private double a(crs $$0, double $$1) {
+            if ($$0.V() != this.c) {
+               this.c = $$0.V();
+               double $$2 = $$1 - this.a;
+               $$2 = ati.c($$2 + 0.5, 1.0) - 0.5;
+               this.b += $$2 * 0.1;
+               this.b *= 0.9;
+               this.a = ati.c(this.a + this.b, 1.0);
+            }
 
-      @Override
-      public void a() {
-         this.a.b();
-      }
+            return this.a;
+         }
+      });
+      a(cle.qe, new agg("angle"), new gan(($$0x, $$1, $$2) -> cjf.d($$1) ? cjf.a($$1.w()) : cjf.a($$0x)));
+      a(cle.qf, new agg("angle"), new gan(($$0x, $$1, $$2) -> $$2 instanceof cdm $$3 ? $$3.gr().orElse(null) : null));
+      a(cle.va, new agg("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return cjj.d($$0x) ? 0.0F : (float)($$0x.r() - $$2.fq()) / (float)cjj.k($$0x);
+         }
+      });
+      a(cle.va, new agg("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x && !cjj.d($$0x) ? 1.0F : 0.0F);
+      a(cle.va, new agg("charged"), ($$0x, $$1, $$2, $$3) -> cjj.d($$0x) ? 1.0F : 0.0F);
+      a(cle.va, new agg("firework"), ($$0x, $$1, $$2, $$3) -> cjj.d($$0x) && cjj.a($$0x, cle.tB) ? 1.0F : 0.0F);
+      a(cle.nh, new agg("broken"), ($$0x, $$1, $$2, $$3) -> cjv.d($$0x) ? 0.0F : 1.0F);
+      a(cle.qh, new agg("cast"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            boolean $$4 = $$2.eS() == $$0x;
+            boolean $$5 = $$2.eT() == $$0x;
+            if ($$2.eS().d() instanceof ckh) {
+               $$5 = false;
+            }
+
+            return ($$4 || $$5) && $$2 instanceof cdm && ((cdm)$$2).ck != null ? 1.0F : 0.0F;
+         }
+      });
+      a(cle.uz, new agg("blocking"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cle.uW, new agg("throwing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cle.hg, new agg("level"), ($$0x, $$1, $$2, $$3) -> {
+         rz $$4 = $$0x.b("BlockStateTag");
+
+         try {
+            if ($$4 != null) {
+               sw $$5 = $$4.c(czg.c.f());
+               if ($$5 != null) {
+                  return (float)Integer.parseInt($$5.s_()) / 16.0F;
+               }
+            }
+         } catch (NumberFormatException var6) {
+         }
+
+         return 1.0F;
+      });
+      a(cle.vj, new agg("tooting"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
    }
 }

@@ -1,44 +1,64 @@
-public record adz(int a, String b, int c, ady d) implements wb<aea> {
-   private static final int e = 255;
+public class adz implements wk<acj> {
+   private final ht a;
+   private final agg b;
+   private final agg c;
+   private final agg d;
+   private final String e;
+   private final dfr.a f;
 
-   @Deprecated
-   public adz(int a, String b, int c, ady d) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   public adz(ht $$0, agg $$1, agg $$2, agg $$3, String $$4, dfr.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public adz(tl $$0) {
-      this($$0.n(), $$0.d(255), $$0.readUnsignedShort(), ady.a($$0.n()));
+   public adz(tu $$0) {
+      this.a = $$0.e();
+      this.b = $$0.t();
+      this.c = $$0.t();
+      this.d = $$0.t();
+      this.e = $$0.s();
+      this.f = dfr.a.a($$0.s()).orElse(dfr.a.b);
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.a);
+   public void a(tu $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.c(this.d.a());
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f.c());
    }
 
-   public void a(aea $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public tk c() {
-      return this.d.b();
+   public ht a() {
+      return this.a;
    }
 
-   public String d() {
+   public agg d() {
       return this.b;
    }
 
-   public int e() {
+   public agg e() {
       return this.c;
    }
 
-   public ady f() {
+   public agg f() {
       return this.d;
+   }
+
+   public String g() {
+      return this.e;
+   }
+
+   public dfr.a h() {
+      return this.f;
    }
 }

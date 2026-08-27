@@ -1,43 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class byr extends bym {
-   @Nullable
-   private eif b;
+public enum byr implements aub {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   public byr(byk $$0) {
-      super($$0);
+   public static final Codec<byr> h = aub.a(byr::values);
+   private static final IntFunction<byr> i = asb.a(byr::a, values(), asb.a.b);
+   private final int j;
+   private final String k;
+
+   private byr(int $$0, String $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public int a() {
+      return this.j;
+   }
+
+   public static byr a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   public void c() {
-      if (this.b == null) {
-         this.b = this.a.dj();
-      }
-   }
-
-   @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Override
-   public float f() {
-      return 1.0F;
-   }
-
-   @Nullable
-   @Override
-   public eif g() {
-      return this.b;
-   }
-
-   @Override
-   public bza<byr> i() {
-      return bza.k;
+   public String c() {
+      return this.k;
    }
 }

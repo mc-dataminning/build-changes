@@ -1,145 +1,143 @@
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public abstract class zm implements wb<xu> {
-   protected final int a;
-   protected final short b;
-   protected final short c;
-   protected final short d;
-   protected final byte e;
-   protected final byte f;
-   protected final boolean g;
-   protected final boolean h;
-   protected final boolean i;
+public class zm {
+   private static final int a = 2097152;
+   private final rz b;
+   private final byte[] c;
+   private final List<zm.a> d;
 
-   protected zm(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public zm(djd $$0) {
+      this.b = new rz();
+
+      for (Entry<dmf.a, dmf> $$1 : $$0.e()) {
+         if ($$1.getKey().b()) {
+            this.b.a($$1.getKey().a(), new sg($$1.getValue().a()));
+         }
+      }
+
+      this.c = new byte[a($$0)];
+      a(new tu(this.c()), $$0);
+      this.d = Lists.newArrayList();
+
+      for (Entry<ht, der> $$2 : $$0.G().entrySet()) {
+         this.d.add(zm.a.a($$2.getValue()));
+      }
    }
 
-   public void a(xu $$0) {
-      $$0.a(this);
+   public zm(tu $$0, int $$1, int $$2) {
+      this.b = $$0.q();
+      if (this.b == null) {
+         throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
+      } else {
+         int $$3 = $$0.n();
+         if ($$3 > 2097152) {
+            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
+         } else {
+            this.c = new byte[$$3];
+            $$0.b(this.c);
+            this.d = $$0.a(zm.a::new);
+         }
+      }
    }
 
-   @Override
-   public String toString() {
-      return "Entity_" + super.toString();
+   public void a(tu $$0) {
+      $$0.a((sw)this.b);
+      $$0.c(this.c.length);
+      $$0.c(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   @Nullable
-   public bjt a(cqz $$0) {
-      return $$0.a(this.a);
+   private static int a(djd $$0) {
+      int $$1 = 0;
+
+      for (dje $$2 : $$0.d()) {
+         $$1 += $$2.j();
+      }
+
+      return $$1;
    }
 
-   public short a() {
+   private ByteBuf c() {
+      ByteBuf $$0 = Unpooled.wrappedBuffer(this.c);
+      $$0.writerIndex(0);
+      return $$0;
+   }
+
+   public static void a(tu $$0, djd $$1) {
+      for (dje $$2 : $$1.d()) {
+         $$2.c($$0);
+      }
+   }
+
+   public Consumer<zm.b> a(int $$0, int $$1) {
+      return $$2 -> this.a($$2, $$0, $$1);
+   }
+
+   private void a(zm.b $$0, int $$1, int $$2) {
+      int $$3 = 16 * $$1;
+      int $$4 = 16 * $$2;
+      ht.a $$5 = new ht.a();
+
+      for (zm.a $$6 : this.d) {
+         int $$7 = $$3 + iu.b($$6.a >> 4);
+         int $$8 = $$4 + iu.b($$6.a);
+         $$5.d($$7, $$6.b, $$8);
+         $$0.accept($$5, $$6.c, $$6.d);
+      }
+   }
+
+   public tu a() {
+      return new tu(Unpooled.wrappedBuffer(this.c));
+   }
+
+   public rz b() {
       return this.b;
    }
 
-   public short d() {
-      return this.c;
-   }
+   static class a {
+      final int a;
+      final int b;
+      final det<?> c;
+      @Nullable
+      final rz d;
 
-   public short e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public byte g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public boolean i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.g;
-   }
-
-   public static class a extends zm {
-      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
-         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
+      private a(int $$0, int $$1, det<?> $$2, @Nullable rz $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      public static zm.a b(tl $$0) {
-         int $$1 = $$0.n();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         boolean $$5 = $$0.readBoolean();
-         return new zm.a($$1, $$2, $$3, $$4, $$5);
+      private a(tu $$0) {
+         this.a = $$0.readByte();
+         this.b = $$0.readShort();
+         this.c = $$0.a(jy.l);
+         this.d = $$0.q();
       }
 
-      @Override
-      public void a(tl $$0) {
-         $$0.c(this.a);
+      void a(tu $$0) {
+         $$0.k(this.a);
          $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.a(this.g);
+         $$0.a(jy.l, this.c);
+         $$0.a((sw)this.d);
+      }
+
+      static zm.a a(der $$0) {
+         rz $$1 = $$0.av_();
+         ht $$2 = $$0.p();
+         int $$3 = iu.b($$2.u()) << 4 | iu.b($$2.w());
+         return new zm.a($$3, $$2.v(), $$0.u(), $$1.g() ? null : $$1);
       }
    }
 
-   public static class b extends zm {
-      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
-      }
-
-      public static zm.b b(tl $$0) {
-         int $$1 = $$0.n();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         byte $$5 = $$0.readByte();
-         byte $$6 = $$0.readByte();
-         boolean $$7 = $$0.readBoolean();
-         return new zm.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void a(tl $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
-   }
-
-   public static class c extends zm {
-      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
-         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
-      }
-
-      public static zm.c b(tl $$0) {
-         int $$1 = $$0.n();
-         byte $$2 = $$0.readByte();
-         byte $$3 = $$0.readByte();
-         boolean $$4 = $$0.readBoolean();
-         return new zm.c($$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public void a(tl $$0) {
-         $$0.c(this.a);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
+   @FunctionalInterface
+   public interface b {
+      void accept(ht var1, det<?> var2, @Nullable rz var3);
    }
 }

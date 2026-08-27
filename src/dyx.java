@@ -1,41 +1,14 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dyx extends dzq {
-   public static final Codec<dyx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               iq.a(jz.e).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, dyx::new)
-   );
-   private final Optional<ig<cua>> b;
-   private final float c;
+public class dyx extends dwu {
+   public static final Codec<dyx> d = a(dyx::new);
 
-   public dyx(ig<cua> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public dyx(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private dyx(Optional<ig<cua>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dzt.c a(crc $$0, ht $$1, ht $$2, dzt.c $$3, dzt.c $$4, dzp $$5) {
-      ate $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public dyx(dwv.c $$0) {
+      super(dyw::new, 12, 15, $$0);
    }
 
    @Override
-   protected dzs<?> a() {
-      return dzs.f;
+   public dxe<?> e() {
+      return dxe.g;
    }
 }

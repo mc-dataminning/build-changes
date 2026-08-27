@@ -1,37 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class dph extends doo<dqy> {
-   public dph(Codec<dqy> $$0) {
+public class dph extends dpj<dru> {
+   public dph(Codec<dru> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doq<dqy> $$0) {
-      crt $$1 = $$0.b();
-      ht $$2 = $$0.e();
-      dgb $$3 = $$1.a_($$2.d());
-      dqy $$4 = $$0.f();
-      ate $$5 = $$0.d();
-      if (!$$3.a(aqs.aK)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.aj()) {
-            int $$7 = 0;
+   public boolean a(dpl<dru> $$0) {
+      csm $$1 = $$0.b();
+      ato $$2 = $$0.d();
+      ht $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               ht $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dgb $$10 = $$4.b.a($$5, $$9);
-               if ($$1.t($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = ati.d(-$$4); $$6 <= ati.f($$4); $$6++) {
+            for (int $$7 = ati.d(-$$4); $$7 <= ati.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), cuv.fz.o());
                }
             }
-
-            return $$7 > 0;
-         } else {
-            return false;
          }
+
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
+
+      return true;
    }
 }

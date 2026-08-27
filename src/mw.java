@@ -1,91 +1,154 @@
 import com.google.gson.JsonObject;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import javax.annotation.Nullable;
 
-public class mw {
-   private final cnk a;
-   private final cnk b;
-   private final cnk c;
-   private final mp d;
-   private final cke e;
-   private final Map<String, am<?>> f = new LinkedHashMap<>();
-   private final cnq<?> g;
+public class mw implements mq {
+   private final mr b;
+   private final cnt c;
+   private final ckw d;
+   private final coc e;
+   private final float f;
+   private final int g;
+   private final Map<String, am<?>> h = new LinkedHashMap<>();
+   @Nullable
+   private String i;
+   private final coj<? extends cnn> j;
 
-   public mw(cnq<?> $$0, cnk $$1, cnk $$2, cnk $$3, mp $$4, cke $$5) {
-      this.d = $$4;
-      this.g = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$5;
+   private mw(mr $$0, cnt $$1, crr $$2, coc $$3, float $$4, int $$5, coj<? extends cnn> $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.k();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.j = $$6;
    }
 
-   public static mw a(cnk $$0, cnk $$1, cnk $$2, mp $$3, cke $$4) {
-      return new mw(cnq.u, $$0, $$1, $$2, $$3, $$4);
+   public static mw a(coc $$0, mr $$1, crr $$2, float $$3, int $$4, coj<? extends cnn> $$5) {
+      return new mw($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$5);
    }
 
-   public mw a(String $$0, am<?> $$1) {
-      this.f.put($$0, $$1);
+   public static mw a(coc $$0, mr $$1, crr $$2, float $$3, int $$4) {
+      return new mw($$1, cnt.a, $$2, $$0, $$3, $$4, coj.s);
+   }
+
+   public static mw b(coc $$0, mr $$1, crr $$2, float $$3, int $$4) {
+      return new mw($$1, c($$2), $$2, $$0, $$3, $$4, coj.q);
+   }
+
+   public static mw c(coc $$0, mr $$1, crr $$2, float $$3, int $$4) {
+      return new mw($$1, b($$2), $$2, $$0, $$3, $$4, coj.p);
+   }
+
+   public static mw d(coc $$0, mr $$1, crr $$2, float $$3, int $$4) {
+      return new mw($$1, cnt.a, $$2, $$0, $$3, $$4, coj.r);
+   }
+
+   public mw b(String $$0, am<?> $$1) {
+      this.h.put($$0, $$1);
       return this;
    }
 
-   public void a(mq $$0, String $$1) {
-      this.a($$0, new afw($$1));
+   public mw b(@Nullable String $$0) {
+      this.i = $$0;
+      return this;
    }
 
-   public void a(mq $$0, afw $$1) {
+   @Override
+   public ckw a() {
+      return this.d;
+   }
+
+   @Override
+   public void a(ms $$0, agg $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.f.forEach($$2::a);
-      $$0.a(new mw.a($$1, this.g, this.a, this.b, this.c, this.e, $$2.b($$1.d("recipes/" + this.d.a() + "/"))));
+      this.h.forEach($$2::a);
+      $$0.a(new mw.a($$1, this.i == null ? "" : this.i, this.c, this.e, this.d, this.f, this.g, $$2.b($$1.d("recipes/" + this.b.a() + "/")), this.j));
    }
 
-   private void a(afw $$0) {
-      if (this.f.isEmpty()) {
+   private static cnt b(crr $$0) {
+      if ($$0.k().u()) {
+         return cnt.a;
+      } else {
+         return $$0.k() instanceof ciu ? cnt.b : cnt.c;
+      }
+   }
+
+   private static cnt c(crr $$0) {
+      return $$0.k() instanceof ciu ? cnt.b : cnt.c;
+   }
+
+   private static cnt a(coj<? extends cnn> $$0, crr $$1) {
+      if ($$0 == coj.p) {
+         return b($$1);
+      } else if ($$0 == coj.q) {
+         return c($$1);
+      } else if ($$0 != coj.r && $$0 != coj.s) {
+         throw new IllegalStateException("Unknown cooking recipe type");
+      } else {
+         return cnt.a;
+      }
+   }
+
+   private void a(agg $$0) {
+      if (this.h.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   public static record a(afw a, cnq<?> b, cnk c, cnk d, cnk e, cke f, af g) implements mn {
+   static record a(agg a, String b, cnt c, coc d, ckw e, float f, int g, af h, coj<? extends cnn> i) implements mp {
       @Override
       public void a(JsonObject $$0) {
-         $$0.add("template", this.c.a(true));
-         $$0.add("base", this.d.a(true));
-         $$0.add("addition", this.e.a(true));
-         JsonObject $$1 = new JsonObject();
-         $$1.addProperty("item", jy.i.b(this.f).toString());
-         $$0.add("result", $$1);
+         if (!this.b.isEmpty()) {
+            $$0.addProperty("group", this.b);
+         }
+
+         $$0.addProperty("category", this.c.c());
+         $$0.add("ingredient", this.d.a(false));
+         $$0.addProperty("result", jy.i.b(this.e).toString());
+         $$0.addProperty("experience", this.f);
+         $$0.addProperty("cookingtime", this.g);
       }
 
       @Override
-      public afw b() {
+      public agg b() {
          return this.a;
       }
 
-      @Override
-      public cnq<?> c() {
+      public String e() {
          return this.b;
       }
 
-      public cnk e() {
+      public cnt f() {
          return this.c;
       }
 
-      public cnk f() {
+      public coc g() {
          return this.d;
       }
 
-      public cnk g() {
+      public ckw h() {
          return this.e;
       }
 
-      public cke h() {
+      public float i() {
          return this.f;
+      }
+
+      public int j() {
+         return this.g;
       }
 
       @Override
       public af d() {
-         return this.g;
+         return this.h;
+      }
+
+      @Override
+      public coj<? extends cnn> c() {
+         return this.i;
       }
    }
 }

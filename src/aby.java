@@ -1,93 +1,32 @@
-import java.util.UUID;
+public class aby implements wk<yd> {
+   private final ur a;
+   private final ur b;
 
-public class aby {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(bjt $$0) {
-      if ($$0 instanceof ccx) {
-         return $$0.ab().getString();
-      } else {
-         ui $$1 = $$0.ad();
-         return $$1 != null ? $$1.getString() : a($$0.cv());
-      }
+   public aby(ur $$0, ur $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static String a(UUID $$0) {
-      ate $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   public aby(tu $$0) {
+      this.a = $$0.m();
+      this.b = $$0.m();
    }
 
-   private static String a(ate $$0, String[] $$1) {
-      return ac.a($$1, $$0);
+   @Override
+   public void a(tu $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   private static ate b(UUID $$0) {
-      return ate.a((long)($$0.hashCode() >> 2));
+   public void a(yd $$0) {
+      $$0.a(this);
+   }
+
+   public ur a() {
+      return this.a;
+   }
+
+   public ur d() {
+      return this.b;
    }
 }

@@ -1,122 +1,134 @@
 import java.util.EnumSet;
 
-public abstract class brr extends bre {
-   private static final int g = 1200;
-   private static final int h = 1200;
-   private static final int i = 200;
-   protected final bks a;
-   public final double b;
-   protected int c;
-   protected int d;
+public class brr extends brt {
+   public static final int a = 12;
+   private static final int b = 2;
+   private static final int c = 3;
+   private static final int d = 1;
+   private final blt e;
+   private bky f;
+   private final crv g;
+   private final double h;
+   private final buh i;
    private int j;
-   protected ht e = ht.b;
-   private boolean k;
-   private final int l;
-   private final int m;
-   protected int f;
+   private final float k;
+   private final float l;
+   private float m;
+   private final boolean n;
 
-   public brr(bks $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, 1);
-   }
-
-   public brr(bks $$0, double $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
+   public brr(blt $$0, double $$1, float $$2, float $$3, boolean $$4) {
+      this.e = $$0;
+      this.g = $$0.dL();
+      this.h = $$1;
+      this.i = $$0.L();
       this.l = $$2;
-      this.f = 0;
-      this.m = $$3;
-      this.a(EnumSet.of(bre.a.a, bre.a.c));
+      this.k = $$3;
+      this.n = $$4;
+      this.a(EnumSet.of(brt.a.a, brt.a.b));
+      if (!($$0.L() instanceof bug) && !($$0.L() instanceof buf)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+      }
    }
 
    @Override
    public boolean a() {
-      if (this.c > 0) {
-         this.c--;
+      bky $$0 = this.e.P_();
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.N_()) {
+         return false;
+      } else if (this.h()) {
+         return false;
+      } else if (this.e.f($$0) < (double)(this.l * this.l)) {
          return false;
       } else {
-         this.c = this.a(this.a);
-         return this.n();
+         this.f = $$0;
+         return true;
       }
-   }
-
-   protected int a(bks $$0) {
-      return b(200 + $$0.ef().a(200));
    }
 
    @Override
    public boolean b() {
-      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dL(), this.e);
+      if (this.i.l()) {
+         return false;
+      } else {
+         return this.h() ? false : !(this.e.f(this.f) <= (double)(this.k * this.k));
+      }
+   }
+
+   private boolean h() {
+      return this.e.ge() || this.e.bN() || this.e.fS();
    }
 
    @Override
    public void c() {
-      this.h();
-      this.d = 0;
-      this.j = this.a.ef().a(this.a.ef().a(1200) + 1200) + 1200;
-   }
-
-   protected void h() {
-      this.a.L().a((double)((float)this.e.u()) + 0.5, (double)(this.e.v() + 1), (double)((float)this.e.w()) + 0.5, this.b);
-   }
-
-   public double i() {
-      return 1.0;
-   }
-
-   protected ht k() {
-      return this.e.c();
+      this.j = 0;
+      this.m = this.e.a(ecr.j);
+      this.e.a(ecr.j, 0.0F);
    }
 
    @Override
-   public boolean R_() {
-      return true;
+   public void d() {
+      this.f = null;
+      this.i.n();
+      this.e.a(ecr.j, this.m);
    }
 
    @Override
    public void e() {
-      ht $$0 = this.k();
-      if (!$$0.a(this.a.dj(), this.i())) {
-         this.k = false;
-         this.d++;
-         if (this.l()) {
-            this.a.L().a((double)((float)$$0.u()) + 0.5, (double)$$0.v(), (double)((float)$$0.w()) + 0.5, this.b);
+      this.e.G().a(this.f, 10.0F, (float)this.e.Y());
+      if (--this.j <= 0) {
+         this.j = this.a(10);
+         if (this.e.f(this.f) >= 144.0) {
+            this.i();
+         } else {
+            this.i.a(this.f, this.h);
          }
+      }
+   }
+
+   private void i() {
+      ht $$0 = this.f.dl();
+
+      for (int $$1 = 0; $$1 < 10; $$1++) {
+         int $$2 = this.a(-3, 3);
+         int $$3 = this.a(-1, 1);
+         int $$4 = this.a(-3, 3);
+         boolean $$5 = this.a($$0.u() + $$2, $$0.v() + $$3, $$0.w() + $$4);
+         if ($$5) {
+            return;
+         }
+      }
+   }
+
+   private boolean a(int $$0, int $$1, int $$2) {
+      if (Math.abs((double)$$0 - this.f.dq()) < 2.0 && Math.abs((double)$$2 - this.f.dw()) < 2.0) {
+         return false;
+      } else if (!this.a(new ht($$0, $$1, $$2))) {
+         return false;
       } else {
-         this.k = true;
-         this.d--;
+         this.e.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.e.dB(), this.e.dD());
+         this.i.n();
+         return true;
       }
    }
 
-   public boolean l() {
-      return this.d % 40 == 0;
-   }
-
-   protected boolean m() {
-      return this.k;
-   }
-
-   protected boolean n() {
-      int $$0 = this.l;
-      int $$1 = this.m;
-      ht $$2 = this.a.dl();
-      ht.a $$3 = new ht.a();
-
-      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
-               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
-                  $$3.a($$2, $$6, $$4 - 1, $$7);
-                  if (this.a.a($$3) && this.a(this.a.dL(), $$3)) {
-                     this.e = $$3;
-                     return true;
-                  }
-               }
-            }
+   private boolean a(ht $$0) {
+      ecr $$1 = eda.a(this.g, $$0.j());
+      if ($$1 != ecr.c) {
+         return false;
+      } else {
+         dgw $$2 = this.g.a_($$0.d());
+         if (!this.n && $$2.b() instanceof czc) {
+            return false;
+         } else {
+            ht $$3 = $$0.b(this.e.dl());
+            return this.g.a(this.e, this.e.cG().a($$3));
          }
       }
-
-      return false;
    }
 
-   protected abstract boolean a(crc var1, ht var2);
+   private int a(int $$0, int $$1) {
+      return this.e.ef().a($$1 - $$0 + 1) + $$0;
+   }
 }

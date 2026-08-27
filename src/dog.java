@@ -1,67 +1,32 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dog extends doo<dqo> {
-   private static final ImmutableList<cua> a = ImmutableList.of(cuc.F, cuc.fn, cuc.fo, cuc.fp, cuc.fq, cuc.cv, cuc.ct);
-   private static final hx[] b = hx.values();
-   private static final double c = 0.9;
+public class dog extends dod {
+   public static final Codec<dog> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dod.d.forGetter($$0x -> $$0x),
+               bht.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bht.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bht.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dog::new)
+   );
+   public final bht b;
+   public final bht c;
+   final bht j;
 
-   public dog(Codec<dqo> $$0) {
-      super($$0);
+   public dog(float $$0, dvc $$1, bht $$2, dmz $$3, doe $$4, ig<cut> $$5, bht $$6, bht $$7, bht $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(doq<dqo> $$0) {
-      boolean $$1 = false;
-      ate $$2 = $$0.d();
-      crt $$3 = $$0.b();
-      dqo $$4 = $$0.f();
-      ht $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (ht $$13 : ht.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            ht $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
+   public dog(float $$0, dvc $$1, bht $$2, dmz $$3, ig<cut> $$4, bht $$5, bht $$6, bht $$7) {
+      this($$0, $$1, $$2, $$3, doe.a, $$4, $$5, $$6, $$7);
    }
 
-   private static boolean a(cra $$0, ht $$1, dqo $$2) {
-      dgb $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (hx $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != hx.b || !$$5 && $$4 == hx.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   public dog(dod $$0, bht $$1, bht $$2, bht $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

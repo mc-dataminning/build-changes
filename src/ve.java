@@ -1,72 +1,63 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.jetbrains.annotations.VisibleForTesting;
 
-@FunctionalInterface
-public interface ve {
-   Logger a = LogUtils.getLogger();
-   ve b = $$0 -> {
-      if ($$0.h()) {
-         a.error("Received chat message with signature from {}, but they have no chat session initialized", $$0.f());
-         return false;
-      } else {
-         return true;
-      }
-   };
-   ve c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.f());
-      return false;
-   };
+public class ve {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final vd[] c;
 
-   boolean updateAndValidate(uy var1);
+   public ve(int $$0) {
+      this.c = new vd[$$0];
+   }
 
-   public static class a implements ve {
-      private final atj d;
-      private final BooleanSupplier e;
-      @Nullable
-      private uy f;
-      private boolean g = true;
+   public static ve a() {
+      return new ve(128);
+   }
 
-      public a(atj $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      private boolean a(uy $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.j().a(this.f.j())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.f(), this.f.j().b(), this.f.j().d(), $$0.j().b(), $$0.j().d()}
-            );
-            return false;
-         } else {
-            return true;
+   public int a(vd $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
          }
       }
 
-      private boolean b(uy $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.f());
-            return false;
-         } else {
-            return this.a($$0);
-         }
+      return -1;
+   }
+
+   @Nullable
+   public vd a(int $$0) {
+      return this.c[$$0];
+   }
+
+   public void a(vh $$0) {
+      List<vd> $$1 = $$0.l().d().a();
+      ArrayDeque<vd> $$2 = new ArrayDeque<>($$1.size() + 1);
+      $$2.addAll($$1);
+      vd $$3 = $$0.k();
+      if ($$3 != null) {
+         $$2.add($$3);
       }
 
-      @Override
-      public boolean updateAndValidate(uy $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return false;
-         } else {
-            this.f = $$0;
-            return true;
+      this.a($$2);
+   }
+
+   @VisibleForTesting
+   void a(List<vd> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<vd> $$0) {
+      Set<vd> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         vd $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
          }
       }
    }

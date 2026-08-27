@@ -1,35 +1,57 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class gdp<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
+public class gdp extends agg {
+   @VisibleForTesting
+   static final char e = '#';
+   private final String f;
 
-   public gdp(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   private gdp(String $$0, String $$1, String $$2, @Nullable agg.a $$3) {
+      super($$0, $$1, $$3);
+      this.f = $$2;
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   public gdp(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.f = j($$2);
+   }
 
-         if ($$0 < 0) {
-            this.a.next();
-         } else {
-            this.b.next();
-         }
+   public gdp(agg $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static gdp c(String $$0, String $$1) {
+      return new gdp("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof gdp && super.equals($$0)) {
+         gdp $$1 = (gdp)$$0;
+         return this.f.equals($$1.f);
+      } else {
+         return false;
       }
+   }
 
-      return (T)this.endOfData();
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.f;
    }
 }

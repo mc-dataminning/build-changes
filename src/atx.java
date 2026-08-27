@@ -1,50 +1,25 @@
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.function.Function;
+public class atx {
+   private double a;
+   private double b;
+   private double c;
 
-public interface atx<C> {
-   atx<Float> a = a($$0 -> $$0);
+   public double a(double $$0, double $$1) {
+      this.a += $$0;
+      double $$2 = this.a - this.b;
+      double $$3 = ati.d(0.5, this.c, $$2);
+      double $$4 = Math.signum($$2);
+      if ($$4 * $$2 > $$4 * this.c) {
+         $$2 = $$3;
+      }
 
-   float a(C var1);
-
-   float b();
-
-   float c();
-
-   static atx<Float> a(final Float2FloatFunction $$0) {
-      return new atx<Float>() {
-         public float a(Float $$0x) {
-            return (Float)$$0.apply($$0);
-         }
-
-         @Override
-         public float b() {
-            return Float.NEGATIVE_INFINITY;
-         }
-
-         @Override
-         public float c() {
-            return Float.POSITIVE_INFINITY;
-         }
-      };
+      this.c = $$3;
+      this.b += $$2 * $$1;
+      return $$2 * $$1;
    }
 
-   default <C2> atx<C2> a(final Function<C2, C> $$0) {
-      final atx<C> $$1 = this;
-      return new atx<C2>() {
-         @Override
-         public float a(C2 $$0x) {
-            return $$1.a($$0.apply($$0));
-         }
-
-         @Override
-         public float b() {
-            return $$1.b();
-         }
-
-         @Override
-         public float c() {
-            return $$1.c();
-         }
-      };
+   public void a() {
+      this.a = 0.0;
+      this.b = 0.0;
+      this.c = 0.0;
    }
 }

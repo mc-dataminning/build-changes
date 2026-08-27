@@ -1,111 +1,94 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
 import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.Set;
 
-public class fqh {
-   public static final fqh a = new fqh();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final fqh.a[] c;
-   private final afw[] d;
-
-   private fqh() {
-      this.c = new fqh.a[0];
-      this.d = new afw[0];
+public interface fqh {
+   static fqh.a a(enf $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   public fqh(gcf $$0, fqc $$1, List<fqg> $$2) {
-      this.d = $$2.stream().flatMap(fqg::b).map(fqg.b::a).distinct().toArray(afw[]::new);
-      Object2IntMap<afw> $$3 = new Object2IntOpenHashMap();
+   static fqh.a a(Map<fqp, enf> $$0, enf $$1) {
+      return new fqh.a($$1, $$0);
+   }
 
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
+   eno getBuffer(fqp var1);
+
+   public static class a implements fqh {
+      protected final enf a;
+      protected final Map<fqp, enf> b;
+      protected Optional<fqp> c = Optional.empty();
+      protected final Set<enf> d = Sets.newHashSet();
+
+      protected a(enf $$0, Map<fqp, enf> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      List<fqh.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         fqg $$7 = $$2.get($$6);
-         gcb $$8 = this.a($$0, $$1, $$7);
-         fqh.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new fqh.b($$2x, $$1x.b());
-         }).toArray(fqh.b[]::new);
-         $$5.add(new fqh.a($$9, $$8));
-      }
-
-      this.c = $$5.toArray(new fqh.a[0]);
-   }
-
-   @Nullable
-   private gcb a(gcf $$0, fqc $$1, fqg $$2) {
-      gcm $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gcc.a);
-   }
-
-   @Nullable
-   public gcb a(gcb $$0, ckj $$1, @Nullable fjr $$2, @Nullable bkj $$3, int $$4) {
-      if (this.c.length != 0) {
-         cke $$5 = $$1.d();
-         int $$6 = this.d.length;
-         float[] $$7 = new float[$$6];
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            afw $$9 = this.d[$$8];
-            fzi $$10 = fzh.a($$5, $$9);
-            if ($$10 != null) {
-               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
-            } else {
-               $$7[$$8] = Float.NEGATIVE_INFINITY;
-            }
-         }
-
-         for (fqh.a $$11 : this.c) {
-            if ($$11.a($$7)) {
-               gcb $$12 = $$11.b;
-               if ($$12 == null) {
-                  return $$0;
+      @Override
+      public eno getBuffer(fqp $$0) {
+         Optional<fqp> $$1 = $$0.N();
+         enf $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.M()) {
+            if (this.c.isPresent()) {
+               fqp $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
                }
-
-               return $$12;
             }
+
+            if (this.d.add($$2)) {
+               $$2.a($$0.I(), $$0.H());
+            }
+
+            this.c = $$1;
+         }
+
+         return $$2;
+      }
+
+      private enf b(fqp $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
+
+      public void a() {
+         if (this.c.isPresent()) {
+            fqp $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
          }
       }
 
-      return $$0;
-   }
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            eno $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
 
-   static class a {
-      private final fqh.b[] a;
-      @Nullable
-      final gcb b;
-
-      a(fqh.b[] $$0, @Nullable gcb $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         for (fqp $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
       }
 
-      boolean a(float[] $$0) {
-         for (fqh.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
+      public void a(fqp $$0) {
+         enf $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.N());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
+               }
             }
          }
-
-         return true;
-      }
-   }
-
-   static class b {
-      public final int a;
-      public final float b;
-
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
       }
    }
 }

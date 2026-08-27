@@ -1,166 +1,110 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
+import com.google.common.base.MoreObjects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dhz {
-   private static final Logger a = LogUtils.getLogger();
-   private final dly b;
-   private final csb c;
-   private final long d;
-   private final long e;
-   private final Map<dwa, List<dwx>> f = new Object2ObjectOpenHashMap();
-   private final Map<dwu, CompletableFuture<List<cqg>>> g = new Object2ObjectArrayMap();
-   private boolean h;
-   private final List<ib<dwg>> i;
-
-   public static dhz a(dly $$0, long $$1, csb $$2, Stream<ib<dwg>> $$3) {
-      List<ib<dwg>> $$4 = $$3.filter($$1x -> a((dwg)$$1x.a(), $$2)).toList();
-      return new dhz($$0, $$2, $$1, 0L, $$4);
-   }
-
-   public static dhz a(dly $$0, long $$1, csb $$2, id<dwg> $$3) {
-      List<ib<dwg>> $$4 = $$3.b().filter($$1x -> a((dwg)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
-      return new dhz($$0, $$2, $$1, $$1, $$4);
-   }
-
-   private static boolean a(dwg $$0, csb $$1) {
-      Stream<ib<crx>> $$2 = $$0.a().stream().flatMap($$0x -> {
-         dwa $$1x = $$0x.a().a();
-         return $$1x.a().a();
-      });
-      return $$2.anyMatch($$1.c()::contains);
-   }
-
-   private dhz(dly $$0, csb $$1, long $$2, long $$3, List<ib<dwg>> $$4) {
-      this.b = $$0;
-      this.d = $$2;
-      this.c = $$1;
-      this.e = $$3;
-      this.i = $$4;
-   }
-
-   public List<ib<dwg>> a() {
-      return this.i;
-   }
-
-   private void e() {
-      Set<ib<crx>> $$0 = this.c.c();
-      this.a().forEach($$1 -> {
-         dwg $$2 = $$1.a();
-         boolean $$3 = false;
-
-         for (dwg.a $$4 : $$2.a()) {
-            dwa $$5 = $$4.a().a();
-            if ($$5.a().a().anyMatch($$0::contains)) {
-               this.f.computeIfAbsent($$5, $$0xx -> new ArrayList<>()).add($$2.b());
-               $$3 = true;
-            }
-         }
-
-         if ($$3 && $$2.b() instanceof dwu $$7) {
-            this.g.put($$7, this.a((ib<dwg>)$$1, $$7));
-         }
-      });
-   }
-
-   private CompletableFuture<List<cqg>> a(ib<dwg> $$0, dwu $$1) {
-      if ($$1.c() == 0) {
-         return CompletableFuture.completedFuture(List.of());
-      } else {
-         Stopwatch $$2 = Stopwatch.createStarted(ac.c);
-         int $$3 = $$1.a();
-         int $$4 = $$1.c();
-         List<CompletableFuture<cqg>> $$5 = new ArrayList<>($$4);
-         int $$6 = $$1.b();
-         ig<crx> $$7 = $$1.d();
-         ate $$8 = ate.a();
-         $$8.b(this.e);
-         double $$9 = $$8.j() * Math.PI * 2.0;
-         int $$10 = 0;
-         int $$11 = 0;
-
-         for (int $$12 = 0; $$12 < $$4; $$12++) {
-            double $$13 = (double)(4 * $$3 + $$3 * $$11 * 6) + ($$8.j() - 0.5) * (double)$$3 * 2.5;
-            int $$14 = (int)Math.round(Math.cos($$9) * $$13);
-            int $$15 = (int)Math.round(Math.sin($$9) * $$13);
-            ate $$16 = $$8.d();
-            $$5.add(CompletableFuture.supplyAsync(() -> {
-               Pair<ht, ib<crx>> $$4x = this.c.a(iu.a($$14, 8), 0, iu.a($$15, 8), 112, $$7::a, $$16, this.b.b());
-               if ($$4x != null) {
-                  ht $$5x = (ht)$$4x.getFirst();
-                  return new cqg(iu.a($$5x.u()), iu.a($$5x.w()));
-               } else {
-                  return new cqg($$14, $$15);
-               }
-            }, ac.f()));
-            $$9 += (Math.PI * 2) / (double)$$6;
-            if (++$$10 == $$6) {
-               $$11++;
-               $$10 = 0;
-               $$6 += 2 * $$6 / ($$11 + 1);
-               $$6 = Math.min($$6, $$4 - $$12);
-               $$9 += $$8.j() * Math.PI * 2.0;
-            }
-         }
-
-         return ac.b($$5).thenApply($$2x -> {
-            double $$3x = (double)$$2.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
-            a.debug("Calculation for {} took {}s", $$0, $$3x);
-            return $$2x;
-         });
-      }
-   }
-
-   public void b() {
-      if (!this.h) {
-         this.e();
-         this.h = true;
-      }
-   }
-
+public abstract class dhz<T extends Comparable<T>> {
+   private final Class<T> a;
+   private final String b;
    @Nullable
-   public List<cqg> a(dwu $$0) {
-      this.b();
-      CompletableFuture<List<cqg>> $$1 = this.g.get($$0);
-      return $$1 != null ? $$1.join() : null;
+   private Integer c;
+   private final Codec<T> d = Codec.STRING
+      .comapFlatMap(
+         $$0x -> this.b($$0x)
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
+         this::a
+      );
+   private final Codec<dhz.a<T>> e = this.d.xmap(this::b, dhz.a::b);
+
+   protected dhz(String $$0, Class<T> $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   public List<dwx> a(ib<dwa> $$0) {
-      this.b();
-      return this.f.getOrDefault($$0.a(), List.of());
+   public dhz.a<T> b(T $$0) {
+      return new dhz.a<>(this, $$0);
    }
 
-   public dly c() {
+   public dhz.a<T> a(dgy<?, ?> $$0) {
+      return new dhz.a<>(this, $$0.c(this));
+   }
+
+   public Stream<dhz.a<T>> c() {
+      return this.a().stream().map(this::b);
+   }
+
+   public Codec<T> d() {
+      return this.d;
+   }
+
+   public Codec<dhz.a<T>> e() {
+      return this.e;
+   }
+
+   public String f() {
       return this.b;
    }
 
-   public boolean a(ib<dwg> $$0, int $$1, int $$2, int $$3) {
-      dwx $$4 = $$0.a().b();
+   public Class<T> g() {
+      return this.a;
+   }
 
-      for (int $$5 = $$1 - $$3; $$5 <= $$1 + $$3; $$5++) {
-         for (int $$6 = $$2 - $$3; $$6 <= $$2 + $$3; $$6++) {
-            if ($$4.b(this, $$5, $$6)) {
-               return true;
-            }
+   public abstract Collection<T> a();
+
+   public abstract String a(T var1);
+
+   public abstract Optional<T> b(String var1);
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dhz<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public final int hashCode() {
+      if (this.c == null) {
+         this.c = this.b();
+      }
+
+      return this.c;
+   }
+
+   public int b() {
+      return 31 * this.a.hashCode() + this.b.hashCode();
+   }
+
+   public <U, S extends dgy<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
+      DataResult<T> $$3 = this.d.parse($$0, $$2);
+      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
+   }
+
+   public static record a<T extends Comparable<T>>(dhz<T> a, T b) {
+      public a(dhz<T> a, T b) {
+         if (!a.a().contains(b)) {
+            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+         } else {
+            this.a = a;
+            this.b = b;
          }
       }
 
-      return false;
-   }
-
-   public long d() {
-      return this.d;
+      @Override
+      public String toString() {
+         return this.a.f() + "=" + this.a.a(this.b);
+      }
    }
 }

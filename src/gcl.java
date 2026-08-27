@@ -1,38 +1,60 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gcl implements gcb {
-   protected final List<fpx> a;
-   protected final Map<hx, List<fpx>> b;
-   protected final boolean c;
-   protected final boolean d;
-   protected final boolean e;
-   protected final gaa f;
-   protected final fqj g;
-   protected final fqh h;
+public class gcl extends ru {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   public gcl(List<fpx> $$0, Map<hx, List<fpx>> $$1, boolean $$2, boolean $$3, boolean $$4, gaa $$5, fqj $$6, fqh $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$4;
-      this.e = $$3;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   private gcl(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public static gcl a(apd $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
+
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+
+         for (String $$6 : $$0.a()) {
+            try {
+               agg $$7 = new agg($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
+         }
+      }
+
+      return new gcl(ImmutableMap.copyOf($$3), $$2);
+   }
+
+   private static void a(String $$0, List<apb> $$1, Map<String, String> $$2) {
+      for (apb $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            ru.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
    }
 
    @Override
-   public List<fpx> a(@Nullable dgb $$0, @Nullable hx $$1, ate $$2) {
-      return $$1 == null ? this.a : this.b.get($$1);
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
    }
 
    @Override
-   public boolean a() {
-      return this.c;
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
    }
 
    @Override
@@ -41,81 +63,7 @@ public class gcl implements gcb {
    }
 
    @Override
-   public boolean c() {
-      return this.e;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public gaa e() {
-      return this.f;
-   }
-
-   @Override
-   public fqj f() {
-      return this.g;
-   }
-
-   @Override
-   public fqh g() {
-      return this.h;
-   }
-
-   public static class a {
-      private final List<fpx> a = Lists.newArrayList();
-      private final Map<hx, List<fpx>> b = Maps.newEnumMap(hx.class);
-      private final fqh c;
-      private final boolean d;
-      private gaa e;
-      private final boolean f;
-      private final boolean g;
-      private final fqj h;
-
-      public a(fqc $$0, fqh $$1, boolean $$2) {
-         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
-      }
-
-      private a(boolean $$0, boolean $$1, boolean $$2, fqj $$3, fqh $$4) {
-         for (hx $$5 : hx.values()) {
-            this.b.put($$5, Lists.newArrayList());
-         }
-
-         this.c = $$4;
-         this.d = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.h = $$3;
-      }
-
-      public gcl.a a(hx $$0, fpx $$1) {
-         this.b.get($$0).add($$1);
-         return this;
-      }
-
-      public gcl.a a(fpx $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public gcl.a a(gaa $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public gcl.a a() {
-         return this;
-      }
-
-      public gcb b() {
-         if (this.e == null) {
-            throw new RuntimeException("Missing particle!");
-         } else {
-            return new gcl(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
-         }
-      }
+   public asu a(uw $$0) {
+      return gcm.a($$0, this.d);
    }
 }

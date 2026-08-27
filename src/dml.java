@@ -1,132 +1,110 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class dml implements ate {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dml> b = dmk.a.xmap($$0 -> new dml($$0), $$0 -> $$0.e);
-   private dmk e;
-   private final dlm f = new dlm(this);
+public record dml(dly b, dly c, dly d, dly e, dly f, dly g, dly h, dly i, dly j, dly k, dly l, dly m, dly n, dly o, dly p) {
+   public static final Codec<dml> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", dml::a),
+               a("fluid_level_floodedness", dml::b),
+               a("fluid_level_spread", dml::c),
+               a("lava", dml::d),
+               a("temperature", dml::e),
+               a("vegetation", dml::f),
+               a("continents", dml::g),
+               a("erosion", dml::h),
+               a("depth", dml::i),
+               a("ridges", dml::j),
+               a("initial_density_without_jaggedness", dml::k),
+               a("final_density", dml::l),
+               a("vein_toggle", dml::m),
+               a("vein_ridged", dml::n),
+               a("vein_gap", dml::o)
+            )
+            .apply($$0, dml::new)
+   );
 
-   public dml(long $$0) {
-      this.e = new dmk(dlz.c($$0));
+   private static RecordCodecBuilder<dml, dly> a(String $$0, Function<dml, dly> $$1) {
+      return dly.d.fieldOf($$0).forGetter($$1);
    }
 
-   public dml(dlz.a $$0) {
-      this.e = new dmk($$0);
+   public dml a(dly.f $$0) {
+      return new dml(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   public dml(long $$0, long $$1) {
-      this.e = new dmk($$0, $$1);
+   public dly a() {
+      return this.b;
    }
 
-   private dml(dmk $$0) {
-      this.e = $$0;
+   public dly b() {
+      return this.c;
    }
 
-   @Override
-   public ate d() {
-      return new dml(this.e.a(), this.e.a());
+   public dly c() {
+      return this.d;
    }
 
-   @Override
-   public dlx e() {
-      return new dml.a(this.e.a(), this.e.a());
+   public dly d() {
+      return this.e;
    }
 
-   @Override
-   public void b(long $$0) {
-      this.e = new dmk(dlz.c($$0));
-      this.f.a();
+   public dly e() {
+      return this.f;
    }
 
-   @Override
-   public int f() {
-      return (int)this.e.a();
+   public dly f() {
+      return this.g;
    }
 
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
-      }
+   public dly g() {
+      return this.h;
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
+   public dly h() {
+      return this.i;
    }
 
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
+   public dly i() {
+      return this.j;
    }
 
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
+   public dly j() {
+      return this.k;
    }
 
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
+   public dly k() {
+      return this.l;
    }
 
-   @Override
-   public double k() {
-      return this.f.b();
+   public dly l() {
+      return this.m;
    }
 
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
+   public dly m() {
+      return this.n;
    }
 
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
+   public dly n() {
+      return this.o;
    }
 
-   public static class a implements dlx {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public ate a(int $$0, int $$1, int $$2) {
-         long $$3 = asy.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dml($$4, this.b);
-      }
-
-      @Override
-      public ate a(String $$0) {
-         dlz.a $$1 = dlz.a($$0);
-         return new dml($$1.a(this.a, this.b));
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
-      }
+   public dly o() {
+      return this.p;
    }
 }

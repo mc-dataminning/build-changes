@@ -1,11 +1,8 @@
-public interface wl extends acb {
-   void a(wo var1);
+public enum wl {
+   a,
+   b;
 
-   void a(wp var1);
-
-   void a(wn var1);
-
-   void a(wq var1);
-
-   void a(wm var1);
+   public wl a() {
+      return this == b ? a : b;
+   }
 }

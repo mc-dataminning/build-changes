@@ -1,21 +1,34 @@
-public class fym<T extends bjt & bkz, M extends ffx<T>> extends fyl<T, M> {
-   private final afw a;
-   private final M b;
+public class fym extends fwq<bxm, fjs<bxm>> {
+   private static final agg a = new agg("textures/entity/wolf/wolf.png");
+   private static final agg i = new agg("textures/entity/wolf/wolf_tame.png");
+   private static final agg j = new agg("textures/entity/wolf/wolf_angry.png");
 
-   public fym(fvy<T, M> $$0, M $$1, afw $$2) {
-      super($$0);
-      this.b = $$1;
-      this.a = $$2;
+   public fym(fvk.a $$0) {
+      super($$0, new fjs<>($$0.a(fka.bV)), 0.5F);
+      this.a(new gah(this));
    }
 
-   @Override
-   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eml $$10 = $$1.getBuffer(fpj.e(this.a));
-         this.b.a($$0, $$10, $$2, fzr.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected float a(bxm $$0, float $$1) {
+      return $$0.gm();
+   }
+
+   public void a(bxm $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
+      if ($$0.gl()) {
+         float $$6 = $$0.E($$2);
+         this.f.a($$6, $$6, $$6);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gl()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
+   }
+
+   public agg a(bxm $$0) {
+      if ($$0.s()) {
+         return i;
+      } else {
+         return $$0.Y_() ? j : a;
       }
    }
 }

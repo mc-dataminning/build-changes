@@ -1,41 +1,49 @@
-import java.util.Arrays;
+public class ezh extends fah {
+   private static final agg a = new agg("textures/gui/demo_background.png");
+   private evf b = evf.a;
+   private evf c = evf.a;
 
-public class ezh extends eyw {
-   private eug c;
-
-   private static err<?>[] a(ers $$0) {
-      return new err[]{$$0.S(), $$0.T()};
-   }
-
-   public ezh(ezd $$0, ers $$1) {
-      super($$0, $$1, ui.c("options.sounds.title"));
+   public ezh() {
+      super(ur.c("demo.help.title"));
    }
 
    @Override
-   protected void aM_() {
-      this.c = new eug(this.f, this.g, this.h, 32, this.h - 32, 25);
-      this.c.a(this.b.b(aqe.a));
-      this.c.a(this.l());
-      this.c.a(this.b.ap());
-      this.c.a(a(this.b));
-      this.e(this.c);
-      this.d(etj.a(uh.d, $$0 -> {
-         this.f.m.ar();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
-   }
-
-   private err<?>[] l() {
-      return Arrays.stream(aqe.values()).filter($$0 -> $$0 != aqe.a).map($$0 -> this.b.b($$0)).toArray(err[]::new);
+   protected void aO_() {
+      int $$0 = -16;
+      this.d(eum.a(ur.c("demo.help.buy"), $$0x -> {
+         $$0x.i = false;
+         ac.i().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.d(eum.a(ur.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      esv $$1 = this.f.m;
+      this.b = evf.a(
+         this.i,
+         ur.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         ur.c("demo.help.movementMouse"),
+         ur.a("demo.help.jump", $$1.B.k()),
+         ur.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = evf.a(this.i, ur.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, this.c, $$1, $$2, $$3);
+   public void b(eub $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public void b(esy $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

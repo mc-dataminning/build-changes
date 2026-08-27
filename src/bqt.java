@@ -1,34 +1,51 @@
-import java.util.EnumSet;
+public class bqt extends bqw {
+   private final int l;
+   private final boolean m;
 
-public class bqt extends bre {
-   private final bkl a;
-   private final cqz b;
-
-   public bqt(bkl $$0, cqz $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bre.a.c));
+   public bqt(bla $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public boolean a() {
-      boolean $$0 = this.a.aB || this.a.aA;
-      if ($$0 && this.a.ag().a(aqv.h)) {
-         ht $$1 = this.a.dl().c();
-         dgb $$2 = this.b.a_($$1);
-         return $$2.a(cuc.qC) || $$2.k(this.b, $$1) == eiv.a();
+   public void a() {
+      if (this.k == bqw.a.b) {
+         this.k = bqw.a.a;
+         this.d.e(true);
+         double $$0 = this.e - this.d.dq();
+         double $$1 = this.f - this.d.ds();
+         double $$2 = this.g - this.d.dw();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.B(0.0F);
+            this.d.A(0.0F);
+            return;
+         }
+
+         float $$4 = (float)(ati.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dB(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aA()) {
+            $$5 = (float)(this.h * this.d.b(bme.m));
+         } else {
+            $$5 = (float)(this.h * this.d.b(bme.f));
+         }
+
+         this.d.w($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(ati.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.s(this.a(this.d.dD(), $$8, (float)this.l));
+            this.d.B($$1 > 0.0 ? $$5 : -$$5);
+         }
       } else {
-         return false;
+         if (!this.m) {
+            this.d.e(false);
+         }
+
+         this.d.B(0.0F);
+         this.d.A(0.0F);
       }
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.a.K().a();
    }
 }

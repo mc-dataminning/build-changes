@@ -1,102 +1,108 @@
-public class zg implements wb<xu> {
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class zg implements wk<yd> {
    private final double a;
    private final double b;
    private final double c;
    private final float d;
-   private final float e;
+   private final List<ht> e;
    private final float f;
    private final float g;
-   private final int h;
-   private final boolean i;
-   private final jq j;
+   private final float h;
 
-   public <T extends jq> zg(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.j = $$0;
-      this.i = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = $$6;
-      this.f = $$7;
-      this.g = $$8;
-      this.h = $$9;
+   public zg(double $$0, double $$1, double $$2, float $$3, List<ht> $$4, @Nullable eji $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = Lists.newArrayList($$4);
+      if ($$5 != null) {
+         this.f = (float)$$5.c;
+         this.g = (float)$$5.d;
+         this.h = (float)$$5.e;
+      } else {
+         this.f = 0.0F;
+         this.g = 0.0F;
+         this.h = 0.0F;
+      }
    }
 
-   public zg(tl $$0) {
-      jr<?> $$1 = $$0.a(jy.k);
-      this.i = $$0.readBoolean();
+   public zg(tu $$0) {
       this.a = $$0.readDouble();
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
       this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+      int $$1 = ati.a(this.a);
+      int $$2 = ati.a(this.b);
+      int $$3 = ati.a(this.c);
+      this.e = $$0.a((tu.a<ht>)($$3x -> {
+         int $$4 = $$3x.readByte() + $$1;
+         int $$5 = $$3x.readByte() + $$2;
+         int $$6 = $$3x.readByte() + $$3;
+         return new ht($$4, $$5, $$6);
+      }));
       this.f = $$0.readFloat();
       this.g = $$0.readFloat();
-      this.h = $$0.readInt();
-      this.j = this.a($$0, (jr<jq>)$$1);
-   }
-
-   private <T extends jq> T a(tl $$0, jr<T> $$1) {
-      return $$1.d().b($$1, $$0);
+      this.h = $$0.readFloat();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(jy.k, this.j.b());
-      $$0.a(this.i);
+   public void a(tu $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
+      int $$1 = ati.a(this.a);
+      int $$2 = ati.a(this.b);
+      int $$3 = ati.a(this.c);
+      $$0.a(this.e, ($$3x, $$4) -> {
+         int $$5 = $$4.u() - $$1;
+         int $$6 = $$4.v() - $$2;
+         int $$7 = $$4.w() - $$3;
+         $$3x.k($$5);
+         $$3x.k($$6);
+         $$3x.k($$7);
+      });
       $$0.a(this.f);
       $$0.a(this.g);
-      $$0.p(this.h);
-      this.j.a($$0);
+      $$0.a(this.h);
    }
 
-   public boolean a() {
-      return this.i;
+   public void a(yd $$0) {
+      $$0.a(this);
    }
 
-   public double d() {
-      return this.a;
-   }
-
-   public double e() {
-      return this.b;
-   }
-
-   public double f() {
-      return this.c;
-   }
-
-   public float g() {
-      return this.d;
-   }
-
-   public float h() {
-      return this.e;
-   }
-
-   public float i() {
+   public float a() {
       return this.f;
    }
 
-   public float j() {
+   public float d() {
       return this.g;
    }
 
-   public int k() {
+   public float e() {
       return this.h;
    }
 
-   public jq l() {
-      return this.j;
+   public double f() {
+      return this.a;
    }
 
-   public void a(xu $$0) {
-      $$0.a(this);
+   public double g() {
+      return this.b;
+   }
+
+   public double h() {
+      return this.c;
+   }
+
+   public float i() {
+      return this.d;
+   }
+
+   public List<ht> j() {
+      return this.e;
    }
 }

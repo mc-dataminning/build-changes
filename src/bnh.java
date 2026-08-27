@@ -1,27 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bnh {
-   private static final int a = 1;
+public class bnh extends bmp<ccz> {
+   private static final int d = 1200;
+   final float c;
 
-   public static bmb<bkj> a(float $$0) {
-      return bpm.a(
-         (Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$1 -> $$1.group($$1.a(btk.n), $$1.c(btk.m), $$1.b(btk.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bN()) {
-                        return false;
-                     } else {
-                        bjt $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new bml($$8, true));
-                           $$3.a(new btn(new bml($$8, false), $$0, 1));
-                        }
+   public bnh(float $$0) {
+      super(ImmutableMap.of(btz.d, bua.a), 1200);
+      this.c = $$0;
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   protected boolean a(ama $$0, ccz $$1) {
+      return $$1.dN().g().map($$0x -> $$0x == cex.b || $$0x == cex.c || $$0x == cex.d).orElse(true);
+   }
+
+   protected boolean a(ama $$0, ccz $$1, long $$2) {
+      return $$1.dN().a(btz.d);
+   }
+
+   protected void b(ama $$0, ccz $$1, long $$2) {
+      bmr.a($$1, $$1.dN().c(btz.d).get().b(), this.c, 1);
+   }
+
+   protected void c(ama $$0, ccz $$1, long $$2) {
+      Optional<ia> $$3 = $$1.dN().c(btz.d);
+      $$3.ifPresent($$1x -> {
+         ht $$2x = $$1x.b();
+         ama $$3x = $$0.n().a($$1x.a());
+         if ($$3x != null) {
+            bvx $$4 = $$3x.w();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            aci.c($$0, $$2x);
+         }
+      });
+      $$1.dN().b(btz.d);
    }
 }

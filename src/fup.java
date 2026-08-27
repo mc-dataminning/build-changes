@@ -1,16 +1,15 @@
-public class fup extends fwk<bkb> {
-   private static final afw a = new afw("textures/entity/squid/glow_squid.png");
+public class fup extends fwq<cak, fgj<cak>> {
+   private static final agg a = new agg("textures/entity/blaze.png");
 
-   public fup(fud.a $$0, fhz<bkb> $$1) {
-      super($$0, $$1);
+   public fup(fvk.a $$0) {
+      super($$0, new fgj<>($$0.a(fka.l)), 0.5F);
    }
 
-   public afw a(bkb $$0) {
+   protected int a(cak $$0, ht $$1) {
+      return 15;
+   }
+
+   public agg a(cak $$0) {
       return a;
-   }
-
-   protected int a(bkb $$0, ht $$1) {
-      int $$2 = (int)asy.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

@@ -1,45 +1,45 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.List;
 
-public class apt implements dt {
-   private static final String b = "Rcon";
-   private static final ui c = ui.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
+public class apt {
+   private int a;
+   private int b;
 
-   public apt(MinecraftServer $$0) {
-      this.e = $$0;
+   public boolean a(int $$0) {
+      return this.b >= this.b($$0);
    }
 
-   public void e() {
-      this.d.setLength(0);
+   public boolean a(int $$0, List<amb> $$1) {
+      int $$2 = (int)$$1.stream().filter(cdm::fV).count();
+      return $$2 >= this.b($$0);
    }
 
-   public String f() {
-      return this.d.toString();
+   public int b(int $$0) {
+      return Math.max(1, ati.f((float)(this.a * $$0) / 100.0F));
    }
 
-   public du g() {
-      alq $$0 = this.e.D();
-      return new du(this, eif.a($$0.R()), eie.a, $$0, 4, "Rcon", c, this.e, null);
+   public void a() {
+      this.b = 0;
    }
 
-   @Override
-   public void a(ui $$0) {
-      this.d.append($$0.getString());
+   public int b() {
+      return this.b;
    }
 
-   @Override
-   public boolean k_() {
-      return true;
-   }
+   public boolean a(List<amb> $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      this.a = 0;
+      this.b = 0;
 
-   @Override
-   public boolean w_() {
-      return true;
-   }
+      for (amb $$3 : $$0) {
+         if (!$$3.N_()) {
+            this.a++;
+            if ($$3.fD()) {
+               this.b++;
+            }
+         }
+      }
 
-   @Override
-   public boolean U_() {
-      return this.e.k();
+      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

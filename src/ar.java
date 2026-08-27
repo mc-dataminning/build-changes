@@ -5,12 +5,12 @@ public enum ar {
 
    private final String d;
    private final n e;
-   private final ui f;
+   private final ur f;
 
    private ar(String $$0, n $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = ui.c("advancements.toast." + $$0);
+      this.f = ur.c("advancements.toast." + $$0);
    }
 
    public String a() {
@@ -31,7 +31,7 @@ public enum ar {
       return this.e;
    }
 
-   public ui c() {
+   public ur c() {
       return this.f;
    }
 }

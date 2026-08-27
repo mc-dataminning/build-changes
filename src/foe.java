@@ -1,38 +1,40 @@
-import com.google.common.collect.ForwardingList;
-import java.util.List;
+public class foe extends fow {
+   private final foq a;
 
-public class foe extends ForwardingList<ckj> {
-   private final il<ckj> a = il.a(ccw.g(), ckj.b);
-
-   protected List<ckj> delegate() {
-      return this.a;
+   foe(fkw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, foq $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
-   public rz a() {
-      rz $$0 = new rz();
-
-      for (ckj $$1 : this.delegate()) {
-         $$0.add($$1.b(new rt()));
-      }
-
-      return $$0;
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
-   public void a(rz $$0) {
-      List<ckj> $$1 = this.delegate();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.set($$2, ckj.a($$0.a($$2)));
-      }
+   @Override
+   public fnz b() {
+      return fnz.c;
    }
 
-   public boolean isEmpty() {
-      for (ckj $$0 : this.delegate()) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
 
-      return true;
+   public static record a(foq a) implements fny<jt> {
+      public fnv a(jt $$0, fkw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         foe $$8 = new foe($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.c();
+         $$8.z = $$0.c();
+         $$8.a($$1.z.a(12) + 8);
+         return $$8;
+      }
    }
 }

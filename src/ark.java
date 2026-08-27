@@ -1,69 +1,108 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+public final class ark {
+   public static final arr<ckw> a = a("wool");
+   public static final arr<ckw> b = a("planks");
+   public static final arr<ckw> c = a("stone_bricks");
+   public static final arr<ckw> d = a("wooden_buttons");
+   public static final arr<ckw> e = a("stone_buttons");
+   public static final arr<ckw> f = a("buttons");
+   public static final arr<ckw> g = a("wool_carpets");
+   public static final arr<ckw> h = a("wooden_doors");
+   public static final arr<ckw> i = a("wooden_stairs");
+   public static final arr<ckw> j = a("wooden_slabs");
+   public static final arr<ckw> k = a("wooden_fences");
+   public static final arr<ckw> l = a("fence_gates");
+   public static final arr<ckw> m = a("wooden_pressure_plates");
+   public static final arr<ckw> n = a("wooden_trapdoors");
+   public static final arr<ckw> o = a("doors");
+   public static final arr<ckw> p = a("saplings");
+   public static final arr<ckw> q = a("logs_that_burn");
+   public static final arr<ckw> r = a("logs");
+   public static final arr<ckw> s = a("dark_oak_logs");
+   public static final arr<ckw> t = a("oak_logs");
+   public static final arr<ckw> u = a("birch_logs");
+   public static final arr<ckw> v = a("acacia_logs");
+   public static final arr<ckw> w = a("cherry_logs");
+   public static final arr<ckw> x = a("jungle_logs");
+   public static final arr<ckw> y = a("spruce_logs");
+   public static final arr<ckw> z = a("mangrove_logs");
+   public static final arr<ckw> A = a("crimson_stems");
+   public static final arr<ckw> B = a("warped_stems");
+   public static final arr<ckw> C = a("bamboo_blocks");
+   public static final arr<ckw> D = a("wart_blocks");
+   public static final arr<ckw> E = a("banners");
+   public static final arr<ckw> F = a("sand");
+   public static final arr<ckw> G = a("smelts_to_glass");
+   public static final arr<ckw> H = a("stairs");
+   public static final arr<ckw> I = a("slabs");
+   public static final arr<ckw> J = a("walls");
+   public static final arr<ckw> K = a("anvil");
+   public static final arr<ckw> L = a("rails");
+   public static final arr<ckw> M = a("leaves");
+   public static final arr<ckw> N = a("trapdoors");
+   public static final arr<ckw> O = a("small_flowers");
+   public static final arr<ckw> P = a("beds");
+   public static final arr<ckw> Q = a("fences");
+   public static final arr<ckw> R = a("tall_flowers");
+   public static final arr<ckw> S = a("flowers");
+   public static final arr<ckw> T = a("piglin_repellents");
+   public static final arr<ckw> U = a("piglin_loved");
+   public static final arr<ckw> V = a("ignored_by_piglin_babies");
+   public static final arr<ckw> W = a("piglin_food");
+   public static final arr<ckw> X = a("fox_food");
+   public static final arr<ckw> Y = a("gold_ores");
+   public static final arr<ckw> Z = a("iron_ores");
+   public static final arr<ckw> aa = a("diamond_ores");
+   public static final arr<ckw> ab = a("redstone_ores");
+   public static final arr<ckw> ac = a("lapis_ores");
+   public static final arr<ckw> ad = a("coal_ores");
+   public static final arr<ckw> ae = a("emerald_ores");
+   public static final arr<ckw> af = a("copper_ores");
+   public static final arr<ckw> ag = a("non_flammable_wood");
+   public static final arr<ckw> ah = a("soul_fire_base_blocks");
+   public static final arr<ckw> ai = a("candles");
+   public static final arr<ckw> aj = a("dirt");
+   public static final arr<ckw> ak = a("terracotta");
+   public static final arr<ckw> al = a("completes_find_tree_tutorial");
+   public static final arr<ckw> am = a("boats");
+   public static final arr<ckw> an = a("chest_boats");
+   public static final arr<ckw> ao = a("fishes");
+   public static final arr<ckw> ap = a("signs");
+   public static final arr<ckw> aq = a("music_discs");
+   public static final arr<ckw> ar = a("creeper_drop_music_discs");
+   public static final arr<ckw> as = a("coals");
+   public static final arr<ckw> at = a("arrows");
+   public static final arr<ckw> au = a("lectern_books");
+   public static final arr<ckw> av = a("bookshelf_books");
+   public static final arr<ckw> aw = a("beacon_payment_items");
+   public static final arr<ckw> ax = a("stone_tool_materials");
+   public static final arr<ckw> ay = a("stone_crafting_materials");
+   public static final arr<ckw> az = a("freeze_immune_wearables");
+   public static final arr<ckw> aA = a("axolotl_tempt_items");
+   public static final arr<ckw> aB = a("dampens_vibrations");
+   public static final arr<ckw> aC = a("cluster_max_harvestables");
+   public static final arr<ckw> aD = a("compasses");
+   public static final arr<ckw> aE = a("hanging_signs");
+   public static final arr<ckw> aF = a("creeper_igniters");
+   public static final arr<ckw> aG = a("noteblock_top_instruments");
+   public static final arr<ckw> aH = a("trimmable_armor");
+   public static final arr<ckw> aI = a("trim_materials");
+   public static final arr<ckw> aJ = a("trim_templates");
+   public static final arr<ckw> aK = a("sniffer_food");
+   public static final arr<ckw> aL = a("decorated_pot_sherds");
+   public static final arr<ckw> aM = a("decorated_pot_ingredients");
+   public static final arr<ckw> aN = a("swords");
+   public static final arr<ckw> aO = a("axes");
+   public static final arr<ckw> aP = a("hoes");
+   public static final arr<ckw> aQ = a("pickaxes");
+   public static final arr<ckw> aR = a("shovels");
+   public static final arr<ckw> aS = a("tools");
+   public static final arr<ckw> aT = a("breaks_decorated_pots");
+   public static final arr<ckw> aU = a("villager_plantable_seeds");
 
-public class ark {
-   public static Map<afv<? extends io<?>>, ark.a> a(ij<agf> $$0) {
-      return is.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((ark.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+   private ark() {
    }
 
-   private static <T> ark.a a(io<T> $$0) {
-      Map<afw, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         ig<T> $$3 = (ig<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
-
-         for (ib<T> $$5 : $$3) {
-            if ($$5.f() != ib.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((arh)$$2.getFirst()).b(), $$4);
-      });
-      return new ark.a($$1);
-   }
-
-   public static <T> void a(afv<? extends io<T>> $$0, io<T> $$1, ark.a $$2, ark.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         arh<T> $$5 = arh.a($$0, $$3x);
-         List<ib<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
-   }
-
-   public static final class a {
-      final Map<afw, IntList> a;
-
-      a(Map<afw, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(tl $$0) {
-         $$0.a(this.a, tl::a, tl::a);
-      }
-
-      public static ark.a b(tl $$0) {
-         return new ark.a($$0.a(tl::t, tl::a));
-      }
-
-      public boolean a() {
-         return this.a.isEmpty();
-      }
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(arh<T> var1, List<ib<T>> var2);
+   private static arr<ckw> a(String $$0) {
+      return arr.a(jz.E, new agg($$0));
    }
 }

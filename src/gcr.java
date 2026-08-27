@@ -1,17 +1,22 @@
-public abstract class gcr extends gcq implements gdj {
-   private boolean n;
+public class gcr {
+   public static final int a = -1;
+   private final int b;
+   private final int c;
 
-   protected gcr(aqc $$0, aqe $$1, ate $$2) {
-      super($$0, $$1, $$2);
+   public gcr(int $$0) {
+      this($$0, -1);
    }
 
-   @Override
-   public boolean m() {
-      return this.n;
+   public gcr(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public int a(int $$0) {
+      return this.c == -1 ? $$0 : this.c;
+   }
+
+   public int a() {
+      return this.b;
    }
 }

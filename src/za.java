@@ -1,40 +1,32 @@
-public class za implements wb<xu> {
-   private final int a;
+public class za implements wk<yd> {
+   private final ckw a;
    private final int b;
-   private final int c;
 
-   public za(int $$0, int $$1, int $$2) {
+   public za(ckw $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public za(tl $$0) {
-      this.a = $$0.readUnsignedByte();
+   public za(tu $$0) {
+      this.a = $$0.a(jy.i);
       this.b = $$0.n();
-      this.c = $$0.readInt();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.k(this.a);
+   public void a(tu $$0) {
+      $$0.a(jy.i, this.a);
       $$0.c(this.b);
-      $$0.p(this.c);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public ckw a() {
       return this.a;
    }
 
    public int d() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

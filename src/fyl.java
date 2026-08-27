@@ -1,48 +1,37 @@
-public abstract class fyl<T extends bjt, M extends ffx<T>> {
-   private final fvy<T, M> a;
+public class fyl extends fvj<cer> {
+   private static final agg a = new agg("textures/entity/wither/wither_invulnerable.png");
+   private static final agg f = new agg("textures/entity/wither/wither.png");
+   private final fiy g;
 
-   public fyl(fvy<T, M> $$0) {
-      this.a = $$0;
+   public fyl(fvk.a $$0) {
+      super($$0);
+      this.g = new fiy($$0.a(fka.bU));
    }
 
-   protected static <T extends bkj> void a(
-      ffx<T> $$0,
-      ffx<T> $$1,
-      afw $$2,
-      emh $$3,
-      fpb $$4,
-      int $$5,
-      T $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      if (!$$6.cd()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
-      }
+   public static fkh a() {
+      fkj $$0 = new fkj();
+      fkk $$1 = $$0.a();
+      $$1.a("head", fkg.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fkd.a);
+      return fkh.a($$0, 64, 64);
    }
 
-   protected static <T extends bkj> void a(ffx<T> $$0, afw $$1, emh $$2, fpb $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
-      eml $$9 = $$3.getBuffer(fpj.e($$1));
-      $$0.a($$2, $$9, $$4, fve.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   protected int a(cer $$0, ht $$1) {
+      return 15;
    }
 
-   public M c() {
-      return this.a.a();
+   public void a(cer $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      float $$6 = ati.j($$2, $$0.N, $$0.dB());
+      float $$7 = ati.i($$2, $$0.O, $$0.dD());
+      eno $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
+      this.g.a(0.0F, $$6, $$7);
+      this.g.a($$3, $$8, $$5, gay.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected afw a(T $$0) {
-      return this.a.a($$0);
+   public agg a(cer $$0) {
+      return $$0.w() ? a : f;
    }
-
-   public abstract void a(emh var1, fpb var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

@@ -1,151 +1,77 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class brf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bss b = new bss(Integer.MAX_VALUE, new bre() {
-      @Override
-      public boolean a() {
+public class brf extends brt {
+   private static final bvk d = bvk.b().a(8.0).d();
+   protected final bwj a;
+   private final Class<? extends bwj> e;
+   protected final crs b;
+   @Nullable
+   protected bwj c;
+   private int f;
+   private final double g;
+
+   public brf(bwj $$0, double $$1) {
+      this($$0, $$1, (Class<? extends bwj>)$$0.getClass());
+   }
+
+   public brf(bwj $$0, double $$1, Class<? extends bwj> $$2) {
+      this.a = $$0;
+      this.b = $$0.dL();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(brt.a.a, brt.a.b));
+   }
+
+   @Override
+   public boolean a() {
+      if (!this.a.gi()) {
          return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<bre.a, bss> c = new EnumMap<>(bre.a.class);
-   private final Set<bss> d = Sets.newLinkedHashSet();
-   private final Supplier<bes> e;
-   private final EnumSet<bre.a> f = EnumSet.noneOf(bre.a.class);
-   private int g;
-   private int h = 3;
-
-   public brf(Supplier<bes> $$0) {
-      this.e = $$0;
-   }
-
-   public void a(int $$0, bre $$1) {
-      this.d.add(new bss($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<bre> $$0) {
-      this.d.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(bre $$0) {
-      this.d.stream().filter($$1 -> $$1.k() == $$0).filter(bss::h).forEach(bss::d);
-      this.d.removeIf($$1 -> $$1.k() == $$0);
-   }
-
-   private static boolean a(bss $$0, EnumSet<bre.a> $$1) {
-      for (bre.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean a(bss $$0, Map<bre.a, bss> $$1) {
-      for (bre.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, b).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void a() {
-      bes $$0 = this.e.get();
-      $$0.a("goalCleanup");
-
-      for (bss $$1 : this.d) {
-         if ($$1.h() && (a($$1, this.f) || !$$1.b())) {
-            $$1.d();
-         }
-      }
-
-      Iterator<Entry<bre.a, bss>> $$2 = this.c.entrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<bre.a, bss> $$3 = $$2.next();
-         if (!$$3.getValue().h()) {
-            $$2.remove();
-         }
-      }
-
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (bss $$4 : this.d) {
-         if (!$$4.h() && !a($$4, this.f) && a($$4, this.c) && $$4.a()) {
-            for (bre.a $$5 : $$4.j()) {
-               bss $$6 = this.c.getOrDefault($$5, b);
-               $$6.d();
-               this.c.put($$5, $$4);
-            }
-
-            $$4.c();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bes $$1 = this.e.get();
-      $$1.a("goalTick");
-
-      for (bss $$2 : this.d) {
-         if ($$2.h() && ($$0 || $$2.R_())) {
-            $$2.e();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<bss> b() {
-      return this.d;
-   }
-
-   public Stream<bss> c() {
-      return this.d.stream().filter(bss::h);
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void a(bre.a $$0) {
-      this.f.add($$0);
-   }
-
-   public void b(bre.a $$0) {
-      this.f.remove($$0);
-   }
-
-   public void a(bre.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
       } else {
-         this.a($$0);
+         this.c = this.h();
+         return this.c != null;
       }
+   }
+
+   @Override
+   public boolean b() {
+      return this.c.bv() && this.c.gi() && this.f < 60 && !this.c.gb();
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+      this.f = 0;
+   }
+
+   @Override
+   public void e() {
+      this.a.G().a(this.c, 10.0F, (float)this.a.Y());
+      this.a.L().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private bwj h() {
+      List<? extends bwj> $$0 = this.b.a(this.e, d, this.a, this.a.cG().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      bwj $$2 = null;
+
+      for (bwj $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gb() && this.a.f($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.f($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a((ama)this.b, this.c);
    }
 }

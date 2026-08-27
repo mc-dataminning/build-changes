@@ -13,7 +13,7 @@ public class gv<T extends dw<T>> implements gq<T> {
       this.c = $$2;
    }
 
-   public void a(T $$0, gn<T> $$1, int $$2) throws CommandSyntaxException {
+   public void a(T $$0, gn<T> $$1, int $$2) {
       $$1.c().a(() -> "execute " + this.a);
 
       try {
@@ -23,6 +23,8 @@ public class gv<T extends dw<T>> implements gq<T> {
          if ($$4 != null) {
             $$4.a($$2, this.a, $$3);
          }
+      } catch (CommandSyntaxException var9) {
+         $$0.a(var9, this.b, $$1.b());
       } finally {
          $$1.c().c();
       }

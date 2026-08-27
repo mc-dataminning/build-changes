@@ -1,37 +1,52 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.Locale;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class atf {
-   public static final Codec<atf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asg.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), asg.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, atf::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<afw> f;
+public class atf implements TypeAdapterFactory {
+   @Nullable
+   public <T> TypeAdapter<T> create(Gson $$0, TypeToken<T> $$1) {
+      Class<T> $$2 = $$1.getRawType();
+      if (!$$2.isEnum()) {
+         return null;
+      } else {
+         final Map<String, T> $$3 = Maps.newHashMap();
 
-   private atf(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+         for (T $$4 : $$2.getEnumConstants()) {
+            $$3.put(this.a($$4), $$4);
+         }
+
+         return new TypeAdapter<T>() {
+            public void write(JsonWriter $$0, T $$1) throws IOException {
+               if ($$1 == null) {
+                  $$0.nullValue();
+               } else {
+                  $$0.value(atf.this.a($$1));
+               }
+            }
+
+            @Nullable
+            public T read(JsonReader $$0) throws IOException {
+               if ($$0.peek() == JsonToken.NULL) {
+                  $$0.nextNull();
+                  return null;
+               } else {
+                  return $$3.get($$0.nextString());
+               }
+            }
+         };
+      }
    }
 
-   public Predicate<String> a() {
-      return this.c;
-   }
-
-   public Predicate<String> b() {
-      return this.e;
-   }
-
-   public Predicate<afw> c() {
-      return this.f;
+   String a(Object $$0) {
+      return $$0 instanceof Enum ? ((Enum)$$0).name().toLowerCase(Locale.ROOT) : $$0.toString().toLowerCase(Locale.ROOT);
    }
 }

@@ -1,75 +1,90 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 
-public class cxv extends cua {
-   public static final MapCodec<cxv> a = b(cxv::new);
-   public static final dgs b = czm.b;
-   public static final dgs c = czm.c;
-   public static final dgs d = czm.d;
-   public static final dgs e = czm.e;
-   public static final dgs f = czm.f;
-   public static final dgs g = czm.g;
-   private static final Map<hx, dgs> h = czm.h;
+public class cxv extends cut {
+   public static final MapCodec<cxv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(jy.f.q().fieldOf("potted").forGetter($$0x -> $$0x.e), t()).apply($$0, cxv::new)
+   );
+   private static final Map<cut, cut> d = Maps.newHashMap();
+   public static final float b = 3.0F;
+   protected static final ekb c = cut.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final cut e;
 
    @Override
    public MapCodec<cxv> a() {
       return a;
    }
 
-   public cxv(dga.d $$0) {
-      super($$0);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(true))
-            .a(c, Boolean.valueOf(true))
-            .a(d, Boolean.valueOf(true))
-            .a(e, Boolean.valueOf(true))
-            .a(f, Boolean.valueOf(true))
-            .a(g, Boolean.valueOf(true))
-      );
+   public cxv(cut $$0, dgv.d $$1) {
+      super($$1);
+      this.e = $$0;
+      d.put($$0, this);
    }
 
    @Override
-   public dgb a(cmr $$0) {
-      cqf $$1 = $$0.q();
-      ht $$2 = $$0.a();
-      return this.o()
-         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
-         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
-         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return c;
    }
 
    @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public day b_(dgw $$0) {
+      return day.c;
    }
 
    @Override
-   public dgb a(dgb $$0, dal $$1) {
-      return $$0.a(h.get($$1.a(hx.c)), $$0.c(b))
-         .a(h.get($$1.a(hx.d)), $$0.c(d))
-         .a(h.get($$1.a(hx.f)), $$0.c(c))
-         .a(h.get($$1.a(hx.e)), $$0.c(e))
-         .a(h.get($$1.a(hx.b)), $$0.c(f))
-         .a(h.get($$1.a(hx.a)), $$0.c(g));
+   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
+      clb $$6 = $$3.b($$4);
+      ckw $$7 = $$6.d();
+      dgw $$8 = ($$7 instanceof ciu ? d.getOrDefault(((ciu)$$7).e(), cuv.a) : cuv.a).o();
+      boolean $$9 = $$8.a(cuv.a);
+      boolean $$10 = this.g();
+      if ($$9 != $$10) {
+         if ($$10) {
+            $$1.a($$2, $$8, 3);
+            $$3.a(aqx.ah);
+            if (!$$3.fT().d) {
+               $$6.h(1);
+            }
+         } else {
+            clb $$11 = new clb(this.e);
+            if ($$6.b()) {
+               $$3.a($$4, $$11);
+            } else if (!$$3.i($$11)) {
+               $$3.a($$11, false);
+            }
+
+            $$1.a($$2, cuv.fR.o(), 3);
+         }
+
+         $$1.a($$3, dlg.c, $$2);
+         return biq.a($$1.B);
+      } else {
+         return biq.b;
+      }
    }
 
    @Override
-   public dgb a(dgb $$0, cyv $$1) {
-      return $$0.a(h.get($$1.b(hx.c)), $$0.c(b))
-         .a(h.get($$1.b(hx.d)), $$0.c(d))
-         .a(h.get($$1.b(hx.f)), $$0.c(c))
-         .a(h.get($$1.b(hx.e)), $$0.c(e))
-         .a(h.get($$1.b(hx.b)), $$0.c(f))
-         .a(h.get($$1.b(hx.a)), $$0.c(g));
+   public clb a(crv $$0, ht $$1, dgw $$2) {
+      return this.g() ? super.a($$0, $$1, $$2) : new clb(this.e);
+   }
+
+   private boolean g() {
+      return this.e == cuv.a;
    }
 
    @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   public dgw a(dgw $$0, hx $$1, dgw $$2, crt $$3, ht $$4, ht $$5) {
+      return $$1 == hx.a && !$$0.a($$3, $$4) ? cuv.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public cut b() {
+      return this.e;
+   }
+
+   @Override
+   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
+      return false;
    }
 }

@@ -15,14 +15,14 @@ public class kt implements kf {
    public CompletableFuture<?> a(kd $$0) {
       JsonObject $$1 = new JsonObject();
 
-      for (cua $$2 : jy.f) {
-         afw $$3 = jy.f.b($$2);
+      for (cut $$2 : jy.f) {
+         agg $$3 = jy.f.b($$2);
          JsonObject $$4 = new JsonObject();
-         dgc<cua, dgb> $$5 = $$2.n();
+         dgx<cut, dgw> $$5 = $$2.n();
          if (!$$5.d().isEmpty()) {
             JsonObject $$6 = new JsonObject();
 
-            for (dhe<?> $$7 : $$5.d()) {
+            for (dhz<?> $$7 : $$5.d()) {
                JsonArray $$8 = new JsonArray();
 
                for (Comparable<?> $$9 : $$7.a()) {
@@ -39,11 +39,11 @@ public class kt implements kf {
          UnmodifiableIterator var17 = $$5.a().iterator();
 
          while (var17.hasNext()) {
-            dgb $$11 = (dgb)var17.next();
+            dgw $$11 = (dgw)var17.next();
             JsonObject $$12 = new JsonObject();
             JsonObject $$13 = new JsonObject();
 
-            for (dhe<?> $$14 : $$5.d()) {
+            for (dhz<?> $$14 : $$5.d()) {
                $$13.addProperty($$14.f(), ac.a($$14, $$11.c($$14)));
             }
 
@@ -51,7 +51,7 @@ public class kt implements kf {
                $$12.add("properties", $$13);
             }
 
-            $$12.addProperty("id", cua.i($$11));
+            $$12.addProperty("id", cut.i($$11));
             if ($$11 == $$2.o()) {
                $$12.addProperty("default", true);
             }

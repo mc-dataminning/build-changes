@@ -1,37 +1,38 @@
-public final class fiu {
-   private final afw a;
-   private final String b;
+public class fiu<T extends bki> extends fhl<T> {
+   private static final String a = "main";
+   private final fkb b;
+   private final fkb f;
 
-   public fiu(afw $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fiu(fkb $$0) {
+      this.b = $$0;
+      this.f = $$0.b("main");
    }
 
-   public afw a() {
-      return this.a;
+   public static fkh b() {
+      fkj $$0 = new fkj();
+      fkk $$1 = $$0.a();
+      $$1.a(
+         "main",
+         fkg.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
+            .a(0, 10)
+            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
+            .a(20, 0)
+            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
+         fkd.a
+      );
+      return fkh.a($$0, 64, 32);
    }
 
-   public String b() {
+   @Override
+   public fkb a() {
       return this.b;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fiu $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.a + "#" + this.b;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

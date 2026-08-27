@@ -1,46 +1,25 @@
-public final class eix extends eio {
-   private final eio d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
-   protected eix(eio $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public class eix extends Exception {
+   private final Path a;
+   private final List<eiz> b;
+
+   public eix(Path $$0, List<eiz> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   public String getMessage() {
+      return a(this.a, this.b);
    }
 
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public int a(hx.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(hx.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(hx.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return asy.a($$1, $$2, $$3) - $$2;
+   public static String a(Path $$0, List<eiz> $$1) {
+      return "Failed to validate '"
+         + $$0
+         + "'. Found forbidden symlinks: "
+         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
    }
 }

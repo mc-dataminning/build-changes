@@ -1,31 +1,24 @@
-public class wq implements wb<wl> {
-   private final wq.a a;
+public class wq implements wk<wn> {
+   private final long a;
 
-   public wq(wq.a $$0) {
+   public wq(long $$0) {
       this.a = $$0;
    }
 
-   public wq(tl $$0) {
-      this.a = $$0.b(wq.a.class);
+   public wq(tu $$0) {
+      this.a = $$0.readLong();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.a);
+   public void a(tu $$0) {
+      $$0.b(this.a);
    }
 
-   public void a(wl $$0) {
+   public void a(wn $$0) {
       $$0.a(this);
    }
 
-   public wq.a a() {
+   public long a() {
       return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

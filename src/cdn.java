@@ -1,49 +1,37 @@
-public class cdn extends cdj {
-   private int e = 1;
+public enum cdn {
+   a(0, "cape"),
+   b(1, "jacket"),
+   c(2, "left_sleeve"),
+   d(3, "right_sleeve"),
+   e(4, "left_pants_leg"),
+   f(5, "right_pants_leg"),
+   g(6, "hat");
 
-   public cdn(bjx<? extends cdn> $$0, cqz $$1) {
-      super($$0, $$1);
+   private final int h;
+   private final int i;
+   private final String j;
+   private final ur k;
+
+   private cdn(int $$0, String $$1) {
+      this.h = $$0;
+      this.i = 1 << $$0;
+      this.j = $$1;
+      this.k = ur.c("options.modelPart." + $$1);
    }
 
-   public cdn(cqz $$0, bkj $$1, double $$2, double $$3, double $$4, int $$5) {
-      super(bjx.ag, $$1, $$2, $$3, $$4, $$0);
-      this.e = $$5;
+   public int a() {
+      return this.i;
    }
 
-   @Override
-   protected void a(eid $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         boolean $$1 = this.dL().X().b(cqv.c);
-         this.dL().a(this, this.dq(), this.ds(), this.dw(), (float)this.e, $$1, cqz.a.c);
-         this.ak();
-      }
+   public int b() {
+      return this.h;
    }
 
-   @Override
-   protected void a(eic $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         bjt $$1 = $$0.a();
-         bjt $$2 = this.v();
-         $$1.a(this.dM().a((cdj)this, $$2), 6.0F);
-         if ($$2 instanceof bkj) {
-            this.a((bkj)$$2, $$1);
-         }
-      }
+   public String c() {
+      return this.j;
    }
 
-   @Override
-   public void b(rt $$0) {
-      super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.e);
-   }
-
-   @Override
-   public void a(rt $$0) {
-      super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.e = $$0.f("ExplosionPower");
-      }
+   public ur d() {
+      return this.k;
    }
 }

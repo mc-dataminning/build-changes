@@ -1,127 +1,105 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public final class dly {
-   final dlx a;
-   private final ic<eah.a> b;
-   private final dlq c;
-   private final csg.f d;
-   private final dmc e;
-   private final dlx f;
-   private final dlx g;
-   private final Map<afv<eah.a>, eah> h;
-   private final Map<afw, dlx> i;
+public interface dly {
+   Codec<dly> b = dlz.b;
+   Codec<ib<dly>> c = agc.a(jz.av, b);
+   Codec<dly> d = c.xmap(dlz.j::new, $$0 -> (ib)($$0 instanceof dlz.j $$1 ? $$1.j() : new ib.a<>($$0)));
 
-   public static dly a(ic.a $$0, afv<dlp> $$1, long $$2) {
-      return a($$0.b(jz.ax).b($$1).a(), $$0.b(jz.ay), $$2);
+   double a(dly.b var1);
+
+   void a(double[] var1, dly.a var2);
+
+   dly a(dly.f var1);
+
+   double a();
+
+   double b();
+
+   atc<? extends dly> c();
+
+   default dly a(double $$0, double $$1) {
+      return new dlz.g(this, $$0, $$1);
    }
 
-   public static dly a(dlp $$0, ic<eah.a> $$1, long $$2) {
-      return new dly($$0, $$1, $$2);
+   default dly d() {
+      return dlz.a(this, dlz.k.a.a);
    }
 
-   private dly(dlp $$0, ic<eah.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new afw("aquifer")).e();
-      this.g = this.a.a(new afw("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dmc(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
+   default dly e() {
+      return dlz.a(this, dlz.k.a.b);
+   }
 
-      class a implements dld.f {
-         private final Map<dld, dld> d = new HashMap<>();
+   default dly f() {
+      return dlz.a(this, dlz.k.a.c);
+   }
 
-         private ate a(long $$0) {
-            return new dll($$2 + $$0);
-         }
+   default dly g() {
+      return dlz.a(this, dlz.k.a.d);
+   }
 
-         @Override
-         public dld.c a(dld.c $$0) {
-            ib<eah.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dlt.a)) {
-                  eah $$2 = eah.a(this.a(0L), new eah.a(-7, 1.0, 1.0));
-                  return new dld.c($$1, $$2);
-               }
+   default dly h() {
+      return dlz.a(this, dlz.k.a.e);
+   }
 
-               if ($$1.a(dlt.b)) {
-                  eah $$3 = eah.a(this.a(1L), new eah.a(-7, 1.0, 1.0));
-                  return new dld.c($$1, $$3);
-               }
+   default dly i() {
+      return dlz.a(this, dlz.k.a.f);
+   }
 
-               if ($$1.a(dlt.j)) {
-                  eah $$4 = eah.b(dly.this.a.a(dlt.j.a()), new eah.a(0, 0.0));
-                  return new dld.c($$1, $$4);
-               }
-            }
+   public interface a {
+      dly.b a(int var1);
 
-            eah $$5 = dly.this.a($$1.e().orElseThrow());
-            return new dld.c($$1, $$5);
-         }
+      void a(double[] var1, dly var2);
+   }
 
-         private dld a(dld $$0) {
-            if ($$0 instanceof eae $$1) {
-               ate $$2 = $$3 ? this.a(0L) : dly.this.a.a(new afw("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (dld)($$0 instanceof dle.i ? new dle.i($$2) : $$0);
-            }
-         }
+   public interface b {
+      int a();
 
-         @Override
-         public dld apply(dld $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
-         }
+      int b();
+
+      int c();
+
+      default dnh d() {
+         return dnh.a();
+      }
+   }
+
+   public static record c(ib<ebj.a> b, @Nullable ebj c) {
+      public static final Codec<dly.c> a = ebj.a.b.xmap($$0 -> new dly.c($$0, null), dly.c::b);
+
+      public c(ib<ebj.a> $$0) {
+         this($$0, null);
       }
 
-      this.c = $$0.i().a(new a());
-      dld.f $$4 = new dld.f() {
-         private final Map<dld, dld> b = new HashMap<>();
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
 
-         private dld a(dld $$0) {
-            if ($$0 instanceof dle.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dle.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public dld apply(dld $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new csg.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
    }
 
-   public eah a(afv<eah.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dlt.a(this.b, this.a, $$0));
+   public interface d extends dly {
+      @Override
+      default void a(double[] $$0, dly.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      default dly a(dly.f $$0) {
+         return $$0.apply(this);
+      }
    }
 
-   public dlx a(afw $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
+   public static record e(int a, int b, int c) implements dly.b {
    }
 
-   public dlq a() {
-      return this.c;
-   }
+   public interface f {
+      dly apply(dly var1);
 
-   public csg.f b() {
-      return this.d;
-   }
-
-   public dmc c() {
-      return this.e;
-   }
-
-   public dlx d() {
-      return this.f;
-   }
-
-   public dlx e() {
-      return this.g;
+      default dly.c a(dly.c $$0) {
+         return $$0;
+      }
    }
 }

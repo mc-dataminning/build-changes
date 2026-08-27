@@ -1,58 +1,27 @@
-public interface dhq {
-   void a(dhs var1, double var2);
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   void a(dhs var1, double var2, double var4, long var6);
+public class dhq extends dhu<hx> {
+   protected dhq(String $$0, Collection<hx> $$1) {
+      super($$0, hx.class, $$1);
+   }
 
-   void a(dhs var1, double var2, double var4);
+   public static dhq a(String $$0) {
+      return a($$0, $$0x -> true);
+   }
 
-   void a(dhs var1, int var2);
+   public static dhq a(String $$0, Predicate<hx> $$1) {
+      return a($$0, Arrays.stream(hx.values()).filter($$1).collect(Collectors.toList()));
+   }
 
-   void b(dhs var1, int var2);
+   public static dhq a(String $$0, hx... $$1) {
+      return a($$0, Lists.newArrayList($$1));
+   }
 
-   void b(dhs var1, double var2);
-
-   void c(dhs var1, double var2);
-
-   public static class a implements dhq {
-      private final dhs a;
-
-      public a(dhs $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(dhs $$0, double $$1) {
-         this.a.a($$1);
-      }
-
-      @Override
-      public void a(dhs $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(dhs $$0, double $$1, double $$2) {
-         this.a.c($$1, $$2);
-      }
-
-      @Override
-      public void a(dhs $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(dhs $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(dhs $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(dhs $$0, double $$1) {
-         this.a.b($$1);
-      }
+   public static dhq a(String $$0, Collection<hx> $$1) {
+      return new dhq($$0, $$1);
    }
 }

@@ -1,70 +1,32 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class bqx extends bqv {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class bqx extends bre {
-   protected final bks a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final cqz f;
-
-   public bqx(bks $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dL();
-      this.a(EnumSet.of(bre.a.a));
+   public bqx(bla $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
-   public boolean a() {
-      if (this.a.q() != null) {
-         return false;
-      } else if (!this.f.N()) {
-         return false;
-      } else if (!this.a.bM()) {
-         return false;
-      } else if (!this.f.g(this.a.dl())) {
-         return false;
+   public void a() {
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dD(), $$0x + 10.0F, this.c)));
       } else {
-         return !this.a.c(bjy.f).b() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      eif $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.L().l();
-   }
-
-   @Override
-   public void c() {
-      this.a.L().a(this.b, this.c, this.d, this.e);
-   }
-
-   @Nullable
-   protected eif i() {
-      ate $$0 = this.a.ef();
-      ht $$1 = this.a.dl();
-
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         ht $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.g($$3) && this.a.h($$3) < 0.0F) {
-            return eif.c($$3);
+         if (this.a.L().l()) {
+            this.a.s(this.a(this.a.dD(), 0.0F, 5.0F));
          }
+
+         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
       }
 
-      return null;
+      float $$0 = ati.g(this.a.aW - this.a.aU);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aU -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aU += 4.0F;
+      }
    }
 }

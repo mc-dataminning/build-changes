@@ -1,35 +1,47 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-public record eha(float c) implements ehc {
-   public static final Codec<eha> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eha::c)).apply($$0, eha::new));
-   public static final Codec<eha> b = Codec.FLOAT.xmap(eha::new, eha::c);
+public record eha(ib<cpm> b, List<Float> c) implements ehk {
+   public static final Codec<eha> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jy.g.r().fieldOf("enchantment").forGetter(eha::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eha::d)).apply($$0, eha::new)
+   );
 
    @Override
-   public ehb b() {
-      return ehd.b;
+   public ehl b() {
+      return ehm.l;
    }
 
    @Override
-   public float b(edi $$0) {
-      return this.c;
+   public Set<egt<?>> a() {
+      return ImmutableSet.of(egw.i);
    }
 
-   public static eha a(float $$0) {
-      return new eha($$0);
+   public boolean a(eel $$0) {
+      clb $$1 = $$0.c(egw.i);
+      int $$2 = $$1 != null ? cpo.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eha)$$0).c, this.c) == 0 : false;
+   public static ehk.a a(cpm $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
+
+      return () -> new eha($$0.j(), $$2);
    }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public ib<cpm> c() {
+      return this.b;
+   }
+
+   public List<Float> d() {
+      return this.c;
    }
 }

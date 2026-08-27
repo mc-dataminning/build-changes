@@ -1,25 +1,31 @@
 import javax.annotation.Nullable;
 
-public interface crh {
-   boolean a(ht var1, dgb var2, int var3, int var4);
+public enum crh implements cqy {
+   a;
 
-   default boolean a(ht $$0, dgb $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   @Nullable
+   @Override
+   public der c_(ht $$0) {
+      return null;
    }
 
-   boolean a(ht var1, boolean var2);
-
-   default boolean b(ht $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   @Override
+   public dgw a_(ht $$0) {
+      return cuv.a.o();
    }
 
-   default boolean a(ht $$0, boolean $$1, @Nullable bjt $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   @Override
+   public ecg b_(ht $$0) {
+      return ech.a.g();
    }
 
-   boolean a(ht var1, boolean var2, @Nullable bjt var3, int var4);
+   @Override
+   public int I_() {
+      return 0;
+   }
 
-   default boolean b(bjt $$0) {
-      return false;
+   @Override
+   public int J_() {
+      return 0;
    }
 }

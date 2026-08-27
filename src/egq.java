@@ -1,36 +1,42 @@
-import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public record egq(ehc b, edh c) implements egh {
-   public static final Codec<egq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ehd.a.fieldOf("value").forGetter(egq::c), edh.a.fieldOf("range").forGetter(egq::d)).apply($$0, egq::new)
-   );
+public class egq extends efx {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<egq> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, egq::new));
 
-   @Override
-   public egi b() {
-      return egj.s;
+   private egq(List<ehk> $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<efq<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public efz b() {
+      return ega.h;
    }
 
-   public boolean a(edi $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   @Override
+   public clb a(clb $$0, eel $$1) {
+      if ($$0.b()) {
+         return $$0;
+      } else {
+         Optional<coh<cou>> $$2 = $$1.d().q().a(cok.b, new bix($$0), $$1.d());
+         if ($$2.isPresent()) {
+            clb $$3 = $$2.get().b().a($$1.d().H_());
+            if (!$$3.b()) {
+               return $$3.c($$0.L());
+            }
+         }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
+      }
    }
 
-   public static egh.a a(ehc $$0, edh $$1) {
-      return () -> new egq($$0, $$1);
-   }
-
-   public ehc c() {
-      return this.b;
-   }
-
-   public edh d() {
-      return this.c;
+   public static efx.a<?> c() {
+      return a(egq::new);
    }
 }

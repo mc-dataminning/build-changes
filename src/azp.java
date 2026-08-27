@@ -1,21 +1,31 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Locale;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
 public class azp extends DataFix {
-   public azp(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private final String a;
+   private final TypeReference b;
+   private final UnaryOperator<String> c;
+
+   public azp(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(baa.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Optional<String> $$1 = $$0x.get("lang").asString().result();
-               return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
-            })
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bbv.a());
+      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
+         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
+      }
    }
 }

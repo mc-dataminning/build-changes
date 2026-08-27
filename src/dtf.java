@@ -1,75 +1,48 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtf extends dtk {
-   public static final Codec<dtf> a = dst.a.fieldOf("provider").xmap(dtf::new, $$0 -> $$0.b).codec();
-   private final dst b;
+public class dtf extends dsz {
+   public static final Codec<dtf> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bhv.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, dtf::new)
+   );
+   private final bhv b;
 
-   public dtf(dst $$0) {
-      this.b = $$0;
+   public dtf(bhv $$0, bhv $$1, bhv $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected dtl<?> a() {
-      return dtl.e;
+   protected dta<?> a() {
+      return dta.b;
    }
 
    @Override
-   public void a(dtk.a $$0) {
-      List<ht> $$1 = Lists.newArrayList();
-      List<ht> $$2 = $$0.e();
-      List<ht> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
+   protected void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, int $$4, dsz.a $$5, int $$6, int $$7, int $$8) {
+      ht $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
 
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.g().e());
-            this.a($$0, $$1x.g(2).e());
-            this.a($$0, $$1x.g().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(dtk.a $$0, ht $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
          }
       }
    }
 
-   private void b(dtk.a $$0, ht $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         ht $$3 = $$1.b($$2);
-         if (doo.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
+   @Override
+   public int a(ato $$0, int $$1, dsj $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
 
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   @Override
+   protected boolean a(ato $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

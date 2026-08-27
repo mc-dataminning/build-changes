@@ -1,12 +1,9 @@
-public class fvt extends fuw<cao> {
-   private static final afw a = new afw("textures/entity/illager/pillager.png");
-
-   public fvt(fud.a $$0) {
-      super($$0, new fgl<>($$0.a(fiv.aL)), 0.5F);
-      this.a(new fye<>(this, $$0.d()));
+public class fvt extends fwq<bxy, fhf<bxy>> {
+   public fvt(fvk.a $$0) {
+      super($$0, new fhf<>($$0.a(fka.Y)), 0.3F);
    }
 
-   public afw a(cao $$0) {
-      return a;
+   public agg a(bxy $$0) {
+      return $$0.y().a();
    }
 }

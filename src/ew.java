@@ -15,17 +15,17 @@ import java.util.function.Predicate;
 
 public class ew<T> implements ArgumentType<ew.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final afv<? extends io<T>> b;
+   final agf<? extends io<T>> b;
 
-   public ew(afv<? extends io<T>> $$0) {
+   public ew(agf<? extends io<T>> $$0) {
       this.b = $$0;
    }
 
-   public static <T> ew<T> a(afv<? extends io<T>> $$0) {
+   public static <T> ew<T> a(agf<? extends io<T>> $$0) {
       return new ew<>($$0);
    }
 
-   public static <T> ew.c<T> a(CommandContext<du> $$0, String $$1, afv<io<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+   public static <T> ew.c<T> a(CommandContext<du> $$0, String $$1, agf<io<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
       ew.c<?> $$4 = (ew.c<?>)$$0.getArgument($$1, ew.c.class);
       Optional<ew.c<T>> $$5 = $$4.a($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
@@ -37,15 +37,15 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
 
          try {
             $$0.skip();
-            afw $$2 = afw.a($$0);
-            return new ew.d<>(arh.a(this.b, $$2));
+            agg $$2 = agg.a($$0);
+            return new ew.d<>(arr.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
          }
       } else {
-         afw $$4 = afw.a($$0);
-         return new ew.b<>(afv.a(this.b, $$4));
+         agg $$4 = agg.a($$0);
+         return new ew.b<>(agf.a(this.b, $$4));
       }
    }
 
@@ -58,11 +58,11 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
    }
 
    public static class a<T> implements hf<ew<T>, ew.a<T>.a> {
-      public void a(ew.a<T>.a $$0, tl $$1) {
+      public void a(ew.a<T>.a $$0, tu $$1) {
          $$1.b($$0.b);
       }
 
-      public ew.a<T>.a a(tl $$0) {
+      public ew.a<T>.a a(tu $$0) {
          return new ew.a.a($$0.u());
       }
 
@@ -75,9 +75,9 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
       }
 
       public final class a implements hf.a<ew<T>> {
-         final afv<? extends io<T>> b;
+         final agf<? extends io<T>> b;
 
-         a(afv<? extends io<T>> $$1) {
+         a(agf<? extends io<T>> $$1) {
             this.b = $$1;
          }
 
@@ -92,14 +92,14 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
       }
    }
 
-   static record b<T>(afv<T> a) implements ew.c<T> {
+   static record b<T>(agf<T> a) implements ew.c<T> {
       @Override
-      public Either<afv<T>, arh<T>> a() {
+      public Either<agf<T>, arr<T>> a() {
          return Either.left(this.a);
       }
 
       @Override
-      public <E> Optional<ew.c<E>> a(afv<? extends io<E>> $$0) {
+      public <E> Optional<ew.c<E>> a(agf<? extends io<E>> $$0) {
          return this.a.c($$0).map(ew.b::new);
       }
 
@@ -112,27 +112,27 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
          return this.a.a().toString();
       }
 
-      public afv<T> c() {
+      public agf<T> c() {
          return this.a;
       }
    }
 
    public interface c<T> extends Predicate<ib<T>> {
-      Either<afv<T>, arh<T>> a();
+      Either<agf<T>, arr<T>> a();
 
-      <E> Optional<ew.c<E>> a(afv<? extends io<E>> var1);
+      <E> Optional<ew.c<E>> a(agf<? extends io<E>> var1);
 
       String b();
    }
 
-   static record d<T>(arh<T> a) implements ew.c<T> {
+   static record d<T>(arr<T> a) implements ew.c<T> {
       @Override
-      public Either<afv<T>, arh<T>> a() {
+      public Either<agf<T>, arr<T>> a() {
          return Either.right(this.a);
       }
 
       @Override
-      public <E> Optional<ew.c<E>> a(afv<? extends io<E>> $$0) {
+      public <E> Optional<ew.c<E>> a(agf<? extends io<E>> $$0) {
          return this.a.d($$0).map(ew.d::new);
       }
 
@@ -145,7 +145,7 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
          return "#" + this.a.b();
       }
 
-      public arh<T> c() {
+      public arr<T> c() {
          return this.a;
       }
    }

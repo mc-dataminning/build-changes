@@ -1,325 +1,170 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class cvd extends cst<dee> implements daz {
-   public static final MapCodec<cvd> b = b($$0 -> new cvd($$0, () -> ddz.b));
-   public static final dgv c = cxu.aE;
-   public static final dgz<dgt> d = dgr.bc;
-   public static final dgs e = dgr.C;
-   public static final int f = 1;
-   protected static final int g = 1;
-   protected static final int h = 14;
-   protected static final eiy i = cua.a(1.0, 0.0, 0.0, 15.0, 14.0, 15.0);
-   protected static final eiy j = cua.a(1.0, 0.0, 1.0, 15.0, 14.0, 16.0);
-   protected static final eiy k = cua.a(0.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   protected static final eiy l = cua.a(1.0, 0.0, 1.0, 16.0, 14.0, 15.0);
-   protected static final eiy m = cua.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final cwf.b<dee, Optional<bhu>> n = new cwf.b<dee, Optional<bhu>>() {
-      public Optional<bhu> a(dee $$0, dee $$1) {
-         return Optional.of(new bht($$0, $$1));
-      }
+public class cvd extends cxm {
+   public static final MapCodec<cvd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dhl.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.N),
+               Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter($$0x -> $$0x.O),
+               t()
+            )
+            .apply($$0, cvd::new)
+   );
+   public static final dhn b = dhm.w;
+   private static final int L = 1;
+   private static final int M = 2;
+   protected static final int c = 2;
+   protected static final int d = 3;
+   protected static final ekb e = cut.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final ekb f = cut.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final ekb g = cut.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
+   protected static final ekb h = cut.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
+   protected static final ekb i = cut.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
+   protected static final ekb j = cut.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
+   protected static final ekb k = cut.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final ekb l = cut.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
+   protected static final ekb m = cut.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final ekb n = cut.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final ekb o = cut.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
+   protected static final ekb F = cut.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
+   protected static final ekb G = cut.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
+   protected static final ekb H = cut.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
+   protected static final ekb I = cut.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final ekb J = cut.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
+   private final dhl N;
+   private final int O;
 
-      public Optional<bhu> a(dee $$0) {
-         return Optional.of($$0);
-      }
+   @Override
+   public MapCodec<cvd> a() {
+      return a;
+   }
 
-      public Optional<bhu> a() {
-         return Optional.empty();
-      }
-   };
-   private static final cwf.b<dee, Optional<bie>> o = new cwf.b<dee, Optional<bie>>() {
-      public Optional<bie> a(final dee $$0, final dee $$1) {
-         final bhu $$2 = new bht($$0, $$1);
-         return Optional.of(new bie() {
-            @Nullable
-            @Override
-            public cfp createMenu(int $$0x, ccw $$1x, ccx $$2x) {
-               if ($$0.d($$2) && $$1.d($$2)) {
-                  $$0.e($$1.m);
-                  $$1.e($$1.m);
-                  return cfw.b($$0, $$1, $$2);
-               } else {
-                  return null;
-               }
+   protected cvd(dhl $$0, int $$1, dgv.d $$2) {
+      super($$2.a($$0.f()));
+      this.N = $$0;
+      this.k(this.E.b().a(aE, hx.c).a(b, Boolean.valueOf(false)).a(K, dhh.b));
+      this.O = $$1;
+   }
+
+   @Override
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      hx $$4 = $$0.c(aE);
+      boolean $$5 = $$0.c(b);
+      switch ((dhh)$$0.c(K)) {
+         case a:
+            if ($$4.o() == hx.a.a) {
+               return $$5 ? o : g;
             }
 
-            @Override
-            public ui O_() {
-               if ($$0.ac()) {
-                  return $$0.O_();
-               } else {
-                  return (ui)($$1.ac() ? $$1.O_() : ui.c("container.chestDouble"));
-               }
+            return $$5 ? F : h;
+         case b:
+            return switch ($$4) {
+               case f -> $$5 ? J : l;
+               case e -> $$5 ? I : k;
+               case d -> $$5 ? H : j;
+               case c, b, a -> $$5 ? G : i;
+            };
+         case c:
+         default:
+            if ($$4.o() == hx.a.a) {
+               return $$5 ? m : e;
+            } else {
+               return $$5 ? n : f;
             }
-         });
       }
-
-      public Optional<bie> a(dee $$0) {
-         return Optional.of($$0);
-      }
-
-      public Optional<bie> a() {
-         return Optional.empty();
-      }
-   };
+   }
 
    @Override
-   public MapCodec<? extends cvd> a() {
-      return b;
-   }
-
-   protected cvd(dga.d $$0, Supplier<ddz<? extends dee>> $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(c, hx.c).a(d, dgt.a).a(e, Boolean.valueOf(false)));
-   }
-
-   public static cwf.a g(dgb $$0) {
-      dgt $$1 = $$0.c(d);
-      if ($$1 == dgt.a) {
-         return cwf.a.a;
+   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
+      if ($$0.c(b)) {
+         return biq.b;
       } else {
-         return $$1 == dgt.c ? cwf.a.b : cwf.a.c;
+         this.d($$0, $$1, $$2);
+         this.a($$3, $$1, $$2, true);
+         $$1.a($$3, dlg.a, $$2);
+         return biq.a($$1.B);
+      }
+   }
+
+   public void d(dgw $$0, crs $$1, ht $$2) {
+      $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
+      this.f($$0, $$1, $$2);
+      $$1.a($$2, this, this.O);
+   }
+
+   protected void a(@Nullable cdm $$0, crt $$1, ht $$2, boolean $$3) {
+      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), aqo.e);
+   }
+
+   protected aqm a(boolean $$0) {
+      return $$0 ? this.N.n() : this.N.m();
+   }
+
+   @Override
+   public void a(dgw $$0, crs $$1, ht $$2, dgw $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(b)) {
+            this.f($$0, $$1, $$2);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   public dae b_(dgb $$0) {
-      return dae.b;
+   public int a(dgw $$0, cqy $$1, ht $$2, hx $$3) {
+      return $$0.c(b) ? 15 : 0;
    }
 
    @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, ebf.c, ebf.c.a($$3));
-      }
-
-      if ($$2.a(this) && $$1.o().d()) {
-         dgt $$6 = $$2.c(d);
-         if ($$0.c(d) == dgt.a && $$6 != dgt.a && $$0.c(c) == $$2.c(c) && h($$2) == $$1.g()) {
-            return $$0.a(d, $$6.a());
-         }
-      } else if (h($$0) == $$1) {
-         return $$0.a(d, dgt.a);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public int b(dgw $$0, cqy $$1, ht $$2, hx $$3) {
+      return $$0.c(b) && h($$0) == $$3 ? 15 : 0;
    }
 
    @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      if ($$0.c(d) == dgt.a) {
-         return m;
-      } else {
-         switch (h($$0)) {
-            case c:
-            default:
-               return i;
-            case d:
-               return j;
-            case e:
-               return k;
-            case f:
-               return l;
-         }
-      }
-   }
-
-   public static hx h(dgb $$0) {
-      hx $$1 = $$0.c(c);
-      return $$0.c(d) == dgt.b ? $$1.h() : $$1.i();
-   }
-
-   @Override
-   public dgb a(cmr $$0) {
-      dgt $$1 = dgt.a;
-      hx $$2 = $$0.g().g();
-      ebe $$3 = $$0.q().b_($$0.a());
-      boolean $$4 = $$0.h();
-      hx $$5 = $$0.k();
-      if ($$5.o().d() && $$4) {
-         hx $$6 = this.a($$0, $$5.g());
-         if ($$6 != null && $$6.o() != $$5.o()) {
-            $$2 = $$6;
-            $$1 = $$6.i() == $$5.g() ? dgt.c : dgt.b;
-         }
-      }
-
-      if ($$1 == dgt.a && !$$4) {
-         if ($$2 == this.a($$0, $$2.h())) {
-            $$1 = dgt.b;
-         } else if ($$2 == this.a($$0, $$2.i())) {
-            $$1 = dgt.c;
-         }
-      }
-
-      return this.o().a(c, $$2).a(d, $$1).a(e, Boolean.valueOf($$3.a() == ebf.c));
-   }
-
-   @Override
-   public ebe c_(dgb $$0) {
-      return $$0.c(e) ? ebf.c.a(false) : super.c_($$0);
-   }
-
-   @Nullable
-   private hx a(cmr $$0, hx $$1) {
-      dgb $$2 = $$0.q().a_($$0.a().a($$1));
-      return $$2.a(this) && $$2.c(d) == dgt.a ? $$2.c(c) : null;
-   }
-
-   @Override
-   public void a(cqz $$0, ht $$1, dgb $$2, bkj $$3, ckj $$4) {
-      if ($$4.A()) {
-         ddx $$5 = $$0.c_($$1);
-         if ($$5 instanceof dee) {
-            ((dee)$$5).a($$4.y());
-         }
-      }
-   }
-
-   @Override
-   public void a(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
-      bhx.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
-      if ($$1.B) {
-         return bib.a;
-      } else {
-         bie $$6 = this.b($$0, $$1, $$2);
-         if ($$6 != null) {
-            $$3.a($$6);
-            $$3.b(this.c());
-            cbo.a($$3, true);
-         }
-
-         return bib.b;
-      }
-   }
-
-   protected aqk<afw> c() {
-      return aqn.i.b(aqn.ao);
-   }
-
-   public ddz<? extends dee> d() {
-      return this.a.get();
-   }
-
-   @Nullable
-   public static bhu a(cvd $$0, dgb $$1, cqz $$2, ht $$3, boolean $$4) {
-      return $$0.a($$1, $$2, $$3, $$4).apply(n).orElse(null);
-   }
-
-   @Override
-   public cwf.c<? extends dee> a(dgb $$0, cqz $$1, ht $$2, boolean $$3) {
-      BiPredicate<cra, ht> $$4;
-      if ($$3) {
-         $$4 = ($$0x, $$1x) -> false;
-      } else {
-         $$4 = cvd::a;
-      }
-
-      return cwf.a(this.a.get(), cvd::g, cvd::h, c, $$0, $$1, $$2, $$4);
-   }
-
-   @Nullable
-   @Override
-   public bie b(dgb $$0, cqz $$1, ht $$2) {
-      return this.a($$0, $$1, $$2, false).apply(o).orElse(null);
-   }
-
-   public static cwf.b<dee, Float2FloatFunction> a(final dez $$0) {
-      return new cwf.b<dee, Float2FloatFunction>() {
-         public Float2FloatFunction a(dee $$0x, dee $$1) {
-            return $$2 -> Math.max($$0.a($$2), $$1.a($$2));
-         }
-
-         public Float2FloatFunction a(dee $$0x) {
-            return $$0::a;
-         }
-
-         public Float2FloatFunction a() {
-            return $$0::a;
-         }
-      };
-   }
-
-   @Override
-   public ddx a(ht $$0, dgb $$1) {
-      return new dee($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends ddx> ddy<T> a(cqz $$0, dgb $$1, ddz<T> $$2) {
-      return $$0.B ? a($$2, this.d(), dee::a) : null;
-   }
-
-   public static boolean a(cra $$0, ht $$1) {
-      return a((cqf)$$0, $$1) || b($$0, $$1);
-   }
-
-   private static boolean a(cqf $$0, ht $$1) {
-      ht $$2 = $$1.c();
-      return $$0.a_($$2).g($$0, $$2);
-   }
-
-   private static boolean b(cra $$0, ht $$1) {
-      List<bvx> $$2 = $$0.a(
-         bvx.class, new eia((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 2), (double)($$1.w() + 1))
-      );
-      if (!$$2.isEmpty()) {
-         for (bvx $$3 : $$2) {
-            if ($$3.y()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean d_(dgb $$0) {
+   public boolean f_(dgw $$0) {
       return true;
    }
 
    @Override
-   public int a(dgb $$0, cqz $$1, ht $$2) {
-      return cfp.b(a(this, $$0, $$1, $$2, false));
-   }
-
-   @Override
-   public dgb a(dgb $$0, dal $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dgb a(dgb $$0, cyv $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(c, d, e);
-   }
-
-   @Override
-   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
-      return false;
-   }
-
-   @Override
-   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      ddx $$4 = $$1.c_($$2);
-      if ($$4 instanceof dee) {
-         ((dee)$$4).i();
+   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      if ($$0.c(b)) {
+         this.e($$0, $$1, $$2);
       }
+   }
+
+   @Override
+   public void a(dgw $$0, crs $$1, ht $$2, bki $$3) {
+      if (!$$1.B && this.N.d() && !$$0.c(b)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   protected void e(dgw $$0, crs $$1, ht $$2) {
+      cds $$3 = this.N.d() ? $$1.a(cds.class, $$0.j($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
+      boolean $$4 = $$3 != null;
+      boolean $$5 = $$0.c(b);
+      if ($$4 != $$5) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf($$4)), 3);
+         this.f($$0, $$1, $$2);
+         this.a(null, $$1, $$2, $$4);
+         $$1.a($$3, $$4 ? dlg.a : dlg.e, $$2);
+      }
+
+      if ($$4) {
+         $$1.a(new ht($$2), this, this.O);
+      }
+   }
+
+   private void f(dgw $$0, crs $$1, ht $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(h($$0).g()), this);
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      $$0.a(aE, b, K);
    }
 }

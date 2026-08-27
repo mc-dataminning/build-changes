@@ -1,67 +1,59 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class cth extends cua implements daz {
-   public static final MapCodec<cth> a = b(cth::new);
-   public static final dgs b = dgr.C;
+public class cth extends csu {
+   public static final Codec<cth> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(age.d(csx.ah), age.d(csx.ai), age.d(csx.aj), age.d(csx.ak), age.d(csx.al)).apply($$0, $$0.stable(cth::new))
+   );
+   private final ib<csq> c;
+   private final ib<csq> d;
+   private final ib<csq> e;
+   private final ib<csq> f;
+   private final ib<csq> g;
 
-   @Override
-   public MapCodec<cth> a() {
-      return a;
+   public static cth a(ic<csq> $$0) {
+      return new cth($$0.b(csx.ah), $$0.b(csx.ai), $$0.b(csx.aj), $$0.b(csx.ak), $$0.b(csx.al));
    }
 
-   protected cth(dga.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public boolean c(dgb $$0, cqf $$1, ht $$2) {
-      return true;
-   }
-
-   @Override
-   public dae b_(dgb $$0) {
-      return dae.a;
-   }
-
-   @Override
-   public float b(dgb $$0, cqf $$1, ht $$2) {
-      return 1.0F;
+   private cth(ib<csq> $$0, ib<csq> $$1, ib<csq> $$2, ib<csq> $$3, ib<csq> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, ebf.c, ebf.c.a($$3));
+   protected Stream<ib<csq>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   }
+
+   @Override
+   protected Codec<? extends csu> a() {
+      return b;
+   }
+
+   @Override
+   public ib<csq> getNoiseBiome(int $$0, int $$1, int $$2, csz.f $$3) {
+      int $$4 = in.c($$0);
+      int $$5 = in.c($$1);
+      int $$6 = in.c($$2);
+      int $$7 = iu.a($$4);
+      int $$8 = iu.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (iu.a($$4) * 2 + 1) * 8;
+         int $$10 = (iu.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dly.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
+         }
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public ebe c_(dgb $$0) {
-      return $$0.c(b) ? ebf.c.a(false) : super.c_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dgb a(cmr $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == ebf.c));
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public ckj a(@Nullable ccx $$0, cra $$1, ht $$2, dgb $$3) {
-      return $$0 != null && $$0.f() ? daz.super.a($$0, $$1, $$2, $$3) : ckj.b;
-   }
-
-   @Override
-   public boolean a(@Nullable ccx $$0, cqf $$1, ht $$2, dgb $$3, ebd $$4) {
-      return $$0 != null && $$0.f() ? daz.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

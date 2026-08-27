@@ -1,16 +1,16 @@
 public interface dp {
-   <T> id<T> a(afv<? extends io<T>> var1);
+   <T> id<T> a(agf<? extends io<T>> var1);
 
-   static dp a(final id.b $$0, final cfg $$1) {
+   static dp a(final id.b $$0, final cfv $$1) {
       return new dp() {
          @Override
-         public <T> id<T> a(afv<? extends io<T>> $$0x) {
+         public <T> id<T> a(agf<? extends io<T>> $$0x) {
             return $$0.b($$0).a($$1);
          }
       };
    }
 
-   static dp.a a(final ip $$0, final cfg $$1) {
+   static dp.a a(final ip $$0, final cfv $$1) {
       return new dp.a() {
          dp.b c = dp.b.b;
 
@@ -20,7 +20,7 @@ public interface dp {
          }
 
          @Override
-         public <T> id<T> a(afv<? extends io<T>> $$0x) {
+         public <T> id<T> a(agf<? extends io<T>> $$0x) {
             io<T> $$1 = $$0.d($$0);
             final id.c<T> $$2 = $$1.p();
             final id.c<T> $$3 = $$1.u();

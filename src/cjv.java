@@ -1,14 +1,30 @@
-public class cjv extends clj {
-   public cjv(cua $$0, cua $$1, cke.a $$2) {
-      super($$2, $$0, $$1, hx.b);
+public class cjv extends ckw implements ckc {
+   public cjv(ckw.a $$0) {
+      super($$0);
+      cwx.a(this, cil.a);
+   }
+
+   public static boolean d(clb $$0) {
+      return $$0.k() < $$0.l() - 1;
    }
 
    @Override
-   protected boolean a(crc $$0, dgb $$1, ht $$2) {
-      if ($$1.b() instanceof dcu $$3 && !$$3.b($$1, $$0, $$2)) {
-         return false;
-      }
+   public boolean a(clb $$0, clb $$1) {
+      return $$1.a(cle.uX);
+   }
 
-      return super.a($$0, $$1, $$2);
+   @Override
+   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
+
+   @Override
+   public aqm ar_() {
+      return aqn.ae;
+   }
+
+   @Override
+   public bkn g() {
+      return bkn.e;
    }
 }

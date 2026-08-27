@@ -1,133 +1,154 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class ebv {
-   private static final float a = 1.5F;
-   private final ebr[] b = new ebr[32];
-   private final int c;
-   private final ebs d;
-   private static final boolean e = false;
-   private final ebo f = new ebo();
+public class ebv implements eby {
+   public static final int b = 1;
+   protected final cru c;
+   @Nullable
+   private final ebx<?, ?> a;
+   @Nullable
+   private final ebx<?, ?> d;
 
-   public ebv(ebs $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
+   public ebv(djg $$0, boolean $$1, boolean $$2) {
+      this.c = $$0.q();
+      this.a = $$1 ? new ebo($$0) : null;
+      this.d = $$2 ? new ebz($$0) : null;
    }
 
-   @Nullable
-   public ebt a(crm $$0, bkl $$1, Set<ht> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      ebr $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
+   @Override
+   public void a(ht $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0);
+      }
+   }
+
+   @Override
+   public boolean K_() {
+      return this.d != null && this.d.K_() ? true : this.a != null && this.a.K_();
+   }
+
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.d != null) {
+         $$0 += this.d.a();
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(iu $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(cqz $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(cqz $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public ebt a(csb $$0) {
+      if ($$0 == csb.b) {
+         return (ebt)(this.a == null ? ebt.a.a : this.a);
       } else {
-         Map<ebx, ht> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         ebt $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
+         return (ebt)(this.d == null ? ebt.a.a : this.d);
       }
    }
 
-   @Nullable
-   private ebt a(bes $$0, ebr $$1, Map<ebx, ht> $$2, float $$3, int $$4, float $$5) {
-      $$0.a("find_path");
-      $$0.a(bfv.a);
-      Set<ebx> $$6 = $$2.keySet();
-      $$1.e = 0.0F;
-      $$1.f = this.a($$1, $$6);
-      $$1.g = $$1.f;
-      this.f.a();
-      this.f.a($$1);
-      Set<ebr> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<ebx> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$5);
-
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
-            break;
+   public String a(csb $$0, iu $$1) {
+      if ($$0 == csb.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
          }
-
-         ebr $$11 = this.f.c();
-         $$11.i = true;
-
-         for (ebx $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$4) {
-               $$12.e();
-               $$9.add($$12);
-            }
-         }
-
-         if (!$$9.isEmpty()) {
-            break;
-         }
-
-         if (!($$11.a($$1) >= $$3)) {
-            int $$13 = this.d.a(this.b, $$11);
-
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               ebr $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
-                  }
-               }
-            }
-         }
+      } else if (this.d != null) {
+         return this.d.b($$1.s());
       }
 
-      Optional<ebt> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(ebt::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(ebt::m).thenComparingInt(ebt::e));
-      $$0.c();
-      return $$18.isEmpty() ? null : $$18.get();
+      return "n/a";
    }
 
-   protected float a(ebr $$0, ebr $$1) {
-      return $$0.a($$1);
-   }
-
-   private float a(ebr $$0, Set<ebx> $$1) {
-      float $$2 = Float.MAX_VALUE;
-
-      for (ebx $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
+   public ebu.b b(csb $$0, iu $$1) {
+      if ($$0 == csb.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.d != null) {
+         return this.d.c($$1.s());
       }
 
-      return $$2;
+      return ebu.b.a;
    }
 
-   private ebt a(ebr $$0, ht $$1, boolean $$2) {
-      List<ebr> $$3 = Lists.newArrayList();
-      ebr $$4 = $$0;
-      $$3.add(0, $$0);
+   public void a(csb $$0, iu $$1, @Nullable diy $$2) {
+      if ($$0 == csb.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.d != null) {
+         this.d.a($$1.s(), $$2);
+      }
+   }
 
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
+   public void b(cqz $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
       }
 
-      return new ebt($$3, $$1, $$2);
+      if (this.d != null) {
+         this.d.b($$0, $$1);
+      }
+   }
+
+   public int a(ht $$0, int $$1) {
+      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(iu $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
+   }
+
+   public int c() {
+      return this.c.ak() + 2;
+   }
+
+   public int d() {
+      return this.c.al() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

@@ -1,138 +1,78 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.PublicKey;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
-public class fjk implements fkb {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Duration c = Duration.ofHours(1L);
-   private static final Path d = Path.of("profilekeys");
-   private final UserApiService e;
-   private final Path f;
-   private CompletableFuture<Optional<ccz>> g;
-   private Instant h = Instant.EPOCH;
+public class fjk<T extends bxk> extends fim<T> {
+   private static final String j = "egg_belly";
+   private final fkb k;
 
-   public fjk(UserApiService $$0, UUID $$1, Path $$2) {
-      this.e = $$0;
-      this.f = $$2.resolve(d).resolve($$1 + ".json");
-      this.g = CompletableFuture.<Optional<ccz>>supplyAsync(() -> this.c().filter($$0x -> !$$0x.c().b().a()), ac.f()).thenCompose(this::a);
+   public fjk(fkb $$0) {
+      super($$0, true, 120.0F, 0.0F, 9.0F, 6.0F, 120);
+      this.k = $$0.b("egg_belly");
+   }
+
+   public static fkh c() {
+      fkj $$0 = new fkj();
+      fkk $$1 = $$0.a();
+      $$1.a("head", fkg.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), fkd.a(0.0F, 19.0F, -10.0F));
+      $$1.a(
+         "body",
+         fkg.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
+         fkd.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("egg_belly", fkg.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), fkd.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 1;
+      $$1.a("right_hind_leg", fkg.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fkd.a(-3.5F, 22.0F, 11.0F));
+      $$1.a("left_hind_leg", fkg.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fkd.a(3.5F, 22.0F, 11.0F));
+      $$1.a("right_front_leg", fkg.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fkd.a(-5.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", fkg.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fkd.a(5.0F, 21.0F, -4.0F));
+      return fkh.a($$0, 128, 64);
    }
 
    @Override
-   public CompletableFuture<Optional<ccz>> a() {
-      this.h = Instant.now().plus(c);
-      this.g = this.g.thenCompose(this::a);
-      return this.g;
+   protected Iterable<fkb> b() {
+      return Iterables.concat(super.b(), ImmutableList.of(this.k));
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.f.e = ati.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
+      this.g.e = ati.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
+      this.h.g = ati.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
+      this.i.g = ati.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
+      this.h.e = 0.0F;
+      this.i.e = 0.0F;
+      this.h.f = 0.0F;
+      this.i.f = 0.0F;
+      this.f.f = 0.0F;
+      this.g.f = 0.0F;
+      if (!$$0.aX() && $$0.aA()) {
+         float $$6 = $$0.t() ? 4.0F : 1.0F;
+         float $$7 = $$0.t() ? 2.0F : 1.0F;
+         float $$8 = 5.0F;
+         this.h.f = ati.b($$6 * $$1 * 5.0F + (float) Math.PI) * 8.0F * $$2 * $$7;
+         this.h.g = 0.0F;
+         this.i.f = ati.b($$6 * $$1 * 5.0F) * 8.0F * $$2 * $$7;
+         this.i.g = 0.0F;
+         this.f.f = ati.b($$1 * 5.0F + (float) Math.PI) * 3.0F * $$2;
+         this.f.e = 0.0F;
+         this.g.f = ati.b($$1 * 5.0F) * 3.0F * $$2;
+         this.g.e = 0.0F;
+      }
+
+      this.k.k = !this.e && $$0.s();
    }
 
    @Override
-   public boolean b() {
-      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(ccz::a).orElse(true) : false;
-   }
-
-   private CompletableFuture<Optional<ccz>> a(Optional<ccz> $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$0.isPresent() && !$$0.get().a()) {
-            if (!aa.aT) {
-               this.a(null);
-            }
-
-            return $$0;
-         } else {
-            try {
-               ccz $$1 = this.a(this.e);
-               this.a($$1);
-               return Optional.of($$1);
-            } catch (ary | MinecraftClientException | IOException var3) {
-               b.error("Failed to retrieve profile key pair", var3);
-               this.a(null);
-               return $$0;
-            }
-         }
-      }, ac.f());
-   }
-
-   private Optional<ccz> c() {
-      if (Files.notExists(this.f)) {
-         return Optional.empty();
-      } else {
-         try {
-            Optional var2;
-            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
-               var2 = ccz.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to read profile key pair file {}", this.f, var6);
-            return Optional.empty();
-         }
-      }
-   }
-
-   private void a(@Nullable ccz $$0) {
-      try {
-         Files.deleteIfExists(this.f);
-      } catch (IOException var3) {
-         b.error("Failed to delete profile key pair file {}", this.f, var3);
+   public void a(enk $$0, eno $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      boolean $$8 = this.k.k;
+      if ($$8) {
+         $$0.a();
+         $$0.a(0.0F, -0.08F, 0.0F);
       }
 
-      if ($$0 != null) {
-         if (aa.aT) {
-            ccz.a.encodeStart(JsonOps.INSTANCE, $$0).result().ifPresent($$0x -> {
-               try {
-                  Files.createDirectories(this.f.getParent());
-                  Files.writeString(this.f, $$0x.toString());
-               } catch (Exception var3x) {
-                  b.error("Failed to write profile key pair file {}", this.f, var3x);
-               }
-            });
-         }
-      }
-   }
-
-   private ccz a(UserApiService $$0) throws ary, IOException {
-      KeyPairResponse $$1 = $$0.getKeyPair();
-      if ($$1 != null) {
-         cda.a $$2 = a($$1);
-         return new ccz(arx.a($$1.keyPair().privateKey()), new cda($$2), Instant.parse($$1.refreshedAfter()));
-      } else {
-         throw new IOException("Could not retrieve profile key pair");
-      }
-   }
-
-   private static cda.a a(KeyPairResponse $$0) throws ary {
-      KeyPair $$1 = $$0.keyPair();
-      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
-         try {
-            Instant $$2 = Instant.parse($$0.expiresAt());
-            PublicKey $$3 = arx.b($$1.publicKey());
-            ByteBuffer $$4 = $$0.publicKeySignature();
-            return new cda.a($$2, $$3, $$4.array());
-         } catch (IllegalArgumentException | DateTimeException var5) {
-            throw new ary(var5);
-         }
-      } else {
-         throw new ary(new MissingException());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$8) {
+         $$0.b();
       }
    }
 }

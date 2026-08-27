@@ -67,8 +67,8 @@ public class hg {
       a($$0, "template_rotation", fe.class, hi.a(fe::a));
       a($$0, "heightmap", ej.class, hi.a(ej::a));
       if (aa.aT) {
-         a($$0, "test_argument", rl.class, hi.a(rl::a));
-         a($$0, "test_class", ri.class, hi.a(ri::a));
+         a($$0, "test_argument", rr.class, hi.a(rr::a));
+         a($$0, "test_class", ro.class, hi.a(ro::a));
       }
 
       return a($$0, "uuid", fg.class, hi.a(fg::a));

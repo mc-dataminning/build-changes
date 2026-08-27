@@ -1,37 +1,46 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class ayy extends azc {
-   public ayy(Schema $$0, String $$1) {
-      super($$0, false, "Memory expiry data fix (" + $$1 + ")", baa.x, $$1);
+public class ayy extends DataFix {
+   public ayy(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(ban.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(ban.z.typeName(), bbv.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         "ItemWaterPotionFix",
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            if ($$3.isPresent()) {
+               String $$4 = (String)$$3.get().getSecond();
+               if ("minecraft:potion".equals($$4)
+                  || "minecraft:splash_potion".equals($$4)
+                  || "minecraft:lingering_potion".equals($$4)
+                  || "minecraft:tipped_arrow".equals($$4)) {
+                  Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+                  Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+                  if ($$6.get("Potion").asString().result().isEmpty()) {
+                     $$6 = $$6.set("Potion", $$6.createString("minecraft:water"));
+                  }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Brain", this::b);
-   }
+                  return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+               }
+            }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("memories", this::c);
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.updateMapValues(this::a);
-   }
-
-   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      return $$0.mapSecond(this::d);
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
+            return $$2x;
+         }
+      );
    }
 }

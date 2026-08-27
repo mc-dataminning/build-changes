@@ -1,25 +1,20 @@
-public class cps extends cot {
-   public cps(cot.a $$0, bjy... $$1) {
-      super($$0, cou.b, $$1);
+public class cps extends cpm {
+   protected cps(cpm.a $$0, cpn $$1, bkn... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
+      return super.a($$0) + 50;
    }
 
    @Override
    public int a() {
       return 3;
-   }
-
-   @Override
-   public boolean a(cot $$0) {
-      return super.a($$0) && $$0 != cox.j;
    }
 }

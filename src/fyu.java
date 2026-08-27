@@ -1,34 +1,16 @@
-public abstract class fyu<T extends bkj, M extends fhc<T>> extends fyl<T, M> {
-   public fyu(fve<T, M> $$0) {
+public class fyu extends fzs<bwm, fgn<bwm>> {
+   private static final agg a = new agg("textures/entity/cat/cat_collar.png");
+   private final fgn<bwm> b;
+
+   public fyu(fxf<bwm, fgn<bwm>> $$0, fjx $$1) {
       super($$0);
+      this.b = new fgn<>($$1.a(fka.o));
    }
 
-   protected abstract int a(T var1);
-
-   protected abstract void a(emh var1, fpb var2, int var3, bjt var4, float var5, float var6, float var7, float var8);
-
-   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      ate $$11 = ate.a((long)$$3.ah());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
-            $$0.a();
-            fiw $$13 = this.c().a($$11);
-            fiw.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = asy.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = asy.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = asy.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
-            $$0.b();
-         }
+   public void a(enk $$0, fqh $$1, int $$2, bwm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.s()) {
+         float[] $$10 = $$3.go().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
       }
    }
 }

@@ -1,23 +1,28 @@
-public class fyy<T extends bkj> extends fxp<T, fil<T>> {
-   public fyy(fvy<T, fil<T>> $$0, fox $$1) {
-      super($$0, $$1);
+public class fyy extends fzs<fpg, fih<fpg>> {
+   public fyy(fxf<fpg, fih<fpg>> $$0) {
+      super($$0);
    }
 
-   @Override
-   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ckj $$10 = $$3.eS();
-      $$0.a();
-      if ($$10.a(ckm.rv)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
-      }
+   public void a(enk $$0, fqh $$1, int $$2, fpg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ("deadmau5".equals($$3.ab().getString()) && !$$3.cd()) {
+         eno $$10 = $$1.getBuffer(fqp.c($$3.b().a()));
+         int $$11 = fwl.c($$3, 0.0F);
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-      $$0.b();
+         for (int $$12 = 0; $$12 < 2; $$12++) {
+            float $$13 = ati.i($$6, $$3.N, $$3.dB()) - ati.i($$6, $$3.aV, $$3.aU);
+            float $$14 = ati.i($$6, $$3.O, $$3.dD());
+            $$0.a();
+            $$0.a(a.d.rotationDegrees($$13));
+            $$0.a(a.b.rotationDegrees($$14));
+            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
+            $$0.a(0.0F, -0.375F, 0.0F);
+            $$0.a(a.b.rotationDegrees(-$$14));
+            $$0.a(a.d.rotationDegrees(-$$13));
+            float $$15 = 1.3333334F;
+            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
+            this.c().a($$0, $$10, $$2, $$11);
+            $$0.b();
+         }
+      }
    }
 }

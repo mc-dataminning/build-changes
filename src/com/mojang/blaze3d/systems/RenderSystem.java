@@ -23,11 +23,11 @@ import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallbackI;
 import org.slf4j.Logger;
 
-@ejz
+@elc
 public class RenderSystem {
    static final Logger LOGGER = LogUtils.getLogger();
-   private static final ConcurrentLinkedQueue<ekr> recordingQueue = Queues.newConcurrentLinkedQueue();
-   private static final emj RENDER_THREAD_TESSELATOR = new emj();
+   private static final ConcurrentLinkedQueue<elu> recordingQueue = Queues.newConcurrentLinkedQueue();
+   private static final enm RENDER_THREAD_TESSELATOR = new enm(1536);
    private static final int MINIMUM_ATLAS_TEXTURE_SIZE = 1024;
    private static boolean isReplayingQueue;
    @Nullable
@@ -57,9 +57,9 @@ public class RenderSystem {
    private static Matrix3f inverseViewRotationMatrix = new Matrix3f().zero();
    private static Matrix4f projectionMatrix = new Matrix4f();
    private static Matrix4f savedProjectionMatrix = new Matrix4f();
-   private static emp vertexSorting = emp.a;
-   private static emp savedVertexSorting = emp.a;
-   private static final emh modelViewStack = new emh();
+   private static ens vertexSorting = ens.a;
+   private static ens savedVertexSorting = ens.a;
+   private static final enk modelViewStack = new enk();
    private static Matrix4f modelViewMatrix = new Matrix4f();
    private static Matrix4f textureMatrix = new Matrix4f();
    private static final int[] shaderTextures = new int[12];
@@ -68,13 +68,13 @@ public class RenderSystem {
    private static float shaderFogStart;
    private static float shaderFogEnd = 1.0F;
    private static final float[] shaderFogColor = new float[]{0.0F, 0.0F, 0.0F, 0.0F};
-   private static elu shaderFogShape = elu.a;
+   private static emx shaderFogShape = emx.a;
    private static final Vector3f[] shaderLightDirections = new Vector3f[2];
    private static float shaderGameTime;
    private static float shaderLineWidth = 1.0F;
    private static String apiDescription = "Unknown";
    @Nullable
-   private static fpo shader;
+   private static fqv shader;
    private static final AtomicLong pollEventsWaitStart = new AtomicLong();
    private static final AtomicBoolean pollingEvents = new AtomicBoolean(false);
 
@@ -145,7 +145,7 @@ public class RenderSystem {
       return true;
    }
 
-   public static void recordRenderCall(ekr $$0) {
+   public static void recordRenderCall(elu $$0) {
       recordingQueue.add($$0);
    }
 
@@ -163,7 +163,7 @@ public class RenderSystem {
    public static void flipFrame(long $$0) {
       pollEvents();
       replayQueue();
-      emj.a().c().g();
+      enm.b().d().g();
       GLFW.glfwSwapBuffers($$0);
       pollEvents();
    }
@@ -172,7 +172,7 @@ public class RenderSystem {
       isReplayingQueue = true;
 
       while (!recordingQueue.isEmpty()) {
-         ekr $$0 = recordingQueue.poll();
+         elu $$0 = recordingQueue.poll();
          $$0.execute();
       }
 
@@ -437,16 +437,16 @@ public class RenderSystem {
       return shaderFogColor;
    }
 
-   public static void setShaderFogShape(elu $$0) {
+   public static void setShaderFogShape(emx $$0) {
       assertOnRenderThread();
       _setShaderFogShape($$0);
    }
 
-   private static void _setShaderFogShape(elu $$0) {
+   private static void _setShaderFogShape(emx $$0) {
       shaderFogShape = $$0;
    }
 
-   public static elu getShaderFogShape() {
+   public static emx getShaderFogShape() {
       assertOnRenderThread();
       return shaderFogShape;
    }
@@ -461,7 +461,7 @@ public class RenderSystem {
       shaderLightDirections[1] = $$1;
    }
 
-   public static void setupShaderLights(fpo $$0) {
+   public static void setupShaderLights(fqv $$0) {
       assertOnRenderThread();
       if ($$0.h != null) {
          $$0.h.a(shaderLightDirections[0]);
@@ -534,7 +534,7 @@ public class RenderSystem {
       return apiDescription;
    }
 
-   public static atv.a initBackendSystem() {
+   public static auf.a initBackendSystem() {
       assertInInitPhase();
       return GLX._initGlfw()::getAsLong;
    }
@@ -733,7 +733,7 @@ public class RenderSystem {
       }
    }
 
-   public static emj renderThreadTesselator() {
+   public static enm renderThreadTesselator() {
       assertOnRenderThread();
       return RENDER_THREAD_TESSELATOR;
    }
@@ -746,19 +746,19 @@ public class RenderSystem {
 
    @Deprecated
    public static void runAsFancy(Runnable $$0) {
-      boolean $$1 = ero.M();
+      boolean $$1 = esr.L();
       if (!$$1) {
          $$0.run();
       } else {
-         err<erh> $$2 = ero.O().m.i();
-         erh $$3 = $$2.c();
-         $$2.a(erh.b);
+         esu<esk> $$2 = esr.N().m.j();
+         esk $$3 = $$2.c();
+         $$2.a(esk.b);
          $$0.run();
          $$2.a($$3);
       }
    }
 
-   public static void setShader(Supplier<fpo> $$0) {
+   public static void setShader(Supplier<fqv> $$0) {
       if (!isOnRenderThread()) {
          recordRenderCall(() -> shader = $$0.get());
       } else {
@@ -767,12 +767,12 @@ public class RenderSystem {
    }
 
    @Nullable
-   public static fpo getShader() {
+   public static fqv getShader() {
       assertOnRenderThread();
       return shader;
    }
 
-   public static void setShaderTexture(int $$0, afw $$1) {
+   public static void setShaderTexture(int $$0, agg $$1) {
       if (!isOnRenderThread()) {
          recordRenderCall(() -> _setShaderTexture($$0, $$1));
       } else {
@@ -780,10 +780,10 @@ public class RenderSystem {
       }
    }
 
-   public static void _setShaderTexture(int $$0, afw $$1) {
+   public static void _setShaderTexture(int $$0, agg $$1) {
       if ($$0 >= 0 && $$0 < shaderTextures.length) {
-         gab $$2 = ero.O().Y();
-         fzl $$3 = $$2.b($$1);
+         gbi $$2 = esr.N().X();
+         gas $$3 = $$2.b($$1);
          shaderTextures[$$0] = $$3.a();
       }
    }
@@ -807,7 +807,7 @@ public class RenderSystem {
       return $$0 >= 0 && $$0 < shaderTextures.length ? shaderTextures[$$0] : 0;
    }
 
-   public static void setProjectionMatrix(Matrix4f $$0, emp $$1) {
+   public static void setProjectionMatrix(Matrix4f $$0, ens $$1) {
       Matrix4f $$2 = new Matrix4f($$0);
       if (!isOnRenderThread()) {
          recordRenderCall(() -> {
@@ -896,7 +896,7 @@ public class RenderSystem {
       return modelViewMatrix;
    }
 
-   public static emh getModelViewStack() {
+   public static enk getModelViewStack() {
       return modelViewStack;
    }
 
@@ -905,7 +905,7 @@ public class RenderSystem {
       return textureMatrix;
    }
 
-   public static RenderSystem.a getSequentialBuffer(emm.b $$0) {
+   public static RenderSystem.a getSequentialBuffer(enp.b $$0) {
       assertOnRenderThread();
 
       return switch ($$0) {
@@ -929,7 +929,7 @@ public class RenderSystem {
       return shaderGameTime;
    }
 
-   public static emp getVertexSorting() {
+   public static ens getVertexSorting() {
       assertOnRenderThread();
       return vertexSorting;
    }
@@ -939,7 +939,7 @@ public class RenderSystem {
       private final int b;
       private final RenderSystem.a.a c;
       private int d;
-      private emm.a e = emm.a.a;
+      private enp.a e = enp.a.a;
       private int f;
 
       a(int $$0, int $$1, RenderSystem.a.a $$2) {
@@ -963,20 +963,22 @@ public class RenderSystem {
 
       private void c(int $$0) {
          if (!this.a($$0)) {
-            $$0 = asy.d($$0 * 2, this.b);
+            $$0 = ati.d($$0 * 2, this.b);
             RenderSystem.LOGGER.debug("Growing IndexBuffer: Old limit {}, new limit {}.", this.f, $$0);
-            emm.a $$1 = emm.a.a($$0);
-            int $$2 = asy.d($$0 * $$1.d, 4);
-            GlStateManager._glBufferData(34963, (long)$$2, 35048);
-            ByteBuffer $$3 = GlStateManager._glMapBuffer(34963, 35001);
-            if ($$3 == null) {
+            int $$1 = $$0 / this.b;
+            int $$2 = $$1 * this.a;
+            enp.a $$3 = enp.a.a($$2);
+            int $$4 = ati.d($$0 * $$3.d, 4);
+            GlStateManager._glBufferData(34963, (long)$$4, 35048);
+            ByteBuffer $$5 = GlStateManager._glMapBuffer(34963, 35001);
+            if ($$5 == null) {
                throw new RuntimeException("Failed to map GL buffer");
             } else {
-               this.e = $$1;
-               it.unimi.dsi.fastutil.ints.IntConsumer $$4 = this.a($$3);
+               this.e = $$3;
+               it.unimi.dsi.fastutil.ints.IntConsumer $$6 = this.a($$5);
 
-               for (int $$5 = 0; $$5 < $$0; $$5 += this.b) {
-                  this.c.accept($$4, $$5 * this.a / this.b);
+               for (int $$7 = 0; $$7 < $$0; $$7 += this.b) {
+                  this.c.accept($$6, $$7 * this.a / this.b);
                }
 
                GlStateManager._glUnmapBuffer(34963);
@@ -995,7 +997,7 @@ public class RenderSystem {
          }
       }
 
-      public emm.a a() {
+      public enp.a a() {
          return this.e;
       }
 

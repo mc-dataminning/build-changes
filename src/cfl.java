@@ -1,117 +1,118 @@
-public class cfl {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+public class cfl extends cfd {
+   static final afm<String> c = afp.a(cfl.class, afo.e);
+   static final afm<ur> d = afp.a(cfl.class, afo.f);
+   private final cqt e = new cfl.a();
+   private static final int i = 4;
+   private int j;
 
-   public cfl() {
-      this.b = 5.0F;
+   public cfl(bkm<? extends cfl> $$0, crs $$1) {
+      super($$0, $$1);
    }
 
-   public void a(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
+   public cfl(crs $$0, double $$1, double $$2, double $$3) {
+      super(bkm.s, $$0, $$1, $$2, $$3);
    }
 
-   public void a(cke $$0, ckj $$1) {
-      if ($$0.u()) {
-         cfm $$2 = $$0.v();
-         this.a($$2.a(), $$2.b());
-      }
+   @Override
+   protected ckw ag_() {
+      return cle.na;
    }
 
-   public void a(ccx $$0) {
-      bhy $$1 = $$0.dL().ai();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bhy.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$2 = $$0.dL().X().b(cqv.j);
-      if ($$2 && this.b > 0.0F && $$0.gd() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.b($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gd()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.b(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.eu() > 10.0F || $$1 == bhy.d || $$0.eu() > 1.0F && $$1 == bhy.c) {
-               $$0.a($$0.dM().i(), 1.0F);
-            }
-
-            this.d = 0;
-         }
-      } else {
-         this.d = 0;
-      }
+   @Override
+   protected void b_() {
+      super.b_();
+      this.al().a(c, "");
+      this.al().a(d, uq.a);
    }
 
-   public void a(rt $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
-      }
+   @Override
+   protected void a(rz $$0) {
+      super.a($$0);
+      this.e.b($$0);
+      this.al().b(c, this.B().m());
+      this.al().b(d, this.B().l());
    }
 
-   public void b(rt $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
+   @Override
+   protected void b(rz $$0) {
+      super.b($$0);
+      this.e.a($$0);
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public cfd.a v() {
+      return cfd.a.g;
    }
 
-   public int b() {
+   @Override
+   public dgw x() {
+      return cuv.fN.o();
+   }
+
+   public cqt B() {
       return this.e;
    }
 
-   public boolean c() {
-      return this.a < 20;
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ah - this.j >= 4) {
+         this.B().a(this.dL());
+         this.j = this.ah;
+      }
    }
 
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
+   @Override
+   public biq a(cdm $$0, bip $$1) {
+      return this.e.a($$0);
    }
 
-   public float d() {
-      return this.c;
+   @Override
+   public void a(afm<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.al().b(d));
+         } catch (Throwable var3) {
+         }
+      } else if (c.equals($$0)) {
+         this.e.a(this.al().b(c));
+      }
    }
 
-   public float e() {
-      return this.b;
+   @Override
+   public boolean cM() {
+      return true;
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
-   }
+   public class a extends cqt {
+      @Override
+      public ama e() {
+         return (ama)cfl.this.dL();
+      }
 
-   public void b(float $$0) {
-      this.b = $$0;
-   }
+      @Override
+      public void f() {
+         cfl.this.al().b(cfl.c, this.m());
+         cfl.this.al().b(cfl.d, this.l());
+      }
 
-   public void c(float $$0) {
-      this.c = $$0;
+      @Override
+      public eji g() {
+         return cfl.this.dj();
+      }
+
+      public cfl h() {
+         return cfl.this;
+      }
+
+      @Override
+      public du i() {
+         return new du(this, cfl.this.dj(), cfl.this.bF(), this.e(), 2, this.n().getString(), cfl.this.O_(), this.e().n(), cfl.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !cfl.this.dG();
+      }
    }
 }

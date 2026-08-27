@@ -1,45 +1,31 @@
-import javax.annotation.Nullable;
+public class ezf extends fah {
+   private evf a;
+   private final Runnable b;
+   private final Runnable c;
 
-public abstract class ezf extends eyw {
-   protected final err<?>[] c;
-   @Nullable
-   private eth l;
-   protected eug k;
-
-   public ezf(ezd $$0, ers $$1, ui $$2, err<?>[] $$3) {
-      super($$0, $$1, $$2);
-      this.c = $$3;
+   public ezf(Runnable $$0, Runnable $$1) {
+      super(ur.c("datapackFailure.title"));
+      this.a = evf.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void aM_() {
-      this.k = new eug(this.f, this.g, this.h, 32, this.h - 32, 25);
-      this.k.a(this.c);
-      this.e(this.k);
-      this.f();
-      this.l = this.k.b(this.b.ao());
-      if (this.l != null) {
-         this.l.i = this.f.aV().a();
-      }
-   }
-
-   protected void f() {
-      this.d(etj.a(uh.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   protected void aO_() {
+      super.aO_();
+      this.a = evf.a(this.i, this.m(), this.g - 50);
+      this.d(eum.a(ur.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.g / 2 - 155, this.h / 6 + 96, 150, 20).a());
+      this.d(eum.a(uq.k, $$0 -> this.b.run()).a(this.g / 2 - 155 + 160, this.h / 6 + 96, 150, 20).a());
    }
 
    @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, this.k, $$1, $$2, $$3);
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, this.g / 2, 70);
    }
 
    @Override
-   public void b(esy $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   public void l() {
-      if (this.l instanceof etq) {
-         ((etq)this.l).a(this.b.ao().c());
-      }
+   public boolean aD_() {
+      return false;
    }
 }

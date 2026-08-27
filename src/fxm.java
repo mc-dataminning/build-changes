@@ -1,24 +1,27 @@
-public class fxm extends fyl<cab, ffv<cab>> {
-   private final fpu a;
+public class fxm extends fwq<cbj, fja<cbj>> {
+   private static final agg a = new agg("textures/entity/slime/slime.png");
 
-   public fxm(fvy<cab, ffv<cab>> $$0, fpu $$1) {
-      super($$0);
-      this.a = $$1;
+   public fxm(fvk.a $$0) {
+      super($$0, new fja<>($$0.a(fka.bm)), 0.25F);
+      this.a(new fzw<>(this, $$0.f()));
    }
 
-   public void a(emh $$0, fpb $$1, int $$2, cab $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      dgb $$10 = $$3.ge();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, fzr.d);
-         $$0.b();
-      }
+   public void a(cbj $$0, float $$1, float $$2, enk $$3, fqh $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.gf();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(cbj $$0, enk $$1, float $$2) {
+      float $$3 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$4 = (float)$$0.gf();
+      float $$5 = ati.i($$2, $$0.bS, $$0.e) / ($$4 * 0.5F + 1.0F);
+      float $$6 = 1.0F / ($$5 + 1.0F);
+      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
+   }
+
+   public agg a(cbj $$0) {
+      return a;
    }
 }

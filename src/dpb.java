@@ -1,231 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class dpb extends doo<dql> {
-   public dpb(Codec<dql> $$0) {
+public class dpb extends dpj<drj> {
+   private static final ImmutableList<cut> a = ImmutableList.of(cuv.F, cuv.fn, cuv.fo, cuv.fp, cuv.fq, cuv.cv, cuv.ct);
+   private static final hx[] b = hx.values();
+   private static final double c = 0.9;
+
+   public dpb(Codec<drj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doq<dql> $$0) {
-      ht $$1 = $$0.e();
-      crt $$2 = $$0.b();
-      $$1 = new ht($$1.u(), $$0.c().e(), $$1.w());
-      ate $$3 = $$0.d();
-      boolean $$4 = $$3.j() > 0.7;
-      dgb $$5 = $$0.f().b;
-      double $$6 = $$3.j() * 2.0 * Math.PI;
-      int $$7 = 11 - $$3.a(5);
-      int $$8 = 3 + $$3.a(3);
-      boolean $$9 = $$3.j() > 0.7;
-      int $$10 = 11;
-      int $$11 = $$9 ? $$3.a(6) + 6 : $$3.a(15) + 3;
-      if (!$$9 && $$3.j() > 0.9) {
-         $$11 += $$3.a(19) + 7;
-      }
+   public boolean a(dpl<drj> $$0) {
+      boolean $$1 = false;
+      ato $$2 = $$0.d();
+      csm $$3 = $$0.b();
+      drj $$4 = $$0.f();
+      ht $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-      int $$12 = Math.min($$11 + $$3.a(11), 18);
-      int $$13 = Math.min($$11 + $$3.a(7) - $$3.a(5), 11);
-      int $$14 = $$9 ? $$7 : 11;
+      for (ht $$13 : ht.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
 
-      for (int $$15 = -$$14; $$15 < $$14; $$15++) {
-         for (int $$16 = -$$14; $$16 < $$14; $$16++) {
-            for (int $$17 = 0; $$17 < $$11; $$17++) {
-               int $$18 = $$9 ? this.b($$17, $$11, $$13) : this.a($$3, $$17, $$11, $$13);
-               if ($$9 || $$15 < $$18) {
-                  this.a($$2, $$3, $$1, $$11, $$15, $$17, $$16, $$18, $$14, $$9, $$8, $$6, $$4, $$5);
-               }
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
+
+            ht $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
             }
          }
       }
 
-      this.a($$2, $$1, $$13, $$11, $$9, $$7);
+      return $$1;
+   }
 
-      for (int $$19 = -$$14; $$19 < $$14; $$19++) {
-         for (int $$20 = -$$14; $$20 < $$14; $$20++) {
-            for (int $$21 = -1; $$21 > -$$12; $$21--) {
-               int $$22 = $$9 ? asy.f((float)$$14 * (1.0F - (float)Math.pow((double)$$21, 2.0) / ((float)$$12 * 8.0F))) : $$14;
-               int $$23 = this.b($$3, -$$21, $$12, $$13);
-               if ($$19 < $$23) {
-                  this.a($$2, $$3, $$1, $$12, $$19, $$21, $$20, $$23, $$22, $$9, $$8, $$6, $$4, $$5);
-               }
+   private static boolean a(crt $$0, ht $$1, drj $$2) {
+      dgw $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (hx $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).i();
+            if ($$5 && $$4 != hx.b || !$$5 && $$4 == hx.b) {
+               return false;
             }
          }
-      }
 
-      boolean $$24 = $$9 ? $$3.j() > 0.1 : $$3.j() > 0.7;
-      if ($$24) {
-         this.a($$3, $$2, $$13, $$11, $$1, $$9, $$7, $$6, $$8);
-      }
-
-      return true;
-   }
-
-   private void a(ate $$0, cra $$1, int $$2, int $$3, ht $$4, boolean $$5, int $$6, double $$7, int $$8) {
-      int $$9 = $$0.h() ? -1 : 1;
-      int $$10 = $$0.h() ? -1 : 1;
-      int $$11 = $$0.a(Math.max($$2 / 2 - 2, 1));
-      if ($$0.h()) {
-         $$11 = $$2 / 2 + 1 - $$0.a(Math.max($$2 - $$2 / 2 - 1, 1));
-      }
-
-      int $$12 = $$0.a(Math.max($$2 / 2 - 2, 1));
-      if ($$0.h()) {
-         $$12 = $$2 / 2 + 1 - $$0.a(Math.max($$2 - $$2 / 2 - 1, 1));
-      }
-
-      if ($$5) {
-         $$11 = $$12 = $$0.a(Math.max($$6 - 5, 1));
-      }
-
-      ht $$13 = new ht($$9 * $$11, 0, $$10 * $$12);
-      double $$14 = $$5 ? $$7 + (Math.PI / 2) : $$0.j() * 2.0 * Math.PI;
-
-      for (int $$15 = 0; $$15 < $$3 - 3; $$15++) {
-         int $$16 = this.a($$0, $$15, $$3, $$2);
-         this.a($$16, $$15, $$4, $$1, false, $$14, $$13, $$6, $$8);
-      }
-
-      for (int $$17 = -1; $$17 > -$$3 + $$0.a(5); $$17--) {
-         int $$18 = this.b($$0, -$$17, $$3, $$2);
-         this.a($$18, $$17, $$4, $$1, true, $$14, $$13, $$6, $$8);
-      }
-   }
-
-   private void a(int $$0, int $$1, ht $$2, cra $$3, boolean $$4, double $$5, ht $$6, int $$7, int $$8) {
-      int $$9 = $$0 + 1 + $$7 / 3;
-      int $$10 = Math.min($$0 - 3, 3) + $$8 / 2 - 1;
-
-      for (int $$11 = -$$9; $$11 < $$9; $$11++) {
-         for (int $$12 = -$$9; $$12 < $$9; $$12++) {
-            double $$13 = this.a($$11, $$12, $$6, $$9, $$10, $$5);
-            if ($$13 < 0.0) {
-               ht $$14 = $$2.b($$11, $$1, $$12);
-               dgb $$15 = $$3.a_($$14);
-               if (c($$15) || $$15.a(cuc.dP)) {
-                  if ($$4) {
-                     this.a($$3, $$14, cuc.G.o());
-                  } else {
-                     this.a($$3, $$14, cuc.a.o());
-                     this.a($$3, $$14);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void a(cra $$0, ht $$1) {
-      if ($$0.a_($$1.c()).a(cuc.dN)) {
-         this.a($$0, $$1.c(), cuc.a.o());
-      }
-   }
-
-   private void a(cra $$0, ate $$1, ht $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, boolean $$9, int $$10, double $$11, boolean $$12, dgb $$13) {
-      double $$14 = $$9 ? this.a($$4, $$6, ht.b, $$8, this.a($$5, $$3, $$10), $$11) : this.a($$4, $$6, ht.b, $$7, $$1);
-      if ($$14 < 0.0) {
-         ht $$15 = $$2.b($$4, $$5, $$6);
-         double $$16 = $$9 ? -0.5 : (double)(-6 - $$1.a(3));
-         if ($$14 > $$16 && $$1.j() > 0.9) {
-            return;
-         }
-
-         this.a($$15, $$0, $$1, $$3 - $$5, $$3, $$9, $$12, $$13);
-      }
-   }
-
-   private void a(ht $$0, cra $$1, ate $$2, int $$3, int $$4, boolean $$5, boolean $$6, dgb $$7) {
-      dgb $$8 = $$1.a_($$0);
-      if ($$8.i() || $$8.a(cuc.dP) || $$8.a(cuc.dO) || $$8.a(cuc.G)) {
-         boolean $$9 = !$$5 || $$2.j() > 0.05;
-         int $$10 = $$5 ? 3 : 2;
-         if ($$6 && !$$8.a(cuc.G) && (double)$$3 <= (double)$$2.a(Math.max(1, $$4 / $$10)) + (double)$$4 * 0.6 && $$9) {
-            this.a($$1, $$0, cuc.dP.o());
-         } else {
-            this.a($$1, $$0, $$7);
-         }
-      }
-   }
-
-   private int a(int $$0, int $$1, int $$2) {
-      int $$3 = $$2;
-      if ($$0 > 0 && $$1 - $$0 <= 3) {
-         $$3 = $$2 - (4 - ($$1 - $$0));
-      }
-
-      return $$3;
-   }
-
-   private double a(int $$0, int $$1, ht $$2, int $$3, ate $$4) {
-      float $$5 = 10.0F * asy.a($$4.i(), 0.2F, 0.8F) / (float)$$3;
-      return (double)$$5 + Math.pow((double)($$0 - $$2.u()), 2.0) + Math.pow((double)($$1 - $$2.w()), 2.0) - Math.pow((double)$$3, 2.0);
-   }
-
-   private double a(int $$0, int $$1, ht $$2, int $$3, int $$4, double $$5) {
-      return Math.pow(((double)($$0 - $$2.u()) * Math.cos($$5) - (double)($$1 - $$2.w()) * Math.sin($$5)) / (double)$$3, 2.0)
-         + Math.pow(((double)($$0 - $$2.u()) * Math.sin($$5) + (double)($$1 - $$2.w()) * Math.cos($$5)) / (double)$$4, 2.0)
-         - 1.0;
-   }
-
-   private int a(ate $$0, int $$1, int $$2, int $$3) {
-      float $$4 = 3.5F - $$0.i();
-      float $$5 = (1.0F - (float)Math.pow((double)$$1, 2.0) / ((float)$$2 * $$4)) * (float)$$3;
-      if ($$2 > 15 + $$0.a(5)) {
-         int $$6 = $$1 < 3 + $$0.a(6) ? $$1 / 2 : $$1;
-         $$5 = (1.0F - (float)$$6 / ((float)$$2 * $$4 * 0.4F)) * (float)$$3;
-      }
-
-      return asy.f($$5 / 2.0F);
-   }
-
-   private int b(int $$0, int $$1, int $$2) {
-      float $$3 = 1.0F;
-      float $$4 = (1.0F - (float)Math.pow((double)$$0, 2.0) / ((float)$$1 * 1.0F)) * (float)$$2;
-      return asy.f($$4 / 2.0F);
-   }
-
-   private int b(ate $$0, int $$1, int $$2, int $$3) {
-      float $$4 = 1.0F + $$0.i() / 2.0F;
-      float $$5 = (1.0F - (float)$$1 / ((float)$$2 * $$4)) * (float)$$3;
-      return asy.f($$5 / 2.0F);
-   }
-
-   private static boolean c(dgb $$0) {
-      return $$0.a(cuc.iC) || $$0.a(cuc.dP) || $$0.a(cuc.mW);
-   }
-
-   private boolean a(cqf $$0, ht $$1) {
-      return $$0.a_($$1.d()).i();
-   }
-
-   private void a(cra $$0, ht $$1, int $$2, int $$3, boolean $$4, int $$5) {
-      int $$6 = $$4 ? $$5 : $$2 / 2;
-
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            for (int $$9 = 0; $$9 <= $$3; $$9++) {
-               ht $$10 = $$1.b($$7, $$9, $$8);
-               dgb $$11 = $$0.a_($$10);
-               if (c($$11) || $$11.a(cuc.dN)) {
-                  if (this.a((cqf)$$0, $$10)) {
-                     this.a($$0, $$10, cuc.a.o());
-                     this.a($$0, $$10.c(), cuc.a.o());
-                  } else if (c($$11)) {
-                     dgb[] $$12 = new dgb[]{$$0.a_($$10.g()), $$0.a_($$10.h()), $$0.a_($$10.e()), $$0.a_($$10.f())};
-                     int $$13 = 0;
-
-                     for (dgb $$14 : $$12) {
-                        if (!c($$14)) {
-                           $$13++;
-                        }
-                     }
-
-                     if ($$13 >= 3) {
-                        this.a($$0, $$10, cuc.a.o());
-                     }
-                  }
-               }
-            }
-         }
+         return true;
       }
    }
 }

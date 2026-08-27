@@ -1,45 +1,46 @@
-public class ejk {
-   private static final eju<Object> a = new eju<Object>() {
-      @Override
-      public void a(ejr<Object> $$0) {
-      }
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-      @Override
-      public boolean a(ht $$0, Object $$1) {
-         return false;
-      }
+public class ejk extends ekb {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final ejn<Object> b = new ejn<Object>() {
-      @Override
-      public void a(ejr<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(ht $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(ht $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> eju<T> a() {
-      return (eju<T>)a;
+   protected ejk(ejr $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
    }
 
-   public static <T> ejn<T> b() {
-      return (ejn<T>)b;
+   ejk(ejr $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      } else {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
+      }
+   }
+
+   @Override
+   protected DoubleList a(hx.a $$0) {
+      switch ($$0) {
+         case a:
+            return this.b;
+         case b:
+            return this.c;
+         case c:
+            return this.d;
+         default:
+            throw new IllegalArgumentException();
+      }
    }
 }

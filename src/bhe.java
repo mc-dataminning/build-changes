@@ -1,27 +1,48 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class bhe implements bhj {
-   private static final Codec<Either<Float, bhe>> a = Codec.either(Codec.FLOAT, jy.M.q().dispatch(bhe::c, bhf::codec));
-   public static final Codec<bhe> c = a.xmap(
-      $$0 -> (bhe)$$0.map(bhc::a, $$0x -> $$0x), $$0 -> $$0.c() == bhf.a ? Either.left(((bhc)$$0).d()) : Either.right($$0)
-   );
+public class bhe<E extends bhc> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   public static Codec<bhe> a(float $$0, float $$1) {
-      return asg.a(c, (Function<bhe, DataResult<bhe>>)($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      }));
+   bhe(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bhd.a($$0);
    }
 
-   public abstract float a();
+   public static <E extends bhc> bhe<E> c() {
+      return new bhe<>(ImmutableList.of());
+   }
 
-   public abstract float b();
+   @SafeVarargs
+   public static <E extends bhc> bhe<E> a(E... $$0) {
+      return new bhe<>(ImmutableList.copyOf($$0));
+   }
 
-   public abstract bhf<?> c();
+   public static <E extends bhc> bhe<E> a(List<E> $$0) {
+      return new bhe<>($$0);
+   }
+
+   public boolean d() {
+      return this.b.isEmpty();
+   }
+
+   public Optional<E> b(ato $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return bhd.a(this.b, $$1);
+      }
+   }
+
+   public List<E> e() {
+      return this.b;
+   }
+
+   public static <E extends bhc> Codec<bhe<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bhe::a, bhe::e);
+   }
 }

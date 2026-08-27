@@ -1,41 +1,40 @@
-import javax.annotation.Nullable;
+public class abq implements wk<yd> {
+   private final long a;
+   private final long b;
 
-public class abq implements wb<xu> {
-   private final int a;
-   @Nullable
-   private final rt b;
-
-   public abq(int $$0, @Nullable rt $$1) {
+   public abq(long $$0, long $$1, boolean $$2) {
       this.a = $$0;
-      this.b = $$1;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.b = $$3;
    }
 
-   public abq(tl $$0) {
-      this.a = $$0.n();
-      this.b = $$0.q();
+   public abq(tu $$0) {
+      this.a = $$0.readLong();
+      this.b = $$0.readLong();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.a);
-      $$0.a((sn)this.b);
+   public void a(tu $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public long a() {
       return this.a;
    }
 
-   @Nullable
-   public rt d() {
+   public long d() {
       return this.b;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
    }
 }

@@ -1,10 +1,21 @@
-import com.google.common.collect.Lists;
-import com.google.gson.annotations.SerializedName;
-import java.util.List;
+public abstract class enj implements eno {
+   protected boolean a;
+   protected int b = 255;
+   protected int c = 255;
+   protected int d = 255;
+   protected int e = 255;
 
-public class enj extends eod implements enx {
-   @SerializedName("pingResults")
-   public List<eny> a = Lists.newArrayList();
-   @SerializedName("worldIds")
-   public List<Long> b = Lists.newArrayList();
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.a = true;
+   }
+
+   @Override
+   public void l() {
+      this.a = false;
+   }
 }

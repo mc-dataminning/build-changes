@@ -1,78 +1,59 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class fdk {
-   private final ero a;
-   private final Set<UUID> b = Sets.newHashSet();
-   private final UserApiService c;
-   private final Map<String, UUID> d = Maps.newHashMap();
-   private boolean e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+public abstract class fdk extends fah {
+   private final ur b;
+   @Nullable
+   private final ur c;
+   private final ur k;
+   @Nullable
+   protected euo a;
+   private evf l = evf.a;
 
-   public fdk(ero $$0, UserApiService $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   protected fdk(ur $$0, ur $$1, ur $$2) {
+      this($$0, $$1, null, $$2);
    }
 
-   public void a(UUID $$0) {
-      this.b.add($$0);
+   protected fdk(ur $$0, ur $$1, @Nullable ur $$2, ur $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+      this.k = $$3;
    }
 
-   public void b(UUID $$0) {
-      this.b.remove($$0);
-   }
+   protected abstract void a(int var1);
 
-   public boolean c(UUID $$0) {
-      return this.d($$0) || this.e($$0);
-   }
-
-   public boolean d(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public void a() {
-      this.e = true;
-      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
-   }
-
-   public void b() {
-      this.e = false;
-   }
-
-   public boolean e(UUID $$0) {
-      if (!this.e) {
-         return false;
-      } else {
-         this.f.join();
-         return this.c.isBlockedPlayer($$0);
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.l = evf.a(this.i, this.b, this.g - 100);
+      int $$0 = (this.l.a() + 1) * this.l();
+      if (this.c != null) {
+         int $$1 = this.i.a(this.c);
+         this.a = new euo(this.g / 2 - $$1 / 2 - 8, 76 + $$0, $$1 + 24, 20, this.c, false);
+         this.d(this.a);
       }
+
+      this.a($$0);
    }
 
-   public Set<UUID> c() {
-      return this.b;
+   @Override
+   public ur h() {
+      return this.k;
    }
 
-   public UUID a(String $$0) {
-      return this.d.getOrDefault($$0, ac.d);
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      int $$4 = this.g / 2 - this.l.b() / 2;
+      this.l.b($$0, $$4, 70, this.l(), 16777215);
    }
 
-   public void a(fka $$0) {
-      GameProfile $$1 = $$0.a();
-      this.d.put($$1.getName(), $$1.getId());
-      if (this.a.y instanceof fdm $$2) {
-         $$2.a($$0);
-      }
+   protected void c(eub $$0) {
+      $$0.b(this.i, this.e, 25, 30, 16777215);
    }
 
-   public void f(UUID $$0) {
-      if (this.a.y instanceof fdm $$1) {
-         $$1.a($$0);
-      }
+   protected int l() {
+      return 9 * 2;
    }
 }

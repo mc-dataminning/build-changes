@@ -1,22 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bop {
-   public static bmb<bkj> a() {
-      return bpm.a(
-         (Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$0 -> $$0.group($$0.b(btk.aa))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof bkj $$1xx ? $$1xx : null)
-                           .filter(bkj::ev)
-                           .filter($$1xx -> $$1xx.ag() != bjx.bt || $$2.X().b(cqv.K))
-                           .ifPresent($$1xx -> $$1.b());
+   private static final int a = 300;
+
+   public static bmq<bky> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return bqb.a(
+         (Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$3x -> $$3x.group($$3x.b(btz.C), $$3x.b(btz.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        ht $$11 = $$3x.<ia>b($$4).b();
+                        if ($$11.a($$7.dl(), (double)$$1)) {
+                           $$3.increment();
+                        }
+
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dN().a($$6.W(), $$6.V());
+                        $$3.setValue(0);
                         return true;
                      }
-               ))
+                  }))
       );
    }
 }

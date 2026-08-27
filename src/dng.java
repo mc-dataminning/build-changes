@@ -1,52 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dng extends dni {
-   public static final Codec<dng> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dni.d.forGetter($$0x -> $$0x), bhe.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dng.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, dng::new)
-   );
-   public final bhe b;
-   public final dng.a c;
+public class dng implements ato {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<dng> b = dnf.a.xmap($$0 -> new dng($$0), $$0 -> $$0.e);
+   private dnf e;
+   private final dmh f = new dmh(this);
 
-   public dng(float $$0, duh $$1, bhe $$2, dme $$3, dnj $$4, ig<cua> $$5, bhe $$6, dng.a $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
+   public dng(long $$0) {
+      this.e = new dnf(dmu.c($$0));
    }
 
-   public dng(dni $$0, bhe $$1, dng.a $$2) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   public dng(dmu.a $$0) {
+      this.e = new dnf($$0);
    }
 
-   public static class a {
-      public static final Codec<dng.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bhe.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
-                  bhe.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
-                  asg.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
-                  bhe.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
-                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dng.a::new)
-      );
-      public final bhe b;
-      public final bhe c;
-      public final int d;
-      public final bhe e;
-      public final float f;
-      public final float g;
+   public dng(long $$0, long $$1) {
+      this.e = new dnf($$0, $$1);
+   }
 
-      public a(bhe $$0, bhe $$1, int $$2, bhe $$3, float $$4, float $$5) {
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-         this.b = $$0;
-         this.c = $$1;
+   private dng(dnf $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public ato d() {
+      return new dng(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public dms e() {
+      return new dng.a(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.e = new dnf(dmu.c($$0));
+      this.f.a();
+   }
+
+   @Override
+   public int f() {
+      return (int)this.e.a();
+   }
+
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
+            }
+         }
+
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
+   }
+
+   @Override
+   public long g() {
+      return this.e.a();
+   }
+
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
+   }
+
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
+   }
+
+   @Override
+   public double k() {
+      return this.f.b();
+   }
+
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
+   }
+
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
+   }
+
+   public static class a implements dms {
+      private final long a;
+      private final long b;
+
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public ato a(int $$0, int $$1, int $$2) {
+         long $$3 = ati.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dng($$4, this.b);
+      }
+
+      @Override
+      public ato a(String $$0) {
+         dmu.a $$1 = dmu.a($$0);
+         return new dng($$1.a(this.a, this.b));
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
       }
    }
 }

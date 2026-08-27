@@ -1,54 +1,25 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.mojang.serialization.Codec;
 
-public class dwd extends ecj {
-   private static final String a = "Remaining";
-   private static final String b = "All";
-   private final LongSet c;
-   private final LongSet d;
+public interface dwd<P extends dwc> {
+   dwd<dvo> a = a("block_predicate_filter", dvo.a);
+   dwd<dwf> b = a("rarity_filter", dwf.a);
+   dwd<dwh> c = a("surface_relative_threshold_filter", dwh.a);
+   dwd<dwi> d = a("surface_water_depth_filter", dwi.a);
+   dwd<dvn> e = a("biome", dvn.a);
+   dwd<dvs> f = a("count", dvs.a);
+   dwd<dvx> g = a("noise_based_count", dvx.a);
+   dwd<dvy> h = a("noise_threshold_count", dvy.a);
+   dwd<dvr> i = a("count_on_every_layer", dvr.a);
+   dwd<dvt> j = a("environment_scan", dvt.a);
+   dwd<dvv> k = a("heightmap", dvv.a);
+   dwd<dvu> l = a("height_range", dvu.a);
+   dwd<dvw> m = a("in_square", dvw.a);
+   dwd<dwe> n = a("random_offset", dwe.a);
+   dwd<dvp> o = a("carving_mask", dvp.a);
 
-   public static ecj.a<dwd> a() {
-      return new ecj.a<>(dwd::new, dwd::b, aud.o);
-   }
+   Codec<P> codec();
 
-   private dwd(LongSet $$0, LongSet $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public dwd() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public static dwd b(rt $$0) {
-      return new dwd(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
-   }
-
-   @Override
-   public rt a(rt $$0) {
-      $$0.a("All", this.c.toLongArray());
-      $$0.a("Remaining", this.d.toLongArray());
-      return $$0;
-   }
-
-   public void a(long $$0) {
-      this.c.add($$0);
-      this.d.add($$0);
-   }
-
-   public boolean b(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean c(long $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void d(long $$0) {
-      this.d.remove($$0);
-   }
-
-   public LongSet b() {
-      return this.c;
+   private static <P extends dwc> dwd<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.V, $$0, () -> $$1);
    }
 }

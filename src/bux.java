@@ -1,25 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class bux {
-   @Nullable
-   public static eif a(bks $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = bva.a($$0, $$1);
-      return bvd.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public abstract class bux extends bvd<bky> {
+   protected abstract boolean a(bky var1, bky var2);
+
+   protected abstract btz<bky> b();
+
+   @Override
+   public Set<btz<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
-   @Nullable
-   public static ht a(bks $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      ht $$8 = bvd.a($$0.ef(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         ht $$9 = bvd.a($$0, $$1, $$0.ef(), $$8);
-         if (!bva.a($$9, $$0) && !bva.a($$7, $$0, $$9)) {
-            $$9 = bvd.a($$9, $$0.dL().aj(), $$1x -> bva.c($$0, $$1x));
-            return bva.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   @Override
+   protected void a(ama $$0, bky $$1) {
+      $$1.dN().a(this.b(), this.b($$1));
+   }
+
+   private Optional<bky> b(bky $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
+
+   protected Optional<bub> a(bky $$0) {
+      return $$0.dN().c(btz.h);
    }
 }

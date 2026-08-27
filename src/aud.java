@@ -1,76 +1,28 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public enum aud {
-   a(baa.a),
-   b(baa.b),
-   c(baa.c),
-   d(baa.d),
-   e(baa.e),
-   f(baa.f),
-   g(baa.g),
-   h(baa.h),
-   i(baa.i),
-   j(baa.j),
-   k(baa.k),
-   l(baa.l),
-   m(baa.m),
-   n(baa.o),
-   o(baa.n),
-   p(baa.p),
-   q(baa.q),
-   r(baa.I),
-   s(baa.r);
+@FunctionalInterface
+public interface aud {
+   Logger a = LogUtils.getLogger();
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private aud(TypeReference $$0) {
-      this.u = $$0;
-   }
-
-   static int a() {
-      return aa.b().d().c();
-   }
-
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(aud.a())));
-         }
-
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = aud.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
+   static aud immediate(final Executor $$0) {
+      return new aud() {
+         @Override
+         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
+            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
+               a.error("Task failed", $$0xx);
+               return null;
+            });
          }
       };
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
+   default void append(Runnable $$0) {
+      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public rt a(DataFixer $$0, rt $$1, int $$2, int $$3) {
-      return (rt)this.a($$0, new Dynamic(sf.a, $$1), $$2, $$3).getValue();
-   }
-
-   public rt a(DataFixer $$0, rt $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
-   }
+   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
 }

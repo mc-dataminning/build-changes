@@ -1,23 +1,17 @@
-public enum dhk implements atr {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+public enum dhk implements aub {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String f;
+   private final String e;
 
    private dhk(String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.f;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.e;
    }
 }

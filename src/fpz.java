@@ -1,49 +1,322 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
 public class fpz {
-   public static final int a = -1;
-   public final hx b;
-   public final int c;
-   public final String d;
-   public final fqb e;
+   private static final int b = 96;
+   private static final List<fpz.e> c = Lists.newArrayList(new fpz.e[]{new fpz.a(), new fpz.b()});
+   public static final float a = 5000.0F;
+   private static float d;
+   private static float e;
+   private static float f;
+   private static int g = -1;
+   private static int h = -1;
+   private static long i = -1L;
 
-   public fpz(@Nullable hx $$0, int $$1, String $$2, fqb $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public static void a(esc $$0, float $$1, fkw $$2, int $$3, float $$4) {
+      eci $$5 = $$0.k();
+      bki $$6 = $$0.g();
+      if ($$5 == eci.b) {
+         long $$7 = ac.b();
+         int $$8 = $$2.s(ht.a($$0.b())).a().j();
+         if (i < 0L) {
+            g = $$8;
+            h = $$8;
+            i = $$7;
+         }
+
+         int $$9 = g >> 16 & 0xFF;
+         int $$10 = g >> 8 & 0xFF;
+         int $$11 = g & 0xFF;
+         int $$12 = h >> 16 & 0xFF;
+         int $$13 = h >> 8 & 0xFF;
+         int $$14 = h & 0xFF;
+         float $$15 = ati.a((float)($$7 - i) / 5000.0F, 0.0F, 1.0F);
+         float $$16 = ati.i($$15, (float)$$12, (float)$$9);
+         float $$17 = ati.i($$15, (float)$$13, (float)$$10);
+         float $$18 = ati.i($$15, (float)$$14, (float)$$11);
+         d = $$16 / 255.0F;
+         e = $$17 / 255.0F;
+         f = $$18 / 255.0F;
+         if (g != $$8) {
+            g = $$8;
+            h = ati.d($$16) << 16 | ati.d($$17) << 8 | ati.d($$18);
+            i = $$7;
+         }
+      } else if ($$5 == eci.a) {
+         d = 0.6F;
+         e = 0.1F;
+         f = 0.0F;
+         i = -1L;
+      } else if ($$5 == eci.c) {
+         d = 0.623F;
+         e = 0.734F;
+         f = 0.785F;
+         i = -1L;
+         RenderSystem.clearColor(d, e, f, 0.0F);
+      } else {
+         float $$19 = 0.25F + 0.75F * (float)$$3 / 32.0F;
+         $$19 = 1.0F - (float)Math.pow((double)$$19, 0.25);
+         eji $$20 = $$2.a($$0.b(), $$1);
+         float $$21 = (float)$$20.c;
+         float $$22 = (float)$$20.d;
+         float $$23 = (float)$$20.e;
+         float $$24 = ati.a(ati.b($$2.f($$1) * (float) (Math.PI * 2)) * 2.0F + 0.5F, 0.0F, 1.0F);
+         css $$25 = $$2.F_();
+         eji $$26 = $$0.b().a(2.0, 2.0, 2.0).a(0.25);
+         eji $$27 = ask.a($$26, ($$3x, $$4x, $$5x) -> $$2.d().a(eji.a($$25.a($$3x, $$4x, $$5x).a().e()), $$24));
+         d = (float)$$27.a();
+         e = (float)$$27.b();
+         f = (float)$$27.c();
+         if ($$3 >= 4) {
+            float $$28 = ati.a($$2.a($$1)) > 0.0F ? -1.0F : 1.0F;
+            Vector3f $$29 = new Vector3f($$28, 0.0F, 0.0F);
+            float $$30 = $$0.l().dot($$29);
+            if ($$30 < 0.0F) {
+               $$30 = 0.0F;
+            }
+
+            if ($$30 > 0.0F) {
+               float[] $$31 = $$2.d().a($$2.f($$1), $$1);
+               if ($$31 != null) {
+                  $$30 *= $$31[3];
+                  d = d * (1.0F - $$30) + $$31[0] * $$30;
+                  e = e * (1.0F - $$30) + $$31[1] * $$30;
+                  f = f * (1.0F - $$30) + $$31[2] * $$30;
+               }
+            }
+         }
+
+         d = d + ($$21 - d) * $$19;
+         e = e + ($$22 - e) * $$19;
+         f = f + ($$23 - f) * $$19;
+         float $$32 = $$2.d($$1);
+         if ($$32 > 0.0F) {
+            float $$33 = 1.0F - $$32 * 0.5F;
+            float $$34 = 1.0F - $$32 * 0.4F;
+            d *= $$33;
+            e *= $$33;
+            f *= $$34;
+         }
+
+         float $$35 = $$2.b($$1);
+         if ($$35 > 0.0F) {
+            float $$36 = 1.0F - $$35 * 0.5F;
+            d *= $$36;
+            e *= $$36;
+            f *= $$36;
+         }
+
+         i = -1L;
+      }
+
+      float $$37 = ((float)$$0.b().d - (float)$$2.I_()) * $$2.k().g();
+      fpz.e $$38 = a($$6, $$1);
+      if ($$38 != null) {
+         bky $$39 = (bky)$$6;
+         $$37 = $$38.a($$39, $$39.b($$38.a()), $$37, $$1);
+      }
+
+      if ($$37 < 1.0F && $$5 != eci.a && $$5 != eci.c) {
+         if ($$37 < 0.0F) {
+            $$37 = 0.0F;
+         }
+
+         $$37 *= $$37;
+         d *= $$37;
+         e *= $$37;
+         f *= $$37;
+      }
+
+      if ($$4 > 0.0F) {
+         d = d * (1.0F - $$4) + d * 0.7F * $$4;
+         e = e * (1.0F - $$4) + e * 0.6F * $$4;
+         f = f * (1.0F - $$4) + f * 0.6F * $$4;
+      }
+
+      float $$40;
+      if ($$5 == eci.b) {
+         if ($$6 instanceof fpj) {
+            $$40 = ((fpj)$$6).A();
+         } else {
+            $$40 = 1.0F;
+         }
+      } else {
+         label86: {
+            if ($$6 instanceof bky $$42 && $$42.a(bjx.p) && !$$42.a(bjx.G)) {
+               $$40 = fqa.a($$42, $$1);
+               break label86;
+            }
+
+            $$40 = 0.0F;
+         }
+      }
+
+      if (d != 0.0F && e != 0.0F && f != 0.0F) {
+         float $$45 = Math.min(1.0F / d, Math.min(1.0F / e, 1.0F / f));
+         d = d * (1.0F - $$40) + d * $$45 * $$40;
+         e = e * (1.0F - $$40) + e * $$45 * $$40;
+         f = f * (1.0F - $$40) + f * $$45 * $$40;
+      }
+
+      RenderSystem.clearColor(d, e, f, 0.0F);
    }
 
-   protected static class a implements JsonDeserializer<fpz> {
-      private static final int a = -1;
+   public static void a() {
+      RenderSystem.setShaderFogStart(Float.MAX_VALUE);
+   }
 
-      public fpz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         hx $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         fqb $$7 = (fqb)$$2.deserialize($$3, fqb.class);
-         return new fpz($$4, $$5, $$6, $$7);
+   @Nullable
+   private static fpz.e a(bki $$0, float $$1) {
+      return $$0 instanceof bky $$2 ? c.stream().filter($$2x -> $$2x.a($$2, $$1)).findFirst().orElse(null) : null;
+   }
+
+   public static void a(esc $$0, fpz.d $$1, float $$2, boolean $$3, float $$4) {
+      eci $$5 = $$0.k();
+      bki $$6 = $$0.g();
+      fpz.c $$7 = new fpz.c($$1);
+      fpz.e $$8 = a($$6, $$4);
+      if ($$5 == eci.a) {
+         if ($$6.N_()) {
+            $$7.b = -8.0F;
+            $$7.c = $$2 * 0.5F;
+         } else if ($$6 instanceof bky && ((bky)$$6).a(bjx.l)) {
+            $$7.b = 0.0F;
+            $$7.c = 3.0F;
+         } else {
+            $$7.b = 0.25F;
+            $$7.c = 1.0F;
+         }
+      } else if ($$5 == eci.c) {
+         if ($$6.N_()) {
+            $$7.b = -8.0F;
+            $$7.c = $$2 * 0.5F;
+         } else {
+            $$7.b = 0.0F;
+            $$7.c = 2.0F;
+         }
+      } else if ($$8 != null) {
+         bky $$9 = (bky)$$6;
+         bjv $$10 = $$9.b($$8.a());
+         if ($$10 != null) {
+            $$8.a($$7, $$9, $$10, $$2, $$4);
+         }
+      } else if ($$5 == eci.b) {
+         $$7.b = -8.0F;
+         $$7.c = 96.0F;
+         if ($$6 instanceof fpj $$11) {
+            $$7.c = $$7.c * Math.max(0.25F, $$11.A());
+            ib<csq> $$12 = $$11.dL().s($$11.dl());
+            if ($$12.a(arb.Z)) {
+               $$7.c *= 0.85F;
+            }
+         }
+
+         if ($$7.c > $$2) {
+            $$7.c = $$2;
+            $$7.d = emx.b;
+         }
+      } else if ($$3) {
+         $$7.b = $$2 * 0.05F;
+         $$7.c = Math.min($$2, 192.0F) * 0.5F;
+      } else if ($$1 == fpz.d.a) {
+         $$7.b = 0.0F;
+         $$7.c = $$2;
+         $$7.d = emx.b;
+      } else {
+         float $$13 = ati.a($$2 / 10.0F, 4.0F, 64.0F);
+         $$7.b = $$2 - $$13;
+         $$7.c = $$2;
+         $$7.d = emx.b;
       }
 
-      protected int a(JsonObject $$0) {
-         return aso.a($$0, "tintindex", -1);
+      RenderSystem.setShaderFogStart($$7.b);
+      RenderSystem.setShaderFogEnd($$7.c);
+      RenderSystem.setShaderFogShape($$7.d);
+   }
+
+   public static void b() {
+      RenderSystem.setShaderFogColor(d, e, f);
+   }
+
+   static class a implements fpz.e {
+      @Override
+      public bjt a() {
+         return bjx.o;
       }
 
-      private String b(JsonObject $$0) {
-         return aso.i($$0, "texture");
+      @Override
+      public void a(fpz.c $$0, bky $$1, bjv $$2, float $$3, float $$4) {
+         float $$5 = $$2.b() ? 5.0F : ati.i(Math.min(1.0F, (float)$$2.d() / 20.0F), $$3, 5.0F);
+         if ($$0.a == fpz.d.a) {
+            $$0.b = 0.0F;
+            $$0.c = $$5 * 0.8F;
+         } else {
+            $$0.b = $$5 * 0.25F;
+            $$0.c = $$5;
+         }
+      }
+   }
+
+   static class b implements fpz.e {
+      @Override
+      public bjt a() {
+         return bjx.G;
       }
 
-      @Nullable
-      private hx c(JsonObject $$0) {
-         String $$1 = aso.a($$0, "cullface", "");
-         return hx.a($$1);
+      @Override
+      public void a(fpz.c $$0, bky $$1, bjv $$2, float $$3, float $$4) {
+         if (!$$2.a().isEmpty()) {
+            float $$5 = ati.i($$2.a().get().a($$1, $$4), $$3, 15.0F);
+            $$0.b = $$0.a == fpz.d.a ? 0.0F : $$5 * 0.75F;
+            $$0.c = $$5;
+         }
+      }
+
+      @Override
+      public float a(bky $$0, bjv $$1, float $$2, float $$3) {
+         return $$1.a().isEmpty() ? 0.0F : 1.0F - $$1.a().get().a($$0, $$3);
+      }
+   }
+
+   static class c {
+      public final fpz.d a;
+      public float b;
+      public float c;
+      public emx d = emx.a;
+
+      public c(fpz.d $$0) {
+         this.a = $$0;
+      }
+   }
+
+   public static enum d {
+      a,
+      b;
+   }
+
+   interface e {
+      bjt a();
+
+      void a(fpz.c var1, bky var2, bjv var3, float var4, float var5);
+
+      default boolean a(bky $$0, float $$1) {
+         return $$0.a(this.a());
+      }
+
+      default float a(bky $$0, bjv $$1, float $$2, float $$3) {
+         bjv $$4 = $$0.b(this.a());
+         if ($$4 != null) {
+            if ($$4.a(19)) {
+               $$2 = 1.0F - (float)$$4.d() / 20.0F;
+            } else {
+               $$2 = 0.0F;
+            }
+         }
+
+         return $$2;
       }
    }
 }

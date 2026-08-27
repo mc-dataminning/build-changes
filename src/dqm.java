@@ -1,23 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqm implements dqs {
-   public static final Codec<dqm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bhg.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bhg.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dqm::new)
-   );
-   private final bhg b;
-   private final bhg c;
+public class dqm extends dpj<drv> {
+   private static final int a = 7;
 
-   public dqm(bhg $$0, bhg $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   dqm(Codec<drv> $$0) {
+      super($$0);
    }
 
-   public bhg a() {
-      return this.b;
+   @Override
+   public boolean a(dpl<drv> $$0) {
+      csm $$1 = $$0.b();
+      ato $$2 = $$0.d();
+      drv $$3 = $$0.f();
+      ht $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      ht.a $$6 = new ht.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dgw $$8 = $$1.a_($$6);
+
+         for (drv.a $$9 : $$3.b) {
+            if (dqe.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public bhg b() {
-      return this.c;
+   private void a(ht.a $$0, ato $$1, ht $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(ato $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

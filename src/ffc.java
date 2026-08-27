@@ -1,69 +1,32 @@
-public class ffc extends fgg<bvp> {
-   private final fiw a;
-   private final fiw b;
-   private final fiw f;
-   private final fiw g;
-   private final fiw h;
-   private final fiw i;
-   private final fiw j;
+import java.util.Map;
+import java.util.Optional;
 
-   public ffc(fiw $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.f = $$0.b("body");
-      this.g = this.f.b("right_wing");
-      this.i = this.g.b("right_wing_tip");
-      this.h = this.f.b("left_wing");
-      this.j = this.h.b("left_wing_tip");
+public interface ffc {
+   Map<Optional<agf<dwk>>, ffc> a = Map.of(Optional.of(dwl.b), ($$0, $$1) -> {
+      dit $$2 = $$1.d().a();
+      ip $$3 = $$1.a();
+      ic<csq> $$4 = $$3.b(jz.ar);
+      ic<dxb> $$5 = $$3.b(jz.aD);
+      ic<dvz> $$6 = $$3.b(jz.aA);
+      return new ezd($$0, $$1x -> $$0.l().a(a($$1x)), $$2 instanceof dma ? ((dma)$$2).g() : duy.a($$4, $$5, $$6));
+   }, Optional.of(dwl.e), ($$0, $$1) -> new ezc($$0, $$1, $$1x -> $$0.l().a(a($$1x))));
+
+   fah createEditScreen(fex var1, fff var2);
+
+   private static fff.a a(duy $$0) {
+      return ($$1, $$2) -> {
+         dit $$3 = new dma($$0);
+         return $$2.a($$1, $$3);
+      };
    }
 
-   public static fjc b() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      fjf $$2 = $$1.a("head", fjb.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fiy.a);
-      $$2.a("right_ear", fjb.c().a(24, 0).a(-4.0F, -6.0F, -2.0F, 3.0F, 4.0F, 1.0F), fiy.a);
-      $$2.a("left_ear", fjb.c().a(24, 0).a().a(1.0F, -6.0F, -2.0F, 3.0F, 4.0F, 1.0F), fiy.a);
-      fjf $$3 = $$1.a("body", fjb.c().a(0, 16).a(-3.0F, 4.0F, -3.0F, 6.0F, 12.0F, 6.0F).a(0, 34).a(-5.0F, 16.0F, 0.0F, 10.0F, 6.0F, 1.0F), fiy.a);
-      fjf $$4 = $$3.a("right_wing", fjb.c().a(42, 0).a(-12.0F, 1.0F, 1.5F, 10.0F, 16.0F, 1.0F), fiy.a);
-      $$4.a("right_wing_tip", fjb.c().a(24, 16).a(-8.0F, 1.0F, 0.0F, 8.0F, 12.0F, 1.0F), fiy.a(-12.0F, 1.0F, 1.5F));
-      fjf $$5 = $$3.a("left_wing", fjb.c().a(42, 0).a().a(2.0F, 1.0F, 1.5F, 10.0F, 16.0F, 1.0F), fiy.a);
-      $$5.a("left_wing_tip", fjb.c().a(24, 16).a().a(0.0F, 1.0F, 0.0F, 8.0F, 12.0F, 1.0F), fiy.a(12.0F, 1.0F, 1.5F));
-      return fjc.a($$0, 64, 64);
-   }
-
-   @Override
-   public fiw a() {
-      return this.a;
-   }
-
-   public void a(bvp $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      if ($$0.t()) {
-         this.b.e = $$5 * (float) (Math.PI / 180.0);
-         this.b.f = (float) Math.PI - $$4 * (float) (Math.PI / 180.0);
-         this.b.g = (float) Math.PI;
-         this.b.a(0.0F, -2.0F, 0.0F);
-         this.g.a(-3.0F, 0.0F, 3.0F);
-         this.h.a(3.0F, 0.0F, 3.0F);
-         this.f.e = (float) Math.PI;
-         this.g.e = (float) (-Math.PI / 20);
-         this.g.f = (float) (-Math.PI * 2.0 / 5.0);
-         this.i.f = -1.7278761F;
-         this.h.e = this.g.e;
-         this.h.f = -this.g.f;
-         this.j.f = -this.i.f;
-      } else {
-         this.b.e = $$5 * (float) (Math.PI / 180.0);
-         this.b.f = $$4 * (float) (Math.PI / 180.0);
-         this.b.g = 0.0F;
-         this.b.a(0.0F, 0.0F, 0.0F);
-         this.g.a(0.0F, 0.0F, 0.0F);
-         this.h.a(0.0F, 0.0F, 0.0F);
-         this.f.e = (float) (Math.PI / 4) + asy.b($$3 * 0.1F) * 0.15F;
-         this.f.f = 0.0F;
-         this.g.f = asy.b($$3 * 74.48451F * (float) (Math.PI / 180.0)) * (float) Math.PI * 0.25F;
-         this.h.f = -this.g.f;
-         this.i.f = this.g.f * 0.5F;
-         this.j.f = -this.g.f * 0.5F;
-      }
+   private static fff.a a(ib<csq> $$0) {
+      return ($$1, $$2) -> {
+         io<dmk> $$3 = $$1.d(jz.ay);
+         ib<dmk> $$4 = $$3.f(dmk.c);
+         csu $$5 = new ctb($$0);
+         dit $$6 = new dmi($$5, $$4);
+         return $$2.a($$1, $$6);
+      };
    }
 }

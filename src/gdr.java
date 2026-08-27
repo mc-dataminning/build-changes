@@ -1,67 +1,110 @@
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.BitSet;
+import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface gdr<T> {
-   static <T> gdr<T> a() {
-      return $$0 -> List.of();
+public class gdr implements gdi {
+   private final List<Pair<Predicate<dgw>, gdi>> g;
+   protected final boolean a;
+   protected final boolean b;
+   protected final boolean c;
+   protected final gbh d;
+   protected final frq e;
+   protected final fro f;
+   private final Map<dgw, BitSet> h = new Reference2ObjectOpenHashMap();
+
+   public gdr(List<Pair<Predicate<dgw>, gdi>> $$0) {
+      this.g = $$0;
+      gdi $$1 = (gdi)$$0.iterator().next().getRight();
+      this.a = $$1.a();
+      this.b = $$1.b();
+      this.c = $$1.c();
+      this.d = $$1.e();
+      this.e = $$1.f();
+      this.f = $$1.g();
    }
 
-   static <T> gdr<T> a(List<T> $$0, Function<T, Stream<String>> $$1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: invokeinterface java/util/List.isEmpty ()Z 1
-      // 06: ifeq 0d
-      // 09: invokestatic gdr.a ()Lgdr;
-      // 0c: areturn
-      // 0d: new gdw
-      // 10: dup
-      // 11: invokespecial gdw.<init> ()V
-      // 14: astore 2
-      // 15: aload 0
-      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
-      // 1b: astore 3
-      // 1c: aload 3
-      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
-      // 22: ifeq 48
-      // 25: aload 3
-      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-      // 2b: astore 4
-      // 2d: aload 1
-      // 2e: aload 4
-      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
-      // 35: checkcast java/util/stream/Stream
-      // 38: aload 2
-      // 39: aload 4
-      // 3b: invokedynamic accept (Lgdw;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, gdr.a (Lgdw;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
-      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
-      // 45: goto 1c
-      // 48: aload 2
-      // 49: invokevirtual gdw.a ()V
-      // 4c: aload 2
-      // 4d: dup
-      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 51: pop
-      // 52: invokedynamic search (Lgdw;)Lgdr; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, gdw.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
-      // 57: areturn
+   @Override
+   public List<fre> a(@Nullable dgw $$0, @Nullable hx $$1, ato $$2) {
+      if ($$0 == null) {
+         return Collections.emptyList();
+      } else {
+         BitSet $$3 = this.h.get($$0);
+         if ($$3 == null) {
+            $$3 = new BitSet();
+
+            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
+               Pair<Predicate<dgw>, gdi> $$5 = this.g.get($$4);
+               if (((Predicate)$$5.getLeft()).test($$0)) {
+                  $$3.set($$4);
+               }
+            }
+
+            this.h.put($$0, $$3);
+         }
+
+         List<fre> $$6 = Lists.newArrayList();
+         long $$7 = $$2.g();
+
+         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
+            if ($$3.get($$8)) {
+               $$6.addAll(((gdi)this.g.get($$8).getRight()).a($$0, $$1, ato.a($$7)));
+            }
+         }
+
+         return $$6;
+      }
    }
 
-   List<T> search(String var1);
+   @Override
+   public boolean a() {
+      return this.a;
+   }
+
+   @Override
+   public boolean b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   @Override
+   public boolean d() {
+      return false;
+   }
+
+   @Override
+   public gbh e() {
+      return this.d;
+   }
+
+   @Override
+   public frq f() {
+      return this.e;
+   }
+
+   @Override
+   public fro g() {
+      return this.f;
+   }
+
+   public static class a {
+      private final List<Pair<Predicate<dgw>, gdi>> a = Lists.newArrayList();
+
+      public void a(Predicate<dgw> $$0, gdi $$1) {
+         this.a.add(Pair.of($$0, $$1));
+      }
+
+      public gdi a() {
+         return new gdr(this.a);
+      }
+   }
 }

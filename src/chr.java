@@ -1,58 +1,28 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Objects;
-import javax.annotation.Nullable;
-
-public class chr {
-   private final String a;
-   @Nullable
-   private dgf b;
-   private boolean c;
-   private boolean d;
-
-   public chr(String $$0) {
-      this.a = $$0;
+public abstract class chr<C extends bij> extends cge {
+   public chr(chl<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   private static boolean a(dgf $$0, @Nullable dgf $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else {
-         return $$0.b() != null && $$1.b() != null ? Objects.equals($$0.b().n(), $$1.b().n()) : false;
-      }
+   public void a(boolean $$0, coh<?> $$1, amb $$2) {
+      new afu<>(this).a($$2, (coh<? extends cof<C>>)$$1, $$0);
    }
 
-   public boolean a(ckj $$0, io<cua> $$1, dgf $$2) {
-      if (a($$2, this.b, this.d)) {
-         return this.c;
-      } else {
-         this.b = $$2;
-         this.d = false;
-         rt $$3 = $$0.v();
-         if ($$3 != null && $$3.b(this.a, 9)) {
-            rz $$4 = $$3.c(this.a, 8);
+   public abstract void a(cdq var1);
 
-            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-               String $$6 = $$4.j($$5);
+   @Override
+   public abstract void l();
 
-               try {
-                  fi.b $$7 = fi.a($$1.p(), new StringReader($$6));
-                  this.d = this.d | $$7.a();
-                  if ($$7.test($$2)) {
-                     this.c = true;
-                     return true;
-                  }
-               } catch (CommandSyntaxException var9) {
-               }
-            }
-         }
+   public abstract boolean a(coh<? extends cof<C>> var1);
 
-         this.c = false;
-         return false;
-      }
-   }
+   public abstract int m();
+
+   public abstract int n();
+
+   public abstract int o();
+
+   public abstract int p();
+
+   public abstract chs t();
+
+   public abstract boolean e(int var1);
 }

@@ -1,29 +1,66 @@
 import com.mojang.serialization.Codec;
 
-public class dor extends doo<dqw> {
-   public dor(Codec<dqw> $$0) {
+public class dor extends dpj<dre> {
+   public dor(Codec<dre> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doq<dqw> $$0) {
-      ht $$1 = $$0.e();
-      dqw $$2 = $$0.f();
-      crt $$3 = $$0.b();
-      ht.a $$4 = new ht.a();
+   public boolean a(dpl<dre> $$0) {
+      csm $$1 = $$0.b();
+      dre $$2 = $$0.f();
+      ato $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.I_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
-            }
-         }
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
       }
 
-      return true;
+      if ($$6 == 0) {
+         return false;
+      } else {
+         ht.a $$8 = $$0.e().j();
+         ht.a $$9 = $$8.j().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               dre.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
+      }
    }
 }

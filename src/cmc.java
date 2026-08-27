@@ -1,12 +1,10 @@
-public enum cmc {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g,
-   h,
-   i,
-   j;
+public class cmc extends ckw {
+   public cmc(ckw.a $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean i(clb $$0) {
+      return true;
+   }
 }

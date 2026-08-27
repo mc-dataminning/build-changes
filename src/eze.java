@@ -1,91 +1,42 @@
-import javax.annotation.Nullable;
+public class eze extends fah {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final ur c = ur.c("credits_and_attribution.screen.title");
+   private static final ur k = ur.c("credits_and_attribution.button.credits");
+   private static final ur l = ur.c("credits_and_attribution.button.attribution");
+   private static final ur m = ur.c("credits_and_attribution.button.licenses");
+   private final fah n;
+   private final exw o = new exw(this);
 
-public class eze extends ezd {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final ui c = ui.c("selectWorld.allowCommands");
-   private static final ui k = ui.c("selectWorld.gameMode");
-   private static final ui l = ui.c("lanServer.otherPlayers");
-   private static final ui m = ui.c("lanServer.port");
-   private static final ui n = ui.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final ui o = ui.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int p = 16733525;
-   private final ezd q;
-   private cqw s = cqw.a;
-   private boolean t;
-   private int u = asp.a();
-   @Nullable
-   private ets v;
-
-   public eze(ezd $$0) {
-      super(ui.c("lanServer.title"));
-      this.q = $$0;
+   public eze(fah $$0) {
+      super(c);
+      this.n = $$0;
    }
 
    @Override
-   protected void aM_() {
-      gdz $$0 = this.f.T();
-      this.s = $$0.u_();
-      this.t = $$0.aT().o();
-      this.d(etq.a(cqw::e).a(cqw.a, cqw.d, cqw.b, cqw.c).a(this.s).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.s = $$1x));
-      this.d(etq.b(this.t).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.t = $$1x));
-      etj $$1 = etj.a(ui.c("lanServer.start"), $$1x -> {
-         this.f.a(null);
-         ui $$2;
-         if ($$0.a(this.s, this.t, this.u)) {
-            $$2 = aiu.a(this.u);
-         } else {
-            $$2 = ui.c("commands.publish.failed");
-         }
-
-         this.f.l.d().a($$2);
-         this.f.d();
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
-      this.v = new ets(this.i, this.g / 2 - 75, 160, 150, 20, ui.c("lanServer.port"));
-      this.v.b($$1x -> {
-         ui $$2 = this.a($$1x);
-         this.v.c(ui.b(this.u + "").a(n.i));
-         if ($$2 == null) {
-            this.v.m(14737632);
-            this.v.a(null);
-            $$1.i = true;
-         } else {
-            this.v.m(16733525);
-            this.v.a(euu.a($$2));
-            $$1.i = false;
-         }
-      });
-      this.v.c(ui.b(this.u + "").a(n.i));
-      this.d(this.v);
-      this.d($$1);
-      this.d(etj.a(uh.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
-   }
-
-   @Nullable
-   private ui a(String $$0) {
-      if ($$0.isBlank()) {
-         this.u = asp.a();
-         return null;
-      } else {
-         try {
-            this.u = Integer.parseInt($$0);
-            if (this.u < 1024 || this.u > 65535) {
-               return o;
-            } else {
-               return !asp.a(this.u) ? n : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.u = asp.a();
-            return o;
-         }
-      }
+   protected void aO_() {
+      this.o.a(new evt(this.m(), this.i));
+      eya $$0 = this.o.c(eya.d()).a(8);
+      $$0.c().b();
+      $$0.a(eum.a(k, $$0x -> this.l()).a(210).a());
+      $$0.a(eum.a(l, eyz.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(eum.a(m, eyz.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.o.b(eum.a(uq.d, $$0x -> this.aE_()).a());
+      this.o.a();
+      this.o.a(this::d);
    }
 
    @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      $$0.a(this.i, l, this.g / 2, 82, 16777215);
-      $$0.a(this.i, m, this.g / 2, 142, 16777215);
+   protected void c() {
+      this.o.a();
+   }
+
+   private void l() {
+      this.f.a(new fap(false, () -> this.f.a(this)));
+   }
+
+   @Override
+   public void aE_() {
+      this.f.a(this.n);
    }
 }

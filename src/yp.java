@@ -1,40 +1,32 @@
-public class yp implements wb<xu> {
-   private final int a;
-   private final int b;
-   private final int c;
+public class yp implements wk<yd> {
+   private final bin a;
+   private final boolean b;
 
-   public yp(int $$0, int $$1, int $$2) {
+   public yp(bin $$0, boolean $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public yp(tl $$0) {
-      this.a = $$0.readUnsignedByte();
-      this.b = $$0.readShort();
-      this.c = $$0.readShort();
+   public yp(tu $$0) {
+      this.a = bin.a($$0.readUnsignedByte());
+      this.b = $$0.readBoolean();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.k(this.a);
-      $$0.l(this.b);
-      $$0.l(this.c);
+   public void a(tu $$0) {
+      $$0.k(this.a.a());
+      $$0.a(this.b);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public int d() {
+   public boolean a() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   public bin d() {
+      return this.a;
    }
 }

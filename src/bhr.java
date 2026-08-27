@@ -1,147 +1,44 @@
-import java.util.UUID;
+import com.mojang.serialization.Codec;
 
-public abstract class bhr {
-   private final UUID h;
-   protected ui a;
-   protected float b;
-   protected bhr.a c;
-   protected bhr.b d;
-   protected boolean e;
-   protected boolean f;
-   protected boolean g;
+public class bhr extends bht {
+   public static final bhr a = new bhr(0.0F);
+   public static final Codec<bhr> b = asq.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bhr::new, bhr::d);
+   private final float d;
 
-   public bhr(UUID $$0, ui $$1, bhr.a $$2, bhr.b $$3) {
-      this.h = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.b = 1.0F;
+   public static bhr a(float $$0) {
+      return $$0 == 0.0F ? a : new bhr($$0);
    }
 
-   public UUID i() {
-      return this.h;
-   }
-
-   public ui j() {
-      return this.a;
-   }
-
-   public void a(ui $$0) {
-      this.a = $$0;
-   }
-
-   public float k() {
-      return this.b;
-   }
-
-   public void a(float $$0) {
-      this.b = $$0;
-   }
-
-   public bhr.a l() {
-      return this.c;
-   }
-
-   public void a(bhr.a $$0) {
-      this.c = $$0;
-   }
-
-   public bhr.b m() {
-      return this.d;
-   }
-
-   public void a(bhr.b $$0) {
+   private bhr(float $$0) {
       this.d = $$0;
    }
 
-   public boolean n() {
-      return this.e;
+   public float d() {
+      return this.d;
    }
 
-   public bhr a(boolean $$0) {
-      this.e = $$0;
-      return this;
+   @Override
+   public float a(ato $$0) {
+      return this.d;
    }
 
-   public boolean o() {
-      return this.f;
+   @Override
+   public float a() {
+      return this.d;
    }
 
-   public bhr b(boolean $$0) {
-      this.f = $$0;
-      return this;
+   @Override
+   public float b() {
+      return this.d + 1.0F;
    }
 
-   public bhr c(boolean $$0) {
-      this.g = $$0;
-      return this;
+   @Override
+   public bhu<?> c() {
+      return bhu.a;
    }
 
-   public boolean p() {
-      return this.g;
-   }
-
-   public static enum a {
-      a("pink", n.m),
-      b("blue", n.j),
-      c("red", n.e),
-      d("green", n.k),
-      e("yellow", n.o),
-      f("purple", n.b),
-      g("white", n.p);
-
-      private final String h;
-      private final n i;
-
-      private a(String $$0, n $$1) {
-         this.h = $$0;
-         this.i = $$1;
-      }
-
-      public n a() {
-         return this.i;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static bhr.a a(String $$0) {
-         for (bhr.a $$1 : values()) {
-            if ($$1.h.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return g;
-      }
-   }
-
-   public static enum b {
-      a("progress"),
-      b("notched_6"),
-      c("notched_10"),
-      d("notched_12"),
-      e("notched_20");
-
-      private final String f;
-
-      private b(String $$0) {
-         this.f = $$0;
-      }
-
-      public String a() {
-         return this.f;
-      }
-
-      public static bhr.b a(String $$0) {
-         for (bhr.b $$1 : values()) {
-            if ($$1.f.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return a;
-      }
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

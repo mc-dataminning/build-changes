@@ -1,53 +1,36 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record egz(ehc b, ehc c) implements ehc {
-   public static final Codec<egz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ehd.a.fieldOf("n").forGetter(egz::c), ehd.a.fieldOf("p").forGetter(egz::d)).apply($$0, egz::new)
-   );
+public class egz extends ehb {
+   public static final Codec<egz> a = a(egz::new);
 
-   @Override
-   public ehb b() {
-      return ehd.d;
+   egz(List<ehk> $$0) {
+      super($$0, ehm.b($$0));
    }
 
    @Override
-   public int a(edi $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      ate $$3 = $$0.b();
-      int $$4 = 0;
+   public ehl b() {
+      return ehm.c;
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
+   public static egz.a a(ehk.a... $$0) {
+      return new egz.a($$0);
+   }
+
+   public static class a extends ehb.a {
+      public a(ehk.a... $$0) {
+         super($$0);
       }
 
-      return $$4;
-   }
+      @Override
+      public egz.a or(ehk.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   @Override
-   public float b(edi $$0) {
-      return (float)this.a($$0);
-   }
-
-   public static egz a(int $$0, float $$1) {
-      return new egz(eha.a((float)$$0), eha.a($$1));
-   }
-
-   @Override
-   public Set<efq<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public ehc c() {
-      return this.b;
-   }
-
-   public ehc d() {
-      return this.c;
+      @Override
+      protected ehk a(List<ehk> $$0) {
+         return new egz($$0);
+      }
    }
 }

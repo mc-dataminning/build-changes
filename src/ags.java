@@ -1,72 +1,61 @@
-import it.unimi.dsi.fastutil.Stack;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ags {
-   private static final int a = 2;
+public class ags extends aph {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Gson b = new GsonBuilder().create();
+   private Map<agg, af> c = Map.of();
+   private ak d = new ak();
+   private final eeo e;
 
-   private static ags.b a(ae $$0, boolean $$1) {
-      Optional<aq> $$2 = $$0.d();
-      if ($$2.isEmpty()) {
-         return ags.b.b;
-      } else if ($$1) {
-         return ags.b.a;
-      } else {
-         return $$2.get().j() ? ags.b.b : ags.b.c;
-      }
+   public ags(eeo $$0) {
+      super(b, "advancements");
+      this.e = $$0;
    }
 
-   private static boolean a(Stack<ags.b> $$0) {
-      for (int $$1 = 0; $$1 <= 2; $$1++) {
-         ags.b $$2 = (ags.b)$$0.peek($$1);
-         if ($$2 == ags.b.a) {
-            return true;
+   protected void a(Map<agg, JsonElement> $$0, apd $$1, bfh $$2) {
+      Builder<agg, af> $$3 = ImmutableMap.builder();
+      $$0.forEach(($$1x, $$2x) -> {
+         try {
+            JsonObject $$3x = asy.m($$2x, "advancement");
+            ae $$4x = ae.a($$3x, new bg($$1x, this.e));
+            $$3.put($$1x, new af($$1x, $$4x));
+         } catch (Exception var6) {
+            a.error("Parsing error loading custom advancement {}: {}", $$1x, var6.getMessage());
          }
+      });
+      this.c = $$3.buildOrThrow();
+      ak $$4 = new ak();
+      $$4.a(this.c.values());
 
-         if ($$2 == ags.b.b) {
-            return false;
+      for (ag $$5 : $$4.b()) {
+         if ($$5.b().b().d().isPresent()) {
+            as.a($$5);
          }
       }
 
-      return false;
+      this.d = $$4;
    }
 
-   private static boolean a(ag $$0, Stack<ags.b> $$1, Predicate<ag> $$2, ags.a $$3) {
-      boolean $$4 = $$2.test($$0);
-      ags.b $$5 = a($$0.a(), $$4);
-      boolean $$6 = $$4;
-      $$1.push($$5);
-
-      for (ag $$7 : $$0.e()) {
-         $$6 |= a($$7, $$1, $$2, $$3);
-      }
-
-      boolean $$8 = $$6 || a($$1);
-      $$1.pop();
-      $$3.accept($$0, $$8);
-      return $$6;
+   @Nullable
+   public af a(agg $$0) {
+      return this.c.get($$0);
    }
 
-   public static void a(ag $$0, Predicate<ag> $$1, ags.a $$2) {
-      ag $$3 = $$0.d();
-      Stack<ags.b> $$4 = new ObjectArrayList();
-
-      for (int $$5 = 0; $$5 <= 2; $$5++) {
-         $$4.push(ags.b.c);
-      }
-
-      a($$3, $$4, $$1, $$2);
+   public ak a() {
+      return this.d;
    }
 
-   @FunctionalInterface
-   public interface a {
-      void accept(ag var1, boolean var2);
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
+   public Collection<af> b() {
+      return this.c.values();
    }
 }

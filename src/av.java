@@ -3,23 +3,23 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Collection;
 import java.util.Optional;
 
-public record av(Optional<arh<cua>> b, Optional<ig<cua>> c, Optional<da> d, Optional<cn> e) {
-   private static final Codec<ig<cua>> f = jy.f.r().listOf().xmap(ig::a, $$0 -> $$0.a().toList());
+public record av(Optional<arr<cut>> b, Optional<ig<cut>> c, Optional<da> d, Optional<cn> e) {
+   private static final Codec<ig<cut>> f = jy.f.r().listOf().xmap(ig::a, $$0 -> $$0.a().toList());
    public static final Codec<av> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               asg.a(arh.a(jz.e), "tag").forGetter(av::a),
-               asg.a(f, "blocks").forGetter(av::b),
-               asg.a(da.a, "state").forGetter(av::c),
-               asg.a(cn.a, "nbt").forGetter(av::d)
+               asq.a(arr.a(jz.e), "tag").forGetter(av::a),
+               asq.a(f, "blocks").forGetter(av::b),
+               asq.a(da.a, "state").forGetter(av::c),
+               asq.a(cn.a, "nbt").forGetter(av::d)
             )
             .apply($$0, av::new)
    );
 
-   public boolean a(alq $$0, ht $$1) {
+   public boolean a(ama $$0, ht $$1) {
       if (!$$0.o($$1)) {
          return false;
       } else {
-         dgb $$2 = $$0.a_($$1);
+         dgw $$2 = $$0.a_($$1);
          if (this.b.isPresent() && !$$2.a(this.b.get())) {
             return false;
          } else if (this.c.isPresent() && !$$2.a(this.c.get())) {
@@ -28,7 +28,7 @@ public record av(Optional<arh<cua>> b, Optional<ig<cua>> c, Optional<da> d, Opti
             return false;
          } else {
             if (this.e.isPresent()) {
-               ddx $$3 = $$0.c_($$1);
+               der $$3 = $$0.c_($$1);
                if ($$3 == null || !this.e.get().a($$3.m())) {
                   return false;
                }
@@ -39,11 +39,11 @@ public record av(Optional<arh<cua>> b, Optional<ig<cua>> c, Optional<da> d, Opti
       }
    }
 
-   public Optional<arh<cua>> a() {
+   public Optional<arr<cut>> a() {
       return this.b;
    }
 
-   public Optional<ig<cua>> b() {
+   public Optional<ig<cut>> b() {
       return this.c;
    }
 
@@ -56,8 +56,8 @@ public record av(Optional<arh<cua>> b, Optional<ig<cua>> c, Optional<da> d, Opti
    }
 
    public static class a {
-      private Optional<ig<cua>> a = Optional.empty();
-      private Optional<arh<cua>> b = Optional.empty();
+      private Optional<ig<cut>> a = Optional.empty();
+      private Optional<arr<cut>> b = Optional.empty();
       private Optional<da> c = Optional.empty();
       private Optional<cn> d = Optional.empty();
 
@@ -68,22 +68,22 @@ public record av(Optional<arh<cua>> b, Optional<ig<cua>> c, Optional<da> d, Opti
          return new av.a();
       }
 
-      public av.a a(cua... $$0) {
-         this.a = Optional.of(ig.a(cua::r, $$0));
+      public av.a a(cut... $$0) {
+         this.a = Optional.of(ig.a(cut::r, $$0));
          return this;
       }
 
-      public av.a a(Collection<cua> $$0) {
-         this.a = Optional.of(ig.a(cua::r, $$0));
+      public av.a a(Collection<cut> $$0) {
+         this.a = Optional.of(ig.a(cut::r, $$0));
          return this;
       }
 
-      public av.a a(arh<cua> $$0) {
+      public av.a a(arr<cut> $$0) {
          this.b = Optional.of($$0);
          return this;
       }
 
-      public av.a a(rt $$0) {
+      public av.a a(rz $$0) {
          this.d = Optional.of(new cn($$0));
          return this;
       }

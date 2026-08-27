@@ -1,24 +1,40 @@
-public class abi implements wb<xu> {
-   private final ui a;
+public class abi implements wk<yd> {
+   private final float a;
+   private final int b;
+   private final int c;
 
-   public abi(ui $$0) {
+   public abi(float $$0, int $$1, int $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public abi(tl $$0) {
-      this.a = $$0.m();
+   public abi(tu $$0) {
+      this.a = $$0.readFloat();
+      this.c = $$0.n();
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.a(this.a);
+      $$0.c(this.c);
+      $$0.c(this.b);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public ui a() {
+   public float a() {
       return this.a;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

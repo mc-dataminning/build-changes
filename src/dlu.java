@@ -1,68 +1,55 @@
-public final class dlu {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+public interface dlu extends ato {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-   private dlu() {
+   int c(int var1);
+
+   @Override
+   default int f() {
+      return this.c(32);
    }
 
-   protected static dlo.c a(dld $$0, dld $$1, dld $$2, dlx $$3) {
-      dgb $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dlu.a $$8 = $$6 > 0.0 ? dlu.a.a : dlu.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = asy.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               ate $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = asy.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
-   }
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
 
-   protected static enum a {
-      a(cuc.qN.o(), cuc.sf.o(), cuc.c.o(), 0, 50),
-      b(cuc.Q.o(), cuc.se.o(), cuc.qz.o(), -60, -8);
-
-      final dgb e;
-      final dgb f;
-      final dgb g;
-      protected final int c;
-      protected final int d;
-
-      private a(dgb $$0, dgb $$1, dgb $$2, int $$3, int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+         return $$2;
       }
+   }
+
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
+   }
+
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
+   }
+
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

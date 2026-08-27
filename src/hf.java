@@ -2,9 +2,9 @@ import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.ArgumentType;
 
 public interface hf<A extends ArgumentType<?>, T extends hf.a<A>> {
-   void a(T var1, tl var2);
+   void a(T var1, tu var2);
 
-   T b(tl var1);
+   T b(tu var1);
 
    void a(T var1, JsonObject var2);
 

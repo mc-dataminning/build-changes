@@ -1,42 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class bum extends buo<cck> {
-   private static final int a = 40;
-
-   public bum() {
-      super(40);
-   }
-
-   protected void a(alq $$0, cck $$1) {
-      afv<cqz> $$2 = $$0.ac();
-      ht $$3 = $$1.dl();
-      List<ia> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               ht $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gp().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(ia.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      blj<?> $$10 = $$1.dN();
-      if (!$$4.isEmpty()) {
-         $$10.a(btk.f, $$4);
-      } else {
-         $$10.b(btk.f);
-      }
-   }
-
+public class bum extends bvd<bkd> {
    @Override
-   public Set<btk<?>> a() {
-      return ImmutableSet.of(btk.f);
+   public Set<btz<?>> a() {
+      return ImmutableSet.of(btz.J, btz.h);
+   }
+
+   protected void a(ama $$0, bkd $$1) {
+      $$1.dN().c(btz.h).ifPresent($$1x -> this.a($$1, $$1x));
+   }
+
+   private void a(bkd $$0, bub $$1) {
+      Optional<bkd> $$2 = $$1.a($$1x -> $$1x.ag() == $$0.ag() && !$$1x.n_()).map(bkd.class::cast);
+      $$0.dN().a(btz.J, $$2);
    }
 }

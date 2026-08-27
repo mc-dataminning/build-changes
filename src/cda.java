@@ -1,83 +1,61 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
 
-public record cda(cda.a d) {
-   public static final ui a = ui.c("multiplayer.disconnect.expired_public_key");
-   private static final ui e = ui.c("multiplayer.disconnect.invalid_public_key_signature.new");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<cda> c = cda.a.a.xmap(cda::new, cda::b);
+public class cda {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] d = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cda> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jy.z.q().fieldOf("type").orElseGet(() -> cde.c).forGetter($$0x -> $$0x.e),
+               jy.A.q().fieldOf("profession").orElseGet(() -> cdc.b).forGetter($$0x -> $$0x.f),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, cda::new)
+   );
+   private final cde e;
+   private final cdc f;
+   private final int g;
 
-   public static cda a(atj $$0, UUID $$1, cda.a $$2) throws cda.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new cda.b(e);
-      } else {
-         return new cda($$2);
-      }
+   public cda(cde $$0, cdc $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = Math.max(1, $$2);
    }
 
-   public atj a() {
-      return atj.a(this.d.c, "SHA256withRSA");
+   public cde a() {
+      return this.e;
    }
 
-   public cda.a b() {
-      return this.d;
+   public cdc b() {
+      return this.f;
    }
 
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<cda.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  asg.m.fieldOf("expires_at").forGetter(cda.a::b), arx.f.fieldOf("key").forGetter(cda.a::c), asg.n.fieldOf("signature_v2").forGetter(cda.a::d)
-               )
-               .apply($$0, cda.a::new)
-      );
-
-      public a(tl $$0) {
-         this($$0.w(), $$0.x(), $$0.a(4096));
-      }
-
-      public void a(tl $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(atj $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cda.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
-      }
+   public int c() {
+      return this.g;
    }
 
-   public static class b extends vi {
-      public b(ui $$0) {
-         super($$0);
-      }
+   public cda a(cde $$0) {
+      return new cda($$0, this.f, this.g);
+   }
+
+   public cda a(cdc $$0) {
+      return new cda(this.e, $$0, this.g);
+   }
+
+   public cda a(int $$0) {
+      return new cda(this.e, this.f, $$0);
+   }
+
+   public static int b(int $$0) {
+      return d($$0) ? d[$$0 - 1] : 0;
+   }
+
+   public static int c(int $$0) {
+      return d($$0) ? d[$$0] : 0;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

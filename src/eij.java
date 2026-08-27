@@ -1,20 +1,8 @@
-public interface eij {
-   eij a = ($$0, $$1) -> false;
-   eij b = ($$0, $$1) -> !$$0 && !$$1;
-   eij c = ($$0, $$1) -> $$1 && !$$0;
-   eij d = ($$0, $$1) -> !$$0;
-   eij e = ($$0, $$1) -> $$0 && !$$1;
-   eij f = ($$0, $$1) -> !$$1;
-   eij g = ($$0, $$1) -> $$0 != $$1;
-   eij h = ($$0, $$1) -> !$$0 || !$$1;
-   eij i = ($$0, $$1) -> $$0 && $$1;
-   eij j = ($$0, $$1) -> $$0 == $$1;
-   eij k = ($$0, $$1) -> $$1;
-   eij l = ($$0, $$1) -> !$$0 || $$1;
-   eij m = ($$0, $$1) -> $$0;
-   eij n = ($$0, $$1) -> $$0 || !$$1;
-   eij o = ($$0, $$1) -> $$0 || $$1;
-   eij p = ($$0, $$1) -> true;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean apply(boolean var1, boolean var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eij {
 }

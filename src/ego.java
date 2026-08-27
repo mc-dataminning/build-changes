@@ -1,32 +1,28 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record ego(Optional<cb> b) implements egh {
-   public static final Codec<ego> a = RecordCodecBuilder.create($$0 -> $$0.group(asg.a(cb.a, "predicate").forGetter(ego::c)).apply($$0, ego::new));
+public class ego extends efx {
+   public static final Codec<ego> a = RecordCodecBuilder.create($$0 -> a($$0).and(jy.j.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, ego::new));
+   private final ib<cmy> b;
 
-   @Override
-   public egi b() {
-      return egj.k;
+   private ego(List<ehk> $$0, ib<cmy> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<efq<?>> a() {
-      return ImmutableSet.of(eft.i);
+   public efz b() {
+      return ega.z;
    }
 
-   public boolean a(edi $$0) {
-      ckj $$1 = $$0.c(eft.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   @Override
+   public clb a(clb $$0, eel $$1) {
+      cna.a($$0, this.b.a());
+      return $$0;
    }
 
-   public static egh.a a(cb.a $$0) {
-      return () -> new ego(Optional.of($$0.b()));
-   }
-
-   public Optional<cb> c() {
-      return this.b;
+   public static efx.a<?> a(cmy $$0) {
+      return a($$1 -> new ego($$1, $$0.c()));
    }
 }

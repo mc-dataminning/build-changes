@@ -1,22 +1,27 @@
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class azu extends auh {
-   private final Predicate<String> a;
-
-   public azu(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, $$1);
-      this.a = $$2.negate();
+public class azu extends ayv {
+   public azu(Schema $$0) {
+      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
    }
 
    @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.filter(this::a);
-   }
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<String> $$3 = $$2.get("Name").asString().result();
+         if ($$3.isPresent()) {
+            String $$4 = $$3.get();
+            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
+            $$2 = $$2.set("Name", $$2.createString($$4));
+         }
 
-   private <T> boolean a(Dynamic<T> $$0) {
-      return $$0.get("type").asString().result().filter(this.a).isPresent();
+         return $$0.set("display", $$2);
+      } else {
+         return $$0;
+      }
    }
 }

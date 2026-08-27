@@ -1,109 +1,186 @@
-import com.google.common.collect.Ordering;
-import java.util.Collection;
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class fat<T extends cfp> extends fac<T> {
-   private static final afw x = new afw("container/inventory/effect_background_large");
-   private static final afw y = new afw("container/inventory/effect_background_small");
+public class fat {
+   private final esr a;
+   private final fax b;
+   private final fau c;
+   private final int d;
+   private final ag e;
+   private final aq f;
+   private final clb g;
+   private final ur h;
+   private final fav i;
+   private final Map<af, fav> j = Maps.newLinkedHashMap();
+   private double k;
+   private double l;
+   private int m = Integer.MAX_VALUE;
+   private int n = Integer.MAX_VALUE;
+   private int o = Integer.MIN_VALUE;
+   private int p = Integer.MIN_VALUE;
+   private float q;
+   private boolean r;
 
-   public fat(T $$0, ccw $$1, ui $$2) {
-      super($$0, $$1, $$2);
+   public fat(esr $$0, fax $$1, fau $$2, int $$3, ag $$4, aq $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$5.c();
+      this.h = $$5.a();
+      this.i = new fav(this, $$0, $$4, $$5);
+      this.a(this.i, $$4.b());
    }
 
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2);
+   public fau a() {
+      return this.c;
    }
 
-   @Override
-   public boolean G() {
-      int $$0 = this.t + this.c + 2;
-      int $$1 = this.g - $$0;
-      return $$1 >= 32;
+   public int b() {
+      return this.d;
    }
 
-   private void c(esy $$0, int $$1, int $$2) {
-      int $$3 = this.t + this.c + 2;
-      int $$4 = this.g - $$3;
-      Collection<bjg> $$5 = this.f.s.er();
-      if (!$$5.isEmpty() && $$4 >= 32) {
-         boolean $$6 = $$4 >= 120;
-         int $$7 = 33;
-         if ($$5.size() > 5) {
-            $$7 = 132 / ($$5.size() - 1);
+   public ag c() {
+      return this.e;
+   }
+
+   public ur d() {
+      return this.h;
+   }
+
+   public aq e() {
+      return this.f;
+   }
+
+   public void a(eub $$0, int $$1, int $$2, boolean $$3) {
+      this.c.a($$0, $$1, $$2, $$3, this.d);
+   }
+
+   public void a(eub $$0, int $$1, int $$2) {
+      this.c.a($$0, $$1, $$2, this.d, this.g);
+   }
+
+   public void b(eub $$0, int $$1, int $$2) {
+      if (!this.r) {
+         this.k = (double)(117 - (this.o + this.m) / 2);
+         this.l = (double)(56 - (this.p + this.n) / 2);
+         this.r = true;
+      }
+
+      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
+      $$0.c().a();
+      $$0.c().a((float)$$1, (float)$$2, 0.0F);
+      agg $$3 = Objects.requireNonNullElse(this.f.d(), gbi.a);
+      int $$4 = ati.a(this.k);
+      int $$5 = ati.a(this.l);
+      int $$6 = $$4 % 16;
+      int $$7 = $$5 % 16;
+
+      for (int $$8 = -1; $$8 <= 15; $$8++) {
+         for (int $$9 = -1; $$9 <= 8; $$9++) {
+            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
          }
+      }
 
-         Iterable<bjg> $$8 = Ordering.natural().sortedCopy($$5);
-         this.a($$0, $$3, $$7, $$8, $$6);
-         this.b($$0, $$3, $$7, $$8, $$6);
-         if ($$6) {
-            this.a($$0, $$3, $$7, $$8);
-         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
-            int $$9 = this.u;
-            bjg $$10 = null;
+      this.i.a($$0, $$4, $$5, true);
+      this.i.a($$0, $$4, $$5, false);
+      this.i.a($$0, $$4, $$5);
+      $$0.c().b();
+      $$0.f();
+   }
 
-            for (bjg $$11 : $$8) {
-               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
-                  $$10 = $$11;
-               }
+   public void a(eub $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, -200.0F);
+      $$0.a(0, 0, 234, 113, ati.d(this.q * 255.0F) << 24);
+      boolean $$5 = false;
+      int $$6 = ati.a(this.k);
+      int $$7 = ati.a(this.l);
+      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
+         for (fav $$8 : this.j.values()) {
+            if ($$8.a($$6, $$7, $$1, $$2)) {
+               $$5 = true;
+               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
+               break;
+            }
+         }
+      }
 
-               $$9 += $$7;
+      $$0.c().b();
+      if ($$5) {
+         this.q = ati.a(this.q + 0.02F, 0.0F, 0.3F);
+      } else {
+         this.q = ati.a(this.q - 0.04F, 0.0F, 1.0F);
+      }
+   }
+
+   public boolean a(int $$0, int $$1, double $$2, double $$3) {
+      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   }
+
+   @Nullable
+   public static fat a(esr $$0, fax $$1, int $$2, ag $$3) {
+      Optional<aq> $$4 = $$3.a().d();
+      if ($$4.isEmpty()) {
+         return null;
+      } else {
+         for (fau $$5 : fau.values()) {
+            if ($$2 < $$5.a()) {
+               return new fat($$0, $$1, $$5, $$2, $$3, $$4.get());
             }
 
-            if ($$10 != null) {
-               List<ui> $$12 = List.of(this.a($$10), bjh.a($$10, 1.0F));
-               $$0.a(this.i, $$12, Optional.empty(), $$1, $$2);
-            }
-         }
-      }
-   }
-
-   private void a(esy $$0, int $$1, int $$2, Iterable<bjg> $$3, boolean $$4) {
-      int $$5 = this.u;
-
-      for (bjg $$6 : $$3) {
-         if ($$4) {
-            $$0.a(x, $$1, $$5, 120, 32);
-         } else {
-            $$0.a(y, $$1, $$5, 32, 32);
+            $$2 -= $$5.a();
          }
 
-         $$5 += $$2;
+         return null;
       }
    }
 
-   private void b(esy $$0, int $$1, int $$2, Iterable<bjg> $$3, boolean $$4) {
-      gay $$5 = this.f.aE();
-      int $$6 = this.u;
+   public void a(double $$0, double $$1) {
+      if (this.o - this.m > 234) {
+         this.k = ati.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+      }
 
-      for (bjg $$7 : $$3) {
-         bje $$8 = $$7.c();
-         gaa $$9 = $$5.a($$8);
-         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
-         $$6 += $$2;
+      if (this.p - this.n > 113) {
+         this.l = ati.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
       }
    }
 
-   private void a(esy $$0, int $$1, int $$2, Iterable<bjg> $$3) {
-      int $$4 = this.u;
-
-      for (bjg $$5 : $$3) {
-         ui $$6 = this.a($$5);
-         $$0.b(this.i, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
-         ui $$7 = bjh.a($$5, 1.0F);
-         $$0.b(this.i, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
-         $$4 += $$2;
+   public void a(ag $$0) {
+      Optional<aq> $$1 = $$0.a().d();
+      if (!$$1.isEmpty()) {
+         fav $$2 = new fav(this, this.a, $$0, $$1.get());
+         this.a($$2, $$0.b());
       }
    }
 
-   private ui a(bjg $$0) {
-      uw $$1 = $$0.c().e().f();
-      if ($$0.e() >= 1 && $$0.e() <= 9) {
-         $$1.b(uh.u).b(ui.c("enchantment.level." + ($$0.e() + 1)));
-      }
+   private void a(fav $$0, af $$1) {
+      this.j.put($$1, $$0);
+      int $$2 = $$0.d();
+      int $$3 = $$2 + 28;
+      int $$4 = $$0.c();
+      int $$5 = $$4 + 27;
+      this.m = Math.min(this.m, $$2);
+      this.o = Math.max(this.o, $$3);
+      this.n = Math.min(this.n, $$4);
+      this.p = Math.max(this.p, $$5);
 
-      return $$1;
+      for (fav $$6 : this.j.values()) {
+         $$6.b();
+      }
+   }
+
+   @Nullable
+   public fav a(af $$0) {
+      return this.j.get($$0);
+   }
+
+   public fax f() {
+      return this.b;
    }
 }

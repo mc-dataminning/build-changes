@@ -1,141 +1,322 @@
+import com.google.common.collect.Maps;
+import com.google.common.hash.Hashing;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
-import java.util.function.DoubleConsumer;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.slf4j.Logger;
 
-public class fdo extends etd {
-   private static final int a = 32;
-   private static final String b = "telemetry.event.required";
-   private static final String c = "telemetry.event.optional";
-   private static final ui d = ui.c("telemetry_info.property_title").a(n.t);
-   private final esw e;
-   private fdo.a l;
+public class fdo extends fah {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 200;
+   private static final ur c = ur.c("pack.dropInfo").a(n.h);
+   private static final ur k = ur.c("pack.folderInfo");
+   private static final int l = 20;
+   private static final agg m = new agg("textures/misc/unknown_pack.png");
+   private final fdn n;
    @Nullable
-   private DoubleConsumer m;
+   private fdo.a o;
+   private long p;
+   private fdp q;
+   private fdp r;
+   private final Path t;
+   private eum u;
+   private final Map<String, agg> v = Maps.newHashMap();
 
-   public fdo(int $$0, int $$1, int $$2, int $$3, esw $$4) {
-      super($$0, $$1, $$2, $$3, ui.i());
-      this.e = $$4;
-      this.l = this.c(ero.O().A());
+   public fdo(aoo $$0, Consumer<aoo> $$1, Path $$2, ur $$3) {
+      super($$3);
+      this.n = new fdn(this::D, this::a, $$0, $$1);
+      this.t = $$2;
+      this.o = fdo.a.a($$2);
    }
 
-   public void b(boolean $$0) {
-      this.l = this.c($$0);
-      this.a(this.c());
+   @Override
+   public void aE_() {
+      this.n.c();
+      this.C();
    }
 
-   private fdo.a c(boolean $$0) {
-      fdo.b $$1 = new fdo.b(this.v());
-      List<gev> $$2 = new ArrayList<>(gev.g());
-      $$2.sort(Comparator.comparing(gev::d));
-      if (!$$0) {
-         $$2.removeIf(gev::d);
+   private void C() {
+      if (this.o != null) {
+         try {
+            this.o.close();
+            this.o = null;
+         } catch (Exception var2) {
+         }
       }
+   }
 
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         gev $$4 = $$2.get($$3);
-         this.a($$1, $$4);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
+   @Override
+   protected void aO_() {
+      this.q = new fdp(this.f, this, 200, this.h, ur.c("pack.available.title"));
+      this.q.f(this.g / 2 - 4 - 200);
+      this.e(this.q);
+      this.r = new fdp(this.f, this, 200, this.h, ur.c("pack.selected.title"));
+      this.r.f(this.g / 2 + 4);
+      this.e(this.r);
+      this.d(eum.a(ur.c("pack.openFolder"), $$0 -> ac.i().a(this.t.toUri())).a(this.g / 2 - 154, this.h - 48, 150, 20).a(evx.a(k)).a());
+      this.u = this.d(eum.a(uq.d, $$0 -> this.aE_()).a(this.g / 2 + 4, this.h - 48, 150, 20).a());
+      this.E();
+   }
+
+   @Override
+   public void d() {
+      if (this.o != null) {
+         try {
+            if (this.o.a()) {
+               this.p = 20L;
+            }
+         } catch (IOException var2) {
+            a.warn("Failed to poll for directory {} changes, stopping", this.t);
+            this.C();
          }
       }
 
-      return $$1.a();
+      if (this.p > 0L && --this.p == 0L) {
+         this.E();
+      }
    }
 
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.m = $$0;
+   private void D() {
+      this.a(this.r, this.n.b());
+      this.a(this.q, this.n.a());
+      this.u.i = !this.r.i().isEmpty();
+   }
+
+   private void a(fdp $$0, Stream<fdn.a> $$1) {
+      $$0.i().clear();
+      fdp.a $$2 = $$0.f();
+      String $$3 = $$2 == null ? "" : $$2.b();
+      $$0.a(null);
+      $$1.forEach($$2x -> {
+         fdp.a $$3x = new fdp.a(this.f, $$0, $$2x);
+         $$0.i().add($$3x);
+         if ($$2x.c().equals($$3)) {
+            $$0.a($$3x);
+         }
+      });
+   }
+
+   public void a(fdp $$0) {
+      fdp $$1 = this.r == $$0 ? this.q : this.r;
+      this.a(ety.a($$1.g(), $$1, this));
+   }
+
+   public void l() {
+      this.r.a(null);
+      this.q.a(null);
+   }
+
+   private void E() {
+      this.n.d();
+      this.D();
+      this.p = 0L;
+      this.v.clear();
    }
 
    @Override
-   protected void a(double $$0) {
-      super.a($$0);
-      if (this.m != null) {
-         this.m.accept(this.c());
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.q.a($$0, $$1, $$2, $$3);
+      this.r.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      $$0.a(this.i, c, this.g / 2, 20, 16777215);
+   }
+
+   @Override
+   public void b(eub $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   protected static void a(esr $$0, List<Path> $$1, Path $$2) {
+      MutableBoolean $$3 = new MutableBoolean();
+      $$1.forEach($$2x -> {
+         try (Stream<Path> $$3x = Files.walk($$2x)) {
+            $$3x.forEach($$3xx -> {
+               try {
+                  ac.b($$2x.getParent(), $$2, $$3xx);
+               } catch (IOException var5) {
+                  a.warn("Failed to copy datapack file  from {} to {}", new Object[]{$$3xx, $$2, var5});
+                  $$3.setTrue();
+               }
+            });
+         } catch (IOException var8) {
+            a.warn("Failed to copy datapack file from {} to {}", $$2x, $$2);
+            $$3.setTrue();
+         }
+      });
+      if ($$3.isTrue()) {
+         ewt.c($$0, $$2.toString());
       }
    }
 
    @Override
-   protected int g() {
-      return this.l.a().i();
+   public void a(List<Path> $$0) {
+      String $$1 = a($$0).collect(Collectors.joining(", "));
+      this.f.a(new eza($$1x -> {
+         if ($$1x) {
+            List<Path> $$2 = new ArrayList<>($$0.size());
+            Set<Path> $$3 = new HashSet<>($$0);
+            aon<Path> $$4 = new aon<Path>(this.f.ba()) {
+               protected Path a(Path $$0) {
+                  return $$0;
+               }
+
+               protected Path b(Path $$0) {
+                  return $$0;
+               }
+            };
+            List<eiz> $$5 = new ArrayList<>();
+
+            for (Path $$6 : $$0) {
+               try {
+                  Path $$7 = $$4.a($$6, $$5);
+                  if ($$7 == null) {
+                     a.warn("Path {} does not seem like pack", $$6);
+                  } else {
+                     $$2.add($$7);
+                     $$3.remove($$7);
+                  }
+               } catch (IOException var10) {
+                  a.warn("Failed to check {} for packs", $$6, var10);
+               }
+            }
+
+            if (!$$5.isEmpty()) {
+               this.f.a(ezw.b(() -> this.f.a(this)));
+               return;
+            }
+
+            if (!$$2.isEmpty()) {
+               a(this.f, $$2, this.t);
+               this.E();
+            }
+
+            if (!$$3.isEmpty()) {
+               String $$9 = a($$3).collect(Collectors.joining(", "));
+               this.f.a(new eyu(() -> this.f.a(this), ur.c("pack.dropRejected.title"), ur.a("pack.dropRejected.message", $$9)));
+               return;
+            }
+         }
+
+         this.f.a(this);
+      }, ur.c("pack.dropConfirm"), ur.b($$1)));
    }
 
-   @Override
-   protected double h() {
-      return 9.0;
+   private static Stream<String> a(Collection<Path> $$0) {
+      return $$0.stream().map(Path::getFileName).map(Path::toString);
    }
 
-   @Override
-   protected void c(esy $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.r() + this.a();
-      int $$5 = this.p() + this.a();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.l.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
-   }
+   private agg a(gbi $$0, aol $$1) {
+      try {
+         agg var9;
+         try (anr $$2 = $$1.e()) {
+            aov<InputStream> $$3 = $$2.a("pack.png");
+            if ($$3 == null) {
+               return m;
+            }
 
-   @Override
-   protected void a(exc $$0) {
-      $$0.a(exb.a, this.l.b());
-   }
+            String $$4 = $$1.f();
+            agg $$5 = new agg("minecraft", "pack/" + ac.a($$4, agg::b) + "/" + Hashing.sha1().hashUnencodedChars($$4) + "/icon");
 
-   private void a(fdo.b $$0, gev $$1) {
-      String $$2 = $$1.d() ? "telemetry.event.optional" : "telemetry.event.required";
-      $$0.b(this.e, ui.a($$2, $$1.e()));
-      $$0.b(this.e, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.e, d, 2);
-      this.a($$1, $$0);
-   }
+            try (InputStream $$6 = $$3.get()) {
+               eml $$7 = eml.a($$6);
+               $$0.a($$5, new gau($$7));
+               var9 = $$5;
+            }
+         }
 
-   private void a(gev $$0, fdo.b $$1) {
-      for (gex<?> $$2 : $$0.b()) {
-         $$1.a(this.e, $$2.a());
+         return var9;
+      } catch (Exception var14) {
+         a.warn("Failed to load icon from pack {}", $$1.f(), var14);
+         return m;
       }
    }
 
-   private int v() {
-      return this.f - this.b();
+   private agg a(aol $$0) {
+      return this.v.computeIfAbsent($$0.f(), $$1 -> this.a(this.f.X(), $$0));
    }
 
-   static record a(ewu a, ui b) {
-   }
+   static class a implements AutoCloseable {
+      private final WatchService a;
+      private final Path b;
 
-   static class b {
-      private final int a;
-      private final ewx b;
-      private final uw c = ui.i();
+      public a(Path $$0) throws IOException {
+         this.b = $$0;
+         this.a = $$0.getFileSystem().newWatchService();
 
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = ewx.d();
-         this.b.c().a();
-         this.b.a(ewy.a($$0));
+         try {
+            this.b($$0);
+
+            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream($$0)) {
+               for (Path $$2 : $$1) {
+                  if (Files.isDirectory($$2, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$2);
+                  }
+               }
+            }
+         } catch (Exception var7) {
+            this.a.close();
+            throw var7;
+         }
       }
 
-      public void a(esw $$0, ui $$1) {
-         this.a($$0, $$1, 0);
+      @Nullable
+      public static fdo.a a(Path $$0) {
+         try {
+            return new fdo.a($$0);
+         } catch (IOException var2) {
+            fdo.a.warn("Failed to initialize pack directory {} monitoring", $$0, var2);
+            return null;
+         }
       }
 
-      public void a(esw $$0, ui $$1, int $$2) {
-         this.b.a(new eud($$1, $$0).j(this.a), $$1x -> $$1x.e($$2));
-         this.c.b($$1).f("\n");
+      private void b(Path $$0) throws IOException {
+         $$0.register(this.a, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
       }
 
-      public void b(esw $$0, ui $$1) {
-         this.b.a(new eud($$1, $$0).j(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
-         this.c.b($$1).f("\n");
+      public boolean a() throws IOException {
+         boolean $$0 = false;
+
+         WatchKey $$1;
+         while (($$1 = this.a.poll()) != null) {
+            for (WatchEvent<?> $$3 : $$1.pollEvents()) {
+               $$0 = true;
+               if ($$1.watchable() == this.b && $$3.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
+                  Path $$4 = this.b.resolve((Path)$$3.context());
+                  if (Files.isDirectory($$4, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$4);
+                  }
+               }
+            }
+
+            $$1.reset();
+         }
+
+         return $$0;
       }
 
-      public void a(int $$0) {
-         this.b.a(ewy.b($$0));
-      }
-
-      public fdo.a a() {
-         this.b.a();
-         return new fdo.a(this.b, this.c);
+      @Override
+      public void close() throws IOException {
+         this.a.close();
       }
    }
 }

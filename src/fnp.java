@@ -1,67 +1,53 @@
-public class fnp extends fnq {
-   private final ht a;
-   private final float b;
-   private final float F;
+public class fnp extends fnv {
+   private static final int a = 3;
+   private final fqn b;
+   private final bki D;
+   private final bki E;
+   private int F;
+   private final fvi G;
 
-   public fnp(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dgb $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, ht.a($$1, $$2, $$3));
+   public fnp(fvi $$0, fqn $$1, fkw $$2, bki $$3, bki $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.do());
    }
 
-   public fnp(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dgb $$7, ht $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(ero.O().an().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(cuc.i)) {
-         int $$9 = ero.O().aw().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
-      }
+   private fnp(fvi $$0, fqn $$1, fkw $$2, bki $$3, bki $$4, eji $$5) {
+      super($$2, $$3.dq(), $$3.ds(), $$3.dw(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+   }
 
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
+   private bki a(bki $$0) {
+      return (bki)(!($$0 instanceof caf) ? $$0 : ((caf)$$0).C());
    }
 
    @Override
-   public fmu b() {
-      return fmu.a;
+   public fnz b() {
+      return fnz.e;
    }
 
    @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
+   public void a(eno $$0, esc $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = ati.d((double)$$2, this.E.ac, this.E.dq());
+      double $$5 = ati.d((double)$$2, this.E.ad, (this.E.ds() + this.E.du()) / 2.0);
+      double $$6 = ati.d((double)$$2, this.E.ae, this.E.dw());
+      double $$7 = ati.d((double)$$3, this.D.dq(), $$4);
+      double $$8 = ati.d((double)$$3, this.D.ds(), $$5);
+      double $$9 = ati.d((double)$$3, this.D.dw(), $$6);
+      fqh.a $$10 = this.b.c();
+      eji $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dB(), $$2, new enk(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
    }
 
    @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.A(this.a) ? foz.a(this.c, this.a) : $$1;
-   }
-
-   public static class a implements fmt<jk> {
-      public fmq a(jk $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dgb $$8 = $$0.c();
-         return !$$8.i() && !$$8.a(cuc.bQ) && $$8.z() ? new fnp($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+   public void a() {
+      this.F++;
+      if (this.F == 3) {
+         this.k();
       }
    }
 }

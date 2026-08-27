@@ -1,99 +1,178 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Strings;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Locale;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eoc extends eod {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "http://";
-   private static final int c = 8080;
-   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
-   private final boolean e;
-   @Nullable
-   private final String f;
-   private final URI g;
+public interface eoc {
+   ur a = ur.c("mco.errorMessage.noDetails");
+   Logger b = LogUtils.getLogger();
 
-   private eoc(boolean $$0, @Nullable String $$1, URI $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
+   int a();
 
-   @Nullable
-   public static eoc a(String $$0) {
-      try {
-         JsonParser $$1 = new JsonParser();
-         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-         String $$3 = eqa.a("uploadEndpoint", $$2, null);
-         if ($$3 != null) {
-            int $$4 = eqa.a("port", $$2, -1);
-            URI $$5 = a($$3, $$4);
-            if ($$5 != null) {
-               boolean $$6 = eqa.a("worldClosed", $$2, false);
-               String $$7 = eqa.a("token", $$2, null);
-               return new eoc($$6, $$7, $$5);
-            }
-         }
-      } catch (Exception var8) {
-         a.error("Could not parse UploadInfo: {}", var8.getMessage());
-      }
+   ur b();
 
-      return null;
-   }
+   String c();
 
-   @Nullable
-   @VisibleForTesting
-   public static URI a(String $$0, int $$1) {
-      Matcher $$2 = d.matcher($$0);
-      String $$3 = a($$0, $$2);
-
-      try {
-         URI $$4 = new URI($$3);
-         int $$5 = a($$1, $$4.getPort());
-         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
-      } catch (URISyntaxException var6) {
-         a.warn("Failed to parse URI {}", $$3, var6);
-         return null;
-      }
-   }
-
-   private static int a(int $$0, int $$1) {
-      if ($$0 != -1) {
-         return $$0;
+   static eoc a(int $$0, String $$1) {
+      if ($$0 == 429) {
+         return eoc.b.c;
+      } else if (Strings.isNullOrEmpty($$1)) {
+         return eoc.b.b($$0);
       } else {
-         return $$1 != -1 ? $$1 : 8080;
+         try {
+            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
+            String $$3 = asy.a($$2, "reason", null);
+            String $$4 = asy.a($$2, "errorMsg", null);
+            int $$5 = asy.a($$2, "errorCode", -1);
+            if ($$4 != null || $$3 != null || $$5 != -1) {
+               return new eoc.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
+            }
+         } catch (Exception var6) {
+            b.error("Could not parse RealmsError", var6);
+         }
+
+         return new eoc.d($$0, $$1);
       }
    }
 
-   private static String a(String $$0, Matcher $$1) {
-      return $$1.find() ? $$0 : "http://" + $$0;
-   }
+   public static record a(String d) implements eoc {
+      public static final int c = 401;
 
-   public static String b(@Nullable String $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 != null) {
-         $$1.addProperty("token", $$0);
+      @Override
+      public int a() {
+         return 401;
       }
 
-      return $$1.toString();
+      @Override
+      public ur b() {
+         return ur.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
+      }
    }
 
-   @Nullable
-   public String a() {
-      return this.f;
+   public static record b(int e, @Nullable ur f) implements eoc {
+      public static final eoc.b c = new eoc.b(429, ur.c("mco.errorMessage.serviceBusy"));
+      public static final ur d = ur.c("mco.errorMessage.retry");
+
+      public static eoc.b a(String $$0) {
+         return new eoc.b(500, ur.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
+      }
+
+      public static eoc.b a(epm $$0) {
+         return new eoc.b(500, ur.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
+      }
+
+      public static eoc.b a(int $$0) {
+         return new eoc.b($$0, d);
+      }
+
+      public static eoc.b b(int $$0) {
+         return new eoc.b($$0, null);
+      }
+
+      @Override
+      public int a() {
+         return this.e;
+      }
+
+      @Override
+      public ur b() {
+         return this.f != null ? this.f : a;
+      }
+
+      @Override
+      public String c() {
+         return this.f != null
+            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
+            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      @Nullable
+      public ur e() {
+         return this.f;
+      }
    }
 
-   public URI b() {
-      return this.g;
+   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements eoc {
+      @Override
+      public int a() {
+         return this.d;
+      }
+
+      @Override
+      public ur b() {
+         String $$0 = "mco.errorMessage." + this.d;
+         if (gcn.a($$0)) {
+            return ur.c($$0);
+         } else {
+            if (this.e != null) {
+               String $$1 = "mco.errorReason." + this.e;
+               if (gcn.a($$1)) {
+                  return ur.c($$1);
+               }
+            }
+
+            return (ur)(this.f != null ? ur.b(this.f) : a);
+         }
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public int e() {
+         return this.d;
+      }
+
+      @Nullable
+      public String f() {
+         return this.e;
+      }
+
+      @Nullable
+      public String g() {
+         return this.f;
+      }
    }
 
-   public boolean c() {
-      return this.e;
+   public static record d(int c, String d) implements eoc {
+      @Override
+      public int a() {
+         return this.c;
+      }
+
+      @Override
+      public ur b() {
+         return ur.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public String e() {
+         return this.d;
+      }
    }
 }

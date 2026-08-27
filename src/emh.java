@@ -1,97 +1,51 @@
-import com.google.common.collect.Queues;
-import java.util.Deque;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
 public class emh {
-   private final Deque<emh.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
-      Matrix4f $$1 = new Matrix4f();
-      Matrix3f $$2 = new Matrix3f();
-      $$0.add(new emh.a($$1, $$2));
-   });
+   private static final int a = 8;
+   private static final int b = 16384;
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
+   public static void a(long $$0) {
+      c($$0).filter(emh::a).ifPresent(emh::c);
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      emh.a $$3 = this.a.getLast();
-      $$3.a.translate($$0, $$1, $$2);
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
    }
 
-   public void b(float $$0, float $$1, float $$2) {
-      emh.a $$3 = this.a.getLast();
-      $$3.a.scale($$0, $$1, $$2);
-      if ($$0 == $$1 && $$1 == $$2) {
-         if ($$0 > 0.0F) {
-            return;
-         }
-
-         $$3.b.scale(-1.0F);
-      }
-
-      float $$4 = 1.0F / $$0;
-      float $$5 = 1.0F / $$1;
-      float $$6 = 1.0F / $$2;
-      float $$7 = asy.j($$4 * $$5 * $$6);
-      $$3.b.scale($$7 * $$4, $$7 * $$5, $$7 * $$6);
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
    }
 
-   public void a(Quaternionf $$0) {
-      emh.a $$1 = this.a.getLast();
-      $$1.a.rotate($$0);
-      $$1.b.rotate($$0);
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
    }
 
-   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
-      emh.a $$4 = this.a.getLast();
-      $$4.a.rotateAround($$0, $$1, $$2, $$3);
-      $$4.b.rotate($$0);
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
    }
 
-   public void a() {
-      emh.a $$0 = this.a.getLast();
-      this.a.addLast(new emh.a(new Matrix4f($$0.a), new Matrix3f($$0.b)));
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
    }
 
-   public void b() {
-      this.a.removeLast();
-   }
-
-   public emh.a c() {
-      return this.a.getLast();
-   }
-
-   public boolean d() {
-      return this.a.size() == 1;
-   }
-
-   public void e() {
-      emh.a $$0 = this.a.getLast();
-      $$0.a.identity();
-      $$0.b.identity();
-   }
-
-   public void a(Matrix4f $$0) {
-      this.a.getLast().a.mul($$0);
-   }
-
-   public static final class a {
-      final Matrix4f a;
-      final Matrix3f b;
-
-      a(Matrix4f $$0, Matrix3f $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public Matrix4f a() {
-         return this.a;
-      }
-
-      public Matrix3f b() {
-         return this.b;
+   public static void a(aov<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
       }
    }
 }

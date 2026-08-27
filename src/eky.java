@@ -1,17 +1,29 @@
-import java.util.OptionalInt;
+public enum eky {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public class eky {
-   public final int a;
-   public final int b;
-   public final OptionalInt c;
-   public final OptionalInt d;
-   public final boolean e;
+   private final int h;
 
-   public eky(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   private eky(int $$0) {
+      this.h = $$0;
+   }
+
+   public static eky a(int $$0) {
+      for (eky $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
+      }
+
+      return $$0 < a.h ? a : g;
+   }
+
+   public int a() {
+      return this.h;
    }
 }

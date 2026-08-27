@@ -1,24 +1,40 @@
-public class fxj<T extends bkj, M extends fhc<T>> extends fyu<T, M> {
-   private final fub a;
+import javax.annotation.Nullable;
 
-   public fxj(fud.a $$0, fve<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+public class fxj extends fwq<cbg, fiv<cbg>> {
+   private static final agg a = new agg("textures/" + fqw.i.b().a() + ".png");
+   private static final agg[] i = fqw.j.stream().map($$0 -> new agg("textures/" + $$0.b().a() + ".png")).toArray(agg[]::new);
+
+   public fxj(fvk.a $$0) {
+      super($$0, new fiv<>($$0.a(fka.be)), 0.0F);
+      this.a(new fzv(this));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eN();
+   public eji a(cbg $$0, float $$1) {
+      return $$0.F($$1).orElse(super.a($$0, $$1));
    }
 
-   @Override
-   protected void a(emh $$0, fpb $$1, int $$2, bjt $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = asy.c($$4 * $$4 + $$6 * $$6);
-      cdf $$9 = new cdf($$3.dL(), $$3.dq(), $$3.ds(), $$3.dw());
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.N = $$9.dB();
-      $$9.O = $$9.dD();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   public boolean a(cbg $$0, ftj $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) ? true : $$0.F(0.0F).filter($$2x -> {
+         bkm<?> $$3x = $$0.ag();
+         float $$4x = $$3x.l() / 2.0F;
+         float $$5 = $$3x.k() / 2.0F;
+         eji $$6 = eji.c($$0.dl());
+         return $$1.a(new ejd($$2x.c, $$2x.d + (double)$$4x, $$2x.e, $$6.c, $$6.d + (double)$$4x, $$6.e).c((double)$$5, (double)$$4x, (double)$$5));
+      }).isPresent();
+   }
+
+   public agg a(cbg $$0) {
+      return a($$0.gf());
+   }
+
+   public static agg a(@Nullable cjp $$0) {
+      return $$0 == null ? a : i[$$0.a()];
+   }
+
+   protected void a(cbg $$0, enk $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3 + 180.0F, $$4);
+      $$1.a(0.0, 0.5, 0.0);
+      $$1.a($$0.y().g().b());
+      $$1.a(0.0, -0.5, 0.0);
    }
 }

@@ -1,112 +1,49 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class duc {
-   public static final afv<dub> a = a("classic_flat");
-   public static final afv<dub> b = a("tunnelers_dream");
-   public static final afv<dub> c = a("water_world");
-   public static final afv<dub> d = a("overworld");
-   public static final afv<dub> e = a("snowy_kingdom");
-   public static final afv<dub> f = a("bottomless_pit");
-   public static final afv<dub> g = a("desert");
-   public static final afv<dub> h = a("redstone_ready");
-   public static final afv<dub> i = a("the_void");
+public class duc extends duf {
+   public static final Codec<duc> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(duc::new, $$0 -> $$0.d).codec();
+   private static final hx b = hx.d;
+   private static final hx[] c = hx.c.a.a().filter($$0 -> $$0 != b.g()).toArray(hx[]::new);
+   private final float d;
 
-   public static void a(oo<dub> $$0) {
-      new duc.a($$0).a();
+   public duc(float $$0) {
+      this.d = $$0;
    }
 
-   private static afv<dub> a(String $$0) {
-      return afv.a(jz.aw, new afw($$0));
+   @Override
+   protected dug<?> a() {
+      return dug.d;
    }
 
-   static class a {
-      private final oo<dub> a;
+   @Override
+   public void a(duf.a $$0) {
+      ato $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<ht> $$2 = $$0.d();
+         List<ht> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<ht> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<ht> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), cuv.pe.o().a(cun.b, b));
+               $$0.a().a($$6.get(), det.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
 
-      a(oo<dub> $$0) {
-         this.a = $$0;
-      }
-
-      private void a(afv<dub> $$0, cqy $$1, afv<crx> $$2, Set<afv<dwg>> $$3, boolean $$4, boolean $$5, dua... $$6) {
-         ic<dwg> $$7 = this.a.a(jz.aC);
-         ic<dve> $$8 = this.a.a(jz.az);
-         ic<crx> $$9 = this.a.a(jz.aq);
-         ig.a<dwg> $$10 = ig.a($$3.stream().map($$7::b).collect(Collectors.toList()));
-         dud $$11 = new dud(Optional.of($$10), $$9.b($$2), dud.b($$8));
-         if ($$4) {
-            $$11.a();
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     rz $$4x = new rz();
+                     $$4x.a("id", jy.h.b(bkm.h).toString());
+                     $$1x.a($$4x, $$1.a(599), false);
+                  }
+               });
+            }
          }
-
-         if ($$5) {
-            $$11.b();
-         }
-
-         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
-            $$11.e().add($$6[$$12]);
-         }
-
-         this.a.a($$0, new dub($$1.k().j(), $$11));
-      }
-
-      public void a() {
-         this.a(duc.a, cuc.i, cse.b, ImmutableSet.of(dvt.a), false, false, new dua(1, cuc.i), new dua(2, cuc.j), new dua(1, cuc.F));
-         this.a(duc.b, cuc.b, cse.t, ImmutableSet.of(dvt.j, dvt.r), true, false, new dua(1, cuc.i), new dua(5, cuc.j), new dua(230, cuc.b), new dua(1, cuc.F));
-         this.a(
-            duc.c,
-            ckm.pL,
-            cse.T,
-            ImmutableSet.of(dvt.m, dvt.l, dvt.g),
-            false,
-            false,
-            new dua(90, cuc.G),
-            new dua(5, cuc.L),
-            new dua(5, cuc.j),
-            new dua(5, cuc.b),
-            new dua(64, cuc.rI),
-            new dua(1, cuc.F)
-         );
-         this.a(
-            duc.d,
-            cuc.bt,
-            cse.b,
-            ImmutableSet.of(dvt.a, dvt.j, dvt.f, dvt.k, dvt.r),
-            true,
-            true,
-            new dua(1, cuc.i),
-            new dua(3, cuc.j),
-            new dua(59, cuc.b),
-            new dua(1, cuc.F)
-         );
-         this.a(
-            duc.e,
-            cuc.dN,
-            cse.d,
-            ImmutableSet.of(dvt.a, dvt.c),
-            false,
-            false,
-            new dua(1, cuc.dN),
-            new dua(1, cuc.i),
-            new dua(3, cuc.j),
-            new dua(59, cuc.b),
-            new dua(1, cuc.F)
-         );
-         this.a(duc.f, ckm.oF, cse.b, ImmutableSet.of(dvt.a), false, false, new dua(1, cuc.i), new dua(3, cuc.j), new dua(2, cuc.m));
-         this.a(
-            duc.g,
-            cuc.I,
-            cse.f,
-            ImmutableSet.of(dvt.a, dvt.b, dvt.j, dvt.r),
-            true,
-            false,
-            new dua(8, cuc.I),
-            new dua(52, cuc.aV),
-            new dua(3, cuc.b),
-            new dua(1, cuc.F)
-         );
-         this.a(duc.h, ckm.ll, cse.f, ImmutableSet.of(), false, false, new dua(116, cuc.aV), new dua(3, cuc.b), new dua(1, cuc.F));
-         this.a(duc.i, cuc.hW, cse.a, ImmutableSet.of(), true, false, new dua(1, cuc.a));
       }
    }
 }

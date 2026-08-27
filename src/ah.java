@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 public class ah implements Comparable<ah> {
    private static final DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   private static final Codec<Instant> c = asg.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
+   private static final Codec<Instant> c = asq.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
    private static final Codec<Map<String, an>> d = Codec.unboundedMap(Codec.STRING, c)
       .xmap(
          $$0 -> $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$0x -> new an((Instant)$$0x.getValue()))),
@@ -28,7 +28,7 @@ public class ah implements Comparable<ah> {
                .collect(Collectors.toMap(Entry::getKey, $$0x -> Objects.requireNonNull(((an)$$0x.getValue()).d())))
       );
    public static final Codec<ah> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asg.a(d, "criteria", Map.of()).forGetter($$0x -> $$0x.e), Codec.BOOL.fieldOf("done").orElse(true).forGetter(ah::a))
+      $$0 -> $$0.group(asq.a(d, "criteria", Map.of()).forGetter($$0x -> $$0x.e), Codec.BOOL.fieldOf("done").orElse(true).forGetter(ah::a))
             .apply($$0, ($$0x, $$1) -> new ah(new HashMap<>($$0x)))
    );
    private final Map<String, an> e;
@@ -92,12 +92,12 @@ public class ah implements Comparable<ah> {
       return "AdvancementProgress{criteria=" + this.e + ", requirements=" + this.f + "}";
    }
 
-   public void a(tl $$0) {
-      $$0.a(this.e, tl::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(tu $$0) {
+      $$0.a(this.e, tu::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static ah b(tl $$0) {
-      Map<String, an> $$1 = $$0.a(tl::s, an::b);
+   public static ah b(tu $$0) {
+      Map<String, an> $$1 = $$0.a(tu::s, an::b);
       return new ah($$1);
    }
 
@@ -122,7 +122,7 @@ public class ah implements Comparable<ah> {
    }
 
    @Nullable
-   public ui d() {
+   public ur d() {
       if (this.e.isEmpty()) {
          return null;
       } else {
@@ -131,7 +131,7 @@ public class ah implements Comparable<ah> {
             return null;
          } else {
             int $$1 = this.h();
-            return ui.a("advancements.progress", $$1, $$0);
+            return ur.a("advancements.progress", $$1, $$0);
          }
       }
    }

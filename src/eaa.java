@@ -1,18 +1,20 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class eaa implements eab {
-   public static final eaa a = new eaa();
-   public static final Codec<eaa> b = Codec.unit(a);
+public class eaa extends eap {
+   public static final Codec<eaa> a = dgw.b.fieldOf("block_state").xmap(eaa::new, $$0 -> $$0.b).codec();
+   private final dgw b;
 
-   @Nullable
-   @Override
-   public rt a(ate $$0, @Nullable rt $$1) {
-      return $$1;
+   public eaa(dgw $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public eac<?> a() {
-      return eac.b;
+   public boolean a(dgw $$0, ato $$1) {
+      return $$0 == this.b;
+   }
+
+   @Override
+   protected eaq<?> a() {
+      return eaq.c;
    }
 }

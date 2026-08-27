@@ -1,105 +1,15 @@
-public class fhy<T extends bjt> extends fgg<T> {
-   private static final String a = "body0";
-   private static final String b = "body1";
-   private static final String f = "right_middle_front_leg";
-   private static final String g = "left_middle_front_leg";
-   private static final String h = "right_middle_hind_leg";
-   private static final String i = "left_middle_hind_leg";
-   private final fiw j;
-   private final fiw k;
-   private final fiw l;
-   private final fiw m;
-   private final fiw n;
-   private final fiw o;
-   private final fiw p;
-   private final fiw q;
-   private final fiw r;
-   private final fiw s;
+import java.util.function.Function;
 
-   public fhy(fiw $$0) {
-      this.j = $$0;
-      this.k = $$0.b("head");
-      this.l = $$0.b("right_hind_leg");
-      this.m = $$0.b("left_hind_leg");
-      this.n = $$0.b("right_middle_hind_leg");
-      this.o = $$0.b("left_middle_hind_leg");
-      this.p = $$0.b("right_middle_front_leg");
-      this.q = $$0.b("left_middle_front_leg");
-      this.r = $$0.b("right_front_leg");
-      this.s = $$0.b("left_front_leg");
+public abstract class fhy {
+   protected final Function<agg, fqp> v;
+
+   public fhy(Function<agg, fqp> $$0) {
+      this.v = $$0;
    }
 
-   public static fjc b() {
-      fje $$0 = new fje();
-      fjf $$1 = $$0.a();
-      int $$2 = 15;
-      $$1.a("head", fjb.c().a(32, 4).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F), fiy.a(0.0F, 15.0F, -3.0F));
-      $$1.a("body0", fjb.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fiy.a(0.0F, 15.0F, 0.0F));
-      $$1.a("body1", fjb.c().a(0, 12).a(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F), fiy.a(0.0F, 15.0F, 9.0F));
-      fjb $$3 = fjb.c().a(18, 0).a(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
-      fjb $$4 = fjb.c().a(18, 0).a().a(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
-      $$1.a("right_hind_leg", $$3, fiy.a(-4.0F, 15.0F, 2.0F));
-      $$1.a("left_hind_leg", $$4, fiy.a(4.0F, 15.0F, 2.0F));
-      $$1.a("right_middle_hind_leg", $$3, fiy.a(-4.0F, 15.0F, 1.0F));
-      $$1.a("left_middle_hind_leg", $$4, fiy.a(4.0F, 15.0F, 1.0F));
-      $$1.a("right_middle_front_leg", $$3, fiy.a(-4.0F, 15.0F, 0.0F));
-      $$1.a("left_middle_front_leg", $$4, fiy.a(4.0F, 15.0F, 0.0F));
-      $$1.a("right_front_leg", $$3, fiy.a(-4.0F, 15.0F, -1.0F));
-      $$1.a("left_front_leg", $$4, fiy.a(4.0F, 15.0F, -1.0F));
-      return fjc.a($$0, 64, 32);
+   public final fqp a(agg $$0) {
+      return this.v.apply($$0);
    }
 
-   @Override
-   public fiw a() {
-      return this.j;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.k.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = $$5 * (float) (Math.PI / 180.0);
-      float $$6 = (float) (Math.PI / 4);
-      this.l.g = (float) (-Math.PI / 4);
-      this.m.g = (float) (Math.PI / 4);
-      this.n.g = -0.58119464F;
-      this.o.g = 0.58119464F;
-      this.p.g = -0.58119464F;
-      this.q.g = 0.58119464F;
-      this.r.g = (float) (-Math.PI / 4);
-      this.s.g = (float) (Math.PI / 4);
-      float $$7 = -0.0F;
-      float $$8 = (float) (Math.PI / 8);
-      this.l.f = (float) (Math.PI / 4);
-      this.m.f = (float) (-Math.PI / 4);
-      this.n.f = (float) (Math.PI / 8);
-      this.o.f = (float) (-Math.PI / 8);
-      this.p.f = (float) (-Math.PI / 8);
-      this.q.f = (float) (Math.PI / 8);
-      this.r.f = (float) (-Math.PI / 4);
-      this.s.f = (float) (Math.PI / 4);
-      float $$9 = -(asy.b($$1 * 0.6662F * 2.0F + 0.0F) * 0.4F) * $$2;
-      float $$10 = -(asy.b($$1 * 0.6662F * 2.0F + (float) Math.PI) * 0.4F) * $$2;
-      float $$11 = -(asy.b($$1 * 0.6662F * 2.0F + (float) (Math.PI / 2)) * 0.4F) * $$2;
-      float $$12 = -(asy.b($$1 * 0.6662F * 2.0F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
-      float $$13 = Math.abs(asy.a($$1 * 0.6662F + 0.0F) * 0.4F) * $$2;
-      float $$14 = Math.abs(asy.a($$1 * 0.6662F + (float) Math.PI) * 0.4F) * $$2;
-      float $$15 = Math.abs(asy.a($$1 * 0.6662F + (float) (Math.PI / 2)) * 0.4F) * $$2;
-      float $$16 = Math.abs(asy.a($$1 * 0.6662F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
-      this.l.f += $$9;
-      this.m.f += -$$9;
-      this.n.f += $$10;
-      this.o.f += -$$10;
-      this.p.f += $$11;
-      this.q.f += -$$11;
-      this.r.f += $$12;
-      this.s.f += -$$12;
-      this.l.g += $$13;
-      this.m.g += -$$13;
-      this.n.g += $$14;
-      this.o.g += -$$14;
-      this.p.g += $$15;
-      this.q.g += -$$15;
-      this.r.g += $$16;
-      this.s.g += -$$16;
-   }
+   public abstract void a(enk var1, eno var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

@@ -1,163 +1,24 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class fdg extends fdk {
+   private static final ur b = ur.c("title.32bit.deprecation.realms.header").a(n.r);
+   private static final ur c = ur.c("title.32bit.deprecation.realms");
+   private static final ur k = ur.c("title.32bit.deprecation.realms.check");
+   private static final ur l = b.f().f("\n").b(c);
+   private final fah m;
 
-public class fdg extends ezd {
-   private static final ui a = ui.c("gui.abuseReport.reason.title");
-   private static final ui b = ui.c("gui.abuseReport.reason.description");
-   private static final ui c = ui.c("gui.abuseReport.read_info");
-   private static final int k = 95;
-   private static final int l = 150;
-   private static final int m = 20;
-   private static final int n = 320;
-   private static final int o = 4;
-   @Nullable
-   private final ezd p;
-   @Nullable
-   private fdg.a q;
-   @Nullable
-   fks s;
-   private final Consumer<fks> t;
-
-   public fdg(@Nullable ezd $$0, @Nullable fks $$1, Consumer<fks> $$2) {
-      super(a);
-      this.p = $$0;
-      this.s = $$1;
-      this.t = $$2;
+   public fdg(fah $$0) {
+      super(b, c, k, l);
+      this.m = $$0;
    }
 
    @Override
-   protected void aM_() {
-      this.q = new fdg.a(this.f);
-      this.e(this.q);
-      fdg.a.a $$0 = x.a(this.s, this.q::a);
-      this.q.a($$0);
-      int $$1 = this.g / 2 - 150 - 5;
-      this.d(etj.a(c, $$0x -> this.f.a(new exw($$0xx -> {
-            if ($$0xx) {
-               ac.i().a("https://aka.ms/aboutjavareporting");
-            }
-
-            this.f.a(this);
-         }, "https://aka.ms/aboutjavareporting", true))).a($$1, this.l(), 150, 20).a());
-      int $$2 = this.g / 2 + 5;
-      this.d(etj.a(uh.d, $$0x -> {
-         fdg.a.a $$1x = this.q.f();
-         if ($$1x != null) {
-            this.t.accept($$1x.b());
+   protected void a(int $$0) {
+      this.d(eum.a(uq.d, $$0x -> {
+         if (this.a.a()) {
+            this.f.m.w = true;
+            this.f.m.as();
          }
 
-         this.f.a(this.p);
-      }).a($$2, this.l(), 150, 20).a());
-      super.aM_();
-   }
-
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.q.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.C(), this.E(), this.D(), this.F(), 2130706432);
-      $$0.b(this.i, b, this.C() + 4, this.E() + 4, -8421505);
-      fdg.a.a $$4 = this.q.f();
-      if ($$4 != null) {
-         int $$5 = this.C() + 4 + 16;
-         int $$6 = this.D() - 4;
-         int $$7 = this.E() + 4 + 9 + 2;
-         int $$8 = this.F() - 4;
-         int $$9 = $$6 - $$5;
-         int $$10 = $$8 - $$7;
-         int $$11 = this.i.b($$4.b.c(), $$9);
-         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
-      }
-   }
-
-   @Override
-   public void b(esy $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   private int l() {
-      return this.h - 20 - 4;
-   }
-
-   private int C() {
-      return (this.g - 320) / 2;
-   }
-
-   private int D() {
-      return (this.g + 320) / 2;
-   }
-
-   private int E() {
-      return this.h - 95 + 4;
-   }
-
-   private int F() {
-      return this.l() - 4;
-   }
-
-   @Override
-   public void aC_() {
-      this.f.a(this.p);
-   }
-
-   public class a extends euf<fdg.a.a> {
-      public a(ero $$1) {
-         super($$1, fdg.this.g, fdg.this.h, 40, fdg.this.h - 95, 18);
-
-         for (fks $$2 : fks.values()) {
-            this.b(new fdg.a.a($$2));
-         }
-      }
-
-      @Nullable
-      public fdg.a.a a(fks $$0) {
-         return this.i().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
-      }
-
-      @Override
-      public int b() {
-         return 320;
-      }
-
-      @Override
-      protected int c() {
-         return this.p() - 2;
-      }
-
-      public void a(@Nullable fdg.a.a $$0) {
-         super.a($$0);
-         fdg.this.s = $$0 != null ? $$0.b() : null;
-      }
-
-      public class a extends euf.a<fdg.a.a> {
-         final fks b;
-
-         public a(fks $$1) {
-            this.b = $$1;
-         }
-
-         @Override
-         public void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 + 1;
-            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
-            $$0.b(fdg.this.i, this.b.b(), $$10, $$11, -1);
-         }
-
-         @Override
-         public ui a() {
-            return ui.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
-
-         public fks b() {
-            return this.b;
-         }
-      }
+         this.f.a(this.m);
+      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
    }
 }

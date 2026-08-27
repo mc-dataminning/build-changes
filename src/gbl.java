@@ -1,58 +1,25 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class gbl {
-   public static final gbm a = new gbm();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final gbl e = new gbl(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public gbn a(int $$0, int $$1) {
-         return new gbn($$0, $$1);
-      }
-   };
-   private final List<gbk> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
+public interface gbl {
+   afz a = new afz("textures", ".png");
 
-   public gbl(List<gbk> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-   }
+   void a(apd var1, gbl.a var2);
 
-   public gbn a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new gbn(this.g, this.h) : new gbn(this.g, $$1);
-      } else if (this.h != -1) {
-         return new gbn($$0, this.h);
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new gbn($$2, $$2);
-      }
-   }
+   gbn a();
 
-   public int a() {
-      return this.i;
-   }
-
-   public boolean b() {
-      return this.j;
-   }
-
-   public void a(gbl.a $$0) {
-      for (gbk $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
-      }
-   }
-
-   @FunctionalInterface
    public interface a {
-      void accept(int var1, int var2);
+      default void a(agg $$0, apb $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(agg var1, gbl.b var2);
+
+      void a(Predicate<agg> var1);
+   }
+
+   public interface b extends Function<gbk, gbb> {
+      default void a() {
+      }
    }
 }

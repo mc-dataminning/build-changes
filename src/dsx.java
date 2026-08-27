@@ -1,40 +1,51 @@
-import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class dsx extends dsw {
-   public static final Codec<dsx> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dsx::new));
-   protected final List<dgb> h;
+public class dsx extends dsz {
+   public static final Codec<dsx> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dsx::new));
 
-   protected static <P extends dsx> P4<Mu<P>, Long, eah.a, Float, List<dgb>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dgb.b).fieldOf("states").forGetter($$0x -> $$0x.h));
-   }
-
-   public dsx(long $$0, eah.a $$1, float $$2, List<dgb> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public dsx(bhv $$0, bhv $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected dsu<?> a() {
-      return dsu.d;
+   protected dta<?> a() {
+      return dta.i;
    }
 
    @Override
-   public dgb a(ate $$0, ht $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   protected void a(cry $$0, dsz.b $$1, ato $$2, dsj $$3, int $$4, dsz.a $$5, int $$6, int $$7, int $$8) {
+      ht $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+         }
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
+      }
    }
 
-   protected dgb a(List<dgb> $$0, ht $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
+   @Override
+   public int a(ato $$0, int $$1, dsj $$2) {
+      return 4;
    }
 
-   protected dgb a(List<dgb> $$0, double $$1) {
-      double $$2 = asy.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   @Override
+   protected boolean b(ato $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   }
+
+   @Override
+   protected boolean a(ato $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

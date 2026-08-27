@@ -1,50 +1,90 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
-public class end extends eod {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public Date b;
-   public long c;
-   private boolean g;
-   public Map<String, String> d = Maps.newHashMap();
-   public Map<String, String> e = Maps.newHashMap();
+public class end {
+   private int a;
 
-   public static end a(JsonElement $$0) {
-      JsonObject $$1 = $$0.getAsJsonObject();
-      end $$2 = new end();
+   public static Optional<end> a() {
+      return end.b.a;
+   }
 
-      try {
-         $$2.a = eqa.a("backupId", $$1, "");
-         $$2.b = eqa.b("lastModifiedDate", $$1);
-         $$2.c = eqa.a("size", $$1, 0L);
-         if ($$1.has("metadata")) {
-            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
+      } else {
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
+      }
+   }
 
-            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
-               if (!$$5.getValue().isJsonNull()) {
-                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
-               }
-            }
-         }
-      } catch (Exception var7) {
-         f.error("Could not parse Backup: {}", var7.getMessage());
+   public end.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         end.a $$0 = new end.a(this.a);
+         this.a = 0;
+         return $$0;
+      }
+   }
+
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
+
+      a(int $$0) {
+         this.c = $$0;
       }
 
-      return $$2;
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
+      }
    }
 
-   public boolean a() {
-      return this.g;
-   }
+   static class b {
+      static final Optional<end> a = Optional.ofNullable(a());
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+      private b() {
+      }
+
+      @Nullable
+      private static end a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new end();
+      }
    }
 }

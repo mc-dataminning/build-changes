@@ -1,37 +1,147 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.UUID;
 
-public class big {
-   public static final Codec<big> a = RecordCodecBuilder.create($$0 -> $$0.group(dml.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, big::new));
-   private final dml b;
+public abstract class big {
+   private final UUID h;
+   protected ur a;
+   protected float b;
+   protected big.a c;
+   protected big.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
 
-   public big(dml $$0) {
+   public big(UUID $$0, ur $$1, big.a $$2, big.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
+   }
+
+   public UUID i() {
+      return this.h;
+   }
+
+   public ur j() {
+      return this.a;
+   }
+
+   public void a(ur $$0) {
+      this.a = $$0;
+   }
+
+   public float k() {
+      return this.b;
+   }
+
+   public void a(float $$0) {
       this.b = $$0;
    }
 
-   public big(long $$0, afw $$1) {
-      this(a($$0, Optional.of($$1)));
+   public big.a l() {
+      return this.c;
    }
 
-   public big(long $$0, Optional<afw> $$1) {
-      this(a($$0, $$1));
+   public void a(big.a $$0) {
+      this.c = $$0;
    }
 
-   private static dml a(long $$0, Optional<afw> $$1) {
-      dlz.a $$2 = dlz.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   public big.b m() {
+      return this.d;
+   }
+
+   public void a(big.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean n() {
+      return this.e;
+   }
+
+   public big a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.f;
+   }
+
+   public big b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public big c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean p() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(String $$0, n $$1) {
+         this.h = $$0;
+         this.i = $$1;
       }
 
-      return new dml($$2.a());
+      public n a() {
+         return this.i;
+      }
+
+      public String b() {
+         return this.h;
+      }
+
+      public static big.a a(String $$0) {
+         for (big.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return g;
+      }
    }
 
-   public static dlz.a a(afw $$0) {
-      return dlz.a($$0.toString());
-   }
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-   public ate a() {
-      return this.b;
+      private final String f;
+
+      private b(String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static big.b a(String $$0) {
+         for (big.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return a;
+      }
    }
 }

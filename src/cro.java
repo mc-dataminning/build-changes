@@ -1,7 +1,433 @@
-public interface cro extends cra {
-   alq C();
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicLike;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-   default void a_(bjt $$0) {
-      $$0.cR().forEach(this::b);
+public class cro {
+   public static final int a = 3;
+   static final Logger Z = LogUtils.getLogger();
+   private static final Map<cro.e<?>, cro.f<?>> aa = Maps.newTreeMap(Comparator.comparing($$0 -> $$0.a));
+   public static final cro.e<cro.a> b = a("doFireTick", cro.b.e, cro.a.a(true));
+   public static final cro.e<cro.a> c = a("mobGriefing", cro.b.b, cro.a.a(true));
+   public static final cro.e<cro.a> d = a("keepInventory", cro.b.a, cro.a.a(false));
+   public static final cro.e<cro.a> e = a("doMobSpawning", cro.b.c, cro.a.a(true));
+   public static final cro.e<cro.a> f = a("doMobLoot", cro.b.d, cro.a.a(true));
+   public static final cro.e<cro.a> g = a("projectilesCanBreakBlocks", cro.b.d, cro.a.a(true));
+   public static final cro.e<cro.a> h = a("doTileDrops", cro.b.d, cro.a.a(true));
+   public static final cro.e<cro.a> i = a("doEntityDrops", cro.b.d, cro.a.a(true));
+   public static final cro.e<cro.a> j = a("commandBlockOutput", cro.b.f, cro.a.a(true));
+   public static final cro.e<cro.a> k = a("naturalRegeneration", cro.b.a, cro.a.a(true));
+   public static final cro.e<cro.a> l = a("doDaylightCycle", cro.b.e, cro.a.a(true));
+   public static final cro.e<cro.a> m = a("logAdminCommands", cro.b.f, cro.a.a(true));
+   public static final cro.e<cro.a> n = a("showDeathMessages", cro.b.f, cro.a.a(true));
+   public static final cro.e<cro.d> o = a("randomTickSpeed", cro.b.e, cro.d.a(3));
+   public static final cro.e<cro.a> p = a("sendCommandFeedback", cro.b.f, cro.a.a(true));
+   public static final cro.e<cro.a> q = a("reducedDebugInfo", cro.b.g, cro.a.a(false, ($$0, $$1) -> {
+      byte $$2 = (byte)($$1.a() ? 22 : 23);
+
+      for (amb $$3 : $$0.ac().t()) {
+         $$3.c.b(new zf($$3, $$2));
+      }
+   }));
+   public static final cro.e<cro.a> r = a("spectatorsGenerateChunks", cro.b.a, cro.a.a(true));
+   public static final cro.e<cro.d> s = a("spawnRadius", cro.b.a, cro.d.a(10));
+   public static final cro.e<cro.a> t = a("disableElytraMovementCheck", cro.b.a, cro.a.a(false));
+   public static final cro.e<cro.d> u = a("maxEntityCramming", cro.b.b, cro.d.a(24));
+   public static final cro.e<cro.a> v = a("doWeatherCycle", cro.b.e, cro.a.a(true));
+   public static final cro.e<cro.a> w = a("doLimitedCrafting", cro.b.a, cro.a.a(false, ($$0, $$1) -> {
+      for (amb $$2 : $$0.ac().t()) {
+         $$2.c.b(new zi(zi.m, $$1.a() ? 1.0F : 0.0F));
+      }
+   }));
+   public static final cro.e<cro.d> x = a("maxCommandChainLength", cro.b.g, cro.d.a(65536));
+   public static final cro.e<cro.d> y = a("maxCommandForkCount", cro.b.g, cro.d.a(65536));
+   public static final cro.e<cro.d> z = a("commandModificationBlockLimit", cro.b.g, cro.d.a(32768));
+   public static final cro.e<cro.a> A = a("announceAdvancements", cro.b.f, cro.a.a(true));
+   public static final cro.e<cro.a> B = a("disableRaids", cro.b.b, cro.a.a(false));
+   public static final cro.e<cro.a> C = a("doInsomnia", cro.b.c, cro.a.a(true));
+   public static final cro.e<cro.a> D = a("doImmediateRespawn", cro.b.a, cro.a.a(false, ($$0, $$1) -> {
+      for (amb $$2 : $$0.ac().t()) {
+         $$2.c.b(new zi(zi.l, $$1.a() ? 1.0F : 0.0F));
+      }
+   }));
+   public static final cro.e<cro.d> E = a("playersNetherPortalDefaultDelay", cro.b.a, cro.d.a(80));
+   public static final cro.e<cro.d> F = a("playersNetherPortalCreativeDelay", cro.b.a, cro.d.a(1));
+   public static final cro.e<cro.a> G = a("drowningDamage", cro.b.a, cro.a.a(true));
+   public static final cro.e<cro.a> H = a("fallDamage", cro.b.a, cro.a.a(true));
+   public static final cro.e<cro.a> I = a("fireDamage", cro.b.a, cro.a.a(true));
+   public static final cro.e<cro.a> J = a("freezeDamage", cro.b.a, cro.a.a(true));
+   public static final cro.e<cro.a> K = a("doPatrolSpawning", cro.b.c, cro.a.a(true));
+   public static final cro.e<cro.a> L = a("doTraderSpawning", cro.b.c, cro.a.a(true));
+   public static final cro.e<cro.a> M = a("doWardenSpawning", cro.b.c, cro.a.a(true));
+   public static final cro.e<cro.a> N = a("forgiveDeadPlayers", cro.b.b, cro.a.a(true));
+   public static final cro.e<cro.a> O = a("universalAnger", cro.b.b, cro.a.a(false));
+   public static final cro.e<cro.d> P = a("playersSleepingPercentage", cro.b.a, cro.d.a(100));
+   public static final cro.e<cro.a> Q = a("blockExplosionDropDecay", cro.b.d, cro.a.a(true));
+   public static final cro.e<cro.a> R = a("mobExplosionDropDecay", cro.b.d, cro.a.a(true));
+   public static final cro.e<cro.a> S = a("tntExplosionDropDecay", cro.b.d, cro.a.a(false));
+   public static final cro.e<cro.d> T = a("snowAccumulationHeight", cro.b.e, cro.d.a(1));
+   public static final cro.e<cro.a> U = a("waterSourceConversion", cro.b.e, cro.a.a(true));
+   public static final cro.e<cro.a> V = a("lavaSourceConversion", cro.b.e, cro.a.a(false));
+   public static final cro.e<cro.a> W = a("globalSoundEvents", cro.b.g, cro.a.a(true));
+   public static final cro.e<cro.a> X = a("doVinesSpread", cro.b.e, cro.a.a(true));
+   public static final cro.e<cro.a> Y = a("enderPearlsVanishOnDeath", cro.b.a, cro.a.a(true));
+   private final Map<cro.e<?>, cro.g<?>> ab;
+
+   private static <T extends cro.g<T>> cro.e<T> a(String $$0, cro.b $$1, cro.f<T> $$2) {
+      cro.e<T> $$3 = new cro.e<>($$0, $$1);
+      cro.f<?> $$4 = aa.put($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate game rule registration for " + $$0);
+      } else {
+         return $$3;
+      }
+   }
+
+   public cro(DynamicLike<?> $$0) {
+      this();
+      this.a($$0);
+   }
+
+   public cro() {
+      this.ab = aa.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((cro.f)$$0.getValue()).a()));
+   }
+
+   private cro(Map<cro.e<?>, cro.g<?>> $$0) {
+      this.ab = $$0;
+   }
+
+   public <T extends cro.g<T>> T a(cro.e<T> $$0) {
+      return (T)this.ab.get($$0);
+   }
+
+   public rz a() {
+      rz $$0 = new rz();
+      this.ab.forEach(($$1, $$2) -> $$0.a($$1.a, $$2.b()));
+      return $$0;
+   }
+
+   private void a(DynamicLike<?> $$0) {
+      this.ab.forEach(($$1, $$2) -> $$0.get($$1.a).asString().result().ifPresent($$2::a));
+   }
+
+   public cro b() {
+      return new cro(this.ab.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((cro.g)$$0.getValue()).f())));
+   }
+
+   public static void a(cro.c $$0) {
+      aa.forEach(($$1, $$2) -> a($$0, (cro.e<?>)$$1, (cro.f<?>)$$2));
+   }
+
+   private static <T extends cro.g<T>> void a(cro.c $$0, cro.e<?> $$1, cro.f<?> $$2) {
+      $$0.a($$1, $$2);
+      $$2.a($$0, $$1);
+   }
+
+   public void a(cro $$0, @Nullable MinecraftServer $$1) {
+      $$0.ab.keySet().forEach($$2 -> this.a((cro.e<?>)$$2, $$0, $$1));
+   }
+
+   private <T extends cro.g<T>> void a(cro.e<T> $$0, cro $$1, @Nullable MinecraftServer $$2) {
+      T $$3 = $$1.a($$0);
+      this.<T>a($$0).a($$3, $$2);
+   }
+
+   public boolean b(cro.e<cro.a> $$0) {
+      return this.a($$0).a();
+   }
+
+   public int c(cro.e<cro.d> $$0) {
+      return this.a($$0).a();
+   }
+
+   public static class a extends cro.g<cro.a> {
+      private boolean b;
+
+      static cro.f<cro.a> a(boolean $$0, BiConsumer<MinecraftServer, cro.a> $$1) {
+         return new cro.f<>(BoolArgumentType::bool, $$1x -> new cro.a($$1x, $$0), $$1, cro.c::b);
+      }
+
+      static cro.f<cro.a> a(boolean $$0) {
+         return a($$0, ($$0x, $$1) -> {
+         });
+      }
+
+      public a(cro.f<cro.a> $$0, boolean $$1) {
+         super($$0);
+         this.b = $$1;
+      }
+
+      @Override
+      protected void a(CommandContext<du> $$0, String $$1) {
+         this.b = BoolArgumentType.getBool($$0, $$1);
+      }
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public void a(boolean $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0;
+         this.a($$1);
+      }
+
+      @Override
+      public String b() {
+         return Boolean.toString(this.b);
+      }
+
+      @Override
+      protected void a(String $$0) {
+         this.b = Boolean.parseBoolean($$0);
+      }
+
+      @Override
+      public int c() {
+         return this.b ? 1 : 0;
+      }
+
+      protected cro.a d() {
+         return this;
+      }
+
+      protected cro.a e() {
+         return new cro.a(this.a, this.b);
+      }
+
+      public void a(cro.a $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0.b;
+         this.a($$1);
+      }
+   }
+
+   public static enum b {
+      a("gamerule.category.player"),
+      b("gamerule.category.mobs"),
+      c("gamerule.category.spawning"),
+      d("gamerule.category.drops"),
+      e("gamerule.category.updates"),
+      f("gamerule.category.chat"),
+      g("gamerule.category.misc");
+
+      private final String h;
+
+      private b(String $$0) {
+         this.h = $$0;
+      }
+
+      public String a() {
+         return this.h;
+      }
+   }
+
+   public interface c {
+      default <T extends cro.g<T>> void a(cro.e<T> $$0, cro.f<T> $$1) {
+      }
+
+      default void b(cro.e<cro.a> $$0, cro.f<cro.a> $$1) {
+      }
+
+      default void c(cro.e<cro.d> $$0, cro.f<cro.d> $$1) {
+      }
+   }
+
+   public static class d extends cro.g<cro.d> {
+      private int b;
+
+      private static cro.f<cro.d> a(int $$0, BiConsumer<MinecraftServer, cro.d> $$1) {
+         return new cro.f<>(IntegerArgumentType::integer, $$1x -> new cro.d($$1x, $$0), $$1, cro.c::c);
+      }
+
+      static cro.f<cro.d> a(int $$0) {
+         return a($$0, ($$0x, $$1) -> {
+         });
+      }
+
+      public d(cro.f<cro.d> $$0, int $$1) {
+         super($$0);
+         this.b = $$1;
+      }
+
+      @Override
+      protected void a(CommandContext<du> $$0, String $$1) {
+         this.b = IntegerArgumentType.getInteger($$0, $$1);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public void a(int $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0;
+         this.a($$1);
+      }
+
+      @Override
+      public String b() {
+         return Integer.toString(this.b);
+      }
+
+      @Override
+      protected void a(String $$0) {
+         this.b = c($$0);
+      }
+
+      public boolean b(String $$0) {
+         try {
+            this.b = Integer.parseInt($$0);
+            return true;
+         } catch (NumberFormatException var3) {
+            return false;
+         }
+      }
+
+      private static int c(String $$0) {
+         if (!$$0.isEmpty()) {
+            try {
+               return Integer.parseInt($$0);
+            } catch (NumberFormatException var2) {
+               cro.Z.warn("Failed to parse integer {}", $$0);
+            }
+         }
+
+         return 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b;
+      }
+
+      protected cro.d d() {
+         return this;
+      }
+
+      protected cro.d e() {
+         return new cro.d(this.a, this.b);
+      }
+
+      public void a(cro.d $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0.b;
+         this.a($$1);
+      }
+   }
+
+   public static final class e<T extends cro.g<T>> {
+      final String a;
+      private final cro.b b;
+
+      public e(String $$0, cro.b $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.a;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return this == $$0 ? true : $$0 instanceof cro.e && ((cro.e)$$0).a.equals(this.a);
+      }
+
+      @Override
+      public int hashCode() {
+         return this.a.hashCode();
+      }
+
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return "gamerule." + this.a;
+      }
+
+      public cro.b c() {
+         return this.b;
+      }
+   }
+
+   public static class f<T extends cro.g<T>> {
+      private final Supplier<ArgumentType<?>> a;
+      private final Function<cro.f<T>, T> b;
+      final BiConsumer<MinecraftServer, T> c;
+      private final cro.h<T> d;
+
+      f(Supplier<ArgumentType<?>> $$0, Function<cro.f<T>, T> $$1, BiConsumer<MinecraftServer, T> $$2, cro.h<T> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public RequiredArgumentBuilder<du, ?> a(String $$0) {
+         return dv.a($$0, (ArgumentType<T>)this.a.get());
+      }
+
+      public T a() {
+         return this.b.apply(this);
+      }
+
+      public void a(cro.c $$0, cro.e<T> $$1) {
+         this.d.call($$0, $$1, this);
+      }
+   }
+
+   public abstract static class g<T extends cro.g<T>> {
+      protected final cro.f<T> a;
+
+      public g(cro.f<T> $$0) {
+         this.a = $$0;
+      }
+
+      protected abstract void a(CommandContext<du> var1, String var2);
+
+      public void b(CommandContext<du> $$0, String $$1) {
+         this.a($$0, $$1);
+         this.a(((du)$$0.getSource()).m());
+      }
+
+      protected void a(@Nullable MinecraftServer $$0) {
+         if ($$0 != null) {
+            this.a.c.accept($$0, this.g());
+         }
+      }
+
+      protected abstract void a(String var1);
+
+      public abstract String b();
+
+      @Override
+      public String toString() {
+         return this.b();
+      }
+
+      public abstract int c();
+
+      protected abstract T g();
+
+      protected abstract T f();
+
+      public abstract void a(T var1, @Nullable MinecraftServer var2);
+   }
+
+   interface h<T extends cro.g<T>> {
+      void call(cro.c var1, cro.e<T> var2, cro.f<T> var3);
    }
 }

@@ -1,33 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dda extends cua implements dcz {
-   public static final MapCodec<dda> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dcz.a.e.fieldOf("weathering_state").forGetter(cvb::c), t()).apply($$0, dda::new)
-   );
-   private final dcz.a e;
+public class dda extends cto {
+   public static final MapCodec<dda> a = b(dda::new);
 
    @Override
    public MapCodec<dda> a() {
-      return d;
+      return a;
    }
 
-   public dda(dcz.a $$0, dga.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public dda(dgv.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean e_(dgb $$0) {
-      return dcz.c($$0.b()).isPresent();
+   public boolean c(dgw $$0, cqy $$1, ht $$2) {
+      return false;
    }
 
-   public dcz.a g() {
-      return this.e;
+   @Override
+   public int g(dgw $$0, cqy $$1, ht $$2) {
+      return $$1.M();
    }
 }

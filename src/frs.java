@@ -1,41 +1,110 @@
-public class frs extends frt<dfl> {
-   private static final afw c = new afw("textures/entity/end_gateway_beam.png");
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Objects;
 
-   public frs(frb.a $$0) {
-      super($$0);
+public class frs implements gdq {
+   private final agg a;
+   private final j b;
+   private final boolean c;
+   private final int d;
+
+   public frs(agg $$0, j $$1, boolean $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public void a(dfl $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
-      if ($$0.c() || $$0.d()) {
-         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.c() ? (double)$$0.k().aj() : 50.0;
-         $$6 = asy.a($$6 * (float) Math.PI);
-         int $$8 = asy.a((double)$$6 * $$7);
-         float[] $$9 = $$0.c() ? cix.c.d() : cix.k.d();
-         long $$10 = $$0.k().V();
-         fqw.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public agg a() {
+      return this.a;
+   }
+
+   @Override
+   public j b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof frs $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
+   }
+
+   public static class a implements JsonDeserializer<frs> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
+      public frs a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         agg $$4 = this.b($$3);
+         gdj $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new frs($$4, $$5.b(), $$6, $$7);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      private boolean d(JsonObject $$0) {
+         return asy.a($$0, "uvlock", false);
+      }
 
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
+      protected gdj a(JsonObject $$0) {
+         int $$1 = asy.a($$0, "x", 0);
+         int $$2 = asy.a($$0, "y", 0);
+         gdj $$3 = gdj.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
+         }
+      }
 
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
+      protected agg b(JsonObject $$0) {
+         return new agg(asy.i($$0, "model"));
+      }
 
-   @Override
-   protected fpj d() {
-      return fpj.w();
-   }
-
-   @Override
-   public int aP_() {
-      return 256;
+      protected int c(JsonObject $$0) {
+         int $$1 = asy.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
+         }
+      }
    }
 }

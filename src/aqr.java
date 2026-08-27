@@ -1,78 +1,153 @@
-public class aqr {
-   public static final arh<crx> a = a("is_deep_ocean");
-   public static final arh<crx> b = a("is_ocean");
-   public static final arh<crx> c = a("is_beach");
-   public static final arh<crx> d = a("is_river");
-   public static final arh<crx> e = a("is_mountain");
-   public static final arh<crx> f = a("is_badlands");
-   public static final arh<crx> g = a("is_hill");
-   public static final arh<crx> h = a("is_taiga");
-   public static final arh<crx> i = a("is_jungle");
-   public static final arh<crx> j = a("is_forest");
-   public static final arh<crx> k = a("is_savanna");
-   public static final arh<crx> l = a("is_overworld");
-   public static final arh<crx> m = a("is_nether");
-   public static final arh<crx> n = a("is_end");
-   public static final arh<crx> o = a("stronghold_biased_to");
-   public static final arh<crx> p = a("has_structure/buried_treasure");
-   public static final arh<crx> q = a("has_structure/desert_pyramid");
-   public static final arh<crx> r = a("has_structure/igloo");
-   public static final arh<crx> s = a("has_structure/jungle_temple");
-   public static final arh<crx> t = a("has_structure/mineshaft");
-   public static final arh<crx> u = a("has_structure/mineshaft_mesa");
-   public static final arh<crx> v = a("has_structure/ocean_monument");
-   public static final arh<crx> w = a("has_structure/ocean_ruin_cold");
-   public static final arh<crx> x = a("has_structure/ocean_ruin_warm");
-   public static final arh<crx> y = a("has_structure/pillager_outpost");
-   public static final arh<crx> z = a("has_structure/ruined_portal_desert");
-   public static final arh<crx> A = a("has_structure/ruined_portal_jungle");
-   public static final arh<crx> B = a("has_structure/ruined_portal_ocean");
-   public static final arh<crx> C = a("has_structure/ruined_portal_swamp");
-   public static final arh<crx> D = a("has_structure/ruined_portal_mountain");
-   public static final arh<crx> E = a("has_structure/ruined_portal_standard");
-   public static final arh<crx> F = a("has_structure/shipwreck_beached");
-   public static final arh<crx> G = a("has_structure/shipwreck");
-   public static final arh<crx> H = a("has_structure/stronghold");
-   public static final arh<crx> I = a("has_structure/swamp_hut");
-   public static final arh<crx> J = a("has_structure/village_desert");
-   public static final arh<crx> K = a("has_structure/village_plains");
-   public static final arh<crx> L = a("has_structure/village_savanna");
-   public static final arh<crx> M = a("has_structure/village_snowy");
-   public static final arh<crx> N = a("has_structure/village_taiga");
-   public static final arh<crx> O = a("has_structure/trail_ruins");
-   public static final arh<crx> P = a("has_structure/woodland_mansion");
-   public static final arh<crx> Q = a("has_structure/nether_fortress");
-   public static final arh<crx> R = a("has_structure/nether_fossil");
-   public static final arh<crx> S = a("has_structure/bastion_remnant");
-   public static final arh<crx> T = a("has_structure/ancient_city");
-   public static final arh<crx> U = a("has_structure/ruined_portal_nether");
-   public static final arh<crx> V = a("has_structure/end_city");
-   public static final arh<crx> W = a("required_ocean_monument_surrounding");
-   public static final arh<crx> X = a("mineshaft_blocking");
-   public static final arh<crx> Y = a("plays_underwater_music");
-   public static final arh<crx> Z = a("has_closer_water_fog");
-   public static final arh<crx> aa = a("water_on_map_outlines");
-   public static final arh<crx> ab = a("produces_corals_from_bonemeal");
-   public static final arh<crx> ac = a("increased_fire_burnout");
-   public static final arh<crx> ad = a("snow_golem_melts");
-   public static final arh<crx> ae = a("without_zombie_sieges");
-   public static final arh<crx> af = a("without_patrol_spawns");
-   public static final arh<crx> ag = a("without_wandering_trader_spawns");
-   public static final arh<crx> ah = a("spawns_cold_variant_frogs");
-   public static final arh<crx> ai = a("spawns_warm_variant_frogs");
-   public static final arh<crx> aj = a("spawns_gold_rabbits");
-   public static final arh<crx> ak = a("spawns_white_rabbits");
-   public static final arh<crx> al = a("reduce_water_ambient_spawns");
-   public static final arh<crx> am = a("allows_tropical_fish_spawns_at_any_height");
-   public static final arh<crx> an = a("polar_bears_spawn_on_alternate_blocks");
-   public static final arh<crx> ao = a("more_frequent_drowned_spawns");
-   public static final arh<crx> ap = a("allows_surface_slime_spawns");
-   public static final arh<crx> aq = a("spawns_snow_foxes");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
 
-   private aqr() {
+public final class aqr {
+   private static final Map<chs, Pair<String, String>> a = ImmutableMap.of(
+      chs.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      chs.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      chs.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      chs.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<chs, aqr.a> b;
+
+   private aqr(Map<chs, aqr.a> $$0) {
+      this.b = $$0;
    }
 
-   private static arh<crx> a(String $$0) {
-      return arh.a(jz.aq, new afw($$0));
+   public aqr() {
+      this(ac.a(Maps.newEnumMap(chs.class), $$0 -> {
+         for (chs $$1 : chs.values()) {
+            $$0.put($$1, new aqr.a(false, false));
+         }
+      }));
+   }
+
+   public boolean a(chs $$0) {
+      return this.b.get($$0).a;
+   }
+
+   public void a(chs $$0, boolean $$1) {
+      this.b.get($$0).a = $$1;
+   }
+
+   public boolean b(chs $$0) {
+      return this.b.get($$0).b;
+   }
+
+   public void b(chs $$0, boolean $$1) {
+      this.b.get($$0).b = $$1;
+   }
+
+   public static aqr a(tu $$0) {
+      Map<chs, aqr.a> $$1 = Maps.newEnumMap(chs.class);
+
+      for (chs $$2 : chs.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         $$1.put($$2, new aqr.a($$3, $$4));
+      }
+
+      return new aqr($$1);
+   }
+
+   public void b(tu $$0) {
+      for (chs $$1 : chs.values()) {
+         aqr.a $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            $$0.a(false);
+            $$0.a(false);
+         } else {
+            $$0.a($$2.a);
+            $$0.a($$2.b);
+         }
+      }
+   }
+
+   public static aqr a(rz $$0) {
+      Map<chs, aqr.a> $$1 = Maps.newEnumMap(chs.class);
+      a.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         $$1.put($$2, new aqr.a($$4, $$5));
+      });
+      return new aqr($$1);
+   }
+
+   public void b(rz $$0) {
+      a.forEach(($$1, $$2) -> {
+         aqr.a $$3 = this.b.get($$1);
+         $$0.a((String)$$2.getFirst(), $$3.a);
+         $$0.a((String)$$2.getSecond(), $$3.b);
+      });
+   }
+
+   public aqr a() {
+      Map<chs, aqr.a> $$0 = Maps.newEnumMap(chs.class);
+
+      for (chs $$1 : chs.values()) {
+         aqr.a $$2 = this.b.get($$1);
+         $$0.put($$1, $$2.a());
+      }
+
+      return new aqr($$0);
+   }
+
+   public void a(aqr $$0) {
+      this.b.clear();
+
+      for (chs $$1 : chs.values()) {
+         aqr.a $$2 = $$0.b.get($$1);
+         this.b.put($$1, $$2.a());
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof aqr && this.b.equals(((aqr)$$0).b);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   static final class a {
+      boolean a;
+      boolean b;
+
+      public a(boolean $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public aqr.a a() {
+         return new aqr.a(this.a, this.b);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof aqr.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.a ? 1 : 0;
+         return 31 * $$0 + (this.b ? 1 : 0);
+      }
+
+      @Override
+      public String toString() {
+         return "[open=" + this.a + ", filtering=" + this.b + "]";
+      }
    }
 }

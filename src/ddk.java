@@ -1,20 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class ddk extends dcw {
-   public static final MapCodec<ddk> b = b(ddk::new);
+public class ddk extends cyh {
+   public static final MapCodec<ddk> c = b(ddk::new);
+   public static final ekb e = cut.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<ddk> a() {
-      return b;
+      return c;
    }
 
-   protected ddk(dga.d $$0) {
-      super(dba.b.d, $$0);
+   public ddk(dgv.d $$0) {
+      super($$0, hx.b, e, false);
    }
 
    @Override
-   public void a(cqz $$0, ht $$1, dgb $$2, @Nullable bkj $$3, ckj $$4) {
-      cuc.gG.a($$0, $$1, $$2, $$3, $$4);
+   protected cyi c() {
+      return (cyi)cuv.oB;
    }
 }

@@ -1,61 +1,94 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Codec;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dju<T extends djs> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+public class dju implements AutoCloseable {
+   public static final int d = 1493;
+   private final djw a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile dwq b;
 
-   public <U extends T> void a(djz<T, U> $$0, arn<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
+   public dju(Path $$0, DataFixer $$1, boolean $$2) {
+      this.e = $$1;
+      this.a = new djw($$0, $$2, "chunk");
+   }
 
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
+   public boolean b(cqz $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public rz a(agf<crs> $$0, Supplier<edw> $$1, rz $$2, Optional<agf<Codec<? extends dit>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 < 1493) {
+         $$2 = aun.c.a(this.e, $$2, $$4, 1493);
+         if ($$2.p("Level").q("hasLegacyStructureData")) {
+            dwq $$5 = this.a($$0, $$1);
+            $$2 = $$5.a($$2);
          }
       }
+
+      a($$2, $$0, $$3);
+      $$2 = aun.c.a(this.e, $$2, Math.max(1493, $$4));
+      if ($$4 < aa.b().d().c()) {
+         so.g($$2);
+      }
+
+      $$2.r("__context");
+      return $$2;
    }
 
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
+   private dwq a(agf<crs> $$0, Supplier<edw> $$1) {
+      dwq $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = dwq.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   public void a(T $$0) {
-      UUID $$1 = $$0.cv();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
-      } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.ah(), $$0);
+   public static void a(rz $$0, agf<crs> $$1, Optional<agf<Codec<? extends dit>>> $$2) {
+      rz $$3 = new rz();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   public static int a(rz $$0) {
+      return so.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<rz>> e(cqz $$0) {
+      return this.a.a($$0);
+   }
+
+   public void a(cqz $$0, rz $$1) {
+      this.a.a($$0, $$1);
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
    }
 
-   public void b(T $$0) {
-      this.c.remove($$0.cv());
-      this.b.remove($$0.ah());
+   public void o() {
+      this.a.a(true).join();
    }
 
-   @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
+   @Override
+   public void close() throws IOException {
+      this.a.close();
    }
 
-   @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
-   }
-
-   public int b() {
-      return this.c.size();
+   public djs p() {
+      return this.a;
    }
 }

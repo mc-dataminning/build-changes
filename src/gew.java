@@ -1,59 +1,35 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class gew implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bee d;
-   @Nullable
-   private CompletableFuture<Optional<ges>> e;
+public class gew<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   private gew(bee $$0) {
-      this.d = $$0;
+   public gew(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   public static CompletableFuture<Optional<gew>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bee $$1 = bee.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new gew($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
          }
-      }, ac.f());
-   }
 
-   public CompletableFuture<Optional<get>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bee.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new ges($$1, ac.f()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ac.f());
+         if ($$0 < 0) {
+            this.a.next();
+         } else {
+            this.b.next();
+         }
       }
 
-      return this.e.thenApply($$0 -> $$0.map(ges::a));
-   }
-
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(ges::close));
-      }
+      return (T)this.endOfData();
    }
 }

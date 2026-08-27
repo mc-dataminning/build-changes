@@ -1,208 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class cte extends cua implements cud {
-   public static final MapCodec<cte> a = b(cte::new);
-   protected static final float b = 3.0F;
-   protected static final float c = 5.0F;
-   protected static final float d = 1.5F;
-   protected static final eiy e = cua.a(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
-   protected static final eiy f = cua.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   protected static final eiy g = cua.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   public static final dhb h = dgr.aq;
-   public static final dgz<dgn> i = dgr.bk;
-   public static final dhb j = dgr.aU;
-   public static final int k = 16;
-   public static final int l = 0;
-   public static final int m = 1;
-   public static final int n = 0;
-   public static final int o = 1;
+public class cte {
+   public static final Codec<cte> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cte.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), age.c(jz.ar)).apply($$0, cte::new)
+   );
+   public static final Codec<ib<cte>> b = agc.a(jz.aI, a);
+   private final cte.a c;
+   private final csz.c<ib<csq>> d;
 
-   @Override
-   public MapCodec<cte> a() {
-      return a;
+   public cte(cte.a $$0, ic<csq> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   public cte(dga.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(h, Integer.valueOf(0)).a(i, dgn.a).a(j, Integer.valueOf(0)));
+   public csz.c<ib<csq>> a() {
+      return this.d;
    }
 
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(h, i, j);
+   public static Map<cte.a, csz.c<agf<csq>>> b() {
+      return cte.a.f.values().stream().collect(Collectors.toMap($$0 -> (cte.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   public boolean c(dgb $$0, cqf $$1, ht $$2) {
-      return true;
-   }
-
-   @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      eiy $$4 = $$0.c(i) == dgn.c ? f : e;
-      eif $$5 = $$0.n($$1, $$2);
-      return $$4.a($$5.c, $$5.d, $$5.e);
-   }
-
-   @Override
-   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
-      return false;
-   }
-
-   @Override
-   public eiy c(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      eif $$4 = $$0.n($$1, $$2);
-      return g.a($$4.c, $$4.d, $$4.e);
-   }
-
-   @Override
-   public boolean a_(dgb $$0, cqf $$1, ht $$2) {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public dgb a(cmr $$0) {
-      ebe $$1 = $$0.q().b_($$0.a());
-      if (!$$1.c()) {
-         return null;
-      } else {
-         dgb $$2 = $$0.q().a_($$0.a().d());
-         if ($$2.a(aqs.at)) {
-            if ($$2.a(cuc.mY)) {
-               return this.o().a(h, Integer.valueOf(0));
-            } else if ($$2.a(cuc.mZ)) {
-               int $$3 = $$2.c(h) > 0 ? 1 : 0;
-               return this.o().a(h, Integer.valueOf($$3));
-            } else {
-               dgb $$4 = $$0.q().a_($$0.a().c());
-               return $$4.a(cuc.mZ) ? this.o().a(h, $$4.c(h)) : cuc.mY.o();
-            }
-         } else {
-            return null;
-         }
-      }
-   }
-
-   @Override
-   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   public boolean e_(dgb $$0) {
-      return $$0.c(j) == 0;
-   }
-
-   @Override
-   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if ($$0.c(j) == 0) {
-         if ($$3.a(3) == 0 && $$1.t($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-            int $$4 = this.b($$1, $$2) + 1;
-            if ($$4 < 16) {
-               this.a($$0, $$1, $$2, $$3, $$4);
+   public static record a(agg d, cte.a.a e) {
+      public static final cte.a a = new cte.a(
+         new agg("nether"),
+         new cte.a.a() {
+            @Override
+            public <T> csz.c<T> apply(Function<agf<csq>, T> $$0) {
+               return new csz.c<>(
+                  List.of(
+                     Pair.of(csz.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(csx.ac)),
+                     Pair.of(csz.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(csx.af)),
+                     Pair.of(csz.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(csx.ae)),
+                     Pair.of(csz.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(csx.ad)),
+                     Pair.of(csz.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(csx.ag))
+                  )
+               );
             }
          }
-      }
-   }
-
-   @Override
-   public boolean a(dgb $$0, crc $$1, ht $$2) {
-      return $$1.a_($$2.d()).a(aqs.at);
-   }
-
-   @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$1 == hx.b && $$2.a(cuc.mZ) && $$2.c(h) > $$0.c(h)) {
-         $$3.a($$4, $$0.a(h), 2);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean b(crc $$0, ht $$1, dgb $$2) {
-      int $$3 = this.a($$0, $$1);
-      int $$4 = this.b($$0, $$1);
-      return $$3 + $$4 + 1 < 16 && $$0.a_($$1.b($$3)).c(j) != 1;
-   }
-
-   @Override
-   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
-      int $$4 = this.a($$0, $$2);
-      int $$5 = this.b($$0, $$2);
-      int $$6 = $$4 + $$5 + 1;
-      int $$7 = 1 + $$1.a(2);
-
-      for (int $$8 = 0; $$8 < $$7; $$8++) {
-         ht $$9 = $$2.b($$4);
-         dgb $$10 = $$0.a_($$9);
-         if ($$6 >= 16 || $$10.c(j) == 1 || !$$0.t($$9.c())) {
-            return;
+      );
+      public static final cte.a b = new cte.a(new agg("overworld"), new cte.a.a() {
+         @Override
+         public <T> csz.c<T> apply(Function<agf<csq>, T> $$0) {
+            return cte.a.a($$0);
          }
+      });
+      static final Map<agg, cte.a> f = Stream.of(a, b).collect(Collectors.toMap(cte.a::b, $$0 -> (cte.a)$$0));
+      public static final Codec<cte.a> c = agg.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
 
-         this.a($$10, $$0, $$9, $$1, $$6);
-         $$4++;
-         $$6++;
-      }
-   }
-
-   @Override
-   public float a(dgb $$0, ccx $$1, cqf $$2, ht $$3) {
-      return $$1.eS().d() instanceof clu ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(dgb $$0, cqz $$1, ht $$2, ate $$3, int $$4) {
-      dgb $$5 = $$1.a_($$2.d());
-      ht $$6 = $$2.c(2);
-      dgb $$7 = $$1.a_($$6);
-      dgn $$8 = dgn.a;
-      if ($$4 >= 1) {
-         if (!$$5.a(cuc.mZ) || $$5.c(i) == dgn.a) {
-            $$8 = dgn.b;
-         } else if ($$5.a(cuc.mZ) && $$5.c(i) != dgn.a) {
-            $$8 = dgn.c;
-            if ($$7.a(cuc.mZ)) {
-               $$1.a($$2.d(), $$5.a(i, dgn.b), 3);
-               $$1.a($$6, $$7.a(i, dgn.a), 3);
-            }
-         }
+      static <T> csz.c<T> a(Function<agf<csq>, T> $$0) {
+         Builder<Pair<csz.d, T>> $$1 = ImmutableList.builder();
+         new ctg().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new csz.c<>($$1.build());
       }
 
-      int $$9 = $$0.c(h) != 1 && !$$7.a(cuc.mZ) ? 0 : 1;
-      int $$10 = ($$4 < 11 || !($$3.i() < 0.25F)) && $$4 != 15 ? 0 : 1;
-      $$1.a($$2.c(), this.o().a(h, Integer.valueOf($$9)).a(i, $$8).a(j, Integer.valueOf($$10)), 3);
-   }
-
-   protected int a(cqf $$0, ht $$1) {
-      int $$2 = 0;
-
-      while ($$2 < 16 && $$0.a_($$1.b($$2 + 1)).a(cuc.mZ)) {
-         $$2++;
+      public Stream<agf<csq>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<agf<csq>>map(Pair::getSecond).distinct();
       }
 
-      return $$2;
-   }
-
-   protected int b(cqf $$0, ht $$1) {
-      int $$2 = 0;
-
-      while ($$2 < 16 && $$0.a_($$1.c($$2 + 1)).a(cuc.mZ)) {
-         $$2++;
+      public agg b() {
+         return this.d;
       }
 
-      return $$2;
+      public cte.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> csz.c<T> apply(Function<agf<csq>, T> var1);
+      }
    }
 }

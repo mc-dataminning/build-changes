@@ -1,194 +1,41 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public final class eaf {
-   private static final float d = 1.0E-7F;
-   private final byte[] e;
-   public final double a;
-   public final double b;
-   public final double c;
+public class eaf extends eai {
+   public static final Codec<eaf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eaf::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   public eaf(ate $$0) {
-      this.a = $$0.j() * 256.0;
-      this.b = $$0.j() * 256.0;
-      this.c = $$0.j() * 256.0;
-      this.e = new byte[256];
-
-      for (int $$1 = 0; $$1 < 256; $$1++) {
-         this.e[$$1] = (byte)$$1;
-      }
-
-      for (int $$2 = 0; $$2 < 256; $$2++) {
-         int $$3 = $$0.a(256 - $$2);
-         byte $$4 = this.e[$$2];
-         this.e[$$2] = this.e[$$2 + $$3];
-         this.e[$$2 + $$3] = $$4;
-      }
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      return this.a($$0, $$1, $$2, 0.0, 0.0);
-   }
-
-   @Deprecated
-   public double a(double $$0, double $$1, double $$2, double $$3, double $$4) {
-      double $$5 = $$0 + this.a;
-      double $$6 = $$1 + this.b;
-      double $$7 = $$2 + this.c;
-      int $$8 = asy.a($$5);
-      int $$9 = asy.a($$6);
-      int $$10 = asy.a($$7);
-      double $$11 = $$5 - (double)$$8;
-      double $$12 = $$6 - (double)$$9;
-      double $$13 = $$7 - (double)$$10;
-      double $$16;
-      if ($$3 != 0.0) {
-         double $$14;
-         if ($$4 >= 0.0 && $$4 < $$12) {
-            $$14 = $$4;
-         } else {
-            $$14 = $$12;
-         }
-
-         $$16 = (double)asy.a($$14 / $$3 + 1.0E-7F) * $$3;
+   public eaf(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
       } else {
-         $$16 = 0.0;
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
       }
-
-      return this.a($$8, $$9, $$10, $$11, $$12 - $$16, $$13, $$12);
    }
 
-   public double a(double $$0, double $$1, double $$2, double[] $$3) {
-      double $$4 = $$0 + this.a;
-      double $$5 = $$1 + this.b;
-      double $$6 = $$2 + this.c;
-      int $$7 = asy.a($$4);
-      int $$8 = asy.a($$5);
-      int $$9 = asy.a($$6);
-      double $$10 = $$4 - (double)$$7;
-      double $$11 = $$5 - (double)$$8;
-      double $$12 = $$6 - (double)$$9;
-      return this.a($$7, $$8, $$9, $$10, $$11, $$12, $$3);
+   @Override
+   public boolean a(ht $$0, ht $$1, ht $$2, ato $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= ati.b(this.b, this.d, ati.g((float)$$4, (float)this.e, (float)this.f));
    }
 
-   private static double a(int $$0, double $$1, double $$2, double $$3) {
-      return eak.a(eak.a[$$0 & 15], $$1, $$2, $$3);
-   }
-
-   private int a(int $$0) {
-      return this.e[$$0 & 0xFF] & 0xFF;
-   }
-
-   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double $$6) {
-      int $$7 = this.a($$0);
-      int $$8 = this.a($$0 + 1);
-      int $$9 = this.a($$7 + $$1);
-      int $$10 = this.a($$7 + $$1 + 1);
-      int $$11 = this.a($$8 + $$1);
-      int $$12 = this.a($$8 + $$1 + 1);
-      double $$13 = a(this.a($$9 + $$2), $$3, $$4, $$5);
-      double $$14 = a(this.a($$11 + $$2), $$3 - 1.0, $$4, $$5);
-      double $$15 = a(this.a($$10 + $$2), $$3, $$4 - 1.0, $$5);
-      double $$16 = a(this.a($$12 + $$2), $$3 - 1.0, $$4 - 1.0, $$5);
-      double $$17 = a(this.a($$9 + $$2 + 1), $$3, $$4, $$5 - 1.0);
-      double $$18 = a(this.a($$11 + $$2 + 1), $$3 - 1.0, $$4, $$5 - 1.0);
-      double $$19 = a(this.a($$10 + $$2 + 1), $$3, $$4 - 1.0, $$5 - 1.0);
-      double $$20 = a(this.a($$12 + $$2 + 1), $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
-      double $$21 = asy.h($$3);
-      double $$22 = asy.h($$6);
-      double $$23 = asy.h($$5);
-      return asy.a($$21, $$22, $$23, $$13, $$14, $$15, $$16, $$17, $$18, $$19, $$20);
-   }
-
-   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double[] $$6) {
-      int $$7 = this.a($$0);
-      int $$8 = this.a($$0 + 1);
-      int $$9 = this.a($$7 + $$1);
-      int $$10 = this.a($$7 + $$1 + 1);
-      int $$11 = this.a($$8 + $$1);
-      int $$12 = this.a($$8 + $$1 + 1);
-      int $$13 = this.a($$9 + $$2);
-      int $$14 = this.a($$11 + $$2);
-      int $$15 = this.a($$10 + $$2);
-      int $$16 = this.a($$12 + $$2);
-      int $$17 = this.a($$9 + $$2 + 1);
-      int $$18 = this.a($$11 + $$2 + 1);
-      int $$19 = this.a($$10 + $$2 + 1);
-      int $$20 = this.a($$12 + $$2 + 1);
-      int[] $$21 = eak.a[$$13 & 15];
-      int[] $$22 = eak.a[$$14 & 15];
-      int[] $$23 = eak.a[$$15 & 15];
-      int[] $$24 = eak.a[$$16 & 15];
-      int[] $$25 = eak.a[$$17 & 15];
-      int[] $$26 = eak.a[$$18 & 15];
-      int[] $$27 = eak.a[$$19 & 15];
-      int[] $$28 = eak.a[$$20 & 15];
-      double $$29 = eak.a($$21, $$3, $$4, $$5);
-      double $$30 = eak.a($$22, $$3 - 1.0, $$4, $$5);
-      double $$31 = eak.a($$23, $$3, $$4 - 1.0, $$5);
-      double $$32 = eak.a($$24, $$3 - 1.0, $$4 - 1.0, $$5);
-      double $$33 = eak.a($$25, $$3, $$4, $$5 - 1.0);
-      double $$34 = eak.a($$26, $$3 - 1.0, $$4, $$5 - 1.0);
-      double $$35 = eak.a($$27, $$3, $$4 - 1.0, $$5 - 1.0);
-      double $$36 = eak.a($$28, $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
-      double $$37 = asy.h($$3);
-      double $$38 = asy.h($$4);
-      double $$39 = asy.h($$5);
-      double $$40 = asy.a(
-         $$37,
-         $$38,
-         $$39,
-         (double)$$21[0],
-         (double)$$22[0],
-         (double)$$23[0],
-         (double)$$24[0],
-         (double)$$25[0],
-         (double)$$26[0],
-         (double)$$27[0],
-         (double)$$28[0]
-      );
-      double $$41 = asy.a(
-         $$37,
-         $$38,
-         $$39,
-         (double)$$21[1],
-         (double)$$22[1],
-         (double)$$23[1],
-         (double)$$24[1],
-         (double)$$25[1],
-         (double)$$26[1],
-         (double)$$27[1],
-         (double)$$28[1]
-      );
-      double $$42 = asy.a(
-         $$37,
-         $$38,
-         $$39,
-         (double)$$21[2],
-         (double)$$22[2],
-         (double)$$23[2],
-         (double)$$24[2],
-         (double)$$25[2],
-         (double)$$26[2],
-         (double)$$27[2],
-         (double)$$28[2]
-      );
-      double $$43 = asy.a($$38, $$39, $$30 - $$29, $$32 - $$31, $$34 - $$33, $$36 - $$35);
-      double $$44 = asy.a($$39, $$37, $$31 - $$29, $$35 - $$33, $$32 - $$30, $$36 - $$34);
-      double $$45 = asy.a($$37, $$38, $$33 - $$29, $$34 - $$30, $$35 - $$31, $$36 - $$32);
-      double $$46 = asy.i($$3);
-      double $$47 = asy.i($$4);
-      double $$48 = asy.i($$5);
-      double $$49 = $$40 + $$46 * $$43;
-      double $$50 = $$41 + $$47 * $$44;
-      double $$51 = $$42 + $$48 * $$45;
-      $$6[0] += $$49;
-      $$6[1] += $$50;
-      $$6[2] += $$51;
-      return asy.a($$37, $$38, $$39, $$29, $$30, $$31, $$32, $$33, $$34, $$35, $$36);
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      eag.a($$0, this.a, this.b, this.c, this.e);
+   @Override
+   protected eaj<?> a() {
+      return eaj.b;
    }
 }

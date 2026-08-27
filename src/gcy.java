@@ -1,44 +1,12 @@
-public class gcy extends gcr {
-   public static final int n = 20;
-   private final foc o;
-   private int p;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public gcy(foc $$0) {
-      super(aqd.gR, aqe.h, gdi.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
-   }
+public record gcy(gcz d) {
+   public static final gcy a = new gcy(gcz.b);
+   public static final Codec<gcy> b = RecordCodecBuilder.create($$0 -> $$0.group(asq.a(gcz.a, "scaling", gcz.b).forGetter(gcy::a)).apply($$0, gcy::new));
+   public static final aoe<gcy> c = aoe.a("gui", b);
 
-   @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dG() && (this.p <= 20 || this.o.fw())) {
-         this.f = (double)((float)this.o.dq());
-         this.g = (double)((float)this.o.ds());
-         this.h = (double)((float)this.o.dw());
-         float $$0 = (float)this.o.do().g();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = asy.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
-
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
-      } else {
-         this.n();
-      }
+   public gcz a() {
+      return this.d;
    }
 }

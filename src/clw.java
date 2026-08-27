@@ -1,13 +1,19 @@
-public interface clw {
-   int a();
+public class clw extends ckx {
+   private final amb a;
 
-   float b();
+   public clw(amb $$0) {
+      this.a = $$0;
+   }
 
-   float c();
+   @Override
+   protected void b(ckw $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.c.b(new za($$0, $$1));
+   }
 
-   int d();
-
-   int e();
-
-   cnk f();
+   @Override
+   protected void c(ckw $$0) {
+      super.c($$0);
+      this.a.c.b(new za($$0, 0));
+   }
 }

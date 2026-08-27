@@ -1,289 +1,37 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public abstract class eth implements eum, eve, ewv, exa {
-   private static final double a = 0.5;
-   private static final double b = 3.0;
-   protected int f;
-   protected int g;
-   private int c;
-   private int d;
-   private ui e;
-   protected boolean h;
-   public boolean i = true;
-   public boolean j = true;
-   protected float k = 1.0F;
-   private int l;
-   private boolean m;
-   @Nullable
-   private euu n;
-
-   public eth(int $$0, int $$1, int $$2, int $$3, ui $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.e = $$4;
+public record eth(eth.c a, etj... b) {
+   public interface a {
+      Vector3f apply(Vector3f var1, float var2, etj[] var3, int var4, int var5, float var6);
    }
 
-   @Override
-   public int i() {
-      return this.g;
+   public static class b {
+      public static final eth.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final eth.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            ati.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            ati.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            ati.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
    }
 
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      if (this.j) {
-         this.h = $$1 >= this.p() && $$2 >= this.r() && $$1 < this.p() + this.f && $$2 < this.r() + this.g;
-         this.b($$0, $$1, $$2, $$3);
-         if (this.n != null) {
-            this.n.a(this.m(), this.aG_(), this.s());
-         }
-      }
+   public interface c {
+      void apply(fkb var1, Vector3f var2);
    }
 
-   public void a(@Nullable euu $$0) {
-      this.n = $$0;
-   }
-
-   @Nullable
-   public euu j() {
-      return this.n;
-   }
-
-   public void b(int $$0) {
-      if (this.n != null) {
-         this.n.a($$0);
-      }
-   }
-
-   protected uw aI_() {
-      return a(this.l());
-   }
-
-   public static uw a(ui $$0) {
-      return ui.a("gui.narrate.button", $$0);
-   }
-
-   protected abstract void b(esy var1, int var2, int var3, float var4);
-
-   protected static void a(esy $$0, esw $$1, ui $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   protected static void a(esy $$0, esw $$1, ui $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$1.a($$2);
-      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
-      int $$11 = $$6 - $$4;
-      if ($$9 > $$11) {
-         int $$12 = $$9 - $$11;
-         double $$13 = (double)ac.b() / 1000.0;
-         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
-         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
-         double $$16 = asy.d($$15, 0.0, (double)$$12);
-         $$0.c($$4, $$5, $$6, $$7);
-         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
-         $$0.f();
-      } else {
-         int $$17 = asy.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
-         $$0.a($$1, $$2, $$17, $$10, $$8);
-      }
-   }
-
-   protected void a(esy $$0, esw $$1, int $$2, int $$3) {
-      int $$4 = this.p() + $$2;
-      int $$5 = this.p() + this.k() - $$2;
-      a($$0, $$1, this.l(), $$4, this.r(), $$5, this.r() + this.i(), $$3);
-   }
-
-   public void a(double $$0, double $$1) {
-   }
-
-   public void b(double $$0, double $$1) {
-   }
-
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.i && this.j) {
-         if (this.c($$2)) {
-            boolean $$3 = this.d($$0, $$1);
-            if ($$3) {
-               this.a(ero.O().ai());
-               this.a($$0, $$1);
-               return true;
-            }
-         }
-
-         return false;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.c($$2)) {
-         this.b($$0, $$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean c(int $$0) {
-      return $$0 == 0;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.c($$2)) {
-         this.b($$0, $$1, $$3, $$4);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean d(double $$0, double $$1) {
-      return this.i && this.j && $$0 >= (double)this.p() && $$1 >= (double)this.r() && $$0 < (double)(this.p() + this.f) && $$1 < (double)(this.r() + this.g);
-   }
-
-   @Nullable
-   @Override
-   public esv a(exi $$0) {
-      if (!this.i || !this.j) {
-         return null;
-      } else {
-         return !this.aG_() ? esv.a(this) : null;
-      }
-   }
-
-   @Override
-   public boolean a_(double $$0, double $$1) {
-      return this.i && this.j && $$0 >= (double)this.p() && $$1 >= (double)this.r() && $$0 < (double)(this.p() + this.f) && $$1 < (double)(this.r() + this.g);
-   }
-
-   public void a(gem $$0) {
-      $$0.a(gdd.a(aqd.yw, 1.0F));
-   }
-
-   @Override
-   public int k() {
-      return this.f;
-   }
-
-   public void d(int $$0) {
-      this.f = $$0;
-   }
-
-   public void e(int $$0) {
-      this.g = $$0;
-   }
-
-   public void a(float $$0) {
-      this.k = $$0;
-   }
-
-   public void b(ui $$0) {
-      this.e = $$0;
-   }
-
-   public ui l() {
-      return this.e;
-   }
-
-   @Override
-   public boolean aG_() {
-      return this.m;
-   }
-
-   public boolean m() {
-      return this.h;
-   }
-
-   public boolean n() {
-      return this.m() || this.aG_();
-   }
-
-   @Override
-   public boolean aJ_() {
-      return this.j && this.i;
-   }
-
-   @Override
-   public void b_(boolean $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public exa.a q() {
-      if (this.aG_()) {
-         return exa.a.c;
-      } else {
-         return this.h ? exa.a.b : exa.a.a;
-      }
-   }
-
-   @Override
-   public final void b(exc $$0) {
-      this.a($$0);
-      if (this.n != null) {
-         this.n.b($$0);
-      }
-   }
-
-   protected abstract void a(exc var1);
-
-   protected void c(exc $$0) {
-      $$0.a(exb.a, this.aI_());
-      if (this.i) {
-         if (this.aG_()) {
-            $$0.a(exb.d, ui.c("narration.button.usage.focused"));
-         } else {
-            $$0.a(exb.d, ui.c("narration.button.usage.hovered"));
-         }
-      }
-   }
-
-   @Override
-   public int p() {
-      return this.c;
-   }
-
-   @Override
-   public void f(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public int r() {
-      return this.d;
-   }
-
-   @Override
-   public void g(int $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public void a(Consumer<eth> $$0) {
-      $$0.accept(this);
-   }
-
-   @Override
-   public exm s() {
-      return ewv.super.s();
-   }
-
-   @Override
-   public int aH_() {
-      return this.l;
-   }
-
-   public void h(int $$0) {
-      this.l = $$0;
+   public static class d {
+      public static final eth.c a = fkb::a;
+      public static final eth.c b = fkb::b;
+      public static final eth.c c = fkb::c;
    }
 }

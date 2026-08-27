@@ -1,89 +1,77 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class ctl extends cti {
-   public static final MapCodec<ctl> b = b(ctl::new);
-   public static final dgv c = cxu.aE;
-   private static final Map<hx, eiy> e = Maps.newEnumMap(
-      ImmutableMap.of(
-         hx.c,
-         cua.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
-         hx.d,
-         cua.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
-         hx.e,
-         cua.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
-         hx.f,
-         cua.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
-      )
+public abstract class ctl extends cut {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final ekb h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final ekb b = ejy.a(
+      ejy.b(), ejy.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), ejm.e
    );
+   protected final iy.a c;
 
    @Override
-   public MapCodec<? extends ctl> a() {
+   protected abstract MapCodec<? extends ctl> a();
+
+   public ctl(dgv.d $$0, iy.a $$1) {
+      super($$0);
+      this.c = $$1;
+   }
+
+   protected double b(dgw $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(dgw $$0, ht $$1, bki $$2) {
+      return $$2.ds() < (double)$$1.v() + this.b($$0) && $$2.cG().e > (double)$$1.v() + 0.25;
+   }
+
+   @Override
+   public biq a(dgw $$0, crs $$1, ht $$2, cdm $$3, bip $$4, eje $$5) {
+      clb $$6 = $$3.b($$4);
+      iy $$7 = this.c.b().get($$6.d());
+      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
+   }
+
+   @Override
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
       return b;
    }
 
-   protected ctl(dga.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, hx.c).a(d, Boolean.valueOf(true)));
+   @Override
+   public ekb a(dgw $$0, cqy $$1, ht $$2) {
+      return h;
    }
 
    @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return e.get($$0.c(c));
+   public boolean d_(dgw $$0) {
+      return true;
    }
 
    @Override
-   public dgb a(dgb $$0, dal $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
+   public boolean a(dgw $$0, cqy $$1, ht $$2, ecw $$3) {
+      return false;
    }
 
-   @Override
-   public dgb a(dgb $$0, cyv $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
+   public abstract boolean d(dgw var1);
 
    @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ebf.c, ebf.c.a($$3));
-      }
-
-      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? cuc.a.o() : $$0;
-   }
-
-   @Override
-   public boolean a(dgb $$0, crc $$1, ht $$2) {
-      hx $$3 = $$0.c(c);
-      ht $$4 = $$2.a($$3.g());
-      dgb $$5 = $$1.a_($$4);
-      return $$5.d($$1, $$4, $$3);
-   }
-
-   @Nullable
-   @Override
-   public dgb a(cmr $$0) {
-      dgb $$1 = super.a($$0);
-      crc $$2 = $$0.q();
-      ht $$3 = $$0.a();
-      hx[] $$4 = $$0.f();
-
-      for (hx $$5 : $$4) {
-         if ($$5.o().d()) {
-            $$1 = $$1.a(c, $$5.g());
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
+   public void a(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      ht $$4 = dak.a((crs)$$1, $$2);
+      if ($$4 != null) {
+         ecf $$5 = dak.a($$1, $$4);
+         if ($$5 != ech.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
          }
       }
+   }
 
-      return null;
+   protected boolean a(ecf $$0) {
+      return false;
+   }
+
+   protected void a(dgw $$0, crs $$1, ht $$2, ecf $$3) {
    }
 }

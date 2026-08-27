@@ -1,104 +1,181 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public final class dje implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<djd> c = new Long2ObjectLinkedOpenHashMap();
-   private final Path d;
-   private final boolean e;
+public class dje {
+   public static final int a = 16;
+   public static final int b = 16;
+   public static final int c = 4096;
+   public static final int d = 2;
+   private short e;
+   private short f;
+   private short g;
+   private final djl<dgw> h;
+   private djm<ib<csq>> i;
 
-   dje(Path $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public dje(djl<dgw> $$0, djm<ib<csq>> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.g();
    }
 
-   private djd b(cqg $$0) throws IOException {
-      long $$1 = cqg.c($$0.h(), $$0.i());
-      djd $$2 = (djd)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
+   public dje(io<csq> $$0) {
+      this.h = new djl<>(cut.q, cuv.a.o(), djl.d.d);
+      this.i = new djl<>($$0.t(), $$0.f(csx.b), djl.d.e);
+   }
+
+   public dgw a(int $$0, int $$1, int $$2) {
+      return this.h.a($$0, $$1, $$2);
+   }
+
+   public ecg b(int $$0, int $$1, int $$2) {
+      return this.h.a($$0, $$1, $$2).u();
+   }
+
+   public void a() {
+      this.h.a();
+   }
+
+   public void b() {
+      this.h.b();
+   }
+
+   public dgw a(int $$0, int $$1, int $$2, dgw $$3) {
+      return this.a($$0, $$1, $$2, $$3, true);
+   }
+
+   public dgw a(int $$0, int $$1, int $$2, dgw $$3, boolean $$4) {
+      dgw $$5;
+      if ($$4) {
+         $$5 = this.h.a($$0, $$1, $$2, $$3);
       } else {
-         if (this.c.size() >= 256) {
-            ((djd)this.c.removeLast()).close();
-         }
-
-         v.c(this.d);
-         Path $$3 = this.d.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         djd $$4 = new djd($$3, this.d, this.e);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
-      }
-   }
-
-   @Nullable
-   public rt a(cqg $$0) throws IOException {
-      djd $$1 = this.b($$0);
-
-      rt var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
-         }
-
-         var4 = se.a((DataInput)$$2);
+         $$5 = this.h.b($$0, $$1, $$2, $$3);
       }
 
-      return var4;
-   }
-
-   public void a(cqg $$0, sk $$1) throws IOException {
-      djd $$2 = this.b($$0);
-
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            se.a((DataInput)$$3, $$1, sc.a());
-         }
-      }
-   }
-
-   protected void a(cqg $$0, @Nullable rt $$1) throws IOException {
-      djd $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
-      } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            se.a($$1, (DataOutput)$$3);
-         }
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      asf<IOException> $$0 = new asf<>();
-      ObjectIterator var2 = this.c.values().iterator();
-
-      while (var2.hasNext()) {
-         djd $$1 = (djd)var2.next();
-
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
+      ecg $$7 = $$5.u();
+      ecg $$8 = $$3.u();
+      if (!$$5.i()) {
+         this.e--;
+         if ($$5.v()) {
+            this.f--;
          }
       }
 
-      $$0.a();
+      if (!$$7.c()) {
+         this.g--;
+      }
+
+      if (!$$3.i()) {
+         this.e++;
+         if ($$3.v()) {
+            this.f++;
+         }
+      }
+
+      if (!$$8.c()) {
+         this.g++;
+      }
+
+      return $$5;
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
+   public boolean c() {
+      return this.e == 0;
+   }
 
-      while (var1.hasNext()) {
-         djd $$0 = (djd)var1.next();
-         $$0.a();
+   public boolean d() {
+      return this.e() || this.f();
+   }
+
+   public boolean e() {
+      return this.f > 0;
+   }
+
+   public boolean f() {
+      return this.g > 0;
+   }
+
+   public void g() {
+      class a implements djl.b<dgw> {
+         public int a;
+         public int b;
+         public int c;
+
+         public void a(dgw $$0, int $$1) {
+            ecg $$2 = $$0.u();
+            if (!$$0.i()) {
+               this.a += $$1;
+               if ($$0.v()) {
+                  this.b += $$1;
+               }
+            }
+
+            if (!$$2.c()) {
+               this.a += $$1;
+               if ($$2.f()) {
+                  this.c += $$1;
+               }
+            }
+         }
       }
+
+      a $$0 = new a();
+      this.h.a($$0);
+      this.e = (short)$$0.a;
+      this.f = (short)$$0.b;
+      this.g = (short)$$0.c;
+   }
+
+   public djl<dgw> h() {
+      return this.h;
+   }
+
+   public djm<ib<csq>> i() {
+      return this.i;
+   }
+
+   public void a(tu $$0) {
+      this.e = $$0.readShort();
+      this.h.a($$0);
+      djl<ib<csq>> $$1 = this.i.e();
+      $$1.a($$0);
+      this.i = $$1;
+   }
+
+   public void b(tu $$0) {
+      djl<ib<csq>> $$1 = this.i.e();
+      $$1.a($$0);
+      this.i = $$1;
+   }
+
+   public void c(tu $$0) {
+      $$0.l(this.e);
+      this.h.b($$0);
+      this.i.b($$0);
+   }
+
+   public int j() {
+      return 2 + this.h.c() + this.i.c();
+   }
+
+   public boolean a(Predicate<dgw> $$0) {
+      return this.h.a($$0);
+   }
+
+   public ib<csq> c(int $$0, int $$1, int $$2) {
+      return this.i.a($$0, $$1, $$2);
+   }
+
+   public void a(cst $$0, csz.f $$1, int $$2, int $$3, int $$4) {
+      djl<ib<csq>> $$5 = this.i.e();
+      int $$6 = 4;
+
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            for (int $$9 = 0; $$9 < 4; $$9++) {
+               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
+            }
+         }
+      }
+
+      this.i = $$5;
    }
 }

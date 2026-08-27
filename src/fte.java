@@ -1,60 +1,76 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public abstract class fte<T extends cdd> extends fuc<T> {
-   public fte(fud.a $$0) {
-      super($$0);
-   }
+public class fte {
+   private final Long2ObjectMap<fte.a> a = new Long2ObjectOpenHashMap();
 
-   public void a(T $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(asy.i($$2, $$0.N, $$0.dB()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(asy.i($$2, $$0.O, $$0.dD())));
-      int $$6 = 0;
-      float $$7 = 0.0F;
-      float $$8 = 0.5F;
-      float $$9 = 0.0F;
-      float $$10 = 0.15625F;
-      float $$11 = 0.0F;
-      float $$12 = 0.15625F;
-      float $$13 = 0.15625F;
-      float $$14 = 0.3125F;
-      float $$15 = 0.05625F;
-      float $$16 = (float)$$0.e - $$2;
-      if ($$16 > 0.0F) {
-         float $$17 = -asy.a($$16 * 3.0F) * $$16;
-         $$3.a(a.f.rotationDegrees($$17));
+   @Nullable
+   public ftd a(crs $$0, ht $$1, ht $$2, int $$3) {
+      int $$4 = iu.a($$1.u() - $$3);
+      int $$5 = iu.a($$1.w() - $$3);
+      int $$6 = iu.a($$2.u() + $$3);
+      int $$7 = iu.a($$2.w() + $$3);
+      fte.a[][] $$8 = new fte.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
+
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (fte.a)this.a.computeIfAbsent(cqz.c($$9, $$10), $$1x -> new fte.a($$0.d(cqz.a($$1x), cqz.b($$1x))));
+         }
       }
 
-      $$3.a(a.b.rotationDegrees(45.0F));
-      $$3.b(0.05625F, 0.05625F, 0.05625F);
-      $$3.a(-4.0F, 0.0F, 0.0F);
-      eml $$18 = $$4.getBuffer(fpj.d(this.a($$0)));
-      emh.a $$19 = $$3.c();
-      Matrix4f $$20 = $$19.a();
-      Matrix3f $$21 = $$19.b();
-      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
+      } else {
+         ftc[][] $$11 = new ftc[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-      for (int $$22 = 0; $$22 < 4; $$22++) {
-         $$3.a(a.b.rotationDegrees(90.0F));
-         this.a($$20, $$21, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
+         }
+
+         return new ftd($$0, $$4, $$5, $$11);
       }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public void a(Matrix4f $$0, Matrix3f $$1, eml $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
-      $$2.a($$0, (float)$$3, (float)$$4, (float)$$5).a(255, 255, 255, 255).a($$6, $$7).c(fzr.d).b($$11).a($$1, (float)$$8, (float)$$10, (float)$$9).e();
+   private static boolean a(ht $$0, ht $$1, int $$2, int $$3, fte.a[][] $$4) {
+      int $$5 = iu.a($$0.u());
+      int $$6 = iu.a($$0.w());
+      int $$7 = iu.a($$1.u());
+      int $$8 = iu.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            djd $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   static final class a {
+      private final djd a;
+      @Nullable
+      private ftc b;
+
+      a(djd $$0) {
+         this.a = $$0;
+      }
+
+      public djd a() {
+         return this.a;
+      }
+
+      public ftc b() {
+         if (this.b == null) {
+            this.b = new ftc(this.a);
+         }
+
+         return this.b;
+      }
    }
 }

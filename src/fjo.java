@@ -1,217 +1,147 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class fjo implements we {
-   private static final ui g = ui.c("disconnect.lost");
-   private static final Logger h = LogUtils.getLogger();
-   protected final ero a;
-   protected final tj b;
-   @Nullable
-   protected final fkc c;
-   @Nullable
-   protected String d;
-   protected final gez e;
-   @Nullable
-   protected final ezd f;
-   private final List<fjo.a> i = new ArrayList<>();
+public class fjo<T extends ccq> extends fhl<T> {
+   private static final float o = 13.0F;
+   private static final float p = 1.0F;
+   private final fkb q;
+   protected final fkb a;
+   protected final fkb b;
+   protected final fkb f;
+   protected final fkb g;
+   protected final fkb h;
+   protected final fkb i;
+   protected final fkb j;
+   protected final fkb k;
+   protected final fkb l;
+   protected final fkb m;
+   protected final fkb n;
+   private final List<fkb> r;
+   private final List<fkb> s;
+   private final List<fkb> t;
+   private final List<fkb> u;
 
-   protected fjo(ero $$0, tj $$1, fjv $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
+   public fjo(fkb $$0) {
+      super(fqp::e);
+      this.q = $$0;
+      this.a = $$0.b("bone");
+      this.b = this.a.b("body");
+      this.f = this.b.b("head");
+      this.m = this.a.b("right_leg");
+      this.i = this.a.b("left_leg");
+      this.l = this.b.b("right_arm");
+      this.j = this.b.b("left_arm");
+      this.g = this.f.b("right_tendril");
+      this.h = this.f.b("left_tendril");
+      this.n = this.b.b("right_ribcage");
+      this.k = this.b.b("left_ribcage");
+      this.r = ImmutableList.of(this.h, this.g);
+      this.s = ImmutableList.of(this.b);
+      this.t = ImmutableList.of(this.f, this.j, this.l, this.i, this.m);
+      this.u = ImmutableList.of(this.b, this.f, this.j, this.l, this.i, this.m);
+   }
+
+   public static fkh b() {
+      fkj $$0 = new fkj();
+      fkk $$1 = $$0.a();
+      fkk $$2 = $$1.a("bone", fkg.c(), fkd.a(0.0F, 24.0F, 0.0F));
+      fkk $$3 = $$2.a("body", fkg.c().a(0, 0).a(-9.0F, -13.0F, -4.0F, 18.0F, 21.0F, 11.0F), fkd.a(0.0F, -21.0F, 0.0F));
+      $$3.a("right_ribcage", fkg.c().a(90, 11).a(-2.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F), fkd.a(-7.0F, -2.0F, -4.0F));
+      $$3.a("left_ribcage", fkg.c().a(90, 11).a().a(-7.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F).a(false), fkd.a(7.0F, -2.0F, -4.0F));
+      fkk $$4 = $$3.a("head", fkg.c().a(0, 32).a(-8.0F, -16.0F, -5.0F, 16.0F, 16.0F, 10.0F), fkd.a(0.0F, -13.0F, 0.0F));
+      $$4.a("right_tendril", fkg.c().a(52, 32).a(-16.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), fkd.a(-8.0F, -12.0F, 0.0F));
+      $$4.a("left_tendril", fkg.c().a(58, 0).a(0.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), fkd.a(8.0F, -12.0F, 0.0F));
+      $$3.a("right_arm", fkg.c().a(44, 50).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), fkd.a(-13.0F, -13.0F, 1.0F));
+      $$3.a("left_arm", fkg.c().a(0, 58).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), fkd.a(13.0F, -13.0F, 1.0F));
+      $$2.a("right_leg", fkg.c().a(76, 48).a(-3.1F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), fkd.a(-5.9F, -13.0F, 0.0F));
+      $$2.a("left_leg", fkg.c().a(76, 76).a(-2.9F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), fkd.a(5.9F, -13.0F, 0.0F));
+      return fkh.a($$0, 128, 128);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fkb::c);
+      float $$6 = $$3 - (float)$$0.ah;
+      this.a($$4, $$5);
+      this.b($$1, $$2);
+      this.a($$3);
+      this.a($$0, $$3, $$6);
+      this.a($$0.bT, eto.e, $$3);
+      this.a($$0.bU, eto.f, $$3);
+      this.a($$0.e, eto.b, $$3);
+      this.a($$0.d, eto.a, $$3);
+      this.a($$0.b, eto.c, $$3);
+      this.a($$0.c, eto.d, $$3);
+   }
+
+   private void a(float $$0, float $$1) {
+      this.f.e = $$1 * (float) (Math.PI / 180.0);
+      this.f.f = $$0 * (float) (Math.PI / 180.0);
+   }
+
+   private void a(float $$0) {
+      float $$1 = $$0 * 0.1F;
+      float $$2 = ati.b($$1);
+      float $$3 = ati.a($$1);
+      this.f.g += 0.06F * $$2;
+      this.f.e += 0.06F * $$3;
+      this.b.g += 0.025F * $$3;
+      this.b.e += 0.025F * $$2;
+   }
+
+   private void b(float $$0, float $$1) {
+      float $$2 = Math.min(0.5F, 3.0F * $$1);
+      float $$3 = $$0 * 0.8662F;
+      float $$4 = ati.b($$3);
+      float $$5 = ati.a($$3);
+      float $$6 = Math.min(0.35F, $$2);
+      this.f.g += 0.3F * $$5 * $$2;
+      this.f.e = this.f.e + 1.2F * ati.b($$3 + (float) (Math.PI / 2)) * $$6;
+      this.b.g = 0.1F * $$5 * $$2;
+      this.b.e = 1.0F * $$4 * $$6;
+      this.i.e = 1.0F * $$4 * $$2;
+      this.m.e = 1.0F * ati.b($$3 + (float) Math.PI) * $$2;
+      this.j.e = -(0.8F * $$4 * $$2);
+      this.j.g = 0.0F;
+      this.l.e = -(0.8F * $$5 * $$2);
+      this.l.g = 0.0F;
+      this.g();
+   }
+
+   private void g() {
+      this.j.f = 0.0F;
+      this.j.d = 1.0F;
+      this.j.b = 13.0F;
+      this.j.c = -13.0F;
+      this.l.f = 0.0F;
+      this.l.d = 1.0F;
+      this.l.b = -13.0F;
+      this.l.c = -13.0F;
+   }
+
+   private void a(T $$0, float $$1, float $$2) {
+      float $$3 = $$0.E($$2) * (float)(Math.cos((double)$$1 * 2.25) * Math.PI * 0.1F);
+      this.h.e = $$3;
+      this.g.e = -$$3;
    }
 
    @Override
-   public void a(wh $$0) {
-      this.a(new wo($$0.a()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
+   public fkb a() {
+      return this.q;
    }
 
-   @Override
-   public void a(wi $$0) {
-      wd.a($$0, this, this.a);
-      this.b(new wp($$0.a()));
+   public List<fkb> c() {
+      return this.r;
    }
 
-   @Override
-   public void a(wf $$0) {
-      wu $$1 = $$0.a();
-      if (!($$1 instanceof wv)) {
-         wd.a($$0, this, this.a);
-         if ($$1 instanceof wt $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
-         } else {
-            this.a($$1);
-         }
-      }
+   public List<fkb> d() {
+      return this.s;
    }
 
-   protected abstract void a(wu var1);
-
-   protected abstract ip.b f();
-
-   @Override
-   public void a(wj $$0) {
-      URL $$1 = a($$0.a());
-      if ($$1 == null) {
-         this.a(wq.a.c);
-      } else {
-         String $$2 = $$0.d();
-         boolean $$3 = $$0.e();
-         if (this.c != null && this.c.b() == fkc.a.a) {
-            this.a(wq.a.d);
-            this.a(this.a.ac().a($$1, $$2, true));
-         } else if (this.c != null && this.c.b() != fkc.a.c && (!$$3 || this.c.b() != fkc.a.b)) {
-            this.a(wq.a.b);
-            if ($$3) {
-               this.b.a(ui.c("multiplayer.requiredTexturePrompt.disconnect"));
-            }
-         } else {
-            this.a.execute(() -> this.a($$1, $$2, $$3, $$0.f()));
-         }
-      }
+   public List<fkb> e() {
+      return this.t;
    }
 
-   private void a(URL $$0, String $$1, boolean $$2, @Nullable ui $$3) {
-      ezd $$4 = this.a.y;
-      this.a
-         .a(
-            new exx(
-               $$4x -> {
-                  this.a.a($$4);
-                  if ($$4x) {
-                     if (this.c != null) {
-                        this.c.a(fkc.a.a);
-                     }
-
-                     this.a(wq.a.d);
-                     this.a(this.a.ac().a($$0, $$1, true));
-                  } else {
-                     this.a(wq.a.b);
-                     if ($$2) {
-                        this.b.a(ui.c("multiplayer.requiredTexturePrompt.disconnect"));
-                     } else if (this.c != null) {
-                        this.c.a(fkc.a.b);
-                     }
-                  }
-
-                  if (this.c != null) {
-                     fkd.b(this.c);
-                  }
-               },
-               $$2 ? ui.c("multiplayer.requiredTexturePrompt.line1") : ui.c("multiplayer.texturePrompt.line1"),
-               a($$2 ? ui.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : ui.c("multiplayer.texturePrompt.line2"), $$3),
-               $$2 ? uh.i : uh.f,
-               (ui)($$2 ? ui.c("menu.disconnect") : uh.g)
-            )
-         );
-   }
-
-   private static ui a(ui $$0, @Nullable ui $$1) {
-      return (ui)($$1 == null ? $$0 : ui.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
-   }
-
-   @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
-         return null;
-      }
-   }
-
-   private void a(CompletableFuture<?> $$0) {
-      $$0.thenRun(() -> this.a(wq.a.a)).exceptionally($$0x -> {
-         this.a(wq.a.c);
-         return null;
-      });
-   }
-
-   @Override
-   public void a(wk $$0) {
-      wd.a($$0, this, this.a);
-      $$0.a().forEach(this::a);
-   }
-
-   private <T> void a(afv<? extends io<? extends T>> $$0, ark.a $$1) {
-      if (!$$1.a()) {
-         io<T> $$2 = this.f().c($$0).orElseThrow(() -> new IllegalStateException("Unknown registry " + $$0));
-         Map<arh<T>, List<ib<T>>> $$4 = new HashMap<>();
-         ark.a($$0, $$2, $$1, $$4::put);
-         $$2.a($$4);
-      }
-   }
-
-   private void a(wq.a $$0) {
-      this.b.a(new wq($$0));
-   }
-
-   @Override
-   public void a(wg $$0) {
-      this.b.a($$0.a());
-   }
-
-   protected void g() {
-      Iterator<fjo.a> $$0 = this.i.iterator();
-
-      while ($$0.hasNext()) {
-         fjo.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ac.b()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   public void b(wb<?> $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   public void a(ui $$0) {
-      this.e.c();
-      this.a.b(this.b($$0));
-      h.warn("Client disconnected with reason: {}", $$0.getString());
-   }
-
-   protected ezd b(ui $$0) {
-      ezd $$1 = Objects.requireNonNullElseGet(this.f, () -> new fca(new ezi()));
-      return (ezd)(this.c != null && this.c.e() ? new gft($$1, g, $$0) : new eyg($$1, g, $$0));
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   private void a(wb<? extends tv> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
-      } else {
-         this.i.add(new fjo.a($$0, $$1, ac.b() + $$2.toMillis()));
-      }
-   }
-
-   static record a(wb<? extends tv> a, BooleanSupplier b, long c) {
+   public List<fkb> f() {
+      return this.u;
    }
 }

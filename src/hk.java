@@ -2,7 +2,7 @@ import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class hk implements hf<DoubleArgumentType, hk.a> {
-   public void a(hk.a $$0, tl $$1) {
+   public void a(hk.a $$0, tu $$1) {
       boolean $$2 = $$0.b != -Double.MAX_VALUE;
       boolean $$3 = $$0.c != Double.MAX_VALUE;
       $$1.k(hh.a($$2, $$3));
@@ -15,7 +15,7 @@ public class hk implements hf<DoubleArgumentType, hk.a> {
       }
    }
 
-   public hk.a a(tl $$0) {
+   public hk.a a(tu $$0) {
       byte $$1 = $$0.readByte();
       double $$2 = hh.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
       double $$3 = hh.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;

@@ -1,181 +1,106 @@
-public final class aqs {
-   public static final arh<cua> a = a("wool");
-   public static final arh<cua> b = a("planks");
-   public static final arh<cua> c = a("stone_bricks");
-   public static final arh<cua> d = a("wooden_buttons");
-   public static final arh<cua> e = a("stone_buttons");
-   public static final arh<cua> f = a("buttons");
-   public static final arh<cua> g = a("wool_carpets");
-   public static final arh<cua> h = a("wooden_doors");
-   public static final arh<cua> i = a("wooden_stairs");
-   public static final arh<cua> j = a("wooden_slabs");
-   public static final arh<cua> k = a("wooden_fences");
-   public static final arh<cua> l = a("pressure_plates");
-   public static final arh<cua> m = a("wooden_pressure_plates");
-   public static final arh<cua> n = a("stone_pressure_plates");
-   public static final arh<cua> o = a("wooden_trapdoors");
-   public static final arh<cua> p = a("doors");
-   public static final arh<cua> q = a("saplings");
-   public static final arh<cua> r = a("logs_that_burn");
-   public static final arh<cua> s = a("overworld_natural_logs");
-   public static final arh<cua> t = a("logs");
-   public static final arh<cua> u = a("dark_oak_logs");
-   public static final arh<cua> v = a("oak_logs");
-   public static final arh<cua> w = a("birch_logs");
-   public static final arh<cua> x = a("acacia_logs");
-   public static final arh<cua> y = a("cherry_logs");
-   public static final arh<cua> z = a("jungle_logs");
-   public static final arh<cua> A = a("spruce_logs");
-   public static final arh<cua> B = a("mangrove_logs");
-   public static final arh<cua> C = a("crimson_stems");
-   public static final arh<cua> D = a("warped_stems");
-   public static final arh<cua> E = a("bamboo_blocks");
-   public static final arh<cua> F = a("wart_blocks");
-   public static final arh<cua> G = a("banners");
-   public static final arh<cua> H = a("sand");
-   public static final arh<cua> I = a("smelts_to_glass");
-   public static final arh<cua> J = a("stairs");
-   public static final arh<cua> K = a("slabs");
-   public static final arh<cua> L = a("walls");
-   public static final arh<cua> M = a("anvil");
-   public static final arh<cua> N = a("rails");
-   public static final arh<cua> O = a("leaves");
-   public static final arh<cua> P = a("trapdoors");
-   public static final arh<cua> Q = a("small_flowers");
-   public static final arh<cua> R = a("beds");
-   public static final arh<cua> S = a("fences");
-   public static final arh<cua> T = a("tall_flowers");
-   public static final arh<cua> U = a("flowers");
-   public static final arh<cua> V = a("piglin_repellents");
-   public static final arh<cua> W = a("gold_ores");
-   public static final arh<cua> X = a("iron_ores");
-   public static final arh<cua> Y = a("diamond_ores");
-   public static final arh<cua> Z = a("redstone_ores");
-   public static final arh<cua> aa = a("lapis_ores");
-   public static final arh<cua> ab = a("coal_ores");
-   public static final arh<cua> ac = a("emerald_ores");
-   public static final arh<cua> ad = a("copper_ores");
-   public static final arh<cua> ae = a("candles");
-   public static final arh<cua> af = a("dirt");
-   public static final arh<cua> ag = a("terracotta");
-   public static final arh<cua> ah = a("concrete_powder");
-   public static final arh<cua> ai = a("completes_find_tree_tutorial");
-   public static final arh<cua> aj = a("flower_pots");
-   public static final arh<cua> ak = a("enderman_holdable");
-   public static final arh<cua> al = a("ice");
-   public static final arh<cua> am = a("valid_spawn");
-   public static final arh<cua> an = a("impermeable");
-   public static final arh<cua> ao = a("underwater_bonemeals");
-   public static final arh<cua> ap = a("coral_blocks");
-   public static final arh<cua> aq = a("wall_corals");
-   public static final arh<cua> ar = a("coral_plants");
-   public static final arh<cua> as = a("corals");
-   public static final arh<cua> at = a("bamboo_plantable_on");
-   public static final arh<cua> au = a("standing_signs");
-   public static final arh<cua> av = a("wall_signs");
-   public static final arh<cua> aw = a("signs");
-   public static final arh<cua> ax = a("ceiling_hanging_signs");
-   public static final arh<cua> ay = a("wall_hanging_signs");
-   public static final arh<cua> az = a("all_hanging_signs");
-   public static final arh<cua> aA = a("all_signs");
-   public static final arh<cua> aB = a("dragon_immune");
-   public static final arh<cua> aC = a("dragon_transparent");
-   public static final arh<cua> aD = a("wither_immune");
-   public static final arh<cua> aE = a("wither_summon_base_blocks");
-   public static final arh<cua> aF = a("beehives");
-   public static final arh<cua> aG = a("crops");
-   public static final arh<cua> aH = a("bee_growables");
-   public static final arh<cua> aI = a("portals");
-   public static final arh<cua> aJ = a("fire");
-   public static final arh<cua> aK = a("nylium");
-   public static final arh<cua> aL = a("beacon_base_blocks");
-   public static final arh<cua> aM = a("soul_speed_blocks");
-   public static final arh<cua> aN = a("wall_post_override");
-   public static final arh<cua> aO = a("climbable");
-   public static final arh<cua> aP = a("fall_damage_resetting");
-   public static final arh<cua> aQ = a("shulker_boxes");
-   public static final arh<cua> aR = a("hoglin_repellents");
-   public static final arh<cua> aS = a("soul_fire_base_blocks");
-   public static final arh<cua> aT = a("strider_warm_blocks");
-   public static final arh<cua> aU = a("campfires");
-   public static final arh<cua> aV = a("guarded_by_piglins");
-   public static final arh<cua> aW = a("prevent_mob_spawning_inside");
-   public static final arh<cua> aX = a("fence_gates");
-   public static final arh<cua> aY = a("unstable_bottom_center");
-   public static final arh<cua> aZ = a("mushroom_grow_block");
-   public static final arh<cua> ba = a("infiniburn_overworld");
-   public static final arh<cua> bb = a("infiniburn_nether");
-   public static final arh<cua> bc = a("infiniburn_end");
-   public static final arh<cua> bd = a("base_stone_overworld");
-   public static final arh<cua> be = a("stone_ore_replaceables");
-   public static final arh<cua> bf = a("deepslate_ore_replaceables");
-   public static final arh<cua> bg = a("base_stone_nether");
-   public static final arh<cua> bh = a("overworld_carver_replaceables");
-   public static final arh<cua> bi = a("nether_carver_replaceables");
-   public static final arh<cua> bj = a("candle_cakes");
-   public static final arh<cua> bk = a("cauldrons");
-   public static final arh<cua> bl = a("crystal_sound_blocks");
-   public static final arh<cua> bm = a("inside_step_sound_blocks");
-   public static final arh<cua> bn = a("combination_step_sound_blocks");
-   public static final arh<cua> bo = a("camel_sand_step_sound_blocks");
-   public static final arh<cua> bp = a("occludes_vibration_signals");
-   public static final arh<cua> bq = a("dampens_vibrations");
-   public static final arh<cua> br = a("dripstone_replaceable_blocks");
-   public static final arh<cua> bs = a("cave_vines");
-   public static final arh<cua> bt = a("moss_replaceable");
-   public static final arh<cua> bu = a("lush_ground_replaceable");
-   public static final arh<cua> bv = a("azalea_root_replaceable");
-   public static final arh<cua> bw = a("small_dripleaf_placeable");
-   public static final arh<cua> bx = a("big_dripleaf_placeable");
-   public static final arh<cua> by = a("snow");
-   public static final arh<cua> bz = a("mineable/axe");
-   public static final arh<cua> bA = a("mineable/hoe");
-   public static final arh<cua> bB = a("mineable/pickaxe");
-   public static final arh<cua> bC = a("mineable/shovel");
-   public static final arh<cua> bD = a("sword_efficient");
-   public static final arh<cua> bE = a("needs_diamond_tool");
-   public static final arh<cua> bF = a("needs_iron_tool");
-   public static final arh<cua> bG = a("needs_stone_tool");
-   public static final arh<cua> bH = a("features_cannot_replace");
-   public static final arh<cua> bI = a("lava_pool_stone_cannot_replace");
-   public static final arh<cua> bJ = a("geode_invalid_blocks");
-   public static final arh<cua> bK = a("frog_prefer_jump_to");
-   public static final arh<cua> bL = a("sculk_replaceable");
-   public static final arh<cua> bM = a("sculk_replaceable_world_gen");
-   public static final arh<cua> bN = a("ancient_city_replaceable");
-   public static final arh<cua> bO = a("vibration_resonators");
-   public static final arh<cua> bP = a("animals_spawnable_on");
-   public static final arh<cua> bQ = a("axolotls_spawnable_on");
-   public static final arh<cua> bR = a("goats_spawnable_on");
-   public static final arh<cua> bS = a("mooshrooms_spawnable_on");
-   public static final arh<cua> bT = a("parrots_spawnable_on");
-   public static final arh<cua> bU = a("polar_bears_spawnable_on_alternate");
-   public static final arh<cua> bV = a("rabbits_spawnable_on");
-   public static final arh<cua> bW = a("foxes_spawnable_on");
-   public static final arh<cua> bX = a("wolves_spawnable_on");
-   public static final arh<cua> bY = a("frogs_spawnable_on");
-   public static final arh<cua> bZ = a("azalea_grows_on");
-   public static final arh<cua> ca = a("convertable_to_mud");
-   public static final arh<cua> cb = a("mangrove_logs_can_grow_through");
-   public static final arh<cua> cc = a("mangrove_roots_can_grow_through");
-   public static final arh<cua> cd = a("dead_bush_may_place_on");
-   public static final arh<cua> ce = a("snaps_goat_horn");
-   public static final arh<cua> cf = a("replaceable_by_trees");
-   public static final arh<cua> cg = a("snow_layer_cannot_survive_on");
-   public static final arh<cua> ch = a("snow_layer_can_survive_on");
-   public static final arh<cua> ci = a("invalid_spawn_inside");
-   public static final arh<cua> cj = a("sniffer_diggable_block");
-   public static final arh<cua> ck = a("sniffer_egg_hatch_boost");
-   public static final arh<cua> cl = a("trail_ruins_replaceable");
-   public static final arh<cua> cm = a("replaceable");
-   public static final arh<cua> cn = a("enchantment_power_provider");
-   public static final arh<cua> co = a("enchantment_power_transmitter");
-   public static final arh<cua> cp = a("maintains_farmland");
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-   private aqs() {
+public class aqs extends aqq {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
+
+   public int a(Collection<coh<?>> $$0, amb $$1) {
+      List<agg> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (coh<?> $$4 : $$0) {
+         agg $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().ap_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            al.f.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(aak.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   private static arh<cua> a(String $$0) {
-      return arh.a(jz.e, new afw($$0));
+   public int b(Collection<coh<?>> $$0, amb $$1) {
+      List<agg> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (coh<?> $$4 : $$0) {
+         agg $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(aak.a.c, $$1, $$2);
+      return $$3;
+   }
+
+   private void a(aak.a $$0, amb $$1, List<agg> $$2) {
+      $$1.c.b(new aak($$0, $$2, Collections.emptyList(), this.a()));
+   }
+
+   public rz b() {
+      rz $$0 = new rz();
+      this.a().b($$0);
+      sf $$1 = new sf();
+
+      for (agg $$2 : this.a) {
+         $$1.add(su.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      sf $$3 = new sf();
+
+      for (agg $$4 : this.b) {
+         $$3.add(su.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
+   }
+
+   public void a(rz $$0, coi $$1) {
+      this.a(aqr.a($$0));
+      sf $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      sf $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
+   }
+
+   private void a(sf $$0, Consumer<coh<?>> $$1, coi $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            agg $$5 = new agg($$4);
+            Optional<coh<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
+   }
+
+   public void a(amb $$0) {
+      $$0.c.b(new aak(aak.a.a, this.a, this.b, this.a()));
    }
 }

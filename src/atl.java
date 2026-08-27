@@ -1,368 +1,60 @@
-import java.util.function.IntConsumer;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import java.util.function.Supplier;
 
-public class atl implements arp {
-   private static final int[] a = new int[]{
-      -1,
-      -1,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      0,
-      1431655765,
-      1431655765,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      1,
-      858993459,
-      858993459,
-      0,
-      715827882,
-      715827882,
-      0,
-      613566756,
-      613566756,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      2,
-      477218588,
-      477218588,
-      0,
-      429496729,
-      429496729,
-      0,
-      390451572,
-      390451572,
-      0,
-      357913941,
-      357913941,
-      0,
-      330382099,
-      330382099,
-      0,
-      306783378,
-      306783378,
-      0,
-      286331153,
-      286331153,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      3,
-      252645135,
-      252645135,
-      0,
-      238609294,
-      238609294,
-      0,
-      226050910,
-      226050910,
-      0,
-      214748364,
-      214748364,
-      0,
-      204522252,
-      204522252,
-      0,
-      195225786,
-      195225786,
-      0,
-      186737708,
-      186737708,
-      0,
-      178956970,
-      178956970,
-      0,
-      171798691,
-      171798691,
-      0,
-      165191049,
-      165191049,
-      0,
-      159072862,
-      159072862,
-      0,
-      153391689,
-      153391689,
-      0,
-      148102320,
-      148102320,
-      0,
-      143165576,
-      143165576,
-      0,
-      138547332,
-      138547332,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      4,
-      130150524,
-      130150524,
-      0,
-      126322567,
-      126322567,
-      0,
-      122713351,
-      122713351,
-      0,
-      119304647,
-      119304647,
-      0,
-      116080197,
-      116080197,
-      0,
-      113025455,
-      113025455,
-      0,
-      110127366,
-      110127366,
-      0,
-      107374182,
-      107374182,
-      0,
-      104755299,
-      104755299,
-      0,
-      102261126,
-      102261126,
-      0,
-      99882960,
-      99882960,
-      0,
-      97612893,
-      97612893,
-      0,
-      95443717,
-      95443717,
-      0,
-      93368854,
-      93368854,
-      0,
-      91382282,
-      91382282,
-      0,
-      89478485,
-      89478485,
-      0,
-      87652393,
-      87652393,
-      0,
-      85899345,
-      85899345,
-      0,
-      84215045,
-      84215045,
-      0,
-      82595524,
-      82595524,
-      0,
-      81037118,
-      81037118,
-      0,
-      79536431,
-      79536431,
-      0,
-      78090314,
-      78090314,
-      0,
-      76695844,
-      76695844,
-      0,
-      75350303,
-      75350303,
-      0,
-      74051160,
-      74051160,
-      0,
-      72796055,
-      72796055,
-      0,
-      71582788,
-      71582788,
-      0,
-      70409299,
-      70409299,
-      0,
-      69273666,
-      69273666,
-      0,
-      68174084,
-      68174084,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      5
-   };
-   private final long[] b;
-   private final int c;
-   private final long d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-
-   public atl(int $$0, int $$1, int[] $$2) {
-      this($$0, $$1);
-      int $$3 = 0;
-
-      int $$4;
-      for ($$4 = 0; $$4 <= $$1 - this.f; $$4 += this.f) {
-         long $$5 = 0L;
-
-         for (int $$6 = this.f - 1; $$6 >= 0; $$6--) {
-            $$5 <<= $$0;
-            $$5 |= (long)$$2[$$4 + $$6] & this.d;
-         }
-
-         this.b[$$3++] = $$5;
-      }
-
-      int $$7 = $$1 - $$4;
-      if ($$7 > 0) {
-         long $$8 = 0L;
-
-         for (int $$9 = $$7 - 1; $$9 >= 0; $$9--) {
-            $$8 <<= $$0;
-            $$8 |= (long)$$2[$$4 + $$9] & this.d;
-         }
-
-         this.b[$$3] = $$8;
+public class atl {
+   public static void a(crs $$0, ht $$1, jq $$2, bhv $$3) {
+      for (hx $$4 : hx.values()) {
+         a($$0, $$1, $$2, $$3, $$4, () -> a($$0.z), 0.55);
       }
    }
 
-   public atl(int $$0, int $$1) {
-      this($$0, $$1, (long[])null);
-   }
+   public static void a(crs $$0, ht $$1, jq $$2, bhv $$3, hx $$4, Supplier<eji> $$5, double $$6) {
+      int $$7 = $$3.a($$0.z);
 
-   public atl(int $$0, int $$1, @Nullable long[] $$2) {
-      Validate.inclusiveBetween(1L, 32L, (long)$$0);
-      this.e = $$1;
-      this.c = $$0;
-      this.d = (1L << $$0) - 1L;
-      this.f = (char)(64 / $$0);
-      int $$3 = 3 * (this.f - 1);
-      this.g = a[$$3 + 0];
-      this.h = a[$$3 + 1];
-      this.i = a[$$3 + 2];
-      int $$4 = ($$1 + this.f - 1) / this.f;
-      if ($$2 != null) {
-         if ($$2.length != $$4) {
-            throw new atl.a("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$4);
-         }
-
-         this.b = $$2;
-      } else {
-         this.b = new long[$$4];
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         a($$0, $$1, $$4, $$2, $$5.get(), $$6);
       }
    }
 
-   private int b(int $$0) {
-      long $$1 = Integer.toUnsignedLong(this.g);
-      long $$2 = Integer.toUnsignedLong(this.h);
-      return (int)((long)$$0 * $$1 + $$2 >> 32 >> this.i);
+   private static eji a(ato $$0) {
+      return new eji(ati.a($$0, -0.5, 0.5), ati.a($$0, -0.5, 0.5), ati.a($$0, -0.5, 0.5));
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, this.d, (long)$$1);
-      int $$2 = this.b($$0);
-      long $$3 = this.b[$$2];
-      int $$4 = ($$0 - $$2 * this.f) * this.c;
-      int $$5 = (int)($$3 >> $$4 & this.d);
-      this.b[$$2] = $$3 & ~(this.d << $$4) | ((long)$$1 & this.d) << $$4;
-      return $$5;
-   }
+   public static void a(hx.a $$0, crs $$1, ht $$2, double $$3, jq $$4, bib $$5) {
+      eji $$6 = eji.b($$2);
+      boolean $$7 = $$0 == hx.a.a;
+      boolean $$8 = $$0 == hx.a.b;
+      boolean $$9 = $$0 == hx.a.c;
+      int $$10 = $$5.a($$1.z);
 
-   @Override
-   public void b(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, this.d, (long)$$1);
-      int $$2 = this.b($$0);
-      long $$3 = this.b[$$2];
-      int $$4 = ($$0 - $$2 * this.f) * this.c;
-      this.b[$$2] = $$3 & ~(this.d << $$4) | ((long)$$1 & this.d) << $$4;
-   }
-
-   @Override
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      int $$1 = this.b($$0);
-      long $$2 = this.b[$$1];
-      int $$3 = ($$0 - $$1 * this.f) * this.c;
-      return (int)($$2 >> $$3 & this.d);
-   }
-
-   @Override
-   public long[] a() {
-      return this.b;
-   }
-
-   @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public int c() {
-      return this.c;
-   }
-
-   @Override
-   public void a(IntConsumer $$0) {
-      int $$1 = 0;
-
-      for (long $$2 : this.b) {
-         for (int $$3 = 0; $$3 < this.f; $$3++) {
-            $$0.accept((int)($$2 & this.d));
-            $$2 >>= this.c;
-            if (++$$1 >= this.e) {
-               return;
-            }
-         }
+      for (int $$11 = 0; $$11 < $$10; $$11++) {
+         double $$12 = $$6.c + ati.a($$1.z, -1.0, 1.0) * ($$7 ? 0.5 : $$3);
+         double $$13 = $$6.d + ati.a($$1.z, -1.0, 1.0) * ($$8 ? 0.5 : $$3);
+         double $$14 = $$6.e + ati.a($$1.z, -1.0, 1.0) * ($$9 ? 0.5 : $$3);
+         double $$15 = $$7 ? ati.a($$1.z, -1.0, 1.0) : 0.0;
+         double $$16 = $$8 ? ati.a($$1.z, -1.0, 1.0) : 0.0;
+         double $$17 = $$9 ? ati.a($$1.z, -1.0, 1.0) : 0.0;
+         $$1.a($$4, $$12, $$13, $$14, $$15, $$16, $$17);
       }
    }
 
-   @Override
-   public void a(int[] $$0) {
-      int $$1 = this.b.length;
-      int $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$1 - 1; $$3++) {
-         long $$4 = this.b[$$3];
-
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            $$0[$$2 + $$5] = (int)($$4 & this.d);
-            $$4 >>= this.c;
-         }
-
-         $$2 += this.f;
-      }
-
-      int $$6 = this.e - $$2;
-      if ($$6 > 0) {
-         long $$7 = this.b[$$1 - 1];
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$0[$$2 + $$8] = (int)($$7 & this.d);
-            $$7 >>= this.c;
-         }
-      }
+   public static void a(crs $$0, ht $$1, hx $$2, jq $$3, eji $$4, double $$5) {
+      eji $$6 = eji.b($$1);
+      int $$7 = $$2.j();
+      int $$8 = $$2.k();
+      int $$9 = $$2.l();
+      double $$10 = $$6.c + ($$7 == 0 ? ati.a($$0.z, -0.5, 0.5) : (double)$$7 * $$5);
+      double $$11 = $$6.d + ($$8 == 0 ? ati.a($$0.z, -0.5, 0.5) : (double)$$8 * $$5);
+      double $$12 = $$6.e + ($$9 == 0 ? ati.a($$0.z, -0.5, 0.5) : (double)$$9 * $$5);
+      double $$13 = $$7 == 0 ? $$4.a() : 0.0;
+      double $$14 = $$8 == 0 ? $$4.b() : 0.0;
+      double $$15 = $$9 == 0 ? $$4.c() : 0.0;
+      $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
    }
 
-   @Override
-   public arp d() {
-      return new atl(this.c, this.e, (long[])this.b.clone());
-   }
-
-   public static class a extends RuntimeException {
-      a(String $$0) {
-         super($$0);
-      }
+   public static void a(crs $$0, ht $$1, ato $$2, jq $$3) {
+      double $$4 = (double)$$1.u() + $$2.j();
+      double $$5 = (double)$$1.v() - 0.05;
+      double $$6 = (double)$$1.w() + $$2.j();
+      $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

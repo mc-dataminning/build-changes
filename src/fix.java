@@ -1,75 +1,57 @@
-public class fix {
-   public static final String a = "left_fin";
-   public static final String b = "right_fin";
-   public static final String c = "top_fin";
-   public static final String d = "bottom_fin";
-   public static final String e = "tail_fin";
-   public static final String f = "left_blue_fin";
-   public static final String g = "right_blue_fin";
-   public static final String h = "left_arm";
-   public static final String i = "right_arm";
-   public static final String j = "left_wing";
-   public static final String k = "right_wing";
-   public static final String l = "left_wing_base";
-   public static final String m = "right_wing_base";
-   public static final String n = "left_wing_tip";
-   public static final String o = "right_wing_tip";
-   public static final String p = "left_ear";
-   public static final String q = "right_ear";
-   public static final String r = "left_leg";
-   public static final String s = "right_leg";
-   public static final String t = "left_hind_leg";
-   public static final String u = "right_hind_leg";
-   public static final String v = "left_mid_leg";
-   public static final String w = "right_mid_leg";
-   public static final String x = "left_front_leg";
-   public static final String y = "right_front_leg";
-   public static final String z = "left_hind_foot";
-   public static final String A = "right_hind_foot";
-   public static final String B = "left_front_foot";
-   public static final String C = "right_front_foot";
-   public static final String D = "left_hind_leg_tip";
-   public static final String E = "right_hind_leg_tip";
-   public static final String F = "left_front_leg_tip";
-   public static final String G = "right_front_leg_tip";
-   public static final String H = "left_lid";
-   public static final String I = "right_lid";
-   public static final String J = "left_chest";
-   public static final String K = "right_chest";
-   public static final String L = "left_horn";
-   public static final String M = "right_horn";
-   public static final String N = "left_eye";
-   public static final String O = "right_eye";
-   public static final String P = "jaw";
-   public static final String Q = "nose";
-   public static final String R = "arms";
-   public static final String S = "tail";
-   public static final String T = "cube";
-   public static final String U = "beak";
-   public static final String V = "back_fin";
-   public static final String W = "mane";
-   public static final String X = "neck";
-   public static final String Y = "mouth";
-   public static final String Z = "head";
-   public static final String aa = "hat";
-   public static final String ab = "body";
-   public static final String ac = "hat_rim";
-   public static final String ad = "jacket";
-   public static final String ae = "top_gills";
-   public static final String af = "left_gills";
-   public static final String ag = "right_gills";
-   public static final String ah = "root";
-   public static final String ai = "croaking_body";
-   public static final String aj = "tongue";
-   public static final String ak = "tongue_r1";
-   public static final String al = "left_hand";
-   public static final String am = "right_hand";
-   public static final String an = "left_foot";
-   public static final String ao = "right_foot";
-   public static final String ap = "eyes";
-   public static final String aq = "right_tendril";
-   public static final String ar = "left_tendril";
-   public static final String as = "right_ribcage";
-   public static final String at = "left_ribcage";
-   public static final String au = "bone";
+public class fix<T extends bla & cbe> extends fhp<T> {
+   public fix(fkb $$0) {
+      super($$0);
+   }
+
+   public static fkh c() {
+      fkj $$0 = fhp.a(fkf.a, 0.0F);
+      fkk $$1 = $$0.a();
+      $$1.a("right_arm", fkg.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fkd.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fkg.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fkd.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fkg.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fkd.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fkg.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fkd.a(2.0F, 12.0F, 0.0F));
+      return fkh.a($$0, 64, 32);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = fhp.a.a;
+      this.r = fhp.a.a;
+      clb $$4 = $$0.b(bip.a);
+      if ($$4.a(cle.nG) && $$0.fW()) {
+         if ($$0.fm() == bks.b) {
+            this.s = fhp.a.d;
+         } else {
+            this.r = fhp.a.d;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      clb $$6 = $$0.eS();
+      if ($$0.fW() && ($$6.b() || !$$6.a(cle.nG))) {
+         float $$7 = ati.a(this.c * (float) Math.PI);
+         float $$8 = ati.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
+         this.n.g = 0.0F;
+         this.o.g = 0.0F;
+         this.n.f = -(0.1F - $$7 * 0.6F);
+         this.o.f = 0.1F - $$7 * 0.6F;
+         this.n.e = (float) (-Math.PI / 2);
+         this.o.e = (float) (-Math.PI / 2);
+         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
+         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
+         fgc.a(this.n, this.o, $$3);
+      }
+   }
+
+   @Override
+   public void a(bks $$0, enk $$1) {
+      float $$2 = $$0 == bks.b ? 1.0F : -1.0F;
+      fkb $$3 = this.a($$0);
+      $$3.b += $$2;
+      $$3.a($$1);
+      $$3.b -= $$2;
+   }
 }

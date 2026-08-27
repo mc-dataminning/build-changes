@@ -1,77 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+public class ezj extends fah {
+   private static final ur a = ur.c("gui.toMenu");
+   private static final ur b = ur.c("gui.toTitle");
+   private final fah c;
+   private final ur k;
+   private final ur l;
+   private final eya m = eya.d();
 
-public class ezj extends ezd {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final ui k;
-   private final un l;
-   private final ImmutableList<ezj.a> m;
-   private euc n = euc.a;
-   private int o;
-   private int p;
+   public ezj(fah $$0, ur $$1, ur $$2) {
+      this($$0, $$1, $$2, a);
+   }
 
-   protected ezj(ui $$0, List<ui> $$1, ImmutableList<ezj.a> $$2) {
-      super($$0);
-      this.l = un.a($$1);
-      this.k = uh.a($$0, ul.a($$1, uh.a));
-      this.m = $$2;
+   public ezj(fah $$0, ur $$1, ur $$2, ur $$3) {
+      super($$1);
+      this.c = $$0;
+      this.k = $$2;
+      this.l = $$3;
    }
 
    @Override
-   public ui h() {
-      return this.k;
-   }
-
-   @Override
-   public void aM_() {
-      UnmodifiableIterator $$1 = this.m.iterator();
-
-      while ($$1.hasNext()) {
-         ezj.a $$0 = (ezj.a)$$1.next();
-         this.p = Math.max(this.p, 20 + this.i.a($$0.a) + 20);
+   protected void aO_() {
+      this.m.c().b().a(10);
+      this.m.a(new evt(this.e, this.i));
+      this.m.a(new evg(this.k, this.i).j(this.g - 50).b(true));
+      eum $$0;
+      if (this.f.C()) {
+         $$0 = eum.a(this.l, $$0x -> this.f.a(this.c)).a();
+      } else {
+         $$0 = eum.a(b, $$0x -> this.f.a(new fam())).a();
       }
 
-      int $$1x = 5 + this.p + 5;
-      int $$2 = $$1x * this.m.size();
-      this.n = euc.a(this.i, this.l, $$2);
-      int $$3 = this.n.a() * 9;
-      this.o = (int)((double)this.h / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.o + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.g / 2.0 - (double)$$2 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.m.iterator(); var6.hasNext(); $$5 += $$1x) {
-         ezj.a $$6 = (ezj.a)var6.next();
-         this.d(etj.a($$6.a, $$6.b).a($$5, $$4, this.p, 20).a());
-      }
+      this.m.a($$0);
+      this.m.a();
+      this.m.a(this::d);
+      this.c();
    }
 
    @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.o - 9 * 2, -1);
-      this.n.a($$0, this.g / 2, this.o);
+   protected void c() {
+      exu.a(this.m, this.s());
    }
 
    @Override
-   public void b(esy $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public ur h() {
+      return uq.a(this.e, this.k);
    }
 
    @Override
-   public boolean aB_() {
+   public boolean aD_() {
       return false;
-   }
-
-   public static final class a {
-      final ui a;
-      final etj.c b;
-
-      public a(ui $$0, etj.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
    }
 }

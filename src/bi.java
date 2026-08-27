@@ -8,8 +8,8 @@ public class bi extends cw<bi.a> {
       return new bi.a($$1, $$3, $$4);
    }
 
-   public void a(alr $$0, eif $$1) {
-      eif $$2 = $$0.dj();
+   public void a(amb $$0, eji $$1) {
+      eji $$2 = $$0.dj();
       this.a($$0, $$3 -> $$3.a($$0.x(), $$1, $$2));
    }
 
@@ -43,7 +43,7 @@ public class bi extends cw<bi.a> {
          return $$0;
       }
 
-      public boolean a(alq $$0, eif $$1, eif $$2) {
+      public boolean a(ama $$0, eji $$1, eji $$2) {
          return this.a.isPresent() && !this.a.get().a($$0, $$1.c, $$1.d, $$1.e)
             ? false
             : !this.b.isPresent() || this.b.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);

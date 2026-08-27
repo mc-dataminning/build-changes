@@ -1,46 +1,99 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class etb extends eth {
-   protected static final int e = 2;
-   private static final euw a = new euw(new afw("widget/button"), new afw("widget/button_disabled"), new afw("widget/button_highlighted"));
+public class etb {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private etb.c b;
+   private int c;
 
-   public etb(int $$0, int $$1, int $$2, int $$3, ui $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public void a(etb.b $$0, List<anr> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
+
+      this.b = new etb.c($$0, $$1.stream().map(anr::a).collect(ImmutableList.toImmutableList()));
    }
 
-   public abstract void c();
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new etb.c(etb.b.c, ImmutableList.of());
+      }
 
-   @Override
-   protected void b(esy $$0, int $$1, int $$2, float $$3) {
-      ero $$4 = ero.O();
-      $$0.a(1.0F, 1.0F, 1.0F, this.k);
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      $$0.a(a.a(this.i, this.n()), this.p(), this.r(), this.k(), this.i());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.i ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | asy.f(this.k * 255.0F) << 24);
+      this.b.c = new etb.a($$0);
    }
 
-   public void a(esy $$0, esw $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      this.c();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.i || !this.j) {
-         return false;
-      } else if (exh.a($$0)) {
-         this.a(ero.O().ai());
-         this.c();
-         return true;
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
       } else {
-         return false;
+         this.b.d = true;
+      }
+   }
+
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
+   }
+
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
+   }
+
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final etb.b a;
+      private final List<String> b;
+      @Nullable
+      etb.a c;
+      boolean d;
+
+      c(etb.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
       }
    }
 }

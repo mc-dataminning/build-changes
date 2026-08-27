@@ -1,9 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface cgd extends bhu, chk {
-   int f();
-
-   int g();
-
-   List<ckj> h();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cgd {
 }

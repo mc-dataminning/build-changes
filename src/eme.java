@@ -1,104 +1,40 @@
-public interface eme extends eml {
-   emn i();
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-   void f();
+public enum eme {
+   a("icons"),
+   b("icons", "snapshot");
 
-   void a(int var1, byte var2);
+   private final String[] c;
 
-   void a(int var1, short var2);
+   private eme(String... $$0) {
+      this.c = $$0;
+   }
 
-   void a(int var1, float var2);
+   public List<aov<InputStream>> a(anr $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
+   }
 
-   @Override
-   default eml a(double $$0, double $$1, double $$2) {
-      if (this.i().b() != emn.b.a) {
-         return this;
-      } else if (this.i().a() == emn.a.a && this.i().c() == 3) {
-         this.a(0, (float)$$0);
-         this.a(4, (float)$$1);
-         this.a(8, (float)$$2);
-         this.f();
-         return this;
+   public aov<InputStream> b(anr $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
+   }
+
+   private aov<InputStream> a(anr $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      aov<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
       } else {
-         throw new IllegalStateException();
+         return $$3;
       }
-   }
-
-   @Override
-   default eml a(int $$0, int $$1, int $$2, int $$3) {
-      emn $$4 = this.i();
-      if ($$4.b() != emn.b.c) {
-         return this;
-      } else if ($$4.a() == emn.a.b && $$4.c() == 4) {
-         this.a(0, (byte)$$0);
-         this.a(1, (byte)$$1);
-         this.a(2, (byte)$$2);
-         this.a(3, (byte)$$3);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   @Override
-   default eml a(float $$0, float $$1) {
-      emn $$2 = this.i();
-      if ($$2.b() == emn.b.d && $$2.d() == 0) {
-         if ($$2.a() == emn.a.a && $$2.c() == 2) {
-            this.a(0, $$0);
-            this.a(4, $$1);
-            this.f();
-            return this;
-         } else {
-            throw new IllegalStateException();
-         }
-      } else {
-         return this;
-      }
-   }
-
-   @Override
-   default eml a(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 1);
-   }
-
-   @Override
-   default eml b(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 2);
-   }
-
-   default eml a(short $$0, short $$1, int $$2) {
-      emn $$3 = this.i();
-      if ($$3.b() != emn.b.d || $$3.d() != $$2) {
-         return this;
-      } else if ($$3.a() == emn.a.e && $$3.c() == 2) {
-         this.a(0, $$0);
-         this.a(2, $$1);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   @Override
-   default eml a(float $$0, float $$1, float $$2) {
-      emn $$3 = this.i();
-      if ($$3.b() != emn.b.b) {
-         return this;
-      } else if ($$3.a() == emn.a.c && $$3.c() == 3) {
-         this.a(0, a($$0));
-         this.a(1, a($$1));
-         this.a(2, a($$2));
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   static byte a(float $$0) {
-      return (byte)((int)(asy.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
    }
 }

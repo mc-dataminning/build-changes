@@ -1,47 +1,20 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
 public interface gdi {
-   afw a();
+   List<fre> a(@Nullable dgw var1, @Nullable hx var2, ato var3);
 
-   @Nullable
-   gen a(gem var1);
+   boolean a();
 
-   gdf b();
+   boolean b();
 
-   aqe c();
+   boolean c();
 
    boolean d();
 
-   boolean l();
+   gbh e();
 
-   int e();
+   frq f();
 
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gdi.a k();
-
-   default boolean r() {
-      return false;
-   }
-
-   default boolean s() {
-      return true;
-   }
-
-   static ate t() {
-      return ate.a();
-   }
-
-   public static enum a {
-      a,
-      b;
-   }
+   fro g();
 }

@@ -1,24 +1,17 @@
-public class fyd extends fyl<bwg, fgm<bwg>> {
-   private final fpu a;
+public class fyd extends fwq<cbo, fjl> {
+   private static final agg a = new agg("textures/entity/illager/vex.png");
+   private static final agg i = new agg("textures/entity/illager/vex_charging.png");
 
-   public fyd(fvy<bwg, fgm<bwg>> $$0, fpu $$1) {
-      super($$0);
-      this.a = $$1;
+   public fyd(fvk.a $$0) {
+      super($$0, new fjl($$0.a(fka.bI)), 0.3F);
+      this.a(new fzl<>(this, $$0.d()));
    }
 
-   public void a(emh $$0, fpb $$1, int $$2, bwg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.ge() != 0) {
-         $$0.a();
-         fiw $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(cuc.bT.o(), $$0, $$1, $$2, fzr.d);
-         $$0.b();
-      }
+   protected int a(cbo $$0, ht $$1) {
+      return 15;
+   }
+
+   public agg a(cbo $$0) {
+      return $$0.ge() ? i : a;
    }
 }

@@ -1,135 +1,120 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public abstract class dfa extends ddr {
-   public static final String d = "LootTable";
-   public static final String e = "LootTableSeed";
-   @Nullable
-   protected afw h;
-   protected long i;
+public class dfa extends der implements bij {
+   public static final int c = 6;
+   private static final Logger d = LogUtils.getLogger();
+   private final il<clb> e = il.a(6, clb.b);
+   private int f = -1;
 
-   protected dfa(ddz<?> $$0, ht $$1, dgb $$2) {
-      super($$0, $$1, $$2);
+   public dfa(ht $$0, dgw $$1) {
+      super(det.M, $$0, $$1);
    }
 
-   public static void a(cqf $$0, ate $$1, ht $$2, afw $$3) {
-      ddx $$4 = $$0.c_($$2);
-      if ($$4 instanceof dfa) {
-         ((dfa)$$4).a($$3, $$1.g());
-      }
-   }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.f = $$0;
+         dgw $$1 = this.q();
 
-   protected boolean d(rt $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.h = new afw($$0.l("LootTable"));
-         this.i = $$0.i("LootTableSeed");
-         return true;
+         for (int $$2 = 0; $$2 < cvx.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).b();
+            dhn $$4 = cvx.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(dlg.c, this.p, dlg.a.a($$1));
       } else {
-         return false;
+         d.error("Expected slot 0-5, got {}", $$0);
       }
    }
 
-   protected boolean e(rt $$0) {
-      if (this.h == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", this.h.toString());
-         if (this.i != 0L) {
-            $$0.a("LootTableSeed", this.i);
-         }
-
-         return true;
-      }
+   @Override
+   public void a(rz $$0) {
+      this.e.clear();
+      bik.b($$0, this.e);
+      this.f = $$0.h("last_interacted_slot");
    }
 
-   public void e(@Nullable ccx $$0) {
-      if (this.h != null && this.o.n() != null) {
-         edq $$1 = this.o.n().aH().getLootTable(this.h);
-         if ($$0 instanceof alr) {
-            al.N.a((alr)$$0, this.h);
-         }
-
-         this.h = null;
-         edo.a $$2 = new edo.a((alq)this.o).a(eft.f, eif.b(this.p));
-         if ($$0 != null) {
-            $$2.a($$0.go()).a(eft.a, $$0);
-         }
-
-         $$1.a(this, $$2.a(efs.c), this.i);
-      }
+   @Override
+   protected void b(rz $$0) {
+      bik.a($$0, this.e, true);
+      $$0.a("last_interacted_slot", this.f);
    }
 
-   public void a(afw $$0, long $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public int f() {
+      return (int)this.e.stream().filter(Predicate.not(clb::b)).count();
+   }
+
+   @Override
+   public void a() {
+      this.e.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
    }
 
    @Override
    public boolean ai_() {
-      this.e(null);
-      return this.f().stream().allMatch(ckj::b);
+      return this.e.stream().allMatch(clb::b);
    }
 
    @Override
-   public ckj a(int $$0) {
-      this.e(null);
-      return this.f().get($$0);
+   public clb a(int $$0) {
+      return this.e.get($$0);
    }
 
    @Override
-   public ckj a(int $$0, int $$1) {
-      this.e(null);
-      ckj $$2 = bhv.a(this.f(), $$0, $$1);
+   public clb a(int $$0, int $$1) {
+      clb $$2 = Objects.requireNonNullElse(this.e.get($$0), clb.b);
+      this.e.set($$0, clb.b);
       if (!$$2.b()) {
-         this.e();
+         this.c($$0);
       }
 
       return $$2;
    }
 
    @Override
-   public ckj b(int $$0) {
-      this.e(null);
-      return bhv.a(this.f(), $$0);
+   public clb b(int $$0) {
+      return this.a($$0, 1);
    }
 
    @Override
-   public void a(int $$0, ckj $$1) {
-      this.e(null);
-      this.f().set($$0, $$1);
-      if ($$1.L() > this.aj_()) {
-         $$1.f(this.aj_());
+   public void a(int $$0, clb $$1) {
+      if ($$1.a(ark.av)) {
+         this.e.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.b()) {
+         this.a($$0, 1);
       }
-
-      this.e();
    }
 
    @Override
-   public boolean a(ccx $$0) {
-      return bhu.a(this, $$0);
+   public boolean a(bij $$0, int $$1, clb $$2) {
+      return $$0.a_($$2x -> $$2x.b() ? true : clb.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.aj_()));
    }
 
    @Override
-   public void a() {
-      this.f().clear();
+   public int aj_() {
+      return 1;
    }
 
-   protected abstract il<ckj> f();
-
-   protected abstract void a(il<ckj> var1);
-
    @Override
-   public boolean d(ccx $$0) {
-      return super.d($$0) && (this.h == null || !$$0.N_());
+   public boolean a(cdm $$0) {
+      return bij.a(this, $$0);
    }
 
-   @Nullable
    @Override
-   public cfp createMenu(int $$0, ccw $$1, ccx $$2) {
-      if (this.d($$2)) {
-         this.e($$1.m);
-         return this.a($$0, $$1);
-      } else {
-         return null;
-      }
+   public boolean b(int $$0, clb $$1) {
+      return $$1.a(ark.av) && this.a($$0).b();
+   }
+
+   public int g() {
+      return this.f;
    }
 }

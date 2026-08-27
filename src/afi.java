@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface afi extends ack, acl {
+   @Override
+   default tt b() {
+      return tt.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface afi {
+   void a(afk var1);
 }

@@ -1,59 +1,47 @@
-import javax.annotation.Nullable;
+public class fcf extends fbg<che> {
+   private static final agg x = new agg("container/horse/chest_slots");
+   private static final agg y = new agg("container/horse/saddle_slot");
+   private static final agg z = new agg("container/horse/llama_armor_slot");
+   private static final agg A = new agg("container/horse/armor_slot");
+   private static final agg B = new agg("textures/gui/container/horse.png");
+   private final byi C;
+   private float D;
+   private float E;
 
-public abstract class fcf extends ezd {
-   private final ui b;
-   @Nullable
-   private final ui c;
-   private final ui k;
-   @Nullable
-   protected etl a;
-   private euc l = euc.a;
-
-   protected fcf(ui $$0, ui $$1, ui $$2) {
-      this($$0, $$1, null, $$2);
+   public fcf(che $$0, cdl $$1, byi $$2) {
+      super($$0, $$1, $$2.O_());
+      this.C = $$2;
    }
-
-   protected fcf(ui $$0, ui $$1, @Nullable ui $$2, ui $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.k = $$3;
-   }
-
-   protected abstract void a(int var1);
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      this.l = euc.a(this.i, this.b, this.g - 100);
-      int $$0 = (this.l.a() + 1) * this.l();
-      if (this.c != null) {
-         int $$1 = this.i.a(this.c);
-         this.a = new etl(this.g / 2 - $$1 / 2 - 8, 76 + $$0, $$1 + 24, 20, this.c, false);
-         this.d(this.a);
+   protected void a(eub $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(B, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.C instanceof byh $$6 && $$6.t()) {
+         $$0.a(x, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gm() * 18, 54);
       }
 
-      this.a($$0);
+      if (this.C.g()) {
+         $$0.a(y, $$4 + 7, $$5 + 35 - 18, 18, 18);
+      }
+
+      if (this.C.gN()) {
+         if (this.C instanceof byl) {
+            $$0.a(z, $$4 + 7, $$5 + 35, 18, 18);
+         } else {
+            $$0.a(A, $$4 + 7, $$5 + 35, 18, 18);
+         }
+      }
+
+      fcg.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.D, this.E, this.C);
    }
 
    @Override
-   public ui h() {
-      return this.k;
-   }
-
-   @Override
-   public void a(esy $$0, int $$1, int $$2, float $$3) {
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      this.D = (float)$$1;
+      this.E = (float)$$2;
       super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      int $$4 = this.g / 2 - this.l.b() / 2;
-      this.l.b($$0, $$4, 70, this.l(), 16777215);
-   }
-
-   protected void c(esy $$0) {
-      $$0.b(this.i, this.e, 25, 30, 16777215);
-   }
-
-   protected int l() {
-      return 9 * 2;
+      this.a($$0, $$1, $$2);
    }
 }

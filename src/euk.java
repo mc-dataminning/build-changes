@@ -1,319 +1,294 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class euk {
-   private static final afw b = new afw("icon/ping_unknown");
-   private static final afw c = new afw("icon/ping_1");
-   private static final afw d = new afw("icon/ping_2");
-   private static final afw e = new afw("icon/ping_3");
-   private static final afw f = new afw("icon/ping_4");
-   private static final afw g = new afw("icon/ping_5");
-   private static final afw h = new afw("hud/heart/container_blinking");
-   private static final afw i = new afw("hud/heart/container");
-   private static final afw j = new afw("hud/heart/full_blinking");
-   private static final afw k = new afw("hud/heart/half_blinking");
-   private static final afw l = new afw("hud/heart/absorbing_full_blinking");
-   private static final afw m = new afw("hud/heart/full");
-   private static final afw n = new afw("hud/heart/absorbing_half_blinking");
-   private static final afw o = new afw("hud/heart/half");
-   private static final Comparator<fka> p = Comparator.<fka>comparingInt($$0 -> $$0.e() == cqw.d ? 1 : 0)
-      .thenComparing($$0 -> x.a($$0.h(), ejc::b, ""))
-      .thenComparing($$0 -> $$0.a().getName(), String::compareToIgnoreCase);
-   public static final int a = 20;
-   private final ero q;
-   private final esx r;
+public abstract class euk implements evp, ewh, exy, eyd {
+   private static final double a = 0.5;
+   private static final double b = 3.0;
+   protected int f;
+   protected int g;
+   private int c;
+   private int d;
+   private ur e;
+   protected boolean h;
+   public boolean i = true;
+   public boolean j = true;
+   protected float k = 1.0F;
+   private int l;
+   private boolean m;
    @Nullable
-   private ui s;
+   private evx n;
+
+   public euk(int $$0, int $$1, int $$2, int $$3, ur $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.e = $$4;
+   }
+
+   @Override
+   public int i() {
+      return this.g;
+   }
+
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      if (this.j) {
+         this.h = $$1 >= this.p() && $$2 >= this.r() && $$1 < this.p() + this.f && $$2 < this.r() + this.g;
+         this.b($$0, $$1, $$2, $$3);
+         if (this.n != null) {
+            this.n.a(this.m(), this.aI_(), this.s());
+         }
+      }
+   }
+
+   public void a(@Nullable evx $$0) {
+      this.n = $$0;
+   }
+
    @Nullable
-   private ui t;
-   private boolean u;
-   private final Map<UUID, euk.a> v = new Object2ObjectOpenHashMap();
-
-   public euk(ero $$0, esx $$1) {
-      this.q = $$0;
-      this.r = $$1;
+   public evx j() {
+      return this.n;
    }
 
-   public ui a(fka $$0) {
-      return $$0.i() != null ? this.a($$0, $$0.i().f()) : this.a($$0, ejc.a($$0.h(), ui.b($$0.a().getName())));
+   public void b(int $$0) {
+      if (this.n != null) {
+         this.n.a($$0);
+      }
    }
 
-   private ui a(fka $$0, uw $$1) {
-      return $$0.e() == cqw.d ? $$1.a(n.u) : $$1;
+   protected vf aL_() {
+      return a(this.l());
    }
 
-   public void a(boolean $$0) {
-      if (this.u != $$0) {
-         this.v.clear();
-         this.u = $$0;
-         if ($$0) {
-            ui $$1 = ul.a(this.b(), ui.b(", "), this::a);
-            this.q.aV().c(ui.a("multiplayer.player.list.narration", $$1));
+   public static vf a(ur $$0) {
+      return ur.a("gui.narrate.button", $$0);
+   }
+
+   protected abstract void b(eub var1, int var2, int var3, float var4);
+
+   protected static void a(eub $$0, etz $$1, ur $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static void a(eub $$0, etz $$1, ur $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$1.a($$2);
+      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
+      int $$11 = $$6 - $$4;
+      if ($$9 > $$11) {
+         int $$12 = $$9 - $$11;
+         double $$13 = (double)ac.b() / 1000.0;
+         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
+         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
+         double $$16 = ati.d($$15, 0.0, (double)$$12);
+         $$0.c($$4, $$5, $$6, $$7);
+         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
+         $$0.f();
+      } else {
+         int $$17 = ati.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
+         $$0.a($$1, $$2, $$17, $$10, $$8);
+      }
+   }
+
+   protected void a(eub $$0, etz $$1, int $$2, int $$3) {
+      int $$4 = this.p() + $$2;
+      int $$5 = this.p() + this.k() - $$2;
+      a($$0, $$1, this.l(), $$4, this.r(), $$5, this.r() + this.i(), $$3);
+   }
+
+   public void a(double $$0, double $$1) {
+   }
+
+   public void b(double $$0, double $$1) {
+   }
+
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.i && this.j) {
+         if (this.c($$2)) {
+            boolean $$3 = this.d($$0, $$1);
+            if ($$3) {
+               this.a(esr.N().ah());
+               this.a($$0, $$1);
+               return true;
+            }
          }
+
+         return false;
+      } else {
+         return false;
       }
    }
 
-   private List<fka> b() {
-      return this.q.s.cn.n().stream().sorted(p).limit(80L).toList();
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (this.c($$2)) {
+         this.b($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public void a(esy $$0, int $$1, eje $$2, @Nullable ejb $$3) {
-      List<fka> $$4 = this.b();
-      int $$5 = 0;
-      int $$6 = 0;
+   protected boolean c(int $$0) {
+      return $$0 == 0;
+   }
 
-      for (fka $$7 : $$4) {
-         int $$8 = this.q.h.a(this.a($$7));
-         $$5 = Math.max($$5, $$8);
-         if ($$3 != null && $$3.f() != ejh.a.b) {
-            $$8 = this.q.h.b(" " + $$2.c($$7.a().getName(), $$3).b());
-            $$6 = Math.max($$6, $$8);
-         }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.c($$2)) {
+         this.b($$0, $$1, $$3, $$4);
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      if (!this.v.isEmpty()) {
-         Set<UUID> $$9 = $$4.stream().map($$0x -> $$0x.a().getId()).collect(Collectors.toSet());
-         this.v.keySet().removeIf($$1x -> !$$9.contains($$1x));
+   protected boolean d(double $$0, double $$1) {
+      return this.i
+         && this.j
+         && $$0 >= (double)this.p()
+         && $$1 >= (double)this.r()
+         && $$0 < (double)(this.p() + this.k())
+         && $$1 < (double)(this.r() + this.i());
+   }
+
+   @Nullable
+   @Override
+   public ety a(eyl $$0) {
+      if (!this.i || !this.j) {
+         return null;
+      } else {
+         return !this.aI_() ? ety.a(this) : null;
       }
+   }
 
-      int $$10 = $$4.size();
-      int $$11 = $$10;
+   @Override
+   public boolean a_(double $$0, double $$1) {
+      return this.i && this.j && $$0 >= (double)this.p() && $$1 >= (double)this.r() && $$0 < (double)(this.p() + this.f) && $$1 < (double)(this.r() + this.g);
+   }
 
-      int $$12;
-      for ($$12 = 1; $$11 > 20; $$11 = ($$10 + $$12 - 1) / $$12) {
-         $$12++;
+   public void a(gft $$0) {
+      $$0.a(gek.a(aqn.yy, 1.0F));
+   }
+
+   @Override
+   public int k() {
+      return this.f;
+   }
+
+   public void d(int $$0) {
+      this.f = $$0;
+   }
+
+   public void e(int $$0) {
+      this.g = $$0;
+   }
+
+   public void a(float $$0) {
+      this.k = $$0;
+   }
+
+   public void b(ur $$0) {
+      this.e = $$0;
+   }
+
+   public ur l() {
+      return this.e;
+   }
+
+   @Override
+   public boolean aI_() {
+      return this.m;
+   }
+
+   public boolean m() {
+      return this.h;
+   }
+
+   public boolean n() {
+      return this.m() || this.aI_();
+   }
+
+   @Override
+   public boolean aK_() {
+      return this.j && this.i;
+   }
+
+   @Override
+   public void b_(boolean $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public eyd.a q() {
+      if (this.aI_()) {
+         return eyd.a.c;
+      } else {
+         return this.h ? eyd.a.b : eyd.a.a;
       }
+   }
 
-      boolean $$13 = this.q.R() || this.q.J().m().j();
-      int $$14;
-      if ($$3 != null) {
-         if ($$3.f() == ejh.a.b) {
-            $$14 = 90;
+   @Override
+   public final void b(eyf $$0) {
+      this.a($$0);
+      if (this.n != null) {
+         this.n.b($$0);
+      }
+   }
+
+   protected abstract void a(eyf var1);
+
+   protected void c(eyf $$0) {
+      $$0.a(eye.a, this.aL_());
+      if (this.i) {
+         if (this.aI_()) {
+            $$0.a(eye.d, ur.c("narration.button.usage.focused"));
          } else {
-            $$14 = $$6;
-         }
-      } else {
-         $$14 = 0;
-      }
-
-      int $$17 = Math.min($$12 * (($$13 ? 9 : 0) + $$5 + $$14 + 13), $$1 - 50) / $$12;
-      int $$18 = $$1 / 2 - ($$17 * $$12 + ($$12 - 1) * 5) / 2;
-      int $$19 = 10;
-      int $$20 = $$17 * $$12 + ($$12 - 1) * 5;
-      List<ask> $$21 = null;
-      if (this.t != null) {
-         $$21 = this.q.h.c(this.t, $$1 - 50);
-
-         for (ask $$22 : $$21) {
-            $$20 = Math.max($$20, this.q.h.a($$22));
-         }
-      }
-
-      List<ask> $$23 = null;
-      if (this.s != null) {
-         $$23 = this.q.h.c(this.s, $$1 - 50);
-
-         for (ask $$24 : $$23) {
-            $$20 = Math.max($$20, this.q.h.a($$24));
-         }
-      }
-
-      if ($$21 != null) {
-         $$0.a($$1 / 2 - $$20 / 2 - 1, $$19 - 1, $$1 / 2 + $$20 / 2 + 1, $$19 + $$21.size() * 9, Integer.MIN_VALUE);
-
-         for (ask $$25 : $$21) {
-            int $$26 = this.q.h.a($$25);
-            $$0.b(this.q.h, $$25, $$1 / 2 - $$26 / 2, $$19, -1);
-            $$19 += 9;
-         }
-
-         $$19++;
-      }
-
-      $$0.a($$1 / 2 - $$20 / 2 - 1, $$19 - 1, $$1 / 2 + $$20 / 2 + 1, $$19 + $$11 * 9, Integer.MIN_VALUE);
-      int $$27 = this.q.m.a(553648127);
-
-      for (int $$28 = 0; $$28 < $$10; $$28++) {
-         int $$29 = $$28 / $$11;
-         int $$30 = $$28 % $$11;
-         int $$31 = $$18 + $$29 * $$17 + $$29 * 5;
-         int $$32 = $$19 + $$30 * 9;
-         $$0.a($$31, $$32, $$31 + $$17, $$32 + 8, $$27);
-         RenderSystem.enableBlend();
-         if ($$28 < $$4.size()) {
-            fka $$33 = $$4.get($$28);
-            GameProfile $$34 = $$33.a();
-            if ($$13) {
-               ccx $$35 = this.q.r.b($$34.getId());
-               boolean $$36 = $$35 != null && fve.e($$35);
-               boolean $$37 = $$35 != null && $$35.a(ccy.g);
-               eui.a($$0, $$33.g().a(), $$31, $$32, 8, $$37, $$36);
-               $$31 += 9;
-            }
-
-            $$0.b(this.q.h, this.a($$33), $$31, $$32, $$33.e() == cqw.d ? -1862270977 : -1);
-            if ($$3 != null && $$33.e() != cqw.d) {
-               int $$38 = $$31 + $$5 + 1;
-               int $$39 = $$38 + $$14;
-               if ($$39 - $$38 > 5) {
-                  this.a($$3, $$32, $$34.getName(), $$38, $$39, $$34.getId(), $$0);
-               }
-            }
-
-            this.a($$0, $$17, $$31 - ($$13 ? 9 : 0), $$32, $$33);
-         }
-      }
-
-      if ($$23 != null) {
-         $$19 += $$11 * 9 + 1;
-         $$0.a($$1 / 2 - $$20 / 2 - 1, $$19 - 1, $$1 / 2 + $$20 / 2 + 1, $$19 + $$23.size() * 9, Integer.MIN_VALUE);
-
-         for (ask $$40 : $$23) {
-            int $$41 = this.q.h.a($$40);
-            $$0.b(this.q.h, $$40, $$1 / 2 - $$41 / 2, $$19, -1);
-            $$19 += 9;
+            $$0.a(eye.d, ur.c("narration.button.usage.hovered"));
          }
       }
    }
 
-   protected void a(esy $$0, int $$1, int $$2, int $$3, fka $$4) {
-      afw $$5;
-      if ($$4.f() < 0) {
-         $$5 = b;
-      } else if ($$4.f() < 150) {
-         $$5 = g;
-      } else if ($$4.f() < 300) {
-         $$5 = f;
-      } else if ($$4.f() < 600) {
-         $$5 = e;
-      } else if ($$4.f() < 1000) {
-         $$5 = d;
-      } else {
-         $$5 = c;
-      }
-
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 100.0F);
-      $$0.a($$5, $$2 + $$1 - 11, $$3, 10, 8);
-      $$0.c().b();
+   @Override
+   public int p() {
+      return this.c;
    }
 
-   private void a(ejb $$0, int $$1, String $$2, int $$3, int $$4, UUID $$5, esy $$6) {
-      int $$7 = $$0.a().c($$2, $$0).b();
-      if ($$0.f() == ejh.a.b) {
-         this.a($$1, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         String $$8 = "" + n.o + $$7;
-         $$6.b(this.q.h, $$8, $$4 - this.q.h.b($$8), $$1, 16777215);
-      }
+   @Override
+   public void f(int $$0) {
+      this.c = $$0;
    }
 
-   private void a(int $$0, int $$1, int $$2, UUID $$3, esy $$4, int $$5) {
-      euk.a $$6 = this.v.computeIfAbsent($$3, $$1x -> new euk.a($$5));
-      $$6.a($$5, (long)this.r.e());
-      int $$7 = asy.e(Math.max($$5, $$6.a()), 2);
-      int $$8 = Math.max($$5, Math.max($$6.a(), 20)) / 2;
-      boolean $$9 = $$6.a((long)this.r.e());
-      if ($$7 > 0) {
-         int $$10 = asy.d(Math.min((float)($$2 - $$1 - 4) / (float)$$8, 9.0F));
-         if ($$10 <= 3) {
-            float $$11 = asy.a((float)$$5 / 20.0F, 0.0F, 1.0F);
-            int $$12 = (int)((1.0F - $$11) * 255.0F) << 16 | (int)($$11 * 255.0F) << 8;
-            float $$13 = (float)$$5 / 2.0F;
-            ui $$14 = ui.a("multiplayer.player.list.hp", $$13);
-            ui $$15;
-            if ($$2 - this.q.h.a($$14) >= $$1) {
-               $$15 = $$14;
-            } else {
-               $$15 = ui.b($$13 + "");
-            }
-
-            $$4.b(this.q.h, $$15, ($$2 + $$1 - this.q.h.a($$15)) / 2, $$0, $$12);
-         } else {
-            afw $$17 = $$9 ? h : i;
-
-            for (int $$18 = $$7; $$18 < $$8; $$18++) {
-               $$4.a($$17, $$1 + $$18 * $$10, $$0, 9, 9);
-            }
-
-            for (int $$19 = 0; $$19 < $$7; $$19++) {
-               $$4.a($$17, $$1 + $$19 * $$10, $$0, 9, 9);
-               if ($$9) {
-                  if ($$19 * 2 + 1 < $$6.a()) {
-                     $$4.a(j, $$1 + $$19 * $$10, $$0, 9, 9);
-                  }
-
-                  if ($$19 * 2 + 1 == $$6.a()) {
-                     $$4.a(k, $$1 + $$19 * $$10, $$0, 9, 9);
-                  }
-               }
-
-               if ($$19 * 2 + 1 < $$5) {
-                  $$4.a($$19 >= 10 ? l : m, $$1 + $$19 * $$10, $$0, 9, 9);
-               }
-
-               if ($$19 * 2 + 1 == $$5) {
-                  $$4.a($$19 >= 10 ? n : o, $$1 + $$19 * $$10, $$0, 9, 9);
-               }
-            }
-         }
-      }
+   @Override
+   public int r() {
+      return this.d;
    }
 
-   public void a(@Nullable ui $$0) {
-      this.s = $$0;
+   @Override
+   public void g(int $$0) {
+      this.d = $$0;
    }
 
-   public void b(@Nullable ui $$0) {
-      this.t = $$0;
+   @Override
+   public void a(Consumer<euk> $$0) {
+      $$0.accept(this);
    }
 
-   public void a() {
-      this.t = null;
-      this.s = null;
+   @Override
+   public eyp s() {
+      return exy.super.s();
    }
 
-   static class a {
-      private static final long a = 20L;
-      private static final long b = 20L;
-      private static final long c = 10L;
-      private int d;
-      private int e;
-      private long f;
-      private long g;
+   @Override
+   public int aJ_() {
+      return this.l;
+   }
 
-      public a(int $$0) {
-         this.e = $$0;
-         this.d = $$0;
-      }
-
-      public void a(int $$0, long $$1) {
-         if ($$0 != this.d) {
-            long $$2 = $$0 < this.d ? 20L : 10L;
-            this.g = $$1 + $$2;
-            this.d = $$0;
-            this.f = $$1;
-         }
-
-         if ($$1 - this.f > 20L) {
-            this.e = $$0;
-         }
-      }
-
-      public int a() {
-         return this.e;
-      }
-
-      public boolean a(long $$0) {
-         return this.g > $$0 && (this.g - $$0) % 6L >= 3L;
-      }
+   public void h(int $$0) {
+      this.l = $$0;
    }
 }

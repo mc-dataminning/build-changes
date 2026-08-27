@@ -1,17 +1,26 @@
-public record wt(String b) implements wu {
-   public static final afw a = new afw("brand");
+import java.util.Map;
 
-   public wt(tl $$0) {
-      this($$0.s());
+public class wt implements wk<wn> {
+   private final Map<agf<? extends io<?>>, aru.a> a;
+
+   public wt(Map<agf<? extends io<?>>, aru.a> $$0) {
+      this.a = $$0;
+   }
+
+   public wt(tu $$0) {
+      this.a = $$0.a(tu::u, aru.a::b);
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.a(this.b);
+   public void a(tu $$0) {
+      $$0.a(this.a, tu::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   @Override
-   public afw a() {
-      return a;
+   public void a(wn $$0) {
+      $$0.a(this);
+   }
+
+   public Map<agf<? extends io<?>>, aru.a> a() {
+      return this.a;
    }
 }

@@ -1,29 +1,36 @@
-import java.nio.file.Path;
-import java.util.Map;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-interface anr {
-   anr a = new anr() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-   };
-   anr b = new anr() {
-      @Override
-      public String toString() {
-         return "relative";
-      }
-   };
+public interface anr extends AutoCloseable {
+   String a = ".mcmeta";
+   String b = "pack.mcmeta";
 
-   public static record a(Map<String, ano> c) implements anr {
-      public Map<String, ano> a() {
-         return this.c;
-      }
+   @Nullable
+   aov<InputStream> a(String... var1);
+
+   @Nullable
+   aov<InputStream> a(ans var1, agg var2);
+
+   void a(ans var1, String var2, String var3, anr.a var4);
+
+   Set<String> a(ans var1);
+
+   @Nullable
+   <T> T a(aod<T> var1) throws IOException;
+
+   String a();
+
+   default boolean b() {
+      return false;
    }
 
-   public static record b(Path c) implements anr {
-      public Path a() {
-         return this.c;
-      }
+   @Override
+   void close();
+
+   @FunctionalInterface
+   public interface a extends BiConsumer<agg, aov<InputStream>> {
    }
 }

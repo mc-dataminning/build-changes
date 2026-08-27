@@ -1,54 +1,35 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dpo extends doo<drh> {
-   public dpo(Codec<drh> $$0) {
-      super($$0);
-   }
+public class dpo implements drn {
+   public static final Codec<dpo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               agg.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               agg.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               eau.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               eau.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dpo::new)
+   );
+   public final List<agg> b;
+   public final List<agg> c;
+   public final ib<eat> d;
+   public final ib<eat> e;
+   public final int f;
 
-   @Override
-   public boolean a(doq<drh> $$0) {
-      drh $$1 = $$0.f();
-      crt $$2 = $$0.b();
-      ate $$3 = $$0.d();
-      cua $$4 = $$1.b.b();
-      ht $$5 = a($$2, $$0.e().j().a(hx.a.b, $$2.I_() + 1, $$2.aj() - 1), $$4);
-      if ($$5 == null) {
-         return false;
+   public dpo(List<agg> $$0, List<agg> $$1, ib<eat> $$2, ib<eat> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
-
-         for (ht $$11 : ht.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dgb $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
-         }
-
-         return $$10;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
-   }
-
-   @Nullable
-   private static ht a(cra $$0, ht.a $$1, cua $$2) {
-      while ($$1.v() > $$0.I_() + 1) {
-         dgb $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(hx.a);
-      }
-
-      return null;
    }
 }

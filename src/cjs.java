@@ -1,14 +1,5 @@
-import javax.annotation.Nullable;
-
-public class cjs extends cic {
-   public cjs(cua $$0, cke.a $$1) {
-      super($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   protected dgb c(cmr $$0) {
-      ccx $$1 = $$0.o();
-      return $$1 != null && !$$1.gp() ? null : super.c($$0);
+public class cjs extends ckr implements cjt {
+   public cjs(int $$0, String $$1, ckw.a $$2) {
+      super($$0, $$1, $$2);
    }
 }

@@ -1,44 +1,42 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import java.util.zip.Deflater;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-public class ti extends MessageToByteEncoder<ByteBuf> {
-   private final byte[] a = new byte[8192];
-   private final Deflater b;
-   private int c;
+public class ti extends te {
+   private final Deque<tg> a = new ArrayDeque<>();
 
-   public ti(int $$0) {
-      this.c = $$0;
-      this.b = new Deflater();
+   public ti(tf... $$0) {
+      tg $$1 = tg.a();
+
+      for (tf $$2 : $$0) {
+         $$1.a($$2);
+      }
+
+      this.a.push($$1);
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      if ($$3 < this.c) {
-         tz.a($$2, 0);
-         $$2.writeBytes($$1);
+   @Override
+   public st.a a(sy<?> $$0, String $$1) {
+      tg $$2 = this.a.element();
+      if ($$2.a($$0, $$1)) {
+         return st.a.b;
       } else {
-         byte[] $$4 = new byte[$$3];
-         $$1.readBytes($$4);
-         tz.a($$2, $$4.length);
-         this.b.setInput($$4, 0, $$3);
-         this.b.finish();
-
-         while (!this.b.finished()) {
-            int $$5 = this.b.deflate(this.a);
-            $$2.writeBytes(this.a, 0, $$5);
+         if ($$0 == rz.b) {
+            tg $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.a.push($$3);
+            }
          }
 
-         this.b.reset();
+         return super.a($$0, $$1);
       }
    }
 
-   public int a() {
-      return this.c;
-   }
+   @Override
+   public st.b b() {
+      if (this.e() == this.a.element().b()) {
+         this.a.pop();
+      }
 
-   public void a(int $$0) {
-      this.c = $$0;
+      return super.b();
    }
 }

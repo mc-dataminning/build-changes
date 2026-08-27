@@ -1,59 +1,40 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtj extends dtk {
-   public static final Codec<dtj> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dtj::new, $$0 -> $$0.b).codec();
-   private final float b;
+public record dtj(ig<cut> b, ig<cut> c, dto d, int e, int f, float g) {
+   public static final Codec<dtj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iq.a(jz.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               iq.a(jz.e).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               dto.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dtj::new)
+   );
 
-   @Override
-   protected dtl<?> a() {
-      return dtl.b;
+   public ig<cut> a() {
+      return this.b;
    }
 
-   public dtj(float $$0) {
-      this.b = $$0;
+   public ig<cut> b() {
+      return this.c;
    }
 
-   @Override
-   public void a(dtk.a $$0) {
-      ate $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            ht $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               a($$3, dcr.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ht $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               a($$4, dcr.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ht $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               a($$5, dcr.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ht $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               a($$6, dcr.c, $$0);
-            }
-         }
-      });
+   public dto c() {
+      return this.d;
    }
 
-   private static void a(ht $$0, dgs $$1, dtk.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
+   public int d() {
+      return this.e;
+   }
 
-      for (ht var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.d();
-      }
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

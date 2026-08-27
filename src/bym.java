@@ -1,57 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public abstract class bym implements byu {
-   protected final byk a;
+public enum bym {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
 
-   public bym(byk $$0) {
-      this.a = $$0;
+   private static final IntFunction<bym> f = asb.a(bym::a, values(), asb.a.b);
+   private final int g;
+
+   private bym(int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public boolean a() {
-      return false;
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public void a(byj $$0, ht $$1, bir $$2, @Nullable ccx $$3) {
-   }
-
-   @Override
-   public void d() {
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public float f() {
-      return 0.6F;
-   }
-
-   @Nullable
-   @Override
-   public eif g() {
-      return null;
-   }
-
-   @Override
-   public float a(bir $$0, float $$1) {
-      return $$1;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.do().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
+   public static bym a(int $$0) {
+      return f.apply($$0);
    }
 }

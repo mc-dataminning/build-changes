@@ -1,28 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class dpm extends doo<drf> {
-   public dpm(Codec<drf> $$0) {
+public class dpm extends dpj<drr> {
+   public dpm(Codec<drr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(doq<drf> $$0) {
-      drf $$1 = $$0.f();
-      ate $$2 = $$0.d();
-      ht $$3 = $$0.e();
-      crt $$4 = $$0.b();
-      int $$5 = 0;
-      ht.a $$6 = new ht.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public boolean a(dpl<drr> $$0) {
+      ht $$1 = $$0.e();
+      drr $$2 = $$0.f();
+      csm $$3 = $$0.b();
+      ht.a $$4 = new ht.a();
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.I_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).i()) {
+               $$3.a($$4, $$2.c, 2);
+            }
          }
       }
 
-      return $$5 > 0;
+      return true;
    }
 }

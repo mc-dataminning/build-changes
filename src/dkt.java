@@ -1,60 +1,63 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class dkt {
-   public static final Codec<dkt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dks.a.optionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
-               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
-            )
-            .apply($$0, dkt::new)
-   );
-   private Optional<Pair<dks, Long>> b;
+   private Int2ObjectMap<bki> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<bki> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<bki> c;
 
-   public dkt(Optional<dks> $$0, long $$1) {
-      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
-   }
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
 
-   public dkt() {
-      this.b = Optional.empty();
-   }
+         while ($$1.hasNext()) {
+            Entry<bki> $$0 = (Entry<bki>)$$1.next();
+            this.b.put($$0.getIntKey(), (bki)$$0.getValue());
+         }
 
-   public void a(dks $$0, long $$1) {
-      if (this.b($$0, $$1)) {
-         this.b = Optional.of(Pair.of($$0, $$1));
+         Int2ObjectMap<bki> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
       }
    }
 
-   private boolean b(dks $$0, long $$1) {
-      if (this.b.isEmpty()) {
-         return true;
+   public void a(bki $$0) {
+      this.a();
+      this.a.put($$0.ah(), $$0);
+   }
+
+   public void b(bki $$0) {
+      this.a();
+      this.a.remove($$0.ah());
+   }
+
+   public boolean c(bki $$0) {
+      return this.a.containsKey($$0.ah());
+   }
+
+   public void a(Consumer<bki> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
       } else {
-         Pair<dks, Long> $$2 = this.b.get();
-         long $$3 = (Long)$$2.getRight();
-         if ($$1 != $$3) {
-            return false;
-         } else {
-            dks $$4 = (dks)$$2.getLeft();
-            if ($$0.b() < $$4.b()) {
-               return true;
-            } else {
-               return $$0.b() > $$4.b() ? false : dku.a_($$0.a()) > dku.a_($$4.a());
+         this.c = this.a;
+
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
+
+            while (var2.hasNext()) {
+               bki $$1 = (bki)var2.next();
+               $$0.accept($$1);
             }
+         } finally {
+            this.c = null;
          }
       }
-   }
-
-   public Optional<dks> a(long $$0) {
-      if (this.b.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.b.get().getRight() < $$0 ? Optional.of((dks)this.b.get().getLeft()) : Optional.empty();
-      }
-   }
-
-   public void a() {
-      this.b = Optional.empty();
    }
 }

@@ -1,45 +1,33 @@
-public class fxy extends fyl<bwe, ffz<bwe>> {
-   private final fox a;
+public class fxy extends fwp<cfp> {
+   private final frb f;
 
-   public fxy(fvy<bwe, ffz<bwe>> $$0, fox $$1) {
-      super($$0);
-      this.a = $$1;
+   public fxy(fvk.a $$0) {
+      super($$0, fka.bA);
+      this.f = $$0.c();
    }
 
-   public void a(emh $$0, fpb $$1, int $$2, bwe $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fD();
-      boolean $$11 = $$3.n_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
+   protected void a(cfp $$0, float $$1, dgw $$2, enk $$3, fqh $$4, int $$5) {
+      int $$6 = $$0.C();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = ati.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
 
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.E($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.n_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
-         }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   }
+
+   public static void a(frb $$0, dgw $$1, enk $$2, fqh $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = gay.a(gay.a(1.0F), 10);
       } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
+         $$6 = gay.d;
       }
 
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
-
-      ckj $$14 = $$3.c(bjy.a);
-      this.a.a($$3, $$14, ckg.h, false, $$0, $$1, $$2);
-      $$0.b();
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

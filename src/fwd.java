@@ -1,15 +1,11 @@
-public class fwd extends fvj<cas, fhr<cas>> {
-   private static final afw a = new afw("textures/entity/silverfish.png");
-
-   public fwd(fud.a $$0) {
-      super($$0, new fhr<>($$0.a(fiv.bg)), 0.3F);
+public abstract class fwd<T extends cai> extends fwq<T, fhq<T>> {
+   protected fwd(fvk.a $$0, fhq<T> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new fyx<>(this, $$0.f(), $$0.d()));
    }
 
-   protected float a(cas $$0) {
-      return 180.0F;
-   }
-
-   public afw b(cas $$0) {
-      return a;
+   protected void a(T $$0, enk $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

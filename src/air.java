@@ -1,84 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.Collection;
 
 public class air {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ui.c("commands.perf.alreadyRunning"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.kick.owner.failed"));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(dv.a("start").executes($$0x -> a((du)$$0x.getSource()))))
-            .then(dv.a("stop").executes($$0x -> b((du)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("kick").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("targets", eg.d())
+                     .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ur.c("multiplayer.disconnect.kicked"))))
+                  .then(dv.a("reason", ek.a()).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ek.a($$0x, "reason"))))
+            )
       );
    }
 
-   private static int a(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.m();
-      if ($$1.aN()) {
-         throw c.create();
+   private static int a(du $$0, Collection<amb> $$1, ur $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (amb $$4 : $$1) {
+         if (!$$0.m().a($$4.fR())) {
+            $$4.c.b($$2);
+            $$0.a(() -> ur.a("commands.kick.success", $$4.O_(), $$2), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         Consumer<ber> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> ui.c("commands.perf.started"), false);
-         return 0;
-      }
-   }
-
-   private static int b(du $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.m();
-      if (!$$1.aN()) {
-         throw b.create();
-      } else {
-         $$1.aP();
-         return 0;
-      }
-   }
-
-   private static void a(du $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aT().g(), aa.b().b());
-
-      String $$4;
-      try {
-         $$4 = v.a(bgh.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(ui.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (asj $$7 = new asj(bgh.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> ui.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(du $$0, ber $$1) {
-      if ($$1 != ben.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)atw.a;
-         $$0.a(() -> ui.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         return $$3;
       }
    }
 }

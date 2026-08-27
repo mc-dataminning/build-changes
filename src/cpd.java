@@ -1,20 +1,20 @@
-public class cpd extends cot {
-   public cpd(cot.a $$0, bjy... $$1) {
-      super($$0, cou.j, $$1);
+public class cpd extends cpm {
+   public cpd(cpm.a $$0, bkn... $$1) {
+      super($$0, cpn.k, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 25;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 50;
+      return this.a($$0) + 15;
    }
 
    @Override
-   public boolean b() {
-      return true;
+   public int a() {
+      return 5;
    }
 }

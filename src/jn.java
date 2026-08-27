@@ -11,7 +11,7 @@ public abstract class jn implements jq {
 
    public jn(Vector3f $$0, float $$1) {
       this.g = $$0;
-      this.h = asy.a($$1, 0.01F, 4.0F);
+      this.h = ati.a($$1, 0.01F, 4.0F);
    }
 
    public static Vector3f a(StringReader $$0) throws CommandSyntaxException {
@@ -24,12 +24,12 @@ public abstract class jn implements jq {
       return new Vector3f($$1, $$2, $$3);
    }
 
-   public static Vector3f b(tl $$0) {
+   public static Vector3f b(tu $$0) {
       return new Vector3f($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.a(this.g.x());
       $$0.a(this.g.y());
       $$0.a(this.g.z());

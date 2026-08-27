@@ -1,32 +1,32 @@
-public class aat implements wb<xu> {
-   private final ht a;
-   private final float b;
+public class aat implements wk<yd> {
+   private final double a;
+   private final double b;
 
-   public aat(ht $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aat(din $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
    }
 
-   public aat(tl $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readFloat();
+   public aat(tu $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public ht a() {
-      return this.a;
+   public double a() {
+      return this.b;
    }
 
-   public float d() {
-      return this.b;
+   public double d() {
+      return this.a;
    }
 }

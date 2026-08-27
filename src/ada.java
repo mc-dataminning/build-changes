@@ -1,36 +1,20 @@
-public class ada implements wb<aca> {
-   private final int a;
-   private final afw b;
-   private final boolean c;
-
-   public ada(int $$0, cno<?> $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1.a();
-      this.c = $$2;
-   }
-
-   public ada(tl $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.t();
-      this.c = $$0.readBoolean();
+public record ada(int a, int b, boolean c) implements wk<acj> {
+   public ada(tu $$0) {
+      this($$0.n(), $$0.n(), $$0.readBoolean());
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.k(this.a);
-      $$0.a(this.b);
+   public void a(tu $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
       $$0.a(this.c);
    }
 
-   public void a(aca $$0) {
+   public void a(acj $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public afw d() {
+   public int d() {
       return this.b;
    }
 

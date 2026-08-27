@@ -1,65 +1,151 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class bru extends bre {
-   private final bkl a;
-   private bkj b;
-   private int c;
-
-   public bru(bkl $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bre.a.a, bre.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      bkj $$0 = this.a.q();
-      if ($$0 == null) {
+public class bru {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bth b = new bth(Integer.MAX_VALUE, new brt() {
+      @Override
+      public boolean a() {
          return false;
-      } else {
-         this.b = $$0;
-         return true;
       }
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.b.bv()) {
+   }) {
+      @Override
+      public boolean h() {
          return false;
-      } else {
-         return this.a.f(this.b) > 225.0 ? false : !this.a.L().l() || this.a();
       }
+   };
+   private final Map<brt.a, bth> c = new EnumMap<>(brt.a.class);
+   private final Set<bth> d = Sets.newLinkedHashSet();
+   private final Supplier<bfh> e;
+   private final EnumSet<brt.a> f = EnumSet.noneOf(brt.a.class);
+   private int g;
+   private int h = 3;
+
+   public bru(Supplier<bfh> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public void d() {
-      this.b = null;
-      this.a.L().n();
+   public void a(int $$0, brt $$1) {
+      this.d.add(new bth($$0, $$1));
    }
 
-   @Override
-   public boolean R_() {
+   @VisibleForTesting
+   public void a(Predicate<brt> $$0) {
+      this.d.removeIf($$1 -> $$0.test($$1.k()));
+   }
+
+   public void a(brt $$0) {
+      this.d.stream().filter($$1 -> $$1.k() == $$0).filter(bth::h).forEach(bth::d);
+      this.d.removeIf($$1 -> $$1.k() == $$0);
+   }
+
+   private static boolean a(bth $$0, EnumSet<brt.a> $$1) {
+      for (brt.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean a(bth $$0, Map<brt.a, bth> $$1) {
+      for (brt.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, b).a($$0)) {
+            return false;
+         }
+      }
+
       return true;
    }
 
-   @Override
-   public void e() {
-      this.a.G().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.df() * 2.0F * this.a.df() * 2.0F);
-      double $$1 = this.a.i(this.b.dq(), this.b.ds(), this.b.dw());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
+   public void a() {
+      bfh $$0 = this.e.get();
+      $$0.a("goalCleanup");
+
+      for (bth $$1 : this.d) {
+         if ($$1.h() && (a($$1, this.f) || !$$1.b())) {
+            $$1.d();
+         }
       }
 
-      this.a.L().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.C(this.b);
+      Iterator<Entry<brt.a, bth>> $$2 = this.c.entrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<brt.a, bth> $$3 = $$2.next();
+         if (!$$3.getValue().h()) {
+            $$2.remove();
          }
+      }
+
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (bth $$4 : this.d) {
+         if (!$$4.h() && !a($$4, this.f) && a($$4, this.c) && $$4.a()) {
+            for (brt.a $$5 : $$4.j()) {
+               bth $$6 = this.c.getOrDefault($$5, b);
+               $$6.d();
+               this.c.put($$5, $$4);
+            }
+
+            $$4.c();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bfh $$1 = this.e.get();
+      $$1.a("goalTick");
+
+      for (bth $$2 : this.d) {
+         if ($$2.h() && ($$0 || $$2.R_())) {
+            $$2.e();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<bth> b() {
+      return this.d;
+   }
+
+   public Stream<bth> c() {
+      return this.d.stream().filter(bth::h);
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void a(brt.a $$0) {
+      this.f.add($$0);
+   }
+
+   public void b(brt.a $$0) {
+      this.f.remove($$0);
+   }
+
+   public void a(brt.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
       }
    }
 }

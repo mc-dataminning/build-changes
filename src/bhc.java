@@ -1,44 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bhc extends bhe {
-   public static final bhc a = new bhc(0.0F);
-   public static final Codec<bhc> b = asg.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bhc::new, bhc::d);
-   private final float d;
+public interface bhc {
+   bhb a();
 
-   public static bhc a(float $$0) {
-      return $$0 == 0.0F ? a : new bhc($$0);
+   static <T> bhc.b<T> a(T $$0, int $$1) {
+      return new bhc.b<>($$0, bhb.a($$1));
    }
 
-   private bhc(float $$0) {
-      this.d = $$0;
+   public static class a implements bhc {
+      private final bhb a;
+
+      public a(int $$0) {
+         this.a = bhb.a($$0);
+      }
+
+      public a(bhb $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public bhb a() {
+         return this.a;
+      }
    }
 
-   public float d() {
-      return this.d;
-   }
+   public static class b<T> implements bhc {
+      private final T a;
+      private final bhb b;
 
-   @Override
-   public float a(ate $$0) {
-      return this.d;
-   }
+      b(T $$0, bhb $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public float a() {
-      return this.d;
-   }
+      public T b() {
+         return this.a;
+      }
 
-   @Override
-   public float b() {
-      return this.d + 1.0F;
-   }
+      @Override
+      public bhb a() {
+         return this.b;
+      }
 
-   @Override
-   public bhf<?> c() {
-      return bhf.a;
-   }
-
-   @Override
-   public String toString() {
-      return Float.toString(this.d);
+      public static <E> Codec<bhc.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bhc.b::b), bhb.a.fieldOf("weight").forGetter(bhc.b::a)).apply($$1, bhc.b::new)
+         );
+      }
    }
 }

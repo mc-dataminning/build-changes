@@ -1,58 +1,62 @@
-public class cjx extends cke {
-   private static final int a = 40;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cjx(cke.a $$0) {
+public class cjx extends ckw {
+   public static final String a = "StoredEnchantments";
+
+   public cjx(ckw.a $$0) {
       super($$0);
    }
 
    @Override
-   public ckj a(ckj $$0, cqz $$1, bkj $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof alr $$3) {
-         al.z.a($$3, $$0);
-         $$3.b(aqn.c.b(this));
-      }
+   public boolean i(clb $$0) {
+      return true;
+   }
 
-      if (!$$1.B) {
-         $$2.d(bji.s);
-      }
+   @Override
+   public boolean d_(clb $$0) {
+      return false;
+   }
 
-      if ($$0.b()) {
-         return new ckj(ckm.rw);
-      } else {
-         if ($$2 instanceof ccx $$4 && !$$4.fT().d) {
-            ckj $$5 = new ckj(ckm.rw);
-            if (!$$4.fS().e($$5)) {
-               $$4.a($$5, false);
+   public static sf d(clb $$0) {
+      rz $$1 = $$0.v();
+      return $$1 != null ? $$1.c("StoredEnchantments", 10) : new sf();
+   }
+
+   @Override
+   public void a(clb $$0, @Nullable crs $$1, List<ur> $$2, cms $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      clb.a($$2, d($$0));
+   }
+
+   public static void a(clb $$0, cpp $$1) {
+      sf $$2 = d($$0);
+      boolean $$3 = true;
+      agg $$4 = cpo.a($$1.a);
+
+      for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
+         rz $$6 = $$2.a($$5);
+         agg $$7 = cpo.b($$6);
+         if ($$7 != null && $$7.equals($$4)) {
+            if (cpo.a($$6) < $$1.b) {
+               cpo.a($$6, $$1.b);
             }
+
+            $$3 = false;
+            break;
          }
-
-         return $$0;
       }
+
+      if ($$3) {
+         $$2.add(cpo.a($$4, $$1.b));
+      }
+
+      $$0.w().a("StoredEnchantments", $$2);
    }
 
-   @Override
-   public int b(ckj $$0) {
-      return 40;
-   }
-
-   @Override
-   public cmc c(ckj $$0) {
-      return cmc.c;
-   }
-
-   @Override
-   public aqc am_() {
-      return aqd.ld;
-   }
-
-   @Override
-   public aqc an_() {
-      return aqd.ld;
-   }
-
-   @Override
-   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
-      return ckl.a($$0, $$1, $$2);
+   public static clb a(cpp $$0) {
+      clb $$1 = new clb(cle.tD);
+      a($$1, $$0);
+      return $$1;
    }
 }

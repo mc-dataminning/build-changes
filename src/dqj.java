@@ -1,53 +1,54 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record dqj(List<dqj.a> b, hx c, dmr d, boolean e) implements dqs {
-   public static final Codec<dqj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dqj.a.a.listOf().fieldOf("layers").forGetter(dqj::a),
-               hx.g.fieldOf("direction").forGetter(dqj::b),
-               dmr.b.fieldOf("allowed_placement").forGetter(dqj::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dqj::d)
-            )
-            .apply($$0, dqj::new)
-   );
-
-   public static dqj.a a(bhg $$0, dst $$1) {
-      return new dqj.a($$0, $$1);
+public class dqj extends dpj<dsc> {
+   public dqj(Codec<dsc> $$0) {
+      super($$0);
    }
 
-   public static dqj b(bhg $$0, dst $$1) {
-      return new dqj(List.of(a($$0, $$1)), hx.b, dmr.c, false);
+   @Override
+   public boolean a(dpl<dsc> $$0) {
+      dsc $$1 = $$0.f();
+      csm $$2 = $$0.b();
+      ato $$3 = $$0.d();
+      cut $$4 = $$1.b.b();
+      ht $$5 = a($$2, $$0.e().j().a(hx.a.b, $$2.I_() + 1, $$2.aj() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (ht $$11 : ht.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dgw $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
+         }
+
+         return $$10;
+      }
    }
 
-   public List<dqj.a> a() {
-      return this.b;
-   }
+   @Nullable
+   private static ht a(crt $$0, ht.a $$1, cut $$2) {
+      while ($$1.v() > $$0.I_() + 1) {
+         dgw $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
 
-   public hx b() {
-      return this.c;
-   }
-
-   public dmr c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bhg b, dst c) {
-      public static final Codec<dqj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bhg.d.fieldOf("height").forGetter(dqj.a::a), dst.a.fieldOf("provider").forGetter(dqj.a::b)).apply($$0, dqj.a::new)
-      );
-
-      public bhg a() {
-         return this.b;
+         $$1.c(hx.a);
       }
 
-      public dst b() {
-         return this.c;
-      }
+      return null;
    }
 }

@@ -1,9 +1,12 @@
-public class fxh extends ftb<cbe, fio<cbe>> {
-   public fxh(fud.a $$0) {
-      this($$0, fiv.bX, fiv.ca, fiv.cb);
+public class fxh extends fwq<bxf, fis<bxf>> {
+   private static final agg a = new agg("textures/entity/sheep/sheep.png");
+
+   public fxh(fvk.a $$0) {
+      super($$0, new fis<>($$0.a(fka.bb)), 0.7F);
+      this.a(new fzu(this, $$0.f()));
    }
 
-   public fxh(fud.a $$0, fiu $$1, fiu $$2, fiu $$3) {
-      super($$0, new fio<>($$0.a($$1)), new fio<>($$0.a($$2)), new fio<>($$0.a($$3)));
+   public agg a(bxf $$0) {
+      return a;
    }
 }

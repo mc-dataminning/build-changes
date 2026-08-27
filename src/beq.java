@@ -1,12 +1,21 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public interface beq extends bes {
-   ber d();
+public class beq extends bbv {
+   public beq(int $$0, Schema $$1) {
+      super($$0, $$1);
+   }
 
-   @Nullable
-   bel.a c(String var1);
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(ban.t.in($$0))));
+   }
 
-   Set<Pair<String, bfv>> e();
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      a($$0, $$1, "minecraft:shulker_box");
+      return $$1;
+   }
 }

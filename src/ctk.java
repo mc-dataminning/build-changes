@@ -1,72 +1,64 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class ctk extends cua implements daz {
-   public static final dgs d = dgr.C;
-   private static final eiy a = cua.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   protected ctk(dga.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
-   }
+public abstract class ctk extends cut {
+   public static final int a = 3;
+   public static final dhn b = dhm.r;
 
    @Override
    protected abstract MapCodec<? extends ctk> a();
 
-   protected void a(dgb $$0, cra $$1, ht $$2) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.E_().a(40));
+   protected ctk(dgv.d $$0) {
+      super($$0);
+   }
+
+   protected abstract Iterable<eji> b(dgw var1);
+
+   public static boolean c(dgw $$0) {
+      return $$0.b(b) && ($$0.a(arc.ae) || $$0.a(arc.bj)) && $$0.c(b);
+   }
+
+   @Override
+   public void a(crs $$0, dgw $$1, eje $$2, cee $$3) {
+      if (!$$0.B && $$3.bM() && this.d($$1)) {
+         a($$0, $$1, $$2.a(), true);
       }
    }
 
-   protected static boolean e(dgb $$0, cqf $$1, ht $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (hx $$3 : hx.values()) {
-            if ($$1.b_($$2.a($$3)).a(aqx.a)) {
-               return true;
-            }
+   protected boolean d(dgw $$0) {
+      return !$$0.c(b);
+   }
+
+   @Override
+   public void a(dgw $$0, crs $$1, ht $$2, ato $$3) {
+      if ($$0.c(b)) {
+         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
+      }
+   }
+
+   private static void a(crs $$0, eji $$1, ato $$2) {
+      float $$3 = $$2.i();
+      if ($$3 < 0.3F) {
+         $$0.a(js.Z, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
+         if ($$3 < 0.17F) {
+            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, aqn.dc, aqo.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
          }
-
-         return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dgb a(cmr $$0) {
-      ebe $$1 = $$0.q().b_($$0.a());
-      return this.o().a(d, Boolean.valueOf($$1.a(aqx.a) && $$1.e() == 8));
-   }
-
-   @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return a;
-   }
-
-   @Override
-   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ebf.c, ebf.c.a($$3));
       }
 
-      return $$1 == hx.a && !this.a($$0, (crc)$$3, $$4) ? cuc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$0.a(js.aE, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
    }
 
-   @Override
-   public boolean a(dgb $$0, crc $$1, ht $$2) {
-      ht $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, hx.b);
+   public static void a(@Nullable cdm $$0, dgw $$1, crt $$2, ht $$3) {
+      a($$2, $$1, $$3, false);
+      if ($$1.b() instanceof ctk) {
+         ((ctk)$$1.b()).b($$1).forEach($$2x -> $$2.a(js.Z, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      }
+
+      $$2.a(null, $$3, aqn.de, aqo.e, 1.0F, 1.0F);
+      $$2.a($$0, dlg.c, $$3);
    }
 
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(d);
-   }
-
-   @Override
-   public ebe c_(dgb $$0) {
-      return $$0.c(d) ? ebf.c.a(false) : super.c_($$0);
+   private static void a(crt $$0, dgw $$1, ht $$2, boolean $$3) {
+      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
    }
 }

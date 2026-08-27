@@ -1,37 +1,49 @@
-public class bic<T> {
-   private final bib a;
-   private final T b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   public bic(bib $$0, T $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bic extends bhv {
+   public static final Codec<bic> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bha.b(bhv.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bic::new)
+   );
+   private final bha<bhv> b;
+   private final int f;
+   private final int g;
+
+   public bic(bha<bhv> $$0) {
+      this.b = $$0;
+      List<bhc.b<bhv>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
+
+      for (bhc.b<bhv> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
+      }
+
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public bib a() {
-      return this.a;
+   @Override
+   public int a(ato $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
    }
 
-   public T b() {
-      return this.b;
+   @Override
+   public int a() {
+      return this.f;
    }
 
-   public static <T> bic<T> a(T $$0) {
-      return new bic<>(bib.a, $$0);
+   @Override
+   public int b() {
+      return this.g;
    }
 
-   public static <T> bic<T> b(T $$0) {
-      return new bic<>(bib.b, $$0);
-   }
-
-   public static <T> bic<T> c(T $$0) {
-      return new bic<>(bib.d, $$0);
-   }
-
-   public static <T> bic<T> d(T $$0) {
-      return new bic<>(bib.e, $$0);
-   }
-
-   public static <T> bic<T> a(T $$0, boolean $$1) {
-      return $$1 ? a($$0) : b($$0);
+   @Override
+   public bhw<?> c() {
+      return bhw.e;
    }
 }

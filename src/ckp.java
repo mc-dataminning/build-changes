@@ -1,19 +1,58 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class ckp extends ckw {
+   private static final int a = 40;
 
-public class ckp extends clv {
-   public ckp(cke.a $$0) {
+   public ckp(ckw.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(ckj $$0, @Nullable cqz $$1, List<ui> $$2, cma $$3) {
-      cmi.a($$0, $$2, 0.25F);
+   public clb a(clb $$0, crs $$1, bky $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$2 instanceof amb $$3) {
+         al.z.a($$3, $$0);
+         $$3.b(aqx.c.b(this));
+      }
+
+      if (!$$1.B) {
+         $$2.d(bjx.s);
+      }
+
+      if ($$0.b()) {
+         return new clb(cle.rx);
+      } else {
+         if ($$2 instanceof cdm $$4 && !$$4.fT().d) {
+            clb $$5 = new clb(cle.rx);
+            if (!$$4.fS().e($$5)) {
+               $$4.a($$5, false);
+            }
+         }
+
+         return $$0;
+      }
    }
 
    @Override
-   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
-      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqd.mx, aqe.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public int b(clb $$0) {
+      return 40;
+   }
+
+   @Override
+   public cmu c(clb $$0) {
+      return cmu.c;
+   }
+
+   @Override
+   public aqm am_() {
+      return aqn.lf;
+   }
+
+   @Override
+   public aqm an_() {
+      return aqn.lf;
+   }
+
+   @Override
+   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
+      return cld.a($$0, $$1, $$2);
    }
 }

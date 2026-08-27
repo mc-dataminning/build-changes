@@ -1,32 +1,22 @@
-public class bqi extends bqg {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.google.common.collect.ImmutableMap;
 
-   public bqi(bkl $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+public class bqi<E extends ccq> extends bmp<E> {
+   public bqi(int $$0) {
+      super(ImmutableMap.of(btz.aB, bua.a, btz.m, bua.b, btz.n, bua.c), $$0);
    }
 
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dD(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.L().l()) {
-            this.a.s(this.a(this.a.dD(), 0.0F, 5.0F));
-         }
+   protected boolean a(ama $$0, E $$1, long $$2) {
+      return true;
+   }
 
-         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
-      }
+   protected void b(ama $$0, E $$1, long $$2) {
+      $$1.b(blk.n);
+      $$1.a(aqn.zF, 5.0F, 1.0F);
+   }
 
-      float $$0 = asy.g(this.a.aW - this.a.aU);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aU -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aU += 4.0F;
+   protected void c(ama $$0, E $$1, long $$2) {
+      if ($$1.c(blk.n)) {
+         $$1.b(blk.a);
       }
    }
 }

@@ -1,61 +1,72 @@
-public class fpq implements eml {
-   private final eml a;
-   private final gaa b;
+public class fpq {
+   public static final ur a = ur.c("quickplay.error.title");
+   private static final ur b = ur.c("quickplay.error.invalid_identifier");
+   private static final ur c = ur.c("quickplay.error.realm_connect");
+   private static final ur d = ur.c("quickplay.error.realm_permission");
+   private static final ur e = ur.c("gui.toTitle");
+   private static final ur f = ur.c("gui.toWorld");
+   private static final ur g = ur.c("gui.toRealms");
 
-   public fpq(eml $$0, gaa $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static void a(esr $$0, ffv.c $$1, eoa $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!ac.b($$3)) {
+         a($$0, $$3);
+      } else if (!ac.b($$4)) {
+         b($$0, $$4);
+      } else if (!ac.b($$5)) {
+         a($$0, $$2, $$5);
+      }
    }
 
-   @Override
-   public eml a(double $$0, double $$1, double $$2) {
-      return this.a.a($$0, $$1, $$2);
+   private static void a(esr $$0, String $$1) {
+      if (!$$0.l().b($$1)) {
+         fah $$2 = new ffd(new fam());
+         $$0.a(new ezj($$2, a, b, f));
+      } else {
+         $$0.w().a($$1, () -> $$0.a(new fam()));
+      }
    }
 
-   @Override
-   public eml a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   private static void b(esr $$0, String $$1) {
+      fli $$2 = new fli($$0);
+      $$2.a();
+      flh $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new flh(gcn.a("selectServer.defaultName"), $$1, flh.b.c);
+         $$2.a($$3, true);
+         $$2.b();
+      }
+
+      fmi $$4 = fmi.a($$1);
+      ezb.a(new fdf(new fam()), $$0, $$4, $$3, true);
    }
 
-   @Override
-   public eml a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
-   }
+   private static void a(esr $$0, eoa $$1, String $$2) {
+      long $$3;
+      eot $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.b();
+      } catch (NumberFormatException var9) {
+         fah $$6 = new env(new fam());
+         $$0.a(new ezj($$6, a, b, g));
+         return;
+      } catch (epn var10) {
+         fah $$8 = new fam();
+         $$0.a(new ezj($$8, a, c, e));
+         return;
+      }
 
-   @Override
-   public eml a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public eml b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
-
-   @Override
-   public eml a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.a.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void k() {
-      this.a.k();
-   }
-
-   @Override
-   public void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
+      eor $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         fah $$12 = new env(new fam());
+         $$0.a(new ezj($$12, a, d, g));
+      } else {
+         fam $$13 = new fam();
+         erq $$14 = new erq($$13, $$11);
+         $$0.a(new eqh($$13, $$14));
+      }
    }
 }

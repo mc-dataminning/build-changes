@@ -1,19 +1,93 @@
-class bjj extends bje {
-   protected bjj(bjf $$0, int $$1) {
-      super($$0, $$1);
-   }
+public interface bjj {
+   agf<bji> a = agf.a(jz.q, new agg("in_fire"));
+   agf<bji> b = agf.a(jz.q, new agg("lightning_bolt"));
+   agf<bji> c = agf.a(jz.q, new agg("on_fire"));
+   agf<bji> d = agf.a(jz.q, new agg("lava"));
+   agf<bji> e = agf.a(jz.q, new agg("hot_floor"));
+   agf<bji> f = agf.a(jz.q, new agg("in_wall"));
+   agf<bji> g = agf.a(jz.q, new agg("cramming"));
+   agf<bji> h = agf.a(jz.q, new agg("drown"));
+   agf<bji> i = agf.a(jz.q, new agg("starve"));
+   agf<bji> j = agf.a(jz.q, new agg("cactus"));
+   agf<bji> k = agf.a(jz.q, new agg("fall"));
+   agf<bji> l = agf.a(jz.q, new agg("fly_into_wall"));
+   agf<bji> m = agf.a(jz.q, new agg("out_of_world"));
+   agf<bji> n = agf.a(jz.q, new agg("generic"));
+   agf<bji> o = agf.a(jz.q, new agg("magic"));
+   agf<bji> p = agf.a(jz.q, new agg("wither"));
+   agf<bji> q = agf.a(jz.q, new agg("dragon_breath"));
+   agf<bji> r = agf.a(jz.q, new agg("dry_out"));
+   agf<bji> s = agf.a(jz.q, new agg("sweet_berry_bush"));
+   agf<bji> t = agf.a(jz.q, new agg("freeze"));
+   agf<bji> u = agf.a(jz.q, new agg("stalagmite"));
+   agf<bji> v = agf.a(jz.q, new agg("falling_block"));
+   agf<bji> w = agf.a(jz.q, new agg("falling_anvil"));
+   agf<bji> x = agf.a(jz.q, new agg("falling_stalactite"));
+   agf<bji> y = agf.a(jz.q, new agg("sting"));
+   agf<bji> z = agf.a(jz.q, new agg("mob_attack"));
+   agf<bji> A = agf.a(jz.q, new agg("mob_attack_no_aggro"));
+   agf<bji> B = agf.a(jz.q, new agg("player_attack"));
+   agf<bji> C = agf.a(jz.q, new agg("arrow"));
+   agf<bji> D = agf.a(jz.q, new agg("trident"));
+   agf<bji> E = agf.a(jz.q, new agg("mob_projectile"));
+   agf<bji> F = agf.a(jz.q, new agg("fireworks"));
+   agf<bji> G = agf.a(jz.q, new agg("fireball"));
+   agf<bji> H = agf.a(jz.q, new agg("unattributed_fireball"));
+   agf<bji> I = agf.a(jz.q, new agg("wither_skull"));
+   agf<bji> J = agf.a(jz.q, new agg("thrown"));
+   agf<bji> K = agf.a(jz.q, new agg("indirect_magic"));
+   agf<bji> L = agf.a(jz.q, new agg("thorns"));
+   agf<bji> M = agf.a(jz.q, new agg("explosion"));
+   agf<bji> N = agf.a(jz.q, new agg("player_explosion"));
+   agf<bji> O = agf.a(jz.q, new agg("sonic_boom"));
+   agf<bji> P = agf.a(jz.q, new agg("bad_respawn_point"));
+   agf<bji> Q = agf.a(jz.q, new agg("outside_border"));
+   agf<bji> R = agf.a(jz.q, new agg("generic_kill"));
 
-   @Override
-   public void a(bkj $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0.eu() > 1.0F) {
-         $$0.a($$0.dM().o(), 1.0F);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 25 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   static void a(ou<bji> $$0) {
+      $$0.a(a, new bji("inFire", 0.1F, bje.d));
+      $$0.a(b, new bji("lightningBolt", 0.1F));
+      $$0.a(c, new bji("onFire", 0.0F, bje.d));
+      $$0.a(d, new bji("lava", 0.1F, bje.d));
+      $$0.a(e, new bji("hotFloor", 0.1F, bje.d));
+      $$0.a(f, new bji("inWall", 0.0F));
+      $$0.a(g, new bji("cramming", 0.0F));
+      $$0.a(h, new bji("drown", 0.0F, bje.c));
+      $$0.a(i, new bji("starve", 0.0F));
+      $$0.a(j, new bji("cactus", 0.1F));
+      $$0.a(k, new bji("fall", bjf.b, 0.0F, bje.a, bjk.b));
+      $$0.a(l, new bji("flyIntoWall", 0.0F));
+      $$0.a(m, new bji("outOfWorld", 0.0F));
+      $$0.a(n, new bji("generic", 0.0F));
+      $$0.a(o, new bji("magic", 0.0F));
+      $$0.a(p, new bji("wither", 0.0F));
+      $$0.a(q, new bji("dragonBreath", 0.0F));
+      $$0.a(r, new bji("dryout", 0.1F));
+      $$0.a(s, new bji("sweetBerryBush", 0.1F, bje.e));
+      $$0.a(t, new bji("freeze", 0.0F, bje.f));
+      $$0.a(u, new bji("stalagmite", 0.0F));
+      $$0.a(v, new bji("fallingBlock", 0.1F));
+      $$0.a(w, new bji("anvil", 0.1F));
+      $$0.a(x, new bji("fallingStalactite", 0.1F));
+      $$0.a(y, new bji("sting", 0.1F));
+      $$0.a(z, new bji("mob", 0.1F));
+      $$0.a(A, new bji("mob", 0.1F));
+      $$0.a(B, new bji("player", 0.1F));
+      $$0.a(C, new bji("arrow", 0.1F));
+      $$0.a(D, new bji("trident", 0.1F));
+      $$0.a(E, new bji("mob", 0.1F));
+      $$0.a(F, new bji("fireworks", 0.1F));
+      $$0.a(H, new bji("onFire", 0.1F, bje.d));
+      $$0.a(G, new bji("fireball", 0.1F, bje.d));
+      $$0.a(I, new bji("witherSkull", 0.1F));
+      $$0.a(J, new bji("thrown", 0.1F));
+      $$0.a(K, new bji("indirectMagic", 0.0F));
+      $$0.a(L, new bji("thorns", 0.1F, bje.b));
+      $$0.a(M, new bji("explosion", bjf.c, 0.1F));
+      $$0.a(N, new bji("explosion.player", bjf.c, 0.1F));
+      $$0.a(O, new bji("sonic_boom", bjf.c, 0.0F));
+      $$0.a(P, new bji("badRespawnPoint", bjf.c, 0.1F, bje.a, bjk.c));
+      $$0.a(Q, new bji("outsideBorder", 0.0F));
+      $$0.a(R, new bji("genericKill", 0.0F));
    }
 }

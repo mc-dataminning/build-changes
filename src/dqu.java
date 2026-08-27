@@ -1,22 +1,75 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqu implements dqs {
-   public static final Codec<dqu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dst.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               dst.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dqu::new)
-   );
-   public final dst b;
-   public final dst c;
-   public final int d;
+public class dqu extends dpj<dsi> {
+   public dqu(Codec<dsi> $$0) {
+      super($$0);
+   }
 
-   public dqu(dst $$0, dst $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   @Override
+   public boolean a(dpl<dsi> $$0) {
+      dsi $$1 = $$0.f();
+      csm $$2 = $$0.b();
+      ht $$3 = $$0.e();
+      if (!$$2.a_($$3.c()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else {
+         dgw $$4 = $$2.a_($$3);
+         if (!$$4.i() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.d()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.t($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.e())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.t($$3.d())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
+      }
    }
 }

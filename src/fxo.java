@@ -1,24 +1,12 @@
-public class fxo extends fxw<bzx, ffr<bzx>> {
-   private static final afw a = new afw("textures/entity/creeper/creeper_armor.png");
-   private final ffr<bzx> b;
+public class fxo extends fwq<bxh, fjc<bxh>> {
+   private static final agg a = new agg("textures/entity/snow_golem.png");
 
-   public fxo(fvy<bzx, ffr<bzx>> $$0, fis $$1) {
-      super($$0);
-      this.b = new ffr<>($$1.a(fiv.C));
+   public fxo(fvk.a $$0) {
+      super($$0, new fjc<>($$0.a(fka.bp)), 0.5F);
+      this.a(new fzx(this, $$0.c(), $$0.b()));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected afw a() {
+   public agg a(bxh $$0) {
       return a;
-   }
-
-   @Override
-   protected ffx<bzx> b() {
-      return this.b;
    }
 }

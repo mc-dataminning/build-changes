@@ -1,70 +1,58 @@
 import org.joml.Vector3f;
 
-public class cai extends cbe {
-   public cai(bjx<? extends cai> $$0, cqz $$1) {
+public abstract class cai extends ceu {
+   protected cai(bkm<? extends cai> $$0, crs $$1) {
       super($$0, $$1);
    }
 
-   public static boolean a(bjx<cai> $$0, cro $$1, bkn $$2, ht $$3, ate $$4) {
-      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == bkn.c || $$1.g($$3));
+   @Override
+   protected void z() {
+      super.z();
    }
 
    @Override
-   protected boolean ac_() {
-      return false;
+   public bld eR() {
+      return bld.d;
+   }
+
+   public cai.a s() {
+      return cai.a.a;
    }
 
    @Override
-   protected aqc w() {
-      return aqd.lz;
+   public boolean c(bky $$0) {
+      return $$0 instanceof ccu && $$0.n_() ? false : super.c($$0);
    }
 
    @Override
-   protected aqc d(bir $$0) {
-      return aqd.lC;
+   protected float l(bki $$0) {
+      return -0.6F;
    }
 
    @Override
-   protected aqc m_() {
-      return aqd.lB;
+   protected Vector3f a(bki $$0, bkj $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b + 0.05F * $$2, 0.0F);
    }
 
-   @Override
-   protected aqc y() {
-      return aqd.lD;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
    }
 
-   @Override
-   public boolean C(bjt $$0) {
-      boolean $$1 = super.C($$0);
-      if ($$1 && this.eS().b() && $$0 instanceof bkj) {
-         float $$2 = this.dL().d_(this.dl()).b();
-         ((bkj)$$0).b(new bjg(bji.q, 140 * (int)$$2), this);
+   protected class b extends bsl {
+      public b(ceu $$1) {
+         super($$1, false);
       }
 
-      return $$1;
-   }
-
-   @Override
-   protected boolean gf() {
-      return true;
-   }
-
-   @Override
-   protected void gh() {
-      this.b(bjx.bp);
-      if (!this.aS()) {
-         this.dL().a(null, 1041, this.dl(), 0);
+      @Override
+      public boolean a() {
+         return super.a() && cai.this.gt();
       }
-   }
-
-   @Override
-   protected ckj ge() {
-      return ckj.b;
-   }
-
-   @Override
-   protected Vector3f a(bjt $$0, bju $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b + 0.125F * $$2, 0.0F);
    }
 }

@@ -1,9 +1,9 @@
-public record jb(alq a, ht b, dgb c, deo d) {
-   public eif a() {
+public record jb(ama a, ht b, dgw c, dfj d) {
+   public eji a() {
       return this.b.b();
    }
 
-   public alq b() {
+   public ama b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record jb(alq a, ht b, dgb c, deo d) {
       return this.b;
    }
 
-   public dgb d() {
+   public dgw d() {
       return this.c;
    }
 
-   public deo e() {
+   public dfj e() {
       return this.d;
    }
 }

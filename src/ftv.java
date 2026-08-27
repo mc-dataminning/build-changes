@@ -1,23 +1,41 @@
-public class ftv extends ftb<bzz, fft<bzz>> {
-   private static final afw a = new afw("textures/entity/zombie/drowned.png");
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public ftv(fud.a $$0) {
-      super($$0, new fft<>($$0.a(fiv.L)), new fft<>($$0.a(fiv.M)), new fft<>($$0.a(fiv.N)));
-      this.a(new fxt<>(this, $$0.f()));
+public class ftv implements ftq.a {
+   private final esr a;
+   private static final int b = 10;
+
+   public ftv(esr $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public afw a(cbe $$0) {
-      return a;
-   }
+   public void a(enk $$0, fqh $$1, double $$2, double $$3, double $$4) {
+      crs $$5 = this.a.r;
+      ht $$6 = ht.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-   protected void a(bzz $$0, emh $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = $$0.a($$4);
-      if ($$5 > 0.0F) {
-         float $$6 = -10.0F - $$0.dD();
-         float $$7 = asy.i($$5, 0.0F, $$6);
-         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.dg() / 2.0F, 0.0F);
+      for (ht $$8 : ht.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(csb.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = ati.h($$10, 0.9F, 0.9F);
+         long $$12 = iu.e($$8.a());
+         if ($$7.add($$12)) {
+            ftq.a(
+               $$0,
+               $$1,
+               $$5.J().p().a(csb.a, iu.a($$12)),
+               (double)iu.a(iu.b($$12), 8),
+               (double)iu.a(iu.c($$12), 8),
+               (double)iu.a(iu.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            ftq.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
       }
    }
 }

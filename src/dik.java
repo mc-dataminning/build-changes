@@ -1,7 +1,8 @@
-import java.util.function.BiConsumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dik extends cqf {
-   void a(BiConsumer<ht, dgb> var1);
-
-   eao B();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dik {
 }

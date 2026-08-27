@@ -1,22 +1,15 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.handler.codec.EncoderException;
-import io.netty.handler.codec.MessageToByteEncoder;
+import io.netty.util.Attribute;
 
-@Sharable
-public class uc extends MessageToByteEncoder<ByteBuf> {
-   public static final int a = 3;
-
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      int $$4 = tz.a($$3);
-      if ($$4 > 3) {
-         throw new EncoderException("unable to fit " + $$3 + " into 3");
-      } else {
-         $$2.ensureWritable($$4 + $$3);
-         tz.a($$2, $$3);
-         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
+public interface uc {
+   static void a(Attribute<tt.a<?>> $$0, wk<?> $$1) {
+      tt $$2 = $$1.c();
+      if ($$2 != null) {
+         tt.a<?> $$3 = (tt.a<?>)$$0.get();
+         tt $$4 = $$3.a();
+         if ($$2 != $$4) {
+            tt.a<?> $$5 = $$2.b($$3.b());
+            $$0.set($$5);
+         }
       }
    }
 }

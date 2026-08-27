@@ -1,159 +1,75 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class fkc {
-   private static final Logger k = LogUtils.getLogger();
-   private static final int l = 1024;
-   public String a;
-   public String b;
-   public ui c;
-   public ui d;
-   @Nullable
-   public aex.b e;
-   public long f;
-   public int g = aa.b().e();
-   public ui h = ui.b(aa.b().c());
-   public boolean i;
-   public List<ui> j = Collections.emptyList();
-   private fkc.a m = fkc.a.c;
-   @Nullable
-   private byte[] n;
-   private fkc.b o;
-   private boolean p;
-
-   public fkc(String $$0, String $$1, fkc.b $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.o = $$2;
-   }
-
-   public rt a() {
-      rt $$0 = new rt();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.n != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.n));
-      }
-
-      if (this.m == fkc.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.m == fkc.a.b) {
-         $$0.a("acceptTextures", false);
-      }
-
-      return $$0;
-   }
-
-   public fkc.a b() {
-      return this.m;
-   }
-
-   public void a(fkc.a $$0) {
-      this.m = $$0;
-   }
-
-   public static fkc a(rt $$0) {
-      fkc $$1 = new fkc($$0.l("name"), $$0.l("ip"), fkc.b.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
-            $$1.a(b($$2));
-         } catch (IllegalArgumentException var3) {
-            k.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 1)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(fkc.a.a);
-         } else {
-            $$1.a(fkc.a.b);
-         }
-      } else {
-         $$1.a(fkc.a.c);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.n;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.n = $$0;
-   }
-
-   public boolean d() {
-      return this.o == fkc.b.a;
-   }
-
-   public boolean e() {
-      return this.o == fkc.b.b;
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public boolean f() {
-      return this.p;
-   }
-
-   public void a(fkc $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.n = $$0.n;
-   }
-
-   public void b(fkc $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.o = $$0.o;
-      this.p = $$0.p;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            atc $$1 = atc.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
-               return $$0;
-            }
-         } catch (IOException var2) {
-            k.warn("Failed to decode server icon", var2);
-         }
-      }
-
-      return null;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final ui d;
-
-      private a(String $$0) {
-         this.d = ui.c("addServer.resourcePack." + $$0);
-      }
-
-      public ui a() {
-         return this.d;
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c;
-   }
+   public static final String a = "left_fin";
+   public static final String b = "right_fin";
+   public static final String c = "top_fin";
+   public static final String d = "bottom_fin";
+   public static final String e = "tail_fin";
+   public static final String f = "left_blue_fin";
+   public static final String g = "right_blue_fin";
+   public static final String h = "left_arm";
+   public static final String i = "right_arm";
+   public static final String j = "left_wing";
+   public static final String k = "right_wing";
+   public static final String l = "left_wing_base";
+   public static final String m = "right_wing_base";
+   public static final String n = "left_wing_tip";
+   public static final String o = "right_wing_tip";
+   public static final String p = "left_ear";
+   public static final String q = "right_ear";
+   public static final String r = "left_leg";
+   public static final String s = "right_leg";
+   public static final String t = "left_hind_leg";
+   public static final String u = "right_hind_leg";
+   public static final String v = "left_mid_leg";
+   public static final String w = "right_mid_leg";
+   public static final String x = "left_front_leg";
+   public static final String y = "right_front_leg";
+   public static final String z = "left_hind_foot";
+   public static final String A = "right_hind_foot";
+   public static final String B = "left_front_foot";
+   public static final String C = "right_front_foot";
+   public static final String D = "left_hind_leg_tip";
+   public static final String E = "right_hind_leg_tip";
+   public static final String F = "left_front_leg_tip";
+   public static final String G = "right_front_leg_tip";
+   public static final String H = "left_lid";
+   public static final String I = "right_lid";
+   public static final String J = "left_chest";
+   public static final String K = "right_chest";
+   public static final String L = "left_horn";
+   public static final String M = "right_horn";
+   public static final String N = "left_eye";
+   public static final String O = "right_eye";
+   public static final String P = "jaw";
+   public static final String Q = "nose";
+   public static final String R = "arms";
+   public static final String S = "tail";
+   public static final String T = "cube";
+   public static final String U = "beak";
+   public static final String V = "back_fin";
+   public static final String W = "mane";
+   public static final String X = "neck";
+   public static final String Y = "mouth";
+   public static final String Z = "head";
+   public static final String aa = "hat";
+   public static final String ab = "body";
+   public static final String ac = "hat_rim";
+   public static final String ad = "jacket";
+   public static final String ae = "top_gills";
+   public static final String af = "left_gills";
+   public static final String ag = "right_gills";
+   public static final String ah = "root";
+   public static final String ai = "croaking_body";
+   public static final String aj = "tongue";
+   public static final String ak = "tongue_r1";
+   public static final String al = "left_hand";
+   public static final String am = "right_hand";
+   public static final String an = "left_foot";
+   public static final String ao = "right_foot";
+   public static final String ap = "eyes";
+   public static final String aq = "right_tendril";
+   public static final String ar = "left_tendril";
+   public static final String as = "right_ribcage";
+   public static final String at = "left_ribcage";
+   public static final String au = "bone";
 }

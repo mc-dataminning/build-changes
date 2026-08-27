@@ -1,118 +1,14 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public final class ebe extends dgd<ebd, ebe> {
-   public static final Codec<ebe> a = a(jy.d.q(), ebd::g).stable();
-   public static final int b = 9;
-   public static final int g = 8;
+public interface ebe<P extends ebd> {
+   ebe<ebb> a = a("clear", ebb.a);
+   ebe<ebc> b = a("passthrough", ebc.b);
+   ebe<eba> c = a("append_static", eba.a);
+   ebe<eaz> d = a("append_loot", eaz.a);
 
-   public ebe(ebd $$0, ImmutableMap<dhe<?>, Comparable<?>> $$1, MapCodec<ebe> $$2) {
-      super($$0, $$1, $$2);
-   }
+   Codec<P> codec();
 
-   public ebd a() {
-      return this.e;
-   }
-
-   public boolean b() {
-      return this.a().c(this);
-   }
-
-   public boolean a(ebd $$0) {
-      return this.e == $$0 && this.e.c(this);
-   }
-
-   public boolean c() {
-      return this.a().b();
-   }
-
-   public float a(cqf $$0, ht $$1) {
-      return this.a().a(this, $$0, $$1);
-   }
-
-   public float d() {
-      return this.a().a(this);
-   }
-
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(cqf $$0, ht $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            ht $$4 = $$1.b($$2, 0, $$3);
-            ebe $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public void a(cqz $$0, ht $$1) {
-      this.a().b($$0, $$1, this);
-   }
-
-   public void a(cqz $$0, ht $$1, ate $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public boolean f() {
-      return this.a().i();
-   }
-
-   public void b(cqz $$0, ht $$1, ate $$2) {
-      this.a().b($$0, $$1, this, $$2);
-   }
-
-   public eif c(cqf $$0, ht $$1) {
-      return this.a().a($$0, $$1, this);
-   }
-
-   public dgb g() {
-      return this.a().b(this);
-   }
-
-   @Nullable
-   public jq h() {
-      return this.a().h();
-   }
-
-   public boolean a(arh<ebd> $$0) {
-      return this.a().k().a($$0);
-   }
-
-   public boolean a(ig<ebd> $$0) {
-      return $$0.a(this.a().k());
-   }
-
-   public boolean b(ebd $$0) {
-      return this.a() == $$0;
-   }
-
-   public float i() {
-      return this.a().c();
-   }
-
-   public boolean a(cqf $$0, ht $$1, ebd $$2, hx $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
-   }
-
-   public eiy d(cqf $$0, ht $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   public ib<ebd> j() {
-      return this.e.k();
-   }
-
-   public Stream<arh<ebd>> k() {
-      return this.e.k().c();
+   private static <P extends ebd> ebe<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.q, $$0, () -> $$1);
    }
 }

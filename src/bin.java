@@ -1,18 +1,49 @@
-public class bin {
-   public static final float a = 20.0F;
-   public static final float b = 25.0F;
-   public static final float c = 2.0F;
-   public static final float d = 0.2F;
-   private static final int e = 4;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 2.0F + $$2 / 4.0F;
-      float $$4 = asy.a($$1 - $$0 / $$3, $$1 * 0.2F, 20.0F);
-      return $$0 * (1.0F - $$4 / 25.0F);
+public enum bin implements aub {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
+
+   public static final aub.a<bin> e = aub.a(bin::values);
+   private static final IntFunction<bin> f = asb.a(bin::a, values(), asb.a.b);
+   private final int g;
+   private final String h;
+
+   private bin(int $$0, String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static float a(float $$0, float $$1) {
-      float $$2 = asy.a($$1, 0.0F, 20.0F);
-      return $$0 * (1.0F - $$2 / 25.0F);
+   public int a() {
+      return this.g;
+   }
+
+   public ur b() {
+      return ur.c("options.difficulty." + this.h);
+   }
+
+   public ur d() {
+      return ur.c("options.difficulty." + this.h + ".info");
+   }
+
+   public static bin a(int $$0) {
+      return f.apply($$0);
+   }
+
+   @Nullable
+   public static bin a(String $$0) {
+      return e.a($$0);
+   }
+
+   public String e() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

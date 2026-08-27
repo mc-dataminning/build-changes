@@ -4,15 +4,19 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bdq extends bbi {
+public class bdq extends bbv {
    public bdq(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:decorated_pot", () -> DSL.optionalFields("shards", DSL.list(baa.z.in($$0)), "item", baa.t.in($$0)));
-      $$0.register($$1, "minecraft:suspicious_sand", () -> DSL.optionalFields("item", baa.t.in($$0)));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         true,
+         ban.B,
+         () -> DSL.optionalFields(
+               "SpawnPotentials", DSL.list(DSL.fields("data", DSL.fields("entity", ban.w.in($$0)))), "SpawnData", DSL.fields("entity", ban.w.in($$0))
+            )
+      );
    }
 }

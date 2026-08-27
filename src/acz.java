@@ -1,21 +1,21 @@
-public class acz implements wb<aca> {
+public class acz implements wk<acj> {
    private final int a;
 
    public acz(int $$0) {
       this.a = $$0;
    }
 
-   public acz(tl $$0) {
-      this.a = $$0.n();
+   public void a(acj $$0) {
+      $$0.a(this);
+   }
+
+   public acz(tu $$0) {
+      this.a = $$0.readByte();
    }
 
    @Override
-   public void a(tl $$0) {
-      $$0.c(this.a);
-   }
-
-   public void a(aca $$0) {
-      $$0.a(this);
+   public void a(tu $$0) {
+      $$0.k(this.a);
    }
 
    public int a() {

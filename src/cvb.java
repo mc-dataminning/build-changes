@@ -1,57 +1,44 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public interface cvb<T extends Enum<T>> {
-   int w_ = 4;
+public class cvb extends ctr {
+   public static final MapCodec<cvb> b = b(cvb::new);
+   public static final int c = 5;
+   private static final hx[] d = hx.values();
 
-   Optional<dgb> i_(dgb var1);
+   @Override
+   public MapCodec<cvb> a() {
+      return b;
+   }
 
-   float b();
+   public cvb(dgv.d $$0) {
+      super($$0);
+   }
 
-   default void a_(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3);
+   @Override
+   public void b(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      if ($$3.a(5) == 0) {
+         hx $$4 = d[$$3.a(d.length)];
+         ht $$5 = $$2.a($$4);
+         dgw $$6 = $$1.a_($$5);
+         cut $$7 = null;
+         if (g($$6)) {
+            $$7 = cuv.qy;
+         } else if ($$6.a(cuv.qy) && $$6.c(cts.d) == $$4) {
+            $$7 = cuv.qx;
+         } else if ($$6.a(cuv.qx) && $$6.c(cts.d) == $$4) {
+            $$7 = cuv.qw;
+         } else if ($$6.a(cuv.qw) && $$6.c(cts.d) == $$4) {
+            $$7 = cuv.qv;
+         }
+
+         if ($$7 != null) {
+            dgw $$8 = $$7.o().a(cts.d, $$4).a(cts.c, Boolean.valueOf($$6.u().a() == ech.c));
+            $$1.b($$5, $$8);
+         }
       }
    }
 
-   T c();
-
-   default void c(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
-
-      for (ht $$7 : ht.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
-
-         if (!$$7.equals($$2)) {
-            dgb $$9 = $$1.a_($$7);
-            cua $$10 = $$9.b();
-            if ($$10 instanceof cvb) {
-               Enum<?> $$11 = ((cvb)$$10).c();
-               if (this.c().getClass() == $$11.getClass()) {
-                  int $$12 = $$11.ordinal();
-                  if ($$12 < $$4) {
-                     return;
-                  }
-
-                  if ($$12 > $$4) {
-                     $$6++;
-                  } else {
-                     $$5++;
-                  }
-               }
-            }
-         }
-      }
-
-      float $$13 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$14 = $$13 * $$13 * this.b();
-      if ($$3.i() < $$14) {
-         this.i_($$0).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   public static boolean g(dgw $$0) {
+      return $$0.i() || $$0.a(cuv.G) && $$0.u().e() == 8;
    }
 }

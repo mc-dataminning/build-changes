@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface djr {
-   void onChunkStatusChange(cqg var1, alj var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface djr {
 }

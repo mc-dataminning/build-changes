@@ -1,24 +1,18 @@
-public record exl(int a, int b) {
-   public static exl a(exj $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new exl($$1, $$2);
-         case b -> new exl($$2, $$1);
-      };
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.io.IOException;
+
+public interface exl {
+   Codec<exl> b = exm.f.dispatch(exl::a, $$0 -> $$0.a().codec());
+
+   exm a();
+
+   Either<exl.a, exl.b> b();
+
+   public interface a {
+      eln load(apd var1) throws IOException;
    }
 
-   public exl a(exk $$0) {
-      return switch ($$0) {
-         case b -> new exl(this.a, this.b + 1);
-         case a -> new exl(this.a, this.b - 1);
-         case c -> new exl(this.a - 1, this.b);
-         case d -> new exl(this.a + 1, this.b);
-      };
-   }
-
-   public int a(exj $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-      };
+   public static record b(agg a) {
    }
 }

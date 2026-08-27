@@ -10,16 +10,16 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ee implements ArgumentType<afw> {
-   private static final Collection<String> a = Stream.of(cqz.h, cqz.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ui.b("argument.dimension.invalid", $$0));
+public class ee implements ArgumentType<agg> {
+   private static final Collection<String> a = Stream.of(crs.h, crs.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ur.b("argument.dimension.invalid", $$0));
 
-   public afw a(StringReader $$0) throws CommandSyntaxException {
-      return afw.a($$0);
+   public agg a(StringReader $$0) throws CommandSyntaxException {
+      return agg.a($$0);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof dy ? dy.a(((dy)$$0.getSource()).u().stream().map(afv::a), $$1) : Suggestions.empty();
+      return $$0.getSource() instanceof dy ? dy.a(((dy)$$0.getSource()).u().stream().map(agf::a), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
@@ -30,10 +30,10 @@ public class ee implements ArgumentType<afw> {
       return new ee();
    }
 
-   public static alq a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      afw $$2 = (afw)$$0.getArgument($$1, afw.class);
-      afv<cqz> $$3 = afv.a(jz.aI, $$2);
-      alq $$4 = ((du)$$0.getSource()).m().a($$3);
+   public static ama a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      agg $$2 = (agg)$$0.getArgument($$1, agg.class);
+      agf<crs> $$3 = agf.a(jz.aJ, $$2);
+      ama $$4 = ((du)$$0.getSource()).m().a($$3);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

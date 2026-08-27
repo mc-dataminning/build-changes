@@ -9,7 +9,7 @@ import java.util.EnumSet;
 
 public class fr implements ArgumentType<EnumSet<hx.a>> {
    private static final Collection<String> a = Arrays.asList("xyz", "x");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.c("arguments.swizzle.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ur.c("arguments.swizzle.invalid"));
 
    public static fr a() {
       return new fr();

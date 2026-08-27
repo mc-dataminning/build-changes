@@ -1,163 +1,100 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bzl extends bzi implements blh<ib<bzm>> {
-   private static final afc<ib<bzm>> f = aff.a(bzl.class, afe.y);
-   private static final afv<bzm> g = bzn.a;
-   public static final String e = "variant";
+public class bzl extends bzc {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private bkf g;
 
-   private static ib<bzm> s() {
-      return jy.m.f(g);
-   }
-
-   public bzl(bjx<? extends bzl> $$0, cqz $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void b_() {
-      this.an.a(f, s());
+   public bzl(byz $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(afc<?> $$0) {
-      if (f.equals($$0)) {
-         this.y();
-      }
-   }
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         eji $$0 = this.a.D(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.e.dq();
+         double $$2 = this.a.e.e(0.5);
+         double $$3 = this.a.e.dw();
 
-   public void a(ib<bzm> $$0) {
-      this.an.b(f, $$0);
-   }
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.ef().k() / 2.0;
+            double $$6 = $$2 + this.a.ef().k() / 2.0;
+            double $$7 = $$3 + this.a.ef().k() / 2.0;
 
-   public ib<bzm> q() {
-      return this.an.b(f);
-   }
-
-   public static Optional<bzl> a(cqz $$0, ht $$1, hx $$2) {
-      bzl $$3 = new bzl($$0, $$1);
-      List<ib<bzm>> $$4 = new ArrayList<>();
-      jy.m.c(arb.a).forEach($$4::add);
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         $$3.a($$2);
-         $$4.removeIf($$1x -> {
-            $$3.a($$1x);
-            return !$$3.z();
-         });
-         if ($$4.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$5 = $$4.stream().mapToInt(bzl::b).max().orElse(0);
-            $$4.removeIf($$1x -> b($$1x) < $$5);
-            Optional<ib<bzm>> $$6 = ac.b($$4, $$3.ag);
-            if ($$6.isEmpty()) {
-               return Optional.empty();
-            } else {
-               $$3.a($$6.get());
-               $$3.a($$2);
-               return Optional.of($$3);
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dL().a(js.i, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
             }
+
+            $$0.b((float) (Math.PI / 16));
          }
       }
    }
 
-   private static int b(ib<bzm> $$0) {
-      return $$0.a().a() * $$0.a().b();
-   }
-
-   private bzl(cqz $$0, ht $$1) {
-      super(bjx.ar, $$0, $$1);
-   }
-
-   public bzl(cqz $$0, ht $$1, hx $$2, ib<bzm> $$3) {
-      this($$0, $$1);
-      this.a($$3);
-      this.a($$2);
-   }
-
    @Override
-   public void b(rt $$0) {
-      a($$0, this.q());
-      $$0.a("facing", (byte)this.d.e());
-      super.b($$0);
-   }
+   public void c() {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.gb().a(bzp.e);
+         } else {
+            this.a.gb().a(bzp.g);
+         }
+      } else if (this.e == 10) {
+         eji $$0 = new eji(this.a.e.dq() - this.a.dq(), 0.0, this.a.e.dw() - this.a.dw()).d();
+         float $$1 = 5.0F;
+         double $$2 = this.a.e.dq() + $$0.c * 5.0 / 2.0;
+         double $$3 = this.a.e.dw() + $$0.e * 5.0 / 2.0;
+         double $$4 = this.a.e.e(0.5);
+         double $$5 = $$4;
+         ht.a $$6 = new ht.a($$2, $$4, $$3);
 
-   @Override
-   public void a(rt $$0) {
-      ib<bzm> $$1 = c($$0).orElseGet(bzl::s);
-      this.a($$1);
-      this.d = hx.b($$0.f("facing"));
-      super.a($$0);
-      this.a(this.d);
-   }
+         while (this.a.dL().t($$6)) {
+            if (--$$5 < 0.0) {
+               $$5 = $$4;
+               break;
+            }
 
-   public static void a(rt $$0, ib<bzm> $$1) {
-      $$0.a("variant", $$1.e().orElse(g).a().toString());
-   }
-
-   public static Optional<ib<bzm>> c(rt $$0) {
-      return Optional.ofNullable(afw.a($$0.l("variant"))).map($$0x -> afv.a(jz.Q, $$0x)).flatMap(jy.m::b);
-   }
-
-   @Override
-   public int A() {
-      return this.q().a().a();
-   }
-
-   @Override
-   public int B() {
-      return this.q().a().b();
-   }
-
-   @Override
-   public void a(@Nullable bjt $$0) {
-      if (this.dL().X().b(cqv.h)) {
-         this.a(aqd.qK, 1.0F, 1.0F);
-         if ($$0 instanceof ccx $$1 && $$1.fT().d) {
-            return;
+            $$6.b($$2, $$5, $$3);
          }
 
-         this.a(ckm.pl);
+         $$5 = (double)(ati.a($$5) + 1);
+         this.g = new bkf(this.a.dL(), $$2, $$5, $$3);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.b(200);
+         this.g.a(js.i);
+         this.g.a(new bjv(bjx.g));
+         this.a.dL().b(this.g);
       }
    }
 
    @Override
-   public void C() {
-      this.a(aqd.qL, 1.0F, 1.0F);
+   public void d() {
+      this.e = 0;
+      this.f++;
    }
 
    @Override
-   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.e($$0, $$1, $$2);
+   public void e() {
+      if (this.g != null) {
+         this.g.ak();
+         this.g = null;
+      }
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.e($$0, $$1, $$2);
+   public bzp<bzl> i() {
+      return bzp.f;
    }
 
-   @Override
-   public eif dk() {
-      return eif.a(this.c);
-   }
-
-   @Override
-   public wb<xu> di() {
-      return new xv(this, this.d.d(), this.E());
-   }
-
-   @Override
-   public void a(xv $$0) {
-      super.a($$0);
-      this.a(hx.a($$0.o()));
-   }
-
-   @Override
-   public ckj dy() {
-      return new ckj(ckm.pl);
+   public void j() {
+      this.f = 0;
    }
 }

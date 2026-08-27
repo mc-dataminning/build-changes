@@ -1,47 +1,77 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record efx(ib<cot> b, List<Float> c) implements egh {
-   public static final Codec<efx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jy.g.r().fieldOf("enchantment").forGetter(efx::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(efx::d)).apply($$0, efx::new)
-   );
+public abstract class efx implements efy {
+   protected final List<ehk> g;
+   private final Predicate<eel> a;
+
+   protected efx(List<ehk> $$0) {
+      this.g = $$0;
+      this.a = ehm.a($$0);
+   }
+
+   protected static <T extends efx> P1<Mu<T>, List<ehk>> a(Instance<T> $$0) {
+      return $$0.group(asq.a(ehm.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
+   }
+
+   public final clb b(clb $$0, eel $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract clb a(clb var1, eel var2);
 
    @Override
-   public egi b() {
-      return egj.l;
+   public void a(eeu $$0) {
+      efy.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.b(".conditions[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<efq<?>> a() {
-      return ImmutableSet.of(eft.i);
+   protected static efx.a<?> a(Function<List<ehk>, efy> $$0) {
+      return new efx.b($$0);
    }
 
-   public boolean a(edi $$0) {
-      ckj $$1 = $$0.c(eft.i);
-      int $$2 = $$1 != null ? cov.a(this.b.a(), $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
-   }
+   public abstract static class a<T extends efx.a<T>> implements efy.a, ehd<T> {
+      private final Builder<ehk> a = ImmutableList.builder();
 
-   public static egh.a a(cot $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+      public T a(ehk.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
       }
 
-      return () -> new efx($$0.j(), $$2);
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<ehk> g() {
+         return this.a.build();
+      }
    }
 
-   public ib<cot> c() {
-      return this.b;
-   }
+   static final class b extends efx.a<efx.b> {
+      private final Function<List<ehk>, efy> a;
 
-   public List<Float> d() {
-      return this.c;
+      public b(Function<List<ehk>, efy> $$0) {
+         this.a = $$0;
+      }
+
+      protected efx.b a() {
+         return this;
+      }
+
+      @Override
+      public efy b() {
+         return this.a.apply(this.g());
+      }
    }
 }

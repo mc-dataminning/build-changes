@@ -1,4 +1,4 @@
-// 23w41a	2026-08-28T00:45:36.0175771	vanilla/Loot Tables
+// 23w42a	2026-08-28T00:48:17.7131017	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -1053,6 +1053,7 @@ b0e16e5765fbf4fc523d90d4effffee09f4b439d data\minecraft\loot_tables\blocks\nethe
 55ab0f45db22aa5002e8feae43148aac66dd2a2d data\minecraft\loot_tables\blocks\obsidian.json
 ed93bff3213a1faf41bf74ca869970d84521062d data\minecraft\loot_tables\blocks\potted_birch_sapling.json
 25b701fbf7f780682f5a2bc6534fb9abfc0d881b data\minecraft\loot_tables\blocks\stripped_jungle_log.json
+9404146f2b8324415174db8b17c42bf8667e7807 data\minecraft\loot_tables\blocks\crafter.json
 36018846abd0b46c13b47ed23edd0f82a5f8693c data\minecraft\loot_tables\blocks\stone_bricks.json
 263202bb540fb1ccf2f89dabe60e7791c25f5f8a data\minecraft\loot_tables\entities\rabbit.json
 d9f8a8deb89be137f47dd18a66cd62ffc55fd7c9 data\minecraft\loot_tables\blocks\copper_ore.json

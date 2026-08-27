@@ -1,172 +1,90 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eqf {
-   private eqf() {
+public class eqf extends ghe {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ur b = ur.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final ur c = ur.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final ur v = ur.c("mco.configure.world.players.error").b(-65536);
+   private euv w;
+   private eum x;
+   private final eor y;
+   private final eqa z;
+   private final fah A;
+   @Nullable
+   private ur B;
+
+   public eqf(eqa $$0, fah $$1, eor $$2) {
+      super(esj.a);
+      this.z = $$0;
+      this.A = $$1;
+      this.y = $$2;
    }
 
-   @VisibleForTesting
-   protected static List<String> a(String $$0) {
-      return Arrays.asList($$0.split("\\n"));
+   @Override
+   public void aO_() {
+      this.w = new euv(this.f.h, this.g / 2 - 100, h(2), 200, 20, null, ur.c("mco.configure.world.invite.profile.name"));
+      this.e(this.w);
+      this.c(this.w);
+      this.x = this.d(eum.a(ur.c("mco.configure.world.buttons.invite"), $$0 -> this.C()).a(this.g / 2 - 100, h(10), 200, 20).a());
+      this.d(eum.a(uq.e, $$0 -> this.f.a(this.A)).a(this.g / 2 - 100, h(12), 200, 20).a());
    }
 
-   public static List<eqf.a> a(String $$0, eqf.b... $$1) {
-      return a($$0, Arrays.asList($$1));
-   }
-
-   private static List<eqf.a> a(String $$0, List<eqf.b> $$1) {
-      List<String> $$2 = a($$0);
-      return a($$2, $$1);
-   }
-
-   private static List<eqf.a> a(List<String> $$0, List<eqf.b> $$1) {
-      int $$2 = 0;
-      List<eqf.a> $$3 = Lists.newArrayList();
-
-      for (String $$4 : $$0) {
-         List<eqf.b> $$5 = Lists.newArrayList();
-
-         for (String $$7 : a($$4, "%link")) {
-            if ("%link".equals($$7)) {
-               $$5.add($$1.get($$2++));
-            } else {
-               $$5.add(eqf.b.a($$7));
-            }
-         }
-
-         $$3.add(new eqf.a($$5));
-      }
-
-      return $$3;
-   }
-
-   public static List<String> a(String $$0, String $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+   private void C() {
+      if (ac.b(this.w.a())) {
+         this.a(v);
       } else {
-         List<String> $$2 = Lists.newArrayList();
-         int $$3 = 0;
-
-         int $$4;
-         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
-            if ($$4 > $$3) {
-               $$2.add($$0.substring($$3, $$4));
+         long $$0 = this.y.a;
+         String $$1 = this.w.a().trim();
+         this.x.i = false;
+         this.w.e(false);
+         this.a(c);
+         CompletableFuture.<eor>supplyAsync(() -> {
+            try {
+               return eoa.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ac.g()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.y.h = $$0x.h;
+               this.f.a(new eqm(this.z, this.y));
+            } else {
+               this.a(v);
             }
 
-            $$2.add($$1);
-            $$3 = $$4 + $$1.length();
-         }
-
-         if ($$3 < $$0.length()) {
-            $$2.add($$0.substring($$3));
-         }
-
-         return $$2;
+            this.w.e(true);
+            this.x.i = true;
+         }, this.j);
       }
    }
 
-   public static class a {
-      public final List<eqf.b> a;
+   private void a(ur $$0) {
+      this.B = $$0;
+      this.f.aU().c($$0);
+   }
 
-      a(eqf.b... $$0) {
-         this(Arrays.asList($$0));
-      }
-
-      a(List<eqf.b> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return "Line{segments=" + this.a + "}";
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            eqf.a $$1 = (eqf.a)$$0;
-            return Objects.equals(this.a, $$1.a);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.A);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public static class b {
-      private final String a;
-      @Nullable
-      private final String b;
-      @Nullable
-      private final String c;
-
-      private b(String $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = null;
+   @Override
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, b, this.g / 2 - 100, h(1), -1, false);
+      if (this.B != null) {
+         $$0.a(this.i, this.B, this.g / 2, h(5), -1);
       }
 
-      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            eqf.b $$1 = (eqf.b)$$0;
-            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b, this.c);
-      }
-
-      @Override
-      public String toString() {
-         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
-      }
-
-      public String a() {
-         return this.b() ? this.b : this.a;
-      }
-
-      public boolean b() {
-         return this.b != null;
-      }
-
-      public String c() {
-         if (!this.b()) {
-            throw new IllegalStateException("Not a link: " + this);
-         } else {
-            return this.c;
-         }
-      }
-
-      public static eqf.b a(String $$0, String $$1) {
-         return new eqf.b(null, $$0, $$1);
-      }
-
-      @VisibleForTesting
-      protected static eqf.b a(String $$0) {
-         return new eqf.b($$0);
-      }
+      this.w.a($$0, $$1, $$2, $$3);
    }
 }

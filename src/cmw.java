@@ -1,71 +1,46 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cmw extends cnf {
-   public cmw(cnc $$0) {
+public class cmw extends ckw {
+   public cmw(ckw.a $$0) {
       super($$0);
    }
 
-   public boolean a(cgd $$0, cqz $$1) {
-      ckj $$2 = ckj.b;
-      List<ckj> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         ckj $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof cjb) {
-               if (!$$2.b()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.d() instanceof ciy)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
+   @Override
+   public biq a(cnl $$0) {
+      crs $$1 = $$0.q();
+      ht $$2 = $$0.a();
+      dgw $$3 = $$1.a_($$2);
+      if ($$3.a(cuv.oa)) {
+         return czd.a($$0.o(), $$1, $$2, $$3, $$0.n()) ? biq.a($$1.B) : biq.d;
+      } else {
+         return biq.d;
       }
-
-      return !$$2.b() && !$$3.isEmpty();
-   }
-
-   public ckj a(cgd $$0, ip $$1) {
-      List<ciy> $$2 = Lists.newArrayList();
-      ckj $$3 = ckj.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         ckj $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            cke $$6 = $$5.d();
-            if ($$6 instanceof cjb) {
-               if (!$$3.b()) {
-                  return ckj.b;
-               }
-
-               $$3 = $$5.p();
-            } else {
-               if (!($$6 instanceof ciy)) {
-                  return ckj.b;
-               }
-
-               $$2.add((ciy)$$6);
-            }
-         }
-      }
-
-      return !$$3.b() && !$$2.isEmpty() ? cjb.a($$3, $$2) : ckj.b;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public bir<clb> a(crs $$0, cdm $$1, bip $$2) {
+      clb $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(aqx.c.b(this));
+      return bir.a($$3, $$0.x_());
    }
 
-   @Override
-   public cnq<?> aq_() {
-      return cnq.c;
+   public static boolean a(@Nullable rz $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$0.b("pages", 9)) {
+         return false;
+      } else {
+         sf $$1 = $$0.c("pages", 8);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            String $$3 = $$1.j($$2);
+            if ($$3.length() > 32767) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

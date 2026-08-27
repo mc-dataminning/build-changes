@@ -1,90 +1,168 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fqb {
-   public float[] a;
-   public final int b;
+public class fqb extends api<fqb.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final agg b = new agg("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public fqb(@Nullable float[] $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+   public boolean b() {
+      return this.a() && !this.e;
+   }
+
+   public void d() {
+      this.d = true;
+   }
+
+   public void e() {
+      this.e = true;
+   }
+
+   public void f() {
+      this.e = true;
+      this.f = true;
+   }
+
+   public boolean g() {
+      return this.d && !this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected fqb.a a(apd $$0, bfh $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      $$1.a();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         $$1.a("compile_regex");
+         a($$5.getAsJsonArray("renderer"), $$2);
+         a($$5.getAsJsonArray("version"), $$3);
+         a($$5.getAsJsonArray("vendor"), $$4);
+         $$1.c();
       }
+
+      $$1.b();
+      return new fqb.a($$2, $$3, $$4);
    }
 
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+   protected void a(fqb.a $$0, apd $$1, bfh $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(apd $$0, bfh $$1) {
+      $$1.a("parse_json");
+      JsonObject $$2 = null;
+
+      try (Reader $$3 = $$0.openAsReader(b)) {
+         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
+      } catch (JsonSyntaxException | IOException var8) {
+         a.warn("Failed to load GPU warnlist");
       }
+
+      $$1.c();
+      return $$2;
    }
 
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
 
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
          this.a = $$0;
-      }
-   }
-
-   protected static class a implements JsonDeserializer<fqb> {
-      private static final int a = 0;
-
-      public fqb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new fqb($$4, $$5);
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      protected int a(JsonObject $$0) {
-         int $$1 = aso.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
-         }
-      }
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
 
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = aso.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
 
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = aso.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
-
-               return $$2;
+            while ($$4.find()) {
+               $$2.add($$4.group());
             }
          }
+
+         return String.join(", ", $$2);
+      }
+
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, emd.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
+
+         String $$2 = a(this.b, emd.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
+
+         String $$3 = a(this.c, emd.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
       }
    }
 }

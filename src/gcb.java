@@ -1,20 +1,17 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.io.IOException;
 
-public interface gcb {
-   List<fpx> a(@Nullable dgb var1, @Nullable hx var2, ate var3);
+public class gcb extends api<int[]> {
+   private static final agg a = new agg("textures/colormap/foliage.png");
 
-   boolean a();
+   protected int[] a(apd $$0, bfh $$1) {
+      try {
+         return gce.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
+   }
 
-   boolean b();
-
-   boolean c();
-
-   boolean d();
-
-   gaa e();
-
-   fqj f();
-
-   fqh g();
+   protected void a(int[] $$0, apd $$1, bfh $$2) {
+      crm.a($$0);
+   }
 }

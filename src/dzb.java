@@ -1,45 +1,42 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class dzb extends dzq {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<dzb> a = Codec.unit(() -> dzb.b);
-   public static final dzb b = new dzb();
+public class dzb extends dwv {
+   public static final bhe<ctc.c> d = bhe.a(
+      new ctc.c(bkm.i, 10, 2, 3), new ctc.c(bkm.bs, 5, 4, 4), new ctc.c(bkm.bl, 8, 5, 5), new ctc.c(bkm.aJ, 2, 5, 5), new ctc.c(bkm.al, 3, 4, 4)
+   );
+   public static final Codec<dzb> e = a(dzb::new);
 
-   private dzb() {
+   public dzb(dwv.c $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public dzt.c a(crc $$0, ht $$1, ht $$2, dzt.c $$3, dzt.c $$4, dzp $$5) {
-      dgb $$6 = $$4.b();
-      if ($$6.a(cuc.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
+   public Optional<dwv.b> a(dwv.a $$0) {
+      cqz $$1 = $$0.h();
+      ht $$2 = new ht($$1.d(), 64, $$1.e());
+      return Optional.of(new dwv.b($$2, (Consumer<dxn>)($$1x -> a($$1x, $$0))));
+   }
 
-            dgb $$9;
-            try {
-               fk.a $$8 = fk.a($$0.a(jz.e), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               throw new RuntimeException(var11);
-            }
+   private static void a(dxn $$0, dwv.a $$1) {
+      dza.q $$2 = new dza.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<dwz> $$3 = $$2.d;
 
-            return $$9.a(cuc.kN) ? null : new dzt.c($$4.a(), $$9, null);
-         }
-      } else {
-         return $$4;
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         dwz $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
+
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   protected dzs<?> a() {
-      return dzs.h;
+   public dxe<?> e() {
+      return dxe.d;
    }
 }

@@ -35,11 +35,11 @@ public class iu extends iw {
       return new iu(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static iu a(cqg $$0, int $$1) {
+   public static iu a(cqz $$0, int $$1) {
       return new iu($$0.e, $$1, $$0.f);
    }
 
-   public static iu a(djs $$0) {
+   public static iu a(dkn $$0) {
       return a($$0.dl());
    }
 
@@ -51,7 +51,7 @@ public class iu extends iw {
       return new iu(b($$0), c($$0), d($$0));
    }
 
-   public static iu a(dhx $$0) {
+   public static iu a(dis $$0) {
       return a($$0.f(), $$0.al());
    }
 
@@ -64,7 +64,7 @@ public class iu extends iw {
    }
 
    public static int a(double $$0) {
-      return a(asy.a($$0));
+      return a(ati.a($$0));
    }
 
    public static int a(int $$0) {
@@ -72,7 +72,7 @@ public class iu extends iw {
    }
 
    public static int b(double $$0) {
-      return asy.a($$0) >> 4;
+      return ati.a($$0) >> 4;
    }
 
    public static int b(int $$0) {
@@ -191,8 +191,8 @@ public class iu extends iw {
       return this.j().b(8, 8, 8);
    }
 
-   public cqg r() {
-      return new cqg(this.a(), this.c());
+   public cqz r() {
+      return new cqz(this.a(), this.c());
    }
 
    public static long c(ht $$0) {
@@ -225,7 +225,7 @@ public class iu extends iw {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<iu> a(cqg $$0, int $$1, int $$2, int $$3) {
+   public static Stream<iu> a(cqz $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.e;
       int $$5 = $$0.f;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);

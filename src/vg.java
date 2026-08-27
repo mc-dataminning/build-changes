@@ -1,73 +1,35 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+public interface vg {
+   ur a();
 
-public class vg {
-   private final String a;
-   private final List<vf> b;
-   private final Int2IntFunction c;
+   void a(amb var1, boolean var2, un.a var3);
 
-   private vg(String $$0, List<vf> $$1, Int2IntFunction $$2) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = $$2;
+   static vg a(vh $$0) {
+      return (vg)($$0.g() ? new vg.a($$0.c()) : new vg.b($$0));
    }
 
-   public String a() {
-      return this.a;
-   }
-
-   public List<ask> a(int $$0, int $$1, boolean $$2) {
-      if ($$1 == 0) {
-         return ImmutableList.of();
-      } else {
-         List<ask> $$3 = Lists.newArrayList();
-         vf $$4 = this.b.get($$0);
-         int $$5 = $$0;
-
-         for (int $$6 = 1; $$6 < $$1; $$6++) {
-            int $$7 = $$0 + $$6;
-            vf $$8 = this.b.get($$7);
-            if (!$$8.equals($$4)) {
-               String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? ask.backward($$9, $$4, this.c) : ask.forward($$9, $$4));
-               $$4 = $$8;
-               $$5 = $$7;
-            }
-         }
-
-         if ($$5 < $$0 + $$1) {
-            String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? ask.backward($$10, $$4, this.c) : ask.forward($$10, $$4));
-         }
-
-         return $$2 ? Lists.reverse($$3) : $$3;
+   public static record a(ur a) implements vg {
+      @Override
+      public void a(amb $$0, boolean $$1, un.a $$2) {
+         $$0.c.a(this.a, $$2);
       }
    }
 
-   public static vg a(un $$0) {
-      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
-   }
+   public static record b(vh a) implements vg {
+      @Override
+      public ur a() {
+         return this.a.c();
+      }
 
-   public static vg a(un $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
-      StringBuilder $$3 = new StringBuilder();
-      List<vf> $$4 = Lists.newArrayList();
-      $$0.a(($$2x, $$3x) -> {
-         atq.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
-            $$3.appendCodePoint($$4x);
-            int $$5 = Character.charCount($$4x);
+      @Override
+      public void a(amb $$0, boolean $$1, un.a $$2) {
+         vh $$3 = this.a.a($$1);
+         if (!$$3.i()) {
+            $$0.c.a($$3, $$2);
+         }
+      }
 
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               $$4.add($$3xx);
-            }
-
-            return true;
-         });
-         return Optional.empty();
-      }, vf.a);
-      return new vg($$2.apply($$3.toString()), $$4, $$1);
+      public vh b() {
+         return this.a;
+      }
    }
 }

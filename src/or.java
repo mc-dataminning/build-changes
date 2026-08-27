@@ -1,24 +1,42 @@
-import java.util.OptionalLong;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class or {
-   public static void a(oo<djk> $$0) {
-      $$0.a(
-         dji.a,
-         new djk(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, aqs.ba, dji.e, 0.0F, new djk.a(false, true, bhm.a(0, 7), 0))
-      );
-      $$0.a(
-         dji.b,
-         new djk(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, aqs.bb, dji.f, 0.1F, new djk.a(true, false, bhd.a(7), 15))
-      );
-      $$0.a(
-         dji.c,
-         new djk(
-            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, aqs.bc, dji.g, 0.0F, new djk.a(false, true, bhm.a(0, 7), 0)
+   public static void a(ou<dye> $$0) {
+      ic<dye> $$1 = $$0.a(jz.aE);
+      ib<dye> $$2 = $$1.b(pb.a);
+      pb.a(
+         $$0,
+         "bastion/mobs/piglin",
+         new dye(
+            $$2,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/mobs/melee_piglin"), 1),
+               Pair.of(dyc.b("bastion/mobs/sword_piglin"), 4),
+               Pair.of(dyc.b("bastion/mobs/crossbow_piglin"), 4),
+               Pair.of(dyc.b("bastion/mobs/empty"), 1)
+            ),
+            dye.a.b
          )
       );
-      $$0.a(
-         dji.d,
-         new djk(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, aqs.ba, dji.e, 0.0F, new djk.a(false, true, bhm.a(0, 7), 0))
+      pb.a(
+         $$0, "bastion/mobs/hoglin", new dye($$2, ImmutableList.of(Pair.of(dyc.b("bastion/mobs/hoglin"), 2), Pair.of(dyc.b("bastion/mobs/empty"), 1)), dye.a.b)
+      );
+      pb.a(
+         $$0, "bastion/blocks/gold", new dye($$2, ImmutableList.of(Pair.of(dyc.b("bastion/blocks/air"), 3), Pair.of(dyc.b("bastion/blocks/gold"), 1)), dye.a.b)
+      );
+      pb.a(
+         $$0,
+         "bastion/mobs/piglin_melee",
+         new dye(
+            $$2,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/mobs/melee_piglin_always"), 1),
+               Pair.of(dyc.b("bastion/mobs/melee_piglin"), 5),
+               Pair.of(dyc.b("bastion/mobs/sword_piglin"), 1)
+            ),
+            dye.a.b
+         )
       );
    }
 }

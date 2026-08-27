@@ -1,19 +1,41 @@
-import java.util.Optional;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class cqp extends cqs {
-   private final bjt a;
+public interface cqp {
+   void f(@Nullable cdm var1);
 
-   public cqp(bjt $$0) {
-      this.a = $$0;
+   @Nullable
+   cdm ge();
+
+   cqr gg();
+
+   void a(cqr var1);
+
+   void a(cqq var1);
+
+   void l(clb var1);
+
+   int t();
+
+   void t(int var1);
+
+   boolean gh();
+
+   aqm gi();
+
+   default boolean gq() {
+      return false;
    }
 
-   @Override
-   public Optional<Float> a(cqr $$0, cqf $$1, ht $$2, dgb $$3, ebe $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   default void a(cdm $$0, ur $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new biy(($$0x, $$1x, $$2x) -> new chn($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         cqr $$4 = this.gg();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.gh(), this.gq());
+         }
+      }
    }
 
-   @Override
-   public boolean a(cqr $$0, cqf $$1, ht $$2, dgb $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
-   }
+   boolean gm();
 }

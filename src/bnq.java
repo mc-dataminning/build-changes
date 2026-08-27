@@ -1,29 +1,34 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bnq extends bma<bkl> {
-   private final bhg c;
-   private final float d;
-   private final float e;
-   private final float f;
+public class bnq extends bmp<bla> {
+   public static final int c = 100;
+   private final bib d;
+   private final aqm e;
 
-   public bnq(bhg $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(btk.n, btl.b, btk.P, btl.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+   public bnq(bib $$0, aqm $$1) {
+      super(ImmutableMap.of(btz.n, bua.c, btz.S, bua.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   protected void a(alq $$0, bkl $$1, long $$2) {
-      ate $$3 = $$1.ef();
-      float $$4 = asy.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = asy.g($$1.dB() + 2.0F * $$3.i() * this.d - this.d);
-      eif $$6 = eif.a($$4, $$5);
-      $$1.dN().a(btk.n, new bmd($$1.bp().e($$6)));
-      $$1.dN().a(btk.P, this.c.a($$3));
+   protected boolean a(ama $$0, bla $$1, long $$2) {
+      return !$$1.aA();
+   }
+
+   protected void b(ama $$0, bla $$1, long $$2) {
+      $$1.p(true);
+      $$1.b(blk.g);
+   }
+
+   protected void c(ama $$0, bla $$1, long $$2) {
+      if ($$1.aA()) {
+         $$1.f($$1.do().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, aqo.g, 2.0F, 1.0F);
+      }
+
+      $$1.p(false);
+      $$1.b(blk.a);
+      $$1.dN().b(btz.S);
+      $$1.dN().a(btz.R, this.d.a($$0.z));
    }
 }

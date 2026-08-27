@@ -1,65 +1,111 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class op {
-   public static final afv<dnn<?>> a = a("cave");
-   public static final afv<dnn<?>> b = a("cave_extra_underground");
-   public static final afv<dnn<?>> c = a("canyon");
-   public static final afv<dnn<?>> d = a("nether_cave");
-
-   private static afv<dnn<?>> a(String $$0) {
-      return afv.a(jz.as, new afw($$0));
-   }
-
-   public static void a(oo<dnn<?>> $$0) {
-      ic<cua> $$1 = $$0.a(jz.e);
-      $$0.a(
-         a,
-         dnp.a
-            .a(
-               new dnl(
-                  0.15F,
-                  duk.a(dme.b(8), dme.a(180)),
-                  bhl.b(0.1F, 0.9F),
-                  dme.b(8),
-                  dnj.a(false, cuc.oS.o()),
-                  $$1.b(aqs.bh),
-                  bhl.b(0.7F, 1.4F),
-                  bhl.b(0.8F, 1.3F),
-                  bhl.b(-1.0F, -0.4F)
-               )
-            )
+   public static void a(ou<dye> $$0) {
+      ic<eat> $$1 = $$0.a(jz.aC);
+      ib<eat> $$2 = $$1.b(pc.t);
+      ic<dye> $$3 = $$0.a(jz.aE);
+      ib<dye> $$4 = $$3.b(pb.a);
+      pb.a(
+         $$0,
+         "bastion/units/center_pieces",
+         new dye(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/units/center_pieces/center_0", $$2), 1),
+               Pair.of(dyc.b("bastion/units/center_pieces/center_1", $$2), 1),
+               Pair.of(dyc.b("bastion/units/center_pieces/center_2", $$2), 1)
+            ),
+            dye.a.b
+         )
       );
-      $$0.a(
-         b,
-         dnp.a
-            .a(
-               new dnl(
-                  0.07F,
-                  duk.a(dme.b(8), dme.a(47)),
-                  bhl.b(0.1F, 0.9F),
-                  dme.b(8),
-                  dnj.a(false, cuc.gv.o()),
-                  $$1.b(aqs.bh),
-                  bhl.b(0.7F, 1.4F),
-                  bhl.b(0.8F, 1.3F),
-                  bhl.b(-1.0F, -0.4F)
-               )
-            )
+      pb.a(
+         $$0,
+         "bastion/units/pathways",
+         new dye(
+            $$4,
+            ImmutableList.of(Pair.of(dyc.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(dyc.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
+            dye.a.b
+         )
       );
-      $$0.a(
-         c,
-         dnp.c
-            .a(
-               new dng(
-                  0.01F,
-                  duk.a(dme.a(10), dme.a(67)),
-                  bhc.a(3.0F),
-                  dme.b(8),
-                  dnj.a(false, cuc.oT.o()),
-                  $$1.b(aqs.bh),
-                  bhl.b(-0.125F, 0.125F),
-                  new dng.a(bhl.b(0.75F, 1.0F), bhk.a(0.0F, 6.0F, 2.0F), 3, bhl.b(0.75F, 1.0F), 1.0F, 0.0F)
-               )
-            )
+      pb.a(
+         $$0,
+         "bastion/units/walls/wall_bases",
+         new dye(
+            $$4,
+            ImmutableList.of(Pair.of(dyc.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(dyc.b("bastion/units/walls/connected_wall", $$2), 1)),
+            dye.a.b
+         )
       );
-      $$0.a(d, dnp.b.a(new dnl(0.2F, duk.a(dme.a(0), dme.c(1)), bhc.a(0.5F), dme.b(10), $$1.b(aqs.bi), bhc.a(1.0F), bhc.a(1.0F), bhc.a(-0.7F))));
+      pb.a(
+         $$0,
+         "bastion/units/stages/stage_0",
+         new dye(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/units/stages/stage_0_0", $$2), 1),
+               Pair.of(dyc.b("bastion/units/stages/stage_0_1", $$2), 1),
+               Pair.of(dyc.b("bastion/units/stages/stage_0_2", $$2), 1),
+               Pair.of(dyc.b("bastion/units/stages/stage_0_3", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/units/stages/stage_1",
+         new dye(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/units/stages/stage_1_0", $$2), 1),
+               Pair.of(dyc.b("bastion/units/stages/stage_1_1", $$2), 1),
+               Pair.of(dyc.b("bastion/units/stages/stage_1_2", $$2), 1),
+               Pair.of(dyc.b("bastion/units/stages/stage_1_3", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a($$0, "bastion/units/stages/rot/stage_1", new dye($$4, ImmutableList.of(Pair.of(dyc.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), dye.a.b));
+      pb.a(
+         $$0,
+         "bastion/units/stages/stage_2",
+         new dye(
+            $$4, ImmutableList.of(Pair.of(dyc.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(dyc.b("bastion/units/stages/stage_2_1", $$2), 1)), dye.a.b
+         )
+      );
+      pb.a(
+         $$0,
+         "bastion/units/stages/stage_3",
+         new dye(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/units/stages/stage_3_0", $$2), 1),
+               Pair.of(dyc.b("bastion/units/stages/stage_3_1", $$2), 1),
+               Pair.of(dyc.b("bastion/units/stages/stage_3_2", $$2), 1),
+               Pair.of(dyc.b("bastion/units/stages/stage_3_3", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a($$0, "bastion/units/fillers/stage_0", new dye($$4, ImmutableList.of(Pair.of(dyc.b("bastion/units/fillers/stage_0", $$2), 1)), dye.a.b));
+      pb.a($$0, "bastion/units/edges", new dye($$4, ImmutableList.of(Pair.of(dyc.b("bastion/units/edges/edge_0", $$2), 1)), dye.a.b));
+      pb.a($$0, "bastion/units/wall_units", new dye($$4, ImmutableList.of(Pair.of(dyc.b("bastion/units/wall_units/unit_0", $$2), 1)), dye.a.b));
+      pb.a($$0, "bastion/units/edge_wall_units", new dye($$4, ImmutableList.of(Pair.of(dyc.b("bastion/units/wall_units/edge_0_large", $$2), 1)), dye.a.b));
+      pb.a(
+         $$0,
+         "bastion/units/ramparts",
+         new dye(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dyc.b("bastion/units/ramparts/ramparts_0", $$2), 1),
+               Pair.of(dyc.b("bastion/units/ramparts/ramparts_1", $$2), 1),
+               Pair.of(dyc.b("bastion/units/ramparts/ramparts_2", $$2), 1)
+            ),
+            dye.a.b
+         )
+      );
+      pb.a($$0, "bastion/units/large_ramparts", new dye($$4, ImmutableList.of(Pair.of(dyc.b("bastion/units/ramparts/ramparts_0", $$2), 1)), dye.a.b));
+      pb.a($$0, "bastion/units/rampart_plates", new dye($$4, ImmutableList.of(Pair.of(dyc.b("bastion/units/rampart_plates/plate_0", $$2), 1)), dye.a.b));
    }
 }

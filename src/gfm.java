@@ -1,110 +1,87 @@
-public class gfm implements gfq {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final ui f = ui.a("tutorial.move.title", gfp.a("forward"), gfp.a("left"), gfp.a("back"), gfp.a("right"));
-   private static final ui g = ui.a("tutorial.move.description", gfp.a("jump"));
-   private static final ui h = ui.c("tutorial.look.title");
-   private static final ui i = ui.c("tutorial.look.description");
-   private final gfp j;
-   private evt k;
-   private evt l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   public gfm(gfp $$0) {
-      this.j = $$0;
+public class gfm {
+   private final Set<gfm.a> a = Sets.newIdentityHashSet();
+   final elg b;
+   final Executor c;
+
+   public gfm(elg $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
-
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
-
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
-         }
-
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(gfr.b);
+   public CompletableFuture<gfm.a> a(elg.c $$0) {
+      CompletableFuture<gfm.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         elf $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gfm.a $$3 = new gfm.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
          } else {
-            this.j.a(gfr.f);
+            $$1.complete(null);
          }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new evt(evt.a.a, f, g, true);
-            this.j.e().ay().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new evt(evt.a.b, h, i, true);
-            this.j.e().ay().a(this.l);
-         }
-      }
+      });
+      return $$1;
    }
 
-   @Override
+   public void a(Consumer<Stream<elf>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gfm.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gfm.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
+   }
+
    public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
-      }
+      this.a.forEach(gfm.a::b);
+      this.a.clear();
    }
 
-   @Override
-   public void a(foa $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
-      }
-   }
+   public class a {
+      @Nullable
+      elf b;
+      private boolean c;
 
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+      public boolean a() {
+         return this.c;
+      }
+
+      public a(elf $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<elf> $$0) {
+         gfm.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         gfm.this.b.a(this.b);
+         this.b = null;
       }
    }
 }

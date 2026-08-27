@@ -1,17 +1,3 @@
-public enum bkv {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g,
-   h,
-   i,
-   j,
-   k,
-   l,
-   m,
-   n,
-   o;
+public interface bkv {
+   boolean a();
 }

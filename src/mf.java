@@ -1,162 +1,32 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import java.util.function.UnaryOperator;
 
 public class mf {
-   public static final me a = a("cube", mh.c, mh.j, mh.k, mh.l, mh.m, mh.n, mh.o);
-   public static final me b = a("cube_directional", mh.c, mh.j, mh.k, mh.l, mh.m, mh.n, mh.o);
-   public static final me c = a("cube_all", mh.a);
-   public static final me d = a("cube_mirrored_all", "_mirrored", mh.a);
-   public static final me e = a("cube_north_west_mirrored_all", "_north_west_mirrored", mh.a);
-   public static final me f = a("cube_column_uv_locked_x", "_x", mh.d, mh.i);
-   public static final me g = a("cube_column_uv_locked_y", "_y", mh.d, mh.i);
-   public static final me h = a("cube_column_uv_locked_z", "_z", mh.d, mh.i);
-   public static final me i = a("cube_column", mh.d, mh.i);
-   public static final me j = a("cube_column_horizontal", "_horizontal", mh.d, mh.i);
-   public static final me k = a("cube_column_mirrored", "_mirrored", mh.d, mh.i);
-   public static final me l = a("cube_top", mh.f, mh.i);
-   public static final me m = a("cube_bottom_top", mh.f, mh.e, mh.i);
-   public static final me n = a("orientable", mh.f, mh.g, mh.i);
-   public static final me o = a("orientable_with_bottom", mh.f, mh.e, mh.i, mh.g);
-   public static final me p = a("orientable_vertical", "_vertical", mh.g, mh.i);
-   public static final me q = a("button", mh.b);
-   public static final me r = a("button_pressed", "_pressed", mh.b);
-   public static final me s = a("button_inventory", "_inventory", mh.b);
-   public static final me t = a("door_bottom_left", "_bottom_left", mh.f, mh.e);
-   public static final me u = a("door_bottom_left_open", "_bottom_left_open", mh.f, mh.e);
-   public static final me v = a("door_bottom_right", "_bottom_right", mh.f, mh.e);
-   public static final me w = a("door_bottom_right_open", "_bottom_right_open", mh.f, mh.e);
-   public static final me x = a("door_top_left", "_top_left", mh.f, mh.e);
-   public static final me y = a("door_top_left_open", "_top_left_open", mh.f, mh.e);
-   public static final me z = a("door_top_right", "_top_right", mh.f, mh.e);
-   public static final me A = a("door_top_right_open", "_top_right_open", mh.f, mh.e);
-   public static final me B = a("custom_fence_post", "_post", mh.b, mh.c);
-   public static final me C = a("custom_fence_side_north", "_side_north", mh.b);
-   public static final me D = a("custom_fence_side_east", "_side_east", mh.b);
-   public static final me E = a("custom_fence_side_south", "_side_south", mh.b);
-   public static final me F = a("custom_fence_side_west", "_side_west", mh.b);
-   public static final me G = a("custom_fence_inventory", "_inventory", mh.b);
-   public static final me H = a("fence_post", "_post", mh.b);
-   public static final me I = a("fence_side", "_side", mh.b);
-   public static final me J = a("fence_inventory", "_inventory", mh.b);
-   public static final me K = a("template_wall_post", "_post", mh.r);
-   public static final me L = a("template_wall_side", "_side", mh.r);
-   public static final me M = a("template_wall_side_tall", "_side_tall", mh.r);
-   public static final me N = a("wall_inventory", "_inventory", mh.r);
-   public static final me O = a("template_custom_fence_gate", mh.b, mh.c);
-   public static final me P = a("template_custom_fence_gate_open", "_open", mh.b, mh.c);
-   public static final me Q = a("template_custom_fence_gate_wall", "_wall", mh.b, mh.c);
-   public static final me R = a("template_custom_fence_gate_wall_open", "_wall_open", mh.b, mh.c);
-   public static final me S = a("template_fence_gate", mh.b);
-   public static final me T = a("template_fence_gate_open", "_open", mh.b);
-   public static final me U = a("template_fence_gate_wall", "_wall", mh.b);
-   public static final me V = a("template_fence_gate_wall_open", "_wall_open", mh.b);
-   public static final me W = a("pressure_plate_up", mh.b);
-   public static final me X = a("pressure_plate_down", "_down", mh.b);
-   public static final me Y = a(mh.c);
-   public static final me Z = a("slab", mh.e, mh.f, mh.i);
-   public static final me aa = a("slab_top", "_top", mh.e, mh.f, mh.i);
-   public static final me ab = a("leaves", mh.a);
-   public static final me ac = a("stairs", mh.e, mh.f, mh.i);
-   public static final me ad = a("inner_stairs", "_inner", mh.e, mh.f, mh.i);
-   public static final me ae = a("outer_stairs", "_outer", mh.e, mh.f, mh.i);
-   public static final me af = a("template_trapdoor_top", "_top", mh.b);
-   public static final me ag = a("template_trapdoor_bottom", "_bottom", mh.b);
-   public static final me ah = a("template_trapdoor_open", "_open", mh.b);
-   public static final me ai = a("template_orientable_trapdoor_top", "_top", mh.b);
-   public static final me aj = a("template_orientable_trapdoor_bottom", "_bottom", mh.b);
-   public static final me ak = a("template_orientable_trapdoor_open", "_open", mh.b);
-   public static final me al = a("pointed_dripstone", mh.p);
-   public static final me am = a("cross", mh.p);
-   public static final me an = a("tinted_cross", mh.p);
-   public static final me ao = a("flower_pot_cross", mh.q);
-   public static final me ap = a("tinted_flower_pot_cross", mh.q);
-   public static final me aq = a("rail_flat", mh.s);
-   public static final me ar = a("rail_curved", "_corner", mh.s);
-   public static final me as = a("template_rail_raised_ne", "_raised_ne", mh.s);
-   public static final me at = a("template_rail_raised_sw", "_raised_sw", mh.s);
-   public static final me au = a("carpet", mh.t);
-   public static final me av = a("flowerbed_1", "_1", mh.P, mh.y);
-   public static final me aw = a("flowerbed_2", "_2", mh.P, mh.y);
-   public static final me ax = a("flowerbed_3", "_3", mh.P, mh.y);
-   public static final me ay = a("flowerbed_4", "_4", mh.P, mh.y);
-   public static final me az = a("coral_fan", mh.x);
-   public static final me aA = a("coral_wall_fan", mh.x);
-   public static final me aB = a("template_glazed_terracotta", mh.u);
-   public static final me aC = a("template_chorus_flower", mh.b);
-   public static final me aD = a("template_daylight_detector", mh.f, mh.i);
-   public static final me aE = a("template_glass_pane_noside", "_noside", mh.v);
-   public static final me aF = a("template_glass_pane_noside_alt", "_noside_alt", mh.v);
-   public static final me aG = a("template_glass_pane_post", "_post", mh.v, mh.w);
-   public static final me aH = a("template_glass_pane_side", "_side", mh.v, mh.w);
-   public static final me aI = a("template_glass_pane_side_alt", "_side_alt", mh.v, mh.w);
-   public static final me aJ = a("template_command_block", mh.g, mh.h, mh.i);
-   public static final me aK = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", mh.b);
-   public static final me aL = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", mh.b);
-   public static final me aM = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", mh.b);
-   public static final me aN = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", mh.b);
-   public static final me aO = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", mh.b);
-   public static final me aP = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", mh.b);
-   public static final me aQ = a("template_anvil", mh.f);
-   public static final me[] aR = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, mh.y)).toArray(me[]::new);
-   public static final me aS = a("stem_fruit", mh.y, mh.z);
-   public static final me aT = a("crop", mh.A);
-   public static final me aU = a("template_farmland", mh.B, mh.f);
-   public static final me aV = a("template_fire_floor", mh.C);
-   public static final me aW = a("template_fire_side", mh.C);
-   public static final me aX = a("template_fire_side_alt", mh.C);
-   public static final me aY = a("template_fire_up", mh.C);
-   public static final me aZ = a("template_fire_up_alt", mh.C);
-   public static final me ba = a("template_campfire", mh.C, mh.K);
-   public static final me bb = a("template_lantern", mh.D);
-   public static final me bc = a("template_hanging_lantern", "_hanging", mh.D);
-   public static final me bd = a("template_torch", mh.G);
-   public static final me be = a("template_torch_wall", mh.G);
-   public static final me bf = a("template_piston", mh.E, mh.e, mh.i);
-   public static final me bg = a("template_piston_head", mh.E, mh.i, mh.F);
-   public static final me bh = a("template_piston_head_short", mh.E, mh.i, mh.F);
-   public static final me bi = a("template_seagrass", mh.b);
-   public static final me bj = a("template_turtle_egg", mh.a);
-   public static final me bk = a("template_two_turtle_eggs", mh.a);
-   public static final me bl = a("template_three_turtle_eggs", mh.a);
-   public static final me bm = a("template_four_turtle_eggs", mh.a);
-   public static final me bn = a("template_single_face", mh.b);
-   public static final me bo = a("template_cauldron_level1", mh.N, mh.M, mh.c, mh.f, mh.e, mh.i);
-   public static final me bp = a("template_cauldron_level2", mh.N, mh.M, mh.c, mh.f, mh.e, mh.i);
-   public static final me bq = a("template_cauldron_full", mh.N, mh.M, mh.c, mh.f, mh.e, mh.i);
-   public static final me br = a("template_azalea", mh.f, mh.i);
-   public static final me bs = a("template_potted_azalea_bush", mh.q, mh.f, mh.i);
-   public static final me bt = a("template_potted_azalea_bush", mh.q, mh.f, mh.i);
-   public static final me bu = a("sniffer_egg", mh.f, mh.e, mh.j, mh.k, mh.l, mh.m);
-   public static final me bv = b("generated", mh.H);
-   public static final me bw = b("template_music_disc", mh.H);
-   public static final me bx = b("handheld", mh.H);
-   public static final me by = b("handheld_rod", mh.H);
-   public static final me bz = b("generated", mh.H, mh.I);
-   public static final me bA = b("generated", mh.H, mh.I, mh.J);
-   public static final me bB = b("template_shulker_box", mh.c);
-   public static final me bC = b("template_bed", mh.c);
-   public static final me bD = b("template_banner");
-   public static final me bE = b("template_skull");
-   public static final me bF = a("template_candle", mh.a, mh.c);
-   public static final me bG = a("template_two_candles", mh.a, mh.c);
-   public static final me bH = a("template_three_candles", mh.a, mh.c);
-   public static final me bI = a("template_four_candles", mh.a, mh.c);
-   public static final me bJ = a("template_cake_with_candle", mh.L, mh.e, mh.i, mh.f, mh.c);
-   public static final me bK = a("template_sculk_shrieker", mh.e, mh.i, mh.f, mh.c, mh.O);
-
-   private static me a(mh... $$0) {
-      return new me(Optional.empty(), Optional.empty(), $$0);
+   @Deprecated
+   public static agg a(String $$0) {
+      return new agg("minecraft", "block/" + $$0);
    }
 
-   private static me a(String $$0, mh... $$1) {
-      return new me(Optional.of(new afw("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+   public static agg b(String $$0) {
+      return new agg("minecraft", "item/" + $$0);
    }
 
-   private static me b(String $$0, mh... $$1) {
-      return new me(Optional.of(new afw("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+   public static agg a(cut $$0, String $$1) {
+      agg $$2 = jy.f.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
    }
 
-   private static me a(String $$0, String $$1, mh... $$2) {
-      return new me(Optional.of(new afw("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+   public static agg a(cut $$0) {
+      agg $$1 = jy.f.b($$0);
+      return $$1.d("block/");
+   }
+
+   public static agg a(ckw $$0) {
+      agg $$1 = jy.i.b($$0);
+      return $$1.d("item/");
+   }
+
+   public static agg a(ckw $$0, String $$1) {
+      agg $$2 = jy.i.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

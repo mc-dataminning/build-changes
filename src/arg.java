@@ -1,17 +1,10 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class arg {
+   public static final arr<duw> a = a("visible");
 
-public record arg(List<arf> b, boolean c) {
-   public static final Codec<arg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arf.a.listOf().fieldOf("values").forGetter(arg::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(arg::b)).apply($$0, arg::new)
-   );
-
-   public List<arf> a() {
-      return this.b;
+   private arg() {
    }
 
-   public boolean b() {
-      return this.c;
+   private static arr<duw> a(String $$0) {
+      return arr.a(jz.ax, new agg($$0));
    }
 }

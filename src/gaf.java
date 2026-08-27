@@ -1,75 +1,23 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
-
-public class gaf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final afp b = new afp("atlases", ".json");
-   private final List<gae> c;
-
-   private gaf(List<gae> $$0) {
-      this.c = $$0;
+public class gaf<T extends bky> extends fyw<T, fjq<T>> {
+   public gaf(fxf<T, fjq<T>> $$0, fqd $$1) {
+      super($$0, $$1);
    }
 
-   public List<Function<gad, fzu>> a(aot $$0) {
-      final Map<afw, gae.b> $$1 = new HashMap<>();
-      gae.a $$2 = new gae.a() {
-         @Override
-         public void a(afw $$0, gae.b $$1x) {
-            gae.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
-            }
-         }
-
-         @Override
-         public void a(Predicate<afw> $$0) {
-            Iterator<Entry<afw, gae.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<afw, gae.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<gad, fzu>> $$3 = ImmutableList.builder();
-      $$3.add((Function<gad, fzu>)$$0x -> fzq.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
-   }
-
-   public static gaf a(aot $$0, afw $$1) {
-      afw $$2 = b.a($$1);
-      List<gae> $$3 = new ArrayList<>();
-
-      for (aor $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends gae>)gah.h.parse($$6).getOrThrow(false, a::error));
-         } catch (Exception var11) {
-            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
-         }
+   @Override
+   public void a(enk $$0, fqh $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      clb $$10 = $$3.eS();
+      $$0.a();
+      if ($$10.a(cle.rw)) {
+         this.c().d().a($$0);
+         this.c().e().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
       }
 
-      return new gaf($$3);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      $$0.b();
    }
 }

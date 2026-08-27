@@ -1,21 +1,26 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class dnb extends dnc {
-   public static final Codec<dnb> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dnb::new));
+public record dnb(dnd b, dna c) {
+   public static final Codec<dnb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dnd.a.forGetter(dnb::a), dna.a.forGetter(dnb::b)).apply($$0, $$0.stable(dnb::new))
+   );
 
-   public dnb(iw $$0) {
-      super($$0);
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dnd $$1, dna $$2) {
+      return a.encodeStart($$0, new dnb($$1, $$2));
    }
 
-   @Override
-   protected boolean a(dgb $$0) {
-      return $$0.e();
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dnd $$1, ip $$2) {
+      return a($$0, $$1, new dna($$2.d(jz.aK)));
    }
 
-   @Override
-   public dms<?> a() {
-      return dms.e;
+   public dnd a() {
+      return this.b;
+   }
+
+   public dna b() {
+      return this.c;
    }
 }

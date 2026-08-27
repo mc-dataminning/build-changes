@@ -1,2 +1,8 @@
-public record edk<T>(edn<T> a, afw b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface edk {
 }

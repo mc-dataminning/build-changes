@@ -4,21 +4,23 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bcy extends bbi {
+public class bcy extends bbv {
    public bcy(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, baa.A, () -> DSL.constType(a()));
+   protected static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("ArmorItems", DSL.list(ban.t.in($$0)), "HandItems", DSL.list(ban.t.in($$0)));
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register(
-         $$1, "minecraft:sculk_sensor", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", baa.A.in($$0))))
-      );
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> a($$0));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$1.remove("minecraft:illager_beast");
+      a($$0, $$1, "minecraft:ravager");
       return $$1;
    }
 }

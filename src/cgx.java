@@ -1,57 +1,77 @@
-public class cgx extends chh {
-   private final cgv a;
-   private final ccx b;
-   private int c;
-   private final cpw h;
+public class cgx extends cge {
+   private static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final bij p;
 
-   public cgx(ccx $$0, cpw $$1, cgv $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+   public cgx(int $$0, cdl $$1) {
+      this($$0, $$1, new bix(9));
    }
 
-   @Override
-   public boolean a(ckj $$0) {
-      return false;
-   }
+   public cgx(int $$0, cdl $$1, bij $$2) {
+      super(chl.g, $$0);
+      a($$2, 9);
+      this.p = $$2;
+      $$2.d_($$1.m);
 
-   @Override
-   public ckj a(int $$0) {
-      if (this.f()) {
-         this.c = this.c + Math.min($$0, this.e().L());
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            this.a(new chz($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
+         }
       }
 
-      return super.a($$0);
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new chz($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
+         }
+      }
+
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new chz($$1, $$7, 8 + $$7 * 18, 142));
+      }
    }
 
    @Override
-   protected void a(ckj $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
+   public boolean a(cdm $$0) {
+      return this.p.a($$0);
    }
 
    @Override
-   protected void b_(ckj $$0) {
-      $$0.a(this.b.dL(), this.b, this.c);
-      this.c = 0;
-   }
-
-   @Override
-   public void a(ccx $$0, ckj $$1) {
-      this.b_($$1);
-      cpx $$2 = this.a.g();
-      if ($$2 != null) {
-         ckj $$3 = this.a.a(0);
-         ckj $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(aqn.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
+   public clb a(cdm $$0, int $$1) {
+      clb $$2 = clb.b;
+      chz $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.g()) {
+         clb $$4 = $$3.f();
+         $$2 = $$4.p();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return clb.b;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return clb.b;
          }
 
-         this.h.t(this.h.t() + $$2.o());
+         if ($$4.b()) {
+            $$3.e(clb.b);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return clb.b;
+         }
+
+         $$3.a($$0, $$4);
       }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(cdm $$0) {
+      super.b($$0);
+      this.p.c($$0);
    }
 }

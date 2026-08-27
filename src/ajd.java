@@ -1,28 +1,118 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class ajd {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.save.alreadyOff"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.playsound.failed"));
 
    public static void a(CommandDispatcher<du> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
-         du $$1 = (du)$$0x.getSource();
-         boolean $$2 = false;
+      RequiredArgumentBuilder<du, agg> $$1 = dv.a("sound", eu.a()).suggests(hj.c);
 
-         for (alq $$3 : $$1.m().F()) {
-            if ($$3 != null && !$$3.e) {
-               $$3.e = true;
-               $$2 = true;
+      for (aqo $$2 : aqo.values()) {
+         $$1.then(a($$2));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
+   }
+
+   private static LiteralArgumentBuilder<du> a(aqo $$0) {
+      return (LiteralArgumentBuilder<du>)dv.a($$0.a())
+         .then(
+            ((RequiredArgumentBuilder)dv.a("targets", eg.d())
+                  .executes($$1 -> a((du)$$1.getSource(), eg.f($$1, "targets"), eu.e($$1, "sound"), $$0, ((du)$$1.getSource()).e(), 1.0F, 1.0F, 0.0F)))
+               .then(
+                  ((RequiredArgumentBuilder)dv.a("pos", ft.a())
+                        .executes($$1 -> a((du)$$1.getSource(), eg.f($$1, "targets"), eu.e($$1, "sound"), $$0, ft.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
+                     .then(
+                        ((RequiredArgumentBuilder)dv.a("volume", FloatArgumentType.floatArg(0.0F))
+                              .executes(
+                                 $$1 -> a(
+                                       (du)$$1.getSource(),
+                                       eg.f($$1, "targets"),
+                                       eu.e($$1, "sound"),
+                                       $$0,
+                                       ft.a($$1, "pos"),
+                                       (Float)$$1.getArgument("volume", Float.class),
+                                       1.0F,
+                                       0.0F
+                                    )
+                              ))
+                           .then(
+                              ((RequiredArgumentBuilder)dv.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
+                                    .executes(
+                                       $$1 -> a(
+                                             (du)$$1.getSource(),
+                                             eg.f($$1, "targets"),
+                                             eu.e($$1, "sound"),
+                                             $$0,
+                                             ft.a($$1, "pos"),
+                                             (Float)$$1.getArgument("volume", Float.class),
+                                             (Float)$$1.getArgument("pitch", Float.class),
+                                             0.0F
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                       .executes(
+                                          $$1 -> a(
+                                                (du)$$1.getSource(),
+                                                eg.f($$1, "targets"),
+                                                eu.e($$1, "sound"),
+                                                $$0,
+                                                ft.a($$1, "pos"),
+                                                (Float)$$1.getArgument("volume", Float.class),
+                                                (Float)$$1.getArgument("pitch", Float.class),
+                                                (Float)$$1.getArgument("minVolume", Float.class)
+                                             )
+                                       )
+                                 )
+                           )
+                     )
+               )
+         );
+   }
+
+   private static int a(du $$0, Collection<amb> $$1, agg $$2, aqo $$3, eji $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      ib<aqm> $$8 = ib.a(aqm.a($$2));
+      double $$9 = (double)ati.k($$8.a().a($$5));
+      int $$10 = 0;
+      long $$11 = $$0.f().E_().g();
+
+      for (amb $$12 : $$1) {
+         double $$13 = $$4.c - $$12.dq();
+         double $$14 = $$4.d - $$12.ds();
+         double $$15 = $$4.e - $$12.dw();
+         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
+         eji $$17 = $$4;
+         float $$18 = $$5;
+         if ($$16 > $$9) {
+            if ($$7 <= 0.0F) {
+               continue;
             }
+
+            double $$19 = Math.sqrt($$16);
+            $$17 = new eji($$12.dq() + $$13 / $$19 * 2.0, $$12.ds() + $$14 / $$19 * 2.0, $$12.dw() + $$15 / $$19 * 2.0);
+            $$18 = $$7;
          }
 
-         if (!$$2) {
-            throw a.create();
+         $$12.c.b(new abu($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
+         $$10++;
+      }
+
+      if ($$10 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> ur.a("commands.playsound.success.single", ur.a($$2), $$1.iterator().next().O_()), true);
          } else {
-            $$1.a(() -> ui.c("commands.save.disabled"), true);
-            return 1;
+            $$0.a(() -> ur.a("commands.playsound.success.multiple", ur.a($$2), $$1.size()), true);
          }
-      }));
+
+         return $$10;
+      }
    }
 }

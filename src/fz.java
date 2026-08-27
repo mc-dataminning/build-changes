@@ -3,27 +3,27 @@ import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fz implements Predicate<ckj> {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> ui.b("arguments.item.overstacked", $$0, $$1));
-   private final ib<cke> b;
+public class fz implements Predicate<clb> {
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> ur.b("arguments.item.overstacked", $$0, $$1));
+   private final ib<ckw> b;
    @Nullable
-   private final rt c;
+   private final rz c;
 
-   public fz(ib<cke> $$0, @Nullable rt $$1) {
+   public fz(ib<ckw> $$0, @Nullable rz $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public cke a() {
+   public ckw a() {
       return this.b.a();
    }
 
-   public boolean a(ckj $$0) {
-      return $$0.a(this.b) && sg.a(this.c, $$0.v(), true);
+   public boolean a(clb $$0) {
+      return $$0.a(this.b) && so.a(this.c, $$0.v(), true);
    }
 
-   public ckj a(int $$0, boolean $$1) throws CommandSyntaxException {
-      ckj $$2 = new ckj(this.b, $$0);
+   public clb a(int $$0, boolean $$1) throws CommandSyntaxException {
+      clb $$2 = new clb(this.b, $$0);
       if (this.c != null) {
          $$2.c(this.c);
       }
@@ -45,6 +45,6 @@ public class fz implements Predicate<ckj> {
    }
 
    private String c() {
-      return this.b.e().map(afv::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
+      return this.b.e().map(agf::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
    }
 }

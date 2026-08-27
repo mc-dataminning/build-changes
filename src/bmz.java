@@ -1,101 +1,41 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class bmz implements bmq<bky> {
+   private final int a;
+   private final int b;
+   private bmp.a c = bmp.a.a;
+   private long d;
 
-public class bmz extends bma<bkl> {
-   private static final int c = 100;
-   private static final int d = 3;
-   private static final int e = 6;
-   private static final int f = 5;
-   private final float g;
-   @Nullable
-   private ht h;
-   private int i;
-   private int j;
-   private int k;
-
-   public bmz(float $$0) {
-      super(ImmutableMap.of(btk.w, btl.a, btk.m, btl.b));
-      this.g = $$0;
-   }
-
-   protected boolean a(alq $$0, bkl $$1) {
-      return $$1.n_() && this.b($$0, $$1);
-   }
-
-   protected void a(alq $$0, bkl $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.a($$1).ifPresent($$2x -> {
-         this.h = $$2x;
-         this.i = 100;
-         this.j = 3 + $$0.z.a(4);
-         this.k = 0;
-         this.a($$1, $$2x);
-      });
-   }
-
-   protected void b(alq $$0, bkl $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      this.h = null;
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   protected boolean c(alq $$0, bkl $$1, long $$2) {
-      return $$1.n_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
+   public bmz(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   protected boolean a(long $$0) {
-      return false;
+   public bmp.a a() {
+      return this.c;
    }
 
-   protected void d(alq $$0, bkl $$1, long $$2) {
-      if (!this.c($$0, $$1)) {
-         this.i--;
-      } else if (this.k > 0) {
-         this.k--;
-      } else {
-         if (this.d($$0, $$1)) {
-            $$1.K().a();
-            this.j--;
-            this.k = 5;
-         }
+   @Override
+   public final boolean e(ama $$0, bky $$1, long $$2) {
+      this.c = bmp.a.b;
+      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
+   }
+
+   @Override
+   public final void f(ama $$0, bky $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   private void a(bkl $$0, ht $$1) {
-      $$0.dN().a(btk.m, new btn($$1, this.g, 0));
+   @Override
+   public final void g(ama $$0, bky $$1, long $$2) {
+      this.c = bmp.a.a;
    }
 
-   private boolean b(alq $$0, bkl $$1) {
-      return this.c($$0, $$1) || this.a($$1).isPresent();
-   }
-
-   private boolean c(alq $$0, bkl $$1) {
-      ht $$2 = $$1.dl();
-      ht $$3 = $$2.d();
-      return this.a($$0, $$2) || this.a($$0, $$3);
-   }
-
-   private boolean d(alq $$0, bkl $$1) {
-      return this.a($$0, $$1.dl());
-   }
-
-   private boolean a(alq $$0, ht $$1) {
-      return $$0.a_($$1).a(aqs.R);
-   }
-
-   private Optional<ht> a(bkl $$0) {
-      return $$0.dN().c(btk.w);
-   }
-
-   private boolean e(alq $$0, bkl $$1) {
-      return !this.c($$0, $$1) && this.i <= 0;
-   }
-
-   private boolean f(alq $$0, bkl $$1) {
-      return this.c($$0, $$1) && this.j <= 0;
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

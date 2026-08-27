@@ -1,61 +1,46 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcj extends cvt {
-   public static final MapCodec<dcj> a = b(dcj::new);
-   public static final int b = 2;
-   public static final dhb c = dgr.aq;
-   private static final float g = 3.0F;
-   private static final eiy[] h = new eiy[]{cua.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), cua.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
-   private static final int i = 1;
-
-   @Override
-   public MapCodec<dcj> a() {
-      return a;
-   }
-
-   public dcj(dga.d $$0) {
+public abstract class dcj extends dcc {
+   protected dcj(dgv.d $$0) {
       super($$0);
    }
 
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return h[this.g($$0)];
-   }
-
-   @Override
-   protected dhb b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 2;
-   }
-
-   @Override
-   protected cqy d() {
-      return ckm.uo;
-   }
-
-   @Override
-   public dgb b(int $$0) {
-      return $$0 == 2 ? cuc.bS.o() : super.b($$0);
-   }
-
-   @Override
-   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   private static boolean b(dgw $$0, crv $$1, ht $$2) {
+      ht $$3 = $$2.c();
+      dgw $$4 = $$1.a_($$3);
+      if ($$4.a(cuv.dN) && $$4.c(dcb.c) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
+      } else {
+         int $$5 = ebx.a($$1, $$0, $$2, $$4, $$3, hx.b, $$4.b($$1, $$3));
+         return $$5 < $$1.M();
       }
    }
 
    @Override
-   protected int a(cqz $$0) {
-      return 1;
+   protected abstract MapCodec<? extends dcj> a();
+
+   private static boolean c(dgw $$0, crv $$1, ht $$2) {
+      ht $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(arh.a);
+   }
+
+   @Override
+   public void b(dgw $$0, ama $$1, ht $$2, ato $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, cuv.j.o());
+      } else {
+         if ($$1.z($$2.c()) >= 9) {
+            dgw $$4 = this.o();
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               ht $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(cuv.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(cuv.dN))));
+               }
+            }
+         }
+      }
    }
 }

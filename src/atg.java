@@ -1,41 +1,14 @@
+import javax.annotation.Nullable;
+
 public class atg {
-   public static final int a = 240;
-   private final long[] b = new long[240];
-   private int c;
-   private int d;
+   @Nullable
+   private static byte[] a = null;
 
-   public void a(long $$0) {
-      int $$1 = this.b(this.c + this.d);
-      this.b[$$1] = $$0;
-      if (this.d < 240) {
-         this.d++;
-      } else {
-         this.c = this.b(this.c + 1);
-      }
+   public static void a() {
+      a = new byte[10485760];
    }
 
-   public int a() {
-      return this.b.length;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public long a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.d) {
-         return this.b[this.b(this.c + $$0)];
-      } else {
-         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.d);
-      }
-   }
-
-   private int b(int $$0) {
-      return $$0 % 240;
-   }
-
-   public void c() {
-      this.c = 0;
-      this.d = 0;
+   public static void b() {
+      a = new byte[0];
    }
 }

@@ -1,112 +1,82 @@
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dbu extends cuj implements cud {
-   public static final MapCodec<dbu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               afv.a(jz.e).fieldOf("fruit").forGetter($$0x -> $$0x.f),
-               afv.a(jz.e).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
-               afv.a(jz.E).fieldOf("seed").forGetter($$0x -> $$0x.h),
-               t()
-            )
-            .apply($$0, dbu::new)
-   );
-   public static final int b = 7;
-   public static final dhb c = dgr.av;
-   protected static final float d = 1.0F;
-   protected static final eiy[] e = new eiy[]{
-      cua.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      cua.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      cua.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      cua.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      cua.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      cua.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      cua.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      cua.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final afv<cua> f;
-   private final afv<cua> g;
-   private final afv<cke> h;
+public class dbu extends ctp {
+   public static final MapCodec<dbu> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbu.a.b.fieldOf("kind").forGetter(ctp::b), t()).apply($$0, dbu::new));
+   public static final int d = dic.a();
+   private static final int b = d + 1;
+   public static final dhw e = dhm.ba;
+   protected static final ekb f = cut.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final ekb g = cut.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
-   public MapCodec<dbu> a() {
-      return a;
+   public MapCodec<? extends dbu> a() {
+      return c;
    }
 
-   protected dbu(afv<cua> $$0, afv<cua> $$1, afv<cke> $$2, dga.d $$3) {
-      super($$3);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected dbu(dbu.a $$0, dgv.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
-      return e[$$0.c(c)];
+   public ekb a(dgw $$0, cqy $$1, ht $$2, ejn $$3) {
+      return this.b() == dbu.b.h ? g : f;
    }
 
    @Override
-   protected boolean d(dgb $$0, cqf $$1, ht $$2) {
-      return $$0.a(cuc.cC);
+   public ekb f(dgw $$0, cqy $$1, ht $$2) {
+      return ejy.a();
    }
 
    @Override
-   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = cvt.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(c);
-            if ($$5 < 7) {
-               $$0 = $$0.a(c, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
-            } else {
-               hx $$6 = hx.c.a.a($$3);
-               ht $$7 = $$2.a($$6);
-               dgb $$8 = $$1.a_($$7.d());
-               if ($$1.a_($$7).i() && ($$8.a(cuc.cC) || $$8.a(aqs.af))) {
-                  io<cua> $$9 = $$1.H_().d(jz.e);
-                  Optional<cua> $$10 = $$9.d(this.f);
-                  Optional<cua> $$11 = $$9.d(this.g);
-                  if ($$10.isPresent() && $$11.isPresent()) {
-                     $$1.b($$7, $$10.get().o());
-                     $$1.b($$2, $$11.get().o().a(cxu.aE, $$6));
-                  }
-               }
-            }
-         }
+   public dgw a(cnj $$0) {
+      return super.a($$0).a(e, Integer.valueOf(dic.a($$0.i())));
+   }
+
+   @Override
+   public dgw a(dgw $$0, dbf $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   public dgw a(dgw $$0, czp $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dgx.a<cut, dgw> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends aub {
+      Map<String, dbu.a> a = new Object2ObjectArrayMap();
+      Codec<dbu.a> b = asq.a(aub::c, a::get);
+   }
+
+   public static enum b implements dbu.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   public ckj a(crc $$0, ht $$1, dgb $$2) {
-      return new ckj((cqy)DataFixUtils.orElse($$0.H_().d(jz.E).d(this.h), this));
-   }
-
-   @Override
-   public boolean b(crc $$0, ht $$1, dgb $$2) {
-      return $$2.c(c) != 7;
-   }
-
-   @Override
-   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
-      int $$4 = Math.min(7, $$3.c(c) + asy.a($$0.z, 2, 5));
-      dgb $$5 = $$3.a(c, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.z);
+      @Override
+      public String c() {
+         return this.j;
       }
-   }
-
-   @Override
-   protected void a(dgc.a<cua, dgb> $$0) {
-      $$0.a(c);
    }
 }

@@ -1,103 +1,80 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum cqw implements atr {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
+public class cqw<T> extends AbstractIterator<T> {
+   private final ejd a;
+   private final ejn b;
+   private final hu c;
+   private final ht.a d;
+   private final ekb e;
+   private final crc f;
+   private final boolean g;
+   @Nullable
+   private cqy h;
+   private long i;
+   private final BiFunction<ht.a, ekb, T> j;
 
-   public static final cqw e = a;
-   public static final atr.a<cqw> f = atr.a(cqw::values);
-   private static final IntFunction<cqw> g = arr.a(cqw::a, values(), arr.a.a);
-   private static final int h = -1;
-   private final int i;
-   private final String j;
-   private final ui k;
-   private final ui l;
-
-   private cqw(int $$0, String $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = ui.c("selectWorld.gameMode." + $$1);
-      this.l = ui.c("gameMode." + $$1);
+   public cqw(crc $$0, @Nullable bki $$1, ejd $$2, boolean $$3, BiFunction<ht.a, ekb, T> $$4) {
+      this.b = $$1 == null ? ejn.a() : ejn.a($$1);
+      this.d = new ht.a();
+      this.e = ejy.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = ati.a($$2.a - 1.0E-7) - 1;
+      int $$6 = ati.a($$2.d + 1.0E-7) + 1;
+      int $$7 = ati.a($$2.b - 1.0E-7) - 1;
+      int $$8 = ati.a($$2.e + 1.0E-7) + 1;
+      int $$9 = ati.a($$2.c - 1.0E-7) - 1;
+      int $$10 = ati.a($$2.f + 1.0E-7) + 1;
+      this.c = new hu($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   public int a() {
-      return this.i;
-   }
-
-   public String b() {
-      return this.j;
-   }
-
-   @Override
-   public String c() {
-      return this.j;
-   }
-
-   public ui d() {
-      return this.l;
-   }
-
-   public ui e() {
-      return this.k;
-   }
-
-   public void a(ccu $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
+   @Nullable
+   private cqy a(int $$0, int $$1) {
+      int $$2 = iu.a($$0);
+      int $$3 = iu.a($$1);
+      long $$4 = cqz.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
       } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
+         cqy $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
+      }
+   }
+
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            cqy $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               dgw $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(cuv.bQ))) {
+                  ekb $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == ejy.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     ekb $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && ejy.c($$7, this.e, ejm.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
+                  }
+               }
+            }
+         }
       }
 
-      $$0.e = !this.f();
-   }
-
-   public boolean f() {
-      return this == c || this == d;
-   }
-
-   public boolean g() {
-      return this == b;
-   }
-
-   public boolean h() {
-      return this == a || this == c;
-   }
-
-   public static cqw a(int $$0) {
-      return g.apply($$0);
-   }
-
-   public static cqw a(String $$0) {
-      return a($$0, a);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cqw a(String $$0, @Nullable cqw $$1) {
-      cqw $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   public static int a(@Nullable cqw $$0) {
-      return $$0 != null ? $$0.i : -1;
-   }
-
-   @Nullable
-   public static cqw b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
+      return (T)this.endOfData();
    }
 }

@@ -7,7 +7,7 @@ public class jv extends jr<jv> implements jq {
          return (jv)$$0;
       }
 
-      public jv a(jr<jv> $$0, tl $$1) {
+      public jv a(jr<jv> $$0, tu $$1) {
          return (jv)$$0;
       }
    };
@@ -27,7 +27,7 @@ public class jv extends jr<jv> implements jq {
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
    }
 
    @Override

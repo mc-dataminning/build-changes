@@ -1,30 +1,29 @@
-public class bwa extends bvt {
-   public bwa(bjx<? extends bwa> $$0, cqz $$1) {
-      super($$0, $$1);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public record bwa(Set<dgw> b, int c, int d) {
+   public static final Predicate<ib<bwa>> a = $$0 -> false;
+
+   public bwa(Set<dgw> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   @Override
-   public ckj b() {
-      return new ckj(ckm.pT);
+   public boolean a(dgw $$0) {
+      return this.b.contains($$0);
    }
 
-   @Override
-   protected aqc w() {
-      return aqd.eB;
+   public Set<dgw> a() {
+      return this.b;
    }
 
-   @Override
-   protected aqc m_() {
-      return aqd.eC;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected aqc d(bir $$0) {
-      return aqd.eE;
-   }
-
-   @Override
-   protected aqc gf() {
-      return aqd.eD;
+   public int c() {
+      return this.d;
    }
 }

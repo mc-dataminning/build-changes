@@ -1,14 +1,14 @@
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 public class dr extends RuntimeException {
-   private final ui a;
+   private final ur a;
 
-   public dr(ui $$0) {
+   public dr(ur $$0) {
       super($$0.getString(), null, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES);
       this.a = $$0;
    }
 
-   public ui a() {
+   public ur a() {
       return this.a;
    }
 }

@@ -1,59 +1,39 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Map;
+import com.mojang.datafixers.DSL.TypeReference;
 
-public class ban extends DataFix {
-   private final String a;
-   private final Map<String, String> b;
-
-   public ban(Schema $$0, String $$1, Map<String, String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.b(), this.a());
-   }
-
-   private TypeRewriteRule a() {
-      Type<?> $$0 = this.getOutputSchema().getType(baa.D);
-      Type<?> $$1 = this.getInputSchema().getType(baa.D);
-      OpticFinder<?> $$2 = $$1.findField("CriteriaType");
-      TaggedChoiceType<?> $$3 = (TaggedChoiceType<?>)$$2.type()
-         .findChoiceType("type", -1)
-         .orElseThrow(() -> new IllegalStateException("Can't find choice type for criteria"));
-      Type<?> $$4 = (Type<?>)$$3.types().get("minecraft:custom");
-      if ($$4 == null) {
-         throw new IllegalStateException("Failed to find custom criterion type variant");
-      } else {
-         OpticFinder<?> $$5 = DSL.namedChoice("minecraft:custom", $$4);
-         OpticFinder<String> $$6 = DSL.fieldFinder("id", bbi.a());
-         return this.fixTypeEverywhereTyped(
-            this.a,
-            $$1,
-            $$0,
-            $$3x -> $$3x.updateTyped($$2, $$2xx -> $$2xx.updateTyped($$5, $$1xxx -> $$1xxx.update($$6, $$0xxxx -> this.b.getOrDefault($$0xxxx, $$0xxxx))))
-         );
-      }
-   }
-
-   private TypeRewriteRule b() {
-      Type<?> $$0 = this.getOutputSchema().getType(baa.g);
-      Type<?> $$1 = this.getInputSchema().getType(baa.g);
-      OpticFinder<?> $$2 = $$1.findField("stats");
-      OpticFinder<?> $$3 = $$2.type().findField("minecraft:custom");
-      OpticFinder<String> $$4 = bbi.a().finder();
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         $$1,
-         $$0,
-         $$3x -> $$3x.updateTyped($$2, $$2xx -> $$2xx.updateTyped($$3, $$1xxx -> $$1xxx.update($$4, $$0xxxx -> this.b.getOrDefault($$0xxxx, $$0xxxx))))
-      );
-   }
+public class ban {
+   public static final TypeReference a = () -> "level";
+   public static final TypeReference b = () -> "player";
+   public static final TypeReference c = () -> "chunk";
+   public static final TypeReference d = () -> "hotbar";
+   public static final TypeReference e = () -> "options";
+   public static final TypeReference f = () -> "structure";
+   public static final TypeReference g = () -> "stats";
+   public static final TypeReference h = () -> "saved_data/command_storage";
+   public static final TypeReference i = () -> "saved_data/chunks";
+   public static final TypeReference j = () -> "saved_data/map_data";
+   public static final TypeReference k = () -> "saved_data/idcounts";
+   public static final TypeReference l = () -> "saved_data/raids";
+   public static final TypeReference m = () -> "saved_data/random_sequences";
+   public static final TypeReference n = () -> "saved_data/structure_feature_indices";
+   public static final TypeReference o = () -> "saved_data/scoreboard";
+   public static final TypeReference p = () -> "advancements";
+   public static final TypeReference q = () -> "poi_chunk";
+   public static final TypeReference r = () -> "entity_chunk";
+   public static final TypeReference s = () -> "block_entity";
+   public static final TypeReference t = () -> "item_stack";
+   public static final TypeReference u = () -> "block_state";
+   public static final TypeReference v = () -> "entity_name";
+   public static final TypeReference w = () -> "entity_tree";
+   public static final TypeReference x = () -> "entity";
+   public static final TypeReference y = () -> "block_name";
+   public static final TypeReference z = () -> "item_name";
+   public static final TypeReference A = () -> "game_event_name";
+   public static final TypeReference B = () -> "untagged_spawner";
+   public static final TypeReference C = () -> "structure_feature";
+   public static final TypeReference D = () -> "objective";
+   public static final TypeReference E = () -> "team";
+   public static final TypeReference F = () -> "recipe";
+   public static final TypeReference G = () -> "biome";
+   public static final TypeReference H = () -> "multi_noise_biome_source_parameter_list";
+   public static final TypeReference I = () -> "world_gen_settings";
 }

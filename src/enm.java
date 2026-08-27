@@ -1,23 +1,43 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class enm extends eod {
-   private static final Logger b = LogUtils.getLogger();
-   public String a;
+public class enm {
+   private static final int a = 786432;
+   private final enf b;
+   @Nullable
+   private static enm c;
 
-   public static enm a(String $$0) {
-      enm $$1 = new enm();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = eqa.a("newsLink", $$3, null);
-      } catch (Exception var4) {
-         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+   public static void a() {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (c != null) {
+         throw new IllegalStateException("Tesselator has already been initialized");
+      } else {
+         c = new enm();
       }
+   }
 
-      return $$1;
+   public static enm b() {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (c == null) {
+         throw new IllegalStateException("Tesselator has not been initialized");
+      } else {
+         return c;
+      }
+   }
+
+   public enm(int $$0) {
+      this.b = new enf($$0);
+   }
+
+   public enm() {
+      this(786432);
+   }
+
+   public void c() {
+      eng.a(this.b.d());
+   }
+
+   public enf d() {
+      return this.b;
    }
 }

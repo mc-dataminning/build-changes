@@ -1,15 +1,18 @@
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import com.mojang.datafixers.types.Type;
 
-public class awm extends baj {
-   public awm(Schema $$0, boolean $$1) {
-      super("EntityElderGuardianSplitFix", $$0, $$1);
+public class awm extends DataFix {
+   private static final String a = "minecraft:decorated_pot";
+
+   public awm(Schema $$0) {
+      super($$0, true);
    }
 
-   @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      return Pair.of(Objects.equals($$0, "Guardian") && $$1.get("Elder").asBoolean(false) ? "ElderGuardian" : $$0, $$1);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(ban.s, "minecraft:decorated_pot");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(ban.s, "minecraft:decorated_pot");
+      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
    }
 }

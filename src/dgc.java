@@ -1,154 +1,186 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.time.Duration;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class dgc<O, S extends dgd<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dhe<?>> c;
-   private final ImmutableList<S> d;
-
-   protected dgc(Function<O, S> $$0, O $$1, dgc.b<O, S> $$2, Map<String, dhe<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, dhe<?>> $$6 = (Entry<String, dhe<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+public class dgc extends der {
+   public static final String a = "SkullOwner";
+   public static final String b = "note_block_sound";
+   @Nullable
+   private static Executor c;
+   @Nullable
+   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> d;
+   private static final Executor e = $$0 -> {
+      Executor $$1 = c;
+      if ($$1 != null) {
+         $$1.execute($$0);
       }
+   };
+   @Nullable
+   private GameProfile f;
+   @Nullable
+   private agg g;
+   private int h;
+   private boolean i;
 
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dhe<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dhe<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dhe<?> $$11 = (dhe<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dhe<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         ImmutableMap<dhe<?>, Comparable<?>> $$6 = $$5x.stream().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-         S $$7xx = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$7xx);
-         $$9.add($$7xx);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
+   public dgc(ht $$0, dgw $$1) {
+      super(det.p, $$0, $$1);
    }
 
-   private static <S extends dgd<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dhe<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dgd)((dgd)$$1x.getFirst()).a($$3, ((dhe.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
+   public static void a(final agy $$0, Executor $$1) {
+      c = $$1;
+      final BooleanSupplier $$2 = () -> d == null;
+      d = CacheBuilder.newBuilder()
+         .expireAfterAccess(Duration.ofMinutes(10L))
+         .maximumSize(256L)
+         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
+            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
+               return $$2.getAsBoolean() ? CompletableFuture.completedFuture(Optional.empty()) : dgc.a($$0, $$0, $$2);
+            }
+         });
    }
 
-   public ImmutableList<S> a() {
-      return this.d;
+   public static void c() {
+      c = null;
+      d = null;
    }
 
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<dhe<?>> d() {
-      return this.c.values();
+   static CompletableFuture<Optional<GameProfile>> a(String $$0, agy $$1, BooleanSupplier $$2) {
+      return $$1.e().b($$0).thenApplyAsync($$2x -> {
+         if ($$2x.isPresent() && !$$2.getAsBoolean()) {
+            UUID $$3 = ((GameProfile)$$2x.get()).getId();
+            ProfileResult $$4 = $$1.b().fetchProfile($$3, true);
+            return $$4 != null ? Optional.ofNullable($$4.profile()) : $$2x;
+         } else {
+            return Optional.empty();
+         }
+      }, ac.f());
    }
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dhe::f).collect(Collectors.toList()))
-         .toString();
+   protected void b(rz $$0) {
+      super.b($$0);
+      if (this.f != null) {
+         rz $$1 = new rz();
+         so.a($$1, this.f);
+         $$0.a("SkullOwner", $$1);
+      }
+
+      if (this.g != null) {
+         $$0.a("note_block_sound", this.g.toString());
+      }
+   }
+
+   @Override
+   public void a(rz $$0) {
+      super.a($$0);
+      if ($$0.b("SkullOwner", 10)) {
+         this.a(so.a($$0.p("SkullOwner")));
+      } else if ($$0.b("ExtraType", 8)) {
+         String $$1 = $$0.l("ExtraType");
+         if (!auc.b($$1)) {
+            this.a(new GameProfile(ac.d, $$1));
+         }
+      }
+
+      if ($$0.b("note_block_sound", 8)) {
+         this.g = agg.a($$0.l("note_block_sound"));
+      }
+   }
+
+   public static void a(crs $$0, ht $$1, dgw $$2, dgc $$3) {
+      if ($$2.b(dbu.a) && $$2.c(dbu.a)) {
+         $$3.i = true;
+         $$3.h++;
+      } else {
+         $$3.i = false;
+      }
+   }
+
+   public float a(float $$0) {
+      return this.i ? (float)this.h + $$0 : (float)this.h;
    }
 
    @Nullable
-   public dhe<?> a(String $$0) {
-      return (dhe<?>)this.c.get($$0);
+   public GameProfile d() {
+      return this.f;
    }
 
-   public static class a<O, S extends dgd<O, S>> {
-      private final O a;
-      private final Map<String, dhe<?>> b = Maps.newHashMap();
+   @Nullable
+   public agg f() {
+      return this.g;
+   }
 
-      public a(O $$0) {
-         this.a = $$0;
+   public yk g() {
+      return yk.a(this);
+   }
+
+   @Override
+   public rz av_() {
+      return this.o();
+   }
+
+   public void a(@Nullable GameProfile $$0) {
+      synchronized (this) {
+         this.f = $$0;
       }
 
-      public dgc.a<O, S> a(dhe<?>... $$0) {
-         for (dhe<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
-         }
+      this.i();
+   }
 
-         return this;
+   private void i() {
+      if (this.f != null && !ac.b(this.f.getName()) && !b(this.f)) {
+         a(this.f.getName()).thenAcceptAsync($$0 -> {
+            this.f = $$0.orElse(this.f);
+            this.e();
+         }, e);
+      } else {
+         this.e();
       }
+   }
 
-      private <T extends Comparable<T>> void a(dhe<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dgc.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.a($$3);
-                  if (!dgc.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
-               }
-
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
-               }
+   @Nullable
+   public static GameProfile d(rz $$0) {
+      if ($$0.b("SkullOwner", 10)) {
+         return so.a($$0.p("SkullOwner"));
+      } else {
+         if ($$0.b("SkullOwner", 8)) {
+            String $$1 = $$0.l("SkullOwner");
+            if (!ac.b($$1)) {
+               $$0.r("SkullOwner");
+               a($$0, $$1);
             }
          }
-      }
 
-      public dgc<O, S> a(Function<O, S> $$0, dgc.b<O, S> $$1) {
-         return new dgc<>($$0, this.a, $$1, this.b);
+         return null;
       }
    }
 
-   public interface b<O, S> {
-      S create(O var1, ImmutableMap<dhe<?>, Comparable<?>> var2, MapCodec<S> var3);
+   public static void e(rz $$0) {
+      String $$1 = $$0.l("SkullOwner");
+      if (!ac.b($$1)) {
+         a($$0, $$1);
+      }
+   }
+
+   private static void a(rz $$0, String $$1) {
+      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", so.a(new rz(), $$2.orElse(new GameProfile(ac.d, $$1)))));
+   }
+
+   private static CompletableFuture<Optional<GameProfile>> a(String $$0) {
+      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = d;
+      return $$1 != null && cdm.c($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
+   }
+
+   private static boolean b(GameProfile $$0) {
+      return $$0.getProperties().containsKey("textures");
    }
 }

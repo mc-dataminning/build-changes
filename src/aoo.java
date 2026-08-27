@@ -1,73 +1,117 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.logging.LogUtils;
+import com.google.common.base.Functions;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class aoo extends aoz<aoo.a> {
-   private static final Logger c = LogUtils.getLogger();
-   private final Stopwatch d = Stopwatch.createUnstarted();
+public class aoo {
+   private final Set<aoq> a;
+   private Map<String, aol> b = ImmutableMap.of();
+   private List<aol> c = ImmutableList.of();
 
-   public aoo(aot $$0, List<aon> $$1, Executor $$2, Executor $$3, CompletableFuture<atz> $$4) {
-      super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
-         AtomicLong $$6 = new AtomicLong();
-         AtomicLong $$7 = new AtomicLong();
-         bel $$8 = new bel(ac.b, () -> 0, false);
-         bel $$9 = new bel(ac.b, () -> 0, false);
-         CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
-               long $$2xxx = ac.c();
-               $$2xx.run();
-               $$6.addAndGet(ac.c() - $$2xxx);
-            }), $$2xx -> $$5.execute(() -> {
-               long $$2xxx = ac.c();
-               $$2xx.run();
-               $$7.addAndGet(ac.c() - $$2xxx);
-            }));
-         return $$10.thenApplyAsync($$5x -> {
-            c.debug("Finished reloading " + $$3x.c());
-            return new aoo.a($$3x.c(), $$8.d(), $$9.d(), $$6, $$7);
-         }, $$3);
-      }, $$4);
-      this.d.start();
-      this.b = this.b.thenApplyAsync(this::a, $$3);
+   public aoo(aoq... $$0) {
+      this.a = ImmutableSet.copyOf($$0);
    }
 
-   private List<aoo.a> a(List<aoo.a> $$0) {
-      this.d.stop();
-      long $$1 = 0L;
-      c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
+   public void a() {
+      List<String> $$0 = this.c.stream().map(aol::f).collect(ImmutableList.toImmutableList());
+      this.b = this.h();
+      this.c = this.b($$0);
+   }
 
-      for (aoo.a $$2 : $$0) {
-         ber $$3 = $$2.b;
-         ber $$4 = $$2.c;
-         long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
-         long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
-         long $$7 = $$5 + $$6;
-         String $$8 = $$2.a;
-         c.info("{} took approximately {} ms ({} ms preparing, {} ms applying)", new Object[]{$$8, $$7, $$5, $$6});
-         $$1 += $$6;
+   private Map<String, aol> h() {
+      Map<String, aol> $$0 = Maps.newTreeMap();
+
+      for (aoq $$1 : this.a) {
+         $$1.a($$1x -> $$0.put($$1x.f(), $$1x));
       }
 
-      c.info("Total blocking time: {} ms", $$1);
-      return $$0;
+      return ImmutableMap.copyOf($$0);
    }
 
-   public static class a {
-      final String a;
-      final ber b;
-      final ber c;
-      final AtomicLong d;
-      final AtomicLong e;
+   public void a(Collection<String> $$0) {
+      this.c = this.b($$0);
+   }
 
-      a(String $$0, ber $$1, ber $$2, AtomicLong $$3, AtomicLong $$4) {
-         this.a = $$0;
-         this.b = $$1;
+   public boolean a(String $$0) {
+      aol $$1 = this.b.get($$0);
+      if ($$1 != null && !this.c.contains($$1)) {
+         List<aol> $$2 = Lists.newArrayList(this.c);
+         $$2.add($$1);
          this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   public boolean b(String $$0) {
+      aol $$1 = this.b.get($$0);
+      if ($$1 != null && this.c.contains($$1)) {
+         List<aol> $$2 = Lists.newArrayList(this.c);
+         $$2.remove($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private List<aol> b(Collection<String> $$0) {
+      List<aol> $$1 = this.c($$0).collect(Collectors.toList());
+
+      for (aol $$2 : this.b.values()) {
+         if ($$2.g() && !$$1.contains($$2)) {
+            $$2.i().a($$1, $$2, Functions.identity(), false);
+         }
+      }
+
+      return ImmutableList.copyOf($$1);
+   }
+
+   private Stream<aol> c(Collection<String> $$0) {
+      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
+   }
+
+   public Collection<String> b() {
+      return this.b.keySet();
+   }
+
+   public Collection<aol> c() {
+      return this.b.values();
+   }
+
+   public Collection<String> d() {
+      return this.c.stream().map(aol::f).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public cfv e() {
+      return this.f().stream().map(aol::d).reduce(cfv::b).orElse(cfv.a());
+   }
+
+   public Collection<aol> f() {
+      return this.c;
+   }
+
+   @Nullable
+   public aol c(String $$0) {
+      return this.b.get($$0);
+   }
+
+   public boolean d(String $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public List<anr> g() {
+      return this.c.stream().map(aol::e).collect(ImmutableList.toImmutableList());
    }
 }

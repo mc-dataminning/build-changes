@@ -1,11 +1,10 @@
-public class chx extends cke {
-   public chx(cke.a $$0) {
-      super($$0);
+public class chx extends chz {
+   public chx(bij $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public cdd a(cqz $$0, ckj $$1, bkj $$2) {
-      cdf $$3 = new cdf($$0, $$2);
-      $$3.a($$1);
-      return $$3;
+   @Override
+   public boolean a(clb $$0) {
+      return $$0.d().ao_();
    }
 }

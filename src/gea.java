@@ -1,23 +1,16 @@
-public class gea {
-   private final String a;
-   private final String b;
-   private long c;
-
-   public gea(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ac.b();
+public class gea extends gec {
+   public gea(bwk $$0) {
+      super($$0, aqn.bB, aqo.g);
+      this.j = 0;
    }
 
-   public String a() {
-      return this.a;
+   @Override
+   protected gdy o() {
+      return new geb(this.n);
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public void c() {
-      this.c = ac.b();
+   @Override
+   protected boolean p() {
+      return !this.n.Y_();
    }
 }

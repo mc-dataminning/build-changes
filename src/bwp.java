@@ -1,35 +1,30 @@
-public class bwp extends bvt {
-   public bwp(bjx<? extends bwp> $$0, cqz $$1) {
+public class bwp extends bwi {
+   public bwp(bkm<? extends bwp> $$0, crs $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public int gg() {
-      return 5;
+   public clb b() {
+      return new clb(cle.pT);
    }
 
    @Override
-   public ckj b() {
-      return new ckj(ckm.pS);
+   protected aqm w() {
+      return aqn.eB;
    }
 
    @Override
-   protected aqc w() {
-      return aqd.tU;
+   protected aqm m_() {
+      return aqn.eC;
    }
 
    @Override
-   protected aqc m_() {
-      return aqd.tV;
+   protected aqm d(bjg $$0) {
+      return aqn.eE;
    }
 
    @Override
-   protected aqc d(bir $$0) {
-      return aqd.tX;
-   }
-
-   @Override
-   protected aqc gf() {
-      return aqd.tW;
+   protected aqm gf() {
+      return aqn.eD;
    }
 }

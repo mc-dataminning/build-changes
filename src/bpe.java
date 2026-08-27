@@ -1,22 +1,22 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bpe {
-   private static final int a = 36;
-
-   public static bmb<bkj> a() {
-      return bpm.a(
-         (Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$0 -> $$0.group($$0.a(btk.x), $$0.a(btk.y), $$0.a(btk.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bkj>a($$2).filter($$1xx -> $$1xx.f((bjt)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.dN().a($$4.W(), $$4.V());
+   public static bmq<bky> a() {
+      return bqb.a(
+         (Function<bqb.b<bky>, ? extends App<bqb.c<bky>, bqe<bky>>>)($$0 -> $$0.group($$0.b(btz.aa))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof bky $$1xx ? $$1xx : null)
+                           .filter(bky::ev)
+                           .filter($$1xx -> $$1xx.ag() != bkm.bt || $$2.X().b(cro.N))
+                           .ifPresent($$1xx -> $$1.b());
+                        return true;
                      }
-
-                     return true;
-                  }))
+               ))
       );
    }
 }

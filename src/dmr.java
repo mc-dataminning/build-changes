@@ -1,119 +1,60 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+public class dmr implements crf {
+   private int a;
 
-public interface dmr extends BiPredicate<crt, ht> {
-   Codec<dmr> b = jy.P.q().dispatch(dmr::a, dms::codec);
-   dmr c = a(cuc.a);
-   dmr d = a(cuc.a, cuc.G);
+   @Override
+   public int a(ama $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.X().b(cro.C)) {
+         return 0;
+      } else {
+         ato $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.B_() < 5 && $$0.D_().g()) {
+               return 0;
+            } else {
+               int $$4 = 0;
 
-   dms<?> a();
+               for (amb $$5 : $$0.v()) {
+                  if (!$$5.N_()) {
+                     ht $$6 = $$5.dl();
+                     if (!$$0.D_().g() || $$6.v() >= $$0.z_() && $$0.g($$6)) {
+                        bio $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           aqt $$8 = $$5.F();
+                           int $$9 = ati.a($$8.a(aqx.i.b(aqx.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              ht $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dgw $$12 = $$0.a_($$11);
+                              ecg $$13 = $$0.b_($$11);
+                              if (csd.a($$0, $$11, $$12, $$13, bkm.au)) {
+                                 blr $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
 
-   static dmr a(List<dmr> $$0) {
-      return new dmp($$0);
-   }
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    cbc $$17 = bkm.au.a((crs)$$0);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, blc.a, $$14, null);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
 
-   static dmr a(dmr... $$0) {
-      return a(List.of($$0));
-   }
-
-   static dmr a(dmr $$0, dmr $$1) {
-      return a(List.of($$0, $$1));
-   }
-
-   static dmr b(List<dmr> $$0) {
-      return new dmq($$0);
-   }
-
-   static dmr b(dmr... $$0) {
-      return b(List.of($$0));
-   }
-
-   static dmr b(dmr $$0, dmr $$1) {
-      return b(List.of($$0, $$1));
-   }
-
-   static dmr a(iw $$0, List<cua> $$1) {
-      return new dmx($$0, ig.a(cua::r, $$1));
-   }
-
-   static dmr c(List<cua> $$0) {
-      return a(iw.g, $$0);
-   }
-
-   static dmr a(iw $$0, cua... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   static dmr a(cua... $$0) {
-      return a(iw.g, $$0);
-   }
-
-   static dmr a(iw $$0, arh<cua> $$1) {
-      return new dmw($$0, $$1);
-   }
-
-   static dmr a(arh<cua> $$0) {
-      return a(iw.g, $$0);
-   }
-
-   static dmr b(iw $$0, List<ebd> $$1) {
-      return new dmy($$0, ig.a(ebd::k, $$1));
-   }
-
-   static dmr a(iw $$0, ebd... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static dmr a(ebd... $$0) {
-      return a(iw.g, $$0);
-   }
-
-   static dmr a(dmr $$0) {
-      return new dmz($$0);
-   }
-
-   static dmr a(iw $$0) {
-      return new dna($$0);
-   }
-
-   static dmr b() {
-      return a(iw.g);
-   }
-
-   static dmr a(dgb $$0, iw $$1) {
-      return new dne($$1, $$0);
-   }
-
-   static dmr a(iw $$0, hx $$1) {
-      return new dmu($$0, $$1);
-   }
-
-   static dmr a(hx $$0) {
-      return a(iw.g, $$0);
-   }
-
-   static dmr b(iw $$0) {
-      return new dnb($$0);
-   }
-
-   static dmr c() {
-      return b(iw.g);
-   }
-
-   static dmr d() {
-      return c(iw.g);
-   }
-
-   static dmr c(iw $$0) {
-      return a($$0, ebf.a);
-   }
-
-   static dmr d(iw $$0) {
-      return new dmv($$0);
-   }
-
-   static dmr e() {
-      return dnd.a;
+               return $$4;
+            }
+         }
+      }
    }
 }

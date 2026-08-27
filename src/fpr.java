@@ -1,108 +1,125 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fpr {
-   protected final foz a;
-   protected final cqz b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   public fry.b[] f;
-
-   public fpr(fry $$0, cqz $$1, int $$2, foz $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
-   }
-
-   protected void a(fry $$0) {
-      if (!ero.O().bl()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new fry.b[$$1];
-
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.I_() + $$3 * 16, $$4 * 16);
-               }
-            }
-         }
+   private static final fpr a = new fpr("") {
+      @Override
+      public void a(esr $$0) {
       }
-   }
 
-   public void a() {
-      for (fry.b $$0 : this.f) {
-         $$0.e();
+      @Override
+      public void a(fpr.c $$0, String $$1, String $$2) {
       }
-   }
-
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
-   }
-
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.ak();
-      this.e = $$1;
-      this.g = $$0;
-   }
-
-   public int b() {
-      return this.g;
-   }
-
-   public crb c() {
-      return this.b;
-   }
-
-   public void a(double $$0, double $$1) {
-      int $$2 = asy.c($$0);
-      int $$3 = asy.c($$1);
-
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         int $$5 = this.d * 16;
-         int $$6 = $$2 - 8 - $$5 / 2;
-         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
-
-         for (int $$8 = 0; $$8 < this.e; $$8++) {
-            int $$9 = this.e * 16;
-            int $$10 = $$3 - 8 - $$9 / 2;
-            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
-
-            for (int $$12 = 0; $$12 < this.c; $$12++) {
-               int $$13 = this.b.I_() + $$12 * 16;
-               fry.b $$14 = this.f[this.a($$4, $$12, $$8)];
-               ht $$15 = $$14.f();
-               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
-                  $$14.a($$7, $$13, $$11);
-               }
-            }
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = Math.floorMod($$0, this.d);
-      int $$5 = Math.floorMod($$1 - this.b.al(), this.c);
-      int $$6 = Math.floorMod($$2, this.e);
-      fry.b $$7 = this.f[this.a($$4, $$5, $$6)];
-      $$7.a($$3);
-   }
-
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
    @Nullable
-   protected fry.b a(ht $$0) {
-      int $$1 = asy.a($$0.v() - this.b.I_(), 16);
-      if ($$1 >= 0 && $$1 < this.c) {
-         int $$2 = asy.b(asy.a($$0.u(), 16), this.d);
-         int $$3 = asy.b(asy.a($$0.w(), 16), this.e);
-         return this.f[this.a($$2, $$1, $$3)];
+   private fpr.b e;
+
+   fpr(String $$0) {
+      this.d = esr.N().p.toPath().resolve($$0);
+   }
+
+   public static fpr a(@Nullable String $$0) {
+      return $$0 == null ? a : new fpr($$0);
+   }
+
+   public void a(fpr.c $$0, String $$1, String $$2) {
+      this.e = new fpr.b($$0, $$1, $$2);
+   }
+
+   public void a(esr $$0) {
+      if ($$0.q != null && this.e != null) {
+         ac.g().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            fpr.a $$2 = new fpr.a(this.e, Instant.now(), $$0.q.l());
+            Codec.list(fpr.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
       } else {
-         return null;
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+      }
+   }
+
+   static record a(fpr.b b, Instant c, crp d) {
+      public static final Codec<fpr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fpr.b.a.forGetter(fpr.a::a), asq.m.fieldOf("lastPlayedTime").forGetter(fpr.a::b), crp.f.fieldOf("gamemode").forGetter(fpr.a::c))
+               .apply($$0, fpr.a::new)
+      );
+
+      public fpr.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public crp c() {
+         return this.d;
+      }
+   }
+
+   static record b(fpr.c b, String c, String d) {
+      public static final MapCodec<fpr.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  fpr.c.d.fieldOf("type").forGetter(fpr.b::a), asq.o.fieldOf("id").forGetter(fpr.b::b), Codec.STRING.fieldOf("name").forGetter(fpr.b::c)
+               )
+               .apply($$0, fpr.b::new)
+      );
+
+      public fpr.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements aub {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<fpr.c> d = aub.a(fpr.c::values);
+      private final String e;
+
+      private c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

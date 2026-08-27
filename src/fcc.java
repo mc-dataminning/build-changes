@@ -1,25 +1,24 @@
-public class fcc extends fcf {
-   private static final ui b = ui.c("multiplayerWarning.header").a(n.r);
-   private static final ui c = ui.c("multiplayerWarning.message");
-   private static final ui k = ui.c("multiplayerWarning.check");
-   private static final ui l = b.f().f("\n").b(c);
-   private final ezd m;
+public class fcc extends fbg<chc> {
+   private static final agg x = new agg("container/grindstone/error");
+   private static final agg y = new agg("textures/gui/container/grindstone.png");
 
-   public fcc(ezd $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+   public fcc(chc $$0, cdl $$1, ur $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(etj.a(uh.i, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.v = true;
-            this.f.m.ar();
-         }
+   public void a(eub $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
 
-         this.f.a(new fca(this.m));
-      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(etj.a(uh.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+   @Override
+   protected void a(eub $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(y, $$4, $$5, 0, 0, this.c, this.k);
+      if ((this.p.b(0).g() || this.p.b(1).g()) && !this.p.b(2).g()) {
+         $$0.a(x, $$4 + 92, $$5 + 31, 28, 21);
+      }
    }
 }

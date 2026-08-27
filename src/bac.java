@@ -1,19 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bac extends azc {
-   public bac(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Remove Golem Gossip Fix", baa.x, "minecraft:villager");
+public class bac extends DataFix {
+   public bac(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bac::a);
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsProgrammerArtFix",
+         this.getInputSchema().getType(ban.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("resourcePacks", this::a).update("incompatibleResourcePacks", this::a))
+      );
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.asString().result().map($$1 -> $$0.createString($$1.replace("\"programer_art\"", "\"programmer_art\""))).orElse($$0);
    }
 }

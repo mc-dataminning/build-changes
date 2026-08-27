@@ -1,48 +1,35 @@
-public class zf implements wb<xu> {
-   private final int a;
-   private final ht b;
-   private final int c;
-   private final boolean d;
+import javax.annotation.Nullable;
 
-   public zf(int $$0, ht $$1, int $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
-      this.d = $$3;
+public class zf implements wk<yd> {
+   private final int a;
+   private final byte b;
+
+   public zf(bki $$0, byte $$1) {
+      this.a = $$0.ah();
+      this.b = $$1;
    }
 
-   public zf(tl $$0) {
+   public zf(tu $$0) {
       this.a = $$0.readInt();
-      this.b = $$0.e();
-      this.c = $$0.readInt();
-      this.d = $$0.readBoolean();
+      this.b = $$0.readByte();
    }
 
    @Override
-   public void a(tl $$0) {
+   public void a(tu $$0) {
       $$0.p(this.a);
-      $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
+      $$0.k(this.b);
    }
 
-   public void a(xu $$0) {
+   public void a(yd $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
-      return this.d;
+   @Nullable
+   public bki a(crs $$0) {
+      return $$0.a(this.a);
    }
 
-   public int d() {
-      return this.a;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public ht f() {
+   public byte a() {
       return this.b;
    }
 }

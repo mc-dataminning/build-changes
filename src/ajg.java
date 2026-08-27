@@ -1,92 +1,158 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
 public class ajg {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ui.b("commands.schedule.cleared.failure", $$0));
-   private static final SuggestionProvider<du> c = ($$0, $$1) -> dy.b(((du)$$0.getSource()).m().aT().K().u().a(), $$1);
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ur.c("commands.random.error.range_too_large"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ur.c("commands.random.error.range_too_small"));
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("schedule").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dv.a("function")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("random").then(a("value", false))).then(a("roll", true)))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("reset").requires($$0x -> $$0x.c(2)))
                      .then(
-                        dv.a("function", fx.a())
-                           .suggests(aia.a)
+                        ((LiteralArgumentBuilder)dv.a("*").executes($$0x -> a((du)$$0x.getSource())))
                            .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("time", ff.a())
-                                       .executes($$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
-                                    .then(
-                                       dv.a("append")
-                                          .executes(
-                                             $$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
-                                          )
-                                    ))
+                              ((RequiredArgumentBuilder)dv.a("seed", IntegerArgumentType.integer())
+                                    .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
                                  .then(
-                                    dv.a("replace")
-                                       .executes($$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
+                                    ((RequiredArgumentBuilder)dv.a("includeWorldSeed", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   true
+                                                )
+                                          ))
+                                       .then(
+                                          dv.a("includeSequenceId", BoolArgumentType.bool())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      IntegerArgumentType.getInteger($$0x, "seed"),
+                                                      BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                      BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                   )
+                                             )
+                                       )
                                  )
                            )
-                     )
-               ))
-            .then(
-               dv.a("clear")
+                     ))
                   .then(
-                     dv.a("function", StringArgumentType.greedyString())
-                        .suggests(c)
-                        .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                     ((RequiredArgumentBuilder)dv.a("sequence", eu.a()).suggests(ajg::a).executes($$0x -> a((du)$$0x.getSource(), eu.e($$0x, "sequence"))))
+                        .then(
+                           ((RequiredArgumentBuilder)dv.a("seed", IntegerArgumentType.integer())
+                                 .executes($$0x -> a((du)$$0x.getSource(), eu.e($$0x, "sequence"), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                              .then(
+                                 ((RequiredArgumentBuilder)dv.a("includeWorldSeed", BoolArgumentType.bool())
+                                       .executes(
+                                          $$0x -> a(
+                                                (du)$$0x.getSource(),
+                                                eu.e($$0x, "sequence"),
+                                                IntegerArgumentType.getInteger($$0x, "seed"),
+                                                BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                true
+                                             )
+                                       ))
+                                    .then(
+                                       dv.a("includeSequenceId", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   eu.e($$0x, "sequence"),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(du $$0, Pair<afw, Either<gx<du>, Collection<gx<du>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
-      if ($$2 == 0) {
+   private static LiteralArgumentBuilder<du> a(String $$0, boolean $$1) {
+      return (LiteralArgumentBuilder<du>)dv.a($$0)
+         .then(
+            ((RequiredArgumentBuilder)dv.a("range", er.a()).executes($$1x -> a((du)$$1x.getSource(), er.b.a($$1x, "range"), null, $$1)))
+               .then(
+                  ((RequiredArgumentBuilder)dv.a("sequence", eu.a()).suggests(ajg::a).requires($$0x -> $$0x.c(2)))
+                     .executes($$1x -> a((du)$$1x.getSource(), er.b.a($$1x, "range"), eu.e($$1x, "sequence"), $$1))
+               )
+         );
+   }
+
+   private static CompletableFuture<Suggestions> a(CommandContext<du> $$0, SuggestionsBuilder $$1) {
+      List<String> $$2 = Lists.newArrayList();
+      ((du)$$0.getSource()).f().H().a(($$1x, $$2x) -> $$2.add($$1x.toString()));
+      return dy.b($$2, $$1);
+   }
+
+   private static int a(du $$0, cl.d $$1, @Nullable agg $$2, boolean $$3) throws CommandSyntaxException {
+      ato $$4;
+      if ($$2 != null) {
+         $$4 = $$0.f().a($$2);
+      } else {
+         $$4 = $$0.f().E_();
+      }
+
+      int $$6 = $$1.a().orElse(Integer.MIN_VALUE);
+      int $$7 = $$1.b().orElse(Integer.MAX_VALUE);
+      long $$8 = (long)$$7 - (long)$$6;
+      if ($$8 == 0L) {
+         throw b.create();
+      } else if ($$8 >= 2147483647L) {
          throw a.create();
       } else {
-         long $$4 = $$0.f().V() + (long)$$2;
-         afw $$5 = (afw)$$1.getFirst();
-         ehs<MinecraftServer> $$6 = $$0.m().aT().K().u();
-         ((Either)$$1.getSecond()).ifLeft($$6x -> {
-            String $$7 = $$5.toString();
-            if ($$3) {
-               $$6.a($$7);
-            }
+         int $$9 = ati.b($$4, $$6, $$7);
+         if ($$3) {
+            $$0.m().ac().a(ur.a("commands.random.roll", $$0.c(), $$9, $$6, $$7), false);
+         } else {
+            $$0.a(() -> ur.a("commands.random.sample.success", $$9), false);
+         }
 
-            $$6.a($$7, $$4, new eho($$5));
-            $$0.a(() -> ui.a("commands.schedule.created.function", ui.a($$5), $$2, $$4), true);
-         }).ifRight($$6x -> {
-            String $$7 = "#" + $$5;
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new ehp($$5));
-            $$0.a(() -> ui.a("commands.schedule.created.tag", ui.a($$5), $$2, $$4), true);
-         });
-         return Math.floorMod($$4, Integer.MAX_VALUE);
+         return $$9;
       }
    }
 
-   private static int a(du $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.m().aT().K().u().a($$1);
-      if ($$2 == 0) {
-         throw b.create($$1);
-      } else {
-         $$0.a(() -> ui.a("commands.schedule.cleared.success", $$2, $$1), true);
-         return $$2;
-      }
+   private static int a(du $$0, agg $$1) throws CommandSyntaxException {
+      $$0.f().H().b($$1);
+      $$0.a(() -> ur.a("commands.random.reset.success", ur.a($$1)), false);
+      return 1;
+   }
+
+   private static int a(du $$0, agg $$1, int $$2, boolean $$3, boolean $$4) throws CommandSyntaxException {
+      $$0.f().H().a($$1, $$2, $$3, $$4);
+      $$0.a(() -> ur.a("commands.random.reset.success", ur.a($$1)), false);
+      return 1;
+   }
+
+   private static int a(du $$0) {
+      int $$1 = $$0.f().H().a();
+      $$0.a(() -> ur.a("commands.random.reset.all.success", $$1), false);
+      return $$1;
+   }
+
+   private static int a(du $$0, int $$1, boolean $$2, boolean $$3) {
+      biw $$4 = $$0.f().H();
+      $$4.a($$1, $$2, $$3);
+      int $$5 = $$4.a();
+      $$0.a(() -> ur.a("commands.random.reset.all.success", $$5), false);
+      return $$5;
    }
 }

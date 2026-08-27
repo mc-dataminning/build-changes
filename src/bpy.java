@@ -1,35 +1,80 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
 
-public class bpy<E extends ccb> extends bma<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public class bpy extends bpz {
+   private static final List<ckw> c = ImmutableList.of(cle.oH, cle.us);
 
-   public bpy(int $$0) {
-      super(ImmutableMap.of(btk.aA, btl.a, btk.o, btl.b, btk.m, btl.b, btk.n, btl.c, btk.B, btl.c, btk.ay, btl.c, btk.aF, btl.c), $$0);
+   @Override
+   protected void a(ama $$0, ccz $$1) {
+      Optional<ia> $$2 = $$1.dN().c(btz.c);
+      if (!$$2.isEmpty()) {
+         ia $$3 = $$2.get();
+         dgw $$4 = $$0.a_($$3.b());
+         if ($$4.a(cuv.pc)) {
+            this.a($$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
+      }
    }
 
-   protected boolean a(alq $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(alq $$0, E $$1, long $$2) {
-      $$1.a(aqd.zM, 5.0F, 1.0F);
-   }
-
-   protected void c(alq $$0, E $$1, long $$2) {
-      if ($$1.c(bkv.m)) {
-         $$1.b(bkv.a);
+   private void a(ama $$0, ccz $$1, ia $$2, dgw $$3) {
+      ht $$4 = $$2.b();
+      if ($$3.c(cwe.e) == 8) {
+         $$3 = cwe.a($$1, $$3, (crs)$$0, $$4);
       }
 
-      $$1.dN().b(btk.aA);
-      $$1.dN().c(btk.B).filter($$1::a).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.c($$1x);
-         }
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      bix $$8 = $$1.y();
+      int $$9 = $$8.b();
+      dgw $$10 = $$3;
 
-         if (!$$1.dN().a(btk.ay)) {
-            ccc.a($$1, $$1x.dl());
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         clb $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.d());
+         if ($$13 != -1) {
+            int $$14 = $$12.L();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = cwe.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(cwe.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
          }
-      });
+      }
+
+      this.a($$0, $$3, $$4, $$10);
+   }
+
+   private void a(ama $$0, dgw $$1, ht $$2, dgw $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   }
+
+   private void a(ccz $$0) {
+      bix $$1 = $$0.y();
+      if ($$1.a_(cle.oJ) <= 36) {
+         int $$2 = $$1.a_(cle.oI);
+         int $$3 = 3;
+         int $$4 = 3;
+         int $$5 = Math.min(3, $$2 / 3);
+         if ($$5 != 0) {
+            int $$6 = $$5 * 3;
+            $$1.a(cle.oI, $$6);
+            clb $$7 = $$1.a(new clb(cle.oJ, $$5));
+            if (!$$7.b()) {
+               $$0.a($$7, 0.5F);
+            }
+         }
+      }
    }
 }

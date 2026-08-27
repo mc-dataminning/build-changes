@@ -1,86 +1,57 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.CorruptedFrameException;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class uk {
-   public static final Codec<ui> a = asg.a(uk::a);
-   public static final Codec<ui> b = asg.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
+public class uk extends ByteToMessageDecoder {
+   private static final int a = 3;
+   private final ByteBuf b = Unpooled.directBuffer(3);
+   @Nullable
+   private final tk c;
 
-   private static uw a(List<ui> $$0) {
-      uw $$1 = $$0.get(0).f();
-
-      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
-         $$1.b($$0.get($$2));
-      }
-
-      return $$1;
+   public uk(@Nullable tk $$0) {
+      this.c = $$0;
    }
 
-   public static <T extends atr, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2) {
-      MapCodec<E> $$3 = new uk.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
-      Codec<T> $$4 = atr.b((Supplier<T[]>)(() -> $$0));
-      MapCodec<E> $$5 = $$4.dispatchMap($$2, $$1x -> $$1.apply((T)$$1x).codec());
-      MapCodec<E> $$6 = Codec.mapEither($$5, $$3).xmap($$0x -> $$0x.map($$0xx -> $$0xx, $$0xx -> $$0xx), Either::right);
-      return asg.a($$6, $$5);
+   protected void handlerRemoved0(ChannelHandlerContext $$0) {
+      this.b.release();
    }
 
-   private static Codec<ui> a(Codec<ui> $$0) {
-      uj.a<?>[] $$1 = new uj.a[]{vp.b, vt.c, vm.b, vq.c, vr.b, vo.b};
-      MapCodec<uj> $$2 = a($$1, uj.a::a, uj::a);
-      Codec<ui> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(ui::b), asg.a(asg.a($$0.listOf()), "extra", List.of()).forGetter(ui::c), vf.b.a.forGetter(ui::a))
-               .apply($$2x, uw::new)
-      );
-      return Codec.either(Codec.either(Codec.STRING, asg.a($$0.listOf())), $$3)
-         .xmap($$0x -> (ui)$$0x.map($$0xx -> (ui)$$0xx.map(ui::b, uk::a), $$0xx -> $$0xx), $$0x -> {
-            String $$1x = $$0x.d();
-            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
-         });
-   }
-
-   static class a<T> extends MapCodec<T> {
-      private final List<MapCodec<? extends T>> a;
-      private final Function<T, MapEncoder<? extends T>> b;
-
-      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
-         for (MapDecoder<? extends T> $$2 : this.a) {
-            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
-            if ($$3.result().isPresent()) {
-               return (DataResult<T>)$$3;
-            }
+   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (!$$0.isReadable()) {
+            return false;
          }
 
-         return DataResult.error(() -> "No matching codec found");
+         byte $$3 = $$0.readByte();
+         $$1.writeByte($$3);
+         if (!ui.a($$3)) {
+            return true;
+         }
       }
 
-      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
-         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
-         return $$3.encode($$0, $$1, $$2);
-      }
+      throw new CorruptedFrameException("length wider than 21-bit");
+   }
 
-      public <S> Stream<S> keys(DynamicOps<S> $$0) {
-         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
-      }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
+      $$1.markReaderIndex();
+      this.b.clear();
+      if (!a($$1, this.b)) {
+         $$1.resetReaderIndex();
+      } else {
+         int $$3 = ui.a(this.b);
+         if ($$1.readableBytes() < $$3) {
+            $$1.resetReaderIndex();
+         } else {
+            if (this.c != null) {
+               this.c.a($$3 + ui.a($$3));
+            }
 
-      public String toString() {
-         return "FuzzyCodec[" + this.a + "]";
+            $$2.add($$1.readBytes($$3));
+         }
       }
    }
 }

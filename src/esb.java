@@ -1,20 +1,30 @@
-public class esb {
-   public float a;
-   public float b;
-   private long c;
-   private final float d;
+import java.util.function.IntFunction;
 
-   public esb(float $$0, long $$1) {
-      this.d = 1000.0F / $$0;
-      this.c = $$1;
+public enum esb implements atk {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
+
+   private static final IntFunction<esb> d = asb.a(esb::a, values(), asb.a.b);
+   private final int e;
+   private final String f;
+
+   private esb(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public int a(long $$0) {
-      this.b = (float)($$0 - this.c) / this.d;
-      this.c = $$0;
-      this.a = this.a + this.b;
-      int $$1 = (int)this.a;
-      this.a -= (float)$$1;
-      return $$1;
+   @Override
+   public int a() {
+      return this.e;
+   }
+
+   @Override
+   public String b() {
+      return this.f;
+   }
+
+   public static esb a(int $$0) {
+      return d.apply($$0);
    }
 }

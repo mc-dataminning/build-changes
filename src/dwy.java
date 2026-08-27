@@ -1,12 +1,54 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public interface dwy<SP extends dwx> {
-   dwy<dwv> a = a("random_spread", dwv.a);
-   dwy<dwu> b = a("concentric_rings", dwu.a);
+public class dwy extends edl {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   Codec<SP> codec();
+   public static edl.a<dwy> a() {
+      return new edl.a<>(dwy::new, dwy::b, aun.o);
+   }
 
-   private static <SP extends dwx> dwy<SP> a(String $$0, Codec<SP> $$1) {
-      return io.a(jy.S, $$0, () -> $$1);
+   private dwy(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public dwy() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static dwy b(rz $$0) {
+      return new dwy(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public rz a(rz $$0) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }
