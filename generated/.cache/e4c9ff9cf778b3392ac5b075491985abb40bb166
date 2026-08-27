@@ -1,0 +1,11 @@
+// 26.3-snapshot-10	2026-08-27T22:57:26.7912353	vanilla/Tags for minecraft:fluid
+cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\fluid\bubble_column_can_occupy.json
+c9ae54a7510073b17edf82f7591e14bdb2c51837 data\minecraft\tags\fluid\water.json
+cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\fluid\supports_lily_pad.json
+d26028b2a8e11c663ec9a14ee723c257992049e9 data\minecraft\tags\fluid\entity_floatable.json
+cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\fluid\frog_tries_to_find_land_near.json
+cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\fluid\axolotl_tries_to_find.json
+e191d5f912e05091b3a0b1df17f4c4181e04d96f data\minecraft\tags\fluid\lava.json
+d26028b2a8e11c663ec9a14ee723c257992049e9 data\minecraft\tags\fluid\supports_sugar_cane_adjacently.json
+cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\fluid\dolphin_tries_to_find.json
+cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\fluid\supports_frogspawn.json
